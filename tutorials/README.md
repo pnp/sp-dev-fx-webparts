@@ -6,15 +6,15 @@ This *web-part-tutorials* client-side project includes the web parts detailed in
 
 | Web part  | Getting Started Walkthrough |
 | ------------- | ------------- |
-| helloWorld  | [Build your first web part](http://officedevcentersite-devxhome.azurewebsites.net/sharepoint/docs/spfx/web-parts/get-started/build-a-hello-world-web-part)   |
-| helloWorldSharePoint  | [Connect your client-side web part to SharePoint](http://officedevcentersite-devxhome.azurewebsites.net/sharepoint/docs/spfx/web-parts/get-started/connect-to-sharepoint)  |
-| jQuery  | [Add jQueryUI Accordion to your SharePoint client-side web part](http://officedevcentersite-devxhome.azurewebsites.net/sharepoint/docs/spfx/web-parts/get-started/add-jqueryui-accordion-to-web-part)  |
-| documentCardExample  | [Use Office UI Fabric React components in your SharePoint client-side web part](http://officedevcentersite-devxhome.azurewebsites.net/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components)  |
+| helloWorld  | [Build your first web part](https://github.com/SharePoint/sp-dev-docs/wiki/HelloWorld-WebPart)   |
+| helloWorldSharePoint  | [Connect your client-side web part to SharePoint](https://github.com/SharePoint/sp-dev-docs/wiki/HelloWorld,-Talking-to-SharePoint)  |
+| jQuery  | [Add jQueryUI Accordion to your SharePoint client-side web part](https://github.com/SharePoint/sp-dev-docs/wiki/jQueryUI-Accordion-WebPart)  |
+| documentCardExample  | [Use Office UI Fabric React components in your SharePoint client-side web part](https://github.com/SharePoint/sp-dev-docs/wiki/Using-Office-UI-Fabric-Components)  |
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://officedevcentersite-devxhome.azurewebsites.net/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://officedevcentersite-devxhome.azurewebsites.net/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://github.com/SharePoint/sp-dev-docs/wiki)
+* [Office 365 developer tenant](https://github.com/SharePoint/sp-dev-docs/wiki/Setup-SharePoint-Tenant)
 
 ## Solution
 

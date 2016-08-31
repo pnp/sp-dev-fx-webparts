@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "46f8b70d-55c4-4b4e-8454-053ff5e426fa",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "46f8b70d-55c4-4b4e-8454-053ff5e426fa",
+    "group": { "default": "Productivity" },
+    "title": { "default": "To do" },
+    "description": { "default": "Simple management of to do tasks" },
+    "officeFabricIconFontName": "MultiSelect",
+    "properties": {
+      "hideFinishedTasks": false
+    }
+  }]
+}

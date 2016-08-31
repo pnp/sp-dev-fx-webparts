@@ -1,0 +1,52 @@
+# Angular & ngOfficeUIFabric Client-Side Web Part
+
+## Summary
+
+Sample Web Part illustrating using Angular and [ngOfficeUIFabric](http://ngofficeuifabric.com/) with the SharePoint Framework.
+
+![Sample To do SharePoint Framework Client-Side Web Part built using Angular and ngOfficeUIFabric](./assets/preview.png)
+
+## Applies to
+
+* [SharePoint Framework Developer Preview](https://github.com/SharePoint/sp-dev-docs/wiki)
+* [Office 365 developer tenant](https://github.com/SharePoint/sp-dev-docs/wiki/Setup-SharePoint-Tenant)
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+angular-ngofficeuifabric-todo|Waldek Mastykarz (MVP, Rencore, @waldekm)
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|August 29, 2016|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- clone this repo
+- in the command line run:
+  - `npm i`
+  - `tsd install`
+  - `gulp serve`
+
+## Features
+
+The To do Web Part is a sample Client-Side Web Part built on the SharePoint Framework built using Angular and ngOfficeUIFabric.
+
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+- using Angular v1.x with TypeScript for building SharePoint Framework Client-Side Web Parts
+- using ngOfficeUIFabric for styling Angular v1.x Client-Side Web Parts
+- including Angular and ngOfficeUIFabric in the Web Part bundle
+- using a newer version of Office UI Fabric for styling Client-Side Web Parts
+- loading CSS stylesheets from CDN
+- using non-reactive Web Part Property Pane
+- using conditional rendering for one-time Web Part setup
+- passing Web Part configuration to Angular and reacting to configuration changes

@@ -1,0 +1,10 @@
+.toDoWebPart {
+  .loading {
+    margin: 0 auto;
+    width: 6em;
+  }
+
+  .done [class=ms-ListItem-primaryText] {
+    text-decoration: line-through;
+  }
+}
