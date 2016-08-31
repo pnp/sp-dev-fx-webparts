@@ -4,12 +4,14 @@
 
 This *web-part-tutorials* client-side project includes the web parts detailed in the Getting Started walkthroughs. The solution contains the following web parts:
 
-| Web part  | Getting Started Walkthrough |
-| ------------- | ------------- |
-| helloWorld  | [Build your first web part](https://github.com/SharePoint/sp-dev-docs/wiki/HelloWorld-WebPart)   |
-| helloWorldSharePoint  | [Connect your client-side web part to SharePoint](https://github.com/SharePoint/sp-dev-docs/wiki/HelloWorld,-Talking-to-SharePoint)  |
-| jQuery  | [Add jQueryUI Accordion to your SharePoint client-side web part](https://github.com/SharePoint/sp-dev-docs/wiki/jQueryUI-Accordion-WebPart)  |
-| documentCardExample  | [Use Office UI Fabric React components in your SharePoint client-side web part](https://github.com/SharePoint/sp-dev-docs/wiki/Using-Office-UI-Fabric-Components)  |
+| Web part  | Getting Started Walkthrough | Video
+| ------------- | ------------- | ------------- |
+| helloWorld  | [Build your first web part](https://github.com/SharePoint/sp-dev-docs/wiki/HelloWorld-WebPart)   | [video](https://www.youtube.com/watch?v=ralspfOBgic)  |
+| helloWorldSharePoint  | [Connect your client-side web part to SharePoint](https://github.com/SharePoint/sp-dev-docs/wiki/HelloWorld,-Talking-to-SharePoint)  | [video](https://www.youtube.com/watch?v=rokWJlXoFWk)  |
+| jQuery  | [Add jQueryUI Accordion to your SharePoint client-side web part](https://github.com/SharePoint/sp-dev-docs/wiki/jQueryUI-Accordion-WebPart)  | [video](https://www.youtube.com/watch?v=YcECe5JbAnA)  |
+| documentCardExample  | [Use Office UI Fabric React components in your SharePoint client-side web part](https://github.com/SharePoint/sp-dev-docs/wiki/Using-Office-UI-Fabric-Components)  | [video](https://www.youtube.com/watch?v=P8WmNhcSWHU)  |
+
+You can also other SharePoint Framework releated videos from [SharePoint PnP YouTube Channel](https://aka.ms/SPPnP-Videos).
 
 ## Applies to
 
