@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "e3c8b1a3-1359-41d2-8c99-796622459b01",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "e3c8b1a3-1359-41d2-8c99-796622459b01",
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "Document Card"
+      },
+      "description": {
+        "default": "Office UI Fabric React Demo"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "Office UI Fabric React Demo"
+      }
+    }
+  ]
+}

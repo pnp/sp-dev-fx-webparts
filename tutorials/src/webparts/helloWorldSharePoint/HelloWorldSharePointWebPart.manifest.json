@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "6957b854-8c56-4a3a-8b03-c35783a6d0ff",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "6957b854-8c56-4a3a-8b03-c35783a6d0ff",
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "Hello SharePoint"
+      },
+      "description": {
+        "default": "Connect your web part with SharePoint data."
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "HelloWorldSharePoint",
+        "test": "Multi-line text field",
+        "test1": true,
+        "test2": "2",
+        "test3": true
+      }
+    }
+  ]
+}
