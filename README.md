@@ -28,22 +28,28 @@ Navigate to the cloned repo folder which should be the same as the repo name:
 cd sp-dev-fx-webparts
 ```
 
-Navigate to the sample or tutorial folder which you want to see:
+To access the samples use the following command, where you replace `sample-folder-name` with the name of the sample you want to access. 
 
 ```
-cd tutorials / samples
+cd samples
 cd sample-folder-name
+
+```
+and for the tutorials, use the following command:
+```
+cd tutorials
 ```
 
 Now run the following command to install the npm packages:
 
 ```
-npm i
+npm install
 ```
 
 This will install the required npm packages and dependencies to build and run the client-side project.
 
-Once the npm packages are installed, run the command to preview your web parts in SharePoint Workbench:
+
+Once the npm packages are installed, run the following command to preview your web parts in SharePoint Workbench:
 
 ```
 gulp serve
