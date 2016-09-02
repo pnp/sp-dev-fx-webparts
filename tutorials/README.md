@@ -6,17 +6,17 @@ This *web-part-tutorials* client-side project includes the web parts detailed in
 
 | Web part  | Getting Started Walkthrough | Video
 | ------------- | ------------- | ------------- |
-| helloWorld  | [Build your first web part](https://github.com/SharePoint/sp-dev-docs/wiki/HelloWorld-WebPart)   | [video](https://www.youtube.com/watch?v=ralspfOBgic)  |
-| helloWorldSharePoint  | [Connect your client-side web part to SharePoint](https://github.com/SharePoint/sp-dev-docs/wiki/HelloWorld,-Talking-to-SharePoint)  | [video](https://www.youtube.com/watch?v=rokWJlXoFWk)  |
-| jQuery  | [Add jQueryUI Accordion to your SharePoint client-side web part](https://github.com/SharePoint/sp-dev-docs/wiki/jQueryUI-Accordion-WebPart)  | [video](https://www.youtube.com/watch?v=YcECe5JbAnA)  |
-| documentCardExample  | [Use Office UI Fabric React components in your SharePoint client-side web part](https://github.com/SharePoint/sp-dev-docs/wiki/Using-Office-UI-Fabric-Components)  | [video](https://www.youtube.com/watch?v=P8WmNhcSWHU)  |
+| helloWorld  | [Build your first web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/build-a-hello-world-web-part)   | [video](https://www.youtube.com/watch?v=ralspfOBgic)  |
+| helloWorldSharePoint  | [Connect your client-side web part to SharePoint](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/connect-to-sharepoint)  | [video](https://www.youtube.com/watch?v=rokWJlXoFWk)  |
+| jQuery  | [Add jQueryUI Accordion to your SharePoint client-side web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/add-jqueryui-accordion-to-web-part)  | [video](https://www.youtube.com/watch?v=YcECe5JbAnA)  |
+| documentCardExample  | [Use Office UI Fabric React components in your SharePoint client-side web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components)  | [video](https://www.youtube.com/watch?v=P8WmNhcSWHU)  |
 
 You can also other SharePoint Framework releated videos from [SharePoint PnP YouTube Channel](https://aka.ms/SPPnP-Videos).
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](https://github.com/SharePoint/sp-dev-docs/wiki)
-* [Office 365 developer tenant](https://github.com/SharePoint/sp-dev-docs/wiki/Setup-SharePoint-Tenant)
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
