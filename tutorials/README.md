@@ -71,3 +71,4 @@ Once the npm packages are installed, run the command to preview your web parts i
 ```
 gulp serve
 ```
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/tutorials" />
