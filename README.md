@@ -57,7 +57,7 @@ gulp serve
 
 ## Contributions
 
-These samples are direct from the feature teams and SharePoint PnP core team (http://aka.ms/SharePointPnP). We welcome your input on issues and suggestions for new samples. At this time we are not accepting new samples from the public, but check back here as we evolve our contribution model.
+These samples are direct from the feature teams and SharePoint PnP core team (http://aka.ms/SharePointPnP). We welcome your input on issues and suggestions for new samples. We do welcome community contributions around the client-side web parts. If there's any questions around that, just let us know.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
