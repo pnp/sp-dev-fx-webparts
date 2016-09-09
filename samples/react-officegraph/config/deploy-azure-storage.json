@@ -1,0 +1,6 @@
+{
+  "workingDir": "./temp/deploy/",
+  "account": "<!-- STORAGE ACCOUNT NAME -->",
+  "container": "react-officegraph",
+  "accessKey": "<!-- ACCESS KEY -->"
+}
