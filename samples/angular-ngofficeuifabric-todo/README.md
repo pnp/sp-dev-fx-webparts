@@ -22,6 +22,7 @@ angular-ngofficeuifabric-todo|Waldek Mastykarz (MVP, Rencore, @waldekm)
 
 Version|Date|Comments
 -------|----|--------
+1.1|September 9, 2016|Updated sample to SPFx v0.2.0 and changed to loading Angular and ngOfficeUIFabric from CDN
 1.0|August 29, 2016|Initial release
 
 ## Disclaimer
