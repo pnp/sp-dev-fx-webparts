@@ -32,7 +32,7 @@ Bootstrapping multiple angular2 applications on the same page:
 * This forced a new class prototype object to be created with a new annotations array.
 * Moreover, it took a bit of reverse engineering and digging into hidden properties to find references to the rootComponent so that we could make updates to class properties and to the view.
 
-### Our experiment questions:
+### Our experiment followup questions
 * We have 3 questions you can find in 'src/webparts/todo/core/BaseAngular2WebpPart.ts' that are marked by '@question'.
 
 ### Build options
