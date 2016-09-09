@@ -1,6 +1,7 @@
-## ang-2-webparts
+## angular2-prototype
 
-This is where you include your web part docs.
+This is expirimental project on boostrapping multiple identical angular2 applications with the same root class component.
+
 
 ### Building the code
 
@@ -8,14 +9,18 @@ This is where you include your web part docs.
 git clone the repo
 npm i
 npm i -g gulp
-gulp
+tsd install
+gulp serve
 ```
 
 This package produces the following:
 
 * lib/* commonjs components - this allows this package to be reused from other packages.
 * dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
-* example/* a test page that hosts all components in this package.
+* src/* - all files for the expiriemental angular2 todo webpart.
+
+* src/webparts/todo/core - am abstract base class that we created for angular2 applications.
+* src/webparts/todo/TodoWebPart.ts - a class to create unique instance of the root class component and return other metadata for the NgModule decorator funciton.
 
 ### Build options
 

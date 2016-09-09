@@ -16,3 +16,4 @@
 /// <reference path="es6-shim/es6-shim.d.ts" />
 /// <reference path="zone.js/zone.js.d.ts" />
 /// <reference path="reflect-metadata/reflect-metadata.d.ts" />
+/// <reference path="es6-promise/es6-promise.d.ts" />
