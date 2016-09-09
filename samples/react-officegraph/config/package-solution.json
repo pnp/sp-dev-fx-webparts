@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-officegraph-client-side-solution",
+    "id": "ab9002a3-ee4e-4d42-8322-cd4fc0ee7570",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "react-officegraph.spapp"
+  }
+}
