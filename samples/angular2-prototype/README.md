@@ -1,6 +1,6 @@
 ## angular2-prototype
 
-This is experimental project on boostrapping multiple identical angular2 applications with the same root class component.
+This is an experimental project on boostrapping multiple identical angular2 applications with the same root class component.
 
 
 ### Building the code
