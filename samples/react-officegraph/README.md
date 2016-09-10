@@ -1,4 +1,4 @@
-# Angular & ngOfficeUIFabric Client-Side Web Part
+# React & Office Graph Web Part samples
 
 ## Summary
 
