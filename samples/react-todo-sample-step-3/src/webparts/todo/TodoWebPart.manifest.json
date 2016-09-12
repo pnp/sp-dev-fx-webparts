@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "id": "021b60f8-e564-46cc-9b3a-9fe4c9ecccd3",
+  "preconfiguredEntries": [
+    {
+      "groupId": "021b60f8-e564-46cc-9b3a-9fe4c9ecccd3",
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "Todo"
+      },
+      "description": {
+        "default": "Sample Todo Web Part"
+      },
+      "officeFabricIconFontName": "BulletedList",
+      "properties": {
+        "selectedList": {
+          "Title": "DefaultTodoList"
+        },
+        "shouldShowCompletedTasks": true,
+        "shouldShowCompletedBy": true,
+        "shouldShowCreatedBy": true,
+        "maxNumberOfTasks": 10
+      }
+    }
+  ]
+}

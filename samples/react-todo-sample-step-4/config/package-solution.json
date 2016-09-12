@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "todo-client-side-solution",
+    "id": "c2a6ef80-83d4-4b50-9f41-824a41cbb85e",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "todo.spapp"
+  }
+}
