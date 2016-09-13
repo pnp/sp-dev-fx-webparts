@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "ebb06b7e-b2ae-40b0-82f5-fdf644f0104a",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "ebb06b7e-b2ae-40b0-82f5-fdf644f0104a",
+    "group": { "default": "Under Development" },
+    "title": { "default": "PowerBiEmbedded" },
+    "description": { "default": "PowerBI Embedded description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "PowerBiEmbedded"
+    }
+  }]
+}
