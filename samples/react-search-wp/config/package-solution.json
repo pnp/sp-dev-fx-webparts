@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "search-wp-spfx-client-side-solution",
+    "id": "65493d61-9d21-46e7-bc08-23ea857b4c95",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "search-wp-spfx.spapp"
+  }
+}
