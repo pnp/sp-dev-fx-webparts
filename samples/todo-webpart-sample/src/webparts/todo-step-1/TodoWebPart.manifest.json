@@ -11,7 +11,7 @@
     "group": { "default": "Under Development" },
     "title": { "default": "Todo step 1" },
     "description": { "default": "Todo sample webpart step 1" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "BulletedList",
     "properties": {
       "description": "Todo"
     }

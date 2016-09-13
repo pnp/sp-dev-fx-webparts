@@ -1,10 +1,10 @@
-declare interface ITodoStrings {
+declare interface ITodoStep1Strings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
 }
 
-declare module 'todoStrings' {
-  const strings: ITodoStrings;
+declare module 'todoStep1Strings' {
+  const strings: ITodoStep1Strings;
   export = strings;
 }

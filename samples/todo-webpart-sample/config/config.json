@@ -31,6 +31,9 @@
     "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js"
   },
   "localizedResources": {
-    "helloWorldStrings": "webparts/helloWorld/loc/{locale}.js"
+    "todoStep1Strings": "webparts/todo-step-1/loc/{locale}.js",
+    "todoStep2Strings": "webparts/todo-step-2/loc/{locale}.js",
+    "todoStep3Strings": "webparts/todo-step-3/loc/{locale}.js",
+    "todoStep4Strings": "webparts/todo-step-4/loc/{locale}.js"
   }
 }

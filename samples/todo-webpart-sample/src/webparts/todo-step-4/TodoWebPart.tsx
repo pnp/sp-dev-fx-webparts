@@ -39,7 +39,7 @@ import {
 } from './ITodoWebPartProps';
 
 import Todo, { ITodoProps } from './components/Todo';
-import * as strings from 'todoStrings';
+import * as strings from 'todoStep4Strings';
 import styles from './style/Todo.module.scss';
 
 /**

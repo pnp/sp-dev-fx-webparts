@@ -14,7 +14,7 @@ import {
   ITodoTaskList
 } from '../ITodoWebPartProps';
 
-import * as strings from 'todoStrings';
+import * as strings from 'todoStep4Strings';
 
 /**
  * TodoDataProvider interact with current sharepoint site to accomplish

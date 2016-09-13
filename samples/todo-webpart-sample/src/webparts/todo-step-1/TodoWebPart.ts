@@ -6,7 +6,7 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-client-preview';
 
-import * as strings from 'todoStrings';
+import * as strings from 'todoStep1Strings';
 import Todo, { ITodoProps } from './components/Todo';
 import { ITodoWebPartProps } from './ITodoWebPartProps';
 

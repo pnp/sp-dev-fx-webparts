@@ -1,4 +1,4 @@
-declare interface ITodoStrings {
+declare interface ITodoStep3Strings {
   TodoListTitle: string;
   TodoListTabNameAllTasks: string;
   TodoListTabNameCompleted: string;
@@ -33,7 +33,7 @@ declare interface ITodoStrings {
   TitleEmptyErrorMessage: string;
 }
 
-declare module 'todoStrings' {
-  const strings: ITodoStrings;
+declare module 'todoStep3Strings' {
+  const strings: ITodoStep3Strings;
   export = strings;
 }

@@ -16,7 +16,7 @@ import {
   ITodoTask,
   ItemOperationCallback
 } from '../ITodoWebPartProps';
-import * as strings from 'todoStrings';
+import * as strings from 'todoStep2Strings';
 import styles from '../style/Todo.module.scss';
 
 /**
