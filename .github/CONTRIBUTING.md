@@ -1,7 +1,7 @@
 # Contribution Guidance
 If you'd like to contribute to this repository, please read the following guidelines. Contributors are more than welcome to share your learnings with others from centralized location.
 
-## Code of Contact
+## Code of Conduct
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
 or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
@@ -27,7 +27,7 @@ Here's a high level process for submitting new samples or updates to existing on
 
 1. Sign the Contributor License Agreement (see below)
 2. Fork the main repository to your GitHub account
-3. Create a new branch for your fork for the contribution
+3. Create a new branch for your fork for the contribution based on dev branch
 4. Include your changes to your branch
 5. Commit your changes using descriptive commit message - These are used to track changes on the repositories for monthly communications, see [September 2016](dev.office.com/blogs/PnP-September-2016-Release) as an example
 6. Create a pull request in your own fork and target 'dev' branch
@@ -46,7 +46,8 @@ When you are submitting a new sample, it has to follow up below guidelines
     - If you for example use Office Graph with React, please rather add new web part to already existing solution, rather than introducing completely new solution
     - When you update existing samples, please update also README accordingly with information on provided changes and with your author details
 - When you are submitting new sample solution, please name the sample solution folder accordingly
-    - Folder should start by identifying JS library used - like react- or angular-
+    - Folder should start by identifying JS library used - like "react-", "angular-", "knockout-"
+    - If you are not using any specific JS library, please use "js-" as the prefix for your sample
     - Do not use words "sample", "webpart" or "wb" in the folder or sample name - these are samples for client-side web parts repository
     - If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder
 - Do not use period/dot in the folder name of the provided sample
@@ -54,7 +55,7 @@ When you are submitting a new sample, it has to follow up below guidelines
 ## Step-by-step on submitting a pull request to this repository
 Please see following wiki post from the GitHub repository wiki for exact steps on submitting new pull requests. 
 
-* How to submit a PR to SharePoint repository? - Coming soon
+* How to submit a PR to SharePoint repository? - Step-by-step with commands and pictures coming soon
 
 ## Signing the CLA
 Before we can accept your pull requests you will be asked to sign electronically Contributor License Agreement (CLA), which is prerequisite for any contributions to PnP repository. This will be one time process, so for any future contributions you will not be asked to re-sign anything. After the CLA has been signed, our PnP core team members will have a look on your submission for final verification of the submission. Please do not delete your development branch until the submission has been closed.
