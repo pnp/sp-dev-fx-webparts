@@ -39,7 +39,8 @@ Here's a high level process for submitting new samples or updates to existing on
 When you are submitting a new sample, it has to follow up below guidelines
 
 - You will need to have a README file for your contribution, which is based on [provided template](../samples/README-template.md) under the Samples folder. Please copy this template and update accordingly. README has to be named as README.md with capital letters.
-- If you find already similar kind of sample from the existing samples, we would appreciate you to rather extend existing one, than submittin a new similar sample
+    - You will need to have a picture of the web part in practice in the README file. Preview image must be located in /assets/ folder in the root your you solution.
+- If you find already similar kind of sample from the existing samples, we would appreciate you to rather extend existing one, than submitting a new similar sample
     - If you for example use Office Graph with React, please rather add new web part to already existing solution, rather than introducing completely new solution
     - When you update existing samples, please update also README accordingly with information on provided changes and with your author details
 - When you are submitting new sample solution, please name the sample solution folder accordingly
