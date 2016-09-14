@@ -11,12 +11,7 @@ export class MockUserProfileService implements IUserProfileService {
 
   public getPropertiesForCurrentUser(): Promise<IPerson> {
     return new Promise<IPerson>((resolve, reject) => {
-      const user: IPerson = {
-        Title: "Consultant",
-        DisplayName: "Adam Jones",
-        PictureUrl: "http://dev.office.com/Modules/DevOffice.Fabric/Fabric/components/persona/Persona.Person2.png",
-      };
-
+      const user: IPerson = { Title: "Consultant", DisplayName: "Adam Jones", PictureUrl: "http://dev.office.com/Modules/DevOffice.Fabric/Fabric/components/persona/Persona.Person2.png" };
       resolve(user);
     });
   }
