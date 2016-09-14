@@ -5,14 +5,10 @@ import { IUserProfileService } from '../interfaces/IUserProfileService';
 export class UserProfileService implements IUserProfileService {
 
   private httpClient: HttpClient;
-  private serviceScope: ServiceScope;
 
   constructor(serviceScope: ServiceScope) {
     serviceScope.whenFinished(() => {
-
       this.httpClient = serviceScope.consume(httpClientServiceKey);
-      this.serviceScope = serviceScope;
-
     });
   }
 
@@ -39,7 +35,7 @@ export class UserProfileService implements IUserProfileService {
 
       const batchOpts: IODataBatchOptions = {};
 
-      const odataBatch: ODataBatch = new ODataBatch(this.serviceScope, batchOpts);
+      const odataBatch: ODataBatch = this.httpClient.beginBatch(batchOpts);
 
       const userResponses: Promise<Response>[] = [];
 
