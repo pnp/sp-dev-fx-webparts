@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "9b754dec-d280-4c07-9460-06f911ecd024",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "9b754dec-d280-4c07-9460-06f911ecd024",
+    "group": { "default": "Under Development" },
+    "title": { "default": "OrganisationChart" },
+    "description": { "default": "OrganisationChart description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "OrganisationChart"
+    }
+  }]
+}
