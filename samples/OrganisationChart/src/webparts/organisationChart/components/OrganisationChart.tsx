@@ -21,6 +21,7 @@ export interface IOrganisationChartProps extends IOrganisationChartWebPartProps 
 
 export default class OrganisationChart extends React.Component<IOrganisationChartProps, IOrganisationChartWebPartState> {
 
+  private userProfileServiceInstance: IUserProfileService;
 
   constructor(props: IOrganisationChartProps) {
     super(props);
@@ -32,6 +33,28 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
       },
       reports: [],
     };
+
+    let serviceScope: ServiceScope;
+    const userProfileServiceKey: ServiceKey<IUserProfileService> = ServiceKey.create<IUserProfileService>("userprofileservicekey", UserProfileService);
+
+    // Based on the type of environment, return the correct instance of the IUserProfileService interface
+    const currentEnvType = this.props.environmentType;
+    if (currentEnvType == EnvironmentType.SharePoint || currentEnvType == EnvironmentType.ClassicSharePoint) {
+      // Mapping to be used when webpart runs in SharePoint.
+      // Get hold of the webpart's service scope object
+      serviceScope = this.props.serviceScope;
+
+    }
+    else {
+      // This means webpart is running in the local workbench or from a unit test.
+      // So we will need a non default implementation of the UserProfileService i.e. MockUserProfileService
+      // Create a child service scope and include the mapping to the MockUserProfileService
+      serviceScope = this.props.serviceScope.startNewChild();
+      serviceScope.createAndProvide(userProfileServiceKey, MockUserProfileService);
+      serviceScope.finish();
+    }
+
+    this.userProfileServiceInstance = serviceScope.consume(userProfileServiceKey);
   }
 
   public render(): JSX.Element {
@@ -46,7 +69,7 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
                   <div className="ms-Persona">
                     <div className="ms-Persona-imageArea">
                       <i className="ms-Persona-placeholder ms-Icon ms-Icon--person"></i>
-                      <img className="ms-Persona-image" src={manager.PictureUrl}></img>
+                      <img className="ms-Persona-image" src={ this.getProfilePhoto(manager.PictureUrl) }></img>
                     </div>
                     <div className="ms-Persona-details">
                       <div className="ms-Persona-primaryText">{manager.DisplayName}</div>
@@ -65,7 +88,7 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
                 <div className="ms-Persona">
                   <div className="ms-Persona-imageArea">
                     <i className="ms-Persona-placeholder ms-Icon ms-Icon--person"></i>
-                    <img className="ms-Persona-image" src={this.state.user.PictureUrl}></img>
+                    <img className="ms-Persona-image" src={ this.getProfilePhoto(this.state.user.PictureUrl) }></img>
                   </div>
                   <div className="ms-Persona-details">
                     <div className="ms-Persona-primaryText">{this.state.user.DisplayName}</div>
@@ -85,7 +108,7 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
                   <div className="ms-Persona">
                     <div className="ms-Persona-imageArea">
                       <i className="ms-Persona-placeholder ms-Icon ms-Icon--person"></i>
-                      <img className="ms-Persona-image" src={report.PictureUrl}></img>
+                      <img className="ms-Persona-image" src={ this.getProfilePhoto(report.PictureUrl) }></img>
                     </div>
                     <div className="ms-Persona-details">
                       <div className="ms-Persona-primaryText">{report.DisplayName}</div>
@@ -108,42 +131,23 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
     this._getUserProperties();
   }
 
+  public getProfilePhoto(photoUrl: string): string {
+    return this.userProfileServiceInstance.getProfilePhoto(photoUrl);
+  }
+
   private _getUserProperties(): void {
 
-    let serviceScope: ServiceScope;
-    const userProfileServiceKey: ServiceKey<IUserProfileService> = ServiceKey.create<IUserProfileService>("userprofileservicekey", UserProfileService);
-    let userProfileServiceInstance: IUserProfileService;
-
-    // Based on the type of environment, return the correct instance of the IUserProfileService interface
-    const currentEnvType = this.props.environmentType;
-    if (currentEnvType == EnvironmentType.SharePoint || currentEnvType == EnvironmentType.ClassicSharePoint) {
-      // Mapping to be used when webpart runs in SharePoint.
-      // Get hold of the webpart's service scope object
-      serviceScope = this.props.serviceScope;
-
-    }
-    else {
-      // This means webpart is running in the local workbench or from a unit test.
-      // So we will need a non default implementation of the UserProfileService i.e. MockUserProfileService
-      // Create a child service scope and include the mapping to the MockUserProfileService
-      serviceScope = this.props.serviceScope.startNewChild();
-      serviceScope.createAndProvide(userProfileServiceKey, MockUserProfileService);
-      serviceScope.finish();
-    }
-
-    userProfileServiceInstance = serviceScope.consume(userProfileServiceKey);
-
     // Get the current user details
-    userProfileServiceInstance.getPropertiesForCurrentUser().then((person: IPerson) => {
+    this.userProfileServiceInstance.getPropertiesForCurrentUser().then((person: IPerson) => {
       this.setState({ user: person });
 
       // Get manager details
-      userProfileServiceInstance.getManagers(person.ExtendedManagers).then((mngrs: IPerson[]) => {
+      this.userProfileServiceInstance.getManagers(person.ExtendedManagers).then((mngrs: IPerson[]) => {
         this.setState({ managers: mngrs });
       });
 
       // Get details for reports
-      userProfileServiceInstance.getReports(person.DirectReports).then((rprts: IPerson[]) => {
+      this.userProfileServiceInstance.getReports(person.DirectReports).then((rprts: IPerson[]) => {
         this.setState({ reports: rprts });
       });
     });

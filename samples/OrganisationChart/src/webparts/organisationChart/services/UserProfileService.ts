@@ -64,4 +64,10 @@ export class UserProfileService implements IUserProfileService {
       });
     });
   }
+
+  //SharePoint does not return the userphoto if the current user has not currently signed in to the my site. (ODfB site)
+  //This method of getting the user photo works in all scenarios.
+  public getProfilePhoto(photoUrl: string){
+    return `/_layouts/15/userphoto.aspx?size=M&url=${photoUrl}`;
+  }
 }

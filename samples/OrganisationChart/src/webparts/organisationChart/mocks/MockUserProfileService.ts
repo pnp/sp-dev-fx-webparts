@@ -37,4 +37,8 @@ export class MockUserProfileService implements IUserProfileService {
       resolve(users);
     });
   }
+
+  public getProfilePhoto(photoUrl: string){
+    return photoUrl;
+  }
 }
