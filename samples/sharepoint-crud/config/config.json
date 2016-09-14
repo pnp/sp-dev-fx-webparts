@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/reactCrud/ReactCrudWebPart.js",
+      "manifest": "./src/webparts/reactCrud/ReactCrudWebPart.manifest.json",
+      "outputPath": "./dist/react-crud.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/noFrameworkCrud/NoFrameworkCrudWebPart.js",
+      "manifest": "./src/webparts/noFrameworkCrud/NoFrameworkCrudWebPart.manifest.json",
+      "outputPath": "./dist/no-framework-crud.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/angularCrud/AngularCrudWebPart.js",
+      "manifest": "./src/webparts/angularCrud/AngularCrudWebPart.manifest.json",
+      "outputPath": "./dist/angular-crud.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/spPnPJsCrud/SpPnPJsCrudWebPart.js",
+      "manifest": "./src/webparts/spPnPJsCrud/SpPnPJsCrudWebPart.manifest.json",
+      "outputPath": "./dist/sp-pn-p-js-crud.bundle.js"
+    }
+  ],
+  "externals": {
+    "@microsoft/sp-client-base": "node_modules/@microsoft/sp-client-base/dist/sp-client-base.js",
+    "@microsoft/sp-client-preview": "node_modules/@microsoft/sp-client-preview/dist/sp-client-preview.js",
+    "@microsoft/sp-lodash-subset": "node_modules/@microsoft/sp-lodash-subset/dist/sp-lodash-subset.js",
+    "office-ui-fabric-react": "node_modules/office-ui-fabric-react/dist/office-ui-fabric-react.js",
+    "react": "node_modules/react/dist/react.min.js",
+    "react-dom": "node_modules/react-dom/dist/react-dom.min.js",
+    "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js",
+    "angular": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js",
+      "globalName": "angular"
+    },
+    "ng-office-ui-fabric": "https://cdnjs.cloudflare.com/ajax/libs/ngOfficeUiFabric/0.12.3/ngOfficeUiFabric.js"
+  },
+  "localizedResources": {
+    "reactCrudStrings": "webparts/reactCrud/loc/{locale}.js",
+    "noFrameworkCrudStrings": "webparts/noFrameworkCrud/loc/{locale}.js",
+    "angularCrudStrings": "webparts/angularCrud/loc/{locale}.js",
+    "spPnPJsCrudStrings": "webparts/spPnPJsCrud/loc/{locale}.js"
+  }
+}
