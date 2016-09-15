@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/0b35996f55436563567b9639f1abbf038c08d5c1/combokeys/combokeys.d.ts",
+    "raw": "registry:dt/combokeys#2.4.6+20160602154345",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/0b35996f55436563567b9639f1abbf038c08d5c1/combokeys/combokeys.d.ts"
+  }
+}
