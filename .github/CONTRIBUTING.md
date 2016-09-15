@@ -39,7 +39,7 @@ Here's a high level process for submitting new samples or updates to existing on
 When you are submitting a new sample, it has to follow up below guidelines
 
 - You will need to have a README file for your contribution, which is based on [provided template](../samples/README-template.md) under the Samples folder. Please copy this template and update accordingly. README has to be named as README.md with capital letters.
-    - You will need to have a picture of the web part in practice in the README file. Preview image must be located in /assets/ folder in the root your you solution.
+    - You will need to have a picture of the web part in practice in the README file ("pics or it didn't happen"). Preview image must be located in /assets/ folder in the root your you solution.
 - README template contains specific tracking image as a final entry in the page with img tag by default to https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template. This is transparent image, which is used to track popularity of individual samples in GitHub.
     - Updated the image src element according with repository name and folder information. If your sample is for example in samples folder and named as react-todo, src element should be updated as https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-todo
 - If you find already similar kind of sample from the existing samples, we would appreciate you to rather extend existing one, than submitting a new similar sample

@@ -66,4 +66,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - loading external templates to render
 - loading scripts and stylesheets which are required in the external template (example: loading jQuery or a custom stylesheet).
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-search-wp" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-search" />
