@@ -68,7 +68,6 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
                 <button className={styles['ms-OrgChart-listItemBtn']} onClick={() => this.onProfileLinkClick(manager.PersonalUrl) }>
                   <div className="ms-Persona">
                     <div className="ms-Persona-imageArea">
-                      <i className="ms-Persona-placeholder ms-Icon ms-Icon--person"></i>
                       <img className="ms-Persona-image" src={ this.getProfilePhoto(manager.PictureUrl) }></img>
                     </div>
                     <div className="ms-Persona-details">
@@ -87,7 +86,6 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
               <button className={styles['ms-OrgChart-listItemBtn']} onClick={() => this.onProfileLinkClick(this.state.user.PersonalUrl) }>
                 <div className="ms-Persona">
                   <div className="ms-Persona-imageArea">
-                    <i className="ms-Persona-placeholder ms-Icon ms-Icon--person"></i>
                     <img className="ms-Persona-image" src={ this.getProfilePhoto(this.state.user.PictureUrl) }></img>
                   </div>
                   <div className="ms-Persona-details">
@@ -107,7 +105,6 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
                 <button className={styles['ms-OrgChart-listItemBtn']} onClick={() => this.onProfileLinkClick(report.PersonalUrl) }>
                   <div className="ms-Persona">
                     <div className="ms-Persona-imageArea">
-                      <i className="ms-Persona-placeholder ms-Icon ms-Icon--person"></i>
                       <img className="ms-Persona-image" src={ this.getProfilePhoto(report.PictureUrl) }></img>
                     </div>
                     <div className="ms-Persona-details">
