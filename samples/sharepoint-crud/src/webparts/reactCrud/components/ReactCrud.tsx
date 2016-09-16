@@ -97,9 +97,7 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
       .then((listItemEntityTypeName: string): Promise<Response> => {
         const body: string = JSON.stringify({
           '__metadata': {
-            'type': 'SP.Data.' +
-            this.props.listName.charAt(0).toUpperCase() +
-            this.props.listName.slice(1) + 'ListItem'
+            'type': listItemEntityTypeName
           },
           'Title': `Item ${new Date()}`
         });
@@ -124,7 +122,7 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
         this.setState({
           status: 'Error while creating the item: ' + error,
           items: []
-        })
+        });
       });
   }
 
@@ -258,9 +256,7 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
         });
         const body: string = JSON.stringify({
           '__metadata': {
-            'type': 'SP.Data.' +
-            this.props.listName.charAt(0).toUpperCase() +
-            this.props.listName.slice(1) + 'ListItem'
+            'type': listItemEntityTypeName
           },
           'Title': `Item ${new Date()}`
         });
@@ -299,12 +295,7 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
     });
     let latestItemId: number = undefined;
     let etag: string = undefined;
-    let listItemEntityTypeName: string = undefined;
-    this.getListItemEntityTypeName()
-      .then((listItemType: string): Promise<number> => {
-        listItemEntityTypeName = listItemType;
-        return this.getLatestItemId();
-      })
+    this.getLatestItemId()
       .then((itemId: number): Promise<Response> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
