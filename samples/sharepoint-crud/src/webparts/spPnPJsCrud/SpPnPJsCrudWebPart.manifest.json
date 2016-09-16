@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "2697acc1-b392-4cbb-83f1-15118833b2cd",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "2697acc1-b392-4cbb-83f1-15118833b2cd",
+    "group": { "default": "Under Development" },
+    "title": { "default": "SP PnP JS CRUD" },
+    "description": { "default": "Sample implementation of SharePoint CRUD operations using the SP PnP JS library" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "listName": ""
+    }
+  }]
+}
