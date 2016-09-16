@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "jquery-cdn-client-side-solution",
+    "id": "1ace653b-e4a0-437a-80e0-52a98ba7f3db",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "jquery-cdn.spapp"
+  }
+}

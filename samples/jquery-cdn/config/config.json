@@ -1,0 +1,30 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/weather/WeatherWebPart.js",
+      "manifest": "./src/webparts/weather/WeatherWebPart.manifest.json",
+      "outputPath": "./dist/weather.bundle.js"
+    }
+  ],
+  "externals": {
+    "@microsoft/sp-client-base": "node_modules/@microsoft/sp-client-base/dist/sp-client-base.js",
+    "@microsoft/sp-client-preview": "node_modules/@microsoft/sp-client-preview/dist/sp-client-preview.js",
+    "@microsoft/sp-lodash-subset": "node_modules/@microsoft/sp-lodash-subset/dist/sp-lodash-subset.js",
+    "office-ui-fabric-react": "node_modules/office-ui-fabric-react/dist/office-ui-fabric-react.js",
+    "react": "node_modules/react/dist/react.min.js",
+    "react-dom": "node_modules/react-dom/dist/react-dom.min.js",
+    "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js",
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-2.1.1.min.js",
+      "globalName": "jQuery"
+    },
+    "simpleWeather": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js",
+      "globalName": "jQuery",
+      "globalDependencies": [ "jquery" ]
+    }
+  },
+  "localizedResources": {
+    "weatherStrings": "webparts/weather/loc/{locale}.js"
+  }
+}
