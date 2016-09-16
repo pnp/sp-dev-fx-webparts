@@ -158,12 +158,7 @@ export default class DataService implements IDataService {
   public deleteItem(item: IListItem, webUrl: string, listName: string): ng.IPromise<{}> {
     const deferred: ng.IDeferred<{}> = this.$q.defer();
 
-    let listItemEntityTypeName: string = undefined;
-    this.getListItemEntityTypeName(webUrl, listName)
-      .then((typeName: string): ng.IPromise<ng.IHttpPromiseCallbackArg<string>> => {
-        listItemEntityTypeName = typeName;
-        return this.getRequestDigest(webUrl);
-      })
+    this.getRequestDigest(webUrl)
       .then((requestDigest: string): ng.IPromise<ng.IHttpPromiseCallbackArg<{}>> => {
         return this.$http({
           url: `${webUrl}/_api/web/lists/getbytitle('${listName}')/items(${item.Id})`,

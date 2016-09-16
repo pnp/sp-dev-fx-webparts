@@ -281,12 +281,7 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
     this.updateStatus('Loading latest items...');
     let latestItemId: number = undefined;
     let etag: string = undefined;
-    let listItemEntityTypeName: string = undefined;
-    this.getListItemEntityTypeName()
-      .then((listItemType: string): Promise<number> => {
-        listItemEntityTypeName = listItemType;
-        return this.getLatestItemId();
-      })
+    this.getLatestItemId()
       .then((itemId: number): Promise<Response> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
