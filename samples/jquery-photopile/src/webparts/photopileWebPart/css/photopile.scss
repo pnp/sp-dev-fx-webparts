@@ -1,0 +1,143 @@
+
+/*
+  *  Photopile image gallery base styles
+  *
+  *  Auth: Brian W. Howell
+  *  Date: 25 April 2014
+  *
+  */
+
+  /*-----------------------------------------------------------------------------
+  *  THUMBNAIL SCALING
+  *  As window size gets smaller, reduce the maximum thumbnail width.
+  *  By doing so we can maintain the photopile effect for all screen resolutions.
+  *  It is highly likely that you'll want to customize these values based on
+  *  your personal preferences and the size of your thumbnails.
+  *----------------------------------------------------------------------------*/
+
+  @media (max-width: 320px)                         { ul.photopile li a { max-width:  85px; }}
+  @media (min-width: 321px) and (max-width: 568px)  { ul.photopile li a { max-width: 100px; }}
+  @media (min-width: 569px) and (max-width: 768px)  { ul.photopile li a { max-width: 115px; }}
+  @media (min-width: 769px) and (max-width: 1024px) { ul.photopile li a { max-width: 125px; }}
+  @media (min-width: 1025px)                        { ul.photopile li a { max-width: 150px; }}
+
+  /*-----------------------------------------------------------------------------
+  *  Minimum height of the photopile's container div.
+  *  This is a placeholder for the gallery while it loads which reduces
+  *  shuffling around of elements before the gallery has rendered.
+  *----------------------------------------------------------------------------*/
+
+ div.photopile-wrapper {
+      /*min-height : 500px;*/
+  }
+
+  /*-----------------------------------------------------------------------------
+  *  Make sure path to navigation sprite is correct
+  *----------------------------------------------------------------------------*/
+
+  div#photopile-nav-next,
+  div#photopile-nav-next:hover,
+  div#photopile-nav-prev,
+  div#photopile-nav-prev:hover {
+      background-image: url('//photopilewebpart.blob.core.windows.net/photopile-web-part/nav-sprites.png');
+  }
+
+  /*----- end customization -----*/
+
+  /* Prevent FOUC */
+  ul.photopile {
+      display: none;
+  }
+
+  /* Thumbnails */
+  ul.photopile {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+  }
+  ul.photopile li {
+      display: inline-block;
+      position: relative;
+      margin: 2px;
+      padding: 0;
+      -webkit-backface-visibility: hidden;
+  }
+  ul.photopile li a {
+      display: block;
+      padding: 2px;
+      outline: none;
+      text-decoration: none;
+      border: 1px solid #6F6F6F;
+      box-shadow: 0 0 20px #3D3D3D;
+  }
+  ul.photopile li.photopile-active-thumbnail:hover,
+  ul.photopile li.photopile-active-thumbnail a:hover {
+      cursor: default;
+  }
+  ul.photopile li a img {
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #6F6F6F;
+      width: 100%;
+      height: auto;
+      -moz-box-sizing:border-box;
+      -webkit-box-sizing:border-box;
+      box-sizing:border-box;
+  }
+
+  /* Photo container */
+  div#photopile-active-image-container {
+      border: 1px solid #6F6F6F;
+      box-shadow: 0 20px 80px black;
+      -moz-box-sizing:border-box;
+      -webkit-box-sizing:border-box;
+      box-sizing:border-box;
+  }
+  div#photopile-active-image-container img {
+      margin: 0 auto;
+      height: auto;
+  }
+  div#photopile-active-image-info {
+      position: relative;
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+  }
+  div#photopile-active-image-info p {
+      color: white;
+      font-size: 12px;
+      margin: 0;
+      padding: 3px 8px;
+  }
+
+  /* Navigator */
+  div#photopile-nav-next,
+  div#photopile-nav-prev {
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 40px;
+      margin-top: -20px;
+      cursor: pointer;
+  }
+  div#photopile-nav-next {
+      right: 0;
+      margin-right: -35px;
+      background-position: -50px 0;
+  }
+  div#photopile-nav-next:hover {
+      background-position: -50px -50px;
+  }
+  div#photopile-nav-prev {
+      left: 0;
+      right: 0;
+      margin-left: -35px;
+      background-position: 0 0;
+  }
+  div#photopile-nav-prev:hover {
+      background-position: 0 -50px;
+  }
