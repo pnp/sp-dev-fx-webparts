@@ -146,7 +146,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     } else if (propertyPath === 'maxNumberOfTasks') {
       this._dataProvider.maxNumberOfTasks = newValue;
 
-      // This prevents too many unnecessary requests sended when we drag the slider.
       this._readItems();
     }
 
