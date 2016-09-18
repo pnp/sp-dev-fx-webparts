@@ -316,28 +316,19 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
    */
   private _readItems(): Promise<void> {
     this.clearError();
+    this._renderTodoComponent({ loadingStatus: LoadingStatus.FetchingTasks });
 
-    if (this._dataProvider.maxNumberOfTasks > this._todoComponentData.selectedListItems.length) {
-      this._renderTodoComponent({ loadingStatus: LoadingStatus.FetchingTasks });
-
-      return this._dataProvider.readItems()
-        .then(
-          (items: ITodoTask[]) => items && this._renderTodoComponent({
-            selectedListItems: items,
-            loadingStatus: LoadingStatus.None
-          }),
-          (error: Error) => {
-            this._renderTodoComponent({ loadingStatus: LoadingStatus.None });
-            this.renderError(error);
-          }
-        );
-    } else {
-      this._renderTodoComponent({
-        selectedListItems: this._todoComponentData.selectedListItems.slice(0, this._dataProvider.maxNumberOfTasks)
-      });
-
-      return Promise.resolve(undefined);
-    }
+    return this._dataProvider.readItems()
+      .then(
+        (items: ITodoTask[]) => items && this._renderTodoComponent({
+          selectedListItems: items,
+          loadingStatus: LoadingStatus.None
+        }),
+        (error: Error) => {
+          this._renderTodoComponent({ loadingStatus: LoadingStatus.None });
+          this.renderError(error);
+        }
+      );
   }
 
   /**
