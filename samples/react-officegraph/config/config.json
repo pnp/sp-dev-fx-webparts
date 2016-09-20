@@ -14,6 +14,11 @@
       "entry": "./lib/webparts/myRecentDocuments/MyRecentDocumentsWebPart.js",
       "manifest": "./src/webparts/myRecentDocuments/MyRecentDocumentsWebPart.manifest.json",
       "outputPath": "./dist/my-recent-documents.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/trendingInTheSitesIFollow/TrendingInTheSitesIFollowWebPart.js",
+      "manifest": "./src/webparts/trendingInTheSitesIFollow/TrendingInTheSitesIFollowWebPart.manifest.json",
+      "outputPath": "./dist/trending-in-the-sites-i-follow.bundle.js"
     }
   ],
   "externals": {
@@ -28,6 +33,7 @@
   "localizedResources": {
     "trendingInThisSiteStrings": "webparts/trendingInThisSite/loc/{locale}.js",
     "workingWithStrings": "webparts/workingWith/loc/{locale}.js",
-    "myRecentDocumentsStrings": "webparts/myRecentDocuments/loc/{locale}.js"
+    "myRecentDocumentsStrings": "webparts/myRecentDocuments/loc/{locale}.js",
+    "trendingInTheSitesIFollowStrings": "webparts/trendingInTheSitesIFollow/loc/{locale}.js"
   }
 }
