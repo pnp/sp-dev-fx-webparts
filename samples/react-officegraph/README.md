@@ -16,6 +16,12 @@ Sample SharePoint Framework Client-Side Web Part built using React showing peopl
 
 ![Working with Web Part in the SharePoint Workbench](./assets/working-with-preview.png)
 
+### My recent documents
+
+Sample SharePoint Framework Client-Side Web Part built using React showing documents recently viewed or modified by the current user.
+
+![Working with Web Part in the SharePoint Workbench](./assets/my-recent-documents-preview.png)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -31,6 +37,7 @@ react-officegraph|Waldek Mastykarz (MVP, Rencore, @waldekm)
 
 Version|Date|Comments
 -------|----|--------
+1.2.0|September 20, 2016|Added the My recent documents sample
 1.1.0|September 19, 2016|Added the Working with sample
 1.0.0|September 9, 2016|Initial release
 
@@ -56,24 +63,7 @@ Version|Date|Comments
 
 ## Features
 
-### Trending in this site Web Part
-
-The _Trending in this site_ Client-Side Web Part is built on the SharePoint Framework using React and uses the [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) for showing document cards.
-
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
-
-- using React for building SharePoint Framework Client-Side Web Parts
-- using Office UI Fabric React components for building user experience consistent with SharePoint and Office
-- communicating with SharePoint using its REST API
-- communicating with the Office Graph via the SharePoint Search REST API
-- passing Web Part properties to React components
-- using ES6 Promises with vanilla-JavaScript web requests
-
-### Working with Web Part
-
-The _Working with_ Client-Side Web Part is built on the SharePoint Framework using React and uses the [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) to show persona cards.
-
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+Sample Web Parts in this solution illustrate the following concepts on top of the SharePoint Framework:
 
 - using React for building SharePoint Framework Client-Side Web Parts
 - using Office UI Fabric React components for building user experience consistent with SharePoint and Office

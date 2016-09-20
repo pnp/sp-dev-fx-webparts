@@ -9,6 +9,11 @@
       "entry": "./lib/webparts/workingWith/WorkingWithWebPart.js",
       "manifest": "./src/webparts/workingWith/WorkingWithWebPart.manifest.json",
       "outputPath": "./dist/working-with.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/myRecentDocuments/MyRecentDocumentsWebPart.js",
+      "manifest": "./src/webparts/myRecentDocuments/MyRecentDocumentsWebPart.manifest.json",
+      "outputPath": "./dist/my-recent-documents.bundle.js"
     }
   ],
   "externals": {
@@ -22,6 +27,7 @@
   },
   "localizedResources": {
     "trendingInThisSiteStrings": "webparts/trendingInThisSite/loc/{locale}.js",
-    "workingWithStrings": "webparts/workingWith/loc/{locale}.js"
+    "workingWithStrings": "webparts/workingWith/loc/{locale}.js",
+    "myRecentDocumentsStrings": "webparts/myRecentDocuments/loc/{locale}.js"
   }
 }
