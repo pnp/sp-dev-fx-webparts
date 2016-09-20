@@ -22,6 +22,12 @@ Sample SharePoint Framework Client-Side Web Part built using React showing docum
 
 ![Working with Web Part in the SharePoint Workbench](./assets/my-recent-documents-preview.png)
 
+### Trending in the sites I follow
+
+Sample SharePoint Framework Client-Side Web Part built using React showing documents trending in the sites followed by the current user.
+
+![Working with Web Part in the SharePoint Workbench](./assets/trending-in-sites-i-follow-preview.png)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -37,6 +43,7 @@ react-officegraph|Waldek Mastykarz (MVP, Rencore, @waldekm)
 
 Version|Date|Comments
 -------|----|--------
+1.3.0|September 20, 2016|Added the Trending in the sites I follow sample
 1.2.0|September 20, 2016|Added the My recent documents sample
 1.1.0|September 19, 2016|Added the Working with sample
 1.0.0|September 9, 2016|Initial release
