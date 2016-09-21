@@ -32,6 +32,7 @@ Version|Date|Comments
 
 - clone this repo
 - in the command line run:
+  - `npm i typings -g`
   - `npm i`
   - `gulp serve --nobrowser`
 - in your SharePoint Site create a list
