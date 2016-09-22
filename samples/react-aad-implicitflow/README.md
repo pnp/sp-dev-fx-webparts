@@ -1,0 +1,70 @@
+# Azure Active Directory implicit flow authentication samples
+
+## Summary
+
+Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory.
+
+### Upcoming meetings
+
+Sample SharePoint Framework client-side web part built using React showing upcoming meetings for the current user retrieved using the Microsoft Graph.
+
+![The upcoming meetings web part displayed in SharePoint workbench](./assets/upcoming-meetings-preview.png)
+
+## Applies to
+
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-aad-implicitflow|Waldek Mastykarz (MVP, Rencore, @waldekm)
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0.0|September 22, 2016|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Prerequisites
+
+- Office 365 subscription with SharePoint Online and Exchange
+- Site Collection created under the **/sites/** Managed Path
+
+## Minimal Path to Awesome
+
+- clone this repo
+- in the command line execute:
+  - `npm i`
+  - `gulp serve --nobrowser`
+- create a copy of the **./temp/workbench.html** file and change its extension to **.aspx**
+- upload the **workbench.aspx** file to a Document Library in your site
+- copy the URL of the workbench page uploaded to your SharePoint site, ie. _https://contoso.sharepoint.com/sites/my-team/documents/workbench.aspx_
+- in the Azure Active Directory corresponding to your Office 365 tenant register a new Web Application:
+  - as the **Sign-on URL** enter the URL of the workbench page uploaded to SharePoint
+  - enable OAuth implicit flow
+  - grant the application the **Microsoft Graph/Read user calendars** permission
+  - copy the application's ID
+- in the command line stop the `gulp serve` task
+- in the **src/webparts/upcomingMeetings/AdalConfig.ts** file in the **clientId** property enter the application ID registered in Azure
+- in the command line execute `gulp serve --nobrowser`
+
+## Features
+
+Sample web part in this solution illustrates the following concepts on top of the SharePoint Framework:
+
+- using React for building SharePoint Framework client-side web parts
+- using Office UI Fabric React components for building user experience consistent with SharePoint and Office
+- on-demand authentication with the Azure Active Directory using the ADAL JS library
+- communicating with the Microsoft Graph using its REST API
+- using the ADAL JS library with SharePoint Framework web parts built using React
+- using custom Webpack loader for exposing pieces of non-AMD scripts
+- passing web part properties to React components
+
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-aad-implicitflow)
