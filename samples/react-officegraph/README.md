@@ -10,6 +10,24 @@ Sample SharePoint Framework Client-Side Web Part built using React showing docum
 
 ![Trending in this site Web Part in the SharePoint Workbench](./assets/trendinginthissite-preview.png)
 
+### Working with
+
+Sample SharePoint Framework Client-Side Web Part built using React showing people with whom the current user has recently been working with.
+
+![Working with Web Part in the SharePoint Workbench](./assets/working-with-preview.png)
+
+### My recent documents
+
+Sample SharePoint Framework Client-Side Web Part built using React showing documents recently viewed or modified by the current user.
+
+![Working with Web Part in the SharePoint Workbench](./assets/my-recent-documents-preview.png)
+
+### Trending in the sites I follow
+
+Sample SharePoint Framework Client-Side Web Part built using React showing documents trending in the sites followed by the current user.
+
+![Working with Web Part in the SharePoint Workbench](./assets/trending-in-sites-i-follow-preview.png)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -25,7 +43,10 @@ react-officegraph|Waldek Mastykarz (MVP, Rencore, @waldekm)
 
 Version|Date|Comments
 -------|----|--------
-1.0|September 9, 2016|Initial release
+1.3.0|September 20, 2016|Added the Trending in the sites I follow sample
+1.2.0|September 20, 2016|Added the My recent documents sample
+1.1.0|September 19, 2016|Added the Working with sample
+1.0.0|September 9, 2016|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -49,11 +70,7 @@ Version|Date|Comments
 
 ## Features
 
-### Trending in this site Web Part
-
-The _Trending in this site_ Client-Side Web Part is built on the SharePoint Framework using React and uses the [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) for showing document cards.
-
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+Sample Web Parts in this solution illustrate the following concepts on top of the SharePoint Framework:
 
 - using React for building SharePoint Framework Client-Side Web Parts
 - using Office UI Fabric React components for building user experience consistent with SharePoint and Office

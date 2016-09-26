@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "organisation-chart-client-side-solution",
+    "id": "e8d123c1-f6a2-46ca-8f33-940b6ac8aeeb",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "organisation-chart.spapp"
+  }
+}

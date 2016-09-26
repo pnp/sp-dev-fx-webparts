@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "Photopile WebPart",
+    "id": "22c50f5a-8015-406e-be1f-8cfcffc2ec2b",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "photopile-web-part.spapp"
+  }
+}

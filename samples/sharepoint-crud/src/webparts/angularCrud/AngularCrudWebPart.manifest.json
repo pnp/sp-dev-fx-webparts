@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "d8e75c68-47f2-4c34-8fee-7ac83818ae72",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "d8e75c68-47f2-4c34-8fee-7ac83818ae72",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Angular CRUD" },
+    "description": { "default": "Sample implementation of SharePoint CRUD operations in Angular" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "listName": ""
+    }
+  }]
+}

@@ -1,0 +1,6 @@
+{
+  "workingDir": "./temp/deploy/",
+  "account": "photopilewebpart",
+  "container": "photopile-web-part",
+  "accessKey": ""
+}

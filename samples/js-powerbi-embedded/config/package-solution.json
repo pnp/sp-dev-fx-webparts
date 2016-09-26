@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "powerbi-client-side-solution",
+    "id": "5f691cbd-840e-48d2-8403-d0c525ba1c1b",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "powerbi.spapp"
+  }
+}
