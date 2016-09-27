@@ -8,8 +8,12 @@ define([], function() {
     "FieldsTemplateLabel": "Choose the template you want to use for rendering the results",
     "FieldsMaxResults": "Number of results to render",
     "FieldsSorting": "Sorting (MP:ascending or descending) - example: lastmodifiedtime:ascending,author:descending",
-    "QueryInfoDescription": "You can make use of following tokens: {Site} - {SiteCollection}",
+    "QueryInfoDescription": "You can make use of following tokens: {Site} - {SiteCollection} - {Today} or {Today+NR} or {Today-NR} - {CurrentDisplayLanguage} - {User}, {User.Name}, {User.Email}",
     "FieldsExternalLabel": "Do you want to use an external template?",
-    "FieldsExternalTempLabel": "Specify the URL of the external template"
+    "FieldsExternalTempLabel": "Specify the URL of the external template",
+    "TemplateGroupName": "Template settings",
+    "LoggingGroupName": "Logging pane",
+    "LoggingFieldLabel": "Logging search API calls",
+    "LoggingFieldDescription": "This field logs all search API calls"
   }
 });

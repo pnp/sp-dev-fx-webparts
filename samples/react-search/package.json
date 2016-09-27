@@ -1,13 +1,13 @@
 {
   "name": "search-wp-spfx",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "@microsoft/sp-client-base": "~0.2.0",
-    "@microsoft/sp-client-preview": "~0.2.0",
+    "@microsoft/sp-client-base": "~0.3.0",
+    "@microsoft/sp-client-preview": "~0.4.0",
     "flux": "^2.1.1",
     "moment": "^2.14.1",
     "office-ui-fabric-react": "0.36.0",
@@ -15,9 +15,9 @@
     "react-dom": "0.14.8"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~0.5.0",
-    "@microsoft/sp-module-interfaces": "~0.2.0",
-    "@microsoft/sp-webpart-workbench": "~0.2.0",
+    "@microsoft/sp-build-web": "~0.6.0",
+    "@microsoft/sp-module-interfaces": "~0.3.0",
+    "@microsoft/sp-webpart-workbench": "~0.4.0",
     "expose-loader": "^0.7.1",
     "gulp": "~3.9.1"
   },

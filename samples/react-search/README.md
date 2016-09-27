@@ -22,6 +22,7 @@ react-search-wp|Elio Struyf (MVP, Ventigrate, [@eliostruyf](https://twitter.com/
 Version|Date|Comments
 -------|----|--------
 0.0.4|September 08, 2016|Initial release
+0.0.5|September 27, 2016|Updates for drop 4. Added the abilty to use various search tokens. Plus a logging field to watch search calls.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -43,6 +44,8 @@ Version|Date|Comments
 The search web part is a sample client-side web part built on the SharePoint Framework. The web part makes use of React and the Flux pattern.
 
 The web part has built in templating support for internal (created within the project) and external (loaded from a URL) templates.
+
+When adding your query you are able to make use of the following tokens: {Today}, {Today+Number}, {Today-Number}, {CurrentDisplayLanguage}, {User}, {User.Name}, {User.Email}, {Site}, {SiteCollection}.
 
 **Internal templates**
 
