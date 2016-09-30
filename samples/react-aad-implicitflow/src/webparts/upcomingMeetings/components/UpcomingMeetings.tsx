@@ -8,14 +8,16 @@ import {
 import styles from '../UpcomingMeetings.module.scss';
 import { IUpcomingMeetingsWebPartProps } from '../IUpcomingMeetingsWebPartProps';
 import { HttpClient } from '@microsoft/sp-client-base';
-const AuthenticationContext = require('expose?AuthenticationContext!adal-angular');
+const AuthenticationContext = require('adal-angular');
 import adalConfig from '../AdalConfig';
-import { IAdalConfig } from '../IAdalConfig';
+import { IAdalConfig } from '../../IAdalConfig';
+import '../../WebPartAuthenticationContext';
 import { ListItem } from './ListItem';
 import { IMeeting } from './IMeeting';
 
 export interface IUpcomingMeetingsProps extends IUpcomingMeetingsWebPartProps {
   httpClient: HttpClient;
+  webPartId: string;
 }
 
 export interface IUpcomingMeetingsState {
@@ -63,6 +65,7 @@ export default class UpcomingMeetings extends React.Component<IUpcomingMeetingsP
 
     const config: IAdalConfig = adalConfig;
     config.popUp = true;
+    config.webPartId = this.props.webPartId;
     config.callback = (error: any, token: string): void => {
       this.setState((previousState: IUpcomingMeetingsState, currentProps: IUpcomingMeetingsProps): IUpcomingMeetingsState => {
         previousState.error = error;
@@ -72,6 +75,7 @@ export default class UpcomingMeetings extends React.Component<IUpcomingMeetingsP
     };
 
     this.authCtx = new AuthenticationContext(config);
+    AuthenticationContext.prototype._singletonInstance = undefined;
   }
 
   public componentDidMount(): void {
