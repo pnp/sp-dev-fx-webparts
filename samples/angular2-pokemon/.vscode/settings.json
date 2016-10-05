@@ -1,0 +1,21 @@
+{
+  // The number of spaces a tab is equal to.
+  "editor.tabSize": 2,
+
+  // When enabled, will trim trailing whitespace when you save a file.
+  "files.trimTrailingWhitespace": true,
+
+  // Controls if the editor should automatically close brackets after opening them
+  "editor.autoClosingBrackets": false,
+
+  // Configure glob patterns for excluding files and folders.
+  "search.exclude": {
+    "**/bower_components": true,
+    "**/node_modules": true,
+    "coverage": true,
+    "dist": true,
+    "lib-amd": true,
+    "lib": true,
+    "temp": true
+  }
+}
