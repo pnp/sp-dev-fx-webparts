@@ -20,7 +20,8 @@ export default class UpcomingMeetingsWebPart extends BaseClientSideWebPart<IUpco
   public render(): void {
     const element: React.ReactElement<IUpcomingMeetingsProps> = React.createElement(UpcomingMeetings, {
       httpClient: this.context.httpClient,
-      title: this.properties.title
+      title: this.properties.title,
+      webPartId: this.context.instanceId
     });
 
     ReactDom.render(element, this.domElement);
