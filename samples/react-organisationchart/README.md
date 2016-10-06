@@ -14,7 +14,7 @@ A simple Organisation Chart webpart using Office UI Fabric, React, OData batchin
 
 Solution|Author(s)
 --------|---------
-OrganisationChart | Vardhaman Deshpande @vrdmn (Content and Code)
+OrganisationChart | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn) , [vrdmn.com](http://vrdmn.com))
 
 ## Version history
 
@@ -47,3 +47,5 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - OData batching
 - ServiceScope and ServiceKeys
 - Service Locator pattern to register and consume services
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-organisationchart" />
