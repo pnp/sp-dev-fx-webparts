@@ -1,17 +1,17 @@
 import appDispatcher from '../dispatcher/appDispatcher';
 import searchActionIDs from '../actions/searchActionIDs';
+import SearchTokenHelper from '../helpers/SearchTokenHelper';
 import { EventEmitter } from 'events';
 
 import { IWebPartContext } from '@microsoft/sp-client-preview';
 import { ISearchResults, ICells, ICellValue } from '../../utils/ISearchResults';
-import { IPageContext } from '../../utils/IPageContext';
-
-declare const _spPageContextInfo: IPageContext;
 
 const CHANGE_EVENT: string = 'change';
 
 export class SearchStoreStatic extends EventEmitter {
 	private _results: any[] = [];
+	private _url: string;
+	private _response: any;
 
 	/**
 	 * @param {function} callback
@@ -36,8 +36,8 @@ export class SearchStoreStatic extends EventEmitter {
 	}
 
 	public setSearchResults(crntResults: ICells[], fields: string): void {
-		const flds: string[] = fields.toLowerCase().split(',');
 		if (crntResults.length > 0) {
+			const flds: string[] = fields.toLowerCase().split(',');
 			const temp: any[] = [];
 			crntResults.forEach((result) => {
 				// Create a temp value
@@ -74,19 +74,6 @@ export class SearchStoreStatic extends EventEmitter {
 	}
 
 	/**
-	 * @param {string} query
-	 */
-	public ReplaceTokens (query: string, context: IWebPartContext): string {
-		if (query.toLowerCase().indexOf("{site}") !== -1) {
-			query = query.replace(/{site}/ig, context.pageContext.web.absoluteUrl);
-		}
-		if (query.toLowerCase().indexOf("{sitecollection}") !== -1) {
-			query = query.replace(/{sitecollection}/ig, _spPageContextInfo.siteAbsoluteUrl);
-		}
-		return query;
-	}
-
-	/**
 	 * @param {string} value
 	 */
 	public isEmptyString (value: string): boolean {
@@ -99,6 +86,18 @@ export class SearchStoreStatic extends EventEmitter {
 	public isNull (value: any): boolean {
 		return value === null || typeof value === "undefined";
 	}
+
+	public setLoggingInfo(url: string, response: any) {
+		this._url = url;
+		this._response = response;
+	}
+
+	public getLoggingInfo(): any {
+		return {
+			URL: this._url,
+			Response: this._response
+		};
+	}
 }
 
 const searchStore: SearchStoreStatic = new SearchStoreStatic();
@@ -106,9 +105,10 @@ const searchStore: SearchStoreStatic = new SearchStoreStatic();
 appDispatcher.register((action) => {
 	switch (action.actionType) {
 		case searchActionIDs.SEARCH_GET:
+			const tokenHelper = new SearchTokenHelper();
 			let url: string = action.context.pageContext.web.absoluteUrl + "/_api/search/query?querytext=";
 			// Check if a query is provided
-			url += !searchStore.isEmptyString(action.query) ? `'${searchStore.ReplaceTokens(action.query, action.context)}'` : "'*'";
+			url += !searchStore.isEmptyString(action.query) ? `'${tokenHelper.replaceTokens(action.query, action.context)}'` : "'*'";
 			// Check if there are fields provided
 			url += '&selectproperties=';
 			url += !searchStore.isEmptyString(action.fields) ? `'${action.fields}'` : "'path,title'";
@@ -121,20 +121,28 @@ appDispatcher.register((action) => {
 			url += "&clienttype='ContentSearchRegular'";
 
 			searchStore.GetSearchData(action.context, url).then((res: ISearchResults) => {
+				searchStore.setLoggingInfo(url, res);
+				let resultsRetrieved = false;
 				if (res !== null) {
 					if (typeof res.PrimaryQueryResult !== 'undefined') {
 						if (typeof res.PrimaryQueryResult.RelevantResults !== 'undefined') {
 							if (typeof res.PrimaryQueryResult.RelevantResults !== 'undefined') {
 								if (typeof res.PrimaryQueryResult.RelevantResults.Table !== 'undefined') {
 									if (typeof res.PrimaryQueryResult.RelevantResults.Table.Rows !== 'undefined') {
+										resultsRetrieved = true;
 										searchStore.setSearchResults(res.PrimaryQueryResult.RelevantResults.Table.Rows, action.fields);
-										searchStore.emitChange();
 									}
 								}
 							}
 						}
 					}
 				}
+
+				// Reset the store its search result set on error
+				if (!resultsRetrieved) {
+					searchStore.setSearchResults([], null);
+				}
+				searchStore.emitChange();
 			});
 
 			break;

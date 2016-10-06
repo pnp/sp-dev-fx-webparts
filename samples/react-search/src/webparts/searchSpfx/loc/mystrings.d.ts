@@ -10,6 +10,10 @@ declare interface IStrings {
   QueryInfoDescription: string;
   FieldsExternalLabel: string;
   FieldsExternalTempLabel: string;
+  TemplateGroupName: string;
+  LoggingGroupName: string;
+  LoggingFieldLabel: string;
+  LoggingFieldDescription: string;
 }
 
 declare module 'mystrings' {
