@@ -1,10 +1,10 @@
-declare interface IStrings {
+declare interface IToDoStrings {
   PropertyPaneDescription: string;
   ViewGroupName: string;
   HideFinishedTasksFieldLabel: string;
 }
 
-declare module 'mystrings' {
-  const strings: IStrings;
+declare module 'toDoStrings' {
+  const strings: IToDoStrings;
   export = strings;
 }

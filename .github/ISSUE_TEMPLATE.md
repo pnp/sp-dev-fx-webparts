@@ -1,9 +1,9 @@
 Thank you for reporting an issue or suggesting an enhancement. We appreciate your feedback - to help the team to understand your needs, please complete the below template to ensure we have the necessary details to assist you. 
 
 #### Category
-[ ] Question
-[ ] Bug
-[ ] Enhancement
+- [ ] Question
+- [ ] Bug
+- [ ] Enhancement
 
 #### Expected or Desired Behavior
 _If you are reporting a bug, please describe the expected behavior. If you are suggesting an enhancement please describe thoroughly the enhancement, how it can be achieved, and expected benefit._

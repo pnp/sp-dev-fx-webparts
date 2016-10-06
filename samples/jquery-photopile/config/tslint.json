@@ -1,0 +1,26 @@
+{
+  "lintConfig": {
+    "rules": {
+      "comment-format": false,
+      "curly": false,
+      "indent": false,
+      "interface-name": false,
+      "max-line-length": false,
+      "member-ordering": false,
+      "no-any": false,
+      "no-bitwise": false,
+      "no-consecutive-blank-lines": false,
+      "no-constant-condition": false,
+      "no-debugger": false,
+      "no-empty": false,
+      "no-null-keyword": false,
+      "no-string-literal": false,
+      "no-trailing-whitespace": false,
+      "no-var-keyword": false,
+      "one-line": false,
+      "quotemark": false,
+      "radix": false,
+      "triple-equals": false
+    }
+  }
+}

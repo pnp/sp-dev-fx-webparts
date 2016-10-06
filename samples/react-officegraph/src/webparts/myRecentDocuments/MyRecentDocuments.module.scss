@@ -1,0 +1,16 @@
+.myRecentDocuments {
+  .webPartTitle {
+    margin-bottom: 0.7em;
+    margin-left: 0.38em;
+  }
+
+  :global .ms-DocumentCard {
+    float: left;
+    margin: 0.5em;
+  }
+
+  :global .ms-Spinner {
+    width: 7em;
+    margin: 0 auto;
+  }
+}

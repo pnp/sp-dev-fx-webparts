@@ -1,9 +1,13 @@
 {
   "name": "react-officegraph",
-  "version": "0.0.1",
+  "version": "1.3.0",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
+  },
+  "author": {
+    "name": "Waldek Mastykarz",
+    "url": "http://www.rencore.com"
   },
   "dependencies": {
     "@microsoft/sp-client-base": "~0.2.0",

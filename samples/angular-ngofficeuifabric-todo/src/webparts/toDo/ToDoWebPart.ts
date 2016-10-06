@@ -8,7 +8,7 @@ import {
 import ModuleLoader from '@microsoft/sp-module-loader';
 
 import styles from './ToDo.module.scss';
-import * as strings from 'mystrings';
+import * as strings from 'toDoStrings';
 import { IToDoWebPartProps } from './IToDoWebPartProps';
 
 import * as angular from 'angular';

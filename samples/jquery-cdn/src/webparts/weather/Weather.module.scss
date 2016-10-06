@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'weather';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.weather {
+  width: 500px;
+    margin: 0px auto;
+    text-align: center;
+    text-transform: uppercase;
+
+    i {
+        color: #fff;
+        font-family: weather;
+        font-size: 100px;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1.0;
+
+        &[class=icon0]:before { content: ":"; }
+        &[class=icon1]:before { content: "p"; }
+        &[class=icon2]:before { content: "S"; }
+        &[class=icon3]:before { content: "Q"; }
+        &[class=icon4]:before { content: "S"; }
+        &[class=icon5]:before { content: "W"; }
+        &[class=icon6]:before { content: "W"; }
+        &[class=icon7]:before { content: "W"; }
+        &[class=icon8]:before { content: "W"; }
+        &[class=icon9]:before { content: "I"; }
+        &[class=icon10]:before { content: "W"; }
+        &[class=icon11]:before { content: "I"; }
+        &[class=icon12]:before { content: "I"; }
+        &[class=icon13]:before { content: "I"; }
+        &[class=icon14]:before { content: "I"; }
+        &[class=icon15]:before { content: "W"; }
+        &[class=icon16]:before { content: "I"; }
+        &[class=icon17]:before { content: "W"; }
+        &[class=icon18]:before { content: "U"; }
+        &[class=icon19]:before { content: "Z"; }
+        &[class=icon20]:before { content: "Z"; }
+        &[class=icon21]:before { content: "Z"; }
+        &[class=icon22]:before { content: "Z"; }
+        &[class=icon23]:before { content: "Z"; }
+        &[class=icon24]:before { content: "E"; }
+        &[class=icon25]:before { content: "E"; }
+        &[class=icon26]:before { content: "3"; }
+        &[class=icon27]:before { content: "a"; }
+        &[class=icon28]:before { content: "A"; }
+        &[class=icon29]:before { content: "a"; }
+        &[class=icon30]:before { content: "A"; }
+        &[class=icon31]:before { content: "6"; }
+        &[class=icon32]:before { content: "1"; }
+        &[class=icon33]:before { content: "6"; }
+        &[class=icon34]:before { content: "1"; }
+        &[class=icon35]:before { content: "W"; }
+        &[class=icon36]:before { content: "1"; }
+        &[class=icon37]:before { content: "S"; }
+        &[class=icon38]:before { content: "S"; }
+        &[class=icon39]:before { content: "S"; }
+        &[class=icon40]:before { content: "M"; }
+        &[class=icon41]:before { content: "W"; }
+        &[class=icon42]:before { content: "I"; }
+        &[class=icon43]:before { content: "W"; }
+        &[class=icon44]:before { content: "a"; }
+        &[class=icon45]:before { content: "S"; }
+        &[class=icon46]:before { content: "U"; }
+        &[class=icon47]:before { content: "S"; }
+    }
+
+    h2 {
+        margin: -10px 0 0 0;
+        color: #fff;
+        font-size: 75px;
+        font-weight: 300;
+        text-align: center;
+        text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        background: #fff;
+        background: rgba(255,255,255,0.90);
+        padding: 10px;
+        margin-top:-25px;
+        display: inline-block;
+        border-radius: 5px;
+    }
+    .currently {
+        margin: 0 20px;
+    }
+}

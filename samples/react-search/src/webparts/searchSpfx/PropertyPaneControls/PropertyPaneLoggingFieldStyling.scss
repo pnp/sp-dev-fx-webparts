@@ -1,0 +1,35 @@
+.loggingField {
+	margin: 0 0 85px 0;
+
+	pre.logging {
+		border: 1px solid #c8c8c8;
+		margin: 0;
+		max-height: 250px;
+		overflow: auto;
+		padding: 6px;
+		white-space: initial;
+		word-break: break-all;
+
+		div {
+			margin-bottom: 3px;
+		}
+
+		.subElm {
+			margin-left: 10px;
+		}
+
+		.keyValue {
+			font-weight: bold;
+		}
+	}
+
+	.updateLogging {
+		margin-bottom: 2px;
+		margin-top: -22px;
+		text-align: right;
+
+		a.ms-Link {
+			font-size: 12px;
+		}
+	}
+}

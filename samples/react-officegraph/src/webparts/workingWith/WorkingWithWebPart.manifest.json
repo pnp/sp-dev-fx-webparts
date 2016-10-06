@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "79b943ce-52dd-47ca-aeee-e46b277260de",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "79b943ce-52dd-47ca-aeee-e46b277260de",
+    "group": { "default": "Productivity" },
+    "title": { "default": "Working with" },
+    "description": { "default": "Shows people with whom you communicate frequently" },
+    "officeFabricIconFontName": "Group",
+    "properties": {
+      "title": "Recent contacts",
+      "numberOfPeople": 5
+    }
+  }]
+}
