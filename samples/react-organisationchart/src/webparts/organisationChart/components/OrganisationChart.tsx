@@ -17,6 +17,8 @@ export interface IOrganisationChartWebPartState {
 }
 
 export interface IOrganisationChartProps extends IOrganisationChartWebPartProps {
+  environmentType: EnvironmentType;
+  serviceScope: ServiceScope;
 }
 
 export default class OrganisationChart extends React.Component<IOrganisationChartProps, IOrganisationChartWebPartState> {
