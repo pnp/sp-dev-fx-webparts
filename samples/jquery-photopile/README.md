@@ -9,7 +9,7 @@ With it, you can display the photos contained in a SharePoint Pictures Library a
 simulates a pile of photos scattered about on a surface. Thumbnail clicks remove photos from the pile,
 (enlarging them as if being picked up by the user), and once in  view a secondary click returns the photo to the pile.
 
-![Photpile Web Part displayed in SharePoint Workbench](./assets/photopileoverview.gif)
+![Photopile Web Part displayed in SharePoint Workbench](./assets/photopileoverview.gif)
 
 ## Applies to
 
@@ -37,7 +37,7 @@ Version|Date|Comments
 
 - clone this repo
 - in the command line run:
-  - `npm i`
+  - `npm install`
   - `tsd install`
   - `gulp serve`
 
@@ -61,3 +61,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Include Office UI Fabric controls in your project
 * Render content with React
 * Etc.
+
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/jquery-photopile" />

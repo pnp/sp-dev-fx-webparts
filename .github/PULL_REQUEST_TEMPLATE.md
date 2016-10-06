@@ -13,6 +13,6 @@ Please describe the changes in this PR. Sample description or details around bug
 #### Guidance
 *You can delete this section when you are submitting the pull request.* 
 * *Please update this PR information accordingly. We'll use this as part of our release notes in monthly communications.*
-* *Please target your PR to Dev branch.*
+* *Please target your PR to 'dev' branch.*
 
 Thanks for your contribution! Sharing is caring.
