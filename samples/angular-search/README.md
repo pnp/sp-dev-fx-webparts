@@ -9,6 +9,10 @@ through SharePoint's REST API.
 The logic for querying the SharePoint Content Types in the properties of the webpart was in part due to Chris O'Brien and this blog post
 http://www.sharepointnutsandbolts.com/2016/09/sharepoint-framework-spfx-web-part-properties-dynamic-dropdown.html?m=0
 
+Environment:
+  Enable publishing features on site collection
+  Enable publishing features on site
+
 
 
 ### Building the code

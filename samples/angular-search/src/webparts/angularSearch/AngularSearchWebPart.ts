@@ -16,6 +16,7 @@ import { IAngularSearchWebPartProps } from './IAngularSearchWebPartProps';
 
 import * as angular from 'angular';
 import HomeController from './app/HomeController';
+import DataService from './app/DataService';
 import MockHttpClient from './MockHttpClient';
 import 'ng-office-ui-fabric';
 
@@ -35,7 +36,7 @@ export interface ISPStrVal {
 
 export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngularSearchWebPartProps> {
   private $injector: ng.auto.IInjectorService;
-  private _listsInThisSite: IPropertyPaneDropdownOption[] = [];
+  private _CTypesInThisSite: IPropertyPaneDropdownOption[] = [];
 
   get baseUrl(): string { return '$BASEURL$'; }
 
@@ -50,12 +51,12 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
     //Determine if we are in a local environment
     if (this.context.environment.type == EnvironmentType.Local) {
       this._getMockOptions().then((data) => {
-        this._listsInThisSite = data;
+        this._CTypesInThisSite = data;
       });
     }
     else {
       this._getOptions().then((data) => {
-        this._listsInThisSite = data;
+        this._CTypesInThisSite = data;
       });
     }
 
@@ -66,7 +67,7 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
     if (this.renderedOnce === false) {
       const wp: AngularSearchWebPart = this;
 
-      this.domElement.innerHTML = `<angularsearch web="${this.context.pageContext.web.absoluteUrl}" hello="${wp.title}" style='${angular.toJson(styles)}'></angularsearch>`;
+      this.domElement.innerHTML = `<angularsearch web="${this.context.pageContext.web.absoluteUrl}" style='${angular.toJson(styles)}' contentType='${this.properties.contentTypes}'></angularsearch>`;
       let sce: ng.ISCEDelegateService;
 
       angular.module('angularsearchapp', [
@@ -77,11 +78,12 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
           controllerAs: 'vm',
           bindings: {
             web: '@',
-            hello: '@',
-            style: '<'
+            style: '<',
+            contentType: '@'
           },
           templateUrl: `${this.baseUrl}home-template.html`
         })
+        .service('DataService', DataService)
         .config(function ($sceDelegateProvider: ng.ISCEDelegateProvider): void {
           $sceDelegateProvider.resourceUrlWhitelist([
             // Allow same origin resource loads.
@@ -93,6 +95,10 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
 
       this.$injector = angular.bootstrap(this.domElement, ['angularsearchapp']);
     }
+
+    this.$injector.get('$rootScope').$broadcast('configurationChanged', {
+      contentType: this.properties.contentTypes
+    });
   }
 
   private _getCTypes(url: string): Promise<ISPCTypeLists> {
@@ -130,14 +136,14 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
   }
 
   private _getOptions(): Promise<IPropertyPaneDropdownOption[]> {
-    var url = this.context.pageContext.web.absoluteUrl + '/_api/web/AvailableContentTypes?&filter=Group eq \'Document Content Types\'';
+    var url = this.context.pageContext.web.absoluteUrl + '/_api/web/AvailableContentTypes?$filter=Group eq \'Page Layout Content Types\'';
 
     return this._getCTypes(url).then((response) => {
       var options: Array<IPropertyPaneDropdownOption> = new Array<IPropertyPaneDropdownOption>();
       var lists: ISPCType[] = response.value;
       lists.forEach((list: ISPCType) => {
         console.log("Found Content Type(s)");
-        options.push({ key: list.Id.StringValue, text: list.Name });
+        options.push({ key: list.Name, text: list.Name });
       });
 
       return options;
@@ -160,9 +166,9 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 }),
-                PropertyPaneDropdown('test', {
+                PropertyPaneDropdown('contentTypes', {
                   label: 'Dropdown',
-                  options: this._listsInThisSite
+                  options: this._CTypesInThisSite,
                 })
               ]
             }
