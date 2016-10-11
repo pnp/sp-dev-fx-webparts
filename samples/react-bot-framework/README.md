@@ -1,26 +1,55 @@
-## sp-bot-chat-webpart
+# title of the sample
 
-This is where you include your web part docs.
+## Summary
+Short summary on functionality and used technologies.
 
-### Building the code
+[picture of the web part in action]
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+## Applies to
 
-This package produces the following:
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
-* lib/* commonjs components - this allows this package to be reused from other packages.
-* dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
-* example/* a test page that hosts all components in this package.
+> Update accordingly as needed.
 
-### Build options
+## Prerequisites
+ 
+> Any special pre-requisites?
 
-gulp nuke - TODO
-gulp test - TODO
-gulp watch - TODO
-gulp build - TODO
-gulp deploy - TODO
+## Solution
+
+Solution|Author(s)
+--------|---------
+folder name | Author details
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.1|September 2, 2025|Update comment
+1.0|August 29, 2025|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- in the command line run:
+  - `npm install`
+  - `tsd install`
+  - `gulp serve`
+
+> Include any additional steps as needed.
+
+## Features
+Description of the web part with possible additional details than in short summary. 
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+- topic 1
+- topic 2
+- topic 3
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
