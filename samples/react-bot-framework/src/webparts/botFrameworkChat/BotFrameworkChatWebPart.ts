@@ -7,7 +7,6 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-client-preview';
 
-import * as strings from 'botFrameworkChatStrings';
 import BotFrameworkChat, { IBotFrameworkChatProps } from './components/BotFrameworkChat';
 import { IBotFrameworkChatWebPartProps } from './IBotFrameworkChatWebPartProps';
 
@@ -29,7 +28,7 @@ export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotF
       botMessagesForegroundColor: this.properties.botMessagesForegroundColor,
       userMessagesBackgroundColor: this.properties.userMessagesBackgroundColor,
       userMessagesForegroundColor: this.properties.userMessagesForegroundColor,
-      directLineClientName: this.properties.directLineClientName
+      context: this.context
     });
 
     ReactDom.render(element, this.domElement);
@@ -47,10 +46,7 @@ export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotF
               groupName: 'Bot Connection',
               groupFields: [
                 PropertyPaneTextField('directLineSecret', {
-                  label: 'Direct Line Channel Secret'
-                }),
-                PropertyPaneTextField('directLineClientName', {
-                  label: 'Bot User Name (send messages as...)'
+                  label: 'Direct Line Secret'
                 })
               ]
             },
@@ -99,9 +95,8 @@ export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotF
 
   private _validateColorPropertyAsync(value: string): string {
     var colorRegex = /^([a-zA-Z0-9]){6}$/;
-    if(!value || colorRegex.test(value) == false)
-    {
-        return "Please enter a valid 6 character hex color value";
+    if (!value || colorRegex.test(value) == false) {
+      return "Please enter a valid 6 character hex color value";
     }
 
     return "";

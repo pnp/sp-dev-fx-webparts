@@ -1,9 +1,10 @@
 # Microsoft Bot Framework Web Chat
 
 ## Summary
-Short summary on functionality and used technologies.
+A web part that acts as a web chat component for bot's built on the Microsoft Bot Framework using the Direct Line API. When sending messages
+the web part uses the username of the currently logged in user. The web part has settings for color for branding purposes.
 
-[picture of the web part in action]
+![bot framework client web part](screenshot.png)
 
 ## Applies to
 
@@ -12,10 +13,10 @@ Short summary on functionality and used technologies.
 * [Microsoft Bot Framework](http://dev.botframework.com)
 
 ## Prerequisites
- 
-> You need to have a bot created and registered using the Microsoft Bot Framework and registered to use the Direct Line Channel, 
-which will give you the secret needed when adding this web part to the page.  For more information on creating a bot and registering 
-the channel you can see the official web site at [dev.botframework.com](http://dev.botframework.com), as well as various tutorials 
+
+> You need to have a bot created and registered using the Microsoft Bot Framework and registered to use the Direct Line Channel,
+which will give you the secret needed when adding this web part to the page.  For more information on creating a bot and registering
+the channel you can see the official web site at [dev.botframework.com](http://dev.botframework.com), as well as various tutorials
 over at [www.garypretty.co.uk/category/microsoft-bot-framework/](http://www.garypretty.co.uk/category/microsoft-bot-framework/)
 
 ## Solution
@@ -45,7 +46,7 @@ Version|Date|Comments
 
 - Register your bot in the Microsoft Bot Framework Portal, configure the Direct Line channel on the bot and obtain your Direct Line secret.
 
-## Features 
+## Features
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - Connecting and communicating with a bot built on the Microsoft Bot Framework using the Direct Line Channel
@@ -54,7 +55,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - React
 
 When adding the web part to a page you need to obtain your Bot Direct Line Channel secret via the [Bot Framework Portal](http://dev.botframework.com).
-You then add this secret via the Property Pane of the web part. If there is an error initializing the Direct Line Client with the bot then they will 
+You then add this secret via the Property Pane of the web part. If there is an error initializing the Direct Line Client with the bot then they will
 be shown in the console within the browser.
 
 Additional settings can be set to style the web part, including;
@@ -64,7 +65,7 @@ Additional settings can be set to style the web part, including;
  - Placeholder text
  - Foreground / background colors for messages, both from the user and from the bot
 
-Currently this web part only supports plain text conversations with a bot. Other message types, 
+Currently this web part only supports plain text conversations with a bot. Other message types,
 such as Rich Cards and Attachments are not supported, but are on the roadmap for a future update.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-bot-framework" />

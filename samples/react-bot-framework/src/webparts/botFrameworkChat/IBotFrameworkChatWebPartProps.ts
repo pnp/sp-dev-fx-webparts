@@ -1,3 +1,5 @@
+import { IWebPartContext } from '@microsoft/sp-client-preview';
+
 export interface IBotFrameworkChatWebPartProps {
   description: string;
   message: string;
@@ -9,5 +11,5 @@ export interface IBotFrameworkChatWebPartProps {
   botMessagesForegroundColor: string;
   userMessagesBackgroundColor: string;
   userMessagesForegroundColor: string;
-  directLineClientName: string;
+  context: IWebPartContext;
 }

@@ -15,6 +15,7 @@ export default class BotFrameworkChat extends React.Component<IBotFrameworkChatP
   private directLineClientSwagger;
   private messagesHtml;
   private currentMessageText;
+  private sendAsUserName;
 
   public render(): JSX.Element {
     return (
@@ -63,6 +64,8 @@ export default class BotFrameworkChat extends React.Component<IBotFrameworkChatP
           });
       });
 
+      this.sendAsUserName = this.props.context.pageContext.user.loginName;
+
       this.printMessage = this.printMessage.bind(this);
     }
   }
@@ -98,7 +101,7 @@ export default class BotFrameworkChat extends React.Component<IBotFrameworkChatP
         {
           conversationId: this.conversationId,
           message: {
-            from: this.props.directLineClientName,
+            from: this.sendAsUserName,
             text: messageToSend
           }
         }).catch((err) => console.error('Error sending message:', err));
@@ -114,17 +117,17 @@ export default class BotFrameworkChat extends React.Component<IBotFrameworkChatP
           watermark = response.obj.watermark;
           return response.obj.messages;
         })
-        .then((messages) => this.printMessages(messages))
+        .then((messages) => this.printMessages(messages));
     }, this.pollInterval);
   }
 
   protected printMessages(messages) {
     if (messages && messages.length) {
-      messages = messages.filter((m) => m.from !== this.props.directLineClientName);
+      messages = messages.filter((m) => m.from !== this.sendAsUserName);
       if (messages.length) {
         messages.forEach(this.printMessage);
       }
-    };
+    }
   }
 
   protected printMessage(message) {
