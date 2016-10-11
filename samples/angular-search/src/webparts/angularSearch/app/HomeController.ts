@@ -21,7 +21,7 @@ export default class HomeController {
 
     vm.styles = $attrs['style'];
     vm._web = $attrs['web'];
-    vm._contentType = $attrs['contenttype'];
+    vm._contentType = $attrs['contenttype'] === "" ? undefined : $attrs['contenttype'];
 
     if (this._contentType !== undefined) {
       this._init(this._contentType, vm.$scope);
