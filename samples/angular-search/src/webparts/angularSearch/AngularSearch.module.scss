@@ -19,3 +19,8 @@
     text-decoration: none;
   }
 }
+
+//removes the checkbox from the hover event of ms-ListItem's
+:global .ms-ListItem.is-selectable:hover:before {
+  border: none !important;
+}

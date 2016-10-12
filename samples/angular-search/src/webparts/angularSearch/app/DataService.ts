@@ -13,7 +13,8 @@ export default class DataService implements IDataService {
     const deferred: ng.IDeferred<ISearchResults> = this.$q.defer();
 
     this.$http({
-          url: `${webUrl}/_api/search/query?queryText='ContentType:"${contentType}"'`,
+          url: `${webUrl}/_api/search/query?queryText='ContentType:"${contentType}"
+            Path:${webUrl}'&selectproperties='Title,Author,HitHighlightedSummary,PublishingImage,Url'`,
           method: 'GET',
           headers: {
             'Accept': 'application/json;odata=verbose'

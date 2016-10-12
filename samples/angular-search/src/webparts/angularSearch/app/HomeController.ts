@@ -12,6 +12,7 @@ export default class HomeController {
   public styles: any = null;
   public searchNotConfigured: boolean = true;
   public items: any[] = [];
+  public searching: boolean = false;
 
   private _web: string = null;
   private _contentType: string = undefined;
@@ -19,7 +20,7 @@ export default class HomeController {
   constructor(private dataService: IDataService, private $rootScope: ng.IRootScopeService, private $scope: ng.IScope, private $attrs: ng.IAttributes) {
     const vm: HomeController = this;
 
-    vm.styles = $attrs['style'];
+    vm.styles = angular.fromJson($attrs['style']);
     vm._web = $attrs['web'];
     vm._contentType = $attrs['contenttype'] === "" ? undefined : $attrs['contenttype'];
 
@@ -55,11 +56,15 @@ export default class HomeController {
   }
 
   public getSearchResults(): void {
-    this.status = 'Loading search results...';
+    //display searching message
+    this.searching = true;
     this.dataService.getSearchResults(this._web, this._contentType)
       .then((results: ISearchResults): void => {
         this.items = this._setSearchResults(results.PrimaryQueryResult.RelevantResults.Table.Rows.results);
         console.log(this.items);
+
+        //hide searching message
+        this.searching = false;
       });
 
   }
@@ -71,7 +76,20 @@ export default class HomeController {
         var val: Object = {};
 
         result.Cells.results.forEach((cell: ICellValue) => {
+          if (cell.Key == 'HitHighlightedSummary'){
+            //need to replace <ddd> markup
+            val[cell.Key] = cell.Value.replace(/ <ddd\/>/g, '.');
+          }
+          else if (cell.Key == 'PublishingImage' && cell.Value !== null) {
+            //need to pull image url out of PublishingImage field
+            let div = document.createElement('div');
+            div.innerHTML = cell.Value;
+            let img = div.getElementsByTagName('img')[0];
+            val[cell.Key] = img.src;
+          }
+          else {
           val[cell.Key] = cell.Value;
+          }
         });
 
         temp.push(val);
