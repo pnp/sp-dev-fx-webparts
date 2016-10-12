@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "dep-props-custom-class",
+    "libraryId": "c3bedf24-4177-4861-8c30-a1c67c499eae",
+    "framework": "none"
+  }
+}
