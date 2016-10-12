@@ -1,0 +1,21 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "adal-angular/adal-angular.d.ts": {
+      "commit": "8a47541d7ed17b87ddeb6d5edf28600a2f5cbd17"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "8a47541d7ed17b87ddeb6d5edf28600a2f5cbd17"
+    },
+    "adal-angular/adal.d.ts": {
+      "commit": "8a47541d7ed17b87ddeb6d5edf28600a2f5cbd17"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "8a47541d7ed17b87ddeb6d5edf28600a2f5cbd17"
+    }
+  }
+}
