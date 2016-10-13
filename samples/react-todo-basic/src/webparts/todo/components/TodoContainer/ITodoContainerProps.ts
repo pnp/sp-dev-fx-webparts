@@ -3,7 +3,6 @@ import { DisplayMode } from '@microsoft/sp-client-base';
 import ITodoDataProvider from '../../dataProviders/ITodoDataProvider';
 
 interface ITodoContainerProps {
-  description: string;
   dataProvider: ITodoDataProvider;
   webPartContext: IWebPartContext;
   webPartDisplayMode: DisplayMode;

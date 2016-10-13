@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { List, FocusZone, FocusZoneDirection, getRTLSafeKeyCode, KeyCodes } from 'office-ui-fabric-react';
-import { Compare } from '@microsoft/sp-client-base';
 import ITodoListProps from './ITodoListProps';
 import TodoListItem from '../TodoListItem/TodoListItem';
 import ITodoItem from '../../models/ITodoItem';

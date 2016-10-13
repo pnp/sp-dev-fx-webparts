@@ -11,8 +11,6 @@ import ITodoContainerState from './ITodoContainerState';
 import update = require('react-addons-update');
 
 export default class Todo extends React.Component<ITodoContainerProps, ITodoContainerState> {
-
-  //private _dataProvider: ITodoDataProvider;
   private _showPlaceHolder: boolean = true;
 
   constructor(props: ITodoContainerProps) {
@@ -40,10 +38,8 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
   }
 
   public componentWillReceiveProps(props: ITodoContainerProps) {
-    //if (props.selectedList) {
     if (this.props.dataProvider.selectedList) {
       if (this.props.dataProvider.selectedList.Id !== '0') {
-        //this._dataProvider.selectedList = props.selectedList;
         this._showPlaceHolder = false;
         this.props.dataProvider.getItems().then(
           (items: ITodoItem[]) => {
@@ -77,7 +73,7 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
             iconText='Todos'
             description='Get things done. Organize and share your team\'s to-do items with your team.'
             buttonLabel='Configure'
-            onAdd={ this._configureWebPart.bind(this) }  />
+            onAdd={ this._configureWebPart }  />
         }
         { this._showPlaceHolder && this.props.webPartDisplayMode === DisplayMode.Read &&
           <Placeholder
@@ -88,7 +84,7 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
         { !this._showPlaceHolder &&
           <div className={ styles.todo }>
             <div className={ styles.topRow }>
-              <h2 className={ styles.todoHeading }>{this.props.description}</h2>
+              <h2 className={ styles.todoHeading }>Todo</h2>
             </div>
             <TodoForm onAddTodoItem={ this._createTodoItem} />
             <TodoList items={this.state.todoItems}

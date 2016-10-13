@@ -4,7 +4,6 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneSettings,
   IWebPartContext,
-  PropertyPaneTextField,
   PropertyPaneDropdown,
   IPropertyPaneField,
   PropertyPaneLabel,
@@ -59,7 +58,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     const element: React.ReactElement<ITodoContainerProps> = React.createElement(
       TodoContainer,
       {
-        description: this.properties.description,
         dataProvider: this._dataProvider,
         webPartContext: this.context,
         webPartDisplayMode: this.displayMode,
@@ -122,10 +120,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
 
   private _getGroupFields(): IPropertyPaneField<any>[] {
     const fields: IPropertyPaneField<any>[] = [];
-
-    fields.push(PropertyPaneTextField('description', {
-      label: strings.DescriptionFieldLabel
-    }));
 
     fields.push(PropertyPaneDropdown('spListIndex', {
       label: "Select a list",

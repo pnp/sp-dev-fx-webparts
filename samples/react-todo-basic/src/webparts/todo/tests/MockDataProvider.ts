@@ -25,8 +25,7 @@ export default class MockDataProvider implements ITodoDataProvider {
       'List One': [
         this._createMockTodoItem('Sunt filet mignon ut ut porchetta', true),
         this._createMockTodoItem('Laborum flank brisket esse chuck t-bone', false),
-        this._createMockTodoItem('consectetur ex meatloaf boudin beef laborum pastrami', false),
-        this._createMockTodoItem('Pariatur rump in kielbasa prosciutto', true)
+        this._createMockTodoItem('consectetur ex meatloaf boudin beef laborum pastrami', false)
       ],
       'List Two': [
         this._createMockTodoItem('Striga! Ut custodiant te sermonem dicens', false),

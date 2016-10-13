@@ -1,5 +1,4 @@
 interface ITodoWebPartProps {
-  description: string;
   spListIndex: number;
 }
 
