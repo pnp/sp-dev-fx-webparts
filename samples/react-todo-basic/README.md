@@ -115,4 +115,74 @@ You can provide a tailored experience using the display modes to enhance the web
 
 When the page is in edit mode, but the web part is not, the web part displays the following placeholder.
 
+![Todo basic web part placeholder in page edit mode](./assets/todo-basic-placeholder-read-mode.png)
+
 When the page in in edit mode and also the web part, the web part displays the following placeholder:
+
+![Todo basic web part placeholder in web part edit mode](./assets/todo-basic-placeholder-edit-mode.png)
+
+You can see this in action in the the [TodoContainer.tsx](./src/webparts/todo/components/TodoContainer/TodoContainer.tsx) component's `render` method:
+
+```ts
+{ this._showPlaceHolder && this.props.webPartDisplayMode === DisplayMode.Edit &&
+          <Placeholder
+            icon={ 'ms-Icon--Edit' }
+            iconText='Todos'
+            description='Get things done. Organize and share your team\'s to-do items with your team.'
+            buttonLabel='Configure'
+            onAdd={ this._configureWebPart }  />
+        }
+        { this._showPlaceHolder && this.props.webPartDisplayMode === DisplayMode.Read &&
+          <Placeholder
+            icon={ 'ms-Icon--Edit' }
+            iconText='Todos'
+            description='Get things done. Organize and share your team\'s to-do items with your team. Edit this web part to start managing to-dos.' />
+        }
+        { !this._showPlaceHolder &&
+          <div className={ styles.todo }>
+            <div className={ styles.topRow }>
+              <h2 className={ styles.todoHeading }>Todo</h2>
+            </div>
+            <TodoForm onAddTodoItem={ this._createTodoItem} />
+            <TodoList items={this.state.todoItems}
+              onCompleteTodoItem={this._completeTodoItem}
+              onDeleteTodoItem={this._deleteTodoItem} />
+          </div>
+        }
+```
+### Loading SharePoint data in property pane
+One of the things you may want to do in your web part is the ability to configure the data source of your web part. For example, selecting a SharePoint list to bind to. Usually, this is presented in the web part property pane. However, this requires you fetch the available lists from the SharePoint site. 
+
+[TodoWebPart.ts] demonstrates an approach that will help you fetch data from SharePoint and populate a property pane field, in this case, a dropdown. This operation is performed in the `onInit` method where it calls the `_getTaskLists` method to query the data source and populate the corresponding property pane dropdown field property array:
+
+```ts
+private _getTaskLists(): Promise<void> {
+    return this._dataProvider.getTaskLists()
+      .then((taskLists: ITodoTaskList[]) => {
+        this._disableDropdown = taskLists.length === 0;
+        if (taskLists.length !== 0) {
+          this._dropdownOptions = taskLists.map((list: ITodoTaskList) => {
+            return {
+              key: list.Id,
+              text: list.Title
+            };
+          });
+        }
+      });
+  }
+```
+As we do this operation in the `onInit` method, the dropdown values are initialized by the time property pane is initialized or invoked. Also, notice how we use the loading indicator in the `onInit` method during this operation to provide information to the end user:
+
+```ts
+protected onInit(): Promise<void> {
+    this.context.statusRenderer.displayLoadingIndicator(this.domElement, "Todo");
+
+    return this._getTaskLists()
+      .then(() => {
+        if (this.properties.spListIndex) {
+          this._setSelectedList(this.properties.spListIndex.toString());
+          this.context.statusRenderer.clearLoadingIndicator(this.domElement);
+        }
+      });
+  }
+```
