@@ -47,6 +47,9 @@ Version|Date|Comments
  - `npm i typings -g`
  - `npm i`
  - `gulp serve --nobrowser`
-
+- Enable the following features in you site
+ - Publishing features on site collection
+ - Publishing features on site
+ > Note: The Content Types that I pull for the search come from the Publishing Content Type which only available when the Publishing Features are enabled on the site.
 
 
