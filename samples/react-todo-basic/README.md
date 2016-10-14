@@ -40,7 +40,25 @@ This todo basic sample web part showcases some of the SharePoint Framework devel
 - [React Quick Start](https://facebook.github.io/react/docs/tutorial.html)
 - [TypeScript React Tutorials](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
+### React pattern
+
+While there are many patterns that one can choose to build their react based app, this web part sample uses the [Container component](http://reactpatterns.com/#Container component) approach where there is a main contain component and then one or more dummy components that render the data. 
+
+In our case, [TodoContainer.tsx](./src/webparts/todo/components/TodoContainer/TodoContainer.tsx) is the container component while the rest of the components are sub components.
+
+All of the components are placed under the [components](./src/webparts/todo/components) folder. Each component folder has its corresponding:
+
+- Component file | .tsx file
+- Props interface, if applicable | .ts file
+- State interface, if applicable | .ts file
+- Sass file, if applicable | .module.scss file
+
+The code ensures that the web part file, [TodoWebPart.ts](./src/webparts/todo/TodoWebPart.ts), only handles the key web part specific operations including property pane. 
+
+While you can choose from many patterns, this kind of an approach, to break into multiple components and handling only the web part specific code in the web part file, is highly recommended to keep your react based code structured and well formed. 
+
 ### Status Renderers
+
 SharePoint Framework provides status renderers to display information when the web part is performing any time consuming operations such as fetching data from SharePoint. The following status renderers are available via the web part context property:
 
 - Loading indicator
@@ -153,7 +171,7 @@ You can see this in action in the the [TodoContainer.tsx](./src/webparts/todo/co
 ### Loading SharePoint data in property pane
 One of the things you may want to do in your web part is the ability to configure the data source of your web part. For example, selecting a SharePoint list to bind to. Usually, this is presented in the web part property pane. However, this requires you fetch the available lists from the SharePoint site. 
 
-[TodoWebPart.ts](/src/webparts/todo/TodoWebPart.ts) demonstrates an approach that will help you fetch data from SharePoint and populate a property pane field, in this case, a dropdown. This operation is performed in the `onInit` method where it calls the `_getTaskLists` method to query the data source and populate the corresponding property pane dropdown field property array:
+[TodoWebPart.ts](./src/webparts/todo/TodoWebPart.ts) demonstrates an approach that will help you fetch data from SharePoint and populate a property pane field, in this case, a dropdown. This operation is performed in the `onInit` method where it calls the `_getTaskLists` method to query the data source and populate the corresponding property pane dropdown field property array:
 
 ```ts
 private _getTaskLists(): Promise<void> {
@@ -186,3 +204,110 @@ protected onInit(): Promise<void> {
       });
   }
 ```
+### Handling empty data in property pane fields
+This todo sample talks to a SharePoint task list. In the property pane, page authors can select the task list they want to use for the web part. However, in cases where there are no task lists available, we should communicate that to the author. While there are more than one experience you can choose to tackle this problem, the todo sample takes the following approach:
+
+- If there are no task lists available to choose from, the dropdown field is disabled and a meaningful message is displayed to the author in the property pane.
+
+Below is the experience:
+
+![No task lists available to choose in property pane](./assets/todo-basic-no-task-list.gif)
+
+You can see the code to render this experience in the `_getGroupFields` method in [TodoWebPart.ts](./src/webparts/todo/TodoWebPart.ts):
+
+```ts
+private _getGroupFields(): IPropertyPaneField<any>[] {
+    const fields: IPropertyPaneField<any>[] = [];
+
+    fields.push(PropertyPaneDropdown('spListIndex', {
+      label: "Select a list",
+      isDisabled: this._disableDropdown,
+      options: this._dropdownOptions
+    }));
+
+    if (this._disableDropdown) {
+      fields.push(PropertyPaneLabel(null, {
+        text: 'Could not find tasks lists in your site. Create one or more tasks list and then try using the web part.'
+      }));
+    }
+
+    return fields;
+  }
+```
+The method returns a set of property pane fields to render in the property pane. In our case, we check to see if the dropdown is disabled. If it is, then we add a label field with the appropriate message.
+
+### Data providers
+This sample uses two data providers:
+- [MockDataProvider](./src/webparts/todo/tests/MockDataProvider.ts) - a light weight provider that mocks SharePoint API calls and returns mock data.
+- [SharePointDataProvider](./src/webparts/todo/dataProviders/SharePointDataProvider.ts) - the provider which talks to SharePoint and returns SharePoint data.
+
+Depending on where you are web part is running, local environment or SharePoint environment, you use the respective data provider. You can see this in action in the [TodoWebPart.ts](./src/webparts/todo/TodoWebPart.ts) web part constructor. The `EnvironmentType` enum in the `@microsoft/sp-client-base` module helps you in determining where the web part is running. We use that to create the corresponding data provider instance:
+
+```ts
+ public constructor(context: IWebPartContext) {
+    super(context);
+
+    if (context.environment.type === EnvironmentType.Local) {
+      this._dataProvider = new MockDataProvider();
+    } else {
+      this._dataProvider = new SharePointDataProvider();
+      this._dataProvider.webPartContext = this.context;
+    }
+
+    this._openPropertyPane = this._openPropertyPane.bind(this);
+  }
+```
+### Using SharePoint HttpClient to fetch SharePoint data
+
+SharePoint Framework includes a `HttpClient` utility class that you can use to talk to SharePoint APIs. It adds default headers, manages the digest needed for writes, and collects telemetry that helps the service to monitor the performance of an application. For communicating with non-SharePoint services, you can use the `BasicHttpClient` utility class instead.
+
+You can see this in action in the [SharePointDataProvider](./src/webparts/todo/dataProviders/SharePointDataProvider.ts). For example, here is what we do in the `createItem` method which creates a new todo item in the specific SharePoint list:
+
+```ts
+public createItem(title: string): Promise<ITodoItem[]> {
+    const batch: ODataBatch = this.webPartContext.httpClient.beginBatch();
+
+    const batchPromises: Promise<{}>[] = [
+      this._createItem(batch, title),
+      this._getItems(batch)
+    ];
+
+    return this._resolveBatch(batch, batchPromises);
+  }
+```
+
+And below is the code that retrieves todo items from the task list. Depending on the requester, it will create either a `HttpClient` or `ODataBatch` object:
+
+```ts
+private _getItems(requester: HttpClient | ODataBatch): Promise<ITodoItem[]> {
+    const queryString: string = `?$select=Id,Title,PercentComplete`;
+    const queryUrl: string = this._listItemsUrl + queryString;
+
+    return requester.get(queryUrl)
+      .then((response: Response) => {
+        return response.json();
+      })
+      .then((json: { value: ITodoItem[] }) => {
+        return json.value.map((task: ITodoItem) => {
+          return task;
+        });
+      });
+  }
+```
+To execute multiple API requests, we create a new batch that includes those requests, and then resolve it. In our code, we create the following two requests:
+
+- `_createItem` | Creating a new item in the list
+- `_getItems` | Getting the new set of items
+
+Each of the method will be executed in the order specified. To execute the batch requests, we call the `_resolveBatch` method
+
+And finally the `_resolveBatch` method which executes and resolves the promises in the current batch:
+
+```ts
+private _resolveBatch(batch: ODataBatch, promises: Promise<{}>[]): Promise<ITodoItem[]> {
+    return batch.execute()
+      .then(() => Promise.all(promises).then(values => values[values.length - 1]));
+  }
+```
+
+
