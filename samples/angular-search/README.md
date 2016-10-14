@@ -10,9 +10,9 @@ through SharePoint's REST API.
 The logic for querying the SharePoint Content Types in the properties of the webpart was in part due to Chris O'Brien and this blog post
 http://www.sharepointnutsandbolts.com/2016/09/sharepoint-framework-spfx-web-part-properties-dynamic-dropdown.html?m=0
 
-Environment:
-  Enable publishing features on site collection
-  Enable publishing features on site
+Environment Configuration:
+- Enable publishing features on site collection
+- Enable publishing features on site
 
 Note: In order to use the ngOfficeFabric code I use the ModuleLoader to load newer source files than the currently
 Office Fabric UI in SharePoint Online, which will cause many of the icons not to load properly on the SharePoint
@@ -27,7 +27,7 @@ Page this webpart is added to.
 
 Solution|Author(s)
 --------|---------
-angular-search|David Hartman (Slalom, (http://slalom.com))
+angular-search|David Hartman ([Slalom](https://slalom.com))
 ### Building the code
 
 ```bash
