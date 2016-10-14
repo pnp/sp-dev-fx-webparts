@@ -3,12 +3,12 @@
 ## Summary
 Sample Search Web Part that illustrates how you can use Angular within the new SharePoint Framework
 
+![Sample of the search web part](./assets/angularSearch.png)
 This app uses SharePoint's Search REST API endpoint to query listitems of a specific content type and displays the results to the end user.
 Ideally instead of selecting a content type for the search you would want to select a Result Source, but currently Result Sources are not
 through SharePoint's REST API.
 
-The logic for querying the SharePoint Content Types in the properties of the webpart was in part due to Chris O'Brien and this blog post
-http://www.sharepointnutsandbolts.com/2016/09/sharepoint-framework-spfx-web-part-properties-dynamic-dropdown.html?m=0
+The logic for querying the SharePoint Content Types in the properties of the webpart was in part due to Chris O'Brien and this [blog post](http://www.sharepointnutsandbolts.com/2016/09/sharepoint-framework-spfx-web-part-properties-dynamic-dropdown.html?m=0)
 
 Environment Configuration:
 - Enable publishing features on site collection
