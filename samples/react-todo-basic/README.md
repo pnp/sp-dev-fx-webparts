@@ -153,7 +153,7 @@ You can see this in action in the the [TodoContainer.tsx](./src/webparts/todo/co
 ### Loading SharePoint data in property pane
 One of the things you may want to do in your web part is the ability to configure the data source of your web part. For example, selecting a SharePoint list to bind to. Usually, this is presented in the web part property pane. However, this requires you fetch the available lists from the SharePoint site. 
 
-[TodoWebPart.ts] demonstrates an approach that will help you fetch data from SharePoint and populate a property pane field, in this case, a dropdown. This operation is performed in the `onInit` method where it calls the `_getTaskLists` method to query the data source and populate the corresponding property pane dropdown field property array:
+[TodoWebPart.ts](/src/webparts/todo/TodoWebPart.ts) demonstrates an approach that will help you fetch data from SharePoint and populate a property pane field, in this case, a dropdown. This operation is performed in the `onInit` method where it calls the `_getTaskLists` method to query the data source and populate the corresponding property pane dropdown field property array:
 
 ```ts
 private _getTaskLists(): Promise<void> {
