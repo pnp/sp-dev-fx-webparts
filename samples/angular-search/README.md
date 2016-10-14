@@ -52,7 +52,7 @@ Version|Date|Comments
 
 - In the file 'AngularSearchWebPart.ts' around line 92 you will need to put the url of the directory where the html template file resides.
 
-> Note: Adding the location of the template is necessary because Angular's $sce doesn't trust the location taht the
+> Note: Adding the location of the template is necessary because Angular's $sce service doesn't trust the location the
 > html template is loaded from, so the url needs to be whitelisted with the $sce service. If you just want whitelisted
 > every url the entry in the $sce could just be '*'. There is plenty of documentation available if you run into trouble
 > whitelisting the template url.
