@@ -1,4 +1,4 @@
-# Search Client-Side Web Part Built with Angular
+# Search Client-Side Web Part Built with Angular v1.x
 
 ## Summary
 Sample Search Web Part that illustrates how you can use Angular within the new SharePoint Framework
@@ -9,10 +9,6 @@ Ideally instead of selecting a content type for the search you would want to sel
 through SharePoint's REST API.
 
 The logic for querying the SharePoint Content Types in the properties of the webpart was in part due to Chris O'Brien and this [blog post](http://www.sharepointnutsandbolts.com/2016/09/sharepoint-framework-spfx-web-part-properties-dynamic-dropdown.html?m=0)
-
-Environment Configuration:
-- Enable publishing features on site collection
-- Enable publishing features on site
 
 > Note: In order to use the ngOfficeFabric code I use the ModuleLoader to load newer source files than the currently
 > Office Fabric UI in SharePoint Online, which will cause many of the icons not to load properly on the SharePoint
@@ -54,4 +50,12 @@ Version|Date|Comments
 > Note: The Content Types that I pull for the search come from the Publishing Content Type which only
 > available when the Publishing Features are enabled on the site.
 
+- In the file 'AngularSearchWebPart.ts' around line 92 you will need to put the url of the directory where the html template file resides.
+
+> Note: Adding the location of the template is necessary because Angular's $sce doesn't trust the location taht the
+> html template is loaded from, so the url needs to be whitelisted with the $sce service. If you just want whitelisted
+> every url the entry in the $sce could just be '*'. There is plenty of documentation available if you run into trouble
+> whitelisting the template url.
+
+![WhiteList code example](./assets/whitelistCode.png)
 
