@@ -14,9 +14,9 @@ Environment Configuration:
 - Enable publishing features on site collection
 - Enable publishing features on site
 
-Note: In order to use the ngOfficeFabric code I use the ModuleLoader to load newer source files than the currently
-Office Fabric UI in SharePoint Online, which will cause many of the icons not to load properly on the SharePoint
-Page this webpart is added to.
+> Note: In order to use the ngOfficeFabric code I use the ModuleLoader to load newer source files than the currently
+> Office Fabric UI in SharePoint Online, which will cause many of the icons not to load properly on the SharePoint
+> Page this webpart is added to.
 
 ## Applies to
 
@@ -28,25 +28,25 @@ Page this webpart is added to.
 Solution|Author(s)
 --------|---------
 angular-search|David Hartman ([Slalom](https://slalom.com))
-### Building the code
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+## Version history
 
-This package produces the following:
+Version|Date|Comments
+-------|----|--------
+1.0|October 14, 2016|Initial release
 
-* lib/* commonjs components - this allows this package to be reused from other packages.
-* dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
-* example/* a test page that hosts all components in this package.
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-### Build options
+---
 
-gulp nuke - TODO
-gulp test - TODO
-gulp watch - TODO
-gulp build - TODO
-gulp deploy - TODO
+## Configuration Bliss
+
+- clone this repo
+- in the command line run:
+ - `npm i typings -g`
+ - `npm i`
+ - `gulp serve --nobrowser`
+
+
+
