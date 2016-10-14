@@ -89,7 +89,8 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
             // Allow same origin resource loads.
             'self',
             // Allow loading from our assets domain. Notice the diference between * and **
-            'https://15767-e7440:4321/dist/**'
+            'https://15767-e7440:4321/dist/**',
+            'https://15767-e7440:4321/*'
           ]);
         });
 

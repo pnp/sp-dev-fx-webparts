@@ -1,6 +1,9 @@
 ## angular-search
 
-This is where you include your web part docs.
+# Search Client-Side Web Part build with angular
+
+## Summary
+Sample Search Web Part that illustrates how you can use Angular within the new SharePoint Framework
 
 This app uses SharePoint's Search REST API endpoint to query listitems of a specific content type and displays the results to the end user.
 Ideally instead of selecting a content type for the search you would want to select a Result Source, but currently Result Sources are not
@@ -13,7 +16,14 @@ Environment:
   Enable publishing features on site collection
   Enable publishing features on site
 
+Note: In order to use the ngOfficeFabric code I use the ModuleLoader to load newer source files than the currently
+Office Fabric UI in SharePoint Online, which will cause many of the icons not to load properly on the SharePoint
+Page this webpart is added to.
 
+## Applies to
+
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
 ### Building the code
 
