@@ -1,6 +1,4 @@
-## angular-search
-
-# Search Client-Side Web Part build with angular
+# Search Client-Side Web Part Built with Angular
 
 ## Summary
 Sample Search Web Part that illustrates how you can use Angular within the new SharePoint Framework
@@ -25,6 +23,11 @@ Page this webpart is added to.
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
+## Solution
+
+Solution|Author(s)
+--------|---------
+angular-search|David Hartman (Slalom, (http://slalom.com))
 ### Building the code
 
 ```bash
