@@ -168,7 +168,7 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
                   label: strings.DescriptionFieldLabel
                 }),
                 PropertyPaneDropdown('contentTypes', {
-                  label: 'Dropdown',
+                  label: 'Available Content Types',
                   options: this._CTypesInThisSite,
                 })
               ]

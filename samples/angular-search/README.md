@@ -6,13 +6,16 @@ Sample Search Web Part that illustrates how you can use Angular within the new S
 ![Sample of the search web part](./assets/angularSearch.png)
 This app uses SharePoint's Search REST API endpoint to query listitems of a specific content type and displays the results to the end user.
 Ideally instead of selecting a content type for the search you would want to select a Result Source, but currently Result Sources are not
-through SharePoint's REST API.
+available through SharePoint's REST API.
 
 The logic for querying the SharePoint Content Types in the properties of the webpart was in part due to Chris O'Brien and this [blog post](http://www.sharepointnutsandbolts.com/2016/09/sharepoint-framework-spfx-web-part-properties-dynamic-dropdown.html?m=0)
 
 > Note: In order to use the ngOfficeFabric code I use the ModuleLoader to load newer source files than the currently
 > Office Fabric UI in SharePoint Online, which will cause many of the icons not to load properly on the SharePoint
 > Page this webpart is added to.
+
+> Note: For the display template of the search results I'm currently using the Office Fabric UI List template. Ideally
+> I was hoping to use the DocumentCard Component, however, that is not yet available through the ngOfficUIFabric.
 
 ## Applies to
 
@@ -48,7 +51,9 @@ Version|Date|Comments
  - Publishing features on site
 
 > Note: The Content Types that I pull for the search come from the Publishing Content Type which only
-> available when the Publishing Features are enabled on the site.
+> available when the Publishing Features are enabled on the site. I'm also searching by content type name
+> and not by id becauase then I would get everything that inherits from that content type. I only want the
+> the results for a specific content type and not everything that inherits that content type as well
 
 - In the file 'AngularSearchWebPart.ts' around line 92 you will need to put the url of the directory where the html template file resides.
 

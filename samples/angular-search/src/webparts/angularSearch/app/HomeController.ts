@@ -46,12 +46,14 @@ export default class HomeController {
       this.searchNotConfigured = true;
     }
 
-    this.status = this.searchNotConfigured ? 'Please configure the search settings in the Web Part properties' : 'Ready';
+    this.status = this.searchNotConfigured ? 'Please select a contenet type in the Web Part properties' : 'Ready';
     if ($scope) {
       //$scope.$digest();
 
-      //get search results
-      this.getSearchResults();
+      //get search results as long as it isn't our mock dataService
+      if (ctype.toLowerCase().indexOf('mock') == -1) {
+        this.getSearchResults();
+      }
     }
   }
 
@@ -76,7 +78,7 @@ export default class HomeController {
         var val: Object = {};
 
         result.Cells.results.forEach((cell: ICellValue) => {
-          if (cell.Key == 'HitHighlightedSummary'){
+          if (cell.Key == 'HitHighlightedSummary') {
             //need to replace <ddd> markup
             val[cell.Key] = cell.Value.replace(/ <ddd\/>/g, '.');
           }
@@ -88,7 +90,7 @@ export default class HomeController {
             val[cell.Key] = img.src;
           }
           else {
-          val[cell.Key] = cell.Value;
+            val[cell.Key] = cell.Value;
           }
         });
 

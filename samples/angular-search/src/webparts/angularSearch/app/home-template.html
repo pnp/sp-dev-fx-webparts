@@ -10,6 +10,11 @@
 				</uif-button>
 			</div>
 		</div>
+		<div class="ms-Grid-row" ng-show="vm.searchNotConfigured">
+			<div class="ms-Grid-col ms-u-sm12">
+				{{vm.status}}
+			</div>
+		</div>
 		<div class="ms-Grid-row" ng-show="vm.searching">
 			<div class="ms-Grid-col ms-u-smPush6 ms-u-mdPush6 ms-u-lgPush6 ms-u-xlPush6">
 				<uif-spinner uif-size="large">Searching...</uif-spinner>
