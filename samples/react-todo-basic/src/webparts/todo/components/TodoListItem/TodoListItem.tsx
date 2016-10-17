@@ -46,7 +46,7 @@ export default class TodoListItem extends React.Component<ITodoListItemProps,{}>
               className={ css(styles.deleteButton, 'ms-Grid-col', 'ms-u-sm1') }
               buttonType={ ButtonType.icon }
               icon='Cancel'
-              onClick={this._handleDeleteClick.bind(this)}
+              onClick={this._handleDeleteClick}
               />
           </div>
         </FocusZone>

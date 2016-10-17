@@ -32,6 +32,9 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   public constructor(context: IWebPartContext) {
     super(context);
 
+    /*
+    Create the appropriate data provider dependeing on where the web part is running
+    */
     if (context.environment.type === EnvironmentType.Local) {
       this._dataProvider = new MockDataProvider();
     } else {
@@ -45,8 +48,16 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   protected onInit(): Promise<void> {
     this.context.statusRenderer.displayLoadingIndicator(this.domElement, "Todo");
 
+    /*
+    Get the list of tasks lists from the current site and populate the property pane dropdown field with the values.
+    */
     return this._getTaskLists()
       .then(() => {
+        /*
+         If a list is already selected, then we would have stored the list Id in the associated web part property.
+         So, check to see if we do have a selected list for the web part. If we do, then we set that as the selected list
+         in the property pane dropdown field.
+        */
         if (this.properties.spListIndex) {
           this._setSelectedList(this.properties.spListIndex.toString());
           this.context.statusRenderer.clearLoadingIndicator(this.domElement);
@@ -55,6 +66,9 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   }
 
   public render(): void {
+    /*
+    Create the react element we want to render in the web part DOM. Pass the required props to the react component. 
+    */
     const element: React.ReactElement<ITodoContainerProps> = React.createElement(
       TodoContainer,
       {
@@ -68,20 +82,19 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     this._todoContainerComponent = <TodoContainer>ReactDom.render(element, this.domElement);
   }
 
-  protected onBeforeSerialize(): IHtmlProperties {
-    if (this._todoContainerComponent) {
-      //this.properties.description = this._todoContainerComponent.props.description;
-    }
-
-    return super.onBeforeSerialize();
-  }
-
   protected onPropertyChange(propertyPath: string, newValue: any): void {
+    /*
+    Check the property path to see which property pane feld changed. If the property path matches the dropdown, then we set that list
+    as the selected list for the web part. 
+    */
     if (propertyPath === 'spListIndex') {
       this._setSelectedList(newValue);
-      this.render();
     }
 
+    /*
+    Finally, tell property pane to re-render the web part. 
+    This is valid for reactive property pane. 
+    */
     super.onPropertyChange(propertyPath, newValue);
   }
 
@@ -95,6 +108,9 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
           groups: [
             {
               groupName: strings.BasicGroupName,
+              /*
+              Instead of creating the fields here, we call a method that will return the set of property fields to render.
+              */
               groupFields: this._getGroupFields()
             }
           ]
@@ -106,6 +122,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   private _getTaskLists(): Promise<void> {
     return this._dataProvider.getTaskLists()
       .then((taskLists: ITodoTaskList[]) => {
+        // Disable dropdown field if there are no results from the server.
         this._disableDropdown = taskLists.length === 0;
         if (taskLists.length !== 0) {
           this._dropdownOptions = taskLists.map((list: ITodoTaskList) => {
@@ -127,6 +144,10 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
       options: this._dropdownOptions
     }));
 
+    /*
+    When we do not have any lists returned from the server, we disable the dropdown. If that is the case,
+    we also add a label field displaying the appropriate message. 
+    */
     if (this._disableDropdown) {
       fields.push(PropertyPaneLabel(null, {
         text: 'Could not find tasks lists in your site. Create one or more tasks list and then try using the web part.'

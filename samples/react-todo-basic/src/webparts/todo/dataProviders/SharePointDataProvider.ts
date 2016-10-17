@@ -53,7 +53,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
 
     const batchPromises: Promise<{}>[] = [
       this._createItem(batch, title),
-      this._getItems(batch)
+      this._getItemsBatched(batch)
     ];
 
     return this._resolveBatch(batch, batchPromises);
@@ -64,7 +64,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
 
     const batchPromises: Promise<{}>[] = [
       this._deleteItem(batch, itemDeleted),
-      this._getItems(batch)
+      this._getItemsBatched(batch)
     ];
 
     return this._resolveBatch(batch, batchPromises);
@@ -75,13 +75,13 @@ export default class SharePointDataProvider implements ITodoDataProvider {
 
     const batchPromises: Promise<{}>[] = [
       this._updateItem(batch, itemUpdated),
-      this._getItems(batch)
+      this._getItemsBatched(batch)
     ];
 
     return this._resolveBatch(batch, batchPromises);
   }
 
-  private _getItems(requester: HttpClient | ODataBatch): Promise<ITodoItem[]> {
+  private _getItems(requester: HttpClient): Promise<ITodoItem[]> {
     const queryString: string = `?$select=Id,Title,PercentComplete`;
     const queryUrl: string = this._listItemsUrl + queryString;
 
@@ -95,6 +95,22 @@ export default class SharePointDataProvider implements ITodoDataProvider {
         });
       });
   }
+
+  private _getItemsBatched(requester: ODataBatch): Promise<ITodoItem[]> {
+    const queryString: string = `?$select=Id,Title,PercentComplete`;
+    const queryUrl: string = this._listItemsUrl + queryString;
+
+    return requester.get(queryUrl)
+      .then((response: Response) => {
+        return response.json();
+      })
+      .then((json: { value: ITodoItem[] }) => {
+        return json.value.map((task: ITodoItem) => {
+          return task;
+        });
+      });
+  }
+
 
   private _createItem(batch: ODataBatch, title: string): Promise<Response> {
     const body: {} = {
