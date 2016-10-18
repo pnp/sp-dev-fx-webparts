@@ -271,17 +271,32 @@ public createItem(title: string): Promise<ITodoItem[]> {
 
     const batchPromises: Promise<{}>[] = [
       this._createItem(batch, title),
-      this._getItems(batch)
+      this._getItemsBatched(batch)
     ];
 
     return this._resolveBatch(batch, batchPromises);
   }
 ```
 
-And below is the code that retrieves todo items from the task list. Depending on the requester, it will create either a `HttpClient` or `ODataBatch` object:
+And below is the code that retrieves todo items from the task list. We have a simple GET and a batched GET to accomodate for batch requests.
 
 ```ts
-private _getItems(requester: HttpClient | ODataBatch): Promise<ITodoItem[]> {
+private _getItems(requester: HttpClient): Promise<ITodoItem[]> {
+    const queryString: string = `?$select=Id,Title,PercentComplete`;
+    const queryUrl: string = this._listItemsUrl + queryString;
+
+    return requester.get(queryUrl)
+      .then((response: Response) => {
+        return response.json();
+      })
+      .then((json: { value: ITodoItem[] }) => {
+        return json.value.map((task: ITodoItem) => {
+          return task;
+        });
+      });
+  }
+
+  private _getItemsBatched(requester: ODataBatch): Promise<ITodoItem[]> {
     const queryString: string = `?$select=Id,Title,PercentComplete`;
     const queryUrl: string = this._listItemsUrl + queryString;
 
@@ -299,7 +314,7 @@ private _getItems(requester: HttpClient | ODataBatch): Promise<ITodoItem[]> {
 To execute multiple API requests, we create a new batch that includes those requests, and then resolve it. In our code, we create the following two requests:
 
 - `_createItem` | Creating a new item in the list
-- `_getItems` | Getting the new set of items
+- `_getItemsBatched` | Getting the new set of items
 
 Each of the method will be executed in the order specified. To execute the batch requests, we call the `_resolveBatch` method
 
