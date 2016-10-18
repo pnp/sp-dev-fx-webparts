@@ -312,4 +312,6 @@ private _resolveBatch(batch: ODataBatch, promises: Promise<{}>[]): Promise<ITodo
   }
 ```
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-todo-basic" />
+
 
