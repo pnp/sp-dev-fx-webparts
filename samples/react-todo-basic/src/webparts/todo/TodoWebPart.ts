@@ -7,8 +7,7 @@ import {
   PropertyPaneDropdown,
   IPropertyPaneField,
   PropertyPaneLabel,
-  IPropertyPaneDropdownOption,
-  IHtmlProperties
+  IPropertyPaneDropdownOption
 } from '@microsoft/sp-client-preview';
 import { EnvironmentType } from '@microsoft/sp-client-base';
 import * as lodash from '@microsoft/sp-lodash-subset';
@@ -51,7 +50,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     /*
     Get the list of tasks lists from the current site and populate the property pane dropdown field with the values.
     */
-    return this._getTaskLists()
+    return this._loadTaskLists()
       .then(() => {
         /*
          If a list is already selected, then we would have stored the list Id in the associated web part property.
@@ -73,7 +72,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
       TodoContainer,
       {
         dataProvider: this._dataProvider,
-        webPartContext: this.context,
         webPartDisplayMode: this.displayMode,
         configureStartCallback: this._openPropertyPane
       }
@@ -119,7 +117,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     };
   }
 
-  private _getTaskLists(): Promise<void> {
+  private _loadTaskLists(): Promise<void> {
     return this._dataProvider.getTaskLists()
       .then((taskLists: ITodoTaskList[]) => {
         // Disable dropdown field if there are no results from the server.
