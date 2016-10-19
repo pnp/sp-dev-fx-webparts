@@ -61,7 +61,7 @@ export default class TableTemplate extends React.Component<ITableTemplate, {}> {
 							this.props.results.map((result, index) => {
 								return (<tr key={index}>
 											<td>
-												<a href={result.Path}><img src={`${this.iconUrl}${result.Fileextension !== null && this.unknown.indexOf(result.Fileextension) === -1 ? result.Fileextension : 'code'}.png`} /></a>
+												<a href={result.Path}><img src={`${this.iconUrl}${result.Fileextension !== null && this.unknown.indexOf(result.Fileextension) === -1 ? result.Fileextension : 'code'}.png`} role='presentation' /></a>
 											</td>
 											<td>
 												<a href={result.Path}>{result.Filename !== null ? result.Filename.substring(0, result.Filename.lastIndexOf('.')) : ""}</a>

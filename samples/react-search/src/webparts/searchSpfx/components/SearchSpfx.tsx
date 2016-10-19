@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISearchSpfxWebPartProps } from '../ISearchSpfxWebPartProps';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 import searchActions from '../flux/actions/searchActions';
 import searchStore from '../flux/stores/searchStore';
