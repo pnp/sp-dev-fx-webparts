@@ -23,6 +23,7 @@ Version|Date|Comments
 -------|----|--------
 0.0.4|September 08, 2016|Initial release
 0.0.5|September 27, 2016|Updates for drop 4. Added the abilty to use various search tokens. Plus a logging field to watch search calls.
+0.0.6|October 19, 2016|Updates for drop 5.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -60,6 +61,8 @@ External templates can be loaded from an URL.
 ![External template settings](./assets/external.png)
 
 If you want to test out this functionality, you can find a couple of sample templates in the [external templates]('./external_templates') folder. Upload one of these templates to your site, copy the file location and past it in the textbox.
+
+> There is a sample project which you can use to create your own external templates. You can find it here: [Search WP SPFx Template Generator](https://github.com/estruyf/search-wp-spfx-templategenerator).
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
