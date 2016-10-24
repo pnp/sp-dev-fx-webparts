@@ -1,8 +1,8 @@
-# Real Time News Feed using SPFx, Flow, Azure and socket.io #
+# Real Time News Feed using Microsoft Flow, Azure and socket.io #
 
 ## Summary
 
-This sample shows you how to implement real time web parts using the SPFx, Microsoft Flow and socket.io.
+This sample shows you how to implement real time web parts using the SPFx, Microsoft Flow and [socket.io](http://socket.io/).
 
 <p align="center">
   <img width="900" src="./assets/animated-demo.gif"/>
@@ -44,7 +44,7 @@ Before starting, you'll need to install some prerequisites:
 
 Solution|Author(s)
 --------|---------
-samples\react-socket-io | Franck Cornu (MVP, @franckcornu)
+react-real-time | Franck Cornu (MVP, [@franckcornu](https://twitter.com/FranckCornu))
 
 ## Version history
 
@@ -156,8 +156,8 @@ Version|Date|Comments
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-- Using web sockets through the socket.io library to implement real time communications with an Azure back end server.
+- Using web sockets through the socket.io library to implement real time communications between SharePoint Web Parts and an Azure back end server.
 - Using PnP JS library (1.0.5) to get items from a list. 
-- Using Office UI Fabric React components to build a beautiful design.
+- Using Office UI Fabric React components to build a beautiful design in minutes.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-socket-io" />
