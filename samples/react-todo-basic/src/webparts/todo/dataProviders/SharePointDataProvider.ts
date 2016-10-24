@@ -3,6 +3,7 @@ import { IWebPartContext } from '@microsoft/sp-client-preview';
 import ITodoDataProvider from '../dataProviders/ITodoDataProvider';
 import ITodoItem from '../models/ITodoItem';
 import ITodoTaskList from '../models/ITodoTaskList';
+import IList from '../models/IList';
 
 export default class SharePointDataProvider implements ITodoDataProvider {
 
@@ -28,6 +29,25 @@ export default class SharePointDataProvider implements ITodoDataProvider {
 
   public get webPartContext(): IWebPartContext {
     return this._webPartContext;
+  }
+
+  public createTaskList(): Promise<{}> {
+    const listTemplateId: number = 171;
+    const postBody: IList = {
+        // __metadata: { type: 'SP.List' },
+        Title: 'Todo',
+        BaseTemplate: 171,
+        Description: 'Todo List Webpart list'
+    };
+    const reqHeaders: Headers = new Headers();
+    reqHeaders.append('odata-version', '3.0');
+
+    return this._webPartContext.httpClient.post(this._listsUrl,{
+        body: JSON.stringify(postBody)
+      })
+      .then((response: Response) => {
+        return response.json();
+      });
   }
 
   public getTaskLists(): Promise<ITodoTaskList[]> {

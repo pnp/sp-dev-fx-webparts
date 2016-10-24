@@ -8,6 +8,8 @@ interface ITodoDataProvider {
 
   webPartContext: IWebPartContext;
 
+  createTaskList(): Promise<{}>;
+
   getTaskLists(): Promise<ITodoTaskList[]>;
 
   getItems(): Promise<ITodoItem[]>;
