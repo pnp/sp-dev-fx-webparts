@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "spfx-socket-io",
+    "libraryId": "a89569d5-e511-4f93-8cba-eabdd0567ee5",
+    "framework": "react"
+  }
+}

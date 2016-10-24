@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "spfx-socket-io-client-side-solution",
+    "id": "a89569d5-e511-4f93-8cba-eabdd0567ee5",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-socket-io.spapp"
+  }
+}
