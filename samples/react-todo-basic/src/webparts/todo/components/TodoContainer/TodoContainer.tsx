@@ -32,7 +32,6 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
     };
 
     this._configureWebPart = this._configureWebPart.bind(this);
-    this._createList = this._createList.bind(this);
     this._createTodoItem = this._createTodoItem.bind(this);
     this._completeTodoItem = this._completeTodoItem.bind(this);
     this._deleteTodoItem = this._deleteTodoItem.bind(this);
@@ -99,10 +98,6 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
 
   private _configureWebPart(): void {
     this.props.configureStartCallback();
-  }
-
-  private _createList(): void {
-    this.props.dataProvider.createTaskList();
   }
 
   private _createTodoItem(inputValue: string): Promise<void> {
