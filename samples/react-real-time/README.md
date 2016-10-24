@@ -80,7 +80,7 @@ Version|Date|Comments
 
     It is recommended to deploy this solution on a test Azure subscription because by default, the script will override the local git deployment credentials configured for your subscription (for the web application provisioning).
     If you want to set you own parameters, update the `Deploy-Solution.ps1` script and replace tokens with your desired configuration.
-    Notice that some values have to be unique within the whole Azure platform (for instance, the web application name and the deployment user name), that's why we use a random guid each time.
+    Notice that some values have to be unique within the whole Azure platform (for instance the web application name, the deployment user name, etc.), that's why we use a random guid each time.
 
 
     ```ps
