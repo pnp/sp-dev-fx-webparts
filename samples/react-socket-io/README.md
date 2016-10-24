@@ -158,6 +158,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 - Using web sockets through the socket.io library to implement real time communications with an Azure back end server.
 - Using PnP JS library (1.0.5) to get items from a list. 
-- Using Office UI Fabric React components to build a beautiful desgin
+- Using Office UI Fabric React components to build a beautiful design.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-socket-io" />
