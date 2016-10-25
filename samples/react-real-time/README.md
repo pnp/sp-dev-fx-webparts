@@ -89,17 +89,18 @@ Version|Date|Comments
     # Azure Configuration
     # -----------------------------------------------------
 
+    Write-Host -ForegroundColor Magenta "Login to Azure..."
     Login-AzureRmAccount
 
     $GitPublishingUserName = "tempdeployuser" + [Guid]::NewGuid();
     $GitPublishingUserPassword = "socketio123!"
-    $AzureSBNamespace = "SPFxSocketIOServiceBus";
-    $AzureWebAppName = "SPFxSocketIOWebApp"+[Guid]::NewGuid()
-    $AppServicePlanName = "SPFxSocketIOServicePlan"
+    $AzureSBNamespace = "ServiceBus" + [Guid]::NewGuid();
+    $AzureWebAppName = "WebApp" + [Guid]::NewGuid()
+    $AppServicePlanName = "ServicePlan"
     $TemplateFilePath = ".\azure-deploy.json"
     $AzureResourceGroupLocation = "East US2"
     $AzureResourceGroupName = "SPFxSocketIODemo"
-    $AzureRmResourceGroupDeploymentName = "SPFxSocketIODemo" 
+    $AzureRmResourceGroupDeploymentName = $AzureResourceGroupName 
     $ServerCodeFolderLocation = ".\server"
 
     ```
@@ -139,7 +140,7 @@ Version|Date|Comments
     </p>
     
 7. Go back to your list and add initial items in the list.
-8. In your SharePoint site, [upload the workbench.aspx page](https://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant) in the *Documents* library and add the *"RealTimeNewsFeed"* Web Part to your page. You should see newly created items.
+8. In your SharePoint site, [upload the workbench.aspx page](https://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant) in the *Documents* library and make sure the `gulp serve` cmd is running. Then, add the *"RealTimeNewsFeed"* Web Part in your page. You should see newly created items.
     
     <p align="center">
         <img width="400" src="./assets/spfx-initial.png"/>
