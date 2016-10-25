@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "send-email-client-side-solution",
+    "id": "4def619f-66d2-4eb0-8b71-dfc1cbd2e3c5",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/send-email.spapp"
+  }
+}
