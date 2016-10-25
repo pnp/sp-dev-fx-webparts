@@ -5,32 +5,31 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-client-preview';
 
+import ModuleLoader from '@microsoft/sp-module-loader';
 import styles from './SendEmail.module.scss';
 import * as strings from 'sendEmailStrings';
 import { ISendEmailWebPartProps } from './ISendEmailWebPartProps';
+
+import * as angular from 'angular';
+import './sendEmailApp/app'
 
 export default class SendEmailWebPart extends BaseClientSideWebPart<ISendEmailWebPartProps> {
 
   public constructor(context: IWebPartContext) {
     super(context);
+    ModuleLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css');
+    ModuleLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
   }
 
   public render(): void {
     this.domElement.innerHTML = `
       <div class="${styles.sendEmail}">
-        <div class="${styles.container}">
-          <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
-            <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-              <span class="ms-font-xl ms-fontColor-white">Welcome to SharePoint!</span>
-              <p class="ms-font-l ms-fontColor-white">Customize SharePoint experiences using Web Parts.</p>
-              <p class="ms-font-l ms-fontColor-white">${this.properties.description}</p>
-              <a href="https://github.com/SharePoint/sp-dev-docs/wiki" class="ms-Button ${styles.button}">
-                <span class="ms-Button-label">Learn more</span>
-              </a>
-            </div>
-          </div>
+        <div>
+        <uif-button uif-type="primary">Click here to send an Email</uif-button>
         </div>
       </div>`;
+
+      angular.bootstrap(this.domElement, ['sendEmailApp']);
   }
 
   protected get propertyPaneSettings(): IPropertyPaneSettings {
