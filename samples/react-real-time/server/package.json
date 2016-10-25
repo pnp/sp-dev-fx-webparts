@@ -8,6 +8,9 @@
   "scripts": {
     "start": "node server"
   },
+  "engines": {
+    "node": "6.9.0"
+  },
   "license": "Apache",
   "dependencies": {
     "azure": "^1.2.0-preview",

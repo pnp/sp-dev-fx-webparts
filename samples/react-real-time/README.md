@@ -96,7 +96,7 @@ Version|Date|Comments
     $GitPublishingUserPassword = "socketio123!"
     $AzureSBNamespace = "ServiceBus" + [Guid]::NewGuid();
     $AzureWebAppName = "WebApp" + [Guid]::NewGuid()
-    $AppServicePlanName = "ServicePlan"
+    $AppServicePlanName = "ServicePlan" + [Guid]::NewGuid()
     $TemplateFilePath = ".\azure-deploy.json"
     $AzureResourceGroupLocation = "East US2"
     $AzureResourceGroupName = "SPFxSocketIODemo"
