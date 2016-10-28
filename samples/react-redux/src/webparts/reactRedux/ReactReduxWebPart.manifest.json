@@ -13,7 +13,7 @@
     "description": { "default": "react-redux description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "react-redux"
+      "disableReactive": false
     }
   }]
 }

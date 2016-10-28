@@ -5,7 +5,7 @@ import {
   IPropertyPaneSettings,
   IWebPartContext,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 import { Store } from 'redux'
 import { Provider } from 'react-redux'
 
@@ -13,6 +13,7 @@ import * as strings from 'reactReduxStrings';
 import DefaultContainer from './containers/DefaultContainer';
 import { IReactReduxWebPartProps } from './IReactReduxWebPartProps';
 import { createStore, IState } from './store'
+import { applyProperties, updateProperty } from './reducers/webpart'
 
 export default class ReactReduxWebPart extends BaseClientSideWebPart<IReactReduxWebPartProps> {
   store: Store<IState>
@@ -31,6 +32,26 @@ export default class ReactReduxWebPart extends BaseClientSideWebPart<IReactRedux
     )
 
     ReactDom.render(element, this.domElement);
+  }
+
+  protected get disableReactivePropertyChanges() {
+    return this.properties ? this.properties.disableReactive : false
+  }
+
+  protected onPropertyChanged(propertyPath, oldValue, newValue) {
+    if (!this.disableReactivePropertyChanges) {
+      this.store.dispatch(updateProperty(propertyPath, newValue))
+    }
+  }
+
+  protected onInit() {
+    this.store.dispatch(applyProperties(this.properties))
+
+    return Promise.resolve(true)
+  }
+
+  protected onAfterPropertyPaneChangesApplied() {
+    this.store.dispatch(applyProperties(this.properties))
   }
 
   protected get propertyPaneSettings(): IPropertyPaneSettings {
