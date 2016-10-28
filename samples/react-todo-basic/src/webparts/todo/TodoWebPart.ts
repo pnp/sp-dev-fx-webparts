@@ -32,9 +32,10 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     super(context);
 
     /*
-    Create the appropriate data provider dependeing on where the web part is running
+    Create the appropriate data provider dependeing on where the web part is running.
+    The DEBUG flag will ensure the mock data provider is not bundled with the web part when you package the solution for distribution, that is, using the --ship flag with the package-solution gulp command.
     */
-    if (context.environment.type === EnvironmentType.Local) {
+    if (DEBUG && context.environment.type === EnvironmentType.Local) {
       this._dataProvider = new MockDataProvider();
     } else {
       this._dataProvider = new SharePointDataProvider();
