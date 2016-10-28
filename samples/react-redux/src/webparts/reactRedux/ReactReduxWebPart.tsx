@@ -10,7 +10,7 @@ import { Store } from 'redux'
 import { Provider } from 'react-redux'
 
 import * as strings from 'reactReduxStrings';
-import ReactRedux, { IReactReduxProps } from './components/ReactRedux';
+import DefaultContainer from './containers/DefaultContainer';
 import { IReactReduxWebPartProps } from './IReactReduxWebPartProps';
 import { createStore, IState } from './store'
 
@@ -26,7 +26,7 @@ export default class ReactReduxWebPart extends BaseClientSideWebPart<IReactRedux
   public render(): void {
     const element = (
       <Provider store={this.store}>
-        <ReactRedux name={this.properties.name} />
+        <DefaultContainer />
       </Provider>
     )
 
