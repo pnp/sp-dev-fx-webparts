@@ -1,0 +1,6 @@
+{
+  "workingDir": "./temp/deploy/",
+  "account": "<!-- STORAGE ACCOUNT NAME -->",
+  "container": "sp-bot-chat-webpart",
+  "accessKey": "<!-- ACCESS KEY -->"
+}
