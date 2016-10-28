@@ -1,5 +1,5 @@
 export interface IReactReduxWebPartProps {
-  name: string,
-  disableReactive?: boolean
+  name: string;
+  disableReactive?: boolean;
 }
 

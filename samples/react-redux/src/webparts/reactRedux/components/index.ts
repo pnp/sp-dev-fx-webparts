@@ -1,5 +1,5 @@
-import Greeter from './Greeter'
-import ReactiveInfo from './ReactiveInfo'
+import Greeter from './Greeter';
+import ReactiveInfo from './ReactiveInfo';
 
 export {
   Greeter,

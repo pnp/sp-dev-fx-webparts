@@ -1,13 +1,13 @@
-import * as React from 'react'
+import * as React from 'react';
 
 export interface IReactiveInfoProps {
-  reactive: boolean
+  reactive: boolean;
 }
 
 const ReactiveInfo = ({ reactive }: IReactiveInfoProps) => (
   <pre>
     { JSON.stringify({ reactive }) }
   </pre>
-)
+);
 
-export default ReactiveInfo
+export default ReactiveInfo;
