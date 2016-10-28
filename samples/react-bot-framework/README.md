@@ -30,7 +30,7 @@ See more details on how to create a bot from following locations.
 
 
 > Notice that you can find simplistic bot implemented with Visual Studio 2015 using the bot templates (Oct 2016)
-under the [vs2015-bot-application](./vs2015-bot-application/readme.md) folder. This is simplistic bot based on above blog posts, which responses random string back.
+under the [vs2015-bot-application](./vs2015-bot-application) folder. This is simplistic bot based on above blog posts, which responses random string back.
 
 ## Solution
 
