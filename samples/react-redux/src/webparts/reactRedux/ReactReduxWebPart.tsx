@@ -16,7 +16,7 @@ import { createStore, IState } from './store';
 import { applyProperties, updateProperty } from './reducers/webpart';
 
 export default class ReactReduxWebPart extends BaseClientSideWebPart<IReactReduxWebPartProps> {
-  store: Store<IState>;
+  private store: Store<IState>;
 
   public constructor(context: IWebPartContext) {
     super(context);
