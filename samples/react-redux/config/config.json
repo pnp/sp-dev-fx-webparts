@@ -2,7 +2,12 @@
   "entries": [
     {
       "entry": "./lib/webparts/reactRedux/ReactReduxWebPart.js",
-      "manifest": "./src/webparts/reactRedux/ReactReduxWebPart.manifest.json",
+      "manifest": "./src/webparts/reactRedux/ReactReduxWebPart.reactive.manifest.json",
+      "outputPath": "./dist/react-redux.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/reactRedux/ReactReduxWebPart.js",
+      "manifest": "./src/webparts/reactRedux/ReactReduxWebPart.nonreactive.manifest.json",
       "outputPath": "./dist/react-redux.bundle.js"
     }
   ],
