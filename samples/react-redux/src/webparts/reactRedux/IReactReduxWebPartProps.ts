@@ -1,3 +1,4 @@
 export interface IReactReduxWebPartProps {
-  description: string;
+  name: string,
 }
+

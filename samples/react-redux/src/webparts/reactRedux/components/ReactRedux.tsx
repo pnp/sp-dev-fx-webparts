@@ -21,12 +21,12 @@ export default class ReactRedux extends React.Component<IReactReduxProps, {}> {
                 Customize SharePoint experiences using Web Parts.
               </p>
               <p className='ms-font-l ms-fontColor-white'>
-                {this.props.description}
+                {this.props.name}
               </p>
               <a
                 className={css('ms-Button', styles.button)}
                 href='https://github.com/SharePoint/sp-dev-docs/wiki'
-              >
+                >
                 <span className='ms-Button-label'>Learn more</span>
               </a>
             </div>

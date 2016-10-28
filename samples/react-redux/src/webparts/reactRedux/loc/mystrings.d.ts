@@ -1,7 +1,7 @@
 declare interface IReactReduxStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  NameFieldLabel: string;
 }
 
 declare module 'reactReduxStrings' {
