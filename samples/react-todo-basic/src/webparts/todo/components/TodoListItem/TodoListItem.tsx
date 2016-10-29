@@ -21,6 +21,13 @@ export default class TodoListItem extends React.Component<ITodoListItemProps,{}>
     this._handleDeleteClick = this._handleDeleteClick.bind(this);
   }
 
+  public shouldComponentUpdate(newProps: ITodoListItemProps): boolean {
+    return (
+      this.props.item !== newProps.item ||
+      this.props.isChecked !== newProps.isChecked
+    );
+  }
+
   public render(): JSX.Element {
     const classTodoItem: string = css(
       styles.todoListItem,
@@ -55,7 +62,6 @@ export default class TodoListItem extends React.Component<ITodoListItemProps,{}>
   }
 
   private _handleToggleChanged(ev: React.FormEvent, checked: boolean): void {
-
     const newItem: ITodoItem = update(this.props.item, {
       PercentComplete: { $set: this.props.item.PercentComplete >= 1 ? 0 : 1 }
     });

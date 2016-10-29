@@ -59,7 +59,7 @@ While you can choose from many patterns, this kind of an approach, to break into
 
 ### Status Renderers
 
-SharePoint Framework provides status renderers to display information when the web part is performing any time consuming operations such as fetching data from SharePoint. The following status renderers are available via the web part context property:
+SharePoint Framework provides status renderers to use when the web part is loading information from SharePoint or display error if the web part run into issues that could prevent it from working properly. The following status renderers are available via the web part context property. Do note that the status renderers take up the entire web part UX.
 
 - Loading indicator
    - Used to display the loading indicator. Useful when you are initializing or loading any content in your web part.

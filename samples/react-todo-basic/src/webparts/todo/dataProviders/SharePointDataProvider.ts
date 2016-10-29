@@ -36,11 +36,9 @@ export default class SharePointDataProvider implements ITodoDataProvider {
     const postBody: IList = {
         // __metadata: { type: 'SP.List' },
         Title: 'Todo',
-        BaseTemplate: 171,
+        BaseTemplate: listTemplateId,
         Description: 'Todo List Webpart list'
     };
-    const reqHeaders: Headers = new Headers();
-    reqHeaders.append('odata-version', '3.0');
 
     return this._webPartContext.httpClient.post(this._listsUrl,{
         body: JSON.stringify(postBody)

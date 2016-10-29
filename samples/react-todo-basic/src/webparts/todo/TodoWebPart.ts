@@ -8,8 +8,7 @@ import {
   IPropertyPaneField,
   PropertyPaneLabel,
   PropertyPaneButton,
-  IPropertyPaneDropdownOption,
-  IHtmlProperties
+  IPropertyPaneDropdownOption
 } from '@microsoft/sp-client-preview';
 import { EnvironmentType } from '@microsoft/sp-client-base';
 import * as lodash from '@microsoft/sp-lodash-subset';
@@ -34,9 +33,10 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     super(context);
 
     /*
-    Create the appropriate data provider dependeing on where the web part is running
+    Create the appropriate data provider dependeing on where the web part is running.
+    The DEBUG flag will ensure the mock data provider is not bundled with the web part when you package the solution for distribution, that is, using the --ship flag with the package-solution gulp command.
     */
-    if (context.environment.type === EnvironmentType.Local) {
+    if (DEBUG && context.environment.type === EnvironmentType.Local) {
       this._dataProvider = new MockDataProvider();
     } else {
       this._dataProvider = new SharePointDataProvider();
@@ -45,7 +45,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
 
     this._openPropertyPane = this._openPropertyPane.bind(this);
     this._createList = this._createList.bind(this);
-    this._getTaskLists = this._getTaskLists.bind(this);
+    this._loadTaskLists = this._loadTaskLists.bind(this);
     this._refreshPropertyPane = this._refreshPropertyPane.bind(this);
   }
 
@@ -55,7 +55,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     /*
     Get the list of tasks lists from the current site and populate the property pane dropdown field with the values.
     */
-    return this._getTaskLists()
+    return this._loadTaskLists()
       .then(() => {
         /*
          If a list is already selected, then we would have stored the list Id in the associated web part property.
@@ -77,7 +77,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
       TodoContainer,
       {
         dataProvider: this._dataProvider,
-        webPartContext: this.context,
         webPartDisplayMode: this.displayMode,
         configureStartCallback: this._openPropertyPane
       }
@@ -123,7 +122,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     };
   }
 
-  private _getTaskLists(): Promise<void> {
+  private _loadTaskLists(): Promise<void> {
     return this._dataProvider.getTaskLists()
       .then((taskLists: ITodoTaskList[]) => {
         // Disable dropdown field if there are no results from the server.
@@ -141,7 +140,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
 
   private _createList(): any{
     this._dataProvider.createTaskList()
-      .then(this._getTaskLists)
+      .then(this._loadTaskLists)
       .then(this._refreshPropertyPane);
   }
 
@@ -159,11 +158,11 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     we also add a label field displaying the appropriate message.
     */
     if (this._hasNoTaskList) {
+      fields.push(PropertyPaneButton('createList', { onClick: this._createList, text: 'Create a Todo list' }));
+
       fields.push(PropertyPaneLabel(null, {
         text: 'Could not find tasks lists in your site. Create one or more tasks list and then try using the web part.'
       }));
-
-      fields.push(PropertyPaneButton('createList', { onClick: this._createList, text: 'Create a Todo list' }));
     }
 
     return fields;

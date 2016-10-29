@@ -4,7 +4,7 @@ import * as ReactDom from 'react-dom';
 import {
 	IPropertyPaneField,
 	IPropertyPaneFieldType
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import { IPropertyPaneLoggingFieldProps } from './IPropertyPaneLoggingFieldProps';
 import PropertyPaneLoggingFieldHost, { IPropertyPaneLoggingFieldHostProps } from './PropertyPaneLoggingFieldHost';

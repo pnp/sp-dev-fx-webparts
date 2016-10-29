@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { IPageContext } from '../../utils/IPageContext';
 
 import * as moment from 'moment';

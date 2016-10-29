@@ -3,7 +3,7 @@ import searchActionIDs from '../actions/searchActionIDs';
 import SearchTokenHelper from '../helpers/SearchTokenHelper';
 import { EventEmitter } from 'events';
 
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { ISearchResults, ICells, ICellValue } from '../../utils/ISearchResults';
 
 const CHANGE_EVENT: string = 'change';
