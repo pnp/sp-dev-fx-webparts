@@ -36,7 +36,7 @@ Write-Host -ForegroundColor Green "Done!"
 # -----------------------------------------------------
 
 Write-Host -ForegroundColor Magenta "Login to Azure..."
-Login-AzureRmAccount
+Login-AzureRmAccount 
 
 $GitPublishingUserName = "tempdeployuser" + [Guid]::NewGuid();
 $GitPublishingUserPassword = "socketio123!"
@@ -82,13 +82,20 @@ Try {
 
     # Check if the namespace already exists or needs to be created
     if ($CurrentNamespace) {
-        # Set the Web Applicatio settings
+
+        Write-Host -ForegroundColor Magenta "Set application settings for service bus connection..."
+
+        # Set the Web Application settings
         $AppSettings = New-Object Hashtable
         $AppSettings["AZURE_SERVICEBUS_ACCESS_KEY"]=$CurrentNamespace.ConnectionString
 
         # Set application settings and enable WebSockets
         Set-AzureWebsite -Name $AzureWebAppName -AppSettings $AppSettings
+    } else {
+
+        Write-Warning "Azure Service Bus namespace '$AzureSBNamespace' not found. Make sure you've selected the right Azure subscription (forgot to run the Add-AzureAccount cmdlet?)"
     }
+    
     Write-Host -ForegroundColor Green "Done!"
 
     # Deploy the code to the Web Application using Local Git

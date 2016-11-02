@@ -33,6 +33,7 @@ Here is the solution overview:
 Before starting, you'll need to install some prerequisites:
 
 - Install the [Azure PowerShell SDK](https://azure.microsoft.com/en-us/documentation/articles/powershell-install-configure/). Make sure you've installed the AzureRM module as well.
+  Run the `Add-AzureAccount` cmdlet and optionaly select the correct Azure subscription to work with by running the `Select-AzureSubscription` cmdlet.
 - Install the latest release of [PnP PowerShell cmdlets 'SharePointPnPPowerShellOnline'](https://github.com/OfficeDev/PnP-PowerShell/releases) or a version compatible with the 201605 PnP schema version.
 - Install [Node.js](https://nodejs.org/en/) on your machine.
 - Install [Git for Windows](https://git-scm.com/download/win).
