@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "ang-2-webparts-client-side-solution",
+    "id": "4f46fa78-b053-4fbb-9b61-f534c4e77bfa",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "ang-2-webparts.spapp"
+  }
+}
