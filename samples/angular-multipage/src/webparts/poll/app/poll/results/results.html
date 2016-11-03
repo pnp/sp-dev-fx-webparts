@@ -1,0 +1,11 @@
+<div ng-hide="vm.error">
+	<div ng-show="vm.loading">
+		<spinner>Loading...</spinner>
+	</div>
+
+	<canvas ng-hide="vm.loading" class="chart chart-horizontal-bar" chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options">
+	</canvas>
+</div>
+<div ng-show="vm.error" class="ms-fontColor-red">
+	<i class="ms-Icon ms-Icon--StatusErrorFull"></i> An error has occured while loading vote options: <em>{{::vm.error.data['odata.error'].message.value}}</em>
+</div>
