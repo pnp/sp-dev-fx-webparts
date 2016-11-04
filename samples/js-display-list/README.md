@@ -1,10 +1,12 @@
 # Display List JavaScript Client-Side Web Part
 
 ## Summary
-Sample Web Part that demonstrates the use of JavaScript in creating a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list.
- 
+Simplistic sample Web Part that demonstrates the use of JavaScript in creating a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list.
+
 
 ![Screeshot of the Display List web part](./assets/display-list-preview.png).
+
+> Does only show data when hosted in SharePoint. No mock data at this point for local testing the rendering.
 
 ## Applies to
 
@@ -39,13 +41,14 @@ Version|Date|Comments
   - `tsd install`
   - `gulp serve`
   - `Open the *workbench* on your Office 365 Developer tenant`
+      - Basic functionality can be tested locally, data is only shown when used in context of SharePoint
 
 ## Features
-The js-display-list web part displays the content of the list specified in the web part properties pane. 
+The js-display-list web part displays the content of the list specified in the web part properties pane.
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using a dynamic drop down box in the web part properties pane to display the titles of the lists in the current web 
+* Using a dynamic drop down box in the web part properties pane to display the titles of the lists in the current web
 * The use of a Loading Indicator
 * Logging
 * Rendering error messages.

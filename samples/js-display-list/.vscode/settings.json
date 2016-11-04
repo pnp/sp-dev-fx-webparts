@@ -18,4 +18,6 @@
     "lib": true,
     "temp": true
   }
+,
+"typescript.check.workspaceVersion": false
 }
