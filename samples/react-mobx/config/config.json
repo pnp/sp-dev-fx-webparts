@@ -2,7 +2,12 @@
   "entries": [
     {
       "entry": "./lib/webparts/reactMobx/ReactMobxWebPart.js",
-      "manifest": "./src/webparts/reactMobx/ReactMobxWebPart.manifest.json",
+      "manifest": "./src/webparts/reactMobx/ReactMobxWebPart.reactive.manifest.json",
+      "outputPath": "./dist/react-mobx.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/reactMobx/ReactMobxWebPart.js",
+      "manifest": "./src/webparts/reactMobx/ReactMobxWebPart.nonreactive.manifest.json",
       "outputPath": "./dist/react-mobx.bundle.js"
     }
   ],

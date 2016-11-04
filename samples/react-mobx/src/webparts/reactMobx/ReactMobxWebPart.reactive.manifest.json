@@ -9,10 +9,11 @@
   "preconfiguredEntries": [{
     "groupId": "b0e9722f-8953-4f87-9932-bbceda7e8be2",
     "group": { "default": "Under Development" },
-    "title": { "default": "ReactMobx" },
+    "title": { "default": "react-mobx reactive" },
     "description": { "default": "ReactMobx description" },
     "officeFabricIconFontName": "Page",
     "properties": {
+      "disableReactive": false,
       "description": "ReactMobx"
     }
   }]

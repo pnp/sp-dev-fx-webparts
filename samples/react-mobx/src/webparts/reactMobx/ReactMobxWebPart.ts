@@ -25,6 +25,10 @@ export default class ReactMobxWebPart extends BaseClientSideWebPart<IReactMobxWe
     ReactDom.render(element, this.domElement);
   }
 
+   protected get disableReactivePropertyChanges() {
+     return this.properties ? this.properties.disableReactive : false;
+   }
+
   protected get propertyPaneSettings(): IPropertyPaneSettings {
     return {
       pages: [
