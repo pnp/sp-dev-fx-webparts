@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "semicolon": [
+      true
+    ],
+    "no-unused-variable": [
+      true
+    ]
+  }
+}

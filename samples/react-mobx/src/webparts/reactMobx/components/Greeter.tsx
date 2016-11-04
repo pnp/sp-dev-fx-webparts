@@ -3,7 +3,7 @@ import * as React from 'react';
 import styles from '../ReactMobx.module.scss';
 
 export interface IGreeterProps {
-  name: string;
+  name: React.ReactNode;
 }
 
 const Greeter = ({ name }: IGreeterProps) => (

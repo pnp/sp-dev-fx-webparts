@@ -1,12 +1,22 @@
 import * as React from 'react';
+import { whyRun } from 'mobx';
+import { observer, inject } from 'mobx-react';
 
 import { Greeter, ReactiveInfo } from '../components';
+import { WebpartStore } from '../store';
 
-const DefaultContainer = ({ name, reactive }) => (
+interface IDefaultContainerProps {
+  webpart: WebpartStore;
+}
+
+const DefaultContainer = ({ webpart }: IDefaultContainerProps) => (
   <div>
-    <Greeter name={name} />
-    <ReactiveInfo reactive={reactive} />
+    { console.log(whyRun()) }
+    <Greeter name={webpart.properties.get('name')} />
+    <ReactiveInfo reactive={!webpart.properties.get('disableReactive')} />
   </div>
 );
 
-export default DefaultContainer;
+export default inject(store => ({
+  webpart: store.webpart as WebpartStore
+}))(observer(DefaultContainer));
