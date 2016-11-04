@@ -8,7 +8,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'reactMobxStrings';
-import ReactMobx, { IReactMobxProps } from './components/ReactMobx';
+import DefaultContainer from './containers/DefaultContainer';
 import { IReactMobxWebPartProps } from './IReactMobxWebPartProps';
 
 export default class ReactMobxWebPart extends BaseClientSideWebPart<IReactMobxWebPartProps> {
@@ -18,9 +18,10 @@ export default class ReactMobxWebPart extends BaseClientSideWebPart<IReactMobxWe
   }
 
   public render(): void {
-    const element: React.ReactElement<IReactMobxProps> = React.createElement(ReactMobx, {
-      description: this.properties.description
-    });
+
+    const element = (
+      <DefaultContainer name={this.properties.description} reactive={this.properties.disableReactive} />
+    );
 
     ReactDom.render(element, this.domElement);
   }
