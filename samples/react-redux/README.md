@@ -1,7 +1,7 @@
 # Webpart with React and Redux
 
 ## Summary
-Sample webpart implementation that uses [Redux[(https://github.com/reactjs/redux) to keep track of its state.
+Sample webpart implementation that uses [Redux](https://github.com/reactjs/redux) to keep track of its state.
 
 ### Reactive
 ![](https://i.gyazo.com/729c4addf6c992513f8eb91a3fa0e302.gif)
