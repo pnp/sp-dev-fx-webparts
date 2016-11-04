@@ -13,8 +13,7 @@
     "description": { "default": "ReactMobx description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "disableReactive": false,
-      "description": "ReactMobx"
+      "disableReactive": false
     }
   }]
 }

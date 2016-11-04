@@ -1,7 +1,7 @@
 declare interface IReactMobxStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  NameFieldLabel: string;
 }
 
 declare module 'reactMobxStrings' {

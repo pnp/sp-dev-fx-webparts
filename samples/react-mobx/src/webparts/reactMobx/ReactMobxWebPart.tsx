@@ -20,7 +20,7 @@ export default class ReactMobxWebPart extends BaseClientSideWebPart<IReactMobxWe
   public render(): void {
 
     const element = (
-      <DefaultContainer name={this.properties.description} reactive={this.properties.disableReactive} />
+      <DefaultContainer name={this.properties.name} reactive={this.properties.disableReactive} />
     );
 
     ReactDom.render(element, this.domElement);
@@ -41,8 +41,8 @@ export default class ReactMobxWebPart extends BaseClientSideWebPart<IReactMobxWe
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('name', {
+                  label: strings.NameFieldLabel
                 })
               ]
             }

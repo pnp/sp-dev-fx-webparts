@@ -1,4 +1,4 @@
 export interface IReactMobxWebPartProps {
-  description: string;
+  name: string;
   disableReactive?: boolean
 }
