@@ -1,26 +1,49 @@
-## react-mobx-spfx-webpart
+# Webpart with React and Mobx
 
-This is where you include your web part docs.
+## Summary
+Sample webpart implementation that uses [Mobx](https://github.com/mobxjs/mobx) to keep track of its state.
 
-### Building the code
+### Reactive
+![](https://i.gyazo.com/e6f1903b9a9c8201985cd25cc1fe28bc.gif)
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
+### Non-Reactive
+![](https://i.gyazo.com/876858e31cf14de1b6d1a281a0636029.gif)
+
+## Applies to
+
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-mobx | Kevin Mees <kev.mees@gmail.com> (Experts Inside GmbH, @kmees)
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|November 4, 2016|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+```sh
+$ git clone https://github.com/SharePoint/sp-dev-fx-webparts
+$ cd sp-dev-fx-webparts/samples/react-mobx
+$ npm install
+$ gulp serve
 ```
 
-This package produces the following:
+## Features
 
-* lib/* commonjs components - this allows this package to be reused from other packages.
-* dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
-* example/* a test page that hosts all components in this package.
+* Presentational (dumb) components live in `./components`
+* Container (smart) components live in `./container`
+* Mobx stores are defined in `./store` with a sample webpart store that keeps track of the webpart properties.
 
-### Build options
-
-gulp nuke - TODO
-gulp test - TODO
-gulp watch - TODO
-gulp build - TODO
-gulp deploy - TODO
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-mobx" />
