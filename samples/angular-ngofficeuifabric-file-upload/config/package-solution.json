@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "angular-file-upload-client-side-solution",
+    "id": "225f3995-9eb1-4b9f-80e9-e45f8fad8c4a",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/angular-file-upload.spapp"
+  }
+}
