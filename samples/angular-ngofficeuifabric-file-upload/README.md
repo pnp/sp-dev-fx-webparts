@@ -1,9 +1,9 @@
 # title of the sample
 
 ## Summary
-Short summary on functionality and used technologies.
+File Update/Delete webpart using AngularJs and ngOfficeUIFabric with the SharePoint Framework.
 
-[picture of the web part in action]
+![File Upload using Angular](./assets/orgchart.png)
 
 ## Applies to
 
@@ -20,14 +20,13 @@ Short summary on functionality and used technologies.
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+angular-ngofficeuifabric-file-upload | Atish Kumar Dipongkor (MVP, Office Development)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1|September 2, 2025|Update comment
-1.0|August 29, 2025|Initial release
+1.0|November 07, 2016|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -40,7 +39,7 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `tsd install`
-  - `gulp serve`
+  - `gulp serve --nobrowser`
 
 > Include any additional steps as needed.
 
