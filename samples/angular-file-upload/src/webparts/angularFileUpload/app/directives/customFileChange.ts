@@ -1,3 +1,4 @@
+import { IFile } from "../../interfaces/IFile";
 export class CustomFileChange implements ng.IDirective {
   constructor(private $parse: ng.IParseService) {
 
@@ -5,25 +6,27 @@ export class CustomFileChange implements ng.IDirective {
 
   restrict = "A";
   link = (scope: ng.IScope, element: any, attrs: any) => {
-    var model = this.$parse(attrs.customFileChange);
-    var modelSetter = model.assign;
-    element.bind("change", function () {
-      scope.$apply(function () {
-        var reader = new FileReader();
-        reader.onload = function (e: any) {
-          var fileModel = {
+    let model = this.$parse(attrs.customFileChange);
+    let modelSetter = model.assign;
+    element.bind("change", (): void => {
+      scope.$apply((): void => {
+        let reader = new FileReader();
+
+        reader.onload = (event: any): void => {
+          let fileModel: IFile = {
             fileName: element[0].files[0].name,
-            fileAsBuffer: e.target.result
+            fileAsBuffer: event.target.result
           };
           modelSetter(scope, fileModel);
-        }
-        reader.onerror = function (e: any) {
-          alert(e.target.error);
-        }
+        };
+
+        reader.onerror = (event: any): void => {
+          alert(event.target.error);
+        };
         reader.readAsArrayBuffer(element[0].files[0]);
       });
     });
-  }
+  };
 
   static factory(): ng.IDirectiveFactory {
     const directive = ($parse: ng.IParseService) => new CustomFileChange($parse);

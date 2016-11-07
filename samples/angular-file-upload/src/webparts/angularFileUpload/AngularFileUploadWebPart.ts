@@ -6,7 +6,7 @@ import {
 } from '@microsoft/sp-client-preview';
 import ModuleLoader from '@microsoft/sp-module-loader';
 import * as angular from 'angular';
-import './app/file-upload-module';
+import './app/FileUploadModule';
 import styles from './AngularFileUpload.module.scss';
 import * as strings from 'angularFileUploadStrings';
 import { IAngularFileUploadWebPartProps } from './IAngularFileUploadWebPartProps';
@@ -22,7 +22,7 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
   public render(): void {
     this.domElement.innerHTML = `
       <div class="${styles.angularFileUpload}">
-        <div class="${styles.container}" data-ng-controller="FileUploadCtrl as vm">
+        <div class="${styles.container}" data-ng-controller="fileUploadCtrl as vm">
           <div class="ms-Grid ms-fontColor-white ${styles.row} ${styles.headerBackground}">
             <div class="ms-Grid-row">
             <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">

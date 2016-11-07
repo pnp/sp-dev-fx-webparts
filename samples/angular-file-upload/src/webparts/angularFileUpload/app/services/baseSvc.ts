@@ -1,4 +1,4 @@
-import { PageContext, ServiceScope } from "@microsoft/sp-client-base";
+import { IError } from "../../interfaces/IError";
 
 export class BaseService {
   public static $inject: string[] = ["$http", "$q"];
@@ -9,28 +9,38 @@ export class BaseService {
   }
 
   public getRequest(query?: string, endPoint?: string): ng.IPromise<any> {
-    var deferred = this.$q.defer();
+    const deferred: ng.IDeferred<any> = this.$q.defer();
     this.$http({
       url: endPoint || this.baseUrl + query,
-      method: "GET"
-    }).success(function (response: any) {
-      if (response.value) {
-        deferred.resolve(response.value);
-      }else{
-        deferred.resolve(response);
+      method: "GET",
+      headers: {
+        "accept": "application/json;odata=verbose",
+        "content-Type": "application/json;odata=verbose"
       }
-    }).error(function (response, status) {
-      deferred.reject({ error: response, status: status });
+    }).then((response: any): void => {
+      if (response.data.d.results) {
+        deferred.resolve(response.data.d.results);
+      } else {
+        deferred.resolve(response.data.d);
+      }
+    }, (error: any) => {
+      const iError: IError = {
+        code: error.data.error.code,
+        message: error.data.error.message.value,
+        status: error.status,
+        statusText: error.statusText
+      };
+      deferred.reject(iError);
     });
     return deferred.promise;
   }
 
-  public postRequest(url: string, requestBody: any): ng.IPromise<any> {
+  public postRequest(url: string, requestBody: any, endPoint?: string): ng.IPromise<any> {
     const deferred: ng.IDeferred<any> = this.$q.defer();
     this.getFormDigestValue(this.baseUrl)
       .then((requestDigest: string): ng.IPromise<ng.IHttpPromiseCallbackArg<any>> => {
         return this.$http({
-          url: this.baseUrl + url,
+          url: endPoint || this.baseUrl + url,
           method: "POST",
           headers: {
             "accept": "application/json;odata=verbose",
@@ -42,17 +52,23 @@ export class BaseService {
       }).then((response: ng.IHttpPromiseCallbackArg<any>): void => {
         deferred.resolve(response.data)
       }, (error: any): void => {
-        deferred.reject(error);
+        const iError: IError = {
+          code: error.data.error.code,
+          message: error.data.error.message.value,
+          status: error.status,
+          statusText: error.statusText
+        };
+        deferred.reject(iError);
       });
     return deferred.promise;
   }
 
-  public updateRequest(url: string, requestBody: any, eTag: string): ng.IPromise<{}> {
+  public updateRequest(url: string, requestBody: any, eTag: string, endPoint?: string): ng.IPromise<{}> {
     const deferred: ng.IDeferred<any> = this.$q.defer();
     this.getFormDigestValue(this.baseUrl)
       .then((requestDigest: string): ng.IPromise<ng.IHttpPromiseCallbackArg<any>> => {
         return this.$http({
-          url: this.baseUrl + url,
+          url: endPoint || this.baseUrl + url,
           method: "POST",
           headers: {
             "accept": "application/json;odata=verbose",
@@ -66,17 +82,23 @@ export class BaseService {
       }).then((response: {}): void => {
         deferred.resolve();
       }, (error: any): void => {
-        deferred.reject(error);
+        const iError: IError = {
+          code: error.data.error.code,
+          message: error.data.error.message.value,
+          status: error.status,
+          statusText: error.statusText
+        };
+        deferred.reject(iError);
       });
     return deferred.promise;
   }
 
-  public deleteRequest(url: string, eTag: string): ng.IPromise<{}> {
+  public deleteRequest(url: string, eTag: string, endPoint?: string): ng.IPromise<{}> {
     const deferred: ng.IDeferred<any> = this.$q.defer();
     this.getFormDigestValue(this.baseUrl)
       .then((requestDigest: string): ng.IPromise<ng.IHttpPromiseCallbackArg<any>> => {
         return this.$http({
-          url: this.baseUrl + url,
+          url: endPoint || this.baseUrl + url,
           method: "POST",
           headers: {
             'Accept': 'application/json;odata=nometadata',
@@ -88,17 +110,23 @@ export class BaseService {
       }).then((response: {}): void => {
         deferred.resolve();
       }, (error: any): void => {
-        deferred.reject(error);
+        const iError: IError = {
+          code: error.data.error.code,
+          message: error.data.error.message.value,
+          status: error.status,
+          statusText: error.statusText
+        };
+        deferred.reject(iError);
       });
     return deferred.promise;
   }
 
-  public fileUploadRequest(url: string, file: ArrayBuffer): ng.IPromise<any> {
+  public fileUploadRequest(url: string, file: ArrayBuffer, endPoint?: string): ng.IPromise<any> {
     const deferred: ng.IDeferred<any> = this.$q.defer();
     this.getFormDigestValue(this.baseUrl)
       .then((requestDigest: string): ng.IPromise<ng.IHttpPromiseCallbackArg<any>> => {
         return this.$http({
-          url: this.baseUrl + url,
+          url: endPoint || this.baseUrl + url,
           method: "POST",
           transformRequest: angular.identity,
           headers: {
@@ -111,7 +139,13 @@ export class BaseService {
       }).then((response: ng.IHttpPromiseCallbackArg<any>): void => {
         deferred.resolve(response.data)
       }, (error: any): void => {
-        deferred.reject(error);
+        const iError: IError = {
+          code: error.data.error.code,
+          message: error.data.error.message.value,
+          status: error.status,
+          statusText: error.statusText
+        };
+        deferred.reject(iError);
       });
     return deferred.promise;
   }
@@ -129,7 +163,13 @@ export class BaseService {
       .then((digestResult: ng.IHttpPromiseCallbackArg<{ FormDigestValue: string }>): void => {
         deferred.resolve(digestResult.data.FormDigestValue);
       }, (error: any): void => {
-        deferred.reject(error);
+        const iError: IError = {
+          code: error.data.error.code,
+          message: error.data.error.message.value,
+          status: error.status,
+          statusText: error.statusText
+        };
+        deferred.reject(iError);
       });
 
     return deferred.promise;

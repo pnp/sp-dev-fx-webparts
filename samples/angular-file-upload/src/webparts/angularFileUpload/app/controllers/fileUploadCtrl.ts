@@ -1,14 +1,15 @@
-import { FileUploadService } from '../services/fileUploadSvc';
+import { FileUploadService } from '../services/FileUploadSvc';
 import { IFileItem } from "../../interfaces/IFileItem";
 import { IFile } from "../../interfaces/IFile";
+import { IError } from "../../interfaces/IError";
 
 export class FileUploadCtrl {
-  public static $inject: string[] = ['FileUploadService', '$rootScope'];
+  public static $inject: string[] = ['fileUploadService', '$rootScope'];
   public allFiles: Array<IFileItem>;
   public file: IFile;
   public libraryTitle: string;
   public rowLimit: number;
-  public isUploading:boolean = false;
+  public isUploading: boolean = false;
   public isRemoving: boolean = false;
 
   constructor(private fileUploadService: FileUploadService, private $rootScope: ng.IRootScopeService) {
@@ -24,8 +25,8 @@ export class FileUploadCtrl {
     this.fileUploadService.getFiles(this.libraryTitle, this.rowLimit)
       .then((response: Array<IFileItem>): void => {
         this.allFiles = response;
-      }, (error: any): void => {
-
+      }, (error: IError): void => {
+        alert(error.message);
       });
   }
 
@@ -36,8 +37,9 @@ export class FileUploadCtrl {
         this.allFiles.unshift(response);
         this.file = null;
         this.isUploading = false;
-      }, (error: any): void => {
-        console.log(error);
+      }, (error: IError): void => {
+        alert(error.message);
+        this.isUploading = false;
       });
   }
 
@@ -49,8 +51,9 @@ export class FileUploadCtrl {
         var fileItemIndex: number = this.allFiles.indexOf(fileItem);
         this.allFiles.splice(fileItemIndex, 1);
         this.isRemoving = false;
-      }, (error: any): void => {
-
+      }, (error: IError): void => {
+        alert(error.message);
+        this.isRemoving = false;
       });
   }
 }

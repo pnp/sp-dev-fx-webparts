@@ -9,8 +9,8 @@
   "preconfiguredEntries": [{
     "groupId": "1387564a-9ff7-46f6-8c92-86c1189adc33",
     "group": { "default": "Under Development" },
-    "title": { "default": "AngularFileUpload" },
-    "description": { "default": "AngularFileUpload description" },
+    "title": { "default": "(NG) File Upload" },
+    "description": { "default": "Uploading file using AngularJs (1.x)" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "libraryTitle": "Documents",

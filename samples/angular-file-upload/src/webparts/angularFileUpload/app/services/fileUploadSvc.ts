@@ -1,9 +1,9 @@
-import { BaseService } from "./baseSvc";
+import { BaseService } from "./BaseSvc";
 import { IFileItem } from "../../interfaces/IFileItem";
 import { IFile } from "../../interfaces/IFile";
 
 export class FileUploadService {
-  public static $inject: string[] = ["BaseService", "$q"];
+  public static $inject: string[] = ["baseService", "$q"];
   constructor(private baseService: BaseService, private $q: ng.IQService) {
   }
 
