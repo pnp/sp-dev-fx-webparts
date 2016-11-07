@@ -3,7 +3,7 @@
 ## Summary
 Short summary on functionality and used technologies.
 
-[picture of the web part in action]
+!File Upload using Angular(./assets/orgchart.png)
 
 ## Applies to
 
