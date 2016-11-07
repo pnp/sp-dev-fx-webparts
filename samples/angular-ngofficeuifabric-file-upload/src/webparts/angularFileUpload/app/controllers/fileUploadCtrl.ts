@@ -18,7 +18,9 @@ export class FileUploadCtrl {
       (event: ng.IAngularEvent, args: any): void => {
         this.libraryTitle = args.libraryTitle;
         this.rowLimit = parseInt(args.rowLimit);
-        this.init();
+        if(this.libraryTitle){
+          this.init();
+        }
       });
   }
   private init(): void {

@@ -20,7 +20,8 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
   }
 
   public render(): void {
-    this.domElement.innerHTML = `
+    if (this.renderedOnce === false) {
+      this.domElement.innerHTML = `
       <div class="${styles.angularFileUpload}">
         <div class="${styles.container}" data-ng-controller="fileUploadCtrl as vm">
           <div class="ms-Grid ms-fontColor-white ${styles.row} ${styles.headerBackground}">
@@ -71,7 +72,8 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
         </div>
       </div>`;
 
-    this.$injector = angular.bootstrap(this.domElement, ['fileUploadApp']);
+      this.$injector = angular.bootstrap(this.domElement, ['fileUploadApp']);
+    }
     this.$injector.get('$rootScope').$broadcast('configurationChanged', {
       libraryTitle: this.properties.libraryTitle,
       rowLimit: this.properties.rowLimit
@@ -101,5 +103,9 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
         }
       ]
     };
+  }
+
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
   }
 }
