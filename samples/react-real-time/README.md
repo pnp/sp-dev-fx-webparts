@@ -1,8 +1,8 @@
-# Real Time News Feed using Microsoft Flow, Azure and socket.io #
+# Real Time News Feed using Azure Logic Apps, Node.js and socket.io #
 
 ## Summary
 
-This sample shows you how to implement real time web parts using the SPFx, Microsoft Flow and [socket.io](http://socket.io/).
+This sample shows you how to implement real time web parts using the SPFx, Azure Logic Apps, Node.js and [socket.io](http://socket.io/).
 
 <p align="center">
   <img width="900" src="./assets/animated-demo.gif"/>
@@ -17,11 +17,11 @@ Here is the solution overview:
 </p>
 
 1. The SPFx Web Part first connects to the Azure web application via socket.io and subscribes to events (the web application have to be in https and allow cross domain calls (CORS)).
-2. Microsoft Flow is used to catch new item creation events in the SharPoint list.
+2. An Azure logic app is used to catch new item creation events in the SharPoint list.
 3. When an item is added, the flow sends its id to an Azure service bus queue using JSON format.
-4. A Node JS Azure web application listens to the queue and check for new messages every 5 ms.
+4. A Node.js Azure web application listens to the queue and check for new messages every 5 ms.
 5. When a new message is available, the web application emits the data to all subscribers via socket.io.
-6. The SPFx Web Part notifies user there are new items available. Items are effectively retrieved via REST according to received ids when the user clicks on the notification.
+6. The SPFx Web Part notifies user there are new items available. Items are effectively retrieved using REST according to received ids when the user clicks on the notification.
 
 ## Applies to
 
@@ -52,6 +52,7 @@ react-real-time | Franck Cornu (MVP, [@franckcornu](https://twitter.com/FranckCo
 Version|Date|Comments
 -------|----|--------
 1.0|October 25, 2016 | Initial commit
+1.1|November 4, 2016 | Replaced Microsoft Flow by Azure Logic Apps
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -95,12 +96,13 @@ Version|Date|Comments
 
     $GitPublishingUserName = "tempdeployuser" + [Guid]::NewGuid();
     $GitPublishingUserPassword = "socketio123!"
+    $LogicAppName = "LogicApp" + [Guid]::NewGuid();
     $AzureSBNamespace = "ServiceBus" + [Guid]::NewGuid();
     $AzureWebAppName = "WebApp" + [Guid]::NewGuid()
     $AppServicePlanName = "ServicePlan" + [Guid]::NewGuid()
     $TemplateFilePath = ".\azure-deploy.json"
     $AzureResourceGroupLocation = "East US2"
-    $AzureResourceGroupName = "SPFxSocketIODemo"
+    $AzureResourceGroupName = "SPFxSocketIODemo2"
     $AzureRmResourceGroupDeploymentName = $AzureResourceGroupName 
     $ServerCodeFolderLocation = ".\server"
 
@@ -115,10 +117,10 @@ Version|Date|Comments
 
    You can let the `gulp serve` cmd running.
 
-6. Because there is no automated mechanism to provision new template in the Microsoft Flow application, you have to manually create the flow on the SharePoint list in your developer site.
-   Go the 'NewsList' and create a new flow from scratch and add the following steps:
+6. Because you have to configure your SharePoint connection with your own credentials, you need to create the worflow manually in the Azure logic app.
+ Go to your Azure portal, select the "*SPFxSocketIODemo*" resource group, and open the Logic App designer. From a blank template, add the following action.
 
-- **[Condition]** *"SharePoint - When a new item is created"*
+- **[Condition]** *"SharePoint - When a new item is created"*. Select 3 seconds interval.
 - **[Action]** *"Service Bus - Send Message"*
 
     <p align="center">

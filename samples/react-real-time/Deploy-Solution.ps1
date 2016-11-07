@@ -40,6 +40,7 @@ Login-AzureRmAccount
 
 $GitPublishingUserName = "tempdeployuser" + [Guid]::NewGuid();
 $GitPublishingUserPassword = "socketio123!"
+$LogicAppName = "LogicApp" + [Guid]::NewGuid();
 $AzureSBNamespace = "ServiceBus" + [Guid]::NewGuid();
 $AzureWebAppName = "WebApp" + [Guid]::NewGuid()
 $AppServicePlanName = "ServicePlan" + [Guid]::NewGuid()
@@ -66,6 +67,7 @@ Try {
     # More information here: https://azure.microsoft.com/en-us/documentation/articles/resource-group-authoring-templates/#resources
 
     $TemplateParameters = @{
+        "LogicAppName" = $LogicAppName
         "ServiceBusNameSpace"=$AzureSBNamespace;
         "AppServicePlanName"= $AppServicePlanName;
         "SiteName"=$AzureWebAppName;
