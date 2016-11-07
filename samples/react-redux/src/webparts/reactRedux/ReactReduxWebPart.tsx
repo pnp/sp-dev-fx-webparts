@@ -25,6 +25,8 @@ export default class ReactReduxWebPart extends BaseClientSideWebPart<IReactRedux
   }
 
   public render(): void {
+    if (this.renderedOnce) { return; }
+
     const element = (
       <Provider store={this.store}>
         <DefaultContainer />
