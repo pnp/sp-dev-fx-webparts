@@ -102,7 +102,7 @@ Version|Date|Comments
     $AppServicePlanName = "ServicePlan" + [Guid]::NewGuid()
     $TemplateFilePath = ".\azure-deploy.json"
     $AzureResourceGroupLocation = "East US2"
-    $AzureResourceGroupName = "SPFxSocketIODemo2"
+    $AzureResourceGroupName = "SPFxSocketIODemo"
     $AzureRmResourceGroupDeploymentName = $AzureResourceGroupName 
     $ServerCodeFolderLocation = ".\server"
 
