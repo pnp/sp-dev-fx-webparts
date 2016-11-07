@@ -1,4 +1,4 @@
-# title of the sample
+# File Upload using AngularJs
 
 ## Summary
 File Update/Delete webpart using AngularJs and ngOfficeUIFabric with the SharePoint Framework.
