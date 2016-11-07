@@ -21,6 +21,7 @@ export default class ReactMobxWebPart extends BaseClientSideWebPart<IReactMobxWe
   }
 
   public render(): void {
+    if (this.renderedOnce) { return; }
 
     const element = (
       <Provider {...this.store}>
