@@ -3,18 +3,12 @@
 ## Summary
 File Update/Delete webpart using AngularJs and ngOfficeUIFabric with the SharePoint Framework.
 
-![File Upload using Angular](./assets/orgchart.png)
+![File Upload using Angular](./assets/NG File Upload.png)
 
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
-
-> Update accordingly as needed.
-
-## Prerequisites
-
-> Any special pre-requisites?
 
 ## Solution
 
@@ -41,14 +35,11 @@ Version|Date|Comments
   - `tsd install`
   - `gulp serve --nobrowser`
 
-> Include any additional steps as needed.
-
 ## Features
-Description of the web part with possible additional details than in short summary.
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+This Web Part illustrates the following concepts on top of the SharePoint Framework & AngularJs:
 
-- topic 1
-- topic 2
-- topic 3
+- `BaseService`: By injecting this Angular Service, GET, POST, UPDATE & DELETE requests can be made easily. It's a resuable service. Please check how it has been used in `FileUploadService`
+- `CustomFileChange`: It's a custom Angular directive. It binds the file with model on file change event.
+- `IsoToDateString`: It's a custom Angular filter. It formats ISO date string to `{0:yyyy}-{0:MM}-{0:dd}` format.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
