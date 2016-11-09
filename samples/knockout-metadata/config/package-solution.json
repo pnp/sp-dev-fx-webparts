@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "knockout-metadata-client-side-solution",
+    "id": "1fad8244-ccbc-40c6-b6c7-304d53fa4096",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/knockout-metadata.spapp"
+  }
+}
