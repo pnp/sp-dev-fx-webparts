@@ -14,7 +14,7 @@
     "react": "node_modules/react/dist/react.min.js",
     "react-dom": "node_modules/react-dom/dist/react-dom.min.js",
     "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js",
-    "socket.io-client": "https://SPFxSocketIOWebAppdde17113-805a-4806-b5e6-43dbb5f61b9f.azurewebsites.net/socket.io/socket.io.js"
+    "socket.io-client": "https://WebAppac61f1b1-ecd7-4bc0-ad7d-619b0df1f757.azurewebsites.net/socket.io/socket.io.js"
   },
   "localizedResources": {
     "realTimeNewsFeedStrings": "webparts/realTimeNewsFeed/loc/{locale}.js"
