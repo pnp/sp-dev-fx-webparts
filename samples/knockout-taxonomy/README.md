@@ -1,26 +1,51 @@
-## knockout-metadata
+# title of the sample
 
-This is where you include your web part docs.
+## Summary
+Sample Web Part illustrating
+* Reading taxonomy term stores' hierarchy from SharePoint
+* Loading JavaScript Object Model scripts
+* creating Knockout components
 
-### Building the code
+![Taxonomy Sample Web Part](./assets/Taxonomy.png)
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+## Applies to
 
-This package produces the following:
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
-* lib/* commonjs components - this allows this package to be reused from other packages.
-* dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
-* example/* a test page that hosts all components in this package.
+## Solution
 
-### Build options
+Solution|Author(s)
+--------|---------
+knockout-metadata | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuM](https://github.com/AJIXuMuK))
 
-gulp nuke - TODO
-gulp test - TODO
-gulp watch - TODO
-gulp build - TODO
-gulp deploy - TODO
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|November 12, 2016|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- in the command line run:
+  - `npm i`
+  - `gulp serve`
+
+> Include any additional steps as needed.
+
+## Features
+This project contains Client-Side Web Part built on the SharePoint Framework illustrating how to request Taxonomy Term Stores' hierarchy from SharePoint.
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+- Reading taxonomy term stores' hierarchy from SharePoint
+- Loading JavaScript Object Model scripts (init.js, sp.runtime.js, sp.js, taxonomy.js)
+- creating custom Knockout components
+- styling HTML elements to match Fabric UI experience
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/ko-dependent-properties" />

@@ -18,4 +18,37 @@
   .button {
     text-decoration: none;
   }
+
+  .termStoreList {
+    list-style-image: url('/_layouts/15/Images/EMMRoot.png');
+  }
+
+  .termGroupList {
+    list-style-image: url('/_layouts/15/Images/EMMGroup.png');
+  }
+
+  .termSetList {
+    list-style-image: url('/_layouts/15/Images/EMMTermSet.png');
+  }
+
+  .termList {
+    list-style-image: url('/_layouts/15/Images/EMMTerm.png');
+  }
+  .info {
+    position: relative;
+    line-height: 30px;
+
+    .groupHeaderExpand {
+      right: 0px;
+      height: 24px;
+      padding: 0px;
+      top: 5px;
+      position: absolute;
+    }
+  }
+
+  .taxonomy {
+    overflow: auto;
+    max-height: 600px;
+  }
 }

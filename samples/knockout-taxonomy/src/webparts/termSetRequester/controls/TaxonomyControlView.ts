@@ -1,15 +1,23 @@
+import styles from '../TermSetRequester.module.scss';
+
 export class TaxonomyControlView {
   private _template: string = `
-  <div>
-    <ul>
+  <div class="${styles.taxonomy}">
+    <ul class="${styles.termStoreList}">
       <!-- ko template: { name: 'termStoreTpl', foreach: termStores } -->
       <!-- /ko -->
     </ul>
   </div>
 
   <script id="termStoreTpl" type="text/html">
-    <li><b>Type: Term Store</b> Name: <span data-bind="text: name"></span>; ID: <span data-bind="text: id"></span>&nbsp;<a href="javascript:;" data-bind="text: (isExpanded() ? 'Collapse' : 'Expand'), click: actionClick"></a>
-      <ul data-bind="visible: isExpanded">
+    <li>
+      <div class="${styles.info}">
+        <b data-bind="text: name"></b>&nbsp;&nbsp;&nbsp;ID: <span data-bind="text: id"></span>
+        <button class="ms-GroupHeader-expand ${styles.groupHeaderExpand}">
+          <i class="ms-Icon ms-Icon--ChevronDown" data-bind="click: actionClick, css: { 'is-collapsed': !isExpanded() }"></i>
+        </button>
+      </div>
+      <ul data-bind="visible: isExpanded" class="${styles.termGroupList}">
         <!-- ko template: { name: 'termGroupTpl', foreach: termGroups } -->
         <!-- /ko -->
       </ul>
@@ -17,8 +25,14 @@ export class TaxonomyControlView {
   </script>
 
   <script id="termGroupTpl" type="text/html">
-    <li><b>Type: Term Group</b> Name: <span data-bind="text: name"></span>; Description: <span data-bind="text: description"></span>&nbsp;<a href="javascript:;" data-bind="text: (isExpanded() ? 'Collapse' : 'Expand'), click: actionClick"></a>
-      <ul data-bind="visible: isExpanded">
+    <li>
+      <div class="${styles.info}">
+        <b data-bind="text: name"></b>&nbsp;&nbsp;&nbsp;ID: <span data-bind="text: id"></span>
+        <button class="ms-GroupHeader-expand ${styles.groupHeaderExpand}">
+          <i class="ms-Icon ms-Icon--ChevronDown" data-bind="click: actionClick, css: { 'is-collapsed': !isExpanded() }"></i>
+        </button>
+      </div>
+      <ul data-bind="visible: isExpanded" class="${styles.termSetList}">
         <!-- ko template: { name: 'termSetTpl', foreach: termSets } -->
         <!-- /ko -->
       </ul>
@@ -26,8 +40,14 @@ export class TaxonomyControlView {
   </script>
 
   <script id="termSetTpl" type="text/html">
-    <li><b>Type: Term Set</b> Name: <span data-bind="text: name"></span>; Description: <span data-bind="text: description"></span>&nbsp;<a href="javascript:;" data-bind="text: (isExpanded() ? 'Collapse' : 'Expand'), click: actionClick"></a>
-      <ul data-bind="visible: isExpanded">
+    <li>
+      <div class="${styles.info}">
+        <b data-bind="text: name"></b>&nbsp;&nbsp;&nbsp;ID: <span data-bind="text: id"></span>
+        <button class="ms-GroupHeader-expand ${styles.groupHeaderExpand}">
+          <i class="ms-Icon ms-Icon--ChevronDown" data-bind="click: actionClick, css: { 'is-collapsed': !isExpanded() }"></i>
+        </button>
+      </div>
+      <ul data-bind="visible: isExpanded" class="${styles.termList}">
         <!-- ko template: { name: 'termTpl', foreach: terms } -->
         <!-- /ko -->
       </ul>
@@ -35,12 +55,18 @@ export class TaxonomyControlView {
   </script>
 
   <script id="termTpl" type="text/html">
-    <li><b>Type: Term</b> Name: <span data-bind="text: name"></span>; ID: <span data-bind="text: id"></span>; Description: <span data-bind="text: description"></span>&nbsp;<a href="javascript:;" data-bind="visible: hasChildTerms, text: (isExpanded() ? 'Collapse' : 'Expand'), click: actionClick"></a>
+    <li>
+      <div class="${styles.info}">
+        <b data-bind="text: name"></b>&nbsp;&nbsp;&nbsp;ID: <span data-bind="text: id"></span>
+        <button class="ms-GroupHeader-expand ${styles.groupHeaderExpand}">
+          <i class="ms-Icon ms-Icon--ChevronDown" data-bind="visible: hasChildTerms, click: actionClick, css: { 'is-collapsed': !isExpanded() }"></i>
+        </button>
+      </div>
       Labels:<br/>
       <div data-bind="foreach: labels">
         <div>Value: <span data-bind="text: value"></span>; Language: <span data-bind="text: language"></span>; Is Default: <span data-bind="text: isDefaultForLanguage"></span></div>
       </div>
-      <ul data-bind="visible: isExpanded">
+      <ul data-bind="visible: isExpanded" class="${styles.termList}">
         <!-- ko template: { name: 'termTpl', foreach: terms } -->
         <!-- /ko -->
       </ul>
