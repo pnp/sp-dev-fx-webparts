@@ -17,7 +17,7 @@ Sample Web Part illustrating
 
 Solution|Author(s)
 --------|---------
-knockout-taxonomy | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuM](https://github.com/AJIXuMuK))
+knockout-taxonomy | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
 
 ## Version history
 
