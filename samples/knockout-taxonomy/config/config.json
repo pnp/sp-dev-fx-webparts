@@ -15,7 +15,7 @@
     "react": "node_modules/react/dist/react.min.js",
     "react-dom": "node_modules/react-dom/dist/react-dom.min.js",
     "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js",
-    "knockout": "node_modules/knockout/build/output/knockout-latest.js"
+    "knockout": "node_modules/knockout/build/output/knockout-latest.debug.js"
   },
   "localizedResources": {
     "termSetRequesterStrings": "webparts/termSetRequester/loc/{locale}.js"
