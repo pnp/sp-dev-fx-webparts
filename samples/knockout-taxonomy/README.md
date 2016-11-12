@@ -1,4 +1,4 @@
-# title of the sample
+# Taxonomy Web Part
 
 ## Summary
 Sample Web Part illustrating
