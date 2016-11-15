@@ -3,7 +3,7 @@ import {
   IPropertyPaneSettings,
   IWebPartContext,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 import ModuleLoader from '@microsoft/sp-module-loader';
 import * as angular from 'angular';
 import './app/FileUploadModule';
@@ -31,14 +31,14 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
             </div>
             </div>
             <div class="ms-Grid-row ${styles.whiteBackground} ${styles.row}">
-              <div class="ms-Grid-col ms-u-sm5 ms-u-md7 ms-u-lg7 ms-fontColor-black"><input type="file" data-custom-file-change="vm.file" /></div>
+              <div class="ms-Grid-col ms-u-sm5 ms-u-md7 ms-u-lg7 ms-fontColor-black"><input type="file" value="vm.file.fileName" data-custom-file-change="vm.file" /></div>
               <div class="ms-Grid-col ms-u-sm2 ms-u-md2 ms-u-lg2"><uif-spinner data-ng-if="vm.isUploading"></uif-spinner></div>
               <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg3"><uif-button uif-type="primary" data-ng-click="vm.upload()">Upload</uif-button></div>
             </div>
 
             <div class="ms-Grid-row">
             <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
-               <h1 class="ms-fontSize-su ms-fontColor-white ${styles.textAlignCenter}">${this.properties.libraryTitle}: Files uploaded by You</h1>
+               <h1 class="ms-fontSize-su ms-fontColor-white ${styles.textAlignCenter}">{{vm.libraryTitle}}: Files uploaded by You</h1>
             </div>
             </div>
 

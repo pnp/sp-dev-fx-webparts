@@ -48,9 +48,9 @@ export class BaseService {
             "content-Type": "application/json;odata=verbose"
           },
           data: JSON.stringify(requestBody)
-        })
+        });
       }).then((response: ng.IHttpPromiseCallbackArg<any>): void => {
-        deferred.resolve(response.data)
+        deferred.resolve(response.data);
       }, (error: any): void => {
         const iError: IError = {
           code: error.data.error.code,
@@ -78,7 +78,7 @@ export class BaseService {
             'X-HTTP-Method': 'MERGE'
           },
           data: JSON.stringify(requestBody)
-        })
+        });
       }).then((response: {}): void => {
         deferred.resolve();
       }, (error: any): void => {
@@ -106,7 +106,7 @@ export class BaseService {
             'IF-MATCH': eTag,
             'X-HTTP-Method': 'DELETE'
           }
-        })
+        });
       }).then((response: {}): void => {
         deferred.resolve();
       }, (error: any): void => {
@@ -135,9 +135,9 @@ export class BaseService {
             "content-Type": undefined
           },
           data: ArrayBuffer
-        })
+        });
       }).then((response: ng.IHttpPromiseCallbackArg<any>): void => {
-        deferred.resolve(response.data)
+        deferred.resolve(response.data);
       }, (error: any): void => {
         const iError: IError = {
           code: error.data.error.code,
