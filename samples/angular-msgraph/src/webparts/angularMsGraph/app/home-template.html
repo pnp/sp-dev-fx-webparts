@@ -1,0 +1,99 @@
+<div class="ms-Grid">
+  <div>
+    <div class="ms-Grid-row">
+      <div class="ms-NavBar">
+        <ul class="ms-NavBar-items">
+          <li class="navbar-header">Microsoft Graph Connect SharePoint</li>
+          <li class="ms-NavBar-item ms-NavBar-item--right" ng-show="vm.isAuthenticated()" ng-click="vm.logout()">
+            <i class="ms-Icon ms-Icon--x"></i> Disconnect
+          </li>
+        </ul>
+      </div>
+
+      <div class="ms-Grid-col ms-u-md-Push1 ms-u-md11 ms-u-lgPush1 ms-u-lg11">
+        <div ng-hide="vm.isAuthenticated()">
+          <p class="ms-font-xl">Use the button below to connect to Microsoft Graph.</p>
+          <button class="ms-Button" ng-click="vm.login()">
+            <span class="ms-Button-label">Connect</span>
+          </button>
+        </div>
+        <div ng-show="vm.isAuthenticated()">
+          <h2 class="ms-font-xxl ms-fontWeight-semibold">Hi, {{ vm.displayName }}!</h2>
+          <p class="ms-font-xl">You're now connected to Microsoft Graph. Click the button below to display you're root site collection using the Microsoft Graph API.</p>
+          <button class="ms-Button" ng-click="vm.getSites()" ng-show="vm.isAuthenticated() && !vm.vwSC && !vm.vwLsts && !vm.vwLstItm && !vm.vwCreateItem">
+            <span class="ms-Button-label">Get SharePoint Site</span>
+          </button>
+        </div>
+      </div>
+      <div class="ms-Grid-row">
+        <div class="ms-Grid-col ms-u-md12">
+          <div ng-show="vm.isAuthenticated() && vm.vwSC">
+            <uif-table>
+              <uif-table-head>
+                <uif-table-row>
+                  <uif-table-header>Site Id</uif-table-header>
+                  <uif-table-header>Site Name</uif-table-header>
+                  <uif-table-header>Site Url</uif-table-header>
+                  <uif-table-header>Actions</uif-table-header>
+                </uif-table-row>
+              </uif-table-head>
+              <uif-table-body>
+                <uif-table-row ng-repeat="s in vm.siteCollection">
+                  <uif-table-cell>{{s.siteId}}</uif-table-cell>
+                  <uif-table-cell>{{s.name == '' ? 'Root SC' : s.name}}</uif-table-cell>
+                  <uif-table-cell>{{s.webUrl}}</uif-table-cell>
+                  <uif-table-cell><uif-button uif-type="primary" ng-click="vm.getLists(s.id)">Lists</uif-button></uif-table-cell>
+                </uif-table-row>
+              </uif-table-body>
+            </uif-table>
+          </div>
+          <div ng-show="vm.isAuthenticated() && vm.vwLsts">
+            <uif-table>
+              <uif-table-head>
+                <uif-table-row>
+                  <uif-table-header>List Name</uif-table-header>
+                  <uif-table-header>List Url </uif-table-header>
+                  <uif-table-header></uif-table-header>
+                </uif-table-row>
+              </uif-table-head>
+              <uif-table-body>
+                <uif-table-row ng-repeat="l in vm.listCollection">
+                  <uif-table-cell>{{l.name}}</uif-table-cell>
+                  <uif-table-cell>{{l.webUrl}}</uif-table-cell>
+                  <uif-table-cell><uif-button uif-type="primary" ng-click="vm.getListItems(l.id)">Items</uif-button></uif-table-cell>
+                </uif-table-row>
+              </uif-table-body>
+            </uif-table>
+        </div>
+        <div ng-show="vm.isAuthenticated() && vm.vwLstItm">
+          <uif-button uif-type="primary" ng-click="vm.showCreateItemForm()">New Item Form</uif-button>
+          <uif-table>
+            <uif-table-head>
+              <uif-table-row>
+                <uif-table-header>id</uif-table-header>
+                <uif-table-header>Title</uif-table-header>
+                <uif-table-header>Author</uif-table-header>
+                <uif-table-header></uif-table-header>
+              </uif-table-row>
+            </uif-table-head>
+            <uif-table-body>
+              <uif-table-row ng-repeat="i in vm.itemCollection">
+                <uif-table-cell>{{i.id}}</uif-table-cell>
+                <uif-table-cell>{{i.Title}}</uif-table-cell>
+                <uif-table-cell>{{i.Author}}</uif-table-cell>
+                <uif-table-cell><uif-button uif-type="hero" ng-click="vm.deleteItem(i)"><uif-icon uif-type="x"></uif-icon> Delete</uif-button></uif-table-cell>
+              </uif-table-row>
+            </uif-table-body>
+          </uif-table>
+        </div>
+        <div ng-show="vm.isAuthenticated() && vm.vwCreateItem">
+          <div class="ms-TextField">
+            <label for="itemTitle" class="ms-label">Title</label>
+            <input id="itemTitle" ng-model="vm.createItemTitle" class="ms-TextField-field">
+          </div>
+          <uif-button uif-type="primary" ng-click="vm.createItem()">Create</uif-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

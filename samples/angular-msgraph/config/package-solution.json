@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "angular-msgraph-client-side-solution",
+    "id": "d30c50e8-1cec-4468-84eb-16568db21a41",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/angular-msgraph.spapp"
+  }
+}
