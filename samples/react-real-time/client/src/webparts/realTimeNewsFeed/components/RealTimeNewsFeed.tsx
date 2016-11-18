@@ -59,7 +59,7 @@ export default class RealTimeNewsFeed extends React.Component<IRealTimeNewsFeedP
   public componentDidMount(): void {
 
     // Connect to the server
-    const socket = io("https://SPFxSocketIOWebAppdde17113-805a-4806-b5e6-43dbb5f61b9f.azurewebsites.net");
+    const socket = io("https://WebAppac61f1b1-ecd7-4bc0-ad7d-619b0df1f757.azurewebsites.net");
 
     // Add the socket io listeners
     socket.on('item:added', (data) => {
