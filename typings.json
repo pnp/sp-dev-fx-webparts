@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "react-data-grid": "registry:dt/react-data-grid#1.0.4+20160701061254"
+  }
+}

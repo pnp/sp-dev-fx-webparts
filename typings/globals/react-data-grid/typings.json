@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/21208ce88ad2f4ca9717f3b787f81d066ecfd788/react-data-grid/react-data-grid.d.ts",
+    "raw": "registry:dt/react-data-grid#1.0.4+20160701061254",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/21208ce88ad2f4ca9717f3b787f81d066ecfd788/react-data-grid/react-data-grid.d.ts"
+  }
+}
