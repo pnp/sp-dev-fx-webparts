@@ -9,7 +9,7 @@ import {
 
 import * as strings from 'spfxReactGridStrings';
 import SpfxReactGrid, { ISpfxReactGridProps } from './components/SpfxReactGrid';
-import { ISpfxReactGridWebPartProps } from './ISpfxReactGridWebPartProps';
+import { ISpfxReactGridWebPartProps} from './ISpfxReactGridWebPartProps';
 
 export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
 

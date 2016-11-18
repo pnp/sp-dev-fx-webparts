@@ -8,7 +8,7 @@ import { ISpfxReactGridWebPartProps } from '../ISpfxReactGridWebPartProps';
 
 export interface ISpfxReactGridProps extends ISpfxReactGridWebPartProps {
 }
-export class SpfxReactGridState {
+export  class SpfxReactGridState {
   public rows = [];
 };
 export default class SpfxReactGrid extends React.Component<ISpfxReactGridProps, SpfxReactGridState> {
