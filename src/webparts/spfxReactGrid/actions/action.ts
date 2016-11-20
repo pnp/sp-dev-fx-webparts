@@ -4,7 +4,4 @@ export interface Action<T> {
     error?: boolean;
     meta?: any;
 }
-export class ActionInit implements Action<any> {
-    type = "INIT";
-    payload = {};
-}
+export default Action;

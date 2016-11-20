@@ -1,6 +1,6 @@
 import ListItem from "../Model/ListItem";
 import * as _ from "lodash";
-import { Action } from "../actions";
+import { Action } from "../actions/Action";
 import { Log } from "@microsoft/sp-client-base";
 const INITIAL_STATE = new Array<ListItem>();
 function listItemReducer(state = INITIAL_STATE, action: Action<any>) {
