@@ -8,10 +8,18 @@
   "dependencies": {
     "@microsoft/sp-client-base": "~0.4.0",
     "@microsoft/sp-client-preview": "~0.5.0",
+    "@microsoft/sp-webpart-base": "^0.1.0",
     "office-ui-fabric-react": "0.36.0",
     "react": "0.14.8",
     "react-data-grid": "^1.0.62",
-    "react-dom": "0.14.8"
+    "react-dom": "0.14.8",
+    "react-router": "^2.5.2",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.4.0",
+    "redux-logger": "^2.6.0",
+    "redux-thunk": "^2.1.0",
+    "sp-pnp-js": "^1.0.6",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~0.7.0",
