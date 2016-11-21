@@ -1,4 +1,4 @@
-import Action from "./action";
+import {Action} from "./action";
 export const ACTION_INIT = "ACTION_INIT";
 export type ACTION_INIT = { foo: number, message: string }
 

@@ -1,7 +1,11 @@
+// http://www.mattgreer.org/articles/typescript-react-and-redux/
 export interface Action<T> {
-    type: string;
-    payload: T;
+   readonly type: string;
+    readonly payload: T;
     error?: boolean;
     meta?: any;
 }
-export default Action;
+interface ActionCreator<T> {
+  readonly type: string;
+  (payload: T): Action<T>;
+}

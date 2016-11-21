@@ -37,7 +37,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
         width: 80
       },
       {
-        key: "task",
+        key: "title",
         name: "Title",
         editable: true
       }]
