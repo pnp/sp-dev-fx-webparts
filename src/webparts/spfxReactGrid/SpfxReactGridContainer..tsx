@@ -8,6 +8,8 @@ import { Router, browserHistory } from "react-router";
 import { syncHistoryWithStore } from "react-router-redux";
 import configureStore from "./store/configure-store";
 import { Log } from "@microsoft/sp-client-base";
+import * as ActionAddListItem from "./actions/actionAddListItem";
+import ListItem from "./Model/ListItem";
 // const store = configureStore();
 export interface ISpfxReactGridProps extends ISpfxReactGridWebPartProps {
     columns: ReactDataGrid.Column[]
@@ -28,6 +30,18 @@ export default class SpfxReactGridContainer extends React.Component<ISpfxReactGr
     public componentDidMount(): void {
         Log.verbose("SpfxReactGridContainer", "In componentDidMount of SpfxReactGridContainer");
         this._store.dispatch({ type: "INIT" });
+        let listItem :ListItem = new ListItem();
+        listItem.title ="Item1";
+        listItem.id =1;
+        this._store.dispatch(ActionAddListItem.doActionAddListIten(listItem));
+                listItem.title ="Item2";
+        listItem.id =2;
+
+        this._store.dispatch(ActionAddListItem.doActionAddListIten(listItem));
+                listItem.title ="Item3";
+        listItem.id =3;
+
+        this._store.dispatch(ActionAddListItem.doActionAddListIten(listItem));
 
 
     }
