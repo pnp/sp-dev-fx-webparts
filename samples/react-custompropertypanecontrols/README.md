@@ -12,6 +12,12 @@ Drop-down that loads its options asynchronously.
 
 This control supports promises and chaining for cascading drop-downs where value from one field determines values in other drop-down fields.
 
+### Drop-down with external data without using a custom control
+
+Cascading drop-downs in the property pane both using external data.
+
+![Web part with cascading drop-downs in the property pane](./assets/cascading-dropdown-preview.gif)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -27,6 +33,7 @@ react-custompropertypanecontrols|Waldek Mastykarz (MVP, Rencore, @waldekm)
 
 Version|Date|Comments
 -------|----|--------
+2.0.0|November 22, 2016|Added new sample web part (Dropdown with remote data (without custom controls))
 1.0.0|October 17, 2016|Initial release
 
 ## Disclaimer
@@ -44,6 +51,10 @@ Version|Date|Comments
 
 By default the control uses mock data. If you want to test the control with SharePoint, change the commented sections in the **DropdownWithRemoteDataWebPart.ts** file inside the **loadLists** and **loadItems** functions and deploy the sample web part to your SharePoint developer tenant.
 
+### Drop-down with external data without using a custom control
+
+By default the web part uses mock data. If you want to test it with SharePoint, change the commented sections in the **DropdownWithRemoteDataWithoutCustomControlsWebPart.ts** file inside the **loadLists** and **loadItems** methods and deploy the sample web part to your SharePoint tenant.
+
 ## Features
 
 Sample web parts in this solution illustrate the following concepts on top of the SharePoint Framework:
@@ -54,5 +65,9 @@ Sample web parts in this solution illustrate the following concepts on top of th
 - linking multiple custom property pane controls together
 - loading data for use in custom property pane controls asynchronously without blocking the web part
 - forcing React components to repaint using an external trigger
+- displaying a custom loading indicator
+- reacting to web part property changes
+- updating properties of web part property pane controls
+- refreshing the web part property pane from web part
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-custompropertypanecontrols)
