@@ -1,6 +1,6 @@
 import { createStore, Store } from "redux";
-import  listItemReducer  from "../reducers/listItems";
-import  {RootReducer } from "../reducers/rootReducer";
+import listItemReducer from "../reducers/listItems";
+import { RootReducer } from "../reducers/rootReducer";
 import ListItem from "../model/ListItem"
 import { Log } from "@microsoft/sp-client-base";
 
@@ -13,13 +13,13 @@ import { Log } from "@microsoft/sp-client-base";
 //   }
 // }
 export default function ConfigureStore() {
-   Log.verbose("ConfigureStore", "In ConfigureStore of ConfigureStore");
-debugger;
+    Log.verbose("ConfigureStore", "In ConfigureStore of ConfigureStore");
+    debugger;
 
-    let store = createStore(listItemReducer);
-    let xxx=store.getState();
+    //    let store = createStore(listItemReducer);
+    //   let xxx=store.getState();
 
-       let store2 = createStore(RootReducer);
-    let xxx2=store2.getState();
+    let store = createStore(RootReducer);
+    let xxx2 = store.getState();
     return store;
 }

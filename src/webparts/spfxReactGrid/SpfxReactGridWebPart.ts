@@ -1,23 +1,23 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import * as ReactDataGrid from 'react-data-grid';
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import * as ReactDataGrid from "react-data-grid";
 import {
   BaseClientSideWebPart,
   IPropertyPaneSettings,
   IWebPartContext,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from "@microsoft/sp-webpart-base";
 import {
   Log
 } from "@microsoft/sp-client-base";
 
 
-import * as strings from 'spfxReactGridStrings';
-//import SpfxReactGrid, { ISpfxReactGridProps } from './components/SpfxReactGrid';
-import SpfxReactGridContainer from './SpfxReactGridContainer.';
+import * as strings from "spfxReactGridStrings";
+// import SpfxReactGrid, { ISpfxReactGridProps } from "./components/SpfxReactGrid";
+import SpfxReactGridContainer from "./SpfxReactGridContainer.";
 
 
-import { ISpfxReactGridWebPartProps} from './ISpfxReactGridWebPartProps';
+import { ISpfxReactGridWebPartProps} from "./ISpfxReactGridWebPartProps";
 
 export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
 
@@ -32,13 +32,13 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     const element: React.ReactElement<ISpfxReactGridWebPartProps> = React.createElement(SpfxReactGridContainer, {
       description: this.properties.description,
       columns: [ {
-        key: 'id',
-        name: 'ID',
+        key: "id",
+        name: "ID",
         width: 80
       },
       {
-        key: 'task',
-        name: 'Title',
+        key: "task",
+        name: "Title",
         editable: true
       }]
     });
@@ -59,7 +59,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
+                PropertyPaneTextField("description", {
                   label: strings.DescriptionFieldLabel
                 })
               ]

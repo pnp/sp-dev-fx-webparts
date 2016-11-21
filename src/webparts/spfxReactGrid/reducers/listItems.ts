@@ -17,7 +17,7 @@ function listItemReducer(state = INITIAL_STATE, action: Action<any>) {
             return result;
         // return INITIAL_STATE;
         default:
-            debugger;
+
             Log.verbose("listItemReducer", " listItemReducer returning default  " + INITIAL_STATE);
             return INITIAL_STATE;
     }

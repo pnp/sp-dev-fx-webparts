@@ -6,7 +6,7 @@ import * as actionInit from "../actions/actionInit";
 
 export function RootReducer(state, action) {
     Log.verbose("RootReducer", "In RootReducer of RootReducer");
-    debugger;
+
     let combinedReducers= combineReducers(
         {
            items: listItemReducer,
