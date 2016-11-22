@@ -1,13 +1,14 @@
 {
   "globalDependencies": {
-    "react-data-grid": "registry:dt/react-data-grid#1.0.4+20160701061254"
+    "react-data-grid": "registry:dt/react-data-grid#1.0.4+20160701061254",
+    "redux-promise-middleware": "registry:dt/redux-promise-middleware#0.0.0+20160108032528"
   },
-    "dependencies": {
+  "dependencies": {
     "react-router": "registry:npm/react-router#2.4.0+20160628165748",
     "react-router-redux": "registry:npm/react-router-redux#4.0.0+20160602212457",
     "redux-thunk": "registry:npm/redux-thunk#2.0.0+20160525185520"
   },
-   "devDependencies": {
+  "devDependencies": {
     "react-redux": "registry:npm/react-redux#4.4.0+20160614222153"
   }
 }

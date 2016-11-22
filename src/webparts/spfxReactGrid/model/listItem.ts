@@ -1,7 +1,6 @@
 export default class ListItem {
-    public id: number;
-    public title: string;
-    public guid: string;
-
-
+    public constructor(
+        public id: string,
+        public title: string,
+        public guid: string)  { }
 }

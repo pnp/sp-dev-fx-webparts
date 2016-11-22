@@ -13,10 +13,12 @@
     "react": "0.14.8",
     "react-data-grid": "^1.0.62",
     "react-dom": "0.14.8",
+    "react-redux": "^4.4.6",
     "react-router": "^2.5.2",
     "react-router-redux": "^4.0.5",
     "redux": "^3.4.0",
     "redux-logger": "^2.6.0",
+    "redux-promise-middleware": "^4.1.0",
     "redux-thunk": "^2.1.0",
     "sp-pnp-js": "^1.0.6",
     "underscore": "^1.8.3"

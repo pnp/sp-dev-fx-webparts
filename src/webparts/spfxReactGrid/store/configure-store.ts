@@ -1,13 +1,80 @@
-import { createStore, Store } from "redux";
-import listItemReducer from "../reducers/listItems";
-import { RootReducer } from "../reducers/rootReducer";
-import ListItem from "../model/ListItem"
-import { Log } from "@microsoft/sp-client-base";
+import {
+  createStore,
+  applyMiddleware,
+  compose,
+  Middleware,Store
+} from 'redux';
+import { fromJS } from 'immutable';
+import { browserHistory } from 'react-router';
+import { routerMiddleware } from 'react-router-redux';
 
+import thunk from 'redux-thunk';
 
-export default function ConfigureStore() {
-    Log.verbose("ConfigureStore", "In ConfigureStore of ConfigureStore");
+const persistState = require('redux-localstorage');
 
-    let store = createStore(RootReducer);
-       return store;
+import promiseMiddleware from 'redux-promise-middleware';
+import logger from './logger';
+import {RootReducer} from '../reducers/rootReducer';
+
+declare const __DEV__: boolean; // from webpack
+
+function configureStore(initialState) {
+  const store = createStore(
+    RootReducer,
+    initialState,
+    compose(
+      applyMiddleware(..._getMiddleware()),
+/////      persistState('session', _getStorageConfig()),
+      __DEV__ && environment.devToolsExtension ?
+        environment.devToolsExtension() :
+        f => f));
+
+  _enableHotLoader(store);
+  return store;
 }
+
+function _getMiddleware(): Middleware[] {
+  let middleware = [
+
+    routerMiddleware(browserHistory),
+    promiseMiddleware(),
+    thunk,
+  ];
+
+  if (__DEV__) {
+    middleware = [...middleware, logger];
+  }
+
+  return middleware;
+}
+
+const environment: any = window || this;
+
+function _enableHotLoader(store) {
+  if (!__DEV__) {
+    return;
+  }
+
+  const { hot } = module as any;
+  if (hot) {
+    hot.accept('../reducers', () => {
+      const nextRootReducer = require('../reducers');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+}
+
+function _getStorageConfig() {
+  return {
+    key: 'typescript-react-redux-seed',
+    serialize: (store) => {
+      return store && store.session ?
+        JSON.stringify(store.session.toJS()) : store;
+    },
+    deserialize: (state) => ({
+      session: state ? fromJS(JSON.parse(state)) : fromJS({}),
+    }),
+  };
+}
+
+export default configureStore;

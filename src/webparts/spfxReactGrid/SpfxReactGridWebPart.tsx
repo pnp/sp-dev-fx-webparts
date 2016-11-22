@@ -1,6 +1,9 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
-import * as ReactDataGrid from "react-data-grid";
+import { Provider } from "react-redux";
+
+import configureStore from "./store/configure-store";
+
 import {
   BaseClientSideWebPart,
   IPropertyPaneSettings,
@@ -14,24 +17,11 @@ import {
 
 import * as strings from "spfxReactGridStrings";
 // import SpfxReactGrid, { ISpfxReactGridProps } from "./components/SpfxReactGrid";
-import SpfxReactGridContainer from "./SpfxReactGridContainer.";
+import SpfxReactGridContainer from "./SpfxReactGridContainer";
 
 
-import { ISpfxReactGridWebPartProps} from "./ISpfxReactGridWebPartProps";
-
-export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
-
-  public constructor(context: IWebPartContext) {
-    super(context);
-    Log.verbose("SpfxReactGridWebPart","In constructor of SpfxReactGridWebPart");
-    debugger;
-  }
-
-  public render(): void {
-    Log.verbose("SpfxReactGridWebPart","In render of SpfxReactGridWebPart");
-    const element: React.ReactElement<ISpfxReactGridWebPartProps> = React.createElement(SpfxReactGridContainer, {
-      description: this.properties.description,
-      columns: [ {
+import { ISpfxReactGridWebPartProps } from "./ISpfxReactGridWebPartProps";
+const columns= [{
         key: "id",
         name: "id",
         width: 80
@@ -41,13 +31,29 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
         name: "title",
         editable: true
       }]
-    });
+    ;
+const store = configureStore();
+const App: React.StatelessComponent<any> = () => (
+  <Provider store={store}>
+    <SpfxReactGridContainer/>
+  </Provider>
+);
+export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
 
-    ReactDom.render(element, this.domElement);
+  public constructor(context: IWebPartContext) {
+    super(context);
+    Log.verbose("SpfxReactGridWebPart", "In constructor of SpfxReactGridWebPart");
+    debugger;
+  }
+
+  public render(): void {
+    Log.verbose("SpfxReactGridWebPart", "In render of SpfxReactGridWebPart");
+
+    ReactDom.render(App(), this.domElement);
   }
 
   protected get propertyPaneSettings(): IPropertyPaneSettings {
-     Log.verbose("SpfxReactGridWebPart","In propertyPaneSettings of SpfxReactGridWebPart");
+    Log.verbose("SpfxReactGridWebPart", "In propertyPaneSettings of SpfxReactGridWebPart");
 
     return {
       pages: [
