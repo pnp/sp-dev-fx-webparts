@@ -5,7 +5,7 @@ import {
   IPropertyPaneSettings,
   IWebPartContext,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import * as strings from 'realTimeNewsFeedStrings';
 import RealTimeNewsFeed, { IRealTimeNewsFeedProps } from './components/RealTimeNewsFeed';
