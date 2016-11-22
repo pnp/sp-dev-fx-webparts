@@ -19,7 +19,12 @@ function listItemReducer(state = INITIAL_STATE, action: Action<any>) {
         case "@@redux/INIT":
             let item: ListItem = new ListItem();
             item.title = "russell";
+            item.id = 0;
             let temp: ListItem[] = new Array<ListItem>();
+            temp.push(item);
+            item = new ListItem();
+            item.title = "russell2";
+            item.id = 99;
             temp.push(item);
             result = _.union(state, temp);
             Log.verbose("listItemReducer", " listItemReducer returning " + result);

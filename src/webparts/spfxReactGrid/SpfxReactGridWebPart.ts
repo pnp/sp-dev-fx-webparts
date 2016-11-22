@@ -33,12 +33,12 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
       description: this.properties.description,
       columns: [ {
         key: "id",
-        name: "ID",
+        name: "id",
         width: 80
       },
       {
         key: "title",
-        name: "Title",
+        name: "title",
         editable: true
       }]
     });

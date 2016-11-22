@@ -61,23 +61,45 @@ export default class SpfxReactGridContainer extends React.Component<ISpfxReactGr
     }
     public rowGetter(id: number): any {
         let currentState = this._store.getState();
-        let item=currentState.items[id];
+        let item = currentState.items[id];
         return item;
     }
-
+    public static rowHtml(row): JSX.Element {
+        debugger;
+        let content: JSX.Element =
+            <tr key={row.id}>
+                <td>
+                    {row.id}
+                </td>
+                <td>
+                    {row.title}
+                </td>
+            </tr>
+            ;
+        return content;
+    }
     public render(): JSX.Element {
         Log.verbose("SpfxReactGridContainer", "In render of SpfxReactGridContainer");
 
         debugger;
         let currentState = this._store.getState();
         return (
-            <ReactDataGrid
-                enableCellSelect={true}
-                columns={this.props.columns}
-                rowGetter={this.rowGetter.bind(this)}
-                rowsCount={currentState.items.length}
-                minHeight={500}
-                />
+            <table>
+                <thead>
+                <tr>
+                    <th> id </th>
+                    <th> titke </th>
+                </tr>
+                </thead>
+                <tbody>
+                    {
+                        currentState.items.map( (item)=> { return SpfxReactGridContainer.rowHtml(item) })
+                    }
+                </tbody>
+            </table>
         );
+
+
+
     }
 }
