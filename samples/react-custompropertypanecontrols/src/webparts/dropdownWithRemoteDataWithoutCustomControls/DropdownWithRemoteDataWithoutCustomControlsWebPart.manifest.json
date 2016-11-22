@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "ec34b5c6-7708-42ad-841e-46f2b75a074e",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "ec34b5c6-7708-42ad-841e-46f2b75a074e",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Dropdown with remote data (without custom controls)" },
+    "description": { "default": "Sample web part using a property bound to the standard dropdown control with remote data" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "list": "",
+      "item": ""
+    }
+  }]
+}
