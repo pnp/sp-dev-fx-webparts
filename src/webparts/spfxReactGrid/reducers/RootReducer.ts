@@ -1,10 +1,11 @@
 import { createStore, combineReducers, Reducer, Action, Store } from "redux";
 import ListReducer from "./lists";
 import listItemReducer from "./listItems";
+import ColumnReducer from "./columns";
 import { Log } from "@microsoft/sp-client-base";
 import * as actionInit from "../actions/actionInit";
 const { routerReducer } = require('react-router-redux');
-//export interface state
+
 export function RootReducer(state, action) {
     Log.verbose("RootReducer", "In RootReducer of RootReducer");
 
@@ -12,6 +13,7 @@ export function RootReducer(state, action) {
         {
             items: listItemReducer,
             lists: ListReducer,
+            columns:ColumnReducer,
              routing: routerReducer
         }
     )

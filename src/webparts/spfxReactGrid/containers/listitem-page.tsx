@@ -1,22 +1,28 @@
-import * as React from 'react';
-const connect = require('react-redux').connect;
+import * as React from "react";
+const connect = require("react-redux").connect;
 
-import { addListItem, removeListItem, getListItemsAction} from '../actions/listActions';
-import ListItem from '../model/ListItem';
-import Container from '../components/container';
-import ListItemView from '../components/listitemview';
+import { addListItem, removeListItem, getListItemsAction } from "../actions/listActions";
+import ListItem from "../model/ListItem";
+import Column from "../model/Column";
+import Container from "../components/container";
+import ListItemView from "../components/listitemview";
+import * as ReactDataGrid from "react-data-grid";
+import * as ReactDataGridPlugins from "react-data-grid/addons";
 
 interface IListViewPageProps extends React.Props<any> {
   listItems: Array<ListItem>;
+  columns: Array<Column>;
   addListItem: () => void;
   removeListItem: () => void;
   getListItems: () => void;
+  updateListItem: (ListItem) => void;
 }
 
 function mapStateToProps(state) {
-
+debugger;
   return {
     listItems: state.items,
+    columns: state.columns,
   };
 }
 
@@ -24,7 +30,7 @@ function mapDispatchToProps(dispatch) {
 
   return {
     addListItem: (): void => {
-      dispatch(addListItem(new ListItem('1', 'test Item', '123-123123123-123123-123123')));
+      dispatch(addListItem(new ListItem("1", "test Item", "123-123123123-123123-123123")));
     },
     getListItems: (): void => {
       let promise: Promise<any> = getListItemsAction(dispatch);
@@ -33,30 +39,38 @@ function mapDispatchToProps(dispatch) {
     },
 
     removeListItem: (): void => {
-      dispatch(removeListItem(new ListItem('1', 'test Item', '123-123123123-123123-123123')));
+      dispatch(removeListItem(new ListItem("1", "test Item", "123-123123123-123123-123123")));
     },
   };
 }
 
 class ListItemPage extends React.Component<IListViewPageProps, void> {
- public render() {
+  public componentWillMount(){
+    this.props.getListItems();
+  }
+  private rowGetter(rowIdx) {
+    return this.props.listItems[rowIdx];
+  }
+  private handleRowUpdated(e) {
+    //merge updated row with current row and rerender by setting state
+    // let rows = this.props.listItems;
+    // _.assign(rows[e.rowIdx], e.updated);
+    // this.setState({ rows: rows });
+  }
+  public render() {
 
     const { listItems, addListItem, removeListItem, getListItems } = this.props;
 
     return (
       <Container testid="listitem" size={2} center>
-        <h2
-          data-testid="counter-heading"
-          className="center caps"
-          id="qa-counter-heading">
-          List ITEMS
-        </h2>
-
-        <ListItemView
-          listItems={ listItems }
-          addListItem={ addListItem }
-          getListItems={ getListItems }
-          removeListItem={ removeListItem } />
+        <ReactDataGrid
+          enableCellSelect={true}
+          columns={this.props.columns}
+          rowGetter={this.rowGetter.bind(this)}
+          rowsCount={this.props.listItems.length}
+          minHeight={500}
+          onRowUpdated={this.props.updateListItem} />
+        );
       </Container>
     );
   };
