@@ -29,7 +29,7 @@ function configureStore(initialState) {
         environment.devToolsExtension() :
         f => f));
 
-  _enableHotLoader(store);
+ // _enableHotLoader(store);
   return store;
 }
 
@@ -50,19 +50,19 @@ function _getMiddleware(): Middleware[] {
 
 const environment: any = window || this;
 
-function _enableHotLoader(store) {
-  if (!__DEV__) {
-    return;
-  }
+// function _enableHotLoader(store) {
+//   if (!__DEV__) {
+//     return;
+//   }
 
-  const { hot } = module as any;
-  if (hot) {
-    hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers');
-      store.replaceReducer(nextRootReducer);
-    });
-  }
-}
+//   const { hot } = module as any;
+//   if (hot) {
+//     hot.accept('../reducers', () => {
+//       const nextRootReducer = require('../reducers');
+//       store.replaceReducer(nextRootReducer);
+//     });
+//   }
+// }
 
 function _getStorageConfig() {
   return {

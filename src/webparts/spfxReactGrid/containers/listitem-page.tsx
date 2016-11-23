@@ -16,7 +16,7 @@ interface IListViewPageProps extends React.Props<any> {
 function mapStateToProps(state) {
   debugger;
   return {
-    listItems: state.listItems,
+    listItems: state.items,
   };
 }
 

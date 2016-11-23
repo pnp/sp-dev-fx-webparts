@@ -8,7 +8,7 @@ import ListItemPage from '../containers/listitem-page';
 
 
 export default (
-  <Route path="/" component={ App }>
+  <Route path="/temp/workbench.html" component={ App }>
     <IndexRoute component={ ListItemPage }/>
 
     <Route path="lists" component={ ListPage }/>

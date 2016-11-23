@@ -45,7 +45,9 @@
       "variable-name": false,
       "whitespace": false,
       "prefer-const": true,
-      "a11y-role": true
+      "a11y-role": true,
+
+      "quotemark": false
     }
   }
 }

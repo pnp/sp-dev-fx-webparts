@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
-
 import configureStore from "./store/configure-store";
-
+const { Router, browserHistory } = require('react-router');
+const { syncHistoryWithStore } = require('react-router-redux');
 import {
   BaseClientSideWebPart,
   IPropertyPaneSettings,
@@ -19,7 +19,7 @@ import routes from './store/routes';
 import * as strings from "spfxReactGridStrings";
 // import SpfxReactGrid, { ISpfxReactGridProps } from "./components/SpfxReactGrid";
 import SpfxReactGridContainer from "./SpfxReactGridContainer";
-const { Router, browserHistory } = require('react-router');
+
 
 import { ISpfxReactGridWebPartProps } from "./ISpfxReactGridWebPartProps";
 const columns= [{
@@ -34,6 +34,8 @@ const columns= [{
       }]
     ;
 const store = configureStore({});
+
+const history = syncHistoryWithStore(browserHistory, store);
 const App: React.StatelessComponent<any> = () => (
   <Provider store={store}>
    <Router history={ history }>
@@ -41,6 +43,7 @@ const App: React.StatelessComponent<any> = () => (
         </Router>
   </Provider>
 );
+
 export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
 
   public constructor(context: IWebPartContext) {
