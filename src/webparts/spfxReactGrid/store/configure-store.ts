@@ -16,7 +16,7 @@ import promiseMiddleware from 'redux-promise-middleware';
 import logger from './logger';
 import {RootReducer} from '../reducers/rootReducer';
 
-declare const __DEV__: boolean; // from webpack
+const __DEV__: boolean=true; // from webpack
 
 function configureStore(initialState) {
   const store = createStore(
