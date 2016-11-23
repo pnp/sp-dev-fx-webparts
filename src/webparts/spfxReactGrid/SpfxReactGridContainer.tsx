@@ -23,7 +23,7 @@ export interface ISpfxReactGridProps extends ISpfxReactGridWebPartProps {
 
 }
 const mapStateToProps = (state) => {
-    debugger;
+
     return {
         items: state.items,
 
@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    debugger;
+
     return {
          addListItem: (): void => {
       dispatch(addListItem(new ListItem('1', 'test Item', '123-123123123-123123-123123')));
@@ -54,7 +54,7 @@ export  class SpfxReactGridContainer extends React.Component<ISpfxReactGridProps
 
 
     public static rowHtml(row): JSX.Element {
-        debugger;
+
         let content: JSX.Element =
             <tr key={row.id}>
                 <td>
@@ -70,7 +70,7 @@ export  class SpfxReactGridContainer extends React.Component<ISpfxReactGridProps
     public render(): JSX.Element {
         Log.verbose("SpfxReactGridContainer", "In render of SpfxReactGridContainer");
 
-        debugger;
+
         let currentState = this._store.getState();
          const { listItems, addListItem, removeListItem, getListItems } = this.props;
 

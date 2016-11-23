@@ -3,12 +3,15 @@ import * as _ from "lodash";
 import {
     ADD_LISTITEM,
     REMOVE_LISTITEM,
-    ADD_LISTITEMS
+    ADD_LISTITEMS,
+    GOT_LISTITEMS,
+
 
 } from '../constants';
 import { Log } from "@microsoft/sp-client-base";
 const INITIAL_STATE = new Array<ListItem>();
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
+    debugger;
     Log.verbose("listItemReducer", "In listItemReducer of listItemReducer ActionType is " + action.type);
     let result: ListItem[];
     switch (action.type) {
@@ -24,7 +27,9 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
             return newArr;
 
         case ADD_LISTITEMS:
-            return _.union(state, action.payload.listItemss);
+        case GOT_LISTITEMS:
+            return _.union(state, action.payload.items);
+
         default:
 
             Log.verbose("listItemReducer", " listItemReducer returning default  " + state);

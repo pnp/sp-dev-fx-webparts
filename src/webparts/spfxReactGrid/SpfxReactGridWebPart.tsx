@@ -49,7 +49,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
   public constructor(context: IWebPartContext) {
     super(context);
     Log.verbose("SpfxReactGridWebPart", "In constructor of SpfxReactGridWebPart");
-    debugger;
+
   }
 
   public render(): void {

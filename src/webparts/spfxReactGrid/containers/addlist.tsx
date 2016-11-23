@@ -1,10 +1,10 @@
-import * as React from 'react';
-const connect = require('react-redux').connect;
+import * as React from "react";
+const connect = require("react-redux").connect;
 
-import { addListItem, removeListItem, getListItemsAction} from '../actions/listActions';
-import ListItem from '../model/ListItem';
-import Container from '../components/container';
-import ListItemView from '../components/listitemview';
+import { addListItem, removeListItem, getListItemsAction} from "../actions/listActions";
+import ListItem from "../model/ListItem";
+import Container from "../components/container";
+import ListItemView from "../components/listitemview";
 
 interface IListViewPageProps extends React.Props<any> {
   listItems: Array<ListItem>;
@@ -24,7 +24,7 @@ function mapDispatchToProps(dispatch) {
 
   return {
     addListItem: (): void => {
-      dispatch(addListItem(new ListItem('1', 'test Item', '123-123123123-123123-123123')));
+      dispatch(addListItem(new ListItem("1", "test Item", "123-123123123-123123-123123")));
     },
     getListItems: (): void => {
       let promise: Promise<any> = getListItemsAction(dispatch);
@@ -33,7 +33,7 @@ function mapDispatchToProps(dispatch) {
     },
 
     removeListItem: (): void => {
-      dispatch(removeListItem(new ListItem('1', 'test Item', '123-123123123-123123-123123')));
+      dispatch(removeListItem(new ListItem("1", "test Item", "123-123123123-123123-123123")));
     },
   };
 }

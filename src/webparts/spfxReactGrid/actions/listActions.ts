@@ -10,14 +10,15 @@ import {
     GOT_LISTITEMS,
     GET_LISTITEMSERROR
 
-} from '../constants';
-import 'whatwg-fetch';
-import {Promise} from "es6-promise";
-import List from '../model/List';
-import ListItem from '../model/ListItem';
+} from "../constants";
+import "whatwg-fetch";
+import { Promise } from "es6-promise";
+import pnp from "sp-pnp-js";
+import List from "../model/List";
+import ListItem from "../model/ListItem";
 
 export function addList(list: List) {
-    debugger;
+
     return {
         type: ADD_LIST,
         payload: {
@@ -42,7 +43,7 @@ export function addLists(lists: List[]) {
     };
 }
 export function addListItem(listItem: ListItem) {
-    debugger;
+
     return {
         type: ADD_LISTITEM,
         payload: {
@@ -68,25 +69,21 @@ export function addListItems(listItems: ListItem[]) {
 }
 
 export function getListItemsAction(dispatch: any): any {
+    debugger;
+    let x:number=1;
 
-    let headers = new Headers();
-    //    { 'Accept': 'application/json;odata=verbose' ,
-    //     'Cache-Control': 'no-cache' }
-    //    );    let headers = new Headers(
-headers.append('Accept', 'application/json;odata=verbose')
-    let options = {
-        headers: headers,
-        credentials: 'same-origin'
-    };
-    let payload: Promise<any> = fetch('http://services.odata.org/TripPinRESTierService/People', {method: 'GET', headers: headers,mode: 'no-cors'})
+    let payload = pnp.sp.web.lists.getByTitle('Tasks').items.get()
         .then((response) => {
             debugger;
-            let data = response.json();
+            let data = _.map(response,function(item : any){
+                return new ListItem(item.Id,item.Title,item.GUID);
+            });
             console.log(data);
             let gotListItems = gotListItemsAction(data);
             dispatch(gotListItems); // need to ewname this one to be digfferent from the omported ome
         })
         .catch((error) => {
+                        debugger;
             console.log(error);
             dispatch(getListItemsErrorAction(error)); // need to ewname this one to be digfferent from the omported ome
         });

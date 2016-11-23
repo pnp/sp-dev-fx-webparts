@@ -29,7 +29,7 @@ export default function ListItemView({
   removeListItem,
   getListItems
 }: IListItemViewProps) {
-  debugger;
+
   return (
     <div >
       <button

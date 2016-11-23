@@ -30,7 +30,7 @@ function configureStore(initialState) {
 }
 
 function _getMiddleware(): Middleware[] {
-  debugger;
+
   const history = createMemoryHistory();
   let middleware = [
 

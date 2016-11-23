@@ -13,14 +13,14 @@ interface IListViewPageProps extends React.Props<any> {
 };
 
 function mapStateToProps(state) {
-  debugger;
+
   return {
     lists: state.lists,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  debugger;
+
   return {
     addList: (): void => dispatch(addList(new List('xxxx09-2324-234234-23423441', 'test list2', 'http://adadsasd2'))),
     removeList: (): void  => dispatch(removeList(new List('xxxx09-2324-234234-23423441', 'test list2', 'http://adadsasd2'))),
@@ -29,9 +29,9 @@ function mapDispatchToProps(dispatch) {
 
 class ListPage extends React.Component<IListViewPageProps, void> {
   render() {
-    debugger;
+
     const { lists, addList, removeList } = this.props;
- 
+
     return (
       <Container testid="list" size={2} center>
       <h2

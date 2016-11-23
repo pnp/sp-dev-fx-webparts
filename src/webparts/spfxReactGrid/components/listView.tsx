@@ -26,7 +26,7 @@ export default function ListView({
   addList,
   removeList
 }: IListViewProps) {
-  debugger;
+
   return (
     <div >
       <button
