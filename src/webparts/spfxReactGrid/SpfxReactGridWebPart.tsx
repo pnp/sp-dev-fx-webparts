@@ -15,10 +15,11 @@ import {
 } from "@microsoft/sp-client-base";
 
 
+import routes from './store/routes';
 import * as strings from "spfxReactGridStrings";
 // import SpfxReactGrid, { ISpfxReactGridProps } from "./components/SpfxReactGrid";
 import SpfxReactGridContainer from "./SpfxReactGridContainer";
-
+const { Router, browserHistory } = require('react-router');
 
 import { ISpfxReactGridWebPartProps } from "./ISpfxReactGridWebPartProps";
 const columns= [{
@@ -32,10 +33,12 @@ const columns= [{
         editable: true
       }]
     ;
-const store = configureStore();
+const store = configureStore({});
 const App: React.StatelessComponent<any> = () => (
   <Provider store={store}>
-    <SpfxReactGridContainer/>
+   <Router history={ history }>
+          { routes }
+        </Router>
   </Provider>
 );
 export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
