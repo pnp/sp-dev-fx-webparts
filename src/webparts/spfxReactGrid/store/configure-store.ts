@@ -2,41 +2,39 @@ import {
   createStore,
   applyMiddleware,
   compose,
-  Middleware,Store
-} from 'redux';
-import { fromJS } from 'immutable';
-import { browserHistory } from 'react-router';
-import { routerMiddleware } from 'react-router-redux';
-
-import thunk from 'redux-thunk';
-
-const persistState = require('redux-localstorage');
-
-import promiseMiddleware from 'redux-promise-middleware';
-import logger from './logger';
-import {RootReducer} from '../reducers/rootReducer';
-
-const __DEV__: boolean=true; // from webpack
-
+  Middleware, Store
+} from "redux";
+import { fromJS } from "immutable";
+import { createMemoryHistory } from "react-router";
+//import { browserHistory } from "react-router";
+import { routerMiddleware } from "react-router-redux";
+import thunk from "redux-thunk";
+const persistState = require("redux-localstorage");
+import promiseMiddleware from "redux-promise-middleware";
+import logger from "./logger";
+import { RootReducer } from "../reducers/rootReducer";
+const __DEV__: boolean = true; // from webpack
 function configureStore(initialState) {
   const store = createStore(
     RootReducer,
     initialState,
     compose(
       applyMiddleware(..._getMiddleware()),
-/////      persistState('session', _getStorageConfig()),
+      /////      persistState("session", _getStorageConfig()),
       __DEV__ && environment.devToolsExtension ?
         environment.devToolsExtension() :
         f => f));
 
- // _enableHotLoader(store);
+  // _enableHotLoader(store);
   return store;
 }
 
 function _getMiddleware(): Middleware[] {
+  debugger;
+  const history = createMemoryHistory();
   let middleware = [
 
-    routerMiddleware(browserHistory),
+    routerMiddleware(history),
     promiseMiddleware(),
     thunk,
   ];
@@ -57,8 +55,8 @@ const environment: any = window || this;
 
 //   const { hot } = module as any;
 //   if (hot) {
-//     hot.accept('../reducers', () => {
-//       const nextRootReducer = require('../reducers');
+//     hot.accept("../reducers", () => {
+//       const nextRootReducer = require("../reducers");
 //       store.replaceReducer(nextRootReducer);
 //     });
 //   }
@@ -66,7 +64,7 @@ const environment: any = window || this;
 
 function _getStorageConfig() {
   return {
-    key: 'typescript-react-redux-seed',
+    key: "typescript-react-redux-seed",
     serialize: (store) => {
       return store && store.session ?
         JSON.stringify(store.session.toJS()) : store;

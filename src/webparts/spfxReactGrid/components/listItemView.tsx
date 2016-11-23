@@ -59,6 +59,7 @@ export default function ListItemView({
         data-testid="counter-result"
         id="qa-counter-div"
         >
+        <thead>
         <tr>
           <th>
             List Item ID
@@ -69,11 +70,16 @@ export default function ListItemView({
           <th>
             Item GUID
           </th>
+
+
         </tr>
+        </thead>
+        <tbody>
         {
 
           listItems.map(function (col, j) { return listItemRow(col); })
         }
+        </tbody>
       </table>
 
     </div>

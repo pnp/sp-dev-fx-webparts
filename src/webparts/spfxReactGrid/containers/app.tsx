@@ -1,14 +1,14 @@
-import * as React from 'react';
-const connect = require('react-redux').connect;
-const Link = require('react-router').Link;
+import * as React from "react";
+const connect = require("react-redux").connect;
+const Link = require("react-router").Link;
 
 
 
-import Content from '../components/content';
+import Content from "../components/content";
 
 
-import Navigator from '../components/navigator';
-import NavigatorItem from '../components/navigator-item';
+import Navigator from "../components/navigator";
+import NavigatorItem from "../components/navigator-item";
 
 interface IAppProps extends React.Props<any> {
   session: any;

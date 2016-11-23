@@ -1,16 +1,12 @@
-import * as React from 'react';
-const { IndexRoute, Route } = require('react-router');
-
-import App from '../containers/app';
-
-import ListPage from '../containers/list-page';
-import ListItemPage from '../containers/listitem-page';
-
-
+import * as React from "react";
+const { IndexRoute, Route } = require("react-router");
+import App from "../containers/app";
+import ListPage from "../containers/list-page";
+import ListItemPage from "../containers/listitem-page";
 export default (
-  <Route path="/temp/workbench.html" component={ App }>
+  <Route path="/" component={ App }>
     <IndexRoute component={ ListItemPage }/>
 
-    <Route path="lists" component={ ListPage }/>
+    <Route path="/lists" component={ ListPage }/>
   </Route>
 );

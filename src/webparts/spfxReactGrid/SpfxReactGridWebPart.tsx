@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
-const { Router, browserHistory } = require('react-router');
+const { Router, createMemoryHistory } = require('react-router');
 const { syncHistoryWithStore } = require('react-router-redux');
 import {
   BaseClientSideWebPart,
@@ -35,7 +35,7 @@ const columns= [{
     ;
 const store = configureStore({});
 
-const history = syncHistoryWithStore(browserHistory, store);
+const history = createMemoryHistory(location);
 const App: React.StatelessComponent<any> = () => (
   <Provider store={store}>
    <Router history={ history }>
