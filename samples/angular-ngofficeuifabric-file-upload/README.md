@@ -21,7 +21,7 @@ angular-ngofficeuifabric-file-upload | Atish Kumar Dipongkor (MVP, Office Develo
 
 Version|Date|Comments
 -------|----|--------
-1.0|November 07, 2016|Initial release
+1.0|November 24, 2016|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
