@@ -4,16 +4,20 @@ import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
 const { Router, createMemoryHistory } = require('react-router');
 const { syncHistoryWithStore } = require('react-router-redux');
+import list from './model/list';
+import column from './model/column';
+
+import { addLists } from "./actions/listActions";
+import { addColumns } from "./actions/columnActions";
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneSettings, IWebPartData, IHtmlProperties,
   IWebPartContext,
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
 import {
   Log
 } from "@microsoft/sp-client-base";
-
 
 import routes from './store/routes';
 import * as strings from "spfxReactGridStrings";
@@ -22,40 +26,56 @@ import SpfxReactGridContainer from "./SpfxReactGridContainer";
 
 
 import { ISpfxReactGridWebPartProps } from "./ISpfxReactGridWebPartProps";
-const columns= [{
-        key: "id",
-        name: "id",
-        width: 80
-      },
-      {
-        key: "title",
-        name: "title",
-        editable: true
-      }]
-    ;
+const columns = [{
+  key: "id",
+  name: "id",
+  width: 80
+},
+{
+  key: "title",
+  name: "title",
+  editable: true
+}]
+  ;
 const store = configureStore({});
 
 const history = createMemoryHistory(location);
 const App: React.StatelessComponent<any> = () => (
   <Provider store={store}>
-   <Router history={ history }>
-          { routes }
-        </Router>
+    <Router history={history}>
+      {routes}
+    </Router>
   </Provider>
 );
 
 export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
 
   public constructor(context: IWebPartContext) {
+    debugger;
     super(context);
     Log.verbose("SpfxReactGridWebPart", "In constructor of SpfxReactGridWebPart");
-
   }
-
   public render(): void {
+    debugger;
+    store.dispatch(addLists(this.properties.lists));
+    store.dispatch(addColumns(this.properties.columns));
     Log.verbose("SpfxReactGridWebPart", "In render of SpfxReactGridWebPart");
 
     ReactDom.render(App(), this.domElement);
+  }
+  protected deserialize(data: IWebPartData): ISpfxReactGridWebPartProps {
+    debugger;
+
+    let info = super.deserialize(data);
+    debugger;
+    return info;
+  }
+  protected onBeforeSerialize(): IHtmlProperties {
+    this.properties.columns = store.getState().columns;
+    this.properties.lists = store.getState().lists;
+
+
+    return super.onBeforeSerialize();
   }
 
   protected get propertyPaneSettings(): IPropertyPaneSettings {

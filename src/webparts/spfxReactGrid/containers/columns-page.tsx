@@ -8,17 +8,59 @@ import Container from "../components/container";
 import ListItemView from "../components/listitemview";
 import * as ReactDataGrid from "react-data-grid";
 import * as ReactDataGridPlugins from "react-data-grid/addons";
+const fieldTypes = [
+  { id: 'text', value: 'text', text: 'text', title: 'text' },
+  { id: 'improvement', value: 'date', text: 'Improvement', title: 'Improvement' },
+  { id: 'number', value: 'number', text: 'number', title: 'number' },
+  { id: 'story', value: 'story', text: 'Story', title: 'Story' }
+];
+const booleans = [
+  { id: 'yes', value: true, text: 'yes', title: 'yes' },
+  { id: 'false', value: false, text: 'no', title: 'no' }
+
+];
+var DropDownEditor = ReactDataGridPlugins.Editors.DropDownEditor;
+var FieldTypesEditor = <DropDownEditor options={fieldTypes}/>;
+var BooleanEditor = <DropDownEditor options={booleans}/>;
+const kolumns= [{
+  key: "key",
+  name: "key",
+  editable: true,
+  width: 80
+},
+{
+  key: "name",
+  name: "name",
+  editable: true
+},
+{
+  key: "type",
+  name: "type",
+  editable: true,
+  editor:FieldTypesEditor
+},
+{
+  key: "editable",
+  name: "editable",
+  editable: true,
+  editor:BooleanEditor
+}];
+
+
+
 
 interface IColumnsPageProps extends React.Props<any> {
   columns: Array<Column>;
   addColumn: () => void;
 
-  removeColumn: () => void;
+  removeColumn: (column) => void;
   saveColumn: (Column) => void;
 }
+interface IContextMenu extends React.Props<any> {
+  onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
 
+}
 function mapStateToProps(state) {
-  debugger;
   debugger;
   return {
     columns: state.columns,
@@ -26,77 +68,77 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-
   return {
     addColumn: (): void => {
       debugger;
       dispatch(addColumn(new Column("new", "bew", "new")));
     },
     saveColumn: (updatedRowData): void => {
-      debugger;
-      let {   rowIdx, updated, cellKey, keyCode} = updatedRowData;
-      let row=this.rowGetter(rowIdx);
-      if (keyCode === "Enter") {
-        dispatch(saveColumn(updatedRowData));
-      }
+      dispatch(saveColumn(updatedRowData));
+
     },
-
-
     removeColumn: (column): void => {
       debugger;
+      //data.rowidx is the row data.idx is the colukns
+
       dispatch(removeColumn(column));
     },
 
   };
 }
+// Create the context menu.
+// Use this.props.rowIdx and this.props.idx to get the row/column where the menu is shown.
 
 class CplumnsPage extends React.Component<IColumnsPageProps, void> {
   private rowGetter(rowIdx) {
     return this.props.columns[rowIdx];
   }
-  private handleRowUpdated(e) {
-    //merge updated row with current row and rerender by setting state
-    // let rows = this.props.listItems;
-    // _.assign(rows[e.rowIdx], e.updated);
-    // this.setState({ rows: rows });
-  }
+  private handleRowUpdated(data) {
+    debugger;
+    let row = this.props.columns[data.rowIdx];
+    let newrow = _.assign(row, data.updated);
+    this.props.saveColumn(newrow);
 
+  }
+  private handleRowdeleted(event, data) {
+    debugger;
+    this.props.removeColumn(this.props.columns[data.rowIdx]);
+  }
   public render() {
+    var MyContextMenu = React.createClass<IContextMenu, any>({
+      onRowDelete: function (e, data) {
+        if (typeof (this.props.onRowDelete) === 'function') {
+          this.props.onRowDelete(e, data);
+        }
+      },
+
+      render: function () {
+        var ContextMenu = ReactDataGridPlugins.Menu.ContextMenu;
+        var MenuItem = ReactDataGridPlugins.Menu.MenuItem;
+        var SubMenu = ReactDataGridPlugins.Menu.SubMenu;
+        return (
+          <ContextMenu>
+            <MenuItem data={{ rowIdx: this.props.rowIdx, idx: this.props.idx }} onClick={this.onRowDelete}>Delete Row</MenuItem>
+          </ContextMenu>
+        );
+      }
+    });
     debugger;
     const { columns, addColumn, removeColumn } = this.props;
-    const kolumns = [{
-      key: "key",
-      name: "key",
-      editable: true,
-      width: 80
-    },
-    {
-      key: "name",
-      name: "name",
-      editable: true
-    },
-    {
-      key: "type",
-      name: "type",
-      editable: true
-    },
-    {
-      key: "editable",
-      name: "editable",
-      editable: true
-    },]
-      ;
+
     let toolbar = React.createElement(ReactDataGridPlugins.Toolbar, { onAddRow: this.props.addColumn });
     return (
       <Container testid="columns" size={2} center>
         <ReactDataGrid
+          contextMenu={<MyContextMenu onRowDelete={this.handleRowdeleted.bind(this)} />}
+
           toolbar={toolbar}
           enableCellSelect={true}
           columns={kolumns}
           rowGetter={this.rowGetter.bind(this)}
           rowsCount={this.props.columns.length}
           minHeight={500}
-          onRowUpdated={this.props.saveColumn} />
+          onRowUpdated={this.handleRowUpdated.bind(this)} />
         );
       </Container>
     );

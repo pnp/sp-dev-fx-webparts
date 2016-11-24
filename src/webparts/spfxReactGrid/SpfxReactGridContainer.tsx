@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
 }
  connect(mapStateToProps,mapDispatchToProps);
 export  class SpfxReactGridContainer extends React.Component<ISpfxReactGridProps, void> {
-    private _store = configureStore({});
+    public _store = configureStore({});
     private unsubscribe;
 
 
