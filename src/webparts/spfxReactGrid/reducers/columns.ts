@@ -19,8 +19,8 @@ const columns = [{
 }]
     ;
 let INITIAL_STATE = new Array<Column>();
-INITIAL_STATE.push(new Column("id", "id", "string"));
-INITIAL_STATE.push(new Column("title", "title", "string"));
+INITIAL_STATE.push(new Column("id", "id", "string",false));
+INITIAL_STATE.push(new Column("title", "title", "string",true));
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
     debugger;
     Log.verbose("listItemReducer", "In listItemReducer of listItemReducer ActionType is " + action.type);
@@ -29,7 +29,7 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
         case ADD_COLUMN:
 
             let newarray = _.clone(state);
-            newarray.push(action.payload.listItem);
+            newarray.push(action.payload.column);
             return newarray;
 
         // return INITIAL_STATE;

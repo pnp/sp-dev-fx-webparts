@@ -11,4 +11,6 @@ export const REMOVE_LISTITEM = "App/REMOVE_LISTITEM";
 
 
 export const ADD_COLUMN = "App/ADD_COLUMN";
+export const ADD_COLUMNS = "App/ADD_COLUMNS";
 export const REMOVE_COLUMN = "App/REMOVE_COLUMN";
+export const SAVE_COLUMN = "App/SAVE_COLUMN";

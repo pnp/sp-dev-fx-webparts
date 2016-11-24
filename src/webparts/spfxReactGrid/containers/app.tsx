@@ -40,6 +40,9 @@ class App extends React.Component<IAppProps, void> {
            <NavigatorItem  mr>
             <Link to="/lists">Lists</Link>
           </NavigatorItem>
+            <NavigatorItem  mr>
+            <Link to="/columns">Columns</Link>
+          </NavigatorItem>
 
            <NavigatorItem  mr>
             <Link to="/">List Items</Link>

@@ -12,7 +12,7 @@ import {
 
 } from "../constants";
 import "whatwg-fetch";
-import { Promise } from "es6-promise";
+
 import pnp from "sp-pnp-js";
 import List from "../model/List";
 import ListItem from "../model/ListItem";
