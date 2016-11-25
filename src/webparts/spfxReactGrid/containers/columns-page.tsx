@@ -71,7 +71,7 @@ function mapDispatchToProps(dispatch) {
   return {
     addColumn: (): void => {
       debugger;
-      dispatch(addColumn(new Column("new", "bew", "new")));
+      dispatch(addColumn(new Column("new", "bew", true)));
     },
     saveColumn: (updatedRowData): void => {
       dispatch(saveColumn(updatedRowData));
