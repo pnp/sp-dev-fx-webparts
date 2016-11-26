@@ -61,7 +61,7 @@ interface IContextMenu extends React.Props<any> {
 
 }
 function mapStateToProps(state) {
-  debugger;
+
   return {
     columns: state.columns,
   };
@@ -70,7 +70,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addColumn: (): void => {
-      debugger;
+
       dispatch(addColumn(new Column("new", "bew", true)));
     },
     saveColumn: (updatedRowData): void => {
@@ -78,7 +78,7 @@ function mapDispatchToProps(dispatch) {
 
     },
     removeColumn: (column): void => {
-      debugger;
+
       //data.rowidx is the row data.idx is the colukns
 
       dispatch(removeColumn(column));
@@ -94,14 +94,14 @@ class CplumnsPage extends React.Component<IColumnsPageProps, void> {
     return this.props.columns[rowIdx];
   }
   private handleRowUpdated(data) {
-    debugger;
+
     let row = this.props.columns[data.rowIdx];
     let newrow = _.assign(row, data.updated);
     this.props.saveColumn(newrow);
 
   }
   private handleRowdeleted(event, data) {
-    debugger;
+
     this.props.removeColumn(this.props.columns[data.rowIdx]);
   }
   public render() {
@@ -123,7 +123,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, void> {
         );
       }
     });
-    debugger;
+
     const { columns, addColumn, removeColumn } = this.props;
 
     let toolbar = React.createElement(ReactDataGridPlugins.Toolbar, { onAddRow: this.props.addColumn });

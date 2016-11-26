@@ -51,12 +51,12 @@ const App: React.StatelessComponent<any> = () => (
 export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
 
   public constructor(context: IWebPartContext) {
-    debugger;
+
     super(context);
     Log.verbose("SpfxReactGridWebPart", "In constructor of SpfxReactGridWebPart");
   }
   public render(): void {
-    debugger;
+
     store.dispatch(addLists(this.properties.lists));
     store.dispatch(addColumns(this.properties.columns));
     Log.verbose("SpfxReactGridWebPart", "In render of SpfxReactGridWebPart");
@@ -64,10 +64,10 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     ReactDom.render(App(), this.domElement);
   }
   protected deserialize(data: IWebPartData): ISpfxReactGridWebPartProps {
-    debugger;
+
 
     let info = super.deserialize(data);
-    debugger;
+
     return info;
   }
   protected onBeforeSerialize(): IHtmlProperties {

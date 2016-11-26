@@ -1,6 +1,5 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
-
 import { addListItem, removeListItem, getListItemsAction } from "../actions/listActions";
 import ListItem from "../model/ListItem";
 import Column from "../model/Column";
@@ -8,7 +7,6 @@ import Container from "../components/container";
 import ListItemView from "../components/listitemview";
 import * as ReactDataGrid from "react-data-grid";
 import * as ReactDataGridPlugins from "react-data-grid/addons";
-
 interface IListViewPageProps extends React.Props<any> {
   listItems: Array<ListItem>;
   columns: Array<Column>;
@@ -17,17 +15,14 @@ interface IListViewPageProps extends React.Props<any> {
   getListItems: () => void;
   updateListItem: (ListItem) => void;
 }
-
 function mapStateToProps(state) {
-debugger;
+
   return {
     listItems: state.items,
     columns: state.columns,
   };
 }
-
 function mapDispatchToProps(dispatch) {
-
   return {
     addListItem: (): void => {
       dispatch(addListItem(new ListItem("1", "test Item", "123-123123123-123123-123123")));
@@ -35,9 +30,7 @@ function mapDispatchToProps(dispatch) {
     getListItems: (): void => {
       let promise: Promise<any> = getListItemsAction(dispatch);
       dispatch(promise); // need to ewname this one to be digfferent from the omported ome
-
     },
-
     removeListItem: (): void => {
       dispatch(removeListItem(new ListItem("1", "test Item", "123-123123123-123123-123123")));
     },
@@ -52,10 +45,7 @@ class ListItemPage extends React.Component<IListViewPageProps, void> {
     return this.props.listItems[rowIdx];
   }
   private handleRowUpdated(e) {
-    //merge updated row with current row and rerender by setting state
-    // let rows = this.props.listItems;
-    // _.assign(rows[e.rowIdx], e.updated);
-    // this.setState({ rows: rows });
+
   }
   public render() {
 

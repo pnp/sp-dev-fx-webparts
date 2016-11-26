@@ -1,6 +1,7 @@
 
 import {
     ADD_LIST,
+    SAVE_LIST,
     ADD_LISTS,
     REMOVE_LIST,
     ADD_LISTITEM,
@@ -31,6 +32,14 @@ export function removeList(list: List) {
         type: REMOVE_LIST,
         payload: {
             list: list
+        }
+    };
+}
+export function saveList(list: List) {
+    return {
+        type: SAVE_LIST,
+        payload: {
+            list: List
         }
     };
 }
@@ -69,12 +78,11 @@ export function addListItems(listItems: ListItem[]) {
 }
 
 export function getListItemsAction(dispatch: any): any {
-    debugger;
-    let x:number=1;
+
 
     let payload = pnp.sp.web.lists.getByTitle('Tasks').items.get()
         .then((response) => {
-            debugger;
+
             let data = _.map(response,function(item : any){
                 return new ListItem(item.Id,item.Title,item.GUID);
             });
@@ -83,7 +91,7 @@ export function getListItemsAction(dispatch: any): any {
             dispatch(gotListItems); // need to ewname this one to be digfferent from the omported ome
         })
         .catch((error) => {
-                        debugger;
+
             console.log(error);
             dispatch(getListItemsErrorAction(error)); // need to ewname this one to be digfferent from the omported ome
         });

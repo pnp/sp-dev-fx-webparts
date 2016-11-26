@@ -22,7 +22,7 @@ let INITIAL_STATE = new Array<Column>();
 INITIAL_STATE.push(new Column("id", "id",false));
 INITIAL_STATE.push(new Column("title", "title",true));
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
-    debugger;
+
     Log.verbose("listItemReducer", "In listItemReducer of listItemReducer ActionType is " + action.type);
     let result: Column[];
     switch (action.type) {
