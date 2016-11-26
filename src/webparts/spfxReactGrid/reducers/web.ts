@@ -6,7 +6,7 @@ import Web from '../model/web';
 import { fromJS } from 'immutable';
 const INITIAL_STATE = [];
 function webReducer(state: Array<Web> = INITIAL_STATE, action: any = { type: '' }): Array<Web> {
-    debugger;
+
     switch (action.type) {
         case GOT_WEBS:
             return _.union(state, action.payload.webs);

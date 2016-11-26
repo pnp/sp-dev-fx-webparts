@@ -8,10 +8,10 @@ import "whatwg-fetch";
 import pnp from "sp-pnp-js";
 import Web from "../model/Web";
 export function getWebsAction(dispatch: any): any {
-    debugger;
+
     let payload = pnp.sp.site.rootWeb.webs.get()
         .then((response) => {
-            debugger;
+
             let data = _.map(response, function (item: any) {
                 return new Web(item.Id, item.Title, item.Url);
             });
@@ -20,7 +20,7 @@ export function getWebsAction(dispatch: any): any {
             dispatch(gotWebs); // need to ewname this one to be digfferent from the omported ome
         })
         .catch((error) => {
-            debugger;
+
             console.log(error);
             dispatch(getWebsErrorAction(error)); // need to ewname this one to be digfferent from the omported ome
         });

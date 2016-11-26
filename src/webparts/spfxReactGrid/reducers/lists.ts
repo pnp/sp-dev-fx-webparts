@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 import List from '../model/list';
 import { fromJS } from 'immutable';
 
-const INITIAL_STATE  = [new List('20u309-2324-234234-23423441', 'test list', 'http://adadsasd')];
+const INITIAL_STATE  = [new List('xx','20u309-2324-234234-23423441', 'test list', 'http://adadsasd')];
 // const INITIAL_STATE = fromJS({
 //  lists: [],
 // });
