@@ -3,9 +3,6 @@ import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
 const { Router, createMemoryHistory } = require('react-router');
-const { syncHistoryWithStore } = require('react-router-redux');
-import list from './model/list';
-import column from './model/column';
 
 import { addLists } from "./actions/listActions";
 import { addColumns } from "./actions/columnActions";
@@ -64,10 +61,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     ReactDom.render(App(), this.domElement);
   }
   protected deserialize(data: IWebPartData): ISpfxReactGridWebPartProps {
-
-
     let info = super.deserialize(data);
-
     return info;
   }
   protected onBeforeSerialize(): IHtmlProperties {

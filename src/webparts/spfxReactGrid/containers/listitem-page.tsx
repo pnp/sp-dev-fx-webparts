@@ -4,9 +4,7 @@ import { addListItem, removeListItem, getListItemsAction } from "../actions/list
 import ListItem from "../model/ListItem";
 import Column from "../model/Column";
 import Container from "../components/container";
-import ListItemView from "../components/listitemview";
 import * as ReactDataGrid from "react-data-grid";
-import * as ReactDataGridPlugins from "react-data-grid/addons";
 interface IListViewPageProps extends React.Props<any> {
   listItems: Array<ListItem>;
   columns: Array<Column>;

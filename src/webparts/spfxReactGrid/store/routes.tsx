@@ -3,7 +3,6 @@ const { IndexRoute, Route } = require("react-router");
 import App from "../containers/app";
 import ListPage from "../containers/list-page";
 import ColumnsPage from "../containers/columns-page";
-import AddeList from "../containers/addlist";
 import ListItemPage from "../containers/listitem-page";
 export default (
   <Route path="/" component={App}>

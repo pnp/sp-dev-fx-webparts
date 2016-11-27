@@ -5,14 +5,9 @@ import * as ReactDataGridPlugins from "react-data-grid/addons";
 import { addList, removeList, saveList } from '../actions/listActions';
 import { getWebsAction } from '../actions/webActions';
 import List from '../model/List';
-import Web from '../model/Web';
+import { Web, WebList, WebListField } from "../model/Web";
 import Container from '../components/container';
 import ListView from '../components/Listview';
-const booleans = [
-  { id: 'yes', value: true, text: 'yes', title: 'yes' },
-  { id: 'false', value: false, text: 'no', title: 'no' }
-
-];
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
@@ -34,9 +29,9 @@ function mapDispatchToProps(dispatch) {
     removeList: (): void => dispatch(removeList(new List('web', 'xxxx09-2324-234234-23423441', 'test list2', 'http://adadsasd2'))),
     getWebs: (): Promise<any> => {
       debugger;
-     let promis= dispatch(getWebsAction(dispatch));
-     debugger;
-     return promis;
+      let promis = dispatch(getWebsAction(dispatch));
+      debugger;
+      return promis;
     },
     saveList: (list): void => dispatch(saveList(list)),
 
@@ -45,19 +40,19 @@ function mapDispatchToProps(dispatch) {
 
 class ListPage extends React.Component<IListViewPageProps, void> {
   private kolumns = [];
-     private DropDownEditor = ReactDataGridPlugins.Editors.DropDownEditor;
-    private WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-   //  private WebsEditor = <this.DropDownEditor options={booleans} />;
-
+  private DropDownEditor = ReactDataGridPlugins.Editors.DropDownEditor;
+  private WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
+  private ListsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
 
   private convertWebsToDropdown(web) {
     debugger;
-    return { id: web.id, value: web.title, text:  web.title,title:  web.title}
+    return { id: web.id, value: web.title, text: web.title, title: web.title };
   }
   public componentWillMount() {
-debugger;
+    debugger;
+
     if (this.props.webs.length == 0) {
-      this.props.getWebs().then((x)=>{
+     this.props.getWebs().then((x) => {
         this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
       });
     }
@@ -75,12 +70,18 @@ debugger;
 
     this.props.removeList(this.props.lists[data.rowIdx]);
   }
+  private geListsOptions(){
+debugger;
+  }
   public render() {
     debugger;
-     const { lists, addList, removeList } = this.props;
-      this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-   debugger;
-
+    const { lists, addList, removeList } = this.props;
+    this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
+    this.ListsEditor = <this.DropDownEditor options={this.geListsOptions()} />;
+    debugger;
+let onRows=function(X,y,z){
+  debugger;
+}
     this.kolumns = [
       {
         key: "Web",
@@ -89,6 +90,14 @@ debugger;
         width: 80,
         editor: this.WebsEditor
       },
+        {
+        key: "List",
+        name: "List",
+        editable: true,
+        width: 80,
+          editor: this.ListsEditor
+      },
+
       {
         key: "ListID",
         name: "ListId",
@@ -122,6 +131,9 @@ debugger;
           rowGetter={this.rowGetter.bind(this)}
           rowsCount={this.props.lists.length}
           minHeight={500}
+
+
+
           onRowUpdated={this.handleRowUpdated.bind(this)} />
         );
       </Container>

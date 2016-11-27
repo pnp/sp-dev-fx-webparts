@@ -9,5 +9,5 @@ export function doActionInit(message: string): Action<ACTION_INIT> {
             foo: 123,
             message
         }
-    }
+    };
 }

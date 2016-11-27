@@ -9,5 +9,5 @@ export function doActionAddListIten(listItem: ListItem): Action<ACTION_ADDLISTIT
         payload: {
             listItem: listItem
         }
-    }
+    };
 }

@@ -80,7 +80,7 @@ export function addListItems(listItems: ListItem[]) {
 export function getListItemsAction(dispatch: any): any {
 
 
-    let payload = pnp.sp.web.lists.getByTitle('Tasks').items.get()
+    const payload = pnp.sp.web.lists.getByTitle('Tasks').items.get()
         .then((response) => {
 
             let data = _.map(response,function(item : any){
