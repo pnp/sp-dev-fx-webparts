@@ -52,6 +52,7 @@ class ListItemPage extends React.Component<IListViewPageProps, void> {
     return (
       <Container testid="listitem" size={2} center>
         <ReactDataGrid
+
           enableCellSelect={true}
           columns={this.props.columns}
           rowGetter={this.rowGetter.bind(this)}
