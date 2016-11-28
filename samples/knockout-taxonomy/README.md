@@ -48,4 +48,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - creating custom Knockout components
 - styling HTML elements to match Fabric UI experience
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/ko-dependent-properties" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/knockout-taxonomy" />
