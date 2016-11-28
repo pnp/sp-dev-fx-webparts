@@ -3,13 +3,9 @@ import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
 const { Router, createMemoryHistory } = require('react-router');
-<<<<<<< HEAD
-
-=======
 const { syncHistoryWithStore } = require('react-router-redux');
 import list from './model/list';
 import column from './model/column';
->>>>>>> bf4f4696a2a9c477981adacd43f3e01195672b7e
 import { addLists } from "./actions/listActions";
 import { addColumns } from "./actions/columnActions";
 import {
@@ -76,3 +72,4 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     };
   }
 }
+

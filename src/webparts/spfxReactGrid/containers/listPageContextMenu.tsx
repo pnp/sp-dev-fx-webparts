@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import * as React from "react";
 import * as ReactDataGrid from "react-data-grid";
 import * as ReactDataGridPlugins from "react-data-grid/addons";
@@ -25,4 +23,3 @@ export class ListPageContextMenu extends React.Component<IContextMenu, void> {
     );
   }
 }
->>>>>>> bf4f4696a2a9c477981adacd43f3e01195672b7e
