@@ -3,8 +3,5 @@ export default class Web {
     public constructor(public id: string,
         public title: string,
         public url: string) {
-
     }
-
-
 }

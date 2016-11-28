@@ -5,7 +5,7 @@ import ColumnReducer from "./columns";
 import WebReducer from "./web";
 import { Log } from "@microsoft/sp-client-base";
 import * as actionInit from "../actions/actionInit";
-const { routerReducer } = require('react-router-redux');
+const { routerReducer } = require("react-router-redux");
 export function RootReducer(state, action) {
     Log.verbose("RootReducer", "In RootReducer of RootReducer");
     let combinedReducers = combineReducers(

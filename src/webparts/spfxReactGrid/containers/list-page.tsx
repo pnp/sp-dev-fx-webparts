@@ -1,16 +1,16 @@
-import * as React from 'react';
-const connect = require('react-redux').connect;
+import * as React from "react";
+const connect = require("react-redux").connect;
 import * as ReactDataGrid from "react-data-grid";
 import * as ReactDataGridPlugins from "react-data-grid/addons";
-import { addList, removeList, saveList } from '../actions/listActions';
-import { getWebsAction } from '../actions/webActions';
-import List from '../model/List';
-import Web from '../model/Web';
-import Container from '../components/container';
-import ListView from '../components/Listview';
+import { addList, removeList, saveList } from "../actions/listActions";
+import { getWebsAction } from "../actions/webActions";
+import List from "../model/List";
+import Web from "../model/Web";
+import Container from "../components/container";
+import ListView from "../components/Listview";
 const booleans = [
-  { id: 'yes', value: true, text: 'yes', title: 'yes' },
-  { id: 'false', value: false, text: 'no', title: 'no' }
+  { id: "yes", value: true, text: "yes", title: "yes" },
+  { id: "false", value: false, text: "no", title: "no" }
 
 ];
 interface IListViewPageProps extends React.Props<any> {
@@ -30,13 +30,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 
   return {
-    addList: (): void => dispatch(addList(new List('daweb', 'xxxx09-2324-234234-23423441', 'test list2', 'http://adadsasd2'))),
-    removeList: (): void => dispatch(removeList(new List('web', 'xxxx09-2324-234234-23423441', 'test list2', 'http://adadsasd2'))),
+    addList: (): void => dispatch(addList(new List("daweb", "xxxx09-2324-234234-23423441", "test list2", "http://adadsasd2"))),
+    removeList: (): void => dispatch(removeList(new List("web", "xxxx09-2324-234234-23423441", "test list2", "http://adadsasd2"))),
     getWebs: (): Promise<any> => {
       debugger;
-     let promis= dispatch(getWebsAction(dispatch));
-     debugger;
-     return promis;
+      let promis = dispatch(getWebsAction(dispatch));
+      debugger;
+      return promis;
     },
     saveList: (list): void => dispatch(saveList(list)),
 
@@ -45,19 +45,22 @@ function mapDispatchToProps(dispatch) {
 
 class ListPage extends React.Component<IListViewPageProps, void> {
   private kolumns = [];
-     private DropDownEditor = ReactDataGridPlugins.Editors.DropDownEditor;
-    private WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-   //  private WebsEditor = <this.DropDownEditor options={booleans} />;
+  private DropDownEditor = ReactDataGridPlugins.Editors.DropDownEditor;
+  private WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
+  private DropDownFormatter = ReactDataGridPlugins.Formatters.DropDownFormatter;
+  private WebsFormatter = <this.DropDownFormatter options={this.props.webs.map(this.convertWebsToDropdown)} />;
+
+
 
 
   private convertWebsToDropdown(web) {
     debugger;
-    return { id: web.id, value: web.title, text:  web.title,title:  web.title}
+    return { id: web.id, value: web.title, text: web.title, title: web.title }
   }
   public componentWillMount() {
-debugger;
+    debugger;
     if (this.props.webs.length == 0) {
-      this.props.getWebs().then((x)=>{
+      this.props.getWebs().then((x) => {
         this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
       });
     }
@@ -77,9 +80,9 @@ debugger;
   }
   public render() {
     debugger;
-     const { lists, addList, removeList } = this.props;
-      this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-   debugger;
+    const { lists, addList, removeList } = this.props;
+    this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
+    debugger;
 
     this.kolumns = [
       {

@@ -1,5 +1,4 @@
-
-import GridRowStatus from './GridRowStatus';
+import GridRowStatus from "./GridRowStatus";
 export default class Column {
     public constructor(
         public key:string,
@@ -7,6 +6,4 @@ export default class Column {
         public editable: boolean=true,
         public gridRowStatus :GridRowStatus=GridRowStatus.new)
         { }
-
-
 }
