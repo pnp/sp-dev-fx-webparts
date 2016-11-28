@@ -43,4 +43,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - `CustomFileChange`: It's a custom Angular directive. It binds the file with model on file change event.
 - `IsoToDateString`: It's a custom Angular filter. It formats ISO date string to `{0:yyyy}-{0:MM}-{0:dd}` format.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-ngofficeuifabric-file-upload" />
