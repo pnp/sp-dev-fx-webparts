@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "my-profile-client-side-solution",
+    "id": "9d72b48b-60e6-479c-91c1-ee1e511a16d2",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/my-profile.spapp"
+  }
+}

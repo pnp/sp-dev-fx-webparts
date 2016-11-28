@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "my-profile",
+    "libraryId": "9d72b48b-60e6-479c-91c1-ee1e511a16d2",
+    "framework": "none"
+  }
+}
