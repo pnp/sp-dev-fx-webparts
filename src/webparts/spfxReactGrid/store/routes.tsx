@@ -7,11 +7,9 @@ import ListItemPage from "../containers/listitem-page";
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={ListItemPage} />
-
     <Route path="/lists" component={ListPage}>
     </Route>
     <Route path="/columns" component={ColumnsPage}>
     </Route>
-
   </Route>
 );

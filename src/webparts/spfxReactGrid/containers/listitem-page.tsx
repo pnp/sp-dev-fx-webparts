@@ -8,13 +8,12 @@ import * as ReactDataGrid from "react-data-grid";
 interface IListViewPageProps extends React.Props<any> {
   listItems: Array<ListItem>;
   columns: Array<Column>;
-  addListItem: () => void;
-  removeListItem: () => void;
+  addListItem: (ListItem) => void;
+  removeListItem: (ListItem) => void;
   getListItems: () => void;
   updateListItem: (ListItem) => void;
 }
 function mapStateToProps(state) {
-
   return {
     listItems: state.items,
     columns: state.columns,
@@ -43,12 +42,9 @@ class ListItemPage extends React.Component<IListViewPageProps, void> {
     return this.props.listItems[rowIdx];
   }
   private handleRowUpdated(e) {
-
   }
   public render() {
-
     const { listItems, addListItem, removeListItem, getListItems } = this.props;
-
     return (
       <Container testid="listitem" size={2} center>
         <ReactDataGrid
@@ -64,7 +60,6 @@ class ListItemPage extends React.Component<IListViewPageProps, void> {
     );
   };
 }
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps

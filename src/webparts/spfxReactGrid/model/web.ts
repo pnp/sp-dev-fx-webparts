@@ -22,9 +22,10 @@ export class Web {
     public constructor(public id: string,
         public title: string,
         public url: string) {
+<<<<<<< HEAD
         this.lists = new Array<WebList>()
 
+=======
+>>>>>>> bf4f4696a2a9c477981adacd43f3e01195672b7e
     }
-
-
 }

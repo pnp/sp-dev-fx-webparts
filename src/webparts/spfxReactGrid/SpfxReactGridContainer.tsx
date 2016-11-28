@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import * as React from "react";
 import { ISpfxReactGridWebPartProps } from "./ISpfxReactGridWebPartProps";
 import { Router, browserHistory } from "react-router";
@@ -82,3 +83,5 @@ export class SpfxReactGridContainer extends React.Component<ISpfxReactGridProps,
 
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SpfxReactGridContainer);
+=======
+>>>>>>> bf4f4696a2a9c477981adacd43f3e01195672b7e

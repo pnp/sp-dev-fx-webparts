@@ -6,7 +6,6 @@ import {
 } from "redux";
 import { fromJS } from "immutable";
 import { createMemoryHistory } from "react-router";
-//import { browserHistory } from "react-router";
 import { routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
 const persistState = require("redux-localstorage");
@@ -24,28 +23,22 @@ function configureStore(initialState) {
       __DEV__ && environment.devToolsExtension ?
         environment.devToolsExtension() :
         f => f));
-
   // _enableHotLoader(store);
   return store;
 }
 
 function _getMiddleware(): Middleware[] {
-
   const history = createMemoryHistory();
   let middleware = [
-
     routerMiddleware(history),
     promiseMiddleware(),
     thunk,
   ];
-
   if (__DEV__) {
     middleware = [...middleware, logger];
   }
-
   return middleware;
 }
-
 const environment: any = window || this;
 
 // function _enableHotLoader(store) {
