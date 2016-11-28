@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "998a9041-c0cf-4128-9c8b-694690138c23",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "998a9041-c0cf-4128-9c8b-694690138c23",
+    "group": { "default": "Under Development" },
+    "title": { "default": "AngularMSGraph" },
+    "description": { "default": "AngularMSGraph description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "AngularMSGraph"
+    }
+  }]
+}
