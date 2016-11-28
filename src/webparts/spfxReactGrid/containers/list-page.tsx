@@ -13,6 +13,11 @@ const booleans = [
   { id: "false", value: false, text: "no", title: "no" }
 
 ];
+import { ListPageContextMenu, ListPageContextMenuProps } from "./ListPageContextMenu";
+interface IContextMenu extends React.Props<any> {
+  onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
+
+}
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
@@ -30,12 +35,16 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 
   return {
-    addList: (): void => dispatch(addList(new List("daweb", "xxxx09-2324-234234-23423441", "test list2", "http://adadsasd2"))),
-    removeList: (): void => dispatch(removeList(new List("web", "xxxx09-2324-234234-23423441", "test list2", "http://adadsasd2"))),
+    addList: (): void => {
+      dispatch(addList(new List("daweb", "xxxx09-2324-234234-23423441", "test list2", "http://adadsasd2")));
+    },
+    removeList: (list: List): void => {
+      dispatch(removeList(list));
+    },
     getWebs: (): Promise<any> => {
-      debugger;
+
       let promis = dispatch(getWebsAction(dispatch));
-      debugger;
+
       return promis;
     },
     saveList: (list): void => dispatch(saveList(list)),
@@ -50,15 +59,16 @@ class ListPage extends React.Component<IListViewPageProps, void> {
   private DropDownFormatter = ReactDataGridPlugins.Formatters.DropDownFormatter;
   private WebsFormatter = <this.DropDownFormatter options={this.props.webs.map(this.convertWebsToDropdown)} />;
 
+  private contextMenu: React.ReactElement<ListPageContextMenu>;
 
 
 
   private convertWebsToDropdown(web) {
-    debugger;
+
     return { id: web.id, value: web.title, text: web.title, title: web.title }
   }
   public componentWillMount() {
-    debugger;
+
     if (this.props.webs.length == 0) {
       this.props.getWebs().then((x) => {
         this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
@@ -75,14 +85,38 @@ class ListPage extends React.Component<IListViewPageProps, void> {
     this.props.saveList(newrow);
   }
   private handleRowdeleted(event, data) {
-
-    this.props.removeList(this.props.lists[data.rowIdx]);
+    debugger;
+    let list: List = this.props.lists[data.rowIdx];
+    this.props.removeList(list);
   }
   public render() {
-    debugger;
+
+ var MyContextMenu = React.createClass<IContextMenu, any>({
+      onRowDelete: function (e, data) {
+        debugger;
+        if (typeof (this.props.onRowDelete) === 'function') {
+          this.props.onRowDelete(e, data);
+        }
+      },
+
+      render: function () {
+        var ContextMenu = ReactDataGridPlugins.Menu.ContextMenu;
+        var MenuItem = ReactDataGridPlugins.Menu.MenuItem;
+        var SubMenu = ReactDataGridPlugins.Menu.SubMenu;
+        return (
+          <ContextMenu>
+            <MenuItem data={{ rowIdx: this.props.rowIdx, idx: this.props.idx }} onClick={this.onRowDelete}>Delete Row</MenuItem>
+          </ContextMenu>
+        );
+      }
+    });
+
+let  damenu=React.createElement(ListPageContextMenu);
+
+
     const { lists, addList, removeList } = this.props;
     this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-    debugger;
+
 
     this.kolumns = [
       {
@@ -119,6 +153,7 @@ class ListPage extends React.Component<IListViewPageProps, void> {
     return (
       <Container testid="columns" size={2} center>
         <ReactDataGrid
+          contextMenu={<MyContextMenu onRowDelete={this.handleRowdeleted.bind(this)} />}
           toolbar={toolbar}
           enableCellSelect={true}
           columns={this.kolumns}
