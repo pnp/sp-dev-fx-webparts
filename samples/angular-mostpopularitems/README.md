@@ -50,3 +50,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - using conditional rendering for one-time Web Part setup
 - passing Web Part configuration to Angular and reacting to configuration changes
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-mostpopularitems" />
