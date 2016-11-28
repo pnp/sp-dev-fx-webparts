@@ -80,3 +80,4 @@ src -> angularMsGraph -> GraphHelper.ts
 > every url the entry in the $sce could just be '*'. There is plenty of documentation available if you run into trouble
 > whitelisting the template url.
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-msgraph" />

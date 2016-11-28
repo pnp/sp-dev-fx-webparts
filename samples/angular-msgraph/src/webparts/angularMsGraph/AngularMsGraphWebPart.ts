@@ -48,7 +48,7 @@ export default class AngularMsGraphWebPart extends BaseClientSideWebPart<IAngula
         .config(($sceDelegateProvider: ng.ISCEDelegateProvider): void => {
           $sceDelegateProvider.resourceUrlWhitelist([
             'self',
-            'https://15767-e7440:4321/dist/**'
+            'https://localhost:4321/dist/**'
           ]);
         });
      this.$injector = angular.bootstrap(this.domElement, ['angularconnectsp']);
