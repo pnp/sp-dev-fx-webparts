@@ -6,7 +6,7 @@ import {
 import * as _ from "lodash";
 import List from "../model/list";
 import { fromJS } from "immutable";
-const INITIAL_STATE  = [new List("xx","fakeinitialitem", "test list", "http://adadsasd")];
+const INITIAL_STATE  = [];
 function listReducer(state: Array<List> = INITIAL_STATE, action: any = { type: "" }): Array<List> {
     switch (action.type) {
         case ADD_LIST:

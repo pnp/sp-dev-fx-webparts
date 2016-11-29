@@ -1,11 +1,12 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
+import { SharePointLookupCellFormatter } from "../utils/SharePointFormatters"
 import * as ReactDataGrid from "react-data-grid";
 import * as ReactDataGridPlugins from "react-data-grid/addons";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 import List from "../model/List";
-import {Web} from "../model/Web";
+import { Web } from "../model/Web";
 import Container from "../components/container";
 import ListView from "../components/Listview";
 const booleans = [
@@ -36,7 +37,7 @@ function mapDispatchToProps(dispatch) {
 
   return {
     addList: (): void => {
-      dispatch(addList(new List("daweb", "xxxx09-2324-234234-23423441", "test list2", "http://adadsasd2")));
+      dispatch(addList(new List(null, null, "new list", null)));
     },
     removeList: (list: List): void => {
       dispatch(removeList(list));
@@ -54,47 +55,52 @@ function mapDispatchToProps(dispatch) {
 
 class ListPage extends React.Component<IListViewPageProps, void> {
   private kolumns = [];
-  private DropDownEditor = ReactDataGridPlugins.Editors.DropDownEditor;
-  private WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-  private DropDownFormatter = ReactDataGridPlugins.Formatters.DropDownFormatter;
-  private WebsFormatter = <this.DropDownFormatter options={this.props.webs.map(this.convertWebsToDropdown)} />;
+  private WebsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
+  private ListsEditor: JSX.Element;
+
+  private WebsFormatter = <ReactDataGridPlugins.Formatters.DropDownFormatter options={this.props.webs.map(this.convertWebsToDropdown)} />;
 
   private contextMenu: React.ReactElement<ListPageContextMenu>;
 
-
-
-  private ListsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-
-  private convertWebsToDropdown(web) {
-
-    return {  value: web.id, text: web.title};
-  }
   private convertListsToDropdown(list) {
 
-    return { id: list.id, value: list.title, text: list.title, list: list.title };
+
+    return { id: list.id, value: list.id, text: list.title, list: list.title };
+  }
+  private handleCellSelected(data) {
+    debugger;
+
+    let row = this.props.lists[data.rowIdx];
+
+    let column = this.kolumns[data.idx];
+    if (column.name === "ListId") {
+      let webID = row["Web"].split("#;")[0];
+      let web = this.props.webs.find(web => web.id === webID);
+      this.ListsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={web.lists.map(this.convertListsToDropdown)} />;
+      column.editor=this.ListsEditor;
+
+    }
+  }
+
+
+  private convertWebsToDropdown(web) {
+    return {
+      id: web.id,
+      value: web.id + "#;" + web.title,
+      text: web.title,
+      title: web.title
+    }
   }
   public componentWillMount() {
 
     if (this.props.webs.length == 0) {
       this.props.getWebs().then((x) => {
-        this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-      });
+        this.WebsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
+             });
     }
   }
   private rowGetter(rowIdx) {
     return this.props.lists[rowIdx];
-  }
-   private handleCellSelected(data) {
-    debugger;
-
-    let row = this.props.lists[data.rowIdx];
-    let column = this.kolumns[data.idx];
-    if (column.name === "List") {
-      let webID = row["Web"];
-      let web = this.props.webs.find(web => web.id === webID);
-      this.ListsEditor = <this.DropDownEditor options={web.lists.map(this.convertListsToDropdown)} />;
-    }
-
   }
   private handleRowUpdated(data) {
 
@@ -109,7 +115,7 @@ class ListPage extends React.Component<IListViewPageProps, void> {
   }
   public render() {
 
- var MyContextMenu = React.createClass<IContextMenu, any>({
+    var MyContextMenu = React.createClass<IContextMenu, any>({
       onRowDelete: function (e, data) {
         debugger;
         if (typeof (this.props.onRowDelete) === 'function') {
@@ -129,12 +135,11 @@ class ListPage extends React.Component<IListViewPageProps, void> {
       }
     });
 
-let  damenu=React.createElement(ListPageContextMenu);
+    let damenu = React.createElement(ListPageContextMenu);
 
-
+    this.ListsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
     const { lists, addList, removeList } = this.props;
-    this.WebsEditor = <this.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-
+    this.WebsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
 
     this.kolumns = [
       {
@@ -142,14 +147,15 @@ let  damenu=React.createElement(ListPageContextMenu);
         name: "Web",
         editable: true,
         width: 80,
-        editor: this.WebsEditor,
-        fomatter:this.WebsFormatter
+        editor: this.WebsEditor,// sets the value to id#;descriptions
+        formatter: SharePointLookupCellFormatter // displays the descruption
       },
       {
         key: "ListID",
         name: "ListId",
         editable: true,
-        width: 80
+        width: 80,
+        editor: this.ListsEditor
       },
       {
         key: "listName",
@@ -175,11 +181,11 @@ let  damenu=React.createElement(ListPageContextMenu);
           contextMenu={<MyContextMenu onRowDelete={this.handleRowdeleted.bind(this)} />}
           toolbar={toolbar}
           enableCellSelect={true}
+          onCellSelected={this.handleCellSelected.bind(this)}
           columns={this.kolumns}
           rowGetter={this.rowGetter.bind(this)}
           rowsCount={this.props.lists.length}
           minHeight={500}
-           onCellSelected={this.handleCellSelected.bind(this)}
           onRowUpdated={this.handleRowUpdated.bind(this)} />
         );
       </Container>
@@ -190,4 +196,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ListPage);
-
