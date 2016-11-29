@@ -1,24 +1,12 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
-import { SharePointLookupCellFormatter } from "../utils/SharePointFormatters"
-import * as ReactDataGrid from "react-data-grid";
-import * as ReactDataGridPlugins from "react-data-grid/addons";
+import { SharePointLookupCellFormatter } from "../utils/SharePointFormatters";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 import List from "../model/List";
 import { Web } from "../model/Web";
 import Container from "../components/container";
 import ListView from "../components/Listview";
-const booleans = [
-  { id: "yes", value: true, text: "yes", title: "yes" },
-  { id: "false", value: false, text: "no", title: "no" }
-
-];
-import { ListPageContextMenu, ListPageContextMenuProps } from "./ListPageContextMenu";
-interface IContextMenu extends React.Props<any> {
-  onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
-
-}
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
@@ -53,145 +41,111 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+function ListCell(props): JSX.Element {
+  let {list, column} = props;
+
+  return (
+    <td key={column.name}>{list[column.name]}</td>
+  );
+
+}
+function ListRow(props): JSX.Element {
+  let {list, columns} = props;
+
+  return (
+    <tbody>
+      {
+        columns.map(function (column) {
+          return (
+            <ListCell list={list} column={column} />
+          );
+        })
+      }
+    </tbody>);
+};
+
+
+
+function ListRows(props): JSX.Element {
+  let {lists, columns} = props;
+
+  return (
+    <tbody>
+      {
+        lists.map(function (list) {
+          return (
+            <ListRow list={list} columns={columns} />
+          );
+        })
+      }
+    </tbody>
+  );
+
+}
 class ListPage extends React.Component<IListViewPageProps, void> {
-  private kolumns = [];
-  private WebsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-  private ListsEditor: JSX.Element;
+  public defaultColumns = [
+    {
+      key: "Web",
+      name: "Web",
+      editable: true,
+      width: 80,
+      formatter: SharePointLookupCellFormatter // displays the descruption
+    },
+    {
+      key: "ListID",
+      name: "ListId",
+      editable: true,
+      width: 80,
+    },
+    {
+      key: "listName",
+      name: "name",
+      editable: true
+    },
+    {
+      key: "Url",
+      name: "list  Url",
+      editable: true,
 
-  private WebsFormatter = <ReactDataGridPlugins.Formatters.DropDownFormatter options={this.props.webs.map(this.convertWebsToDropdown)} />;
+    },
+    {
+      key: "editable",
+      name: "editable",
+      editable: true,
 
-  private contextMenu: React.ReactElement<ListPageContextMenu>;
-
-  private convertListsToDropdown(list) {
-
-
-    return { id: list.id, value: list.id, text: list.title, list: list.title };
-  }
-  private handleCellSelected(data) {
-    debugger;
-
-    let row = this.props.lists[data.rowIdx];
-
-    let column = this.kolumns[data.idx];
-    if (column.name === "ListId") {
-      let webID = row["Web"].split("#;")[0];
-      let web = this.props.webs.find(web => web.id === webID);
-      this.ListsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={web.lists.map(this.convertListsToDropdown)} />;
-      column.editor=this.ListsEditor;
-
-    }
-  }
-
-
-  private convertWebsToDropdown(web) {
-    return {
-      id: web.id,
-      value: web.id + "#;" + web.title,
-      text: web.title,
-      title: web.title
-    }
-  }
-  public componentWillMount() {
-
-    if (this.props.webs.length == 0) {
-      this.props.getWebs().then((x) => {
-        this.WebsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-             });
-    }
-  }
-  private rowGetter(rowIdx) {
-    return this.props.lists[rowIdx];
-  }
-  private handleRowUpdated(data) {
-
-    let row = this.props.lists[data.rowIdx];
-    let newrow = _.assign(row, data.updated);
-    this.props.saveList(newrow);
-  }
-  private handleRowdeleted(event, data) {
-    debugger;
-    let list: List = this.props.lists[data.rowIdx];
-    this.props.removeList(list);
+    }];
+  public columns = [];
+  public constructor() {
+    super();
+    this.columns = this.defaultColumns; // add others dynamically
   }
   public render() {
 
-    var MyContextMenu = React.createClass<IContextMenu, any>({
-      onRowDelete: function (e, data) {
-        debugger;
-        if (typeof (this.props.onRowDelete) === 'function') {
-          this.props.onRowDelete(e, data);
-        }
-      },
 
-      render: function () {
-        var ContextMenu = ReactDataGridPlugins.Menu.ContextMenu;
-        var MenuItem = ReactDataGridPlugins.Menu.MenuItem;
-        var SubMenu = ReactDataGridPlugins.Menu.SubMenu;
-        return (
-          <ContextMenu>
-            <MenuItem data={{ rowIdx: this.props.rowIdx, idx: this.props.idx }} onClick={this.onRowDelete}>Delete Row</MenuItem>
-          </ContextMenu>
-        );
-      }
-    });
-
-    let damenu = React.createElement(ListPageContextMenu);
-
-    this.ListsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-    const { lists, addList, removeList } = this.props;
-    this.WebsEditor = <ReactDataGridPlugins.Editors.DropDownEditor options={this.props.webs.map(this.convertWebsToDropdown)} />;
-
-    this.kolumns = [
-      {
-        key: "Web",
-        name: "Web",
-        editable: true,
-        width: 80,
-        editor: this.WebsEditor,// sets the value to id#;descriptions
-        formatter: SharePointLookupCellFormatter // displays the descruption
-      },
-      {
-        key: "ListID",
-        name: "ListId",
-        editable: true,
-        width: 80,
-        editor: this.ListsEditor
-      },
-      {
-        key: "listName",
-        name: "name",
-        editable: true
-      },
-      {
-        key: "Url",
-        name: "list  Url",
-        editable: true,
-
-      },
-      {
-        key: "editable",
-        name: "editable",
-        editable: true,
-
-      }];
-    let toolbar = React.createElement(ReactDataGridPlugins.Toolbar, { onAddRow: this.props.addList });
+    let columns = this.columns;
     return (
       <Container testid="columns" size={2} center>
-        <ReactDataGrid
-          contextMenu={<MyContextMenu onRowDelete={this.handleRowdeleted.bind(this)} />}
-          toolbar={toolbar}
-          enableCellSelect={true}
-          onCellSelected={this.handleCellSelected.bind(this)}
-          columns={this.kolumns}
-          rowGetter={this.rowGetter.bind(this)}
-          rowsCount={this.props.lists.length}
-          minHeight={500}
-          onRowUpdated={this.handleRowUpdated.bind(this)} />
-        );
+        <table>
+          <thead>
+            <tr>
+              {this.columns.map(function (column) {
+                return <th key={column.name}>{column.name}</th>;
+              })}
+            </tr>
+          </thead>
+
+          {
+            <ListRows lists={this.props.lists} columns={this.columns} />
+
+          })}
+
+
+        </table>
       </Container>
     );
   }
-}
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
