@@ -45,7 +45,9 @@ function ListCell(props): JSX.Element {
   let {list, column} = props;
 
   return (
-    <td key={column.name}>{list[column.name]}</td>
+    <td key={column.name}>
+  <input type="text" value={list[column.name]}/>
+    </td>
   );
 
 }
