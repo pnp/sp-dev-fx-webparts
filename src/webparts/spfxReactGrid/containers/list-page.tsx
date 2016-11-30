@@ -55,7 +55,7 @@ function ListRow(props): JSX.Element {
   let {list, columns} = props;
 
   return (
-    <tbody>
+    <tr>
       {
         columns.map(function (column) {
           return (
@@ -63,7 +63,7 @@ function ListRow(props): JSX.Element {
           );
         })
       }
-    </tbody>);
+    </tr>);
 };
 
 
