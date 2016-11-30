@@ -10,7 +10,7 @@ import ListView from "../components/Listview";
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
-  addList: () => void;
+  addList: (list:List) => void;
   removeList: (List) => void;
   saveList: (List) => void;
   getWebs: () => Promise<any>;
@@ -24,8 +24,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 
   return {
-    addList: (): void => {
-      dispatch(addList(new List(null, null, "new list", null)));
+    addList: (list:List): void => {
+      dispatch(addList(list));
     },
     removeList: (list: List): void => {
       dispatch(removeList(list));
@@ -41,9 +41,17 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+function ListContents(props): JSX.Element {
+  let {list, column, rowChanged} = props;
+  switch (column.formatter) {
+    case "SharePointLookupCellFormatter":
+      return (<SharePointLookupCellFormatter value={column.value} />);
+    default:
+      return (<input type="text" value={list[column.name]} onBlur={rowChanged} />);
+  }
+}
 function ListCell(props): JSX.Element {
   let {list, column, rowChanged} = props;
-
   return (
     <td key={column.name}>
       <input type="text" value={list[column.name]} onBlur={rowChanged} />
@@ -101,7 +109,7 @@ class ListPage extends React.Component<IListViewPageProps, void> {
     },
     {
       key: "listName",
-      name: "name",
+      name: "title",
       editable: true
     },
     {
@@ -123,6 +131,12 @@ class ListPage extends React.Component<IListViewPageProps, void> {
   public constructor() {
     super();
     this.columns = this.defaultColumns; // add others dynamically
+
+  }
+  public componentWillMount():void{
+    let list =new List("0#;new list", null, "new list", null);
+    this.props.addList(list);
+
   }
   public render() {
 
