@@ -42,24 +42,24 @@ function mapDispatchToProps(dispatch) {
 }
 
 function ListCell(props): JSX.Element {
-  let {list, column} = props;
+  let {list, column, rowChanged} = props;
 
   return (
     <td key={column.name}>
-  <input type="text" value={list[column.name]}/>
+      <input type="text" value={list[column.name]} onBlur={rowChanged} />
     </td>
   );
 
 }
 function ListRow(props): JSX.Element {
-  let {list, columns} = props;
+  let {list, columns, rowChanged} = props;
 
   return (
     <tr>
       {
         columns.map(function (column) {
           return (
-            <ListCell list={list} column={column} />
+            <ListCell list={list} column={column} rowChanged={rowChanged} />
           );
         })
       }
@@ -69,14 +69,14 @@ function ListRow(props): JSX.Element {
 
 
 function ListRows(props): JSX.Element {
-  let {lists, columns} = props;
+  let {lists, columns, rowChanged} = props;
 
   return (
     <tbody>
       {
         lists.map(function (list) {
           return (
-            <ListRow list={list} columns={columns} />
+            <ListRow list={list} columns={columns} rowChanged={rowChanged} />
           );
         })
       }
@@ -117,6 +117,9 @@ class ListPage extends React.Component<IListViewPageProps, void> {
 
     }];
   public columns = [];
+  public rowChanged(x, y, z) {
+    debugger;
+  }
   public constructor() {
     super();
     this.columns = this.defaultColumns; // add others dynamically
@@ -137,7 +140,7 @@ class ListPage extends React.Component<IListViewPageProps, void> {
           </thead>
 
           {
-            <ListRows lists={this.props.lists} columns={this.columns} />
+            <ListRows lists={this.props.lists} columns={this.columns} rowChanged={this.rowChanged} />
 
           })}
 
