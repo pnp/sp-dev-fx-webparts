@@ -82,6 +82,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     this.ListCell = this.ListCell.bind(this);
     this.ListContents = this.ListContents.bind(this);
     this.ListContentsEditable = this.ListContentsEditable.bind(this);
+    this.toggleEditing=this.toggleEditing.bind(this);
 
 
   }
@@ -103,7 +104,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       case "SharePointLookupCellFormatter":
         return (<SharePointLookupCellFormatter value={column.value} />);
       default:
-        return (<div onClick={this.toggleEditing.bind(null, { "listid": list.id, "columnid": column.id })}>
+        return (<div onClick={this.toggleEditing.bind(null, { "listid": list.id, "columnid": column.key })}>
           {list[column.name]}
         </div>
         );
@@ -120,7 +121,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
   }
   public ListCell(props): JSX.Element {
     let {list, column, rowChanged} = props;
-    if (this.state && this.state.editing && this.state.editing.list.id === list.id && this.state.editing.column.id === column.id) {
+    if (this.state && this.state.editing && this.state.editing.listid === list.id && this.state.editing.columnid === column.key) {
       return (<td>
         <this.ListContentsEditable list={list} column={column} rowChanged={rowChanged} />
 
@@ -145,7 +146,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
             return (
               <this.ListCell list={list} column={column} rowChanged={rowChanged} />
             );
-          })
+          },this)
         }
       </tr>);
   };
@@ -162,7 +163,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
             return (
               <this.ListRow list={list} columns={columns} rowChanged={rowChanged} />
             );
-          })
+          },this)
         }
       </tbody>
     );
