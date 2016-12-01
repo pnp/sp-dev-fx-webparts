@@ -10,7 +10,7 @@ import ListView from "../components/Listview";
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
-  addList: (list:List) => void;
+  addList: (list: List) => void;
   removeList: (List) => void;
   saveList: (List) => void;
   getWebs: () => Promise<any>;
@@ -24,7 +24,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 
   return {
-    addList: (list:List): void => {
+    addList: (list: List): void => {
       dispatch(addList(list));
     },
     removeList: (list: List): void => {
@@ -41,58 +41,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function ListContents(props): JSX.Element {
-  let {list, column, rowChanged} = props;
-  switch (column.formatter) {
-    case "SharePointLookupCellFormatter":
-      return (<SharePointLookupCellFormatter value={column.value} />);
-    default:
-      return (<input type="text" value={list[column.name]} onBlur={rowChanged} />);
-  }
-}
-function ListCell(props): JSX.Element {
-  let {list, column, rowChanged} = props;
-  return (
-    <td key={column.name}>
-      <input type="text" value={list[column.name]} onBlur={rowChanged} />
-    </td>
-  );
-
-}
-function ListRow(props): JSX.Element {
-  let {list, columns, rowChanged} = props;
-
-  return (
-    <tr>
-      {
-        columns.map(function (column) {
-          return (
-            <ListCell list={list} column={column} rowChanged={rowChanged} />
-          );
-        })
-      }
-    </tr>);
-};
-
-
-
-function ListRows(props): JSX.Element {
-  let {lists, columns, rowChanged} = props;
-
-  return (
-    <tbody>
-      {
-        lists.map(function (list) {
-          return (
-            <ListRow list={list} columns={columns} rowChanged={rowChanged} />
-          );
-        })
-      }
-    </tbody>
-  );
-
-}
-class ListPage extends React.Component<IListViewPageProps, void> {
+class ListPage extends React.Component<IListViewPageProps, any> {
   public defaultColumns = [
     {
       key: "Web",
@@ -125,17 +74,98 @@ class ListPage extends React.Component<IListViewPageProps, void> {
 
     }];
   public columns = [];
-  public rowChanged(x, y, z) {
-    debugger;
-  }
   public constructor() {
     super();
     this.columns = this.defaultColumns; // add others dynamically
+    this.ListRows = this.ListRows.bind(this);
+    this.ListRow = this.ListRow.bind(this);
+    this.ListCell = this.ListCell.bind(this);
+    this.ListContents = this.ListContents.bind(this);
+    this.ListContentsEditable = this.ListContentsEditable.bind(this);
+
 
   }
-  public componentWillMount():void{
-    let list =new List("0#;new list", null, "new list", null);
+  public componentWillMount(): void {
+    let list = new List("0#;new list", null, "new list", null);
     this.props.addList(list);
+
+  }
+  public rowChanged(x, y, z) {
+    debugger;
+  }
+  public toggleEditing(item) {
+    this.setState({ "editing": item });
+  }
+
+  public ListContents(props): JSX.Element {
+    let {list, column, rowChanged} = props;
+    switch (column.formatter) {
+      case "SharePointLookupCellFormatter":
+        return (<SharePointLookupCellFormatter value={column.value} />);
+      default:
+        return (<div onClick={this.toggleEditing.bind(null, { "listid": list.id, "columnid": column.id })}>
+          {list[column.name]}
+        </div>
+        );
+    }
+  }
+  public ListContentsEditable(props): JSX.Element {
+    let {list, column, rowChanged} = props;
+    switch (column.formatter) {
+      case "SharePointLookupCellFormatter":
+        return (<SharePointLookupCellFormatter value={column.value} />);
+      default:
+        return (<input type="text" value={list[column.name]} onBlur={rowChanged} />);
+    }
+  }
+  public ListCell(props): JSX.Element {
+    let {list, column, rowChanged} = props;
+    if (this.state && this.state.editing && this.state.editing.list.id === list.id && this.state.editing.column.id === column.id) {
+      return (<td>
+        <this.ListContentsEditable list={list} column={column} rowChanged={rowChanged} />
+
+      </td>
+      );
+    } else {
+      return (<td>
+        <this.ListContents list={list} column={column} rowChanged={rowChanged} />
+      </td>
+      );
+
+    }
+
+  }
+  public ListRow(props): JSX.Element {
+    let {list, columns, rowChanged} = props;
+
+    return (
+      <tr>
+        {
+          columns.map(function (column) {
+            return (
+              <this.ListCell list={list} column={column} rowChanged={rowChanged} />
+            );
+          })
+        }
+      </tr>);
+  };
+
+
+
+  public ListRows(props): JSX.Element {
+    let {lists, columns, rowChanged} = props;
+
+    return (
+      <tbody>
+        {
+          lists.map(function (list) {
+            return (
+              <this.ListRow list={list} columns={columns} rowChanged={rowChanged} />
+            );
+          })
+        }
+      </tbody>
+    );
 
   }
   public render() {
@@ -154,7 +184,7 @@ class ListPage extends React.Component<IListViewPageProps, void> {
           </thead>
 
           {
-            <ListRows lists={this.props.lists} columns={this.columns} rowChanged={this.rowChanged} />
+            <this.ListRows lists={this.props.lists} columns={this.columns} rowChanged={this.rowChanged} />
 
           })}
 
