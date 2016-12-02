@@ -7,6 +7,7 @@ import List from "../model/List";
 import { Web } from "../model/Web";
 import Container from "../components/container";
 import ListView from "../components/Listview";
+import { Guid } from '@microsoft/sp-client-base';
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
@@ -104,7 +105,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       case "SharePointLookupCellFormatter":
         return (<SharePointLookupCellFormatter value={column.value} />);
       default:
-        return (<div onClick={this.toggleEditing.bind(null, { "listid": list.id, "columnid": column.key })}>
+        return (<div onClick={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })}>
           {list[column.name]}
         </div>
         );
@@ -121,7 +122,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
   }
   public ListCell(props): JSX.Element {
     let {list, column, rowChanged} = props;
-    if (this.state && this.state.editing && this.state.editing.listid === list.id && this.state.editing.columnid === column.key) {
+    if (this.state && this.state.editing && this.state.editing.listid === list.guid && this.state.editing.columnid === column.key) {
       return (<td>
         <this.ListContentsEditable list={list} column={column} rowChanged={rowChanged} />
 
