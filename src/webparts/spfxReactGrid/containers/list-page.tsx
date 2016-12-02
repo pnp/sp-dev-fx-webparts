@@ -145,7 +145,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
         {
           columns.map(function (column) {
             return (
-              <this.ListCell list={list} column={column} rowChanged={rowChanged} />
+              <this.ListCell key={column.guid} list={list} column={column} rowChanged={rowChanged} />
             );
           },this)
         }
@@ -162,7 +162,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
         {
           lists.map(function (list) {
             return (
-              <this.ListRow list={list} columns={columns} rowChanged={rowChanged} />
+              <this.ListRow key={list.guid} list={list} columns={columns} rowChanged={rowChanged} />
             );
           },this)
         }

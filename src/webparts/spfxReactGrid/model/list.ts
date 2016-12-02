@@ -10,14 +10,14 @@ export class ColumnMapping {
 }
 export default class List {
     public columnMapping: ColumnMapping[];
-    public guid: Guid;// the id of the list we are pointing to id#;name
+    public guid: string;// the id of the list we are pointing to id#;name
     public constructor(
         public id: string,// the id of the list we are pointing to id#;name
         public web: string,
         public title: string,
         public url: string) {
         this.columnMapping = new Array<ColumnMapping>();
-        this.guid = Guid.newGuid();
+        this.guid = Guid.newGuid().toString();
 
     }
 
