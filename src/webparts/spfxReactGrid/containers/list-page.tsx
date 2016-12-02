@@ -117,7 +117,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       case "SharePointLookupCellFormatter":
         return (<SharePointLookupCellFormatter value={column.value} />);
       default:
-        return (<input type="text" value={list[column.name]} onBlur={rowChanged} />);
+        return (<input type="text" value={list[column.name]}  onChange={rowChanged} onBlur={rowChanged} />);
     }
   }
   public ListCell(props): JSX.Element {
