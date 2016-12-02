@@ -36,12 +36,13 @@ export function removeList(list: List) {
     };
 }
 export function saveList(list: List) {
-    return {
+    let action = {
         type: SAVE_LIST,
         payload: {
-            list: List
+            list
         }
     };
+    return action;
 }
 export function addLists(lists: List[]) {
     return {
@@ -83,8 +84,8 @@ export function getListItemsAction(dispatch: any): any {
     const payload = pnp.sp.web.lists.getByTitle('Tasks').items.get()
         .then((response) => {
 
-            let data = _.map(response,function(item : any){
-                return new ListItem(item.Id,item.Title,item.GUID);
+            let data = _.map(response, function (item: any) {
+                return new ListItem(item.Id, item.Title, item.GUID);
             });
             console.log(data);
             let gotListItems = gotListItemsAction(data);

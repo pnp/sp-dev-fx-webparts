@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as utils from "../utils/utils";
 const connect = require("react-redux").connect;
 import { SharePointLookupCellFormatter } from "../utils/SharePointFormatters";
 import { addList, removeList, saveList } from "../actions/listActions";
@@ -7,7 +8,8 @@ import List from "../model/List";
 import { Web } from "../model/Web";
 import Container from "../components/container";
 import ListView from "../components/Listview";
-import { Guid } from '@microsoft/sp-client-base';
+import { Guid,Log } from '@microsoft/sp-client-base';
+
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
@@ -37,14 +39,25 @@ function mapDispatchToProps(dispatch) {
 
       return promis;
     },
-    saveList: (list): void => dispatch(saveList(list)),
+    saveList: (list): void => {
+      let action = saveList(list);
+      dispatch(action);
+    },
 
   };
 }
 
 class ListPage extends React.Component<IListViewPageProps, any> {
   public defaultColumns = [
+     {
+      id: "7401",
+      key: "guid",
+      name: "guid",
+      editable: true,
+
+    },
     {
+      id: "10",
       key: "Web",
       name: "Web",
       editable: true,
@@ -52,23 +65,27 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       formatter: SharePointLookupCellFormatter // displays the descruption
     },
     {
+      id: "20",
       key: "ListID",
       name: "ListId",
       editable: true,
       width: 80,
     },
     {
+      id: "301",
       key: "listName",
       name: "title",
       editable: true
     },
     {
+      id: "401",
       key: "Url",
       name: "list  Url",
       editable: true,
 
     },
-    {
+        {
+      id: "501",
       key: "editable",
       name: "editable",
       editable: true,
@@ -83,7 +100,8 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     this.ListCell = this.ListCell.bind(this);
     this.ListContents = this.ListContents.bind(this);
     this.ListContentsEditable = this.ListContentsEditable.bind(this);
-    this.toggleEditing=this.toggleEditing.bind(this);
+    this.toggleEditing = this.toggleEditing.bind(this);
+    this.rowChanged = this.rowChanged.bind(this);
 
 
   }
@@ -92,10 +110,22 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     this.props.addList(list);
 
   }
-  public rowChanged(x, y, z) {
+  public rowChanged(event, y, z) {
+    Log.verbose("list-Page","Row changed-fired when row changed or leaving cell ");
+    let target = event.target;
+    let value = target.value;
+    let attributes: NamedNodeMap = target.attributes;
+    let listid = attributes.getNamedItem("data-listid").value;
+    let columnid = attributes.getNamedItem("data-columnid").value;
+    let list: List = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === listid);
+    let column = this.columns.find(temp => temp.id === columnid);
+    list[column.name] = value;
+
+    this.props.saveList(list);
     debugger;
   }
   public toggleEditing(item) {
+    Log.verbose("list-Page","focus event fired editing  when entering cell");
     this.setState({ "editing": item });
   }
 
@@ -105,9 +135,9 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       case "SharePointLookupCellFormatter":
         return (<SharePointLookupCellFormatter value={column.value} />);
       default:
-        return (<div onClick={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })}>
+        return (<a href="#" onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })}>
           {list[column.name]}
-        </div>
+        </a>
         );
     }
   }
@@ -117,19 +147,19 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       case "SharePointLookupCellFormatter":
         return (<SharePointLookupCellFormatter value={column.value} />);
       default:
-        return (<input type="text" value={list[column.name]}  onChange={rowChanged} onBlur={rowChanged} />);
+        return (<input type="text" value={list[column.name]} data-listid={list.guid} data-columnid={column.id} onChange={rowChanged} onBlur={rowChanged} />);
     }
   }
   public ListCell(props): JSX.Element {
     let {list, column, rowChanged} = props;
     if (this.state && this.state.editing && this.state.editing.listid === list.guid && this.state.editing.columnid === column.key) {
-      return (<td>
+      return (<td style={{border: "1px solid black", padding: "0px"}}>
         <this.ListContentsEditable list={list} column={column} rowChanged={rowChanged} />
 
       </td>
       );
     } else {
-      return (<td>
+      return (<td style={{border: "1px solid black", padding: "0px"}}>
         <this.ListContents list={list} column={column} rowChanged={rowChanged} />
       </td>
       );
@@ -147,7 +177,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
             return (
               <this.ListCell key={column.guid} list={list} column={column} rowChanged={rowChanged} />
             );
-          },this)
+          }, this)
         }
       </tr>);
   };
@@ -164,7 +194,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
             return (
               <this.ListRow key={list.guid} list={list} columns={columns} rowChanged={rowChanged} />
             );
-          },this)
+          }, this)
         }
       </tbody>
     );
@@ -176,7 +206,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let columns = this.columns;
     return (
       <Container testid="columns" size={2} center>
-        <table>
+        <table border="1">
           <thead>
             <tr>
               {this.columns.map(function (column) {
