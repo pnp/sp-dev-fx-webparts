@@ -54,15 +54,15 @@ interface IListContentsEditableProps extends React.Props<any> {
   valueChanged: any;
 };
 class ListContentsEditable extends React.Component<IListContentsEditableProps, any>{
-  refs: {
-    [key: string]: (Element);
-    cellBeingEdited: (HTMLInputElement);
-}
-  public componentDidMount() {
-    debugger;
-  let node:any =  ReactDom.findDOMNode(this.refs.cellBeingEdited);
- node.focus();
-  }
+//   refs: {
+//     [key: string]: (Element);
+//     cellBeingEdited: (HTMLInputElement);
+// }
+//   public componentDidMount() {
+//     debugger;
+//   let node:any =  ReactDom.findDOMNode(this.refs.cellBeingEdited);
+//  node.focus();
+//   }
   public render() {
 
     let {list, column, valueChanged} = this.props;
@@ -71,7 +71,7 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
         return (<SharePointLookupCellFormatter value={column.value} />);
       default:
         return (
-          <input ref="cellBeingEdited" type="text"
+          <input autoFocus  ref="cellBeingEdited" type="text"
             value={list[column.name]}
             data-listid={list.guid}
             data-columnid={column.id}
@@ -174,12 +174,12 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     }
   }
   // public ListContentsEditable(props): JSX.Element {
-  //   let {list, column, rowChanged} = props;
+  // let {list, column, valueChanged} = props;
   //   switch (column.formatter) {
   //     case "SharePointLookupCellFormatter":
   //       return (<SharePointLookupCellFormatter value={column.value} />);
   //     default:
-  //       return (<input ref="cellBeingEdited" type="text" value={list[column.name]} data-listid={list.guid} data-columnid={column.id} onChange={rowChanged} onBlur={rowChanged} />);
+  //       return (<input  autoFocus type="text" value={list[column.name]} data-listid={list.guid} data-columnid={column.id} onChange={valueChanged} onBlur={valueChanged} />);
   //   }
   // }
   public ListCell(props): JSX.Element {
