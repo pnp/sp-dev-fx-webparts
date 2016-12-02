@@ -147,7 +147,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       case "SharePointLookupCellFormatter":
         return (<SharePointLookupCellFormatter value={column.value} />);
       default:
-        return (<input type="text" value={list[column.name]} data-listid={list.guid} data-columnid={column.id} onChange={rowChanged} onBlur={rowChanged} />);
+        return (<input ref="cellBeingEdited" type="text" value={list[column.name]} data-listid={list.guid} data-columnid={column.id} onChange={rowChanged} onBlur={rowChanged} />);
     }
   }
   public ListCell(props): JSX.Element {
@@ -200,6 +200,9 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     );
 
   }
+ public  componentDidMount(){
+   //   React.findDOMNode(this.refs.cellBeingEdited.focus()); not working
+    }
   public render() {
 
 
