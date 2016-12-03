@@ -40,6 +40,7 @@ function Option(displayname, value, selectedOption): JSX.Element {
 class WebEditor extends React.Component<IWebEditorProps, void> {
 
   public render() {
+    debugger;
     const { selectedValue } = this.props;
 
 
@@ -47,7 +48,7 @@ class WebEditor extends React.Component<IWebEditorProps, void> {
       <select >
         {this.props.webs.map(function (web) {
           return (
-            <Option value={web.id+"#;"+web.title} displayname={web.title} selectedOption={selectedValue} />
+            <Option key={web.id} value={web.id+"#;"+web.title} displayname={web.title} selectedOption={selectedValue} />
           );
         }, this)
         }

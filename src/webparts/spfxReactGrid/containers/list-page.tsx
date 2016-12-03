@@ -12,7 +12,15 @@ import { Web } from "../model/Web";
 import Container from "../components/container";
 import ListView from "../components/Listview";
 import { Guid, Log } from '@microsoft/sp-client-base';
-
+export interface Column   {
+      id: string,
+      key: string,
+      name:string,
+      editable: true,
+      width: number,
+      formatter: string,
+      editor:string
+    }
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
@@ -70,7 +78,7 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
     let {list, column, valueChanged} = this.props;
     switch (column.editor) {
       case "WebEditor":
-        return (<SharePointLookupCellFormatter value={column.value} />);
+        return (<WebEditor value={column.value} />);
       default:
         return (
           <input autoFocus ref="cellBeingEdited" type="text"
@@ -96,8 +104,8 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       name: "Web",
       editable: true,
       width: 80,
-      formatter: SharePointLookupCellFormatter, // displays the descruption
-      editor:WebEditor
+  //    formatter: SharePointLookupCellFormatter, // displays the descruption
+      editor:"WebEditor"
     },
     {
       id: "20",
