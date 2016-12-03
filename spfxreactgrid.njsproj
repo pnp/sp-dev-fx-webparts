@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Gulp" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -40,6 +40,44 @@
     <Content Include="src\**\*.ts" />
     <Content Include="src\**\*.tsx" />
     <Content Include="typings\**\*.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="config\" />
+    <Folder Include="src\" />
+    <Folder Include="src\webparts\" />
+    <Folder Include="src\webparts\spfxReactGrid\" />
+    <Folder Include="src\webparts\spfxReactGrid\actions\" />
+    <Folder Include="src\webparts\spfxReactGrid\components\" />
+    <Folder Include="src\webparts\spfxReactGrid\containers\" />
+    <Folder Include="src\webparts\spfxReactGrid\loc\" />
+    <Folder Include="src\webparts\spfxReactGrid\model\" />
+    <Folder Include="src\webparts\spfxReactGrid\reducers\" />
+    <Folder Include="src\webparts\spfxReactGrid\store\" />
+    <Folder Include="src\webparts\spfxReactGrid\utils\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\%40ms\" />
+    <Folder Include="typings\assertion-error\" />
+    <Folder Include="typings\chai\" />
+    <Folder Include="typings\combokeys\" />
+    <Folder Include="typings\es6-collections\" />
+    <Folder Include="typings\es6-promise\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\react-data-grid\" />
+    <Folder Include="typings\globals\redux-promise-middleware\" />
+    <Folder Include="typings\globals\redux\" />
+    <Folder Include="typings\knockout\" />
+    <Folder Include="typings\lodash\" />
+    <Folder Include="typings\mocha\" />
+    <Folder Include="typings\modules\" />
+    <Folder Include="typings\modules\react-redux\" />
+    <Folder Include="typings\modules\react-router-redux\" />
+    <Folder Include="typings\modules\react-router\" />
+    <Folder Include="typings\modules\react-select\" />
+    <Folder Include="typings\modules\redux-thunk\" />
+    <Folder Include="typings\node\" />
+    <Folder Include="typings\react\" />
+    <Folder Include="typings\systemjs\" />
+    <Folder Include="typings\whatwg-fetch\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->

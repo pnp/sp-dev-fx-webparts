@@ -2,8 +2,8 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import * as utils from "../utils/utils";
 const connect = require("react-redux").connect;
-import { SharePointLookupCellFormatter } from "../utils/SharePointFormatters";
-import WebEditor from "../utils/WebEditor";
+import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
+import WebEditor from "../components/WebEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 
@@ -78,7 +78,7 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
     let {list, column, valueChanged} = this.props;
     switch (column.editor) {
       case "WebEditor":
-        return (<WebEditor value={column.value} />);
+        return (<WebEditor  selectedValue={column.value} onChange={valueChanged} listid={list.guid} columnid={column.id}/>);
       default:
         return (
           <input autoFocus ref="cellBeingEdited" type="text"
@@ -105,7 +105,8 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       editable: true,
       width: 80,
   //    formatter: SharePointLookupCellFormatter, // displays the descruption
-      editor:"WebEditor"
+      editor:"WebEditor",
+      formatter:"SharePointLookupCellFormatter"
     },
     {
       id: "20",
@@ -157,6 +158,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
   }
   public rowChanged(event, y, z) {
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
+    debugger;
     let target = event.target;
     let value = target.value;
     let attributes: NamedNodeMap = target.attributes;
@@ -178,7 +180,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let {list, column, rowChanged} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":
-        return (<SharePointLookupCellFormatter value={column.value} />);
+        return (<SharePointLookupCellFormatter value={list[column.name]}  onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })} />);
       default:
         return (<a href="#" onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })}>
           {list[column.name]}

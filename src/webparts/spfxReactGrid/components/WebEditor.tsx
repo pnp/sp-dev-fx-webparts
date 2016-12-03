@@ -24,31 +24,35 @@ function mapDispatchToProps(dispatch) {
 }
 
 export interface IWebEditorProps extends React.Props<any> {
-  selectedValue: string;
-  selectionChanged(newValue): void
+  value: string;
+  onChange(event): void
   webs:Array<Web>
-}
-function Option(displayname, value, selectedOption): JSX.Element {
-  if (selectedOption === value) {
-    return (<option value={value} selected >displayname</option>);
-  } else {
-    return (<option value={value}>displayname</option>);
-  }
-
+  listid:string,
+  columnid:string
 }
 
 class WebEditor extends React.Component<IWebEditorProps, void> {
+  constructor(){
+    super();
+    debugger;
+    this.handleChange=this.handleChange.bind(this);
+  }
+ handleChange(event) {
+   debugger;
+   this.props.onChange(event);
+  }
 
   public render() {
     debugger;
-    const { selectedValue } = this.props;
+    const { value ,listid,columnid} = this.props;
 
 
     return (
-      <select >
+      <select  value={value} onChange={this.handleChange}   data-listid={this.props.listid}
+            data-columnid={this.props.columnid}>
         {this.props.webs.map(function (web) {
           return (
-            <Option key={web.id} value={web.id+"#;"+web.title} displayname={web.title} selectedOption={selectedValue} />
+            <option key={web.id} value={web.id+"#;"+web.title}  >{web.title}</option>
           );
         }, this)
         }
