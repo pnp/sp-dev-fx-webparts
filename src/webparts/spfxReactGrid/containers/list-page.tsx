@@ -3,8 +3,10 @@ import * as ReactDom from "react-dom";
 import * as utils from "../utils/utils";
 const connect = require("react-redux").connect;
 import { SharePointLookupCellFormatter } from "../utils/SharePointFormatters";
+import WebEditor from "../utils/WebEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
+
 import List from "../model/List";
 import { Web } from "../model/Web";
 import Container from "../components/container";
@@ -54,24 +56,24 @@ interface IListContentsEditableProps extends React.Props<any> {
   valueChanged: any;
 };
 class ListContentsEditable extends React.Component<IListContentsEditableProps, any>{
-//   refs: {
-//     [key: string]: (Element);
-//     cellBeingEdited: (HTMLInputElement);
-// }
-//   public componentDidMount() {
-//     debugger;
-//   let node:any =  ReactDom.findDOMNode(this.refs.cellBeingEdited);
-//  node.focus();
-//   }
+  //   refs: {
+  //     [key: string]: (Element);
+  //     cellBeingEdited: (HTMLInputElement);
+  // }
+  //   public componentDidMount() {
+  //     debugger;
+  //   let node:any =  ReactDom.findDOMNode(this.refs.cellBeingEdited);
+  //  node.focus();
+  //   }
   public render() {
 
     let {list, column, valueChanged} = this.props;
-    switch (column.formatter) {
-      case "SharePointLookupCellFormatter":
+    switch (column.editor) {
+      case "WebEditor":
         return (<SharePointLookupCellFormatter value={column.value} />);
       default:
         return (
-          <input autoFocus  ref="cellBeingEdited" type="text"
+          <input autoFocus ref="cellBeingEdited" type="text"
             value={list[column.name]}
             data-listid={list.guid}
             data-columnid={column.id}
@@ -94,7 +96,8 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       name: "Web",
       editable: true,
       width: 80,
-      formatter: SharePointLookupCellFormatter // displays the descruption
+      formatter: SharePointLookupCellFormatter, // displays the descruption
+      editor:WebEditor
     },
     {
       id: "20",
@@ -140,7 +143,9 @@ class ListPage extends React.Component<IListViewPageProps, any> {
   public componentWillMount(): void {
     let list = new List("0#;new list", null, "new list", null);
     this.props.addList(list);
-
+    if (this.props.webs.length == 0) {
+      this.props.getWebs();
+    }
   }
   public rowChanged(event, y, z) {
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
