@@ -15,7 +15,7 @@ import {
 import "whatwg-fetch";
 
 import pnp from "sp-pnp-js";
-import List from "../model/List";
+import List from "../model/ListRef";
 import ListItem from "../model/ListItem";
 
 export function addList(list: List) {

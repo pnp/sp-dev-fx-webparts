@@ -8,7 +8,7 @@ export class ColumnMapping {
     ) { }
 
 }
-export default class List {
+export default class ListRef {
     public columnMapping: ColumnMapping[];
     public guid: string;// the id of the list we are pointing to id#;name
     public constructor(

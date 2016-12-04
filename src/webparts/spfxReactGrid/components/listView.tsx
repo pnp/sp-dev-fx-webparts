@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import List from '../model/List';
+import List from '../model/ListRef';
 export interface IListViewProps extends React.Props<any> {
   lists: Array<List>;
   addList: () => void;

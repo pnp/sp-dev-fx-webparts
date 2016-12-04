@@ -7,20 +7,20 @@ import WebEditor from "../components/WebEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 
-import List from "../model/List";
+import List from "../model/ListRef";
 import { Web } from "../model/Web";
 import Container from "../components/container";
 import ListView from "../components/Listview";
 import { Guid, Log } from '@microsoft/sp-client-base';
-export interface Column   {
-      id: string,
-      key: string,
-      name:string,
-      editable: true,
-      width: number,
-      formatter: string,
-      editor:string
-    }
+export interface Column {
+  id: string,
+  key: string,
+  name: string,
+  editable: true,
+  width: number,
+  formatter: string,
+  editor: string
+}
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<List>;
   webs: Array<Web>;
@@ -78,7 +78,9 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
     let {list, column, valueChanged} = this.props;
     switch (column.editor) {
       case "WebEditor":
-        return (<WebEditor  selectedValue={column.value} onChange={valueChanged} listid={list.guid} columnid={column.id}/>);
+        return (<WebEditor selectedValue={column.value} onChange={valueChanged} listid={list.guid} columnid={column.id} />);
+      case "ListEditor":
+        return (<WebEditor selectedValue={column.value} onChange={valueChanged} listid={list.guid} columnid={column.id} />);
       default:
         return (
           <input autoFocus ref="cellBeingEdited" type="text"
@@ -104,9 +106,9 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       name: "Web",
       editable: true,
       width: 80,
-  //    formatter: SharePointLookupCellFormatter, // displays the descruption
-      editor:"WebEditor",
-      formatter:"SharePointLookupCellFormatter"
+      //    formatter: SharePointLookupCellFormatter, // displays the descruption
+      editor: "WebEditor",
+      formatter: "SharePointLookupCellFormatter"
     },
     {
       id: "20",
@@ -119,7 +121,9 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       id: "301",
       key: "listName",
       name: "title",
-      editable: true
+      editable: true,
+      editor: "ListEditor",
+      formatter: "SharePointLookupCellFormatter"
     },
     {
       id: "401",
@@ -180,7 +184,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let {list, column, rowChanged} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":
-        return (<SharePointLookupCellFormatter value={list[column.name]}  onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })} />);
+        return (<SharePointLookupCellFormatter value={list[column.name]} onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })} />);
       default:
         return (<a href="#" onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })}>
           {list[column.name]}

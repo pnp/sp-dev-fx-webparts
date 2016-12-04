@@ -6,7 +6,7 @@ import {
 
 } from "../constants";
 import * as _ from "lodash";
-import List from "../model/list";
+import List from "../model/listRef";
 import { fromJS } from "immutable";
 const INITIAL_STATE = [];
 function listReducer(state: Array<List> = INITIAL_STATE, action: any = { type: "" }): Array<List> {
