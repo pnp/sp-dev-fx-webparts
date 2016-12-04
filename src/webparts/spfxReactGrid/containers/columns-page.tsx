@@ -2,7 +2,7 @@ import * as React from "react";
 const connect = require("react-redux").connect;
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
 import ListItem from "../model/ListItem";
-import Column from "../model/Column";
+import ColumnRef from "../model/Column";
 import Container from "../components/container";
 import ListItemView from "../components/listitemview";
 import * as ReactDataGrid from "react-data-grid";
@@ -44,7 +44,7 @@ const kolumns= [{
   editor:BooleanEditor
 }];
 interface IColumnsPageProps extends React.Props<any> {
-  columns: Array<Column>;
+  columns: Array<ColumnRef>;
   addColumn: () => void;
   removeColumn: (column) => void;
   saveColumn: (Column) => void;
@@ -60,7 +60,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addColumn: (): void => {
-      dispatch(addColumn(new Column("new", "bew", true)));
+      dispatch(addColumn(new ColumnRef("new", "bew", true)));
     },
     saveColumn: (updatedRowData): void => {
       dispatch(saveColumn(updatedRowData));

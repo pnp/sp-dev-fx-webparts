@@ -1,16 +1,16 @@
-import Column from "../Model/Column";
+import ColumnRef from "../Model/Column";
 import * as _ from "lodash";
 import {
     ADD_COLUMN,
     REMOVE_COLUMN
 } from "../constants";
 import { Log } from "@microsoft/sp-client-base";
-let INITIAL_STATE = new Array<Column>();
-INITIAL_STATE.push(new Column("id", "id",false));
-INITIAL_STATE.push(new Column("title", "title",true));
+let INITIAL_STATE = new Array<ColumnRef>();
+INITIAL_STATE.push(new ColumnRef("id", "id",false));
+INITIAL_STATE.push(new ColumnRef("title", "title",true));
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
     Log.verbose("listItemReducer", "In listItemReducer of listItemReducer ActionType is " + action.type);
-    let result: Column[];
+    let result: ColumnRef[];
     switch (action.type) {
         case ADD_COLUMN:
             let newarray = _.clone(state);

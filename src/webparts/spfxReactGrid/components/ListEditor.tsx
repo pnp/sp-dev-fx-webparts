@@ -3,7 +3,7 @@ const connect = require("react-redux").connect;
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
 import { Web } from "../model/Web";
 import ListRef from "../model/ListRef";
-import Column from "../model/Column";
+import ColumnRef from "../model/Column";
 import Container from "../components/container";
 import ListItemView from "../components/listitemview";
 import * as ReactDataGrid from "react-data-grid";

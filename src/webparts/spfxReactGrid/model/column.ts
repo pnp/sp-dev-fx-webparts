@@ -1,5 +1,5 @@
-import GridRowStatus from "./GridRowStatus";
-export default class Column {
+﻿import GridRowStatus from "./GridRowStatus";
+export default class ColumnRef {
     public constructor(
         public key:string,
         public name: string,
