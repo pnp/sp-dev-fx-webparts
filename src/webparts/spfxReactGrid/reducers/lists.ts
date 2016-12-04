@@ -6,10 +6,10 @@ import {
 
 } from "../constants";
 import * as _ from "lodash";
-import List from "../model/listRef";
+import ListRef from "../model/listRef";
 import { fromJS } from "immutable";
 const INITIAL_STATE = [];
-function listReducer(state: Array<List> = INITIAL_STATE, action: any = { type: "" }): Array<List> {
+function listReducer(state: Array<ListRef> = INITIAL_STATE, action: any = { type: "" }): Array<ListRef> {
     switch (action.type) {
         case ADD_LIST:
             let newarray = _.clone(state);

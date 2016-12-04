@@ -15,10 +15,10 @@ import {
 import "whatwg-fetch";
 
 import pnp from "sp-pnp-js";
-import List from "../model/ListRef";
+import ListRef from "../model/ListRef";
 import ListItem from "../model/ListItem";
 
-export function addList(list: List) {
+export function addList(list: ListRef) {
 
     return {
         type: ADD_LIST,
@@ -27,7 +27,7 @@ export function addList(list: List) {
         }
     };
 }
-export function removeList(list: List) {
+export function removeList(list: ListRef) {
     return {
         type: REMOVE_LIST,
         payload: {
@@ -35,7 +35,7 @@ export function removeList(list: List) {
         }
     };
 }
-export function saveList(list: List) {
+export function saveList(list: ListRef) {
     let action = {
         type: SAVE_LIST,
         payload: {
@@ -44,7 +44,7 @@ export function saveList(list: List) {
     };
     return action;
 }
-export function addLists(lists: List[]) {
+export function addLists(lists: ListRef[]) {
     return {
         type: ADD_LISTS,
         payload: {

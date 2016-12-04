@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 import * as ReactDom from "react-dom";
 import * as utils from "../utils/utils";
 const connect = require("react-redux").connect;
@@ -8,7 +8,7 @@ import ListEditor from "../components/ListEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 
-import List from "../model/ListRef";
+import ListRef from "../model/ListRef";
 import { Web } from "../model/Web";
 import Container from "../components/container";
 import ListView from "../components/Listview";
@@ -23,9 +23,9 @@ export interface Column {
   editor: string
 }
 interface IListViewPageProps extends React.Props<any> {
-  lists: Array<List>;
+  lists: Array<ListRef>;
   webs: Array<Web>;
-  addList: (list: List) => void;
+  addList: (list: ListRef) => void;
   removeList: (List) => void;
   saveList: (List) => void;
   getWebs: () => Promise<any>;
@@ -39,10 +39,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 
   return {
-    addList: (list: List): void => {
+    addList: (list: ListRef): void => {
       dispatch(addList(list));
     },
-    removeList: (list: List): void => {
+    removeList: (list: ListRef): void => {
       dispatch(removeList(list));
     },
     getWebs: (): Promise<any> => {
@@ -60,7 +60,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 interface IListContentsEditableProps extends React.Props<any> {
-  list: List;
+  list: ListRef;
   column: any;
   valueChanged: any;
 };
@@ -150,7 +150,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
 
   }
   public componentWillMount(): void {
-    let list = new List("0#;new list", null, "new list", null);
+    let list = new ListRef("0#;new list", null, "new list", null);
     this.props.addList(list);
     if (this.props.webs.length == 0) {
       this.props.getWebs();
@@ -164,7 +164,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let attributes: NamedNodeMap = target.attributes;
     let listid = attributes.getNamedItem("data-listid").value;
     let columnid = attributes.getNamedItem("data-columnid").value;
-    let list: List = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === listid);
+    let list: ListRef = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === listid);
     let column = this.columns.find(temp => temp.id === columnid);
     list[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk

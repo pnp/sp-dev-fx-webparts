@@ -1,12 +1,12 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 
-import List from '../model/ListRef';
+import ListRef from '../model/ListRef';
 export interface IListViewProps extends React.Props<any> {
-  lists: Array<List>;
+  lists: Array<ListRef>;
   addList: () => void;
   removeList: () => void;
 };
-function listRow(list: List) {
+function listRow(list: ListRef) {
   return (
     <tr>
       <td>
