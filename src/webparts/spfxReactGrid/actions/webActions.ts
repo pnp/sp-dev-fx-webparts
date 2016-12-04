@@ -9,7 +9,7 @@ import { Web, WebList, WebListField } from "../model/Web";
 export function getWebsAction(dispatch: any): any {
     let payload = pnp.sp.site.rootWeb.webs.expand('lists,lists/fields').get()
         .then((response) => {
-            debugger;
+
             let data = _.map(response, function (item: any) {
                 let web: Web = new Web(item.Id, item.Title, item.Url);
                 for (let list of item.Lists) {

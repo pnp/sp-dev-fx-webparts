@@ -4,6 +4,7 @@ import * as utils from "../utils/utils";
 const connect = require("react-redux").connect;
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 import WebEditor from "../components/WebEditor";
+import ListEditor from "../components/ListEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 
@@ -74,13 +75,14 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
   //  node.focus();
   //   }
   public render() {
-
+debugger;
     let {list, column, valueChanged} = this.props;
+
     switch (column.editor) {
       case "WebEditor":
         return (<WebEditor selectedValue={column.value} onChange={valueChanged} listid={list.guid} columnid={column.id} />);
       case "ListEditor":
-        return (<WebEditor selectedValue={column.value} onChange={valueChanged} listid={list.guid} columnid={column.id} />);
+        return (<ListEditor selectedValue={column.value} onChange={valueChanged} listRefId={list.guid} columnid={column.id} />);
       default:
         return (
           <input autoFocus ref="cellBeingEdited" type="text"
@@ -103,20 +105,14 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     {
       id: "10",
       key: "Web",
-      name: "Web",
+      name: "web", // the name of the field in the model
       editable: true,
       width: 80,
       //    formatter: SharePointLookupCellFormatter, // displays the descruption
       editor: "WebEditor",
       formatter: "SharePointLookupCellFormatter"
     },
-    {
-      id: "20",
-      key: "ListID",
-      name: "ListId",
-      editable: true,
-      width: 80,
-    },
+
     {
       id: "301",
       key: "listName",
@@ -162,7 +158,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
   }
   public rowChanged(event, y, z) {
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
-    debugger;
+
     let target = event.target;
     let value = target.value;
     let attributes: NamedNodeMap = target.attributes;
@@ -171,9 +167,10 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let list: List = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === listid);
     let column = this.columns.find(temp => temp.id === columnid);
     list[column.name] = value;
-
+    // if i update the list, get the url to the list and stir it as wekk
+    if (column.name === "title"){}
     this.props.saveList(list);
-    debugger;
+
   }
   public toggleEditing(item) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");

@@ -34,16 +34,15 @@ export interface IWebEditorProps extends React.Props<any> {
 class WebEditor extends React.Component<IWebEditorProps, void> {
   constructor(){
     super();
-    debugger;
     this.handleChange=this.handleChange.bind(this);
   }
  handleChange(event) {
-   debugger;
+
    this.props.onChange(event);
   }
 
   public render() {
-    debugger;
+
     const { value ,listid,columnid} = this.props;
 
 

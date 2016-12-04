@@ -10,7 +10,7 @@ export interface IContextMenu extends React.Props<any> {
 }
 export class ListPageContextMenu extends React.Component<IContextMenu, void> {
   public onRowDelete(e, data) {
-    debugger;
+
     if (typeof (this.props.onRowDelete) === 'function') {
       this.props.onRowDelete(e, data);
     }

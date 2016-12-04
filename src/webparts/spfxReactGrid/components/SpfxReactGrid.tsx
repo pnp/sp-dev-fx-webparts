@@ -16,7 +16,7 @@
 //   private columns: ReactDataGrid.Column[];
 //   public constructor() {
 //     super();
-//     debugger;
+
 //     this.state = new SpfxReactGridState();
 //     this.state.rows = this.createRows(100);
 
