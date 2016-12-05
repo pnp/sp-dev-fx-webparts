@@ -52,7 +52,7 @@ export class VoteController implements IVoteControllerScope {
   }
 
   public vote($event: MouseEvent): void {
-    event.preventDefault();
+    $event.preventDefault();
 
     this.voting = true;
     this.error = undefined;
