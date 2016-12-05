@@ -4,7 +4,7 @@ import {
   IWebPartContext,
   PropertyPaneTextField,
   PropertyPaneToggle
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import styles from './ToDo.module.scss';
 import * as strings from 'toDoStrings';
