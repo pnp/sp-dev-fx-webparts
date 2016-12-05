@@ -83,8 +83,8 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
         return (
           <input autoFocus type="text"
             value={columnRef[gridColumn.name]}
-            data-listid={columnRef.guid}
-            data-columnName={gridColumn.name}
+            data-entityid={columnRef.guid}
+            data-columnid={gridColumn.id}
             onChange={valueChanged} onBlur={valueChanged} />);
     }
   }
@@ -105,7 +105,8 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     this.ListCell = this.ListCell.bind(this);
     this.ListContents = this.ListContents.bind(this);
     //this.ListContentsEditable = this.ListContentsEditable.bind(this);
-  //  this.toggleEditing = this.toggleEditing.bind(this);
+    this.toggleEditing = this.toggleEditing.bind(this);
+   this.handleRowUpdated = this.handleRowUpdated.bind(this);
 
 
   }
@@ -142,7 +143,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     switch (gridColumn.formatter) {
 
       default:
-        return (<a href="#" data-entityId={columnRef.guid} data-columnID={gridColumn.id} onFocus={this.toggleEditing}>
+        return (<a href="#" data-entityid={columnRef.guid} data-columnid={gridColumn.id} onFocus={this.toggleEditing}>
           {columnRef[gridColumn.name]}
         </a>
         );
@@ -152,7 +153,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   public ListCell(props): JSX.Element {
 
     let {columnRef, column, rowChanged} = props;
-    if (this.state && this.state.editing && this.state.editing.listid === columnRef.guid && this.state.editing.columnid === column.key) {
+    if (this.state && this.state.editing && this.state.editing.entityId === columnRef.guid && this.state.editing.columnId === column.id) {
       return (<td style={{ border: "1px solid black", padding: "0px" }}>
         <ListContentsEditable columnRef={columnRef} gridColumn={column} valueChanged={rowChanged} />
 
@@ -203,9 +204,20 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
 
   private handleRowUpdated(event) {
 
-    let row = this.props.columns[event.rowIdx];
-    let newrow = _.assign(row, event.updated);
-    this.props.saveColumn(newrow);
+  Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
+
+    let target = event.target;
+    let value = target.value;
+    let attributes: NamedNodeMap = target.attributes;
+    let entityid = attributes.getNamedItem("data-entityid").value;
+    let columnid = attributes.getNamedItem("data-columnid").value;
+    let entity = this.props.columns.find((temp) =>temp.guid === entityid);
+    let column = this.gridColulumns.find(temp => temp.id === columnid);
+    entity[column.name] = value;
+    // if i update the list, get the url to the list and stir it as wekk
+
+
+    this.props.saveColumn(entity);
   }
   private handleRowdeleted(event, data) {
     this.props.removeColumn(this.props.columns[data.rowIdx]);
@@ -215,8 +227,8 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     debugger;
     let target = event.target;
     let attributes: NamedNodeMap = target.attributes;
-    let entityId = attributes.getNamedItem("data-entityId").value;
-    let columnId = attributes.getNamedItem("data-columnId").value;
+    let entityId = attributes.getNamedItem("data-entityid").value;
+    let columnId = attributes.getNamedItem("data-columnid").value;
 
 
     this.setState({ "editing": { entityId: entityId, columnId: columnId } });
