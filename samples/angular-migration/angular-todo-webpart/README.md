@@ -53,4 +53,4 @@ Sample web part in this solution illustrates the following concepts on top of th
 - communicating with the SharePoint REST API in Angular applications
 - passing web part properties values into Angular application
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-todo/angular-spfx)
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-migration)
