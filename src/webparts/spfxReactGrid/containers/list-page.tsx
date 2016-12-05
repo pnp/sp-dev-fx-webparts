@@ -75,7 +75,7 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
   //  node.focus();
   //   }
   public render() {
-debugger;
+
     let {list, column, valueChanged} = this.props;
 
     switch (column.editor) {

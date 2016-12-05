@@ -37,7 +37,7 @@ interface IContextMenu extends React.Props<any> {
   onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
 }
 function mapStateToProps(state) {
-  debugger;
+
   return {
     columns: state.columns,
   };
@@ -75,13 +75,13 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
   //  node.focus();
   //   }
   public render() {
-    debugger;
+
     let {columnRef, gridColumn, valueChanged} = this.props;
 
     switch (gridColumn.editor) {
            default:
         return (
-          <input autoFocus ref="cellBeingEdited" type="text"
+          <input autoFocus type="text"
             value={columnRef[gridColumn.name]}
             data-listid={columnRef.key}
             data-columnName={gridColumn.name}
@@ -136,12 +136,12 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
       editor: "BooleanEditor",
       width:80
     }];
-  public ListContents(props): JSX.Element {
+  public ListContents(props:{columnRef:ColumnRef, gridColumn:GridColumn, rowChanged:any}): JSX.Element {
     let {columnRef, gridColumn, rowChanged} = props;
     switch (gridColumn.formatter) {
 
       default:
-        return (<a href="#" onFocus={this.toggleEditing.bind(null, { "listid": columnRef.guid, "columnid": gridColumn.key })}>
+        return (<a href="#" onFocus={this.toggleEditing.bind(null, { "listid": columnRef.key, "columnid": gridColumn.id })}>
           {columnRef[gridColumn.name]}
         </a>
         );
@@ -157,6 +157,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   //   }
   // }
   public ListCell(props): JSX.Element {
+
     let {columnRef, column, rowChanged} = props;
     if (this.state && this.state.editing && this.state.editing.listid === columnRef.guid && this.state.editing.columnid === column.key) {
       return (<td style={{ border: "1px solid black", padding: "0px" }}>
@@ -208,7 +209,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   }
 
   private handleRowUpdated(event) {
-    debugger;
+
     let row = this.props.columns[event.rowIdx];
     let newrow = _.assign(row, event.updated);
     this.props.saveColumn(newrow);
@@ -222,7 +223,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   }
 
   public render() {
-    debugger
+
     const { columns, addColumn, removeColumn } = this.props;
     let toolbar = React.createElement(ReactDataGridPlugins.Toolbar, { onAddRow: this.props.addColumn });
     return (

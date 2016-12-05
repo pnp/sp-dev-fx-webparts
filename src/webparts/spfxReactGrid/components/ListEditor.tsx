@@ -61,7 +61,7 @@ class ListEditor extends React.Component<IListEditorProps, void> {
 
   }
   public render() {
-   debugger;
+
     const { value, listRefId, columnid} = this.props;
 
 
