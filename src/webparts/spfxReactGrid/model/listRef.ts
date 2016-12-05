@@ -1,4 +1,4 @@
-// for eac of the columns to be displayed, which field in this list should we use
+﻿// for eac of the columns to be displayed, which field in this list should we use
 import { Guid } from '@microsoft/sp-client-base';
 export class ColumnMapping {
     public constructor(
@@ -13,8 +13,8 @@ export default class ListRef {
     public guid: string;// the id of the list we are pointing to id#;name
     public constructor(
         public id: string,// the id of the list we are pointing to id#;name
-        public web: string,
-        public title: string,
+        public webLookup: string,
+        public listLookup: string,
         public url: string) {
         this.columnMapping = new Array<ColumnMapping>();
         this.guid = Guid.newGuid().toString();

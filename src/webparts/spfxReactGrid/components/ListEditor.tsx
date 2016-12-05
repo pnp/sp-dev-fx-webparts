@@ -45,7 +45,7 @@ class ListEditor extends React.Component<IListEditorProps, void> {
   getLists(){
     // grt thr listref we are working on. Its web has all the lists in the web
     let listref:ListRef = this.props.listRefs.find((lr)=>lr.guid===this.props.listRefId);
-    let webid=utils.ParseSPField(listref.web).id;
+    let webid=utils.ParseSPField(listref.webLookup).id;
     let web=this.props.webs.find(w=>w.id===webid);
     return web.lists;
   }

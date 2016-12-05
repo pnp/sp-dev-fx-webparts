@@ -105,7 +105,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     {
       id: "10",
       key: "Web",
-      name: "web", // the name of the field in the model
+      name: "webLookup", // the name of the field in the model
       editable: true,
       width: 80,
       //    formatter: SharePointLookupCellFormatter, // displays the descruption
@@ -116,7 +116,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     {
       id: "301",
       key: "listName",
-      name: "title",
+      name: "listLookup",
       editable: true,
       editor: "ListEditor",
       formatter: "SharePointLookupCellFormatter"
@@ -168,7 +168,9 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let column = this.columns.find(temp => temp.id === columnid);
     list[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk
-    if (column.name === "title"){}
+    if (column.name === "title"){
+
+    }
     this.props.saveList(list);
 
   }

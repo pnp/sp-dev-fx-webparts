@@ -13,7 +13,7 @@ function listRow(list: ListRef) {
         {list.id}
       </td>
       <td>
-        {list.title}
+        {list.listLookup}
       </td>
       <td>
         {list.url}
