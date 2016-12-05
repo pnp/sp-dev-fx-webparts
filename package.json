@@ -9,7 +9,7 @@
     "@microsoft/sp-client-base": "~0.4.0",
     "@microsoft/sp-client-preview": "~0.5.0",
     "@microsoft/sp-webpart-base": "^0.1.0",
-    "office-ui-fabric-react": "0.36.0",
+    "office-ui-fabric-react": "^0.36.0",
     "react": "0.14.8",
     "react-data-grid": "^1.0.62",
     "react-dom": "0.14.8",

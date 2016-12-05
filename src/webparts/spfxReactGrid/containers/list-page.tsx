@@ -7,25 +7,25 @@ import WebEditor from "../components/WebEditor";
 import ListEditor from "../components/ListEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
-
+import { Button } from "office-ui-fabric-react/lib/Button";
 import ListRef from "../model/ListRef";
 import { Web } from "../model/Web";
 import Container from "../components/container";
 import ListView from "../components/Listview";
-import { Guid, Log } from '@microsoft/sp-client-base';
+import { Guid, Log } from "@microsoft/sp-client-base";
 export interface Column {
-  id: string,
-  key: string,
-  name: string,
-  editable: true,
-  width: number,
-  formatter: string,
-  editor: string
+  id: string;
+  key: string;
+  name: string;
+  editable: true;
+  width: number;
+  formatter: string;
+  editor: string;
 }
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<ListRef>;
   webs: Array<Web>;
-  addList: (list: ListRef) => void;
+  addList: () => void;
   removeList: (List) => void;
   saveList: (List) => void;
   getWebs: () => Promise<any>;
@@ -39,7 +39,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 
   return {
-    addList: (list: ListRef): void => {
+    addList: (): void => {
+      let id = Guid.newGuid();
+      let list: ListRef = new ListRef(id.toString(), null, null, null);
       dispatch(addList(list));
     },
     removeList: (list: ListRef): void => {
@@ -120,20 +122,6 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       editable: true,
       editor: "ListEditor",
       formatter: "SharePointLookupCellFormatter"
-    },
-    {
-      id: "401",
-      key: "Url",
-      name: "list  Url",
-      editable: true,
-
-    },
-    {
-      id: "501",
-      key: "editable",
-      name: "editable",
-      editable: true,
-
     }];
   public columns = [];
   public constructor() {
@@ -146,13 +134,12 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     //this.ListContentsEditable = this.ListContentsEditable.bind(this);
     this.toggleEditing = this.toggleEditing.bind(this);
     this.rowChanged = this.rowChanged.bind(this);
+    this.deleteList = this.deleteList.bind(this);
 
 
   }
   public componentWillMount(): void {
-    let list = new ListRef("0#;new list", null, "new list", null);
-    this.props.addList(list);
-    if (this.props.webs.length == 0) {
+    if (this.props.webs.length === 0) {
       this.props.getWebs();
     }
   }
@@ -168,11 +155,22 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let column = this.columns.find(temp => temp.id === columnid);
     list[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk
-    if (column.name === "title"){
+    if (column.name === "title") {
 
     }
     this.props.saveList(list);
 
+  }
+  public deleteList(event) {
+    debugger;
+    Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
+
+    let target = event.target;
+     let attributes: NamedNodeMap = target.attributes;
+    let listid = attributes.getNamedItem("data-listid").value;
+    let list: ListRef = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === listid);
+    this.props.removeList(list);
+    return;
   }
   public toggleEditing(item) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");
@@ -229,6 +227,11 @@ class ListPage extends React.Component<IListViewPageProps, any> {
             );
           }, this)
         }
+        <td>
+          <a href="#" data-listid={list.guid} onClick={this.deleteList}>
+            Delete
+        </a>
+        </td>
       </tr>);
   };
 
@@ -257,6 +260,8 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let columns = this.columns;
     return (
       <Container testid="columns" size={2} center>
+        <Button onClick={this.props.addList}>Add List</Button>
+
         <table border="1">
           <thead>
             <tr>

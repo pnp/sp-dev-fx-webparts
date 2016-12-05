@@ -6,7 +6,7 @@ import ListEditor from "../components/ListEditor";
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
 import ListItem from "../model/ListItem";
 import ColumnRef from "../model/Column";
-
+import { Button } from "office-ui-fabric-react/lib/Button";
 import ListRef from "../model/ListRef";
 import Container from "../components/container";
 import ListItemView from "../components/listitemview";
@@ -228,7 +228,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     let toolbar = React.createElement(ReactDataGridPlugins.Toolbar, { onAddRow: this.props.addColumn });
     return (
       <Container testid="columns" size={2} center>
-      <button onClick={addColumn}>add column</button>
+      <Button onClick={addColumn}>add column</Button>
         <table border="1">
           <thead>
             <tr>

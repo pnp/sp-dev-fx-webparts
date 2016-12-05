@@ -2,10 +2,10 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
-const { Router, createMemoryHistory } = require('react-router');
-const { syncHistoryWithStore } = require('react-router-redux');
-import list from './model/ListRef';
-import column from './model/column';
+const { Router, createMemoryHistory } = require("react-router");
+const { syncHistoryWithStore } = require("react-router-redux");
+import list from "./model/ListRef";
+import column from "./model/column";
 import { addLists } from "./actions/listActions";
 import { addColumns } from "./actions/columnActions";
 import {
@@ -15,7 +15,7 @@ import {
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
 import { Log } from "@microsoft/sp-client-base";
-import routes from './store/routes';
+import routes from "./store/routes";
 import * as strings from "spfxReactGridStrings";
 
 
@@ -41,7 +41,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     ReactDom.render(App(), this.domElement);
   }
   protected deserialize(data: IWebPartData): ISpfxReactGridWebPartProps {
-    let info = super.deserialize(data);
+  let info = super.deserialize(data);
     return info;
   }
   protected onBeforeSerialize(): IHtmlProperties {

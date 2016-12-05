@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDataGrid from "react-data-grid";
 import * as ReactDataGridPlugins from "react-data-grid/addons";
+
 export class ListPageContextMenuProps implements React.Props<any> {
   onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
 }
