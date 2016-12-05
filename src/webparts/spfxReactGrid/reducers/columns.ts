@@ -17,7 +17,7 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
             newarray.push(action.payload.column);
             return newarray;
         case REMOVE_COLUMN:
-            let newArr = _.filter(state, function (o) { return o.key !== action.payload.column.key; });
+            let newArr = _.filter(state, function (o) { return o.guid !== action.payload.column.guid; });
             return newArr;
         default:
             Log.verbose("listItemReducer", " listItemReducer returning default  " + state);

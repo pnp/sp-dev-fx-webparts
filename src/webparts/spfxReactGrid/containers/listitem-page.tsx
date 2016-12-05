@@ -47,17 +47,23 @@ class ListItemPage extends React.Component<IListViewPageProps, void> {
     const { listItems, addListItem, removeListItem, getListItems } = this.props;
     return (
       <Container testid="listitem" size={2} center>
-        <ReactDataGrid
-
-          enableCellSelect={true}
-          columns={this.props.columns}
-          rowGetter={this.rowGetter.bind(this)}
-          rowsCount={this.props.listItems.length}
-          minHeight={500}
-          onRowUpdated={this.props.updateListItem} />
+        <div> Working on it</div>
         );
       </Container>
     );
+    //   return (
+    //   <Container testid="listitem" size={2} center>
+    //     <ReactDataGrid
+
+    //       enableCellSelect={true}
+    //       columns={this.props.columns}
+    //       rowGetter={this.rowGetter.bind(this)}
+    //       rowsCount={this.props.listItems.length}
+    //       minHeight={500}
+    //       onRowUpdated={this.props.updateListItem} />
+    //     );
+    //   </Container>
+    // );
   };
 }
 export default connect(

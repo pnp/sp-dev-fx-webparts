@@ -45,8 +45,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     addColumn: (): void => {
-      let id =Guid.newGuid();
-     let  col:ColumnRef = new ColumnRef(id.toString(),'',true);
+      let id = Guid.newGuid();
+      let col: ColumnRef = new ColumnRef(id.toString(), '', true);
       dispatch(addColumn(col));
     },
     saveColumn: (updatedRowData): void => {
@@ -79,11 +79,11 @@ class ListContentsEditable extends React.Component<IListContentsEditableProps, a
     let {columnRef, gridColumn, valueChanged} = this.props;
 
     switch (gridColumn.editor) {
-           default:
+      default:
         return (
           <input autoFocus type="text"
             value={columnRef[gridColumn.name]}
-            data-listid={columnRef.key}
+            data-listid={columnRef.guid}
             data-columnName={gridColumn.name}
             onChange={valueChanged} onBlur={valueChanged} />);
     }
@@ -105,57 +105,50 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     this.ListCell = this.ListCell.bind(this);
     this.ListContents = this.ListContents.bind(this);
     //this.ListContentsEditable = this.ListContentsEditable.bind(this);
-    this.toggleEditing = this.toggleEditing.bind(this);
+  //  this.toggleEditing = this.toggleEditing.bind(this);
 
 
   }
 
-  public gridColulumns :Array<GridColumn>= [{
-    id: "key",
-    name: "key",
+  public gridColulumns: Array<GridColumn> = [{
+    id: "guid",
+    name: "guid",
     editable: true,
     width: 80
   },
-    {
-      id: "name",
-      name: "name",
-      editable: true,
-      width:80
-    },
-    {
-      id: "type",
-      name: "type",
-      editable: true,
-      editor: "FieldTypesEditor",
-      width:80
-    },
-    {
-      id: "editable",
-      name: "editable",
-      editable: true,
-      editor: "BooleanEditor",
-      width:80
-    }];
-  public ListContents(props:{columnRef:ColumnRef, gridColumn:GridColumn, rowChanged:any}): JSX.Element {
+
+  {
+    id: "name",
+    name: "name",
+    editable: true,
+    width: 80
+  },
+  {
+    id: "type",
+    name: "type",
+    editable: true,
+    editor: "FieldTypesEditor",
+    width: 80
+  },
+  {
+    id: "editable",
+    name: "editable",
+    editable: true,
+    editor: "BooleanEditor",
+    width: 80
+  }];
+  public ListContents(props: { columnRef: ColumnRef, gridColumn: GridColumn, rowChanged: any }): JSX.Element {
     let {columnRef, gridColumn, rowChanged} = props;
     switch (gridColumn.formatter) {
 
       default:
-        return (<a href="#" onFocus={this.toggleEditing.bind(null, { "listid": columnRef.key, "columnid": gridColumn.id })}>
+        return (<a href="#" data-entityId={columnRef.guid} data-columnID={gridColumn.id} onFocus={this.toggleEditing}>
           {columnRef[gridColumn.name]}
         </a>
         );
     }
   }
-  // public ListContentsEditable(props): JSX.Element {
-  // let {list, column, valueChanged} = props;
-  //   switch (column.formatter) {
-  //     case "SharePointLookupCellFormatter":
-  //       return (<SharePointLookupCellFormatter value={column.value} />);
-  //     default:
-  //       return (<input  autoFocus type="text" value={list[column.name]} data-listid={list.guid} data-columnid={column.id} onChange={valueChanged} onBlur={valueChanged} />);
-  //   }
-  // }
+
   public ListCell(props): JSX.Element {
 
     let {columnRef, column, rowChanged} = props;
@@ -217,18 +210,25 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   private handleRowdeleted(event, data) {
     this.props.removeColumn(this.props.columns[data.rowIdx]);
   }
-  public toggleEditing(item) {
+  public toggleEditing(event) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");
-    this.setState({ "editing": item });
+    debugger;
+    let target = event.target;
+    let attributes: NamedNodeMap = target.attributes;
+    let entityId = attributes.getNamedItem("data-entityId").value;
+    let columnId = attributes.getNamedItem("data-columnId").value;
+
+
+    this.setState({ "editing": { entityId: entityId, columnId: columnId } });
   }
 
   public render() {
 
     const { columns, addColumn, removeColumn } = this.props;
-    let toolbar = React.createElement(ReactDataGridPlugins.Toolbar, { onAddRow: this.props.addColumn });
+
     return (
       <Container testid="columns" size={2} center>
-      <Button onClick={addColumn}>add column</Button>
+        <Button onClick={addColumn}>add column</Button>
         <table border="1">
           <thead>
             <tr>
