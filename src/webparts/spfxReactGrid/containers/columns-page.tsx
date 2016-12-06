@@ -134,7 +134,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     name: "type",
     editable: true,
     editor: "FieldTypesEditor",
-
+    formatter: "SharePointLookupCellFormatter",
     width: 20
   },
   {
