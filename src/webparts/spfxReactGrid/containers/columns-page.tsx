@@ -121,7 +121,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     id: "guid",
     name: "guid",
     editable: false,
-    width: 150
+    width: 250
   },
   {
     id: "name",
@@ -154,7 +154,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     }
     switch (gridColumn.formatter) {
   case "SharePointLookupCellFormatter":
-        return (<SharePointLookupCellFormatter value={columnRef[gridColumn.name]} onFocus={this.toggleEditing} />);
+        return (<SharePointLookupCellFormatter entityid={columnRef.guid}  columnid={gridColumn.id} value={columnRef[gridColumn.name]} onFocus={this.toggleEditing} />);
 
       default:
         return (<a href="#" data-entityid={columnRef.guid} data-columnid={gridColumn.id} onFocus={this.toggleEditing}>

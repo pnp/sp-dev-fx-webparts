@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const SharePointLookupCellFormatter = React.createClass<{ value: string, onFocus: any }, void>({
+export const SharePointLookupCellFormatter = React.createClass<{ value: string, onFocus: any,entityid:string, columnid:string }, void>({
   render(): JSX.Element {
     if (this.props.value == null) {
       return ((<a href="#" onFocus={this.props.onFocus}>

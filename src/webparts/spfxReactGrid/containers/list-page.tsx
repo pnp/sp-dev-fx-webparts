@@ -181,7 +181,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     let {list, column, rowChanged} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":
-        return (<SharePointLookupCellFormatter value={list[column.name]} onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })} />);
+        return (<SharePointLookupCellFormatter value={list[column.name]} entityid={list.id}  columnid={column.id} onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })} />);
       default:
         return (<a href="#" onFocus={this.toggleEditing.bind(null, { "listid": list.guid, "columnid": column.key })}>
           {list[column.name]}
