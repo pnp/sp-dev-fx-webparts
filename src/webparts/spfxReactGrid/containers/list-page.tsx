@@ -61,12 +61,12 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-interface IListContentsEditableProps extends React.Props<any> {
+interface ICellContentsEditableProps extends React.Props<any> {
   list: ListRef;
   column: any;
   valueChanged: any;
 };
-class ListContentsEditable extends React.Component<IListContentsEditableProps, any>{
+class CellContentsEditable extends React.Component<ICellContentsEditableProps, any>{
   //   refs: {
   //     [key: string]: (Element);
   //     cellBeingEdited: (HTMLInputElement);
@@ -127,10 +127,10 @@ class ListPage extends React.Component<IListViewPageProps, any> {
   public constructor() {
     super();
     this.columns = this.defaultColumns; // add others dynamically
-    this.ListRows = this.ListRows.bind(this);
-    this.ListRow = this.ListRow.bind(this);
-    this.ListCell = this.ListCell.bind(this);
-    this.ListContents = this.ListContents.bind(this);
+    this.CellContents = this.CellContents.bind(this);
+    this.TableDetail = this.TableDetail.bind(this);
+    this.TableRow = this.TableRow.bind(this);
+    this.TableRows = this.TableRows.bind(this);
     //this.ListContentsEditable = this.ListContentsEditable.bind(this);
     this.toggleEditing = this.toggleEditing.bind(this);
     this.rowChanged = this.rowChanged.bind(this);
@@ -177,7 +177,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     this.setState({ "editing": item });
   }
 
-  public ListContents(props): JSX.Element {
+  public CellContents (props): JSX.Element {
     let {list, column, rowChanged} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":
@@ -198,24 +198,24 @@ class ListPage extends React.Component<IListViewPageProps, any> {
   //       return (<input  autoFocus type="text" value={list[column.name]} data-listid={list.guid} data-columnid={column.id} onChange={valueChanged} onBlur={valueChanged} />);
   //   }
   // }
-  public ListCell(props): JSX.Element {
+  public TableDetail(props): JSX.Element {
     let {list, column, rowChanged} = props;
     if (this.state && this.state.editing && this.state.editing.listid === list.guid && this.state.editing.columnid === column.key) {
       return (<td style={{ border: "1px solid black", padding: "0px" }}>
-        <ListContentsEditable list={list} column={column} valueChanged={rowChanged} />
+        <CellContentsEditable list={list} column={column} valueChanged={rowChanged} />
 
       </td>
       );
     } else {
       return (<td style={{ border: "1px solid black", padding: "0px" }}>
-        <this.ListContents list={list} column={column} rowChanged={rowChanged} />
+        <this.CellContents  list={list} column={column} rowChanged={rowChanged} />
       </td>
       );
 
     }
 
   }
-  public ListRow(props): JSX.Element {
+  public TableRow(props): JSX.Element {
     let {list, columns, rowChanged} = props;
 
     return (
@@ -223,7 +223,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
         {
           columns.map(function (column) {
             return (
-              <this.ListCell key={column.guid} list={list} column={column} rowChanged={rowChanged} />
+              <this.TableDetail key={column.guid} list={list} column={column} rowChanged={rowChanged} />
             );
           }, this)
         }
@@ -237,7 +237,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
 
 
 
-  public ListRows(props): JSX.Element {
+  public TableRows (props): JSX.Element {
     let {lists, columns, rowChanged} = props;
 
     return (
@@ -245,7 +245,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
         {
           lists.map(function (list) {
             return (
-              <this.ListRow key={list.guid} list={list} columns={columns} rowChanged={rowChanged} />
+              <this.TableRow key={list.guid} list={list} columns={columns} rowChanged={rowChanged} />
             );
           }, this)
         }
@@ -272,7 +272,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
           </thead>
 
           {
-            <this.ListRows lists={this.props.lists} columns={this.columns} rowChanged={this.rowChanged} />
+            <this.TableRows  lists={this.props.lists} columns={this.columns} rowChanged={this.rowChanged} />
 
           })}
 

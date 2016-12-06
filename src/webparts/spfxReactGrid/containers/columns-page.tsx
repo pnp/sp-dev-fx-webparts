@@ -59,12 +59,12 @@ function mapDispatchToProps(dispatch) {
 
   };
 }
-interface IListContentsEditableProps extends React.Props<any> {
+interface ICellContentsEditableProps extends React.Props<any> {
   columnRef: ColumnRef; // the row  in the list of columns
   gridColumn: GridColumn;// the column in the list taht changed
   valueChanged: any;
 };
-class ListContentsEditable extends React.Component<IListContentsEditableProps, any>{
+class CellContentsEditable extends React.Component<ICellContentsEditableProps, any>{
   //   refs: {
   //     [key: string]: (Element);
   //     cellBeingEdited: (HTMLInputElement);
@@ -100,12 +100,12 @@ export interface GridColumn {
 class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   public constructor() {
     super();
-    this.ListRows = this.ListRows.bind(this);
-    this.ListRow = this.ListRow.bind(this);
-    this.ListCell = this.ListCell.bind(this);
-    this.ListContents = this.ListContents.bind(this);
-    //this.ListContentsEditable = this.ListContentsEditable.bind(this);
-  //  this.toggleEditing = this.toggleEditing.bind(this);
+    this.CellContents = this.CellContents.bind(this);
+    this.TableDetail = this.TableDetail.bind(this);
+    this.TableRow = this.TableRow.bind(this);
+    this.TableRows = this.TableRows.bind(this);
+
+   this.toggleEditing = this.toggleEditing.bind(this);
 
 
   }
@@ -137,37 +137,37 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     editor: "BooleanEditor",
     width: 80
   }];
-  public ListContents(props: { columnRef: ColumnRef, gridColumn: GridColumn, rowChanged: any }): JSX.Element {
+  public CellContents(props: { columnRef: ColumnRef, gridColumn: GridColumn, rowChanged: any }): JSX.Element {
     let {columnRef, gridColumn, rowChanged} = props;
     switch (gridColumn.formatter) {
 
       default:
-        return (<a href="#" data-entityId={columnRef.guid} data-columnID={gridColumn.id} onFocus={this.toggleEditing}>
+        return (<a href="#" data-entityid={columnRef.guid} data-columnid={gridColumn.id} onFocus={this.toggleEditing}>
           {columnRef[gridColumn.name]}
         </a>
         );
     }
   }
 
-  public ListCell(props): JSX.Element {
+  public TableDetail(props): JSX.Element {
 
     let {columnRef, column, rowChanged} = props;
-    if (this.state && this.state.editing && this.state.editing.listid === columnRef.guid && this.state.editing.columnid === column.key) {
-      return (<td style={{ border: "1px solid black", padding: "0px" }}>
-        <ListContentsEditable columnRef={columnRef} gridColumn={column} valueChanged={rowChanged} />
+    if (this.state && this.state.editing && this.state.editing.entityid === columnRef.guid && this.state.editing.columnid === column.id) {
+      return (<td style={{width:column.width, border: "1px solid black", padding: "0px" }}>
+        <CellContentsEditable columnRef={columnRef} gridColumn={column} valueChanged={rowChanged} />
 
       </td>
       );
     } else {
-      return (<td style={{ border: "1px solid black", padding: "0px" }}>
-        <this.ListContents columnRef={columnRef} gridColumn={column} rowChanged={rowChanged} />
+      return (<td style={{width:column.width, border: "1px solid black", padding: "0px" }}>
+        <this.CellContents columnRef={columnRef} gridColumn={column} rowChanged={rowChanged} />
       </td>
       );
 
     }
 
   }
-  public ListRow(props): JSX.Element {
+  public TableRow(props): JSX.Element {
     let {columnRef, columns, rowChanged} = props;
 
     return (
@@ -175,7 +175,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
         {
           columns.map(function (column) {
             return (
-              <this.ListCell key={column.guid} columnRef={columnRef} column={column} rowChanged={rowChanged} />
+              <this.TableDetail key={column.guid} columnRef={columnRef} column={column} rowChanged={rowChanged} />
             );
           }, this)
         }
@@ -184,7 +184,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
 
 
 
-  public ListRows(props): JSX.Element {
+  public TableRows(props): JSX.Element {
     let {columnRefs, columns, rowChanged} = props;
 
     return (
@@ -192,7 +192,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
         {
           columnRefs.map(function (columnRef) {
             return (
-              <this.ListRow key={columnRef.guid} columnRef={columnRef} columns={columns} rowChanged={rowChanged} />
+              <this.TableRow key={columnRef.guid} columnRef={columnRef} columns={columns} rowChanged={rowChanged} />
             );
           }, this)
         }
@@ -215,11 +215,11 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     debugger;
     let target = event.target;
     let attributes: NamedNodeMap = target.attributes;
-    let entityId = attributes.getNamedItem("data-entityId").value;
-    let columnId = attributes.getNamedItem("data-columnId").value;
+    let entityid = attributes.getNamedItem("data-entityid").value;
+    let columnid = attributes.getNamedItem("data-columnid").value;
 
 
-    this.setState({ "editing": { entityId: entityId, columnId: columnId } });
+    this.setState({ "editing": { entityid: entityid, columnid: columnid } });
   }
 
   public render() {
@@ -239,7 +239,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
           </thead>
 
           {
-            <this.ListRows columnRefs={this.props.columns} columns={this.gridColulumns} rowChanged={this.handleRowUpdated} />
+            <this.TableRows columnRefs={this.props.columns} columns={this.gridColulumns} rowChanged={this.handleRowUpdated} />
 
           })}
 
