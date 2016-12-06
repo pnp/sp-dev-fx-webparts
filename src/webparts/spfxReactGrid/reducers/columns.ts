@@ -19,14 +19,14 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
         case SAVE_COLUMN:
 
             let newarray2 = _.clone(state);
-            let item = newarray2.find(item => item.guid === action.payload.list.guid)
-            item = action.payload.list;
+            let item = newarray2.find(item => item.guid === action.payload.column.guid);
+            item = action.payload.column;
             return newarray2;
         case REMOVE_COLUMN:
             let newArr = _.filter(state, function (o) { return o.guid !== action.payload.column.guid; });
             return newArr;
-              case ADD_COLUMNS:
-              debugger;
+        case ADD_COLUMNS:
+            debugger;
             return _.union(state, action.payload.columns);
         default:
             Log.verbose("listItemReducer", " listItemReducer returning default  " + state);
