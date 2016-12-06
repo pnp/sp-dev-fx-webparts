@@ -35,6 +35,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     Log.verbose("SpfxReactGridWebPart", "In constructor of SpfxReactGridWebPart");
   }
   public render(): void {
+    debugger;
     store.dispatch(addLists(this.properties.lists));
     store.dispatch(addColumns(this.properties.columns));
     Log.verbose("SpfxReactGridWebPart", "In render of SpfxReactGridWebPart");
@@ -45,6 +46,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     return info;
   }
   protected onBeforeSerialize(): IHtmlProperties {
+
     this.properties.columns = store.getState().columns;
     this.properties.lists = store.getState().lists;
     return super.onBeforeSerialize();
