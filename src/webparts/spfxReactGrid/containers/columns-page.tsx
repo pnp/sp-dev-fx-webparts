@@ -154,7 +154,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
 
     let {columnRef, column, rowChanged} = props;
     if (this.state && this.state.editing && this.state.editing.entityId === columnRef.guid && this.state.editing.columnId === column.id) {
-      return (<td style={{ border: "1px solid black", padding: "0px" }}>
+      return (<td onClick={this.toggleEditing} style={{ border: "1px solid black", padding: "0px" }}>
         <ListContentsEditable columnRef={columnRef} gridColumn={column} valueChanged={rowChanged} />
 
       </td>
