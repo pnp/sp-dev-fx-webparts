@@ -1,7 +1,7 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
-import {Web} from "../model/Web";
+import { Web } from "../model/Web";
 import ColumnRef from "../model/Column";
 import Container from "../components/container";
 import ListItemView from "../components/listitemview";
@@ -20,38 +20,38 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    };
+  };
 }
 
 export interface IWebEditorProps extends React.Props<any> {
   value: string;
-  onChange(event): void
-  webs:Array<Web>
-  listid:string,
-  columnid:string
+  onChange(event): void;
+  webs: Array<Web>;
+  listid: string;
+  columnid: string;
 }
 
 class WebEditor extends React.Component<IWebEditorProps, void> {
-  constructor(){
+  constructor() {
     super();
-    this.handleChange=this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
- handleChange(event) {
+  handleChange(event) {
 
-   this.props.onChange(event);
+    this.props.onChange(event);
   }
 
   public render() {
 
-    const { value ,listid,columnid} = this.props;
+    const { value, listid, columnid} = this.props;
 
 
     return (
-      <select  value={value} onChange={this.handleChange}   data-listid={this.props.listid}
-            data-columnid={this.props.columnid}>
+      <select value={value} onChange={this.handleChange} data-listid={this.props.listid}
+        data-columnid={this.props.columnid}>
         {this.props.webs.map(function (web) {
           return (
-            <option key={web.id} value={web.id+"#;"+web.title}  >{web.title}</option>
+            <option key={web.id} value={web.id + "#;" + web.title}  >{web.title}</option>
           );
         }, this)
         }
