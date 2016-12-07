@@ -89,20 +89,23 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
         return (
           <input autoFocus ref="cellBeingEdited" type="text"
             value={entity[column.name]}
-            data-listid={entity.guid}
-            data-columnid={column.id}
             onChange={valueChanged} onBlur={valueChanged} />);
     }
   }
 }
-class ListPage extends React.Component<IListViewPageProps, any> {
+interface IGridProps {
+  editing: {
+    entityid: string;
+    columnid: string;
+  };
+}
+class ListPage extends React.Component<IListViewPageProps, IGridProps> {
   public defaultColumns = [
     {
       id: "7401",
       key: "guid",
       name: "guid",
-      editable: true,
-
+      editable: false,
     },
     {
       id: "10",
@@ -131,9 +134,8 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     this.TableDetail = this.TableDetail.bind(this);
     this.TableRow = this.TableRow.bind(this);
     this.TableRows = this.TableRows.bind(this);
-    //this.ListContentsEditable = this.ListContentsEditable.bind(this);
-    this.toggleEditing = this.toggleEditing.bind(this);
-    this.rowChanged = this.rowChanged.bind(this);
+     this.toggleEditing = this.toggleEditing.bind(this);
+    this.handleRowUpdated = this.handleRowUpdated.bind(this);
     this.deleteList = this.deleteList.bind(this);
 
 
@@ -143,15 +145,16 @@ class ListPage extends React.Component<IListViewPageProps, any> {
       this.props.getWebs();
     }
   }
-  public rowChanged(event, y, z) {
-    Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
-
+  public handleRowUpdated(event) {
+    Log.verbose("Columns-Page", "Row changed-fired when row changed or leaving cell ");
     let target = event.target;
     let value = target.value;
-    let attributes: NamedNodeMap = target.attributes;
-    let listid = attributes.getNamedItem("data-listid").value;
+    let parentTD = this.getParent(event.target, "TD");
+    let attributes: NamedNodeMap = parentTD.attributes;
+    let entityitem = attributes.getNamedItem("data-entityid");
+    let entityid = entityitem.value;
     let columnid = attributes.getNamedItem("data-columnid").value;
-    let entity: ListRef = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === listid);
+    let entity: ListRef = this.props.lists.find((temp) => temp.guid === entityid);
     let column = this.columns.find(temp => temp.id === columnid);
     entity[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk
@@ -165,50 +168,53 @@ class ListPage extends React.Component<IListViewPageProps, any> {
     debugger;
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
 
-    let target = event.target;
-     let attributes: NamedNodeMap = target.attributes;
-    let entity = attributes.getNamedItem("data-listid").value;
+    let target = this.getParent(event.target, "TD");
+    let attributes: NamedNodeMap = target.attributes;
+    let entity = attributes.getNamedItem("data-entityid").value;
     let list: ListRef = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === entity);
     this.props.removeList(list);
     return;
   }
-  public toggleEditing(item) {
+  public getParent(node: Node, type: string): Node {
+    while (node.nodeName !== "TD") {
+      node = node.parentNode;
+    }
+    return node;
+  }
+  public toggleEditing(event) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");
-    this.setState({ "editing": item });
+    debugger;
+    let target = this.getParent(event.target, "TD"); // walk up the Dom to the TD, thats where the IDs are stored
+    let attributes: NamedNodeMap = target.attributes;
+    let entityid = attributes.getNamedItem("data-entityid").value;
+    let columnid = attributes.getNamedItem("data-columnid").value;
+    this.setState({ "editing": { entityid: entityid, columnid: columnid } });
   }
 
-  public CellContents (props): JSX.Element {
+  public CellContents(props): JSX.Element {
     let {entity, column, rowChanged} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":
-        return (<SharePointLookupCellFormatter value={entity[column.name]} entityid={entity.id}  columnid={column.id} onFocus={this.toggleEditing.bind(null, { "listid": entity.guid, "columnid": column.key })} />);
+        return (<SharePointLookupCellFormatter value={entity[column.name]} onFocus={this.toggleEditing} />);
       default:
-        return (<a href="#" onFocus={this.toggleEditing.bind(null, { "listid": entity.guid, "columnid": column.key })}>
+        return (<a href="#" onFocus={this.toggleEditing}>
           {entity[column.name]}
         </a>
         );
     }
   }
-  // public ListContentsEditable(props): JSX.Element {
-  // let {list, column, valueChanged} = props;
-  //   switch (column.formatter) {
-  //     case "SharePointLookupCellFormatter":
-  //       return (<SharePointLookupCellFormatter value={column.value} />);
-  //     default:
-  //       return (<input  autoFocus type="text" value={list[column.name]} data-listid={list.guid} data-columnid={column.id} onChange={valueChanged} onBlur={valueChanged} />);
-  //   }
-  // }
+
   public TableDetail(props): JSX.Element {
     let {entity, column, rowChanged} = props;
-    if (this.state && this.state.editing && this.state.editing.listid === entity.guid && this.state.editing.columnid === column.key) {
-      return (<td style={{ border: "1px solid black", padding: "0px" }}>
+    if (this.state && this.state.editing && this.state.editing.entityid === entity.guid && this.state.editing.columnid === column.id) {
+      return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ border: "2px solid black", padding: "0px" }}>
         <CellContentsEditable entity={entity} column={column} valueChanged={rowChanged} />
 
       </td>
       );
     } else {
-      return (<td style={{ border: "1px solid black", padding: "0px" }}>
-        <this.CellContents  entity={entity} column={column} rowChanged={rowChanged} />
+      return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ border: "1px solid black", padding: "0px" }}  onClick={this.toggleEditing} >
+        <this.CellContents entity={entity} column={column} rowChanged={rowChanged}/>
       </td>
       );
 
@@ -228,7 +234,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
           }, this)
         }
         <td>
-          <a href="#" data-listid={entity.guid} onClick={this.deleteList}>
+          <a href="#" data-entityid={entity.guid} onClick={this.deleteList}>
             Delete
         </a>
         </td>
@@ -237,7 +243,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
 
 
 
-  public TableRows (props): JSX.Element {
+  public TableRows(props): JSX.Element {
     let {entities, columns, rowChanged} = props;
 
     return (
@@ -272,7 +278,7 @@ class ListPage extends React.Component<IListViewPageProps, any> {
           </thead>
 
           {
-            <this.TableRows  entities={this.props.lists} columns={this.columns} rowChanged={this.rowChanged} />
+            <this.TableRows entities={this.props.lists} columns={this.columns} rowChanged={this.handleRowUpdated} />
 
           })}
 

@@ -17,7 +17,7 @@ export interface KeyValue {
 function mapStateToProps(state) {
   return {
     webs: state.webs,
-    listRefs:state.lists
+    listRefs: state.lists
 
   };
 }
@@ -32,7 +32,7 @@ export interface IListEditorProps extends React.Props<any> {
   listRefs: Array<ListRef>;
   listRefId: string, //this is not a list but a refference to a listt
   columnid: string,
-  webs:Array<Web>
+  webs: Array<Web>
 }
 
 class ListEditor extends React.Component<IListEditorProps, void> {
@@ -42,11 +42,11 @@ class ListEditor extends React.Component<IListEditorProps, void> {
 
     this.handleChange = this.handleChange.bind(this);
   }
-  getLists(){
+  getLists() {
     // grt thr listref we are working on. Its web has all the lists in the web
-    let listref:ListRef = this.props.listRefs.find((lr)=>lr.guid===this.props.listRefId);
-    let webid=utils.ParseSPField(listref.webLookup).id;
-    let web=this.props.webs.find(w=>w.id===webid);
+    let listref: ListRef = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);
+    let webid = utils.ParseSPField(listref.webLookup).id;
+    let web = this.props.webs.find(w => w.id === webid);
     return web.lists;
   }
   handleChange(event) {
@@ -56,7 +56,7 @@ class ListEditor extends React.Component<IListEditorProps, void> {
   getListsForWeb(): Array<any> { // when we got the web we got the lisyts as well. The lists are a property on the slected web
     // get the id of the list were on then get ist web and the webs lists
     let lists = new Array<any>();
-   // let listRef = this.props.
+    // let listRef = this.props.
     return lists;
 
   }
@@ -66,8 +66,7 @@ class ListEditor extends React.Component<IListEditorProps, void> {
 
 
     return (
-      <select value={value} onChange={this.handleChange} data-listid={this.props.listRefId}
-        data-columnid={this.props.columnid}>
+      <select value={value} onChange={this.handleChange} >
         {this.getLists().map(function (list) {
           return (
             <option key={list.id} value={list.id + "#;" + list.title}  >{list.title}</option>

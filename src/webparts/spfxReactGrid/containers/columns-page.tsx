@@ -3,7 +3,7 @@ import { SharePointLookupCellFormatter } from "../components/SharePointFormatter
 const connect = require("react-redux").connect;
 import WebEditor from "../components/WebEditor";
 import ListEditor from "../components/ListEditor";
-import {DropDownEditor,IDropDownEditorProps,ISelectChoices} from "../components/DropDownEditor";
+import { DropDownEditor, IDropDownEditorProps, ISelectChoices } from "../components/DropDownEditor";
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
 import ListItem from "../model/ListItem";
 import ColumnRef from "../model/Column";
@@ -14,15 +14,15 @@ import ListItemView from "../components/listitemview";
 import * as ReactDataGrid from "react-data-grid";
 import * as ReactDataGridPlugins from "react-data-grid/addons";
 import { Guid, Log } from "@microsoft/sp-client-base";
-const fieldTypes :Array<ISelectChoices>= [
+const fieldTypes: Array<ISelectChoices> = [
   { name: "text", value: "SP.FieldTypeText" },
-  { name: "Date", value: "SP.FieldTypeDateTime"},
+  { name: "Date", value: "SP.FieldTypeDateTime" },
   { name: "Choice", value: "Choice" },
-  { name: "Lookup", value: "Lookup"}
+  { name: "Lookup", value: "Lookup" }
 ];
-const booleans  :Array<ISelectChoices>= [
-  { name: "Yes", value: true},
-  { name: "No", value: false}
+const booleans: Array<ISelectChoices> = [
+  { name: "Yes", value: true },
+  { name: "No", value: false }
 ];
 
 
@@ -67,7 +67,7 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
   public handleFocus(event) {
     event.target.select();
   }
-  public getFieldTypesEditorChoices():Array<ISelectChoices>{
+  public getFieldTypesEditorChoices(): Array<ISelectChoices> {
     return fieldTypes;
   }
 
@@ -77,15 +77,13 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
 
     switch (gridColumn.editor) {
       case "FieldTypesEditor":
-        return(
-          <DropDownEditor columnid={gridColumn.id} entityid={entity.guid} getChoices={this.getFieldTypesEditorChoices} value={entity[gridColumn.name]} onChange={valueChanged} />
+        return (
+          <DropDownEditor getChoices={this.getFieldTypesEditorChoices} value={entity[gridColumn.name]} onChange={valueChanged} />
         );
       default:
         return (
           <input autoFocus style={{ width: "100%" }} type="text"
             value={entity[gridColumn.name]}
-            data-entityid={entity.guid}
-            data-columnid={gridColumn.id}
             onChange={valueChanged}
             onBlur={valueChanged}
             onFocus={this.handleFocus} />);
@@ -100,7 +98,13 @@ export interface GridColumn {
   formatter?: string;
   editor?: string;
 }
-class CplumnsPage extends React.Component<IColumnsPageProps, any> {
+interface IGridProps {
+  editing: {
+    entityid: string;
+    columnid: string;
+  };
+}
+class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
   public constructor() {
     super();
 
@@ -146,18 +150,18 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   }];
   public CellContents(props: { entity: ColumnRef, gridColumn: GridColumn, rowChanged: any }): JSX.Element {
     let {entity, gridColumn, rowChanged} = props;
-    if (!gridColumn.editable){
-        return (<span  data-entityid={entity.guid} data-columnid={gridColumn.id} >
-          {entity[gridColumn.name]}
-        </span>);
+    if (!gridColumn.editable) {
+      return (<span >
+        {entity[gridColumn.name]}
+      </span>);
 
     }
     switch (gridColumn.formatter) {
-  case "SharePointLookupCellFormatter":
-        return (<SharePointLookupCellFormatter key={entity.guid+gridColumn.id}  entityid={entity.guid}  columnid={gridColumn.id} value={entity[gridColumn.name]} onFocus={this.toggleEditing} />);
+      case "SharePointLookupCellFormatter":
+        return (<SharePointLookupCellFormatter value={entity[gridColumn.name]} onFocus={this.toggleEditing} />);
 
       default:
-        return (<a href="#" data-entityid={entity.guid} data-columnid={gridColumn.id} onFocus={this.toggleEditing}>
+        return (<a href="#" onFocus={this.toggleEditing}>
           {entity[gridColumn.name]}
         </a>
         );
@@ -169,14 +173,14 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
     let {entity, column, rowChanged} = props;
 
     if (this.state && this.state.editing && this.state.editing.entityid === entity.guid && this.state.editing.columnid === column.id && column.editable) {
-      return (<td style={{ width: column.width, border: "1px solid black", padding: "0px" }}>
+      return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ width: column.width, border: "4px solid black", padding: "0px" }}>
         <CellContentsEditable entity={entity} gridColumn={column} valueChanged={rowChanged} />
 
       </td>
       );
     } else {
-      return (<td style={{ width: column.width, border: "20px solid black", padding: "0px" }} onClick={this.toggleEditing} data-entityid={entity.guid} data-columnid={column.id} >
-        <this.CellContents key={entity.id+column.id} entity={entity} gridColumn={column} rowChanged={rowChanged} />
+      return (<td style={{ width: column.width, border: "1px solid black", padding: "0px" }} onClick={this.toggleEditing} data-entityid={entity.guid} data-columnid={column.id} >
+        <this.CellContents key={entity.id + column.id} entity={entity} gridColumn={column} rowChanged={rowChanged} />
       </td>
       );
 
@@ -218,15 +222,15 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   }
 
   private handleRowUpdated(event) {
-
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
-
     let target = event.target;
     let value = target.value;
-    let attributes: NamedNodeMap = target.attributes;
-    let entityid = attributes.getNamedItem("data-entityid").value;
+    let parentTD = this.getParent(event.target, "TD"); // walk up the Dom to the TD, thats where the IDs are stored
+    let attributes: NamedNodeMap = parentTD.attributes;
+    let entityitem = attributes.getNamedItem("data-entityid");
+    let entityid = entityitem.value;
     let columnid = attributes.getNamedItem("data-columnid").value;
-    let entity = this.props.columns.find((temp) => temp.guid === entityid);
+    let entity:ColumnRef = this.props.columns.find((temp) => temp.guid === entityid);
     let column = this.gridColulumns.find(temp => temp.id === columnid);
     entity[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk
@@ -237,12 +241,17 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
   private handleRowdeleted(event, data) {
     this.props.removeColumn(this.props.columns[data.rowIdx]);
   }
+  public getParent(node: Node, type: string): Node {
+    while (node.nodeName !== "TD") {
+      node = node.parentNode;
+    }
+    return node;
+  }
   public toggleEditing(event) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");
     debugger;
-    let target = event.target;
+    let target = this.getParent(event.target, "TD"); // walk up the Dom to the TD, thats where the IDs are stored
     let attributes: NamedNodeMap = target.attributes;
-
     let entityid = attributes.getNamedItem("data-entityid").value;
     let columnid = attributes.getNamedItem("data-columnid").value;
 
