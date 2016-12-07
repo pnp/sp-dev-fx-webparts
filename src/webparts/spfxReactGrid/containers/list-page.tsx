@@ -10,20 +10,21 @@ import { getWebsAction } from "../actions/webActions";
 import { Button } from "office-ui-fabric-react/lib/Button";
 import ListRef from "../model/ListRef";
 import { Web } from "../model/Web";
+import ColumnRef from "../model/column";
 import Container from "../components/container";
 import ListView from "../components/Listview";
 import { Guid, Log } from "@microsoft/sp-client-base";
-export interface Column {
+export interface IGridColumn {
   id: string;
-  key: string;
   name: string;
-  editable: true;
+  editable: boolean;
   width: number;
-  formatter: string;
-  editor: string;
+  formatter?: string;
+  editor?: string;
 }
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<ListRef>;
+  columnRefs: Array<ColumnRef>;
   webs: Array<Web>;
   addList: () => void;
   removeList: (List) => void;
@@ -33,7 +34,8 @@ interface IListViewPageProps extends React.Props<any> {
 function mapStateToProps(state) {
   return {
     lists: state.lists,
-    webs: state.webs
+    webs: state.webs,
+    columnRefs: state.columns
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -100,27 +102,24 @@ interface IGridProps {
   };
 }
 class ListPage extends React.Component<IListViewPageProps, IGridProps> {
-  public defaultColumns = [
+  public defaultColumns: Array<IGridColumn> = [
     {
       id: "7401",
-      key: "guid",
       name: "guid",
       editable: false,
+      width: 80
     },
     {
       id: "10",
-      key: "Web",
       name: "webLookup", // the name of the field in the model
       editable: true,
       width: 80,
-      //    formatter: SharePointLookupCellFormatter, // displays the descruption
       editor: "WebEditor",
       formatter: "SharePointLookupCellFormatter"
     },
-
     {
       id: "301",
-      key: "listName",
+      width: 80,
       name: "listLookup",
       editable: true,
       editor: "ListEditor",
@@ -134,7 +133,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     this.TableDetail = this.TableDetail.bind(this);
     this.TableRow = this.TableRow.bind(this);
     this.TableRows = this.TableRows.bind(this);
-     this.toggleEditing = this.toggleEditing.bind(this);
+    this.toggleEditing = this.toggleEditing.bind(this);
     this.handleRowUpdated = this.handleRowUpdated.bind(this);
     this.deleteList = this.deleteList.bind(this);
 
@@ -213,8 +212,8 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
       </td>
       );
     } else {
-      return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ border: "1px solid black", padding: "0px" }}  onClick={this.toggleEditing} >
-        <this.CellContents entity={entity} column={column} rowChanged={rowChanged}/>
+      return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ border: "1px solid black", padding: "0px" }} onClick={this.toggleEditing} >
+        <this.CellContents entity={entity} column={column} rowChanged={rowChanged} />
       </td>
       );
 
@@ -264,6 +263,15 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
 
 
     let columns = this.columns;
+    for (let extraColumn of this.props.columnRefs) {
+      columns.push({
+        id: extraColumn.guid,
+        name: extraColumn.name,
+        editable: extraColumn.editable,
+        width: 60
+      });
+
+    }
     return (
       <Container testid="columns" size={2} center>
         <Button onClick={this.props.addList}>Add List</Button>

@@ -249,7 +249,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
   }
   public toggleEditing(event) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");
-    debugger;
+
     let target = this.getParent(event.target, "TD"); // walk up the Dom to the TD, thats where the IDs are stored
     let attributes: NamedNodeMap = target.attributes;
     let entityid = attributes.getNamedItem("data-entityid").value;
