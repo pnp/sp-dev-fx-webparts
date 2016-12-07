@@ -175,7 +175,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, any> {
       </td>
       );
     } else {
-      return (<td style={{ width: column.width, border: "1px solid black", padding: "0px" }} onFocus={this.toggleEditing}>
+      return (<td style={{ width: column.width, border: "20px solid black", padding: "0px" }} onClick={this.toggleEditing} data-entityid={entity.guid} data-columnid={column.id} >
         <this.CellContents key={entity.id+column.id} entity={entity} gridColumn={column} rowChanged={rowChanged} />
       </td>
       );
