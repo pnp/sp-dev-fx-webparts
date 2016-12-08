@@ -14,13 +14,14 @@ import ColumnRef from "../model/column";
 import Container from "../components/container";
 import ListView from "../components/Listview";
 import { Guid, Log } from "@microsoft/sp-client-base";
-export interface IGridColumn {
-  id: string;
-  name: string;
-  editable: boolean;
-  width: number;
-  formatter?: string;
-  editor?: string;
+export class GridColumn {
+  constructor(
+    public id: string,
+    public name: string,
+    public editable: boolean,
+    public width: number,
+    public formatter: string = "",
+    public editor?: string) { }
 }
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<ListRef>;
@@ -102,12 +103,13 @@ interface IGridProps {
   };
 }
 class ListPage extends React.Component<IListViewPageProps, IGridProps> {
-  public defaultColumns: Array<IGridColumn> = [
+  public defaultColumns: Array<GridColumn> = [
     {
       id: "7401",
       name: "guid",
       editable: false,
-      width: 80
+      width: 80,
+      formatter: ""
     },
     {
       id: "10",
@@ -125,10 +127,9 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
       editor: "ListEditor",
       formatter: "SharePointLookupCellFormatter"
     }];
-  public columns = [];
+  public extendedColumns: Array<GridColumn> = [];
   public constructor() {
     super();
-    this.columns = this.defaultColumns; // add others dynamically
     this.CellContents = this.CellContents.bind(this);
     this.TableDetail = this.TableDetail.bind(this);
     this.TableRow = this.TableRow.bind(this);
@@ -143,6 +144,11 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     if (this.props.webs.length === 0) {
       this.props.getWebs();
     }
+    this.extendedColumns = this.defaultColumns;
+    for (let columnRef of this.props.columnRefs) {
+      let newCol = new GridColumn(columnRef.guid, columnRef.name, columnRef.editable, columnRef.width)
+      this.extendedColumns.push(newCol);
+    }
   }
   public handleRowUpdated(event) {
     Log.verbose("Columns-Page", "Row changed-fired when row changed or leaving cell ");
@@ -154,7 +160,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     let entityid = entityitem.value;
     let columnid = attributes.getNamedItem("data-columnid").value;
     let entity: ListRef = this.props.lists.find((temp) => temp.guid === entityid);
-    let column = this.columns.find(temp => temp.id === columnid);
+    let column = this.extendedColumns.find(temp => temp.id === columnid);
     entity[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk
     if (column.name === "title") {
@@ -262,16 +268,8 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
   public render() {
 
 
-    let columns = this.columns;
-    for (let extraColumn of this.props.columnRefs) {
-      columns.push({
-        id: extraColumn.guid,
-        name: extraColumn.name,
-        editable: extraColumn.editable,
-        width: 60
-      });
 
-    }
+
     return (
       <Container testid="columns" size={2} center>
         <Button onClick={this.props.addList}>Add List</Button>
@@ -279,14 +277,14 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
         <table border="1">
           <thead>
             <tr>
-              {this.columns.map(function (column) {
+              {this.extendedColumns.map(function (column) {
                 return <th key={column.name}>{column.name}</th>;
               })}
             </tr>
           </thead>
 
           {
-            <this.TableRows entities={this.props.lists} columns={this.columns} rowChanged={this.handleRowUpdated} />
+            <this.TableRows entities={this.props.lists} columns={this.extendedColumns} rowChanged={this.handleRowUpdated} />
 
           })}
 

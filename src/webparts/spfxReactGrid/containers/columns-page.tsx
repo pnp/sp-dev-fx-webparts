@@ -45,7 +45,7 @@ function mapDispatchToProps(dispatch) {
   return {
     addColumn: (): void => {
       let id = Guid.newGuid();
-      let col: ColumnRef = new ColumnRef(id.toString(), "", true);
+      let col: ColumnRef = new ColumnRef(id.toString(), "", 80,true);
       dispatch(addColumn(col));
     },
     saveColumn: (updatedRowData): void => {
