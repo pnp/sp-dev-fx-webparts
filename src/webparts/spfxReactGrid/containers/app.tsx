@@ -13,7 +13,7 @@ import NavigatorItem from "../components/navigator-item";
 interface IAppProps extends React.Props<any> {
   session: any;
 
-};
+}
 
 function mapStateToProps(state) {
   return {
@@ -29,7 +29,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 class App extends React.Component<IAppProps, void> {
-  render() {
+  public render() {
     const { children, session} = this.props;
     return (
       <div>
@@ -57,7 +57,7 @@ class App extends React.Component<IAppProps, void> {
       </div>
     );
   };
-};
+}
 
 export default connect(
   mapStateToProps,
