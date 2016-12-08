@@ -8,9 +8,11 @@ import ListItemView from "../components/listitemview";
 import * as ReactDataGrid from "react-data-grid";
 import * as ReactDataGridPlugins from "react-data-grid/addons";
 
+
+
 export interface KeyValue {
-  value: any,
-  displayName: string
+  value: any;
+  displayName: string;
 }
 function mapStateToProps(state) {
   return {

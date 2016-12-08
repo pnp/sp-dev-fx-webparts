@@ -35,19 +35,24 @@ export interface IListEditorProps extends React.Props<any> {
   webs: Array<Web>
 }
 
-class ListEditor extends React.Component<IListEditorProps, void> {
+class FieldEditor extends React.Component<IListEditorProps, void> {
 
   constructor() {
     super();
-
+    debugger;
     this.handleChange = this.handleChange.bind(this);
   }
-  getLists() {
+  getFields() {
     // grt thr listref we are working on. Its web has all the lists in the web
-    let listref: ListRef = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);
-    let webid = utils.ParseSPField(listref.webLookup).id;
-    let web = this.props.webs.find(w => w.id === webid);
-    return web.lists;
+    let listref: ListRef = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);// this is the row in the grid
+    let listid = utils.ParseSPField(listref.listLookup).id; // this is stored as splistid#; list name
+    let webid = utils.ParseSPField(listref.webLookup).id; // this is stored as spwebid#; web name
+    let web = this.props.webs.find(w => w.id === webid); // get the web
+    let list = web.lists.find(l => l.id === listid); //get the list in the web
+
+
+    return list.fields;
+
   }
   handleChange(event) {
 
@@ -62,14 +67,14 @@ class ListEditor extends React.Component<IListEditorProps, void> {
   }
   public render() {
 
-    const { value, listRefId, columnid} = this.props;
+    const { value, listRefId, columnid, listRefs, webs} = this.props;
 
 
     return (
       <select value={value} onChange={this.handleChange} >
-        {this.getLists().map(function (list) {
+        {this.getFields().map(function (field) {
           return (
-            <option key={list.id} value={list.id + "#;" + list.title}  >{list.title}</option>
+            <option key={field.id} value={field.internalName + "#;" + field.name}  >{field.name}</option>
           );
         }, this)
         }
@@ -80,4 +85,4 @@ class ListEditor extends React.Component<IListEditorProps, void> {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListEditor);
+)(FieldEditor);

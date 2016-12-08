@@ -7,7 +7,7 @@ import "whatwg-fetch";
 import pnp from "sp-pnp-js";
 import { Web, WebList, WebListField } from "../model/Web";
 export function getWebsAction(dispatch: any): any {
-    let payload = pnp.sp.site.rootWeb.webs.expand('lists,lists/fields').get()
+    let payload = pnp.sp.site.rootWeb.webs.expand("lists,lists/fields").get()
         .then((response) => {
 
             let data = _.map(response, function (item: any) {

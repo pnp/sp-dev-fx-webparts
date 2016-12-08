@@ -5,6 +5,7 @@ const connect = require("react-redux").connect;
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 import WebEditor from "../components/WebEditor";
 import ListEditor from "../components/ListEditor";
+import FieldEditor from "../components/FieldEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 import { Button } from "office-ui-fabric-react/lib/Button";
@@ -80,7 +81,7 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
   //  node.focus();
   //   }
   public render() {
-
+debugger;
     let {entity, column, valueChanged} = this.props;
 
     switch (column.editor) {
@@ -88,6 +89,9 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
         return (<WebEditor selectedValue={column.value} onChange={valueChanged} listid={entity.guid} columnid={column.id} />);
       case "ListEditor":
         return (<ListEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
+      case "FieldEditor":
+      debugger;
+        return (<FieldEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
       default:
         return (
           <input autoFocus ref="cellBeingEdited" type="text"
@@ -105,23 +109,23 @@ interface IGridProps {
 class ListPage extends React.Component<IListViewPageProps, IGridProps> {
   public defaultColumns: Array<GridColumn> = [
     {
-      id: "7401",
+      id: "rowGuid",
       name: "guid",
       editable: false,
-      width: 80,
+      width: 250,
       formatter: ""
     },
     {
-      id: "10",
+      id: "WebLookup",
       name: "webLookup", // the name of the field in the model
       editable: true,
-      width: 80,
+      width: 200,
       editor: "WebEditor",
       formatter: "SharePointLookupCellFormatter"
     },
     {
-      id: "301",
-      width: 80,
+      id: "listlookup",
+      width: 200,
       name: "listLookup",
       editable: true,
       editor: "ListEditor",
@@ -146,7 +150,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     }
     this.extendedColumns = this.defaultColumns;
     for (let columnRef of this.props.columnRefs) {
-      let newCol = new GridColumn(columnRef.guid, columnRef.name, columnRef.editable, columnRef.width)
+      let newCol = new GridColumn(columnRef.guid, columnRef.name, columnRef.editable, columnRef.width, null, "FieldEditor");
       this.extendedColumns.push(newCol);
     }
   }
@@ -212,6 +216,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
   public TableDetail(props): JSX.Element {
     let {entity, column, rowChanged} = props;
     if (this.state && this.state.editing && this.state.editing.entityid === entity.guid && this.state.editing.columnid === column.id) {
+      debugger;
       return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ border: "2px solid black", padding: "0px" }}>
         <CellContentsEditable entity={entity} column={column} valueChanged={rowChanged} />
 
