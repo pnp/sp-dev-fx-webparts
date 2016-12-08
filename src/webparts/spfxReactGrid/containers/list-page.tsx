@@ -1,5 +1,4 @@
 ﻿import * as React from "react";
-import * as ReactDom from "react-dom";
 import * as utils from "../utils/utils";
 const connect = require("react-redux").connect;
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
@@ -13,7 +12,7 @@ import ListRef from "../model/ListRef";
 import { Web } from "../model/Web";
 import ColumnRef from "../model/column";
 import Container from "../components/container";
-import ListView from "../components/Listview";
+
 import { Guid, Log } from "@microsoft/sp-client-base";
 export class GridColumn {
   constructor(
@@ -32,7 +31,7 @@ interface IListViewPageProps extends React.Props<any> {
   removeList: (List) => void;
   saveList: (List) => void;
   getWebs: () => Promise<any>;
-};
+}
 function mapStateToProps(state) {
   return {
     lists: state.lists,
@@ -44,8 +43,8 @@ function mapDispatchToProps(dispatch) {
 
   return {
     addList: (): void => {
-      let id = Guid.newGuid();
-      let list: ListRef = new ListRef(id.toString(), null, null, null);
+      const id = Guid.newGuid();
+      const list: ListRef = new ListRef(id.toString(), null, null, null);
       dispatch(addList(list));
     },
     removeList: (list: ListRef): void => {
@@ -53,12 +52,12 @@ function mapDispatchToProps(dispatch) {
     },
     getWebs: (): Promise<any> => {
 
-      let promis = dispatch(getWebsAction(dispatch));
+      const promis = dispatch(getWebsAction(dispatch));
 
       return promis;
     },
     saveList: (list): void => {
-      let action = saveList(list);
+      const action = saveList(list);
       dispatch(action);
     },
 
@@ -69,7 +68,7 @@ interface ICellContentsEditableProps extends React.Props<any> {
   entity: ListRef;
   column: any;
   valueChanged: any;
-};
+}
 class CellContentsEditable extends React.Component<ICellContentsEditableProps, any>{
   //   refs: {
   //     [key: string]: (Element);
@@ -82,7 +81,7 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
   //   }
   public render() {
 debugger;
-    let {entity, column, valueChanged} = this.props;
+    const {entity, column, valueChanged} = this.props;
 
     switch (column.editor) {
       case "WebEditor":
@@ -149,22 +148,22 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
       this.props.getWebs();
     }
     this.extendedColumns = this.defaultColumns;
-    for (let columnRef of this.props.columnRefs) {
-      let newCol = new GridColumn(columnRef.guid, columnRef.name, columnRef.editable, columnRef.width, null, "FieldEditor");
+    for (const columnRef of this.props.columnRefs) {
+      const newCol = new GridColumn(columnRef.guid, columnRef.name, columnRef.editable, columnRef.width, null, "FieldEditor");
       this.extendedColumns.push(newCol);
     }
   }
   public handleRowUpdated(event) {
     Log.verbose("Columns-Page", "Row changed-fired when row changed or leaving cell ");
-    let target = event.target;
-    let value = target.value;
-    let parentTD = this.getParent(event.target, "TD");
-    let attributes: NamedNodeMap = parentTD.attributes;
-    let entityitem = attributes.getNamedItem("data-entityid");
-    let entityid = entityitem.value;
-    let columnid = attributes.getNamedItem("data-columnid").value;
-    let entity: ListRef = this.props.lists.find((temp) => temp.guid === entityid);
-    let column = this.extendedColumns.find(temp => temp.id === columnid);
+    const target = event.target;
+    const value = target.value;
+    const parentTD = this.getParent(event.target, "TD");
+    const attributes: NamedNodeMap = parentTD.attributes;
+    const entityitem = attributes.getNamedItem("data-entityid");
+    const entityid = entityitem.value;
+    const columnid = attributes.getNamedItem("data-columnid").value;
+    const entity: ListRef = this.props.lists.find((temp) => temp.guid === entityid);
+    const column = this.extendedColumns.find(temp => temp.id === columnid);
     entity[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk
     if (column.name === "title") {
@@ -177,10 +176,10 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     debugger;
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
 
-    let target = this.getParent(event.target, "TD");
-    let attributes: NamedNodeMap = target.attributes;
-    let entity = attributes.getNamedItem("data-entityid").value;
-    let list: ListRef = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === entity);
+    const target = this.getParent(event.target, "TD");
+    const attributes: NamedNodeMap = target.attributes;
+    const entity = attributes.getNamedItem("data-entityid").value;
+    const list: ListRef = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === entity);
     this.props.removeList(list);
     return;
   }
@@ -193,15 +192,15 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
   public toggleEditing(event) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");
     debugger;
-    let target = this.getParent(event.target, "TD"); // walk up the Dom to the TD, thats where the IDs are stored
-    let attributes: NamedNodeMap = target.attributes;
-    let entityid = attributes.getNamedItem("data-entityid").value;
-    let columnid = attributes.getNamedItem("data-columnid").value;
+    const target = this.getParent(event.target, "TD"); // walk up the Dom to the TD, thats where the IDs are stored
+    const attributes: NamedNodeMap = target.attributes;
+    const entityid = attributes.getNamedItem("data-entityid").value;
+    const columnid = attributes.getNamedItem("data-columnid").value;
     this.setState({ "editing": { entityid: entityid, columnid: columnid } });
   }
 
   public CellContents(props): JSX.Element {
-    let {entity, column, rowChanged} = props;
+    const {entity, column} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":
         return (<SharePointLookupCellFormatter value={entity[column.name]} onFocus={this.toggleEditing} />);
@@ -214,7 +213,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
   }
 
   public TableDetail(props): JSX.Element {
-    let {entity, column, rowChanged} = props;
+    const {entity, column, rowChanged} = props;
     if (this.state && this.state.editing && this.state.editing.entityid === entity.guid && this.state.editing.columnid === column.id) {
       debugger;
       return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ border: "2px solid black", padding: "0px" }}>
@@ -232,7 +231,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
 
   }
   public TableRow(props): JSX.Element {
-    let {entity, columns, rowChanged} = props;
+    const {entity, columns, rowChanged} = props;
 
     return (
       <tr>
@@ -254,7 +253,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
 
 
   public TableRows(props): JSX.Element {
-    let {entities, columns, rowChanged} = props;
+    const {entities, columns, rowChanged} = props;
 
     return (
       <tbody>
@@ -298,7 +297,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
       </Container>
     );
   }
-};
+}
 
 export default connect(
   mapStateToProps,
