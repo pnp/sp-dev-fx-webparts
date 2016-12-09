@@ -55,7 +55,7 @@ private  handleChange(event) {
 
     return (
       <select value={value} onChange={this.handleChange} >
-        {this.getLists().map(function (list) {
+        {this.getLists().map( (list)=> {
           return (
             <option key={list.id} value={list.id + "#;" + list.title}  >{list.title}</option>
           );

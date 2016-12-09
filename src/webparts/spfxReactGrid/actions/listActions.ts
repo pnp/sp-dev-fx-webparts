@@ -81,10 +81,10 @@ export function addListItems(listItems: ListItem[]) {
 export function getListItemsAction(dispatch: any): any {
 
 
-    const payload = pnp.sp.web.lists.getByTitle('Tasks').items.get()
+    const payload = pnp.sp.web.lists.getByTitle("Tasks").items.get()
         .then((response) => {
 
-            const data = _.map(response, function (item: any) {
+            const data = _.map(response,  (item: any) =>{
                 return new ListItem(item.Id, item.Title, item.GUID);
             });
             console.log(data);

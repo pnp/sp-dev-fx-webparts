@@ -80,7 +80,7 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
   //  node.focus();
   //   }
   public render() {
-debugger;
+    debugger;
     const {entity, column, valueChanged} = this.props;
 
     switch (column.editor) {
@@ -89,7 +89,7 @@ debugger;
       case "ListEditor":
         return (<ListEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
       case "FieldEditor":
-      debugger;
+        debugger;
         return (<FieldEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
       default:
         return (
@@ -281,7 +281,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
         <table border="1">
           <thead>
             <tr>
-              {this.extendedColumns.map(function (column) {
+              {this.extendedColumns.map((column) => {
                 return <th key={column.name}>{column.name}</th>;
               })}
             </tr>

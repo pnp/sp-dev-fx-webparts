@@ -46,7 +46,7 @@ class WebEditor extends React.Component<IWebEditorProps, void> {
 
     return (
       <select value={value} onChange={this.handleChange} >
-        {this.props.webs.map(function (web) {
+        {this.props.webs.map( (web)=> {
           return (
             <option key={web.id} value={web.id + "#;" + web.title}  >{web.title}</option>
           );

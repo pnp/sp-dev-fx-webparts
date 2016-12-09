@@ -22,7 +22,7 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
             item = action.payload.column;
             return newarray2;
         case REMOVE_COLUMN:
-            let newArr = _.filter(state, function (o) { return o.guid !== action.payload.column.guid; });
+            let newArr = _.filter(state,  (o)=> { return o.guid !== action.payload.column.guid; });
             return newArr;
         case ADD_COLUMNS:
             debugger;

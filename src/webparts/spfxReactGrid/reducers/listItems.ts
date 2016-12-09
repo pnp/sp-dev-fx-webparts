@@ -16,7 +16,7 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
             newarray.push(action.payload.listItem);
            return newarray;
         case REMOVE_LISTITEM:
-            let newArr = _.filter(state, function (o) { return o.guid !== action.payload.listItem.guid; });
+            let newArr = _.filter(state,  (o)=> { return o.guid !== action.payload.listItem.guid; });
             return newArr;
 
         case GOT_LISTITEMS:

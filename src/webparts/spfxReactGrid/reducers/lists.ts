@@ -20,7 +20,7 @@ function listReducer(state: Array<ListRef> = INITIAL_STATE, action: any = { type
             item = action.payload.list;
             return newarray2;
         case REMOVE_LIST:
-            let newArr = _.filter(state, function (o) { return o.guid !== action.payload.list.guid; });
+            let newArr = _.filter(state, (o) => { return o.guid !== action.payload.list.guid; });
             return newArr;
         case ADD_LISTS:
             return _.union(state, action.payload.lists);

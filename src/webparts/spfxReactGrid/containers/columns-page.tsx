@@ -1,7 +1,7 @@
 ﻿import * as React from "react";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 const connect = require("react-redux").connect;
-import { DropDownEditor,  ISelectChoices } from "../components/DropDownEditor";
+import { DropDownEditor, ISelectChoices } from "../components/DropDownEditor";
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
 import ColumnRef from "../model/Column";
 import { Button } from "office-ui-fabric-react/lib/Button";
@@ -33,7 +33,7 @@ function mapDispatchToProps(dispatch) {
   return {
     addColumn: (): void => {
       const id = Guid.newGuid();
-      const col: ColumnRef = new ColumnRef(id.toString(), "", 80,true);
+      const col: ColumnRef = new ColumnRef(id.toString(), "", 80, true);
       dispatch(addColumn(col));
     },
     saveColumn: (updatedRowData): void => {
@@ -218,7 +218,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
     const entityitem = attributes.getNamedItem("data-entityid");
     const entityid = entityitem.value;
     const columnid = attributes.getNamedItem("data-columnid").value;
-    const entity:ColumnRef = this.props.columns.find((temp) => temp.guid === entityid);
+    const entity: ColumnRef = this.props.columns.find((temp) => temp.guid === entityid);
     const column = this.gridColulumns.find(temp => temp.id === columnid);
     entity[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk
@@ -258,7 +258,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
         <table border="1">
           <thead>
             <tr>
-              {this.gridColulumns.map(function (column) {
+              {this.gridColulumns.map((column) => {
                 return <th key={column.name}>{column.name}</th>;
               })}
             </tr>

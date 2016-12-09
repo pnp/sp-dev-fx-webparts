@@ -60,7 +60,7 @@ class FieldEditor extends React.Component<IListEditorProps, void> {
 
     return (
       <select value={value} onChange={this.handleChange} >
-        {this.getFields().map(function (field) {
+        {this.getFields().map( (field)=> {
           return (
             <option key={field.id} value={field.internalName + "#;" + field.name}  >{field.name}</option>
           );
