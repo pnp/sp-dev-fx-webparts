@@ -276,6 +276,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
 
     return (
       <Container testid="columns" size={2} center>
+      <h1>Columns</h1>
         <Button onClick={this.props.addList}>Add List</Button>
 
         <table border="1">

@@ -5,8 +5,11 @@ import { DropDownEditor, ISelectChoices } from "../components/DropDownEditor";
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
 import ColumnRef from "../model/Column";
 import { Button } from "office-ui-fabric-react/lib/Button";
+import { TextField } from "office-ui-fabric-react/lib/TextField";
 import Container from "../components/container";
 import { Guid, Log } from "@microsoft/sp-client-base";
+import ListRef from "../model/ListRef";
+import * as utils from "../utils/utils";
 const fieldTypes: Array<ISelectChoices> = [
   { name: "text", value: "SP.FieldTypeText" },
   { name: "Date", value: "SP.FieldTypeDateTime" },
@@ -104,7 +107,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
     this.toggleEditing = this.toggleEditing.bind(this);
 
     this.handleRowUpdated = this.handleRowUpdated.bind(this);
-
+ this.handleRowdeleted = this.handleRowdeleted.bind(this);
 
 
   }
@@ -187,6 +190,11 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
             );
           }, this)
         }
+          <td  data-entityid={entity.guid} >
+          <a href="#" onClick={this.handleRowdeleted}>
+            Delete
+        </a>
+        </td>
       </tr>);
   };
 
@@ -226,8 +234,16 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
 
     this.props.saveColumn(entity);
   }
-  private handleRowdeleted(event, data) {
-    this.props.removeColumn(this.props.columns[data.rowIdx]);
+  private handleRowdeleted(event) {
+     debugger;
+    Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
+
+    const target = this.getParent(event.target, "TD");
+    const attributes: NamedNodeMap = target.attributes;
+    const entity = attributes.getNamedItem("data-entityid").value;
+    const column: ColumnRef = this.props.columns.find(temp => utils.ParseSPField(temp.guid).id === entity);
+    this.props.removeColumn(column);
+    return;
   }
   public getParent(node: Node, type: string): Node {
     while (node.nodeName !== "TD") {
@@ -254,8 +270,9 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
 
     return (
       <Container testid="columns" size={2} center>
-        <Button onClick={addColumn}>add column</Button>
-        <table border="1">
+      <div><h1>Columns</h1>
+        <Button onClick={addColumn}>add column</Button></div>
+        <table style={{    borderColor: "#600",    borderWidth: "0 0 0 0",    borderStyle: "solid" }}>
           <thead>
             <tr>
               {this.gridColulumns.map((column) => {
