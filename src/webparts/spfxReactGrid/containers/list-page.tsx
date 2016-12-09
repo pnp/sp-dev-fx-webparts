@@ -9,6 +9,7 @@ import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 import { Button } from "office-ui-fabric-react/lib/Button";
 import ListRef from "../model/ListRef";
+import { ColumnReference } from "../model/ListRef";
 import { Web } from "../model/Web";
 import ColumnRef from "../model/column";
 import Container from "../components/container";
@@ -51,16 +52,12 @@ function mapDispatchToProps(dispatch) {
       dispatch(removeList(list));
     },
     getWebs: (): Promise<any> => {
-
-      const promis = dispatch(getWebsAction(dispatch));
-
-      return promis;
-    },
+      return dispatch(getWebsAction(dispatch));
+          },
     saveList: (list): void => {
       const action = saveList(list);
       dispatch(action);
     },
-
   };
 }
 
@@ -147,11 +144,29 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     if (this.props.webs.length === 0) {
       this.props.getWebs();
     }
-    this.extendedColumns = this.defaultColumns;
+    this.extendedColumns = _.clone(this.defaultColumns);
     for (const columnRef of this.props.columnRefs) {
       const newCol = new GridColumn(columnRef.guid, columnRef.name, columnRef.editable, columnRef.width, null, "FieldEditor");
       this.extendedColumns.push(newCol);
     }
+  }
+  private isdeafaultColumn(columnid): boolean {
+    for (const col of this.defaultColumns) {
+      if (col.id === columnid) return true;
+    }
+    return false;
+  }
+  private updateExtendedColumn(entity: ListRef, columnid: string, value: any) {
+    for (const col of entity.columnReferences) {
+      if (col.columnId === columnid) {
+        col.fieldName = value;
+
+        return;
+      }
+    }
+    let x = new ColumnReference(columnid, value, "text");
+    entity.columnReferences.push(x);
+
   }
   public handleRowUpdated(event) {
     Log.verbose("Columns-Page", "Row changed-fired when row changed or leaving cell ");
@@ -164,10 +179,12 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     const columnid = attributes.getNamedItem("data-columnid").value;
     const entity: ListRef = this.props.lists.find((temp) => temp.guid === entityid);
     const column = this.extendedColumns.find(temp => temp.id === columnid);
-    entity[column.name] = value;
-    // if i update the list, get the url to the list and stir it as wekk
-    if (column.name === "title") {
-
+    // if iys a default column, just set its value , otheriwse update it in the list of extended columns
+    if (this.isdeafaultColumn(columnid)) {
+      entity[column.name] = value;
+    }
+    else {
+      this.updateExtendedColumn(entity, columnid, value);
     }
     this.props.saveList(entity);
 
@@ -276,7 +293,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
 
     return (
       <Container testid="columns" size={2} center>
-      <h1>Columns</h1>
+        <h1>Columns</h1>
         <Button onClick={this.props.addList}>Add List</Button>
 
         <table border="1">
