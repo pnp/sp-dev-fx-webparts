@@ -33,7 +33,6 @@ class FieldEditor extends React.Component<IListEditorProps, void> {
 
   constructor() {
     super();
-    debugger;
     this.handleChange = this.handleChange.bind(this);
   }
   private getFields() {

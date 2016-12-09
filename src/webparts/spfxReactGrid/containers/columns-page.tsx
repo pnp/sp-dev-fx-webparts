@@ -170,7 +170,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
       </td>
       );
     } else {
-      return (<td style={{ width: column.width, border: "1px solid black", padding: "0px" }} onClick={this.toggleEditing} data-entityid={entity.guid} data-columnid={column.id} >
+      return (<td onClick={this.toggleEditing} data-entityid={entity.guid} data-columnid={column.id} >
         <this.CellContents key={entity.id + column.id} entity={entity} gridColumn={column} rowChanged={rowChanged} />
       </td>
       );
@@ -235,9 +235,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
     this.props.saveColumn(entity);
   }
   private handleRowdeleted(event) {
-     debugger;
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
-
     const target = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = target.attributes;
     const entity = attributes.getNamedItem("data-entityid").value;

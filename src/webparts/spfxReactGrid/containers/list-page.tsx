@@ -53,7 +53,7 @@ function mapDispatchToProps(dispatch) {
     },
     getWebs: (): Promise<any> => {
       return dispatch(getWebsAction(dispatch));
-          },
+    },
     saveList: (list): void => {
       const action = saveList(list);
       dispatch(action);
@@ -72,12 +72,11 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
   //     cellBeingEdited: (HTMLInputElement);
   // }
   //   public componentDidMount() {
-  //     debugger;
   //   let node:any =  ReactDom.findDOMNode(this.refs.cellBeingEdited);
   //  node.focus();
   //   }
   public render() {
-    debugger;
+
     const {entity, column, valueChanged} = this.props;
 
     switch (column.editor) {
@@ -86,7 +85,7 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
       case "ListEditor":
         return (<ListEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
       case "FieldEditor":
-        debugger;
+
         return (<FieldEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
       default:
         return (
@@ -137,8 +136,6 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     this.toggleEditing = this.toggleEditing.bind(this);
     this.handleRowUpdated = this.handleRowUpdated.bind(this);
     this.deleteList = this.deleteList.bind(this);
-
-
   }
   public componentWillMount(): void {
     if (this.props.webs.length === 0) {
@@ -160,13 +157,11 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     for (const col of entity.columnReferences) {
       if (col.columnId === columnid) {
         col.fieldName = value;
-
         return;
       }
     }
     let x = new ColumnReference(columnid, value, "text");
     entity.columnReferences.push(x);
-
   }
   public handleRowUpdated(event) {
     Log.verbose("Columns-Page", "Row changed-fired when row changed or leaving cell ");
@@ -190,9 +185,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
 
   }
   public deleteList(event) {
-    debugger;
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
-
     const target = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = target.attributes;
     const entity = attributes.getNamedItem("data-entityid").value;
@@ -208,7 +201,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
   }
   public toggleEditing(event) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");
-    debugger;
+
     const target = this.getParent(event.target, "TD"); // walk up the Dom to the TD, thats where the IDs are stored
     const attributes: NamedNodeMap = target.attributes;
     const entityid = attributes.getNamedItem("data-entityid").value;
@@ -216,23 +209,38 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     this.setState({ "editing": { entityid: entityid, columnid: columnid } });
   }
 
-  public CellContents(props): JSX.Element {
+  public CellContents(props: { entity: ListRef, column: any, rowChanged: any }): JSX.Element {
     const {entity, column} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":
         return (<SharePointLookupCellFormatter value={entity[column.name]} onFocus={this.toggleEditing} />);
       default:
-        return (<a href="#" onFocus={this.toggleEditing}>
-          {entity[column.name]}
-        </a>
-        );
+
+        if (this.isdeafaultColumn(column.id)) {
+          return (<a href="#" onFocus={this.toggleEditing}>
+            {entity[column.name]}
+          </a>
+          );
+        }
+        else {
+
+          const colref = entity.columnReferences.find(cr => cr.columnId === column.id);
+          let displaytext="";
+          if (colref!=null){
+        displaytext=    utils.ParseSPField(colref.fieldName).value;
+          }
+
+          return (<a href="#" onFocus={this.toggleEditing}>
+            {displaytext}
+          </a>
+          );
+        }
     }
   }
 
   public TableDetail(props): JSX.Element {
     const {entity, column, rowChanged} = props;
     if (this.state && this.state.editing && this.state.editing.entityid === entity.guid && this.state.editing.columnid === column.id) {
-      debugger;
       return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ border: "2px solid black", padding: "0px" }}>
         <CellContentsEditable entity={entity} column={column} valueChanged={rowChanged} />
 
@@ -259,8 +267,8 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
             );
           }, this)
         }
-        <td>
-          <a href="#" data-entityid={entity.guid} onClick={this.deleteList}>
+        <td data-entityid={entity.guid} >
+          <a href="#" onClick={this.deleteList}>
             Delete
         </a>
         </td>
@@ -293,7 +301,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
 
     return (
       <Container testid="columns" size={2} center>
-        <h1>Columns</h1>
+        <h1>Lists</h1>
         <Button onClick={this.props.addList}>Add List</Button>
 
         <table border="1">

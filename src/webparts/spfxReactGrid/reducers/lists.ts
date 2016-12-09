@@ -26,11 +26,11 @@ function listReducer(state: Array<ListRef> = INITIAL_STATE, action: any = { type
         case ADD_LISTS:
             return _.union(state, action.payload.lists);
         case REMOVE_COLUMN:
-            debugger;
+        debugger;
             let listrefs = _.clone(state);
             for (let listref of listrefs) {
                 for (let i = listref.columnReferences.length - 1; i >= 0; i--) {
-                    if (listref.columnReferences[i] === action.payload.guid) {
+                    if (listref.columnReferences[i].columnId === action.payload.column.guid) {
                         listref.columnReferences.splice(i, 1);
                     }
                 }
