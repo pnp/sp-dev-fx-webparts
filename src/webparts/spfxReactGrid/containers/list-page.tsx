@@ -8,10 +8,10 @@ import FieldEditor from "../components/FieldEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 import { Button } from "office-ui-fabric-react/lib/Button";
-import ListRef from "../model/ListRef";
+import ListDefinition from "../model/ListRef";
 import { ColumnReference } from "../model/ListRef";
 import { Web } from "../model/Web";
-import ColumnRef from "../model/column";
+import ColumnDefinition from "../model/column";
 import Container from "../components/container";
 
 import { Guid, Log } from "@microsoft/sp-client-base";
@@ -25,8 +25,8 @@ export class GridColumn {
     public editor?: string) { }
 }
 interface IListViewPageProps extends React.Props<any> {
-  lists: Array<ListRef>;
-  columnRefs: Array<ColumnRef>;
+  lists: Array<ListDefinition>;
+  columnRefs: Array<ColumnDefinition>;
   webs: Array<Web>;
   addList: () => void;
   removeList: (List) => void;
@@ -45,10 +45,10 @@ function mapDispatchToProps(dispatch) {
   return {
     addList: (): void => {
       const id = Guid.newGuid();
-      const list: ListRef = new ListRef(id.toString(), null, null, null);
+      const list: ListDefinition = new ListDefinition(id.toString(), null, null, null);
       dispatch(addList(list));
     },
-    removeList: (list: ListRef): void => {
+    removeList: (list: ListDefinition): void => {
       dispatch(removeList(list));
     },
     getWebs: (): Promise<any> => {
@@ -62,7 +62,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 interface ICellContentsEditableProps extends React.Props<any> {
-  entity: ListRef;
+  entity: ListDefinition;
   column: any;
   valueChanged: any;
 }
@@ -153,7 +153,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     }
     return false;
   }
-  private updateExtendedColumn(entity: ListRef, columnid: string, value: any) {
+  private updateExtendedColumn(entity: ListDefinition, columnid: string, value: any) {
     for (const col of entity.columnReferences) {
       if (col.columnId === columnid) {
         col.fieldName = value;
@@ -172,7 +172,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     const entityitem = attributes.getNamedItem("data-entityid");
     const entityid = entityitem.value;
     const columnid = attributes.getNamedItem("data-columnid").value;
-    const entity: ListRef = this.props.lists.find((temp) => temp.guid === entityid);
+    const entity: ListDefinition = this.props.lists.find((temp) => temp.guid === entityid);
     const column = this.extendedColumns.find(temp => temp.id === columnid);
     // if iys a default column, just set its value , otheriwse update it in the list of extended columns
     if (this.isdeafaultColumn(columnid)) {
@@ -189,7 +189,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     const target = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = target.attributes;
     const entity = attributes.getNamedItem("data-entityid").value;
-    const list: ListRef = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === entity);
+    const list: ListDefinition = this.props.lists.find(temp => utils.ParseSPField(temp.guid).id === entity);
     this.props.removeList(list);
     return;
   }
@@ -209,7 +209,7 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
     this.setState({ "editing": { entityid: entityid, columnid: columnid } });
   }
 
-  public CellContents(props: { entity: ListRef, column: any, rowChanged: any }): JSX.Element {
+  public CellContents(props: { entity: ListDefinition, column: any, rowChanged: any }): JSX.Element {
     const {entity, column} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":

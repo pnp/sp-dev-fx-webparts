@@ -1,4 +1,4 @@
-import ColumnRef from "../Model/Column";
+﻿import ColumnDefinition from "../Model/Column";
 import * as _ from "lodash";
 import {
     ADD_COLUMN,
@@ -7,7 +7,7 @@ import {
     SAVE_COLUMN
 } from "../constants";
 import { Log } from "@microsoft/sp-client-base";
-const INITIAL_STATE = new Array<ColumnRef>();
+const INITIAL_STATE = new Array<ColumnDefinition>();
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
     Log.verbose("listItemReducer", "In listItemReducer of listItemReducer ActionType is " + action.type);
       switch (action.type) {

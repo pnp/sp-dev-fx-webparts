@@ -5,8 +5,8 @@ import {
 SAVE_COLUMN
 } from "../constants";
 
-import ColumnRef from "../model/Column";
-export function addColumn(column: ColumnRef) {
+import ColumnDefinition from "../model/Column";
+export function addColumn(column: ColumnDefinition) {
 
     return {
         type: ADD_COLUMN,
@@ -15,7 +15,7 @@ export function addColumn(column: ColumnRef) {
         }
     };
 }
-export function removeColumn(column: ColumnRef) {
+export function removeColumn(column: ColumnDefinition) {
     return {
         type: REMOVE_COLUMN,
         payload: {
@@ -23,7 +23,7 @@ export function removeColumn(column: ColumnRef) {
         }
     };
 }
-export function addColumns(columns: ColumnRef[]) {
+export function addColumns(columns: ColumnDefinition[]) {
     return {
         type: ADD_COLUMNS,
         payload: {
@@ -31,7 +31,7 @@ export function addColumns(columns: ColumnRef[]) {
         }
     };
 }
-export function saveColumn(column: ColumnRef) {
+export function saveColumn(column: ColumnDefinition) {
     return {
         type: SAVE_COLUMN,
         payload: {

@@ -3,12 +3,12 @@ import { SharePointLookupCellFormatter } from "../components/SharePointFormatter
 const connect = require("react-redux").connect;
 import { DropDownEditor, ISelectChoices } from "../components/DropDownEditor";
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
-import ColumnRef from "../model/Column";
+import ColumnDefinition from "../model/Column";
 import { Button } from "office-ui-fabric-react/lib/Button";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import Container from "../components/container";
 import { Guid, Log } from "@microsoft/sp-client-base";
-import ListRef from "../model/ListRef";
+import ListDefinition from "../model/ListRef";
 import * as utils from "../utils/utils";
 const fieldTypes: Array<ISelectChoices> = [
   { name: "text", value: "SP.FieldTypeText" },
@@ -18,7 +18,7 @@ const fieldTypes: Array<ISelectChoices> = [
 ];
 
 interface IColumnsPageProps extends React.Props<any> {
-  columns: Array<ColumnRef>;
+  columns: Array<ColumnDefinition>;
   addColumn: () => void;
   removeColumn: (column) => void;
   saveColumn: (Column) => void;
@@ -36,7 +36,7 @@ function mapDispatchToProps(dispatch) {
   return {
     addColumn: (): void => {
       const id = Guid.newGuid();
-      const col: ColumnRef = new ColumnRef(id.toString(), "", 80, true);
+      const col: ColumnDefinition = new ColumnDefinition(id.toString(), "", 80, true);
       dispatch(addColumn(col));
     },
     saveColumn: (updatedRowData): void => {
@@ -50,7 +50,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 interface ICellContentsEditableProps extends React.Props<any> {
-  entity: ColumnRef; // the row  in the list of columns
+  entity: ColumnDefinition; // the row  in the list of columns
   gridColumn: GridColumn;// the column in the list taht changed
   valueChanged: any;
 }
@@ -139,7 +139,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
     editor: "BooleanEditor",
     width: 300
   }];
-  public CellContents(props: { entity: ColumnRef, gridColumn: GridColumn, rowChanged: any }): JSX.Element {
+  public CellContents(props: { entity: ColumnDefinition, gridColumn: GridColumn, rowChanged: any }): JSX.Element {
     const {entity, gridColumn, rowChanged} = props;
     if (!gridColumn.editable) {
       return (<span >
@@ -226,7 +226,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
     const entityitem = attributes.getNamedItem("data-entityid");
     const entityid = entityitem.value;
     const columnid = attributes.getNamedItem("data-columnid").value;
-    const entity: ColumnRef = this.props.columns.find((temp) => temp.guid === entityid);
+    const entity: ColumnDefinition = this.props.columns.find((temp) => temp.guid === entityid);
     const column = this.gridColulumns.find(temp => temp.id === columnid);
     entity[column.name] = value;
     // if i update the list, get the url to the list and stir it as wekk
@@ -239,7 +239,7 @@ class CplumnsPage extends React.Component<IColumnsPageProps, IGridProps> {
     const target = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = target.attributes;
     const entity = attributes.getNamedItem("data-entityid").value;
-    const column: ColumnRef = this.props.columns.find(temp => utils.ParseSPField(temp.guid).id === entity);
+    const column: ColumnDefinition = this.props.columns.find(temp => utils.ParseSPField(temp.guid).id === entity);
     this.props.removeColumn(column);
     return;
   }

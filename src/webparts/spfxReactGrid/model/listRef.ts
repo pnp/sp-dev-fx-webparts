@@ -8,7 +8,7 @@ export class ColumnReference {
     ) { }
 
 }
-export default class ListRef {
+export default class ListDefinition {
     public columnReferences: Array<ColumnReference>;
     public guid: string;// the id of the list we are pointing to id#;name
     public constructor(

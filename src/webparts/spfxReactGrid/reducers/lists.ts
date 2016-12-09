@@ -7,9 +7,9 @@ import {
 
 } from "../constants";
 import * as _ from "lodash";
-import ListRef from "../model/listRef";
+import ListDefinition from "../model/listRef";
 const INITIAL_STATE = [];
-function listReducer(state: Array<ListRef> = INITIAL_STATE, action: any = { type: "" }): Array<ListRef> {
+function listReducer(state: Array<ListDefinition> = INITIAL_STATE, action: any = { type: "" }): Array<ListDefinition> {
     switch (action.type) {
         case ADD_LIST:
             let newarray = _.clone(state);

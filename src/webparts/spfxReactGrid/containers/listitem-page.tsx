@@ -2,11 +2,11 @@ import * as React from "react";
 const connect = require("react-redux").connect;
 import { addListItem, removeListItem, getListItemsAction } from "../actions/listActions";
 import ListItem from "../model/ListItem";
-import ColumnRef from "../model/Column";
+import ColumnDefinition from "../model/Column";
 import Container from "../components/container";
 interface IListViewPageProps extends React.Props<any> {
   listItems: Array<ListItem>;
-  columns: Array<ColumnRef>;
+  columns: Array<ColumnDefinition>;
   addListItem: (ListItem) => void;
   removeListItem: (ListItem) => void;
   getListItems: () => void;
