@@ -1,12 +1,8 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
-import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
+
 import { Web } from "../model/Web";
-import ColumnRef from "../model/Column";
-import Container from "../components/container";
-import ListItemView from "../components/listitemview";
-import * as ReactDataGrid from "react-data-grid";
-import * as ReactDataGridPlugins from "react-data-grid/addons";
+
 
 
 

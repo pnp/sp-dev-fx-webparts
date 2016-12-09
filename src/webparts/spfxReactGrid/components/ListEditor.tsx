@@ -1,13 +1,7 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
-import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
 import { Web } from "../model/Web";
 import ListRef from "../model/ListRef";
-import ColumnRef from "../model/Column";
-import Container from "../components/container";
-import ListItemView from "../components/listitemview";
-import * as ReactDataGrid from "react-data-grid";
-import * as ReactDataGridPlugins from "react-data-grid/addons";
 import * as utils from "../utils/utils";
 
 export interface KeyValue {
@@ -62,7 +56,7 @@ class ListEditor extends React.Component<IListEditorProps, void> {
   }
   public render() {
 
-    const { value, listRefId, columnid} = this.props;
+    const { value} = this.props;
 
 
     return (

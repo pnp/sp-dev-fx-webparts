@@ -4,7 +4,6 @@ import { addListItem, removeListItem, getListItemsAction } from "../actions/list
 import ListItem from "../model/ListItem";
 import ColumnRef from "../model/Column";
 import Container from "../components/container";
-import * as ReactDataGrid from "react-data-grid";
 interface IListViewPageProps extends React.Props<any> {
   listItems: Array<ListItem>;
   columns: Array<ColumnRef>;
@@ -38,9 +37,7 @@ class ListItemPage extends React.Component<IListViewPageProps, void> {
   public componentWillMount(){
     this.props.getListItems();
   }
-  private rowGetter(rowIdx) {
-    return this.props.listItems[rowIdx];
-  }
+
   private handleRowUpdated(e) {
   }
   public render() {
