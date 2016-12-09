@@ -7,11 +7,10 @@ import {
     SAVE_COLUMN
 } from "../constants";
 import { Log } from "@microsoft/sp-client-base";
-let INITIAL_STATE = new Array<ColumnRef>();
+const INITIAL_STATE = new Array<ColumnRef>();
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
     Log.verbose("listItemReducer", "In listItemReducer of listItemReducer ActionType is " + action.type);
-    let result: ColumnRef[];
-    switch (action.type) {
+      switch (action.type) {
         case ADD_COLUMN:
             let newarray = _.clone(state);
             newarray.push(action.payload.column);

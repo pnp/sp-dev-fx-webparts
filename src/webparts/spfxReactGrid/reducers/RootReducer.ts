@@ -7,7 +7,7 @@ import { Log } from "@microsoft/sp-client-base";
 const { routerReducer } = require("react-router-redux");
 export function RootReducer(state, action) {
     Log.verbose("RootReducer", "In RootReducer of RootReducer");
-    let combinedReducers = combineReducers(
+    const combinedReducers = combineReducers(
         {
             items: listItemReducer,
             lists: ListReducer,
@@ -15,7 +15,7 @@ export function RootReducer(state, action) {
             webs: WebReducer,
             routing: routerReducer
         }
-    )
+    );
     return combinedReducers(state, action);// Need to pass in inital state and action to combinereducers?
 }
 

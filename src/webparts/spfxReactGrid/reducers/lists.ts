@@ -7,7 +7,6 @@ import {
 } from "../constants";
 import * as _ from "lodash";
 import ListRef from "../model/listRef";
-import { fromJS } from "immutable";
 const INITIAL_STATE = [];
 function listReducer(state: Array<ListRef> = INITIAL_STATE, action: any = { type: "" }): Array<ListRef> {
     switch (action.type) {
@@ -17,7 +16,7 @@ function listReducer(state: Array<ListRef> = INITIAL_STATE, action: any = { type
             return newarray;
         case SAVE_LIST:
             let newarray2 = _.clone(state);
-            let item = newarray2.find(item => item.guid === action.payload.list.guid)
+            let item = newarray2.find(item => item.guid === action.payload.list.guid);
             item = action.payload.list;
             return newarray2;
         case REMOVE_LIST:

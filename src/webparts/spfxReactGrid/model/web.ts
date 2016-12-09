@@ -12,7 +12,7 @@ export class WebList {
         public id: string,
         public title: string,
         public url: string) {
-        this.fields = new Array<WebListField>()
+        this.fields = new Array<WebListField>();
     }
 }
 
@@ -23,6 +23,6 @@ export class Web {
         public title: string,
         public url: string) {
 
-        this.lists = new Array<WebList>()
+        this.lists = new Array<WebList>();
     }
 }

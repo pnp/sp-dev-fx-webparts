@@ -34,7 +34,7 @@ class WebEditor extends React.Component<IWebEditorProps, void> {
     super();
     this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event) {
+ private handleChange(event) {
 
     this.props.onChange(event);
   }

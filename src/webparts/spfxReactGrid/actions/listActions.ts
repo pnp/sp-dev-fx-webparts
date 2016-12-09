@@ -36,7 +36,7 @@ export function removeList(list: ListRef) {
     };
 }
 export function saveList(list: ListRef) {
-    let action = {
+    const action = {
         type: SAVE_LIST,
         payload: {
             list
@@ -84,11 +84,11 @@ export function getListItemsAction(dispatch: any): any {
     const payload = pnp.sp.web.lists.getByTitle('Tasks').items.get()
         .then((response) => {
 
-            let data = _.map(response, function (item: any) {
+            const data = _.map(response, function (item: any) {
                 return new ListItem(item.Id, item.Title, item.GUID);
             });
             console.log(data);
-            let gotListItems = gotListItemsAction(data);
+            const gotListItems = gotListItemsAction(data);
             dispatch(gotListItems); // need to ewname this one to be digfferent from the omported ome
         })
         .catch((error) => {
@@ -96,7 +96,7 @@ export function getListItemsAction(dispatch: any): any {
             console.log(error);
             dispatch(getListItemsErrorAction(error)); // need to ewname this one to be digfferent from the omported ome
         });
-    let action = {
+    const action = {
         type: GET_LISTITEMS,
         payload: {
             promise: payload

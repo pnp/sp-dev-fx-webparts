@@ -10,11 +10,11 @@ export function getWebsAction(dispatch: any): any {
     let payload = pnp.sp.site.rootWeb.webs.expand("lists,lists/fields").get()
         .then((response) => {
 
-            let data = _.map(response, function (item: any) {
-                let web: Web = new Web(item.Id, item.Title, item.Url);
-                for (let list of item.Lists) {
-                    let webList: WebList = new WebList(list.Id, list.Title, list.Url);
-                    for (let field of list.Fields) {
+            const data = _.map(response, function (item: any) {
+                const web: Web = new Web(item.Id, item.Title, item.Url);
+                for (const list of item.Lists) {
+                    const webList: WebList = new WebList(list.Id, list.Title, list.Url);
+                    for (const field of list.Fields) {
                         webList.fields.push(new WebListField(field.Id, field.Title, field.InternalName, field.TypeDisplayName));
                     }
                     web.lists.push(webList);
@@ -22,14 +22,14 @@ export function getWebsAction(dispatch: any): any {
                 return web;
             });
             console.log(data);
-            let gotWebs = gotWebsAction(data);
+            const gotWebs = gotWebsAction(data);
             dispatch(gotWebs); // need to ewname this one to be digfferent from the omported ome
         })
         .catch((error) => {
             console.log(error);
             dispatch(getWebsErrorAction(error)); // need to ewname this one to be digfferent from the omported ome
         });
-    let action = {
+    const action = {
         type: GET_WEBS,
         payload: {
             promise: payload

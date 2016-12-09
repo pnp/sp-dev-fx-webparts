@@ -47,13 +47,7 @@ private  handleChange(event) {
 
     this.props.onChange(event);
   }
-private  getListsForWeb(): Array<any> { // when we got the web we got the lisyts as well. The lists are a property on the slected web
-    // get the id of the list were on then get ist web and the webs lists
-    const lists = new Array<any>();
-    // let listRef = this.props.
-    return lists;
 
-  }
   public render() {
 
     const { value} = this.props;

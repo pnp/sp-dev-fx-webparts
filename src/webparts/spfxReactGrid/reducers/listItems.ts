@@ -9,7 +9,7 @@ import { Log } from "@microsoft/sp-client-base";
 const INITIAL_STATE = new Array<ListItem>();
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
     Log.verbose("listItemReducer", "In listItemReducer of listItemReducer ActionType is " + action.type);
-    let result: ListItem[];
+
     switch (action.type) {
         case ADD_LISTITEM:
             let newarray = _.clone(state);

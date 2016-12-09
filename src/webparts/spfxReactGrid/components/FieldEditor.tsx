@@ -52,9 +52,7 @@ class FieldEditor extends React.Component<IListEditorProps, void> {
 
     this.props.onChange(event);
   }
-  private getListsForWeb(): Array<any> { // when we got the web we got the lisyts as well. The lists are a property on the slected web
-    return new Array<any>();
-  }
+
   public render() {
 
     const { value} = this.props;

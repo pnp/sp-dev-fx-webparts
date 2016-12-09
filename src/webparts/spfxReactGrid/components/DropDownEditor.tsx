@@ -19,7 +19,7 @@ export class DropDownEditor extends React.Component<IDropDownEditorProps, void> 
     this.props.onChange(event);
   }
   public render() {
-    const {  value,  getChoices} = this.props;
+    const {  value} = this.props;
     return (
       <select value={value} onChange={this.handleChange}        >
         {this.props.getChoices().map(function (choice) {
