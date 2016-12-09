@@ -30,7 +30,7 @@ function mapDispatchToProps(dispatch) {
 
 class App extends React.Component<IAppProps, void> {
   public render() {
-    const { children, session} = this.props;
+    const { children} = this.props;
     return (
       <div>
 

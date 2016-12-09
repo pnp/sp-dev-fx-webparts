@@ -41,7 +41,7 @@ class WebEditor extends React.Component<IWebEditorProps, void> {
 
   public render() {
 
-    const { value, listid, columnid} = this.props;
+    const { value} = this.props;
 
 
     return (

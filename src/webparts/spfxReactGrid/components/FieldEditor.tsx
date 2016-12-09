@@ -24,9 +24,9 @@ export interface IListEditorProps extends React.Props<any> {
   value: string;
   onChange(event): void;
   listRefs: Array<ListRef>;
-  listRefId: string, //this is not a list but a refference to a listt
-  columnid: string,
-  webs: Array<Web>
+  listRefId: string; //this is not a list but a refference to a listt
+  columnid: string;
+  webs: Array<Web>;
 }
 
 class FieldEditor extends React.Component<IListEditorProps, void> {
@@ -36,32 +36,28 @@ class FieldEditor extends React.Component<IListEditorProps, void> {
     debugger;
     this.handleChange = this.handleChange.bind(this);
   }
-  getFields() {
+  private getFields() {
     // grt thr listref we are working on. Its web has all the lists in the web
-    let listref: ListRef = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);// this is the row in the grid
-    let listid = utils.ParseSPField(listref.listLookup).id; // this is stored as splistid#; list name
-    let webid = utils.ParseSPField(listref.webLookup).id; // this is stored as spwebid#; web name
-    let web = this.props.webs.find(w => w.id === webid); // get the web
-    let list = web.lists.find(l => l.id === listid); //get the list in the web
+    const listref: ListRef = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);// this is the row in the grid
+    const listid = utils.ParseSPField(listref.listLookup).id; // this is stored as splistid#; list name
+    const webid = utils.ParseSPField(listref.webLookup).id; // this is stored as spwebid#; web name
+    const web = this.props.webs.find(w => w.id === webid); // get the web
+    const list = web.lists.find(l => l.id === listid); //get the list in the web
 
 
     return list.fields;
 
   }
-  handleChange(event) {
+  private handleChange(event) {
 
     this.props.onChange(event);
   }
-  getListsForWeb(): Array<any> { // when we got the web we got the lisyts as well. The lists are a property on the slected web
-    // get the id of the list were on then get ist web and the webs lists
-    let lists = new Array<any>();
-    // let listRef = this.props.
-    return lists;
-
+  private getListsForWeb(): Array<any> { // when we got the web we got the lisyts as well. The lists are a property on the slected web
+    return new Array<any>();
   }
   public render() {
 
-    const { value, listRefId, columnid, listRefs, webs} = this.props;
+    const { value} = this.props;
 
 
     return (

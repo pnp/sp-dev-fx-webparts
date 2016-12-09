@@ -2,7 +2,7 @@ import {
   createStore,
   applyMiddleware,
   compose,
-  Middleware, Store
+  Middleware
 } from "redux";
 import { fromJS } from "immutable";
 import { createMemoryHistory } from "react-router";

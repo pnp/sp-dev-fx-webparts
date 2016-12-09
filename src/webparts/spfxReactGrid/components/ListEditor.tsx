@@ -24,9 +24,9 @@ export interface IListEditorProps extends React.Props<any> {
   value: string;
   onChange(event): void;
   listRefs: Array<ListRef>;
-  listRefId: string, //this is not a list but a refference to a listt
-  columnid: string,
-  webs: Array<Web>
+  listRefId: string; //this is not a list but a refference to a listt
+  columnid: string;
+  webs: Array<Web>;
 }
 
 class ListEditor extends React.Component<IListEditorProps, void> {
@@ -36,20 +36,20 @@ class ListEditor extends React.Component<IListEditorProps, void> {
 
     this.handleChange = this.handleChange.bind(this);
   }
-  getLists() {
+ private getLists() {
     // grt thr listref we are working on. Its web has all the lists in the web
-    let listref: ListRef = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);
-    let webid = utils.ParseSPField(listref.webLookup).id;
-    let web = this.props.webs.find(w => w.id === webid);
+    const listref: ListRef = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);
+    const webid = utils.ParseSPField(listref.webLookup).id;
+    const web = this.props.webs.find(w => w.id === webid);
     return web.lists;
   }
-  handleChange(event) {
+private  handleChange(event) {
 
     this.props.onChange(event);
   }
-  getListsForWeb(): Array<any> { // when we got the web we got the lisyts as well. The lists are a property on the slected web
+private  getListsForWeb(): Array<any> { // when we got the web we got the lisyts as well. The lists are a property on the slected web
     // get the id of the list were on then get ist web and the webs lists
-    let lists = new Array<any>();
+    const lists = new Array<any>();
     // let listRef = this.props.
     return lists;
 
