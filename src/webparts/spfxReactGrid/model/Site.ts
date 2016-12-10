@@ -3,6 +3,6 @@ export class Site {
         public title: string,
         public url: string) {
 
-        this.lists = new Array<WebList>();
+
     }
 }
