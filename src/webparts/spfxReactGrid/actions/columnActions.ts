@@ -5,7 +5,7 @@ import {
 SAVE_COLUMN
 } from "../constants";
 
-import ColumnDefinition from "../model/Column";
+import ColumnDefinition from "../model/ColumnDefinition";
 export function addColumn(column: ColumnDefinition) {
 
     return {

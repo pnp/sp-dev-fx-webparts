@@ -1,6 +1,6 @@
 
-import ListDefinition from "./model/ListRef";
-import column from "./model/column";
+import ListDefinition from "./model/ListDefinition";
+import column from "./model/ColumnDefinition";
 export interface ISpfxReactGridWebPartProps {
   description: string;
   lists: ListDefinition[];

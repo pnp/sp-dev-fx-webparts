@@ -1,7 +1,7 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
-import { Web } from "../model/Web";
-import ListDefinition from "../model/ListRef";
+import { Web ,WebList} from "../model/Web";
+import ListDefinition from "../model/ListDefinition";
 import * as utils from "../utils/utils";
 
 export interface KeyValue {
@@ -36,7 +36,7 @@ class ListEditor extends React.Component<IListEditorProps, void> {
 
     this.handleChange = this.handleChange.bind(this);
   }
- private getLists() {
+ private getLists() :Array<WebList>{
     // grt thr listref we are working on. Its web has all the lists in the web
     const listref: ListDefinition = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);
     const webid = utils.ParseSPField(listref.webLookup).id;

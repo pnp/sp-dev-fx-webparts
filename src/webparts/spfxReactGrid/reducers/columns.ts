@@ -1,4 +1,4 @@
-﻿import ColumnDefinition from "../Model/Column";
+﻿import ColumnDefinition from "../Model/ColumnDefinition";
 import * as _ from "lodash";
 import {
     ADD_COLUMN,

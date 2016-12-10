@@ -7,7 +7,7 @@ import {
 
 } from "../constants";
 import * as _ from "lodash";
-import ListDefinition from "../model/listRef";
+import ListDefinition from "../model/ListDefinition";
 const INITIAL_STATE = [];
 function listReducer(state: Array<ListDefinition> = INITIAL_STATE, action: any = { type: "" }): Array<ListDefinition> {
     switch (action.type) {

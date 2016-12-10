@@ -1,7 +1,7 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
-import { Web } from "../model/Web";
-import ListDefinition from "../model/ListRef";
+import { Web ,WebList,WebListField} from "../model/Web";
+import ListDefinition from "../model/ListDefinition";
 import * as utils from "../utils/utils";
 
 export interface KeyValue {
@@ -35,7 +35,7 @@ class FieldEditor extends React.Component<IListEditorProps, void> {
     super();
     this.handleChange = this.handleChange.bind(this);
   }
-  private getFields() {
+  private getFields():Array<WebListField> {
     // grt thr listref we are working on. Its web has all the lists in the web
     const listref: ListDefinition = this.props.listRefs.find((lr) => lr.guid === this.props.listRefId);// this is the row in the grid
     const listid = utils.ParseSPField(listref.listLookup).id; // this is stored as splistid#; list name

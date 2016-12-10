@@ -8,10 +8,10 @@ import FieldEditor from "../components/FieldEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
 import { getWebsAction } from "../actions/webActions";
 import { Button } from "office-ui-fabric-react/lib/Button";
-import ListDefinition from "../model/ListRef";
-import { ColumnReference } from "../model/ListRef";
+import ListDefinition from "../model/ListDefinition";
+import { ColumnReference } from "../model/ListDefinition";
 import { Web } from "../model/Web";
-import ColumnDefinition from "../model/column";
+import ColumnDefinition from "../model/ColumnDefinition";
 import Container from "../components/container";
 
 import { Guid, Log } from "@microsoft/sp-client-base";
@@ -129,6 +129,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
   public extendedColumns: Array<GridColumn> = [];
   public constructor() {
     super();
+    debugger;
     this.CellContents = this.CellContents.bind(this);
     this.TableDetail = this.TableDetail.bind(this);
     this.TableRow = this.TableRow.bind(this);

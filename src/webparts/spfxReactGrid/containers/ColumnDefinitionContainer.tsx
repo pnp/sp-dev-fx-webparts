@@ -3,12 +3,12 @@ import { SharePointLookupCellFormatter } from "../components/SharePointFormatter
 const connect = require("react-redux").connect;
 import { DropDownEditor, ISelectChoices } from "../components/DropDownEditor";
 import { addColumn, removeColumn, saveColumn } from "../actions/columnActions";
-import ColumnDefinition from "../model/Column";
+import ColumnDefinition from "../model/ColumnDefinition";
 import { Button } from "office-ui-fabric-react/lib/Button";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import Container from "../components/container";
 import { Guid, Log } from "@microsoft/sp-client-base";
-import ListDefinition from "../model/ListRef";
+import ListDefinition from "../model/ListDefinition";
 import * as utils from "../utils/utils";
 const fieldTypes: Array<ISelectChoices> = [
     { name: "text", value: "SP.FieldTypeText" },
