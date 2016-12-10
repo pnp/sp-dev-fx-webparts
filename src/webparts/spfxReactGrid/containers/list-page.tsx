@@ -101,7 +101,7 @@ interface IGridProps {
     columnid: string;
   };
 }
-class ListPage extends React.Component<IListViewPageProps, IGridProps> {
+class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridProps> {
   public defaultColumns: Array<GridColumn> = [
     {
       id: "rowGuid",
@@ -328,4 +328,4 @@ class ListPage extends React.Component<IListViewPageProps, IGridProps> {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListPage);
+)(ListDefinitionContainer);

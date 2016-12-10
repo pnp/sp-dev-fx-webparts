@@ -1,4 +1,4 @@
-import * as React from "react";
+﻿import * as React from "react";
 const connect = require("react-redux").connect;
 import { addListItem, removeListItem, getListItemsAction } from "../actions/listActions";
 import ListItem from "../model/ListItem";
@@ -33,7 +33,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-class ListItemPage extends React.Component<IListViewPageProps, void> {
+class ListItemContainer extends React.Component<IListViewPageProps, void> {
   public componentWillMount(){
     this.props.getListItems();
   }
@@ -66,4 +66,4 @@ class ListItemPage extends React.Component<IListViewPageProps, void> {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListItemPage);
+)(ListItemContainer);
