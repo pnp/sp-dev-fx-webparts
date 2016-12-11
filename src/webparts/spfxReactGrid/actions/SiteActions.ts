@@ -5,11 +5,13 @@ import {
 } from "../constants";
 import "whatwg-fetch";
 import pnp from "sp-pnp-js";
-import { Web, WebList, WebListField } from "../model/Web";
-export function getWebsAction(dispatch: any): any {
+import { Site, Web, WebList, WebListField } from "../model/Site";
+export function getWebsAction(dispatch: any, siteUrl: string): any {
+    // need allwebs
+    debugger;
     const payload = pnp.sp.site.rootWeb.webs.expand("lists,lists/fields").get()
         .then((response) => {
-
+            debugger;
             const data = _.map(response, (item: any) => {
                 const web: Web = new Web(item.Id, item.Title, item.Url);
                 for (const list of item.Lists) {
@@ -22,7 +24,7 @@ export function getWebsAction(dispatch: any): any {
                 return web;
             });
             console.log(data);
-            const gotWebs = gotWebsAction(data);
+            const gotWebs = gotWebsAction(siteUrl, data);
             dispatch(gotWebs); // need to ewname this one to be digfferent from the omported ome
         })
         .catch((error) => {
@@ -37,10 +39,11 @@ export function getWebsAction(dispatch: any): any {
     };
     return action;
 }
-export function gotWebsAction(items) {
+export function gotWebsAction(siteUrl, items) {
     return {
         type: GOT_WEBS,
         payload: {
+            siteUrl: siteUrl,
             webs: items
         }
     };

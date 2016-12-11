@@ -15,6 +15,7 @@ export default class ListDefinition {
         public id: string,// the id of the list we are pointing to id#;name
         public webLookup: string,
         public listLookup: string,
+        public siteUrl: string,
         public url: string) {
         this.columnReferences = new Array<ColumnReference>();
         this.guid = Guid.newGuid().toString();

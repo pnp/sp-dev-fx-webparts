@@ -6,11 +6,11 @@ import WebEditor from "../components/WebEditor";
 import ListEditor from "../components/ListEditor";
 import FieldEditor from "../components/FieldEditor";
 import { addList, removeList, saveList } from "../actions/listActions";
-import { getWebsAction } from "../actions/webActions";
+import { getWebsAction } from "../actions/SiteActions";
 import { Button } from "office-ui-fabric-react/lib/Button";
 import ListDefinition from "../model/ListDefinition";
 import { ColumnReference } from "../model/ListDefinition";
-import { Web } from "../model/Web";
+import { Web ,Site} from "../model/Site";
 import ColumnDefinition from "../model/ColumnDefinition";
 import Container from "../components/container";
 
@@ -27,16 +27,16 @@ export class GridColumn {
 interface IListViewPageProps extends React.Props<any> {
   lists: Array<ListDefinition>;
   columnRefs: Array<ColumnDefinition>;
-  webs: Array<Web>;
+  sites: Array<Site>;
   addList: () => void;
   removeList: (List) => void;
   saveList: (List) => void;
-  getWebs: () => Promise<any>;
+  getWebs: (siteUrl) => Promise<any>;
 }
 function mapStateToProps(state) {
   return {
     lists: state.lists,
-    webs: state.webs,
+    sites: state.sites,
     columnRefs: state.columns
   };
 }
@@ -45,14 +45,15 @@ function mapDispatchToProps(dispatch) {
   return {
     addList: (): void => {
       const id = Guid.newGuid();
-      const list: ListDefinition = new ListDefinition(id.toString(), null, null, null);
+      const list: ListDefinition = new ListDefinition(id.toString(),null, null, null, null);
       dispatch(addList(list));
     },
     removeList: (list: ListDefinition): void => {
       dispatch(removeList(list));
     },
-    getWebs: (): Promise<any> => {
-      return dispatch(getWebsAction(dispatch));
+    getWebs: (siteUrl): Promise<any> => {
+      debugger;
+      return dispatch(getWebsAction(dispatch,siteUrl));
     },
     saveList: (list): void => {
       const action = saveList(list);
@@ -81,7 +82,9 @@ class CellContentsEditable extends React.Component<ICellContentsEditableProps, a
 
     switch (column.editor) {
       case "WebEditor":
-        return (<WebEditor selectedValue={column.value} onChange={valueChanged} listid={entity.guid} columnid={column.id} />);
+          debugger;
+          //need to pass in the Siteurl
+        return (<WebEditor siteUrl={entity.siteUrl} selectedValue={column.value} onChange={valueChanged} listid={entity.guid} columnid={column.id} />);
       case "ListEditor":
         return (<ListEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
       case "FieldEditor":
@@ -109,6 +112,13 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
       editable: false,
       width: 250,
       formatter: ""
+    },
+       {
+      id: "SiteUrl",
+      name: "siteUrl", // the url to the site
+      editable: true,
+      width: 259,
+         formatter: ""
     },
     {
       id: "WebLookup",
@@ -139,8 +149,9 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     this.deleteList = this.deleteList.bind(this);
   }
   public componentWillMount(): void {
-    if (this.props.webs.length === 0) {
-      this.props.getWebs();
+    if (this.props.sites.length === 0) {
+      debugger
+      this.props.getWebs("https://rgove3.sharepoint.com/sites/dev");
     }
     this.extendedColumns = _.clone(this.defaultColumns);
     for (const columnRef of this.props.columnRefs) {

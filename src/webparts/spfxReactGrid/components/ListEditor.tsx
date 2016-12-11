@@ -1,6 +1,6 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
-import { Web ,WebList} from "../model/Web";
+import {Site, Web ,WebList} from "../model/Site";
 import ListDefinition from "../model/ListDefinition";
 import * as utils from "../utils/utils";
 

@@ -1,8 +1,8 @@
 import {  combineReducers } from "redux";
-import ListReducer from "./lists";
-import listItemReducer from "./listItems";
-import ColumnReducer from "./columns";
-import WebReducer from "./web";
+import ListReducer from "./ListReducer";
+import listItemReducer from "./listItemReducer";
+import ColumnReducer from "./ColumnReducer";
+import SiteReducer from "./SiteReducer";
 import { Log } from "@microsoft/sp-client-base";
 const { routerReducer } = require("react-router-redux");
 export function RootReducer(state, action) {
@@ -12,7 +12,7 @@ export function RootReducer(state, action) {
             items: listItemReducer,
             lists: ListReducer,
             columns: ColumnReducer,
-            webs: WebReducer,
+            sites: SiteReducer,
             routing: routerReducer
         }
     );

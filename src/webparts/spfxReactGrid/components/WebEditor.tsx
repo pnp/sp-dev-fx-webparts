@@ -1,7 +1,7 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
 
-import { Web } from "../model/Web";
+import {Site, Web } from "../model/Site";
 
 
 
@@ -12,7 +12,7 @@ export interface KeyValue {
 }
 function mapStateToProps(state) {
   return {
-    webs: state.webs
+    sites: state.sites
 
   };
 }
@@ -32,6 +32,7 @@ export interface IWebEditorProps extends React.Props<any> {
 class WebEditor extends React.Component<IWebEditorProps, void> {
   constructor() {
     super();
+    debugger;
     this.handleChange = this.handleChange.bind(this);
   }
  private handleChange(event) {

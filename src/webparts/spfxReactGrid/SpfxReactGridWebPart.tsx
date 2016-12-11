@@ -33,8 +33,8 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     Log.verbose("SpfxReactGridWebPart", "In constructor of SpfxReactGridWebPart");
   }
   public render(): void {
-    store.dispatch(addLists(this.properties.lists));
-    store.dispatch(addColumns(this.properties.columns));
+   store.dispatch(addLists(this.properties.lists));
+   store.dispatch(addColumns(this.properties.columns));
     Log.verbose("SpfxReactGridWebPart", "In render of SpfxReactGridWebPart");
     ReactDom.render(App(), this.domElement);
   }
