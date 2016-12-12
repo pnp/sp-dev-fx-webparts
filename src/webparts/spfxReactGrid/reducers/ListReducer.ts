@@ -30,7 +30,7 @@ function listReducer(state: Array<ListDefinition> = INITIAL_STATE, action: any =
             let listrefs = _.clone(state);
             for (let listref of listrefs) {
                 for (let i = listref.columnReferences.length - 1; i >= 0; i--) {
-                    if (listref.columnReferences[i].columnId === action.payload.column.guid) {
+                    if (listref.columnReferences[i].columnDefinitionId === action.payload.column.guid) {
                         listref.columnReferences.splice(i, 1);
                     }
                 }

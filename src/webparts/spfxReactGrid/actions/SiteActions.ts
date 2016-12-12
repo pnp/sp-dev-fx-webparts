@@ -8,7 +8,7 @@ import pnp from "sp-pnp-js";
 import { Site, Web, WebList, WebListField } from "../model/Site";
 export function getWebsAction(dispatch: any, siteUrl: string): any {
     // need allwebs
-    debugger;
+
     const payload = pnp.sp.site.rootWeb.webs.expand("lists,lists/fields").get()
         .then((response) => {
             debugger;

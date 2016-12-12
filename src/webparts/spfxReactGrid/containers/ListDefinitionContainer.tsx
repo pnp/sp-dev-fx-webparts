@@ -10,10 +10,9 @@ import { getWebsAction } from "../actions/SiteActions";
 import { Button } from "office-ui-fabric-react/lib/Button";
 import ListDefinition from "../model/ListDefinition";
 import { ColumnReference } from "../model/ListDefinition";
-import { Web ,Site} from "../model/Site";
+import { Site, Web, WebList, WebListField } from "../model/Site";
 import ColumnDefinition from "../model/ColumnDefinition";
 import Container from "../components/container";
-
 import { Guid, Log } from "@microsoft/sp-client-base";
 export class GridColumn {
   constructor(
@@ -41,11 +40,10 @@ function mapStateToProps(state) {
   };
 }
 function mapDispatchToProps(dispatch) {
-
   return {
     addList: (): void => {
       const id = Guid.newGuid();
-      const list: ListDefinition = new ListDefinition(id.toString(),null, null, null, null);
+      const list: ListDefinition = new ListDefinition(id.toString(), null, null, null, null);
       dispatch(addList(list));
     },
     removeList: (list: ListDefinition): void => {
@@ -53,50 +51,13 @@ function mapDispatchToProps(dispatch) {
     },
     getWebs: (siteUrl): Promise<any> => {
       debugger;
-      return dispatch(getWebsAction(dispatch,siteUrl));
+      return dispatch(getWebsAction(dispatch, siteUrl));
     },
     saveList: (list): void => {
       const action = saveList(list);
       dispatch(action);
     },
   };
-}
-
-interface ICellContentsEditableProps extends React.Props<any> {
-  entity: ListDefinition;
-  column: any;
-  valueChanged: any;
-}
-class CellContentsEditable extends React.Component<ICellContentsEditableProps, any>{
-  //   refs: {
-  //     [key: string]: (Element);
-  //     cellBeingEdited: (HTMLInputElement);
-  // }
-  //   public componentDidMount() {
-  //   let node:any =  ReactDom.findDOMNode(this.refs.cellBeingEdited);
-  //  node.focus();
-  //   }
-  public render() {
-
-    const {entity, column, valueChanged} = this.props;
-
-    switch (column.editor) {
-      case "WebEditor":
-          debugger;
-          //need to pass in the Siteurl
-        return (<WebEditor siteUrl={entity.siteUrl} selectedValue={column.value} onChange={valueChanged} listid={entity.guid} columnid={column.id} />);
-      case "ListEditor":
-        return (<ListEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
-      case "FieldEditor":
-
-        return (<FieldEditor selectedValue={column.value} onChange={valueChanged} listRefId={entity.guid} columnid={column.id} />);
-      default:
-        return (
-          <input autoFocus ref="cellBeingEdited" type="text"
-            value={entity[column.name]}
-            onChange={valueChanged} onBlur={valueChanged} />);
-    }
-  }
 }
 interface IGridProps {
   editing: {
@@ -113,12 +74,12 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
       width: 250,
       formatter: ""
     },
-       {
+    {
       id: "SiteUrl",
       name: "siteUrl", // the url to the site
       editable: true,
       width: 259,
-         formatter: ""
+      formatter: ""
     },
     {
       id: "WebLookup",
@@ -140,6 +101,11 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
   public constructor() {
     super();
     debugger;
+    this.getWebsForSite = this.getWebsForSite.bind(this);
+    this.getListsForWeb = this.getListsForWeb.bind(this);
+    this.getFieldsForlist = this.getFieldsForlist.bind(this);
+
+    this.CellContentsEditable = this.CellContentsEditable.bind(this);
     this.CellContents = this.CellContents.bind(this);
     this.TableDetail = this.TableDetail.bind(this);
     this.TableRow = this.TableRow.bind(this);
@@ -150,7 +116,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
   }
   public componentWillMount(): void {
     if (this.props.sites.length === 0) {
-      debugger
+      debugger;
       this.props.getWebs("https://rgove3.sharepoint.com/sites/dev");
     }
     this.extendedColumns = _.clone(this.defaultColumns);
@@ -167,15 +133,15 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
   }
   private updateExtendedColumn(entity: ListDefinition, columnid: string, value: any) {
     for (const col of entity.columnReferences) {
-      if (col.columnId === columnid) {
-        col.fieldName = value;
+      if (col.columnDefinitionId === columnid) {
+        col.name = value;
         return;
       }
     }
     let x = new ColumnReference(columnid, value, "text");
     entity.columnReferences.push(x);
   }
-  public handleRowUpdated(event) {
+  public handleRowUpdated(event): void {
     Log.verbose("Columns-Page", "Row changed-fired when row changed or leaving cell ");
     const target = event.target;
     const value = target.value;
@@ -194,7 +160,6 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
       this.updateExtendedColumn(entity, columnid, value);
     }
     this.props.saveList(entity);
-
   }
   public deleteList(event) {
     Log.verbose("list-Page", "Row changed-fired when row changed or leaving cell ");
@@ -211,6 +176,44 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     }
     return node;
   }
+  public getWebsForSite(siteUrl: string): Array<Web> {
+    for (let site of this.props.sites) {
+      if (site.url === siteUrl) {
+        return site.webs;
+      }
+    }
+    return [];
+  }
+  public getListsForWeb(webId: string): Array<WebList> {
+    for (let site of this.props.sites) {
+      for (let web of site.webs) {
+        if (web.id === webId) {
+          return web.lists;
+        }
+      }
+    }
+    return [];
+  }
+  public getFieldsForlist(listId: string): Array<WebListField> {
+    for (let site of this.props.sites) {
+      for (let web of site.webs) {
+        for (let list of web.lists) {
+          if (list.id === listId) {
+            return list.fields;
+          }
+        }
+      }
+    }
+    return [];
+  }
+  public GetColumnReferenence(listDefinition: ListDefinition, columnDefinitionId: string): ColumnReference {
+    for (let columnref of listDefinition.columnReferences) {
+      if (columnref.columnDefinitionId === columnDefinitionId) {
+        return columnref;
+      }
+    }
+
+  }
   public toggleEditing(event) {
     Log.verbose("list-Page", "focus event fired editing  when entering cell");
 
@@ -220,8 +223,37 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     const columnid = attributes.getNamedItem("data-columnid").value;
     this.setState({ "editing": { entityid: entityid, columnid: columnid } });
   }
-
-  public CellContents(props: { entity: ListDefinition, column: any, rowChanged: any }): JSX.Element {
+  public CellContentsEditable(props: { entity: ListDefinition, column: GridColumn, valueChanged: (event) => void; }): JSX.Element {
+    const {entity, column, valueChanged} = props;
+    let columnValue;
+    if (this.isdeafaultColumn(column.id)) {
+      columnValue = entity[column.name];
+    }
+    else {
+      debugger;
+      const colRef: ColumnReference = this.GetColumnReferenence(entity, column.id);
+      if (colRef) {
+        columnValue = this.GetColumnReferenence(entity, column.id).name;
+      }
+    }
+    switch (column.editor) {
+      case "WebEditor":
+        let webs = this.getWebsForSite(entity.siteUrl);
+        return (<WebEditor webs={webs} selectedValue={columnValue} onChange={valueChanged} />);
+      case "ListEditor":
+        let lists = this.getListsForWeb(utils.ParseSPField(entity.webLookup).id);
+        return (<ListEditor selectedValue={columnValue} onChange={valueChanged} lists={lists} />);
+      case "FieldEditor":
+        let fields = this.getFieldsForlist(utils.ParseSPField(entity.listLookup).id);
+        return (<FieldEditor selectedValue={columnValue} onChange={valueChanged} fields={fields} />);
+      default:
+        return (
+          <input autoFocus type="text"
+            value={entity[column.name]}
+            onChange={valueChanged} onBlur={valueChanged} />);
+    }
+  }
+  public CellContents(props: { entity: ListDefinition, column: GridColumn, rowChanged: (event) => void; }): JSX.Element {
     const {entity, column} = props;
     switch (column.formatter) {
       case "SharePointLookupCellFormatter":
@@ -235,13 +267,11 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
           );
         }
         else {
-
-          const colref = entity.columnReferences.find(cr => cr.columnId === column.id);
-          let displaytext="";
-          if (colref!=null){
-        displaytext=    utils.ParseSPField(colref.fieldName).value;
+          const colref = entity.columnReferences.find(cr => cr.columnDefinitionId === column.id);
+          let displaytext = "";
+          if (colref != null) {
+            displaytext = utils.ParseSPField(colref.name).value;
           }
-
           return (<a href="#" onFocus={this.toggleEditing}>
             {displaytext}
           </a>
@@ -250,12 +280,11 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     }
   }
 
-  public TableDetail(props): JSX.Element {
+  public TableDetail(props: { entity: ListDefinition, column: GridColumn, rowChanged: (event) => void; }): JSX.Element {
     const {entity, column, rowChanged} = props;
     if (this.state && this.state.editing && this.state.editing.entityid === entity.guid && this.state.editing.columnid === column.id) {
       return (<td data-entityid={entity.guid} data-columnid={column.id} style={{ border: "2px solid black", padding: "0px" }}>
-        <CellContentsEditable entity={entity} column={column} valueChanged={rowChanged} />
-
+        <this.CellContentsEditable entity={entity} column={column} valueChanged={rowChanged} />
       </td>
       );
     } else {
@@ -263,19 +292,16 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
         <this.CellContents entity={entity} column={column} rowChanged={rowChanged} />
       </td>
       );
-
     }
-
   }
-  public TableRow(props): JSX.Element {
+  public TableRow(props: { entity: ListDefinition, columns: Array<GridColumn>, rowChanged: (event) => void; }): JSX.Element {
     const {entity, columns, rowChanged} = props;
-
     return (
       <tr>
         {
           columns.map(function (column) {
             return (
-              <this.TableDetail key={column.guid} entity={entity} column={column} rowChanged={rowChanged} />
+              <this.TableDetail key={column.id} entity={entity} column={column} rowChanged={rowChanged} />
             );
           }, this)
         }
@@ -286,12 +312,8 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
         </td>
       </tr>);
   };
-
-
-
-  public TableRows(props): JSX.Element {
+  public TableRows(props: { entities: Array<ListDefinition>, columns: Array<GridColumn>, rowChanged: (event) => void; }): JSX.Element {
     const {entities, columns, rowChanged} = props;
-
     return (
       <tbody>
         {
@@ -303,19 +325,12 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
         }
       </tbody>
     );
-
   }
-
   public render() {
-
-
-
-
     return (
       <Container testid="columns" size={2} center>
         <h1>Lists</h1>
         <Button onClick={this.props.addList}>Add List</Button>
-
         <table border="1">
           <thead>
             <tr>
@@ -324,19 +339,15 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
               })}
             </tr>
           </thead>
-
           {
             <this.TableRows entities={this.props.lists} columns={this.extendedColumns} rowChanged={this.handleRowUpdated} />
 
           })}
-
-
         </table>
       </Container>
     );
   }
 }
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps

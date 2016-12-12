@@ -1,53 +1,29 @@
 import * as React from "react";
 const connect = require("react-redux").connect;
-
-import {Site, Web } from "../model/Site";
-
-
-
-
+import { Web } from "../model/Site";
 export interface KeyValue {
   value: any;
   displayName: string;
 }
-function mapStateToProps(state) {
-  return {
-    sites: state.sites
-
-  };
-}
-function mapDispatchToProps(dispatch) {
-  return {
-  };
-}
-
 export interface IWebEditorProps extends React.Props<any> {
-  value: string;
+  selectedValue?: string;
   onChange(event): void;
   webs: Array<Web>;
-  listid: string;
-  columnid: string;
 }
-
-class WebEditor extends React.Component<IWebEditorProps, void> {
+export default class WebEditor extends React.Component<IWebEditorProps, void> {
   constructor() {
     super();
     debugger;
     this.handleChange = this.handleChange.bind(this);
   }
- private handleChange(event) {
-
+  private handleChange(event) {
     this.props.onChange(event);
   }
-
   public render() {
-
-    const { value} = this.props;
-
-
+    const { selectedValue} = this.props;
     return (
-      <select value={value} onChange={this.handleChange} >
-        {this.props.webs.map( (web)=> {
+      <select value={selectedValue} onChange={this.handleChange} >
+        {this.props.webs.map((web) => {
           return (
             <option key={web.id} value={web.id + "#;" + web.title}  >{web.title}</option>
           );
@@ -57,7 +33,3 @@ class WebEditor extends React.Component<IWebEditorProps, void> {
     );
   };
 }
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WebEditor);

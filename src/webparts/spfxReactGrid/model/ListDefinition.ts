@@ -1,10 +1,10 @@
 ﻿// for eac of the columns to be displayed, which field in this list should we use
 import { Guid } from '@microsoft/sp-client-base';
 export class ColumnReference {
-    public constructor(
-        public columnId: string, // the id of the column in the list of columns
-        public fieldName: string, // the field in this list to display in that column
-        public type: string, // the type of field (text, datatime , note)
+        public constructor(
+        public columnDefinitionId:string, // the guid of the columnDefinition that this column refers to.
+        public internalName: string, // the internalName of the column in the list of columns
+        public name: string, // the field in this list to display in that column
     ) { }
 
 }

@@ -44,6 +44,8 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
   }
   protected onBeforeSerialize(): IHtmlProperties {
 
+  // this.properties.columns = [];
+ //  this.properties.lists =[];
     this.properties.columns = store.getState().columns;
     this.properties.lists =store.getState().lists;
     return super.onBeforeSerialize();
