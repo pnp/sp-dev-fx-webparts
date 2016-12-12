@@ -138,7 +138,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
         return;
       }
     }
-    let x = new ColumnReference(columnid, value, "text");
+    const x = new ColumnReference(columnid, value, "text");
     entity.columnReferences.push(x);
   }
   public handleRowUpdated(event): void {
@@ -177,7 +177,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     return node;
   }
   public getWebsForSite(siteUrl: string): Array<Web> {
-    for (let site of this.props.sites) {
+    for (const site of this.props.sites) {
       if (site.url === siteUrl) {
         return site.webs;
       }
@@ -185,8 +185,8 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     return [];
   }
   public getListsForWeb(webId: string): Array<WebList> {
-    for (let site of this.props.sites) {
-      for (let web of site.webs) {
+    for (const site of this.props.sites) {
+      for (const web of site.webs) {
         if (web.id === webId) {
           return web.lists;
         }
@@ -195,9 +195,9 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     return [];
   }
   public getFieldsForlist(listId: string): Array<WebListField> {
-    for (let site of this.props.sites) {
-      for (let web of site.webs) {
-        for (let list of web.lists) {
+    for (const site of this.props.sites) {
+      for (const web of site.webs) {
+        for (const list of web.lists) {
           if (list.id === listId) {
             return list.fields;
           }

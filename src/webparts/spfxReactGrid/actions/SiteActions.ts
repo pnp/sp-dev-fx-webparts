@@ -5,7 +5,7 @@ import {
 } from "../constants";
 import "whatwg-fetch";
 import pnp from "sp-pnp-js";
-import { Site, Web, WebList, WebListField } from "../model/Site";
+import {  Web, WebList, WebListField } from "../model/Site";
 export function getWebsAction(dispatch: any, siteUrl: string): any {
     // need allwebs
 

@@ -1,6 +1,5 @@
 import * as React from "react";
-const connect = require("react-redux").connect;
-import * as utils from "../utils/utils";
+
 export interface KeyValue {
   value: any;
   displayName: string;

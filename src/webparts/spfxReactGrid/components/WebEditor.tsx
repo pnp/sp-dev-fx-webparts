@@ -1,5 +1,4 @@
 import * as React from "react";
-const connect = require("react-redux").connect;
 import { Web } from "../model/Site";
 export interface KeyValue {
   value: any;
