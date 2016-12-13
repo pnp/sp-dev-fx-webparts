@@ -8,6 +8,9 @@ Simplistic sample Web Part that demonstrates the use of JavaScript in creating a
 
 > Does only show data when hosted in SharePoint. No mock data at this point for local testing the rendering.
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop3-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

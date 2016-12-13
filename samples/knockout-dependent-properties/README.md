@@ -8,6 +8,9 @@ Sample Web Part illustrating
 
 ![Sample Web Part implementing dependent properties in Property Pane](./assets/dep-props.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

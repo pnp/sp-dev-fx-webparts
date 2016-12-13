@@ -9,6 +9,9 @@ Sample webpart implementation that uses [Mobx](https://github.com/mobxjs/mobx) t
 ### Non-Reactive
 ![](https://i.gyazo.com/876858e31cf14de1b6d1a281a0636029.gif)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

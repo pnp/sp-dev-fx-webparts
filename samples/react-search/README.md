@@ -6,6 +6,9 @@ Sample Search Web Part with internal and external template support. This sample 
 
 ![Sample of the search web part](./assets/preview.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

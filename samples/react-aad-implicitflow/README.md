@@ -10,6 +10,9 @@ Sample SharePoint Framework client-side web part built using React showing upcom
 
 ![The upcoming meetings web part displayed in SharePoint workbench](./assets/upcoming-meetings-preview.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

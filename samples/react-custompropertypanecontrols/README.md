@@ -18,6 +18,9 @@ Cascading drop-downs in the property pane both using external data.
 
 ![Web part with cascading drop-downs in the property pane](./assets/cascading-dropdown-preview.gif)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

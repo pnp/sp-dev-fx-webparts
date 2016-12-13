@@ -6,6 +6,9 @@ This Web Part displays the Most Popular Items from the given Site/Document Libra
 
 ![Most Popular Items WebPart built using Angular and ngOfficeUIFabric](./assets/preview.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](https://github.com/SharePoint/sp-dev-docs/wiki)

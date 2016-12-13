@@ -6,6 +6,10 @@ File Update/Delete webpart using AngularJs and ngOfficeUIFabric with the SharePo
 ![File Upload using Angular](./assets/NG File Upload.png)
 
 Edit webpart properties to set Document library Name. Initially, It has been set to `Documents`.
+
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

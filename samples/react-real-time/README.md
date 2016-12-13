@@ -23,6 +23,9 @@ Here is the solution overview:
 5. When a new message is available, the web application emits the data to all subscribers via socket.io.
 6. The SPFx Web Part notifies user there are new items available. Items are effectively retrieved using REST according to received ids when the user clicks on the notification.
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

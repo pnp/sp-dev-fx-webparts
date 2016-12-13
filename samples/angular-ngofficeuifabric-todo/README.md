@@ -7,6 +7,9 @@ You can find a video recording walk-through this sample from [SharePoint PnP You
 
 ![Sample To do SharePoint Framework Client-Side Web Part built using Angular and ngOfficeUIFabric](./assets/preview.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop2-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

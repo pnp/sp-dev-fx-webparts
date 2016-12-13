@@ -18,6 +18,9 @@ display all the Lists associated with the site. Then all the items inside the Li
 
 > Note: I currently only have models developed for the Announcements List. All other lists will currently generate errors.
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

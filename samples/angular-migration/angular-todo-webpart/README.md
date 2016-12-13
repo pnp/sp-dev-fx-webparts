@@ -6,6 +6,9 @@ Sample SharePoint Framework client-side web part for managing tasks stored in a 
 
 ![Angular todo application as a SharePoint Framework client-side web part](../assets/angular-todo-spfx-preview.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop6-orange.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

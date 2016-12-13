@@ -5,6 +5,9 @@ A simple Organisation Chart webpart using Office UI Fabric, React, OData batchin
 
 ![Organisation Chart for the current user](./assets/orgchart.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

@@ -2,7 +2,10 @@
 
 This is where you include your web part docs.
 
-### Building the code
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop2-red.svg)
+
+## Building the code
 
 ```bash
 git clone the repo
@@ -17,7 +20,7 @@ This package produces the following:
 * dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
 * example/* a test page that hosts all components in this package.
 
-### Build options
+## Build options
 
 gulp nuke - TODO
 gulp test - TODO

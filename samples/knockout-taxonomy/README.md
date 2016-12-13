@@ -8,6 +8,9 @@ Sample Web Part illustrating
 
 ![Taxonomy Sample Web Part](./assets/Taxonomy.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

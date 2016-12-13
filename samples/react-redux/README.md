@@ -9,6 +9,9 @@ Sample webpart implementation that uses [Redux](https://github.com/reactjs/redux
 ### Non-Reactive
 ![](https://i.gyazo.com/1981f22fa6a162931a29ce8dad9c2657.gif)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
