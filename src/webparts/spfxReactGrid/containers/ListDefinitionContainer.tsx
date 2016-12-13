@@ -185,10 +185,10 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     }
     return [];
   }
-  public getListsForWeb(webId: string): Array<WebList> {
+  public getListsForWeb(webUrl: string): Array<WebList> {
     for (const site of this.props.sites) {
       for (const web of site.webs) {
-        if (web.id === webId) {
+        if (web.url === webUrl) {
           return web.lists;
         }
       }
@@ -242,7 +242,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
         let webs = this.getWebsForSite(entity.siteUrl);
         return (<WebEditor webs={webs} selectedValue={columnValue} onChange={valueChanged} />);
       case "ListEditor":
-        let lists = this.getListsForWeb(utils.ParseSPField(entity.webLookup).id);
+        let lists = this.getListsForWeb(utils.ParseSPField(entity.webLookup).id);// the Id portion of the WebLookup is the URL
         return (<ListEditor selectedValue={columnValue} onChange={valueChanged} lists={lists} />);
       case "FieldEditor":
         let fields = this.getFieldsForlist(utils.ParseSPField(entity.listLookup).id);

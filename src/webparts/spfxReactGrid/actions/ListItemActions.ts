@@ -11,6 +11,7 @@ import "whatwg-fetch";
 import { Promise } from "es6-promise";
 import * as utils from "../utils/utils";
 import pnp from "sp-pnp-js";
+import { Site, Web } from "sp-pnp-js";
 import ListItem from "../model/ListItem";
 import ListDefinition from "../model/ListDefinition";
 export function addListItem(listItem: ListItem) {
@@ -38,6 +39,7 @@ export function addListItems(listItems: ListItem[]) {
     };
 }
 export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDefinition>): any {
+    debugger;
     let promises: Array<Promise<any>> = new Array<Promise<any>>();
     for (let listDefinition of listDefinitions) {
         let fieldnames = new Array<string>();
@@ -45,10 +47,12 @@ export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDef
             let internalName = utils.ParseSPField(columnreference.name).id;
             fieldnames.push(internalName); // need to split
         }
-        let webid = utils.ParseSPField(listDefinition.webLookup).id;
+        let weburl = utils.ParseSPField(listDefinition.webLookup).id;
         let listid = utils.ParseSPField(listDefinition.listLookup).id;
         debugger;
-        const promise = pnp.sp.web.webs[webid].lists.getById(listid).items.select(fieldnames.join(",")).get()
+        let web = new Web(weburl);
+
+        const promise = web.lists.getById(listid).items.select(fieldnames.join(",")).get()
             .then((response) => {
                 const data = _.map(response, (item: any) => {
                     return new ListItem(item.Id, item.Title, item.GUID);
@@ -62,6 +66,8 @@ export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDef
                 dispatch(getListItemsErrorAction(error)); // need to ewname this one to be digfferent from the omported ome
             });
         promises.push(promise);
+
+
     }
     const action = {
         type: GET_LISTITEMS,

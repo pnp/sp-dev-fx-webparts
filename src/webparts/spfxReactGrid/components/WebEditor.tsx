@@ -24,7 +24,7 @@ export default class WebEditor extends React.Component<IWebEditorProps, void> {
       <select value={selectedValue} onChange={this.handleChange} >
         {this.props.webs.map((web) => {
           return (
-            <option key={web.id} value={web.id + "#;" + web.title}  >{web.title}</option>
+            <option key={web.id} value={web.url + "#;" + web.title}  >{web.title}</option>
           );
         }, this)
         }
