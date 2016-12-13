@@ -11,7 +11,7 @@ export function getWebsAction(dispatch: any, siteUrl: string): any {
 
     const payload = pnp.sp.site.rootWeb.webs.expand("lists,lists/fields").get()
         .then((response) => {
-            debugger;
+
             const data = _.map(response, (item: any) => {
                 const web: Web = new Web(item.Id, item.Title, item.Url);
                 for (const list of item.Lists) {

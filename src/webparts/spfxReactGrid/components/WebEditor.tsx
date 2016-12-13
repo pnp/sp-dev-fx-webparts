@@ -12,7 +12,7 @@ export interface IWebEditorProps extends React.Props<any> {
 export default class WebEditor extends React.Component<IWebEditorProps, void> {
   constructor() {
     super();
-    debugger;
+
     this.handleChange = this.handleChange.bind(this);
   }
   private handleChange(event) {

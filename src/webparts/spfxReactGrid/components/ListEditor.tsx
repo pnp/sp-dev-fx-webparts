@@ -11,7 +11,7 @@ export interface IListEditorProps extends React.Props<any> {
 export default class ListEditor extends React.Component<IListEditorProps, void> {
   constructor() {
     super();
-    debugger;
+
     this.handleChange = this.handleChange.bind(this);
   }
   private handleChange(event) {

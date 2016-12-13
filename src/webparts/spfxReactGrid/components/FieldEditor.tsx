@@ -11,7 +11,7 @@ export interface IListEditorProps extends React.Props<any> {
 }
 export default class FieldEditor extends React.Component<IListEditorProps, void> {
   constructor() {
-    debugger;
+
     super();
     this.handleChange = this.handleChange.bind(this);
   }

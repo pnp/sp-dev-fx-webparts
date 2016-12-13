@@ -4,6 +4,9 @@ export class ParsedSPField {
 
   ) { }
 }
+/** Parses a string that is deleimetted with '#;'. Returns a ParsedSPField where the id is the part befor the '#;' and the value is the part after the '#;'.
+ * if thi input parameter is null, the id and the string of the returned ParsedSPField object will be null.
+ */
 export function ParseSPField(fieldValue: string): ParsedSPField {
   if (fieldValue === null) {
     return new ParsedSPField(null, null);

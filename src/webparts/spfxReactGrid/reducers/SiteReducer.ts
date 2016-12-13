@@ -8,7 +8,7 @@ function siteReducer(state: Array<Site> = INITIAL_STATE, action: any = { type: "
 
     switch (action.type) {
         case GOT_WEBS:
-    debugger;
+
             let site: Site = new Site(action.payload.siteUrl);
             site.webs = action.payload.webs;
             return _.union(state, new Array<Site>(site));

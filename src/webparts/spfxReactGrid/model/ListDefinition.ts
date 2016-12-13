@@ -3,8 +3,10 @@ import { Guid } from '@microsoft/sp-client-base';
 export class ColumnReference {
         public constructor(
         public columnDefinitionId:string, // the guid of the columnDefinition that this column refers to.
-        public internalName: string, // the internalName of the column in the list of columns
-        public name: string, // the field in this list to display in that column
+        //public internalName: string, // the internalName of the column in the list of columns
+        /**The name is stored as 'internalnName#;Name */
+        public name: string, // the field in this list to display in that column (stored as 'internalname#;displayname')
+
     ) { }
 
 }

@@ -26,7 +26,7 @@ function listReducer(state: Array<ListDefinition> = INITIAL_STATE, action: any =
         case ADD_LISTS:
             return _.union(state, action.payload.lists);
         case REMOVE_COLUMN:
-        debugger;
+
             let listrefs = _.clone(state);
             for (let listref of listrefs) {
                 for (let i = listref.columnReferences.length - 1; i >= 0; i--) {

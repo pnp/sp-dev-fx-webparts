@@ -50,7 +50,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(removeList(list));
     },
     getWebs: (siteUrl): Promise<any> => {
-      debugger;
+
       return dispatch(getWebsAction(dispatch, siteUrl));
     },
     saveList: (list): void => {
@@ -100,7 +100,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
   public extendedColumns: Array<GridColumn> = [];
   public constructor() {
     super();
-    debugger;
+
     this.getWebsForSite = this.getWebsForSite.bind(this);
     this.getListsForWeb = this.getListsForWeb.bind(this);
     this.getFieldsForlist = this.getFieldsForlist.bind(this);
@@ -116,7 +116,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
   }
   public componentWillMount(): void {
     if (this.props.sites.length === 0) {
-      debugger;
+
       this.props.getWebs("https://rgove3.sharepoint.com/sites/dev");
     }
     this.extendedColumns = _.clone(this.defaultColumns);
@@ -138,7 +138,8 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
         return;
       }
     }
-    const x = new ColumnReference(columnid, value, "text");
+
+    const x = new ColumnReference(columnid, value);
     entity.columnReferences.push(x);
   }
   public handleRowUpdated(event): void {
@@ -230,7 +231,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
       columnValue = entity[column.name];
     }
     else {
-      debugger;
+
       const colRef: ColumnReference = this.GetColumnReferenence(entity, column.id);
       if (colRef) {
         columnValue = this.GetColumnReferenence(entity, column.id).name;

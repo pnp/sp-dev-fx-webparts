@@ -3,21 +3,25 @@ const connect = require("react-redux").connect;
 import { addListItem, removeListItem, getListItemsAction } from "../actions/listItemActions";
 import ListItem from "../model/ListItem";
 import ColumnDefinition from "../model/ColumnDefinition";
+import ListDefinition from "../model/ListDefinition";
 import Container from "../components/container";
 import { Guid, Log } from "@microsoft/sp-client-base";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 interface IListViewPageProps extends React.Props<any> {
   listItems: Array<ListItem>;
   columns: Array<ColumnDefinition>;
+  listDefinitions: Array<ListDefinition>;
   addListItem: (ListItem) => void;
   removeListItem: (ListItem) => void;
-  getListItems: () => void;
+  getListItems: (listDefinitions: Array<ListDefinition>) => void;
   updateListItem: (ListItem) => void;
 }
 function mapStateToProps(state) {
+
   return {
     listItems: state.items,
     columns: state.columns,
+    listDefinitions: state.lists
   };
 }
 export class GridColumn {
@@ -34,8 +38,8 @@ function mapDispatchToProps(dispatch) {
     addListItem: (): void => {
       dispatch(addListItem(new ListItem("1", "test Item", "123-123123123-123123-123123")));
     },
-    getListItems: (): void => {
-      let promise: Promise<any> = getListItemsAction(dispatch);
+    getListItems: (listDefinitions: Array<ListDefinition>): void => {
+        let promise: Promise<any> = getListItemsAction(dispatch, listDefinitions);
       dispatch(promise); // need to ewname this one to be digfferent from the omported ome
     },
     removeListItem: (): void => {
@@ -43,13 +47,13 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
-interface IGridProps {
+interface IGridState {
   editing: {
     entityid: string;
     columnid: string;
   };
 }
-class ListItemContainer extends React.Component<IListViewPageProps, IGridProps> {
+class ListItemContainer extends React.Component<IListViewPageProps, IGridState> {
   public constructor() {
     super();
     this.CellContentsEditable = this.CellContentsEditable.bind(this);
@@ -61,7 +65,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridProps> 
     this.handleRowUpdated = this.handleRowUpdated.bind(this);
   }
   public componentWillMount() {
-    this.props.getListItems();
+    this.props.getListItems(this.props.listDefinitions);
   }
   public getParent(node: Node, type: string): Node {
     while (node.nodeName !== "TD") {
