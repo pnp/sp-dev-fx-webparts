@@ -1,6 +1,6 @@
 ## spfxreactgrid
 
-This is where you include your web part docs.
+A Sharepoint Grid built using SPFX, React and Redux. Lets users edit listdata from multiple Webs and Multiple Sites.
 
 ### Building the code
 
