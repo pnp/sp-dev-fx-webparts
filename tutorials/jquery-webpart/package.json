@@ -1,0 +1,28 @@
+{
+  "name": "jquery-webpart",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "@microsoft/sp-client-base": "~0.5.1",
+    "@microsoft/sp-client-preview": "~0.7.1",
+    "@microsoft/sp-webpart-base": "~0.2.1",
+    "@types/jquery": "^2.0.34",
+    "@types/jqueryui": "^1.11.32",
+    "jquery": "^3.1.1",
+    "jqueryui": "^1.11.1"
+  },
+  "devDependencies": {
+    "@microsoft/sp-build-web": "~0.8.1",
+    "@microsoft/sp-module-interfaces": "~0.5.1",
+    "@microsoft/sp-webpart-workbench": "~0.6.1",
+    "gulp": "~3.9.1"
+  },
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp nuke",
+    "test": "gulp test"
+  }
+}
