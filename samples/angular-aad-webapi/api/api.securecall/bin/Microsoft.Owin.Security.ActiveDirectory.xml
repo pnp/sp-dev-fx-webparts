@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Owin.Security.ActiveDirectory</name>
+    </assembly>
+    <members>
+        <member name="T:Owin.ActiveDirectoryFederationServicesBearerAuthenticationExtensions">
+            <summary>
+            Extension methods provided by the ADFS JWT bearer token middleware.
+            </summary>
+        </member>
+        <member name="M:Owin.ActiveDirectoryFederationServicesBearerAuthenticationExtensions.UseActiveDirectoryFederationServicesBearerAuthentication(Owin.IAppBuilder,Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions)">
+            <summary>
+            Adds Active Directory Federation Services (ADFS) issued JWT bearer token middleware to your web application pipeline.
+            </summary>
+            <param name="app">The IAppBuilder passed to your configuration method.</param>
+            <param name="options">An options class that controls the middleware behavior.</param>
+            <returns>The original app parameter.</returns>
+        </member>
+        <member name="T:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions">
+            <summary>
+            Options to configure the Active Directory Federation Services JWT middleware.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.MetadataEndpoint">
+            <summary>
+            Gets or sets the WSFed Metadata Endpoint for the Security Token Service JWTs will be issued from.
+            </summary>
+            <value>
+            The WSFed Metadata Endpoint for the Security Token Service JWTs will be issued from.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.Audience">
+            <summary>
+            Gets or sets the expected audience for any received JWT token.
+            </summary>
+            <value>
+            The expected audience for any received JWT token.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.Realm">
+            <summary>
+            Gets or sets the authentication realm.
+            </summary>
+            <value>
+            The authentication realm.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.Provider">
+            <summary>
+            Gets or sets the authentication provider.
+            </summary>
+            <value>
+            The provider.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.BackchannelCertificateValidator">
+            <summary>
+            Gets or sets the a certificate validator to use to validate the metadata endpoint.
+            </summary>
+            <value>
+            The certificate validator.
+            </value>
+            <remarks>If this property is null then the default certificate checks are performed,
+            validating the subject name and if the signing chain is a trusted party.</remarks>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.BackchannelTimeout">
+            <summary>
+            Gets or sets timeout value in for back channel communications with the metadata endpoint.
+            </summary>
+            <value>
+            The back channel timeout.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.BackchannelHttpHandler">
+            <summary>
+            The HttpMessageHandler used to communicate with the metadata endpoint.
+            This cannot be set at the same time as BackchannelCertificateValidator unless the value
+            can be downcast to a WebRequestHandler.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.TokenValidationParameters">
+            <summary>
+            Gets or sets the <see cref="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.TokenValidationParameters"/> used to determine if a token is valid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.ActiveDirectoryFederationServicesBearerAuthenticationOptions.TokenHandler">
+            <summary>
+            A System.IdentityModel.Tokens.SecurityTokenHandler designed for creating and validating Json Web Tokens.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Security.ActiveDirectory.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.Properties.Resources.Exception_MissingDescriptor">
+            <summary>
+              Looks up a localized string similar to No SecurityTokenServiceType descriptor in metadata..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.Properties.Resources.Exception_OptionMustBeProvided">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; option must be provided..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.Properties.Resources.Exception_ValidatorHandlerMismatch">
+            <summary>
+              Looks up a localized string similar to An ICertificateValidator cannot be specified at the same time as an HttpMessageHandler unless it is a WebRequestHandler..
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Security.ActiveDirectory.WsFedCachingSecurityTokenProvider">
+            <summary>
+            A security token provider which retrieves the issuer and signing tokens from a WSFed metadata endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WsFedCachingSecurityTokenProvider.Issuer">
+            <summary>
+            Gets the issuer the credentials are for.
+            </summary>
+            <value>
+            The issuer the credentials are for.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WsFedCachingSecurityTokenProvider.SecurityTokens">
+            <summary>
+            Gets all known security tokens.
+            </summary>
+            <value>
+            All known security tokens.
+            </value>
+        </member>
+        <member name="T:Microsoft.Owin.Security.ActiveDirectory.IssuerSigningKeys">
+            <summary>
+            Signing metadata parsed from a WSFed endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.IssuerSigningKeys.Issuer">
+            <summary>
+            The token issuer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.IssuerSigningKeys.Tokens">
+            <summary>
+            Signing tokens.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Security.ActiveDirectory.WsFedMetadataRetriever">
+            <summary>
+            Helper for parsing WSFed metadata.
+            </summary>
+        </member>
+        <member name="T:Owin.WindowsAzureActiveDirectoryBearerAuthenticationExtensions">
+            <summary>
+            Extension methods provided by the Windows Azure Active Directory JWT bearer token middleware.
+            </summary>
+        </member>
+        <member name="M:Owin.WindowsAzureActiveDirectoryBearerAuthenticationExtensions.UseWindowsAzureActiveDirectoryBearerAuthentication(Owin.IAppBuilder,Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions)">
+            <summary>
+            Adds Windows Azure Active Directory (WAAD) issued JWT bearer token middleware to your web application pipeline.
+            </summary>
+            <param name="app">The IAppBuilder passed to your configuration method.</param>
+            <param name="options">An options class that controls the middleware behavior.</param>
+            <returns>The original app parameter.</returns>
+        </member>
+        <member name="T:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions">
+            <summary>
+            Options to configure the Windows Azure Active Directory JWT middleware.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.Audience">
+            <summary>
+            Gets or sets the expected audience for any received JWT token.
+            </summary>
+            <value>
+            The expected audience for any received JWT token.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.Realm">
+            <summary>
+            Gets or sets the authentication realm.
+            </summary>
+            <value>
+            The authentication realm.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.Tenant">
+            <summary>
+            Gets or sets the Azure Active Directory tenant the tokens are issued from.
+            </summary>
+            <value>
+            The Azure Active Directory tenant the tokens are issued from.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.MetadataAddress">
+            <summary>
+            Gets or sets the address to retrieve the configuration metadata
+            This can be generated from the Tenant if present.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.Provider">
+            <summary>
+            Gets or sets the authentication provider.
+            </summary>
+            <value>
+            The provider.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.BackchannelCertificateValidator">
+            <summary>
+            Gets or sets the a certificate validator to use to validate the metadata endpoint.
+            </summary>
+            <value>
+            The certificate validator.
+            </value>
+            <remarks>If this property is null then the default certificate checks are performed,
+            validating the subject name and if the signing chain is a trusted party.</remarks>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.BackchannelTimeout">
+            <summary>
+            Gets or sets timeout value in for back channel communications with the metadata endpoint.
+            </summary>
+            <value>
+            The back channel timeout.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.BackchannelHttpHandler">
+            <summary>
+            The HttpMessageHandler used to communicate with the metadata endpoint.
+            This cannot be set at the same time as BackchannelCertificateValidator unless the value
+            can be downcast to a WebRequestHandler.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.TokenValidationParameters">
+            <summary>
+            Gets or sets the <see cref="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.TokenValidationParameters"/> used to determine if a token is valid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.ActiveDirectory.WindowsAzureActiveDirectoryBearerAuthenticationOptions.TokenHandler">
+            <summary>
+            A System.IdentityModel.Tokens.SecurityTokenHandler designed for creating and validating Json Web Tokens.
+            </summary>
+        </member>
+    </members>
+</doc>

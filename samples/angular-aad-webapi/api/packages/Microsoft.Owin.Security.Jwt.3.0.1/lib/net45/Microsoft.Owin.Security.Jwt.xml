@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Owin.Security.Jwt</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Owin.Security.Jwt.IIssuerSecurityTokenProvider">
+            <summary>
+            Provides security token information to the implementing class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.IIssuerSecurityTokenProvider.Issuer">
+            <summary>
+            Gets the issuer the credentials are for.
+            </summary>
+            <value>
+            The issuer the credentials are for.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.IIssuerSecurityTokenProvider.SecurityTokens">
+            <summary>
+            Gets all known security tokens.
+            </summary>
+            <value>
+            All known security tokens.
+            </value>
+        </member>
+        <member name="T:Owin.JwtBearerAuthenticationExtensions">
+            <summary>
+            Extension methods provided by the JWT bearer token middleware.
+            </summary>
+        </member>
+        <member name="M:Owin.JwtBearerAuthenticationExtensions.UseJwtBearerAuthentication(Owin.IAppBuilder,Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions)">
+            <summary>
+            Adds JWT bearer token middleware to your web application pipeline.
+            </summary>
+            <param name="app">The IAppBuilder passed to your configuration method.</param>
+            <param name="options">An options class that controls the middleware behavior.</param>
+            <returns>The original app parameter.</returns>
+        </member>
+        <member name="T:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions">
+            <summary>
+            Options for JWT Bearer Token handler configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions.AllowedAudiences">
+            <summary>
+            Gets or sets the allowed audiences an inbound JWT will be checked against.
+            </summary>
+            <value>
+            The allowed audiences.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions.IssuerSecurityTokenProviders">
+            <summary>
+            Gets or sets the issuer security token providers which provide the signing keys
+            a JWT signature is checked against.
+            </summary>
+            <value>
+            The issuer security token providers.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions.Provider">
+            <summary>
+            Gets or sets the authentication provider.
+            </summary>
+            <value>
+            The provider.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions.Realm">
+            <summary>
+            Gets or sets the authentication realm.
+            </summary>
+            <value>
+            The authentication realm.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions.TokenValidationParameters">
+            <summary>
+            Gets or sets the <see cref="P:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions.TokenValidationParameters"/> used to determine if a token is valid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtBearerAuthenticationOptions.TokenHandler">
+            <summary>
+            A System.IdentityModel.Tokens.SecurityTokenHandler designed for creating and validating Json Web Tokens.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Security.Jwt.JwtFormat">
+            <summary>
+            Signs and validates JSON Web Tokens.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.JwtFormat.#ctor">
+            <summary>
+            Creates a new JwtFormat with TokenHandler and UseTokenLifetime enabled by default.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.JwtFormat.#ctor(System.String,Microsoft.Owin.Security.Jwt.IIssuerSecurityTokenProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.JwtFormat"/> class.
+            </summary>
+            <param name="allowedAudience">The allowed audience for JWTs.</param>
+            <param name="issuerCredentialProvider">The issuer credential provider.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if the <paramref name="issuerCredentialProvider"/> is null.</exception>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.JwtFormat.#ctor(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Microsoft.Owin.Security.Jwt.IIssuerSecurityTokenProvider})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.JwtFormat"/> class.
+            </summary>
+            <param name="allowedAudiences">The allowed audience for JWTs.</param>
+            <param name="issuerCredentialProviders">The issuer credential provider.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if the <paramref name="issuerCredentialProviders"/> is null.</exception>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.JwtFormat.#ctor(System.IdentityModel.Tokens.TokenValidationParameters)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.JwtFormat"/> class.
+            </summary>
+            <param name="validationParameters"> <see cref="T:System.IdentityModel.Tokens.TokenValidationParameters"/> used to determine if a token is valid.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if the <paramref name="validationParameters"/> is null.</exception>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.JwtFormat.Protect(Microsoft.Owin.Security.AuthenticationTicket)">
+            <summary>
+            Transforms the specified authentication ticket into a JWT.
+            </summary>
+            <param name="data">The authentication ticket to transform into a JWT.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.JwtFormat.Unprotect(System.String)">
+            <summary>
+            Validates the specified JWT and builds an AuthenticationTicket from it.
+            </summary>
+            <param name="protectedText">The JWT to validate.</param>
+            <returns>An AuthenticationTicket built from the <paramref name="protectedText"/></returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if the <paramref name="protectedText"/> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the <paramref name="protectedText"/> is not a JWT.</exception>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtFormat.ValidateIssuer">
+            <summary>
+            Gets or sets a value indicating whether JWT issuers should be validated.
+            </summary>
+            <value>
+            true if the issuer should be validate; otherwise, false.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtFormat.TokenHandler">
+            <summary>
+            A System.IdentityModel.Tokens.SecurityTokenHandler designed for creating and validating Json Web Tokens.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.JwtFormat.UseTokenLifetime">
+            <summary>
+            Indicates that the authentication session lifetime (e.g. cookies) should match that of the authentication token.
+            If the token does not provide lifetime information then normal session lifetimes will be used.
+            This is enabled by default.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Security.Jwt.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.Properties.Resources.Exception_AudiencesMustBeSpecified">
+            <summary>
+              Looks up a localized string similar to One or more audiences must be specified..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.Properties.Resources.Exception_CannotValidateIssuer">
+            <summary>
+              Looks up a localized string similar to JWT does not contain an issuer and ValidateIssuer=true..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.Properties.Resources.Exception_InvalidJwt">
+            <summary>
+              Looks up a localized string similar to Invalid JWT..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.Properties.Resources.Exception_IssuerCredentialProvidersMustBeSpecified">
+            <summary>
+              Looks up a localized string similar to One or more issuer credential providers must be specified..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.Properties.Resources.Exception_UnknownIssuer">
+            <summary>
+              Looks up a localized string similar to Issuer not known..
+            </summary>
+        </member>
+        <member name="T:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider">
+            <summary>
+            Implements an <see cref="T:Microsoft.Owin.Security.Jwt.IIssuerSecurityTokenProvider"/> for symmetric key signed JWTs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider.#ctor(System.String,System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider"/> class.
+            </summary>
+            <param name="issuer">The issuer of a JWT token.</param>
+            <param name="key">The symmetric key a JWT is signed with.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the issuer is null.</exception>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider.#ctor(System.String,System.Collections.Generic.IEnumerable{System.Byte[]})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider"/> class.
+            </summary>
+            <param name="issuer">The issuer of a JWT token.</param>
+            <param name="keys">Symmetric keys a JWT could be signed with.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the issuer is null.</exception>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider"/> class.
+            </summary>
+            <param name="issuer">The issuer of a JWT token.</param>
+            <param name="base64Key">The base64 encoded symmetric key a JWT is signed with.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when the issuer is null.</exception>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider"/> class.
+            </summary>
+            <param name="issuer">The issuer of a JWT token.</param>
+            <param name="base64Keys">The base64 encoded symmetric keys a JWT could be signed with.</param>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider.Issuer">
+            <summary>
+            Gets the issuer the signing keys are for.
+            </summary>
+            <value>
+            The issuer the signing keys are for.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.SymmetricKeyIssuerSecurityTokenProvider.SecurityTokens">
+            <summary>
+            Gets all known security tokens.
+            </summary>
+            <returns>
+            All known security tokens.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Owin.Security.Jwt.X509CertificateSecurityTokenProvider">
+            <summary>
+            Implements an <see cref="T:Microsoft.Owin.Security.Jwt.IIssuerSecurityTokenProvider"/> for X509 JWTs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Owin.Security.Jwt.X509CertificateSecurityTokenProvider.#ctor(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Owin.Security.Jwt.X509CertificateSecurityTokenProvider"/> class.
+            </summary>
+            <param name="issuer">The issuer.</param>
+            <param name="certificate">The certificate.</param>
+            <exception cref="T:System.ArgumentNullException">
+            issuer
+            or
+            certificate
+            </exception>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.X509CertificateSecurityTokenProvider.Issuer">
+            <summary>
+            Gets the issuer the credentials are for.
+            </summary>
+            <value>
+            The issuer the credentials are for.
+            </value>
+        </member>
+        <member name="P:Microsoft.Owin.Security.Jwt.X509CertificateSecurityTokenProvider.SecurityTokens">
+            <summary>
+            Gets all known security tokens.
+            </summary>
+            <value>
+            All known security tokens.
+            </value>
+        </member>
+    </members>
+</doc>
