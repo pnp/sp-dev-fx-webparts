@@ -4,10 +4,10 @@
 
 Sample SharePoint Framework client-side web part illustrating communication with a custom Web API secured with Azue Active Directory using Angular v1.x
 
-![Sample showing the client-side web part](./assets/preview.jpg)
+![Sample showing the client-side web part](../assets/preview.jpg)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
 
 ## Applies to
 
