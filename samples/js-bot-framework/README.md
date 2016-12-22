@@ -68,6 +68,8 @@ Version|Date|Comments
   - configure bot name and web chat secret key
 ![preview](./assets/preview.png)
   - type hello and proceed with site creation process 
+- final output
+![botregister-step4](./assets/botregister-step4.png)
 
 ## Features
 
