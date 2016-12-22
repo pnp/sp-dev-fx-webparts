@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SharePoint Framework client-side web part samples & tutorial materials
 
 This repo contains the samples that demonstrate different usage patterns for the SharePoint Framework client-side web parts. 
@@ -62,3 +63,31 @@ These samples are direct from the feature teams, SharePoint PnP core team (http:
 Please have a look on our [Contribution Guidance](./.github/CONTRIBUTING.md) before submitting your pull requests, so that we can get your contribution processed as fast as possible. Thx. 
 
 > Sharing is caring!
+=======
+## spfxreactgrid
+
+A Sharepoint Grid built using SPFX, React and Redux. Lets users edit listdata from multiple Webs and Multiple Sites.
+
+### Building the code
+
+```bash
+git clone the repo
+npm i
+npm i -g gulp
+gulp
+```
+
+This package produces the following:
+
+* lib/* commonjs components - this allows this package to be reused from other packages.
+* dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
+* example/* a test page that hosts all components in this package.
+
+### Build options
+
+gulp nuke - TODO
+gulp test - TODO
+gulp watch - TODO
+gulp build - TODO
+gulp deploy - TODO
+>>>>>>> 5d8d0883b1457580d5e4b0312ed423805102699c

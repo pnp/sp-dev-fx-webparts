@@ -1,0 +1,11 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/types/typed-react-select/3f75176e4f59612e6bad27246af8f577d048dc2d/typings.json",
+    "raw": "registry:npm/react-select#1.0.0+20160723033700",
+    "main": "lib/Select.d.ts",
+    "version": "1.0.0",
+    "name": "react-select",
+    "type": "typings"
+  }
+}
