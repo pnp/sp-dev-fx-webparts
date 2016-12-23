@@ -79,3 +79,4 @@ This project illustrates the following concepts:
 - how to create a sub-site by posting set of questions to the user via bot 
 - bot form field validations 
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-bot-framework" />
