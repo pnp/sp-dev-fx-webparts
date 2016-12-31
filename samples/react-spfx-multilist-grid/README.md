@@ -54,10 +54,10 @@ Usage:
 ![alt tag](/samples/react-spfx-multilist-grid/src/images/columnDefinitions.PNG)
 
 2. Define the lists to be edited
-![alt tag](/src/images/ListDefinitions.PNG)
+![alt tag](/samples/react-spfx-multilist-grid/src/images/ListDefinitions.PNG)
 
 3. Edit the info
-![alt tag](/src/images/editListItems.PNG)
+![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
 
