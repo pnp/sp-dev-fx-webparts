@@ -7,7 +7,6 @@
 
   // Controls if the editor should automatically close brackets after opening them
   "editor.autoClosingBrackets": false,
-
   // Configure glob patterns for excluding files and folders.
   "search.exclude": {
     "**/bower_components": true,

@@ -21,7 +21,7 @@ An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit l
 
 Solution|Author(s)
 --------|---------
-src| Russell Gove
+ react-spfx-multilist-grid | Russell Gove
 
 ## Version history
 
@@ -51,7 +51,7 @@ An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit l
 Usage:
 
 1. Define the columns to be shown in the grid
-![alt tag](/src/images/columnDefinitions.PNG)
+![alt tag](/samples / react-spfx-multilist-grid/src/images/columnDefinitions.PNG)
 
 2. Define the lists to be edited
 ![alt tag](/src/images/ListDefinitions.PNG)
