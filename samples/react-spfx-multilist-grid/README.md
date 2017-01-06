@@ -3,7 +3,7 @@
 ## Summary
 An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from multiple Webs and Multiple Sites in a single grid.
 
-![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
+![alt tag](/src/images/editListItems.PNG)
 
 
 ## Applies to
@@ -21,7 +21,7 @@ An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit l
 
 Solution|Author(s)
 --------|---------
- react-spfx-multilist-grid | Russell Gove
+src| Russell Gove
 
 ## Version history
 
@@ -51,13 +51,13 @@ An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit l
 Usage:
 
 1. Define the columns to be shown in the grid
-![alt tag](/samples/react-spfx-multilist-grid/src/images/columnDefinitions.PNG)
+![alt tag](/src/images/columnDefinitions.PNG)
 
 2. Define the lists to be edited
-![alt tag](/samples/react-spfx-multilist-grid/src/images/ListDefinitions.PNG)
+![alt tag](/src/images/ListDefinitions.PNG)
 
 3. Edit the info
-![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
+![alt tag](/src/images/editListItems.PNG)
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
 
