@@ -82,3 +82,5 @@ Version|Date|Comments
 > aquires the bearer token and then never finishes the call, I believe that is because the app is reloading, not quite
 > sure how to fix that yet. There is definitely room to improved the user experience but the main logic and functionality
 > is here. Thanks!
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-aad-webapi" />

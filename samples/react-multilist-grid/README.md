@@ -6,6 +6,9 @@ An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit l
 ![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
 
 
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -59,7 +62,7 @@ Usage:
 3. Edit the info
 ![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-multilist-grid" />
 
 
 
