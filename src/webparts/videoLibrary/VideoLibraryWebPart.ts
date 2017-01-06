@@ -36,9 +36,16 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
+                PropertyPaneTextField("description", {
                   label: strings.DescriptionFieldLabel
-                })
+                }),
+                PropertyPaneTextField("videoChannel", {
+                  label: strings.VideoChannelFieldLabel
+                }),
+                PropertyPaneTextField("listName", {
+                  label: strings.ListNameFieldLabel
+                }),
+
               ]
             }
           ]
