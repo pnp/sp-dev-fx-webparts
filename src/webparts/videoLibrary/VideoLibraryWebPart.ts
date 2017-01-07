@@ -6,7 +6,7 @@ import {
   IWebPartContext,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-
+import { O365Video } from "../O365VUtilities";
 import * as strings from 'videoLibraryStrings';
 import VideoLibrary, { IVideoLibraryProps } from './components/VideoLibrary';
 import { IVideoLibraryWebPartProps } from './IVideoLibraryWebPartProps';
@@ -18,6 +18,13 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
   }
 
   public render(): void {
+    debugger;
+    const httpclient = this.context.httpClient;
+    let o365v = new O365Video(this.context);
+    o365v.Initialize().then((settings)=>{
+         const channels = o365v.getChannels();
+    })
+
     const element: React.ReactElement<IVideoLibraryProps> = React.createElement(VideoLibrary, {
       description: this.properties.description
     });
