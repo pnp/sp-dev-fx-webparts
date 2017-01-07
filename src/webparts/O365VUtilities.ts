@@ -123,10 +123,10 @@ export class O365Video {
     public GetVideos(ChannelId: string): Promise<Array<Video>> {
         const url = this.videoServiceSettings.VideoPortalUrl + "/_api/VideoService/Channels('" + ChannelId + "')/Videos";
         return this.httpClient.get(url).then(response => {
-            debugger;
+     
             if (response.ok) {
                 return response.json().then(v => {
-                    debugger;
+                
                     const videos = v.value.map(c => {
                         let video = new Video();
                         video.ChannelID = c.ChannelID;
@@ -137,7 +137,8 @@ export class O365Video {
                         video.OwnerName = c.OwnerName;
                         video.ServerRelativeUrl = c.ServerRelativeUrl;
                         video.Title = c.Title;
-                        video.Url = c.Url;
+                          video.ThumbnailUrl = c.ThumbnailUrl;
+                      video.Url = c.Url;
                         video.VideoDownloadUrl = c.VideoDownloadUrl;
                         video.VideoDurationInSeconds = c.VideoDurationInSeconds;
                         video.VideoProcessingStatus = c.VideoProcessingStatus;

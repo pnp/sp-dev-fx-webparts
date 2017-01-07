@@ -4,6 +4,7 @@ declare interface IVideoLibraryStrings {
   DescriptionFieldLabel: string;
   VideoChannelFieldLabel:string;
   ListNameFieldLabel:string;
+  LayoutFieldLabel:string
 }
 
 declare module "videoLibraryStrings" {

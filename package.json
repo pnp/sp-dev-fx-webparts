@@ -11,6 +11,7 @@
     "@microsoft/sp-webpart-base": "~0.2.1",
     "office-ui-fabric-react": "0.36.0",
     "react": "0.14.8",
+    "react-3d-carousel": "0.0.6",
     "react-dom": "0.14.8"
   },
   "devDependencies": {

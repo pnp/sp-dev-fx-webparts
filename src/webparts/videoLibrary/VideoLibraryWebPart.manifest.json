@@ -14,7 +14,8 @@
     "description": { "default": "Integrate Office#65 Vido with SharePoint" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "VideoLibrary"
+      "description": "VideoLibrary",
+      "layout":"prism"
     }
   }]
 }

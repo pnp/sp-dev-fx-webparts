@@ -4,6 +4,7 @@ define([], function() {
     "BasicGroupName": "Group Name",
     "DescriptionFieldLabel": "Description Field",
     "VideoChannelFieldLabel":"Video Channel",
-    "ListNameFieldLabel":"List Name"
+    "ListNameFieldLabel":"List Name",
+    "LayoutFieldLabel":"Layout"
   }
 });
