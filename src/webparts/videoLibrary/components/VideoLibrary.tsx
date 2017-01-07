@@ -3,8 +3,9 @@ import { css } from 'office-ui-fabric-react';
 
 import styles from '../VideoLibrary.module.scss';
 import { IVideoLibraryWebPartProps } from '../IVideoLibraryWebPartProps';
-
+import {  Video } from "../../O365VUtilities";
 export interface IVideoLibraryProps extends IVideoLibraryWebPartProps {
+videos:Array<Video>
 }
 
 export default class VideoLibrary extends React.Component<IVideoLibraryProps, {}> {
