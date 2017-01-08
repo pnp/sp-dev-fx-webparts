@@ -31,7 +31,8 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
       videoChannel: this.properties.videoChannel,
       o365Video: this.O365Video,
       layout: this.properties.layout,
-      duration:this.properties.duration
+      duration:this.properties.duration,
+      panels:this.properties.panels
     };
     const element: React.ReactElement<IVideoLibraryProps> = React.createElement(VideoLibrary, props);
 
@@ -100,6 +101,11 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
                   label: strings.DurationFieldLabel,
                   min: 1,
                   max: 1000
+                }),
+                  PropertyPaneSlider("panels", {
+                  label: strings.PanelsFieldLabel,
+                  min: 1,
+                  max: 5
                 }),
                 
                 //   PropertyPaneTextField("listName", channelDropDownProps),
