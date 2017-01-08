@@ -5,7 +5,8 @@ import {
   IPropertyPaneSettings,
   IWebPartContext,
   PropertyPaneTextField,
-  PropertyPaneDropdown, IPropertyPaneDropdownProps, IPropertyPaneDropdownOption
+  PropertyPaneDropdown, IPropertyPaneDropdownProps, IPropertyPaneDropdownOption,
+  PropertyPaneSlider, IPropertyPaneSliderProps
 } from '@microsoft/sp-webpart-base';
 import { O365Video, Video, VideoChannel, VideoServiceSettings } from "../O365VUtilities";
 import * as strings from 'videoLibraryStrings';
@@ -30,6 +31,7 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
       videoChannel: this.properties.videoChannel,
       o365Video: this.O365Video,
       layout: this.properties.layout,
+      duration:this.properties.duration
     };
     const element: React.ReactElement<IVideoLibraryProps> = React.createElement(VideoLibrary, props);
 
@@ -84,7 +86,7 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
                 PropertyPaneDropdown("videoChannel", {
                   label: strings.VideoChannelFieldLabel,
                   options: this.channels,
-              
+
                 }),
                 PropertyPaneDropdown("layout", {
                   label: strings.LayoutFieldLabel,
@@ -92,8 +94,14 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
                     { key: "prism", text: "prism" },
                     { key: "clssic", text: "classic" }
                   ]
-            
+
                 }),
+                PropertyPaneSlider("duration", {
+                  label: strings.DurationFieldLabel,
+                  min: 1,
+                  max: 1000
+                }),
+                
                 //   PropertyPaneTextField("listName", channelDropDownProps),
 
               ]

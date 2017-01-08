@@ -4,4 +4,5 @@ export interface IVideoLibraryWebPartProps {
   videoChannel: string;
   o365Video: O365Video;
   layout:string;
+  duration:number;
 }

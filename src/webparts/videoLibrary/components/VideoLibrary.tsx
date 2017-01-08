@@ -10,7 +10,7 @@ export interface IVideoLibraryProps extends IVideoLibraryWebPartProps {
 }
 export interface IVideoLibraryState {
   images: Array<string>;
-  duration: string;
+  duration: number;
   ease: string;
   width: number;
   sides: number;
@@ -27,7 +27,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
 
 
     this.state = {
-      duration: "400",
+      duration: 400,
       ease: "linear",
       width: 400,
       sides: 3,
@@ -83,7 +83,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
           sides="5"
             images={this.state.images}
             ease={this.state.ease}
-            duration="10000"
+            duration={this.props.duration}
             layout={this.props.layout} />
           <table>
             <tr>
@@ -104,7 +104,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
               </td>
               <td>
                 <input type="range" id="duration"
-                  value={this.state.duration} min="0" step="250" max="1500"
+                  value={this.state.duration.toString()} min="0" step="250" max="1500"
                   onChange={this.onDuration} />
               </td>
               <td>

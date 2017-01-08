@@ -15,7 +15,8 @@
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "VideoLibrary",
-      "layout":"prism"
+      "layout":"prism",
+      "duration":199
     }
   }]
 }
