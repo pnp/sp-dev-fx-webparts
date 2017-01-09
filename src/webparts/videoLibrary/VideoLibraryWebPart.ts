@@ -12,7 +12,7 @@ import { O365Video, Video, VideoChannel, VideoServiceSettings } from "../O365VUt
 import * as strings from 'videoLibraryStrings';
 import VideoLibrary, { IVideoLibraryProps } from './components/VideoLibrary';
 import { IVideoLibraryWebPartProps } from './IVideoLibraryWebPartProps';
-require("./carousel.css");
+//require("./carousel.css");
 export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryWebPartProps> {
   private O365Video: O365Video;
   private channels: Array<IPropertyPaneDropdownOption>;
@@ -21,6 +21,7 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
     super(context);
   }
   public onInit<T>(): Promise<T> {
+    debugger;
     this.O365Video = new O365Video(this.context);
     return Promise.resolve(null);
   }
