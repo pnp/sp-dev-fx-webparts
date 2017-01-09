@@ -1,7 +1,7 @@
 ﻿import * as React from "react";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 const connect = require("react-redux").connect;
-import { addColumn, removeColumn, saveColumn, removeAllColumns, moveCulumnUp, moveCulumnDown } from "../actions/columnActions";
+import { addColumn, removeColumn,  removeAllColumns, moveCulumnUp, moveCulumnDown } from "../actions/columnActions";
 import ColumnDefinition from "../model/ColumnDefinition";
 import { Button, ButtonType, TextField, CommandBar, Dropdown, IDropdownOption, Toggle } from "office-ui-fabric-react";
 import Container from "../components/container";
@@ -9,7 +9,7 @@ import { Guid, Log } from "@microsoft/sp-client-base";
 
 const fieldTypes: Array<IDropdownOption> = [
     { key: null, text: "(Selecte one)" },
-   { key: "__LISTDEFINITIONTITLE__", text: "List Title" }, //used to display the ListDefinition Title in the grid, for when users add a new item
+    { key: "__LISTDEFINITIONTITLE__", text: "List Title" }, //used to display the ListDefinition Title in the grid, for when users add a new item
     { key: "Text", text: "Text" },
     { key: "Integer", text: "Integer" },
     { key: "Note", text: "Note" },
@@ -36,14 +36,15 @@ const fieldTypes: Array<IDropdownOption> = [
     // { name: "WorkflowEventType", value: "WorkflowEventType" },
 
 ];
-interface IColumnsPageProps extends React.Props<any> {
+export interface IColumnsPageProps extends React.Props<any> {
     columns: Array<ColumnDefinition>;
     addColumn: () => void;
     removeAllColumns: () => void;
     removeColumn: (column) => void;
-    saveColumn: (Column) => void;
+
     moveColumnUp: (Column: ColumnDefinition) => void;
     moveColumnDown: (Column: ColumnDefinition) => void;
+    save: () => void;
 }
 interface IContextMenu extends React.Props<any> {
     onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
@@ -60,9 +61,7 @@ function mapDispatchToProps(dispatch) {
             const col: ColumnDefinition = new ColumnDefinition(id.toString(), "", 80, true);
             dispatch(addColumn(col));
         },
-        saveColumn: (updatedRowData): void => {
-            dispatch(saveColumn(updatedRowData));
-        },
+
         removeColumn: (column): void => {
 
             dispatch(removeColumn(column));
@@ -77,6 +76,9 @@ function mapDispatchToProps(dispatch) {
         moveColumnDown: (column): void => {
             dispatch(moveCulumnDown(column));
         },
+        save: (column): void => {
+            //      // dispatch(moveCulumnDown(column));
+        },
     };
 }
 
@@ -88,13 +90,13 @@ export interface GridColumn {
     formatter?: string;
     editor?: string;
 }
-interface IGridProps {
+export interface IGridProps {
     editing: {
         entityid: string;
         columnid: string;
     };
 }
-class ColumnDefinitionContainer extends React.Component<IColumnsPageProps, IGridProps> {
+export class ColumnDefinitionContainerNative extends React.Component<IColumnsPageProps, IGridProps> {
     public constructor() {
         super();
         this.CellContents = this.CellContents.bind(this);
@@ -107,6 +109,7 @@ class ColumnDefinitionContainer extends React.Component<IColumnsPageProps, IGrid
         this.handleRowdeleted = this.handleRowdeleted.bind(this);
         this.moveColumnUp = this.moveColumnUp.bind(this);
         this.moveColumnDown = this.moveColumnDown.bind(this);
+
 
     }
     public gridColulumns: Array<GridColumn> = [{
@@ -146,7 +149,7 @@ class ColumnDefinitionContainer extends React.Component<IColumnsPageProps, IGrid
         const entity: ColumnDefinition = this.props.columns.find((temp) => temp.guid === entityid);
         const column = this.gridColulumns.find(temp => temp.id === columnid);
         entity[column.name] = value;
-        this.props.saveColumn(entity);
+        //  this.props.saveColumn(entity);
 
     }
 
@@ -308,7 +311,6 @@ class ColumnDefinitionContainer extends React.Component<IColumnsPageProps, IGrid
         const {  addColumn } = this.props;
         return (
             <Container testid="columns" size={2} center>
-                <h1>Column Definitions</h1>
                 <CommandBar items={[{
                     key: "AddColumns",
                     name: "Add a Column",
@@ -321,7 +323,16 @@ class ColumnDefinitionContainer extends React.Component<IColumnsPageProps, IGrid
                     canCheck: true,
                     icon: "Delete",
                     onClick: this.props.removeAllColumns
-                }]} />
+                },
+                {
+                    key: "save",
+                    name: "save",
+                    canCheck: true,
+                    icon: "Save",
+                    onClick: this.props.save
+                }
+
+                ]} />
                 <table style={{ borderColor: "#600", borderWidth: "0 0 0 0", borderStyle: "solid" }}>
                     <thead>
                         <tr>
@@ -341,4 +352,4 @@ class ColumnDefinitionContainer extends React.Component<IColumnsPageProps, IGrid
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ColumnDefinitionContainer);
+)(ColumnDefinitionContainerNative);

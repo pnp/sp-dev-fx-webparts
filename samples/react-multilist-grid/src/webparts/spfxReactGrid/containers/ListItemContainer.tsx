@@ -167,6 +167,14 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
 
     this.props.getListItems(this.props.listDefinitions);
   }
+  public componentWillReceiveProps(newProps: IListViewPageProps) {
+
+    if (newProps.listDefinitions === this.props.listDefinitions && newProps.columns === this.props.columns) {
+      return;
+    }
+
+    this.props.getListItems(this.props.listDefinitions);
+  }
   /**
  * Method to get the parent TD of any cell,
  * The listItemId and columnID are stored as attributes of the cells parent TD.
@@ -323,25 +331,26 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const {entityid, columnid} = this.state.editing;
     const entity: ListItem = this.props.listItems.find((temp) => temp.GUID === entityid);
     const listDef = this.getListDefinition(entity.__metadata__ListDefinitionId);
-    const titlecolumnid = this.props.columns.find(c => { return c.type === "__LISTDEFINITIONTITLE__"; }).guid;
-    if (columnid === titlecolumnid) { // user just changed the listDef,
-
-      if (entity.__metadata__GridRowStatus === GridRowStatus.pristine) {
-        if (!entity.__metadata__OriginalValues) { //SAVE  orgininal values so we can undo;
-          entity.__metadata__OriginalValues = _.cloneDeep(entity); // need deep if we have lookup values
+    const titleColumn = this.props.columns.find(c => { return c.type === "__LISTDEFINITIONTITLE__"; });
+    if (titleColumn) {
+      if (columnid === titleColumn.guid) { // user just changed the listDef,
+        if (entity.__metadata__GridRowStatus === GridRowStatus.pristine) {
+          if (!entity.__metadata__OriginalValues) { //SAVE  orgininal values so we can undo;
+            entity.__metadata__OriginalValues = _.cloneDeep(entity); // need deep if we have lookup values
+          }
         }
-      }
-      entity.__metadata__ListDefinitionId = value.key; // value is a DropDDownOptions
-      if (entity.__metadata__GridRowStatus !== GridRowStatus.new) {
-        const newListDef = this.getListDefinition(value.key);
-        this.props.getSiteUsersAction(newListDef.siteUrl).then(r => {
-          this.mapOldListFieldsToNewListFields(entity);
+        entity.__metadata__ListDefinitionId = value.key; // value is a DropDDownOptions
+        if (entity.__metadata__GridRowStatus !== GridRowStatus.new) {
+          const newListDef = this.getListDefinition(value.key);
+          this.props.getSiteUsersAction(newListDef.siteUrl).then(r => {
+            this.mapOldListFieldsToNewListFields(entity);
+            this.props.saveListItem(entity);
+          });
+        } else {
           this.props.saveListItem(entity);
-        });
-      } else {
-        this.props.saveListItem(entity);
+        }
+        return;
       }
-      return;
     }
     const columnReference = listDef.columnReferences.find(cr => cr.columnDefinitionId === columnid);
     const internalName = utils.ParseSPField(columnReference.name).id;
@@ -363,8 +372,16 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
         entity[internalName] = value.text;
         break;
       case "DateTime":
-
-        entity[internalName] = (value.getFullYear().toString()) + "-" + (value.getMonth() + 1).toString() + "-" + value.getDate().toString() + "T00:00:00Z";
+        let year = value.getFullYear().toString();
+        let month = (value.getMonth() + 1).toString();
+        let day = value.getDate().toString();
+        if (month.length === 1) {
+          month = "0" + month;
+        }
+        if (day.length === 1) {
+          day = "0" + day;
+        }
+        entity[internalName] = year + "-" + month + "-" + day + "T00:00:00Z";
         break;
       case "Lookup":
         if (!entity[internalName]) {// if  value was not previously set , then this is undefined//
@@ -583,7 +600,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
           goToToday: "yes"
         };
         let date = null;
-        if (columnValue !== null) {
+        if (columnValue) {
           const year = parseInt(columnValue.substring(0, 34));
           const month = parseInt(columnValue.substring(5, 7)) - 1;
           const day = parseInt(columnValue.substring(8, 10));
