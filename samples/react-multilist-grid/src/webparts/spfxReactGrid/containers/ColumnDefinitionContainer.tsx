@@ -6,7 +6,17 @@ import ColumnDefinition from "../model/ColumnDefinition";
 import { Button, ButtonType, TextField, CommandBar, Dropdown, IDropdownOption, Toggle } from "office-ui-fabric-react";
 import Container from "../components/container";
 import { Guid, Log } from "@microsoft/sp-client-base";
-
+/** NOTE:
+ * To enable other column types
+ * 1. Uncomment it here
+ * 2. In Containers\ListItemContainer Add  case in the CellContents method to display the field in a non-editable mode
+ * 3. In Containers\ListItemContainer Add  case in the CellContentsEditabe method to display the field in an editable mode
+ * 4. In Containers\ListItemContainer Add  case in the handleCellUpdated method to get the data entered by the user and change it back to the format that Sharepoint gave it to us in (See dateTime for an example)
+ * 4. If any other data is needed to render the contents in an editable mode (maybe Managed Metadata) Add a case in the Containers\ListItemContaine\toggleEditing
+ *      method to get the data. Also will need to add another enitity to the store (actions, reducers, etc.)
+ * 5. Special logic may be needed when moving an item between lists (as in the cas of Users ). Add this to Containers\ListItemContaine\mapOldListFieldsToNewListFields
+ * 
+ */
 const fieldTypes: Array<IDropdownOption> = [
     { key: null, text: "(Selecte one)" },
     { key: "__LISTDEFINITIONTITLE__", text: "List Title" }, //used to display the ListDefinition Title in the grid, for when users add a new item
