@@ -12,13 +12,17 @@ import { O365Video, Video, VideoChannel, VideoServiceSettings } from "../O365VUt
 import * as strings from 'videoLibraryStrings';
 import VideoLibrary, { IVideoLibraryProps } from './components/VideoLibrary';
 import { IVideoLibraryWebPartProps } from './IVideoLibraryWebPartProps';
-//require("./carousel.css");
+import ModuleLoader from '@microsoft/sp-module-loader';
+
 export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryWebPartProps> {
   private O365Video: O365Video;
   private channels: Array<IPropertyPaneDropdownOption>;
   private channelsFetched: boolean;
   public constructor(context: IWebPartContext) {
     super(context);
+    debugger;
+      ModuleLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css');
+   ModuleLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css');
   }
   public onInit<T>(): Promise<T> {
     debugger;
