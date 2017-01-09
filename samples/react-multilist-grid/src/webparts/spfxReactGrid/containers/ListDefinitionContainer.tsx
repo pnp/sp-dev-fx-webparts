@@ -25,7 +25,7 @@ export class GridColumn {
     public formatter: string = "",
     public editor?: string) { }
 }
-interface IListViewPageProps extends React.Props<any> {
+export interface IListViewPageProps extends React.Props<any> {
   lists: Array<ListDefinition>;
   columnRefs: Array<ColumnDefinition>;
   sites: Array<Site>;
@@ -36,6 +36,7 @@ interface IListViewPageProps extends React.Props<any> {
   getWebs: (siteUrl) => Promise<any>;
   getListsForWeb: (webUrl) => Promise<any>;
   getFieldsForList: (webUrl, listId) => Promise<any>;
+  save: () => void;
   pageContext: PageContext;
 }
 function mapStateToProps(state) {
@@ -75,13 +76,13 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
-interface IGridProps {
+export interface IGridProps {
   editing: {
     entityid: string;
     columnid: string;
   };
 }
-class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridProps> {
+export class ListDefinitionContainerNative extends React.Component<IListViewPageProps, IGridProps> {
   public defaultColumns: Array<GridColumn> = [
     {
       id: "rowGuid",
@@ -208,7 +209,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     else {
       this.updateExtendedColumn(entity, columnid, value);
     }
-    this.props.saveList(entity);
+  //  this.props.saveList(entity);
   }
 
   public addList(event): any {
@@ -322,6 +323,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
     switch (column.editor) {
 
       case "WebEditor":
+      
         let webs = this.getWebsForSite(entity);
         return (<WebEditor webs={webs} selectedValue={columnValue} onChange={cellUpdated} />);
       case "ListEditor":
@@ -387,7 +389,7 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
   }
   public TableRow(props: { entity: ListDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
     const {entity, columns, cellUpdated, cellUpdatedEvent} = props;
-    debugger;
+
     return (
       <tr>
         {
@@ -422,12 +424,10 @@ class ListDefinitionContainer extends React.Component<IListViewPageProps, IGridP
   }
 
   public render() {
-debugger;
+  
     return (
       <Container testid="columns" size={2} center>
-        <h1>List Definitions</h1>
-
-        <CommandBar items={[{
+         <CommandBar items={[{
           key: "Add LIST",
           name: "Add a List",
           icon: "Add",
@@ -446,6 +446,13 @@ debugger;
           isChecked: true,
           icon: "ClearFilter"
 
+        },
+        {
+          key: "save",
+          name: "save",
+          canCheck: true,
+          icon: "Save",
+          onClick: this.props.save
         }]} />
 
         <table border="1">
@@ -469,4 +476,4 @@ debugger;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListDefinitionContainer);
+)(ListDefinitionContainerNative);

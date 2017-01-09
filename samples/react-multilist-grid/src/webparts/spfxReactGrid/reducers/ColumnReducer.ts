@@ -9,14 +9,14 @@ import {
     MOVE_COLUMN_DOWN
 } from "../constants";
 
-function moveColumnUp(state: Array<ColumnDefinition>, action) {
+export function moveColumnUp(state: Array<ColumnDefinition>, action) {
     let newstate = _.clone(state);
 
     const index = _.findIndex<ColumnDefinition>(newstate, c => c.guid === action.payload.column.guid);
     newstate[index] = newstate.splice(index - 1, 1, newstate[index])[0];
     return newstate;
 }
-function moveColumnDown(state: Array<ColumnDefinition>, action) {
+export function moveColumnDown(state: Array<ColumnDefinition>, action) {
     let newstate = _.clone(state);
 
     let index = _.findIndex<ColumnDefinition>(newstate, c => c.guid === action.payload.column.guid);
