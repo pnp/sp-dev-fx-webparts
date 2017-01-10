@@ -64,7 +64,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
         <div >
           <Slick >
             {this.state.videos.map((v, i, a) => { 
-            return (<video controls={true}>
+            return (<video controls={true} poster={v.ThumbnailUrl} preload="none">
              <source src={v.VideoDownloadUrl} />
              </video>
 
