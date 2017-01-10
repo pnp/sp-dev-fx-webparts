@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
+import * as React from "react";
+import * as ReactDom from "react-dom";
 import {
   BaseClientSideWebPart,
   IPropertyPaneSettings,
@@ -7,12 +7,12 @@ import {
   PropertyPaneTextField,
   PropertyPaneDropdown, IPropertyPaneDropdownProps, IPropertyPaneDropdownOption,
   PropertyPaneSlider, IPropertyPaneSliderProps
-} from '@microsoft/sp-webpart-base';
+} from "@microsoft/sp-webpart-base";
 import { O365Video, Video, VideoChannel, VideoServiceSettings } from "../O365VUtilities";
-import * as strings from 'videoLibraryStrings';
-import VideoLibrary, { IVideoLibraryProps } from './components/VideoLibrary';
-import { IVideoLibraryWebPartProps } from './IVideoLibraryWebPartProps';
-import ModuleLoader from '@microsoft/sp-module-loader';
+import * as strings from "videoLibraryStrings";
+import VideoLibrary, { IVideoLibraryProps } from "./components/VideoLibrary";
+import { IVideoLibraryWebPartProps } from "./IVideoLibraryWebPartProps";
+import ModuleLoader from "@microsoft/sp-module-loader";
 
 export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryWebPartProps> {
   private O365Video: O365Video;
@@ -21,8 +21,8 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
   public constructor(context: IWebPartContext) {
     super(context);
     debugger;
-      ModuleLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css');
-   ModuleLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css');
+    ModuleLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
+    ModuleLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
   }
   public onInit<T>(): Promise<T> {
     debugger;
@@ -36,8 +36,8 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
       videoChannel: this.properties.videoChannel,
       o365Video: this.O365Video,
       layout: this.properties.layout,
-      duration:this.properties.duration,
-      panels:this.properties.panels
+      duration: this.properties.duration,
+      panels: this.properties.panels
     };
     const element: React.ReactElement<IVideoLibraryProps> = React.createElement(VideoLibrary, props);
 
@@ -107,12 +107,12 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
                   min: 1,
                   max: 1000
                 }),
-                  PropertyPaneSlider("panels", {
+                PropertyPaneSlider("panels", {
                   label: strings.PanelsFieldLabel,
                   min: 1,
                   max: 5
                 }),
-                
+
                 //   PropertyPaneTextField("listName", channelDropDownProps),
 
               ]
