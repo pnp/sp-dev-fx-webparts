@@ -20,12 +20,12 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
   private channelsFetched: boolean;
   public constructor(context: IWebPartContext) {
     super(context);
-    debugger;
+  
     ModuleLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
     ModuleLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
   }
   public onInit<T>(): Promise<T> {
-    debugger;
+
     this.O365Video = new O365Video(this.context);
     return Promise.resolve(null);
   }
@@ -113,7 +113,7 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
                   max: 5
                 }),
 
-                //   PropertyPaneTextField("listName", channelDropDownProps),
+                
 
               ]
             }
