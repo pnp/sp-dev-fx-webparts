@@ -1,26 +1,70 @@
-## videotst
+# SPFX React Grid
 
-This is where you include your web part docs.
+## Summary
+A set of SPFX webparts that use different open-source carousels (react-3d-carousel, reactks-coverface, and react-slick)
+to display videos stored on an O365 Vido Channel
 
-### Building the code
+![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
 
-This package produces the following:
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
 
-* lib/* commonjs components - this allows this package to be reused from other packages.
-* dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
-* example/* a test page that hosts all components in this package.
+## Applies to
 
-### Build options
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
-gulp nuke - TODO
-gulp test - TODO
-gulp watch - TODO
-gulp build - TODO
-gulp deploy - TODO
+
+
+## Prerequisites
+
+> React, Redux Office-UI-Fabric
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+ react-VideoLibrary | Russell Gove
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+0.1|December 31, 2016|Initial version
+
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- in the command line run:
+  - `npm install`
+  - `tsd install`
+  - `gulp serve`
+
+> Include any additional steps as needed.
+
+## Features
+An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from multiple Webs and Multiple Sites in a single grid.
+
+Usage:
+
+1. Define the columns to be shown in the grid
+![alt tag](/samples/react-spfx-multilist-grid/src/images/columnDefinitions.PNG)
+
+2. Define the lists to be edited
+![alt tag](/samples/react-spfx-multilist-grid/src/images/ListDefinitions.PNG)
+
+3. Edit the info
+![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-multilist-grid" />
+
+
+
+
