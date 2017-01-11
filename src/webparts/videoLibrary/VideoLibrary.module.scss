@@ -104,3 +104,16 @@
     text-decoration: none;
   }
 }
+.slides {
+  position: relative;
+  .slick-prev, .slick-next {
+    position: absolute;
+    top: 50%;
+  }
+  .slick-prev {
+    left: 5%;
+  }
+  .slick-next {
+    right: 5%;
+  }
+}
