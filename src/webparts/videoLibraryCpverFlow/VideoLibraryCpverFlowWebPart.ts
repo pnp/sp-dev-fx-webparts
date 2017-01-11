@@ -5,11 +5,11 @@ import {
   IPropertyPaneSettings,
   IWebPartContext,
   PropertyPaneTextField,
-  PropertyPaneDropdown, IPropertyPaneDropdownProps, IPropertyPaneDropdownOption,
-  PropertyPaneSlider, IPropertyPaneSliderProps,
+  PropertyPaneDropdown,  IPropertyPaneDropdownOption,
+  PropertyPaneSlider, 
   PropertyPaneToggle
 } from "@microsoft/sp-webpart-base";
-import { O365Video, Video, VideoChannel, VideoServiceSettings } from "../O365VUtilities";
+import { O365Video } from "../O365VUtilities";
 import * as strings from 'videoLibraryCpverFlowStrings';
 import VideoLibraryCpverFlow, { IVideoLibraryCpverFlowProps } from './components/VideoLibraryCpverFlow';
 import { IVideoLibraryCpverFlowWebPartProps } from './IVideoLibraryCpverFlowWebPartProps';
@@ -62,12 +62,12 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
     if (!this.channelsFetched && this.O365Video.isInitialized) {
       this.O365Video.getChannels().then(channels => {
         this.channels = channels.map((c, i, a) => {
-          let opt: IPropertyPaneDropdownOption = {
+          const opt: IPropertyPaneDropdownOption = {
             key: c.Id,
             text: c.Title,
             index: i,
 
-          }
+          };
           return opt;
         });
         this.channelsFetched = true;

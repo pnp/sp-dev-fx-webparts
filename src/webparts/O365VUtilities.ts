@@ -72,7 +72,7 @@ export class O365Video {
 
             if (response.ok) {
                 console.log("Returned OK from httpClient");
-             debugger;
+                debugger;
                 const results = response.json().then(settings => {
                     this.videoServiceSettings = new VideoServiceSettings();
                     this.videoServiceSettings.ChannelUrlTemplate = settings.ChannelUrlTemplate;
@@ -124,10 +124,10 @@ export class O365Video {
     public GetVideos(ChannelId: string): Promise<Array<Video>> {
         const url = this.videoServiceSettings.VideoPortalUrl + "/_api/VideoService/Channels('" + ChannelId + "')/Videos";
         return this.httpClient.get(url).then(response => {
-     
+
             if (response.ok) {
                 return response.json().then(v => {
-                
+
                     const videos = v.value.map(c => {
                         let video = new Video();
                         video.ChannelID = c.ChannelID;
@@ -138,8 +138,8 @@ export class O365Video {
                         video.OwnerName = c.OwnerName;
                         video.ServerRelativeUrl = c.ServerRelativeUrl;
                         video.Title = c.Title;
-                          video.ThumbnailUrl = c.ThumbnailUrl;
-                      video.Url = c.Url;
+                        video.ThumbnailUrl = c.ThumbnailUrl;
+                        video.Url = c.Url;
                         video.VideoDownloadUrl = c.VideoDownloadUrl;
                         video.VideoDurationInSeconds = c.VideoDurationInSeconds;
                         video.VideoProcessingStatus = c.VideoProcessingStatus;
@@ -157,7 +157,7 @@ export class O365Video {
     }
     public GetChannelByName(ChannelTitle: string): Promise<VideoChannel> {
         return this.getChannels().then(channels => {
-            const matches = channels.filter((value, index, array) => { return value.Title === ChannelTitle });
+            const matches = channels.filter((value, index, array) => { return value.Title === ChannelTitle; });
             return matches[0];
         });
     }

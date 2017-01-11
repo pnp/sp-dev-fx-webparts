@@ -2,7 +2,7 @@ import * as React from "react";
 import { css } from "office-ui-fabric-react";
 var Coverflow = require('reactjs-coverflow');
 import { IVideoLibraryCpverFlowWebPartProps } from "../IVideoLibraryCpverFlowWebPartProps";
-import { Video, O365Video } from "../../O365VUtilities";
+import { Video } from "../../O365VUtilities";
 export interface IVideoLibraryCpverFlowProps extends IVideoLibraryCpverFlowWebPartProps {
 
 }
@@ -41,7 +41,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
         this.props.o365Video.GetVideos(this.props.videoChannel).then((videos) => {
           this.state.videos = videos;
           this.setState(this.state);
-        })
+        });
       }
     });
 

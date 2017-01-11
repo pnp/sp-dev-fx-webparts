@@ -1,9 +1,8 @@
 import * as React from "react";
 import { css } from "office-ui-fabric-react";
-//import * as Slick from "react-slick";
 var Slick = require("react-slick");
 import { IVideoLibraryWebPartProps } from "../IVideoLibraryWebPartProps";
-import { Video, O365Video } from "../../O365VUtilities";
+import { Video} from "../../O365VUtilities";
 export interface IVideoLibraryProps extends IVideoLibraryWebPartProps {
 
 }
@@ -44,7 +43,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
         this.props.o365Video.GetVideos(this.props.videoChannel).then((videos) => {
           this.state.videos = videos;
           this.setState(this.state);
-        })
+        });
       }
     });
 

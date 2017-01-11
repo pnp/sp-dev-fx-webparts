@@ -4,7 +4,7 @@ var Carousel = require('react-3d-carousel');
 var Ease = require('ease-functions');
 import styles from '../VideoLibraryReact3DCarousel.module.scss';
 import { IVideoLibraryReact3DCarouselWebPartProps } from '../IVideoLibraryReact3DCarouselWebPartProps';
-import { Video, O365Video } from "../../O365VUtilities";
+import { Video, } from "../../O365VUtilities";
 export interface IVideoLibraryProps extends IVideoLibraryReact3DCarouselWebPartProps {
 
 }
@@ -31,7 +31,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
 
       images: [],
       videos: []
-    }
+    };
   }
   public componentWillMount(nextProps) {
     // Load new data when the dataSource property changes.
@@ -41,10 +41,10 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
           this.state.videos = videos;
           this.state.images = videos.map((v, i, a) => {
 
-            return v.ThumbnailUrl
+            return v.ThumbnailUrl;
           });
           this.setState(this.state);
-        })
+        });
       }
     });
 
@@ -58,8 +58,8 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
   }
 
   public render(): JSX.Element {
-    var easeList = Object.keys(Ease).map(function (d) {
-      return (<option key={d} value={d}>{d}</option>)
+    const easeList = Object.keys(Ease).map(function (d) {
+      return (<option key={d} value={d}>{d}</option>);
     });
     if (this.state.images.length === 0) {
       return (<div />);
