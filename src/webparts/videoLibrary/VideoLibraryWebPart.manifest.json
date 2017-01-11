@@ -10,11 +10,13 @@
   "preconfiguredEntries": [{
     "groupId": "f0d034d3-6b7d-4907-a6c1-357c2e2e03af",
     "group": { "default": "Under Development" },
-    "title": { "default": "VideoLibrary" },
-    "description": { "default": "Integrate Office#65 Vido with SharePoint" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "React-slick  Video Library" },
+    "description": { 
+      "default": "VideoLibrary implemented using react-slick -- Shows videos from an O365 Video Channel"
+       },
+    "officeFabricIconFontName": "Ribbon",
     "properties": {
-      "description": "VideoLibrary",
+      "description": "React-slick  Video Library",
       "layout":"prism",
       "duration":199
     }

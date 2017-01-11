@@ -10,11 +10,13 @@
   "preconfiguredEntries": [{
     "groupId": "2f1538d9-3b9a-4033-8f3b-2cdf2ec3c64e",
     "group": { "default": "Under Development" },
-    "title": { "default": "videoLibraryReact3dCarousel" },
-    "description": { "default": "Video Library sample using react-3d-carousel" },
-    "officeFabricIconFontName": "Page",
+            "title": { "default": "React-3d-carousel  Video Library" },
+    "description": { 
+      "default": "VideoLibrary implemented using react-3d-carousel -- Shows videos from an O365 Video Channel"
+       },
+    "officeFabricIconFontName": "Ribbon",
     "properties": {
-      "description": "videoLibraryReact3dCarousel",
+      "description": "React-3d-carousel  Video Library",
           "layout":"prism",
       "duration":199
     }

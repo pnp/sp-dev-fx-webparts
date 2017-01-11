@@ -6,7 +6,8 @@ import {
   IWebPartContext,
   PropertyPaneTextField,
   PropertyPaneDropdown, IPropertyPaneDropdownProps, IPropertyPaneDropdownOption,
-  PropertyPaneSlider, IPropertyPaneSliderProps
+  PropertyPaneSlider, IPropertyPaneSliderProps,
+  PropertyPaneToggle
 } from "@microsoft/sp-webpart-base";
 import { O365Video, Video, VideoChannel, VideoServiceSettings } from "../O365VUtilities";
 import * as strings from 'videoLibraryCpverFlowStrings';
@@ -33,9 +34,16 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
       description: this.properties.description,
       videoChannel: this.properties.videoChannel,
       o365Video: this.O365Video,
-      layout: this.properties.layout,
-      duration: this.properties.duration,
-      panels: this.properties.panels
+      iframeHeight: this.properties.iframeHeight,
+      iframeWidth: this.properties.iframeWidth,
+      imgHeight: this.properties.imgHeight,
+      imgWidth: this.properties.imgWidth,
+      coverflowWidth: this.properties.coverflowWidth,
+      coverflowHeight: this.properties.coverflowHeight,
+      coverflowMargin: this.properties.coverflowMargin,
+      coverflowAnimationSpeed: this.properties.coverflowAnimationSpeed,
+      coverflowStartPosition: this.properties.coverflowStartPosition,
+      coverflowEnableScroll: this.properties.coverflowEnableScroll,
     };
     const element: React.ReactElement<IVideoLibraryCpverFlowWebPartProps> = React.createElement(VideoLibraryCpverFlow, props);
 
@@ -84,7 +92,59 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
                 PropertyPaneDropdown("videoChannel", {
                   label: strings.VideoChannelFieldLabel,
                   options: this.channels,
+                }),
+                PropertyPaneSlider("coverflowHeighT", {
+                  label: strings.CoverflowHeightFieldLabel,
+                  min: 100,
+                  max: 1000
+                }),
+                PropertyPaneSlider("coverflowWidth", {
+                  label: strings.CoverflowWidthFieldLabel,
+                  min: 100,
+                  max: 1900
+                }),
+                PropertyPaneSlider("coverflowMargin", {
+                  label: strings.CoverflowMarginFieldLabel,
+                  min: 0,
+                  max: 100
+                }),
+                PropertyPaneSlider("coverflowAnimationSpeed", {
+                  label: strings.CoverflowAnimationSpeedFieldLabel,
+                  min: 0.0,
+                  max: 1.0,
+                  step: 0.1
+                }),
+                PropertyPaneToggle("coverflowEnableScroll", {
+                  label: strings.CoverflowEnableScrollFieldLabel,
+                }),
 
+                PropertyPaneSlider("coverflowStartPosition", {
+                  label: strings.CoverflowStartPositionFieldLabel,
+                  min: 0,
+                  max: 25
+                }),
+
+
+
+                PropertyPaneSlider("imgWidth", {
+                  label: strings.ImgWidthFieldLabel,
+                  min: 100,
+                  max: 1900
+                }),
+                PropertyPaneSlider("imgHeight", {
+                  label: strings.ImgHeightFieldLabel,
+                  min: 100,
+                  max: 1000
+                }),
+                PropertyPaneSlider("iframeWidth", {
+                  label: strings.IframeWidthFieldLabel,
+                  min: 100,
+                  max: 1900
+                }),
+                PropertyPaneSlider("iframeHeight", {
+                  label: strings.IframeHeightFieldLabel,
+                  min: 100,
+                  max: 1000
                 }),
               ]
             }
