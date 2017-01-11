@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as ReactDom from "react-dom";
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
 import {
   BaseClientSideWebPart,
   IPropertyPaneSettings,
@@ -9,21 +9,19 @@ import {
   PropertyPaneSlider, IPropertyPaneSliderProps
 } from "@microsoft/sp-webpart-base";
 import { O365Video, Video, VideoChannel, VideoServiceSettings } from "../O365VUtilities";
-import * as strings from "videoLibraryStrings";
-import VideoLibrary, { IVideoLibraryProps } from "./components/VideoLibrary";
-import { IVideoLibraryWebPartProps } from "./IVideoLibraryWebPartProps";
-import ModuleLoader from "@microsoft/sp-module-loader";
-
-export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryWebPartProps> {
-  debugger;
+import * as strings from 'videoLibraryCpverFlowStrings';
+import VideoLibraryCpverFlow, { IVideoLibraryCpverFlowProps } from './components/VideoLibraryCpverFlow';
+import { IVideoLibraryCpverFlowWebPartProps } from './IVideoLibraryCpverFlowWebPartProps';
+debugger;
+require('coverflow.css');
+export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<IVideoLibraryCpverFlowWebPartProps> {
   private O365Video: O365Video;
   private channels: Array<IPropertyPaneDropdownOption>;
   private channelsFetched: boolean;
+
   public constructor(context: IWebPartContext) {
+    debugger;
     super(context);
-  
-    ModuleLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
-    ModuleLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
   }
   public onInit<T>(): Promise<T> {
 
@@ -31,8 +29,7 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
     return Promise.resolve(null);
   }
   public render(): void {
-
-    const props: IVideoLibraryProps = {
+    const props: IVideoLibraryCpverFlowWebPartProps = {
       description: this.properties.description,
       videoChannel: this.properties.videoChannel,
       o365Video: this.O365Video,
@@ -40,13 +37,12 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
       duration: this.properties.duration,
       panels: this.properties.panels
     };
-    const element: React.ReactElement<IVideoLibraryProps> = React.createElement(VideoLibrary, props);
+    const element: React.ReactElement<IVideoLibraryCpverFlowWebPartProps> = React.createElement(VideoLibraryCpverFlow, props);
 
     ReactDom.render(element, this.domElement);
   }
 
   protected get propertyPaneSettings(): IPropertyPaneSettings {
-
     if (!this.O365Video.isInitialized) {
       this.O365Video.Initialize().then(x => {
         this.O365Video.getChannels().then(channels => {
@@ -72,11 +68,6 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
 
 
     }
-    const channelDropDownProps: IPropertyPaneDropdownProps = {
-      label: strings.VideoChannelFieldLabel,
-      options: this.channels,
-      isDisabled: false,
-    }
     return {
       pages: [
         {
@@ -87,7 +78,7 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField("description", {
+                PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 }),
                 PropertyPaneDropdown("videoChannel", {
@@ -95,27 +86,6 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
                   options: this.channels,
 
                 }),
-                PropertyPaneDropdown("layout", {
-                  label: strings.LayoutFieldLabel,
-                  options: [
-                    { key: "prism", text: "prism" },
-                    { key: "clssic", text: "classic" }
-                  ]
-
-                }),
-                PropertyPaneSlider("duration", {
-                  label: strings.DurationFieldLabel,
-                  min: 1,
-                  max: 1000
-                }),
-                PropertyPaneSlider("panels", {
-                  label: strings.PanelsFieldLabel,
-                  min: 1,
-                  max: 5
-                }),
-
-                
-
               ]
             }
           ]

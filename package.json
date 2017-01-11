@@ -12,7 +12,8 @@
     "office-ui-fabric-react": "0.36.0",
     "react": "0.14.8",
     "react-dom": "0.14.8",
-    "react-slick": "^0.14.5"
+    "react-slick": "^0.14.5",
+    "reactjs-coverflow": "^1.0.5"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~0.8.1",
