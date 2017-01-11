@@ -14,7 +14,9 @@
     "description": { "default": "Video Library sample using react-3d-carousel" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "videoLibraryReact3dCarousel"
+      "description": "videoLibraryReact3dCarousel",
+          "layout":"prism",
+      "duration":199
     }
   }]
 }

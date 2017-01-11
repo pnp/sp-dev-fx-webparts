@@ -11,9 +11,9 @@ import {
 import { O365Video, Video, VideoChannel, VideoServiceSettings } from "../O365VUtilities";
 import * as strings from 'videoLibraryStrings';
 import VideoLibrary, { IVideoLibraryProps } from './components/VideoLibraryReact3DCarousel';
-import { IVideoLibraryWebPartProps } from './IVideoLibraryReact3DCarouselWebPartProps';
+import { IVideoLibraryReact3DCarouselWebPartProps } from './IVideoLibraryReact3DCarouselWebPartProps';
 require("./carousel.css"); // needed to copy this to lib folder to get it displayed
-export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryWebPartProps> {
+export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryReact3DCarouselWebPartProps> {
   private O365Video: O365Video;
   private channels: Array<IPropertyPaneDropdownOption>;
   private channelsFetched: boolean;

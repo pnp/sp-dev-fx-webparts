@@ -1,5 +1,5 @@
 import { Video, O365Video } from "../O365VUtilities";
-export interface IVideoLibraryWebPartProps {
+export interface IVideoLibraryReact3DCarouselWebPartProps {
   description: string;
   videoChannel: string;
   o365Video: O365Video;
