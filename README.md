@@ -1,8 +1,28 @@
 # SPFX React Grid
 
 ## Summary
-A set of SPFX webparts that use different open-source carousels (react-3d-carousel, reactks-coverface, and react-slick)
-to display videos stored on an O365 Vido Channel
+A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
+to display videos stored on an O365 Video Channel. The idea being to display a carousel of the thumbnail images, and then 
+when a user clicks on one of the thumbnails, replace the tumbnail with a video player and start the video up. 
+
+The first webpart used react-3d-carousel. The carousel looks great, but i found no way to swap out the image and replace 
+it with a video player. This carousel would be fine for displayin a picture library though,
+
+The first webpart used react-slick. The carousel is not as fancy as react-3d-carousel, but i was able to to swap out the 
+image and replace it with a video player once a user clicked it. I had trouble with the css and getting the nexe and previous 
+buttons to show. If you run the webpart, the buttons are there, they are just not visible. 
+
+Finally I tried reactjs-coverface. It has nice scrolling through the images withe the mousweheel, and some cool 3d effects.
+It was also simple to swap the image with a video player once a user clicked it (same code as react-slick). This is the best 
+of the three for my purposes.
+
+
+In the future I wan to modify this webpart to link a Sharepoint list with the video channel so that users can enter addition 
+metadata for th evideo and be anle to search/filter the videos using this metadata.
+
+
+
+
 
 ![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
 
@@ -19,7 +39,7 @@ to display videos stored on an O365 Vido Channel
 
 ## Prerequisites
 
-> React, Redux Office-UI-Fabric
+> React, react-3d-carousel reactjs-coverface react-slick
 
 ## Solution
 
@@ -50,18 +70,11 @@ Version|Date|Comments
 > Include any additional steps as needed.
 
 ## Features
-An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from multiple Webs and Multiple Sites in a single grid.
+A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
+to display videos stored on an O365 Video Channel.
 
 Usage:
 
-1. Define the columns to be shown in the grid
-![alt tag](/samples/react-spfx-multilist-grid/src/images/columnDefinitions.PNG)
-
-2. Define the lists to be edited
-![alt tag](/samples/react-spfx-multilist-grid/src/images/ListDefinitions.PNG)
-
-3. Edit the info
-![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-multilist-grid" />
 
