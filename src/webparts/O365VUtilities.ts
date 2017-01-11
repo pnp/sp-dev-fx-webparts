@@ -72,7 +72,7 @@ export class O365Video {
 
             if (response.ok) {
                 console.log("Returned OK from httpClient");
-             
+             debugger;
                 const results = response.json().then(settings => {
                     this.videoServiceSettings = new VideoServiceSettings();
                     this.videoServiceSettings.ChannelUrlTemplate = settings.ChannelUrlTemplate;

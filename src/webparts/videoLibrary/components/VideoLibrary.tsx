@@ -37,9 +37,9 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
   public componentWillMount(nextProps) {
     // Load new data when the dataSource property changes.
     this.props.o365Video.Initialize().then((settings) => {
-
-      this.state.playerUrlTemplate = settings.PlayerUrlTemplate;
-      this.state.playerUrlTemplate = "https://rgove3.sharepoint.com/portals/hub/_layouts/15/VideoEmbedHost.aspx?chId={0}&vId={1}&width=200&height=540&autoPlay=true&showInfo=true";
+      debugger;
+      //      this.state.playerUrlTemplate = settings.PlayerUrlTemplate; // this url does not work. You neeed the channel
+      this.state.playerUrlTemplate = settings.VideoPortalLayoutsUrl + "/VideoEmbedHost.aspx?chId={0}&vId={1}&width=640&height=360&autoPlay=true&showInfo=true";
       if (this.props.videoChannel) {
         this.props.o365Video.GetVideos(this.props.videoChannel).then((videos) => {
           this.state.videos = videos;
@@ -66,7 +66,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryProps, IV
     return (
       <div>
         <div >
-  <Slick arrows={true} afterChange={this.afterChange} width="80%"  dots={true} >
+          <Slick arrows={true} afterChange={this.afterChange} width="80%" dots={true} >
             {this.state.videos.map((v, i, a) => {
 
               if (i === this.state.selectedVideo) {
