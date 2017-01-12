@@ -10,12 +10,12 @@ import {
   PropertyPaneToggle
 } from "@microsoft/sp-webpart-base";
 import { O365Video } from "../O365VUtilities";
-import * as strings from 'videoLibraryCpverFlowStrings';
-import VideoLibraryCpverFlow from './components/VideoLibraryCpverFlow';
-import { IVideoLibraryCpverFlowWebPartProps } from './IVideoLibraryCpverFlowWebPartProps';
+import * as strings from 'videoLibraryCoverFlowStrings';
+import VideoLibraryCoverFlow from './components/VideoLibraryCoverFlow';
+import { IVideoLibraryCoverFlowWebPartProps } from './IVideoLibraryCoverFlowWebPartProps';
 debugger;
 require('coverflow.css');
-export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<IVideoLibraryCpverFlowWebPartProps> {
+export default class VideoLibraryCoverFlowWebPart extends BaseClientSideWebPart<IVideoLibraryCoverFlowWebPartProps> {
   private O365Video: O365Video;
   private channels: Array<IPropertyPaneDropdownOption>;
   private channelsFetched: boolean;
@@ -30,7 +30,7 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
     return Promise.resolve(null);
   }
   public render(): void {
-    const props: IVideoLibraryCpverFlowWebPartProps = {
+    const props: IVideoLibraryCoverFlowWebPartProps = {
       description: this.properties.description,
       videoChannel: this.properties.videoChannel,
       o365Video: this.O365Video,
@@ -45,7 +45,7 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
       coverflowStartPosition: this.properties.coverflowStartPosition,
       coverflowEnableScroll: this.properties.coverflowEnableScroll,
     };
-    const element: React.ReactElement<IVideoLibraryCpverFlowWebPartProps> = React.createElement(VideoLibraryCpverFlow, props);
+    const element: React.ReactElement<IVideoLibraryCoverFlowWebPartProps> = React.createElement(VideoLibraryCoverFlow, props);
 
     ReactDom.render(element, this.domElement);
   }

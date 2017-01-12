@@ -1,8 +1,8 @@
 import * as React from "react";
 var Coverflow = require('reactjs-coverflow');
-import { IVideoLibraryCpverFlowWebPartProps } from "../IVideoLibraryCpverFlowWebPartProps";
+import { IVideoLibraryCoverFlowWebPartProps } from "../IVideoLibraryCoverFlowWebPartProps";
 import { Video } from "../../O365VUtilities";
-export interface IVideoLibraryCpverFlowProps extends IVideoLibraryCpverFlowWebPartProps {
+export interface IVideoLibraryCoverFlowProps extends IVideoLibraryCoverFlowWebPartProps {
 
 }
 export interface IVideoLibraryState {
@@ -14,9 +14,9 @@ export interface IVideoLibraryState {
 
 }
 
-export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlowProps, IVideoLibraryState> {
+export default class VideoLibrary extends React.Component<IVideoLibraryCoverFlowProps, IVideoLibraryState> {
 
-  constructor(props: IVideoLibraryCpverFlowProps) {
+  constructor(props: IVideoLibraryCoverFlowProps) {
     super(props);
     this.afterChange = this.afterChange.bind(this);
     this.playVideo = this.playVideo.bind(this);
@@ -45,7 +45,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
     });
 
   }
-  public componentWillReceiveProps(nextProps:IVideoLibraryCpverFlowProps) {
+  public componentWillReceiveProps(nextProps:IVideoLibraryCoverFlowProps) {
     if (nextProps.videoChannel) {
       this.props.o365Video.GetVideos(nextProps.videoChannel).then((videos) => {
         this.state.videos = videos;

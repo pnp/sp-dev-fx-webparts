@@ -1,7 +1,7 @@
 {
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
   "id": "aa6e9d44-a2a4-4632-842f-e015fffa14b7",
-  "alias": "VideoLibraryCpverFlowWebPart",
+  "alias": "VideoLibraryCoverFlowWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,

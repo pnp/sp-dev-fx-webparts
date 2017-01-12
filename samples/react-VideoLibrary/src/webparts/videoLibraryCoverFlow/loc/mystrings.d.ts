@@ -1,4 +1,4 @@
-declare interface IVideoLibraryCpverFlowStrings {
+declare interface IVideoLibraryCoverFlowStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -15,7 +15,7 @@ declare interface IVideoLibraryCpverFlowStrings {
   CoverflowEnableScrollFieldLabel: string;
 }
 
-declare module 'videoLibraryCpverFlowStrings' {
-  const strings: IVideoLibraryCpverFlowStrings;
+declare module 'videoLibraryCoverFlowStrings' {
+  const strings: IVideoLibraryCoverFlowStrings;
   export = strings;
 }

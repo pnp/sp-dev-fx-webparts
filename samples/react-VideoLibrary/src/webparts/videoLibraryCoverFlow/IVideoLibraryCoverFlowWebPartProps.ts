@@ -1,5 +1,5 @@
 import {  O365Video } from "../O365VUtilities";
-export interface IVideoLibraryCpverFlowWebPartProps {
+export interface IVideoLibraryCoverFlowWebPartProps {
   description: string;
   videoChannel: string;
   o365Video: O365Video;
