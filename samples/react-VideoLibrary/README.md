@@ -25,7 +25,7 @@ Caousellto test with soon!
 
 
 
-![alt tag](/samples/react-VideoLibrarysrc/webpartimages/coverflow.PNG)
+![alt tag](./src/webpartimages/CoverFlow.PNG)
 
 
 ## Used SharePoint Framework Version
@@ -81,13 +81,13 @@ Inastall any of the ewebparts.
 The minimal configuration reqquired is to edit the setingss and point the webpart at a video chanel in your tenant.
 
 Coverflow webpart:
-![alt tag](/samples/react-VideoLibrarysrc/webpartimages/coverflow.PNG)
+![alt tag](./src/webpartimages/CoverFlow.PNG)
 
 React-3d-carousel webpart:
-![alt tag](/samples/react-VideoLibrarysrc/webpartimages/react-3d-carousel.PNG)
+![alt tag](./src/webpartimages/react-3d-carousel.PNG)
 
 react-slick webpart:
-![alt tag](/samples/react-VideoLibrarysrc/webpartimages/react-slick.PNG)
+![alt tag](./src/webpartimages/react-slick.PNG)
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-multilist-grid" />
 
