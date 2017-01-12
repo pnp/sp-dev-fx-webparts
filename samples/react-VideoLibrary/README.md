@@ -25,7 +25,7 @@ Caousellto test with soon!
 
 
 
-![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
+![alt tag](/samples/react-VideoLibrarysrc/webpartimages/coverflow.PNG)
 
 
 ## Used SharePoint Framework Version
@@ -76,9 +76,19 @@ to display videos stored on an O365 Video Channel.
 
 Usage:
 
-Inastall any of th ewebparts.
+Inastall any of the ewebparts.
 
 The minimal configuration reqquired is to edit the setingss and point the webpart at a video chanel in your tenant.
+
+Coverflow webpart:
+![alt tag](/samples/react-VideoLibrarysrc/webpartimages/coverflow.PNG)
+
+React-3d-carousel webpart:
+![alt tag](/samples/react-VideoLibrarysrc/webpartimages/react-3d-carousel.PNG)
+
+react-slick webpart:
+![alt tag](/samples/react-VideoLibrarysrc/webpartimages/react-slick.PNG)
+
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-multilist-grid" />
 
 
