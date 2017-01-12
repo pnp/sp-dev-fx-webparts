@@ -1,5 +1,4 @@
 import * as React from "react";
-import { css } from "office-ui-fabric-react";
 var Slick = require("react-slick");
 import { IVideoLibraryWebPartProps } from "../IVideoLibraryWebPartProps";
 import { Video} from "../../O365VUtilities";
@@ -14,12 +13,7 @@ export interface IVideoLibraryState {
   selectedVideo: number;
 
 }
-class PrevArrow extends React.Component<any, any> {
-  render() {
-    debugger;
-    return (<button>Next</button>);
-  }
-}
+
 export default class VideoLibrary extends React.Component<IVideoLibraryProps, IVideoLibraryState> {
   constructor(props: IVideoLibraryProps) {
     super(props);

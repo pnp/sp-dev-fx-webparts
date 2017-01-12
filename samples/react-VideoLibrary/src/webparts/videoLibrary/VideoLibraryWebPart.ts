@@ -15,7 +15,6 @@ import { IVideoLibraryWebPartProps } from "./IVideoLibraryWebPartProps";
 import ModuleLoader from "@microsoft/sp-module-loader";
 
 export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryWebPartProps> {
-  debugger;
   private O365Video: O365Video;
   private channels: Array<IPropertyPaneDropdownOption>;
   private channelsFetched: boolean;
@@ -58,11 +57,10 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
     if (!this.channelsFetched && this.O365Video.isInitialized) {
       this.O365Video.getChannels().then(channels => {
         this.channels = channels.map((c, i, a) => {
-          let opt: IPropertyPaneDropdownOption = {
+          const opt: IPropertyPaneDropdownOption = {
             key: c.Id,
             text: c.Title,
             index: i,
-
           };
           return opt;
         });

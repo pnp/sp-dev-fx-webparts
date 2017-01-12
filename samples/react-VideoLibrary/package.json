@@ -9,8 +9,10 @@
     "@microsoft/sp-client-base": "~0.5.1",
     "@microsoft/sp-client-preview": "~0.7.1",
     "@microsoft/sp-webpart-base": "~0.2.1",
+    "ease-functions": "0.0.1",
     "office-ui-fabric-react": "0.36.0",
     "react": "0.14.8",
+    "react-3d-carousel": "0.0.6",
     "react-dom": "0.14.8",
     "react-slick": "^0.14.5",
     "reactjs-coverflow": "^1.0.5"

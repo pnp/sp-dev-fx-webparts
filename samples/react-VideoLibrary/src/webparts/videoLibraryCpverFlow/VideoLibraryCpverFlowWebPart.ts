@@ -11,7 +11,7 @@ import {
 } from "@microsoft/sp-webpart-base";
 import { O365Video } from "../O365VUtilities";
 import * as strings from 'videoLibraryCpverFlowStrings';
-import VideoLibraryCpverFlow, { IVideoLibraryCpverFlowProps } from './components/VideoLibraryCpverFlow';
+import VideoLibraryCpverFlow from './components/VideoLibraryCpverFlow';
 import { IVideoLibraryCpverFlowWebPartProps } from './IVideoLibraryCpverFlowWebPartProps';
 debugger;
 require('coverflow.css');

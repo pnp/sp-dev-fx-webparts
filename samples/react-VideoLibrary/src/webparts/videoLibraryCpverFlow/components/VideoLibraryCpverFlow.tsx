@@ -1,5 +1,4 @@
 import * as React from "react";
-import { css } from "office-ui-fabric-react";
 var Coverflow = require('reactjs-coverflow');
 import { IVideoLibraryCpverFlowWebPartProps } from "../IVideoLibraryCpverFlowWebPartProps";
 import { Video } from "../../O365VUtilities";
@@ -46,6 +45,16 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
     });
 
   }
+  public componentWillReceiveProps(nextProps:IVideoLibraryCpverFlowProps) {
+    if (nextProps.videoChannel) {
+      this.props.o365Video.GetVideos(nextProps.videoChannel).then((videos) => {
+        this.state.videos = videos;
+        this.setState(this.state);
+      });
+    }
+
+
+  }
   public afterChange(slideNumber: number) {
     this.state.selectedVideo = -1;
     this.setState(this.state);
@@ -57,12 +66,16 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
   }
   public previous(e) {
     e.preventDefault();
+    this.state.selectedVideo = -1; // stop playing
+    this.setState(this.state);
     const cf = this.refs["coverflow"] as any;
     cf.previous();
 
   }
   public next(e) {
     e.preventDefault();
+    this.state.selectedVideo = -1; // stop playing
+    this.setState(this.state);
     const cf = this.refs["coverflow"] as any;
     cf.next();
   }
@@ -73,7 +86,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
     return (
       <div>
         <div >
-          <Coverflow style={{ width: this.props.coverflowWidth+"px", height: this.props.coverflowHeight + "px" }} ref="coverflow"
+          <Coverflow style={{ width: this.props.coverflowWidth + "px", height: this.props.coverflowHeight + "px" }} ref="coverflow"
             margin={this.props.coverflowMargin + "px"}
             startPosition={this.props.coverflowStartPosition}
             enableScroll={this.props.coverflowEnableScroll}
@@ -86,7 +99,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
                 return (<iframe src={src} style={{ height: this.props.iframeHeight + "px", width: this.props.iframeWidth + "px" }} />);
               }
               else {
-                return (<img className="reactjs-coverflow_cover" src={v.ThumbnailUrl} data-videonumber={i} style={{ height: this.props.imgHeight+ "px", width: this.props.imgWidth + "px" }} onClick={this.playVideo} />);
+                return (<img className="reactjs-coverflow_cover" src={v.ThumbnailUrl} data-videonumber={i} style={{ height: this.props.imgHeight + "px", width: this.props.imgWidth + "px" }} onClick={this.playVideo} />);
               }
             })}
           </Coverflow>

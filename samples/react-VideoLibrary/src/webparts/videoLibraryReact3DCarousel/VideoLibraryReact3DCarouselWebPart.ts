@@ -89,7 +89,7 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
                   label: strings.LayoutFieldLabel,
                   options: [
                     { key: "prism", text: "prism" },
-                    { key: "clssic", text: "classic" }
+              //      { key: "clssic", text: "classic" } locks the browser
                   ]
 
                 }),
