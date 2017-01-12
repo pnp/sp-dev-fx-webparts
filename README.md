@@ -1,4 +1,4 @@
-# SPFX React Grid
+# React Video Library
 
 ## Summary
 A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
