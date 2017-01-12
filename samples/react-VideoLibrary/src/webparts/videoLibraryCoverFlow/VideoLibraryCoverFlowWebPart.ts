@@ -93,7 +93,7 @@ export default class VideoLibraryCoverFlowWebPart extends BaseClientSideWebPart<
                   label: strings.VideoChannelFieldLabel,
                   options: this.channels,
                 }),
-                PropertyPaneSlider("coverflowHeighT", {
+                PropertyPaneSlider("coverflowHeight", {
                   label: strings.CoverflowHeightFieldLabel,
                   min: 100,
                   max: 1000
