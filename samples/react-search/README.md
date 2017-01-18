@@ -7,7 +7,7 @@ Sample Search Web Part with internal and external template support. This sample 
 ![Sample of the search web part](./assets/preview.png)
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+![drop](https://img.shields.io/badge/drop-RC0-green.svg)
 
 ## Applies to
 
@@ -38,7 +38,7 @@ Version|Date|Comments
 
 - Clone this repo
 - In the command line run:
-  - `npm i`
+  - `npm install`
   - `tsd install`
   - `gulp serve`
   - Open the *workbench* on your Office 365 Developer tenant
