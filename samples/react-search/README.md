@@ -6,7 +6,7 @@ Sample Search Web Part with internal and external template support. This sample 
 
 ![Sample of the search web part](./assets/preview.png)
 
-## Used SharePoint Framework Version 
+## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/drop-drop5-red.svg)
 
 ## Applies to
@@ -27,6 +27,7 @@ Version|Date|Comments
 0.0.4|September 08, 2016|Initial release
 0.0.5|September 27, 2016|Updates for drop 4. Added the abilty to use various search tokens. Plus a logging field to watch search calls.
 0.0.6|October 19, 2016|Updates for drop 5.
+0.1.0|January 18, 2017|Updates to support RC0.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

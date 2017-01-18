@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPropertyPaneLoggingFieldPropsInternal } from './PropertyPaneLoggingField';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
-require('./PropertyPaneLoggingFieldStyling.css');
+import styles from './PropertyPaneLoggingFieldStyling.module.scss';
 
 /**
  * @interface
@@ -52,6 +52,18 @@ export default class PropertyPaneLoggingFieldHost extends React.Component<IPrope
 
 	/**
 	 * @function
+	 * componentWillReceiveProps
+	 */
+	public componentWillReceiveProps(nextProps: IPropertyPaneLoggingFieldHostProps): void {
+		if (nextProps.value !== this.props.value) {
+			this.setState({
+				logging: nextProps.value
+			});
+		}
+    }
+
+	/**
+	 * @function
 	 * Retrieve new logging value
 	 */
 	private getLogging() {
@@ -68,9 +80,9 @@ export default class PropertyPaneLoggingFieldHost extends React.Component<IPrope
         const output = [];
         for (const k in val) {
             if (typeof val[k] === "object") {
-                output.push(<div key={k} className={subClass}><span className="keyValue">{k}</span>: object {this.renderValue(val[k], "subElm")}</div>);
+                output.push(<div key={k} className={subClass}><span className={styles.keyValue}>{k}</span>: object {this.renderValue(val[k], styles.subElm)}</div>);
             } else {
-                output.push(<div key={k} className={subClass}><span className="keyValue">{k}</span>: {val[k]}</div>);
+                output.push(<div key={k} className={subClass}><span className={styles.keyValue}>{k}</span>: {val[k]}</div>);
             }
         }
         return output;
@@ -84,16 +96,16 @@ export default class PropertyPaneLoggingFieldHost extends React.Component<IPrope
         const valToRender = this.renderValue(this.state.logging);
 		//Renders content
 		return (
-			<div className="loggingField">
+			<div className={styles.loggingField}>
 				<Label>{this.props.label}</Label>
 				{
 					(() => {
 						if (typeof this.props.retrieve !== 'undefined') {
-							return <div className="updateLogging"><a className="ms-Link" onClick={this.getLogging}>Update logging</a></div>;
+							return <div className={styles.updateLogging}><a className="ms-Link" onClick={this.getLogging} role="button">Update logging</a></div>;
 						}
 					})()
 				}
-				<pre className="logging">{valToRender}</pre>
+				<pre className={styles.logging}>{valToRender}</pre>
 				{
 					(() => {
 						if (typeof this.props.description !== 'undefined') {
