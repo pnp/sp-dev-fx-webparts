@@ -1,10 +1,12 @@
 import appDispatcher from '../dispatcher/appDispatcher';
 import searchActionIDs from '../actions/searchActionIDs';
 import SearchTokenHelper from '../helpers/SearchTokenHelper';
-import { EventEmitter } from 'events';
 
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { ISearchResults, ICells, ICellValue } from '../../utils/ISearchResults';
+
+import { SPHttpClientConfigurations} from '@microsoft/sp-http';
+import { EventEmitter } from 'eventemitter3';
 
 const CHANGE_EVENT: string = 'change';
 
@@ -16,14 +18,14 @@ export class SearchStoreStatic extends EventEmitter {
 	/**
 	 * @param {function} callback
 	 */
-	public addChangeListener(callback: Function): void {
+	public addChangeListener(callback): void {
         this.on(CHANGE_EVENT, callback);
     }
 
 	/**
 	 * @param {function} callback
 	 */
-    public removeChangeListener(callback: Function): void {
+    public removeChangeListener(callback): void {
         this.removeListener(CHANGE_EVENT, callback);
     }
 
@@ -62,13 +64,7 @@ export class SearchStoreStatic extends EventEmitter {
 	 * @param {string} url
 	 */
 	public GetSearchData (context: IWebPartContext, url: string): Promise<ISearchResults> {
-		return context.httpClient.get(url, {
-			headers: {
-				// Some users experience issues retrieving search results: https://github.com/SharePoint/sp-dev-docs/issues/44
-				// Current fix is to set an empty odata-version header
-				"odata-version": ""
-			}
-		}).then((res: Response) => {
+		return context.spHttpClient.get(url, SPHttpClientConfigurations.v1).then((res: Response) => {
 			return res.json();
 		});
 	}
