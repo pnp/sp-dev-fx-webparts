@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneConfiguration ,
+  IPropertyPaneConfiguration,
   IWebPartContext,
   PropertyPaneTextField,
-  PropertyPaneDropdown,  IPropertyPaneDropdownOption,
-  PropertyPaneSlider, 
+  PropertyPaneDropdown, IPropertyPaneDropdownOption,
+  PropertyPaneSlider,
   PropertyPaneToggle
 } from "@microsoft/sp-webpart-base";
 import { O365Video } from "../O365VUtilities";
@@ -20,7 +20,7 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
   private channels: Array<IPropertyPaneDropdownOption>;
   private channelsFetched: boolean;
 
- 
+
   public onInit<T>(): Promise<T> {
 
     this.O365Video = new O365Video(this.context);
@@ -47,9 +47,9 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
     ReactDom.render(element, this.domElement);
   }
 
-  public  getPropertyPaneConfiguration(): IPropertyPaneConfiguration  {
-    
-debugger;
+  public getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+
+    debugger;
     if (!this.O365Video.isInitialized) {
       this.O365Video.Initialize().then(x => {
         this.O365Video.getChannels().then(channels => {
@@ -70,7 +70,7 @@ debugger;
           return opt;
         });
         this.channelsFetched = true;
-           this.context.propertyPane.refresh();
+        this.context.propertyPane.refresh();
       });
 
 
@@ -92,7 +92,7 @@ debugger;
                   label: strings.VideoChannelFieldLabel,
                   options: this.channels,
                 }),
-                PropertyPaneSlider("coverflowHeighT", {
+                PropertyPaneSlider("coverflowHeight", {
                   label: strings.CoverflowHeightFieldLabel,
                   min: 100,
                   max: 1000

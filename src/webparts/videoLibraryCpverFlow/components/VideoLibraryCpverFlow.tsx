@@ -46,6 +46,16 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
     });
 
   }
+    public componentWillReceiveProps(nextProps:IVideoLibraryCpverFlowProps) {
+    if (nextProps.videoChannel) {
+      this.props.o365Video.GetVideos(nextProps.videoChannel).then((videos) => {
+        this.state.videos = videos;
+        this.setState(this.state);
+      });
+    }
+
+
+  }
   public afterChange(slideNumber: number) {
     this.state.selectedVideo = -1;
     this.setState(this.state);
@@ -67,6 +77,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
     cf.next();
   }
   public render(): JSX.Element {
+    debugger;
     if (this.state.videos.length === 0) {
       return (<div />);
     }
