@@ -1,3 +1,6 @@
+import {Promise} from "es6-promise"; // added fro rc0
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { SPHttpClient ,SPHttpClientConfigurations} from '@microsoft/sp-http';
 export class VideoServiceSettings {
     public ChannelUrlTemplate: string;
     public IsVideoPortalEnabled: string;
@@ -52,24 +55,23 @@ export enum VideoProcessingStatus {
     /**6 -- Error -- Unsupported format --The video file type is not supported for streaming playback by Azure Media Services. */
     UnsupportedFormatError = 6
 }
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { HttpClient } from '@microsoft/sp-client-base';
+
 export class O365Video {
     public videoServiceSettings: VideoServiceSettings;
     public isInitialized: boolean;
     public videoChannels: Array<VideoChannel>;
-    public httpClient: HttpClient;
+    public httpClient: SPHttpClient;
     public siteAbsoluteUrl: string;
     constructor(context: IWebPartContext) {
-        this.httpClient = context.httpClient;
+        this.httpClient = context.spHttpClient;
         this.isInitialized = false;
         this.siteAbsoluteUrl = context.pageContext.site.absoluteUrl;
     }
     public Initialize(): Promise<VideoServiceSettings> {
 
         const url = this.siteAbsoluteUrl + "/_api/VideoService.Discover";
-        return this.httpClient.get(url).then(response => {
-
+       // return this.httpClient.get(url).then(response => { //pre rc0
+ return this.httpClient.get(url,SPHttpClientConfigurations.v1).then(response => {
             if (response.ok) {
                 console.log("Returned OK from httpClient");
                 debugger;
@@ -95,7 +97,7 @@ export class O365Video {
     public getChannels(): Promise<Array<VideoChannel>> {
 
         const url = this.videoServiceSettings.VideoPortalUrl + "/_api/VideoService/Channels";
-        return this.httpClient.get(url).then(response => {
+        return this.httpClient.get(url,SPHttpClientConfigurations.v1).then(response => {
 
             if (response.ok) {
                 console.log("Returned OK from httpClient");
@@ -123,7 +125,7 @@ export class O365Video {
 
     public GetVideos(ChannelId: string): Promise<Array<Video>> {
         const url = this.videoServiceSettings.VideoPortalUrl + "/_api/VideoService/Channels('" + ChannelId + "')/Videos";
-        return this.httpClient.get(url).then(response => {
+        return this.httpClient.get(url,SPHttpClientConfigurations.v1).then(response => {
 
             if (response.ok) {
                 return response.json().then(v => {

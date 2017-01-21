@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration ,
   IWebPartContext,
   PropertyPaneTextField,
   PropertyPaneDropdown,  IPropertyPaneDropdownOption,
@@ -12,21 +12,17 @@ import { O365Video } from "../O365VUtilities";
 import * as strings from "videoLibraryStrings";
 import VideoLibrary, { IVideoLibraryProps } from "./components/VideoLibrary";
 import { IVideoLibraryWebPartProps } from "./IVideoLibraryWebPartProps";
-import ModuleLoader from "@microsoft/sp-module-loader";
+import {SPComponentLoader}  from "@microsoft/sp-loader";
 
 export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryWebPartProps> {
   debugger;
   private O365Video: O365Video;
   private channels: Array<IPropertyPaneDropdownOption>;
   private channelsFetched: boolean;
-  public constructor(context: IWebPartContext) {
-    super(context);
-  
-    ModuleLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
-    ModuleLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
-  }
+ 
   public onInit<T>(): Promise<T> {
-
+ SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
+    SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
     this.O365Video = new O365Video(this.context);
     return Promise.resolve(null);
   }
@@ -45,12 +41,13 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
     ReactDom.render(element, this.domElement);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  public getPropertyPaneConfiguration(): IPropertyPaneConfiguration  {
 
+debugger;
     if (!this.O365Video.isInitialized) {
       this.O365Video.Initialize().then(x => {
         this.O365Video.getChannels().then(channels => {
-          this.refreshPropertyPane();
+       this.context.propertyPane.refresh();
         });
 
       });
@@ -67,7 +64,7 @@ export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLib
           return opt;
         });
         this.channelsFetched = true;
-        this.refreshPropertyPane();
+          this.context.propertyPane.refresh();
       });
 
 

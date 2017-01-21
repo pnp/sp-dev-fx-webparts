@@ -90,9 +90,9 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCpverFlow
               }
             })}
           </Coverflow>
-          <div class="reactjs-coverflow_actions" data-radium="true" >
-            <button type="button" class="reactjs-coverflow_button" onClick={this.previous}>Previous</button>
-            <button type="button" class="reactjs-coverflow_button" onClick={this.next}>Next</button></div>
+          <div className="reactjs-coverflow_actions" data-radium="true" >
+            <button type="button" className="reactjs-coverflow_button" onClick={this.previous}>Previous</button>
+            <button type="button" className="reactjs-coverflow_button" onClick={this.next}>Next</button></div>
         </div>
       </div>
     );
