@@ -15,7 +15,7 @@ export interface IVideoLibraryState {
 
 }
 class PrevArrow extends React.Component<any, any> {
-  render() {
+ public render() {
     debugger;
     return (<button>Next</button>);
   }

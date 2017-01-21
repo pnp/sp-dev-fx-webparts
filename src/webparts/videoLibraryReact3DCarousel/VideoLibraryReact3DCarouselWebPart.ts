@@ -3,7 +3,7 @@ import * as ReactDom from 'react-dom';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration ,
-  IWebPartContext,
+ 
   PropertyPaneTextField,
   PropertyPaneDropdown,  IPropertyPaneDropdownOption,
   PropertyPaneSlider

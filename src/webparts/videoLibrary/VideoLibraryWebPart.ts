@@ -3,7 +3,6 @@ import * as ReactDom from "react-dom";
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration ,
-  IWebPartContext,
   PropertyPaneTextField,
   PropertyPaneDropdown,  IPropertyPaneDropdownOption,
   PropertyPaneSlider
@@ -15,7 +14,6 @@ import { IVideoLibraryWebPartProps } from "./IVideoLibraryWebPartProps";
 import {SPComponentLoader}  from "@microsoft/sp-loader";
 
 export default class VideoLibraryWebPart extends BaseClientSideWebPart<IVideoLibraryWebPartProps> {
-  debugger;
   private O365Video: O365Video;
   private channels: Array<IPropertyPaneDropdownOption>;
   private channelsFetched: boolean;
