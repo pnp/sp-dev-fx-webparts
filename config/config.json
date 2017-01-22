@@ -11,8 +11,8 @@
       "outputPath": "./dist/video-library-react-3-d-carousel.bundle.js"
     },
     {
-      "entry": "./lib/webparts/videoLibraryCpverFlow/VideoLibraryCpverFlowWebPart.js",
-      "manifest": "./src/webparts/videoLibraryCpverFlow/VideoLibraryCpverFlowWebPart.manifest.json",
+      "entry": "./lib/webparts/videoLibraryCoverFlow/VideoLibraryCoverFlowWebPart.js",
+      "manifest": "./src/webparts/videoLibraryCoverFlow/VideoLibraryCoverFlowWebPart.manifest.json",
       "outputPath": "./dist/video-library-cpver-flow.bundle.js"
     }
   ],
@@ -22,6 +22,6 @@
   "localizedResources": {
     "videoLibraryStrings": "webparts/videoLibrary/loc/{locale}.js",
     "videoLibraryReact3DCarouselStrings": "webparts/videoLibraryReact3DCarousel/loc/{locale}.js",
-    "videoLibraryCpverFlowStrings": "webparts/videoLibraryCpverFlow/loc/{locale}.js"
+    "videoLibraryCoverFlowStrings": "webparts/videoLibraryCoverFlow/loc/{locale}.js"
   }
 }
