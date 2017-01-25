@@ -3,6 +3,7 @@ import { css } from 'office-ui-fabric-react';
 import { TextField } from 'office-ui-fabric-react';
 import styles from '../BotFrameworkChat.module.scss';
 import { IBotFrameworkChatWebPartProps } from '../IBotFrameworkChatWebPartProps';
+declare function require(path: string) : any;
 
 export interface IBotFrameworkChatProps extends IBotFrameworkChatWebPartProps {
 }

@@ -2,19 +2,14 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import BotFrameworkChat, { IBotFrameworkChatProps } from './components/BotFrameworkChat';
 import { IBotFrameworkChatWebPartProps } from './IBotFrameworkChatWebPartProps';
 
 export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotFrameworkChatWebPartProps> {
-
-  public constructor(context: IWebPartContext) {
-    super(context);
-  }
 
   public render(): void {
     const element: React.ReactElement<IBotFrameworkChatProps> = React.createElement(BotFrameworkChat, {
@@ -34,7 +29,7 @@ export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotF
     ReactDom.render(element, this.domElement);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
