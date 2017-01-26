@@ -7,6 +7,7 @@ import {
   PropertyPaneDropdown,
   IPropertyPaneField,
   PropertyPaneLabel,
+  PropertyPaneButton,
   IPropertyPaneDropdownOption
 } from '@microsoft/sp-client-preview';
 import { EnvironmentType } from '@microsoft/sp-client-base';
@@ -26,7 +27,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   private _dataProvider: ITodoDataProvider;
   private _selectedList: ITodoTaskList;
   private _todoContainerComponent: TodoContainer;
-  private _disableDropdown: boolean;
+  private _hasNoTaskList: boolean = false;
 
   public constructor(context: IWebPartContext) {
     super(context);
@@ -43,6 +44,9 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     }
 
     this._openPropertyPane = this._openPropertyPane.bind(this);
+    this._createList = this._createList.bind(this);
+    this._loadTaskLists = this._loadTaskLists.bind(this);
+    this._refreshPropertyPane = this._refreshPropertyPane.bind(this);
   }
 
   protected onInit(): Promise<void> {
@@ -67,7 +71,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
 
   public render(): void {
     /*
-    Create the react element we want to render in the web part DOM. Pass the required props to the react component. 
+    Create the react element we want to render in the web part DOM. Pass the required props to the react component.
     */
     const element: React.ReactElement<ITodoContainerProps> = React.createElement(
       TodoContainer,
@@ -84,15 +88,15 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   protected onPropertyChange(propertyPath: string, newValue: any): void {
     /*
     Check the property path to see which property pane feld changed. If the property path matches the dropdown, then we set that list
-    as the selected list for the web part. 
+    as the selected list for the web part.
     */
     if (propertyPath === 'spListIndex') {
       this._setSelectedList(newValue);
     }
 
     /*
-    Finally, tell property pane to re-render the web part. 
-    This is valid for reactive property pane. 
+    Finally, tell property pane to re-render the web part.
+    This is valid for reactive property pane.
     */
     super.onPropertyChange(propertyPath, newValue);
   }
@@ -122,7 +126,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     return this._dataProvider.getTaskLists()
       .then((taskLists: ITodoTaskList[]) => {
         // Disable dropdown field if there are no results from the server.
-        this._disableDropdown = taskLists.length === 0;
+        this._hasNoTaskList = taskLists.length === 0;
         if (taskLists.length !== 0) {
           this._dropdownOptions = taskLists.map((list: ITodoTaskList) => {
             return {
@@ -134,20 +138,28 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
       });
   }
 
+  private _createList(): any{
+    this._dataProvider.createTaskList()
+      .then(this._loadTaskLists)
+      .then(this._refreshPropertyPane);
+  }
+
   private _getGroupFields(): IPropertyPaneField<any>[] {
     const fields: IPropertyPaneField<any>[] = [];
 
     fields.push(PropertyPaneDropdown('spListIndex', {
       label: "Select a list",
-      isDisabled: this._disableDropdown,
+      isDisabled: this._hasNoTaskList,
       options: this._dropdownOptions
     }));
 
     /*
     When we do not have any lists returned from the server, we disable the dropdown. If that is the case,
-    we also add a label field displaying the appropriate message. 
+    we also add a label field displaying the appropriate message.
     */
-    if (this._disableDropdown) {
+    if (this._hasNoTaskList) {
+      fields.push(PropertyPaneButton('createList', { onClick: this._createList, text: 'Create a Todo list' }));
+
       fields.push(PropertyPaneLabel(null, {
         text: 'Could not find tasks lists in your site. Create one or more tasks list and then try using the web part.'
       }));
@@ -171,6 +183,12 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
 
       this._dataProvider.selectedList = this._selectedList;
     }
+  }
+
+  private _refreshPropertyPane(): Promise<void> {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => resolve(this.configureStart()), 1);
+    });
   }
 
   private _openPropertyPane(): void {

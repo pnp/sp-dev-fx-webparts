@@ -67,6 +67,15 @@ export default class MockDataProvider implements ITodoDataProvider {
     });
   }
 
+
+  public createTaskList(): Promise<ITodoTaskList[]> {
+    const list: {} = {};
+
+    return new Promise<{}>((resolve) => {
+      setTimeout(() => resolve(list), 500);
+    });
+  }
+
   public getItems(): Promise<ITodoItem[]> {
     const items: ITodoItem[] = lodash.clone(this._items[this.selectedList.Title]);
 
