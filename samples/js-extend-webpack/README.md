@@ -1,26 +1,43 @@
-## js-extend-webpack
+# Extending webpack in the SharePoint Framework toolchain
 
-This is where you include your web part docs.
+## Summary
+[Webpack](https://webpack.github.io/) is a JavaScript module bundler that takes your JavaScript files and its dependencies and generates one or more JavaScript bundles so you can load different bundles for different scenarios.
 
-### Building the code
+One common task you would want to add to the SharePoint Framework toolchain is to extend the webpack configuration with custom loaders and plugins.
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+This sample shows how to use the webpack [markdown-loader](https://www.npmjs.com/package/markdown-loader) to preprocess markdown files to HTML string.
 
-This package produces the following:
+Read the following documentation for detailed information on working with webpack loaders in SharePoint Framework:
 
-* lib/* commonjs components - this allows this package to be reused from other packages.
-* dist/* - a single bundle containing the components used for uploading to a cdn pointing a registered Sharepoint webpart library to.
-* example/* a test page that hosts all components in this package.
+- [Extending webpack in the SharePoint Framework toolchain]()
 
-### Build options
+## Applies to
 
-gulp clean - TODO
-gulp test - TODO
-gulp watch - TODO
-gulp build - TODO
-gulp deploy - TODO
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 First Release Tenants](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+js-extend-webpack | Chakkaradeep Chandran (@chakkaradeep)
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|January 25th, 2017|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- in the command line run:
+  - `npm install`
+  - `gulp serve`
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-extend-webpack" />
