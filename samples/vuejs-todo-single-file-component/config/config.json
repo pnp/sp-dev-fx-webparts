@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/todo/TodoWebPart.js",
+      "manifest": "./src/webparts/todo/TodoWebPart.manifest.json",
+      "outputPath": "./dist/todo.bundle.js"
+    }
+  ],
+  "externals": {
+    "vue": "node_modules/vue/dist/vue.runtime.js"
+  },
+  "localizedResources": {
+    "todoStrings": "webparts/todo/loc/{locale}.js"
+  }
+}
