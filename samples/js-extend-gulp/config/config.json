@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/extendGulp/ExtendGulpWebPart.js",
+      "manifest": "./src/webparts/extendGulp/ExtendGulpWebPart.manifest.json",
+      "outputPath": "./dist/extend-gulp.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "extendGulpStrings": "webparts/extendGulp/loc/{locale}.js"
+  }
+}
