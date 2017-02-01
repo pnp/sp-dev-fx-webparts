@@ -71,7 +71,7 @@ export class O365Video {
 
         const url = this.siteAbsoluteUrl + "/_api/VideoService.Discover";
        // return this.httpClient.get(url).then(response => { //pre rc0
- return this.httpClient.get(url,SPHttpClientConfigurations.v1).then(response => {
+ return this.httpClient.get(url,SPHttpClient.configurations.v1).then(response => {
             if (response.ok) {
                 console.log("Returned OK from httpClient");
                 debugger;
@@ -97,7 +97,7 @@ export class O365Video {
     public getChannels(): Promise<Array<VideoChannel>> {
 
         const url = this.videoServiceSettings.VideoPortalUrl + "/_api/VideoService/Channels";
-        return this.httpClient.get(url,SPHttpClientConfigurations.v1).then(response => {
+        return this.httpClient.get(url,SPHttpClient.configurations.v1).then(response => {
 
             if (response.ok) {
                 console.log("Returned OK from httpClient");
@@ -125,7 +125,7 @@ export class O365Video {
 
     public GetVideos(ChannelId: string): Promise<Array<Video>> {
         const url = this.videoServiceSettings.VideoPortalUrl + "/_api/VideoService/Channels('" + ChannelId + "')/Videos";
-        return this.httpClient.get(url,SPHttpClientConfigurations.v1).then(response => {
+        return this.httpClient.get(url,SPHttpClient.configurations.v1).then(response => {
 
             if (response.ok) {
                 return response.json().then(v => {
