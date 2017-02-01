@@ -10,7 +10,7 @@
     "@microsoft/sp-core-library": "~0.1.2",
     "@microsoft/sp-webpart-base": "~0.4.0",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
-        "@types/react": "0.14.46",
+    "@types/react": "0.14.46",
     "@types/react-addons-shallow-compare": "0.14.17",
     "@types/react-addons-test-utils": "0.14.15",
     "@types/react-addons-update": "0.14.14",
