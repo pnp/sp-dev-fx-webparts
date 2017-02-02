@@ -1,0 +1,27 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/videoLibrary/VideoLibraryWebPart.js",
+      "manifest": "./src/webparts/videoLibrary/VideoLibraryWebPart.manifest.json",
+      "outputPath": "./dist/video-library.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/videoLibraryReact3DCarousel/VideoLibraryReact3DCarouselWebPart.js",
+      "manifest": "./src/webparts/videoLibraryReact3DCarousel/VideoLibraryReact3DCarouselWebPart.manifest.json",
+      "outputPath": "./dist/video-library-react-3-d-carousel.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/videoLibraryCoverFlow/VideoLibraryCoverFlowWebPart.js",
+      "manifest": "./src/webparts/videoLibraryCoverFlow/VideoLibraryCoverFlowWebPart.manifest.json",
+      "outputPath": "./dist/video-library-cpver-flow.bundle.js"
+    }
+  ],
+  "externals": {
+   "@microsoft/sp-module-loader": "node_modules/@microsoft/sp-module-loader/dist/sp-module-loader.js"
+   },
+  "localizedResources": {
+    "videoLibraryStrings": "webparts/videoLibrary/loc/{locale}.js",
+    "videoLibraryReact3DCarouselStrings": "webparts/videoLibraryReact3DCarousel/loc/{locale}.js",
+    "videoLibraryCoverFlowStrings": "webparts/videoLibraryCoverFlow/loc/{locale}.js"
+  }
+}

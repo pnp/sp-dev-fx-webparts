@@ -1,0 +1,73 @@
+
+.react-3d-carousel {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.react-3d-carousel .carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.react-3d-carousel .carousel  figure {
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    left: 10px;
+    top: 10px;
+    border: 2px solid black;
+    line-height: 116px;
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.react-3d-carousel .carousel figure {
+    background: hsla( 160, 100%, 50%, 0.8);
+}
+
+.react-3d-carousel   .prev {
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    top: 0px;
+    left: 0px;
+}
+
+.react-3d-carousel   .prev:before {
+    content: url("http://s3.postimg.org/o6xpvkidb/chevron_left_white.png");
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 43px;
+    height: 49px;
+    margin: auto;
+}
+
+.react-3d-carousel  .next {
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    top: 0px;
+    right: -5px;
+}
+.react-3d-carousel  .next:before
+{
+    content: url("http://s2.postimg.org/l0n6eaoad/chevron_right_white.png");
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 43px;
+    height: 49px;
+    margin: auto;
+}

@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "react-slick": "registry:dt/react-slick#0.0.0+20161121205806"
+  }
+}
