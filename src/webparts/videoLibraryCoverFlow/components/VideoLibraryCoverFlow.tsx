@@ -81,6 +81,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCoverFlow
     if (this.state.videos.length === 0) {
       return (<div />);
     }
+    // TODO: stop using the Iframe, use a <video> tah instead
     return (
       <div>
         <div >
