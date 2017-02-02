@@ -32,6 +32,8 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
       o365Video: this.O365Video,
       iframeHeight: this.properties.iframeHeight,
       iframeWidth: this.properties.iframeWidth,
+      playerHeight: this.properties.playerHeight,
+      playerWidth: this.properties.playerWidth,
       imgHeight: this.properties.imgHeight,
       imgWidth: this.properties.imgWidth,
       coverflowWidth: this.properties.coverflowWidth,
@@ -141,6 +143,16 @@ export default class VideoLibraryCpverFlowWebPart extends BaseClientSideWebPart<
                 }),
                 PropertyPaneSlider("iframeHeight", {
                   label: strings.IframeHeightFieldLabel,
+                  min: 100,
+                  max: 1000
+                }),
+                  PropertyPaneSlider("playerWidth", {
+                  label: strings.PlayerWidthFieldLabel,
+                  min: 100,
+                  max: 1900
+                }),
+                PropertyPaneSlider("playerHeight", {
+                  label: strings.PlayerHeightFieldLabel,
                   min: 100,
                   max: 1000
                 }),

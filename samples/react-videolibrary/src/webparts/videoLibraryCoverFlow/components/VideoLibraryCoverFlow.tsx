@@ -36,7 +36,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCoverFlow
     this.props.o365Video.Initialize().then((settings) => {
       debugger;
       //      this.state.playerUrlTemplate = settings.PlayerUrlTemplate; // this url does not work. You neeed the channel
-      this.state.playerUrlTemplate = settings.VideoPortalLayoutsUrl + "/VideoEmbedHost.aspx?chId={0}&vId={1}&width=640&height=360&autoPlay=true&showInfo=true";
+      this.state.playerUrlTemplate = settings.VideoPortalLayoutsUrl + "/VideoEmbedHost.aspx?chId={0}&vId={1}&width={2}&height={3}&autoPlay=true&showInfo=true";
       if (this.props.videoChannel) {
         this.props.o365Video.GetVideos(this.props.videoChannel).then((videos) => {
           this.state.videos = videos;
@@ -94,7 +94,11 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCoverFlow
             {this.state.videos.map((v, i, a) => {
 
               if (i === this.state.selectedVideo) {
-                const src = this.state.playerUrlTemplate.replace("{1}", v.ID).replace("{0}", v.ChannelID);
+                const src = this.state.playerUrlTemplate
+                  .replace("{1}", v.ID)
+                  .replace("{0}", v.ChannelID)
+                  .replace("{2}", this.props.playerWidth.toString())
+                  .replace("{3}", this.props.playerHeight.toString());
                 return (<iframe src={src} style={{ height: this.props.iframeHeight + "px", width: this.props.iframeWidth + "px" }} />);
               }
               else {

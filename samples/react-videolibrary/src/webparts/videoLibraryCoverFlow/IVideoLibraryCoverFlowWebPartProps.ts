@@ -13,4 +13,7 @@ export interface IVideoLibraryCoverFlowWebPartProps {
   coverflowAnimationSpeed: number;
   imgHeight: number;
   imgWidth: number;
+  playerHeight: number;
+  playerWidth: number;
+  
 }

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Title="VideoLibrary Feature" Description="A feature which activates the Client-Side WebPart named VideoLibrary"
-                                               Id="f0d034d3-6b7d-4907-a6c1-357c2e2e03af" Version="1.0.0.0" Scope="Web" Hidden="FALSE">
-                                               </Feature>

@@ -9,6 +9,8 @@ declare interface IVideoLibraryCoverFlowStrings {
   ImgHeightFieldLabel: string;
   IframeWidthFieldLabel: string;
   IframeHeightFieldLabel: string;
+  PlayerWidthFieldLabel: string;
+  PlayerHeightFieldLabel: string;
   CoverflowMarginFieldLabel: string;
   CoverflowAnimationSpeedFieldLabel: string;
   CoverflowStartPositionFieldLabel: string;

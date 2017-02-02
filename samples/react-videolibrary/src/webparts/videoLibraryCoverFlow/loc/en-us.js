@@ -16,8 +16,10 @@ define([], function () {
   
     "ImgWidthFieldLabel": "Static Image Width",
     "ImgHeightFieldLabel": "Static Image Height",
-    "IframeWidthFieldLabel": "Video Player Width",
-    "IframeHeightFieldLabel": "Video Player Height",
+    "IframeWidthFieldLabel": "IFrame Width",
+    "IframeHeightFieldLabel": "IFrame Height",
+    "PlayerWidthFieldLabel": "Video Player Width",
+    "PlayerHeightFieldLabel": "Video Player Height",
     
 
   }

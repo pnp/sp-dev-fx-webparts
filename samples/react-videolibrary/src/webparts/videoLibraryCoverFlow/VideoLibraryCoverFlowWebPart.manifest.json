@@ -27,6 +27,8 @@
         "coverflowEnableScroll": true,
         "iframeHeight": 215,
         "iframeWidth": 300,
+        "playerHeight": 210,
+        "playerWidth": 295,
         "coverflowAnimationSpeed": 0.8,
         "imgHeight": 225,
         "imgWidth": 185
