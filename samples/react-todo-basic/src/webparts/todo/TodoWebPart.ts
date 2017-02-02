@@ -2,14 +2,14 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration,
   IWebPartContext,
   PropertyPaneDropdown,
   IPropertyPaneField,
   PropertyPaneLabel,
   IPropertyPaneDropdownOption
-} from '@microsoft/sp-client-preview';
-import { EnvironmentType } from '@microsoft/sp-client-base';
+} from '@microsoft/sp-webpart-base';
+import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import * as lodash from '@microsoft/sp-lodash-subset';
 import * as strings from 'todoStrings';
 import TodoContainer from './components/TodoContainer/TodoContainer';
@@ -29,13 +29,13 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   private _disableDropdown: boolean;
 
   public constructor(context: IWebPartContext) {
-    super(context);
+    super();
 
     /*
     Create the appropriate data provider dependeing on where the web part is running.
     The DEBUG flag will ensure the mock data provider is not bundled with the web part when you package the solution for distribution, that is, using the --ship flag with the package-solution gulp command.
     */
-    if (DEBUG && context.environment.type === EnvironmentType.Local) {
+    if (DEBUG && Environment.type === EnvironmentType.Local) {
       this._dataProvider = new MockDataProvider();
     } else {
       this._dataProvider = new SharePointDataProvider();
@@ -51,7 +51,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     /*
     Get the list of tasks lists from the current site and populate the property pane dropdown field with the values.
     */
-    return this._loadTaskLists()
+    this._loadTaskLists()
       .then(() => {
         /*
          If a list is already selected, then we would have stored the list Id in the associated web part property.
@@ -63,6 +63,8 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
           this.context.statusRenderer.clearLoadingIndicator(this.domElement);
         }
       });
+
+      return super.onInit();
   }
 
   public render(): void {
@@ -81,7 +83,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     this._todoContainerComponent = <TodoContainer>ReactDom.render(element, this.domElement);
   }
 
-  protected onPropertyChange(propertyPath: string, newValue: any): void {
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
     /*
     Check the property path to see which property pane feld changed. If the property path matches the dropdown, then we set that list
     as the selected list for the web part. 
@@ -94,10 +96,10 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     Finally, tell property pane to re-render the web part. 
     This is valid for reactive property pane. 
     */
-    super.onPropertyChange(propertyPath, newValue);
+    super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -118,7 +120,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     };
   }
 
-  private _loadTaskLists(): Promise<void> {
+  private _loadTaskLists(): Promise<any> {
     return this._dataProvider.getTaskLists()
       .then((taskLists: ITodoTaskList[]) => {
         // Disable dropdown field if there are no results from the server.
@@ -139,7 +141,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
 
     fields.push(PropertyPaneDropdown('spListIndex', {
       label: "Select a list",
-      isDisabled: this._disableDropdown,
+      disabled: this._disableDropdown,
       options: this._dropdownOptions
     }));
 
@@ -174,6 +176,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   }
 
   private _openPropertyPane(): void {
-    this.configureStart();
+    this.context.propertyPane.open();
   }
 }

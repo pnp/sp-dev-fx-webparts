@@ -51,7 +51,7 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
     });
   }
 
-  private _handleAddButtonClick(event?: React.MouseEvent) {
+  private _handleAddButtonClick(event?: React.MouseEvent<HTMLButtonElement>) {
     this.setState({
       inputValue: this._placeHolderText
     });
