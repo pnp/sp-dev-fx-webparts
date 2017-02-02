@@ -46,7 +46,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCoverFlow
     });
 
   }
-    public componentWillReceiveProps(nextProps:IVideoLibraryCoverFlowProps) {
+  public componentWillReceiveProps(nextProps: IVideoLibraryCoverFlowProps) {
     if (nextProps.videoChannel) {
       this.props.o365Video.GetVideos(nextProps.videoChannel).then((videos) => {
         this.state.videos = videos;
@@ -84,7 +84,7 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCoverFlow
     return (
       <div>
         <div >
-          <Coverflow style={{ width: this.props.coverflowWidth+"px", height: this.props.coverflowHeight + "px" }} ref="coverflow"
+          <Coverflow style={{ width: this.props.coverflowWidth + "px", height: this.props.coverflowHeight + "px" }} ref="coverflow"
             margin={this.props.coverflowMargin + "px"}
             startPosition={this.props.coverflowStartPosition}
             enableScroll={this.props.coverflowEnableScroll}
@@ -97,7 +97,18 @@ export default class VideoLibrary extends React.Component<IVideoLibraryCoverFlow
                 return (<iframe src={src} style={{ height: this.props.iframeHeight + "px", width: this.props.iframeWidth + "px" }} />);
               }
               else {
-                return (<img className="reactjs-coverflow_cover" src={v.ThumbnailUrl} data-videonumber={i} style={{ height: this.props.imgHeight+ "px", width: this.props.imgWidth + "px" }} onClick={this.playVideo} />);
+                return (
+                  <figure title={v.Title}>
+                    <img
+                      className="reactjs-coverflow_cover"
+                      src={v.ThumbnailUrl}
+                      data-videonumber={i}
+                      style={{ height: this.props.imgHeight + "px", width: this.props.imgWidth + "px" }}
+                      onClick={this.playVideo} />
+                    <figcaption>
+                      {v.Description}</figcaption>
+                  </figure>
+                );
               }
             })}
           </Coverflow>
