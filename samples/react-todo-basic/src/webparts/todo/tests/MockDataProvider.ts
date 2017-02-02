@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import * as lodash from '@microsoft/sp-lodash-subset';
 import ITodoDataProvider from '../dataProviders/ITodoDataProvider';
 import ITodoItem from '../models/ITodoItem';

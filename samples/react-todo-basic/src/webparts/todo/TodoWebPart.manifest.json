@@ -2,11 +2,9 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
   "id": "cf91e6a4-ae07-4cdc-8a62-f22eada7ab4d",
   "componentType": "WebPart",
-  "version": "1.0.0",
+  "alias":"ReactToDoBasic",  
+  "version": "1.0.1",
   "manifestVersion": 2,
-  "searchablePropertyNames": [],
-  "linkPropertyNames": [],
-  "imageLinkPropertyNames": [],
   "preconfiguredEntries": [
     {
       "groupId": "cf91e6a4-ae07-4cdc-8a62-f22eada7ab4d",

@@ -61,7 +61,7 @@ export default class TodoListItem extends React.Component<ITodoListItemProps,{}>
     );
   }
 
-  private _handleToggleChanged(ev: React.FormEvent, checked: boolean): void {
+  private _handleToggleChanged(ev: React.FormEvent<HTMLInputElement>, checked: boolean): void {
     const newItem: ITodoItem = update(this.props.item, {
       PercentComplete: { $set: this.props.item.PercentComplete >= 1 ? 0 : 1 }
     });
@@ -69,7 +69,7 @@ export default class TodoListItem extends React.Component<ITodoListItemProps,{}>
     this.props.onCompleteListItem(newItem);
   }
 
-  private _handleDeleteClick(event: React.MouseEvent) {
+  private _handleDeleteClick(event: React.MouseEvent<HTMLButtonElement>) {
       this.props.onDeleteListItem(this.props.item);
   }
 }
