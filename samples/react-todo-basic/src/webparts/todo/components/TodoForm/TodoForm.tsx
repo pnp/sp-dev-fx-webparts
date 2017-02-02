@@ -30,7 +30,7 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
           className={ styles.textField }
           value={ this.state.inputValue }
           placeholder={ this._placeHolderText }
-          autoComplete='off'
+          autoComplete='off'          
           onChanged={this._handleInputChange}/>
         <div className={ styles.addButtonCell }>
           <Button

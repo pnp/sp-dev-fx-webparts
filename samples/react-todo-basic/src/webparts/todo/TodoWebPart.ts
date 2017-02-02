@@ -3,7 +3,6 @@ import * as ReactDom from 'react-dom';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  IWebPartContext,
   PropertyPaneDropdown,
   IPropertyPaneField,
   PropertyPaneLabel,
@@ -28,11 +27,11 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   private _todoContainerComponent: TodoContainer;
   private _disableDropdown: boolean;
 
-  public constructor(context: IWebPartContext) {
-    super();
+  protected onInit(): Promise<void> {
+    this.context.statusRenderer.displayLoadingIndicator(this.domElement, "Todo");
 
     /*
-    Create the appropriate data provider dependeing on where the web part is running.
+    Create the appropriate data provider depending on where the web part is running.
     The DEBUG flag will ensure the mock data provider is not bundled with the web part when you package the solution for distribution, that is, using the --ship flag with the package-solution gulp command.
     */
     if (DEBUG && Environment.type === EnvironmentType.Local) {
@@ -43,10 +42,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     }
 
     this._openPropertyPane = this._openPropertyPane.bind(this);
-  }
-
-  protected onInit(): Promise<void> {
-    this.context.statusRenderer.displayLoadingIndicator(this.domElement, "Todo");
 
     /*
     Get the list of tasks lists from the current site and populate the property pane dropdown field with the values.
@@ -64,7 +59,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
         }
       });
 
-      return super.onInit();
+    return super.onInit();
   }
 
   public render(): void {

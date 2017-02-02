@@ -9,6 +9,7 @@
     "@microsoft/sp-client-base": "~0.7.0",
     "@microsoft/sp-core-library": "~0.1.0",
     "@microsoft/sp-webpart-base": "~0.4.0",
+    "@types/lodash": "^4.14.50",
     "@types/react-addons-update": "^0.14.8-alpha",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
     "office-ui-fabric-react": "0.69.0",
@@ -21,7 +22,6 @@
     "@microsoft/sp-module-interfaces": "~0.7.0",
     "@microsoft/sp-webpart-workbench": "~0.8.0",
     "@types/chai": ">=3.4.34 <3.6.0",
-    "@types/lodash": "^4.14.50",
     "@types/mocha": ">=2.2.33 <2.6.0",
     "gulp": "~3.9.1"
   },
