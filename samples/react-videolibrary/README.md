@@ -8,8 +8,8 @@ when a user clicks on one of the thumbnails, replace the tumbnail with a video p
 The first webpart used react-3d-carousel. The carousel looks great, but i found no way to swap out the image and replace 
 it with a video player. This carousel would be fine for displayin a picture library though,
 
-The first webpart used react-slick. The carousel is not as fancy as react-3d-carousel, but i was able to to swap out the 
-image and replace it with a video player once a user clicked it. I had trouble with the css and getting the nexe and previous 
+The second webpart used react-slick. The carousel is not as fancy as react-3d-carousel, but i was able to to swap out the 
+image and replace it with a video player once a user clicked it. I had trouble with the css and getting the next and previous 
 buttons to show. If you run the webpart, the buttons are there, they are just not visible. 
 
 Finally I tried reactjs-coverface. It has nice scrolling through the images withe the mousweheel, and some cool 3d effects.
@@ -17,9 +17,10 @@ It was also simple to swap the image with a video player once a user clicked it 
 of the three for my purposes.
 
 
-In the future I wan to modify this webpart to link a Sharepoint list with the video channel so that users can enter addition 
-metadata for th evideo and be anle to search/filter the videos using this metadata.
+In the future I want to modify this webpart to link a Sharepoint list with the video channel so that users can enter additional 
+metadata for the video and be anle to search/filter the videos using this metadata.
 
+See also https://github.com/russgove/O365VideoSync. It's a console app that you can schedule to run to synchronize an  Office 365 Video Channel with a sharepoint list (on prem or otherwise).
 
 
 
