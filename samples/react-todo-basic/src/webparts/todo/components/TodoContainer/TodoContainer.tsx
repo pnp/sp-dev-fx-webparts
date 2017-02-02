@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DisplayMode } from '@microsoft/sp-client-base';
-import { Placeholder } from '@microsoft/sp-client-preview';
+import { DisplayMode } from '@microsoft/sp-core-library';
+import { Placeholder } from '@microsoft/sp-webpart-base';
 import { Fabric } from 'office-ui-fabric-react';
 import TodoForm from '../TodoForm/TodoForm';
 import styles from './TodoContainer.module.scss';
@@ -100,7 +100,7 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
     this.props.configureStartCallback();
   }
 
-  private _createTodoItem(inputValue: string): Promise<void> {
+  private _createTodoItem(inputValue: string): Promise<any> {
     return this.props.dataProvider.createItem(inputValue).then(
       (items: ITodoItem[]) => {
         const newItems = update(this.state.todoItems, { $set: items });
@@ -108,7 +108,7 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
       });
   }
 
-  private _completeTodoItem(todoItem: ITodoItem): Promise<void> {
+  private _completeTodoItem(todoItem: ITodoItem): Promise<any> {
     return this.props.dataProvider.updateItem(todoItem).then(
       (items: ITodoItem[]) => {
         const newItems = update(this.state.todoItems, { $set: items });
@@ -116,7 +116,7 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
       });
   }
 
-  private _deleteTodoItem(todoItem: ITodoItem): Promise<void> {
+  private _deleteTodoItem(todoItem: ITodoItem): Promise<any> {
     return this.props.dataProvider.deleteItem(todoItem).then(
       (items: ITodoItem[]) => {
         const newItems = update(this.state.todoItems, { $set: items });

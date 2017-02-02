@@ -16,7 +16,7 @@ export default class TodoList extends React.Component<ITodoListProps, {}> {
     return (
       <FocusZone
         direction={ FocusZoneDirection.vertical }
-        isInnerZoneKeystroke={ (ev: React.KeyboardEvent) => ev.which === getRTLSafeKeyCode(KeyCodes.right) }
+        isInnerZoneKeystroke={ (ev: React.KeyboardEvent<HTMLElement>) => ev.which === getRTLSafeKeyCode(KeyCodes.right) }
         >
         <List
           className={ styles.todoList }
