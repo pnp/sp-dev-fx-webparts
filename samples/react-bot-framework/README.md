@@ -9,8 +9,8 @@ the web part uses the username of the currently logged in user. The web part has
 You can see this web part sample, including a sample VS 2015 bot application in practice from [PnP SPFx Special Interest Group recording](https://youtu.be/Tv03CU_PmVs?t=1329)
 where sample was demonstrated.
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-RC0-green.svg)
 
 ## Applies to
 

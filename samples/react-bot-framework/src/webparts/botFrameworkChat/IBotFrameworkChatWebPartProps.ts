@@ -1,4 +1,4 @@
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 export interface IBotFrameworkChatWebPartProps {
   description: string;
