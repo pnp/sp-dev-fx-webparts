@@ -9,11 +9,11 @@ import { PropertyFieldColumnDefinitions, IPropertyFieldColumnDefinitionsProps } 
 import { PropertyFieldListDefinitions, IPropertyFieldListDefinitionsProps } from "./containers/PropertyFieldListDefinitions";
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration ,
   IWebPartContext,
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
-import { Log } from "@microsoft/sp-client-base";
+import { Log } from "@microsoft/sp-core-library";
 import routes from "./store/routes";
 import * as strings from "spfxReactGridStrings";
 import { ISpfxReactGridWebPartProps } from "./ISpfxReactGridWebPartProps";
@@ -30,8 +30,8 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
 
   private cdProps: IPropertyFieldColumnDefinitionsProps;
   private ldProps: IPropertyFieldListDefinitionsProps;
-  public constructor(context: IWebPartContext) {
-    super(context);
+  public constructor() {
+    super();
     this.onPropertyChange = this.onPropertyChange.bind(this);
 
       this.cdProps = {
@@ -67,7 +67,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
   }
 
   private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {
-    
+
     switch (propertyPath) {
       case "ColumnDefinitions":
         this.properties.columns = newValue;
@@ -83,8 +83,8 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
         break;
     }
   };
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
-   
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration  {
+
     Log.verbose("SpfxReactGridWebPart", "In propertyPaneSettings of SpfxReactGridWebPart");
     return {
       pages: [

@@ -5,6 +5,7 @@
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "types": [ "webpack-env" ] ,
 
     "experimentalDecorators": true
 
