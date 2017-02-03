@@ -9,7 +9,7 @@ require('zone.js');
 
 import {
   BaseClientSideWebPart
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import { NgModule, ApplicationRef, Inject, ReflectiveInjector, Injector, NgZone } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -93,7 +93,7 @@ export default class BaseAngular2WebPart<TProperties>
          * @todo This is a prototype method of accessing the root component.
          * Update when a stable access method is found.
          */
-        this._component = this._app['_rootComponents'][0]['_hostElement']['component'];
+        this._component = this._app['_rootComponents'][0].instance;
         this.updateChanges();
 
         this._zone.run(() => {console.log('Outside Done!') });
