@@ -6,7 +6,7 @@ A simple todo web part built using react to showcase some of the SharePoint Fram
 ![Todo basic web part demo in SharePoint Workbench](./assets/todo-basic-demo.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-rc0-red.svg)
+![drop](https://img.shields.io/badge/drop-rc0-green.svg)
 
 ## Applies to
 
