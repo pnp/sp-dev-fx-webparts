@@ -46,3 +46,5 @@ Demonstrates\uses below features:
  - separation of concerns between markup, styling and code
  - single-file components architecture for Vue.js
  - custom webpack loaders
+
+ <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/vuejs-todo-single-file-component" />

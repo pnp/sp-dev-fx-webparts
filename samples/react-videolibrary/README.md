@@ -23,8 +23,6 @@ metadata for the video and be anle to search/filter the videos using this metada
 See also https://github.com/russgove/O365VideoSync. It's a console app that you can schedule to run to synchronize an  Office 365 Video Channel with a sharepoint list (on prem or otherwise).
 
 
-
-
 ![alt tag](/samples/react-spfx-multilist-grid/src/images/editListItems.PNG)
 
 
@@ -74,10 +72,8 @@ Version|Date|Comments
 A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
 to display videos stored on an O365 Video Channel.
 
-Usage:
 
-
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-multilist-grid" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-videolibrary" />
 
 
 
