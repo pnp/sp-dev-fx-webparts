@@ -56,7 +56,21 @@ When you are submitting a new sample, it has to follow up below guidelines
 Please see following wiki post from the GitHub repository wiki for exact steps on submitting new pull requests. 
 
 * How to submit a PR to SharePoint repository? - Step-by-step with commands and pictures coming soon
-
+## Meging your existing github projects with this repository
+If the sample you wish to contrubute is tored in your own Github repository, you can use the following steps to merge it with the Psp-dev-fx-webparts repository:
+    - Fork the sp-dev-fx-webparts repository om hithub
+    - create a local git rpository 
+        md sp-dev-fx-webparts
+        cd sp-dev-fx-webparts
+        git init
+    - pull your forked copy of sp-dev-fx-webparts into your local repository
+        git remote add origin https://github.com/yourgitaccount/sp-dev-fx-webparts.git
+        git pull origin dev
+    - pull your other project from github into the samples folder of your local copy of sp-dev-fx-webparts     
+        git subtree add --prefix=samples/projectname https://github.com/yourgitaccount/projectname.git master
+    - push the changes up to your forked repository
+        git push orgin dev
+        
 ## Signing the CLA
 Before we can accept your pull requests you will be asked to sign electronically Contributor License Agreement (CLA), which is prerequisite for any contributions to PnP repository. This will be one time process, so for any future contributions you will not be asked to re-sign anything. After the CLA has been signed, our PnP core team members will have a look on your submission for final verification of the submission. Please do not delete your development branch until the submission has been closed.
 
