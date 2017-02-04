@@ -1,7 +1,8 @@
 ﻿import * as utils from "../utils/utils";
 import * as React from "react";
 
-const connect = require("react-redux").connect;
+//const connect = require("react-redux").connect;
+import {connect} from "react-redux";
 import * as _ from "underscore";
 import {
   addListItem, removeListItem, getListItemsAction, saveListItemAction,
@@ -21,7 +22,7 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { DatePicker, IDatePickerStrings } from "office-ui-fabric-react/lib/DatePicker";
 
 import Container from "../components/container";
-import { Log } from "@microsoft/sp-client-base";
+import { Log } from "@microsoft/sp-core-library";
 
 interface IListViewPageProps extends React.Props<any> {
   /** An array of ListItems fetched from sharepoint */

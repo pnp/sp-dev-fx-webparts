@@ -25,11 +25,12 @@ export interface IPropertyFieldColumnDefinitionsPropsInternal extends IPropertyP
 }
 class PropertyFieldColumnDefinitionsBuilder implements IPropertyPaneField<IPropertyFieldColumnDefinitionsPropsInternal> {
   //Properties defined by IPropertyPaneField
- // public type: IPropertyPaneFieldType = 1;//IPropertyPaneFieldType.Custom;
+  public type = 1;//IPropertyPaneFieldType.Custom;
   public targetProperty: string;
   public properties: IPropertyFieldColumnDefinitionsPropsInternal;
   //Custom properties
   private label: string;
+
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
   public constructor(_targetProperty: string, _properties: IPropertyFieldColumnDefinitionsPropsInternal) {
@@ -59,6 +60,7 @@ export function PropertyFieldColumnDefinitions(targetProperty: string, propertie
     var newProperties: IPropertyFieldColumnDefinitionsPropsInternal = {
       label: properties.label,
       targetProperty: targetProperty,
+        key: targetProperty,
       initialValue: properties.initialValue,
       onPropertyChange: properties.onPropertyChange,
       columnDefinitions: properties.getColumnDefinitions(),

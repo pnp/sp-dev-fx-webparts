@@ -1,6 +1,7 @@
 ﻿import * as React from "react";
 import * as utils from "../utils/utils";
-const connect = require("react-redux").connect;
+//const connect = require("react-redux").connect;
+import {connect} from "react-redux";
 import * as _ from "underscore";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 import WebEditor from "../components/WebEditor";
