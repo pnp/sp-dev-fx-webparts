@@ -4,11 +4,10 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  IPropertyPaneFieldType,
-  IPropertyPaneCustomFieldProps
+   IPropertyPaneCustomFieldProps
 } from '@microsoft/sp-webpart-base';
 import PropertyFieldListDefinitionsHost, { IPropertyFieldListDefinitionsHostProps } from './PropertyFieldListDefinitionsHost';
-import {  PageContext } from "@microsoft/sp-client-base";
+import {  PageContext } from "@microsoft/sp-page-context";
 export interface IPropertyFieldListDefinitionsProps {
   label: string;
   initialValue?: Array<ListDefinition>;
@@ -19,6 +18,7 @@ export interface IPropertyFieldListDefinitionsProps {
 }
 export interface IPropertyFieldListDefinitionsPropsInternal extends IPropertyPaneCustomFieldProps {
   label: string;
+  key:string; // new for rc0
   initialValue?: Array<ListDefinition>;
   targetProperty: string;
   onRender(elem: HTMLElement): void;
@@ -31,7 +31,7 @@ export interface IPropertyFieldListDefinitionsPropsInternal extends IPropertyPan
 class PropertyFieldListDefinitionsBuilder implements IPropertyPaneField<IPropertyFieldListDefinitionsPropsInternal> {
 
   //Properties defined by IPropertyPaneField
-  public type: IPropertyPaneFieldType = 1;//IPropertyPaneFieldType.Custom;
+  public type = 1;//IPropertyPaneFieldType.Custom;
   public targetProperty: string;
   public properties: IPropertyFieldListDefinitionsPropsInternal;
 
@@ -40,7 +40,7 @@ class PropertyFieldListDefinitionsBuilder implements IPropertyPaneField<IPropert
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
   public constructor(_targetProperty: string, _properties: IPropertyFieldListDefinitionsPropsInternal) {
-  
+
     this.render = this.render.bind(this);
     this.properties = _properties;
     this.label = _properties.label;
@@ -49,7 +49,7 @@ class PropertyFieldListDefinitionsBuilder implements IPropertyPaneField<IPropert
     this.onPropertyChange = _properties.onPropertyChange;
   }
   private render(elem: HTMLElement): void {
-    
+
     const ldProps: IPropertyFieldListDefinitionsHostProps = {
       label: this.label,
       getColumnDefinitions: this.properties.getColumnDefinitions,
@@ -70,6 +70,7 @@ export function PropertyFieldListDefinitions(targetProperty: string, properties:
   //Create an internal properties object from the given properties
   var newProperties: IPropertyFieldListDefinitionsPropsInternal = {
     label: properties.label,
+    key:targetProperty,
     targetProperty: targetProperty,
     initialValue: properties.initialValue,
     onPropertyChange: properties.onPropertyChange,

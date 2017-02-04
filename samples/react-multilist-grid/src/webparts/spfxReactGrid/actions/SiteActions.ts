@@ -9,6 +9,7 @@ import {
 } from "../constants";
 import "whatwg-fetch";
 import * as utils from "../utils/utils";
+import * as _ from "underscore";
 import { Web as SPWeb } from "sp-pnp-js";
 import { Site as SPSite } from "sp-pnp-js";
 import { Web, WebList, WebListField } from "../model/Site";

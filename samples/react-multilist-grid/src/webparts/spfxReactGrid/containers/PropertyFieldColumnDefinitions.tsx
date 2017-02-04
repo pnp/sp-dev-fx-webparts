@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  IPropertyPaneFieldType,
+//  IPropertyPaneFieldType,
   IPropertyPaneCustomFieldProps
 } from '@microsoft/sp-webpart-base';
 import PropertyFieldColumnDefinitionsHost, { IPropertyFieldColumnDefinitionsHostProps } from './PropertyFieldColumnDefinitionsHost';
@@ -25,7 +25,7 @@ export interface IPropertyFieldColumnDefinitionsPropsInternal extends IPropertyP
 }
 class PropertyFieldColumnDefinitionsBuilder implements IPropertyPaneField<IPropertyFieldColumnDefinitionsPropsInternal> {
   //Properties defined by IPropertyPaneField
-  public type: IPropertyPaneFieldType = 1;//IPropertyPaneFieldType.Custom;
+ // public type: IPropertyPaneFieldType = 1;//IPropertyPaneFieldType.Custom;
   public targetProperty: string;
   public properties: IPropertyFieldColumnDefinitionsPropsInternal;
   //Custom properties

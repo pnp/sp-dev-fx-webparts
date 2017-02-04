@@ -2,6 +2,7 @@
 import * as React from "react";
 
 const connect = require("react-redux").connect;
+import * as _ from "underscore";
 import {
   addListItem, removeListItem, getListItemsAction, saveListItemAction,
   undoListItemChangesAction, updateListItemAction,
@@ -466,7 +467,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   /**
    * This method renders the contents of an individual cell in an editable format.
    */
-  public CellContentsEditable(props: { entity: ListItem, column: ColumnDefinition, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public CellContentsEditable(props: { entity: ListItem, column: ColumnDefinition, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
 
     const {entity, column, cellUpdated, cellUpdatedEvent} = props;
 
@@ -725,7 +726,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
    *  It calls CellContentsEditable or CellContents based on whether the cell is being edited.
    * It determines if the cell is being edited by looking at this,props.editing(which got set by ToggleEditing).
    */
-  public TableDetail(props: { entity: ListItem, column: ColumnDefinition, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableDetail(props: { entity: ListItem, column: ColumnDefinition, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
 
     const {entity, column, cellUpdated, cellUpdatedEvent} = props;
     if (this.state && this.state.editing && this.state.editing.entityid === entity.GUID && this.state.editing.columnid === column.guid && column.editable) {
@@ -743,7 +744,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   /**
    * This method renders a tableRow for an individual listitem
    */
-  public TableRow(props: { entity: ListItem, columns: Array<ColumnDefinition>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableRow(props: { entity: ListItem, columns: Array<ColumnDefinition>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, columns, cellUpdated, cellUpdatedEvent} = props;
     return (
       <tr>
@@ -778,7 +779,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   /**
    * Render rows for the listItems
    */
-  public TableRows(props: { entities: Array<ListItem>, columns: Array<ColumnDefinition>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableRows(props: { entities: Array<ListItem>, columns: Array<ColumnDefinition>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entities, columns, cellUpdated, cellUpdatedEvent} = props;
     return (
       <tbody>
@@ -821,7 +822,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
 
         }]} />
 
-        <table border="1">
+        <table >
           <thead>
             <tr>
               {this.props.columns.map((column) => {

@@ -9,11 +9,9 @@
         "src": "https://raw.githubusercontent.com/andrew-w-ross/typings-redux/master/typings.json",
         "raw": "github:andrew-w-ross/typings-redux",
         "main": "redux.d.ts",
-        "name": "redux",
-        "type": "typings"
+        "name": "redux"
       }
     },
-    "name": "react-redux",
-    "type": "typings"
+    "name": "react-redux"
   }
 }

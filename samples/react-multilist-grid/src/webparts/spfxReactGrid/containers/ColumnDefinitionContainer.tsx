@@ -5,7 +5,7 @@ import { addColumn, removeColumn,  removeAllColumns, moveCulumnUp, moveCulumnDow
 import ColumnDefinition from "../model/ColumnDefinition";
 import { Button, ButtonType, TextField, CommandBar, Dropdown, IDropdownOption, Toggle } from "office-ui-fabric-react";
 import Container from "../components/container";
-import { Guid, Log } from "@microsoft/sp-client-base";
+import { Guid, Log } from "@microsoft/sp-core-library";
 /** NOTE:
  * To enable other column types
  * 1. Uncomment it here
@@ -15,7 +15,7 @@ import { Guid, Log } from "@microsoft/sp-client-base";
  * 4. If any other data is needed to render the contents in an editable mode (maybe Managed Metadata) Add a case in the Containers\ListItemContaine\toggleEditing
  *      method to get the data. Also will need to add another enitity to the store (actions, reducers, etc.)
  * 5. Special logic may be needed when moving an item between lists (as in the cas of Users ). Add this to Containers\ListItemContaine\mapOldListFieldsToNewListFields
- * 
+ *
  */
 const fieldTypes: Array<IDropdownOption> = [
     { key: null, text: "(Selecte one)" },
@@ -57,7 +57,7 @@ export interface IColumnsPageProps extends React.Props<any> {
     save: () => void;
 }
 interface IContextMenu extends React.Props<any> {
-    onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
+ //   onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
 }
 function mapStateToProps(state) {
     return {
@@ -207,7 +207,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         const columnid = attributes.getNamedItem("data-columnid").value;
         this.setState({ "editing": { entityid: entityid, columnid: columnid } });
     }
-    public CellContentsEditable(props: { entity: ColumnDefinition, gridColumn: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+    public CellContentsEditable(props: { entity: ColumnDefinition, gridColumn: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
         const {entity, gridColumn, cellUpdated, cellUpdatedEvent} = props;
         if (!gridColumn.editable) {
             return (<span>
@@ -274,7 +274,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
             );
         }
     }
-    public TableRow(props: { isFirst: boolean, isLast: boolean, entity: ColumnDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+    public TableRow(props: { isFirst: boolean, isLast: boolean, entity: ColumnDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
         const {entity, columns, cellUpdated, cellUpdatedEvent, isLast, isFirst} = props;
         return (
             <tr>
@@ -303,7 +303,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
                 </td>
             </tr>);
     };
-    public TableRows(props: { entities: Array<ColumnDefinition>, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+    public TableRows(props: { entities: Array<ColumnDefinition>, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
         const {entities, columns, cellUpdated, cellUpdatedEvent} = props;
         return (
             <tbody>

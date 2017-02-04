@@ -1,6 +1,7 @@
 ﻿import * as React from "react";
 import * as utils from "../utils/utils";
 const connect = require("react-redux").connect;
+import * as _ from "underscore";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 import WebEditor from "../components/WebEditor";
 import ListEditor from "../components/ListEditor";
@@ -13,7 +14,8 @@ import { ColumnReference } from "../model/ListDefinition";
 import { Site, Web, WebList, WebListField } from "../model/Site";
 import ColumnDefinition from "../model/ColumnDefinition";
 import Container from "../components/container";
-import { Guid, Log, PageContext } from "@microsoft/sp-client-base";
+import { Guid, Log } from "@microsoft/sp-core-library";
+import {  PageContext } from "@microsoft/sp-page-context";
 export class GridColumn {
   constructor(
     public id: string,
@@ -306,7 +308,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     const columnid = attributes.getNamedItem("data-columnid").value;
     this.setState({ "editing": { entityid: entityid, columnid: columnid } });
   }
-  public CellContentsEditable(props: { entity: ListDefinition, column: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public CellContentsEditable(props: { entity: ListDefinition, column: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, column, cellUpdated, cellUpdatedEvent} = props;
     let columnValue;
     if (this.isdeafaultColumn(column.id)) {
@@ -323,7 +325,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     switch (column.editor) {
 
       case "WebEditor":
-      
+
         let webs = this.getWebsForSite(entity);
         return (<WebEditor webs={webs} selectedValue={columnValue} onChange={cellUpdated} />);
       case "ListEditor":
@@ -372,7 +374,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     }
   }
 
-  public TableDetail(props: { entity: ListDefinition, column: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableDetail(props: { entity: ListDefinition, column: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, column, cellUpdated, cellUpdatedEvent} = props;
 
     if (this.state && this.state.editing && this.state.editing.entityid === entity.guid && this.state.editing.columnid === column.id) {
@@ -387,7 +389,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
       );
     }
   }
-  public TableRow(props: { entity: ListDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableRow(props: { entity: ListDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, columns, cellUpdated, cellUpdatedEvent} = props;
 
     return (
@@ -408,7 +410,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
         </td>
       </tr>);
   };
-  public TableRows(props: { entities: Array<ListDefinition>, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableRows(props: { entities: Array<ListDefinition>, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entities, columns, cellUpdated, cellUpdatedEvent} = props;
     return (
       <tbody>
@@ -424,7 +426,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
   }
 
   public render() {
-  
+
     return (
       <Container testid="columns" size={2} center>
          <CommandBar items={[{
@@ -455,7 +457,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
           onClick: this.props.save
         }]} />
 
-        <table border="1">
+        <table >
           <thead>
             <tr>
 

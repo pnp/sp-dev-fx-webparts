@@ -1,4 +1,5 @@
-import { Guid } from "@microsoft/sp-client-base";
+import { Guid } from "@microsoft/sp-core-library";
+import * as _ from "underscore";
 import { ColumnDefinitionContainerNative } from "./ColumnDefinitionContainer";
 import ColumnDefinition from "../model/ColumnDefinition";
 import * as React from 'react';
