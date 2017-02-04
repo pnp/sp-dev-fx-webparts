@@ -22,7 +22,7 @@
     "redux-logger": "^2.6.0",
     "redux-promise-middleware": "^4.1.0",
     "redux-thunk": "^2.1.0",
-    "sp-pnp-js": "^1.0.6",
+    "sp-pnp-js": "2.0.0",
     "typescript": "^2.1.5",
     "underscore": "^1.8.3"
   },

@@ -3,7 +3,9 @@ import {
   MessageBar,
   MessageBarType
 } from "office-ui-fabric-react";
-const connect = require("react-redux").connect;
+//const connect = require("react-redux").connect;
+import * as redux from "react-redux";
+const connect = redux.connect;
 import SystemStatus from "../model/SystemStatus";
 import Content from "../components/content";
 interface IAppProps extends React.Props<any> {

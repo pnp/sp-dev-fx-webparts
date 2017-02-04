@@ -66,11 +66,11 @@ function relpaceItemInStore(state: Array<ListItem>, action: { payload: { listIte
  */
 function saveListItem(state: Array<ListItem>, action: { payload: { listItem: ListItem } }) {
     let newarray2 = _.cloneDeep(state);
-    let item = newarray2.find(i => i.GUID === action.payload.listItem.GUID);
+    let item = _.find(newarray2, i => i.GUID === action.payload.listItem.GUID);
     item = action.payload.listItem;
 
     if (!item.__metadata__OriginalValues) {
-        item.__metadata__OriginalValues = state.find(i => i.GUID === action.payload.listItem.GUID);
+        item.__metadata__OriginalValues = _.find(state, i => i.GUID === action.payload.listItem.GUID);
     }
     return newarray2;
 }

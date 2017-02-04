@@ -2,7 +2,7 @@
 import * as utils from "../utils/utils";
 //const connect = require("react-redux").connect;
 import {connect} from "react-redux";
-import * as _ from "underscore";
+import * as _ from "lodash";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 import WebEditor from "../components/WebEditor";
 import ListEditor from "../components/ListEditor";
@@ -195,8 +195,8 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
   }
   private handleCellUpdated(value) { // Office UI Fabric does not use events. It just calls this method with the new value
     const {entityid, columnid} = this.state.editing;
-    const entity: ListDefinition = this.props.lists.find((temp) => temp.guid === entityid);
-    const column = this.extendedColumns.find(temp => temp.id === columnid);
+    const entity: ListDefinition = _.find(this.props.lists,(temp) => temp.guid === entityid);
+    const column = _.find(this.extendedColumns,temp => temp.id === columnid);
     // if it is a default column, just set its value , otheriwse update it in the list of extended columns (i.e. sharepoint columns)
     if (this.isdeafaultColumn(columnid)) {
       /** need to save the web url if the web column was updated
@@ -224,7 +224,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     const target = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = target.attributes;
     const entity = attributes.getNamedItem("data-entityid").value;
-    const list: ListDefinition = this.props.lists.find(temp => temp.guid === entity);
+    const list: ListDefinition = _.find(this.props.lists,temp => temp.guid === entity);
     this.props.removeList(list);
     return;
   }
@@ -362,7 +362,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
           );
         }
         else {
-          const colref = entity.columnReferences.find(cr => cr.columnDefinitionId === column.id);
+          const colref = _.find(entity.columnReferences,cr => cr.columnDefinitionId === column.id);
           let displaytext = "";
           if (colref != null) {
             displaytext = utils.ParseSPField(colref.name).value;

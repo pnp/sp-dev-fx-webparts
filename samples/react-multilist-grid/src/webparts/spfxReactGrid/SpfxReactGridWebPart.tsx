@@ -65,7 +65,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     store.dispatch(addColumns(this.properties.columns));
 
     Log.verbose("SpfxReactGridWebPart", "In render of SpfxReactGridWebPart");
-    ReactDom.render(App(), this.domElement);
+    ReactDom.render(App(null), this.domElement);
   }
 
   private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {

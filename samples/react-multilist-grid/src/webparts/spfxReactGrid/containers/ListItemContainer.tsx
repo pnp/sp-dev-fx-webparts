@@ -3,7 +3,7 @@ import * as React from "react";
 
 //const connect = require("react-redux").connect;
 import {connect} from "react-redux";
-import * as _ from "underscore";
+import * as _ from "lodash";
 import {
   addListItem, removeListItem, getListItemsAction, saveListItemAction,
   undoListItemChangesAction, updateListItemAction,
@@ -158,7 +158,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const parentTD = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = parentTD.attributes;
     const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
-    const listItem: ListItem = this.props.listItems.find((temp) => temp.GUID === entityid); // the listItemItself
+    const listItem: ListItem = _.find( this.props.listItems,(temp) => temp.GUID === entityid); // the listItemItself
     const listDef = this.getListDefinition(listItem.__metadata__ListDefinitionId);// The list Definition this item is associated with.
     this.props.removeListItem(listItem, listDef);
   }
@@ -208,10 +208,10 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
       /**
        * Need to fire events here to get data needed for the rerender
        */
-      const listitem = this.props.listItems.find(li => li.GUID === entityid);
+      const listitem =_.find( this.props.listItems,li => li.GUID === entityid);
       const listDef = this.getListDefinition(listitem.__metadata__ListDefinitionId);
       if (listDef) {// if user just added an item we may not hava a lisdef yest
-        const colref = listDef.columnReferences.find(cr => cr.columnDefinitionId === columnid);
+        const colref = _.find(listDef.columnReferences,cr => cr.columnDefinitionId === columnid);
         if (colref) {// Listname does not have a columnReference
 
           switch (colref.fieldDefinition.TypeAsString) {
@@ -249,7 +249,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const attributes: NamedNodeMap = parentTD.attributes;
     const entityitem = attributes.getNamedItem("data-entityid");
     const entityid = entityitem.value;
-    const entity: ListItem = this.props.listItems.find((temp) => temp.GUID === entityid);
+    const entity: ListItem = _.find(this.props.listItems,(temp) => temp.GUID === entityid);
     this.props.undoItemChanges(entity);
   }
   /**
@@ -260,7 +260,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const parentTD = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = parentTD.attributes;
     const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
-    const entity: ListItem = this.props.listItems.find((temp) => temp.GUID === entityid);
+    const entity: ListItem = _.find(this.props.listItems,(temp) => temp.GUID === entityid);
     const listDef: ListDefinition = this.getListDefinition(entity.__metadata__ListDefinitionId);
     if (entity.__metadata__ListDefinitionId === entity.__metadata__OriginalValues.__metadata__ListDefinitionId
       || entity.__metadata__GridRowStatus === GridRowStatus.new) {// List not changed
@@ -294,7 +294,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const oldListDef = this.getListDefinition(listItem.__metadata__OriginalValues.__metadata__ListDefinitionId);
     for (const newColRef of newListDef.columnReferences) {
       // find the old columnReference
-      const oldColRef = oldListDef.columnReferences.find(cr => cr.columnDefinitionId === newColRef.columnDefinitionId);
+      const oldColRef = _.find(oldListDef.columnReferences,cr => cr.columnDefinitionId === newColRef.columnDefinitionId);
       const newFieldName = utils.ParseSPField(newColRef.name).id;
       const oldFieldName = utils.ParseSPField(oldColRef.name).id;
       switch (newColRef.fieldDefinition.TypeAsString) {
@@ -302,8 +302,8 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
           // should male a local copy befor i start messing with these.// fieldd names may overlap on old and new
           //   const name = listItem.__metadata__OriginalValues[oldFieldName].Name;// the user login name
           const name = listItem[oldFieldName].Name;// the user login name
-          const siteUsersOnNewSite = this.props.siteUsers.find(su => su.siteUrl === newListDef.siteUrl);
-          const newUser = siteUsersOnNewSite.siteUser.find(user => user.loginName === name);
+          const siteUsersOnNewSite = _.find(this.props.siteUsers,su => su.siteUrl === newListDef.siteUrl);
+          const newUser =_.find( siteUsersOnNewSite.siteUser,user => user.loginName === name);
           if (newUser) {
             listItem[newFieldName].Id = newUser.id;
             listItem[newFieldName].Name = newUser.loginName;
@@ -331,9 +331,9 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   private handleCellUpdated(value) {
 
     const {entityid, columnid} = this.state.editing;
-    const entity: ListItem = this.props.listItems.find((temp) => temp.GUID === entityid);
+    const entity: ListItem = _.find(this.props.listItems,(temp) => temp.GUID === entityid);
     const listDef = this.getListDefinition(entity.__metadata__ListDefinitionId);
-    const titleColumn = this.props.columns.find(c => { return c.type === "__LISTDEFINITIONTITLE__"; });
+    const titleColumn =_.find( this.props.columns,c => { return c.type === "__LISTDEFINITIONTITLE__"; });
     if (titleColumn) {
       if (columnid === titleColumn.guid) { // user just changed the listDef,
         if (entity.__metadata__GridRowStatus === GridRowStatus.pristine) {
@@ -354,7 +354,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
         return;
       }
     }
-    const columnReference = listDef.columnReferences.find(cr => cr.columnDefinitionId === columnid);
+    const columnReference = _.find(listDef.columnReferences,cr => cr.columnDefinitionId === columnid);
     const internalName = utils.ParseSPField(columnReference.name).id;
     if (!entity.__metadata__OriginalValues) { //SAVE  orgininal values so we can undo;
       entity.__metadata__OriginalValues = _.cloneDeep(entity); // need deep if we have lookup values
@@ -403,7 +403,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   */
   public ensureSiteUsers(siteUrl: string): SiteUsers {
     // see if the options are in the store, if so, return them, otherwoise dispatch an action to get them
-    const siteUsers = this.props.siteUsers.find(x => {
+    const siteUsers = _.find(this.props.siteUsers,x => {
       return (x.siteUrl === siteUrl);
     });
     if (siteUsers === undefined) {
@@ -418,7 +418,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   */
   public getSiteUsers(siteUrl: string): SiteUsers {
     // see if the options are in the store, if so, return them, otherwoise dispatch an action to get them
-    const siteUsers = this.props.siteUsers.find(x => {
+    const siteUsers = _.find(this.props.siteUsers,x => {
       return (x.siteUrl === siteUrl);
     });
     return siteUsers;
@@ -429,7 +429,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
    */
   public ensureLookupOptions(lookupSite: string, lookupWebId: string, lookupListId: string, lookupField: string): LookupOptions {
     // see if the options are in the store, if so, return them, otherwoise dispatch an action to get them
-    const lookupoptions = this.props.lookupOptions.find(x => {
+    const lookupoptions =_.find( this.props.lookupOptions,x => {
       return (x.lookupField === lookupField) &&
         (x.lookupListId === lookupListId) &&
         (x.lookupSite === lookupSite) &&
@@ -447,7 +447,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   */
   public getLookupOptions(lookupSite: string, lookupWebId: string, lookupListId: string, lookupField: string): LookupOptions {
     // see if the options are in the store, if so, return them, otherwoise dispatch an action to get them
-    let lookupoptions = this.props.lookupOptions.find(x => {
+    let lookupoptions = _.find(this.props.lookupOptions,x => {
       return (x.lookupField === lookupField) &&
         (x.lookupListId === lookupListId) &&
         (x.lookupSite === lookupSite) &&
@@ -463,7 +463,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     /** The id of the list definition to be retrieved */
     listdefid: string
   ): ListDefinition {
-    return this.props.listDefinitions.find(ld => ld.guid === listdefid);
+    return _.find(this.props.listDefinitions,ld => ld.guid === listdefid);
   }
   /**
    * This method renders the contents of an individual cell in an editable format.
@@ -487,7 +487,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
       );
     }
     const listDef = this.getListDefinition(entity.__metadata__ListDefinitionId);
-    const colref = listDef.columnReferences.find(cr => cr.columnDefinitionId === column.guid);
+    const colref = _.find(listDef.columnReferences,cr => cr.columnDefinitionId === column.guid);
     const internalName = utils.ParseSPField(colref.name).id;
     const columnValue = entity[internalName];
     switch (colref.fieldDefinition.TypeAsString) {
@@ -648,7 +648,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
         </a>
       );
     }
-    const colref = listDef.columnReferences.find(cr => cr.columnDefinitionId === column.guid);
+    const colref =_.find( listDef.columnReferences,cr => cr.columnDefinitionId === column.guid);
     if (colref === undefined) { //Column has not been configured for this list
       return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
         'Column Not Defined'

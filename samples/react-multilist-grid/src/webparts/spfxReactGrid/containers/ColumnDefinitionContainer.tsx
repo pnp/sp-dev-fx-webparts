@@ -2,6 +2,7 @@
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 //const connect = require("react-redux").connect;
 import {connect} from "react-redux";
+import * as _ from "lodash";
 import { addColumn, removeColumn,  removeAllColumns, moveCulumnUp, moveCulumnDown } from "../actions/columnActions";
 import ColumnDefinition from "../model/ColumnDefinition";
 import { Button, ButtonType, TextField, CommandBar, Dropdown, IDropdownOption, Toggle } from "office-ui-fabric-react";
@@ -157,8 +158,8 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
     }
     private handleCellUpdated(value) { // Office UI Fabric does not use events. It just calls this method with the new value
         let {entityid, columnid} = this.state.editing;
-        const entity: ColumnDefinition = this.props.columns.find((temp) => temp.guid === entityid);
-        const column = this.gridColulumns.find(temp => temp.id === columnid);
+        const entity: ColumnDefinition =_.find( this.props.columns,(temp) => temp.guid === entityid);
+        const column = _.find(this.gridColulumns,(temp )=> temp.id === columnid);
         entity[column.name] = value;
         //  this.props.saveColumn(entity);
 
@@ -170,7 +171,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         const target = this.getParent(event.target, "TD");
         const attributes: NamedNodeMap = target.attributes;
         const entityId = attributes.getNamedItem("data-entityid").value;
-        const column: ColumnDefinition = this.props.columns.find(cd => cd.guid === entityId);
+        const column: ColumnDefinition =_.find( this.props.columns,cd => cd.guid === entityId);
         this.props.moveColumnUp(column);
         return;
     }
@@ -180,7 +181,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         const target = this.getParent(event.target, "TD");
         const attributes: NamedNodeMap = target.attributes;
         const entityId = attributes.getNamedItem("data-entityid").value;
-        const column: ColumnDefinition = this.props.columns.find(cd => cd.guid === entityId);
+        const column: ColumnDefinition = _.find(this.props.columns,cd => cd.guid === entityId);
         this.props.moveColumnDown(column);
         return;
     }
@@ -190,7 +191,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         const target = this.getParent(event.target, "TD");
         const attributes: NamedNodeMap = target.attributes;
         const entityId = attributes.getNamedItem("data-entityid").value;
-        const column: ColumnDefinition = this.props.columns.find(cd => cd.guid === entityId);
+        const column: ColumnDefinition = _.find(this.props.columns,cd => cd.guid === entityId);
         this.props.removeColumn(column);
         return;
     }

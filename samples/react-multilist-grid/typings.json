@@ -1,6 +1,5 @@
 {
   "globalDependencies": {
- //   "react-data-grid": "registry:dt/react-data-grid#1.0.4+20161116100048",
     "redux": "registry:dt/redux#3.5.2+20160703092728",
     "redux-promise-middleware": "registry:dt/redux-promise-middleware#0.0.0+20160108032528"
   },
