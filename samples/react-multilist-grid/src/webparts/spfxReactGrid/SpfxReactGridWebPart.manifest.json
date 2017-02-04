@@ -8,9 +8,15 @@
   "preconfiguredEntries": [
     {
       "groupId": "72ac17a3-8735-43ff-9a3c-3be22ac2ca00",
-      "group": {        "default": "Under Development"      },
-      "title": {        "default": "SPFX React Grid"      },
-      "description": {        "default": "react grid sample"      },
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "React multi-list Grid"
+      },
+      "description": {
+        "default": "A webpart that allows one to edit list items from multiple lists in deferrent sites in a single grid"
+      },
       "officeFabricIconFontName": "Page",
       "properties": {
         "description": "SPFX React Grid"
