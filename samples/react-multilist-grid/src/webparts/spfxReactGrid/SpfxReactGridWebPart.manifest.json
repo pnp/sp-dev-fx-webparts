@@ -1,19 +1,20 @@
 {
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
   "id": "72ac17a3-8735-43ff-9a3c-3be22ac2ca00",
+  "alias": "multilistgrid",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,
-
-  "preconfiguredEntries": [{
-    "groupId": "72ac17a3-8735-43ff-9a3c-3be22ac2ca00",
-    "group": { "default": "Under Development" },
-    "title": { "default": "SPFX React Grid" },
-    "description": { "default": "react grid sample" },
-    "officeFabricIconFontName": "Page",
-    "properties": {
-      "description": "SPFX React Grid"
+  "preconfiguredEntries": [
+    {
+      "groupId": "72ac17a3-8735-43ff-9a3c-3be22ac2ca00",
+      "group": {        "default": "Under Development"      },
+      "title": {        "default": "SPFX React Grid"      },
+      "description": {        "default": "react grid sample"      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "SPFX React Grid"
+      }
     }
-  }]
+  ]
 }

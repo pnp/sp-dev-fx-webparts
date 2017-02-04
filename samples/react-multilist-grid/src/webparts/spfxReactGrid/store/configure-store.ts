@@ -10,7 +10,7 @@ import { routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
 import {Store} from "redux"
 import promiseMiddleware from "redux-promise-middleware";
-import logger from "./logger";
+
 import { RootReducer } from "../reducers/rootReducer";
 const __DEV__: boolean = true; // from webpack
 function configureStore(initialState) {
@@ -35,7 +35,7 @@ function _getMiddleware(): Middleware[] {
     thunk,
   ];
   if (__DEV__) {
-    middleware = [...middleware, logger];
+    middleware = [...middleware];
   }
   return middleware;
 }

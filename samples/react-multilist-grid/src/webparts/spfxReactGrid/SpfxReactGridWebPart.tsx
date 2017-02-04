@@ -3,7 +3,7 @@ import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
 //const { Router, createMemoryHistory } = require("react-router");
-import  { Router, createMemoryHistory } from "react-router";
+import { Router, createMemoryHistory } from "react-router";
 import * as Redux from "redux";
 import { addColumns, removeAllColumns } from "./actions/columnActions";
 import { addLists, removeAllLists } from "./actions/listActions";
@@ -11,10 +11,11 @@ import { PropertyFieldColumnDefinitions, IPropertyFieldColumnDefinitionsProps } 
 import { PropertyFieldListDefinitions, IPropertyFieldListDefinitionsProps } from "./containers/PropertyFieldListDefinitions";
 import {
   BaseClientSideWebPart,
-  IPropertyPaneConfiguration ,
+  IPropertyPaneConfiguration,
   IWebPartContext,
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
+debugger;
 import { Log } from "@microsoft/sp-core-library";
 import routes from "./store/routes";
 import * as strings from "spfxReactGridStrings";
@@ -33,30 +34,31 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
   private cdProps: IPropertyFieldColumnDefinitionsProps;
   private ldProps: IPropertyFieldListDefinitionsProps;
   public constructor() {
+    debugger;
     super();
     this.onPropertyChange = this.onPropertyChange.bind(this);
-
-      this.cdProps = {
-        label: strings.ColumnDefinitionFieldLabel,
-        onPropertyChange: this.onPropertyChange,
-        getColumnDefinitions: ()=>{
-          return this.properties.columns||[];
-        },
-      };
-      this.ldProps = {
-        label: strings.ListDefinitionFieldLabel,
-        onPropertyChange: this.onPropertyChange,
-        getColumnDefinitions: ()=>{
-          return this.properties.columns||[];
-        },
-        getListDefinitions:() =>{
-          return this.properties.lists||[];
-        },
-        PageContext: this.context.pageContext
-      };
+    this.cdProps = {
+      label: strings.ColumnDefinitionFieldLabel,
+      onPropertyChange: this.onPropertyChange,
+      getColumnDefinitions: () => {
+        return this.properties.columns || [];
+      },
+    };
+    this.ldProps = {
+      label: strings.ListDefinitionFieldLabel,
+      onPropertyChange: this.onPropertyChange,
+      getColumnDefinitions: () => {
+        return this.properties.columns || [];
+      },
+      getListDefinitions: () => {
+        return this.properties.lists || [];
+      },
+      //    PageContext: this.context.pageContext// not available in constructor
+      PageContext: null
+    };
   }
   public onInit<T>(): Promise<T> {
-
+    this.ldProps.PageContext = this.context.pageContext;
     return Promise.resolve(null);
   }
   public render(): void {
@@ -80,12 +82,12 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
         this.properties.lists = newValue;
         store.dispatch(removeAllLists());
         store.dispatch(addLists(this.properties.lists));
-          break;
+        break;
       default:
         break;
     }
   };
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration  {
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 
     Log.verbose("SpfxReactGridWebPart", "In propertyPaneSettings of SpfxReactGridWebPart");
     return {
