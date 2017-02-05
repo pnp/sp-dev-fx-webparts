@@ -115,8 +115,7 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
             </div>
             <Dropdown label="Select Web"
              options={this.state.options}
-             onChanged={this.SelectedWebChanged}
-             defaultSelectedKey="">
+             onChanged={this.SelectedWebChanged}      defaultSelectedKey="">
             </Dropdown>
 
           </Panel>
