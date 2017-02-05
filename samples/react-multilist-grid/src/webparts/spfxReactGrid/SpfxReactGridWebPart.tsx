@@ -2,18 +2,21 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
-const { Router, createMemoryHistory } = require("react-router");
+//const { Router, createMemoryHistory } = require("react-router");
+import { Router, createMemoryHistory } from "react-router";
+import * as Redux from "redux";
 import { addColumns, removeAllColumns } from "./actions/columnActions";
 import { addLists, removeAllLists } from "./actions/listActions";
 import { PropertyFieldColumnDefinitions, IPropertyFieldColumnDefinitionsProps } from "./containers/PropertyFieldColumnDefinitions";
 import { PropertyFieldListDefinitions, IPropertyFieldListDefinitionsProps } from "./containers/PropertyFieldListDefinitions";
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration,
   IWebPartContext,
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
-import { Log } from "@microsoft/sp-client-base";
+debugger;
+import { Log } from "@microsoft/sp-core-library";
 import routes from "./store/routes";
 import * as strings from "spfxReactGridStrings";
 import { ISpfxReactGridWebPartProps } from "./ISpfxReactGridWebPartProps";
@@ -30,31 +33,32 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
 
   private cdProps: IPropertyFieldColumnDefinitionsProps;
   private ldProps: IPropertyFieldListDefinitionsProps;
-  public constructor(context: IWebPartContext) {
-    super(context);
+  public constructor() {
+    debugger;
+    super();
     this.onPropertyChange = this.onPropertyChange.bind(this);
-
-      this.cdProps = {
-        label: strings.ColumnDefinitionFieldLabel,
-        onPropertyChange: this.onPropertyChange,
-        getColumnDefinitions: ()=>{
-          return this.properties.columns||[];
-        },
-      };
-      this.ldProps = {
-        label: strings.ListDefinitionFieldLabel,
-        onPropertyChange: this.onPropertyChange,
-        getColumnDefinitions: ()=>{
-          return this.properties.columns||[];
-        },
-        getListDefinitions:() =>{
-          return this.properties.lists||[];
-        },
-        PageContext: this.context.pageContext
-      };
+    this.cdProps = {
+      label: strings.ColumnDefinitionFieldLabel,
+      onPropertyChange: this.onPropertyChange,
+      getColumnDefinitions: () => {
+        return this.properties.columns || [];
+      },
+    };
+    this.ldProps = {
+      label: strings.ListDefinitionFieldLabel,
+      onPropertyChange: this.onPropertyChange,
+      getColumnDefinitions: () => {
+        return this.properties.columns || [];
+      },
+      getListDefinitions: () => {
+        return this.properties.lists || [];
+      },
+      //    PageContext: this.context.pageContext// not available in constructor
+      PageContext: null
+    };
   }
   public onInit<T>(): Promise<T> {
-
+    this.ldProps.PageContext = this.context.pageContext;
     return Promise.resolve(null);
   }
   public render(): void {
@@ -63,11 +67,11 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
     store.dispatch(addColumns(this.properties.columns));
 
     Log.verbose("SpfxReactGridWebPart", "In render of SpfxReactGridWebPart");
-    ReactDom.render(App(), this.domElement);
+    ReactDom.render(App(null), this.domElement);
   }
 
   private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {
-    
+
     switch (propertyPath) {
       case "ColumnDefinitions":
         this.properties.columns = newValue;
@@ -78,13 +82,13 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
         this.properties.lists = newValue;
         store.dispatch(removeAllLists());
         store.dispatch(addLists(this.properties.lists));
-          break;
+        break;
       default:
         break;
     }
   };
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
-   
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+
     Log.verbose("SpfxReactGridWebPart", "In propertyPaneSettings of SpfxReactGridWebPart");
     return {
       pages: [

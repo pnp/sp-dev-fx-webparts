@@ -1,5 +1,5 @@
 import GridRowStatus from "./GridRowStatus";
-import { Guid } from '@microsoft/sp-client-base';
+import { Guid } from '@microsoft/sp-core-library';
 export default class ListItem {
     /** The listDefinition this item came from. Need this to get to columnMappings */
     public __metadata__ListDefinitionId;

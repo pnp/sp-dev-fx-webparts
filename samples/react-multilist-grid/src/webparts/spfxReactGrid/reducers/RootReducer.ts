@@ -7,7 +7,7 @@ import LookupOptionsReducer from "./LookupOptionsReducer";
 import SiteReducer from "./SiteReducer";
 import SiteUserReducer from "./SiteUsersReducer";
 import SystemStatus from "./SystemStatus";
-const { routerReducer } = require("react-router-redux");
+import  { routerReducer } from "react-router-redux";
 export function RootReducer(state, action) {
     const combinedReducers = combineReducers(
         {

@@ -1,5 +1,5 @@
 ﻿// for eac of the columns to be displayed, which field in this list should we use
-import { Guid } from '@microsoft/sp-client-base';
+import { Guid } from '@microsoft/sp-core-library';
 
 export class FieldDefinition {
     /** The type of field to dispay */

@@ -1,11 +1,13 @@
 ﻿import * as React from "react";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
-const connect = require("react-redux").connect;
+//const connect = require("react-redux").connect;
+import {connect} from "react-redux";
+import * as _ from "lodash";
 import { addColumn, removeColumn,  removeAllColumns, moveCulumnUp, moveCulumnDown } from "../actions/columnActions";
 import ColumnDefinition from "../model/ColumnDefinition";
 import { Button, ButtonType, TextField, CommandBar, Dropdown, IDropdownOption, Toggle } from "office-ui-fabric-react";
 import Container from "../components/container";
-import { Guid, Log } from "@microsoft/sp-client-base";
+import { Guid, Log } from "@microsoft/sp-core-library";
 /** NOTE:
  * To enable other column types
  * 1. Uncomment it here
@@ -15,7 +17,7 @@ import { Guid, Log } from "@microsoft/sp-client-base";
  * 4. If any other data is needed to render the contents in an editable mode (maybe Managed Metadata) Add a case in the Containers\ListItemContaine\toggleEditing
  *      method to get the data. Also will need to add another enitity to the store (actions, reducers, etc.)
  * 5. Special logic may be needed when moving an item between lists (as in the cas of Users ). Add this to Containers\ListItemContaine\mapOldListFieldsToNewListFields
- * 
+ *
  */
 const fieldTypes: Array<IDropdownOption> = [
     { key: null, text: "(Selecte one)" },
@@ -57,7 +59,7 @@ export interface IColumnsPageProps extends React.Props<any> {
     save: () => void;
 }
 interface IContextMenu extends React.Props<any> {
-    onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
+ //   onRowDelete: AdazzleReactDataGrid.ColumnEventCallback;
 }
 function mapStateToProps(state) {
     return {
@@ -156,8 +158,8 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
     }
     private handleCellUpdated(value) { // Office UI Fabric does not use events. It just calls this method with the new value
         let {entityid, columnid} = this.state.editing;
-        const entity: ColumnDefinition = this.props.columns.find((temp) => temp.guid === entityid);
-        const column = this.gridColulumns.find(temp => temp.id === columnid);
+        const entity: ColumnDefinition =_.find( this.props.columns,(temp) => temp.guid === entityid);
+        const column = _.find(this.gridColulumns,(temp )=> temp.id === columnid);
         entity[column.name] = value;
         //  this.props.saveColumn(entity);
 
@@ -169,7 +171,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         const target = this.getParent(event.target, "TD");
         const attributes: NamedNodeMap = target.attributes;
         const entityId = attributes.getNamedItem("data-entityid").value;
-        const column: ColumnDefinition = this.props.columns.find(cd => cd.guid === entityId);
+        const column: ColumnDefinition =_.find( this.props.columns,cd => cd.guid === entityId);
         this.props.moveColumnUp(column);
         return;
     }
@@ -179,7 +181,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         const target = this.getParent(event.target, "TD");
         const attributes: NamedNodeMap = target.attributes;
         const entityId = attributes.getNamedItem("data-entityid").value;
-        const column: ColumnDefinition = this.props.columns.find(cd => cd.guid === entityId);
+        const column: ColumnDefinition = _.find(this.props.columns,cd => cd.guid === entityId);
         this.props.moveColumnDown(column);
         return;
     }
@@ -189,7 +191,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         const target = this.getParent(event.target, "TD");
         const attributes: NamedNodeMap = target.attributes;
         const entityId = attributes.getNamedItem("data-entityid").value;
-        const column: ColumnDefinition = this.props.columns.find(cd => cd.guid === entityId);
+        const column: ColumnDefinition = _.find(this.props.columns,cd => cd.guid === entityId);
         this.props.removeColumn(column);
         return;
     }
@@ -207,7 +209,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         const columnid = attributes.getNamedItem("data-columnid").value;
         this.setState({ "editing": { entityid: entityid, columnid: columnid } });
     }
-    public CellContentsEditable(props: { entity: ColumnDefinition, gridColumn: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+    public CellContentsEditable(props: { entity: ColumnDefinition, gridColumn: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
         const {entity, gridColumn, cellUpdated, cellUpdatedEvent} = props;
         if (!gridColumn.editable) {
             return (<span>
@@ -274,7 +276,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
             );
         }
     }
-    public TableRow(props: { isFirst: boolean, isLast: boolean, entity: ColumnDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+    public TableRow(props: { isFirst: boolean, isLast: boolean, entity: ColumnDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
         const {entity, columns, cellUpdated, cellUpdatedEvent, isLast, isFirst} = props;
         return (
             <tr>
@@ -303,7 +305,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
                 </td>
             </tr>);
     };
-    public TableRows(props: { entities: Array<ColumnDefinition>, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+    public TableRows(props: { entities: Array<ColumnDefinition>, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
         const {entities, columns, cellUpdated, cellUpdatedEvent} = props;
         return (
             <tbody>

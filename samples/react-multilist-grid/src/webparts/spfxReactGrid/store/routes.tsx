@@ -1,5 +1,6 @@
 import * as React from "react";
-const { IndexRoute, Route } = require("react-router");
+//const { IndexRoute, Route } = require("react-router");
+import  { IndexRoute, Route } from "react-router";
 import App from "../containers/app";
 import ListDefinitionContainer from "../containers/ListDefinitionContainer";
 import ColumnDefinitionContainer from "../containers/ColumnDefinitionContainer";

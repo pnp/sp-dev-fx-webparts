@@ -4,7 +4,8 @@ const defaultStatus: SystemStatus = {
     currentAction: "",
     fetchStatus: ""
 };
-import { Log } from "@microsoft/sp-client-base";
+import * as _ from "lodash";
+import { Log } from "@microsoft/sp-core-library";
 export default function SystemStatusReducer(state: SystemStatus = defaultStatus, action: any = { type: "" }) {
     /**
      *

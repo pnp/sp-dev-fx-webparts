@@ -1,4 +1,4 @@
-import { Log } from "@microsoft/sp-client-base";
+import { Log } from "@microsoft/sp-core-library";
 export class ParsedSPField {
   constructor(public id: string, public value: string
   ) { }

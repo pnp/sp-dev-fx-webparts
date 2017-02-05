@@ -3,6 +3,7 @@ import { ListDefinitionContainerNative } from "./ListDefinitionContainer";
 import ListDefinition from "../model/ListDefinition";
 import ColumnDefinition from "../model/ColumnDefinition";
 import { Site, Web, WebList, WebListField } from "../model/Site";
+import * as _ from "underscore";
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Button } from 'office-ui-fabric-react/lib/Button';
@@ -11,8 +12,8 @@ import * as strings from "spfxReactGridStrings";
 import * as utils from "../utils/utils";
 import { Web as SPWeb } from "sp-pnp-js";
 import { Site as SPSite } from "sp-pnp-js";
-import { Guid, PageContext } from "@microsoft/sp-client-base";
-
+import { Guid } from "@microsoft/sp-core-library";
+import {  PageContext } from "@microsoft/sp-page-context";
 export interface IPropertyFieldListDefinitionsHostProps {
   label: string;
   initialValue?: Array<ListDefinition>;
@@ -29,7 +30,7 @@ export interface IPropertyFieldListDefinitionsHostState {
 export default class PropertyFieldListDefinitionsHost extends React.Component<IPropertyFieldListDefinitionsHostProps, IPropertyFieldListDefinitionsHostState> {
 
   constructor(props: IPropertyFieldListDefinitionsHostProps) {
-   
+
     super(props);
     this.onOpenPanel = this.onOpenPanel.bind(this);
     this.onClosePanel = this.onClosePanel.bind(this);
@@ -69,7 +70,7 @@ export default class PropertyFieldListDefinitionsHost extends React.Component<IP
   }
 
   private getListsForWeb(webUrl: string): any {
-  
+
     const spWeb = new SPWeb(webUrl);
     const promise = spWeb.lists.orderBy("Title").get()
       .then((response) => {
@@ -94,7 +95,7 @@ export default class PropertyFieldListDefinitionsHost extends React.Component<IP
   }
 
   private getFieldsForList(webUrl: string, listId: string): any {
-   
+
     const spWeb = new SPWeb(webUrl);
     const promise = spWeb.lists.getById(listId).fields.filter("Hidden eq false").orderBy("Title").get()
       .then((response) => {

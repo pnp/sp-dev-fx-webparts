@@ -1,5 +1,5 @@
 ﻿import {  SiteUsers } from "../Model/SiteUsers";
-import { Log } from "@microsoft/sp-client-base";
+import { Log } from "@microsoft/sp-core-library";
 import * as _ from "lodash";
 import {
     GET_SITE_USERS,

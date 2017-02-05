@@ -1,6 +1,8 @@
 ﻿import * as React from "react";
 import * as utils from "../utils/utils";
-const connect = require("react-redux").connect;
+//const connect = require("react-redux").connect;
+import {connect} from "react-redux";
+import * as _ from "lodash";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
 import WebEditor from "../components/WebEditor";
 import ListEditor from "../components/ListEditor";
@@ -13,7 +15,8 @@ import { ColumnReference } from "../model/ListDefinition";
 import { Site, Web, WebList, WebListField } from "../model/Site";
 import ColumnDefinition from "../model/ColumnDefinition";
 import Container from "../components/container";
-import { Guid, Log, PageContext } from "@microsoft/sp-client-base";
+import { Guid, Log } from "@microsoft/sp-core-library";
+import {  PageContext } from "@microsoft/sp-page-context";
 export class GridColumn {
   constructor(
     public id: string,
@@ -192,8 +195,8 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
   }
   private handleCellUpdated(value) { // Office UI Fabric does not use events. It just calls this method with the new value
     const {entityid, columnid} = this.state.editing;
-    const entity: ListDefinition = this.props.lists.find((temp) => temp.guid === entityid);
-    const column = this.extendedColumns.find(temp => temp.id === columnid);
+    const entity: ListDefinition = _.find(this.props.lists,(temp) => temp.guid === entityid);
+    const column = _.find(this.extendedColumns,temp => temp.id === columnid);
     // if it is a default column, just set its value , otheriwse update it in the list of extended columns (i.e. sharepoint columns)
     if (this.isdeafaultColumn(columnid)) {
       /** need to save the web url if the web column was updated
@@ -221,7 +224,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     const target = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = target.attributes;
     const entity = attributes.getNamedItem("data-entityid").value;
-    const list: ListDefinition = this.props.lists.find(temp => temp.guid === entity);
+    const list: ListDefinition = _.find(this.props.lists,temp => temp.guid === entity);
     this.props.removeList(list);
     return;
   }
@@ -306,7 +309,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     const columnid = attributes.getNamedItem("data-columnid").value;
     this.setState({ "editing": { entityid: entityid, columnid: columnid } });
   }
-  public CellContentsEditable(props: { entity: ListDefinition, column: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public CellContentsEditable(props: { entity: ListDefinition, column: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, column, cellUpdated, cellUpdatedEvent} = props;
     let columnValue;
     if (this.isdeafaultColumn(column.id)) {
@@ -323,7 +326,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     switch (column.editor) {
 
       case "WebEditor":
-      
+
         let webs = this.getWebsForSite(entity);
         return (<WebEditor webs={webs} selectedValue={columnValue} onChange={cellUpdated} />);
       case "ListEditor":
@@ -359,7 +362,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
           );
         }
         else {
-          const colref = entity.columnReferences.find(cr => cr.columnDefinitionId === column.id);
+          const colref = _.find(entity.columnReferences,cr => cr.columnDefinitionId === column.id);
           let displaytext = "";
           if (colref != null) {
             displaytext = utils.ParseSPField(colref.name).value;
@@ -372,7 +375,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     }
   }
 
-  public TableDetail(props: { entity: ListDefinition, column: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableDetail(props: { entity: ListDefinition, column: GridColumn, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, column, cellUpdated, cellUpdatedEvent} = props;
 
     if (this.state && this.state.editing && this.state.editing.entityid === entity.guid && this.state.editing.columnid === column.id) {
@@ -387,7 +390,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
       );
     }
   }
-  public TableRow(props: { entity: ListDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableRow(props: { entity: ListDefinition, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, columns, cellUpdated, cellUpdatedEvent} = props;
 
     return (
@@ -408,7 +411,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
         </td>
       </tr>);
   };
-  public TableRows(props: { entities: Array<ListDefinition>, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent) => void; }): JSX.Element {
+  public TableRows(props: { entities: Array<ListDefinition>, columns: Array<GridColumn>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entities, columns, cellUpdated, cellUpdatedEvent} = props;
     return (
       <tbody>
@@ -424,7 +427,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
   }
 
   public render() {
-  
+
     return (
       <Container testid="columns" size={2} center>
          <CommandBar items={[{
@@ -455,7 +458,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
           onClick: this.props.save
         }]} />
 
-        <table border="1">
+        <table >
           <thead>
             <tr>
 

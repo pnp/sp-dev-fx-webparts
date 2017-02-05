@@ -38,7 +38,7 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
         case SAVE_COLUMN:
 
             let newarray2 = _.clone(state);
-            let item = newarray2.find(item => item.guid === action.payload.column.guid);
+            let item = _.find(newarray2,item => item.guid === action.payload.column.guid);
             item = action.payload.column;
             return newarray2;
         case REMOVE_COLUMN:
