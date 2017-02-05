@@ -14,7 +14,8 @@
     "description": { "default": "AngularSearch description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "AngularSearch"
+      "description": "AngularSearch",
+      "contentTypes": ""
     }
   }]
 }
