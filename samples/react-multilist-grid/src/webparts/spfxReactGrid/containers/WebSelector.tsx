@@ -41,10 +41,10 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
       options: []
     };
   }
-  private getWebs(siteUrl: string): any {
+  private getWebs(webUrl: string): any {
     debugger;
-    const spSite: SPSite = new SPSite(siteUrl);
-    const promise = spSite.rootWeb.webs.orderBy("Title").get()
+    const spWeb: SPWeb = new SPWeb(webUrl);
+    const promise = spWeb.webs.orderBy("Title").get()
       .then((response) => {
         const webs = _.map(response, (item: any) => {
           const web: Web = new Web(item.Id, item.Title, item.Url);
@@ -86,6 +86,7 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
           text: web.title
         });
       });
+      options.unshift({key:"",text:"Choose a web to select it"});
       this.state.options = options;
       this.setState(this.state);
     })
@@ -112,7 +113,10 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
             <div>
               <Label>Web</Label> {this.state.selectedWeb}
             </div>
-            <Dropdown label="Select Web" options={this.state.options} onChanged={this.SelectedWebChanged}>
+            <Dropdown label="Select Web"
+             options={this.state.options}
+             onChanged={this.SelectedWebChanged}
+             defaultSelectedKey="">
             </Dropdown>
 
           </Panel>
