@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "angular-graph-rc-client-side-solution",
+    "id": "0e824f74-7ed5-4612-9e01-64b25af579fe",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/angular-graph-rc.sppkg"
+  }
+}
