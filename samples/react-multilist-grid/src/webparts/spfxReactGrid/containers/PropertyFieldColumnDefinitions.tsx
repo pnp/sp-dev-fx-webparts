@@ -3,11 +3,6 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-<<<<<<< HEAD
-  //  IPropertyPaneFieldType,
-=======
-//  IPropertyPaneFieldType,
->>>>>>> 7b7a04ef6aedf99913a0e9b87b01ee17445df755
   IPropertyPaneCustomFieldProps
 } from '@microsoft/sp-webpart-base';
 import PropertyFieldColumnDefinitionsHost, { IPropertyFieldColumnDefinitionsHostProps } from './PropertyFieldColumnDefinitionsHost';
@@ -60,22 +55,7 @@ class PropertyFieldColumnDefinitionsBuilder implements IPropertyPaneField<IPrope
 }
 export function PropertyFieldColumnDefinitions(targetProperty: string, properties: IPropertyFieldColumnDefinitionsProps): IPropertyPaneField<IPropertyFieldColumnDefinitionsPropsInternal> {
 
-<<<<<<< HEAD
-  //Create an internal properties object from the given properties
-  var newProperties: IPropertyFieldColumnDefinitionsPropsInternal = {
-    label: properties.label,
-    targetProperty: targetProperty,
-    key: targetProperty,
-    initialValue: properties.initialValue,
-    onPropertyChange: properties.onPropertyChange,
-    columnDefinitions: properties.getColumnDefinitions(),
-    onDispose: null,
-    onRender: null,
-  };
-  //Calles the PropertyFieldColumnDefinitions builder object
-  //This object will simulate a PropertyFieldCustom to manage his rendering process
-  return new PropertyFieldColumnDefinitionsBuilder(targetProperty, newProperties);
-=======
+
     //Create an internal properties object from the given properties
     var newProperties: IPropertyFieldColumnDefinitionsPropsInternal = {
       label: properties.label,
@@ -90,7 +70,7 @@ export function PropertyFieldColumnDefinitions(targetProperty: string, propertie
     //Calles the PropertyFieldColumnDefinitions builder object
     //This object will simulate a PropertyFieldCustom to manage his rendering process
     return new PropertyFieldColumnDefinitionsBuilder(targetProperty, newProperties);
->>>>>>> 7b7a04ef6aedf99913a0e9b87b01ee17445df755
+
 }
 
 
