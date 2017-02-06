@@ -53,7 +53,6 @@ interface IListViewPageProps extends React.Props<any> {
   saveListItem: (ListItem) => void;
 }
 function mapStateToProps(state) {
-
   return {
     listItems: state.items,
     columns: state.columns,
@@ -137,10 +136,25 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     this.undoItemChanges = this.undoItemChanges.bind(this);
     this.updateListItem = this.updateListItem.bind(this);
     this.getLookupOptions = this.getLookupOptions.bind(this);
+    this.saveAll = this.saveAll.bind(this);
+    this.undoAll = this.undoAll.bind(this);
 
   }
-  private addListItem(): void {
+    private saveAll(): void {
+    const unsavedItems=_.filter(this.props.listItems,item=>{return item.__metadata__OriginalValues});
+    for (const unsavedItem of unsavedItems){
+      const listDef: ListDefinition = this.getListDefinition(unsavedItem.__metadata__ListDefinitionId);
+      this.props.updateListItem(unsavedItem,listDef);
+    }
+  }
+  private undoAll(): void {
+         const unsavedItems=_.filter(this.props.listItems,item=>{return item.__metadata__OriginalValues});
+    for (const unsavedItem of unsavedItems){
+      this.props.undoItemChanges(unsavedItem);
+    }
+  }
 
+  private addListItem(): void {
     let listItem = new ListItem();
     for (const column of this.props.columns) {
       listItem[column.name] = null;
@@ -321,7 +335,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     }
   }
   /**
-   * This method gets called when react cells in the gid get updated.
+   * This method gets called when cells in the grid get updated.
    * Office UI Fabric does not use events. It just calls this method with the new value.
    * It reformats the data to fit the format we recievbed from SP in the first place ,
    * and dispatches an action to save the data in the store.
@@ -768,7 +782,6 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
               buttonType={ButtonType.icon}
               icon="Delete" />
             <Button width="20" style={{ padding: 0 }}
-              // onClick={this.deleteList}
               buttonType={ButtonType.icon}
               disabled={!(entity.__metadata__OriginalValues)}
               onClick={this.undoItemChanges}
@@ -814,12 +827,14 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
         {
           key: "Undo All changes",
           name: "UndoAll",
-          icon: "Undo"
+          icon: "Undo",
+          onClick: this.undoAll
         },
         {
           key: "Save All  ",
-          name: "Save To SharePoint",
-          icon: "Save"
+          name: "Save All",
+          icon: "Save",
+          onClick: this.saveAll
 
         }]} />
 
