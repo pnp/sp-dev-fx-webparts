@@ -2,36 +2,37 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  IWebPartContext,
 } from '@microsoft/sp-webpart-base';
+import { SPComponentLoader } from '@microsoft/sp-loader';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './AngularMsGraph.module.scss';
 import * as strings from 'angularMsGraphStrings';
 import { IAngularMsGraphWebPartProps } from './IAngularMsGraphWebPartProps';
 
+import * as angular from 'angular';
+import 'ng-office-ui-fabric';
+import 'hellojs';
+import './app/aad';
+import './app/app.module';
+
 export default class AngularMsGraphWebPart extends BaseClientSideWebPart<IAngularMsGraphWebPartProps> {
+  private $injector: angular.auto.IInjectorService;
+
+  public constructor(context: IWebPartContext) {
+    super();
+
+    SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css');
+    SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
+  }
 
   public render(): void {
-    this.domElement.innerHTML = `
-      <div class="${styles.row}">
-        <div class="${styles.column}">
-          <span class="${styles.title}">
-            Welcome to SharePoint!
-          </span>
-          <p class="${styles.subtitle}">
-            Customize SharePoint experiences using Web Parts.
-          </p>
-          <p class="${styles.description}">
-            ${escape(this.properties.description)}
-          </p>
-          <a class="ms-Button ${styles.button}" href="https://github.com/SharePoint/sp-dev-docs/wiki">
-            <span class="ms-Button-label">
-              Learn more
-            </span>
-          </a>
-        </div>
-      </div>`;
+    if (this.renderedOnce === false) {
+      this.domElement.innerHTML = `<angulargraphapi></angulargraphapi>`;
+      this.$injector = angular.bootstrap(this.domElement, ['angularconnectsp']);
+    }
   }
 
   protected get dataVersion(): Version {

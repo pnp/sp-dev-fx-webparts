@@ -7,10 +7,16 @@
   },
   "dependencies": {
     "@microsoft/sp-client-base": "~0.7.0",
+    "@microsoft/sp-client-preview": "~0.9.0",
     "@microsoft/sp-core-library": "~0.1.2",
     "@microsoft/sp-webpart-base": "~0.4.0",
-    "@microsoft/sp-client-preview": "~0.9.0",
-    "@types/webpack-env": ">=1.12.1 <1.14.0"
+    "@types/angular": "^1.6.4",
+    "@types/hellojs": "^0.2.31",
+    "@types/webpack-env": ">=1.12.1 <1.14.0",
+    "angular": "^1.5.10",
+    "hellojs": "^1.14.0",
+    "ng-office-ui-fabric": "^0.13.2",
+    "typescript": "^2.1.5"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~0.9.0",
