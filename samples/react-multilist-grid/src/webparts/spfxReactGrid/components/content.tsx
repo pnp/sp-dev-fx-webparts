@@ -1,4 +1,4 @@
-import * as React from 'react';
+/*import * as React from 'react';
 
 export interface IContentProps extends React.Props<any> {
   isVisible: boolean;
@@ -11,4 +11,4 @@ export default function Content({ children = null, isVisible }: IContentProps) {
       { isVisible ? children : null }
     </main>
   );
-}
+}*/

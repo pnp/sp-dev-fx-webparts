@@ -7,7 +7,8 @@ import {
 import * as redux from "react-redux";
 const connect = redux.connect;
 import SystemStatus from "../model/SystemStatus";
-import Content from "../components/content";
+//import Content from "../components/content";
+import ListItemContainer from "./ListItemContainer";
 interface IAppProps extends React.Props<any> {
   systemStatus: SystemStatus;
 }
@@ -41,9 +42,9 @@ class App extends React.Component<IAppProps, void> {
           <div>{this.props.systemStatus.currentAction}
           </div>
         </div>
-        <Content isVisible={true}>
-          {children}
-        </Content>
+        <ListItemContainer>
+
+        </ListItemContainer>
       </div >
     );
   };
