@@ -1,6 +1,10 @@
 ﻿import * as React from "react";
 import * as utils from "../utils/utils";
+<<<<<<< HEAD
 import * as strings from "spfxReactGridStrings";
+=======
+//const connect = require("react-redux").connect;
+>>>>>>> 7b7a04ef6aedf99913a0e9b87b01ee17445df755
 import {connect} from "react-redux";
 import * as _ from "lodash";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";

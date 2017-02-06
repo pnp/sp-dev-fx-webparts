@@ -7,7 +7,7 @@ An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit l
 
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+![drop](https://img.shields.io/badge/drop-RC0-green.svg)
 
 ## Applies to
 
