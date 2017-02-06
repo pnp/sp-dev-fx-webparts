@@ -142,9 +142,20 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   }
     private saveAll(): void {
     const unsavedItems=_.filter(this.props.listItems,item=>{return item.__metadata__OriginalValues});
-    for (const unsavedItem of unsavedItems){
-      const listDef: ListDefinition = this.getListDefinition(unsavedItem.__metadata__ListDefinitionId);
-      this.updateListItem(unsavedItem);
+    for (const entity of unsavedItems){
+      const listDef: ListDefinition = this.getListDefinition(entity.__metadata__ListDefinitionId);
+      if (entity.__metadata__ListDefinitionId === entity.__metadata__OriginalValues.__metadata__ListDefinitionId
+      || entity.__metadata__GridRowStatus === GridRowStatus.new) {// List not changed
+
+      this.props.updateListItem(entity, listDef);
+    }
+    else {// list changed, add to new, delete from old (will need to do some fiorld mapping in here
+      entity.__metadata__GridRowStatus = GridRowStatus.new;
+      this.props.updateListItem(entity, listDef).then(response => {
+        const oldListDef: ListDefinition = this.getListDefinition(entity.__metadata__OriginalValues.__metadata__ListDefinitionId);
+        this.props.removeListItem(entity.__metadata__OriginalValues, oldListDef);
+      });
+    }
     }
   }
   private undoAll(): void {
