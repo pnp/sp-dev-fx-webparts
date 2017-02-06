@@ -138,6 +138,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     this.getLookupOptions = this.getLookupOptions.bind(this);
     this.saveAll = this.saveAll.bind(this);
     this.undoAll = this.undoAll.bind(this);
+    this.markListItemAsDeleted= this.markListItemAsDeleted.bind(this);
 
   }
     private saveAll(): void {
@@ -344,6 +345,23 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
       }
 
     }
+  }
+   /**
+   * This method gets called when user clicks delete listitem.
+   * Office UI Fabric does not use events. It just calls this method with the new value.
+   * It reformats the data to fit the format we recievbed from SP in the first place ,
+   * and dispatches an action to save the data in the store.
+   *
+   * Also, it saves the original version of the record, so we can undo later.
+   */
+  private markListItemAsDeleted(event) {
+const parentTD = this.getParent(event.target, "TD");
+    const attributes: NamedNodeMap = parentTD.attributes;
+    const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
+    const listItem: ListItem = _.find( this.props.listItems,(temp) => temp.GUID === entityid); // the listItemItself
+    const listDef = this.getListDefinition(listItem.__metadata__ListDefinitionId);// The list Definition this item is associated with.
+    listItem.__metadata__GridRowStatus=GridRowStatus.toBeDeleted;
+    this.props.saveListItem(listItem);
   }
   /**
    * This method gets called when cells in the grid get updated.
@@ -663,7 +681,8 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const listDef = this.getListDefinition(entity.__metadata__ListDefinitionId);
     if (column.type === "__LISTDEFINITIONTITLE__") {// this type is sued to show the listdefinition name
       if (listDef != null) {//listdef has been selected
-        return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
+        return (<a href="#" onFocus={this.toggleEditing}
+        style={{ textDecoration: (entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted)?"line-through":"none" }} >
           {listDef.listDefTitle}
         </a>);
       }
@@ -692,12 +711,18 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
       case "User":
 
         if (entity[internalName] === undefined) { // value not set
-          return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
+          return (<a href="#" onFocus={this.toggleEditing}
+         style={{ textDecoration: (entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted)?"line-through":"none" }} >
+
+          >
 
           </a>
           );
         } else {
-          return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
+          return (<a href="#" onFocus={this.toggleEditing}
+        style={{ textDecoration: (entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted)?"line-through":"none" }} >
+
+          >
             {entity[internalName]["Title"]}
           </a>
           );
@@ -718,8 +743,10 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
         }
       /* falls through */
       case "Text":
-        return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
-          {entity[internalName]}
+        return (<a href="#" onFocus={this.toggleEditing}
+        style={{ textDecoration: (entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted)?"line-through":"none" }}
+        >
+                 {entity[internalName]}
         </a>
         );
       /* falls through */
@@ -800,8 +827,12 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
               onClick={this.updateListItem} alt="Save to Sharepoint"
               buttonType={ButtonType.icon}
               icon="Save" disabled={!(entity.__metadata__OriginalValues)} />
-            <Button width="20" style={{ padding: 0 }}
+            {/*<Button width="20" style={{ padding: 0 }}
               onClick={this.removeListItem}
+              buttonType={ButtonType.icon}
+              icon="Delete" />*/}
+                <Button width="20" style={{ padding: 0 }}
+              onClick={this.markListItemAsDeleted}
               buttonType={ButtonType.icon}
               icon="Delete" />
             <Button width="20" style={{ padding: 0 }}
