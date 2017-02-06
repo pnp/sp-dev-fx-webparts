@@ -17,6 +17,8 @@ declare interface ISpfxReactGridStrings {
   ColumnDefinitionsButtonReset:string;
   /**The Title on the popupPage */
   ColumnDefinitionsTitle:string;
+  /**The Title on the WebSelector panel */
+  WebSelectorHeaderText:string;
 }
 declare module 'spfxReactGridStrings' {
   const strings: ISpfxReactGridStrings;

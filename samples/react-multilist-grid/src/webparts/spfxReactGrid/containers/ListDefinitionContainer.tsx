@@ -1,11 +1,10 @@
 ﻿import * as React from "react";
 import * as utils from "../utils/utils";
-//const connect = require("react-redux").connect;
+import * as strings from "spfxReactGridStrings";
 import {connect} from "react-redux";
 import * as _ from "lodash";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
-import WebEditor from "../components/WebEditor";
-import WebSelector from "./WebSelector";
+import WebSelector from "../components/WebSelector";
 import ListEditor from "../components/ListEditor";
 import { addList, removeList, saveList, removeAllLists } from "../actions/listActions";
 import { getWebsAction, getListsForWebAction, getFieldsForListAction } from "../actions/SiteActions";
@@ -335,6 +334,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
          onChange={cellUpdated}
           PageContext={this.props.pageContext}
           siteUrl={entity.siteUrl}
+          headerText={strings.WebSelectorHeaderText}
            />
         );
       case "ListEditor":

@@ -1,5 +1,3 @@
-
-import { ListDefinitionContainerNative } from "./ListDefinitionContainer";
 import ListDefinition from "../model/ListDefinition";
 import ColumnDefinition from "../model/ColumnDefinition";
 import { Site, Web, WebList, WebListField } from "../model/Site";
@@ -22,6 +20,7 @@ export interface IWebSelectorProps {
   PageContext: PageContext;
   selectedWeb: string;
   siteUrl: string;
+  headerText: string;
 }
 export interface IWebSelectorState {
   openPanel: boolean;
@@ -34,7 +33,7 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
     this.onOpenPanel = this.onOpenPanel.bind(this);
     this.onClosePanel = this.onClosePanel.bind(this);
     this.getWebs = this.getWebs.bind(this);
-    this.SelectedWebChanged=this.SelectedWebChanged.bind(this);
+    this.SelectedWebChanged = this.SelectedWebChanged.bind(this);
     this.state = {
       openPanel: false,
       selectedWeb: this.props.selectedWeb,
@@ -42,7 +41,6 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
     };
   }
   private getWebs(webUrl: string): any {
-    debugger;
     const spWeb: SPWeb = new SPWeb(webUrl);
     const promise = spWeb.webs.orderBy("Title").get()
       .then((response) => {
@@ -69,16 +67,19 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
           text: web.title
         });
       });
+      options.unshift({ key: "", text: "Choose a web to select it" });
       this.state.options = options;
       this.setState(this.state);
     })
   }
-  private SelectedWebChanged(option:IDropdownOption,index?:number): void {
+  private SelectedWebChanged(option: IDropdownOption, index?: number): void {
     debugger;
-    const key:string=option.key as string;
-    const webUrl=utils.ParseSPField(key).id;
-    const webTitle=utils.ParseSPField(key).value;
-    this.props.onChange(new utils.ParsedSPField(webUrl,webTitle));
+    const key: string = option.key as string;
+    if (key === "") { return; }
+    const webUrl = utils.ParseSPField(key).id;
+    const webTitle = utils.ParseSPField(key).value;
+    this.state.selectedWeb = key;
+    this.props.onChange(key);
     this.getWebs(webUrl).then(webs => {
       let options: Array<IDropdownOption> = webs.map((web) => {
         return ({
@@ -86,7 +87,7 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
           text: web.title
         });
       });
-      options.unshift({key:"",text:"Choose a web to select it"});
+      options.unshift({ key: "", text: "Select one...", selected: true });
       this.state.options = options;
       this.setState(this.state);
     })
@@ -96,32 +97,32 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
     this.setState(this.state);
   }
   public render(): JSX.Element {
-    //Renders content
     debugger;
-    // let webs: Array<Web> = this.getWebs(this.props.siteUrl);
-
     return (
       <div style={{ marginBottom: '8px' }}>
         {this.state.openPanel === true ?
           <Panel
             isOpen={this.state.openPanel} hasCloseButton={true} onDismiss={this.onClosePanel}
             isLightDismiss={true} type={PanelType.smallFixedFar}
-            headerText={strings.ListDefinitionsTitle}>
+            headerText={this.props.headerText}>
             <div>
-              <span> <Label>Site</Label> {this.props.siteUrl}</span>
+              <span> <Label>Site Url</Label> {this.props.siteUrl}</span>
             </div>
             <div>
-              <Label>Web</Label> {this.state.selectedWeb}
+              <Label>Currently selected Web Url</Label> {utils.ParseSPField(this.state.selectedWeb).id}
             </div>
-            <Dropdown label="Select Web"
-             options={this.state.options}
-             onChanged={this.SelectedWebChanged}      defaultSelectedKey="">
-            </Dropdown>
+            <div>
+              <Label>Currently selected Web Title</Label> {utils.ParseSPField(this.state.selectedWeb).value}
+            </div>
 
+            <Dropdown label="Choose a different Web"
+              options={this.state.options}
+              onChanged={this.SelectedWebChanged} defaultSelectedKey="">
+            </Dropdown>
           </Panel>
           : <div>
-            {this.props.selectedWeb}
-            <Button buttonType={ButtonType.icon} icon="Add" onClick={this.onOpenPanel}></Button>
+            {utils.ParseSPField(this.state.selectedWeb).value}
+            <Button buttonType={ButtonType.icon} icon="Search" onClick={this.onOpenPanel}></Button>
           </div>
         }
       </div>
