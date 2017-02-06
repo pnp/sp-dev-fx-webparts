@@ -505,6 +505,12 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const internalName = utils.ParseSPField(colref.name).id;
     const columnValue = entity[internalName];
     switch (colref.fieldDefinition.TypeAsString) {
+      case "Counter":// disable editting
+  return (<span>
+          {entity[internalName]}
+        </span>
+        );
+        /* falls through */
       case "User":
         let siteUrl = listDef.siteUrl;
         let siteUsers = this.getSiteUsers(siteUrl);
@@ -727,6 +733,12 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
         return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
           {value}
         </a>
+        );
+      /* falls through */
+      case "Counter":// disable tabbing to field
+       return (<span>
+          {entity[internalName]}
+        </span>
         );
       /* falls through */
       default:

@@ -120,6 +120,9 @@ export function updateListItemAction(dispatch: any, listDefinition: ListDefiniti
     for (const columnRef of listDefinition.columnReferences) {
         let fieldName = utils.ParseSPField(columnRef.name).id;
         switch (columnRef.fieldDefinition.TypeAsString) {
+            case "Counter": // do not send ID to shareppoint as a data field
+            break;
+
             case "Lookup":
                 if (listItem[fieldName]) {// field may not be set
                     typedHash[fieldName + "Id"] = listItem[fieldName].Id;
