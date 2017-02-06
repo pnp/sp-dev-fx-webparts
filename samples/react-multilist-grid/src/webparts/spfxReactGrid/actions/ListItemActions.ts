@@ -112,7 +112,7 @@ export function listDefinitionIsValid(listDefinition: ListDefinition): boolean {
  * Action to update a listitem in sharepoint
  */
 export function updateListItemAction(dispatch: any, listDefinition: ListDefinition, listItem: ListItem): any {
-    //   listDefinition = this.getListDefinition(listItem.__metadata__ListDefinitionId);// The list Definition this item is associated with.
+    debugger;
     const weburl = utils.ParseSPField(listDefinition.webLookup).id;
     const listid = utils.ParseSPField(listDefinition.listLookup).id;
     const web = new Web(weburl);

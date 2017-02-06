@@ -144,7 +144,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const unsavedItems=_.filter(this.props.listItems,item=>{return item.__metadata__OriginalValues});
     for (const unsavedItem of unsavedItems){
       const listDef: ListDefinition = this.getListDefinition(unsavedItem.__metadata__ListDefinitionId);
-      this.props.updateListItem(unsavedItem,listDef);
+      this.updateListItem(unsavedItem);
     }
   }
   private undoAll(): void {
