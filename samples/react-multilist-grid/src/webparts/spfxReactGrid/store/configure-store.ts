@@ -5,8 +5,6 @@ import {
   Middleware
 } from "redux";
 import { fromJS } from "immutable";
-import { createMemoryHistory } from "react-router";
-import { routerMiddleware } from "react-router-redux";
 import thunk from "redux-thunk";
 import {Store} from "redux"
 import promiseMiddleware from "redux-promise-middleware";
@@ -28,9 +26,8 @@ function configureStore(initialState) {
 }
 
 function _getMiddleware(): Middleware[] {
-  const history = createMemoryHistory();
+
   let middleware = [
-    routerMiddleware(history),
     promiseMiddleware(),
     thunk,
   ];

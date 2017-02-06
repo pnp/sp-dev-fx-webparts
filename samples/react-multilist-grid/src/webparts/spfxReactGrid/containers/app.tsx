@@ -43,7 +43,6 @@ class App extends React.Component<IAppProps, void> {
           </div>
         </div>
         <ListItemContainer>
-
         </ListItemContainer>
       </div >
     );

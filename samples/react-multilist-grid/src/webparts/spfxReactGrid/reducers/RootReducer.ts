@@ -7,7 +7,6 @@ import LookupOptionsReducer from "./LookupOptionsReducer";
 import SiteReducer from "./SiteReducer";
 import SiteUserReducer from "./SiteUsersReducer";
 import SystemStatus from "./SystemStatus";
-import  { routerReducer } from "react-router-redux";
 export function RootReducer(state, action) {
     const combinedReducers = combineReducers(
         {
@@ -16,7 +15,6 @@ export function RootReducer(state, action) {
             columns: ColumnReducer,
             sites: SiteReducer,
             pageContext: PageContextReducer,
-            routing: routerReducer,
             systemStatus:SystemStatus,
             lookupOptions:LookupOptionsReducer,
             siteUsers:SiteUserReducer
