@@ -26,7 +26,7 @@ import * as _ from "lodash";
 import { Web, TypedHash } from "sp-pnp-js";
 import ListItem from "../model/ListItem";
 import GridRowStatus from "../Model/GridRowStatus";
-
+import { Log } from "@microsoft/sp-core-library";
 import ListDefinition from "../model/ListDefinition";
 export function clearListItems() {
     return {
@@ -48,8 +48,7 @@ export function removeListItem(dispatch: any, listItem: ListItem, listDefinition
     const listid = utils.ParseSPField(listDefinition.listLookup).id;
     const web = new Web(weburl);
     switch (listItem.__metadata__GridRowStatus) {
-        case GridRowStatus.modified:
-        case GridRowStatus.pristine:
+        case GridRowStatus.toBeDeleted:
             web.lists.getById(listid).items.getById(listItem.ID).recycle()
                 .then((response) => {
                     // shouwld have an option to rfresh here in cas of calculated columns
@@ -67,6 +66,8 @@ export function removeListItem(dispatch: any, listItem: ListItem, listDefinition
                     listItem: listItem
                 }
             };
+        default:
+            Log.warn("ListItemContainer", "Invalid GrodrowStatus in update ListiteRender-- " + listItem.__metadata__GridRowStatus.toString());
     }
 }
 export function removeListItemSuccessAction(listItem) {
@@ -121,7 +122,7 @@ export function updateListItemAction(dispatch: any, listDefinition: ListDefiniti
         let fieldName = utils.ParseSPField(columnRef.name).id;
         switch (columnRef.fieldDefinition.TypeAsString) {
             case "Counter": // do not send ID to shareppoint as a data field
-            break;
+                break;
 
             case "Lookup":
                 if (listItem[fieldName]) {// field may not be set

@@ -2,7 +2,7 @@
 import * as React from "react";
 
 //const connect = require("react-redux").connect;
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import * as _ from "lodash";
 import {
   addListItem, removeListItem, getListItemsAction, saveListItemAction,
@@ -130,38 +130,27 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     this.TableRows = this.TableRows.bind(this);
     this.toggleEditing = this.toggleEditing.bind(this);
     this.addListItem = this.addListItem.bind(this);
-    this.removeListItem = this.removeListItem.bind(this);
+    //  this.removeListItem = this.removeListItem.bind(this);
     this.handleCellUpdated = this.handleCellUpdated.bind(this);
     this.handleCellUpdatedEvent = this.handleCellUpdatedEvent.bind(this);
-    this.undoItemChanges = this.undoItemChanges.bind(this);
+    this.HandleUndoItemChangesEvent = this.HandleUndoItemChangesEvent.bind(this);
+    this.handleUpdateListItemEvent = this.handleUpdateListItemEvent.bind(this);
     this.updateListItem = this.updateListItem.bind(this);
     this.getLookupOptions = this.getLookupOptions.bind(this);
     this.saveAll = this.saveAll.bind(this);
     this.undoAll = this.undoAll.bind(this);
-    this.markListItemAsDeleted= this.markListItemAsDeleted.bind(this);
+    this.markListItemAsDeleted = this.markListItemAsDeleted.bind(this);
 
   }
-    private saveAll(): void {
-    const unsavedItems=_.filter(this.props.listItems,item=>{return item.__metadata__OriginalValues});
-    for (const entity of unsavedItems){
-      const listDef: ListDefinition = this.getListDefinition(entity.__metadata__ListDefinitionId);
-      if (entity.__metadata__ListDefinitionId === entity.__metadata__OriginalValues.__metadata__ListDefinitionId
-      || entity.__metadata__GridRowStatus === GridRowStatus.new) {// List not changed
-
-      this.props.updateListItem(entity, listDef);
-    }
-    else {// list changed, add to new, delete from old (will need to do some fiorld mapping in here
-      entity.__metadata__GridRowStatus = GridRowStatus.new;
-      this.props.updateListItem(entity, listDef).then(response => {
-        const oldListDef: ListDefinition = this.getListDefinition(entity.__metadata__OriginalValues.__metadata__ListDefinitionId);
-        this.props.removeListItem(entity.__metadata__OriginalValues, oldListDef);
-      });
-    }
+  private saveAll(): void {
+    const unsavedItems = _.filter(this.props.listItems, item => { return item.__metadata__OriginalValues });
+    for (const entity of unsavedItems) {
+      this.updateListItem(entity);
     }
   }
   private undoAll(): void {
-         const unsavedItems=_.filter(this.props.listItems,item=>{return item.__metadata__OriginalValues});
-    for (const unsavedItem of unsavedItems){
+    const unsavedItems = _.filter(this.props.listItems, item => { return item.__metadata__OriginalValues });
+    for (const unsavedItem of unsavedItems) {
       this.props.undoItemChanges(unsavedItem);
     }
   }
@@ -179,15 +168,15 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
 
     this.props.addListItem(listItem);
   }
-  private removeListItem(event): void {
+  // private removeListItem(event): void {
 
-    const parentTD = this.getParent(event.target, "TD");
-    const attributes: NamedNodeMap = parentTD.attributes;
-    const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
-    const listItem: ListItem = _.find( this.props.listItems,(temp) => temp.GUID === entityid); // the listItemItself
-    const listDef = this.getListDefinition(listItem.__metadata__ListDefinitionId);// The list Definition this item is associated with.
-    this.props.removeListItem(listItem, listDef);
-  }
+  //   const parentTD = this.getParent(event.target, "TD");
+  //   const attributes: NamedNodeMap = parentTD.attributes;
+  //   const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
+  //   const listItem: ListItem = _.find(this.props.listItems, (temp) => temp.GUID === entityid); // the listItemItself
+  //   const listDef = this.getListDefinition(listItem.__metadata__ListDefinitionId);// The list Definition this item is associated with.
+  //   this.props.removeListItem(listItem, listDef);
+  // }
   /**
    * When the component Mounts, call an action to get the listitems for all the listdefinitions
    */
@@ -234,10 +223,10 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
       /**
        * Need to fire events here to get data needed for the rerender
        */
-      const listitem =_.find( this.props.listItems,li => li.GUID === entityid);
+      const listitem = _.find(this.props.listItems, li => li.GUID === entityid);
       const listDef = this.getListDefinition(listitem.__metadata__ListDefinitionId);
       if (listDef) {// if user just added an item we may not hava a lisdef yest
-        const colref = _.find(listDef.columnReferences,cr => cr.columnDefinitionId === columnid);
+        const colref = _.find(listDef.columnReferences, cr => cr.columnDefinitionId === columnid);
         if (colref) {// Listname does not have a columnReference
 
           switch (colref.fieldDefinition.TypeAsString) {
@@ -270,36 +259,60 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
   /**
    * This event gets fired to revert any changes made to the ListItem.
    */
-  public undoItemChanges(event): void {
+  public HandleUndoItemChangesEvent(event): void {
     const parentTD = this.getParent(event.target, "TD"); // the listitemId and the column ID are always stored as attributes of the parent TD.
     const attributes: NamedNodeMap = parentTD.attributes;
     const entityitem = attributes.getNamedItem("data-entityid");
     const entityid = entityitem.value;
-    const entity: ListItem = _.find(this.props.listItems,(temp) => temp.GUID === entityid);
+    const entity: ListItem = _.find(this.props.listItems, (temp) => temp.GUID === entityid);
     this.props.undoItemChanges(entity);
   }
   /**
    * This event gets fired, to save the item back to SharePoint.
    */
-  public updateListItem(event): void {
+  public updateListItem(entity: ListItem): void {
+    const listDef: ListDefinition = this.getListDefinition(entity.__metadata__ListDefinitionId);
+    if (entity.__metadata__ListDefinitionId === entity.__metadata__OriginalValues.__metadata__ListDefinitionId) {// List not changed
+      switch (entity.__metadata__GridRowStatus) {
+        case GridRowStatus.toBeDeleted:
+          this.props.removeListItem(entity, listDef);
+          break;
+        case GridRowStatus.new:
+        case GridRowStatus.modified:
+          this.props.updateListItem(entity, listDef);
+          break;
+        default:
+          Log.warn("ListItemContainer", "Invalid GrodrowStatus in update ListiteRender-- " + entity.__metadata__GridRowStatus.toString());
+      }
 
+    }
+    else {// list changed
+       const oldListDef: ListDefinition = this.getListDefinition(entity.__metadata__OriginalValues.__metadata__ListDefinitionId);
+       switch (entity.__metadata__GridRowStatus) {
+        case GridRowStatus.toBeDeleted: // delete from orignal list
+          this.props.removeListItem(entity, oldListDef);
+          break;
+        case GridRowStatus.modified:
+          entity.__metadata__GridRowStatus = GridRowStatus.new;
+        /* falls through */
+        case GridRowStatus.new:// add to new list , delete from orignal list
+          this.props.updateListItem(entity, listDef).then(response => {
+            this.props.removeListItem(entity.__metadata__OriginalValues, oldListDef);
+          });
+        default:
+          Log.warn("ListItemContainer", "Invalid GrodrowStatus in update ListiteRender-- " + entity.__metadata__GridRowStatus.toString());
+      }
+
+
+    }
+  }
+  public handleUpdateListItemEvent(event): void {
+    debugger;
     const parentTD = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = parentTD.attributes;
     const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
-    const entity: ListItem = _.find(this.props.listItems,(temp) => temp.GUID === entityid);
-    const listDef: ListDefinition = this.getListDefinition(entity.__metadata__ListDefinitionId);
-    if (entity.__metadata__ListDefinitionId === entity.__metadata__OriginalValues.__metadata__ListDefinitionId
-      || entity.__metadata__GridRowStatus === GridRowStatus.new) {// List not changed
-
-      this.props.updateListItem(entity, listDef);
-    }
-    else {// list changed, add to new, delete from old (will need to do some fiorld mapping in here
-      entity.__metadata__GridRowStatus = GridRowStatus.new;
-      this.props.updateListItem(entity, listDef).then(response => {
-        const oldListDef: ListDefinition = this.getListDefinition(entity.__metadata__OriginalValues.__metadata__ListDefinitionId);
-        this.props.removeListItem(entity.__metadata__OriginalValues, oldListDef);
-      });
-    }
+    const entity: ListItem = _.find(this.props.listItems, (temp) => temp.GUID === entityid);
+    this.updateListItem(entity);
 
   }
   /**
@@ -320,7 +333,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const oldListDef = this.getListDefinition(listItem.__metadata__OriginalValues.__metadata__ListDefinitionId);
     for (const newColRef of newListDef.columnReferences) {
       // find the old columnReference
-      const oldColRef = _.find(oldListDef.columnReferences,cr => cr.columnDefinitionId === newColRef.columnDefinitionId);
+      const oldColRef = _.find(oldListDef.columnReferences, cr => cr.columnDefinitionId === newColRef.columnDefinitionId);
       const newFieldName = utils.ParseSPField(newColRef.name).id;
       const oldFieldName = utils.ParseSPField(oldColRef.name).id;
       switch (newColRef.fieldDefinition.TypeAsString) {
@@ -328,8 +341,8 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
           // should male a local copy befor i start messing with these.// fieldd names may overlap on old and new
           //   const name = listItem.__metadata__OriginalValues[oldFieldName].Name;// the user login name
           const name = listItem[oldFieldName].Name;// the user login name
-          const siteUsersOnNewSite = _.find(this.props.siteUsers,su => su.siteUrl === newListDef.siteUrl);
-          const newUser =_.find( siteUsersOnNewSite.siteUser,user => user.loginName === name);
+          const siteUsersOnNewSite = _.find(this.props.siteUsers, su => su.siteUrl === newListDef.siteUrl);
+          const newUser = _.find(siteUsersOnNewSite.siteUser, user => user.loginName === name);
           if (newUser) {
             listItem[newFieldName].Id = newUser.id;
             listItem[newFieldName].Name = newUser.loginName;
@@ -346,21 +359,24 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
 
     }
   }
-   /**
-   * This method gets called when user clicks delete listitem.
-   * Office UI Fabric does not use events. It just calls this method with the new value.
-   * It reformats the data to fit the format we recievbed from SP in the first place ,
-   * and dispatches an action to save the data in the store.
-   *
-   * Also, it saves the original version of the record, so we can undo later.
-   */
+  /**
+  * This method gets called when user clicks delete listitem.
+  * Office UI Fabric does not use events. It just calls this method with the new value.
+  * It reformats the data to fit the format we recievbed from SP in the first place ,
+  * and dispatches an action to save the data in the store.
+  *
+  * Also, it saves the original version of the record, so we can undo later.
+  */
   private markListItemAsDeleted(event) {
-const parentTD = this.getParent(event.target, "TD");
+    const parentTD = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = parentTD.attributes;
     const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
-    const listItem: ListItem = _.find( this.props.listItems,(temp) => temp.GUID === entityid); // the listItemItself
+    const listItem: ListItem = _.find(this.props.listItems, (temp) => temp.GUID === entityid); // the listItemItself
     const listDef = this.getListDefinition(listItem.__metadata__ListDefinitionId);// The list Definition this item is associated with.
-    listItem.__metadata__GridRowStatus=GridRowStatus.toBeDeleted;
+    if (!listItem.__metadata__OriginalValues) { //SAVE  orgininal values so we can undo;
+      listItem.__metadata__OriginalValues = _.cloneDeep(listItem); // need deep if we have lookup values
+    }
+    listItem.__metadata__GridRowStatus = GridRowStatus.toBeDeleted;
     this.props.saveListItem(listItem);
   }
   /**
@@ -374,9 +390,9 @@ const parentTD = this.getParent(event.target, "TD");
   private handleCellUpdated(value) {
 
     const {entityid, columnid} = this.state.editing;
-    const entity: ListItem = _.find(this.props.listItems,(temp) => temp.GUID === entityid);
+    const entity: ListItem = _.find(this.props.listItems, (temp) => temp.GUID === entityid);
     const listDef = this.getListDefinition(entity.__metadata__ListDefinitionId);
-    const titleColumn =_.find( this.props.columns,c => { return c.type === "__LISTDEFINITIONTITLE__"; });
+    const titleColumn = _.find(this.props.columns, c => { return c.type === "__LISTDEFINITIONTITLE__"; });
     if (titleColumn) {
       if (columnid === titleColumn.guid) { // user just changed the listDef,
         if (entity.__metadata__GridRowStatus === GridRowStatus.pristine) {
@@ -397,7 +413,7 @@ const parentTD = this.getParent(event.target, "TD");
         return;
       }
     }
-    const columnReference = _.find(listDef.columnReferences,cr => cr.columnDefinitionId === columnid);
+    const columnReference = _.find(listDef.columnReferences, cr => cr.columnDefinitionId === columnid);
     const internalName = utils.ParseSPField(columnReference.name).id;
     if (!entity.__metadata__OriginalValues) { //SAVE  orgininal values so we can undo;
       entity.__metadata__OriginalValues = _.cloneDeep(entity); // need deep if we have lookup values
@@ -446,7 +462,7 @@ const parentTD = this.getParent(event.target, "TD");
   */
   public ensureSiteUsers(siteUrl: string): SiteUsers {
     // see if the options are in the store, if so, return them, otherwoise dispatch an action to get them
-    const siteUsers = _.find(this.props.siteUsers,x => {
+    const siteUsers = _.find(this.props.siteUsers, x => {
       return (x.siteUrl === siteUrl);
     });
     if (siteUsers === undefined) {
@@ -461,7 +477,7 @@ const parentTD = this.getParent(event.target, "TD");
   */
   public getSiteUsers(siteUrl: string): SiteUsers {
     // see if the options are in the store, if so, return them, otherwoise dispatch an action to get them
-    const siteUsers = _.find(this.props.siteUsers,x => {
+    const siteUsers = _.find(this.props.siteUsers, x => {
       return (x.siteUrl === siteUrl);
     });
     return siteUsers;
@@ -472,7 +488,7 @@ const parentTD = this.getParent(event.target, "TD");
    */
   public ensureLookupOptions(lookupSite: string, lookupWebId: string, lookupListId: string, lookupField: string): LookupOptions {
     // see if the options are in the store, if so, return them, otherwoise dispatch an action to get them
-    const lookupoptions =_.find( this.props.lookupOptions,x => {
+    const lookupoptions = _.find(this.props.lookupOptions, x => {
       return (x.lookupField === lookupField) &&
         (x.lookupListId === lookupListId) &&
         (x.lookupSite === lookupSite) &&
@@ -490,7 +506,7 @@ const parentTD = this.getParent(event.target, "TD");
   */
   public getLookupOptions(lookupSite: string, lookupWebId: string, lookupListId: string, lookupField: string): LookupOptions {
     // see if the options are in the store, if so, return them, otherwoise dispatch an action to get them
-    let lookupoptions = _.find(this.props.lookupOptions,x => {
+    let lookupoptions = _.find(this.props.lookupOptions, x => {
       return (x.lookupField === lookupField) &&
         (x.lookupListId === lookupListId) &&
         (x.lookupSite === lookupSite) &&
@@ -506,7 +522,7 @@ const parentTD = this.getParent(event.target, "TD");
     /** The id of the list definition to be retrieved */
     listdefid: string
   ): ListDefinition {
-    return _.find(this.props.listDefinitions,ld => ld.guid === listdefid);
+    return _.find(this.props.listDefinitions, ld => ld.guid === listdefid);
   }
   /**
    * This method renders the contents of an individual cell in an editable format.
@@ -526,20 +542,20 @@ const parentTD = this.getParent(event.target, "TD");
       // should I have a different handler for this?
       return (
         <Dropdown options={opts} selectedKey={entity.__metadata__ListDefinitionId} label=""
-          onChanged={(selection: IDropdownOption) => { cellUpdated(selection); } } />
+          onChanged={(selection: IDropdownOption) => { cellUpdated(selection); }} />
       );
     }
     const listDef = this.getListDefinition(entity.__metadata__ListDefinitionId);
-    const colref = _.find(listDef.columnReferences,cr => cr.columnDefinitionId === column.guid);
+    const colref = _.find(listDef.columnReferences, cr => cr.columnDefinitionId === column.guid);
     const internalName = utils.ParseSPField(colref.name).id;
     const columnValue = entity[internalName];
     switch (colref.fieldDefinition.TypeAsString) {
       case "Counter":// disable editting
-  return (<span>
+        return (<span>
           {entity[internalName]}
         </span>
         );
-        /* falls through */
+      /* falls through */
       case "User":
         let siteUrl = listDef.siteUrl;
         let siteUsers = this.getSiteUsers(siteUrl);
@@ -551,7 +567,7 @@ const parentTD = this.getParent(event.target, "TD");
               });
               const selectedKey = columnValue ? columnValue.Id : null;
               return (
-                <Dropdown label="" options={options} selectedKey={selectedKey} onChanged={(selection: IDropdownOption) => { cellUpdated(selection); } } >
+                <Dropdown label="" options={options} selectedKey={selectedKey} onChanged={(selection: IDropdownOption) => { cellUpdated(selection); }} >
                 </Dropdown >
               );
             case SiteUsersStatus.fetching:
@@ -594,7 +610,7 @@ const parentTD = this.getParent(event.target, "TD");
                 return { key: opt.id, text: opt.value };
               });
               return (
-                <Dropdown label="" options={options} selectedKey={(columnValue ? columnValue.Id : null)} onChanged={(selection: IDropdownOption) => { cellUpdated(selection); } } >
+                <Dropdown label="" options={options} selectedKey={(columnValue ? columnValue.Id : null)} onChanged={(selection: IDropdownOption) => { cellUpdated(selection); }} >
                 </Dropdown >
               );
             case LookupOptionStatus.fetching:
@@ -662,7 +678,7 @@ const parentTD = this.getParent(event.target, "TD");
         return (
           <DatePicker strings={datpickerStrings} onSelectDate={cellUpdated} value={date}
             allowTextInput={true} isRequired={colref.fieldDefinition.Required}
-            />);
+          />);
       default:
         return (
           <input autoFocus type="text"
@@ -682,7 +698,7 @@ const parentTD = this.getParent(event.target, "TD");
     if (column.type === "__LISTDEFINITIONTITLE__") {// this type is sued to show the listdefinition name
       if (listDef != null) {//listdef has been selected
         return (<a href="#" onFocus={this.toggleEditing}
-        style={{ textDecoration: (entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted)?"line-through":"none" }} >
+          style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }} >
           {listDef.listDefTitle}
         </a>);
       }
@@ -698,7 +714,7 @@ const parentTD = this.getParent(event.target, "TD");
         </a>
       );
     }
-    const colref =_.find( listDef.columnReferences,cr => cr.columnDefinitionId === column.guid);
+    const colref = _.find(listDef.columnReferences, cr => cr.columnDefinitionId === column.guid);
     if (colref === undefined) { //Column has not been configured for this list
       return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
         'Column Not Defined'
@@ -712,7 +728,7 @@ const parentTD = this.getParent(event.target, "TD");
 
         if (entity[internalName] === undefined) { // value not set
           return (<a href="#" onFocus={this.toggleEditing}
-         style={{ textDecoration: (entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted)?"line-through":"none" }} >
+            style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
 
           >
 
@@ -720,7 +736,7 @@ const parentTD = this.getParent(event.target, "TD");
           );
         } else {
           return (<a href="#" onFocus={this.toggleEditing}
-        style={{ textDecoration: (entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted)?"line-through":"none" }} >
+            style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
 
           >
             {entity[internalName]["Title"]}
@@ -731,12 +747,16 @@ const parentTD = this.getParent(event.target, "TD");
       case "Lookup":
 
         if (entity[internalName] === undefined) { // value not set
-          return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
+          return (<a href="#" onFocus={this.toggleEditing}
+            style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
+          >
 
           </a>
           );
         } else {
-          return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
+          return (<a href="#" onFocus={this.toggleEditing}
+            style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
+          >
             {entity[internalName][colref.fieldDefinition.LookupField]}
           </a>
           );
@@ -744,21 +764,25 @@ const parentTD = this.getParent(event.target, "TD");
       /* falls through */
       case "Text":
         return (<a href="#" onFocus={this.toggleEditing}
-        style={{ textDecoration: (entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted)?"line-through":"none" }}
+          style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
         >
-                 {entity[internalName]}
+          {entity[internalName]}
         </a>
         );
       /* falls through */
       case "Note":
-        return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} dangerouslySetInnerHTML={{ __html: entity[internalName] }} >
+        return (<a href="#" onFocus={this.toggleEditing}
+          style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
+          dangerouslySetInnerHTML={{ __html: entity[internalName] }} >
         </a>
         );
       /* falls through */
       case "DateTime":
         let value: string;
         if (entity[internalName] === null) {
-          return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
+          return (<a href="#" onFocus={this.toggleEditing}
+            style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
+          >
 
           </a>);
         }
@@ -768,19 +792,23 @@ const parentTD = this.getParent(event.target, "TD");
         else {
           value = entity[internalName];
         }
-        return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
+        return (<a href="#" onFocus={this.toggleEditing}
+          style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
+        >
           {value}
         </a>
         );
       /* falls through */
       case "Counter":// disable tabbing to field
-       return (<span>
+        return (<span>
           {entity[internalName]}
         </span>
         );
       /* falls through */
       default:
-        return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }} >
+        return (<a href="#" onFocus={this.toggleEditing}
+          style={{ textDecoration: (entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted) ? "line-through" : "none" }}
+        >
           {entity[internalName]}
         </a>
         );
@@ -811,11 +839,7 @@ const parentTD = this.getParent(event.target, "TD");
    */
   public TableRow(props: { entity: ListItem, columns: Array<ColumnDefinition>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, columns, cellUpdated, cellUpdatedEvent} = props;
-    debugger;
-    const hasOriginalValues=(entity.__metadata__OriginalValues);
-    const tobedeleted=(entity.__metadata__GridRowStatus!==GridRowStatus.toBeDeleted);
 
-const   canBeUndone=(!(entity.__metadata__OriginalValues)) || (entity.__metadata__GridRowStatus!==GridRowStatus.toBeDeleted) ;
     return (
       <tr>
         {
@@ -829,22 +853,22 @@ const   canBeUndone=(!(entity.__metadata__OriginalValues)) || (entity.__metadata
           <div>
 
             <Button width="20" style={{ padding: 0 }}
-              onClick={this.updateListItem} alt="Save to Sharepoint"
+              onClick={this.handleUpdateListItemEvent} alt="Save to Sharepoint"
               buttonType={ButtonType.icon}
               icon="Save" disabled={!(entity.__metadata__OriginalValues)} />
             {/*<Button width="20" style={{ padding: 0 }}
               onClick={this.removeListItem}
               buttonType={ButtonType.icon}
               icon="Delete" />*/}
-                <Button width="20" style={{ padding: 0 }}
+            <Button width="20" style={{ padding: 0 }}
               onClick={this.markListItemAsDeleted}
-             disabled={(entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted) }
-               buttonType={ButtonType.icon}
+              disabled={(entity.__metadata__GridRowStatus === GridRowStatus.toBeDeleted)}
+              buttonType={ButtonType.icon}
               icon="Delete" />
             <Button width="20" style={{ padding: 0 }}
               buttonType={ButtonType.icon}
-              disabled={ !canBeUndone }
-              onClick={this.undoItemChanges}
+              disabled={(!(entity.__metadata__OriginalValues))}
+              onClick={this.HandleUndoItemChangesEvent}
               icon="Undo" />
           </div>
         </td>
