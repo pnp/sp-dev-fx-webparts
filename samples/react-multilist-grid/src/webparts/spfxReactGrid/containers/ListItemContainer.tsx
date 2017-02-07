@@ -811,6 +811,8 @@ const parentTD = this.getParent(event.target, "TD");
    */
   public TableRow(props: { entity: ListItem, columns: Array<ColumnDefinition>, cellUpdated: (newValue) => void, cellUpdatedEvent: (event: React.SyntheticEvent<any>) => void; }): JSX.Element {
     const {entity, columns, cellUpdated, cellUpdatedEvent} = props;
+    debugger;
+
     return (
       <tr>
         {
@@ -833,11 +835,12 @@ const parentTD = this.getParent(event.target, "TD");
               icon="Delete" />*/}
                 <Button width="20" style={{ padding: 0 }}
               onClick={this.markListItemAsDeleted}
-              buttonType={ButtonType.icon}
+             disabled={(entity.__metadata__GridRowStatus===GridRowStatus.toBeDeleted) }
+               buttonType={ButtonType.icon}
               icon="Delete" />
             <Button width="20" style={{ padding: 0 }}
               buttonType={ButtonType.icon}
-              disabled={!(entity.__metadata__OriginalValues)}
+              disabled={(!(entity.__metadata__OriginalValues)) || (entity.__metadata__GridRowStatus!==GridRowStatus.toBeDeleted) }
               onClick={this.undoItemChanges}
               icon="Undo" />
           </div>
