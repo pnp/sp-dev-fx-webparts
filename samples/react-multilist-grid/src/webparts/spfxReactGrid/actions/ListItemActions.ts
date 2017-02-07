@@ -28,6 +28,7 @@ import ListItem from "../model/ListItem";
 import GridRowStatus from "../Model/GridRowStatus";
 import { Log } from "@microsoft/sp-core-library";
 import ListDefinition from "../model/ListDefinition";
+import ColumnDefinition from "../model/ColumnDefinition";
 export function clearListItems() {
     return {
         type: CLEAR_LISTITEMS,
@@ -284,7 +285,7 @@ export function gotListItemAction(item) {
         }
     };
 }
-export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDefinition>): any {
+export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDefinition>,columnDefinitions:Array<ColumnDefinition>): any {
     dispatch(clearListItems());
 
     const promises: Array<Promise<any>> = new Array<Promise<any>>();
@@ -330,7 +331,7 @@ export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDef
                     return item;
                 });
                 console.log(data);
-                const gotListItems = gotListItemsAction(data);
+                const gotListItems = gotListItemsAction(data,columnDefinitions);
                 dispatch(gotListItems); // need to ewname this one to be digfferent from the omported ome
             })
             .catch((error) => {
@@ -359,11 +360,12 @@ export function getListItemsErrorAction(error) {
     };
 
 }
-export function gotListItemsAction(items) {
+export function gotListItemsAction(items:Array<ListItem>, columnDefinitions:Array<ColumnDefinition>) {
     return {
         type: GOT_LISTITEMS,
         payload: {
-            items: items
+            items: items,
+            columnDefinitions:columnDefinitions
         }
     };
 }

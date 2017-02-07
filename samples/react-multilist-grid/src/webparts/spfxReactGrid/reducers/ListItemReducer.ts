@@ -1,4 +1,5 @@
 import ListItem from "../Model/ListItem";
+import ColumnDefinition from "../Model/ColumnDefinition";
 import * as _ from "lodash";
 import {
     ADD_LISTITEM,
@@ -74,7 +75,7 @@ function saveListItem(state: Array<ListItem>, action: { payload: { listItem: Lis
     }
     return newarray2;
 }
-function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<ListItem> } }) {
+function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<ListItem>,columnDefinitions:Array<ColumnDefinition> } }) {
  /** Do Initial Sort here; */
  debugger;
 

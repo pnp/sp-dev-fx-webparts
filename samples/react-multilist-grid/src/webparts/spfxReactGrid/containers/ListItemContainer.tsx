@@ -40,7 +40,7 @@ interface IListViewPageProps extends React.Props<any> {
   /** Redux Action to add a new remove a list item */
   removeListItem: (l: ListItem, ListDef: ListDefinition) => void;
   /** Redux Action to get listitems from a specific list */
-  getListItems: (listDefinitions: Array<ListDefinition>) => void;
+  getListItems: (listDefinitions: Array<ListDefinition>,columnDefinitions: Array<ColumnDefinition>) => void;
   /** Redux Action to update a listitem in sharepoint */
   updateListItem: (ListItem: ListItem, ListDef: ListDefinition) => Promise<any>;
   /** Redux Action to  get the lookup options for a specific field */
@@ -92,8 +92,9 @@ function mapDispatchToProps(dispatch) {
       dispatch(undoListItemChangesAction(listItem));
     },
 
-    getListItems: (listDefinitions: Array<ListDefinition>): void => {
-      dispatch(getListItemsAction(dispatch, listDefinitions));
+    getListItems: (listDefinitions: Array<ListDefinition>,columnDefinitions: Array<ColumnDefinition>): void => {
+      debugger;
+      dispatch(getListItemsAction(dispatch, listDefinitions,columnDefinitions));// Column Defs needed to sort
     },
     getLookupOptionAction: (lookupSite, lookupWebId, lookupListId, lookupField): void => {
       dispatch(getLookupOptionAction(dispatch, lookupSite, lookupWebId, lookupListId, lookupField));
@@ -182,14 +183,14 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
    */
   public componentWillMount() {
 
-    this.props.getListItems(this.props.listDefinitions);
+    this.props.getListItems(this.props.listDefinitions,this.props.columns);
   }
   public componentWillReceiveProps(newProps: IListViewPageProps) {
 
     if (newProps.listDefinitions === this.props.listDefinitions && newProps.columns === this.props.columns) {
       return;
     }
-    this.props.getListItems(this.props.listDefinitions);
+    this.props.getListItems(this.props.listDefinitions,this.props.columns);
   }
   /**
  * Method to get the parent TD of any cell,
