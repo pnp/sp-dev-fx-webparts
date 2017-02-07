@@ -73,7 +73,7 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
     })
   }
   private SelectedWebChanged(option: IDropdownOption, index?: number): void {
-    debugger;
+
     const key: string = option.key as string;
     if (key === "") { return; }
     const webUrl = utils.ParseSPField(key).id;
@@ -97,7 +97,7 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
     this.setState(this.state);
   }
   public render(): JSX.Element {
-    debugger;
+
     return (
       <div style={{ marginBottom: '8px' }}>
         {this.state.openPanel === true ?

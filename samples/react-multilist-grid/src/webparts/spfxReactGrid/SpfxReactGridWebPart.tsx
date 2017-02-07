@@ -14,7 +14,7 @@ import {
   IWebPartContext,
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
-debugger;
+
 import { Log } from "@microsoft/sp-core-library";
 
 import * as strings from "spfxReactGridStrings";
@@ -31,7 +31,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
   private cdProps: IPropertyFieldColumnDefinitionsProps;
   private ldProps: IPropertyFieldListDefinitionsProps;
   public constructor() {
-    debugger;
+
     super();
     this.onPropertyChange = this.onPropertyChange.bind(this);
     this.cdProps = {

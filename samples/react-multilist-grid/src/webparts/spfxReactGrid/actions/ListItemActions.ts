@@ -113,7 +113,7 @@ export function listDefinitionIsValid(listDefinition: ListDefinition): boolean {
  * Action to update a listitem in sharepoint
  */
 export function updateListItemAction(dispatch: any, listDefinition: ListDefinition, listItem: ListItem): any {
-    debugger;
+
     const weburl = utils.ParseSPField(listDefinition.webLookup).id;
     const listid = utils.ParseSPField(listDefinition.listLookup).id;
     const web = new Web(weburl);
@@ -347,6 +347,7 @@ export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDef
             promise: Promise.all(promises)
         }
     };
+
     return action;
 }
 export function getListItemsErrorAction(error) {

@@ -74,7 +74,12 @@ function saveListItem(state: Array<ListItem>, action: { payload: { listItem: Lis
     }
     return newarray2;
 }
+function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<ListItem> } }) {
+ /** Do Initial Sort here; */
+ debugger;
 
+    return _.union(state, action.payload.items);
+}
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
     switch (action.type) {
         case ADD_LISTITEM:
@@ -90,7 +95,7 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
         case UNDO_LISTITEMCHANGES:
             return undoListItemChanges(state, action);
         case GOT_LISTITEMS:
-            return _.union(state, action.payload.items);
+            return gotListItems(state,action);
         case CLEAR_LISTITEMS:
             return [];
         default:

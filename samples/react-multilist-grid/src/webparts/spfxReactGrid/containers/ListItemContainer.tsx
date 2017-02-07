@@ -189,7 +189,6 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     if (newProps.listDefinitions === this.props.listDefinitions && newProps.columns === this.props.columns) {
       return;
     }
-
     this.props.getListItems(this.props.listDefinitions);
   }
   /**
@@ -307,7 +306,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     }
   }
   public handleUpdateListItemEvent(event): void {
-    debugger;
+
     const parentTD = this.getParent(event.target, "TD");
     const attributes: NamedNodeMap = parentTD.attributes;
     const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
