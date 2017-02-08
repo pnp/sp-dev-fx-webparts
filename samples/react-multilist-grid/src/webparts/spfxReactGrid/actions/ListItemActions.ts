@@ -287,6 +287,7 @@ export function gotListItemAction(item) {
 }
 export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDefinition>,columnDefinitions:Array<ColumnDefinition>): any {
     dispatch(clearListItems());
+debugger;
 
     const promises: Array<Promise<any>> = new Array<Promise<any>>();
     for (const listDefinition of listDefinitions) {

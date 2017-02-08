@@ -162,8 +162,8 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         width: 99
     },
     {
-        id: "sortsequence",
-        name: "sortsequence",
+        id: "sortSequence",
+        name: "sortSequence",
         editable: true,
         width: 99,
         editor: "SortSequenceEditor",
@@ -171,8 +171,8 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
 
     },
     {
-        id: "sortdirection",
-        name: "sortdirection",
+        id: "sortDirection",
+        name: "sortDirection",
         editable: true,
         width: 99,
         editor: "SortDirectionEditor",

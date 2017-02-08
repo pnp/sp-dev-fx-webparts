@@ -81,16 +81,19 @@ function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<
     /** Do Initial Sort here; */
     debugger;
     const sortableColumns = _.filter(action.payload.columnDefinitions, cd => {
-        debugger;
-        return cd.sortDirection !== SortDirection.None
-     })
+
+        const x = (cd.sortDirection !== SortDirection.None);
+
+        return x;
+    })
     const sortedColumns = _.sortBy(sortableColumns, cd => {
         debugger
-         return cd.sortSequence ;
-        })
+        return cd.sortSequence;
+    })
+    const iterees =[];
     const results = action.payload.items.sort((a, b): number => {
-         return 1;
-         })
+        return 1;
+    })
     return _.union(state, action.payload.items);
 }
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {

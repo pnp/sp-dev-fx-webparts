@@ -190,6 +190,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     if (newProps.listDefinitions === this.props.listDefinitions && newProps.columns === this.props.columns) {
       return;
     }
+    debugger;
     this.props.getListItems(this.props.listDefinitions,this.props.columns);
   }
   /**
