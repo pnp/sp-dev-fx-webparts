@@ -1,6 +1,7 @@
 import ListItem from "../Model/ListItem";
 import ColumnDefinition from "../Model/ColumnDefinition";
 import { SortDirection } from "../Model/ColumnDefinition";
+import ListDefinition from "../Model/ListDefinition";
 
 import * as _ from "lodash";
 import {
@@ -77,20 +78,26 @@ function saveListItem(state: Array<ListItem>, action: { payload: { listItem: Lis
     }
     return newarray2;
 }
-function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<ListItem>, columnDefinitions: Array<ColumnDefinition> } }) {
+function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<ListItem>, listDefinitions: Array<ListDefinition>,  columnDefinitions: Array<ColumnDefinition> } }) {
     /** Do Initial Sort here; */
     debugger;
     const sortableColumns = _.filter(action.payload.columnDefinitions, cd => {
-
         const x = (cd.sortDirection !== SortDirection.None);
-
         return x;
     })
     const sortedColumns = _.sortBy(sortableColumns, cd => {
         debugger
         return cd.sortSequence;
     })
-    const iterees = _.map(sortableColumns, (item, index, collection) => {
+    let iterees: { (data: ListItem): any; } [];
+    for (const sortedColumn of sortedColumns){
+        iterees.push((item:ListItem)=>{
+            // find the list  the array of list columnDefinitions
+
+
+        });
+    }
+    const iterees2 = _.map(sortableColumns, (item, index, collection) => {
         const self = this;// to get to columnDefinitions
 
     });

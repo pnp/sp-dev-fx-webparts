@@ -285,9 +285,9 @@ export function gotListItemAction(item) {
         }
     };
 }
-export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDefinition>,columnDefinitions:Array<ColumnDefinition>): any {
+export function getListItemsAction(dispatch: any, listDefinitions: Array<ListDefinition>, columnDefinitions: Array<ColumnDefinition>): any {
     dispatch(clearListItems());
-debugger;
+    debugger;
 
     const promises: Array<Promise<any>> = new Array<Promise<any>>();
     for (const listDefinition of listDefinitions) {
@@ -332,7 +332,7 @@ debugger;
                     return item;
                 });
                 console.log(data);
-                const gotListItems = gotListItemsAction(data,columnDefinitions);
+                const gotListItems = gotListItemsAction(data,listDefinitions,columnDefinitions);
                 dispatch(gotListItems); // need to ewname this one to be digfferent from the omported ome
             })
             .catch((error) => {
@@ -361,12 +361,13 @@ export function getListItemsErrorAction(error) {
     };
 
 }
-export function gotListItemsAction(items:Array<ListItem>, columnDefinitions:Array<ColumnDefinition>) {
+export function gotListItemsAction(items: Array<ListItem>, listDefinitions: Array<ListDefinition>, columnDefinitions: Array<ColumnDefinition>) {
     return {
         type: GOT_LISTITEMS,
         payload: {
             items: items,
-            columnDefinitions:columnDefinitions
+            listDefinitions: listDefinitions,
+            columnDefinitions: columnDefinitions
         }
     };
 }
