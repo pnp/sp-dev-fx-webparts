@@ -90,7 +90,11 @@ function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<
         debugger
         return cd.sortSequence;
     })
-    const iterees =[];
+    const iterees = _.map(sortableColumns, (item, index, collection) => {
+        const self = this;// to get to columnDefinitions
+
+    });
+
     const results = action.payload.items.sort((a, b): number => {
         return 1;
     })
