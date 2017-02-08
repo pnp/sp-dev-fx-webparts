@@ -93,8 +93,7 @@ function mapDispatchToProps(dispatch) {
     },
 
     getListItems: (listDefinitions: Array<ListDefinition>,columnDefinitions: Array<ColumnDefinition>): void => {
-      debugger;
-      dispatch(getListItemsAction(dispatch, listDefinitions,columnDefinitions));// Column Defs needed to sort
+          dispatch(getListItemsAction(dispatch, listDefinitions,columnDefinitions));// Column Defs needed to sort
     },
     getLookupOptionAction: (lookupSite, lookupWebId, lookupListId, lookupField): void => {
       dispatch(getLookupOptionAction(dispatch, lookupSite, lookupWebId, lookupListId, lookupField));
@@ -190,8 +189,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     if (newProps.listDefinitions === this.props.listDefinitions && newProps.columns === this.props.columns) {
       return;
     }
-    debugger;
-    this.props.getListItems(this.props.listDefinitions,this.props.columns);
+      this.props.getListItems(this.props.listDefinitions,this.props.columns);
   }
   /**
  * Method to get the parent TD of any cell,
