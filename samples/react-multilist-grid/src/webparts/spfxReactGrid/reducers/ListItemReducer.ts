@@ -1,5 +1,7 @@
 import ListItem from "../Model/ListItem";
 import ColumnDefinition from "../Model/ColumnDefinition";
+import { SortDirection } from "../Model/ColumnDefinition";
+
 import * as _ from "lodash";
 import {
     ADD_LISTITEM,
@@ -75,10 +77,20 @@ function saveListItem(state: Array<ListItem>, action: { payload: { listItem: Lis
     }
     return newarray2;
 }
-function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<ListItem>,columnDefinitions:Array<ColumnDefinition> } }) {
- /** Do Initial Sort here; */
- debugger;
-
+function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<ListItem>, columnDefinitions: Array<ColumnDefinition> } }) {
+    /** Do Initial Sort here; */
+    debugger;
+    const sortableColumns = _.filter(action.payload.columnDefinitions, cd => {
+        debugger;
+        return cd.sortDirection !== SortDirection.None
+     })
+    const sortedColumns = _.sortBy(sortableColumns, cd => {
+        debugger
+         return cd.sortSequence ;
+        })
+    const results = action.payload.items.sort((a, b): number => {
+         return 1;
+         })
     return _.union(state, action.payload.items);
 }
 function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
@@ -96,7 +108,7 @@ function listItemReducer(state = INITIAL_STATE, action: any = { type: "" }) {
         case UNDO_LISTITEMCHANGES:
             return undoListItemChanges(state, action);
         case GOT_LISTITEMS:
-            return gotListItems(state,action);
+            return gotListItems(state, action);
         case CLEAR_LISTITEMS:
             return [];
         default:
