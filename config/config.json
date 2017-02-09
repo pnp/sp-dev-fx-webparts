@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/propertyBagEditor/PropertyBagEditorWebPart.js",
+      "manifest": "./src/webparts/propertyBagEditor/PropertyBagEditorWebPart.manifest.json",
+      "outputPath": "./dist/property-bag-editor.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "propertyBagEditorStrings": "webparts/propertyBagEditor/loc/{locale}.js"
+  }
+}
