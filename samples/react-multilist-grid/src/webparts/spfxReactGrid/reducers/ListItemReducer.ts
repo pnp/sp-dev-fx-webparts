@@ -84,24 +84,15 @@ function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<
     const sortableColumns = _.filter(action.payload.columnDefinitions, cd => {
         const x = (cd.sortDirection !== SortDirection.None);
         return x;
-    })
+    });
     const sortColumns = _.sortBy(sortableColumns, cd => {
         return cd.sortSequence;
-    })
-    let iterees: { (data: ListItem): any; }[] = [];//array of functions that take a list item and return any
-    for (const sortedColumn of sortColumns) {
-        iterees.push((item: ListItem) => {
-            // find the list  the array of list columnDefinitions
-
-
-        });
-    }
-
-    // so a given grid column may be mapped to FieldA in list1 and FieldB in list2,  need to find the fields to compare , then compare them
+    });
+        // so a given grid column may be mapped to FieldA in list1 and FieldB in list2,  need to find the fields to compare , then compare them
     const results = _.union(state, action.payload.items)
         .sort((listItem1: ListItem, listItem2: ListItem): number => {
-            const listDefinition1 = _.find(action.payload.listDefinitions, ld => { return ld.guid === listItem1.__metadata__ListDefinitionId });
-            const listDefinition2 = _.find(action.payload.listDefinitions, ld => { return ld.guid === listItem2.__metadata__ListDefinitionId });
+            const listDefinition1 = _.find(action.payload.listDefinitions, ld => { return ld.guid === listItem1.__metadata__ListDefinitionId ;});
+            const listDefinition2 = _.find(action.payload.listDefinitions, ld => { return ld.guid === listItem2.__metadata__ListDefinitionId ;});
             for (const sortColumn of sortColumns) {
                 debugger;
                 if (sortColumn.type === "__LISTDEFINITIONTITLE__") {
@@ -110,15 +101,15 @@ function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<
                     }
                     if (sortColumn.sortDirection === SortDirection.Ascending) {
                         if (listDefinition1.listDefTitle <= listDefinition2.listDefTitle) {
-                            return -1
+                            return -1;
                         } else {
-                            return +1
+                            return +1;
                         }
                     } else {
                         if (listDefinition1.listDefTitle >= listDefinition2.listDefTitle) {
-                            return -1
+                            return -1;
                         } else {
-                            return +1
+                            return +1;
                         }
                     }
                 }
@@ -131,21 +122,21 @@ function gotListItems(state: Array<ListItem>, action: { payload: { items: Array<
 
                     if (sortColumn.sortDirection === SortDirection.Ascending) {
                         if (listItem1[list1ColumnName] <= listItem2[list2ColumnName]) {
-                            return -1
+                            return -1;
                         } else {
-                            return +1
+                            return +1;
                         }
                     } else {
                         if (listItem1[list1ColumnName] >= listItem2[list2ColumnName]) {
-                            return -1
+                            return -1;
                         } else {
-                            return +1
+                            return +1;
                         }
                     }
                 }
             }
 
-        })
+        });
    // return _.union(state, action.payload.items);
    return results;
 }

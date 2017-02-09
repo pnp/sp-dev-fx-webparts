@@ -326,8 +326,6 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     switch (column.editor) {
 
       case "WebEditor":
-
-        let webs = this.getWebsForSite(entity);
         return (
         <WebSelector
          selectedWeb={columnValue}

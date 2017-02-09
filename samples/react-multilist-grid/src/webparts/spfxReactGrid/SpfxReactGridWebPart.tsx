@@ -11,7 +11,6 @@ import { PropertyFieldListDefinitions, IPropertyFieldListDefinitionsProps } from
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  IWebPartContext,
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
 

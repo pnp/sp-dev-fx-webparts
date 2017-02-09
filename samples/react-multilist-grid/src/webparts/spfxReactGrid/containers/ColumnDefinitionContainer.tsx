@@ -6,7 +6,7 @@ import * as _ from "lodash";
 import { addColumn, removeColumn, removeAllColumns, moveCulumnUp, moveCulumnDown } from "../actions/columnActions";
 import ColumnDefinition from "../model/ColumnDefinition";
 import { SortDirection } from "../model/ColumnDefinition";
-import { Button, ButtonType, TextField, CommandBar, Dropdown, IDropdownOption, Toggle, Slider, ISliderProps } from "office-ui-fabric-react";
+import { Button, ButtonType, TextField, CommandBar, Dropdown, IDropdownOption, Toggle, Slider } from "office-ui-fabric-react";
 import Container from "../components/container";
 import { Guid, Log } from "@microsoft/sp-core-library";
 /** NOTE:

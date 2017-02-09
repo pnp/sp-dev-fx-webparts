@@ -34,7 +34,6 @@ class App extends React.Component<IAppProps, void> {
     const { children} = this.props;
     return (
       <div>
-
         <div>
           {this.messageBar(this.props.systemStatus.fetchStatus)}
           <div>{this.props.systemStatus.currentAction}

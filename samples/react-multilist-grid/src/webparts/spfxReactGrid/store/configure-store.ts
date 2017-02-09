@@ -6,7 +6,7 @@ import {
 } from "redux";
 import { fromJS } from "immutable";
 import thunk from "redux-thunk";
-import {Store} from "redux"
+import {Store} from "redux";
 import promiseMiddleware from "redux-promise-middleware";
 
 import { RootReducer } from "../reducers/rootReducer";

@@ -38,7 +38,7 @@ class PropertyFieldListDefinitionsBuilder implements IPropertyPaneField<IPropert
   //Custom properties
   private label: string;
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
-  private customProperties: any;
+
   public constructor(_targetProperty: string, _properties: IPropertyFieldListDefinitionsPropsInternal) {
 
     this.render = this.render.bind(this);

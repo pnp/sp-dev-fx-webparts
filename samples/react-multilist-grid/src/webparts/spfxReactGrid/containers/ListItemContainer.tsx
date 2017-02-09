@@ -40,7 +40,7 @@ interface IListViewPageProps extends React.Props<any> {
   /** Redux Action to add a new remove a list item */
   removeListItem: (l: ListItem, ListDef: ListDefinition) => void;
   /** Redux Action to get listitems from a specific list */
-  getListItems: (listDefinitions: Array<ListDefinition>,columnDefinitions: Array<ColumnDefinition>) => void;
+  getListItems: (listDefinitions: Array<ListDefinition>, columnDefinitions: Array<ColumnDefinition>) => void;
   /** Redux Action to update a listitem in sharepoint */
   updateListItem: (ListItem: ListItem, ListDef: ListDefinition) => Promise<any>;
   /** Redux Action to  get the lookup options for a specific field */
@@ -92,8 +92,8 @@ function mapDispatchToProps(dispatch) {
       dispatch(undoListItemChangesAction(listItem));
     },
 
-    getListItems: (listDefinitions: Array<ListDefinition>,columnDefinitions: Array<ColumnDefinition>): void => {
-          dispatch(getListItemsAction(dispatch, listDefinitions,columnDefinitions));// Column Defs needed to sort
+    getListItems: (listDefinitions: Array<ListDefinition>, columnDefinitions: Array<ColumnDefinition>): void => {
+      dispatch(getListItemsAction(dispatch, listDefinitions, columnDefinitions));// Column Defs needed to sort
     },
     getLookupOptionAction: (lookupSite, lookupWebId, lookupListId, lookupField): void => {
       dispatch(getLookupOptionAction(dispatch, lookupSite, lookupWebId, lookupListId, lookupField));
@@ -143,13 +143,17 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
 
   }
   private saveAll(): void {
-    const unsavedItems = _.filter(this.props.listItems, item => { return item.__metadata__OriginalValues });
+    const unsavedItems = _.filter(this.props.listItems, item => {
+      return item.__metadata__OriginalValues;
+    });
     for (const entity of unsavedItems) {
       this.updateListItem(entity);
     }
   }
   private undoAll(): void {
-    const unsavedItems = _.filter(this.props.listItems, item => { return item.__metadata__OriginalValues });
+    const unsavedItems = _.filter(this.props.listItems, item => {
+      return item.__metadata__OriginalValues;
+    });
     for (const unsavedItem of unsavedItems) {
       this.props.undoItemChanges(unsavedItem);
     }
@@ -182,14 +186,14 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
    */
   public componentWillMount() {
 
-    this.props.getListItems(this.props.listDefinitions,this.props.columns);
+    this.props.getListItems(this.props.listDefinitions, this.props.columns);
   }
   public componentWillReceiveProps(newProps: IListViewPageProps) {
 
     if (newProps.listDefinitions === this.props.listDefinitions && newProps.columns === this.props.columns) {
       return;
     }
-      this.props.getListItems(this.props.listDefinitions,this.props.columns);
+    this.props.getListItems(this.props.listDefinitions, this.props.columns);
   }
   /**
  * Method to get the parent TD of any cell,
@@ -286,8 +290,8 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
 
     }
     else {// list changed
-       const oldListDef: ListDefinition = this.getListDefinition(entity.__metadata__OriginalValues.__metadata__ListDefinitionId);
-       switch (entity.__metadata__GridRowStatus) {
+      const oldListDef: ListDefinition = this.getListDefinition(entity.__metadata__OriginalValues.__metadata__ListDefinitionId);
+      switch (entity.__metadata__GridRowStatus) {
         case GridRowStatus.toBeDeleted: // delete from orignal list
           this.props.removeListItem(entity, oldListDef);
           break;
@@ -298,6 +302,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
           this.props.updateListItem(entity, listDef).then(response => {
             this.props.removeListItem(entity.__metadata__OriginalValues, oldListDef);
           });
+          break;
         default:
           Log.warn("ListItemContainer", "Invalid GrodrowStatus in update ListiteRender-- " + entity.__metadata__GridRowStatus.toString());
       }
@@ -371,8 +376,7 @@ class ListItemContainer extends React.Component<IListViewPageProps, IGridState> 
     const attributes: NamedNodeMap = parentTD.attributes;
     const entityid = attributes.getNamedItem("data-entityid").value; // theid of the SPListItem
     const listItem: ListItem = _.find(this.props.listItems, (temp) => temp.GUID === entityid); // the listItemItself
-    const listDef = this.getListDefinition(listItem.__metadata__ListDefinitionId);// The list Definition this item is associated with.
-    if (!listItem.__metadata__OriginalValues) { //SAVE  orgininal values so we can undo;
+   if (!listItem.__metadata__OriginalValues) { //SAVE  orgininal values so we can undo;
       listItem.__metadata__OriginalValues = _.cloneDeep(listItem); // need deep if we have lookup values
     }
     listItem.__metadata__GridRowStatus = GridRowStatus.toBeDeleted;

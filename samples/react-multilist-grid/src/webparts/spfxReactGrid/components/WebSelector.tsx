@@ -1,18 +1,14 @@
-import ListDefinition from "../model/ListDefinition";
-import ColumnDefinition from "../model/ColumnDefinition";
-import { Site, Web, WebList, WebListField } from "../model/Site";
+import { Web } from "../model/Site";
 import * as _ from "underscore";
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import * as strings from "spfxReactGridStrings";
 import * as utils from "../utils/utils";
 
 import { Web as SPWeb } from "sp-pnp-js";
-import { Site as SPSite } from "sp-pnp-js";
-import { Guid } from "@microsoft/sp-core-library";
+
 import { PageContext } from "@microsoft/sp-page-context";
 
 export interface IWebSelectorProps {
@@ -70,14 +66,12 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
       options.unshift({ key: "", text: "Choose a web to select it" });
       this.state.options = options;
       this.setState(this.state);
-    })
+    });
   }
   private SelectedWebChanged(option: IDropdownOption, index?: number): void {
-
     const key: string = option.key as string;
     if (key === "") { return; }
     const webUrl = utils.ParseSPField(key).id;
-    const webTitle = utils.ParseSPField(key).value;
     this.state.selectedWeb = key;
     this.props.onChange(key);
     this.getWebs(webUrl).then(webs => {
@@ -90,7 +84,7 @@ export default class WebSelector extends React.Component<IWebSelectorProps, IWeb
       options.unshift({ key: "", text: "Select one...", selected: true });
       this.state.options = options;
       this.setState(this.state);
-    })
+    });
   }
   private onClosePanel(element?: any): void {
     this.state.openPanel = false;
