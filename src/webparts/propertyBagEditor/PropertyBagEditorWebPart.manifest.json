@@ -14,7 +14,10 @@
     "description": { "default": "PropertyBagEditor description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "PropertyBagEditor"
+      "description": "PropertyBagEditor",
+      "propertiesToEdit":
+        "__CUSOMNAV_AreaName\r\n__CUSOMNAV_BusinessUnit\r\n__CUSOMNAV_Continent\r\n__CUSOMNAV_Location"
+      
     }
   }]
 }

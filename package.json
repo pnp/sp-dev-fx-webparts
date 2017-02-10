@@ -16,9 +16,12 @@
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
+    "lodash": "^4.17.4",
     "office-ui-fabric-react": "^0.69.0",
     "react": "0.14.8",
-    "react-dom": "0.14.8"
+    "react-dom": "0.14.8",
+    "sp-pnp-js": "^2.0.0",
+    "typescript": "^2.1.5"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~0.9.0",

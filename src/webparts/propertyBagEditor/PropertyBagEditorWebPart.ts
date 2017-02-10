@@ -1,26 +1,27 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
+import * as React from "react";
+import * as ReactDom from "react-dom";
 import pnp from "sp-pnp-js";
-import { Version } from '@microsoft/sp-core-library';
+import { Version } from "@microsoft/sp-core-library";
+
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from "@microsoft/sp-webpart-base";
 
-import * as strings from 'propertyBagEditorStrings';
-import PropertyBagEditor from './components/PropertyBagEditor';
-import { IPropertyBagEditorProps } from './components/IPropertyBagEditorProps';
-import { IPropertyBagEditorWebPartProps } from './IPropertyBagEditorWebPartProps';
+import * as strings from "propertyBagEditorStrings";
+import PropertyBagEditor from "./components/PropertyBagEditor";
+import { IPropertyBagEditorProps } from "./components/IPropertyBagEditorProps";
+import { IPropertyBagEditorWebPartProps } from "./IPropertyBagEditorWebPartProps";
 
 export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPropertyBagEditorWebPartProps> {
 
   public render(): void {
     const props: IPropertyBagEditorProps = {
       description: this.properties.description,
-      propertiesToEdit: [""],
-     
-    };
+      propertiesToEdit: this.properties.propertiesToEdit,
+      siteUrl:this.context.pageContext.site.absoluteUrl
+         };
     const element: React.ReactElement<IPropertyBagEditorProps> = React.createElement(
       PropertyBagEditor,
       props
@@ -30,10 +31,11 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
-
+ 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    debugger;
     return {
       pages: [
         {
@@ -44,10 +46,16 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
+                PropertyPaneTextField("description", {
                   label: strings.DescriptionFieldLabel
-                })
+                }),
+                                PropertyPaneTextField("propertiesToEdit", {
+                  label: strings.PropertiesToEditFieldLabel,
+                  multiline:true
+                }),
+
               ]
+
             }
           ]
         }

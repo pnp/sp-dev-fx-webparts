@@ -6,8 +6,35 @@
       "outputPath": "./dist/property-bag-editor.bundle.js"
     }
   ],
-  "externals": {},
+  "externals": {
+    "sp-init": {
+      "path": "https://rgove3.sharepoint.com/_layouts/15/init.js",
+      "globalName": "$_global_init"
+    },
+    "microsoft-ajax": {
+      "path": "https://rgove3.sharepoint.com/_layouts/15/MicrosoftAjax.js",
+      "globalName": "Sys",
+      "globalDependencies": [
+        "sp-init"
+      ]
+    },
+    "sp-runtime": {
+      "path": "https://rgove3.sharepoint.com/_layouts/15/SP.Runtime.js",
+      "globalName": "SP",
+      "globalDependencies": [
+        "microsoft-ajax"
+      ]
+    },
+    "sharepoint": {
+      "path": "https://rgove3.sharepoint.com/_layouts/15/SP.js",
+      "globalName": "SP",
+      "globalDependencies": [
+        "sp-runtime"
+      ]
+    }
+  },
   "localizedResources": {
     "propertyBagEditorStrings": "webparts/propertyBagEditor/loc/{locale}.js"
   }
 }
+//see https://dev.office.com/sharepoint/docs/spfx/web-parts/basics/add-an-external-library
