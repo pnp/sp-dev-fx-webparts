@@ -1,10 +1,10 @@
 ﻿import * as React from "react";
 import * as utils from "../utils/utils";
-//const connect = require("react-redux").connect;
+import * as strings from "spfxReactGridStrings";
 import {connect} from "react-redux";
 import * as _ from "lodash";
 import { SharePointLookupCellFormatter } from "../components/SharePointFormatters";
-import WebEditor from "../components/WebEditor";
+import WebSelector from "../components/WebSelector";
 import ListEditor from "../components/ListEditor";
 import { addList, removeList, saveList, removeAllLists } from "../actions/listActions";
 import { getWebsAction, getListsForWebAction, getFieldsForListAction } from "../actions/SiteActions";
@@ -326,9 +326,15 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
     switch (column.editor) {
 
       case "WebEditor":
-
-        let webs = this.getWebsForSite(entity);
-        return (<WebEditor webs={webs} selectedValue={columnValue} onChange={cellUpdated} />);
+        return (
+        <WebSelector
+         selectedWeb={columnValue}
+         onChange={cellUpdated}
+          PageContext={this.props.pageContext}
+          siteUrl={entity.siteUrl}
+          headerText={strings.WebSelectorHeaderText}
+           />
+        );
       case "ListEditor":
         let lists = this.getListsForWeb(entity);// the Id portion of the WebLookup is the URL
         return (<ListEditor selectedValue={columnValue} onChange={cellUpdated} lists={lists} />);

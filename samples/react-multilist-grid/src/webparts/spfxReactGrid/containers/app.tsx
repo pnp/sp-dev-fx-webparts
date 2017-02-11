@@ -3,11 +3,10 @@ import {
   MessageBar,
   MessageBarType
 } from "office-ui-fabric-react";
-//const connect = require("react-redux").connect;
 import * as redux from "react-redux";
 const connect = redux.connect;
 import SystemStatus from "../model/SystemStatus";
-import Content from "../components/content";
+import ListItemContainer from "./ListItemContainer";
 interface IAppProps extends React.Props<any> {
   systemStatus: SystemStatus;
 }
@@ -35,15 +34,13 @@ class App extends React.Component<IAppProps, void> {
     const { children} = this.props;
     return (
       <div>
-
         <div>
           {this.messageBar(this.props.systemStatus.fetchStatus)}
           <div>{this.props.systemStatus.currentAction}
           </div>
         </div>
-        <Content isVisible={true}>
-          {children}
-        </Content>
+        <ListItemContainer>
+        </ListItemContainer>
       </div >
     );
   };

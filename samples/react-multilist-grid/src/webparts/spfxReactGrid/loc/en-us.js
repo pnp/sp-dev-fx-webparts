@@ -12,7 +12,9 @@ define([], function () {
     "ListDefinitionFieldLabel": "List  Definitions",
     "ListDefinitionsButtonSelect": "Update Lists",
     "ListDefinitionsButtonReset": "Clear",
-    "ListDefinitionsTitle": "List Definitions"
+    "ListDefinitionsTitle": "List Definitions",
+
+    "WebSelectorHeaderText": "Select the Web containging the list"
 
   }
 });

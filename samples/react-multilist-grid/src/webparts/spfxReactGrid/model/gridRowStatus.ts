@@ -6,5 +6,5 @@ enum GridRowStatus{
   toBeDeleted
 
 }
-/**Status of row )mew */
+/**Status of row  */
 export default GridRowStatus;

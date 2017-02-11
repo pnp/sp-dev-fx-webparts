@@ -2,9 +2,8 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
-//const { Router, createMemoryHistory } = require("react-router");
-import { Router, createMemoryHistory } from "react-router";
 import * as Redux from "redux";
+import AppContainer from "./containers/App";
 import { addColumns, removeAllColumns } from "./actions/columnActions";
 import { addLists, removeAllLists } from "./actions/listActions";
 import { PropertyFieldColumnDefinitions, IPropertyFieldColumnDefinitionsProps } from "./containers/PropertyFieldColumnDefinitions";
@@ -12,21 +11,18 @@ import { PropertyFieldListDefinitions, IPropertyFieldListDefinitionsProps } from
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  IWebPartContext,
   PropertyPaneTextField
 } from "@microsoft/sp-webpart-base";
-debugger;
+
 import { Log } from "@microsoft/sp-core-library";
-import routes from "./store/routes";
+
 import * as strings from "spfxReactGridStrings";
 import { ISpfxReactGridWebPartProps } from "./ISpfxReactGridWebPartProps";
 const store: Redux.Store<any> = configureStore({});
-const history = createMemoryHistory(location);
+
 const App: React.StatelessComponent<any> = () => (
   <Provider store={store}>
-    <Router history={history}>
-      {routes}
-    </Router>
+    <AppContainer />
   </Provider>
 );
 export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxReactGridWebPartProps> {
@@ -34,7 +30,7 @@ export default class SpfxReactGridWebPart extends BaseClientSideWebPart<ISpfxRea
   private cdProps: IPropertyFieldColumnDefinitionsProps;
   private ldProps: IPropertyFieldListDefinitionsProps;
   public constructor() {
-    debugger;
+
     super();
     this.onPropertyChange = this.onPropertyChange.bind(this);
     this.cdProps = {
