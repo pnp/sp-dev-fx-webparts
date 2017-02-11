@@ -73,3 +73,5 @@ Version|Date|Comments
 ## Configuring the App
 1. Replace the **aad** and **redirect_uri** placeholder values with the application ID and redirect url of your registered Azure application in the GraphHelper.ts file Under
 src -> angularMsGraph -> GraphHelper.ts
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-msgraph" /> 
