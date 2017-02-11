@@ -57,3 +57,4 @@ Version|Date|Comments
 > and not by id becauase then I would get everything that inherits from that content type. I only want the
 > the results for a specific content type and not everything that inherits that content type as well
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-search" />
