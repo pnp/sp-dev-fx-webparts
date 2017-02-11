@@ -1,0 +1,45 @@
+<div class="ms-Grid">
+	<div class="">
+		<div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white {{::vm.styles.row}}">
+			<div class="ms-Grid-col ms-u-lg10 ms-u-x-18 ms-u-xlPush2 ms-u-lgPush1">
+				<span class="ms-font-xl ms-fontColor-white">
+          Sample SharePoint Search in Angular
+        </span>
+        <uif-button type="button" ng-click="vm.getSearchResults()" ng-disabled="vm.searchNotConfigured">
+          <i class="ms-Icon ms-Icon--Sync" title="Refresh" aria-hidden="true"></i>
+				</uif-button>
+			</div>
+		</div>
+		<div class="ms-Grid-row" ng-show="vm.searchNotConfigured">
+			<div class="ms-Grid-col ms-u-sm12">
+				{{vm.status}}
+			</div>
+		</div>
+		<div class="ms-Grid-row" ng-show="vm.searching">
+			<div class="ms-Grid-col ms-u-smPush6 ms-u-mdPush6 ms-u-lgPush6 ms-u-xlPush6">
+				<uif-spinner uif-size="large">Searching...</uif-spinner>
+			</div>
+		</div>
+		<div class="ms-Grid-row">
+			<div class="ms-Grid-col ms-u-sm-12">
+				<div ng-show="!vm.searching">
+					<uif-list uif-item-select-mode="single">
+						<uif-list-item ng-repeat="item in vm.items" uif-item="item">
+							<div class="ms-Grid-row">
+								<div class="ms-Grid-col ms-u-sm-12">
+									<uif-link ng-href="{{item.Url}}" style="text-decoration: none;">
+										<uif-list-item-image>
+											<img ng-src="{{item.PublishingImage}}" style="width: 80%" />
+										</uif-list-item-image>
+										<uif-list-item-primary-text>{{item.Title}}</uif-list-item-primary-text>
+										<uif-list-item-secondary-text>By: {{item.Author}}</uif-list-item-secondary-text>
+										<uif-list-item-tertiary-text>{{item.HitHighlightedSummary}}</uif-list-item-tertiary-text>
+									</uif-link>
+								</div>
+							</div>
+					</uif-list>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
