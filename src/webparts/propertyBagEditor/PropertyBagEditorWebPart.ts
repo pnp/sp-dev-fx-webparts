@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
-import pnp from "sp-pnp-js";
 import { Version } from "@microsoft/sp-core-library";
 
 import {
