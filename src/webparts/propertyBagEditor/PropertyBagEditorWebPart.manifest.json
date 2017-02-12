@@ -16,7 +16,7 @@
     "properties": {
       "description": "PropertyBagEditor",
       "propertiesToEdit":
-        "test\r\nCUSOMNAV_AreaName\nCUSOMNAV_BusinessUnit\nCUSOMNAV_Continent\nCUSOMNAV_Location"
+        "test\r\nCUSOMNAVAreaName\nCUSOMNAVBusinessUnit\nCUSOMNAVContinent\nCUSOMNAVLocation"
       
     }
   }]
