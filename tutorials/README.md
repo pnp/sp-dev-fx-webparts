@@ -1,5 +1,7 @@
 # Getting started with client-side web parts
 
+> Update to RC0 in progress - come back in few hours.
+
 ## Summary
 
 This sub folders contains client-side projects includes the web parts detailed in the Getting Started walkthroughs. Technically these web parts could have remaind in one single solution, but to ensure that they match exactly what's in the tutorials, we have seperated them to dedicated solutions. Sub folders contains the following web parts:

@@ -1,7 +1,0 @@
-{
-  "@microsoft/generator-sharepoint": {
-    "libraryName": "hello-world-sp",
-    "libraryId": "ed0e91bc-e0b7-4608-832e-eded6bfb68b4",
-    "framework": "none"
-  }
-}
