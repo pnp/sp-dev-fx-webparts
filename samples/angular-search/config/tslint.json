@@ -44,8 +44,7 @@
       "valid-typeof": true,
       "variable-name": false,
       "whitespace": false,
-      "prefer-const": true,
-      "a11y-role": true
+      "prefer-const": true
     }
   }
 }

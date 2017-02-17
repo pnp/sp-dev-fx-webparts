@@ -1,3 +1,4 @@
+import * as angular from 'angular';
 import { IGraphHelper } from './GraphHelper';
 import { ISiteCollections } from './../models/ISiteCollections';
 import { IListCollection } from './../models/IListCollection';
@@ -6,7 +7,7 @@ import { IGenericCreateItem } from './../models/IGenericCreateItem';
 
 export default class HomeController {
   public static $inject: string[] = ['$rootScope', '$scope', '$http', 'GraphHelper', '$log'];
-  public hello = require('hellojs');
+  public hello: any = require('hellojs');
 
   // public variables
   public displayName: string;
@@ -23,8 +24,8 @@ export default class HomeController {
   private _siteId: string;
   private _listId: string;
 
-  constructor(private $rootScope: ng.IRootScopeService, private $scope: ng.IScope,
-  private $http: ng.IHttpService, private graphHelper: IGraphHelper, private $log: ng.ILogService){
+  constructor(private $rootScope: angular.IRootScopeService, private $scope: angular.IScope,
+  private $http: angular.IHttpService, private graphHelper: IGraphHelper, private $log: angular.ILogService){
     this._initAuth();
   }
 

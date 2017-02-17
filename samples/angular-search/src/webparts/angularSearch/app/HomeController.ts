@@ -1,3 +1,4 @@
+import * as angular from 'angular';
 import { IDataService } from './DataService';
 import { ISearchResults, ICells, ICellValue } from './../models/ISearchResults';
 
@@ -17,7 +18,7 @@ export default class HomeController {
   private _web: string = null;
   private _contentType: string = undefined;
 
-  constructor(private dataService: IDataService, private $rootScope: ng.IRootScopeService, private $scope: ng.IScope, private $attrs: ng.IAttributes) {
+  constructor(private dataService: IDataService, private $rootScope: angular.IRootScopeService, private $scope: angular.IScope, private $attrs: angular.IAttributes) {
     const vm: HomeController = this;
 
     vm.styles = angular.fromJson($attrs['style']);
@@ -32,12 +33,12 @@ export default class HomeController {
     }
 
     $rootScope.$on('configurationChanged',
-      (event: ng.IAngularEvent, args: IConfigurationChangeArgs): void => {
+      (event: angular.IAngularEvent, args: IConfigurationChangeArgs): void => {
         vm._init(args.contentType, vm.$scope);
       });
   }
 
-  private _init(ctype: string, $scope: ng.IScope): void {
+  private _init(ctype: string, $scope: angular.IScope): void {
     if (ctype !== undefined && ctype.length > 0) {
       this._contentType = ctype;
       this.searchNotConfigured = false;
@@ -47,7 +48,7 @@ export default class HomeController {
     }
 
     this.status = this.searchNotConfigured ? 'Please select a contenet type in the Web Part properties' : 'Ready';
-    if ($scope) {
+    if ($scope && this._contentType !== undefined) {
       //$scope.$digest();
 
       //get search results as long as it isn't our mock dataService

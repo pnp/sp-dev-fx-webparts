@@ -11,6 +11,9 @@ Read the following documentation for detailed information on working with webpac
 
 - [Extending webpack in the SharePoint Framework toolchain](https://aka.ms/spfx-extend-webpack)
 
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-RC0-green.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

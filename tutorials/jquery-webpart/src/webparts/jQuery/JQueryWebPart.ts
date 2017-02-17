@@ -1,42 +1,47 @@
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
+import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './JQuery.module.scss';
 import * as strings from 'jQueryStrings';
 import { IJQueryWebPartProps } from './IJQueryWebPartProps';
 import MyAccordionTemplate from './MyAccordionTemplate';
-import * as myjQuery from 'jquery';
+import * as jQuery from 'jquery';
 import 'jqueryui';
-import importableModuleLoader from '@microsoft/sp-module-loader';
+import { SPComponentLoader } from '@microsoft/sp-loader';
 
 export default class JQueryWebPart extends BaseClientSideWebPart<IJQueryWebPartProps> {
 
-  public constructor(context: IWebPartContext) {
-    super(context);
+  public constructor() {
+    super();
 
-    importableModuleLoader.loadCss('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
+    SPComponentLoader.loadCss('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
   }
 
   public render(): void {
-  this.domElement.innerHTML = MyAccordionTemplate.templateHtml;
+    this.domElement.innerHTML = MyAccordionTemplate.templateHtml;
 
-  const accordionOptions: JQueryUI.AccordionOptions = {
-    animate: true,
-    collapsible: false,
-    icons: {
-      header: 'ui-icon-circle-arrow-e',
-      activeHeader: 'ui-icon-circle-arrow-s'
-    }
-  };
+    const accordionOptions: JQueryUI.AccordionOptions = {
+      animate: true,
+      collapsible: false,
+      icons: {
+        header: 'ui-icon-circle-arrow-e',
+        activeHeader: 'ui-icon-circle-arrow-s'
+      }
+    };
 
-  myjQuery(this.domElement).children('.accordion').accordion(accordionOptions);
-}
+    jQuery('.accordion', this.domElement).accordion(accordionOptions);
+  }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

@@ -18,13 +18,13 @@ export interface IGraphHelper {
 
 export default class GraphHelper implements IGraphHelper {
   public static $inject: string[] = ['$q', '$http', '$log'];
-  public hello = require('hellojs');
+  public hello: any = require('hellojs');
 
   constructor(private $q: ng.IQService, private $http: ng.IHttpService, private $log: ng.ILogService) {
     this.hello.init({
-      aad: 'place holder for app id'
+      aad: '119906a0-9ad3-45d9-90c4-4263450f7ca3'
     }, {
-        redirect_uri: 'https://placeholder for workbench url',
+        redirect_uri: 'https://localhost:4321/temp/workbench.html',
         scope: 'user.read sites.read.all sites.readwrite.all'
       });
   }
@@ -32,7 +32,7 @@ export default class GraphHelper implements IGraphHelper {
   public login(): void {
     this.hello('aad').login({
       display: 'page',
-      state: 'asdf'
+      response_type: 'token'
     });
   }
 

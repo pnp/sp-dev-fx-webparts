@@ -1,6 +1,6 @@
 {
   "workingDir": "./temp/deploy/",
   "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "angular-msgraph",
+  "container": "angular-graph-rc",
   "accessKey": "<!-- ACCESS KEY -->"
 }

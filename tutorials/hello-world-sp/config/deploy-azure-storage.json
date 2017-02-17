@@ -1,6 +1,6 @@
 {
   "workingDir": "./temp/deploy/",
   "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "hello-world-sp",
+  "container": "helloworld-webpart",
   "accessKey": "<!-- ACCESS KEY -->"
 }

@@ -1,32 +1,36 @@
 require('set-webpack-public-path!');
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'documentCardExampleStrings';
-import DocumentCardExample, { IDocumentCardExampleProps } from './components/DocumentCardExample';
+import DocumentCardExample from './components/DocumentCardExample';
+import { IDocumentCardExampleProps } from './components/IDocumentCardExampleProps';
 import { IDocumentCardExampleWebPartProps } from './IDocumentCardExampleWebPartProps';
 
 export default class DocumentCardExampleWebPart extends BaseClientSideWebPart<IDocumentCardExampleWebPartProps> {
 
-  public constructor(context: IWebPartContext) {
-    super(context);
-  }
-
   public render(): void {
-    const element: React.ReactElement<IDocumentCardExampleProps> = React.createElement(DocumentCardExample, {
-      description: this.properties.description
-    });
+    const element: React.ReactElement<IDocumentCardExampleProps > = React.createElement(
+      DocumentCardExample,
+      {
+        description: this.properties.description
+      }
+    );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

@@ -1,4 +1,6 @@
-import * as assert from 'assert';
+/// <reference types="mocha" />
+
+import { assert } from 'chai';
 
 describe('JQueryWebPart', () => {
   it('should do something', () => {

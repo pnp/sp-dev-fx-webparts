@@ -1,4 +1,4 @@
-# Extending webpack in the SharePoint Framework toolchain
+# Integrating custom gulp tasks to SharePoint Framwork toolchain
 
 ## Summary
 SharePoint client-side development tools use gulp as the build process task runner to:
@@ -15,6 +15,9 @@ This sample shows how to integrate custom gulp tasks using the [gulp-image-resiz
 Read the following documentation for detailed information on integrating gulp tasks in SharePoint Framework:
 
 - [Integrate custom gulp tasks in the SharePoint Framework toolchain](https://aka.ms/spfx-extend-gulp)
+
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-RC0-green.svg)
 
 ## Applies to
 

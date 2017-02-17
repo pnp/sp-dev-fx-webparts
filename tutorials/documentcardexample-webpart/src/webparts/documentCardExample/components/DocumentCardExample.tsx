@@ -1,46 +1,42 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
-
-import styles from '../DocumentCardExample.module.scss';
-import { IDocumentCardExampleWebPartProps } from '../IDocumentCardExampleWebPartProps';
+import styles from './DocumentCardExample.module.scss';
+import { IDocumentCardExampleProps } from './IDocumentCardExampleProps';
 import {
-    DocumentCard,
-    DocumentCardPreview,
-    DocumentCardTitle,
-    DocumentCardActivity,
-    IDocumentCardPreviewProps
+  DocumentCard,
+  DocumentCardPreview,
+  DocumentCardTitle,
+  DocumentCardActivity,
+  IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 
-export interface IDocumentCardExampleProps extends IDocumentCardExampleWebPartProps {
-}
-
-export default class DocumentCardExample extends React.Component<IDocumentCardExampleProps, {}> {
- public render(): JSX.Element {
+export default class DocumentCardExample extends React.Component<IDocumentCardExampleProps, void> {
+  public render(): JSX.Element {
     const previewProps: IDocumentCardPreviewProps = {
-    previewImages: [
+      previewImages: [
         {
-        previewImageSrc: require('document-preview.png'),
-        iconSrc: require('icon-ppt.png'),
-        width: 318,
-        height: 196,
-        accentColor: '#ce4b1f'
+          previewImageSrc: String(require('document-preview.png')),
+          iconSrc: String(require('icon-ppt.png')),
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
         }
-    ],
+      ],
     };
 
     return (
-        <DocumentCard onClickHref='http://bing.com'>
+      <DocumentCard onClickHref='http://bing.com'>
         <DocumentCardPreview { ...previewProps } />
-        <DocumentCardTitle title='Revenue stream proposal fiscal year 2016 version02.pptx'/>
+        <DocumentCardTitle title='Revenue stream proposal fiscal year 2016 version02.pptx' />
         <DocumentCardActivity
-            activity='Created Feb 23, 2016'
-            people={
+          activity='Created Feb 23, 2016'
+          people={
             [
-                { name: 'Kat Larrson', profileImageSrc: require('avatar-kat.png') }
+              { name: 'Kat Larrson', profileImageSrc: String(require('avatar-kat.png')) }
             ]
-            }
+          }
         />
-        </DocumentCard>
+      </DocumentCard>
     );
-}
+  }
 }

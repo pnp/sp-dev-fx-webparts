@@ -19,7 +19,7 @@ This package produces the following:
 
 ### Build options
 
-gulp nuke - TODO
+gulp clean - TODO
 gulp test - TODO
 gulp watch - TODO
 gulp build - TODO
