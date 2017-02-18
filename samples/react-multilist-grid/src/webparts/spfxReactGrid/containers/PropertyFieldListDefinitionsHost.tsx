@@ -13,7 +13,7 @@ import * as utils from "../utils/utils";
 import { Web as SPWeb } from "sp-pnp-js";
 import { Site as SPSite } from "sp-pnp-js";
 import { Guid } from "@microsoft/sp-core-library";
-import {  PageContext } from "@microsoft/sp-page-context";
+import { PageContext } from "@microsoft/sp-page-context";
 export interface IPropertyFieldListDefinitionsHostProps {
   label: string;
   initialValue?: Array<ListDefinition>;
@@ -70,19 +70,38 @@ export default class PropertyFieldListDefinitionsHost extends React.Component<IP
   }
 
   private getListsForWeb(webUrl: string): any {
-
+    debugger;
     const spWeb = new SPWeb(webUrl);
     const promise = spWeb.lists.orderBy("Title").get()
       .then((response) => {
         const data = _.map(response, (item: any) => {
           return new WebList(item.Id, item.Title, item.Url, );
         });
-        for (const site of this.state.Sites) {
-          for (const web of site.webs) {
-            if (web.url === webUrl) {
-              web.lists = data;
-              web.listsFetched = true;
-            }
+        // for (const site of this.state.Sites) {
+        //   for (const web of site.webs) {
+        //     if (web.url === webUrl) {
+        //       web.lists = data;
+        //       web.listsFetched = true;
+        //     }
+        //   }
+        // }
+
+        const site: Site = _.find(this.state.Sites, (s: Site) => {
+          return (webUrl.substr(0, s.url.length).toLowerCase() === s.url.toLowerCase());
+        });
+        if (site) {
+          let web = _.find(site.webs, (w: Web) => {
+            return w.url = webUrl;
+          })
+          if (web) {
+            web.lists = data;
+            web.listsFetched = true;
+          }
+          else {
+            // TODO : frtch the title and ID
+            var idx: number = site.webs.push(new Web("", "", webUrl));// dont have id and titlle here
+            site.webs[idx].lists = data;
+            site.webs[idx].listsFetched = true;
           }
         }
         this.setState(this.state);
@@ -192,7 +211,7 @@ export default class PropertyFieldListDefinitionsHost extends React.Component<IP
               saveList={this.saveChanges}
               save={this.saveChanges}
               pageContext={this.props.PageContext}
-              />
+            />
 
           </Panel>
           : ''}

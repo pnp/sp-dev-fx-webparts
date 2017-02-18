@@ -259,6 +259,7 @@ export class ListDefinitionContainerNative extends React.Component<IListViewPage
         }
       }
     }
+     this.props.getListsForWeb(utils.ParseSPField(listDef.webLookup).id);
     return []; // havent fetched parent yet,
   }
   public getFieldsForlist(listDef: ListDefinition, colType?: string): Array<WebListField> {
