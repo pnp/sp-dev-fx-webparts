@@ -2,22 +2,37 @@
 
 ## Summary
 A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
-to display videos stored on an O365 Video Channel. The idea being to display a carousel of the thumbnail images, and then 
-when a user clicks on one of the thumbnails, replace the tumbnail with a video player and start the video up. 
+to display videos stored on an Office 365 Video Channel. The idea being to display a carousel of the thumbnail images, and then 
+when a user clicks on one of the thumbnails, replace the tumbnail with a video player, or an Iframe playing the video. 
 
-The first webpart used react-3d-carousel. The carousel looks great, but i found no way to swap out the image and replace 
-it with a video player. This carousel would be fine for displayin a picture library though,
+All 3 webparts share a common utility class (O365Vutilities) that is used to talk to the tenants Video Service through its rest
+API (https://msdn.microsoft.com/en-us/office/office365/api/video-rest-operations)
 
-The second webpart used react-slick. The carousel is not as fancy as react-3d-carousel, but i was able to to swap out the 
-image and replace it with a video player once a user clicked it. I had trouble with the css and getting the next and previous 
-buttons to show. If you run the webpart, the buttons are there, they are just not visible. 
+The first webpart used react-3d-carousel. The carousel looks great, but I found no way to swap out the image and replace 
+it with a video player or Iframe. This carousel would be fine for displaying a picture library though. A sample of the webpart 
+being used on a modern page is shown below:
 
-Finally I tried reactjs-coverface. It has nice scrolling through the images withe the mousweheel, and some cool 3d effects.
-It was also simple to swap the image with a video player once a user clicked it (same code as react-slick). This is the best 
-of the three for my purposes.
+And a sample of the webparts configuration:
+
+The getPropertyPaneConfiguration of the webpart calls a method in the O365Vutilities class to get a list of 
+channels on the tenants Video Service,, and allows the user to select a channel.
 
 
-In the future I want to modify this webpart to link a Sharepoint list with the video channel so that users can enter additional 
+
+The second webpart used react-slick. The carousel is not as fancy as react-3d-carousel, but I was able to to swap out the 
+image and replace it with an Iframe playing the Video once a user clicked it. I had trouble with the css and getting the next and previous 
+buttons to show. If you run the webpart, the buttons are there, they are just not visible. A sample of the webpart is shown below:
+
+And a sample of the webparts configuration:
+
+Finally I tried reactjs-coverflow. It has nice scrolling through the images with the mousweheel, and some cool 3d effects.
+It was also simple to swap the image with an Iframe playing the Video once a user clicked it (same code as react-slick). This is the best 
+of the three for my purposes. A sample of the webpart is shown below:
+
+And a sample of its configuration (this one I made fully configurable, the others had a lot of hard-coded values)
+
+
+In the future I would like  to modify this webpart to link a Sharepoint list with the video channel so that users can enter additional 
 metadata for the video and be anle to search/filter the videos using this metadata.
 
 See also https://github.com/russgove/O365VideoSync. It's a console app that you can schedule to run to synchronize an  Office 365 Video Channel with a sharepoint list (on prem or otherwise).
