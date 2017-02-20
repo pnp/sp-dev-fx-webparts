@@ -2,6 +2,33 @@
 
 This is where you include your web part docs.
 
+The webpart can be deployed to a new page on your infrastructure site. Then
+This powershell can be used to add a link to the siteactions of all sites to set the metadata.
+
+Import-Module  C:\Users\Russell\Source\Repos\PnP-PowerShell\Commands\bin\Debug\SharePointPnP.PowerShell.Online.Commands.dll -ErrorAction SilentlyContinue
+$adminSiteUrl="https://rgove3-admin.sharepoint.com"
+$customActionDescription="CUSTOM_Navigation_Metadata" 
+$pageUrl="https://rgove3.sharepoint.com/sites/cdn/SitePages/PropertBadEdcitor.aspx?siteUrl={0}"
+$credentials=get-credential
+Connect-SPOnline -Url $adminSiteUrl -Credentials $credentials
+$ctx = Get-SPOContext
+$sites = Get-SPOTenantSite -Detailed 
+foreach($site in $sites){
+    if ($site.Template -eq "STS#0") {
+        Connect-SPOnline –Url $site.Url –Credentials $credentials
+        $existing = Get-SPOCustomAction -Scope "Site" | ? { $_.Description -eq $customActionDescription }
+        if ($existing) {
+             $existing.DeleteObject(); 
+             Execute-SPOQuery; 
+             Write-Host "Deleteting existing action from"$site.Url
+
+        }
+        Write-Host "adding action to" $site.Url
+        Add-SPOCustomAction -Description $customActionDescription -Location "Microsoft.SharePoint.SiteSettings" -name "Edit Site Metadata"-Title "Edit Site Metadata"  -Group "SiteAdministration" -Sequence 10100 -Url ( [string]::Format($pageUrl,$site.Url)) -Scope "Site"
+        Execute-SPOQuery
+        }
+}
+
 ### Building the code
 
 ```bash

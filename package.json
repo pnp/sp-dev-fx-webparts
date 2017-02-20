@@ -20,7 +20,7 @@
     "office-ui-fabric-react": "^0.69.0",
     "react": "0.14.8",
     "react-dom": "0.14.8",
-    "sp-pnp-js": "^2.0.0",
+    "sp-pnp-js": "^2.0.1",
     "typescript": "^2.1.5"
   },
   "devDependencies": {
