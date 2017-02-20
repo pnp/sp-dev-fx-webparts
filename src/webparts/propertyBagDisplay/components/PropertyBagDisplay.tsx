@@ -1,32 +1,53 @@
 import * as React from 'react';
+import pnp from "sp-pnp-js";
 import { css } from 'office-ui-fabric-react';
 import styles from './PropertyBagDisplay.module.scss';
 import { IPropertyBagDisplayProps } from './IPropertyBagDisplayProps';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import {
+  DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, CheckboxVisibility,
+} from "office-ui-fabric-react/lib/DetailsList";
+import { IContextualMenuItem, } from 'office-ui-fabric-react/lib/ContextualMenu';
+export interface IPropertyBagDisplayState {
+  selectedIndex: number;
+  searchableProps: Array<string>;
+  messsage: string;
+  isediting: boolean;
+}
+export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
+  /**Accessors */
+  get CommandItems(): Array<IContextualMenuItem> {
+    debugger;
+    return [
+      {
+        key: "a",
+        name: "Edit",
+        disabled: !(this.ItemIsSelected),
+        title: "Edit",
+        onClick: this.onEditItemClicked.bind(this),
+        icon: "Edit"
+      }];
+  };
+  public onEditItemClicked(e?: MouseEvent): void {
+    this.state.isediting = true;
 
-export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, void> {
+    this.setState(this.state);
+  }
+  get ItemIsSelected(): boolean {
+    if (!this.state) { return false; }
+    return (this.state.selectedIndex != -1);
+  }
+  /** react lifecycle */
+  public componentWillMount() {
+    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n");
+    //search contentclass:STS_Site
+    pnp.sp.search("contentclass:STS_Site").then(r=>{
+      debugger;
+    });
+  }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
     return (
-      <div className={styles.helloWorld}>
-        <div className={styles.container}>
-          <div className={css('ms-Grid-row ms-bgColor-themeDark ms-fontColor-white', styles.row)}>
-            <div className='ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1'>
-              <span className='ms-font-xl ms-fontColor-white'>
-                Welcome to SharePoint!
-              </span>
-              <p className='ms-font-l ms-fontColor-white'>
-                Customize SharePoint experiences using Web Parts.
-              </p>
-              <p className='ms-font-l ms-fontColor-white'>
-                {this.props.description}
-              </p>
-              <a className={css('ms-Button', styles.button)}
-                 href='https://github.com/SharePoint/sp-dev-docs/wiki'>
-                <span className='ms-Button-label'>Learn more</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+   <div/>
     );
   }
 }

@@ -1,4 +1,4 @@
 export interface IPropertyBagEditorWebPartProps {
   description: string;
-  propertiesToEdit:string; //separated by \r\n
+  propertiesToEdit:string; //separated by \n
 }

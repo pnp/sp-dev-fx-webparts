@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react'; import { IPropertyBagEditorProps } from './IPropertyBagEditorProps';
-import { Web } from "sp-pnp-js";
+  import { Web } from "sp-pnp-js";
 import * as _ from "lodash";
 require('sp-init');
 require('microsoft-ajax');
 require('sp-runtime');
 require('sharepoint');
-import {
-  IContextualMenuItem,
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+import {  IContextualMenuItem,} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import {

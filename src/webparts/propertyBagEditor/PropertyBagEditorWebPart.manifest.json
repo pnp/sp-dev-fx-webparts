@@ -9,7 +9,7 @@
 
   "preconfiguredEntries": [{
     "groupId": "f3ac8a07-2a9b-47a1-8a7e-a093cad63f98",
-    "group": { "default": "Under Development" },
+    "group": { "default": "PropertyBag Navigation" },
     "title": { "default": "PropertyBagEditor" },
     "description": { "default": "PropertyBagEditor description" },
     "officeFabricIconFontName": "Page",
