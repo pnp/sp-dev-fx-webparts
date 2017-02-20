@@ -1,5 +1,6 @@
 import * as React from 'react';
 import pnp from "sp-pnp-js";
+import { SearchQuery, SearchResults,SearchResult } from "sp-pnp-js";
 import { css } from 'office-ui-fabric-react';
 import styles from './PropertyBagDisplay.module.scss';
 import { IPropertyBagDisplayProps } from './IPropertyBagDisplayProps';
@@ -10,11 +11,17 @@ import {
 import { IContextualMenuItem, } from 'office-ui-fabric-react/lib/ContextualMenu';
 export interface IPropertyBagDisplayState {
   selectedIndex: number;
-  searchableProps: Array<string>;
-  messsage: string;
-  isediting: boolean;
+
+  messsage?: string;
+  isediting?: boolean;
+  sites: Array<any>;
 }
 export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
+  public constructor() {
+    super();
+    this.state = { sites: [], selectedIndex:-1 };
+
+  }
   /**Accessors */
   get CommandItems(): Array<IContextualMenuItem> {
     debugger;
@@ -40,14 +47,34 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   /** react lifecycle */
   public componentWillMount() {
     const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n");
+    displayProps.push("Title");
+    displayProps.push("Url");
+    displayProps.push("WebTemplate");
+    displayProps.push("WebTemplateId");
     //search contentclass:STS_Site
-    pnp.sp.search("contentclass:STS_Site").then(r=>{
+    const q: SearchQuery = {
+      Querytext: "contentclass:STS_Site",
+      SelectProperties: displayProps,
+      RowLimit: 999,
+
+    };
+
+    pnp.sp.search(q).then((results: SearchResults) => {
       debugger;
+      for (const r of results.PrimarySearchResults){
+        this.state.sites.push({
+          Title:r.Title
+        });
+      }
+     
+      this.setState(this.state);
     });
   }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
+    debugger;
     return (
-   <div/>
+      <DetailsList items={this.state.sites}>
+      </DetailsList>
     );
   }
 }
