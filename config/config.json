@@ -4,6 +4,16 @@
       "entry": "./lib/webparts/propertyBagEditor/PropertyBagEditorWebPart.js",
       "manifest": "./src/webparts/propertyBagEditor/PropertyBagEditorWebPart.manifest.json",
       "outputPath": "./dist/property-bag-editor.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/propertyBagDisplay/PropertyBagDisplayWebPart.js",
+      "manifest": "./src/webparts/propertyBagDisplay/PropertyBagDisplayWebPart.manifest.json",
+      "outputPath": "./dist/property-bag-display.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.js",
+      "manifest": "./src/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.manifest.json",
+      "outputPath": "./dist/property-bag-filtered-site-list.bundle.js"
     }
   ],
   "externals": {
@@ -35,7 +45,8 @@
     }
   },
   "localizedResources": {
-    "propertyBagEditorStrings": "webparts/propertyBagEditor/loc/{locale}.js"
+    "propertyBagEditorStrings": "webparts/propertyBagEditor/loc/{locale}.js",
+    "propertyBagDisplayStrings": "webparts/propertyBagDisplay/loc/{locale}.js",
+    "propertyBagFilteredSiteListStrings": "webparts/propertyBagFilteredSiteList/loc/{locale}.js"
   }
 }
-//see https://dev.office.com/sharepoint/docs/spfx/web-parts/basics/add-an-external-library
