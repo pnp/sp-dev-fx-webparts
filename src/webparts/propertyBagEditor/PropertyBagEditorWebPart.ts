@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
-import { Version } from "@microsoft/sp-core-library";
+import { Version, UrlQueryParameterCollection } from "@microsoft/sp-core-library";
 
 import {
   BaseClientSideWebPart,
@@ -16,11 +16,17 @@ import { IPropertyBagEditorWebPartProps } from "./IPropertyBagEditorWebPartProps
 export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPropertyBagEditorWebPartProps> {
 
   public render(): void {
+    debugger;
+    const uqpc = new UrlQueryParameterCollection(window.location.toString());
+    let siteUrl: string = uqpc.getValue("siteUrl");
+    if (!siteUrl) {
+      siteUrl = this.context.pageContext.site.absoluteUrl
+    }
     const props: IPropertyBagEditorProps = {
       description: this.properties.description,
       propertiesToEdit: this.properties.propertiesToEdit,
-      siteUrl:this.context.pageContext.site.absoluteUrl
-         };
+      siteUrl: siteUrl
+    };
     const element: React.ReactElement<IPropertyBagEditorProps> = React.createElement(
       PropertyBagEditor,
       props
@@ -32,7 +38,7 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
   protected get dataVersion(): Version {
     return Version.parse("1.0");
   }
- 
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     debugger;
     return {
@@ -48,9 +54,9 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
                 PropertyPaneTextField("description", {
                   label: strings.DescriptionFieldLabel
                 }),
-                                PropertyPaneTextField("propertiesToEdit", {
+                PropertyPaneTextField("propertiesToEdit", {
                   label: strings.PropertiesToEditFieldLabel,
-                  multiline:true
+                  multiline: true
                 }),
 
               ]

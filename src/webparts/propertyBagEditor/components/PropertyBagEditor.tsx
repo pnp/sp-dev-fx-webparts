@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';import { IPropertyBagEditorProps } from './IPropertyBagEditorProps';
+import { css } from 'office-ui-fabric-react'; import { IPropertyBagEditorProps } from './IPropertyBagEditorProps';
 import { Web } from "sp-pnp-js";
 import * as _ from "lodash";
 require('sp-init');
@@ -8,14 +8,12 @@ require('sp-runtime');
 require('sharepoint');
 import {
   IContextualMenuItem,
-
 } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import {
-  CommandBar
-} from 'office-ui-fabric-react/lib/CommandBar';
-import {
-  DetailsList,  DetailsListLayoutMode, IColumn, SelectionMode, CheckboxVisibility,
- } from "office-ui-fabric-react/lib/DetailsList";
+  DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, CheckboxVisibility,
+} from "office-ui-fabric-react/lib/DetailsList";
 import { Dialog, DialogType } from "office-ui-fabric-react/lib/Dialog";
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -219,7 +217,8 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     return (
       <div>
         <CommandBar items={this.CommandItems} />
-        <DetailsList layoutMode={DetailsListLayoutMode.fixedColumns} 
+        <MessageBar>ho</MessageBar>
+        <DetailsList layoutMode={DetailsListLayoutMode.fixedColumns}
           columns={columns}
           selectionMode={SelectionMode.single}
           checkboxVisibility={CheckboxVisibility.hidden}
