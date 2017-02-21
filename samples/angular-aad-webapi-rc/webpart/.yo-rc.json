@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "angular-aad-webapi-rc",
+    "libraryId": "e40c729c-8648-4b29-88d1-a57ba7994f7b",
+    "framework": "none"
+  }
+}

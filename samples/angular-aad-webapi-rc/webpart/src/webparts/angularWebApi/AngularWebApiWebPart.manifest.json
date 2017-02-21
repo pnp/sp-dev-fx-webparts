@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "43b9c4e7-bdd6-46f4-818d-f2175b41aba0",
+  "alias": "AngularWebApiWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "43b9c4e7-bdd6-46f4-818d-f2175b41aba0",
+    "group": { "default": "Under Development" },
+    "title": { "default": "AngularWebAPI" },
+    "description": { "default": "AngularWebAPI description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "AngularWebAPI"
+    }
+  }]
+}
