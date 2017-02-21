@@ -49,8 +49,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n");
     displayProps.unshift("Title");
     displayProps.unshift("Url");
-    displayProps.unshift("WebTemplate");
-    displayProps.unshift("WebTemplateId");
+    displayProps.unshift("SiteTemplate");
+    displayProps.unshift("SiteTemplateId");
     //search contentclass:STS_Site
     const q: SearchQuery = {
       Querytext: "contentclass:STS_Site",
