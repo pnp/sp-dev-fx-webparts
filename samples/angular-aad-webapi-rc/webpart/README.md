@@ -63,13 +63,13 @@ Version|Date|Comments
 - in the command line change the working directory to the **webpart** folder
 - in the command line run `npm i`
 - in your code editor open the **webpart** folder
-- in the **./src/webparts/angularSecureCall/app.module.ts** file
+- in the **./src/webparts/angularWebApi/app.module.ts** file
   - replace the tenant with your tenant name
   - replace the GUID in the **clientId** property with the application ID of the Client Application you registered with AAD
   - in the **endpoints** property, replace the URL of the API with the URL of your API App
-- in the **./src/webparts/angularSecureCall/app/webAPIService.ts** file
+- in the **./src/webparts/angularWebApiangularWebApi/app/webAPIService.ts** file
   - in line 13 replace the url with url endpoint of you Web API Application **https://your-api-app.azurewesites.net/api/item**
-- in the **./src/weparts/angularSecureCall/app/elevatedprivileges/elevatedprivilegesController.ts** file
+- in the **./src/weparts/angularangularWebApiSecureCall/app/homeController.ts** file
   - in lines 41 and 50 replace the application url with the application url of your Web API Application
 - in the command line execute `gulp serve`
 - add the web part to SharePoint workbench
