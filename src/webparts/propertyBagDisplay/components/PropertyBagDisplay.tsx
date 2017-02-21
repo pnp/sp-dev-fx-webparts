@@ -47,15 +47,16 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   /** react lifecycle */
   public componentWillMount() {
     const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n");
-    displayProps.push("Title");
-    displayProps.push("Url");
-    displayProps.push("WebTemplate");
-    displayProps.push("WebTemplateId");
+    displayProps.unshift("Title");
+    displayProps.unshift("Url");
+    displayProps.unshift("WebTemplate");
+    displayProps.unshift("WebTemplateId");
     //search contentclass:STS_Site
     const q: SearchQuery = {
       Querytext: "contentclass:STS_Site",
       SelectProperties: displayProps,
       RowLimit: 999,
+      TrimDuplicates:false
 
     };
 
