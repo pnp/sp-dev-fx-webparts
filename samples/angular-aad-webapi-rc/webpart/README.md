@@ -67,9 +67,9 @@ Version|Date|Comments
   - replace the tenant with your tenant name
   - replace the GUID in the **clientId** property with the application ID of the Client Application you registered with AAD
   - in the **endpoints** property, replace the URL of the API with the URL of your API App
-- in the **./src/webparts/angularWebApiangularWebApi/app/webAPIService.ts** file
+- in the **./src/webparts/angularWebApi/app/webAPIService.ts** file
   - in line 13 replace the url with url endpoint of you Web API Application **https://your-api-app.azurewesites.net/api/item**
-- in the **./src/weparts/angularangularWebApiSecureCall/app/homeController.ts** file
+- in the **./src/weparts/angularWebApi/app/homeController.ts** file
   - in lines 41 and 50 replace the application url with the application url of your Web API Application
 - in the command line execute `gulp serve`
 - add the web part to SharePoint workbench
