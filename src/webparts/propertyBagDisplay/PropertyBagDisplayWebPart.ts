@@ -37,6 +37,7 @@ public onInit(): Promise<void> {
 
   });
 }
+
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }

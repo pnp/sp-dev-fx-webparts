@@ -58,10 +58,10 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     return (this.state.selectedIndex != -1);
   }
   /** Talk to Sharepoint */
-  private setSPProperty(name: string, value: string) {
+  private setSPProperty(name: string, value: string,siteUrl:string) {
     return new Promise((resolve, reject) => {
       var webProps;
-      var clientContext = new SP.ClientContext(this.props.siteUrl);
+      var clientContext = new SP.ClientContext(siteUrl);
       var web = clientContext.get_web();
       webProps = web.get_allProperties();
       webProps.set_item(name, value);
@@ -97,7 +97,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     for (const propname of propnames) {
       encodedPropNames.push(this.EncodePropertyKey(propname));
     }
-    return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|");//need the pipe at the end too?
+    return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|",this.props.siteUrl);//need the pipe at the end too?
   }
   /** react lifecycle */
   public componentWillMount() {
@@ -133,7 +133,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     this.setState(this.state);
   }
   public onSave(e?: MouseEvent): void {
-    this.setSPProperty(this.state.workingStorage.name, this.state.workingStorage.value)
+    this.setSPProperty(this.state.workingStorage.name, this.state.workingStorage.value,this.props.siteUrl)
       .then(value => {
         this.changeSearchable(this.state.workingStorage.name, this.state.workingStorage.searchable)
           .then(s => {
@@ -215,7 +215,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     return (
       <div>
         <CommandBar items={this.CommandItems} />
-        <MessageBar>ho</MessageBar>
+        <MessageBar></MessageBar>
         <DetailsList layoutMode={DetailsListLayoutMode.fixedColumns}
           columns={columns}
           selectionMode={SelectionMode.single}
