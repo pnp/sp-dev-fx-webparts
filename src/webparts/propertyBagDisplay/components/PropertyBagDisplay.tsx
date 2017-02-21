@@ -1,6 +1,6 @@
 import * as React from 'react';
 import pnp from "sp-pnp-js";
-import { SearchQuery, SearchResults,SearchResult } from "sp-pnp-js";
+import { SearchQuery, SearchResults, SearchResult } from "sp-pnp-js";
 import { css } from 'office-ui-fabric-react';
 import styles from './PropertyBagDisplay.module.scss';
 import { IPropertyBagDisplayProps } from './IPropertyBagDisplayProps';
@@ -19,7 +19,7 @@ export interface IPropertyBagDisplayState {
 export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
   public constructor() {
     super();
-    this.state = { sites: [], selectedIndex:-1 };
+    this.state = { sites: [], selectedIndex: -1 };
 
   }
   /**Accessors */
@@ -61,12 +61,16 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
     pnp.sp.search(q).then((results: SearchResults) => {
       debugger;
-      for (const r of results.PrimarySearchResults){
-        this.state.sites.push({
-          Title:r.Title
-        });
+      for (const r of results.PrimarySearchResults) {
+        let obj = {};
+
+
+        for (const dp of displayProps) {
+          obj[dp] = r[dp];
+        }
+        this.state.sites.push(obj);
       }
-     
+
       this.setState(this.state);
     });
   }
