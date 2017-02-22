@@ -56,7 +56,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /** react lifecycle */
   public componentWillMount() {
-    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n");
+    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item=>{
+      return item.split('|')[1];
+    });
     displayProps.unshift("Title");
     displayProps.unshift("Url");
     displayProps.unshift("SiteTemplate");
@@ -163,8 +165,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       },
 
     ]
-    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n");
-    for (const dp of displayProps) {
+   const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item=>{
+      return item.split('|')[1];
+    });
+     for (const dp of displayProps) {
       columns.push(
         {
           fieldName: dp,

@@ -16,7 +16,7 @@
     "properties": {
       "description": "propertyBagDisplay",
       "propertiesToDisplay":
-        "test\r\nCUSOMNAVAreaName\nCUSOMNAVBusinessUnit\nCUSOMNAVContinent\nCUSOMNAVLocation"
+        "CUSOMNAVAreaName|AreaName\nCUSOMNAVBusinessUnit|BusinessUnit\nCUSOMNAVContinent|Continent\nCUSOMNAVLocation|Location"
       
     }
   }]
