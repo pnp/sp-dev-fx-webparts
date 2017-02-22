@@ -1,27 +1,25 @@
-import * as React from 'react';
-import { css } from 'office-ui-fabric-react'; import { IPropertyBagEditorProps } from './IPropertyBagEditorProps';
-  import { Web } from "sp-pnp-js";
+import * as React from "react";
+import { css } from "office-ui-fabric-react"; import { IPropertyBagEditorProps } from "./IPropertyBagEditorProps";
+import { Web } from "sp-pnp-js";
 import * as _ from "lodash";
-require('sp-init');
-require('microsoft-ajax');
-require('sp-runtime');
-require('sharepoint');
-import {  IContextualMenuItem,} from 'office-ui-fabric-react/lib/ContextualMenu';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
+import utils from "../../shared/utils";
+require("sp-init");
+require("microsoft-ajax");
+require("sp-runtime");
+require("sharepoint");
+import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
+import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import { MessageBar } from "office-ui-fabric-react/lib/MessageBar";
 import {
   DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, CheckboxVisibility,
 } from "office-ui-fabric-react/lib/DetailsList";
 import { Dialog, DialogType } from "office-ui-fabric-react/lib/Dialog";
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
-export class DisplayProp {
-  constructor(
-    public name: string, public value?: string, public searchable?: boolean
-  ) { }
-}
+import { Label } from "office-ui-fabric-react/lib/Label";
+import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { Toggle } from "office-ui-fabric-react/lib/Toggle";
+import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
+import DisplayProp from "../../shared/DisplayProp";
+
 export interface IPropertyBagEditorState {
   displayProps: Array<DisplayProp>;
   workingStorage?: DisplayProp;
@@ -58,7 +56,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     return (this.state.selectedIndex != -1);
   }
   /** Talk to Sharepoint */
-  private setSPProperty(name: string, value: string,siteUrl:string) {
+  private setSPProperty(name: string, value: string, siteUrl: string) {
     return new Promise((resolve, reject) => {
       var webProps;
       var clientContext = new SP.ClientContext(siteUrl);
@@ -83,33 +81,33 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     var b64encoded = window.btoa(String.fromCharCode.apply(null, bytes));
     return b64encoded;
   }
-  public DecodePropertyKey(propKey) {
-    debugger;
-    const encoded = window.atob(propKey);
-    var decoded = "";
-    for (let x = 0; x < encoded.length; x = x + 2) {
-      decoded = decoded + encoded.substr(x, 1);
-    }
-    return decoded;
-  }
+  // public DecodePropertyKey(propKey) {
+  //   debugger;
+  //   const encoded = window.atob(propKey);
+  //   var decoded = "";
+  //   for (let x = 0; x < encoded.length; x = x + 2) {
+  //     decoded = decoded + encoded.substr(x, 1);
+  //   }
+  //   return decoded;
+  // }
   public saveSearchablePropertiesToSharePoint(propnames: Array<string>): Promise<any> {
     let encodedPropNames: Array<string> = [];
     for (const propname of propnames) {
       encodedPropNames.push(this.EncodePropertyKey(propname));
     }
-    return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|",this.props.siteUrl);//need the pipe at the end too?
+    return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|", this.props.siteUrl);//need the pipe at the end too?
   }
   /** react lifecycle */
   public componentWillMount() {
-    const editableProps: Array<string> = this.props.propertiesToEdit.split("\n");
-    for (const editableProp of editableProps) {
-      this.state.displayProps.push({ name: editableProp, value: "" });
-    }
+
     const web = new Web(this.props.siteUrl);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-      const sp = r.AllProperties["vti_x005f_indexedpropertykeys"];
-      this.saveSearchablePropsToLocalState(sp);
-      this.copySPProprtiesToLocalState(r.AllProperties);
+      debugger;
+      const sp = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+      const dp = utils.SelectProperties(r.AllProperties, this.props.propertiesToEdit.split("\n"), sp);
+      this.state.searchableProps = sp;
+      this.state.displayProps = dp;
+      this.setState(this.state);
     });
   }
 
@@ -133,9 +131,9 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     this.setState(this.state);
   }
   public onSave(e?: MouseEvent): void {
-    this.setSPProperty(this.state.workingStorage.name, this.state.workingStorage.value,this.props.siteUrl)
+    this.setSPProperty(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.value, this.props.siteUrl)
       .then(value => {
-        this.changeSearchable(this.state.workingStorage.name, this.state.workingStorage.searchable)
+        this.changeSearchable(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.searchable)
           .then(s => {
             this.state.displayProps[this.state.selectedIndex] = this.state.workingStorage;
             this.state.workingStorage = null;
@@ -155,36 +153,36 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   }
 
   /**utils */
-  private copySPProprtiesToLocalState(AllProperties: any) {
-    for (const prop in AllProperties) {
-      const displayProp = _.find(this.state.displayProps, p => { return p.name === prop; });
-      if (displayProp) {
-        displayProp.value = AllProperties[prop];
-        const sp = _.find(this.state.searchableProps, sp => { return sp === prop; });
-        if (sp) {
-          displayProp.searchable = true;
-        }
-        else {
-          displayProp.searchable = false;
-        }
-      }
-    }
-    debugger;
-    this.setState(this.state);
-  }
-  public saveSearchablePropsToLocalState(sp: string) {
+  // private copySPProprtiesToLocalState(AllProperties: any) {
+  //   for (const prop in AllProperties) {
+  //     const displayProp = _.find(this.state.displayProps, p => { return p.crawledPropertyName === prop; });
+  //     if (displayProp) {
+  //       displayProp.value = AllProperties[prop];
+  //       const sp = _.find(this.state.searchableProps, sp => { return sp === prop; });
+  //       if (sp) {
+  //         displayProp.searchable = true;
+  //       }
+  //       else {
+  //         displayProp.searchable = false;
+  //       }
+  //     }
+  //   }
+  //   debugger;
+  //   this.setState(this.state);
+  // }
+  // public decodeSearchableProps(sp: string): Array<string> {
 
-    const searchableprops: Array<string> = [];
-    if (sp) {
-      const encodedPropNames = sp.split("|");
-      for (const encodedPropName of encodedPropNames) {
-        debugger;
-        searchableprops.push(this.DecodePropertyKey(encodedPropName));
-      }
-      this.state.searchableProps = searchableprops;
-      this.setState(this.state);
-    }
-  }
+  //   const searchableprops: Array<string> = [];
+  //   if (sp) {
+  //     const encodedPropNames = sp.split("|");
+  //     for (const encodedPropName of encodedPropNames) {
+  //       debugger;
+  //       searchableprops.push(this.DecodePropertyKey(encodedPropName));
+  //     }
+  //     return searchableprops;
+
+  //   }
+  // }
   public changeSearchable(propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
@@ -207,7 +205,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   }
   public render(): React.ReactElement<IPropertyBagEditorProps> {
     const columns: Array<IColumn> = [
-      { isResizable: true, key: "name", name: "Propert Name", fieldName: "name", minWidth: 150 },
+      { isResizable: true, key: "name", name: "Propert Name", fieldName: "crawledPropertyName", minWidth: 150 },
       { isResizable: true, key: "value", name: "Propert Value", fieldName: "value", minWidth: 150 },
       { key: "searchable", name: "searchable", fieldName: "searchable", minWidth: 150 },
     ];
@@ -227,7 +225,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
         <Dialog
           isOpen={this.state.isediting} type={DialogType.close}
           onDismiss={this.stopediting.bind(this)}
-          title={(this.state.workingStorage) ? this.state.workingStorage.name : ""}        >
+          title={(this.state.workingStorage) ? this.state.workingStorage.crawledPropertyName : ""}        >
 
           <span> <Label>Site Url</Label> {this.props.siteUrl}</span>
 

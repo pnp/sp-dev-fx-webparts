@@ -1,22 +1,24 @@
-import * as React from 'react';
+import * as React from "react";
 import pnp from "sp-pnp-js";
+import { Web } from "sp-pnp-js";
 import * as _ from "lodash";
+import utils from "../../shared/Utils";
 import { SearchQuery, SearchResults, SearchResult } from "sp-pnp-js";
-import { css } from 'office-ui-fabric-react';
-import styles from './PropertyBagDisplay.module.scss';
-import { IPropertyBagDisplayProps } from './IPropertyBagDisplayProps';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { css } from "office-ui-fabric-react";
+import styles from "./PropertyBagDisplay.module.scss";
+import { IPropertyBagDisplayProps } from "./IPropertyBagDisplayProps";
+import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import { Label } from "office-ui-fabric-react/lib/Label";
+import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { Toggle } from "office-ui-fabric-react/lib/Toggle";
+import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
 import {
   DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, CheckboxVisibility,
 } from "office-ui-fabric-react/lib/DetailsList";
 import {
   Dialog, DialogType
 } from "office-ui-fabric-react/lib/Dialog";
-import { IContextualMenuItem, } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export interface IPropertyBagDisplayState {
   selectedIndex: number;
 
@@ -27,7 +29,11 @@ export interface IPropertyBagDisplayState {
 }
 export class DisplaySite {
   constructor(
-    public name: string, public url: string, public SiteTemplate: string
+    public name: string,
+     public url: string, 
+     public SiteTemplate: string,
+     public SarchableProps?:Array<String>,
+     public Props?:Array<string>
   ) { }
 }
 export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
@@ -56,8 +62,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /** react lifecycle */
   public componentWillMount() {
-    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item=>{
-      return item.split('|')[1];
+    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
+      return item.split("|")[1];
     });
     displayProps.unshift("Title");
     displayProps.unshift("Url");
@@ -134,9 +140,23 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   //   this.setState(this.state);
   // }
   public onEditItemClicked(e?: MouseEvent): void {
-    this.state.isediting = true;
-    this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
-    this.setState(this.state);
+    const selectedSite = this.state.sites[this.state.selectedIndex];
+    // const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
+    //   return item.split("|")[0];
+    // });
+    // for (const editableProp of crawledProps) {
+    //   this.state.displayProps.push({ name: editableProp, value: "" });
+    // }
+    const web = new Web(selectedSite.Url);
+    web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
+      this.state.workingStorage.SarchableProps =
+       utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+      
+      this.state.isediting = true;
+      this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
+      this.setState(this.state);
+    });
+
   }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
     debugger;
@@ -165,10 +185,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       },
 
     ]
-   const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item=>{
-      return item.split('|')[1];
+    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
+      return item.split("|")[1];
     });
-     for (const dp of displayProps) {
+    for (const dp of displayProps) {
       columns.push(
         {
           fieldName: dp,
