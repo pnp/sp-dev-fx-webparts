@@ -3,6 +3,7 @@ import pnp from "sp-pnp-js";
 import { Web } from "sp-pnp-js";
 import * as _ from "lodash";
 import utils from "../../shared/Utils";
+import DisplayProp from "../../shared/DisplayProp";
 import { SearchQuery, SearchResults, SearchResult } from "sp-pnp-js";
 import { css } from "office-ui-fabric-react";
 import styles from "./PropertyBagDisplay.module.scss";
@@ -21,19 +22,21 @@ import {
 import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export interface IPropertyBagDisplayState {
   selectedIndex: number;
-
+  ManagedToCrawedDictionary?: any;
   messsage?: string;
   isediting?: boolean;
   sites: Array<any>;
-  workingStorage?: DisplaySite
+  workingStorage?: DisplaySite;
+  displayPropNames?: Array<string>
 }
 export class DisplaySite {
   constructor(
     public name: string,
-     public url: string, 
-     public SiteTemplate: string,
-     public SarchableProps?:Array<String>,
-     public Props?:Array<string>
+    public url: string,
+    public SiteTemplate: string,
+    public SarchableProps?: Array<String>,
+    public DisplayProps?: Array<DisplayProp>,
+
   ) { }
 }
 export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
@@ -62,35 +65,35 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /** react lifecycle */
   public componentWillMount() {
-    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
-      return item.split("|")[1];
-    });
-    displayProps.unshift("Title");
-    displayProps.unshift("Url");
-    displayProps.unshift("SiteTemplate");
-    displayProps.unshift("SiteTemplateId");
+this.state.ManagedToCrawedDictionary={};
+this.state.displayPropNames=[];
+    for (const prop of this.props.propertiesToDisplay) {
+      const names: Array<string> = prop.split('|');// crawledpropety/managed property
+      this.state.ManagedToCrawedDictionary[names[1]] = names[0];
+      this.state.displayPropNames.push(names[0]);// crawled prop
+    }
+    this.state.displayPropNames.unshift("Title");
+    this.state.displayPropNames.unshift("Url");
+    this.state.displayPropNames.unshift("SiteTemplate");
+    this.state.displayPropNames.unshift("SiteTemplateId");
     //search contentclass:STS_Site
     const q: SearchQuery = {
       Querytext: "contentclass:STS_Site",
-      SelectProperties: displayProps,
+      SelectProperties: this.state.displayPropNames,
       RowLimit: 999,
       TrimDuplicates: false
 
     };
-
     pnp.sp.search(q).then((results: SearchResults) => {
       debugger;
       for (const r of results.PrimarySearchResults) {
         let obj: any = {};
-
-        for (const dp of displayProps) {
+        for (const dp of this.state.displayPropNames) {
           obj[dp] = r[dp];
         }
         obj.SiteTemplate = obj.SiteTemplate + "#" + obj.SiteTemplateId;
-
         this.state.sites.push(obj);
       }
-
       this.setState(this.state);
     });
   }
@@ -149,11 +152,17 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     // }
     const web = new Web(selectedSite.Url);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-      this.state.workingStorage.SarchableProps =
-       utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-      
-      this.state.isediting = true;
+      const searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+      const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
+        return item.split("|")[1];
+      });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
+      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProprties, crawledProps, searchableProps);
+      // now add in the managed Prop
+      for (let dp of this.state.workingStorage.DisplayProps) {
+        dp.managedPropertyName = this.state.ManagedToCrawedDictionary[dp.crawledPropertyName];
+      }
+      this.state.isediting = true;
       this.setState(this.state);
     });
 
