@@ -75,21 +75,21 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /** react lifecycle */
   public componentWillMount() {
-<<<<<<< HEAD
+// <<<<<<< HEAD
     this.state.managedToCrawedMapping = [];
     this.state.managedPropNames = [];
     for (const prop of this.props.propertiesToDisplay.split('\n')) {
       const names: Array<string> = prop.split('|');// crawledpropety/managed property
       this.state.managedToCrawedMapping.push(new ManagedToCrawledMappingEntry(names[0], names[1]));
       this.state.managedPropNames.push(names[1]);
-=======
-this.state.ManagedToCrawedDictionary={};
-this.state.displayPropNames=[];
-    for (const prop of this.props.propertiesToDisplay.split('\n')) {
-      const names: Array<string> = prop.split('|');// crawledpropety/managed property
-      this.state.ManagedToCrawedDictionary[names[0]] = names[1];
-      this.state.displayPropNames.push(names[1]);// managed prop
->>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375
+// =======
+// this.state.ManagedToCrawedDictionary={};
+// this.state.displayPropNames=[];
+//     for (const prop of this.props.propertiesToDisplay.split('\n')) {
+//       const names: Array<string> = prop.split('|');// crawledpropety/managed property
+//       this.state.ManagedToCrawedDictionary[names[0]] = names[1];
+//       this.state.displayPropNames.push(names[1]);// managed prop
+// >>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375
     }
     this.state.managedPropNames.unshift("Title");
     this.state.managedPropNames.unshift("Url");
@@ -120,11 +120,7 @@ this.state.displayPropNames=[];
     this.setState(this.state);
   }
   public onActiveItemChanged(item?: any, index?: number) {
-<<<<<<< HEAD
 
-=======
-   
->>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375
     this.state.selectedIndex = index;
     this.setState(this.state);
   }
@@ -213,7 +209,10 @@ this.state.displayPropNames=[];
     });
 
   }
-  
+    public createOnChangedHandler = (name) => (value) => { 
+      debugger;
+    /* do something with name and value here, i.e. */
+   }
   public renderPopup() {
     const createOnChangedHandler = (name) => (value) => { 
       debugger;
@@ -256,11 +255,10 @@ this.state.displayPropNames=[];
                     />
                   </td>
                   <td>
-                    <Toggle label=""
+                    <Toggle label=""     onClick={this.createOnChangedHandler(dp.crawledPropertyName)}
                       data-crawledPropertyName={dp.crawledPropertyName}
                       checked={dp.searchable} 
-                      onChanged={createOnChangedHandler(dp.crawledPropertyName
-                      )} value={17}
+                      onChange={this.createOnChangedHandler(dp.crawledPropertyName)}
                        />
                   </td>
                   <td>
