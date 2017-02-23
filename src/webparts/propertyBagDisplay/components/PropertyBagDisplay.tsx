@@ -69,7 +69,7 @@ this.state.ManagedToCrawedDictionary={};
 this.state.displayPropNames=[];
     for (const prop of this.props.propertiesToDisplay.split('\n')) {
       const names: Array<string> = prop.split('|');// crawledpropety/managed property
-      this.state.ManagedToCrawedDictionary[names[1]] = names[0];
+      this.state.ManagedToCrawedDictionary[names[0]] = names[1];
       this.state.displayPropNames.push(names[1]);// managed prop
     }
     this.state.displayPropNames.unshift("Title");
@@ -102,7 +102,7 @@ this.state.displayPropNames=[];
     this.setState(this.state);
   }
   public onActiveItemChanged(item?: any, index?: number) {
-    debugger;
+   
     this.state.selectedIndex = index;
     this.setState(this.state);
   }
@@ -155,7 +155,7 @@ this.state.displayPropNames=[];
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
       const searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
-        return item.split("|")[1];
+        return item.split("|")[0];
       });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
       this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, searchableProps);
