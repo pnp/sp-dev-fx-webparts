@@ -40,7 +40,7 @@ under the [vs2015-bot-application](./vs2015-bot-application) folder. This is sim
 Solution|Author(s)
 --------|---------
 bot-framework | Gary Pretty ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
-RC0 Update / BugFixing | Raul Garita ([Raul.Garita@buildingi.com](mailto:raul.garita@buildingi.com), [Buildingi](www.buildingi.com))
+RC0 Update / BugFixing | Raul Garita ([Raul.Garita@buildingi.com](mailto:raul.garita@buildingi.com), [Buildingi](http://www.buildingi.com))
 
 ## Version history
 
