@@ -158,7 +158,7 @@ this.state.displayPropNames=[];
         return item.split("|")[1];
       });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
-      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProprties, crawledProps, searchableProps);
+      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, searchableProps);
       // now add in the managed Prop
       for (let dp of this.state.workingStorage.DisplayProps) {
         dp.managedPropertyName = this.state.ManagedToCrawedDictionary[dp.crawledPropertyName];
