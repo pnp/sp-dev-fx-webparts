@@ -67,10 +67,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   public componentWillMount() {
 this.state.ManagedToCrawedDictionary={};
 this.state.displayPropNames=[];
-    for (const prop of this.props.propertiesToDisplay) {
+    for (const prop of this.props.propertiesToDisplay.split('\n')) {
       const names: Array<string> = prop.split('|');// crawledpropety/managed property
       this.state.ManagedToCrawedDictionary[names[1]] = names[0];
-      this.state.displayPropNames.push(names[0]);// crawled prop
+      this.state.displayPropNames.push(names[1]);// managed prop
     }
     this.state.displayPropNames.unshift("Title");
     this.state.displayPropNames.unshift("Url");
@@ -143,6 +143,7 @@ this.state.displayPropNames=[];
   //   this.setState(this.state);
   // }
   public onEditItemClicked(e?: MouseEvent): void {
+    debugger;
     const selectedSite = this.state.sites[this.state.selectedIndex];
     // const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
     //   return item.split("|")[0];
@@ -168,7 +169,7 @@ this.state.displayPropNames=[];
 
   }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
-    debugger;
+
     const columns: Array<IColumn> = [
       {
         fieldName: "SiteTemplate",
