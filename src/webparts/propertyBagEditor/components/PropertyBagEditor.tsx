@@ -71,16 +71,16 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
 
     });
   }
-  //http://vipulkelkar.blogspot.com/2015/09/index-web-property-bag-using-javascript.html
-  public EncodePropertyKey(propKey) {
-    var bytes = [];
-    for (var i = 0; i < propKey.length; ++i) {
-      bytes.push(propKey.charCodeAt(i));
-      bytes.push(0);
-    }
-    var b64encoded = window.btoa(String.fromCharCode.apply(null, bytes));
-    return b64encoded;
-  }
+  // //http://vipulkelkar.blogspot.com/2015/09/index-web-property-bag-using-javascript.html
+  // public EncodePropertyKey(propKey) {
+  //   var bytes = [];
+  //   for (var i = 0; i < propKey.length; ++i) {
+  //     bytes.push(propKey.charCodeAt(i));
+  //     bytes.push(0);
+  //   }
+  //   var b64encoded = window.btoa(String.fromCharCode.apply(null, bytes));
+  //   return b64encoded;
+  // }
   // public DecodePropertyKey(propKey) {
   //   debugger;
   //   const encoded = window.atob(propKey);
@@ -90,13 +90,13 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   //   }
   //   return decoded;
   // }
-  public saveSearchablePropertiesToSharePoint(propnames: Array<string>): Promise<any> {
-    let encodedPropNames: Array<string> = [];
-    for (const propname of propnames) {
-      encodedPropNames.push(this.EncodePropertyKey(propname));
-    }
-    return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|", this.props.siteUrl);//need the pipe at the end too?
-  }
+  // public saveSearchablePropertiesToSharePoint(propnames: Array<string>): Promise<any> {
+  //   let encodedPropNames: Array<string> = [];
+  //   for (const propname of propnames) {
+  //     encodedPropNames.push(this.EncodePropertyKey(propname));
+  //   }
+  //   return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|", this.props.siteUrl);//need the pipe at the end too?
+  // }
   /** react lifecycle */
   public componentWillMount() {
 
@@ -147,47 +147,17 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     this.state.workingStorage = null;
     this.setState(this.state);
   }
-  public onSPPropertyValueChanged(event) {
+  public onPropertyValueChanged(event) {
+    debugger;
     this.state.workingStorage.value = event.target.value;
     this.setState(this.state);
   }
 
-  /**utils */
-  // private copySPProprtiesToLocalState(AllProperties: any) {
-  //   for (const prop in AllProperties) {
-  //     const displayProp = _.find(this.state.displayProps, p => { return p.crawledPropertyName === prop; });
-  //     if (displayProp) {
-  //       displayProp.value = AllProperties[prop];
-  //       const sp = _.find(this.state.searchableProps, sp => { return sp === prop; });
-  //       if (sp) {
-  //         displayProp.searchable = true;
-  //       }
-  //       else {
-  //         displayProp.searchable = false;
-  //       }
-  //     }
-  //   }
-  //   debugger;
-  //   this.setState(this.state);
-  // }
-  // public decodeSearchableProps(sp: string): Array<string> {
-
-  //   const searchableprops: Array<string> = [];
-  //   if (sp) {
-  //     const encodedPropNames = sp.split("|");
-  //     for (const encodedPropName of encodedPropNames) {
-  //       debugger;
-  //       searchableprops.push(this.DecodePropertyKey(encodedPropName));
-  //     }
-  //     return searchableprops;
-
-  //   }
-  // }
-  public changeSearchable(propname: string, newValue: boolean): Promise<any> {
+   public changeSearchable(propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
         this.state.searchableProps.push(propname);
-        return this.saveSearchablePropertiesToSharePoint(this.state.searchableProps);
+        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl,this.state.searchableProps);
       }
       else {
         return Promise.resolve();
@@ -196,7 +166,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     else { // make prop not searchablke
       if (_.indexOf(this.state.searchableProps, propname) !== -1) {// wasa not searchable, mpw it is
         _.remove(this.state.searchableProps, p => { return p === propname; });
-        return this.saveSearchablePropertiesToSharePoint(this.state.searchableProps);
+        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl,this.state.searchableProps);
       }
       else {
         return Promise.resolve();
@@ -231,7 +201,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
 
           <TextField
             value={(this.state.workingStorage) ? this.state.workingStorage.value : ""}
-            onBlur={this.onSPPropertyValueChanged.bind(this)}
+            onBlur={this.onPropertyValueChanged.bind(this)}
           />
 
 

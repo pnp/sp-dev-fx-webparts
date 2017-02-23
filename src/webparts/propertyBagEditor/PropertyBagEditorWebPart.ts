@@ -20,7 +20,7 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
     const uqpc = new UrlQueryParameterCollection(window.location.toString());
     let siteUrl: string = uqpc.getValue("siteUrl");
     if (!siteUrl) {
-      siteUrl = this.context.pageContext.site.absoluteUrl
+      siteUrl = this.context.pageContext.site.absoluteUrl;
     }
     const props: IPropertyBagEditorProps = {
       description: this.properties.description,
