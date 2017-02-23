@@ -22,12 +22,19 @@ import {
 import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export interface IPropertyBagDisplayState {
   selectedIndex: number;
-  ManagedToCrawedDictionary?: any;
+  managedToCrawedMapping?: Array<ManagedToCrawledMappingEntry>;
   messsage?: string;
   isediting?: boolean;
   sites: Array<any>;
   workingStorage?: DisplaySite;
-  displayPropNames?: Array<string>
+  managedPropNames?: Array<string>
+}
+
+export class ManagedToCrawledMappingEntry {
+  constructor(
+    public crawledPropertyName: string,
+    public managedPropertyName: string,
+  ) { }
 }
 export class DisplaySite {
   constructor(
@@ -47,10 +54,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /**Accessors */
   get CommandItems(): Array<IContextualMenuItem> {
-    debugger;
+
     return [
       {
-        key: "a",
+        key: "Edit",
         name: "Edit",
         disabled: !(this.ItemIsSelected),
         title: "Edit",
@@ -65,30 +72,30 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /** react lifecycle */
   public componentWillMount() {
-this.state.ManagedToCrawedDictionary={};
-this.state.displayPropNames=[];
-    for (const prop of this.props.propertiesToDisplay) {
+    this.state.managedToCrawedMapping = [];
+    this.state.managedPropNames = [];
+    for (const prop of this.props.propertiesToDisplay.split('\n')) {
       const names: Array<string> = prop.split('|');// crawledpropety/managed property
-      this.state.ManagedToCrawedDictionary[names[1]] = names[0];
-      this.state.displayPropNames.push(names[0]);// crawled prop
+      this.state.managedToCrawedMapping.push(new ManagedToCrawledMappingEntry(names[0], names[1]));
+      this.state.managedPropNames.push(names[1]);
     }
-    this.state.displayPropNames.unshift("Title");
-    this.state.displayPropNames.unshift("Url");
-    this.state.displayPropNames.unshift("SiteTemplate");
-    this.state.displayPropNames.unshift("SiteTemplateId");
+    this.state.managedPropNames.unshift("Title");
+    this.state.managedPropNames.unshift("Url");
+    this.state.managedPropNames.unshift("SiteTemplate");
+    this.state.managedPropNames.unshift("SiteTemplateId");
     //search contentclass:STS_Site
     const q: SearchQuery = {
       Querytext: "contentclass:STS_Site",
-      SelectProperties: this.state.displayPropNames,
+      SelectProperties: this.state.managedPropNames,
       RowLimit: 999,
       TrimDuplicates: false
 
     };
     pnp.sp.search(q).then((results: SearchResults) => {
-      debugger;
+
       for (const r of results.PrimarySearchResults) {
         let obj: any = {};
-        for (const dp of this.state.displayPropNames) {
+        for (const dp of this.state.managedPropNames) {
           obj[dp] = r[dp];
         }
         obj.SiteTemplate = obj.SiteTemplate + "#" + obj.SiteTemplateId;
@@ -102,7 +109,7 @@ this.state.displayPropNames=[];
     this.setState(this.state);
   }
   public onActiveItemChanged(item?: any, index?: number) {
-    debugger;
+
     this.state.selectedIndex = index;
     this.setState(this.state);
   }
@@ -143,6 +150,7 @@ this.state.displayPropNames=[];
   //   this.setState(this.state);
   // }
   public onEditItemClicked(e?: MouseEvent): void {
+    debugger;
     const selectedSite = this.state.sites[this.state.selectedIndex];
     // const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
     //   return item.split("|")[0];
@@ -153,22 +161,79 @@ this.state.displayPropNames=[];
     const web = new Web(selectedSite.Url);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
       const searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-      const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
-        return item.split("|")[1];
-      });
+      const crawledProps = this.state.managedToCrawedMapping.map(p => { return p.crawledPropertyName; });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
-      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProprties, crawledProps, searchableProps);
+      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, searchableProps);
       // now add in the managed Prop
       for (let dp of this.state.workingStorage.DisplayProps) {
-        dp.managedPropertyName = this.state.ManagedToCrawedDictionary[dp.crawledPropertyName];
+        dp.managedPropertyName =
+          _.find(this.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
       }
       this.state.isediting = true;
       this.setState(this.state);
     });
 
   }
+  public renderPopup() {
+    if (!this.state.workingStorage) {
+      return (<div />);
+    }
+    else {
+      return (
+        <Dialog
+          isOpen={this.state.isediting} type={DialogType.close}
+          onDismiss={this.stopediting.bind(this)}
+          title={(this.state.workingStorage) ? this.state.workingStorage.name : ""}        >
+
+          <span> <Label>Site Url</Label> {(this.state.workingStorage) ? this.state.workingStorage.url : ""}</span>
+
+          <table>
+            <thead>
+              <tr>
+                <td>Managed Property Name</td>
+                <td>Value in Search Index</td>
+                <td>Crawled Property Name</td>
+                <td>Web Property Value</td>
+                <td>Searchable</td>
+              </tr>
+            </thead>
+
+            <tbody>
+              {this.state.workingStorage.DisplayProps.map( (dp, i)=> {
+                return (<tr>
+                  <td>{dp.managedPropertyName}</td>
+                  <td>{this.state.workingStorage[dp.managedPropertyName]}</td>
+                  <td>{dp.crawledPropertyName}</td>
+                  <td>{dp.value}</td>
+                  <td>{dp.searchable}</td>
+                </tr>);
+              })}
+            </tbody>
+          </table>
+          {/*<TextField
+            value={(this.state.workingStorage) ? this.state.workingStorage.value : ""}
+            onBlur={this.onSPPropertyValueChanged.bind(this)}
+          />*/}
+
+
+
+          {/*<Toggle label="Searchable"
+            checked={(this.state.workingStorage) ? this.state.workingStorage.searchable : undefined}
+            onChanged={this.onSearchableValueChanged.bind(this)}
+          />*/}
+
+
+          <Button default={true} icon="Save" buttonType={ButtonType.icon} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
+          <Button icon="Cancel" buttonType={ButtonType.icon} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
+
+
+        </Dialog>
+      )
+    }
+
+  }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
-    debugger;
+
     const columns: Array<IColumn> = [
       {
         fieldName: "SiteTemplate",
@@ -221,31 +286,8 @@ this.state.displayPropNames=[];
           onActiveItemChanged={this.onActiveItemChanged.bind(this)}
         >
         </DetailsList>
-        <Dialog
-          isOpen={this.state.isediting} type={DialogType.close}
-          onDismiss={this.stopediting.bind(this)}
-          title={(this.state.workingStorage) ? this.state.workingStorage.name : ""}        >
+        {this.renderPopup.bind(this)()}
 
-          <span> <Label>Site Url</Label> {(this.state.workingStorage) ? this.state.workingStorage.url : ""}</span>
-
-          {/*<TextField
-            value={(this.state.workingStorage) ? this.state.workingStorage.value : ""}
-            onBlur={this.onSPPropertyValueChanged.bind(this)}
-          />*/}
-
-
-
-          {/*<Toggle label="Searchable"
-            checked={(this.state.workingStorage) ? this.state.workingStorage.searchable : undefined}
-            onChanged={this.onSearchableValueChanged.bind(this)}
-          />*/}
-
-
-          <Button default={true} icon="Save" buttonType={ButtonType.icon} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
-          <Button icon="Cancel" buttonType={ButtonType.icon} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
-
-
-        </Dialog>
       </div>
     );
   }

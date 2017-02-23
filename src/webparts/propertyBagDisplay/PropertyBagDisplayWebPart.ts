@@ -1,17 +1,17 @@
-import * as React from 'react';
+import * as React from "react";
 import pnp from "sp-pnp-js";
-import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import * as ReactDom from "react-dom";
+import { Version } from "@microsoft/sp-core-library";
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from "@microsoft/sp-webpart-base";
 
-import * as strings from 'propertyBagDisplayStrings';
-import PropertyBagDisplay from './components/PropertyBagDisplay';
-import { IPropertyBagDisplayProps } from './components/IPropertyBagDisplayProps';
-import { IPropertyBagDisplayWebPartProps } from './IPropertyBagDisplayWebPartProps';
+import * as strings from "propertyBagDisplayStrings";
+import PropertyBagDisplay from "./components/PropertyBagDisplay";
+import { IPropertyBagDisplayProps } from "./components/IPropertyBagDisplayProps";
+import { IPropertyBagDisplayWebPartProps } from "./IPropertyBagDisplayWebPartProps";
 
 export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPropertyBagDisplayWebPartProps> {
 
@@ -39,12 +39,11 @@ public onInit(): Promise<void> {
 }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    debugger;
-    return {
+      return {
       pages: [
         {
           header: {
