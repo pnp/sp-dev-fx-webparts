@@ -150,7 +150,7 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
         name: "type",
         editable: true,
         editor: "FieldTypesEditor",
-        formatter: "",
+        formatter: "FieldTypesFormatter",
         width: 80
     },
     {
@@ -307,6 +307,13 @@ export class ColumnDefinitionContainerNative extends React.Component<IColumnsPag
 
             case "SharePointLookupCellFormatter":
                 return (<SharePointLookupCellFormatter value={entity[gridColumn.name]} onFocus={this.toggleEditing} />);
+            case "FieldTypesFormatter":
+            debugger;
+            const displayName=_.find(fieldTypes,ft=>{return ft.key===entity[gridColumn.name]}).text;
+                return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }}>
+                    {displayName}
+                </a>
+                );
             default:
                 return (<a href="#" onFocus={this.toggleEditing} style={{ textDecoration: "none" }}>
                     {entity[gridColumn.name]}
