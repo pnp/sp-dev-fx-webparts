@@ -76,8 +76,12 @@ export default class utils {
     public static saveSearchablePropertiesToSharePoint(siteUrl: string, propnames: Array<string>): Promise<any> {
         let encodedPropNames: Array<string> = [];
         for (const propname of propnames) {
+            if (propname != "")
+            {
             encodedPropNames.push(this.EncodePropertyKey(propname));
+            }
         }
+        debugger;
         return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|", siteUrl);//need the pipe at the end too?
     }
 }

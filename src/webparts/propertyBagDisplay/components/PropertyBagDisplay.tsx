@@ -52,12 +52,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   public constructor() {
     super();
     this.state = { sites: [], selectedIndex: -1 };
-    this.onSearchableValueChanged = this.onSearchableValueChanged.bind(this);
-
   }
   /**Accessors */
   get CommandItems(): Array<IContextualMenuItem> {
-
     return [
       {
         key: "Edit",
@@ -70,12 +67,16 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   };
 
   get ItemIsSelected(): boolean {
+    console.log("in ItemIsSelected");
     if (!this.state) { return false; }
+    console.log("out ItemIsSelected");
     return (this.state.selectedIndex != -1);
+
   }
   /** react lifecycle */
   public componentWillMount() {
     // <<<<<<< HEAD
+    console.log("in componentWillMount");
     this.state.managedToCrawedMapping = [];
     this.state.managedPropNames = [];
     for (const prop of this.props.propertiesToDisplay.split('\n')) {
@@ -114,37 +115,47 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       }
       this.setState(this.state);
     });
+    console.log("out componentWillMount");
   }
   public stopediting() {
+    console.log("in stopediting");
     this.state.isediting = false;
     this.setState(this.state);
+    console.log("out stopediting");
   }
   public onActiveItemChanged(item?: any, index?: number) {
-
+    console.log("in onActiveItemChanged");
     this.state.selectedIndex = index;
     this.setState(this.state);
+    console.log("out onActiveItemChanged");
   }
   public changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
+    console.log("in changeSearchable");
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
+        console.log(propname + "was not searchable, now it is ");
         this.state.workingStorage.searchableProps.push(propname);
         return utils.saveSearchablePropertiesToSharePoint(siteUrl, this.state.workingStorage.searchableProps);
       }
       else {
+        console.log(propname + "was not searchable, still is not ");
         return Promise.resolve();
       }
     }
     else { // make prop not searchablke
       if (_.indexOf(this.state.workingStorage.searchableProps, propname) !== -1) {// wasa not searchable, mpw it is
+        console.log(propname + "was searchable, now it is  not");
         _.remove(this.state.workingStorage.searchableProps, p => { return p === propname; });
         return utils.saveSearchablePropertiesToSharePoint(siteUrl, this.state.workingStorage.searchableProps);
       }
       else {
+        console.log(propname + "was searchable, still  it is");
         return Promise.resolve();
       }
     }
   }
   public onSave(e?: MouseEvent): void {
+    console.log("in onSave");
     let promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
       let proomise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
@@ -161,32 +172,35 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       }).catch((err) => {
         console.log(err);
       });
-
+    console.log("out onSave");
   }
   public onCancel(e?: MouseEvent): void {
+    console.log("in onCancel");
     this.state.isediting = false;
     this.state.workingStorage = null;
     this.setState(this.state);
+    console.log("out onCancel");
   }
-  public onSearchableValueChange(event: React.FormEvent<HTMLInputElement>) {
-    debugger;
-    //this.state.workingStorage.searchable = newValue;
-    this.setState(this.state);
-  }
-  public onSearchableValueChanged(newVal: Boolean) {
-    debugger;
-    //this.state.workingStorage.searchable = newValue;
-    this.setState(this.state);
-  }
-  public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
 
+  public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
+    console.log("in onPropertyValueChanged");
     const selectedProperty = event.currentTarget.attributes["data-crawledpropertyname"].value;
     let dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
     dp.value = event.currentTarget.value;
     this.setState(this.state);
+    console.log("out onPropertyValueChanged");
+  }
+  public createSearcheableOnChangedHandler = (managedPropertyName) => (value) => {
+    console.log("in createSearcheableOnChangedHandler");
+    debugger;
+    let dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === managedPropertyName; });
+    dp.searchable = value;
+    this.setState(this.state);
+    console.log("out createSearcheableOnChangedHandler");
+
   }
   public onEditItemClicked(e?: MouseEvent): void {
-
+    console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];
 
     const web = new Web(selectedSite.Url);
@@ -197,12 +211,14 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
 =======*/}
-      const searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+      //    const searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
         return item.split("|")[0];
       });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
-      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, searchableProps);
+      this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+
+      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
       {/*>>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375*/ }
       // now add in the managed Prop
       for (let dp of this.state.workingStorage.DisplayProps) {
@@ -212,25 +228,17 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       this.state.isediting = true;
       this.setState(this.state);
     });
-
+    console.log("out onEditItemClicked");
   }
-  public createOnChangedHandler = (name) => {
-    debugger;
-    return (value) => {
-      debugger;
-      alert(name);
 
-    }
-  }
   public renderPopup() {
-    const createOnChangedHandler = (name) => (value) => {
-      debugger;
-      /* do something with name and value here, i.e. */
-    }
+    console.log("in renderPopup");
     if (!this.state.workingStorage) {
+      console.log("out renderPopup");
       return (<div />);
     }
     else {
+      console.log("out renderPopup");
       return (
         <Panel
           isOpen={this.state.isediting} type={PanelType.medium}
@@ -264,10 +272,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
                     />
                   </td>
                   <td>
-                    <Toggle label={dp.crawledPropertyName}
-                      data-crawledPropertyName={dp.crawledPropertyName}
+                    <Toggle label=""
                       checked={dp.searchable}
-                      onChanged={this.createOnChangedHandler(dp.crawledPropertyName)}
+                      onChanged={this.createSearcheableOnChangedHandler(dp.crawledPropertyName)}
                     />
                   </td>
                   {/*<td>
@@ -291,7 +298,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
   }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
-
+    console.log("in render");
     const columns: Array<IColumn> = [
       {
         fieldName: "SiteTemplate",
@@ -331,7 +338,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
         });
     }
-
+    console.log("out render");
     return (
       <div>
         <CommandBar items={this.CommandItems} />
