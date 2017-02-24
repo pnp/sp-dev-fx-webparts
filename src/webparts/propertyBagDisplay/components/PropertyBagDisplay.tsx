@@ -168,7 +168,12 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.state.workingStorage = null;
     this.setState(this.state);
   }
-  public onSearchableValueChanged(event: React.FormEvent<HTMLInputElement>) {
+  public onSearchableValueChange(event: React.FormEvent<HTMLInputElement>) {
+    debugger;
+    //this.state.workingStorage.searchable = newValue;
+    this.setState(this.state);
+  }
+  public onSearchableValueChanged(newVal: Boolean) {
     debugger;
     //this.state.workingStorage.searchable = newValue;
     this.setState(this.state);
@@ -210,11 +215,11 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
   }
   public createOnChangedHandler = (name) => {
-    debugger; 
+    debugger;
     return (value) => {
       debugger;
       alert(name);
-  
+
     }
   }
   public renderPopup() {
@@ -259,20 +264,18 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
                     />
                   </td>
                   <td>
-                    <Toggle label=""
+                    <Toggle label={dp.crawledPropertyName}
                       data-crawledPropertyName={dp.crawledPropertyName}
                       checked={dp.searchable}
-                 
-                      onChange={(val: React.FormEvent<HTMLInputElement>) => this.onSearchableValueChanged(val)} 
+                      onChanged={this.createOnChangedHandler(dp.crawledPropertyName)}
                     />
                   </td>
-                  <td>
+                  {/*<td>
                     <Toggle label="Test"
-
-
                       disabled={false}
-                      onChange={this.onSearchableValueChanged} />
-                  </td>
+                      onChanged={this.onSearchableValueChanged}
+                      onChange={this.onSearchableValueChange} />
+                  </td>*/}
                 </tr>);
               })}
             </tbody>
