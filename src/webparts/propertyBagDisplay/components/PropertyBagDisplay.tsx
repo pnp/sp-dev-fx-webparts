@@ -75,21 +75,21 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /** react lifecycle */
   public componentWillMount() {
-// <<<<<<< HEAD
+    // <<<<<<< HEAD
     this.state.managedToCrawedMapping = [];
     this.state.managedPropNames = [];
     for (const prop of this.props.propertiesToDisplay.split('\n')) {
       const names: Array<string> = prop.split('|');// crawledpropety/managed property
       this.state.managedToCrawedMapping.push(new ManagedToCrawledMappingEntry(names[0], names[1]));
       this.state.managedPropNames.push(names[1]);
-// =======
-// this.state.ManagedToCrawedDictionary={};
-// this.state.displayPropNames=[];
-//     for (const prop of this.props.propertiesToDisplay.split('\n')) {
-//       const names: Array<string> = prop.split('|');// crawledpropety/managed property
-//       this.state.ManagedToCrawedDictionary[names[0]] = names[1];
-//       this.state.displayPropNames.push(names[1]);// managed prop
-// >>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375
+      // =======
+      // this.state.ManagedToCrawedDictionary={};
+      // this.state.displayPropNames=[];
+      //     for (const prop of this.props.propertiesToDisplay.split('\n')) {
+      //       const names: Array<string> = prop.split('|');// crawledpropety/managed property
+      //       this.state.ManagedToCrawedDictionary[names[0]] = names[1];
+      //       this.state.displayPropNames.push(names[1]);// managed prop
+      // >>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375
     }
     this.state.managedPropNames.unshift("Title");
     this.state.managedPropNames.unshift("Url");
@@ -174,7 +174,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.setState(this.state);
   }
   public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
-    
+
     const selectedProperty = event.currentTarget.attributes["data-crawledpropertyname"].value;
     let dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
     dp.value = event.currentTarget.value;
@@ -186,7 +186,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
     const web = new Web(selectedSite.Url);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-{/*<<<<<<< HEAD
+      {/*<<<<<<< HEAD
       const crawledProps = this.state.managedToCrawedMapping.map(p => { return p.crawledPropertyName; });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
       this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
@@ -198,7 +198,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
       this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, searchableProps);
-{/*>>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375*/}
+      {/*>>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375*/ }
       // now add in the managed Prop
       for (let dp of this.state.workingStorage.DisplayProps) {
         dp.managedPropertyName =
@@ -209,15 +209,19 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     });
 
   }
-    public createOnChangedHandler = (name) => (value) => { 
+  public createOnChangedHandler = (name) => {
+    debugger; 
+    return (value) => {
       debugger;
-    /* do something with name and value here, i.e. */
-   }
+      alert(name);
+  
+    }
+  }
   public renderPopup() {
-    const createOnChangedHandler = (name) => (value) => { 
+    const createOnChangedHandler = (name) => (value) => {
       debugger;
-    /* do something with name and value here, i.e. */
-   }
+      /* do something with name and value here, i.e. */
+    }
     if (!this.state.workingStorage) {
       return (<div />);
     }
@@ -255,11 +259,12 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
                     />
                   </td>
                   <td>
-                    <Toggle label=""     onClick={this.createOnChangedHandler(dp.crawledPropertyName)}
+                    <Toggle label=""
                       data-crawledPropertyName={dp.crawledPropertyName}
-                      checked={dp.searchable} 
-                      onChange={this.createOnChangedHandler(dp.crawledPropertyName)}
-                       />
+                      checked={dp.searchable}
+                 
+                      onChange={(val: React.FormEvent<HTMLInputElement>) => this.onSearchableValueChanged(val)} 
+                    />
                   </td>
                   <td>
                     <Toggle label="Test"
