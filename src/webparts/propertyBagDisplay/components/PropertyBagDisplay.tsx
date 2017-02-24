@@ -83,28 +83,36 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       const names: Array<string> = prop.split('|');// crawledpropety/managed property
       this.state.managedToCrawedMapping.push(new ManagedToCrawledMappingEntry(names[0], names[1]));
       this.state.managedPropNames.push(names[1]);
-      // =======
-      // this.state.ManagedToCrawedDictionary={};
-      // this.state.displayPropNames=[];
-      //     for (const prop of this.props.propertiesToDisplay.split('\n')) {
-      //       const names: Array<string> = prop.split('|');// crawledpropety/managed property
-      //       this.state.ManagedToCrawedDictionary[names[0]] = names[1];
-      //       this.state.displayPropNames.push(names[1]);// managed prop
-      // >>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375
     }
     this.state.managedPropNames.unshift("Title");
     this.state.managedPropNames.unshift("Url");
     this.state.managedPropNames.unshift("SiteTemplate");
     this.state.managedPropNames.unshift("SiteTemplateId");
+    let querytext = "contentclass:STS_Site ";
+    let siteTemplates = this.props.siteTemplatesToInclude.split('\n');
+    if (siteTemplates.length > 0 && siteTemplates[0] !== "") {
+      querytext += " AND (";
+      for (let siteTemplate in siteTemplates) {
+        const siteTemplateParts= siteTemplate.split("#");
+        if (!siteTemplateParts[1])
+        {
+          querytext += "SiteTemplate="+siteTemplateParts[0];
+        }
+        else{
+        querytext += "(SiteTemplate="+siteTemplateParts[0]+" AND SiteTemplateId="+siteTemplateParts[1]+")";
+        }
+          
+
+      }
+      querytext += " )";
+    }
     const q: SearchQuery = {
-      Querytext: "contentclass:STS_Site",
+      Querytext: querytext,
       SelectProperties: this.state.managedPropNames,
       RowLimit: 999,
       TrimDuplicates: false
-
     };
     pnp.sp.search(q).then((results: SearchResults) => {
-
       for (const r of results.PrimarySearchResults) {
         let obj: any = {};
         for (const dp of this.state.managedPropNames) {
@@ -205,13 +213,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
     const web = new Web(selectedSite.Url);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-      {/*<<<<<<< HEAD
-      const crawledProps = this.state.managedToCrawedMapping.map(p => { return p.crawledPropertyName; });
-      this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
-      this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-      this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
-=======*/}
-      //    const searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
         return item.split("|")[0];
       });
@@ -219,7 +220,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
 
       this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
-      {/*>>>>>>> e1592d02fdb563b1187f15fcce238f8d3a5b7375*/ }
       // now add in the managed Prop
       for (let dp of this.state.workingStorage.DisplayProps) {
         dp.managedPropertyName =

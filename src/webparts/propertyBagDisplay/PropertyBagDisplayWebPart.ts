@@ -21,29 +21,30 @@ export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPr
       {
         description: this.properties.description,
         propertiesToDisplay: this.properties.propertiesToDisplay
-   
+        
+
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
-public onInit(): Promise<void> {
+  public onInit(): Promise<void> {
 
-  return super.onInit().then(_ => {
+    return super.onInit().then(_ => {
 
-    pnp.setup({
-      spfxContext: this.context
+      pnp.setup({
+        spfxContext: this.context
+      });
+
     });
-
-  });
-}
+  }
 
   protected get dataVersion(): Version {
     return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-      return {
+    return {
       pages: [
         {
           header: {
@@ -58,6 +59,10 @@ public onInit(): Promise<void> {
                 }),
                 PropertyPaneTextField("propertiesToDisplay", {
                   label: strings.PropertiesToDisplayFieldLabel,
+                  multiline: true
+                }),
+                PropertyPaneTextField("siteTemplatesToInclude", {
+                  label: strings.SiteTemplatesToIncludeFieldLabel,
                   multiline: true
                 }),
 
