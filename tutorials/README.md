@@ -14,7 +14,7 @@ This sub folders contains client-side projects includes the web parts detailed i
 You can also other SharePoint Framework releated videos from [SharePoint PnP YouTube Channel](https://aka.ms/SPPnP-Videos).
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-RC0-green.svg)
+![GA](https://img.shields.io/badge/version-GA-green.svg)
 
 ## Applies to
 
