@@ -212,7 +212,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   public onEditItemClicked(e?: MouseEvent): void {
     console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];
-
     const web = new Web(selectedSite.Url);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
       const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
@@ -220,7 +219,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
       this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-
       this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
       // now add in the managed Prop
       for (let dp of this.state.workingStorage.DisplayProps) {
