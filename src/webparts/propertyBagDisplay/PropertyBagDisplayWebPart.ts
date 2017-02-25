@@ -20,9 +20,8 @@ export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPr
       PropertyBagDisplay,
       {
         description: this.properties.description,
-        propertiesToDisplay: this.properties.propertiesToDisplay
-        
-
+        propertiesToDisplay: this.properties.propertiesToDisplay,
+        siteTemplatesToInclude: this.properties.siteTemplatesToInclude
       }
     );
 

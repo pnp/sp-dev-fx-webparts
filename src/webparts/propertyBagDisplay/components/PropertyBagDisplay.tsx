@@ -289,6 +289,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           </table>
           <Button default={true} icon="Save" buttonType={ButtonType.hero} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
           <Button icon="Cancel" buttonType={ButtonType.normal} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
+         {/*Force Reindex:http://www.techmikael.com/2014/02/how-to-trigger-full-re-index-in.html*/}
           <Button icon="Cancel" buttonType={ButtonType.normal} value="Force Crawl" onClick={this.onCancel.bind(this)} >Force Crawl</Button>
 
 
