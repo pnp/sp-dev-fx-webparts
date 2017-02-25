@@ -89,23 +89,25 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.state.managedPropNames.unshift("SiteTemplate");
     this.state.managedPropNames.unshift("SiteTemplateId");
     let querytext = "contentclass:STS_Site ";
-    let siteTemplates = this.props.siteTemplatesToInclude.split('\n');
-    if (siteTemplates.length > 0 && siteTemplates[0] !== "") {
-      querytext += " AND (";
-      for (let siteTemplate in siteTemplates) {
-        const siteTemplateParts= siteTemplate.split("#");
-        if (!siteTemplateParts[1])
-        {
-          querytext += "SiteTemplate="+siteTemplateParts[0];
+    if (this.props.siteTemplatesToInclude) {
+      const siteTemplates = this.props.siteTemplatesToInclude.split('\n');
+      if (siteTemplates.length > 0 && siteTemplates[0] !== "") {
+        querytext += " AND (";
+        for (const siteTemplate of siteTemplates) {
+          const siteTemplateParts = siteTemplate.split("#");
+          if (!siteTemplateParts[1]) {
+            querytext += "SiteTemplate=" + siteTemplateParts[0];
+          }
+          else {
+            querytext += "(SiteTemplate=" + siteTemplateParts[0] + " AND SiteTemplateId=" + siteTemplateParts[1] + ")";
+          }
+          if (siteTemplates.indexOf(siteTemplate) !== siteTemplates.length - 1)
+          { querytext += " OR " }
         }
-        else{
-        querytext += "(SiteTemplate="+siteTemplateParts[0]+" AND SiteTemplateId="+siteTemplateParts[1]+")";
-        }
-          
-
+        querytext += " )";
       }
-      querytext += " )";
     }
+    console.log("Using Query " + querytext);
     const q: SearchQuery = {
       Querytext: querytext,
       SelectProperties: this.state.managedPropNames,
@@ -289,7 +291,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           </table>
           <Button default={true} icon="Save" buttonType={ButtonType.hero} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
           <Button icon="Cancel" buttonType={ButtonType.normal} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
-         {/*Force Reindex:http://www.techmikael.com/2014/02/how-to-trigger-full-re-index-in.html*/}
+          {/*Force Reindex:http://www.techmikael.com/2014/02/how-to-trigger-full-re-index-in.html*/}
           <Button icon="Cancel" buttonType={ButtonType.normal} value="Force Crawl" onClick={this.onCancel.bind(this)} >Force Crawl</Button>
 
 
