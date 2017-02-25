@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { Web } from "sp-pnp-js";
 require("sp-init");
 require("microsoft-ajax");
 require("sp-runtime");
@@ -86,7 +87,10 @@ export default class utils {
             webProps = web.get_allProperties();
             clientContext.load(web);
             clientContext.load(webProps);
-            clientContext.executeQueryAsync((s, a) => { resolve(); }, (s, a) => { reject(); });
+            clientContext.executeQueryAsync(
+                (sender, args) => { debugger; resolve() },
+                (sender, args) => { debugger; reject(args.get_message()); }
+            );
 
         });
     }
@@ -99,5 +103,16 @@ export default class utils {
         }
         debugger;
         return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|", siteUrl);//need the pipe at the end too?
+    }
+    public static forceCrawl(siteUrl: string): Promise<any> {
+        const web = new Web(siteUrl);
+        debugger;
+        return web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
+            let version: number = r.AllProperties["vti_x005f_searchversion"];
+            if (version) {
+                version++;
+                this.setSPProperty("vti_searchversion", version.toString(), siteUrl);
+            }
+        });
     }
 }

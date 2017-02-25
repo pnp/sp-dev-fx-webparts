@@ -3,6 +3,7 @@ export default class DisplayProp {
         public crawledPropertyName: string,
         public managedPropertyName?: string,
         public value?: string,
-        public searchable?: boolean
+        public searchable?: boolean,
+     
     ) { }
 }

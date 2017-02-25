@@ -12,7 +12,8 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { Label } from "office-ui-fabric-react/lib/Label";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Toggle } from "office-ui-fabric-react/lib/Toggle";
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
+import { Button, ButtonType } from "office-ui-fabric-react/lib/Button"
+import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import {
   DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, CheckboxVisibility,
 } from "office-ui-fabric-react/lib/DetailsList";
@@ -28,6 +29,7 @@ export interface IPropertyBagDisplayState {
   sites: Array<any>;
   workingStorage?: DisplaySite;
   managedPropNames?: Array<string>;
+  errorMessages?: string;
 
 }
 
@@ -45,6 +47,7 @@ export class DisplaySite {
     public SarchableProps?: Array<String>,
     public DisplayProps?: Array<DisplayProp>,
     public searchableProps?: Array<string>,
+    public forceCrawl?: boolean
 
   ) { }
 }
@@ -75,8 +78,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   /** react lifecycle */
   public componentWillMount() {
-    // <<<<<<< HEAD
-    console.log("in componentWillMount");
+
+
     this.state.managedToCrawedMapping = [];
     this.state.managedPropNames = [];
     for (const prop of this.props.propertiesToDisplay.split('\n')) {
@@ -125,22 +128,22 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       }
       this.setState(this.state);
     });
-    console.log("out componentWillMount");
+
   }
   public stopediting() {
-    console.log("in stopediting");
+
     this.state.isediting = false;
     this.setState(this.state);
-    console.log("out stopediting");
+
   }
   public onActiveItemChanged(item?: any, index?: number) {
-    console.log("in onActiveItemChanged");
+
     this.state.selectedIndex = index;
     this.setState(this.state);
-    console.log("out onActiveItemChanged");
+
   }
   public changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
-    console.log("in changeSearchable");
+
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
         console.log(propname + "was not searchable, now it is ");
@@ -165,7 +168,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }
   }
   public onSave(e?: MouseEvent): void {
-    console.log("in onSave");
+
     let promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
       let proomise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
@@ -176,22 +179,31 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }
     Promise.all(promises)
       .then((results: Array<any>) => {
+        if (this.state.workingStorage.forceCrawl) {
+          utils.forceCrawl(this.state.workingStorage.Url);
+        }
         this.state.workingStorage = null;
         this.state.isediting = false;
         this.setState(this.state);
       }).catch((err) => {
+        this.state.errorMessages = err;
+        this.setState(this.state);
         console.log(err);
       });
-    console.log("out onSave");
   }
   public onCancel(e?: MouseEvent): void {
-    console.log("in onCancel");
+
     this.state.isediting = false;
     this.state.workingStorage = null;
     this.setState(this.state);
-    console.log("out onCancel");
-  }
 
+  }
+  public onForceCrawlChange(newValue: boolean) {
+    debugger;
+    this.state.workingStorage.forceCrawl = newValue;
+    this.setState(this.state);
+
+  }
   public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
     console.log("in onPropertyValueChanged");
     const selectedProperty = event.currentTarget.attributes["data-crawledpropertyname"].value;
@@ -208,6 +220,11 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.setState(this.state);
     console.log("out createSearcheableOnChangedHandler");
 
+  }
+  public hideMessages(value) {
+
+    this.state.errorMessages = "";
+    this.setState(this.state);
   }
   public onEditItemClicked(e?: MouseEvent): void {
     console.log("in onEditItemClicked");
@@ -230,20 +247,40 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     });
     console.log("out onEditItemClicked");
   }
+  public renderMessages() {
 
-  public renderPopup() {
-    console.log("in renderPopup");
-    if (!this.state.workingStorage) {
-      console.log("out renderPopup");
+    if (!this.state.errorMessages) {
+
       return (<div />);
     }
     else {
-      console.log("out renderPopup");
+
+      return (
+        <MessageBar
+
+          messageBarType={MessageBarType.remove}
+          isMultiline={true}
+          onDismiss={this.hideMessages.bind(this)}>
+          {this.state.errorMessages}
+        </MessageBar>
+      );
+    }
+
+  }
+  public renderPopup() {
+
+    if (!this.state.workingStorage) {
+
+      return (<div />);
+    }
+    else {
+
       return (
         <Panel
           isOpen={this.state.isediting} type={PanelType.medium}
           onDismiss={this.stopediting.bind(this)}
         >
+          {this.renderMessages.bind(this)()}
           <div> <Label >Site Title</Label> {this.state.workingStorage.Title}</div>
           <span> <Label label="" >Site Url</Label> {this.state.workingStorage.Url}</span>
 
@@ -277,16 +314,14 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
                       onChanged={this.createSearcheableOnChangedHandler(dp.crawledPropertyName)}
                     />
                   </td>
-                  {/*<td>
-                    <Toggle label="Test"
-                      disabled={false}
-                      onChanged={this.onSearchableValueChanged}
-                      onChange={this.onSearchableValueChange} />
-                  </td>*/}
                 </tr>);
               })}
             </tbody>
           </table>
+          <Toggle label="Force Crawl"
+            checked={this.state.workingStorage.forceCrawl}
+            onChanged={this.onForceCrawlChange.bind(this)}
+          />
           <Button default={true} icon="Save" buttonType={ButtonType.hero} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
           <Button icon="Cancel" buttonType={ButtonType.normal} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
           {/*Force Reindex:http://www.techmikael.com/2014/02/how-to-trigger-full-re-index-in.html*/}
@@ -299,7 +334,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
   }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
-    console.log("in render");
+
     const columns: Array<IColumn> = [
       {
         fieldName: "SiteTemplate",
@@ -339,10 +374,12 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
         });
     }
-    console.log("out render");
+
     return (
       <div>
         <CommandBar items={this.CommandItems} />
+
+
         <DetailsList
           items={this.state.sites}
           layoutMode={DetailsListLayoutMode.fixedColumns}
