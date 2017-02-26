@@ -298,8 +298,10 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       column.isSortedDescending = false
     }
     // Sort the items.
-    this.state.sites = _.orderBy(this.state.sites, [column.fieldName], [column.isSortedDescending ? "desc" : "asc"]);
-
+     this.state.sites = _.orderBy(this.state.sites, [(site,x,y,z)=>{
+      debugger;
+      return site[column.fieldName].toLowerCase();
+    }], [column.isSortedDescending ? "desc" : "asc"]);
     this.setState(this.state);
   }
   public renderMessages() {
