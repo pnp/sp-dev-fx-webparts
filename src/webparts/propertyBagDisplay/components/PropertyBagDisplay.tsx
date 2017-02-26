@@ -288,46 +288,18 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   private _onColumnClick(event: any, column: IColumn) {
     debugger;
-    //    let sortedItems = this.state.sites;
-    let isSortedDescending = column.isSortedDescending;
+    column=_.find(this.state.columns,c=>c.fieldName=column.fieldName);// find the object in state
     // If we've sorted this column, flip it.
     if (column.isSorted) {
-      isSortedDescending = !isSortedDescending;
+      column.isSortedDescending = !column.isSortedDescending;
+    }
+    else {
+      column.isSorted = true;
+      column.isSortedDescending = false
     }
     // Sort the items.
-    this.state.sites = this.state.sites.sort((a, b) => {
-      let firstValue = a[column.fieldName];
-      let secondValue = b[column.fieldName];
-      if (isSortedDescending) {
-        return (firstValue > secondValue) ? -1 : 1;
-      } else {
-        if (firstValue > secondValue) {
-          return 1;
-        }
-        else {
-          return -1;
-        }
-        //   return (firstValue > secondValue) ? 1 : -1;
-      }
-    });
-     this.state.sites= _.sortBy(this.state.sites,(a, b) => {
-      let firstValue = a[column.fieldName];
-      let secondValue = b[column.fieldName];
-      if (isSortedDescending) {
-        return (firstValue > secondValue) ? -1 : 1;
-      } else {
-        if (firstValue > secondValue) {
-          return 1;
-        }
-        else {
-          return -1;
-        }
-        //   return (firstValue > secondValue) ? 1 : -1;
-      }
-    });
+    this.state.sites = _.orderBy(this.state.sites, [column.fieldName], [column.isSortedDescending ? "desc" : "asc"]);
 
-    // Reset the items and columns to match the state.
-    // this.state.sites = sortedItems;
     this.setState(this.state);
   }
   public renderMessages() {
@@ -406,6 +378,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }
   }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
+    debugger;
     return (
       <div>
         <CommandBar items={this.CommandItems} />
