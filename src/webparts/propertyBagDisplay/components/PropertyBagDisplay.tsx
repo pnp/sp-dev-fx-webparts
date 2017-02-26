@@ -15,8 +15,15 @@ import { Toggle } from "office-ui-fabric-react/lib/Toggle";
 import { Button, ButtonType } from "office-ui-fabric-react/lib/Button"
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import {
-  DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, CheckboxVisibility,
+  DetailsList, DetailsListLayoutMode, IColumn, IGroupedList, SelectionMode, CheckboxVisibility, IGroup
 } from "office-ui-fabric-react/lib/DetailsList";
+import {
+  GroupedList
+} from "office-ui-fabric-react/lib/GroupedList";
+import {
+  IViewport
+} from "office-ui-fabric-react/lib/utilities/decorators/withViewport";
+
 import {
   Panel, PanelType
 } from "office-ui-fabric-react/lib/Panel";
@@ -30,7 +37,8 @@ export interface IPropertyBagDisplayState {
   workingStorage?: DisplaySite;
   managedPropNames?: Array<string>;
   errorMessages?: string;
-
+  columns: Array<IColumn>;
+  groups: Array<IGroup>;
 }
 
 export class ManagedToCrawledMappingEntry {
@@ -54,7 +62,7 @@ export class DisplaySite {
 export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
   public constructor() {
     super();
-    this.state = { sites: [], selectedIndex: -1 };
+    this.state = { sites: [], selectedIndex: -1, groups: [], columns: [] };
   }
   /**Accessors */
   get CommandItems(): Array<IContextualMenuItem> {
@@ -65,21 +73,63 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         disabled: !(this.ItemIsSelected),
         title: "Edit",
         onClick: this.onEditItemClicked.bind(this),
-        icon: "Edit"
+        icon: "Edit",
+
       }];
   };
-
   get ItemIsSelected(): boolean {
-    console.log("in ItemIsSelected");
     if (!this.state) { return false; }
-    console.log("out ItemIsSelected");
     return (this.state.selectedIndex != -1);
 
   }
+  private setupColumns(): Array<IColumn> {
+    const columns: Array<IColumn> = [
+      {
+        fieldName: "SiteTemplate",
+        key: "SiteTemplate",
+        name: "SiteTemplate",
+        minWidth: 20,
+        maxWidth: 220,
+      },
+
+      {
+        fieldName: "Title",
+        key: "Title",
+        name: "Title",
+        minWidth: 20,
+        maxWidth: 220,
+        isSorted: false,
+        isSortedDescending: false
+      },
+      {
+        fieldName: "Url",
+        key: "Url",
+        name: "Url",
+        minWidth: 20,
+        maxWidth: 220,
+      },
+    ];
+    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
+      return item.split("|")[1];
+    });
+    for (const dp of displayProps) {
+      columns.push(
+        {
+          fieldName: dp,
+          key: dp,
+          name: dp,
+          minWidth: 20,
+          maxWidth: 220,
+          isGrouped: true,
+          isSorted: false,
+          isSortedDescending: false
+        });
+    }
+    return columns;
+  }
   /** react lifecycle */
   public componentWillMount() {
-
-
+    this.state.columns = this.setupColumns();
     this.state.managedToCrawedMapping = [];
     this.state.managedPropNames = [];
     for (const prop of this.props.propertiesToDisplay.split('\n')) {
@@ -128,22 +178,16 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       }
       this.setState(this.state);
     });
-
   }
   public stopediting() {
-
     this.state.isediting = false;
     this.setState(this.state);
-
   }
   public onActiveItemChanged(item?: any, index?: number) {
-
     this.state.selectedIndex = index;
     this.setState(this.state);
-
   }
   public changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
-
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
         console.log(propname + "was not searchable, now it is ");
@@ -168,7 +212,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }
   }
   public onSave(e?: MouseEvent): void {
-
     let promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
       let proomise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
@@ -192,17 +235,14 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       });
   }
   public onCancel(e?: MouseEvent): void {
-
     this.state.isediting = false;
     this.state.workingStorage = null;
     this.setState(this.state);
-
   }
   public onForceCrawlChange(newValue: boolean) {
     debugger;
     this.state.workingStorage.forceCrawl = newValue;
     this.setState(this.state);
-
   }
   public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
     console.log("in onPropertyValueChanged");
@@ -222,7 +262,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
   }
   public hideMessages(value) {
-
     this.state.errorMessages = "";
     this.setState(this.state);
   }
@@ -247,17 +286,57 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     });
     console.log("out onEditItemClicked");
   }
+  private _onColumnClick(event: any, column: IColumn) {
+    debugger;
+    //    let sortedItems = this.state.sites;
+    let isSortedDescending = column.isSortedDescending;
+    // If we've sorted this column, flip it.
+    if (column.isSorted) {
+      isSortedDescending = !isSortedDescending;
+    }
+    // Sort the items.
+    this.state.sites = this.state.sites.sort((a, b) => {
+      let firstValue = a[column.fieldName];
+      let secondValue = b[column.fieldName];
+      if (isSortedDescending) {
+        return (firstValue > secondValue) ? -1 : 1;
+      } else {
+        if (firstValue > secondValue) {
+          return 1;
+        }
+        else {
+          return -1;
+        }
+        //   return (firstValue > secondValue) ? 1 : -1;
+      }
+    });
+     this.state.sites= _.sortBy(this.state.sites,(a, b) => {
+      let firstValue = a[column.fieldName];
+      let secondValue = b[column.fieldName];
+      if (isSortedDescending) {
+        return (firstValue > secondValue) ? -1 : 1;
+      } else {
+        if (firstValue > secondValue) {
+          return 1;
+        }
+        else {
+          return -1;
+        }
+        //   return (firstValue > secondValue) ? 1 : -1;
+      }
+    });
+
+    // Reset the items and columns to match the state.
+    // this.state.sites = sortedItems;
+    this.setState(this.state);
+  }
   public renderMessages() {
-
     if (!this.state.errorMessages) {
-
       return (<div />);
     }
     else {
-
       return (
         <MessageBar
-
           messageBarType={MessageBarType.remove}
           isMultiline={true}
           onDismiss={this.hideMessages.bind(this)}>
@@ -265,12 +344,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         </MessageBar>
       );
     }
-
   }
   public renderPopup() {
-
     if (!this.state.workingStorage) {
-
       return (<div />);
     }
     else {
@@ -283,7 +359,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           {this.renderMessages.bind(this)()}
           <div> <Label >Site Title</Label> {this.state.workingStorage.Title}</div>
           <span> <Label label="" >Site Url</Label> {this.state.workingStorage.Url}</span>
-
           <table>
             <thead>
               <tr>
@@ -326,71 +401,27 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           <Button icon="Cancel" buttonType={ButtonType.normal} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
           {/*Force Reindex:http://www.techmikael.com/2014/02/how-to-trigger-full-re-index-in.html*/}
           <Button icon="Cancel" buttonType={ButtonType.normal} value="Force Crawl" onClick={this.onCancel.bind(this)} >Force Crawl</Button>
-
-
         </Panel>
       );
     }
-
   }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
-
-    const columns: Array<IColumn> = [
-      {
-        fieldName: "SiteTemplate",
-        key: "SiteTemplate",
-        name: "SiteTemplate",
-        minWidth: 20,
-        maxWidth: 220,
-      },
-
-      {
-        fieldName: "Title",
-        key: "Title",
-        name: "Title",
-        minWidth: 20,
-        maxWidth: 220,
-      },
-      {
-        fieldName: "Url",
-        key: "Url",
-        name: "Url",
-        minWidth: 20,
-        maxWidth: 220,
-      },
-
-    ];
-    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
-      return item.split("|")[1];
-    });
-    for (const dp of displayProps) {
-      columns.push(
-        {
-          fieldName: dp,
-          key: dp,
-          name: dp,
-          minWidth: 20,
-          maxWidth: 220,
-
-        });
-    }
-
     return (
       <div>
         <CommandBar items={this.CommandItems} />
-
-
         <DetailsList
+          key="Url"
+          onColumnHeaderClick={this._onColumnClick.bind(this)}
           items={this.state.sites}
           layoutMode={DetailsListLayoutMode.fixedColumns}
-          columns={columns}
+          columns={this.state.columns}
           selectionMode={SelectionMode.single}
           checkboxVisibility={CheckboxVisibility.hidden}
-          onActiveItemChanged={this.onActiveItemChanged.bind(this)}
+          onActiveItemChanged={this.onActiveItemChanged.bind(this)
+          }
         >
         </DetailsList>
         {this.renderPopup.bind(this)()}
-
       </div>
     );
   }
