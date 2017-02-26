@@ -120,7 +120,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           name: dp,
           minWidth: 20,
           maxWidth: 220,
-          isGrouped: true,
+ 
           isSorted: false,
           isSortedDescending: false
         });
@@ -288,7 +288,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   private _onColumnClick(event: any, column: IColumn) {
     debugger;
-    column=_.find(this.state.columns,c=>c.fieldName===column.fieldName);// find the object in state
+    column = _.find(this.state.columns, c => c.fieldName === column.fieldName);// find the object in state
     // If we've sorted this column, flip it.
     if (column.isSorted) {
       column.isSortedDescending = !column.isSortedDescending;
@@ -298,9 +298,14 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       column.isSortedDescending = false
     }
     // Sort the items.
-     this.state.sites = _.orderBy(this.state.sites, [(site,x,y,z)=>{
+    this.state.sites = _.orderBy(this.state.sites, [(site, x, y, z) => {
       debugger;
-      return site[column.fieldName].toLowerCase();
+      if (site[column.fieldName]) {
+        return site[column.fieldName].toLowerCase();
+      }
+      else {
+        return "";
+      }
     }], [column.isSortedDescending ? "desc" : "asc"]);
     this.setState(this.state);
   }
