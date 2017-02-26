@@ -288,7 +288,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   }
   private _onColumnClick(event: any, column: IColumn) {
     debugger;
-    column=_.find(this.state.columns,c=>c.fieldName=column.fieldName);// find the object in state
+    column=_.find(this.state.columns,c=>c.fieldName===column.fieldName);// find the object in state
     // If we've sorted this column, flip it.
     if (column.isSorted) {
       column.isSortedDescending = !column.isSortedDescending;
