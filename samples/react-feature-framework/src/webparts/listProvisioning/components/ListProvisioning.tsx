@@ -12,7 +12,7 @@ export default class ListProvisioning extends React.Component<IListProvisioningP
           <Placeholder
               icon={'ms-Icon--CustomList'}
               iconText={'SharePoint asset provisioning'}
-              description={'No actual functionality - Sample shows how to provisioning SharePoint assets using feature xml elemenents. See package.json and sharepoint/asset folder. Assets are deployed when web part is installed to a site.'} />
+              description={'No actual functionality - Sample shows how to provision SharePoint assets using feature xml elemenents. See package.json and sharepoint/asset folder. Assets are deployed when web part is installed to a site.'} />
         </div>
       </div>
     );
