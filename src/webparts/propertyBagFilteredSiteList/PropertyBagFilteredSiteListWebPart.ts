@@ -15,13 +15,13 @@ import { IPropertyBagFilteredSiteListWebPartProps } from './IPropertyBagFiltered
 export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWebPart<IPropertyBagFilteredSiteListWebPartProps> {
 
   public render(): void {
+    debugger;
     const element: React.ReactElement<IPropertyBagFilteredSiteListProps > = React.createElement(
       PropertyBagFilteredSiteList,
       {
         description: this.properties.description
       }
     );
-
     ReactDom.render(element, this.domElement);
   }
 
@@ -42,7 +42,16 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
-                })
+                }),
+                ,
+                PropertyPaneTextField("filters", {
+                  label: strings.FiltersFieldLabel,
+                  multiline: true
+                }),
+                PropertyPaneTextField("siteTemplatesToInclude", {
+                  label: strings.SiteTemplatesToIncludeFieldLabel,
+                  multiline: true
+                }),
               ]
             }
           ]

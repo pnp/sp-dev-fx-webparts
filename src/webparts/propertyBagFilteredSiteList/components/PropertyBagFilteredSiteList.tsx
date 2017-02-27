@@ -1,32 +1,172 @@
-import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
-import styles from './PropertyBagFilteredSiteList.module.scss';
-import { IPropertyBagFilteredSiteListProps } from './IPropertyBagFilteredSiteListProps';
+import * as React from "react";
+import pnp from "sp-pnp-js";
+import { SortDirection } from "sp-pnp-js";
 
-export default class PropertyBagFilteredSiteList extends React.Component<IPropertyBagFilteredSiteListProps, void> {
+import * as _ from "lodash";
+
+import DisplayProp from "../../shared/DisplayProp";
+import { SearchQuery, SearchResults } from "sp-pnp-js";
+import { css } from "office-ui-fabric-react";
+import styles from "./PropertyBagFilteredSiteList.module.scss";
+import { IPropertyBagFilteredSiteListProps } from "./IPropertyBagFilteredSiteListProps";
+
+import { Label } from "office-ui-fabric-react/lib/Label";
+import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { Link } from "office-ui-fabric-react/lib/Link";
+import { List } from "office-ui-fabric-react/lib/List";
+import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
+import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
+import * as md from "../../shared/MessageDisplay";
+import MessageDisplay from "../../shared/MessageDisplay";
+import {
+  DetailsList, DetailsListLayoutMode, IColumn, IGroupedList, SelectionMode, CheckboxVisibility, IGroup
+} from "office-ui-fabric-react/lib/DetailsList";
+import {
+  GroupedList
+} from "office-ui-fabric-react/lib/GroupedList";
+import {
+  IViewport
+} from "office-ui-fabric-react/lib/utilities/decorators/withViewport";
+
+import {
+  Panel, PanelType
+} from "office-ui-fabric-react/lib/Panel";
+import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
+export interface IPropertyBagFilteredSiteListState {
+  errorMessages: Array<md.Message>;
+  sites: Array<Site>;
+}
+export class Site {
+  public constructor(
+    public title: string,
+    public description: string,
+    public url: string,
+
+  ) { }
+}
+
+export class DisplaySite {
+  constructor(
+    public Title: string,
+    public Url: string,
+    public SiteTemplate: string,
+    public errorMessages: Array<md.Message>,
+    // public SarchableProps?: Array<String>,
+    public DisplayProps?: Array<DisplayProp>,
+    public searchableProps?: Array<string>,
+    public forceCrawl?: boolean,
+
+
+  ) { }
+}
+export default class PropertyBagFilteredSiteList extends React.Component<IPropertyBagFilteredSiteListProps, IPropertyBagFilteredSiteListState> {
+  public constructor(props) {
+    debugger;
+    super(props);
+    this.state = { sites: [], errorMessages: [] };
+  }
+  /** Utility Functions */
+  public removeMessage(messageId: string) {
+    _.remove(this.state.errorMessages, {
+      Id: messageId
+    });
+    this.setState(this.state);
+  }
+  /** react lifecycle */
+  public componentWillMount() {
+
+    let querytext = "contentclass:STS_Site ";
+    if (this.props.siteTemplatesToInclude) {
+      const siteTemplates = this.props.siteTemplatesToInclude.split('\n');
+      if (siteTemplates.length > 0 && siteTemplates[0] !== "") {
+        querytext += " AND (";
+        for (const siteTemplate of siteTemplates) {
+          const siteTemplateParts = siteTemplate.split("#");
+          if (!siteTemplateParts[1]) {
+            querytext += "SiteTemplate=" + siteTemplateParts[0];
+          }
+          else {
+            querytext += "(SiteTemplate=" + siteTemplateParts[0] + " AND SiteTemplateId=" + siteTemplateParts[1] + ")";
+          }
+          if (siteTemplates.indexOf(siteTemplate) !== siteTemplates.length - 1)
+          { querytext += " OR "; }
+        }
+        querytext += " )";
+      }
+    }
+    if (this.props.filters) {
+      const filters = this.props.filters.split('\n');
+      if (filters.length > 0 && filters[0] !== "") {
+        querytext += " AND (";
+        for (const filter of filters) {
+
+
+          querytext += " (" + filter + ") ";
+
+          if (filters.indexOf(filter) !== filters.length - 1)
+          { querytext += " OR "; }
+        }
+        querytext += " )";
+      }
+    }
+    console.log("Using Query " + querytext);
+    const q: SearchQuery = {
+      Querytext: querytext,
+      SelectProperties: ["Title", "Description", "SPSiteUrl", "SPWebUrl"],
+      RowLimit: 999,
+      TrimDuplicates: false,
+      SortList:
+      [
+        {
+          Property: 'Title',
+          Direction: SortDirection.Ascending
+        }
+      ]
+
+    };
+    pnp.sp.search(q).then((results: SearchResults) => {
+      for (const r of results.PrimarySearchResults) {
+        this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
+      }
+      debugger;
+      this.setState(this.state);
+    }).catch(err => {
+      debugger;
+      this.state.errorMessages.push(new md.Message(err));
+      this.setState(this.state);
+    });
+  }
+
+
+
+
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
+    debugger;
+    const listItems = this.state.sites.map((site) =>
+      <li>
+        <a href={site.url}>{site.title}</a>
+        <Label>{site.description}</Label>
+      </li>
+    );
+    const sites = this.state.sites;
     return (
-      <div className={styles.helloWorld}>
-        <div className={styles.container}>
-          <div className={css('ms-Grid-row ms-bgColor-themeDark ms-fontColor-white', styles.row)}>
-            <div className='ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1'>
-              <span className='ms-font-xl ms-fontColor-white'>
-                Welcome to SharePoint!
-              </span>
-              <p className='ms-font-l ms-fontColor-white'>
-                Customize SharePoint experiences using Web Parts.
-              </p>
-              <p className='ms-font-l ms-fontColor-white'>
-                {this.props.description}
-              </p>
-              <a className={css('ms-Button', styles.button)}
-                 href='https://github.com/SharePoint/sp-dev-docs/wiki'>
-                <span className='ms-Button-label'>Learn more</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div >
+        <Label>{this.props.description}</Label>
+        <ul> {listItems}</ul>
+        {/*<List items={sites} startIndex={0} 
+          onRenderCell={(site, index) => {
+            debugger;
+            return (
+              <div >
+                <Link href={site.url}>{site.title}</Link>
+                <Label>{site.description}</Label>
+              </div>
+            );
+          }}
+        >
+        </List>*/}
+
+      </div >
     );
   }
 }

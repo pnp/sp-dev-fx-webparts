@@ -14,7 +14,9 @@
     "description": { "default": "displays all sites with the selected propeties" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "property-bag-filtered-site-list"
+      "description": "property-bag-filtered-site-list",
+      "filters":"AreaName=Projects",
+      "siteTemplatesToInclude":"STS"
     }
   }]
 }

@@ -88,8 +88,8 @@ export default class utils {
             clientContext.load(web);
             clientContext.load(webProps);
             clientContext.executeQueryAsync(
-                (sender, args) => {  resolve() },
-                (sender, args) => {  reject(args.get_message()); }
+                (sender, args) => { resolve(); },
+                (sender, args) => { reject(args.get_message()); }
             );
 
         });
@@ -106,7 +106,7 @@ export default class utils {
     }
     public static forceCrawl(siteUrl: string): Promise<any> {
         const web = new Web(siteUrl);
-  
+
         return web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
             let version: number = r.AllProperties["vti_x005f_searchversion"];
             if (version) {

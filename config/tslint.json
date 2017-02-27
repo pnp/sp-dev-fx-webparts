@@ -22,6 +22,8 @@
       "no-construct": false,
       "no-duplicate-case": true,
    
+   "no-unused-variable":"true",
+
       "no-duplicate-variable": true,
       "no-eval": false,
       "no-function-expression": true,

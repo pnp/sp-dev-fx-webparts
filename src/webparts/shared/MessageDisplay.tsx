@@ -4,8 +4,8 @@ import { Guid } from "@microsoft/sp-core-library";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 
 export class Message {
-    Id: string;
-    text: string;
+   public Id: string;
+   public text: string;
     public constructor(msg: string) {
         this.text = msg;
         this.Id = Guid.newGuid().toString();

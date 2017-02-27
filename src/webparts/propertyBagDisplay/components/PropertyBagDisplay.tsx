@@ -4,7 +4,7 @@ import { Web } from "sp-pnp-js";
 import * as _ from "lodash";
 import utils from "../../shared/utils";
 import DisplayProp from "../../shared/DisplayProp";
-import { SearchQuery, SearchResults, SearchResult } from "sp-pnp-js";
+import { SearchQuery, SearchResults } from "sp-pnp-js";
 import { css } from "office-ui-fabric-react";
 import styles from "./PropertyBagDisplay.module.scss";
 import { IPropertyBagDisplayProps } from "./IPropertyBagDisplayProps";
@@ -13,7 +13,6 @@ import { Label } from "office-ui-fabric-react/lib/Label";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Toggle } from "office-ui-fabric-react/lib/Toggle";
 import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
-
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import * as md from "../../shared/MessageDisplay";
 import MessageDisplay from "../../shared/MessageDisplay";
@@ -40,7 +39,7 @@ export interface IPropertyBagDisplayState {
   workingStorage?: DisplaySite;
   managedPropNames?: Array<string>;
   columns: Array<IColumn>;
-  groups: Array<IGroup>;
+  
 }
 
 export class ManagedToCrawledMappingEntry {
@@ -55,18 +54,18 @@ export class DisplaySite {
     public Url: string,
     public SiteTemplate: string,
     public errorMessages: Array<md.Message>,
-   // public SarchableProps?: Array<String>,
+    // public SarchableProps?: Array<String>,
     public DisplayProps?: Array<DisplayProp>,
     public searchableProps?: Array<string>,
     public forceCrawl?: boolean,
-    
+
 
   ) { }
 }
 export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
   public constructor(props) {
     super(props);
-    this.state = { sites: [], selectedIndex: -1, groups: [], columns: [], errorMessages: [] };
+    this.state = { sites: [], selectedIndex: -1,  columns: [], errorMessages: [] };
   }
   /**Accessors */
   get CommandItems(): Array<IContextualMenuItem> {
@@ -84,7 +83,108 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   get ItemIsSelected(): boolean {
     if (!this.state) { return false; }
     return (this.state.selectedIndex !== -1);
+  }
+  /** Utility Functions */
+  public renderPopup() {
 
+    if (!this.state.workingStorage) {
+      return (<div />);
+    }
+    else {
+      return (
+        <Panel
+          isOpen={this.state.isediting} type={PanelType.medium}
+          onDismiss={this.stopediting.bind(this)}
+        >
+          <MessageDisplay messages={this.state.workingStorage.errorMessages}
+            hideMessage={this.removePanelMessage.bind(this)} />
+
+          <div> <Label >Site Title</Label> {this.state.workingStorage.Title}</div>
+          <span> <Label label="" >Site Url</Label> {this.state.workingStorage.Url}</span>
+          <table>
+            <thead>
+              <tr>
+                <td>Managed Property Name</td>
+                <td>Value in Search Index</td>
+                <td>Crawled Property Name</td>
+                <td>Web Property Value</td>
+                <td>Searchable</td>
+              </tr>
+            </thead>
+
+            <tbody>
+              {this.state.workingStorage.DisplayProps.map((dp, i) => {
+                return (<tr>
+                  <td>{dp.managedPropertyName}</td>
+                  <td>{this.state.workingStorage[dp.managedPropertyName]}</td>
+                  <td>{dp.crawledPropertyName}</td>
+                  <td>
+                    <TextField
+                      data-crawledPropertyName={dp.crawledPropertyName}
+                      value={dp.value}
+                      onBlur={this.onPropertyValueChanged.bind(this)}
+                    />
+                  </td>
+                  <td>
+                    <Toggle label=""
+                      checked={dp.searchable}
+                      onChanged={this.createSearcheableOnChangedHandler(dp.crawledPropertyName)}
+                    />
+                  </td>
+                </tr>);
+              })}
+            </tbody>
+          </table>
+          <Toggle label="Force Crawl"
+            checked={this.state.workingStorage.forceCrawl}
+            onChanged={this.onForceCrawlChange.bind(this)}
+          />
+          <Button default={true} icon="Save" buttonType={ButtonType.hero} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
+          <Button icon="Cancel" buttonType={ButtonType.normal} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
+
+        </Panel>
+      );
+    }
+  }
+  public removeMessage(messageList: Array<md.Message>, messageId: string) {
+    _.remove(messageList, {
+      Id: messageId
+    });
+    this.setState(this.state);
+  }
+  public removeMainMessage(messageId: string) {
+    this.removeMessage(this.state.errorMessages, messageId);
+  }
+  public removePanelMessage(messageId: string) {
+    this.removeMessage(this.state.workingStorage.errorMessages, messageId);
+  }
+  public changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
+    if (newValue) {//make prop searchable
+      if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
+        console.log(propname + "was not searchable, now it is ");
+        this.state.workingStorage.searchableProps.push(propname);
+        return utils.saveSearchablePropertiesToSharePoint(siteUrl, this.state.workingStorage.searchableProps);
+      }
+      else {
+        console.log(propname + "was not searchable, still is not ");
+        return Promise.resolve();
+      }
+    }
+    else { // make prop not searchablke
+      if (_.indexOf(this.state.workingStorage.searchableProps, propname) !== -1) {// wasa not searchable, mpw it is
+        console.log(propname + "was searchable, now it is  not");
+        _.remove(this.state.workingStorage.searchableProps, p => { return p === propname; });
+        return utils.saveSearchablePropertiesToSharePoint(siteUrl, this.state.workingStorage.searchableProps);
+      }
+      else {
+        console.log(propname + "was searchable, still  it is");
+        return Promise.resolve();
+      }
+    }
+  }
+  public stopediting() {
+    this.state.isediting = false;
+    this.setState(this.state);
   }
   private setupColumns(): Array<IColumn> {
     const columns: Array<IColumn> = [
@@ -157,7 +257,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
             querytext += "(SiteTemplate=" + siteTemplateParts[0] + " AND SiteTemplateId=" + siteTemplateParts[1] + ")";
           }
           if (siteTemplates.indexOf(siteTemplate) !== siteTemplates.length - 1)
-          { querytext += " OR " }
+          { querytext += " OR "; }
         }
         querytext += " )";
       }
@@ -187,38 +287,12 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       this.setState(this.state);
     });
   }
-  public stopediting() {
-    this.state.isediting = false;
-    this.setState(this.state);
-  }
+  /** Event Handlers */
   public onActiveItemChanged(item?: any, index?: number) {
     this.state.selectedIndex = index;
     this.setState(this.state);
   }
-  public changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
-    if (newValue) {//make prop searchable
-      if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
-        console.log(propname + "was not searchable, now it is ");
-        this.state.workingStorage.searchableProps.push(propname);
-        return utils.saveSearchablePropertiesToSharePoint(siteUrl, this.state.workingStorage.searchableProps);
-      }
-      else {
-        console.log(propname + "was not searchable, still is not ");
-        return Promise.resolve();
-      }
-    }
-    else { // make prop not searchablke
-      if (_.indexOf(this.state.workingStorage.searchableProps, propname) !== -1) {// wasa not searchable, mpw it is
-        console.log(propname + "was searchable, now it is  not");
-        _.remove(this.state.workingStorage.searchableProps, p => { return p === propname; });
-        return utils.saveSearchablePropertiesToSharePoint(siteUrl, this.state.workingStorage.searchableProps);
-      }
-      else {
-        console.log(propname + "was searchable, still  it is");
-        return Promise.resolve();
-      }
-    }
-  }
+
   public onSave(e?: MouseEvent): void {
     let promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
@@ -264,7 +338,29 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     dp.searchable = value;
     this.setState(this.state);
   }
+  //  public onEditItemClicked(e?: MouseEvent): void {
+  //     const selectedSite = this.state.sites[this.state.selectedIndex];
+  //     const web = new Web(selectedSite.Url);
+  //     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
+  //       const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
+  //         return item.split("|")[0];
+  //       });
+  //       this.state.propertyBagEditPanelProps = _.clone(this.state.sites[this.state.selectedIndex]);
+  //       this.state.propertyBagEditPanelProps.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+  //       this.state.propertyBagEditPanelProps.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.propertyBagEditPanelProps.searchableProps);
+  //       this.state.propertyBagEditPanelProps.stopEditing=this.onCancel.bind(this);
+  //       this.state.propertyBagEditPanelProps.isVisible=true;
+  //       // now add in the managed Prop
+  //       for (let dp of this.state.propertyBagEditPanelProps.DisplayProps) {
+  //         dp.managedPropertyName =
+  //           _.find(this.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
+  //       }
+  //       this.state.isediting = true;
+  //       this.state.propertyBagEditPanelProps.isVisible = true;
+  //       this.setState(this.state);
+  //     });
 
+  //   }
   public onEditItemClicked(e?: MouseEvent): void {
     console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];
@@ -276,7 +372,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
       this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
-      this.state.workingStorage.errorMessages= new Array<md.Message>();
+      this.state.workingStorage.errorMessages = new Array<md.Message>();
       // now add in the managed Prop
       for (let dp of this.state.workingStorage.DisplayProps) {
         dp.managedPropertyName =
@@ -295,7 +391,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }
     else {
       column.isSorted = true;
-      column.isSortedDescending = false
+      column.isSortedDescending = false;
     }
     // Sort the items.
     this.state.sites = _.orderBy(this.state.sites, [(site, x, y, z) => {
@@ -309,80 +405,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.setState(this.state);
   }
 
-  public renderPopup() {
 
-    if (!this.state.workingStorage) {
-      return (<div />);
-    }
-    else {
-      return (
-        <Panel
-          isOpen={this.state.isediting} type={PanelType.medium}
-          onDismiss={this.stopediting.bind(this)}
-        >
-<MessageDisplay messages = {this.state.workingStorage.errorMessages}
-hideMessage={this.removePanelMessage.bind(this)} />
-          
-          <div> <Label >Site Title</Label> {this.state.workingStorage.Title}</div>
-          <span> <Label label="" >Site Url</Label> {this.state.workingStorage.Url}</span>
-          <table>
-            <thead>
-              <tr>
-                <td>Managed Property Name</td>
-                <td>Value in Search Index</td>
-                <td>Crawled Property Name</td>
-                <td>Web Property Value</td>
-                <td>Searchable</td>
-              </tr>
-            </thead>
-
-            <tbody>
-              {this.state.workingStorage.DisplayProps.map((dp, i) => {
-                return (<tr>
-                  <td>{dp.managedPropertyName}</td>
-                  <td>{this.state.workingStorage[dp.managedPropertyName]}</td>
-                  <td>{dp.crawledPropertyName}</td>
-                  <td>
-                    <TextField
-                      data-crawledPropertyName={dp.crawledPropertyName}
-                      value={dp.value}
-                      onBlur={this.onPropertyValueChanged.bind(this)}
-                    />
-                  </td>
-                  <td>
-                    <Toggle label=""
-                      checked={dp.searchable}
-                      onChanged={this.createSearcheableOnChangedHandler(dp.crawledPropertyName)}
-                    />
-                  </td>
-                </tr>);
-              })}
-            </tbody>
-          </table>
-          <Toggle label="Force Crawl"
-            checked={this.state.workingStorage.forceCrawl}
-            onChanged={this.onForceCrawlChange.bind(this)}
-          />
-          <Button default={true} icon="Save" buttonType={ButtonType.hero} value="Save" onClick={this.onSave.bind(this)} >Save</Button>
-          <Button icon="Cancel" buttonType={ButtonType.normal} value="Cancel" onClick={this.onCancel.bind(this)} >Cancel</Button>
-          {/*Force Reindex:http://www.techmikael.com/2014/02/how-to-trigger-full-re-index-in.html*/}
-          <Button icon="Cancel" buttonType={ButtonType.normal} value="Force Crawl" onClick={this.onCancel.bind(this)} >Force Crawl</Button>
-        </Panel>
-      );
-    }
-  }
-  public removeMessage(messageList:Array<md.Message>,messageId: string) {
-    _.remove(messageList, {
-      Id: messageId
-    });
-    this.setState(this.state);
-  }
-  public removeMainMessage(messageId: string) {
-this.removeMessage(this.state.errorMessages,messageId);
-  }
-  public removePanelMessage(messageId: string) {
-      this.removeMessage(this.state.workingStorage.errorMessages,messageId);
-  }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
     debugger;
     return (
