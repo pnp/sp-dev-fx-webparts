@@ -55,7 +55,7 @@ export class DisplaySite {
     public Url: string,
     public SiteTemplate: string,
     public errorMessages: Array<md.Message>,
-    public SarchableProps?: Array<String>,
+   // public SarchableProps?: Array<String>,
     public DisplayProps?: Array<DisplayProp>,
     public searchableProps?: Array<string>,
     public forceCrawl?: boolean,
