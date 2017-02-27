@@ -16,8 +16,7 @@ import { IPropertyBagEditorWebPartProps } from "./IPropertyBagEditorWebPartProps
 export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPropertyBagEditorWebPartProps> {
 
   public render(): void {
-    debugger;
-    const uqpc = new UrlQueryParameterCollection(window.location.toString());
+        const uqpc = new UrlQueryParameterCollection(window.location.toString());
     let siteUrl: string = uqpc.getValue("siteUrl");
     if (!siteUrl) {
       siteUrl = this.context.pageContext.site.absoluteUrl;
@@ -40,7 +39,7 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    debugger;
+  
     return {
       pages: [
         {

@@ -12,8 +12,11 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { Label } from "office-ui-fabric-react/lib/Label";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Toggle } from "office-ui-fabric-react/lib/Toggle";
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button"
+import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
+
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
+import * as md from "../../shared/MessageDisplay";
+import MessageDisplay from "../../shared/MessageDisplay";
 import {
   DetailsList, DetailsListLayoutMode, IColumn, IGroupedList, SelectionMode, CheckboxVisibility, IGroup
 } from "office-ui-fabric-react/lib/DetailsList";
@@ -31,12 +34,11 @@ import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu"
 export interface IPropertyBagDisplayState {
   selectedIndex: number;
   managedToCrawedMapping?: Array<ManagedToCrawledMappingEntry>;
-  messsage?: string;
+  errorMessages: Array<md.Message>
   isediting?: boolean;
   sites: Array<any>;
   workingStorage?: DisplaySite;
   managedPropNames?: Array<string>;
-  errorMessages?: string;
   columns: Array<IColumn>;
   groups: Array<IGroup>;
 }
@@ -60,9 +62,9 @@ export class DisplaySite {
   ) { }
 }
 export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
-  public constructor() {
-    super();
-    this.state = { sites: [], selectedIndex: -1, groups: [], columns: [] };
+  public constructor(props) {
+    super(props);
+    this.state = { sites: [], selectedIndex: -1, groups: [], columns: [], errorMessages: [] };
   }
   /**Accessors */
   get CommandItems(): Array<IContextualMenuItem> {
@@ -79,7 +81,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   };
   get ItemIsSelected(): boolean {
     if (!this.state) { return false; }
-    return (this.state.selectedIndex != -1);
+    return (this.state.selectedIndex !== -1);
 
   }
   private setupColumns(): Array<IColumn> {
@@ -89,7 +91,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         key: "SiteTemplate",
         name: "SiteTemplate",
         minWidth: 20,
-        maxWidth: 220,
+        maxWidth: 100,
+
       },
 
       {
@@ -120,7 +123,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           name: dp,
           minWidth: 20,
           maxWidth: 220,
- 
+
           isSorted: false,
           isSortedDescending: false
         });
@@ -176,6 +179,12 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         obj.SiteTemplate = obj.SiteTemplate + "#" + obj.SiteTemplateId;
         this.state.sites.push(obj);
       }
+      debugger;
+      this.state.errorMessages.push(new md.Message("Items Recieved"));
+      this.setState(this.state);
+    }).catch(err => {
+      debugger;
+      this.state.errorMessages.push(new md.Message(err));
       this.setState(this.state);
     });
   }
@@ -227,6 +236,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         }
         this.state.workingStorage = null;
         this.state.isediting = false;
+
         this.setState(this.state);
       }).catch((err) => {
         this.state.errorMessages = err;
@@ -240,29 +250,22 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.setState(this.state);
   }
   public onForceCrawlChange(newValue: boolean) {
-    debugger;
     this.state.workingStorage.forceCrawl = newValue;
     this.setState(this.state);
   }
   public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
-    console.log("in onPropertyValueChanged");
     const selectedProperty = event.currentTarget.attributes["data-crawledpropertyname"].value;
     let dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
     dp.value = event.currentTarget.value;
     this.setState(this.state);
-    console.log("out onPropertyValueChanged");
   }
   public createSearcheableOnChangedHandler = (managedPropertyName) => (value) => {
-    console.log("in createSearcheableOnChangedHandler");
-    debugger;
     let dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === managedPropertyName; });
     dp.searchable = value;
     this.setState(this.state);
-    console.log("out createSearcheableOnChangedHandler");
-
   }
   public hideMessages(value) {
-    this.state.errorMessages = "";
+    // this.state.errorMessages = "";
     this.setState(this.state);
   }
   public onEditItemClicked(e?: MouseEvent): void {
@@ -287,7 +290,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     console.log("out onEditItemClicked");
   }
   private _onColumnClick(event: any, column: IColumn) {
-    debugger;
     column = _.find(this.state.columns, c => c.fieldName === column.fieldName);// find the object in state
     // If we've sorted this column, flip it.
     if (column.isSorted) {
@@ -299,7 +301,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }
     // Sort the items.
     this.state.sites = _.orderBy(this.state.sites, [(site, x, y, z) => {
-      debugger;
       if (site[column.fieldName]) {
         return site[column.fieldName].toLowerCase();
       }
@@ -325,16 +326,17 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }
   }
   public renderPopup() {
+
     if (!this.state.workingStorage) {
       return (<div />);
     }
     else {
-
       return (
         <Panel
           isOpen={this.state.isediting} type={PanelType.medium}
           onDismiss={this.stopediting.bind(this)}
         >
+
           {this.renderMessages.bind(this)()}
           <div> <Label >Site Title</Label> {this.state.workingStorage.Title}</div>
           <span> <Label label="" >Site Url</Label> {this.state.workingStorage.Url}</span>
@@ -384,11 +386,22 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       );
     }
   }
+  public removeMessage(messageId: string) {
+
+    _.remove(this.state.errorMessages, {
+      Id: messageId
+    });
+    this.setState(this.state);
+  }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
     debugger;
     return (
       <div>
         <CommandBar items={this.CommandItems} />
+        <MessageDisplay
+          messages={this.state.errorMessages}
+          hideMessage={this.removeMessage.bind(this)}
+        />
         <DetailsList
           key="Url"
           onColumnHeaderClick={this._onColumnClick.bind(this)}

@@ -179,7 +179,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
       { isResizable: true, key: "value", name: "Propert Value", fieldName: "value", minWidth: 150 },
       { key: "searchable", name: "searchable", fieldName: "searchable", minWidth: 150 },
     ];
-    debugger;
+
     return (
       <div>
         <CommandBar items={this.CommandItems} />
