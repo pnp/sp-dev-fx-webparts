@@ -39,7 +39,6 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
   }
   /**Accessors */
   get CommandItems(): Array<IContextualMenuItem> {
-    debugger;
     return [
       {
         key: "a",
@@ -102,8 +101,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
 
     const web = new Web(this.props.siteUrl);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-      debugger;
-      const sp = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+       const sp = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       const dp = utils.SelectProperties(r.AllProperties, this.props.propertiesToEdit.split("\n"), sp);
       this.state.searchableProps = sp;
       this.state.displayProps = dp;
@@ -117,7 +115,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     this.setState(this.state);
   }
   public onActiveItemChanged(item?: any, index?: number) {
-    debugger;
+
     this.state.selectedIndex = index;
     this.setState(this.state);
   }
@@ -148,8 +146,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     this.setState(this.state);
   }
   public onPropertyValueChanged(event) {
-    debugger;
-    this.state.workingStorage.value = event.target.value;
+     this.state.workingStorage.value = event.target.value;
     this.setState(this.state);
   }
 

@@ -34,7 +34,7 @@ import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu"
 export interface IPropertyBagDisplayState {
   selectedIndex: number;
   managedToCrawedMapping?: Array<ManagedToCrawledMappingEntry>;
-  errorMessages: Array<md.Message>
+  errorMessages: Array<md.Message>;
   isediting?: boolean;
   sites: Array<any>;
   workingStorage?: DisplaySite;
@@ -54,10 +54,12 @@ export class DisplaySite {
     public Title: string,
     public Url: string,
     public SiteTemplate: string,
+    public errorMessages: Array<md.Message>,
     public SarchableProps?: Array<String>,
     public DisplayProps?: Array<DisplayProp>,
     public searchableProps?: Array<string>,
-    public forceCrawl?: boolean
+    public forceCrawl?: boolean,
+    
 
   ) { }
 }
@@ -92,9 +94,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         name: "SiteTemplate",
         minWidth: 20,
         maxWidth: 100,
-
       },
-
       {
         fieldName: "Title",
         key: "Title",
@@ -123,7 +123,6 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           name: dp,
           minWidth: 20,
           maxWidth: 220,
-
           isSorted: false,
           isSortedDescending: false
         });
@@ -239,7 +238,8 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
 
         this.setState(this.state);
       }).catch((err) => {
-        this.state.errorMessages = err;
+        debugger;
+        this.state.workingStorage.errorMessages.push(new md.Message(err));
         this.setState(this.state);
         console.log(err);
       });
@@ -264,10 +264,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     dp.searchable = value;
     this.setState(this.state);
   }
-  public hideMessages(value) {
-    // this.state.errorMessages = "";
-    this.setState(this.state);
-  }
+
   public onEditItemClicked(e?: MouseEvent): void {
     console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];
@@ -279,6 +276,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);
       this.state.workingStorage.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
+      this.state.workingStorage.errorMessages= new Array<md.Message>();
       // now add in the managed Prop
       for (let dp of this.state.workingStorage.DisplayProps) {
         dp.managedPropertyName =
@@ -310,21 +308,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     }], [column.isSortedDescending ? "desc" : "asc"]);
     this.setState(this.state);
   }
-  public renderMessages() {
-    if (!this.state.errorMessages) {
-      return (<div />);
-    }
-    else {
-      return (
-        <MessageBar
-          messageBarType={MessageBarType.remove}
-          isMultiline={true}
-          onDismiss={this.hideMessages.bind(this)}>
-          {this.state.errorMessages}
-        </MessageBar>
-      );
-    }
-  }
+
   public renderPopup() {
 
     if (!this.state.workingStorage) {
@@ -336,8 +320,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           isOpen={this.state.isediting} type={PanelType.medium}
           onDismiss={this.stopediting.bind(this)}
         >
-
-          {this.renderMessages.bind(this)()}
+<MessageDisplay messages = {this.state.workingStorage.errorMessages}
+hideMessage={this.removePanelMessage.bind(this)} />
+          
           <div> <Label >Site Title</Label> {this.state.workingStorage.Title}</div>
           <span> <Label label="" >Site Url</Label> {this.state.workingStorage.Url}</span>
           <table>
@@ -386,12 +371,17 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       );
     }
   }
-  public removeMessage(messageId: string) {
-
-    _.remove(this.state.errorMessages, {
+  public removeMessage(messageList:Array<md.Message>,messageId: string) {
+    _.remove(messageList, {
       Id: messageId
     });
     this.setState(this.state);
+  }
+  public removeMainMessage(messageId: string) {
+this.removeMessage(this.state.errorMessages,messageId);
+  }
+  public removePanelMessage(messageId: string) {
+      this.removeMessage(this.state.workingStorage.errorMessages,messageId);
   }
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
     debugger;
@@ -400,7 +390,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         <CommandBar items={this.CommandItems} />
         <MessageDisplay
           messages={this.state.errorMessages}
-          hideMessage={this.removeMessage.bind(this)}
+          hideMessage={this.removeMainMessage.bind(this)}
         />
         <DetailsList
           key="Url"
