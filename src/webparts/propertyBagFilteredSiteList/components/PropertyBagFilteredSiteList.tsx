@@ -33,6 +33,7 @@ import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu"
 export interface IPropertyBagFilteredSiteListState {
   errorMessages: Array<md.Message>;
   sites: Array<Site>;
+  userFilters: Array<UserFilter>;
 }
 export class Site {
   public constructor(
@@ -57,11 +58,18 @@ export class DisplaySite {
 
   ) { }
 }
+export class UserFilter {
+
+  public values: Array<string>;
+  public constructor(public managedPropertyName: string) {
+    this.values = [];
+  }
+}
 export default class PropertyBagFilteredSiteList extends React.Component<IPropertyBagFilteredSiteListProps, IPropertyBagFilteredSiteListState> {
   public constructor(props) {
     debugger;
     super(props);
-    this.state = { sites: [], errorMessages: [] };
+    this.state = { sites: [], errorMessages: [], userFilters: [] };
   }
   /** Utility Functions */
   public removeMessage(messageId: string) {
@@ -70,8 +78,36 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     });
     this.setState(this.state);
   }
-  public getSites(siteTemplatesToInclude: string, filters: string, showQueryText: boolean) {
+
+  public setupUserFilters(userFilterNames: Array<string>) {
+    this.state.userFilters = [];
+    for (let userFilterName of userFilterNames) {
+      this.state.userFilters.push(new UserFilter(userFilterName))
+    }
+  }
+
+  public extractUserFilterValues(r) {
+    for (let userFilter of this.state.userFilters) {
+      const value = r[userFilter.managedPropertyName].trim();
+      if (_.find(userFilter.values, v => { return v === value; })) {
+        // already there
+      }
+      else {
+        userFilter.values.push(value)
+      }
+    }
+
+  }
+  public getSites(siteTemplatesToInclude: string, filters: string, showQueryText: boolean, userFilters: string, showSiteDescriptions: boolean) {
     debugger;
+    let userFilterNameArray = [];
+    if (userFilters) {
+      for (let userFilter of userFilters.split('\n')) {
+        if (userFilter.trim() != "") {
+          userFilterNameArray.push(userFilter);
+        }
+      }
+    }
     let querytext = "contentclass:STS_Site ";
     if (siteTemplatesToInclude) {
       querytext = utils.addSiteTemplatesToSearchQuery(siteTemplatesToInclude, querytext);
@@ -82,9 +118,18 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     if (showQueryText) {
       this.state.errorMessages.push(new md.Message("Using Query " + querytext));
     }
+    let selectProperties: Array<string> = ["Title", "SPSiteUrl"];
+
+    if (showSiteDescriptions) {
+      selectProperties.push("Description");
+    }
+    for (let userFilter of userFilterNameArray) {
+      selectProperties.push(userFilter);
+    }
+
     const q: SearchQuery = {
       Querytext: querytext,
-      SelectProperties: ["Title", "Description", "SPSiteUrl", "SPWebUrl"],
+      SelectProperties: selectProperties,
       RowLimit: 999,
       TrimDuplicates: false,
       // SortList:
@@ -98,8 +143,10 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     };
     pnp.sp.search(q).then((results: SearchResults) => {
       this.state.sites = [];
+      this.setupUserFilters(userFilterNameArray);
       for (const r of results.PrimarySearchResults) {
         this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
+        this.extractUserFilterValues(r);
       }
       debugger;
       this.setState(this.state);
@@ -111,11 +158,11 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   }
   /** react lifecycle */
   public componentWillMount() {
-    this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText);
+    this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText, this.props.userFilters, this.props.showSiteDescriptions);
   }
   public componentWillReceiveProps(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any) {
     debugger;
-    this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText);
+    this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
   }
   public conditionallyRenderDescription(site: Site) {
     if (this.props.showSiteDescriptions) {
