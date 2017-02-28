@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "spfx-sp-pnp-js-example",
+    "framework": "knockout",
+    "version": "1.0.0",
+    "libraryId": "ef1fde11-2cb3-42fc-97f6-5f5c8a7ac63d"
+  }
+}
