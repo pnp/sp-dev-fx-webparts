@@ -68,7 +68,7 @@ export class UserFilter {
 }
 export default class PropertyBagFilteredSiteList extends React.Component<IPropertyBagFilteredSiteListProps, IPropertyBagFilteredSiteListState> {
   public constructor(props) {
-    debugger;
+
     super(props);
     this.state = { sites: [], errorMessages: [], userFilters: [] };
   }
@@ -185,16 +185,28 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       for (const value of uf.values) {
         item.items.push({
           key: value,
+          data: {
+            managedPropertyName: uf.managedPropertyName,
+            value: value
+          },
           name: value,
-          title: value
+          title: value,
+          onClick: this.filterOnMetadata(uf.managedPropertyName)
         });
       }
       items.push(item);
     }
     return items;
   }
+  // a function that returns a function that takes a value
+  public filterOnMetadata = (managedPropertyName) => (value) => {
+    debugger;
+  }
+  // public filterOnMetadata()=> (ev?: MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void' {
+  //   debugger;
 
-
+  //   this.setState(this.state);
+  // }
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
     debugger;
 
