@@ -20,7 +20,10 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
     const element: React.ReactElement<IPropertyBagFilteredSiteListProps> = React.createElement(
       PropertyBagFilteredSiteList,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        siteTemplatesToInclude: this.properties.siteTemplatesToInclude,
+        filters: this.properties.filters,
+        userFilters: this.properties.userFilters
       }
     );
     ReactDom.render(element, this.domElement);
@@ -47,17 +50,22 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
                 ,
                 PropertyPaneTextField("filters", {
                   label: strings.FiltersFieldLabel,
-                  multiline: true
+                  description: strings.FiltersFieldDescription,
+                  multiline: true,
+                  resizable: true
                 }),
                 PropertyPaneTextField("siteTemplatesToInclude", {
                   label: strings.SiteTemplatesToIncludeFieldLabel,
-                      description: strings.SiteTemplatesToIncludeFieldDescription,
-                  multiline: true
+                  description: strings.SiteTemplatesToIncludeFieldDescription,
+                  multiline: true,
+                  resizable: true
 
                 }),
                 PropertyPaneTextField("userFilters", {
                   label: strings.UserFiltersFieldLabel,
-                  multiline: true
+                  description: strings.UserFiltersFieldDescription,
+                  multiline: true,
+                  resizable: true
                 }),
                 PropertyPaneToggle("openInNewWindow", {
                   label: strings.OpenInNewWindowFieldLabel,

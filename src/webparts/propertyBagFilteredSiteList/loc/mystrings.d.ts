@@ -3,11 +3,13 @@ declare interface IPropertyBagFilteredSiteListStrings {
   BasicGroupName: string;
   DescriptionFieldLabel: string;
   SiteTemplatesToIncludeFieldLabel: string;
-    SiteTemplatesToIncludeFieldDescription: string;
+  SiteTemplatesToIncludeFieldDescription: string;
   FiltersFieldLabel: string;
+  FiltersFieldDescription: string;
   OpenInNewWindowFieldLabel: string;
   ShowSiteDescriptionsFieldLabel: string;
   UserFiltersFieldLabel: string;
+  UserFiltersFieldDescription: string;
   openInNewWindow: boolean;
   showSiteDescriptions: boolean;
 }

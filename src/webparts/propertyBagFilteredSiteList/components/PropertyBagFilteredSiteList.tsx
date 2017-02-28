@@ -74,10 +74,42 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   }
   /** react lifecycle */
   public componentWillMount() {
-
+    debugger;
     let querytext = "contentclass:STS_Site ";
-  
+    if (this.props.siteTemplatesToInclude) {
+      const siteTemplates = this.props.siteTemplatesToInclude.split('\n');
+      if (siteTemplates.length > 0 && siteTemplates[0] !== "") {
+        querytext += " AND (";
+        for (const siteTemplate of siteTemplates) {
+          const siteTemplateParts = siteTemplate.split("#");
+          if (!siteTemplateParts[1]) {
+            querytext += "SiteTemplate=" + siteTemplateParts[0];
+          }
+          else {
+            querytext += "(SiteTemplate=" + siteTemplateParts[0] + " AND SiteTemplateId=" + siteTemplateParts[1] + ")";
+          }
+          if (siteTemplates.indexOf(siteTemplate) !== siteTemplates.length - 1) {
+            querytext += " OR ";
+          }
+        }
+        querytext += " )";
+      }
+    }
+    if (this.props.filters) {
+      const filters = this.props.filters.split('\n');
+      if (filters.length > 0 && filters[0] !== "") {
+        querytext += " AND ( ";
+        for (const filter of filters) {
+          querytext += " " + filter + " ";
+          if (filters.indexOf(filter) !== filters.length - 1) {
+            querytext += " OR ";
+          }
+        }
+        querytext += " )";
+      }
+    }
     console.log("Using Query " + querytext);
+    this.state.errorMessages.push(new md.Message("Using Query " + querytext));
     const q: SearchQuery = {
       Querytext: querytext,
       SelectProperties: ["Title", "Description", "SPSiteUrl", "SPWebUrl"],
@@ -120,6 +152,10 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     return (
       <div >
         <Label>{this.props.description}</Label>
+        <MessageDisplay
+          messages={this.state.errorMessages}
+          hideMessage={this.removeMessage.bind(this)}
+        />
         <ul> {listItems}</ul>
         {/*<List items={sites} startIndex={0} 
           onRenderCell={(site, index) => {
