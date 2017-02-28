@@ -7,7 +7,7 @@ Sample Search Web Part with internal and external template support. This sample 
 ![Sample of the search web part](./assets/preview.png)
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-RC0-green.svg)
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
@@ -18,7 +18,7 @@ Sample Search Web Part with internal and external template support. This sample 
 
 Solution|Author(s)
 --------|---------
-react-search-wp|Elio Struyf (MVP, Ventigrate, [@eliostruyf](https://twitter.com/eliostruyf))
+react-search-wp|Elio Struyf (MVP, U2U, [@eliostruyf](https://twitter.com/eliostruyf))
 
 ## Version history
 
@@ -28,6 +28,7 @@ Version|Date|Comments
 0.0.5|September 27, 2016|Updates for drop 4. Added the abilty to use various search tokens. Plus a logging field to watch search calls.
 0.0.6|October 19, 2016|Updates for drop 5.
 0.1.0|January 18, 2017|Updates to support RC0.
+1.0.0|February 28, 2017|Updates to support GA.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IPropertyPaneLoggingFieldPropsInternal } from './PropertyPaneLoggingField';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 
 import styles from './PropertyPaneLoggingFieldStyling.module.scss';
 
@@ -97,7 +96,7 @@ export default class PropertyPaneLoggingFieldHost extends React.Component<IPrope
 		//Renders content
 		return (
 			<div className={styles.loggingField}>
-				<Label>{this.props.label}</Label>
+				<label className="ms-Label">{this.props.label}</label>
 				{
 					(() => {
 						if (typeof this.props.retrieve !== 'undefined') {

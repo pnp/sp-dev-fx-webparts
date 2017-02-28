@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import styles from '../SearchSpfx.module.scss';
+import styles from '../components/SearchSpfx.module.scss';
 import { ISearchSpfxWebPartProps } from '../ISearchSpfxWebPartProps';
 
 export interface IDefaultTemplate extends ISearchSpfxWebPartProps {

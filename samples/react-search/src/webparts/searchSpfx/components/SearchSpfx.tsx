@@ -9,6 +9,8 @@ import { IExternalTemplate } from '../utils/ITemplates';
 
 import TemplateLoader from '../templates/TemplateLoader';
 
+import 'SearchSpfx.module.scss';
+
 export interface ISearchSpfxProps extends ISearchSpfxWebPartProps {
 	context: IWebPartContext;
 	firstRender: Boolean;
