@@ -78,9 +78,9 @@ export default class utils {
     }
     public static setSPProperty(name: string, value: string, siteUrl: string) { // SHARED CODE
         return new Promise((resolve, reject) => {
-            var webProps;
-            var clientContext = new SP.ClientContext(siteUrl);
-            var web = clientContext.get_web();
+            let webProps;
+            let clientContext = new SP.ClientContext(siteUrl);
+            let  web = clientContext.get_web();
             webProps = web.get_allProperties();
             webProps.set_item(name, value);
             web.update();
@@ -114,5 +114,42 @@ export default class utils {
                 this.setSPProperty("vti_searchversion", version.toString(), siteUrl);
             }
         });
+    }
+
+    public static addSiteTemplatesToSearchQuery(siteTemplatesString: string, querytext: string): string {
+        const siteTemplates = siteTemplatesString.split('\n');
+        let newQueryText = querytext.valueOf();
+        if (siteTemplates.length > 0 && siteTemplates[0] !== "") {
+            newQueryText += " AND (";
+            for (const siteTemplate of siteTemplates) {
+                const siteTemplateParts = siteTemplate.split("#");
+                if (!siteTemplateParts[1]) {
+                    newQueryText += "SiteTemplate=" + siteTemplateParts[0];
+                }
+                else {
+                    newQueryText += "(SiteTemplate=" + siteTemplateParts[0] + " AND SiteTemplateId=" + siteTemplateParts[1] + ")";
+                }
+                if (siteTemplates.indexOf(siteTemplate) !== siteTemplates.length - 1) {
+                    newQueryText += " OR ";
+                }
+            }
+            newQueryText += " )";
+        }
+        return newQueryText;
+    }
+    public static addFiltersToSearchQuery(filtersString: string, querytext: string): string {
+        const filters = filtersString.split('\n');
+        let newQueryText = querytext.valueOf();
+        if (filters.length > 0 && filters[0] !== "") {
+            newQueryText += " AND ( ";
+            for (const filter of filters) {
+                newQueryText += " " + filter + " ";
+                if (filters.indexOf(filter) !== filters.length - 1) {
+                    newQueryText += " OR ";
+                }
+            }
+            newQueryText += " )";
+        }
+        return newQueryText;
     }
 }

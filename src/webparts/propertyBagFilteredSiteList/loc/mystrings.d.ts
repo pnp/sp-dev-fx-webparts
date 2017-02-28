@@ -6,12 +6,15 @@ declare interface IPropertyBagFilteredSiteListStrings {
   SiteTemplatesToIncludeFieldDescription: string;
   FiltersFieldLabel: string;
   FiltersFieldDescription: string;
-  OpenInNewWindowFieldLabel: string;
+  LinkTargetFieldLabel: string;
   ShowSiteDescriptionsFieldLabel: string;
   UserFiltersFieldLabel: string;
   UserFiltersFieldDescription: string;
-  openInNewWindow: boolean;
-  showSiteDescriptions: boolean;
+  ShowQueryTextFieldLabel: string;
+  TargetBlankDescription: string;
+  TargetSelfDescription: string;
+  TargetParentDescription: string;
+  TargetTopDescription: string;
 }
 
 declare module 'propertyBagFilteredSiteListStrings' {

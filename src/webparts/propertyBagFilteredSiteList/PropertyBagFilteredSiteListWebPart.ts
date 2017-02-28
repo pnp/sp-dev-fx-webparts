@@ -5,7 +5,7 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneToggle
+  PropertyPaneToggle, PropertyPaneChoiceGroup
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'propertyBagFilteredSiteListStrings';
@@ -23,7 +23,10 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
         description: this.properties.description,
         siteTemplatesToInclude: this.properties.siteTemplatesToInclude,
         filters: this.properties.filters,
-        userFilters: this.properties.userFilters
+        userFilters: this.properties.userFilters,
+        showSiteDescriptions: this.properties.showSiteDescriptions,
+        linkTarget: this.properties.linkTarget,
+        showQueryText: this.properties.showQueryText
       }
     );
     ReactDom.render(element, this.domElement);
@@ -67,13 +70,21 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
                   multiline: true,
                   resizable: true
                 }),
-                PropertyPaneToggle("openInNewWindow", {
-                  label: strings.OpenInNewWindowFieldLabel,
-
+                PropertyPaneChoiceGroup("linkTarget", {
+                  label: strings.LinkTargetFieldLabel,
+                  options: [
+                    { text: strings.TargetBlankDescription, key: "_blank" },
+                    { text: strings.TargetSelfDescription, key: "_self" },
+                    { text: strings.TargetParentDescription, key: "_parent" },
+                    { text: strings.TargetTopDescription, key: "_top" },
+                  ],
                 }),
                 PropertyPaneToggle("showSiteDescriptions", {
                   label: strings.ShowSiteDescriptionsFieldLabel,
 
+                }),
+                PropertyPaneToggle("showQueryText", {
+                  label: strings.ShowQueryTextFieldLabel
                 }),
               ]
             }
