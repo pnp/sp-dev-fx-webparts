@@ -1,12 +1,10 @@
 {
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
   "id": "fa63037d-d7bd-4d52-894a-b40127773283",
   "alias": "PropertyBagDisplayWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,
-
   "preconfiguredEntries": [{
     "groupId": "fa63037d-d7bd-4d52-894a-b40127773283",
     "group": { "default": "PropertyBag Navigation" },
@@ -19,7 +17,6 @@
         "CUSOMNAVAreaName|AreaName\nCUSOMNAVBusinessUnit|BusinessUnit\nCUSOMNAVContinent|Continent\nCUSOMNAVLocation|Location",
         "siteTemplatesToInclude":
         "STS\nPUBLISHING"
-      
-    }
+          }
   }]
 }

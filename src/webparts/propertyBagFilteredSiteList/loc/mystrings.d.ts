@@ -3,7 +3,13 @@ declare interface IPropertyBagFilteredSiteListStrings {
   BasicGroupName: string;
   DescriptionFieldLabel: string;
   SiteTemplatesToIncludeFieldLabel: string;
-  FiltersFieldLabel: string
+    SiteTemplatesToIncludeFieldDescription: string;
+  FiltersFieldLabel: string;
+  OpenInNewWindowFieldLabel: string;
+  ShowSiteDescriptionsFieldLabel: string;
+  UserFiltersFieldLabel: string;
+  openInNewWindow: boolean;
+  showSiteDescriptions: boolean;
 }
 
 declare module 'propertyBagFilteredSiteListStrings' {

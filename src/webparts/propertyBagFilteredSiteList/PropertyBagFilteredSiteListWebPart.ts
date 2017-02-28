@@ -4,7 +4,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'propertyBagFilteredSiteListStrings';
@@ -16,7 +17,7 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
 
   public render(): void {
     debugger;
-    const element: React.ReactElement<IPropertyBagFilteredSiteListProps > = React.createElement(
+    const element: React.ReactElement<IPropertyBagFilteredSiteListProps> = React.createElement(
       PropertyBagFilteredSiteList,
       {
         description: this.properties.description
@@ -50,7 +51,21 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
                 }),
                 PropertyPaneTextField("siteTemplatesToInclude", {
                   label: strings.SiteTemplatesToIncludeFieldLabel,
+                      description: strings.SiteTemplatesToIncludeFieldDescription,
                   multiline: true
+
+                }),
+                PropertyPaneTextField("userFilters", {
+                  label: strings.UserFiltersFieldLabel,
+                  multiline: true
+                }),
+                PropertyPaneToggle("openInNewWindow", {
+                  label: strings.OpenInNewWindowFieldLabel,
+
+                }),
+                PropertyPaneToggle("showSiteDescriptions", {
+                  label: strings.ShowSiteDescriptionsFieldLabel,
+
                 }),
               ]
             }
