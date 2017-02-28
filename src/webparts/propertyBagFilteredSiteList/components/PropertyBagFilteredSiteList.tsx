@@ -186,7 +186,6 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
         item.items.push({
           key: value,
           name: value,
-
           title: value
         });
       }
