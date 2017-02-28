@@ -16,6 +16,7 @@ import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBa
 import * as md from "../../shared/MessageDisplay";
 import utils from "../../shared/utils";
 import MessageDisplay from "../../shared/MessageDisplay";
+import { CommandBar, ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
 import {
   DetailsList, DetailsListLayoutMode, IColumn, IGroupedList, SelectionMode, CheckboxVisibility, IGroup
 } from "office-ui-fabric-react/lib/DetailsList";
@@ -172,18 +173,45 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       return (<div />);
     }
   }
+  private SetupFilters(): Array<IContextualMenuItem> {
+    const items = new Array<IContextualMenuItem>();
+    for (let uf of this.state.userFilters) {
+      let item: IContextualMenuItem = {
+        key: uf.managedPropertyName,
+        name: uf.managedPropertyName,
+        title: uf.managedPropertyName,
+      };
+      item.items = [];
+      for (const value of uf.values) {
+        item.items.push({
+          key: value,
+          name: value,
+
+          title: value
+        });
+      }
+      items.push(item);
+    }
+    return items;
+  }
+
+
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
     debugger;
+
     const listItems = this.state.sites.map((site) =>
       <li >
         <a href={site.url} target={this.props.linkTarget}>{site.title}</a>
         {this.conditionallyRenderDescription(site)}
       </li>
     );
+    let commandItems: Array<IContextualMenuItem> = this.SetupFilters();
+
     const sites = this.state.sites;
     return (
       <div >
         <Label>{this.props.description}</Label>
+        <CommandBar items={commandItems} />
         <MessageDisplay
           messages={this.state.errorMessages}
           hideMessage={this.removeMessage.bind(this)}
