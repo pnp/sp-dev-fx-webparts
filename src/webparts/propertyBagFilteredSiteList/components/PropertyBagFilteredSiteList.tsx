@@ -199,8 +199,15 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     return items;
   }
   // a function that returns a function that takes a value
-  public filterOnMetadata = (managedPropertyName) => (value) => {
+  public filterOnMetadata(managedPropertyName) {
     debugger;
+    return function (value) {
+      debugger;
+      var self: any = this;// what is this
+      const managedPropertyName = self.data.managedPropertyName;
+      const value2 = self.data.managedPropertyName;
+    }
+
   }
   // public filterOnMetadata()=> (ev?: MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void' {
   //   debugger;
