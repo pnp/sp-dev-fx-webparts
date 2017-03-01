@@ -34,7 +34,8 @@ import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu"
 export interface IPropertyBagFilteredSiteListState {
   errorMessages: Array<md.Message>;
   sites: Array<Site>;
-  userFilters: Array<UserFilter>;
+  userFilters: Array<UserFilter>;// this is what the user CAN filter on
+  appliedUserFilters// this is what the user HAS filtered on
 }
 export class Site {
   public constructor(
@@ -59,6 +60,12 @@ export class DisplaySite {
 
   ) { }
 }
+export class AppliedUserFilter {
+  public constructor(
+    public managedPropertyName: string,
+    public value: string)
+  { }
+}
 export class UserFilter {
 
   public values: Array<string>;
@@ -70,7 +77,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   public constructor(props) {
 
     super(props);
-    this.state = { sites: [], errorMessages: [], userFilters: [] };
+    this.state = { sites: [], errorMessages: [], userFilters: [], appliedUserFilters: [] };
   }
   /** Utility Functions */
   public removeMessage(messageId: string) {
@@ -191,7 +198,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
           },
           name: value,
           title: value,
-          onClick: this.filterOnMetadata(uf.managedPropertyName)
+          onClick: this.filterOnMetadata()
         });
       }
       items.push(item);
@@ -199,15 +206,12 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     return items;
   }
   // a function that returns a function that takes a value
-  public filterOnMetadata(managedPropertyName) {
+  public filterOnMetadata() {
     debugger;
-    var propertyname=managedPropertyName;
     return function (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
       debugger;
-      let x=propertyname;
-      var self: any = this;// what is this
-      const managedPropertyName = self.data.managedPropertyName;
-      const value2 = self.data.managedPropertyName;
+      this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.maanagedPropertyName,item.data.value))
+      this.filterSites(item.data.managedPropertName, item.data.value);
     }
 
   }
