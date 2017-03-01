@@ -215,6 +215,14 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     }.bind(this);
 
   }
+  // just bind it
+  public filterOnMetadata2(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
+
+    debugger;
+    this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.maanagedPropertyName, item.data.value))
+    this.setState(this.state);
+  }
+
 
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
     debugger;
