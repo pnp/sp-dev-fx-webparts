@@ -1,35 +1,33 @@
 {
   "name": "search-wp-spfx",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "@microsoft/sp-client-base": "~0.7.0",
-    "@microsoft/sp-client-preview": "~0.9.0",
-    "@microsoft/sp-core-library": "~0.1.2",
-    "@microsoft/sp-webpart-base": "~0.4.0",
+    "@microsoft/sp-client-base": "~1.0.0",
+    "@microsoft/sp-core-library": "~1.0.0",
+    "@microsoft/sp-webpart-base": "~1.0.0",
     "@types/react": "0.14.46",
     "@types/react-addons-shallow-compare": "0.14.17",
     "@types/react-addons-test-utils": "0.14.15",
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
-    "flux": "^3.1.2",
-    "moment": "^2.14.1",
-    "office-ui-fabric-react": "0.69.0",
-    "react": "0.14.8",
-    "react-dom": "0.14.8"
+    "flux": "3.1.2",
+    "moment": "2.17.1",
+    "react": "15.4.2",
+    "react-dom": "15.4.2"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~0.9.0",
-    "@microsoft/sp-module-interfaces": "~0.7.0",
-    "@microsoft/sp-webpart-workbench": "~0.8.0",
+    "@microsoft/sp-build-web": "~1.0.0",
+    "@microsoft/sp-module-interfaces": "~1.0.0",
+    "@microsoft/sp-webpart-workbench": "~1.0.0",
     "@types/chai": ">=3.4.34 <3.6.0",
-    "@types/flux": "^3.0.0",
+    "@types/flux": "3.0.1",
     "@types/mocha": ">=2.2.33 <2.6.0",
-    "expose-loader": "^0.7.1",
+    "expose-loader": "0.7.3",
     "gulp": "~3.9.1"
   },
   "scripts": {

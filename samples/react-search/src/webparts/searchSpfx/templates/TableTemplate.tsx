@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
-import styles from '../SearchSpfx.module.scss';
+import styles from '../components/SearchSpfx.module.scss';
 import { ISearchSpfxWebPartProps } from '../ISearchSpfxWebPartProps';
 
 import * as moment from 'moment';
@@ -47,7 +46,7 @@ export default class TableTemplate extends React.Component<ITableTemplate, {}> {
 					})()
 				}
 
-				<table className={css('ms-Table', styles.templateTable)}>
+				<table className={`ms-Table ${styles.templateTable}`}>
 					<thead>
 						<tr>
 							<th>Type</th>
