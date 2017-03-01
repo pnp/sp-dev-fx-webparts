@@ -43,3 +43,5 @@ Version|Date|Comments
 ## Features
 
 Demonstrates integration of sp-pnp-js with the SharePoint Framework GA release. Also shows the use of mock data in the local workbench.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/knockout-sp-pnp-js" />
