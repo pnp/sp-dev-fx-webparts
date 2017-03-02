@@ -10,7 +10,7 @@ You can see this web part sample, including a sample VS 2015 bot application in 
 where sample was demonstrated.
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-RC0-green.svg)
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
