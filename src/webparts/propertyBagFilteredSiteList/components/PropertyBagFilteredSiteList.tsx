@@ -34,6 +34,7 @@ import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu"
 export interface IPropertyBagFilteredSiteListState {
   errorMessages: Array<md.Message>;
   sites: Array<Site>;
+  filteredSites: Array<Site>;
   userFilters: Array<UserFilter>;// this is what the user CAN filter on
   appliedUserFilters: Array<AppliedUserFilter>;// this is what the user HAS filtered on
 }
@@ -77,7 +78,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   public constructor(props) {
 
     super(props);
-    this.state = { sites: [], errorMessages: [], userFilters: [], appliedUserFilters: [] };
+    this.state = { sites: [], filteredSites:[], errorMessages: [], userFilters: [], appliedUserFilters: [] };
   }
   /** Utility Functions */
   public removeMessage(messageId: string) {
