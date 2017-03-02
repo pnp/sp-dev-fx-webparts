@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "spfxreactgrid-client-side-solution",
+    "id": "28bf799f-01fc-45e9-8997-f7982eaf8b53",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/spfxreactgrid.spapp"
+  }
+}
