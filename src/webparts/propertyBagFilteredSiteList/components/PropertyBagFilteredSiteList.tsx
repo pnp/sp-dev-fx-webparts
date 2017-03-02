@@ -78,7 +78,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   public constructor(props) {
 
     super(props);
-    this.state = { sites: [], filteredSites:[], errorMessages: [], userFilters: [], appliedUserFilters: [] };
+    this.state = { sites: [], filteredSites: [], errorMessages: [], userFilters: [], appliedUserFilters: [] };
   }
   /** Utility Functions */
   public removeMessage(messageId: string) {
@@ -152,9 +152,14 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     };
     pnp.sp.search(q).then((results: SearchResults) => {
       this.state.sites = [];
+      debugger;
       this.setupUserFilters(userFilterNameArray);
       for (const r of results.PrimarySearchResults) {
-        this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
+        const index = this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
+
+        for (const mp of this.props.userFilters.split('\n')) {
+          this.state.sites[index-1][mp] = r[mp].trim() ;
+        }
         this.extractUserFilterValues(r);
       }
       this.filterSites();
@@ -208,9 +213,9 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     return items;
   }
   public AppliedFilterExists(managedPropertyName: string, value: string): boolean {
- 
+
     const selectedFilter = _.find(this.state.appliedUserFilters, af => {
-    return (af.managedPropertyName === managedPropertyName && af.value === value);
+      return (af.managedPropertyName === managedPropertyName && af.value === value);
     });
     if (selectedFilter) { return true; } else { return false; }
   }
@@ -218,24 +223,30 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   public ToggleAppliedUserFilter(item: IContextualMenuItem) {
     if (this.AppliedFilterExists(item.data.managedPropertyName, item.data.value)) {
       this.state.appliedUserFilters = this.state.appliedUserFilters.filter(af => {
-         return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
-        });
+        return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
+      });
     }
     else {
       this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.managedPropertyName, item.data.value));
     }
 
   }
-  public filterSites(){
-      this.state.filteredSites=this.state.sites.filter(site =>{
-        for (const auf of this.state.appliedUserFilters){
-          if (site[auf.managedPropertyName] !== auf.value){
-            return true;
+  public filterSites() {
+    if (this.state.appliedUserFilters.length === 0) {
+      this.state.filteredSites = this.state.sites;
+    }
+    else {
+
+      this.state.filteredSites = this.state.sites.filter(site => {
+        debugger;
+        for (const auf of this.state.appliedUserFilters) {
+          if (site[auf.managedPropertyName] !== auf.value) {
+            return false;
           }
         }
-        return false;
+        return true;
       });
-
+    }
   }
   public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
 
@@ -247,16 +258,14 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
 
-
-    const listItems = this.state.sites.map((site) =>
+    debugger;
+    const listItems = this.state.filteredSites.map((site) =>
       <li >
         <a href={site.url} target={this.props.linkTarget}>{site.title}</a>
         {this.conditionallyRenderDescription(site)}
       </li>
     );
     let commandItems: Array<IContextualMenuItem> = this.SetupFilters();
-debugger;
-    const sites = this.state.sites;
     return (
       <div >
         <Label>{this.props.description}</Label>
