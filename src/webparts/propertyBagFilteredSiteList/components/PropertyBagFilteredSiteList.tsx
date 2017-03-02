@@ -35,7 +35,7 @@ export interface IPropertyBagFilteredSiteListState {
   errorMessages: Array<md.Message>;
   sites: Array<Site>;
   userFilters: Array<UserFilter>;// this is what the user CAN filter on
-  appliedUserFilters// this is what the user HAS filtered on
+  appliedUserFilters: Array<AppliedUserFilter>;// this is what the user HAS filtered on
 }
 export class Site {
   public constructor(
@@ -107,7 +107,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
   }
   public getSites(siteTemplatesToInclude: string, filters: string, showQueryText: boolean, userFilters: string, showSiteDescriptions: boolean) {
-    debugger;
+
     let userFilterNameArray = [];
     if (userFilters) {
       for (let userFilter of userFilters.split('\n')) {
@@ -156,7 +156,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
         this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
         this.extractUserFilterValues(r);
       }
-      debugger;
+
       this.setState(this.state);
     }).catch(err => {
       debugger;
@@ -169,7 +169,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText, this.props.userFilters, this.props.showSiteDescriptions);
   }
   public componentWillReceiveProps(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any) {
-    debugger;
+
     this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
   }
   public conditionallyRenderDescription(site: Site) {
@@ -196,36 +196,44 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
             managedPropertyName: uf.managedPropertyName,
             value: value
           },
+          checked: this.AppliedFilterExists(uf.managedPropertyName, value),
           name: value,
           title: value,
-          onClick: this.filterOnMetadata()
+          onClick: this.filterOnMetadata.bind(this)
         });
       }
       items.push(item);
     }
     return items;
   }
-  // why not just a function?????????????????????????????????????????????????????????????????????????????????
-  public filterOnMetadata() {
-    debugger;
-    return function (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
-      debugger;
-      this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.maanagedPropertyName, item.data.value))
-      this.setState(this.state);
-    }.bind(this);
+  public AppliedFilterExists(managedPropertyName: string, value: string): boolean {
+ 
+    const selectedFilter = _.find(this.state.appliedUserFilters, af => {
+    return (af.managedPropertyName === managedPropertyName && af.value === value);
+    });
+    if (selectedFilter) { return true; } else { return false; }
+  }
+
+  public ToggleAppliedUserFilter(item: IContextualMenuItem) {
+    if (this.AppliedFilterExists(item.data.managedPropertyName, item.data.value)) {
+      this.state.appliedUserFilters = this.state.appliedUserFilters.filter(af => {
+         return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
+        });
+    }
+    else {
+      this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.managedPropertyName, item.data.value));
+    }
 
   }
-  // just bind it
-  public filterOnMetadata2(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
+  public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
 
-    debugger;
-    this.state.appliedUserFilters.push(new AppliedUserFilter(item.data.maanagedPropertyName, item.data.value))
+    this.ToggleAppliedUserFilter(item);
     this.setState(this.state);
   }
 
 
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
-    debugger;
+
 
     const listItems = this.state.sites.map((site) =>
       <li >
@@ -234,7 +242,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       </li>
     );
     let commandItems: Array<IContextualMenuItem> = this.SetupFilters();
-
+debugger;
     const sites = this.state.sites;
     return (
       <div >
@@ -247,7 +255,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
         <ul > {listItems}</ul>
         {/*<List items={sites} startIndex={0} 
           onRenderCell={(site, index) => {
-            debugger;
+        
             return (
               <div >
                 <Link href={site.url}>{site.title}</Link>
