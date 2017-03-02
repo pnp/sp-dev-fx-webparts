@@ -14,6 +14,11 @@
       "entry": "./lib/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.js",
       "manifest": "./src/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.manifest.json",
       "outputPath": "./dist/property-bag-filtered-site-list.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/propertyBagGlobalNav/PropertyBagGlobalNavWebPart.js",
+      "manifest": "./src/webparts/propertyBagGlobalNav/PropertyBagGlobalNavWebPart.manifest.json",
+      "outputPath": "./dist/property-bag-global-nav.bundle.js"
     }
   ],
   "externals": {
@@ -47,6 +52,7 @@
   "localizedResources": {
     "propertyBagEditorStrings": "webparts/propertyBagEditor/loc/{locale}.js",
     "propertyBagDisplayStrings": "webparts/propertyBagDisplay/loc/{locale}.js",
-    "propertyBagFilteredSiteListStrings": "webparts/propertyBagFilteredSiteList/loc/{locale}.js"
+    "propertyBagFilteredSiteListStrings": "webparts/propertyBagFilteredSiteList/loc/{locale}.js",
+    "propertyBagGlobalNavStrings": "webparts/propertyBagGlobalNav/loc/{locale}.js"
   }
 }
