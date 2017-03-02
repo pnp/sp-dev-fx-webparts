@@ -4,7 +4,7 @@
   "id": "54c37464-b267-494e-9b74-2bfe3e8e490a",
   "alias": "BotFrameworkChat",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{
