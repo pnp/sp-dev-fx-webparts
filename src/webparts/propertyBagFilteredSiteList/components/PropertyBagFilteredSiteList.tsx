@@ -157,7 +157,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
         this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
         this.extractUserFilterValues(r);
       }
-
+      this.filterSites();
       this.setState(this.state);
     }).catch(err => {
       debugger;
@@ -226,9 +226,21 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     }
 
   }
+  public filterSites(){
+      this.state.filteredSites=this.state.sites.filter(site =>{
+        for (const auf of this.state.appliedUserFilters){
+          if (site[auf.managedPropertyName] !== auf.value){
+            return true;
+          }
+        }
+        return false;
+      });
+
+  }
   public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
 
     this.ToggleAppliedUserFilter(item);
+    this.filterSites();
     this.setState(this.state);
   }
 
