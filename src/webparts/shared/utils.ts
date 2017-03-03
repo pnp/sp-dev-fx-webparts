@@ -151,6 +151,9 @@ export default class utils {
         return newQueryText;
     }
     public static parseMultilineTextToArray(value: string): Array<string> {
+        if (!value){
+            return [];
+        }
         return value.split('\n').filter(val => { return val.trim() != "" });
     }
 }

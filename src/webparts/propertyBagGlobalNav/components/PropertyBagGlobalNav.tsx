@@ -43,13 +43,15 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
   public addMenuItem(r: any): void {
     let currentItem: IContextualMenuItem;
     let currentSet: Array<IContextualMenuItem> = this.state.menuitems;
+    debugger;
     for (let managedProperty of this.props.managedProperties) {
       let value = r[managedProperty];
       currentItem = _.find(currentSet, i => { return i.key === value });
       if (!currentItem) {
         let idx = currentSet.push({ key: value, name: value, items: [] });
-        currentItem = currentSet[idx];
+        currentItem = currentSet[idx-1];
       }
+      currentSet=currentItem.items;
     }
     currentItem.items.push({
       key: r['Title'],
@@ -58,7 +60,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     });
   }
   public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>) {
-    debugger;
+   
     let querytext = "contentclass:STS_Site ";
     if (siteTemplatesToInclude) {
       querytext = utils.addSiteTemplatesToSearchQuery(siteTemplatesToInclude, querytext);
@@ -92,7 +94,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
       for (const r of results.PrimarySearchResults) {
         this.addMenuItem(r);
       }
-      debugger;
+     
       this.setState(this.state);
     }).catch(err => {
       debugger;
@@ -102,10 +104,11 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
   }
   /** react lifecycle */
   public componentWillMount() {
+   
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.managedProperties);
   }
   public componentWillReceiveProps(nextProps: IPropertyBagGlobalNavProps, nextContext: any) {
-    debugger;
+   
     this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.managedProperties);
   }
   public render(): React.ReactElement<IPropertyBagGlobalNavProps> {
