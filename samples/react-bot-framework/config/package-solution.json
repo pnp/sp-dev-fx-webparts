@@ -5,6 +5,6 @@
     "version": "1.0.0.0"
   },
   "paths": {
-    "zippedPackage": "solution/sp-bot-chat-webpart.spapp"
+    "zippedPackage": "solution/sp-bot-chat-webpart.sppkg"
   }
 }
