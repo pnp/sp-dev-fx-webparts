@@ -80,7 +80,7 @@ export default class utils {
         return new Promise((resolve, reject) => {
             let webProps;
             let clientContext = new SP.ClientContext(siteUrl);
-            let  web = clientContext.get_web();
+            let web = clientContext.get_web();
             webProps = web.get_allProperties();
             webProps.set_item(name, value);
             web.update();
@@ -116,8 +116,7 @@ export default class utils {
         });
     }
 
-    public static addSiteTemplatesToSearchQuery(siteTemplatesString: string, querytext: string): string {
-        const siteTemplates = siteTemplatesString.split('\n');
+    public static addSiteTemplatesToSearchQuery(siteTemplates: Array<string>, querytext: string): string {
         let newQueryText = querytext.valueOf();
         if (siteTemplates.length > 0 && siteTemplates[0] !== "") {
             newQueryText += " AND (";
@@ -137,8 +136,7 @@ export default class utils {
         }
         return newQueryText;
     }
-    public static addFiltersToSearchQuery(filtersString: string, querytext: string): string {
-        const filters = filtersString.split('\n');
+    public static addFiltersToSearchQuery(filters: Array<string>, querytext: string): string {
         let newQueryText = querytext.valueOf();
         if (filters.length > 0 && filters[0] !== "") {
             newQueryText += " AND ( ";
@@ -151,5 +149,8 @@ export default class utils {
             newQueryText += " )";
         }
         return newQueryText;
+    }
+    public static parseMultilineTextToArray(value: string): Array<string> {
+        return value.split('\n').filter(val => { return val.trim() != "" });
     }
 }

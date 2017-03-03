@@ -1,5 +1,5 @@
 export interface IPropertyBagEditorProps {
   description: string;
-  propertiesToEdit:string;
+  propertiesToEdit:Array<string>;
   siteUrl:string;
 }

@@ -12,7 +12,7 @@ import * as strings from 'propertyBagFilteredSiteListStrings';
 import PropertyBagFilteredSiteList from './components/PropertyBagFilteredSiteList';
 import { IPropertyBagFilteredSiteListProps } from './components/IPropertyBagFilteredSiteListProps';
 import { IPropertyBagFilteredSiteListWebPartProps } from './IPropertyBagFilteredSiteListWebPartProps';
-
+import utils from "../shared/utils";
 export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWebPart<IPropertyBagFilteredSiteListWebPartProps> {
 
   public render(): void {
@@ -21,9 +21,9 @@ export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWe
       PropertyBagFilteredSiteList,
       {
         description: this.properties.description,
-        siteTemplatesToInclude: this.properties.siteTemplatesToInclude,
-        filters: this.properties.filters,
-        userFilters: this.properties.userFilters,
+        siteTemplatesToInclude: utils.parseMultilineTextToArray(this.properties.siteTemplatesToInclude),
+        filters: utils.parseMultilineTextToArray(this.properties.filters),
+        userFilters: utils.parseMultilineTextToArray(this.properties.userFilters),
         showSiteDescriptions: this.properties.showSiteDescriptions,
         linkTarget: this.properties.linkTarget,
         showQueryText: this.properties.showQueryText

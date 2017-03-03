@@ -6,7 +6,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-
+import utils from "../shared/utils";
 import * as strings from 'propertyBagGlobalNavStrings';
 import PropertyBagGlobalNav from './components/PropertyBagGlobalNav';
 import { IPropertyBagGlobalNavProps } from './components/IPropertyBagGlobalNavProps';
@@ -19,9 +19,9 @@ export default class PropertyBagGlobalNavWebPart extends BaseClientSideWebPart<I
       PropertyBagGlobalNav,
       {
         description: this.properties.description,
-        managedProperties: this.properties.managedProperties,
-        siteTemplatesToInclude: this.properties.siteTemplatesToInclude,
-        filters: this.properties.filters,
+        managedProperties: utils.parseMultilineTextToArray( this.properties.managedProperties),
+        siteTemplatesToInclude: utils.parseMultilineTextToArray(this.properties.siteTemplatesToInclude),
+        filters: utils.parseMultilineTextToArray(this.properties.filters),
       }
     );
 

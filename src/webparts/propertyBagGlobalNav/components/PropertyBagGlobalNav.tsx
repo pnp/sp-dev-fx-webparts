@@ -57,7 +57,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
       url: r['SPSiteUrl']
     });
   }
-  public getSites(siteTemplatesToInclude: string, filters: string, managedProperties: string) {
+  public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>) {
     debugger;
     let querytext = "contentclass:STS_Site ";
     if (siteTemplatesToInclude) {

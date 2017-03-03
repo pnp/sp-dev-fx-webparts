@@ -12,8 +12,9 @@ import * as strings from "propertyBagEditorStrings";
 import PropertyBagEditor from "./components/PropertyBagEditor";
 import { IPropertyBagEditorProps } from "./components/IPropertyBagEditorProps";
 import { IPropertyBagEditorWebPartProps } from "./IPropertyBagEditorWebPartProps";
-
+import utils from "../shared/utils";
 export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPropertyBagEditorWebPartProps> {
+
 
   public render(): void {
         const uqpc = new UrlQueryParameterCollection(window.location.toString());
@@ -23,7 +24,7 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
     }
     const props: IPropertyBagEditorProps = {
       description: this.properties.description,
-      propertiesToEdit: this.properties.propertiesToEdit,
+      propertiesToEdit: utils.parseMultilineTextToArray(this.properties.propertiesToEdit),
       siteUrl: siteUrl
     };
     const element: React.ReactElement<IPropertyBagEditorProps> = React.createElement(

@@ -107,14 +107,14 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     }
 
   }
-  public getSites(siteTemplatesToInclude: string, filters: string, showQueryText: boolean, userFilters: string, showSiteDescriptions: boolean) {
+  public getSites(siteTemplatesToInclude: Array<string>, filters:Array< string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean) {
 
     let userFilterNameArray = [];
     if (userFilters) {
-      for (let userFilter of userFilters.split('\n')) {
-        if (userFilter.trim() != "") {
+      for (let userFilter of userFilters) {
+        
           userFilterNameArray.push(userFilter);
-        }
+      
       }
     }
     let querytext = "contentclass:STS_Site ";
@@ -157,8 +157,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       for (const r of results.PrimarySearchResults) {
         const index = this.state.sites.push(new Site(r.Title, r.Description, r.SPSiteUrl));
 
-        for (const mp of this.props.userFilters.split('\n')) {
-          this.state.sites[index-1][mp] = r[mp].trim() ;
+        for (const mp of this.props.userFilters) {
+          this.state.sites[index-1][mp] = r[mp];
         }
         this.extractUserFilterValues(r);
       }

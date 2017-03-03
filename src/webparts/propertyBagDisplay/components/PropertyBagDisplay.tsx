@@ -212,7 +212,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         maxWidth: 220,
       },
     ];
-    const displayProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
+    const displayProps: Array<string> = this.props.propertiesToDisplay.map(item => {
       return item.split("|")[1];
     });
     for (const dp of displayProps) {
@@ -234,7 +234,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.state.columns = this.setupColumns();
     this.state.managedToCrawedMapping = [];
     this.state.managedPropNames = [];
-    for (const prop of this.props.propertiesToDisplay.split('\n')) {
+    for (const prop of this.props.propertiesToDisplay) {
       const names: Array<string> = prop.split('|');// crawledpropety/managed property
       this.state.managedToCrawedMapping.push(new ManagedToCrawledMappingEntry(names[0], names[1]));
       this.state.managedPropNames.push(names[1]);
@@ -245,10 +245,9 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.state.managedPropNames.unshift("SiteTemplateId");
     let querytext = "contentclass:STS_Site ";
     if (this.props.siteTemplatesToInclude) {
-      const siteTemplates = this.props.siteTemplatesToInclude.split('\n');
-      if (siteTemplates.length > 0 && siteTemplates[0] !== "") {
+         if (this.props.siteTemplatesToInclude.length > 0) {
         querytext += " AND (";
-        for (const siteTemplate of siteTemplates) {
+        for (const siteTemplate of this.props.siteTemplatesToInclude) {
           const siteTemplateParts = siteTemplate.split("#");
           if (!siteTemplateParts[1]) {
             querytext += "SiteTemplate=" + siteTemplateParts[0];
@@ -256,7 +255,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
           else {
             querytext += "(SiteTemplate=" + siteTemplateParts[0] + " AND SiteTemplateId=" + siteTemplateParts[1] + ")";
           }
-          if (siteTemplates.indexOf(siteTemplate) !== siteTemplates.length - 1)
+          if (this.props.siteTemplatesToInclude.indexOf(siteTemplate) !== this.props.siteTemplatesToInclude.length - 1)
           { querytext += " OR "; }
         }
         querytext += " )";
@@ -366,7 +365,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     const selectedSite = this.state.sites[this.state.selectedIndex];
     const web = new Web(selectedSite.Url);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-      const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
+      const crawledProps: Array<string> = this.props.propertiesToDisplay.map(item => {
         return item.split("|")[0];
       });
       this.state.workingStorage = _.clone(this.state.sites[this.state.selectedIndex]);

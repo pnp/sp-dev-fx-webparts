@@ -102,7 +102,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     const web = new Web(this.props.siteUrl);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
        const sp = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-      const dp = utils.SelectProperties(r.AllProperties, this.props.propertiesToEdit.split("\n"), sp);
+      const dp = utils.SelectProperties(r.AllProperties, this.props.propertiesToEdit, sp);
       this.state.searchableProps = sp;
       this.state.displayProps = dp;
       this.setState(this.state);

@@ -12,7 +12,7 @@ import * as strings from "propertyBagDisplayStrings";
 import PropertyBagDisplay from "./components/PropertyBagDisplay";
 import { IPropertyBagDisplayProps } from "./components/IPropertyBagDisplayProps";
 import { IPropertyBagDisplayWebPartProps } from "./IPropertyBagDisplayWebPartProps";
-
+import utils from "../shared/utils";
 export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPropertyBagDisplayWebPartProps> {
 
   public render(): void {
@@ -20,8 +20,8 @@ export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPr
       PropertyBagDisplay,
       {
         description: this.properties.description,
-        propertiesToDisplay: this.properties.propertiesToDisplay,
-        siteTemplatesToInclude: this.properties.siteTemplatesToInclude
+        propertiesToDisplay: utils.parseMultilineTextToArray(this.properties.propertiesToDisplay),
+        siteTemplatesToInclude:utils.parseMultilineTextToArray(this.properties.siteTemplatesToInclude)
       }
     );
 
