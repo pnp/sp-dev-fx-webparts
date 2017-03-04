@@ -5,7 +5,7 @@ import * as _ from "lodash";
 import DisplayProp from "../../shared/DisplayProp";
 import { SearchQuery, SearchResults } from "sp-pnp-js";
 import { css } from "office-ui-fabric-react";
-import styles from "./PropertyBagFilteredSiteList.module.scss";
+//import styles from "./PropertyBagFilteredSiteList.module.scss";
 import { IPropertyBagFilteredSiteListProps } from "./IPropertyBagFilteredSiteListProps";
 import { Label } from "office-ui-fabric-react/lib/Label";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
@@ -90,28 +90,28 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
 
   public setupUserFilters(userFilterNames: Array<string>) {
     this.state.userFilters = [];
-    for (let userFilterName of userFilterNames) {
-      this.state.userFilters.push(new UserFilter(userFilterName))
+    for (const userFilterName of userFilterNames) {
+      this.state.userFilters.push(new UserFilter(userFilterName));
     }
   }
 
   public extractUserFilterValues(r) {
-    for (let userFilter of this.state.userFilters) {
+    for (const userFilter of this.state.userFilters) {
       const value = r[userFilter.managedPropertyName].trim();
       if (_.find(userFilter.values, v => { return v === value; })) {
         // already there
       }
       else {
-        userFilter.values.push(value)
+        userFilter.values.push(value);
       }
     }
 
   }
   public getSites(siteTemplatesToInclude: Array<string>, filters:Array< string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean) {
 
-    let userFilterNameArray = [];
+    const userFilterNameArray = [];
     if (userFilters) {
-      for (let userFilter of userFilters) {
+      for (const userFilter of userFilters) {
         
           userFilterNameArray.push(userFilter);
       
@@ -127,12 +127,12 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     if (showQueryText) {
       this.state.errorMessages.push(new md.Message("Using Query " + querytext));
     }
-    let selectProperties: Array<string> = ["Title", "SPSiteUrl"];
+    const selectProperties: Array<string> = ["Title", "SPSiteUrl"];
 
     if (showSiteDescriptions) {
       selectProperties.push("Description");
     }
-    for (let userFilter of userFilterNameArray) {
+    for (const userFilter of userFilterNameArray) {
       selectProperties.push(userFilter);
     }
 
@@ -188,8 +188,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   }
   private SetupFilters(): Array<IContextualMenuItem> {
     const items = new Array<IContextualMenuItem>();
-    for (let uf of this.state.userFilters) {
-      let item: IContextualMenuItem = {
+    for (const uf of this.state.userFilters) {
+      const item: IContextualMenuItem = {
         key: uf.managedPropertyName,
         name: uf.managedPropertyName,
         title: uf.managedPropertyName,
@@ -265,7 +265,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
         {this.conditionallyRenderDescription(site)}
       </li>
     );
-    let commandItems: Array<IContextualMenuItem> = this.SetupFilters();
+    const commandItems: Array<IContextualMenuItem> = this.SetupFilters();
     return (
       <div >
         <Label>{this.props.description}</Label>

@@ -58,9 +58,9 @@ export default class utils {
         //     }
         // }
         // return DisplayProps;
-        let DisplayProps: Array<DisplayProp> = [];
+        const DisplayProps: Array<DisplayProp> = [];
         for (const propToSelect of propertiesToSelect) {
-            let displayProp: DisplayProp = new DisplayProp(propToSelect);
+            const displayProp: DisplayProp = new DisplayProp(propToSelect);
 
             displayProp.value = AllProperties[propToSelect];
             if (_.find(searchableProperties, sp => { return sp === propToSelect; })) {
@@ -79,8 +79,8 @@ export default class utils {
     public static setSPProperty(name: string, value: string, siteUrl: string) { // SHARED CODE
         return new Promise((resolve, reject) => {
             let webProps;
-            let clientContext = new SP.ClientContext(siteUrl);
-            let web = clientContext.get_web();
+            const clientContext = new SP.ClientContext(siteUrl);
+            const web = clientContext.get_web();
             webProps = web.get_allProperties();
             webProps.set_item(name, value);
             web.update();
@@ -95,7 +95,7 @@ export default class utils {
         });
     }
     public static saveSearchablePropertiesToSharePoint(siteUrl: string, propnames: Array<string>): Promise<any> {
-        let encodedPropNames: Array<string> = [];
+        const encodedPropNames: Array<string> = [];
         for (const propname of propnames) {
             if (propname != "") {
                 encodedPropNames.push(this.EncodePropertyKey(propname));
@@ -154,6 +154,6 @@ export default class utils {
         if (!value){
             return [];
         }
-        return value.split('\n').filter(val => { return val.trim() != "" });
+        return value.split('\n').filter(val => { return val.trim() != "" ;});
     }
 }

@@ -6,7 +6,7 @@ import utils from "../../shared/utils";
 import DisplayProp from "../../shared/DisplayProp";
 import { SearchQuery, SearchResults } from "sp-pnp-js";
 import { css } from "office-ui-fabric-react";
-import styles from "./PropertyBagDisplay.module.scss";
+//import styles from "./PropertyBagDisplay.module.scss";
 import { IPropertyBagDisplayProps } from "./IPropertyBagDisplayProps";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { Label } from "office-ui-fabric-react/lib/Label";
@@ -276,7 +276,7 @@ debugger;
     };
     pnp.sp.search(q).then((results: SearchResults) => {
       for (const r of results.PrimarySearchResults) {
-        let obj: any = {};
+        const obj: any = {};
         for (const dp of this.state.managedPropNames) {
           obj[dp] = r[dp];
         }
@@ -299,9 +299,9 @@ debugger;
   }
 
   public onSave(e?: MouseEvent): void {
-    let promises: Array<Promise<any>> = [];
+    const promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
-      let proomise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
+      const proomise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
         .then(value => {
           this.changeSearchable(this.state.workingStorage.Url, prop.crawledPropertyName, prop.searchable);
         });
@@ -334,12 +334,12 @@ debugger;
   }
   public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
     const selectedProperty = event.currentTarget.attributes["data-crawledpropertyname"].value;
-    let dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
+    const dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
     dp.value = event.currentTarget.value;
     this.setState(this.state);
   }
   public createSearcheableOnChangedHandler = (managedPropertyName) => (value) => {
-    let dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === managedPropertyName; });
+    const dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === managedPropertyName; });
     dp.searchable = value;
     this.setState(this.state);
   }
@@ -379,7 +379,7 @@ debugger;
       this.state.workingStorage.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.workingStorage.searchableProps);
       this.state.workingStorage.errorMessages = new Array<md.Message>();
       // now add in the managed Prop
-      for (let dp of this.state.workingStorage.DisplayProps) {
+      for (const dp of this.state.workingStorage.DisplayProps) {
         dp.managedPropertyName =
           _.find(this.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
       }

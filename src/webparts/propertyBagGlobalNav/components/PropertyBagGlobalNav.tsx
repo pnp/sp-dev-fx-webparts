@@ -1,12 +1,8 @@
 import * as React from 'react';
-import styles from './PropertyBagGlobalNav.module.scss';
 import { IPropertyBagGlobalNavProps } from './IPropertyBagGlobalNavProps';
-import { escape } from '@microsoft/sp-lodash-subset';
-
 import pnp from "sp-pnp-js";
 import { SortDirection } from "sp-pnp-js";
 import * as _ from "lodash";
-import DisplayProp from "../../shared/DisplayProp";
 import { SearchQuery, SearchResults } from "sp-pnp-js";
 import { css } from "office-ui-fabric-react";
 
@@ -18,7 +14,6 @@ import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import * as md from "../../shared/MessageDisplay";
 import utils from "../../shared/utils";
-import MessageDisplay from "../../shared/MessageDisplay";
 import { CommandBar, ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
 import {
   DetailsList, DetailsListLayoutMode, IColumn, IGroupedList, SelectionMode, CheckboxVisibility, IGroup
@@ -31,8 +26,8 @@ import {
 } from "office-ui-fabric-react/lib/utilities/decorators/withViewport";
 import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export class PropertyBagGlobalNavState {
-  menuitems: Array<IContextualMenuItem>;
-  errorMessages: Array<md.Message>;
+  public menuitems: Array<IContextualMenuItem>;
+  public errorMessages: Array<md.Message>;
 }
 
 export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGlobalNavProps, PropertyBagGlobalNavState> {
@@ -44,11 +39,11 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     let currentItem: IContextualMenuItem;
     let currentSet: Array<IContextualMenuItem> = this.state.menuitems;
     debugger;
-    for (let managedProperty of this.props.managedProperties) {
-      let value = r[managedProperty].trim();
-      currentItem = _.find(currentSet, i => { return i.key === value });
+    for (const managedProperty of this.props.managedProperties) {
+      const value = r[managedProperty].trim();
+      currentItem = _.find(currentSet, i => { return i.key === value; });
       if (!currentItem) {
-        let idx = currentSet.push({ key: value, name: value, items: [] });
+        const idx = currentSet.push({ key: value, name: value, items: [] });
         currentItem = currentSet[idx - 1];
       }
       currentSet = currentItem.items;
@@ -68,10 +63,10 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     if (filters) {
       querytext = utils.addFiltersToSearchQuery(filters, querytext);
     }
-    let selectProperties: Array<string> = ["Title", "SPSiteUrl"];
+    const selectProperties: Array<string> = ["Title", "SPSiteUrl"];
 
 
-    for (let managedProperty of managedProperties) {
+    for (const managedProperty of managedProperties) {
       selectProperties.push(managedProperty);
     }
 

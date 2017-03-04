@@ -3,7 +3,7 @@ declare interface IPropertyBagDisplayStrings {
   BasicGroupName: string;
   DescriptionFieldLabel: string;
     PropertiesToDisplayFieldLabel:string;
-    SiteTemplatesToIncludeFieldLabel:string
+    SiteTemplatesToIncludeFieldLabel:string;
 }
 
 declare module 'propertyBagDisplayStrings' {
