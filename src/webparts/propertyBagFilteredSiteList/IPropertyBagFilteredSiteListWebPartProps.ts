@@ -4,6 +4,6 @@ export interface IPropertyBagFilteredSiteListWebPartProps {
   filters: string; // managedPropertyname=valiust separated by \n (new line)
   userFilters: string; // managedPropertyname=valiust separated by \n (new line)// Lets user filters
   showSiteDescriptions: boolean;
-  linkTarget: string;
-  showQueryText: boolean;
+  linkTarget: string;// open sites in new window?
+  showQueryText: boolean; // display querytext in a messagegDisplay(Used for debugging)
 }

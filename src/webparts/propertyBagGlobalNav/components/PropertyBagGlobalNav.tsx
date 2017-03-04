@@ -26,8 +26,8 @@ import {
 } from "office-ui-fabric-react/lib/utilities/decorators/withViewport";
 import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export class PropertyBagGlobalNavState {
-  public menuitems: Array<IContextualMenuItem>;
-  public errorMessages: Array<md.Message>;
+  public menuitems: Array<IContextualMenuItem>; // The menuItems to display
+  public errorMessages: Array<md.Message>;// any error messages
 }
 
 export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGlobalNavProps, PropertyBagGlobalNavState> {
@@ -35,6 +35,14 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     super(props);
     this.state = { menuitems: [], errorMessages: [] };
   }
+  /**
+   * Extracts the values from a searchResult and adds them to the list of menuItems
+   * each managedProperty in managedProperties represents a level in the menu. The actial sites
+   * are added below the last level.
+   * @param {*} r -- a searchresult
+   * 
+   * @memberOf PropertyBagGlobalNav
+   */
   public addMenuItem(r: any): void {
     let currentItem: IContextualMenuItem;
     let currentSet: Array<IContextualMenuItem> = this.state.menuitems;
@@ -54,6 +62,16 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
       url: r['SPSiteUrl']
     });
   }
+  /**
+   * Gets the list of sites to be displayed in the Menu using the filters specified in
+   * the PropertyPane
+   * 
+   * @param {Array<string>} siteTemplatesToInclude  Site Templates to be included in the menu
+   * @param {Array<string>} filters Additional metadata filters to be applid to the list of sites
+   * @param {Array<string>} managedProperties -- the list of properties used to build the menu
+   * 
+   * @memberOf PropertyBagGlobalNav
+   */
   public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>) {
 
     let querytext = "contentclass:STS_Site ";

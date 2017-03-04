@@ -31,14 +31,14 @@ import {
 } from "office-ui-fabric-react/lib/Panel";
 import { IContextualMenuItem, } from "office-ui-fabric-react/lib/ContextualMenu";
 export interface IPropertyBagDisplayState {
-  selectedIndex: number;
-  managedToCrawedMapping?: Array<ManagedToCrawledMappingEntry>;
-  errorMessages: Array<md.Message>;
-  isediting?: boolean;
-  sites: Array<any>;
-  workingStorage?: DisplaySite;
-  managedPropNames?: Array<string>;
-  columns: Array<IColumn>;
+  selectedIndex: number; // the currently selected site
+  managedToCrawedMapping?: Array<ManagedToCrawledMappingEntry>;// Determines which Carwled propeties are mapped to which Managed Properties
+  errorMessages: Array<md.Message>; // a list of error massages displayed on the page
+  isediting?: boolean; //Determines if the edit panel is displayed
+  sites: Array<any>; // the list of sites displayed in the component
+  workingStorage?: DisplaySite;// A working copy of the site being edited
+  managedPropNames?: Array<string>; // the list of managed properties to be displayed
+  columns: Array<IColumn>; // the columns to show in the display
 
 }
 
@@ -49,12 +49,23 @@ export class ManagedToCrawledMappingEntry {
   ) { }
 }
 export class DisplaySite {
+  /**
+   * Creates an instance of DisplaySite to be used in workingStorage when editing a site
+   * @param {string} Title 
+   * @param {string} Url 
+   * @param {string} SiteTemplate 
+   * @param {Array<md.Message>} errorMessages 
+   * @param {Array<DisplayProp>} [DisplayProps] 
+   * @param {Array<string>} [searchableProps] 
+   * @param {boolean} [forceCrawl] 
+   * 
+   * @memberOf DisplaySite
+   */
   constructor(
     public Title: string,
     public Url: string,
     public SiteTemplate: string,
     public errorMessages: Array<md.Message>,
-    // public SarchableProps?: Array<String>,
     public DisplayProps?: Array<DisplayProp>,
     public searchableProps?: Array<string>,
     public forceCrawl?: boolean,
@@ -68,6 +79,15 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.state = { sites: [], selectedIndex: -1, columns: [], errorMessages: [] };
   }
   /**Accessors */
+  /**
+   *  Get's the commands to be displayed in the CommandBar. There is only one command (Edit).
+   *  If no item is selected the command is disabled
+   * 
+   * 
+   * @readonly
+   * @type {Array<IContextualMenuItem>}
+   * @memberOf PropertyBagDisplay
+   */
   get CommandItems(): Array<IContextualMenuItem> {
     return [
       {
@@ -85,6 +105,13 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     return (this.state.selectedIndex !== -1);
   }
   /** Utility Functions */
+  /**
+   * Renders the Panel used to edit a site's properties
+   * 
+   * @returns 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public renderPopup() {
 
     if (!this.state.workingStorage) {
@@ -146,18 +173,50 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       );
     }
   }
+  /**
+   * Removes a message from the MessageDIsplay when the user click the 'x'
+   * 
+   * @param {Array<md.Message>} messageList  The list to remove the masseg from (the 'main' window of the Panel)
+   * @param {string} messageId The Id of the massge to remove
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public removeMessage(messageList: Array<md.Message>, messageId: string) {
     _.remove(messageList, {
       Id: messageId
     });
     this.setState(this.state);
   }
+  /**
+   * Removes a massage from the main windo
+   * 
+   * @param {string} messageId 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public removeMainMessage(messageId: string) {
     this.removeMessage(this.state.errorMessages, messageId);
   }
+  /**
+   * removes a message from the popup Panel
+   * 
+   * @param {string} messageId 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public removePanelMessage(messageId: string) {
     this.removeMessage(this.state.workingStorage.errorMessages, messageId);
   }
+  /**
+   * Makes the  specified property either searchable or non-searchable in sharepoint
+   * 
+   * @param {string} siteUrl The site to se it on
+   * @param {string} propname the managed property to set
+   * @param {boolean} newValue Searchable or not
+   * @returns {Promise<any>} 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public changeSearchable(siteUrl: string, propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.workingStorage.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
@@ -182,15 +241,40 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
       }
     }
   }
+  /**
+   * Switches component out of edit mode
+   * 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public stopediting() {
     this.state.isediting = false;
     this.setState(this.state);
   }
+  /**
+   * Caled by the Details list to render a column as a URL rather than text
+   * 
+   * @private
+   * @param {*} [item] 
+   * @param {number} [index] 
+   * @param {IColumn} [column] 
+   * @returns {*} 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   private renderSiteUrl(item?: any, index?: number, column?: IColumn): any {
-debugger;
-
     return (<a href={item[column.fieldName]}>{item[column.fieldName]} </a>);
   }
+  /**
+   * Sets the columns to be displayed in the list.
+   * These are SiteTemplate, Title and Url, plus any properties specified in 
+   * the propertypane
+   * 
+   * @private
+   * @returns {Array<IColumn>} 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   private setupColumns(): Array<IColumn> {
     const columns: Array<IColumn> = [
       {
@@ -236,6 +320,14 @@ debugger;
     return columns;
   }
   /** react lifecycle */
+  /**
+   * Called when the componet loads.
+   * Builds the query to search sharepoint for the list of sites to display and formates
+   * the results to be displayed in the list
+   * 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public componentWillMount() {
     this.state.columns = this.setupColumns();
     this.state.managedToCrawedMapping = [];
@@ -293,11 +385,26 @@ debugger;
     });
   }
   /** Event Handlers */
+  /**
+   * Changes the selected item
+   * 
+   * @param {*} [item] 
+   * @param {number} [index] 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public onActiveItemChanged(item?: any, index?: number) {
     this.state.selectedIndex = index;
     this.setState(this.state);
   }
 
+  /**
+   * Saves the item in workingStorage back to SharePoint
+   * 
+   * @param {MouseEvent} [e] 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public onSave(e?: MouseEvent): void {
     const promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
@@ -323,15 +430,39 @@ debugger;
         console.log(err);
       });
   }
+  /**
+   * Clears workingStorage and exits edit mode
+   * 
+   * @param {MouseEvent} [e] 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public onCancel(e?: MouseEvent): void {
     this.state.isediting = false;
     this.state.workingStorage = null;
     this.setState(this.state);
   }
+  /**
+   * Set the ForceCrawl Value in working storage which can be used to force a crawl of the site
+   * after the item is saved
+   * 
+   * @param {boolean} newValue 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
+  
   public onForceCrawlChange(newValue: boolean) {
     this.state.workingStorage.forceCrawl = newValue;
     this.setState(this.state);
   }
+  /**
+   * Called when the value of a property i schanged in the display. 
+   * Saves the new value in workingStarage,
+   * 
+   * @param {React.FormEvent<HTMLInputElement>} event 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public onPropertyValueChanged(event: React.FormEvent<HTMLInputElement>) {
     const selectedProperty = event.currentTarget.attributes["data-crawledpropertyname"].value;
     const dp: DisplayProp = _.find(this.state.workingStorage.DisplayProps, p => { return p.crawledPropertyName === selectedProperty; });
@@ -343,29 +474,16 @@ debugger;
     dp.searchable = value;
     this.setState(this.state);
   }
-  //  public onEditItemClicked(e?: MouseEvent): void {
-  //     const selectedSite = this.state.sites[this.state.selectedIndex];
-  //     const web = new Web(selectedSite.Url);
-  //     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-  //       const crawledProps: Array<string> = this.props.propertiesToDisplay.split("\n").map(item => {
-  //         return item.split("|")[0];
-  //       });
-  //       this.state.propertyBagEditPanelProps = _.clone(this.state.sites[this.state.selectedIndex]);
-  //       this.state.propertyBagEditPanelProps.searchableProps = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
-  //       this.state.propertyBagEditPanelProps.DisplayProps = utils.SelectProperties(r.AllProperties, crawledProps, this.state.propertyBagEditPanelProps.searchableProps);
-  //       this.state.propertyBagEditPanelProps.stopEditing=this.onCancel.bind(this);
-  //       this.state.propertyBagEditPanelProps.isVisible=true;
-  //       // now add in the managed Prop
-  //       for (let dp of this.state.propertyBagEditPanelProps.DisplayProps) {
-  //         dp.managedPropertyName =
-  //           _.find(this.state.managedToCrawedMapping, mtc => { return mtc.crawledPropertyName === dp.crawledPropertyName; }).managedPropertyName;
-  //       }
-  //       this.state.isediting = true;
-  //       this.state.propertyBagEditPanelProps.isVisible = true;
-  //       this.setState(this.state);
-  //     });
-
-  //   }
+ 
+  /**
+   * Called when user wishes to edit an item.
+   * The List displayes the values from the search index. 
+   * This method gets the values from the actual PropertyBag so that they can be edited.
+   * 
+   * @param {MouseEvent} [e] 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public onEditItemClicked(e?: MouseEvent): void {
     console.log("in onEditItemClicked");
     const selectedSite = this.state.sites[this.state.selectedIndex];
@@ -388,6 +506,15 @@ debugger;
     });
     console.log("out onEditItemClicked");
   }
+  /**
+   * Sorts a column when the user clicks on the header
+   * 
+   * @private
+   * @param {*} event 
+   * @param {IColumn} column 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   private _onColumnClick(event: any, column: IColumn) {
     column = _.find(this.state.columns, c => c.fieldName === column.fieldName);// find the object in state
     // If we've sorted this column, flip it.
@@ -411,8 +538,14 @@ debugger;
   }
 
 
+  /**
+   * Renders the component
+   * 
+   * @returns {React.ReactElement<IPropertyBagDisplayProps>} 
+   * 
+   * @memberOf PropertyBagDisplay
+   */
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
-    debugger;
     return (
       <div >
         <CommandBar items={this.CommandItems} />

@@ -15,6 +15,16 @@ import { IPropertyBagFilteredSiteListWebPartProps } from './IPropertyBagFiltered
 import utils from "../shared/utils";
 export default class PropertyBagFilteredSiteListWebPart extends BaseClientSideWebPart<IPropertyBagFilteredSiteListWebPartProps> {
 
+  /**
+   *   Renders the component. 
+   * 
+   *  converts the new-line (\n) separated strings to an array of 
+   * strings to be passed to the component.
+   * 
+   * 
+   * 
+   * @memberOf PropertyBagFilteredSiteListWebPart
+   */
   public render(): void {
     debugger;
     const element: React.ReactElement<IPropertyBagFilteredSiteListProps> = React.createElement(

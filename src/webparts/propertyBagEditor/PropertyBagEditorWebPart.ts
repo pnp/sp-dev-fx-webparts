@@ -13,11 +13,29 @@ import PropertyBagEditor from "./components/PropertyBagEditor";
 import { IPropertyBagEditorProps } from "./components/IPropertyBagEditorProps";
 import { IPropertyBagEditorWebPartProps } from "./IPropertyBagEditorWebPartProps";
 import utils from "../shared/utils";
+
+/**
+ *  This webpart is used to edit the properties of a Rootweb. 
+ *  The web to be edited is passed in by the SiteUrl Property. If not set, the Current site is used
+ * @export
+ * @class PropertyBagEditorWebPart
+ * @extends {BaseClientSideWebPart<IPropertyBagEditorWebPartProps>}
+ */
 export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPropertyBagEditorWebPartProps> {
 
 
+  /**
+   * Renders the component. If no siteUrl is present on the currnt url, the current site is 
+   * passed in as the siteUrl Property.
+   * 
+   *  converts the propertiesToEdit from a new-line (\n) separated string to an array of 
+   * strings to be passed to the component.
+   * 
+   * 
+   * @memberOf PropertyBagEditorWebPart
+   */
   public render(): void {
-        const uqpc = new UrlQueryParameterCollection(window.location.toString());
+    const uqpc = new UrlQueryParameterCollection(window.location.toString());
     let siteUrl: string = uqpc.getValue("siteUrl");
     if (!siteUrl) {
       siteUrl = this.context.pageContext.site.absoluteUrl;
@@ -40,7 +58,7 @@ export default class PropertyBagEditorWebPart extends BaseClientSideWebPart<IPro
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-  
+
     return {
       pages: [
         {

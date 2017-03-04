@@ -15,6 +15,15 @@ import { IPropertyBagDisplayWebPartProps } from "./IPropertyBagDisplayWebPartPro
 import utils from "../shared/utils";
 export default class PropertyBagDisplayWebPart extends BaseClientSideWebPart<IPropertyBagDisplayWebPartProps> {
 
+  /**
+   * Renders the component. 
+   * 
+   *  converts the new-line (\n) separated strings to an array of 
+   * strings to be passed to the component.
+   * 
+   * 
+   * @memberOf PropertyBagDisplayWebPart
+   */
   public render(): void {
     const element: React.ReactElement<IPropertyBagDisplayProps> = React.createElement(
       PropertyBagDisplay,

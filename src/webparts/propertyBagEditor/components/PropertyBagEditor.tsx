@@ -21,12 +21,12 @@ import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
 import DisplayProp from "../../shared/DisplayProp";
 
 export interface IPropertyBagEditorState {
-  displayProps: Array<DisplayProp>;
-  workingStorage?: DisplayProp;
-  selectedIndex: number;
-  searchableProps: Array<string>;
-  messsage: string;
-  isediting: boolean;
+  displayProps: Array<DisplayProp>; // The list of properties displayed in the webpart
+  workingStorage?: DisplayProp; // a working copy of the property currently being edited
+  selectedIndex: number; // the index of the currently selected propety
+  searchableProps: Array<string>; // an array of all the searchable properties in the site
+  messsage: string; // an error message
+  isediting: boolean; // whether the webart is in enit mode
 }
 export default class PropertyBagEditor extends React.Component<IPropertyBagEditorProps, IPropertyBagEditorState> {
   public refs: {
@@ -38,7 +38,17 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     this.state = { searchableProps: [], displayProps: [], selectedIndex: -1, messsage: "Hi", isediting: false };
   }
   /**Accessors */
+  /**
+   *  Get's the commands to be displayed in the CommandBar. There is only one command (Edit).
+   *  If no item is selected the command is disabled
+   * 
+   * @readonly
+   * @type {Array<IContextualMenuItem>}
+   * @memberOf PropertyBagEditor
+   */
+
   get CommandItems(): Array<IContextualMenuItem> {
+
     return [
       {
         key: "a",
@@ -50,58 +60,24 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
       }];
   };
 
+  /**
+   *  Determines if an item is selected.
+   * 
+   * @readonly
+   * @type {boolean}
+   * @memberOf PropertyBagEditor
+   */
   get ItemIsSelected(): boolean {
     if (!this.state) { return false; }
     return (this.state.selectedIndex != -1);
   }
-  /** Talk to Sharepoint */
-  private setSPProperty(name: string, value: string, siteUrl: string) {
-    return new Promise((resolve, reject) => {
-      var webProps;
-      var clientContext = new SP.ClientContext(siteUrl);
-      var web = clientContext.get_web();
-      webProps = web.get_allProperties();
-      webProps.set_item(name, value);
-      web.update();
-      webProps = web.get_allProperties();
-      clientContext.load(web);
-      clientContext.load(webProps);
-      clientContext.executeQueryAsync((s, a) => { resolve(); }, (s, a) => { reject(); });
 
-    });
-  }
-  // //http://vipulkelkar.blogspot.com/2015/09/index-web-property-bag-using-javascript.html
-  // public EncodePropertyKey(propKey) {
-  //   var bytes = [];
-  //   for (var i = 0; i < propKey.length; ++i) {
-  //     bytes.push(propKey.charCodeAt(i));
-  //     bytes.push(0);
-  //   }
-  //   var b64encoded = window.btoa(String.fromCharCode.apply(null, bytes));
-  //   return b64encoded;
-  // }
-  // public DecodePropertyKey(propKey) {
-  //   debugger;
-  //   const encoded = window.atob(propKey);
-  //   var decoded = "";
-  //   for (let x = 0; x < encoded.length; x = x + 2) {
-  //     decoded = decoded + encoded.substr(x, 1);
-  //   }
-  //   return decoded;
-  // }
-  // public saveSearchablePropertiesToSharePoint(propnames: Array<string>): Promise<any> {
-  //   let encodedPropNames: Array<string> = [];
-  //   for (const propname of propnames) {
-  //     encodedPropNames.push(this.EncodePropertyKey(propname));
-  //   }
-  //   return this.setSPProperty("vti_indexedpropertykeys", encodedPropNames.join("|") + "|", this.props.siteUrl);//need the pipe at the end too?
-  // }
   /** react lifecycle */
   public componentWillMount() {
 
     const web = new Web(this.props.siteUrl);
     web.select("Title", "AllProperties").expand("AllProperties").get().then(r => {
-       const sp = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
+      const sp = utils.decodeSearchableProps(r.AllProperties["vti_x005f_indexedpropertykeys"]);
       const dp = utils.SelectProperties(r.AllProperties, this.props.propertiesToEdit, sp);
       this.state.searchableProps = sp;
       this.state.displayProps = dp;
@@ -115,21 +91,55 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     this.setState(this.state);
   }
   public onActiveItemChanged(item?: any, index?: number) {
-
     this.state.selectedIndex = index;
     this.setState(this.state);
   }
+  /**
+   *  Gets fired when the user changes the 'Searchable' value in the ui.
+   *  Saves the value in workingStorage
+   * 
+   * @param {boolean} newValue 
+   * 
+   * @memberOf PropertyBagEditor
+   */
   public onSearchableValueChanged(newValue: boolean) {
     this.state.workingStorage.searchable = newValue;
     this.setState(this.state);
   }
+  /**
+   * Gets fired when the user changes the proprty value in the ui
+   * Saves the value in workingStorage
+   * 
+   * @param {any} event 
+   * 
+   * @memberOf PropertyBagEditor
+   */
+  public onPropertyValueChanged(event) {
+    this.state.workingStorage.value = event.target.value;
+    this.setState(this.state);
+  }
+
+  /**
+   * Copies the selected item into workingStorage and sets the webpart into edit mode.
+   * 
+   * @param {MouseEvent} [e] 
+   * 
+   * @memberOf PropertyBagEditor
+   */
   public onEditItemClicked(e?: MouseEvent): void {
     this.state.isediting = true;
     this.state.workingStorage = _.clone(this.state.displayProps[this.state.selectedIndex]);
     this.setState(this.state);
   }
+  /**
+   * Saves the item in workingStorage back to sharepoint, then clears workingStorage and stops editing.
+   * 
+   * @param {MouseEvent} [e] 
+   * 
+   * @memberOf PropertyBagEditor
+   */
   public onSave(e?: MouseEvent): void {
-    this.setSPProperty(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.value, this.props.siteUrl)
+    utils.setSPProperty(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.value, this.props.siteUrl)
       .then(value => {
         this.changeSearchable(this.state.workingStorage.crawledPropertyName, this.state.workingStorage.searchable)
           .then(s => {
@@ -140,21 +150,34 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
           });
       });
   }
+  /**
+   * Clears workingStorage and stops editing
+   * 
+   * @param {MouseEvent} [e] 
+   * 
+   * @memberOf PropertyBagEditor
+   */
   public onCancel(e?: MouseEvent): void {
     this.state.isediting = false;
     this.state.workingStorage = null;
     this.setState(this.state);
   }
-  public onPropertyValueChanged(event) {
-     this.state.workingStorage.value = event.target.value;
-    this.setState(this.state);
-  }
 
-   public changeSearchable(propname: string, newValue: boolean): Promise<any> {
+
+  /**
+   * Makes a propety Searchable or non-Searchable in the sharepoint site
+   * 
+   * @param {string} propname The property to be made Searchable or non-Searchable 
+   * @param {boolean} newValue Whether to make it Searchable or non-Searchable 
+   * @returns {Promise<any>} 
+   * 
+   * @memberOf PropertyBagEditor
+   */
+  public changeSearchable(propname: string, newValue: boolean): Promise<any> {
     if (newValue) {//make prop searchable
       if (_.indexOf(this.state.searchableProps, propname) === -1) {// wasa not searchable, mpw it is
         this.state.searchableProps.push(propname);
-        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl,this.state.searchableProps);
+        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl, this.state.searchableProps);
       }
       else {
         return Promise.resolve();
@@ -163,13 +186,20 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     else { // make prop not searchablke
       if (_.indexOf(this.state.searchableProps, propname) !== -1) {// wasa not searchable, mpw it is
         _.remove(this.state.searchableProps, p => { return p === propname; });
-        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl,this.state.searchableProps);
+        return utils.saveSearchablePropertiesToSharePoint(this.props.siteUrl, this.state.searchableProps);
       }
       else {
         return Promise.resolve();
       }
     }
   }
+  /**
+   * Renders the webpart
+   * 
+   * @returns {React.ReactElement<IPropertyBagEditorProps>} 
+   * 
+   * @memberOf PropertyBagEditor
+   */
   public render(): React.ReactElement<IPropertyBagEditorProps> {
     const columns: Array<IColumn> = [
       { isResizable: true, key: "name", name: "Propert Name", fieldName: "crawledPropertyName", minWidth: 150 },

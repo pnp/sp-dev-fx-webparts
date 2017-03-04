@@ -53,7 +53,6 @@ export class DisplaySite {
     public Url: string,
     public SiteTemplate: string,
     public errorMessages: Array<md.Message>,
-    // public SarchableProps?: Array<String>,
     public DisplayProps?: Array<DisplayProp>,
     public searchableProps?: Array<string>,
     public forceCrawl?: boolean,
@@ -62,6 +61,14 @@ export class DisplaySite {
   ) { }
 }
 export class AppliedUserFilter {
+  /**
+   * Creates an instance of AppliedUserFilter.
+   * An AppliedUserFilter is created when a user oerforms a filtering operation
+   * @param {string} managedPropertyName  The property the user filtered on
+   * @param {string} value The value the user selected for the filter
+   * 
+   * @memberOf AppliedUserFilter
+   */
   public constructor(
     public managedPropertyName: string,
     public value: string)
@@ -69,6 +76,14 @@ export class AppliedUserFilter {
 }
 export class UserFilter {
 
+  /**
+   * A UserFilter lets the use filter the list of displayed sites based on a metadata value.
+   * The ManagedProperty name is displayed in a CommandBar as a dropdown, with the values as 
+   * dropdown options.
+   * 
+   * @type {Array<string>}
+   * @memberOf UserFilter
+   */
   public values: Array<string>;
   public constructor(public managedPropertyName: string) {
     this.values = [];
@@ -81,6 +96,13 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     this.state = { sites: [], filteredSites: [], errorMessages: [], userFilters: [], appliedUserFilters: [] };
   }
   /** Utility Functions */
+  /**
+   * Removes a message from the MessageDisplay
+   * 
+   * @param {string} messageId the ID of the message to remove
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public removeMessage(messageId: string) {
     _.remove(this.state.errorMessages, {
       Id: messageId
@@ -88,6 +110,14 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     this.setState(this.state);
   }
 
+  /**
+   * Initializes the list of user filters.
+   * A user filter is created for each UserFilter name specified in the props.
+   * 
+   * @param {Array<string>} userFilterNames 
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public setupUserFilters(userFilterNames: Array<string>) {
     this.state.userFilters = [];
     for (const userFilterName of userFilterNames) {
@@ -95,6 +125,13 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     }
   }
 
+  /**
+   * Adds values to All the UserFilters for a given SearchResults.
+   * 
+   * @param {any} r The Searchresult
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public extractUserFilterValues(r) {
     for (const userFilter of this.state.userFilters) {
       const value = r[userFilter.managedPropertyName].trim();
@@ -107,7 +144,18 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     }
 
   }
-  public getSites(siteTemplatesToInclude: Array<string>, filters:Array< string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean) {
+  /**
+   * Gets the sites to be displayed in the list using the filters passed in from Properies
+   * Sites are saved in  this.state.sites
+   * @param {Array<string>} siteTemplatesToInclude  Site templats (i.e. STS of STS#0, etc,)
+   * @param {Array<string>} filters Filters to use from PropertyPane
+   * @param {boolean} showQueryText Whether to display the queryText in the MessageDisplay
+   * @param {Array<string>} userFilters the list of user filters to be built from the searchresults
+   * @param {boolean} showSiteDescriptions Include site descroptions in search results
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
+  public getSites(siteTemplatesToInclude: Array<string>, filters:Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean) {
 
     const userFilterNameArray = [];
     if (userFilters) {
@@ -171,13 +219,39 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     });
   }
   /** react lifecycle */
+  /**
+   * Called whe component loads.
+   * Gets the sites and builds the userFilters
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public componentWillMount() {
+
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText, this.props.userFilters, this.props.showSiteDescriptions);
   }
+  /**
+   * Called whe Properties are changed in the PropertyPane
+   * Gets the sites and builds the userFilters using the new Properties
+   * 
+   * @param {IPropertyBagFilteredSiteListProps} nextProps 
+   * @param {*} nextContext 
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public componentWillReceiveProps(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any) {
 
     this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
   }
+  /**
+   * Called by the Render method.
+   * Displayes the Site Description if requested in the PropertyPane.
+   * Otherwise displays an empty Div
+   * 
+   * @param {Site} site 
+   * @returns 
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public conditionallyRenderDescription(site: Site) {
     if (this.props.showSiteDescriptions) {
       return (<Label>{site.description}</Label>);
@@ -186,6 +260,15 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       return (<div />);
     }
   }
+  /**
+   * Called by the Render Method
+   * Sets up the ContentualMenuItems based on the FilterData extracted from the SearchResults
+   * 
+   * @private
+   * @returns {Array<IContextualMenuItem>} 
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   private SetupFilters(): Array<IContextualMenuItem> {
     const items = new Array<IContextualMenuItem>();
     for (const uf of this.state.userFilters) {
@@ -212,14 +295,34 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     }
     return items;
   }
+  /**
+   *  Determines if the specified managedProperty and value are currently being filtered on
+   * 
+   * @param {string} managedPropertyName 
+   * @param {string} value 
+   * @returns {boolean} 
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public AppliedFilterExists(managedPropertyName: string, value: string): boolean {
 
     const selectedFilter = _.find(this.state.appliedUserFilters, af => {
       return (af.managedPropertyName === managedPropertyName && af.value === value);
     });
-    if (selectedFilter) { return true; } else { return false; }
+    if (selectedFilter) { 
+      return true;
+     } else {
+        return false; 
+      }
   }
 
+  /**
+   * Togles the userFIlter fpr the managedProperty and value in the specified MenuItem
+   * 
+   * @param {IContextualMenuItem} item 
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public ToggleAppliedUserFilter(item: IContextualMenuItem) {
     if (this.AppliedFilterExists(item.data.managedPropertyName, item.data.value)) {
       this.state.appliedUserFilters = this.state.appliedUserFilters.filter(af => {
@@ -231,6 +334,15 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
     }
 
   }
+  /**
+   * Filters the sites in this.state.sites using the userFilteres in this.state.appliedUserFilters
+   * and stores it in this.state.filteredSites.
+   * this.state.sites holds all sites after filtering based on propertypane filters.
+   * this.state.filteredSites hods the likst of sites after userFilters are applied and
+   * is shown in the display
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public filterSites() {
     if (this.state.appliedUserFilters.length === 0) {
       this.state.filteredSites = this.state.sites;
@@ -248,6 +360,17 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       });
     }
   }
+  /**
+   * EventHandler called when a user selects one of the filters from the COmmandBar
+   * Toggles the filter
+   * Applies the new Filters.
+   * re-deiplays the list
+   * 
+   * @param {React.MouseEvent<HTMLElement>} [ev] 
+   * @param {IContextualMenuItem} [item] 
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
 
     this.ToggleAppliedUserFilter(item);
@@ -256,6 +379,13 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
   }
 
 
+  /**
+   * Renders the list of sites in this.state.filteredSites.
+   * 
+   * @returns {React.ReactElement<IPropertyBagFilteredSiteListProps>} 
+   * 
+   * @memberOf PropertyBagFilteredSiteList
+   */
   public render(): React.ReactElement<IPropertyBagFilteredSiteListProps> {
 
     debugger;

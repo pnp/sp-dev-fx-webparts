@@ -3,6 +3,12 @@ import * as React from "react";
 import { Guid } from "@microsoft/sp-core-library";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 
+/**
+ *  A helper class used to hold messages to be displayed in a MessageBar
+ * 
+ * @export
+ * @class Message
+ */
 export class Message {
    public Id: string;
    public text: string;
@@ -16,10 +22,20 @@ export interface IMessageDisplayProps {
     hideMessage: (messageId) => void;
 }
 
+/**
+ * A class used to Display Messages in the webpart.
+ * 
+ * @export
+ * @class MessageDisplay
+ * @extends {React.Component<IMessageDisplayProps, any>}
+ */
 export default class MessageDisplay extends React.Component<IMessageDisplayProps, any> {
-    public constructor(props) {
-        super(props);
-    }
+    /**
+     * 
+     * 
+     * 
+     * @memberOf MessageDisplay
+     */
     public createDismissHandler = (messageId) => (vale) => {
             this.props.hideMessage(messageId);
     }
