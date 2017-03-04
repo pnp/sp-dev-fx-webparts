@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "fa63037d-d7bd-4d52-894a-b40127773283",
+  "alias": "PropertyBagDisplayWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [{
+    "groupId": "fa63037d-d7bd-4d52-894a-b40127773283",
+    "group": { "default": "PropertyBag Navigation" },
+    "title": { "default": "propertyBagDisplay" },
+    "description": { "default": "PropertyDisplay Webpart -- Displays all Sites and selected properties, an lets you edit those propertiies" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "propertyBagDisplay",
+      "propertiesToDisplay":
+        "CUSOMNAVAreaName|AreaName\nCUSOMNAVBusinessUnit|BusinessUnit\nCUSOMNAVContinent|Continent\nCUSOMNAVLocation|Location",
+        "siteTemplatesToInclude":
+        "STS\nPUBLISHING"
+          }
+  }]
+}

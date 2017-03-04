@@ -1,0 +1,58 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/propertyBagEditor/PropertyBagEditorWebPart.js",
+      "manifest": "./src/webparts/propertyBagEditor/PropertyBagEditorWebPart.manifest.json",
+      "outputPath": "./dist/property-bag-editor.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/propertyBagDisplay/PropertyBagDisplayWebPart.js",
+      "manifest": "./src/webparts/propertyBagDisplay/PropertyBagDisplayWebPart.manifest.json",
+      "outputPath": "./dist/property-bag-display.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.js",
+      "manifest": "./src/webparts/propertyBagFilteredSiteList/PropertyBagFilteredSiteListWebPart.manifest.json",
+      "outputPath": "./dist/property-bag-filtered-site-list.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/propertyBagGlobalNav/PropertyBagGlobalNavWebPart.js",
+      "manifest": "./src/webparts/propertyBagGlobalNav/PropertyBagGlobalNavWebPart.manifest.json",
+      "outputPath": "./dist/property-bag-global-nav.bundle.js"
+    }
+  ],
+  "externals": {
+    "sp-pnp-js": "https://cdnjs.cloudflare.com/ajax/libs/sp-pnp-js/2.0.1/pnp.min.js",
+    "sp-init": {
+      "path": "https://rgove3.sharepoint.com/_layouts/15/init.js",
+      "globalName": "$_global_init"
+    },
+    "microsoft-ajax": {
+      "path": "https://rgove3.sharepoint.com/_layouts/15/MicrosoftAjax.js",
+      "globalName": "Sys",
+      "globalDependencies": [
+        "sp-init"
+      ]
+    },
+    "sp-runtime": {
+      "path": "https://rgove3.sharepoint.com/_layouts/15/SP.Runtime.js",
+      "globalName": "SP",
+      "globalDependencies": [
+        "microsoft-ajax"
+      ]
+    },
+    "sharepoint": {
+      "path": "https://rgove3.sharepoint.com/_layouts/15/SP.js",
+      "globalName": "SP",
+      "globalDependencies": [
+        "sp-runtime"
+      ]
+    }
+  },
+  "localizedResources": {
+    "propertyBagEditorStrings": "webparts/propertyBagEditor/loc/{locale}.js",
+    "propertyBagDisplayStrings": "webparts/propertyBagDisplay/loc/{locale}.js",
+    "propertyBagFilteredSiteListStrings": "webparts/propertyBagFilteredSiteList/loc/{locale}.js",
+    "propertyBagGlobalNavStrings": "webparts/propertyBagGlobalNav/loc/{locale}.js"
+  }
+}
