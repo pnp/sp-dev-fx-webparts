@@ -59,7 +59,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     currentItem.items.push({
       key: r['Title'],
       name: r['Title'],
-      url: r['SPSiteUrl']
+      href: r['SPSiteUrl']
     });
   }
   /**
