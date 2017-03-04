@@ -39,7 +39,7 @@ export interface IPropertyBagDisplayState {
   workingStorage?: DisplaySite;
   managedPropNames?: Array<string>;
   columns: Array<IColumn>;
-  
+
 }
 
 export class ManagedToCrawledMappingEntry {
@@ -65,7 +65,7 @@ export class DisplaySite {
 export default class PropertyBagDisplay extends React.Component<IPropertyBagDisplayProps, IPropertyBagDisplayState> {
   public constructor(props) {
     super(props);
-    this.state = { sites: [], selectedIndex: -1,  columns: [], errorMessages: [] };
+    this.state = { sites: [], selectedIndex: -1, columns: [], errorMessages: [] };
   }
   /**Accessors */
   get CommandItems(): Array<IContextualMenuItem> {
@@ -186,6 +186,11 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.state.isediting = false;
     this.setState(this.state);
   }
+  private renderSiteUrl(item?: any, index?: number, column?: IColumn): any {
+debugger;
+
+    return (<a href={item[column.fieldName]}>{item[column.fieldName]} </a>);
+  }
   private setupColumns(): Array<IColumn> {
     const columns: Array<IColumn> = [
       {
@@ -210,6 +215,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         name: "Url",
         minWidth: 20,
         maxWidth: 220,
+        onRender: this.renderSiteUrl
       },
     ];
     const displayProps: Array<string> = this.props.propertiesToDisplay.map(item => {
@@ -245,7 +251,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
     this.state.managedPropNames.unshift("SiteTemplateId");
     let querytext = "contentclass:STS_Site ";
     if (this.props.siteTemplatesToInclude) {
-         if (this.props.siteTemplatesToInclude.length > 0) {
+      if (this.props.siteTemplatesToInclude.length > 0) {
         querytext += " AND (";
         for (const siteTemplate of this.props.siteTemplatesToInclude) {
           const siteTemplateParts = siteTemplate.split("#");
@@ -408,7 +414,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
   public render(): React.ReactElement<IPropertyBagDisplayProps> {
     debugger;
     return (
-      <div>
+      <div >
         <CommandBar items={this.CommandItems} />
         <MessageDisplay
           messages={this.state.errorMessages}
@@ -427,7 +433,7 @@ export default class PropertyBagDisplay extends React.Component<IPropertyBagDisp
         >
         </DetailsList>
         {this.renderPopup.bind(this)()}
-      </div>
+      </div >
     );
   }
 }

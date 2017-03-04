@@ -15,7 +15,7 @@
         "default": "property-bag-filtered-site-list"
       },
       "description": {
-        "default": "displays all sites with the selected propeties"
+        "default": "PropertyFilteredSiteList Webpart -- Displays a list of sites with the selected properties"
       },
       "officeFabricIconFontName": "Page",
       "properties": {

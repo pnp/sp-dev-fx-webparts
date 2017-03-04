@@ -45,13 +45,13 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     let currentSet: Array<IContextualMenuItem> = this.state.menuitems;
     debugger;
     for (let managedProperty of this.props.managedProperties) {
-      let value = r[managedProperty];
+      let value = r[managedProperty].trim();
       currentItem = _.find(currentSet, i => { return i.key === value });
       if (!currentItem) {
         let idx = currentSet.push({ key: value, name: value, items: [] });
-        currentItem = currentSet[idx-1];
+        currentItem = currentSet[idx - 1];
       }
-      currentSet=currentItem.items;
+      currentSet = currentItem.items;
     }
     currentItem.items.push({
       key: r['Title'],
@@ -60,7 +60,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     });
   }
   public getSites(siteTemplatesToInclude: Array<string>, filters: Array<string>, managedProperties: Array<string>) {
-   
+
     let querytext = "contentclass:STS_Site ";
     if (siteTemplatesToInclude) {
       querytext = utils.addSiteTemplatesToSearchQuery(siteTemplatesToInclude, querytext);
@@ -94,7 +94,7 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
       for (const r of results.PrimarySearchResults) {
         this.addMenuItem(r);
       }
-     
+
       this.setState(this.state);
     }).catch(err => {
       debugger;
@@ -104,16 +104,16 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
   }
   /** react lifecycle */
   public componentWillMount() {
-   
+
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.managedProperties);
   }
   public componentWillReceiveProps(nextProps: IPropertyBagGlobalNavProps, nextContext: any) {
-   
+
     this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.managedProperties);
   }
   public render(): React.ReactElement<IPropertyBagGlobalNavProps> {
     return (
-      <div />
+      <CommandBar items={this.state.menuitems} />
     );
   }
 }

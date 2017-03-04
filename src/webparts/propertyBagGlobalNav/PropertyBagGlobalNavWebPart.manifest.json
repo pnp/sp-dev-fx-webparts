@@ -15,7 +15,7 @@
         "default": "propertyBagGlobalNav"
       },
       "description": {
-        "default": "display a menu using site properties"
+        "default": "PropertyBagGlobalNav Webpart -- Displays a Global Navigation Brar built from the SItes PropertyBags"
       },
       "officeFabricIconFontName": "Page",
       "properties": {
