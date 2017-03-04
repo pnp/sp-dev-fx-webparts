@@ -301,11 +301,11 @@ debugger;
   public onSave(e?: MouseEvent): void {
     const promises: Array<Promise<any>> = [];
     for (const prop of this.state.workingStorage.DisplayProps) {
-      const proomise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
+      const promise = utils.setSPProperty(prop.crawledPropertyName, prop.value, this.state.workingStorage.Url)
         .then(value => {
           this.changeSearchable(this.state.workingStorage.Url, prop.crawledPropertyName, prop.searchable);
         });
-      promises.push(proomise);
+      promises.push(promise);
     }
     Promise.all(promises)
       .then((results: Array<any>) => {
