@@ -193,6 +193,13 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
       }
     }
   }
+     private RenderBoolean (item?: any, index?: number, column?: IColumn): any{
+       if (item[column.fieldName]){
+         return (<div>Yes</div>);
+       }else{
+           return (<div>No</div>);
+       }
+     }
   /**
    * Renders the webpart
    * 
@@ -204,7 +211,7 @@ export default class PropertyBagEditor extends React.Component<IPropertyBagEdito
     const columns: Array<IColumn> = [
       { isResizable: true, key: "name", name: "Propert Name", fieldName: "crawledPropertyName", minWidth: 150 },
       { isResizable: true, key: "value", name: "Propert Value", fieldName: "value", minWidth: 150 },
-      { key: "searchable", name: "searchable", fieldName: "searchable", minWidth: 150 },
+      { key: "searchable", name: "searchable", fieldName: "searchable", minWidth: 150 ,onRender:this.RenderBoolean},
     ];
 
     return (
