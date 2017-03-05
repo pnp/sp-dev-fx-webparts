@@ -28,4 +28,4 @@ Renders a calendar from any list available on the selected site.  Site, List, St
 ![SS1](https://cloud.githubusercontent.com/assets/13068139/23584809/14c4333e-0121-11e7-9bf1-3117651222d3.png)
 ![SS2](https://cloud.githubusercontent.com/assets/13068139/23584808/14c3ec26-0121-11e7-8be8-65fbcca32b62.png)
 ![SS3](https://cloud.githubusercontent.com/assets/13068139/23584807/14b88f34-0121-11e7-8c91-56ecff9343e1.png)
-### [PC Professional, Inc.](http://pcprofessional.com)
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-modern-calendar)
