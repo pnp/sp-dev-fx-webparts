@@ -85,11 +85,28 @@ On the edit panel one can specify a new value for each property as well as wheth
 
 PropertyBagFilteredSiteList
 
-This webpart displays a list of all sites that meet the criteria specified in the property pane by the administrator. Additionally, it lets the user narrow down the list of sites displayed by applying metadata filters that are set up by the administrator.
+This webpart displays a list of all sites that meet the criteria specified in the property pane by the administrator:
+
+![PropertyBagFilteredSiteListDisplay](./src/images/PropertyBagFilteredSiteListDisplay.PNG)
+
+Additionally, it lets the user narrow down the list of sites displayed by applying metadata filters that are set up by the administrator in the Property Pane:
+![PropertyBagFilteredSiteListConfig](./src/images/PropertyBagFilteredSiteListConfigy.PNG)
+
+In the PropertyPane above, the 'Site Templates to Include' and 'Metadata Filters' are used to filter which site collections are retrived from search. The 'User Filters' are used to allow the user to easily filter the results returned from search using the command bar on the top of the display.
+
+
 
 PropertyBagGlobalNav
 
-This Webpart builds a navigation menu based on the Managed Properties set up in the PropertyPane
+This Webpart builds a navigation menu based on the Managed Properties set up in the PropertyPane:
+
+![propertyBagGlobalNavDisplay](./src/images/propertyBagGlobalNavDisplay.PNG)
+
+In the PropertyPane, an administrator just needs to specify which Managed Properties are to be used to build the Navigation menu:
+
+![PropertyBagGlobalNavConfig](./src/images/PropertyBagGlobalNavConfig.PNG)
+
+If desired, the admin can also specify which site templates should be included in the menu, as wall as any additional filters. Additional Filteres can be specified in the format 'ManagedPropertyName=value';
 
 ### Building the code
 
