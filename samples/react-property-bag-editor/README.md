@@ -13,15 +13,15 @@ Selecting a Property and clicking the Edit button will bring up the Edit Panel:
 
 Here you can change the value of the property and specify if the property should be included in the search Index. 
 
-The Properties that can be edited are specified in the webpart&#39;s Property Panel:
+The Properties that can be edited are specified in the webpart&#39;s Property Pane:
 
 ![PropertyBagEditorEdur](./src/images/PropertyBagEditorConfig.PNG)
 
 The Properties set in the Property Pane of this webpart are crawled properties, and should be mapped to managed properties so that can be used by the other webparts in this project. 
 
-The Site whose properties are to be edited can be passed in via a query parameter. While this webpart can be added to any page, it would be most useful if added to a page in an infrastructure site collection tenant, and then linked to from all other sites Site Settings page.
+The Site whose properties are to be edited can be passed in via a query parameter. While this webpart can be added to any page, it would be most useful if added to a page in an infrastructure site collection in the tenant, and then linked to from all other sites via a link in the Site Settings page.
 
-The following script shows how to add such a link to all sites &#39;Site Settings&#39; page using PNP Powershell. It will add a menu item named &#39;Edit Site Metadata &#39; to the  Site Settings of each Team Site that links to the PropertBagEdcitor.aspx page on the tenants cdn site.
+The following script shows how to add such a link to all sites &#39;Site Settings&#39; page using PNP Powershell. It will add a menu item named &#39;Edit Site Metadata &#39; to the  Site Settings of each Team Site that links to the PropertBagEdcitor.aspx page on the tenants infrastructure site (this site is named 'cdn' in the example below).
 
 $adminSiteUrl=&quot;https://tenant-admin.sharepoint.com&quot;
 
@@ -89,10 +89,11 @@ This webpart displays a list of all sites that meet the criteria specified in th
 
 ![PropertyBagFilteredSiteListDisplay](./src/images/PropertyBagFilteredSiteListDisplay.PNG)
 
-Additionally, it lets the user narrow down the list of sites displayed by applying metadata filters that are set up by the administrator in the Property Pane:
+Additionally, it lets the user narrow down the list of sites displayed by applying metadata filters that are set up by the administrator in the Property Pane( Businsess Unit and Continent in the example above):
+
 ![PropertyBagFilteredSiteListConfig](./src/images/PropertyBagFilteredSiteListConfigy.PNG)
 
-In the PropertyPane above, the 'Site Templates to Include' and 'Metadata Filters' are used to filter which site collections are retrived from search. The 'User Filters' are used to allow the user to easily filter the results returned from search using the command bar on the top of the display.
+In the PropertyPane above, the 'Site Templates to Include' and 'Metadata Filters' are used to filter which site collections are retrieved from search. The 'User Filters' are used to allow the user to easily filter the results returned from search using the command bar on the top of the display.
 
 
 
