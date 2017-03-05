@@ -1,17 +1,25 @@
 ## react-property-bag-editor
 
-This is where you include your web part docs.
-
-The webpart can be deployed to a new page on your infrastructure site. Then
-This powershell can be used to add a link to the siteactions of all sites to set the metadata.
-
 This project consists of four webparts that can be used to manage the Property Bags for SharePoint sites and display navigational components from those Properties.
 
 PropertyBagEditor.
 
-This webpart allows an administrator to edit selected items in a site&#39;s Property Bag. The Properties that can be edited are specified in the webpart&#39;s Property Pane. The Properties set in the Property Pane of this webpart are crawled properties, and should be mapped to managed properties so that can be used by the other webparts in this project.  When editing a property, the user can also select whether the property is to be include in the SharePoint search Index. The Site whose properties are to be edited can be passed in via a query parameter.
+This webpart allows an administrator to edit selected items in a site&#39;s Property Bag. A sample display is shown below:
+![PropertyBagEditorDisplay](./src/images/PropertyBagEditorDisplay.PNG)
 
-While this webpart can be added to any page, it would be most useful if added to a page in an infrastructure site collection tenant, and then linked to from all other sites Site Settings page.
+Selecting a Property and clicking the Edit button will bring up the Edit Panel:
+
+![PropertyBagEditorEdur](./src/images/PropertyBagEditorEdit.PNG)
+
+Here you can change the value of the property and specify if the property should be included in the search Index. 
+
+The Properties that can be edited are specified in the webpart&#39;s Property Panel:
+
+![PropertyBagEditorEdur](./src/images/PropertyBagEditorConfig.PNG)
+
+The Properties set in the Property Pane of this webpart are crawled properties, and should be mapped to managed properties so that can be used by the other webparts in this project. 
+
+The Site whose properties are to be edited can be passed in via a query parameter. While this webpart can be added to any page, it would be most useful if added to a page in an infrastructure site collection tenant, and then linked to from all other sites Site Settings page.
 
 The following script shows how to add such a link to all sites &#39;Site Settings&#39; page using PNP Powershell. It will add a menu item named &#39;Edit Site Metadata &#39; to the  Site Settings of each Team Site that links to the PropertBagEdcitor.aspx page on the tenants cdn site.
 
@@ -59,9 +67,19 @@ foreach($site in $sites){
 
 PropertyBagDisplay
 
-The propertyBagDisplay webpart can be used by an administrator to view and edit selected properties across sites in the tenant. In the Property Pane, an administrator must specify both the Crawled Property Name and the Managed Property name (separated by a pipe character) of the properties to be included in the webpart. The administrator can also include a list of site templates to narrow down the list of sites to be included in the webpart. When specifying site templates to include you can include just the Site Template Name (STS) and all sites within that template name will be included, or you can specify the Site Template Name and ID, separated by a &#39;#&quot; character (STS#1) to have only sites with that template name and ID included.
+The propertyBagDisplay webpart can be used by an administrator to view and edit selected properties across sites in the tenant:
 
-The webpart displays the site template, Title and Url, plus the selected Managed Properties for all sites in the tenant with the selected site template. The Managed Properties are only displayed if they have been set as searchable, and a full crawl has been run.  After selecting a Site, a user can click the edit button to edit the Crawled properties (i.e. the raw property bag values) for the selected site.
+![PropertyBagDisplay](./src/images/PropertyBagDisplayDisplay.PNG)
+
+In the Property Pane, an administrator must specify both the Crawled Property Name and the Managed Property name (separated by a pipe character) of the properties to be included in the webpart:
+
+![PropertyBagDisplayConfig](./src/images/PropertBagDisplayConfig.PNG)
+
+The administrator can also include a list of site templates to narrow down the list of sites to be included in the webpart. When specifying site templates to include you can include just the Site Template Name (STS) and all sites within that template name will be included, or you can specify the Site Template Name and ID, separated by a &#39;#&quot; character (STS#1) to have only sites with that template name and ID included.
+
+The webpart displays the site template, Title and Url, plus the selected Managed Properties for all sites in the tenant with the selected site template. The Managed Properties are only displayed if they have been set as searchable, and a full crawl has been run.  After selecting a Site, a user can click the edit button to edit the Crawled properties (i.e. the raw property bag values) for the selected site:
+
+![PropertyBagDisplayEdit](./src/images/PropertyBagDisplayEdit.PNG)
 
 On the edit panel one can specify a new value for each property as well as whether that property is to be included in the search index. Additionally one can specify that a full crawl of the site should be run once the properties are saved.
 
