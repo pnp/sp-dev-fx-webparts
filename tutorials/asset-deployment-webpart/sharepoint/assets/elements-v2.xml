@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <ListInstance 
+            FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+            Title="New List" 
+            Description="New list provisioned from v2"
+            TemplateType="100"
+            Url="Lists/NewList">
+    </ListInstance>
+
+</Elements>

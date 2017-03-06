@@ -1,0 +1,28 @@
+{
+  "solution": {
+    "name": "asset-deployment-webpart-client-side-solution",
+    "id": "31086065-dbdb-493f-b02e-7b7f97f45bd9",
+    "version": "2.0.0.0",
+    "features": [{
+        "title": "asset-deployment-webpart-client-side-solution",
+        "description": "asset-deployment-webpart-client-side-solution",
+        "id": "523fe887-ced5-4036-b564-8dad5c6c6e24",
+        "version": "2.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "elements-v2.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ],
+          "upgradeActions":[
+            "upgrade-actions-v2.xml"
+        ]
+        }
+      }]
+  },
+  "paths": {
+    "zippedPackage": "solution/asset-deployment-webpart.sppkg"
+  }
+}
