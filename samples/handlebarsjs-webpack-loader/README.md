@@ -3,7 +3,6 @@
 This sample demonstrate how to set up SPFX to use [Handlebars](http://handlebarsjs.com) through [webpack loader](https://webpack.github.io/docs/loaders.html).
 
 
-
 ## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
@@ -43,3 +42,4 @@ This package produces the following:
 * deploy/* - all resources which should be uploaded to a CDN.
 
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/handlebarsjs-webpack-loader" />
