@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "spfx-handlebars-client-side-solution",
+    "id": "b8285cda-e974-4141-aab6-b7927b732a41",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-handlebars.sppkg"
+  }
+}
