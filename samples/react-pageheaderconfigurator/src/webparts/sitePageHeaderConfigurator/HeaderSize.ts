@@ -1,0 +1,1 @@
+export enum HeaderSize { Large = 1, Medium, Small, None }

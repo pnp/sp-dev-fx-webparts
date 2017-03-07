@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "ed5bdd3b-c869-4d76-9cd3-0de041339898",
+  "alias": "SitePageHeaderConfiguratorWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "ed5bdd3b-c869-4d76-9cd3-0de041339898",
+      "group": {
+        "default": "Page Improvements"
+      },
+      "title": {
+        "default": "Page header configurator"
+      },
+      "description": {
+        "default": "Configure how to display the header of a site page"
+      },
+      "officeFabricIconFontName": "AutoEnhanceOn",
+      "properties": {
+        "headerSize": 1,
+        "headerGfx": "",
+        "headerFontColor": "#333333"
+      }
+    }
+  ]
+}
