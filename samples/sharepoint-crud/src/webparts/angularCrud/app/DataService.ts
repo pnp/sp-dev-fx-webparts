@@ -5,30 +5,30 @@ export interface IListItem {
 }
 
 export interface IDataService {
-  createItem(title: string, webUrl: string, listName: string): ng.IPromise<IListItem>;
-  readItem(itemId: number, webUrl: string, listName: string): ng.IPromise<IListItem>;
-  getLatestItemId(webUrl: string, listName: string): ng.IPromise<number>;
-  readItems(webUrl: string, listName: string): ng.IPromise<IListItem[]>;
-  updateItem(item: IListItem, webUrl: string, listName: string): ng.IPromise<{}>;
-  deleteItem(item: IListItem, webUrl: string, listName: string): ng.IPromise<{}>;
+  createItem(title: string, webUrl: string, listName: string): angular.IPromise<IListItem>;
+  readItem(itemId: number, webUrl: string, listName: string): angular.IPromise<IListItem>;
+  getLatestItemId(webUrl: string, listName: string): angular.IPromise<number>;
+  readItems(webUrl: string, listName: string): angular.IPromise<IListItem[]>;
+  updateItem(item: IListItem, webUrl: string, listName: string): angular.IPromise<{}>;
+  deleteItem(item: IListItem, webUrl: string, listName: string): angular.IPromise<{}>;
 }
 
 export default class DataService implements IDataService {
   public static $inject: string[] = ['$q', '$http'];
 
-  constructor(private $q: ng.IQService, private $http: ng.IHttpService) {
+  constructor(private $q: angular.IQService, private $http: angular.IHttpService) {
   }
 
-  public createItem(title: string, webUrl: string, listName: string): ng.IPromise<IListItem> {
-    const deferred: ng.IDeferred<IListItem> = this.$q.defer();
+  public createItem(title: string, webUrl: string, listName: string): angular.IPromise<IListItem> {
+    const deferred: angular.IDeferred<IListItem> = this.$q.defer();
 
     let listItemEntityTypeName: string = undefined;
     this.getListItemEntityTypeName(webUrl, listName)
-      .then((typeName: string): ng.IPromise<ng.IHttpPromiseCallbackArg<string>> => {
+      .then((typeName: string): angular.IPromise<angular.IHttpPromiseCallbackArg<string>> => {
         listItemEntityTypeName = typeName;
         return this.getRequestDigest(webUrl);
       })
-      .then((requestDigest: string): ng.IPromise<ng.IHttpPromiseCallbackArg<IListItem>> => {
+      .then((requestDigest: string): angular.IPromise<angular.IHttpPromiseCallbackArg<IListItem>> => {
         const body: string = JSON.stringify({
           '__metadata': {
             'type': listItemEntityTypeName
@@ -46,7 +46,7 @@ export default class DataService implements IDataService {
           data: body
         });
       })
-      .then((response: ng.IHttpPromiseCallbackArg<IListItem>): void => {
+      .then((response: angular.IHttpPromiseCallbackArg<IListItem>): void => {
         deferred.resolve(response.data);
       }, (error: any): void => {
         deferred.reject(error);
@@ -55,8 +55,8 @@ export default class DataService implements IDataService {
     return deferred.promise;
   }
 
-  public readItem(itemId: number, webUrl: string, listName: string): ng.IPromise<IListItem> {
-    const deferred: ng.IDeferred<IListItem> = this.$q.defer();
+  public readItem(itemId: number, webUrl: string, listName: string): angular.IPromise<IListItem> {
+    const deferred: angular.IDeferred<IListItem> = this.$q.defer();
 
     this.$http({
       url: `${webUrl}/_api/web/lists/getbytitle('${listName}')/items(${itemId})`,
@@ -65,7 +65,7 @@ export default class DataService implements IDataService {
         'Accept': 'application/json;odata=nometadata'
       }
     })
-      .then((response: ng.IHttpPromiseCallbackArg<IListItem>): void => {
+      .then((response: angular.IHttpPromiseCallbackArg<IListItem>): void => {
         const item: IListItem = response.data;
         item.ETag = response.headers('ETag');
         deferred.resolve(item);
@@ -76,8 +76,8 @@ export default class DataService implements IDataService {
     return deferred.promise;
   }
 
-  public getLatestItemId(webUrl: string, listName: string): ng.IPromise<number> {
-    const deferred: ng.IDeferred<number> = this.$q.defer();
+  public getLatestItemId(webUrl: string, listName: string): angular.IPromise<number> {
+    const deferred: angular.IDeferred<number> = this.$q.defer();
 
     this.$http({
       url: `${webUrl}/_api/web/lists/getbytitle('${listName}')/items?$orderby=Id desc&$top=1&$select=Id`,
@@ -85,7 +85,7 @@ export default class DataService implements IDataService {
       headers: {
         'Accept': 'application/json;odata=nometadata'
       }
-    }).then((result: ng.IHttpPromiseCallbackArg<{ value: { Id: number }[] }>): void => {
+    }).then((result: angular.IHttpPromiseCallbackArg<{ value: { Id: number }[] }>): void => {
       if (result.data.value.length === 0) {
         deferred.resolve(-1);
       }
@@ -99,8 +99,8 @@ export default class DataService implements IDataService {
     return deferred.promise;
   }
 
-  public readItems(webUrl: string, listName: string): ng.IPromise<IListItem[]> {
-    const deferred: ng.IDeferred<IListItem[]> = this.$q.defer();
+  public readItems(webUrl: string, listName: string): angular.IPromise<IListItem[]> {
+    const deferred: angular.IDeferred<IListItem[]> = this.$q.defer();
 
     this.$http({
       url: `${webUrl}/_api/web/lists/getbytitle('${listName}')/items`,
@@ -108,7 +108,7 @@ export default class DataService implements IDataService {
       headers: {
         'Accept': 'application/json;odata=nometadata'
       }
-    }).then((result: ng.IHttpPromiseCallbackArg<{ value: IListItem[] }>): void => {
+    }).then((result: angular.IHttpPromiseCallbackArg<{ value: IListItem[] }>): void => {
       deferred.resolve(result.data.value);
     }, (error: any): void => {
       deferred.reject(error);
@@ -117,16 +117,16 @@ export default class DataService implements IDataService {
     return deferred.promise;
   }
 
-  public updateItem(item: IListItem, webUrl: string, listName: string): ng.IPromise<{}> {
-    const deferred: ng.IDeferred<{}> = this.$q.defer();
+  public updateItem(item: IListItem, webUrl: string, listName: string): angular.IPromise<{}> {
+    const deferred: angular.IDeferred<{}> = this.$q.defer();
 
     let listItemEntityTypeName: string = undefined;
     this.getListItemEntityTypeName(webUrl, listName)
-      .then((typeName: string): ng.IPromise<ng.IHttpPromiseCallbackArg<string>> => {
+      .then((typeName: string): angular.IPromise<angular.IHttpPromiseCallbackArg<string>> => {
         listItemEntityTypeName = typeName;
         return this.getRequestDigest(webUrl);
       })
-      .then((requestDigest: string): ng.IPromise<ng.IHttpPromiseCallbackArg<{}>> => {
+      .then((requestDigest: string): angular.IPromise<angular.IHttpPromiseCallbackArg<{}>> => {
         const body: string = JSON.stringify({
           '__metadata': {
             'type': listItemEntityTypeName
@@ -155,11 +155,11 @@ export default class DataService implements IDataService {
     return deferred.promise;
   }
 
-  public deleteItem(item: IListItem, webUrl: string, listName: string): ng.IPromise<{}> {
-    const deferred: ng.IDeferred<{}> = this.$q.defer();
+  public deleteItem(item: IListItem, webUrl: string, listName: string): angular.IPromise<{}> {
+    const deferred: angular.IDeferred<{}> = this.$q.defer();
 
     this.getRequestDigest(webUrl)
-      .then((requestDigest: string): ng.IPromise<ng.IHttpPromiseCallbackArg<{}>> => {
+      .then((requestDigest: string): angular.IPromise<angular.IHttpPromiseCallbackArg<{}>> => {
         return this.$http({
           url: `${webUrl}/_api/web/lists/getbytitle('${listName}')/items(${item.Id})`,
           method: 'POST',
@@ -180,8 +180,8 @@ export default class DataService implements IDataService {
     return deferred.promise;
   }
 
-  private getRequestDigest(webUrl: string): ng.IPromise<string> {
-    const deferred: ng.IDeferred<string> = this.$q.defer();
+  private getRequestDigest(webUrl: string): angular.IPromise<string> {
+    const deferred: angular.IDeferred<string> = this.$q.defer();
 
     this.$http({
       url: webUrl + '/_api/contextinfo',
@@ -190,7 +190,7 @@ export default class DataService implements IDataService {
         'Accept': 'application/json;odata=nometadata'
       }
     })
-      .then((digestResult: ng.IHttpPromiseCallbackArg<{ FormDigestValue: string }>): void => {
+      .then((digestResult: angular.IHttpPromiseCallbackArg<{ FormDigestValue: string }>): void => {
         deferred.resolve(digestResult.data.FormDigestValue);
       }, (error: any): void => {
         deferred.reject(error);
@@ -199,8 +199,8 @@ export default class DataService implements IDataService {
     return deferred.promise;
   }
 
-  private getListItemEntityTypeName(webUrl: string, listName: string): ng.IPromise<string> {
-    const deferred: ng.IDeferred<string> = this.$q.defer();
+  private getListItemEntityTypeName(webUrl: string, listName: string): angular.IPromise<string> {
+    const deferred: angular.IDeferred<string> = this.$q.defer();
 
     this.$http({
       url: `${webUrl}/_api/web/lists/getbytitle('${listName}')?$select=ListItemEntityTypeFullName`,
@@ -209,7 +209,7 @@ export default class DataService implements IDataService {
         'Accept': 'application/json;odata=nometadata'
       }
     })
-      .then((result: ng.IHttpPromiseCallbackArg<{ ListItemEntityTypeFullName: string }>): void => {
+      .then((result: angular.IHttpPromiseCallbackArg<{ ListItemEntityTypeFullName: string }>): void => {
         deferred.resolve(result.data.ListItemEntityTypeFullName);
       }, (error: any): void => {
         deferred.reject(error);

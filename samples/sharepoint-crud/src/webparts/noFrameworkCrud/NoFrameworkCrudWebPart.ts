@@ -1,17 +1,15 @@
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 import styles from './NoFrameworkCrud.module.scss';
 import * as strings from 'noFrameworkCrudStrings';
 import { INoFrameworkCrudWebPartProps } from './INoFrameworkCrudWebPartProps';
-
-interface IListItem {
-  Title?: string;
-  Id: number;
-}
+import { IListItem } from './IListItem';
 
 export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFrameworkCrudWebPartProps> {
   private listItemEntityTypeName: string = undefined;
@@ -29,28 +27,28 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
       </div>
       <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
         <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button create-Button">
-            <span class="ms-Button-label">Create item</span>
+          <button class="${styles.button} create-Button">
+            <span class="${styles.label}">Create item</span>
           </button>
-          <button class="ms-Button read-Button">
-            <span class="ms-Button-label">Read item</span>
-          </button>
-        </div>
-      </div>
-      <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
-        <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button readall-Button">
-            <span class="ms-Button-label">Read all items</span>
+          <button class="${styles.button} read-Button">
+            <span class="${styles.label}">Read item</span>
           </button>
         </div>
       </div>
       <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
         <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button update-Button">
-            <span class="ms-Button-label">Update item</span>
+          <button class="${styles.button} readall-Button">
+            <span class="${styles.label}">Read all items</span>
           </button>
-          <button class="ms-Button delete-Button">
-            <span class="ms-Button-label">Delete item</span>
+        </div>
+      </div>
+      <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
+        <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
+          <button class="${styles.button} update-Button">
+            <span class="${styles.label}">Update item</span>
+          </button>
+          <button class="${styles.button} delete-Button">
+            <span class="${styles.label}">Delete item</span>
           </button>
         </div>
       </div>
@@ -71,7 +69,7 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
   }
 
   private setButtonsState(): void {
-    const buttons: NodeListOf<Element> = this.domElement.querySelectorAll('button.ms-Button');
+    const buttons: NodeListOf<Element> = this.domElement.querySelectorAll(`button.${styles.button}`);
     const listNotConfigured: boolean = this.listNotConfigured();
 
     for (let i: number = 0; i < buttons.length; i++) {
@@ -94,7 +92,11 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
     this.domElement.querySelector('button.delete-Button').addEventListener('click', () => { webPart.deleteItem(); });
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -125,23 +127,25 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
   private createItem(): void {
     this.updateStatus('Creating item...');
     this.getListItemEntityTypeName()
-      .then((listItemEntityTypeName: string): Promise<Response> => {
+      .then((listItemEntityTypeName: string): Promise<SPHttpClientResponse> => {
         const body: string = JSON.stringify({
           '__metadata': {
             'type': listItemEntityTypeName
           },
           'Title': `Item ${new Date()}`
         });
-        return this.context.httpClient.post(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'Content-type': 'application/json;odata=verbose',
-            'odata-version': ''
-          },
-          body: body
-        });
+        return this.context.spHttpClient.post(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'Content-type': 'application/json;odata=verbose',
+              'odata-version': ''
+            },
+            body: body
+          });
       })
-      .then((response: Response): Promise<IListItem> => {
+      .then((response: SPHttpClientResponse): Promise<IListItem> => {
         return response.json();
       })
       .then((item: IListItem): void => {
@@ -154,20 +158,22 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
   private readItem(): void {
     this.updateStatus('Loading latest items...');
     this.getLatestItemId()
-      .then((itemId: number): Promise<Response> => {
+      .then((itemId: number): Promise<SPHttpClientResponse> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
 
         this.updateStatus(`Loading information about item ID: ${itemId}...`);
-        return this.context.httpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${itemId})?$select=Title,Id`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'odata-version': ''
-          }
-        });
+        return this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${itemId})?$select=Title,Id`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'odata-version': ''
+            }
+          });
       })
-      .then((response: Response): Promise<IListItem> => {
+      .then((response: SPHttpClientResponse): Promise<IListItem> => {
         return response.json();
       })
       .then((item: IListItem): void => {
@@ -179,13 +185,15 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
 
   private getLatestItemId(): Promise<number> {
     return new Promise<number>((resolve: (itemId: number) => void, reject: (error: any) => void): void => {
-      this.context.httpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items?$orderby=Id desc&$top=1&$select=id`, {
-        headers: {
-          'Accept': 'application/json;odata=nometadata',
-          'odata-version': ''
-        }
-      })
-        .then((response: Response): Promise<{ value: { Id: number }[] }> => {
+      this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items?$orderby=Id desc&$top=1&$select=id`,
+        SPHttpClient.configurations.v1,
+        {
+          headers: {
+            'Accept': 'application/json;odata=nometadata',
+            'odata-version': ''
+          }
+        })
+        .then((response: SPHttpClientResponse): Promise<{ value: { Id: number }[] }> => {
           return response.json();
         }, (error: any): void => {
           reject(error);
@@ -203,13 +211,15 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
 
   private readItems(): void {
     this.updateStatus('Loading all items...');
-    this.context.httpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items?$select=Title,Id`, {
-      headers: {
-        'Accept': 'application/json;odata=nometadata',
-        'odata-version': ''
-      }
-    })
-      .then((response: Response): Promise<{ value: IListItem[] }> => {
+    this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items?$select=Title,Id`,
+      SPHttpClient.configurations.v1,
+      {
+        headers: {
+          'Accept': 'application/json;odata=nometadata',
+          'odata-version': ''
+        }
+      })
+      .then((response: SPHttpClientResponse): Promise<{ value: IListItem[] }> => {
         return response.json();
       })
       .then((response: { value: IListItem[] }): void => {
@@ -229,25 +239,27 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
         listItemEntityTypeName = listItemType;
         return this.getLatestItemId();
       })
-      .then((itemId: number): Promise<Response> => {
+      .then((itemId: number): Promise<SPHttpClientResponse> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
 
         latestItemId = itemId;
         this.updateStatus(`Loading information about item ID: ${latestItemId}...`);
-        return this.context.httpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${latestItemId})?$select=Id`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'odata-version': ''
-          }
-        });
+        return this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${latestItemId})?$select=Id`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'odata-version': ''
+            }
+          });
       })
-      .then((response: Response): Promise<IListItem> => {
+      .then((response: SPHttpClientResponse): Promise<IListItem> => {
         etag = response.headers.get('ETag');
         return response.json();
       })
-      .then((item: IListItem): Promise<Response> => {
+      .then((item: IListItem): Promise<SPHttpClientResponse> => {
         this.updateStatus(`Updating item with ID: ${latestItemId}...`);
         const body: string = JSON.stringify({
           '__metadata': {
@@ -255,18 +267,20 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
           },
           'Title': `Item ${new Date()}`
         });
-        return this.context.httpClient.post(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${item.Id})`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'Content-type': 'application/json;odata=verbose',
-            'odata-version': '',
-            'IF-MATCH': etag,
-            'X-HTTP-Method': 'MERGE'
-          },
-          body: body
-        });
+        return this.context.spHttpClient.post(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${item.Id})`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'Content-type': 'application/json;odata=verbose',
+              'odata-version': '',
+              'IF-MATCH': etag,
+              'X-HTTP-Method': 'MERGE'
+            },
+            body: body
+          });
       })
-      .then((response: Response): void => {
+      .then((response: SPHttpClientResponse): void => {
         this.updateStatus(`Item with ID: ${latestItemId} successfully updated`);
       }, (error: any): void => {
         this.updateStatus(`Error updating item: ${error}`);
@@ -282,37 +296,41 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
     let latestItemId: number = undefined;
     let etag: string = undefined;
     this.getLatestItemId()
-      .then((itemId: number): Promise<Response> => {
+      .then((itemId: number): Promise<SPHttpClientResponse> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
 
         latestItemId = itemId;
         this.updateStatus(`Loading information about item ID: ${latestItemId}...`);
-        return this.context.httpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${latestItemId})?$select=Id`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'odata-version': ''
-          }
-        });
+        return this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${latestItemId})?$select=Id`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'odata-version': ''
+            }
+          });
       })
-      .then((response: Response): Promise<IListItem> => {
+      .then((response: SPHttpClientResponse): Promise<IListItem> => {
         etag = response.headers.get('ETag');
         return response.json();
       })
-      .then((item: IListItem): Promise<Response> => {
+      .then((item: IListItem): Promise<SPHttpClientResponse> => {
         this.updateStatus(`Deleting item with ID: ${latestItemId}...`);
-        return this.context.httpClient.post(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${item.Id})`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'Content-type': 'application/json;odata=verbose',
-            'odata-version': '',
-            'IF-MATCH': etag,
-            'X-HTTP-Method': 'DELETE'
-          }
-        });
+        return this.context.spHttpClient.post(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')/items(${item.Id})`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'Content-type': 'application/json;odata=verbose',
+              'odata-version': '',
+              'IF-MATCH': etag,
+              'X-HTTP-Method': 'DELETE'
+            }
+          });
       })
-      .then((response: Response): void => {
+      .then((response: SPHttpClientResponse): void => {
         this.updateStatus(`Item with ID: ${latestItemId} successfully deleted`);
       }, (error: any): void => {
         this.updateStatus(`Error deleting item: ${error}`);
@@ -326,13 +344,15 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
         return;
       }
 
-      this.context.httpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')?$select=ListItemEntityTypeFullName`, {
-        headers: {
-          'Accept': 'application/json;odata=nometadata',
-          'odata-version': ''
-        }
-      })
-        .then((response: Response): Promise<{ ListItemEntityTypeFullName: string }> => {
+      this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/getbytitle('${this.properties.listName}')?$select=ListItemEntityTypeFullName`,
+        SPHttpClient.configurations.v1,
+        {
+          headers: {
+            'Accept': 'application/json;odata=nometadata',
+            'odata-version': ''
+          }
+        })
+        .then((response: SPHttpClientResponse): Promise<{ ListItemEntityTypeFullName: string }> => {
           return response.json();
         }, (error: any): void => {
           reject(error);

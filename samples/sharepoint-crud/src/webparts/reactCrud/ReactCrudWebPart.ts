@@ -1,33 +1,37 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import * as strings from 'reactCrudStrings';
-import ReactCrud, { IReactCrudProps } from './components/ReactCrud';
+import ReactCrud from './components/ReactCrud';
+import { IReactCrudProps } from './components/IReactCrudProps';
 import { IReactCrudWebPartProps } from './IReactCrudWebPartProps';
 
 export default class ReactCrudWebPart extends BaseClientSideWebPart<IReactCrudWebPartProps> {
 
-  public constructor(context: IWebPartContext) {
-    super(context);
-  }
-
   public render(): void {
-    const element: React.ReactElement<IReactCrudProps> = React.createElement(ReactCrud, {
-      httpClient: this.context.httpClient,
-      siteUrl: this.context.pageContext.web.absoluteUrl,
-      listName: this.properties.listName
-    });
+    const element: React.ReactElement<IReactCrudProps> = React.createElement(
+      ReactCrud,
+      {
+        spHttpClient: this.context.spHttpClient,
+        siteUrl: this.context.pageContext.web.absoluteUrl,
+        listName: this.properties.listName
+      }
+    );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

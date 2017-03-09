@@ -15,17 +15,17 @@ export default class HomeController {
   private webUrl: string = undefined;
   private listName: string = undefined;
 
-  constructor(private dataService: IDataService, private $window: ng.IWindowService, private $rootScope: ng.IRootScopeService, private $scope: ng.IScope) {
+  constructor(private dataService: IDataService, private $window: angular.IWindowService, private $rootScope: angular.IRootScopeService, private $scope: angular.IScope) {
     const vm: HomeController = this;
     this.init(undefined, undefined, undefined);
 
     $rootScope.$on('configurationChanged',
-      (event: ng.IAngularEvent, args: IConfigurationChangedArgs): void => {
+      (event: angular.IAngularEvent, args: IConfigurationChangedArgs): void => {
         vm.init(args.webUrl, args.listName, vm.$scope);
       });
   }
 
-  private init(webUrl: string, listName: string, $scope: ng.IScope): void {
+  private init(webUrl: string, listName: string, $scope: angular.IScope): void {
     if (webUrl !== undefined && webUrl.length > 0 &&
       listName !== undefined && listName.length > 0) {
       this.webUrl = webUrl;
@@ -58,7 +58,7 @@ export default class HomeController {
     this.status = 'Loading latest items...';
     this.items.length = 0;
     this.dataService.getLatestItemId(this.webUrl, this.listName)
-      .then((itemId: number): ng.IPromise<IListItem> => {
+      .then((itemId: number): angular.IPromise<IListItem> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
@@ -92,7 +92,7 @@ export default class HomeController {
     this.items.length = 0;
     let latestItemId: number = undefined;
     this.dataService.getLatestItemId(this.webUrl, this.listName)
-      .then((itemId: number): ng.IPromise<IListItem> => {
+      .then((itemId: number): angular.IPromise<IListItem> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
@@ -102,7 +102,7 @@ export default class HomeController {
 
         return this.dataService.readItem(latestItemId, this.webUrl, this.listName);
       })
-      .then((latestItem: IListItem): ng.IPromise<{}> => {
+      .then((latestItem: IListItem): angular.IPromise<{}> => {
         this.status = `Updating item with ID: ${latestItemId}...`;
         latestItem.Title = `Item ${new Date()}`;
         return this.dataService.updateItem(latestItem, this.webUrl, this.listName);
@@ -123,7 +123,7 @@ export default class HomeController {
     this.items.length = 0;
     let latestItemId: number = undefined;
     this.dataService.getLatestItemId(this.webUrl, this.listName)
-      .then((itemId: number): ng.IPromise<IListItem> => {
+      .then((itemId: number): angular.IPromise<IListItem> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
@@ -133,7 +133,7 @@ export default class HomeController {
 
         return this.dataService.readItem(latestItemId, this.webUrl, this.listName);
       })
-      .then((latestItem: IListItem): ng.IPromise<{}> => {
+      .then((latestItem: IListItem): angular.IPromise<{}> => {
         this.status = `Deleting item with ID: ${latestItemId}...`;
         return this.dataService.deleteItem(latestItem, this.webUrl, this.listName);
       })

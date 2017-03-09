@@ -1,8 +1,9 @@
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import styles from './AngularCrud.module.scss';
 import * as strings from 'angularCrudStrings';
@@ -12,7 +13,7 @@ import * as angular from 'angular';
 import './app/app-module';
 
 export default class AngularCrudWebPart extends BaseClientSideWebPart<IAngularCrudWebPartProps> {
-  private $injector: ng.auto.IInjectorService;
+private $injector: angular.auto.IInjectorService;
 
   public render(): void {
     if (this.renderedOnce === false) {
@@ -63,7 +64,11 @@ export default class AngularCrudWebPart extends BaseClientSideWebPart<IAngularCr
     });
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
