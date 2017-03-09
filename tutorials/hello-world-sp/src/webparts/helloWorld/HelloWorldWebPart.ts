@@ -14,7 +14,8 @@ import * as strings from 'helloWorldStrings';
 import { IHelloWorldWebPartProps } from './IHelloWorldWebPartProps';
 import MockHttpClient from './MockHttpClient';
 import {
-  SPHttpClient
+  SPHttpClient,
+  SPHttpClientResponse   
 } from '@microsoft/sp-http';
 import {
   Environment,
@@ -64,7 +65,7 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorld
 
   private _getListData(): Promise<ISPLists> {
     return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/web/lists?$filter=Hidden eq false`, SPHttpClient.configurations.v1)
-      .then((response: Response) => {
+      .then((response: SPHttpClientResponse ) => {
         return response.json();
       });
   }
