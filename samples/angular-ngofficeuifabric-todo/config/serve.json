@@ -1,8 +1,0 @@
-{
-  "port": 4321,
-  "initialPage": "http://localhost:5432/workbench",
-  "api": {
-    "port": 5432,
-    "entryPath": "node_modules/@microsoft/sp-webpart-workbench/lib/api/"
-  }
-}
