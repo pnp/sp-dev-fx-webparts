@@ -34,6 +34,17 @@ The web part works by loading each script in a `<script src>` tag sequentially i
 
 ![site page header configurator web part](./assets/modern-script-editor-wp.gif)
 
+If all you want is to add markup on the page, you can do that as well. Adding the following html would show a headline and a list.
+
+```html
+<h2>My header</h2>
+<ul>
+    <li>One
+    <li>Two
+    <li>Three
+</ul>
+```
+
 ## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
 
