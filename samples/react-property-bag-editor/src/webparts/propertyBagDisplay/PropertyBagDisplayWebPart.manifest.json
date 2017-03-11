@@ -7,9 +7,9 @@
   "manifestVersion": 2,
   "preconfiguredEntries": [{
     "groupId": "fa63037d-d7bd-4d52-894a-b40127773283",
-    "group": { "default": "PropertyBag Navigation" },
-    "title": { "default": "propertyBagDisplay" },
-    "description": { "default": "PropertyDisplay Webpart -- Displays all Sites and selected properties, an lets you edit those propertiies" },
+    "group": { "default": "Property Bag Navigation" },
+    "title": { "default": "Property Bag Display" },
+    "description": { "default": "Displays all Sites and selected properties, an lets you edit those propertiies" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "propertyBagDisplay",

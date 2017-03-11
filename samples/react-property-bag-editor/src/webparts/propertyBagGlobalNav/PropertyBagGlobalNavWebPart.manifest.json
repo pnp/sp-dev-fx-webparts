@@ -9,13 +9,13 @@
     {
       "groupId": "8634e32b-eda4-483d-8fe9-5f2075339eb8",
       "group": {
-        "default": "Under Development"
+        "default": "Property Bag Navigation"
       },
       "title": {
-        "default": "propertyBagGlobalNav"
+        "default": "Property Bag NavBar"
       },
       "description": {
-        "default": "PropertyBagGlobalNav Webpart -- Displays a Global Navigation Brar built from the SItes PropertyBags"
+        "default": "Displays a Global Navigation Menu built from the Sites PropertyBags"
       },
       "officeFabricIconFontName": "Page",
       "properties": {
