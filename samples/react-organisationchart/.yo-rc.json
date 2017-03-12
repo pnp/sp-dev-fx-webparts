@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-organisationchart",
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "95c4b6f9-b123-4eca-a70a-c1165995faa2"
+  }
+}
