@@ -1,26 +1,57 @@
-## react-organisationchart
+# Organisation Chart
 
-This is where you include your WebPart documentation.
+## Summary
+A simple Organisation Chart webpart using Office UI Fabric, React, REST API batching and ServiceScope plumbing. 
 
-### Building the code
+![Organisation Chart for the current user running in SharePoint](./assets/orgchart.png)
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+![Organisation Chart for the current user running in local Workbench](./assets/orgchart-mock.png)
 
-This package produces the following:
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/version-GA-green.svg)
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+## Applies to
 
-### Build options
+* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+OrganisationChart | Vardhaman Deshpande ([@vrdmn](https://twitter.com/vrdmn) , [vrdmn.com](http://vrdmn.com))
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|September 14, 2016|Initial release
+2.0|March 12, 2017|Updated for SPFx 1.0
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- in the command line run:
+  - `npm install`
+  - `gulp serve`
+
+
+## Features
+
+Please see this post for further details about the web part: [SharePoint Framework: Org Chart web part using Office UI Fabric, React and OData batching](http://www.vrdmn.com/2016/09/sharepoint-framework-org-chart-web-part.html)
+
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+- Office UI Fabric
+- React
+- REST API operations in SPFx
+- REST API batching in SPFx
+- ServiceScope and ServiceKeys
+- Service Locator pattern to register and consume services
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-organisationchart" />
