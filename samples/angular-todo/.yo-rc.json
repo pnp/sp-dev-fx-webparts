@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "angular-todo",
+    "framework": "none",
+    "version": "1.0.0",
+    "libraryId": "c6037b1c-ea11-44f6-8663-2ea42c9a64ab"
+  }
+}
