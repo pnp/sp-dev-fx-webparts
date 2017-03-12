@@ -5,6 +5,8 @@ Coming from old classic SharePoint pages you might have existing script solution
 without having to repackage it as a new SharePoint Framework web part. This web part is similar to the classic
 Script Editor Web Part, and allows you do drop arbitrary script or html on a modern page.
 
+> Notice. All client-side web parts are deployed or enabled to be available in site level by tenant administrator using tenant app catalog. If there are concerns on enabling script options in a tenant, this web part or a approach should not be approved by tenant administrators.
+
 As an example add the following scripts to the web part in order to show weather info on your page. First *jQuery* is loaded, then the *simpleWeather* extension, and finally the last script block is executed to show the weather.
 
 ```html
@@ -83,3 +85,5 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 - Re-use existing JavaScript solutions on a modern page
 - Office UI Fabric
 - React
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-script-editor" />
