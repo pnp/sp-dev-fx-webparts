@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/assetDeployment/AssetDeploymentWebPart.js",
+      "manifest": "./src/webparts/assetDeployment/AssetDeploymentWebPart.manifest.json",
+      "outputPath": "./dist/asset-deployment.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "assetDeploymentStrings": "webparts/assetDeployment/loc/{locale}.js"
+  }
+}

@@ -8,7 +8,8 @@ export const allTemplates: ITemplates[] = [
 export default class TemplateLoader {
     public getComponent(templateToLoad: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            resolve(require("../templates/" + templateToLoad + ".js").default);
+            const component: any = require("../templates/" + templateToLoad + ".js");
+            resolve(component.default);
         });
     }
 

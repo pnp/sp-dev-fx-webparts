@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "aa6e9d44-a2a4-4632-842f-e015fffa14b7",
+  "alias": "VideoLibraryCverFlowWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "aa6e9d44-a2a4-4632-842f-e015fffa14b7",
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "CoverFlow Video Library"
+      },
+      "description": {
+        "default": "VideoLibrary implemented using reactjs-coverflow -- Shows videos from an O365 Video Channel"
+      },
+      "officeFabricIconFontName": "VisioLogo",
+      "properties": {
+        "description": "Coverflow Video Library",
+        "coverflowStartPosition": 0,
+        "coverflowMargin": 25,
+        "coverflowWidth": 800,
+        "coverflowHeight": 250,
+        "coverflowEnableScroll": true,
+        "iframeHeight": 215,
+        "iframeWidth": 300,
+        "playerHeight": 210,
+        "playerWidth": 295,
+        "coverflowAnimationSpeed": 0.8,
+        "imgHeight": 225,
+        "imgWidth": 185
+      }
+    }
+  ]
+}

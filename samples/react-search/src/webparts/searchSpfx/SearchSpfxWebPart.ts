@@ -1,18 +1,18 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import {
 	BaseClientSideWebPart,
-	IPropertyPaneSettings,
-	IWebPartContext,
+	IPropertyPaneConfiguration,
 	PropertyPaneTextField,
 	PropertyPaneDropdown,
 	PropertyPaneSlider,
 	PropertyPaneToggle
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import { PropertyPaneLoggingField } from './PropertyPaneControls/PropertyPaneLoggingField';
 
-import ModuleLoader from '@microsoft/sp-module-loader';
+import { SPComponentLoader, ILoadScriptOptions } from '@microsoft/sp-loader';
 
 import * as strings from 'mystrings';
 import SearchSpfx, { ISearchSpfxProps } from './components/SearchSpfx';
@@ -31,14 +31,18 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 	private crntExternalTemplateUrl: string = "";
 	private crntExternalTemplate: IExternalTemplate = null;
 	private onChangeBinded: boolean = false;
-	private removeChangeBinding: NodeJS.Timer = null;
+	private removeChangeBinding: number = null;
 
-	public constructor(context: IWebPartContext) {
-		super(context);
+	public constructor() {
+		super();
 
 		// Bind this to the setLogging method
 		this.setLogging = this.setLogging.bind(this);
 		this.removeLogging = this.removeLogging.bind(this);
+	}
+
+	protected get dataVersion(): Version {
+		return Version.parse('1.0');
 	}
 
 	/**
@@ -120,7 +124,7 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 	 */
 	private _loadStyles(stylesToLoad: IStyles[]): void {
 		stylesToLoad.forEach(style => {
-			ModuleLoader.loadCss(style.url);
+			SPComponentLoader.loadCss(style.url);
 		});
 	}
 
@@ -133,7 +137,10 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 			// Check if the external template URL has been changed (otherwise load from memory)
 			if (this.crntExternalTemplateUrl !== this.properties.externalUrl) {
 				// Loading external template
-				ModuleLoader.loadScript(this.properties.externalUrl, "externalTemplate").then((externalTemplate: IExternalTemplate): void => {
+				const externalTmpl: ILoadScriptOptions = {
+					globalExportsName: "externalTemplate"
+				};
+				SPComponentLoader.loadScript(this.properties.externalUrl, externalTmpl).then((externalTemplate: IExternalTemplate): void => {
 					// Store the current template information
 					this.crntExternalTemplate = externalTemplate;
 					this.crntExternalTemplateUrl = this.properties.externalUrl;
@@ -190,25 +197,10 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 		this.removeChangeBinding = setTimeout(this.removeLogging, 500);
 	}
 
-	// protected onPropertyPaneConfigurationStart() {
-	// 	// Will probably be deleted in the next drop
-	// 	console.log('onPropertyPaneConfigurationStart');
-	// }
-
-	// protected onAfterPropertyPaneChangesApplied() {
-	// 	// Will probably be deleted in the next drop
-	// 	console.log('onAfterPropertyPaneChangesApplied');
-	// }
-
-	// Will probably be added in the next drop
-	// protected onPropertyPaneSave() {
-	// 	console.log('onPropertyPaneSave');
-	// }
-
 	/**
 	 * Property pane settings
 	 */
-	protected get propertyPaneSettings(): IPropertyPaneSettings {
+	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 		// Default template property
 		let templateProperty: any = PropertyPaneDropdown('template', {
 			label: strings.FieldsTemplateLabel,
@@ -231,9 +223,6 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 				groups: [{
 					groupName: strings.BasicGroupName,
 					groupFields: [
-						PropertyPaneTextField('title', {
-							label: strings.FieldsTitleLabel
-						}),
 						PropertyPaneTextField('query', {
 							label: strings.QueryFieldLabel,
 							description: strings.QueryInfoDescription,
@@ -251,6 +240,9 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 				}, {
 					groupName: strings.TemplateGroupName,
 					groupFields: [
+						PropertyPaneTextField('title', {
+							label: strings.FieldsTitleLabel
+						}),
 						PropertyPaneToggle('external', {
 							label: strings.FieldsExternalLabel
 						}),
@@ -284,7 +276,7 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 	 */
 	private setLogging(): void {
 		// Refresh the property pane when search rest call is completed
-		this.configureStart(true);
+		this.context.propertyPane.refresh();
 	}
 
 	/**

@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-mobx-spfx-webpart-client-side-solution",
+    "id": "8c525624-9e7c-4ef2-a886-fa753cb294d2",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-mobx-spfx-webpart.spapp"
+  }
+}

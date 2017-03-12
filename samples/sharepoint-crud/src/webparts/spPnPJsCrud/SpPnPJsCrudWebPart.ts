@@ -1,29 +1,27 @@
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import styles from './SpPnPJsCrud.module.scss';
 import * as strings from 'spPnPJsCrudStrings';
 import { ISpPnPJsCrudWebPartProps } from './ISpPnPJsCrudWebPartProps';
+import { IListItem } from './IListItem';
 
 import * as pnp from 'sp-pnp-js';
-import { Item, ItemAddResult, ItemUpdateResult } from '../../../node_modules/sp-pnp-js/lib/sharepoint/rest/items';
-
-interface IListItem {
-  Title?: string;
-  Id: number;
-}
+import { Item, ItemAddResult, ItemUpdateResult } from '../../../node_modules/sp-pnp-js/lib/sharepoint/items';
 
 export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCrudWebPartProps> {
-  constructor(context: IWebPartContext) {
-    super(context);
-    pnp.setup({
-      headers: {
-        'Accept': 'application/json;odata=nometadata'
-      }
+  protected onInit(): Promise<void> {
+    return new Promise<void>((resolve: () => void, reject: (error?: any) => void): void => {
+      pnp.setup({
+        headers: {
+          'Accept': 'application/json;odata=nometadata'
+        }
+      });
+      resolve();
     });
   }
 
@@ -40,28 +38,28 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
       </div>
       <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
         <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button create-Button">
-            <span class="ms-Button-label">Create item</span>
+          <button class="${styles.button} create-Button">
+            <span class="${styles.label}">Create item</span>
           </button>
-          <button class="ms-Button read-Button">
-            <span class="ms-Button-label">Read item</span>
-          </button>
-        </div>
-      </div>
-      <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
-        <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button readall-Button">
-            <span class="ms-Button-label">Read all items</span>
+          <button class="${styles.button} read-Button">
+            <span class="${styles.label}">Read item</span>
           </button>
         </div>
       </div>
       <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
         <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button update-Button">
-            <span class="ms-Button-label">Update item</span>
+          <button class="${styles.button} readall-Button">
+            <span class="${styles.label}">Read all items</span>
           </button>
-          <button class="ms-Button delete-Button">
-            <span class="ms-Button-label">Delete item</span>
+        </div>
+      </div>
+      <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
+        <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
+          <button class="${styles.button} update-Button">
+            <span class="${styles.label}">Update item</span>
+          </button>
+          <button class="${styles.button} delete-Button">
+            <span class="${styles.label}">Delete item</span>
           </button>
         </div>
       </div>
@@ -81,7 +79,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
   }
 
   private setButtonsState(): void {
-    const buttons: NodeListOf<Element> = this.domElement.querySelectorAll('button.ms-Button');
+    const buttons: NodeListOf<Element> = this.domElement.querySelectorAll(`button.${styles.button}`);
     const listNotConfigured: boolean = this.listNotConfigured();
 
     for (let i: number = 0; i < buttons.length; i++) {
@@ -104,7 +102,11 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
     this.domElement.querySelector('button.delete-Button').addEventListener('click', () => { webPart.deleteItem(); });
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

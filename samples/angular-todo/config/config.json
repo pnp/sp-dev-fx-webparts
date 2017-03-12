@@ -1,0 +1,18 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/toDo/ToDoWebPart.js",
+      "manifest": "./src/webparts/toDo/ToDoWebPart.manifest.json",
+      "outputPath": "./dist/to-do.bundle.js"
+    }
+  ],
+  "externals": {
+    "angular": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js",
+      "globalName": "angular"
+    }
+  },
+  "localizedResources": {
+    "toDoStrings": "webparts/toDo/loc/{locale}.js"
+  }
+}

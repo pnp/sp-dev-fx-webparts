@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "angular-multipage",
+    "libraryId": "2edf4e93-fd5d-4c59-8b46-480af77c2233",
+    "framework": "none"
+  }
+}

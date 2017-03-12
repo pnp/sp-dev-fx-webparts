@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "f05d025a-808f-4533-859d-47016c13235a",
+  "alias": "ExtendGulpWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "f05d025a-808f-4533-859d-47016c13235a",
+    "group": { "default": "Under Development" },
+    "title": { "default": "ExtendGulp" },
+    "description": { "default": "Extend gulp in SPFx toolchain" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "ExtendGulp"
+    }
+  }]
+}

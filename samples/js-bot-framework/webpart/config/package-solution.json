@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "Ask SP Rider Bot",
+    "id": "555d1587-8502-4cda-8d15-474c09a8ffb3",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/js-bot-framework-client-side-solution.spapp"
+  }
+}

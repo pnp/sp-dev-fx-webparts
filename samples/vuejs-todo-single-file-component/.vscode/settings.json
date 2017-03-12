@@ -1,0 +1,7 @@
+{
+    "vsicons.presets.angular": false,
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "files.associations": {
+        "*.vue": "vue"
+    }
+}

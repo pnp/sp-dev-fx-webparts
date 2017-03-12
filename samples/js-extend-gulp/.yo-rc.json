@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "js-extend-gulp",
+    "libraryId": "ff250e08-bd51-498e-8b3f-a296db4f0c2c",
+    "framework": "none"
+  }
+}

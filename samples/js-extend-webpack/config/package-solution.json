@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "js-extend-webpack-client-side-solution",
+    "id": "c7111d96-6665-4d90-8b74-30a533b8c7b4",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/js-extend-webpack.sppkg"
+  }
+}

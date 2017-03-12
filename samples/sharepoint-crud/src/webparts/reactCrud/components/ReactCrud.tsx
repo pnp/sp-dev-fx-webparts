@@ -1,24 +1,9 @@
 import * as React from 'react';
-import { css, Button } from 'office-ui-fabric-react';
-import { HttpClient } from '@microsoft/sp-client-base';
-
-import styles from '../ReactCrud.module.scss';
-import { IReactCrudWebPartProps } from '../IReactCrudWebPartProps';
-
-export interface IReactCrudProps extends IReactCrudWebPartProps {
-  httpClient: HttpClient;
-  siteUrl: string;
-}
-
-export interface IReactCrudState {
-  status: string;
-  items: IListItem[];
-}
-
-export interface IListItem {
-  Title?: string;
-  Id: number;
-}
+import styles from './ReactCrud.module.scss';
+import { IReactCrudProps } from './IReactCrudProps';
+import { IReactCrudState } from './IReactCrudState';
+import { IListItem } from './IListItem';
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 export default class ReactCrud extends React.Component<IReactCrudProps, IReactCrudState> {
   private listItemEntityTypeName: string = undefined;
@@ -40,41 +25,53 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
     });
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactElement<IReactCrudProps> {
     const items: JSX.Element[] = this.state.items.map((item: IListItem, i: number): JSX.Element => {
       return (
         <li>{item.Title} ({item.Id}) </li>
       );
     });
 
+    const disabled: string = this.listNotConfigured(this.props) ? styles.disabled : '';
+
     return (
       <div className={styles.reactCrud}>
         <div className={styles.container}>
-          <div className={css('ms-Grid-row ms-bgColor-themeDark ms-fontColor-white', styles.row) }>
+          <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
             <div className='ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1'>
               <span className='ms-font-xl ms-fontColor-white'>
                 Sample SharePoint CRUD operations in React
               </span>
             </div>
           </div>
-          <div className={css('ms-Grid-row ms-bgColor-themeDark ms-fontColor-white', styles.row) }>
+          <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
             <div className='ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1'>
-              <Button disabled={this.listNotConfigured(this.props) } onClick={() => this.createItem() }>Create item</Button>
-              <Button disabled={this.listNotConfigured(this.props) } onClick={() => this.readItem() }>Read item</Button>
+              <a href="#" className={`${styles.button} ${disabled}`} onClick={() => this.createItem()}>
+                <span className={styles.label}>Create item</span>
+              </a>&nbsp;
+              <a href="#" className={`${styles.button} ${disabled}`} onClick={() => this.createItem()}>
+                <span className={styles.label}>Read item</span>
+              </a>
             </div>
           </div>
-          <div className={css('ms-Grid-row ms-bgColor-themeDark ms-fontColor-white', styles.row) }>
+          <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
             <div className='ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1'>
-              <Button disabled={this.listNotConfigured(this.props) } onClick={() => this.readItems() }>Read all items</Button>
+              <a href="#" className={`${styles.button} ${disabled}`} onClick={() => this.readItems()}>
+                <span className={styles.label}>Read all items</span>
+              </a>
             </div>
           </div>
-          <div className={css('ms-Grid-row ms-bgColor-themeDark ms-fontColor-white', styles.row) }>
+          <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
             <div className='ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1'>
-              <Button disabled={this.listNotConfigured(this.props) } onClick={() => this.updateItem() }>Update item</Button>
-              <Button disabled={this.listNotConfigured(this.props) } onClick={() => this.deleteItem() }>Delete item</Button>
+              <a href="#" className={`${styles.button} ${disabled}`} onClick={() => this.updateItem()}>
+                <span className={styles.label}>Update item</span>
+              </a>&nbsp;
+              <a href="#" className={`${styles.button} ${disabled}`} onClick={() => this.deleteItem()}>
+                <span className={styles.label}>Delete item</span>
+              </a>
             </div>
           </div>
-          <div className={css('ms-Grid-row ms-bgColor-themeDark ms-fontColor-white', styles.row) }>
+          <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
             <div className='ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1'>
               {this.state.status}
               <ul>
@@ -94,23 +91,25 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
     });
 
     this.getListItemEntityTypeName()
-      .then((listItemEntityTypeName: string): Promise<Response> => {
+      .then((listItemEntityTypeName: string): Promise<SPHttpClientResponse> => {
         const body: string = JSON.stringify({
           '__metadata': {
             'type': listItemEntityTypeName
           },
           'Title': `Item ${new Date()}`
         });
-        return this.props.httpClient.post(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'Content-type': 'application/json;odata=verbose',
-            'odata-version': ''
-          },
-          body: body
-        });
+        return this.props.spHttpClient.post(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'Content-type': 'application/json;odata=verbose',
+              'odata-version': ''
+            },
+            body: body
+          });
       })
-      .then((response: Response): Promise<IListItem> => {
+      .then((response: SPHttpClientResponse): Promise<IListItem> => {
         return response.json();
       })
       .then((item: IListItem): void => {
@@ -132,7 +131,7 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
       items: []
     });
     this.getLatestItemId()
-      .then((itemId: number): Promise<Response> => {
+      .then((itemId: number): Promise<SPHttpClientResponse> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
@@ -141,14 +140,16 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
           status: `Loading information about item ID: ${itemId}...`,
           items: []
         });
-        return this.props.httpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${itemId})?$select=Title,Id`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'odata-version': ''
-          }
-        });
+        return this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${itemId})?$select=Title,Id`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'odata-version': ''
+            }
+          });
       })
-      .then((response: Response): Promise<IListItem> => {
+      .then((response: SPHttpClientResponse): Promise<IListItem> => {
         return response.json();
       })
       .then((item: IListItem): void => {
@@ -169,13 +170,15 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
       status: 'Loading all items...',
       items: []
     });
-    this.props.httpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items?$select=Title,Id`, {
-      headers: {
-        'Accept': 'application/json;odata=nometadata',
-        'odata-version': ''
-      }
-    })
-      .then((response: Response): Promise<{ value: IListItem[] }> => {
+    this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items?$select=Title,Id`,
+      SPHttpClient.configurations.v1,
+      {
+        headers: {
+          'Accept': 'application/json;odata=nometadata',
+          'odata-version': ''
+        }
+      })
+      .then((response: SPHttpClientResponse): Promise<{ value: IListItem[] }> => {
         return response.json();
       })
       .then((response: { value: IListItem[] }): void => {
@@ -193,13 +196,15 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
 
   private getLatestItemId(): Promise<number> {
     return new Promise<number>((resolve: (itemId: number) => void, reject: (error: any) => void): void => {
-      this.props.httpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items?$orderby=Id desc&$top=1&$select=id`, {
-        headers: {
-          'Accept': 'application/json;odata=nometadata',
-          'odata-version': ''
-        }
-      })
-        .then((response: Response): Promise<{ value: { Id: number }[] }> => {
+      this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items?$orderby=Id desc&$top=1&$select=id`,
+        SPHttpClient.configurations.v1,
+        {
+          headers: {
+            'Accept': 'application/json;odata=nometadata',
+            'odata-version': ''
+          }
+        })
+        .then((response: SPHttpClientResponse): Promise<{ value: { Id: number }[] }> => {
           return response.json();
         }, (error: any): void => {
           reject(error);
@@ -228,7 +233,7 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
         listItemEntityTypeName = listItemType;
         return this.getLatestItemId();
       })
-      .then((itemId: number): Promise<Response> => {
+      .then((itemId: number): Promise<SPHttpClientResponse> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
@@ -238,18 +243,20 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
           status: `Loading information about item ID: ${latestItemId}...`,
           items: []
         });
-        return this.props.httpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${latestItemId})?$select=Id`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'odata-version': ''
-          }
-        });
+        return this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${latestItemId})?$select=Id`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'odata-version': ''
+            }
+          });
       })
-      .then((response: Response): Promise<IListItem> => {
+      .then((response: SPHttpClientResponse): Promise<IListItem> => {
         etag = response.headers.get('ETag');
         return response.json();
       })
-      .then((item: IListItem): Promise<Response> => {
+      .then((item: IListItem): Promise<SPHttpClientResponse> => {
         this.setState({
           status: `Updating item with ID: ${latestItemId}...`,
           items: []
@@ -260,18 +267,20 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
           },
           'Title': `Item ${new Date()}`
         });
-        return this.props.httpClient.post(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${item.Id})`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'Content-type': 'application/json;odata=verbose',
-            'odata-version': '',
-            'IF-MATCH': etag,
-            'X-HTTP-Method': 'MERGE'
-          },
-          body: body
-        });
+        return this.props.spHttpClient.post(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${item.Id})`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'Content-type': 'application/json;odata=verbose',
+              'odata-version': '',
+              'IF-MATCH': etag,
+              'X-HTTP-Method': 'MERGE'
+            },
+            body: body
+          });
       })
-      .then((response: Response): void => {
+      .then((response: SPHttpClientResponse): void => {
         this.setState({
           status: `Item with ID: ${latestItemId} successfully updated`,
           items: []
@@ -296,7 +305,7 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
     let latestItemId: number = undefined;
     let etag: string = undefined;
     this.getLatestItemId()
-      .then((itemId: number): Promise<Response> => {
+      .then((itemId: number): Promise<SPHttpClientResponse> => {
         if (itemId === -1) {
           throw new Error('No items found in the list');
         }
@@ -306,33 +315,37 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
           status: `Loading information about item ID: ${latestItemId}...`,
           items: []
         });
-        return this.props.httpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${latestItemId})?$select=Id`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'odata-version': ''
-          }
-        });
+        return this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${latestItemId})?$select=Id`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'odata-version': ''
+            }
+          });
       })
-      .then((response: Response): Promise<IListItem> => {
+      .then((response: SPHttpClientResponse): Promise<IListItem> => {
         etag = response.headers.get('ETag');
         return response.json();
       })
-      .then((item: IListItem): Promise<Response> => {
+      .then((item: IListItem): Promise<SPHttpClientResponse> => {
         this.setState({
           status: `Deleting item with ID: ${latestItemId}...`,
           items: []
         });
-        return this.props.httpClient.post(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${item.Id})`, {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'Content-type': 'application/json;odata=verbose',
-            'odata-version': '',
-            'IF-MATCH': etag,
-            'X-HTTP-Method': 'DELETE'
-          }
-        });
+        return this.props.spHttpClient.post(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')/items(${item.Id})`,
+          SPHttpClient.configurations.v1,
+          {
+            headers: {
+              'Accept': 'application/json;odata=nometadata',
+              'Content-type': 'application/json;odata=verbose',
+              'odata-version': '',
+              'IF-MATCH': etag,
+              'X-HTTP-Method': 'DELETE'
+            }
+          });
       })
-      .then((response: Response): void => {
+      .then((response: SPHttpClientResponse): void => {
         this.setState({
           status: `Item with ID: ${latestItemId} successfully deleted`,
           items: []
@@ -358,13 +371,15 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
         return;
       }
 
-      this.props.httpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')?$select=ListItemEntityTypeFullName`, {
-        headers: {
-          'Accept': 'application/json;odata=nometadata',
-          'odata-version': ''
-        }
-      })
-        .then((response: Response): Promise<{ ListItemEntityTypeFullName: string }> => {
+      this.props.spHttpClient.get(`${this.props.siteUrl}/_api/web/lists/getbytitle('${this.props.listName}')?$select=ListItemEntityTypeFullName`,
+        SPHttpClient.configurations.v1,
+        {
+          headers: {
+            'Accept': 'application/json;odata=nometadata',
+            'odata-version': ''
+          }
+        })
+        .then((response: SPHttpClientResponse): Promise<{ ListItemEntityTypeFullName: string }> => {
           return response.json();
         }, (error: any): void => {
           reject(error);

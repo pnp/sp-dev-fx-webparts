@@ -6,6 +6,9 @@ Sample SharePoint Framework Client-Side Web Part embedding a PowerBI report usin
 
 ![PowerBI Embedded Client-SideWeb Part in the SharePoint Workbench](./assets/screenshot_powerbi_embedded_spfx.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop2-red.svg)
+
 ## Solution
 
 Solution|Author(s)

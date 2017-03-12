@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/angularSearch/AngularSearchWebPart.js",
+      "manifest": "./src/webparts/angularSearch/AngularSearchWebPart.manifest.json",
+      "outputPath": "./dist/angular-search.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "angularSearchStrings": "webparts/angularSearch/loc/{locale}.js"
+  }
+}

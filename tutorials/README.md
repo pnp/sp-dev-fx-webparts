@@ -2,16 +2,20 @@
 
 ## Summary
 
-This *web-part-tutorials* client-side project includes the web parts detailed in the Getting Started walkthroughs. The solution contains the following web parts:
+This sub folders contains client-side projects includes the web parts detailed in the Getting Started walkthroughs. Technically these web parts could have remaind in one single solution, but to ensure that they match exactly what's in the tutorials, we have seperated them to dedicated solutions. Sub folders contains the following web parts:
 
-| Web part  | Getting Started Walkthrough | Video
+| Solution  | Getting Started Walkthrough | Video
 | ------------- | ------------- | ------------- |
-| helloWorld  | [Build your first web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/build-a-hello-world-web-part)   | [video](https://www.youtube.com/watch?v=ralspfOBgic)  |
-| helloWorldSharePoint  | [Connect your client-side web part to SharePoint](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/connect-to-sharepoint)  | [video](https://www.youtube.com/watch?v=rokWJlXoFWk)  |
-| jQuery  | [Add jQueryUI Accordion to your SharePoint client-side web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/add-jqueryui-accordion-to-web-part)  | [video](https://www.youtube.com/watch?v=YcECe5JbAnA)  |
-| documentCardExample  | [Use Office UI Fabric React components in your SharePoint client-side web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components)  | [video](https://www.youtube.com/watch?v=P8WmNhcSWHU)  |
+| hello-world  | [Build your first web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/build-a-hello-world-web-part)   | [video](https://www.youtube.com/watch?v=QbDtsMg88Js)  |
+| hello-world-sp  | [Connect your client-side web part to SharePoint](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/connect-to-sharepoint)  | [video](https://www.youtube.com/watch?v=9VMwjb2pbQ8)  |
+| jquery-webpart  | [Add jQueryUI Accordion to your SharePoint client-side web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/add-jqueryui-accordion-to-web-part)  | [video](https://www.youtube.com/watch?v=-3m__hRQxEI)  |
+| documentcardexample-webpart  | [Use Office UI Fabric React components in your SharePoint client-side web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components)  | [video](https://www.youtube.com/watch?v=1N6kNvLxyg4)  |
+| asset-deployment-webpart  | [Provision SharePoint assets from SharePoint Framework solutions](https://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/provision-sp-assets-from-package)  | coming  |
 
 You can also other SharePoint Framework releated videos from [SharePoint PnP YouTube Channel](https://aka.ms/SPPnP-Videos).
+
+## Used SharePoint Framework Version
+![GA](https://img.shields.io/badge/version-GA-green.svg)
 
 ## Applies to
 
@@ -28,6 +32,9 @@ You can also other SharePoint Framework releated videos from [SharePoint PnP You
 
 | Version  | Date | Comments |
 | ------------- | ------------- | ------------- |
+| 0.3.0  | February 28th 2017   | Updated to GA level. |
+| 0.2.0  | February 15th 2017   | Updated to RC0 level. |
+| 0.1.0  | December 16th 2016   | Updated to drop 6 level. |
 | 0.0.1  | August 31st 2016   | Initial release supporting SharePoint Framework developer preview. |
 
 ## Disclaimer
@@ -58,10 +65,17 @@ Navigate to the `tutorials` folder:
 cd tutorials
 ```
 
+Navigate to the `specific web part` folder:
+
+```
+cd 'subfolder'
+```
+
+
 Now run the following command to install the npm packages:
 
 ```
-npm i
+npm install
 ```
 
 This will install the required npm packages and depedencies to build and run the client-side project.

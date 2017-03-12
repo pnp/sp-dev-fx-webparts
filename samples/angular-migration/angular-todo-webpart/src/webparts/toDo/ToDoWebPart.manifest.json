@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "56d31bd5-3965-4f6a-9c08-bedf6f52e587",
+  "alias": "ToDoWebPartAngularMigration", 
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "56d31bd5-3965-4f6a-9c08-bedf6f52e587",
+    "group": { "default": "Under Development" },
+    "title": { "default": "To do" },
+    "description": { "default": "Simple management of to do tasks" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "todoListName": "Todo",
+      "hideFinishedTasks": false
+    }
+  }]
+}

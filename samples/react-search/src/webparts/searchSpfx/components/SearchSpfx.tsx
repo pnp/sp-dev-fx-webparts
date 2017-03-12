@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISearchSpfxWebPartProps } from '../ISearchSpfxWebPartProps';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 import searchActions from '../flux/actions/searchActions';
 import searchStore from '../flux/stores/searchStore';
@@ -8,6 +8,8 @@ import searchStore from '../flux/stores/searchStore';
 import { IExternalTemplate } from '../utils/ITemplates';
 
 import TemplateLoader from '../templates/TemplateLoader';
+
+import 'SearchSpfx.module.scss';
 
 export interface ISearchSpfxProps extends ISearchSpfxWebPartProps {
 	context: IWebPartContext;
@@ -92,9 +94,7 @@ export default class SearchSpfx extends React.Component<ISearchSpfxProps, ISearc
 		if (this.props.firstRender || this.state.loaded) {
 			if (this.state.results.length === 0) {
 				return (
-					<div>
-						Sorry, no results found.
-					</div>
+					<div />
 				);
 			} else {
 				// Load the template

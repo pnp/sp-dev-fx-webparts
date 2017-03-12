@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "vue-todo-client-side-solution",
+    "id": "3a3be1f4-edfd-4816-8cfb-f100f1727031",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/vue-todo.sppkg"
+  }
+}

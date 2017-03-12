@@ -1,0 +1,19 @@
+{
+  "entries": [{
+    "entry": "./lib/webparts/handlebarsDemo/HandlebarsDemoWebPart.js",
+    "manifest": "./src/webparts/handlebarsDemo/HandlebarsDemoWebPart.manifest.json",
+    "outputPath": "./dist/handlebars-demo.bundle.js"
+  }],
+  "externals": {
+
+    // Load Handlebar templates from CDN
+    // "handlebars": "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.amd.js"
+
+    // load handlebars from node_modules
+    "handlebars": "./node_modules/handlebars/dist/handlebars.amd.min.js"
+
+  },
+  "localizedResources": {
+    "handlebarsDemoStrings": "webparts/handlebarsDemo/loc/{locale}.js"
+  }
+}
