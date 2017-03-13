@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "modern-charts",
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "f8a78a9a-a93e-4843-89e5-7b871d9b9fa2"
+  }
+}
