@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "angular-yammer-client-side-solution",
+    "id": "f3f740d2-5a08-4e10-8f7c-b64846dc4f23",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/angular-yammer.sppkg"
+  }
+}
