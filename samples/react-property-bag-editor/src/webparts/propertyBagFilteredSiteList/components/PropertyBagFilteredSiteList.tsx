@@ -91,7 +91,7 @@ export class UserFilter {
 }
 export default class PropertyBagFilteredSiteList extends React.Component<IPropertyBagFilteredSiteListProps, IPropertyBagFilteredSiteListState> {
   public constructor(props) {
-
+      console.log(JSON.stringify("in constructor"));
     super(props);
     this.state = { sites: [], filteredSites: [], errorMessages: [], userFilters: [], appliedUserFilters: [] };
   }
@@ -119,6 +119,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public setupUserFilters(userFilterNames: Array<string>) {
+      console.log(JSON.stringify("in extractUserFilterValues"));
     this.state.userFilters = [];
     for (const userFilterName of userFilterNames) {
       this.state.userFilters.push(new UserFilter(userFilterName));
@@ -133,6 +134,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public extractUserFilterValues(r) {
+     console.log(JSON.stringify("in extractUserFilterValues"));
     for (const userFilter of this.state.userFilters) {
       const value = r[userFilter.managedPropertyName].trim();
       if (_.find(userFilter.values, v => { return v === value; })) {
@@ -156,7 +158,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public getSites(siteTemplatesToInclude: Array<string>, filters:Array<string>, showQueryText: boolean, userFilters: Array<string>, showSiteDescriptions: boolean) {
-
+ console.log(JSON.stringify("in getSites"));
     const userFilterNameArray = [];
     if (userFilters) {
       for (const userFilter of userFilters) {
@@ -226,7 +228,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public componentWillMount() {
-
+  console.log(JSON.stringify("in componentWillMount"));
     this.getSites(this.props.siteTemplatesToInclude, this.props.filters, this.props.showQueryText, this.props.userFilters, this.props.showSiteDescriptions);
   }
   /**
@@ -239,7 +241,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public componentWillReceiveProps(nextProps: IPropertyBagFilteredSiteListProps, nextContext: any) {
-
+   console.log(JSON.stringify("in componentWillReceiveProps"));
     this.getSites(nextProps.siteTemplatesToInclude, nextProps.filters, nextProps.showQueryText, nextProps.userFilters, nextProps.showSiteDescriptions);
   }
   /**
@@ -253,6 +255,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public conditionallyRenderDescription(site: Site) {
+       console.log(JSON.stringify("in conditionallyRenderDescription"));
     if (this.props.showSiteDescriptions) {
       return (<Label>{site.description}</Label>);
     }
@@ -270,13 +273,16 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   private SetupFilters(): Array<IContextualMenuItem> {
+       console.log(JSON.stringify("in SetupFilters"));
     const items = new Array<IContextualMenuItem>();
     for (const uf of this.state.userFilters) {
       const item: IContextualMenuItem = {
         key: uf.managedPropertyName,
         name: uf.managedPropertyName,
         title: uf.managedPropertyName,
-      };
+        href:null,
+      
+      }
       item.items = [];
       for (const value of uf.values) {
         item.items.push({
@@ -305,7 +311,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public AppliedFilterExists(managedPropertyName: string, value: string): boolean {
-
+     console.log(JSON.stringify("in AppliedFilterExists"));
+ 
     const selectedFilter = _.find(this.state.appliedUserFilters, af => {
       return (af.managedPropertyName === managedPropertyName && af.value === value);
     });
@@ -324,6 +331,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public ToggleAppliedUserFilter(item: IContextualMenuItem) {
+      console.log(JSON.stringify("in ToggleAppliedUserFilter"));
     if (this.AppliedFilterExists(item.data.managedPropertyName, item.data.value)) {
       this.state.appliedUserFilters = this.state.appliedUserFilters.filter(af => {
         return (af.managedPropertyName !== item.data.managedPropertyName || af.value !== item.data.value);
@@ -344,6 +352,7 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public filterSites() {
+        console.log(JSON.stringify("in filterSites"));
     if (this.state.appliedUserFilters.length === 0) {
       this.state.filteredSites = this.state.sites;
     }
@@ -372,12 +381,18 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
    * @memberOf PropertyBagFilteredSiteList
    */
   public filterOnMetadata(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
-
+      console.log(JSON.stringify("in filterOnMetadata"));
     this.ToggleAppliedUserFilter(item);
     this.filterSites();
     this.setState(this.state);
   }
 
+   public doNothing(ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) {
+           console.log(JSON.stringify("in doNothing"));
+           ev.stopPropagation();
+           return false;
+
+  }
 
   /**
    * Renders the list of sites in this.state.filteredSites.
@@ -396,6 +411,8 @@ export default class PropertyBagFilteredSiteList extends React.Component<IProper
       </li>
     );
     const commandItems: Array<IContextualMenuItem> = this.SetupFilters();
+        console.log(JSON.stringify("commandItems follow"));
+    console.log(JSON.stringify(commandItems));
     return (
       <div >
         <Label>{this.props.description}</Label>

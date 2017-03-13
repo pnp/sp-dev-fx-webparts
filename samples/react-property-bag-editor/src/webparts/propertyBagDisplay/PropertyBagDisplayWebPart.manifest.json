@@ -14,7 +14,7 @@
     "properties": {
       "description": "propertyBagDisplay",
       "propertiesToDisplay":
-        "CUSOMNAVAreaName|AreaName\nCUSOMNAVBusinessUnit|BusinessUnit\nCUSOMNAVContinent|Continent\nCUSOMNAVLocation|Location",
+        "CUSTOMNAVAreaName|AreaName\nCUSTOMNAVBusinessUnit|BusinessUnit\nCUSTOMNAVContinent|Continent\nCUSTOMNAVLocation|Location",
         "siteTemplatesToInclude":
         "STS\nPUBLISHING"
           }

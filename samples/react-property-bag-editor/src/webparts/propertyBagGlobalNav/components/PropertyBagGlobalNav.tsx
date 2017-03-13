@@ -48,19 +48,23 @@ export default class PropertyBagGlobalNav extends React.Component<IPropertyBagGl
     let currentSet: Array<IContextualMenuItem> = this.state.menuitems;
     debugger;
     for (const managedProperty of this.props.managedProperties) {
-      const value = r[managedProperty].trim();
-      currentItem = _.find(currentSet, i => { return i.key === value; });
-      if (!currentItem) {
-        const idx = currentSet.push({ key: value, name: value, items: [] });
-        currentItem = currentSet[idx - 1];
+      if (r[managedProperty]) {// if site does not have this property set
+        const value = r[managedProperty].trim();
+        currentItem = _.find(currentSet, i => { return i.key === value; });
+        if (!currentItem) {
+          const idx = currentSet.push({ key: value, name: value, items: [] });
+          currentItem = currentSet[idx - 1];
+        }
+        currentSet = currentItem.items;
       }
-      currentSet = currentItem.items;
     }
-    currentItem.items.push({
-      key: r['Title'],
-      name: r['Title'],
-      href: r['SPSiteUrl']
-    });
+    if (currentItem) {  // should have it if  site does  have this property set
+      currentItem.items.push({
+        key: r['Title'],
+        name: r['Title'],
+        href: r['SPSiteUrl']
+      });
+    }
   }
   /**
    * Gets the list of sites to be displayed in the Menu using the filters specified in
