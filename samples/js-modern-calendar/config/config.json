@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/modernCalendar/ModernCalendarWebPart.js",
+      "manifest": "./src/webparts/modernCalendar/ModernCalendarWebPart.manifest.json",
+      "outputPath": "./dist/modern-calendar.bundle.js"
+    }
+  ],
+  "externals": {
+  },
+  "localizedResources": {
+    "modernCalendarStrings": "webparts/modernCalendar/loc/{locale}.js"
+  }
+}
