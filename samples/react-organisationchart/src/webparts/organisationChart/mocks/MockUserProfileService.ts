@@ -1,44 +1,43 @@
-import { IPerson } from '../interfaces/IPerson';
-import { ServiceScope } from '@microsoft/sp-client-base';
-import { IUserProfileService } from '../interfaces/IUserProfileService';
+import { IPerson, IUserProfileService } from '../interfaces';
+import { ServiceScope, ServiceKey } from '@microsoft/sp-core-library';
 
 export class MockUserProfileService implements IUserProfileService {
+    public static readonly serviceKey: ServiceKey<IUserProfileService> = ServiceKey.create<IUserProfileService>('vrd:MockUserProfileService', MockUserProfileService);
+    
+    constructor(serviceScope: ServiceScope) {
 
+    }
 
-  constructor(serviceScope: ServiceScope) {
+    public getPropertiesForCurrentUser(): Promise<IPerson> {
+        return new Promise<IPerson>((resolve, reject) => {
+            const user: IPerson = { Title: "Consultant", DisplayName: "Adam Jones", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-male.png" };
+            resolve(user);
+        });
+    }
 
-  }
+    public getManagers(userLoginNames: string[]): Promise<IPerson[]> {
+        return new Promise<IPerson[]>((resolve, reject) => {
+            const users: IPerson[] = [];
 
-  public getPropertiesForCurrentUser(): Promise<IPerson> {
-    return new Promise<IPerson>((resolve, reject) => {
-      const user: IPerson = { Title: "Consultant", DisplayName: "Adam Jones", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/images/persona-male.png" };
-      resolve(user);
-    });
-  }
+            users.push({ Title: "Manager", DisplayName: "Grant Steel", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-male.png" });
+            users.push({ Title: "Head of Management", DisplayName: "Marcel Grose", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-female.png" });
 
-  public getManagers(userLoginNames: string[]): Promise<IPerson[]> {
-    return new Promise<IPerson[]>((resolve, reject) => {
-      const users: IPerson[] = [];
+            resolve(users);
+        });
+    }
 
-      users.push({ Title: "Manager", DisplayName: "Grant Steel", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/images/persona-male.png" });
-      users.push({ Title: "Head of Management", DisplayName: "Marcel Grose", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/images/persona-female.png" });
+    public getReports(userLoginNames: string[]): Promise<IPerson[]> {
+        return new Promise<IPerson[]>((resolve, reject) => {
+            const users: IPerson[] = [];
 
-      resolve(users);
-    });
-  }
+            users.push({ Title: "Developer", DisplayName: "Russel Miller", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-female.png" });
+            users.push({ Title: "IT Admin", DisplayName: "Robert Fischer", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-female.png" });
 
-  public getReports(userLoginNames: string[]): Promise<IPerson[]> {
-    return new Promise<IPerson[]>((resolve, reject) => {
-      const users: IPerson[] = [];
+            resolve(users);
+        });
+    }
 
-      users.push({ Title: "Developer", DisplayName: "Russel Miller", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/images/persona-female.png" });
-      users.push({ Title: "IT Admin", DisplayName: "Robert Fischer", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/images/persona-male.png" });
-
-      resolve(users);
-    });
-  }
-
-  public getProfilePhoto(photoUrl: string){
-    return photoUrl;
-  }
+    public getProfilePhoto(photoUrl: string) {
+        return photoUrl;
+    }
 }

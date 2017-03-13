@@ -1,0 +1,1 @@
+export { UserProfileService } from './UserProfileService'

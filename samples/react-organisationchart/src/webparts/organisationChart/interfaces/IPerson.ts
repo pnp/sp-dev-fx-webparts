@@ -4,5 +4,5 @@ export interface IPerson {
   ExtendedManagers?: string[];
   Title?: string;
   DisplayName?: string;
-  PersonalUrl?: string;
+  UserUrl?: string;
 }
