@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-taxonomypicker-sample-spfx",
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "90551413-582d-4e75-b811-2459984d62d8"
+  }
+}
