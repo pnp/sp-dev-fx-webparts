@@ -5,6 +5,6 @@
     "version": "1.0.0.0"
   },
   "paths": {
-    "zippedPackage": "solution/react-aad-implicitflow.spapp"
+    "zippedPackage": "solution/react-aad-implicitflow.sppkg"
   }
 }

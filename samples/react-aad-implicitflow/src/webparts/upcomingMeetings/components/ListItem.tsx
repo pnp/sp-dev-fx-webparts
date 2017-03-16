@@ -1,41 +1,25 @@
 import * as React from 'react';
-import { IMeeting } from './IMeeting';
-
-export interface IListItem {
-  primaryText: string;
-  secondaryText?: string;
-  tertiaryText?: string;
-  metaText?: string;
-  isUnread?: boolean;
-  isSelectable?: boolean;
-}
-
-export interface IListItemAction {
-  icon: string;
-  item: IMeeting;
-  action: () => void;
-}
-
-export interface IListItemProps {
-  item: IListItem;
-  actions?: IListItemAction[];
-}
+import { IListItemProps } from './IListItemProps';
+import { IListItem } from './IListItem';
+import { IListItemAction } from './IListItemAction';
+import styles from './UpcomingMeetings.module.scss';
 
 export class ListItem extends React.Component<IListItemProps, {}> {
   public render(): JSX.Element {
     const item: IListItem = this.props.item;
     const actions: JSX.Element[] = this.props.actions.map((action: IListItemAction, index: number): JSX.Element => {
+      console.warn(action.icon);
       return (
-        <div className='ms-ListItem-action' onClick={() => { action.action(); return false; }} key={action.item.id + index}><i className={'ms-Icon ms-Icon--' + action.icon}></i></div>
+        <div className={styles.listItemAction} onClick={() => { action.action(); return false; }} key={action.item.id + index} role="button"><i className={`${styles.icon} ${styles['icon' + action.icon]}`}></i></div>
       );
     });
     return (
-      <div className={'ms-ListItem' + (item.isUnread ? ' is-unread' : '') + (item.isSelectable ? 'is-selectable' : '')}>
-        <span className='ms-ListItem-primaryText'>{ item.primaryText }</span>
-        <span className='ms-ListItem-secondaryText'>{ item.secondaryText }</span>
-        <span className='ms-ListItem-tertiaryText'>{ item.tertiaryText }</span>
-        <span className='ms-ListItem-metaText'>{ item.metaText }</span>
-        <div className="ms-ListItem-actions">
+      <div className={styles.listItem + (item.isUnread ? ` ${styles.isUnread}` : '') + (item.isSelectable ? styles.isSelectable : '')}>
+        <span className={styles.listItemPrimaryText}>{ item.primaryText }</span>
+        <span className={styles.listItemSecondaryText}>{ item.secondaryText }</span>
+        <span className={styles.listItemTertiaryText}>{ item.tertiaryText }</span>
+        <span className={styles.listItemMetaText}>{ item.metaText }</span>
+        <div className={styles.listItemActions}>
           {actions}
         </div>
       </div>
