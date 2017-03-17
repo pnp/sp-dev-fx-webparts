@@ -1,59 +1,21 @@
 import * as React from 'react';
-import {
-  List,
-  Spinner,
-  Button, ButtonType
-} from 'office-ui-fabric-react';
-
-import styles from '../UpcomingMeetings.module.scss';
-import { IUpcomingMeetingsWebPartProps } from '../IUpcomingMeetingsWebPartProps';
-import { HttpClient } from '@microsoft/sp-client-base';
-const AuthenticationContext = require('adal-angular');
+import styles from './UpcomingMeetings.module.scss';
+import { IUpcomingMeetingsProps } from './IUpcomingMeetingsProps';
+import { IUpcomingMeetingsState } from './IUpcomingMeetingsState';
+import { ICalendarMeeting } from './ICalendarMeeting';
+import { IMeeting } from './IMeeting';
+import { escape } from '@microsoft/sp-lodash-subset';
+import { HttpClient, HttpClientResponse } from '@microsoft/sp-http';
+import * as AuthenticationContext from 'adal-angular';
 import adalConfig from '../AdalConfig';
 import { IAdalConfig } from '../../IAdalConfig';
 import '../../WebPartAuthenticationContext';
 import { ListItem } from './ListItem';
-import { IMeeting } from './IMeeting';
-
-export interface IUpcomingMeetingsProps extends IUpcomingMeetingsWebPartProps {
-  httpClient: HttpClient;
-  webPartId: string;
-}
-
-export interface IUpcomingMeetingsState {
-  loading: boolean;
-  error: string;
-  upcomingMeetings: IMeeting[];
-  signedIn: boolean;
-}
-
-interface ICalendarMeeting {
-  id: string;
-  subject: string;
-  webLink: string;
-  isAllDay: boolean;
-  start: {
-    dateTime: string;
-  };
-  end: {
-    dateTime: string;
-  };
-  location: {
-    displayName: string;
-  };
-  organizer: {
-    emailAddress: {
-      name: string;
-      address: string;
-    }
-  };
-  showAs: string;
-}
 
 export default class UpcomingMeetings extends React.Component<IUpcomingMeetingsProps, IUpcomingMeetingsState> {
   private authCtx: adal.AuthenticationContext;
 
-  constructor(props: IUpcomingMeetingsProps, state: IUpcomingMeetingsState) {
+  constructor(props: IUpcomingMeetingsProps, context?: any) {
     super(props);
 
     this.state = {
@@ -98,31 +60,31 @@ export default class UpcomingMeetings extends React.Component<IUpcomingMeetingsP
     }
   }
 
-  public render(): JSX.Element {
-    const login: JSX.Element = this.state.signedIn ? <div /> : <Button onClick={() => { this.signIn(); } } buttonType={ButtonType.compound} description="Sign in to see your upcoming meetings">Sign in</Button>;
-    const loading: JSX.Element = this.state.loading ? <div style={{ margin: '0 auto' }}><Spinner label={'Loading...'} /></div> : <div/>;
+  public render(): React.ReactElement<IUpcomingMeetingsProps> {
+    const login: JSX.Element = this.state.signedIn ? <div /> : <button className={`${styles.button} ${styles.buttonCompound}`} onClick={() => { this.signIn(); } }><span className={styles.buttonLabel}>Sign in</span><span className={styles.buttonDescription}>Sign in to see your upcoming meetings</span></button>;
+    const loading: JSX.Element = this.state.loading ? <div style={{ margin: '0 auto', width: '7em' }}><div className={styles.spinner}><div className={`${styles.spinnerCircle} ${styles.spinnerNormal}`}></div><div className={styles.spinnerLabel}>Loading...</div></div></div> : <div/>;
     const error: JSX.Element = this.state.error ? <div><strong>Error: </strong> {this.state.error}</div> : <div/>;
-    let meetings: JSX.Element = <List items={this.state.upcomingMeetings}
-      onRenderCell={ (item: IMeeting, index: number): JSX.Element => (
-        <ListItem item={
-          {
-            primaryText: item.subject,
-            secondaryText: item.location,
-            tertiaryText: item.organizer,
-            metaText: UpcomingMeetings.getDateTime(item.start),
-            isUnread: item.status === 'busy'
-          }
+    const meetingItems: JSX.Element[] = this.state.upcomingMeetings.map((item: IMeeting, index: number, meetings: IMeeting[]): JSX.Element => {
+      return <ListItem key={index} item={
+        {
+          primaryText: item.subject,
+          secondaryText: item.location,
+          tertiaryText: item.organizer,
+          metaText: UpcomingMeetings.getDateTime(item.start),
+          isUnread: item.status === 'busy'
         }
-          actions={[
-            {
-              icon: 'View',
-              item: item,
-              action: (): void => {
-                window.open(item.webLink, '_blank');
-              }
+      }
+        actions={[
+          {
+            icon: 'View',
+            item: item,
+            action: (): void => {
+              window.open(item.webLink, '_blank');
             }
-          ]} />
-      ) } />;
+          }
+        ]} />;
+    });
+    let meetings: JSX.Element = <div>{meetingItems}</div>;
 
     if (this.state.upcomingMeetings.length === 0 &&
       this.state.signedIn &&
@@ -133,7 +95,7 @@ export default class UpcomingMeetings extends React.Component<IUpcomingMeetingsP
 
     return (
       <div className={styles.upcomingMeetings}>
-        <div className={'ms-font-xl ' + styles.webPartTitle}>{this.props.title}</div>
+        <div className={'ms-font-xl ' + styles.webPartTitle}>{escape(this.props.title)}</div>
         {login}
         {loading}
         {error}
@@ -212,13 +174,13 @@ export default class UpcomingMeetings extends React.Component<IUpcomingMeetingsP
       const startDate: string = dateString + 'T' + UpcomingMeetings.getPaddedNumber(now.getUTCHours()) + ':' + UpcomingMeetings.getPaddedNumber(now.getUTCMinutes()) + ':' + UpcomingMeetings.getPaddedNumber(now.getUTCSeconds()) + 'Z';
       const endDate: string = dateString + 'T23:59:59Z';
 
-      httpClient.get(`https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=${startDate}&endDateTime=${endDate}&$orderby1=Start&$select=id,subject,start,end,webLink,isAllDay,location,organizer,showAs`, {
+      httpClient.get(`https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=${startDate}&endDateTime=${endDate}&$orderby1=Start&$select=id,subject,start,end,webLink,isAllDay,location,organizer,showAs`, HttpClient.configurations.v1, {
         headers: {
           'Accept': 'application/json;odata.metadata=none',
           'Authorization': 'Bearer ' + accessToken
         }
       })
-        .then((response: Response): Promise<{ value: ICalendarMeeting[] }> => {
+        .then((response: HttpClientResponse): Promise<{ value: ICalendarMeeting[] }> => {
           return response.json();
         })
         .then((todayMeetings: { value: ICalendarMeeting[] }): void => {

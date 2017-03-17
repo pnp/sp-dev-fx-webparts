@@ -1,0 +1,220 @@
+.upcomingMeetings {
+  .webPartTitle {
+    margin-bottom: 0.7em;
+    margin-left: 0.38em;
+  }
+
+  .button {
+    &.buttonCompound {
+      text-align: left;
+      display: block;
+      max-width: 280px;
+      min-height: 72px;
+      padding: 20px;
+      background: #f4f4f4;
+      border: 1px solid #f4f4f4;
+
+      .buttonLabel {
+        font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 14px;
+        font-weight: 400;
+        display: block;
+        font-weight: 600;
+        color: #000000;
+        margin-top: -5px;
+      }
+
+      .buttonDescription {
+        text-align: left;
+        font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 12px;
+        font-weight: 400;
+        color: #666666;
+        display: block;
+        position: relative;
+        top: 3px;
+      }
+    }
+  }
+
+  .spinner {
+    display: inline-block;
+    margin: 10px 0;
+
+    @-webkit-keyframes spinnerSpin {
+      0% {
+        -webkit-transform:rotate(0);
+        transform:rotate(0);
+      }
+      100% {
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg);
+      }
+    }
+    @keyframes spinnerSpin {
+      0% {
+        -webkit-transform:rotate(0);
+        transform:rotate(0);
+      }
+      100% {
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg);
+      }
+    }
+
+    .spinnerCircle {
+      margin: auto;
+      box-sizing: border-box;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      border: 1.5px solid #c7e0f4;
+      border-top-color: #0078d7;
+      -webkit-animation: spinnerSpin 1.3s infinite cubic-bezier(.53, .21, .29, .67);
+      animation: spinnerSpin 1.3s infinite cubic-bezier(.53, .21, .29, .67);
+
+      &.spinnerNormal {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .spinnerLabel {
+      color: #0078d7;
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+
+  .listItem {
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    padding: 9px 28px 3px;
+    position: relative;
+    display: block;
+
+    &::before {
+      display: table;
+      content: "";
+      line-height: 0;
+    }
+
+    &::after {
+      display: table;
+      content: "";
+      line-height: 0;
+      clear: both;
+    }
+
+    &.isUnread {
+      border-left: 3px solid #0078d7;
+      padding-left: 27px;
+
+      .listItemSecondaryText, .listItemMetaText {
+        color: #0078d7;
+        font-family: 'Segoe UI Semibold WestEuropean', 'Segoe UI Semibold', 'Segoe UI', Tahoma, Arial, sans-serif;
+      }
+    }
+
+    &.isSelectable {
+      text-align: left;
+    }
+
+    .listItemPrimaryText {
+      font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      font-size: 21px;
+      font-weight: 100;
+      padding-right: 80px;
+      position: relative;
+      top: -4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .listItemSecondaryText {
+      color: #333333;
+      font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 25px;
+      position: relative;
+      top: -7px;
+      padding-right: 30px;
+      display: block;
+    }
+
+    .listItemTertiaryText {
+      color: #767676;
+      font-family: 'Segoe UI Semilight WestEuropean', 'Segoe UI Semilight', 'Segoe UI', Tahoma, Arial, sans-serif;
+      font-size: 14px;
+      position: relative;
+      top: -9px;
+      margin-bottom: -4px;
+      padding-right: 30px;
+      display: block;
+    }
+
+    .listItemMetaText {
+      color: #333333;
+      font-family: 'Segoe UI Semilight WestEuropean', 'Segoe UI Semilight', 'Segoe UI', Tahoma, Arial, sans-serif;
+      font-size: 11px;
+      position: absolute;
+      right: 30px;
+      top: 39px;
+      display: block;
+    }
+
+    .listItemActions {
+      max-width: 80px;
+      position: absolute;
+      right: 30px;
+      text-align: right;
+      top: 10px;
+
+      .listItemAction {
+        color: #a6a6a6;
+        display: inline-block;
+        font-size: 15px;
+        position: relative;
+        text-align: center;
+        top: 3px;
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+
+        &:hover {
+          color: #666666;
+          outline: 1px solid transparent;
+        }
+
+        .icon {
+          vertical-align: top;
+        }
+      }
+    }
+  }
+
+  .icon {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-family: FabricMDL2Icons;
+    font-style: normal;
+    font-weight: 400;
+    speak: none;
+
+    &.iconView::before {
+      content: "\E890";
+    }
+  }
+}
