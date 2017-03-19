@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Label/index.ts"],"names":[],"mappings":";;;;AAAA,iBAAc,SAAS,CAAC,EAAA;AACM","file":"components/Label/index.js","sourcesContent":["export * from './Label';\r\nexport * from './Label.Props';"],"sourceRoot":"..\\..\\..\\src"}

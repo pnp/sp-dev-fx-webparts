@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Spinner/interfaces.ts"],"names":[],"mappings":";AAAA,WAAY,WAAW;IACrB,iDAAM,CAAA;IACN,+CAAK,CAAA;AACP,CAAC,EAHW,mBAAW,KAAX,mBAAW,QAGtB;AAHD,IAAY,WAAW,GAAX,mBAGX,CAAA","file":"components/Spinner/interfaces.js","sourcesContent":["export enum SpinnerType {\r\n  normal,\r\n  large\r\n}\r\n"],"sourceRoot":"..\\..\\..\\src"}

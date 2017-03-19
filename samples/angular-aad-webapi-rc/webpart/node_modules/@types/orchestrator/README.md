@@ -1,0 +1,18 @@
+# Installation
+> `npm install --save @types/orchestrator`
+
+# Summary
+This package contains type definitions for Orchestrator (https://github.com/orchestrator/orchestrator).
+
+# Details
+Files were exported from https://www.github.com/DefinitelyTyped/DefinitelyTyped/tree/types-2.0/orchestrator
+
+Additional Details
+ * Last updated: Mon, 19 Sep 2016 17:28:59 GMT
+ * File structure: ProperModule
+ * Library Dependencies: q
+ * Module Dependencies: q
+ * Global values: Orchestrator
+
+# Credits
+These definitions were written by Qubo <https://github.com/tkQubo>.

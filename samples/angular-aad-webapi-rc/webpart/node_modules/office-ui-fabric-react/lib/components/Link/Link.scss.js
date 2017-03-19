@@ -1,0 +1,7 @@
+"use strict";
+/* tslint:disable */
+var load_themed_styles_1 = require('@microsoft/load-themed-styles');
+load_themed_styles_1.loadStyles([{ "rawString": ".ms-Link{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";text-decoration:none;cursor:pointer;padding:0;margin:0;background:0 0;display:inline;border:none;width:auto;max-width:100%;overflow:inherit;text-overflow:inherit}.ms-Link::-moz-focus-inner{border:0}.ms-Link{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-Link:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}html[dir=ltr] .ms-Link{text-align:left}html[dir=rtl] .ms-Link{text-align:right}.ms-Link.is-disabled{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": ";pointer-events:none;cursor:default}.ms-Link:focus,.ms-Link:hover{color:" }, { "theme": "themeDarker", "defaultValue": "#004578" }, { "rawString": "}.ms-Link:active{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}button.ms-Link{font-size:inherit}" }]);
+/* tslint:enable */ 
+
+//# sourceMappingURL=Link.scss.js.map

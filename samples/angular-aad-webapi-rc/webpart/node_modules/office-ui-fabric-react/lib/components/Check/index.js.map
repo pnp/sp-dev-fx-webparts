@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Check/index.ts"],"names":[],"mappings":";;;;AAAA,iBAAc,SAAS,CAAC,EAAA","file":"components/Check/index.js","sourcesContent":["export * from './Check';"],"sourceRoot":"..\\..\\..\\src"}

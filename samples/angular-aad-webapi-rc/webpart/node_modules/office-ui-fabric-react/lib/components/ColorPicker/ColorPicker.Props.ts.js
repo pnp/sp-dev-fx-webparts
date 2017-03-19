@@ -1,0 +1,1 @@
+module.exports = "export interface IColorPickerProps {\r\n  /**\r\n   * The CSS-compatible string to describe the color\r\n   */\r\n  color: string;\r\n\r\n  /**\r\n   * Callback issued when the user changes the color.\r\n   */\r\n  onColorChanged?: (color: string) => void;\r\n}\r\n";

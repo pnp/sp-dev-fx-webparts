@@ -1,0 +1,1 @@
+module.exports = "import * as React from 'react';\r\nexport interface IPickerItemProps<T> extends React.Props<any> {\r\n  item: T;\r\n  index: number;\r\n  selected?: boolean;\r\n  onRemoveItem?: () => void;\r\n}";

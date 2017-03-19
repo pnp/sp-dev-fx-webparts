@@ -1,0 +1,32 @@
+{
+    "authors": "Drew Noakes <https://drewnoakes.com>",
+    "definitionFilename": "index.d.ts",
+    "libraryDependencies": [
+        "node",
+        "orchestrator",
+        "vinyl"
+    ],
+    "moduleDependencies": [
+        "orchestrator",
+        "vinyl"
+    ],
+    "libraryMajorVersion": "3",
+    "libraryMinorVersion": "8",
+    "libraryName": "Gulp v3.8.x",
+    "typingsPackageName": "gulp",
+    "projectName": "http://gulpjs.com",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "ProperModule",
+    "globals": [
+        "gulp"
+    ],
+    "declaredModules": [
+        "gulp"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "7127a171b79db3212bcc4843a13cd67a30267b68133fbdee452bca5ab424baaa"
+}

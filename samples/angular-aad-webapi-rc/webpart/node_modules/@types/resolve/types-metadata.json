@@ -1,0 +1,29 @@
+{
+    "authors": "Mario Nebl <https://github.com/marionebl>",
+    "definitionFilename": "index.d.ts",
+    "libraryDependencies": [
+        "node"
+    ],
+    "moduleDependencies": [],
+    "libraryMajorVersion": "0",
+    "libraryMinorVersion": "0",
+    "libraryName": "resolve",
+    "typingsPackageName": "resolve",
+    "projectName": "https://github.com/substack/node-resolve",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "ProperModule",
+    "globals": [
+        "resolve",
+        "resolveIsCore",
+        "resolveSync"
+    ],
+    "declaredModules": [
+        "resolve"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "7f9307e98110a6669b96740bf9c8c79643d98f4cebb55f2630d9db2f72b4186e"
+}

@@ -1,0 +1,29 @@
+{
+    "authors": "Tanguy Krotoff <https://github.com/tkrotoff>",
+    "definitionFilename": "index.d.ts",
+    "libraryDependencies": [
+        "source-map"
+    ],
+    "moduleDependencies": [
+        "source-map"
+    ],
+    "libraryMajorVersion": "2",
+    "libraryMinorVersion": "6",
+    "libraryName": "UglifyJS 2 v2.6.1",
+    "typingsPackageName": "uglify-js",
+    "projectName": "https://github.com/mishoo/UglifyJS2",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "ProperModule",
+    "globals": [
+        "UglifyJS"
+    ],
+    "declaredModules": [
+        "uglify-js"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "de6c890ecdc58c43e2d5a06e7802d67b37c8bc1a736b7aa29fc905abdb80a678"
+}

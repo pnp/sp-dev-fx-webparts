@@ -1,0 +1,1 @@
+module.exports = "import * as React from 'react';\r\nimport { IconName } from './IconName';\r\nexport interface IIconProps extends React.HTMLProps<HTMLElement> {\r\n  iconName: IconName;\r\n}";

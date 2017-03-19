@@ -1,0 +1,1 @@
+module.exports = "import * as React from 'react';\r\n\r\nexport interface ILayerProps extends React.HTMLProps<HTMLDivElement> {\r\n  /** Callback for when the layer is mounted. */\r\n  onLayerMounted?: () => void;\r\n}";

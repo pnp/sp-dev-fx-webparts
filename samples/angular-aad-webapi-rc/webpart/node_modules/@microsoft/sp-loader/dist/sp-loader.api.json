@@ -1,0 +1,280 @@
+{
+  "kind": "package",
+  "exports": {
+    "ILoadScriptOptions": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "textDocElement",
+          "value": "Options for the loadScript() method in ISPComponentLoader"
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "globalExportsName": {
+          "kind": "property",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "textDocElement",
+              "value": "If set, the loaded script will be stored in a global variable under this name."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "ISPComponentLoader": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "textDocElement",
+          "value": "Interface for the module loader. It allows to load modules and scripts (through SystemJS) and CSS on the page. Also allows access to the manifests that exist in the page."
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "loadComponent": {
+          "kind": "method",
+          "signature": "loadComponent < TComponent >(manifest: IClientSideComponentManifest): Promise<TComponent>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Promise<TComponent>",
+            "description": [
+              {
+                "kind": "textDocElement",
+                "value": "A promise containing the loaded module."
+              }
+            ]
+          },
+          "parameters": {
+            "manifest": {
+              "name": "manifest",
+              "description": [
+                {
+                  "kind": "textDocElement",
+                  "value": "Manifest of the module to load."
+                }
+              ],
+              "isOptional": false,
+              "isSpread": false,
+              "type": "IClientSideComponentManifest"
+            }
+          },
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "textDocElement",
+              "value": "Loads a component from a manifest."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false
+        },
+        "loadCss": {
+          "kind": "method",
+          "signature": "loadCss(url: string): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {
+            "url": {
+              "name": "url",
+              "description": [
+                {
+                  "kind": "textDocElement",
+                  "value": "The CSS file URL."
+                }
+              ],
+              "isOptional": false,
+              "isSpread": false,
+              "type": "string"
+            }
+          },
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "textDocElement",
+              "value": "Inserts a <link ... /> tag for a stylesheet."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false
+        },
+        "loadScript": {
+          "kind": "method",
+          "signature": "loadScript < TModule >(url: string, options?: ILoadScriptOptions): Promise<TModule>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Promise<TModule>",
+            "description": [
+              {
+                "kind": "textDocElement",
+                "value": "A promise containing the loaded module."
+              }
+            ]
+          },
+          "parameters": {
+            "url": {
+              "name": "url",
+              "description": [
+                {
+                  "kind": "textDocElement",
+                  "value": "The script URL."
+                }
+              ],
+              "isOptional": false,
+              "isSpread": false,
+              "type": "string"
+            },
+            "options": {
+              "name": "options",
+              "description": [
+                {
+                  "kind": "textDocElement",
+                  "value": "globalExportsName: If the script isn't an AMD module and loads a global member on the page, specify the global member's name."
+                }
+              ],
+              "isOptional": true,
+              "isSpread": false,
+              "type": "ILoadScriptOptions"
+            }
+          },
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "textDocElement",
+              "value": "Given a URL, load a script."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "SPComponentLoader": {
+      "kind": "class",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [
+        {
+          "kind": "textDocElement",
+          "value": "Component loader. Needs to be initialized with an implemented ISPComponentLoader."
+        }
+      ],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "initialize": {
+          "kind": "method",
+          "signature": "public static initialize(componentLoader: ISPComponentLoader): void;",
+          "accessModifier": "public",
+          "isOptional": false,
+          "isStatic": true,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "textDocElement",
+              "value": "Initializes the component loader with an implementation. Must be called once before it can be used."
+            }
+          ],
+          "remarks": [],
+          "isBeta": false
+        },
+        "loadComponent": {
+          "kind": "method",
+          "signature": "public static loadComponent < TComponent >(manifest: IClientSideComponentManifest): Promise<TComponent>;",
+          "accessModifier": "public",
+          "isOptional": false,
+          "isStatic": true,
+          "returnValue": {
+            "type": "Promise<TComponent>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "textDocElement",
+              "value": "{@inheritdoc ISPComponentLoader.loadComponent}"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false
+        },
+        "loadCss": {
+          "kind": "method",
+          "signature": "public static loadCss(url: string): void;",
+          "accessModifier": "public",
+          "isOptional": false,
+          "isStatic": true,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "textDocElement",
+              "value": "{@inheritdoc ISPComponentLoader.loadCss}"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false
+        },
+        "loadScript": {
+          "kind": "method",
+          "signature": "public static loadScript < TModule >(url: string, options?: ILoadScriptOptions): Promise<TModule>;",
+          "accessModifier": "public",
+          "isOptional": false,
+          "isStatic": true,
+          "returnValue": {
+            "type": "Promise<TModule>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "textDocElement",
+              "value": "{@inheritdoc ISPComponentLoader.loadScript}"
+            }
+          ],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    }
+  }
+}

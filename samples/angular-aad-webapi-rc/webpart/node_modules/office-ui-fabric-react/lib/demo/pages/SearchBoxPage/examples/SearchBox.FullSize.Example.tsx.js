@@ -1,0 +1,1 @@
+module.exports = "import * as React from 'react';\r\nimport {\r\n  SearchBox\r\n} from '../../../../index';\r\n\r\nexport class SearchBoxFullSizeExample extends React.Component<any, any> {\r\n  public render() {\r\n    return (\r\n      <SearchBox />\r\n    );\r\n  }\r\n\r\n}\r\n";
