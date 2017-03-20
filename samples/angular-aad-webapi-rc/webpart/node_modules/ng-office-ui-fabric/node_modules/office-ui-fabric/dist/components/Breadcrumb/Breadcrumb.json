@@ -1,8 +1,0 @@
-{
-  "name": "Breadcrumb",
-  "template": "Breadcrumb.html",
-  "class": "ms-Breadcrumb",
-  "dependencies": [
-    "ContextualMenu"
-  ]
-}

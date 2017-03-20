@@ -1,7 +1,0 @@
-"use strict";
-/* tslint:disable */
-var load_themed_styles_1 = require('@microsoft/load-themed-styles');
-load_themed_styles_1.loadStyles([{ "rawString": ".ms-GettingStartedPage{margin-top:-20px;padding:40px}.ms-GettingStartedPage h1{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:28px;font-weight:100}.ms-GettingStartedPage h2{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:21px;font-weight:100}.ms-GettingStartedPage h3{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:17px;font-weight:300}.ms-GettingStartedPage-banner{padding:1px 20px;margin:-20px;margin-bottom:20px;border-bottom:1px solid " }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": "}.ms-GettingStartedPage-banner h1{margin-bottom:0}.ms-GettingStartedPage-banner h3{margin-top:0}@media (max-width:1023px){.ms-GettingStartedPage-banner{margin:-20px 0;margin-bottom:20px}}.ms-GettingStartedPage-code{background:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": ";padding:20px}.ms-GettingStartedPage-code pre{margin:0}.ms-GettingStartedPage-code .hljs{background:inherit;padding:0}" }]);
-/* tslint:enable */ 
-
-//# sourceMappingURL=GettingStartedPage.scss.js.map

@@ -1,1 +1,0 @@
-module.exports = "import { loadTheme } from '@ms/office-ui-fabric-react';\r\n\r\nloadTheme({\r\n  'themePrimary': 'red'\r\n});\r\n";
