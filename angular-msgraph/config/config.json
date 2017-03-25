@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/msGraph/MsGraphWebPart.js",
+      "manifest": "./src/webparts/msGraph/MsGraphWebPart.manifest.json",
+      "outputPath": "./dist/ms-graph.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "msGraphStrings": "webparts/msGraph/loc/{locale}.js"
+  }
+}
