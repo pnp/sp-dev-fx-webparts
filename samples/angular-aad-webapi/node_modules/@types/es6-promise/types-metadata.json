@@ -1,0 +1,25 @@
+{
+    "authors": "François de Campredon <https://github.com/fdecampredon/>, vvakame <https://github.com/vvakame>",
+    "definitionFilename": "index.d.ts",
+    "libraryDependencies": [],
+    "moduleDependencies": [],
+    "libraryMajorVersion": "0",
+    "libraryMinorVersion": "0",
+    "libraryName": "es6-promise",
+    "typingsPackageName": "es6-promise",
+    "projectName": "https://github.com/jakearchibald/ES6-Promise",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "Mixed",
+    "globals": [
+        "Promise"
+    ],
+    "declaredModules": [
+        "es6-promise"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "75f51c9885e9f79527ee0dece403b77d312ae20e004bfebcc3f03138d626ec13"
+}

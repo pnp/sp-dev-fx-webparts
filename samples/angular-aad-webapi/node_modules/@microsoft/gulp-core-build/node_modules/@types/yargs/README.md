@@ -1,0 +1,18 @@
+# Installation
+> `npm install --save @types/yargs`
+
+# Summary
+This package contains type definitions for yargs (https://github.com/chevex/yargs).
+
+# Details
+Files were exported from https://www.github.com/DefinitelyTyped/DefinitelyTyped/tree/types-2.0/yargs
+
+Additional Details
+ * Last updated: Wed, 26 Oct 2016 19:23:32 GMT
+ * File structure: ProperModule
+ * Library Dependencies: none
+ * Module Dependencies: none
+ * Global values: yargs
+
+# Credits
+These definitions were written by Martin Poelstra <https://github.com/poelstra>, Mizunashi Mana <https://github.com/mizunashi-mana>.

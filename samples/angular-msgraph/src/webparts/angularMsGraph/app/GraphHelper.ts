@@ -7,20 +7,20 @@ import { IGenericCreateItem } from './../models/IGenericCreateItem';
 export interface IGraphHelper {
   login(): void;
   logout(): void;
-  me(): ng.IPromise<Object>;
-  getSites(): ng.IPromise<Array<ISiteCollections>>;
-  getLists(siteId: string): ng.IPromise<Array<IListCollection>>;
-  getListItems(siteId: string, listId: string): ng.IPromise<Array<IAnnouncements>>;
-  createItem(siteId: string, listId: string): ng.IPromise<IGenericCreateItem>;
-  updateItem(siteId: string, listId: string, item: IGenericCreateItem, title: string): ng.IPromise<Object>;
-  deleteItem(siteId: string, listId: string, item: IGenericCreateItem): ng.IPromise<Object>;
+  me(): angular.IPromise<Object>;
+  getSites(): angular.IPromise<Array<ISiteCollections>>;
+  getLists(siteId: string):angular.IPromise<Array<IListCollection>>;
+  getListItems(siteId: string, listId: string): angular.IPromise<Array<IAnnouncements>>;
+  createItem(siteId: string, listId: string): angular.IPromise<IGenericCreateItem>;
+  updateItem(siteId: string, listId: string, item: IGenericCreateItem, title: string): angular.IPromise<Object>;
+  deleteItem(siteId: string, listId: string, item: IGenericCreateItem): angular.IPromise<Object>;
 }
 
 export default class GraphHelper implements IGraphHelper {
   public static $inject: string[] = ['$q', '$http', '$log'];
   public hello: any = require('hellojs');
 
-  constructor(private $q: ng.IQService, private $http: ng.IHttpService, private $log: ng.ILogService) {
+  constructor(private $q: angular.IQService, private $http: angular.IHttpService, private $log: angular.ILogService) {
     this.hello.init({
       aad: '119906a0-9ad3-45d9-90c4-4263450f7ca3'
     }, {
@@ -42,15 +42,15 @@ export default class GraphHelper implements IGraphHelper {
     localStorage.removeItem('user');
   }
 
-  public me(): ng.IPromise<Object> {
+  public me(): angular.IPromise<Object> {
     return this.$http.get('https://graph.microsoft.com/v1.0/me');
   }
 
-  public getSites(): ng.IPromise<Array<ISiteCollections>> {
-    const deferred: ng.IDeferred<Array<ISiteCollections>> = this.$q.defer();
+  public getSites(): angular.IPromise<Array<ISiteCollections>> {
+    const deferred:angular.IDeferred<Array<ISiteCollections>> = this.$q.defer();
 
     this.$http.get('https://graph.microsoft.com/beta/sharePoint/sites')
-      .then((response: ng.IHttpPromiseCallbackArg<any>): void => {
+      .then((response:angular.IHttpPromiseCallbackArg<any>): void => {
         if (response != null && response.data != null) {
           const result: Array<ISiteCollections> = response.data.value;
           deferred.resolve(result);
@@ -66,11 +66,11 @@ export default class GraphHelper implements IGraphHelper {
     return deferred.promise;
   }
 
-  public getLists(siteId: string): ng.IPromise<Array<IListCollection>> {
-    const deferred: ng.IDeferred<Array<IListCollection>> = this.$q.defer();
+  public getLists(siteId: string): angular.IPromise<Array<IListCollection>> {
+    const deferred: angular.IDeferred<Array<IListCollection>> = this.$q.defer();
 
     this.$http.get(`https://graph.microsoft.com/beta/sharePoint/sites/${siteId}/lists?filter=list/hidden eq false`)
-      .then((response: ng.IHttpPromiseCallbackArg<any>): void => {
+      .then((response: angular.IHttpPromiseCallbackArg<any>): void => {
         if (response != null && response.data != null) {
           const result: Array<IListCollection> = response.data.value;
           deferred.resolve(result);
@@ -86,11 +86,11 @@ export default class GraphHelper implements IGraphHelper {
     return deferred.promise;
   }
 
-  public getListItems(siteId: string, listId: string): ng.IPromise<Array<IAnnouncements>> {
-    const deferred: ng.IDeferred<Array<IAnnouncements>> = this.$q.defer();
+  public getListItems(siteId: string, listId: string): angular.IPromise<Array<IAnnouncements>> {
+    const deferred: angular.IDeferred<Array<IAnnouncements>> = this.$q.defer();
 
     this.$http.get(`https://graph.microsoft.com/beta/sharePoint/sites/${siteId}/lists/${listId}/items?expand=columnSet`)
-      .then((response: ng.IHttpPromiseCallbackArg<any>): void => {
+      .then((response: angular.IHttpPromiseCallbackArg<any>): void => {
         if (response != null && response.data != null) {
           const result: Array<IGenericAnnouncementItem> = response.data.value;
           let itemCollection: Array<IAnnouncements> = new Array<IAnnouncements>();
@@ -111,9 +111,9 @@ export default class GraphHelper implements IGraphHelper {
     return deferred.promise;
   }
 
-  public createItem(siteId: string, listId: string): ng.IPromise<IGenericCreateItem> {
-    const deferred: ng.IDeferred<IGenericCreateItem> = this.$q.defer();
-    const config: ng.IRequestShortcutConfig = {
+  public createItem(siteId: string, listId: string): angular.IPromise<IGenericCreateItem> {
+    const deferred:angular.IDeferred<IGenericCreateItem> = this.$q.defer();
+    const config: angular.IRequestShortcutConfig = {
       headers: {
         "Content-Type": "application/json"
       }
@@ -121,7 +121,7 @@ export default class GraphHelper implements IGraphHelper {
 
     this.$http.post(
       `https://graph.microsoft.com/beta/sharePoint/sites/${siteId}/lists/${listId}/items`, '{}', config)
-      .then((response: ng.IHttpPromiseCallbackArg<any>): void => {
+      .then((response: angular.IHttpPromiseCallbackArg<any>): void => {
         if (response != null && response.data != null) {
           const result: IGenericCreateItem = response.data;
           this.$log.debug(result);
@@ -138,9 +138,9 @@ export default class GraphHelper implements IGraphHelper {
     return deferred.promise;
   }
 
-  public updateItem(siteId: string, listId: string, item: IGenericCreateItem, title:string): ng.IPromise<Object> {
-    const deferred: ng.IDeferred<Object> = this.$q.defer();
-    const config: ng.IRequestShortcutConfig = {
+  public updateItem(siteId: string, listId: string, item: IGenericCreateItem, title:string): angular.IPromise<Object> {
+    const deferred: angular.IDeferred<Object> = this.$q.defer();
+    const config: angular.IRequestShortcutConfig = {
       headers: {
         "Content-Type": "application/json",
         "if-match": item.eTag
@@ -153,7 +153,7 @@ export default class GraphHelper implements IGraphHelper {
 
     this.$http.patch(
      `https://graph.microsoft.com/beta/sharePoint/sites/${siteId}/lists/${listId}/items/${item.id}/columnSet`,
-     data, config).then((response: ng.IHttpPromiseCallbackArg<any>): void => {
+     data, config).then((response: angular.IHttpPromiseCallbackArg<any>): void => {
        if (response != null && response.status == 200) {
          deferred.resolve("OK");
        }
@@ -165,9 +165,9 @@ export default class GraphHelper implements IGraphHelper {
      return deferred.promise;
   }
 
-  public deleteItem(siteId: string, listId: string, item: IGenericCreateItem): ng.IPromise<Object> {
-    const deferred: ng.IDeferred<Object> = this.$q.defer();
-    const config: ng.IRequestShortcutConfig = {
+  public deleteItem(siteId: string, listId: string, item: IGenericCreateItem): angular.IPromise<Object> {
+    const deferred: angular.IDeferred<Object> = this.$q.defer();
+    const config: angular.IRequestShortcutConfig = {
       headers: {
         "Content-Type": "application/json",
         "if-match": item.eTag
@@ -176,7 +176,7 @@ export default class GraphHelper implements IGraphHelper {
 
     this.$http.delete(
       `https://graph.microsoft.com/beta/sharePoint/sites/${siteId}/lists/${listId}/items/${item.id}`,
-      config).then((response: ng.IHttpPromiseCallbackArg<any>): void => {
+      config).then((response: angular.IHttpPromiseCallbackArg<any>): void => {
         if (response != null && response.status == 204){
           deferred.resolve("OK");
         }

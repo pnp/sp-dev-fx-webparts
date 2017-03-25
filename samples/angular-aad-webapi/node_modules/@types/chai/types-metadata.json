@@ -1,0 +1,51 @@
+{
+    "name": "chai",
+    "libraryName": "chai",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "data": {
+        "contributors": [
+            {
+                "name": "Jed Mao",
+                "url": "https://github.com/jedmao/"
+            },
+            {
+                "name": "Bart van der Schoor",
+                "url": "https://github.com/Bartvds"
+            },
+            {
+                "name": "Andrew Brown",
+                "url": "https://github.com/AGBrown"
+            },
+            {
+                "name": "Olivier Chevet",
+                "url": "https://github.com/olivr70"
+            },
+            {
+                "name": "Matt Wistrand",
+                "url": "https://github.com/mwistrand"
+            }
+        ],
+        "dependencies": {},
+        "pathMappings": {},
+        "libraryMajorVersion": 3,
+        "libraryMinorVersion": 4,
+        "typeScriptVersion": "2.0",
+        "libraryName": "chai",
+        "typingsPackageName": "chai",
+        "projectName": "http://chaijs.com/",
+        "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+        "globals": [
+            "Chai",
+            "chai"
+        ],
+        "declaredModules": [
+            "chai"
+        ],
+        "files": [
+            "index.d.ts"
+        ],
+        "hasPackageJson": false,
+        "contentHash": "c89f6f5362f63ab1632dc554e3b31797d3d7be760bfb6d31dc09f56ab3d4b94a"
+    },
+    "isLatest": true
+}

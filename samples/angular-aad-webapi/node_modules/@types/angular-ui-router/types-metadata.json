@@ -1,0 +1,24 @@
+{
+    "authors": "Michel Salib <https://github.com/michelsalib>, Ivan Matiishyn <https://github.com/matiishyn>",
+    "libraryDependencies": [],
+    "moduleDependencies": [
+        "angular"
+    ],
+    "libraryMajorVersion": 1,
+    "libraryMinorVersion": 1,
+    "typeScriptVersion": "2.0",
+    "libraryName": "Angular JS (ui.router module)",
+    "typingsPackageName": "angular-ui-router",
+    "projectName": "https://github.com/angular-ui/ui-router",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "master",
+    "globals": [],
+    "declaredModules": [
+        "angular-ui-router"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "06b5881811f888311b8e2f4e20c4d723932a6c094bff3ec165279b7dd7910f49"
+}

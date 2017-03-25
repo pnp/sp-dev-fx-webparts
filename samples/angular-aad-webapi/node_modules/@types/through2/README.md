@@ -1,0 +1,18 @@
+# Installation
+> `npm install --save @types/through2`
+
+# Summary
+This package contains type definitions for through2 v 2.0.0 (https://github.com/rvagg/through2).
+
+# Details
+Files were exported from https://www.github.com/DefinitelyTyped/DefinitelyTyped/tree/types-2.0/through2
+
+Additional Details
+ * Last updated: Tue, 22 Nov 2016 20:59:31 GMT
+ * File structure: ProperModule
+ * Library Dependencies: node
+ * Module Dependencies: stream
+ * Global values: through2
+
+# Credits
+These definitions were written by Bart van der Schoor <https://github.com/Bartvds>, jedmao <https://github.com/jedmao>, Georgios Valotasios <https://github.com/valotas>, Ben Chauvette <https://github.com/bdchauvette>.
