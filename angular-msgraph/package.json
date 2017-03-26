@@ -9,15 +9,20 @@
     "@microsoft/sp-client-base": "~1.0.0",
     "@microsoft/sp-core-library": "~1.0.0",
     "@microsoft/sp-webpart-base": "~1.0.0",
-    "@types/webpack-env": ">=1.12.1 <1.14.0"
+    "@types/webpack-env": ">=1.12.1 <1.14.0",
+    "angular": "1.5.11",
+    "hellojs": "1.14.0",
+    "ng-office-ui-fabric": "0.14.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.0.0",
     "@microsoft/sp-module-interfaces": "~1.0.0",
     "@microsoft/sp-webpart-workbench": "~1.0.0",
-    "gulp": "~3.9.1",
+    "@types/angular": "^1.6.10",
     "@types/chai": ">=3.4.34 <3.6.0",
-    "@types/mocha": ">=2.2.33 <2.6.0"
+    "@types/mocha": ">=2.2.33 <2.6.0",
+    "gulp": "~3.9.1",
+    "hellojs": "^1.14.0"
   },
   "scripts": {
     "build": "gulp bundle",

@@ -2,32 +2,38 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  IWebPartContext
 } from '@microsoft/sp-webpart-base';
+import { SPComponentLoader } from '@microsoft/sp-loader';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './MsGraph.module.scss';
 import * as strings from 'msGraphStrings';
 import { IMsGraphWebPartProps } from './IMsGraphWebPartProps';
 
-export default class MsGraphWebPart extends BaseClientSideWebPart<IMsGraphWebPartProps> {
+import * as angular from 'angular';
+import 'ng-office-ui-fabric';
+import './app/aad';
+import './app/app.module';
+//import 'hellojs';
 
+export default class MsGraphWebPart extends BaseClientSideWebPart<IMsGraphWebPartProps> {
+  private $injector: angular.auto.IInjectorService;
+
+  public constructor(context: IWebPartContext){
+    super();
+
+    SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css');
+    SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
+  }
   public render(): void {
-    this.domElement.innerHTML = `
-      <div class="${styles.helloWorld}">
-        <div class="${styles.container}">
-          <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
-            <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-              <span class="ms-font-xl ms-fontColor-white">Welcome to SharePoint!</span>
-              <p class="ms-font-l ms-fontColor-white">Customize SharePoint experiences using Web Parts.</p>
-              <p class="ms-font-l ms-fontColor-white">${escape(this.properties.description)}</p>
-              <a href="https://aka.ms/spfx" class="${styles.button}">
-                <span class="${styles.label}">Learn more</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>`;
+    if (this.renderedOnce == false){
+      // create the compent html to load all the angular code      
+      this.domElement.innerHTML = `<angulargraphapi></angulargraphapi>`;
+      // bootstrap the app passing in our angular app
+      this.$injector = angular.bootstrap(this.domElement, ['angularconnectsp']);
+    }
   }
 
   protected get dataVersion(): Version {
