@@ -5,6 +5,7 @@ AuthenticationContext.prototype._saveItemSuper = AuthenticationContext.prototype
 AuthenticationContext.prototype.handleWindowCallbackSuper = AuthenticationContext.prototype.handleWindowCallback;
 AuthenticationContext.prototype._renewTokenSuper = AuthenticationContext.prototype._renewToken;
 AuthenticationContext.prototype.getRequestInfoSuper = AuthenticationContext.prototype.getRequestInfo;
+AuthenticationContext.prototype._addAdalFrameSuper = AuthenticationContext.prototype._addAdalFrame;
 
 AuthenticationContext.prototype._getItem = function (key) {
   if (this.config.webPartId) {
@@ -78,6 +79,12 @@ AuthenticationContext.prototype.getRequestInfo = function (hash) {
   return requestInfo;
 }
 
-window.AuthenticationContext = function() {
+AuthenticationContext.prototype._addAdalFrame = function (iframeId) {
+  var adalFrame = this._addAdalFrameSuper(iframeId);
+  adalFrame.style.width = adalFrame.style.height = '106px';
+  return adalFrame;
+}
+
+window.AuthenticationContext = function () {
   return undefined;
 }
