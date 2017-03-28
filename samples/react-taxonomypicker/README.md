@@ -106,5 +106,5 @@ PropertyPaneTaxonomyPicker("Language", {
 - **SharePoint Framework Web Part (SPFx)**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/spfx-react-taxonomypicker" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-taxonomypicker" />
 

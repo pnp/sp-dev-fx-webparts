@@ -150,4 +150,4 @@ In the PropertyPane, an administrator just needs to specify which Managed Proper
 
 If desired, the admin can also specify which site templates should be included in the menu, as wall as any additional filters. Additional Filteres can be specified in the format 'ManagedPropertyName=value';
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-property-bag-editor" />
