@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "fbbd4504-22be-4b32-808f-adcfa956cf4a",
+  "alias": "TaxonomyPickerSampleWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "fbbd4504-22be-4b32-808f-adcfa956cf4a",
+    "group": { "default": "Under Development" },
+    "title": { "default": "TaxonomyPickerSample" },
+    "description": { "default": "TaxonomyPickerSample description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "TaxonomyPickerSample"
+    }
+  }]
+}

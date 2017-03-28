@@ -1,0 +1,6 @@
+{
+  "workingDir": "./temp/deploy/",
+  "account": "<!-- STORAGE ACCOUNT NAME -->",
+  "container": "react-taxonomypicker-sample-spfx",
+  "accessKey": "<!-- ACCESS KEY -->"
+}

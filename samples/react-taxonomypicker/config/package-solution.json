@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-taxonomypicker-sample-spfx-client-side-solution",
+    "id": "90551413-582d-4e75-b811-2459984d62d8",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-taxonomypicker-sample-spfx.sppkg"
+  }
+}
