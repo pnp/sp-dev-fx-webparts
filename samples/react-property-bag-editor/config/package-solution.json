@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-property-bag-editor-client-side-solution",
+    "id": "12dac38e-b255-44ce-9f06-050571b34d39",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-property-bag-editor.sppkg"
+  }
+}
