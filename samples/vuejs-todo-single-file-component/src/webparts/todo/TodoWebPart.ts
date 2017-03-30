@@ -4,11 +4,12 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
+import { escape } from '@microsoft/sp-lodash-subset';
 
 import * as Vue from 'vue';
 import TodoComponent from './components/todo/Todo.vue';
 
-import * as strings from 'todoStrings';
+import * as strings from 'toDoStrings';
 import { ITodoWebPartProps } from './ITodoWebPartProps';
 
 export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps> {

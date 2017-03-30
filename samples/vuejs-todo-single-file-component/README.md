@@ -5,7 +5,7 @@
 Sample Todo web part demonstrating how you can utilize [Vue](https://vuejs.org/v2) (a progressive framework for building user interfaces) with SharePoint Framework using handy [single-file components](https://vuejs.org/v2/guide/single-file-components.html) approach. 
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-RC0-green.svg)
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
@@ -23,6 +23,7 @@ vuejs-todo-single-file-component|Sergei Sergeev ([@sergeev_srg](https://twitter.
 Version|Date|Comments
 -------|----|--------
 0.0.1|January 27, 2017|Initial version.
+0.0.2|March 30, 2017|Updated to GA
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

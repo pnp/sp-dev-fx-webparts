@@ -2,7 +2,7 @@
 
 import { assert } from 'chai';
 
-describe('TodoWebPart', () => {
+describe('ToDoWebPart', () => {
   it('should do something', () => {
     assert.ok(true);
   });
