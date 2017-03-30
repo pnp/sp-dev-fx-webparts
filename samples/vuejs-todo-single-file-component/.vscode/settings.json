@@ -1,7 +1,5 @@
+// Place your settings in this file to overwrite default and user settings.
 {
-    "vsicons.presets.angular": false,
-    "typescript.tsdk": "./node_modules/typescript/lib",
-    "files.associations": {
-        "*.vue": "vue"
-    }
+    "tslint.configFile": "./config/tslint.json",
+    "tslint.ignoreDefinitionFiles": true
 }
