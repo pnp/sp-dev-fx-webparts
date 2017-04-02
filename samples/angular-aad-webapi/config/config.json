@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/aadWebApi/AadWebApiWebPart.js",
+      "manifest": "./src/webparts/aadWebApi/AadWebApiWebPart.manifest.json",
+      "outputPath": "./dist/aad-web-api.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "aadWebApiStrings": "webparts/aadWebApi/loc/{locale}.js"
+  }
+}
