@@ -1,0 +1,1 @@
+module.exports = "/* tslint:disable:no-unused-variable */\r\nimport * as React from 'react';\r\n/* tslint:enable:no-unused-variable */\r\n\r\nexport interface ILabelProps extends React.HTMLProps<HTMLLabelElement> {\r\n  /**\r\n   * Whether the associated form field is required or not\r\n   * @defaultvalue false\r\n   */\r\n  required?: boolean;\r\n}\r\n";

@@ -1,13 +1,13 @@
 {
   "entries": [
     {
-      "entry": "./lib/webparts/angularMsGraph/AngularMsGraphWebPart.js",
-      "manifest": "./src/webparts/angularMsGraph/AngularMsGraphWebPart.manifest.json",
-      "outputPath": "./dist/angular-ms-graph.bundle.js"
+      "entry": "./lib/webparts/msGraph/MsGraphWebPart.js",
+      "manifest": "./src/webparts/msGraph/MsGraphWebPart.manifest.json",
+      "outputPath": "./dist/ms-graph.bundle.js"
     }
   ],
   "externals": {},
   "localizedResources": {
-    "angularMsGraphStrings": "webparts/angularMsGraph/loc/{locale}.js"
+    "msGraphStrings": "webparts/msGraph/loc/{locale}.js"
   }
 }

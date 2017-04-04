@@ -1,0 +1,29 @@
+{
+    "authors": "Qubo <https://github.com/tkQubo>",
+    "definitionFilename": "index.d.ts",
+    "libraryDependencies": [
+        "q"
+    ],
+    "moduleDependencies": [
+        "q"
+    ],
+    "libraryMajorVersion": "0",
+    "libraryMinorVersion": "0",
+    "libraryName": "Orchestrator",
+    "typingsPackageName": "orchestrator",
+    "projectName": "https://github.com/orchestrator/orchestrator",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "ProperModule",
+    "globals": [
+        "Orchestrator"
+    ],
+    "declaredModules": [
+        "orchestrator"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "a3887bd7db30a629ef5b9153a6e796258cb0fc539bd0bbd928c111149c0ab0f2"
+}

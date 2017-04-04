@@ -1,0 +1,29 @@
+{
+    "authors": "Bart van der Schoor <https://github.com/Bartvds>, jedmao <https://github.com/jedmao>, Georgios Valotasios <https://github.com/valotas>, Ben Chauvette <https://github.com/bdchauvette>",
+    "definitionFilename": "index.d.ts",
+    "libraryDependencies": [
+        "node"
+    ],
+    "moduleDependencies": [
+        "stream"
+    ],
+    "libraryMajorVersion": 2,
+    "libraryMinorVersion": 0,
+    "libraryName": "through2 v 2.0.0",
+    "typingsPackageName": "through2",
+    "projectName": "https://github.com/rvagg/through2",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "ProperModule",
+    "globals": [
+        "through2"
+    ],
+    "declaredModules": [
+        "through2"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "e03d6657c6dfb42dac65f5e330b0dc6e9ef98307650be8bd976052bd9b8fb223"
+}

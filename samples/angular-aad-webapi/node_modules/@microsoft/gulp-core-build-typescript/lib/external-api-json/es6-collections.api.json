@@ -1,0 +1,787 @@
+{
+  "kind": "package",
+  "summary": [],
+  "remarks": [],
+  "exports": {
+    "ForEachable": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [
+        "T"
+      ],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "forEach": {
+          "kind": "method",
+          "signature": "forEach(callbackfn: (value: T) => void): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "Iterator": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [
+        "T"
+      ],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "next": {
+          "kind": "method",
+          "signature": "next(value?: any): IteratorResult<T>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "IteratorResult<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "return": {
+          "kind": "method",
+          "signature": "return ?(value?: any): IteratorResult<T>;",
+          "accessModifier": "",
+          "isOptional": true,
+          "isStatic": false,
+          "returnValue": {
+            "type": "IteratorResult<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "throw": {
+          "kind": "method",
+          "signature": "throw ?(e?: any): IteratorResult<T>;",
+          "accessModifier": "",
+          "isOptional": true,
+          "isStatic": false,
+          "returnValue": {
+            "type": "IteratorResult<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "IteratorResult": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [
+        "T"
+      ],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "done": {
+          "kind": "property",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "boolean",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "value": {
+          "kind": "property",
+          "isOptional": true,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "T",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "Map": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [
+        "K",
+        "V"
+      ],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "clear": {
+          "kind": "method",
+          "signature": "clear(): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "delete": {
+          "kind": "method",
+          "signature": "delete(key: K): boolean;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "boolean",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "entries": {
+          "kind": "method",
+          "signature": "entries(): Iterator<[K, V]>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Iterator<[K, V]>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "forEach": {
+          "kind": "method",
+          "signature": "forEach(callbackfn: (value: V, index: K, map: Map<K, V>) => void, thisArg?: any): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "get": {
+          "kind": "method",
+          "signature": "get(key: K): V;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "V",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "has": {
+          "kind": "method",
+          "signature": "has(key: K): boolean;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "boolean",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "keys": {
+          "kind": "method",
+          "signature": "keys(): Iterator<K>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Iterator<K>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "set": {
+          "kind": "method",
+          "signature": "set(key: K, value?: V): Map<K, V>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Map<K, V>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "size": {
+          "kind": "property",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "values": {
+          "kind": "method",
+          "signature": "values(): Iterator<V>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Iterator<V>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "MapConstructor": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "__new": {
+          "kind": "method",
+          "signature": "new < K, V >(): Map<K, V>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Map<K, V>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "prototype": {
+          "kind": "property",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "Map<any, any>",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "Set": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [
+        "T"
+      ],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "add": {
+          "kind": "method",
+          "signature": "add(value: T): Set<T>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Set<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "clear": {
+          "kind": "method",
+          "signature": "clear(): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "delete": {
+          "kind": "method",
+          "signature": "delete(value: T): boolean;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "boolean",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "entries": {
+          "kind": "method",
+          "signature": "entries(): Iterator<[T, T]>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Iterator<[T, T]>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "forEach": {
+          "kind": "method",
+          "signature": "forEach(callbackfn: (value: T, index: T, set: Set<T>) => void, thisArg?: any): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "has": {
+          "kind": "method",
+          "signature": "has(value: T): boolean;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "boolean",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "keys": {
+          "kind": "method",
+          "signature": "keys(): Iterator<T>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Iterator<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "size": {
+          "kind": "property",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "number",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "values": {
+          "kind": "method",
+          "signature": "values(): Iterator<T>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Iterator<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "SetConstructor": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "__new": {
+          "kind": "method",
+          "signature": "new < T >(): Set<T>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "Set<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "prototype": {
+          "kind": "property",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "Set<any>",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "WeakMap": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [
+        "K",
+        "V"
+      ],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "clear": {
+          "kind": "method",
+          "signature": "clear(): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "delete": {
+          "kind": "method",
+          "signature": "delete(key: K): boolean;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "boolean",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "get": {
+          "kind": "method",
+          "signature": "get(key: K): V;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "V",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "has": {
+          "kind": "method",
+          "signature": "has(key: K): boolean;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "boolean",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "set": {
+          "kind": "method",
+          "signature": "set(key: K, value?: V): WeakMap<K, V>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "WeakMap<K, V>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "WeakMapConstructor": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "__new": {
+          "kind": "method",
+          "signature": "new < K, V >(): WeakMap<K, V>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "WeakMap<K, V>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "prototype": {
+          "kind": "property",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "WeakMap<any, any>",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "WeakSet": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [
+        "T"
+      ],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "add": {
+          "kind": "method",
+          "signature": "add(value: T): WeakSet<T>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "WeakSet<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "clear": {
+          "kind": "method",
+          "signature": "clear(): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "delete": {
+          "kind": "method",
+          "signature": "delete(value: T): boolean;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "boolean",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "has": {
+          "kind": "method",
+          "signature": "has(value: T): boolean;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "boolean",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    },
+    "WeakSetConstructor": {
+      "kind": "interface",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "members": {
+        "__new": {
+          "kind": "method",
+          "signature": "new < T >(): WeakSet<T>;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "WeakSet<T>",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "prototype": {
+          "kind": "property",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "WeakSet<any>",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+[submodule "typescript/dev"]
+	path = typescript/dev
+	url = https://github.com/Microsoft/TypeScript.git
+[submodule "typescript/1-4"]
+	path = typescript/1-4
+	url = https://github.com/Microsoft/TypeScript.git
+	branch = release-1.4
+[submodule "typescript/1-5"]
+	path = typescript/1-5
+	url = https://github.com/Microsoft/TypeScript.git
+	branch = release-1.5
+[submodule "typescript/1-6"]
+	path = typescript/1-6
+	url = https://github.com/Microsoft/TypeScript.git
+[submodule "typescript/1-7"]
+	path = typescript/1-7
+	url = https://github.com/Microsoft/TypeScript.git
