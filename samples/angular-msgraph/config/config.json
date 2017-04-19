@@ -1,0 +1,29 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/msGraph/MsGraphWebPart.js",
+      "manifest": "./src/webparts/msGraph/MsGraphWebPart.manifest.json",
+      "outputPath": "./dist/ms-graph.bundle.js"
+    }
+  ],
+  "externals": {
+    "angular": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.js",
+      "globalName": "angular"
+    },
+    "ng-office-fabric-ui": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/ngOfficeUiFabric/0.15.0/ngOfficeUiFabric.js",
+      "globalName": "ng-office-fabric-ui",
+      "globalDependencies": [
+        "angular"
+      ]
+    },
+    "hellojs": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/hellojs/1.14.1/hello.js",
+      "globalName": "hellojs"
+    }
+  },
+  "localizedResources": {
+    "msGraphStrings": "webparts/msGraph/loc/{locale}.js"
+  }
+}
