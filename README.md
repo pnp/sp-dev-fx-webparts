@@ -6,7 +6,10 @@ The `React Content Query WebPart` is a modern version of the good old `Content b
 
 #### Custom tool pane
 
+A custom tool pane helps the user to easily configure his query in the same fashion he used to do with the original WebPart.
+
 ![Custom Tool Part](https://github.com/spplante/react-content-query/blob/master/Misc/toolpart.gif "Custom ToolPart")
+
 
 #### Handlebars templating engine
 
@@ -43,13 +46,19 @@ Provide a link to your handlebars `.html` template and decide how you want to re
 
 #### Query any site collection within the same domain
 
+The WebParts uses the search in order to get all sites under the current domain, which makes it possible to query not only subsites but other site collections and their subsites as well.
+
 ![DateTime](https://github.com/spplante/react-content-query/blob/master/Misc/allsites.gif "DateTime")
 
 #### Add unlimited filters
 
+The user isn't limited to 3 filters anymore, an unlimited amount of filters can be added.
+
 ![Unlimited Filters](https://github.com/spplante/react-content-query/blob/master/Misc/filters.gif "Unlimited Filters")
 
 #### Include time in date filters if needed
+
+It is now possible to include time validation when querying date fields, giving the user more possibilities when it comes to filtering events etc... 
 
 ![DateTime](https://github.com/spplante/react-content-query/blob/master/Misc/datetime.gif "Datime Filters")
 
