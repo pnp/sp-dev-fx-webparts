@@ -1,0 +1,22 @@
+$container-bg-color: #f4f4f4;
+$container-border: 1px solid #dadada;
+
+.cqwp {
+	.cqwpValidations {
+		background-color: $container-bg-color;
+		border: $container-border;
+		padding: 20px 20px 15px 20px;
+
+		div[class*='ms-Checkbox'] {
+			&:first-child {
+				margin-top: 5px;
+			}
+		}
+	}
+	.cqwpError {
+		background-color: $container-bg-color;
+		border: $container-border;
+		padding: 20px;
+		text-align: center;
+	}
+}
