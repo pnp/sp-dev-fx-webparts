@@ -19,12 +19,12 @@ Provide a link to your handlebars `.html` template and decide how you want to re
 ```handlebars
 <h1>Results : </h1>
 <ul id="items">
-  {{ #each items }}
+  {{#each items}}
   <li>
-    <span>{{ Title.textVaue }}</span>
-    {{ FileRef.htmlValue }}
+    <span>{{Title.textVaue}}</span>
+    {{FileRef.htmlValue}}
   </li>
-  {{ /each }}
+  {{/each}}
 </ul>
 ```
 
@@ -68,11 +68,11 @@ It is now possible to include time validation when querying date fields, giving 
 The SPFx [PageContext](https://github.com/SharePoint/sp-dev-docs/blob/master/reference/spfx/sp-page-context/pagecontext.md) object is exposed directly within the handlebars template context, which allows the user to interact with many usefull dynamic properties such as the current language for instance.
 
 ```handlebars
-<h1>Current language : {{ pageContext.web.language }} </h1>
-<h1>Current web title : {{ pageContext.web.title }} </h1>
-<h1>Current user display name : {{ pageContext.user.displayName }} </h1>
-<h1>Current user login name : {{ pageContext.user.loginName }} </h1>
-<h1>Current user email : {{ pageContext.user.email }} </h1>
+<h1>Current language : {{pageContext.web.language}} </h1>
+<h1>Current web title : {{pageContext.web.title}} </h1>
+<h1>Current user display name : {{pageContext.user.displayName}} </h1>
+<h1>Current user login name : {{pageContext.user.loginName}} </h1>
+<h1>Current user email : {{pageContext.user.email}} </h1>
 ...
 ```
 
@@ -82,9 +82,9 @@ For every view field returned by the query, three predefined types of values are
 
 *Handlebars template :*
 ```handlebars
-<h1>Text Value : {{ MyUserField.textValue }}</h1>
-<h1>Html Value : {{ MyUserField.htmlValue }}</h1>
-<h1>Raw Value : {{ MyUserField.rawValue }}</h1>
+<h1>Text Value : {{MyUserField.textValue}}</h1>
+<h1>Html Value : {{MyUserField.htmlValue}}</h1>
+<h1>Raw Value : {{MyUserField.rawValue}}</h1>
 ```
 
 *Output :*
