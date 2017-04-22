@@ -152,6 +152,8 @@ export default class YammerProvider implements IYammerProvider {
      * Make sure the client Id and redirect Uri are as specified in the registered Yammer app.
      */
     private _iframeAuthentication(): Promise<any> {
+        let self: YammerProvider = this;
+
         return new Promise((resolve, reject) => {
 
             let iframeId: string = "authIframe";
@@ -161,19 +163,23 @@ export default class YammerProvider implements IYammerProvider {
             element.setAttribute("style", "display:none");
             document.body.appendChild(element);
             element.addEventListener("load", _ => {
-                let elem: HTMLIFrameElement = document.getElementById(iframeId) as HTMLIFrameElement;
-                let token: string = elem.contentWindow.location.hash.split("=")[1];
-                window.yam.platform.setAuthToken(token);
-                this._getLoginStatus()
-                    .then((res) => {
-                        resolve(res);
-                    })
-                    .catch((err) => {
-                        reject(err);
-                    });
+                try {
+                    let elem: HTMLIFrameElement = document.getElementById(iframeId) as HTMLIFrameElement;
+                    let token: string = elem.contentWindow.location.hash.split("=")[1];
+                    window.yam.platform.setAuthToken(token);
+                    this._getLoginStatus()
+                        .then((res) => {
+                            resolve(res);
+                        })
+                        .catch((err) => {
+                            reject(err);
+                        });
+                } catch (ex) {
+                    reject(ex);
+                }
             });
             let domainName: string = window.location.host.split(".")[0];
-            let queryString: string = `client_id=${this._config.clientId}&response_type=token&redirect_uri=${this._config.redirectUri}`;
+            let queryString: string = `client_id=${self._config.clientId}&response_type=token&redirect_uri=${self._config.redirectUri}`;
             let url: string = `https://www.yammer.com/${domainName}.onmicrosoft.com/oauth2/authorize?${queryString}`;
             element.src = url;
 
