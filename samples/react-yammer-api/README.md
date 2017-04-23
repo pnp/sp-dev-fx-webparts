@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sample shows how Yammer REST APIs can be consumed by using the SPFx webpart and the Yammer JavaScript SDK. The SPFx webpart contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience.
+This sample shows how Yammer REST APIs can be consumed by using SharePoint Framework React webpart and the Yammer JavaScript SDK. The SPFx webpart contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience.
 
 ### Yammer search
 
