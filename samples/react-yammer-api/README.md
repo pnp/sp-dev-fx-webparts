@@ -12,7 +12,7 @@ Sample SharePoint Framework client-side web part built using React that consumes
 
 ### Smart Authentication, if Yammer Enforce Office 365 identity is enabled
 
-If Yammer Office 365 Identity Enforcement is enabled, the webpart will 'smart' authenticate Office 365 user when in SharePoint Online environment i.e. a user should allow the app (consent popup) once in a lifetime and after, will be logged in all the time. Smart because if you do not have the yammer auth cookies, you would not have to re-authenticate with login button and popups.
+If Yammer Office 365 Identity Enforcement is enabled, the webpart will 'smart' authenticate Office 365 user when in SharePoint Online environment i.e. a user should allow the app (consent popup) once in a lifetime. After, the user will be logged in all the time. Smart because if you do not have the yammer auth cookies, you would not have to re-authenticate with login button and popups.
 To enable Office 365 Identity Enforcement on `Office 365 Enterprise E3 Trial tenant`, go to the Office 365 admin -> Admin centers -> Yammer -> Security Settings -> Enforce Office 365 identity.
 
 ## Used SharePoint Framework Version 
@@ -58,7 +58,7 @@ Version|Date|Comments
 
 ![Yammer app enabled](./assets/yammer-enabled-screen.png)
 
-- Copy the Yammer app client Id and expected redirect tokens.
+- Copy the Yammer app client Id and redirect uri.
 - Go to the SPFx webpart folder and find **src/webparts/reactYammerApi/yammer/ProdConfiguration.ts**.
 - Replace the config client id and redirect uri with the copied from the yammer registered app values.
 ```typescript
