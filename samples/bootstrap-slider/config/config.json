@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/slider/SliderWebPart.js",
+      "manifest": "./src/webparts/slider/SliderWebPart.manifest.json",
+      "outputPath": "./dist/slider.bundle.js"
+    }
+  ],
+  "externals": {
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-1.12.4.js",
+      "globalName": "jquery"
+    },
+    "bootstrap": {
+      "path": "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js",
+      "globalName": "bootstrap"
+    }
+  },
+  "localizedResources": {
+    "sliderStrings": "webparts/slider/loc/{locale}.js"
+  }
+}
