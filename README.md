@@ -125,7 +125,7 @@ Once we can loop within the items, we can render any field, as long as the field
 <div class="item">[object]</div>
 ```
 
-We are almost there, the above code is rendering a *[object]* the Content Query Webpart offers 3 different ways to render a field value:
+We are almost there, the above code is rendering a *[object]* because the Content Query Webpart offers 3 different ways to render a field value:
 
 Property | Description
 ---------|---------------
