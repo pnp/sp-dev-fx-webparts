@@ -2,9 +2,11 @@ declare interface IContentQueryStrings {
   SourcePageDescription: string;
   QueryPageDescription: string;
   DisplayPageDescription: string;
+  ExternalPageDescription: string;
   SourceGroupName: string;
   QueryGroupName: string;
   DisplayGroupName: string;
+  ExternalGroupName: string;
   WebUrlFieldLabel: string;
   WebUrlFieldPlaceholder: string;
   WebUrlFieldLoadingLabel: string;
@@ -27,8 +29,10 @@ declare interface IContentQueryStrings {
   ErrorWebNotFound: string;
   ShowItemsAscending: string;
   ShowItemsDescending: string;
+  DynamicallyGeneratedTemplate: string;
   queryFilterPanelStrings: any;
   viewFieldsChecklistStrings: any;
+  templateTextStrings: any;
   contentQueryStrings: any;
 }
 

@@ -17,6 +17,7 @@
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
     "handlebars": "^4.0.6",
+    "handlebars-helpers": "^0.8.2",
     "moment": "^2.18.1",
     "office-ui-fabric-react": "1.14.3",
     "react": "15.4.2",
@@ -30,7 +31,8 @@
     "@types/microsoft-ajax": "0.0.31",
     "@types/mocha": ">=2.2.33 <2.6.0",
     "@types/sharepoint": "^2013.1.4",
-    "gulp": "~3.9.1"
+    "gulp": "~3.9.1",
+    "unlazy-loader": "^0.1.2"
   },
   "scripts": {
     "build": "gulp bundle",

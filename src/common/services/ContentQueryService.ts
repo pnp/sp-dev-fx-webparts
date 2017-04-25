@@ -403,6 +403,51 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
+    /*************************************************************************************************
+     * Generates a default handlebars template based on the view fields selected by the user
+     * @param viewFields : The view fields that have been selected by the user
+     *************************************************************************************************/
+    public generateDefaultTemplate(viewFields: string[]): string {
+        let viewFieldsStr = viewFields.map((field) => { return Text.format("                    <span><b>{0} : </b>\{\{{0}.textValue\}\}</span>", field); }).join("\n");
+        let template = Text.format(`<style type="text/css">
+    .dynamic-template .dynamic-items .dynamic-item {
+        background: #ffffff;
+        box-shadow: 0px 0px 6px #bfbebe;
+        margin-bottom: 15px;
+    }
+    .dynamic-template .dynamic-items .dynamic-item h3 {
+        background: #47b4de;
+        color: #fff;
+        padding: 5px 5px 7px 10px;
+        margin: 0px;
+    }
+    .dynamic-template .dynamic-items .dynamic-item .dynamic-item-fields {
+        padding: 10px;
+    }
+    .dynamic-template .dynamic-items .dynamic-item .dynamic-item-fields span {
+        display: block;
+        font-size: 12px;
+    }
+</style>
+
+<div class="dynamic-template">
+    <h2>{0}</h2>
+    <div class="dynamic-items">
+        {{#each items}}
+            <div class="dynamic-item">
+                <h3>Result #{{@index}}</h3>
+                <div class="dynamic-item-fields">
+{1}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>`, strings.DynamicallyGeneratedTemplate ,viewFieldsStr);
+
+        return template;
+    }
+
+
     /***************************************************************************
      * Resets the stored 'list title' options 
      ***************************************************************************/

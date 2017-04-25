@@ -9,5 +9,7 @@ export interface IContentQueryWebPartProps {
   orderByDirection: string;
   filters: IQueryFilter[];
   viewFields: string[];
+  templateText: string;
   templateUrl: string;
+  hasDefaultTemplateBeenUpdated: boolean;
 }

@@ -2,10 +2,12 @@ define([], function() {
   return {
     SourcePageDescription: "Specify where the WebPart should get the results from.",
     QueryPageDescription: "If needed, choose the sorting behavior, limit the results, or add filters in order to narrow the query down.",
-    DisplayPageDescription: "Finally, specify which fields should be available for rendering within the HandleBars template, and specify the URL of the said template.",
+    DisplayPageDescription: "Specify which fields should be available for rendering within the HandleBars template, and edit your handlebars template.",
+    ExternalPageDescription: "Optionally, externalize the properties below by specifying valid sharepoint urls.",
     SourceGroupName: "Source",
     QueryGroupName: "Query",
     DisplayGroupName: "Display",
+    ExternalGroupName: "External Resources",
     WebUrlFieldLabel: "Web Url",
     WebUrlFieldPlaceholder: "Select the source web...",
     WebUrlFieldLoadingLabel: "Loading webs from current site...",
@@ -29,6 +31,7 @@ define([], function() {
     ErrorProcessingTemplate: "An error occured while processing the handlebars template : {0}",
     ShowItemsAscending: "Show items in ascending order",
     ShowItemsDescending: "Show items in descending order",
+    DynamicallyGeneratedTemplate: "Dynamically generated template",
     queryFilterPanelStrings: {
       filtersLabel: "Filters",
       addFilterLabel: "Add filter", 
@@ -80,8 +83,18 @@ define([], function() {
       loading: 'Loading fields from specified list...',
       errorFormat: 'An error occured while loading fields : {0}'
     },
+    templateTextStrings: {
+      dialogTitle: "Edit template content",
+      dialogSubText: "Edit your handlebars template in this dialog. Note that the inline template specified within this dialog will be ignored if a template url is specified.",
+      dialogButtonLabel: "Template",
+      dialogButtonText: "Edit template content",
+      dialogTextBoxPlaceholder: "Edit your handlebars template here...",
+      saveButtonText: 'Save',
+      cancelButtonText: 'Cancel'
+    },
     contentQueryStrings: {
       loadingItems: 'Processing query',
+      mandatoryProperties: 'Configure the following mandatory properties in order to display results :',
       errorLoadingQuery: 'An error occured while processing the query : {0}',
       errorLoadingTemplate: 'An error occured while loading the template:  {0}',
       errorProcessingTemplate: 'An error occured while processing the handlebars template : {0}'

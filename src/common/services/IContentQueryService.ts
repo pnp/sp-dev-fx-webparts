@@ -17,6 +17,7 @@ export interface IContentQueryService {
     getTaxonomyPickerSuggestions: (webUrl: string, listTitle: string, field: IQueryFilterField, filterText: string, currentTerms: ITag[]) => Promise<IPersonaProps[]>;
     ensureFileResolves: (filePath: string) => Promise<{}>;
     isValidTemplateFile: (filePath: string) => boolean;
+    generateDefaultTemplate: (viewFields: string[]) => string;
     clearCachedListTitleOptions: () => void;
     clearCachedOrderByOptions: () => void;
     clearCachedFilterFields: () => void;

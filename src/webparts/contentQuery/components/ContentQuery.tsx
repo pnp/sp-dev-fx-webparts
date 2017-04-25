@@ -28,9 +28,14 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
   constructor(props: IContentQueryProps, state: IContentQueryState) {
       super(props);
 
+      // Imports the handlebars-helpers
+      let helpers = require<any>('handlebars-helpers')({
+        handlebars: Handlebars
+      });
+
       this.onGoingAsyncCalls = [];
       this.state = { loading: true, processedTemplateResult: null, error: null };
-  }
+  }  
 
 
   /*************************************************************************************
@@ -65,7 +70,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
       this.props.onLoadTemplateContext(this.props.querySettings, currentCallTimeStamp).then((templateContext: IContentQueryTemplateContext) => {
 
         // Loads the handlebars template
-        this.props.onLoadTemplate(this.props.templateUrl).then((templateContent: string) => {
+        this.loadTemplate().then((templateContent: string) => {
             
           // Only process the result of the current async call if it's the last in the ordered queue
           if(this.isLastExecutedCall(templateContext.callTimeStamp)) {
@@ -88,6 +93,26 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
     else {
       this.setState({ loading: false, processedTemplateResult: null, error: null });
     }
+  }
+
+
+  /*************************************************************************************
+   * Loads the template from url if available, otherwise returns the inline template
+   *************************************************************************************/
+  private loadTemplate(): Promise<string> {
+    // Resolves the template content if no template url
+    if(isEmpty(this.props.templateUrl)) {
+        return Promise.resolve(this.props.templateText);
+    }
+
+    return new Promise<string>((resolve,reject) => {
+        this.props.onLoadTemplate(this.props.templateUrl).then((templateContent: string) => {
+          resolve(templateContent);
+        })
+        .catch((error: string) => { 
+          reject(error);
+        });
+    });
   }
 
 
@@ -120,7 +145,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
     return !isEmpty(this.props.querySettings.webUrl) && 
            !isEmpty(this.props.querySettings.listTitle) && 
            !isEmpty(this.props.querySettings.viewFields) && 
-           !isEmpty(this.props.templateUrl);
+           (!isEmpty(this.props.templateUrl) || !isEmpty(this.props.templateText));
   }
 
 
@@ -170,12 +195,12 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
         {/* Shows the validation checklist if mandatory properties aren't all configured */}
         { !mandatoryFieldsConfigured && !this.state.loading && !this.state.error &&
           <div className={styles.cqwpValidations}>
-              Configure the following mandatory properties in order to display results :
+              { this.props.strings.mandatoryProperties }
               
               <Checkbox label={strings.WebUrlFieldLabel} checked={!isEmpty(this.props.querySettings.webUrl)} />
               <Checkbox label={strings.ListTitleFieldLabel} checked={!isEmpty(this.props.querySettings.listTitle)} />
               <Checkbox label={strings.viewFieldsChecklistStrings.label} checked={!isEmpty(this.props.querySettings.viewFields)} />
-              <Checkbox label={strings.TemplateUrlFieldLabel} checked={!isEmpty(this.props.templateUrl)} />
+              <Checkbox label={strings.templateTextStrings.dialogButtonLabel + " / " + strings.TemplateUrlFieldLabel} checked={(!isEmpty(this.props.templateUrl) || !isEmpty(this.props.templateText))} />
           </div>
         }
 

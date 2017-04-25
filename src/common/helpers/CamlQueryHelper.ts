@@ -151,11 +151,11 @@ export class CamlQueryHelper {
         let filterOutput = '';
         let filterUsers = filter.value as IPersonaProps[];
 
-        if(isEmpty(filter.value)) {
-            return '';
+        if(filter.me) {
+            filterOutput = Text.format("<Eq><FieldRef Name='{0}' /><Value Type='Integer'><UserID /></Value></Eq>", filter.field.internalName);
         }
-        else if(filter.me) {
-            filterOutput = Text.format("<In><FieldRef Name='{0}' LookupId='TRUE' /><Values><Value Type='Integer'><UserID /></Value></Values></In>", filter.field.internalName);
+        else if(isEmpty(filter.value)) {
+            return '';
         }
         else if (filter.operator == QueryFilterOperator.ContainsAny || filterUsers == null)
         {

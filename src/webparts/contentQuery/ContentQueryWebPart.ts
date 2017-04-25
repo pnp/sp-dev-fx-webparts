@@ -16,6 +16,7 @@ import { IContentQueryWebPartProps }                                            
 import { PropertyPaneAsyncDropdown }                                                from '../../controls/PropertyPaneAsyncDropdown/PropertyPaneAsyncDropdown';
 import { PropertyPaneQueryFilterPanel }                                             from '../../controls/PropertyPaneQueryFilterPanel/PropertyPaneQueryFilterPanel';
 import { PropertyPaneAsyncChecklist }                                               from '../../controls/PropertyPaneAsyncChecklist/PropertyPaneAsyncChecklist';
+import { PropertyPaneTextDialog }                                                   from '../../controls/PropertyPaneTextDialog/PropertyPaneTextDialog';
 import { IQueryFilter }                                                             from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilter';
 import { IQueryFilterField }                                                        from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilterField';
 import { IChecklistItem }                                                           from '../../controls/PropertyPaneAsyncChecklist/components/AsyncChecklist/IChecklistItem';
@@ -46,6 +47,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private itemLimitTextField: IPropertyPaneField<IPropertyPaneTextFieldProps>;
   private filtersPanel: PropertyPaneQueryFilterPanel;
   private viewFieldsChecklist: PropertyPaneAsyncChecklist;
+  private templateTextDialog: PropertyPaneTextDialog;
   private templateUrlTextField: IPropertyPaneField<IPropertyPaneTextFieldProps>;
 
   
@@ -88,6 +90,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
         onLoadTemplate: this.loadTemplate.bind(this),
         onLoadTemplateContext: this.loadTemplateContext.bind(this),
         querySettings: querySettings,
+        templateText: this.properties.templateText,
         templateUrl: this.properties.templateUrl,
         strings: strings.contentQueryStrings,
         stateKey: new Date().toString()
@@ -156,6 +159,14 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       onPropertyChange: this.onViewFieldsChange.bind(this),
       disable: secondCascadingLevelDisabled,
       strings: strings.viewFieldsChecklistStrings
+    });
+
+    // Creates a custom PropertyPaneTextDialog for the templateText property
+    this.templateTextDialog = new PropertyPaneTextDialog(ContentQueryConstants.propertyTemplateText, {
+      dialogTextFieldValue: this.properties.templateText,
+      onPropertyChange: this.onTemplateTextChange.bind(this),
+      disabled: false,
+      strings: strings.templateTextStrings
     });
 
     // Creates a PropertyPaneChoiceGroup for the orderByDirection property
@@ -227,6 +238,17 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
               groupName: strings.DisplayGroupName,
               groupFields: [
                 this.viewFieldsChecklist,
+                this.templateTextDialog
+              ]
+            }
+          ]
+        },
+        {
+          header: { description: strings.ExternalPageDescription },
+          groups: [
+            {
+              groupName: strings.ExternalGroupName,
+              groupFields: [
                 this.templateUrlTextField
               ]
             }
@@ -397,8 +419,36 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
     // Stores the new value in web part properties
     update(this.properties, propertyPath, (): any => { return checkedKeys; });
 
+    // Updates the default template text if it hasn't been altered by the user
+    if(!this.properties.hasDefaultTemplateBeenUpdated) {
+      let generatedTemplate = this.ContentQueryService.generateDefaultTemplate(checkedKeys);
+      update(this.properties, ContentQueryConstants.propertyTemplateText, (): any => { return generatedTemplate; });
+      this.templateTextDialog.properties.dialogTextFieldValue = generatedTemplate;
+      this.templateTextDialog.render();
+    }
+
     // refresh web part
     this.onPropertyPaneFieldChanged(propertyPath, oldValue, checkedKeys);
+  }
+
+
+  /***************************************************************************
+   * Handles the change of the viewFields property
+   ***************************************************************************/
+  private onTemplateTextChange(propertyPath: string, text: string) {
+    Log.verbose(this.logSource, "WebPart property 'templateText' has changed, refreshing WebPart...", this.context.serviceScope);
+    const oldValue = get(this.properties, propertyPath);
+
+    // Stores the new value in web part properties
+    update(this.properties, propertyPath, (): any => { return text; });
+
+    // Updates the "hasDefaultTemplateBeenUpdated" to true so the WebPart doesn't override the user template after updating view fields
+    if(!this.properties.hasDefaultTemplateBeenUpdated) {
+      update(this.properties, ContentQueryConstants.propertyhasDefaultTemplateBeenUpdated, (): any => { return true; });
+    }
+
+    // refresh web part
+    this.onPropertyPaneFieldChanged(propertyPath, oldValue, text);
   }
 
 
