@@ -48,7 +48,6 @@ To add the `React Content Query WebPart` to your site page you have two options 
 - Or download the `react-content-query-webpart.sppkg` file available in the `sharepoint/solution` folder of the repository and add it directly in your app catalog in order to be able to use it in your site. 
 
 Note : The second method will only work for Office 365 sites, since the **.ppkg** file points to an Office 365 public CDN url which expects the referer to come from a valid https://**\*.sharepoint.com\*** url.
-<br>
 
 ### Configuring the WebPart
 
@@ -58,14 +57,12 @@ As seen in the [User friendly configuration](### User friendly configuration) se
 - The `Filters` property still supports query string expressions like *[PageQueryString:ParamName]* for text fields, and date expressions such as *[Today]* or *[Today] + 4* for date fields.
 - The `Template` property stops getting automtically generated while selecting view fields as soon as the template is manually updated, in order to prevent unwanted loss of templating efforts.
 - The `Template Url` property has priority over the `Template` property, which means if a valid handlebars template url is provided, the inline template will be kept, but ignored at runtime.  
-<br>
 
 ### Designing your Handlebars template
 
 #### Basics
 
 Before anything, make sure you understand the basics of Handlebars and its associated syntax by reading their [documentation](http://handlebarsjs.com)
-<br>
 
 #### Available tokens
 
@@ -77,7 +74,6 @@ Property         | Description
 {{pageContext}}  | The SPFx [PageContext](https://github.com/SharePoint/sp-dev-docs/blob/master/reference/spfx/sp-page-context/pagecontext.md) object which contains usefull informations about the current web, list, user, language etc...
 {{accessDenied}} | A boolean value indicating if the current user has a denied access to the configured site that gets queried. This gives the designer the power to decide what to render in a case where the current user doesn't have access to the queried site.
 {{webNotFound}}  | A boolean value indicating if the configured site that gets queried doesn't exist anymore. This also gives the designer the power to decide what to render in a case where the queried site doesn't exist anymore.
-<br>
 
 #### Available block helpers
 
@@ -91,7 +87,6 @@ Besides the available tokens above, nearly 150 [block helpers](http://handlebars
     <h1>This is rendered if current language is anything else
 {{/compare}}
 ```
-<br>
 
 #### Displaying items and their values
 
