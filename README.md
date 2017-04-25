@@ -51,7 +51,7 @@ Note : The second method will only work for Office 365 sites, since the **.ppkg*
 
 ### Configuring the WebPart
 
-As seen in the [User friendly configuration](### User friendly configuration) section, configuring the WebPart is quite straight forward. However, here's a list of *gotchas* that could save you some time :
+As seen in the [User friendly configuration](#user-friendly-configuration) section, configuring the WebPart is quite straight forward. However, here's a list of *gotchas* that could save you some time :
 
 - The `Web Url` property uses the search to find all sites that are under the current domain. That being said, newly created sites can take a while to appear within the dropdown options, based on the search crawl schedule.
 - The `Filters` property still supports query string expressions like *[PageQueryString:ParamName]* for text fields, and date expressions such as *[Today]* or *[Today] + 4* for date fields.
