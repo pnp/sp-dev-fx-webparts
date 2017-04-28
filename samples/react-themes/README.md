@@ -1,6 +1,6 @@
 # SharePoint Themes Client Side Web Part
 
-# Summary
+## Summary
 This web part illustrates how to use SharePoint Theme variables in custom web parts.
 
 ![SharePoint Themes Client Side Web Part](./assets/themes.png)
