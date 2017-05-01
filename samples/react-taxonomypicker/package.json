@@ -15,12 +15,12 @@
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
-    "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "react-taxonomypicker": "0.0.26"
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
+    "react-taxonomypicker": "0.0.30"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.0.0",
+    "@microsoft/sp-build-web": "~1.0.1",
     "@microsoft/sp-module-interfaces": "~1.0.0",
     "@microsoft/sp-webpart-workbench": "~1.0.0",
     "@types/chai": ">=3.4.34 <3.6.0",
