@@ -2,7 +2,7 @@
 
 import { assert } from 'chai';
 
-describe('AngularMsGraphWebPart', () => {
+describe('MsGraphWebPart', () => {
   it('should do something', () => {
     assert.ok(true);
   });
