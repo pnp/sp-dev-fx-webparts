@@ -16,6 +16,8 @@
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
+    "brace": "^0.10.0",
+    "react-ace": "^4.2.1",
     "handlebars": "^4.0.6",
     "handlebars-helpers": "^0.8.2",
     "moment": "^2.18.1",
