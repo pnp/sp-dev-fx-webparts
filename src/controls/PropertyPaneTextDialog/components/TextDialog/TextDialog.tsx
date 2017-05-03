@@ -109,9 +109,4 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
             </div>
         );
     }
-
-	private editorDidMount(editor, monaco) {
-		console.log('editorDidMount', editor);
-		editor.focus();
-	}
 }
