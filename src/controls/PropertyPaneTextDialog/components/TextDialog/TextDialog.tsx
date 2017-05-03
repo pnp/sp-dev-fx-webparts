@@ -4,7 +4,14 @@ import { Button, ButtonType, Label } 			from 'office-ui-fabric-react';
 import { TextField } 							from 'office-ui-fabric-react';
 import { ITextDialogProps }                  	from './ITextDialogProps';
 import { ITextDialogState }                  	from './ITextDialogState';
+import AceEditor 								from 'react-ace';
 import styles                                   from './TextDialog.module.scss';
+import './AceEditor.scss';
+
+import 'brace';
+import 'brace/mode/html';
+import 'brace/theme/monokai';
+import 'brace/ext/language_tools';
 
 export class TextDialog extends React.Component<ITextDialogProps, ITextDialogState> {
 
@@ -83,11 +90,16 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 						isBlocking={ true }
 						containerClassName={ 'ms-dialogMainOverride ' + styles.textDialog }>
 				
-					<TextField placeholder={ this.props.strings.dialogTextBoxPlaceholder }
-							   value={ this.state.dialogText }
-							   multiline rows={ 20 }
-							   resizable={ true }
-							   onChanged={ this.onDialogTextChanged.bind(this) } />
+					<AceEditor
+						width="100%"
+						mode="html"
+						theme="monokai"
+						enableLiveAutocompletion={ true }
+						showPrintMargin={ false }
+						onChange={ this.onDialogTextChanged.bind(this) }
+						value={ this.state.dialogText }
+						name="CodeEditor"
+						editorProps={{$blockScrolling: 0}} />
 
 					<DialogFooter>
 						<Button buttonType={ ButtonType.primary } onClick={ this.saveDialog.bind(this) }>{ this.props.strings.saveButtonText }</Button>
