@@ -5,7 +5,7 @@ import styles from "./AsyncAwaitPnPJs.module.scss";
 import { IFile, IResponseFile, IResponseItem } from "../interfaces"
 
 // import pnp and pnp logging system
-import pnp, { Logger, FunctionListener, LogEntry, LogLevel } from "sp-pnp-js";
+import { Logger, FunctionListener, LogEntry, LogLevel, Web } from "sp-pnp-js";
 // import SPFx Logging system
 import { Log } from "@microsoft/sp-core-library";
 
@@ -89,7 +89,8 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
       //   - .usingCaching() will be using SessionStorage by default to cache the  results
       //   - .get() always returns a promise
       //   - await converts Promise<IResponseItem[]> into IResponse[]
-      const response: IResponseItem[] = await pnp.sp.web.lists
+      const web: Web = new Web(this.props.pageContext.web.absoluteUrl);
+      const response: IResponseItem[] = await web.lists
         .getByTitle(libraryName)
         .items
         .select("Title", "FileLeafRef")

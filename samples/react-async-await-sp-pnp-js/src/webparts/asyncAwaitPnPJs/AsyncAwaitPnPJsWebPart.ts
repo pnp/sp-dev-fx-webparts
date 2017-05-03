@@ -18,7 +18,8 @@ export default class AsyncAwaitPnPJsWebPart extends BaseClientSideWebPart<IAsync
     const element: React.ReactElement<IAsyncAwaitPnPJsProps > = React.createElement(
       AsyncAwaitPnPJs,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        pageContext: this.context.pageContext
       }
     );
 
