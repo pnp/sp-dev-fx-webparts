@@ -39,6 +39,13 @@ Enjoy a simple, yet powerfull html-based templating engine for rendering your re
 For advanced users, more than 150 Handlebars block helpers are available by default within the user defined template. For a list of all block helpers, see [handlebars-helpers](https://github.com/helpers/handlebars-helpers#helpers) 
 <br>
 
+### Built-in template editor
+
+Edit your Handlebars template directly within the toolpane using a built-in [code editor](https://ace.c9.io/) which provides code folding, syntax highlighting, line wrapping, indentation and many more features to the tip of your fingers.
+
+<img src="https://github.com/spplante/react-content-query/blob/master/Misc/editor.gif" />
+<br>
+
 ## Getting Started
 
 ### Adding the WebPart to your page
