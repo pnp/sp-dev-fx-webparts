@@ -3,22 +3,22 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  IWebPartContext,
+  IWebPartContext
 } from '@microsoft/sp-webpart-base';
-import { SPComponentLoader } from '@microsoft/sp-loader';
 import { escape } from '@microsoft/sp-lodash-subset';
+import { SPComponentLoader } from '@microsoft/sp-loader';
 
-import styles from './AngularMsGraph.module.scss';
-import * as strings from 'angularMsGraphStrings';
-import { IAngularMsGraphWebPartProps } from './IAngularMsGraphWebPartProps';
+import styles from './MsGraph.module.scss';
+import * as strings from 'msGraphStrings';
+import { IMsGraphWebPartProps } from './IMsGraphWebPartProps';
 
 import * as angular from 'angular';
-import 'ng-office-ui-fabric';
+import 'ng-office-fabric-ui';
 import 'hellojs';
 import './app/aad';
 import './app/app.module';
 
-export default class AngularMsGraphWebPart extends BaseClientSideWebPart<IAngularMsGraphWebPartProps> {
+export default class MsGraphWebPart extends BaseClientSideWebPart<IMsGraphWebPartProps> {
   private $injector: angular.auto.IInjectorService;
 
   public constructor(context: IWebPartContext) {
@@ -29,8 +29,8 @@ export default class AngularMsGraphWebPart extends BaseClientSideWebPart<IAngula
   }
 
   public render(): void {
-    if (this.renderedOnce === false) {
-      this.domElement.innerHTML = `<angulargraphapi></angulargraphapi>`;
+    if (this.renderedOnce === false){
+      this.domElement.innerHTML = '<angulargraphapi></angulargraphapi>';
       this.$injector = angular.bootstrap(this.domElement, ['angularconnectsp']);
     }
   }
