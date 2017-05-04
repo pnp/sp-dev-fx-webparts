@@ -1,6 +1,6 @@
 {
   "name": "react-content-query",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -17,12 +17,12 @@
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
     "brace": "^0.10.0",
-    "react-ace": "^4.2.1",
     "handlebars": "^4.0.6",
     "handlebars-helpers": "^0.8.2",
     "moment": "^2.18.1",
     "office-ui-fabric-react": "1.14.3",
     "react": "15.4.2",
+    "react-ace": "^4.2.1",
     "react-dom": "15.4.2"
   },
   "devDependencies": {

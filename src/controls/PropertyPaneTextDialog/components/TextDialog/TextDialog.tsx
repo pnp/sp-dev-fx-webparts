@@ -6,7 +6,7 @@ import { ITextDialogProps }                  	from './ITextDialogProps';
 import { ITextDialogState }                  	from './ITextDialogState';
 import AceEditor 								from 'react-ace';
 import styles                                   from './TextDialog.module.scss';
-import './AceEditor.scss';
+import './AceEditor.module.scss';
 
 import 'brace';
 import 'brace/mode/html';
