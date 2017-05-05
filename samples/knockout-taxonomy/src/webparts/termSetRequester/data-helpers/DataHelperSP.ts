@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/SP/SP.d.ts" />
+/// <reference path="../common/SP.d.ts" />
 import {
   IWebPartContext
 } from '@microsoft/sp-webpart-base';
