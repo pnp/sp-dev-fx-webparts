@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "aad-api-spo-cookie-client-side-solution",
+    "id": "ae8e010a-71b4-479b-904b-15405d951d65",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/aad-api-spo-cookie.sppkg"
+  }
+}
