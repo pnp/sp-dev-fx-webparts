@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "aad-api-spo-cookie",
+    "framework": "none",
+    "version": "1.0.2",
+    "libraryId": "ae8e010a-71b4-479b-904b-15405d951d65"
+  }
+}
