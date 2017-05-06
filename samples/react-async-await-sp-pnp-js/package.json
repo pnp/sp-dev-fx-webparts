@@ -1,6 +1,6 @@
 {
-  "name": "react-taxonomypicker-spfx",
-  "version": "1.0.0",
+  "name": "react-async-await-sp-pnp-js",
+  "version": "0.0.1",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -17,17 +17,15 @@
     "@types/webpack-env": ">=1.12.1 <1.14.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
-    "react-taxonomypicker": "0.0.30"
+    "sp-pnp-js": "^2.0.4"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.0.1",
     "@microsoft/sp-module-interfaces": "~1.0.0",
     "@microsoft/sp-webpart-workbench": "~1.0.0",
+    "gulp": "~3.9.1",
     "@types/chai": ">=3.4.34 <3.6.0",
-    "@types/microsoft-ajax": "0.0.31",
-    "@types/mocha": ">=2.2.33 <2.6.0",
-    "@types/sharepoint": "^2013.1.2",
-    "gulp": "~3.9.1"
+    "@types/mocha": ">=2.2.33 <2.6.0"
   },
   "scripts": {
     "build": "gulp bundle",
