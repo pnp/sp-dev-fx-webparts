@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/themes/ThemesWebPart.js",
+      "manifest": "./src/webparts/themes/ThemesWebPart.manifest.json",
+      "outputPath": "./dist/themes.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "themesStrings": "webparts/themes/loc/{locale}.js"
+  }
+}
