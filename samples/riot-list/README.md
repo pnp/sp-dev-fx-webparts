@@ -53,3 +53,5 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Using RiotJS as the component rendering engine
 * The use of modular CSS
 * The use of PnP JS Core with async/await support in TypeScript
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/riot-list" /> 

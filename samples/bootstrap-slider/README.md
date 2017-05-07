@@ -49,3 +49,6 @@ Version|Date|Comments
  - When the app is finished installing you should see a **SPFx List** in the **Site Contents** of the site
  ![Deployed List](./assets/List.png)
 - Add items to the **SPFx List** inorder for slides to display in the webpart
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/bootstrap-slider" />
+
