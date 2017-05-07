@@ -13,11 +13,9 @@ export class UserProfileService implements IUserProfileService {
 
     constructor(serviceScope: ServiceScope) {
         serviceScope.whenFinished(() => {
-            serviceScope.whenFinished(() => {
                 this._spHttpClient = serviceScope.consume(SPHttpClient.serviceKey);
                 this._pageContext = serviceScope.consume(PageContext.serviceKey);
                 this._currentWebUrl = this._pageContext.web.absoluteUrl;
-            });
         });
     }
 
