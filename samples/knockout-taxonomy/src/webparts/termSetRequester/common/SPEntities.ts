@@ -54,7 +54,7 @@ export interface ITermSet extends ITermBase {
 }
 
 /**
- * Term interface`
+ * Term interface
  */
 export interface ITerm extends ITermBase {
   /**

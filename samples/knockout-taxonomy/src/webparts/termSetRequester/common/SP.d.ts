@@ -9,15 +9,15 @@ declare namespace SP {
     /**
      * API to get current context
      */
-    static get_current(): ClientContext;
+    public static get_current(): ClientContext;
     /**
      * API to load client objects
      */
-    load(obj: any, ...rest: string[]): void;
+    public load(obj: any, ...rest: string[]): void;
     /**
      * API to execute query
      */
-    executeQueryAsync(success?: (result: any) => void, error?: (error: any) => void);
+    public executeQueryAsync(success?: (result: any) => void, error?: (error: any) => void);
   }
 
   /**
@@ -42,12 +42,12 @@ declare namespace SP {
        * API to get current Taxonomy Session
        * @param spContext: current Client Context
        */
-      static getTaxonomySession(spContext: ClientContext): TaxonomySession;
+      public static getTaxonomySession(spContext: ClientContext): TaxonomySession;
 
       /**
        * API to get term stores
        */
-      get_termStores(): ITermStoreCollection;
+      public get_termStores(): ITermStoreCollection;
     }
 
     /**
