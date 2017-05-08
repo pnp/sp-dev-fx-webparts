@@ -37,7 +37,7 @@ export default class Themes extends React.Component<IThemesProps, void> {
     return (
       <div className={styles.main}>
         <p>{'This web part shows usage of SharePoint Themes.'}</p>
-        <p>{'Background color of paragraphs is set to "primaryBackgroud", variables list backogrud color is set to "themePrimary", font color is set to "primaryColor"'}</p>
+        <p>{'Background color of paragraphs is set to "primaryBackgroud", variables list backogrud color is set to "themePrimary", font color is set to "primaryText"'}</p>
         <p>{'Full list of available theme variables is available in windows.__themeState__.theme property and listed below'}</p>
         <p>{'You can use theme variables in your .scss files like $yourVariable:"[theme:primaryBackground, default:#0273eb]"'}</p>
         <p>{'Change the theme (Site Settings -> Change the look) and see what\'s happenning'}</p>
