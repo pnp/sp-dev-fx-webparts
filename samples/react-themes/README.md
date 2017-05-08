@@ -21,6 +21,7 @@ react-themes | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist
 Version|Date|Comments
 -------|----|--------
 1.0|April 27, 2017|Initial release
+1.1|May 8, 2017| themePrimary variable example added
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
