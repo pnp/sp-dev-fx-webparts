@@ -19,7 +19,7 @@ display all the Lists associated with the site. Then all the items inside the Li
 > Note: I currently only have models developed for the Announcements List. All other lists will currently generate errors.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-rc0-green.svg)
+![drop](https://img.shields.io/badge/drop-ga-green.svg)
 
 ## Applies to
 
@@ -30,12 +30,13 @@ display all the Lists associated with the site. Then all the items inside the Li
 
 Solution|Author(s)
 --------|---------
-angular-msgraph-rc|David Hartman ([Slalom](https://slalom.com))
+angular-msgraph|David Hartman ([Slalom](https://slalom.com))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+2.0|April 19th, 2017|GA Release
 1.0|February 6th, 2017|Initial release
 
 ## Disclaimer

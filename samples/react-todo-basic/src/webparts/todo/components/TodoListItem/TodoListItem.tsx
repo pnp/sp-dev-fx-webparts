@@ -10,7 +10,7 @@ import {
 import styles from './TodoListItem.module.scss';
 import ITodoItem from '../../models/ITodoItem';
 import ITodoListItemProps from './ITodoListItemProps';
-import update = require('react-addons-update');
+import * as update from 'immutability-helper';
 
 export default class TodoListItem extends React.Component<ITodoListItemProps,{}> {
 

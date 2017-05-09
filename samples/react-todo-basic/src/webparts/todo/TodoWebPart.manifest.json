@@ -1,26 +1,20 @@
 {
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-  "id": "cf91e6a4-ae07-4cdc-8a62-f22eada7ab4d",
+
+  "id": "acbc7f18-e38b-40c1-bf84-3e9eea368ca5",
+  "alias": "TodoWebPart",
   "componentType": "WebPart",
-  "alias":"ReactToDoBasic",  
-  "version": "1.0.1",
+  "version": "0.0.1",
   "manifestVersion": 2,
-  "preconfiguredEntries": [
-    {
-      "groupId": "cf91e6a4-ae07-4cdc-8a62-f22eada7ab4d",
-      "group": {
-        "default": "Under Development"
-      },
-      "title": {
-        "default": "Todo"
-      },
-      "description": {
-        "default": "Todo web part"
-      },
-      "officeFabricIconFontName": "Page",
-      "properties": {
-        "description": "Todo"
-      }
+
+  "preconfiguredEntries": [{
+    "groupId": "acbc7f18-e38b-40c1-bf84-3e9eea368ca5",
+    "group": { "default": "Under Development" },
+    "title": { "default": "todo" },
+    "description": { "default": "Webpart for managing team tasks" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "todo"
     }
-  ]
+  }]
 }

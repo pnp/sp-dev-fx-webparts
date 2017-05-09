@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-yammer-api",
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "9e199a26-c09f-4071-9902-ee8e40e80f16"
+  }
+}

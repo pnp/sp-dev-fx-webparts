@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "bootstrap-slider",
+    "framework": "none",
+    "version": "1.0.0",
+    "libraryId": "aea96b80-92f9-49e4-9f29-34acc9990af5"
+  }
+}

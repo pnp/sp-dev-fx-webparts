@@ -8,7 +8,7 @@ import ITodoItem from '../../models/ITodoItem';
 import TodoList from '../TodoList/TodoList';
 import ITodoContainerProps from './ITodoContainerProps';
 import ITodoContainerState from './ITodoContainerState';
-import update = require('react-addons-update');
+import * as update from 'immutability-helper';
 
 export default class Todo extends React.Component<ITodoContainerProps, ITodoContainerState> {
   private _showPlaceHolder: boolean = true;
@@ -71,7 +71,7 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
           <Placeholder
             icon={ 'ms-Icon--Edit' }
             iconText='Todos'
-            description='Get things done. Organize and share your team\'s to-do items with your team.'
+            description='Get things done. Organize and share your teams to-do items with your team.'
             buttonLabel='Configure'
             onAdd={ this._configureWebPart }  />
         }
@@ -79,7 +79,7 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
           <Placeholder
             icon={ 'ms-Icon--Edit' }
             iconText='Todos'
-            description='Get things done. Organize and share your team\'s to-do items with your team. Edit this web part to start managing to-dos.' />
+            description='Get things done. Organize and share your teams to-do items with your team. Edit this web part to start managing to-dos.' />
         }
         { !this._showPlaceHolder &&
           <div className={ styles.todo }>

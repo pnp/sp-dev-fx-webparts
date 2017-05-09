@@ -1,6 +1,6 @@
 {
   "workingDir": "./temp/deploy/",
   "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "react-todo-webpart",
+  "container": "react-todo-basic",
   "accessKey": "<!-- ACCESS KEY -->"
 }

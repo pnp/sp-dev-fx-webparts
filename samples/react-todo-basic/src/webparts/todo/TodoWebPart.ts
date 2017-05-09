@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -8,6 +9,7 @@ import {
   PropertyPaneLabel,
   IPropertyPaneDropdownOption
 } from '@microsoft/sp-webpart-base';
+
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import * as lodash from '@microsoft/sp-lodash-subset';
 import * as strings from 'todoStrings';
@@ -78,20 +80,45 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     this._todoContainerComponent = <TodoContainer>ReactDom.render(element, this.domElement);
   }
 
-  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
-    /*
-    Check the property path to see which property pane feld changed. If the property path matches the dropdown, then we set that list
-    as the selected list for the web part. 
-    */
-    if (propertyPath === 'spListIndex') {
-      this._setSelectedList(newValue);
-    }
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
 
-    /*
-    Finally, tell property pane to re-render the web part. 
-    This is valid for reactive property pane. 
-    */
-    super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
+  private _loadTaskLists(): Promise<any> {
+    return this._dataProvider.getTaskLists()
+      .then((taskLists: ITodoTaskList[]) => {
+        // Disable dropdown field if there are no results from the server.
+        this._disableDropdown = taskLists.length === 0;
+        if (taskLists.length !== 0) {
+          this._dropdownOptions = taskLists.map((list: ITodoTaskList) => {
+            return {
+              key: list.Id,
+              text: list.Title
+            };
+          });
+        }
+      });
+  }
+
+  private _setSelectedList(value: string) {
+    const selectedIndex: number = lodash.findIndex(this._dropdownOptions,
+      (item: IPropertyPaneDropdownOption) => item.key === value
+    );
+
+    const selectedDropDownOption: IPropertyPaneDropdownOption = this._dropdownOptions[selectedIndex];
+
+    if (selectedDropDownOption) {
+      this._selectedList = {
+        Title: selectedDropDownOption.text,
+        Id: selectedDropDownOption.key.toString()
+      };
+
+      this._dataProvider.selectedList = this._selectedList;
+    }
+  }
+
+  private _openPropertyPane(): void {
+    this.context.propertyPane.open();
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -115,20 +142,20 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     };
   }
 
-  private _loadTaskLists(): Promise<any> {
-    return this._dataProvider.getTaskLists()
-      .then((taskLists: ITodoTaskList[]) => {
-        // Disable dropdown field if there are no results from the server.
-        this._disableDropdown = taskLists.length === 0;
-        if (taskLists.length !== 0) {
-          this._dropdownOptions = taskLists.map((list: ITodoTaskList) => {
-            return {
-              key: list.Id,
-              text: list.Title
-            };
-          });
-        }
-      });
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+    /*
+    Check the property path to see which property pane feld changed. If the property path matches the dropdown, then we set that list
+    as the selected list for the web part. 
+    */
+    if (propertyPath === 'spListIndex') {
+      this._setSelectedList(newValue);
+    }
+
+    /*
+    Finally, tell property pane to re-render the web part. 
+    This is valid for reactive property pane. 
+    */
+    super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
   }
 
   private _getGroupFields(): IPropertyPaneField<any>[] {
@@ -153,24 +180,4 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     return fields;
   }
 
-  private _setSelectedList(value: string) {
-    const selectedIndex: number = lodash.findIndex(this._dropdownOptions,
-      (item: IPropertyPaneDropdownOption) => item.key === value
-    );
-
-    const selectedDropDownOption: IPropertyPaneDropdownOption = this._dropdownOptions[selectedIndex];
-
-    if (selectedDropDownOption) {
-      this._selectedList = {
-        Title: selectedDropDownOption.text,
-        Id: selectedDropDownOption.key.toString()
-      };
-
-      this._dataProvider.selectedList = this._selectedList;
-    }
-  }
-
-  private _openPropertyPane(): void {
-    this.context.propertyPane.open();
-  }
 }

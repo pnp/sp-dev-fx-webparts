@@ -1,17 +1,14 @@
-# Todo Basic Sample
-
 ## Summary
 A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.
 
 ![Todo basic web part demo in SharePoint Workbench](./assets/todo-basic-demo.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-rc0-green.svg)
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 First Release tenants](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Documentation](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 
 ## Solution
 
@@ -23,6 +20,7 @@ react-todo-basic | Chakkaradeep Chandran (@chakkaradeep)
 
 Version|Date|Comments
 -------|----|--------
+1.0.2|May 4th, 2017|Updated to SPFx GA
 1.0.1|February 1st, 2017|Updated to SPFx drop RC0
 1.0.0|October 12th, 2016|Initial release
 
@@ -34,9 +32,9 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repository
+- Move to sample folder
 - in the command line run:
   - `npm install`
-  - `npm install --save @types/lodash@4.14.50`
   - `gulp serve`
 
 ## Features

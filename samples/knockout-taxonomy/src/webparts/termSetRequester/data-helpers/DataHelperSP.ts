@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/SP/SP.d.ts" />
+/// <reference path="../common/SP.d.ts" />
 import {
   IWebPartContext
 } from '@microsoft/sp-webpart-base';
@@ -20,6 +20,12 @@ interface ITermWithTerms extends ITerm {
    * Term's path
    */
   path: string[];
+
+  /**
+   * Term's full path
+   */
+  fullPath: string;
+
   /**
    * child terms
    */
@@ -590,6 +596,7 @@ export class DataHelperSP implements IDataHelper {
         termsCount: term.get_termsCount(),
         isRoot: term.get_isRoot(),
         path: term.get_pathOfTerm().split(';'),
+        fullPath:term.get_pathOfTerm(),
         termSetId: termSetId
       };
 
@@ -634,7 +641,7 @@ export class DataHelperSP implements IDataHelper {
       //
       for (let keySecondIndex = 0; keySecondIndex < keysLength; keySecondIndex++) {
         const secondTerm = flat[keys[keySecondIndex]];
-        if (secondTerm.name === termParentName) {
+        if (secondTerm.name === termParentName && secondTerm.path.length == currentTerm.path.length-1 && currentTerm.fullPath.indexOf(secondTerm.fullPath)==0) {
           if (!secondTerm.terms)
             secondTerm.terms = {};
           secondTerm.terms[currentTerm.id] = currentTerm;

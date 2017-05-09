@@ -46,7 +46,7 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
       : 0;
     return (
       <div className={styles.container}>
-        <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
+        <div className={"ms-Grid-row ms-bgColor-themeDark ms-fontColor-white " + styles.row"}>
           <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
             <span className="ms-font-xl ms-fontColor-white">Welcome to SharePoint Async Await SP PnP JS Demo!</span>
             <div>
@@ -177,4 +177,5 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
       </div>
       : null
   }
+                                
 }

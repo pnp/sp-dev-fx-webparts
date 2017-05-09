@@ -1,6 +1,7 @@
 import {
   SPHttpClient,
-  SPHttpClientBatch
+  SPHttpClientBatch,
+  SPHttpClientResponse
 } from '@microsoft/sp-http';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import ITodoDataProvider from '../dataProviders/ITodoDataProvider';
@@ -39,7 +40,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
     const queryUrl: string = this._listsUrl + queryString;
 
     return this._webPartContext.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1)
-      .then((response: Response) => {
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       })
       .then((json: { value: ITodoTaskList[] }) => {
@@ -89,7 +90,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
     const queryUrl: string = this._listItemsUrl + queryString;
 
     return requester.get(queryUrl, SPHttpClient.configurations.v1)
-      .then((response: Response) => {
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       })
       .then((json: { value: ITodoItem[] }) => {
@@ -104,7 +105,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
     const queryUrl: string = this._listItemsUrl + queryString;
 
     return requester.get(queryUrl, SPHttpClientBatch.configurations.v1)
-      .then((response: Response) => {
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       })
       .then((json: { value: ITodoItem[] }) => {
@@ -115,7 +116,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
   }
 
 
-  private _createItem(batch: SPHttpClientBatch, title: string): Promise<Response> {
+  private _createItem(batch: SPHttpClientBatch, title: string): Promise<SPHttpClientResponse> {
     const body: {} = {
       '@data.type': `${this._selectedList.ListItemEntityTypeFullName}`,
       'Title': title
@@ -128,7 +129,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
     );
   }
 
-  private _deleteItem(batch: SPHttpClientBatch, item: ITodoItem): Promise<Response> {
+  private _deleteItem(batch: SPHttpClientBatch, item: ITodoItem): Promise<SPHttpClientResponse> {
     const itemDeletedUrl: string = `${this._listItemsUrl}(${item.Id})`;
 
     const headers: Headers = new Headers();
@@ -143,7 +144,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
     );
   }
 
-  private _updateItem(batch: SPHttpClientBatch, item: ITodoItem): Promise<Response> {
+  private _updateItem(batch: SPHttpClientBatch, item: ITodoItem): Promise<SPHttpClientResponse> {
 
     const itemUpdatedUrl: string = `${this._listItemsUrl}(${item.Id})`;
 

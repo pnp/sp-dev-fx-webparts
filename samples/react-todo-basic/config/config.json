@@ -6,9 +6,7 @@
       "outputPath": "./dist/todo.bundle.js"
     }
   ],
-  "externals": {
-    
-  },
+  "externals": {},
   "localizedResources": {
     "todoStrings": "webparts/todo/loc/{locale}.js"
   }

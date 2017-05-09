@@ -1,6 +1,6 @@
-/// <reference types="mocha" /> 
+/// <reference types="mocha" />
 
-import { assert } from 'chai'; 
+import { assert } from 'chai';
 
 describe('TodoWebPart', () => {
   it('should do something', () => {

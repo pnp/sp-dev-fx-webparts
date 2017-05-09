@@ -1,9 +1,8 @@
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
-  PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+  PropertyPaneTextField,
+  IPropertyPaneConfiguration
+} from '@microsoft/sp-webpart-base';
 
 import styles from './TermSetRequester.module.scss';
 import * as strings from 'termSetRequesterStrings';
@@ -12,10 +11,6 @@ import { ITermSetRequesterWebPartProps } from './ITermSetRequesterWebPartProps';
 import { TaxonomyControl } from './controls/TaxonomyControl';
 
 export default class TermSetRequesterWebPart extends BaseClientSideWebPart<ITermSetRequesterWebPartProps> {
-
-  public constructor(context: IWebPartContext) {
-    super(context);
-  }
 
   public render(): void {
     this.domElement.innerHTML = `
@@ -30,7 +25,7 @@ export default class TermSetRequesterWebPart extends BaseClientSideWebPart<ITerm
       termStoreCtrl.render(container);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
