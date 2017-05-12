@@ -13,6 +13,8 @@ The web part illustrates creation and usage of Side Panel (Sidebar) control.
 
 * [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 
+## Solution
+
 Solution|Author(s)
 --------|---------
 react-side-panel | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK))
@@ -41,7 +43,7 @@ Control features:
 - [TypeScript React Tutorials](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 - [Office UI Fabric](https://dev.office.com/fabric)
 
-### Building the code
+## Building the code
 
 ```bash
 git clone the repo
