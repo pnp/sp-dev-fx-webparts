@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-side-panel",
+    "framework": "react",
+    "version": "1.0.2",
+    "libraryId": "e9f0eff5-4e0f-492d-a5c8-d16568d2bfc3"
+  }
+}
