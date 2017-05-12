@@ -163,6 +163,16 @@ module.exports = function (context, req) {
 
 > **Important:** The **Access-Control-Allow-Origin** header specifies the origin that is allowed to call the API. If you want to test the web part in the hosted workbench, this URL should be set to the URL of your SharePoint tenant. For testing the web part in the local workbench this URL should be set to **https://localhost:4321**.
 
+You can also build the API using the project in the **./api** folder.
+- open the solution in Visual Studio
+- restore solution NuGet packages
+  ![The Restore NuGet Packages option highlighted in Visual Studio](./assets/orders-api-restore-packages.png)
+- on the API project, start the Azure AD Authentication wizard
+  ![The Configure Azure AD Authentication option highlighted in Visual Studio](./assets/orders-api-configure-authentication.png)
+- in the Azure AD Authentication configuration wizard select your Azure AD and create a new AAD application to secure the API
+  ![Azure AD Authentication configuration dialog in Visual Studio](./assets/orders-api-configure-authentication-dialog.png)
+- start the project, after navigating to the home page of the web project you should be prompted to sign in with your organizational account
+
 ### Update web part
 
 - in the **./src/webparts/latestOrders/LatestOrdersWebPart.ts** file:

@@ -16,7 +16,7 @@ export default class LatestOrdersWebPart extends BaseClientSideWebPart<ILatestOr
   public render(): void {
     this.domElement.innerHTML = `
     <div class="${styles.latestOrders}">
-      <iframe src="https://contoso.azurewebsites.net/"
+      <iframe src="https://localhost:44342"
           style="display:none;"></iframe>
       <div class="ms-font-xxl">Recent orders</div>
       <div class="loading"></div>
@@ -46,7 +46,7 @@ export default class LatestOrdersWebPart extends BaseClientSideWebPart<ILatestOr
     });
 
     this.executeOrDelayUntilRemotePartyLoaded((): void => {
-      this.context.httpClient.get("https://contoso.azurewebsites.net/api/orders",
+      this.context.httpClient.get("https://localhost:44342/api/orders",
         HttpClient.configurations.v1, {
           credentials: "include"
         })
