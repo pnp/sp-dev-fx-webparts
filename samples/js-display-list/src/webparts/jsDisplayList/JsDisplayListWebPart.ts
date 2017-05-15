@@ -107,7 +107,7 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
       .then((response: SPHttpClientResponse) => {
         if (response.status === 404) {
           Log.error('js-display-List', new Error('List not found.'));
-          return undefined;
+          return [];
         }else {
           return response.json();
         }
