@@ -25,7 +25,7 @@ export default class SidePanel extends React.Component<ISidePanelProps, ISidePan
       <div className={styles.helloWorld}>
         <div className={styles.container}>
           <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-            <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
+            <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1 ms-lg10 ms-xl8 ms-xlPush2 ms-lgPush1">
               <p className="ms-font-l ms-fontColor-white">This Web Part shows how to open a side panel.</p>
               <p className="ms-font-l ms-fontColor-white">Please, click the button below.</p>
               <Button onClick={this.onButtonClick.bind(this)} buttonType={ButtonType.default}>{this.state.isOpen ? 'Hide Panel' : 'Show Panel'}</Button>
