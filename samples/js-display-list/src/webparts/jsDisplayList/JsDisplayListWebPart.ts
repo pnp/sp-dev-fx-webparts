@@ -2,9 +2,7 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneDropdown,
-  IPropertyPaneDropdownOption,
-  IWebPartContext,
-  PropertyPaneTextField
+  IPropertyPaneDropdownOption
 } from '@microsoft/sp-webpart-base';
 
 import styles from './JsDisplayList.module.scss';
@@ -108,37 +106,48 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
       .get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('${listName}')/items?${queryString}`,
       SPHttpClient.configurations.v1)
       .then((response: SPHttpClientResponse) => {
-        return response.json();
+        if (response.status === 404) {
+          Log.error('js-display-List', new Error('List not found.'));
+          return [];
+        }else {
+          return response.json();
+        }
       });
   }
 
   private _renderList(items: ISPList[]): void {
     let html: string = '';
 
-    //debugger;
-    items.forEach((item: ISPList) => {
-      let title: string = '';
+    if(!items) {
 
-      if (item.Title === null) {
-        title = "Missing title for item with ID= " + item.Id;
-      } else {
-        title = item.Title;
-      }
+      html = '<br /><p class="ms-font-m-plus">The selected list does not exist.</p>';
 
-      var created = item["Created"];
+    } else if (items.length === 0) {
 
-      html += `
-        <div class="${styles.row} ms-Grid-row " }>
-              <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${title}</div>
-              <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">
-                ${created.substring(0, created.length - 1).replace('T', ' ')}
-              </div>
-              <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${item['Author'].Title}</div>
-        </div>`;
-    });
-
-    if (items.length === 0) {
       html = '<br /><p class="ms-font-m-plus">The selected list is empty</p>';
+
+    } else {
+      //debugger;
+      items.forEach((item: ISPList) => {
+        let title: string = '';
+
+        if (item.Title === null) {
+          title = "Missing title for item with ID= " + item.Id;
+        } else {
+          title = item.Title;
+        }
+
+        let created: any = item["Created"];
+
+        html += `
+          <div class="${styles.row} ms-Grid-row " }>
+                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${title}</div>
+                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">
+                  ${created.substring(0, created.length - 1).replace('T', ' ')}
+                </div>
+                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${item['Author'].Title}</div>
+          </div>`;
+      });
     }
 
     const listContainer: Element = this.domElement.querySelector('#spListContainer');
@@ -157,16 +166,14 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
               </span>
               List
           </p>
-          <div class="ms-Grid ${styles.jsDisplayList}" }>
-             <div class="ms-Grid-row" }>
+          <div class="ms-Grid ${styles.jsDisplayList}">
+             <div class="ms-Grid-row">
                 <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-bgColor-themeLight  ms-font-m-plus">Title</div>
                 <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-bgColor-themeLight  ms-font-m-plus">Created</div>
                 <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4  ms-bgColor-themeLight  ms-font-m-plus">Created By</div>
-
               </div>
               <hr />
-              <div id="spListContainer" }>
-          </div>
+              <div id="spListContainer"></div>
         </div>`;
 
     const listContainer: Element = this.domElement.querySelector('#spListContainer');
