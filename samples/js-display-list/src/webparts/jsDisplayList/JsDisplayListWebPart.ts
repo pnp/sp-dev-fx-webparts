@@ -1,18 +1,19 @@
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration,
   PropertyPaneDropdown,
   IPropertyPaneDropdownOption,
   IWebPartContext,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import styles from './JsDisplayList.module.scss';
 
 import * as strings from 'jsDisplayListStrings';
 import { IJsDisplayListWebPartProps } from './IJsDisplayListWebPartProps';
 
-import { EnvironmentType, Log } from '@microsoft/sp-client-base';
+import { Version, Environment, EnvironmentType, Log } from '@microsoft/sp-core-library';
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 //======================
 
@@ -33,10 +34,6 @@ export interface ISPOption {
 
 export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDisplayListWebPartProps> {
 
-  public constructor(context: IWebPartContext) {
-    super(context);
-  }
-
   public render(): void {
     // debugger;
     this.context.statusRenderer.clearError(this.domElement);
@@ -49,7 +46,11 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
     return true;
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -91,18 +92,22 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
 
 
   private _getListTitles(): Promise<ISPLists> {
-    return this.context.httpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/web/lists?$filter=Hidden eq false`)
-      .then((response: Response) => {
+    return this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists?$filter=Hidden eq false`,
+      SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       });
   }
 
 
   private _getListData(listName: string): Promise<ISPLists> {
-    //return this.context.httpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/Web/Lists(guid'${listName}')/items?$select=ID,Title,Created,Author/ID,Author/Title&$expand=Author/ID,Author/Title`)
-    return this.context.httpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/web/lists/GetByTitle('${listName}')/items?$select=Title,ID,Created,Author/ID,Author/Title&$expand=Author/ID,Author/Title`)
 
-      .then((response: Response) => {
+    const queryString: string = '$select=Title,ID,Created,Author/ID,Author/Title&$expand=Author/ID,Author/Title';
+
+    return this.context.spHttpClient
+      .get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists/GetByTitle('${listName}')/items?${queryString}`,
+      SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       });
   }
@@ -116,8 +121,7 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
 
       if (item.Title === null) {
         title = "Missing title for item with ID= " + item.Id;
-      }
-      else {
+      } else {
         title = item.Title;
       }
 
@@ -126,15 +130,17 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
       html += `
         <div class="${styles.row} ms-Grid-row " }>
               <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${title}</div>
-              <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${created.substring(0, created.length - 1).replace('T', ' ')}</div>
+              <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">
+                ${created.substring(0, created.length - 1).replace('T', ' ')}
+              </div>
               <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${item['Author'].Title}</div>
         </div>`;
     });
 
-    if (items.length == 0) {
+    if (items.length === 0) {
       html = '<br /><p class="ms-font-m-plus">The selected list is empty</p>';
-
     }
+
     const listContainer: Element = this.domElement.querySelector('#spListContainer');
     this.context.statusRenderer.clearLoadingIndicator(this.domElement);
     listContainer.innerHTML = html;
@@ -145,7 +151,12 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
 
     this.domElement.innerHTML = `
         <div className='wrapper'>
-          <p class="ms-font-l ms-bgColor-themeDark ms-fontColor-white"><span class="ms-fontWeight-semibold">${this.properties.listTitle}</span> List</p>
+          <p class="ms-font-l ms-bgColor-themeDark ms-fontColor-white">
+          <span class="ms-fontWeight-semibold">
+              ${this.properties.listTitle}
+              </span>
+              List
+          </p>
           <div class="ms-Grid ${styles.jsDisplayList}" }>
              <div class="ms-Grid-row" }>
                 <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-bgColor-themeLight  ms-font-m-plus">Title</div>
@@ -162,12 +173,11 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
 
     // Local environment
     // debugger;
-    if (this.context.environment.type === EnvironmentType.Local) {
+    if (Environment.type === EnvironmentType.Local) {
       let html: string = '<p> Local test environment [No connection to SharePoint]</p>';
       this.context.statusRenderer.clearLoadingIndicator(this.domElement);
       listContainer.innerHTML = html;
-    }
-    else {
+    } else {
       //debugger;
       this._getListData(this.properties.listTitle).then((response) => {
         this._renderList(response.value);
@@ -179,5 +189,4 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
       });
     }
   }
-
 }
