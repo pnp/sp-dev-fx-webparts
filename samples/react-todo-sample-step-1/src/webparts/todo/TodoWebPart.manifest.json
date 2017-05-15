@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "6dc4a800-c944-4173-ba18-1e48a3678a1d",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "6dc4a800-c944-4173-ba18-1e48a3678a1d",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Todo" },
+    "description": { "default": "todo description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Todo"
+    }
+  }]
+}
