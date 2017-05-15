@@ -35,7 +35,6 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
   public render(): void {
     // debugger;
     this.context.statusRenderer.clearError(this.domElement);
-    this.context.statusRenderer.displayLoadingIndicator(this.domElement, strings.Loading);
     Log.verbose('js-display-List', 'Invoking render');
     this._renderListAsync();
   }
@@ -108,7 +107,7 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
       .then((response: SPHttpClientResponse) => {
         if (response.status === 404) {
           Log.error('js-display-List', new Error('List not found.'));
-          return [];
+          return undefined;
         }else {
           return response.json();
         }
@@ -151,7 +150,6 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
     }
 
     const listContainer: Element = this.domElement.querySelector('#spListContainer');
-    this.context.statusRenderer.clearLoadingIndicator(this.domElement);
     listContainer.innerHTML = html;
   }
 
@@ -182,7 +180,6 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
     // debugger;
     if (Environment.type === EnvironmentType.Local) {
       let html: string = '<p> Local test environment [No connection to SharePoint]</p>';
-      this.context.statusRenderer.clearLoadingIndicator(this.domElement);
       listContainer.innerHTML = html;
     } else {
       //debugger;
@@ -191,7 +188,6 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
 
       }).catch((err) => {
         Log.error('js-display-List', err);
-        this.context.statusRenderer.clearLoadingIndicator(this.domElement);
         this.context.statusRenderer.renderError(this.domElement, err);
       });
     }
