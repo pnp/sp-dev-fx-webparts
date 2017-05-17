@@ -2,6 +2,7 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
   "id": "f357034f-6c58-425e-b854-5decc9058418",
+  "alias": "PollWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,

@@ -3,8 +3,12 @@ import { IResultsProps } from './IResultsProps';
 import { IResultsState } from './IResultsState';
 import { Spinner } from 'office-ui-fabric-react';
 import { IVoteResult } from '../../services';
+
 import { HorizontalBar } from 'react-chartjs-2';
-const defaults = require('react-chartjs-2').defaults;
+//const defaults = require('react-chartjs-2').defaults;
+const Chart : any = require('chart.js');
+const defaults : any = Chart.defaults;
+
 import { merge } from '@microsoft/sp-lodash-subset';
 
 interface IColorInfo {

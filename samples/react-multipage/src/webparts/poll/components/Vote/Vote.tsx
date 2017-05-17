@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IVoteProps } from './IVoteProps';
 import { IVoteState } from './IVoteState';
 import { IVoteOption } from '../../services';
+
 import { Spinner, Button, ButtonType, ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react';
 
 export class Vote extends React.Component<IVoteProps, IVoteState> {
@@ -70,7 +71,8 @@ export class Vote extends React.Component<IVoteProps, IVoteState> {
     );
   }
 
-  private selectVoteOption(option: IChoiceGroupOption, evt?: React.SyntheticEvent): void {
+//  private selectVoteOption(option: IChoiceGroupOption, evt?: React.SyntheticEvent): void {
+  private selectVoteOption(option: IChoiceGroupOption, evt?: any): void {
     this.setState((prevState: IVoteState, props: IVoteProps): IVoteState => {
       prevState.voteOptionId = parseInt(option.key);
       return prevState;
@@ -89,6 +91,8 @@ export class Vote extends React.Component<IVoteProps, IVoteState> {
           prevState.voting = false;
           return prevState;
         });
+
+        //in a sense, trigger the click on Poll-><vote> which will fire Poll.voted();
         this.props.onVoted();
       }, (error: any): void => {
         this.setState((prevState: IVoteState, props: IVoteProps): IVoteState => {

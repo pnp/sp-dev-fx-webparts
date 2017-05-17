@@ -2,24 +2,29 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
+import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 
 import * as strings from 'pollStrings';
 import { Main, IMainProps } from './components/Main';
 import { IPollWebPartProps } from './IPollWebPartProps';
-import { IPollService, PollService } from './services';
+import { IPollService, PollService, MockPollService } from './services';
 
 export default class PollWebPart extends BaseClientSideWebPart<IPollWebPartProps> {
   private pollService: IPollService;
 
-  public constructor(context: IWebPartContext) {
-    super(context);
-
+  protected onInit(): Promise<void> {
     this.configureWebPart = this.configureWebPart.bind(this);
-    this.pollService = new PollService(this.context.httpClient, this.context.pageContext.web.serverRelativeUrl);
+
+    if (DEBUG && Environment.type === EnvironmentType.Local) {
+      this.pollService = new MockPollService();
+    } else {
+      this.pollService = new PollService(this.context);
+    }
+
+    return super.onInit();
   }
 
   public render(): void {
@@ -36,7 +41,7 @@ export default class PollWebPart extends BaseClientSideWebPart<IPollWebPartProps
     ReactDom.render(element, this.domElement);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -101,6 +106,6 @@ export default class PollWebPart extends BaseClientSideWebPart<IPollWebPartProps
   }
 
   private configureWebPart(): void {
-    this.configureStart();
+    this.context.propertyPane.open();
   }
 }

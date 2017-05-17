@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Fabric } from 'office-ui-fabric-react';
-import { DisplayMode } from '@microsoft/sp-client-base';
-import { Placeholder } from '@microsoft/sp-client-preview';
+import { DisplayMode } from '@microsoft/sp-core-library';
+import { Placeholder } from '@microsoft/sp-webpart-base';
 import { IConfigProps } from './IConfigProps';
 
 export class Config extends React.Component<IConfigProps, {}> {
