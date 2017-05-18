@@ -2,6 +2,7 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
   "id": "04139977-3e2e-456e-bf91-ee4e54bee353",
+  "alias": "ReactCrudWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,

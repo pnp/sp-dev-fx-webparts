@@ -1,0 +1,173 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "LogicAppName": {
+            "defaultValue": "",
+            "type": "string"
+        },
+        "ServiceBusNameSpace": {
+            "defaultValue": "",
+            "type": "string"
+        },
+        "AppServicePlanName": {
+            "defaultValue": "",
+            "type": "string"
+        },
+        "SiteName": {
+            "defaultValue": "",
+            "type": "string"
+        },
+        "AuthorizationRules_RootManageSharedAccessKey_name": {
+            "defaultValue": "[concat(parameters('ServiceBusNameSpace'),'/RootManageSharedAccessKey')]",
+            "type": "string"
+        },
+        "Location": {
+            "defaultValue": "East US2",
+            "type": "string"
+        },
+        "ServiceBusQueueName": {
+            "defaultValue": "news",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "",
+            "type": "Microsoft.ServiceBus/namespaces",
+            "sku": {
+                "name": "Basic",
+                "tier": "Basic"
+            },
+            "kind": "Messaging",
+            "name": "[parameters('ServiceBusNameSpace')]",
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('Location')]",
+            "tags": {},
+            "resources": [
+               {
+                    "apiVersion": "2015-08-01",
+                    "name": "[parameters('ServiceBusQueueName')]",
+                    "type": "queues",
+                    "location": "[parameters('Location')]",
+                    "dependsOn": [
+                        "[concat('Microsoft.ServiceBus/namespaces/', parameters('ServiceBusNameSpace'))]"
+                    ],
+                    "properties": {
+                        "path": "[parameters('ServiceBusQueueName')]",
+                        "defaultMessageTimeToLive": "14.00:00:00"
+                    }
+                }
+            ],
+            "dependsOn": []
+        },
+        {
+            "comments": "",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "B1",
+                "tier": "Basic",
+                "size": "B1",
+                "family": "B",
+                "capacity": 1
+            },
+            "name": "[parameters('AppServicePlanName')]",
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('Location')]",
+            "properties": {
+                "name": "[parameters('AppServicePlanName')]",
+                "numberOfWorkers": 1
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "",
+            "type": "Microsoft.Web/sites",
+            "name": "[parameters('SiteName')]",
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('Location')]",
+            "tags": {           
+            },
+            "properties": {
+                "name": "[parameters('SiteName')]",
+                "hostNames": [
+                    "[concat(parameters('SiteName'),'.azurewebsites.net')]"
+                ],
+                "enabledHostNames": [
+                    "[concat(parameters('SiteName'),'.azurewebsites.net')]",
+                    "[concat(parameters('SiteName'),'.scm.azurewebsites.net')]"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('SiteName'),'.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('SiteName'),'.scm.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName'))]"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2015-08-01",
+                    "location": "[parameters('Location')]",
+                    "name": "web",
+                    "type": "config",
+                    "properties": {
+                        "scmType": "LocalGit",
+                        "webSocketsEnabled": true,
+                        "phpVersion": " "
+                    },
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/sites', parameters('SiteName'))]"
+                    ]
+                }
+            ],
+            "dependsOn": [                
+                "[resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName'))]"
+            ]
+        },
+        {
+            "comments": "",
+            "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+            "name": "[parameters('AuthorizationRules_RootManageSharedAccessKey_name')]",
+            "apiVersion": "2015-08-01",
+            "properties": {
+                "rights": [
+                    "Listen",
+                    "Manage",
+                    "Send"
+                ]
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', parameters('ServiceBusNameSpace'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('LogicAppName')]",
+            "location": "[parameters('Location')]",
+            "properties": {
+                "definition": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "triggers": {},
+                "actions": {},
+                "outputs": {}
+                },
+                "parameters": {}
+            }
+            }
+    ]
+}

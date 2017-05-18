@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "asset-deployment-webpart",
+    "framework": "none",
+    "version": "1.0.0",
+    "libraryId": "31086065-dbdb-493f-b02e-7b7f97f45bd9"
+  }
+}

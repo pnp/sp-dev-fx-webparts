@@ -1,0 +1,54 @@
+.termSetRequester {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+    padding: 20px;
+  }
+
+  .listItem {
+    max-width: 715px;
+    margin: 5px auto 5px auto;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .button {
+    text-decoration: none;
+  }
+
+  .termStoreList {
+    list-style-image: url('/_layouts/15/Images/EMMRoot.png');
+  }
+
+  .termGroupList {
+    list-style-image: url('/_layouts/15/Images/EMMGroup.png');
+  }
+
+  .termSetList {
+    list-style-image: url('/_layouts/15/Images/EMMTermSet.png');
+  }
+
+  .termList {
+    list-style-image: url('/_layouts/15/Images/EMMTerm.png');
+  }
+  .info {
+    position: relative;
+    line-height: 30px;
+
+    .groupHeaderExpand {
+      right: 0px;
+      height: 24px;
+      padding: 0px;
+      top: 5px;
+      position: absolute;
+    }
+  }
+
+  .taxonomy {
+    overflow: auto;
+    max-height: 600px;
+  }
+}

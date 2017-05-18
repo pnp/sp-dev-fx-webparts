@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/spPnPjsExample/SpPnPjsExampleWebPart.js",
+      "manifest": "./src/webparts/spPnPjsExample/SpPnPjsExampleWebPart.manifest.json",
+      "outputPath": "./dist/sp-pn-pjs-example.bundle.js"
+    }
+  ],
+  "externals": {
+    "sp-pnp-js": "https://cdnjs.cloudflare.com/ajax/libs/sp-pnp-js/2.0.1/pnp.min.js"
+  },
+  "localizedResources": {
+    "spPnPjsExampleStrings": "webparts/spPnPjsExample/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "a35e1310-0d9a-4056-8402-0dc317aaef1a",
+  "alias": "AadWebApiWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "a35e1310-0d9a-4056-8402-0dc317aaef1a",
+    "group": { "default": "Under Development" },
+    "title": { "default": "AAD-WebAPI" },
+    "description": { "default": "AAD-WebAPI description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "AAD-WebAPI"
+    }
+  }]
+}

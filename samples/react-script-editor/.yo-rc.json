@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "pzl-script-editor",
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "1425175f-3ed8-44d2-8fc4-dd1497191294"
+  }
+}

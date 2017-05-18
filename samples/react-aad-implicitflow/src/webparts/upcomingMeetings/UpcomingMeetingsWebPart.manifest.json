@@ -2,6 +2,7 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
   "id": "ab186a1f-8553-41ae-879f-3fe50d6488f7",
+  "alias": "UpcomingMeetingsWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,

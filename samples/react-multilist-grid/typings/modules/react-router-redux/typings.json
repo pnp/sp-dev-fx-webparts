@@ -1,0 +1,23 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/andrew-w-ross/typings-react-router-redux/caf792cb79efbf54ce328366809dc52821192a73/typings.json",
+    "raw": "registry:npm/react-router-redux#4.0.0+20160602212457",
+    "main": "react-router-redux.d.ts",
+    "dependencies": {
+      "history": {
+        "src": "https://raw.githubusercontent.com/andrew-w-ross/typings-history/master/typings.json",
+        "raw": "github:andrew-w-ross/typings-history",
+        "main": "history.d.ts",
+        "name": "history"
+      },
+      "redux": {
+        "src": "https://raw.githubusercontent.com/andrew-w-ross/typings-redux/master/typings.json",
+        "raw": "github:andrew-w-ross/typings-redux",
+        "main": "redux.d.ts",
+        "name": "redux"
+      }
+    },
+    "name": "react-router-redux"
+  }
+}

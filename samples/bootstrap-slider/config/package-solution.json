@@ -1,0 +1,26 @@
+{
+  "solution": {
+    "name": "bootstrap-slider-client-side-solution",
+    "id": "aea96b80-92f9-49e4-9f29-34acc9990af5",
+    "version": "1.0.0.2",
+    "features": [
+      {
+        "title": "slider-assets",
+        "description": "deploy slider assets to site",
+        "id": "1de84ad0-f79e-478d-84f4-231eca43385f",
+        "version": "1.0.0.2",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/bootstrap-slider.sppkg"
+  }
+}

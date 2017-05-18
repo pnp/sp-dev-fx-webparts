@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/spfxReactGrid/SpfxReactGridWebPart.js",
+      "manifest": "./src/webparts/spfxReactGrid/SpfxReactGridWebPart.manifest.json",
+      "outputPath": "./dist/spfx-react-grid.bundle.js"
+    }
+  ],
+  "externals": {
+   },
+  "localizedResources": {
+    "spfxReactGridStrings": "webparts/spfxReactGrid/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "5a0e6592-831b-4b0c-93ea-c5c879eb6a07",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "5a0e6592-831b-4b0c-93ea-c5c879eb6a07",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Ask SP Rider" },
+    "description": { "default": "Sample SharePoint Framework client-side web part illustrating Site Provisioning using Microsoft Bot Framework." },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "botname": "",
+      "secretkey": ""
+    }
+  }]
+}

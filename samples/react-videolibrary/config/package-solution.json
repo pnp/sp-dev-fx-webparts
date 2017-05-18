@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "videotst-client-side-solution",
+    "id": "841958c7-1d50-408b-9df4-feac7165d4a0",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/videotst.spapp"
+  }
+}

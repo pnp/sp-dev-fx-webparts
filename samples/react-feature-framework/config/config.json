@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/listProvisioning/ListProvisioningWebPart.js",
+      "manifest": "./src/webparts/listProvisioning/ListProvisioningWebPart.manifest.json",
+      "outputPath": "./dist/list-provisioning.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "listProvisioningStrings": "webparts/listProvisioning/loc/{locale}.js"
+  }
+}

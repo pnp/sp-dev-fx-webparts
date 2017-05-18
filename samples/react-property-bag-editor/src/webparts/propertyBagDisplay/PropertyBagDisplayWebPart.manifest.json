@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "fa63037d-d7bd-4d52-894a-b40127773283",
+  "alias": "PropertyBagDisplayWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [{
+    "groupId": "fa63037d-d7bd-4d52-894a-b40127773283",
+    "group": { "default": "Property Bag Navigation" },
+    "title": { "default": "Property Bag Display" },
+    "description": { "default": "Displays all Sites and selected properties, an lets you edit those propertiies" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "propertyBagDisplay",
+      "propertiesToDisplay":
+        "CUSTOMNAVAreaName|AreaName\nCUSTOMNAVBusinessUnit|BusinessUnit\nCUSTOMNAVContinent|Continent\nCUSTOMNAVLocation|Location",
+        "siteTemplatesToInclude":
+        "STS\nPUBLISHING"
+          }
+  }]
+}

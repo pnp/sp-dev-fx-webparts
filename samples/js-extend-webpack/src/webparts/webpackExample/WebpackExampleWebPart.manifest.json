@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "753c662b-c73a-4755-a1ee-747c9f265513",
+  "alias": "WebpackExampleWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "753c662b-c73a-4755-a1ee-747c9f265513",
+    "group": { "default": "Under Development" },
+    "title": { "default": "WebpackExample" },
+    "description": { "default": "Extend webpack sample" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "WebpackExample"
+    }
+  }]
+}

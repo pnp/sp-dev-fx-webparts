@@ -11,6 +11,9 @@ simulates a pile of photos scattered about on a surface. Thumbnail clicks remove
 
 ![Photopile Web Part displayed in SharePoint Workbench](./assets/photopileoverview.gif)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop1-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

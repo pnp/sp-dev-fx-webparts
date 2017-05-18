@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "5f5c1894-849f-48c1-8bcf-b6df3bf24daa",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "5f5c1894-849f-48c1-8bcf-b6df3bf24daa",
+    "group": { "default": "Under Development" },
+    "title": { "default": "react-redux reactive" },
+    "description": { "default": "react-redux description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "disableReactive": false,
+      "name": ""
+    }
+  }]
+}

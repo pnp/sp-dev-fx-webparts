@@ -10,7 +10,7 @@ import {
 import styles from './TodoListItem.module.scss';
 import ITodoItem from '../../models/ITodoItem';
 import ITodoListItemProps from './ITodoListItemProps';
-import update = require('react-addons-update');
+import * as update from 'immutability-helper';
 
 export default class TodoListItem extends React.Component<ITodoListItemProps,{}> {
 
@@ -19,6 +19,13 @@ export default class TodoListItem extends React.Component<ITodoListItemProps,{}>
 
     this._handleToggleChanged = this._handleToggleChanged.bind(this);
     this._handleDeleteClick = this._handleDeleteClick.bind(this);
+  }
+
+  public shouldComponentUpdate(newProps: ITodoListItemProps): boolean {
+    return (
+      this.props.item !== newProps.item ||
+      this.props.isChecked !== newProps.isChecked
+    );
   }
 
   public render(): JSX.Element {
@@ -54,8 +61,7 @@ export default class TodoListItem extends React.Component<ITodoListItemProps,{}>
     );
   }
 
-  private _handleToggleChanged(ev: React.FormEvent, checked: boolean): void {
-
+  private _handleToggleChanged(ev: React.FormEvent<HTMLInputElement>, checked: boolean): void {
     const newItem: ITodoItem = update(this.props.item, {
       PercentComplete: { $set: this.props.item.PercentComplete >= 1 ? 0 : 1 }
     });
@@ -63,7 +69,7 @@ export default class TodoListItem extends React.Component<ITodoListItemProps,{}>
     this.props.onCompleteListItem(newItem);
   }
 
-  private _handleDeleteClick(event: React.MouseEvent) {
+  private _handleDeleteClick(event: React.MouseEvent<HTMLButtonElement>) {
       this.props.onDeleteListItem(this.props.item);
   }
 }

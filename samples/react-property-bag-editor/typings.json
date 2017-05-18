@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "microsoft.ajax": "registry:dt/microsoft.ajax#0.0.0+20160706234802",
+    "sharepoint": "registry:dt/sharepoint#2010.1.0+20170120191654"
+  }
+}

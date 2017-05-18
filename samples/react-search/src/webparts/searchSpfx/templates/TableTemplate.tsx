@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
-import ModuleLoader from '@microsoft/sp-module-loader';
+import { SPComponentLoader } from '@microsoft/sp-loader';
 
-import styles from '../SearchSpfx.module.scss';
+import styles from '../components/SearchSpfx.module.scss';
 import { ISearchSpfxWebPartProps } from '../ISearchSpfxWebPartProps';
 
 import * as moment from 'moment';
@@ -34,7 +33,7 @@ export default class TableTemplate extends React.Component<ITableTemplate, {}> {
 
 	public render(): JSX.Element {
 		// Load the Office UI Fabrics components css file via the module loader
-    	ModuleLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
+    	SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
 
 		return (
 			<div className={styles.searchSpfx}>
@@ -47,7 +46,7 @@ export default class TableTemplate extends React.Component<ITableTemplate, {}> {
 					})()
 				}
 
-				<table className={css('ms-Table', styles.templateTable)}>
+				<table className={`ms-Table ${styles.templateTable}`}>
 					<thead>
 						<tr>
 							<th>Type</th>
@@ -61,7 +60,7 @@ export default class TableTemplate extends React.Component<ITableTemplate, {}> {
 							this.props.results.map((result, index) => {
 								return (<tr key={index}>
 											<td>
-												<a href={result.Path}><img src={`${this.iconUrl}${result.Fileextension !== null && this.unknown.indexOf(result.Fileextension) === -1 ? result.Fileextension : 'code'}.png`} /></a>
+												<a href={result.Path}><img src={`${this.iconUrl}${result.Fileextension !== null && this.unknown.indexOf(result.Fileextension) === -1 ? result.Fileextension : 'code'}.png`} alt="File extension"/></a>
 											</td>
 											<td>
 												<a href={result.Path}>{result.Filename !== null ? result.Filename.substring(0, result.Filename.lastIndexOf('.')) : ""}</a>

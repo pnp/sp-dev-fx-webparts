@@ -2,6 +2,7 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
   "id": "d8e75c68-47f2-4c34-8fee-7ac83818ae72",
+  "alias": "AngularCrudWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,

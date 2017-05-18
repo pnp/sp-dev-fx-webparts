@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "f3ac8a07-2a9b-47a1-8a7e-a093cad63f98",
+  "alias": "PropertyBagEditorWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "f3ac8a07-2a9b-47a1-8a7e-a093cad63f98",
+    "group": { "default": "Property Bag Navigation" },
+    "title": { "default": "Property Bag Editor" },
+    "description": { "default": "Lets you edit the properties of an SPSite passed in as a query parameter" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "PropertyBagEditor",
+      "propertiesToEdit":
+        "CUSTOMNAVAreaName\nCUSTOMNAVBusinessUnit\nCUSTOMNAVContinent\nCUSTOMNAVLocation"
+          }
+  }]
+}

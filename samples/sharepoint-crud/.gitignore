@@ -3,9 +3,6 @@ logs
 *.log
 npm-debug.log*
 
-# Yeoman configuration files
-.yo-rc.json
-
 # Dependency directories
 node_modules
 
@@ -14,7 +11,7 @@ dist
 lib
 solution
 temp
-*.spapp
+*.sppkg
 
 # Coverage directory used by tools like istanbul
 coverage

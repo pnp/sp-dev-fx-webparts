@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "bd6bb470-57d5-4061-88f9-58d25d095f73",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "bd6bb470-57d5-4061-88f9-58d25d095f73",
+    "group": { "default": "SPFx Demo" },
+    "title": { "default": "RealTimeNewsFeed" },
+    "description": { "default": "A real time SharePoint news feed using Socket IO, Azure Service Bus and Microsoft Flow" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "listTitle": "NewsList"
+    }
+  }]
+}

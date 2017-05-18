@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/modernCharts/ModernChartsWebPart.js",
+      "manifest": "./src/webparts/modernCharts/ModernChartsWebPart.manifest.json",
+      "outputPath": "./dist/modern-charts.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "modernChartsStrings": "webparts/modernCharts/loc/{locale}.js"
+  }
+}

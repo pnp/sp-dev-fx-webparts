@@ -1,0 +1,26 @@
+<list-viewer>
+
+  <div class="Placeholder">
+    <div class="Placeholder-container ms-Grid">
+      <div class="Placeholder-head ms-Grid-row">
+        <div class="ms-Grid-col ms-u-hiddenSm ms-u-md3">
+        </div>
+        <div class="Placeholder-headContainer ms-Grid-col ms-u-sm12 ms-u-md6">
+          <i class="Placeholder-icon ms-fontSize-su ms-Icon ms-Icon--GroupedList"></i>
+          <span class="Placeholder-text ms-fontWeight-light ms-fontSize-xxl">RiotJS List Viewer</span>
+        </div>
+        <div class="ms-Grid-col ms-u-hiddenSm ms-u-md3">
+        </div>
+      </div>
+		  <div class="Placeholder-description ms-Grid-row" if="{ listId }">
+			  <span class="Placeholder-descriptionText">{ list.Title }</span>
+		  </div>
+		  <div class="Placeholder-description ms-Grid-row" if="{ !listId }">
+			  <span class="Placeholder-descriptionText">Please configure your webpart to select a list</span>
+		  </div>
+    </div>
+  </div>
+
+  <office-ui-fabric-table is-loading="{ isLoading }" items="{ items }" styles="{ styles }" if="{ listId }"></office-ui-fabric-table>
+
+</list-viewer>

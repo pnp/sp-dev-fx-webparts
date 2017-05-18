@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-mobx-spfx-webpart",
+    "libraryId": "8c525624-9e7c-4ef2-a886-fa753cb294d2",
+    "framework": "react"
+  }
+}

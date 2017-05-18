@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/angularYammer/AngularYammerWebPart.js",
+      "manifest": "./src/webparts/angularYammer/AngularYammerWebPart.manifest.json",
+      "outputPath": "./dist/angular-yammer.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "angularYammerStrings": "webparts/angularYammer/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "spfx-riot-list",
+    "framework": "none",
+    "version": "1.0.2",
+    "libraryId": "6e137a70-041c-49e1-aa9e-470b704180a0"
+  }
+}
