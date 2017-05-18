@@ -71,30 +71,26 @@ export default class LatestOrdersWebPart extends BaseClientSideWebPart<ILatestOr
     });
   }
 
-  private renderData(): void {
-    if (this.orders === null) {
-      return;
+    private renderData(): void {
+        if (this.orders) {
+            const className = styles.number; // GLOBAL!
+            const table: Element = this.domElement.querySelector(".data");
+            table.removeAttribute("style");  //could use standard HTML5 'hidden' attribute instead of whole Style
+            table.querySelector("tbody").innerHTML =
+                this.orders.map(order =>
+                    `<tr>
+                        <td class="${className}">${order.id}</td>
+                        <td class="${className}">${new Date(order.orderDate).toLocaleDateString()}</td>
+                        <td>${order.region.toString()}</td>
+                        <td>${order.rep}</td>
+                        <td>${order.item}</td>
+                        <td class="${className}">${order.units}</td>
+                        <td class="${className}">$${order.unitCost.toFixed(2)}</td>
+                        <td class="${className}">$${order.total.toFixed(2)}</td>
+                      </tr>`
+                ).join('');
+        }
     }
-
-    let ordersString: string = "";
-    this.orders.forEach(order => {
-      ordersString += `
-<tr>
-  <td class="${styles.number}">${order.id}</td>
-  <td class="${styles.number}">${new Date(order.orderDate).toLocaleDateString()}</td>
-  <td>${order.region.toString()}</td>
-  <td>${order.rep}</td>
-  <td>${order.item}</td>
-  <td class="${styles.number}">${order.units}</td>
-  <td class="${styles.number}">$${order.unitCost.toFixed(2)}</td>
-  <td class="${styles.number}">$${order.total.toFixed(2)}</td>
-</tr>`;
-    });
-
-    const table: Element = this.domElement.querySelector(".data");
-    table.removeAttribute("style");
-    table.querySelector("tbody").innerHTML = ordersString;
-  }
 
   private executeOrDelayUntilRemotePartyLoaded(func: Function): void {
     if (this.remotePartyLoaded) {
