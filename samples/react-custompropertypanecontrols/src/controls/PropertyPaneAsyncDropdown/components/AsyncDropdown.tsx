@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Dropdown, Spinner } from 'office-ui-fabric-react';
+import { Dropdown, Spinner, IDropdownOption } from 'office-ui-fabric-react';
 import { IAsyncDropdownProps } from './IAsyncDropdownProps';
 import { IAsyncDropdownState } from './IAsyncDropdownState';
-import { IDropdownOption } from 'office-ui-fabric-react';
 
 export default class AsyncDropdown extends React.Component<IAsyncDropdownProps, IAsyncDropdownState> {
   constructor(props: IAsyncDropdownProps, state: IAsyncDropdownState) {

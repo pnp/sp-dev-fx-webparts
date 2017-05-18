@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   IPropertyPaneField,
-  IPropertyPaneFieldType
-} from '@microsoft/sp-client-preview';
+  PropertyPaneFieldType
+} from '@microsoft/sp-webpart-base';
 import { IDropdownOption } from 'office-ui-fabric-react';
 import { IPropertyPaneAsyncDropdownProps } from './IPropertyPaneAsyncDropdownProps';
 import { IPropertyPaneAsyncDropdownInternalProps } from './IPropertyPaneAsyncDropdownInternalProps';
@@ -11,20 +11,26 @@ import AsyncDropdown from './components/AsyncDropdown';
 import { IAsyncDropdownProps } from './components/IAsyncDropdownProps';
 
 export class PropertyPaneAsyncDropdown implements IPropertyPaneField<IPropertyPaneAsyncDropdownProps> {
-  public type: IPropertyPaneFieldType = IPropertyPaneFieldType.Custom;
+  public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public targetProperty: string;
   public properties: IPropertyPaneAsyncDropdownInternalProps;
   private elem: HTMLElement;
 
+  //dirty way to store current value of this property
+  private storedValue: string;
+
   constructor(targetProperty: string, properties: IPropertyPaneAsyncDropdownProps) {
+    this.storedValue = "";
+
     this.targetProperty = targetProperty;
     this.properties = {
-      label: properties.label,
-      loadOptions: properties.loadOptions,
-      onPropertyChange: properties.onPropertyChange,
-      selectedKey: properties.selectedKey,
-      disabled: properties.disabled,
-      onRender: this.onRender.bind(this)
+        key: properties.key,
+        label: properties.label,
+        loadOptions: properties.loadOptions,
+        onPropertyChange: properties.onPropertyChange,
+        selectedKey: properties.selectedKey,
+        disabled: properties.disabled,
+        onRender: this.onRender.bind(this)
     };
   }
 
@@ -53,7 +59,14 @@ export class PropertyPaneAsyncDropdown implements IPropertyPaneField<IPropertyPa
     ReactDom.render(element, elem);
   }
 
-  private onChanged(option: IDropdownOption, index?: number): void {
-    this.properties.onPropertyChange(this.targetProperty, option.key);
+  private onChanged(option: IDropdownOption, index?: number): void {   
+    //set the old value to what was the new value;
+    var oldValue : any = this.storedValue;
+
+    //now reset new to what was just selected
+    this.storedValue = <string>option.key;
+
+    //finally trigger this custom properties on change method
+    this.properties.onPropertyChange(this.targetProperty, oldValue, this.storedValue);
   }
 }

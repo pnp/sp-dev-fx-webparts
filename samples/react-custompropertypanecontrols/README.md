@@ -18,7 +18,7 @@ Cascading drop-downs in the property pane both using external data.
 
 ![Web part with cascading drop-downs in the property pane](./assets/cascading-dropdown-preview.gif)
 
-## Used SharePoint Framework Version 
+## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/drop-drop4-red.svg)
 
 ## Applies to
@@ -36,6 +36,7 @@ react-custompropertypanecontrols|Waldek Mastykarz (MVP, Rencore, @waldekm)
 
 Version|Date|Comments
 -------|----|--------
+2.0.1|May 1, 2017|Updated to SPFx GA
 2.0.0|November 22, 2016|Added new sample web part (Dropdown with remote data (without custom controls))
 1.0.0|October 17, 2016|Initial release
 
