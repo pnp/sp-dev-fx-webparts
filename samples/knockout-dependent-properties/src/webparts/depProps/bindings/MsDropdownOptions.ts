@@ -18,7 +18,7 @@ class MsDropdownOptions {
 
     this.removePreviousContent(element);
 
-    return { 'controlsDescendantBindings': true };
+    return { 'controlsDescendantBindings': false };
   }
   /**
    * Removes previous content of dropdown

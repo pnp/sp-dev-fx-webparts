@@ -1,6 +1,6 @@
 import {
   IWebPartContext
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 import { ISPList, ISPView } from '../common/SPEntities';
 import { PropertyPaneViewSelectorModel } from './PropertyPaneViewSelectorModel';
 import * as ko from 'knockout';
@@ -72,7 +72,7 @@ export class PropertyPaneViewSelectorViewModel {
    * */
   public constructor(_properties: IPropertyPaneViewSelectorFieldPropsInternal) {
     this._properties = _properties;
-    this._context = _properties.context;
+    this._context = _properties.wpContext;
     this._listId = _properties.listId;
     this._viewId = _properties.viewId;
     this.listLabel = _properties.listLabel;
@@ -83,6 +83,7 @@ export class PropertyPaneViewSelectorViewModel {
 
     // subscribing on changes in lists dropdown
     this.currentList.subscribe((value) => {
+      const oldListId: string = this._listId;
       this._listId = value;
       this._initViews().then(() => {
         this.noListSelection(this._listId == '-1');
@@ -94,6 +95,7 @@ export class PropertyPaneViewSelectorViewModel {
 
     // subscribing on changes in view dropdown
     this.currentView.subscribe((value) => {
+      const oldViewId: string = this._viewId;
       this._viewId = value;
       this._firePropertyChange();
     });
@@ -110,7 +112,11 @@ export class PropertyPaneViewSelectorViewModel {
    */
   private _firePropertyChange(): void {
     if (this._properties.onPropertyChange) {
-      this._properties.onPropertyChange(this._properties.targetProperty, { listId: this._listId || '-1', viewId: this._viewId || '-1' });
+      const newValue = {
+        listId: this._listId || '-1',
+        viewId: this._viewId || '-1'
+      };
+      this._properties.onPropertyChange(this._properties.targetProperty,  newValue);
     }
   }
 
