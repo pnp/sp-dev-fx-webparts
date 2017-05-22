@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./AsyncAwaitPnPJs.module.scss";
 
 // import interfaces
-import { IFile, IResponseFile, IResponseItem } from "../interfaces"
+import { IFile, IResponseItem } from "../interfaces";
 
 // import pnp and pnp logging system
 import { Logger, FunctionListener, LogEntry, LogLevel, Web } from "sp-pnp-js";
@@ -46,7 +46,7 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
       : 0;
     return (
       <div className={styles.container}>
-        <div className={"ms-Grid-row ms-bgColor-themeDark ms-fontColor-white " + styles.row"}>
+        <div className={"ms-Grid-row ms-bgColor-themeDark ms-fontColor-white " + styles.row}>
           <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
             <span className="ms-font-xl ms-fontColor-white">Welcome to SharePoint Async Await SP PnP JS Demo!</span>
             <div>
@@ -59,9 +59,9 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
                 <div className={styles.right}>Size (KB)</div>
                 <div className={styles.clear + " " + styles.header}></div>
               </div>
-              {this.state.items.map((item) => {
+              {this.state.items.map((item, idx) => {
                 return (
-                  <div className={styles.row}>
+                  <div key={idx} className={styles.row}>
                     <div className={styles.left}>{item.Name}</div>
                     <div className={styles.right}>{(item.Size / 1024).toFixed(2)}</div>
                     <div className={styles.clear}></div>
@@ -81,7 +81,7 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
     );
   }
 
-  private _enableLogging() {
+  private _enableLogging(): void {
     ////////////////////////////////////////////////////////////////////////
     // enable Logging system
     ////////////////////////////////////////////////////////////////////////
@@ -126,9 +126,9 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
     Logger.subscribe(listener);
   }
 
-  // Async functions were introduced with ES3/ES5 native support in TypeScript 2.1
+  // async functions were introduced with ES3/ES5 native support in TypeScript 2.1
   // https://blogs.msdn.microsoft.com/typescript/2016/12/07/announcing-typescript-2-1/
-  // Async function always return a Promise, on this scenario we return void Promise
+  // async function always return a Promise, on this scenario we return void Promise
   //   because we will not need it as we are directly setting the Component´s state
   private async _readAllFilesSize(libraryName: string): Promise<void> {
     try {
@@ -141,9 +141,9 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
       const response: IResponseItem[] = await web.lists
         .getByTitle(libraryName)
         .items
-        .select("Title", "FileLeafRef")
+        .select("Title", "FileLeafRef", "File/Length")
         .expand("File/Length")
-        // .usingCaching()
+        .usingCaching()
         .get();
 
       // use map to convert IResponseItem[] into our internal object IFile[]
@@ -155,8 +155,17 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
         };
       });
 
-      // Set our Component´s State
+      // set our Component´s State
       this.setState({ ...this.state, items });
+
+      // intentionally set wrong query to see console errors...
+      const failResponse: IResponseItem[] = await web.lists
+        .getByTitle(libraryName)
+        .items
+        .select("Title", "FileLeafRef", "File/Length", "NonExistingColumn")
+        .expand("File/Length")
+        .usingCaching()
+        .get();
 
     } catch (error) {
       // set a new state conserving the previous state + the new error
@@ -170,12 +179,12 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
       <div style={{ color: "orangered" }} >
         <div>Errors:</div>
         {
-          this.state.errors.map((item) => {
-            return (<div>{JSON.stringify(item)}</div>);
+          this.state.errors.map((item, idx) => {
+            return (<div key={idx} >{JSON.stringify(item)}</div>);
           })
         }
       </div>
-      : null
+      : null;
   }
-                                
+
 }
