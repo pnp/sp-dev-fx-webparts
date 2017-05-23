@@ -1,0 +1,46 @@
+<div class="ms-Grid">
+  <div>
+    <div class="ms-Grid-row">
+      <div class="ms-NavBar">
+        <ul class="ms-NavBar-items">
+          <li class="navbar-header">Secure SP Elevated Privileges</li>
+          <li class="ms-NavBar-item ms-NavBar-item--right" ng-show="vm.isAuthenticated()" ng-click="vm.signOut()">
+            <i class="ms-Icon ms-Icon--x"></i> Disconnect
+          </li>
+        </ul>
+      </div>
+
+      <div class="ms-Grid-col ms-u-md-Push1 ms-u-md11 ms-u-lgPush1 ms-u-lg11">
+        <div ng-hide="vm.isAuthenticated()">
+          <p class="ms-font-xl">Use the button below to connect to Azure AD.</p>
+          <button class="ms-Button" ng-click="vm.signOn()">
+            <span class="ms-Button-label">Connect</span>
+          </button>
+        </div>
+        <div ng-show="vm.isAuthenticated()">
+          <div class="ms-Grid-row">
+            <div class="ms-Grid-col ms-u-sm12">
+              <button class="ms-Button" ng-click="vm.getGraphToken()" ng-hide="vm.hasGraphToken()">
+                <span class="ms-Button-label">Get Graph Token</span>
+              </button>
+              <button class="ms-Button" ng-click="vm.getAPIToken()" ng-hide="vm.hasAPIToken()">
+                <span class="ms-Button-label">Get API Token</span>
+              </button>
+            </div>
+          </div>
+          <div class="ms-Grid-row">
+            <div class="ms-Grid-col ms-u-sm12">
+              <h2 class="ms-font-xxl ms-fontWeight-semibold">Hi, {{vm.user !== undefined ? vm.user.displayName : 'User'}}</h2>
+              <button class="ms-Button" ng-click="vm.callGraph()" ng-hide="vm.user !== undefined">
+                <span class="ms-Button-label">Get Profile Info</span>
+              </button>
+              <button class="ms-Button" ng-click="vm.callApi()">
+                <span class="ms-Button-label">Call API</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
