@@ -7,7 +7,7 @@ This Web Part displays the Most Popular Items from the given Site/Document Libra
 ![Most Popular Items WebPart built using Angular and ngOfficeUIFabric](./assets/preview.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+![drop](https://img.shields.io/badge/version-GA-green.svg)
 
 ## Applies to
 
@@ -18,8 +18,7 @@ This Web Part displays the Most Popular Items from the given Site/Document Libra
 
 Solution|Author(s)
 --------|---------
-angular-mostpopularitems|Joseph Velliah (SPRIDER, @sprider) 
-                         Gautam Sheth(Rapid Circle, @rapidcircle/@gautamdsheth)
+angular-mostpopularitems|Joseph Velliah (SPRIDER, @sprider) , Gautam Sheth(Rapid Circle, @rapidcircle/@gautamdsheth)
 
 ## Version history
 
