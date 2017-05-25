@@ -1,60 +1,56 @@
-# Search Client-Side Web Part Built with Angular v1.x
+# Most Popular Items WebPart using Angular & ngOfficeUIFabric
 
 ## Summary
-Sample Search Web Part that illustrates how you can use Angular within the new SharePoint Framework
 
-![Sample of the search web part](./assets/angularSearch.png)
-This app uses SharePoint's Search REST API endpoint to query listitems of a specific content type and displays the results to the end user.
-Ideally instead of selecting a content type for the search you would want to select a Result Source, but currently Result Sources are not
-available through SharePoint's REST API.
+This Web Part displays the Most Popular Items from the given Site/Document Library URL using search API.
 
-The logic for querying the SharePoint Content Types in the properties of the webpart was in part due to Chris O'Brien and this [blog post](http://www.sharepointnutsandbolts.com/2016/09/sharepoint-framework-spfx-web-part-properties-dynamic-dropdown.html?m=0)
-
-> Note: In order to use the ngOfficeFabric code I use the ModuleLoader to load newer source files than the currently Office Fabric UI in SharePoint Online, which will cause many of the icons not to load properly on the SharePoint Page this webpart is added to.
-
-> Note: For the display template of the search results I'm currently using the Office Fabric UI List template. Ideally I was hoping to use the DocumentCard Component, however, that is not yet available through the ngOfficUIFabric.
-
-> Note: The List display is not currently displaying correctly because there appears to be an issue when loading https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css which causes the dropdowns in the property pane not to work.
+![Most Popular Items WebPart built using Angular and ngOfficeUIFabric](./assets/preview.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-rc0-green.svg)
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://github.com/SharePoint/sp-dev-docs/wiki)
+* [Office 365 developer tenant](https://github.com/SharePoint/sp-dev-docs/wiki/Setup-SharePoint-Tenant)
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-angular-search|David Hartman ([Slalom](https://slalom.com))
+angular-mostpopularitems|Joseph Velliah (SPRIDER, @sprider) , Gautam Sheth(Rapid Circle, @rapidcircle/@gautamdsheth)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|February 4th, 2017|Initial release
+1.0|November 10, 2016|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
 
-## Configuration Bliss
+## Minimal Path to Awesome
 
 - clone this repo
 - in the command line run:
- - `npm i typings -g`
- - `npm i`
- - `gulp serve --nobrowser`
-- Enable the following features in you site
- - Publishing features on site collection
- - Publishing features on site
+  - `npm i`
+  - `tsd install`
+  - `gulp serve`
 
-> Note: The Content Types that I pull for the search come from the Publishing Content Type which only
-> available when the Publishing Features are enabled on the site. I'm also searching by content type name
-> and not by id becauase then I would get everything that inherits from that content type. I only want the
-> the results for a specific content type and not everything that inherits that content type as well
+## Features
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-search" />
+The Most Popular Items is a sample Client-Side Web Part built on the SharePoint Framework built using Angular and ngOfficeUIFabric.
+
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+- using Angular for building SharePoint Framework Client-Side Web Parts
+- using ngOfficeUIFabric for styling Angular Client-Side Web Parts
+- including Angular and ngOfficeUIFabric in the Web Part bundle
+- using a newer version of ngOfficeUIFabric for styling Client-Side Web Parts
+- using non-reactive Web Part Property Pane and custom Properties
+- using conditional rendering for one-time Web Part setup
+- passing Web Part configuration to Angular and reacting to configuration changes
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-mostpopularitems" />
