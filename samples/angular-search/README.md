@@ -18,7 +18,7 @@ This Web Part displays the Most Popular Items from the given Site/Document Libra
 
 Solution|Author(s)
 --------|---------
-angular-mostpopularitems|Joseph Velliah (SPRIDER, @sprider) , Gautam Sheth(Rapid Circle, @rapidcircle/@gautamdsheth)
+angular-mostpopularitems|Joseph Velliah (SPRIDER, @sprider) , Gautam Sheth(SharePoint Consultant,Rapid Circle,@rapidcircle/@gautamdsheth)
 
 ## Version history
 
