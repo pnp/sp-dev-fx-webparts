@@ -18,13 +18,15 @@ This Web Part displays the Most Popular Items from the given Site/Document Libra
 
 Solution|Author(s)
 --------|---------
-angular-mostpopularitems|Joseph Velliah (SPRIDER, @sprider) , Gautam Sheth(Rapid Circle, @rapidcircle/@gautamdsheth)
+angular-mostpopularitems|Joseph Velliah (SPRIDER, @sprider) 
+                         Gautam Sheth(Rapid Circle, @rapidcircle/@gautamdsheth)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|November 10, 2016|Initial release
+2.0|May 25, 2017|Second release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
