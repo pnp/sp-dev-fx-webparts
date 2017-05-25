@@ -1,30 +1,35 @@
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
-  PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField,
+  IWebPartContext
+} from '@microsoft/sp-webpart-base';
+import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './Weather.module.scss';
 import * as strings from 'weatherStrings';
 import { IWeatherWebPartProps } from './IWeatherWebPartProps';
-
+import { SPComponentLoader } from '@microsoft/sp-loader';
 import * as $ from 'jquery';
 require('simpleWeather');
 
 export default class WeatherWebPart extends BaseClientSideWebPart<IWeatherWebPartProps> {
-  private container: JQuery;
 
-  public constructor(context: IWebPartContext) {
-    super(context);
+  private container: $;
+  public constructor() {
+    super();    
+    
   }
 
-  public render(): void {
+  public render(): void {    
+      
     if (this.renderedOnce === false) {
       this.domElement.innerHTML = `<div class="${styles.weather}"></div>`;
     }
-
+    
     this.renderContents();
+    
   }
 
   private renderContents(): void {
@@ -58,7 +63,11 @@ export default class WeatherWebPart extends BaseClientSideWebPart<IWeatherWebPar
     });
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -79,7 +88,6 @@ export default class WeatherWebPart extends BaseClientSideWebPart<IWeatherWebPar
       ]
     };
   }
-
   protected get disableReactivePropertyChanges(): boolean {
     return true;
   }

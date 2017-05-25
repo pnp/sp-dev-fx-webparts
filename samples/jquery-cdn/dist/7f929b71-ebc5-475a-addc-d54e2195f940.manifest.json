@@ -1,0 +1,65 @@
+{
+  "id": "7f929b71-ebc5-475a-addc-d54e2195f940",
+  "alias": "WeatherWebPart",
+  "componentType": "WebPart",
+  "version": "2.0.0",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "7f929b71-ebc5-475a-addc-d54e2195f940",
+      "group": {
+        "default": "Default"
+      },
+      "title": {
+        "default": "Weather"
+      },
+      "description": {
+        "default": "Shows weather for the given place"
+      },
+      "officeFabricIconFontName": "Sunny",
+      "properties": {
+        "location": ""
+      }
+    }
+  ],
+  "loaderConfig": {
+    "entryModuleId": "weather.bundle",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "weather.bundle": {
+        "type": "path",
+        "path": "dist/weather.bundle.js"
+      },
+      "jquery": {
+        "type": "path",
+        "path": "https://code.jquery.com/jquery-2.1.1.min.js",
+        "globalName": "jQuery"
+      },
+      "simpleWeather": {
+        "type": "path",
+        "path": "https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js",
+        "globalDependencies": [
+          "jquery"
+        ],
+        "globalName": "jQuery"
+      },
+      "weatherStrings": {
+        "defaultPath": "lib/webparts/weather/loc/en-us.js",
+        "type": "localizedPath",
+        "paths": {}
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0"
+      }
+    }
+  }
+}
