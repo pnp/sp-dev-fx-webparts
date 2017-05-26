@@ -75,6 +75,8 @@ class PropertyPaneViewSelector implements IPropertyPaneField<IPropertyPaneViewSe
    * Rendering the component
    */
   private _render(elem: HTMLElement, context: any): void {
+    if (elem.innerHTML)
+      return;
     this._parentNode = elem;
     elem.innerHTML = '';
     this._view.render(elem).then(() => {     // rendering of HTML markup
