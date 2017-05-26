@@ -9,7 +9,7 @@
 import * as React from 'react';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
 import { IPhotopileWebPartProps } from '../IPhotopileWebPartProps';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import * as strings from 'mystrings';
 import styles from '../PhotopileWebPart.module.scss';
 import { SPPicturesListService } from '../SPPicturesListService';

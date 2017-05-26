@@ -1,0 +1,1091 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "1.13.3",
+  "hash": "34ed9ea1c11b36dfb74c",
+  "publicPath": "",
+  "assetsByChunkName": {
+    "photopile-web-part.bundle": [
+      "photopile-web-part.bundle.js",
+      "photopile-web-part.bundle.js.map"
+    ]
+  },
+  "assets": [
+    {
+      "name": "photopile-web-part.bundle.js",
+      "size": 73154,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "photopile-web-part.bundle"
+      ]
+    },
+    {
+      "name": "photopile-web-part.bundle.js.map",
+      "size": 106004,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "photopile-web-part.bundle"
+      ]
+    }
+  ],
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "extraAsync": false,
+      "size": 68124,
+      "names": [
+        "photopile-web-part.bundle"
+      ],
+      "files": [
+        "photopile-web-part.bundle.js",
+        "photopile-web-part.bundle.js.map"
+      ],
+      "hash": "d70c93ceb5334802695b",
+      "parents": [],
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "loc": "",
+          "name": "photopile-web-part.bundle",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+      "name": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+      "index": 0,
+      "index2": 29,
+      "size": 12149,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [],
+      "source": "\"use strict\";\nvar __extends = (this && this.__extends) || function (d, b) {\n    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];\n    function __() { this.constructor = d; }\n    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n};\nvar sp_core_library_1 = require(\"@microsoft/sp-core-library\");\nvar React = require(\"react\");\nvar ReactDom = require(\"react-dom\");\nvar sp_webpart_base_1 = require(\"@microsoft/sp-webpart-base\");\nvar strings = require(\"mystrings\");\nvar PhotopileWebPart_1 = require(\"./components/PhotopileWebPart\");\nvar SPPicturesListService_1 = require(\"./SPPicturesListService\");\n/**\n * @class\n * Defines the Photopile client side web part\n */\nvar PhotopileWebPartWebPart = (function (_super) {\n    __extends(PhotopileWebPartWebPart, _super);\n    /**\n     * @function\n     * Web Part constructor\n     */\n    function PhotopileWebPartWebPart(context) {\n        var _this = _super.call(this) || this;\n        /**\n       * @var\n       * Stores the list of SharePoint Pictures library found in the current SP web\n       */\n        _this.listsDropdownOptions = [];\n        return _this;\n    }\n    /**\n     * @function\n     * Function called when the web part is inialized\n     */\n    PhotopileWebPartWebPart.prototype.onInit = function () {\n        var _this = this;\n        //Init the PicturesListService to get the picture libs\n        var picturesListService = new SPPicturesListService_1.SPPicturesListService(this.properties, this.context);\n        //Request the libs\n        picturesListService.getPictureLibs()\n            .then(function (response) {\n            //Store the result as list of dropdown options\n            _this.listsDropdownOptions = response.value.map(function (list) {\n                return {\n                    key: list.Id,\n                    text: list.Title\n                };\n            });\n        });\n        return Promise.resolve();\n    };\n    /**\n     * @function\n     * Renders the web part\n     */\n    PhotopileWebPartWebPart.prototype.render = function () {\n        //Constructs the react element code to JSX\n        var element = React.createElement(PhotopileWebPart_1.default, {\n            listName: this.properties.listName,\n            orderBy: this.properties.orderBy,\n            orderByAsc: this.properties.orderByAsc,\n            count: this.properties.count,\n            numLayers: this.properties.numLayers,\n            thumbOverlap: this.properties.thumbOverlap,\n            thumbRotation: this.properties.thumbRotation,\n            thumbBorderWidth: this.properties.thumbBorderWidth,\n            thumbBorderColor: this.properties.thumbBorderColor,\n            thumbBorderHover: this.properties.thumbBorderHover,\n            draggable: this.properties.draggable,\n            fadeDuration: this.properties.fadeDuration,\n            pickupDuration: this.properties.pickupDuration,\n            photoZIndex: this.properties.photoZIndex,\n            photoBorder: this.properties.photoBorder,\n            photoBorderColor: this.properties.photoBorderColor,\n            showInfo: this.properties.showInfo,\n            autoplayGallery: this.properties.autoplayGallery,\n            autoplaySpeed: this.properties.autoplaySpeed,\n            context: this.context\n        });\n        //Render the dom\n        ReactDom.render(element, this.domElement);\n    };\n    Object.defineProperty(PhotopileWebPartWebPart.prototype, \"disableReactivePropertyChanges\", {\n        /**\n         * @function\n         * Prevent from changing the pane properties on typing\n         */\n        get: function () {\n            return false;\n        },\n        enumerable: true,\n        configurable: true\n    });\n    Object.defineProperty(PhotopileWebPartWebPart.prototype, \"dataVersion\", {\n        /**\n         * @function\n         * Gets the web part properties panel settings\n         */\n        get: function () {\n            return sp_core_library_1.Version.parse('1.0');\n        },\n        enumerable: true,\n        configurable: true\n    });\n    PhotopileWebPartWebPart.prototype.getPropertyPaneConfiguration = function () {\n        return {\n            pages: [\n                {\n                    header: {\n                        description: strings.PropertyPaneDescription\n                    },\n                    //Display the web part properties as accordion\n                    displayGroupsAsAccordion: true,\n                    groups: [\n                        {\n                            groupName: strings.PictureLibraryGroupName,\n                            groupFields: [\n                                sp_webpart_base_1.PropertyPaneDropdown('listName', {\n                                    label: strings.PictureLibraryFieldLabel,\n                                    options: this.listsDropdownOptions\n                                }),\n                                sp_webpart_base_1.PropertyPaneDropdown('orderBy', {\n                                    label: strings.OrderByFieldLabel,\n                                    options: [\n                                        { key: 'ID', text: strings.OrderByChoiceLabelId },\n                                        { key: 'Title', text: strings.OrderByChoiceLabelTitle },\n                                        { key: 'Created', text: strings.OrderByChoiceLabelCreated },\n                                        { key: 'Modified', text: strings.OrderByChoiceLabelModified },\n                                        { key: 'ImageWidth', text: strings.OrderByChoiceLabelImageWidth },\n                                        { key: 'ImageHeight', text: strings.OrderByChoiceLabelImageHeight }\n                                    ]\n                                }),\n                                sp_webpart_base_1.PropertyPaneDropdown('orderByAsc', {\n                                    label: strings.OrderByAscFieldLabel,\n                                    options: [\n                                        { key: 'asc', text: strings.OrderByAscChoiceLabel },\n                                        { key: 'desc', text: strings.OrderByDescChoiceLabel }\n                                    ]\n                                }),\n                                sp_webpart_base_1.PropertyPaneSlider('count', {\n                                    label: strings.PictureLibraryCountLabel,\n                                    min: 1,\n                                    max: 100,\n                                    step: 1,\n                                    showValue: true\n                                })\n                            ]\n                        },\n                        {\n                            groupName: strings.ThumbnailsGroupName,\n                            groupFields: [\n                                sp_webpart_base_1.PropertyPaneSlider('numLayers', {\n                                    label: strings.NumLayersFieldLabel,\n                                    min: 1,\n                                    max: 20,\n                                    step: 1,\n                                    showValue: true\n                                }),\n                                sp_webpart_base_1.PropertyPaneSlider('thumbOverlap', {\n                                    label: strings.ThumbOverlabFieldLabel,\n                                    min: 1,\n                                    max: 130,\n                                    step: 1,\n                                    showValue: true\n                                }),\n                                sp_webpart_base_1.PropertyPaneSlider('thumbRotation', {\n                                    label: strings.ThumbRotationFieldLabel,\n                                    min: 0,\n                                    max: 360,\n                                    step: 1,\n                                    showValue: true\n                                }),\n                                sp_webpart_base_1.PropertyPaneSlider('thumbBorderWidth', {\n                                    label: strings.ThumbBorderWidthFieldLabel,\n                                    min: 0,\n                                    max: 50,\n                                    step: 1,\n                                    showValue: true\n                                }),\n                                sp_webpart_base_1.PropertyPaneTextField('thumbBorderColor', {\n                                    label: strings.ThumbBorderColorFieldLabel\n                                }),\n                                sp_webpart_base_1.PropertyPaneTextField('thumbBorderHover', {\n                                    label: strings.ThumbBorderHoverFieldLabel\n                                }),\n                                sp_webpart_base_1.PropertyPaneToggle('draggable', {\n                                    label: strings.DraggableFieldLabel\n                                })\n                            ]\n                        },\n                        {\n                            groupName: strings.PhotoContainerGroupName,\n                            groupFields: [\n                                sp_webpart_base_1.PropertyPaneSlider('fadeDuration', {\n                                    label: strings.FadeDurationFieldLabel,\n                                    min: 0,\n                                    max: 5000,\n                                    step: 100,\n                                    showValue: true\n                                }),\n                                sp_webpart_base_1.PropertyPaneSlider('pickupDuration', {\n                                    label: strings.PickupDurationFieldLabel,\n                                    min: 0,\n                                    max: 5000,\n                                    step: 100,\n                                    showValue: true\n                                }),\n                                sp_webpart_base_1.PropertyPaneSlider('photoZIndex', {\n                                    label: strings.PhotoZIndexFieldLabel,\n                                    min: 1,\n                                    max: 1000,\n                                    step: 1,\n                                    showValue: true\n                                }),\n                                sp_webpart_base_1.PropertyPaneSlider('photoBorder', {\n                                    label: strings.PhotoBorderFieldLabel,\n                                    min: 0,\n                                    max: 50,\n                                    step: 1,\n                                    showValue: true\n                                }),\n                                sp_webpart_base_1.PropertyPaneTextField('photoBorderColor', {\n                                    label: strings.PhotoBorderColorFieldLabel\n                                }),\n                                sp_webpart_base_1.PropertyPaneToggle('showInfo', {\n                                    label: strings.ShowInfoFieldLabel\n                                })\n                            ]\n                        },\n                        {\n                            groupName: strings.AutoplayGroupName,\n                            groupFields: [\n                                sp_webpart_base_1.PropertyPaneToggle('autoplayGallery', {\n                                    label: strings.AutoplayGalleryFieldLabel\n                                }),\n                                sp_webpart_base_1.PropertyPaneSlider('autoplaySpeed', {\n                                    label: strings.AutoplaySpeedFieldLabel,\n                                    min: 0,\n                                    max: 5000,\n                                    step: 100,\n                                    showValue: true\n                                })\n                            ]\n                        }\n                    ]\n                }\n            ]\n        };\n    };\n    return PhotopileWebPartWebPart;\n}(sp_webpart_base_1.BaseClientSideWebPart));\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.default = PhotopileWebPartWebPart;\n\n"
+    },
+    {
+      "id": 1,
+      "identifier": "external \"@microsoft/sp-core-library\"",
+      "name": "external \"@microsoft/sp-core-library\"",
+      "index": 1,
+      "index2": 0,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "type": "cjs require",
+          "userRequest": "@microsoft/sp-core-library",
+          "loc": "7:24-61"
+        },
+        {
+          "moduleId": 21,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\SPPicturesListService.js",
+          "module": "./lib/webparts/photopileWebPart/SPPicturesListService.js",
+          "moduleName": "./lib/webparts/photopileWebPart/SPPicturesListService.js",
+          "type": "cjs require",
+          "userRequest": "@microsoft/sp-core-library",
+          "loc": "3:24-61"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "identifier": "external \"react\"",
+      "name": "external \"react\"",
+      "index": 2,
+      "index2": 1,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "type": "cjs require",
+          "userRequest": "react",
+          "loc": "8:12-28"
+        },
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "react",
+          "loc": "15:12-28"
+        },
+        {
+          "moduleId": 9,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+          "module": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "type": "cjs require",
+          "userRequest": "react",
+          "loc": "7:12-28"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "identifier": "external \"react-dom\"",
+      "name": "external \"react-dom\"",
+      "index": 3,
+      "index2": 2,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "type": "cjs require",
+          "userRequest": "react-dom",
+          "loc": "9:15-35"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "identifier": "external \"@microsoft/sp-webpart-base\"",
+      "name": "external \"@microsoft/sp-webpart-base\"",
+      "index": 4,
+      "index2": 3,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "type": "cjs require",
+          "userRequest": "@microsoft/sp-webpart-base",
+          "loc": "10:24-61"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "identifier": "external \"mystrings\"",
+      "name": "external \"mystrings\"",
+      "index": 5,
+      "index2": 4,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "type": "cjs require",
+          "userRequest": "mystrings",
+          "loc": "11:14-34"
+        },
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "mystrings",
+          "loc": "17:14-34"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+      "name": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+      "index": 6,
+      "index2": 28,
+      "size": 7691,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "type": "cjs require",
+          "userRequest": "./components/PhotopileWebPart",
+          "loc": "12:25-65"
+        }
+      ],
+      "source": "\"use strict\";\nvar __extends = (this && this.__extends) || function (d, b) {\n    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];\n    function __() { this.constructor = d; }\n    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n};\n/**\n * @file\n * Photopile Web Part React JSX component.\n *\n * Contains JSX code to render the web part with HTML templates.\n *\n * Author: Olivier Carpentier\n */\nvar React = require(\"react\");\nvar Spinner_1 = require(\"office-ui-fabric-react/lib/Spinner\");\nvar strings = require(\"mystrings\");\nvar PhotopileWebPart_module_scss_1 = require(\"../PhotopileWebPart.module.scss\");\nvar SPPicturesListService_1 = require(\"../SPPicturesListService\");\nvar photopile = require(\"photopileModule\");\nrequire('jquery');\nrequire('jqueryui');\nrequire('../css/photopile.scss');\nrequire('photopileModule');\n/**\n * @class\n * Defines Photopile web part class.\n */\nvar PhotopileWebPart = (function (_super) {\n    __extends(PhotopileWebPart, _super);\n    /**\n     * @function\n     * Photopile web part contructor.\n     */\n    function PhotopileWebPart(props, context) {\n        var _this = _super.call(this, props, context) || this;\n        //Save the context\n        _this.myPageContext = props.context;\n        //Init the component state\n        _this.state = {\n            results: [],\n            loaded: false\n        };\n        return _this;\n    }\n    ;\n    /**\n     * @function\n     * JSX Element render method\n     */\n    PhotopileWebPart.prototype.render = function () {\n        if (this.props.listName == null || this.props.listName == '') {\n            //Display select a list message\n            return (React.createElement(\"div\", { className: \"ms-MessageBar\" },\n                React.createElement(\"div\", { className: \"ms-MessageBar-content\" },\n                    React.createElement(\"div\", { className: \"ms-MessageBar-icon\" },\n                        React.createElement(\"i\", { className: \"ms-Icon ms-Icon--infoCircle\" })),\n                    React.createElement(\"div\", { className: \"ms-MessageBar-text\" }, strings.ErrorSelectList))));\n        }\n        else {\n            if (this.state.loaded == false) {\n                //Display the loading spinner with the Office UI Fabric Spinner control\n                return (React.createElement(\"div\", { className: PhotopileWebPart_module_scss_1.default.photopileWebPart },\n                    React.createElement(\"div\", { className: PhotopileWebPart_module_scss_1.default.workingOnItSpinner },\n                        React.createElement(Spinner_1.Spinner, { type: Spinner_1.SpinnerType.normal }),\n                        React.createElement(\"div\", { className: PhotopileWebPart_module_scss_1.default.loadingLabel },\n                            React.createElement(\"label\", { className: \"ms-Label\" },\n                                \" \",\n                                strings.Loading)))));\n            }\n            else if (this.state.results.length == 0) {\n                //Display message no items\n                return (React.createElement(\"div\", { className: \"ms-MessageBar ms-MessageBar--error\" },\n                    React.createElement(\"div\", { className: \"ms-MessageBar-content\" },\n                        React.createElement(\"div\", { className: \"ms-MessageBar-icon\" },\n                            React.createElement(\"i\", { className: \"ms-Icon ms-Icon--xCircle\" })),\n                        React.createElement(\"div\", { className: \"ms-MessageBar-text\" }, strings.ErrorNoItems))));\n            }\n            else {\n                //Display the items list\n                return (React.createElement(\"div\", { className: 'photopile-wrapper' },\n                    React.createElement(\"ul\", { className: 'photopile' }, this.state.results.map(function (object, i) {\n                        //Select the best Alt text with title, description or file's name\n                        var altText = object.Title;\n                        if (altText == null || altText == '')\n                            altText = object.Description;\n                        if (altText == null || altText == '')\n                            altText = object.File.Name;\n                        //Render the item\n                        return (React.createElement(\"li\", null,\n                            React.createElement(\"a\", { href: object.File.ServerRelativeUrl },\n                                React.createElement(\"img\", { src: object.File.ThumbnailServerUrl, alt: altText, width: \"133\", height: \"100\" }))));\n                    }))));\n            }\n        }\n    };\n    /**\n     * @function\n     * Function called when the component did mount\n     */\n    PhotopileWebPart.prototype.componentDidMount = function () {\n        var _this = this;\n        if (this.props.listName != null && this.props.listName != '') {\n            //Init the Picture list service\n            var picturesListService = new SPPicturesListService_1.SPPicturesListService(this.props, this.myPageContext);\n            //Load the list of pictures from the current lib\n            picturesListService.getPictures(this.props.listName)\n                .then(function (response) {\n                //Modify the component state with the json result\n                _this.setState({ results: response.value, loaded: true });\n            });\n        }\n    };\n    /**\n     * @function\n     * Function called when the web part properties has changed\n     */\n    PhotopileWebPart.prototype.componentWillReceiveProps = function (nextProps) {\n        var _this = this;\n        //Define the state with empty results\n        this.setState({ results: [], loaded: false });\n        if (nextProps.listName != null && nextProps.listName != '') {\n            //Init the Picture list service\n            var picturesListService = new SPPicturesListService_1.SPPicturesListService(nextProps, this.myPageContext);\n            //Load the list of pictures from the current lib\n            picturesListService.getPictures(nextProps.listName)\n                .then(function (response) {\n                //Modify the component state with the json result\n                _this.setState({ results: response.value, loaded: true });\n            });\n        }\n    };\n    /**\n     * @function\n     * Function called when the component has been rendered (ie HTML code is ready)\n     */\n    PhotopileWebPart.prototype.componentDidUpdate = function (prevProps, prevState) {\n        if (this.state.loaded) {\n            //Init photopile options\n            photopile.setNumLayers(this.props.numLayers);\n            photopile.setThumbOverlap(this.props.thumbOverlap);\n            photopile.setThumbRotation(this.props.thumbRotation);\n            photopile.setThumbBorderWidth(this.props.thumbBorderWidth);\n            photopile.setThumbBorderColor(this.props.thumbBorderColor);\n            photopile.setThumbBorderHover(this.props.thumbBorderHover);\n            photopile.setDraggable(this.props.draggable);\n            photopile.setFadeDuration(this.props.fadeDuration);\n            photopile.setPickupDuration(this.props.pickupDuration);\n            photopile.setPhotoZIndex(this.props.photoZIndex);\n            photopile.setPhotoBorder(this.props.photoBorder);\n            photopile.setPhotoBorderColor(this.props.photoBorderColor);\n            photopile.setShowInfo(this.props.showInfo);\n            photopile.setAutoplayGallery(this.props.autoplayGallery);\n            photopile.setAutoplaySpeed(this.props.autoplaySpeed);\n            //Init photopile\n            photopile.scatter();\n        }\n    };\n    return PhotopileWebPart;\n}(React.Component));\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.default = PhotopileWebPart;\n\n"
+    },
+    {
+      "id": 7,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\Spinner.js",
+      "name": "./~/office-ui-fabric-react/lib/Spinner.js",
+      "index": 7,
+      "index2": 13,
+      "size": 161,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "office-ui-fabric-react/lib/Spinner",
+          "loc": "16:16-61"
+        }
+      ],
+      "source": "\"use strict\";\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\n__export(require('./components/Spinner/index'));\n\n"
+    },
+    {
+      "id": 8,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\index.js",
+      "name": "./~/office-ui-fabric-react/lib/components/Spinner/index.js",
+      "index": 8,
+      "index2": 12,
+      "size": 182,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\Spinner.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 7,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\Spinner.js",
+          "module": "./~/office-ui-fabric-react/lib/Spinner.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/Spinner.js",
+          "type": "cjs require",
+          "userRequest": "./components/Spinner/index",
+          "loc": "5:9-46"
+        }
+      ],
+      "source": "\"use strict\";\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\n__export(require('./Spinner'));\n__export(require('./Spinner.Props'));\n\n"
+    },
+    {
+      "id": 9,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+      "name": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+      "index": 9,
+      "index2": 11,
+      "size": 2332,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\index.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 8,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\index.js",
+          "module": "./~/office-ui-fabric-react/lib/components/Spinner/index.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/components/Spinner/index.js",
+          "type": "cjs require",
+          "userRequest": "./Spinner",
+          "loc": "5:9-29"
+        }
+      ],
+      "source": "\"use strict\";\nvar __extends = (this && this.__extends) || function (d, b) {\n    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];\n    function __() { this.constructor = d; }\n    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n};\nvar React = require('react');\nvar Spinner_Props_1 = require('./Spinner.Props');\nvar rtl_1 = require('../../utilities/rtl');\nvar css_1 = require('../../utilities/css');\nrequire('./Spinner.scss');\nvar CIRCLE_COUNT = 8;\nvar PARENT_SIZE_LARGE = 28;\nvar PARENT_SIZE_NORMAL = 20;\nvar OFFSET_SIZE_LARGE = 0.179;\nvar OFFSET_SIZE_NORMAL = 0.2;\nvar Spinner = (function (_super) {\n    __extends(Spinner, _super);\n    function Spinner() {\n        _super.apply(this, arguments);\n    }\n    Spinner.prototype.render = function () {\n        var _a = this.props, type = _a.type, label = _a.label, className = _a.className;\n        var isRTL = rtl_1.getRTL();\n        var parentSize = type === Spinner_Props_1.SpinnerType.large ? PARENT_SIZE_LARGE : PARENT_SIZE_NORMAL;\n        var offsetSize = type === Spinner_Props_1.SpinnerType.large ? OFFSET_SIZE_LARGE : OFFSET_SIZE_NORMAL;\n        var offset = parentSize * offsetSize;\n        var step = (2 * Math.PI) / CIRCLE_COUNT;\n        var angle = 0;\n        var i = CIRCLE_COUNT;\n        var radius = (parentSize - offset) * 0.5;\n        var circleObjects = [];\n        while (i--) {\n            var x = Math.round(parentSize * 0.5 + radius * Math.cos(angle)) - offset * 0.5;\n            var y = Math.round(parentSize * 0.5 + radius * Math.sin(angle)) - offset * 0.5;\n            var size = offset + 'px';\n            var style = { left: !isRTL ? x : 'auto', right: !isRTL ? 'auto' : x, top: y, width: size, height: size };\n            angle += step;\n            circleObjects.push(React.createElement(\"div\", {className: 'ms-Spinner-circle', key: i, style: style}));\n        }\n        return (React.createElement(\"div\", {className: css_1.css('ms-Spinner', className, {\n            'ms-Spinner--large': type === Spinner_Props_1.SpinnerType.large\n        })}, label && (React.createElement(\"div\", {className: 'ms-Spinner-label', role: 'alert'}, label)), circleObjects));\n    };\n    Spinner.defaultProps = {\n        type: Spinner_Props_1.SpinnerType.normal\n    };\n    return Spinner;\n}(React.Component));\nexports.Spinner = Spinner;\n\n"
+    },
+    {
+      "id": 10,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.Props.js",
+      "name": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.Props.js",
+      "index": 10,
+      "index2": 5,
+      "size": 243,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\index.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 8,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\index.js",
+          "module": "./~/office-ui-fabric-react/lib/components/Spinner/index.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/components/Spinner/index.js",
+          "type": "cjs require",
+          "userRequest": "./Spinner.Props",
+          "loc": "6:9-35"
+        },
+        {
+          "moduleId": 9,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+          "module": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "type": "cjs require",
+          "userRequest": "./Spinner.Props",
+          "loc": "8:22-48"
+        }
+      ],
+      "source": "\"use strict\";\n(function (SpinnerType) {\n    SpinnerType[SpinnerType[\"normal\"] = 0] = \"normal\";\n    SpinnerType[SpinnerType[\"large\"] = 1] = \"large\";\n})(exports.SpinnerType || (exports.SpinnerType = {}));\nvar SpinnerType = exports.SpinnerType;\n\n"
+    },
+    {
+      "id": 11,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\utilities\\rtl.js",
+      "name": "./~/office-ui-fabric-react/lib/utilities/rtl.js",
+      "index": 11,
+      "index2": 7,
+      "size": 965,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 9,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+          "module": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "type": "cjs require",
+          "userRequest": "../../utilities/rtl",
+          "loc": "9:12-42"
+        }
+      ],
+      "source": "\"use strict\";\nvar KeyCodes_1 = require('./KeyCodes');\nvar _isRTL;\n/**\n * Gets the rtl state of the page (returns true if in rtl.)\n */\nfunction getRTL() {\n    if (_isRTL === undefined) {\n        _isRTL = document.documentElement.getAttribute('dir') === 'rtl';\n    }\n    return _isRTL;\n}\nexports.getRTL = getRTL;\n/**\n * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)\n */\nfunction setRTL(isRTL) {\n    document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');\n    _isRTL = isRTL;\n}\nexports.setRTL = setRTL;\n/**\n * Returns the given key, but flips right/left arrows if necessary.\n */\nfunction getRTLSafeKeyCode(key) {\n    if (getRTL()) {\n        if (key === KeyCodes_1.KeyCodes.left) {\n            key = KeyCodes_1.KeyCodes.right;\n        }\n        else if (key === KeyCodes_1.KeyCodes.right) {\n            key = KeyCodes_1.KeyCodes.left;\n        }\n    }\n    return key;\n}\nexports.getRTLSafeKeyCode = getRTLSafeKeyCode;\n\n"
+    },
+    {
+      "id": 12,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\utilities\\KeyCodes.js",
+      "name": "./~/office-ui-fabric-react/lib/utilities/KeyCodes.js",
+      "index": 12,
+      "index2": 6,
+      "size": 930,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\utilities\\rtl.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 11,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\utilities\\rtl.js",
+          "module": "./~/office-ui-fabric-react/lib/utilities/rtl.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/utilities/rtl.js",
+          "type": "cjs require",
+          "userRequest": "./KeyCodes",
+          "loc": "2:17-38"
+        }
+      ],
+      "source": "\"use strict\";\n(function (KeyCodes) {\n    KeyCodes[KeyCodes[\"a\"] = 65] = \"a\";\n    KeyCodes[KeyCodes[\"backspace\"] = 8] = \"backspace\";\n    KeyCodes[KeyCodes[\"comma\"] = 188] = \"comma\";\n    KeyCodes[KeyCodes[\"del\"] = 46] = \"del\";\n    KeyCodes[KeyCodes[\"down\"] = 40] = \"down\";\n    KeyCodes[KeyCodes[\"end\"] = 35] = \"end\";\n    KeyCodes[KeyCodes[\"enter\"] = 13] = \"enter\";\n    KeyCodes[KeyCodes[\"escape\"] = 27] = \"escape\";\n    KeyCodes[KeyCodes[\"home\"] = 36] = \"home\";\n    KeyCodes[KeyCodes[\"left\"] = 37] = \"left\";\n    KeyCodes[KeyCodes[\"pageDown\"] = 34] = \"pageDown\";\n    KeyCodes[KeyCodes[\"pageUp\"] = 33] = \"pageUp\";\n    KeyCodes[KeyCodes[\"right\"] = 39] = \"right\";\n    KeyCodes[KeyCodes[\"semicolon\"] = 186] = \"semicolon\";\n    KeyCodes[KeyCodes[\"space\"] = 32] = \"space\";\n    KeyCodes[KeyCodes[\"tab\"] = 9] = \"tab\";\n    KeyCodes[KeyCodes[\"up\"] = 38] = \"up\";\n})(exports.KeyCodes || (exports.KeyCodes = {}));\nvar KeyCodes = exports.KeyCodes;\n\n"
+    },
+    {
+      "id": 13,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\utilities\\css.js",
+      "name": "./~/office-ui-fabric-react/lib/utilities/css.js",
+      "index": 13,
+      "index2": 8,
+      "size": 632,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 9,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+          "module": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "type": "cjs require",
+          "userRequest": "../../utilities/css",
+          "loc": "10:12-42"
+        }
+      ],
+      "source": "\"use strict\";\nfunction css() {\n    var args = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        args[_i - 0] = arguments[_i];\n    }\n    var classes = [];\n    for (var _a = 0, args_1 = args; _a < args_1.length; _a++) {\n        var arg = args_1[_a];\n        if (arg) {\n            if (typeof arg === 'string') {\n                classes.push(arg);\n            }\n            else {\n                for (var key in arg) {\n                    if (arg[key]) {\n                        classes.push(key);\n                    }\n                }\n            }\n        }\n    }\n    return classes.join(' ');\n}\nexports.css = css;\n\n"
+    },
+    {
+      "id": 14,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.scss.js",
+      "name": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.scss.js",
+      "index": 14,
+      "index2": 10,
+      "size": 2064,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 9,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.js",
+          "module": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.js",
+          "type": "cjs require",
+          "userRequest": "./Spinner.scss",
+          "loc": "11:0-25"
+        }
+      ],
+      "source": "\"use strict\";\nvar load_themed_styles_1 = require('load-themed-styles');\nload_themed_styles_1.loadStyles('.ms-Spinner{position:relative;height:20px}.ms-Spinner.ms-Spinner--large{height:28px}.ms-Spinner.ms-Spinner--large .ms-Spinner-label{left:34px;top:6px}.ms-Spinner-circle{position:absolute;border-radius:100px;background-color:#0078d7;opacity:0}@media screen and (-ms-high-contrast:active){.ms-Spinner-circle{background-color:#fff}}@media screen and (-ms-high-contrast:black-on-white){.ms-Spinner-circle{background-color:#000}}.ms-Spinner-label{position:relative;color:#333;font-family:\"Segoe UI Regular WestEuropean\",\"Segoe UI\",Tahoma,Arial,sans-serif;font-size:12px;font-weight:400;color:#0078d7;left:28px;top:2px}[dir=ltr] .ms-Spinner.ms-Spinner--large .ms-Spinner-label{left:34px}[dir=rtl] .ms-Spinner.ms-Spinner--large .ms-Spinner-label{right:34px}[dir=ltr] .ms-Spinner-label{left:28px}[dir=rtl] .ms-Spinner-label{right:28px}@-webkit-keyframes pulse{0%{opacity:1}100%{opacity:0}}@keyframes pulse{0%{opacity:1}100%{opacity:0}}.ms-Spinner-circle{position:absolute;border-radius:100px;background-color:#0078d7;opacity:0;-webkit-animation-name:pulse;animation-name:pulse;-webkit-animation-duration:750ms;animation-duration:750ms;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-timing-function:linear;animation-timing-function:linear}.ms-Spinner-circle:nth-child(1){opacity:.875;-webkit-animation-delay:.093s;animation-delay:.093s}.ms-Spinner-circle:nth-child(2){opacity:.75;-webkit-animation-delay:.187s;animation-delay:.187s}.ms-Spinner-circle:nth-child(3){opacity:.625;-webkit-animation-delay:.281s;animation-delay:.281s}.ms-Spinner-circle:nth-child(4){opacity:.5;-webkit-animation-delay:375ms;animation-delay:375ms}.ms-Spinner-circle:nth-child(5){opacity:.375;-webkit-animation-delay:.468s;animation-delay:.468s}.ms-Spinner-circle:nth-child(6){opacity:.25;-webkit-animation-delay:.562s;animation-delay:.562s}.ms-Spinner-circle:nth-child(7){opacity:.125;-webkit-animation-delay:.656s;animation-delay:.656s}');\n\n"
+    },
+    {
+      "id": 15,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\load-themed-styles\\lib\\index.js",
+      "name": "./~/load-themed-styles/lib/index.js",
+      "index": 15,
+      "index2": 9,
+      "size": 8674,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.scss.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 14,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\office-ui-fabric-react\\lib\\components\\Spinner\\Spinner.scss.js",
+          "module": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.scss.js",
+          "moduleName": "./~/office-ui-fabric-react/lib/components/Spinner/Spinner.scss.js",
+          "type": "cjs require",
+          "userRequest": "load-themed-styles",
+          "loc": "2:27-56"
+        }
+      ],
+      "source": "\"use strict\";\n;\n;\n// IE needs to inject styles using cssText. However, we need to evaluate this lazily, so this\n// value will initialize as undefined, and later will be set once on first loadStyles injection.\nvar _injectStylesWithCssText;\n// Store the theming state in __themeState__ global scope for reuse in the case of duplicate\n// load-themed-styles hosted on the page.\nvar _root = (typeof window === 'undefined') ? {} : window;\nvar _themeState = _root.__themeState__ = _root.__themeState__ || {\n    theme: null,\n    lastStyleElement: null,\n    registeredStyles: []\n};\n/**\n * Matches theming tokens. For example, \"[theme: themeSlotName, default: #FFF]\" (including the quotes).\n */\n/* tslint:disable: max-line-length */\nvar _themeTokenRegex = /[\\'\\\"]\\[theme:\\s*(\\w+)\\s*(?:\\,\\s*default:\\s*([\\\\\"\\']?[\\.\\,\\(\\)\\#\\-\\s\\w]*[\\.\\,\\(\\)\\#\\-\\w][\\\"\\']?))?\\s*\\][\\'\\\"]/g;\n/* tslint:enable: max-line-length */\n/** Maximum style text length, for supporting IE style restrictions. */\nvar MAX_STYLE_CONTENT_SIZE = 10000;\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load\n * event is fired.\n * @param {string | ThemableArray} styles Themable style text to register.\n */\nfunction loadStyles(styles) {\n    var styleParts = Array.isArray(styles) ? styles : splitStyles(styles);\n    if (_injectStylesWithCssText === undefined) {\n        _injectStylesWithCssText = shouldUseCssText();\n    }\n    applyThemableStyles(styleParts);\n}\nexports.loadStyles = loadStyles;\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load event\n * is fired.\n * @param {string} styleText Style to register.\n * @param {IStyleRecord} styleRecord Existing style record to re-apply.\n */\nfunction applyThemableStyles(styles, styleRecord) {\n    _injectStylesWithCssText ?\n        registerStylesIE(styles, styleRecord) :\n        registerStyles(styles, styleRecord);\n}\n/**\n * Registers a set theme tokens to find and replace. If styles were already registered, they will be\n * replaced.\n * @param {any} theme JSON object of theme tokens to values.\n */\nfunction loadTheme(theme) {\n    _themeState.theme = theme;\n    // reload styles.\n    reloadStyles();\n}\nexports.loadTheme = loadTheme;\n/**\n * Reloads styles.\n * @param {any} theme JSON object of theme tokens to values.\n */\nfunction reloadStyles() {\n    if (_themeState.theme) {\n        for (var _i = 0, _a = _themeState.registeredStyles; _i < _a.length; _i++) {\n            var styleRecord = _a[_i];\n            applyThemableStyles(styleRecord.themableStyle, styleRecord);\n        }\n    }\n}\n/**\n * Find theme tokens and replaces them with provided theme values.\n * @param {string} styles Tokenized styles to fix.\n */\nfunction detokenize(styles) {\n    if (styles) {\n        styles = resolveThemableArray(splitStyles(styles));\n    }\n    return styles;\n}\nexports.detokenize = detokenize;\n/**\n * Resolves ThemingInstruction objects in an array and joins the result into a string.\n * @param {ThemableArray} splitStyleArray ThemableArray to resolve and join.\n */\nfunction resolveThemableArray(splitStyleArray) {\n    var theme = _themeState.theme;\n    var resolvedCss;\n    if (splitStyleArray) {\n        // Resolve the array of theming instructions to an array of strings.\n        // Then join the array to produce the final CSS string.\n        var resolvedArray = splitStyleArray.map(function (currentValue) {\n            var themeSlot = currentValue.theme;\n            if (themeSlot != null) {\n                // A theming annotation. Resolve it.\n                var themedValue = theme ? theme[themeSlot] : null;\n                var defaultValue = currentValue.defaultValue;\n                // Warn to console if we hit an unthemed value even when themes are provided.\n                // Allow the themedValue to be null to explicitly request the default value.\n                if (theme && !themedValue && console && !(themeSlot in theme)) {\n                    /* tslint:disable: max-line-length */\n                    console.warn(\"Theming value not provided for \\\"\" + themeSlot + \"\\\". Falling back to \\\"\" + (defaultValue || 'inherit') + \"\\\".\");\n                }\n                return themedValue || defaultValue || 'inherit';\n            }\n            else {\n                // A non-themable string. Preserve it.\n                return currentValue.rawString;\n            }\n        });\n        resolvedCss = resolvedArray.join('');\n    }\n    return resolvedCss;\n}\n/**\n * Split tokenized CSS into an array of strings and theme specification objects\n * @param {string} styles Tokenized styles to split.\n */\nfunction splitStyles(styles) {\n    var result = [];\n    if (styles) {\n        var pos = 0; // Current position in styles.\n        var tokenMatch = void 0;\n        while (tokenMatch = _themeTokenRegex.exec(styles)) {\n            var matchIndex = tokenMatch.index;\n            if (matchIndex > pos) {\n                result.push({\n                    rawString: styles.substring(pos, matchIndex)\n                });\n            }\n            result.push({\n                theme: tokenMatch[1],\n                defaultValue: tokenMatch[2] // May be undefined\n            });\n            // index of the first character after the current match\n            pos = _themeTokenRegex.lastIndex;\n        }\n        // Push the rest of the string after the last match.\n        result.push({\n            rawString: styles.substring(pos)\n        });\n    }\n    return result;\n}\nexports.splitStyles = splitStyles;\n/**\n * Registers a set of style text. If it is registered too early, we will register it when the\n * window.load event is fired.\n * @param {ThemableArray} styleArray Array of IThemingInstruction objects to register.\n * @param {IStyleRecord} styleRecord May specify a style Element to update.\n */\nfunction registerStyles(styleArray, styleRecord) {\n    var head = document.getElementsByTagName('head')[0];\n    var styleElement = document.createElement('style');\n    styleElement.type = 'text/css';\n    styleElement.appendChild(document.createTextNode(resolveThemableArray(styleArray)));\n    if (styleRecord) {\n        head.replaceChild(styleElement, styleRecord.styleElement);\n        styleRecord.styleElement = styleElement;\n    }\n    else {\n        head.appendChild(styleElement);\n    }\n    if (!styleRecord) {\n        _themeState.registeredStyles.push({\n            styleElement: styleElement,\n            themableStyle: styleArray\n        });\n    }\n}\n/**\n * Registers a set of style text, for IE 9 and below, which has a ~30 style element limit so we need\n * to register slightly differently.\n * @param {ThemableArray} styleArray Array of IThemingInstruction objects to register.\n * @param {IStyleRecord} styleRecord May specify a style Element to update.\n */\nfunction registerStylesIE(styleArray, styleRecord) {\n    var head = document.getElementsByTagName('head')[0];\n    var lastStyleElement = _themeState.lastStyleElement, registeredStyles = _themeState.registeredStyles;\n    var stylesheet = lastStyleElement ? lastStyleElement.styleSheet : null;\n    var lastStyleContent = stylesheet ? stylesheet.cssText : '';\n    var lastRegisteredStyle = registeredStyles[registeredStyles.length - 1];\n    var resolvedStyleText = resolveThemableArray(styleArray);\n    if (!lastStyleElement || (lastStyleContent.length + resolvedStyleText.length) > MAX_STYLE_CONTENT_SIZE) {\n        lastStyleElement = document.createElement('style');\n        lastStyleElement.type = 'text/css';\n        if (styleRecord) {\n            head.replaceChild(lastStyleElement, styleRecord.styleElement);\n            styleRecord.styleElement = lastStyleElement;\n        }\n        else {\n            head.appendChild(lastStyleElement);\n        }\n        if (!styleRecord) {\n            lastRegisteredStyle = {\n                styleElement: lastStyleElement,\n                themableStyle: styleArray\n            };\n            registeredStyles.push(lastRegisteredStyle);\n        }\n    }\n    lastStyleElement.styleSheet.cssText += detokenize(resolvedStyleText);\n    Array.prototype.push.apply(lastRegisteredStyle.themableStyle, styleArray); // concat in-place\n    // Preserve the theme state.\n    _themeState.lastStyleElement = lastStyleElement;\n}\n/**\n * Checks to see if styleSheet exists as a property off of a style element.\n * This will determine if style registration should be done via cssText (<= IE9) or not\n */\nfunction shouldUseCssText() {\n    var useCSSText = false;\n    if (typeof document !== 'undefined') {\n        var emptyStyle = document.createElement('style');\n        emptyStyle.type = 'text/css';\n        useCSSText = !!emptyStyle.styleSheet;\n    }\n    return useCSSText;\n}\n\n"
+    },
+    {
+      "id": 16,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.scss.js",
+      "name": "./lib/webparts/photopileWebPart/PhotopileWebPart.module.scss.js",
+      "index": 16,
+      "index2": 18,
+      "size": 355,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "../PhotopileWebPart.module.scss",
+          "loc": "18:37-79"
+        }
+      ],
+      "source": "\"use strict\";\n/* tslint:disable */\nrequire('./PhotopileWebPart.module.css');\nvar styles = {\n    photopileWebPart: 'photopileWebPart_44ab54de',\n    workingOnItSpinner: 'workingOnItSpinner_44ab54de',\n    loadingLabel: 'loadingLabel_44ab54de',\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.default = styles;\n/* tslint:enable */ \n\n"
+    },
+    {
+      "id": 17,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.css",
+      "name": "./lib/webparts/photopileWebPart/PhotopileWebPart.module.css",
+      "index": 17,
+      "index2": 17,
+      "size": 453,
+      "cacheable": false,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.scss.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 16,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.scss.js",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPart.module.scss.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPart.module.scss.js",
+          "type": "cjs require",
+          "userRequest": "./PhotopileWebPart.module.css",
+          "loc": "3:0-40"
+        }
+      ],
+      "source": "var content = require(\"!!../../../node_modules/css-loader/index.js?-minimize!./PhotopileWebPart.module.css\");\nvar loader = require(\"E:\\\\spfx-demo\\\\jquery-photopile2\\\\node_modules\\\\@microsoft\\\\load-themed-styles\\\\lib\\\\index.js\");\n\nif(typeof content === \"string\") content = [[module.id, content]];\n\n// add the styles to the DOM\nfor (var i = 0; i < content.length; i++) loader.loadStyles(content[i][1]);\n\nif(content.locals) module.exports = content.locals;"
+    },
+    {
+      "id": 18,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.css",
+      "name": "./~/css-loader?-minimize!./lib/webparts/photopileWebPart/PhotopileWebPart.module.css",
+      "index": 18,
+      "index2": 15,
+      "size": 398,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.css",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 17,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.css",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPart.module.css",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPart.module.css",
+          "type": "cjs require",
+          "userRequest": "!!../../../node_modules/css-loader/index.js?-minimize!./PhotopileWebPart.module.css",
+          "loc": "1:14-108"
+        }
+      ],
+      "source": "exports = module.exports = require(\"../../../node_modules/css-loader/lib/css-base.js\")();\n// imports\n\n\n// module\nexports.push([module.id, \".photopileWebPart_44ab54de .workingOnItSpinner_44ab54de{display:block;top:0;bottom:0;margin:auto;height:33.33333%;line-height:1.5em;padding:20px 20px}.photopileWebPart_44ab54de .loadingLabel_44ab54de{position:relative;top:-25px;left:35px}\", \"\"]);\n\n// exports\n"
+    },
+    {
+      "id": 19,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\lib\\css-base.js",
+      "name": "./~/css-loader/lib/css-base.js",
+      "index": 19,
+      "index2": 14,
+      "size": 1506,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.css",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 18,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.css",
+          "module": "./~/css-loader?-minimize!./lib/webparts/photopileWebPart/PhotopileWebPart.module.css",
+          "moduleName": "./~/css-loader?-minimize!./lib/webparts/photopileWebPart/PhotopileWebPart.module.css",
+          "type": "cjs require",
+          "userRequest": "../../../node_modules/css-loader/lib/css-base.js",
+          "loc": "1:27-86"
+        },
+        {
+          "moduleId": 29,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.css",
+          "module": "./~/css-loader?-minimize!./lib/webparts/photopileWebPart/css/photopile.css",
+          "moduleName": "./~/css-loader?-minimize!./lib/webparts/photopileWebPart/css/photopile.css",
+          "type": "cjs require",
+          "userRequest": "../../../../node_modules/css-loader/lib/css-base.js",
+          "loc": "1:27-89"
+        }
+      ],
+      "source": "/*\r\n\tMIT License http://www.opensource.org/licenses/mit-license.php\r\n\tAuthor Tobias Koppers @sokra\r\n*/\r\n// css base code, injected by the css-loader\r\nmodule.exports = function() {\r\n\tvar list = [];\r\n\r\n\t// return the list of modules as css string\r\n\tlist.toString = function toString() {\r\n\t\tvar result = [];\r\n\t\tfor(var i = 0; i < this.length; i++) {\r\n\t\t\tvar item = this[i];\r\n\t\t\tif(item[2]) {\r\n\t\t\t\tresult.push(\"@media \" + item[2] + \"{\" + item[1] + \"}\");\r\n\t\t\t} else {\r\n\t\t\t\tresult.push(item[1]);\r\n\t\t\t}\r\n\t\t}\r\n\t\treturn result.join(\"\");\r\n\t};\r\n\r\n\t// import a list of modules into the list\r\n\tlist.i = function(modules, mediaQuery) {\r\n\t\tif(typeof modules === \"string\")\r\n\t\t\tmodules = [[null, modules, \"\"]];\r\n\t\tvar alreadyImportedModules = {};\r\n\t\tfor(var i = 0; i < this.length; i++) {\r\n\t\t\tvar id = this[i][0];\r\n\t\t\tif(typeof id === \"number\")\r\n\t\t\t\talreadyImportedModules[id] = true;\r\n\t\t}\r\n\t\tfor(i = 0; i < modules.length; i++) {\r\n\t\t\tvar item = modules[i];\r\n\t\t\t// skip already imported module\r\n\t\t\t// this implementation is not 100% perfect for weird media query combinations\r\n\t\t\t//  when a module is imported multiple times with different media queries.\r\n\t\t\t//  I hope this will never occur (Hey this way we have smaller bundles)\r\n\t\t\tif(typeof item[0] !== \"number\" || !alreadyImportedModules[item[0]]) {\r\n\t\t\t\tif(mediaQuery && !item[2]) {\r\n\t\t\t\t\titem[2] = mediaQuery;\r\n\t\t\t\t} else if(mediaQuery) {\r\n\t\t\t\t\titem[2] = \"(\" + item[2] + \") and (\" + mediaQuery + \")\";\r\n\t\t\t\t}\r\n\t\t\t\tlist.push(item);\r\n\t\t\t}\r\n\t\t}\r\n\t};\r\n\treturn list;\r\n};\r\n"
+    },
+    {
+      "id": 20,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+      "name": "./~/@microsoft/load-themed-styles/lib/index.js",
+      "index": 20,
+      "index2": 16,
+      "size": 9346,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.css",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 17,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPart.module.css",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPart.module.css",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPart.module.css",
+          "type": "cjs require",
+          "userRequest": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+          "loc": "2:13-117"
+        },
+        {
+          "moduleId": 28,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.css",
+          "module": "./lib/webparts/photopileWebPart/css/photopile.css",
+          "moduleName": "./lib/webparts/photopileWebPart/css/photopile.css",
+          "type": "cjs require",
+          "userRequest": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+          "loc": "2:13-117"
+        }
+      ],
+      "source": "/**\n * An IThemingInstruction can specify a rawString to be preserved or a theme slot and a default value\n * to use if that slot is not specified by the theme.\n */\n\"use strict\";\n// IE needs to inject styles using cssText. However, we need to evaluate this lazily, so this\n// value will initialize as undefined, and later will be set once on first loadStyles injection.\nvar _injectStylesWithCssText;\n// Store the theming state in __themeState__ global scope for reuse in the case of duplicate\n// load-themed-styles hosted on the page.\nvar _root = (typeof window === 'undefined') ? global : window; // tslint:disable-line:no-any\nvar _themeState = _root.__themeState__ = _root.__themeState__ || {\n    theme: undefined,\n    lastStyleElement: undefined,\n    registeredStyles: []\n};\n/**\n * Matches theming tokens. For example, \"[theme: themeSlotName, default: #FFF]\" (including the quotes).\n */\n/* tslint:disable: max-line-length */\nvar _themeTokenRegex = /[\\'\\\"]\\[theme:\\s*(\\w+)\\s*(?:\\,\\s*default:\\s*([\\\\\"\\']?[\\.\\,\\(\\)\\#\\-\\s\\w]*[\\.\\,\\(\\)\\#\\-\\w][\\\"\\']?))?\\s*\\][\\'\\\"]/g;\n/* tslint:enable: max-line-length */\n/** Maximum style text length, for supporting IE style restrictions. */\nvar MAX_STYLE_CONTENT_SIZE = 10000;\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load\n * event is fired.\n * @param {string | ThemableArray} styles Themable style text to register.\n */\nfunction loadStyles(styles) {\n    var styleParts = Array.isArray(styles) ? styles : splitStyles(styles);\n    if (_injectStylesWithCssText === undefined) {\n        _injectStylesWithCssText = shouldUseCssText();\n    }\n    applyThemableStyles(styleParts);\n}\nexports.loadStyles = loadStyles;\n/**\n * Allows for customizable loadStyles logic. e.g. for server side rendering application\n * @param {(styles: string) => void} a loadStyles callback that gets called when styles are loaded or reloaded\n */\nfunction configureLoadStyles(callback) {\n    _themeState.loadStyles = callback;\n}\nexports.configureLoadStyles = configureLoadStyles;\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load event\n * is fired.\n * @param {string} styleText Style to register.\n * @param {IStyleRecord} styleRecord Existing style record to re-apply.\n */\nfunction applyThemableStyles(stylesArray, styleRecord) {\n    if (_themeState.loadStyles) {\n        var styles = resolveThemableArray(stylesArray);\n        _themeState.loadStyles(styles);\n    }\n    else {\n        _injectStylesWithCssText ?\n            registerStylesIE(stylesArray, styleRecord) :\n            registerStyles(stylesArray, styleRecord);\n    }\n}\n/**\n * Registers a set theme tokens to find and replace. If styles were already registered, they will be\n * replaced.\n * @param {theme} theme JSON object of theme tokens to values.\n */\nfunction loadTheme(theme) {\n    _themeState.theme = theme;\n    // reload styles.\n    reloadStyles();\n}\nexports.loadTheme = loadTheme;\n/**\n * Reloads styles.\n */\nfunction reloadStyles() {\n    if (_themeState.theme) {\n        for (var _i = 0, _a = _themeState.registeredStyles; _i < _a.length; _i++) {\n            var styleRecord = _a[_i];\n            applyThemableStyles(styleRecord.themableStyle, styleRecord);\n        }\n    }\n}\n/**\n * Find theme tokens and replaces them with provided theme values.\n * @param {string} styles Tokenized styles to fix.\n */\nfunction detokenize(styles) {\n    if (styles) {\n        styles = resolveThemableArray(splitStyles(styles));\n    }\n    return styles;\n}\nexports.detokenize = detokenize;\n/**\n * Resolves ThemingInstruction objects in an array and joins the result into a string.\n * @param {ThemableArray} splitStyleArray ThemableArray to resolve and join.\n */\nfunction resolveThemableArray(splitStyleArray) {\n    var theme = _themeState.theme;\n    var resolvedCss;\n    if (splitStyleArray) {\n        // Resolve the array of theming instructions to an array of strings.\n        // Then join the array to produce the final CSS string.\n        var resolvedArray = splitStyleArray.map(function (currentValue) {\n            var themeSlot = currentValue.theme;\n            if (themeSlot) {\n                // A theming annotation. Resolve it.\n                var themedValue = theme ? theme[themeSlot] : undefined;\n                var defaultValue = currentValue.defaultValue;\n                // Warn to console if we hit an unthemed value even when themes are provided.\n                // Allow the themedValue to be undefined to explicitly request the default value.\n                if (theme && !themedValue && console && !(themeSlot in theme)) {\n                    /* tslint:disable: max-line-length */\n                    console.warn(\"Theming value not provided for \\\"\" + themeSlot + \"\\\". Falling back to \\\"\" + (defaultValue || 'inherit') + \"\\\".\");\n                }\n                return themedValue || defaultValue || 'inherit';\n            }\n            else {\n                // A non-themable string. Preserve it.\n                return currentValue.rawString;\n            }\n        });\n        resolvedCss = resolvedArray.join('');\n    }\n    return resolvedCss;\n}\n/**\n * Split tokenized CSS into an array of strings and theme specification objects\n * @param {string} styles Tokenized styles to split.\n */\nfunction splitStyles(styles) {\n    var result = [];\n    if (styles) {\n        var pos = 0; // Current position in styles.\n        var tokenMatch = void 0;\n        while (tokenMatch = _themeTokenRegex.exec(styles)) {\n            var matchIndex = tokenMatch.index;\n            if (matchIndex > pos) {\n                result.push({\n                    rawString: styles.substring(pos, matchIndex)\n                });\n            }\n            result.push({\n                theme: tokenMatch[1],\n                defaultValue: tokenMatch[2] // May be undefined\n            });\n            // index of the first character after the current match\n            pos = _themeTokenRegex.lastIndex;\n        }\n        // Push the rest of the string after the last match.\n        result.push({\n            rawString: styles.substring(pos)\n        });\n    }\n    return result;\n}\nexports.splitStyles = splitStyles;\n/**\n * Registers a set of style text. If it is registered too early, we will register it when the\n * window.load event is fired.\n * @param {ThemableArray} styleArray Array of IThemingInstruction objects to register.\n * @param {IStyleRecord} styleRecord May specify a style Element to update.\n */\nfunction registerStyles(styleArray, styleRecord) {\n    var head = document.getElementsByTagName('head')[0];\n    var styleElement = document.createElement('style');\n    styleElement.type = 'text/css';\n    styleElement.appendChild(document.createTextNode(resolveThemableArray(styleArray)));\n    if (styleRecord) {\n        head.replaceChild(styleElement, styleRecord.styleElement);\n        styleRecord.styleElement = styleElement;\n    }\n    else {\n        head.appendChild(styleElement);\n    }\n    if (!styleRecord) {\n        _themeState.registeredStyles.push({\n            styleElement: styleElement,\n            themableStyle: styleArray\n        });\n    }\n}\n/**\n * Registers a set of style text, for IE 9 and below, which has a ~30 style element limit so we need\n * to register slightly differently.\n * @param {ThemableArray} styleArray Array of IThemingInstruction objects to register.\n * @param {IStyleRecord} styleRecord May specify a style Element to update.\n */\nfunction registerStylesIE(styleArray, styleRecord) {\n    var head = document.getElementsByTagName('head')[0];\n    var lastStyleElement = _themeState.lastStyleElement, registeredStyles = _themeState.registeredStyles;\n    var stylesheet = lastStyleElement ? lastStyleElement.styleSheet : undefined;\n    var lastStyleContent = stylesheet ? stylesheet.cssText : '';\n    var lastRegisteredStyle = registeredStyles[registeredStyles.length - 1];\n    var resolvedStyleText = resolveThemableArray(styleArray);\n    if (!lastStyleElement || (lastStyleContent.length + resolvedStyleText.length) > MAX_STYLE_CONTENT_SIZE) {\n        lastStyleElement = document.createElement('style');\n        lastStyleElement.type = 'text/css';\n        if (styleRecord) {\n            head.replaceChild(lastStyleElement, styleRecord.styleElement);\n            styleRecord.styleElement = lastStyleElement;\n        }\n        else {\n            head.appendChild(lastStyleElement);\n        }\n        if (!styleRecord) {\n            lastRegisteredStyle = {\n                styleElement: lastStyleElement,\n                themableStyle: styleArray\n            };\n            registeredStyles.push(lastRegisteredStyle);\n        }\n    }\n    lastStyleElement.styleSheet.cssText += detokenize(resolvedStyleText);\n    Array.prototype.push.apply(lastRegisteredStyle.themableStyle, styleArray); // concat in-place\n    // Preserve the theme state.\n    _themeState.lastStyleElement = lastStyleElement;\n}\n/**\n * Checks to see if styleSheet exists as a property off of a style element.\n * This will determine if style registration should be done via cssText (<= IE9) or not\n */\nfunction shouldUseCssText() {\n    var useCSSText = false;\n    if (typeof document !== 'undefined') {\n        var emptyStyle = document.createElement('style');\n        emptyStyle.type = 'text/css';\n        useCSSText = !!emptyStyle.styleSheet;\n    }\n    return useCSSText;\n}\n\n"
+    },
+    {
+      "id": 21,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\SPPicturesListService.js",
+      "name": "./lib/webparts/photopileWebPart/SPPicturesListService.js",
+      "index": 21,
+      "index2": 21,
+      "size": 15896,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\PhotopileWebPartWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+          "type": "cjs require",
+          "userRequest": "./SPPicturesListService",
+          "loc": "13:30-64"
+        },
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "../SPPicturesListService",
+          "loc": "19:30-65"
+        }
+      ],
+      "source": "\"use strict\";\nvar sp_http_1 = require(\"@microsoft/sp-http\");\nvar sp_core_library_1 = require(\"@microsoft/sp-core-library\");\nvar MockHttpClient_1 = require(\"./MockHttpClient\");\n/**\n * @class\n * Service implementation to get list & list items from current SharePoint site\n */\nvar SPPicturesListService = (function () {\n    /**\n     * @function\n     * Service constructor\n     */\n    function SPPicturesListService(_props, pageContext) {\n        this.props = _props;\n        this.context = pageContext;\n    }\n    /**\n     * @function\n     * Gets the list of picture libs in the current SharePoint site\n     */\n    SPPicturesListService.prototype.getPictureLibs = function () {\n        if (sp_core_library_1.Environment.type === sp_core_library_1.EnvironmentType.Local) {\n            //If the running environment is local, load the data from the mock\n            return this.getPictureLibsFromMock();\n        }\n        else {\n            //If the running environment is SharePoint, request the lists REST service\n            //Gets only the list with BaseTemplate = 109 (picture libs)\n            return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + \"/_api/lists?$select=Title,id,BaseTemplate&$filter=BaseTemplate%20eq%20109\", sp_http_1.SPHttpClient.configurations.v1)\n                .then(function (response) {\n                return response.json();\n            });\n        }\n    };\n    /**\n     * @function\n     * Returns 3 fake SharePoint lists for the Mock mode\n     */\n    SPPicturesListService.prototype.getPictureLibsFromMock = function () {\n        return MockHttpClient_1.default.getLists(this.context.pageContext.web.absoluteUrl).then(function () {\n            var listData = {\n                value: [\n                    { Title: 'Mock List One', Id: '1', BaseTemplate: '109' },\n                    { Title: 'Mock List Two', Id: '2', BaseTemplate: '109' },\n                    { Title: 'Mock List Three', Id: '3', BaseTemplate: '109' }\n                ]\n            };\n            return listData;\n        });\n    };\n    /**\n     * @function\n     * Gets the pictures from a SharePoint list\n     */\n    SPPicturesListService.prototype.getPictures = function (libId) {\n        var _this = this;\n        if (sp_core_library_1.Environment.type === sp_core_library_1.EnvironmentType.Local) {\n            //If the running environment is local, load the data from the mock\n            return this.getPicturesFromMock(libId);\n        }\n        else {\n            //If the running environment is SharePoint, request the items REST service\n            //Builds the request to get only some fields, order the items & limit the number of items\n            //TODO: optimize the request to not include folders and get only items\n            var restUrl = this.context.pageContext.web.absoluteUrl;\n            restUrl += \"/_api/Web/Lists(guid'\";\n            restUrl += this.props.listName;\n            restUrl += \"')/items?$expand=File&$select=Title,Description,id,File,FileSystemObjectType&$orderby=\";\n            restUrl += this.props.orderBy;\n            restUrl += \"%20\";\n            restUrl += this.props.orderByAsc;\n            restUrl += \"&$top=\";\n            restUrl += this.props.count;\n            //Request the SharePoint web service\n            return this.context.spHttpClient.get(restUrl, sp_http_1.SPHttpClient.configurations.v1).then(function (response) {\n                return response.json().then(function (responseFormated) {\n                    var formatedResponse = { value: [] };\n                    //Fetchs the Json response to construct the final items list\n                    responseFormated.value.map(function (object, i) {\n                        //Tests if the result is a file and not a folder\n                        if (object['FileSystemObjectType'] == '0') {\n                            var spListItem = {\n                                'ID': object[\"ID\"],\n                                'Title': object['Title'],\n                                'Description': object['Description'],\n                                'File': {\n                                    'Name': object['File']['Name'],\n                                    'ServerRelativeUrl': object['File']['ServerRelativeUrl']\n                                }\n                            };\n                            //Creates the thumbnail item url from the Picture path\n                            spListItem.File.ThumbnailServerUrl = _this.getThumbnailUrl(spListItem.File.ServerRelativeUrl, spListItem.File.Name);\n                            formatedResponse.value.push(spListItem);\n                        }\n                    });\n                    return formatedResponse;\n                });\n            });\n        }\n    };\n    /**\n     * @function\n     * Gets the thumbnail picture url from the Picture name.\n     * In SharePoint pictures libs, the thumbnail url is formated as for example '/_t/10_jpg.jpg'\n     */\n    SPPicturesListService.prototype.getThumbnailUrl = function (pictureUrl, pictureName) {\n        if (pictureUrl == null || pictureUrl == '')\n            return '';\n        var thumbUrl = '';\n        thumbUrl = pictureUrl.replace(pictureName, '');\n        thumbUrl += \"_t/\";\n        thumbUrl += pictureName.replace(\".\", \"_\");\n        thumbUrl += \".jpg\";\n        return thumbUrl;\n    };\n    /**\n     * @function\n     * Gets the pictures list from the mock. This function will return a\n     * different list of pics for the lib 1 & 2, and an empty list for the third.\n     */\n    SPPicturesListService.prototype.getPicturesFromMock = function (libId) {\n        return MockHttpClient_1.default.getListsItems(this.context.pageContext.web.absoluteUrl).then(function () {\n            var listData = { value: [] };\n            if (libId == '1') {\n                listData = {\n                    value: [\n                        {\n                            \"ID\": \"1\", \"Title\": \"Barton Dam, Ann Arbor, Michigan\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"01.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/01.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/01.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"2\", \"Title\": \"Building Atlanta, Georgia\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"02.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/02.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/02.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"3\", \"Title\": \"Nice day for a swim\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"03.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/03.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/03.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"4\", \"Title\": \"The plants that never die\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"04.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/04.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/04.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"5\", \"Title\": \"Downtown Atlanta, Georgia\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"05.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/05.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/05.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"6\", \"Title\": \"Atlanta traffic\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"06.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/06.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/06.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"7\", \"Title\": \"A pathetic dog\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"07.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/07.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/07.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"8\", \"Title\": \"Two happy dogs\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"08.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/08.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/08.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"9\", \"Title\": \"Antigua, Guatemala\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"09.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/09.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/09.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"10\", \"Title\": \"Iximche, Guatemala\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"10.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/10.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/10.jpg\"\n                            }\n                        }\n                    ]\n                };\n            }\n            else if (libId == '2') {\n                listData = {\n                    value: [\n                        {\n                            \"ID\": \"11\", \"Title\": \"Barton Dam, Ann Arbor, Michigan\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"11.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/11.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/11.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"12\", \"Title\": \"Building Atlanta, Georgia\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"12.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/12.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/12.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"13\", \"Title\": \"Nice day for a swim\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"13.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/13.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/13.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"14\", \"Title\": \"The plants that never die\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"14.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/14.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/14.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"15\", \"Title\": \"Downtown Atlanta, Georgia\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"15.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/15.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/15.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"16\", \"Title\": \"Atlanta traffic\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"16.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/16.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/16.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"17\", \"Title\": \"A pathetic dog\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"17.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/17.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/17.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"18\", \"Title\": \"Two happy dogs\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"18.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/18.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/18.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"19\", \"Title\": \"Antigua, Guatemala\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"19.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/19.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/19.jpg\"\n                            }\n                        },\n                        {\n                            \"ID\": \"20\", \"Title\": \"Iximche, Guatemala\", \"Description\": \"\",\n                            \"File\": {\n                                \"Name\": \"20.jpg\",\n                                \"ServerRelativeUrl\": \"../src/webparts/photopileWebPart/images/fullsize/20.jpg\",\n                                \"ThumbnailServerUrl\": \"../src/webparts/photopileWebPart/images/thumbs/20.jpg\"\n                            }\n                        }\n                    ]\n                };\n            }\n            return listData;\n        });\n    };\n    return SPPicturesListService;\n}());\nexports.SPPicturesListService = SPPicturesListService;\n\n"
+    },
+    {
+      "id": 22,
+      "identifier": "external \"@microsoft/sp-http\"",
+      "name": "external \"@microsoft/sp-http\"",
+      "index": 22,
+      "index2": 19,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\SPPicturesListService.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 21,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\SPPicturesListService.js",
+          "module": "./lib/webparts/photopileWebPart/SPPicturesListService.js",
+          "moduleName": "./lib/webparts/photopileWebPart/SPPicturesListService.js",
+          "type": "cjs require",
+          "userRequest": "@microsoft/sp-http",
+          "loc": "2:16-45"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\MockHttpClient.js",
+      "name": "./lib/webparts/photopileWebPart/MockHttpClient.js",
+      "index": 23,
+      "index2": 20,
+      "size": 1157,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\SPPicturesListService.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 21,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\SPPicturesListService.js",
+          "module": "./lib/webparts/photopileWebPart/SPPicturesListService.js",
+          "moduleName": "./lib/webparts/photopileWebPart/SPPicturesListService.js",
+          "type": "cjs require",
+          "userRequest": "./MockHttpClient",
+          "loc": "4:23-50"
+        }
+      ],
+      "source": "\"use strict\";\n/**\n * @class\n * Defines a http client to request mock data to use the web part with the local workbench\n */\nvar MockHttpClient = (function () {\n    function MockHttpClient() {\n    }\n    /**\n     * @function\n     * Mock get SharePoint list request\n     */\n    MockHttpClient.getLists = function (restUrl, options) {\n        return new Promise(function (resolve) {\n            resolve(MockHttpClient._lists);\n        });\n    };\n    /**\n     * @function\n     * Mock get SharePoint list items request\n     */\n    MockHttpClient.getListsItems = function (restUrl, options) {\n        return new Promise(function (resolve) {\n            resolve(MockHttpClient._items);\n        });\n    };\n    return MockHttpClient;\n}());\n/**\n * @var\n * Mock SharePoint list sample\n */\nMockHttpClient._lists = [{ Title: 'Mock List', Id: '1', BaseTemplate: '109' }];\n/**\n * @var\n * Mock SharePoint list item sample\n */\nMockHttpClient._items = [\n    { \"ID\": \"1\", \"Title\": \"Pic 1\", \"Description\": \"\", \"File\": { \"Name\": \"1.jpg\", \"ServerRelativeUrl\": \"/Images/1.jpg\" } }\n];\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.default = MockHttpClient;\n\n"
+    },
+    {
+      "id": 24,
+      "identifier": "external \"photopileModule\"",
+      "name": "external \"photopileModule\"",
+      "index": 24,
+      "index2": 22,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "photopileModule",
+          "loc": "20:16-42"
+        },
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "photopileModule",
+          "loc": "24:0-26"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "identifier": "external \"jquery\"",
+      "name": "external \"jquery\"",
+      "index": 25,
+      "index2": 23,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "jquery",
+          "loc": "21:0-17"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "identifier": "external \"jqueryui\"",
+      "name": "external \"jqueryui\"",
+      "index": 26,
+      "index2": 24,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "jqueryui",
+          "loc": "22:0-19"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.scss.js",
+      "name": "./lib/webparts/photopileWebPart/css/photopile.scss.js",
+      "index": 27,
+      "index2": 27,
+      "size": 71,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\components\\PhotopileWebPart.js",
+          "module": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "moduleName": "./lib/webparts/photopileWebPart/components/PhotopileWebPart.js",
+          "type": "cjs require",
+          "userRequest": "../css/photopile.scss",
+          "loc": "23:0-32"
+        }
+      ],
+      "source": "/* tslint:disable */\nrequire('./photopile.css');\n/* tslint:enable */ \n\n"
+    },
+    {
+      "id": 28,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.css",
+      "name": "./lib/webparts/photopileWebPart/css/photopile.css",
+      "index": 28,
+      "index2": 26,
+      "size": 442,
+      "cacheable": false,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.scss.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 27,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.scss.js",
+          "module": "./lib/webparts/photopileWebPart/css/photopile.scss.js",
+          "moduleName": "./lib/webparts/photopileWebPart/css/photopile.scss.js",
+          "type": "cjs require",
+          "userRequest": "./photopile.css",
+          "loc": "2:0-26"
+        }
+      ],
+      "source": "var content = require(\"!!../../../../node_modules/css-loader/index.js?-minimize!./photopile.css\");\nvar loader = require(\"E:\\\\spfx-demo\\\\jquery-photopile2\\\\node_modules\\\\@microsoft\\\\load-themed-styles\\\\lib\\\\index.js\");\n\nif(typeof content === \"string\") content = [[module.id, content]];\n\n// add the styles to the DOM\nfor (var i = 0; i < content.length; i++) loader.loadStyles(content[i][1]);\n\nif(content.locals) module.exports = content.locals;"
+    },
+    {
+      "id": 29,
+      "identifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.css",
+      "name": "./~/css-loader?-minimize!./lib/webparts/photopileWebPart/css/photopile.css",
+      "index": 29,
+      "index2": 25,
+      "size": 2099,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.css",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 28,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-photopile2\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-photopile2\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-photopile2\\lib\\webparts\\photopileWebPart\\css\\photopile.css",
+          "module": "./lib/webparts/photopileWebPart/css/photopile.css",
+          "moduleName": "./lib/webparts/photopileWebPart/css/photopile.css",
+          "type": "cjs require",
+          "userRequest": "!!../../../../node_modules/css-loader/index.js?-minimize!./photopile.css",
+          "loc": "1:14-97"
+        }
+      ],
+      "source": "exports = module.exports = require(\"../../../../node_modules/css-loader/lib/css-base.js\")();\n// imports\n\n\n// module\nexports.push([module.id, \"@media (max-width:320px){ul.photopile li a{max-width:85px}}@media (min-width:321px) and (max-width:568px){ul.photopile li a{max-width:100px}}@media (min-width:569px) and (max-width:768px){ul.photopile li a{max-width:115px}}@media (min-width:769px) and (max-width:1024px){ul.photopile li a{max-width:125px}}@media (min-width:1025px){ul.photopile li a{max-width:150px}}div#photopile-nav-next,div#photopile-nav-next:hover,div#photopile-nav-prev,div#photopile-nav-prev:hover{background-image:url(//photopilewebpart.blob.core.windows.net/photopile-web-part/nav-sprites.png)}ul.photopile{display:none}ul.photopile{position:relative;display:inline-block;width:100%;margin:0;padding:0;list-style:none}ul.photopile li{display:inline-block;position:relative;margin:2px;padding:0;-webkit-backface-visibility:hidden}ul.photopile li a{display:block;padding:2px;outline:0;text-decoration:none;border:1px solid #6F6F6F;box-shadow:0 0 20px #3D3D3D}ul.photopile li.photopile-active-thumbnail a:hover,ul.photopile li.photopile-active-thumbnail:hover{cursor:default}ul.photopile li a img{display:block;margin:0;padding:0;border:1px solid #6F6F6F;width:100%;height:auto;box-sizing:border-box}div#photopile-active-image-container{border:1px solid #6F6F6F;box-shadow:0 20px 80px #000;box-sizing:border-box}div#photopile-active-image-container img{margin:0 auto;height:auto}div#photopile-active-image-info{position:relative;width:100%;background:rgba(0,0,0,.3)}div#photopile-active-image-info p{color:#fff;font-size:12px;margin:0;padding:3px 8px}div#photopile-nav-next,div#photopile-nav-prev{opacity:0;position:absolute;top:50%;width:30px;height:40px;margin-top:-20px;cursor:pointer}div#photopile-nav-next{right:0;margin-right:-35px;background-position:-50px 0}div#photopile-nav-next:hover{background-position:-50px -50px}div#photopile-nav-prev{left:0;right:0;margin-left:-35px;background-position:0 0}div#photopile-nav-prev:hover{background-position:0 -50px}\", \"\"]);\n\n// exports\n"
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}

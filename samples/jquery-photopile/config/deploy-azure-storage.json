@@ -1,6 +1,6 @@
 {
   "workingDir": "./temp/deploy/",
-  "account": "photopilewebpart",
+  "account": "<!-- STORAGE ACCOUNT NAME -->",
   "container": "photopile-web-part",
-  "accessKey": ""
+  "accessKey": "<!-- ACCESS KEY -->"
 }
