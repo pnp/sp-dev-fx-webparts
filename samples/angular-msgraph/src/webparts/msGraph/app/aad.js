@@ -1,4 +1,4 @@
-let hello = require('hellojs');
+var hello = require('hellojs');
 
 hello.init({
 
