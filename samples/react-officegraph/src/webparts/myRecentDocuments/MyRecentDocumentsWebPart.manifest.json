@@ -1,13 +1,14 @@
 {
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
-  "id": "e978c000-4905-4f25-8f5d-db250dbd30a6",
+  "id": "a5a289e6-4d54-4ffa-a1d6-3c5fa9dff088",
+  "alias": "MyRecentDocumentsWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{
-    "groupId": "e978c000-4905-4f25-8f5d-db250dbd30a6",
+    "groupId": "a5a289e6-4d54-4ffa-a1d6-3c5fa9dff088",
     "group": { "default": "Content rollup" },
     "title": { "default": "My recent documents" },
     "description": { "default": "Shows documents recently viewed or modified by the current user" },
