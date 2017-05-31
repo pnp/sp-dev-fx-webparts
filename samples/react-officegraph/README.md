@@ -40,7 +40,7 @@ Sample SharePoint Framework Client-Side Web Part built using React showing docum
 
 Solution|Author(s)
 --------|---------
-react-officegraph|Waldek Mastykarz (MVP, Rencore, @waldekm), Gautam Sheth(SharePoint Consultant,Rapidcircle,@gautamdsheth)
+react-officegraph|Waldek Mastykarz (MVP, Rencore, @waldekm), Gautam Sheth(SharePoint Consultant,Rapid Circle,@gautamdsheth)
 
 ## Version history
 
