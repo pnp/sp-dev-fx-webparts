@@ -87,6 +87,6 @@ Before we can accept your pull requests you will be asked to sign electronically
 
 You can find Microsoft CLA from the following address - https://cla.microsoft.com. 
 
-Thank you for your contribution. 
+Thank you for your contribution.  
 
 > Sharing is caring. 
