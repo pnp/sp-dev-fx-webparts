@@ -29,7 +29,7 @@ Here's a high level process for submitting new samples or updates to existing on
 2. Fork the main repository to your GitHub account
 3. Create a new branch for your fork for the contribution based on dev branch
 4. Include your changes to your branch
-5. Commit your changes using descriptive commit message - These are used to track changes on the repositories for monthly communications, see [September 2016](dev.office.com/blogs/PnP-September-2016-Release) as an example
+5. Commit your changes using descriptive commit message - These are used to track changes on the repositories for monthly communications, see [May 2017](https://dev.office.com/blogs/PnP-May-2017-Release) as an example
 6. Create a pull request in your own fork and target 'dev' branch
 7. Fill up the provided PR template with the requested details
 
