@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "2f1538d9-3b9a-4033-8f3b-2cdf2ec3c64e",
+  "alias": "VideoLibraryReact3DCarouselWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "2f1538d9-3b9a-4033-8f3b-2cdf2ec3c64e",
+    "group": { "default": "Under Development" },
+            "title": { "default": "React-3d-carousel  Video Library" },
+    "description": { 
+      "default": "VideoLibrary implemented using react-3d-carousel -- Shows videos from an O365 Video Channel"
+       },
+    "officeFabricIconFontName": "Ribbon",
+    "properties": {
+      "description": "React-3d-carousel  Video Library",
+          "layout":"prism",
+      "duration":199
+    }
+  }]
+}
