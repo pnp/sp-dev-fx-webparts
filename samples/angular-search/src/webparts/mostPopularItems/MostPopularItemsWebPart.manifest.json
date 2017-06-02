@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "4013f654-ef1f-47d8-a41c-145c57ef0265",
+  "alias": "MostPopularItemsWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "4013f654-ef1f-47d8-a41c-145c57ef0265",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Most Popular Items" },
+    "description": { "default": "WebPart which shows most popular items from site or document library." },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+       "url": "https://rapidcircle1com.sharepoint.com/sites/GautamIIWDevSite/",
+      "numberOfItems": 5
+    }
+  }]
+}
