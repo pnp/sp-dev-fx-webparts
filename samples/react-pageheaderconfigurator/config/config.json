@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/sitePageHeaderConfigurator/SitePageHeaderConfiguratorWebPart.js",
+      "manifest": "./src/webparts/sitePageHeaderConfigurator/SitePageHeaderConfiguratorWebPart.manifest.json",
+      "outputPath": "./dist/site-page-header-configurator.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "sitePageHeaderConfiguratorStrings": "webparts/sitePageHeaderConfigurator/loc/{locale}.js"
+  }
+}

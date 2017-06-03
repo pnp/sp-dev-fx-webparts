@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "Site page header configurator by Puzzlepart",
+    "id": "ed347d47-519f-4f4c-b933-f1a1ec815f56",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/pzl-site-page-header.sppkg"
+  }
+}
