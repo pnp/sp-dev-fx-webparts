@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "spfx-batch-client-side-solution",
+    "id": "c1f4118e-f106-4bb4-b984-7d8508a1482c",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-batch.sppkg"
+  }
+}

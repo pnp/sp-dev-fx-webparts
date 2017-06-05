@@ -1,0 +1,45 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/pnpJsCrudWithBatch/PnpJsCrudWithBatchWebPart.js",
+      "manifest": "./src/webparts/pnpJsCrudWithBatch/PnpJsCrudWithBatchWebPart.manifest.json",
+      "outputPath": "./dist/pnp-js-crud-with-batch.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/jsomCrudWithBatch/JsomCrudWithBatchWebPart.js",
+      "manifest": "./src/webparts/jsomCrudWithBatch/JsomCrudWithBatchWebPart.manifest.json",
+      "outputPath": "./dist/jsom-crud-with-batch.bundle.js"
+    }
+  ],
+  "externals": {
+    "sp-init": {
+      "path": "https://microsoft.sharepoint.com/_layouts/15/init.js",
+      "globalName": "$_global_init"
+    },
+    "microsoft-ajax": {
+      "path": "https://microsoft.sharepoint.com/_layouts/15/MicrosoftAjax.js",
+      "globalName": "Sys",
+      "globalDependencies": [
+        "sp-init"
+      ]
+    },
+    "sp-runtime": {
+      "path": "https://microsoft.sharepoint.com/_layouts/15/SP.Runtime.js",
+      "globalName": "SP",
+      "globalDependencies": [
+        "microsoft-ajax"
+      ]
+    },
+    "sharepoint": {
+      "path": "https://microsoft.sharepoint.com/_layouts/15/SP.js",
+      "globalName": "SP",
+      "globalDependencies": [
+        "sp-runtime"
+      ]
+    }
+  },
+  "localizedResources": {
+    "pnpJsCrudWithBatchStrings": "webparts/pnpJsCrudWithBatch/loc/{locale}.js",
+    "jsomCrudWithBatchStrings": "webparts/jsomCrudWithBatch/loc/{locale}.js"
+  }
+}
