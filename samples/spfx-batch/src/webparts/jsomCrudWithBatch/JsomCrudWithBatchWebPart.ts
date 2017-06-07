@@ -211,14 +211,15 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
     var itemArray = [];
     const context: SP.ClientContext = new SP.ClientContext(webUrl);
     const list: SP.List = context.get_web().get_lists().getByTitle(listName);    
-    
-    for(var i = 0; i< data.length; i++){    
-        var oListItem = list.getItemById(data[i].Id);  
-        oListItem.set_item('Title', 'Updated from batch ' + i);  
+
+    data.forEach((item,index) => {
+      var oListItem = list.getItemById(item.Id);  
+        oListItem.set_item('Title', 'Updated from batch ' + index);  
         oListItem.update();
-        itemArray[i] = oListItem;
-        context.load(itemArray[i]);
-    }    
+        itemArray[index] = oListItem;
+        context.load(itemArray[index]);
+    });    
+    
     context.executeQueryAsync(function(){
         var stringOfId=data.map(element => element.Id).join(',');
         beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully updated`);
@@ -245,11 +246,12 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
     var itemArray = [];
     const context: SP.ClientContext = new SP.ClientContext(webUrl);
     const list: SP.List = context.get_web().get_lists().getByTitle(listName);    
-    
-    for(var i = 0; i < data.length; i++){    
-        var oListItem = list.getItemById(data[i].Id);  
+
+    data.forEach(item => {
+        var oListItem = list.getItemById(item.Id);  
         oListItem.deleteObject();    
-    }    
+    });
+    
     context.executeQueryAsync(function(){
         var stringOfId=data.map(element => element.Id).join(',');
         beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully updated`);
