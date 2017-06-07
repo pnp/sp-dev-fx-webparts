@@ -134,7 +134,7 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
   }
 
   private createItem(): void {
-    this.updateStatus('Creating item...');
+    this.updateStatus('Creating items...');
     
     pnp.sp.web.lists.getByTitle(this.properties.listName).getListItemEntityTypeFullName().then(entityTypeFullName =>{
       let batch = pnp.sp.web.createBatch();
@@ -207,10 +207,7 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
             });
 
             batch.execute().then(d=> {
-                var stringOfId='';
-                items.forEach(element => {
-                    stringOfId+=element.Id +',';
-                });
+                var stringOfId=items.map(element => element.Id).join(',');
                 this.updateStatus(`Item with IDs: ${stringOfId} successfully updated`);
               }).catch(error => {
                 this.updateStatus('Loading latest items failed with error '+ error);
@@ -224,7 +221,7 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
       return;
     }
 
-    this.updateStatus('Loading latest items...');
+    this.updateStatus('Deleting latest items...');
     let latestItemId: number = undefined;
     let etag: string = undefined;
 
@@ -241,10 +238,7 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
             });
 
             batch.execute().then(d=> {
-                var stringOfId='';
-                items.forEach(element => {
-                    stringOfId+=element.Id +',';
-                });
+                var stringOfId=items.map(element => element.Id).join(',');
                 this.updateStatus(`Item with IDs: ${stringOfId} successfully deleted`);
               }).catch(error => {
                 this.updateStatus('Error deleting item '+ error);
@@ -259,11 +253,7 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
   }
 
   private updateItemsHtml(items: IListItem[]): void {
-    const itemsHtml: string[] = [];
-    for (let i: number = 0; i < items.length; i++) {
-      itemsHtml.push(`<li>${items[i].Title} (${items[i].Id})</li>`);
-    }
-
-    this.domElement.querySelector('.items').innerHTML = itemsHtml.join('');
+    this.domElement.querySelector('.items').innerHTML = 
+		items.map(item=> `<li>${item.Title} (${item.Id})</li>` ).join('');
   }
 }
