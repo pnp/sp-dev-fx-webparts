@@ -1,0 +1,26 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/pokemonGo/PokemonGoWebPart.js",
+      "manifest": "./src/webparts/pokemonGo/PokemonGoWebPart.manifest.json",
+      "outputPath": "./dist/pokemon-go.bundle.js"
+    }
+  ],
+  "externals": {
+    "@microsoft/sp-client-base": "node_modules/@microsoft/sp-client-base/dist/sp-client-base.js",
+    "@microsoft/sp-client-preview": "node_modules/@microsoft/sp-client-preview/dist/sp-client-preview.js",
+    "@microsoft/sp-lodash-subset": "node_modules/@microsoft/sp-lodash-subset/dist/sp-lodash-subset.js",
+    "office-ui-fabric-react": "node_modules/office-ui-fabric-react/dist/office-ui-fabric-react.js",
+    "react": "node_modules/react/dist/react.min.js",
+    "react-dom": "node_modules/react-dom/dist/react-dom.min.js",
+    "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js",
+    "BrowserModule" : "node_modules/@angular/platform-browser/src/platform-browser.js",
+    "NgModule" : "node_modules/@angular/core/src/core.js",
+    "CommonModule" : "node_modules/@angular/common/src/commonmodule.js",
+    "FormsModule" :  "node_modules/@angular/forms/src/formsmodule.js",
+    "HttpModule":  "node_modules/@angular/http/src/httpmodule.js"
+  },
+  "localizedResources": {
+    "pokemonGoStrings": "webparts/pokemonGo/loc/{locale}.js"
+  }
+}

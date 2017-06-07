@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "pokemon-client-side-solution",
+    "id": "532b79c7-f8ba-45a4-8205-171bb271f09f",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "pokemon.spapp"
+  }
+}
