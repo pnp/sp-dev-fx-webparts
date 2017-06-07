@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "496c1011-d76e-46d8-8b35-6541a75a68b0",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "496c1011-d76e-46d8-8b35-6541a75a68b0",
+    "group": { "default": "Under Development" },
+    "title": { "default": "PokemonGo" },
+    "description": { "default": "Muestra los pokemon" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "PokemonGo"
+    }
+  }]
+}
