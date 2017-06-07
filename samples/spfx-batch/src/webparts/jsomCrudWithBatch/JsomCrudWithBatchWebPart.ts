@@ -95,7 +95,7 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
 
   private setButtonsEventHandlers(): void {
     const webPart: JsomCrudWithBatchWebPart = this;
-    this.domElement.querySelector('button.create-Button').addEventListener('click', () => { webPart.createItem(); });
+    this.domElement.querySelector('button.create-Button').addEventListener('click', () => { webPart.createItem(); });    
     this.domElement.querySelector('button.readall-Button').addEventListener('click', () => { webPart.readItems(); });
     this.domElement.querySelector('button.update-Button').addEventListener('click', () => { webPart.updateItem(); });
     this.domElement.querySelector('button.delete-Button').addEventListener('click', () => { webPart.deleteItem(); });
@@ -107,12 +107,8 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
   }
 
   private updateItemsHtml(items: IListItem[]): void {
-    const itemsHtml: string[] = [];
-    for (let i: number = 0; i < items.length; i++) {
-      itemsHtml.push(`<li>${items[i].Title} (${items[i].Id})</li>`);
-    }
-
-    this.domElement.querySelector('.items').innerHTML = itemsHtml.join('');
+    this.domElement.querySelector('.items').innerHTML = 
+		items.map(item=> `<li>${item.Title} (${item.Id})</li>` ).join('');
   }
 
   public readItems(): void {
@@ -149,7 +145,7 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
   }
 
   private createItem(): void {
-    this.updateStatus('Creating item...');
+    this.updateStatus('Creating items...');
 
     var itemArray = [];
     const context: SP.ClientContext = new SP.ClientContext(this.context.pageContext.web.absoluteUrl);
@@ -224,10 +220,7 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
         context.load(itemArray[i]);
     }    
     context.executeQueryAsync(function(){
-        var stringOfId='';
-        data.forEach(element => {
-            stringOfId+=element.Id +',';
-        });
+        var stringOfId=data.map(element => element.Id).join(',');
         beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully updated`);
     },function(args){
         beforeCallback.updateStatus(`Error occured while updating items: ` + args.get_message() + " \n " + args.get_stackTrace());
@@ -258,11 +251,9 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
         oListItem.deleteObject();    
     }    
     context.executeQueryAsync(function(){
-        var stringOfId='';
-        data.forEach(element => {
-            stringOfId+=element.Id +',';
-        });
-        beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully deleted`);
+        var stringOfId=data.map(element => element.Id).join(',');
+        beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully updated`);
+        //beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully deleted`);
     },function(args){
         beforeCallback.updateStatus(`Error occured while deleting items: ` + args.get_message() + " \n " + args.get_stackTrace());
     });
