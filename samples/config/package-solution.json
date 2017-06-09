@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "angular-search-client-side-solution",
+    "id": "82096e02-94bf-4cfe-bb90-f225eacd1b22",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/angular-search.sppkg"
+  }
+}
