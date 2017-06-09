@@ -2,7 +2,9 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneSlider,
+  IWebPartContext
 } from '@microsoft/sp-webpart-base';
 
 import styles from './PnpJsCrudWithBatch.module.scss';
@@ -118,6 +120,14 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
               groupFields: [
                 PropertyPaneTextField('listName', {
                   label: strings.ListNameFieldLabel
+                }),
+                PropertyPaneSlider('itemCount',{  
+                  label:"Number of items in batch",  
+                  min:2,  
+                  max:10,  
+                  value:5,  
+                  showValue:true,  
+                  step:1                
                 })
               ]
             }
@@ -139,9 +149,9 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
     pnp.sp.web.lists.getByTitle(this.properties.listName).getListItemEntityTypeFullName().then(entityTypeFullName =>{
       let batch = pnp.sp.web.createBatch();
       let list = pnp.sp.web.lists.getByTitle(this.properties.listName);
-
-      //todo - associate with a slider/dropdown/textbox to set number of items
-      for(var i=0;i<5;i++){
+      let itemsInBatch = this.properties.itemCount;
+      
+      for(var i=0;i<itemsInBatch;i++){
         list.items.inBatch(batch).add({Title: "Batch add " + i}, entityTypeFullName).then(d => console.log(d));      
       }     
 
@@ -156,10 +166,10 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
   }
 
   private getLatestItemId(): Promise<IListItem[]> {
-    //todo - associate with a slider/dropdown/textbox to set number of items
+    let itemsInBatch = this.properties.itemCount;
     return new Promise<IListItem[]>((resolve: (items: IListItem[]) => void, reject: (error: any) => void): void => {
       pnp.sp.web.lists.getByTitle(this.properties.listName)
-        .items.orderBy('Id', false).top(5).select('Id').get()
+        .items.orderBy('Id', false).top(itemsInBatch).select('Id').get()
         .then((items: { Id: number }[]): void => {
           if (items.length === 0) {
             resolve(null);
@@ -195,8 +205,7 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
     
     this.getLatestItemId().then((items:IListItem[]):void=> {
           console.log(items);
-          if(items==null){
-              //throw new Error('No items found in the list'); 
+          if(items==null){               
               this.updateStatus('No items found in the list '); 
           }
           else{
@@ -223,12 +232,11 @@ export default class PnpJsCrudWithBatchWebPart extends BaseClientSideWebPart<IPn
 
     this.updateStatus('Deleting latest items...');
     let latestItemId: number = undefined;
-    let etag: string = undefined;
+    
 
     this.getLatestItemId().then((items:IListItem[]):void=> {
         console.log(items);
-        if(items==null){
-            //throw new Error('No items found in the list');  
+        if(items==null){             
             this.updateStatus('No items found in the list ');
         }else{
           let batch = pnp.sp.web.createBatch();

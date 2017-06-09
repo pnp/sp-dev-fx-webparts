@@ -3,6 +3,7 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
+  PropertyPaneSlider,
   IWebPartContext
 } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
@@ -92,13 +93,14 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
       this.properties.listName === null ||
       this.properties.listName.length === 0;
   }
-
+  
   private setButtonsEventHandlers(): void {
     const webPart: JsomCrudWithBatchWebPart = this;
     this.domElement.querySelector('button.create-Button').addEventListener('click', () => { webPart.createItem(); });    
     this.domElement.querySelector('button.readall-Button').addEventListener('click', () => { webPart.readItems(); });
     this.domElement.querySelector('button.update-Button').addEventListener('click', () => { webPart.updateItem(); });
     this.domElement.querySelector('button.delete-Button').addEventListener('click', () => { webPart.deleteItem(); });
+
   }
 
   private updateStatus(status: string, items: IListItem[] = []): void {
@@ -113,56 +115,54 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
 
   public readItems(): void {
     this.updateStatus('Loading all items...');
-    const context: SP.ClientContext = new SP.ClientContext(this.context.pageContext.web.absoluteUrl);
-    const list: SP.List = context.get_web().get_lists().getByTitle(this.properties.listName);
+    const spClientContext: SP.ClientContext = new SP.ClientContext(this.context.pageContext.web.absoluteUrl);
+    const spList: SP.List = spClientContext.get_web().get_lists().getByTitle(this.properties.listName);
 
     var camlQuery = SP.CamlQuery.createAllItemsQuery();
-    var collTermListItem = list.getItems(camlQuery);
+    var spListItemCollection = spList.getItems(camlQuery);
 
     var listItems: IListItem[] = [];
 
-    context.load(list);
-    context.load(collTermListItem, 'Include(Title,Id)');
+    spClientContext.load(spList);
+    spClientContext.load(spListItemCollection, 'Include(Title,Id)');
     var beforeCallback = this;
-    context.executeQueryAsync(function name(sender, args) {
+    spClientContext.executeQueryAsync(function (sender, args) {
       var listItemInfo = '';
-      var listItemEnumerator = collTermListItem.getEnumerator();
+      var listItemEnumerator = spListItemCollection.getEnumerator();
       while (listItemEnumerator.moveNext()) {
-        var oListItem = listItemEnumerator.get_current();
-        //listItemInfo = oListItem.get_item('Title') + '\n';
+        var spListItem = listItemEnumerator.get_current();
+        
         listItems.push({
-          Title: oListItem.get_item('Title'),
-          Id: oListItem.get_id()
+          Title: spListItem.get_item('Title'),
+          Id: spListItem.get_id()
         });
-      }
-      console.log(listItems);
+      }      
       beforeCallback.updateStatus(`Successfully loaded ${listItems.length} items`, listItems);
     },
-      function (sender, args) {
-        console.log(args.get_message());
+      function (sender, args) {        
         beforeCallback.updateStatus(`Error occured: ` + args.get_message());
       });
   }
 
   private createItem(): void {
+    var itemsInBatch = this.properties.itemCount;
     this.updateStatus('Creating items...');
 
     var itemArray = [];
-    const context: SP.ClientContext = new SP.ClientContext(this.context.pageContext.web.absoluteUrl);
-    const list: SP.List = context.get_web().get_lists().getByTitle(this.properties.listName);
+    const spClientContext: SP.ClientContext = new SP.ClientContext(this.context.pageContext.web.absoluteUrl);
+    const spList: SP.List = spClientContext.get_web().get_lists().getByTitle(this.properties.listName);
     var beforeCallback = this;
 
-    for (var i = 0; i < 5; i++) {
-
-      var itemCreateInfo = new SP.ListItemCreationInformation();
-      var oListItem = list.addItem(itemCreateInfo);
-      oListItem.set_item('Title', 'Batch add ' + i);
-      oListItem.update();
-      itemArray[i] = oListItem;
-      context.load(itemArray[i]);
+    for (var i = 0; i < itemsInBatch; i++) {
+      var itemCreationInfo = new SP.ListItemCreationInformation();
+      var spListItem = spList.addItem(itemCreationInfo);
+      spListItem.set_item('Title', 'Batch add ' + i);
+      spListItem.update();
+      itemArray[i] = spListItem;
+      spClientContext.load(itemArray[i]);
     }
 
-    context.executeQueryAsync(function () {
+    spClientContext.executeQueryAsync(function () {
       beforeCallback.updateStatus(`Items successfully created via batch`);
     }, function (args) {
       beforeCallback.updateStatus(`Error occured while creating items: ` + args.get_message() + " \n " + args.get_stackTrace());
@@ -170,27 +170,26 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
   }
 
   private getLatestItemId(successCallback, errorCallback): void {
+    
+    var itemsInBatch = this.properties.itemCount;
+    const spClientContext: SP.ClientContext = new SP.ClientContext(this.context.pageContext.web.absoluteUrl);
+    const spList: SP.List = spClientContext.get_web().get_lists().getByTitle(this.properties.listName);
 
-    //todo - associate with a slider/dropdown/textbox to set number of items
-    const context: SP.ClientContext = new SP.ClientContext(this.context.pageContext.web.absoluteUrl);
-    const list: SP.List = context.get_web().get_lists().getByTitle(this.properties.listName);
-
-    var camlQuery = SP.CamlQuery.createAllItemsQuery();
-    camlQuery.set_viewXml('<View><Query><OrderBy><FieldRef Name="ID" Ascending="False"/></OrderBy></Where></Query><RowLimit>5</RowLimit></View>');
-    var collTermListItem = list.getItems(camlQuery);
+    var spCamlQuery = SP.CamlQuery.createAllItemsQuery();
+    spCamlQuery.set_viewXml('<View><Query><OrderBy><FieldRef Name="ID" Ascending="False"/></OrderBy></Query><RowLimit>'+ itemsInBatch +'</RowLimit></View>');
+    var spListItemCollection = spList.getItems(spCamlQuery);
 
     var listItems: IListItem[] = [];
 
-    context.load(list);
-    context.load(collTermListItem, 'Include(Id)');
+    spClientContext.load(spList);
+    spClientContext.load(spListItemCollection, 'Include(Id)');
     var beforeCallback = this;
-    context.executeQueryAsync(function name(sender, args) {
-      var listItemInfo = '';
-      var listItemEnumerator = collTermListItem.getEnumerator();
+    spClientContext.executeQueryAsync(function (sender, args) {      
+      var listItemEnumerator = spListItemCollection.getEnumerator();
       while (listItemEnumerator.moveNext()) {
-        var oListItem = listItemEnumerator.get_current();
+        var spListItem = listItemEnumerator.get_current();
         listItems.push({
-          Id: oListItem.get_id()
+          Id: spListItem.get_id()
         });
       }      
       successCallback(listItems);
@@ -198,37 +197,35 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
       function (sender, args) {        
         errorCallback(args.get_message());
       });
-
   }
 
   private updateItem(): void {
-    var webUrl = this.context.pageContext.web.absoluteUrl;
-    var listName = this.properties.listName
+    var spWebUrl = this.context.pageContext.web.absoluteUrl;
+    var spListName = this.properties.listName
     this.updateStatus('Updating latest items...');
     var beforeCallback = this;
 
     this.getLatestItemId(function (data: IListItem[]) {      
     var itemArray = [];
-    const context: SP.ClientContext = new SP.ClientContext(webUrl);
-    const list: SP.List = context.get_web().get_lists().getByTitle(listName);    
+    const spClientContext: SP.ClientContext = new SP.ClientContext(spWebUrl);
+    const spList: SP.List = spClientContext.get_web().get_lists().getByTitle(spListName);    
 
     data.forEach((item,index) => {
-      var oListItem = list.getItemById(item.Id);  
-        oListItem.set_item('Title', 'Updated from batch ' + index);  
-        oListItem.update();
-        itemArray[index] = oListItem;
-        context.load(itemArray[index]);
+      var spListItem = spList.getItemById(item.Id);  
+        spListItem.set_item('Title', 'Updated from batch ' + item.Id.toString());  
+        spListItem.update();
+        itemArray[index] = spListItem;
+        spClientContext.load(itemArray[index]);
     });    
     
-    context.executeQueryAsync(function(){
+    spClientContext.executeQueryAsync(function(){
         var stringOfId=data.map(element => element.Id).join(',');
         beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully updated`);
-    },function(args){
-        beforeCallback.updateStatus(`Error occured while updating items: ` + args.get_message() + " \n " + args.get_stackTrace());
-    });
-
-    }, function (data: any) {
-      console.log(data);
+      },function(args){
+          beforeCallback.updateStatus(`Error occured while updating items: ` + args.get_message() + " \n " + args.get_stackTrace());
+      });
+    }, function (args) {      
+      beforeCallback.updateStatus(`Error occured while updating items: ` + args.get_message() + " \n " + args.get_stackTrace());
     });
   }
 
@@ -237,31 +234,29 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
       return;
     }
 
-    var webUrl = this.context.pageContext.web.absoluteUrl;
-    var listName = this.properties.listName
+    var spWebUrl = this.context.pageContext.web.absoluteUrl;
+    var spListName = this.properties.listName
     this.updateStatus('Deleting latest items...');
     var beforeCallback = this;
 
     this.getLatestItemId(function (data: IListItem[]) {      
     var itemArray = [];
-    const context: SP.ClientContext = new SP.ClientContext(webUrl);
-    const list: SP.List = context.get_web().get_lists().getByTitle(listName);    
+    const spClientContext: SP.ClientContext = new SP.ClientContext(spWebUrl);
+    const spList: SP.List = spClientContext.get_web().get_lists().getByTitle(spListName);    
 
     data.forEach(item => {
-        var oListItem = list.getItemById(item.Id);  
-        oListItem.deleteObject();    
+        var spListItem = spList.getItemById(item.Id);  
+        spListItem.deleteObject();    
     });
     
-    context.executeQueryAsync(function(){
+    spClientContext.executeQueryAsync(function(){
         var stringOfId=data.map(element => element.Id).join(',');
-        beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully updated`);
-        //beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully deleted`);
+        beforeCallback.updateStatus(`Item with IDs: ${stringOfId} successfully updated`);        
     },function(args){
         beforeCallback.updateStatus(`Error occured while deleting items: ` + args.get_message() + " \n " + args.get_stackTrace());
     });
-
-    }, function (data: any) {
-      console.log(data);
+    }, function (args) {      
+      beforeCallback.updateStatus(`Error occured while deleting items: ` + args.get_message() + " \n " + args.get_stackTrace());
     });
   }
 
@@ -282,7 +277,15 @@ export default class JsomCrudWithBatchWebPart extends BaseClientSideWebPart<IJso
               groupFields: [
                 PropertyPaneTextField('listName', {
                   label: strings.ListNameFieldLabel
-                })
+                }),
+                PropertyPaneSlider('itemCount',{  
+                  label:"Number of items in batch",  
+                  min:2,  
+                  max:10,  
+                  value:5,  
+                  showValue:true,  
+                  step:1                
+                })  
               ]
             }
           ]

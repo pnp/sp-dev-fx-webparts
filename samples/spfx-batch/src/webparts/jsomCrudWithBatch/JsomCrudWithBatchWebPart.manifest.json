@@ -14,7 +14,8 @@
     "description": { "default": "Sample implementation of SharePoint CRUD operations using the JSOM library using Batch" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "listName": ""
+      "listName": "",
+      "itemCount":3
     }
   }]
 }
