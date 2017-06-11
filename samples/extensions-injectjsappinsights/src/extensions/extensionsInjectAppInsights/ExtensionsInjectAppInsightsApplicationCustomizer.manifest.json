@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "7c5a85c1-8b1e-4370-8198-642908faee60",
+  "alias": "ExtensionsInjectAppInsightsApplication",
+  "componentType": "Extension",
+  "extensionType": "ApplicationCustomizer",
+  "version": "*", // The "*" signifies that the version should be taken from the package.json
+  "manifestVersion": 2,
+  "safeWithCustomScriptDisabled": true
+}
