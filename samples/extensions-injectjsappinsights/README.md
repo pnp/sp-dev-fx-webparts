@@ -32,13 +32,9 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-'''Typescript
-npm install
-'''
-
 Change the GUID in render method to your own app insights instrumentation key.
+Follow official documentation to package and deploy:
+https://dev.office.com/sharepoint/docs/spfx/extensions/get-started/serving-your-extension-from-sharepoint
 
 More info on my blog post: http://luisevalencia.com/2017/06/08/injecting-javascript-with-sharepoint-framework-extensions-preview-azure-application-insights/
-
-### Create custom API secured with AAD
 
