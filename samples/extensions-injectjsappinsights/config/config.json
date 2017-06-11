@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/extensions/extensionsInjectAppInsights/ExtensionsInjectAppInsightsApplicationCustomizer.js",
+      "manifest": "./src/extensions/extensionsInjectAppInsights/ExtensionsInjectAppInsightsApplicationCustomizer.manifest.json",
+      "outputPath": "./dist/extensions-inject-app-insights.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "extensionsInjectAppInsightsStrings": "extensions/extensionsInjectAppInsights/loc/{locale}.js"
+  }
+}

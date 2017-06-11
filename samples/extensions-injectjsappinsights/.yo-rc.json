@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.1.1",
+    "libraryName": "extensions-injectjsappinsights",
+    "libraryId": "4f127305-2154-4f97-8d81-6eca56b192e9",
+    "environment": "spo"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "solution": {
+    "name": "extensions-injectjsappinsights-client-side-solution",
+    "id": "4f127305-2154-4f97-8d81-6eca56b192e9",
+    "version": "1.0.0.0",
+    "features": [{
+      "title": "Application Extension - Deployment of custom action.",
+      "description": "Deploys a custom action with ClientSideComponentId association",
+      "id": "456da147-ced2-3036-b564-8dad5c1c2e34",
+      "version": "1.0.0.0",
+      "assets": {        
+        "elementManifests": [
+          "elements.xml"
+        ]
+      }
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/extensions-injectjsappinsights.sppkg"
+  }
+}
