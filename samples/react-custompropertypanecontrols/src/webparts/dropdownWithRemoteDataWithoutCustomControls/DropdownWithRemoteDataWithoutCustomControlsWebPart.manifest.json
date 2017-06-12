@@ -2,8 +2,9 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
   "id": "ec34b5c6-7708-42ad-841e-46f2b75a074e",
+  "alias":"ReactDropdownwRemoteDataWOCustomControl",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{
