@@ -5,6 +5,6 @@
     "version": "1.0.0.0"
   },
   "paths": {
-    "zippedPackage": "solution/react-multipage.spapp"
+    "zippedPackage": "solution/react-multipage.sppkg"
   }
 }

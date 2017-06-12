@@ -1,20 +1,34 @@
 import { IPollService, IVoteOption, IVoteResult, IVoteOptionItem } from '../services';
-import { HttpClient } from '@microsoft/sp-client-base';
+import {
+  SPHttpClient,
+  ISPHttpClientOptions,
+  SPHttpClientResponse
+} from '@microsoft/sp-http';
+import {
+  IWebPartContext
+} from '@microsoft/sp-webpart-base';
 
 export class PollService implements IPollService {
 
-  constructor(private httpClient: HttpClient, private serverRelativeSiteUrl: string) {
+  //constructor(private httpClient: SPHttpClient, private serverRelativeSiteUrl: string) {
+  constructor(private context: IWebPartContext) {
   }
 
   public getVoteOptions(listName: string): Promise<IVoteOption[]> {
+    var httpClientOptions : ISPHttpClientOptions = {};
+
+    httpClientOptions.headers = {
+        'Accept': 'application/json;odata=nometadata',
+        'odata-version': ''
+    };
+
     return new Promise<IVoteOption[]>((resolve: (voteOptions: IVoteOption[]) => void, reject: (error: any) => void): void => {
-      this.httpClient.get(this.serverRelativeSiteUrl + `/_api/web/lists/getByTitle('${listName}')/items?$select=Id,Title`, {
-        headers: {
-          'Accept': 'application/json;odata=nometadata',
-          'odata-version': ''
-        }
-      })
-        .then((response: Response): Promise<{ value: IVoteOptionItem[] }> => {
+      //this.httpClient.get(this.serverRelativeSiteUrl + `/_api/web/lists/getByTitle('${listName}')/items?$select=Id,Title`, {
+      this.context.spHttpClient.get(this.context.pageContext.web.serverRelativeUrl + `/_api/web/lists/getByTitle('${listName}')/items?$select=Id,Title`,
+        SPHttpClient.configurations.v1,
+        httpClientOptions
+        )
+        .then((response: SPHttpClientResponse): Promise<{ value: IVoteOptionItem[] }> => {
           return response.json();
         })
         .then((voteOptionItems: { value: IVoteOptionItem[] }): void => {
@@ -33,6 +47,8 @@ export class PollService implements IPollService {
   }
 
   public vote(voteOptionId: number, listName: string): Promise<{}> {
+    var httpClientOptions : ISPHttpClientOptions = {};
+
     return new Promise<{}>((resolve: () => void, reject: (error: any) => void): void => {
       let listItemEntityTypeName: string = undefined;
       let etag: string = undefined;
@@ -41,14 +57,17 @@ export class PollService implements IPollService {
         .then((itemEntityTypeName: string): Promise<Response> => {
           listItemEntityTypeName = itemEntityTypeName;
 
-          return this.httpClient.get(this.serverRelativeSiteUrl + `/_api/web/lists/getByTitle('${listName}')/items('${voteOptionId}')?$select=Id,NumVotes`, {
-            headers: {
+          httpClientOptions.headers = {
               'Accept': 'application/json;odata=nometadata',
               'odata-version': ''
-            }
-          });
+          };
+
+          return this.context.spHttpClient.get(this.context.pageContext.web.serverRelativeUrl + `/_api/web/lists/getByTitle('${listName}')/items('${voteOptionId}')?$select=Id,NumVotes`,
+            SPHttpClient.configurations.v1,
+            httpClientOptions
+          );
         })
-        .then((response: Response): Promise<IVoteOptionItem> => {
+        .then((response: SPHttpClientResponse): Promise<IVoteOptionItem> => {
           etag = response.headers.get('ETag');
           return response.json();
         })
@@ -59,18 +78,22 @@ export class PollService implements IPollService {
             },
             'NumVotes': voteOptionItem.NumVotes && !isNaN(voteOptionItem.NumVotes) ? voteOptionItem.NumVotes+1 : 1
           });
-          return this.httpClient.post(this.serverRelativeSiteUrl + `/_api/web/lists/getbytitle('${listName}')/items(${voteOptionItem.Id})`, {
-            headers: {
-              'Accept': 'application/json;odata=nometadata',
-              'Content-type': 'application/json;odata=verbose',
-              'odata-version': '',
-              'IF-MATCH': etag,
-              'X-HTTP-Method': 'MERGE'
-            },
-            body: body
-          });
+
+          httpClientOptions.headers = {
+            'Accept': 'application/json;odata=nometadata',
+            'Content-type': 'application/json;odata=verbose',
+            'odata-version': '3.0',
+            'IF-MATCH': etag,
+            'X-HTTP-Method': 'MERGE'
+          };
+          httpClientOptions.body = body;
+
+          return this.context.spHttpClient.post(this.context.pageContext.web.serverRelativeUrl + `/_api/web/lists/getbytitle('${listName}')/items(${voteOptionItem.Id})`,
+            SPHttpClient.configurations.v1,
+            httpClientOptions
+          );
         })
-        .then((response: Response): void => {
+        .then((response: SPHttpClientResponse): void => {
           if (response.ok) {
             resolve();
           }
@@ -84,14 +107,19 @@ export class PollService implements IPollService {
   }
 
   public getResults(listName: string): Promise<IVoteResult[]> {
+    var httpClientOptions : ISPHttpClientOptions = {};
+
+    httpClientOptions.headers = {
+        'Accept': 'application/json;odata=nometadata',
+        'odata-version': ''
+    };
+
     return new Promise<IVoteResult[]>((resolve: (results: IVoteResult[]) => void, reject: (error: any) => void): void => {
-      this.httpClient.get(this.serverRelativeSiteUrl + `/_api/web/lists/getByTitle('${listName}')/items?$select=Id,Title,NumVotes`, {
-        headers: {
-          'Accept': 'application/json;odata=nometadata',
-          'odata-version': ''
-        }
-      })
-        .then((response: Response): Promise<{ value: IVoteOptionItem[] }> => {
+      this.context.spHttpClient.get(this.context.pageContext.web.serverRelativeUrl + `/_api/web/lists/getByTitle('${listName}')/items?$select=Id,Title,NumVotes`,
+        SPHttpClient.configurations.v1,
+        httpClientOptions
+      )
+        .then((response: SPHttpClientResponse): Promise<{ value: IVoteOptionItem[] }> => {
           return response.json();
         })
         .then((voteResultItems: { value: IVoteOptionItem[] }): void => {
@@ -111,14 +139,19 @@ export class PollService implements IPollService {
   }
 
   private getListItemEntityTypeName(listName: string): Promise<string> {
+    var httpClientOptions : ISPHttpClientOptions = {};
+
+    httpClientOptions.headers = {
+        'Accept': 'application/json;odata=nometadata',
+        'odata-version': '3.0'
+    };
+
     return new Promise<string>((resolve: (listItemEntityTypeName: string) => void, reject: (error: any) => void): void => {
-      this.httpClient.post(this.serverRelativeSiteUrl + `/_api/web/lists/getByTitle('${listName}')?$select=ListItemEntityTypeFullName`, {
-        headers: {
-          'Accept': 'application/json;odata=nometadata',
-          'odata-version': ''
-        }
-      })
-        .then((response: Response): Promise<{ ListItemEntityTypeFullName: string }> => {
+      this.context.spHttpClient.post(this.context.pageContext.web.serverRelativeUrl + `/_api/web/lists/getByTitle('${listName}')?$select=ListItemEntityTypeFullName`,
+        SPHttpClient.configurations.v1,
+        httpClientOptions
+      )
+        .then((response: SPHttpClientResponse): Promise<{ ListItemEntityTypeFullName: string }> => {
           return response.json();
         })
         .then((response: { ListItemEntityTypeFullName: string }): void => {

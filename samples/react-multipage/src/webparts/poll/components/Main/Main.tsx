@@ -3,7 +3,7 @@ import { IMainProps } from './IMainProps';
 import { Config } from '../Config';
 import { Poll } from '../Poll';
 
-import styles from '../../Poll.module.scss';
+import styles from './Main.module.scss';
 
 export class Main extends React.Component<IMainProps, {}> {
   constructor(props: IMainProps) {
