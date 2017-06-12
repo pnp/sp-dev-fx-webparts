@@ -1,11 +1,15 @@
 import { IError } from "../../interfaces/IError";
+import * as angular from 'angular';
+
 
 export class BaseService {
   public static $inject: string[] = ["$http", "$q"];
   public baseUrl: string;
 
   constructor(private $http: ng.IHttpService, private $q: ng.IQService) {
-    this.baseUrl = (<any>window)._spPageContextInfo.webAbsoluteUrl;
+      
+      this.baseUrl = (<any>window)._spPageContextInfo.webAbsoluteUrl;
+
   }
 
   public getRequest(query?: string, endPoint?: string): ng.IPromise<any> {
