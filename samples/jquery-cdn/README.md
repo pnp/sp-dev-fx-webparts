@@ -7,7 +7,7 @@ Sample Web Parts illustrating using jQuery and its plugins loaded from CDN for b
 ![Sample Web Part built using jQuery showing current weather in the specified location](./assets/preview_weather.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop2-red.svg)
+![drop](https://img.shields.io/badge/version-GA-green.svg)
 
 ## Applies to
 
@@ -18,13 +18,14 @@ Sample Web Parts illustrating using jQuery and its plugins loaded from CDN for b
 
 Solution|Author(s)
 --------|---------
-jquery-cdn|Waldek Mastykarz (MVP, Rencore, @waldekm)
+jquery-cdn|Waldek Mastykarz (MVP, Rencore, @waldekm) , Gautam Sheth(SharePoint Consultant,Rapid Circle, @rapidcircle/@gautamdsheth)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|September 16, 2016|Initial release
+2.0|May 25, 2017|GA release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

@@ -1,0 +1,406 @@
+{
+  "errors": [],
+  "warnings": [],
+  "version": "1.13.3",
+  "hash": "ea56f4ba743251d04786",
+  "publicPath": "",
+  "assetsByChunkName": {
+    "weather.bundle": [
+      "weather.bundle.js",
+      "weather.bundle.js.map"
+    ]
+  },
+  "assets": [
+    {
+      "name": "weather.bundle.js",
+      "size": 21948,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "weather.bundle"
+      ]
+    },
+    {
+      "name": "weather.bundle.js.map",
+      "size": 32062,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "weather.bundle"
+      ]
+    }
+  ],
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "extraAsync": false,
+      "size": 19142,
+      "names": [
+        "weather.bundle"
+      ],
+      "files": [
+        "weather.bundle.js",
+        "weather.bundle.js.map"
+      ],
+      "hash": "ed39293ac34b815cdc34",
+      "parents": [],
+      "origins": [
+        {
+          "moduleId": 0,
+          "module": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+          "moduleName": "./lib/webparts/weather/WeatherWebPart.js",
+          "loc": "",
+          "name": "weather.bundle",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+      "name": "./lib/webparts/weather/WeatherWebPart.js",
+      "index": 0,
+      "index2": 10,
+      "size": 3402,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [],
+      "source": "\"use strict\";\nvar __extends = (this && this.__extends) || function (d, b) {\n    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];\n    function __() { this.constructor = d; }\n    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n};\nvar sp_core_library_1 = require(\"@microsoft/sp-core-library\");\nvar sp_webpart_base_1 = require(\"@microsoft/sp-webpart-base\");\nvar Weather_module_scss_1 = require(\"./Weather.module.scss\");\nvar strings = require(\"weatherStrings\");\nvar $ = require(\"jquery\");\nrequire('simpleWeather');\nvar WeatherWebPart = (function (_super) {\n    __extends(WeatherWebPart, _super);\n    function WeatherWebPart() {\n        return _super.call(this) || this;\n    }\n    WeatherWebPart.prototype.render = function () {\n        if (this.renderedOnce === false) {\n            this.domElement.innerHTML = \"<div class=\\\"\" + Weather_module_scss_1.default.weather + \"\\\"></div>\";\n        }\n        this.renderContents();\n    };\n    WeatherWebPart.prototype.renderContents = function () {\n        this.container = $(\".\" + Weather_module_scss_1.default.weather, this.domElement);\n        var location = this.properties.location;\n        if (!location || location.length === 0) {\n            this.container.html('<p>Please specify a location</p>');\n            return;\n        }\n        var webPart = this;\n        $.simpleWeather({\n            location: location,\n            woeid: '',\n            unit: 'c',\n            success: function (weather) {\n                var html = \"<h2><i class=\\\"icon\" + weather.code + \"\\\"></i> \" + weather.temp + \"&deg;\" + weather.units.temp + \"</h2>\\n           <ul><li>\" + weather.city + \" \" + weather.region + \"</li></ul>\";\n                webPart.container.html(html)\n                    .removeAttr('style')\n                    .css('background', \"url('http://loremflickr.com/500/139/\" + location + \"')\");\n            },\n            error: function (error) {\n                webPart.container.html(\"<p>\" + error.message + \"</p>\").removeAttr('style');\n            }\n        });\n    };\n    Object.defineProperty(WeatherWebPart.prototype, \"dataVersion\", {\n        get: function () {\n            return sp_core_library_1.Version.parse('1.0');\n        },\n        enumerable: true,\n        configurable: true\n    });\n    WeatherWebPart.prototype.getPropertyPaneConfiguration = function () {\n        return {\n            pages: [\n                {\n                    header: {\n                        description: strings.PropertyPaneDescription\n                    },\n                    groups: [\n                        {\n                            groupName: strings.DataGroupName,\n                            groupFields: [\n                                sp_webpart_base_1.PropertyPaneTextField('location', {\n                                    label: strings.LocationFieldLabel\n                                })\n                            ]\n                        }\n                    ]\n                }\n            ]\n        };\n    };\n    Object.defineProperty(WeatherWebPart.prototype, \"disableReactivePropertyChanges\", {\n        get: function () {\n            return true;\n        },\n        enumerable: true,\n        configurable: true\n    });\n    return WeatherWebPart;\n}(sp_webpart_base_1.BaseClientSideWebPart));\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.default = WeatherWebPart;\n\n"
+    },
+    {
+      "id": 1,
+      "identifier": "external \"@microsoft/sp-core-library\"",
+      "name": "external \"@microsoft/sp-core-library\"",
+      "index": 1,
+      "index2": 0,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+          "module": "./lib/webparts/weather/WeatherWebPart.js",
+          "moduleName": "./lib/webparts/weather/WeatherWebPart.js",
+          "type": "cjs require",
+          "userRequest": "@microsoft/sp-core-library",
+          "loc": "7:24-61"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "identifier": "external \"@microsoft/sp-webpart-base\"",
+      "name": "external \"@microsoft/sp-webpart-base\"",
+      "index": 2,
+      "index2": 1,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+          "module": "./lib/webparts/weather/WeatherWebPart.js",
+          "moduleName": "./lib/webparts/weather/WeatherWebPart.js",
+          "type": "cjs require",
+          "userRequest": "@microsoft/sp-webpart-base",
+          "loc": "8:24-61"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "identifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.scss.js",
+      "name": "./lib/webparts/weather/Weather.module.scss.js",
+      "index": 3,
+      "index2": 6,
+      "size": 267,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+          "module": "./lib/webparts/weather/WeatherWebPart.js",
+          "moduleName": "./lib/webparts/weather/WeatherWebPart.js",
+          "type": "cjs require",
+          "userRequest": "./Weather.module.scss",
+          "loc": "9:28-60"
+        }
+      ],
+      "source": "\"use strict\";\n/* tslint:disable */\nrequire('./Weather.module.css');\nvar styles = {\n    weather: 'weather_28ce34dd',\n    currently: 'currently_28ce34dd',\n};\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.default = styles;\n/* tslint:enable */ \n\n"
+    },
+    {
+      "id": 4,
+      "identifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.css",
+      "name": "./lib/webparts/weather/Weather.module.css",
+      "index": 4,
+      "index2": 5,
+      "size": 437,
+      "cacheable": false,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.scss.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.scss.js",
+          "module": "./lib/webparts/weather/Weather.module.scss.js",
+          "moduleName": "./lib/webparts/weather/Weather.module.scss.js",
+          "type": "cjs require",
+          "userRequest": "./Weather.module.css",
+          "loc": "3:0-31"
+        }
+      ],
+      "source": "var content = require(\"!!../../../node_modules/css-loader/index.js?-minimize!./Weather.module.css\");\nvar loader = require(\"E:\\\\spfx-demo\\\\jquery-cdn\\\\node_modules\\\\@microsoft\\\\load-themed-styles\\\\lib\\\\index.js\");\n\nif(typeof content === \"string\") content = [[module.id, content]];\n\n// add the styles to the DOM\nfor (var i = 0; i < content.length; i++) loader.loadStyles(content[i][1]);\n\nif(content.locals) module.exports = content.locals;"
+    },
+    {
+      "id": 5,
+      "identifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.css",
+      "name": "./~/css-loader?-minimize!./lib/webparts/weather/Weather.module.css",
+      "index": 5,
+      "index2": 3,
+      "size": 3974,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.css",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 4,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.css",
+          "module": "./lib/webparts/weather/Weather.module.css",
+          "moduleName": "./lib/webparts/weather/Weather.module.css",
+          "type": "cjs require",
+          "userRequest": "!!../../../node_modules/css-loader/index.js?-minimize!./Weather.module.css",
+          "loc": "1:14-99"
+        }
+      ],
+      "source": "exports = module.exports = require(\"../../../node_modules/css-loader/lib/css-base.js\")();\n// imports\n\n\n// module\nexports.push([module.id, \"@font-face{font-family:weather;src:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot);src:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix) format(\\\"embedded-opentype\\\"),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff) format(\\\"woff\\\"),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf) format(\\\"truetype\\\"),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg) format(\\\"svg\\\");font-weight:400;font-style:normal}.weather_28ce34dd{width:500px;margin:0 auto;text-align:center;text-transform:uppercase}.weather_28ce34dd i{color:#fff;font-family:weather;font-size:100px;font-weight:400;font-style:normal;line-height:1}.weather_28ce34dd i[class=icon0]:before{content:\\\":\\\"}.weather_28ce34dd i[class=icon1]:before{content:\\\"p\\\"}.weather_28ce34dd i[class=icon2]:before{content:\\\"S\\\"}.weather_28ce34dd i[class=icon3]:before{content:\\\"Q\\\"}.weather_28ce34dd i[class=icon4]:before{content:\\\"S\\\"}.weather_28ce34dd i[class=icon5]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon6]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon7]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon8]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon9]:before{content:\\\"I\\\"}.weather_28ce34dd i[class=icon10]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon11]:before{content:\\\"I\\\"}.weather_28ce34dd i[class=icon12]:before{content:\\\"I\\\"}.weather_28ce34dd i[class=icon13]:before{content:\\\"I\\\"}.weather_28ce34dd i[class=icon14]:before{content:\\\"I\\\"}.weather_28ce34dd i[class=icon15]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon16]:before{content:\\\"I\\\"}.weather_28ce34dd i[class=icon17]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon18]:before{content:\\\"U\\\"}.weather_28ce34dd i[class=icon19]:before{content:\\\"Z\\\"}.weather_28ce34dd i[class=icon20]:before{content:\\\"Z\\\"}.weather_28ce34dd i[class=icon21]:before{content:\\\"Z\\\"}.weather_28ce34dd i[class=icon22]:before{content:\\\"Z\\\"}.weather_28ce34dd i[class=icon23]:before{content:\\\"Z\\\"}.weather_28ce34dd i[class=icon24]:before{content:\\\"E\\\"}.weather_28ce34dd i[class=icon25]:before{content:\\\"E\\\"}.weather_28ce34dd i[class=icon26]:before{content:\\\"3\\\"}.weather_28ce34dd i[class=icon27]:before{content:\\\"a\\\"}.weather_28ce34dd i[class=icon28]:before{content:\\\"A\\\"}.weather_28ce34dd i[class=icon29]:before{content:\\\"a\\\"}.weather_28ce34dd i[class=icon30]:before{content:\\\"A\\\"}.weather_28ce34dd i[class=icon31]:before{content:\\\"6\\\"}.weather_28ce34dd i[class=icon32]:before{content:\\\"1\\\"}.weather_28ce34dd i[class=icon33]:before{content:\\\"6\\\"}.weather_28ce34dd i[class=icon34]:before{content:\\\"1\\\"}.weather_28ce34dd i[class=icon35]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon36]:before{content:\\\"1\\\"}.weather_28ce34dd i[class=icon37]:before{content:\\\"S\\\"}.weather_28ce34dd i[class=icon38]:before{content:\\\"S\\\"}.weather_28ce34dd i[class=icon39]:before{content:\\\"S\\\"}.weather_28ce34dd i[class=icon40]:before{content:\\\"M\\\"}.weather_28ce34dd i[class=icon41]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon42]:before{content:\\\"I\\\"}.weather_28ce34dd i[class=icon43]:before{content:\\\"W\\\"}.weather_28ce34dd i[class=icon44]:before{content:\\\"a\\\"}.weather_28ce34dd i[class=icon45]:before{content:\\\"S\\\"}.weather_28ce34dd i[class=icon46]:before{content:\\\"U\\\"}.weather_28ce34dd i[class=icon47]:before{content:\\\"S\\\"}.weather_28ce34dd h2{margin:-10px 0 0 0;color:#fff;font-size:75px;font-weight:300;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.15)}.weather_28ce34dd ul{margin:0;padding:0}.weather_28ce34dd li{background:#fff;background:rgba(255,255,255,.9);padding:10px;margin-top:-25px;display:inline-block;border-radius:5px}.weather_28ce34dd .currently_28ce34dd{margin:0 20px}\", \"\"]);\n\n// exports\n"
+    },
+    {
+      "id": 6,
+      "identifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\lib\\css-base.js",
+      "name": "./~/css-loader/lib/css-base.js",
+      "index": 6,
+      "index2": 2,
+      "size": 1506,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.css",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 5,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.css",
+          "module": "./~/css-loader?-minimize!./lib/webparts/weather/Weather.module.css",
+          "moduleName": "./~/css-loader?-minimize!./lib/webparts/weather/Weather.module.css",
+          "type": "cjs require",
+          "userRequest": "../../../node_modules/css-loader/lib/css-base.js",
+          "loc": "1:27-86"
+        }
+      ],
+      "source": "/*\r\n\tMIT License http://www.opensource.org/licenses/mit-license.php\r\n\tAuthor Tobias Koppers @sokra\r\n*/\r\n// css base code, injected by the css-loader\r\nmodule.exports = function() {\r\n\tvar list = [];\r\n\r\n\t// return the list of modules as css string\r\n\tlist.toString = function toString() {\r\n\t\tvar result = [];\r\n\t\tfor(var i = 0; i < this.length; i++) {\r\n\t\t\tvar item = this[i];\r\n\t\t\tif(item[2]) {\r\n\t\t\t\tresult.push(\"@media \" + item[2] + \"{\" + item[1] + \"}\");\r\n\t\t\t} else {\r\n\t\t\t\tresult.push(item[1]);\r\n\t\t\t}\r\n\t\t}\r\n\t\treturn result.join(\"\");\r\n\t};\r\n\r\n\t// import a list of modules into the list\r\n\tlist.i = function(modules, mediaQuery) {\r\n\t\tif(typeof modules === \"string\")\r\n\t\t\tmodules = [[null, modules, \"\"]];\r\n\t\tvar alreadyImportedModules = {};\r\n\t\tfor(var i = 0; i < this.length; i++) {\r\n\t\t\tvar id = this[i][0];\r\n\t\t\tif(typeof id === \"number\")\r\n\t\t\t\talreadyImportedModules[id] = true;\r\n\t\t}\r\n\t\tfor(i = 0; i < modules.length; i++) {\r\n\t\t\tvar item = modules[i];\r\n\t\t\t// skip already imported module\r\n\t\t\t// this implementation is not 100% perfect for weird media query combinations\r\n\t\t\t//  when a module is imported multiple times with different media queries.\r\n\t\t\t//  I hope this will never occur (Hey this way we have smaller bundles)\r\n\t\t\tif(typeof item[0] !== \"number\" || !alreadyImportedModules[item[0]]) {\r\n\t\t\t\tif(mediaQuery && !item[2]) {\r\n\t\t\t\t\titem[2] = mediaQuery;\r\n\t\t\t\t} else if(mediaQuery) {\r\n\t\t\t\t\titem[2] = \"(\" + item[2] + \") and (\" + mediaQuery + \")\";\r\n\t\t\t\t}\r\n\t\t\t\tlist.push(item);\r\n\t\t\t}\r\n\t\t}\r\n\t};\r\n\treturn list;\r\n};\r\n"
+    },
+    {
+      "id": 7,
+      "identifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+      "name": "./~/@microsoft/load-themed-styles/lib/index.js",
+      "index": 7,
+      "index2": 4,
+      "size": 9346,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.css",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 4,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\@microsoft\\loader-load-themed-styles\\lib\\index.js!E:\\spfx-demo\\jquery-cdn\\node_modules\\css-loader\\index.js?-minimize!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\Weather.module.css",
+          "module": "./lib/webparts/weather/Weather.module.css",
+          "moduleName": "./lib/webparts/weather/Weather.module.css",
+          "type": "cjs require",
+          "userRequest": "E:\\spfx-demo\\jquery-cdn\\node_modules\\@microsoft\\load-themed-styles\\lib\\index.js",
+          "loc": "2:13-110"
+        }
+      ],
+      "source": "/**\n * An IThemingInstruction can specify a rawString to be preserved or a theme slot and a default value\n * to use if that slot is not specified by the theme.\n */\n\"use strict\";\n// IE needs to inject styles using cssText. However, we need to evaluate this lazily, so this\n// value will initialize as undefined, and later will be set once on first loadStyles injection.\nvar _injectStylesWithCssText;\n// Store the theming state in __themeState__ global scope for reuse in the case of duplicate\n// load-themed-styles hosted on the page.\nvar _root = (typeof window === 'undefined') ? global : window; // tslint:disable-line:no-any\nvar _themeState = _root.__themeState__ = _root.__themeState__ || {\n    theme: undefined,\n    lastStyleElement: undefined,\n    registeredStyles: []\n};\n/**\n * Matches theming tokens. For example, \"[theme: themeSlotName, default: #FFF]\" (including the quotes).\n */\n/* tslint:disable: max-line-length */\nvar _themeTokenRegex = /[\\'\\\"]\\[theme:\\s*(\\w+)\\s*(?:\\,\\s*default:\\s*([\\\\\"\\']?[\\.\\,\\(\\)\\#\\-\\s\\w]*[\\.\\,\\(\\)\\#\\-\\w][\\\"\\']?))?\\s*\\][\\'\\\"]/g;\n/* tslint:enable: max-line-length */\n/** Maximum style text length, for supporting IE style restrictions. */\nvar MAX_STYLE_CONTENT_SIZE = 10000;\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load\n * event is fired.\n * @param {string | ThemableArray} styles Themable style text to register.\n */\nfunction loadStyles(styles) {\n    var styleParts = Array.isArray(styles) ? styles : splitStyles(styles);\n    if (_injectStylesWithCssText === undefined) {\n        _injectStylesWithCssText = shouldUseCssText();\n    }\n    applyThemableStyles(styleParts);\n}\nexports.loadStyles = loadStyles;\n/**\n * Allows for customizable loadStyles logic. e.g. for server side rendering application\n * @param {(styles: string) => void} a loadStyles callback that gets called when styles are loaded or reloaded\n */\nfunction configureLoadStyles(callback) {\n    _themeState.loadStyles = callback;\n}\nexports.configureLoadStyles = configureLoadStyles;\n/**\n * Loads a set of style text. If it is registered too early, we will register it when the window.load event\n * is fired.\n * @param {string} styleText Style to register.\n * @param {IStyleRecord} styleRecord Existing style record to re-apply.\n */\nfunction applyThemableStyles(stylesArray, styleRecord) {\n    if (_themeState.loadStyles) {\n        var styles = resolveThemableArray(stylesArray);\n        _themeState.loadStyles(styles);\n    }\n    else {\n        _injectStylesWithCssText ?\n            registerStylesIE(stylesArray, styleRecord) :\n            registerStyles(stylesArray, styleRecord);\n    }\n}\n/**\n * Registers a set theme tokens to find and replace. If styles were already registered, they will be\n * replaced.\n * @param {theme} theme JSON object of theme tokens to values.\n */\nfunction loadTheme(theme) {\n    _themeState.theme = theme;\n    // reload styles.\n    reloadStyles();\n}\nexports.loadTheme = loadTheme;\n/**\n * Reloads styles.\n */\nfunction reloadStyles() {\n    if (_themeState.theme) {\n        for (var _i = 0, _a = _themeState.registeredStyles; _i < _a.length; _i++) {\n            var styleRecord = _a[_i];\n            applyThemableStyles(styleRecord.themableStyle, styleRecord);\n        }\n    }\n}\n/**\n * Find theme tokens and replaces them with provided theme values.\n * @param {string} styles Tokenized styles to fix.\n */\nfunction detokenize(styles) {\n    if (styles) {\n        styles = resolveThemableArray(splitStyles(styles));\n    }\n    return styles;\n}\nexports.detokenize = detokenize;\n/**\n * Resolves ThemingInstruction objects in an array and joins the result into a string.\n * @param {ThemableArray} splitStyleArray ThemableArray to resolve and join.\n */\nfunction resolveThemableArray(splitStyleArray) {\n    var theme = _themeState.theme;\n    var resolvedCss;\n    if (splitStyleArray) {\n        // Resolve the array of theming instructions to an array of strings.\n        // Then join the array to produce the final CSS string.\n        var resolvedArray = splitStyleArray.map(function (currentValue) {\n            var themeSlot = currentValue.theme;\n            if (themeSlot) {\n                // A theming annotation. Resolve it.\n                var themedValue = theme ? theme[themeSlot] : undefined;\n                var defaultValue = currentValue.defaultValue;\n                // Warn to console if we hit an unthemed value even when themes are provided.\n                // Allow the themedValue to be undefined to explicitly request the default value.\n                if (theme && !themedValue && console && !(themeSlot in theme)) {\n                    /* tslint:disable: max-line-length */\n                    console.warn(\"Theming value not provided for \\\"\" + themeSlot + \"\\\". Falling back to \\\"\" + (defaultValue || 'inherit') + \"\\\".\");\n                }\n                return themedValue || defaultValue || 'inherit';\n            }\n            else {\n                // A non-themable string. Preserve it.\n                return currentValue.rawString;\n            }\n        });\n        resolvedCss = resolvedArray.join('');\n    }\n    return resolvedCss;\n}\n/**\n * Split tokenized CSS into an array of strings and theme specification objects\n * @param {string} styles Tokenized styles to split.\n */\nfunction splitStyles(styles) {\n    var result = [];\n    if (styles) {\n        var pos = 0; // Current position in styles.\n        var tokenMatch = void 0;\n        while (tokenMatch = _themeTokenRegex.exec(styles)) {\n            var matchIndex = tokenMatch.index;\n            if (matchIndex > pos) {\n                result.push({\n                    rawString: styles.substring(pos, matchIndex)\n                });\n            }\n            result.push({\n                theme: tokenMatch[1],\n                defaultValue: tokenMatch[2] // May be undefined\n            });\n            // index of the first character after the current match\n            pos = _themeTokenRegex.lastIndex;\n        }\n        // Push the rest of the string after the last match.\n        result.push({\n            rawString: styles.substring(pos)\n        });\n    }\n    return result;\n}\nexports.splitStyles = splitStyles;\n/**\n * Registers a set of style text. If it is registered too early, we will register it when the\n * window.load event is fired.\n * @param {ThemableArray} styleArray Array of IThemingInstruction objects to register.\n * @param {IStyleRecord} styleRecord May specify a style Element to update.\n */\nfunction registerStyles(styleArray, styleRecord) {\n    var head = document.getElementsByTagName('head')[0];\n    var styleElement = document.createElement('style');\n    styleElement.type = 'text/css';\n    styleElement.appendChild(document.createTextNode(resolveThemableArray(styleArray)));\n    if (styleRecord) {\n        head.replaceChild(styleElement, styleRecord.styleElement);\n        styleRecord.styleElement = styleElement;\n    }\n    else {\n        head.appendChild(styleElement);\n    }\n    if (!styleRecord) {\n        _themeState.registeredStyles.push({\n            styleElement: styleElement,\n            themableStyle: styleArray\n        });\n    }\n}\n/**\n * Registers a set of style text, for IE 9 and below, which has a ~30 style element limit so we need\n * to register slightly differently.\n * @param {ThemableArray} styleArray Array of IThemingInstruction objects to register.\n * @param {IStyleRecord} styleRecord May specify a style Element to update.\n */\nfunction registerStylesIE(styleArray, styleRecord) {\n    var head = document.getElementsByTagName('head')[0];\n    var lastStyleElement = _themeState.lastStyleElement, registeredStyles = _themeState.registeredStyles;\n    var stylesheet = lastStyleElement ? lastStyleElement.styleSheet : undefined;\n    var lastStyleContent = stylesheet ? stylesheet.cssText : '';\n    var lastRegisteredStyle = registeredStyles[registeredStyles.length - 1];\n    var resolvedStyleText = resolveThemableArray(styleArray);\n    if (!lastStyleElement || (lastStyleContent.length + resolvedStyleText.length) > MAX_STYLE_CONTENT_SIZE) {\n        lastStyleElement = document.createElement('style');\n        lastStyleElement.type = 'text/css';\n        if (styleRecord) {\n            head.replaceChild(lastStyleElement, styleRecord.styleElement);\n            styleRecord.styleElement = lastStyleElement;\n        }\n        else {\n            head.appendChild(lastStyleElement);\n        }\n        if (!styleRecord) {\n            lastRegisteredStyle = {\n                styleElement: lastStyleElement,\n                themableStyle: styleArray\n            };\n            registeredStyles.push(lastRegisteredStyle);\n        }\n    }\n    lastStyleElement.styleSheet.cssText += detokenize(resolvedStyleText);\n    Array.prototype.push.apply(lastRegisteredStyle.themableStyle, styleArray); // concat in-place\n    // Preserve the theme state.\n    _themeState.lastStyleElement = lastStyleElement;\n}\n/**\n * Checks to see if styleSheet exists as a property off of a style element.\n * This will determine if style registration should be done via cssText (<= IE9) or not\n */\nfunction shouldUseCssText() {\n    var useCSSText = false;\n    if (typeof document !== 'undefined') {\n        var emptyStyle = document.createElement('style');\n        emptyStyle.type = 'text/css';\n        useCSSText = !!emptyStyle.styleSheet;\n    }\n    return useCSSText;\n}\n\n"
+    },
+    {
+      "id": 8,
+      "identifier": "external \"weatherStrings\"",
+      "name": "external \"weatherStrings\"",
+      "index": 8,
+      "index2": 7,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+          "module": "./lib/webparts/weather/WeatherWebPart.js",
+          "moduleName": "./lib/webparts/weather/WeatherWebPart.js",
+          "type": "cjs require",
+          "userRequest": "weatherStrings",
+          "loc": "10:14-39"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "identifier": "external \"jquery\"",
+      "name": "external \"jquery\"",
+      "index": 9,
+      "index2": 8,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+          "module": "./lib/webparts/weather/WeatherWebPart.js",
+          "moduleName": "./lib/webparts/weather/WeatherWebPart.js",
+          "type": "cjs require",
+          "userRequest": "jquery",
+          "loc": "11:8-25"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "identifier": "external \"simpleWeather\"",
+      "name": "external \"simpleWeather\"",
+      "index": 10,
+      "index2": 9,
+      "size": 42,
+      "cacheable": false,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "assets": [],
+      "issuer": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "reasons": [
+        {
+          "moduleId": 0,
+          "moduleIdentifier": "E:\\spfx-demo\\jquery-cdn\\node_modules\\source-map-loader\\index.js!E:\\spfx-demo\\jquery-cdn\\lib\\webparts\\weather\\WeatherWebPart.js",
+          "module": "./lib/webparts/weather/WeatherWebPart.js",
+          "moduleName": "./lib/webparts/weather/WeatherWebPart.js",
+          "type": "cjs require",
+          "userRequest": "simpleWeather",
+          "loc": "12:0-24"
+        }
+      ]
+    }
+  ],
+  "filteredModules": 0,
+  "children": []
+}
