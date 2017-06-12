@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "5675963c-e4fd-4d66-9ece-37acc526aa1c",
+  "alias": "PnpJsCrudWithBatchWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "5675963c-e4fd-4d66-9ece-37acc526aa1c",
+    "group": { "default": "Under Development" },
+    "title": { "default": "SP PnP JS CRUD using Batch operations" },
+    "description": { "default": "Sample implementation of SharePoint CRUD operations using the SP PnP JS library using Batch" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "listName": ""
+    }
+  }]
+}

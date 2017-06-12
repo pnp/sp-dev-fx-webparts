@@ -1,0 +1,81 @@
+{
+  "id": "9353071d-4fd2-4149-ac5c-0b4f849d2c28",
+  "alias": "JsomCrudWithBatchWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "9353071d-4fd2-4149-ac5c-0b4f849d2c28",
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "JSOM CRUD using Batch operations"
+      },
+      "description": {
+        "default": "Sample implementation of SharePoint CRUD operations using the JSOM library using Batch"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "listName": ""
+      }
+    }
+  ],
+  "loaderConfig": {
+    "entryModuleId": "jsom-crud-with-batch.bundle",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "jsom-crud-with-batch.bundle": {
+        "type": "path",
+        "path": "dist/jsom-crud-with-batch.bundle.js"
+      },
+      "sp-init": {
+        "type": "path",
+        "path": "https://microsoft.sharepoint.com/_layouts/15/init.js",
+        "globalName": "$_global_init"
+      },
+      "microsoft-ajax": {
+        "type": "path",
+        "path": "https://microsoft.sharepoint.com/_layouts/15/MicrosoftAjax.js",
+        "globalDependencies": [
+          "sp-init"
+        ],
+        "globalName": "Sys"
+      },
+      "sp-runtime": {
+        "type": "path",
+        "path": "https://microsoft.sharepoint.com/_layouts/15/SP.Runtime.js",
+        "globalDependencies": [
+          "microsoft-ajax"
+        ],
+        "globalName": "SP"
+      },
+      "sharepoint": {
+        "type": "path",
+        "path": "https://microsoft.sharepoint.com/_layouts/15/SP.js",
+        "globalDependencies": [
+          "sp-runtime"
+        ],
+        "globalName": "SP"
+      },
+      "jsomCrudWithBatchStrings": {
+        "defaultPath": "lib/webparts/jsomCrudWithBatch/loc/en-us.js",
+        "type": "localizedPath",
+        "paths": {}
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0"
+      }
+    }
+  }
+}

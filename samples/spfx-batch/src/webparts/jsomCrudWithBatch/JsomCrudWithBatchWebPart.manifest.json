@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "9353071d-4fd2-4149-ac5c-0b4f849d2c28",
+  "alias": "JsomCrudWithBatchWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "9353071d-4fd2-4149-ac5c-0b4f849d2c28",
+    "group": { "default": "Under Development" },
+    "title": { "default": "JSOM CRUD using Batch operations" },
+    "description": { "default": "Sample implementation of SharePoint CRUD operations using the JSOM library using Batch" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "listName": "",
+      "itemCount":3
+    }
+  }]
+}

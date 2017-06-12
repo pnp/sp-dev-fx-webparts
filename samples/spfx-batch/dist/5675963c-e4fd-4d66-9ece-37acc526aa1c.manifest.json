@@ -1,0 +1,52 @@
+{
+  "id": "5675963c-e4fd-4d66-9ece-37acc526aa1c",
+  "alias": "PnpJsCrudWithBatchWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5675963c-e4fd-4d66-9ece-37acc526aa1c",
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "SP PnP JS CRUD using Batch operations"
+      },
+      "description": {
+        "default": "Sample implementation of SharePoint CRUD operations using the SP PnP JS library using Batch"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "listName": ""
+      }
+    }
+  ],
+  "loaderConfig": {
+    "entryModuleId": "pnp-js-crud-with-batch.bundle",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "pnp-js-crud-with-batch.bundle": {
+        "type": "path",
+        "path": "dist/pnp-js-crud-with-batch.bundle.js"
+      },
+      "pnpJsCrudWithBatchStrings": {
+        "defaultPath": "lib/webparts/pnpJsCrudWithBatch/loc/en-us.js",
+        "type": "localizedPath",
+        "paths": {}
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0"
+      }
+    }
+  }
+}
