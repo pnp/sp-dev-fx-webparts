@@ -1,13 +1,13 @@
 {
   "entries": [
     {
-      "entry": "./lib/webparts/angularSearch/AngularSearchWebPart.js",
-      "manifest": "./src/webparts/angularSearch/AngularSearchWebPart.manifest.json",
-      "outputPath": "./dist/angular-search.bundle.js"
+      "entry": "./lib/webparts/mostPopularItems/MostPopularItemsWebPart.js",
+      "manifest": "./src/webparts/mostPopularItems/MostPopularItemsWebPart.manifest.json",
+      "outputPath": "./dist/most-popular-items.bundle.js"
     }
   ],
   "externals": {},
   "localizedResources": {
-    "angularSearchStrings": "webparts/angularSearch/loc/{locale}.js"
+    "mostPopularItemsStrings": "webparts/mostPopularItems/loc/{locale}.js"
   }
 }
