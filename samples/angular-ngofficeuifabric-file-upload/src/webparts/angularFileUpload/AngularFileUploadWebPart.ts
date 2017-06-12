@@ -1,10 +1,14 @@
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
-  PropertyPaneTextField
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField,
+  IWebPartContext
 } from '@microsoft/sp-webpart-base';
-import ModuleLoader from '@microsoft/sp-module-loader';
+
+import { escape } from '@microsoft/sp-lodash-subset';
+
+import { SPComponentLoader } from '@microsoft/sp-loader';
 import * as angular from 'angular';
 import './app/FileUploadModule';
 import styles from './AngularFileUpload.module.scss';
@@ -12,11 +16,12 @@ import * as strings from 'angularFileUploadStrings';
 import { IAngularFileUploadWebPartProps } from './IAngularFileUploadWebPartProps';
 
 export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAngularFileUploadWebPartProps> {
+
   private $injector: ng.auto.IInjectorService;
   public constructor(context: IWebPartContext) {
-    super(context);
-    ModuleLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css');
-    ModuleLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
+    super();
+    SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css');
+    SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
   }
 
   public render(): void {
@@ -80,7 +85,11 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
     });
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

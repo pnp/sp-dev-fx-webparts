@@ -14,7 +14,7 @@ export class CustomFileChange implements ng.IDirective {
 
         reader.onload = (event: any): void => {
           const fileModel: IFile = {
-            fileName: element[0].files[0].name,
+            fileName: element[0].files[0].name, 
             fileAsBuffer: event.target.result
           };
           modelSetter(scope, fileModel);

@@ -1,10 +1,10 @@
 import * as angular from 'angular';
 import 'ng-office-ui-fabric';
-import { BaseService } from './services/BaseSvc';
-import { FileUploadService } from './services/FileUploadSvc';
-import { FileUploadCtrl } from './controllers/FileUploadCtrl';
-import { CustomFileChange } from './directives/CustomFileChange';
-import { IsoToDateString } from './filters/IsoToDateString';
+import { BaseService } from './services/baseSvc';
+import { FileUploadService } from './services/fileUploadSvc';
+import { FileUploadCtrl } from './controllers/fileUploadCtrl';
+import { CustomFileChange } from './directives/customFileChange';
+import { IsoToDateString } from './filters/isoToDateString';
 
 const fileUploadApp: ng.IModule = angular.module('fileUploadApp', [
   'officeuifabric.core',

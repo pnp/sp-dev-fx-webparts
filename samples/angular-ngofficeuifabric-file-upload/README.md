@@ -8,7 +8,7 @@ File Update/Delete webpart using AngularJs and ngOfficeUIFabric with the SharePo
 Edit webpart properties to set Document library Name. Initially, It has been set to `Documents`.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+![drop](https://img.shields.io/badge/version-GA-green.svg)
 
 ## Applies to
 
@@ -19,13 +19,14 @@ Edit webpart properties to set Document library Name. Initially, It has been set
 
 Solution|Author(s)
 --------|---------
-angular-ngofficeuifabric-file-upload | Atish Kumar Dipongkor (MVP, Office Development)
+angular-ngofficeuifabric-file-upload | Atish Kumar Dipongkor (MVP, Office Development), Gautam Sheth(SharePoint Consultant,RapidCircle,@gautamdsheth)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|November 24, 2016|Initial release
+2.0|May 26, 2017|GA release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
