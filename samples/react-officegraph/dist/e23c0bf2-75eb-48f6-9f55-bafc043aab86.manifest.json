@@ -1,0 +1,70 @@
+{
+  "id": "e23c0bf2-75eb-48f6-9f55-bafc043aab86",
+  "alias": "WorkingWithWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "e23c0bf2-75eb-48f6-9f55-bafc043aab86",
+      "group": {
+        "default": "Productivity"
+      },
+      "title": {
+        "default": "Working with"
+      },
+      "description": {
+        "default": "Shows people with whom you communicate frequently"
+      },
+      "officeFabricIconFontName": "Group",
+      "properties": {
+        "title": "Recent contacts",
+        "numberOfPeople": 5
+      }
+    }
+  ],
+  "loaderConfig": {
+    "entryModuleId": "working-with.bundle",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "working-with.bundle": {
+        "type": "path",
+        "path": "dist/working-with.bundle.js"
+      },
+      "workingWithStrings": {
+        "defaultPath": "lib/webparts/workingWith/loc/en-us.js",
+        "type": "localizedPath",
+        "paths": {}
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "react": {
+        "type": "component",
+        "version": "15.5.4",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      },
+      "react-dom": {
+        "type": "component",
+        "version": "15.5.4",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "failoverPath": "node_modules/react-dom/dist/react-dom.js"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0"
+      },
+      "@microsoft/sp-http": {
+        "type": "component",
+        "version": "1.0.0",
+        "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6"
+      }
+    }
+  }
+}

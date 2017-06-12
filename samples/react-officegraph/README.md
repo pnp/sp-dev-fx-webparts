@@ -29,7 +29,7 @@ Sample SharePoint Framework Client-Side Web Part built using React showing docum
 ![Working with Web Part in the SharePoint Workbench](./assets/trending-in-sites-i-follow-preview.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop2-red.svg)
+![drop](https://img.shields.io/badge/drop-ga-green.svg)
 
 ## Applies to
 
@@ -40,12 +40,13 @@ Sample SharePoint Framework Client-Side Web Part built using React showing docum
 
 Solution|Author(s)
 --------|---------
-react-officegraph|Waldek Mastykarz (MVP, Rencore, @waldekm)
+react-officegraph|Waldek Mastykarz (MVP, Rencore, @waldekm), Gautam Sheth(SharePoint Consultant,Rapid Circle,@gautamdsheth)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+2.0  |May 31, 2017| GA release
 1.3.0|September 20, 2016|Added the Trending in the sites I follow sample
 1.2.0|September 20, 2016|Added the My recent documents sample
 1.1.0|September 19, 2016|Added the Working with sample
