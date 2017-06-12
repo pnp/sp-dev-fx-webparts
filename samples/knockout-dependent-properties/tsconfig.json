@@ -4,6 +4,11 @@
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "types": [
+      "es6-promise",
+      "es6-collections",
+      "webpack-env"
+    ]
   }
 }

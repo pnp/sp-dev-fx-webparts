@@ -8,13 +8,12 @@ Sample Web Part illustrating
 
 ![Sample Web Part implementing dependent properties in Property Pane](./assets/dep-props.png)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-ga-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -27,6 +26,7 @@ ko-dependent-properties | Alex Terentiev (Sharepointalist Inc., @alexaterentiev)
 Version|Date|Comments
 -------|----|--------
 1.0|October 12, 2016|Initial release
+1.1|May 20, 2017| Update to GA
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

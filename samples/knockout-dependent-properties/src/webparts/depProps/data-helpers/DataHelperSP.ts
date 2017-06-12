@@ -1,8 +1,9 @@
 import {
   IWebPartContext
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 import { ISPList, ISPView, ISPLists, ISPViews } from '../common/SPEntities';
 import { IDataHelper } from './DataHelperBase';
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 /**
  * List with views interface
@@ -40,8 +41,8 @@ export class DataHelperSP implements IDataHelper {
    * API to get lists from the source
    */
   public getLists(): Promise<ISPList[]> {
-    return this.context.httpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/web/lists?$filter=Hidden eq false`) // sending the request to SharePoint REST API
-      .then((response: Response) => { // httpClient.get method returns a response object where json method creates a Promise of getting result
+    return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/web/lists?$filter=Hidden eq false`, SPHttpClient.configurations.v1) // sending the request to SharePoint REST API
+      .then((response: SPHttpClientResponse) => { // httpClient.get method returns a response object where json method creates a Promise of getting result
         return response.json();
       }).then((response: ISPLists) => { // response is an ISPLists object
         return response.value;
@@ -68,8 +69,8 @@ export class DataHelperSP implements IDataHelper {
       });
     }
     else {
-      return this.context.httpClient.get(this.context.pageContext.web.absoluteUrl + '/_api/web/lists(\'' + listId + '\')/views') // requesting views from SharePoint REST API
-        .then((response: Response) => { // httpClient.get method returns a response object where json method creates a Promise of getting result
+      return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + '/_api/web/lists(\'' + listId + '\')/views', SPHttpClient.configurations.v1) // requesting views from SharePoint REST API
+        .then((response: SPHttpClientResponse) => { // httpClient.get method returns a response object where json method creates a Promise of getting result
           return response.json();
         }).then((response: ISPViews) => { // response is an ISPViews object
           var views = response.value;

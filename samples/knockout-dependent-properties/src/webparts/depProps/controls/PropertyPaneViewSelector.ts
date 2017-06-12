@@ -1,7 +1,7 @@
 import {
   IPropertyPaneField,
-  IPropertyPaneFieldType
-} from '@microsoft/sp-client-preview';
+  PropertyPaneFieldType
+} from '@microsoft/sp-webpart-base';
 
 import { PropertyPaneViewSelectorViewModel } from './PropertyPaneViewSelectorViewModel';
 import { PropertyPaneViewSelectorView } from './PropertyPaneViewSelectorView';
@@ -20,7 +20,7 @@ class PropertyPaneViewSelector implements IPropertyPaneField<IPropertyPaneViewSe
   /**
    * This is a Custom field
    */
-  public type: IPropertyPaneFieldType = IPropertyPaneFieldType.Custom;
+  public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   /**
    * Path to target property in web part properties
    */
@@ -74,10 +74,14 @@ class PropertyPaneViewSelector implements IPropertyPaneField<IPropertyPaneViewSe
   /**
    * Rendering the component
    */
-  private _render(elem: HTMLElement): void {
+  private _render(elem: HTMLElement, context: any): void {
+    if (elem.innerHTML)
+      return;
     this._parentNode = elem;
+    elem.innerHTML = '';
     this._view.render(elem).then(() => {     // rendering of HTML markup
       this._viewModel.init().then(() => {    // getting data
+        ko.cleanNode(this._parentNode);
         ko.applyBindings(this._viewModel, elem);   // applying bindings
       });
     });
@@ -103,7 +107,7 @@ class PropertyPaneViewSelector implements IPropertyPaneField<IPropertyPaneViewSe
  */
 export function PropertyPaneViewSelectorField(targetProperty: string, properties: IPropertyPaneViewSelectorFieldProps): IPropertyPaneField<IPropertyPaneViewSelectorFieldProps> {
   var internalProps: IPropertyPaneViewSelectorFieldPropsInternal = {
-    context: properties.context,
+    wpContext: properties.wpContext,
     listId: properties.listId,
     viewId: properties.viewId,
     listLabel: properties.listLabel,
@@ -111,7 +115,8 @@ export function PropertyPaneViewSelectorField(targetProperty: string, properties
     onPropertyChange: properties.onPropertyChange,
     targetProperty: targetProperty,
     onRender: null,
-    onDispose: null
+    onDispose: null,
+    key: ''
   };
   return new PropertyPaneViewSelector(targetProperty, internalProps);
 }
