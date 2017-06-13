@@ -12,16 +12,18 @@ build.configureWebpack.setConfig({
     additionalConfiguration: function (config) {
         var vueConfig = {
             module: {
-                loaders: [
+                rules: [
                     {
                         test: /\.vue$/,
-                        loader: 'vue-loader'
-                    }
-                ]
+                        use: [
+                            {
+                                loader: 'vue-loader',
+                                options: {
+                                    esModule: true
+                                }
+                            }]
+                    }]
             },
-            vue: {
-                esModule: true
-            }
         };
 
         return merge(config, vueConfig);

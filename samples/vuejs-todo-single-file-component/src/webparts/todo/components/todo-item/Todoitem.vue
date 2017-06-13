@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    module.exports = require('./todoitem');
+    module.exports = require('./TodoItem');
 </script>
 
-<style scoped src="./todoitem.scss" lang="sass"></style>
+<style scoped src="./todoitem.scss" lang="scss"></style>

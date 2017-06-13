@@ -3,7 +3,7 @@ import { Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class TodoItem extends Vue {
-    @Prop
+    @Prop()
     public todoText: string;
 
     public onComplete(): void {
