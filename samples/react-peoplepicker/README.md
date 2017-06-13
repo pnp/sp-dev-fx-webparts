@@ -3,7 +3,7 @@
 ## Summary
 SharePoint Framework solution with the Office UI Fabric People Picker, the client web part across the SharePoint Search API is able to retrieve people.
 
-![React-People-Picker-gif](./assets/preview.gif)
+![React-People-Picker-gif](https://raw.githubusercontent.com/SharePoint/sp-dev-fx-webparts/master/samples/react-peoplepicker/assets/Preview.gif)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
