@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.1.1",
+    "libraryName": "documentcardexample-webpart",
+    "libraryId": "e3af5b6a-8335-4b99-85af-f06ef5d62490",
+    "environment": "spo"
+  }
+}
