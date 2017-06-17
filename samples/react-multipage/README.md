@@ -11,7 +11,7 @@ Sample poll web part allowing users to vote and view the results.
 ![Poll web part built on the SharePoint Framework using React](./assets/poll-preview.gif)
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
