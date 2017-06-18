@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <!-- List of possible elements expected: 
+        'CustomAction, ClientWebPart, ClientSideComponent, 
+        Field, ContentType, ListInstance, Module, PropertyBag' 
+    -->
+
+    <!-- Upload Site Page with SPFx webpart -->
+    <Module Name="WebPartSitePage" Url="SitePages">
+        <File Path="WebPartSitePage.aspx" Url="WebPartSitePage.aspx" Type="GhostableInLibrary" >
+        </File>
+    </Module>
+
+    <!-- SPFxDescription Site Column -->
+    <Field ID="{0ad9d45c-b110-4635-b149-2890aa3a2513}" 
+           Name="SPFxDescription" 
+           DisplayName="Description" 
+           StaticName="SPFxDescription" 
+           Group="SPFx Site Columns" 
+           Type="Note" 
+           Required="FALSE" 
+           EnforceUniqueValues="FALSE" 
+           Indexed="FALSE" 
+           NumLines="8" 
+           RichText="TRUE" 
+           RichTextMode="FullHtml" 
+           IsolateStyles="TRUE" 
+           Sortable="FALSE" 
+           />
+    
+    <!-- SPFxImage Site Column -->
+    <Field ID="{f4e5dd71-448f-40e2-b991-35874a0d7fd6}" 
+           Name="SPFxImage" 
+           DisplayName="Image" 
+           StaticName="SPFxImage" 
+           Group="SPFx Site Columns" 
+           Type="URL" 
+           Required="FALSE" 
+           EnforceUniqueValues="FALSE" 
+           Indexed="FALSE" 
+           Format="Hyperlink" 
+        />
+
+    <!-- Parent ContentType: Item (0x0100) -->
+    <ContentType ID="0x0100CEADAD40C6630B489BDF172555628DA0"
+                 Name="SPFxItem" 
+                 Group="SPFx Content Types"
+                 Description=""
+                 Inherits="FALSE"
+                 Version="0"
+                 Hidden="FALSE"
+                 Sealed="FALSE"
+                 >
+        <FieldRefs>
+            <!-- SPFxDescription Site Column -->
+            <FieldRef ID="{f4e5dd71-448f-40e2-b991-35874a0d7fd6}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SPFxImage Site Column -->
+            <FieldRef ID="{0ad9d45c-b110-4635-b149-2890aa3a2513}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+        </FieldRefs>
+    </ContentType> 
+
+    <!-- Parent ContentType: Document (0x0101) -->
+    <ContentType ID="0x0101A33D9AD9805788419BDAAC2CCB37500F"
+                Name="SPFxDocument" 
+                Group="SPFx Content Types" 
+                Description=""
+                Inherits="FALSE"
+                Version="0"
+                Hidden="FALSE"
+                Sealed="FALSE"
+                >
+        <FieldRefs>
+            <!-- SPFxDescription Site Column -->
+            <FieldRef ID="{f4e5dd71-448f-40e2-b991-35874a0d7fd6}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SPFxImage Site Column -->
+            <FieldRef ID="{0ad9d45c-b110-4635-b149-2890aa3a2513}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+        </FieldRefs>
+        <DocumentTemplate TargetName="/_layouts/15/upload.aspx"/>
+    </ContentType> 
+
+    <!-- List (TemplateType 100) -->
+    <ListInstance 
+            CustomSchema="listSchema.xml"
+            FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+            Title="SPFx List" 
+            Description=""
+            TemplateType="100"
+            Url="Lists/SPFxList"
+            Hidden="FALSE">
+            <!-- Add default data with the list -->
+            <!-- Note: Deactivating and activating the feature will 
+            duplicate the data, so remove or comment if no initial data needed
+            -->
+            <Data>
+                <Rows>
+                    <Row>
+                        <Field Name="Title">Title 1</Field>
+                        <Field Name="SPFxDescription">Description 1</Field>
+                        <!-- Usage of Special Tokens (~site and ~sitecollection)
+                        Source: https://dev.office.com/sharepoint/docs/general-development/urls-and-tokens-in-sharepoint -->
+                        <Field Name="SPFxImage">~site/SitePages/Forms/ByAuthor.aspx, URL Title1</Field>
+                    </Row>
+                    <Row>
+                        <Field Name="Title">Title 2</Field>
+                        <Field Name="SPFxDescription">Description 2</Field>
+                        <!-- Usage of Special Tokens (~site and ~sitecollection)
+                        Source: https://dev.office.com/sharepoint/docs/general-development/urls-and-tokens-in-sharepoint -->
+                        <Field Name="SPFxImage">~site/SitePages/Forms/ByAuthor.aspx, URL Title2</Field>
+                    </Row>
+                </Rows>
+            </Data>
+    </ListInstance>
+
+    <!-- Document Library (TemplateType 101) -->
+    <ListInstance 
+            CustomSchema="librarySchema.xml"
+            FeatureId="00bfea71-e717-4e80-aa17-d0c71b360101"
+            Title="SPFx Document Library" 
+            Description=""
+            TemplateType="101"
+            Url="SPFxDocumentLibrary"
+            Hidden="FALSE">
+    </ListInstance>
+    
+    <!-- Upload files to the SPFxDocumentLibrary -->
+    <Module Name="Files" Url="SPFxDocumentLibrary">
+        <!-- ISSUE: For some reason `gulp package-solution` breaks the .jpg, .png images. 
+         Workaround is to open the .sppkg with winrar and add the images manually. -->
+        <File Path="Image1.jpg" Url="Image1.jpg" Type="GhostableInLibrary" ReplaceContent="TRUE" >
+        </File>
+        <File Path="Image2.png" Url="CustomFolder/Image2.png" Type="GhostableInLibrary" ReplaceContent="TRUE">
+        </File>
+    </Module>
+
+    <!-- Web PropertyBag Properties -->
+    <!-- PropertyBag: https://msdn.microsoft.com/en-us/library/office/gg491706.aspx -->
+    <PropertyBag ParentType="Web" RootWebOnly="FALSE">
+        
+        <!-- Property: https://msdn.microsoft.com/en-us/library/office/gg491703.aspx -->
+        <Property Name="SPFxName1" Value="SPFxValue1" Type="string"/>
+        <Property Name="SPFxName2" Value="1" Type="int"/>
+
+    </PropertyBag>
+
+    <!-- List PropertyBag Properties -->
+    <!-- PropertyBag: https://msdn.microsoft.com/en-us/library/office/gg491706.aspx -->
+    <PropertyBag ParentType="Folder" RootWebOnly="FALSE" Url="Lists/SPFxList">
+        
+        <!-- Property: https://msdn.microsoft.com/en-us/library/office/gg491703.aspx -->
+        <Property Name="SPFxListName1" Value="SPFxListValue1" Type="string"/>
+        <Property Name="SPFxListName2" Value="1" Type="int"/>
+
+    </PropertyBag>
+</Elements>
