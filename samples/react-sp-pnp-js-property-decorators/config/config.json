@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/customBusinessObjectsPnPJs/CustomBusinessObjectsPnPJsWebPart.js",
+      "manifest": "./src/webparts/customBusinessObjectsPnPJs/CustomBusinessObjectsPnPJsWebPart.manifest.json",
+      "outputPath": "./dist/custom-business-objects-pn-p-js.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "customBusinessObjectsPnPJsStrings": "webparts/customBusinessObjectsPnPJs/loc/{locale}.js"
+  }
+}
