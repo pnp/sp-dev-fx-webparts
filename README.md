@@ -1,14 +1,14 @@
-# Azure Active Directory implicit flow authentication samples
+# Azure Active Directory invitation manager Graph API samples
 
 ## Summary
 
 Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory.
 
-### Upcoming meetings
+### Invitation manager
 
-Sample SharePoint Framework client-side web part built using React showing upcoming meetings for the current user retrieved using the Microsoft Graph.
+Sample SharePoint Framework client-side web part built using React showing how to invite the external user using the Microsoft Graph.
 
-![The upcoming meetings web part displayed in SharePoint workbench](./assets/upcoming-meetings-preview.png)
+![The invitation manager web part displayed in SharePoint workbench](./assets/upcoming-meetings-preview.png)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-GA-green.svg)
@@ -22,14 +22,13 @@ Sample SharePoint Framework client-side web part built using React showing upcom
 
 Solution|Author(s)
 --------|---------
-react-aad-implicitflow|Waldek Mastykarz (MVP, Rencore, @waldekm)
+react-invitation-manager|Giuliano De Luca (..., ..., @giuleon)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1.0|March 17, 2017|Updated to SPFx GA
-1.0.0|September 22, 2016|Initial release
+1.0.0|July 10, 2016|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
