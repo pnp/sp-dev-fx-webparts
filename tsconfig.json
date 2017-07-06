@@ -6,6 +6,7 @@
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "experimentalDecorators": true,
     "types": [
       "adal",
       "es6-promise",

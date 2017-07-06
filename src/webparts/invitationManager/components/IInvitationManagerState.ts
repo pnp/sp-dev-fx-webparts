@@ -5,4 +5,8 @@ export interface IInvitationManagerState {
   error: string;
   invitation: IInvitation;
   signedIn: boolean;
+  sendInvitationMessage: boolean;
+  redirectUrl: string;
+  displayName: string;
+  emailAddress: string;
 }

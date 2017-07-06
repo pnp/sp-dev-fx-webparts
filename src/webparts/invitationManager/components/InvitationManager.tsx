@@ -9,7 +9,11 @@ import * as AuthenticationContext from 'adal-angular';
 import adalConfig from '../AdalConfig';
 import { IAdalConfig } from '../../IAdalConfig';
 import '../../WebPartAuthenticationContext';
-import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, IButtonProps, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export default class InvitationManager extends React.Component<IInvitationManagerProps, IInvitationManagerState> {
   private authCtx: adal.AuthenticationContext;
@@ -20,7 +24,11 @@ export default class InvitationManager extends React.Component<IInvitationManage
       loading: false,
       error: null,
       invitation: null,
-      signedIn: false
+      signedIn: false,
+      sendInvitationMessage: true,
+      redirectUrl: '',
+      emailAddress: '',
+      displayName: '',
     };
 
     const config: IAdalConfig = adalConfig;
@@ -54,12 +62,12 @@ export default class InvitationManager extends React.Component<IInvitationManage
 
   public componentDidUpdate(prevProps: IInvitationManagerProps, prevState: IInvitationManagerState, prevContext: any): void {
     if (prevState.signedIn !== this.state.signedIn) {
-      this._sendInvitation();
+      //this._sendInvitation();
     }
   }
 
   public render(): React.ReactElement<IInvitationManagerProps> {
-    const login: JSX.Element = this.state.signedIn ? <div /> : <button className={`${styles.button} ${styles.buttonCompound}`} onClick={() => { this.signIn(); } }><span className={styles.buttonLabel}>Sign in</span><span className={styles.buttonDescription}>Invite the user</span></button>;
+    const login: JSX.Element = this.state.signedIn ? <div /> : <button className={`${styles.button} ${styles.buttonCompound}`} onClick={() => { this.signIn(); } }><span className={styles.buttonLabel}>Sign in</span></button>;
     const loading: JSX.Element = this.state.loading ? <div style={{ margin: '0 auto', width: '7em' }}><div className={styles.spinner}><div className={`${styles.spinnerCircle} ${styles.spinnerNormal}`}></div><div className={styles.spinnerLabel}>Loading...</div></div></div> : <div/>;
     const error: JSX.Element = this.state.error ? <div><strong>Error: </strong> {this.state.error}</div> : <div/>;
     const invitedUserDisplayName: JSX.Element = this.state.invitation ? <div><strong>Display Name: </strong> {this.state.invitation.invitedUserDisplayName}</div> : <div/>;
@@ -74,8 +82,16 @@ export default class InvitationManager extends React.Component<IInvitationManage
               <span className="ms-font-xl ms-fontColor-white">Invitation Manager</span>
               <p className="ms-font-l ms-fontColor-white">Invite external user</p>
               <p className="ms-font-l ms-fontColor-white">{escape(this.props.title)}</p>
+              <TextField onChanged={ this._displayName_onChanged } label='Display:' placeholder='Insert the display name of the external user' ariaLabel='Please enter text here' />
+              <TextField onChanged={ this._eMail_onChanged } label='Email:' iconClass='ms-Icon--Mail ms-Icon' placeholder='Insert the email address of the external user' ariaLabel='Please enter text here' />
+              <TextField onChanged={ this._redirectURL_onChanged } label='Redirect URL:' placeholder='Where do you want redirect the external user' ariaLabel='Please enter text here' />
+              <Toggle
+                    defaultChecked={ this.state.sendInvitationMessage }
+                    label='Send invitation message'
+                    onText='On'
+                    offText='Off'
+                    onChanged={ this._sendInvitationMessage_onChanged } />
               <div>
-                <div className={'ms-font-xl '}>{escape(this.props.title)}</div>
                 {login}
                 {loading}
                 {error}
@@ -83,11 +99,49 @@ export default class InvitationManager extends React.Component<IInvitationManage
                 {invitedUserEmailAddress}
                 {status}
               </div>
+              <DefaultButton
+                data-automation-id='test'
+                description='I am a description'
+                onClick={() => { this._sendInvitation(); } } >
+                  <span className={styles.buttonDescription}>Invite the user</span>
+              </DefaultButton>
             </div>
           </div>
         </div>
       </div>
     );
+  }
+
+  @autobind
+  private _sendInvitationMessage_onChanged(cheked: boolean): void {
+    this.setState((previousState: IInvitationManagerState, currentProps: IInvitationManagerProps): IInvitationManagerState => {
+        previousState.sendInvitationMessage = cheked;
+        return previousState;
+      });
+  }
+
+  @autobind
+  private _redirectURL_onChanged(newValue: any): void {
+    this.setState((previousState: IInvitationManagerState, currentProps: IInvitationManagerProps): IInvitationManagerState => {
+        previousState.redirectUrl = newValue;
+        return previousState;
+      });
+  }
+
+  @autobind
+  private _eMail_onChanged(newValue: any): void {
+    this.setState((previousState: IInvitationManagerState, currentProps: IInvitationManagerProps): IInvitationManagerState => {
+        previousState.emailAddress = newValue;
+        return previousState;
+      });
+  }
+
+  @autobind
+  private _displayName_onChanged(newValue: any): void {
+    this.setState((previousState: IInvitationManagerState, currentProps: IInvitationManagerProps): IInvitationManagerState => {
+        previousState.displayName = newValue;
+        return previousState;
+      });
   }
 
   private _sendInvitation = (ev?:React.MouseEvent<HTMLButtonElement>) => {
@@ -112,7 +166,7 @@ export default class InvitationManager extends React.Component<IInvitationManage
     this.getGraphAccessToken()
       .then((accessToken: string): Promise<IInvitation> => {
         console.log(accessToken);
-        return InvitationManager.postInvitation(accessToken, this.props.httpClient);
+        return InvitationManager.postInvitation(accessToken, this.props.httpClient, this.state);
       })
       .then((invitation: IInvitation): void => {
         this.setState((prevState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
@@ -160,13 +214,14 @@ export default class InvitationManager extends React.Component<IInvitationManage
     });
   }
 
-  private static postInvitation(accessToken: string, httpClient: HttpClient): Promise<IInvitation> {
+  private static postInvitation(accessToken: string, httpClient: HttpClient, previousState: IInvitationManagerState): Promise<IInvitation> {
     const postURL = `https://graph.microsoft.com/v1.0/invitations`; 
+    debugger;
     const body: string = JSON.stringify({
-          'invitedUserDisplayName': 'Giuliano De Luca',
-          'invitedUserEmailAddress': 'deluca.giuliano@gmail.com',
-          'inviteRedirectUrl': window.location.origin,
-          "sendInvitationMessage": true
+          'invitedUserDisplayName': previousState.displayName,
+          'invitedUserEmailAddress': previousState.emailAddress,
+          'inviteRedirectUrl': previousState.redirectUrl,
+          "sendInvitationMessage": previousState.sendInvitationMessage,
         });
     const requestHeaders: Headers = new Headers(); 
     requestHeaders.append('Content-type', 'application/json'); 
