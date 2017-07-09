@@ -3,6 +3,7 @@ import styles from './InvitationManager.module.scss';
 import { IInvitationManagerProps } from './IInvitationManagerProps';
 import { IInvitationManagerState } from './IInvitationManagerState';
 import { IInvitation } from './IInvitation';
+import { IExternalUser } from './IExternalUser';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { HttpClient, IHttpClientOptions, HttpClientResponse } from '@microsoft/sp-http';
 import * as AuthenticationContext from 'adal-angular';
@@ -14,11 +15,49 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import {
+  DetailsList,
+  DetailsListLayoutMode,
+  Selection
+} from 'office-ui-fabric-react/lib/DetailsList';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+
+let _items = [];
+
+let _columns = [
+  {
+    key: 'column1',
+    name: 'Name',
+    fieldName: 'name',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true
+  },
+  {
+    key: 'column2',
+    name: 'Value',
+    fieldName: 'value',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true
+  },
+];
 
 export default class InvitationManager extends React.Component<IInvitationManagerProps, IInvitationManagerState> {
+  private _selection: Selection;
   private authCtx: adal.AuthenticationContext;
+  
   constructor(props: IInvitationManagerProps, context?: any) {
     super(props);
+
+    this._selection = new Selection({
+      onSelectionChanged: () => 
+        //this.setState({ selectionDetails: this._getSelectionDetails() })
+        this.setState((previousState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
+          previousState.selectionDetails = this._getSelectionDetails();
+          return previousState;
+        })
+    });
 
     this.state = {
       loading: false,
@@ -29,6 +68,8 @@ export default class InvitationManager extends React.Component<IInvitationManage
       redirectUrl: '',
       emailAddress: '',
       displayName: '',
+      externalUser: null,
+      selectionDetails: this._getSelectionDetails(),
     };
 
     const config: IAdalConfig = adalConfig;
@@ -63,6 +104,7 @@ export default class InvitationManager extends React.Component<IInvitationManage
   public componentDidUpdate(prevProps: IInvitationManagerProps, prevState: IInvitationManagerState, prevContext: any): void {
     if (prevState.signedIn !== this.state.signedIn) {
       //this._sendInvitation();
+      this._getExternalUser();
     }
   }
 
@@ -73,12 +115,24 @@ export default class InvitationManager extends React.Component<IInvitationManage
     const invitedUserDisplayName: JSX.Element = this.state.invitation ? <div><strong>Display Name: </strong> {this.state.invitation.invitedUserDisplayName}</div> : <div/>;
     const invitedUserEmailAddress: JSX.Element = this.state.invitation ? <div><strong>Email Address: </strong> {this.state.invitation.invitedUserEmailAddress}</div> : <div/>;
     const status: JSX.Element = this.state.invitation ? <div><strong>Status: </strong> {this.state.invitation.status}</div> : <div/>;
+    let { externalUser, selectionDetails } = this.state;
+
+    // Populate with external users items.
+    if (externalUser !== null) {
+      for (let i = 0; i < externalUser.value.length; i++) {
+        _items.push({
+          key: i,
+          name: externalUser.value[i].displayName,
+          value: externalUser.value[i].mail,
+        });
+      }
+    }
 
     return (
       <div className={styles.invitationManager}>
         <div className={styles.container}>
           <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-            <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
+            <div className="ms-Grid-col ms-u-lg10 ms-u-xl10">
               <span className="ms-font-xl ms-fontColor-white">Invitation Manager</span>
               <p className="ms-font-l ms-fontColor-white">Invite external user</p>
               <p className="ms-font-l ms-fontColor-white">{escape(this.props.title)}</p>
@@ -107,9 +161,69 @@ export default class InvitationManager extends React.Component<IInvitationManage
               </DefaultButton>
             </div>
           </div>
+          {/*Grid of external users*/}
+          <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
+            <div className="ms-Grid-col ms-u-lg10 ms-u-xl10">
+              <div>
+                <div>{ selectionDetails }</div>
+                <TextField
+                  label='Filter by name:'
+                  onChanged={ text => 
+                    //this.setState({ externalUser: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+                    this.setState((previousState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
+                      //previousState.externalUser.value = text ? _items.filter(i => i.displayName.toLowerCase().indexOf(text) > -1) : _items;
+                      previousState.externalUser.value.length = 0;
+                      _items = text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items;
+                      for (var index = 0; index < _items.length; index++) {
+                        var element = _items[index];
+                        previousState.externalUser.value.push({
+                          id: '',
+                          businessPhones: '',
+                          displayName: element.name,
+                          givenName: '',
+                          jobTitle: '',
+                          mail: element.value,
+                          mobilePhone: '',
+                          officeLocation: '',
+                          preferredLanguage: '',
+                          surname: '',
+                          userPrincipalName: '',
+                        })
+                      }
+                      return previousState;
+
+                    })}
+                />
+                <MarqueeSelection selection={ this._selection }>
+                  <DetailsList
+                    items={ _items }
+                    columns={ _columns }
+                    setKey='set'
+                    layoutMode={ DetailsListLayoutMode.fixedColumns }
+                    selection={ this._selection }
+                    selectionPreservedOnEmptyClick={ true }
+                    onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+                  />
+                </MarqueeSelection>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
+  }
+
+  private _getSelectionDetails(): string {
+    let selectionCount = this._selection.getSelectedCount();
+
+    switch (selectionCount) {
+      case 0:
+        return 'No items selected';
+      case 1:
+        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
+      default:
+        return `${selectionCount} items selected`;
+    }
   }
 
   @autobind
@@ -153,8 +267,40 @@ export default class InvitationManager extends React.Component<IInvitationManage
     }
   }
 
+  private _getExternalUser = () => {
+    if (this.state.signedIn !== false) {
+      this.getExternalUser();
+    }
+  }
+
   public signIn(): void {
     this.authCtx.login();
+  }
+
+  private getExternalUser(): void {
+    this.setState((previousState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
+      previousState.loading = true;
+      return previousState;
+    });
+
+    this.getGraphAccessToken()
+      .then((accessToken: string): Promise<IExternalUser> => {
+        console.log(accessToken);
+        return InvitationManager.getExternalUser(accessToken, this.props.httpClient, this.state);
+      })
+      .then((external: IExternalUser): void => {
+        this.setState((prevState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
+          prevState.loading = false;
+          prevState.externalUser = external;
+          return prevState;
+        });
+      }, (error: any): void => {
+        this.setState((prevState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
+          prevState.loading = false;
+          prevState.error = error;
+          return prevState;
+        });
+      });
   }
 
   private sendInvitation(): void {
@@ -214,9 +360,30 @@ export default class InvitationManager extends React.Component<IInvitationManage
     });
   }
 
+  private static getExternalUser(accessToken: string, httpClient: HttpClient, previousState: IInvitationManagerState): Promise<IExternalUser> {
+    const URL = `https://graph.microsoft.com/v1.0/users?$filter=userType eq 'Guest'`; 
+
+    const requestHeaders: Headers = new Headers(); 
+    requestHeaders.append('Accept', 'application/json'); 
+    //For an OAuth token 
+    requestHeaders.append('Authorization', 'Bearer ' + accessToken); 
+    const httpClientOptions: IHttpClientOptions = { headers: requestHeaders };
+
+    return new Promise<IExternalUser>((resolve: (external: IExternalUser) => void, reject: (error: any) => void): void => {
+      httpClient.get(URL, HttpClient.configurations.v1, httpClientOptions)
+        .then((response: HttpClientResponse): Promise<IExternalUser> => {
+          return response.json();
+        })
+        .then((externalResponse: IExternalUser): void => {
+          resolve(externalResponse);
+        }, (error: any): void => {
+          reject(error);
+        });
+    });
+  }
+
   private static postInvitation(accessToken: string, httpClient: HttpClient, previousState: IInvitationManagerState): Promise<IInvitation> {
     const postURL = `https://graph.microsoft.com/v1.0/invitations`; 
-    debugger;
     const body: string = JSON.stringify({
           'invitedUserDisplayName': previousState.displayName,
           'invitedUserEmailAddress': previousState.emailAddress,

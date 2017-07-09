@@ -1,4 +1,5 @@
 import { IInvitation } from './IInvitation';
+import { IExternalUser } from './IExternalUser';
 
 export interface IInvitationManagerState {
   loading: boolean;
@@ -9,4 +10,6 @@ export interface IInvitationManagerState {
   redirectUrl: string;
   displayName: string;
   emailAddress: string;
+  externalUser:  IExternalUser,
+  selectionDetails: string,
 }
