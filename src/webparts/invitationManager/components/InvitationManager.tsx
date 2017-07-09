@@ -132,10 +132,9 @@ export default class InvitationManager extends React.Component<IInvitationManage
       <div className={styles.invitationManager}>
         <div className={styles.container}>
           <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-            <div className="ms-Grid-col ms-u-lg10 ms-u-xl10">
-              <span className="ms-font-xl ms-fontColor-white">Invitation Manager</span>
+            <div className="ms-Grid-col ms-u-lg10 ms-u-xl12">
+              <span className="ms-font-xl ms-fontColor-white">{escape(this.props.title)}</span>
               <p className="ms-font-l ms-fontColor-white">Invite external user</p>
-              <p className="ms-font-l ms-fontColor-white">{escape(this.props.title)}</p>
               <TextField onChanged={ this._displayName_onChanged } label='Display:' placeholder='Insert the display name of the external user' ariaLabel='Please enter text here' />
               <TextField onChanged={ this._eMail_onChanged } label='Email:' iconClass='ms-Icon--Mail ms-Icon' placeholder='Insert the email address of the external user' ariaLabel='Please enter text here' />
               <TextField onChanged={ this._redirectURL_onChanged } label='Redirect URL:' placeholder='Where do you want redirect the external user' ariaLabel='Please enter text here' />
@@ -163,7 +162,8 @@ export default class InvitationManager extends React.Component<IInvitationManage
           </div>
           {/*Grid of external users*/}
           <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-            <div className="ms-Grid-col ms-u-lg10 ms-u-xl10">
+            <div className="ms-Grid-col ms-u-lg10 ms-u-xl12">
+              <p className="ms-font-l ms-fontColor-white">External users in your organization</p>
               <div>
                 <div>{ selectionDetails }</div>
                 <TextField

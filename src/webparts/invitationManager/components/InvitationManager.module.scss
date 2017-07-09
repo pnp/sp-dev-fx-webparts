@@ -14,7 +14,9 @@
     margin: 5px auto 5px auto;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
-
+  label {
+    color: white !important;
+  }
   .button {
     &.buttonCompound {
       text-align: left;
