@@ -1,3 +1,7 @@
+import { ListState } from '../state/ListState';
+import { Store } from 'redux';
+
 export interface IDemoProps {
-  description: string;
+	store: Store<ListState>;
+	description: string;
 }

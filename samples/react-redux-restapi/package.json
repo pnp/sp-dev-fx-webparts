@@ -14,6 +14,7 @@
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
+    "immutable": "^3.8.1",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-redux": "^5.0.5",
@@ -25,9 +26,11 @@
     "@microsoft/sp-build-web": "~1.1.0",
     "@microsoft/sp-module-interfaces": "~1.1.0",
     "@microsoft/sp-webpart-workbench": "~1.1.0",
-    "gulp": "~3.9.1",
     "@types/chai": ">=3.4.34 <3.6.0",
-    "@types/mocha": ">=2.2.33 <2.6.0"
+    "@types/mocha": ">=2.2.33 <2.6.0",
+    "@types/react-redux": "^4.4.45",
+    "@types/redux-logger": "^3.0.0",
+    "gulp": "~3.9.1"
   },
   "scripts": {
     "build": "gulp bundle",
