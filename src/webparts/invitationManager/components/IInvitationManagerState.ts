@@ -12,4 +12,5 @@ export interface IInvitationManagerState {
   emailAddress: string;
   externalUser:  IExternalUser,
   selectionDetails: string,
+  items: string[];
 }

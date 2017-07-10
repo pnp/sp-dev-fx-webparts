@@ -70,6 +70,7 @@ export default class InvitationManager extends React.Component<IInvitationManage
       displayName: '',
       externalUser: null,
       selectionDetails: this._getSelectionDetails(),
+      items: [],
     };
 
     const config: IAdalConfig = adalConfig;
@@ -117,24 +118,13 @@ export default class InvitationManager extends React.Component<IInvitationManage
     const status: JSX.Element = this.state.invitation ? <div><strong>Status: </strong> {this.state.invitation.status}</div> : <div/>;
     let { externalUser, selectionDetails } = this.state;
 
-    // Populate with external users items.
-    if (externalUser !== null) {
-      for (let i = 0; i < externalUser.value.length; i++) {
-        _items.push({
-          key: i,
-          name: externalUser.value[i].displayName,
-          value: externalUser.value[i].mail,
-        });
-      }
-    }
-
     return (
       <div className={styles.invitationManager}>
         <div className={styles.container}>
-          <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-            <div className="ms-Grid-col ms-u-lg10 ms-u-xl12">
-              <span className="ms-font-xl ms-fontColor-white">{escape(this.props.title)}</span>
-              <p className="ms-font-l ms-fontColor-white">Invite external user</p>
+          <div className={`ms-Grid-row ms-bgColor-white ${styles.row}`}>
+            <div className="ms-Grid-col ms-u-lg9 ms-u-xl9">
+              <span className="ms-font-xl">{escape(this.props.title)}</span>
+              <p className="ms-font-l">Invite external user</p>
               <TextField onChanged={ this._displayName_onChanged } label='Display:' placeholder='Insert the display name of the external user' ariaLabel='Please enter text here' />
               <TextField onChanged={ this._eMail_onChanged } label='Email:' iconClass='ms-Icon--Mail ms-Icon' placeholder='Insert the email address of the external user' ariaLabel='Please enter text here' />
               <TextField onChanged={ this._redirectURL_onChanged } label='Redirect URL:' placeholder='Where do you want redirect the external user' ariaLabel='Please enter text here' />
@@ -145,7 +135,6 @@ export default class InvitationManager extends React.Component<IInvitationManage
                     offText='Off'
                     onChanged={ this._sendInvitationMessage_onChanged } />
               <div>
-                {login}
                 {loading}
                 {error}
                 {invitedUserDisplayName}
@@ -159,11 +148,14 @@ export default class InvitationManager extends React.Component<IInvitationManage
                   <span className={styles.buttonDescription}>Invite the user</span>
               </DefaultButton>
             </div>
+            <div className="ms-Grid-col ms-u-lg3 ms-u-xl3">
+              {login}
+            </div>
           </div>
           {/*Grid of external users*/}
-          <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
+          <div className={`ms-Grid-row ms-bgColor-white ${styles.row}`}>
             <div className="ms-Grid-col ms-u-lg10 ms-u-xl12">
-              <p className="ms-font-l ms-fontColor-white">External users in your organization</p>
+              <p className="ms-font-l">External users in your organization</p>
               <div>
                 <div>{ selectionDetails }</div>
                 <TextField
@@ -171,32 +163,14 @@ export default class InvitationManager extends React.Component<IInvitationManage
                   onChanged={ text => 
                     //this.setState({ externalUser: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
                     this.setState((previousState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
-                      //previousState.externalUser.value = text ? _items.filter(i => i.displayName.toLowerCase().indexOf(text) > -1) : _items;
-                      previousState.externalUser.value.length = 0;
-                      _items = text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items;
-                      for (var index = 0; index < _items.length; index++) {
-                        var element = _items[index];
-                        previousState.externalUser.value.push({
-                          id: '',
-                          businessPhones: '',
-                          displayName: element.name,
-                          givenName: '',
-                          jobTitle: '',
-                          mail: element.value,
-                          mobilePhone: '',
-                          officeLocation: '',
-                          preferredLanguage: '',
-                          surname: '',
-                          userPrincipalName: '',
-                        })
-                      }
+                      previousState.items = text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items;
                       return previousState;
-
-                    })}
+                    })
+                  }
                 />
                 <MarqueeSelection selection={ this._selection }>
                   <DetailsList
-                    items={ _items }
+                    items={ this.state.items }
                     columns={ _columns }
                     setKey='set'
                     layoutMode={ DetailsListLayoutMode.fixedColumns }
@@ -292,6 +266,18 @@ export default class InvitationManager extends React.Component<IInvitationManage
         this.setState((prevState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
           prevState.loading = false;
           prevState.externalUser = external;
+          // Populate with external users items.
+          if (external !== null) {
+            for (let i = 0; i < external.value.length; i++) {
+              _items.push({
+                key: i,
+                name: external.value[i].displayName,
+                value: external.value[i].mail,
+              });
+            }
+          }
+          prevState.items = _items;
+
           return prevState;
         });
       }, (error: any): void => {
