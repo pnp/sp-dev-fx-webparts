@@ -17,8 +17,10 @@ interface IConnectedDispatch {
 	//addList: (listtitle: string) => void;
 }
 
-function mapStateToProps(state: ListState, ownProps: IDemoProps): ListState {
-	return state;
+function mapStateToProps(state: ListState, ownProps: IDemoProps) {
+	return {
+		title: state.title
+	};
 }
 
 const mapDispatchToProps = (dispatch: Dispatch<ListState>): IConnectedDispatch => ({
@@ -48,7 +50,7 @@ class Demo extends React.Component<ListState & IDemoProps & IConnectedDispatch, 
 		);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.props.updateTitle("ghya");
 	}
 }
