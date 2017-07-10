@@ -12,6 +12,12 @@ const listsReducer: Reducer<ListState> = (state: ListState = initState, action: 
 			return state.addList(action.payload);
 		case ActionTypes.ADD_LIST_ERROR:
 			return state.setMessage(action.payload);
+		case ActionTypes.GET_LISTS_REQUEST:
+			return state.setMessage("Loading...");
+		case ActionTypes.GET_LISTS_SUCCESS:
+			return state.setMessage('').setLists(action.payload);
+		case ActionTypes.GET_LISTS_ERROR:
+			return state.setMessage(action.payload);
 		case ActionTypes.UPDATE_TITLE:
 			return state.setTitle(action.payload);
 		default: return state;

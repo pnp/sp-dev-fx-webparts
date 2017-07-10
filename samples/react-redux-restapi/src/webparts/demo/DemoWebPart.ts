@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-    BaseClientSideWebPart,
-    IPropertyPaneConfiguration,
-    PropertyPaneTextField
+	BaseClientSideWebPart,
+	IPropertyPaneConfiguration,
+	PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'demoStrings';
@@ -18,49 +18,44 @@ const store = configureStore();
 
 export default class DemoWebPart extends BaseClientSideWebPart<IDemoWebPartProps> {
 
-    public render(): void {
-        // const element: React.ReactElement<IDemoProps> = 
-        // );
+	public render(): void {
 
-        const provider: React.ReactElement<Provider> = React.createElement(typeof Provider, { }, React.createElement(
-            Demo,
-            {
+		const provider: React.ReactElement<Provider> = React.createElement(typeof Provider, null, React.createElement(
+			Demo,
+			{
 				store: store,
-                description: this.properties.description
-            }));
+				description: this.properties.description,
+				spHttpClient: this.context.spHttpClient,
+				currentWebUrl: this.context.pageContext.web.serverRelativeUrl
+			}));
 
 
-        ReactDom.render(provider, this.domElement);
-        // <Provider store={store}>
-        // 	<Demo description={this.properties.description}/>
-        // </Provider>
+		ReactDom.render(provider, this.domElement);
+	}
 
-        //ReactDom.render(element, this.domElement);
-    }
+	protected get dataVersion(): Version {
+		return Version.parse('1.0');
+	}
 
-    protected get dataVersion(): Version {
-        return Version.parse('1.0');
-    }
-
-    protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-        return {
-            pages: [
-                {
-                    header: {
-                        description: strings.PropertyPaneDescription
-                    },
-                    groups: [
-                        {
-                            groupName: strings.BasicGroupName,
-                            groupFields: [
-                                PropertyPaneTextField('description', {
-                                    label: strings.DescriptionFieldLabel
-                                })
-                            ]
-                        }
-                    ]
-                }
-            ]
-        };
-    }
+	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+		return {
+			pages: [
+				{
+					header: {
+						description: strings.PropertyPaneDescription
+					},
+					groups: [
+						{
+							groupName: strings.BasicGroupName,
+							groupFields: [
+								PropertyPaneTextField('description', {
+									label: strings.DescriptionFieldLabel
+								})
+							]
+						}
+					]
+				}
+			]
+		};
+	}
 }

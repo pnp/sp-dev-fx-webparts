@@ -15,9 +15,9 @@ export const initialState: IListState = {
 export class ListState extends Immutable.Record(initialState) implements IListState {
 
 	//Getters
-	public title: string;
-	public lists: string[];
-	public message: string;
+	public readonly title: string;
+	public readonly lists: string[];
+	public readonly message: string;
 
 	//Setters
 	public setTitle(newTitle: string): ListState {
@@ -25,9 +25,13 @@ export class ListState extends Immutable.Record(initialState) implements IListSt
 	}
 
 	public addList(item: string): ListState {
-		return this.update("lists", (list: string[]) => {
-			return list.concat(item);
+		return this.update("lists", (lists: string[]) => {
+			return lists.concat(item);
 		}) as ListState;
+	}
+
+	public setLists(items: string[]): ListState {
+		return this.set("lists", items) as ListState;
 	}
 
 	public setMessage(text: string): ListState {

@@ -23,23 +23,55 @@ const addListError = (error: Error): Action => ({
 	payload: error.message
 });
 
-export function addList(spHttpClient: SPHttpClient, currentWebUrl: string , listTitle: string) {
+const getListsRequest = (): Action => ({
+	type: ActionTypes.GET_LISTS_REQUEST
+});
+
+const getListsSuccess = (lists: string[]): Action => ({
+	type: ActionTypes.GET_LISTS_SUCCESS,
+	payload: lists
+});
+
+const getListsError = (error: Error): Action => ({
+	type: ActionTypes.GET_LISTS_ERROR,
+	payload: error.message
+});
+
+export function addList(spHttpClient: SPHttpClient, currentWebUrl: string, listTitle: string) {
 	return async (dispatch: any) => {
 
 		dispatch(addListRequest());
 
 		const spOpts: ISPHttpClientOptions = {
-      		body: `{ Title: '${listTitle}', BaseTemplate: 100 }`
-    	};
+			body: `{ Title: '${listTitle}', BaseTemplate: 100 }`
+		};
 
 		try {
-			const response : SPHttpClientResponse = await spHttpClient.post(`${currentWebUrl}/_api/web/lists`, SPHttpClient.configurations.v1, spOpts);
+			const response: SPHttpClientResponse = await spHttpClient.post(`${currentWebUrl}/_api/web/lists`, SPHttpClient.configurations.v1, spOpts);
 			const list: IODataList = await response.json();
 
 			dispatch(addListSuccess(list.Title));
 
 		} catch (error) {
 			dispatch(addListError(error));
+		}
+	};
+}
+
+export function getLists(spHttpClient: SPHttpClient, currentWebUrl: string) {
+	return async (dispatch: any) => {
+
+		dispatch(getListsRequest());
+
+		try {
+			const response: SPHttpClientResponse = await spHttpClient.get(`${currentWebUrl}/_api/web/lists?$filter=Hidden eq false&$select=Title`, SPHttpClient.configurations.v1);
+			const responseJSON = await response.json();
+			const lists: IODataList[] = responseJSON.value;
+			const listTitles: string[] = lists.map(list => list.Title);
+			dispatch(getListsSuccess(listTitles));
+
+		} catch (error) {
+			dispatch(getListsError(error));
 		}
 	};
 }
