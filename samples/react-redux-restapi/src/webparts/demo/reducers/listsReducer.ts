@@ -5,13 +5,13 @@ import { Reducer } from 'redux';
 const listsReducer: Reducer<ListState> = (state: ListState = initialState, action: Action): ListState => {
 	switch (action.type) {
 		case ActionTypes.ADD_LIST_REQUEST:
-			return state.setMessage("Loading...");
+			return {...state, message:"Loading..." };
 		case ActionTypes.ADD_LIST_SUCCESS:
-			return state.addList(action.payload);
+			return {...state, lists: state.lists.concat(action.payload) };
 		case ActionTypes.ADD_LIST_ERROR:
-			return state.setMessage(action.payload);
+			return {...state, message:action.payload };
 		case ActionTypes.UPDATE_TITLE:
-			return state.setTitle(action.payload);
+			return {...state, title:action.payload };
 		default: return state;
 	}
 };
