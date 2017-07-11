@@ -125,9 +125,9 @@ export default class InvitationManager extends React.Component<IInvitationManage
             <div className="ms-Grid-col ms-u-lg9 ms-u-xl9">
               <span className="ms-font-xl">{escape(this.props.title)}</span>
               <p className="ms-font-l">Invite external user</p>
-              <TextField onChanged={ this._displayName_onChanged } label='Display:' placeholder='Insert the display name of the external user' ariaLabel='Please enter text here' />
-              <TextField onChanged={ this._eMail_onChanged } label='Email:' iconClass='ms-Icon--Mail ms-Icon' placeholder='Insert the email address of the external user' ariaLabel='Please enter text here' />
-              <TextField onChanged={ this._redirectURL_onChanged } label='Redirect URL:' placeholder='Where do you want redirect the external user' ariaLabel='Please enter text here' />
+              <TextField onChanged={ this._displayName_onChanged } label='Display' placeholder='Insert the display name of the external user' ariaLabel='Please enter text here' />
+              <TextField onChanged={ this._eMail_onChanged } label='Email' iconClass='ms-Icon--Mail ms-Icon' placeholder='Insert the email address of the external user' ariaLabel='Please enter text here' />
+              <TextField onChanged={ this._redirectURL_onChanged } label='Redirect URL' placeholder='Where do you want redirect the external user' ariaLabel='Please enter text here' />
               <Toggle
                     defaultChecked={ this.state.sendInvitationMessage }
                     label='Send invitation message'
@@ -159,7 +159,7 @@ export default class InvitationManager extends React.Component<IInvitationManage
               <div>
                 <div>{ selectionDetails }</div>
                 <TextField
-                  label='Filter by name:'
+                  label='Filter by name'
                   onChanged={ text => 
                     //this.setState({ externalUser: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
                     this.setState((previousState: IInvitationManagerState, props: IInvitationManagerProps): IInvitationManagerState => {
