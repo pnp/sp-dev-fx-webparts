@@ -3,7 +3,7 @@
 ## Summary
 SharePoint Framework webpart which uses [Redux](http://redux.js.org/) to maintain a single state for the entire application and [ImmutableJS](https://facebook.github.io/immutable-js/) to create performant state trees.
 
-This webpart displays lists in your site when it loads. You can also add a new list to your site.
+Redux AJAX actions are used together with the SharePoint REST API to display lists in your site. You can also add a new list to the site from this webpart.
 
 ![](/assets/react-redux-immutable.gif)
 
