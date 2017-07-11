@@ -7,7 +7,9 @@ import { ListState } from '../state/ListState';
 const loggerMiddleware = createLogger();
 
 export default function configureStore() {
-	
+
 	//do not use loggerMiddleware in production
-	return createStore(listsReducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
+	const listSateStore: Store<ListState> = createStore<ListState>(listsReducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
+	
+	return listSateStore;
 }

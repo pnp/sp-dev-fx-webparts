@@ -9,7 +9,6 @@ import {
 
 import * as strings from 'demoStrings';
 import Demo from './components/Demo';
-import { IDemoProps } from './components/IDemoProps';
 import { IDemoWebPartProps } from './IDemoWebPartProps';
 
 import configureStore from './store/configureStore';

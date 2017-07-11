@@ -1,5 +1,5 @@
 import { Action, ActionTypes } from '../actions/actionTypes';
-import { ListState, initialState } from '../state/ListState';
+import { ListState } from '../state/ListState';
 import { Reducer } from 'redux';
 
 const initState = new ListState();

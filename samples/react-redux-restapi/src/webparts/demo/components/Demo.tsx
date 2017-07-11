@@ -5,7 +5,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import { Dispatch } from 'redux';
 import { updateTitle, addList, getLists } from '../actions/listActions';
 import { connect } from 'react-redux';
-import { ListState } from '../state/ListState'
+import { ListState } from '../state/ListState';
 import { SPHttpClient } from '@microsoft/sp-http';
 
 import * as ReactDOM from 'react-dom';
@@ -56,7 +56,7 @@ class Demo extends React.Component<IDemoProps & IConnectedState & IConnectedDisp
 							</div>
 							<ul>
 								{this.props.lists.map(list => {
-									return <li>{list}</li>
+									return <li>{list}</li>;
 								})}
 							</ul>
 						</div>
@@ -66,15 +66,15 @@ class Demo extends React.Component<IDemoProps & IConnectedState & IConnectedDisp
 		);
 	}
 
-	handleChange(event: React.FormEvent<HTMLInputElement>){
+	private handleChange(event: React.FormEvent<HTMLInputElement>){
 		this.props.updateTitle(event.currentTarget.value);
 	}
 
-	handleSubmit(event: React.MouseEvent<HTMLInputElement>){
-		this.props.addList(this.props.spHttpClient, this.props.currentWebUrl, this.props.title)
+	private handleSubmit(event: React.MouseEvent<HTMLInputElement>){
+		this.props.addList(this.props.spHttpClient, this.props.currentWebUrl, this.props.title);
 	}
 
-	componentDidMount() {
+	private componentDidMount() {
 		this.props.getLists(this.props.spHttpClient, this.props.currentWebUrl);
 	}
 }
