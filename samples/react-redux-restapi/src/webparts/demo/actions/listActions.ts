@@ -9,29 +9,28 @@ export const updateTitle = (title: string): Action => ({
 	payload: title
 });
 
+//Each AJAX request ideally has 3 actions: request, success and error. 
+//These can be used to modify the ui such as show a loading icon, show updated list, show error message etc.
 const addListRequest = (): Action => ({
 	type: ActionTypes.ADD_LIST_REQUEST
 });
-
 const addListSuccess = (list: string): Action => ({
 	type: ActionTypes.ADD_LIST_SUCCESS,
 	payload: list
 });
-
 const addListError = (error: Error): Action => ({
 	type: ActionTypes.ADD_LIST_ERROR,
 	payload: error.message
 });
 
+//Actions for getLists
 const getListsRequest = (): Action => ({
 	type: ActionTypes.GET_LISTS_REQUEST
 });
-
 const getListsSuccess = (lists: string[]): Action => ({
 	type: ActionTypes.GET_LISTS_SUCCESS,
 	payload: lists
 });
-
 const getListsError = (error: Error): Action => ({
 	type: ActionTypes.GET_LISTS_ERROR,
 	payload: error.message

@@ -18,15 +18,13 @@ interface IConnectedDispatch {
 
 interface IConnectedState {
 	title: string;
-	message: string;
 	lists: string[];
 }
 
 function mapStateToProps(state: ListState, ownProps: IDemoProps): IConnectedState {
 	return {
 		title: state.title,
-		lists: state.lists,
-		message: state.message
+		lists: state.lists
 	};
 }
 
@@ -51,31 +49,33 @@ class Demo extends React.Component<IDemoProps & IConnectedState & IConnectedDisp
 						<div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
 							<span className="ms-font-xl ms-fontColor-white">Welcome to SharePoint!</span>
 							<p className="ms-font-l ms-fontColor-white">{escape(this.props.description)}</p>
-							<span>{this.props.title}</span>
+							<span>Add New List:</span>
 							<div>
-							<input type="text"/>
+								<input type="text" value={this.props.title} onChange={this.handleChange.bind(this)} />
+								<input type="submit" value="Add" onClick={this.handleSubmit.bind(this)} />
 							</div>
-							{this.props.lists.length > 0 &&
-								<ul>
-									{this.props.lists.map(list => {
-										return <li>{list}</li>
-									})}
-								</ul>
-							}
-							<span>{this.props.message}</span>
+							<ul>
+								{this.props.lists.map(list => {
+									return <li>{list}</li>
+								})}
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		);
 	}
-	componentWillMount() {
-		this.props.updateTitle("Add New List:");
+
+	handleChange(event: React.FormEvent<HTMLInputElement>){
+		this.props.updateTitle(event.currentTarget.value);
+	}
+
+	handleSubmit(event: React.MouseEvent<HTMLInputElement>){
+		this.props.addList(this.props.spHttpClient, this.props.currentWebUrl, this.props.title)
 	}
 
 	componentDidMount() {
 		this.props.getLists(this.props.spHttpClient, this.props.currentWebUrl);
-		//this.props.addList(this.props.spHttpClient, this.props.currentWebUrl, "New List")
 	}
 }
 

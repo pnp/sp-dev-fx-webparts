@@ -4,20 +4,21 @@ import { Reducer } from 'redux';
 
 const initState = new ListState();
 
+//Reducer determines how the state should change after every action.
 const listsReducer: Reducer<ListState> = (state: ListState = initState, action: Action): ListState => {
 	switch (action.type) {
 		case ActionTypes.ADD_LIST_REQUEST:
-			return state.setMessage("Loading...");
+			return state; //You can show a loading message here.
 		case ActionTypes.ADD_LIST_SUCCESS:
 			return state.addList(action.payload);
 		case ActionTypes.ADD_LIST_ERROR:
-			return state.setMessage(action.payload);
+			return state;
 		case ActionTypes.GET_LISTS_REQUEST:
-			return state.setMessage("Loading...");
+			return state;
 		case ActionTypes.GET_LISTS_SUCCESS:
-			return state.setMessage('').setLists(action.payload);
+			return state.setLists(action.payload);
 		case ActionTypes.GET_LISTS_ERROR:
-			return state.setMessage(action.payload);
+			return state; //.setMessage(action.payload); //You can show an error message here
 		case ActionTypes.UPDATE_TITLE:
 			return state.setTitle(action.payload);
 		default: return state;
