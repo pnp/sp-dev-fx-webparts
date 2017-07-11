@@ -10,6 +10,7 @@ export const initialState: IListState = {
 	lists: []
 };
 
+//Immutable State.
 export class ListState extends Immutable.Record(initialState) implements IListState {
 
 	//Getters

@@ -39,6 +39,8 @@ const getListsError = (error: Error): Action => ({
 export function addList(spHttpClient: SPHttpClient, currentWebUrl: string, listTitle: string) {
 	return async (dispatch: any) => {
 
+		//Fire the 'request' action if you want to update the state to specify that an ajax request is being made.
+		//This can be used to show a loading screen or a spinner.
 		dispatch(addListRequest());
 
 		const spOpts: ISPHttpClientOptions = {
@@ -49,9 +51,11 @@ export function addList(spHttpClient: SPHttpClient, currentWebUrl: string, listT
 			const response: SPHttpClientResponse = await spHttpClient.post(`${currentWebUrl}/_api/web/lists`, SPHttpClient.configurations.v1, spOpts);
 			const list: IODataList = await response.json();
 
+			//Fire the 'success' action when you want to update the state based on a successfull request.  
 			dispatch(addListSuccess(list.Title));
 
 		} catch (error) {
+			//Fire the 'error' action when you want to update the state based on an error request.
 			dispatch(addListError(error));
 		}
 	};

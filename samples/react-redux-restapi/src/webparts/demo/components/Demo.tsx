@@ -21,6 +21,7 @@ interface IConnectedState {
 	lists: string[];
 }
 
+//Map the application state to the properties of the Components. Making them available in this.props inside the component.
 function mapStateToProps(state: ListState, ownProps: IDemoProps): IConnectedState {
 	return {
 		title: state.title,
@@ -28,6 +29,7 @@ function mapStateToProps(state: ListState, ownProps: IDemoProps): IConnectedStat
 	};
 }
 
+//Map the actions to the properties of the Component. Making them available in this.props inside the component.
 const mapDispatchToProps = (dispatch: Dispatch<ListState>): IConnectedDispatch => ({
 	updateTitle: (title: string) => {
 		dispatch(updateTitle(title));
@@ -40,6 +42,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ListState>): IConnectedDispatch =
 	}
 });
 
+//Components does not have a state of it's own. The state is is passed to the component as props from mapStateToProps
 class Demo extends React.Component<IDemoProps & IConnectedState & IConnectedDispatch, {}> {
 	public render() {
 		return (
