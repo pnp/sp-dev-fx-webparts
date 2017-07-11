@@ -13,7 +13,7 @@ import { IDemoProps } from './components/IDemoProps';
 import { IDemoWebPartProps } from './IDemoWebPartProps';
 
 import configureStore from './store/configureStore';
-import { Provider, ProviderProps } from 'react-redux';
+import { Provider } from 'react-redux';
 const store = configureStore();
 
 export default class DemoWebPart extends BaseClientSideWebPart<IDemoWebPartProps> {
@@ -23,7 +23,7 @@ export default class DemoWebPart extends BaseClientSideWebPart<IDemoWebPartProps
 		const provider: React.ReactElement<Provider> = React.createElement(typeof Provider, null, React.createElement(
 			Demo,
 			{
-				store: store,
+				store: store, //Pass store explicitly to Demo as a prop
 				description: this.properties.description,
 				spHttpClient: this.context.spHttpClient,
 				currentWebUrl: this.context.pageContext.web.serverRelativeUrl
