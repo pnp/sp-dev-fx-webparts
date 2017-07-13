@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-redux-restapi-client-side-solution",
+    "id": "b40fef70-090e-43b4-adc7-64b379287548",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-redux-restapi.sppkg"
+  }
+}
