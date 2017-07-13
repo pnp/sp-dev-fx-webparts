@@ -5,6 +5,8 @@ SharePoint Framework webpart which uses [Redux](http://redux.js.org/) to maintai
 
 Redux AJAX actions are used together with the SharePoint REST API to display lists in your site. You can also add a new list to the site from this webpart.
 
+More details in my post here: [Using Redux Async Actions and ImmutableJS in SharePoint Framework](http://www.vrdmn.com/2017/07/using-redux-async-actions-and.html)
+
 ![](https://raw.githubusercontent.com/vman/sp-dev-fx-webparts/master/samples/react-redux-async-immutablejs/assets/react-redux-immutable.gif)
 
 ## Used SharePoint Framework Version 
@@ -47,4 +49,4 @@ On the other hand, this can also be performance intensive as for changing only a
 
 Using ImmutableJS, we can create new state trees in memory without duplicating the elements which are unchanged. When you create a new state object using ImmutableJS, the new object still points to the previous memory locations of unchanged elements. Only the properties which are changed are allocated new memory locations.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-redux-async-immutablejs" />
