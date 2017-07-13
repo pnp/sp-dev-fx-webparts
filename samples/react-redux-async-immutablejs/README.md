@@ -5,7 +5,7 @@ SharePoint Framework webpart which uses [Redux](http://redux.js.org/) to maintai
 
 Redux AJAX actions are used together with the SharePoint REST API to display lists in your site. You can also add a new list to the site from this webpart.
 
-![](https://raw.githubusercontent.com/vman/sp-dev-fx-webparts/master/samples/react-redux-restapi/assets/react-redux-immutable.gif)
+![](https://raw.githubusercontent.com/vman/sp-dev-fx-webparts/master/samples/react-redux-async-immutablejs/assets/react-redux-immutable.gif)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
