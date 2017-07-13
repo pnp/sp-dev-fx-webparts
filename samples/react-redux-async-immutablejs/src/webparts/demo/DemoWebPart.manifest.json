@@ -16,8 +16,8 @@
   "preconfiguredEntries": [{
     "groupId": "096e9abd-b73c-4b73-8292-621bf1257402",
     "group": { "default": "Under Development" },
-    "title": { "default": "Demo" },
-    "description": { "default": "Demo description" },
+    "title": { "default": "Redux ImmutableJS Demo" },
+    "description": { "default": "Webpart to Demo Redux and ImmutableJS" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "Demo"
