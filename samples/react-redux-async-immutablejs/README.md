@@ -38,7 +38,7 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `gulp serve`
-  - Open the SharePoint Online version of the workbench: /layouts/15/workbench.aspx
+  - Open the SharePoint Online version of the workbench: /_layouts/15/workbench.aspx
 
 ## Why Redux and ImmutableJS
 Every [Redux](http://redux.js.org/) action creates a copy of the state, changes the required properties in the copy and then returns the copy as a new state. This prevents bugs where the state is changed unknowingly. 
