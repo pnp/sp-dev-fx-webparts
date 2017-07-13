@@ -8,7 +8,7 @@ Sample SharePoint Framework web parts built using React illustrating different s
 
 Sample SharePoint Framework client-side web part built using React showing how to invite the external user using the Microsoft Graph.
 
-![The invitation manager web part displayed in SharePoint workbench](./assets/upcoming-meetings-preview.png)
+![The invitation manager web part displayed in SharePoint workbench](./assets/SPFx-Invitation-Manager.gif)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-GA-green.svg)
