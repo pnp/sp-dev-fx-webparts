@@ -8,7 +8,7 @@ Sample SharePoint Framework web parts built using React illustrating the possibi
 
 Sample SharePoint Framework client-side web part built using React showing how to invite the external user using the Microsoft Graph.
 
-NB. I'm waiting the more consistence of HttpGraphClient(a bit limited in terms of permission) to use it in this scenario.
+NB. I'm waiting the GA of HttpGraphClient(a bit limited in terms of permission) to use it in this scenario.
 Look at this to go deep:
 * [HttpGraphClient](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
 
@@ -26,13 +26,13 @@ Look at this to go deep:
 
 Solution|Author(s)
 --------|---------
-react-invitation-manager|Giuliano De Luca (..., ..., @giuleon)
+react-invitation-manager|Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](http://www.delucagiuliano.com))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0.0|July 10, 2016|Initial release
+1.0.0|July 14, 2017|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
