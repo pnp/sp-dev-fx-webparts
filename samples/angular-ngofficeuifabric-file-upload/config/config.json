@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/angularFileUpload/AngularFileUploadWebPart.js",
+      "manifest": "./src/webparts/angularFileUpload/AngularFileUploadWebPart.manifest.json",
+      "outputPath": "./dist/angular-file-upload.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "angularFileUploadStrings": "webparts/angularFileUpload/loc/{locale}.js"
+  }
+}

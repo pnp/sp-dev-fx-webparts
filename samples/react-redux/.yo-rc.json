@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-redux",
+    "libraryId": "f421df9e-fea2-498f-a4ba-d60d4ba13c93",
+    "framework": "react"
+  }
+}

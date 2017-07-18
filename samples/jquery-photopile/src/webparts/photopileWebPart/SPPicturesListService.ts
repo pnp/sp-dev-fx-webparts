@@ -5,9 +5,10 @@
  * Author: Olivier Carpentier
  */
 import { ISPLists, ISPListItems, ISPListItem } from './ISPList';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import {SPHttpClient,ISPHttpClientOptions,SPHttpClientResponse } from '@microsoft/sp-http';
 import { IPhotopileWebPartProps } from './IPhotopileWebPartProps';
-import { EnvironmentType } from '@microsoft/sp-client-base';
+import {  Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import MockHttpClient from './MockHttpClient';
 
 /**
@@ -49,16 +50,16 @@ export class SPPicturesListService implements ISPPicturesListService {
    * Gets the list of picture libs in the current SharePoint site
    */
   public getPictureLibs(): Promise<ISPLists> {
-    if (this.context.environment.type === EnvironmentType.Local) {
+    if (Environment.type === EnvironmentType.Local) {
       //If the running environment is local, load the data from the mock
       return this.getPictureLibsFromMock();
     }
     else {
       //If the running environment is SharePoint, request the lists REST service
       //Gets only the list with BaseTemplate = 109 (picture libs)
-      return this.context.httpClient.get(
-      `${this.context.pageContext.web.absoluteUrl}/_api/lists?$select=Title,id,BaseTemplate&$filter=BaseTemplate%20eq%20109`)
-      .then((response: Response) => {
+      return this.context.spHttpClient.get(
+      `${this.context.pageContext.web.absoluteUrl}/_api/lists?$select=Title,id,BaseTemplate&$filter=BaseTemplate%20eq%20109`,SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
           return response.json();
       });
     }
@@ -88,7 +89,7 @@ export class SPPicturesListService implements ISPPicturesListService {
    * Gets the pictures from a SharePoint list
    */
   public getPictures(libId: string): Promise<ISPListItems> {
-    if (this.context.environment.type === EnvironmentType.Local) {
+    if (Environment.type === EnvironmentType.Local) {
       //If the running environment is local, load the data from the mock
       return this.getPicturesFromMock(libId);
     }
@@ -107,7 +108,7 @@ export class SPPicturesListService implements ISPPicturesListService {
       restUrl += this.props.count;
 
       //Request the SharePoint web service
-      return this.context.httpClient.get(restUrl).then((response: Response) => {
+      return this.context.spHttpClient.get(restUrl,SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
           return response.json().then((responseFormated: any) => {
               var formatedResponse: ISPListItems = { value: []};
               //Fetchs the Json response to construct the final items list

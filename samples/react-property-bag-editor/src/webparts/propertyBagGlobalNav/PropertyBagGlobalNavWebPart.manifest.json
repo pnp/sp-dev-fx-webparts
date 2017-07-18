@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "8634e32b-eda4-483d-8fe9-5f2075339eb8",
+  "alias": "PropertyBagGlobalNavWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "8634e32b-eda4-483d-8fe9-5f2075339eb8",
+      "group": {
+        "default": "Property Bag Navigation"
+      },
+      "title": {
+        "default": "Property Bag NavBar"
+      },
+      "description": {
+        "default": "Displays a Global Navigation Menu built from the Sites PropertyBags"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "propertyBagGlobalNav",
+        "filters": "",
+        "managedProperties": "Continent\nLocaltion"
+      }
+    }
+  ]
+}

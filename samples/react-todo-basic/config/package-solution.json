@@ -1,10 +1,10 @@
 {
   "solution": {
-    "name": "react-todo-webpart-client-side-solution",
-    "id": "8025fa04-2828-40c6-bace-6ab2dde1e01d",
+    "name": "react-todo-basic-client-side-solution",
+    "id": "40efb476-b506-409a-8848-5fbfb9456af6",
     "version": "1.0.0.0"
   },
   "paths": {
-    "zippedPackage": "solution/react-todo-simple.spapp"
+    "zippedPackage": "solution/react-todo-basic.sppkg"
   }
 }

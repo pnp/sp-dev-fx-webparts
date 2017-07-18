@@ -18,7 +18,7 @@ If you have questions about how to use SharePoint Framework or any of the provid
 Whenever you are submitting any changes to the SharePoint repositories, please follow these recommendations.
 
 * Always fork repository to your own account for applying modifications
-* Do not combine multiple changes to one pull request, please submit for example any samples and documentation updates using seperate PRs
+* Do not combine multiple changes to one pull request, please submit for example any samples and documentation updates using separate PRs
 * If you are submitting multiple samples, please create specific PR for each of them
 * If you are submitting typo or documentation fix, you can combine modifications to single PR where suitable
 
@@ -29,7 +29,7 @@ Here's a high level process for submitting new samples or updates to existing on
 2. Fork the main repository to your GitHub account
 3. Create a new branch for your fork for the contribution based on dev branch
 4. Include your changes to your branch
-5. Commit your changes using descriptive commit message - These are used to track changes on the repositories for monthly communications, see [September 2016](dev.office.com/blogs/PnP-September-2016-Release) as an example
+5. Commit your changes using descriptive commit message - These are used to track changes on the repositories for monthly communications, see [May 2017](https://dev.office.com/blogs/PnP-May-2017-Release) as an example
 6. Create a pull request in your own fork and target 'dev' branch
 7. Fill up the provided PR template with the requested details
 
@@ -55,13 +55,38 @@ When you are submitting a new sample, it has to follow up below guidelines
 ## Step-by-step on submitting a pull request to this repository
 Please see following wiki post from the GitHub repository wiki for exact steps on submitting new pull requests. 
 
-* How to submit a PR to SharePoint repository? - Step-by-step with commands and pictures coming soon
+* How to submit a PR to SharePoint repository? - *Work in progress*
 
+## Merging your existing github projects with this repository
+If the sample you wish to contribute is stored in your own Github repository, you can use the following steps to merge it with the Psp-dev-fx-extensions repository:
+
+* Fork the sp-dev-fx-extensions repository from GitHub
+* Create a local git repository 
+```
+md sp-dev-fx-extensions
+cd sp-dev-fx-extensions
+git init
+```
+* Pull your forked copy of sp-dev-fx-extensions into your local repository
+```
+git remote add origin https://github.com/yourgitaccount/sp-dev-fx-extensions.git
+git pull origin dev
+```
+* Pull your other project from github into the samples folder of your local copy of sp-dev-fx-extensions
+```  
+git subtree add --prefix=samples/projectname https://github.com/yourgitaccount/projectname.git master
+```
+
+* Push the changes up to your forked repository
+```
+git push origin dev
+```
+        
 ## Signing the CLA
 Before we can accept your pull requests you will be asked to sign electronically Contributor License Agreement (CLA), which is prerequisite for any contributions to PnP repository. This will be one time process, so for any future contributions you will not be asked to re-sign anything. After the CLA has been signed, our PnP core team members will have a look on your submission for final verification of the submission. Please do not delete your development branch until the submission has been closed.
 
 You can find Microsoft CLA from the following address - https://cla.microsoft.com. 
 
-Thank you for your contribution. 
+Thank you for your contribution.  
 
 > Sharing is caring. 

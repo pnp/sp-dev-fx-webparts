@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "spfx-handlebars",
+    "framework": "none",
+    "version": "1.0.0",
+    "libraryId": "b8285cda-e974-4141-aab6-b7927b732a41"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/reactYammerApi/ReactYammerApiWebPart.js",
+      "manifest": "./src/webparts/reactYammerApi/ReactYammerApiWebPart.manifest.json",
+      "outputPath": "./dist/react-yammer-api.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "reactYammerApiStrings": "webparts/reactYammerApi/loc/{locale}.js"
+  }
+}

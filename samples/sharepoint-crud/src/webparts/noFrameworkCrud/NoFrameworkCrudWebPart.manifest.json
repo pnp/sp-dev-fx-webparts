@@ -2,6 +2,7 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
   "id": "eef4a41c-7fd3-4cf4-85df-e1b8e6aaef6e",
+  "alias": "NoFrameworkCrudWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,

@@ -1,20 +1,24 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField,
   IWebPartContext,
   PropertyPaneSlider
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
+import { escape } from '@microsoft/sp-lodash-subset';
 
+import styles from './TrendingInThisSite.module.scss';
 import * as strings from 'trendingInThisSiteStrings';
-import TrendingInThisSite, { ITrendingInThisSiteProps } from './components/TrendingInThisSite';
 import { ITrendingInThisSiteWebPartProps } from './ITrendingInThisSiteWebPartProps';
+import TrendingInThisSite, { ITrendingInThisSiteProps } from './components/TrendingInThisSite';
 
 export default class TrendingInThisSiteWebPart extends BaseClientSideWebPart<ITrendingInThisSiteWebPartProps> {
 
   public constructor(context: IWebPartContext) {
-    super(context);
+    super();
   }
 
   public render(): void {
@@ -26,7 +30,11 @@ export default class TrendingInThisSiteWebPart extends BaseClientSideWebPart<ITr
     ReactDom.render(element, this.domElement);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

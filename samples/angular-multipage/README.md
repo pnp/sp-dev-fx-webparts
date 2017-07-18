@@ -10,6 +10,9 @@ Sample poll web part allowing users to vote and view the results.
 
 ![Poll web part built on the SharePoint Framework using Angular](./assets/poll-preview.gif)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

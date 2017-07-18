@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-multipage-client-side-solution",
+    "id": "b9218e95-22b7-48ca-808f-beacd2444a1e",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-multipage.sppkg"
+  }
+}

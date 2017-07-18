@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "2974d722-31d9-42e2-a18a-1b212b03dc8a",
+  "alias": "ListProvisioningWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "2974d722-31d9-42e2-a18a-1b212b03dc8a",
+    "group": { "default": "Under Development" },
+    "title": { "default": "ListProvisioning" },
+    "description": { "default": "Web part showing how to provisioning list as part of the package deployment to sites" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "ListProvisioning"
+    }
+  }]
+}

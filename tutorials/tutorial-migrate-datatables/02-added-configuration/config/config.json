@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/itRequests/ItRequestsWebPart.js",
+      "manifest": "./src/webparts/itRequests/ItRequestsWebPart.manifest.json",
+      "outputPath": "./dist/it-requests.bundle.js"
+    }
+  ],
+  "externals": {
+    "jquery": "https://code.jquery.com/jquery-1.12.4.min.js",
+    "datatables.net": "https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js",
+    "moment": "https://momentjs.com/downloads/moment.min.js"
+  },
+  "localizedResources": {
+    "itRequestsStrings": "webparts/itRequests/loc/{locale}.js"
+  }
+}

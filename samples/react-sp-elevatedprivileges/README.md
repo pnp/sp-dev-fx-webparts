@@ -6,6 +6,9 @@ Sample SharePoint Framework client-side web part illustrating communication with
 
 ![Sample web part showing orders retrieved from a custom Web API secured with Azure Active Directory](./assets/preview.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

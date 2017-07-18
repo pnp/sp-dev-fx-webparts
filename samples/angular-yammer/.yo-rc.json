@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "angular-yammer",
+    "framework": "none",
+    "version": "1.0.0",
+    "libraryId": "f3f740d2-5a08-4e10-8f7c-b64846dc4f23"
+  }
+}

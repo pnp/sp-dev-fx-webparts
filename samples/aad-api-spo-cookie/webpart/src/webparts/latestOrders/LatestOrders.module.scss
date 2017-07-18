@@ -1,0 +1,32 @@
+.latestOrders {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+
+  thead tr {
+    border-bottom: 1px solid #767676;
+  }
+
+  thead th {
+    font-weight: 600;
+    color: #666;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #c8c8c8;
+  }
+
+  th, td {
+    padding: 10px 8px;
+  }
+
+  .number {
+    text-align: right;
+  }
+}

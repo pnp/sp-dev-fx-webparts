@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/listViewer/ListViewerWebPart.js",
+      "manifest": "./src/webparts/listViewer/ListViewerWebPart.manifest.json",
+      "outputPath": "./dist/list-viewer.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "listViewerStrings": "webparts/listViewer/loc/{locale}.js"
+  }
+}

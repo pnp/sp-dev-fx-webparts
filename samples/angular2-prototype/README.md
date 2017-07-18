@@ -11,6 +11,9 @@ Sample To Do Web Part built with Angular2. This sample illustrates how you can u
 
 ![Sample of the search web part](./assets/preview.png)
 
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-RC0-green.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -30,6 +33,7 @@ angular2-prototype | Manish Garg, Daniel Gaeta
 
 Version|Date|Comments
 -------|----|--------
+0.3|January 20, 2017| Updates to support RC0
 0.2|October 7, 2016|Resolved workarounds to access NgModule and NgZone
 0.1|August 14, 2016|Initial release
 
@@ -44,7 +48,6 @@ Version|Date|Comments
 - In the command line run:
   - `npm i`
   - `npm i -g gulp`
-  - `tsd install`
   - `gulp serve`
 - Open the workbench
 - Test out the web part

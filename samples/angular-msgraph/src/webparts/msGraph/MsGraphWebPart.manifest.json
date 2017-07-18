@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "e6e4354f-45d2-411e-8110-8d4f5d4398c6",
+  "alias": "MsGraphWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "e6e4354f-45d2-411e-8110-8d4f5d4398c6",
+    "group": { "default": "Under Development" },
+    "title": { "default": "MSGraph" },
+    "description": { "default": "MSGraph description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "MSGraph"
+    }
+  }]
+}

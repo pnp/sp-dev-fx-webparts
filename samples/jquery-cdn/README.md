@@ -6,6 +6,9 @@ Sample Web Parts illustrating using jQuery and its plugins loaded from CDN for b
 
 ![Sample Web Part built using jQuery showing current weather in the specified location](./assets/preview_weather.png)
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop2-red.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)

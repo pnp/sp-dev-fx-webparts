@@ -14,6 +14,11 @@ The logic for querying the SharePoint Content Types in the properties of the web
 
 > Note: For the display template of the search results I'm currently using the Office Fabric UI List template. Ideally I was hoping to use the DocumentCard Component, however, that is not yet available through the ngOfficUIFabric.
 
+> Note: The List display is not currently displaying correctly because there appears to be an issue when loading https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css which causes the dropdowns in the property pane not to work.
+
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-rc0-green.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -29,7 +34,7 @@ angular-search|David Hartman ([Slalom](https://slalom.com))
 
 Version|Date|Comments
 -------|----|--------
-1.0|October 14, 2016|Initial release
+1.0|February 4th, 2017|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -52,12 +57,4 @@ Version|Date|Comments
 > and not by id becauase then I would get everything that inherits from that content type. I only want the
 > the results for a specific content type and not everything that inherits that content type as well
 
-- In the file 'AngularSearchWebPart.ts' around line 92 you will need to put the url of the directory where the html template file resides.
-
-> Note: Adding the location of the template is necessary because Angular's $sce service doesn't trust the location the
-> html template is loaded from, so the url needs to be whitelisted with the $sce service. If you just want whitelisted
-> every url the entry in the $sce could just be '*'. There is plenty of documentation available if you run into trouble
-> whitelisting the template url.
-
-![WhiteList code example](./assets/whitelistCode.png)
-
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-search" />

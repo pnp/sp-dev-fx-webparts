@@ -1,41 +1,62 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
-} from '@microsoft/sp-client-preview';
+  IPropertyPaneConfiguration
+} from '@microsoft/sp-webpart-base';
+import {
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
+
 import { IDropdownOption } from 'office-ui-fabric-react';
+import { update, get } from '@microsoft/sp-lodash-subset';
 
 import * as strings from 'dropdownWithRemoteDataStrings';
-import DropdownWithRemoteData, { IDropdownWithRemoteDataProps } from './components/DropdownWithRemoteData';
+import DropdownWithRemoteData from './components/DropdownWithRemoteData';
+import { IDropdownWithRemoteDataProps } from './components/IDropdownWithRemoteDataProps';
 import { IDropdownWithRemoteDataWebPartProps } from './IDropdownWithRemoteDataWebPartProps';
-import { IListInfo } from './IListInfo';
+
+import { IList, IListItem, ListService, MockListService } from './services';
 
 import { PropertyPaneAsyncDropdown } from '../../controls/PropertyPaneAsyncDropdown/PropertyPaneAsyncDropdown';
 
 export default class DropdownWithRemoteDataWebPart extends BaseClientSideWebPart<IDropdownWithRemoteDataWebPartProps> {
   private itemsDropDown: PropertyPaneAsyncDropdown;
 
-  public constructor(context: IWebPartContext) {
-    super(context);
+  protected onInit(): Promise<void> {
+    this.configureWebPart = this.configureWebPart.bind(this);
+
+    return super.onInit();
   }
 
   public render(): void {
-    const element: React.ReactElement<IDropdownWithRemoteDataProps> = React.createElement(DropdownWithRemoteData, {
-      list: this.properties.list,
-      item: this.properties.item
-    });
+    const element: React.ReactElement<IDropdownWithRemoteDataProps > = React.createElement(
+      DropdownWithRemoteData,
+      {
+        list: this.properties.list,
+        item: this.properties.item,
+        needsConfiguration: this.needsConfiguration(),
+        displayMode: this.displayMode,
+        configureWebPart: this.configureWebPart
+      }
+    );
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     // reference to item dropdown needed later after selecting a list
     this.itemsDropDown = new PropertyPaneAsyncDropdown('item', {
+      key: 'asyncUniqueKeyItem',
       label: strings.ItemFieldLabel,
       loadOptions: this.loadItems.bind(this),
-      onPropertyChange: this.onPropertyChange.bind(this),
+      onPropertyChange: this.onListItemChange.bind(this),
       selectedKey: this.properties.item,
       // should be disabled if no list has been selected
       disabled: !this.properties.list
@@ -52,6 +73,7 @@ export default class DropdownWithRemoteDataWebPart extends BaseClientSideWebPart
               groupName: strings.BasicGroupName,
               groupFields: [
                 new PropertyPaneAsyncDropdown('list', {
+                  key: 'asyncUniqueKeyList',
                   label: strings.ListFieldLabel,
                   loadOptions: this.loadLists.bind(this),
                   onPropertyChange: this.onListChange.bind(this),
@@ -66,40 +88,23 @@ export default class DropdownWithRemoteDataWebPart extends BaseClientSideWebPart
     };
   }
 
-  private loadLists(): Promise<IDropdownOption[]> {
-    return new Promise<IDropdownOption[]>((resolve: (options: IDropdownOption[]) => void, reject: (error: any) => void) => {
-      // uncomment to load mock lists
-      setTimeout(() => {
-        resolve([{
-          key: 'sharedDocuments',
-          text: 'Shared Documents'
-        },
-          {
-            key: 'myDocuments',
-            text: 'My Documents'
-          }]);
-      }, 2000);
 
-      // uncomment to load lists from the current web
-      // this.context.httpClient.get(this.context.pageContext.web.absoluteUrl + '/_api/web/lists?$select=Id,Title', {
-      //   headers: {
-      //     'Accept': 'application/json;odata=nometadata',
-      //     'odata-version': ''
-      //   }
-      // })
-      //   .then((response: Response): Promise<{ value: IListInfo[] }> => {
-      //     return response.json();
-      //   })
-      //   .then((listsResponse: { value: IListInfo[] }): void => {
-      //     resolve(listsResponse.value.map((value: IListInfo, index: number, array: IListInfo[]): IDropdownOption => {
-      //       return {
-      //         key: value.Id,
-      //         text: value.Title
-      //       };
-      //     }));
-      //   }, (error: any): void => {
-      //     reject(error);
-      //   });
+  private loadLists(): Promise<IDropdownOption[]> {
+    const dataService = (Environment.type === EnvironmentType.Test || Environment.type === EnvironmentType.Local) ?
+        new MockListService() :
+        new ListService(this.context);
+
+    return new Promise<IDropdownOption[]>(resolve => {
+      dataService.getLists()
+      .then((response: IList[]) => {
+          var options : IDropdownOption[] = [];
+
+          response.forEach((item: IList) => {
+            options.push({"key": item.Id, "text": item.Title});
+          });
+
+          resolve(options);
+      });
     });
   }
 
@@ -109,72 +114,68 @@ export default class DropdownWithRemoteDataWebPart extends BaseClientSideWebPart
       return Promise.resolve();
     }
 
-    // uncomment to load mock items
-    const wp: DropdownWithRemoteDataWebPart = this;
+    const dataService = (Environment.type === EnvironmentType.Test || Environment.type === EnvironmentType.Local) ?
+        new MockListService() :
+        new ListService(this.context);
 
-    return new Promise<IDropdownOption[]>((resolve: (options: IDropdownOption[]) => void, reject: (error: any) => void) => {
-      // uncomment to load mock items
-      setTimeout(() => {
-        const items = {
-          sharedDocuments: [
-            {
-              key: 'spfx_presentation.pptx',
-              text: 'SPFx for the masses'
-            },
-            {
-              key: 'hello-world.spapp',
-              text: 'hello-world.spapp'
-            }
-          ],
-          myDocuments: [
-            {
-              key: 'clippy_cv.docx',
-              text: 'Clippy CV'
-            },
-            {
-              key: 'clippy_expenses.xlsx',
-              text: 'Clippy Expenses'
-            }
-          ]
-        }
-        resolve(items[wp.properties.list]);
-      }, 2000);
+    return new Promise<IDropdownOption[]>(resolve => {
+      dataService.getList(this.properties.list)
+      .then((response) => {
+          var options : IDropdownOption[] = [];
 
-      // uncomment to load items from the current list
-      // this.context.httpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/web/lists('${this.properties.list}')/items?$select=Id,Title`, {
-      //   headers: {
-      //     'Accept': 'application/json;odata=nometadata',
-      //     'odata-version': ''
-      //   }
-      // })
-      //   .then((response: Response): Promise<{ value: IListInfo[] }> => {
-      //     return response.json();
-      //   })
-      //   .then((listsResponse: { value: IListInfo[] }): void => {
-      //     resolve(listsResponse.value.map((value: IListInfo, index: number, array: IListInfo[]): IDropdownOption => {
-      //       return {
-      //         key: value.Id,
-      //         text: value.Title
-      //       };
-      //     }));
-      //   }, (error: any): void => {
-      //     reject(error);
-      //   });
+          response.forEach((item: IListItem) => {
+            options.push({"key": item.Id, "text": item.Title});
+          });
+
+          resolve(options);
+      });
     });
   }
 
-  private onListChange(propertyPath: string, newValue: any): void {
-    // store new value in web part properties
-    this.onPropertyChange(propertyPath, newValue);
+  private onListChange(propertyPath: string, oldValue: any, newValue: any): void {
+    //update the property value
+    update(this.properties, propertyPath, (): any => { return newValue; });
+
+    // trigger that propertyPath was changed
+    this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
+
     // reset selected item
+    const oldItemValue : any = get(this.properties, 'item');
     this.properties.item = undefined;
+    update(this.properties, 'item', (): any => { return this.properties.item; });
+
     // store selected item reset in web part properties
-    this.onPropertyChange('item', this.properties.item);
+    this.onPropertyPaneFieldChanged('item', oldItemValue, this.properties.item);
+
     // reset selected values in item dropdown
-    this.itemsDropDown.properties.selectedKey = this.properties.item;
+    //this.itemsDropDown.properties.selectedKey = this.properties.item;
+    this.itemsDropDown.properties.selectedKey = "";
+
     // allow to load items
     this.itemsDropDown.properties.disabled = false;
+
     // load items and re-render items dropdown
     this.itemsDropDown.render();
+  }
+
+  private onListItemChange(propertyPath: string, oldValue: any, newValue: any): void {
+    //update the property value
+    update(this.properties, propertyPath, (): any => { return newValue; });
+
+    // store selected item reset in web part properties
+    this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
+  }
+
+  private needsConfiguration(): boolean {
+    return this.properties.list === null ||
+      this.properties.list === undefined ||
+      this.properties.list.trim().length === 0 ||
+      this.properties.item === null ||
+      this.properties.item === undefined ||
+      this.properties.item.toString().trim().length === 0;
+  }
+
+  private configureWebPart(): void {
+    this.context.propertyPane.open();
   }
 }

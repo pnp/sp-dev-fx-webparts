@@ -11,6 +11,9 @@ simulates a pile of photos scattered about on a surface. Thumbnail clicks remove
 
 ![Photopile Web Part displayed in SharePoint Workbench](./assets/photopileoverview.gif)
 
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-ga-green.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -20,13 +23,14 @@ simulates a pile of photos scattered about on a surface. Thumbnail clicks remove
 
 Solution|Author(s)
 --------|---------
-jquery-photopile|Olivier Carpentier (@olivierc)
+jquery-photopile|Olivier Carpentier (@olivierc) , Gautam Sheth(SharePoint Consultant,Rapid Circle,@gautamdsheth)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|September 9, 2016|Initial release
+2.0|May 26, 2017|GA release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

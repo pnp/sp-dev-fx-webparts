@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "spfx-office-ui-fabric-people-picker",
+    "libraryId": "6349ba8f-d5aa-4cbf-87b4-910dad47324b",
+    "framework": "react"
+  }
+}

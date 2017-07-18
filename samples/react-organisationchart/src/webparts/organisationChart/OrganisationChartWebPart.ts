@@ -1,34 +1,35 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 import * as strings from 'organisationChartStrings';
-import OrganisationChart, { IOrganisationChartProps } from './components/OrganisationChart';
+import OrganisationChart from './components/OrganisationChart';
+import { IOrganisationChartProps } from './components/IOrganisationChartProps';
 import { IOrganisationChartWebPartProps } from './IOrganisationChartWebPartProps';
+
 
 export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrganisationChartWebPartProps> {
 
-  public constructor(context: IWebPartContext) {
-    super(context);
-  }
-
   public render(): void {
-
-    const element: React.ReactElement<IOrganisationChartProps> = React.createElement(OrganisationChart, {
-      description: this.properties.description,
-      environmentType: this.context.environment.type,
-      serviceScope: this.context.serviceScope
-    });
+    const element: React.ReactElement<IOrganisationChartProps> = React.createElement(
+      OrganisationChart, {
+        serviceScope: this.context.serviceScope,
+        organisationName: this.properties.organisationName
+      });
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -39,8 +40,8 @@ export default class OrganisationChartWebPart extends BaseClientSideWebPart<IOrg
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('organisationName', {
+                  label: strings.OrganisationNameFieldLabel
                 })
               ]
             }

@@ -1,0 +1,42 @@
+// Use Chrome browser to debug SharePoint Framework React webpart with Visual Studio Code on Windows
+// - Install "Debugger for Chrome" extension
+// - Add this configuration to the launch.json
+// - Close all Chrome browser active instances
+// - Start the SPFx nodejs server by executing "gulp serve"
+// - Go to VS Code debug view (top menu -> View -> Debug)
+// - Hit the play (start debugging) button
+// Happy debugging!
+// Full guide here http://blog.velingeorgiev.pro/how-debug-sharepoint-framework-webpart-visual-studio-code
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "SPFx Local",
+            "type": "chrome",
+            "request": "launch",
+            "url": "https://localhost:4321/temp/workbench.html",
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///../../../../../*": "${webRoot}/*"
+            },
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ]
+        },
+        {
+            "name": "SPFx Online Workbench",
+            "type": "chrome",
+            "request": "launch",
+            "url": "https://<your_tenant>.sharepoint.com/sites/<your_site>/_layouts/workbench.aspx",
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///../../../../../*": "${webRoot}/*"
+            },
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ]
+        }
+    ]
+}

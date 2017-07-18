@@ -1,23 +1,27 @@
 import {
+  Version,
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
+import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField,
+  IPropertyPaneDropdownOption,
   PropertyPaneDropdown,
-  IPropertyPaneDropdownOption
-} from '@microsoft/sp-client-preview';
-
-import ModuleLoader from '@microsoft/sp-module-loader';
-import { EnvironmentType } from '@microsoft/sp-client-base';
+  IWebPartContext
+} from '@microsoft/sp-webpart-base';
+import { SPComponentLoader } from '@microsoft/sp-loader';
+import { SPHttpClient } from '@microsoft/sp-http';
+import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './AngularSearch.module.scss';
 import * as strings from 'angularSearchStrings';
 import { IAngularSearchWebPartProps } from './IAngularSearchWebPartProps';
 
 import * as angular from 'angular';
-import HomeController from './app/HomeController';
-import DataService from './app/DataService';
 import MockHttpClient from './MockHttpClient';
+import './app/app.module';
 import 'ng-office-ui-fabric';
 
 export interface ISPCTypeLists {
@@ -35,21 +39,20 @@ export interface ISPStrVal {
 }
 
 export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngularSearchWebPartProps> {
-  private $injector: ng.auto.IInjectorService;
+  private $injector: angular.auto.IInjectorService;
   private _CTypesInThisSite: IPropertyPaneDropdownOption[] = [];
 
-  get baseUrl(): string { return '$BASEURL$'; }
 
   public constructor(context: IWebPartContext) {
-    super(context);
+    super();
 
-    ModuleLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css');
-    ModuleLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
+    SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css');
+    //SPComponentLoader.loadCss('https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.components.min.css');
   }
 
   public onInit<T>(): Promise<T> {
     //Determine if we are in a local environment
-    if (this.context.environment.type == EnvironmentType.Local) {
+    if (Environment.type == EnvironmentType.Local) {
       this._getMockOptions().then((data) => {
         this._CTypesInThisSite = data;
       });
@@ -65,35 +68,7 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
 
   public render(): void {
     if (this.renderedOnce === false) {
-      const wp: AngularSearchWebPart = this;
-
       this.domElement.innerHTML = `<angularsearch web="${this.context.pageContext.web.absoluteUrl}" style='${angular.toJson(styles)}' contentType='${this.properties.contentTypes}'></angularsearch>`;
-      let sce: ng.ISCEDelegateService;
-
-      angular.module('angularsearchapp', [
-        'officeuifabric.core',
-        'officeuifabric.components'])
-        .component('angularsearch', {
-          controller: ('HomeController', HomeController),
-          controllerAs: 'vm',
-          bindings: {
-            web: '@',
-            style: '<',
-            contentType: '@'
-          },
-          templateUrl: `${this.baseUrl}home-template.html`
-        })
-        .service('DataService', DataService)
-        .config(function ($sceDelegateProvider: ng.ISCEDelegateProvider): void {
-          $sceDelegateProvider.resourceUrlWhitelist([
-            // Allow same origin resource loads.
-            'self',
-            // Allow loading from our assets domain. Notice the diference between * and **
-            'https://15767-e7440:4321/dist/**',
-            'https://15767-e7440:4321/*'
-          ]);
-        });
-
       this.$injector = angular.bootstrap(this.domElement, ['angularsearchapp']);
     }
 
@@ -103,12 +78,12 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
   }
 
   private _getCTypes(url: string): Promise<ISPCTypeLists> {
-    return this.context.httpClient.get(url).then((response: Response) => {
+    return this.context.spHttpClient.get(url, SPHttpClient.configurations.v1).then((response: Response) => {
       if (response.ok) {
         return response.json();
       }
       else {
-        console.log("error: " + response.error().text);
+        console.log("error: " + response.statusText);
         return null;
       }
     });
@@ -151,9 +126,11 @@ export default class AngularSearchWebPart extends BaseClientSideWebPart<IAngular
     });
   }
 
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
 
-
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "angular-aad-webapi-client-side-solution",
+    "id": "e3f3f6dd-d680-4475-aedf-1ce342a1db7e",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/angular-aad-webapi.sppkg"
+  }
+}

@@ -1,4 +1,4 @@
-import { DisplayMode } from '@microsoft/sp-client-base';
+import { DisplayMode } from '@microsoft/sp-core-library';
 import ITodoDataProvider from '../../dataProviders/ITodoDataProvider';
 
 interface ITodoContainerProps {

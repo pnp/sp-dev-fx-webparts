@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "72ac17a3-8735-43ff-9a3c-3be22ac2ca00",
+  "alias": "multilistgrid",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "72ac17a3-8735-43ff-9a3c-3be22ac2ca00",
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "React multi-list Grid"
+      },
+      "description": {
+        "default": "A webpart that allows one to edit list items from multiple lists in deferrent sites in a single grid"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "SPFX React Grid"
+      }
+    }
+  ]
+}

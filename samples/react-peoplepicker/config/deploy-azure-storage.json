@@ -1,0 +1,6 @@
+{
+  "workingDir": "./temp/deploy/",
+  "account": "<!-- STORAGE ACCOUNT NAME -->",
+  "container": "spfx-office-ui-fabric-people-picker",
+  "accessKey": "<!-- ACCESS KEY -->"
+}

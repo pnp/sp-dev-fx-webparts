@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-yammer-api-client-side-solution",
+    "id": "9e199a26-c09f-4071-9902-ee8e40e80f16",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-yammer-api.sppkg"
+  }
+}

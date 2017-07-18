@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "e7d6a43a-8292-426f-bd64-f65ec47dc91b",
+  "alias": "SliderWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.3",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "e7d6a43a-8292-426f-bd64-f65ec47dc91b",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Slider" },
+    "description": { "default": "Slider description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Slider"
+    }
+  }]
+}

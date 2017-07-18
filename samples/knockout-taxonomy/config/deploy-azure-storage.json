@@ -1,0 +1,6 @@
+{
+  "workingDir": "./temp/deploy/",
+  "account": "<!-- STORAGE ACCOUNT NAME -->",
+  "container": "knockout-metadata",
+  "accessKey": "<!-- ACCESS KEY -->"
+}

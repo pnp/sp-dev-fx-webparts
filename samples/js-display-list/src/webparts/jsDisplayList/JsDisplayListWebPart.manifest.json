@@ -2,8 +2,9 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
   "id": "1b513296-0d6c-4992-880a-007876428daa",
+  "alias": "JsDisplayListWebpart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{

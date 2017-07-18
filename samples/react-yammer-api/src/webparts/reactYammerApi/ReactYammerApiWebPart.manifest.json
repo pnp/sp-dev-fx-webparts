@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "d9ec2b3c-849b-44d1-bb4d-baa3528f47ab",
+  "alias": "ReactYammerApiWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "d9ec2b3c-849b-44d1-bb4d-baa3528f47ab",
+    "group": { "default": "Under Development" },
+    "title": { "default": "React Yammer API" },
+    "description": { "default": "Uses the Yammer JavaScript SDK to interact with the Yammer REST APIs." },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "React Yammer API"
+    }
+  }]
+}
