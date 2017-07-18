@@ -20,7 +20,10 @@
     "description": { "default": "Demo description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "Demo"
+      "description": "Demo",
+      "enabled": false,
+      "listName": "",
+      "itemName": ""
     }
   }]
 }
