@@ -1,13 +1,13 @@
-# JQuery, Photopile.JS & Office UI Fabric Client-Side Web Part
+﻿# JQuery, Photopile.JS & Office UI Fabric Client-Side Web Part
 
 ## Summary
 
-Sample Web Part illustrating using JQuery and  [Photopile.Js](https://github.com/bigbhowell/Photopile-JS)
+This is a sample web part that illustrated the use of JQuery and  [Photopile.Js](https://github.com/bigbhowell/Photopile-JS)
 with the SharePoint Framework.
 
-With it, you can display the photos contained in a SharePoint Pictures Library and it
+With this web part you can display the photos contained in a SharePoint pictures library and it
 simulates a pile of photos scattered about on a surface. Thumbnail clicks remove photos from the pile,
-(enlarging them as if being picked up by the user), and once in  view a secondary click returns the photo to the pile.
+(enlarging them as if being picked up by the user) and once in view a second click returns the photo to the pile.
 
 ![Photopile Web Part displayed in SharePoint Workbench](./assets/photopileoverview.gif)
 
@@ -50,12 +50,12 @@ This web part uses React, Office UI Fabric, JQuery, JQuery UI and Photopile.js. 
 and French (fr-fr).
 
 It is able to:
-* List Picture Libs contained in the current SharePoint web site
+* List picture libraries contained in the current SharePoint web site
 * List all the pictures in the selected List
-* Render the pics as a cool photopile
+* Render the pictures as a cool photopile
 * Personalize the layout thanks to editable settings
 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+This web part illustrates the following concepts on top of the SharePoint Framework:
 * Include JQuery and external framework in your solution
 * Implement rich web part properties panel with controls like DropDown, Sliders, Toggle, etc.
 * Load dynamic data from SharePoint as web part properties

@@ -1,8 +1,8 @@
-# Angular & ngOfficeUIFabric Client-Side Web Part
+﻿# Angular & ngOfficeUIFabric Client-Side Web Part
 
 ## Summary
 
-Sample Web Part illustrating using Angular and [ngOfficeUIFabric](http://ngofficeuifabric.com/) with the SharePoint Framework.
+this is a sample web part that illustrates the use of Angular and [ngOfficeUIFabric](http://ngofficeuifabric.com/) with the SharePoint Framework.
 You can find a video recording walk-through this sample from [SharePoint PnP YouTube channel](https://www.youtube.com/watch?v=FS-_0KENJkI).
 
 ![Sample To do SharePoint Framework Client-Side Web Part built using Angular and ngOfficeUIFabric](./assets/preview.png)
@@ -43,17 +43,17 @@ Version|Date|Comments
 
 ## Features
 
-The To do Web Part is a sample Client-Side Web Part built on the SharePoint Framework built using Angular and ngOfficeUIFabric.
+The To Do web part is a sample client-side web part built on the SharePoint Framework built using Angular and ngOfficeUIFabric.
 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+This web part illustrates the following concepts on top of the SharePoint Framework:
 
-- using Angular v1.x with TypeScript for building SharePoint Framework Client-Side Web Parts
-- using ngOfficeUIFabric for styling Angular v1.x Client-Side Web Parts
-- including Angular and ngOfficeUIFabric in the Web Part bundle
-- using a newer version of Office UI Fabric for styling Client-Side Web Parts
-- loading CSS stylesheets from CDN
-- using non-reactive Web Part Property Pane
-- using conditional rendering for one-time Web Part setup
-- passing Web Part configuration to Angular and reacting to configuration changes
+- using Angular v1.x with TypeScript for building SharePoint Framework client-side web parts
+- using ngOfficeUIFabric for styling Angular v1.x client-side web parts
+- including Angular and ngOfficeUIFabric in the web part bundle
+- using a newer version of Office UI Fabric for styling client-side web parts
+- loading CSS stylesheets from a CDN
+- using non-reactive web part property pane
+- using conditional rendering for one-time web part setup
+- passing web part configuration to Angular and reacting to configuration changes
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-ngofficeuifabric-todo" />

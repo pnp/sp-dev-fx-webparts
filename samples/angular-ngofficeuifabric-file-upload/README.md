@@ -1,11 +1,11 @@
-# Spfx Webpart: File Upload using AngularJs
+﻿# Spfx Webpart: File Upload using AngularJs
 
 ## Summary
-File Update/Delete webpart using AngularJs and ngOfficeUIFabric with the SharePoint Framework.
+File update and delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework.
 
 ![File Upload using Angular](./assets/NG File Upload.png)
 
-Edit webpart properties to set Document library Name. Initially, It has been set to `Documents`.
+Edit web part properties to set document library name. Initially, it has been set to `Documents`.
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-drop5-red.svg)
@@ -41,7 +41,7 @@ Version|Date|Comments
   - `gulp serve --nobrowser`
 
 ## Features
-This Web Part illustrates the following concepts on top of the SharePoint Framework & AngularJs:
+This web part illustrates the following concepts on top of the SharePoint Framework & AngularJs:
 
 - `BaseService`: By injecting this Angular Service, GET, POST, UPDATE & DELETE requests can be made easily. It's a resuable service.
 - `CustomFileChange`: It's a custom Angular directive. It binds the file with model on file change event.

@@ -1,8 +1,8 @@
-#  Angular2 Web Part Prototype
+﻿#  Angular2 Web Part Prototype
 
 ## Note to developers
 > This web part sample is currently in prototype phase and subject to change.
-This sample is not currently supported for use in production enviornments as unexpected behavior may occur.
+This sample is not currently supported for use in production environments as unexpected behavior may occur.
 It is provided as guidance for building Angular2 web parts in the SharePoint Framework environment.
 This sample is a work in progress and it will be updated as advances in stability are made.
 
