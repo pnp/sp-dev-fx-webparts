@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/demo/DemoWebPart.js",
+      "manifest": "./src/webparts/demo/DemoWebPart.manifest.json",
+      "outputPath": "./dist/demo.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "demoStrings": "webparts/demo/loc/{locale}.js"
+  }
+}

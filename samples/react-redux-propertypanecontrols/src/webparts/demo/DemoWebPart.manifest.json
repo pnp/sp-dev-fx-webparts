@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "2dd789a4-672d-47b4-a091-48e2853c21c1",
+  "alias": "DemoWebPart",
+  "componentType": "WebPart",
+  "version": "*", // The "*" signifies that the version should be taken from the package.json
+  "manifestVersion": 2,
+
+  /**
+   * This property should only be set to true if it is certain that the webpart does not
+   *  allow arbitrary scripts to be called
+   */
+  "safeWithCustomScriptDisabled": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "2dd789a4-672d-47b4-a091-48e2853c21c1",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Demo" },
+    "description": { "default": "Demo description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Demo"
+    }
+  }]
+}
