@@ -1,8 +1,0 @@
-{
-  "@microsoft/generator-sharepoint": {
-    "version": "1.1.1",
-    "libraryName": "react-redux-propertypanecontrols",
-    "libraryId": "ff08101e-81bf-4543-8584-41c4e7cf1858",
-    "environment": "spo"
-  }
-}
