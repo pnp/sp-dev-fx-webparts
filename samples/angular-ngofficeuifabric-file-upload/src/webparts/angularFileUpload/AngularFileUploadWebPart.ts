@@ -7,16 +7,21 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import { escape } from '@microsoft/sp-lodash-subset';
-
 import { SPComponentLoader } from '@microsoft/sp-loader';
-import * as angular from 'angular';
-import './app/FileUploadModule';
 import styles from './AngularFileUpload.module.scss';
 import * as strings from 'angularFileUploadStrings';
 import { IAngularFileUploadWebPartProps } from './IAngularFileUploadWebPartProps';
 
-export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAngularFileUploadWebPartProps> {
+import * as angular from 'angular';
+import 'ng-office-ui-fabric';
+import { BaseService } from './app/services/baseSvc';
+import { FileUploadService } from './app/services/fileUploadSvc';
+import { FileUploadCtrl } from './app/controllers/fileUploadCtrl';
+import { CustomFileChange } from './app/directives/customFileChange';
+import { IsoToDateString } from './app/filters/isoToDateString';
 
+export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAngularFileUploadWebPartProps> {
+  public context: IWebPartContext;
   private $injector: ng.auto.IInjectorService;
   public constructor(context: IWebPartContext) {
     super();
@@ -25,6 +30,7 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
   }
 
   public render(): void {
+
     if (this.renderedOnce === false) {
       this.domElement.innerHTML = `
       <div class="${styles.angularFileUpload}">
@@ -76,13 +82,33 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
           </div>
         </div>
       </div>`;
+      var context = this.context.pageContext;
 
-      this.$injector = angular.bootstrap(this.domElement, ['fileUploadApp']);
+      this.initAngularApp(context);
     }
     this.$injector.get('$rootScope').$broadcast('configurationChanged', {
       libraryTitle: this.properties.libraryTitle,
       rowLimit: this.properties.rowLimit
     });
+  }
+
+  protected initAngularApp(pageContext: any) {
+    console.log(pageContext);
+
+    const fileUploadApp: ng.IModule = angular.module('fileUploadApp', [
+      'officeuifabric.core',
+      'officeuifabric.components'
+    ]);
+
+    fileUploadApp
+      .constant("pageContext", pageContext)
+      .service("baseService", BaseService)
+      .service("fileUploadService", FileUploadService)
+      .controller("fileUploadCtrl", FileUploadCtrl)
+      .filter("isoToDateString", IsoToDateString.filter)
+      .directive("customFileChange", CustomFileChange.factory());
+
+    this.$injector = angular.bootstrap(this.domElement, ['fileUploadApp']);
   }
 
   protected get dataVersion(): Version {

@@ -33,6 +33,9 @@ export class FileUploadCtrl {
   }
 
   public upload(): void {
+    if(!this.file){
+      return;
+    }
     this.isUploading = true;
     this.fileUploadService.uploadFile(this.libraryTitle, this.file)
       .then((response: IFileItem): void => {

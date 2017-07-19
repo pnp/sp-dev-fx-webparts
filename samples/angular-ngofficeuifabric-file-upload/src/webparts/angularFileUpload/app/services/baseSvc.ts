@@ -1,15 +1,15 @@
 import { IError } from "../../interfaces/IError";
 import * as angular from 'angular';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { ServiceKey, ServiceScope } from '@microsoft/sp-core-library';
 
 
 export class BaseService {
-  public static $inject: string[] = ["$http", "$q"];
+  public static $inject: string[] = ["$http", "$q", "pageContext"];
   public baseUrl: string;
 
-  constructor(private $http: ng.IHttpService, private $q: ng.IQService) {
-      
-      this.baseUrl = (<any>window)._spPageContextInfo.webAbsoluteUrl;
-
+  constructor(private $http: ng.IHttpService, private $q: ng.IQService, private pageContext:any) {
+    this.baseUrl = pageContext.web.absoluteUrl;
   }
 
   public getRequest(query?: string, endPoint?: string): ng.IPromise<any> {

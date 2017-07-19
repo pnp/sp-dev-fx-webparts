@@ -1,4 +1,4 @@
-import { BaseService } from "./BaseSvc";
+import { BaseService } from "./baseSvc";
 import { IFileItem } from "../../interfaces/IFileItem";
 import { IFile } from "../../interfaces/IFile";
 
@@ -24,7 +24,7 @@ export class FileUploadService {
   }
 
   public getFiles(libraryName: string, rowLimit: number): ng.IPromise<Array<IFileItem>> {
-    const url: string = `/_api/Web/lists/getbytitle('${libraryName}')/items?$select=Id,Modified,FileLeafRef,Author/Id&$expand=Author&$orderby=Modified desc&$top=${rowLimit}&$filter=Author/Id eq ${(<any>window)._spPageContextInfo.userId}`;
+    const url: string = `/_api/Web/lists/getbytitle('${libraryName}')/items?$select=Id,Modified,FileLeafRef,Author/Id&$expand=Author&$orderby=Modified desc&$top=${rowLimit}`;
     return this.baseService.getRequest(url);
   }
 
