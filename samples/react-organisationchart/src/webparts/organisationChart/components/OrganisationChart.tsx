@@ -3,7 +3,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 
-import { FontClassNames } from '@uifabric/styling'
+import { FontClassNames } from '@uifabric/styling';
 
 import { IOrganisationChartProps } from './IOrganisationChartProps';
 
@@ -31,14 +31,16 @@ class PersonaList extends React.Component<IPersonaListProps, {}> {
       <div>
         <div className={FontClassNames.large}>{this.props.title}</div>
         {this.props.users.map((user, index) => (
-          <Persona
-            imageUrl={this.props.getProfilePhoto(user.PictureUrl)}
-            primaryText={user.DisplayName}
-            secondaryText={user.Title}
-            size={PersonaSize.regular}
-            presence={PersonaPresence.none}
-            onClick={() => this.props.onProfileLinkClick(user.UserUrl)}
-          />
+          <div key={index}>
+            <Persona
+              imageUrl={this.props.getProfilePhoto(user.PictureUrl)}
+              primaryText={user.DisplayName}
+              secondaryText={user.Title}
+              size={PersonaSize.regular}
+              presence={PersonaPresence.none}
+              onClick={() => this.props.onProfileLinkClick(user.UserUrl)}
+            />
+          </div>
         ))}
       </div>
     );
