@@ -1,3 +1,3 @@
 export interface IOrganisationChartWebPartProps {
-    organisationName: string;
+  organisationName: string;
 }
