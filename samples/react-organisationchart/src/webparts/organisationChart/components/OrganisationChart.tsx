@@ -1,9 +1,11 @@
 import * as React from 'react';
-import styles from './OrganisationChart.module.scss';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import { IOrganisationChartProps } from './IOrganisationChartProps';
+import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 
+import { FontClassNames } from '@uifabric/styling'
+
+import { IOrganisationChartProps } from './IOrganisationChartProps';
 
 import { ServiceScope, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { IPerson, IUserProfileService } from '../interfaces';
@@ -14,6 +16,33 @@ export interface IOrganisationChartWebPartState {
   managers?: IPerson[];
   user?: IPerson;
   reports?: IPerson[];
+}
+
+interface IPersonaListProps {
+  title: string;
+  users: IPerson[];
+  getProfilePhoto: (photoUrl: string) => string;
+  onProfileLinkClick: (profileLink: string) => void;
+}
+
+class PersonaList extends React.Component<IPersonaListProps, {}> {
+  public render() {
+    return (
+      <div>
+        <div className={FontClassNames.large}>{this.props.title}</div>
+        {this.props.users.map((user, index) => (
+          <Persona
+            imageUrl={this.props.getProfilePhoto(user.PictureUrl)}
+            primaryText={user.DisplayName}
+            secondaryText={user.Title}
+            size={PersonaSize.regular}
+            presence={PersonaPresence.none}
+            onClick={() => this.props.onProfileLinkClick(user.UserUrl)}
+          />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default class OrganisationChart extends React.Component<IOrganisationChartProps, IOrganisationChartWebPartState> {
@@ -48,66 +77,33 @@ export default class OrganisationChart extends React.Component<IOrganisationChar
 
   public render(): React.ReactElement<IOrganisationChartProps> {
     return (
-      <div className={styles['ms-OrgChart']}>
-        <div className="ms-font-xl">
+      <div>
+        <div className={FontClassNames.xLarge}>
           {escape(this.props.organisationName)}
         </div>
-        <div className="ms-OrgChart-group">
-          <div className="ms-OrgChart-groupTitle">Managers</div>
-          <ul className={styles['ms-OrgChart-list']}>
-            {this.state.managers.map((manager, index) => (
-              <li key={index} className={styles['ms-OrgChart-listItem']}>
-                <button className={styles['ms-OrgChart-listItemBtn']} onClick={() => this.onProfileLinkClick(manager.UserUrl)}>
-                  <div className="ms-Persona">
-                    <div className="ms-Persona-imageArea">
-                      <img className="ms-Persona-image" alt="" role="presentation" src={this.getProfilePhoto(manager.PictureUrl)}></img>
-                    </div>
-                    <div className="ms-Persona-details">
-                      <div className="ms-Persona-primaryText">{manager.DisplayName}</div>
-                      <div className="ms-Persona-secondaryText">{manager.Title}</div>
-                    </div>
-                  </div>
-                </button>
-              </li>))}
-          </ul>
+        <PersonaList
+          title="Managers"
+          users={this.state.managers}
+          getProfilePhoto={this.getProfilePhoto.bind(this)}
+          onProfileLinkClick={this.onProfileLinkClick.bind(this)}
+        />
+        <div>
+          <div className={FontClassNames.large}>You</div>
+          <Persona
+            imageUrl={this.getProfilePhoto(this.state.user.PictureUrl)}
+            primaryText={this.state.user.DisplayName}
+            secondaryText={this.state.user.Title}
+            size={PersonaSize.regular}
+            presence={PersonaPresence.none}
+            onClick={() => this.onProfileLinkClick(this.state.user.UserUrl)}
+          />
         </div>
-        <div className="ms-OrgChart-group">
-          <div className="ms-OrgChart-groupTitle">You</div>
-          <ul className={styles['ms-OrgChart-list']}>
-            <li className={styles['ms-OrgChart-listItem']}>
-              <button className={styles['ms-OrgChart-listItemBtn']} onClick={() => this.onProfileLinkClick(this.state.user.UserUrl)}>
-                <div className="ms-Persona">
-                  <div className="ms-Persona-imageArea">
-                    <img className="ms-Persona-image" alt="" role="presentation" src={this.getProfilePhoto(this.state.user.PictureUrl)}></img>
-                  </div>
-                  <div className="ms-Persona-details">
-                    <div className="ms-Persona-primaryText">{this.state.user.DisplayName}</div>
-                    <div className="ms-Persona-secondaryText">{this.state.user.Title}</div>
-                  </div>
-                </div>
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className="ms-OrgChart-group">
-          <div className="ms-OrgChart-groupTitle">Reports</div>
-          <ul className={styles['ms-OrgChart-list']}>
-            {this.state.reports.map((report, index) => (
-              <li key={index} className={styles['ms-OrgChart-listItem']}>
-                <button className={styles['ms-OrgChart-listItemBtn']} onClick={() => this.onProfileLinkClick(report.UserUrl)}>
-                  <div className="ms-Persona">
-                    <div className="ms-Persona-imageArea">
-                      <img className="ms-Persona-image" alt="" role="presentation" src={this.getProfilePhoto(report.PictureUrl)}></img>
-                    </div>
-                    <div className="ms-Persona-details">
-                      <div className="ms-Persona-primaryText">{report.DisplayName}</div>
-                      <div className="ms-Persona-secondaryText">{report.Title}</div>
-                    </div>
-                  </div>
-                </button>
-              </li>))}
-          </ul>
-        </div>
+        <PersonaList
+          title="Reports"
+          users={this.state.reports}
+          getProfilePhoto={this.getProfilePhoto.bind(this)}
+          onProfileLinkClick={this.onProfileLinkClick.bind(this)}
+        />
       </div>
     );
   }
