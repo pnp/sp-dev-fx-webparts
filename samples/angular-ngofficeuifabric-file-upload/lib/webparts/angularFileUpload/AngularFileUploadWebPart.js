@@ -36,7 +36,6 @@ var AngularFileUploadWebPart = (function (_super) {
         });
     };
     AngularFileUploadWebPart.prototype.initAngularApp = function (pageContext) {
-        console.log(pageContext);
         var fileUploadApp = angular.module('fileUploadApp', [
             'officeuifabric.core',
             'officeuifabric.components'

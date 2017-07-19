@@ -82,7 +82,6 @@ define("e949042a-35e8-4e87-bc5a-0842f95f1e5f_0.0.1", ["@microsoft/sp-core-librar
 	        });
 	    };
 	    AngularFileUploadWebPart.prototype.initAngularApp = function (pageContext) {
-	        console.log(pageContext);
 	        var fileUploadApp = angular.module('fileUploadApp', [
 	            'officeuifabric.core',
 	            'officeuifabric.components'

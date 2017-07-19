@@ -93,7 +93,6 @@ export default class AngularFileUploadWebPart extends BaseClientSideWebPart<IAng
   }
 
   protected initAngularApp(pageContext: any) {
-    console.log(pageContext);
 
     const fileUploadApp: ng.IModule = angular.module('fileUploadApp', [
       'officeuifabric.core',
