@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/officeUiFabricPeoplePicker/OfficeUiFabricPeoplePickerWebPart.js",
+      "manifest": "./src/webparts/officeUiFabricPeoplePicker/OfficeUiFabricPeoplePickerWebPart.manifest.json",
+      "outputPath": "./dist/office-ui-fabric-people-picker.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "officeUiFabricPeoplePickerStrings": "webparts/officeUiFabricPeoplePicker/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "f0d034d3-6b7d-4907-a6c1-357c2e2e03af",
+  "alias": "VideoLibraryWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "f0d034d3-6b7d-4907-a6c1-357c2e2e03af",
+    "group": { "default": "Under Development" },
+    "title": { "default": "React-slick  Video Library" },
+    "description": { 
+      "default": "VideoLibrary implemented using react-slick -- Shows videos from an O365 Video Channel"
+       },
+    "officeFabricIconFontName": "Ribbon",
+    "properties": {
+      "description": "React-slick  Video Library",
+      "layout":"prism",
+      "duration":199
+    }
+  }]
+}

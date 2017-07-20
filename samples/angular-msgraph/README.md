@@ -19,7 +19,7 @@ display all the lists associated with the site followed by all the items inside 
 > Note: I currently only have models developed for the Announcements list. All other lists will currently generate errors.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+![drop](https://img.shields.io/badge/drop-ga-green.svg)
 
 ## Applies to
 
@@ -36,7 +36,8 @@ angular-msgraph|David Hartman ([Slalom](https://slalom.com))
 
 Version|Date|Comments
 -------|----|--------
-1.0|October 14, 2016|Initial release
+2.0|April 19th, 2017|GA Release
+1.0|February 6th, 2017|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -74,13 +75,4 @@ Version|Date|Comments
 1. Replace the **aad** and **redirect_uri** placeholder values with the application ID and redirect url of your registered Azure application in the GraphHelper.ts file Under
 src -> angularMsGraph -> GraphHelper.ts
 
-
-
- - In the file 'AngularMsGraphWebPart.ts' around line 50 you will need to put the url of the directory where the html template file resides.
-
-> Note: Adding the location of the template is necessary because Angular's $sce service doesn't trust the location the
-> html template is loaded from, so the url needs to be whitelisted with the $sce service. If you just want whitelisted
-> every url the entry in the $sce could just be '*'. There is plenty of documentation available if you run into trouble
-> whitelisting the template url.
-
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-msgraph" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-msgraph" /> 

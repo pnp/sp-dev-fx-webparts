@@ -1,21 +1,29 @@
 {
   "entries": [
     {
-      "entry": "./lib/webparts/angularMsGraph/AngularMsGraphWebPart.js",
-      "manifest": "./src/webparts/angularMsGraph/AngularMsGraphWebPart.manifest.json",
-      "outputPath": "./dist/angular-ms-graph.bundle.js"
+      "entry": "./lib/webparts/msGraph/MsGraphWebPart.js",
+      "manifest": "./src/webparts/msGraph/MsGraphWebPart.manifest.json",
+      "outputPath": "./dist/ms-graph.bundle.js"
     }
   ],
   "externals": {
-    "@microsoft/sp-client-base": "node_modules/@microsoft/sp-client-base/dist/sp-client-base.js",
-    "@microsoft/sp-client-preview": "node_modules/@microsoft/sp-client-preview/dist/sp-client-preview.js",
-    "@microsoft/sp-lodash-subset": "node_modules/@microsoft/sp-lodash-subset/dist/sp-lodash-subset.js",
-    "office-ui-fabric-react": "node_modules/office-ui-fabric-react/dist/office-ui-fabric-react.js",
-    "react": "node_modules/react/dist/react.min.js",
-    "react-dom": "node_modules/react-dom/dist/react-dom.min.js",
-    "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js"
+    "angular": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.js",
+      "globalName": "angular"
+    },
+    "ng-office-fabric-ui": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/ngOfficeUiFabric/0.15.0/ngOfficeUiFabric.js",
+      "globalName": "ng-office-fabric-ui",
+      "globalDependencies": [
+        "angular"
+      ]
+    },
+    "hellojs": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/hellojs/1.14.1/hello.js",
+      "globalName": "hellojs"
+    }
   },
   "localizedResources": {
-    "angularMsGraphStrings": "webparts/angularMsGraph/loc/{locale}.js"
+    "msGraphStrings": "webparts/msGraph/loc/{locale}.js"
   }
 }

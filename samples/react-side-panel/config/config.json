@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/sidePanel/SidePanelWebPart.js",
+      "manifest": "./src/webparts/sidePanel/SidePanelWebPart.manifest.json",
+      "outputPath": "./dist/side-panel.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "sidePanelStrings": "webparts/sidePanel/loc/{locale}.js"
+  }
+}

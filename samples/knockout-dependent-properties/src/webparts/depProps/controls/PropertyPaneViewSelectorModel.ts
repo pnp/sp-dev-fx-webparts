@@ -1,6 +1,6 @@
 import {
   IWebPartContext
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 import { IDataHelper } from '../data-helpers/DataHelperBase';
 import { DataHelpersFactory } from '../data-helpers/DataHelpersFactory';
 import { ISPList, ISPView } from '../common/SPEntities';

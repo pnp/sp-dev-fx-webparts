@@ -2,14 +2,15 @@
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
   "id": "e134b73a-b441-43c5-8569-e10b665281af",
+  "alias":"ReactDropdownWithRemoteData",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{
     "groupId": "e134b73a-b441-43c5-8569-e10b665281af",
     "group": { "default": "Under Development" },
-    "title": { "default": "Dropdown with remote data" },
+    "title": { "default": "Dropdown with custom properties" },
     "description": { "default": "Sample web part using a property bound to a dropdown control with remote data" },
     "officeFabricIconFontName": "Page",
     "properties": {

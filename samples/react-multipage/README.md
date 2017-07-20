@@ -10,8 +10,8 @@ Sample poll web part allowing users to vote and view the results.
 
 ![Poll web part built on the SharePoint Framework using React](./assets/poll-preview.gif)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop4-red.svg)
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
@@ -28,6 +28,7 @@ react-multipage|Waldek Mastykarz (MVP, Rencore, @waldekm)
 
 Version|Date|Comments
 -------|----|--------
+1.0.1|May 1 2017|Updated to SPFx GA
 1.0.0|November 15, 2016|Initial release
 
 ## Disclaimer

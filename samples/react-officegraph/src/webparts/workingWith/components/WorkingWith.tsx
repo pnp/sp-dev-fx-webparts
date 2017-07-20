@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import styles from '../WorkingWith.module.scss';
 import { IWorkingWithWebPartProps } from '../IWorkingWithWebPartProps';
-import { HttpClient } from '@microsoft/sp-client-base';
+import { SPHttpClient, SPHttpClientConfiguration, SPHttpClientResponse, ODataVersion, ISPHttpClientConfiguration } from '@microsoft/sp-http';
 import { SearchUtils, ISearchQueryResponse, IRow } from '../../SearchUtils';
 import { Utils } from '../../Utils';
 import {
@@ -14,7 +14,7 @@ import {
 } from 'office-ui-fabric-react';
 
 export interface IWorkingWithProps extends IWorkingWithWebPartProps {
-  httpClient: HttpClient;
+  httpClient: SPHttpClient;
   siteUrl: string;
 }
 
@@ -89,13 +89,13 @@ export default class WorkingWith extends React.Component<IWorkingWithProps, IWor
   }
 
   private loadPeople(siteUrl: string, numberOfPeople: number): void {
-    this.props.httpClient.get(`${siteUrl}/_api/search/query?querytext='*'&properties='GraphQuery:actor(me\\,action\\:1019)'&selectproperties='Title,WorkEmail,JobTitle,Department,Path'&rowlimit=${numberOfPeople}`, {
+    this.props.httpClient.get(`${siteUrl}/_api/search/query?querytext='*'&properties='GraphQuery:actor(me\\,action\\:1019)'&selectproperties='Title,WorkEmail,JobTitle,Department,Path'&rowlimit=${numberOfPeople}`, SPHttpClient.configurations.v1 , {
       headers: {
         'Accept': 'application/json;odata=nometadata',
         'odata-version': ''
       }
     })
-      .then((response: Response): Promise<ISearchQueryResponse> => {
+      .then((response: SPHttpClientResponse): Promise<ISearchQueryResponse> => {
         return response.json();
       })
       .then((response: ISearchQueryResponse): void => {

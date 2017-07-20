@@ -1,7 +1,7 @@
 import {
   IPropertyPaneCustomFieldProps,
   IWebPartContext
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
 /**
  * Complex object to define property in a web part
@@ -24,7 +24,7 @@ export interface IPropertyPaneViewSelectorFieldProps {
   /**
    * web part context
    */
-  context: IWebPartContext;
+  wpContext: IWebPartContext;
   /**
    * selected list id
    */
@@ -36,7 +36,7 @@ export interface IPropertyPaneViewSelectorFieldProps {
   /**
    * onPropertyChange event handler
    */
-  onPropertyChange(propertyPath: string, newValue: any): void;
+  onPropertyChange: (propertyPath: string, newValue: any) => void;
   /**
    * Label to show in list dropdown
    */
@@ -58,7 +58,7 @@ export interface IPropertyPaneViewSelectorFieldPropsInternal extends IPropertyPa
   /**
    * web part context
    */
-  context: IWebPartContext;
+  wpContext: IWebPartContext;
   /**
    * selected list id
    */
@@ -70,7 +70,7 @@ export interface IPropertyPaneViewSelectorFieldPropsInternal extends IPropertyPa
   /**
    * onPropertyChange event handler
    */
-  onPropertyChange(propertyPath: string, newValue: any): void;
+  onPropertyChange: (propertyPath: string, newValue: any) => void;
   /**
    * Label to show in list dropdown
    */

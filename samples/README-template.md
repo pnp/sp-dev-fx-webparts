@@ -5,10 +5,13 @@ Short summary on functionality and used technologies.
 
 [picture of the web part in action]
 
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/version-GA-green.svg)
+
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
 > Update accordingly as needed.
 
@@ -39,7 +42,6 @@ Version|Date|Comments
 - Clone this repository
 - in the command line run:
   - `npm install`
-  - `tsd install`
   - `gulp serve`
 
 > Include any additional steps as needed.

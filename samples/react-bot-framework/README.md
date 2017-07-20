@@ -9,8 +9,8 @@ the web part uses the username of the currently logged in user. The web part has
 You can see this web part sample, including a sample VS 2015 bot application in practice from [PnP SPFx Special Interest Group recording](https://youtu.be/Tv03CU_PmVs?t=1329)
 where sample was demonstrated.
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
@@ -40,12 +40,15 @@ under the [vs2015-bot-application](./vs2015-bot-application) folder. This is sim
 Solution|Author(s)
 --------|---------
 bot-framework | Gary Pretty ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
+RC0 Update / BugFixing | Raul Garita ([Raul.Garita@buildingi.com](mailto:raul.garita@buildingi.com), [Buildingi](http://www.buildingi.com))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|October 11th, 2016|Initial release
+1.1|Jan 24th, 2017|Updated to RC0
+1.2|Feb 23rd, 2017|Initial load bug fix
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

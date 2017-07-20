@@ -4,11 +4,11 @@ import DataService from './DataService';
 
 import 'ng-office-ui-fabric';
 
-const todoapp: ng.IModule = angular.module('crudapp', [
+const crudapp: ng.IModule = angular.module('crudapp', [
   'officeuifabric.core',
   'officeuifabric.components'
 ]);
 
-todoapp
+crudapp
   .controller('HomeController', HomeController)
   .service('DataService', DataService);

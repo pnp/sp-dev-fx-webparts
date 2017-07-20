@@ -8,12 +8,12 @@ This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoi
 
 > Does only show data when hosted in SharePoint. No mock data at this point for local testing the rendering.
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop3-red.svg)
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
 
@@ -22,6 +22,7 @@ This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoi
 Solution|Author(s)
 --------|---------
 js-display-list|Naamat Al-Aswad, P.Eng.
+Updated to GA Version| Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
 
 
 ## Version history
@@ -29,6 +30,7 @@ js-display-list|Naamat Al-Aswad, P.Eng.
 Version|Date|Comments
 -------|----|--------
 1.0|September 22, 2016|Initial release
+1.1|May 15, 2017|Updated to GA Version
 
 
 ## Disclaimer

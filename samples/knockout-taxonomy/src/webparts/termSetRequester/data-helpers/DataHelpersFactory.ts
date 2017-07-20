@@ -1,7 +1,10 @@
 import {
   IWebPartContext
 } from '@microsoft/sp-webpart-base';
-import { EnvironmentType } from '@microsoft/sp-client-base';
+import {
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
 import { IDataHelper } from './DataHelperBase';
 import { DataHelperMock } from './DataHelperMock';
 import { DataHelperSP } from './DataHelperSP';
@@ -15,7 +18,7 @@ export class DataHelpersFactory {
    * @context: web part context
    */
   public static createDataHelper(context: IWebPartContext): IDataHelper {
-    if (context.environment.type === EnvironmentType.Local) {
+    if (Environment.type === EnvironmentType.Local) {
       return new DataHelperMock();
     }
     else {

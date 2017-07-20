@@ -8,12 +8,11 @@ import BaseAngular2WebPart from './core/BaseAngular2WebPart';
 import TodoComponent from './TodoComponent';
 import ListComponent from './ListComponent';
 import {
-  IPropertyPaneSettings,
-  PropertyPaneTextField,
-  IHtmlProperties
-} from '@microsoft/sp-client-preview';
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField
+} from '@microsoft/sp-webpart-base';
 
-import * as strings from 'mystrings';
+import * as strings from 'todoStrings';
 import { ITodoWebPartProps } from './ITodoWebPartProps';
 
 export default class TodoWebPart extends BaseAngular2WebPart<ITodoWebPartProps> {
@@ -32,7 +31,7 @@ export default class TodoWebPart extends BaseAngular2WebPart<ITodoWebPartProps> 
   /*
   * Save's all component properties to the property bag of the WebPart.
   */
-  public onBeforeSerialize(): IHtmlProperties {
+  public onBeforeSerialize(): any {
     this.properties.description = this.rootComponent.description;
     this.properties.todos = this.rootComponent.todos;
     return undefined;
@@ -53,7 +52,7 @@ export default class TodoWebPart extends BaseAngular2WebPart<ITodoWebPartProps> 
     this.rootComponent.todos = this.properties.todos;
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

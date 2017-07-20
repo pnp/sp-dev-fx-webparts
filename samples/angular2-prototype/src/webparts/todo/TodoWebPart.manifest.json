@@ -1,13 +1,14 @@
 {
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
 
-  "id": "244f3542-af19-46e1-bd15-d6b9a35b9960",
+  "id": "50548cd6-7ad8-4bb1-94f2-433d7445d778",
+  "alias": "TodoWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{
-    "groupId": "244f3542-af19-46e1-bd15-d6b9a35b9960",
+    "groupId": "50548cd6-7ad8-4bb1-94f2-433d7445d778",
     "group": { "default": "Under Development" },
     "title": { "default": "Todo" },
     "description": { "default": "Todo description" },

@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/asyncAwaitPnPJs/AsyncAwaitPnPJsWebPart.js",
+      "manifest": "./src/webparts/asyncAwaitPnPJs/AsyncAwaitPnPJsWebPart.manifest.json",
+      "outputPath": "./dist/async-await-pn-p-js.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "asyncAwaitPnPJsStrings": "webparts/asyncAwaitPnPJs/loc/{locale}.js"
+  }
+}

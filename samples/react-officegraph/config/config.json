@@ -1,16 +1,6 @@
 {
   "entries": [
     {
-      "entry": "./lib/webparts/trendingInThisSite/TrendingInThisSiteWebPart.js",
-      "manifest": "./src/webparts/trendingInThisSite/TrendingInThisSiteWebPart.manifest.json",
-      "outputPath": "./dist/trending-in-this-site.bundle.js"
-    },
-    {
-      "entry": "./lib/webparts/workingWith/WorkingWithWebPart.js",
-      "manifest": "./src/webparts/workingWith/WorkingWithWebPart.manifest.json",
-      "outputPath": "./dist/working-with.bundle.js"
-    },
-    {
       "entry": "./lib/webparts/myRecentDocuments/MyRecentDocumentsWebPart.js",
       "manifest": "./src/webparts/myRecentDocuments/MyRecentDocumentsWebPart.manifest.json",
       "outputPath": "./dist/my-recent-documents.bundle.js"
@@ -19,21 +9,23 @@
       "entry": "./lib/webparts/trendingInTheSitesIFollow/TrendingInTheSitesIFollowWebPart.js",
       "manifest": "./src/webparts/trendingInTheSitesIFollow/TrendingInTheSitesIFollowWebPart.manifest.json",
       "outputPath": "./dist/trending-in-the-sites-i-follow.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/trendingInThisSite/TrendingInThisSiteWebPart.js",
+      "manifest": "./src/webparts/trendingInThisSite/TrendingInThisSiteWebPart.manifest.json",
+      "outputPath": "./dist/trending-in-this-site.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/workingWith/WorkingWithWebPart.js",
+      "manifest": "./src/webparts/workingWith/WorkingWithWebPart.manifest.json",
+      "outputPath": "./dist/working-with.bundle.js"
     }
   ],
-  "externals": {
-    "@microsoft/sp-client-base": "node_modules/@microsoft/sp-client-base/dist/sp-client-base.js",
-    "@microsoft/sp-client-preview": "node_modules/@microsoft/sp-client-preview/dist/sp-client-preview.js",
-    "@microsoft/sp-lodash-subset": "node_modules/@microsoft/sp-lodash-subset/dist/sp-lodash-subset.js",
-    "office-ui-fabric-react": "node_modules/office-ui-fabric-react/dist/office-ui-fabric-react.js",
-    "react": "node_modules/react/dist/react.min.js",
-    "react-dom": "node_modules/react-dom/dist/react-dom.min.js",
-    "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js"
-  },
+  "externals": {},
   "localizedResources": {
-    "trendingInThisSiteStrings": "webparts/trendingInThisSite/loc/{locale}.js",
-    "workingWithStrings": "webparts/workingWith/loc/{locale}.js",
     "myRecentDocumentsStrings": "webparts/myRecentDocuments/loc/{locale}.js",
-    "trendingInTheSitesIFollowStrings": "webparts/trendingInTheSitesIFollow/loc/{locale}.js"
+    "trendingInTheSitesIFollowStrings": "webparts/trendingInTheSitesIFollow/loc/{locale}.js",
+    "trendingInThisSiteStrings": "webparts/trendingInThisSite/loc/{locale}.js",
+    "workingWithStrings": "webparts/workingWith/loc/{locale}.js"
   }
 }

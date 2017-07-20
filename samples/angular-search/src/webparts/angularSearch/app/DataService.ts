@@ -1,16 +1,16 @@
 ﻿import { ISearchResults } from './../models/ISearchResults';
 
 export interface IDataService {
-  getSearchResults(webUrl: string, contentType: string): ng.IPromise<ISearchResults>;
+  getSearchResults(webUrl: string, contentType: string): angular.IPromise<ISearchResults>;
 }
 
 export default class DataService implements IDataService {
   public static $inject: string[] = ['$q', '$http'];
 
-  constructor(private $q: ng.IQService, private $http: ng.IHttpService) { }
+  constructor(private $q: angular.IQService, private $http: angular.IHttpService) { }
 
-  public getSearchResults(webUrl: string, contentType: string): ng.IPromise<ISearchResults> {
-    const deferred: ng.IDeferred<ISearchResults> = this.$q.defer();
+  public getSearchResults(webUrl: string, contentType: string): angular.IPromise<ISearchResults> {
+    const deferred: angular.IDeferred<ISearchResults> = this.$q.defer();
 
     this.$http({
           url: `${webUrl}/_api/search/query?queryText='ContentType:"${contentType}"
@@ -19,7 +19,7 @@ export default class DataService implements IDataService {
           headers: {
             'Accept': 'application/json;odata=verbose'
           }
-        }).then((response: ng.IHttpPromiseCallbackArg<any>): void => {
+        }).then((response: angular.IHttpPromiseCallbackArg<any>): void => {
           if (response != null && response.data != null) {
             const result: ISearchResults = response.data.d.query;
           if (typeof result.PrimaryQueryResult !== 'undefined' &&
@@ -36,25 +36,6 @@ export default class DataService implements IDataService {
             deferred.reject("problem getting search results");
           }
         }, (error: any): void => {
-        deferred.reject(error);
-      });
-
-    return deferred.promise;
-  }
-
-  private getRequestDigest(webUrl: string): ng.IPromise<string> {
-    const deferred: ng.IDeferred<string> = this.$q.defer();
-
-    this.$http({
-      url: webUrl + '/_api/contextinfo',
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json;odata=nometedata'
-      }
-    })
-      .then((digestResult: ng.IHttpPromiseCallbackArg<{ FormDigestValue: string }>): void => {
-        deferred.resolve(digestResult.data.FormDigestValue);
-      }, (error: any): void => {
         deferred.reject(error);
       });
 

@@ -1,0 +1,12 @@
+{
+  "globalDependencies": {
+    "redux": "registry:dt/redux#3.5.2+20160703092728",
+    "redux-promise-middleware": "registry:dt/redux-promise-middleware#0.0.0+20160108032528"
+  },
+  "dependencies": {
+    "redux-thunk": "registry:npm/redux-thunk#2.0.0+20160525185520"
+  },
+  "devDependencies": {
+    "react-redux": "registry:npm/react-redux#4.4.0+20160614222153"
+  }
+}

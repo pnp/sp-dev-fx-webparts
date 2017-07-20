@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Button, PrimaryButton, IButtonProps } from 'office-ui-fabric-react';
+
 import { IPollProps } from './IPollProps';
 import { IPollState } from './IPollState';
 import { Vote } from '../Vote';
@@ -9,15 +11,16 @@ export class Poll extends React.Component<IPollProps, IPollState> {
     super(props);
 
     this.state = {
-      showResults: false
+      showResults: true
     };
 
     this.voted = this.voted.bind(this);
+    this.voteNow = this.voteNow.bind(this);
   }
 
   protected componentWillReceiveProps(nextProps: IPollProps, nextContext: any): void {
     this.setState({
-      showResults: false
+      showResults: true
     });
   }
 
@@ -31,10 +34,28 @@ export class Poll extends React.Component<IPollProps, IPollState> {
         <div className={ 'ms-font-m-plus' }>{description}</div>
         <br />
         { showResults === false &&
-          <Vote onVoted={this.voted} {...this.props} />
+          <div>
+            <Vote onVoted={this.voted} {...this.props} />
+
+            <PrimaryButton
+              data-automation-id='toResults'
+              onClick={this.voted }
+              disabled={false}
+            >View Results
+            </PrimaryButton>
+          </div>
         }
         { showResults &&
-          <Results {...this.props} />
+          <div>
+            <Results {...this.props} />
+
+            <PrimaryButton
+              data-automation-id='toVote'
+              onClick={this.voteNow }
+              disabled={false}
+            >Vote Now
+            </PrimaryButton>
+          </div>
         }
       </div>
     );
@@ -43,6 +64,12 @@ export class Poll extends React.Component<IPollProps, IPollState> {
   private voted(): void {
     this.setState({
       showResults: true
+    });
+  }
+
+  private voteNow(): void {
+    this.setState({
+      showResults: false
     });
   }
 }

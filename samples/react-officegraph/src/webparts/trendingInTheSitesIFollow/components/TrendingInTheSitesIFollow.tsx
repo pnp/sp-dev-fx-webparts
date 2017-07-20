@@ -11,14 +11,14 @@ import {
 
 import styles from '../TrendingInTheSitesIFollow.module.scss';
 import { ITrendingInTheSitesIFollowWebPartProps } from '../ITrendingInTheSitesIFollowWebPartProps';
-import { HttpClient } from '@microsoft/sp-client-base';
+import { SPHttpClient, SPHttpClientConfiguration, SPHttpClientResponse, ODataVersion, ISPHttpClientConfiguration } from '@microsoft/sp-http';
 import { ITrendingDocument } from '../../ITrendingDocument';
 import { IActorInformation } from '../../IActorInformation';
 import { SearchUtils, ISearchQueryResponse, IRow, ICell, IEdge } from '../../SearchUtils';
 import { Utils } from '../../Utils';
 
 export interface ITrendingInTheSitesIFollowProps extends ITrendingInTheSitesIFollowWebPartProps {
-  httpClient: HttpClient;
+  httpClient: SPHttpClient;
   siteUrl: string;
 }
 
@@ -128,13 +128,13 @@ export default class TrendingInTheSitesIFollow extends React.Component<ITrending
 
   private getSitesIFollow(siteUrl: string): Promise<string[]> {
     return new Promise((resolve: (sitesIFollow: string[]) => void, reject: (error: any) => void): void => {
-      this.props.httpClient.get(`${siteUrl}/_api/social.following/my/followed(types=4)`, {
+      this.props.httpClient.get(`${siteUrl}/_api/social.following/my/followed(types=4)`,SPHttpClient.configurations.v1 , {
         headers: {
           'Accept': 'application/json;odata=nometadata',
           'odata-version': ''
         }
       })
-        .then((response: Response): Promise<{ value: ISiteInfo[] }> => {
+        .then((response: SPHttpClientResponse): Promise<{ value: ISiteInfo[] }> => {
           return response.json();
         })
         .then((sitesIFollowInfo: { value: ISiteInfo[] }): void => {
@@ -198,7 +198,7 @@ export default class TrendingInTheSitesIFollow extends React.Component<ITrending
           }
         }
       });
-      this.props.httpClient.post(`${siteUrl}/_api/search/postquery`, {
+      this.props.httpClient.post(`${siteUrl}/_api/search/postquery`, SPHttpClient.configurations.v1 , {
         headers: {
           'Accept': 'application/json;odata=nometadata',
           'Content-type': 'application/json;odata=verbose',
@@ -206,7 +206,7 @@ export default class TrendingInTheSitesIFollow extends React.Component<ITrending
         },
         body: postData
       })
-        .then((response: Response): Promise<ISearchQueryResponse> => {
+        .then((response: SPHttpClientResponse): Promise<ISearchQueryResponse> => {
           return response.json();
         })
         .then((response: ISearchQueryResponse): void => {

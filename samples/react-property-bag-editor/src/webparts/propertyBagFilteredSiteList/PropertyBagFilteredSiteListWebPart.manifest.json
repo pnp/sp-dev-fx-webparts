@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "b81a6789-e93b-4be5-baa7-59f34004694a",
+  "alias": "PropertyBagFilteredSiteListWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "preconfiguredEntries": [
+    {
+      "groupId": "b81a6789-e93b-4be5-baa7-59f34004694a",
+       "group": { "default": "Property Bag Navigation" },
+    "title": { "default": "Property Bag Site List" },
+      "description": {
+        "default": "Displays a list of sites with the selected properties"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "Project Sites",
+        "filters": "AreaName=Projects",
+        "siteTemplatesToInclude": "STS",
+        "userFilters": "Continent",
+        "linkTarget": "_self",
+        "showSiteDescriptions": true
+      }
+    }
+  ]
+}

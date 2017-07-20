@@ -8,13 +8,12 @@ Sample Web Part illustrating
 
 ![Taxonomy Sample Web Part](./assets/Taxonomy.png)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop5-red.svg)
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-ga-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -27,6 +26,7 @@ knockout-taxonomy | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepoint
 Version|Date|Comments
 -------|----|--------
 1.0|November 12, 2016|Initial release
+1.1|May 5, 2017|Update to GA Release, fix of minor bug
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

@@ -7,7 +7,7 @@ Sample Web Parts illustrating performing SharePoint CRUD operations in React, An
 ![Sample To do SharePoint Framework Client-Side Web Part built using Angular and ngOfficeUIFabric](./assets/preview.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-drop2-red.svg)
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
 
@@ -24,6 +24,7 @@ sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm)
 
 Version|Date|Comments
 -------|----|--------
+1.1|March 9, 2017|Updated to SPFx GA
 1.0|September 16, 2016|Initial release
 
 ## Disclaimer
@@ -35,23 +36,19 @@ Version|Date|Comments
 
 - clone this repo
 - in the command line run:
-  - `npm i typings -g`
   - `npm i`
   - `gulp serve --nobrowser`
 - in your SharePoint Site create a list
 
 > Note: this Site should be located in a Site Collection under the **/sites/** managed path, eg. **https://contoso.sharepoint.com/sites/my-team-site**
 
-- from the **./temp** folder copy the **workbench.html** file and rename it to **workbench.aspx**
-- in the **workbench.aspx** file change the value of the **webAbsoluteUrl** to the URL of your web, where you will upload the Workbench
-- upload the **workbench.aspx** file to a Document Library in the same SharePoint Site as where the list is located
-- navigate to the workbench page uploaded to your SharePoint site, ie. **https://contoso.sharepoint.com/sites/my-team-site/documents/workbench.aspx**
+- navigate to the hosted version of SharePoint workbench, eg. **https://contoso.sharepoint.com/sites/my-team-site/_layouts/15/workbench.aspx**
 - add the Web Part to canvas and in its configuration specify:
   - name of the lists where items should be stored, eg. **Items**
 
 ## Features
 
-This project contains sample Client-Side Web Parts built on the SharePoint Framework illustrating how to perform SharePoint CRUD operations on different JavaScript frameworks.
+This project contains sample client-side web parts built on the SharePoint Framework illustrating how to perform SharePoint CRUD operations on different JavaScript frameworks.
 
 This sample illustrates the following concepts on top of the SharePoint Framework:
 

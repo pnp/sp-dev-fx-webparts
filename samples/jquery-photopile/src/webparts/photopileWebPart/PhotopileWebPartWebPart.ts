@@ -1,21 +1,17 @@
-/**
- * @file
- * Defines the Photopile client side web part
- *
- * Author: Olivier Carpentier
- */
+import { Version } from '@microsoft/sp-core-library';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
-  PropertyPaneTextField,
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField,  
+  IWebPartContext,  
   PropertyPaneToggle,
   PropertyPaneDropdown,
   IPropertyPaneDropdownOption,
   PropertyPaneSlider
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
+import { escape } from '@microsoft/sp-lodash-subset';
 
 import * as strings from 'mystrings';
 import { IPhotopileWebPartProps } from './IPhotopileWebPartProps';
@@ -30,7 +26,7 @@ import { ISPList } from './ISPList';
  */
 export default class PhotopileWebPartWebPart extends BaseClientSideWebPart<IPhotopileWebPartWebPartProps> {
 
-  /**
+    /**
    * @var
    * Stores the list of SharePoint Pictures library found in the current SP web
    */
@@ -41,7 +37,7 @@ export default class PhotopileWebPartWebPart extends BaseClientSideWebPart<IPhot
    * Web Part constructor
    */
   public constructor(context: IWebPartContext) {
-    super(context);
+    super();
   }
 
   /**
@@ -69,7 +65,8 @@ export default class PhotopileWebPartWebPart extends BaseClientSideWebPart<IPhot
    * @function
    * Renders the web part
    */
-  public render(): void {
+
+    public render(): void {
 
     //Constructs the react element code to JSX
     const element: React.ReactElement<IPhotopileWebPartProps> = React.createElement(PhotopileWebPart, {
@@ -111,7 +108,12 @@ export default class PhotopileWebPartWebPart extends BaseClientSideWebPart<IPhot
    * @function
    * Gets the web part properties panel settings
    */
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {

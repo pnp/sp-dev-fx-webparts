@@ -1,5 +1,9 @@
-import { HttpClient, ODataBatch } from '@microsoft/sp-client-base';
-import { IWebPartContext } from '@microsoft/sp-client-preview';
+import {
+  SPHttpClient,
+  SPHttpClientBatch,
+  SPHttpClientResponse
+} from '@microsoft/sp-http';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import ITodoDataProvider from '../dataProviders/ITodoDataProvider';
 import ITodoItem from '../models/ITodoItem';
 import ITodoTaskList from '../models/ITodoTaskList';
@@ -35,8 +39,8 @@ export default class SharePointDataProvider implements ITodoDataProvider {
     const queryString: string = `?$filter=BaseTemplate eq ${listTemplateId}`;
     const queryUrl: string = this._listsUrl + queryString;
 
-    return this._webPartContext.httpClient.get(queryUrl)
-      .then((response: Response) => {
+    return this._webPartContext.spHttpClient.get(queryUrl, SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       })
       .then((json: { value: ITodoTaskList[] }) => {
@@ -45,11 +49,11 @@ export default class SharePointDataProvider implements ITodoDataProvider {
   }
 
   public getItems(): Promise<ITodoItem[]> {
-    return this._getItems(this.webPartContext.httpClient);
+    return this._getItems(this.webPartContext.spHttpClient);
   }
 
   public createItem(title: string): Promise<ITodoItem[]> {
-    const batch: ODataBatch = this.webPartContext.httpClient.beginBatch();
+    const batch: SPHttpClientBatch = this.webPartContext.spHttpClient.beginBatch();
 
     const batchPromises: Promise<{}>[] = [
       this._createItem(batch, title),
@@ -60,7 +64,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
   }
 
   public deleteItem(itemDeleted: ITodoItem): Promise<ITodoItem[]> {
-    const batch: ODataBatch = this.webPartContext.httpClient.beginBatch();
+    const batch: SPHttpClientBatch = this.webPartContext.spHttpClient.beginBatch();
 
     const batchPromises: Promise<{}>[] = [
       this._deleteItem(batch, itemDeleted),
@@ -71,7 +75,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
   }
 
   public updateItem(itemUpdated: ITodoItem): Promise<ITodoItem[]> {
-    const batch: ODataBatch = this.webPartContext.httpClient.beginBatch();
+    const batch: SPHttpClientBatch = this.webPartContext.spHttpClient.beginBatch();
 
     const batchPromises: Promise<{}>[] = [
       this._updateItem(batch, itemUpdated),
@@ -81,12 +85,12 @@ export default class SharePointDataProvider implements ITodoDataProvider {
     return this._resolveBatch(batch, batchPromises);
   }
 
-  private _getItems(requester: HttpClient): Promise<ITodoItem[]> {
+  private _getItems(requester: SPHttpClient): Promise<ITodoItem[]> {
     const queryString: string = `?$select=Id,Title,PercentComplete`;
     const queryUrl: string = this._listItemsUrl + queryString;
 
-    return requester.get(queryUrl)
-      .then((response: Response) => {
+    return requester.get(queryUrl, SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       })
       .then((json: { value: ITodoItem[] }) => {
@@ -96,12 +100,12 @@ export default class SharePointDataProvider implements ITodoDataProvider {
       });
   }
 
-  private _getItemsBatched(requester: ODataBatch): Promise<ITodoItem[]> {
+  private _getItemsBatched(requester: SPHttpClientBatch): Promise<ITodoItem[]> {
     const queryString: string = `?$select=Id,Title,PercentComplete`;
     const queryUrl: string = this._listItemsUrl + queryString;
 
-    return requester.get(queryUrl)
-      .then((response: Response) => {
+    return requester.get(queryUrl, SPHttpClientBatch.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       })
       .then((json: { value: ITodoItem[] }) => {
@@ -112,28 +116,35 @@ export default class SharePointDataProvider implements ITodoDataProvider {
   }
 
 
-  private _createItem(batch: ODataBatch, title: string): Promise<Response> {
+  private _createItem(batch: SPHttpClientBatch, title: string): Promise<SPHttpClientResponse> {
     const body: {} = {
       '@data.type': `${this._selectedList.ListItemEntityTypeFullName}`,
       'Title': title
     };
 
-    return batch.post(this._listItemsUrl, { body: JSON.stringify(body) });
+    return batch.post(
+      this._listItemsUrl,
+      SPHttpClientBatch.configurations.v1,
+      { body: JSON.stringify(body) }
+    );
   }
 
-  private _deleteItem(batch: ODataBatch, item: ITodoItem): Promise<Response> {
+  private _deleteItem(batch: SPHttpClientBatch, item: ITodoItem): Promise<SPHttpClientResponse> {
     const itemDeletedUrl: string = `${this._listItemsUrl}(${item.Id})`;
 
     const headers: Headers = new Headers();
     headers.append('If-Match', '*');
 
-    return batch.fetch(itemDeletedUrl, {
-      headers,
-      method: 'DELETE'
-    });
+    return batch.fetch(itemDeletedUrl,
+      SPHttpClientBatch.configurations.v1,
+      {
+        headers,
+        method: 'DELETE'
+      }
+    );
   }
 
-  private _updateItem(batch: ODataBatch, item: ITodoItem): Promise<Response> {
+  private _updateItem(batch: SPHttpClientBatch, item: ITodoItem): Promise<SPHttpClientResponse> {
 
     const itemUpdatedUrl: string = `${this._listItemsUrl}(${item.Id})`;
 
@@ -145,14 +156,17 @@ export default class SharePointDataProvider implements ITodoDataProvider {
       'PercentComplete': item.PercentComplete
     };
 
-    return batch.fetch(itemUpdatedUrl, {
-      body: JSON.stringify(body),
-      headers,
-      method: 'PATCH'
-    });
+    return batch.fetch(itemUpdatedUrl,
+      SPHttpClientBatch.configurations.v1,
+      {
+        body: JSON.stringify(body),
+        headers,
+        method: 'PATCH'
+      }
+    );
   }
 
-  private _resolveBatch(batch: ODataBatch, promises: Promise<{}>[]): Promise<ITodoItem[]> {
+  private _resolveBatch(batch: SPHttpClientBatch, promises: Promise<{}>[]): Promise<ITodoItem[]> {
     return batch.execute()
       .then(() => Promise.all(promises).then(values => values[values.length - 1]));
   }

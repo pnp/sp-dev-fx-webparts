@@ -3,7 +3,7 @@ import * as ReactDom from 'react-dom';
 
 import {
 	IPropertyPaneField,
-	IPropertyPaneFieldType
+	PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 
 import { IPropertyPaneLoggingFieldProps } from './IPropertyPaneLoggingFieldProps';
@@ -16,7 +16,7 @@ export interface IPropertyPaneLoggingFieldPropsInternal extends IPropertyPaneLog
 
 class PropertyPaneLoggingFieldBuilder implements IPropertyPaneField<IPropertyPaneLoggingFieldPropsInternal> {
 	// Properties defined by IPropertyPaneField
-	public type: IPropertyPaneFieldType = IPropertyPaneFieldType.Custom;
+	public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
 	public targetProperty: string = undefined;
 	public properties: IPropertyPaneLoggingFieldPropsInternal;
 

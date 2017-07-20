@@ -1,8 +1,12 @@
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
-} from '@microsoft/sp-client-preview';
+  IPropertyPaneConfiguration
+} from '@microsoft/sp-webpart-base';
+
+import {
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
 
 import styles from './DepProps.module.scss';
 import * as strings from 'depPropsStrings';
@@ -12,10 +16,11 @@ import { PropertyPaneViewSelectorField } from './controls/PropertyPaneViewSelect
 
 export default class DepPropsWebPart extends BaseClientSideWebPart<IDepPropsWebPartProps> {
 
-  public constructor(context: IWebPartContext) {
-    super(context);
+  public constructor() {
+    super();
 
-    this.onPropertyChange = this.onPropertyChange.bind(this);
+
+    this.onCustomPropertyPaneFieldChanged = this.onCustomPropertyPaneFieldChanged.bind(this);
   }
 
   public render(): void {
@@ -32,7 +37,25 @@ export default class DepPropsWebPart extends BaseClientSideWebPart<IDepPropsWebP
       </div>`;
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+/**
+ * Provides logic to update web part properties and initiate re-render
+ * @param targetProperty property that has been changed
+ * @param newValue new value of the property
+ */
+  public onCustomPropertyPaneFieldChanged(targetProperty: string, newValue: any) {
+    const oldValue = this.properties[targetProperty];
+    this.properties[targetProperty] = newValue;
+
+    this.onPropertyPaneFieldChanged(targetProperty, oldValue, newValue);
+
+    // NOTE: in local workbench onPropertyPaneFieldChanged method initiates re-render
+    // in SharePoint environment we need to call re-render by ourselves
+    if (Environment.type !== EnvironmentType.Local) {
+      this.render();
+    }
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -44,12 +67,12 @@ export default class DepPropsWebPart extends BaseClientSideWebPart<IDepPropsWebP
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneViewSelectorField('depProps', {
-                  context: this.context,
+                  wpContext: this.context,
                   listId: this.properties.depProps && this.properties.depProps.listId,
                   viewId: this.properties.depProps && this.properties.depProps.viewId,
                   listLabel: strings.SelectList,
                   viewLabel: strings.SelectView,
-                  onPropertyChange: this.onPropertyChange
+                  onPropertyChange: this.onCustomPropertyPaneFieldChanged
                 })
               ]
             }

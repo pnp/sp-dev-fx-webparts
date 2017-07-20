@@ -5,6 +5,6 @@
     "version": "1.0.0.0"
   },
   "paths": {
-    "zippedPackage": "ang-2-webparts.spapp"
+    "zippedPackage": "solution/ang-2-webparts.sppkg"
   }
 }
