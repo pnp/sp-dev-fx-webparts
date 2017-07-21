@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-msal-msgraph-client-side-solution",
+    "id": "169d1e68-4272-4d99-ac26-e4acd43d62fd",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-msal-msgraph.sppkg"
+  }
+}
