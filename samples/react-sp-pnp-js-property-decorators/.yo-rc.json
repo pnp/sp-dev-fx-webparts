@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-sp-pnp-js-property-decorators",
+    "framework": "react",
+    "version": "1.0.2",
+    "libraryId": "a843ff35-51f4-4e36-99f7-f077a93f8d37"
+  }
+}
