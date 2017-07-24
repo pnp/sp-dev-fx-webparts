@@ -6,12 +6,11 @@
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "experimentalDecorators": true,
     "types": [
       "es6-promise",
       "es6-collections",
-      "webpack-env",
-      "microsoft-ajax",
-      "sharepoint"
+      "webpack-env"
     ]
   }
 }

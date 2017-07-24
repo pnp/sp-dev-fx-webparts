@@ -16,14 +16,6 @@ import styles                                   from './QueryFilterPanel.module.
 export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQueryFilterPanelState> {
 
     /*************************************************************************************
-     * Adds a default filter that always appears 
-     *************************************************************************************/
-    private defaultFilters:IQueryFilter[] = [
-        { field: null, operator: QueryFilterOperator.Eq, join: QueryFilterJoin.Or, value: '' }
-    ];
-
-
-    /*************************************************************************************
      * Component's constructor
      * @param props 
      * @param state 
@@ -48,11 +40,11 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
      *************************************************************************************/
     private getDefaultFilters():IQueryFilter[] {
         if(this.props.filters != null && this.props.filters.length > 0) {
-            return this.props.filters;
+            return this.sortFiltersByIndex(this.props.filters);
         }
 
         let defaultFilters:IQueryFilter[] = [
-            { field: null, operator: QueryFilterOperator.Eq, join: QueryFilterJoin.Or, value: '' }
+            { index: 0, field: null, operator: QueryFilterOperator.Eq, join: QueryFilterJoin.Or, value: '' }
         ];
         return defaultFilters;
     }
@@ -83,9 +75,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
         
         this.setState((prevState: IQueryFilterPanelState, props: IQueryFilterPanelProps): IQueryFilterPanelState => {
             prevState.loading = true;
-            prevState.fields = new Array<IQueryFilterField>();
             prevState.error = null;
-            prevState.filters = this.getDefaultFilters();
             return prevState;
         });
 
@@ -93,6 +83,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
             this.setState((prevState: IQueryFilterPanelState, props: IQueryFilterPanelProps): IQueryFilterPanelState => {
                 prevState.loading = false;
                 prevState.fields = fields;
+                prevState.filters = this.getDefaultFilters();
                 return prevState;
             });
         }) 
@@ -109,17 +100,18 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
     /*************************************************************************************
      * When one of the filter changes
      *************************************************************************************/
-    private onFilterChanged(filter:IQueryFilter, index:number): void {
+    private onFilterChanged(filter:IQueryFilter): void {
         // Makes sure the parent is not notified for no reason if the modified filter was (and still is) considered empty
         let isWorthNotifyingParent = true;
-        let oldFilter = this.state.filters[index];
+        let oldFilter = this.state.filters.filter((i) => { return i.index == filter.index; })[0];
+        let oldFilterIndex = this.state.filters.indexOf(oldFilter);
         
         if(this.props.trimEmptyFiltersOnChange && this.isFilterEmpty(oldFilter) && this.isFilterEmpty(filter)) {
             isWorthNotifyingParent = false;
         }
 
         // Updates the modified filter in the state
-        this.state.filters[index] = cloneDeep(filter);
+        this.state.filters[oldFilterIndex] = cloneDeep(filter);
         this.setState((prevState: IQueryFilterPanelState, props: IQueryFilterPanelProps): IQueryFilterPanelState => {
             prevState.filters = this.state.filters;
             return prevState;
@@ -170,12 +162,20 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
      *************************************************************************************/
     private onAddFilterClick(): void {
         // Updates the state with an all fresh new filter
-        let newFilter:IQueryFilter = { field: null, operator: QueryFilterOperator.Eq, join: QueryFilterJoin.Or, value: '' };
+        let nextAvailableFilterIndex = this.state.filters[this.state.filters.length-1].index + 1;
+        let newFilter:IQueryFilter = { index: nextAvailableFilterIndex, field: null, operator: QueryFilterOperator.Eq, join: QueryFilterJoin.Or, value: '' };
         this.state.filters.push(newFilter);
 
         this.setState((prevState: IQueryFilterPanelState, props: IQueryFilterPanelProps): IQueryFilterPanelState => {
             prevState.filters = this.state.filters;
             return prevState;
+        });
+    }
+
+
+    private sortFiltersByIndex(filters:IQueryFilter[]): IQueryFilter[] {
+        return filters.sort((a, b) => { 
+            if(a.index > b.index) { return 1; } else { return 0; } 
         });
     }
 
@@ -196,7 +196,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
                              onLoadPeoplePickerSuggestions={this.props.onLoadPeoplePickerSuggestions}
                              onChanged={this.onFilterChanged.bind(this)}
                              strings={this.props.strings.queryFilterStrings}
-                             index={index} />
+                             key={index} />
             </div>
         );
 

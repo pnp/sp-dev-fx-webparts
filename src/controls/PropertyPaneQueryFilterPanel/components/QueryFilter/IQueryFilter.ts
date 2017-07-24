@@ -4,6 +4,7 @@ import { QueryFilterJoin }      from './QueryFilterJoin';
 import { IPersonaProps, ITag }  from 'office-ui-fabric-react';
 
 export interface IQueryFilter {
+   index: number;
    field: IQueryFilterField;
    operator: QueryFilterOperator;
    value: string | IPersonaProps[] | ITag[] | Date;

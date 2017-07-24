@@ -9,8 +9,7 @@ export interface IQueryFilterProps {
     fields: IQueryFilterField[];
     onLoadTaxonomyPickerSuggestions: (field: IQueryFilterField, filterText: string, currentTerms: ITag[]) => Promise<ITag[]>;
     onLoadPeoplePickerSuggestions: (filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) => Promise<IPersonaProps[]>;
-    onChanged?: (filter: IQueryFilter, index: number) => void;
+    onChanged?: (filter: IQueryFilter) => void;
     disabled?: boolean;
     strings: IQueryFilterStrings;
-    index?: number;
 }

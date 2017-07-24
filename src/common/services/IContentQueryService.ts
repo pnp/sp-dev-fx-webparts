@@ -14,7 +14,7 @@ export interface IContentQueryService {
     getFilterFields: (webUrl: string, listTitle: string) => Promise<IQueryFilterField[]>;
     getViewFieldsChecklistItems: (webUrl: string, listTitle: string) => Promise<IChecklistItem[]>;
     getPeoplePickerSuggestions: (webUrl: string, filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) => Promise<IPersonaProps[]>;
-    getTaxonomyPickerSuggestions: (webUrl: string, listTitle: string, field: IQueryFilterField, filterText: string, currentTerms: ITag[]) => Promise<IPersonaProps[]>;
+    getTaxonomyPickerSuggestions: (webUrl: string, listTitle: string, field: IQueryFilterField, filterText: string, currentTerms: ITag[]) => Promise<ITag[]>;
     ensureFileResolves: (filePath: string) => Promise<{}>;
     isValidTemplateFile: (filePath: string) => boolean;
     generateDefaultTemplate: (viewFields: string[]) => string;

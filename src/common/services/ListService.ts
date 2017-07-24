@@ -35,29 +35,18 @@ export class ListService {
 			};
 			let options: ISPHttpClientOptions = { headers: { 'odata-version': '3.0' }, body: JSON.stringify(data) };
 
-			// Tests the web URL against 404 errors before executing the query, to avoid a bug that occurs with SPHttpClient.post when trying to post
-			// https://github.com/SharePoint/sp-dev-docs/issues/553
-			this.spHttpClient.get(webUrl, SPHttpClient.configurations.v1, { method: 'HEAD' })
-				.then((headResponse: SPHttpClientResponse) => {
-					if(headResponse.status != 404) {
-
-						// If there is no 404, proceeds with the CAML query
-						this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, options)
-							.then((postResponse: SPHttpClientResponse) => {
-								if(postResponse.ok) {
-									resolve(postResponse.json());
-								}
-								else {
-									reject(postResponse);
-								}
-							})
-							.catch((error) => { reject(error); }); 
+			this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, options)
+				.then((postResponse: SPHttpClientResponse) => {
+					if(postResponse.ok) {
+						resolve(postResponse.json());
 					}
 					else {
-						reject(headResponse);
+						reject(postResponse);
 					}
 				})
-				.catch((error) => { reject(error); });
+				.catch((error) => { 
+					reject(error); 
+				}); 
         });
 	}
 
