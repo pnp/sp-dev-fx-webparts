@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "46edf08f-95c7-4ca7-9146-6471f9f471be",
+  "alias": "ContentQueryWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "46edf08f-95c7-4ca7-9146-6471f9f471be",
+    "group": { "default": "SPP Technologies" },
+    "title": { "default": "React Content Query WebPart" },
+    "description": { 
+      "default": "A react content by query WebPart for querying items within a site and easily displaying them using a simple yet powerfull HandleBars templating engine.",
+      "fr-FR": "Une composante React permettant d'effectuer des requêtes sur les items et de facilement afficher les résultat à l'aide de gabarits HandleBars fournit par l'utilisateur"
+    },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "React Content Query WebPart"
+    }
+  }]
+}
