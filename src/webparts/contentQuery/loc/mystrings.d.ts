@@ -2,11 +2,9 @@ declare interface IContentQueryStrings {
   SourcePageDescription: string;
   QueryPageDescription: string;
   DisplayPageDescription: string;
-  ExternalPageDescription: string;
   SourceGroupName: string;
   QueryGroupName: string;
   DisplayGroupName: string;
-  ExternalGroupName: string;
   WebUrlFieldLabel: string;
   WebUrlFieldPlaceholder: string;
   WebUrlFieldLoadingLabel: string;

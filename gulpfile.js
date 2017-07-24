@@ -11,11 +11,12 @@ const build = require('@microsoft/sp-build-web');
  ********************************************************************************************/
 build.configureWebpack.mergeConfig({
   additionalConfiguration: (generatedConfiguration) => {
+
     generatedConfiguration.resolve.alias = { handlebars: 'handlebars/dist/handlebars.min.js' };
 
-    generatedConfiguration.module.loaders.push({
-       test: /\.js$/, loader: 'unlazy'
-    });
+    generatedConfiguration.module.rules.push(
+      { test: /\.js$/, loader: 'unlazy-loader' }
+    );
 
     generatedConfiguration.node = {
       fs: 'empty'

@@ -18,7 +18,7 @@
       "label-position": false,
       "member-access": true,
       "no-arg": false,
-      "no-console": true,
+      "no-console": false,
       "no-construct": false,
       "no-duplicate-case": true,
       "no-duplicate-variable": true,
@@ -39,8 +39,7 @@
       "use-named-parameter": true,
       "valid-typeof": true,
       "variable-name": false,
-      "whitespace": false,
-      "prefer-const": false
+      "whitespace": false
     }
   }
 }

@@ -17,7 +17,6 @@ import { PropertyPaneAsyncDropdown }                                            
 import { PropertyPaneQueryFilterPanel }                                             from '../../controls/PropertyPaneQueryFilterPanel/PropertyPaneQueryFilterPanel';
 import { PropertyPaneAsyncChecklist }                                               from '../../controls/PropertyPaneAsyncChecklist/PropertyPaneAsyncChecklist';
 import { PropertyPaneTextDialog }                                                   from '../../controls/PropertyPaneTextDialog/PropertyPaneTextDialog';
-import { IQueryFilter }                                                             from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilter';
 import { IQueryFilterField }                                                        from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilterField';
 import { IChecklistItem }                                                           from '../../controls/PropertyPaneAsyncChecklist/components/AsyncChecklist/IChecklistItem';
 import { ContentQueryService }                                                      from '../../common/services/ContentQueryService';
@@ -55,7 +54,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Returns the WebPart's version
    ***************************************************************************/
   protected get dataVersion(): Version {
-    return Version.parse('1.0.1');
+    return Version.parse('1.0.2');
   }
 
 
@@ -114,7 +113,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       loadingLabel: strings.WebUrlFieldLoadingLabel,
       errorLabelFormat: strings.WebUrlFieldLoadingError,
       loadOptions: this.loadWebUrlOptions.bind(this),
-      onPropertyChange: this.onWebUrlChange.bind(this),
+      onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       selectedKey: this.properties.webUrl || ""
     });
 
@@ -124,7 +123,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       loadingLabel: strings.ListTitleFieldLoadingLabel,
       errorLabelFormat: strings.ListTitleFieldLoadingError,
       loadOptions: this.loadListTitleOptions.bind(this),
-      onPropertyChange: this.onListTitleChange.bind(this),
+      onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       selectedKey: this.properties.listTitle || "",
       disabled: firstCascadingLevelDisabled
     });
@@ -135,7 +134,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       loadingLabel: strings.OrderByFieldLoadingLabel,
       errorLabelFormat: strings.OrderByFieldLoadingError,
       loadOptions: this.loadOrderByOptions.bind(this),
-      onPropertyChange: this.onOrderByChange.bind(this),
+      onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       selectedKey: this.properties.orderBy || "",
       disabled: secondCascadingLevelDisabled
     });
@@ -146,7 +145,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       loadFields: this.loadFilterFields.bind(this),
       onLoadTaxonomyPickerSuggestions: this.loadTaxonomyPickerSuggestions.bind(this),
       onLoadPeoplePickerSuggestions: this.loadPeoplePickerSuggestions.bind(this),
-      onPropertyChange: this.onFiltersChange.bind(this),
+      onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       trimEmptyFiltersOnChange: true,
       disabled: secondCascadingLevelDisabled,
       strings: strings.queryFilterPanelStrings
@@ -156,7 +155,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
     this.viewFieldsChecklist = new PropertyPaneAsyncChecklist(ContentQueryConstants.propertyViewFields, {
       loadItems: this.loadViewFieldsChecklistItems.bind(this),
       checkedItems: this.properties.viewFields,
-      onPropertyChange: this.onViewFieldsChange.bind(this),
+      onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       disable: secondCascadingLevelDisabled,
       strings: strings.viewFieldsChecklistStrings
     });
@@ -164,7 +163,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
     // Creates a custom PropertyPaneTextDialog for the templateText property
     this.templateTextDialog = new PropertyPaneTextDialog(ContentQueryConstants.propertyTemplateText, {
       dialogTextFieldValue: this.properties.templateText,
-      onPropertyChange: this.onTemplateTextChange.bind(this),
+      onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       disabled: false,
       strings: strings.templateTextStrings
     });
@@ -238,17 +237,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
               groupName: strings.DisplayGroupName,
               groupFields: [
                 this.viewFieldsChecklist,
-                this.templateTextDialog
-              ]
-            }
-          ]
-        },
-        {
-          header: { description: strings.ExternalPageDescription },
-          groups: [
-            {
-              groupName: strings.ExternalGroupName,
-              groupFields: [
+                this.templateTextDialog,
                 this.templateUrlTextField
               ]
             }
@@ -339,116 +328,59 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
 
 
   /***************************************************************************
-   * Handles the change of the webUrl property
+   * When a custom property pane updates
    ***************************************************************************/
-  private onWebUrlChange(propertyPath: string, newValue: any): void {
-    Log.verbose(this.logSource, "WebPart property 'webUrl' has changed, refreshing WebPart...", this.context.serviceScope);
+  private onCustomPropertyPaneChange(propertyPath: string, newValue: any): void {
+    Log.verbose(this.logSource, "WebPart property '" + propertyPath + "' has changed, refreshing WebPart...", this.context.serviceScope);
+    let rerenderTemplateTextDialog = false;
     const oldValue = get(this.properties, propertyPath);
-
+    
     // Stores the new value in web part properties
     update(this.properties, propertyPath, (): any => { return newValue; });
-
-    // Resets the web-dependent property panes
-    this.resetListTitlePropertyPane();
-    this.resetOrderByPropertyPane();
-    this.resetFiltersPropertyPane();
-    this.resetViewFieldsPropertyPane();
-
-    // Refreshes the web part
     this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
-  }
 
+    // Resets dependent property panes if needed
+    this.resetDependentPropertyPanes(propertyPath);
 
-  /***************************************************************************
-   * Handles the change of the listTitle property
-   ***************************************************************************/
-  private onListTitleChange(propertyPath: string, newValue: any): void {
-    Log.verbose(this.logSource, "WebPart property 'listTitle' has changed, refreshing WebPart...", this.context.serviceScope);
-    const oldValue = get(this.properties, propertyPath);
-
-    // Stores the new value in web part properties
-    update(this.properties, propertyPath, (): any => { return newValue; });
-
-    // Resets the list-dependent property panes
-    this.resetOrderByPropertyPane();
-    this.resetFiltersPropertyPane();
-    this.resetViewFieldsPropertyPane();
-
-    // refresh web part
-    this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
-  }
-
-
-  /***************************************************************************
-   * Handles the change of the orderBy property
-   ***************************************************************************/
-  private onOrderByChange(propertyPath: string, newValue: string): void {
-    Log.verbose(this.logSource, "WebPart property 'orderBy' has changed, refreshing WebPart...", this.context.serviceScope);
-    const oldValue = get(this.properties, propertyPath);
-
-    // Stores the new value in web part properties
-    update(this.properties, propertyPath, (): any => { return newValue; });
-
-    // refresh web part
-    this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
-  }
-
-
-  /***************************************************************************
-   * Handles the change of the filters property
-   ***************************************************************************/
-  private onFiltersChange(propertyPath: string, newFilters:IQueryFilter[]) {
-    Log.verbose(this.logSource, "WebPart property 'filters' has changed, refreshing WebPart...", this.context.serviceScope);
-    const oldValue = get(this.properties, propertyPath);
-
-    // Stores the new value in web part properties
-    update(this.properties, propertyPath, (): any => { return newFilters; });
-
-    // refresh web part
-    this.onPropertyPaneFieldChanged(propertyPath, oldValue, newFilters);
-  }
-
-
-  /***************************************************************************
-   * Handles the change of the viewFields property
-   ***************************************************************************/
-  private onViewFieldsChange(propertyPath: string, checkedKeys: string[]) {
-    Log.verbose(this.logSource, "WebPart property 'viewFields' has changed, refreshing WebPart...", this.context.serviceScope);
-    const oldValue = get(this.properties, propertyPath);
-
-    // Stores the new value in web part properties
-    update(this.properties, propertyPath, (): any => { return checkedKeys; });
-
-    // Updates the default template text if it hasn't been altered by the user
-    if(!this.properties.hasDefaultTemplateBeenUpdated) {
-      let generatedTemplate = this.ContentQueryService.generateDefaultTemplate(checkedKeys);
+    // If the viewfields have changed, update the default template text if it hasn't been altered by the user
+    if(propertyPath == ContentQueryConstants.propertyViewFields && !this.properties.hasDefaultTemplateBeenUpdated) {
+      let generatedTemplate = this.ContentQueryService.generateDefaultTemplate(newValue);
       update(this.properties, ContentQueryConstants.propertyTemplateText, (): any => { return generatedTemplate; });
       this.templateTextDialog.properties.dialogTextFieldValue = generatedTemplate;
-      this.templateTextDialog.render();
+      rerenderTemplateTextDialog = true;
     }
 
-    // refresh web part
-    this.onPropertyPaneFieldChanged(propertyPath, oldValue, checkedKeys);
-  }
-
-
-  /***************************************************************************
-   * Handles the change of the viewFields property
-   ***************************************************************************/
-  private onTemplateTextChange(propertyPath: string, text: string) {
-    Log.verbose(this.logSource, "WebPart property 'templateText' has changed, refreshing WebPart...", this.context.serviceScope);
-    const oldValue = get(this.properties, propertyPath);
-
-    // Stores the new value in web part properties
-    update(this.properties, propertyPath, (): any => { return text; });
-
-    // Updates the "hasDefaultTemplateBeenUpdated" to true so the WebPart doesn't override the user template after updating view fields
-    if(!this.properties.hasDefaultTemplateBeenUpdated) {
+    // If the templateText have changed, update the "hasDefaultTemplateBeenUpdated" to true so the WebPart doesn't override the user template after updating view fields
+    if(propertyPath == ContentQueryConstants.propertyTemplateText && !this.properties.hasDefaultTemplateBeenUpdated) {
       update(this.properties, ContentQueryConstants.propertyhasDefaultTemplateBeenUpdated, (): any => { return true; });
     }
 
-    // refresh web part
-    this.onPropertyPaneFieldChanged(propertyPath, oldValue, text);
+    // Refreshes the web part manually because custom fields don't update since sp-webpart-base@1.1.1
+    // https://github.com/SharePoint/sp-dev-docs/issues/594
+    if (!this.disableReactivePropertyChanges)
+      this.render();
+
+    if(rerenderTemplateTextDialog) {
+      this.templateTextDialog.render();
+    }
+  }
+
+
+  /***************************************************************************
+   * Resets dependent property panes if needed
+   ***************************************************************************/
+  private resetDependentPropertyPanes(propertyPath: string): void {
+    if(propertyPath == ContentQueryConstants.propertyWebUrl) {
+      this.resetListTitlePropertyPane();
+      this.resetOrderByPropertyPane();
+      this.resetFiltersPropertyPane();
+      this.resetViewFieldsPropertyPane();
+    }
+    else if (propertyPath == ContentQueryConstants.propertyListTitle) {
+      this.resetOrderByPropertyPane();
+      this.resetFiltersPropertyPane();
+      this.resetViewFieldsPropertyPane();
+    }
   }
 
 

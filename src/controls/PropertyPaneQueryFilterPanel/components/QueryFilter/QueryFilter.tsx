@@ -33,7 +33,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
         moment.locale(this.props.strings.datePickerLocale);
 
         this.state = { 
-            filter: (this.props.filter ? cloneDeep(this.props.filter) : { field: null, operator: QueryFilterOperator.Eq, value: '', join: QueryFilterJoin.Or }),
+            filter: (this.props.filter ? cloneDeep(this.props.filter) : { index: 0, field: null, operator: QueryFilterOperator.Eq, value: '', join: QueryFilterJoin.Or }),
             pickersKey: Math.random()
         };
         
@@ -71,8 +71,10 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      * When the TextField value changes
      *************************************************************************************/
     private onValueTextFieldChange(newValue: string): string {
-        this.state.filter.value = newValue;
-        this.onAnyChange();
+        if(this.state.filter.value != newValue) {
+            this.state.filter.value = newValue;
+            this.onAnyChange();
+        }
         return '';
     }
 
@@ -169,7 +171,7 @@ export class QueryFilter extends React.Component<IQueryFilterProps, IQueryFilter
      *************************************************************************************/
     private onAnyChange() {
         if(this.props.onChanged) {
-            this.props.onChanged(this.state.filter, this.props.index);
+            this.props.onChanged(this.state.filter);
         }
     }
 

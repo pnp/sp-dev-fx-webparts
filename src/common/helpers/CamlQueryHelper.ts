@@ -19,7 +19,8 @@ export class CamlQueryHelper {
 
         // Generates the <Where /> part
         if(querySettings.filters && !isEmpty(querySettings.filters)) {
-            query += Text.format('<Where>{0}</Where>', this.generateFilters(querySettings.filters));
+            let sortedFilters = querySettings.filters.sort((a, b) => { if(a.index > b.index) { return 1; } else { return 0; } });
+            query += Text.format('<Where>{0}</Where>', this.generateFilters(sortedFilters));
         }
 
         // Generates the <OrderBy /> part
@@ -127,6 +128,7 @@ export class CamlQueryHelper {
                 let termValue:ITag[] = [ term ];
 
                 let taxFilter:IQueryFilter = {
+                    index: null,
                     field: filter.field,
                     value: termValue,
                     join: QueryFilterJoin.And,
@@ -170,6 +172,7 @@ export class CamlQueryHelper {
                 let userValue:IPersonaProps[] = [ user ];
 
                 let userFilter:IQueryFilter = {
+                    index: null,
                     field: filter.field,
                     value: userValue,
                     join: QueryFilterJoin.And,
