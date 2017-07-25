@@ -1,15 +1,30 @@
 # React Content Query WebPart
 
+## Summary 
+
 The `React Content Query WebPart` is a modern version of the good old `Content by Query WebPart` that was introduced in SharePoint 2007. Built for *SharePoint 2016* and *Office 365*, this modern version is built against the new **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices. While the original WebPart was based on a `XSLT` templating engine, this *React* WebPart is based on the well known [Handlebars templating engine](http://handlebarsjs.com), which empowers users to create simple, yet powerfull `HTML` templates for rendering the queried content. This new version also lets the user query `any site collections` which resides on the same domain url, add `unlimited filters`, query *DateTime* fields to the `nearest minute` rather than being limited to a day, and much more.
 
-## Features
-
-### User friendly configuration
-
-A custom tool pane helps the user to easily configure his query in the same fashion he used to do with the original WebPart, with the addition of the reactive toolpane that takes cares of refreshing the WebPart in real time as its settings are modified.
-
 <img src="https://github.com/spplante/react-content-query/blob/master/Misc/toolpart.gif" />
-<br>
+
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
+
+## Applies to
+
+* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0.0|May 04, 2017|Initial release
+1.0.1|July 23rd 15, 2017|Updated to GA Version
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Features
 
 ### Cross site collection
 
