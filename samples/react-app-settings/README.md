@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sample shows how appSettings.json file can be added and unsed within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects.
+This sample shows how appSettings.json file can be added and used within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects.
 That allows better DevOps and Continious Integration automation. Typescript module appSettings.d.ts is also added so it allows the json app settings to be imported to any webpart or react component with intellisense support.
 
 ![SPFx React app settings webpart](./assets/spfx-appSettings-json.PNG)
@@ -13,7 +13,7 @@ Since the appSettings.json is a known format, a DevOps guy can easily open it an
 
 ### Gulp task added to verity that the appSettings.json and appSettings.d.ts match.
 
-I have added appSettingsGulp.js with one gulp task in it. The task starts just before solution build or on watch to verify that all the app settings match in both appSettings.json and appSettings.d.ts. If they not match then error is thrown so the CI tool is aware that the build failed.
+I have added appSettingsGulp.js with one gulp task in it. The task starts just before solution build or on watch to verify that all the app settings match in both appSettings.json and appSettings.d.ts. If they not match, then error is thrown so the CI tool is aware that the build failed.
 
 ### Keep the appSettings.json and appSettings.d.ts format as is.
 
