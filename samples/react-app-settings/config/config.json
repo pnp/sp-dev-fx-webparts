@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/reactAppSettings/ReactAppSettingsWebPart.js",
+      "manifest": "./src/webparts/reactAppSettings/ReactAppSettingsWebPart.manifest.json",
+      "outputPath": "./dist/react-app-settings.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "reactAppSettingsStrings": "webparts/reactAppSettings/loc/{locale}.js"
+  }
+}
