@@ -1,11 +1,11 @@
-# title of the sample
+# Page Contributors Web Part
 
 ## Summary
 Displays page contributors in reverse chronological order.
 
-![Organisation Chart for the current user running in SharePoint](./assets/pagecontributors_inaction.png)
+![Organisation Chart for the current user running in SharePoint](./assets/pagecontributors_inaction.PNG)
 
-![Organisation Chart for the current user running in local Workbench](./assets/pagecontributors_mockup.png)
+![Organisation Chart for the current user running in local Workbench](./assets/pagecontributors_mockup.PNG)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
