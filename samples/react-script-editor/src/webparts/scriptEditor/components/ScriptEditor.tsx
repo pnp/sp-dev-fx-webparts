@@ -3,6 +3,7 @@ import styles from './ScriptEditor.module.scss';
 import { IScriptEditorProps } from './IScriptEditorProps';
 import { Dialog, DialogType, DialogFooter, Button, ButtonType, TextField } from 'office-ui-fabric-react';
 require('./overrides.css');
+require('./office-ui-fabric.css');
 
 export default class ScriptEditor extends React.Component<IScriptEditorProps, any> {
   constructor() {
@@ -40,10 +41,10 @@ export default class ScriptEditor extends React.Component<IScriptEditorProps, an
       <div>
         <div className={styles.scriptEditor}>
           <div className={styles.container}>
-            <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-              <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-                <span className="ms-font-xl ms-fontColor-white">The Modern Script Editor web part!</span>
-                <p className="ms-font-l ms-fontColor-white"></p>
+            <div className={`pzl-Grid-row pzl-Fabric pzl-bgColor-themeDark pzl-fontColor-white ${styles.row}`}>
+              <div className="pzl-Grid-col pzl-u-lg10 pzl-u-xl8 pzl-u-xlPush2 pzl-u-lgPush1">
+                <span className="pzl-font-xl pzl-fontColor-white">The Modern Script Editor web part!</span>
+                <p className="pzl-font-l pzl-fontColor-white"></p>
                 <Button description='Opens the Sample Dialog' onClick={this._showDialog.bind(this)}>Edit snippet</Button>
               </div>
             </div>
