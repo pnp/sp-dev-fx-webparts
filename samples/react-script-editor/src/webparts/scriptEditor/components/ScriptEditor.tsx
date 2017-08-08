@@ -1,7 +1,9 @@
 import * as React from 'react';
 import styles from './ScriptEditor.module.scss';
 import { IScriptEditorProps } from './IScriptEditorProps';
-import { Dialog, DialogType, DialogFooter, Button, ButtonType, TextField } from 'office-ui-fabric-react';
+import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
+import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 require('./overrides.css');
 require('./office-ui-fabric.css');
 
