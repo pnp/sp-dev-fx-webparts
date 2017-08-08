@@ -43,7 +43,7 @@ export default class ScriptEditor extends React.Component<IScriptEditorProps, an
       <div>
         <div className={styles.scriptEditor}>
           <div className={styles.container}>
-            <div className={`pzl-Grid-row pzl-Fabric pzl-bgColor-themeDark pzl-fontColor-white ${styles.row}`}>
+            <div className={`pzl-Grid-row pzl-bgColor-themeDark pzl-fontColor-white ${styles.row}`}>
               <div className="pzl-Grid-col pzl-u-lg10 pzl-u-xl8 pzl-u-xlPush2 pzl-u-lgPush1">
                 <span className="pzl-font-xl pzl-fontColor-white">The Modern Script Editor web part!</span>
                 <p className="pzl-font-l pzl-fontColor-white"></p>
