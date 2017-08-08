@@ -66,6 +66,7 @@ react-script-editor | Mikael Svenson ([@mikaelsvenson](http://www.twitter.com/mi
 Version|Date|Comments
 -------|----|--------
 1.0|March 10th, 2017|Initial release
+1.0.1|August 8th, 2017|Updated SPFx version and CSS loading
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
