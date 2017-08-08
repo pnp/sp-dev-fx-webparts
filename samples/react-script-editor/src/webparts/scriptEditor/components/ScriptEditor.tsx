@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from './ScriptEditor.module.scss';
 import { IScriptEditorProps } from './IScriptEditorProps';
 import { Dialog, DialogType, DialogFooter, Button, ButtonType, TextField } from 'office-ui-fabric-react';
+require('./overrides.css');
 
 export default class ScriptEditor extends React.Component<IScriptEditorProps, any> {
   constructor() {
