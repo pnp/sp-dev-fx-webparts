@@ -12,14 +12,12 @@ import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
-
   public save: (script: string) => void = (script: string) => {
     this.properties.script = script;
     this.render();
   }
 
   public render(): void {
-
     const element: React.ReactElement<IScriptEditorProps> = React.createElement(
       ScriptEditor,
       {
