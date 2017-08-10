@@ -12,14 +12,12 @@ import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
-
   public save: (script: string) => void = (script: string) => {
     this.properties.script = script;
     this.render();
   }
 
   public render(): void {
-
     const element: React.ReactElement<IScriptEditorProps> = React.createElement(
       ScriptEditor,
       {
@@ -41,7 +39,11 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
   }
 
   protected renderLogo(domElement: HTMLElement) {
-    domElement.innerHTML = '<div style="margin-top: 30px"><img src="//www.puzzlepart.com/wp-content/uploads/2017/02/Puzzlepart-Logo-Digital-webheader200.png" onerror="this.style.display = \'none\'";" style="width:50%; float:right">';
+    domElement.innerHTML = `
+      <div style="margin-top: 30px">
+        <div style="float:right">Author: <a href="mailto:mikael.svenson@puzzlepart.com" tabindex="-1">Mikael Svenson</a></div>
+        <div style="float:right"><img src="//www.puzzlepart.com/wp-content/uploads/2017/08/Pzl-LogoType-200.png" onerror="this.style.display = \'none\'";"></div>
+      </div>`;
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

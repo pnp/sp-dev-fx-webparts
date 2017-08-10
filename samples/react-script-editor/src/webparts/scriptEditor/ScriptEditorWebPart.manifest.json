@@ -1,11 +1,16 @@
 {
   "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
   "id": "3a328f0a-99c4-4b28-95ab-fe0847f657a3",
   "alias": "ScriptEditorWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "*", // The "*" signifies that the version should be taken from the package.json
   "manifestVersion": 2,
+
+  /**
+   * This property should only be set to true if it is certain that the webpart does not
+   *  allow arbitrary scripts to be called
+   */
+  "safeWithCustomScriptDisabled": false,
 
   "preconfiguredEntries": [{
     "groupId": "3a328f0a-99c4-4b28-95ab-fe0847f657a3",

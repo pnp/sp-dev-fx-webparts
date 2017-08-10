@@ -6,5 +6,7 @@
       "outputPath": "./dist/script-editor.bundle.js"
     }
   ],
-  "externals": {}
+  "externals": {
+    "office-ui-fabric-react": "https://publiccdn.sharepointonline.com/techmikael.sharepoint.com/11510075fe4212d19d3e6d07c91981263dd697bf111cb1e5f0efb15de0ec08b382cde399/2.34.2/office-ui-fabric-react.bundle.min.js"
+  }
 }
