@@ -123,10 +123,6 @@
 	background-color: "[theme:neutralSecondary, default:#666666]";
 }
 
-.pzl-bgColor-neutralSecondaryAlt, .pzl-bgColor-neutralSecondaryAlt--hover:hover {
-	background-color: "[theme:neutralSecondaryAlt, default:#767676]";
-}
-
 .pzl-bgColor-neutralTertiary, .pzl-bgColor-neutralTertiary--hover:hover {
 	background-color: "[theme:neutralTertiary, default:#a6a6a6]";
 }
@@ -317,10 +313,6 @@
 
 .pzl-borderColor-neutralSecondary, .pzl-borderColor-neutralSecondary--hover:hover {
 	border-color: "[theme:neutralSecondary, default:#666666]";
-}
-
-.pzl-borderColor-neutralSecondaryAlt, .pzl-borderColor-neutralSecondaryAlt--hover:hover {
-	border-color: "[theme:neutralSecondaryAlt, default:#767676]";
 }
 
 .pzl-borderColor-neutralTertiary, .pzl-borderColor-neutralTertiary--hover:hover {
@@ -625,10 +617,6 @@
 
 .pzl-fontColor-neutralSecondary, .pzl-fontColor-neutralSecondary--hover:hover {
 	color: "[theme:neutralSecondary, default:#666666]";
-}
-
-.pzl-fontColor-neutralSecondaryAlt, .pzl-fontColor-neutralSecondaryAlt--hover:hover {
-	color: "[theme:neutralSecondaryAlt, default:#767676]";
 }
 
 .pzl-fontColor-neutralTertiary, .pzl-fontColor-neutralTertiary--hover:hover {
