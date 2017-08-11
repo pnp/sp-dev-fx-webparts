@@ -1,0 +1,27 @@
+$lightgray: #f5f5f5;
+
+.checklist {
+    .checklistItems {
+        background: $lightgray;
+        padding: 12px;
+
+        .checklistPadding {
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 280px;
+
+            .checklistItem {
+                min-height: initial;
+                margin-top: 9px;
+
+                &:first-child {
+                    margin-top: 0px;
+
+                    label {
+                        margin-top: 0px;
+                    }
+                }
+            }
+        }
+    }
+}

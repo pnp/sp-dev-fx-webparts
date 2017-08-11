@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-aad-implicitflow",
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "7d08f6e8-b222-4ed7-8910-8ea911d117fe"
+  }
+}

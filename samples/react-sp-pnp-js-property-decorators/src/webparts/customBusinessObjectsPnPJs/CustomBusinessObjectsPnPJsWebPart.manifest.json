@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "6e2025fd-9c31-4bc4-b217-76019a4fdd02",
+  "alias": "CustomBusinessObjectsPnPJsWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "6e2025fd-9c31-4bc4-b217-76019a4fdd02",
+    "group": { "default": "Under Development" },
+    "title": { "default": "customBusinessObjectsPnPJs" },
+    "description": { "default": "customBusinessObjectsPnPJs description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "customBusinessObjectsPnPJs"
+    }
+  }]
+}
