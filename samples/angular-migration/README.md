@@ -2,7 +2,7 @@
 
 ## Summary
 
-Sample Angular application before and after migration to a SharePoint Framework client-side web part.
+This is a sample Angular application before and after it has been migrated to a SharePoint Framework client-side web part.
 
 Application before migration:
 ![Angular todo application](./assets/angular-todo-preview.png)

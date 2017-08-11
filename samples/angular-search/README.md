@@ -1,10 +1,10 @@
-# Search Client-Side Web Part Built with Angular v1.x
+﻿# Search Client-Side Web Part Built with Angular v1.x
 
 ## Summary
-Sample Search Web Part that illustrates how you can use Angular within the new SharePoint Framework
+This is a sample search web part that illustrates how you can use Angular within the new SharePoint Framework
 
 ![Sample of the search web part](./assets/angularSearch.png)
-This app uses SharePoint's Search REST API endpoint to query listitems of a specific content type and displays the results to the end user.
+This app uses the SharePoint Search REST API endpoint to query listitems of a specific content type and displays the results to the end user.
 Ideally instead of selecting a content type for the search you would want to select a Result Source, but currently Result Sources are not
 available through SharePoint's REST API.
 
@@ -52,9 +52,9 @@ Version|Date|Comments
  - Publishing features on site collection
  - Publishing features on site
 
-> Note: The Content Types that I pull for the search come from the Publishing Content Type which only
+> Note: The content types that are pulled by the search come from the publishing content type which are only
 > available when the Publishing Features are enabled on the site. I'm also searching by content type name
-> and not by id becauase then I would get everything that inherits from that content type. I only want the
+> and not by id because then I would get everything that inherits from that content type. I only want the
 > the results for a specific content type and not everything that inherits that content type as well
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-search" />

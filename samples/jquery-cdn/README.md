@@ -1,8 +1,8 @@
-# Using jQuery loaded from CDN
+﻿# Using jQuery loaded from CDN
 
 ## Summary
 
-Sample Web Parts illustrating using jQuery and its plugins loaded from CDN for building SharePoint Framework Client-Side Web Parts.
+This is a sample web Part that illustrates the use of jQuery and its plugins loaded from CDN for building SharePoint Framework client-side web parts.
 
 ![Sample Web Part built using jQuery showing current weather in the specified location](./assets/preview_weather.png)
 
@@ -40,12 +40,12 @@ Version|Date|Comments
 
 ## Features
 
-This project contains sample Client-Side Web Parts built on the SharePoint Framework illustrating how to use jQuery and its plugins loaded from CDN for building SharePoint Framework Client-Side Web Parts.
+This project contains sample client-side web parts built on the SharePoint Framework illustrating how to use jQuery and its plugins loaded from CDN for building SharePoint Framework client-side web parts.
 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+This web part illustrates the following concepts on top of the SharePoint Framework:
 - loading jQuery from CDN
 - loading non-AMD jQuery plugins with configured dependency on jQuery
-- using non-reactive Web Part Property Pane
-- using conditional rendering for one-time Web Part setup
+- using non-reactive web part Property Pane
+- using conditional rendering for one-time web part setup
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/jquery-cdn" />

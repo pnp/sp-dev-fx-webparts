@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-pagecontributors-client-side-solution",
+    "id": "1c18830a-4c18-4b82-a571-77863b19c66d",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-pagecontributors.sppkg"
+  }
+}

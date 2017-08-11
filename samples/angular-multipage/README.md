@@ -1,12 +1,12 @@
-# Angular multi-page client-side web part
+﻿# Angular multi-page client-side web part
 
 ## Summary
 
-Sample SharePoint Framework client-side web parts built using Angular illustrating building multi-page web parts.
+This is a sample SharePoint Framework client-side web part built using Angular, illustrating building multi-page web parts.
 
 ### Poll
 
-Sample poll web part allowing users to vote and view the results.
+This sample contains a poll web part allowing users to vote and view the results.
 
 ![Poll web part built on the SharePoint Framework using Angular](./assets/poll-preview.gif)
 
