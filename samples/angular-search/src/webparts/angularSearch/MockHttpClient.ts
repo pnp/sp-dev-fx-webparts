@@ -1,4 +1,4 @@
-import { ISPCType } from './AngularSearchWebPart'
+﻿import { ISPCType } from './AngularSearchWebPart';
 
 export default class MockHttpClient {
   private static _items: ISPCType[] = [

@@ -1,8 +1,8 @@
-# Embed a PowerBI report in a Client-Side Web Part
+﻿# Embed a PowerBI report in a Client-Side Web Part
 
 ## Summary
 
-Sample SharePoint Framework Client-Side Web Part embedding a PowerBI report using PowerBI Embedded without any server-side code.
+This sample SharePoint Framework client-side web part embedding a PowerBI report using PowerBI Embedded without any server-side code.
 
 ![PowerBI Embedded Client-SideWeb Part in the SharePoint Workbench](./assets/screenshot_powerbi_embedded_spfx.png)
 

@@ -1,8 +1,8 @@
-# Most Popular Items WebPart using Angular & ngOfficeUIFabric
+﻿# Most Popular Items WebPart using Angular & ngOfficeUIFabric
 
 ## Summary
 
-This Web Part displays the Most Popular Items from the given Site/Document Library URL using search API.
+This web part displays the most popular items from a given site and document library URL using the SahrePoint search API.
 
 ![Most Popular Items WebPart built using Angular and ngOfficeUIFabric](./assets/preview.png)
 
@@ -41,16 +41,16 @@ Version|Date|Comments
 
 ## Features
 
-The Most Popular Items is a sample Client-Side Web Part built on the SharePoint Framework built using Angular and ngOfficeUIFabric.
+The Most Popular Items web part is a sample client-side web part built on the SharePoint Framework built using Angular and ngOfficeUIFabric.
 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+This web part illustrates the following concepts on top of the SharePoint Framework:
 
-- using Angular for building SharePoint Framework Client-Side Web Parts
-- using ngOfficeUIFabric for styling Angular Client-Side Web Parts
-- including Angular and ngOfficeUIFabric in the Web Part bundle
-- using a newer version of ngOfficeUIFabric for styling Client-Side Web Parts
-- using non-reactive Web Part Property Pane and custom Properties
-- using conditional rendering for one-time Web Part setup
-- passing Web Part configuration to Angular and reacting to configuration changes
+- using Angular for building SharePoint Framework client-side web parts
+- using ngOfficeUIFabric for styling Angular client-side web parts
+- including Angular and ngOfficeUIFabric in the web part bundle
+- using a newer version of ngOfficeUIFabric for styling client-side web parts
+- using non-reactive web part property pane and custom properties
+- using conditional rendering for one-time web part setup
+- passing web part configuration to Angular and reacting to configuration changes
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-mostpopularitems" />
