@@ -4,7 +4,7 @@
 
 The `React Content Query WebPart` is a modern version of the good old `Content by Query WebPart` that was introduced in SharePoint 2007. Built for *SharePoint 2016* and *Office 365*, this modern version is built against the new **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices. While the original WebPart was based on a `XSLT` templating engine, this *React* WebPart is based on the well known [Handlebars templating engine](http://handlebarsjs.com), which empowers users to create simple, yet powerfull `HTML` templates for rendering the queried content. This new version also lets the user query `any site collections` which resides on the same domain url, add `unlimited filters`, query *DateTime* fields to the `nearest minute` rather than being limited to a day, and much more.
 
-<img src="/Misc/toolpart.gif" />
+<img src="Misc/toolpart.gif" />
 
 ## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/drop-GA-green.svg)
@@ -37,21 +37,21 @@ Version|Date|Comments
 
 The WebPart uses the search in order to get all sites under the current domain, which makes it possible to query not only subsites but other site collections and their subsites as well.
 
-<img src="/Misc/allsites.gif" />
+<img src="Misc/allsites.gif" />
 <br>
 
 ### Unlimited filters
 
 The user isn't limited to 3 filters anymore, an unlimited amount of filters can be added to narrow down your query
 
-<img src="/Misc/filters.gif" width="500" />
+<img src="Misc/filters.gif" width="500" />
 <br>
 
 ### Improved date time filters
 
 It is now possible to include time validation when querying date fields, giving the ability to be more precise when it comes to querying items against date values.
 
-<img src="/Misc/datetime.gif" width="500" />
+<img src="Misc/datetime.gif" width="500" />
 <br>
 
 ### Handlebars templating engine
@@ -65,14 +65,14 @@ For advanced users, more than 150 Handlebars block helpers are available by defa
 
 Edit your Handlebars template directly within the toolpane using a built-in [code editor](https://ace.c9.io/) which provides code folding, syntax highlighting, line wrapping, indentation and many more features to the tip of your fingers.
 
-<img src="/Misc/editor.gif" />
+<img src="Misc/editor.gif" />
 <br>
 
 ### Include your own external scripts and/or block helpers!
 
 You can now specify your own external scripts that needs to be loaded either **before** or **after** rendering the Handlebars template.
 
-<img src="/Misc/ExternalScripts.gif" />
+<img src="Misc/ExternalScripts.gif" />
 
 External scripts can be used to include either libraries such as *jQuery*, or even *custom logic scripts* that can leverage the exposed **onPrerender** and **onPostRender** methods for advanced functionnalities. 
 
@@ -198,7 +198,7 @@ Property | Description
 
 For including JavaScript files within the WebPart, file URLs must be added to the **External Scripts** parameter available in the toolpart. 
 
-<img src="/Misc/ExternalScripts.gif" />
+<img src="Misc/ExternalScripts.gif" />
 
 Each file URL must be on its own line, and placed in the desired order. The scripts will be loaded asynchronously, but in a sequential fashion, which means that the WebPart will wait until a script is completely loaded before proceeding to load the next one.
 
