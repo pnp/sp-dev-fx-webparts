@@ -72,7 +72,7 @@ Edit your Handlebars template directly within the toolpane using a built-in [cod
 
 You can now specify your own external scripts that needs to be loaded either **before** or **after** rendering the Handlebars template.
 
-<img src="Misc/ExternalScripts.png" />
+<img src="Misc/externalScripts.png" />
 
 External scripts can be used to include either libraries such as *jQuery*, or even *custom logic scripts* that can leverage the exposed **onPrerender** and **onPostRender** methods for advanced functionnalities. 
 
@@ -198,7 +198,7 @@ Property | Description
 
 For including JavaScript files within the WebPart, file URLs must be added to the **External Scripts** parameter available in the toolpart. 
 
-<img src="Misc/ExternalScripts.png" />
+<img src="Misc/externalScripts.png" />
 
 Each file URL must be on its own line, and placed in the desired order. The scripts will be loaded asynchronously, but in a sequential fashion, which means that the WebPart will wait until a script is completely loaded before proceeding to load the next one.
 
