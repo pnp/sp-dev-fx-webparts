@@ -48,13 +48,14 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private viewFieldsChecklist: PropertyPaneAsyncChecklist;
   private templateTextDialog: PropertyPaneTextDialog;
   private templateUrlTextField: IPropertyPaneField<IPropertyPaneTextFieldProps>;
+  private externalScripts: IPropertyPaneField<IPropertyPaneTextFieldProps>;
 
   
   /***************************************************************************
    * Returns the WebPart's version
    ***************************************************************************/
   protected get dataVersion(): Version {
-    return Version.parse('1.0.2');
+    return Version.parse('1.0.3');
   }
 
 
@@ -91,6 +92,8 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
         querySettings: querySettings,
         templateText: this.properties.templateText,
         templateUrl: this.properties.templateUrl,
+        wpContext: this.context,
+        externalScripts: this.properties.externalScripts ? this.properties.externalScripts.split('\n').filter((script) => { return (script && script.trim() != ''); }) : null,
         strings: strings.contentQueryStrings,
         stateKey: new Date().toString()
       }
@@ -201,6 +204,16 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       onGetErrorMessage: this.onItemLimitChange.bind(this)
     });
 
+    // Creates a PropertyPaneTextField for the externalScripts property
+    this.externalScripts = PropertyPaneTextField(ContentQueryConstants.propertyExternalScripts, {
+      label: strings.ExternalScriptsLabel,
+      deferredValidationTime: 500,
+      placeholder: strings.ExternalScriptsPlaceholder,
+      multiline: true,
+      rows: 5,
+      onGetErrorMessage: () => { return ''; }
+    });
+
     return {
       pages: [
         {
@@ -239,6 +252,17 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
                 this.viewFieldsChecklist,
                 this.templateTextDialog,
                 this.templateUrlTextField
+              ]
+            }
+          ]
+        },
+        {
+          header: { description: strings.ExternalPageDescription },
+          groups: [
+            {
+              groupName: strings.ExternalGroupName,
+              groupFields: [
+                this.externalScripts
               ]
             }
           ]

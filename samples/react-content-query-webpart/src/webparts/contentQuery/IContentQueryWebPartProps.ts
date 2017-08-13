@@ -12,4 +12,5 @@ export interface IContentQueryWebPartProps {
   templateText: string;
   templateUrl: string;
   hasDefaultTemplateBeenUpdated: boolean;
+  externalScripts: string;
 }
