@@ -2,9 +2,11 @@ declare interface IContentQueryStrings {
   SourcePageDescription: string;
   QueryPageDescription: string;
   DisplayPageDescription: string;
+  ExternalPageDescription: string;
   SourceGroupName: string;
   QueryGroupName: string;
   DisplayGroupName: string;
+  ExternalGroupName: string;
   WebUrlFieldLabel: string;
   WebUrlFieldPlaceholder: string;
   WebUrlFieldLoadingLabel: string;
@@ -21,6 +23,8 @@ declare interface IContentQueryStrings {
   ErrorItemLimit: string;
   TemplateUrlFieldLabel: string;
   TemplateUrlPlaceholder: string;
+  ExternalScriptsLabel: string;
+  ExternalScriptsPlaceholder: string;
   ErrorTemplateExtension: string;
   ErrorTemplateResolve: string;
   ErrorWebAccessDenied: string;

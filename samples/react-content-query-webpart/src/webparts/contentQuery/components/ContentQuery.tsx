@@ -3,14 +3,25 @@ import * as Handlebars                  from "handlebars";
 import * as strings                     from 'contentQueryStrings';
 import { Checkbox, Spinner }            from 'office-ui-fabric-react';
 import { isEmpty }                      from '@microsoft/sp-lodash-subset';
-import { Text }                         from '@microsoft/sp-core-library';
+import { Text, Log }                    from '@microsoft/sp-core-library';
 import { IContentQueryProps }           from './IContentQueryProps';
 import { IContentQueryState }           from './IContentQueryState';
 import { IContentQueryTemplateContext } from './IContentQueryTemplateContext';
+import { SPComponentLoader }            from '@microsoft/sp-loader';
 import styles                           from './ContentQuery.module.scss';
 
 
 export default class ContentQuery extends React.Component<IContentQueryProps, IContentQueryState> {
+
+  /*************************************************************************************
+   * Constants
+   *************************************************************************************/
+  private readonly logSource                = "ContentQuery.tsx";
+  private readonly nsReactContentQuery      = "ReactContentQuery";
+  private readonly nsExternalScripts        = "ExternalScripts";
+  private readonly callbackOnPreRenderName  = "onPreRender";
+  private readonly callbackOnPostRenderName = "onPostRender";
+
 
   /*************************************************************************************
    * Stores the timestamps of each async calls in order to wait for the last call in 
@@ -33,6 +44,10 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
         handlebars: Handlebars
       });
 
+      // Ensures the WebPart's namespace for external scripts
+      window[this.nsReactContentQuery] = window[this.nsReactContentQuery] || {};
+      window[this.nsReactContentQuery][this.nsExternalScripts] = window[this.nsReactContentQuery][this.nsExternalScripts] || {};
+
       this.onGoingAsyncCalls = [];
       this.state = { loading: true, processedTemplateResult: null, error: null };
   }  
@@ -47,6 +62,34 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
 
 
   /*************************************************************************************
+   * Loads the external scritps sequentially (one after the other) if any
+   *************************************************************************************/
+  private loadExternalScriptsSequentially(scriptUrls:string[]): Promise<{}> {
+    var index = 0;
+    var _this_ = this;
+
+    return new Promise((resolve, reject) => {
+      function next() {
+        if (scriptUrls && index < scriptUrls.length) {
+          SPComponentLoader.loadScript(scriptUrls[index++])
+            .then(next)
+            .catch((error) => {
+              // As of August 12th 2017, Log.error doesn't seem to do anything, so I use a console.log on top of it for now.
+              Log.error(_this_.logSource, error, _this_.props.wpContext.serviceScope);
+              console.log(error);
+              next();
+            });
+        } 
+        else {
+          resolve();
+        }
+      }
+      next();
+    });
+  }
+
+
+  /*************************************************************************************
    * Loads the items asynchronously and wraps them into a context object for handlebars
    *************************************************************************************/
   private loadTemplateContext() {
@@ -57,7 +100,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
       let currentCallTimeStamp = new Date().valueOf();
       this.onGoingAsyncCalls.push(currentCallTimeStamp);
 
-      // Resets the state if this is the first call
+      // Sets the state to "loading" only if it's the only async call going on (otherwise it's already loading)
       if(this.onGoingAsyncCalls.length == 1) {
         this.setState({
           loading: true,
@@ -123,6 +166,9 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
    *************************************************************************************/
   private processTemplate(templateContent: string, templateContext: IContentQueryTemplateContext) {
     try {
+      // Calls the external OnPreRender callbacks if any
+      this.executeExternalCallbacks(this.callbackOnPreRenderName);
+
       // Processes the template
       let template = Handlebars.compile(templateContent);
       let result = template(templateContext);
@@ -131,10 +177,54 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
       if(this.onGoingAsyncCalls.length == 0) {
         this.setState({ loading: false, processedTemplateResult: result, error: null });
       }
+
+      // Calls the external OnPostRender callbacks if any
+      this.executeExternalCallbacks(this.callbackOnPostRenderName);
     }
     catch(error) {
       this.setState({ loading: false, processedTemplateResult: null, error: Text.format(this.props.strings.errorProcessingTemplate, error) });
     }
+  }
+
+
+  /*************************************************************************************
+   * Executes the specified callback for every external script, if available
+   *************************************************************************************/
+  private executeExternalCallbacks(callbackName: string) {
+
+    if(this.props.externalScripts) {
+
+      // Gets the ReactContentQuery namespace previously created in the constructor
+      var ReactContentQuery = window[this.nsReactContentQuery];
+    
+        // Loops through all the external scripts of the current WebPart
+        for(let scriptUrl of this.props.externalScripts) {
+    
+          // Generates a valid namespace suffix based on the current file name
+          var namespaceSuffix = this.generateNamespaceFromScriptUrl(scriptUrl);
+    
+          // Checks if the current file's namespace is available within the page
+          var scriptNamespace = ReactContentQuery[this.nsExternalScripts][namespaceSuffix];
+    
+          if(scriptNamespace) {
+    
+            // Checks if the needed callback is available in the script's namespace
+            var callback = scriptNamespace[callbackName];
+    
+            if(callback) {
+              callback(this.props.wpContext, Handlebars);
+            }
+          }
+        }
+    }
+  }
+
+
+  /*************************************************************************************
+   * Extracts the file name out of the specified url and normalizes it for a namespace
+   *************************************************************************************/
+  private generateNamespaceFromScriptUrl(scriptUrl: string): string {
+    return scriptUrl.substring(scriptUrl.lastIndexOf('/') + 1).replace('.js', '').replace(/[^a-zA-Z0-9]/g, "");
   }
 
 
@@ -162,7 +252,9 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
    * Called once after initial rendering
    *************************************************************************************/
   public componentDidMount(): void {
-    this.loadTemplateContext();
+    this.loadExternalScriptsSequentially(this.props.externalScripts).then(() => {
+      this.loadTemplateContext();
+    });
   }
 
 
@@ -171,7 +263,9 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
    *************************************************************************************/
   public componentDidUpdate(prevProps: IContentQueryProps, prevState: IContentQueryState): void {
     if(prevProps.stateKey !== this.props.stateKey) {
-      this.loadTemplateContext();
+      this.loadExternalScriptsSequentially(this.props.externalScripts).then(() => {
+        this.loadTemplateContext();
+      });
     }
   }
 
@@ -184,6 +278,8 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
     const loading = this.state.loading ? <Spinner label={this.props.strings.loadingItems} /> : <div />;
     const error = this.state.error ? <div className={styles.cqwpError}>{this.state.error}</div> : <div />;
     const mandatoryFieldsConfigured = this.areMandatoryFieldsConfigured();
+
+    console.log('Rendering now...');
 
     return (
       <div className={styles.cqwp}>
