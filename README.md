@@ -1,3 +1,5 @@
+#Marc Jacquin - Learning SPFx
+
 # SharePoint Framework client-side web part samples & tutorial materials
 
 This repository contains the samples that demonstrate different usage patterns for the SharePoint Framework client-side web parts.
