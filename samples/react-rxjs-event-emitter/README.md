@@ -54,6 +54,12 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - The use the ReactiveX (RxJs) Event Emitter to subscribe and receive broadcasted messages (events).
 - Unit tests including spies, mocks and faking class methods and properties.
 
+## Making the RxJsEventEmitter external SPFx library.
+
+The RxJsEventEmitter library can be turned into external library so it can be used by multiple SPFx solutions.
+There is a very good [blog post](https://blog.mastykarz.nl/dll-code-sharepoint-framework/) by @waldekmastykarz how this can be done.
+
+
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-rxjs-event-emitter" />
 
 
