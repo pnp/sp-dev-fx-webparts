@@ -27,6 +27,7 @@ Version|Date|Comments
 1.0.0|May 04, 2017|Initial release
 1.0.1|July 23rd 15, 2017|Updated to GA Version
 1.0.3|August 12, 2017|Added external scripts functionnality
+1.0.4|August 31, 2017|Fixed a bug where tenant sites/subsites were missing from the **Web Url** dropdown
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

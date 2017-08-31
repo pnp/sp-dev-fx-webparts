@@ -279,8 +279,6 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
     const error = this.state.error ? <div className={styles.cqwpError}>{this.state.error}</div> : <div />;
     const mandatoryFieldsConfigured = this.areMandatoryFieldsConfigured();
 
-    console.log('Rendering now...');
-
     return (
       <div className={styles.cqwp}>
 
