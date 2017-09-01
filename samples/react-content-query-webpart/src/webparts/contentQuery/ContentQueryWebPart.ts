@@ -55,7 +55,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Returns the WebPart's version
    ***************************************************************************/
   protected get dataVersion(): Version {
-    return Version.parse('1.0.3');
+    return Version.parse('1.0.4');
   }
 
 
