@@ -24,7 +24,7 @@ export class SearchService {
 	 **************************************************************************************************/
 	public getWebUrlsForDomain(domainUrl: string): Promise<string[]> {
 		return new Promise<string[]>((resolve,reject) => {
-			let endpoint = Text.format("{0}/_api/search/query?querytext='Path:{0}/* AND (contentclass:STS_Site OR contentclass:STS_Web)'&selectproperties='Path'&trimduplicates=false", domainUrl);
+			let endpoint = Text.format("{0}/_api/search/query?querytext='Path:{0}/* AND (contentclass:STS_Site OR contentclass:STS_Web)'&selectproperties='Path'&trimduplicates=false&rowLimit=500", domainUrl);
 
 			// Gets the available webs for the current domain with a search query
 			this.spHttpClient.get(endpoint, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
