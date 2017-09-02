@@ -1,6 +1,5 @@
 import { Text } 								from '@microsoft/sp-core-library';
 import { SPHttpClient, SPHttpClientResponse } 	from '@microsoft/sp-http';
-import { SPComponentLoader }                    from '@microsoft/sp-loader';
 import { isEmpty }                              from '@microsoft/sp-lodash-subset';
 
 export class TaxonomyService {
@@ -83,40 +82,5 @@ export class TaxonomyService {
 			.catch((error) => { reject(error); }); 
         });
 	}
-
-
-	/*************************************************************************************
-     * Ensures SP.js and its dependencies in order to be able to do JSOM later on
-     *************************************************************************************/
-    private ensureJSOMDependencies(): Promise<{}> {
-		if(window['SP']) {
-			return Promise.resolve();
-		}
-		else {
-			return SPComponentLoader.loadScript('/_layouts/15/init.js', {
-				globalExportsName: '$_global_init'
-			})
-			.then((): Promise<{}> => {
-				return SPComponentLoader.loadScript('/_layouts/15/MicrosoftAjax.js', {
-					globalExportsName: 'Sys'
-				});
-			})
-			.then((): Promise<{}> => {
-				return SPComponentLoader.loadScript('/_layouts/15/SP.Runtime.js', {
-					globalExportsName: 'SP'
-				});
-			})
-			.then((): Promise<{}> => {
-				return SPComponentLoader.loadScript('/_layouts/15/SP.js', {
-					globalExportsName: 'SP'
-				});
-			})
-			.then((): Promise<{}> => {
-				return SPComponentLoader.loadScript('/_layouts/15/SP.Taxonomy.js', {
-					globalExportsName: 'SP.Taxonomy'
-				});
-			});
-		}
-    }
 
 }

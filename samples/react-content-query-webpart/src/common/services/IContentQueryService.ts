@@ -8,7 +8,8 @@ import { IQuerySettings }                       from '../../webparts/contentQuer
 export interface IContentQueryService {
     getTemplateContext: (querySettings: IQuerySettings, callTimeStamp: number) => Promise<IContentQueryTemplateContext>;
     getFileContent: (fileUrl: string) => Promise<string>;
-    getWebUrlOptions: () => Promise<IDropdownOption[]>;
+    getSiteUrlOptions: () => Promise<IDropdownOption[]>;
+    getWebUrlOptions: (siteUrl: string) => Promise<IDropdownOption[]>;
     getListTitleOptions: (webUrl: string) => Promise<IDropdownOption[]>;
     getOrderByOptions: (webUrl: string, listTitle: string) => Promise<IDropdownOption[]>;
     getFilterFields: (webUrl: string, listTitle: string) => Promise<IQueryFilterField[]>;
@@ -18,6 +19,7 @@ export interface IContentQueryService {
     ensureFileResolves: (filePath: string) => Promise<{}>;
     isValidTemplateFile: (filePath: string) => boolean;
     generateDefaultTemplate: (viewFields: string[]) => string;
+    clearCachedWebUrlOptions: () => void;
     clearCachedListTitleOptions: () => void;
     clearCachedOrderByOptions: () => void;
     clearCachedFilterFields: () => void;

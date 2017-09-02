@@ -1,6 +1,7 @@
 import { IQueryFilter } from "../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilter";
 
 export interface IContentQueryWebPartProps {
+  siteUrl: string;
   webUrl: string;
   listTitle: string;
   limitEnabled: boolean;
