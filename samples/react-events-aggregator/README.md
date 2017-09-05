@@ -2,13 +2,15 @@
 
 ## Summary
 
-This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern). It enables a webpart or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it. Please note the SPFx Event Aggregator is still in Alpha, but this sample will be updated in case there are changes from the Alpha version to GA.
+This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern). It enables a webpart or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it. 
+
+> Please note the SPFx Event Aggregator is still in Alpha and **NOT SUPPORTED IN PRODUCTION USE**, but this sample will be updated in future when there are changes from the Alpha version to GA.
 
 ![SPFx eventAggregator](./assets/spfx-event-aggregator.gif)
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.1-green.svg)
 
 ## Applies to
 
