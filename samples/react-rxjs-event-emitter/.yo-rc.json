@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.1.3",
+    "libraryName": "react-rxjs-event-emitter",
+    "libraryId": "323ec3b8-b5de-4184-99a6-7e0f9c276412",
+    "environment": "spo"
+  }
+}
