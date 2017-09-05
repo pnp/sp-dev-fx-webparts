@@ -7,7 +7,7 @@ This sample shows how we can use the [ReactiveX (RxJs)](http://reactivex.io/) li
 ![SPFx ReactiveX (RxJs) Event Emitter Sample](./assets/spfx-event-emitter.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.1-green.svg)
 
 ## Applies to
 
