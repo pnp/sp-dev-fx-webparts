@@ -40,6 +40,7 @@ export class ContentQueryService implements IContentQueryService {
     /***************************************************************************
      * Stores the first async calls locally to avoid useless redundant calls
      ***************************************************************************/
+    private siteUrlOptions: IDropdownOption[];
     private webUrlOptions: IDropdownOption[];
     private listTitleOptions: IDropdownOption[];
     private orderByOptions: IDropdownOption[];
@@ -143,12 +144,52 @@ export class ContentQueryService implements IContentQueryService {
         });
     }
 
-
+    
     /**************************************************************************************************
      * Gets the available webs for the current user
      **************************************************************************************************/   
-    public getWebUrlOptions(): Promise<IDropdownOption[]> {
+    public getSiteUrlOptions(): Promise<IDropdownOption[]> {
+        Log.verbose(this.logSource, "Loading dropdown options for toolpart property 'Site Url'...", this.context.serviceScope);
+
+        // Resolves the already loaded data if available
+        if(this.siteUrlOptions) {
+            return Promise.resolve(this.siteUrlOptions);
+        }
+
+        // Otherwise, performs a REST call to get the data
+        return new Promise<IDropdownOption[]>((resolve,reject) => {
+            let serverUrl = Text.format("{0}//{1}", window.location.protocol, window.location.hostname); 
+
+            this.searchService.getSitesStartingWith(serverUrl)
+                .then((urls) => {
+                    let options:IDropdownOption[] = [ { key: "", text: strings.SiteUrlFieldPlaceholder } ];
+                    let urlOptions:IDropdownOption[] = urls.sort().map((url) => { 
+                        let serverRelativeUrl = !isEmpty(url.replace(serverUrl, '')) ? url.replace(serverUrl, '') : '/';
+                        return { key: url, text: serverRelativeUrl };
+                    });
+                    options = options.concat(urlOptions);
+                    this.siteUrlOptions = options;
+                    resolve(options);
+                })
+                .catch((error) => {
+                    reject(error);
+                }
+            );
+        });
+    }
+
+
+    /**************************************************************************************************
+     * Gets the available webs for the current user
+     * @param siteUrl : The url of the site from which webs must be loaded from
+     **************************************************************************************************/   
+    public getWebUrlOptions(siteUrl: string): Promise<IDropdownOption[]> {
         Log.verbose(this.logSource, "Loading dropdown options for toolpart property 'Web Url'...", this.context.serviceScope);
+
+        // Resolves an empty array if site is null
+        if (isEmpty(siteUrl)) {
+            return Promise.resolve(new Array<IDropdownOption>());
+        }
 
         // Resolves the already loaded data if available
         if(this.webUrlOptions) {
@@ -157,14 +198,13 @@ export class ContentQueryService implements IContentQueryService {
 
         // Otherwise, performs a REST call to get the data
         return new Promise<IDropdownOption[]>((resolve,reject) => {
-            let serverUrl = Text.format("{0}//{1}", window.location.protocol, window.location.hostname); 
 
-            this.searchService.getWebUrlsForDomain(serverUrl)
-                .then((urls:string[]) => {
+            this.searchService.getWebsFromSite(siteUrl)
+                .then((urls) => {
                     let options:IDropdownOption[] = [ { key: "", text: strings.WebUrlFieldPlaceholder } ];
                     let urlOptions:IDropdownOption[] = urls.sort().map((url) => { 
-                        let serverRelativeUrl = !isEmpty(url.replace(serverUrl, '')) ? url.replace(serverUrl, '') : '/';
-                        return { key: url, text: serverRelativeUrl };
+                        let siteRelativeUrl = !isEmpty(url.replace(siteUrl, '')) ? url.replace(siteUrl, '') : '/';
+                        return { key: url, text: siteRelativeUrl };
                     });
                     options = options.concat(urlOptions);
                     this.webUrlOptions = options;
@@ -447,6 +487,15 @@ export class ContentQueryService implements IContentQueryService {
         return template;
     }
 
+
+    /***************************************************************************
+     * Resets the stored 'list title' options 
+     ***************************************************************************/
+    public clearCachedWebUrlOptions() {
+        Log.verbose(this.logSource, "Clearing cached dropdown options for toolpart property 'Web Url'...", this.context.serviceScope);
+        this.webUrlOptions = null;
+    }
+    
 
     /***************************************************************************
      * Resets the stored 'list title' options 

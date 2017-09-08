@@ -232,7 +232,8 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
    * Returns whether all mandatory fields are configured or not
    *************************************************************************************/
   private areMandatoryFieldsConfigured(): boolean {
-    return !isEmpty(this.props.querySettings.webUrl) && 
+    return !isEmpty(this.props.siteUrl) && 
+           !isEmpty(this.props.querySettings.webUrl) && 
            !isEmpty(this.props.querySettings.listTitle) && 
            !isEmpty(this.props.querySettings.viewFields) && 
            (!isEmpty(this.props.templateUrl) || !isEmpty(this.props.templateText));
@@ -291,6 +292,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
           <div className={styles.cqwpValidations}>
               { this.props.strings.mandatoryProperties }
               
+              <Checkbox label={strings.SiteUrlFieldLabel} checked={!isEmpty(this.props.siteUrl)} />
               <Checkbox label={strings.WebUrlFieldLabel} checked={!isEmpty(this.props.querySettings.webUrl)} />
               <Checkbox label={strings.ListTitleFieldLabel} checked={!isEmpty(this.props.querySettings.listTitle)} />
               <Checkbox label={strings.viewFieldsChecklistStrings.label} checked={!isEmpty(this.props.querySettings.viewFields)} />

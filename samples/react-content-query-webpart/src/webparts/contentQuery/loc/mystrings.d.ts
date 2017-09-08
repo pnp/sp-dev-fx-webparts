@@ -7,6 +7,10 @@ declare interface IContentQueryStrings {
   QueryGroupName: string;
   DisplayGroupName: string;
   ExternalGroupName: string;
+  SiteUrlFieldLabel: string;
+  SiteUrlFieldPlaceholder: string;
+  SiteUrlFieldLoadingLabel: string;
+  SiteUrlFieldLoadingError: string;
   WebUrlFieldLabel: string;
   WebUrlFieldPlaceholder: string;
   WebUrlFieldLoadingLabel: string;

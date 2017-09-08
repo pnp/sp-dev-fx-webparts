@@ -4,7 +4,7 @@
   "id": "46edf08f-95c7-4ca7-9146-6471f9f471be",
   "alias": "ContentQueryWebPart",
   "componentType": "WebPart",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{

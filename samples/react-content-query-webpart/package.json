@@ -1,6 +1,6 @@
 {
   "name": "react-content-query",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "engines": {
     "node": ">=0.10.0"

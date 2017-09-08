@@ -38,6 +38,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   /***************************************************************************
    * Custom ToolPart Property Panes
    ***************************************************************************/
+  private siteUrlDropdown: PropertyPaneAsyncDropdown;
   private webUrlDropdown: PropertyPaneAsyncDropdown;
   private listTitleDropdown: PropertyPaneAsyncDropdown;
   private orderByDropdown: PropertyPaneAsyncDropdown;
@@ -55,7 +56,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Returns the WebPart's version
    ***************************************************************************/
   protected get dataVersion(): Version {
-    return Version.parse('1.0.4');
+    return Version.parse('1.0.5');
   }
 
 
@@ -89,6 +90,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       {
         onLoadTemplate: this.loadTemplate.bind(this),
         onLoadTemplateContext: this.loadTemplateContext.bind(this),
+        siteUrl: this.properties.siteUrl,
         querySettings: querySettings,
         templateText: this.properties.templateText,
         templateUrl: this.properties.templateUrl,
@@ -107,8 +109,19 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    ***************************************************************************/
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 
-    let firstCascadingLevelDisabled = !this.properties.webUrl;
-    let secondCascadingLevelDisabled = !this.properties.webUrl || !this.properties.listTitle;
+    let firstCascadingLevelDisabled = !this.properties.siteUrl;
+    let secondCascadingLevelDisabled = !this.properties.siteUrl || !this.properties.webUrl;
+    let thirdCascadingLevelDisabled = !this.properties.siteUrl || !this.properties.webUrl || !this.properties.listTitle;
+
+    // Creates a custom PropertyPaneAsyncDropdown for the siteUrl property
+    this.siteUrlDropdown = new PropertyPaneAsyncDropdown(ContentQueryConstants.propertySiteUrl, {
+      label: strings.SiteUrlFieldLabel,
+      loadingLabel: strings.SiteUrlFieldLoadingLabel,
+      errorLabelFormat: strings.SiteUrlFieldLoadingError,
+      loadOptions: this.loadSiteUrlOptions.bind(this),
+      onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
+      selectedKey: this.properties.siteUrl || ""
+    });
 
     // Creates a custom PropertyPaneAsyncDropdown for the webUrl property
     this.webUrlDropdown = new PropertyPaneAsyncDropdown(ContentQueryConstants.propertyWebUrl, {
@@ -117,7 +130,8 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       errorLabelFormat: strings.WebUrlFieldLoadingError,
       loadOptions: this.loadWebUrlOptions.bind(this),
       onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
-      selectedKey: this.properties.webUrl || ""
+      selectedKey: this.properties.webUrl || "",
+      disabled: firstCascadingLevelDisabled
     });
 
     // Creates a custom PropertyPaneAsyncDropdown for the listTitle property
@@ -128,7 +142,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       loadOptions: this.loadListTitleOptions.bind(this),
       onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       selectedKey: this.properties.listTitle || "",
-      disabled: firstCascadingLevelDisabled
+      disabled: secondCascadingLevelDisabled
     });
 
     // Creates a custom PropertyPaneAsyncDropdown for the orderBy property
@@ -139,7 +153,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       loadOptions: this.loadOrderByOptions.bind(this),
       onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       selectedKey: this.properties.orderBy || "",
-      disabled: secondCascadingLevelDisabled
+      disabled: thirdCascadingLevelDisabled
     });
 
     // Creates a custom PropertyPaneQueryFilterPanel for the filters property
@@ -150,7 +164,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       onLoadPeoplePickerSuggestions: this.loadPeoplePickerSuggestions.bind(this),
       onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
       trimEmptyFiltersOnChange: true,
-      disabled: secondCascadingLevelDisabled,
+      disabled: thirdCascadingLevelDisabled,
       strings: strings.queryFilterPanelStrings
     });
     
@@ -159,7 +173,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       loadItems: this.loadViewFieldsChecklistItems.bind(this),
       checkedItems: this.properties.viewFields,
       onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
-      disable: secondCascadingLevelDisabled,
+      disable: thirdCascadingLevelDisabled,
       strings: strings.viewFieldsChecklistStrings
     });
 
@@ -193,7 +207,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       offText: 'Disabled',
       onText: 'Enabled',
       checked: this.properties.limitEnabled,
-      disabled: secondCascadingLevelDisabled
+      disabled: thirdCascadingLevelDisabled
     });
 
     // Creates a PropertyPaneTextField for the itemLimit property
@@ -222,6 +236,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
             {
               groupName: strings.SourceGroupName,
               groupFields: [
+                this.siteUrlDropdown,
                 this.webUrlDropdown,
                 this.listTitleDropdown
               ]
@@ -291,8 +306,16 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   /***************************************************************************
    * Loads the dropdown options for the webUrl property
    ***************************************************************************/
+  private loadSiteUrlOptions(): Promise<IDropdownOption[]> {
+    return this.ContentQueryService.getSiteUrlOptions();
+  }
+
+
+  /***************************************************************************
+   * Loads the dropdown options for the webUrl property
+   ***************************************************************************/
   private loadWebUrlOptions(): Promise<IDropdownOption[]> {
-    return this.ContentQueryService.getWebUrlOptions();
+    return this.ContentQueryService.getWebUrlOptions(this.properties.siteUrl);
   }
 
 
@@ -394,7 +417,14 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Resets dependent property panes if needed
    ***************************************************************************/
   private resetDependentPropertyPanes(propertyPath: string): void {
-    if(propertyPath == ContentQueryConstants.propertyWebUrl) {
+    if(propertyPath == ContentQueryConstants.propertySiteUrl) {
+      this.resetWebUrlPropertyPane();
+      this.resetListTitlePropertyPane();
+      this.resetOrderByPropertyPane();
+      this.resetFiltersPropertyPane();
+      this.resetViewFieldsPropertyPane();
+    }
+    else if(propertyPath == ContentQueryConstants.propertyWebUrl) {
       this.resetListTitlePropertyPane();
       this.resetOrderByPropertyPane();
       this.resetFiltersPropertyPane();
@@ -450,6 +480,21 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       let isValid = (isNumeric && parsedValue >= 1 && parsedValue <= 999) || isEmpty(value);
       resolve(!isValid ? strings.ErrorItemLimit : '');
     });
+  }
+
+
+  /***************************************************************************
+   * Resets the List Title property pane and re-renders it
+   ***************************************************************************/
+  private resetWebUrlPropertyPane() {
+    Log.verbose(this.logSource, "Resetting 'webUrl' property...", this.context.serviceScope);
+
+    this.properties.webUrl = null;
+    this.ContentQueryService.clearCachedWebUrlOptions();
+    update(this.properties, ContentQueryConstants.propertyWebUrl, (): any => { return this.properties.webUrl; });
+    this.webUrlDropdown.properties.selectedKey = "";
+    this.webUrlDropdown.properties.disabled = isEmpty(this.properties.siteUrl);
+    this.webUrlDropdown.render();
   }
 
 

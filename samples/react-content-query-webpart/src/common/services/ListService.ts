@@ -79,7 +79,8 @@ export class ListService {
 	 * Returns a sorted array of all available list titles for the specified web
 	 * @param webUrl : The web URL from which the specified list is located
 	 * @param listTitle : The title of the list from which to load the fields
-	 * @param selectProperties : Optionnaly, the select properties to narrow down the query scope
+	 * @param selectProperties : Optionnaly, the select properties to narrow down the query size
+	 * @param orderBy : Optionnaly, the by which the results needs to be ordered
 	 **************************************************************************************************/
 	public getListFields(webUrl: string, listTitle: string, selectProperties?: string[], orderBy?: string): Promise<any> {
 		return new Promise<any>((resolve,reject) => {

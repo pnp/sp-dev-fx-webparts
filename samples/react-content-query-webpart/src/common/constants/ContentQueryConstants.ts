@@ -4,6 +4,7 @@ export class ContentQueryConstants {
     /**************************************************************
      * WebPart Properties
      **************************************************************/
+    public static readonly propertySiteUrl                          = "siteUrl";
     public static readonly propertyWebUrl                           = "webUrl";
     public static readonly propertyListTitle                        = "listTitle";
     public static readonly propertyOrderBy                          = "orderBy";
