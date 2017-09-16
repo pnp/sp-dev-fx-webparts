@@ -18,7 +18,16 @@ export default class ImageMagnifierWebPart extends BaseClientSideWebPart<IImageM
     const element: React.ReactElement<IImageMagnifierProps > = React.createElement(
       ImageMagnifier,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        smallImgUrl: this.properties.smallImgUrl,
+        smallImgWidth: this.properties.smallImgWidth,
+        smallImgHeight: this.properties.smallImgHeight,
+        largeImgUrl: this.properties.largeImgUrl,
+        largeImgWidth: this.properties.largeImgWidth,
+        largeImgHeight: this.properties.largeImgHeight,
+        cursorOffsetX: this.properties.cursorOffsetX,
+        cursorOffsetY: this.properties.cursorOffsetY,
+        size: this.properties.size
       }
     );
 
@@ -40,9 +49,33 @@ export default class ImageMagnifierWebPart extends BaseClientSideWebPart<IImageM
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
+                PropertyPaneTextField('smallImgUrl', {
+                  label: strings.SmallImgUrlFieldLabel
+                }),
+                PropertyPaneTextField('smallImgWidth', {
+                  label: strings.SmallImgWidthFieldLabel
+                }),
+                PropertyPaneTextField('smallImgHeight', {
+                  label: strings.SmallImgHeightFieldLabel
+                }),
+                PropertyPaneTextField('largeImgUrl', {
+                  label: strings.LargeImgUrlFieldLabel
+                }),
+                PropertyPaneTextField('largeImgWidth', {
+                  label: strings.LargeImgWidthFieldLabel
+                }),
+                PropertyPaneTextField('largeImgHeight', {
+                  label: strings.LargeImgHeightFieldLabel
+                }),
+                PropertyPaneTextField('cursorOffsetX', {
+                  label: strings.CursorOffsetXFieldLabel
+                }),
+                PropertyPaneTextField('cursorOffsetY', {
+                  label: strings.CursorOffsetYFieldLabel
+                }),
+                PropertyPaneTextField('size', {
+                  label: strings.SizeFieldLabel
+                }),
               ]
             }
           ]

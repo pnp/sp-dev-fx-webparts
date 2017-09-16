@@ -20,7 +20,16 @@
     "description": { "default": "Magnify the image" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "ImageMagnifier"
+      "description": "Configure the web part through the property pane to display the result",
+      "smallImgUrl": "",
+      "smallImgWidth": "",
+      "smallImgHeight": "",
+      "largeImgUrl": "",
+      "largeImgWidth": "",
+      "largeImgHeight": "",
+      "cursorOffsetX": "80",
+      "cursorOffsetY": "-80",
+      "size": "200"
     }
   }]
 }
