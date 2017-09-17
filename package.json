@@ -1,9 +1,13 @@
 {
   "name": "react-magnifier",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
+  },
+  "author": {
+    "name": "Giuliano De Luca",
+    "url": "http://www.delucagiuliano.com"
   },
   "scripts": {
     "build": "gulp bundle",

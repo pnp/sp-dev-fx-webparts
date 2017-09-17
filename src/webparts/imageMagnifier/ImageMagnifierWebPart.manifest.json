@@ -18,7 +18,7 @@
     "group": { "default": "Under Development" },
     "title": { "default": "ImageMagnifier" },
     "description": { "default": "Magnify the image" },
-    "officeFabricIconFontName": "ImageCrosshair",
+    "officeFabricIconFontName": "FileImage",
     "properties": {
       "description": "Configure the web part through the property pane to display the result",
       "smallImgUrl": "",
