@@ -1,7 +1,7 @@
 # Image Magnifier
 
 ## Summary
-This web part allow to magnify an image, displaying a resolution more detailed.
+This web part allow to magnify an image, displaying a resolution more detailed through a lens.
 
 ![site page header configurator web part](./assets/spfx-react-image-magnifier.gif)
 
