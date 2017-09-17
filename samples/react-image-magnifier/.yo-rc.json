@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.2.0",
+    "libraryName": "react-magnifier",
+    "libraryId": "1aae48ef-964a-42fa-9c99-493ddcb41b51",
+    "environment": "spo"
+  }
+}
