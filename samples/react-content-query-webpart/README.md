@@ -29,6 +29,7 @@ Version|Date|Comments
 1.0.3|August 12, 2017|Added external scripts functionnality
 1.0.4|August 31, 2017|Fixed a bug where tenant sites/subsites were missing from the **Web Url** dropdown
 1.0.5|September 1st, 2017|Added a **Site Url** parameter next to the **Web Url** parameter in order to narrow down the results
+1.0.6|September 19, 2017| Upgrade to SharePoint drop 1.2.0 and added the site url and web url preselection when adding the WebPart for the first time on a page
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -37,7 +38,8 @@ Version|Date|Comments
 
 ### Cross site collection
 
-The WebPart uses the search in order to get all sites under the current domain, which makes it possible to query not only subsites but other site collections and their subsites as well.
+The WebPart uses the search in order to get all sites under the current domain, which makes it possible to query not only subsites but other site collections and their subsites as well. By default, the current site collection and the current web on which the user is adding the WebPart will be pre-selected automatically.
+
 <img src="Misc/allsites_v2.gif" />
 <br>
 

@@ -40,7 +40,7 @@ export class AsyncChecklist extends React.Component<IAsyncChecklistProps, IAsync
      * @param checked : Whether the checkbox is not checked or not
      *************************************************************************************/
     private onCheckboxChange(ev?: React.FormEvent<HTMLInputElement>, checked?: boolean) {
-        let checkboxKey = ev.currentTarget.attributes.getNamedItem('data').value;
+        let checkboxKey = ev.currentTarget.attributes.getNamedItem('value').value;
         let itemIndex = this.checkedItems.indexOf(checkboxKey);
 
         if(checked) {
@@ -127,12 +127,12 @@ export class AsyncChecklist extends React.Component<IAsyncChecklistProps, IAsync
 
         const checklistItems = this.state.items.map((item, index) => {
             return (
-                <Checkbox data={ item.id }
+                <Checkbox id={ item.id }
                           label={ item.label }
                           defaultChecked={ this.isCheckboxChecked(item.id) }
                           disabled={ this.props.disable }
                           onChange={ this.onCheckboxChange.bind(this) }
-                          inputProps={ { data: item.id } }
+                          inputProps={ { value: item.id } }
                           className={ styles.checklistItem }
                           key={ index } />
             );

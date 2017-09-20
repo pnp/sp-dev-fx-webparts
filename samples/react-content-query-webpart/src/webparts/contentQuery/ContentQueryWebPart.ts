@@ -56,7 +56,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Returns the WebPart's version
    ***************************************************************************/
   protected get dataVersion(): Version {
-    return Version.parse('1.0.5');
+    return Version.parse('1.0.6');
   }
 
 
@@ -66,6 +66,8 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.ContentQueryService = new ContentQueryService(this.context, this.context.spHttpClient);
+      this.properties.siteUrl = this.properties.siteUrl ? this.properties.siteUrl : this.context.pageContext.site.absoluteUrl.toLowerCase().trim();
+      this.properties.webUrl = this.properties.webUrl ? this.properties.webUrl : this.context.pageContext.web.absoluteUrl.toLocaleLowerCase().trim();
       resolve();
     });
   }
@@ -414,31 +416,6 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
 
 
   /***************************************************************************
-   * Resets dependent property panes if needed
-   ***************************************************************************/
-  private resetDependentPropertyPanes(propertyPath: string): void {
-    if(propertyPath == ContentQueryConstants.propertySiteUrl) {
-      this.resetWebUrlPropertyPane();
-      this.resetListTitlePropertyPane();
-      this.resetOrderByPropertyPane();
-      this.resetFiltersPropertyPane();
-      this.resetViewFieldsPropertyPane();
-    }
-    else if(propertyPath == ContentQueryConstants.propertyWebUrl) {
-      this.resetListTitlePropertyPane();
-      this.resetOrderByPropertyPane();
-      this.resetFiltersPropertyPane();
-      this.resetViewFieldsPropertyPane();
-    }
-    else if (propertyPath == ContentQueryConstants.propertyListTitle) {
-      this.resetOrderByPropertyPane();
-      this.resetFiltersPropertyPane();
-      this.resetViewFieldsPropertyPane();
-    }
-  }
-
-
-  /***************************************************************************
    * Validates the templateUrl property
    ***************************************************************************/
   private onTemplateUrlChange(value: string): Promise<String> {
@@ -484,12 +461,37 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
 
 
   /***************************************************************************
+   * Resets dependent property panes if needed
+   ***************************************************************************/
+  private resetDependentPropertyPanes(propertyPath: string): void {
+    if(propertyPath == ContentQueryConstants.propertySiteUrl) {
+      this.resetWebUrlPropertyPane();
+      this.resetListTitlePropertyPane();
+      this.resetOrderByPropertyPane();
+      this.resetFiltersPropertyPane();
+      this.resetViewFieldsPropertyPane();
+    }
+    else if(propertyPath == ContentQueryConstants.propertyWebUrl) {
+      this.resetListTitlePropertyPane();
+      this.resetOrderByPropertyPane();
+      this.resetFiltersPropertyPane();
+      this.resetViewFieldsPropertyPane();
+    }
+    else if (propertyPath == ContentQueryConstants.propertyListTitle) {
+      this.resetOrderByPropertyPane();
+      this.resetFiltersPropertyPane();
+      this.resetViewFieldsPropertyPane();
+    }
+  }
+
+
+  /***************************************************************************
    * Resets the List Title property pane and re-renders it
    ***************************************************************************/
   private resetWebUrlPropertyPane() {
     Log.verbose(this.logSource, "Resetting 'webUrl' property...", this.context.serviceScope);
 
-    this.properties.webUrl = null;
+    this.properties.webUrl = "";
     this.ContentQueryService.clearCachedWebUrlOptions();
     update(this.properties, ContentQueryConstants.propertyWebUrl, (): any => { return this.properties.webUrl; });
     this.webUrlDropdown.properties.selectedKey = "";
