@@ -556,9 +556,11 @@ export class ContentQueryService implements IContentQueryService {
             let normalizedResult: any = {};
 
             for(let viewField of viewFields) {
+                let spacesFormattedName = viewField.replace(new RegExp("_x0020_", "g"), "_x005f_x0020_x005f_");
+
                 normalizedResult[viewField] = {
-                    textValue: result.FieldValuesAsText[viewField],
-                    htmlValue: result.FieldValuesAsHtml[viewField],
+                    textValue: result.FieldValuesAsText[spacesFormattedName],
+                    htmlValue: result.FieldValuesAsHtml[spacesFormattedName],
                     rawValue: result[viewField] || result[viewField + 'Id']
                 };
             }
