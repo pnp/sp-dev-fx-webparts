@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as moment from 'moment';
-import styles from './PnPControls.module.scss';
 import { IPnPControlsProps, IPnpControlsState } from './IPnPControlsProps';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
@@ -134,7 +133,7 @@ export default class PnPControls extends React.Component<IPnPControlsProps, IPnp
     }
 
     return (
-      <div className={styles.pnpControls}>
+      <div>
         {
           this.state.loading ?
             (
