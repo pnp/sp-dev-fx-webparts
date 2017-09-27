@@ -166,7 +166,7 @@ export class SearchService {
 				let pathCell = result.Cells.filter((cell) => { return cell.Key == "Path"; })[0];
 				pathIndex = result.Cells.indexOf(pathCell);
 			}
-			urls.push(result.Cells[pathIndex].Value);
+			urls.push(result.Cells[pathIndex].Value.toLowerCase().trim());
 		}
 		return urls;
 	}

@@ -162,6 +162,10 @@ export class ContentQueryService implements IContentQueryService {
 
             this.searchService.getSitesStartingWith(serverUrl)
                 .then((urls) => {
+                    // Adds the current site collection url to the ones returned by the search (in case the current site isn't indexed yet)
+                    this.ensureUrl(urls, this.context.pageContext.site.absoluteUrl);
+
+                    // Builds the IDropdownOption[] based on the urls
                     let options:IDropdownOption[] = [ { key: "", text: strings.SiteUrlFieldPlaceholder } ];
                     let urlOptions:IDropdownOption[] = urls.sort().map((url) => { 
                         let serverRelativeUrl = !isEmpty(url.replace(serverUrl, '')) ? url.replace(serverUrl, '') : '/';
@@ -201,6 +205,12 @@ export class ContentQueryService implements IContentQueryService {
 
             this.searchService.getWebsFromSite(siteUrl)
                 .then((urls) => {
+                    // If querying the current site, adds the current site collection url to the ones returned by the search (in case the current web isn't indexed yet)
+                    if(siteUrl.toLowerCase().trim() === this.context.pageContext.site.absoluteUrl.toLowerCase().trim()) {
+                        this.ensureUrl(urls, this.context.pageContext.web.absoluteUrl);
+                    }
+                    
+                    // Builds the IDropdownOption[] based on the urls
                     let options:IDropdownOption[] = [ { key: "", text: strings.WebUrlFieldPlaceholder } ];
                     let urlOptions:IDropdownOption[] = urls.sort().map((url) => { 
                         let siteRelativeUrl = !isEmpty(url.replace(siteUrl, '')) ? url.replace(siteUrl, '') : '/';
@@ -372,7 +382,7 @@ export class ContentQueryService implements IContentQueryService {
                 let users: any[] = JSON.parse(data.value);
                 let userSuggestions:IPersonaProps[] = users.map((user) => { return { 
                     primaryText: user.DisplayText,
-                    value: user.EntityData.SPUserID || user.EntityData.SPGroupID
+                    optionalText: user.EntityData.SPUserID || user.EntityData.SPGroupID
                 }; });
                 resolve(this.removeUserSuggestionsDuplicates(userSuggestions, currentPersonas));
             })
@@ -546,9 +556,11 @@ export class ContentQueryService implements IContentQueryService {
             let normalizedResult: any = {};
 
             for(let viewField of viewFields) {
+                let spacesFormattedName = viewField.replace(new RegExp("_x0020_", "g"), "_x005f_x0020_x005f_");
+
                 normalizedResult[viewField] = {
-                    textValue: result.FieldValuesAsText[viewField],
-                    htmlValue: result.FieldValuesAsHtml[viewField],
+                    textValue: result.FieldValuesAsText[spacesFormattedName],
+                    htmlValue: result.FieldValuesAsHtml[spacesFormattedName],
                     rawValue: result[viewField] || result[viewField + 'Id']
                 };
             }
@@ -626,7 +638,7 @@ export class ContentQueryService implements IContentQueryService {
         let trimmedUsers: IPersonaProps[] = [];
 
         for(let user of users) {
-            let isDuplicate = currentUsers.filter((u) => { return u.value === user.value; }).length > 0;
+            let isDuplicate = currentUsers.filter((u) => { return u.optionalText === user.optionalText; }).length > 0;
 
             if(!isDuplicate) {
                 trimmedUsers.push(user);
@@ -653,5 +665,20 @@ export class ContentQueryService implements IContentQueryService {
             }
         }
         return trimmedTerms;
+    }
+
+
+    /***************************************************************************
+     * Makes sure the specified url is in the given collection, otherwise adds it
+     * @param urls : An array of urls
+     * @param urlToEnsure : The url that needs to be ensured
+     ***************************************************************************/
+    private ensureUrl(urls: string[], urlToEnsure: string) {
+        urlToEnsure = urlToEnsure.toLowerCase().trim();
+        let urlExist = urls.filter((u) => { return u.toLowerCase().trim() === urlToEnsure; }).length > 0;
+
+        if(!urlExist) {
+            urls.push(urlToEnsure);
+        }
     }
 }

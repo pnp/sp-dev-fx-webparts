@@ -1,13 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/contentQuery/ContentQueryWebPart.js",
-      "manifest": "./src/webparts/contentQuery/ContentQueryWebPart.manifest.json",
-      "outputPath": "./dist/content-query.bundle.js"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "content-query-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/contentQuery/ContentQueryWebPart.js",
+          "manifest": "./src/webparts/contentQuery/ContentQueryWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {},
+  },
   "localizedResources": {
-    "contentQueryStrings": "webparts/contentQuery/loc/{locale}.js"
-  }
+    "contentQueryStrings": "lib/webparts/contentQuery/loc/{locale}.js"
+  },
+  "externals": {}
 }

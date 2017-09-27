@@ -19,20 +19,29 @@ $lightgray: #f5f5f5;
             }
         }
 
-        div[class~="ms-BasePicker-text"] {
-            background: #fff;
+        :global .ms-BasePicker-text {
+            background-color: #fff;
+        }
+
+        :global .ms-Checkbox {
+            margin-top: 10px;
+        }
+
+        :global .ms-Persona-details {
+            max-width: 165px;
         }
 
         .peoplePicker {
             &.disabled {
-                div[class~="ms-PickerPersona-container"] {
-                    display: none;
+                :global .ms-BasePicker-text {
+                    background-color: #ccc;
+
+                    :global .ms-BasePicker-input,
+                    :global .ms-PickerPersona-container {
+                        display: none;
+                    }
                 }
             }
-        }
-        
-        span[class~="ms-TagItem-text"] {
-            max-width: 201px;
         }
     }
 }
