@@ -13,7 +13,7 @@
   "dependencies": {
     "@microsoft/sp-core-library": "~1.2.0",
     "@microsoft/sp-webpart-base": "~1.2.0",
-    "@pnp/spfx-controls-react": "1.0.0-beta.2",
+    "@pnp/spfx-controls-react": "1.0.0-beta.5",
     "@pnp/spfx-property-controls": "1.0.0-beta.1",
     "@types/react": "15.0.38",
     "@types/react-addons-shallow-compare": "0.14.17",
