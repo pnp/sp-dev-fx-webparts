@@ -1,4 +1,5 @@
 {
+  "$schema": "https://dev.office.com/json-schemas/core-build/tslint.schema.json",
   // Display errors as warnings
   "displayAsWarning": true,
   // The TSLint task may have been configured with several custom lint rules
@@ -16,13 +17,11 @@
       "export-name": false,
       "forin": false,
       "label-position": false,
-      "label-undefined": false,
       "member-access": true,
       "no-arg": false,
       "no-console": false,
       "no-construct": false,
       "no-duplicate-case": true,
-      "no-duplicate-key": false,
       "no-duplicate-variable": true,
       "no-eval": false,
       "no-function-expression": true,
@@ -31,9 +30,6 @@
       "no-switch-case-fall-through": true,
       "no-unnecessary-semicolons": true,
       "no-unused-expression": true,
-      "no-unused-imports": true,
-      "no-unused-variable": true,
-      "no-unreachable": true,
       "no-use-before-declare": true,
       "no-with-statement": true,
       "semicolon": true,
@@ -43,8 +39,7 @@
       "use-named-parameter": true,
       "valid-typeof": true,
       "variable-name": false,
-      "whitespace": false,
-      "prefer-const": true
+      "whitespace": false
     }
   }
 }

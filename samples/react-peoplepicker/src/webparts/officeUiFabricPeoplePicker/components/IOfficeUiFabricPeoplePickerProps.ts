@@ -5,4 +5,9 @@ export interface IOfficeUiFabricPeoplePickerProps {
   spHttpClient: SPHttpClient;
   siteUrl: string;
   typePicker: string;
+  principalTypeUser: boolean;
+  principalTypeSharePointGroup: boolean;
+  principalTypeSecurityGroup: boolean;
+  principalTypeDistributionList: boolean;
+  numberOfItems: number;
 }

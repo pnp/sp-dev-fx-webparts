@@ -5,5 +5,4 @@ export interface IOfficeUiFabricPeoplePickerWebPartProps {
   principalTypeSharePointGroup: boolean;
   principalTypeSecurityGroup: boolean;
   principalTypeDistributionList: boolean;
-  numberOfItems: number;
 }
