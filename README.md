@@ -28,7 +28,7 @@ react-youtube|Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.d
 
 Version|Date|Comments
 -------|----|--------
-1.0|September 02, 2017|Initial release
+1.0|October 02, 2017|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
