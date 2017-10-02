@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-youtube-client-side-solution",
+    "id": "ca0fd050-e358-4093-93cd-bc3d74e131e5",
+    "version": "1.0.0.0",
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-youtube.sppkg"
+  }
+}
