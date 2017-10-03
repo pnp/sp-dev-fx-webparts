@@ -1,9 +1,9 @@
 # Youtube Web Part
 
 ## Summary
-This web part allows to search and view the Youtube videos, across the Youtube api, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id.
+This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id.
 
-![Demo](/assets/Preview.gif)
+![Demo](./assets/Preview.gif)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
