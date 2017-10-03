@@ -6,7 +6,7 @@ SharePoint client-side web parts are controls that appear inside a SharePoint pa
 
 # Have issues or questions?
 
-Please use following logic on submitting your questions to right location to ensure that they are noticed and addressed as soon as possible.
+Please use following logic on submitting your questions or issues to right location to ensure that they are noticed and addressed as soon as possible.
 
 * You have general question or challenge with SPFx - use [sp-dev-docs repository issue list](https://github.com/SharePoint/sp-dev-docs/issues).
 * You have issue on specific web part or sample - use [issue list in this repository](https://github.com/SharePoint/sp-dev-fx-webparts/issues).
