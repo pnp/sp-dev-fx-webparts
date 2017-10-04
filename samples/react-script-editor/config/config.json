@@ -1,12 +1,14 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/scriptEditor/ScriptEditorWebPart.js",
-      "manifest": "./src/webparts/scriptEditor/ScriptEditorWebPart.manifest.json",
-      "outputPath": "./dist/script-editor.bundle.js"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "script-editor-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/scriptEditor/ScriptEditorWebPart.js",
+          "manifest": "./src/webparts/scriptEditor/ScriptEditorWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {
-    "office-ui-fabric-react": "https://publiccdn.sharepointonline.com/techmikael.sharepoint.com/11510075fe4212d19d3e6d07c91981263dd697bf111cb1e5f0efb15de0ec08b382cde399/2.34.2/office-ui-fabric-react.bundle.min.js"
   }
 }
