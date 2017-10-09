@@ -161,7 +161,7 @@ export class CamlQueryHelper {
         }
         else if (filter.operator == QueryFilterOperator.ContainsAny || filterUsers == null)
         {
-            let values = filterUsers != null ? filterUsers.map(x => Text.format("<Value Type='Integer'>{0}</Value>", x.value)).join('') : '';
+            let values = filterUsers != null ? filterUsers.map(x => Text.format("<Value Type='Integer'>{0}</Value>", x.optionalText)).join('') : '';
             filterOutput = Text.format("<In><FieldRef Name='{0}' LookupId='TRUE' /><Values>{1}</Values></In>", filter.field.internalName, values);
         }
         else if (filter.operator == QueryFilterOperator.ContainsAll)
@@ -244,8 +244,8 @@ export class CamlQueryHelper {
                 let digit = parseInt(operatorSplit[operatorSplit.length - 1].replace("[", "").replace("]", "").trim()) * addOrRemove;
                 let dt = new Date();
                 dt.setDate(dt.getDate() + digit);
-                let formattedDate = moment(dt).format("YYYY-MM-DDTHH:mm:ss\\Z");
-                filterValue = filterValue.replace(result, formattedDate);
+                let formatDate = moment(dt).format("YYYY-MM-DDTHH:mm:ss\\Z");
+                filterValue = filterValue.replace(result, formatDate);
             }
         }
 
