@@ -2,12 +2,12 @@ import ISearchDataProvider from "./ISearchDataProvider";
 import { ISearchResults, ISearchResult, IRefinementResult, IRefinementValue, IRefinementFilter } from "../models/ISearchResult";
 import pnp, { ConsoleListener, Logger, LogLevel, SearchQuery, SearchQueryBuilder, SearchResults, setup, Web, Sort, SortDirection } from "sp-pnp-js";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
-
 import { Text, JsonUtilities, UrlUtilities  } from "@microsoft/sp-core-library";
 import sortBy from "lodash-es/sortBy";
 import groupBy from 'lodash-es/groupBy';
 import mapValues from 'lodash-es/mapValues';
 import mapKeys from "lodash-es/mapKeys";
+import * as moment from "moment";
 
 class SearchDataProvider implements ISearchDataProvider {
 
@@ -32,9 +32,11 @@ class SearchDataProvider implements ISearchDataProvider {
         // To limit the payload size, we set odata=nometadata
         // We just need to get list items here
         setup({
-            headers: {
-                Accept: "application/json; odata=nometadata",
-            },
+            sp: {
+                headers: {
+                    Accept: "application/json; odata=nometadata",
+                },
+            } 
         });
     }
 
@@ -43,174 +45,180 @@ class SearchDataProvider implements ISearchDataProvider {
      * @param query The search query in KQL format
      * @return The search results
      */
-    public search(query: string, refiners?: string, refinementFilters?: IRefinementFilter[], pageNumber?: number): Promise<ISearchResults> {
+    public async search(query: string, refiners?: string, refinementFilters?: IRefinementFilter[], pageNumber?: number): Promise<ISearchResults> {
         
-        const p = new Promise<ISearchResults>((resolve, reject) => {
+        let searchQuery: SearchQuery = {};
+        let sortedRefiners: string[] = [];
 
-            let searchQuery: SearchQuery = {};
-            let sortedRefiners: string[] = [];
+        // Search paging option is one based
+        let page = pageNumber ? pageNumber: 1;
 
-            // Search paging option is one based
-            let page = pageNumber ? pageNumber: 1;
+        searchQuery.ClientType = "ContentSearchRegular";
 
-            searchQuery.ClientType = "ContentSearchRegular";
+        // To be able to use search query variable according to the current context
+        // http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html
+        searchQuery.QueryTemplate = query ? query : "";;
 
-            // To be able to use search query variable according to the current context
-            // http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html
-            searchQuery.QueryTemplate = query ? query : "";;
+        searchQuery.RowLimit = this._resultsCount;
+        searchQuery.SelectProperties = this._selectedProperties;
+        searchQuery.TrimDuplicates = false;
 
-            searchQuery.RowLimit = this._resultsCount;
-            searchQuery.SelectProperties = this._selectedProperties;
-            searchQuery.TrimDuplicates = false;
-
-            let sortList: Sort[] = [
-                {
-                    Property: "Created",
-                    Direction: SortDirection.Descending
-                },
-                {
-                    Property: "Size",
-                    Direction: SortDirection.Ascending
-                }
-            ];
-
-            searchQuery.SortList = sortList;
-
-            if (refiners) {
-                // Get the refiners order specified in the property pane
-                sortedRefiners = refiners.split(",");
-                searchQuery.Refiners = refiners ? refiners : "";
+        let sortList: Sort[] = [
+            {
+                Property: "Created",
+                Direction: SortDirection.Descending
+            },
+            {
+                Property: "Size",
+                Direction: SortDirection.Ascending
             }
-            
-            if (refinementFilters) {
-                if (refinementFilters.length > 0) {
-                    searchQuery.RefinementFilters = [this._buildRefinementQueryString(refinementFilters)];
-                }
-            }
+        ];
+
+        searchQuery.SortList = sortList;
+
+        if (refiners) {
+            // Get the refiners order specified in the property pane
+            sortedRefiners = refiners.split(",");
+            searchQuery.Refiners = refiners ? refiners : "";
+        }
         
-            pnp.sp.search(searchQuery).then((r: SearchResults) => {
+        if (refinementFilters) {
+            if (refinementFilters.length > 0) {
+                searchQuery.RefinementFilters = [this._buildRefinementQueryString(refinementFilters)];
+            }
+        }
 
-                const allItemsPromises: Promise<any>[] = [];
-                let refinementResults: IRefinementResult[] = [];
-                let results: ISearchResults = {
-                    RelevantResults: [],
-                    RefinementResults: [],
-                    TotalRows: 0,
-                };
+        let results: ISearchResults = {
+            RelevantResults : [],
+            RefinementResults: [],
+            TotalRows: 0,
+        };
 
-                // Need to do this check
-                // More info here: https://github.com/SharePoint/PnP-JS-Core/issues/337
-                if (r.RawSearchResults.PrimaryQueryResult) {
+        try {
+    
+            const r = await pnp.sp.search(searchQuery);
+
+            const allItemsPromises: Promise<any>[] = [];
+            let refinementResults: IRefinementResult[] = [];
+
+            // Need to do this check
+            // More info here: https://github.com/SharePoint/PnP-JS-Core/issues/337
+            if (r.RawSearchResults.PrimaryQueryResult) {
                         
-                        // Be careful, there was an issue with paging calculation under 2.0.8 version of sp-pnp-js library
-                        // More info https://github.com/SharePoint/PnP-JS-Core/issues/535
-                        r.getPage(page, this._resultsCount).then((r2: SearchResults) => {
+                // Be careful, there was an issue with paging calculation under 2.0.8 version of sp-pnp-js library
+                // More info https://github.com/SharePoint/PnP-JS-Core/issues/535
+                const r2 = await r.getPage(page, this._resultsCount);
 
-                            const resultRows = r2.RawSearchResults.PrimaryQueryResult.RelevantResults.Table.Rows;
-                            let refinementResultsRows = r2.RawSearchResults.PrimaryQueryResult.RefinementResults;
+                const resultRows = r2.RawSearchResults.PrimaryQueryResult.RelevantResults.Table.Rows;
+                let refinementResultsRows = r2.RawSearchResults.PrimaryQueryResult.RefinementResults;
 
-                            const refinementRows = refinementResultsRows ? refinementResultsRows["Refiners"] : [];
+                const refinementRows = refinementResultsRows ? refinementResultsRows["Refiners"] : [];
 
-                            // Map search results
-                            resultRows.map((elt) => {
+                // Map search results
+                resultRows.map((elt) => {
 
-                                const p1 = new Promise<ISearchResult>((resolvep1, rejectp1) => {
-                                
-                                    // Build item result dynamically
-                                    // We can't type the response here because search results are by definition too heterogeneous so we treat them as key-value object
-                                    let result: ISearchResult = {};
+                    const p1 = new Promise<ISearchResult>((resolvep1, rejectp1) => {
+                    
+                        // Build item result dynamically
+                        // We can't type the response here because search results are by definition too heterogeneous so we treat them as key-value object
+                        let result: ISearchResult = {};
 
-                                    elt.Cells.map((item) => {
-                                        result[item.Key] = item.Value;
-                                    });
-
-                                    // Get the icon source URL
-                                    this._mapToIcon(result.Filename).then((iconUrl) => {
-
-                                        result.iconSrc = iconUrl;                            
-                                        resolvep1(result);
-
-                                    }).catch((error) => {
-                                        rejectp1(error);
-                                    });                       
-                                });
-
-                                allItemsPromises.push(p1);                
-                            });
-
-                            // Map refinement results                    
-                            refinementRows.map((refiner) => {
-                                
-                                let values: IRefinementValue[] = [];
-                                refiner.Entries.map((item) => {
-                                    values.push({
-                                        RefinementCount: item.RefinementCount,
-                                        RefinementName: item.RefinementName,
-                                        RefinementToken: item.RefinementToken,
-                                        RefinementValue: item.RefinementValue,
-                                    });
-                                });
-
-                                refinementResults.push({
-                                    FilterName: refiner.Name,
-                                    Values: values,
-                                });
-                            });
-
-                            // Resolve all the promises once to get news
-                            Promise.all(allItemsPromises).then((relevantResults: ISearchResult[]) => {
-                                
-                                // Sort refiners according to the property pane value
-                                refinementResults = sortBy(refinementResults, (refinement) => {
-
-                                    // Get the index of the corresponding filter name
-                                    return sortedRefiners.indexOf(refinement.FilterName);
-                                });
-
-                                results.RelevantResults = relevantResults;
-                                results.RefinementResults = refinementResults,
-                                results.TotalRows = r.TotalRows;
-
-                                resolve(results);
-                                
-                            }).catch((error) => {
-                                reject(error);
-                            });  
+                        elt.Cells.map((item) => {
+                            result[item.Key] = item.Value;
                         });
-                } else {
-                    resolve(results);
-                }
-            }).catch((error) => {
-                Logger.write("[SharePointDataProvider.search()]: Error: " + error, LogLevel.Error);
-                reject(error);
-            });
-        });
 
-        return p;
+                        // Get the icon source URL
+                        this._mapToIcon(result.Filename).then((iconUrl) => {
+
+                            result.iconSrc = iconUrl;                            
+                            resolvep1(result);
+
+                        }).catch((error) => {
+                            rejectp1(error);
+                        });                       
+                    });
+
+                    allItemsPromises.push(p1);                
+                });
+
+                // Map refinement results                    
+                refinementRows.map((refiner) => {
+                    
+                    let values: IRefinementValue[] = [];
+                    refiner.Entries.map((item) => {
+                        values.push({
+                            RefinementCount: item.RefinementCount,
+                            RefinementName:  this._formatDate(item.RefinementName), //This value will appear in the selected filter bar
+                            RefinementToken: item.RefinementToken,
+                            RefinementValue: this._formatDate(item.RefinementValue), // This value will appear in the filter panel
+                        });
+                    });
+
+                    refinementResults.push({
+                        FilterName: refiner.Name,
+                        Values: values,
+                    });
+                });
+
+                // Resolve all the promises once to get news
+                const relevantResults: ISearchResult[] = await Promise.all(allItemsPromises);
+                    
+                // Sort refiners according to the property pane value
+                refinementResults = sortBy(refinementResults, (refinement) => {
+
+                    // Get the index of the corresponding filter name
+                    return sortedRefiners.indexOf(refinement.FilterName);
+                });
+
+                results.RelevantResults = relevantResults;
+                results.RefinementResults = refinementResults,
+                results.TotalRows = r.TotalRows;
+            }
+            return results;
+
+        } catch (error) {
+            Logger.write("[SharePointDataProvider.search()]: Error: " + error, LogLevel.Error);
+            throw error;
+        }       
     }
 
     /**
      * Gets the icon corresponding to the file name extension
      * @param filename The file name (ex: file.pdf)
      */
-    private _mapToIcon(filename: string): Promise<string> {
+    private async _mapToIcon(filename: string): Promise<string> {
         
-        const p1 = new Promise<string>((resolve, reject) => {
-            
-            const webAbsoluteUrl = this._context.pageContext.web.absoluteUrl;
-            const web = new Web(webAbsoluteUrl);
-            
-                web.mapToIcon(JsonUtilities.encode(filename)).then((iconFileName) => {
+        const webAbsoluteUrl = this._context.pageContext.web.absoluteUrl;
+        const web = new Web(webAbsoluteUrl);
+        
+        try {
+            const encodedFileName = filename ? filename.replace(/["']/g, "") : "";
+            const iconFileName = await web.mapToIcon(encodedFileName,1);
+            const iconUrl = webAbsoluteUrl + "/_layouts/15/images/" + iconFileName;
 
-                    const iconUrl = webAbsoluteUrl + "/_layouts/15/images/" + iconFileName;
-                    resolve(iconUrl);
-                }).catch((error) => {
-                    Logger.write("[SharePointDataProvider._mapToIcon()]: Error: " + error, LogLevel.Error);
-                    reject(error);
-                });
-        });
+            return iconUrl;
 
-        return p1;
+        } catch (error) {
+            Logger.write("[SharePointDataProvider._mapToIcon()]: Error: " + error, LogLevel.Error);
+            throw error;
+        }
+    }
+
+    private _formatDate(inputValue: string): string {
+
+        const iso8061rgx = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/g;
+        const matches = inputValue.match(iso8061rgx);
+
+        let updatedInputValue = inputValue;
+
+        if (matches) {
+            matches.map(match => {
+                updatedInputValue = updatedInputValue.replace(match, moment(match).format("LL"));
+            });
+        }
+
+        return updatedInputValue;
+        
     }
 
     /**

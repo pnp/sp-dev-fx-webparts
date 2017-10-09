@@ -23,7 +23,7 @@
       "searchQuery": "",
       "refiners": "",
       "selectedProperties": "",
-      "resultsCount": 10
+      "maxResultsCount": 10
     }
   }]
 }

@@ -46,7 +46,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
 
   public render(): void {
 
-    this._dataProvider.resultsCount = this.properties.resultsCount;
+    this._dataProvider.resultsCount = this.properties.maxResultsCount || 50;
     this._dataProvider.selectedProperties = this.properties.selectedProperties ? 
                                             this.properties.selectedProperties.replace(/\s|,+$/g,'').split(",") :[];        
 
@@ -55,7 +55,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
       {
         dataProvider: this._dataProvider,
         searchQuery: this.properties.searchQuery,
-        resultsCount: this.properties.resultsCount,
+        maxResultsCount: this.properties.maxResultsCount,
         selectedProperties: this.properties.selectedProperties,
         refiners: this.properties.refiners,
         showPaging: this.properties.showPaging,
@@ -96,14 +96,14 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                   multiline: true,    
                   resizable: true,
                 }),             
-                PropertyPaneSlider("resultsCount", {
-                  label: strings.ResultsCount,
+                PropertyPaneSlider("maxResultsCount", {
+                  label: strings.MaxResultsCount,
                   max: 50,
                   min: 1,
                   showValue: true,
                   step: 1,
-                  value: 10,
-                }),       
+                  value: 50,
+                }),            
                 PropertyPaneToggle("showPaging", {
                   label: strings.ShowPagingLabel,
                   checked: true,

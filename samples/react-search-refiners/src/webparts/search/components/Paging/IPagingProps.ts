@@ -1,7 +1,8 @@
 export type PageUpdateCallback = (pageNumber: number) => void;
 
 interface IPagingProps {
-    numberOfPages: number;
+    totalItems: number;
+    itemsCountPerPage: number;
     onPageUpdate: PageUpdateCallback;
     currentPage: number;
 }

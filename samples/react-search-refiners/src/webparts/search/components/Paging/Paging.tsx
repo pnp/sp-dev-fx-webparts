@@ -1,6 +1,7 @@
 import * as React from "react";
 import IPagingProps from "./IPagingProps";
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import Pagination from "react-js-pagination";
 
 export default class Paging extends React.Component<IPagingProps, null> {
 
@@ -12,46 +13,21 @@ export default class Paging extends React.Component<IPagingProps, null> {
 
     public render(): React.ReactElement<IPagingProps> {
 
-        const pageNumbers = [];
-        for (let i = 1; i <= this.props.numberOfPages; i++) {
-          pageNumbers.push(i);
-        }
-
-        const renderPageNumbers = pageNumbers.map(number => {
-            return (
-                <a href="#" key={ number } className={ number === this.props.currentPage ? "active": null } onClick={ () => { this._onPageUpdate(number); } }>{ number }</a>
-            );
-        });
-
-        let pagingControl: JSX.Element = null;
-
-        if (renderPageNumbers.length > 1) {
-            pagingControl =  <div>
-                                <a  href="#" 
-                                    onClick={() => {
-                                        const prevPage = this.props.currentPage - 1; 
-                                        if (prevPage > 0) {
-                                            this.props.onPageUpdate(prevPage); 
-                                        }
-                                    }}>
-                                    <i className="ms-Icon ms-Icon--ChevronLeft" aria-hidden="true"></i>
-                                </a>
-                                { renderPageNumbers }
-                                <a  href="#" 
-                                    onClick={() => { 
-                                        const nextPage = this.props.currentPage + 1; 
-                                        if (nextPage <= this.props.numberOfPages) {
-                                            this.props.onPageUpdate(nextPage);
-                                        }                     
-                                    }}><i className="ms-Icon ms-Icon--ChevronRight" aria-hidden="true"></i>
-                                </a>
-                            </div>;
-        }
-
         return(
             <div className="searchWp__paginationContainer">
                 <div className="searchWp__paginationContainer__pagination">
-                    { pagingControl }                        
+                <Pagination
+                    activePage={this.props.currentPage}
+                    firstPageText={<i className="ms-Icon ms-Icon--DoubleChevronLeft" aria-hidden="true"></i>}
+                    lastPageText={<i className="ms-Icon ms-Icon--DoubleChevronRight" aria-hidden="true"></i>}
+                    prevPageText={<i className="ms-Icon ms-Icon--ChevronLeft" aria-hidden="true"></i>}
+                    nextPageText={<i className="ms-Icon ms-Icon--ChevronRight" aria-hidden="true"></i>}
+                    activeLinkClass={ "active" }
+                    itemsCountPerPage={ this.props.itemsCountPerPage }
+                    totalItemsCount={ this.props.totalItems }
+                    pageRangeDisplayed={5}
+                    onChange={this.props.onPageUpdate}
+                />                      
                 </div>
             </div>
         );

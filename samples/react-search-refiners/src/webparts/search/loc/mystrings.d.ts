@@ -3,9 +3,10 @@ declare interface ISearchWebPartStrings {
   SearchQueryFieldLabel: string;
   SelectedPropertiesFieldLabel: string;
   LoadingMessage: string;
-  ResultsCount: string;
+  MaxResultsCount: string;
   NoResultMessage: string;
   RefinersFieldLabel: string;
+  FilterPanelTitle: string;
   FilterResultsButtonLabel: string;
   SelectedFiltersLabel: string;
   ApplyAllFiltersLabel: string;

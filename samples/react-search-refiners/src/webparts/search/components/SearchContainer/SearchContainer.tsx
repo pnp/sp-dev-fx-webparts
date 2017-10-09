@@ -19,7 +19,10 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
 
         // Set the initial state
         this.state = {
-            results: { RefinementResults: [], RelevantResults: [] },
+            results: { 
+                        RefinementResults: [], 
+                        RelevantResults: [] 
+                     },
             selectedFilters: [],
             currentPage: 1,
             areResultsLoading: true,
@@ -67,7 +70,8 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
                               <TilesList items={ items.RelevantResults }/>
                               { this.props.showPaging ?
                                 <Paging 
-                                    numberOfPages={ Math.ceil(items.TotalRows / this.props.resultsCount) } 
+                                    totalItems={ items.TotalRows }
+                                    itemsCountPerPage={ this.props.maxResultsCount } 
                                     onPageUpdate={ this._onPageUpdate } 
                                     currentPage={ this.state.currentPage }/> 
                                 : null

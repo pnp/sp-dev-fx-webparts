@@ -3,7 +3,7 @@ import ISearchDataProvider from "../../../dataProviders/ISearchDataProvider";
 interface ISearchContainerProps {
   dataProvider: ISearchDataProvider;
   searchQuery: string;
-  resultsCount: number;
+  maxResultsCount: number;
   selectedProperties: string[];
   refiners: string;
   showPaging: boolean;
