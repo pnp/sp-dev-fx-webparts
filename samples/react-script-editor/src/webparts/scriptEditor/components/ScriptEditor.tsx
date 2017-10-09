@@ -1,33 +1,24 @@
 import * as React from 'react';
 import styles from './ScriptEditor.module.scss';
 import { IScriptEditorProps } from './IScriptEditorProps';
-import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react';
-import { TextField } from 'office-ui-fabric-react';
+import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { loadStyles } from '@microsoft/load-themed-styles';
 require('./overrides.css');
 
 export default class ScriptEditor extends React.Component<IScriptEditorProps, any> {
   constructor() {
     super();
-    this.loadCss();
+    const uiFabricCSS: string = `
+    .pzl-bgColor-themeDark, .pzl-bgColor-themeDark--hover:hover {
+      background-color: "[theme:themeDark, default:#005a9e]";
+    }
+    `;
+    loadStyles(uiFabricCSS);
     this.state = {
       showDialog: false
     };
-  }
-
-  public async loadCss() {
-    if (window["UIFabricLoaded"]) {
-      return;
-    }
-    const response = await fetch("https://publiccdn.sharepointonline.com/techmikael.sharepoint.com/11510075fe4212d19d3e6d07c91981263dd697bf111cb1e5f0efb15de0ec08b382cde399/5.0.1/office-ui-fabric.min.css");
-    if (response.ok) {
-      response.text().then((data: any) => {
-        loadStyles(data);
-        window["UIFabricLoaded"] = true;
-        this.forceUpdate();
-      });
-    }
   }
 
   public componentDidMount(): void {
@@ -52,19 +43,16 @@ export default class ScriptEditor extends React.Component<IScriptEditorProps, an
   }
 
   public render(): React.ReactElement<IScriptEditorProps> {
-    if (!window["UIFabricLoaded"]) {
-      return <span />;
-    }
     const viewMode = <span dangerouslySetInnerHTML={{ __html: this.state.script }}></span>;
 
     return (
       <div >
         <div className={styles.scriptEditor}>
           <div className={styles.container}>
-            <div className={`pzl-Grid-row pzl-bgColor-themeDark pzl-fontColor-white ${styles.row}`}>
-              <div className="pzl-Grid-col pzl-u-lg10 pzl-u-xl8 pzl-u-xlPush2 pzl-u-lgPush1">
-                <span className="pzl-font-xl pzl-fontColor-white">The Modern Script Editor web part!</span>
-                <p className="pzl-font-l pzl-fontColor-white"></p>
+            <div className={`ms-Grid-row pzl-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
+              <div className="ms-Grid-col ms-lg10 ms-xl8 ms-xlPush2 ms-lgPush1">
+                <span className="ms-font-xl ms-fontColor-white">The Modern Script Editor web part!</span>
+                <p className="ms-font-l ms-fontColor-white"></p>
                 <DefaultButton description='Opens the Sample Dialog' onClick={this._showDialog.bind(this)}>Edit snippet</DefaultButton>
               </div>
             </div>
