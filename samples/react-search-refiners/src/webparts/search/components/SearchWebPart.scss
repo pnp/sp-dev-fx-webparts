@@ -1,0 +1,113 @@
+.searchWp {
+
+    .searchWp__tile {
+        float: left;
+
+        .searchWp__tile__footer {
+            padding: 8px 16px;
+            margin-top: 15px;
+        }
+
+        .searchWp__tile__footerInfoRight {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 8px 16px;
+            color: #ffffff;
+            background-color: #0078d7;
+
+            i {
+                position: relative;
+                top: 2px;
+            }
+
+            span {
+                padding: 5px;
+            }
+        }
+
+        .searchWp__tile__iconContainer {
+
+            text-align: center;
+
+            i {
+                position: relative;
+                font-size: 40px;
+            }
+        }
+    }
+
+    .searchWp__resultCard {
+        margin: 10px;
+    }
+
+    .searchWp__list {
+        overflow: hidden;
+    }
+
+    .searchWp__noresult {
+        padding:10px;
+    }
+
+    iframe {
+        border: 0;
+        width: 100%;
+    }
+
+    .searchWp__filterResultBtn, .searchWp__selectedFilterLbl {
+        margin: 10px;
+    }
+
+    .searchWp__selectedFilters {
+
+        .searchWp__selectedFilters__filterBtn {
+            border-radius: 10px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+    }
+
+    .searchWp__paginationContainer {
+        text-align: center;        
+        margin-top: 15px;
+    
+        .searchWp__paginationContainer__pagination {
+            display: inline-block;
+            text-align: center;
+
+            a {
+                float: left;
+                padding: 5px 10px;
+                text-decoration: none;
+                border-radius: 15px;
+
+                i {
+                    font-size: 10px;
+                }
+
+            }
+
+            a:visited {
+                color: inherit;
+            }
+
+            a.active {
+                background-color: #0078d7;
+                color: white;
+            }
+        }
+    }
+}
+
+.filterPanel {
+
+    .filterPanel__body{
+        padding: 20px;
+    }
+}
+
+.divider {
+    border-top: 1px solid #a6a6a6;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
