@@ -54,7 +54,7 @@ export default class Tile extends React.Component<ITileProps, null> {
                 </div>
                 <DocumentCardTitle title={ item.Title } shouldTruncate={ false } />
                 <div className="searchWp__tile__footer">
-                    <span>{ moment(item.Created).format("L") }</span>                                       
+                    <span>{ moment(item.Created).isValid() ? moment(item.Created).format("L"): null }</span>                                       
                 </div>          
             </DocumentCard>
         );

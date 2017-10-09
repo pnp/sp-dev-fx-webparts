@@ -60,7 +60,6 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
         refiners: this.properties.refiners,
         showPaging: this.properties.showPaging,
       }
-      
     );
     
     ReactDom.render(element, this.domElement);
@@ -80,6 +79,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
               groupFields: [
                 PropertyPaneTextField('searchQuery', {
                   label: strings.SearchQueryFieldLabel,
+                  value: "Path:{Site}",
                   multiline: true,    
                   resizable: true,
                   placeholder: strings.SearchQueryPlaceHolderText,
@@ -95,6 +95,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                   label: strings.RefinersFieldLabel,
                   multiline: true,    
                   resizable: true,
+                  value: "Created"
                 }),             
                 PropertyPaneSlider("maxResultsCount", {
                   label: strings.MaxResultsCount,
@@ -106,7 +107,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                 }),            
                 PropertyPaneToggle("showPaging", {
                   label: strings.ShowPagingLabel,
-                  checked: true,
+                  checked: false,
                 }),                
               ]
             }

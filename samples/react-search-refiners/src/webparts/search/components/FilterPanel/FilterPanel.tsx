@@ -11,6 +11,11 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Text } from "@microsoft/sp-core-library";
 import "../SearchWebPart.scss";
 import * as update from "immutability-helper";
+import {
+    GroupedList,
+    IGroup,
+    IGroupDividerProps
+  } from 'office-ui-fabric-react/lib/components/GroupedList/index';
 
 export default class FilterPanel extends React.Component<IFilterPanelProps, IFilterPanelState> {
     
@@ -20,11 +25,13 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         super(props);
 
         // The initialFilters are just set once and never updated afterwards so we don't need to put them in the component state.
+        // We dont' want the refiners update every timeto be able to revert changes easily and don't lose initial refiners.
         this._initialFilters = this.props.availableFilters;
 
         this.state = {
             showPanel: false,
             selectedFilters: [],
+            expandedGroups: [],
         };
 
         this._onTogglePanel = this._onTogglePanel.bind(this);
@@ -34,42 +41,54 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         this._isInFilterSelection = this._isInFilterSelection.bind(this);
         this._applyAllfilters = this._applyAllfilters.bind(this);
         this._removeAllFilters = this._removeAllFilters.bind(this);
+        this._onRenderHeader = this._onRenderHeader.bind(this);
+        this._onRenderCell = this._onRenderCell.bind(this);
     }
 
     public render(): React.ReactElement<IFilterPanelProps> {
 
-        const renderAvailableFilters: JSX.Element[] = this._initialFilters.map((filter, i) => {
-            
-            return (
-            <div key= { i }>
-                <div className="filterPanel__filterProperty">
-                    {
-                        filter.Values.map((refinementValue: IRefinementValue, j) => {
+        let items: JSX.Element[] = [];
+        let groups: IGroup[] = [];
 
-                            // Create a new IRefinementFilter with only the current refinement information
-                            const currentRefinement: IRefinementFilter = {
-                                FilterName: filter.FilterName,
-                                Value: refinementValue,
-                            };
+        // Initialize the Office UI grouped list
+        this._initialFilters.map((filter, i) => {
 
-                            return (
-                                <Toggle
-                                key={ j }
-                                checked= { this._isInFilterSelection(currentRefinement) }
-                                disabled={ false }
-                                label={ Text.format(refinementValue.RefinementValue + " ({0})",  refinementValue.RefinementCount)} 
-                                onChanged= {(checked: boolean) => {                                
-                                    // Every time we chek/uncheck a filter, a complete new search is performed
-                                    checked ? this._addFilter(currentRefinement): this._removeFilter(currentRefinement);
-                                }} />
-                            );
-                        })
-                    }
+            groups.push({
+                key: i.toString(),
+                name: filter.FilterName,
+                count: 1,
+                startIndex: i,
+                isDropEnabled: true,
+                isCollapsed: this.state.expandedGroups.indexOf(i) === -1 ? true : false,
+            });
+
+            items.push(
+                <div key= { i }>
+                    <div className="filterPanel__filterProperty">
+                        {
+                            filter.Values.map((refinementValue: IRefinementValue, j) => {
+
+                                // Create a new IRefinementFilter with only the current refinement information
+                                const currentRefinement: IRefinementFilter = {
+                                    FilterName: filter.FilterName,
+                                    Value: refinementValue,
+                                };
+
+                                return (
+                                    <Toggle
+                                    key={ j }
+                                    checked= { this._isInFilterSelection(currentRefinement) }
+                                    disabled={ false }
+                                    label={ Text.format(refinementValue.RefinementValue + " ({0})",  refinementValue.RefinementCount)} 
+                                    onChanged= {(checked: boolean) => {                                
+                                        // Every time we chek/uncheck a filter, a complete new search request is performed with current selected refiners
+                                        checked ? this._addFilter(currentRefinement): this._removeFilter(currentRefinement);
+                                    }} />
+                                );
+                            })
+                        }
+                    </div>
                 </div>
-                { 
-                    (this._initialFilters.length !== i + 1) ? <div className="divider"/> : null
-                }
-            </div>
             );
         });
 
@@ -83,9 +102,21 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                     text={ filter.Value.RefinementName }
                     onClick={ ()=> { this._removeFilter(filter); }}
                 />           
-                );
+            );
         });
-        
+
+        const renderAvailableFilters =  <GroupedList
+                                            ref='groupedList'
+                                            items={ items }
+                                            onRenderCell={ this._onRenderCell }
+                                            className="filterPanel__body__group"
+                                            groupProps={
+                                                {
+                                                    onRenderHeader: this._onRenderHeader,                                                    
+                                                }
+                                            }
+                                            groups={ groups }/>;
+
         return (
             <div>
                 <DefaultButton
@@ -97,7 +128,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                 {  (this.state.selectedFilters.length > 0) ? 
 
                         <div className="searchWp__selectedFilters">
-                            <Label className="searchWp__selectedFilterLbl">{ strings.SelectedFiltersLabel }</Label>
+                            <Label className="searchWp__selectedFilterLbl ms-font-s">{ strings.SelectedFiltersLabel }</Label>
                             { renderSelectedFilters } 
                         </div>  
                     : null                    
@@ -122,7 +153,6 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                                             checked ? this._applyAllfilters() : this._removeAllFilters();
                                         }}
                                         checked= { this.state.selectedFilters.length === 0 ? false : true }/>
-                                    <div className="divider"/>
                                     { renderAvailableFilters }
                                 </div>
                             );
@@ -135,6 +165,45 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                         }
                     }}>                
                 </Panel>
+            </div>
+        );
+    }
+
+    private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {
+        return (
+          <div className="ms-Grid-row" data-selection-index={ itemIndex }>
+                <div className="ms-Grid-col ms-u-sm10 ms-u-md10 ms-u-lg10 ms-smPush1 ms-mdPush1 ms-lgPush1">
+                    { item }
+                </div>            
+          </div>
+        );
+    }
+
+    private _onRenderHeader(props: IGroupDividerProps): JSX.Element {
+        return (
+       
+            <div className="ms-Grid-row" onClick={ () => {
+
+                    // Update the index for expanded groups to be able to keep it open after a re-render
+                    const updatedExpandedGroups = 
+                        props.group.isCollapsed ? 
+                            update(this.state.expandedGroups, {$push: [props.group.startIndex]}) :
+                            update(this.state.expandedGroups, {$splice: [[this.state.expandedGroups.indexOf(props.group.startIndex), 1]]});
+                                    
+                    this.setState({ 
+                        expandedGroups: updatedExpandedGroups,
+                    });
+
+                    props.onToggleCollapse(props.group); 
+                }}>   
+                <div className="ms-Grid-col ms-u-sm1 ms-u-md1 ms-u-lg1">
+                    <div className="header-icon">
+                        <i className={ props.group.isCollapsed ? "ms-Icon ms-Icon--ChevronDown" : "ms-Icon ms-Icon--ChevronUp"}></i>
+                    </div>
+                </div>             
+                <div className="ms-Grid-col ms-u-sm10 ms-u-md10 ms-u-lg10">
+                    <div className="ms-font-l">{ props.group.name }</div>
+                </div>
             </div>
         );
     }
@@ -157,8 +226,9 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
     private _removeFilter(filterToRemove: IRefinementFilter): void {
 
         // Remove the filter from the selected filters collection
-        const indexToRemove = this.state.selectedFilters.indexOf(filterToRemove);
-        let newFilters = update(this.state.selectedFilters, {$splice: [[indexToRemove, 1]]});
+        let newFilters = this.state.selectedFilters.filter((elt) => {
+            return elt.Value.RefinementToken !== filterToRemove.Value.RefinementToken;
+        });
 
         this._applyFilters(newFilters);
     }
@@ -186,13 +256,13 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
      * @param selectedFilters The filters to apply
      */
     private _applyFilters(selectedFilters: IRefinementFilter[]): void {
-
-        this.props.onUpdateFilters(selectedFilters);
-
+       
         // Save the selected filters
         this.setState({
             selectedFilters: selectedFilters,
         });
+
+        this.props.onUpdateFilters(selectedFilters);
     }
     
     /**

@@ -96,20 +96,13 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
 
     public componentWillReceiveProps(nextProps: ISearchContainerProps): void {
 
-        // This method is called every time a property is changed in the property pane (if reactive mode is enabled)
-      /*  if (nextProps.searchQuery !== this.props.searchQuery || 
-            nextProps.resultsCount !== this.props.resultsCount || 
-            nextProps.selectedProperties !== this.props.selectedProperties ||
-            nextProps.refiners !== this.props.refiners ) {*/
+        // Intermediate state to display the spinner before an async query
+        this.setState({
+            areResultsLoading: true,
+        });
 
-            // Intermediate state to display the spinner before an async query
-            this.setState({
-                areResultsLoading: true,
-            });
-
-            // We reset the page number and refinement filters
-            this._getSearchResults(nextProps.searchQuery, nextProps.refiners, [], 1);
-     //   }
+        // We reset the page number and refinement filters
+        this._getSearchResults(nextProps.searchQuery, nextProps.refiners, [], 1);
     }
 
     private _getSearchResults(searchQuery: string, refiners: string, refinementFilters?: IRefinementFilter[], pageNumber?: number) {
@@ -148,7 +141,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
     }
 
     /**
-     * Callback function update search results according the page
+     * Callback function update search results according the page number
      * @param pageNumber The page mumber to get
      */
     private _onPageUpdate(pageNumber: number) {

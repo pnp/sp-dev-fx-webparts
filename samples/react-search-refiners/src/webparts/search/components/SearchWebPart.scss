@@ -1,14 +1,14 @@
 .searchWp {
 
-    .searchWp__tile {
+    &__tile {
         float: left;
 
-        .searchWp__tile__footer {
+        &__footer {
             padding: 8px 16px;
             margin-top: 15px;
         }
 
-        .searchWp__tile__footerInfoRight {
+        &__footerInfoRight {
             position: absolute;
             right: 0;
             bottom: 0;
@@ -26,7 +26,7 @@
             }
         }
 
-        .searchWp__tile__iconContainer {
+        &__iconContainer {
 
             text-align: center;
 
@@ -37,15 +37,15 @@
         }
     }
 
-    .searchWp__resultCard {
+    &__resultCard {
         margin: 10px;
     }
 
-    .searchWp__list {
+    &__list {
         overflow: hidden;
     }
 
-    .searchWp__noresult {
+    &__noresult {
         padding:10px;
     }
 
@@ -54,20 +54,20 @@
         width: 100%;
     }
 
-    .searchWp__filterResultBtn, .searchWp__selectedFilterLbl {
+    &__filterResultBtn, &__selectedFilterLbl {
         margin: 10px;
     }
 
-    .searchWp__selectedFilters {
+    &__selectedFilters {
 
-        .searchWp__selectedFilters__filterBtn {
+        &__filterBtn {
             border-radius: 10px;
             margin-bottom: 10px;
             margin-left: 10px;
         }
     }
 
-    .searchWp__paginationContainer {
+    &__paginationContainer {
         text-align: center;        
         margin-top: 15px;
     
@@ -111,13 +111,30 @@
 
 .filterPanel {
 
-    .filterPanel__body{
+    &__body {
         padding: 20px;
-    }
-}
 
-.divider {
-    border-top: 1px solid #a6a6a6;
-    margin-top: 20px;
-    margin-bottom: 20px;
+        .header-icon {
+            text-align: right;
+            margin-bottom:8px;
+
+            .ms-Icon {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 1.5;
+                letter-spacing: 0.5px;
+
+                &.ms-Icon--CalculatorSubtract, &.ms-Icon--CalculatorAddition {
+                font-weight: bold;
+                }
+            }
+        }
+
+        &__group {
+
+            .ms-List-page~.ms-List-page {
+                margin-top: 15px;
+            }
+        }
+    }
 }
