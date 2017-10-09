@@ -6,6 +6,8 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneDropdown,
+  PropertyPaneToggle,
+  PropertyPaneSlider,
   IWebPartContext
 } from '@microsoft/sp-webpart-base';
 
@@ -23,7 +25,12 @@ export default class OfficeUiFabricPeoplePickerWebPart extends BaseClientSideWeb
         description: this.properties.description,
         spHttpClient: this.context.spHttpClient,
         siteUrl: this.context.pageContext.web.absoluteUrl,
-        typePicker: this.properties.typePicker
+        typePicker: this.properties.typePicker,
+        principalTypeUser: this.properties.principalTypeUser,
+        principalTypeSharePointGroup: this.properties.principalTypeSharePointGroup,
+        principalTypeSecurityGroup: this.properties.principalTypeSecurityGroup,
+        principalTypeDistributionList: this.properties.principalTypeDistributionList,
+        numberOfItems: this.properties.numberOfItems
       }
     );
 
@@ -52,6 +59,32 @@ export default class OfficeUiFabricPeoplePickerWebPart extends BaseClientSideWeb
                     { key: 'Normal', text: 'Normal' },
                     { key: 'Compact', text: 'Compact' }
                   ]
+                }),
+                PropertyPaneToggle('principalTypeUser', {
+                    label: strings.principalTypeUserLabel,
+                    checked: true,
+                  }
+                ),
+                PropertyPaneToggle('principalTypeSharePointGroup', {
+                    label: strings.principalTypeSharePointGroupLabel,
+                    checked: true,
+                  }
+                ),
+                PropertyPaneToggle('principalTypeSecurityGroup', {
+                    label: strings.principalTypeSecurityGroupLabel,
+                    checked: false,
+                  }
+                ),
+                PropertyPaneToggle('principalTypeDistributionList', {
+                    label: strings.principalTypeDistributionListLabel,
+                    checked: false,
+                  }
+                ),
+                PropertyPaneSlider('numberOfItems', {
+                  label: strings.numberOfItemsFieldLabel,
+                  min: 1,
+                  max: 20,
+                  step: 1
                 }),
               ]
             }

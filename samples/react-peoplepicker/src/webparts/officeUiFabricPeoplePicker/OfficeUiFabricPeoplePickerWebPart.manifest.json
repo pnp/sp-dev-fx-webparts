@@ -1,10 +1,11 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "bb13df23-35f7-42c6-8c43-16be4fcd8daa",
   "alias": "OfficeUiFabricPeoplePickerWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{
@@ -15,7 +16,12 @@
     "officeFabricIconFontName": "AddGroup",
     "properties": {
       "description": "Office UI Fabric People Picker",
-      "typePicker": ""
+      "typePicker": "Normal",
+      "principalTypeUser": true,
+      "principalTypeSharePointGroup": true,
+      "principalTypeSecurityGroup": false,
+      "principalTypeDistributionList": false,
+      "numberOfItems": 10
     }
   }]
 }
