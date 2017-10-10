@@ -16,5 +16,9 @@ define([], function() {
     "NoFilterConfiguredLabel": "Aucun filtre configuré", 
     "SearchQueryPlaceHolderText": "Requête de recherche au format KQL",
     "EmptyFieldErrorMessage": "Ce champ ne peut pas être vide",    
+    "PlaceHolderEditLabel": "Éditer",
+    "PlaceHolderConfigureBtnLabel": "Configurer",
+    "PlaceHolderIconText": "Web Part de recherche avec affinements",
+    "PlaceHolderDescription": "Ce composant affiche une liste de résulats de recherche avec des filtres configurables"
   }
 });

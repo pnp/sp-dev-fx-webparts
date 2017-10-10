@@ -15,6 +15,10 @@ declare interface ISearchWebPartStrings {
   NoFilterConfiguredLabel: string;
   SearchQueryPlaceHolderText: string;
   EmptyFieldErrorMessage: string;
+  PlaceHolderEditLabel: string;
+  PlaceHolderConfigureBtnLabel: string;
+  PlaceHolderIconText: string;
+  PlaceHolderDescription: string;
 }
 
 declare module 'SearchWebPartStrings' {

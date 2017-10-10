@@ -58,7 +58,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
                     wpContent = 
                     <div>
                         <FilterPanel availableFilters={ items.RefinementResults } onUpdateFilters={ this._onUpdateFilters }/>
-                        <span className="searchWp__noresult">{ strings.NoResultMessage }</span>
+                        <div className="searchWp__noresult">{ strings.NoResultMessage }</div>
                     </div>;
 
                 } else {     

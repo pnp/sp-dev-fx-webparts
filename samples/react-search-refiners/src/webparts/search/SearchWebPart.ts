@@ -17,6 +17,7 @@ import ISearchDataProvider from "../dataProviders/ISearchDataProvider";
 import MockSearchDataProvider from "../dataProviders/MockSearchDataProvider";
 import SearchDataProvider from "../dataProviders/SearchDataProvider";
 import * as moment from "moment";
+import { Placeholder, IPlaceholderProps } from "@pnp/spfx-controls-react/lib/Placeholder";
 
 export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartProps> {
 
@@ -46,11 +47,13 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
 
   public render(): void {
 
-    this._dataProvider.resultsCount = this.properties.maxResultsCount || 50;
+    this._dataProvider.resultsCount = this.properties.maxResultsCount;
     this._dataProvider.selectedProperties = this.properties.selectedProperties ? 
-                                            this.properties.selectedProperties.replace(/\s|,+$/g,'').split(",") :[];        
+                                            this.properties.selectedProperties.replace(/\s|,+$/g,'').split(",") :[]; 
+                                            
+    let renderElement = null;
 
-    const element: React.ReactElement<ISearchContainerProps> = React.createElement(
+    const searchContainer: React.ReactElement<ISearchContainerProps> = React.createElement(
       SearchContainer,
       {
         dataProvider: this._dataProvider,
@@ -61,8 +64,22 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
         showPaging: this.properties.showPaging,
       }
     );
-    
-    ReactDom.render(element, this.domElement);
+
+    const placeholder: React.ReactElement<IPlaceholderProps> = React.createElement(
+      Placeholder,
+      {
+        iconName: strings.PlaceHolderEditLabel,
+        iconText: strings.PlaceHolderIconText,
+        description: strings.PlaceHolderDescription,
+        buttonLabel: strings.PlaceHolderConfigureBtnLabel,
+        onConfigure: this._setupWebPart.bind(this)
+      }
+    );
+
+    renderElement = this.properties.searchQuery ? searchContainer : placeholder;
+
+    ReactDom.render(renderElement, this.domElement);
+
   }
 
   protected get dataVersion(): Version {
@@ -115,6 +132,13 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
         }
       ]
     };
+  }
+
+  /**
+   * Opens the Web Part property pane
+   */
+  private _setupWebPart() {
+    this.context.propertyPane.open();
   }
 
   private _validateEmptyField(value: string): string {
