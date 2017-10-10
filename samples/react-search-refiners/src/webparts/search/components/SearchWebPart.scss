@@ -113,6 +113,7 @@
 
     &__body {
         padding: 20px;
+        overflow: auto;
 
         .header-icon {
             text-align: right;
@@ -128,6 +129,10 @@
                 font-weight: bold;
                 }
             }
+        }
+
+        &__allFiltersToggle {
+            margin-bottom: 25px;
         }
 
         &__group {

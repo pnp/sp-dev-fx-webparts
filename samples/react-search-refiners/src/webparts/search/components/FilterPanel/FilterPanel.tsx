@@ -16,6 +16,7 @@ import {
     IGroup,
     IGroupDividerProps
   } from 'office-ui-fabric-react/lib/components/GroupedList/index';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class FilterPanel extends React.Component<IFilterPanelProps, IFilterPanelState> {
     
@@ -142,19 +143,26 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                     onDismiss={ this._onClosePanel }
                     headerText={ strings.FilterPanelTitle }
                     closeButtonAriaLabel='Close' 
+                    hasCloseButton={ true }
+                    headerClassName="filterPanel__header"                    
                     onRenderBody={() => { 
                         if(this._initialFilters.length > 0) {
                             return (
-                                <div className="filterPanel__body">
-                                    <Toggle 
-                                        onText={ strings.RemoveAllFiltersLabel } 
-                                        offText={ strings.ApplyAllFiltersLabel } 
-                                        onChanged= {(checked: boolean) => {                                
-                                            checked ? this._applyAllfilters() : this._removeAllFilters();
-                                        }}
-                                        checked= { this.state.selectedFilters.length === 0 ? false : true }/>
-                                    { renderAvailableFilters }
-                                </div>
+                                <Scrollbars style={{ height: "100%" }}>
+                                    <div className="filterPanel__body">
+                                        <div className="filterPanel__body__allFiltersToggle">
+                                            <Toggle 
+                                                onText={ strings.RemoveAllFiltersLabel } 
+                                                offText={ strings.ApplyAllFiltersLabel } 
+                                                onChanged= {(checked: boolean) => {                                
+                                                    checked ? this._applyAllfilters() : this._removeAllFilters();
+                                                }}
+                                                checked= { this.state.selectedFilters.length === 0 ? false : true }
+                                            />
+                                        </div>
+                                        { renderAvailableFilters }
+                                    </div>
+                                </Scrollbars>
                             );
                         } else {
                             return (

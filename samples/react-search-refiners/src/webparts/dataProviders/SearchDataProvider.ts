@@ -204,6 +204,10 @@ class SearchDataProvider implements ISearchDataProvider {
         }
     }
 
+    /**
+     * Find and eeplace ISO 8601 dates in the string by a friendly value
+     * @param inputValue The string to format
+     */
     private _formatDate(inputValue: string): string {
 
         const iso8061rgx = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/g;
@@ -217,8 +221,7 @@ class SearchDataProvider implements ISearchDataProvider {
             });
         }
 
-        return updatedInputValue;
-        
+        return updatedInputValue;        
     }
 
     /**

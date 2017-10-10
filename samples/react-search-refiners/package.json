@@ -27,6 +27,7 @@
     "moment": "^2.18.1",
     "office-ui-fabric-react": "4.40.2-hotfix.1",
     "react": "15.4.2",
+    "react-custom-scrollbars": "^4.1.2",
     "react-dom": "15.4.2",
     "react-js-pagination": "^3.0.0",
     "sp-pnp-js": "3.0.1"
