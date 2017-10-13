@@ -21,36 +21,23 @@ export default class Tile extends React.Component<ITileProps, null> {
     public render() {
 
         const item = this.props.item;
-        let itemPreview: JSX.Element = null;
-        
-        if (item.GPExternalVideoUrl) {
-            itemPreview = 
-                <iframe 
-                    src={ item.GPExternalVideoUrl } 
-                    height={ PREVIEW_IMAGE_HEIGHT } 
-                    allowFullScreen>
-                </iframe>;
-        } else {
-            
-            let previewProps: IDocumentCardPreviewProps = {
-                previewImages: [
-                    {
-                        url: item.ServerRedirectedURL ? item.ServerRedirectedURL : item.Path,
-                        previewImageSrc: item.ServerRedirectedPreviewURL,
-                        iconSrc: item.iconSrc,
-                        imageFit: ImageFit.cover,
-                        height: PREVIEW_IMAGE_HEIGHT,
-                    }
-                ],
-            };
-
-            itemPreview = <DocumentCardPreview { ...previewProps } />;
-        }
+                    
+        let previewProps: IDocumentCardPreviewProps = {
+            previewImages: [
+                {
+                    url: item.ServerRedirectedURL ? item.ServerRedirectedURL : item.Path,
+                    previewImageSrc: item.ServerRedirectedPreviewURL,
+                    iconSrc: item.iconSrc,
+                    imageFit: ImageFit.cover,
+                    height: PREVIEW_IMAGE_HEIGHT,
+                }
+            ],
+        };  
                         
         return (
             <DocumentCard onClickHref={ item.ServerRedirectedURL ? item.ServerRedirectedURL : item.Path } className="searchWp__resultCard">
                 <div className="searchWp__tile__iconContainer" style={{ "height": PREVIEW_IMAGE_HEIGHT }}>
-                    { itemPreview }
+                    <DocumentCardPreview { ...previewProps } />
                 </div>
                 <DocumentCardTitle title={ item.Title } shouldTruncate={ false } />
                 <div className="searchWp__tile__footer">
