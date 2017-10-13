@@ -1,7 +1,7 @@
 # Documents Web Part
 
 ## Summary
-This sample shows how to build a web parts that display documents in a consistence with the SharePoint Online modern experience. The code use Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated: items retrieved from the search index, real time query to a document library.
+This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated: items retrieved from the search index and real-time query to a document library.
 
 ![Demo](./assets/Preview.gif)
 
