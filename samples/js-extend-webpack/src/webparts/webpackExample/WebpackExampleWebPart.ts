@@ -7,12 +7,12 @@ import {
 import * as strings from 'webpackExampleStrings';
 import { IWebpackExampleWebPartProps } from './IWebpackExampleWebPartProps';
 
-const strMarkdown = require('../../my-markdown.md') as string;
+const markdownString: string = require<string>('../../my-markdown.md');
 
 export default class WebpackExampleWebPart extends BaseClientSideWebPart<IWebpackExampleWebPartProps> {
 
   public render(): void {
-    this.domElement.innerHTML = strMarkdown;
+    this.domElement.innerHTML = markdownString;
   }
 
   protected get dataVersion(): Version {
@@ -30,9 +30,12 @@ export default class WebpackExampleWebPart extends BaseClientSideWebPart<IWebpac
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
+                PropertyPaneTextField(
+                  'description',
+                  {
+                    label: strings.DescriptionFieldLabel
+                  }
+                )
               ]
             }
           ]
