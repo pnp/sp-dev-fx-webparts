@@ -15,10 +15,10 @@
 
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
-    "group": { "default": "Other" },
-    "title": { "default": "Search" },
-    "description": { "default": "SearchWebPart description" },
-    "officeFabricIconFontName": "Page",
+    "group": { "default": "PnP" },
+    "title": { "default": "Search with Refiners" },
+    "description": { "default": "Displays search results with customizable dynamic refiners" },
+    "officeFabricIconFontName": "Search",
     "properties": {
       "searchQuery": "",
       "refiners": "",

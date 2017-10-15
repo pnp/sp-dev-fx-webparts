@@ -26,7 +26,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         super(props);
 
         // The initialFilters are just set once and never updated afterwards so we don't need to put them in the component state.
-        // We dont' want the refiners update every timeto be able to revert changes easily and don't lose initial refiners.
+        // We dont' want the refiners update every time to be able to revert changes easily in the interface and don't lose initial refiners.
         this._initialFilters = this.props.availableFilters;
 
         this.state = {

@@ -19,6 +19,6 @@ define([], function() {
     "PlaceHolderEditLabel": "Éditer",
     "PlaceHolderConfigureBtnLabel": "Configurer",
     "PlaceHolderIconText": "Web Part de recherche avec affinements",
-    "PlaceHolderDescription": "Ce composant affiche une liste de résulats de recherche avec des filtres configurables"
+    "PlaceHolderDescription": "Ce composant affiche une liste de résulats de recherche avec pagination et des filtres configurables"
   }
 });

@@ -19,6 +19,6 @@ define([], function() {
     "PlaceHolderEditLabel": "Edit",
     "PlaceHolderConfigureBtnLabel": "Configure",
     "PlaceHolderIconText": "Search Results Web Part with Refinements",
-    "PlaceHolderDescription": "This component displays search results with a customizable refinement panel"
+    "PlaceHolderDescription": "This component displays search results with paging and customizable refinement panel"
   }
 });

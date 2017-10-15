@@ -31,12 +31,14 @@ class SearchDataProvider implements ISearchDataProvider {
 
         // To limit the payload size, we set odata=nometadata
         // We just need to get list items here
+        // We also set the SPFx context accordingly (https://github.com/SharePoint/PnP-JS-Core/wiki/Using-sp-pnp-js-in-SharePoint-Framework)
         setup({
             sp: {
                 headers: {
                     Accept: "application/json; odata=nometadata",
                 },
-            } 
+            },
+            spfxContext: this._context,
         });
     }
 
@@ -247,7 +249,7 @@ class SearchDataProvider implements ISearchDataProvider {
         
         const conditionsCount = refinementQueryConditions.length;
 
-        switch(true) {
+        switch (true) {
             
             // No filters
             case (conditionsCount === 0): {

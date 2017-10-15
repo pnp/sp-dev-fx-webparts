@@ -19,17 +19,17 @@ class MockSearchDataProvider implements ISearchDataProvider {
         this._searchResults = {
             RelevantResults: [
                 {
-                    Title: "Document 1 -Educate",
+                    Title: "Document 1 - Category 1",
                     Url: "http://document1.ca",
                     Created: "2017-07-22T15:38:54.0000000Z",
-                    RefinementTokenValues: "ǂǂ446f63756d656e74, ǂǂ45647563617465",
+                    RefinementTokenValues: "ǂǂ446f63756d656e74,ǂǂ45647563617465",
                     ContentCategory: "Document",
                 },
                 {
-                    Title: "Document 2 - Advise",
+                    Title: "Document 2 - Category 2",
                     Url: "http://document2.ca",
                     Created: "2017-07-22T15:38:54.0000000Z",
-                    RefinementTokenValues: "ǂǂ446f63756d656e74, ǂǂ416476697365",
+                    RefinementTokenValues: "ǂǂ446f63756d656e74,ǂǂ416476697365",
                     ContentCategory: "Document",
                 },
                 {
@@ -40,15 +40,15 @@ class MockSearchDataProvider implements ISearchDataProvider {
                     ContentCategory: "Form",              
                 },
                 {
-                    Title: "Video 1 - Educate",
-                    Url: "https://www.youtube.com/embed/ZkW-K5RQdzo",
+                    Title: "Video 1 - Category 1",
+                    Url: "https://www.youtube.com/watch?v=S93e6UU7y9o",
                     Created: "2017-07-22T15:38:54.0000000Z",
                     RefinementTokenValues: "ǂǂ566964656f,ǂǂ45647563617465",
                     ContentCategory: "Video",                    
                 },
                 {
-                    Title: "Video 2 - Advise",
-                    Url: "https://www.youtube.com/embed/IxuEtL7gxoM",
+                    Title: "Video 2 - Category 2",
+                    Url: "https://www.youtube.com/watch?v=8Nl_dKVQ1O8",
                     Created: "2017-07-22T15:38:54.0000000Z",
                     RefinementTokenValues: "ǂǂ566964656f,ǂǂ416476697365",
                     ContentCategory: "Video",                                                
@@ -83,15 +83,15 @@ class MockSearchDataProvider implements ISearchDataProvider {
                     Values: [
                         {
                             RefinementCount: 2,
-                            RefinementName: "Educate",
+                            RefinementName: "Category 1",
                             RefinementToken: "ǂǂ45647563617465",
-                            RefinementValue: "Educate",   
+                            RefinementValue: "Category 1",   
                         },
                         {
                             RefinementCount: 2,
-                            RefinementName: "Advise",
+                            RefinementName: "Category 2",
                             RefinementToken: "ǂǂ416476697365",
-                            RefinementValue: "Advise",                               
+                            RefinementValue: "Category 2",                               
                         },
                     ]
                 }
@@ -114,7 +114,6 @@ class MockSearchDataProvider implements ISearchDataProvider {
                 });
                 
                 searchResults.RelevantResults.map((searchResult) => {
-                    searchResult.RefinementTokenValues.split(",");
                     const filtered = intersection(filters, searchResult.RefinementTokenValues.split(","));
                     if (filtered.length > 0) {
                         filteredResults.push(searchResult);
