@@ -7,6 +7,8 @@ This sample shows you how to build user friendly SharePoint search experiences u
   <img src="./images/react-search-refiners.gif"/>
 </p>
 
+An associated [blog post](http://thecollaborationcorner.com/2017/10/16/build-dynamic-sharepoint-search-experiences-with-refiners-and-paging-with-spfx-office-ui-fabric-and-pnp-js-library/) is available to give you more details about this sample implementation.
+
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-1.3.0-green.svg)
 
