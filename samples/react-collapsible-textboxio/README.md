@@ -1,4 +1,4 @@
-# SharePoint Framework collapsible sections wiht Textbox.io editor integration
+# SharePoint Framework collapsible sections with Textbox.io rich text editor integration
 
 ## Summary
 This sample Web Part allows contributors to create rich text content in modern SharePoint pages using collapsible sections and the third party Textbox.io editor. 
