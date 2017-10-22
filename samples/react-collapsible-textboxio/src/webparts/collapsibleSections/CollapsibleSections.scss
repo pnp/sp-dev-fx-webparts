@@ -1,0 +1,99 @@
+$accordionExpanded:#ffffff;
+$defaultFont: "Segoe UI WestEuropean", "Segoe UI";
+$defaultColor:#212121;
+
+.collapsible-sections {
+  display:block;
+  padding-bottom:20px;
+  padding-top:10px;
+
+  &__section {
+
+      &__nosection {
+          text-align: center;
+      }
+
+      &__section-header {
+        padding: 15px 15px 7px 15px;
+        margin:5px 0;
+        border-radius: 15px;
+
+        &.expanded{
+          background-color: "[theme: themePrimary, default: #0078d7]";
+
+          .header-icon, .ms-TextField *, .ms-TextField input::placeholder{
+            background-color: "[theme: themePrimary, default: #0078d7]";
+            color:$accordionExpanded;
+            font-family: $defaultFont !important;
+          }
+        }
+
+        &.collapsed{
+          background-color: "[theme: themeLight, default: #0078d7]";
+
+          .header-icon, .ms-TextField *, .ms-TextField input::placeholder{
+            font-family: $defaultFont !important;
+            background-color: "[theme: themeLight, default: #0078d7]";
+
+          }
+        }
+         .header-icon {
+           text-align: right;
+           margin-bottom:8px;
+           padding-top: 5px;
+
+           .ms-Icon {
+             font-size: 14px;
+             line-height: 1.5;
+             letter-spacing: 0.5px;
+           }
+         }
+
+         .ms-TextField * {
+           font-size: 14px;
+           line-height: 1.5;
+           letter-spacing: 0.5px;
+           text-align: left;
+           padding:0px;
+         }
+      }
+
+      &__section-content{
+        margin:15px;
+
+        .contentZoneEditor--edit {
+          margin-bottom: 40px;
+        }
+
+        /* Styles for the Texbox.io ediotr */
+
+        h1, h2, h3, p, blockquote {
+          color:$defaultColor;
+          line-height: 1.25;
+          letter-spacing: 0.5px;
+          font-family: $defaultFont;
+          margin-bottom:10px;
+        }
+
+        h1 {
+          font-size: 22px;
+        }
+
+        h2 {
+          font-size: 20px;
+        }
+
+        h3 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+
+        blockquote {
+          font-size: 16px;
+        }
+      }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "collapsible-sections-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/collapsibleSections/CollapsibleSectionsWebPart.js",
+          "manifest": "./src/webparts/collapsibleSections/CollapsibleSectionsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "textboxio": {
+      "path": "src/librairies/textboxio/textboxio.js",
+      "globalName": "textboxio"
+    }
+  },
+  "localizedResources": {
+    "CollapsibleSectionsWebPartStrings": "lib/webparts/collapsibleSections/loc/{locale}.js"
+  }
+}
