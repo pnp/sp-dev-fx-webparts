@@ -74,7 +74,8 @@ export default class CollapsibleSectionsWebPart extends BaseClientSideWebPart<IC
   
   protected get propertiesMetadata(): IWebPartPropertiesMetadata {
     return {
-    'spfxcrawl' : {isHtmlString: true}
+      'sections[*].controls[*].content' : { isHtmlString: true },
+      'sections[*].title': { isSearchablePlainText: true }
     };
   }
 
