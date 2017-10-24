@@ -89,7 +89,7 @@ export default class TextboxioEditorWebPart extends BaseClientSideWebPart<ITextb
 
   protected get propertiesMetadata(): IWebPartPropertiesMetadata {
     return {
-    'spfxcrawl' : {isHtmlString: true}
+    'content' : {isHtmlString: true}
     };
   }
 
