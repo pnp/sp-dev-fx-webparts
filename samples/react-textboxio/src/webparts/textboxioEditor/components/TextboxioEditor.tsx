@@ -1,19 +1,28 @@
 import ITextboxioEditorProps from "./ITextboxioEditorProps";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { DisplayMode } from "@microsoft/sp-core-library";
-import * as textboxio from "textboxio";
+import { DisplayMode, Environment, EnvironmentType } from "@microsoft/sp-core-library";
+import * as tbio from "textboxio";
 import styles from "./TextboxioEditor.module.scss";
 
 export default class TextboxioEditor extends React.Component<ITextboxioEditorProps, null> {
 
     private _refEditor;
+    private _textboxio;
 
     public constructor(props) {
         super(props);
         this._saveContent = this._saveContent.bind(this);
         this._initTextboxIo = this._initTextboxIo.bind(this);
         this._ensureEditor = this._ensureEditor.bind(this);
+
+        // In local mode, the externals(i.e. the Textbox.io library ) are bundled in a single file (no textboxio.js standalone file)
+        if (Environment.type === EnvironmentType.Local) {
+            this._textboxio = tbio;
+        } else {
+            // Otherwise we take the window variable directly.
+            this._textboxio = window["textboxio"];
+        }
     }
 
     public render() {
@@ -37,7 +46,7 @@ export default class TextboxioEditor extends React.Component<ITextboxioEditorPro
     private _ensureEditor() {
         
         const control = ReactDOM.findDOMNode(this._refEditor);
-        const editors = textboxio.get("#" + control.getAttribute("id"));
+        const editors = this._textboxio.get("#" + control.getAttribute("id"));
         
         if (editors.length ===  0) {
             this._initTextboxIo(control.getAttribute("id"), this.props);  
@@ -53,7 +62,7 @@ export default class TextboxioEditor extends React.Component<ITextboxioEditorPro
      */
     private _initTextboxIo(elementId: string, props: ITextboxioEditorProps) {
         
-        let editorInstance = textboxio.inline("#" + elementId, {
+        let editorInstance = this._textboxio.inline("#" + elementId, {
             ui: {
                 toolbar: {
                     items: [
@@ -98,7 +107,7 @@ export default class TextboxioEditor extends React.Component<ITextboxioEditorPro
     private _saveContent() {
         
         const control = ReactDOM.findDOMNode(this._refEditor);
-        const editors = textboxio.get("#" + control.getAttribute("id"));
+        const editors = this._textboxio.get("#" + control.getAttribute("id"));
 
         if (editors.length > 0) {
             this.props.onContentChanged(editors[0].content.get());

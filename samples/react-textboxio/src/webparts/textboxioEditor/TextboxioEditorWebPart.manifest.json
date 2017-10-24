@@ -18,7 +18,7 @@
     "group": { "default": "PnP" },
     "title": { "default": "PnP - Textbox.io Rich Text Editor Web Part" },
     "description": { "default": "Allows user to create rich text content in Sharepoint modern pages" },
-    "officeFabricIconFontName": "Edit",
+    "officeFabricIconFontName": "TextBox",
     "properties": {
       "content": ""
     }
