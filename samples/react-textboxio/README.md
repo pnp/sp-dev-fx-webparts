@@ -151,8 +151,5 @@ Version|Date|Comments
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - Integrate the Textbox.io third party rich text editor in a SPFx solution by playing with externals and gulp tasks.
-- Create accordions with the GroupedList Office UI fabric component.
-- Create CSS classes that follow SharePoint site theme.
-- Use the React container component approach inspiring by the [react-todo-basic sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-todo-basic).
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-collapsible-textboxio" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-textboxio" />
