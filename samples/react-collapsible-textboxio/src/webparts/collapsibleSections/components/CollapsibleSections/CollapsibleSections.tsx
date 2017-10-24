@@ -113,7 +113,10 @@ export default class CollapsibleSections extends React.Component<ICollapsibleSec
                                     }
                                     groups={ groups }/>;
             } else {
-                emptySectionMessage = <div className="collapsible-sections__section__nosection"><Label>{ strings.EmptySectionsMessage }</Label></div>;
+
+                if (this.props.displayMode === DisplayMode.Edit) {
+                    emptySectionMessage = <div className="collapsible-sections__section__nosection"><Label>{ strings.EmptySectionsMessage }</Label></div>;
+                }
             }
         }
 
