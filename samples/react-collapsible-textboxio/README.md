@@ -27,7 +27,7 @@ react-collapsible-textboxio | Franck Cornu (MVP Office Development at aequos) - 
 To make Textbox.io work in an SPFx solution, follow these steps:
 
 - Download the Textbox.io client SDK from the [official site](https://textbox.io/thank-you-for-downloading/). Then, copy the *textbox.io* folder directly in your solution (*/src/libraries/textboxio*).
-- Configure the library as external in the *config.json* file and import it in your TypeScript file (see *ContentZoneEditor.tsx*):
+- Configure the library as external in the *config.json* file:
 
 ```
   "externals": {
@@ -36,16 +36,6 @@ To make Textbox.io work in an SPFx solution, follow these steps:
       "globalName": "textboxio"
     }
   }
-```
-
-```
-import * as tbio from "textboxio";
-...
-if (Environment.type === EnvironmentType.Local) {
-    this._textboxio = tbio;
-} else {
-    this._textboxio = window["textboxio"];
-}
 ```
 
 - Create a TypeScript definition file (*textboxio.d.ts*) for methods you need. Refer to the official [documentation](http://docs.ephox.com/display/tbio/API+reference) to know about all available methods:
@@ -63,8 +53,19 @@ declare module "textboxio" {
     export = textboxio;
 }
 ```
+- Import it in your TypeScript file (see *ContentZoneEditor.tsx*):
 
-- Configure the editor according to your requirements:
+```
+import * as tbio from "textboxio";
+...
+if (Environment.type === EnvironmentType.Local) {
+    this._textboxio = tbio;
+} else {
+    this._textboxio = window["textboxio"];
+}
+```
+
+- Use and configure the editor according to your requirements:
 
 ```
 let editorInstance = this._textboxio.inline("#" + props.domElementId, {
