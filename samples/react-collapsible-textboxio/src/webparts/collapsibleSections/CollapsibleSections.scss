@@ -18,7 +18,7 @@ $defaultColor:#212121;
         margin:5px 0;
         border-radius: 15px;
 
-        &.expanded{
+        &.expanded {
           background-color: "[theme: themePrimary, default: #0078d7]";
 
           .header-icon, .ms-TextField *, .ms-TextField input::placeholder{
@@ -28,7 +28,7 @@ $defaultColor:#212121;
           }
         }
 
-        &.collapsed{
+        &.collapsed {
           background-color: "[theme: themeLight, default: #0078d7]";
 
           .header-icon, .ms-TextField *, .ms-TextField input::placeholder{
@@ -63,6 +63,10 @@ $defaultColor:#212121;
 
         .contentZoneEditor--edit {
           margin-bottom: 40px;
+          
+          .editor {
+            min-height: 50px;
+          }
         }
 
         /* Styles for the Texbox.io ediotr */

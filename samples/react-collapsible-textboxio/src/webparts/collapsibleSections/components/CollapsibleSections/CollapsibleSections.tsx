@@ -30,7 +30,7 @@ export default class CollapsibleSections extends React.Component<ICollapsibleSec
         this._closeConfirmationDialog = this._closeConfirmationDialog.bind(this);
 
         this.state = {
-            lastInsertedIndex: 0,
+            lastInsertedIndex: -1,
             isDialogOpen: false,
             selectedSection: null,
             selectedGroupIndex: 0,

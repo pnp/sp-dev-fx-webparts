@@ -34,16 +34,11 @@ export default class SectionEdit extends React.Component<ISectionEditProps, null
             switch (control.type) {
                 case "TextFieldControl": 
                     const textFieldControl = control as ITextFieldControl;
-                    const elementId = Text.format("textbox-io-editor-{0}", this.props.section.id);
- 
-                    // Important: we set the key as the section id to avoid re-render completely the component
-                    // We can't use index here because sections can move (ex: add a section before)
-                    // Also, we assume it will be always only one textbox control per section
+
                     sectionControls.push(
                         <ContentZoneEditor 
                             key={ this.props.section.id }
                             content={ textFieldControl.content } 
-                            domElementId={ elementId }
                             locale={ this.props.locale }
                             onContentChanged={ (newContent: string) => {
                                 const newControl = update(textFieldControl, {content: {$set: newContent}} );
