@@ -39,7 +39,15 @@ To make Textbox.io work in an SPFx solution, follow these steps:
 ```
 
 ```
-import * as textboxio from "textboxio";
+import * as tbio from "textboxio";
+...
+// In local mode, the externals(i.e. the Textbox.io library ) are bundled in a single file (no textboxio.js standalone file)
+if (Environment.type === EnvironmentType.Local) {
+    this._textboxio = tbio;
+} else {
+    // Otherwise we take the window variable directly.
+    this._textboxio = window["textboxio"];
+}
 ```
 
 - Create a TypeScript definition file (*textboxio.d.ts*) for methods you need. Refer to the official [documentation](http://docs.ephox.com/display/tbio/API+reference) to know about all available methods:
