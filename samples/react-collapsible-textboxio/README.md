@@ -41,11 +41,9 @@ To make Textbox.io work in an SPFx solution, follow these steps:
 ```
 import * as tbio from "textboxio";
 ...
-// In local mode, the externals(i.e. the Textbox.io library ) are bundled in a single file (no textboxio.js standalone file)
 if (Environment.type === EnvironmentType.Local) {
     this._textboxio = tbio;
 } else {
-    // Otherwise we take the window variable directly.
     this._textboxio = window["textboxio"];
 }
 ```
@@ -69,7 +67,7 @@ declare module "textboxio" {
 - Configure the editor according to your requirements:
 
 ```
-let editorInstance = textboxio.inline("#" + props.domElementId, {
+let editorInstance = this._textboxio.inline("#" + props.domElementId, {
                 // You can configure your own options here: http://docs.ephox.com/display/tbio/toolbar
                 ui: {
                     toolbar: {
