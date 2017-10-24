@@ -1,6 +1,7 @@
 import IContentZoneEditorProps from "./IContentZoneEditorProps";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import * as textboxio from "textboxio";
 
 export default class ContentZoneEditor extends React.Component<IContentZoneEditorProps, null> {
 
@@ -37,7 +38,7 @@ export default class ContentZoneEditor extends React.Component<IContentZoneEdito
     private _ensureEditor() {
         
         const control = ReactDOM.findDOMNode(this._refEditor);
-        const editors = window["textboxio"].get("#" + control.getAttribute("id"));
+        const editors = textboxio.get("#" + control.getAttribute("id"));
         
         if (editors.length ===  0) {
             this._initTextboxIo(control.getAttribute("id"), this.props);  
@@ -49,7 +50,7 @@ export default class ContentZoneEditor extends React.Component<IContentZoneEdito
      */
     private _initTextboxIo(elementId: string, props: IContentZoneEditorProps) {
         
-        let editorInstance = window["textboxio"].inline("#" + elementId, {
+        let editorInstance = textboxio.inline("#" + elementId, {
             ui: {
                 toolbar: {
                     items: [
@@ -93,7 +94,7 @@ export default class ContentZoneEditor extends React.Component<IContentZoneEdito
     private _saveContent() {
         
         const control = ReactDOM.findDOMNode(this._refEditor);
-        const editors = window["textboxio"].get("#" + control.getAttribute("id"));
+        const editors = textboxio.get("#" + control.getAttribute("id"));
 
         if (editors.length > 0) {
             this.props.onContentChanged(editors[0].content.get());
