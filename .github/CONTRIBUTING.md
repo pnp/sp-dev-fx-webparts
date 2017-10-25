@@ -56,8 +56,8 @@ When you are submitting a new sample, it has to follow up below guidelines
 Please see following wiki post from the GitHub repository wiki for exact steps on submitting new pull requests. 
 
 * How to submit a PR to SharePoint repository? - Step-by-step with commands and pictures coming soon
-## Meging your existing github projects with this repository
-If the sample you wish to contrubute is tored in your own Github repository, you can use the following steps to merge it with the Psp-dev-fx-webparts repository:
+## Merging your existing github projects with this repository
+If the sample you wish to contrubute is stored in your own Github repository, you can use the following steps to merge it with the Psp-dev-fx-webparts repository:
     - Fork the sp-dev-fx-webparts repository om hithub
     - create a local git rpository 
         md sp-dev-fx-webparts
