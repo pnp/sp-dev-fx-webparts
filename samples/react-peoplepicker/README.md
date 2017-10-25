@@ -3,7 +3,7 @@
 ## Summary
 SharePoint Framework solution with the Office UI Fabric People Picker, the client web part across the SharePoint Rest API is able to retrieve people and groups.
 
-![React-People-Picker-gif](/assets/Preview.gif)
+![React-People-Picker-gif](./assets/Preview.gif)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
@@ -25,6 +25,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|May 21, 2017|Initial release
 1.0.1|Sep 28, 2017|Updated to GA Version, New properties that allow to specify the number of items to display and which entities retrieve (User, SharePoint Groups, Distribution Lists, Security Groups).
+1.0.2|Oct 25, 2017|fixed a broken link on readme file.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
