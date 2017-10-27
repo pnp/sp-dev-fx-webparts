@@ -16,11 +16,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "ReactProjectOnline" },
-    "description": { "default": "Sample web part to demonstrate how to retrieve Porject Online data using REST" },
+    "title": { "default": "React Project Online Sample" },
+    "description": { "default": "Sample web part to demonstrate how to retrieve Project Online data using REST" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "ReactProjectOnline"
+      "logLevel": 99
     }
   }]
 }

@@ -1,7 +1,10 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field"
+    "PropertyPaneDescription": "React Project Online sample web part properties",
+    "BasicGroupName": "Basic Configuration",
+    "TitleFieldLabel": "React Project Online Sample",
+    "DataSourceIdFieldLabel": "Project Id (MSPWAPROJUID)",
+    "ConfigurationGroupName": "Advanced Configuration",
+    "LogLevelLabel": "Log Level"
   }
 });

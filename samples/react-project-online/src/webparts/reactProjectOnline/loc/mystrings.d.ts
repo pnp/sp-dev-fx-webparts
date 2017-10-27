@@ -1,7 +1,10 @@
 declare interface IReactProjectOnlineWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  TitleFieldLabel: string;
+  DataSourceIdFieldLabel: string;
+  ConfigurationGroupName: string;
+  LogLevelLabel: string;
 }
 
 declare module 'ReactProjectOnlineWebPartStrings' {
