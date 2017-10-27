@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-webhooks-realtime-client-side-solution",
+    "id": "d4eee588-a8e6-45ce-b9e1-c40f0b92ef2d",
+    "version": "1.0.0.0",
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-webhooks-realtime.sppkg"
+  }
+}
