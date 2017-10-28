@@ -16,9 +16,9 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "RealTimeList" },
+    "title": { "default": "Real Time List" },
     "description": { "default": "get the last changes in real time" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "News",
     "properties": {
       "description": "RealTimeList"
     }

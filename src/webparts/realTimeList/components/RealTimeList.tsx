@@ -21,38 +21,37 @@ import {
   Spinner,
   SpinnerSize
 } from 'office-ui-fabric-react/lib/Spinner';
+import * as moment from 'moment';
 
 let _items: any[];
-
-export interface IDetailsListCustomColumnsExampleState {
-  sortedItems?: any[];
-  columns?: IColumn[];
-}
+let _lastQueryDate: moment.Moment;
 
 export interface IList {
   Id: number;
   Title: string;
   Description: string;
+  Thumbnail: ITumbnailUrl;
+}
+
+export interface ITumbnailUrl {
+  Url: string;
 }
 
 export default class RealTimeList extends React.Component<IRealTimeListProps, IRealTimeListState> {
   public componentDidMount(): void {
-    //let web = new Web(this.context.pageContext.web.absoluteUrl);
-    // Connect to the server
-    const socket = io("https://webhooksbroadcaster.azurewebsites.net");
-    // Add the socket io listeners
-    socket.on('list:changes', (data) => {
-      //this._onItemAdded(data.customProperties.id);
-      console.log(JSON.stringify(data));
-      alert("Webhooks received: " + JSON.stringify(data));
-    });
-    this._loadList();
+    if (this.props.socketserverurl != null && this.props.socketserverurl != "" && this.props.socketserverurl !== undefined) {
+      this._connectSocket(this.props.socketserverurl);
+    }
   }
-
+  public componentWillReceiveProps(nextProps: IRealTimeListProps): void {
+    if (nextProps.socketserverurl != null && nextProps.socketserverurl != "" && nextProps.socketserverurl !== undefined) {
+      this._connectSocket(nextProps.socketserverurl);
+    }
+  }
   constructor(props: IRealTimeListProps, state: IRealTimeListState) {
     super(props);
 
-    _items = []; //_items || createListItems(10);
+    _items = [];
 
     this.state = {
       sortedItems: _items,
@@ -62,6 +61,20 @@ export default class RealTimeList extends React.Component<IRealTimeListProps, IR
   }
 
   public render(): React.ReactElement<IRealTimeListProps> {
+    if (this.props.siteUrl.toLowerCase().indexOf("wwww.contoso.com") >= 0 
+      || this.props.socketserverurl === undefined || this.props.socketserverurl === "") {
+      return (
+        <div className={styles.realTimeList}>
+          <div className={styles.container}>
+            <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
+              <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
+                <span className="ms-font-xl ms-fontColor-white">Connect the web part with SharePoint and configuring it before to begin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
     let { sortedItems, columns } = this.state;
     const loading: JSX.Element = (this.state.loading == true) ? <Spinner size={SpinnerSize.large} /> : null;
     const list: JSX.Element = (this.state.loading == false) ?
@@ -75,15 +88,20 @@ export default class RealTimeList extends React.Component<IRealTimeListProps, IR
         onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
       />
       : null;
+    const newsFeed: JSX.Element =
+      this.state.newsFeedVisible == true ?
+        <DefaultButton
+          text={this.state.newsFeed}
+          onClick={() => this._loadList()}
+        />
+        : null;
+
     return (
       <div className={styles.realTimeList}>
         <div className={styles.container}>
           <div className={`ms-Grid-row ms-bgColor-white ms-fontColor-white ${styles.row}`}>
             <div className="ms-Grid-col ms-lg6 ms-xl6 ms-xlPush5 ms-lgPush5">
-              <DefaultButton
-                text='Load list'
-                onClick={() => this._loadList()}
-              />
+              {newsFeed}
             </div>
           </div>
           <div className={`ms-Grid-row ms-bgColor-white ms-fontColor-white ${styles.row}`}>
@@ -99,58 +117,63 @@ export default class RealTimeList extends React.Component<IRealTimeListProps, IR
         </div>
       </div>
     );
-    // return (
-    //   <div className={styles.realTimeList}>
-    //     <div className={styles.container}>
-    //       <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-    //         <div className="ms-Grid-col ms-lg10 ms-xl8 ms-xlPush2 ms-lgPush1">
-    //           <span className="ms-font-xl ms-fontColor-white">Welcome to SharePoint!</span>
-    //           <p className="ms-font-l ms-fontColor-white">Customize SharePoint experiences using Web Parts.</p>
-    //           <p className="ms-font-l ms-fontColor-white">{escape(this.props.description)}</p>
-    //           <a href="https://aka.ms/spfx" className={styles.button}>
-    //             <span className={styles.label}>Learn more</span>
-    //           </a>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // );
+  }
+  private toTicks(date: moment.Moment): number {
+    return (date.valueOf() * 10000) + 621355968000000000;
+  }
+  private async _connectSocket(socketServerUrl: string) {
+    debugger;
+    // Connect to the server
+    const socket = io(socketServerUrl);
+    // Add the socket io listeners
+    socket.on('list:changes', (data) => {
+      this._getListChanges(data);
+      console.log(JSON.stringify(data));
+    });
+    await this._loadList();
+  }
+  private async _getListChanges(dataWebhooks: any): Promise<void> {
+    let dataParsed = JSON.parse(dataWebhooks);
+    let resource = dataParsed[0].resource;
+    let changeToken = `1;3;${resource};${this.toTicks(_lastQueryDate)};-1`;
+    let changes = await pnp.sp.web.lists.getByTitle("Events").getChanges(
+      {
+        Add: true,
+        Item: true,
+        ChangeTokenStart: { StringValue: changeToken }
+      });
+    console.log(changes);
+    console.log(_lastQueryDate);
+    console.log(_items.length);
+    if (changes.length > 0) {
+      let newsFeedText = (changes.length == 1) ? changes.length + " new item" : changes.length + " new items";
+      this.setState({
+        newsFeedVisible: true,
+        newsFeed: newsFeedText
+      });
+    }
   }
   private async _loadList(): Promise<void> {
     this.setState({
       loading: true
     });
-    let items = await pnp.sp.web.lists.getByTitle("Events").items.select("Id", "Title", "Description", "Attachments").get();
+    let items = await pnp.sp.web.lists.getByTitle("Events").items.select("Id", "Title", "Description", "Thumbnail")
+      .orderBy("Modified", false).get();
     _items = items.map((item: IList, index: number) => {
       return {
-        thumbnail: `https://giuleon.sharepoint.com/sites/demo/SiteAssets/beach-small.jpg`,
+        thumbnail: item.Thumbnail != null ? item.Thumbnail.Url : "",
         key: item.Id,
         name: item.Title,
         description: item.Description
       }
     });
-
     this.setState({
       sortedItems: _items,
       columns: _buildColumns(),
-      loading: false
+      loading: false,
+      newsFeedVisible: false
     });
-
-    // pnp.sp.web.lists.getByTitle("Events").items.select("Id", "Title", "Description", "Attachments").get().then((items: any[]) => {
-    //   console.log(items);
-    //   return items.map((item: IList, index: number) => {
-    //     return {
-    //       key: item.Id,
-    //       title: item.Title,
-    //       description: item.Description
-    //     }
-    //   });
-    // }).then((list) => {
-    //   this.state = {
-    //     sortedItems: list,
-    //     columns: _buildColumns()
-    //   };
-    // });
+    _lastQueryDate = moment();
   }
   private _getListItems(count: number, startIndex: number = 0): any {
     // get all the items from a list

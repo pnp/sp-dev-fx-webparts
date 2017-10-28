@@ -1,7 +1,7 @@
 declare interface IRealTimeListWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  SocketserverurlFieldLabel: string;
 }
 
 declare module 'RealTimeListWebPartStrings' {

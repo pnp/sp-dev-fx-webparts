@@ -21,6 +21,7 @@
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
     "@uifabric/example-app-base": "^5.1.2",
+    "moment": "^2.19.1",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "socket.io-client": "^2.0.4",

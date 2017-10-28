@@ -6,4 +6,6 @@ export interface IRealTimeListState {
     sortedItems?: any[];
     columns?: IColumn[];
     loading?: boolean;
+    newsFeed?: string;
+    newsFeedVisible?: boolean;
 }  

@@ -1,7 +1,8 @@
 # Webhooks Realtime
 
 ## Summary
-This web part allow to magnify an image, displaying a resolution more detailed through a lens.
+This web part demonstrates how to leverage the capabilities of SharePoint Webhooks.
+The libraries used by this web part are Socket.io, sp pnp js, moment.
 
 ![Preview](./assets/spfx-react-webhooks-realtime.gif)
 
@@ -15,20 +16,23 @@ This web part allow to magnify an image, displaying a resolution more detailed t
 
 ## Prerequisites
  
-> No pre-requisites
+> In order to use properly this web part is necessary follow these steps:
+> * Istall a webserver that will receive the webhooks, for this PoC I created a NodeJs Application hosted on Azure take a look on my solution [https://github.com/giuleon/SharePoint-Webhooks-Broadcaster](https://github.com/giuleon/SharePoint-Webhooks-Broadcaster)
+> * Create a new webhooks subscription for the SharePoint List **Events** that will be installed by deploying this web part, as you prefer, across your solution or Postman, please read the following guideline to achieve this goal [https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks](https://docs.microsoft.com/en-us/sharepoint/dev/apis/webhooks/overview-sharepoint-webhooks)
+> * The web part has been developed (GetChanges API) to notify new items added in the **Events** list
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-react-image-magnifier|Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
+react-webhooks-realtime|Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
 
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|September 17, 2017|Initial release
+1.0|October 29, 2017|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

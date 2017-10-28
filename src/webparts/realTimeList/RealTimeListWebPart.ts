@@ -13,11 +13,13 @@ import { IRealTimeListProps } from './components/IRealTimeListProps';
 import pnp from "sp-pnp-js";
 
 export interface IRealTimeListWebPartProps {
-  description: string;
+  socketserverurl: string;
+  siteUrl: string;
 }
 
 export default class RealTimeListWebPart extends BaseClientSideWebPart<IRealTimeListWebPartProps> {
 
+  // Ovverriding onInit in order to set up the sp pnp js with the web part context
   public onInit(): Promise<void> {
     return super.onInit().then(_ => {
       // establish SPFx context
@@ -31,7 +33,8 @@ export default class RealTimeListWebPart extends BaseClientSideWebPart<IRealTime
     const element: React.ReactElement<IRealTimeListProps > = React.createElement(
       RealTimeList,
       {
-        description: this.properties.description
+        socketserverurl: this.properties.socketserverurl,
+        siteUrl: this.context.pageContext.web.absoluteUrl
       }
     );
 
@@ -53,8 +56,8 @@ export default class RealTimeListWebPart extends BaseClientSideWebPart<IRealTime
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('socketserverurl', {
+                  label: strings.SocketserverurlFieldLabel
                 })
               ]
             }
@@ -62,5 +65,8 @@ export default class RealTimeListWebPart extends BaseClientSideWebPart<IRealTime
         }
       ]
     };
+  }
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
   }
 }

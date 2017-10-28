@@ -1,3 +1,4 @@
 export interface IRealTimeListProps {
-  description: string;
+  socketserverurl: string;
+  siteUrl: string;
 }
