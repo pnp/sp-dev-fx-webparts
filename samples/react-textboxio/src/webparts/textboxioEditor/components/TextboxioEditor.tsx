@@ -12,7 +12,7 @@ export default class TextboxioEditor extends React.Component<ITextboxioEditorPro
 
     public constructor(props) {
         super(props);
-        this._saveContent = this._saveContent.bind(this);
+
         this._initTextboxIo = this._initTextboxIo.bind(this);
         this._ensureEditor = this._ensureEditor.bind(this);
 
@@ -27,41 +27,53 @@ export default class TextboxioEditor extends React.Component<ITextboxioEditorPro
 
     public render() {
 
-        // We save content every time the focus is lost
-        return (
-            <div className={ styles.editor } ref={ (ref)=> {
-                this._refEditor = ref;
-            }} id={ "textbox-io-editor-" + this. _getNewGuid() } onBlur={ this._saveContent }></div>
-        );
+        let renderHtml: JSX.Element = null;
+        
+        if (this.props.displayMode === DisplayMode.Read) {
+
+            renderHtml = <div dangerouslySetInnerHTML={ {__html: this.props.content } }></div>;
+
+        } else {
+            renderHtml =  
+
+            <div className={ styles.editor } 
+                 ref={ (ref)=> {
+                    this._refEditor = ref;
+                }} id={ "textbox-io-editor-" + this. _getNewGuid() }>
+            </div>
+        }
+
+        return renderHtml;
     }
 
     public componentDidMount() {
-        this._ensureEditor();
+        this._ensureEditor(this.props);
     }
 
-    public componentDidUpdate() {
-        this._ensureEditor();
+    public componentWillReceiveProps(nextProps: ITextboxioEditorProps): void { 
+        this._ensureEditor(nextProps);
     }
 
-    private _ensureEditor() {
+    private _ensureEditor(props: ITextboxioEditorProps) {
         
         const control = ReactDOM.findDOMNode(this._refEditor);
         const editors = this._textboxio.get("#" + control.getAttribute("id"));
         
         if (editors.length ===  0) {
-            this._initTextboxIo(control.getAttribute("id"), this.props);  
+            this._initTextboxIo(control.getAttribute("id"), props);  
         } else {
-            if (this.props.displayMode === DisplayMode.Read) {
+            if (props.displayMode === DisplayMode.Read) {
                 editors[0].restore();
             }
         }
     }
 
     /**
-     * Instanciates and sets up textbox.io control in the section
+     * Instanciates and sets up textbox.io control
      */
     private _initTextboxIo(elementId: string, props: ITextboxioEditorProps) {
         
+        // You can also use "replace()" here to have the full Textbox.io experience
         let editorInstance = this._textboxio.inline("#" + elementId, {
             ui: {
                 toolbar: {
@@ -96,22 +108,19 @@ export default class TextboxioEditor extends React.Component<ITextboxioEditorPro
             },
         });
 
+        editorInstance.events.dirty.addListener(() =>  {
+            
+            // We use the dirty event instead of the change event because this event is synchronous
+            // (There is a little trigger delay with the change event)
+            this.props.onContentChanged(editorInstance.content.get());
+
+            editorInstance.content.setDirty(false);
+        });
+
         // Set default content
-        editorInstance.content.set(props.content ? props.content : "");
-
-    }
-
-    /**
-     * Notifies the parent to persit the editor content
-     */
-    private _saveContent() {
-        
-        const control = ReactDOM.findDOMNode(this._refEditor);
-        const editors = this._textboxio.get("#" + control.getAttribute("id"));
-
-        if (editors.length > 0) {
-            this.props.onContentChanged(editors[0].content.get());
-        }        
+        if (props.content) {
+            editorInstance.content.set(props.content);
+        }
     }
 
     /**
