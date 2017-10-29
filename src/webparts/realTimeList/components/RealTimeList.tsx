@@ -29,8 +29,8 @@ let _lastQueryDate: moment.Moment;
 export interface IList {
   Id: number;
   Title: string;
-  Description: string;
-  Thumbnail: ITumbnailUrl;
+  SPFxDescription: string;
+  SPFxThumbnail: ITumbnailUrl;
 }
 
 export interface ITumbnailUrl {
@@ -122,7 +122,6 @@ export default class RealTimeList extends React.Component<IRealTimeListProps, IR
     return (date.valueOf() * 10000) + 621355968000000000;
   }
   private async _connectSocket(socketServerUrl: string) {
-    debugger;
     // Connect to the server
     const socket = io(socketServerUrl);
     // Add the socket io listeners
@@ -157,14 +156,14 @@ export default class RealTimeList extends React.Component<IRealTimeListProps, IR
     this.setState({
       loading: true
     });
-    let items = await pnp.sp.web.lists.getByTitle("Events").items.select("Id", "Title", "Description", "Thumbnail")
+    let items = await pnp.sp.web.lists.getByTitle("Events").items.select("Id", "Title", "SPFxDescription", "SPFxThumbnail")
       .orderBy("Modified", false).get();
     _items = items.map((item: IList, index: number) => {
       return {
-        thumbnail: item.Thumbnail != null ? item.Thumbnail.Url : "",
+        thumbnail: item.SPFxThumbnail != null ? item.SPFxThumbnail.Url : "",
         key: item.Id,
         name: item.Title,
-        description: item.Description
+        description: item.SPFxDescription
       }
     });
     this.setState({
