@@ -1,0 +1,21 @@
+@import '../../../../common/theming';
+
+.dropDownFormField{
+
+    :global(.ms-Dropdown-title){
+        border: 0;
+        border-bottom: 1px solid;
+        border-color: $ms-color-neutralTertiary;
+    }
+
+}
+
+.dateFormField{
+    
+    :global(.ms-TextField-fieldGroup){
+        border: 0;
+        border-bottom: 1px solid;
+        border-color: $ms-color-neutralTertiary;
+    }
+
+}
