@@ -1,6 +1,11 @@
-## react-form-webpart
+## React List Form WebPart
 
-This is where you include your WebPart documentation.
+## Summary
+The List Form is a web part to embbed SharePoint list forms on your pages. It is implemented using the **SharePoint Framework (SPFx)** and uses the *React* and *Office UI Fabric* libraries. It is meant as an example of implementing dynamic SharePoint list forms using *React*. 
+
+#### STATUS
+
+This is by no means "production ready" and is just meant for experimenting and trying out concepts.
 
 ### Building the code
 
