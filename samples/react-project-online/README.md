@@ -2,7 +2,7 @@
 
 ## Summary
 This sample shows how to use SPFx to consume data from the Project Online REST API. The code uses Placeholder and ListView [reusable controls](https://github.com/SharePoint/sp-dev-fx-controls-react) to create a better experience to the end user.
-The web part is intended to be used on a project site as the Project Id (MSPWAPROJUID) property is automatically loaded when the user opens the web part property pane for the first time. To use this web part outside of a project site, just change the Project Id field on the property pane to an editable field and provide the Project Id value when configuring the web part (or when provisioning through a provisioning mechanist).
+The web part is intended to be used on a project site within PWA site collection, as the web url used for the rest calls is being taken from the web part context object. To use this web part outside of the PWA site collection, just add a new property to the web part to allow the PWA site collection url to be configured (or when provisioning through a provisioning mechanist).
 The web part is currently returning project tasks as a simple proof of concept.
 
 ![Demo](./assets/Preview.gif)
