@@ -7,25 +7,28 @@ The List Form is a web part to embbed SharePoint list forms on your pages. It is
 
 This is by no means "production ready" and is just meant for experimenting and trying out concepts.
 
-### Building the code
+## Version history
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+Version|Date|Comments
+-------|----|--------
+1.0|October 30, 2017|Initial release
 
-This package produces the following:
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+---
 
-### Build options
+## Minimal Path to Awesome
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+- Clone this repository
+- in the command line run:
+  - `npm install`
+  - `gulp serve`
+
+## Features
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+- Use of React controlled components for the form fields.
+- Use of SharePoint REST services to retrieve and update schema and data for lists and fields.
+- Using custom drop down property editors in the property pane.
+- Using SharePoint colors in own components.

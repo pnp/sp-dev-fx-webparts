@@ -16,11 +16,12 @@
   "preconfiguredEntries": [{
     "groupId": "48e2d130-7eb7-4ee9-aa23-5ddbdfd175b1",
     "group": { "default": "Under Development" },
-    "title": { "default": "ListForm" },
-    "description": { "default": "Shows form for the selected list" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "List Form" },
+    "description": { "default": "Shows a form for the selected list" },
+    "officeFabricIconFontName": "PreviewLink",
     "properties": {
-      "description": "List Form",
+      "title": "List Form",
+      "description": "",
       "listUrl": "",
       "formType": 3
     }

@@ -31,7 +31,12 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
   let fieldControl = null;
   const fieldType = props.fieldSchema.FieldType;
   if (props.controlMode === ControlMode.Display) {
-    const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
+    let value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
+    if (fieldType === 'Lookup') {
+      if ((props.value) && (props.value.length > 0) && (props.value[0].lookupValue))  { value = props.value[0].lookupValue; }
+    } else if (fieldType === 'User') {
+      if ((props.value) && (props.value.length > 0) && (props.value[0].title))  { value = props.value[0].title; }
+    }
     fieldControl = <span>{value}</span>;
   } else {
     if ((fieldType === 'Text') || (fieldType === 'Note')) {
@@ -49,12 +54,12 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
     } else {
       const isObjValue = (props.value) && (typeof props.value !== 'string');
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
-      const errorMessage = props.errorMessage || `Unsupported field type "${fieldType}"`;
       fieldControl = <TextField
                 {...props}
                 readOnly
                 multiline={isObjValue}
                 value={value}
+                errorMessage={`Unsupported field type "${fieldType}"`}
                 underlined
               />;
     }
@@ -126,7 +131,6 @@ function GetNumberFieldControl(props: ISPFormFieldProps) {
             className='ard-numberFormField'
             value={props.value}
             valueChanged={props.valueChanged}
-            errorMessage={props.errorMessage}
             placeholder='Enter value here'
             underlined
           />;

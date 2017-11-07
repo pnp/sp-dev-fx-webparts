@@ -63,9 +63,7 @@ const FormField: React.SFC<IFormFieldProps> = (props) => {
             { errorMessage &&
               <div aria-live='assertive'>
                 <DelayedRender>
-                  <p
-                    className={ css('ard-FormField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
-                  >
+                  <p className={ css('ard-FormField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }>
                     { Icon({ iconName: 'Error', className: styles.errorIcon }) }
                     <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>

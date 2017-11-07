@@ -1,14 +1,17 @@
 import { IWebPartContext} from '@microsoft/sp-webpart-base';
 import { ControlMode } from '../../../common/datatypes/ControlMode';
+import { IFieldConfiguration } from './IFieldConfiguration';
 
 export interface IListFormProps {
-  description: string;
+  title: string;
+  description?: string;
   listUrl: string;
   formType: ControlMode;
   id?: number;
-  fields?: string[];
+  fields?: IFieldConfiguration[];
   spContext: IWebPartContext;
+  inDesignMode?: boolean;
   onSubmitSucceeded?(id: number): void;
   onSubmitFailed?(fieldErrors: any): void;
-  onUpdateFields?(newFields: string[]): void;
+  onUpdateFields?(newFields: IFieldConfiguration[]): void;
 }

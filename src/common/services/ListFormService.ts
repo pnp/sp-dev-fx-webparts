@@ -47,7 +47,7 @@ export class ListFormService implements IListFormService {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        reject(response);
+                        reject( this.getErrorMessage(webUrl, response) );
                     }
                 })
                 .then((data) => {
@@ -90,7 +90,7 @@ export class ListFormService implements IListFormService {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        reject(response);
+                        reject( this.getErrorMessage(webUrl, response) );
                     }
                 })
                 .then((data) => {
@@ -143,7 +143,7 @@ export class ListFormService implements IListFormService {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        reject(response);
+                        reject( this.getErrorMessage(webUrl, response) );
                     }
                 })
                 .then((respData) => {
@@ -194,7 +194,7 @@ export class ListFormService implements IListFormService {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        reject(response);
+                        reject(this.getErrorMessage(webUrl, response));
                     }
                 })
                 .then((respData) => {
@@ -231,7 +231,7 @@ export class ListFormService implements IListFormService {
      * @param error : An error string/object
      */
     private getErrorMessage( webUrl: string, error: any ): string {
-        let errorMessage: string = error.statusText ? error.statusText : error;
+        let errorMessage: string = error.statusText ? error.statusText : error.statusMessage ? error.statusMessage : error;
         const serverUrl = `{window.location.protocol}//{window.location.hostname}`;
         const webServerRelativeUrl = webUrl.replace(serverUrl, '');
 

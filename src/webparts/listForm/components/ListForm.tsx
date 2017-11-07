@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import styles from './ListForm.module.scss';
+import { IFieldConfiguration } from './IFieldConfiguration';
 import { IListFormProps } from './IListFormProps';
 import { IListFormState } from './IListFormState';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { ControlMode } from '../../../common/datatypes/ControlMode';
 
 import { IListFormService } from '../../../common/services/IListFormService';
@@ -11,106 +11,187 @@ import { ListFormService } from '../../../common/services/ListFormService';
 
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 
 import SPFormField from './formFields/SPFormField';
 
+import DraggableComponent from './DraggableComponent';
 
-export default class ListForm extends React.Component<IListFormProps, IListFormState> {
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
+
+class ListForm extends React.Component<IListFormProps, IListFormState> {
+
 
   private listFormService: IListFormService;
+
 
   constructor( props: IListFormProps ) {
     super(props);
 
     // set initial state
     this.state = {
-      isLoadingSchema: true,
-      isLoadingData: true,
+      isLoadingSchema: false,
+      isLoadingData: false,
       isSaving: false,
       data: {},
       originalData: {},
       errors: [],
-      fieldErrors: {},
+      notifications: [],
+      fieldErrors: {}
     };
-
-    // normally we don't need to bind the functions as we use arrow functions and do automatically the bing
-    // http://bit.ly/reactArrowFunction
-    // but using Async function we can't convert it into arrow function, so we do the binding here
-    this._readSchema.bind(this);
-    this._readData.bind(this);
-    this.valueChanged.bind(this);
-/*    this.moveField.bind(this);
-    this.removeField.bind(this);*/
 
     this.listFormService = new ListFormService(props.spContext.spHttpClient);
   }
 
-  public render(): React.ReactElement<IListFormProps> {
+
+  public render() {
+    let menuProps;
+    if (this.state.fieldsSchema) {
+      menuProps = {
+        shouldFocusOnMount: true,
+        directionalHint: DirectionalHint.topCenter,
+        items: this.state.fieldsSchema.map(
+                  (fld) => ({ key: fld.InternalName, name: fld.Title, onClick: (ev, item) => this.appendField(fld.InternalName) })
+               )
+      };
+    }
     return (
       <div className={styles.listForm}>
-        <div>
-          {this._getErrors()}
-        </div>
-        { (this.props.listUrl) ?
-          <p className='ms-font-l'>{escape(this.props.description)} for {escape(this.props.listUrl)}</p>
-          : <p className='ms-font-l' style={{ color: 'orangeRed' }}>Please configure a list in the web part's editor first.</p> }
-        { (this.state.isLoadingSchema || this.state.isLoadingData) ? (<Spinner size={ SpinnerSize.large } label='Loading the form...' />)
-        : ((this.state.fieldsSchema) &&
-              <div>
-                <div className={styles.formFieldsContainer}>
-                  {this.renderFields()}
-                </div>
-                <div className={styles.formButtonsContainer}>
-                  <PrimaryButton
-                      disabled={ false }
-                      text='Save'
-                      onClick={ () => this._SaveItem() }
-                    />
-                  <DefaultButton
-                      disabled={ false }
-                      text='Cancel'
-                      onClick={ () => this._readData(this.props.listUrl, this.props.formType, this.props.id) }
-                    />
-                </div>
-            </div>
-          )
-        }
-    </div>
+        <div className={css(styles.title, 'ms-font-xl')}>{this.props.title}</div>
+        { (this.props.description) && <div className={styles.description}>{this.props.description}</div> }
+        { this.renderNotifications() }
+        { this.renderErrors() }
+        { (!this.props.listUrl) ? <MessageBar messageBarType={MessageBarType.warning}>Please configure a list for this component first.</MessageBar> : '' }
+        { (this.state.isLoadingSchema)
+          ? (<Spinner size={ SpinnerSize.large } label='Loading the form...' />)
+          : ((this.state.fieldsSchema) &&
+                <div>
+                  <div className={css(styles.formFieldsContainer, this.state.isLoadingData ? styles.isDataLoading : null)}>
+                    {this.renderFields()}
+                    {this.props.inDesignMode &&
+                    <DefaultButton aria-haspopup='true' aria-label='Add a new field to form' className={styles.addFieldToolbox}
+                          title='Add a new field to form' menuProps={menuProps} data-is-focusable='false' >
+                      <div className={styles.addFieldToolboxPlusButton}>
+                        <i aria-hidden='true' className='ms-Icon ms-Icon--CircleAdditionSolid' />
+                      </div>
+                    </DefaultButton>}
+                  </div>
+                  <div className={styles.formButtonsContainer}>
+                    <PrimaryButton
+                        disabled={ false }
+                        text='Save'
+                        onClick={ () => this.saveItem() }
+                      />
+                    <DefaultButton
+                        disabled={ false }
+                        text='Cancel'
+                        onClick={ () => this.readData(this.props.listUrl, this.props.formType, this.props.id) }
+                      />
+                  </div>
+              </div>
+            )
+          }
+      </div>
     );
   }
 
-  public componentDidMount(): void {
-    this._readSchema(this.props.listUrl, this.props.formType);
-    this._readData(this.props.listUrl, this.props.formType, this.props.id);
+  private renderNotifications() {
+    if (this.state.notifications.length === 0) {
+      return null;
+    }
+    setTimeout( () => { this.setState({...this.state, notifications: []}); }, 4000 );
+    return <div>
+      {
+        this.state.notifications.map( (item, idx) =>
+          <MessageBar messageBarType={ MessageBarType.success }>{item}</MessageBar>
+        )
+      }
+    </div>;
   }
+
+
+  private renderErrors() {
+   return this.state.errors.length > 0
+     ?
+     <div>
+       {
+         this.state.errors.map( (item, idx) =>
+          <MessageBar
+            messageBarType={ MessageBarType.error }
+            isMultiline={ true }
+            onDismiss={ (ev) => this.clearError(idx) }
+          >
+            {item}
+          </MessageBar>
+         )
+       }
+     </div>
+     : null;
+  }
+
+
+  private renderFields() {
+    const { fieldsSchema, data, fieldErrors } = this.state;
+    const fields = this.getFields();
+    return (fields && (fields.length > 0))
+    ?
+    <div className='ard-formFieldsContainer' >
+        {
+            fields.map((field, idx) => {
+                const fieldSchemas = fieldsSchema.filter((f) => f.InternalName === field.fieldName);
+                if (fieldSchemas.length > 0) {
+                  const fieldSchema = fieldSchemas[0];
+                  const value = data[field.fieldName];
+                  const errorMessage = fieldErrors[field.fieldName];
+                  const fieldComponent = <SPFormField
+                            fieldSchema={fieldSchema}
+                            controlMode={this.props.formType}
+                            value={value}
+                            valueChanged={(val) => this.valueChanged(field.fieldName, val)}
+                            errorMessage={errorMessage} />;
+                  if (this.props.inDesignMode) {
+                    return (
+                        <DraggableComponent
+                          key={field.key}
+                          index={idx}
+                          itemKey={field.key}
+                          moveField={(dragIdx, hoverIdx) => this.moveField(dragIdx, hoverIdx)}
+                          removeField={(index) => this.removeField(index)} >
+                          {fieldComponent}
+                        </DraggableComponent>);
+                  } else {
+                    return fieldComponent;
+                  }
+                }
+            })
+        }
+    </div>
+    : <div style={{ color: 'red' }} >No fields available!</div>;
+  }
+
+
+  public componentDidMount(): void {
+    this.readSchema(this.props.listUrl, this.props.formType);
+    this.readData(this.props.listUrl, this.props.formType, this.props.id);
+  }
+
 
   public componentWillReceiveProps(nextProps: IListFormProps): void {
     if ((this.props.listUrl !== nextProps.listUrl) || (this.props.formType !== nextProps.formType)) {
-      this._readSchema(nextProps.listUrl, nextProps.formType);
+      this.readSchema(nextProps.listUrl, nextProps.formType);
     }
     if ((this.props.id !== nextProps.id) || (this.props.formType !== nextProps.formType)) {
-      this._readData(nextProps.listUrl, nextProps.formType, nextProps.id);
+      this.readData(nextProps.listUrl, nextProps.formType, nextProps.id);
     }
   }
 
-  private async _readData(listUrl: string, formType: ControlMode, id?: number): Promise<void> {
-    try {
-       if (!id) {
-         this.setState({ ...this.state, data: {}, originalData: {}, isLoadingData: false});
-         return;
-       }
-       this.setState({ ...this.state, data: {}, originalData: {}, isLoadingData: true});
-       const dataObj = await this.listFormService.getDataForForm(
-           this.props.spContext.pageContext.web.absoluteUrl, listUrl, id, formType);
-       // We shallow clone here, so that changing values on dataObj object fields won't be changing in originalData too
-       const dataObjOriginal = { ...dataObj };
-       this.setState({...this.state, data: dataObj, originalData: dataObjOriginal, isLoadingData: false});
-    } catch (error) {
-       this.setState({ ...this.state, data: {}, isLoadingData: false, errors: [...this.state.errors, error.message] });
-    }
-  }
 
-  private async _readSchema(listUrl: string, formType: ControlMode): Promise<void> {
+  @autobind
+  private async readSchema(listUrl: string, formType: ControlMode): Promise<void> {
    try {
      if (!listUrl) {
        this.setState( (nextState, props) => {
@@ -130,133 +211,159 @@ export default class ListForm extends React.Component<IListFormProps, IListFormS
                                                      );
      this.setState({ ...this.state, isLoadingSchema: false, fieldsSchema });
    } catch (error) {
+     const errorText = `Error loading schema for list ${listUrl}: ${error}`;
      this.setState({
        ...this.state,
        isLoadingSchema: false,
        fieldsSchema: null,
-       errors: [...this.state.errors, error.message],
+       errors: [...this.state.errors, errorText],
      });
    }
   }
 
- @autobind
- private valueChanged(fieldName: string, newValue: any) {
-   this.setState((prevState, props) => {
-       prevState.data[fieldName] = newValue;
-       // validation
-       prevState.fieldErrors[fieldName] = '';
-       if (this.state.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) {
-         if (!newValue) { prevState.fieldErrors[fieldName] = 'Please enter a value!'; }
-       }
-       return prevState;
 
-     },
-   );
- }
-
-  private async _SaveItem(): Promise<void> {
-     this.setState({ ...this.state, isSaving: true});
-     try {
-       let updatedValues;
-       if (this.props.id) {
-         updatedValues = await this.listFormService.updateItem(
-           this.props.spContext.pageContext.web.absoluteUrl,
-           this.props.listUrl,
-           this.props.id,
-           this.state.fieldsSchema,
-           this.state.data,
-           this.state.originalData);
-       } else {
-         updatedValues = await this.listFormService.createItem(
-           this.props.spContext.pageContext.web.absoluteUrl,
-           this.props.listUrl,
-           this.state.fieldsSchema,
-           this.state.data);
-       }
-       this.setState((prevState, props) => {
-         let hadErrors = false;
-         updatedValues.filter( (fieldVal) => fieldVal.HasException ).forEach( (element) => {
-           prevState.fieldErrors[element.FieldName] = element.ErrorMessage;
-           hadErrors = true;
-         });
-         if (hadErrors) {
-           if (props.onSubmitFailed) { props.onSubmitFailed(prevState.fieldErrors); }
-         } else {
-           updatedValues.reduce(
-             (val, merged) => {
-               merged[val.FieldName] = merged[val.FieldValue]; return merged;
-             },
-             prevState.data,
-           );
-           // we shallow clone here, so that changing values on state.data won't be changing in state.originalData too
-           prevState.originalData = { ...prevState.data };
-           let id = (props.id) ? props.id : 0;
-           if (id === 0) {
-             id = updatedValues.filter( (val) => val.FieldName === 'Id' )[0].FieldValue;
-           }
-           if (props.onSubmitSucceeded) { props.onSubmitSucceeded( id ); }
-         }
-         prevState.isSaving = false;
-         return prevState;
-       });
-     } catch (error) {
-         this.setState({ ...this.state, errors: [...this.state.errors, error] });
-     }
+  @autobind
+  private async readData(listUrl: string, formType: ControlMode, id?: number): Promise<void> {
+    try {
+      if ((formType === ControlMode.New) || !id) {
+        this.setState({ ...this.state, data: {}, originalData: {}, isLoadingData: false});
+        return;
+      }
+      this.setState({ ...this.state, data: {}, originalData: {}, isLoadingData: true});
+      const dataObj = await this.listFormService.getDataForForm( this.props.spContext.pageContext.web.absoluteUrl, listUrl, id, formType );
+      // We shallow clone here, so that changing values on dataObj object fields won't be changing in originalData too
+      const dataObjOriginal = { ...dataObj };
+      this.setState({...this.state, data: dataObj, originalData: dataObjOriginal, isLoadingData: false});
+    } catch (error) {
+      const errorText = `Error loading data for item with ID ${id}: ${error}`;
+      this.setState({ ...this.state, data: {}, isLoadingData: false, errors: [...this.state.errors, errorText] });
+    }
   }
 
 
-  private _getErrors() {
-   return this.state.errors.length > 0
-     ?
-     <div style={{ color: 'orangeRed' }} >
-       <div>Errors:</div>
-       {
-         this.state.errors.map((item, idx) => {
-           return (<div key={idx} >{JSON.stringify(item)}</div>);
-         })
-       }
-     </div>
-     : null;
- }
+  @autobind
+  private valueChanged(fieldName: string, newValue: any) {
+    this.setState((prevState, props) => {
+        prevState.data[fieldName] = newValue;
+        // validation
+        prevState.fieldErrors[fieldName] = '';
+        if (this.state.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) {
+          if (!newValue) { prevState.fieldErrors[fieldName] = 'Please enter a value!'; }
+        }
+        return prevState;
+
+      },
+    );
+  }
 
 
- private getFields(): string[] {
-   let fields = this.props.fields;
-   if ((!fields || fields.length === 0) && this.state.fieldsSchema) {
-     fields = this.state.fieldsSchema.map( (field) => field.InternalName );
-   }
-   return fields;
- }
+  private async saveItem(): Promise<void> {
+    this.setState({ ...this.state, isSaving: true, errors: []});
+    try {
+      let updatedValues;
+      if (this.props.id) {
+        updatedValues = await this.listFormService.updateItem(
+          this.props.spContext.pageContext.web.absoluteUrl,
+          this.props.listUrl,
+          this.props.id,
+          this.state.fieldsSchema,
+          this.state.data,
+          this.state.originalData);
+      } else {
+        updatedValues = await this.listFormService.createItem(
+          this.props.spContext.pageContext.web.absoluteUrl,
+          this.props.listUrl,
+          this.state.fieldsSchema,
+          this.state.data);
+      }
+      let dataReloadNeeded = false;
+      const newState: IListFormState = {...this.state, fieldErrors: {}};
+      let hadErrors = false;
+      updatedValues.filter( (fieldVal) => fieldVal.HasException ).forEach( (element) => {
+        newState.fieldErrors[element.FieldName] = element.ErrorMessage;
+        hadErrors = true;
+      });
+      if (hadErrors) {
+        if (this.props.onSubmitFailed) {
+          this.props.onSubmitFailed(newState.fieldErrors);
+        } else {
+          newState.errors = [...newState.errors, 'The item could not be saved. Please check detailed error messages on the fields below.'];
+        }
+      } else {
+        updatedValues.reduce(
+          (val, merged) => {
+            merged[val.FieldName] = merged[val.FieldValue]; return merged;
+          },
+          newState.data,
+        );
+        // we shallow clone here, so that changing values on state.data won't be changing in state.originalData too
+        newState.originalData = { ...newState.data };
+        let id = (this.props.id) ? this.props.id : 0;
+        if (id === 0) {
+          id = updatedValues.filter( (val) => val.FieldName === 'Id' )[0].FieldValue;
+        }
+        if (this.props.onSubmitSucceeded) { this.props.onSubmitSucceeded( id ); }
+        newState.notifications = [...newState.notifications, 'Item saved successfully.'];
+        dataReloadNeeded = true;
+      }
+      newState.isSaving = false;
+      this.setState(newState);
+
+      if (dataReloadNeeded) { this.readData(this.props.listUrl, this.props.formType, this.props.id); }
+    } catch (error) {
+      const errorText = `Error trying to save list item: ${error}`;
+      this.setState({ ...this.state, errors: [...this.state.errors, errorText] });
+    }
+  }
 
 
- private renderFields() {
+  private clearError(idx: number) {
+    this.setState( (prevState, props) => {
+      prevState.errors.splice( idx, 1 );
+      return prevState;
+    } );
+  }
 
-   const { fieldsSchema, data, fieldErrors } = this.state;
-   const fields = this.getFields();
-   return (fields && (fields.length > 0))
-   ?
-   <div className='ard-formFieldsContainer' >
-       {
-           fields.map((field, idx) => {
-               const fieldSchemas = fieldsSchema.filter((f) => f.InternalName === field);
-               if (fieldSchemas.length > 0) {
-                 const fieldSchema = fieldSchemas[0];
-                 const value = data[field];
-                 const errorMessage = fieldErrors[field];
-                 return (
-                    <SPFormField
-                        fieldSchema={fieldSchema}
-                        controlMode={this.props.formType}
-                        value={value}
-                        valueChanged={(val) => this.valueChanged(field, val)}
-                        errorMessage={errorMessage} />
-                  );
-               }
-           })
-       }
-   </div>
-   : <div style={{ color: 'red' }} >No fields available!</div>;
- }
 
+  private getFields(): IFieldConfiguration[] {
+    let fields = this.props.fields;
+    if ((!fields) && this.state.fieldsSchema) {
+      fields = this.state.fieldsSchema.map( (field) => ({key: field.InternalName, fieldName: field.InternalName}) );
+    }
+    return fields;
+  }
+
+
+  private appendField(fieldName: string) {
+    const newFields = this.getFields();
+    let fieldKey = fieldName;
+    let indexer = 0;
+    while (newFields.some( (fld) => fld.key === fieldKey )) {
+      indexer++;
+      fieldKey = fieldName + '_' + indexer;
+    }
+    newFields.push({key: fieldKey, fieldName: fieldName});
+    this.props.onUpdateFields(newFields);
+  }
+
+
+  private moveField(fieldKey, toIndex) {
+      const fields = this.getFields();
+      const dragField = fields.filter( (fld) => fld.key === fieldKey )[0];
+      const dragIndex = fields.indexOf(dragField);
+      const newFields = fields.splice(0); // clone
+      newFields.splice(dragIndex, 1);
+      newFields.splice(toIndex, 0, dragField);
+      this.props.onUpdateFields(newFields);
+  }
+
+
+  private removeField(index: number) {
+      const newFields = this.getFields().splice(0); // clone
+      newFields.splice(index, 1);
+      this.props.onUpdateFields(newFields);
+  }
 
 }
+
+export default DragDropContext(HTML5Backend)(ListForm);

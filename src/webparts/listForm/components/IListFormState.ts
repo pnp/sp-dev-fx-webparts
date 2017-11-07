@@ -9,5 +9,6 @@ export interface IListFormState {
   data: any;
   originalData: any;
   errors: string[];
+  notifications: string[];
   fieldErrors: {[fieldName: string]: string};
 }

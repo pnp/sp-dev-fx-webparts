@@ -2,57 +2,81 @@
 
 .listForm {
 
+  .title {
+    color: $bodyTextColor;
+  }
+
+  .description {
+    color: $bodySubtextColor;
+    display: inline-block;
+    margin: 10px 0;
+    font-weight: 100;
+  }
+
   .formFieldsContainer{
     padding-top: 10px;
     padding-bottom: 10px;
-    border-top: 1px solid;
-    border-top-color: $ms-color-neutralLight;
-  }
 
-  .formButtonsContainer{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-top: 1px solid;
-    border-top-color: $ms-color-neutralLight;
-  }
-
-  .button {
-    // Our button
-    text-decoration: none;
-    height: 32px;
-
-    // Primary Button
-    min-width: 80px;
-    background-color: #0078d7;
-    border-color: #0078d7;
-    color: #ffffff;
-
-    // Basic Button
-    outline: transparent;
-    position: relative;
-    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    font-weight: 400;
-    border-width: 0;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 16px;
-
-    .label {
-      font-weight: 600;
-      font-size: 14px;
-      height: 32px;
-      line-height: 32px;
-      margin: 0 4px;
-      vertical-align: top;
-      display: inline-block;
+    &.isDataLoading{
+      opacity: 0.5;
     }
   }
 
-  .helperIcon {
-    color: red;
+  .formButtonsContainer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    button {
+      margin-right: 4px;
+    }
   }
-  
+
+ 
+  .addFieldToolbox {
+    background: 0 0;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+    width: 100%;
+    color: $ms-color-neutralTertiary;
+
+    &:hover, &:focus{
+      color: $ms-color-themePrimary;
+    }
+
+    .addFieldToolboxPlusButton {
+      left: calc(50% - 11.5px);
+      font-size: 24px;
+    }
+
+    i {
+      background-color: $bodyBackgroundColor;
+      padding-left: 2px;
+    }
+
+    :global(.ms-Button-menuIcon) {
+      display: none;
+    }
+
+  }
+
 }
+
+.listForm .addFieldToolbox:after,
+:global(.ms-Fabric.is-focusVisible) .listForm :global(.ms-Button).addFieldToolbox:focus::after {
+  left: 0;
+  border-top: 1px dashed;
+  content: "";
+  height: 1px;
+  position: absolute;
+  top: 12px;
+  width: 100%;
+  transition: all .3s ease;
+  z-index: -1;
+  outline: 0;
+}
+
+.listForm .addFieldToolbox:focus:after {
+  color: $ms-color-themeDark;
+}
+
