@@ -16,9 +16,9 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "SvgHero" },
+    "title": { "default": "SVG Hero" },
     "description": { "default": "svgHero description" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Running",
     "properties": {
       "colorPants": "#d83b01",
       "colorHair": "#262626",
@@ -30,7 +30,7 @@
       "colorShoes": "#0078d7",
       "colorShirt": "#0078d7",
       "colorLogo": "#ffffff",
-      "height": 150
+      "height": 100
     }
   }]
 }
