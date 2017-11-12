@@ -20,7 +20,16 @@
     "description": { "default": "svgHero description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "SvgHero"
+      "colorPants": "#d83b01",
+      "colorHair": "#262626",
+      "colorBelt": "#ffc929",
+      "colorBuckle": "#ffb900",
+      "colorSkin": "#ffb900",
+      "colorCape": "#003c6c",
+      "colorDiaper": "#262626",
+      "colorShoes": "#0078d7",
+      "colorShirt": "#0078d7",
+      "colorLogo": "#ffffff"
     }
   }]
 }
