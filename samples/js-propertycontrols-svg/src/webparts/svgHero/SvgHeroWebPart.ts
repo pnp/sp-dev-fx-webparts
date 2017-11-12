@@ -11,6 +11,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import styles from './SvgHeroWebPart.module.scss';
 import * as strings from 'SvgHeroWebPartStrings';
 
+//Import the special property pane controls from the PnP SPFx-Property-Controls package
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
 import { PropertyFieldSpinButton } from '@pnp/spfx-property-controls/lib/PropertyFieldSpinButton';
 
@@ -32,6 +33,9 @@ export interface ISvgHeroWebPartProps {
 export default class SvgHeroWebPartWebPart extends BaseClientSideWebPart<ISvgHeroWebPartProps> {
 
   public render(): void {
+
+    //This will draw the SVG version of the SharePoint PnP Super Hero with custom colors
+    // You can find the SVG file at https://github.com/thechriskent/PnPMan
     this.domElement.innerHTML = `
       <div class="${ styles.svgHero }">
         <svg
@@ -364,7 +368,7 @@ export default class SvgHeroWebPartWebPart extends BaseClientSideWebPart<ISvgHer
                   initialValue: this.properties.height,
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
-                  suffix: "mm",
+                  suffix: " mm",
                   min: 25,
                   max: 150,
                   step: 5,
