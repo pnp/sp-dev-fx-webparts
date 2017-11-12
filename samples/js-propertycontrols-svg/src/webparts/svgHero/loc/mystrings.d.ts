@@ -1,6 +1,7 @@
 declare interface ISvgHeroWebPartStrings {
   PropertyPaneDescription: string;
   ColorGroupName: string;
+  SizeGroupName: string;
   DescriptionFieldLabel: string;
   PantsFieldLabel: string;
   HairFieldLabel: string;
@@ -12,6 +13,8 @@ declare interface ISvgHeroWebPartStrings {
   ShoesFieldLabel: string;
   ShirtFieldLabel: string;
   LogoFieldLabel: string;
+  HeightFieldLabel: string;
+  ResetButtonLabel: string;
 }
 
 declare module 'SvgHeroWebPartStrings' {

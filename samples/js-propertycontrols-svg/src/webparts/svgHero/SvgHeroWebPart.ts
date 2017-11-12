@@ -2,7 +2,9 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneButton,
+  PropertyPaneButtonType
 } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
@@ -10,6 +12,8 @@ import styles from './SvgHeroWebPart.module.scss';
 import * as strings from 'SvgHeroWebPartStrings';
 
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
+import { PropertyFieldSpinButton } from '@pnp/spfx-property-controls/lib/PropertyFieldSpinButton';
+
 
 export interface ISvgHeroWebPartProps {
   colorPants: string;
@@ -22,6 +26,7 @@ export interface ISvgHeroWebPartProps {
   colorShoes: string;
   colorShirt: string;
   colorLogo: string;
+  height: number;
 }
 
 export default class SvgHeroWebPartWebPart extends BaseClientSideWebPart<ISvgHeroWebPartProps> {
@@ -39,7 +44,7 @@ export default class SvgHeroWebPartWebPart extends BaseClientSideWebPart<ISvgHer
             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
             width="67.223289mm"
-            height="157.28004mm"
+            height="${this.properties.height}mm"
             viewBox="0 0 67.223289 157.28004"
             version="1.1"
             id="svg8"
@@ -326,6 +331,19 @@ export default class SvgHeroWebPartWebPart extends BaseClientSideWebPart<ISvgHer
       </div>`;
   }
 
+  private resetToDefault(): void {
+    this.properties.colorSkin = '#ffb900';
+    this.properties.colorHair = '#262626';
+    this.properties.colorPants = '#d83b01';
+    this.properties.colorBelt = '#ffc929';
+    this.properties.colorBuckle = '#ffb900';
+    this.properties.colorCape = '#003c6c';
+    this.properties.colorDiaper = '#262626';
+    this.properties.colorShoes = '#0078d7';
+    this.properties.colorShirt = '#0078d7';
+    this.properties.colorLogo = '#ffffff';
+  }
+
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
@@ -338,6 +356,23 @@ export default class SvgHeroWebPartWebPart extends BaseClientSideWebPart<ISvgHer
             description: strings.PropertyPaneDescription
           },
           groups: [
+            {
+              groupName: strings.SizeGroupName,
+              groupFields: [
+                PropertyFieldSpinButton('height', {
+                  label: strings.HeightFieldLabel,
+                  initialValue: this.properties.height,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  suffix: "mm",
+                  min: 25,
+                  max: 150,
+                  step: 5,
+                  decimalPlaces: 2,
+                  key: 'height'
+                })
+              ]
+            },
             {
               groupName: strings.ColorGroupName,
               groupFields: [
@@ -410,6 +445,12 @@ export default class SvgHeroWebPartWebPart extends BaseClientSideWebPart<ISvgHer
                   onPropertyChange: this.onPropertyPaneFieldChanged,
                   properties: this.properties,
                   key: 'colorShoes'
+                }),
+                PropertyPaneButton('reset',{
+                  text: strings.ResetButtonLabel,
+                  buttonType: PropertyPaneButtonType.Command,
+                  icon: 'Warning',
+                  onClick: this.resetToDefault.bind(this)
                 })
               ]
             }

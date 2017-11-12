@@ -2,6 +2,7 @@ define([], function() {
   return {
     PropertyPaneDescription: "Customize your PnP Hero!",
     ColorGroupName: "Colors",
+    SizeGroupName: "Size",
     DescriptionFieldLabel: "Description Field",
     PantsFieldLabel: "Pants",
     HairFieldLabel: "Hair",
@@ -12,6 +13,8 @@ define([], function() {
     DiaperFieldLabel: "Diaper",
     ShoesFieldLabel: "Shoes",
     ShirtFieldLabel: "Shirt",
-    LogoFieldLabel: "Logo"
+    LogoFieldLabel: "Logo",
+    HeightFieldLabel: "Height",
+    ResetButtonLabel: "Reset to Default Colors"
   }
 });

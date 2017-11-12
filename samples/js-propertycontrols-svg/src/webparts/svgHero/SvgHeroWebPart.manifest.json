@@ -29,7 +29,8 @@
       "colorDiaper": "#262626",
       "colorShoes": "#0078d7",
       "colorShirt": "#0078d7",
-      "colorLogo": "#ffffff"
+      "colorLogo": "#ffffff",
+      "height": 150
     }
   }]
 }
