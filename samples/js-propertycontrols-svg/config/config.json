@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "SvgHeroWebPartStrings": "lib/webparts/svgHero/loc/{locale}.js"
+    "SvgHeroWebPartStrings": "lib/webparts/svgHero/loc/{locale}.js",
+    "PropertyControlStrings": "./node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }
