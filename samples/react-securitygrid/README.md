@@ -1,7 +1,17 @@
 # SPFX React Grid
 
 ## Summary
-React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web.
+React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:
+![config panel](./src/images/MainDisplay.PNG)
+
+The display shows a 'filled-in' circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group).
+
+The user can change the permission being tested by cliking the Permission in the command bae and selecting a new Permission:
+
+![permissionpanel](./src/images/select PermissionsPopout.PNG)
+
+The user can change the permission being tested by cliking the Permission in the command bae and selecting a new Permission:
+
 
 The configuration panel of the webpart is show below. It has two buttons—one to configure the columns that will be displayed on the grid, and another to configure the lists that contain the data to be edited.
 ![config panel](./src/images/Configuration.PNG)
