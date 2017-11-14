@@ -1,0 +1,19 @@
+import { SPSiteUser } from "../../SPSecurityService";
+import { SPPermission } from "@microsoft/sp-page-context";
+import {IPropertyPaneDropdownOption} from "@microsoft/sp-webpart-base";
+import { GraphHttpClient } from "@microsoft/sp-http";
+export interface ISpSecurityProps {
+  users: SPSiteUser[];
+  permission: string;
+  showHiddenLists: boolean;
+  showCatalogs:boolean;
+  getPermissionTypes:()=> IPropertyPaneDropdownOption[];
+  graphHttpClient: GraphHttpClient;
+  letUserSelectPermission:boolean;
+  letUserSelectUsers:boolean;
+  letUserSelectLists:boolean;
+  includeAdminSelectedLists:boolean; // true to inlude them, false to excluder
+  adminSelectedLists:string[];
+  listTitleColumnWidth:number;
+  
+}
