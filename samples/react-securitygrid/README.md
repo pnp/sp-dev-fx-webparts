@@ -9,19 +9,19 @@ Empty libraries are displayed withh a black folder icon, those with items are di
 
 The user can change the permission being tested by cliking the Permission in the command bar and selecting a new Permission:
 
-![permissionpanel](./src/images/selectPermissionsPopout.PNG)
+![permission panel](./src/images/selectPermissionsPopout.PNG)
 
 The user can change which users are being shown in the grid by selecting the users button in the command bar and selecting a desired users:
 
-![permissionpanel](./src/images/selectusersPopout.PNG)
+![Select users](./src/images/SelectUsersPopout.PNG)
 
 The user can change which lists are being shown in the grid by selecting the lists button in the command bar and selecting a desired lists:
 
-![permissionpanel](./src/images/selectlistsPopout.PNG)
+![Select Lists](./src/images/Selectlistspopout.PNG)
 
 The user can change alternate between displaying user names and emails  selecting the Show Email/Show Name button in the command bar and selecting the desired option:
 
-![permissionpanel](./src/images/selectDisplayModePopout.PNG)
+![Select Mode](./src/images/SelectDisplayModePopout.PNG)
 
 
 
@@ -47,7 +47,7 @@ The Initial Title column width determines the initial width of the Title column(
 
 
 The second configuarion pannel allows the owner to configure the List Settings
-![columnDefinitions panel](./src/images/listConfiguration.PNG)
+![List Confoguration panel](./src/images/ListConfiguration.PNG)
 
 List Settings 
 
