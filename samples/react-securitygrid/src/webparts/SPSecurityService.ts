@@ -112,7 +112,7 @@ export class SPRoleAssignment {
 }
 export class Helpers {
   public static doesUserHavePermission(securableObject, user, requestedpermission: SPPermission, roles, siteGroups) {
-
+    debugger;
     const permissions: SPBasePermissions[] = Helpers.getUserPermissionsForObject(securableObject, user, roles, siteGroups);
 
 
@@ -276,7 +276,10 @@ export default class SPSecurityService {
               userId: null // external user
             };
             if (roleAssignmentObject.Member.UserId) {
-              roleAssignment.userId = roleAssignmentObject.Member.UserId;
+              roleAssignment.userId = new SPExternalUser();
+              roleAssignment.userId.nameId = roleAssignmentObject.Member.UserId.NameId;
+              roleAssignment.userId.nameIdIssuer = roleAssignmentObject.Member.UserId.NameIdIssuer;
+             // roleAssignment.userId = roleAssignmentObject.Member.UserId;
             }
             if (roleAssignmentObject.Member.Users) {
               for (let roleAssignmentMemberUser of roleAssignmentObject.Member.Users) {
