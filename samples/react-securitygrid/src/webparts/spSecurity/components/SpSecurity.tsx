@@ -27,7 +27,8 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       securityInfo: { siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [] },
       permission: this.props.permission,
       showUserPanel: false,
-      showListPanel: false
+      showListPanel: false,
+      showEmail: this.props.showEmail
 
     };
     this.getIcon = this.getIcon.bind(this);
@@ -50,24 +51,25 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         securityInfo: response,
         permission: this.props.permission,
         showUserPanel: false,
-        showListPanel: false
+        showListPanel: false,
+        showEmail: this.props.showEmail
 
       };
-   
-      // inlclude\exclude lists selected in property pane
-      state.securityInfo.lists=state.securityInfo.lists.filter((list)=>{
-        if (this.props.includeAdminSelectedLists){ // include the lists
 
-          if (find(this.props.adminSelectedLists,(asl)=>{    return list.id===asl; })){
+      // inlclude\exclude lists selected in property pane
+      state.securityInfo.lists = state.securityInfo.lists.filter((list) => {
+        if (this.props.includeAdminSelectedLists) { // include the lists
+
+          if (find(this.props.adminSelectedLists, (asl) => { return list.id === asl; })) {
             return true;
-          }else{
+          } else {
             return false;
           }
-        }else{ // exclude the lists
-          if (find(this.props.adminSelectedLists,(asl)=>{    return list.id===asl; })){
+        } else { // exclude the lists
+          if (find(this.props.adminSelectedLists, (asl) => { return list.id === asl; })) {
             return false;
           }
-          else{
+          else {
             return true;
           }
 
@@ -220,7 +222,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       if (user.isSelected) {
         columns.push({
           key: user.id.toString(),
-          name: user.name,
+          name: this.state.showEmail ? user.upn : user.name,
           fieldName: "",
           minWidth: 20,
           maxWidth: 20,
@@ -239,7 +241,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         key: pt.text,
         name: pt.text,
         onClick: (event, item) => {
-     
+
           this.setState((current) => ({ ...current, permission: item.name }));
         }
 
@@ -257,7 +259,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       return (su.id === userid)
     }).isSelected = value;
     this.setState(this.state);
-  
+
 
   }
   private setShowListPanel(showPanel: boolean): () => void {
@@ -272,7 +274,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }) as SPList;
     list.isSelected = value;
     this.setState(this.state);
-    
+
 
   }
 
@@ -284,11 +286,11 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       name: "Add All Users",
       itemType: ContextualMenuItemType.Normal,
       onClick: (event, item) => {
-  
-        for (let item of this.state.securityInfo.siteUsers ){
-          item.isSelected=true;
-    }
-    
+
+        for (let item of this.state.securityInfo.siteUsers) {
+          item.isSelected = true;
+        }
+
         this.setState(this.state);
       }
     });
@@ -298,9 +300,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       name: "Remove All Users",
       itemType: ContextualMenuItemType.Normal,
       onClick: (event, item) => {
-    
-        for (let item of this.state.securityInfo.siteUsers ){
-              item.isSelected=false;
+
+        for (let item of this.state.securityInfo.siteUsers) {
+          item.isSelected = false;
         }
         this.setState(this.state);
       }
@@ -312,10 +314,10 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       name: "Add All Lists",
       itemType: ContextualMenuItemType.Normal,
       onClick: (event, item) => {
-      
-        for (let item of this.state.securityInfo.lists ){
-          if (item instanceof SPList){
-              item.isSelected=true;
+
+        for (let item of this.state.securityInfo.lists) {
+          if (item instanceof SPList) {
+            item.isSelected = true;
           }
         }
         this.setState(this.state);
@@ -327,9 +329,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       name: "Remove All Lists",
       itemType: ContextualMenuItemType.Normal,
       onClick: (event, item) => {
-        for (let item of this.state.securityInfo.lists ){
-          if (item instanceof SPList){
-              item.isSelected=false;
+        for (let item of this.state.securityInfo.lists) {
+          if (item instanceof SPList) {
+            item.isSelected = false;
           }
         }
         this.setState(this.state);
@@ -339,8 +341,17 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     let commands: IContextualMenuItem[] = [];
     if (this.props.letUserSelectPermission) {
       commands.push({
+        title:"Permission",
+        name:"Permission:",
+        key:
+        "permissionlabel"
+
+      })
+      commands.push({
         icon: "AzureKeyVault",
         key: "SecurityLevel",
+        title: "Permission",
+        label:"sss",
         name: this.state.permission ? this.state.permission : "Select Permission",
         itemType: ContextualMenuItemType.Normal,
         items: this.getPermissionLevels()
@@ -353,9 +364,8 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         name: "Users",
         itemType: ContextualMenuItemType.Normal,
         onClick: (event, item) => {
-                  this.setState((current) => ({ ...current, showUserPanel: !current.showUserPanel }));
+          this.setState((current) => ({ ...current, showUserPanel: !current.showUserPanel }));
         }
-
       });
     }
     if (this.props.letUserSelectLists) {
@@ -366,22 +376,47 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         name: "Lists",
         itemType: ContextualMenuItemType.Normal,
         onClick: (event, item) => {
-         
           this.setState((current) => ({ ...current, showListPanel: !current.showListPanel }));
         }
       });
     }
+    commands.push({
+
+      key: "DisplayMode",
+      title: "DisplayMode",
+      name: this.state.showEmail ? "Show Email" : "Show Name",
+      itemType: ContextualMenuItemType.Normal,
+      items: [{
+        key: "ShowName",
+        name: "Show Name",
+        onClick: (event, item) => {
+          debugger;
+          this.setState((current) => ({ ...current, showEmail: false }));
+        }
+
+      },
+      {
+        key: "ShowEmail",
+        name: "Show Email",
+        onClick: (event, item) => {
+          debugger;
+          this.setState((current) => ({ ...current, showEmail: true }));
+        }
+
+      }]
+    });
+
     let columns: Array<IColumn> = [
-      { key: "title", name: "Title", isResizable:true, fieldName: "title", minWidth: this.props.listTitleColumnWidth,maxWidth:this.props.listTitleColumnWidth, onRender: this.renderTitle, isRowHeader: true },
+      { key: "title", name: "Title", isResizable: true, fieldName: "title", minWidth: this.props.listTitleColumnWidth, maxWidth: this.props.listTitleColumnWidth, onRender: this.renderTitle, isRowHeader: true },
     ];
     let displayColumns: IColumn[] = this.addUserColumns(columns, this.state.securityInfo.siteUsers);
 
 
     let displayItems: (SPList | SPListItem)[] = filter(this.state.securityInfo.lists, (item) => {
-      const isAList= item instanceof SPList;
-      const isAListItem= item instanceof SPListItem;
+      const isAList = item instanceof SPList;
+      const isAListItem = item instanceof SPListItem;
       return (
-        
+
         (item instanceof SPList && item.isSelected)
         ||
         ((item instanceof SPListItem) && (this.parentIsExpanded(item)))
@@ -414,7 +449,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
               {
                 key: "isSelected", name: "Select", fieldName: "isSelected", minWidth: 30, onRender: (item) => <Checkbox
                   checked={item.isSelected}
-                  onChange={(element, value) => {  this.selectUser(item.id, value); }}
+                  onChange={(element, value) => { this.selectUser(item.id, value); }}
                 />
               },
               { key: "id", name: "Name", fieldName: "name", minWidth: 400 },
@@ -438,7 +473,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
               {
                 key: "isSelected", name: "Select", fieldName: "isSelected", minWidth: 30, onRender: (item) => <Checkbox
                   checked={item.isSelected}
-                  onChange={(element, value) => {  this.selectList(item.id, value); }}
+                  onChange={(element, value) => { this.selectList(item.id, value); }}
                 />
               },
 

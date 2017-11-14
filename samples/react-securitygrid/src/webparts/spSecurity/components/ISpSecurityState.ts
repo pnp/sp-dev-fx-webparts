@@ -4,4 +4,5 @@ export interface ISpSecurityState {
   permission: string;
   showUserPanel:boolean;
   showListPanel:boolean;
+  showEmail:boolean; //0 show name, 1 show email
 }

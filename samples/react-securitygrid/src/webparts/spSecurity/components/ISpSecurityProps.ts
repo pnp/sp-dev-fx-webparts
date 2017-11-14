@@ -15,5 +15,7 @@ export interface ISpSecurityProps {
   includeAdminSelectedLists:boolean; // true to inlude them, false to excluder
   adminSelectedLists:string[];
   listTitleColumnWidth:number;
+  showEmail:boolean; //0 show name, 1 show email
+  
   
 }

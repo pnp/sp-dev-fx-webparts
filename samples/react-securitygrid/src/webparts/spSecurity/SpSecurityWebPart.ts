@@ -18,6 +18,7 @@ import { ISpSecurityProps } from "./components/ISpSecurityProps";
 
 import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
 import { PropertyPaneSlider } from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneSlider/PropertyPaneSlider";
+import PropertyPane from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPane/PropertyPane";
 
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
   public onInit(): Promise<void> {
@@ -36,6 +37,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       permission: this.properties.permission,
       showHiddenLists: this.properties.showHiddenLists,
       showCatalogs: this.properties.showCatalogs,
+      showEmail:this.properties.showEmail,
       letUserSelectPermission: this.properties.letUserSelectPermission,
       letUserSelectUsers: this.properties.letUserSelectUsers,
       letUserSelectLists: this.properties.letUserSelectLists,
@@ -90,6 +92,14 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                   label:"Initial title column width",
                   min:1,
                   max:1000
+                }),
+                PropertyPaneToggle("showEmail",{
+                  label: "Show Email or Name",
+                  onText:"Show Email",
+                  offText:"Show Name",
+                  
+
+
                 }),
                 PropertyPaneCheckbox("showHiddenLists", {
                   text: "Show Hidden Lists"
