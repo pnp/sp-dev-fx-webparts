@@ -37,6 +37,7 @@ export class SPSiteUser {
   public userId: SPExternalUser;
   public upn: string;
   public isSelected: boolean; //should user be shown in UI
+  public principalType:number; //4=Security group, 1 = user, 2=DL, 8=SP Group
 }
 
 export class SPRoleDefinition {
@@ -324,6 +325,7 @@ export default class SPSecurityService {
           user.isSelected = true;
           user.id = u.Id;
           user.name = u.Title;
+          user.principalType=u.PrincipalType;
           user.upn = u.LoginName.split('|')[2];
           if (u.UserId) {
             user.userId = new SPExternalUser();
