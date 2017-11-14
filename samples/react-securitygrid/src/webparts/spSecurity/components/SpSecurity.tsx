@@ -418,8 +418,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
 
     let displayItems: (SPList | SPListItem)[] = filter(this.state.securityInfo.lists, (item) => {
-      const isAList = item instanceof SPList;
-      const isAListItem = item instanceof SPListItem;
+      
       return (
 
         (item instanceof SPList && item.isSelected)
@@ -474,7 +473,10 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           <DetailsList
             selection={this.listSelection}
             selectionMode={SelectionMode.none}
-            items={this.state.securityInfo.lists}
+            items={filter(this.state.securityInfo.lists,(l)=>{
+              
+              return l instanceof SPList;
+            })}
             columns={[
               {
                 key: "isSelected", name: "Select", fieldName: "isSelected", minWidth: 30, onRender: (item) => <Checkbox
