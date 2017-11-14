@@ -37,15 +37,15 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       permission: this.properties.permission,
       showHiddenLists: this.properties.showHiddenLists,
       showCatalogs: this.properties.showCatalogs,
-      showEmail:this.properties.showEmail,
-      showSecurityGroups:this.properties.showSecurityGroups,
-      showUsers:this.properties.showUsers,
+      showEmail: this.properties.showEmail,
+      showSecurityGroups: this.properties.showSecurityGroups,
+      showUsers: this.properties.showUsers,
       letUserSelectPermission: this.properties.letUserSelectPermission,
       letUserSelectUsers: this.properties.letUserSelectUsers,
       letUserSelectLists: this.properties.letUserSelectLists,
       includeAdminSelectedLists: this.properties.includeAdminSelectedLists,
       adminSelectedLists: this.properties.adminSelectedLists,
-      listTitleColumnWidth:this.properties.listTitleColumnWidth,
+      listTitleColumnWidth: this.properties.listTitleColumnWidth,
       users: this.properties.users,
       getPermissionTypes: this.getPermissionTypes,
       graphHttpClient: this.context.graphHttpClient
@@ -79,29 +79,31 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "Configuration"
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "Permission Settings",
               groupFields: [
 
                 PropertyPaneDropdown("permission", {
                   label: "Permission Type",
                   options: this.getPermissionTypes()
                 }),
-                PropertyPaneSlider("listTitleColumnWidth",{
-                  label:"Initial title column width",
-                  min:1,
-                  max:1000
+                PropertyPaneCheckbox("letUserSelectPermission", {
+                  text: "Let user select Permission"
                 }),
-                PropertyPaneToggle("showEmail",{
+
+              ]
+            },
+            {
+              groupName: "User Settings",
+              groupFields: [
+
+                PropertyPaneToggle("showEmail", {
                   label: "Show Email or Name",
-                  onText:"Show Email",
-                  offText:"Show Name",
-                  
-
-
+                  onText: "Show Email",
+                  offText: "Show Name",
                 }),
                 PropertyPaneCheckbox("showSecurityGroups", {
                   text: "Show Security Groups"
@@ -109,20 +111,19 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                 PropertyPaneCheckbox("showUsers", {
                   text: "Show Users"
                 }),
-                PropertyPaneCheckbox("showHiddenLists", {
-                  text: "Show Hidden Lists"
-                }),
-                PropertyPaneCheckbox("showCatalogs", {
-                  text: "Show System List"
-                }),
-                PropertyPaneCheckbox("letUserSelectPermission", {
-                  text: "Let user select Permission"
-                }),
+
                 PropertyPaneCheckbox("letUserSelectUsers", {
                   text: "Let user select Users"
-                }),
-                PropertyPaneCheckbox("letUserSelectLists", {
-                  text: "Let user select Lists"
+                })
+              ]
+            },
+            {
+              groupName: "Display Settings",
+              groupFields: [
+                PropertyPaneSlider("listTitleColumnWidth", {
+                  label: "Initial title column width",
+                  min: 1,
+                  max: 1000
                 }),
               ]
             }
@@ -130,18 +131,33 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
         },
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "Configure Lists"
           },
           groups: [
+            {
+              groupName: "List Settings",
+              groupFields: [
+                PropertyPaneCheckbox("showHiddenLists", {
+                  text: "Show Hidden Lists"
+                }),
+                PropertyPaneCheckbox("showCatalogs", {
+                  text: "Show System List"
+                }),
+                PropertyPaneCheckbox("letUserSelectLists", {
+                  text: "Let user select Lists"
+                }),
+
+              ]
+            },
             {
               groupName: "Select Lists",
               groupFields: [
                 PropertyPaneToggle("includeAdminSelectedLists", {
                   label: "Inclued/exclude selected lists",
-                  onText:"Include selected lists",
-                  offText:"Exclude selected lists",
+                  onText: "Include selected lists",
+                  offText: "Exclude selected lists",
 
-                  
+
                 }),
                 PropertyFieldListPicker("adminSelectedLists", {
                   label: 'Select lists to include/exclude',
@@ -155,7 +171,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId',
-                  multiSelect:true
+                  multiSelect: true
                 }),
               ]
             }
