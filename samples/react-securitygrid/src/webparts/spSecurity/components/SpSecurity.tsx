@@ -431,6 +431,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           items={displayItems}
           columns={displayColumns}
           selectionMode={SelectionMode.none}
+          className="SPFXSecurityGrid"
 
         />
         <Panel
