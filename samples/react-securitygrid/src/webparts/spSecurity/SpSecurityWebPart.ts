@@ -141,7 +141,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                   text: "Show Hidden Lists"
                 }),
                 PropertyPaneCheckbox("showCatalogs", {
-                  text: "Show System List"
+                  text: "Show System Lists"
                 }),
                 PropertyPaneCheckbox("letUserSelectLists", {
                   text: "Let user select Lists"
