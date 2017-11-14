@@ -220,16 +220,21 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   public addUserColumns(columns: IColumn[], users: SPSiteUser[]): IColumn[] {
     for (let user of users) {
       if (user.isSelected) {
-        columns.push({
-          key: user.id.toString(),
-          name: this.state.showEmail ? user.upn : user.name,
-          fieldName: "",
-          minWidth: 20,
-          maxWidth: 20,
-          onRender: this.renderUserItem,
-          headerClassName: "rotatedColumnHeader",
+        if (
+          (user.principalType === 1 && this.props.showUsers)
+          ||
+          (user.principalType === 4 && this.props.showSecurityGroups)
+        )
+          columns.push({
+            key: user.id.toString(),
+            name: this.state.showEmail ? user.upn : user.name,
+            fieldName: "",
+            minWidth: 20,
+            maxWidth: 20,
+            onRender: this.renderUserItem,
+            headerClassName: "rotatedColumnHeader",
 
-        });
+          });
       }
     }
     return columns;
@@ -341,17 +346,17 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     let commands: IContextualMenuItem[] = [];
     if (this.props.letUserSelectPermission) {
       commands.push({
-        title:"Permission",
-        name:"Permission:",
+        title: "Permission",
+        name: "Permission:",
         key:
-        "permissionlabel"
+          "permissionlabel"
 
       })
       commands.push({
         icon: "AzureKeyVault",
         key: "SecurityLevel",
         title: "Permission",
-        label:"sss",
+        label: "sss",
         name: this.state.permission ? this.state.permission : "Select Permission",
         itemType: ContextualMenuItemType.Normal,
         items: this.getPermissionLevels()

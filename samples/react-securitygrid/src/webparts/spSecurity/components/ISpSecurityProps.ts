@@ -16,6 +16,8 @@ export interface ISpSecurityProps {
   adminSelectedLists:string[];
   listTitleColumnWidth:number;
   showEmail:boolean; //0 show name, 1 show email
+  showSecurityGroups:boolean; // show PrincipalType=4
+  showUsers:boolean; // show PrincipalType=1
   
   
 }

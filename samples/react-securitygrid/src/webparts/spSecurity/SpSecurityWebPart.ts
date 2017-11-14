@@ -38,6 +38,8 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       showHiddenLists: this.properties.showHiddenLists,
       showCatalogs: this.properties.showCatalogs,
       showEmail:this.properties.showEmail,
+      showSecurityGroups:this.properties.showSecurityGroups,
+      showUsers:this.properties.showUsers,
       letUserSelectPermission: this.properties.letUserSelectPermission,
       letUserSelectUsers: this.properties.letUserSelectUsers,
       letUserSelectLists: this.properties.letUserSelectLists,
@@ -100,6 +102,12 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                   
 
 
+                }),
+                PropertyPaneCheckbox("showSecurityGroups", {
+                  text: "Show Security Groups"
+                }),
+                PropertyPaneCheckbox("showUsers", {
+                  text: "Show Users"
                 }),
                 PropertyPaneCheckbox("showHiddenLists", {
                   text: "Show Hidden Lists"
