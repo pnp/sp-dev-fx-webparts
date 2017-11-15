@@ -9,6 +9,8 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "types": [
+      "es6-promise",
+      "es6-collections",
       "webpack-env"
     ]
   }
