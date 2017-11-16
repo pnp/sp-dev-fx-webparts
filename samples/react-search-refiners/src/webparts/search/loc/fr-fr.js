@@ -1,7 +1,8 @@
 define([], function() {
   return {
     "SearchSettingsGroupName": "Paramètres de recherche",
-    "SearchQueryFieldLabel": "Requête de recherche",
+    "SearchQueryKeywordsFieldLabel": "Mots clés de recherche",
+    "QueryTemplateFieldLabel": "Modèle de reqûete",
     "SelectedPropertiesFieldLabel": "Propriétés à récupérer",
     "LoadingMessage": "Les résultats sont en cours de chargement, veuillez patienter...",
     "MaxResultsCount": "Nombre de résulats à récupérer par page",

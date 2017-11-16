@@ -3,7 +3,8 @@ import IFilterPanelProps from "./IFilterPanelProps";
 import IFilterPanelState from "./IFilterPanelState";
 import { PrimaryButton, DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Toggle } from  'office-ui-fabric-react/lib/Toggle';
 import * as strings from "SearchWebPartStrings";
 import { IRefinementResult, IRefinementValue, IRefinementFilter } from "../../../models/ISearchResult";
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -76,12 +77,12 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                                 };
 
                                 return (
-                                    <Toggle
+                                    <Checkbox
                                     key={ j }
                                     checked= { this._isInFilterSelection(currentRefinement) }
                                     disabled={ false }
-                                    label={ Text.format(refinementValue.RefinementValue + " ({0})",  refinementValue.RefinementCount)} 
-                                    onChanged= {(checked: boolean) => {                                
+                                    label={ Text.format(refinementValue.RefinementValue + " ({0})",  refinementValue.RefinementCount)}
+                                    onChange= {(ev, checked: boolean) => {                                
                                         // Every time we chek/uncheck a filter, a complete new search request is performed with current selected refiners
                                         checked ? this._addFilter(currentRefinement): this._removeFilter(currentRefinement);
                                     }} />

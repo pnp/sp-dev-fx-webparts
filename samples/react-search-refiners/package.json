@@ -11,9 +11,9 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "~1.3.0",
-    "@microsoft/sp-lodash-subset": "~1.3.0",
-    "@microsoft/sp-webpart-base": "~1.3.0",
+    "@microsoft/sp-core-library": "~1.3.4",
+    "@microsoft/sp-lodash-subset": "~1.3.4",
+    "@microsoft/sp-webpart-base": "~1.3.4",
     "@pnp/spfx-controls-react": "^1.0.0-beta.6",
     "@pnp/spfx-property-controls": "1.0.0-beta.2",
     "@types/react": "15.0.38",
@@ -33,9 +33,9 @@
     "sp-pnp-js": "3.0.1"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.3.0",
-    "@microsoft/sp-module-interfaces": "~1.3.0",
-    "@microsoft/sp-webpart-workbench": "~1.3.0",
+    "@microsoft/sp-build-web": "~1.3.4",
+    "@microsoft/sp-module-interfaces": "~1.3.4",
+    "@microsoft/sp-webpart-workbench": "~1.3.4",
     "gulp": "~3.9.1",
     "@types/chai": ">=3.4.34 <3.6.0",
     "@types/mocha": ">=2.2.33 <2.6.0"

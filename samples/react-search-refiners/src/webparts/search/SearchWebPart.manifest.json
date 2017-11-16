@@ -20,7 +20,8 @@
     "description": { "default": "Displays search results with customizable dynamic refiners" },
     "officeFabricIconFontName": "Search",
     "properties": {
-      "searchQuery": "",
+      "queryKeywords": "",
+      "queryTemplate": "",
       "refiners": "",
       "selectedProperties": "",
       "maxResultsCount": 10

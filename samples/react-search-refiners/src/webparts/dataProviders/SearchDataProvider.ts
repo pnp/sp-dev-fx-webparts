@@ -15,12 +15,16 @@ class SearchDataProvider implements ISearchDataProvider {
     private _context: IWebPartContext;
     private _appSearchSettings: SearchQuery;
     private _selectedProperties: string[];
+    private _queryTemplate: string;
 
     public get resultsCount(): number { return this._resultsCount; }
     public set resultsCount(value: number) { this._resultsCount = value; }
 
     public set selectedProperties(value:  string[]) { this._selectedProperties = value; }
     public get selectedProperties(): string[] { return this._selectedProperties; }
+
+    public set queryTemplate(value: string) { this._queryTemplate = value; }
+    public get queryTemplate(): string { return this._queryTemplate; }
 
     public constructor(webPartContext: IWebPartContext) {
         this._context = webPartContext;
@@ -53,15 +57,16 @@ class SearchDataProvider implements ISearchDataProvider {
         let sortedRefiners: string[] = [];
 
         // Search paging option is one based
-        let page = pageNumber ? pageNumber: 1;
+        let page = pageNumber ? pageNumber : 1;
 
         searchQuery.ClientType = "ContentSearchRegular";
+        searchQuery.Querytext = query;
 
         // To be able to use search query variable according to the current context
         // http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html
-        searchQuery.QueryTemplate = query ? query : "";;
+        searchQuery.QueryTemplate = this._queryTemplate;
 
-        searchQuery.RowLimit = this._resultsCount;
+        searchQuery.RowLimit = this._resultsCount ? this._resultsCount : 50;
         searchQuery.SelectProperties = this._selectedProperties;
         searchQuery.TrimDuplicates = false;
 

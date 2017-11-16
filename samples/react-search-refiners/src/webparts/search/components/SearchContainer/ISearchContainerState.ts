@@ -1,4 +1,4 @@
-import { ISearchResults, IRefinementFilter } from "../../../models/ISearchResult";
+import { ISearchResults, IRefinementFilter, IRefinementResult } from "../../../models/ISearchResult";
 
 interface ISearchContainerState {
     results?: ISearchResults;

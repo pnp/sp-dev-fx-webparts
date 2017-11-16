@@ -91,7 +91,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
     public componentDidMount() {
 
         // Async calls
-        this._getSearchResults(this.props.searchQuery, this.props.refiners, this.state.selectedFilters, this.state.currentPage);
+        this._getSearchResults(this.props.queryKeywords, this.props.refiners, this.state.selectedFilters, this.state.currentPage);
     }
 
     public componentWillReceiveProps(nextProps: ISearchContainerProps): void {
@@ -102,12 +102,12 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
         });
 
         // We reset the page number and refinement filters
-        this._getSearchResults(nextProps.searchQuery, nextProps.refiners, [], 1);
+        this._getSearchResults(nextProps.queryKeywords, nextProps.refiners, [], 1);
     }
 
     private _getSearchResults(searchQuery: string, refiners: string, refinementFilters?: IRefinementFilter[], pageNumber?: number) {
    
-        this.props.dataProvider.search(searchQuery, refiners, refinementFilters, pageNumber).then((searchResults: ISearchResults) => {
+        this.props.searchDataProvider.search(searchQuery, refiners, refinementFilters, pageNumber).then((searchResults: ISearchResults) => {
             
             this.setState({
                 results: searchResults,
@@ -132,7 +132,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
      */
     private _onUpdateFilters(newFilters: IRefinementFilter[]) {
 
-        this._getSearchResults(this.props.searchQuery, this.props.refiners, newFilters, 1);
+        this._getSearchResults(this.props.queryKeywords, this.props.refiners, newFilters, 1);
 
         this.setState({
             selectedFilters: newFilters,
@@ -145,7 +145,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
      * @param pageNumber The page mumber to get
      */
     private _onPageUpdate(pageNumber: number) {
-        this._getSearchResults(this.props.searchQuery, this.props.refiners, this.state.selectedFilters, pageNumber);  
+        this._getSearchResults(this.props.queryKeywords, this.props.refiners, this.state.selectedFilters, pageNumber);  
         
         this.setState({
             currentPage: pageNumber,
