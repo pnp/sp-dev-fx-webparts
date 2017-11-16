@@ -6,6 +6,7 @@ import { Dropdown, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { ITextFieldProps, TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 
 import * as moment from 'moment';
 
@@ -18,7 +19,6 @@ import DateFormField from './DateFormField';
 import NumberFormField from './NumberFormField';
 
 import { Locales } from '../../../../common/Locales';
-import { initializeIcons } from '@uifabric/icons';
 
 import styles from './SPFormField.module.scss';
 
@@ -31,13 +31,22 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
   let fieldControl = null;
   const fieldType = props.fieldSchema.FieldType;
   if (props.controlMode === ControlMode.Display) {
-    let value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
     if (fieldType === 'Lookup') {
-      if ((props.value) && (props.value.length > 0) && (props.value[0].lookupValue))  { value = props.value[0].lookupValue; }
+      if ((props.value) && (props.value.length > 0) && (props.value[0].lookupValue))  {
+        const value = props.value[0].lookupValue;
+        const linkUrl = `${props.fieldSchema.BaseDisplayFormUrl}&ListId={${props.fieldSchema.LookupListId}}&ID=${props.value[0].lookupId}`;
+        fieldControl = <Link href={linkUrl}>{value}</Link>;
+      }
     } else if (fieldType === 'User') {
-      if ((props.value) && (props.value.length > 0) && (props.value[0].title))  { value = props.value[0].title; }
+      if ((props.value) && (props.value.length > 0) && (props.value[0].title))  {
+        const value = props.value[0].title;
+        const linkUrl = `${props.fieldSchema.ListFormUrl}?PageType=4&ListId=${props.fieldSchema.UserInfoListId}&ID=${props.value[0].id}`;
+        fieldControl = <Link href={linkUrl}>{value}</Link>;
+      }
+    } else {
+      const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
+      fieldControl = <span>{value}</span>;
     }
-    fieldControl = <span>{value}</span>;
   } else {
     if ((fieldType === 'Text') || (fieldType === 'Note')) {
       fieldControl = GetTextFieldControl(props);
@@ -55,7 +64,6 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
       const isObjValue = (props.value) && (typeof props.value !== 'string');
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
       fieldControl = <TextField
-                {...props}
                 readOnly
                 multiline={isObjValue}
                 value={value}
@@ -78,7 +86,6 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
 
 function GetTextFieldControl(props: ISPFormFieldProps) {
   return <TextField
-            {...props}
             className='ard-TextFormField'
             name={props.fieldSchema.InternalName}
             value={props.value}
@@ -105,7 +112,6 @@ function GetBooleanFieldControl(props: ISPFormFieldProps) {
 function GetChoiceFieldControl(props: ISPFormFieldProps) {
   const options = (props.fieldSchema.Required) ? props.fieldSchema.Choices : [''].concat(props.fieldSchema.Choices);
   return <Dropdown
-            {...props}
             className={css(styles.dropDownFormField, 'ard-choiceFormField')}
             options = {options.map( (option: string) => ({key: option, text: option}) )}
             selectedKey = {props.value}
@@ -118,7 +124,6 @@ function GetLookupFieldControl(props: ISPFormFieldProps) {
   if (!props.required) { options = [{key: 0, text: '(None)'}].concat(options); }
   const value = props.value ? Number(props.value.split(';#')[0]) : 0;
   return <Dropdown
-            {...props}
             className={css(styles.dropDownFormField, 'ard-lookupFormField')}
             options = {options}
             selectedKey = {value}

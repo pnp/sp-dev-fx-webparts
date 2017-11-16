@@ -226,10 +226,10 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
   private async readData(listUrl: string, formType: ControlMode, id?: number): Promise<void> {
     try {
       if ((formType === ControlMode.New) || !id) {
-        this.setState({ ...this.state, data: {}, originalData: {}, isLoadingData: false});
+        this.setState({ ...this.state, data: {}, originalData: {}, fieldErrors: {}, isLoadingData: false});
         return;
       }
-      this.setState({ ...this.state, data: {}, originalData: {}, isLoadingData: true});
+      this.setState({ ...this.state, data: {}, originalData: {}, fieldErrors: {}, isLoadingData: true});
       const dataObj = await this.listFormService.getDataForForm( this.props.spContext.pageContext.web.absoluteUrl, listUrl, id, formType );
       // We shallow clone here, so that changing values on dataObj object fields won't be changing in originalData too
       const dataObjOriginal = { ...dataObj };
@@ -244,14 +244,17 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
   @autobind
   private valueChanged(fieldName: string, newValue: any) {
     this.setState((prevState, props) => {
-        prevState.data[fieldName] = newValue;
-        // validation
-        prevState.fieldErrors[fieldName] = '';
-        if (this.state.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) {
-          if (!newValue) { prevState.fieldErrors[fieldName] = 'Please enter a value!'; }
-        }
-        return prevState;
-
+        return {
+          ...prevState,
+          data: {...prevState.data, [fieldName]: newValue},
+          fieldErrors: {
+            ...prevState.fieldErrors,
+            [fieldName]:
+              (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue 
+              ? 'Please enter a value!'
+              : ''
+            }
+        };
       },
     );
   }
@@ -319,8 +322,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
 
   private clearError(idx: number) {
     this.setState( (prevState, props) => {
-      prevState.errors.splice( idx, 1 );
-      return prevState;
+      return {...prevState, errors: prevState.errors.splice( idx, 1 )};
     } );
   }
 
