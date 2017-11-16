@@ -93,6 +93,7 @@ export default class CollapsibleSections extends React.Component<ICollapsibleSec
                         count: 1,
                         startIndex: index,
                         isDropEnabled: true,
+                        isCollapsed: !isEditmode,
                         data: {
                             section: section,          
                         }

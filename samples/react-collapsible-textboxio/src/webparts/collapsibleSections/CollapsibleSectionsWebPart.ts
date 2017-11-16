@@ -9,10 +9,12 @@ import ISection from "../../models/ISection";
 import isEmpty from "lodash-es/isEmpty";
 import { UrlQueryParameterCollection, DisplayMode } from '@microsoft/sp-core-library';
 import * as strings from 'CollapsibleSectionsWebPartStrings';
+import ITextFieldControl from "../../models/ITextFieldControl";
 import "./CollapsibleSections.scss";
 
 export interface ICollapsibleSectionsWebPartProps {
   sections: ISection[];
+  crawledContent: string;
 }
 
 export default class CollapsibleSectionsWebPart extends BaseClientSideWebPart<ICollapsibleSectionsWebPartProps> {
@@ -57,6 +59,19 @@ export default class CollapsibleSectionsWebPart extends BaseClientSideWebPart<IC
     
     // Persist sections into Web Part properties
     this.properties.sections = updatedSections;
+
+    // Flatten the content of sections for search crawling
+    let contents = [];
+    updatedSections.map((section) => {
+      section.controls.map((control) => {
+        if (control.type === "TextFieldControl") {
+          const textFieldControl = control as ITextFieldControl;
+          contents.push(textFieldControl.content);
+        }
+      });
+    });
+
+    this.properties.crawledContent = contents.join();
   }
     
   protected onAfterDeserialize(deserializedObject: any, dataVersion: Version)  {
@@ -73,10 +88,12 @@ export default class CollapsibleSectionsWebPart extends BaseClientSideWebPart<IC
   }   
   
   protected get propertiesMetadata(): IWebPartPropertiesMetadata {
+
+    // By default, the SharePoint serach engine will be take only the 250 first characters in the "Description" managed property
     return {
-      'sections[*].controls[*].content' : { isHtmlString: true },
-      'sections[*].title': { isSearchablePlainText: true }
+      'crawledContent': { isHtmlString: true }
     };
+
   }
 
   public render(): void {

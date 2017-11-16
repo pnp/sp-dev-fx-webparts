@@ -68,36 +68,6 @@ $defaultColor:#212121;
             min-height: 50px;
           }
         }
-
-        /* Styles for the Texbox.io ediotr */
-
-        h1, h2, h3, p, blockquote {
-          color:$defaultColor;
-          line-height: 1.25;
-          letter-spacing: 0.5px;
-          font-family: $defaultFont;
-          margin-bottom:10px;
-        }
-
-        h1 {
-          font-size: 22px;
-        }
-
-        h2 {
-          font-size: 20px;
-        }
-
-        h3 {
-          font-size: 18px;
-        }
-
-        p {
-          font-size: 16px;
-        }
-
-        blockquote {
-          font-size: 16px;
-        }
       }
   }
 }

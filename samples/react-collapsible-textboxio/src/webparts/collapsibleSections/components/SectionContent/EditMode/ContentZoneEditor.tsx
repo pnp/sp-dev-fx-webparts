@@ -3,6 +3,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as tbio from "textboxio";
 import { EnvironmentType, Environment } from "@microsoft/sp-core-library";
+import { Text } from "@microsoft/sp-core-library";
+import * as $ from "jquery";
 
 export default class ContentZoneEditor extends React.Component<IContentZoneEditorProps, null> {
 
@@ -28,9 +30,10 @@ export default class ContentZoneEditor extends React.Component<IContentZoneEdito
         // We save content every time the focus is lost
         // By this way we don't trigger a re render each time the content is updated (textboxio dirty/onChange event). 
         // There is a glitch with the editor if you do it (the cursor position goes wrong)
+        // We use the same CSS class (cke_editable) as the default SharePoint editor to get default styles (h1, h2, etc.)
         return (
             <div className="contentZoneEditor--edit">
-                <div className="editor" ref={ (ref)=> {
+                <div className="editor cke_editable" ref={ (ref)=> {
                     this._refEditor = ref;
                 }} id={ "textbox-io-editor-" + this. _getNewGuid() } onBlur={ this._saveContent }></div>
             </div>
@@ -59,43 +62,55 @@ export default class ContentZoneEditor extends React.Component<IContentZoneEdito
      * Instanciates and sets up textbox.io control in the section
      */
     private _initTextboxIo(elementId: string, props: IContentZoneEditorProps) {
-        
-        let editorInstance = this._textboxio.inline("#" + elementId, {
-            ui: {
-                toolbar: {
-                    items: [
-                        'emphasis',
-                        {  
-                            label  : 'Common',
-                            items : ['styles', 'removeformat', 'font-color']
-                        },
-                        'align',
-                        {
-                            label: 'Align',
-                            items: ['ul', 'ol', 'indent', 'outdent', 'blockquote']
-                        },
-                        {
-                            label: 'Miscellaneous',
-                            items: ['link', 'fileupload','media', 'table', 'hr']
-                        }
-                    ],
-                    draggable: false,
-                },
-                locale: props.locale ? props.locale.split("-")[0] : ''
-            },
-            css : {
-                // Configure a list of available CSS classes   
-                styles : [     
-                    { rule : 'h1'},
-                    { rule : 'h2'},
-                    { rule : 'h3'},
-                    { rule : 'p' },                  
-                ],
-            },
-        });
 
-        // Set default content
-        editorInstance.content.set(props.content);
+        // Check if the DOM element is present before creating the editor
+        if ($("#" + elementId).length > 0) {
+        
+            let editorInstance = this._textboxio.inline("#" + elementId, {
+                ui: {
+                    toolbar: {
+                        items: [
+                            'emphasis',
+                            {  
+                                label  : 'Common',
+                                items : ['styles', 'removeformat', 'font-color']
+                            },
+                            'align',
+                            {
+                                label: 'Align',
+                                items: ['ul', 'ol', 'indent', 'outdent', 'blockquote']
+                            },
+                            {
+                                label: 'Miscellaneous',
+                                items: ['link', 'fileupload','media', 'table', 'hr']
+                            }
+                        ],
+                        draggable: false,
+                    },
+                    locale: props.locale ? props.locale.split("-")[0] : ''
+                },
+                css : {
+                    // Configure a list of available CSS classes   
+                    styles : [     
+                        { rule : 'h1'},
+                        { rule : 'h2'},
+                        { rule : 'h3'},
+                        { rule : 'p' },                  
+                    ],
+                },
+            });
+
+            // Set default content
+            if (props.content) {
+                editorInstance.content.set(props.content);
+            }
+
+            editorInstance.events.loaded.addListener(() => {
+                
+                // Hide the toolbar (IE fix)
+                $(Text.format(".ephox-polish-editor-container[aria-owns='{0}']", elementId)).hide();
+            });
+        }
     }
 
     /**

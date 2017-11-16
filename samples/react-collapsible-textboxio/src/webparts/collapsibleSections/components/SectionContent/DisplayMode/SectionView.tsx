@@ -14,7 +14,7 @@ class SectionView extends React.Component<ISectionViewProps, null> {
                 case "TextFieldControl":
                     const textFieldControl = control as ITextFieldControl;
                     sectionControls.push(
-                        <div key={ index } dangerouslySetInnerHTML={ {__html: textFieldControl.content } }></div> 
+                        <div className="cke_editable" key={ index } dangerouslySetInnerHTML={ {__html: textFieldControl.content } }></div> 
                     );
                     break;
 

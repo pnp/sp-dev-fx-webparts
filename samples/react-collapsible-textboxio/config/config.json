@@ -15,7 +15,8 @@
     "textboxio": {
       "path": "src/librairies/textboxio/textboxio.js",
       "globalName": "textboxio"
-    }
+    },
+    "jquery": "https://code.jquery.com/jquery-2.2.4.min.js"
   },
   "localizedResources": {
     "CollapsibleSectionsWebPartStrings": "lib/webparts/collapsibleSections/loc/{locale}.js"
