@@ -6,7 +6,7 @@ define([], function() {
     "SelectedPropertiesFieldLabel": "Propriétés à récupérer",
     "LoadingMessage": "Les résultats sont en cours de chargement, veuillez patienter...",
     "MaxResultsCount": "Nombre de résulats à récupérer par page",
-    "NoResultMessage": "Il n'y a aucun élément à afficher.",
+    "NoResultMessage": "Il n'y a aucun résultat à afficher.",
     "RefinersFieldLabel": "Filtres",
     "FilterPanelTitle": "Filtres disponibles",
     "FilterResultsButtonLabel": "Filtrer l'affichage",

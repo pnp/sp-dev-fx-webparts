@@ -135,7 +135,7 @@ class SearchDataProvider implements ISearchDataProvider {
                         });
 
                         // Get the icon source URL
-                        this._mapToIcon(result.Filename).then((iconUrl) => {
+                        this._mapToIcon(result.Filename ? result.Filename : Text.format(".{0}", result.FileExtension)).then((iconUrl) => {
 
                             result.iconSrc = iconUrl;                            
                             resolvep1(result);

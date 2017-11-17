@@ -97,13 +97,11 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         const renderSelectedFilters: JSX.Element[] = this.state.selectedFilters.map((filter) => {
 
             return (
-                <PrimaryButton
-                    key ={filter.Value.RefinementToken }
-                    className="searchWp__selectedFilters__filterBtn"                   
-                    iconProps={ { iconName: 'StatusErrorFull' } }
-                    text={ filter.Value.RefinementName }
-                    onClick={ ()=> { this._removeFilter(filter); }}
-                />           
+                    <Label className="filter">
+                        <i className="ms-Icon ms-Icon--ClearFilter" onClick={ ()=> { this._removeFilter(filter); }}></i> 
+                        { filter.Value.RefinementName  }
+                    </Label>  
+      
             );
         });
 
@@ -130,7 +128,6 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                 {  (this.state.selectedFilters.length > 0) ? 
 
                         <div className="searchWp__selectedFilters">
-                            <Label className="searchWp__selectedFilterLbl ms-font-s">{ strings.SelectedFiltersLabel }</Label>
                             { renderSelectedFilters } 
                         </div>  
                     : null                    
