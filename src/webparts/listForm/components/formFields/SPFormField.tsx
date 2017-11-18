@@ -1,28 +1,11 @@
 import * as React from 'react';
-
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
-import { Dropdown, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-
-import * as moment from 'moment';
-
 import { ControlMode } from '../../../../common/datatypes/ControlMode';
 import { IFieldSchema } from '../../../../common/services/datatypes/RenderListData';
 
 import FormField from './FormField';
 import { IFormFieldProps } from './FormField';
-import DateFormField from './DateFormField';
-import NumberFormField from './NumberFormField';
-
-import { Locales } from '../../../../common/Locales';
-
-import styles from './SPFormField.module.scss';
-import { ReactElement } from 'react';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 import SPFieldTextEdit from './SPFieldTextEdit';
 import SPFieldLookupEdit from './SPFieldLookupEdit';
@@ -34,6 +17,9 @@ import SPFieldTextDisplay from './SPFieldTextDisplay';
 import SPFieldLookupDisplay from './SPFieldLookupDisplay';
 import SPFieldUserDisplay from './SPFieldUserDisplay';
 import SPFieldUrlDisplay from './SPFieldUrlDisplay';
+
+import styles from './SPFormField.module.scss';
+
 
 const EditFieldTypeMappings: {[fieldType: string]: React.StatelessComponent<ISPFormFieldProps>} = {
   Text: SPFieldTextEdit,

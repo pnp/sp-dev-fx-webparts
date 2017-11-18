@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import styles from './ListForm.module.scss';
 import { IFieldConfiguration } from './IFieldConfiguration';
 import { IListFormProps } from './IListFormProps';
 import { IListFormState } from './IListFormState';
@@ -18,9 +17,11 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import SPFormField from './formFields/SPFormField';
 
 import DraggableComponent from './DraggableComponent';
-
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+
+import styles from './ListForm.module.scss';
+
 
 
 class ListForm extends React.Component<IListFormProps, IListFormState> {
