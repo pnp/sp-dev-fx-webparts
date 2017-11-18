@@ -7,6 +7,7 @@ export interface IListFormWebPartProps {
   listUrl: string;
   formType: ControlMode;
   itemId?: string;
-  fields?: IFieldConfiguration[];
+  showUnsupportedFields: boolean;
   redirectUrl?: string;
+  fields?: IFieldConfiguration[];
 }

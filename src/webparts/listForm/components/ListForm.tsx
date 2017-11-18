@@ -71,26 +71,29 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
           : ((this.state.fieldsSchema) &&
                 <div>
                   <div className={css(styles.formFieldsContainer, this.state.isLoadingData ? styles.isDataLoading : null)}>
-                    {this.renderFields()}
-                    {this.props.inDesignMode &&
-                    <DefaultButton aria-haspopup='true' aria-label='Add a new field to form' className={styles.addFieldToolbox}
-                          title='Add a new field to form' menuProps={menuProps} data-is-focusable='false' >
-                      <div className={styles.addFieldToolboxPlusButton}>
-                        <i aria-hidden='true' className='ms-Icon ms-Icon--CircleAdditionSolid' />
-                      </div>
-                    </DefaultButton>}
+                    { this.renderFields() }
+                    { this.props.inDesignMode &&
+                      <DefaultButton aria-haspopup='true' aria-label='Add a new field to form' className={styles.addFieldToolbox}
+                            title='Add a new field to form' menuProps={menuProps} data-is-focusable='false' >
+                        <div className={styles.addFieldToolboxPlusButton}>
+                          <i aria-hidden='true' className='ms-Icon ms-Icon--CircleAdditionSolid' />
+                        </div>
+                      </DefaultButton>
+                    }
                   </div>
                   <div className={styles.formButtonsContainer}>
-                    <PrimaryButton
-                        disabled={ false }
-                        text='Save'
-                        onClick={ () => this.saveItem() }
-                      />
+                    {(this.props.formType !== ControlMode.Display) &&
+                     <PrimaryButton
+                       disabled={ false }
+                       text='Save'
+                       onClick={ () => this.saveItem() }
+                     />
+                    }
                     <DefaultButton
                         disabled={ false }
                         text='Cancel'
                         onClick={ () => this.readData(this.props.listUrl, this.props.formType, this.props.id) }
-                      />
+                    />
                   </div>
               </div>
             )
@@ -146,14 +149,24 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
                 if (fieldSchemas.length > 0) {
                   const fieldSchema = fieldSchemas[0];
                   const value = data[field.fieldName];
+                  let extraData;
+                  if (data.hasOwnProperty(field.fieldName + '.')) {
+                    extraData = data[field.fieldName + '.'];
+                  } else {
+                    extraData = Object.keys(data)
+                      .filter( (propName) => propName.indexOf(field.fieldName + '.') === 0 )
+                      .reduce( (newData, pn) => { newData[pn.substring(field.fieldName.length + 1)] = data[pn]; return newData; }, {} );
+                  }
                   const errorMessage = fieldErrors[field.fieldName];
-                  const fieldComponent = <SPFormField
-                            fieldSchema={fieldSchema}
-                            controlMode={this.props.formType}
-                            value={value}
-                            valueChanged={(val) => this.valueChanged(field.fieldName, val)}
-                            errorMessage={errorMessage} />;
-                  if (this.props.inDesignMode) {
+                  const fieldComponent = SPFormField({
+                    fieldSchema: fieldSchema,
+                    controlMode: this.props.formType,
+                    value: value,
+                    extraData: extraData,
+                    valueChanged: (val) => this.valueChanged(field.fieldName, val),
+                    errorMessage: errorMessage,
+                    hideIfFieldUnsupported: !this.props.showUnsupportedFields });
+                  if (fieldComponent && this.props.inDesignMode) {
                     return (
                         <DraggableComponent
                           key={field.key}

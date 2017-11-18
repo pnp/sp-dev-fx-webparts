@@ -19,3 +19,14 @@
     }
 
 }
+
+.unsupportedFieldMessage{
+    color: $errorTextColor;
+    margin-top: 4px;
+
+    i{
+        margin-right: 4px;
+        top: 2px;
+        position: relative;
+    }
+}

@@ -5,7 +5,8 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneDropdown
+  PropertyPaneDropdown,
+  PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'ListFormWebPartStrings';
@@ -17,6 +18,7 @@ import { IFieldConfiguration } from './components/IFieldConfiguration';
 import { PropertyPaneAsyncDropdown } from '../../controls/PropertyPaneAsyncDropdown/PropertyPaneAsyncDropdown';
 import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import ConfigureWebPart from '../../common/components/ConfigureWebPart';
 import { update, get } from '@microsoft/sp-lodash-subset';
 
 import { ListService } from '../../common/services/ListService';
@@ -40,7 +42,11 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
     }
 
     let element;
-    if (this.properties.listUrl) {
+    if (Environment.type === EnvironmentType.Local) {
+      element = React.createElement( MessageBar, {messageBarType: MessageBarType.blocked},
+        strings.LocalWorkbenchUnsupported
+      );
+    } else if (this.properties.listUrl) {
       element = React.createElement(
         ListForm,
         {
@@ -52,16 +58,15 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
           formType: this.properties.formType,
           id: itemId,
           fields: this.properties.fields,
+          showUnsupportedFields: this.properties.showUnsupportedFields,
           onSubmitSucceeded: (id: number) => this.formSubmitted(id),
           onUpdateFields: (fields: IFieldConfiguration[]) => this.updateField(fields),
         }
       );
     } else {
-      element = React.createElement( MessageBar, {messageBarType: MessageBarType.info},
-        'Please configure a SharePoint list in the web part\'s properties ',
-        React.createElement('a', { href: 'javascript:void(0)', onClick: this.configureWebPart.bind(this)}, 'here'),
-        '.'
-      );
+      element = ConfigureWebPart(
+          { webPartContext: this.context, title: this.properties.title, description: strings.MissingListConfiguration, buttonText: strings.ConfigureWebpartButtonText }
+        );
     }
 
     ReactDom.render(element, this.domElement);
@@ -113,9 +118,16 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
         }));
     }
     mainGroup.groupFields.push(
+      PropertyPaneToggle('showUnsupportedFields', {
+        label: strings.ShowUnsupportedFieldsLabel,
+        disabled: !this.properties.listUrl
+      })
+    );
+    mainGroup.groupFields.push(
       PropertyPaneTextField('redirectUrl', {
         label: strings.RedirectUrlFieldLabel,
-        description: strings.RedirectUrlFieldDescription
+        description: strings.RedirectUrlFieldDescription,
+        disabled: !this.properties.listUrl
       })
     );
     return {
@@ -172,12 +184,6 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
     this.context.propertyPane.refresh();
     // refresh web part
     this.render();
-  }
-
-
-  private configureWebPart(e): void {
-    e.preventDefault();
-    this.context.propertyPane.open();
   }
 
 

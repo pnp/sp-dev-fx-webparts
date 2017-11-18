@@ -7,8 +7,12 @@ declare interface IListFormWebPartStrings {
   FormTypeFieldLabel: string;
   ItemIdFieldLabel: string;
   ItemIdFieldDescription: string;
+  ShowUnsupportedFieldsLabel: string;
   RedirectUrlFieldLabel: string;
   RedirectUrlFieldDescription: string;
+  LocalWorkbenchUnsupported: string;
+  MissingListConfiguration: string;
+  ConfigureWebpartButtonText: string;
 }
 
 declare module 'ListFormWebPartStrings' {

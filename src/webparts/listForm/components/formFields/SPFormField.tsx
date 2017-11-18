@@ -4,9 +4,10 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
 import { Dropdown, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { ITextFieldProps, TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 import * as moment from 'moment';
 
@@ -21,46 +22,90 @@ import NumberFormField from './NumberFormField';
 import { Locales } from '../../../../common/Locales';
 
 import styles from './SPFormField.module.scss';
+import { ReactElement } from 'react';
+
+import SPFieldTextEdit from './SPFieldTextEdit';
+import SPFieldLookupEdit from './SPFieldLookupEdit';
+import SPFieldChoiceEdit from './SPFieldChoiceEdit';
+import SPFieldNumberEdit from './SPFieldNumberEdit';
+import SPFieldDateEdit from './SPFieldDateEdit';
+import SPFieldBooleanEdit from './SPFieldBooleanEdit';
+import SPFieldTextDisplay from './SPFieldTextDisplay';
+import SPFieldLookupDisplay from './SPFieldLookupDisplay';
+import SPFieldUserDisplay from './SPFieldUserDisplay';
+import SPFieldUrlDisplay from './SPFieldUrlDisplay';
+
+const EditFieldTypeMappings: {[fieldType: string]: React.StatelessComponent<ISPFormFieldProps>} = {
+  Text: SPFieldTextEdit,
+  Note: SPFieldTextEdit,
+  Lookup: SPFieldLookupEdit,
+  LookupMulti: SPFieldLookupEdit,
+  Choice: SPFieldChoiceEdit,
+  MultiChoice: SPFieldChoiceEdit,
+  Number: SPFieldNumberEdit,
+  Currency: SPFieldNumberEdit,
+  DateTime: SPFieldDateEdit,
+  Boolean: SPFieldBooleanEdit,
+  File: SPFieldTextEdit,
+  /* The following are known but unsupported types as of now:
+  User: null,
+  UserMulti: null,
+  URL: null,
+  TaxonomyFieldType: null,
+  Attachments: null,
+  TaxonomyFieldTypeMulti: null,
+  */
+};
+
+const DisplayFieldTypeMappings: {[fieldType: string]: {component: React.StatelessComponent<ISPFormFieldProps>, valuePreProcess?: (value: any) => any}} = {
+  Text: { component: SPFieldTextDisplay },
+  Note: { component: SPFieldTextDisplay },
+  Lookup: { component: SPFieldLookupDisplay },
+  LookupMulti: { component: SPFieldLookupDisplay },
+  Choice: { component: SPFieldTextDisplay },
+  MultiChoice: {component: SPFieldTextDisplay, valuePreProcess: (val) => val ? val.join(', ') : '' },
+  Number: { component: SPFieldTextDisplay },
+  Currency: { component: SPFieldTextDisplay },
+  DateTime: { component: SPFieldTextDisplay },
+  Boolean: { component: SPFieldTextDisplay },
+  User: { component: SPFieldUserDisplay },
+  UserMulti: { component: SPFieldUserDisplay },
+  URL: { component: SPFieldUrlDisplay },
+  File: { component: SPFieldTextDisplay},
+  TaxonomyFieldType: { component: SPFieldTextDisplay, valuePreProcess: (val) => val ? val.Label : '' },
+  TaxonomyFieldTypeMulti: { component: SPFieldTextDisplay, valuePreProcess: (val) => val ? val.map( (v) => v.Label ).join(', ') : '' },
+  /* The following are known but unsupported types as of now:
+  Attachments: null,
+  */
+};
 
 
 export interface ISPFormFieldProps extends IFormFieldProps {
+    extraData?: any;
     fieldSchema: IFieldSchema;
+    hideIfFieldUnsupported?: boolean;
 }
+
 
 const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
   let fieldControl = null;
   const fieldType = props.fieldSchema.FieldType;
   if (props.controlMode === ControlMode.Display) {
-    if (fieldType === 'Lookup') {
-      if ((props.value) && (props.value.length > 0) && (props.value[0].lookupValue))  {
-        const value = props.value[0].lookupValue;
-        const linkUrl = `${props.fieldSchema.BaseDisplayFormUrl}&ListId={${props.fieldSchema.LookupListId}}&ID=${props.value[0].lookupId}`;
-        fieldControl = <Link href={linkUrl}>{value}</Link>;
-      }
-    } else if (fieldType === 'User') {
-      if ((props.value) && (props.value.length > 0) && (props.value[0].title))  {
-        const value = props.value[0].title;
-        const linkUrl = `${props.fieldSchema.ListFormUrl}?PageType=4&ListId=${props.fieldSchema.UserInfoListId}&ID=${props.value[0].id}`;
-        fieldControl = <Link href={linkUrl}>{value}</Link>;
-      }
-    } else {
+    if (DisplayFieldTypeMappings.hasOwnProperty(fieldType)) {
+      const fieldMapping = DisplayFieldTypeMappings[fieldType];
+      const childProps = fieldMapping.valuePreProcess ? {...props, value: fieldMapping.valuePreProcess(props.value)} : props;
+      fieldControl = React.createElement( fieldMapping.component, childProps );
+    } else if (!props.hideIfFieldUnsupported) {
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
-      fieldControl = <span>{value}</span>;
+      fieldControl = <div className={`ard-${fieldType}field-display`}>
+          <span>{value}</span>
+          <div className={styles.unsupportedFieldMessage}><Icon iconName='Error' />{`Unsupported field type "${fieldType}"`}</div>
+        </div>;
     }
   } else {
-    if ((fieldType === 'Text') || (fieldType === 'Note')) {
-      fieldControl = GetTextFieldControl(props);
-    } else if (fieldType === 'DateTime') {
-      fieldControl = GetDateTimeFieldControl(props);
-    } else if ((fieldType === 'Number') || (fieldType === 'Currency')) {
-      fieldControl = GetNumberFieldControl(props);
-    } else if (fieldType === 'Choice') {
-      fieldControl = GetChoiceFieldControl(props);
-    } else if (fieldType === 'Lookup') {
-      fieldControl = GetLookupFieldControl(props);
-    } else if (fieldType === 'Boolean') {
-      fieldControl = GetBooleanFieldControl(props);
-    } else {
+    if (EditFieldTypeMappings.hasOwnProperty(fieldType)) {
+      fieldControl = React.createElement( EditFieldTypeMappings[fieldType], props );
+    } else if (!props.hideIfFieldUnsupported) {
       const isObjValue = (props.value) && (typeof props.value !== 'string');
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
       fieldControl = <TextField
@@ -72,7 +117,8 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
               />;
     }
   }
-  return <FormField
+  return (fieldControl)
+    ? <FormField
             {...props}
             label={props.label || props.fieldSchema.Title}
             description={props.description || props.fieldSchema.Description}
@@ -80,81 +126,9 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
             errorMessage={props.errorMessage}
             >
             {fieldControl}
-          </FormField>;
+      </FormField>
+    : null;
 };
-
-
-function GetTextFieldControl(props: ISPFormFieldProps) {
-  return <TextField
-            className='ard-TextFormField'
-            name={props.fieldSchema.InternalName}
-            value={props.value}
-            onChanged={props.valueChanged}
-            placeholder='Enter text here'
-            multiline={props.fieldSchema.FieldType === 'Note'}
-            underlined
-            noValidate
-          />;
-}
-
-function GetBooleanFieldControl(props: ISPFormFieldProps) {
-  return <Toggle
-            className='ard-booleanFormField'
-            checked={props.value === '1' || props.value === 'true' || props.value === 'Yes'}
-            onAriaLabel='This toggle is checked. Press to uncheck.'
-            offAriaLabel='This toggle is unchecked. Press to check.'
-            onText='Yes'
-            offText='No'
-            onChanged={ (checked: boolean) => props.valueChanged(checked.toString())}
-          />;
-}
-
-function GetChoiceFieldControl(props: ISPFormFieldProps) {
-  const options = (props.fieldSchema.Required) ? props.fieldSchema.Choices : [''].concat(props.fieldSchema.Choices);
-  return <Dropdown
-            className={css(styles.dropDownFormField, 'ard-choiceFormField')}
-            options = {options.map( (option: string) => ({key: option, text: option}) )}
-            selectedKey = {props.value}
-            onChanged={ (item) => props.valueChanged( item.key.toString() )  }
-          />;
-}
-
-function GetLookupFieldControl(props: ISPFormFieldProps) {
-  let options = props.fieldSchema.Choices.map( (option) => ({ key: option.LookupId, text: option.LookupValue }) );
-  if (!props.required) { options = [{key: 0, text: '(None)'}].concat(options); }
-  const value = props.value ? Number(props.value.split(';#')[0]) : 0;
-  return <Dropdown
-            className={css(styles.dropDownFormField, 'ard-lookupFormField')}
-            options = {options}
-            selectedKey = {value}
-            onChanged={ (item) => props.valueChanged( `${item.key};#${item.text}` ) }
-          />;
-}
-
-function GetNumberFieldControl(props: ISPFormFieldProps) {
-  return <NumberFormField
-            className='ard-numberFormField'
-            value={props.value}
-            valueChanged={props.valueChanged}
-            placeholder='Enter value here'
-            underlined
-          />;
-}
-
-function GetDateTimeFieldControl(props: ISPFormFieldProps) {
-  const locale = Locales[props.fieldSchema.LocaleId];
-  return <DateFormField
-            {...props.value && moment(props.value).isValid() ? {value: moment(props.value).toDate()} : {}}
-            className={css(styles.dateFormField, 'ard-dateFormField')}
-            placeholder='Enter a date'
-            isRequired={props.fieldSchema.Required}
-            ariaLabel={props.fieldSchema.Title}
-            locale={Locales[locale]}
-            firstDayOfWeek={props.fieldSchema.FirstDayOfWeek}
-            allowTextInput
-            onSelectDate={(date) => props.valueChanged(date.toLocaleDateString(locale))}
-          />;
-}
 
 
 export default SPFormField;

@@ -11,6 +11,7 @@ export interface IListFormProps {
   fields?: IFieldConfiguration[];
   spContext: IWebPartContext;
   inDesignMode?: boolean;
+  showUnsupportedFields?: boolean;
   onSubmitSucceeded?(id: number): void;
   onSubmitFailed?(fieldErrors: any): void;
   onUpdateFields?(newFields: IFieldConfiguration[]): void;
