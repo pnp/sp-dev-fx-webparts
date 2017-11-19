@@ -245,7 +245,7 @@ class SearchDataProvider implements ISearchDataProvider {
                 return filter.Value.RefinementToken;                       
             });
 
-            return refinementFilter.length > 1 ? "or(" + refinementFilter + ")" : refinementFilter.toString();
+            return refinementFilter.length > 1 ? Text.format("or({0})", refinementFilter) : refinementFilter.toString();
         });
         
         mapKeys(refinementFilters, (value, key) => {
@@ -270,7 +270,7 @@ class SearchDataProvider implements ISearchDataProvider {
 
             // Multiple filters
             case (conditionsCount > 1): {
-                refinementQueryString = "and(" + refinementQueryConditions.toString() + ")";
+                refinementQueryString = Text.format("and({0})", refinementQueryConditions.toString());
                 break;
             }
         }
