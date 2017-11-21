@@ -1,5 +1,5 @@
 import * as React from "react";
-//import styles from "./SpSecurity.module.scss";
+import styles from "./SpSecurity.module.scss";
 import { ISpSecurityProps } from "./ISpSecurityProps";
 import { ISpSecurityState } from "./ISpSecurityState";
 
@@ -167,10 +167,10 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     let extension = item.title.split('.').pop();
     let classname = "ms-u-smOffset" + (item.level);
     if (this.validBrandIcons.indexOf(" " + extension + " ") !== -1) {
-      classname += " ms-Icon ms-BrandIcon--" + extension + " ms-BrandIcon--icon16"
+      classname += " ms-Icon ms-BrandIcon--" + extension + " ms-BrandIcon--icon16 ";
     }
     else {
-      classname += " ms-Icon ms-Icon--TextDocument "
+      classname += " ms-Icon ms-Icon--TextDocument "+styles.themecolor;
     }
     return (
       <div>
@@ -181,6 +181,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   public renderListTitle(item?: any, index?: number, column?: IColumn): any {
 
     let classname = " ms-Icon ms-Icon--DocumentSet ";
+    if (item.itemCount > 0) {
+      classname+=styles.themecolor;
+    }
     return (
       <div onClick={(e) => {
         this.expandCollapseList(item);
@@ -192,7 +195,11 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
   }
   public renderFolderTitle(item?: any, index?: number, column?: IColumn): any {
-    let classname = "ms-u-smOffset" + (item.level) + "  ms-Icon ms-Icon--Documentation";
+    let classname = "ms-u-smOffset" + (item.level) + "  ms-Icon ms-Icon--Documentation ";
+    if (item.itemCount > 0) {
+      classname+=styles.themecolor;
+    }
+    
     return (
       <div onClick={(e) => {
         this.expandCollapseList(item);
