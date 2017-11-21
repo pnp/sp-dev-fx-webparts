@@ -12,7 +12,9 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
+
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
+import { right } from "glamor";
 
 /* tslint:disable */
 require('./spSecurity.css'); // loads the SpSecurity,css with unmodified names
@@ -20,7 +22,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   private svc: SPSecurityService = new SPSecurityService("ss");
   private userSelection = new Selection();
   private listSelection = new Selection();
-
+  private validBrandIcons = " accdb csv docx dotx mpp mpt odp ods odt one onepkg onetoc potx ppsx pptx pub vsdx vssx vstx xls xlsx xltx xsn ";
   constructor(props: any) {
     super(props);
     this.state = {
@@ -31,7 +33,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       showEmail: this.props.showEmail
 
     };
-    this.getIcon = this.getIcon.bind(this);
+
     this.expandCollapseList = this.expandCollapseList.bind(this);
     this.collapseList = this.collapseList.bind(this);
     this.collapseItem = this.collapseItem.bind(this);
@@ -160,37 +162,90 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     return parent.isExpanded;
 
   }
-  public getIcon(item?: any, index?: number, column?: IColumn): string {
-    let classname: string = "";
-    if (item.itemCount === 0) {
-      return "FabricFolderFill";
-    } else {
-      return "FabricFolder";
 
+  public renderItemTitle(item?: any, index?: number, column?: IColumn): any {
+    let extension = item.title.split('.').pop();
+    let classname = "ms-u-smOffset" + (item.level);
+    if (this.validBrandIcons.indexOf(" " + extension + " ") !== -1) {
+      classname += " ms-Icon ms-BrandIcon--" + extension + " ms-BrandIcon--icon16"
     }
-
-  }
-  public renderTitle(item?: any, index?: number, column?: IColumn): any {
-    let classname: string = "";
-    if (item instanceof SPListItem) {
-      classname = "ms-u-smOffset" + (item.level);
+    else {
+      classname += " ms-Icon ms-Icon--TextDocument "
     }
-
     return (
-      <div className={classname}>
-        <div style={{ float: "left" }}>
-          <Icon iconName={this.getIcon(item, index, column)} onClick={(e) => {
-
-            this.expandCollapseList(item);
-          }} />
-        </div>
-        <div>&nbsp;{item.title}</div>
-        <div style={{ clear: "both" }} />
-      </div>
-    );
+      <div>
+        <div className={classname} />
+        <span >&nbsp;{item.title}</span>
+      </div>);
   }
-  public renderUserItem(item?: any, index?: number, column?: IColumn): any {
+  public renderListTitle(item?: any, index?: number, column?: IColumn): any {
 
+    let classname = " ms-Icon ms-Icon--DocumentSet ";
+    return (
+      <div onClick={(e) => {
+        this.expandCollapseList(item);
+      }}>
+        <div className={classname} />
+        <span >&nbsp;{item.title}</span>
+      </div>);
+
+
+  }
+  public renderFolderTitle(item?: any, index?: number, column?: IColumn): any {
+    let classname = "ms-u-smOffset" + (item.level) + "  ms-Icon ms-Icon--Documentation";
+    return (
+      <div onClick={(e) => {
+        this.expandCollapseList(item);
+      }}>
+        <div className={classname} />
+        <span >&nbsp;{item.title}</span>
+      </div>);
+  }
+
+  public renderTitle(item?: any, index?: number, column?: IColumn): any {
+    if (item instanceof SPList) {
+      return this.renderListTitle(item, index, column);
+    } else {
+      if (item.type === "Folder") {
+        return this.renderFolderTitle(item, index, column);
+      } else {
+        return this.renderItemTitle(item, index, column);
+      }
+    }
+
+  }
+  // public getIcon(item?: any, index?: number, column?: IColumn): string {
+  //   debugger;
+  //   let classname: string = "";
+  //   if (item instanceof SPList || item.type==="Folder") {
+  //     if (item.itemCount === 0) {
+  //       return "FabricFolderFill";
+  //     } else {
+  //       return "FabricFolder";
+  //     }
+  //   } else{
+  //     return "ms-Icon ms-Icon--ExcelDocument"
+  //   }
+
+  // }
+  // public renderTitle(item?: any, index?: number, column?: IColumn): any {
+  //   let classname: string = "";
+  //   if (item instanceof SPListItem) {
+  //     classname = "ms-u-smOffset" + (item.level);
+  //   }
+  //  return (
+  //     <div className={classname}>
+  //       <div style={{ float: "left" }}>
+  //         <Icon iconName={this.getIcon(item, index, column)} onClick={(e) => {
+  //           this.expandCollapseList(item);
+  //         }} />
+  //       </div>
+  //       <div>&nbsp;{item.title}</div>
+  //       <div style={{ clear: "both" }} />
+  //     </div>
+  //   );
+  // }
+  public renderUserItem(item?: any, index?: number, column?: IColumn): any {
     let user: SPSiteUser = find(this.state.securityInfo.siteUsers, (su) => {
       return su.id.toString() === column.key;
     });
@@ -202,7 +257,6 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         }} />
       );
     } else {
-
       return (
         <Icon iconName="LocationCircle" onClick={(e) => {
           this.expandCollapseList(item);
@@ -284,6 +338,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   }
 
   public render(): React.ReactElement<ISpSecurityProps> {
+    debugger;
     let userPanelCommands: IContextualMenuItem[] = [];
     userPanelCommands.push({
       icon: "BoxAdditionSolid",
@@ -412,15 +467,17 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     });
 
     let columns: Array<IColumn> = [
-      { key: "title", name: "Title", isResizable: true, fieldName: "title", minWidth: this.props.listTitleColumnWidth, maxWidth: this.props.listTitleColumnWidth, onRender: this.renderTitle, isRowHeader: true },
+      {
+        key: "title", name: "Title", isResizable: true, fieldName: "title",
+        minWidth: this.props.listTitleColumnWidth, maxWidth: this.props.listTitleColumnWidth,
+        onRender: this.renderTitle, isRowHeader: true
+      },
     ];
     let displayColumns: IColumn[] = this.addUserColumns(columns, this.state.securityInfo.siteUsers);
 
 
     let displayItems: (SPList | SPListItem)[] = filter(this.state.securityInfo.lists, (item) => {
-      
       return (
-
         (item instanceof SPList && item.isSelected)
         ||
         ((item instanceof SPListItem) && (this.parentIsExpanded(item)))
@@ -471,15 +528,16 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           closeButtonAriaLabel='Close'>
           <CommandBar items={listPanelCommands} />
           <DetailsList
+
             selection={this.listSelection}
             selectionMode={SelectionMode.none}
-            items={filter(this.state.securityInfo.lists,(l)=>{
-              
+            items={filter(this.state.securityInfo.lists, (l) => {
               return l instanceof SPList;
             })}
             columns={[
               {
-                key: "isSelected", name: "Select", fieldName: "isSelected", minWidth: 30, onRender: (item) => <Checkbox
+                key: "isSelected", name: "Select", fieldName: "isSelected", minWidth: 30,
+                onRender: (item) => <Checkbox
                   checked={item.isSelected}
                   onChange={(element, value) => { this.selectList(item.id, value); }}
                 />
