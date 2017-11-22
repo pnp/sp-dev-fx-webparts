@@ -180,9 +180,11 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   }
   public renderListTitle(item?: any, index?: number, column?: IColumn): any {
 
-    let classname = " ms-Icon ms-Icon--DocumentSet ";
+    let classname = " ms-Icon ";
     if (item.itemCount > 0) {
-      classname+=styles.themecolor;
+      classname+="  ms-Icon ms-Icon--FabricFormLibrary "+styles.themecolor;
+    } else{
+      classname+="  ms-Icon ms-Icon--FabricFolder ";
     }
     return (
       <div onClick={(e) => {
@@ -195,9 +197,11 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
   }
   public renderFolderTitle(item?: any, index?: number, column?: IColumn): any {
-    let classname = "ms-u-smOffset" + (item.level) + "  ms-Icon ms-Icon--Documentation ";
+    let classname = "ms-u-smOffset" + (item.level) ;
     if (item.itemCount > 0) {
-      classname+=styles.themecolor;
+      classname+="  ms-Icon ms-Icon--FabricFormLibrary "+styles.themecolor;
+    } else{
+      classname+="  ms-Icon ms-Icon--FabricFolder ";
     }
     
     return (
