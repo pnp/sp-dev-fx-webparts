@@ -5,6 +5,7 @@ import { Locales } from '../../../../common/Locales';
 import { ISPFormFieldProps } from './SPFormField';
 import DateFormField from './DateFormField';
 
+import * as strings from 'FormFieldStrings';
 import styles from './SPFormField.module.scss';
 
 
@@ -13,7 +14,7 @@ const SPFieldDateEdit: React.SFC<ISPFormFieldProps> = (props) => {
     return <DateFormField
               {...props.value && moment(props.value).isValid() ? {value: moment(props.value).toDate()} : {}}
               className={css(styles.dateFormField, 'ard-dateFormField')}
-              placeholder='Enter a date'
+              placeholder={strings.DateFormFieldPlaceholder}
               isRequired={props.fieldSchema.Required}
               ariaLabel={props.fieldSchema.Title}
               locale={Locales[locale]}

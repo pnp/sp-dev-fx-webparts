@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
+import * as strings from 'FormFieldStrings';
 
 export interface INumberFormFieldProps extends ITextFieldProps {
   label?: string;
@@ -17,21 +18,24 @@ export default class NumberFormField extends React.Component<INumberFormFieldPro
   }
 
   public render(): JSX.Element {
+    // We need to set value to empty string when null or undefined to force TextField
+    // not to be used like an uncontrolled component and keep current value
+    const value = this.props.value ? this.props.value : '';
     return (
-        <TextField
-            {...this.props}
-            className='NumberFormField'
-            label={ this.props.label }
-            value={ this.props.value }
-            onChanged={ this.props.valueChanged }
-            onGetErrorMessage={ this._validateNumber }
-        />
+      <TextField
+        {...this.props}
+        className='NumberFormField'
+        label={ this.props.label }
+        value={value}
+        onChanged={ this.props.valueChanged }
+        onGetErrorMessage={ this._validateNumber }
+      />
     );
   }
 
   private _validateNumber(value: string): string {
     return isNaN(this.parseNumber(value, this.props.locale))
-      ? `The value should be a number, actual is ${value}.`
+      ? `${strings.InvalidNumberValue} ${value}`
       : '';
   }
 

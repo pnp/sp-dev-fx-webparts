@@ -30,12 +30,21 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
   private listService: ListService;
   private cachedLists = null;
 
+
+  protected onInit(): Promise<void> {
+    return super.onInit().then( _ => {
+      this.listService = new ListService(this.context.spHttpClient);
+    });
+  }
+
+
   public render(): void {
 
     let itemId;
     if (this.properties.itemId) {
       itemId = Number(this.properties.itemId);
       if (isNaN(itemId)) {
+        // if item Id is not a number we assume it is a query string parameter
         const urlParams = new URLSearchParams(window.location.search);
         itemId = Number(urlParams.get(this.properties.itemId));
       }
@@ -43,17 +52,22 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
 
     let element;
     if (Environment.type === EnvironmentType.Local) {
-      element = React.createElement( MessageBar, {messageBarType: MessageBarType.blocked},
+      // show message that local worbench is not supported
+      element = React.createElement(
+        MessageBar,
+        {messageBarType: MessageBarType.blocked},
         strings.LocalWorkbenchUnsupported
       );
     } else if (this.properties.listUrl) {
+      // show actual list form react component
       element = React.createElement(
         ListForm,
         {
           inDesignMode: this.displayMode === DisplayMode.Edit ,
-          spContext: this.context,
+          spHttpClient: this.context.spHttpClient,
           title: this.properties.title,
           description: this.properties.description,
+          webUrl: this.context.pageContext.web.absoluteUrl,
           listUrl: this.properties.listUrl,
           formType: this.properties.formType,
           id: itemId,
@@ -64,23 +78,26 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
         }
       );
     } else {
-      element = ConfigureWebPart(
-          { webPartContext: this.context, title: this.properties.title, description: strings.MissingListConfiguration, buttonText: strings.ConfigureWebpartButtonText }
-        );
+      // show configure web part react component
+      element = React.createElement(
+        ConfigureWebPart,
+        {
+          webPartContext: this.context,
+          title: this.properties.title,
+          description: strings.MissingListConfiguration,
+          buttonText: strings.ConfigureWebpartButtonText
+        }
+      );
     }
 
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
-    return super.onInit().then( _ => {
-      this.listService = new ListService(this.context.spHttpClient);
-    });
-  }
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
+
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     const mainGroup = {
@@ -142,6 +159,7 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
     };
   }
 
+
   private loadLists(): Promise<IDropdownOption[]> {
     return new Promise<IDropdownOption[]>((resolve: (options: IDropdownOption[]) => void, reject: (error: any) => void) => {
       if (Environment.type === EnvironmentType.Local) {
@@ -163,15 +181,16 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
                 resolve( this.cachedLists );
               } );
           } else {
+            // using cached lists if available to avoid loading spinner every time property pane is refreshed
             return resolve( this.cachedLists );
           }
         } catch (error) {
-          // set a new state conserving the previous state + the new error
-          alert( 'Error on loading lists: ' + error );
+          alert( strings.ErrorOnLoadingLists + error );
         }
       }
     });
   }
+
 
   private onListChange(propertyPath: string, newValue: any): void {
     const oldValue: any = get(this.properties, propertyPath);
@@ -189,16 +208,17 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
 
   private updateField(fields: IFieldConfiguration[]): any {
     this.properties.fields = fields;
+    // render web part again so that React List Form component is rerendered with changed fields
     this.render();
   }
 
+
   private formSubmitted(id: number) {
     if (this.properties.redirectUrl) {
+      // redirect to configured URL after successfully submitting form
       window.location.href = this.properties.redirectUrl.replace('[ID]', id.toString() );
     }
   }
-
-
 
 
 }

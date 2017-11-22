@@ -16,7 +16,7 @@ const styles: any = stylesImport;
 import ardStyles from './FormField.module.scss';
 
 
-export interface IFormFieldProps /*extends ITextFieldProps*/ {
+export interface IFormFieldProps {
   className?: string;
   controlMode: ControlMode;
   label?: string;

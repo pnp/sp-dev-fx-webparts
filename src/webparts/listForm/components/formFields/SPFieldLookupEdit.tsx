@@ -3,12 +3,13 @@ import { ISPFormFieldProps } from './SPFormField';
 import { Dropdown, IDropdownProps, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 
+import * as strings from 'FormFieldStrings';
 import styles from './SPFormField.module.scss';
 
 const SPFieldLookupEdit: React.SFC<ISPFormFieldProps> = (props) => {
     let options = props.fieldSchema.Choices.map( (option) => ({ key: option.LookupId, text: option.LookupValue }) );
     if (props.fieldSchema.FieldType !== 'LookupMulti') {
-        if (!props.required) { options = [{key: 0, text: '(None)'}].concat(options); }
+        if (!props.required) { options = [{key: 0, text: strings.LookupEmptyOptionText}].concat(options); }
         const value = props.value ? Number(props.value.split(';#')[0]) : 0;
         return <Dropdown
                     className={css(styles.dropDownFormField, 'ard-lookupFormField')}

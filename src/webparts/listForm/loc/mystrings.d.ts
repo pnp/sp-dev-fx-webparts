@@ -13,6 +13,7 @@ declare interface IListFormWebPartStrings {
   LocalWorkbenchUnsupported: string;
   MissingListConfiguration: string;
   ConfigureWebpartButtonText: string;
+  ErrorOnLoadingLists: string;
 }
 
 declare module 'ListFormWebPartStrings' {

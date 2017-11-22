@@ -20,10 +20,18 @@ import DraggableComponent from './DraggableComponent';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
+import * as strings from 'ListFormStrings';
+
 import styles from './ListForm.module.scss';
 
 
-
+/*************************************************************************************
+ * React Component to render a SharePoint list form on any page.
+ * The list form can be configured to be either a new form for adding a new list item,
+ * an edit form for changing an existing list item or a display form for showing the
+ * fields of an existing list item.
+ * In design mode the fields to render can be moved, added and deleted.
+ *************************************************************************************/
 class ListForm extends React.Component<IListFormProps, IListFormState> {
 
 
@@ -45,7 +53,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
       fieldErrors: {}
     };
 
-    this.listFormService = new ListFormService(props.spContext.spHttpClient);
+    this.listFormService = new ListFormService(props.spHttpClient);
   }
 
 
@@ -68,14 +76,14 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
         { this.renderErrors() }
         { (!this.props.listUrl) ? <MessageBar messageBarType={MessageBarType.warning}>Please configure a list for this component first.</MessageBar> : '' }
         { (this.state.isLoadingSchema)
-          ? (<Spinner size={ SpinnerSize.large } label='Loading the form...' />)
+          ? (<Spinner size={ SpinnerSize.large } label={strings.LoadingFormIndicator} />)
           : ((this.state.fieldsSchema) &&
                 <div>
                   <div className={css(styles.formFieldsContainer, this.state.isLoadingData ? styles.isDataLoading : null)}>
                     { this.renderFields() }
                     { this.props.inDesignMode &&
-                      <DefaultButton aria-haspopup='true' aria-label='Add a new field to form' className={styles.addFieldToolbox}
-                            title='Add a new field to form' menuProps={menuProps} data-is-focusable='false' >
+                      <DefaultButton aria-haspopup='true' aria-label={strings.AddNewFieldAction} className={styles.addFieldToolbox}
+                            title={strings.AddNewFieldAction} menuProps={menuProps} data-is-focusable='false' >
                         <div className={styles.addFieldToolboxPlusButton}>
                           <i aria-hidden='true' className='ms-Icon ms-Icon--CircleAdditionSolid' />
                         </div>
@@ -86,13 +94,13 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
                     {(this.props.formType !== ControlMode.Display) &&
                      <PrimaryButton
                        disabled={ false }
-                       text='Save'
+                       text={strings.SaveButtonText}
                        onClick={ () => this.saveItem() }
                      />
                     }
                     <DefaultButton
                         disabled={ false }
-                        text='Cancel'
+                        text={strings.CancelButtonText}
                         onClick={ () => this.readData(this.props.listUrl, this.props.formType, this.props.id) }
                     />
                   </div>
@@ -164,9 +172,9 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
                     controlMode: this.props.formType,
                     value: value,
                     extraData: extraData,
-                    valueChanged: (val) => this.valueChanged(field.fieldName, val),
                     errorMessage: errorMessage,
-                    hideIfFieldUnsupported: !this.props.showUnsupportedFields });
+                    hideIfFieldUnsupported: !this.props.showUnsupportedFields,
+                    valueChanged: (val) => this.valueChanged(field.fieldName, val) });
                   if (fieldComponent && this.props.inDesignMode) {
                     return (
                         <DraggableComponent
@@ -184,21 +192,23 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
             })
         }
     </div>
-    : <div style={{ color: 'red' }} >No fields available!</div>;
+    : <MessageBar messageBarType={MessageBarType.warning}>No fields available!</MessageBar>;
   }
 
 
   public componentDidMount(): void {
-    this.readSchema(this.props.listUrl, this.props.formType);
-    this.readData(this.props.listUrl, this.props.formType, this.props.id);
+    this.readSchema(this.props.listUrl, this.props.formType).then(
+      () => this.readData(this.props.listUrl, this.props.formType, this.props.id)
+    );
   }
 
 
   public componentWillReceiveProps(nextProps: IListFormProps): void {
     if ((this.props.listUrl !== nextProps.listUrl) || (this.props.formType !== nextProps.formType)) {
-      this.readSchema(nextProps.listUrl, nextProps.formType);
-    }
-    if ((this.props.id !== nextProps.id) || (this.props.formType !== nextProps.formType)) {
+      this.readSchema(nextProps.listUrl, nextProps.formType).then(
+        () => this.readData(nextProps.listUrl, nextProps.formType, nextProps.id)
+      );
+    } else if ((this.props.id !== nextProps.id) || (this.props.formType !== nextProps.formType)) {
       this.readData(nextProps.listUrl, nextProps.formType, nextProps.id);
     }
   }
@@ -208,24 +218,18 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
   private async readSchema(listUrl: string, formType: ControlMode): Promise<void> {
    try {
      if (!listUrl) {
-       this.setState( (nextState, props) => {
-         nextState.isLoadingSchema = false;
-         nextState.fieldsSchema = null;
-         nextState.errors = ['Please configure a list in the web part\'s editor first.'];
-         Promise.resolve();
-         return nextState;
-       });
+       this.setState({...this.state, isLoadingSchema: false, fieldsSchema: null, errors: [strings.ConfigureListMessage]});
        return;
      }
      this.setState({ ...this.state, isLoadingSchema: true });
      const fieldsSchema = await this.listFormService.getFieldSchemasForForm(
-                                                       this.props.spContext.pageContext.web.absoluteUrl,
+                                                       this.props.webUrl,
                                                        listUrl,
                                                        formType,
                                                      );
      this.setState({ ...this.state, isLoadingSchema: false, fieldsSchema });
    } catch (error) {
-     const errorText = `Error loading schema for list ${listUrl}: ${error}`;
+     const errorText = `${strings.ErrorLoadingSchema}${listUrl}: ${error}`;
      this.setState({
        ...this.state,
        isLoadingSchema: false,
@@ -240,16 +244,18 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
   private async readData(listUrl: string, formType: ControlMode, id?: number): Promise<void> {
     try {
       if ((formType === ControlMode.New) || !id) {
-        this.setState({ ...this.state, data: {}, originalData: {}, fieldErrors: {}, isLoadingData: false});
+        const data = this.state.fieldsSchema
+            .reduce( (newData, fld) => { newData[fld.InternalName] = fld.DefaultValue; return newData; }, {} );
+        this.setState({ ...this.state, data: data, originalData: {}, fieldErrors: {}, isLoadingData: false});
         return;
       }
       this.setState({ ...this.state, data: {}, originalData: {}, fieldErrors: {}, isLoadingData: true});
-      const dataObj = await this.listFormService.getDataForForm( this.props.spContext.pageContext.web.absoluteUrl, listUrl, id, formType );
+      const dataObj = await this.listFormService.getDataForForm( this.props.webUrl, listUrl, id, formType );
       // We shallow clone here, so that changing values on dataObj object fields won't be changing in originalData too
       const dataObjOriginal = { ...dataObj };
       this.setState({...this.state, data: dataObj, originalData: dataObjOriginal, isLoadingData: false});
     } catch (error) {
-      const errorText = `Error loading data for item with ID ${id}: ${error}`;
+      const errorText = `${strings.ErrorLoadingData}${id}: ${error}`;
       this.setState({ ...this.state, data: {}, isLoadingData: false, errors: [...this.state.errors, errorText] });
     }
   }
@@ -264,8 +270,8 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
           fieldErrors: {
             ...prevState.fieldErrors,
             [fieldName]:
-              (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue 
-              ? 'Please enter a value!'
+              (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
+              ? strings.RequiredValueMessage
               : ''
             }
         };
@@ -280,7 +286,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
       let updatedValues;
       if (this.props.id) {
         updatedValues = await this.listFormService.updateItem(
-          this.props.spContext.pageContext.web.absoluteUrl,
+          this.props.webUrl,
           this.props.listUrl,
           this.props.id,
           this.state.fieldsSchema,
@@ -288,7 +294,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
           this.state.originalData);
       } else {
         updatedValues = await this.listFormService.createItem(
-          this.props.spContext.pageContext.web.absoluteUrl,
+          this.props.webUrl,
           this.props.listUrl,
           this.state.fieldsSchema,
           this.state.data);
@@ -304,7 +310,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
         if (this.props.onSubmitFailed) {
           this.props.onSubmitFailed(newState.fieldErrors);
         } else {
-          newState.errors = [...newState.errors, 'The item could not be saved. Please check detailed error messages on the fields below.'];
+          newState.errors = [...newState.errors, strings.FieldsErrorOnSaving];
         }
       } else {
         updatedValues.reduce(
@@ -320,7 +326,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
           id = updatedValues.filter( (val) => val.FieldName === 'Id' )[0].FieldValue;
         }
         if (this.props.onSubmitSucceeded) { this.props.onSubmitSucceeded( id ); }
-        newState.notifications = [...newState.notifications, 'Item saved successfully.'];
+        newState.notifications = [...newState.notifications, strings.ItemSavedSuccessfully];
         dataReloadNeeded = true;
       }
       newState.isSaving = false;
@@ -328,7 +334,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
 
       if (dataReloadNeeded) { this.readData(this.props.listUrl, this.props.formType, this.props.id); }
     } catch (error) {
-      const errorText = `Error trying to save list item: ${error}`;
+      const errorText = strings.ErrorOnSavingListItem + error;
       this.setState({ ...this.state, errors: [...this.state.errors, errorText] });
     }
   }

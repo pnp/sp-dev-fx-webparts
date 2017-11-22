@@ -4,6 +4,7 @@ import { IFieldSchema } from '../../../../common/services/datatypes/RenderListDa
 
 import FormField from './FormField';
 import { IFormFieldProps } from './FormField';
+import { IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
@@ -18,6 +19,7 @@ import SPFieldLookupDisplay from './SPFieldLookupDisplay';
 import SPFieldUserDisplay from './SPFieldUserDisplay';
 import SPFieldUrlDisplay from './SPFieldUrlDisplay';
 
+import * as strings from 'FormFieldStrings';
 import styles from './SPFormField.module.scss';
 
 
@@ -42,6 +44,7 @@ const EditFieldTypeMappings: {[fieldType: string]: React.StatelessComponent<ISPF
   TaxonomyFieldTypeMulti: null,
   */
 };
+
 
 const DisplayFieldTypeMappings: {[fieldType: string]: {component: React.StatelessComponent<ISPFormFieldProps>, valuePreProcess?: (value: any) => any}} = {
   Text: { component: SPFieldTextDisplay },
@@ -85,7 +88,7 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
       fieldControl = <div className={`ard-${fieldType}field-display`}>
           <span>{value}</span>
-          <div className={styles.unsupportedFieldMessage}><Icon iconName='Error' />{`Unsupported field type "${fieldType}"`}</div>
+          <div className={styles.unsupportedFieldMessage}><Icon iconName='Error' />{`${strings.UnsupportedFieldType} "${fieldType}"`}</div>
         </div>;
     }
   } else {
@@ -98,7 +101,7 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
                 readOnly
                 multiline={isObjValue}
                 value={value}
-                errorMessage={`Unsupported field type "${fieldType}"`}
+                errorMessage={`${strings.UnsupportedFieldType} "${fieldType}"`}
                 underlined
               />;
     }
