@@ -354,12 +354,12 @@ export default class SPSecurityService {
               // Also should check for users that have been invited but not yet accessed the site.
 
 
-              graphHttpClient.get("v1.0/groups?$filter=displayName eq '" + user.Title + "'&$expand=members", GraphHttpClient.configurations.v1).then((response2) => {
-                response2.json().then((data) => {
-                  //debugger;
-                });
-              }).catch((err) => {
-              });
+              // graphHttpClient.get("v1.0/groups?$filter=displayName eq '" + user.Title + "'&$expand=members", GraphHttpClient.configurations.v1).then((response2) => {
+              //   response2.json().then((data) => {
+              //     //debugger;
+              //   });
+              // }).catch((err) => {
+              // });
             } else {
               siteGroup.userIds.push(user.Id);
             }
