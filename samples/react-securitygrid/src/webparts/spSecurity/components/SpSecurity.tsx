@@ -11,7 +11,7 @@ import { DetailsList, IColumn, SelectionMode, IDetailsRowProps, Selection } from
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
-import { Spinner,SpinnerType,SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
+import { Spinner } from "office-ui-fabric-react/lib/Spinner";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
 
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
@@ -354,7 +354,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     if (!this.state.securityInfoLoaded) {
       return (
         <div >
-          <Spinner type={SpinnerType.large} size={SpinnerSize.large} label={'Fetching security information, please wait...'} />
+          <Spinner label={'Fetching security information, please wait...'} />
         </div> 
 
         );

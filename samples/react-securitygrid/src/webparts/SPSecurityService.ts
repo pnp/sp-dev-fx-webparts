@@ -344,6 +344,16 @@ export default class SPSecurityService {
           siteGroup.title = grp.Title;
           for (let user of grp.Users) {
             if (user.PrincipalType === 4) {
+              // To make this work with AD groups, I need to stop using the integer UserId of the user as the 
+              // key to the Users list and use UPN/Email instead. Users in an AD group may not have a accessed the site
+              // yet , and so will not be in the userinfo list. 
+              // I can get the users from the AD group using the graph HTTPClient. and add them to the Users array
+              // in my state. Would also need to add a list of AD groups and their members to my state.
+              // then in DoesUserHavePermission method, Just inlude permissions of any ADQ Groups the user is in.
+              //
+              // Also should check for users that have been invited but not yet accessed the site.
+
+
               graphHttpClient.get("v1.0/groups?$filter=displayName eq '" + user.Title + "'&$expand=members", GraphHttpClient.configurations.v1).then((response2) => {
                 response2.json().then((data) => {
                   //debugger;
