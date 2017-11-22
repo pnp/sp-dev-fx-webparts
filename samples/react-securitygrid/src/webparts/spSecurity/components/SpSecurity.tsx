@@ -11,6 +11,7 @@ import { DetailsList, IColumn, SelectionMode, IDetailsRowProps, Selection } from
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import { Spinner,SpinnerType,SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
 
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
@@ -30,7 +31,8 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       permission: this.props.permission,
       showUserPanel: false,
       showListPanel: false,
-      showEmail: this.props.showEmail
+      showEmail: this.props.showEmail,
+      securityInfoLoaded: false
 
     };
 
@@ -54,10 +56,10 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         permission: this.props.permission,
         showUserPanel: false,
         showListPanel: false,
-        showEmail: this.props.showEmail
+        showEmail: this.props.showEmail,
+        securityInfoLoaded: true
 
       };
-
       // inlclude\exclude lists selected in property pane
       state.securityInfo.lists = state.securityInfo.lists.filter((list) => {
         if (this.props.includeAdminSelectedLists) { // include the lists
@@ -170,7 +172,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       classname += " ms-Icon ms-BrandIcon--" + extension + " ms-BrandIcon--icon16 ";
     }
     else {
-      classname += " ms-Icon ms-Icon--TextDocument "+styles.themecolor;
+      classname += " ms-Icon ms-Icon--TextDocument " + styles.themecolor;
     }
     return (
       <div>
@@ -182,9 +184,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
     let classname = " ms-Icon ";
     if (item.itemCount > 0) {
-      classname+="  ms-Icon ms-Icon--FabricFormLibrary "+styles.themecolor;
-    } else{
-      classname+="  ms-Icon ms-Icon--FabricFolder ";
+      classname += "  ms-Icon ms-Icon--FabricFormLibrary " + styles.themecolor;
+    } else {
+      classname += "  ms-Icon ms-Icon--FabricFolder ";
     }
     return (
       <div onClick={(e) => {
@@ -197,13 +199,13 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
   }
   public renderFolderTitle(item?: any, index?: number, column?: IColumn): any {
-    let classname = "ms-u-smOffset" + (item.level) ;
+    let classname = "ms-u-smOffset" + (item.level);
     if (item.itemCount > 0) {
-      classname+="  ms-Icon ms-Icon--FabricFormLibrary "+styles.themecolor;
-    } else{
-      classname+="  ms-Icon ms-Icon--FabricFolder ";
+      classname += "  ms-Icon ms-Icon--FabricFormLibrary " + styles.themecolor;
+    } else {
+      classname += "  ms-Icon ms-Icon--FabricFolder ";
     }
-    
+
     return (
       <div onClick={(e) => {
         this.expandCollapseList(item);
@@ -349,6 +351,14 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   }
 
   public render(): React.ReactElement<ISpSecurityProps> {
+    if (!this.state.securityInfoLoaded) {
+      return (
+        <div >
+          <Spinner type={SpinnerType.large} size={SpinnerSize.large} label={'Fetching security information, please wait...'} />
+        </div> 
+
+        );
+    }
     debugger;
     let userPanelCommands: IContextualMenuItem[] = [];
     userPanelCommands.push({
@@ -494,6 +504,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         ((item instanceof SPListItem) && (this.parentIsExpanded(item)))
       )
     })
+
     return (
       <div >
         <CommandBar
