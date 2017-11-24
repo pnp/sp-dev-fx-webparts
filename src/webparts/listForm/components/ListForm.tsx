@@ -246,7 +246,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
       if ((formType === ControlMode.New) || !id) {
         const data = this.state.fieldsSchema
             .reduce( (newData, fld) => { newData[fld.InternalName] = fld.DefaultValue; return newData; }, {} );
-        this.setState({ ...this.state, data: data, originalData: {}, fieldErrors: {}, isLoadingData: false});
+        this.setState({ ...this.state, data: data, originalData: {...data}, fieldErrors: {}, isLoadingData: false});
         return;
       }
       this.setState({ ...this.state, data: {}, originalData: {}, fieldErrors: {}, isLoadingData: true});

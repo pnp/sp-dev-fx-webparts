@@ -212,6 +212,7 @@ export class ListFormService implements IListFormService {
                 (field) => (
                     (!field.ReadOnlyField)
                     && (field.InternalName in data)
+                    && (data[field.InternalName] !== null)
                     && (data[field.InternalName] !== originalData[field.InternalName])
                 ),
             )
