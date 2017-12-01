@@ -6,3 +6,6 @@
    block will not be included in the final bundle when the
    --ship flag is specified */
 declare const UNIT_TEST: boolean;
+
+/* Global defintion for SPO builds */
+declare const DATACENTER: boolean;
