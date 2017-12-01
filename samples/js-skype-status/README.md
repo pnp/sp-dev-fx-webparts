@@ -14,19 +14,19 @@ See the demo:
 ## Authentication
 Because the Skype API's are secured, you first need to register an Azure Active Directory application.  
 To do that go to `portal.azure.com` and sign in as your tenant adminstrator.  
-![azure active directory](./images/1.png)  
+![azure active directory](./images/1.PNG)  
 Click on `Azure Active Directory`.  
-![app registrations](./images/2.png)  
+![app registrations](./images/2.PNG)  
 Click on on `App Registrations` and then `New Application Registration`  
-![app details entry](./images/3.png)  
+![app details entry](./images/3.PNG)  
 Enter any name, select `Web app / API` in `Application Type` and in `Sign-In URL` enter `https://*.sharepoint.com/*`, then click on `Create`  
-![app details display](./images/4.png)  
+![app details display](./images/4.PNG)  
 Take note of the `application ID`, we'll need it later. Click on `required permissions`.  
-![skype permission](./images/5.png)  
+![skype permission](./images/5.PNG)  
 Click on `add` then `select an API` and select `Skype for Business`.  
-![skype scopes](./images/6.png)  
+![skype scopes](./images/6.PNG)  
 Select under `delegated permissions` both `Read/Write Skype user contacts and groups` and `Read/Write Skype user information (preview)`, then click `select`. Finish by clicking `Done`.  
-![grant permission](./images/7.png)  
+![grant permission](./images/7.PNG)  
 Don't forget to click on `Grant permissions` and `yes`.
 
 ## Updating the app
