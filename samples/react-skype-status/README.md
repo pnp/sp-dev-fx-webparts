@@ -40,3 +40,4 @@ Don't forget to run `gulp serve --noBrowser` to start the debugging server.
 ## Addtional page required
 Because Skype needs to silently redirect the user to a page for the authentication flow, you need to create an additional page called `skypepresence` in your site.  
 You don't need to add anything on that page.  
+![tracking image](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-skype-status)
