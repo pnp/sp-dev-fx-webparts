@@ -7,9 +7,9 @@ declare var Skype: any;
 export class SkypeForBusinessCommunicationService implements ICommunicationService {
     private static initializePromise: any;
     private static configurationService: ICommunicationConfigurationService;
-    private static webPartContext: IWebPartContext;
-    public constructor(WebPartContext: IWebPartContext) {
-        SkypeForBusinessCommunicationService.configurationService = new CommunicationConfigurationService(WebPartContext);
+    private static webPartContext: () => IWebPartContext;
+    public constructor(WebPartContext: () => IWebPartContext) {
+        SkypeForBusinessCommunicationService.configurationService = new CommunicationConfigurationService(WebPartContext());
         SkypeForBusinessCommunicationService.webPartContext = WebPartContext;
     }
     public async SubscribeToStatusChangeForUser(userEmail: string, userDisplayName: string,
@@ -21,7 +21,7 @@ export class SkypeForBusinessCommunicationService implements ICommunicationServi
         const skypeApp: any = await this.Initialize();
         const personsAndGroupsManager: any = skypeApp.personsAndGroupsManager;
         const mePerson: any = personsAndGroupsManager.mePerson;
-        if (SkypeForBusinessCommunicationService.webPartContext.pageContext.user.email === userEmail) {
+        if (SkypeForBusinessCommunicationService.webPartContext().pageContext.user.email === userEmail) {
             Log.info(Constants.ErrorCategory, `Bypassed skype subscription for current user ${userEmail}`);
             handler("Online", undefined, mePerson.displayName());
         } else {

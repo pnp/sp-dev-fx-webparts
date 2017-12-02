@@ -18,7 +18,7 @@ export interface ISkypePresenceWebPartProps {
 export default class SkypePresenceWebPartWebPart extends BaseClientSideWebPart<ISkypePresenceWebPartProps> {
 
   public render(): void {
-    const skypeService: SkypeForBusinessCommunicationService = new SkypeForBusinessCommunicationService(this.context);
+    const skypeService: SkypeForBusinessCommunicationService = new SkypeForBusinessCommunicationService(() => this.context);
     this.domElement.innerHTML = `
       <div class="${ styles.skypePresence }">
         <div class="${ styles.container }">
