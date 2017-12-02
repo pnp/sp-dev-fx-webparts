@@ -1,6 +1,7 @@
 import { Log } from "@microsoft/sp-core-library";
 import { IWebPartContext} from "@microsoft/sp-webpart-base";
 import { Constants, CommunicationConfigurationService, ICommunicationConfigurationService, ICommunicationService } from "./";
+import * as jQuery from "jquery";
 declare var Skype: any;
 
 export class SkypeForBusinessCommunicationService implements ICommunicationService {
