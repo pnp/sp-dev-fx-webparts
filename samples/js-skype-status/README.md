@@ -1,14 +1,40 @@
-# skype-presence-spfx
+# Leverage the UCWA JS SDK to subscribe and display Skype users status
 
-Generated with version 1.3.4.  
+## Summary
 This sample demonstrates how to use the UCWA JS Sdk for skype in the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the [documentation](https://msdn.microsoft.com/en-us/skype/websdk/docs/generalreference?f=255&MSPPError=-2147217396)  
 The goal is to demonstrate how you can leverage the SDK and to have the simplest approach, hence the usage of JQuery. No Framework (React, Angular, Knockout...) is used here but you can use that SDK in conjuction with any framwork.  
 No branding has been applied to keep it simple but you could perfectly leverage Office Ui Fabric to display persona cards.
 
-# What is does
 Allows you to properly display and subscribe to change of users' availibility.  
 See the demo:  
 ![demo](./images/demo.gif)
+
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-GA-green.svg)
+
+## Applies to
+* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+js-skype-status| [Vincent Biret](https://github.com/baywet)
+
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|December 1, 2017|Initial release
+
+
+## Disclaimer
+**THIS CODE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+---
 
 # Running the sample
 ## Authentication
