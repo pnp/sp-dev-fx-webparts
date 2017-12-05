@@ -20,6 +20,11 @@ import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
 import { PropertyPaneSlider } from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneSlider/PropertyPaneSlider";
 import PropertyPane from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPane/PropertyPane";
 
+import {
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
+
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
   public onInit(): Promise<void> {
     return super.onInit().then(_ => {
@@ -48,7 +53,8 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       listTitleColumnWidth: this.properties.listTitleColumnWidth,
       users: this.properties.users,
       getPermissionTypes: this.getPermissionTypes,
-      graphHttpClient: this.context.graphHttpClient
+      graphHttpClient: this.context.graphHttpClient,
+      domElement : this.domElement
 
     };
     const element: React.ReactElement<ISpSecurityProps> = React.createElement(
@@ -56,6 +62,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
     );
 
     ReactDom.render(element, this.domElement);
+
   }
 
   protected get dataVersion(): Version {
