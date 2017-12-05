@@ -16,10 +16,14 @@ import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-re
 
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import { right } from "glamor";
+<<<<<<< HEAD
 import {
   Environment,
   EnvironmentType
 } from '@microsoft/sp-core-library';
+=======
+
+>>>>>>> 6114dcfd4f8b0a685789fdca2f09f8b3acdc9efa
 /* tslint:disable */
 require('./spSecurity.css'); // loads the SpSecurity,css with unmodified names
 export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSecurityState> {
@@ -142,7 +146,13 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }
   }
   public collapseItem(itemId: string) {
+<<<<<<< HEAD
  let children = filter(this.state.securityInfo.lists, (otheritem) => {
+=======
+
+
+    let children = filter(this.state.securityInfo.lists, (otheritem) => {
+>>>>>>> 6114dcfd4f8b0a685789fdca2f09f8b3acdc9efa
       return otheritem instanceof SPListItem && otheritem.parentId === itemId;
     });
     for (let childitem of children) {
