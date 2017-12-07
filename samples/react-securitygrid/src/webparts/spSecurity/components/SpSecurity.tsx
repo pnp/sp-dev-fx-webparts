@@ -16,14 +16,10 @@ import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-re
 
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import { right } from "glamor";
-<<<<<<< HEAD
 import {
   Environment,
   EnvironmentType
 } from '@microsoft/sp-core-library';
-=======
-
->>>>>>> 6114dcfd4f8b0a685789fdca2f09f8b3acdc9efa
 /* tslint:disable */
 require('./spSecurity.css'); // loads the SpSecurity,css with unmodified names
 export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSecurityState> {
@@ -54,7 +50,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     this.parentIsExpanded = this.parentIsExpanded.bind(this);
     this.renderUserSelected = this.renderUserSelected.bind(this);
   }
-  public componentDidUpdate():void{
+  public componentDidUpdate(): void {
     // disable postback of buttons. see https://github.com/SharePoint/sp-dev-docs/issues/492
     if (Environment.type === EnvironmentType.ClassicSharePoint) {
       const buttons: NodeListOf<HTMLButtonElement> = this.props.domElement.getElementsByTagName('button');
@@ -69,7 +65,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }
   }
   public componentWillMount(): void {
- 
+
     this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.graphHttpClient, false).then((response) => {
       const state: ISpSecurityState = {
         securityInfo: response,
@@ -146,13 +142,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }
   }
   public collapseItem(itemId: string) {
-<<<<<<< HEAD
- let children = filter(this.state.securityInfo.lists, (otheritem) => {
-=======
-
-
     let children = filter(this.state.securityInfo.lists, (otheritem) => {
->>>>>>> 6114dcfd4f8b0a685789fdca2f09f8b3acdc9efa
       return otheritem instanceof SPListItem && otheritem.parentId === itemId;
     });
     for (let childitem of children) {
@@ -379,9 +369,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       return (
         <div >
           <Spinner label={'Fetching security information, please wait...'} />
-        </div> 
+        </div>
 
-        );
+      );
     }
     debugger;
     let userPanelCommands: IContextualMenuItem[] = [];
