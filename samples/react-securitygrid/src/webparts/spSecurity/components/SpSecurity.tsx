@@ -16,7 +16,10 @@ import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-re
 
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import { right } from "glamor";
-
+import {
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
 /* tslint:disable */
 require('./spSecurity.css'); // loads the SpSecurity,css with unmodified names
 export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSecurityState> {
@@ -47,7 +50,20 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     this.parentIsExpanded = this.parentIsExpanded.bind(this);
     this.renderUserSelected = this.renderUserSelected.bind(this);
   }
-
+  public componentDidUpdate(): void {
+    // disable postback of buttons. see https://github.com/SharePoint/sp-dev-docs/issues/492
+    if (Environment.type === EnvironmentType.ClassicSharePoint) {
+      const buttons: NodeListOf<HTMLButtonElement> = this.props.domElement.getElementsByTagName('button');
+      for (let i: number = 0; i < buttons.length; i++) {
+        if (buttons[i]) {
+          // Disable the button onclick postback
+          buttons[i].onclick = function () {
+            return false;
+          };
+        }
+      }
+    }
+  }
   public componentWillMount(): void {
 
     this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.graphHttpClient, false).then((response) => {
@@ -126,8 +142,6 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }
   }
   public collapseItem(itemId: string) {
-
-
     let children = filter(this.state.securityInfo.lists, (otheritem) => {
       return otheritem instanceof SPListItem && otheritem.parentId === itemId;
     });
@@ -355,9 +369,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       return (
         <div >
           <Spinner label={'Fetching security information, please wait...'} />
-        </div> 
+        </div>
 
-        );
+      );
     }
     debugger;
     let userPanelCommands: IContextualMenuItem[] = [];
