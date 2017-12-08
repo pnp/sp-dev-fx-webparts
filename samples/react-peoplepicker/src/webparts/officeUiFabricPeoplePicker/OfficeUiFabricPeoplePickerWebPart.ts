@@ -4,11 +4,9 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField,
   PropertyPaneDropdown,
   PropertyPaneToggle,
-  PropertyPaneSlider,
-  IWebPartContext
+  PropertyPaneSlider
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'officeUiFabricPeoplePickerStrings';
