@@ -21,14 +21,8 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class FilterPanel extends React.Component<IFilterPanelProps, IFilterPanelState> {
     
-    private _initialFilters: IRefinementResult[];
-
     public constructor(props) {
         super(props);
-
-        // The initialFilters are just set once and never updated afterwards so we don't need to put them in the component state.
-        // We dont' want the refiners update every time to be able to revert changes easily in the interface and don't lose initial refiners.
-        this._initialFilters = this.props.availableFilters;
 
         this.state = {
             showPanel: false,
@@ -53,7 +47,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         let groups: IGroup[] = [];
 
         // Initialize the Office UI grouped list
-        this._initialFilters.map((filter, i) => {
+        this.props.availableFilters.map((filter, i) => {
 
             groups.push({
                 key: i.toString(),
@@ -135,16 +129,17 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                 <Panel
                     className="filterPanel"
                     isOpen={ this.state.showPanel }
-                    type={ PanelType.smallFixedFar }
+                    type={ PanelType.smallFixedNear }
                     isBlocking={ false }
                     isLightDismiss= { true }
                     onDismiss={ this._onClosePanel }
                     headerText={ strings.FilterPanelTitle }
                     closeButtonAriaLabel='Close' 
                     hasCloseButton={ true }
-                    headerClassName="filterPanel__header"                    
+                    headerClassName="filterPanel__header"
+                                       
                     onRenderBody={() => { 
-                        if(this._initialFilters.length > 0) {
+                        if (this.props.availableFilters.length > 0) {
                             return (
                                 <Scrollbars style={{ height: "100%" }}>
                                     <div className="filterPanel__body">
@@ -243,7 +238,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
         let allFilters: IRefinementFilter[] = [];
 
-        this._initialFilters.map((filter) => {
+        this.props.availableFilters.map((filter) => {
 
             filter.Values.map((refinementValue: IRefinementValue, index) => { 
                 allFilters.push({FilterName: filter.FilterName, Value: refinementValue});
