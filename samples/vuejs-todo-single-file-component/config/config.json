@@ -1,15 +1,20 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/toDo/ToDoWebPart.js",
-      "manifest": "./src/webparts/toDo/ToDoWebPart.manifest.json",
-      "outputPath": "./dist/to-do.bundle.js"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "to-do-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/toDo/ToDoWebPart.js",
+          "manifest": "./src/webparts/toDo/ToDoWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {
-    "vue": "node_modules/vue/dist/vue.runtime.js"
   },
   "localizedResources": {
-    "toDoStrings": "webparts/toDo/loc/{locale}.js"
+    "toDoStrings": "lib/webparts/toDo/loc/{locale}.js"
+  },
+  "externals": {
+    "vue": "node_modules/vue/dist/vue.runtime.js"
   }
 }

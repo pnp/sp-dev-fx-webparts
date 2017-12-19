@@ -10,12 +10,10 @@
   "preconfiguredEntries": [{
     "groupId": "a0e1eddd-ea67-4775-a52b-0141c5807146",
     "group": { "default": "Under Development" },
-    "title": { "default": "ToDo" },
-    "description": { "default": "My Todo&#39;s" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "ToDo Vue.js" },
+    "description": { "default": "My Todo&#39;s demo with Vue.js" },
+    "officeFabricIconFontName": "TaskSolid",
     "properties": {
-      "message": "todos",
-      "todos": []
     }
   }]
 }

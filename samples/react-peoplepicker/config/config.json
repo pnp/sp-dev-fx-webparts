@@ -1,13 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/officeUiFabricPeoplePicker/OfficeUiFabricPeoplePickerWebPart.js",
-      "manifest": "./src/webparts/officeUiFabricPeoplePicker/OfficeUiFabricPeoplePickerWebPart.manifest.json",
-      "outputPath": "./dist/office-ui-fabric-people-picker.bundle.js"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "office-ui-fabric-people-picker-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/officeUiFabricPeoplePicker/OfficeUiFabricPeoplePickerWebPart.js",
+          "manifest": "./src/webparts/officeUiFabricPeoplePicker/OfficeUiFabricPeoplePickerWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {},
+  },
   "localizedResources": {
-    "officeUiFabricPeoplePickerStrings": "webparts/officeUiFabricPeoplePicker/loc/{locale}.js"
-  }
+    "officeUiFabricPeoplePickerStrings": "lib/webparts/officeUiFabricPeoplePicker/loc/{locale}.js"
+  },
+  "externals": {}
 }
