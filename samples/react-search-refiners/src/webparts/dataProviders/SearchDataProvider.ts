@@ -155,7 +155,7 @@ class SearchDataProvider implements ISearchDataProvider {
                     refiner.Entries.map((item) => {
                         values.push({
                             RefinementCount: item.RefinementCount,
-                            RefinementName:  this._formatDate(item.RefinementName), //This value will appear in the selected filter bar
+                            RefinementName:  this._formatDate(item.RefinementName), // This value will appear in the selected filter bar
                             RefinementToken: item.RefinementToken,
                             RefinementValue: this._formatDate(item.RefinementValue), // This value will appear in the filter panel
                         });

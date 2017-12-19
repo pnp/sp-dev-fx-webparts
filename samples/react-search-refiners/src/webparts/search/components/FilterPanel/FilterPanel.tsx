@@ -94,8 +94,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                     <Label className="filter">
                         <i className="ms-Icon ms-Icon--ClearFilter" onClick={ ()=> { this._removeFilter(filter); }}></i> 
                         { filter.Value.RefinementName  }
-                    </Label>  
-      
+                    </Label>      
             );
         });
 
