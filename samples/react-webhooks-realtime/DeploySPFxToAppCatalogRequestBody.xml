@@ -1,0 +1,148 @@
+<Request
+	xmlns="http://schemas.microsoft.com/sharepoint/clientquery/2009" SchemaVersion="15.0.0.0" LibraryVersion="16.0.0.0" ApplicationName="Javascript Library">
+	<Actions>
+		<Method Name="SetFieldValue" Id="18" ObjectPathId="10" Version="{fileVersion}">
+			<Parameters>
+				<Parameter Type="String">IsClientSideSolutionDeployed</Parameter>
+				<Parameter Type="Boolean">true</Parameter>
+			</Parameters>
+		</Method>
+		<Method Name="SetFieldValue" Id="19" ObjectPathId="10" Version="{fileVersion}">
+			<Parameters>
+				<Parameter Type="String">IsClientSideSolutionCurrentVersionDeployed</Parameter>
+				<Parameter Type="Boolean">true</Parameter>
+			</Parameters>
+		</Method>
+		<Method Name="SetFieldValue" Id="20" ObjectPathId="10" Version="{fileVersion}">
+			<Parameters>
+				<Parameter Type="String">SkipFeatureDeployment</Parameter>
+				<Parameter Type="Boolean">{skipFeatureDeployment}</Parameter>
+			</Parameters>
+		</Method>
+		<Method Name="Update" Id="21" ObjectPathId="10" Version="{fileVersion}" />
+		<Query Id="22" ObjectPathId="10">
+			<Query SelectAllProperties="false">
+				<Properties>
+					<Property Name="FileSystemObjectType" ScalarProperty="true" />
+					<Property Name="Id" ScalarProperty="true" />
+					<Property Name="ServerRedirectedEmbedUri" ScalarProperty="true" />
+					<Property Name="ServerRedirectedEmbedUrl" ScalarProperty="true" />
+					<Property Name="ID" ScalarProperty="true" />
+					<Property Name="ContentTypeId" ScalarProperty="true" />
+					<Property Name="Created" ScalarProperty="true" />
+					<Property Name="Author" ScalarProperty="true" />
+					<Property Name="Modified" ScalarProperty="true" />
+					<Property Name="Editor" ScalarProperty="true" />
+					<Property Name="_HasCopyDestinations" ScalarProperty="true" />
+					<Property Name="_CopySource" ScalarProperty="true" />
+					<Property Name="_ModerationStatus" ScalarProperty="true" />
+					<Property Name="_ModerationComments" ScalarProperty="true" />
+					<Property Name="FileRef" ScalarProperty="true" />
+					<Property Name="FileDirRef" ScalarProperty="true" />
+					<Property Name="Last_x0020_Modified" ScalarProperty="true" />
+					<Property Name="Created_x0020_Date" ScalarProperty="true" />
+					<Property Name="File_x0020_Size" ScalarProperty="true" />
+					<Property Name="FSObjType" ScalarProperty="true" />
+					<Property Name="SortBehavior" ScalarProperty="true" />
+					<Property Name="CheckedOutUserId" ScalarProperty="true" />
+					<Property Name="IsCheckedoutToLocal" ScalarProperty="true" />
+					<Property Name="CheckoutUser" ScalarProperty="true" />
+					<Property Name="FileLeafRef" ScalarProperty="true" />
+					<Property Name="UniqueId" ScalarProperty="true" />
+					<Property Name="SyncClientId" ScalarProperty="true" />
+					<Property Name="ProgId" ScalarProperty="true" />
+					<Property Name="ScopeId" ScalarProperty="true" />
+					<Property Name="VirusStatus" ScalarProperty="true" />
+					<Property Name="CheckedOutTitle" ScalarProperty="true" />
+					<Property Name="_CheckinComment" ScalarProperty="true" />
+					<Property Name="Modified_x0020_By" ScalarProperty="true" />
+					<Property Name="Created_x0020_By" ScalarProperty="true" />
+					<Property Name="File_x0020_Type" ScalarProperty="true" />
+					<Property Name="HTML_x0020_File_x0020_Type" ScalarProperty="true" />
+					<Property Name="_SourceUrl" ScalarProperty="true" />
+					<Property Name="_SharedFileIndex" ScalarProperty="true" />
+					<Property Name="MetaInfo" ScalarProperty="true" />
+					<Property Name="_Level" ScalarProperty="true" />
+					<Property Name="_IsCurrentVersion" ScalarProperty="true" />
+					<Property Name="ItemChildCount" ScalarProperty="true" />
+					<Property Name="FolderChildCount" ScalarProperty="true" />
+					<Property Name="Restricted" ScalarProperty="true" />
+					<Property Name="OriginatorId" ScalarProperty="true" />
+					<Property Name="NoExecute" ScalarProperty="true" />
+					<Property Name="ContentVersion" ScalarProperty="true" />
+					<Property Name="_ComplianceFlags" ScalarProperty="true" />
+					<Property Name="_ComplianceTag" ScalarProperty="true" />
+					<Property Name="_ComplianceTagWrittenTime" ScalarProperty="true" />
+					<Property Name="_ComplianceTagUserId" ScalarProperty="true" />
+					<Property Name="BSN" ScalarProperty="true" />
+					<Property Name="_ListSchemaVersion" ScalarProperty="true" />
+					<Property Name="_Dirty" ScalarProperty="true" />
+					<Property Name="_Parsable" ScalarProperty="true" />
+					<Property Name="AccessPolicy" ScalarProperty="true" />
+					<Property Name="_VirusStatus" ScalarProperty="true" />
+					<Property Name="_VirusVendorID" ScalarProperty="true" />
+					<Property Name="_VirusInfo" ScalarProperty="true" />
+					<Property Name="AppAuthor" ScalarProperty="true" />
+					<Property Name="AppEditor" ScalarProperty="true" />
+					<Property Name="SMTotalSize" ScalarProperty="true" />
+					<Property Name="SMLastModifiedDate" ScalarProperty="true" />
+					<Property Name="SMTotalFileStreamSize" ScalarProperty="true" />
+					<Property Name="SMTotalFileCount" ScalarProperty="true" />
+					<Property Name="owshiddenversion" ScalarProperty="true" />
+					<Property Name="_UIVersion" ScalarProperty="true" />
+					<Property Name="_UIVersionString" ScalarProperty="true" />
+					<Property Name="InstanceID" ScalarProperty="true" />
+					<Property Name="Order" ScalarProperty="true" />
+					<Property Name="GUID" ScalarProperty="true" />
+					<Property Name="WorkflowVersion" ScalarProperty="true" />
+					<Property Name="WorkflowInstanceID" ScalarProperty="true" />
+					<Property Name="ParentVersionString" ScalarProperty="true" />
+					<Property Name="ParentLeafName" ScalarProperty="true" />
+					<Property Name="DocConcurrencyNumber" ScalarProperty="true" />
+					<Property Name="ParentUniqueId" ScalarProperty="true" />
+					<Property Name="StreamHash" ScalarProperty="true" />
+					<Property Name="ComplianceAssetId" ScalarProperty="true" />
+					<Property Name="Title" ScalarProperty="true" />
+					<Property Name="AppProductID" ScalarProperty="true" />
+					<Property Name="AssetID" ScalarProperty="true" />
+					<Property Name="AppPublisher" ScalarProperty="true" />
+					<Property Name="AppThumbnailURL" ScalarProperty="true" />
+					<Property Name="AppDescription" ScalarProperty="true" />
+					<Property Name="AppShortDescription" ScalarProperty="true" />
+					<Property Name="AppVersion" ScalarProperty="true" />
+					<Property Name="AppSupportURL" ScalarProperty="true" />
+					<Property Name="AppVideoURL" ScalarProperty="true" />
+					<Property Name="IsAppPackageEnabled" ScalarProperty="true" />
+					<Property Name="SharePointAppCategory" ScalarProperty="true" />
+					<Property Name="AppPrerequisitesXML" ScalarProperty="true" />
+					<Property Name="IsFeaturedApp" ScalarProperty="true" />
+					<Property Name="AppMetadataLocale" ScalarProperty="true" />
+					<Property Name="IsDefaultAppMetadataLocale" ScalarProperty="true" />
+					<Property Name="AppImageURL1" ScalarProperty="true" />
+					<Property Name="AppImageURL2" ScalarProperty="true" />
+					<Property Name="AppImageURL3" ScalarProperty="true" />
+					<Property Name="AppImageURL4" ScalarProperty="true" />
+					<Property Name="AppImageURL5" ScalarProperty="true" />
+					<Property Name="AppPackageHash" ScalarProperty="true" />
+					<Property Name="IsValidAppPackage" ScalarProperty="true" />
+					<Property Name="AppPackageErrorMessage" ScalarProperty="true" />
+					<Property Name="AppPermissionXML" ScalarProperty="true" />
+					<Property Name="AppSubtypeID" ScalarProperty="true" />
+					<Property Name="IsAutoHostedApp" ScalarProperty="true" />
+					<Property Name="AppTitleInfo" ScalarProperty="true" />
+					<Property Name="AppSupportedLocales" ScalarProperty="true" />
+					<Property Name="IsClientSideSolution" ScalarProperty="true" />
+					<Property Name="IsClientSideSolutionDeployed" ScalarProperty="true" />
+					<Property Name="ExternalContentDomains" ScalarProperty="true" />
+					<Property Name="IsClientSideSolutionCurrentVersionDeployed" ScalarProperty="true" />
+					<Property Name="SkipFeatureDeployment" ScalarProperty="true" />
+					<Property Name="PackageDefaultSkipFeatureDeployment" ScalarProperty="true" />
+					<Property Name="UniqueSolutionId" ScalarProperty="true" />
+				</Properties>
+			</Query>
+		</Query>
+	</Actions>
+	<ObjectPaths>
+		<Identity Id="10" Name="{randomId}|740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{siteId}:web:{webId}:list:{listId}:item:{itemId},1" />
+  </ObjectPaths>
+</Request>

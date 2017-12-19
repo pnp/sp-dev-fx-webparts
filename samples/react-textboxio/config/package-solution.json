@@ -1,0 +1,11 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "PnP - Textbox IO Rich Text Editor Web Part",
+    "id": "ae596ff7-7f48-4148-bef9-bf5e0e332256",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/pnp-react-textboxio.sppkg"
+  }
+}
