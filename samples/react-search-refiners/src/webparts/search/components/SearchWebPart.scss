@@ -14,7 +14,7 @@
             bottom: 0;
             padding: 8px 16px;
             color: #ffffff;
-            background-color: #0078d7;
+            background-color: "[theme: themePrimary]";
 
             i {
                 position: relative;
@@ -55,16 +55,33 @@
         width: 100%;
     }
 
-    &__filterResultBtn, &__selectedFilterLbl {
+    &__filterResultBtn {
         margin: 10px;
     }
 
     &__selectedFilters {
 
-        &__filterBtn {
-            border-radius: 10px;
-            margin-bottom: 10px;
-            margin-left: 10px;
+        margin-left: 10px;
+        padding: 10px;
+
+        label.filter {        
+            display: inline-block;         
+            margin-bottom: 5px;  
+        }
+
+        label.filter~label.filter:before {
+            padding: 5px;
+            content: "|";
+        }
+
+        i {
+            margin-right: 5px;
+            vertical-align: sub;
+        }
+
+        i:hover {
+            color: "[theme: themePrimary]";
+            cursor: pointer;
         }
     }
 
@@ -87,12 +104,14 @@
 
                     a {
                         float: left;
+                        color: "[theme: themePrimary]";
                         padding: 5px 10px;
                         text-decoration: none;
                         border-radius: 15px;
         
                         i {
                             font-size: 10px;
+                            color: "[theme: themePrimary]";
                         }        
                     }
         
@@ -101,7 +120,7 @@
                     }
         
                     a.active {
-                        background-color: #0078d7;
+                        background-color: "[theme: themePrimary]";
                         color: white;
                     }
                 }
@@ -141,6 +160,17 @@
             .ms-List-page~.ms-List-page {
                 margin-top: 15px;
             }
+
+            button {
+                padding: 10px;
+            }
         }
     }
+}
+
+.overlay {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

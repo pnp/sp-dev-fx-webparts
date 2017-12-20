@@ -46,23 +46,23 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
   }
 
   public render(): void {
-
-    this._dataProvider.resultsCount = this.properties.maxResultsCount;
-    this._dataProvider.selectedProperties = this.properties.selectedProperties ? 
-                                            this.properties.selectedProperties.replace(/\s|,+$/g,'').split(",") :[]; 
                                             
     let renderElement = null;
+
+    // Configure the provider before the query according to our needs
+    this._dataProvider.resultsCount = this.properties.maxResultsCount;
+    this._dataProvider.queryTemplate = this.properties.queryTemplate;
 
     const searchContainer: React.ReactElement<ISearchContainerProps> = React.createElement(
       SearchContainer,
       {
-        dataProvider: this._dataProvider,
-        searchQuery: this.properties.searchQuery,
+        searchDataProvider: this._dataProvider,
+        queryKeywords: this.properties.queryKeywords,
         maxResultsCount: this.properties.maxResultsCount,
-        selectedProperties: this.properties.selectedProperties,
+        selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g,'').split(",") :[],
         refiners: this.properties.refiners,
         showPaging: this.properties.showPaging,
-      }
+      } as ISearchContainerProps
     );
 
     const placeholder: React.ReactElement<IPlaceholderProps> = React.createElement(
@@ -76,7 +76,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
       }
     );
 
-    renderElement = this.properties.searchQuery ? searchContainer : placeholder;
+    renderElement = this.properties.queryKeywords ? searchContainer : placeholder;
 
     ReactDom.render(renderElement, this.domElement);
 
@@ -94,9 +94,17 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
             {
               groupName: strings.SearchSettingsGroupName,
               groupFields: [
-                PropertyPaneTextField('searchQuery', {
-                  label: strings.SearchQueryFieldLabel,
-                  value: "Path:{Site}",
+                PropertyPaneTextField('queryKeywords', {
+                  label: strings.SearchQueryKeywordsFieldLabel,
+                  value: "",
+                  multiline: true,    
+                  resizable: true,
+                  placeholder: strings.SearchQueryPlaceHolderText,
+                  onGetErrorMessage: this._validateEmptyField.bind(this)
+                }),
+                PropertyPaneTextField('queryTemplate', {
+                  label: strings.QueryTemplateFieldLabel,
+                  value: "{searchTerms} Path:{Site}",
                   multiline: true,    
                   resizable: true,
                   placeholder: strings.SearchQueryPlaceHolderText,

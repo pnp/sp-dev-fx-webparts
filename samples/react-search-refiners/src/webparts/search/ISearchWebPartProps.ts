@@ -1,5 +1,6 @@
 export interface ISearchWebPartProps {
-  searchQuery: string;
+  queryKeywords: string;
+  queryTemplate: string;
   maxResultsCount: number;
   selectedProperties: string;
   refiners: string;

@@ -1,8 +1,8 @@
 import ISearchDataProvider from "../../../dataProviders/ISearchDataProvider";
 
 interface ISearchContainerProps {
-  dataProvider: ISearchDataProvider;
-  searchQuery: string;
+  searchDataProvider: ISearchDataProvider;
+  queryKeywords: string;
   maxResultsCount: number;
   selectedProperties: string[];
   refiners: string;
