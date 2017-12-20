@@ -10,6 +10,7 @@ import TilesList from "../TilesList/TilesList";
 import "../SearchWebPart.scss";
 import FilterPanel from "../FilterPanel/FilterPanel";
 import Paging from "../Paging/Paging";
+import { Overlay } from "office-ui-fabric-react";
 
 export default class SearchContainer extends React.Component<ISearchContainerProps,ISearchContainerState> {
 
@@ -24,8 +25,10 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
                         RelevantResults: [] 
                      },
             selectedFilters: [],
+            availableFilters: [],
             currentPage: 1,
-            areResultsLoading: true,
+            areResultsLoading: false,
+            isComponentLoading: true,
             errorMessage: "",
             hasError: false,
         };
@@ -40,33 +43,38 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
         const items = this.state.results;
         const hasError = this.state.hasError;
         const errorMessage = this.state.errorMessage;
+        const isComponentLoading = this.state.isComponentLoading;
 
         let wpContent: JSX.Element = null;
+        let renderOverlay = null;
+        
+        if (!isComponentLoading && areResultsLoading) {
+                renderOverlay = <div>
+                <Overlay isDarkThemed={false} className="overlay">
+                </Overlay>
+            </div>;
+        }
 
-        if (areResultsLoading) {
+        if (isComponentLoading) {
             wpContent =  <Spinner size={ SpinnerSize.large } label={ strings.LoadingMessage } />; 
         } else {
 
             if (hasError) {
-
                 wpContent = <MessageBar messageBarType= { MessageBarType.error }>{ errorMessage }</MessageBar>;
-
             } else {
 
                 if (items.RelevantResults.length === 0) {
-
                     wpContent = 
                     <div>
-                        <FilterPanel availableFilters={ items.RefinementResults } onUpdateFilters={ this._onUpdateFilters }/>
+                        <FilterPanel availableFilters={ this.state.availableFilters } onUpdateFilters={ this._onUpdateFilters }/>
                         <div className="searchWp__noresult">{ strings.NoResultMessage }</div>
                     </div>;
-
                 } else {     
-                        
                     wpContent = 
                       
                           <div>
-                              <FilterPanel availableFilters={ items.RefinementResults } onUpdateFilters={ this._onUpdateFilters }/>     
+                              <FilterPanel availableFilters={ this.state.availableFilters } onUpdateFilters={ this._onUpdateFilters }/>
+                              { renderOverlay }     
                               <TilesList items={ items.RelevantResults }/>
                               { this.props.showPaging ?
                                 <Paging 
@@ -88,55 +96,96 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
         );
     }
 
-    public componentDidMount() {
+    public async componentDidMount() {
 
-        // Async calls
-        this._getSearchResults(this.props.searchQuery, this.props.refiners, this.state.selectedFilters, this.state.currentPage);
-    }
-
-    public componentWillReceiveProps(nextProps: ISearchContainerProps): void {
-
-        // Intermediate state to display the spinner before an async query
-        this.setState({
-            areResultsLoading: true,
-        });
-
-        // We reset the page number and refinement filters
-        this._getSearchResults(nextProps.searchQuery, nextProps.refiners, [], 1);
-    }
-
-    private _getSearchResults(searchQuery: string, refiners: string, refinementFilters?: IRefinementFilter[], pageNumber?: number) {
-   
-        this.props.dataProvider.search(searchQuery, refiners, refinementFilters, pageNumber).then((searchResults: ISearchResults) => {
+        try {
             
             this.setState({
-                results: searchResults,
-                areResultsLoading: false,
+                areResultsLoading: true,
             });
 
-        }).catch((error) => {
-            Logger.write("[SearchContainer._getSearchResults()]: Error: " + error, LogLevel.Error);
+            const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, this.props.refiners, this.state.selectedFilters, this.state.currentPage);
+
+            // Initial filters are just set once for the filter control during the component initialization
+            // By this way, we are be able to select multiple values whithin a specific filter (OR condition). Otherwise, if we pass every time the new filters retrieved from new results,
+            // previous values will overwritten preventing to select multiple values (default SharePoint behavior)
+            this.setState({
+                results: searchResults,
+                availableFilters: searchResults.RefinementResults,
+                areResultsLoading: false,
+                isComponentLoading: false,
+            });
+
+        } catch (error) {
+
+            Logger.write("[SearchContainer._componentDidMount()]: Error: " + error, LogLevel.Error);
 
             this.setState({
                 areResultsLoading: false,
+                isComponentLoading: false,
                 results: { RefinementResults: [], RelevantResults: [] },
                 hasError: true,
-                errorMessage: error.message,
+                errorMessage: error.message
             });
-        });
+        }
+    }
+
+    public async componentWillReceiveProps(nextProps: ISearchContainerProps) {
+
+        // New props are passed to the component when the search query has been changed
+        if (this.props.refiners.toString() !== nextProps.refiners.toString()
+            || this.props.maxResultsCount  !== nextProps.maxResultsCount) {
+
+            try {
+
+                // Clear selected filters on a new query or new refiners
+                this.setState({
+                    selectedFilters: [],
+                    areResultsLoading: true,
+                });
+
+                // We reset the page number and refinement filters
+                const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, nextProps.refiners, [], 1);
+
+                this.setState({
+                    results: searchResults,
+                    availableFilters: searchResults.RefinementResults,
+                    areResultsLoading: false,
+                });
+
+            } catch (error) {
+
+                Logger.write("[SearchContainer._componentWillReceiveProps()]: Error: " + error, LogLevel.Error);
+
+                this.setState({
+                    areResultsLoading: false,
+                    isComponentLoading: false,
+                    results: { RefinementResults: [], RelevantResults: [] },
+                    hasError: true,
+                    errorMessage: error.message
+                });
+            }
+        }
     }
 
     /**
      * Callback function to apply new filters coming from the filter panel child component
      * @param newFilters The new filters to apply
      */
-    private _onUpdateFilters(newFilters: IRefinementFilter[]) {
+    private async _onUpdateFilters(newFilters: IRefinementFilter[]) {
 
-        this._getSearchResults(this.props.searchQuery, this.props.refiners, newFilters, 1);
-
+        // Get back to the first page when new filters have been selected
         this.setState({
             selectedFilters: newFilters,
             currentPage: 1,
+            areResultsLoading: true,
+        });
+
+        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, this.props.refiners, newFilters, 1);
+
+        this.setState({
+            results: searchResults,
+            areResultsLoading: false,
         });
     }
 
@@ -144,11 +193,18 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
      * Callback function update search results according the page number
      * @param pageNumber The page mumber to get
      */
-    private _onPageUpdate(pageNumber: number) {
-        this._getSearchResults(this.props.searchQuery, this.props.refiners, this.state.selectedFilters, pageNumber);  
-        
+    private async _onPageUpdate(pageNumber: number) {
+
         this.setState({
             currentPage: pageNumber,
+            areResultsLoading: true,
+        });
+
+        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, this.props.refiners, this.state.selectedFilters, pageNumber);
+
+        this.setState({
+            results: searchResults,
+            areResultsLoading: false,
         });
     }
 }
