@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hide-header-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/hideHeader/HideHeaderWebPart.js",
+          "manifest": "./src/webparts/hideHeader/HideHeaderWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HideHeaderWebPartStrings": "lib/webparts/hideHeader/loc/{locale}.js"
+  }
+}

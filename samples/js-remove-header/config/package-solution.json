@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "header-removal-client-side-solution",
+    "id": "7a23c2bd-5b64-434c-9ba3-8027aa48bbce",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/header-removal.sppkg"
+  }
+}
