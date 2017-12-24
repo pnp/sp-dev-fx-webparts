@@ -1,0 +1,52 @@
+{
+  "id": "b4603e5d-c1ac-41d9-88fd-dd31514a95f1",
+  "alias": "HideHeaderWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "HideHeader"
+      },
+      "description": {
+        "default": "Hide the header on modern page"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "description": "HideHeader"
+      }
+    }
+  ],
+  "loaderConfig": {
+    "entryModuleId": "hide-header-web-part",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "hide-header-web-part": {
+        "type": "path",
+        "path": "dist/hide-header-web-part.js"
+      },
+      "HideHeaderWebPartStrings": {
+        "defaultPath": "lib/webparts/hideHeader/loc/en-us.js",
+        "type": "localizedPath"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.4.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "version": "1.4.0",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0"
+      }
+    }
+  }
+}
