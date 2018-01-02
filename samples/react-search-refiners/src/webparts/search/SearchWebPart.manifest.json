@@ -27,7 +27,7 @@
                 "queryKeywords": "",
                 "queryTemplate": "{searchTerms} Path:{Site}",
                 "refiners": "Created",
-                "selectedProperties": "Title,Path,Created,Filename,ServerRedirectedPreviewURL",
+                "selectedProperties": "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL",
                 "maxResultsCount": 10,
                 "showFileIcon": true,
                 "showCreatedDate": true
