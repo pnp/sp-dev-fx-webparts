@@ -5,4 +5,6 @@ export interface ISearchWebPartProps {
   selectedProperties: string;
   refiners: string;
   showPaging: boolean;
+  showFileIcon: boolean;
+  showCreatedDate: boolean;
 }
