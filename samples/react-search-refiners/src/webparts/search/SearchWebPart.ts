@@ -108,8 +108,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                                     value: this.properties.queryTemplate,
                                     multiline: true,
                                     resizable: true,
-                                    placeholder: strings.SearchQueryPlaceHolderText,
-                                    onGetErrorMessage: this._validateEmptyField.bind(this)
+                                    placeholder: strings.SearchQueryPlaceHolderText
                                 }),
                                 PropertyPaneTextField('selectedProperties', {
                                     label: strings.SelectedPropertiesFieldLabel,
