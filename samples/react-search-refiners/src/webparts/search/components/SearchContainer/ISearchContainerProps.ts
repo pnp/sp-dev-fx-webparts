@@ -8,6 +8,7 @@ interface ISearchContainerProps {
   refiners: string;
   showPaging: boolean;
   showFileIcon: boolean;
+  showCreatedDate: boolean;
 }
 
 export default ISearchContainerProps;

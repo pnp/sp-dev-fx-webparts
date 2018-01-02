@@ -49,7 +49,7 @@ export default class Tile extends React.Component<ITileProps, null> {
                     <DocumentCardPreview { ...previewProps } />
                 </div>
                 <DocumentCardTitle title={item.Title} shouldTruncate={false} />
-                <div className="searchWp__tile__footer">
+                <div className="searchWp__tile__footer" hidden={!this.props.showCreatedDate}>
                     <span>{moment(item.Created).isValid() ? moment(item.Created).format("L") : null}</span>
                 </div>
             </DocumentCard>

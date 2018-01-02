@@ -39,7 +39,7 @@ export default class TilesList extends React.Component<ITilesListViewProps, null
                         style={{
                             width: (100 / this._columnCount) + '%',
                         }}>
-                        <Tile key={index} item={item} showFileIcon={this.props.showFileIcon} />
+                        <Tile key={index} item={item} showFileIcon={this.props.showFileIcon} showCreatedDate={this.props.showCreatedDate} />
                     </div>
                 )} />
         );

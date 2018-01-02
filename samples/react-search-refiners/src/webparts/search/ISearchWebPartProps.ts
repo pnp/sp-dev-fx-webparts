@@ -6,4 +6,5 @@ export interface ISearchWebPartProps {
   refiners: string;
   showPaging: boolean;
   showFileIcon: boolean;
+  showCreatedDate: boolean;
 }
