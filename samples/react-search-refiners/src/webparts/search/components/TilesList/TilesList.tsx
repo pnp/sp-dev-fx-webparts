@@ -22,26 +22,26 @@ export default class TilesList extends React.Component<ITilesListViewProps, null
         this._getItemCountForPage = this._getItemCountForPage.bind(this);
         this._getPageHeight = this._getPageHeight.bind(this);
     }
-    
+
     public render() {
 
         const items = this.props.items;
 
-        return (            
-            <List 
-                items={ items } 
-                getItemCountForPage={ this._getItemCountForPage }
-                getPageHeight={ this._getPageHeight }
-                renderedWindowsAhead={ 4 }
+        return (
+            <List
+                items={items}
+                getItemCountForPage={this._getItemCountForPage}
+                getPageHeight={this._getPageHeight}
+                renderedWindowsAhead={4}
                 className="searchWp__list"
-                onRenderCell={ (item, index) => (
-                <div className="searchWp__tile"
-                    style={ {
-                        width: (100 / this._columnCount) + '%',                        
-                    } }>
-                    <Tile key={ index } item= { item }/>
-                </div>
-            )}/>
+                onRenderCell={(item, index) => (
+                    <div className="searchWp__tile"
+                        style={{
+                            width: (100 / this._columnCount) + '%',
+                        }}>
+                        <Tile key={index} item={item} showFileIcon={this.props.showFileIcon} showCreatedDate={this.props.showCreatedDate} />
+                    </div>
+                )} />
         );
     }
 

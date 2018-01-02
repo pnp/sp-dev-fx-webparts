@@ -10,7 +10,7 @@ This sample shows you how to build user friendly SharePoint search experiences u
 An associated [blog post](http://thecollaborationcorner.com/2017/10/16/build-dynamic-sharepoint-search-experiences-with-refiners-and-paging-with-spfx-office-ui-fabric-and-pnp-js-library/) is available to give you more details about this sample implementation.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.3.4-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.0-green.svg)
 
 ## Applies to
 
@@ -21,13 +21,14 @@ An associated [blog post](http://thecollaborationcorner.com/2017/10/16/build-dyn
 
 Solution|Author(s)
 --------|---------
-react-search-refiners | Franck Cornu (MVP Office Development at aequos) - Twitter @FranckCornu
+react-search-refiners | Franck Cornu (MVP Office Development at aequos) - [@FranckCornu](http://www.twitter.com/FranckCornu)<br/>Mikael Svenson -[@mikaelsvenson](http://www.twitter.com/mikaelsvenson)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0 | January 03, 2018 | Initial release
+1.0 | October 17, 2017 | Initial release
+1.1 | January 03, 2018 | Improvements and updating to SPFx drop 1.4
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

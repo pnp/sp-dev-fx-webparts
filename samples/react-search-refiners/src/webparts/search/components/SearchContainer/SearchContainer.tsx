@@ -12,18 +12,16 @@ import FilterPanel from "../FilterPanel/FilterPanel";
 import Paging from "../Paging/Paging";
 import { Overlay } from "office-ui-fabric-react";
 
-export default class SearchContainer extends React.Component<ISearchContainerProps,ISearchContainerState> {
+export default class SearchContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 
     public constructor(props) {
-
         super(props);
-
         // Set the initial state
         this.state = {
-            results: { 
-                        RefinementResults: [], 
-                        RelevantResults: [] 
-                     },
+            results: {
+                RefinementResults: [],
+                RelevantResults: []
+            },
             selectedFilters: [],
             availableFilters: [],
             currentPage: 1,
@@ -31,6 +29,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
             isComponentLoading: true,
             errorMessage: "",
             hasError: false,
+            lastQuery: ""
         };
 
         this._onUpdateFilters = this._onUpdateFilters.bind(this);
@@ -47,62 +46,63 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
 
         let wpContent: JSX.Element = null;
         let renderOverlay = null;
-        
+
         if (!isComponentLoading && areResultsLoading) {
-                renderOverlay = <div>
+            renderOverlay = <div>
                 <Overlay isDarkThemed={false} className="overlay">
                 </Overlay>
             </div>;
         }
 
         if (isComponentLoading) {
-            wpContent =  <Spinner size={ SpinnerSize.large } label={ strings.LoadingMessage } />; 
+            wpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
         } else {
 
             if (hasError) {
-                wpContent = <MessageBar messageBarType= { MessageBarType.error }>{ errorMessage }</MessageBar>;
+                wpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
             } else {
 
                 if (items.RelevantResults.length === 0) {
-                    wpContent = 
-                    <div>
-                        <FilterPanel availableFilters={ this.state.availableFilters } onUpdateFilters={ this._onUpdateFilters }/>
-                        <div className="searchWp__noresult">{ strings.NoResultMessage }</div>
-                    </div>;
-                } else {     
-                    wpContent = 
-                      
-                          <div>
-                              <FilterPanel availableFilters={ this.state.availableFilters } onUpdateFilters={ this._onUpdateFilters }/>
-                              { renderOverlay }     
-                              <TilesList items={ items.RelevantResults }/>
-                              { this.props.showPaging ?
-                                <Paging 
-                                    totalItems={ items.TotalRows }
-                                    itemsCountPerPage={ this.props.maxResultsCount } 
-                                    onPageUpdate={ this._onPageUpdate } 
-                                    currentPage={ this.state.currentPage }/> 
+                    wpContent =
+                        <div>
+                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} />
+                            <div className="searchWp__noresult">{strings.NoResultMessage}</div>
+                        </div>;
+                } else {
+                    wpContent =
+
+                        <div>
+                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} />
+                            {renderOverlay}
+                            <TilesList items={items.RelevantResults} showFileIcon={this.props.showFileIcon} showCreatedDate={this.props.showCreatedDate} />
+                            {this.props.showPaging ?
+                                <Paging
+                                    totalItems={items.TotalRows}
+                                    itemsCountPerPage={this.props.maxResultsCount}
+                                    onPageUpdate={this._onPageUpdate}
+                                    currentPage={this.state.currentPage} />
                                 : null
-                              }
-                          </div>;   
+                            }
+                        </div>;
                 }
-            }          
+            }
         }
 
         return (
-            <div className="searchWp">                            
-                { wpContent } 
+            <div className="searchWp">
+                {wpContent}
             </div>
         );
     }
 
     public async componentDidMount() {
-
         try {
-            
+
             this.setState({
                 areResultsLoading: true,
             });
+
+            this.props.searchDataProvider.selectedProperties = this.props.selectedProperties;
 
             const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, this.props.refiners, this.state.selectedFilters, this.state.currentPage);
 
@@ -114,6 +114,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
                 availableFilters: searchResults.RefinementResults,
                 areResultsLoading: false,
                 isComponentLoading: false,
+                lastQuery: this.props.queryKeywords + this.props.searchDataProvider.queryTemplate + this.props.selectedProperties.join(',')
             });
 
         } catch (error) {
@@ -132,18 +133,22 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
 
     public async componentWillReceiveProps(nextProps: ISearchContainerProps) {
 
+        let query = nextProps.queryKeywords + nextProps.searchDataProvider.queryTemplate + nextProps.selectedProperties.join(',');
         // New props are passed to the component when the search query has been changed
         if (this.props.refiners.toString() !== nextProps.refiners.toString()
-            || this.props.maxResultsCount  !== nextProps.maxResultsCount) {
+            || this.props.maxResultsCount !== nextProps.maxResultsCount
+            || this.state.lastQuery !== query
+            || this.props.showFileIcon !== nextProps.showFileIcon
+            || this.props.showCreatedDate !== nextProps.showCreatedDate ) {
 
             try {
-
                 // Clear selected filters on a new query or new refiners
                 this.setState({
                     selectedFilters: [],
                     areResultsLoading: true,
                 });
 
+                this.props.searchDataProvider.selectedProperties = nextProps.selectedProperties;
                 // We reset the page number and refinement filters
                 const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, nextProps.refiners, [], 1);
 
@@ -151,6 +156,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
                     results: searchResults,
                     availableFilters: searchResults.RefinementResults,
                     areResultsLoading: false,
+                    lastQuery: query
                 });
 
             } catch (error) {
