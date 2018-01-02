@@ -102,6 +102,8 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
                 areResultsLoading: true,
             });
 
+            this.props.searchDataProvider.selectedProperties = this.props.selectedProperties;
+
             const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, this.props.refiners, this.state.selectedFilters, this.state.currentPage);
 
             // Initial filters are just set once for the filter control during the component initialization
@@ -112,7 +114,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
                 availableFilters: searchResults.RefinementResults,
                 areResultsLoading: false,
                 isComponentLoading: false,
-                lastQuery: this.props.queryKeywords + this.props.searchDataProvider.queryTemplate
+                lastQuery: this.props.queryKeywords + this.props.searchDataProvider.queryTemplate + this.props.selectedProperties.join(',')
             });
 
         } catch (error) {
@@ -131,20 +133,20 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
 
     public async componentWillReceiveProps(nextProps: ISearchContainerProps) {
 
-        let query = nextProps.queryKeywords + nextProps.searchDataProvider.queryTemplate;
+        let query = nextProps.queryKeywords + nextProps.searchDataProvider.queryTemplate + nextProps.selectedProperties.join(',');
         // New props are passed to the component when the search query has been changed
         if (this.props.refiners.toString() !== nextProps.refiners.toString()
             || this.props.maxResultsCount !== nextProps.maxResultsCount
             || this.state.lastQuery !== query) {
 
             try {
-
                 // Clear selected filters on a new query or new refiners
                 this.setState({
                     selectedFilters: [],
                     areResultsLoading: true,
                 });
 
+                this.props.searchDataProvider.selectedProperties = nextProps.selectedProperties;
                 // We reset the page number and refinement filters
                 const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, nextProps.refiners, [], 1);
 

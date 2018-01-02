@@ -114,7 +114,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                   label: strings.SelectedPropertiesFieldLabel,
                   multiline: true,    
                   resizable: true,
-                  value: "Title,Path,Created,Filename,ServerRedirectedPreviewURL",
+                  value: this.properties.selectedProperties,
                 }),     
                 PropertyPaneTextField('refiners', {
                   label: strings.RefinersFieldLabel,
