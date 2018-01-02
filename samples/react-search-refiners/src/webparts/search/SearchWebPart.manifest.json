@@ -28,7 +28,8 @@
                 "queryTemplate": "{searchTerms} Path:{Site}",
                 "refiners": "Created",
                 "selectedProperties": "Title,Path,Created,Filename,ServerRedirectedPreviewURL",
-                "maxResultsCount": 10
+                "maxResultsCount": 10,
+                "showFileIcon": true
             }
         }
     ]

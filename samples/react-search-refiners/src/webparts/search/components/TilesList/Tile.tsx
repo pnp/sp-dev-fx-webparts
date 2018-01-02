@@ -24,17 +24,19 @@ export default class Tile extends React.Component<ITileProps, null> {
         const item = this.props.item;
 
         let previewSrc = "";
-        if(!isEmpty(item.SiteLogo)) previewSrc = item.SiteLogo;
-        else if(!isEmpty(item.PreviewUrl)) previewSrc = item.PreviewUrl;
-        else if(!isEmpty(item.PictureThumbnailURL)) previewSrc = item.PictureThumbnailURL;
-        else if(!isEmpty(item.ServerRedirectedPreviewURL)) previewSrc = item.ServerRedirectedPreviewURL;
+        if (!isEmpty(item.SiteLogo)) previewSrc = item.SiteLogo;
+        else if (!isEmpty(item.PreviewUrl)) previewSrc = item.PreviewUrl;
+        else if (!isEmpty(item.PictureThumbnailURL)) previewSrc = item.PictureThumbnailURL;
+        else if (!isEmpty(item.ServerRedirectedPreviewURL)) previewSrc = item.ServerRedirectedPreviewURL;
+
+        let iconSrc = this.props.showFileIcon ? item.iconSrc : "";
 
         let previewProps: IDocumentCardPreviewProps = {
             previewImages: [
                 {
                     url: item.ServerRedirectedURL ? item.ServerRedirectedURL : item.Path,
                     previewImageSrc: previewSrc,
-                    iconSrc: item.iconSrc,
+                    iconSrc: iconSrc,
                     imageFit: ImageFit.cover,
                     height: PREVIEW_IMAGE_HEIGHT,
                 }

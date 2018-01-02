@@ -7,6 +7,7 @@ interface ISearchContainerProps {
   selectedProperties: string[];
   refiners: string;
   showPaging: boolean;
+  showFileIcon: boolean;
 }
 
 export default ISearchContainerProps;

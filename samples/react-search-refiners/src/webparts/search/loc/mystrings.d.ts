@@ -13,6 +13,7 @@ declare interface ISearchWebPartStrings {
   ApplyAllFiltersLabel: string;
   RemoveAllFiltersLabel: string;
   ShowPagingLabel: string;
+  ShowFileIconLabel: string;
   NoFilterConfiguredLabel: string;
   SearchQueryPlaceHolderText: string;
   EmptyFieldErrorMessage: string;

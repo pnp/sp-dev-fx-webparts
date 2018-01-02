@@ -14,6 +14,7 @@ define([], function() {
     "ApplyAllFiltersLabel": "Appliquer tous les filters",
     "RemoveAllFiltersLabel": "Supprimer tous les filtres",
     "ShowPagingLabel": "Afficher la pagination",
+    "ShowFileIconLabel": "Afficher les icônes de fichier",
     "NoFilterConfiguredLabel": "Aucun filtre configuré", 
     "SearchQueryPlaceHolderText": "Requête de recherche au format KQL",
     "EmptyFieldErrorMessage": "Ce champ ne peut pas être vide",    

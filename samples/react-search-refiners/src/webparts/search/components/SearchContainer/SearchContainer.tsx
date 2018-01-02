@@ -74,7 +74,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
                         <div>
                             <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} />
                             {renderOverlay}
-                            <TilesList items={items.RelevantResults} />
+                            <TilesList items={items.RelevantResults} showFileIcon={this.props.showFileIcon} />
                             {this.props.showPaging ?
                                 <Paging
                                     totalItems={items.TotalRows}
@@ -137,7 +137,8 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
         // New props are passed to the component when the search query has been changed
         if (this.props.refiners.toString() !== nextProps.refiners.toString()
             || this.props.maxResultsCount !== nextProps.maxResultsCount
-            || this.state.lastQuery !== query) {
+            || this.state.lastQuery !== query
+            || this.props.showFileIcon !== nextProps.showFileIcon ) {
 
             try {
                 // Clear selected filters on a new query or new refiners

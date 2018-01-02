@@ -62,6 +62,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                 selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g, '').split(",") : [],
                 refiners: this.properties.refiners,
                 showPaging: this.properties.showPaging,
+                showFileIcon: this.properties.showFileIcon
             } as ISearchContainerProps
         );
 
@@ -133,6 +134,10 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                                 PropertyPaneToggle("showPaging", {
                                     label: strings.ShowPagingLabel,
                                     checked: this.properties.showPaging,
+                                }),
+                                PropertyPaneToggle("showFileIcon", {
+                                    label: strings.ShowFileIconLabel,
+                                    checked: this.properties.showFileIcon,
                                 }),
                             ]
                         }
