@@ -13,7 +13,7 @@ export default class ScriptEditor extends React.Component<IScriptEditorProps, an
 
         this._showDialog = this._showDialog.bind(this);
         this._closeDialog = this._closeDialog.bind(this);
-        this._cancelDialog = this._cancelDialog.bind(this)
+        this._cancelDialog = this._cancelDialog.bind(this);
         this._onScriptEditorTextChanged = this._onScriptEditorTextChanged.bind(this);
 
         const uiFabricCSS: string = `
