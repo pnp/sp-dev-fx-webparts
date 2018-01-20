@@ -8,8 +8,12 @@
     "sourceMap": true,
     "types": [
       "es6-promise",
-      "es6-collections",
       "webpack-env"
+    ],
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.collection"
     ]
   }
 }
