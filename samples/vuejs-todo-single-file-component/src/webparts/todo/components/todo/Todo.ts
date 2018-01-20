@@ -1,4 +1,4 @@
-import * as Vue from 'vue';
+import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import TodoItem from '../todo-item/Todoitem.vue';
 import { ITodoProps } from './ITodoProps';
@@ -27,7 +27,6 @@ export default class Todo extends Vue implements ITodoProps {
   */
   public addTodo(): void {
 
-    debugger;
     if (!this.todoTitle) {
       return;
     }
@@ -36,7 +35,6 @@ export default class Todo extends Vue implements ITodoProps {
 
       this.dataProvider.createItem(this.todoTitle).then(
         (allItems: ITodoItem[]) => {
-          debugger;
           if (allItems && allItems.length > 0) {
             this.mytodos = allItems;
           }
@@ -53,13 +51,11 @@ export default class Todo extends Vue implements ITodoProps {
    This method is triggered from the child componenets 'todo-item'
  */
   public completed(todo: ITodoItem): void {
-    debugger;
     if (this.dataProvider.selectedList) {
 
       ////  Approach 1: delete item when the checkbox is clicked 
       this.dataProvider.deleteItem(todo).then(
         (allItems: ITodoItem[]) => {
-          debugger;
           if (allItems && allItems.length > 0) {
             this.mytodos = allItems;
           }
@@ -85,12 +81,10 @@ export default class Todo extends Vue implements ITodoProps {
    This is a system Vue.js hook. It is used here to communicate with SharePoint and get list items
   */
   public created(): void {
-    debugger;
     if (this.dataProvider.selectedList) {
 
       this.dataProvider.getItems().then(
         (results: ITodoItem[]) => {
-          debugger;
           if (results && results.length > 0) {
             this.mytodos = results;
           }

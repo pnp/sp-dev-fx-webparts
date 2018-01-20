@@ -85,7 +85,6 @@ export default class SharePointDataProvider implements ITodoDataProvider {
   }
 
   private _getItems(requester: SPHttpClient): Promise<ITodoItem[]> {
-    debugger;
     const queryUrl: string = `${this._webPartContext.pageContext.web.absoluteUrl}` +
       `/_api/web/lists(guid'${this._selectedList.Id}')/items?$select=Id,Title,PercentComplete`;
 
@@ -101,9 +100,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
       // });
       //Approach 2: manually create the ITodoItem object; useful when the properties are different form the internal names of the list
       .then((json: any) => {
-        debugger;
         return json.value.map((item: any) => {
-          debugger;
           let newItem: ITodoItem = {
             Id: item.Id,
             Title: item.Title,
@@ -123,9 +120,7 @@ export default class SharePointDataProvider implements ITodoDataProvider {
         return response.json();
       })
       .then((json: { value: ITodoItem[] }) => {
-        debugger;
         return json.value.map((task: ITodoItem) => {
-          debugger;
           return task;
         });
       });
@@ -163,7 +158,6 @@ export default class SharePointDataProvider implements ITodoDataProvider {
 
   private _deleteItem2(requester: SPHttpClient, item: ITodoItem): Promise<ITodoItem[]> {
     const itemDeletedUrl: string = `${this._webPartContext.pageContext.web.absoluteUrl}/_api/web/lists(guid'${this._selectedList.Id}')/items(${item.Id})`;
-    debugger;
     const headers: Headers = new Headers();
     headers.append('If-Match', '*');
 
@@ -174,7 +168,6 @@ export default class SharePointDataProvider implements ITodoDataProvider {
         method: 'DELETE'
       }
     ).then((response: any) => {
-      debugger;
       if (response.status >= 200 && response.status < 300) {
         return response;
       } else {
@@ -212,11 +205,9 @@ export default class SharePointDataProvider implements ITodoDataProvider {
       .then(() => {
         return Promise.all(promises);
       }).then((values: any) => {
-        debugger;
         return Promise.resolve(values[values.length - 1]);
         // return values[values.length - 1];
       }).catch((ex) => {
-        debugger;
         throw ex;
       });
 

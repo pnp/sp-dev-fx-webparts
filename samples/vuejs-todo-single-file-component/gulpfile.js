@@ -11,6 +11,11 @@ build.sass.setConfig({
 build.configureWebpack.setConfig({
     additionalConfiguration: function (config) {
         var vueConfig = {
+            resolve: {
+                alias: {
+                    'vue$': 'vue/dist/vue.esm.js'
+                }
+            },
             module: {
                 rules: [
                     {

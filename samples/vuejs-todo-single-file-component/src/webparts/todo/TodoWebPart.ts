@@ -10,7 +10,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 import { findIndex } from '@microsoft/sp-lodash-subset';
 
-import * as Vue from 'vue';
+import Vue from 'vue';
 import TodoComponent from './components/todo/Todo.vue';
 import { ITodoProps } from './components/todo/ITodoProps';
 
@@ -66,7 +66,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     */
     this._loadTaskLists()
       .then(() => {
-        debugger;
         /*
          If a list is already selected, then we would have stored the list Id in the associated web part property.
          So, check to see if we do have a selected list for the web part. If we do, then we set that as the selected list
@@ -92,6 +91,7 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
       webPartDisplayMode: this.displayMode
     };
 
+    // tslint:disable-next-line:no-unused-expression
     new Vue({
       el: `#app-${this.context.instanceId}`,
       render: h => h(TodoComponent, {
@@ -130,7 +130,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   }
 
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
-    debugger;
     /*
     Check the property path to see which property pane feld changed. 
     If the property path matches the dropdown, then we set that list as the selected list for the web part. 
@@ -147,10 +146,8 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   }
 
   private _loadTaskLists(): Promise<any> {
-    debugger;
     return this._dataProvider.getTaskLists()
       .then((taskLists: ITaskList[]) => {
-        debugger;
         // Disable dropdown field if there are no results from the server.
         this._disableDropdown = taskLists.length === 0;
         let utiility: Utils = new Utils();
@@ -166,7 +163,6 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
   }
 
   private _setSelectedList(value: string) {
-    debugger;
 
     const selectedIndex: number = findIndex(this._dropdownOptions,
       (item: IPropertyPaneDropdownOption) => item.key === value
