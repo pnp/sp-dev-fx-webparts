@@ -1,4 +1,4 @@
-import * as Vue from 'vue';
+import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 import { ITodoItem } from '../../../../models/ICommonObjects';
 
@@ -28,7 +28,6 @@ export default class TodoItem extends Vue {
      This is a system Vue.js hook. Added here only for demonstrations
     */
     public created(): void {
-        debugger;
         console.log(this.todoItem.Title + " | " + this.todoItem.Id);
     }
 }
