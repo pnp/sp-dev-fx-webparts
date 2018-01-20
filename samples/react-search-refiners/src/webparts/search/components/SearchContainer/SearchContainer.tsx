@@ -10,7 +10,7 @@ import TilesList from "../TilesList/TilesList";
 import "../SearchWebPart.scss";
 import FilterPanel from "../FilterPanel/FilterPanel";
 import Paging from "../Paging/Paging";
-import { Overlay } from "office-ui-fabric-react";
+import { Overlay } from "office-ui-fabric-react/lib/Overlay";
 
 export default class SearchContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 
