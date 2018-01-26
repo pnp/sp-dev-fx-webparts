@@ -1,0 +1,44 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.paginationContainer {
+    text-align: center;        
+    margin-top: 15px;
+
+    &__pagination {
+        display: inline-block;
+        text-align: center;
+
+        ul {
+            display: inline-block;
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+
+            li {
+                display: inline;
+
+                a {
+                    float: left;
+                    padding: 5px 10px;
+                    text-decoration: none;
+                    border-radius: 15px;
+                    color: $ms-color-themePrimary;
+                    
+                    i {
+                        color: $ms-color-themePrimary;
+                        font-size: 10px;
+                    }        
+                }
+    
+                a:visited {                       
+                    color: $ms-color-themePrimary;
+                }
+    
+                :global(a.active) {
+                    background-color: $ms-color-themePrimary;
+                    color: white;
+                }
+            }
+        }
+    }
+}

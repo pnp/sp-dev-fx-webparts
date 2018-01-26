@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.0",
+    "libraryName": "persona-card-search",
+    "libraryId": "5c77b80a-031f-4d85-bdb5-f497bed9ddf6",
+    "environment": "spo"
+  }
+}
