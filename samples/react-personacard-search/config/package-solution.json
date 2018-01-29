@@ -1,0 +1,13 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "persona-card-search-client-side-solution",
+    "id": "5c77b80a-031f-4d85-bdb5-f497bed9ddf6",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/persona-card-search.sppkg"
+  }
+}

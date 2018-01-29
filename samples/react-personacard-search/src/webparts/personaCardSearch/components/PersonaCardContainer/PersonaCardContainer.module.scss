@@ -1,0 +1,20 @@
+.personaCardContainer{
+    :global(.ms-List-cell) {
+        vertical-align: top;
+        display: inline-block;
+        margin-top:10px;
+        margin-bottom: 10px;
+            .ms-FocusZone {
+                height: 100%;
+            }
+        }
+    
+    :global(.ms-PersonaCard) {
+        position: relative;
+        border: none;
+        background-color: #ffffff;        
+        min-width: 212px;
+        max-width: 100%;
+        float:left;
+    } 
+}
