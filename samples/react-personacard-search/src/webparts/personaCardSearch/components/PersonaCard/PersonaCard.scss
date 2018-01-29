@@ -1,4 +1,5 @@
-.ms-Persona {
+.ms-PersonaCard {  
+  .ms-Persona {
     font-family: Segoe UI WestEuropean,Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
@@ -800,17 +801,17 @@
   
   .ms-PersonaCard-action.ms-PersonaCard-orgChart:after {
     display: none
+  }  
+}
+
+@media (min-width: 480px) {
+  .ms-PersonaCard {
+      box-shadow:0 0 5px 0 rgba(0,0,0,.4);
+      max-width: 360px;
+      position: relative
   }
-  
-  @media (min-width: 480px) {
-    .ms-PersonaCard {
-        box-shadow:0 0 5px 0 rgba(0,0,0,.4);
-        max-width: 360px;
-        position: relative
-    }
-  
-    .ms-ContextualHost .ms-PersonaCard {
-        box-shadow: none
-    }
+
+  .ms-ContextualHost .ms-PersonaCard {
+      box-shadow: none
   }
-  
+}
