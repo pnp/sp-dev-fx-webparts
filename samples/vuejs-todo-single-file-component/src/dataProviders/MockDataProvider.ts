@@ -64,7 +64,6 @@ export default class MockDataProvider implements ITodoDataProvider {
   }
 
   public getTaskLists(): Promise<ITaskList[]> {
-    debugger;
     const taskLists: ITaskList[] = this._taskLists;
 
     return new Promise<ITaskList[]>((resolve) => {

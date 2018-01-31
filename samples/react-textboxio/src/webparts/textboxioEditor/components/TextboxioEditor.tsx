@@ -25,25 +25,13 @@ export default class TextboxioEditor extends React.Component<ITextboxioEditorPro
         }
     }
 
-    public render() {
-
-        let renderHtml: JSX.Element = null;
+    public render() {        
         
-        if (this.props.displayMode === DisplayMode.Read) {
-
-            renderHtml = <div dangerouslySetInnerHTML={ {__html: this.props.content } }></div>;
-
-        } else {
-            renderHtml =  
-
-            <div className={ styles.editor } 
-                 ref={ (ref)=> {
-                    this._refEditor = ref;
-                }} id={ "textbox-io-editor-" + this. _getNewGuid() }>
-            </div>
-        }
-
-        return renderHtml;
+        return  <div className={ styles.editor } 
+                        ref={ (ref)=> {
+                        this._refEditor = ref;
+                    }} id={ "textbox-io-editor-" + this. _getNewGuid() }>
+                </div>;
     }
 
     public componentDidMount() {

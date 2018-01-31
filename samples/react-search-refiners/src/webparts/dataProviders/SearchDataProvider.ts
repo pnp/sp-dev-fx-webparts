@@ -2,7 +2,7 @@ import ISearchDataProvider from "./ISearchDataProvider";
 import { ISearchResults, ISearchResult, IRefinementResult, IRefinementValue, IRefinementFilter } from "../models/ISearchResult";
 import pnp, { ConsoleListener, Logger, LogLevel, SearchQuery, SearchQueryBuilder, SearchResults, setup, Web, Sort, SortDirection } from "sp-pnp-js";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
-import { Text, JsonUtilities, UrlUtilities  } from "@microsoft/sp-core-library";
+import { Text, JsonUtilities, UrlUtilities } from "@microsoft/sp-core-library";
 import sortBy from "lodash-es/sortBy";
 import groupBy from 'lodash-es/groupBy';
 import mapValues from 'lodash-es/mapValues';
@@ -11,6 +11,7 @@ import * as moment from "moment";
 
 class SearchDataProvider implements ISearchDataProvider {
 
+    private _initialSearchResult: SearchResults = null;
     private _resultsCount: number;
     private _context: IWebPartContext;
     private _appSearchSettings: SearchQuery;
@@ -20,7 +21,7 @@ class SearchDataProvider implements ISearchDataProvider {
     public get resultsCount(): number { return this._resultsCount; }
     public set resultsCount(value: number) { this._resultsCount = value; }
 
-    public set selectedProperties(value:  string[]) { this._selectedProperties = value; }
+    public set selectedProperties(value: string[]) { this._selectedProperties = value; }
     public get selectedProperties(): string[] { return this._selectedProperties; }
 
     public set queryTemplate(value: string) { this._queryTemplate = value; }
@@ -28,7 +29,7 @@ class SearchDataProvider implements ISearchDataProvider {
 
     public constructor(webPartContext: IWebPartContext) {
         this._context = webPartContext;
-        
+
         // Setup the PnP JS instance
         const consoleListener = new ConsoleListener();
         Logger.subscribe(consoleListener);
@@ -52,7 +53,7 @@ class SearchDataProvider implements ISearchDataProvider {
      * @return The search results
      */
     public async search(query: string, refiners?: string, refinementFilters?: IRefinementFilter[], pageNumber?: number): Promise<ISearchResults> {
-        
+
         let searchQuery: SearchQuery = {};
         let sortedRefiners: string[] = [];
 
@@ -88,7 +89,7 @@ class SearchDataProvider implements ISearchDataProvider {
             sortedRefiners = refiners.split(",");
             searchQuery.Refiners = refiners ? refiners : "";
         }
-        
+
         if (refinementFilters) {
             if (refinementFilters.length > 0) {
                 searchQuery.RefinementFilters = [this._buildRefinementQueryString(refinementFilters)];
@@ -96,25 +97,29 @@ class SearchDataProvider implements ISearchDataProvider {
         }
 
         let results: ISearchResults = {
-            RelevantResults : [],
+            RelevantResults: [],
             RefinementResults: [],
             TotalRows: 0,
         };
 
         try {
-    
-            const r = await pnp.sp.search(searchQuery);
+            if (!this._initialSearchResult || page == 1) {
+                this._initialSearchResult = await pnp.sp.search(searchQuery);
+            }
 
             const allItemsPromises: Promise<any>[] = [];
             let refinementResults: IRefinementResult[] = [];
 
             // Need to do this check
             // More info here: https://github.com/SharePoint/PnP-JS-Core/issues/337
-            if (r.RawSearchResults.PrimaryQueryResult) {
-                        
+            if (this._initialSearchResult.RawSearchResults.PrimaryQueryResult) {
+
                 // Be careful, there was an issue with paging calculation under 2.0.8 version of sp-pnp-js library
                 // More info https://github.com/SharePoint/PnP-JS-Core/issues/535
-                const r2 = await r.getPage(page, this._resultsCount);
+                let r2 = this._initialSearchResult;
+                if (page > 1) {
+                    r2 = await this._initialSearchResult.getPage(page, this._resultsCount);
+                }
 
                 const resultRows = r2.RawSearchResults.PrimaryQueryResult.RelevantResults.Table.Rows;
                 let refinementResultsRows = r2.RawSearchResults.PrimaryQueryResult.RefinementResults;
@@ -125,7 +130,7 @@ class SearchDataProvider implements ISearchDataProvider {
                 resultRows.map((elt) => {
 
                     const p1 = new Promise<ISearchResult>((resolvep1, rejectp1) => {
-                    
+
                         // Build item result dynamically
                         // We can't type the response here because search results are by definition too heterogeneous so we treat them as key-value object
                         let result: ISearchResult = {};
@@ -137,25 +142,25 @@ class SearchDataProvider implements ISearchDataProvider {
                         // Get the icon source URL
                         this._mapToIcon(result.Filename ? result.Filename : Text.format(".{0}", result.FileExtension)).then((iconUrl) => {
 
-                            result.iconSrc = iconUrl;                            
+                            result.iconSrc = iconUrl;
                             resolvep1(result);
 
                         }).catch((error) => {
                             rejectp1(error);
-                        });                       
+                        });
                     });
 
-                    allItemsPromises.push(p1);                
+                    allItemsPromises.push(p1);
                 });
 
                 // Map refinement results                    
                 refinementRows.map((refiner) => {
-                    
+
                     let values: IRefinementValue[] = [];
                     refiner.Entries.map((item) => {
                         values.push({
                             RefinementCount: item.RefinementCount,
-                            RefinementName:  this._formatDate(item.RefinementName), // This value will appear in the selected filter bar
+                            RefinementName: this._formatDate(item.RefinementName), // This value will appear in the selected filter bar
                             RefinementToken: item.RefinementToken,
                             RefinementValue: this._formatDate(item.RefinementValue), // This value will appear in the filter panel
                         });
@@ -169,7 +174,7 @@ class SearchDataProvider implements ISearchDataProvider {
 
                 // Resolve all the promises once to get news
                 const relevantResults: ISearchResult[] = await Promise.all(allItemsPromises);
-                    
+
                 // Sort refiners according to the property pane value
                 refinementResults = sortBy(refinementResults, (refinement) => {
 
@@ -178,15 +183,15 @@ class SearchDataProvider implements ISearchDataProvider {
                 });
 
                 results.RelevantResults = relevantResults;
-                results.RefinementResults = refinementResults,
-                results.TotalRows = r.TotalRows;
+                results.RefinementResults = refinementResults;
+                results.TotalRows = this._initialSearchResult.TotalRows;
             }
             return results;
 
         } catch (error) {
             Logger.write("[SharePointDataProvider.search()]: Error: " + error, LogLevel.Error);
             throw error;
-        }       
+        }
     }
 
     /**
@@ -194,13 +199,13 @@ class SearchDataProvider implements ISearchDataProvider {
      * @param filename The file name (ex: file.pdf)
      */
     private async _mapToIcon(filename: string): Promise<string> {
-        
+
         const webAbsoluteUrl = this._context.pageContext.web.absoluteUrl;
         const web = new Web(webAbsoluteUrl);
-        
+
         try {
             const encodedFileName = filename ? filename.replace(/["']/g, "") : "";
-            const iconFileName = await web.mapToIcon(encodedFileName,1);
+            const iconFileName = await web.mapToIcon(encodedFileName, 1);
             const iconUrl = webAbsoluteUrl + "/_layouts/15/images/" + iconFileName;
 
             return iconUrl;
@@ -228,7 +233,7 @@ class SearchDataProvider implements ISearchDataProvider {
             });
         }
 
-        return updatedInputValue;        
+        return updatedInputValue;
     }
 
     /**
@@ -236,31 +241,31 @@ class SearchDataProvider implements ISearchDataProvider {
      * @param selectedFilters The selected filter array
      */
     private _buildRefinementQueryString(selectedFilters: IRefinementFilter[]): string {
-        
+
         let refinementQueryConditions: string[] = [];
         let refinementQueryString: string = null;
-        
+
         const refinementFilters = mapValues(groupBy(selectedFilters, 'FilterName'), (values) => {
-            const refinementFilter =  values.map((filter) => {
-                return filter.Value.RefinementToken;                       
+            const refinementFilter = values.map((filter) => {
+                return filter.Value.RefinementToken;
             });
 
             return refinementFilter.length > 1 ? Text.format("or({0})", refinementFilter) : refinementFilter.toString();
         });
-        
+
         mapKeys(refinementFilters, (value, key) => {
             refinementQueryConditions.push(key + ":" + value);
         });
-        
+
         const conditionsCount = refinementQueryConditions.length;
 
         switch (true) {
-            
+
             // No filters
             case (conditionsCount === 0): {
                 refinementQueryString = null;
                 break;
-            } 
+            }
 
             // Just one filter
             case (conditionsCount === 1): {

@@ -48,7 +48,7 @@ If all you want is to add markup on the page, you can do that as well. Adding th
 ```
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-1.3.0-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.0-green.svg)
 
 ## Applies to
 
@@ -68,6 +68,7 @@ Version|Date|Comments
 1.0|March 10th, 2017|Initial release
 1.0.0.1|August 8th, 2017|Updated SPFx version and CSS loading
 1.0.0.2|October 4th, 2017|Updated SPFx version, bundle Office UI Fabric and CSS in webpart
+1.0.0.3|January 10th, 2018|Updated SPFx version, added remove padding property and refactoring
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

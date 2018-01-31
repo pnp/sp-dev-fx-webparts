@@ -13,8 +13,5 @@
   },
   "localizedResources": {
     "toDoStrings": "lib/webparts/toDo/loc/{locale}.js"
-  },
-  "externals": {
-    "vue": "node_modules/vue/dist/vue.runtime.js"
   }
 }
