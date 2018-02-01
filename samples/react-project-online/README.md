@@ -33,6 +33,7 @@ react-project-online|Joel Rodrigues
 
 Version|Date|Comments
 -------|----|--------
+1.1|January 22, 2018|Updated to SPFx 1.4.0
 1.0|October 29, 2017|Initial release
 
 ## Disclaimer
