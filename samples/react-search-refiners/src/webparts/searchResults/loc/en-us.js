@@ -22,6 +22,11 @@ define([], function() {
     "PlaceHolderEditLabel": "Edit",
     "PlaceHolderConfigureBtnLabel": "Configure",
     "PlaceHolderIconText": "Search Results Web Part with Refinements",
-    "PlaceHolderDescription": "This component displays search results with paging and customizable refinement panel"
+    "PlaceHolderDescription": "This component displays search results with paging and customizable refinement panel",
+    "ResultSourceIdLabel": "Result Source Identifier",
+    "InvalidResultSourceIdMessage": "Invalid identifier",
+    "UseSearchBoxQueryLabel": "Use search box query",
+    "EnableQueryRulesLabel": "Enable query rules",
+    "StylingSettingsGroupName": "Styling options"
   }
 });

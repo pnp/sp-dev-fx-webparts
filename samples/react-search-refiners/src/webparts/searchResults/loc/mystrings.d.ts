@@ -22,6 +22,11 @@ declare interface ISearchWebPartStrings {
   PlaceHolderConfigureBtnLabel: string;
   PlaceHolderIconText: string;
   PlaceHolderDescription: string;
+  ResultSourceIdLabel: string;
+  InvalidResultSourceIdMessage: string;
+  UseSearchBoxQueryLabel: string;
+  EnableQueryRulesLabel: string;
+  StylingSettingsGroupName: string;
 }
 
 declare module 'SearchWebPartStrings' {

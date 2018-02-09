@@ -1,6 +1,6 @@
 import { ISearchResults, IRefinementFilter, IRefinementResult } from "../../../models/ISearchResult";
 
-interface ISearchContainerState {
+interface ISearchResultsContainerState {
     
     /**
      * The current search results to display
@@ -48,4 +48,4 @@ interface ISearchContainerState {
     lastQuery: string;
 }
 
-export default ISearchContainerState;
+export default ISearchResultsContainerState;

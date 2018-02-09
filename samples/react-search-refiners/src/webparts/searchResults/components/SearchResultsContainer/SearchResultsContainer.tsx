@@ -1,18 +1,19 @@
 import * as React from "react";
-import ISearchContainerProps from "./ISearchContainerProps";
-import ISearchContainerState from "./ISearchContainerState";
+import ISearchContainerProps from "./ISearchResultsContainerProps";
+import ISearchContainerState from "./ISearchResultsContainerState";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
 import { Logger, LogLevel } from "sp-pnp-js";
 import * as strings from "SearchWebPartStrings";
 import { ISearchResults, IRefinementFilter } from "../../../models/ISearchResult";
 import TilesList from "../TilesList/TilesList";
-import "../SearchWebPart.scss";
+import "../SearchResultsWebPart.scss";
 import FilterPanel from "../FilterPanel/FilterPanel";
 import Paging from "../Paging/Paging";
 import { Overlay } from "office-ui-fabric-react/lib/Overlay";
+import { UrlQueryParameterCollection } from "@microsoft/sp-core-library";
 
-export default class SearchContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
+export default class SearchResultsContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 
     public constructor(props) {
         super(props);
@@ -96,6 +97,7 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
     }
 
     public async componentDidMount() {
+        
         try {
 
             this.setState({
@@ -139,7 +141,10 @@ export default class SearchContainer extends React.Component<ISearchContainerPro
             || this.props.maxResultsCount !== nextProps.maxResultsCount
             || this.state.lastQuery !== query
             || this.props.showFileIcon !== nextProps.showFileIcon
-            || this.props.showCreatedDate !== nextProps.showCreatedDate ) {
+            || this.props.resultSourceId !== nextProps.resultSourceId
+            || this.props.showCreatedDate !== nextProps.showCreatedDate
+            || this.props.queryKeywords !== nextProps.queryKeywords
+            || this.props.enableQueryRules !== nextProps.enableQueryRules) {
 
             try {
                 // Clear selected filters on a new query or new refiners

@@ -17,17 +17,19 @@
                 "default": "PnP"
             },
             "title": {
-                "default": "Search with Refiners"
+                "default": "Search Results with Refiners", "fr-fr": "Résulats de recherche avec filtres"
             },
             "description": {
-                "default": "Displays search results with customizable dynamic refiners"
+                "default": "Displays search results with customizable dynamic refiners",
+                "fr-fr": "Affiche des résulats de recherche avec filtres personnalisables"
             },
-            "officeFabricIconFontName": "Search",
+            "officeFabricIconFontName": "SearchAndApps",
             "properties": {
                 "queryKeywords": "",
                 "queryTemplate": "{searchTerms} Path:{Site}",
                 "refiners": "Created",
                 "selectedProperties": "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL",
+                "enableQueryRules": false,
                 "maxResultsCount": 10,
                 "showFileIcon": true,
                 "showCreatedDate": true

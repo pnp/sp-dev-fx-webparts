@@ -12,7 +12,7 @@ import {
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import * as moment from "moment";
 import { isEmpty } from '@microsoft/sp-lodash-subset';
-import "../SearchWebPart.scss";
+import "../SearchResultsWebPart.scss";
 
 const PREVIEW_IMAGE_WIDTH: number = 204;
 const PREVIEW_IMAGE_HEIGHT: number = 111;

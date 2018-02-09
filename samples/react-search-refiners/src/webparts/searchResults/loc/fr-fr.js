@@ -22,6 +22,11 @@ define([], function() {
     "PlaceHolderEditLabel": "Éditer",
     "PlaceHolderConfigureBtnLabel": "Configurer",
     "PlaceHolderIconText": "Web Part de recherche avec affinements",
-    "PlaceHolderDescription": "Ce composant affiche une liste de résulats de recherche avec pagination et des filtres configurables"
+    "PlaceHolderDescription": "Ce composant affiche une liste de résulats de recherche avec pagination et des filtres configurables",
+    "ResultSourceIdLabel": "Identifiant de l'origine de résultats",
+    "InvalidResultSourceIdMessage": "Identifiant invalide",
+    "UseSearchBoxQueryLabel": "Utiliser la requête de la boîte de recherche",
+    "EnableQueryRulesLabel": "Activer les règles de requête",
+    "StylingSettingsGroupName": "Options d'affichage"
   }
 });

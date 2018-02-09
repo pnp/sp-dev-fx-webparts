@@ -3,7 +3,7 @@ import ITilesListViewProps from "./ITilesListViewProps";
 import { List } from 'office-ui-fabric-react/lib/List';
 import Tile from "./Tile";
 import { IRectangle } from "office-ui-fabric-react/lib/Utilities";
-import "../SearchWebPart.scss";
+import "../SearchResultsWebPart.scss";
 
 const ROWS_PER_PAGE = 3;
 const MAX_ROW_HEIGHT = 300;

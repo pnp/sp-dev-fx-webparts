@@ -1,9 +1,11 @@
 import ISearchDataProvider from "../../../dataProviders/ISearchDataProvider";
 
-interface ISearchContainerProps {
+interface ISearchResultsContainerProps {
   searchDataProvider: ISearchDataProvider;
   queryKeywords: string;
   maxResultsCount: number;
+  resultSourceId: string;
+  enableQueryRules: boolean;
   selectedProperties: string[];
   refiners: string;
   showPaging: boolean;
@@ -11,4 +13,4 @@ interface ISearchContainerProps {
   showCreatedDate: boolean;
 }
 
-export default ISearchContainerProps;
+export default ISearchResultsContainerProps;

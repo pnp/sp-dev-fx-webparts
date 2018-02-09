@@ -10,7 +10,7 @@ import { IRefinementResult, IRefinementValue, IRefinementFilter } from "../../..
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Text } from "@microsoft/sp-core-library";
-import "../SearchWebPart.scss";
+import "../SearchResultsWebPart.scss";
 import * as update from "immutability-helper";
 import {
     GroupedList,

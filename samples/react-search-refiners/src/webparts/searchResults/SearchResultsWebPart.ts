@@ -10,18 +10,21 @@ import {
 } from '@microsoft/sp-webpart-base';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import * as strings from 'SearchWebPartStrings';
-import SearchContainer from "./components/SearchContainer/SearchContainer";
-import ISearchContainerProps from "./components/SearchContainer/ISearchContainerProps";
-import { ISearchWebPartProps } from './ISearchWebPartProps';
+import SearchContainer from "./components/SearchResultsContainer/SearchResultsContainer";
+import ISearchContainerProps from "./components/SearchResultsContainer/ISearchResultsContainerProps";
+import { ISearchResultsWebPartProps } from './ISearchResultsWebPartProps';
 import ISearchDataProvider from "../dataProviders/ISearchDataProvider";
 import MockSearchDataProvider from "../dataProviders/MockSearchDataProvider";
 import SearchDataProvider from "../dataProviders/SearchDataProvider";
 import * as moment from "moment";
 import { Placeholder, IPlaceholderProps } from "@pnp/spfx-controls-react/lib/Placeholder";
+import { PropertyPaneCheckbox } from '@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneCheckBox/PropertyPaneCheckbox';
+import { PropertyPaneHorizontalRule } from '@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneHorizontalRule/PropertyPaneHorizontalRule';
 
-export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartProps> {
+export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
 
     private _dataProvider: ISearchDataProvider;
+    private _useResultSource: boolean;
 
     /**
      * Override the base onInit() implementation to get the persisted properties to initialize data provider.
@@ -38,11 +41,17 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
             this._dataProvider = new SearchDataProvider(this.context);
         }
 
+        // Register an handler to catch search box queries
+        this.bindPushStateEvent();
+
+        this._useResultSource = false;
+
         return super.onInit();
     }
 
     protected get disableReactivePropertyChanges(): boolean {
-        return true;
+        // Set this to true if you don't want the reactive behavior.
+        return false;
     }
 
     public render(): void {
@@ -52,6 +61,8 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
         // Configure the provider before the query according to our needs
         this._dataProvider.resultsCount = this.properties.maxResultsCount;
         this._dataProvider.queryTemplate = this.properties.queryTemplate;
+        this._dataProvider.resultSourceId = this.properties.resultSourceId;
+        this._dataProvider.enableQueryRules = this.properties.enableQueryRules;
 
         const searchContainer: React.ReactElement<ISearchContainerProps> = React.createElement(
             SearchContainer,
@@ -59,6 +70,8 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                 searchDataProvider: this._dataProvider,
                 queryKeywords: this.properties.queryKeywords,
                 maxResultsCount: this.properties.maxResultsCount,
+                resultSourceId: this.properties.resultSourceId,
+                enableQueryRules: this.properties.enableQueryRules,
                 selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g, '').split(",") : [],
                 refiners: this.properties.refiners,
                 showPaging: this.properties.showPaging,
@@ -78,10 +91,9 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
             }
         );
 
-        renderElement = this.properties.queryKeywords ? searchContainer : placeholder;
+        renderElement = (this.properties.queryKeywords && !this.properties.useSearchBoxQuery) || this.properties.useSearchBoxQuery ? searchContainer : placeholder;
 
         ReactDom.render(renderElement, this.domElement);
-
     }
 
     protected get dataVersion(): Version {
@@ -96,32 +108,52 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                         {
                             groupName: strings.SearchSettingsGroupName,
                             groupFields: [
+                                PropertyPaneCheckbox("useSearchBoxQuery", {
+                                    checked: false,
+                                    text: strings.UseSearchBoxQueryLabel,                               
+                                }),
                                 PropertyPaneTextField('queryKeywords', {
                                     label: strings.SearchQueryKeywordsFieldLabel,
                                     value: this.properties.queryKeywords,
                                     multiline: true,
                                     resizable: true,
                                     placeholder: strings.SearchQueryPlaceHolderText,
-                                    onGetErrorMessage: this._validateEmptyField.bind(this)
+                                    onGetErrorMessage: this._validateEmptyField.bind(this),
+                                    deferredValidationTime: 500,
+                                    disabled: this.properties.useSearchBoxQuery
                                 }),
                                 PropertyPaneTextField('queryTemplate', {
                                     label: strings.QueryTemplateFieldLabel,
                                     value: this.properties.queryTemplate,
                                     multiline: true,
                                     resizable: true,
-                                    placeholder: strings.SearchQueryPlaceHolderText
+                                    placeholder: strings.SearchQueryPlaceHolderText,
+                                    deferredValidationTime: 300,
+                                    disabled: this._useResultSource,
+                                }),
+                                PropertyPaneTextField('resultSourceId', {
+                                    label: strings.ResultSourceIdLabel,
+                                    multiline: false,
+                                    onGetErrorMessage: this.validateSourceId.bind(this),
+                                    deferredValidationTime: 300
+                                }),
+                                PropertyPaneToggle('enableQueryRules', {
+                                    label: strings.EnableQueryRulesLabel,
+                                    checked: this.properties.enableQueryRules,
                                 }),
                                 PropertyPaneTextField('selectedProperties', {
                                     label: strings.SelectedPropertiesFieldLabel,
                                     multiline: true,
                                     resizable: true,
                                     value: this.properties.selectedProperties,
+                                    deferredValidationTime: 300
                                 }),
                                 PropertyPaneTextField('refiners', {
                                     label: strings.RefinersFieldLabel,
                                     multiline: true,
                                     resizable: true,
-                                    value: this.properties.refiners
+                                    value: this.properties.refiners,
+                                    deferredValidationTime: 300
                                 }),
                                 PropertyPaneSlider("maxResultsCount", {
                                     label: strings.MaxResultsCount,
@@ -130,7 +162,12 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                                     showValue: true,
                                     step: 1,
                                     value: 50,
-                                }),
+                                })
+                            ]
+                        },
+                        {
+                            groupName: strings.StylingSettingsGroupName,
+                            groupFields: [
                                 PropertyPaneToggle("showPaging", {
                                     label: strings.ShowPagingLabel,
                                     checked: this.properties.showPaging,
@@ -142,7 +179,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
                                 PropertyPaneToggle("showCreatedDate", {
                                     label: strings.ShowCreatedDateLabel,
                                     checked: this.properties.showCreatedDate,
-                                }),
+                                })
                             ]
                         }
                     ]
@@ -165,5 +202,45 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchWebPartP
         }
 
         return "";
+    }
+
+    private bindPushStateEvent() {
+
+        // Original source: https://www.eliostruyf.com/check-page-mode-from-within-spfx-extensions
+
+        const _pushState = () => {
+            const _defaultPushState = history.pushState;
+            const _self = this;
+            return function (data: any, title: string, url?: string | null) {
+
+                const currentUrl = new URLSearchParams(url);
+                // We need to call the in context of the component
+                // The "k" parameter is set by the search box component
+                if (_self.properties.useSearchBoxQuery) {
+                    _self.properties.queryKeywords = data.k;
+                    _self.render();
+                }
+                // Call the original function with the provided arguments
+                // This context is necessary for the context of the history change
+                return _defaultPushState.apply(this, [data, title, url]);
+            };
+        };
+
+        history.pushState = _pushState();
+    }
+
+    private validateSourceId(value: string): string {
+        if(value.length > 0) {
+            if (!/^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$/.test(value)) {
+                this._useResultSource = false;
+                return strings.InvalidResultSourceIdMessage;
+            } else {
+                this._useResultSource = true;
+            }
+        } else {
+            this._useResultSource = false;
+        }
+        
+        return '';
     }
 }
