@@ -1,12 +1,15 @@
 declare interface ISearchWebPartStrings {
   SearchSettingsGroupName: string;
   SearchQueryKeywordsFieldLabel: string;
+  SearchQueryKeywordsFieldDescription: string;
   QueryTemplateFieldLabel: string;
   SelectedPropertiesFieldLabel: string;
+  SelectedPropertiesFieldDescription: string;
   LoadingMessage: string;
   MaxResultsCount: string;
   NoResultMessage: string;
   RefinersFieldLabel: string;
+  RefinersFieldDescription: string;
   FilterPanelTitle: string;
   FilterResultsButtonLabel: string;
   SelectedFiltersLabel: string;

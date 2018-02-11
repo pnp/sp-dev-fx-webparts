@@ -27,6 +27,9 @@ define([], function() {
     "InvalidResultSourceIdMessage": "Identifiant invalide",
     "UseSearchBoxQueryLabel": "Utiliser la requête de la boîte de recherche",
     "EnableQueryRulesLabel": "Activer les règles de requête",
-    "StylingSettingsGroupName": "Options d'affichage"
+    "StylingSettingsGroupName": "Options d'affichage",
+    "RefinersFieldDescription": "Propriétés gerées à utiliser comme filtres (liste ordonnée séparée par une virgule)",
+    "SelectedPropertiesFieldDescription": "Propriétés à récupérer des résulats de recherche.",
+    "SearchQueryKeywordsFieldDescription": "Utilisez une requête de recherche prédéfinie pour obtenir un ensemble de résultats statique."
   }
 });

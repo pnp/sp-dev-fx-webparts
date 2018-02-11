@@ -114,6 +114,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                                 }),
                                 PropertyPaneTextField('queryKeywords', {
                                     label: strings.SearchQueryKeywordsFieldLabel,
+                                    description: strings.SearchQueryKeywordsFieldDescription,
                                     value: this.properties.queryKeywords,
                                     multiline: true,
                                     resizable: true,
@@ -143,6 +144,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                                 }),
                                 PropertyPaneTextField('selectedProperties', {
                                     label: strings.SelectedPropertiesFieldLabel,
+                                    description: strings.SelectedPropertiesFieldDescription,
                                     multiline: true,
                                     resizable: true,
                                     value: this.properties.selectedProperties,
@@ -150,6 +152,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                                 }),
                                 PropertyPaneTextField('refiners', {
                                     label: strings.RefinersFieldLabel,
+                                    description: strings.RefinersFieldDescription,
                                     multiline: true,
                                     resizable: true,
                                     value: this.properties.refiners,

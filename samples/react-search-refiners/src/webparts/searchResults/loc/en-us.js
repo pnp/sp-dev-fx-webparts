@@ -27,6 +27,10 @@ define([], function() {
     "InvalidResultSourceIdMessage": "Invalid identifier",
     "UseSearchBoxQueryLabel": "Use search box query",
     "EnableQueryRulesLabel": "Enable query rules",
-    "StylingSettingsGroupName": "Styling options"
+    "StylingSettingsGroupName": "Styling options",
+    "RefinersFieldDescription": "Specifies managed properties used as refiners (ordered comma-separated list).",
+    "SelectedPropertiesFieldDescription": "Speficies the properties to retrieve from the search results.",
+    "SearchQueryKeywordsFieldDescription": "Use pre-defined search query keywords to retrieve a static set of results."
+
   }
 });
