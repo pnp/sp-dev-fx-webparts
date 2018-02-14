@@ -57,7 +57,7 @@ export default class ScriptEditor extends React.Component<IScriptEditorProps, an
                     <div className={styles.container}>
                         <div className={`ms-Grid-row pzl-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
                             <div className="ms-Grid-col ms-lg10 ms-xl8 ms-xlPush2 ms-lgPush1">
-                                <span className="ms-font-xl ms-fontColor-white">The Modern Script Editor web part!</span>
+                                <span className="ms-font-xl ms-fontColor-white">{this.props.title}</span>
                                 <p className="ms-font-l ms-fontColor-white"></p>
                                 <DefaultButton description='Opens the snippet dialog' onClick={this._showDialog}>Edit snippet</DefaultButton>
                             </div>
