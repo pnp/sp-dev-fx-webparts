@@ -1,0 +1,20 @@
+.headerBar {
+    position: relative;
+    margin-bottom: 5px;
+    .header {
+        margin-right: 24px;
+    }
+
+    .info {
+        position: absolute;
+        font-size: 14px;
+        background-color: transparent;
+        top: 3px;
+        right: 0px;
+        cursor: pointer;
+    }
+}
+
+.headerCallout {
+    padding: 10px;
+}
