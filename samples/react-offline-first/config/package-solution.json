@@ -1,0 +1,13 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-offline-first-client-side-solution",
+    "id": "0c2c55d9-8ce6-4303-a642-ff8eefbc9d2c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-offline-first.sppkg"
+  }
+}
