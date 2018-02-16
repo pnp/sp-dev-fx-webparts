@@ -9,10 +9,14 @@ import Card from './Card/Card';
 const Swiper = require('swiper/dist/js/swiper.min');
 
 export default class ReactSlideSwiper extends React.Component<IReactSlideSwiperProps, IReactSlideSwiperState> {
+  
+  private uniqueId: number;
 
   constructor(props: IReactSlideSwiperProps) {
     super(props);
     this.state = { listItems: [] };
+    
+    this.uniqueId = Math.floor(Math.random() * 10000) + 1;
   }
 
   public componentDidMount(): void {
@@ -34,7 +38,7 @@ export default class ReactSlideSwiper extends React.Component<IReactSlideSwiperP
     return (
       <div className={styles.reactSlideSwiper}>
 
-        <div className={`swiper-container ${styles.container}`}>
+        <div className={`swiper-container ${styles.container} container-${this.uniqueId}`}>
           <div className='swiper-wrapper'>
             {this.state.listItems.length &&
               this.state.listItems.map((listItem, i) => {
@@ -47,14 +51,14 @@ export default class ReactSlideSwiper extends React.Component<IReactSlideSwiperP
           </div>
 
           {this.props.swiperOptions.enableNavigation &&
-            <div className="swiper-button-next"></div>
+            <div className={`swiper-button-next next-${this.uniqueId}`}></div>
           }
           {this.props.swiperOptions.enableNavigation &&
-            <div className="swiper-button-prev"></div>
+            <div className={`swiper-button-prev prev-${this.uniqueId}`}></div>
           }
 
           {this.props.swiperOptions.enablePagination !== false &&
-            <div className="swiper-pagination"></div>
+            <div className={`swiper-pagination pagination-${this.uniqueId}`}></div>
           }
         </div>
       </div>
@@ -93,7 +97,7 @@ export default class ReactSlideSwiper extends React.Component<IReactSlideSwiperP
     if (opts.enablePagination !== false) {
 
       options.pagination = {
-        el: '.swiper-pagination',
+        el: `.pagination-${this.uniqueId}`,
         clickable: true,
       };
     }
@@ -101,8 +105,8 @@ export default class ReactSlideSwiper extends React.Component<IReactSlideSwiperP
     if (opts.enableNavigation) {
 
       options.navigation = {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: `.next-${this.uniqueId}`,
+        prevEl: `.prev-${this.uniqueId}`,
       };
     }
 
@@ -114,6 +118,6 @@ export default class ReactSlideSwiper extends React.Component<IReactSlideSwiperP
       };
     }
 
-    return new Swiper('.swiper-container', options);
+    return new Swiper(`.container-${this.uniqueId}`, options);
   }
 }
