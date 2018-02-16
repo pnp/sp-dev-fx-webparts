@@ -21,6 +21,7 @@
             "officeFabricIconFontName": "JS",
             "properties": {
                 "script": "",
+                "title" : "The Modern Script Editor web part!",
                 "removePadding": false
             }
         }
