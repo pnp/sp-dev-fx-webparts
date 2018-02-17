@@ -1,3 +1,9 @@
+#### Important
+
+Use the following form to submit an issue only if it's related to samples in this repo. If you have an issue related to the SharePoint Framework or its documentation, please submit the issue at [https://github.com/SharePoint/sp-dev-docs/issues/new](https://github.com/SharePoint/sp-dev-docs/issues/new). This will help us respond to your issue faster.
+
+----
+
 Thank you for reporting an issue or suggesting an enhancement. We appreciate your feedback - to help the team to understand your needs, please complete the below template to ensure we have the necessary details to assist you. 
 
 #### Category

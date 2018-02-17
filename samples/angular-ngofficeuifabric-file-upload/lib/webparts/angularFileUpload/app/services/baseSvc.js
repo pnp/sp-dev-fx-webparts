@@ -1,10 +1,11 @@
 "use strict";
 var angular = require("angular");
 var BaseService = (function () {
-    function BaseService($http, $q) {
+    function BaseService($http, $q, pageContext) {
         this.$http = $http;
         this.$q = $q;
-        this.baseUrl = window._spPageContextInfo.webAbsoluteUrl;
+        this.pageContext = pageContext;
+        this.baseUrl = pageContext.web.absoluteUrl;
     }
     BaseService.prototype.getRequest = function (query, endPoint) {
         var deferred = this.$q.defer();
@@ -172,7 +173,7 @@ var BaseService = (function () {
     };
     return BaseService;
 }());
-BaseService.$inject = ["$http", "$q"];
+BaseService.$inject = ["$http", "$q", "pageContext"];
 exports.BaseService = BaseService;
 
-//# sourceMappingURL=BaseSvc.js.map
+//# sourceMappingURL=baseSvc.js.map

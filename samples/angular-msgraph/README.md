@@ -1,9 +1,9 @@
-## Angular MS Graph Web Part Built with Angular v1.x
+﻿## Angular MS Graph Web Part Built with Angular v1.x
 
 ## Summary
-Sample MS Graph Web Part that connects to the Microsoft Graph and pull SharePoint information from your
-tenant. It will first pull the Root Site Collection (currently a limitation by Microsoft Graph). Then will
-display all the Lists associated with the site. Then all the items inside the List.
+This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your
+tenant. It will first pull the root site collection (currently a limitation by Microsoft Graph), then it will
+display all the lists associated with the site followed by all the items inside the list.
 
 ![First Screen](./assets/Connect.png)
 
@@ -16,7 +16,7 @@ display all the Lists associated with the site. Then all the items inside the Li
 ![Announcement List Items](./assets/Items.png)
 
 
-> Note: I currently only have models developed for the Announcements List. All other lists will currently generate errors.
+> Note: I currently only have models developed for the Announcements list. All other lists will currently generate errors.
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-ga-green.svg)

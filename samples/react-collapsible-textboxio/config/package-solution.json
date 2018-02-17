@@ -1,0 +1,11 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "PnP - Collapsible sections with Textbox IO",
+    "id": "633834bd-6854-4f0a-a02f-8c50bb1a6c1b",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/pnp-react-collapsible-textboxio.sppkg"
+  }
+}

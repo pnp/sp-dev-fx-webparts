@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<AppPartConfig
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://schemas.microsoft.com/sharepoint/2012/app/partconfiguration"
->
-  <Id>771d8fd4-46ce-421d-a61c-79c55e1fba19</Id>
-</AppPartConfig>

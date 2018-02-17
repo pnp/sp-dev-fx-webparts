@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "spfx-js-datatables",
+    "framework": "none",
+    "version": "1.0.2",
+    "libraryId": "1e1ac667-cac9-4a86-97fb-f5abda8a8926"
+  }
+}

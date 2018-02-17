@@ -1,0 +1,57 @@
+# SharePoint Framework PnP Controls Sample
+
+## Summary
+
+This is a sample project that contains a web part which makes use of the PnP SPFx Controls:
+
+- [SharePoint Framework React Controls](https://www.npmjs.com/package/@pnp/spfx-controls-react)
+- [SharePoint Framework Property Controls](https://www.npmjs.com/package/@pnp/spfx-property-controls)
+
+![Web part outcome](./assets/webpart-outcome.gif)
+
+## Used SharePoint Framework Version
+![drop](https://img.shields.io/badge/drop-1.2.0-green.svg)
+
+## Which PnP SPFx controls are being used in this sample?
+
+The sample makes use of the following controls:
+- PropertyFieldListPicker
+- PropertyFieldTermPicker
+- Placeholder
+- ListView (which also uses the FileTypeIcon control)
+
+## Applies to
+
+* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+pnp-controls|Elio Struyf (MVP, U2U, [@eliostruyf](https://twitter.com/eliostruyf))
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+0.0.1|September 20, 2017|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+To test out this web part, you need to have a library with a managed metadata field. In my case, I made use of a field called **Country**.
+
+![Documents](./assets/documents.png)
+
+Once you have such a library in place, you can copy the code and run the following commands:
+
+```bash
+npm install
+gulp serve --nobrowser
+```
+
+![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/pnp-controls)

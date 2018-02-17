@@ -1,0 +1,82 @@
+            * {
+                -webkit-box-sizing: content-box;
+                -moz-box-sizing: content-box;
+                box-sizing: content-box!important;
+            }
+            * {
+                box-sizing: border-box
+            }
+            /* Slideshow container */
+            
+            .containers {
+                max-width: 1000px;
+                min-width: 350px;
+                min-height: 160px;
+                position: relative;
+                margin: auto;
+                overflow: hidden;
+            }
+            
+            .mySlides {
+                display: none;
+                transition: 1s all ease-in-out;
+                -webkit-animation: slideIn 1s forwards;
+                -moz-animation: slideIn 1s forwards;
+                animation: slideIn 1s forwards;
+            }
+           
+            /* Next & previous buttons */
+             .prev{
+                 left:0;
+                  border-radius: 0 3px 3px 0;
+             }
+            .prev,
+            .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                width: auto;
+                margin-top: -22px;
+                padding: 8px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                transition: 0.6s all ease;               
+            }
+            /* Position the "next button" to the right */
+            
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+            /* On hover, add a black background color with a little bit see-through */
+            
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            
+           @-webkit-keyframes slideIn {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(900px);
+                }
+            }
+            @-moz-keyframes slideIn {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(900px);
+                }
+            }
+            @keyframes slideIn {
+                0% {
+                    transform: translateX(-900px);
+                }
+                100% {
+                    transform: translateX(0);
+                }
+            }

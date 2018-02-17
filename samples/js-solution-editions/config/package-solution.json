@@ -1,0 +1,11 @@
+{
+    "solution": {
+        "name": "js-solution-editions-client-side-solution",
+        "id": "d32a2713-6c4e-4b63-b1a3-b35698bf167b",
+        "version": "1.0.0.1",
+        "skipFeatureDeployment": true
+    },
+    "paths": {
+        "zippedPackage": "solution/js-solution-editions.sppkg"
+    }
+}
