@@ -4,11 +4,12 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "jsx": "react",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "declaration": true,
     "sourceMap": true,
+    "experimentalDecorators": true,
     "types": [
+      "es6-promise",
+      "es6-collections",
       "webpack-env"
     ]
   }

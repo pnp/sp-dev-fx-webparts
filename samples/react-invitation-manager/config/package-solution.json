@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-invitation-manager-client-side-solution",
+    "id": "7d08f6e8-b222-4ed7-8910-8ea911d117fe",
+    "version": "1.0.1.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-invitation-manager.sppkg"
+  }
+}

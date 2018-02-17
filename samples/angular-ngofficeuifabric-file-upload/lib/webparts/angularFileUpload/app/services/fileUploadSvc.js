@@ -21,7 +21,7 @@ var FileUploadService = (function () {
         return deferred.promise;
     };
     FileUploadService.prototype.getFiles = function (libraryName, rowLimit) {
-        var url = "/_api/Web/lists/getbytitle('" + libraryName + "')/items?$select=Id,Modified,FileLeafRef,Author/Id&$expand=Author&$orderby=Modified desc&$top=" + rowLimit + "&$filter=Author/Id eq " + window._spPageContextInfo.userId;
+        var url = "/_api/Web/lists/getbytitle('" + libraryName + "')/items?$select=Id,Modified,FileLeafRef,Author/Id&$expand=Author&$orderby=Modified desc&$top=" + rowLimit;
         return this.baseService.getRequest(url);
     };
     FileUploadService.prototype.deleteFile = function (libraryName, id) {

@@ -51,7 +51,7 @@ AuthenticationContext.prototype._renewToken = function (resource, callback) {
   this._renewTokenSuper(resource, callback);
   var _renewStates = this._getItem('renewStates');
   if (_renewStates) {
-    _renewStates = _renewStates.split(';');
+    _renewStates = _renewStates.split(',');
   }
   else {
     _renewStates = [];

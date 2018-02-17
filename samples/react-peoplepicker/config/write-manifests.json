@@ -1,3 +1,4 @@
 {
-  "cdnBasePath": "<!-- PATH TO CDN -->"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/write-manifests.schema.json",
+  "cdnBasePath": "https://publiccdn.sharepointonline.com/giuleon.sharepoint.com/cdn/SPFx-OfficeUIFabricPeoplePicker"
 }

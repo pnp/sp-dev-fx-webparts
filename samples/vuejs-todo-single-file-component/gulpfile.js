@@ -11,25 +11,35 @@ build.sass.setConfig({
 build.configureWebpack.setConfig({
     additionalConfiguration: function (config) {
         var vueConfig = {
+            resolve: {
+                alias: {
+                    'vue$': 'vue/dist/vue.esm.js'
+                }
+            },
             module: {
-                loaders: [
+                rules: [
                     {
                         test: /\.vue$/,
-                        loader: 'vue-loader'
-                    }
-                ]
+                        use: [
+                            {
+                                loader: 'vue-loader',
+                                options: {
+                                    esModule: true
+                                }
+                            }]
+                    }]
             },
-            vue: {
-                esModule: true
-            }
         };
 
         return merge(config, vueConfig);
     }
 });
 
-build.copyStaticAssets.setConfig({
-    includeExtensions: ['vue', 'scss']
+let copyOtherFiles = build.subTask('copy-other-files', function(gulp, buildOptions, done){
+    return gulp.src(['src/**/*.vue', 'src/**/*.scss'])
+               .pipe(gulp.dest(buildOptions.libFolder))
 });
+build.task('copy-other-files', copyOtherFiles);
+build.rig.addPostTypescriptTask(copyOtherFiles);
 
 build.initialize(gulp);

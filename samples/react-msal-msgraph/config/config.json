@@ -1,0 +1,16 @@
+{
+    "entries": [{
+        "entry": "./lib/webparts/msalWp/MsalWpWebPart.js",
+        "manifest": "./src/webparts/msalWp/MsalWpWebPart.manifest.json",
+        "outputPath": "./dist/msal-wp.bundle.js"
+    }],
+    "externals": {
+        "Msal": {
+            "path": "https://secure.aadcdn.microsoftonline-p.com/lib/0.1.1/js/msal.min.js",
+            "globalName": "Msal"
+        }
+    },
+    "localizedResources": {
+        "msalWpStrings": "webparts/msalWp/loc/{locale}.js"
+    }
+}

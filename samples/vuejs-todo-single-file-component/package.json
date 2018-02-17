@@ -1,33 +1,33 @@
 {
   "name": "vue-todo",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "@microsoft/sp-client-base": "~1.0.0",
-    "@microsoft/sp-core-library": "~1.0.0",
-    "@microsoft/sp-webpart-base": "~1.0.0",
+    "@microsoft/sp-core-library": "~1.4.0",
+    "@microsoft/sp-lodash-subset": "~1.4.0",
+    "@microsoft/sp-office-ui-fabric-core": "~1.4.0",
+    "@microsoft/sp-webpart-base": "~1.4.0",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
-    "vue": "^2.2.6",
-    "vue-class-component": "^5.0.1",
-    "vue-property-decorator": "^4.0.0",
-    "vue-template-compiler": "^2.2.6"
+    "vue": "^2.5.13",
+    "vue-class-component": "^6.1.2",
+    "vue-property-decorator": "^6.0.0",
+    "vue-template-compiler": "^2.5.13"
   },
   "devDependencies": {
-    "@microsoft/gulp-core-build-typescript": "^3.0.0",
-    "@microsoft/sp-build-web": "~1.0.0",
-    "@microsoft/sp-module-interfaces": "~1.0.0",
-    "@microsoft/sp-webpart-workbench": "~1.0.0",
+    "@microsoft/sp-build-web": "~1.4.0",
+    "@microsoft/sp-module-interfaces": "~1.4.0",
+    "@microsoft/sp-webpart-workbench": "~1.4.0",
     "@types/chai": ">=3.4.34 <3.6.0",
     "@types/mocha": ">=2.2.33 <2.6.0",
-    "css-loader": "^0.28.0",
+    "ajv": "~5.2.2",
     "gulp": "~3.9.1",
-    "node-sass": "^4.5.2",
-    "sass-loader": "^6.0.3",
-    "vue-loader": "^11.3.4",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.1",
+    "node-sass": "~4.5.3",
+    "sass-loader": "~6.0.6",
+    "vue-loader": "^13.7.0"
   },
   "scripts": {
     "build": "gulp bundle",

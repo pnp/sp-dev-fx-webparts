@@ -1,4 +1,4 @@
-import { ISearchResults } from './../models/ISearchResults'
+﻿import { ISearchResults } from './../models/ISearchResults';
 
 export interface IDataService {
   getSearchResults(webUrl: string, contentType: string): angular.IPromise<ISearchResults>;

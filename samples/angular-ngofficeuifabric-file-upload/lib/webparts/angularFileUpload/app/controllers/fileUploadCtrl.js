@@ -26,6 +26,9 @@ var FileUploadCtrl = (function () {
     };
     FileUploadCtrl.prototype.upload = function () {
         var _this = this;
+        if (!this.file) {
+            return;
+        }
         this.isUploading = true;
         this.fileUploadService.uploadFile(this.libraryTitle, this.file)
             .then(function (response) {

@@ -1,0 +1,62 @@
+# SPFx Event Aggregator Sample #
+
+## Summary
+
+This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern). It enables a webpart or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it. 
+
+> Please note the SPFx Event Aggregator is still in Alpha and **NOT SUPPORTED IN PRODUCTION USE**, but this sample will be updated in future when there are changes from the Alpha version to GA.
+
+![SPFx eventAggregator](./assets/spfx-event-aggregator.gif)
+
+
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-1.1-green.svg)
+
+## Applies to
+
+* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+
+## Prerequisites
+
+- Office 365 subscription with SharePoint Online.
+- SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-events-aggregator | Miguel Rabaca ( [Spanish Point](http://www.spanishpoint.ie) ), Velin Georgiev ( [@VelinGeorgiev](https://twitter.com/velingeorgiev) ), Austin Breslin  ( [@AustinBreslin](https://www.linkedin.com/in/austin-breslin-84b4a74b/) )
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+0.0.1|August 22, 2017 | Initial commit
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository.
+- Open the command line, navigate to the web part folder and execute:
+    - `npm i`
+    - `gulp test` (optional)
+    - `gulp serve`
+
+## Features
+
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+- Using React for building SharePoint Framework client-side web parts.
+- Using Office UI Fabric React styles for building user experience consistent with SharePoint and Office.
+- The use the SPFx event aggregator to broadcast messages (events).
+- The use the SPFx event aggregator to subscribe and receive broadcasted messages (events).
+- Unit tests including spies, mocks and faking class methods and properties.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-events-aggregator" />
+
+

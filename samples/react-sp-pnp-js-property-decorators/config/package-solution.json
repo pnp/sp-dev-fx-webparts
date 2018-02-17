@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-sp-pnp-js-property-decorators-client-side-solution",
+    "id": "a843ff35-51f4-4e36-99f7-f077a93f8d37",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-sp-pnp-js-property-decorators.sppkg"
+  }
+}

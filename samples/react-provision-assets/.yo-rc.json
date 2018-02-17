@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.1.1",
+    "libraryName": "react-provision-assets-webpart",
+    "libraryId": "e64d001b-d6c7-4326-8d5f-965a7a086266",
+    "environment": "spo"
+  }
+}

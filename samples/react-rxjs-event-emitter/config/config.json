@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/libraries/rxJsEventEmitter/RxJsEventEmitter.js",
+      "manifest": "./src/libraries/rxJsEventEmitter/RxJsEventEmitter.manifest.json",
+      "outputPath": "./dist/rxjs-event-emitter.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/broadcaster/BroadcasterWebPart.js",
+      "manifest": "./src/webparts/broadcaster/BroadcasterWebPart.manifest.json",
+      "outputPath": "./dist/broadcaster.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/receiver/ReceiverWebPart.js",
+      "manifest": "./src/webparts/receiver/ReceiverWebPart.manifest.json",
+      "outputPath": "./dist/receiver.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "broadcasterStrings": "webparts/broadcaster/loc/{locale}.js",
+    "receiverStrings": "webparts/receiver/loc/{locale}.js"
+  }
+}

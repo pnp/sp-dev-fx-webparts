@@ -1,4 +1,12 @@
+import { ITaskList } from '../../models/ICommonObjects';
+/**
+ * This interface describes the serialized properties of the webpart 
+ */
 export interface ITodoWebPartProps {
-  message: string;
-  todos: string[];
+
+  /**
+   * Represents the selected Task list 
+   */
+  SelectedList: ITaskList;
+
 }

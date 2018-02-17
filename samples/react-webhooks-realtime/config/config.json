@@ -1,0 +1,20 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "real-time-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/realTimeList/RealTimeListWebPart.js",
+          "manifest": "./src/webparts/realTimeList/RealTimeListWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "sp-pnp-js": "https://cdnjs.cloudflare.com/ajax/libs/sp-pnp-js/3.0.1/pnp.min.js"
+  },
+  "localizedResources": {
+    "RealTimeListWebPartStrings": "lib/webparts/realTimeList/loc/{locale}.js"
+  }
+}

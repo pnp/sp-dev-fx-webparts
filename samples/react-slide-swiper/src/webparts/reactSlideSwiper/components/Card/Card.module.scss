@@ -1,0 +1,26 @@
+//@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.card {
+
+  .wrapper{
+    border: 1px solid grey;
+    max-width: 300px;
+    height: 500px;
+  }
+
+  .url {
+    text-decoration: none;
+  }
+
+  .image {
+    height: 200px;
+  }
+
+  .title {
+    height: 120px;
+  }
+
+  .description {
+    height: 200px;
+  }
+}
