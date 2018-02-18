@@ -6,6 +6,7 @@ import 'tinymce/plugins/link';
 import * as React from 'react';
 import styles from './ReactTinyMce.module.scss';
 import { IReactTinyMceProps } from './IReactTinyMceProps';
+import './workbench.css'
 import { escape } from '@microsoft/sp-lodash-subset';
 import { IReactTinyMceState } from './IReactTinyMceState';
 import { Editor } from "@tinymce/tinymce-react";
