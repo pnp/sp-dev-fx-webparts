@@ -1,10 +1,11 @@
 import * as localforage from 'localforage';
+import { IOfflineStorageRequest } from './IOfflineStorageRequest';
+import { IOfflineStorageItem } from './IOffllineStorageItem';
 
-const demoUrl: string = "https://api.github.com/orgs/SharePoint/repos";
-const demoRequest: RequestInfo = {
-    url: demoUrl
-} as RequestInfo;
-
+/*
+    Fetch and Promise.
+    Comes from https://www.npmjs.com/package/@microsoft/sp-polyfills
+*/
 
 /**
  * Tries to wrap HTTP Requests so that they can be retrieved from
@@ -33,33 +34,8 @@ export class OfflineFirstHTTPService {
         this._LiveLocalForage = localforage.createInstance({name: "live"});
         this._QueueLocalForage = localforage.createInstance({name: "queue"});
 
-        window.addEventListener("online",this.syncChangesToServer.bind(this));
-        window.addEventListener("offline",this.handleOfflineEvent.bind(this));
-    }
-    
-    /**
-     * Gets should retrieve from local storage,
-     * before attempting any HTTP requests.
-     * @returns {Promise<any>} 
-     * @memberof GitHubService
-     */
-    public getDemo(): Promise<any> {
-        return new Promise<any>( (resolve, reject) => {
-            this.getDemoLocal("demoRequestKey")
-            .then((demoItem: any) => {
-                let demoXhrPromise = this.getDemoXHR(demoRequest, null);
-                resolve({"offlineItem": demoItem, "onlineItem": demoXhrPromise});
-            })
-            .catch((error: Error|any) => {
-                this.getDemoXHR(demoRequest, null)
-                .then((demoItem) => {
-                    resolve(demoItem);
-                })
-                .catch((error: Error| any) => {
-                    reject(error);
-                });
-            });
-        });
+        window.addEventListener("online",this.syncChangesToServer);
+        window.addEventListener("offline",this.handleOfflineEvent);
     }
 
 
@@ -72,20 +48,20 @@ export class OfflineFirstHTTPService {
      * @returns {Promise<any>} 
      * @memberof GitHubService
      */
-    public postDemoXHR(demoPost: RequestInfo, demoPostInit: RequestInit): Promise<any> {
+    public post(offlineStorageRequest: IOfflineStorageRequest): Promise<any> {
         return new Promise<any>( (resolve, reject) => {
-            fetch(demoPost, demoPostInit)
+            fetch(offlineStorageRequest.value.requestInfo['url'], offlineStorageRequest.value.requestInit)
             .then((response: Response) => {
                 if (response.ok) {
-                    return response.json();
+                    resolve(response.json());
                 } else {
-                    this.addRequestToQueue({"key" : "demoPost", "value": {"requestInfo" : demoRequest, "requestInit": demoPostInit}});
-                    reject({"key" : "demoPost", "value": {"requestInfo" : demoRequest, "requestInit": demoPostInit}});
+                    this.addRequestToQueue(offlineStorageRequest); 
+                    reject(offlineStorageRequest);
                 }
             })
             .catch(() => {
-                reject({"key" : "demoPost", "value": {"requestInfo" : demoRequest, "requestInit": demoPostInit}});
-                this.addRequestToQueue({"key" : "demoPost", "value": {"requestInfo" : demoRequest, "requestInit": demoPostInit}});
+                reject(offlineStorageRequest);
+                this.addRequestToQueue(offlineStorageRequest);
             });
         });
     }
@@ -97,29 +73,29 @@ export class OfflineFirstHTTPService {
      * @returns {Promise<any>} 
      * @memberof GitHubService
      */
-    public getDemoXHR(demoRequest: RequestInfo, demoRequestInit: RequestInit): Promise<any> {
-
+    public getFromServer(offlineStorageRequest: IOfflineStorageRequest ): Promise<any> {
         return new Promise<any>( (resolve: any, reject: any) => {
-            fetch(demoRequest, demoRequestInit)
-            .then((response: Response) => {
-                if(response.ok){
-                    return response.json();
+            fetch(offlineStorageRequest.value.requestInfo['url'], offlineStorageRequest.value.requestInit)
+            .then( (json: Response) => {
+                if (json.ok) {
+                    return json.json();
                 } else {
-                    this.addRequestToQueue({"key": "demoRequestKey", "value": {"requestInfo" : demoRequest, "requestInit": demoRequestInit}});
-                    reject({"key": "demoRequestKey", "value": {"requestInfo" : demoRequest, "requestInit": demoRequestInit}});
+                    reject();
                 }
             })
-            .then( (json: any) => {
-                this.setDemoLocal("demoRequestKey", json)
+            .then( (json) => {
+                this.setToLocal(offlineStorageRequest.key, json)
                 .then(() => {
                     console.log("Stored Demo JSON Offline.");
+                    resolve(json);
                 })
                 .catch(() => {
                     console.log("Failed to store Demo JSON Offline");
+                    reject(json);
                 });
-                resolve(json);
             })
             .catch((error: Error|any) => {
+                this.addRequestToQueue(offlineStorageRequest);
                 console.error(error);
             });
         });
@@ -133,7 +109,7 @@ export class OfflineFirstHTTPService {
      * @returns {Promise<any>} 
      * @memberof GitHubService
      */
-    public getDemoLocal(itemKey: string): Promise<any> {
+    public getFromLocal(itemKey: string): Promise<any> {
         return new Promise<any>((resolve: any, reject: any) => {
             this._LiveLocalForage.ready()
             .then(() => {
@@ -157,11 +133,11 @@ export class OfflineFirstHTTPService {
      * @returns {Promise<any>} 
      * @memberof GitHubService
      */
-    public setDemoLocal(itemKey: string, itemToStoreOffline: any): Promise<any> {
+    public setToLocal(key: string, value: string): Promise<any> {
         return new Promise<any>( (resolve: any, reject: any) => {
             this._LiveLocalForage.ready()
             .then(() => {
-                return this._LiveLocalForage.setItem(itemKey, itemToStoreOffline);
+                return this._LiveLocalForage.setItem(key, value);
             })
             .then( () => {
                 resolve();
@@ -184,22 +160,35 @@ export class OfflineFirstHTTPService {
         this._IsOnline = true;
         this._QueueLocalForage.ready()
         .then(() => {
-            return this._QueueLocalForage.iterate((value: {requestInfo: RequestInfo, requestInit: RequestInit}, key: string, iterationNumber: number) => {
-                if (value.requestInit === null || value.requestInit.method === "GET") {
-                    this.syncGetsFromServer(value, key);
-                } else {
-                    this.syncPostsToServer(value, key);
-                }
-            });
+            return this._QueueLocalForage.keys();
+        })
+        .then( (keys) => {
+            return Promise.all(keys.map(this.chooseSyncProcess));
         })
         .then(() => {
             console.log("Successfully synced with server");
         })
         .catch(() => {
+            this._IsOnline = false;
             console.log("Did not sync with server, will retry when online.");
         });
     }
 
+    private chooseSyncProcess(key: string): Promise<any> {
+        return new Promise<any>( (resolve: any, reject: any) => {
+            this._QueueLocalForage.getItem(key)
+            .then((offlineStorageItem: IOfflineStorageRequest) => {
+                const requestInit = offlineStorageItem.value.requestInit;
+                if (requestInit === null || requestInit === undefined || requestInit.method === "GET") {
+                    return this.syncGetsFromServer(offlineStorageItem);
+                }
+                return this.syncPostsToServer(offlineStorageItem);
+            })
+            .catch(() => { 
+                reject();
+            });
+        });
+    }
 
     /**
      * Sends HTTP Posts/Updates/Deletes to the server that were in the queue.
@@ -210,20 +199,23 @@ export class OfflineFirstHTTPService {
      * @param {string} key 
      * @memberof GitHubService
      */
-    private syncPostsToServer(value: { requestInfo: RequestInfo; requestInit: RequestInit; }, key: string): void {
-        this.postDemoXHR(value.requestInfo, value.requestInit)
-            .then((response: Response) => {
-                if (response.ok) {
-                    return response.json();
-                }
-                return;
-            })
-            .then(() => {
-                return this._QueueLocalForage.removeItem(key);
-            })
-            .catch(() => {
-                console.log("Failed to sync to server, will retry when online.");
-            });
+    private syncPostsToServer(offlineStorageRequest: IOfflineStorageRequest): void {
+        this._QueueLocalForage.ready()
+        .then(() => {
+            return this.post(offlineStorageRequest);
+        })
+        .then((response: Response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            return;
+        })
+        .then(() => {
+            return this._QueueLocalForage.removeItem(offlineStorageRequest.key);
+        })
+        .catch(() => {
+            console.log("Failed to sync to server, will retry when online.");
+        });
     }
 
 
@@ -236,8 +228,11 @@ export class OfflineFirstHTTPService {
      * @param {string} key 
      * @memberof GitHubService
      */
-    private syncGetsFromServer(value: { requestInfo: RequestInfo; requestInit: RequestInit; }, key: string): void {
-        this.getDemoXHR(value.requestInfo, value.requestInit)
+    private syncGetsFromServer(offlineStorageRequest: IOfflineStorageRequest): void {
+        this._QueueLocalForage.ready()
+        .then( () => {
+            return this.getFromServer(offlineStorageRequest);
+        })
         .then((response: Response) => {
             if (response.ok) {
                 return response.json();
@@ -245,13 +240,13 @@ export class OfflineFirstHTTPService {
             return;
         })
         .then((json: any) => {
-            return this._LiveLocalForage.setItem(key, json);
+            return this._LiveLocalForage.setItem(offlineStorageRequest.key, json);
         })
         .then(() => {
-            return this._QueueLocalForage.removeItem(key);
+            return this._QueueLocalForage.removeItem(offlineStorageRequest.key);
         })
         .catch((error: Error | any) => {
-            console.log("Failed to sync " + value);
+            console.log("Failed to sync " + offlineStorageRequest.key);
             console.error(error);
         });
     }
@@ -278,7 +273,7 @@ export class OfflineFirstHTTPService {
      * @param {*} failedRequest 
      * @memberof GitHubService
      */
-    private addRequestToQueue(failedRequest: any): void {
+    private addRequestToQueue(failedRequest: IOfflineStorageRequest): void {
         this._QueueLocalForage.ready()
         .then( () => {
             return this._QueueLocalForage.setItem(failedRequest.key, failedRequest.value);
