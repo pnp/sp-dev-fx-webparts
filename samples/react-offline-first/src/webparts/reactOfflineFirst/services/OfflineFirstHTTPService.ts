@@ -38,15 +38,13 @@ export class OfflineFirstHTTPService {
         window.addEventListener("offline",this.handleOfflineEvent);
     }
 
-
     /**
      * Posts/Updates/Delets should attempt to send HTTP Request
      * to server, on success is normal. On failure the request
      * should be queue for when online.
-     * @param {RequestInfo} demoPost 
-     * @param {RequestInit} demoPostInit 
+     * @param {IOfflineStorageRequest} offlineStorageRequest 
      * @returns {Promise<any>} 
-     * @memberof GitHubService
+     * @memberof OfflineFirstHTTPService
      */
     public post(offlineStorageRequest: IOfflineStorageRequest): Promise<any> {
         return new Promise<any>( (resolve, reject) => {
@@ -66,12 +64,12 @@ export class OfflineFirstHTTPService {
         });
     }
 
-
     /**
-     * HTTP requests store offline before returning,
-     * Errors should return a reference to the HTTP request for re-attempts. 
+     * Returns http request on success like using fetch,
+     * Errors should be qeued for re-attempts. 
+     * @param {IOfflineStorageRequest} offlineStorageRequest 
      * @returns {Promise<any>} 
-     * @memberof GitHubService
+     * @memberof OfflineFirstHTTPService
      */
     public getFromServer(offlineStorageRequest: IOfflineStorageRequest ): Promise<any> {
         return new Promise<any>( (resolve: any, reject: any) => {
@@ -100,14 +98,13 @@ export class OfflineFirstHTTPService {
             });
         });
     }
-
-
+    
     /**
      * Offline Storage getter, that waits for offline storage
-     * to be initalized. 
+     * to be initalized.  
      * @param {string} itemKey 
      * @returns {Promise<any>} 
-     * @memberof GitHubService
+     * @memberof OfflineFirstHTTPService
      */
     public getFromLocal(itemKey: string): Promise<any> {
         return new Promise<any>((resolve: any, reject: any) => {
@@ -124,14 +121,13 @@ export class OfflineFirstHTTPService {
         });
     }
 
-
     /**
      * Offline Storage setter, that waits for offline storage
      * to be initalized. 
-     * @param {string} itemKey 
-     * @param {*} itemToStoreOffline 
+     * @param {string} key 
+     * @param {string} value 
      * @returns {Promise<any>} 
-     * @memberof GitHubService
+     * @memberof OfflineFirstHTTPService
      */
     public setToLocal(key: string, value: string): Promise<any> {
         return new Promise<any>( (resolve: any, reject: any) => {
@@ -148,13 +144,15 @@ export class OfflineFirstHTTPService {
         });
     }
 
-
     /**
      * Iterates through the queue to sync changes to the server.
      * Decides what type of sync needs to be done. 
+     * On success removes all items from queue.
+     * On failure leaves remaing items in the queue.
+     * If a item in the queue fails, this stops executing.
      * @private
      * @param {Event} e 
-     * @memberof GitHubService
+     * @memberof OfflineFirstHTTPService
      */
     private syncChangesToServer(e: Event): void {
         this._IsOnline = true;
@@ -174,6 +172,16 @@ export class OfflineFirstHTTPService {
         });
     }
 
+    /**
+     * Gets the key from the offline storage and then
+     * re-attempts that HTTP request. 
+     * On Success removes it from the queue
+     * On Failure leaves it in the queue
+     * @private
+     * @param {string} key 
+     * @returns {Promise<any>} 
+     * @memberof OfflineFirstHTTPService
+     */
     private chooseSyncProcess(key: string): Promise<any> {
         return new Promise<any>( (resolve: any, reject: any) => {
             this._QueueLocalForage.getItem(key)
@@ -195,9 +203,8 @@ export class OfflineFirstHTTPService {
      * Successfull HTTP Requests get removed from the Queue.
      * Unsuccessfull requests wait for the device to be online again. 
      * @private
-     * @param {{ requestInfo: RequestInfo; requestInit: RequestInit; }} value 
-     * @param {string} key 
-     * @memberof GitHubService
+     * @param {IOfflineStorageRequest} offlineStorageRequest 
+     * @memberof OfflineFirstHTTPService
      */
     private syncPostsToServer(offlineStorageRequest: IOfflineStorageRequest): void {
         this._QueueLocalForage.ready()
@@ -218,15 +225,13 @@ export class OfflineFirstHTTPService {
         });
     }
 
-
     /**
      * Sends HTTP Gets to the server that were in the queue.
      * Sucessfull requests get removed from the queue and added to offline storage.
      * Unsucessfull requests remain in the queue and wait for device to be online again.
      * @private
-     * @param {{ requestInfo: RequestInfo; requestInit: RequestInit; }} value 
-     * @param {string} key 
-     * @memberof GitHubService
+     * @param {IOfflineStorageRequest} offlineStorageRequest 
+     * @memberof OfflineFirstHTTPService
      */
     private syncGetsFromServer(offlineStorageRequest: IOfflineStorageRequest): void {
         this._QueueLocalForage.ready()
@@ -251,7 +256,6 @@ export class OfflineFirstHTTPService {
         });
     }
 
-
     /**
      * Offline/Online is not completly supported by all browsers yet.
      * This is here for future rather than present.
@@ -259,19 +263,18 @@ export class OfflineFirstHTTPService {
      * Currently requests are attempted no matter status of Offline/Online.
      * @private
      * @param {Event} e 
-     * @memberof GitHubService
+     * @memberof OfflineFirstHTTPService
      */
     private handleOfflineEvent(e: Event): void {
         this._IsOnline = false;
     }
 
-
     /**
      * Adds a HTTP Request to the Queue and will be called when
      * the device is online again.
      * @private
-     * @param {*} failedRequest 
-     * @memberof GitHubService
+     * @param {IOfflineStorageRequest} failedRequest 
+     * @memberof OfflineFirstHTTPService
      */
     private addRequestToQueue(failedRequest: IOfflineStorageRequest): void {
         this._QueueLocalForage.ready()

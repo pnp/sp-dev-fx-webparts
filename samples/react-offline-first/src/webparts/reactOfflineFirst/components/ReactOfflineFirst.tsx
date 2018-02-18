@@ -7,18 +7,33 @@ import { IOfflineStorageRequest } from '../services/IOfflineStorageRequest';
 import { IOfflineStorageItem } from '../services/IOffllineStorageItem';
 import { OfflineFirstHTTPService } from '../services/OfflineFirstHTTPService';
 
+/**
+ * Uses the OfflineFistHTTPService as a demo of how to use it.
+ * @export
+ * @class ReactOfflineFirst
+ * @extends {React.Component<IReactOfflineFirstProps, IReactOfflineFirstState>}
+ */
 export default class ReactOfflineFirst extends React.Component<IReactOfflineFirstProps, IReactOfflineFirstState> {
   private offlineHTTP: OfflineFirstHTTPService;
 
+  /**
+   * Creates an instance of ReactOfflineFirst.
+   * @param {IReactOfflineFirstProps} props 
+   * @memberof ReactOfflineFirst
+   */
   public constructor(props: IReactOfflineFirstProps) {
     super(props);
-    window['disableBeaconLogToConsole'] = true;
     this.state = {
       listOfGitHubRepos : []
     } as IReactOfflineFirstState;
     this.offlineHTTP = new OfflineFirstHTTPService();
   }
 
+  /**
+   * Normal SPFX Webpart lifecycle.
+   * But uses localStorage.
+   * @memberof ReactOfflineFirst
+   */
   public componentDidMount(): void {
     const demoUrl: string = "https://api.github.com/orgs/SharePoint/repos";
     const demoRequest: RequestInfo = {
@@ -31,15 +46,26 @@ export default class ReactOfflineFirst extends React.Component<IReactOfflineFirs
       this.setState({listOfGitHubRepos: offlineItem},
         () => {
           console.log('retrieved items from offline.');
-          //set state callback.
+          //setstate callback.
           this.componentDidMountWithLocal(demoOfflineRequest);
       });
     })
     .catch((error: Error|any) => {
+      // Wasn't found in local storage, try live versuon.
+      this.componentDidMountWithLocal(demoOfflineRequest);
       console.error(error);
     });
   }
 
+  /**
+   * Custom SPFX Webpart lifecycle using setState optional callback.
+   * Retrieves a live version. If the user is offline nothing will
+   * happen, but the user will still get a result if they got an
+   * item from localstorage.
+   * @private
+   * @param {any} demoOfflineRequest 
+   * @memberof ReactOfflineFirst
+   */
   private componentDidMountWithLocal(demoOfflineRequest):void {
     this.offlineHTTP.getFromServer(demoOfflineRequest)
     .then( (onlineItem: any) => {
@@ -54,6 +80,11 @@ export default class ReactOfflineFirst extends React.Component<IReactOfflineFirs
     });
   }
 
+  /**
+   * Normal SPFX Webpart lifecycle.
+   * @returns {React.ReactElement<IReactOfflineFirstProps>} 
+   * @memberof ReactOfflineFirst
+   */
   public render(): React.ReactElement<IReactOfflineFirstProps> {
     return (
       <div className={ styles.reactOfflineFirst }>
