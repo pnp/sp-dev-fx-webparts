@@ -1,26 +1,69 @@
-## spfx-api-scopes-tutorial
+# Consuming APIs secured with Azure Active Directory within SharePoint Framework
 
-This is where you include your WebPart documentation.
+## Summary
 
-### Building the code
+This sub folders contains a client-side project that is related to the tutorial available at the following URL: https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
+![The UI of the sample application](images/use-aad-tutorial-video.gif)
+
+## Solution
+
+| Solution  | Author(s) |
+| ------------- | ------------- |
+| spfx-api-scopes-tutorial  | Paolo Pialorsi (PiaSys.com - @PaoloPia)   |
+
+## Version history
+
+| Version  | Date | Comments |
+| ------------- | ------------- | ------------- |
+| 1.0.0  | February 18th 2018   | Initial release |
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+----------
+
+## Build and run the tutorials
+
+To build and run this client-side project, you will need to clone and build the tutorials project.
+
+Clone this repo by executing the following command in your console:
+
+```
+git clone https://github.com/SharePoint/sp-dev-fx-webparts.git
 ```
 
-This package produces the following:
+Navigate to the cloned repo folder which should be the same as the repo name:
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+```
+cd sp-dev-fx-webparts
+```
 
-### Build options
+Navigate to the `tutorials` folder:
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+```
+cd tutorials
+```
+
+Navigate to the `specific web part` folder:
+
+```
+cd 'subfolder'
+```
+
+
+Now run the following command to install the npm packages:
+
+```
+npm install
+```
+
+This will install the required npm packages and depedencies to build and run the client-side project.
+
+Once the npm packages are installed, run the command to preview your web parts in SharePoint Workbench:
+
+```
+gulp serve
+```
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/tutorials" />
