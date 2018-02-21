@@ -19,6 +19,4 @@ build.configureWebpack.mergeConfig({
   }
 });
 
-gulp.watch('**/*.hbs', ['build']);
-
 build.initialize(gulp);
