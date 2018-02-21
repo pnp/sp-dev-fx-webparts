@@ -4,7 +4,7 @@ This sample demonstrate how to set up SPFX to use [Handlebars](http://handlebars
 
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
 
 ## Applies to
 
