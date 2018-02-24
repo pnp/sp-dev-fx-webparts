@@ -6,47 +6,67 @@ import 'tinymce/plugins/link';
 import * as React from 'react';
 import styles from './ReactTinyMce.module.scss';
 import { IReactTinyMceProps } from './IReactTinyMceProps';
-import './workbench.css'
-import { escape } from '@microsoft/sp-lodash-subset';
+import './workbench.css';
 import { IReactTinyMceState } from './IReactTinyMceState';
 import { Editor } from "@tinymce/tinymce-react";
+import ReactHtmlParser from 'react-html-parser';
 
 export default class ReactTinyMce extends React.Component<IReactTinyMceProps, IReactTinyMceState> {
 
   public constructor(props: IReactTinyMceProps) {
     super(props);
-    tinymce.init({
-      selector: '#tiny',
-      plugins: ['paste', 'link'],
-      skin_url: "../../src/webparts/reactTinyMce/skins/light/"
-    })
-    this.state = {} as IReactTinyMceState;
+    tinymce.init({});
+    this.state = {
+      content: this.props.content
+    } as IReactTinyMceState;
+    this.handleChange = this.handleChange.bind(this);
   }
 
   public render(): React.ReactElement<IReactTinyMceProps> {
     return (
       <div className={ styles.reactTinyMce }>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.7.6/jquery.tinymce.min.js"></script>
         <div className={ styles.container }>
           <div className={ styles.row }>
             <div className={ styles.column }>
-              <span className={ styles.title }>Welcome to SharePoint!</span>
-              <p className={ styles.subTitle }>Customize SharePoint experiences using Web Parts.</p>
-              <p className={ styles.description }>{escape(this.props.description)}</p>
-              <a href="https://aka.ms/spfx" className={ styles.button }>
-                <span className={ styles.label }>Learn more</span>
-              </a>
-              <Editor
-                init={{
-                  plugins: ['paste', 'link'],
-                  skin_url: "../../src/webparts/reactTinyMce/skins/pnp/"
-                }}
-              >
-              </Editor>
+              {
+                this.props.isReadMode
+                ? this.renderReadMode()
+                : this.renderEditMode()
+              }
             </div>
           </div>
         </div>
       </div>
     );
+  }
+
+  private renderEditMode(): React.ReactElement<IReactTinyMceProps> {
+    return (
+      <div className="tinyMceEditMode">
+        <Editor
+          init={{
+            plugins: ['paste', 'link'],
+            skin_url: "../../src/webparts/reactTinyMce/skins/pnp/"
+          }}
+          initialValue={this.state.content}
+          onChange={(event) => {this.handleChange(event.target.getContent());}}
+        />
+      </div>
+    );
+  }
+
+  private renderReadMode(): React.ReactElement<any> {
+    return (
+      <div className="tinyMceReadMode">
+        {ReactHtmlParser(this.state.content)}
+      </div>
+    );
+  }
+  
+  private handleChange(content: string): void {
+    this.setState({content: content}, () => {
+      console.log('State Set, saving content');
+      this.props.saveRteContent(content);
+    });
   }
 }

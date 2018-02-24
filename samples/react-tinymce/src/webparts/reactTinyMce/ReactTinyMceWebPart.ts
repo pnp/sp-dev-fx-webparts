@@ -5,7 +5,7 @@
 
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, DisplayMode } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -17,16 +17,19 @@ import ReactTinyMce from './components/ReactTinyMce';
 import { IReactTinyMceProps } from './components/IReactTinyMceProps';
 
 export interface IReactTinyMceWebPartProps {
-  description: string;
+  Content: string;
 }
 
 export default class ReactTinyMceWebPart extends BaseClientSideWebPart<IReactTinyMceWebPartProps> {
 
   public render(): void {
+    window.console.clear();
     const element: React.ReactElement<IReactTinyMceProps > = React.createElement(
       ReactTinyMce,
       {
-        description: this.properties.description
+        saveRteContent: this.setRteContentProp.bind(this),
+        isReadMode: DisplayMode.Read === this.displayMode,
+        content: this.properties.Content
       }
     );
 
@@ -48,8 +51,9 @@ export default class ReactTinyMceWebPart extends BaseClientSideWebPart<IReactTin
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('Content', {
+                  label: strings.ContentFieldLabel,
+                  disabled: true
                 })
               ]
             }
@@ -57,5 +61,9 @@ export default class ReactTinyMceWebPart extends BaseClientSideWebPart<IReactTin
         }
       ]
     };
+  }
+
+  private setRteContentProp(content: string): void {
+    this.properties['Content'] = content;
   }
 }

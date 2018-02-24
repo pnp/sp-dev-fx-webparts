@@ -1,3 +1,5 @@
 export interface IReactTinyMceProps {
-  description: string;
+  saveRteContent(content: string): void;
+  isReadMode: boolean;
+  content: string;
 }

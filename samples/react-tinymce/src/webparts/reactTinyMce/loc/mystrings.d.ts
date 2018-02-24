@@ -1,7 +1,7 @@
 declare interface IReactTinyMceWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  ContentFieldLabel: string;
 }
 
 declare module 'ReactTinyMceWebPartStrings' {
