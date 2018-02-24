@@ -20,10 +20,12 @@ export interface IReactTinyMceWebPartProps {
   Content: string;
 }
 
+/*
+Nothing really special in this class, just integartes it with sharepoint.
+*/
 export default class ReactTinyMceWebPart extends BaseClientSideWebPart<IReactTinyMceWebPartProps> {
 
   public render(): void {
-    window.console.clear();
     const element: React.ReactElement<IReactTinyMceProps > = React.createElement(
       ReactTinyMce,
       {
