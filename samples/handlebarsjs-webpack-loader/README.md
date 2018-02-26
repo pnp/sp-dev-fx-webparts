@@ -4,7 +4,7 @@ This sample demonstrate how to set up SPFX to use [Handlebars](http://handlebars
 
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
 
 ## Applies to
 
@@ -15,12 +15,13 @@ This sample demonstrate how to set up SPFX to use [Handlebars](http://handlebars
 
 Solution|Author(s)
 --------|---------
-SPFx-handlebars | Stefan Bauer - n8d ([@stfbauer](https://twitter.com/stfbauer))
+SPFx-Handlebars | Stefan Bauer - n8d ([@stfbauer](https://twitter.com/stfbauer))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.1|March 21, 2018|Update to Version 1.4.1
 1.0|March 5, 2017|Initial release
 
 ## Disclaimer
@@ -32,7 +33,7 @@ Version|Date|Comments
 git clone the repo
 npm i
 npm i -g gulp
-gulp
+gulp serve
 ```
 
 This package produces the following:
