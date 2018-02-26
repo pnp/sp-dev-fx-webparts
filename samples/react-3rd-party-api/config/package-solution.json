@@ -1,0 +1,19 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-3-rd-party-api-client-side-solution",
+    "id": "1475d3ce-8923-43a1-a050-83a35f180397",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "SharePoint.PnP.SampleRESTAPI",
+        "scope": "BusinessAction.Invoke"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-3-rd-party-api.sppkg"
+  }
+}

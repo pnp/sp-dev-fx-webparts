@@ -17,6 +17,8 @@ class SearchDataProvider implements ISearchDataProvider {
     private _appSearchSettings: SearchQuery;
     private _selectedProperties: string[];
     private _queryTemplate: string;
+    private _resultSourceId: string;
+    private _enableQueryRules: boolean;
 
     public get resultsCount(): number { return this._resultsCount; }
     public set resultsCount(value: number) { this._resultsCount = value; }
@@ -26,6 +28,12 @@ class SearchDataProvider implements ISearchDataProvider {
 
     public set queryTemplate(value: string) { this._queryTemplate = value; }
     public get queryTemplate(): string { return this._queryTemplate; }
+
+    public set resultSourceId(value: string) { this._resultSourceId = value; }
+    public get resultSourceId(): string { return this._resultSourceId; }
+
+    public set enableQueryRules(value: boolean) { this._enableQueryRules = value; }
+    public get enableQueryRules(): boolean { return this._enableQueryRules; }
 
     public constructor(webPartContext: IWebPartContext) {
         this._context = webPartContext;
@@ -63,9 +71,16 @@ class SearchDataProvider implements ISearchDataProvider {
         searchQuery.ClientType = "ContentSearchRegular";
         searchQuery.Querytext = query;
 
-        // To be able to use search query variable according to the current context
-        // http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html
-        searchQuery.QueryTemplate = this._queryTemplate;
+        // Disable query rules by default if not specified
+        searchQuery.EnableQueryRules = this._enableQueryRules ? this._enableQueryRules : false;
+
+        if (this._resultSourceId) {
+            searchQuery.SourceId = this._resultSourceId;
+        } else {
+            // To be able to use search query variable according to the current context
+            // http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html
+            searchQuery.QueryTemplate = this._queryTemplate;
+        }
 
         searchQuery.RowLimit = this._resultsCount ? this._resultsCount : 50;
         searchQuery.SelectProperties = this._selectedProperties;
@@ -159,7 +174,7 @@ class SearchDataProvider implements ISearchDataProvider {
                     let values: IRefinementValue[] = [];
                     refiner.Entries.map((item) => {
                         values.push({
-                            RefinementCount: item.RefinementCount,
+                            RefinementCount: parseInt(item.RefinementCount, 10),
                             RefinementName: this._formatDate(item.RefinementName), // This value will appear in the selected filter bar
                             RefinementToken: item.RefinementToken,
                             RefinementValue: this._formatDate(item.RefinementValue), // This value will appear in the filter panel
