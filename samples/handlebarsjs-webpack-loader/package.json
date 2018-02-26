@@ -1,25 +1,26 @@
 {
   "name": "spfx-handlebars",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
   },
   "dependencies": {
     "@microsoft/sp-client-base": "~1.0.0",
-    "@microsoft/sp-core-library": "~1.0.0",
-    "@microsoft/sp-webpart-base": "~1.0.0",
-    "@types/webpack-env": ">=1.12.1 <1.14.0",
-    "handlebars": "^4.0.6"
+    "@microsoft/sp-core-library": "~1.4.1",
+    "@microsoft/sp-webpart-base": "~1.4.1",
+    "@types/webpack-env": "~1.13.5",
+    "handlebars": "^4.0.11"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.0.0",
-    "@microsoft/sp-module-interfaces": "~1.0.0",
-    "@microsoft/sp-webpart-workbench": "~1.0.0",
-    "@types/chai": ">=3.4.34 <3.6.0",
-    "@types/mocha": ">=2.2.33 <2.6.0",
+    "@microsoft/sp-build-web": "~1.4.1",
+    "@microsoft/sp-module-interfaces": "~1.4.1",
+    "@microsoft/sp-webpart-workbench": "~1.4.1",
+    "@types/chai": "~4.1.2",
+    "@types/es6-collections": "^0.5.31",
+    "@types/mocha": "~2.2.48",
     "gulp": "~3.9.1",
-    "handlebars-template-loader": "^0.7.0"
+    "handlebars-template-loader": "^0.8.0"
   },
   "scripts": {
     "build": "gulp bundle",

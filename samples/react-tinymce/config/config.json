@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-tinymce-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactTinyMce/ReactTinyMceWebPart.js",
+          "manifest": "./src/webparts/reactTinyMce/ReactTinyMceWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactTinyMceWebPartStrings": "lib/webparts/reactTinyMce/loc/{locale}.js"
+  }
+}
