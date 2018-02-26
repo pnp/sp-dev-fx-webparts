@@ -1,0 +1,19 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d9b89fd2-67c9-4d0a-b57d-a85f7ab9679f",
+  "alias": "ReactTinyMceWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "react-tinymce" },
+    "description": { "default": "Allows a user to create rich text using tinymce" },
+    "officeFabricIconFontName": "TextBox",
+    "properties": {
+      "description": "Allows a user to create rich text using tinymce"
+    }
+  }]
+}
