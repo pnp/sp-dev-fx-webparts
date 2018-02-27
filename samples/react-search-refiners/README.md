@@ -29,6 +29,7 @@ Version|Date|Comments
 -------|----|--------
 1.0 | October 17, 2017 | Initial release
 1.1 | January 03, 2018 | Improvements and updating to SPFx drop 1.4
+1.2 | February 12, 2018 | Added a search box Web Part + Added a "Result Source Id" and "Enable Query Rules" parameters.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

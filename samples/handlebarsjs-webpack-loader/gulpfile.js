@@ -2,17 +2,17 @@
 
 const gulp = require('gulp');
 const build = require('@microsoft/sp-build-web');
-
-// Custom config section starts here
-const loaderConfig = [{
+const loaderConfig = {
   test: /\.hbs/,
   loader: "handlebars-template-loader"
-}];
+};
 
-// push loader configuration to SPFx configuration
+build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not camelCase and will not be type-safe.`);
+
 build.configureWebpack.mergeConfig({
   additionalConfiguration: (generatedConfiguration) => {
-    generatedConfiguration.module.loaders.push(loaderConfig);
+
+    generatedConfiguration.module.rules.push(loaderConfig);
 
     return generatedConfiguration;
 

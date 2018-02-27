@@ -69,6 +69,7 @@ Version|Date|Comments
 1.0.0.1|August 8th, 2017|Updated SPFx version and CSS loading
 1.0.0.2|October 4th, 2017|Updated SPFx version, bundle Office UI Fabric and CSS in webpart
 1.0.0.3|January 10th, 2018|Updated SPFx version, added remove padding property and refactoring
+1.0.0.4|February 14th, 2018|Added title property for edit mode and documentation for enabling the web part on Group sites / tenant wide
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -92,6 +93,22 @@ Version|Date|Comments
 * Upload .sppkg file from sharepoint\solution to your tenant App Catalog
 	* E.g.: https://&lt;tenant&gt;.sharepoint.com/sites/AppCatalog/AppCatalog
 * Add the web part to a site collection, and test it on a page
+
+### Deploy to non-script sites / modern team sites
+By default this web part is not allowed on no-script sites, as it allows execution of arbitrary script. This is by design as from a security and governance perspective you might not want arbitrary script added to your pages. This is typically something you want control over.
+
+If you however want to allow the web part for non-script sites like Office 365 Group modern team sites you have to edit `ScriptEditorWebPart.manifest.json` with the following change:
+```
+"requiresCustomScript": false
+```
+
+### Deploy tenant wide
+By default you have to install this web part per site collection where you want it availble. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
+```
+"skipFeatureDeployment": true
+```
+
+In order to make it availble to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
 
 ## Features
 This web part illustrates the following concepts on top of the SharePoint Framework:

@@ -5,15 +5,24 @@
     "search-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/search/SearchWebPart.js",
-          "manifest": "./src/webparts/search/SearchWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/searchResults/SearchResultsWebPart.js",
+          "manifest": "./src/webparts/searchResults/SearchResultsWebPart.manifest.json"
+        }
+      ]
+    },
+    "search-box-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/searchBox/SearchBoxWebPart.js",
+          "manifest": "./src/webparts/searchBox/SearchBoxWebPart.manifest.json"
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "SearchWebPartStrings": "lib/webparts/search/loc/{locale}.js",
-    "PropertyControlStrings": "./node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+    "SearchWebPartStrings": "lib/webparts/searchResults/loc/{locale}.js",
+    "PropertyControlStrings": "./node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "SearchBoxWebPartStrings": "lib/webparts/searchBox/loc/{locale}.js"
   }
 }

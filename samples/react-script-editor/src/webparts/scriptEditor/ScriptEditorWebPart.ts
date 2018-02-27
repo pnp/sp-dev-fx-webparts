@@ -5,12 +5,13 @@ import { SPComponentLoader } from '@microsoft/sp-loader';
 import {
     BaseClientSideWebPart,
     IPropertyPaneConfiguration,
-    PropertyPaneCustomField
+    PropertyPaneCustomField,
+    PropertyPaneToggle,
+    PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 import ScriptEditor from './components/ScriptEditor';
 import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
-import { PropertyPaneToggle } from '@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneToggle/PropertyPaneToggle';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
     public save: (script: string) => void = (script: string) => {
@@ -23,6 +24,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             ScriptEditor,
             {
                 script: this.properties.script,
+                title: this.properties.title,
                 save: this.save
             }
         );
@@ -61,6 +63,10 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                     groups: [
                         {
                             groupFields: [
+                                PropertyPaneTextField("title",{
+                                    label: "Title to show in edit mode",
+                                    value: this.properties.title
+                                }),
                                 PropertyPaneToggle("removePadding", {
                                     label: "Remove top/bottom padding of web part container",
                                     checked: this.properties.removePadding,

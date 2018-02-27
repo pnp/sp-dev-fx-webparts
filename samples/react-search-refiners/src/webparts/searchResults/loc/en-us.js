@@ -1,0 +1,36 @@
+define([], function() {
+  return {
+    "SearchSettingsGroupName": "Search settings",
+    "SearchQueryKeywordsFieldLabel": "Search query keywords",
+    "QueryTemplateFieldLabel": "Query template",
+    "SelectedPropertiesFieldLabel": "Selected Properties",
+    "LoadingMessage": "Results are loading, please wait...",
+    "MaxResultsCount": "Number of items to retrieve per page",
+    "NoResultMessage": "There is no results to show",    
+    "RefinersFieldLabel": "Refiners",
+    "FilterPanelTitle": "Available filters",
+    "FilterResultsButtonLabel": "Filter results",
+    "SelectedFiltersLabel": "Selected filters:",
+    "ApplyAllFiltersLabel": "Apply all filters",
+    "RemoveAllFiltersLabel": "Remove all filters",
+    "ShowPagingLabel": "Show paging",
+    "ShowFileIconLabel": "Show file icons",
+    "ShowCreatedDateLabel": "Show created date",
+    "NoFilterConfiguredLabel": "No filter configured", 
+    "SearchQueryPlaceHolderText": "Search query in KQL format",
+    "EmptyFieldErrorMessage": "This field cannot be empty",
+    "PlaceHolderEditLabel": "Edit",
+    "PlaceHolderConfigureBtnLabel": "Configure",
+    "PlaceHolderIconText": "Search Results Web Part with Refinements",
+    "PlaceHolderDescription": "This component displays search results with paging and customizable refinement panel",
+    "ResultSourceIdLabel": "Result Source Identifier",
+    "InvalidResultSourceIdMessage": "Invalid identifier",
+    "UseSearchBoxQueryLabel": "Use search box query",
+    "EnableQueryRulesLabel": "Enable query rules",
+    "StylingSettingsGroupName": "Styling options",
+    "RefinersFieldDescription": "Specifies managed properties used as refiners (ordered comma-separated list).",
+    "SelectedPropertiesFieldDescription": "Speficies the properties to retrieve from the search results.",
+    "SearchQueryKeywordsFieldDescription": "Use pre-defined search query keywords to retrieve a static set of results."
+
+  }
+});
