@@ -28,6 +28,7 @@ export class OfflineFirstHTTPService {
      * @memberof GitHubService
      */
     public constructor() {
+        window.console.clear();
         // only initially works on older Firefox
         this._IsOnline = window.navigator.onLine || !(window['mozInnerScreenX'] == null);
 
