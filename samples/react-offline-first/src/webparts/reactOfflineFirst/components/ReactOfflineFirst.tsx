@@ -67,17 +67,20 @@ export default class ReactOfflineFirst extends React.Component<IReactOfflineFirs
    * @memberof ReactOfflineFirst
    */
   private componentDidMountWithLocal(demoOfflineRequest):void {
-    this.offlineHTTP.getFromServer(demoOfflineRequest)
-    .then( (onlineItem: any) => {
-      this.setState({listOfGitHubRepos: onlineItem},
-        () => {
-          console.log('retrieved items from online.');
-          //set state callback.
+    //setTimeout, so we can see what's happening
+    setTimeout(() => {
+      this.offlineHTTP.getFromServer(demoOfflineRequest)
+      .then( (onlineItem: any) => {
+        this.setState({listOfGitHubRepos: onlineItem},
+          () => {
+            console.log('retrieved items from online.');
+            //set state callback.
+        });
+      })
+      .catch((error: Error|any) => {
+        console.error(error);
       });
-    })
-    .catch((error: Error|any) => {
-      console.error(error);
-    });
+    }, 3000);
   }
 
   /**
