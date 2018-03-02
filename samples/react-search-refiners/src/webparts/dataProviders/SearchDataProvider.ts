@@ -8,6 +8,7 @@ import groupBy from 'lodash-es/groupBy';
 import mapValues from 'lodash-es/mapValues';
 import mapKeys from "lodash-es/mapKeys";
 import * as moment from "moment";
+import { SPRest } from "sp-pnp-js/lib/sharepoint/rest";
 
 class SearchDataProvider implements ISearchDataProvider {
 
@@ -35,6 +36,8 @@ class SearchDataProvider implements ISearchDataProvider {
     public set enableQueryRules(value: boolean) { this._enableQueryRules = value; }
     public get enableQueryRules(): boolean { return this._enableQueryRules; }
 
+    private _localPnPSetup: SPRest;
+
     public constructor(webPartContext: IWebPartContext) {
         this._context = webPartContext;
 
@@ -44,15 +47,12 @@ class SearchDataProvider implements ISearchDataProvider {
 
         // To limit the payload size, we set odata=nometadata
         // We just need to get list items here
-        // We also set the SPFx context accordingly (https://github.com/SharePoint/PnP-JS-Core/wiki/Using-sp-pnp-js-in-SharePoint-Framework)
-        setup({
-            sp: {
-                headers: {
-                    Accept: "application/json; odata=nometadata",
-                },
+        // We use a local configuration to avoid conflicts with other Web Parts
+        this._localPnPSetup= pnp.sp.configure({
+            headers: {
+                Accept: "application/json; odata=nometadata",
             },
-            spfxContext: this._context,
-        });
+        }, this._context.pageContext.web.absoluteUrl);
     }
 
     /**
@@ -119,7 +119,7 @@ class SearchDataProvider implements ISearchDataProvider {
 
         try {
             if (!this._initialSearchResult || page == 1) {
-                this._initialSearchResult = await pnp.sp.search(searchQuery);
+                this._initialSearchResult = await this._localPnPSetup.search(searchQuery);
             }
 
             const allItemsPromises: Promise<any>[] = [];
