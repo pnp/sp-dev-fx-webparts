@@ -34,8 +34,8 @@ export class OfflineFirstHTTPService {
         this._LiveLocalForage = localforage.createInstance({name: "live"});
         this._QueueLocalForage = localforage.createInstance({name: "queue"});
 
-        window.addEventListener("online",this.syncChangesToServer);
-        window.addEventListener("offline",this.handleOfflineEvent);
+        window.addEventListener("online",this.syncChangesToServer.bind(this));
+        window.addEventListener("offline",this.handleOfflineEvent.bind(this));
     }
 
     /**
@@ -57,7 +57,8 @@ export class OfflineFirstHTTPService {
                     reject(offlineStorageRequest);
                 }
             })
-            .catch(() => {
+            .catch((error) => {
+                console.error(error);
                 reject(offlineStorageRequest);
                 this.addRequestToQueue(offlineStorageRequest);
             });
@@ -161,12 +162,19 @@ export class OfflineFirstHTTPService {
             return this._QueueLocalForage.keys();
         })
         .then( (keys) => {
-            return Promise.all(keys.map(this.chooseSyncProcess));
+            return new Promise<void>((resolve: any, reject: any) => {
+                let promiseArray: Promise<any>[] = keys.map(this.chooseSyncProcess.bind(this));
+                promiseArray.forEach((promise: Promise<any>) => {
+                    promise.catch((error: Error | any) => {
+                        reject(error);     
+                    });
+                });
+            });
         })
         .then(() => {
             console.log("Successfully synced with server");
         })
-        .catch(() => {
+        .catch((error: Error|any) => {
             this._IsOnline = false;
             console.log("Did not sync with server, will retry when online.");
         });
@@ -192,8 +200,12 @@ export class OfflineFirstHTTPService {
                 }
                 return this.syncPostsToServer(offlineStorageItem);
             })
-            .catch(() => { 
-                reject();
+            .then(() => {
+                resolve();
+            })
+            .catch((error: Error | any) => { 
+                console.error(error);
+                reject(error);
             });
         });
     }
@@ -206,22 +218,19 @@ export class OfflineFirstHTTPService {
      * @param {IOfflineStorageRequest} offlineStorageRequest 
      * @memberof OfflineFirstHTTPService
      */
-    private syncPostsToServer(offlineStorageRequest: IOfflineStorageRequest): void {
-        this._QueueLocalForage.ready()
-        .then(() => {
-            return this.post(offlineStorageRequest);
-        })
-        .then((response: Response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            return;
-        })
-        .then(() => {
-            return this._QueueLocalForage.removeItem(offlineStorageRequest.key);
-        })
-        .catch(() => {
-            console.log("Failed to sync to server, will retry when online.");
+    private syncPostsToServer(offlineStorageRequest: IOfflineStorageRequest): Promise<void> {
+        return new Promise<void>((resolve: any, reject: any) => {
+            this._QueueLocalForage.ready()
+            .then(() => {
+                return this.post(offlineStorageRequest);
+            })
+            .then(() => {
+                return this._QueueLocalForage.removeItem(offlineStorageRequest.key);
+            })
+            .catch((error: Error| any) => {
+                console.log("Failed to sync to server, will retry when online.");
+                reject(error);
+            });
         });
     }
 
@@ -233,26 +242,22 @@ export class OfflineFirstHTTPService {
      * @param {IOfflineStorageRequest} offlineStorageRequest 
      * @memberof OfflineFirstHTTPService
      */
-    private syncGetsFromServer(offlineStorageRequest: IOfflineStorageRequest): void {
-        this._QueueLocalForage.ready()
-        .then( () => {
-            return this.getFromServer(offlineStorageRequest);
-        })
-        .then((response: Response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            return;
-        })
-        .then((json: any) => {
-            return this._LiveLocalForage.setItem(offlineStorageRequest.key, json);
-        })
-        .then(() => {
-            return this._QueueLocalForage.removeItem(offlineStorageRequest.key);
-        })
-        .catch((error: Error | any) => {
-            console.log("Failed to sync " + offlineStorageRequest.key);
-            console.error(error);
+    private syncGetsFromServer(offlineStorageRequest: IOfflineStorageRequest): Promise<void> {
+        return new Promise<void>((resolve: any, reject: any) => {
+            this._QueueLocalForage.ready()
+            .then( () => {
+                return this.getFromServer(offlineStorageRequest);
+            })
+            .then((json: any) => {
+                return this._LiveLocalForage.setItem(offlineStorageRequest.key, json);
+            })
+            .then(() => {
+                return this._QueueLocalForage.removeItem(offlineStorageRequest.key);
+            })
+            .catch((error: Error | any) => {
+                console.log("Failed to sync " + offlineStorageRequest.key);
+                reject(error);
+            });
         });
     }
 
@@ -279,7 +284,7 @@ export class OfflineFirstHTTPService {
     private addRequestToQueue(failedRequest: IOfflineStorageRequest): void {
         this._QueueLocalForage.ready()
         .then( () => {
-            return this._QueueLocalForage.setItem(failedRequest.key, failedRequest.value);
+            return this._QueueLocalForage.setItem(failedRequest.key, failedRequest);
         })
         .then(() => {
             console.log("Added failedRequest " + failedRequest + " to the queue for later.");

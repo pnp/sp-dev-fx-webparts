@@ -11,7 +11,7 @@ read the documentation for
 * [ES6-Promise](https://github.com/stefanpenner/es6-promise)
 * [Whatwg-Fetch](https://github.com/whatwg/fetch)
 
-![Sample of the offline first webpart](./assets/webpart-screenshot.jpg)
+![Sample of the offline first webpart](./assets/preview.gif)
 
 ## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/drop-GA-green.svg)
