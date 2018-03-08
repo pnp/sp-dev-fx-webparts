@@ -63,7 +63,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                     groups: [
                         {
                             groupFields: [
-                                PropertyPaneTextField("title",{
+                                PropertyPaneTextField("title", {
                                     label: "Title to show in edit mode",
                                     value: this.properties.title
                                 }),
@@ -72,6 +72,12 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                                     checked: this.properties.removePadding,
                                     onText: "Remove padding",
                                     offText: "Keep padding"
+                                }),
+                                PropertyPaneToggle("spPageContextInfo", {
+                                    label: "Enable classic _spPageContextInfo",
+                                    checked: this.properties.spPageContextInfo,
+                                    onText: "Enabled",
+                                    offText: "Disabled"
                                 }),
                                 PropertyPaneCustomField({
                                     onRender: this.renderLogo,
@@ -120,8 +126,13 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     // Needed since innerHTML does not run scripts.
     //
     // Argument element is an element in the dom.
-    private executeScript(element: HTMLElement) {
+    private async executeScript(element: HTMLElement) {
         // Define global name to tack scripts on in case script to be loaded is not AMD/UMD
+
+        if(this.properties.spPageContextInfo && !window["_spPageContextInfo"]){
+            window["_spPageContextInfo"] = this.context.pageContext.legacyPageContext;
+        }
+
         (<any>window).ScriptGlobal = {};
 
         // main section of function
@@ -138,10 +149,14 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
 
         const urls = [];
         const onLoads = [];
+        const moduleMap = [];
         for (var j = 0; scripts[j]; j++) {
             const scriptTag = scripts[j];
             if (scriptTag.src && scriptTag.src.length > 0) {
                 urls.push(scriptTag.src);
+                if (scriptTag.attributes["module"] && scriptTag.attributes["module"].value.length > 0) {
+                    moduleMap[scriptTag.src] = scriptTag.attributes["module"].value;
+                }
             }
             if (scriptTag.onload && scriptTag.onload.length > 0) {
                 onLoads.push(scriptTag.onload);
@@ -150,26 +165,28 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
 
         // Execute promises in sequentially - https://hackernoon.com/functional-javascript-resolving-promises-sequentially-7aac18c4431e
         // Use "ScriptGlobal" as the global namein case script is AMD/UMD
-        const allFuncs = urls.map(url => () => SPComponentLoader.loadScript(url, { globalExportsName: "ScriptGlobal" }));
 
-        const promiseSerial = funcs =>
-            funcs.reduce((promise, func) =>
-                promise.then(result => func().then(Array.prototype.concat.bind(result))),
-                Promise.resolve([]));
+        for (let i = 0; i < urls.length; i++) {
+            try {
+                let m: any = await SPComponentLoader.loadScript(urls[i], { globalExportsName: "ScriptGlobal" });
+                let moduleName = moduleMap[urls[i]];
+                if (moduleName) {
+                    //If it's a AMD/UMD module, then assign to that global variable
+                    window[moduleName] = m;
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
-        // execute Promises in serial
-        promiseSerial(allFuncs)
-            .then(() => {
-                // execute any onload people have added
-                for (j = 0; onLoads[j]; j++) {
-                    onLoads[j]();
-                }
-                // execute script blocks
-                for (j = 0; scripts[j]; j++) {
-                    const scriptTag = scripts[j];
-                    if (scriptTag.parentNode) { scriptTag.parentNode.removeChild(scriptTag); }
-                    this.evalScript(scripts[j]);
-                }
-            }).catch(console.error);
+        for (j = 0; scripts[j]; j++) {
+            const scriptTag = scripts[j];
+            if (scriptTag.parentNode) { scriptTag.parentNode.removeChild(scriptTag); }
+            this.evalScript(scripts[j]);
+        }
+        // execute any onload people have added
+        for (j = 0; onLoads[j]; j++) {
+            onLoads[j]();
+        }
     }
 }

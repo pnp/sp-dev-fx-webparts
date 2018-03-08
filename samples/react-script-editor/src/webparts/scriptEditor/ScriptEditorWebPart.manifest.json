@@ -22,7 +22,8 @@
             "properties": {
                 "script": "",
                 "title" : "The Modern Script Editor web part!",
-                "removePadding": false
+                "removePadding": false,
+                "spPageContextInfo" : false
             }
         }
     ]
