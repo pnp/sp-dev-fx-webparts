@@ -1,4 +1,5 @@
 {
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-app-settings-client-side-solution",
     "id": "9573efb7-06d1-4134-aa8d-f6b4803d6096",
