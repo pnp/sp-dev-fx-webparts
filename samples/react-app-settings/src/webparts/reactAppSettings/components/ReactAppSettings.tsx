@@ -8,7 +8,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
  */
 import * as appSettings from 'appSettings';
 
-export default class ReactAppSettings extends React.Component<IReactAppSettingsProps, void> {
+export default class ReactAppSettings extends React.Component<IReactAppSettingsProps, {}> {
   public render(): React.ReactElement<IReactAppSettingsProps> {
     return (
       <div className={styles.reactAppSettings}>
