@@ -7,7 +7,7 @@ This webpart demonstrates how to use [PnP JS Core](https://github.com/SharePoint
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
 
 
 ## Applies to
@@ -25,6 +25,7 @@ react-async-await-sp-pnp-js | Jose Quinto ([@jquintozamora](https://twitter.com/
 Version|Date|Comments
 -------|----|--------
 1.0|May 1, 2017|Initial release
+1.1|Mar 6, 2018|Update to 1.4.1
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
