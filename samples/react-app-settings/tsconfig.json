@@ -7,10 +7,19 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@microsoft"
+    ],
     "types": [
       "es6-promise",
-      "es6-collections",
       "webpack-env"
+    ],
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.collection"
     ]
   }
 }
