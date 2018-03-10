@@ -234,7 +234,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
   private areMandatoryFieldsConfigured(): boolean {
     return !isEmpty(this.props.siteUrl) && 
            !isEmpty(this.props.querySettings.webUrl) && 
-           !isEmpty(this.props.querySettings.listTitle) && 
+           !isEmpty(this.props.querySettings.listId) && 
            !isEmpty(this.props.querySettings.viewFields) && 
            (!isEmpty(this.props.templateUrl) || !isEmpty(this.props.templateText));
   }
@@ -294,7 +294,7 @@ export default class ContentQuery extends React.Component<IContentQueryProps, IC
               
               <Checkbox label={strings.SiteUrlFieldLabel} checked={!isEmpty(this.props.siteUrl)} />
               <Checkbox label={strings.WebUrlFieldLabel} checked={!isEmpty(this.props.querySettings.webUrl)} />
-              <Checkbox label={strings.ListTitleFieldLabel} checked={!isEmpty(this.props.querySettings.listTitle)} />
+              <Checkbox label={strings.ListTitleFieldLabel} checked={!isEmpty(this.props.querySettings.listId)} />
               <Checkbox label={strings.viewFieldsChecklistStrings.label} checked={!isEmpty(this.props.querySettings.viewFields)} />
               <Checkbox label={strings.templateTextStrings.dialogButtonLabel + " / " + strings.TemplateUrlFieldLabel} checked={(!isEmpty(this.props.templateUrl) || !isEmpty(this.props.templateText))} />
           </div>

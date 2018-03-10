@@ -31,6 +31,7 @@ Version|Date|Comments
 1.0.5|September 1st, 2017|Added a **Site Url** parameter next to the **Web Url** parameter in order to narrow down the results
 1.0.6|September 19, 2017|Upgraded to SharePoint drop 1.2.0 and added the site url and web url preselection when adding the WebPart for the first time on a page. Also fixed a bug with fields that had spaces in their internal names (automatically replaced with `_x0020_` by SharePoint).
 1.0.7|November 17, 2017|Reverted to drop 1.1.0 in order to keep compatibility for SP2016 on-premise
+1.0.8|March 17, 2018|Updated to store the selected list using its ID instead of its title, so the webpart keeps working if the list title gets updated.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

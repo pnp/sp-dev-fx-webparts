@@ -3,7 +3,7 @@ import { IQueryFilter } from "../../controls/PropertyPaneQueryFilterPanel/compon
 export interface IContentQueryWebPartProps {
   siteUrl: string;
   webUrl: string;
-  listTitle: string;
+  listId: string;
   limitEnabled: boolean;
   itemLimit: number;
   orderBy: string;

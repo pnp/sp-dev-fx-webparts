@@ -21,12 +21,12 @@ export class ListService {
 	/**************************************************************************************************
 	 * Performs a CAML query against the specified list and returns the resulting items
 	 * @param webUrl : The url of the web which contains the specified list
-	 * @param listTitle : The title of the list which contains the elements to query
+	 * @param listId : The id of the list which contains the elements to query
 	 * @param camlQuery : The CAML query to perform on the specified list
 	 **************************************************************************************************/
-	public getListItemsByQuery(webUrl: string, listTitle: string, camlQuery: string): Promise<any> {
+	public getListItemsByQuery(webUrl: string, listId: string, camlQuery: string): Promise<any> {
 		return new Promise<any>((resolve,reject) => {
-			let endpoint = Text.format("{0}/_api/web/lists/GetByTitle('{1}')/GetItems?$expand=FieldValuesAsText,FieldValuesAsHtml", webUrl, listTitle);
+			let endpoint = Text.format("{0}/_api/web/lists(guid'{1}')/GetItems?$expand=FieldValuesAsText,FieldValuesAsHtml", webUrl, listId);
 			let data:any = { 
 				query : { 
 					__metadata: { type: "SP.CamlQuery" }, 
@@ -55,14 +55,14 @@ export class ListService {
 	 * Returns a sorted array of all available list titles for the specified web
 	 * @param webUrl : The web URL from which the list titles must be taken from
 	 **************************************************************************************************/
-	public getListTitlesFromWeb(webUrl: string): Promise<string[]> {
-		return new Promise<string[]>((resolve,reject) => {
-			let endpoint = Text.format("{0}/_api/web/lists?$select=Title&$filter=(IsPrivate eq false) and (IsCatalog eq false) and (Hidden eq false)", webUrl);
+	public getListTitlesFromWeb(webUrl: string): Promise<IListTitle[]> {
+		return new Promise<IListTitle[]>((resolve,reject) => {
+			let endpoint = Text.format("{0}/_api/web/lists?$select=Id,Title&$filter=(IsPrivate eq false) and (IsCatalog eq false) and (Hidden eq false)", webUrl);
 			this.spHttpClient.get(endpoint, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
 				if(response.ok) {
 					response.json().then((data: any) => {
-						let listTitles:string[] = data.value.map((list) => { return list.Title; });
-						resolve(listTitles.sort());
+						let listTitles:IListTitle[] = data.value.map((list) => { return { id: list.Id, title: list.Title }; });
+						resolve(listTitles.sort((a,b) => { return Number(a.title > b.title); }));
 					})
 					.catch((error) => { reject(error); });
 				}
@@ -76,17 +76,17 @@ export class ListService {
 
 
 	/**************************************************************************************************
-	 * Returns a sorted array of all available list titles for the specified web
+	 * Returns the available fields for the specified list id
 	 * @param webUrl : The web URL from which the specified list is located
-	 * @param listTitle : The title of the list from which to load the fields
+	 * @param listId : The id of the list from which to load the fields
 	 * @param selectProperties : Optionnaly, the select properties to narrow down the query size
 	 * @param orderBy : Optionnaly, the by which the results needs to be ordered
 	 **************************************************************************************************/
-	public getListFields(webUrl: string, listTitle: string, selectProperties?: string[], orderBy?: string): Promise<any> {
+	public getListFields(webUrl: string, listId: string, selectProperties?: string[], orderBy?: string): Promise<any> {
 		return new Promise<any>((resolve,reject) => {
 			let selectProps = selectProperties ? selectProperties.join(',') : '';
 			let order = orderBy ? orderBy : 'InternalName';
-			let endpoint = Text.format("{0}/_api/web/lists/GetByTitle('{1}')/Fields?$select={2}&$orderby={3}", webUrl, listTitle, selectProps, order);
+			let endpoint = Text.format("{0}/_api/web/lists(guid'{1}')/Fields?$select={2}&$orderby={3}", webUrl, listId, selectProps, order);
 			this.spHttpClient.get(endpoint, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
 				if(response.ok) {
 					resolve(response.json());
@@ -99,4 +99,10 @@ export class ListService {
         });
 	}
 
+}
+
+
+export interface IListTitle {
+	id: string;
+	title: string;
 }
