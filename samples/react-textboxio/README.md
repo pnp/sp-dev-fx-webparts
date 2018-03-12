@@ -8,6 +8,12 @@ The Texbox.io editor is a free web rich text editor (https://textbox.io/) offeri
   <img src="./images/react-textboxio.gif"/>
 </p>
 
+### Disclaimer ###
+
+This sample only shows how to integrate the Textbox.io library within SPFx. Textbox.io is a 3rd party library made by a commercial company (Ephox) under the Creative Commons CC BY-NC-ND 4.0 license. Any support of the library itself won't be a part of PnP. If you encounter issues with this library, please contact Ephox directly (charges may applied in this case).
+
+This situation has been already discussed [here](https://github.com/SharePoint/sp-dev-fx-webparts/issues/410). 
+
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-1.3.0-green.svg)
 
