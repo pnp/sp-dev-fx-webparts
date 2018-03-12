@@ -2,7 +2,7 @@ import { IQueryFilter } from '../../../controls/PropertyPaneQueryFilterPanel/com
 
 export interface IQuerySettings {
 	webUrl: string;
-	listTitle: string;
+	listId: string;
 	limitEnabled: boolean;
 	itemLimit: number;
 	orderBy: string;

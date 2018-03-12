@@ -6,7 +6,7 @@ export class ContentQueryConstants {
      **************************************************************/
     public static readonly propertySiteUrl                          = "siteUrl";
     public static readonly propertyWebUrl                           = "webUrl";
-    public static readonly propertyListTitle                        = "listTitle";
+    public static readonly propertyListId                           = "listId";
     public static readonly propertyOrderBy                          = "orderBy";
     public static readonly propertOrderByDirection                  = "orderByDirection";
     public static readonly propertyLimitEnabled                     = "limitEnabled";
