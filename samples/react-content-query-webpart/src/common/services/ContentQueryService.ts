@@ -11,7 +11,7 @@ import { IChecklistItem }                                       from '../../cont
 import { IContentQueryTemplateContext }                         from '../../webparts/contentQuery/components/IContentQueryTemplateContext';
 import { IQuerySettings }                                       from '../../webparts/contentQuery/components/IQuerySettings';
 import { CamlQueryHelper }                                      from '../helpers/CamlQueryHelper';
-import { ListService }                                          from './ListService';
+import { ListService, IListTitle }                              from './ListService';
 import { SearchService }                                        from './SearchService';
 import { PeoplePickerService }                                  from './PeoplePickerService';
 import { TaxonomyService }                                      from './TaxonomyService';
@@ -21,25 +21,25 @@ export class ContentQueryService implements IContentQueryService {
 
     private readonly logSource = "ContentQueryService.ts";
 
-    /***************************************************************************
+    /**************************************************************************************************
      * The page context and http clients used for performing REST calls
-     ***************************************************************************/
+     **************************************************************************************************/
     private context: IWebPartContext;
     private spHttpClient: SPHttpClient;
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * The different services used to perform REST calls
-     ***************************************************************************/
+     **************************************************************************************************/
      private listService: ListService;
      private searchService: SearchService;
      private peoplePickerService: PeoplePickerService;
      private taxonomyService: TaxonomyService;
      
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Stores the first async calls locally to avoid useless redundant calls
-     ***************************************************************************/
+     **************************************************************************************************/
     private siteUrlOptions: IDropdownOption[];
     private webUrlOptions: IDropdownOption[];
     private listTitleOptions: IDropdownOption[];
@@ -48,11 +48,11 @@ export class ContentQueryService implements IContentQueryService {
     private viewFields: IChecklistItem[];
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Constructor
      * @param context : A IWebPartContext for logging and page context
      * @param spHttpClient : A SPHttpClient for performing SharePoint specific requests
-     ***************************************************************************/
+     **************************************************************************************************/
     constructor(context: IWebPartContext, spHttpClient: SPHttpClient) {
         Log.verbose(this.logSource, "Initializing a new IContentQueryService instance...", context.serviceScope);
 
@@ -66,8 +66,10 @@ export class ContentQueryService implements IContentQueryService {
 
 
     /**************************************************************************************************
-     * Gets the available webs for the current user
-     **************************************************************************************************/  
+     * Generates the final template context that will be given to handlebars 
+     * @param querySettings : The settings required for generating the CAML query
+     * @param callTimeStamp : The time stamp of the call in order to fight concurency
+     **************************************************************************************************/
     public getTemplateContext(querySettings: IQuerySettings, callTimeStamp: number): Promise<IContentQueryTemplateContext> {
         Log.verbose(this.logSource, Text.format("Getting template context for request with queue number {0}...", callTimeStamp), this.context.serviceScope);
 
@@ -87,7 +89,7 @@ export class ContentQueryService implements IContentQueryService {
             Log.info(this.logSource, Text.format("Generated CAML query {0}...", query), this.context.serviceScope);
 
             // Queries the list with the generated caml query
-            this.listService.getListItemsByQuery(querySettings.webUrl, querySettings.listTitle, query)
+            this.listService.getListItemsByQuery(querySettings.webUrl, querySettings.listId, query)
                 .then((data: any) => {
                     // Updates the template context with the normalized query results
                     let normalizedResults = this.normalizeQueryResults(data.value, querySettings.viewFields);
@@ -247,9 +249,9 @@ export class ContentQueryService implements IContentQueryService {
 
         // Otherwise gets the options asynchronously
         return new Promise<IDropdownOption[]>((resolve, reject) => {
-            this.listService.getListTitlesFromWeb(webUrl).then((listTitles:string[]) => {
+            this.listService.getListTitlesFromWeb(webUrl).then((listTitles:IListTitle[]) => {
                 let options:IDropdownOption[] = [ { key: "", text: strings.ListTitleFieldPlaceholder } ];
-                let listTitleOptions = listTitles.map((listTitle) => { return { key: listTitle, text: listTitle }; });
+                let listTitleOptions = listTitles.map((list) => { return { key: list.id, text: list.title }; });
                 options = options.concat(listTitleOptions);
                 this.listTitleOptions = options;
                 resolve(options);
@@ -264,13 +266,13 @@ export class ContentQueryService implements IContentQueryService {
     /**************************************************************************************************
      * Gets the available fields out of the specified web/list
      * @param webUrl : The url of the web from which the list comes from
-     * @param listTitle : The title of the list from which the field must be loaded from
+     * @param listId : The id of the list from which the field must be loaded from
      **************************************************************************************************/ 
-    public getOrderByOptions(webUrl: string, listTitle: string): Promise<IDropdownOption[]> {
+    public getOrderByOptions(webUrl: string, listId: string): Promise<IDropdownOption[]> {
         Log.verbose(this.logSource, "Loading dropdown options for toolpart property 'Order By'...", this.context.serviceScope);
 
         // Resolves an empty array if no web or no list has been selected
-        if (isEmpty(webUrl) || isEmpty(listTitle)) {
+        if (isEmpty(webUrl) || isEmpty(listId)) {
             return Promise.resolve(new Array<IDropdownOption>());
         }
 
@@ -281,7 +283,7 @@ export class ContentQueryService implements IContentQueryService {
 
         // Otherwise gets the options asynchronously
         return new Promise<IDropdownOption[]>((resolve, reject) => {
-            this.listService.getListFields(webUrl, listTitle, ['InternalName', 'Title', 'Sortable'], 'Title').then((data:any) => {
+            this.listService.getListFields(webUrl, listId, ['InternalName', 'Title', 'Sortable'], 'Title').then((data:any) => {
                 let sortableFields:any[] = data.value.filter((field) => { return field.Sortable == true; });
                 let options:IDropdownOption[] = [ { key: "", text: strings.queryFilterPanelStrings.queryFilterStrings.fieldSelectLabel } ];
                 let orderByOptions:IDropdownOption[] = sortableFields.map((field) => { return { key: field.InternalName, text: Text.format("{0} \{\{{1}\}\}", field.Title, field.InternalName) }; });
@@ -296,16 +298,16 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Gets the available fields out of the specified web/list
      * @param webUrl : The url of the web from which the list comes from
-     * @param listTitle : The title of the list from which the field must be loaded from
-     ***************************************************************************/
-    public getFilterFields(webUrl: string, listTitle: string):Promise<IQueryFilterField[]> {
+     * @param listId : The id of the list from which the field must be loaded from
+     **************************************************************************************************/
+    public getFilterFields(webUrl: string, listId: string):Promise<IQueryFilterField[]> {
         Log.verbose(this.logSource, "Loading dropdown options for toolpart property 'Filters'...", this.context.serviceScope);
 
         // Resolves an empty array if no web or no list has been selected
-        if (isEmpty(webUrl) || isEmpty(listTitle)) {
+        if (isEmpty(webUrl) || isEmpty(listId)) {
             return Promise.resolve(new Array<IQueryFilterField>());
         }
 
@@ -316,7 +318,7 @@ export class ContentQueryService implements IContentQueryService {
 
         // Otherwise gets the options asynchronously
         return new Promise<IQueryFilterField[]>((resolve, reject) => {
-            this.listService.getListFields(webUrl, listTitle, ['InternalName', 'Title', 'TypeAsString'], 'Title').then((data:any) => {
+            this.listService.getListFields(webUrl, listId, ['InternalName', 'Title', 'TypeAsString'], 'Title').then((data:any) => {
                 let fields:any[] = data.value;
                 let options:IQueryFilterField[] = fields.map((field) => { return { 
                     internalName: field.InternalName, 
@@ -333,14 +335,16 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Loads the checklist items for the viewFields property
-     ***************************************************************************/
-    public getViewFieldsChecklistItems(webUrl: string, listTitle: string):Promise<IChecklistItem[]> {
+     * @param webUrl : The url of the web from which the list comes from
+     * @param listId : The id of the list from which the field must be loaded from
+     **************************************************************************************************/
+    public getViewFieldsChecklistItems(webUrl: string, listId: string):Promise<IChecklistItem[]> {
         Log.verbose(this.logSource, "Loading checklist items for toolpart property 'View Fields'...", this.context.serviceScope);
 
         // Resolves an empty array if no web or no list has been selected
-        if (isEmpty(webUrl) || isEmpty(listTitle)) {
+        if (isEmpty(webUrl) || isEmpty(listId)) {
             return Promise.resolve(new Array<IChecklistItem>());
         }
 
@@ -351,7 +355,7 @@ export class ContentQueryService implements IContentQueryService {
 
         // Otherwise gets the options asynchronously
         return new Promise<IChecklistItem[]>((resolve, reject) => {
-            this.listService.getListFields(webUrl, listTitle, ['InternalName', 'Title'], 'Title').then((data:any) => {
+            this.listService.getListFields(webUrl, listId, ['InternalName', 'Title'], 'Title').then((data:any) => {
                 let fields:any[] = data.value;
                 let items:IChecklistItem[] = fields.map((field) => { return { 
                     id: field.InternalName, 
@@ -367,13 +371,13 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Returns the user suggestions based on the user entered picker input
      * @param webUrl : The web url on which to query for users
      * @param filterText : The filter specified by the user in the people picker
      * @param currentPersonas : The IPersonaProps already selected in the people picker
      * @param limitResults : The results limit if any
-     ***************************************************************************/
+     **************************************************************************************************/
     public getPeoplePickerSuggestions(webUrl: string, filterText: string, currentPersonas: IPersonaProps[], limitResults?: number):Promise<IPersonaProps[]> {
         Log.verbose(this.logSource, "Getting people picker suggestions for toolpart property 'Filters'...", this.context.serviceScope);
 
@@ -393,18 +397,19 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Returns the taxonomy suggestions based on the user entered picker input
-     * @param webUrl : The web url on which to query for users
-     * @param filterText : The filter specified by the user in the people picker
-     * @param currentPersonas : The IPersonaProps already selected in the people picker
-     * @param limitResults : The results limit if any
-     ***************************************************************************/
-    public getTaxonomyPickerSuggestions(webUrl: string, listTitle: string, field: IQueryFilterField, filterText: string, currentTerms: ITag[]):Promise<ITag[]> {
+     * @param webUrl : The web url on which to look for the list
+     * @param listId : The id of the list on which to look for the taxonomy field
+     * @param field : The IQueryFilterField which contains the selected taxonomy field 
+     * @param filterText : The filter text entered by the user
+     * @param currentTerms : The current terms
+     **************************************************************************************************/
+    public getTaxonomyPickerSuggestions(webUrl: string, listId: string, field: IQueryFilterField, filterText: string, currentTerms: ITag[]):Promise<ITag[]> {
         Log.verbose(this.logSource, "Getting taxonomy picker suggestions for toolpart property 'Filters'...", this.context.serviceScope);
 
         return new Promise<ITag[]>((resolve, reject) => {
-            this.taxonomyService.getSiteTaxonomyTermsByTermSet(webUrl, listTitle, field.internalName, this.context.pageContext.web.language).then((data:any) => {
+            this.taxonomyService.getSiteTaxonomyTermsByTermSet(webUrl, listId, field.internalName, this.context.pageContext.web.language).then((data:any) => {
                 let termField = Text.format('Term{0}', this.context.pageContext.web.language);
                 let terms: any[] = data.value;
                 let termSuggestions: ITag[] = terms.map((term:any) => { return { key: term.Id, name: term[termField] }; });
@@ -498,55 +503,55 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Resets the stored 'list title' options 
-     ***************************************************************************/
+     **************************************************************************************************/
     public clearCachedWebUrlOptions() {
         Log.verbose(this.logSource, "Clearing cached dropdown options for toolpart property 'Web Url'...", this.context.serviceScope);
         this.webUrlOptions = null;
     }
     
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Resets the stored 'list title' options 
-     ***************************************************************************/
+     **************************************************************************************************/
     public clearCachedListTitleOptions() {
         Log.verbose(this.logSource, "Clearing cached dropdown options for toolpart property 'List Title'...", this.context.serviceScope);
         this.listTitleOptions = null;
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Resets the stored 'order by' options
-     ***************************************************************************/
+     **************************************************************************************************/
     public clearCachedOrderByOptions() {
         Log.verbose(this.logSource, "Clearing cached dropdown options for toolpart property 'Order By'...", this.context.serviceScope);
         this.orderByOptions = null;
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Resets the stored filter fields
-     ***************************************************************************/
+     **************************************************************************************************/
     public clearCachedFilterFields() {
         Log.verbose(this.logSource, "Clearing cached dropdown options for toolpart property 'Filter'...", this.context.serviceScope);
         this.filterFields = null;
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Resets the stored view fields
-     ***************************************************************************/
+     **************************************************************************************************/
     public clearCachedViewFields() {
         Log.verbose(this.logSource, "Clearing cached checklist items for toolpart property 'View Fields'...", this.context.serviceScope);
         this.viewFields = null;
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Normalizes the results coming from a CAML query into a userfriendly format for handlebars
      * @param results : The results returned by a CAML query executed against a list
-     ***************************************************************************/
+     **************************************************************************************************/
     private normalizeQueryResults(results: any[], viewFields: string[]): any[] {
         Log.verbose(this.logSource, "Normalizing results for the requested handlebars context...", this.context.serviceScope);
 
@@ -570,10 +575,10 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Returns an error message based on the specified error object
      * @param error : An error string/object
-     ***************************************************************************/
+     **************************************************************************************************/
     private getErrorMessage(webUrl: string, error: any): string {
         let errorMessage:string = error.statusText ? error.statusText : error;
         let serverUrl = Text.format("{0}//{1}", window.location.protocol, window.location.hostname);
@@ -589,10 +594,10 @@ export class ContentQueryService implements IContentQueryService {
     }
 
     
-    /***************************************************************************
+    /**************************************************************************************************
      * Returns a field type enum value based on the provided string type
      * @param fieldTypeStr : The field type as a string
-     ***************************************************************************/
+     **************************************************************************************************/
     private getFieldTypeFromString(fieldTypeStr: string): QueryFilterFieldType {
         let fieldType:QueryFilterFieldType;
 
@@ -628,11 +633,11 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Returns the specified users with possible duplicates removed
      * @param users : The user suggestions from which duplicates must be removed
      * @param currentUsers : The current user suggestions that could be duplicates
-     ***************************************************************************/
+     **************************************************************************************************/
     private removeUserSuggestionsDuplicates(users: IPersonaProps[], currentUsers: IPersonaProps[]): IPersonaProps[] {
         Log.verbose(this.logSource, "Removing user suggestions duplicates for toolpart property 'Filters'...", this.context.serviceScope);
         let trimmedUsers: IPersonaProps[] = [];
@@ -648,11 +653,11 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Returns the specified users with possible duplicates removed
      * @param users : The user suggestions from which duplicates must be removed
      * @param currentUsers : The current user suggestions that could be duplicates
-     ***************************************************************************/
+     **************************************************************************************************/
     private removeTermSuggestionsDuplicates(terms: ITag[], currentTerms: ITag[]): ITag[] {
         Log.verbose(this.logSource, "Removing term suggestions duplicates for toolpart property 'Filters'...", this.context.serviceScope);
         let trimmedTerms: ITag[] = [];
@@ -668,11 +673,11 @@ export class ContentQueryService implements IContentQueryService {
     }
 
 
-    /***************************************************************************
+    /**************************************************************************************************
      * Makes sure the specified url is in the given collection, otherwise adds it
      * @param urls : An array of urls
      * @param urlToEnsure : The url that needs to be ensured
-     ***************************************************************************/
+     **************************************************************************************************/
     private ensureUrl(urls: string[], urlToEnsure: string) {
         urlToEnsure = urlToEnsure.toLowerCase().trim();
         let urlExist = urls.filter((u) => { return u.toLowerCase().trim() === urlToEnsure; }).length > 0;
