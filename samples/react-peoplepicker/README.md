@@ -3,7 +3,7 @@
 ## Summary
 SharePoint Framework solution with the Office UI Fabric People Picker, the client web part across the SharePoint Rest API is able to retrieve people and groups.
 
-![React-People-Picker-gif](/assets/Preview.gif)
+![React-People-Picker-gif](./assets/Preview.gif)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
