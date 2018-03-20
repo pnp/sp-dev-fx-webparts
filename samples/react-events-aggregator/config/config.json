@@ -1,19 +1,27 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/broadcaster/BroadcasterWebPart.js",
-      "manifest": "./src/webparts/broadcaster/BroadcasterWebPart.manifest.json",
-      "outputPath": "./dist/broadcaster.bundle.js"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "broadcaster": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/broadcaster/BroadcasterWebPart.js",
+          "manifest": "./src/webparts/broadcaster/BroadcasterWebPart.manifest.json"
+        }
+      ]
     },
-    {
-      "entry": "./lib/webparts/receiver/ReceiverWebPart.js",
-      "manifest": "./src/webparts/receiver/ReceiverWebPart.manifest.json",
-      "outputPath": "./dist/receiver.bundle.js"
+    "receiver": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/receiver/ReceiverWebPart.js",
+          "manifest": "./src/webparts/receiver/ReceiverWebPart.manifest.json"
+        }
+      ]
     }
-  ],
+  },
   "externals": {},
   "localizedResources": {
-    "broadcasterStrings": "webparts/broadcaster/loc/{locale}.js",
-    "receiverStrings": "webparts/receiver/loc/{locale}.js"
+    "broadcasterStrings": "lib/webparts/broadcaster/loc/{locale}.js",
+    "receiverStrings": "lib/webparts/receiver/loc/{locale}.js"
   }
 }
