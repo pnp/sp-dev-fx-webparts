@@ -129,7 +129,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     private async executeScript(element: HTMLElement) {
         // Define global name to tack scripts on in case script to be loaded is not AMD/UMD
 
-        if(this.properties.spPageContextInfo && !window["_spPageContextInfo"]){
+        if (this.properties.spPageContextInfo && !window["_spPageContextInfo"]) {
             window["_spPageContextInfo"] = this.context.pageContext.legacyPageContext;
         }
 
@@ -139,7 +139,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         const scripts = [];
         const children_nodes = element.childNodes;
 
-        for (var i = 0; children_nodes[i]; i++) {
+        for (let i = 0; children_nodes[i]; i++) {
             const child: any = children_nodes[i];
             if (this.nodeName(child, "script") &&
                 (!child.type || child.type.toLowerCase() === "text/javascript")) {
@@ -149,44 +149,41 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
 
         const urls = [];
         const onLoads = [];
-        const moduleMap = [];
-        for (var j = 0; scripts[j]; j++) {
-            const scriptTag = scripts[j];
+        for (let i = 0; scripts[i]; i++) {
+            const scriptTag = scripts[i];
             if (scriptTag.src && scriptTag.src.length > 0) {
                 urls.push(scriptTag.src);
-                if (scriptTag.attributes["module"] && scriptTag.attributes["module"].value.length > 0) {
-                    moduleMap[scriptTag.src] = scriptTag.attributes["module"].value;
-                }
             }
             if (scriptTag.onload && scriptTag.onload.length > 0) {
                 onLoads.push(scriptTag.onload);
             }
         }
 
-        // Execute promises in sequentially - https://hackernoon.com/functional-javascript-resolving-promises-sequentially-7aac18c4431e
-        // Use "ScriptGlobal" as the global namein case script is AMD/UMD
+        let oldamd = null;
+        if (window["define"] && window["define"].amd) {
+            oldamd = window["define"].amd;
+            window["define"].amd = null;
+        }
 
         for (let i = 0; i < urls.length; i++) {
             try {
-                let m: any = await SPComponentLoader.loadScript(urls[i], { globalExportsName: "ScriptGlobal" });
-                let moduleName = moduleMap[urls[i]];
-                if (moduleName) {
-                    //If it's a AMD/UMD module, then assign to that global variable
-                    window[moduleName] = m;
-                }
+                await SPComponentLoader.loadScript(urls[i], { globalExportsName: "ScriptGlobal" });
             } catch (error) {
                 console.error(error);
             }
         }
+        if (oldamd) {
+            window["define"].amd = oldamd;
+        }
 
-        for (j = 0; scripts[j]; j++) {
-            const scriptTag = scripts[j];
+        for (let i = 0; scripts[i]; i++) {
+            const scriptTag = scripts[i];
             if (scriptTag.parentNode) { scriptTag.parentNode.removeChild(scriptTag); }
-            this.evalScript(scripts[j]);
+            this.evalScript(scripts[i]);
         }
         // execute any onload people have added
-        for (j = 0; onLoads[j]; j++) {
-            onLoads[j]();
+        for (let i = 0; onLoads[i]; i++) {
+            onLoads[i]();
         }
     }
 }
