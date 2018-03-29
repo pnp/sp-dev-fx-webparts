@@ -99,7 +99,7 @@ export class SearchService {
 	 **************************************************************************************************/
 	public getSitesStartingWith(startingUrl: string): Promise<string[]> {
 		return new Promise<string[]>((resolve,reject) => {
-			let queryProperties = Text.format("querytext='Path:{0}/* AND contentclass:STS_Site'&selectproperties='Path'&trimduplicates=false&rowLimit=500", startingUrl);
+			let queryProperties = Text.format("querytext='Path:{0}/* AND contentclass:STS_Site'&selectproperties='Path'&trimduplicates=false&rowLimit=500&Properties='EnableDynamicGroups:true'", startingUrl);
 
 			this.getSearchResultsRecursive(startingUrl, queryProperties)
 				.then((results: any) => {
@@ -119,10 +119,9 @@ export class SearchService {
 	 **************************************************************************************************/
 	public getWebsFromSite(siteUrl: string): Promise<string[]> {
 		return new Promise<string[]>((resolve,reject) => {
-			let serverUrl = Text.format("{0}//{1}", window.location.protocol, window.location.hostname); 
-			let queryProperties = Text.format("querytext='SiteName:{0} AND (contentclass:STS_Site OR contentclass:STS_Web)'&selectproperties='Path'&trimduplicates=false&rowLimit=500", siteUrl);
+			let queryProperties = Text.format("querytext='SiteName:{0} AND (contentclass:STS_Site OR contentclass:STS_Web)'&selectproperties='Path'&trimduplicates=false&rowLimit=500&Properties='EnableDynamicGroups:true'", siteUrl);
 
-			this.getSearchResultsRecursive(serverUrl, queryProperties)
+			this.getSearchResultsRecursive(siteUrl, queryProperties)
 				.then((results: any) => {
 					resolve(this.getPathsFromResults(results));
 				})
