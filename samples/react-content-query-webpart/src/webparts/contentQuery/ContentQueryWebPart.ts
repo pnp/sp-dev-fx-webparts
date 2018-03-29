@@ -67,8 +67,8 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.ContentQueryService = new ContentQueryService(this.context, this.context.spHttpClient);
+      this.properties.webUrl = this.properties.siteUrl || this.properties.webUrl ? this.properties.webUrl : this.context.pageContext.web.absoluteUrl.toLocaleLowerCase().trim();
       this.properties.siteUrl = this.properties.siteUrl ? this.properties.siteUrl : this.context.pageContext.site.absoluteUrl.toLowerCase().trim();
-      this.properties.webUrl = this.properties.webUrl ? this.properties.webUrl : this.context.pageContext.web.absoluteUrl.toLocaleLowerCase().trim();
       resolve();
     });
   }
