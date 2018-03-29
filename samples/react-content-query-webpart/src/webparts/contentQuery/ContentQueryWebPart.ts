@@ -45,6 +45,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private orderByDirectionChoiceGroup: IPropertyPaneField<IPropertyPaneChoiceGroupProps>;
   private limitEnabledToggle: IPropertyPaneField<IPropertyPaneToggleProps>;
   private itemLimitTextField: IPropertyPaneField<IPropertyPaneTextFieldProps>;
+  private recursiveEnabledToggle: IPropertyPaneField<IPropertyPaneToggleProps>;
   private filtersPanel: PropertyPaneQueryFilterPanel;
   private viewFieldsChecklist: PropertyPaneAsyncChecklist;
   private templateTextDialog: PropertyPaneTextDialog;
@@ -56,7 +57,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Returns the WebPart's version
    ***************************************************************************/
   protected get dataVersion(): Version {
-    return Version.parse('1.0.8');
+    return Version.parse('1.0.9');
   }
 
 
@@ -82,6 +83,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       listId: this.properties.listId,
       limitEnabled: this.properties.limitEnabled,
       itemLimit: this.properties.itemLimit,
+      recursiveEnabled: this.properties.recursiveEnabled,
       orderBy: this.properties.orderBy,
       orderByDirection: this.properties.orderByDirection,
       filters: this.properties.filters,
@@ -220,6 +222,15 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       onGetErrorMessage: this.onItemLimitChange.bind(this)
     });
 
+    // Creates a PropertyPaneToggle for the limitEnabled property
+    this.recursiveEnabledToggle = PropertyPaneToggle(ContentQueryConstants.propertyRecursiveEnabled, {
+      label: strings.RecursiveEnabledFieldLabel,
+      offText: 'Disabled',
+      onText: 'Enabled',
+      checked: this.properties.recursiveEnabled,
+      disabled: thirdCascadingLevelDisabled
+    });
+
     // Creates a PropertyPaneTextField for the externalScripts property
     this.externalScripts = PropertyPaneTextField(ContentQueryConstants.propertyExternalScripts, {
       label: strings.ExternalScriptsLabel,
@@ -255,6 +266,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
                 this.orderByDirectionChoiceGroup,
                 this.limitEnabledToggle,
                 this.itemLimitTextField,
+                this.recursiveEnabledToggle,
                 this.filtersPanel
               ]
             }
