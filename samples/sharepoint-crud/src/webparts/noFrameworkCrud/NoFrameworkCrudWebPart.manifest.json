@@ -16,7 +16,7 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Under Development" },
-    "title": { "default": "No Framework CRUD" },
+    "title": { "default": "No framework CRUD" },
     "description": { "default": "Sample implementation of SharePoint CRUD operations without using any frameworks" },
     "officeFabricIconFontName": "Page",
     "properties": {

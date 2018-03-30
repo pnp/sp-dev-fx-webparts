@@ -4,7 +4,6 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { IListItem } from './IListItem';
 
