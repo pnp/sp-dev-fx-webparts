@@ -373,6 +373,6 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
   }
 
   private updateItemsHtml(items: IListItem[]): void {
-    this.domElement.querySelector('.items').innerHTML = items.map(item => `<li>${item.Title} (${item.Id})</li>` ).join("");
+    this.domElement.querySelector('.items').innerHTML = items.map(item => `<li>${item.Title} (${item.Id})</li>`).join("");
   }
 }

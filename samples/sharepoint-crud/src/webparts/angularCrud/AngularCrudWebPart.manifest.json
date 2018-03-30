@@ -3,24 +3,29 @@
   "id": "cceebf19-128e-4ffd-bb97-9989bf7c04d4",
   "alias": "AngularCrudWebPart",
   "componentType": "WebPart",
-
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
-
   // If true, the component can only be installed on sites where Custom Script is allowed.
   // Components that allow authors to embed arbitrary script code should set this to true.
   // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
-
-  "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
-    "group": { "default": "Under Development" },
-    "title": { "default": "Angular CRUD" },
-    "description": { "default": "Sample implementation of SharePoint CRUD operations in Angular" },
-    "officeFabricIconFontName": "Page",
-    "properties": {
-      "listName": ""
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+      "group": {
+        "default": "Under Development"
+      },
+      "title": {
+        "default": "Angular CRUD"
+      },
+      "description": {
+        "default": "Sample implementation of SharePoint CRUD operations in Angular"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "listName": ""
+      }
     }
-  }]
+  ]
 }
