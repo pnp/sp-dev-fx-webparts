@@ -49,7 +49,7 @@ export default class ReactCrud extends React.Component<IReactCrudProps, IReactCr
               <a href="#" className={`${styles.button} ${disabled}`} onClick={() => this.createItem()}>
                 <span className={styles.label}>Create item</span>
               </a>&nbsp;
-              <a href="#" className={`${styles.button} ${disabled}`} onClick={() => this.createItem()}>
+              <a href="#" className={`${styles.button} ${disabled}`} onClick={() => this.readItem()}>
                 <span className={styles.label}>Read item</span>
               </a>
             </div>

@@ -18,7 +18,7 @@ Sample Web Parts illustrating performing SharePoint CRUD operations in React, An
 
 Solution|Author(s)
 --------|---------
-sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm)
+sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm), Gautam Sheth (SharePoint Consultant, RapidCircle)
 
 ## Version history
 
