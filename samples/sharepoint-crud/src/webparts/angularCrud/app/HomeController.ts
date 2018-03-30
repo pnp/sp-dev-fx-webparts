@@ -78,10 +78,8 @@ export default class HomeController {
     this.items.length = 0;
     this.dataService.readItems(this.webUrl, this.listName)
       .then((items: IListItem[]): void => {
-        this.status = `Successfully loaded ${items.length} items`;
-        for (let i: number = 0; i < items.length; i++) {
-          this.items.push(items[i]);
-        }
+        this.status = `Successfully loaded ${items.length} items`;        
+        this.items = items;
       }, (error: any): void => {
         this.status = 'Loading all items failed with error: ' + error;
       });

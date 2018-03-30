@@ -5,20 +5,26 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
-import styles from './SpPnPJsCrud.module.scss';
-import * as strings from 'spPnPJsCrudStrings';
-import { ISpPnPJsCrudWebPartProps } from './ISpPnPJsCrudWebPartProps';
-import { IListItem } from './IListItem';
+import styles from './SpPnPJsCrudWebPart.module.scss';
+import * as strings from 'SpPnPJsCrudWebPartStrings';
 
+import { IListItem } from './IListItem';
 import * as pnp from 'sp-pnp-js';
 import { Item, ItemAddResult, ItemUpdateResult } from '../../../node_modules/sp-pnp-js/lib/sharepoint/items';
 
+export interface ISpPnPJsCrudWebPartProps {
+  listName: string;
+}
+
 export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCrudWebPartProps> {
+
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve: () => void, reject: (error?: any) => void): void => {
       pnp.setup({
-        headers: {
-          'Accept': 'application/json;odata=nometadata'
+        sp: {
+          headers: {
+            "Accept": "application/json; odata=nometadata"
+          }
         }
       });
       resolve();
@@ -275,11 +281,6 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
   }
 
   private updateItemsHtml(items: IListItem[]): void {
-    const itemsHtml: string[] = [];
-    for (let i: number = 0; i < items.length; i++) {
-      itemsHtml.push(`<li>${items[i].Title} (${items[i].Id})</li>`);
-    }
-
-    this.domElement.querySelector('.items').innerHTML = itemsHtml.join('');
+    this.domElement.querySelector('.items').innerHTML = items.map(item => `<li>${item.Title} (${item.Id})</li>` ).join("");
   }
 }

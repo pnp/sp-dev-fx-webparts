@@ -1,4 +1,6 @@
-.angularCrud {
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.spPnPJsCrud {
   .container {
     max-width: 700px;
     margin: 0px auto;
@@ -15,7 +17,7 @@
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
 
-  :global .ms-Button {
+  .button {
     // Our button
     text-decoration: none;
     height: 32px;
@@ -38,7 +40,7 @@
     display: inline-block;
     padding: 0 16px;
 
-    :global .ms-Button-label {
+    .label {
       font-weight: 600;
       font-size: 14px;
       height: 32px;
@@ -55,7 +57,7 @@
       cursor: default;
       pointer-events: none;
 
-      :global .ms-Button-label {
+      .label {
         color: #a6a6a6;
       }
     }

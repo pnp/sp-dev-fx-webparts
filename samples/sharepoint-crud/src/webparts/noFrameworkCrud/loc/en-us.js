@@ -1,7 +1,7 @@
 define([], function() {
   return {
     "PropertyPaneDescription": "Configure settings",
-    "DataGroupName": "Data",
+    "DataGroupName": "Group Name",
     "ListNameFieldLabel": "List name"
   }
 });

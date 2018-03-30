@@ -1,10 +1,10 @@
-declare interface IAngularCrudStrings {
+declare interface IAngularCrudWebPartStrings {
   PropertyPaneDescription: string;
   DataGroupName: string;
   ListNameFieldLabel: string;
 }
 
-declare module 'angularCrudStrings' {
-  const strings: IAngularCrudStrings;
+declare module 'AngularCrudWebPartStrings' {
+  const strings: IAngularCrudWebPartStrings;
   export = strings;
 }

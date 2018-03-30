@@ -4,12 +4,16 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
+import { escape } from '@microsoft/sp-lodash-subset';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
-
-import styles from './NoFrameworkCrud.module.scss';
-import * as strings from 'noFrameworkCrudStrings';
-import { INoFrameworkCrudWebPartProps } from './INoFrameworkCrudWebPartProps';
 import { IListItem } from './IListItem';
+
+import styles from './NoFrameworkCrudWebPart.module.scss';
+import * as strings from 'NoFrameworkCrudWebPartStrings';
+
+export interface INoFrameworkCrudWebPartProps {
+  listName: string;
+}
 
 export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFrameworkCrudWebPartProps> {
   private listItemEntityTypeName: string = undefined;
@@ -370,11 +374,6 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
   }
 
   private updateItemsHtml(items: IListItem[]): void {
-    const itemsHtml: string[] = [];
-    for (let i: number = 0; i < items.length; i++) {
-      itemsHtml.push(`<li>${items[i].Title} (${items[i].Id})</li>`);
-    }
-
-    this.domElement.querySelector('.items').innerHTML = itemsHtml.join('');
+    this.domElement.querySelector('.items').innerHTML = items.map(item => `<li>${item.Title} (${item.Id})</li>` ).join("");
   }
 }

@@ -24,7 +24,7 @@ export default class DataService implements IDataService {
 
     let listItemEntityTypeName: string = undefined;
     this.getListItemEntityTypeName(webUrl, listName)
-      .then((typeName: string): angular.IPromise<angular.IHttpPromiseCallbackArg<string>> => {
+      .then((typeName: string): angular.IPromise<string> => {
         listItemEntityTypeName = typeName;
         return this.getRequestDigest(webUrl);
       })
@@ -122,7 +122,7 @@ export default class DataService implements IDataService {
 
     let listItemEntityTypeName: string = undefined;
     this.getListItemEntityTypeName(webUrl, listName)
-      .then((typeName: string): angular.IPromise<angular.IHttpPromiseCallbackArg<string>> => {
+      .then((typeName: string): angular.IPromise<string> => {
         listItemEntityTypeName = typeName;
         return this.getRequestDigest(webUrl);
       })
