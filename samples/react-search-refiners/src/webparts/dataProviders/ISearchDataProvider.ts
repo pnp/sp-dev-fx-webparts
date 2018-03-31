@@ -29,10 +29,9 @@ interface ISearchDataProvider {
 
     /**
      * Perfoms a search query.
-     * @returns ISearchResults object. Use the "RelevantResults" property to acces results proeprties (returned as key/value pair object => item.[<Managed property name>])
+     * @returns ISearchResults object. Use the "RelevantResults" property to access results properties (returned as key/value pair object => item.[<Managed property name>])
      */
     search(kqlQuery: string, refiners?: string, refinementFilters?: IRefinementFilter[], pageNumber?: number): Promise<ISearchResults>;
-    
 }
 
  export default ISearchDataProvider;

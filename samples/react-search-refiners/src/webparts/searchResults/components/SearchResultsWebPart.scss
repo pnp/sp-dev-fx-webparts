@@ -56,12 +56,11 @@
     }
 
     &__filterResultBtn {
-        margin: 10px;
+        color: "[theme: themePrimary]";
     }
 
     &__selectedFilters {
 
-        margin-left: 10px;
         padding: 10px;
 
         label.filter {        
@@ -126,6 +125,10 @@
                 }
             }
         }
+    }
+
+    &__count {
+        padding: 10px;
     }
 }
 

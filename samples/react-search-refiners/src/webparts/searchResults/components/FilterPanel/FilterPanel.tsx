@@ -18,6 +18,7 @@ import {
     IGroupDividerProps
 } from 'office-ui-fabric-react/lib/components/GroupedList/index';
 import { Scrollbars } from 'react-custom-scrollbars';
+import { ActionButton } from "office-ui-fabric-react";
 
 export default class FilterPanel extends React.Component<IFilterPanelProps, IFilterPanelState> {
 
@@ -53,7 +54,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
             groups.push({
                 key: i.toString(),
-                name: filter.FilterName,
+                name: this.props.refinersConfiguration[filter.FilterName],
                 count: 1,
                 startIndex: i,
                 isDropEnabled: true,
@@ -114,7 +115,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
         return (
             <div>
-                <DefaultButton
+                <ActionButton
                     className="searchWp__filterResultBtn"
                     iconProps={{ iconName: 'Filter' }}
                     text={strings.FilterResultsButtonLabel}
@@ -138,7 +139,6 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                     closeButtonAriaLabel='Close'
                     hasCloseButton={true}
                     headerClassName="filterPanel__header"
-
                     onRenderBody={() => {
                         if (this.props.availableFilters.length > 0) {
                             return (

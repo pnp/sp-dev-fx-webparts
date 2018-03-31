@@ -7,10 +7,11 @@ interface ISearchResultsContainerProps {
   resultSourceId: string;
   enableQueryRules: boolean;
   selectedProperties: string[];
-  refiners: string;
+  refiners: { [key: string]: string };
   showPaging: boolean;
   showFileIcon: boolean;
   showCreatedDate: boolean;
+  showResultsCount: boolean;
 }
 
 export default ISearchResultsContainerProps;

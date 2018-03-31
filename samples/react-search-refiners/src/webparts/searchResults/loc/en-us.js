@@ -16,6 +16,7 @@ define([], function() {
     "ShowPagingLabel": "Show paging",
     "ShowFileIconLabel": "Show file icons",
     "ShowCreatedDateLabel": "Show created date",
+    "ShowResultsCountLabel": "Show results count",
     "NoFilterConfiguredLabel": "No filter configured", 
     "SearchQueryPlaceHolderText": "Search query in KQL format",
     "EmptyFieldErrorMessage": "This field cannot be empty",
@@ -28,9 +29,9 @@ define([], function() {
     "UseSearchBoxQueryLabel": "Use search box query",
     "EnableQueryRulesLabel": "Enable query rules",
     "StylingSettingsGroupName": "Styling options",
-    "RefinersFieldDescription": "Specifies managed properties used as refiners (ordered comma-separated list).",
+    "RefinersFieldDescription": "Specifies managed properties used as refiners (ordered comma-separated list). You can specify the label by using the following format <Managed Property Name>:\"My friendly name\"",
     "SelectedPropertiesFieldDescription": "Speficies the properties to retrieve from the search results.",
-    "SearchQueryKeywordsFieldDescription": "Use pre-defined search query keywords to retrieve a static set of results."
-
+    "SearchQueryKeywordsFieldDescription": "Use pre-defined search query keywords to retrieve a static set of results.",
+    "CountMessage": "<b>{0}</b> results for '<em>{1}</em>'"
   }
 });
