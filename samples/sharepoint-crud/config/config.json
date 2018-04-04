@@ -1,37 +1,51 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/reactCrud/ReactCrudWebPart.js",
-      "manifest": "./src/webparts/reactCrud/ReactCrudWebPart.manifest.json",
-      "outputPath": "./dist/react-crud.bundle.js"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "no-framework-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/noFrameworkCrud/NoFrameworkCrudWebPart.js",
+          "manifest": "./src/webparts/noFrameworkCrud/NoFrameworkCrudWebPart.manifest.json"
+        }
+      ]
     },
-    {
-      "entry": "./lib/webparts/noFrameworkCrud/NoFrameworkCrudWebPart.js",
-      "manifest": "./src/webparts/noFrameworkCrud/NoFrameworkCrudWebPart.manifest.json",
-      "outputPath": "./dist/no-framework-crud.bundle.js"
+    "sp-pn-p-js-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spPnPJsCrud/SpPnPJsCrudWebPart.js",
+          "manifest": "./src/webparts/spPnPJsCrud/SpPnPJsCrudWebPart.manifest.json"
+        }
+      ]
     },
-    {
-      "entry": "./lib/webparts/angularCrud/AngularCrudWebPart.js",
-      "manifest": "./src/webparts/angularCrud/AngularCrudWebPart.manifest.json",
-      "outputPath": "./dist/angular-crud.bundle.js"
+    "react-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactCrud/ReactCrudWebPart.js",
+          "manifest": "./src/webparts/reactCrud/ReactCrudWebPart.manifest.json"
+        }
+      ]
     },
-    {
-      "entry": "./lib/webparts/spPnPJsCrud/SpPnPJsCrudWebPart.js",
-      "manifest": "./src/webparts/spPnPJsCrud/SpPnPJsCrudWebPart.manifest.json",
-      "outputPath": "./dist/sp-pn-p-js-crud.bundle.js"
+    "angular-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/angularCrud/AngularCrudWebPart.js",
+          "manifest": "./src/webparts/angularCrud/AngularCrudWebPart.manifest.json"
+        }
+      ]
     }
-  ],
+  },
   "externals": {
     "angular": {
-      "path": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js",
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js",
       "globalName": "angular"
     },
-    "ng-office-ui-fabric": "https://cdnjs.cloudflare.com/ajax/libs/ngOfficeUiFabric/0.12.3/ngOfficeUiFabric.js"
+    "ng-office-ui-fabric": "https://cdnjs.cloudflare.com/ajax/libs/ngOfficeUiFabric/0.16.0/ngOfficeUiFabric.min.js"
   },
   "localizedResources": {
-    "reactCrudStrings": "webparts/reactCrud/loc/{locale}.js",
-    "noFrameworkCrudStrings": "webparts/noFrameworkCrud/loc/{locale}.js",
-    "angularCrudStrings": "webparts/angularCrud/loc/{locale}.js",
-    "spPnPJsCrudStrings": "webparts/spPnPJsCrud/loc/{locale}.js"
+    "NoFrameworkCrudWebPartStrings": "lib/webparts/noFrameworkCrud/loc/{locale}.js",
+    "SpPnPJsCrudWebPartStrings": "lib/webparts/spPnPJsCrud/loc/{locale}.js",
+    "ReactCrudWebPartStrings": "lib/webparts/reactCrud/loc/{locale}.js",
+    "AngularCrudWebPartStrings": "lib/webparts/angularCrud/loc/{locale}.js"
   }
 }

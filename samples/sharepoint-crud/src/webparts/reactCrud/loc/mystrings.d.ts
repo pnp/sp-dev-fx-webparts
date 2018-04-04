@@ -1,10 +1,10 @@
-declare interface IReactCrudStrings {
+declare interface IReactCrudWebPartStrings {
   PropertyPaneDescription: string;
   DataGroupName: string;
   ListNameFieldLabel: string;
 }
 
-declare module 'reactCrudStrings' {
-  const strings: IReactCrudStrings;
+declare module 'ReactCrudWebPartStrings' {
+  const strings: IReactCrudWebPartStrings;
   export = strings;
 }
