@@ -18,7 +18,9 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
 
   public render(): void {
     const element: React.ReactElement<ISearchBoxProps > = React.createElement(
-      SearchBox, { });
+      SearchBox, { 
+        eventAggregator: this.context.eventAggregator,
+      });
 
     ReactDom.render(element, this.domElement);
   }

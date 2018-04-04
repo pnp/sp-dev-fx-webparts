@@ -18,6 +18,7 @@ declare interface ISearchWebPartStrings {
   ShowPagingLabel: string;
   ShowFileIconLabel: string;
   ShowCreatedDateLabel: string;
+  ShowResultsCountLabel: string;
   NoFilterConfiguredLabel: string;
   SearchQueryPlaceHolderText: string;
   EmptyFieldErrorMessage: string;
@@ -30,6 +31,7 @@ declare interface ISearchWebPartStrings {
   UseSearchBoxQueryLabel: string;
   EnableQueryRulesLabel: string;
   StylingSettingsGroupName: string;
+  CountMessage: string;
 }
 
 declare module 'SearchWebPartStrings' {

@@ -5,7 +5,7 @@ import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
 import { Text } from "@microsoft/sp-core-library";
 import * as strings from 'SearchBoxWebPartStrings';
 
-export default class SearchBoxContainer extends React.Component<ISearchBoxProps, {}> {
+export default class SearchBoxContainer extends React.Component<ISearchBoxProps, null> {
 
   public constructor() {
     super();
@@ -14,10 +14,12 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
   }
 
   public render(): React.ReactElement<ISearchBoxProps> {
-    return (
+
+      return (
         <SearchBox
             onSearch={ this.onSearch }
             placeholder={ strings.SearchInputPlaceholder }
+            onClear={ () => { this.onSearch("*") }}
         />
     );
   }
@@ -27,10 +29,11 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
    * @param queryText The query text entered by the user
    */
   public onSearch(queryText: string) {    
-    const url = new URLSearchParams();
-    url.append("k", queryText);
 
-    // The data parameter wil be caught by the search results WP
-    history.pushState({ k: queryText}, '', Text.format("#{0}", url.toString()));
+    this.props.eventAggregator.raiseEvent("search:newQueryKeywords", {
+        data: queryText,
+        sourceId: "SearchBoxQuery",
+        targetId: "SearchResults"
+    });
   }
 }

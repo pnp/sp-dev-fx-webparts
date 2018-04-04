@@ -3,6 +3,7 @@ import RefinementFilterOperationCallback from "../../../models/RefinementValueOp
 
 interface IFilterPanelProps {
     availableFilters: IRefinementResult[];
+    refinersConfiguration: { [key: string]: string };
     onUpdateFilters: RefinementFilterOperationCallback;
 }
   

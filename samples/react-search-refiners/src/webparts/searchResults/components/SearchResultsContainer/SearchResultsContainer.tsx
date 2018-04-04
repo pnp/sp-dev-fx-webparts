@@ -3,7 +3,7 @@ import ISearchContainerProps from "./ISearchResultsContainerProps";
 import ISearchContainerState from "./ISearchResultsContainerState";
 import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
-import { Logger, LogLevel } from "sp-pnp-js";
+import { Logger, LogLevel } from "@pnp/logging";
 import * as strings from "SearchWebPartStrings";
 import { ISearchResults, IRefinementFilter } from "../../../models/ISearchResult";
 import TilesList from "../TilesList/TilesList";
@@ -11,7 +11,8 @@ import "../SearchResultsWebPart.scss";
 import FilterPanel from "../FilterPanel/FilterPanel";
 import Paging from "../Paging/Paging";
 import { Overlay } from "office-ui-fabric-react/lib/Overlay";
-import { UrlQueryParameterCollection } from "@microsoft/sp-core-library";
+import { Label } from "office-ui-fabric-react";
+import { Text } from '@microsoft/sp-core-library';
 
 export default class SearchResultsContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 
@@ -45,9 +46,11 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         const errorMessage = this.state.errorMessage;
         const isComponentLoading = this.state.isComponentLoading;
 
-        let wpContent: JSX.Element = null;
-        let renderOverlay = null;
+        let renderWpContent: JSX.Element = null;
+        let renderOverlay: JSX.Element = null;
+        let renderCount: JSX.Element = null;
 
+        
         if (!isComponentLoading && areResultsLoading) {
             renderOverlay = <div>
                 <Overlay isDarkThemed={false} className="overlay">
@@ -55,26 +58,32 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             </div>;
         }
 
+        if (this.props.showResultsCount && !this.state.areResultsLoading ) {
+            renderCount = <label dangerouslySetInnerHTML={ {__html: Text.format(strings.CountMessage, this.state.results.TotalRows, this.props.queryKeywords) }}></label>;
+        }
+
         if (isComponentLoading) {
-            wpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
+            renderWpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
         } else {
 
             if (hasError) {
-                wpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
+                renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
             } else {
 
                 if (items.RelevantResults.length === 0) {
-                    wpContent =
+                    renderWpContent =
                         <div>
-                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} />
-                            <div className="searchWp__noresult">{strings.NoResultMessage}</div>
+                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners } /> 
+                            <div className="searchWp__count">{ renderCount }</div>
+                            <div className="searchWp__noresult">{strings.NoResultMessage}</div>                            
                         </div>;
                 } else {
-                    wpContent =
+                    renderWpContent =
 
                         <div>
-                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} />
-                            {renderOverlay}
+                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners }/>
+                            <div className="searchWp__count">{ renderCount }</div>
+                            { renderOverlay }                            
                             <TilesList items={items.RelevantResults} showFileIcon={this.props.showFileIcon} showCreatedDate={this.props.showCreatedDate} />
                             {this.props.showPaging ?
                                 <Paging
@@ -91,7 +100,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         return (
             <div className="searchWp">
-                {wpContent}
+                {renderWpContent}
             </div>
         );
     }
@@ -106,7 +115,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
             this.props.searchDataProvider.selectedProperties = this.props.selectedProperties;
 
-            const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, this.props.refiners, this.state.selectedFilters, this.state.currentPage);
+            const refinerManagedProperties = Object.keys(this.props.refiners).join(",");
+
+            const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, this.state.currentPage);
 
             // Initial filters are just set once for the filter control during the component initialization
             // By this way, we are be able to select multiple values whithin a specific filter (OR condition). Otherwise, if we pass every time the new filters retrieved from new results,
@@ -136,8 +147,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
     public async componentWillReceiveProps(nextProps: ISearchContainerProps) {
 
         let query = nextProps.queryKeywords + nextProps.searchDataProvider.queryTemplate + nextProps.selectedProperties.join(',');
+        
         // New props are passed to the component when the search query has been changed
-        if (this.props.refiners.toString() !== nextProps.refiners.toString()
+        if (JSON.stringify(this.props.refiners) !== JSON.stringify(nextProps.refiners)
             || this.props.maxResultsCount !== nextProps.maxResultsCount
             || this.state.lastQuery !== query
             || this.props.showFileIcon !== nextProps.showFileIcon
@@ -154,8 +166,11 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 });
 
                 this.props.searchDataProvider.selectedProperties = nextProps.selectedProperties;
+
+                const refinerManagedProperties = Object.keys(nextProps.refiners).join(",");
+
                 // We reset the page number and refinement filters
-                const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, nextProps.refiners, [], 1);
+                const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
 
                 this.setState({
                     results: searchResults,
@@ -192,7 +207,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             areResultsLoading: true,
         });
 
-        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, this.props.refiners, newFilters, 1);
+        const refinerManagedProperties = Object.keys(this.props.refiners).join(",");
+
+        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, newFilters, 1);
 
         this.setState({
             results: searchResults,
@@ -211,7 +228,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             areResultsLoading: true,
         });
 
-        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, this.props.refiners, this.state.selectedFilters, pageNumber);
+        const refinerManagedProperties = Object.keys(this.props.refiners).join(",");
+
+        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, pageNumber);
 
         this.setState({
             results: searchResults,

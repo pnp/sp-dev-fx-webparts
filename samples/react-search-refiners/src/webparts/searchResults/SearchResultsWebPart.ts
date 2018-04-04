@@ -6,7 +6,8 @@ import {
     PropertyPaneSlider,
     IPropertyPaneConfiguration,
     PropertyPaneTextField,
-    PropertyPaneToggle
+    PropertyPaneToggle,
+    IEvent
 } from '@microsoft/sp-webpart-base';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import * as strings from 'SearchWebPartStrings';
@@ -20,11 +21,19 @@ import * as moment from "moment";
 import { Placeholder, IPlaceholderProps } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { PropertyPaneCheckbox } from '@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneCheckBox/PropertyPaneCheckbox';
 import { PropertyPaneHorizontalRule } from '@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneHorizontalRule/PropertyPaneHorizontalRule';
+import { UrlUtilities, DisplayMode } from "@microsoft/sp-core-library";
 
 export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
 
     private _dataProvider: ISearchDataProvider;
     private _useResultSource: boolean;
+
+    public constructor() {
+        super();
+
+        this._parseRefiners = this._parseRefiners.bind(this);
+        this.bindSearchQuery = this.bindSearchQuery.bind(this);
+    }
 
     /**
      * Override the base onInit() implementation to get the persisted properties to initialize data provider.
@@ -41,10 +50,10 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
             this._dataProvider = new SearchDataProvider(this.context);
         }
 
-        // Register an handler to catch search box queries
-        this.bindPushStateEvent();
-
         this._useResultSource = false;
+
+        // Use the SPFx event aggregator to get the search box query
+        this.context.eventAggregator.subscribeByEventName("search:newQueryKeywords", this.componentId , this.bindSearchQuery);
 
         return super.onInit();
     }
@@ -73,10 +82,11 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                 resultSourceId: this.properties.resultSourceId,
                 enableQueryRules: this.properties.enableQueryRules,
                 selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g, '').split(",") : [],
-                refiners: this.properties.refiners,
+                refiners: this._parseRefiners(this.properties.refiners),
                 showPaging: this.properties.showPaging,
                 showFileIcon: this.properties.showFileIcon,
-                showCreatedDate: this.properties.showCreatedDate
+                showCreatedDate: this.properties.showCreatedDate,
+                showResultsCount: this.properties.showResultsCount,
             } as ISearchContainerProps
         );
 
@@ -92,8 +102,8 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
         );
 
         renderElement = (this.properties.queryKeywords && !this.properties.useSearchBoxQuery) || this.properties.useSearchBoxQuery ? searchContainer : placeholder;
-
-        ReactDom.render(renderElement, this.domElement);
+        
+        ReactDom.render(renderElement, this.domElement);              
     }
 
     protected get dataVersion(): Version {
@@ -156,7 +166,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                                     multiline: true,
                                     resizable: true,
                                     value: this.properties.refiners,
-                                    deferredValidationTime: 300
+                                    deferredValidationTime: 300,
                                 }),
                                 PropertyPaneSlider("maxResultsCount", {
                                     label: strings.MaxResultsCount,
@@ -171,6 +181,10 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                         {
                             groupName: strings.StylingSettingsGroupName,
                             groupFields: [
+                                PropertyPaneToggle("showResultsCount", {
+                                    label: strings.ShowResultsCountLabel,
+                                    checked: this.properties.showResultsCount,
+                                }),
                                 PropertyPaneToggle("showPaging", {
                                     label: strings.ShowPagingLabel,
                                     checked: this.properties.showPaging,
@@ -182,7 +196,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                                 PropertyPaneToggle("showCreatedDate", {
                                     label: strings.ShowCreatedDateLabel,
                                     checked: this.properties.showCreatedDate,
-                                })
+                                }),
                             ]
                         }
                     ]
@@ -207,29 +221,15 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
         return "";
     }
 
-    private bindPushStateEvent() {
+    public bindSearchQuery(eventName: string, eventData: IEvent<any>) {
 
-        // Original source: https://www.eliostruyf.com/check-page-mode-from-within-spfx-extensions
-
-        const _pushState = () => {
-            const _defaultPushState = history.pushState;
-            const _self = this;
-            return function (data: any, title: string, url?: string | null) {
-
-                const currentUrl = new URLSearchParams(url);
-                // We need to call the in context of the component
-                // The "k" parameter is set by the search box component
-                if (_self.properties.useSearchBoxQuery) {
-                    _self.properties.queryKeywords = data.k;
-                    _self.render();
-                }
-                // Call the original function with the provided arguments
-                // This context is necessary for the context of the history change
-                return _defaultPushState.apply(this, [data, title, url]);
-            };
-        };
-
-        history.pushState = _pushState();
+        if (this.properties.useSearchBoxQuery) {
+            if (eventData.data) {
+                    
+                this.properties.queryKeywords = eventData.data;
+                this.render();
+            }
+        }
     }
 
     private validateSourceId(value: string): string {
@@ -245,5 +245,33 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
         }
         
         return '';
+    }
+
+    private _parseRefiners(rawValue: string) : { [key: string]: string } {
+
+        let refiners = {};
+
+        // Get each configuration
+        let refinerKeyValuePair = rawValue.split(",");
+
+        if (refinerKeyValuePair.length > 0) {
+            refinerKeyValuePair.map((e) => {
+
+                const refinerValues = e.split(":");
+                switch (refinerValues.length) {
+                    case 1:
+                            // Take the same name as the refiner managed property
+                            refiners[refinerValues[0]] = refinerValues[0];
+                            break;
+                    
+                    case 2:
+                            // Trim quotes if present
+                            refiners[refinerValues[0]] = refinerValues[1].replace(/^"(.*)"$/, '$1');
+                            break;
+                }
+            });
+        }
+
+        return refiners;
     }
 }

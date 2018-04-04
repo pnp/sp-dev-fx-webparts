@@ -1,6 +1,8 @@
 import ISearchDataProvider from "./ISearchDataProvider";
 import { ISearchResults, ISearchResult, IRefinementResult, IRefinementValue, IRefinementFilter } from "../models/ISearchResult";
-import pnp, { ConsoleListener, Logger, LogLevel, SearchQuery, SearchQueryBuilder, SearchResults, setup, Web, Sort, SortDirection } from "sp-pnp-js";
+import { sp, SearchQuery, SearchQueryBuilder, SearchResults, SPRest, Web, Sort, SortDirection } from "@pnp/sp";
+import { PnPClientStorage, Util } from "@pnp/common";
+import { Logger, LogLevel, ConsoleListener } from "@pnp/logging";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
 import { Text, JsonUtilities, UrlUtilities } from "@microsoft/sp-core-library";
 import sortBy from "lodash-es/sortBy";
@@ -8,7 +10,6 @@ import groupBy from 'lodash-es/groupBy';
 import mapValues from 'lodash-es/mapValues';
 import mapKeys from "lodash-es/mapKeys";
 import * as moment from "moment";
-import { SPRest } from "sp-pnp-js/lib/sharepoint/rest";
 
 class SearchDataProvider implements ISearchDataProvider {
 
@@ -48,7 +49,7 @@ class SearchDataProvider implements ISearchDataProvider {
         // To limit the payload size, we set odata=nometadata
         // We just need to get list items here
         // We use a local configuration to avoid conflicts with other Web Parts
-        this._localPnPSetup= pnp.sp.configure({
+        this._localPnPSetup= sp.configure({
             headers: {
                 Accept: "application/json; odata=nometadata",
             },
