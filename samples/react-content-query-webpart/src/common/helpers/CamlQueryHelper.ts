@@ -43,7 +43,12 @@ export class CamlQueryHelper {
         }
 
         // Wraps the everything into a final <View /> tag
-        query = Text.format('<View>{0}</View>', query);
+        if(querySettings.recursiveEnabled) {
+            query = Text.format('<View Scope="RecursiveAll">{0}</View>', query);
+        }
+        else {
+            query = Text.format('<View>{0}</View>', query);
+        }
 
         return query;
     }

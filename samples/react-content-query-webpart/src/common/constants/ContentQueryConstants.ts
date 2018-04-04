@@ -11,6 +11,7 @@ export class ContentQueryConstants {
     public static readonly propertOrderByDirection                  = "orderByDirection";
     public static readonly propertyLimitEnabled                     = "limitEnabled";
     public static readonly propertyItemLimit                        = "itemLimit";
+    public static readonly propertyRecursiveEnabled                 = "recursiveEnabled";
     public static readonly propertyFilters                          = "filters";
     public static readonly propertyViewFields                       = "viewFields";
     public static readonly propertyTemplateText                     = "templateText";

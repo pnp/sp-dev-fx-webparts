@@ -5,6 +5,7 @@ export interface IQuerySettings {
 	listId: string;
 	limitEnabled: boolean;
 	itemLimit: number;
+	recursiveEnabled: boolean;
 	orderBy: string;
 	orderByDirection: string;
 	filters: IQueryFilter[];

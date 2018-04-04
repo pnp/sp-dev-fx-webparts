@@ -26,6 +26,7 @@ define([], function() {
     LimitEnabledFieldLabel: "Limit the number of items to display",
     ItemLimitPlaceholder: "Enter a limit from 1 to 999",
     ErrorItemLimit: "Value must be a number between 1 to 999",
+    RecursiveEnabledFieldLabel: "Search within folders",
     TemplateUrlFieldLabel: "Template Url",
     TemplateUrlPlaceholder: "Enter a valid HandleBars .htm file url",
     ExternalScriptsLabel: "External Scripts",
