@@ -1,4 +1,4 @@
-@import '~office-ui-fabric-core/dist/sass/References';
+@import '~office-ui-fabric-react/dist/sass/References';
 @import './node_modules/spfx-uifabric-themes/office.theme.vars';
 
 /* themed tokens */
@@ -69,7 +69,7 @@ $ms-color-infoText: "[theme:infoText, default: #333333]";
 $ms-color-infoBackground: "[theme:infoBackground, default: #f4f4f4]";
 $ms-color-orangeLighter: "[theme:orangeLighter, default: #ea4300]";
 
-/** Semantic Color Variables - taken from 
+/** Semantic Color Variables - taken from
  * https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/office-ui-fabric-react/src/common/_semanticColorVariables.scss
  */
 $focusedBorderColor: $ms-color-neutralSecondary;

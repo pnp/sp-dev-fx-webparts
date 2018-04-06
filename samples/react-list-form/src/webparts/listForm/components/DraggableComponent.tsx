@@ -5,6 +5,7 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 
 import styles from './DraggableComponent.module.scss';
 
+import * as strings from 'ListFormStrings';
 
 const dragSource = {
   beginDrag(props: IDraggableComponentProps) {
@@ -70,8 +71,8 @@ export default class DraggableComponent extends React.Component<IDraggableCompon
       <div className={css('ard-draggableComponent', styles.draggableComponent, isDragging ? styles.isDragging : null)}>
         {children}
         <div className={css(styles.toolbar)}>
-          <button type="button" className={css('ard-draggableComponent', styles.button)} title="Move field" ><i className="ms-Icon ms-Icon--Move"></i></button>
-          <button type="button" className={css('ard-draggableComponent', styles.button)} title="Remove field" onClick={() => this.props.removeField(this.props.index)}><i className="ms-Icon ms-Icon--Delete"></i></button>
+          <button type="button" className={css('ard-draggableComponent', styles.button)} title={strings.MoveField} ><i className="ms-Icon ms-Icon--Move"></i></button>
+          <button type="button" className={css('ard-draggableComponent', styles.button)} title={strings.RemoveField} onClick={() => this.props.removeField(this.props.index)}><i className="ms-Icon ms-Icon--Delete"></i></button>
         </div>
       </div>,
     ));
