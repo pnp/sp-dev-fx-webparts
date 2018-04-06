@@ -119,7 +119,7 @@ export class SearchService {
 	 **************************************************************************************************/
 	public getWebsFromSite(siteUrl: string): Promise<string[]> {
 		return new Promise<string[]>((resolve,reject) => {
-			let queryProperties = Text.format("querytext='SiteName:{0} AND (contentclass:STS_Site OR contentclass:STS_Web)'&selectproperties='Path'&trimduplicates=false&rowLimit=500&Properties='EnableDynamicGroups:true'", siteUrl);
+			let queryProperties = Text.format("querytext='SPSiteUrl:{0} AND (contentclass:STS_Site OR contentclass:STS_Web)'&selectproperties='Path'&trimduplicates=false&rowLimit=500&Properties='EnableDynamicGroups:true'", siteUrl);
 
 			this.getSearchResultsRecursive(siteUrl, queryProperties)
 				.then((results: any) => {
