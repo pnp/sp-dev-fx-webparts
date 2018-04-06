@@ -1,18 +1,18 @@
 /** form field styles */
 
-@import '../../../../common/theming';
+@import '../../../../common/theming.module';
 
 .formField {
-    
+
     padding: 8px 3px;
     position: relative;
 
     .label  {
         width: 100%;
         font-family: "Segoe UI Semibold WestEuropean","Segoe UI Semibold","Segoe UI",Tahoma,Arial,sans-serif;
-        font-size: 14px;        
+        font-size: 14px;
     }
-    
+
     .label:global(.is-required) {
         &::after {
             content: ' *';
@@ -31,7 +31,7 @@
         font-size: 14px;
         font-family: "Segoe UI Regular WestEuropean","Segoe UI",Tahoma,Arial,sans-serif;
         font-weight: 400;
-        
+
     }
 
 }
