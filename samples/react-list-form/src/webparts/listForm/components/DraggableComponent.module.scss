@@ -1,6 +1,6 @@
 
 // import
-@import '../../../common/theming';
+@import '../../../common/theming.module';
 
 .draggableComponent {
     /*border: '1px dashed gray',
@@ -14,7 +14,7 @@
     .draggableComponent:hover{
         background-color: $ms-color-neutralLighter;
         outline: 1px solid;
-        outline-color: $ms-color-neutralLight; 
+        outline-color: $ms-color-neutralLight;
     }
 
     .draggableComponent.isDragging {
@@ -63,4 +63,4 @@
 
     .draggableComponent:hover .toolbar {
         display: block;
-    }    
+    }

@@ -11,7 +11,9 @@
       ]
     }
   },
-  "externals": {},
+  "externals": {
+    "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment-with-locales.min.js"
+  },
   "localizedResources": {
     "ListFormWebPartStrings": "lib/webparts/listForm/loc/{locale}.js",
     "ListFormStrings": "lib/webparts/listForm/components/loc/{locale}.js",

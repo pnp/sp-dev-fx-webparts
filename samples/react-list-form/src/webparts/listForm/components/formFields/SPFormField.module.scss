@@ -1,4 +1,4 @@
-@import '../../../../common/theming';
+@import '../../../../common/theming.module';
 
 .dropDownFormField{
 
@@ -11,7 +11,7 @@
 }
 
 .dateFormField{
-    
+
     :global(.ms-TextField-fieldGroup){
         border: 0;
         border-bottom: 1px solid;
