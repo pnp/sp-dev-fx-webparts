@@ -33,6 +33,7 @@ Version|Date|Comments
 1.0.7|November 17, 2017|Reverted to drop 1.1.0 in order to keep compatibility for SP2016 on-premise
 1.0.8|March 17, 2018|Updated to store the selected list using its ID instead of its title, so the webpart keeps working if the list title gets updated.
 1.0.9|March 28, 2018|Added a switch to enable the WebPart to apply it's query recursively within folders, and fixed a bug where webs could sometimes not appear under the web url dropdown
+1.0.10|April 5, 2018|Fixed a bug where the webs of the selected site collection were not being loaded correctly for particular tenants
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
