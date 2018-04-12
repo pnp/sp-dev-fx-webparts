@@ -62,12 +62,13 @@ export class CamlQueryHelper {
         
         // Store the generic filter format for later use
         let query = '';
-        let filterXml = '<{0}><FieldRef Name="{1}" /><Value {2} Type="{3}">{4}</Value></{0}>';
+        let filterXml = '';
 
         // Appends a CAML node for each filter
         let itemCount = 0;
 
         for(let filter of filters.reverse()) {
+            filterXml = '<{0}><FieldRef Name="{1}" /><Value {2} Type="{3}">{4}</Value></{0}>';
             itemCount++;
             let specialAttribute = '';
 
