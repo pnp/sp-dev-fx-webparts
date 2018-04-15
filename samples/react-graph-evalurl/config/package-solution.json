@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-graph-evalurl-client-side-solution",
+    "id": "46731e63-80f2-4711-92ce-48173b10f0c8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-graph-evalurl.sppkg"
+  }
+}
