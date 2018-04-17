@@ -43,7 +43,7 @@ Solution provides an enhancement to SitePages library that enables updating exis
 Relies heavily on Office UI Fabric. 
 
 Contains following elements:
-- Metadata-News rollup WebPart - displayes published SitePages items (promoted to news), provides filtering and paging capabilities, as well as many configuration options
+- Metadata-News rollup WebPart - displays published SitePages items (promoted to news), provides filtering and paging capabilities, as well as many configuration options
 - CommandSet extension for SitePages library - a button appears when a single item is selected. Clicking on the item shows a fillable dialog with lookup fields
 
 ### Important notes
