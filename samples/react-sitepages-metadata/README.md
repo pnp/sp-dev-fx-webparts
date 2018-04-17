@@ -3,8 +3,10 @@
 ## Summary
 Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup WebPart to display them.
 
-[picture of the web part in action]
+### News rollup WebPart
 ![News rollup WebPart](./assets/demo-wp.gif)
+
+### SitePages library CommandSet
 ![SitePages library CommandSet](./assets/demo-commandset.gif)
 
 ## Used SharePoint Framework Version 
