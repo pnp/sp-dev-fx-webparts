@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction 
+        Title="metadataSitePages"
+        RegistrationId="119"
+        RegistrationType="List"
+        Location="ClientSideExtension.ListViewCommandSet.CommandBar"
+        ClientSideComponentId="d4fd389a-c02f-41ac-977a-474020daa4c6"
+        ClientSideComponentProperties="{}">
+    </CustomAction>
+</Elements>

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "07db8cfc-508d-4826-9a9c-9bf725350e56",
+  "alias": "MetadataNewsWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f71", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "Metadata-News" },
+    "description": { "default": "Metadata-enabled news pages rollup" },
+    "officeFabricIconFontName": "News",
+    "properties": {
+      "description": "Metadata-enabled news pages rollup",
+      "containerWidth": "900",
+      "multiColumn": false
+    }
+  }]
+}
