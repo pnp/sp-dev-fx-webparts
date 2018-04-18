@@ -78,12 +78,15 @@ class FillMetadataDialogContent extends React.Component<IFillMetadataDialogConte
 
           {/* For each lookup field in loaded item create a TagPicker component */}
         {this.state.loadedItem.lookupMetadata.map((lm, i) => {
-            let selected = lm.lookupValues == null || lm.lookupValues.length < 1 ? 
-            null : 
-            lm.lookupValues.map(val => { 
-              const resItem = lm.allLookupValues.filter(v => v.lookupId == val.lookupId)[0];
-              return { key: resItem.lookupId.toString(), name: unescapeHTML(resItem.lookupValue) };
-            });
+            let selected = [];
+            if (lm.lookupValues != null && lm.lookupValues.length > 0) {
+              for (let val of lm.lookupValues) {
+                const filterResult = lm.allLookupValues.filter(v => v.lookupId == val.lookupId);
+                if (filterResult != null && filterResult.length > 0) {
+                  selected.push({ key: filterResult[0].lookupId.toString(), name: unescapeHTML(filterResult[0].lookupValue)});
+                }
+              }
+            } 
 
             return (
               <div style={{padding: "10px", minWidth: "400px", color: "white"}}>
@@ -351,4 +354,3 @@ export default class FillMetadataDialog extends BaseDialog {
     this.close();
   }
 }
-  
