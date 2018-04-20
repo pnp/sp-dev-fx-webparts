@@ -17,19 +17,6 @@ export default class GraphEvalClient {
 
     }
 
-    // Smart Guessing URL
-    // Test URL: https://n8design.sharepoint.com/sites/Sales/HelloWorld/Shared%20Documents/
-    // Forms/AllItems.aspx?viewpath=%2Fsites%2FSales%2FHelloWorld%2FShared%20Documents%2FForms%2FAllItems.aspx
-    /*
-        Site Collection - https://n8design.sharepoint.com/sites/Sales/
-        Web -             https://n8design.sharepoint.com/sites/Sales/HelloWorld/
-        List -            
-        Forms -           https://n8design.sharepoint.com/sites/Sales/HelloWorld/Shared%20Documents/AllItems.aspx
-                          https://n8design.sharepoint.com/sites/Sales/HelloWorld/Shared%20Documents/Forms/AllItems.aspx
-                          https://n8design.sharepoint.com/sites/Sales/HelloWorld/Lists/PublishedFeed/
-                          https://n8design.sharepoint.com/sites/Sales/HelloWorld/Lists/PublishedFeed/
-    */
-
     private _getUrlJunks(urlPath: string): string[] {
         return urlPath
             .toLowerCase() // convert urlPath to lowerstring
