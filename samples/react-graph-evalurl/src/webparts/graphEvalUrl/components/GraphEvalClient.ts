@@ -145,6 +145,7 @@ export default class GraphEvalClient {
      */
     private _evaluateUrl(url: string) {
 
+        console.log(url);
         try {
 
             return new URL(url)
@@ -297,7 +298,7 @@ export default class GraphEvalClient {
 
         }
 
-        // Try to make web url url
+        // Try to make web url
         try {
 
             scUrl = this._getAssumedWeburl(this._urlToEvaluate.pathname);
@@ -383,28 +384,26 @@ export default class GraphEvalClient {
                         let webIdResults,
                             webId;
 
+                        // just in case multiple items got returned by the graph
                         if (response.value !== undefined) {
 
+                            // filter the best match
                             webIdResults = response.value.filter((obj) => {
-
-                                console.log(webUrl);
-                                console.log(obj.webUrl);
 
                                 return obj.webUrl.toLowerCase().indexOf(webUrl) !== -1;
 
                             });
 
+                            // return first found id
                             webId = webIdResults[0].id;
 
 
                         } else {
 
-                            webId = response.value[0].id;
+                            // if only single item was returned
+                            webId = response.id;
 
                         }
-
-                        console.log(response, webId);
-
 
                         return this._evaluateLists(webId, listUrl)
                             .then(

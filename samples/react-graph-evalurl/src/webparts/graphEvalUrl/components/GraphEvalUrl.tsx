@@ -70,9 +70,11 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
         // get value of current input
         let currentUrlValue = event.target.value;
 
-        if (currentUrlValue === '') {
+        if(currentUrlValue === ""){
+            this._catchErrors('No URL specified')
             return;
         }
+
 
         // create new graph evaluation client aka a validator
         let graphEval = new GraphEvalClient(this._graphClient);
@@ -103,7 +105,10 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
         // create new graph evaluation client aka a validator
         let graphEval = new GraphEvalClient(this._graphClient);
 
-
+        if(currentUrlValue === ""){
+            this._catchErrors('No URL specified')
+            return;
+        }
 
         // request site collection from the Microsoft Graph
         graphEval.EvaluateWeb(currentUrlValue)
@@ -144,6 +149,11 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
 
         // get value of current input
         let currentUrlValue = event.target.value;
+
+        if(currentUrlValue === ""){
+            this._catchErrors('No URL specified')
+            return;
+        }
         // create new graph evaluation client aka a validator
         let graphEval = new GraphEvalClient(this._graphClient);
 
@@ -174,7 +184,9 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
                 }
 
             ).catch((error) => {
-                console.log(error);
+                this.setState({
+                    debugMessage: error
+                })
             })
 
     }
@@ -196,7 +208,6 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
                     id='scInput'
                     label='Site Collection Evaluation'
                     onBlur={this._evaluateSiteCollection.bind(this)}
-                    onFocus={this._cleanDebug}
                 />
                 {/* Evaluates the inpurt on tab leave and try to find 
                     a site collection and corresponding web based on url base in url */}
