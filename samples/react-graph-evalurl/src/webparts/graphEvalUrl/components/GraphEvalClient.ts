@@ -23,7 +23,7 @@ export default class GraphEvalClient {
             .split('\/') // split out all slashes
             // Filter all empty values
             .filter((junk) => {
-                if (junk !== "") {
+                if (junk !== '') {
                     return junk;
                 }
             })
@@ -70,8 +70,6 @@ export default class GraphEvalClient {
         let formLocation = urlPathElements.indexOf('forms'),
             listLocation = urlPathElements.indexOf('lists'),
             sitePages = urlPathElements.indexOf('sitepages');
-
-        console.log('Site Pages:', sitePages);
 
         /* Check if it is a full list url
          * otherwise check if it is a list
@@ -135,7 +133,7 @@ export default class GraphEvalClient {
 
         } else {
 
-            throw "Neither list nor document library could be identified";
+            throw 'Neither list nor document library could be identified';
 
         }
 
@@ -213,7 +211,7 @@ export default class GraphEvalClient {
         // Transfer result values to the group variable
         // TODO: Check until you find the final subsite
 
-        const NO_RESULT = "No document library could be found under the give path";
+        const NO_RESULT = 'No document library could be found under the give path';
 
         let pathToFileQuery = `beta/sites/${siteId}/Lists`;
 

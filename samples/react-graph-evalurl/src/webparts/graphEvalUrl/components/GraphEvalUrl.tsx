@@ -28,7 +28,7 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
         this._graphClient = props.graphClient;
 
         this.state = {
-            debugMessage: ""
+            debugMessage: ''
         }
 
     }
@@ -111,9 +111,9 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
                 (response) => {
 
                     this.setState({
-                        debugMessage: "Site Collection found:\n"
+                        debugMessage: 'Site Collection found:\n'
                             + JSON.stringify(response, null, 2)
-                            + "\nTry to evaluate web next:\n\n"
+                            + '\nTry to evaluate web next:\n\n'
                     })
 
                     // then try to the get web
@@ -122,7 +122,7 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
                             (response) => {
 
                                 this.setState({
-                                    debugMessage: "Web found:\n"
+                                    debugMessage: 'Web found:\n'
                                         + JSON.stringify(response, null, 2)
                                 });
 
@@ -156,7 +156,7 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
                     if (response.value !== null && response.value.length !== 0) {
 
                         this.setState({
-                            debugMessage: "\nList found:\n"
+                            debugMessage: '\nList found:\n'
                                 + JSON.stringify(response, null, 2)
 
                         });
@@ -164,7 +164,7 @@ export default class GraphEvalUrl extends React.Component<IGraphEvalUrlProps, {}
                     } else {
 
                         this.setState({
-                            debugMessage: "\nNo valid list could be found:\n"
+                            debugMessage: '\nNo valid list could be found:\n'
                                 + JSON.stringify(response, null, 2)
 
                         });
