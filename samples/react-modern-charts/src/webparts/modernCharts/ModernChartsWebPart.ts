@@ -36,7 +36,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
 
   private reactCharts: React.ReactElement<IModernChartsProps>;
 
-  // Columns Enable / Disable 
+  // Columns Enable / Disable
   private colsDisabled: boolean = true;
   private listDisabled: boolean = true;
   private urlTextDisabled: boolean = true;
@@ -52,7 +52,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
     {key: 6, text:'Medium'},
     {key: 9, text: 'Medium-Large'},
     {key: 12, text: 'Large'}
-  ];  
+  ];
   private _chartTypeOptions: IPropertyPaneDropdownOption[] = [
     {key: 'bar', text:'Bar'},
     {key: 'horizontalbar', text:'Horizontal Bar'},
@@ -110,7 +110,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
       bgColors: ChartOptions.RandomColors()['bgColors'],
       hoverColors: ChartOptions.RandomColors()['bgColors']
     };
-  
+
     return defConfig;
   }
 
@@ -145,7 +145,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
     } else {
         const _chart: MChart = {data:ChartOptions._sampleData,labels:ChartOptions._sampleCols,config:cfg,key: i};
         _chartData[i] = _chart;
-        if (++_count == this.properties.chartConfig.length){ this.getCharts(_chartData); }        
+        if (++_count == this.properties.chartConfig.length){ this.getCharts(_chartData); }
       }
     });
   }
@@ -212,7 +212,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
   }
 
   private getValues(data: Array<Object>,unique: Array<string>, config: ChartConfiguration): Array<Array<any>>{
-    
+
     const values: Object = {};
     const vals: Array<Array<any>> = [[]];
     unique.forEach((col,i) => {
@@ -235,16 +235,16 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
       if (this.properties.chartConfig.length < newValue){
         while (this.properties.chartConfig.length < newValue) {
           this.properties.chartConfig.push(this.defaultChartConfig('Chart Description'));
-        } 
+        }
       } else if (this.properties.chartConfig.length > newValue) {
-          while (newValue < this.properties.chartConfig.length) { 
-            this.properties.chartConfig.pop(); 
+          while (newValue < this.properties.chartConfig.length) {
+            this.properties.chartConfig.pop();
           }
         }
     }
 
-    if (propertyPath.indexOf('[') != -1) { 
-      pPath = propertyPath.substring(16).replace('\"]',''); 
+    if (propertyPath.indexOf('[') != -1) {
+      pPath = propertyPath.substring(16).replace('\"]','');
     }
     if (pPath === 'url' && newValue == 'other' && (oldValue != newValue)){
       this.urlTextDisabled = false;
@@ -321,7 +321,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
           });
         });
       }
-  };
+  }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     let columnPropertyOptions: any;
@@ -342,7 +342,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
                   label: 'Max # of list items',
                   min: 1,
                   max: 1000
-                })                
+                })
           ]
         }
       ];
@@ -365,7 +365,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
                 PropertyPaneDropdown('chartConfig[' + _i + ']["size"]', {
                   label: 'Chart Size',
                   options: this._chartSizeOptions
-                }),             
+                }),
                 PropertyPaneButton('chartConfig[' + _i + ']["theme"]', {
                   buttonType: 0,
                   text: 'Generate Theme',
@@ -461,7 +461,7 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
     .then((response: SPHttpClientResponse) => {
       return response.json();
     });
-  }  
+  }
 
   private _updateListTitles(siteUrl: string,_chartConfig: ChartConfiguration): void {
       this._getListTitles(siteUrl).then((response) => {
