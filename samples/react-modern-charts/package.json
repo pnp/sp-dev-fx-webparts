@@ -6,9 +6,9 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "@microsoft/sp-client-base": "~1.0.0",
-    "@microsoft/sp-core-library": "~1.0.0",
-    "@microsoft/sp-webpart-base": "~1.0.0",
+    "@microsoft/sp-core-library": "~1.4.1",
+    "@microsoft/sp-webpart-base": "~1.4.1",
+    "@microsoft/sp-office-ui-fabric-core": "~1.4.1",
     "@types/chart.js": "0.0.14",
     "@types/react": "0.14.46",
     "@types/react-addons-shallow-compare": "0.14.17",
@@ -23,9 +23,9 @@
     "react-dom": "15.4.2"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.0.0",
-    "@microsoft/sp-module-interfaces": "~1.0.0",
-    "@microsoft/sp-webpart-workbench": "~1.0.0",
+    "@microsoft/sp-build-web": "~1.4.1",
+    "@microsoft/sp-module-interfaces": "~1.4.1",
+    "@microsoft/sp-webpart-workbench": "~1.4.1",
     "gulp": "~3.9.1",
     "@types/chai": ">=3.4.34 <3.6.0",
     "@types/mocha": ">=2.2.33 <2.6.0"

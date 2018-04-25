@@ -1,13 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/modernCharts/ModernChartsWebPart.js",
-      "manifest": "./src/webparts/modernCharts/ModernChartsWebPart.manifest.json",
-      "outputPath": "./dist/modern-charts.bundle.js"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "modern-charts-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/modernCharts/ModernChartsWebPart.js",
+          "manifest": "./src/webparts/modernCharts/ModernChartsWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {},
+  },
   "localizedResources": {
-    "modernChartsStrings": "webparts/modernCharts/loc/{locale}.js"
-  }
+    "modernChartsStrings": "lib/webparts/modernCharts/loc/{locale}.js"
+  },
+  "externals": {}
 }
