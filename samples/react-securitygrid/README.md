@@ -1,6 +1,7 @@
 # SPFX React Grid
 
 ## Summary
+
 React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:
 
 ![config panel](./src/images/MainDisplay.PNG)
@@ -23,8 +24,6 @@ The user can change alternate between displaying user names and emails  selectin
 
 ![Select Mode](./src/images/SelectDisplayModePopout.PNG)
 
-
-
 The the first configuration panel of the webpart is shown below:
 
 ![config panel](./src/images/Configuration.PNG)
@@ -44,12 +43,10 @@ Display Settings
 
 The Initial Title column width determines the initial width of the Title column(it can be resized).
 
-
-
 The second configuarion pannel allows the owner to configure the List Settings
 ![List Confoguration panel](./src/images/ListConfiguration.PNG)
 
-List Settings 
+List Settings
 
 The Show Hidden Lists checkbox determines whether Hidden lists  are displayed.
 The Show System Lists checkbox determines whether System Lists (Catalogs) are included in the grid.
@@ -62,20 +59,18 @@ The Include/Exclude Selected lists Toggle determines whether the lists selected 
 
 The admin can select lists and libraries below to have them included/excluded from the grid
 
-
 ## Notes
+
 This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/russgove/SPSecurity.
 
-
-
 ## Used SharePoint Framework Version
-1.3.4
+
+![version](https://img.shields.io/badge/version-1.4.1-green.svg)
+
 ## Applies to
 
 * [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
-
-
 
 ## Prerequisites
 
@@ -91,10 +86,11 @@ Solution|Author(s)
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 31, 2016|Initial version
-
+1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
+1.0.0.0|December 31, 2016|Initial version
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -105,7 +101,3 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `gulp serve`
-
-
-
-
