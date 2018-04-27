@@ -19,7 +19,7 @@ export class CamlQueryHelper {
 
         // Generates the <Where /> part
         if(querySettings.filters && !isEmpty(querySettings.filters)) {
-            let sortedFilters = querySettings.filters.sort((a, b) => { if(a.index > b.index) { return 1; } else { return 0; } });
+            let sortedFilters = querySettings.filters.sort((a, b) => { return a.index - b.index; });
             query += Text.format('<Where>{0}</Where>', this.generateFilters(sortedFilters));
         }
 
