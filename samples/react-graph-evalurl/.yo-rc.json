@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "react-graph-evalurl",
+    "libraryId": "46731e63-80f2-4711-92ce-48173b10f0c8",
+    "environment": "spo"
+  }
+}

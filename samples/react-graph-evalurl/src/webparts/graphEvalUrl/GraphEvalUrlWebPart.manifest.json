@@ -1,0 +1,26 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "92bdb2d9-57de-40a5-93d5-6941b90038b2",
+  "alias": "GraphEvalUrlWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "Graph - Eval Url" },
+    "description": { "default": "Evaluates Site Collection, Web, list or document library using Microsoft Graph" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Shows how to evaluate URL using Microsoft Graph"
+    }
+  }]
+}
