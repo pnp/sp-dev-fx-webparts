@@ -134,7 +134,13 @@ export class ContentQueryService implements IContentQueryService {
         return new Promise<string>((resolve,reject) => {
             this.spHttpClient.get(fileUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
                 if(response.ok) {
-                    resolve(response.text());
+                    if(response.url.indexOf('AccessDenied.aspx') > -1){
+                        reject('Access Denied');
+                    }
+                    else
+                    {
+                        resolve(response.text());
+                    }                    
                 }
                 else {
                     reject(response.statusText);
