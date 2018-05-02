@@ -3,6 +3,9 @@
 ## Summary
 Sample webpart to demonstrate the use of [Redux-Form](https://github.com/erikras/redux-form) library with SPFx, React and Typescript. Demonstrates how to easily build a dynamic grid using redux-form.
 
+![SPFx redux-form webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/ReduxForm-Webpart/samples/react-reduxform/assets/ReduxFormWebpart.gif)
+
+
 [picture of the web part in action]
 
 ## Used SharePoint Framework Version 
@@ -22,7 +25,7 @@ Sample webpart to demonstrate the use of [Redux-Form](https://github.com/erikras
 
 Solution|Author(s)
 --------|---------
-react-reduxForm | Vipul Kelkar  @vipulkelkar
+react-reduxform | Vipul Kelkar  @vipulkelkar
 
 ## Version history
 
