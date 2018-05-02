@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dynamic-grid-webpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dynamicGridWebpart/ReduxFormWebpart.js",
+          "manifest": "./src/webparts/dynamicGridWebpart/ReduxFormWebpartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DynamicGridWebpartWebPartStrings": "lib/webparts/dynamicGridWebpart/loc/{locale}.js"
+  }
+}
