@@ -1,4 +1,8 @@
 {
   "$schema": "https://dev.office.com/json-schemas/spfx-build/write-manifests.schema.json",
+<<<<<<< HEAD
   "cdnBasePath": "https://publiccdn.sharepointonline.com/spptechnologies.sharepoint.com/110700492eeea162ee5bad0f35b1f0061ded8bf436ce0199efe2a4d24109e1c0df1ec594/react-content-query-1.0.7"
+=======
+  "cdnBasePath": "https://publiccdn.sharepointonline.com/spptechnologies.sharepoint.com/110700492eeea162ee5bad0f35b1f0061ded8bf436ce0199efe2a4d24109e1c0df1ec594/react-content-query-1.0.10"
+>>>>>>> upstream/master
 }

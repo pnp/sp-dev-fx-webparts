@@ -10,7 +10,7 @@ This is a sample project that contains a web part which makes use of the PnP SPF
 ![Web part outcome](./assets/webpart-outcome.gif)
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-1.2.0-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
 
 ## Which PnP SPFx controls are being used in this sample?
 
@@ -35,6 +35,7 @@ pnp-controls|Elio Struyf (MVP, U2U, [@eliostruyf](https://twitter.com/eliostruyf
 Version|Date|Comments
 -------|----|--------
 0.0.1|September 20, 2017|Initial release
+0.0.2|March 03, 2018|Update to 1.4.1
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

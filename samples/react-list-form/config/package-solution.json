@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-form-webpart-client-side-solution",
+    "id": "373a20ef-dfc6-456a-95ec-171de3c94581",
+    "version": "1.0.0.0",
+    "title": "List form",
+    "supportedLocales": [
+      "en-US",
+      "fr-FR"
+    ],
+    "skipFeatureDeployment": true,
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-form-webpart.sppkg"
+  }
+}

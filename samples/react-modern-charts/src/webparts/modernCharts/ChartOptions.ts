@@ -8,7 +8,7 @@ import * as cs from 'color-scheme/lib/color-scheme';
 import { MChart } from './IModernChartsWebPartProps';
 
 export default class ChartOptions {
-    
+
     public static _sampleData: Array<number> = [100, 50, 275, 100];
     public static _sampleCols: Array<string> = ['UPS','FedEx','USPS','OnTrac'];
 
@@ -29,10 +29,10 @@ export default class ChartOptions {
                             beginAtZero: true
                         }
                     }]
-                }            
+                }
             }
         };
-    };
+    }
 
     public static Data(chart: MChart) {
             return  {

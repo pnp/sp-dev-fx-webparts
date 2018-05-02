@@ -7,8 +7,15 @@ This sample shows you how to build user friendly SharePoint search experiences u
   <img src="./images/react-search-refiners.gif"/>
 </p>
 
+<<<<<<< HEAD
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-1.3.0-green.svg)
+=======
+An associated [blog post](http://thecollaborationcorner.com/2017/10/16/build-dynamic-sharepoint-search-experiences-with-refiners-and-paging-with-spfx-office-ui-fabric-and-pnp-js-library/) is available to give you more details about this sample implementation.
+
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+>>>>>>> upstream/master
 
 ## Applies to
 
@@ -19,13 +26,22 @@ This sample shows you how to build user friendly SharePoint search experiences u
 
 Solution|Author(s)
 --------|---------
+<<<<<<< HEAD
 react-search-refiners | Franck Cornu (MVP Office Development at aequos) - Twitter @FranckCornu
+=======
+react-search-refiners | Franck Cornu (MVP Office Development at aequos) - [@FranckCornu](http://www.twitter.com/FranckCornu)<br/>Mikael Svenson -[@mikaelsvenson](http://www.twitter.com/mikaelsvenson)
+>>>>>>> upstream/master
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0 | October 17, 2017 | Initial release
+<<<<<<< HEAD
+=======
+1.1 | January 03, 2018 | Improvements and updating to SPFx drop 1.4
+1.2 | February 12, 2018 | Added a search box Web Part + Added a "Result Source Id" and "Enable Query Rules" parameters.
+>>>>>>> upstream/master
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -49,12 +65,28 @@ The following settings are available in the Web Part property pane:
 
 Setting | Description 
 -------|----
+<<<<<<< HEAD
 Search query | The search query in KQL format. You can use search query variables (See this [post](http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html) to know which ones are allowed).
 Selected properties | The search managed properties to retrieve. You can use these proeprties then in the code like this (`item.property_name`). (See the *Tile.tsx* file) .
 Refiners | The search managed properties to use as refiners. Make sure these are refinable. With SharePoint Online, you have to reuse the default ones to do so (RefinableStringXX etc.). The order is the same as they will appear in the refnement panel.
 Number of items to retrieve per page | Quite explicit. The paging behavior is done directly by the search API (See the *SearchDataProvider.ts* file), not by the code on post-render.
 Show paging | Indicates whether or not the component should show the paging control at the bottom.
 
+=======
+Search query keywords | The search query in KQL format. You can use search query variables (See this [post](http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html) to know which ones are allowed).
+Query template | The search query template in KQL format. You can use search variables here (like Path:{Site}).
+Selected properties | The search managed properties to retrieve. You can use these proeprties then in the code like this (`item.property_name`). (See the *Tile.tsx* file) .
+Refiners | The search managed properties to use as refiners. Make sure these are refinable. With SharePoint Online, you have to reuse the default ones to do so (RefinableStringXX etc.). The order is the same as they will appear in the refnement panel. You can also provide your own custom labels using the following format RefinableString01:"You custom filter label",RefinableString02:"You custom filter label",...
+Number of items to retrieve per page | Quite explicit. The paging behavior is done directly by the search API (See the *SearchDataProvider.ts* file), not by the code on post-render.
+Show paging | Indicates whether or not the component should show the paging control at the bottom.
+
+## Search Box/Search Results communication
+
+The communication between the two web parts is done using the default SPFx `eventAggregator` property (still in alpha as of march 2018). However, this link can be updated to use the concept shown in the [react-rxjs-event-emitter](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-rxjs-event-emitter) example().
+
+Checkout this [article](https://blog.velingeorgiev.com/sharepoint-framework-publish-subscribe-event-messaging) by Velin Georgiev to get more information.
+
+>>>>>>> upstream/master
 ## Features
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 

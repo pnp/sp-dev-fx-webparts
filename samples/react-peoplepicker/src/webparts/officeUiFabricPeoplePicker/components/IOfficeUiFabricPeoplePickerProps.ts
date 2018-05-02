@@ -1,4 +1,5 @@
-import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
+import { SPHttpClient } from '@microsoft/sp-http';
+import { SharePointUserPersona } from '../models/OfficeUiFabricPeoplePicker';
 
 export interface IOfficeUiFabricPeoplePickerProps {
   description: string;
@@ -10,4 +11,5 @@ export interface IOfficeUiFabricPeoplePickerProps {
   principalTypeSecurityGroup: boolean;
   principalTypeDistributionList: boolean;
   numberOfItems: number;
+  onChange?: (items: SharePointUserPersona[]) => void;
 }

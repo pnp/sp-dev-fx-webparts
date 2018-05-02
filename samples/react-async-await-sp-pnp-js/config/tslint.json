@@ -1,4 +1,5 @@
 {
+  "$schema": "https://dev.office.com/json-schemas/core-build/tslint.schema.json",
   // Display errors as warnings
   "displayAsWarning": true,
   // The TSLint task may have been configured with several custom lint rules
@@ -29,7 +30,6 @@
       "no-switch-case-fall-through": true,
       "no-unnecessary-semicolons": true,
       "no-unused-expression": true,
-      "no-unused-imports": true,
       "no-use-before-declare": true,
       "no-with-statement": true,
       "semicolon": true,

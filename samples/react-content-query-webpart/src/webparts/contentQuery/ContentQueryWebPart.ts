@@ -45,6 +45,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private orderByDirectionChoiceGroup: IPropertyPaneField<IPropertyPaneChoiceGroupProps>;
   private limitEnabledToggle: IPropertyPaneField<IPropertyPaneToggleProps>;
   private itemLimitTextField: IPropertyPaneField<IPropertyPaneTextFieldProps>;
+  private recursiveEnabledToggle: IPropertyPaneField<IPropertyPaneToggleProps>;
   private filtersPanel: PropertyPaneQueryFilterPanel;
   private viewFieldsChecklist: PropertyPaneAsyncChecklist;
   private templateTextDialog: PropertyPaneTextDialog;
@@ -56,7 +57,11 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Returns the WebPart's version
    ***************************************************************************/
   protected get dataVersion(): Version {
+<<<<<<< HEAD
     return Version.parse('1.0.7');
+=======
+    return Version.parse('1.0.10');
+>>>>>>> upstream/master
   }
 
 
@@ -66,8 +71,8 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       this.ContentQueryService = new ContentQueryService(this.context, this.context.spHttpClient);
+      this.properties.webUrl = this.properties.siteUrl || this.properties.webUrl ? this.properties.webUrl : this.context.pageContext.web.absoluteUrl.toLocaleLowerCase().trim();
       this.properties.siteUrl = this.properties.siteUrl ? this.properties.siteUrl : this.context.pageContext.site.absoluteUrl.toLowerCase().trim();
-      this.properties.webUrl = this.properties.webUrl ? this.properties.webUrl : this.context.pageContext.web.absoluteUrl.toLocaleLowerCase().trim();
       resolve();
     });
   }
@@ -79,9 +84,10 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   public render(): void {
     let querySettings: IQuerySettings = {
       webUrl: this.properties.webUrl,
-      listTitle: this.properties.listTitle,
+      listId: this.properties.listId,
       limitEnabled: this.properties.limitEnabled,
       itemLimit: this.properties.itemLimit,
+      recursiveEnabled: this.properties.recursiveEnabled,
       orderBy: this.properties.orderBy,
       orderByDirection: this.properties.orderByDirection,
       filters: this.properties.filters,
@@ -113,7 +119,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
 
     let firstCascadingLevelDisabled = !this.properties.siteUrl;
     let secondCascadingLevelDisabled = !this.properties.siteUrl || !this.properties.webUrl;
-    let thirdCascadingLevelDisabled = !this.properties.siteUrl || !this.properties.webUrl || !this.properties.listTitle;
+    let thirdCascadingLevelDisabled = !this.properties.siteUrl || !this.properties.webUrl || !this.properties.listId;
 
     // Creates a custom PropertyPaneAsyncDropdown for the siteUrl property
     this.siteUrlDropdown = new PropertyPaneAsyncDropdown(ContentQueryConstants.propertySiteUrl, {
@@ -136,14 +142,14 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       disabled: firstCascadingLevelDisabled
     });
 
-    // Creates a custom PropertyPaneAsyncDropdown for the listTitle property
-    this.listTitleDropdown = new PropertyPaneAsyncDropdown(ContentQueryConstants.propertyListTitle, {
+    // Creates a custom PropertyPaneAsyncDropdown for the listId property
+    this.listTitleDropdown = new PropertyPaneAsyncDropdown(ContentQueryConstants.propertyListId, {
       label: strings.ListTitleFieldLabel,
       loadingLabel: strings.ListTitleFieldLoadingLabel,
       errorLabelFormat: strings.ListTitleFieldLoadingError,
       loadOptions: this.loadListTitleOptions.bind(this),
       onPropertyChange: this.onCustomPropertyPaneChange.bind(this),
-      selectedKey: this.properties.listTitle || "",
+      selectedKey: this.properties.listId || "",
       disabled: secondCascadingLevelDisabled
     });
 
@@ -220,6 +226,15 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       onGetErrorMessage: this.onItemLimitChange.bind(this)
     });
 
+    // Creates a PropertyPaneToggle for the limitEnabled property
+    this.recursiveEnabledToggle = PropertyPaneToggle(ContentQueryConstants.propertyRecursiveEnabled, {
+      label: strings.RecursiveEnabledFieldLabel,
+      offText: 'Disabled',
+      onText: 'Enabled',
+      checked: this.properties.recursiveEnabled,
+      disabled: thirdCascadingLevelDisabled
+    });
+
     // Creates a PropertyPaneTextField for the externalScripts property
     this.externalScripts = PropertyPaneTextField(ContentQueryConstants.propertyExternalScripts, {
       label: strings.ExternalScriptsLabel,
@@ -255,6 +270,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
                 this.orderByDirectionChoiceGroup,
                 this.limitEnabledToggle,
                 this.itemLimitTextField,
+                this.recursiveEnabledToggle,
                 this.filtersPanel
               ]
             }
@@ -333,7 +349,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Loads the dropdown options for the orderBy property
    ***************************************************************************/
   private loadOrderByOptions(): Promise<IDropdownOption[]> {
-    return this.ContentQueryService.getOrderByOptions(this.properties.webUrl, this.properties.listTitle);
+    return this.ContentQueryService.getOrderByOptions(this.properties.webUrl, this.properties.listId);
   }
 
 
@@ -341,7 +357,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Loads the dropdown options for the listTitle property
    ***************************************************************************/
   private loadFilterFields():Promise<IQueryFilterField[]> {
-    return this.ContentQueryService.getFilterFields(this.properties.webUrl, this.properties.listTitle);
+    return this.ContentQueryService.getFilterFields(this.properties.webUrl, this.properties.listId);
   }
 
 
@@ -349,7 +365,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * Loads the checklist items for the viewFields property
    ***************************************************************************/
   private loadViewFieldsChecklistItems():Promise<IChecklistItem[]> {
-    return this.ContentQueryService.getViewFieldsChecklistItems(this.properties.webUrl, this.properties.listTitle);
+    return this.ContentQueryService.getViewFieldsChecklistItems(this.properties.webUrl, this.properties.listId);
   }
 
 
@@ -372,7 +388,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    * @param limitResults : The results limit if any
    ***************************************************************************/
   private loadTaxonomyPickerSuggestions(field: IQueryFilterField, filterText: string, currentTerms: ITag[]):Promise<ITag[]> {
-    return this.ContentQueryService.getTaxonomyPickerSuggestions(this.properties.webUrl, this.properties.listTitle, field, filterText, currentTerms);
+    return this.ContentQueryService.getTaxonomyPickerSuggestions(this.properties.webUrl, this.properties.listId, field, filterText, currentTerms);
   }
 
 
@@ -477,7 +493,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       this.resetFiltersPropertyPane();
       this.resetViewFieldsPropertyPane();
     }
-    else if (propertyPath == ContentQueryConstants.propertyListTitle) {
+    else if (propertyPath == ContentQueryConstants.propertyListId) {
       this.resetOrderByPropertyPane();
       this.resetFiltersPropertyPane();
       this.resetViewFieldsPropertyPane();
@@ -506,9 +522,9 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private resetListTitlePropertyPane() {
     Log.verbose(this.logSource, "Resetting 'listTitle' property...", this.context.serviceScope);
 
-    this.properties.listTitle = null;
+    this.properties.listId = null;
     this.ContentQueryService.clearCachedListTitleOptions();
-    update(this.properties, ContentQueryConstants.propertyListTitle, (): any => { return this.properties.listTitle; });
+    update(this.properties, ContentQueryConstants.propertyListId, (): any => { return this.properties.listId; });
     this.listTitleDropdown.properties.selectedKey = "";
     this.listTitleDropdown.properties.disabled = isEmpty(this.properties.webUrl);
     this.listTitleDropdown.render();
@@ -525,7 +541,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
     this.ContentQueryService.clearCachedOrderByOptions();
     update(this.properties, ContentQueryConstants.propertyOrderBy, (): any => { return this.properties.orderBy; });
     this.orderByDropdown.properties.selectedKey = "";
-    this.orderByDropdown.properties.disabled = isEmpty(this.properties.webUrl) || isEmpty(this.properties.listTitle);
+    this.orderByDropdown.properties.disabled = isEmpty(this.properties.webUrl) || isEmpty(this.properties.listId);
     this.orderByDropdown.render();
   }
 
@@ -540,7 +556,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
     this.ContentQueryService.clearCachedFilterFields();
     update(this.properties, ContentQueryConstants.propertyFilters, (): any => { return this.properties.filters; });
     this.filtersPanel.properties.filters = null;
-    this.filtersPanel.properties.disabled = isEmpty(this.properties.webUrl) || isEmpty(this.properties.listTitle);
+    this.filtersPanel.properties.disabled = isEmpty(this.properties.webUrl) || isEmpty(this.properties.listId);
     this.filtersPanel.render();
   }
 
@@ -555,7 +571,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
     this.ContentQueryService.clearCachedViewFields();
     update(this.properties, ContentQueryConstants.propertyViewFields, (): any => { return this.properties.viewFields; });
     this.viewFieldsChecklist.properties.checkedItems = null;
-    this.viewFieldsChecklist.properties.disable = isEmpty(this.properties.webUrl) || isEmpty(this.properties.listTitle);
+    this.viewFieldsChecklist.properties.disable = isEmpty(this.properties.webUrl) || isEmpty(this.properties.listId);
     this.viewFieldsChecklist.render();
   }
 }

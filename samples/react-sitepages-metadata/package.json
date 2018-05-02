@@ -1,0 +1,50 @@
+{
+  "name": "react-sitepages-metadata",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "package": "gulp bundle --ship & gulp package-solution --ship",
+    "package-dev": "gulp bundle & gulp package-solution",
+    "postversion": "gulp version-sync"
+  },
+  "dependencies": {
+    "@microsoft/decorators": "~1.4.1",
+    "@microsoft/office-ui-fabric-react-bundle": "^1.4.1",
+    "@microsoft/sp-core-library": "~1.4.1",
+    "@microsoft/sp-dialog": "~1.4.1",
+    "@microsoft/sp-listview-extensibility": "~1.4.1",
+    "@microsoft/sp-lodash-subset": "~1.4.1",
+    "@microsoft/sp-office-ui-fabric-core": "~1.4.1",
+    "@microsoft/sp-webpart-base": "~1.4.1",
+    "@pnp/graph": "^1.0.4",
+    "@pnp/spfx-controls-react": "1.2.3",
+    "@types/react": "15.6.6",
+    "@types/react-dom": "15.5.6",
+    "@types/webpack-env": ">=1.12.1 <1.14.0",
+    "array.from": "^1.0.3",
+    "jquery": "^3.3.1",
+    "jqueryui": "^1.11.1",
+    "react": "15.6.2",
+    "react-dom": "15.6.2",
+    "react-stonecutter": "^0.3.9",
+    "react-truncate": "^2.3.0",
+    "sp-client-custom-fields": "^1.3.7",
+    "sp-pnp-js": "^3.0.5"
+  },
+  "devDependencies": {
+    "@microsoft/sp-build-web": "~1.4.1",
+    "@microsoft/sp-module-interfaces": "~1.4.1",
+    "@microsoft/sp-webpart-workbench": "~1.4.1",
+    "@types/chai": ">=3.4.34 <3.6.0",
+    "@types/mocha": ">=2.2.33 <2.6.0",
+    "ajv": "~5.2.2",
+    "gulp": "~3.9.1",
+    "run-sequence": "^2.2.1"
+  }
+}

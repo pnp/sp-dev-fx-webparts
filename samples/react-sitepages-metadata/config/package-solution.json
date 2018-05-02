@@ -1,0 +1,26 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-sitepages-metadata-client-side-solution",
+    "id": "46c3c432-396d-4e9b-944d-6bf8c5466d0c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "features": [
+      {
+        "title": "Command set for SitePages",
+        "description": "deplys command set",
+        "id": "e91d5532-3519-4b50-b55e-b142fc74cd8c",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-sitepages-metadata.sppkg"
+  }
+}

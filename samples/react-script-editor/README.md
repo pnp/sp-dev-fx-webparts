@@ -47,8 +47,34 @@ If all you want is to add markup on the page, you can do that as well. Adding th
 </ul>
 ```
 
+You may add CSS via style tags or `link` tags.
+```html
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style>
+    #container h1 {
+        color: red;
+    }
+</style>
+<div id="container">
+    <h1>Headline</h1>
+</div>
+<div class="row">
+    <div class="col-md-8">.col-md-8</div>
+    <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4">.col-md-4</div>
+    <div class="col-md-4">.col-md-4</div>
+</div>
+```
+
+## Support for classic _spPageContextInfo
+If your scripts rely on the classic _spPageContextInfo, you can enable that in the web part property pane.
+
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-1.3.0-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
 
 ## Applies to
 
@@ -68,6 +94,10 @@ Version|Date|Comments
 1.0|March 10th, 2017|Initial release
 1.0.0.1|August 8th, 2017|Updated SPFx version and CSS loading
 1.0.0.2|October 4th, 2017|Updated SPFx version, bundle Office UI Fabric and CSS in webpart
+1.0.0.3|January 10th, 2018|Updated SPFx version, added remove padding property and refactoring
+1.0.0.4|February 14th, 2018|Added title property for edit mode and documentation for enabling the web part on Group sites / tenant wide
+1.0.0.5|March 8th, 2018|Added support for loading scripts which are AMD/UMD modules. Added support for classic _spPageContextInfo. Refactoring.
+1.0.0.6|March 26th, 2018|Fixed so that AMD modules don't detect `define`, and load as non-modules.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -91,6 +121,22 @@ Version|Date|Comments
 * Upload .sppkg file from sharepoint\solution to your tenant App Catalog
 	* E.g.: https://&lt;tenant&gt;.sharepoint.com/sites/AppCatalog/AppCatalog
 * Add the web part to a site collection, and test it on a page
+
+### Deploy to non-script sites / modern team sites
+By default this web part is not allowed on no-script sites, as it allows execution of arbitrary script. This is by design as from a security and governance perspective you might not want arbitrary script added to your pages. This is typically something you want control over.
+
+If you however want to allow the web part for non-script sites like Office 365 Group modern team sites you have to edit `ScriptEditorWebPart.manifest.json` with the following change:
+```
+"requiresCustomScript": false
+```
+
+### Deploy tenant wide
+By default you have to install this web part per site collection where you want it availble. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
+```
+"skipFeatureDeployment": true
+```
+
+In order to make it availble to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
 
 ## Features
 This web part illustrates the following concepts on top of the SharePoint Framework:

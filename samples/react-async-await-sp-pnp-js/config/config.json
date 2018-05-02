@@ -1,13 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/asyncAwaitPnPJs/AsyncAwaitPnPJsWebPart.js",
-      "manifest": "./src/webparts/asyncAwaitPnPJs/AsyncAwaitPnPJsWebPart.manifest.json",
-      "outputPath": "./dist/async-await-pn-p-js.bundle.js"
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "async-await-pn-p-js-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/asyncAwaitPnPJs/AsyncAwaitPnPJsWebPart.js",
+          "manifest": "./src/webparts/asyncAwaitPnPJs/AsyncAwaitPnPJsWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {},
+  },
   "localizedResources": {
-    "asyncAwaitPnPJsStrings": "webparts/asyncAwaitPnPJs/loc/{locale}.js"
-  }
+    "asyncAwaitPnPJsStrings": "lib/webparts/asyncAwaitPnPJs/loc/{locale}.js"
+  },
+  "externals": {}
 }

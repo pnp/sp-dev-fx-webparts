@@ -3,7 +3,7 @@ var fs = require('fs'),
     build = require('@microsoft/sp-build-web');
 
 /**
- * Verifies if the appSettings.json and appSettings.d.ts are have the same appSetting keys.
+ * Verifies if the appSettings.json and appSettings.d.ts have the same appSetting keys.
  */
 var verifyAppSettings = build.subTask('verify-app-settings', function(gulp, buildConfig, done) {
 
@@ -18,11 +18,11 @@ var verifyAppSettings = build.subTask('verify-app-settings', function(gulp, buil
      * Pure string operations.
      */
     var getappSettingsTsKeys = function(appSettingsTsSettingsAsText, appSettingsTsKeysArray) {
-        
+
         var keyEndPos = appSettingsTsSettingsAsText.indexOf(":");
 
         // end the recursion if no more `:`.
-        if(keyEndPos === -1) return appSettingsTsKeysArray; 
+        if(keyEndPos === -1) return appSettingsTsKeysArray;
 
         // substring the appSetting key from the text.
         var key = appSettingsTsSettingsAsText.substring(0, keyEndPos);
@@ -31,7 +31,7 @@ var verifyAppSettings = build.subTask('verify-app-settings', function(gulp, buil
         appSettingsTsKeysArray.push(key);
 
         // exclude the key for the next call.
-        appSettingsTsSettingsAsText = appSettingsTsSettingsAsText.substring(appSettingsTsSettingsAsText.indexOf(";") + 1); 
+        appSettingsTsSettingsAsText = appSettingsTsSettingsAsText.substring(appSettingsTsSettingsAsText.indexOf(";") + 1);
 
         // call again for the next key.
         getappSettingsTsKeys(appSettingsTsSettingsAsText, appSettingsTsKeysArray);
@@ -45,7 +45,7 @@ var verifyAppSettings = build.subTask('verify-app-settings', function(gulp, buil
          */
         fs.readFile('./src/appSettings.json', 'utf8', function (err,data) {
             if (err) { return reject(err); }
-            
+
             // remove some strings so we can parse to JSON, prue string manipulation.
             var jsonAsString = data.replace(/(?:\r\n|\r|\n)/g, "").trim();
 
@@ -61,17 +61,17 @@ var verifyAppSettings = build.subTask('verify-app-settings', function(gulp, buil
 
                     // remove some strings, prue string manipulation.
                     var text = data.substring(data.indexOf("{") + 1, data.indexOf("}")).replace(/ /g,"").replace(/(?:\r\n|\r|\n)/g, "").trim();
-                    
+
                     // fill the appSettingsTsKeys array with the appSettings.d.ts keys.
                     getappSettingsTsKeys(text, appSettingsTsKeys);
 
                     // now we have two arrays with keys to compare.
-                    
+
                     // checks the appSettings.json for missing keys.
                     var l = appSettingsTsKeys.length;
                     while(l--) {
 
-                        if(appSettingsJsKeys.indexOf(appSettingsTsKeys[l]) === -1) 
+                        if(appSettingsJsKeys.indexOf(appSettingsTsKeys[l]) === -1)
                         {
                             build.error(`Key \"${appSettingsTsKeys[l]}\" not found in appSettings.json, but exists in appSettings.d.ts. Please fix your appSettings.`);
                             return reject();
@@ -82,7 +82,7 @@ var verifyAppSettings = build.subTask('verify-app-settings', function(gulp, buil
                     l = appSettingsJsKeys.length;
                     while(l--) {
 
-                        if(appSettingsTsKeys.indexOf(appSettingsJsKeys[l]) === -1) 
+                        if(appSettingsTsKeys.indexOf(appSettingsJsKeys[l]) === -1)
                         {
                             build.error(`Key \"${appSettingsJsKeys[l]}\" not found in appSettings.d.ts, but exists in appSettings.json. Please fix your appSettings.`);
                             return reject();
@@ -95,4 +95,4 @@ var verifyAppSettings = build.subTask('verify-app-settings', function(gulp, buil
     });
 });
 
-exports.default = verifyAppSettings; 
+exports.default = verifyAppSettings;

@@ -3,7 +3,11 @@
   "solution": {
     "name": "React Content Query",
     "id": "00406271-0276-406f-9666-512623eb6709",
+<<<<<<< HEAD
     "version": "1.0.7.0"
+=======
+    "version": "1.0.10.0"
+>>>>>>> upstream/master
   },
   "paths": {
     "zippedPackage": "solution/react-content-query-webpart.sppkg"

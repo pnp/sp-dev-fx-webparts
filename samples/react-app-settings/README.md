@@ -20,7 +20,7 @@ I have added appSettingsGulp.js with one gulp task in it. The task starts just b
 Since the gulp task I created contains checks based on string operations, it is required that the appSettings.json and appSettings.d.ts are in format as provided and just key-pairs are added to the json file and respective just new properties are added to the IAppSettings interface in the appSettings.d.ts.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
 
 ## Applies to
 
@@ -43,6 +43,7 @@ react-app-settings | Velin Georgiev ([@VelinGeorgiev](https://twitter.com/veling
 Version|Date|Comments
 -------|----|--------
 0.0.1|August 03, 2017 | Initial commit
+0.0.2|March 08, 2018 | Update to SPFx 1.4.1
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

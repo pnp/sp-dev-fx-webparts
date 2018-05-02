@@ -1,10 +1,10 @@
-declare interface INoFrameworkCrudStrings {
+declare interface INoFrameworkCrudWebPartStrings {
   PropertyPaneDescription: string;
   DataGroupName: string;
   ListNameFieldLabel: string;
 }
 
-declare module 'noFrameworkCrudStrings' {
-  const strings: INoFrameworkCrudStrings;
+declare module 'NoFrameworkCrudWebPartStrings' {
+  const strings: INoFrameworkCrudWebPartStrings;
   export = strings;
 }

@@ -3,6 +3,7 @@ import { ISearchResults, IRefinementFilter } from "../models/ISearchResult";
 interface ISearchDataProvider {
 
     /**
+<<<<<<< HEAD
      * Determines the number of items ot retrieve in search REST requests
      */
     resultsCount: number;
@@ -10,6 +11,35 @@ interface ISearchDataProvider {
 
     /**
      * Performs a SharePoint search query
+=======
+     * Determines the number of items ot retrieve in REST requests
+     */
+    resultsCount: number;
+    
+    /**
+     * Selected managed properties to retrieve when a search query is performed 
+     */
+    selectedProperties: string[];
+    
+    /**
+     * Determines the query template to apply in REST requests
+     */
+    queryTemplate?: string;
+
+    /**
+     * The SharePoint result source id to target
+     */
+    resultSourceId?: string;
+
+    /**
+     * Indicates wheter or not the query rules should be applied in the query
+     */
+    enableQueryRules?: boolean;
+
+    /**
+     * Perfoms a search query.
+     * @returns ISearchResults object. Use the "RelevantResults" property to access results properties (returned as key/value pair object => item.[<Managed property name>])
+>>>>>>> upstream/master
      */
     search(kqlQuery: string, refiners?: string, refinementFilters?: IRefinementFilter[], pageNumber?: number): Promise<ISearchResults>;
 }

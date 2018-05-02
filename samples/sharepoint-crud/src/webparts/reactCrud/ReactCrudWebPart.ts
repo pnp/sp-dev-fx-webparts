@@ -7,10 +7,13 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'reactCrudStrings';
+import * as strings from 'ReactCrudWebPartStrings';
 import ReactCrud from './components/ReactCrud';
 import { IReactCrudProps } from './components/IReactCrudProps';
-import { IReactCrudWebPartProps } from './IReactCrudWebPartProps';
+
+export interface IReactCrudWebPartProps {
+  listName: string;
+}
 
 export default class ReactCrudWebPart extends BaseClientSideWebPart<IReactCrudWebPartProps> {
 

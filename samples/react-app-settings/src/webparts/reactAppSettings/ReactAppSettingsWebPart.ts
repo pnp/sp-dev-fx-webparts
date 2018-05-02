@@ -15,7 +15,7 @@ import { IReactAppSettingsWebPartProps } from './IReactAppSettingsWebPartProps';
 export default class ReactAppSettingsWebPart extends BaseClientSideWebPart<IReactAppSettingsWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IReactAppSettingsProps > = React.createElement(
+    const element: React.ReactElement<IReactAppSettingsProps> = React.createElement(
       ReactAppSettings,
       {
         description: this.properties.description

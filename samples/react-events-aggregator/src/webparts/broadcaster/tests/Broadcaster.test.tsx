@@ -2,32 +2,38 @@
 /// <reference types="sinon" />
 
 import * as React from 'react';
-import { expect } from 'chai';
+import { assert } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';
 import { IEventAggregator, IEvent } from "@microsoft/sp-webpart-base/lib";
 import EventAggregator from "@microsoft/sp-webpart-base/lib/core/events/EventAggregator";
 import Broadcaster from "../components/Broadcaster";
 import { EventData } from "../../../sharedLibs/EventData";
 
-declare const sinon: any;
+declare const sinon: sinon.SinonStatic;
 
 describe('BroadcasterWebPart', () => {
 
-  let raiseEventSpy: any;
-  let broadcastDataSpy: any;
+  let raiseEventSpy: sinon.SinonSpy;
+  let broadcastDataSpy: sinon.SinonSpy;
   let broadcaster: ReactWrapper<Broadcaster, any>;
 
-  before(() => {
+  beforeEach(() => {
 
     // new instance of the event aggregator to be used with the react broadcaster.
     let eventAggregator: IEventAggregator = new EventAggregator();
 
     // create spies so we test if event is triggered.
-    raiseEventSpy = sinon.spy(EventAggregator.prototype, "raiseEvent");
-    broadcastDataSpy = sinon.spy(Broadcaster.prototype, "broadcastData");
+    raiseEventSpy = sinon.spy((EventAggregator.prototype as any), "raiseEvent");
+    broadcastDataSpy = sinon.spy((Broadcaster.prototype as any), "broadcastData");
 
     // mount the Broadcaster so we can test it.
     broadcaster = mount(<Broadcaster eventAggregator={eventAggregator} />);
+  });
+
+  afterEach(()=> {
+    broadcaster.unmount();
+    raiseEventSpy.restore();
+    broadcastDataSpy.restore();
   });
 
   it('should broadcast message with number 1', () => {
@@ -38,15 +44,15 @@ describe('BroadcasterWebPart', () => {
     broadcaster.find("#BroadcastButton").simulate("click");
 
     // check if event is broadcasted.
-    expect(broadcastDataSpy.calledOnce).to.be.true;
-    expect(broadcaster.state().eventNumber).to.be.eq(currentEventNumber);
-    expect(raiseEventSpy.calledOnce).to.be.true;
-    expect(raiseEventSpy.calledWith("myCustomEvent:start",
+    assert(broadcastDataSpy.calledOnce === true);
+    assert(broadcaster.state().eventNumber === currentEventNumber);
+    assert(raiseEventSpy.calledOnce === true);
+    assert(raiseEventSpy.calledWith("myCustomEvent:start",
       {
         data: { currentNumber: currentEventNumber },
         sourceId: "BroadcasterWebPart",
         targetId: "ReceiverWebPart"
-      } as IEvent<EventData>)).to.be.true;
+      } as IEvent<EventData>) === true);
   });
 
 
@@ -56,35 +62,36 @@ describe('BroadcasterWebPart', () => {
     
     // broadcast second event and check the data send.
     broadcaster.find("#BroadcastButton").simulate("click");
+    broadcaster.find("#BroadcastButton").simulate("click");
 
-    expect(broadcastDataSpy.calledTwice).to.be.true;
-    expect(broadcaster.state().eventNumber).to.be.eq(currentEventNumber);
-    expect(raiseEventSpy.calledTwice).to.be.true;
-    expect(raiseEventSpy.calledWith("myCustomEvent:start",
+    assert(broadcastDataSpy.calledTwice === true);
+    assert(broadcaster.state().eventNumber === currentEventNumber);
+    assert(raiseEventSpy.calledTwice === true);
+    assert(raiseEventSpy.calledWith("myCustomEvent:start",
       {
         data: { currentNumber: currentEventNumber },
         sourceId: "BroadcasterWebPart",
         targetId: "ReceiverWebPart"
-      } as IEvent<EventData>)).to.be.true;
+      } as IEvent<EventData>) === true);
   });
 
 
   it('should fail on wrong message', () => {
 
-    let currentEventNumber: number = 3;
+    let currentEventNumber: number = 1;
 
     // broadcast third event and check the data send.
     broadcaster.find("#BroadcastButton").simulate("click");
 
-    expect(broadcastDataSpy.calledThrice).to.be.true;
-    expect(broadcaster.state().eventNumber).to.be.eq(currentEventNumber);
-    expect(raiseEventSpy.calledThrice).to.be.true;
-    expect(raiseEventSpy.calledWith("myCustomEvent:start",
+    assert(broadcastDataSpy.calledOnce === true);
+    assert(broadcaster.state().eventNumber === currentEventNumber);
+    assert(raiseEventSpy.calledOnce === true);
+    
+    assert(raiseEventSpy.calledWith("myCustomEvent:start",
       {
         data: { currentNumber: currentEventNumber },
         sourceId: "<Wrong_Message>",
         targetId: "ReceiverWebPart"
-      } as IEvent<EventData>)).to.be.false;
+      } as IEvent<EventData>) === false);
   });
-
 });
