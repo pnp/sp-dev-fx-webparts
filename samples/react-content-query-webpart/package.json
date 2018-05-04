@@ -1,6 +1,10 @@
 {
   "name": "react-content-query-webpart",
+<<<<<<< HEAD
+  "version": "1.0.7",
+=======
   "version": "1.0.10",
+>>>>>>> upstream/master
   "private": true,
   "engines": {
     "node": ">=0.10.0"

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "textboxio-editor-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/textboxioEditor/TextboxioEditorWebPart.js",
+          "manifest": "./src/webparts/textboxioEditor/TextboxioEditorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "textboxio": {
+      "path": "src/librairies/textboxio/textboxio.js",
+      "globalName": "textboxio"
+    }
+  },
+  "localizedResources": {
+    "TextboxioEditorWebPartStrings": "lib/webparts/textboxioEditor/loc/{locale}.js"
+  }
+}

@@ -1,6 +1,10 @@
 {
   "@microsoft/generator-sharepoint": {
+<<<<<<< HEAD
+    "version": "1.3.2",
+=======
     "version": "1.4.0",
+>>>>>>> upstream/master
     "libraryName": "react-project-online",
     "libraryId": "d6729fd9-103c-42c8-8ee5-17760e4ab92f",
     "environment": "spo"

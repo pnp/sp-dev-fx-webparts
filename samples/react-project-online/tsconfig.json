@@ -7,6 +7,12 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+<<<<<<< HEAD
+    "types": [
+      "es6-promise",
+      "es6-collections",
+      "webpack-env"
+=======
     "skipLibCheck": true,
     "typeRoots": [
       "./node_modules/@types",
@@ -20,6 +26,7 @@
       "es5",
       "dom",
       "es2015.collection"
+>>>>>>> upstream/master
     ]
   }
 }
