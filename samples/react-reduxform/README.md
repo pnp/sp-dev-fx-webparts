@@ -8,8 +8,6 @@ Sample webpart to demonstrate the use of [Redux-Form](https://github.com/erikras
 ![SPFx redux-form webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/ReduxForm-Webpart/samples/react-reduxform/assets/ReduxFormWebpart.gif)
 
 
-[picture of the web part in action]
-
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
 
@@ -70,4 +68,4 @@ Refer to the [Getting started](https://redux-form.com/6.4.3/docs/gettingstarted.
 
 - The sample also uses custom renderers for form fields along with required field and number validations.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-reduxform" />
