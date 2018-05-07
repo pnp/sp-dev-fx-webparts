@@ -5,7 +5,7 @@ Sample webpart to demonstrate the use of [Redux-Form](https://github.com/erikras
 
 
 
-![SPFx redux-form webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/ReduxForm-Webpart/samples/react-reduxform/assets/ReduxFormWebpart.gif)
+![SPFx redux-form webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/ReduxFormSample/samples/react-reduxform/assets/ReduxFormWebpart.gif)
 
 
 ## Used SharePoint Framework Version 
@@ -41,6 +41,8 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - The webpart requires two custom lists in the SharePoint site. The folder "SetupScript" contains a PnP PowerShell script that will setup the custom fields, content type and the required lists.
+
+- Change the site URL in the PowerShell script and execute with proper credentials to setup the lists.
 
 - Clone this repository
 - in the command line run:
