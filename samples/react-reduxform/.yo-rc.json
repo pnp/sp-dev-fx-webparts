@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "sp-fx-dynamic-grid",
+    "libraryId": "23cfb83a-b316-4112-8f37-5c769a66c024",
+    "environment": "spo"
+  }
+}
