@@ -49,9 +49,7 @@ Version|Date|Comments
 
 The following settings are available in the Web Part property pane:
 
-Page 1 | Page 2  
--------|----
-<p align="center"><img src="./images/property_pane.png"/><p> | <p align="center"><img src="./images/property_pane2.png"/></p>
+<p align="center"><img src="./images/property_pane.png"/><p>
 
 Setting | Description 
 -------|----
