@@ -6,6 +6,11 @@ interface ISearchResultsContainerState {
      * The current search results to display
      */
     results: ISearchResults;
+
+    /**
+     * Number of results
+     */
+    resultCount: number;
     
     /**
      * Current selected filters to apply to the search query. We need this information during page transition to keep existing filters

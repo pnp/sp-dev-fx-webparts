@@ -32,7 +32,9 @@
                 "enableQueryRules": false,
                 "maxResultsCount": 10,
                 "showFileIcon": true,
-                "showCreatedDate": true
+                "showCreatedDate": true,
+                "showBlank": false,
+                "showResultsCount": false
             }
         }
     ]

@@ -5,14 +5,14 @@ import { MessageBar, MessageBarType } from "office-ui-fabric-react/lib/MessageBa
 import { Spinner, SpinnerSize } from "office-ui-fabric-react/lib/Spinner";
 import { Logger, LogLevel } from "@pnp/logging";
 import * as strings from "SearchWebPartStrings";
-import { ISearchResults, IRefinementFilter } from "../../../models/ISearchResult";
+import { ISearchResults, IRefinementFilter, IRefinementValue, IRefinementResult } from "../../../models/ISearchResult";
 import TilesList from "../TilesList/TilesList";
 import "../SearchResultsWebPart.scss";
 import FilterPanel from "../FilterPanel/FilterPanel";
 import Paging from "../Paging/Paging";
 import { Overlay } from "office-ui-fabric-react/lib/Overlay";
 import { Label } from "office-ui-fabric-react";
-import { Text } from '@microsoft/sp-core-library';
+import { Text, DisplayMode } from '@microsoft/sp-core-library';
 
 export default class SearchResultsContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 
@@ -24,6 +24,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 RefinementResults: [],
                 RelevantResults: []
             },
+            resultCount: 0,
             selectedFilters: [],
             availableFilters: [],
             currentPage: 1,
@@ -54,12 +55,13 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         if (!isComponentLoading && areResultsLoading) {
             renderOverlay = <div>
                 <Overlay isDarkThemed={false} className="overlay">
+                    <Spinner size={SpinnerSize.medium} />
                 </Overlay>
             </div>;
         }
 
-        if (this.props.showResultsCount && !this.state.areResultsLoading ) {
-            renderCount = <label dangerouslySetInnerHTML={ {__html: Text.format(strings.CountMessage, this.state.results.TotalRows, this.props.queryKeywords) }}></label>;
+        if (this.props.showResultsCount && !this.state.areResultsLoading) {
+            renderCount = <div className="searchWp__count"><label dangerouslySetInnerHTML={ {__html: Text.format(strings.CountMessage, this.state.resultCount , this.props.queryKeywords) }}></label></div>;
         }
 
         if (isComponentLoading) {
@@ -70,19 +72,27 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
             } else {
 
-                if (items.RelevantResults.length === 0) {
-                    renderWpContent =
-                        <div>
-                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners } /> 
-                            <div className="searchWp__count">{ renderCount }</div>
-                            <div className="searchWp__noresult">{strings.NoResultMessage}</div>                            
-                        </div>;
+                if (items.RelevantResults.length === 0 ) {
+                    
+                    if (!this.props.showBlank) {
+
+                        renderWpContent =
+                            <div>
+                                <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners } /> 
+                                { renderCount }
+                                <div className="searchWp__noresult">{strings.NoResultMessage}</div>                                                  
+                            </div>;
+                    } else {
+                        if (this.props.displayMode === DisplayMode.Edit) {
+                            renderWpContent = <MessageBar messageBarType={ MessageBarType.info }>{ strings.ShowBlankEditInfoMessage }</MessageBar>;
+                        }
+                    }
                 } else {
                     renderWpContent =
 
                         <div>
                             <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners }/>
-                            <div className="searchWp__count">{ renderCount }</div>
+                            { renderCount }
                             { renderOverlay }                            
                             <TilesList items={items.RelevantResults} showFileIcon={this.props.showFileIcon} showCreatedDate={this.props.showCreatedDate} />
                             {this.props.showPaging ?
@@ -100,46 +110,56 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         return (
             <div className="searchWp">
-                {renderWpContent}
+                { renderWpContent }
             </div>
         );
     }
 
     public async componentDidMount() {
         
-        try {
+        // Don't perform search is there is no keywords
+        if (this.props.queryKeywords) {
+            try {
 
+                this.setState({
+                    areResultsLoading: true,
+                });
+
+                this.props.searchDataProvider.selectedProperties = this.props.selectedProperties;
+
+                const refinerManagedProperties = Object.keys(this.props.refiners).join(",");
+
+                const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, this.state.currentPage);
+                const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
+
+                // Initial filters are just set once for the filter control during the component initialization
+                // By this way, we are be able to select multiple values whithin a specific filter (OR condition). Otherwise, if we pass every time the new filters retrieved from new results,
+                // previous values will overwritten preventing to select multiple values (default SharePoint behavior)
+                this.setState({
+                    results: searchResults,
+                    resultCount: searchResults.TotalRows,
+                    availableFilters: localizedFilters,
+                    areResultsLoading: false,
+                    isComponentLoading: false,
+                    lastQuery: this.props.queryKeywords + this.props.searchDataProvider.queryTemplate + this.props.selectedProperties.join(',')
+                });
+
+            } catch (error) {
+
+                Logger.write("[SearchContainer._componentDidMount()]: Error: " + error, LogLevel.Error);
+
+                this.setState({
+                    areResultsLoading: false,
+                    isComponentLoading: false,
+                    results: { RefinementResults: [], RelevantResults: [] },
+                    hasError: true,
+                    errorMessage: error.message
+                });
+            }
+        } else {
             this.setState({
-                areResultsLoading: true,
-            });
-
-            this.props.searchDataProvider.selectedProperties = this.props.selectedProperties;
-
-            const refinerManagedProperties = Object.keys(this.props.refiners).join(",");
-
-            const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, this.state.currentPage);
-
-            // Initial filters are just set once for the filter control during the component initialization
-            // By this way, we are be able to select multiple values whithin a specific filter (OR condition). Otherwise, if we pass every time the new filters retrieved from new results,
-            // previous values will overwritten preventing to select multiple values (default SharePoint behavior)
-            this.setState({
-                results: searchResults,
-                availableFilters: searchResults.RefinementResults,
                 areResultsLoading: false,
                 isComponentLoading: false,
-                lastQuery: this.props.queryKeywords + this.props.searchDataProvider.queryTemplate + this.props.selectedProperties.join(',')
-            });
-
-        } catch (error) {
-
-            Logger.write("[SearchContainer._componentDidMount()]: Error: " + error, LogLevel.Error);
-
-            this.setState({
-                areResultsLoading: false,
-                isComponentLoading: false,
-                results: { RefinementResults: [], RelevantResults: [] },
-                hasError: true,
-                errorMessage: error.message
             });
         }
     }
@@ -158,37 +178,47 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             || this.props.queryKeywords !== nextProps.queryKeywords
             || this.props.enableQueryRules !== nextProps.enableQueryRules) {
 
-            try {
-                // Clear selected filters on a new query or new refiners
-                this.setState({
-                    selectedFilters: [],
-                    areResultsLoading: true,
-                });
+            // Don't perform search is there is no keywords
+            if (nextProps.queryKeywords) {
+                try {
+                    // Clear selected filters on a new query or new refiners
+                    this.setState({
+                        selectedFilters: [],
+                        areResultsLoading: true,
+                    });
 
-                this.props.searchDataProvider.selectedProperties = nextProps.selectedProperties;
+                    this.props.searchDataProvider.selectedProperties = nextProps.selectedProperties;
 
-                const refinerManagedProperties = Object.keys(nextProps.refiners).join(",");
+                    const refinerManagedProperties = Object.keys(nextProps.refiners).join(",");
 
-                // We reset the page number and refinement filters
-                const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
+                    // We reset the page number and refinement filters
+                    const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
+                    const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);               
 
-                this.setState({
-                    results: searchResults,
-                    availableFilters: searchResults.RefinementResults,
-                    areResultsLoading: false,
-                    lastQuery: query
-                });
+                    this.setState({
+                        results: searchResults,
+                        resultCount: searchResults.TotalRows,
+                        availableFilters: localizedFilters,
+                        areResultsLoading: false,
+                        lastQuery: query
+                    });
 
-            } catch (error) {
+                } catch (error) {
 
-                Logger.write("[SearchContainer._componentWillReceiveProps()]: Error: " + error, LogLevel.Error);
+                    Logger.write("[SearchContainer._componentWillReceiveProps()]: Error: " + error, LogLevel.Error);
 
+                    this.setState({
+                        areResultsLoading: false,
+                        isComponentLoading: false,
+                        results: { RefinementResults: [], RelevantResults: [] },
+                        hasError: true,
+                        errorMessage: error.message
+                    });
+                }
+            } else {
                 this.setState({
                     areResultsLoading: false,
                     isComponentLoading: false,
-                    results: { RefinementResults: [], RelevantResults: [] },
-                    hasError: true,
-                    errorMessage: error.message
                 });
             }
         }
@@ -236,5 +266,116 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             results: searchResults,
             areResultsLoading: false,
         });
+    }
+
+    /**
+     * Translates all refinement results according the current culture
+     * By default SharePoint stores the taxonomy values according to the current site language. Because we can't create a communication site in French (as of 08/12/2017)
+     * we need to do the translation afterwards
+     * @param rawFilters The raw refinement results to translate coming from SharePoint search results
+     */
+    private async _getLocalizedFilters(rawFilters: IRefinementResult[]): Promise<IRefinementResult[]> {
+        
+        let termsToLocalize: { uniqueIdentifier: string, termId: string, localizedTermLabel: string }[] = [];
+        let udpatedFilters = [];
+
+        rawFilters.map((filterResult) => {
+
+            filterResult.Values.map((value) => {
+
+                // Check if the value seems to be a taxonomy term
+                // If the field value looks like a taxonomy value, we get the label according to the current locale
+                // To get this type of values, we need to map the RefinableStringXXX properties with ows_taxId_xxx crawled properties
+                const isTerm = /L0\|#(.+)\|/.test(value.RefinementValue);
+
+                if (isTerm) {
+                    const termId = /L0\|#(.+)\|/.exec(value.RefinementValue)[1].substr(1);
+
+                    // The uniqueIdentifier is here to be able to match the original value with the localized one
+                    // We use the refinement token, which is unique
+                    termsToLocalize.push({
+                        uniqueIdentifier: value.RefinementToken,
+                        termId: termId,
+                        localizedTermLabel: null
+                    });
+                }
+            });
+        });
+
+        if (termsToLocalize.length > 0) {
+
+            // Process all terms in a single JSOM call for performance purpose. In general JSOM is pretty slow so we try to limit the number of calls...
+            await this.props.taxonomyDataProvider.initialize();
+            const termValues = await this.props.taxonomyDataProvider.getTermsById(termsToLocalize.map((t)=> { return t.termId; }));
+
+            const termsEnumerator = termValues.getEnumerator();
+
+            while (termsEnumerator.moveNext()) {
+
+                const currentTerm = termsEnumerator.get_current();
+
+                // Need to do this check in the case where the term indexed by the search doesn't exist anymore in the term store
+                if (!currentTerm.get_serverObjectIsNull()) {
+
+                    const termId = currentTerm.get_id();
+
+                    // Check if retrieved term is part of terms to localize
+                    const terms = termsToLocalize.filter((e) => { return e.termId === termId.toString(); });
+                    if (terms.length > 0) {
+                        termsToLocalize = termsToLocalize.map((term) => {
+                            if (term.termId === terms[0].termId) {
+                                return {
+                                    uniqueIdentifier: term.uniqueIdentifier,
+                                    termId: termId.toString(),
+                                    localizedTermLabel: termsEnumerator.get_current().get_name(),
+                                };
+                            } else {
+                                return term;
+                            }
+                        });
+                    }
+                }
+            }
+
+            // Update original filters with localized values
+            rawFilters.map((filter) => {
+                let updatedValues = [];
+
+                filter.Values.map((value) => {
+                    const existingFilters = termsToLocalize.filter((e) => { return e.uniqueIdentifier === value.RefinementToken; });
+                    if (existingFilters.length > 0) {
+                        updatedValues.push({
+                            RefinementCount: value.RefinementCount,
+                            RefinementName: existingFilters[0].localizedTermLabel,
+                            RefinementToken: value.RefinementToken,
+                            RefinementValue: existingFilters[0].localizedTermLabel,
+                        } as IRefinementValue);
+                    } else {
+
+                        // Keep only terms (L0). The crawl property ows_taxid_xxx return term sets too.
+                        if (!/(GTSet|GPP|GP0)/i.test(value.RefinementName))  {
+                            updatedValues.push(value);
+                        }
+                    }
+                });
+
+                udpatedFilters.push({
+                    FilterName: filter.FilterName,
+                    Values: updatedValues.sort((a: IRefinementValue, b: IRefinementValue) => {
+                        if (a.RefinementName) {
+                            return a.RefinementName.localeCompare(b.RefinementName);
+                        } else {
+                            return 0;
+                        }
+                    })
+                } as IRefinementResult);
+            });
+
+        } else {
+            // Return filters without any modification
+            udpatedFilters = rawFilters;
+        }
+
+        return udpatedFilters;
     }
 }
