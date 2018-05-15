@@ -1,10 +1,10 @@
-declare interface ISpPnPJsCrudStrings {
+declare interface ISpPnPJsCrudWebPartStrings {
   PropertyPaneDescription: string;
   DataGroupName: string;
   ListNameFieldLabel: string;
 }
 
-declare module 'spPnPJsCrudStrings' {
-  const strings: ISpPnPJsCrudStrings;
+declare module 'SpPnPJsCrudWebPartStrings' {
+  const strings: ISpPnPJsCrudWebPartStrings;
   export = strings;
 }

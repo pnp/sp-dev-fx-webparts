@@ -5,15 +5,16 @@ declare interface IListFormStrings {
     LoadingFormIndicator: string;
     ErrorLoadingSchema: string;
     ConfigureListMessage: string;
-    RequiredValueMessage: string;s
+    RequiredValueMessage: string;
     ErrorLoadingData: string;
     ItemSavedSuccessfully: string;
     FieldsErrorOnSaving: string;
     ErrorOnSavingListItem: string;
+    MoveField :string;
+    RemoveField : string;
   }
-  
+
   declare module 'ListFormStrings' {
     const strings: IListFormStrings;
     export = strings;
   }
-  

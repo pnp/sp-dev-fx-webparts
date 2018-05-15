@@ -1,15 +1,15 @@
 define([], function() {
     return {
-        UnsupportedFieldType: "Unsupported field type",
-        InvalidNumberValue: "The value should be a number, actual is",
-        ToggleOnAriaLabel: "This toggle is checked. Press to uncheck.",
-        ToggleOffAriaLabel: "This toggle is unchecked. Press to check.",
-        ToggleOnText: "Yes",
-        ToggleOffText: "No",
-        TextFormFieldPlaceholder: "Enter text here",
-        DateFormFieldPlaceholder: "Enter a date",
-        NumberFormFieldPlaceholder: "Enter value here",        
-        LookupEmptyOptionText: "(None)",
+        UnsupportedFieldType: 'Unsupported field type',
+        InvalidNumberValue: 'The value should be a number, actual is',
+        ToggleOnAriaLabel: 'This toggle is checked. Press to uncheck.',
+        ToggleOffAriaLabel: 'This toggle is unchecked. Press to check.',
+        ToggleOnText: 'Yes',
+        ToggleOffText: 'No',
+        TextFormFieldPlaceholder: 'Enter text here',
+        DateFormFieldPlaceholder: 'Enter a date',
+        NumberFormFieldPlaceholder: 'Enter value here',
+        LookupEmptyOptionText: '(None)',
 
         // IDatePickerStrings
         months: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
@@ -23,6 +23,6 @@ define([], function() {
         nextYearAriaLabel: 'Go to next year',
         isRequiredErrorMessage: 'This date is required.',
         invalidInputErrorMessage: 'Invalid date format.'
-        
+
     }
 });

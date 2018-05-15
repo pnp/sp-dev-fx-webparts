@@ -1,0 +1,56 @@
+<testsuites name="jest tests" tests="20" failures="0" time="16.183000000000003">
+  <testsuite name="Call the component methods" errors="0" failures="0" skipped="0" timestamp="2018-05-10T21:15:42" time="4.524" tests="7">
+    <testcase classname="Call the component methods should call fail validation if wrong state" name="Call the component methods should call fail validation if wrong state" time="0.02">
+    </testcase>
+    <testcase classname="Call the component methods should call pass validation if wrong state" name="Call the component methods should call pass validation if wrong state" time="0.002">
+    </testcase>
+    <testcase classname="Call the component methods should select the proper item when selectHandler called" name="Call the component methods should select the proper item when selectHandler called" time="0.009">
+    </testcase>
+    <testcase classname="Call the component methods should change the quantity successfully" name="Call the component methods should change the quantity successfully" time="0.004">
+    </testcase>
+    <testcase classname="Call the component methods should re-calculate new price based on quantity change" name="Call the component methods should re-calculate new price based on quantity change" time="0.005">
+    </testcase>
+    <testcase classname="Call the component methods should not show success buyHandler called by the form is not valid" name="Call the component methods should not show success buyHandler called by the form is not valid" time="0.02">
+    </testcase>
+    <testcase classname="Call the component methods should show success message after buy success" name="Call the component methods should show success message after buy success" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="Stub pnp js to test the provider" errors="0" failures="0" skipped="0" timestamp="2018-05-10T21:15:42" time="4.872" tests="2">
+    <testcase classname="Stub pnp js to test the provider should return array of 3 items when sp.search called" name="Stub pnp js to test the provider should return array of 3 items when sp.search called" time="0.008">
+    </testcase>
+    <testcase classname="Stub pnp js to test the provider should pnp add new item be called" name="Stub pnp js to test the provider should pnp add new item be called" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Sinon stubs" errors="0" failures="0" skipped="0" timestamp="2018-05-10T21:15:42" time="4.887" tests="2">
+    <testcase classname="Sinon stubs should show 3 ice cream flavours" name="Sinon stubs should show 3 ice cream flavours" time="0.041">
+    </testcase>
+    <testcase classname="Sinon stubs should show success on successfull buy (e2e unit test)" name="Sinon stubs should show success on successfull buy (e2e unit test)" time="0.038">
+    </testcase>
+  </testsuite>
+  <testsuite name="Enzyme basics" errors="0" failures="0" skipped="0" timestamp="2018-05-10T21:15:47" time="0.319" tests="2">
+    <testcase classname="Enzyme basics should root web part element exists" name="Enzyme basics should root web part element exists" time="0.015">
+    </testcase>
+    <testcase classname="Enzyme basics should has the correct title" name="Enzyme basics should has the correct title" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="Enzyme props, state, lifecycle events test" errors="0" failures="0" skipped="0" timestamp="2018-05-10T21:15:47" time="0.412" tests="4">
+    <testcase classname="Enzyme props, state, lifecycle events test should has test title is the props" name="Enzyme props, state, lifecycle events test should has test title is the props" time="0.049">
+    </testcase>
+    <testcase classname="Enzyme props, state, lifecycle events test should has initial state" name="Enzyme props, state, lifecycle events test should has initial state" time="0.018">
+    </testcase>
+    <testcase classname="Enzyme props, state, lifecycle events test should buy form be hidden initialy" name="Enzyme props, state, lifecycle events test should buy form be hidden initialy" time="0.012">
+    </testcase>
+    <testcase classname="Enzyme props, state, lifecycle events test should unhide the buy form after ice cream has been selected" name="Enzyme props, state, lifecycle events test should unhide the buy form after ice cream has been selected" time="0.022">
+    </testcase>
+  </testsuite>
+  <testsuite name="Sinon basic spy" errors="0" failures="0" skipped="0" timestamp="2018-05-10T21:15:46" time="0.829" tests="2">
+    <testcase classname="Sinon basic spy should handler be called once" name="Sinon basic spy should handler be called once" time="0.07">
+    </testcase>
+    <testcase classname="Sinon basic spy should handler be called with the right parameters" name="Sinon basic spy should handler be called with the right parameters" time="0.019">
+    </testcase>
+  </testsuite>
+  <testsuite name="Advanced selectors" errors="0" failures="0" skipped="0" timestamp="2018-05-10T21:15:47" time="0.34" tests="1">
+    <testcase classname="Advanced selectors should show a list of ice cream flavours" name="Advanced selectors should show a list of ice cream flavours" time="0.025">
+    </testcase>
+  </testsuite>
+</testsuites>

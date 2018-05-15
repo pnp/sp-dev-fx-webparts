@@ -25,6 +25,7 @@ declare interface IContentQueryStrings {
   LimitEnabledFieldLabel: string;
   ItemLimitPlaceholder: string;
   ErrorItemLimit: string;
+  RecursiveEnabledFieldLabel: string;
   TemplateUrlFieldLabel: string;
   TemplateUrlPlaceholder: string;
   ExternalScriptsLabel: string;

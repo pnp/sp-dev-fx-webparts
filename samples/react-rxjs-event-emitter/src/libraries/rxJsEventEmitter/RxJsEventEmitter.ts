@@ -59,7 +59,7 @@ export class RxJsEventEmitter {
     }
 
     this.subjects[fnName].subscribe(handler);
-  };
+  }
 
   /**
    * Unsubscribes Observer (Subscriber) from event.
@@ -75,7 +75,7 @@ export class RxJsEventEmitter {
 
     }
 
-  };
+  }
 
   /**
    * Not tested.
@@ -91,7 +91,7 @@ export class RxJsEventEmitter {
     }
 
     this.subjects = {};
-  };
+  }
 
   private _createName(name: string): string {
     return `$${name}`;

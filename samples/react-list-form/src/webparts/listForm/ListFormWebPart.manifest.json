@@ -15,9 +15,17 @@
 
   "preconfiguredEntries": [{
     "groupId": "48e2d130-7eb7-4ee9-aa23-5ddbdfd175b1",
-    "group": { "default": "Under Development" },
-    "title": { "default": "List Form" },
-    "description": { "default": "Shows a form for the selected list" },
+    "group": {
+      "default": "Under Development"
+    },
+    "title": {
+      "default": "List Form",
+      "fr-fr": "Formulaire de liste"
+    },
+    "description": {
+      "default": "Shows a form for the selected list",
+      "fr-fr": "Affiche un formulaire pour la liste sélectionnée"
+    },
     "officeFabricIconFontName": "PreviewLink",
     "properties": {
       "title": "List Form",

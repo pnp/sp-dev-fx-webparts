@@ -1,0 +1,28 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "metadata-news-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/metadataNews/MetadataNewsWebPart.js",
+          "manifest": "./src/webparts/metadataNews/MetadataNewsWebPart.manifest.json"
+        }
+      ]
+    },
+    "metadata-sitepages-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/pagesMetadata/MetadataSitePagesCommandSet.js",
+          "manifest": "./src/extensions/pagesMetadata/MetadataSitePagesCommandSet.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MetadataNewsWebPartStrings": "lib/webparts/metadataNews/loc/{locale}.js",
+    "MetadataSitePagesCommandSetStrings": "lib/extensions/pagesMetadata/loc/{locale}.js",
+    "ControlStrings": "./node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

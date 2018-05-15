@@ -1,0 +1,195 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+@mixin accentColoring {
+  background-color: $ms-color-themeDark !important;
+  color: white !important;
+}
+@mixin accentColoringDarker {
+  background-color: $ms-color-themeDarker !important;
+  color: white !important;
+}
+
+@media all and (max-width: 600px) {
+  .dialogMainOverride {
+    min-width: 95%;
+  }
+}
+
+@media all and (min-width: 601px) {
+  .dialogMainOverride {
+    min-width: 85%;
+  }
+}
+
+.tagPicker {
+  div[class*="ms-TagItem "] {
+    background-color: #130707;
+  }
+}
+
+.dialogMainOverride {
+  background-color: white;
+}
+
+.errorCallout {
+  padding: 10px;
+  max-width: 450px;
+  .header {
+    font-size: 20px;
+  }
+  .content {
+    border-top: 1px solid $ms-color-themeDarker;
+  }
+}
+
+#newsContainer {
+  position: inherit;
+}
+
+.docCardActivity {
+  div[class*="docCardContents"] {
+    text-overflow: "ellipsis";
+    overflow: "hidden";
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  div[class*="ms-DocumentCardActivity-avatars"] {
+    display: none;
+  }
+  div[class*="ms-DocumentCardActivity-details"] {
+    left: 0;
+    position: relative;
+  }
+}
+
+.menuItem {
+  @include accentColoring();
+
+  > button {
+    @include accentColoring();
+    &:hover {
+      @include accentColoringDarker();
+    }
+
+    i[class*="itemChevronDown"], i[class*="itemChevronUp"] {
+      color: white !important;
+    }
+  }
+  > button.is-expanded {
+    @include accentColoringDarker();
+  }
+
+  &:hover, .is-expanded  {
+    @include accentColoringDarker();
+  }
+}
+
+.metadataNews {
+  .commandBar {
+    @include accentColoring();
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+    @include ms-Grid-row;
+    padding: 10px;
+  }
+
+  .docCards {
+    > div {
+      background-color: white !important;
+      color: black !important;
+      margin: 0 auto;
+      height: inherit;
+      max-width: 980px;
+      > div > div {
+        // height: inherit;
+        max-height: inherit;
+        max-width: inherit;
+      }
+      > div + div {
+        height: inherit;
+        max-height: inherit;
+        margin: 0 auto;
+        div[class*="ms-DocumentCardTitle"], span[class*="ms-DocumentCardActivity-name"] {
+          color: #1f1f1f;
+        }
+        span[class*="ms-DocumentCardActivity-activity"] {
+          color: #908989;
+        }   
+        div[class*="ms-DocumentCardActivity activity_"] {
+          padding-top: 3px;
+          padding-bottom: 7px;
+        }     
+      }
+    }
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    @include ms-lg12;
+    @include ms-xl12;
+    // @include ms-xlPush1;
+    // @include ms-lgPush1;
+    > div > span > div {
+      margin: 0 auto !important;
+      padding-bottom: 10px;
+    }
+  }
+
+  .title {
+    @include ms-font-xl;
+    @include ms-fontColor-white;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+}

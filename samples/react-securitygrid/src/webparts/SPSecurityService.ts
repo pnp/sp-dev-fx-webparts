@@ -178,7 +178,7 @@ export class Helpers {
       let selectedRoleAssignments: SPRoleAssignment[] = [];
 
       for (const roleAssignment of securableObject.roleAssignments) {
-        let group: SPSiteGroup = find(groups, (g) => { return g.id === roleAssignment.principalId });
+        let group: SPSiteGroup = find(groups, (g) => { return g.id === roleAssignment.principalId; });
         if (group) {
           if (this.userIsInGroup(user.id, group.id, groups)) {
             selectedRoleAssignments.push(roleAssignment);
@@ -262,7 +262,7 @@ export default class SPSecurityService {
           for (let roleAssignmentObject of listItem.RoleAssignments) {
 
             let roleAssignment: SPRoleAssignment = {
-              roleDefinitionIds:  roleAssignmentObject.RoleDefinitionBindings.map((rdb) => { return rdb.Id }),
+              roleDefinitionIds:  roleAssignmentObject.RoleDefinitionBindings.map((rdb) => { return rdb.Id; }),
               principalId: roleAssignmentObject.PrincipalId
             };
             // if (roleAssignmentObject.Member.UserId) {
@@ -329,7 +329,7 @@ export default class SPSecurityService {
     pnp.sp.web.siteGroups.expand("Users").select("Title", "Id", "IsHiddenInUI", "IsShareByEmailGuestUse", "IsSiteAdmin", "IsSiteAdmin")
       .inBatch(batch).get().then((response) => {
         let AdGroupPromises: Array<Promise<any>> = [];
-        // if group contains an ad group(PrincipalType=4) expand it 
+        // if group contains an ad group(PrincipalType=4) expand it
         securityInfo.siteGroups = response.map((grp) => {
           let siteGroup: SPSiteGroup = new SPSiteGroup();
           siteGroup.userIds = [];
@@ -337,9 +337,9 @@ export default class SPSecurityService {
           siteGroup.title = grp.Title;
           for (let user of grp.Users) {
             if (user.PrincipalType === 4) {
-              // To make this work with AD groups, I need to stop using the integer UserId of the user as the 
+              // To make this work with AD groups, I need to stop using the integer UserId of the user as the
               // key to the Users list and use UPN/Email instead. Users in an AD group may not have a accessed the site
-              // yet , and so will not be in the userinfo list. 
+              // yet , and so will not be in the userinfo list.
               // I can get the users from the AD group using the graph HTTPClient. and add them to the Users array
               // in my state. Would also need to add a list of AD groups and their members to my state.
               // then in DoesUserHavePermission method, Just inlude permissions of any ADQ Groups the user is in.
@@ -410,7 +410,7 @@ export default class SPSecurityService {
           mylist.roleAssignments = listObject.RoleAssignments.map((roleAssignmentObject) => {
 
             let roleAssignment: SPRoleAssignment = {
-              roleDefinitionIds: roleAssignmentObject.RoleDefinitionBindings.map((rdb) => { return rdb.Id }),
+              roleDefinitionIds: roleAssignmentObject.RoleDefinitionBindings.map((rdb) => { return rdb.Id; }),
               principalId: roleAssignmentObject.PrincipalId
             };
             return roleAssignment;

@@ -1,30 +1,35 @@
 /// <reference types="mocha" />
 /// <reference types="sinon" />
-
 import * as React from 'react';
-import { expect } from 'chai';
+import { assert } from 'chai';
 import { mount, ReactWrapper } from 'enzyme';
 import Broadcaster from "../components/Broadcaster";
 
 import { EventData } from "../../../libraries/rxJsEventEmitter/EventData";
 import { RxJsEventEmitter } from "../../../libraries/rxJsEventEmitter/RxJsEventEmitter";
 
-declare const sinon: any;
+declare const sinon: sinon.SinonStatic;
 
 describe('BroadcasterWebPart', () => {
 
-  let rxJsEventEmitterEmitSpy: any;
-  let broadcastDataSpy: any;
+  let rxJsEventEmitterEmitSpy: sinon.SinonSpy;
+  let broadcastDataSpy: sinon.SinonSpy;
   let broadcaster: ReactWrapper<Broadcaster, any>;
 
-  before(() => {
+  beforeEach(() => {
 
     // create spies so we test if event is triggered.
-    rxJsEventEmitterEmitSpy = sinon.spy(RxJsEventEmitter.prototype, "emit");
-    broadcastDataSpy = sinon.spy(Broadcaster.prototype, "broadcastData");
+    rxJsEventEmitterEmitSpy = sinon.spy((RxJsEventEmitter.prototype as any), "emit");
+    broadcastDataSpy = sinon.spy((Broadcaster.prototype as any), "broadcastData");
 
     // mount the Broadcaster so we can test it.
     broadcaster = mount(<Broadcaster />);
+  });
+
+  afterEach(() => {
+    broadcaster.unmount();
+    rxJsEventEmitterEmitSpy.restore();
+    broadcastDataSpy.restore();
   });
 
   it('should broadcast message with number 1', () => {
@@ -35,42 +40,45 @@ describe('BroadcasterWebPart', () => {
     broadcaster.find("#BroadcastButton").simulate("click");
 
     // check if event is broadcasted.
-    expect(broadcastDataSpy.calledOnce).to.be.true;
-    expect(broadcaster.state().eventNumber).to.be.eq(currentEventNumber);
-    expect(rxJsEventEmitterEmitSpy.calledOnce).to.be.true;
-    expect(rxJsEventEmitterEmitSpy.calledWith("myCustomEvent:start",
-    { currentNumber: currentEventNumber } as EventData)).to.be.true;
+    assert(broadcastDataSpy.calledOnce === true);
+    assert(broadcaster.state().eventNumber === currentEventNumber);
+    assert(rxJsEventEmitterEmitSpy.calledOnce === true);
+    assert(rxJsEventEmitterEmitSpy.calledWith("myCustomEvent:start",
+      { currentNumber: currentEventNumber } as EventData) === true);
   });
 
 
   it('should broadcast message with number 2', () => {
 
     let currentEventNumber: number = 2;
-
+    
+    broadcaster.find("#BroadcastButton").simulate("click");
     // broadcast second event and check the data send.
     broadcaster.find("#BroadcastButton").simulate("click");
 
-    expect(broadcastDataSpy.calledTwice).to.be.true;
-    expect(broadcaster.state().eventNumber).to.be.eq(currentEventNumber);
-    expect(rxJsEventEmitterEmitSpy.calledTwice).to.be.true;
-    expect(rxJsEventEmitterEmitSpy.calledWith("myCustomEvent:start",
-    { currentNumber: currentEventNumber } as EventData)).to.be.true;
+    assert(broadcastDataSpy.calledTwice === true);
+    assert(broadcaster.state().eventNumber === currentEventNumber);
+    assert(rxJsEventEmitterEmitSpy.calledTwice === true);
+    assert(rxJsEventEmitterEmitSpy.calledWith("myCustomEvent:start",
+      { currentNumber: currentEventNumber } as EventData) === true);
   });
-
 
   it('should fail on wrong message', () => {
 
     let currentEventNumber: number = 3;
     let wrongEventNumber: number = 99999;
 
+    broadcaster.find("#BroadcastButton").simulate("click");
+    // broadcast second event and check the data send.
+    broadcaster.find("#BroadcastButton").simulate("click");
     // broadcast third event and check the data send.
     broadcaster.find("#BroadcastButton").simulate("click");
 
-    expect(broadcastDataSpy.calledThrice).to.be.true;
-    expect(broadcaster.state().eventNumber).to.be.eq(currentEventNumber);
-    expect(rxJsEventEmitterEmitSpy.calledThrice).to.be.true;
-    expect(rxJsEventEmitterEmitSpy.calledWith("myCustomEvent:start",
-    { currentNumber: wrongEventNumber } as EventData)).to.be.false;
+    assert(broadcastDataSpy.calledThrice === true);
+    assert(broadcaster.state().eventNumber === currentEventNumber);
+    assert(rxJsEventEmitterEmitSpy.calledThrice === true);
+    assert(rxJsEventEmitterEmitSpy.calledWith("myCustomEvent:start",
+      { currentNumber: wrongEventNumber } as EventData) === false);
   });
 
 });

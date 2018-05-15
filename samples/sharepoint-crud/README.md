@@ -7,7 +7,7 @@ Sample Web Parts illustrating performing SharePoint CRUD operations in React, An
 ![Sample To do SharePoint Framework Client-Side Web Part built using Angular and ngOfficeUIFabric](./assets/preview.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
 
 ## Applies to
 
@@ -18,12 +18,13 @@ Sample Web Parts illustrating performing SharePoint CRUD operations in React, An
 
 Solution|Author(s)
 --------|---------
-sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm)
+sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm), Gautam Sheth (SharePoint Consultant, RapidCircle)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.2|March 30, 2018|Updated to SPFx 1.4.1
 1.1|March 9, 2017|Updated to SPFx GA
 1.0|September 16, 2016|Initial release
 
