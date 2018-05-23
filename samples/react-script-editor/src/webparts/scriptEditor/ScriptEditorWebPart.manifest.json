@@ -4,6 +4,7 @@
     "alias": "ScriptEditorWebPart",
     "componentType": "WebPart",
     "version": "*",
+    "supportsFullBleed": true,
     "manifestVersion": 2,
     "requiresCustomScript": true,
     "preconfiguredEntries": [
