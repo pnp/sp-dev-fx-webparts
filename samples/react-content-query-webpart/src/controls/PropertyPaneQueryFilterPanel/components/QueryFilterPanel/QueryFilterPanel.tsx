@@ -175,7 +175,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
 
     private sortFiltersByIndex(filters:IQueryFilter[]): IQueryFilter[] {
         return filters.sort((a, b) => { 
-            if(a.index > b.index) { return 1; } else { return 0; } 
+            return a.index - b.index;
         });
     }
 
