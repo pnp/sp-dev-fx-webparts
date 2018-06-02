@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "abstract-factory-client-side-solution",
+    "id": "bf29a897-ff82-4d9d-86c2-d13df911c3ef",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/abstract-factory.sppkg"
+  }
+}
