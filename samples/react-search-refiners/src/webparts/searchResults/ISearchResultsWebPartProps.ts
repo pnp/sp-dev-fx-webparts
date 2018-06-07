@@ -10,5 +10,6 @@ export interface ISearchResultsWebPartProps {
   showFileIcon: boolean;
   showCreatedDate: boolean;
   showResultsCount: boolean;
+  showBlank: boolean;
   useSearchBoxQuery: boolean;
 }

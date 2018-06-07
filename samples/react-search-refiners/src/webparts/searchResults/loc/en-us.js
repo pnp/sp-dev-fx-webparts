@@ -17,6 +17,8 @@ define([], function() {
     "ShowFileIconLabel": "Show file icons",
     "ShowCreatedDateLabel": "Show created date",
     "ShowResultsCountLabel": "Show results count",
+    "ShowBlankLabel": "Show blank if no result",
+    "ShowBlankEditInfoMessage": "No result returned for this query. This Web Part will remain blank in display mode according to parameters.",
     "NoFilterConfiguredLabel": "No filter configured", 
     "SearchQueryPlaceHolderText": "Search query in KQL format",
     "EmptyFieldErrorMessage": "This field cannot be empty",

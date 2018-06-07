@@ -2,7 +2,7 @@ define([], function() {
   return {
     "SearchSettingsGroupName": "Paramètres de recherche",
     "SearchQueryKeywordsFieldLabel": "Mots clés de recherche",
-    "QueryTemplateFieldLabel": "Modèle de reqûete",
+    "QueryTemplateFieldLabel": "Modèle de requête",
     "SelectedPropertiesFieldLabel": "Propriétés à récupérer",
     "LoadingMessage": "Les résultats sont en cours de chargement, veuillez patienter...",
     "MaxResultsCount": "Nombre de résulats à récupérer par page",
@@ -17,6 +17,8 @@ define([], function() {
     "ShowFileIconLabel": "Afficher les icônes de fichier",
     "ShowCreatedDateLabel": "Afficher la date de création",
     "ShowResultsCountLabel": "Afficher le nombre de résultats",
+    "ShowBlankLabel": "Ne rien afficher si aucun résultat",
+    "ShowBlankEditInfoMessage": "Aucun résultat pour cette requête. Ce composant Web Part restera vide en mode affichage conformément aux paramètres.",
     "NoFilterConfiguredLabel": "Aucun filtre configuré", 
     "SearchQueryPlaceHolderText": "Requête de recherche au format KQL",
     "EmptyFieldErrorMessage": "Ce champ ne peut pas être vide",    

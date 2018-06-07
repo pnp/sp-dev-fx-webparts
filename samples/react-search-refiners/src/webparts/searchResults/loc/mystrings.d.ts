@@ -19,6 +19,8 @@ declare interface ISearchWebPartStrings {
   ShowFileIconLabel: string;
   ShowCreatedDateLabel: string;
   ShowResultsCountLabel: string;
+  ShowBlankLabel: string;
+  ShowBlankEditInfoMessage: string;
   NoFilterConfiguredLabel: string;
   SearchQueryPlaceHolderText: string;
   EmptyFieldErrorMessage: string;

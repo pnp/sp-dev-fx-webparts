@@ -14,18 +14,24 @@ import * as strings from 'SearchWebPartStrings';
 import SearchContainer from "./components/SearchResultsContainer/SearchResultsContainer";
 import ISearchContainerProps from "./components/SearchResultsContainer/ISearchResultsContainerProps";
 import { ISearchResultsWebPartProps } from './ISearchResultsWebPartProps';
-import ISearchDataProvider from "../dataProviders/ISearchDataProvider";
-import MockSearchDataProvider from "../dataProviders/MockSearchDataProvider";
-import SearchDataProvider from "../dataProviders/SearchDataProvider";
+import ISearchDataProvider from "../dataProviders/SearchDataProvider/ISearchDataProvider";
+import MockSearchDataProvider from "../dataProviders/SearchDataProvider/MockSearchDataProvider";
+import SearchDataProvider from "../dataProviders/SearchDataProvider/SearchDataProvider";
+import ITaxonomyDataProvider from "../dataProviders/TaxonomyProvider/ITaxonomyDataProvider";
+import MockTaxonomyDataProvider from "../dataProviders/TaxonomyProvider/MockTaxonomyDataProvider";
+import TaxonomyProvider from "../dataProviders/TaxonomyProvider/TaxonomyProvider";
 import * as moment from "moment";
 import { Placeholder, IPlaceholderProps } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { PropertyPaneCheckbox } from '@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneCheckBox/PropertyPaneCheckbox';
 import { PropertyPaneHorizontalRule } from '@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneHorizontalRule/PropertyPaneHorizontalRule';
 import { UrlUtilities, DisplayMode } from "@microsoft/sp-core-library";
+import LocalizationHelper from "../common/LocalizationHelper";
+import { UrlHelper } from '../common/UrlHelper';
 
 export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
 
-    private _dataProvider: ISearchDataProvider;
+    private _searchDataProvider: ISearchDataProvider;
+    private _taxonomyDataProvider: ITaxonomyDataProvider;
     private _useResultSource: boolean;
 
     public constructor() {
@@ -45,16 +51,35 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
         moment.locale(currentLocale);
 
         if (Environment.type === EnvironmentType.Local) {
-            this._dataProvider = new MockSearchDataProvider();
+            this._searchDataProvider = new MockSearchDataProvider();
+            this._taxonomyDataProvider = new MockTaxonomyDataProvider();
         } else {
-            this._dataProvider = new SearchDataProvider(this.context);
+
+            const lcid = LocalizationHelper.getLocaleId(this.context.pageContext.cultureInfo.currentUICultureName);
+
+            this._searchDataProvider = new SearchDataProvider(this.context);
+            this._taxonomyDataProvider = new TaxonomyProvider(this.context, lcid);
         }
 
         this._useResultSource = false;
 
-        // Use the SPFx event aggregator to get the search box query
-        this.context.eventAggregator.subscribeByEventName("search:newQueryKeywords", this.componentId , this.bindSearchQuery);
+        if (this.properties.useSearchBoxQuery) {
 
+            // Check if there is an existing query parameter on loading (only on first load)
+            const queryStringKeywords = UrlHelper.getQueryStringParam("q", window.location.href);
+        
+            if (queryStringKeywords) {
+                this.properties.queryKeywords = decodeURIComponent(queryStringKeywords);
+            } else {
+                this.properties.queryKeywords = "";
+            }
+        }
+
+        // Use the SPFx event aggregator to get the search box query keywords
+        // Bind this on initialization since options can be changed in the proeprty pane an this method won't be called again
+        // We don't want subscribe every time this option is changed
+        this.context.eventAggregator.subscribeByEventName("search:newQueryKeywords", this.componentId , this.bindSearchQuery);
+                    
         return super.onInit();
     }
 
@@ -68,15 +93,16 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
         let renderElement = null;
 
         // Configure the provider before the query according to our needs
-        this._dataProvider.resultsCount = this.properties.maxResultsCount;
-        this._dataProvider.queryTemplate = this.properties.queryTemplate;
-        this._dataProvider.resultSourceId = this.properties.resultSourceId;
-        this._dataProvider.enableQueryRules = this.properties.enableQueryRules;
+        this._searchDataProvider.resultsCount = this.properties.maxResultsCount;
+        this._searchDataProvider.queryTemplate = this.properties.queryTemplate;
+        this._searchDataProvider.resultSourceId = this.properties.resultSourceId;
+        this._searchDataProvider.enableQueryRules = this.properties.enableQueryRules;
 
         const searchContainer: React.ReactElement<ISearchContainerProps> = React.createElement(
             SearchContainer,
             {
-                searchDataProvider: this._dataProvider,
+                searchDataProvider: this._searchDataProvider,
+                taxonomyDataProvider: this._taxonomyDataProvider,
                 queryKeywords: this.properties.queryKeywords,
                 maxResultsCount: this.properties.maxResultsCount,
                 resultSourceId: this.properties.resultSourceId,
@@ -87,6 +113,8 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                 showFileIcon: this.properties.showFileIcon,
                 showCreatedDate: this.properties.showCreatedDate,
                 showResultsCount: this.properties.showResultsCount,
+                showBlank: this.properties.showBlank,
+                displayMode: this.displayMode
             } as ISearchContainerProps
         );
 
@@ -104,6 +132,14 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
         renderElement = (this.properties.queryKeywords && !this.properties.useSearchBoxQuery) || this.properties.useSearchBoxQuery ? searchContainer : placeholder;
         
         ReactDom.render(renderElement, this.domElement);              
+    }
+
+    public onPropertyPaneFieldChanged(changedProperty: string) {
+
+        if (changedProperty === "useSearchBoxQuery") {
+            // Reset the value if use search box (property pane)
+            this.properties.queryKeywords = this.properties.useSearchBoxQuery ? "" : this.properties.queryKeywords;
+        }
     }
 
     protected get dataVersion(): Version {
@@ -125,7 +161,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                                 PropertyPaneTextField('queryKeywords', {
                                     label: strings.SearchQueryKeywordsFieldLabel,
                                     description: strings.SearchQueryKeywordsFieldDescription,
-                                    value: this.properties.queryKeywords,
+                                    value: this.properties.useSearchBoxQuery ? "" : this.properties.queryKeywords,
                                     multiline: true,
                                     resizable: true,
                                     placeholder: strings.SearchQueryPlaceHolderText,
@@ -178,9 +214,17 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                                 })
                             ]
                         },
+                    ]
+                },
+                {
+                    groups: [
                         {
                             groupName: strings.StylingSettingsGroupName,
                             groupFields: [
+                                PropertyPaneToggle("showBlank", {
+                                    label: strings.ShowBlankLabel,
+                                    checked: this.properties.showBlank,
+                                }),
                                 PropertyPaneToggle("showResultsCount", {
                                     label: strings.ShowResultsCountLabel,
                                     checked: this.properties.showResultsCount,
@@ -228,7 +272,7 @@ export default class SearchWebPart extends BaseClientSideWebPart<ISearchResultsW
                     
                 this.properties.queryKeywords = eventData.data;
                 this.render();
-            }
+            }  
         }
     }
 

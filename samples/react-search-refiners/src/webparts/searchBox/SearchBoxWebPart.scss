@@ -1,0 +1,21 @@
+.searchBox {
+
+    .errorMessage {
+        margin-bottom: 10px;
+    }
+
+    .suggestionItem {
+        padding: 10px;    
+    }
+
+    .suggestionPanel {
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+
+    .selected {
+        color: #ffffff;
+        background-color: '[theme:themeDarker, default:#0078d7]';
+    }
+}
