@@ -1,5 +1,6 @@
 import { override } from '@microsoft/decorators';
 import { Log } from '@microsoft/sp-core-library';
+//import { RowAccessor} from '@microsoft/sp-listview-extensibility';
 import {
   BaseListViewCommandSet,
   Command,
@@ -7,8 +8,12 @@ import {
   IListViewCommandSetExecuteEventParameters
 } from '@microsoft/sp-listview-extensibility';
 import { Dialog } from '@microsoft/sp-dialog';
+import { setup as pnpSetup } from "@pnp/common";
+import { sp } from "@pnp/sp";
 
 import * as strings from 'ItemHistoryCommandSetStrings';
+import ItemHistoryDialog from "./ItemHistory";
+import { find } from "lodash";
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -24,11 +29,14 @@ export interface IItemHistoryCommandSetProperties {
 const LOG_SOURCE: string = 'ItemHistoryCommandSet';
 
 export default class ItemHistoryCommandSet extends BaseListViewCommandSet<IItemHistoryCommandSetProperties> {
-
+  public fields: Array<string>;
   @override
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, 'Initialized ItemHistoryCommandSet');
-    return Promise.resolve();
+    pnpSetup({
+      spfxContext: this.context
+    });
+   return Promise.resolve();
   }
 
   @override
@@ -39,15 +47,30 @@ export default class ItemHistoryCommandSet extends BaseListViewCommandSet<IItemH
       compareOneCommand.visible = event.selectedRows.length === 1;
     }
   }
-
+  private _colorCode: string;
   @override
   public onExecute(event: IListViewCommandSetExecuteEventParameters): void {
     switch (event.itemId) {
-      case 'COMMAND_1':
-        Dialog.alert(`${this.properties.sampleTextOne}`);
-        break;
-      case 'COMMAND_2':
-        Dialog.alert(`${this.properties.sampleTextTwo}`);
+      case 'COMMAND_ViewHistory':
+        debugger;
+
+        const dialog: ItemHistoryDialog = new ItemHistoryDialog();
+        dialog.itemId = event.selectedRows[0].getValueByName("ID")
+        dialog.listId = this.context.pageContext.list.id.toString();
+        dialog.viewId = this.context.pageContext.legacyPageContext.viewId
+   
+        // let cols = this.context.listView.columns;
+        // for (let col in cols) {
+        //   debugger;
+        // }
+        // cols.forEach((value, index, cols) => {
+        //   debugger;
+        // })
+        dialog.show().then(() => {
+          // this._colorCode = dialog.colorCode;
+          // Dialog.alert(`Picked color: ${dialog.colorCode}`);
+
+        });
         break;
       default:
         throw new Error('Unknown command');

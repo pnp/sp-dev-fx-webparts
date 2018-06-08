@@ -16,14 +16,9 @@
   "requiresCustomScript": false,
 
   "items": {
-    "COMMAND_1": {
-      "title": { "default": "Command One" },
+    "COMMAND_ViewHistory": {
+      "title": { "default": "View History" },
       "iconImageUrl": "icons/request.png",
-      "type": "command"
-    },
-    "COMMAND_2": {
-      "title": { "default": "Command Two" },
-      "iconImageUrl": "icons/cancel.png",
       "type": "command"
     }
   }

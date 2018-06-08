@@ -11,11 +11,12 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "~1.4.1",
     "@microsoft/decorators": "~1.4.1",
-    "@types/webpack-env": ">=1.12.1 <1.14.0",
+    "@microsoft/sp-core-library": "~1.4.1",
+    "@microsoft/sp-dialog": "~1.4.1",
     "@microsoft/sp-listview-extensibility": "~1.4.1",
-    "@microsoft/sp-dialog": "~1.4.1"
+    "@pnp/spfx-controls-react": "^1.4.0",
+    "@types/webpack-env": ">=1.12.1 <1.14.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",
