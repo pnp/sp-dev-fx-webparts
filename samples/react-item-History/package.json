@@ -15,8 +15,8 @@
     "@microsoft/sp-core-library": "~1.4.1",
     "@microsoft/sp-dialog": "~1.4.1",
     "@microsoft/sp-listview-extensibility": "~1.4.1",
-    "@pnp/spfx-controls-react": "^1.4.0",
-    "@types/webpack-env": ">=1.12.1 <1.14.0"
+    "@types/webpack-env": ">=1.12.1 <1.14.0",
+    "office-ui-fabric-react": "^5.41.2"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",

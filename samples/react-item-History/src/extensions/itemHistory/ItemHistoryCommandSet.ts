@@ -55,20 +55,12 @@ export default class ItemHistoryCommandSet extends BaseListViewCommandSet<IItemH
         debugger;
 
         const dialog: ItemHistoryDialog = new ItemHistoryDialog();
-        dialog.itemId = event.selectedRows[0].getValueByName("ID")
+        dialog.itemId = event.selectedRows[0].getValueByName("ID");
         dialog.listId = this.context.pageContext.list.id.toString();
-        dialog.viewId = this.context.pageContext.legacyPageContext.viewId
+        dialog.viewId = this.context.pageContext.legacyPageContext.viewId;
    
-        // let cols = this.context.listView.columns;
-        // for (let col in cols) {
-        //   debugger;
-        // }
-        // cols.forEach((value, index, cols) => {
-        //   debugger;
-        // })
+
         dialog.show().then(() => {
-          // this._colorCode = dialog.colorCode;
-          // Dialog.alert(`Picked color: ${dialog.colorCode}`);
 
         });
         break;

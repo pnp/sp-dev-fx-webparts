@@ -9,9 +9,15 @@ import {
     DialogFooter,
     DialogContent
 } from 'office-ui-fabric-react';
+import {
+    DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, Selection,
+    ColumnActionsMode
+  } from "office-ui-fabric-react/lib/DetailsList";
 
 
-import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
+
+
+//import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
 import { sp } from "@pnp/sp";
 interface IItemHistoryDialogContentProps {
     versions: Array<any>;
@@ -26,7 +32,7 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
     }
 
     public render(): JSX.Element {
-        let viewFields: Array<IViewField> = this.props.columns.map(f => { return { name: f } });
+        let viewFields: Array<IColumn> = this.props.columns.map(f => { return { name: f ,key:name, fieldName:name, minWidth:100}; });
         debugger;
         return (<DialogContent
             title='Item History'
@@ -34,11 +40,13 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
             onDismiss={this.props.close}
             showCloseButton={true}
         >
-            <ListView
+            <DetailsList 
                 items={this.props.versions}
-                viewFields={viewFields}
+         columns       ={viewFields}
                 compact={false}
                 selectionMode={SelectionMode.none}
+          
+                onShouldVirtualize = { () => false}
 
             />
             <DialogFooter>
@@ -76,7 +84,7 @@ export default class ItemHistoryDialog extends BaseDialog {
                     })
                     .catch((err: any) => {
                         debugger;
-                    })
+                    });
             })
             .catch((err: any) => {
                 debugger;

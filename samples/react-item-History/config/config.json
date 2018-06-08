@@ -14,7 +14,7 @@
   "externals": {},
   "localizedResources": {
     "ItemHistoryCommandSetStrings": "lib/extensions/itemHistory/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+
     
   }
 }
