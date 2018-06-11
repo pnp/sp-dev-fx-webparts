@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "d67c5975-ba3e-49ec-9a23-245c15ea3cda",
   "alias": "IceCreamShopWebPart",
   "componentType": "WebPart",

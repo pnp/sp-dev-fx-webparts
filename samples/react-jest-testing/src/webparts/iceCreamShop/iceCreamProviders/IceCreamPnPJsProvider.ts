@@ -12,7 +12,7 @@ export class IceCreamPnPJsProvider implements IIceCreamProvider {
 
     public getAll(): Promise<IceCream[]> {
 
-        return new Promise<IceCream[]>(async (resolve, reject) => {
+        return new Promise<IceCream[]>((resolve, reject) => {
 
             const query: SearchQuery = {
                 RowLimit: 10,

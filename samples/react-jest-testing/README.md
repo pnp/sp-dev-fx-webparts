@@ -15,6 +15,10 @@ There is also a _Jest Watch_ (watcher) configuration that **will let live execut
 
 ![SharePoint Framework Jest Visual Studio Code - debugging unit test](./assets/Jest-Typescript-VSCode-debugging.png)
 
+### Important: The dedug configurations should be placed in the .vscode -> launch.json file to make the debugging work
+
+The sample has folder named `vscode` where the `launch.json` configuration for debuggind jest is stored. The configurations should be copied to your `.vscode` folder -> `launch.json` file. Once copied into your launch.json, then they will appear in your visual studio code debugging tab.
+
 ## Sinonjs is included as mocking framework for the SPFx solution
 
 The solution also includes [Sinonjs](http://sinonjs.org/) that can be used to spawn spies, stubs and mocks.
@@ -58,7 +62,7 @@ The sample uses SPFx web part, but the same setup applies for SPFx extensions an
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.5.0-green.svg)
 
 ## Applies to
 
@@ -81,6 +85,7 @@ react-jest-testing | Velin Georgiev ( [@VelinGeorgiev](https://twitter.com/velin
 Version|Date|Comments
 -------|----|--------
 0.0.1|May 9, 2018 | Initial commit
+0.0.2|June 12, 2018 | Update to 1.5.0, missing launch.json added
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
