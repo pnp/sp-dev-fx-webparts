@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "solid-client-side-solution",
+    "id": "d9d1155b-2c52-445e-901f-8ae9c6552779",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/solid.sppkg"
+  }
+}
