@@ -61,8 +61,11 @@ export default class ItemHistoryCommandSet extends BaseListViewCommandSet<IItemH
    
 
         dialog.show().then(() => {
-
-        });
+debugger;
+        })
+        .catch((e)=>{
+          debugger;
+        })        ;
         break;
       default:
         throw new Error('Unknown command');
