@@ -22,7 +22,7 @@ import { sp, Fields } from "@pnp/sp";
 interface IItemHistoryDialogContentProps {
     versions: Array<any>;
     columns: Array<string>;
-    columnDefs:Fields;
+    columnDefs: Fields;
     close: () => void;
 }
 class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContentProps, {}> {
@@ -31,7 +31,11 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
     constructor(props) {
         super(props);
     }
+    public onRenderPerson (item?: any, index?: number, column?: IColumn):any {
+        debugger;
+        return item[column.fieldName]["LookupValue"]
 
+    }
     public render(): JSX.Element {
         debugger;
         try {
@@ -44,12 +48,14 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
                         minWidth: 100
                     };
                 });
-          
+
             let viewFields: Array<IColumn> = [
                 { name: "VendorNumber", key: "VendorNumber", fieldName: "VendorNumber", minWidth: 100 },
                 { name: "Region", key: "Region", fieldName: "Region", minWidth: 100 },
                 { name: "Title", key: "Title", fieldName: "Title", minWidth: 100 },
-          //  {name: "Editor", key: "Editor", fieldName: "Editor", minWidth: 100},
+                {
+                    name: "Editor", key: "Editor", fieldName: "Editor", minWidth: 100, onRender: this.onRenderPerson
+                },
                 //     {name: "Created", key: "Created", fieldName: "Created", minWidth: 100}
             ];
             debugger;
@@ -100,7 +106,7 @@ export default class ItemHistoryDialog extends BaseDialog {
         let batch = sp.createBatch()
         // get the fields in the view
         sp.web.lists.getById(this.listId).views.getById(this.viewId).fields.inBatch(batch).get().then((results: any) => {
-     
+
             this.fieldInterntalNames = results.Items.map(f => {
                 switch (f) {
                     case "LinkTitle":
@@ -128,7 +134,7 @@ export default class ItemHistoryDialog extends BaseDialog {
         }).catch((err: any) => {
             debugger;
         });
-        return batch.execute().then(e=>{
+        return batch.execute().then(e => {
             debugger;
         });
 
@@ -153,7 +159,7 @@ export default class ItemHistoryDialog extends BaseDialog {
 
     @autobind
     private _submit(color: string): void {
-       
+
         this.close();
     }
 }
