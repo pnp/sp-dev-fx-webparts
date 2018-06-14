@@ -18,10 +18,11 @@ import {
 
 
 //import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
-import { sp } from "@pnp/sp";
+import { sp, Fields } from "@pnp/sp";
 interface IItemHistoryDialogContentProps {
     versions: Array<any>;
     columns: Array<string>;
+    columnDefs:Fields;
     close: () => void;
 }
 class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContentProps, {}> {
@@ -43,36 +44,12 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
                         minWidth: 100
                     };
                 });
-            //                 {name: "VendorNumber", key: "VendorNumber", fieldName: "VendorNumber", minWidth: 100}
-            // 1
-            // :
-            // 
-            // 2
-            // :
-            // 
-            // 3
-            // :
-            // {name: "Created", key: "Created", fieldName: "Created", minWidth: 100}
-            // 4
-            // :
-            // {name: "Author", key: "Author", fieldName: "Author", minWidth: 100}
-            // 5
-            // :
-            // {name: "ID", key: "ID", fieldName: "ID", minWidth: 100}
-            // 6
-            // :
-            // {name: "Status", key: "Status", fieldName: "Status", minWidth: 100}
-            // 7
-            // :
-            // {name: "Region", key: "Region", fieldName: "Region", minWidth: 100}
-            // 8
-            // :
-            // {name: "Comments", key: "Comments", fieldName: "Comments", minWidth: 100}
+          
             let viewFields: Array<IColumn> = [
                 { name: "VendorNumber", key: "VendorNumber", fieldName: "VendorNumber", minWidth: 100 },
                 { name: "Region", key: "Region", fieldName: "Region", minWidth: 100 },
                 { name: "Title", key: "Title", fieldName: "Title", minWidth: 100 },
-                //    {name: "Editor", key: "Editor", fieldName: "Editor", minWidth: 100},
+          //  {name: "Editor", key: "Editor", fieldName: "Editor", minWidth: 100},
                 //     {name: "Created", key: "Created", fieldName: "Created", minWidth: 100}
             ];
             debugger;
@@ -115,41 +92,45 @@ export default class ItemHistoryDialog extends BaseDialog {
     public listId: string;
     public viewId: string;
     public fieldInterntalNames: Array<string>;
+    public fieldDefinitions: Fields;
     public versionHistory: Array<any>;
     public onBeforeOpen(): Promise<void> {
         // set up pnp here
-
         // let viewId = this.context.pageContext.legacyPageContext.viewId //get the view id and then used pnp to query view columns/fields as follows,
-        return sp.web.lists.getById(this.listId).
-            views.getById(this.viewId).fields.get()
-            .then((results: any) => {
-                debugger;
-                this.fieldInterntalNames = results.Items.map(f => {
-                    switch (f) {
-                        case "LinkTitle":
-                            return "Title";
-                            //break;
-                        default:
-                            return f;
-                    }
-                });
-
-                return sp.web.lists.getById(this.listId).items.getById(this.itemId).versions.select(this.fieldInterntalNames.join(",")).get()
-                    .then((versions) => {
-                        this.versionHistory = versions;
-                        debugger;
-                        return;
-
-                    })
-                    .catch((err: any) => {
-                        debugger;
-                    });
-            })
-            .catch((err: any) => {
-                debugger;
+        let batch = sp.createBatch()
+        // get the fields in the view
+        sp.web.lists.getById(this.listId).views.getById(this.viewId).fields.inBatch(batch).get().then((results: any) => {
+     
+            this.fieldInterntalNames = results.Items.map(f => {
+                switch (f) {
+                    case "LinkTitle":
+                        return "Title";
+                    //break;
+                    default:
+                        return f;
+                }
             });
-
-
+        }).catch((err: any) => {
+            debugger;
+        });
+        // get the field definitions for the list
+        sp.web.lists.getById(this.listId).fields.inBatch(batch).get().then((results: any) => {
+            debugger;
+            this.fieldDefinitions = results;
+        }).catch((err: any) => {
+            debugger;
+        });
+        // get the field versionHostory
+        sp.web.lists.getById(this.listId).items.getById(this.itemId).versions.inBatch(batch).get().then((versions) => {
+            this.versionHistory = versions;
+            debugger;
+            return;
+        }).catch((err: any) => {
+            debugger;
+        });
+        return batch.execute().then(e=>{
+            debugger;
+        });
 
     }
     public render(): void {
@@ -157,6 +138,7 @@ export default class ItemHistoryDialog extends BaseDialog {
         ReactDOM.render(<ItemHistoryDialogContent
             versions={this.versionHistory}
             columns={this.fieldInterntalNames}
+            columnDefs={this.fieldDefinitions}
             close={this.close}
 
 
@@ -171,7 +153,7 @@ export default class ItemHistoryDialog extends BaseDialog {
 
     @autobind
     private _submit(color: string): void {
-        debugger;
+       
         this.close();
     }
 }

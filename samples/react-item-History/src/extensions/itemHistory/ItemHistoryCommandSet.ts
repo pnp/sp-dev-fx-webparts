@@ -52,7 +52,7 @@ export default class ItemHistoryCommandSet extends BaseListViewCommandSet<IItemH
   public onExecute(event: IListViewCommandSetExecuteEventParameters): void {
     switch (event.itemId) {
       case 'COMMAND_ViewHistory':
-        debugger;
+      
 
         const dialog: ItemHistoryDialog = new ItemHistoryDialog();
         dialog.itemId = event.selectedRows[0].getValueByName("ID");
@@ -61,7 +61,7 @@ export default class ItemHistoryCommandSet extends BaseListViewCommandSet<IItemH
    
 
         dialog.show().then(() => {
-debugger;
+
         })
         .catch((e)=>{
           debugger;
