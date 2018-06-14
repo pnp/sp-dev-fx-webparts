@@ -1,9 +1,11 @@
 class ConfigurationManager {
     private static instance: ConfigurationManager;
-    public constructor() {
+  
+    private constructor() {
         // do something construct...
     }
-    static getInstance(): ConfigurationManager {
+  
+    public static getInstance(): ConfigurationManager {
         if (!ConfigurationManager.instance) {
             ConfigurationManager.instance = new ConfigurationManager();
             // ... any one time initialization goes here ...
@@ -12,15 +14,15 @@ class ConfigurationManager {
     }
 
     // excercise for the reader to get data from an external data source.
-    numberOfItemsPerPage(): number {
+    public numberOfItemsPerPage(): number {
         return 10;
     }
 
-    maxNumberOfConnections(): number {
+    public maxNumberOfConnections(): number {
         return 10;
     }
 
-    restTimeout(): number {
+    public restTimeout(): number {
         return 1000;
     }
 }
