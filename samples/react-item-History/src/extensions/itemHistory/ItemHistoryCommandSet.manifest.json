@@ -18,7 +18,6 @@
   "items": {
     "COMMAND_ViewHistory": {
       "title": { "default": "Version History (Grid)" },
-      "iconImageUrl": "icons/request.png",
       "type": "command"
     }
   }

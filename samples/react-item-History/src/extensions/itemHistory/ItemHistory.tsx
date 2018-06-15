@@ -1,28 +1,33 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BaseDialog, IDialogConfiguration } from '@microsoft/sp-dialog';
+
+import { find } from "lodash";
 import {
     autobind,
-    ColorPicker,
     PrimaryButton,
     Button,
     DialogFooter,
     DialogContent
 } from 'office-ui-fabric-react';
+
+
 import {
     DetailsList, DetailsListLayoutMode, IColumn, SelectionMode, Selection,
     ColumnActionsMode
 } from "office-ui-fabric-react/lib/DetailsList";
 
+import { parse, format } from "date-fns";
+
 
 
 
 //import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
-import { sp, Fields } from "@pnp/sp";
+import { sp, Fields, Field } from "@pnp/sp";
 interface IItemHistoryDialogContentProps {
     versions: Array<any>;
     columns: Array<string>;
-    columnDefs: Fields;
+    columnDefs: Array<Field>;
     close: () => void;
 }
 class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContentProps, {}> {
@@ -31,47 +36,141 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
     constructor(props) {
         super(props);
     }
-    public onRenderPerson (item?: any, index?: number, column?: IColumn):any {
-        debugger;
-        return item[column.fieldName]["LookupValue"]
+
+    @autobind
+    public fieldChanged(item?: any, index?: number, column?: IColumn, columnType: string = "Text"): boolean {
+        if (index < this.props.versions.length - 1) {
+            switch (columnType) {
+                case "User":
+                    debugger;
+                    if (this.props.versions[index][column.fieldName]["LookupId"] !== this.props.versions[index + 1][column.fieldName]["LookupId"]) {
+                        return true;
+                    }
+                    break;
+                default:
+                    if (this.props.versions[index][column.fieldName] !== this.props.versions[index + 1][column.fieldName]) {
+                        return true;
+                    }
+                    break;
+
+
+
+            }
+        }
+        return false;
+    }
+    @autobind
+    public getStyle(item?: any, index?: number, column?: IColumn, columnType: string = "Text"): React.CSSProperties {
+        if (this.fieldChanged(item, index, column, columnType)) {
+            return {
+                backgroundColor: 'yellow',
+            };
+        }
+        return {};
+    }
+
+    @autobind
+    public onRenderDateTime(item?: any, index?: number, column?: IColumn): any {
+        return (<div style={this.getStyle(item, index, column)}>
+            {format(parse(item[column.fieldName]), "DD-MMM-YYYY")}
+        </div>)
+    }
+    @autobind
+    public onRenderUser(item?: any, index?: number, column?: IColumn): any {
+        return (<div style={this.getStyle(item, index, column, "User")}>
+            {item[column.fieldName]["LookupValue"]}
+        </div>)
+
 
     }
+    @autobind
+    public onRenderChoice(item?: any, index?: number, column?: IColumn): any {
+        debugger;
+        return (<div style={this.getStyle(item, index, column)}>
+            {item[column.fieldName]}
+        </div>)
+    }
+    @autobind
+    public onRenderText(item?: any, index?: number, column?: IColumn): any {
+        debugger;
+        return (<div style={this.getStyle(item, index, column)}>
+            {item[column.fieldName]}
+        </div>)
+    }
+    @autobind
     public render(): JSX.Element {
+
         debugger;
         try {
-            let testviewFields: Array<IColumn> = this.props.columns.map(
-                f => {
-                    return {
-                        name: f,
-                        key: f,
-                        fieldName: f,
-                        minWidth: 100
-                    };
-                });
+            let testviewFields: Array<IColumn> = this.props.columns.map(cname => {
+                let columnDef: Field = find(this.props.columnDefs, (colunmDef) => { return colunmDef["InternalName"] === cname; });
+                switch (columnDef["TypeAsString"]) {
+                    case "DateTime":
+                        return {
+                            name: columnDef["Title"],
+                            isResizable:true,
+                            key: cname,
+                            fieldName: cname,
+                            minWidth: 100,
+                            onRender: this.onRenderDateTime,
+                            
 
-            let viewFields: Array<IColumn> = [
-                { name: "VendorNumber", key: "VendorNumber", fieldName: "VendorNumber", minWidth: 100,isResizable:true },
-                { name: "Region", key: "Region", fieldName: "Region", minWidth: 100 ,isResizable:true},
-                { name: "Title", key: "Title", fieldName: "Title", minWidth: 100 ,isResizable:true},
-                {
-                    name: "Editor", key: "Editor", fieldName: "Editor", minWidth: 100,isResizable:true, onRender: this.onRenderPerson
-                },
-                //     {name: "Created", key: "Created", fieldName: "Created", minWidth: 100}
-            ];
-            debugger;
+                        };
+                    case "Choice":
+                        return {
+                            name: columnDef["Title"],
+                            isResizable:true,
+                            key: cname,
+                            fieldName: cname,
+                            minWidth: 100,
+                            onRender: this.onRenderChoice
+                        };
+                    case "User":
+                        return {
+                            name: columnDef["Title"],
+                            isResizable:true,
+                            key: cname,
+                            fieldName: cname,
+                            minWidth: 100,
+                            onRender: this.onRenderUser
+                        };
+                    default:
+                        return {
+                            name: columnDef["Title"],
+                            isResizable:true,
+                            key: cname,
+                            fieldName: cname,
+                            minWidth: 100,
+                            onRender: this.onRenderText
+                        };
+                }
+
+            });
+            testviewFields.unshift({
+                name: "Version",
+                isResizable:true,
+                key: "Version",
+                fieldName: "VersionLabel",
+                minWidth: 50
+            }
+            );
+
+
+
             return (<DialogContent
                 title='Version History(Grid)'
-                              onDismiss={this.props.close}
+                onDismiss={this.props.close}
                 showCloseButton={true}
+            
             >
                 <DetailsList
                     items={this.props.versions}
-                    columns={viewFields}
+                    columns={testviewFields}
                     compact={false}
                     selectionMode={SelectionMode.none}
                     key={"ID"}
                     onShouldVirtualize={() => { return false }}
-
+                    layoutMode={DetailsListLayoutMode.justified}
                     skipViewportMeasures={true}
 
                 />
@@ -97,7 +196,7 @@ export default class ItemHistoryDialog extends BaseDialog {
     public listId: string;
     public viewId: string;
     public fieldInterntalNames: Array<string>;
-    public fieldDefinitions: Fields;
+    public fieldDefinitions: Array<Field>;
     public versionHistory: Array<any>;
     public onBeforeOpen(): Promise<void> {
         // set up pnp here
@@ -109,18 +208,20 @@ export default class ItemHistoryDialog extends BaseDialog {
             this.fieldInterntalNames = results.Items.map(f => {
                 switch (f) {
                     case "LinkTitle":
+                    case "LinkTitleNoMenu":
                         return "Title";
                     //break;
                     default:
                         return f;
                 }
             });
+
         }).catch((err: any) => {
             debugger;
         });
         // get the field definitions for the list
         sp.web.lists.getById(this.listId).fields.inBatch(batch).get().then((results: any) => {
-            debugger;
+
             this.fieldDefinitions = results;
         }).catch((err: any) => {
             debugger;
@@ -128,13 +229,13 @@ export default class ItemHistoryDialog extends BaseDialog {
         // get the field versionHostory
         sp.web.lists.getById(this.listId).items.getById(this.itemId).versions.inBatch(batch).get().then((versions) => {
             this.versionHistory = versions;
-            debugger;
+
             return;
         }).catch((err: any) => {
             debugger;
         });
         return batch.execute().then(e => {
-            debugger;
+
         });
 
     }
