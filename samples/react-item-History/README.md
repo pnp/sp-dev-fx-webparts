@@ -1,26 +1,47 @@
 ## react-item-history
 
-This is where you include your WebPart documentation.
+## Summary
+This listview command is used to show the past versions of the selected list item in a grid.
 
-### Building the code
+![site page header configurator web part](./assets/spfx-react-image-magnifier.gif)
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/version-GA-green.svg)
 
-This package produces the following:
+## Applies to
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-### Build options
+## Prerequisites
+ 
+> No pre-requisites
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-item-History|Russell Gove
+
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|June 15, 2018|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- in the command line run:
+  - `npm install`
+  - `gulp serve`
+
+## Features
+This listview command is used to show the past versions of the selected list item in a grid.
+
