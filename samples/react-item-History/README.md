@@ -3,7 +3,7 @@
 ## Summary
 This listview command is used to show the past versions of the selected list item in a grid.
 
-![site page header configurator web part](./assets/spfx-react-image-magnifier.gif)
+![Item History](./capture.png)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
