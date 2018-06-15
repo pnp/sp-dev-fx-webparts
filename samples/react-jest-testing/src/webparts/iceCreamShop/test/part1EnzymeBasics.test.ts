@@ -44,12 +44,15 @@ describe('Enzyme basics', () => {
 
   it('should has the correct title', () => {
 
+    // Arrange
     // define contains/like css selector
     let cssSelector: string = 'h1';
 
+    // Act
     // find the elemet using css selector
     const text = reactComponent.find(cssSelector).text();
 
+    // Assert
     expect(text).toBe("PnP Ice Cream Shop");  
   });
 });
