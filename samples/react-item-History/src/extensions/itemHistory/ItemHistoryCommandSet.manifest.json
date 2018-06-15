@@ -1,0 +1,24 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/command-set-extension-manifest.schema.json",
+
+  "id": "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed",
+  "alias": "ItemHistoryCommandSet",
+  "componentType": "Extension",
+  "extensionType": "ListViewCommandSet",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+
+  "items": {
+    "COMMAND_ViewHistory": {
+      "title": { "default": "Version History (Grid)" },
+      "type": "command"
+    }
+  }
+}
