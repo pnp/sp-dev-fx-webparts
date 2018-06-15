@@ -50,19 +50,18 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
                 });
 
             let viewFields: Array<IColumn> = [
-                { name: "VendorNumber", key: "VendorNumber", fieldName: "VendorNumber", minWidth: 100 },
-                { name: "Region", key: "Region", fieldName: "Region", minWidth: 100 },
-                { name: "Title", key: "Title", fieldName: "Title", minWidth: 100 },
+                { name: "VendorNumber", key: "VendorNumber", fieldName: "VendorNumber", minWidth: 100,isResizable:true },
+                { name: "Region", key: "Region", fieldName: "Region", minWidth: 100 ,isResizable:true},
+                { name: "Title", key: "Title", fieldName: "Title", minWidth: 100 ,isResizable:true},
                 {
-                    name: "Editor", key: "Editor", fieldName: "Editor", minWidth: 100, onRender: this.onRenderPerson
+                    name: "Editor", key: "Editor", fieldName: "Editor", minWidth: 100,isResizable:true, onRender: this.onRenderPerson
                 },
                 //     {name: "Created", key: "Created", fieldName: "Created", minWidth: 100}
             ];
             debugger;
             return (<DialogContent
-                title='Item History'
-                subText={"SS"}
-                onDismiss={this.props.close}
+                title='Version History(Grid)'
+                              onDismiss={this.props.close}
                 showCloseButton={true}
             >
                 <DetailsList
