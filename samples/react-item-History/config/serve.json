@@ -9,8 +9,7 @@
         "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed": {
           "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
           "properties": {
-            "sampleTextOne": "One item is selected in the list",
-            "sampleTextTwo": "This command is always visible."
+          
           }
         }
       }
@@ -21,9 +20,8 @@
         "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed": {
           "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
           "properties": {
-            "sampleTextOne": "One item is selected in the list",
-            "sampleTextTwo": "This command is always visible."
           }
+          
         }
       }
     }

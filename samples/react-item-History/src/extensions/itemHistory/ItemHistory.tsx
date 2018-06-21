@@ -31,8 +31,6 @@ interface IItemHistoryDialogContentProps {
     close: () => void;
 }
 class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContentProps, {}> {
-    private _pickedColor: string;
-
     constructor(props) {
         super(props);
     }
@@ -73,13 +71,13 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
     public onRenderDateTime(item?: any, index?: number, column?: IColumn): any {
         return (<div style={this.getStyle(item, index, column)}>
             {format(parse(item[column.fieldName]), "DD-MMM-YYYY")}
-        </div>)
+        </div>);
     }
     @autobind
     public onRenderUser(item?: any, index?: number, column?: IColumn): any {
         return (<div style={this.getStyle(item, index, column, "User")}>
             {item[column.fieldName]["LookupValue"]}
-        </div>)
+        </div>);
 
 
     }
@@ -88,14 +86,14 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
         debugger;
         return (<div style={this.getStyle(item, index, column)}>
             {item[column.fieldName]}
-        </div>)
+        </div>);
     }
     @autobind
     public onRenderText(item?: any, index?: number, column?: IColumn): any {
         debugger;
         return (<div style={this.getStyle(item, index, column)}>
             {item[column.fieldName]}
-        </div>)
+        </div>);
     }
     @autobind
     public render(): JSX.Element {
@@ -169,7 +167,7 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
                     compact={false}
                     selectionMode={SelectionMode.none}
                     key={"ID"}
-                    onShouldVirtualize={() => { return false }}
+                    onShouldVirtualize={() => { return false; }}
                     layoutMode={DetailsListLayoutMode.justified}
                     skipViewportMeasures={true}
 
@@ -182,14 +180,10 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
         }
         catch (e) {
             debugger;
-        };
+        }
 
     }
 
-    @autobind
-    private _onColorChange(color: string): void {
-        this._pickedColor = color;
-    }
 }
 export default class ItemHistoryDialog extends BaseDialog {
     public itemId: number;
@@ -201,7 +195,7 @@ export default class ItemHistoryDialog extends BaseDialog {
     public onBeforeOpen(): Promise<void> {
         // set up pnp here
         // let viewId = this.context.pageContext.legacyPageContext.viewId //get the view id and then used pnp to query view columns/fields as follows,
-        let batch = sp.createBatch()
+        let batch = sp.createBatch();
         // get the fields in the view
         sp.web.lists.getById(this.listId).views.getById(this.viewId).fields.inBatch(batch).get().then((results: any) => {
 
@@ -257,9 +251,4 @@ export default class ItemHistoryDialog extends BaseDialog {
         };
     }
 
-    @autobind
-    private _submit(color: string): void {
-
-        this.close();
-    }
 }
