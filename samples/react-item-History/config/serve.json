@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://tronoxglobal.sharepoint.com/sites/VM/Lists/Vendor%20Requests%202/AllItems.aspx",
+      "pageUrl": "https://tronoxglobal.sharepoint.com/sites/GLMasterData/Lists/Account%20Requests/AllItems.aspx",
       "customActions": {
         "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed": {
           "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
@@ -15,7 +15,7 @@
       }
     },
     "itemHistory": {
-      "pageUrl": "https://tronoxglobal.sharepoint.com/sites/VM/Lists/Vendor%20Requests%202/AllItems.aspx",
+      "pageUrl": "https://tronoxglobal.sharepoint.com/sites/GLMasterData/Lists/Account%20Requests/AllItems.aspx",
       "customActions": {
         "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed": {
           "location": "ClientSideExtension.ListViewCommandSet.CommandBar",

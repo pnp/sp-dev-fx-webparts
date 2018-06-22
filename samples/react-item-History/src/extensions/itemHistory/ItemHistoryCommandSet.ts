@@ -35,7 +35,7 @@ export default class ItemHistoryCommandSet extends BaseListViewCommandSet<IItemH
     pnpSetup({
       spfxContext: this.context
     });
-   return Promise.resolve();
+    return Promise.resolve();
   }
 
   @override
@@ -46,19 +46,21 @@ export default class ItemHistoryCommandSet extends BaseListViewCommandSet<IItemH
       compareOneCommand.visible = event.selectedRows.length === 1;
     }
   }
-   @override
+  @override
   public onExecute(event: IListViewCommandSetExecuteEventParameters): void {
     switch (event.itemId) {
       case 'COMMAND_ViewHistory':
-             const dialog: ItemHistoryDialog = new ItemHistoryDialog();
+        const dialog: ItemHistoryDialog = new ItemHistoryDialog();
         dialog.itemId = event.selectedRows[0].getValueByName("ID");
         dialog.listId = this.context.pageContext.list.id.toString();
         dialog.viewId = this.context.pageContext.legacyPageContext.viewId;
-           dialog.show().then(() => {
-        })
-        .catch((e)=>{
-          debugger;
-        })        ;
+        dialog.show()
+          .then(() => {
+            debugger;
+          })
+          .catch((e) => {
+            debugger;
+          });
         break;
       default:
         throw new Error('Unknown command');

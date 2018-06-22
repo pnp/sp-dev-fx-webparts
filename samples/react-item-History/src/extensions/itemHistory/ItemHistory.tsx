@@ -40,11 +40,24 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
         if (index < this.props.versions.length - 1) {
             switch (columnType) {
                 case "User":
-                    debugger;
+
                     if (this.props.versions[index][column.fieldName]["LookupId"] !== this.props.versions[index + 1][column.fieldName]["LookupId"]) {
                         return true;
                     }
                     break;
+                case "LookupMulti":
+                    debugger; // if the length is different true; if the values are diffent fales
+                    if (this.props.versions[index][column.fieldName].length !== this.props.versions[index + 1][column.fieldName].length) {
+                        return true;
+                    }
+                    // length is the same, compare values
+                    for (let i = 0; i < this.props.versions[index][column.fieldName].length; i++) {
+                        if (this.props.versions[index][column.fieldName][i]["LookupId"] !== this.props.versions[index + 1][column.fieldName][i]["LookupId"]) {
+                            return true;
+                        }
+                    }
+                    return false;
+
                 default:
                     if (this.props.versions[index][column.fieldName] !== this.props.versions[index + 1][column.fieldName]) {
                         return true;
@@ -75,6 +88,7 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
     }
     @autobind
     public onRenderUser(item?: any, index?: number, column?: IColumn): any {
+        debugger;
         return (<div style={this.getStyle(item, index, column, "User")}>
             {item[column.fieldName]["LookupValue"]}
         </div>);
@@ -82,8 +96,22 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
 
     }
     @autobind
-    public onRenderChoice(item?: any, index?: number, column?: IColumn): any {
+    public onRenderLookupMulti(item?: any, index?: number, column?: IColumn): any {
         debugger;
+        let display = "";
+        for (let val of item[column.fieldName]) {
+            display += val["LookupValue"]+";";
+        }
+        return (<div style={this.getStyle(item, index, column, "LookupMulti")}>
+            {display}
+        </div>);
+
+
+    }
+
+    @autobind
+    public onRenderChoice(item?: any, index?: number, column?: IColumn): any {
+
         return (<div style={this.getStyle(item, index, column)}>
             {item[column.fieldName]}
         </div>);
@@ -96,6 +124,14 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
         </div>);
     }
     @autobind
+    public onRenderAttachments(item?: any, index?: number, column?: IColumn): any {
+        debugger;
+        let value=item[column.fieldName]?"Yes":"No";
+        return (<div style={this.getStyle(item, index, column)}>
+            {value}
+        </div>);
+    }
+    @autobind
     public render(): JSX.Element {
 
         debugger;
@@ -103,50 +139,83 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
             let testviewFields: Array<IColumn> = this.props.columns.map(cname => {
                 let columnDef: Field = find(this.props.columnDefs, (colunmDef) => { return colunmDef["InternalName"] === cname; });
                 switch (columnDef["TypeAsString"]) {
+                    case "Attachments":
+                    return {
+                        name: columnDef["Title"],
+                        isResizable: true,
+                        key: cname,
+                        fieldName: cname,
+                        minWidth: 100,
+                        onRender: this.onRenderAttachments,
+                    };
+                    case "LookupMulti":
+                        return {
+                            name: columnDef["Title"],
+                            isResizable: true,
+                            key: cname,
+                            fieldName: cname,
+                            minWidth: 100,
+                            onRender: this.onRenderLookupMulti,
+                        };
+
                     case "DateTime":
                         return {
                             name: columnDef["Title"],
-                            isResizable:true,
+                            isResizable: true,
                             key: cname,
                             fieldName: cname,
                             minWidth: 100,
                             onRender: this.onRenderDateTime,
-                            
-
                         };
                     case "Choice":
                         return {
                             name: columnDef["Title"],
-                            isResizable:true,
+                            isResizable: true,
                             key: cname,
                             fieldName: cname,
                             minWidth: 100,
                             onRender: this.onRenderChoice
                         };
+                    case "Lookup":
                     case "User":
                         return {
                             name: columnDef["Title"],
-                            isResizable:true,
+                            isResizable: true,
                             key: cname,
                             fieldName: cname,
                             minWidth: 100,
                             onRender: this.onRenderUser
                         };
-                    default:
+
+                    case "Text":
+                    case "Note":
                         return {
                             name: columnDef["Title"],
-                            isResizable:true,
+                            isResizable: true,
                             key: cname,
                             fieldName: cname,
                             minWidth: 100,
                             onRender: this.onRenderText
                         };
+
+
+                    default:
+                        console.log("the colum type " + columnDef["TypeAsString"] + "HAS NOT BEENTESTED, default to text")
+                        return {
+                            name: columnDef["Title"],
+                            isResizable: true,
+                            key: cname,
+                            fieldName: cname,
+                            minWidth: 100,
+                            onRender: this.onRenderText
+                        };
+
                 }
 
             });
             testviewFields.unshift({
                 name: "Version",
-                isResizable:true,
+                isResizable: true,
                 key: "Version",
                 fieldName: "VersionLabel",
                 minWidth: 50
@@ -159,7 +228,7 @@ class ItemHistoryDialogContent extends React.Component<IItemHistoryDialogContent
                 title='Version History(Grid)'
                 onDismiss={this.props.close}
                 showCloseButton={true}
-            
+
             >
                 <DetailsList
                     items={this.props.versions}
