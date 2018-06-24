@@ -1,4 +1,4 @@
-# SPFx webpart using Redux-Form library and React
+# SPFx webpart with Taxonomy picker Office UI Fabric Panel.
 
 ## Summary
 Sample webpart with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The webpart uses the Taxonomy API support available in the SP-PNP-JS.
