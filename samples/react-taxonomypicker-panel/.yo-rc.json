@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.5.0",
+    "libraryName": "react-taxonomypicker-panel",
+    "libraryId": "285e2b44-e2e0-4f31-b458-b5edd111cdf7",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
