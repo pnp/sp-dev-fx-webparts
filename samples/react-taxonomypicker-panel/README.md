@@ -4,7 +4,7 @@
 Sample webpart with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The webpart uses the Taxonomy API support available in the SP-PNP-JS.
 
 
-![SPFx redux-form webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/ReduxFormSample/samples/react-reduxform/assets/ReduxFormWebpart.gif)
+![TaxonomyPickerPanel webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/TaxonomyPanelPicker/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif)
 
 
 ## Used SharePoint Framework Version 
