@@ -19,6 +19,10 @@ export default class ReactTaxonomypickerPanel extends React.Component<IReactTaxo
     this.state = {
       SingleSelectFieldTerms:[],
       MultiSelectFieldTerms:[]
+
+      // Supply array in the below format for a pre-populated control.
+      //SingleSelectFieldTerms:[{name:"<Term-Label>", key="<Term-GUID>"}],
+      //MultiSelectFieldTerms:[{name:"<Term-Label>", key="<Term-GUID>"}, {name:"<Term-Label>", key="<Term-GUID>"}]
     }
     
  }
