@@ -27,6 +27,7 @@ react-skype-status|[Vincent Biret](https://github.com/baywet)
 
 Version|Date|Comments
 -------|----|--------
+1.1|June 25th, 2018|Upgrade to 1.5
 1.0|December 1, 2017|Initial release
 
 ## Disclaimer

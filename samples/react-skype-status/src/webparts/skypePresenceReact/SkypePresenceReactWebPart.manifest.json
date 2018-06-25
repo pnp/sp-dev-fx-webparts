@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "cdfa9362-39ea-4137-94ff-5cd3c271f06d",
   "alias": "SkypePresenceReactWebPart",
   "componentType": "WebPart",
