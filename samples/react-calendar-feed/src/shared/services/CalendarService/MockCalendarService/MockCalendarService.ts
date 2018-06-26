@@ -3,10 +3,10 @@
  * This provider will NOT be listed in the list of available providers when this solution is packaged with --ship.
  * Don't freak out, it didn't just disappear.
  */
-import * as moment from "moment";
-import { BaseCalendarService } from "../BaseCalendarService";
-import { ICalendarEvent } from "../ICalendarEvent";
-import { ICalendarService } from "../ICalendarService";
+import * as moment from 'moment';
+import { BaseCalendarService } from '../BaseCalendarService';
+import { ICalendarEvent } from '../ICalendarEvent';
+import { ICalendarService } from '../ICalendarService';
 
 const today: Date = new Date();
 const sampleEvents: ICalendarEvent[] = [
@@ -23,9 +23,9 @@ const sampleEvents: ICalendarEvent[] = [
     {
         "title": "This event will be in one week",
         "start": moment().add(1, "w").toDate(),
-        "end": moment().add(1, "w").toDate(),
+        "end": moment().add(1, "w").add(1, "h").toDate(),
         "url": "https://www.contoso.com/news-events/events/2/",
-        "allDay": true,
+        "allDay": false,
         "category": "Meeting",
         "location": undefined,
         "description": undefined

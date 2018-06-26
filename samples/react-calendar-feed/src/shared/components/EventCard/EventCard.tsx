@@ -1,14 +1,15 @@
-import { Guid } from "@microsoft/sp-core-library";
-import * as strings from "CalendarFeedSummaryWebPartStrings";
-import * as ICS from "ics-js";
-import * as moment from "moment";
-import { ActionButton, DocumentCard, DocumentCardType, FocusZone, css } from "office-ui-fabric-react";
-import * as React from "react";
-import { IEventCardProps, IEventCardState } from ".";
-import { DateBox, DateBoxSize } from "../DateBox";
-import styles from "./EventCard.module.scss";
-const AllDayFormat: string = "dddd, MMMM Do YYYY";
-const LocalizedTimeFormat: string = "llll";
+import { Guid } from '@microsoft/sp-core-library';
+import * as strings from 'CalendarFeedSummaryWebPartStrings';
+import * as ICS from 'ics-js';
+import * as moment from 'moment';
+import { ActionButton, DocumentCard, DocumentCardType, FocusZone, css } from 'office-ui-fabric-react';
+import * as React from 'react';
+import { IEventCardProps, IEventCardState } from '.';
+import { DateBox, DateBoxSize } from '../DateBox';
+import styles from './EventCard.module.scss';
+const AllDayFormat: string = 'dddd, MMMM Do YYYY';
+const LocalizedTimeFormat: string = 'llll';
+import { Text } from '@microsoft/sp-core-library';
 /**
  * Shows an event in a document card
  */
@@ -42,7 +43,7 @@ export class EventCard extends React.Component<IEventCardProps, IEventCardState>
                     data-is-focusable={true}
                     data-is-focus-item={true}
                     role="listitem"
-                    aria-label={strings.EventCardWrapperArialLabel.replace("{0}", title).replace("{1}", `${dateString}`)}
+                    aria-label={Text.format(strings.EventCardWrapperArialLabel, title, `${dateString}`)}
                     tabIndex={0}
                 >
                     <DocumentCard
@@ -97,7 +98,7 @@ export class EventCard extends React.Component<IEventCardProps, IEventCardState>
                     data-is-focusable={true}
                     data-is-focus-item={true}
                     role="listitem"
-                    aria-label={strings.EventCardWrapperArialLabel.replace("{0}", title).replace("{1}", dateString)}
+                    aria-label={Text.format(strings.EventCardWrapperArialLabel, title, dateString)}
                 >
                     <DocumentCard
                         className={css(styles.root, styles.rootIsActionable, styles.rootIsCompact)}
@@ -113,10 +114,8 @@ export class EventCard extends React.Component<IEventCardProps, IEventCardState>
                             />
                         </div>
                         <div>
-                            <div className={styles.category}>{category}</div>
                             <div className={styles.title} data-automation-id="event-card-title">{title}</div>
                             <div className={styles.datetime}>{dateString}</div>
-                            <div className={styles.location}>{location}</div>
                         </div>
                     </DocumentCard>
                 </div>

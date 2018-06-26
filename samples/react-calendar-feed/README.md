@@ -15,7 +15,7 @@ For more information about how this solution was built, including some design de
 
 ## Used SharePoint Framework Version
 
-![SPFx v1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
+![SPFx v1.5](https://img.shields.io/badge/SPFx-1.5-green.svg)
 
 ## Applies to
 
@@ -29,6 +29,7 @@ Before you can use this web part example, you will need one of the following:
 * A publicly-accessible iCal feed (i.e.: .ics)
 * A publicly-accessible RSS feed of events (e.g.: Google calendar)
 * A WordPress WP-FullCalendar feed
+* An Exchange Public Calendar
 
 It is important that all feeds do not require authentication. Also, make sure that your calendar includes upcoming events, as the web part will filter out evens that are earlier than today's date.
 
@@ -45,6 +46,7 @@ react-calendar-feed | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @be
 Version|Date|Comments
 -------|----|--------
 1.0|May 15, 2018|Initial release
+2.0|June 25, 2018|Converted to SPFx 1.5 and added Exchange Public Calendar support
 
 ## Disclaimer
 

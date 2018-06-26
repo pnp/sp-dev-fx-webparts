@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "b83bb343-bc5e-460c-9efd-52de06d32ffa",
   "alias": "CalendarFeedSummaryWebPart",
   "componentType": "WebPart",
