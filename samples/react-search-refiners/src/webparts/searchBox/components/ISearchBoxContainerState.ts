@@ -1,5 +1,5 @@
-export interface ISearchBoxContainerState {
-       
+interface ISearchBoxContainerState {
+    
     /**
      * List of proposed suggestions in the dropdown list
      */
@@ -30,3 +30,5 @@ export interface ISearchBoxContainerState {
      */
     errorMessage: string;
 }
+
+export default ISearchBoxContainerState;

@@ -4,6 +4,10 @@
         margin-bottom: 10px;
     }
 
+    *::-ms-clear {
+        display: none;
+    }
+
     .suggestionItem {
         padding: 10px;    
     }

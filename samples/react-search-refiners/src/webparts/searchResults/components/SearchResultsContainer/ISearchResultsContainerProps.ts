@@ -1,18 +1,19 @@
-import ISearchDataProvider from "../../../dataProviders/SearchDataProvider/ISearchDataProvider";
-import ITaxonomyDataProvider from "../../../dataProviders/TaxonomyProvider/ITaxonomyDataProvider";
-import { DisplayMode } from "@microsoft/sp-core-library";
+import ISearchService from      '../../../../services/SearchService/ISearchService';
+import ITaxonomyService from    '../../../../services/TaxonomyService/ITaxonomyService';
+import { DisplayMode } from     '@microsoft/sp-core-library';
+import TemplateService from     '../../../../services/TemplateService/TemplateService';
 
 interface ISearchResultsContainerProps {
 
   /**
    * The search data provider instance
    */
-  searchDataProvider: ISearchDataProvider;
+  searchDataProvider: ISearchService;
 
   /**
    * The taxonomy data provider instance
    */
-  taxonomyDataProvider: ITaxonomyDataProvider;
+  taxonomyDataProvider: ITaxonomyService;
 
   /**
    * The search query keywords
@@ -50,16 +51,6 @@ interface ISearchResultsContainerProps {
   showPaging: boolean;
 
   /**
-   * Show the page icon for individual result
-   */
-  showFileIcon: boolean;
-
-  /**
-   * Show the created date for individual result
-   */
-  showCreatedDate: boolean;
-
-  /**
    * Show the result count and entered keywords
    */
   showResultsCount: boolean;
@@ -73,6 +64,16 @@ interface ISearchResultsContainerProps {
    * The current display mode of Web Part
    */
   displayMode: DisplayMode;
+
+  /**
+   * The template helper instance
+   */
+  templateService: TemplateService;
+
+  /** 
+   * The template raw content to display
+   */
+  templateContent: string;
 }
 
 export default ISearchResultsContainerProps;
