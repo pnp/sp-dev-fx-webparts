@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "singleton",
+    "libraryId": "bb673226-029d-4114-9e1f-5db3d8455f19",
+    "environment": "spo"
+  }
+}

@@ -3,7 +3,7 @@ define([], function() {
     "SearchQuerySettingsGroupName": "Configuration de la requête de recherche",
     "SearchSettingsGroupName": "Paramètres de recherche",
     "SearchQueryKeywordsFieldLabel": "Mots clés de recherche",
-    "QueryTemplateFieldLabel": "Modèle de reqûete",
+    "QueryTemplateFieldLabel": "Modèle de requête",
     "SelectedPropertiesFieldLabel": "Propriétés à récupérer",
     "LoadingMessage": "Les résultats sont en cours de chargement, veuillez patienter...",
     "MaxResultsCount": "Nombre de résulats à récupérer par page",
