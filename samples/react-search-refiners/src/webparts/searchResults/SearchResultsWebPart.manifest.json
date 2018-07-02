@@ -17,7 +17,7 @@
                 "default": "PnP"
             },
             "title": {
-                "default": "Search Results with Refiners", "fr-fr": "Résulats de recherche avec filtres"
+                "default": "Search Results with Refiners", "fr-fr": "Résultats de recherche"
             },
             "description": {
                 "default": "Displays search results with customizable dynamic refiners",
@@ -28,13 +28,11 @@
                 "queryKeywords": "",
                 "queryTemplate": "{searchTerms} Path:{Site}",
                 "refiners": "Created:\"Created Date\",Size:\"Size of the file\"",
-                "selectedProperties": "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL",
+                "selectedProperties": "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary",
                 "enableQueryRules": false,
                 "maxResultsCount": 10,
-                "showFileIcon": true,
-                "showCreatedDate": true,
-                "showBlank": false,
-                "showResultsCount": false
+                "showBlank": true,
+                "showResultsCount": true
             }
         }
     ]

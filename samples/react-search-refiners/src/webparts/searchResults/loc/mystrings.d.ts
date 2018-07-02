@@ -1,4 +1,5 @@
 declare interface ISearchWebPartStrings {
+  SearchQuerySettingsGroupName: string;
   SearchSettingsGroupName: string;
   SearchQueryKeywordsFieldLabel: string;
   SearchQueryKeywordsFieldDescription: string;
@@ -16,8 +17,6 @@ declare interface ISearchWebPartStrings {
   ApplyAllFiltersLabel: string;
   RemoveAllFiltersLabel: string;
   ShowPagingLabel: string;
-  ShowFileIconLabel: string;
-  ShowCreatedDateLabel: string;
   ShowResultsCountLabel: string;
   ShowBlankLabel: string;
   ShowBlankEditInfoMessage: string;
@@ -33,7 +32,20 @@ declare interface ISearchWebPartStrings {
   UseSearchBoxQueryLabel: string;
   EnableQueryRulesLabel: string;
   StylingSettingsGroupName: string;
-  CountMessage: string;
+  CountMessageShort: string;
+  CountMessageLong: string;
+  CancelButtonText: string;
+  DialogButtonLabel: string;
+  DialogButtonText: string;
+  DialogTitle: string;
+  SaveButtonText: string;
+  ListLayoutOption: string;
+  TilesLayoutOption: string;
+  CustomLayoutOption: string;
+  TemplateUrlFieldLabel: string;
+  TemplateUrlPlaceholder: string;
+  ErrorTemplateExtension: string;
+  ErrorTemplateResolve: string;
 }
 
 declare module 'SearchWebPartStrings' {

@@ -1,3 +1,5 @@
+import ResultsLayoutOption from '../../models/ResultsLayoutOption';
+
 export interface ISearchResultsWebPartProps {
   queryKeywords: string;
   queryTemplate: string;
@@ -7,9 +9,13 @@ export interface ISearchResultsWebPartProps {
   selectedProperties: string;
   refiners: string;
   showPaging: boolean;
-  showFileIcon: boolean;
-  showCreatedDate: boolean;
   showResultsCount: boolean;
   showBlank: boolean;
   useSearchBoxQuery: boolean;
+  selectedLayout: ResultsLayoutOption;
+  externalTemplateUrl: string;
+  inlineTemplateText: string;
+  dynamicDataSourceId: string;
+  dynamicDataSourcePropertyId: string;
+  dynamicDataSourceComponentId: string;
 }

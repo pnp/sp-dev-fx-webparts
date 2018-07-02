@@ -10,6 +10,9 @@ declare interface ISearchBoxWebPartStrings {
   SearchBoxSameTabOpenBehavior: string;
   SearchBoxNewTabOpenBehavior: string;
   SearchBoxPageOpenBehaviorLabel: string;
+  SearchBoxDynamicPropertyInputLabel: string;
+  UseDynamicDataSourceLabel: string;
+  SearchBoxDynamicDataSourceGroupName: string;
 }
 
 declare module 'SearchBoxWebPartStrings' {

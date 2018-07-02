@@ -1,24 +1,22 @@
-import * as React from "react";
-import IFilterPanelProps from "./IFilterPanelProps";
-import IFilterPanelState from "./IFilterPanelState";
-import { PrimaryButton, DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import * as strings from "SearchWebPartStrings";
-import { IRefinementResult, IRefinementValue, IRefinementFilter } from "../../../models/ISearchResult";
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Text } from "@microsoft/sp-core-library";
-import "../SearchResultsWebPart.scss";
-import * as update from "immutability-helper";
+import * as React from                                                 'react';
+import IFilterPanelProps from                                          './IFilterPanelProps';
+import IFilterPanelState from                                          './IFilterPanelState';
+import { Panel, PanelType } from                                       'office-ui-fabric-react/lib/Panel';
+import { Checkbox } from                                               'office-ui-fabric-react/lib/Checkbox';
+import { Toggle } from                                                 'office-ui-fabric-react/lib/Toggle';
+import * as strings from                                               'SearchWebPartStrings';
+import { IRefinementValue, IRefinementFilter } from '../../../../models/ISearchResult';
+import { Label } from                                                  'office-ui-fabric-react/lib/Label';
+import { Text } from                                                   '@microsoft/sp-core-library';
+import                                                                 '../SearchResultsWebPart.scss';
+import * as update from                                                'immutability-helper';
 import {
     GroupedList,
     IGroup,
     IGroupDividerProps
-} from 'office-ui-fabric-react/lib/components/GroupedList/index';
-import { Scrollbars } from 'react-custom-scrollbars';
-import { ActionButton } from "office-ui-fabric-react";
+} from                                                                 'office-ui-fabric-react/lib/components/GroupedList/index';
+import { Scrollbars } from                                             'react-custom-scrollbars';
+import { ActionButton } from                                           'office-ui-fabric-react';
 
 export default class FilterPanel extends React.Component<IFilterPanelProps, IFilterPanelState> {
 
@@ -63,7 +61,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
             items.push(
                 <div key={i}>
-                    <div className="filterPanel__filterProperty">
+                    <div className='filterPanel__filterProperty'>
                         {
                             filter.Values.map((refinementValue: IRefinementValue, j) => {
 
@@ -78,7 +76,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                                         key={j}
                                         checked={this._isInFilterSelection(currentRefinement)}
                                         disabled={false}
-                                        label={Text.format(refinementValue.RefinementValue + " ({0})", refinementValue.RefinementCount)}
+                                        label={Text.format(refinementValue.RefinementValue + ' ({0})', refinementValue.RefinementCount)}
                                         onChange={(ev, checked: boolean) => {
                                             // Every time we chek/uncheck a filter, a complete new search request is performed with current selected refiners
                                             checked ? this._addFilter(currentRefinement) : this._removeFilter(currentRefinement);
@@ -94,8 +92,8 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         const renderSelectedFilters: JSX.Element[] = this.state.selectedFilters.map((filter) => {
 
             return (
-                <Label className="filter">
-                    <i className="ms-Icon ms-Icon--ClearFilter" onClick={() => { this._removeFilter(filter); }}></i>
+                <Label className='filter'>
+                    <i className='ms-Icon ms-Icon--ClearFilter' onClick={() => { this._removeFilter(filter); }}></i>
                     {filter.Value.RefinementName}
                 </Label>
             );
@@ -105,7 +103,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
             ref='groupedList'
             items={items}
             onRenderCell={this._onRenderCell}
-            className="filterPanel__body__group"
+            className='filterPanel__body__group'
             groupProps={
                 {
                     onRenderHeader: this._onRenderHeader,
@@ -116,20 +114,20 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         return (
             <div>
                 <ActionButton
-                    className="searchWp__filterResultBtn"
+                    className='searchWp__filterResultBtn'
                     iconProps={{ iconName: 'Filter' }}
                     text={strings.FilterResultsButtonLabel}
                     onClick={this._onTogglePanel}
                 />
                 {(this.state.selectedFilters.length > 0) ?
 
-                    <div className="searchWp__selectedFilters">
+                    <div className='searchWp__selectedFilters'>
                         {renderSelectedFilters}
                     </div>
                     : null
                 }
                 <Panel
-                    className="filterPanel"
+                    className='filterPanel'
                     isOpen={this.state.showPanel}
                     type={PanelType.smallFixedNear}
                     isBlocking={false}
@@ -138,13 +136,13 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                     headerText={strings.FilterPanelTitle}
                     closeButtonAriaLabel='Close'
                     hasCloseButton={true}
-                    headerClassName="filterPanel__header"
+                    headerClassName='filterPanel__header'
                     onRenderBody={() => {
                         if (this.props.availableFilters.length > 0) {
                             return (
-                                <Scrollbars style={{ height: "100%" }}>
-                                    <div className="filterPanel__body">
-                                        <div className="filterPanel__body__allFiltersToggle">
+                                <Scrollbars style={{ height: '100%' }}>
+                                    <div className='filterPanel__body'>
+                                        <div className='filterPanel__body__allFiltersToggle'>
                                             <Toggle
                                                 onText={strings.RemoveAllFiltersLabel}
                                                 offText={strings.ApplyAllFiltersLabel}
@@ -160,7 +158,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                             );
                         } else {
                             return (
-                                <div className="filterPanel__body">
+                                <div className='filterPanel__body'>
                                     {strings.NoFilterConfiguredLabel}
                                 </div>
                             );
@@ -173,8 +171,8 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
     private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {
         return (
-            <div className="ms-Grid-row" data-selection-index={itemIndex}>
-                <div className="ms-Grid-col ms-u-sm10 ms-u-md10 ms-u-lg10 ms-smPush1 ms-mdPush1 ms-lgPush1">
+            <div className='ms-Grid-row' data-selection-index={itemIndex}>
+                <div className='ms-Grid-col ms-u-sm10 ms-u-md10 ms-u-lg10 ms-smPush1 ms-mdPush1 ms-lgPush1'>
                     {item}
                 </div>
             </div>
@@ -184,7 +182,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
     private _onRenderHeader(props: IGroupDividerProps): JSX.Element {
         return (
 
-            <div className="ms-Grid-row" onClick={() => {
+            <div className='ms-Grid-row' onClick={() => {
 
                 // Update the index for expanded groups to be able to keep it open after a re-render
                 const updatedExpandedGroups =
@@ -198,13 +196,13 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
                 props.onToggleCollapse(props.group);
             }}>
-                <div className="ms-Grid-col ms-u-sm1 ms-u-md1 ms-u-lg1">
-                    <div className="header-icon">
-                        <i className={props.group.isCollapsed ? "ms-Icon ms-Icon--ChevronDown" : "ms-Icon ms-Icon--ChevronUp"}></i>
+                <div className='ms-Grid-col ms-u-sm1 ms-u-md1 ms-u-lg1'>
+                    <div className='header-icon'>
+                        <i className={props.group.isCollapsed ? 'ms-Icon ms-Icon--ChevronDown' : 'ms-Icon ms-Icon--ChevronUp'}></i>
                     </div>
                 </div>
-                <div className="ms-Grid-col ms-u-sm10 ms-u-md10 ms-u-lg10">
-                    <div className="ms-font-l">{props.group.name}</div>
+                <div className='ms-Grid-col ms-u-sm10 ms-u-md10 ms-u-lg10'>
+                    <div className='ms-font-l'>{props.group.name}</div>
                 </div>
             </div>
         );

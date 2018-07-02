@@ -1,63 +1,39 @@
-import * as strings from 'SearchBoxWebPartStrings';
-import Downshift from 'downshift';
-import { IconType, Label, TextField, Spinner, SpinnerSize, Overlay, MessageBar, MessageBarType } from 'office-ui-fabric-react';
-import * as React from 'react';
-import "../SearchBoxWebPart.scss";
-import { ISearchBoxProps } from './ISearchBoxContainerProps';
-import { ISearchBoxContainerState } from './ISearchBoxContainerState';
-import * as update from "immutability-helper";
-import { UrlHelper, PageOpenBehavior } from '../../common/UrlHelper';
+import * as React from                               'react';
+import { ISearchBoxContainerProps } from             './ISearchBoxContainerProps';
+import * as strings from                             'SearchBoxWebPartStrings';
+import ISearchBoxContainerState from                 './ISearchBoxContainerState';
+import { UrlHelper, PageOpenBehavior } from          '../../../helpers/UrlHelper';
+import { MessageBar, MessageBarType } from           'office-ui-fabric-react/lib/MessageBar';
+import Downshift from                                'downshift';
+import { TextField } from                            'office-ui-fabric-react/lib/TextField';
+import { IconType } from                             'office-ui-fabric-react/lib/Icon';
+import { Spinner, SpinnerSize } from                 'office-ui-fabric-react/lib/Spinner';
+import { Label } from                                'office-ui-fabric-react/lib/Label';
+import * as update from                              'immutability-helper';
+import                                               '../SearchBoxWebPart.scss';
 
-export default class SearchBoxContainer extends React.Component<ISearchBoxProps, ISearchBoxContainerState> {
+const SUGGESTION_CHAR_COUNT_TRIGGER = 3;
 
-  private readonly SUGGESTION_CHAR_COUNT_TRIGGER = 3;
+export default class SearchBoxContainer extends React.Component<ISearchBoxContainerProps, ISearchBoxContainerState> {
 
   public constructor() {
     super();
-
-    this._onSearch = this._onSearch.bind(this);
-    this._onChange = this._onChange.bind(this);
-    this._onQuerySuggestionSelected = this._onQuerySuggestionSelected.bind(this);
 
     this.state = {
       proposedQuerySuggestions: [],
       selectedQuerySuggestions: [],
       isRetrievingSuggestions: false,
-      searchInputValue: null,
+      searchInputValue: '',
       termToSuggestFrom: null,
       errorMessage: null
     };
+
+    this._onSearch = this._onSearch.bind(this);
+    this._onChange = this._onChange.bind(this);
+    this._onQuerySuggestionSelected = this._onQuerySuggestionSelected.bind(this);
   }
 
-  public render(): React.ReactElement<ISearchBoxProps> {
-
-    let renderErrorMessage: JSX.Element = null;
-
-    if (this.state.errorMessage) {
-      renderErrorMessage = <MessageBar messageBarType={ MessageBarType.error } 
-                                        dismissButtonAriaLabel='Close'
-                                        isMultiline={ false }
-                                        onDismiss={ () => {
-                                          this.setState({
-                                            errorMessage: null,
-                                          });
-                                        }}
-                                        className="errorMessage">
-                                        { this.state.errorMessage }</MessageBar>;
-    }
-    
-    const renderSearchBox = this.props.enableQuerySuggestions ? 
-                          this.renderSearchBoxWithAutoComplete() : 
-                          this.renderBasicSearchBox();    
-    return (
-      <div className="searchBox">
-        { renderErrorMessage }
-        { renderSearchBox }
-      </div>
-    );
-  }
-
-  public renderSearchBoxWithAutoComplete(): JSX.Element {
+  private renderSearchBoxWithAutoComplete(): JSX.Element {
     return <Downshift
         onSelect={ this._onQuerySuggestionSelected }
         >
@@ -65,7 +41,6 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
           getInputProps,
           getItemProps,
           isOpen,
-          inputValue,
           selectedItem,
           highlightedIndex,
           openMenu,
@@ -92,7 +67,6 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
 
                 if (this.state.selectedQuerySuggestions.length === 0) {
                   clearItems();
-
                   this._onChange(value);
                   openMenu();
                 } else {
@@ -110,43 +84,42 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
               iconType: IconType.default
             }}/>
             {isOpen ?
-              this.renderSuggestions(getItemProps, openMenu, selectedItem, highlightedIndex)
+              this.renderSuggestions(getItemProps, selectedItem, highlightedIndex)
             : null}
           </div>
         )}
       </Downshift>;
   }
 
-  public renderBasicSearchBox(): JSX.Element {
+  private renderBasicSearchBox(): JSX.Element {
     return <TextField 
-              placeholder={ strings.SearchInputPlaceholder }
-              value={ this.state.searchInputValue }
-              onChanged={ (value) => {
-                this.setState({
-                  searchInputValue: value,
-                });
-              }}
-              onKeyDown={ (event) => {
+      placeholder={ strings.SearchInputPlaceholder }
+      value={ this.state.searchInputValue }
+      onChanged={ (value) => {
+        this.setState({
+          searchInputValue: value,
+        });
+      }}
+      onKeyDown={ (event) => {
 
-                  // Submit search on "Enter" 
-                  if (event.keyCode === 13) {
-                    this._onSearch(this.state.searchInputValue);
-                  }
-              }}
-              iconProps={{
-                iconName: 'Search',
-                iconType: IconType.default
-              }}/>;
+          // Submit search on "Enter" 
+          if (event.keyCode === 13) {
+            this._onSearch(this.state.searchInputValue);
+          }
+      }}
+      iconProps={{
+        iconName: 'Search',
+        iconType: IconType.default
+      }}/>;
   }
 
   /**
    * Renders the suggestions panel below the input control
    * @param getItemProps downshift getItemProps callback
-   * @param openMenu downshift openMenu callback
    * @param selectedItem downshift selectedItem callback
    * @param highlightedIndex downshift highlightedIndex callback
    */
-  private renderSuggestions(getItemProps, openMenu, selectedItem, highlightedIndex): JSX.Element {
+  private renderSuggestions(getItemProps, selectedItem, highlightedIndex): JSX.Element {
     
     let renderSuggestions: JSX.Element = null;
     let suggestions: JSX.Element[] = null;
@@ -179,31 +152,14 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
                             { suggestions }
                           </div>;
     }
-    
+
     return renderSuggestions;
   }
 
-  /**
-   * Handler when a user press enter in the search box
-   * @param queryText The query text entered by the user
-   */
-  private async _onSearch(queryText: string) {
-    
-    
-    if (this.props.searchInNewPage) {
-      
-      // Send the query to the a new via the query string
-      const url = UrlHelper.addOrReplaceQueryStringParam(this.props.pageUrl, "q", encodeURIComponent(queryText));
-
-      const behavior = this.props.openBehavior === PageOpenBehavior.NewTab ? "_blank" : "_self";
-      window.open(url, behavior);
-      
-    } else {
-      // Send the query to components on the page
-      this.props.eventAggregator.raiseEvent("search:newQueryKeywords", {
-        data: queryText,
-        sourceId: "SearchBoxQuery",
-        targetId: "SearchResults"
+  private _setInputValue(inputValue: string) {
+    if (inputValue) {
+      this.setState({
+        searchInputValue: decodeURIComponent(inputValue),
       });
     }
   }
@@ -216,7 +172,7 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
 
     if (inputValue && this.props.enableQuerySuggestions) {
 
-      if (inputValue.length >= this.SUGGESTION_CHAR_COUNT_TRIGGER) {
+      if (inputValue.length >= SUGGESTION_CHAR_COUNT_TRIGGER) {
 
         try {
 
@@ -225,7 +181,7 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
             errorMessage: null
           });
 
-          const suggestions = await this.props.searchDataProvider.suggest(inputValue);
+          const suggestions = await this.props.searchService.suggest(inputValue);
 
           this.setState({
             proposedQuerySuggestions: suggestions,
@@ -283,5 +239,64 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxProps,
 
   private _replaceAt(string, index, replace) {
     return string.substring(0, index) + replace;
+  }
+
+  /**
+   * Handler when a user enters new keywords
+   * @param queryText The query text entered by the user
+   */
+  public _onSearch(queryText: string) {    
+
+    this.setState({
+      searchInputValue: queryText,
+    });
+
+    if (this.props.searchInNewPage) {
+      // Send the query to the a new via the query string
+      const url = UrlHelper.addOrReplaceQueryStringParam(this.props.pageUrl, 'q', encodeURIComponent(queryText));
+
+      const behavior = this.props.openBehavior === PageOpenBehavior.NewTab ? '_blank' : '_self';
+      window.open(url, behavior);
+      
+    } else {
+
+      // Notify the dynamic data controller
+      this.props.onSearch(queryText);
+    }
+  }
+
+  public componentDidMount() {
+    this._setInputValue(this.props.inputValue);
+  }
+
+  public componentWillReceiveProps(nextProps: ISearchBoxContainerProps) {
+    this._setInputValue(nextProps.inputValue);
+  }
+
+  public render(): React.ReactElement<ISearchBoxContainerProps> {
+    let renderErrorMessage: JSX.Element = null;
+
+    if (this.state.errorMessage) {
+      renderErrorMessage = <MessageBar messageBarType={ MessageBarType.error } 
+                                        dismissButtonAriaLabel='Close'
+                                        isMultiline={ false }
+                                        onDismiss={ () => {
+                                          this.setState({
+                                            errorMessage: null,
+                                          });
+                                        }}
+                                        className="errorMessage">
+                                        { this.state.errorMessage }</MessageBar>;
+    }
+    
+    const renderSearchBox = this.props.enableQuerySuggestions ? 
+                          this.renderSearchBoxWithAutoComplete() : 
+                          this.renderBasicSearchBox();    
+    return (
+      <div className="searchBox">
+        { renderErrorMessage }
+        { renderSearchBox }
+      </div>
+    );
   }
 }
