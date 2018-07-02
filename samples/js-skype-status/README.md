@@ -28,6 +28,7 @@ js-skype-status|[Vincent Biret](https://github.com/baywet)
 
 Version|Date|Comments
 -------|----|--------
+1.1|June 22nd, 2018|Upgraded to SPFX 1.5
 1.0|December 1, 2017|Initial release
 
 ## Disclaimer
