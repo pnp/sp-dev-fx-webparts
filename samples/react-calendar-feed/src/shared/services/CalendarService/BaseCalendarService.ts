@@ -1,9 +1,9 @@
-import { HttpClient, HttpClientResponse } from "@microsoft/sp-http";
-import { IWebPartContext } from "@microsoft/sp-webpart-base";
-import * as moment from "moment";
-import { CalendarEventRange } from ".";
-import { ICalendarEvent } from "./ICalendarEvent";
-import { ICalendarService } from "./ICalendarService";
+import { HttpClient, HttpClientResponse } from '@microsoft/sp-http';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import * as moment from 'moment';
+import { CalendarEventRange } from '.';
+import { ICalendarEvent } from './ICalendarEvent';
+import { ICalendarService } from './ICalendarService';
 
 /**
  * Base Calendar Service
@@ -88,9 +88,9 @@ export abstract class BaseCalendarService implements ICalendarService {
      */
     protected fetchResponseAsJson(feedUrl: string): Promise<any> {
         return this.fetchResponse(feedUrl)
-        .then((response: HttpClientResponse) => response.json(), (error: any) => {
-            throw error;
-        });
+            .then((response: HttpClientResponse) => response.json(), (error: any) => {
+                throw error;
+            });
     }
 }
 

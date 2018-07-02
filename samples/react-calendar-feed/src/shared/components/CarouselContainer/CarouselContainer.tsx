@@ -1,9 +1,9 @@
-import { css } from "@uifabric/utilities/lib/css";
-import { IconButton } from "office-ui-fabric-react/lib/Button";
-import * as React from "react";
-import Slider from "react-slick";
-import { ICarouselContainerProps, ICarouselContainerState } from ".";
-import styles from "./CarouselContainer.module.scss";
+import { css } from '@uifabric/utilities/lib/css';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import * as React from 'react';
+import Slider from 'react-slick';
+import { ICarouselContainerProps, ICarouselContainerState } from '.';
+import styles from './CarouselContainer.module.scss';
 
 /**
  * Carousel container
@@ -23,28 +23,32 @@ export class CarouselContainer extends React.Component<ICarouselContainerProps, 
             autoplaySpeed: 5000,
             dots: true,
             infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 4,
+            slidesToScroll: 4,
             speed: 500,
             centerPadding: "50px",
             pauseOnHover: true,
             variableWidth: false,
             useCSS: true,
+            rows: 1,
+            respondTo: 'slider',
             responsive: [
-              {
-                breakpoint: 600,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
-                }
-              },
-              {
-                breakpoint: 1000,
-                settings: {
-                  slidesToShow: 4,
-                  slidesToScroll: 4,
-                }
-              },
+               
+                  {
+                    breakpoint: 2560,
+                    settings: {
+                      slidesToShow: 3,
+                      slidesToScroll: 3,
+                    }
+                  },
+                  {
+                    breakpoint: 801,
+                    settings: {
+                      slidesToShow: 2,
+                      slidesToScroll: 2,
+                    }
+                  },
+                  // there is no 1 slide option, as it converts to narrow view
             ]
         };
 

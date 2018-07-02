@@ -1,10 +1,10 @@
-import { ActionButton, IButtonProps } from "office-ui-fabric-react/lib/Button";
-import { Icon } from "office-ui-fabric-react/lib/Icon";
-import { css } from "office-ui-fabric-react/lib/Utilities";
-import * as React from "react";
-import { IPagingProps, IPagingState } from ".";
-import styles from "./Paging.module.scss";
-import * as strings from "CalendarFeedSummaryWebPartStrings";
+import { ActionButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
+import * as React from 'react';
+import { IPagingProps, IPagingState } from '.';
+import styles from './Paging.module.scss';
+import * as strings from 'CalendarFeedSummaryWebPartStrings';
 
 /**
  * A custom pagination control designed to look & feel like Office UI Fabric

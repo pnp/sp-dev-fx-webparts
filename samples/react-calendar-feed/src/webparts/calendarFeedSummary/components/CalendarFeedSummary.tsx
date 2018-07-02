@@ -1,17 +1,17 @@
-import { DisplayMode } from "@microsoft/sp-core-library";
-import { SPComponentLoader } from "@microsoft/sp-loader";
-import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
-import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import * as strings from "CalendarFeedSummaryWebPartStrings";
-import * as moment from "moment";
-import { FocusZone, FocusZoneDirection, List, Spinner, css } from "office-ui-fabric-react";
-import * as React from "react";
-import { CarouselContainer } from "../../../shared/components/CarouselContainer";
-import { EventCard } from "../../../shared/components/EventCard";
-import { Paging } from "../../../shared/components/Paging";
-import { CalendarServiceProviderType, ICalendarEvent, ICalendarService } from "../../../shared/services/CalendarService";
-import styles from "./CalendarFeedSummary.module.scss";
-import { ICalendarFeedSummaryProps, ICalendarFeedSummaryState, IFeedCache } from "./CalendarFeedSummary.types";
+import { DisplayMode } from '@microsoft/sp-core-library';
+import { SPComponentLoader } from '@microsoft/sp-loader';
+import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
+import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
+import * as strings from 'CalendarFeedSummaryWebPartStrings';
+import * as moment from 'moment';
+import { FocusZone, FocusZoneDirection, List, Spinner, css } from 'office-ui-fabric-react';
+import * as React from 'react';
+import { CarouselContainer } from '../../../shared/components/CarouselContainer';
+import { EventCard } from '../../../shared/components/EventCard';
+import { Paging } from '../../../shared/components/Paging';
+import { CalendarServiceProviderType, ICalendarEvent, ICalendarService } from '../../../shared/services/CalendarService';
+import styles from './CalendarFeedSummary.module.scss';
+import { ICalendarFeedSummaryProps, ICalendarFeedSummaryState, IFeedCache } from './CalendarFeedSummary.types';
 
 // the key used when caching events
 const CacheKey: string = "calendarFeedSummary";

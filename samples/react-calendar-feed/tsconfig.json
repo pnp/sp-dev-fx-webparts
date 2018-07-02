@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
+    "module": "esnext",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,

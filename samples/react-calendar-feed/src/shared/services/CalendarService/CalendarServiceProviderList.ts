@@ -1,7 +1,8 @@
-import { MockCalendarService } from "./MockCalendarService";
-import { RSSCalendarService } from "./RSSCalendarService";
-import { WordPressFullCalendarService } from "./WordPressFullCalendarService";
-import { iCalCalendarService } from "./iCalCalendarService";
+import { MockCalendarService } from './MockCalendarService';
+import { RSSCalendarService } from './RSSCalendarService';
+import { WordPressFullCalendarService } from './WordPressFullCalendarService';
+import { iCalCalendarService } from './iCalCalendarService';
+import { ExchangePublicCalendarService } from './ExchangePublicCalendarService';
 
 export class CalendarServiceProviderList {
     public static getProviders(): any[] {
@@ -15,6 +16,12 @@ export class CalendarServiceProviderList {
                 initialize: () => new MockCalendarService()
             });
         }
+
+        providers.push({
+            label: "Exchange Public Calendar",
+            key: "exchange",
+            initialize: () => new ExchangePublicCalendarService()
+        });
 
         providers.push({
             label: "WordPress",
