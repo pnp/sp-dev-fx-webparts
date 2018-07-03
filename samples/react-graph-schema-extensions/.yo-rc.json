@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.5.1",
+    "libraryName": "react-graph-schema-extensions",
+    "libraryId": "9efd07c8-6e84-40e5-9c8f-a1800322080e",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
