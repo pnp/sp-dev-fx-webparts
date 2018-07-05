@@ -22,8 +22,11 @@ export class SkypeForBusinessCommunicationService implements ICommunicationServi
         const personsAndGroupsManager: any = skypeApp.personsAndGroupsManager;
         const mePerson: any = personsAndGroupsManager.mePerson;
         if (SkypeForBusinessCommunicationService.webPartContext().pageContext.user.email === userEmail) {
-            Log.info(Constants.ErrorCategory, `Bypassed skype subscription for current user ${userEmail}`);
-            handler("Online", undefined, mePerson.displayName());
+          mePerson.status.changed((newStatus: string, reason: string, oldStatus: string) => {
+            Log.info(Constants.ErrorCategory, `${mePerson.displayName()} status changed from ${oldStatus} to ${newStatus} because ${reason}`);
+            handler(newStatus, oldStatus, mePerson.displayName());
+          });
+          mePerson.status.subscribe();
         } else {
             const query: any = personsAndGroupsManager.createPersonSearchQuery();
             query.text(userEmail);
