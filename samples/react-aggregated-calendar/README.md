@@ -11,6 +11,11 @@ This is a sample webpart developed using React Framework to gather the aggregate
 The webpart was designed to create an aggregated view of calendar to fetch events from multiple calendars across the sites and site collection.
 The webpart will show the event information using the callout functionality of Office UI Fabric
 
+Webpart is developed using below technologies 
+* React Framework
+* Full Calendar(fullcalendar.io)
+* jQuery
+* Office UI Fabric
 
 
 ## Used SharePoint Framework Version 
@@ -67,6 +72,7 @@ This Web Part displays the events from multiple calendars located in various sit
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
 
 ## React Aggregated Calendar
+
 
 
 
