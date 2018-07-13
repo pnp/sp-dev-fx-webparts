@@ -31,8 +31,6 @@
   "localizedResources": {
     "HelloAngularWebPartStrings": "lib/webparts/helloAngular/loc/{locale}.js",
     "HelloSharePointWebPartStrings": "lib/webparts/helloSharePoint/loc/{locale}.js",
-    "GraphHelloWorldWebPartStrings": "lib/webparts/graphHelloWorld/loc/{locale}.js",
-    "PnPSharePointHelloWorldWebPartStrings": "lib/webparts/pnPSharePointHelloWorld/loc/{locale}.js",
     "HelloGraphWebPartStrings": "lib/webparts/helloGraph/loc/{locale}.js",
     "HelloPnPjsSharePointWebPartStrings": "lib/webparts/helloPnPjsSharePoint/loc/{locale}.js",
     "HelloPnPjsGraphWebPartStrings": "lib/webparts/helloPnPjsGraph/loc/{locale}.js"
