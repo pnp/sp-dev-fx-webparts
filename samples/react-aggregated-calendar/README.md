@@ -66,9 +66,9 @@ This Web Part displays the events from multiple calendars located in various sit
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
 
-## react-aggregated-calendar
+## React Aggregated Calendar
 
-This is where you include your WebPart documentation.
+
 
 ### Building the code
 
