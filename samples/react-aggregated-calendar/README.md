@@ -2,7 +2,11 @@
 
 ## Summary
 This is a sample webpart developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io
+
+
 ![The web part in action](./assets/react-aggregated-calendar.gif)
+
+
 
 The webpart was designed to create an aggregated view of calendar to fetch events from multiple calendars across the sites and site collection.
 The webpart will show the event information using the callout functionality of Office UI Fabric
@@ -29,14 +33,14 @@ It is required that the users have view access on the calendar.
 
 Solution|Author(s)
 --------|---------
-react-aggregated-calendar | Dhaval Shah (https://www.linkedin.com/in/dhavalshah27/), @beingdhavalshah)
+react-aggregated-calendar | [Dhaval Shah](https://www.linkedin.com/in/dhavalshah27) ([@beingdhavalshah](https://twitter.com/BeingDhavalShah))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 
-1.0|July 16, 2018|Initial release
+1.0 |July 16, 2018 | Initial Release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -50,15 +54,15 @@ Version|Date|Comments
   - `npm install`
   - `gulp serve`
 
-> Include any additional steps as needed.
 
 ## Features
-Description of the web part with possible additional details than in short summary. 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+This Web Part displays the events from multiple calendars located in various sites/site collection of sharepoint:
 
-- topic 1
-- topic 2
-- topic 3
+- Aggregated events for Calendar
+- Supports Sub-Sites and Site Collection level
+- Display of Legend for each Calendar
+- Formatted Date time
+- Display of Event Details over event click
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-aggregated-calendar" />
 
@@ -83,8 +87,8 @@ This package produces the following:
 
 ### Build options
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+gulp clean
+gulp test
+gulp serve
+gulp bundle
+gulp package-solution
