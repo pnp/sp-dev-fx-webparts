@@ -1,0 +1,13 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-aggregated-calendar-app",
+    "id": "e904a5f2-6d72-4ac2-96d8-5679cb4c7384",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-aggregated-calendar.sppkg"
+  }
+}
