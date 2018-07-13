@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "react-aggregated-calendar",
+    "libraryId": "e904a5f2-6d72-4ac2-96d8-5679cb4c7384",
+    "environment": "spo"
+  }
+}
