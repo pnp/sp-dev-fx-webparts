@@ -57,7 +57,7 @@ After the creation of a new Application, the created AppID and Secret must get s
 }
 ```
 
-A detailed step by step guide on this Azure Function can be found on the blog post: [An Azure Function for an Web Part](https://n8d.at/blog/an-azure-function-for-an-smart-stupid-web-part-part-2/).
+A detailed step by step guide on this Azure Function can be found on the blog post: [An Azure Function for a Web Part](https://n8d.at/blog/an-azure-function-for-an-smart-stupid-web-part-part-2/).
 
 #### Run Azure Function
 
