@@ -1,6 +1,6 @@
 ## Local Azure Function and SPFx Web Part Development to consume third party APIs
 
-This sample shows how to consume third party APIs through an Azure Functions by a Web Part. In this scenario Vimeo was choose as an example for third party API.
+This sample shows how to consume third-party APIs through an Azure Functions by a Web Part. In this scenario, Vimeo is the representative third party API.
 This project contains two separate project folders:
 
 * [VimeoRequest](./VimeoRequest) - contain the Azure Function written in JavaScript
@@ -42,8 +42,8 @@ This will install all the required NPM packages to run the Azure function
 ### Additional Configuration Vimeo Azure Function
 
 The folder [VimeoRequest](./VimeoRequest) contains a Azure Function generated with the [Azure Function Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local).
-The access videos stored on this platform first a new application needs to be created first. To create a new Application navigate to the following web site [https://developer.vimeo.com/apps/new?source=topnav](https://developer.vimeo.com/apps/new?source=topnav)
-After the creation of a new Application the created AppID and Secret needs to be entered in the local Azure function configuration.
+The access videos stored on this platform first a new application needs to be created first. To create a new Application navigate to the following website [https://developer.vimeo.com/apps/new?source=topnav](https://developer.vimeo.com/apps/new?source=topnav)
+After the creation of a new Application, the created AppID and Secret must get stored in the local Azure function configuration. This configuration file can be found is named [local.settings.json](./ViemoRequest/local.settings.json).
 
 ```jS
 {
