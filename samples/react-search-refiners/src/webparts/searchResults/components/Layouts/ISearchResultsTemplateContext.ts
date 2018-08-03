@@ -8,6 +8,8 @@ interface ISearchResultsTemplateContext {
     totalRows: number;
     keywords: string;
     showResultsCount: boolean;
+    siteUrl: string;
+    webUrl: string;
 }
 
 export default ISearchResultsTemplateContext;

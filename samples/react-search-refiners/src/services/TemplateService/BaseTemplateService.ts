@@ -1,13 +1,13 @@
-import * as Handlebars from                        'handlebars';
-import { ISearchResult } from                      '../../models/ISearchResult';
-import { html } from                               'common-tags';
-import { isEmpty } from                            '@microsoft/sp-lodash-subset';
-import * as strings from                           'SearchWebPartStrings';
-import { Text } from                               '@microsoft/sp-core-library';
-import * as moment from                            'moment';
+import * as Handlebars from 'handlebars';
+import { ISearchResult } from '../../models/ISearchResult';
+import { html } from 'common-tags';
+import { isEmpty } from '@microsoft/sp-lodash-subset';
+import * as strings from 'SearchWebPartStrings';
+import { Text } from '@microsoft/sp-core-library';
+import * as moment from 'moment';
 
 abstract class BaseTemplateService {
-    
+
     constructor() {
         // Registers all helpers
         this.registerTemplateServices();
@@ -111,11 +111,11 @@ abstract class BaseTemplateService {
      * Registers useful helpers for search results templates
      */
     private registerTemplateServices() {
-        
+
         // Return the URL of the search result item
         // Usage: <a href="{{url item}}">
         Handlebars.registerHelper("getUrl", (item: ISearchResult) => {
-            if (!isEmpty(item)) 
+            if (!isEmpty(item))
                 return item.ServerRedirectedURL ? item.ServerRedirectedURL : item.Path;
         });
 
@@ -156,7 +156,17 @@ abstract class BaseTemplateService {
         Handlebars.registerHelper("getDate", (date: string, format: string) => {
             if (moment(date).isValid()) {
                 return moment(date).format(format);
-            } 
+            }
+        });
+
+        // Return the URL or Title part of a URL automatic managed property
+        // <p>{{getDate MyLinkOWSURLH "Title"}}</p>
+        Handlebars.registerHelper("getUrlField", (urlField: string, value: "URL" | "Title" ) => {
+            let separatorPos = urlField.lastIndexOf(",");
+            if(value === "URL") {
+                return urlField.substr(0, separatorPos);
+            }
+            return urlField.substr(separatorPos+1).trim();
         });
     }
 
