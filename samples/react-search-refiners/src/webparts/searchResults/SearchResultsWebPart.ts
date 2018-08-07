@@ -547,7 +547,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 showBlank: this.properties.showBlank,
                 displayMode: this.displayMode,
                 templateService: this._templateService,
-                templateContent: this._templateContentToDisplay
+                templateContent: this._templateContentToDisplay,
+                context: this.context
             } as ISearchContainerProps
         );
 
@@ -581,23 +582,24 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         return {
             pages: [
                 {
+                    header: {
+                        description: "Query settings"
+                    },
                     groups: [
                         {
                             groupName: strings.SearchQuerySettingsGroupName,
-                            groupFields: this._getSearchQueryFields()
+                            groupFields: this._getSearchQueryFields(),
+                            isCollapsed: false
                         },
                         {
                             groupName: strings.SearchSettingsGroupName,
-                            groupFields: this._getSearchSettingsFields()
+                            groupFields: this._getSearchSettingsFields(),
+                            isCollapsed: false
                         },
-                    ],
-                    displayGroupsAsAccordion: true
-                },
-                {
-                    groups: [
                         {
                             groupName: strings.StylingSettingsGroupName,
-                            groupFields: this._getStylingFields()
+                            groupFields: this._getStylingFields(),
+                            isCollapsed: false
                         }
                     ],
                     displayGroupsAsAccordion: true

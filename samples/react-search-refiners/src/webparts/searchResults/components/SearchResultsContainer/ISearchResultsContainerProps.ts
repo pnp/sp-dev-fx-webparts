@@ -2,6 +2,7 @@ import ISearchService from      '../../../../services/SearchService/ISearchServi
 import ITaxonomyService from    '../../../../services/TaxonomyService/ITaxonomyService';
 import { DisplayMode } from     '@microsoft/sp-core-library';
 import TemplateService from     '../../../../services/TemplateService/TemplateService';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 interface ISearchResultsContainerProps {
 
@@ -74,6 +75,11 @@ interface ISearchResultsContainerProps {
    * The template raw content to display
    */
   templateContent: string;
+
+  /**
+   * The web part context
+   */
+  context: WebPartContext;
 }
 
 export default ISearchResultsContainerProps;

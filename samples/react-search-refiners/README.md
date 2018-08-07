@@ -120,8 +120,11 @@ Setting | Description
 `{{getDate <date_managed_property> "<format>}}"` | Format the date with moment.ts according to the current language.
 `{{getPreviewSrc item}}` | Determine the image thumbnail URL if applicable.
 `{{getUrl item}}` | Get the item URL. For a document, it means the URL to the Office Online instance or the direct URL (to download it).
+`{{getUrlField managed_propertyOWSURLH "URL/Title"}}` | Return the URL or Title part of a URL field managed property.
 `{{getCountMessage totalRows <?keywords>}}` | Display a friendly message displaying the result and the entered keywords.
 `{{<search_managed_property_name>}}` | Any valid search managed property returned in the results set. These are typically managed properties set in the *"Selected properties"* setting in the property pane. You don't need to prefix them with `item.` if you are in the "each" loop.
+`{{webUrl}}` | The current web relative url. Use `{{../webUrl}}` inside a loop.
+`{{siteUrl}}` | The current site relative url. Use `{{../siteUrl}}` inside a loop.
 
 Also the [Handlebars helpers](https://github.com/helpers/handlebars-helpers) (188 helpers) are also available. You can also define your own in the *BaseTemplateService.ts* file.
 

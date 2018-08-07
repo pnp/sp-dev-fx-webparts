@@ -94,7 +94,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                                         items: this.state.results.RelevantResults,
                                         totalRows: this.state.resultCount,
                                         keywords: this.props.queryKeywords,
-                                        showResultsCount: this.props.showResultsCount
+                                        showResultsCount: this.props.showResultsCount,
+                                        siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
+                                        webUrl: this.props.context.pageContext.web.serverRelativeUrl                                    
                                     }
                                 }
                             />                        
