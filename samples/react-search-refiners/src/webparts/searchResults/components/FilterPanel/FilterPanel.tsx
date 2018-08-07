@@ -16,7 +16,7 @@ import {
     IGroupDividerProps
 } from                                                                 'office-ui-fabric-react/lib/components/GroupedList/index';
 import { Scrollbars } from                                             'react-custom-scrollbars';
-import { ActionButton } from                                           'office-ui-fabric-react';
+import { ActionButton } from                                           'office-ui-fabric-react/lib/Button';
 
 export default class FilterPanel extends React.Component<IFilterPanelProps, IFilterPanelState> {
 

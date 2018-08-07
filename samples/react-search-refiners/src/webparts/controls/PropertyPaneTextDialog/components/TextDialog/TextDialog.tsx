@@ -1,7 +1,7 @@
 import * as React                               from 'react';
-import { Dialog, DialogType, DialogFooter } 	from 'office-ui-fabric-react';
-import { Button, ButtonType, Label } 			from 'office-ui-fabric-react';
-import { TextField } 							from 'office-ui-fabric-react';
+import { Dialog, DialogType, DialogFooter } 	from 'office-ui-fabric-react/lib/Dialog';
+import { Button, ButtonType } 			        from 'office-ui-fabric-react/lib/Button';
+import { Label } 							    from 'office-ui-fabric-react/lib/Label';
 import { ITextDialogProps }                  	from './ITextDialogProps';
 import { ITextDialogState }                  	from './ITextDialogState';
 import AceEditor 								from 'react-ace';
