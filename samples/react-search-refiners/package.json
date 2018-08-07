@@ -50,10 +50,11 @@
     "@microsoft/sp-build-web": "1.5.1-plusbeta",
     "@microsoft/sp-module-interfaces": "1.5.1-plusbeta",
     "@microsoft/sp-webpart-workbench": "1.5.1-plusbeta",
-    "gulp": "~3.9.1",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
-    "unlazy-loader": "0.1.2"
+    "gulp": "~3.9.1",
+    "unlazy-loader": "0.1.2",
+    "webpack-bundle-analyzer": "^2.13.1"
   }
 }
