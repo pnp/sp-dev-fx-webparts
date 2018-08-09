@@ -31,12 +31,17 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         );
 
         if (this.displayMode == DisplayMode.Read) {
-            if (this.properties.removePadding) {
+            if (this.properties.removePadding) {                
                 this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "0";
                 this.domElement.parentElement.parentElement.parentElement.style.paddingBottom = "0";
+                this.domElement.parentElement.parentElement.parentElement.style.marginTop = "0";
+                this.domElement.parentElement.parentElement.parentElement.style.marginBottom = "0";
             } else {
                 this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "";
                 this.domElement.parentElement.parentElement.parentElement.style.paddingBottom = "";
+                this.domElement.parentElement.parentElement.parentElement.style.marginTop = "";
+                this.domElement.parentElement.parentElement.parentElement.style.marginBottom = "";
+
             }
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
