@@ -1,5 +1,5 @@
 {
-    "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
     "id": "3a328f0a-99c4-4b28-95ab-fe0847f657a3",
     "alias": "ScriptEditorWebPart",
     "componentType": "WebPart",
@@ -22,9 +22,9 @@
             "officeFabricIconFontName": "JS",
             "properties": {
                 "script": "",
-                "title" : "The Modern Script Editor web part!",
+                "title": "The Modern Script Editor web part!",
                 "removePadding": false,
-                "spPageContextInfo" : false
+                "spPageContextInfo": false
             }
         }
     ]

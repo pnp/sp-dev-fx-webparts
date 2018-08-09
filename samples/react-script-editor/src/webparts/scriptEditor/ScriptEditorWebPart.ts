@@ -5,13 +5,14 @@ import { SPComponentLoader } from '@microsoft/sp-loader';
 import {
     BaseClientSideWebPart,
     IPropertyPaneConfiguration,
-    PropertyPaneCustomField,
     PropertyPaneToggle,
     PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneCustomFieldProps, IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-webpart-base';
 import ScriptEditor from './components/ScriptEditor';
 import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
+import PropertyPaneLogo from './PropertyPaneLogo';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
     public save: (script: string) => void = (script: string) => {
@@ -79,10 +80,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                                     onText: "Enabled",
                                     offText: "Disabled"
                                 }),
-                                PropertyPaneCustomField({
-                                    onRender: this.renderLogo,
-                                    key: "logo"
-                                })
+                                new PropertyPaneLogo()
                             ]
                         }
                     ]
