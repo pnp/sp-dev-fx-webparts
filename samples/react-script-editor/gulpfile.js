@@ -22,4 +22,13 @@ build.configureWebpack.mergeConfig({
   }
 });
 
+let copyDynamic = build.subTask('copy-dynamic-load-files', function (gulp, buildOptions, done) {
+    gulp.src('./assets/editor-pop-up.js')
+        .pipe(gulp.dest('./temp/deploy'))
+        .pipe(gulp.dest('./dist'));
+    
+    done();
+});
+build.rig.addPostBuildTask(copyDynamic);
+
 build.initialize(gulp);

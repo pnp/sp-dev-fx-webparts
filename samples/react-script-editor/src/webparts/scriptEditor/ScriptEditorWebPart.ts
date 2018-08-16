@@ -21,15 +21,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     }
 
     public render(): void {
-        const element: React.ReactElement<IScriptEditorProps> = React.createElement(
-            ScriptEditor,
-            {
-                script: this.properties.script,
-                title: this.properties.title,
-                save: this.save
-            }
-        );
-
         if (this.displayMode == DisplayMode.Read) {
             if (this.properties.removePadding) {                
                 this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "0";
@@ -46,6 +37,15 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
         } else {
+            const element: React.ReactElement<IScriptEditorProps> = React.createElement(
+                ScriptEditor,
+                {
+                    script: this.properties.script,
+                    title: this.properties.title,
+                    save: this.save
+                }
+            );
+    
             ReactDom.render(element, this.domElement);
         }
     }
