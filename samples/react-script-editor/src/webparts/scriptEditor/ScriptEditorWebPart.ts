@@ -8,8 +8,6 @@ import {
     PropertyPaneToggle,
     PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-import { IPropertyPaneCustomFieldProps, IPropertyPaneField, PropertyPaneFieldType } from '@microsoft/sp-webpart-base';
-import ScriptEditor from './components/ScriptEditor';
 import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 import PropertyPaneLogo from './PropertyPaneLogo';
@@ -20,9 +18,9 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         this.render();
     }
 
-    public render(): void {
+    public async render(): Promise<void> {
         if (this.displayMode == DisplayMode.Read) {
-            if (this.properties.removePadding) {                
+            if (this.properties.removePadding) {
                 this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "0";
                 this.domElement.parentElement.parentElement.parentElement.style.paddingBottom = "0";
                 this.domElement.parentElement.parentElement.parentElement.style.marginTop = "0";
@@ -37,15 +35,20 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
         } else {
+            // Dynamically load the editor pane to reduce overall bundle size
+            let scriptRoot = (<any>this.context.manifest).loaderConfig.internalModuleBaseUrls[0];
+            if (scriptRoot.indexOf("localhost") != -1) {
+                scriptRoot += "dist/";
+            }
+            const editorPopUp: any = await SPComponentLoader.loadScript(scriptRoot + '/editor-pop-up.min.js', { globalExportsName: "EditorPopUp" });
             const element: React.ReactElement<IScriptEditorProps> = React.createElement(
-                ScriptEditor,
+                editorPopUp.default,
                 {
                     script: this.properties.script,
                     title: this.properties.title,
                     save: this.save
                 }
             );
-    
             ReactDom.render(element, this.domElement);
         }
     }

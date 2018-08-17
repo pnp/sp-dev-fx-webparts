@@ -23,11 +23,11 @@ build.configureWebpack.mergeConfig({
 });
 
 let copyDynamic = build.subTask('copy-dynamic-load-files', function (gulp, buildOptions, done) {
-    gulp.src('./assets/editor-pop-up.js')
-        .pipe(gulp.dest('./temp/deploy'))
-        .pipe(gulp.dest('./dist'));
-    
-    done();
+gulp.src('./node_modules/sharepoint-modern-script-editor-propertypane/bundles/editor-pop-up.min.js')
+    .pipe(gulp.dest('./temp/deploy'))
+    .pipe(gulp.dest('./dist'));
+
+done();
 });
 build.rig.addPostBuildTask(copyDynamic);
 

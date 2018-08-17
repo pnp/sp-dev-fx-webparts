@@ -24,6 +24,7 @@
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
     "gulp": "~3.9.1",
+    "sharepoint-modern-script-editor-propertypane": "^1.0.5",
     "webpack-bundle-analyzer": "^2.13.1"
   },
   "scripts": {
