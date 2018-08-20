@@ -1,7 +1,7 @@
 declare interface IVisioSampleWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  DocumentUrlLabel: string;
 }
 
 declare module 'VisioSampleWebPartStrings' {

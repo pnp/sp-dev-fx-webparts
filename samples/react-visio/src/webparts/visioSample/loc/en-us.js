@@ -1,7 +1,7 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
+    "PropertyPaneDescription": "Web part configuration",
     "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field"
+    "DocumentUrlLabel": "Visio Document Url"
   }
 });
