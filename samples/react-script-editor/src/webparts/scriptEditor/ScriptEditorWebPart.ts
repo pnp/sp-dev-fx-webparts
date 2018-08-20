@@ -36,11 +36,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             this.executeScript(this.domElement);
         } else {
             // Dynamically load the editor pane to reduce overall bundle size
-            let scriptRoot = (<any>this.context.manifest).loaderConfig.internalModuleBaseUrls[0];
-            if (scriptRoot.indexOf("localhost") != -1) {
-                scriptRoot += "dist/";
-            }
-            const editorPopUp: any = await SPComponentLoader.loadScript(scriptRoot + '/editor-pop-up.min.js', { globalExportsName: "EditorPopUp" });
+            const editorPopUp: any = await SPComponentLoader.loadScript(this.getScriptRoot() + '/editor-pop-up.min.js', { globalExportsName: "EditorPopUp" });
             const element: React.ReactElement<IScriptEditorProps> = React.createElement(
                 editorPopUp.default,
                 {
@@ -51,6 +47,15 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             );
             ReactDom.render(element, this.domElement);
         }
+    }
+
+    /**
+     * Use a dummy bundled image to get the path from where the bundle is served.
+     */
+    private getScriptRoot(): string {
+        const runtimePath: string = require('./1x1.png');
+        const scriptRoot = runtimePath.substr(0, runtimePath.lastIndexOf("/"));
+        return scriptRoot;
     }
 
     protected get dataVersion(): Version {
