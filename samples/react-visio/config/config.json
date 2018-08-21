@@ -12,9 +12,9 @@
     }
   },
   "externals": {
-    "officeJs": {
+    "officejs": {
       "path": "https://appsforoffice.microsoft.com/embedded/1.0/visio-web-embedded.js",
-      "globalName": "office-js"
+      "globalName": "officejs"
     }
   },
   "localizedResources": {

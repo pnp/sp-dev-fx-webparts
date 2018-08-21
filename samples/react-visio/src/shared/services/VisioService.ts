@@ -1,9 +1,7 @@
 
-// require("officeJs");
-
-// const Visio: any = require('officeJs');
-import { find } from "@microsoft/sp-lodash-subset";
-import { IWebPartContext } from "@microsoft/sp-webpart-base";
+import 'officejs'
+import { find } from '@microsoft/sp-lodash-subset';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
 export class VisioService {
 
@@ -189,7 +187,7 @@ export class VisioService {
         console.log("Selected shape: ", this._selectedShape);
 
         // get shape's Name property
-        const nameProperty: Visio.ShapeDataItem = selectedShape.shapeDataItems.items.find(
+        const nameProperty: Visio.ShapeDataItem = find(selectedShape.shapeDataItems.items,
           s => s.label === "Name"
         );
 
@@ -213,7 +211,7 @@ export class VisioService {
       // find the correct shape from the pre-loaded list of shapes
       // check the ShapeData item with the 'Name' key
       const shape: Visio.Shape = find(this._shapes,
-        s => (s.shapeDataItems.items.find(i => i.label === "Name").value === name)
+        s => (find(s.shapeDataItems.items, i => i.label === "Name").value === name)
       );
 
       // only select shape if not the currently selected one
