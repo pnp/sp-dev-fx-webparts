@@ -1,3 +1,6 @@
+import { VisioService } from "../../../shared/services";
+
 export interface IVisioSampleProps {
-  description: string;
+  visioService: VisioService;
+  documentUrl: string;
 }

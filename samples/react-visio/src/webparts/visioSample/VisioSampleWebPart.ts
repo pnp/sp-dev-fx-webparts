@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -8,20 +8,33 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'VisioSampleWebPartStrings';
-import VisioSample from './components/VisioSample';
-import { IVisioSampleProps } from './components/IVisioSampleProps';
+import { VisioSample, IVisioSampleProps } from './components';
+import { VisioService } from "../../shared/services";
 
 export interface IVisioSampleWebPartProps {
-  description: string;
+  documentUrl: string;
 }
 
 export default class VisioSampleWebPart extends BaseClientSideWebPart<IVisioSampleWebPartProps> {
+
+  private _visioService: VisioService;
+
+  public onInit(): Promise<void> {
+    if (DEBUG && Environment.type === EnvironmentType.Local) {
+      console.log("Mock data service not implemented yet");
+    } else {
+      this._visioService = new VisioService(this.context);
+    }
+
+    return super.onInit();
+  }
 
   public render(): void {
     const element: React.ReactElement<IVisioSampleProps > = React.createElement(
       VisioSample,
       {
-        description: this.properties.description
+        visioService: this._visioService,
+        documentUrl: this.properties.documentUrl
       }
     );
 
@@ -47,8 +60,8 @@ export default class VisioSampleWebPart extends BaseClientSideWebPart<IVisioSamp
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('documentUrl', {
+                  label: strings.DocumentUrlLabel
                 })
               ]
             }
