@@ -45,6 +45,12 @@ export class VisioSample extends React.Component<IVisioSampleProps, IVisioSample
     }
   }
 
+  public async componentDidUpdate(prevProps: IVisioSampleProps) {
+    if (this.props.documentUrl && this.props.documentUrl !== prevProps.documentUrl) {
+      this.props.visioService.load(this.props.documentUrl);
+    }
+  }
+
   /**
    * method executed after a on selection change event is triggered
    * @param selectedShape the shape selected by the user on the Visio diagram
