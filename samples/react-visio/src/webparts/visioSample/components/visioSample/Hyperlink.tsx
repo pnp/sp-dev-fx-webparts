@@ -1,9 +1,8 @@
 import * as React from 'react';
-import styles from './VisioSample.module.scss';
-import { IVisioSampleProps } from './IVisioSampleProps';
-import { escape, find } from '@microsoft/sp-lodash-subset';
+import styles from '../visioSample/VisioSample.module.scss';
+import { IVisioSampleProps, IVisioSampleState } from '../visioSample';
 
-export class VisioSample extends React.Component<IVisioSampleProps, {}> {
+export class VisioSample extends React.Component<IVisioSampleProps, IVisioSampleState> {
 
   constructor(props: IVisioSampleProps) {
     super(props);
@@ -11,13 +10,21 @@ export class VisioSample extends React.Component<IVisioSampleProps, {}> {
     // set delegate functions that will be used to pass the values from the Visio service to the component
     this.props.visioService.onSelectionChanged = this._onSelectionChanged;
     this.props.visioService.getAllShapes = this._getAllShapes;
+
+    this.state = {
+      selectedShape: null
+    };
   }
 
   public render(): React.ReactElement<IVisioSampleProps> {
     return (
       <div className={styles.visioSample}>
         <div id='iframeHost' className={styles.iframeHost}></div>
-        <div id='diagramDetailsPanel' className={styles.detailsPanel}></div>
+        <div className={styles.detailsPanel}>
+          {this.state.selectedShape &&
+            <h2>{this.state.selectedShape.name}</h2>
+          }
+        </div>
       </div>
     );
   }
@@ -35,11 +42,11 @@ export class VisioSample extends React.Component<IVisioSampleProps, {}> {
   private _onSelectionChanged = (selectedShape: Visio.Shape): void => {
 
     console.log("Selected shape: ", selectedShape);
-    // get shape's Name property
-    const nameProperty: Visio.ShapeDataItem = find(selectedShape.shapeDataItems.items,
-      s => s.label === "Name"
-    );
-    console.log("Selected shape name: ", nameProperty.value);
+    console.log("Selected shape name: ", selectedShape.name);
+
+    this.setState({
+      selectedShape: selectedShape
+    });
   }
 
   /**

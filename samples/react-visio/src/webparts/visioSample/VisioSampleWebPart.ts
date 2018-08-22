@@ -9,7 +9,7 @@ import {
 
 import 'officejs';
 import * as strings from 'VisioSampleWebPartStrings';
-import { VisioSample, IVisioSampleProps } from './components';
+import { VisioSample, IVisioSampleProps } from './components/visioSample';
 import { VisioService } from "../../shared/services";
 
 export interface IVisioSampleWebPartProps {

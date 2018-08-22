@@ -1,4 +1,4 @@
-import { VisioService } from "../../../shared/services";
+import { VisioService } from "../../../../shared/services";
 
 export interface IVisioSampleProps {
   visioService: VisioService;
