@@ -41,6 +41,10 @@ export class VisioService {
     return this._shapes;
   }
 
+  // delegate functions passed from the react component
+  public onSelectionChanged: (selectedShape: Visio.Shape) => void;
+  public getAllShapes: (shapes: Visio.Shape[]) => void;
+
   /**
    * class constructor
    * @param webPartContext the context of the web part
@@ -54,7 +58,7 @@ export class VisioService {
    * initialize session by embedding the Visio diagram on the page
    * @returns returns a promise
    */
-  private async init(): Promise<any> {
+  private async _init(): Promise<any> {
     // initialize communication between the developer frame and the Visio Online frame
     this._session = new OfficeExtension.EmbeddedSession(
       this._url, {
@@ -72,7 +76,7 @@ export class VisioService {
    * function to add custom event handlers
    * @returns returns a promise
    */
-  private addCustomEventHandlers = async (): Promise<any> => {
+  private _addCustomEventHandlers = async (): Promise<any> => {
 
     try {
       await Visio.run(this._session, async (context: Visio.RequestContext) => {
@@ -81,17 +85,17 @@ export class VisioService {
         // on document load complete
         const onDocumentLoadCompleteEventResult: OfficeExtension.EventHandlerResult<Visio.DocumentLoadCompleteEventArgs> =
           doc.onDocumentLoadComplete.add(
-            this.onDocumentLoadComplete
+            this._onDocumentLoadComplete
           );
         // on page load complete
         const onPageLoadCompleteEventResult: OfficeExtension.EventHandlerResult<Visio.PageLoadCompleteEventArgs> =
           doc.onPageLoadComplete.add(
-            this.onPageLoadComplete
+            this._onPageLoadComplete
           );
         // on selection changed
         const onSelectionChangedEventResult: OfficeExtension.EventHandlerResult<Visio.SelectionChangedEventArgs> =
           doc.onSelectionChanged.add(
-            this.onSelectionChanged
+            this._onSelectionChanged
           );
 
         await context.sync();
@@ -107,7 +111,7 @@ export class VisioService {
    * @param args event arguments
    * @returns returns a promise
    */
-  private onDocumentLoadComplete = async (args: Visio.DocumentLoadCompleteEventArgs): Promise<void> => {
+  private _onDocumentLoadComplete = async (args: Visio.DocumentLoadCompleteEventArgs): Promise<void> => {
 
     // only execute if not executed yet
     if (!this._documentLoadComplete) {
@@ -140,7 +144,7 @@ export class VisioService {
    * @param args event arguments
    * @returns returns a promise
    */
-  private onPageLoadComplete = async (args: Visio.PageLoadCompleteEventArgs): Promise<void> => {
+  private _onPageLoadComplete = async (args: Visio.PageLoadCompleteEventArgs): Promise<void> => {
 
     // only execute if not executed yet
     if (!this._pageLoadComplete) {
@@ -152,7 +156,10 @@ export class VisioService {
         this._pageLoadComplete = true;
 
         // get all relevant shapes and populate the class variable
-        this._shapes = await this.getAllShapes();
+        this._shapes = await this._getAllShapes();
+
+        // call delegate function from the react component
+        this.getAllShapes(this._shapes);
 
       } catch (error) {
         this.logError(error);
@@ -165,7 +172,7 @@ export class VisioService {
    * @param args event arguments
    * @returns returns a promise
    */
-  private onSelectionChanged = async (args: Visio.SelectionChangedEventArgs): Promise<void> => {
+  private _onSelectionChanged = async (args: Visio.SelectionChangedEventArgs): Promise<void> => {
 
     try {
       console.log("Selection Changed Event " + JSON.stringify(args));
@@ -176,19 +183,12 @@ export class VisioService {
         const selectedShapeText: string = args.shapeNames[0];
 
         // find selected shape on the list of pre-loaded shapes
-        const selectedShape: Visio.Shape = find(this._shapes,
+        this._selectedShape = find(this._shapes,
           s => s.name === selectedShapeText
         );
 
-        // store selected shape internally
-        this._selectedShape = selectedShape;
-
-        console.log("Selected shape: ", this._selectedShape);
-
-        // get shape's Name property
-        const nameProperty: Visio.ShapeDataItem = find(selectedShape.shapeDataItems.items,
-          s => s.label === "Name"
-        );
+        // call delegate function from the react component
+        this.onSelectionChanged(this._selectedShape);
 
       } else {
         // shape was deselected
@@ -203,7 +203,7 @@ export class VisioService {
    * select a shape on the visio diagram
    * @param name the name of the shape to select
    */
-  private selectShape = async (name: string): Promise<void> => {
+  public selectShape = async (name: string): Promise<void> => {
 
     try {
 
@@ -245,7 +245,7 @@ export class VisioService {
    * get all shapes from page
    * @returns returns a promise
    */
-  private getAllShapes = async (): Promise<Visio.Shape[]> => {
+  private _getAllShapes = async (): Promise<Visio.Shape[]> => {
 
     console.log("Getting all shapes");
 
@@ -291,15 +291,15 @@ export class VisioService {
       this.url = docUrl;
 
       // init
-      await this.init();
+      await this._init();
 
       // add custom onDocumentLoadComplete event handler
-      await this.addCustomEventHandlers();
+      await this._addCustomEventHandlers();
 
       // trigger document and page loaded event handlers after 3 seconds in case Visio fails to trigger them
       setTimeout(() => {
-        this.onDocumentLoadComplete(null);
-        this.onPageLoadComplete(null);
+        this._onDocumentLoadComplete(null);
+        this._onPageLoadComplete(null);
       }, 3000);
 
     } catch (error) {
