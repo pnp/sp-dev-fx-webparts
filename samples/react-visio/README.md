@@ -1,26 +1,55 @@
-## react-visio
+# React Visio Embed
 
-This is where you include your WebPart documentation.
+## Summary
 
-### Building the code
+This sample shows how the [Visio JavaScript APIs](https://dev.office.com/reference/add-ins/visio/visio-javascript-reference-overview) can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+To test the web part, upload the sample file provided to a SharePoint document library. Then open the file on the Visio web client and copy the Url from the browser. Add that url on the web part properties field and the EmbeddedSession will start and display the diagram.
 
-This package produces the following:
+![Demo](./assets/Preview.png)
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+## Used SharePoint Framework Version
 
-### Build options
+![drop](https://img.shields.io/badge/drop-1.5.1-green.svg)
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+## Applies to
+
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Visio JavaScript APIs](https://dev.office.com/reference/add-ins/visio/visio-javascript-reference-overview)
+
+## Prerequisites
+
+* Office 365 subscription with SharePoint Online licence
+* SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-visio|Joel Rodrigues
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|August 23, 2018|Initial release
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+* Clone this repository
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
+
+## Features
+
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+* Using the Visio JavaScript APIs to embed a diagram on a page
+* Using the Visio JavaScript APIs to interact with the Visio diagram and data available
