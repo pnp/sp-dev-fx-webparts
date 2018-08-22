@@ -7,6 +7,7 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
+import 'officejs';
 import * as strings from 'VisioSampleWebPartStrings';
 import { VisioSample, IVisioSampleProps } from './components';
 import { VisioService } from "../../shared/services";

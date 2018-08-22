@@ -1,5 +1,4 @@
 
-import 'officejs'
 import { find } from '@microsoft/sp-lodash-subset';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
