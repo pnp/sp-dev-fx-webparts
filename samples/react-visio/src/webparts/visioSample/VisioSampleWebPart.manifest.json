@@ -16,11 +16,10 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "VisioSample" },
+    "title": { "default": "Visio Embed Sample" },
     "description": { "default": "Sample web part using Visio API" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "VisioDiagram",
     "properties": {
-      "description": "VisioSample"
     }
   }]
 }
