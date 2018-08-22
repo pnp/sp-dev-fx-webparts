@@ -8,12 +8,13 @@
   "dependencies": {
     "@microsoft/sp-core-library": "1.5.1",
     "@microsoft/sp-webpart-base": "1.5.1",
+    "@types/es6-promise": "0.0.33",
     "@types/react": "15.6.6",
     "@types/react-dom": "15.5.6",
     "@types/webpack-env": "1.13.1",
+    "office-ui-fabric-react": "^5.118.3",
     "react": "15.6.2",
-    "react-dom": "15.6.2",
-    "@types/es6-promise": "0.0.33"
+    "react-dom": "15.6.2"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.5.1",
@@ -23,7 +24,6 @@
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
     "gulp": "~3.9.1",
-    "sharepoint-modern-script-editor-propertypane": "^1.0.5",
     "webpack-bundle-analyzer": "^2.13.1"
   },
   "scripts": {

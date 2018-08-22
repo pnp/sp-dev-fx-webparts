@@ -35,8 +35,11 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
         } else {
-            // Dynamically load the editor pane to reduce overall bundle size
-            const editorPopUp: any = await SPComponentLoader.loadScript(this.getScriptRoot() + '/editor-pop-up.min.js', { globalExportsName: "EditorPopUp" });
+            // Dynamically load the editor pane to reduce overall bundle size            
+            const editorPopUp = await import(
+                /* webpackChunkName: 'scripteditor' */
+                './components/ScriptEditor'
+            );
             const element: React.ReactElement<IScriptEditorProps> = React.createElement(
                 editorPopUp.default,
                 {
@@ -47,15 +50,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             );
             ReactDom.render(element, this.domElement);
         }
-    }
-
-    /**
-     * Use a dummy bundled image to get the path from where the bundle is served.
-     */
-    private getScriptRoot(): string {
-        const runtimePath: string = require('./1x1.png');
-        const scriptRoot = runtimePath.substr(0, runtimePath.lastIndexOf("/"));
-        return scriptRoot;
     }
 
     protected get dataVersion(): Version {
@@ -69,6 +63,16 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         <div style="float:right"><a href="https://www.puzzlepart.com/" target="_blank"><img src="//www.puzzlepart.com/wp-content/uploads/2017/08/Pzl-LogoType-200.png" onerror="this.style.display = \'none\'";"></a></div>
       </div>`;
     }
+
+    protected _propertyPaneHelper = null;
+    // protected loadPropertyPaneResources(): Promise<void> {
+    //     return import(
+    //       /* webpackChunkName: 'DynamicLoaded' */
+    //       './DynamicLoaded'
+    //     ).then(component => {
+    //       this._propertyPaneHelper = new component.default(null);
+    //     });
+    //   }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
         return {
