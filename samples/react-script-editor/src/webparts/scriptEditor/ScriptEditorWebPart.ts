@@ -64,16 +64,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
       </div>`;
     }
 
-    protected _propertyPaneHelper = null;
-    // protected loadPropertyPaneResources(): Promise<void> {
-    //     return import(
-    //       /* webpackChunkName: 'DynamicLoaded' */
-    //       './DynamicLoaded'
-    //     ).then(component => {
-    //       this._propertyPaneHelper = new component.default(null);
-    //     });
-    //   }
-
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
         return {
             pages: [
