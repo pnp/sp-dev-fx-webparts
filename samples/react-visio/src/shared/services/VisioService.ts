@@ -297,6 +297,7 @@ export class VisioService {
       await this._addCustomEventHandlers();
 
       // trigger document and page loaded event handlers after 3 seconds in case Visio fails to trigger them
+      // this is randomly happening on chrome, but seems to always fail on IE...
       setTimeout(() => {
         this._onDocumentLoadComplete(null);
         this._onPageLoadComplete(null);
