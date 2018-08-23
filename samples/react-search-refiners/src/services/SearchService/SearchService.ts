@@ -8,11 +8,12 @@ import sortBy from                                                              
 import groupBy from                                                                                   'lodash-es/groupBy';
 import mapValues from                                                                                 'lodash-es/mapValues';
 import mapKeys from                                                                                   'lodash-es/mapKeys';
-import * as moment from                                                                               'moment';
 import LocalizationHelper from                                                                        '../../helpers/LocalizationHelper';
+declare var System: any;
 
 class SearchService implements ISearchService {
 
+    private _moment = null;
     private _initialSearchResult: SearchResults = null;
     private _resultsCount: number;
     private _context: IWebPartContext;
@@ -140,6 +141,12 @@ class SearchService implements ISearchService {
                 let refinementResultsRows = r2.RawSearchResults.PrimaryQueryResult.RefinementResults;
 
                 const refinementRows = refinementResultsRows ? refinementResultsRows['Refiners'] : [];
+                if(refinementRows.length > 0){
+                    this._moment = await System.import(
+                        /* webpackChunkName: 'search-moment' */
+                        'moment'
+                    );
+                }
 
                 // Map search results
                 resultRows.map((elt) => {
@@ -280,7 +287,7 @@ class SearchService implements ISearchService {
 
         if (matches) {
             matches.map(match => {
-                updatedInputValue = updatedInputValue.replace(match, moment(match).format('LL'));
+                updatedInputValue = updatedInputValue.replace(match, this._moment(match).format('LL'));
             });
         }
 

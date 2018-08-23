@@ -18,4 +18,5 @@ export interface ISearchResultsWebPartProps {
   dynamicDataSourceId: string;
   dynamicDataSourcePropertyId: string;
   dynamicDataSourceComponentId: string;
+  useHandlebarsHelpers: boolean;
 }

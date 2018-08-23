@@ -25,7 +25,6 @@ import SearchService from                      '../../services/SearchService/Sea
 import ITaxonomyService from                   '../../services/TaxonomyService/ITaxonomyService';
 import MockTaxonomyService from                '../../services/TaxonomyService/MockTaxonomyService';
 import TaxonomyService from                    '../../services/TaxonomyService/TaxonomyService';
-import * as moment from                        'moment';
 import { Placeholder, IPlaceholderProps } from '@pnp/spfx-controls-react/lib/Placeholder';
 import { DisplayMode } from                    '@microsoft/sp-core-library';
 import LocalizationHelper from                 '../../helpers/LocalizationHelper';
@@ -37,10 +36,14 @@ import MockTemplateService from                '../../services/TemplateService/M
 import BaseTemplateService from                '../../services/TemplateService/BaseTemplateService';
 import { IDynamicDataSource } from             '@microsoft/sp-dynamic-data';
 
+
+declare var System: any;
+
 const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
 export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
 
+    private _moment = null;
     private _searchService: ISearchService;
     private _taxonomyService: ITaxonomyService;
     private _templateService: BaseTemplateService;
@@ -174,7 +177,11 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 showValue: true,
                 step: 1,
                 value: 50,
-            }),                                
+            }),
+            PropertyPaneToggle('useHandlebarsHelpers', {
+                label:  "Handlebars Helpers",
+                checked: this.properties.useHandlebarsHelpers
+            })
         ];
 
         return searchSettingsFields;
@@ -429,6 +436,15 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
         
         this._templateContentToDisplay = templateContent;
+        // Init the moment JS library locale globally
+        if(this._templateContentToDisplay.indexOf("getDate") !== -1){
+            const currentLocale = this.context.pageContext.cultureInfo.currentUICultureName;
+            this._moment = await System.import(
+                /* webpackChunkName: 'search-moment' */
+                'moment'
+            );
+            this._moment.locale(currentLocale);
+        }              
     }
 
     /**
@@ -482,13 +498,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     /**
      * Override the base onInit() implementation to get the persisted properties to initialize data provider.
      */
-    protected onInit(): Promise<void> {
+    protected async onInit(): Promise<void> {
 
-        this._domElement = this.domElement;
-
-        // Init the moment JS library locale globally
-        const currentLocale = this.context.pageContext.cultureInfo.currentUICultureName;
-        moment.locale(currentLocale);
+        this._domElement = this.domElement;       
 
         if (Environment.type === EnvironmentType.Local) {
             this._searchService = new MockSearchService();
@@ -503,6 +515,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             this._taxonomyService = new TaxonomyService(this.context, lcid);
             this._templateService = new TemplateService(this.context.spHttpClient);
         }
+        await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
 
         // Configure search query settings
         this._useResultSource = false;
@@ -530,6 +543,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         super.renderCompleted();
 
         let renderElement = null;
+        if(typeof this.properties.useHandlebarsHelpers === 'undefined' ) {
+            this.properties.useHandlebarsHelpers = true;
+        }
 
         const searchContainer: React.ReactElement<ISearchContainerProps> = React.createElement(
             SearchContainer,
@@ -547,7 +563,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 showBlank: this.properties.showBlank,
                 displayMode: this.displayMode,
                 templateService: this._templateService,
-                templateContent: this._templateContentToDisplay,
+                templateContent: this._templateContentToDisplay,                
                 context: this.context
             } as ISearchContainerProps
         );
@@ -653,6 +669,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             this._lastSourceId = this.properties.dynamicDataSourceId;
             this._lastPropertyId = this.properties.dynamicDataSourcePropertyId;
         }
+
+        await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
     }
 
     public async render(): Promise<void> {
