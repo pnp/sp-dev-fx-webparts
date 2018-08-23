@@ -6,7 +6,7 @@ This sample shows how the [Visio JavaScript APIs](https://dev.office.com/referen
 
 To test the web part, upload the sample file provided to a SharePoint document library. Then open the file on the Visio web client and copy the Url from the browser. Add that url on the web part properties field and the EmbeddedSession will start and display the diagram.
 
-![Demo](./assets/Preview.png)
+![Demo](./assets/Preview.PNG)
 
 ## Used SharePoint Framework Version
 
