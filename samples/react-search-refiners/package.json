@@ -1,6 +1,6 @@
 {
   "name": "react-search-refiners",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -19,12 +19,12 @@
     "@microsoft/sp-lodash-subset": "1.5.1-plusbeta",
     "@microsoft/sp-office-ui-fabric-core": "1.5.1-plusbeta",
     "@microsoft/sp-webpart-base": "1.5.1-plusbeta",
-    "@pnp/common": "1.0.3",
-    "@pnp/logging": "1.0.3",
-    "@pnp/odata": "1.0.3",
-    "@pnp/sp": "1.0.3",
-    "@pnp/spfx-controls-react": "1.5.0",
-    "@pnp/spfx-property-controls": "1.7.0",
+    "@pnp/common": "1.1.4",
+    "@pnp/logging": "1.1.4",
+    "@pnp/odata": "1.1.4",
+    "@pnp/sp": "1.1.4",
+    "@pnp/spfx-controls-react": "1.7.0",
+    "@pnp/spfx-property-controls": "1.9.0",
     "@types/es6-promise": "0.0.33",
     "@types/fabric": "^1.5.40",
     "@types/handlebars": "^4.0.39",
@@ -39,7 +39,7 @@
     "immutability-helper": "2.4.0",
     "lodash-es": "4.17.4",
     "moment": "2.21.0",
-    "office-ui-fabric-react": "^5.118.0",
+    "office-ui-fabric-react": "^5.122.0",
     "react": "15.6.2",
     "react-ace": "^6.1.1",
     "react-custom-scrollbars": "4.1.2",
@@ -54,7 +54,7 @@
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
     "gulp": "~3.9.1",
-    "unlazy-loader": "0.1.2",
+    "unlazy-loader": "0.1.3",
     "webpack-bundle-analyzer": "^2.13.1"
   }
 }
