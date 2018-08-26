@@ -31,15 +31,14 @@ export default class FacebookPage extends React.Component<IFacebookPageProps, {}
 
   private buildIFrameUrl(width: number): string {
     return `https://www.facebook.com/plugins/page.php?` +
-      `href=${encodeURIComponent(this.props.href || 'https://www.facebook.com/Microsoft')}&` +
-      `tabs=timeline&` +
+      `href=${encodeURIComponent(`https://www.facebook.com/${this.props.company || 'Microsoft'}`)}&` +
       `width=${width}&` +
       `height=${this.props.height || 500}&` +
       `small_header=${typeof this.props.smallHeader !== 'undefined' ? this.props.smallHeader : false}&` +
-      `adapt_container_width=true&` +
       `hide_cover=${typeof this.props.hideCover !== 'undefined' ? this.props.hideCover : false}&` +
-      `show_facepile=${typeof this.props.showFacepile !== 'undefined' ? this.props.showFacepile : false}` +
-      `&appId`;
+      `show_facepile=${typeof this.props.showFacepile !== 'undefined' ? this.props.showFacepile : false}&` +
+      `adapt_container_width=true&` +
+      `tabs=timeline`;
   }
 
 }

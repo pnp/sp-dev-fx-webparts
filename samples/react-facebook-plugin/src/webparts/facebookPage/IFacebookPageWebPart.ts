@@ -1,5 +1,5 @@
 export interface IFacebookPageWebPartProps {
-  url: string;
+  company: string;
   height: string;
   smallHeader?: boolean;
   hideCover?: boolean;

@@ -17,7 +17,7 @@ export default class FacebookPageWebPart extends BaseClientSideWebPart<IFacebook
 
   public render(): void {
     const props: IFacebookPageProps = {
-      href: this.properties.url,
+      company: this.properties.company,
       height: Number(this.properties.height),
       smallHeader: this.properties.smallHeader,
       hideCover: this.properties.hideCover,
@@ -44,8 +44,8 @@ export default class FacebookPageWebPart extends BaseClientSideWebPart<IFacebook
         groups: [{
           groupName: strings.BasicGroupName,
           groupFields: [
-            PropertyPaneTextField('url', {
-              label: strings.UrlFieldLabel
+            PropertyPaneTextField('company', {
+              label: strings.CompanyFieldLabel
             }),
             PropertyPaneTextField('height', {
               label: strings.HeightFieldLabel

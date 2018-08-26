@@ -1,5 +1,5 @@
 export interface IFacebookPageProps {
-  href: string;
+  company: string;
   height: number;
   smallHeader?: boolean;
   hideCover?: boolean;

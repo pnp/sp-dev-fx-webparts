@@ -3,7 +3,7 @@ declare interface IFacebookPageWebPartStrings {
   BasicGroupName: string;
   DescriptionFieldLabel: string;
   BasicGroupName: string;
-  UrlFieldLabel: string;
+  CompanyFieldLabel: string;
   HeightFieldLabel: string;
   SmallHeaderFieldLabel: string;
   HideCoverFieldLabel: string;
