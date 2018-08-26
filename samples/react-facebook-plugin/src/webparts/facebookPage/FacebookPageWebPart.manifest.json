@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "fada13df-a74a-4c80-8b56-5166e8ebf4f8",
+  "alias": "FacebookPageWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Facebook Page" },
+    "description": { "default": "Facebook Page Social Plugin webpart" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "url" : "https://www.facebook.com/Microsoft",
+      "height" : 500
+    }
+  }]
+}

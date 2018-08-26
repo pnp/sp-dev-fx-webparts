@@ -1,9 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
-  "version": "2.0",
-  "bundles": {
-  },
+  "entries": [
+    {
+      "entry": "./lib/webparts/facebookPage/FacebookPageWebPart.js",
+      "manifest": "./src/webparts/facebookPage/FacebookPageWebPart.manifest.json",
+      "outputPath": "./dist/facebook-page-web-part.js"
+    }
+  ],
   "externals": {},
   "localizedResources": {
+    "FacebookPageWebPartStrings": "webparts/facebookPage/loc/{locale}.js"
   }
 }
