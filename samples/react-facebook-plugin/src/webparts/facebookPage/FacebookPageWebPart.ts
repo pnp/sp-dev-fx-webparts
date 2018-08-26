@@ -21,7 +21,7 @@ export default class FacebookPageWebPart extends BaseClientSideWebPart<IFacebook
       height: Number(this.properties.height),
       smallHeader: this.properties.smallHeader,
       hideCover: this.properties.hideCover,
-      hideFacepile: this.properties.hideFacepile
+      showFacepile: this.properties.showFacepile
     };
     const element = React.createElement(FacebookPage, props);
     ReactDom.render(element, this.domElement);
@@ -56,8 +56,8 @@ export default class FacebookPageWebPart extends BaseClientSideWebPart<IFacebook
             PropertyPaneToggle('hideCover', {
               label: strings.HideCoverFieldLabel
             }),
-            PropertyPaneToggle('hideFacepile', {
-              label: strings.HideFacepileFieldLabel
+            PropertyPaneToggle('showFacepile', {
+              label: strings.ShowFacepileFieldLabel
             })
           ]
         }]

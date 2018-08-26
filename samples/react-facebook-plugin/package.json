@@ -6,7 +6,9 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build": "gulp bundle",
+    "build": "npm run clean && gulp build && gulp bundle && gulp package-solution",
+    "build:prod": "npm run clean && gulp build --ship && gulp bundle --ship && gulp package-solution --ship",
+    "dev": "gulp serve",
     "clean": "gulp clean",
     "test": "gulp test"
   },

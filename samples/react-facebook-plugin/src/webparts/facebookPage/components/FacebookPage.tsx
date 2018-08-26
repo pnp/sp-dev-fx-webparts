@@ -38,7 +38,7 @@ export default class FacebookPage extends React.Component<IFacebookPageProps, {}
       `small_header=${typeof this.props.smallHeader !== 'undefined' ? this.props.smallHeader : false}&` +
       `adapt_container_width=true&` +
       `hide_cover=${typeof this.props.hideCover !== 'undefined' ? this.props.hideCover : false}&` +
-      `show_facepile=${typeof this.props.hideFacepile !== 'undefined' ? this.props.hideFacepile : true}` +
+      `show_facepile=${typeof this.props.showFacepile !== 'undefined' ? this.props.showFacepile : false}` +
       `&appId`;
   }
 

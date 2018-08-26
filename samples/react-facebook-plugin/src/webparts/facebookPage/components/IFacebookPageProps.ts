@@ -3,5 +3,5 @@ export interface IFacebookPageProps {
   height: number;
   smallHeader?: boolean;
   hideCover?: boolean;
-  hideFacepile?: boolean;
+  showFacepile?: boolean;
 }

@@ -6,6 +6,6 @@ define([], function() {
     "HeightFieldLabel": "Plugin height",
     "SmallHeaderFieldLabel": "Small header",
     "HideCoverFieldLabel": "Hide cover",
-    "HideFacepileFieldLabel": "Hide facepile"
+    "ShowFacepileFieldLabel": "Show facepile"
   };
 });

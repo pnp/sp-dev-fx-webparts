@@ -7,7 +7,7 @@ declare interface IFacebookPageWebPartStrings {
   HeightFieldLabel: string;
   SmallHeaderFieldLabel: string;
   HideCoverFieldLabel: string;
-  HideFacepileFieldLabel: string;
+  ShowFacepileFieldLabel: string;
 }
 
 declare module 'FacebookPageWebPartStrings' {

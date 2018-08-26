@@ -1,13 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/facebookPage/FacebookPageWebPart.js",
-      "manifest": "./src/webparts/facebookPage/FacebookPageWebPart.manifest.json",
-      "outputPath": "./dist/facebook-page-web-part.js"
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "facebook-page-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/facebookPage/FacebookPageWebPart.js",
+          "manifest": "./src/webparts/facebookPage/FacebookPageWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {},
+  },
   "localizedResources": {
-    "FacebookPageWebPartStrings": "webparts/facebookPage/loc/{locale}.js"
-  }
+    "FacebookPageWebPartStrings": "lib/webparts/facebookPage/loc/{locale}.js"
+  },
+  "externals": {}
 }
