@@ -177,10 +177,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 showValue: true,
                 step: 1,
                 value: 50,
-            }),
-            PropertyPaneToggle('useHandlebarsHelpers', {
-                label:  "Handlebars Helpers",
-                checked: this.properties.useHandlebarsHelpers
             })
         ];
 
@@ -317,6 +313,10 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                     dialogTitle: strings.DialogTitle,
                     saveButtonText: strings.SaveButtonText
                 }
+            }),
+            PropertyPaneToggle('useHandlebarsHelpers', {
+                label:  "Handlebars Helpers",
+                checked: this.properties.useHandlebarsHelpers
             })
         ];
     
