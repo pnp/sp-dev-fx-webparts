@@ -4,6 +4,7 @@ export interface ISearchResultsWebPartProps {
   queryKeywords: string;
   queryTemplate: string;
   resultSourceId: string;
+  sortList: string;
   enableQueryRules: boolean;
   maxResultsCount: number;
   selectedProperties: string;

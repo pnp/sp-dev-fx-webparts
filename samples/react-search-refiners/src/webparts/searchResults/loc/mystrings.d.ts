@@ -28,6 +28,7 @@ declare interface ISearchWebPartStrings {
   PlaceHolderIconText: string;
   PlaceHolderDescription: string;
   ResultSourceIdLabel: string;
+  SortList: string;
   InvalidResultSourceIdMessage: string;
   UseSearchBoxQueryLabel: string;
   EnableQueryRulesLabel: string;

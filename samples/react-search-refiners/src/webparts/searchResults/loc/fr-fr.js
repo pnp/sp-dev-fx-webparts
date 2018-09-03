@@ -26,6 +26,7 @@ define([], function() {
     "PlaceHolderIconText": "Web Part de recherche avec affinements",
     "PlaceHolderDescription": "Ce composant affiche une liste de résulats de recherche avec pagination et des filtres configurables",
     "ResultSourceIdLabel": "Identifiant de l'origine de résultats",
+    "SortList": "Ordre de tri",
     "InvalidResultSourceIdMessage": "Identifiant invalide",
     "UseSearchBoxQueryLabel": "Utiliser une source de données dynamique comme requête de recherche",
     "EnableQueryRulesLabel": "Activer les règles de requête",

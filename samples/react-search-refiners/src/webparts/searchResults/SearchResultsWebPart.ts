@@ -150,6 +150,13 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 onGetErrorMessage: this.validateSourceId.bind(this),
                 deferredValidationTime: 300
             }),
+            PropertyPaneTextField('sortList', {
+                label: strings.SortList,
+                multiline: false,
+                resizable: true,
+                value: this.properties.sortList,
+                deferredValidationTime: 300
+            }),
             PropertyPaneToggle('enableQueryRules', {
                 label: strings.EnableQueryRulesLabel,
                 checked: this.properties.enableQueryRules,
@@ -555,6 +562,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 queryKeywords: this._queryKeywords,
                 maxResultsCount: this.properties.maxResultsCount,
                 resultSourceId: this.properties.resultSourceId,
+                sortList: this.properties.sortList,
                 enableQueryRules: this.properties.enableQueryRules,
                 selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g, '').split(',') : [],
                 refiners: this._parseRefiners(this.properties.refiners),
@@ -679,6 +687,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         this._searchService.resultsCount = this.properties.maxResultsCount;
         this._searchService.queryTemplate = this.properties.queryTemplate;
         this._searchService.resultSourceId = this.properties.resultSourceId;
+        this._searchService.sortList = this.properties.sortList;
         this._searchService.enableQueryRules = this.properties.enableQueryRules;
 
         this._queryKeywords =  this.properties.queryKeywords;

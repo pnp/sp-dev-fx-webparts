@@ -32,6 +32,11 @@ interface ISearchResultsContainerProps {
   resultSourceId: string;
 
   /**
+   * The sort order of the results
+   */
+  sortList: string;
+
+  /**
    * Enable SharePoint query rules
    */
   enableQueryRules: boolean;

@@ -20,6 +20,7 @@ class SearchService implements ISearchService {
     private _selectedProperties: string[];
     private _queryTemplate: string;
     private _resultSourceId: string;
+    private _sortList: string;
     private _enableQueryRules: boolean;
 
     public get resultsCount(): number { return this._resultsCount; }
@@ -33,6 +34,9 @@ class SearchService implements ISearchService {
 
     public set resultSourceId(value: string) { this._resultSourceId = value; }
     public get resultSourceId(): string { return this._resultSourceId; }
+
+    public set sortList(value: string) { this._sortList = value; }
+    public get sortList(): string { return this._sortList; }
 
     public set enableQueryRules(value: boolean) { this._enableQueryRules = value; }
     public get enableQueryRules(): boolean { return this._enableQueryRules; }
@@ -49,7 +53,7 @@ class SearchService implements ISearchService {
         // To limit the payload size, we set odata=nometadata
         // We just need to get list items here
         // We use a local configuration to avoid conflicts with other Web Parts
-        this._localPnPSetup= sp.configure({
+        this._localPnPSetup = sp.configure({
             headers: {
                 Accept: 'application/json; odata=nometadata',
             },
@@ -98,6 +102,22 @@ class SearchService implements ISearchService {
             }
         ];
 
+        if (this._sortList) {
+            let sortOrders = this._sortList.split(',');
+            sortList = sortOrders.map(sorter => {
+                let sort = sorter.split(':');
+                let s: Sort = { Property: sort[0].trim(), Direction: SortDirection.Descending };
+                if (sort.indexOf('[') !== -1) {
+                    s.Direction = SortDirection.FQLFormula;
+                }
+                else if (sort.length > 1) {
+                    let direction = sort[1].trim().toLocaleLowerCase();
+                    s.Direction = direction === "ascending" ? SortDirection.Ascending : SortDirection.Descending;
+                }
+                return s;
+            });
+        }
+
         searchQuery.SortList = sortList;
 
         if (refiners) {
@@ -141,7 +161,7 @@ class SearchService implements ISearchService {
                 let refinementResultsRows = r2.RawSearchResults.PrimaryQueryResult.RefinementResults;
 
                 const refinementRows = refinementResultsRows ? refinementResultsRows['Refiners'] : [];
-                if(refinementRows.length > 0){
+                if (refinementRows.length > 0) {
                     this._moment = await System.import(
                         /* webpackChunkName: 'search-moment' */
                         'moment'
@@ -223,7 +243,7 @@ class SearchService implements ISearchService {
     public async suggest(query: string): Promise<string[]> {
 
         let suggestions: string[] = [];
-    
+
         const searchSuggestQuery: SearchSuggestQuery = {
             preQuery: true,
             querytext: query,
@@ -235,7 +255,7 @@ class SearchService implements ISearchService {
 
         try {
             const response = await this._localPnPSetup.searchSuggest(searchSuggestQuery);
-            
+
             if (response.Queries.length > 0) {
 
                 // Get only the suggesiton string value
