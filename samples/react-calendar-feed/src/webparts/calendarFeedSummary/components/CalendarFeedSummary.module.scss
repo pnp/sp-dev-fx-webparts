@@ -1,0 +1,78 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+$themeWhite: '[theme:white,default:white]';
+$neutralLight: '[theme:neutralLight,default:#eaeaea]';
+$neutralLighter: '[theme:neutralLighter,default:#f4f4f4]';
+$neutralSecondary: '[theme:neutralSecondary,default:#666666]';
+$black: '[theme:black,default:#000000]';
+$white: '[theme:white,default:#ffffff]';
+$themeLight: '[theme:themeLight,default:#c7e0f4]';
+$themeSecondary: '[theme:themeSecondary,default:#2b88d8]';
+$neutralPrimary: '[theme:neutralPrimary,default:#333333]';
+$neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
+$error: "[theme:error, default: #a80000]";
+
+.calendarFeedSummary {
+  color: inherit;
+}
+
+.webPartChrome {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.headerSmMargin {
+  margin-bottom: 11px;
+}
+
+.headerLgMargin {
+  margin-bottom: 18px;
+}
+
+.webPartHeader {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.seeAll {
+  white-space: nowrap;
+  margin-left: auto;
+  position: relative;
+}
+
+.content {
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+}
+
+.list {
+  width: 100%;
+}
+
+.spinner {
+  padding-top: 20px;
+}
+
+.emptyMessage {
+  overflow: hidden;
+  display: inline-block;
+  margin: 10px 0 15px;
+  color: #666666;
+}
+
+.errorMessage {
+  overflow: hidden;
+  display: inline-block;
+  margin: 10px 0 15px;
+  color: #666666;
+}
+
+.errorMessage .moreDetails {
+  color:$error;
+}

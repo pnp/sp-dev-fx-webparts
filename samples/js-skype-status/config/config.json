@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
   "version": "2.0",
   "bundles": {
     "skype-presence-web-part": {
@@ -12,7 +12,7 @@
     }
   },
   "externals": {
-    "jquery": "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+    "jquery": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
   },
   "localizedResources": {
     "SkypePresenceWebPartStrings": "lib/webparts/skypePresence/loc/{locale}.js"

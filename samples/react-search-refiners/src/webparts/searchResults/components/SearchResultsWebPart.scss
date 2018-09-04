@@ -1,50 +1,5 @@
 .searchWp {
 
-    &__tile {
-        float: left;
-
-        &__footer {
-            padding: 8px 16px;
-            margin-top: 15px;
-        }
-
-        &__footerInfoRight {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            padding: 8px 16px;
-            color: #ffffff;
-            background-color: "[theme: themePrimary]";
-
-            i {
-                position: relative;
-                top: 2px;
-            }
-
-            span {
-                padding: 5px;
-            }
-        }
-
-        &__iconContainer {
-
-            text-align: center;
-
-            i {
-                position: relative;
-                font-size: 40px;
-            }
-        }
-    }
-
-    &__resultCard {
-        margin: 10px;
-    }
-
-    &__list {
-        overflow: hidden;
-    }
-
     &__noresult {
         padding:10px;
         text-align: center;
@@ -125,10 +80,6 @@
                 }
             }
         }
-    }
-
-    &__count {
-        padding: 10px;
     }
 }
 

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "vimeo-web-part-client-side-solution",
+    "id": "46352013-f007-40a8-80a1-5e4247dbe22d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/vimeo-web-part.sppkg"
+  }
+}

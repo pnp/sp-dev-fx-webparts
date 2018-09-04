@@ -1,5 +1,5 @@
-import { IRefinementResult } from "../../../models/ISearchResult";
-import RefinementFilterOperationCallback from "../../../models/RefinementValueOperationCallback";
+import { IRefinementResult } from             '../../../../models/ISearchResult';
+import RefinementFilterOperationCallback from '../../../../models/RefinementValueOperationCallback';
 
 interface IFilterPanelProps {
     availableFilters: IRefinementResult[];

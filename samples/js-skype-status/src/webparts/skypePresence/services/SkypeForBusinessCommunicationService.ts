@@ -22,8 +22,11 @@ export class SkypeForBusinessCommunicationService implements ICommunicationServi
         const personsAndGroupsManager: any = skypeApp.personsAndGroupsManager;
         const mePerson: any = personsAndGroupsManager.mePerson;
         if (SkypeForBusinessCommunicationService.webPartContext().pageContext.user.email === userEmail) {
-            Log.info(Constants.ErrorCategory, `Bypassed skype subscription for current user ${userEmail}`);
-            handler("Online", undefined, mePerson.displayName());
+          mePerson.status.changed((newStatus: string, reason: string, oldStatus: string) => {
+            Log.info(Constants.ErrorCategory, `${mePerson.displayName()} status changed from ${oldStatus} to ${newStatus} because ${reason}`);
+            handler(newStatus, oldStatus, mePerson.displayName());
+          });
+          mePerson.status.subscribe();
         } else {
             const query: any = personsAndGroupsManager.createPersonSearchQuery();
             query.text(userEmail);
@@ -50,8 +53,8 @@ export class SkypeForBusinessCommunicationService implements ICommunicationServi
                 return SkypeForBusinessCommunicationService.configurationService.getCurrentConfiguration().then((currentConfiguration) => {
                     return jQuery.getScript("https://swx.cdn.skype.com/shared/v/1.2.36/SkypeBootstrap.min.js").then(() => {
                         const config: {apiKey: string, apiKeyCC: string} = {
-                            apiKey: "a42fcebd-5b43-4b89-a065-74450fb91255", // sdk
-                            apiKeyCC: "9c967f6b-a846-4df2-b43d-5167e47d81e1", // sdk+ui
+                          apiKey: '595a1aeb-e6dc-4e5b-be96-bb38adc83da1', // SDK
+                          apiKeyCC: '08c97289-7d57-404f-bd97-a6047403e370', // SDK+UI
                         };
                         if (currentConfiguration && currentConfiguration.ClientId) {
                             Skype.initialize({ apiKey: config.apiKey }, (api) => {

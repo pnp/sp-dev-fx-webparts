@@ -1,4 +1,4 @@
-import { IRefinementFilter } from "../../../models/ISearchResult";
+import { IRefinementFilter } from '../../../../models/ISearchResult';
 
 interface IFilterPanelState {
     showPanel?: boolean;
