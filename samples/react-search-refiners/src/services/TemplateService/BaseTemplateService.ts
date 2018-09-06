@@ -22,6 +22,11 @@ abstract class BaseTemplateService {
                 /* webpackChunkName: 'search-handlebars-helpers' */
                 'handlebars-helpers'
             );
+            this._moment = await System.import(
+                /* webpackChunkName: 'search-moment' */
+                'moment'
+            );            
+            
             this._helper = component({
                 handlebars: Handlebars
             });
@@ -187,7 +192,7 @@ abstract class BaseTemplateService {
      */
     public async processTemplate(templateContext: any, templateContent: string): Promise<string> {
 
-        if (templateContent.indexOf("getDate") !== -1) {
+        if (templateContent.indexOf("getDate") !== -1 && !this._moment) {
             this._moment = await System.import(
                 /* webpackChunkName: 'search-moment' */
                 'moment'
