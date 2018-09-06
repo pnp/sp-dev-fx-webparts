@@ -64,9 +64,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         if (isComponentLoading) {
             //renderWpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
             renderWpContent = (<div>
-                <Shimmer shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]} isDataLoaded={!isComponentLoading} />
-                <Shimmer shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]} isDataLoaded={!isComponentLoading} />
-                <Shimmer shimmerElements={[{ type: ElemType.circle }, { type: ElemType.gap, width: '2%' }, { type: ElemType.line }]} isDataLoaded={!isComponentLoading} />
+                <Shimmer isDataLoaded={!isComponentLoading} width={'75%'} style={{ marginBottom: "10px" }} />
+                <Shimmer isDataLoaded={!isComponentLoading} width={'90%'} style={{ marginBottom: "10px" }} />
+                <Shimmer isDataLoaded={!isComponentLoading} width={'50%'} />
             </div>);
         } else {
 
@@ -221,7 +221,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         );
                         FilterPanel = filterPanelComponent.default;
                     }
-    
+
 
                     this.setState({
                         results: searchResults,
