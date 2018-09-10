@@ -1,0 +1,9 @@
+{
+  "extends": ["tslint-config-standard", "tslint-react", "./config/tslint.json"],
+  "rules": {
+    "space-before-function-paren": false,
+    "semicolon": [ true, "always", "ignore-interfaces" ],
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-facebook-plugin-client-side-solution",
+    "id": "a395e8a8-07fd-4a20-bc10-ad1cd91fb5b9",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-facebook-plugin.sppkg"
+  }
+}
