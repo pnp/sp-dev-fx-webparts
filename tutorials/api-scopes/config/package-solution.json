@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "spfx-api-scopes-tutorial-client-side-solution",
     "id": "6b58cc7d-badc-4721-bfe2-9e4d91efd07c",
