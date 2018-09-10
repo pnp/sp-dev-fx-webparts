@@ -1,0 +1,109 @@
+.accordion__title > *:last-child,
+.accordion__body > *:last-child {
+    margin-bottom: 0;
+}
+
+    .accordion__arrow {
+        display: inline-block;
+        position: relative;
+        width: 24px;
+        height: 12px;
+        right: 10px;
+        margin-top: -28px;
+        color: white !important;
+        
+        float: right;
+    }
+
+
+    .accordion__arrow::after,
+    .accordion__arrow::before {
+        display: block;
+        position: absolute;
+        width: 10px;
+        height: 2px;
+        background-color: currentColor;
+        content: '';
+    }
+
+    .accordion__arrow::before {
+        left: 4px;
+        transform: rotate(45deg);
+    }
+
+    [aria-expanded="true"] .accordion__arrow::before {
+        transform: rotate(-45deg);
+    }
+
+    .accordion__arrow::after {
+        right: 4px;
+        transform: rotate(-45deg);
+    }
+
+    [aria-expanded="true"] .accordion__arrow::after {
+        transform: rotate(45deg);
+    }
+
+    .accordion__arrow::before, .accordion__arrow::after {
+        transition: transform .25s ease, -webkit-transform .25s ease;
+    }
+
+.accordion__item {
+background-color: "[theme: themePrimary, default: #0078d7]";
+margin-bottom: 10px;  
+}
+.accordion {
+    padding-top: 10px;
+
+}
+.accordion__item .accordion__title {
+padding: 5px 20px;;
+background-color: "[theme: themePrimary, default: #0078d7]";
+}
+.accordion__item .accordion__title h3 {
+    font-weight: normal;
+    width: 88%;
+}
+.accordion__item .accordion__body {
+padding: 15px 20px;
+background-color: "[theme: themeLighterAlt, default: #0078d7]";
+color: "[theme: bodyText, default: #333333]";
+}
+
+.accordion__item .accordion__body a {
+    color: "[theme: themePrimary, default: #0078d7]" !important;
+}
+.accordion__item .accordion__body p {
+color: "[theme: bodyText, default: #333333]";
+}
+
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes move-down {
+0% { transform: translateY(0); }
+10% { transform: translateY(0); }
+20% { transform: translateY(5px); }
+30% { transform: translateY(0); }
+100% { transform: translateY(0); }
+}
+
+@keyframes move-up {
+0% { transform: translateY(0); }
+10% { transform: translateY(0); }
+20% { transform: translateY(-5px); }
+30% { transform: translateY(0); }
+100% { transform: translateY(0); }
+}
+
+.accordion__title--animated:hover .accordion__arrow {
+animation-name: move-down;
+animation-duration: 1.5s;
+}
+
+.accordion__title--animated[aria-expanded="true"]:hover .accordion__arrow {
+animation-name: move-up;
+animation-duration: 1.5s;
+}
