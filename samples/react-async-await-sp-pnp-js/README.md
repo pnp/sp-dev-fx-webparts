@@ -1,7 +1,7 @@
-# React sample showing the use of sp-pnp-js with Async / Await
+# React sample showing the use of @pnp/js with Async / Await
 
 ## Summary
-This webpart demonstrates how to use [PnP JS Core](https://github.com/SharePoint/PnP-JS-Core) with Async functions into the SharePoint Framework as well as integrating [PnP JS and SPFx Logging systems](https://blog.josequinto.com/2017/04/30/how-to-integrate-pnp-js-core-and-sharepoint-framework-logging-systems/). Real example querying SharePoint library to show document sizes.
+This webpart demonstrates how to use [PnPJS](https://pnp.github.io/pnpjs/) with Async functions into the SharePoint Framework as well as integrating [PnP JS and SPFx Logging systems](https://blog.josequinto.com/2017/04/30/how-to-integrate-pnp-js-core-and-sharepoint-framework-logging-systems/). Real example querying SharePoint library to show document sizes.
 
 ![React-sp-pnp-js-async-await](./assets/async-await-sp-pnp-js.png)
 
@@ -24,8 +24,9 @@ react-async-await-sp-pnp-js | Jose Quinto ([@jquintozamora](https://twitter.com/
 
 Version|Date|Comments
 -------|----|--------
-1.0|May 1, 2017|Initial release
+1.2|Jul 20, 2018|Replaced deprecated sp-pnp-js with @pnp/js
 1.1|Mar 6, 2018|Update to 1.4.1
+1.0|May 1, 2017|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
