@@ -35,7 +35,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
         } else {
-            // Dynamically load the editor pane to reduce overall bundle size            
+            // Dynamically load the editor pane to reduce overall bundle size
             const editorPopUp = await import(
                 /* webpackChunkName: 'scripteditor' */
                 './components/ScriptEditor'
