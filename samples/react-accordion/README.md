@@ -4,7 +4,7 @@
 
 This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format.
 
-![Sample Web Part built using SPFx with React Framework showing list data in accordion format](https://i.stack.imgur.com/QsZ6o.png)
+![Sample Web Part built using SPFx with React Framework showing list data in accordion format](./assets/previewAccordion.PNG)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-1.5.1-green.svg)
