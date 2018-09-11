@@ -11,6 +11,7 @@ import '../SearchResultsWebPart.scss';
 import Paging from '../Paging/Paging';
 import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 import { DisplayMode } from '@microsoft/sp-core-library';
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
 
 declare var System: any;
@@ -61,6 +62,11 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             </div>;
         }
 
+        let webPartTitle = null;
+        if (this.props.webPartTitle && this.props.webPartTitle.length > 0) {
+            webPartTitle = <WebPartTitle title={this.props.webPartTitle} updateProperty={null} displayMode={DisplayMode.Read} />;
+        }
+
         if (isComponentLoading) {
             //renderWpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
             renderWpContent = (<div>
@@ -82,6 +88,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         renderWpContent =
                             <div>
                                 {filterPanel}
+                                {webPartTitle}
                                 <div className='searchWp__noresult'>{strings.NoResultMessage}</div>
                             </div>;
                     } else {
@@ -93,6 +100,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     renderWpContent =
                         <div>
                             {filterPanel}
+                            {webPartTitle}
                             {renderOverlay}
                             <SearchResultsTemplate
                                 templateService={this.props.templateService}
@@ -321,7 +329,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
     private async _getLocalizedFilters(rawFilters: IRefinementResult[]): Promise<IRefinementResult[]> {
 
         let termsToLocalize: { uniqueIdentifier: string, termId: string, localizedTermLabel: string }[] = [];
-        let udpatedFilters = [];
+        let updatedFilters = [];
 
         rawFilters.map((filterResult) => {
 
@@ -403,7 +411,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     }
                 });
 
-                udpatedFilters.push({
+                updatedFilters.push({
                     FilterName: filter.FilterName,
                     Values: updatedValues.sort((a: IRefinementValue, b: IRefinementValue) => {
                         if (a.RefinementName) {
@@ -417,9 +425,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         } else {
             // Return filters without any modification
-            udpatedFilters = rawFilters;
+            updatedFilters = rawFilters;
         }
 
-        return udpatedFilters;
+        return updatedFilters;
     }
 }
