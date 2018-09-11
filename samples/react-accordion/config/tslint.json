@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/core-build/tslint.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/tslint.schema.json",
   // Display errors as warnings
   "displayAsWarning": true,
   // The TSLint task may have been configured with several custom lint rules

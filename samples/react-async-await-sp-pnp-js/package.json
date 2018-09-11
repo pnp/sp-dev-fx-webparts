@@ -8,15 +8,18 @@
   "dependencies": {
     "@microsoft/sp-core-library": "~1.4.1",
     "@microsoft/sp-webpart-base": "~1.4.1",
+    "@pnp/common": "^1.1.2",
+    "@pnp/logging": "^1.1.2",
+    "@pnp/odata": "^1.1.2",
+    "@pnp/sp": "^1.1.2",
+    "@types/react": "0.14.46",
+    "@types/react-addons-shallow-compare": "0.14.17",
+    "@types/react-addons-test-utils": "0.14.15",
+    "@types/react-addons-update": "0.14.14",
+    "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
     "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "@types/react": "0.14.46",
-    "@types/react-dom": "0.14.18",
-    "@types/react-addons-shallow-compare": "0.14.17",
-    "@types/react-addons-update": "0.14.14",
-    "@types/react-addons-test-utils": "0.14.15",
-    "sp-pnp-js": "2.0.6"
+    "react-dom": "15.4.2"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",
