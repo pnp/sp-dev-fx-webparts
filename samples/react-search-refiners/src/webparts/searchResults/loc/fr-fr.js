@@ -48,5 +48,6 @@ define([], function() {
     "TemplateUrlPlaceholder": "https://myfile.html",
     "ErrorTemplateExtension": "Le file modèle doit être un fichier .htm ou .html valide",
     "ErrorTemplateResolve": "Impossible de résoudre le fichier. Détails: '{0}'",
+    "WebPartTitle": "Titre de web part"
   }
 });

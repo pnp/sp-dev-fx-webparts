@@ -7,7 +7,7 @@ define([], function() {
     "SelectedPropertiesFieldLabel": "Selected Properties",
     "LoadingMessage": "Results are loading, please wait...",
     "MaxResultsCount": "Number of items to retrieve per page",
-    "NoResultMessage": "There is no results to show",    
+    "NoResultMessage": "There are no results to show",    
     "RefinersFieldLabel": "Refiners",
     "FilterPanelTitle": "Available filters",
     "FilterResultsButtonLabel": "Filter results",
@@ -48,5 +48,6 @@ define([], function() {
     "TemplateUrlPlaceholder": "https://myfile.html",
     "ErrorTemplateExtension": "The template must be a valid .htm or .html file",
     "ErrorTemplateResolve": "Unable to resolve the specified template. Error details: '{0}'",
+    "WebPartTitle": "Web part title"
   }
 });

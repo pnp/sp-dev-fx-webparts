@@ -298,7 +298,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         // Sets up styling fields
         let stylingFields: IPropertyPaneField<any>[] = [
             PropertyPaneTextField('webPartTitle', {
-                label: "Web part title"
+                label: strings.WebPartTitle
             }),
             PropertyPaneToggle('showBlank', {
                 label: strings.ShowBlankLabel,

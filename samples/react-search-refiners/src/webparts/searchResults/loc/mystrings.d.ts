@@ -47,6 +47,7 @@ declare interface ISearchWebPartStrings {
   TemplateUrlPlaceholder: string;
   ErrorTemplateExtension: string;
   ErrorTemplateResolve: string;
+  WebPartTitle: string;
 }
 
 declare module 'SearchWebPartStrings' {
