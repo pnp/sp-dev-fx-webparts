@@ -1,6 +1,6 @@
 {
   "name": "react-search-refiners",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -11,14 +11,14 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/decorators": "1.5.1-plusbeta",
-    "@microsoft/sp-application-base": "1.5.1-plusbeta",
-    "@microsoft/sp-core-library": "1.5.1-plusbeta",
-    "@microsoft/sp-dialog": "1.5.1-plusbeta",
-    "@microsoft/sp-loader": "1.5.1-plusbeta",
-    "@microsoft/sp-lodash-subset": "1.5.1-plusbeta",
-    "@microsoft/sp-office-ui-fabric-core": "1.5.1-plusbeta",
-    "@microsoft/sp-webpart-base": "1.5.1-plusbeta",
+    "@microsoft/decorators": "1.6.0-plusbeta",
+    "@microsoft/sp-application-base": "1.6.0-plusbeta",
+    "@microsoft/sp-core-library": "1.6.0-plusbeta",
+    "@microsoft/sp-dialog": "1.6.0-plusbeta",
+    "@microsoft/sp-loader": "1.6.0-plusbeta",
+    "@microsoft/sp-lodash-subset": "1.6.0-plusbeta",
+    "@microsoft/sp-office-ui-fabric-core": "1.6.0-plusbeta",
+    "@microsoft/sp-webpart-base": "1.6.0-plusbeta",
     "@pnp/common": "1.2.1",
     "@pnp/logging": "1.2.1",
     "@pnp/odata": "1.2.1",
@@ -47,9 +47,9 @@
     "react-js-pagination": "3.0.0"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.5.1-plusbeta",
-    "@microsoft/sp-module-interfaces": "1.5.1-plusbeta",
-    "@microsoft/sp-webpart-workbench": "1.5.1-plusbeta",
+    "@microsoft/sp-build-web": "1.6.0-plusbeta",
+    "@microsoft/sp-module-interfaces": "1.6.0-plusbeta",
+    "@microsoft/sp-webpart-workbench": "1.6.0-plusbeta",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
