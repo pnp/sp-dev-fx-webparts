@@ -31,12 +31,10 @@ import { DisplayMode } from '@microsoft/sp-core-library';
 import LocalizationHelper from '../../helpers/LocalizationHelper';
 import ResultsLayoutOption from '../../models/ResultsLayoutOption';
 import TemplateService from '../../services/TemplateService/TemplateService';
-import { PropertyPaneTextDialog } from '../controls/PropertyPaneTextDialog/PropertyPaneTextDialog';
 import { update, isEmpty } from '@microsoft/sp-lodash-subset';
 import MockTemplateService from '../../services/TemplateService/MockTemplateService';
 import BaseTemplateService from '../../services/TemplateService/BaseTemplateService';
 import { IDynamicDataSource } from '@microsoft/sp-dynamic-data';
-
 
 declare var System: any;
 
@@ -52,6 +50,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private _queryKeywords: string;
     private _source: IDynamicDataSource;
     private _domElement: HTMLElement;
+    private _propertyPage = null;
 
     /**
      * Used to be able to unregister dynamic data events if the source is updated
@@ -316,7 +315,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 label: 'Results layout',
                 options: layoutOptions
             }),
-            new PropertyPaneTextDialog('inlineTemplateText', {
+            new this._propertyPage.PropertyPaneTextDialog('inlineTemplateText', {
                 dialogTextFieldValue: this._templateContentToDisplay,
                 onPropertyChange: this._onCustomPropertyPaneChange.bind(this),
                 disabled: !canEditTemplate,
@@ -645,6 +644,13 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 }
             ]
         };
+    }
+
+    protected async loadPropertyPaneResources(): Promise<void> {
+        this._propertyPage = await System.import(
+            /* webpackChunkName: 'search-property-pane' */
+            '../controls/PropertyPaneTextDialog/PropertyPaneTextDialog'
+        );
     }
 
     public async onPropertyPaneFieldChanged(changedProperty: string) {

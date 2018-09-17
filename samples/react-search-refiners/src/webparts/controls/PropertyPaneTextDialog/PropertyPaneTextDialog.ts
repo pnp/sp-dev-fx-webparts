@@ -4,7 +4,7 @@ import { IPropertyPaneField, PropertyPaneFieldType }    from '@microsoft/sp-webp
 import { IPropertyPaneTextDialogProps }           		from './IPropertyPaneTextDialogProps';
 import { IPropertyPaneTextDialogInternalProps }   		from './IPropertyPaneTextDialogInternalProps';
 import { ITextDialogProps }                       		from './components/TextDialog/ITextDialogProps';
-declare var System: any;
+import { TextDialog }                                   from './components/TextDialog/TextDialog';
 
 export class PropertyPaneTextDialog implements IPropertyPaneField<IPropertyPaneTextDialogProps> {
 
@@ -51,13 +51,7 @@ export class PropertyPaneTextDialog implements IPropertyPaneField<IPropertyPaneT
       this.elem = elem;
     }
 
-    const textDialogComponent = await System.import(
-        /* webpackChunkName: 'search-textdialog' */
-        './components/TextDialog/TextDialog'
-    );
-
-    //const textDialog: React.ReactElement<ITextDialogProps> = React.createElement(TextDialog, {
-    const textDialog: React.ReactElement<ITextDialogProps> = React.createElement(textDialogComponent.TextDialog, {
+    const textDialog: React.ReactElement<ITextDialogProps> = React.createElement(TextDialog, {
       dialogTextFieldValue: this.properties.dialogTextFieldValue,
       onChanged: this.onChanged.bind(this),
       disabled: this.properties.disabled,

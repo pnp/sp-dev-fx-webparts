@@ -156,9 +156,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 if (localizedFilters && localizedFilters.length > 0) {
                     const filterPanelComponent = await System.import(
                         /* webpackChunkName: 'search-filterpanel' */
-                        '../FilterPanel/FilterPanel'
+                        '../FilterPanel'
                     );
-                    FilterPanel = filterPanelComponent.default;
+                    FilterPanel = filterPanelComponent.FilterPanel;
                 }
 
                 // Initial filters are just set once for the filter control during the component initialization
@@ -225,9 +225,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     if (FilterPanel == null && localizedFilters && localizedFilters.length > 0) {
                         const filterPanelComponent = await System.import(
                             /* webpackChunkName: 'search-filterpanel' */
-                            '../FilterPanel/FilterPanel'
+                            '../FilterPanel'
                         );
-                        FilterPanel = filterPanelComponent.default;
+                        FilterPanel = filterPanelComponent.FilterPanel;
                     }
 
 
