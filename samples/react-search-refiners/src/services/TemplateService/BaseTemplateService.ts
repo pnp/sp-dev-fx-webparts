@@ -7,9 +7,8 @@ import { Text } from '@microsoft/sp-core-library';
 declare var System: any;
 
 abstract class BaseTemplateService {
-    private _moment = null;
     private _helper = null;
-    public UseHandlebarHelpers = true;
+    public CurrentLocale = "en";
 
     constructor() {
         // Registers all helpers
@@ -22,11 +21,7 @@ abstract class BaseTemplateService {
                 /* webpackChunkName: 'search-handlebars-helpers' */
                 'handlebars-helpers'
             );
-            this._moment = await System.import(
-                /* webpackChunkName: 'search-moment' */
-                'moment'
-            );            
-            
+
             this._helper = component({
                 handlebars: Handlebars
             });
@@ -170,9 +165,11 @@ abstract class BaseTemplateService {
         // Return the formatted date according to current locale using moment.js
         // <p>{{getDate Created "LL"}}</p>
         Handlebars.registerHelper("getDate", (date: string, format: string) => {
-            if (this._moment(date).isValid()) {
-                return this._moment(date).format(format);
-            }
+            try {
+                return this._helper.moment(date, format, { lang: this.CurrentLocale });    
+            } catch (error) {
+                return;
+            }            
         });
 
         // Return the URL or Title part of a URL automatic managed property
@@ -191,14 +188,6 @@ abstract class BaseTemplateService {
      * @returns the compiled HTML template string 
      */
     public async processTemplate(templateContext: any, templateContent: string): Promise<string> {
-
-        if (templateContent.indexOf("getDate") !== -1 && !this._moment) {
-            this._moment = await System.import(
-                /* webpackChunkName: 'search-moment' */
-                'moment'
-            );
-        }
-
         // Process the Handlebars template
         let template = Handlebars.compile(templateContent);
         let result = template(templateContext);

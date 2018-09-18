@@ -5,10 +5,11 @@ class TemplateService extends BaseTemplateService {
 
     private _spHttpClient: SPHttpClient;
 
-    constructor(spHttpClient: SPHttpClient) {
+    constructor(spHttpClient: SPHttpClient, locale: string) {
 
         super();
         this._spHttpClient = spHttpClient;
+        this.CurrentLocale = locale;
     }
 
     /**

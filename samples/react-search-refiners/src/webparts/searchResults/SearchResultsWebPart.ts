@@ -42,7 +42,6 @@ const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
 export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
 
-    private _moment = null;
     private _searchService: ISearchService;
     private _taxonomyService: ITaxonomyService;
     private _templateService: BaseTemplateService;
@@ -449,15 +448,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
 
         this._templateContentToDisplay = templateContent;
-        // Init the moment JS library locale globally
-        if (this._templateContentToDisplay.indexOf("getDate") !== -1) {
-            const currentLocale = this.context.pageContext.cultureInfo.currentUICultureName;
-            this._moment = await System.import(
-                /* webpackChunkName: 'search-moment' */
-                'moment'
-            );
-            this._moment.locale(currentLocale);
-        }
     }
 
     /**
@@ -518,15 +508,15 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         if (Environment.type === EnvironmentType.Local) {
             this._searchService = new MockSearchService();
             this._taxonomyService = new MockTaxonomyService();
-            this._templateService = new MockTemplateService();
+            this._templateService = new MockTemplateService(this.context.pageContext.cultureInfo.currentUICultureName);
 
         } else {
 
             const lcid = LocalizationHelper.getLocaleId(this.context.pageContext.cultureInfo.currentUICultureName);
 
             this._searchService = new SearchService(this.context);
-            this._taxonomyService = new TaxonomyService(this.context, lcid);
-            this._templateService = new TemplateService(this.context.spHttpClient);
+            this._taxonomyService = new TaxonomyService(this.context, lcid);    
+            this._templateService = new TemplateService(this.context.spHttpClient, this.context.pageContext.cultureInfo.currentUICultureName);
         }
         await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
 

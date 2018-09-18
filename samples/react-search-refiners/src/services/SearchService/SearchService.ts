@@ -1,3 +1,4 @@
+import * as Handlebars from                                                                           'handlebars';
 import ISearchService from                                                                            './ISearchService';
 import { ISearchResults, ISearchResult, IRefinementResult, IRefinementValue, IRefinementFilter } from '../../models/ISearchResult';
 import { sp, SearchQuery, SearchResults, SPRest, Web, Sort, SortDirection, SearchSuggestQuery } from  '@pnp/sp';
@@ -12,8 +13,7 @@ import LocalizationHelper from                                                  
 declare var System: any;
 
 class SearchService implements ISearchService {
-
-    private _moment = null;
+    private _helper = null;
     private _initialSearchResult: SearchResults = null;
     private _resultsCount: number;
     private _context: IWebPartContext;
@@ -162,10 +162,14 @@ class SearchService implements ISearchService {
 
                 const refinementRows = refinementResultsRows ? refinementResultsRows['Refiners'] : [];
                 if (refinementRows.length > 0) {
-                    this._moment = await System.import(
-                        /* webpackChunkName: 'search-moment' */
-                        'moment'
+                    let component = await System.import(
+                        /* webpackChunkName: 'search-handlebars-helpers' */
+                        'handlebars-helpers'
                     );
+        
+                    this._helper = component({
+                        handlebars: Handlebars
+                    });
                 }
 
                 // Map search results
@@ -304,10 +308,10 @@ class SearchService implements ISearchService {
         const matches = inputValue.match(iso8061rgx);
 
         let updatedInputValue = inputValue;
-
-        if (matches) {
+        
+        if (matches) {            
             matches.map(match => {
-                updatedInputValue = updatedInputValue.replace(match, this._moment(match).format('LL'));
+                updatedInputValue = updatedInputValue.replace(match, this._helper.moment(match, "LL", { lang: this._context.pageContext.cultureInfo.currentUICultureName }));
             });
         }
 
