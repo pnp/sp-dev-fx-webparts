@@ -166,7 +166,8 @@ abstract class BaseTemplateService {
         // <p>{{getDate Created "LL"}}</p>
         Handlebars.registerHelper("getDate", (date: string, format: string) => {
             try {
-                return this._helper.moment(date, format, { lang: this.CurrentLocale });    
+                let d = this._helper.moment(date, format, { lang: this.CurrentLocale, datejs: false });
+                return d;
             } catch (error) {
                 return;
             }            
