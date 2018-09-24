@@ -116,6 +116,8 @@ Setting | Description
 -------|----
 `{{showResultsCount}}` | Boolean flag corresponding to the associated in the property pane.
 `{{totalRows}}` | The result count.
+`{{maxResultsCount}}` | The number of results configured to retrieve in the web part.
+`{{actualResultsCount}}` | The actual number of results retreived.
 `{{keywords}}` | The search query.
 `{{getSummary HitHighlightedSummary}}` | Format the *HitHighlightedSummary* property with recognized words in bold.
 `{{getDate <date_managed_property> "<format>}}"` | Format the date with moment.ts according to the current language.
