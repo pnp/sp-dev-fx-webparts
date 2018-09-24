@@ -13,7 +13,9 @@ import {
     IPropertyPaneField,
     IPropertyPaneDropdownOption,
     PropertyPaneDropdown,
-    PropertyPaneLabel
+    PropertyPaneLabel,
+    PropertyPaneCustomField,
+    IPropertyPaneCustomFieldProps
 } from '@microsoft/sp-webpart-base';
 import { Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import * as strings from 'SearchWebPartStrings';
@@ -151,6 +153,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             }),
             PropertyPaneTextField('sortList', {
                 label: strings.SortList,
+                description: strings.SortListDescription,
                 multiline: false,
                 resizable: true,
                 value: this.properties.sortList,
@@ -293,6 +296,13 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         const canEditTemplate = this.properties.externalTemplateUrl && this.properties.selectedLayout === ResultsLayoutOption.Custom ? false : true;
 
+        const pp: IPropertyPaneCustomFieldProps = {
+            onRender: (elem: HTMLElement): void => {
+                elem.innerHTML = `<div class="ms-font-xs ms-fontColor-neutralSecondary">${strings.HandlebarsHelpersDescription}</div>`;
+            },
+            key: "HandlebarsDescription"
+        };
+
         // Sets up styling fields
         let stylingFields: IPropertyPaneField<any>[] = [
             PropertyPaneTextField('webPartTitle', {
@@ -329,7 +339,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             PropertyPaneToggle('useHandlebarsHelpers', {
                 label: "Handlebars Helpers",
                 checked: this.properties.useHandlebarsHelpers
-            })
+            }),
+            PropertyPaneCustomField(pp)
         ];
 
         // Only show the template external URL for 'Custom' option
@@ -515,7 +526,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             const lcid = LocalizationHelper.getLocaleId(this.context.pageContext.cultureInfo.currentUICultureName);
 
             this._searchService = new SearchService(this.context);
-            this._taxonomyService = new TaxonomyService(this.context, lcid);    
+            this._taxonomyService = new TaxonomyService(this.context, lcid);
             this._templateService = new TemplateService(this.context.spHttpClient, this.context.pageContext.cultureInfo.currentUICultureName);
         }
         await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);

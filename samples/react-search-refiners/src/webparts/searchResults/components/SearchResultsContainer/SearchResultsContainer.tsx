@@ -99,8 +99,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 } else {
                     renderWpContent =
                         <div>
-                            {filterPanel}
                             {webPartTitle}
+                            {filterPanel}                            
                             {renderOverlay}
                             <SearchResultsTemplate
                                 templateService={this.props.templateService}
