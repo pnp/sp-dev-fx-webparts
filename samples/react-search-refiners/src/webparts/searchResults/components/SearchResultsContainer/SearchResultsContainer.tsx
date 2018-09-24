@@ -87,8 +87,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     if (!this.props.showBlank) {
                         renderWpContent =
                             <div>
-                                {filterPanel}
                                 {webPartTitle}
+                                {filterPanel}                                
                                 <div className='searchWp__noresult'>{strings.NoResultMessage}</div>
                             </div>;
                     } else {
