@@ -10,6 +10,8 @@ interface ISearchResultsTemplateContext {
     showResultsCount: boolean;
     siteUrl: string;
     webUrl: string;
+    maxResultsCount: number;
+    actualResultsCount: number;
 }
 
 export default ISearchResultsTemplateContext;
