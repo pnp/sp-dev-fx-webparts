@@ -10,7 +10,7 @@ import {
 import * as strings from 'IceCreamShopWebPartStrings';
 import IceCreamShop from './components/IceCreamShop';
 import { IIceCreamShopProps } from './components/IIceCreamShopProps';
-// import { IceCreamFakeProvider } from './iceCreamProviders/IceCreamFakeProvider'; // when offline workbench.
+import { IceCreamFakeProvider } from './iceCreamProviders/IceCreamFakeProvider'; // when offline workbench.
 
 import { sp } from "@pnp/sp";
 import { IceCreamPnPJsProvider } from './iceCreamProviders/IceCreamPnPJsProvider';
@@ -34,7 +34,7 @@ export default class IceCreamShopWebPart extends BaseClientSideWebPart<IIceCream
     const element: React.ReactElement<IIceCreamShopProps> = React.createElement(
       IceCreamShop,
       {
-        iceCreamProvider: new IceCreamPnPJsProvider(sp), //new IceCreamFakeProvider() // when offline workbench.
+        iceCreamProvider: new IceCreamPnPJsProvider(sp), //new IceCreamFakeProvider() // replace with Fake provider when offline workbench.
         strings: strings
       }
     );
