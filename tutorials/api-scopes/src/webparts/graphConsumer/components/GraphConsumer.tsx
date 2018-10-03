@@ -18,8 +18,7 @@ import {
   SelectionMode
 } from 'office-ui-fabric-react';
 
-import { AadHttpClient } from "@microsoft/sp-http";
-import { MSGraphClient } from "@microsoft/sp-client-preview";
+import { AadHttpClient, MSGraphClient } from "@microsoft/sp-http";
 
 // Configure the columns for the DetailsList component
 let _usersListColumns = [
@@ -153,17 +152,16 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
     console.log("Using _searchWithAad() method");
 
     // Using Graph here, but any 1st or 3rd party REST API that requires Azure AD auth can be used here.
-    const aadClient: AadHttpClient = new AadHttpClient(
-      this.props.context.serviceScope,
-      "https://graph.microsoft.com"
-    );
-
-    // Search for the users with givenName, surname, or displayName equal to the searchFor value
-    aadClient
-      .get(
-        `https://graph.microsoft.com/v1.0/users?$select=displayName,mail,userPrincipalName&$filter=(givenName%20eq%20'${escape(this.state.searchFor)}')%20or%20(surname%20eq%20'${escape(this.state.searchFor)}')%20or%20(displayName%20eq%20'${escape(this.state.searchFor)}')`,
-        AadHttpClient.configurations.v1
-      )
+    this.props.context.aadHttpClientFactory
+      .getClient("https://graph.microsoft.com")
+      .then((client: AadHttpClient) => {
+        // Search for the users with givenName, surname, or displayName equal to the searchFor value
+        return client
+          .get(
+            `https://graph.microsoft.com/v1.0/users?$select=displayName,mail,userPrincipalName&$filter=(givenName%20eq%20'${escape(this.state.searchFor)}')%20or%20(surname%20eq%20'${escape(this.state.searchFor)}')%20or%20(displayName%20eq%20'${escape(this.state.searchFor)}')`,
+            AadHttpClient.configurations.v1
+          );
+      })
       .then(response => {
         return response.json();
       })
@@ -201,41 +199,41 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
     // Log the current operation
     console.log("Using _searchWithGraph() method");
 
-    const graphClient: MSGraphClient = this.props.context.serviceScope.consume(
-      MSGraphClient.serviceKey
-    );
+    this.props.context.msGraphClientFactory
+      .getClient()
+      .then((client: MSGraphClient) => {
+        // From https://github.com/microsoftgraph/msgraph-sdk-javascript sample
+        client
+          .api("users")
+          .version("v1.0")
+          .select("displayName,mail,userPrincipalName")
+          .filter(`(givenName eq '${escape(this.state.searchFor)}') or (surname eq '${escape(this.state.searchFor)}') or (displayName eq '${escape(this.state.searchFor)}')`)
+          .get((err, res) => {  
 
-    // From https://github.com/microsoftgraph/msgraph-sdk-javascript sample
-    graphClient
-      .api("users")
-      .version("v1.0")
-      .select("displayName,mail,userPrincipalName")
-      .filter(`(givenName eq '${escape(this.state.searchFor)}') or (surname eq '${escape(this.state.searchFor)}') or (displayName eq '${escape(this.state.searchFor)}')`)
-      .get((err, res) => {  
+            if (err) {
+              console.error(err);
+              return;
+            }
 
-        if (err) {
-          console.error(err);
-          return;
-        }
+            // Prepare the output array
+            var users: Array<IUserItem> = new Array<IUserItem>();
 
-        // Prepare the output array
-        var users: Array<IUserItem> = new Array<IUserItem>();
+            // Map the JSON response to the output array
+            res.value.map((item: any) => {
+              users.push( { 
+                displayName: item.displayName,
+                mail: item.mail,
+                userPrincipalName: item.userPrincipalName,
+              });
+            });
 
-        // Map the JSON response to the output array
-        res.value.map((item: any) => {
-          users.push( { 
-            displayName: item.displayName,
-            mail: item.mail,
-            userPrincipalName: item.userPrincipalName,
+            // Update the component state accordingly to the result
+            this.setState(
+              {
+                users: users,
+              }
+            );
           });
-        });
-
-        // Update the component state accordingly to the result
-        this.setState(
-          {
-            users: users,
-          }
-        );
       });
   }
 }
