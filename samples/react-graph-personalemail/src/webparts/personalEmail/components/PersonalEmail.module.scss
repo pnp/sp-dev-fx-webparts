@@ -1,0 +1,66 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.personalEmail {
+  .title, .viewAll {
+    padding-left: 10px;
+  }
+
+  .list {
+    margin-bottom: 1em;
+  }
+
+  .message {
+    display: block;
+    padding: 0.5em 10px;
+    color: $ms-color-black;
+
+    &:hover {
+      color: inherit;
+      background: $ms-color-neutralLight;
+    }
+  }
+
+  .from {
+    @include ms-font-l;
+    @include ms-fontWeight-semilight;
+  }
+
+  .subject {
+    @include ms-font-s;
+    @include ms-fontWeight-semibold;
+    color: $ms-color-themePrimary;
+    float: left;
+    width: 80%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .date {
+    @include ms-font-s;
+    @include ms-fontWeight-semibold;
+    color: $ms-color-themePrimary;
+    float: right;
+    width: 20%;
+    text-align: right;
+    word-break: keep-all;
+  }
+
+  .preview {
+    @include ms-font-s;
+    @include ms-fontWeight-light;
+    clear: both;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .noMessages {
+    @include ms-font-m;
+  }
+
+  .error {
+    @include ms-font-m;
+    color: $ms-color-alert;
+  }
+}
