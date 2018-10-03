@@ -26,11 +26,13 @@ define([], function() {
     "PlaceHolderIconText": "Web Part de recherche avec affinements",
     "PlaceHolderDescription": "Ce composant affiche une liste de résulats de recherche avec pagination et des filtres configurables",
     "ResultSourceIdLabel": "Identifiant de l'origine de résultats",
+    "SortList": "Ordre de tri",
+    "SortListDescription": "Spécifiez l'ordre de tri dans une liste séparée par des virgules au format <Nom de la propriété gérée>:ascending/descending (par défaut:Created:descending,Size:ascending).",
     "InvalidResultSourceIdMessage": "Identifiant invalide",
     "UseSearchBoxQueryLabel": "Utiliser une source de données dynamique comme requête de recherche",
     "EnableQueryRulesLabel": "Activer les règles de requête",
     "StylingSettingsGroupName": "Options d'affichage",
-    "RefinersFieldDescription": "Propriétés gerées à utiliser comme filtres (liste ordonnée séparée par une virgule). Vous pouvez spécifier un label personnalisé en utilisant le format suivant <Nom de la propriété gérée>:\"Nom convivial\"",
+    "RefinersFieldDescription": "Propriétés gerées à utiliser comme filtres (liste ordonnée séparée par une virgule). Vous pouvez spécifier un label personnalisé en utilisant le format suivant <Nom de la propriété gérée>:\"Nom convivial\".",
     "SelectedPropertiesFieldDescription": "Propriétés à récupérer des résulats de recherche.",
     "SearchQueryKeywordsFieldDescription": "Utilisez une requête de recherche prédéfinie pour obtenir un ensemble de résultats statique.",
     "CountMessageLong": "<b>{0}</b> résultats pour '<em>{1}</em>'",
@@ -47,5 +49,7 @@ define([], function() {
     "TemplateUrlPlaceholder": "https://myfile.html",
     "ErrorTemplateExtension": "Le file modèle doit être un fichier .htm ou .html valide",
     "ErrorTemplateResolve": "Impossible de résoudre le fichier. Détails: '{0}'",
+    "WebPartTitle": "Titre de web part",
+    "HandlebarsHelpersDescription": "Activer les fonctions de moment et handlebars helpers. Voir https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens pour plus d'informations."
   }
 });

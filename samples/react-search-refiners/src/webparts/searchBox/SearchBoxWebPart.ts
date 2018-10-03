@@ -14,7 +14,7 @@ import * as strings from                                                        
 import SearchBox from                                                                                                  './components/SearchBoxContainer';
 import { ISearchBoxContainerProps } from                                                                               './components/ISearchBoxContainerProps';
 import { PageOpenBehavior } from                                                                                       '../../helpers/UrlHelper';
-import { IDynamicDataController, IDynamicDataSourceMetadata, IDynamicDataPropertyDefinition, IDynamicDataSource } from '@microsoft/sp-dynamic-data';
+import { IDynamicDataCallables, IDynamicDataPropertyDefinition, IDynamicDataSource } from                              '@microsoft/sp-dynamic-data';
 import ISearchBoxWebPartProps from                                                                                     './ISearchBoxWebPartProps';
 import { Log, Text, Environment, EnvironmentType } from                                                                '@microsoft/sp-core-library';
 import ISearchService from                                                                                             '../../services/SearchService/ISearchService';
@@ -23,7 +23,7 @@ import SearchService from                                                       
 
 const LOG_SOURCE: string = '[SearchBoxWebPart_{0}]';
 
-export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWebPartProps> implements IDynamicDataController {
+export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWebPartProps> implements IDynamicDataCallables {
 
   private _searchService: ISearchService;
   private _searchQuery: string;

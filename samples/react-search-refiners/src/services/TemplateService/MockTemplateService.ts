@@ -2,7 +2,11 @@ import { html } from                               'common-tags';
 import BaseTemplateService from                    './BaseTemplateService';
 
 class MockTemplateService extends BaseTemplateService {
-    
+    constructor(locale: string) {
+        super();    
+        this.CurrentLocale = locale;
+    }
+
     private readonly _mockFileContent: string = html`
                                         <div class='template_root'>
                                             <span><strong>Mocked external template</strong></span>

@@ -4,19 +4,30 @@ import { html } from 'common-tags';
 import { isEmpty } from '@microsoft/sp-lodash-subset';
 import * as strings from 'SearchWebPartStrings';
 import { Text } from '@microsoft/sp-core-library';
-import * as moment from 'moment';
+declare var System: any;
 
 abstract class BaseTemplateService {
+    private _helper = null;
+    public CurrentLocale = "en";
 
     constructor() {
         // Registers all helpers
         this.registerTemplateServices();
-
-        // Imports the handlebars-helpers
-        let helpers = require<any>('handlebars-helpers')({
-            handlebars: Handlebars
-        });
     }
+
+    public async LoadHandlebarsHelpers(load: boolean) {
+        if (load) {
+            let component = await System.import(
+                /* webpackChunkName: 'search-handlebars-helpers' */
+                'handlebars-helpers'
+            );
+
+            this._helper = component({
+                handlebars: Handlebars
+            });
+        }
+    }
+
 
     /**
      * Gets the default Handlebars list item template used in list layout
@@ -154,19 +165,22 @@ abstract class BaseTemplateService {
         // Return the formatted date according to current locale using moment.js
         // <p>{{getDate Created "LL"}}</p>
         Handlebars.registerHelper("getDate", (date: string, format: string) => {
-            if (moment(date).isValid()) {
-                return moment(date).format(format);
-            }
+            try {
+                let d = this._helper.moment(date, format, { lang: this.CurrentLocale, datejs: false });
+                return d;
+            } catch (error) {
+                return;
+            }            
         });
 
         // Return the URL or Title part of a URL automatic managed property
         // <p>{{getDate MyLinkOWSURLH "Title"}}</p>
-        Handlebars.registerHelper("getUrlField", (urlField: string, value: "URL" | "Title" ) => {
+        Handlebars.registerHelper("getUrlField", (urlField: string, value: "URL" | "Title") => {
             let separatorPos = urlField.lastIndexOf(",");
-            if(value === "URL") {
+            if (value === "URL") {
                 return urlField.substr(0, separatorPos);
             }
-            return urlField.substr(separatorPos+1).trim();
+            return urlField.substr(separatorPos + 1).trim();
         });
     }
 
@@ -174,8 +188,7 @@ abstract class BaseTemplateService {
      * Compile the specified Handlebars template with the associated context object¸
      * @returns the compiled HTML template string 
      */
-    public processTemplate(templateContext: any, templateContent: string): string {
-
+    public async processTemplate(templateContext: any, templateContent: string): Promise<string> {
         // Process the Handlebars template
         let template = Handlebars.compile(templateContent);
         let result = template(templateContext);

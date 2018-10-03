@@ -3,9 +3,8 @@ import * as ReactDom                                    from 'react-dom';
 import { IPropertyPaneField, PropertyPaneFieldType }    from '@microsoft/sp-webpart-base';
 import { IPropertyPaneTextDialogProps }           		from './IPropertyPaneTextDialogProps';
 import { IPropertyPaneTextDialogInternalProps }   		from './IPropertyPaneTextDialogInternalProps';
-import { TextDialog }                             		from './components/TextDialog/TextDialog';
 import { ITextDialogProps }                       		from './components/TextDialog/ITextDialogProps';
-
+import { TextDialog }                                   from './components/TextDialog/TextDialog';
 
 export class PropertyPaneTextDialog implements IPropertyPaneField<IPropertyPaneTextDialogProps> {
 
@@ -47,7 +46,7 @@ export class PropertyPaneTextDialog implements IPropertyPaneField<IPropertyPaneT
   /*****************************************************************************************
    * Renders the QueryFilterPanel property pane
    *****************************************************************************************/
-  private onRender(elem: HTMLElement): void {
+  private async onRender(elem: HTMLElement): Promise<void> {
     if (!this.elem) {
       this.elem = elem;
     }

@@ -4,7 +4,7 @@ import {
   BaseApplicationCustomizer
 } from                                                                 '@microsoft/sp-application-base';
 import * as strings from                                               'QueryStringDataSourceApplicationCustomizerStrings';
-import { IDynamicDataController, IDynamicDataPropertyDefinition } from '@microsoft/sp-dynamic-data';
+import { IDynamicDataCallables, IDynamicDataPropertyDefinition } from '@microsoft/sp-dynamic-data';
 import { UrlHelper } from                                              '../../helpers/UrlHelper';
 
 const LOG_SOURCE: string = 'QueryStringDataSourceApplicationCustomizer';
@@ -19,7 +19,7 @@ export interface IQueryStringDataSourceApplicationCustomizerProperties {
 
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class QueryStringDataSourceApplicationCustomizer
-  extends BaseApplicationCustomizer<IQueryStringDataSourceApplicationCustomizerProperties> implements IDynamicDataController {
+  extends BaseApplicationCustomizer<IQueryStringDataSourceApplicationCustomizerProperties> implements IDynamicDataCallables {
 
   private _searchQuery: string;
 

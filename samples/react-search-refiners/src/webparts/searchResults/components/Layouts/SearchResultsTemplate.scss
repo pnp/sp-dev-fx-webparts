@@ -1,26 +1,24 @@
-.template_root {
+.searchWp {
     @import '~office-ui-fabric/dist/sass/Fabric.scss';
     @import '~office-ui-fabric/dist/components/Label/Label.scss';
     @import '~office-ui-fabric/dist/components/List/List.scss';
     @import '~office-ui-fabric/dist/components/ListItem/ListItem.scss';
+    @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/FabricCore.scss';
 
     .template_defaultList {
         .template_icon {
             background-position: top;
             background-repeat: no-repeat;
         }
-
         strong {
             color: "[theme: themePrimary]"
         }
     }
-
     .template_defaultCard {
         .singleCard {
             margin: 10px;
             border: 1px solid #eaeaea;
             min-height: 200px;
-
             .previewImg {
                 width: 100%;
                 height: 111px;
@@ -29,25 +27,21 @@
                 position: relative;
                 border-bottom: 1px solid #eaeaea;
             }
-
             .cardInfo {
                 padding-left: 10px;
                 padding-right: 10px;
             }
-
             .cardFileIcon {
                 left: 10px;
                 bottom: 8px;
                 position: absolute;
-            }            
+            }
         }
-
         .singleCard:hover {
             border-color: #c8c8c8;
             cursor: pointer;
         }
     }
-
     .template_resultCount {
         padding-left: 10px;
         margin-bottom: 10px;
