@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "9dd62689-0ed4-4b35-82e0-848742751bdc",
   "alias": "ReactProjectOnlineWebPart",
   "componentType": "WebPart",
