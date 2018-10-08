@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from '../hyperlink/VisioSample.module.scss';
+import styles from './VisioSample.module.scss';
 import { IVisioSampleProps, IVisioSampleState } from '.';
 import { Hyperlink } from '../hyperlink';
 
