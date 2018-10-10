@@ -176,7 +176,7 @@ abstract class BaseTemplateService {
         // Return the URL or Title part of a URL automatic managed property
         // <p>{{getDate MyLinkOWSURLH "Title"}}</p>
         Handlebars.registerHelper("getUrlField", (urlField: string, value: "URL" | "Title") => {
-            let separatorPos = urlField.lastIndexOf(",");
+            let separatorPos = urlField.indexOf(",");
             if (value === "URL") {
                 return urlField.substr(0, separatorPos);
             }
