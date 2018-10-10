@@ -20,15 +20,16 @@ import { Log, Text, Environment, EnvironmentType } from                         
 import ISearchService from                                                                                             '../../services/SearchService/ISearchService';
 import MockSearchService from                                                                                          '../../services/SearchService/MockSearchService';
 import SearchService from                                                                                              '../../services/SearchService/SearchService';
-
-const LOG_SOURCE: string = '[SearchBoxWebPart_{0}]';
+import DynamicDataHelper from '../../helpers/DynamicDataHelper';
 
 export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWebPartProps> implements IDynamicDataCallables {
+
+  private readonly LOG_SOURCE: string = '[SearchBoxWebPart_{0}]';
 
   private _searchService: ISearchService;
   private _searchQuery: string;
   private _source: IDynamicDataSource;
-  private _domElement: HTMLElement;
+  private _dynamicDataHelper: DynamicDataHelper;
 
   /**
    * Used to be able to unregister dynamic data events if the source is updated
@@ -50,44 +51,37 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
   }
 
   /**
-   * Resolves the connected data sources
-   * Useful in the case when the data source comes from an extension, 
-   * the id is regenerated every time the page is refreshed causing the property pane configuration be lost
+   * Binds data source properties to the Web Part properties. In some cases, the data source configuration is not retrieved propertly due to updated ids 
    */
-  private _initDynamicDataSource() {
+  private _bindDataSources() {
 
-    if (this.properties.dynamicDataSourceId 
-      && this.properties.dynamicDataSourcePropertyId
-      && this.properties.dynamicDataSourceComponentId) {
+    const sourceFound = this._source ? true : false;
 
-      this._source = this.context.dynamicDataProvider.tryGetSource(this.properties.dynamicDataSourceId);
-      let sourceId = undefined;
-      
-      if (this._source) {
-          sourceId = this._source.id;
-      } else {
-          // Try to resolve the source and get its id by the name
-          this._source = this._tryGetSourceByComponentId(this.properties.dynamicDataSourceComponentId);
-          sourceId = this._source ? this._source.id : undefined;
-      }
+    if (this.properties.sourceInstance.sourceId && this.properties.sourceInstance.propertyId && !sourceFound) {
 
-      if (sourceId) {
-          this.context.dynamicDataProvider.registerPropertyChanged(sourceId, this.properties.dynamicDataSourcePropertyId, this._dataSourceUpdated);
-          this._searchQuery = this._source.getPropertyValue(this.properties.dynamicDataSourcePropertyId);
+        let sourceId = undefined;
+        this._source = this.context.dynamicDataProvider.tryGetSource(this.properties.sourceInstance.sourceId);
+        
+        if (this._source ) {
+            sourceId = this._source .id;
+        } else {
+            this._source = this._dynamicDataHelper._tryGetSourceByInstanceOrComponentId(this.properties.sourceInstance);
+            sourceId = this._source ? this._source.id : undefined;
+        }
 
-          // Update the property for the property pane
-          this.properties.dynamicDataSourceId = sourceId;
-          this._lastSourceId = this.properties.dynamicDataSourceId;
-          this._lastPropertyId = this.properties.dynamicDataSourcePropertyId;
+        if (sourceId) {
+            this.context.dynamicDataProvider.registerPropertyChanged(sourceId, this.properties.sourceInstance.propertyId, this.render);
 
-          // Notify subscriber of the initial value
-          this.context.dynamicDataSourceManager.notifyPropertyChanged('inputQuery');
-          
-          // If false, means the onInit method is not completed yet so we let it render the web part through the normal process
-          if (this.renderedOnce) {
-            this.render();
-          }
-      }
+            // Update the property for the property pane
+            this.properties.sourceInstance.sourceId = sourceId;
+            this._lastSourceId = sourceId;
+            this._lastPropertyId = this.properties.sourceInstance.propertyId;
+
+            // If false, means the onInit method is not completed yet so we let it render the web part through the normal process
+            if (this.renderedOnce) {
+                this.render();
+            }
+        }
     }
   }
 
@@ -95,60 +89,64 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
    * Determines the group fields for the search query options inside the property pane
    */
   private _getSearchQueryFields(): IPropertyPaneField<any>[] {
+      
+      // Sets up search query fields
+      let searchQueryConfigFields: IPropertyPaneField<any>[] = [
+          PropertyPaneCheckbox('useDynamicDataSource', {
+              checked: false,
+              text: strings.UseDynamicDataSourceLabel,
+          })
+      ];
 
-    // Sets up search query fields
-    let searchQueryConfigFields: IPropertyPaneField<any>[] = [
-        PropertyPaneCheckbox('useDynamicDataSource', {
-            checked: false,
-            text: strings.UseDynamicDataSourceLabel,                               
-        })
-    ];
-
-    if (this.properties.useDynamicDataSource) {
-        const sourceOptions: IPropertyPaneDropdownOption[] =
-        this.context.dynamicDataProvider.getAvailableSources().map(source => {
-                return {
-                    key: source.id,
-                    text: source.metadata.title,
-                    componentId: source.metadata.componentId
-                };
-        }).filter((item) => {
-          if (item.key.localeCompare("PageContext") !== 0 && item.componentId !== this.componentId) {
-            return item;
-          }
-        });
-
-        const selectedSource: string = this.properties.dynamicDataSourceId;
+      if (this.properties.useDynamicDataSource) {
+          const sourceOptions: IPropertyPaneDropdownOption[] =
+          this.context.dynamicDataProvider.getAvailableSources().map(source => {
+              return {
+                  key: source.id,
+                  text: source.metadata.title,
+                  instanceId: source.metadata.instanceId,
+                  componentId: source.metadata.componentId                        
+              };
+          }).filter((item) => {
+              // We don't allow as data source:
+              // - The component itself
+              // - Components of the same type 
+              if (item.instanceId !== this.instanceId && this.componentId !== item.componentId) {
+                  return item;
+              }
+          });
     
-        let propertyOptions: IPropertyPaneDropdownOption[] = [];
-        if (selectedSource) {
-            const source: IDynamicDataSource = this.context.dynamicDataProvider.tryGetSource(selectedSource);
-            if (source) {
-            propertyOptions = source.getPropertyDefinitions().map(prop => {
-                return {
-                key: prop.id,
-                text: prop.title
-                };
-            });
-            }
-        }
+          const selectedSource: string = this.properties.sourceInstance.sourceId;
+          let propertyOptions: IPropertyPaneDropdownOption[] = [];
+          
+          if (selectedSource) {
+              const source: IDynamicDataSource = this.context.dynamicDataProvider.tryGetSource(selectedSource);
+              if (source) {
+                  propertyOptions = source.getPropertyDefinitions().map(prop => {
+                      return {
+                          key: prop.id,
+                          text: prop.title
+                      };
+                  });
+              }
+          }
 
-        searchQueryConfigFields = searchQueryConfigFields.concat([
-            PropertyPaneDropdown('dynamicDataSourceId', {
-                label: "Source",
-                options: sourceOptions,
-                selectedKey: this.properties.dynamicDataSourceId,
-            }),
-            PropertyPaneDropdown('dynamicDataSourcePropertyId', {
-                disabled: !this.properties.dynamicDataSourceId,
-                label: "Source property",
-                options: propertyOptions,
-                selectedKey: this.properties.dynamicDataSourcePropertyId
-            }),
-        ]);
-    }
+          searchQueryConfigFields = searchQueryConfigFields.concat([
+              PropertyPaneDropdown('sourceInstance.sourceId', {
+                  label: strings.DynamicDataSourceLabel,
+                  options: sourceOptions,
+                  selectedKey: this.properties.sourceInstance.sourceId,
+              }),
+              PropertyPaneDropdown('sourceInstance.propertyId', {
+                  disabled: !this.properties.sourceInstance.sourceId,
+                  label: strings.DynamicDataSourcePropertyLabel,
+                  options: propertyOptions,
+                  selectedKey: this.properties.sourceInstance.propertyId
+              })
+          ]);
+      }
 
-    return searchQueryConfigFields;
+      return searchQueryConfigFields;
   }
 
   /**
@@ -189,21 +187,6 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
   }
 
   /**
-   * Handler to notify data source subscribers the query string value has been updated
-   */
-  private _dataSourceUpdated() {
-
-    if (this.properties.useDynamicDataSource) {
-      if (this.properties.dynamicDataSourceId && this.properties.dynamicDataSourcePropertyId) {
-        this._searchQuery = this._source ? this._source.getPropertyValue(this.properties.dynamicDataSourcePropertyId) : undefined;
-        this.context.dynamicDataSourceManager.notifyPropertyChanged('inputQuery');
-
-        this.render();
-      }
-    }
-  }
-
-  /**
    * Verifies if the string is a correct URL
    * @param value the URL to verify
    */
@@ -214,28 +197,6 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
       }
       
       return '';
-  }
-
-  /**
-   * Gets a dynamic data source by its component id. The component id doesn't change when the page is refreshed
-   * @param dataSourceComponentId the component id
-   */
-  private _tryGetSourceByComponentId(dataSourceComponentId: string): IDynamicDataSource {
-    const resolvedDataSource = this.context.dynamicDataProvider.getAvailableSources()
-                                    .filter((item) => {
-                                      if (item.metadata.componentId) {
-                                        if (item.metadata.componentId.localeCompare(dataSourceComponentId) === 0) {
-                                          return item;
-                                        }
-                                      }                                      
-                                    });
-
-    if (resolvedDataSource.length > 0 ) {
-      return resolvedDataSource[0];
-    } else {
-      Log.verbose(Text.format(LOG_SOURCE, "_tryGetSourceByComponentId()"), `Unable to find dynamic data source with componentId '${dataSourceComponentId}'`);
-      return undefined;      
-    }
   }
 
   /**
@@ -253,50 +214,62 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
     }
   }
 
+  /**
+   * Make sure the data source will be plugged in correctly when refreshing the whole page
+   * In the cas of extension, the source id changes every time so we need to set the correct suorce Id to corresponding property to get the value at render time
+   */
+  private _reconnectDataSource() {
+    if (this.properties.sourceInstance.sourceId && this.properties.sourceInstance.propertyId) {
+        this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._bindDataSources.bind(this));
+    }
+  }
+
   protected onInit(): Promise<void> {
 
-    this._domElement = this.domElement;
+    this._source = undefined;
+
+    if(!this.properties.sourceInstance) {
+        this.properties.sourceInstance = {
+            componentId: null,
+            instanceId: null,
+            propertyId: null,
+            sourceId: null
+        };
+    }
 
     this.initSearchService();
 
     this.context.dynamicDataSourceManager.initializeSource(this);
 
-    // Make sure the data source will be plugged in correctly when loaded on the page
-    // Depending of the component loading order, some sources may be unavailable at this time so that's why we use an event listener 
-    this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._initDynamicDataSource.bind(this));
+    // Re bind data sources to WebPart properties
+    this._reconnectDataSource();
 
     return Promise.resolve();
   }
 
-  protected onPropertyPaneFieldChanged(changedProperty: string) {
+  protected onPropertyPaneFieldChanged(propertyPath: string) {
 
     this.initSearchService();
     
-    if (changedProperty === 'dynamicDataSourceId') {
+    if (propertyPath === 'sourceInstance.sourceId') {
 
-      this._source = this.context.dynamicDataProvider.tryGetSource(this.properties.dynamicDataSourceId);
-
-      this.properties.dynamicDataSourcePropertyId = this._source.getPropertyDefinitions()[0].id;
-      this.properties.dynamicDataSourceComponentId = this._source.metadata.componentId;
-        
-      // Unregister previous event listeners is the source is updated
-      if (this._lastSourceId && this._lastPropertyId) {
-          // Check if the source is still on the page so we can unregister
-          if (this.context.dynamicDataProvider.tryGetSource(this._lastSourceId)) {
-              this.context.dynamicDataProvider.unregisterPropertyChanged(this._lastSourceId, this._lastPropertyId, this.render);
-          }
-      }
-
-      this.context.dynamicDataProvider.registerPropertyChanged(this.properties.dynamicDataSourceId, this.properties.dynamicDataSourcePropertyId, this._dataSourceUpdated);
-
-      this._lastSourceId = this.properties.dynamicDataSourceId;
-      this._lastPropertyId = this.properties.dynamicDataSourcePropertyId;
+        // Select the first property by default
+        this.properties.sourceInstance.propertyId =
+          this.context.dynamicDataProvider.tryGetSource(this.properties.sourceInstance.sourceId).getPropertyDefinitions()[0].id;
     }
-    
-    if (changedProperty === 'useDynamicDataSource') {
-      if (!this.properties.useDynamicDataSource) {
-        this.context.dynamicDataProvider.unregisterAvailableSourcesChanged(this._initDynamicDataSource.bind(this));
-      }
+
+    if (this.properties.sourceInstance.sourceId && this.properties.sourceInstance.propertyId) {
+        this.context.dynamicDataProvider.registerPropertyChanged(this.properties.sourceInstance.sourceId, this.properties.sourceInstance.propertyId, this.render);
+        this._lastSourceId = this.properties.sourceInstance.sourceId;
+        this._lastPropertyId = this.properties.sourceInstance.propertyId;
+    }
+
+    if (this._lastSourceId && this._lastPropertyId) {
+
+        // In the case of extension, we don't need to unregister because the id changes every time the page is reloaded so it doesn't exist anymore
+        if (!this._lastSourceId.startsWith("Extension")) {
+            this.context.dynamicDataProvider.unregisterPropertyChanged(this._lastSourceId, this._lastPropertyId, this.render);
+        }
     }
   }
 
@@ -341,6 +314,22 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
 
   public render(): void {
 
+    if (this.properties.useDynamicDataSource) {
+
+      const needsConfiguration: boolean = !this.properties.sourceInstance.sourceId || !this.properties.sourceInstance.propertyId;
+
+      if (!needsConfiguration) {
+          const source: IDynamicDataSource = this.context.dynamicDataProvider.tryGetSource(this.properties.sourceInstance.sourceId);
+          let sourceValue = source ? source.getPropertyValue(this.properties.sourceInstance.propertyId) : undefined;
+
+          if (typeof sourceValue === 'string') {
+              this._searchQuery = sourceValue ? sourceValue : "";
+          } else {
+              Log.warn(Text.format(this.LOG_SOURCE, this.instanceId), `The selected input value from the dynamic data source is not a string. Received (${typeof sourceValue})`, this.context.serviceScope);
+          }
+      }
+    }
+
     const element: React.ReactElement<ISearchBoxContainerProps> = React.createElement(
       SearchBox, { 
         onSearch: this._onSearch,
@@ -352,6 +341,6 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
         searchService: this._searchService
       } as ISearchBoxContainerProps);
 
-    ReactDom.render(element, this._domElement);
+    ReactDom.render(element, this.domElement);
   }
 }

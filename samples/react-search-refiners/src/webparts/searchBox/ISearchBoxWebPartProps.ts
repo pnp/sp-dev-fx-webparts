@@ -1,4 +1,5 @@
 import { PageOpenBehavior } from '../../helpers/UrlHelper';
+import IDynamicDataSourceConnection from '../../models/IDynamicDataSourceConnection';
 
 interface ISearchBoxWebPartProps {
     searchInNewPage: boolean;
@@ -6,9 +7,7 @@ interface ISearchBoxWebPartProps {
     openBehavior: PageOpenBehavior;
     enableQuerySuggestions: boolean;
     useDynamicDataSource: boolean;
-    dynamicDataSourceId: string;
-    dynamicDataSourcePropertyId: string;
-    dynamicDataSourceComponentId: string;
+    sourceInstance: IDynamicDataSourceConnection;
 }
 
 export default ISearchBoxWebPartProps;

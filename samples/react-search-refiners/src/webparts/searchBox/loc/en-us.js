@@ -12,6 +12,8 @@ define([], function() {
     "SearchBoxPageOpenBehaviorLabel": "Opening behavior",
     "SearchBoxDynamicPropertyInputLabel": "Input value",
     "UseDynamicDataSourceLabel": "Use a dynamic data source as search query",
-    "SearchBoxDynamicDataSourceGroupName": "Dynamic data source configuration"
+    "SearchBoxDynamicDataSourceGroupName": "Dynamic data source configuration",
+    "DynamicDataSourceLabel": "Available data sources",
+    "DynamicDataSourcePropertyLabel": "Available properties"
   }
 });
