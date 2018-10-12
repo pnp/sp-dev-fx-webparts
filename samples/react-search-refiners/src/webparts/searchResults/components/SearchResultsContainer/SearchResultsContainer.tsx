@@ -1,23 +1,27 @@
-import * as React from                                                                 'react';
-import ISearchContainerProps from                                                      './ISearchResultsContainerProps';
-import ISearchContainerState from                                                      './ISearchResultsContainerState';
-import { MessageBar, MessageBarType } from                                             'office-ui-fabric-react/lib/MessageBar';
-import { Spinner, SpinnerSize } from                                                   'office-ui-fabric-react/lib/Spinner';
-import { Logger, LogLevel } from                                                       '@pnp/logging';
-import * as strings from                                                               'SearchWebPartStrings';
-import { IRefinementFilter, IRefinementValue, IRefinementResult } from                 '../../../../models/ISearchResult';
-import                                                                                 '../SearchResultsWebPart.scss';
-import FilterPanel from                                                                '../FilterPanel/FilterPanel';
-import Paging from                                                                     '../Paging/Paging';
-import { Overlay } from                                                                'office-ui-fabric-react/lib/Overlay';
-import { DisplayMode } from                                                            '@microsoft/sp-core-library';
-import SearchResultsTemplate from                                                      '../Layouts/SearchResultsTemplate';
+import * as React from 'react';
+import ISearchContainerProps from './ISearchResultsContainerProps';
+import ISearchContainerState from './ISearchResultsContainerState';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { Shimmer, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
+import { Logger, LogLevel } from '@pnp/logging';
+import * as strings from 'SearchWebPartStrings';
+import { IRefinementFilter, IRefinementValue, IRefinementResult } from '../../../../models/ISearchResult';
+import '../SearchResultsWebPart.scss';
+import Paging from '../Paging/Paging';
+import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
+import { DisplayMode } from '@microsoft/sp-core-library';
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
+
+declare var System: any;
+let FilterPanel = null;
 
 export default class SearchResultsContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 
     public constructor(props) {
         super(props);
-        
+
         // Set the initial state
         this.state = {
             results: {
@@ -58,37 +62,49 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             </div>;
         }
 
+        let webPartTitle = null;
+        if (this.props.webPartTitle && this.props.webPartTitle.length > 0) {
+            webPartTitle = <WebPartTitle title={this.props.webPartTitle} updateProperty={null} displayMode={DisplayMode.Read} />;
+        }
+
         if (isComponentLoading) {
-            renderWpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
+            //renderWpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
+            renderWpContent = (<div>
+                <Shimmer isDataLoaded={!isComponentLoading} width={'75%'} style={{ marginBottom: "10px" }} />
+                <Shimmer isDataLoaded={!isComponentLoading} width={'90%'} style={{ marginBottom: "10px" }} />
+                <Shimmer isDataLoaded={!isComponentLoading} width={'50%'} />
+            </div>);
         } else {
 
             if (hasError) {
                 renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
             } else {
 
-                if (items.RelevantResults.length === 0 ) {
-                    
-                    if (!this.props.showBlank) {
+                let filterPanel = this.state.availableFilters && this.state.availableFilters.length > 0 ? <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={this.props.refiners} /> : <span />;
 
+                if (items.RelevantResults.length === 0) {
+
+                    if (!this.props.showBlank) {
                         renderWpContent =
                             <div>
-                                <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners } /> 
-                                <div className='searchWp__noresult'>{strings.NoResultMessage}</div>                                                  
+                                {webPartTitle}
+                                {filterPanel}                                
+                                <div className='searchWp__noresult'>{strings.NoResultMessage}</div>
                             </div>;
                     } else {
                         if (this.props.displayMode === DisplayMode.Edit) {
-                            renderWpContent = <MessageBar messageBarType={ MessageBarType.info }>{ strings.ShowBlankEditInfoMessage }</MessageBar>;
+                            renderWpContent = <MessageBar messageBarType={MessageBarType.info}>{strings.ShowBlankEditInfoMessage}</MessageBar>;
                         }
                     }
                 } else {
                     renderWpContent =
-
                         <div>
-                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners }/>
-                            { renderOverlay }
+                            {webPartTitle}
+                            {filterPanel}                            
+                            {renderOverlay}
                             <SearchResultsTemplate
-                                templateService={ this.props.templateService }
-                                templateContent={ this.props.templateContent }
+                                templateService={this.props.templateService}
+                                templateContent={this.props.templateContent}
                                 templateContext={
                                     {
                                         items: this.state.results.RelevantResults,
@@ -96,10 +112,12 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                                         keywords: this.props.queryKeywords,
                                         showResultsCount: this.props.showResultsCount,
                                         siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
-                                        webUrl: this.props.context.pageContext.web.serverRelativeUrl                                    
+                                        webUrl: this.props.context.pageContext.web.serverRelativeUrl,
+                                        maxResultsCount: this.props.maxResultsCount,
+                                        actualResultsCount: items.RelevantResults.length
                                     }
                                 }
-                            />                        
+                            />
                             {this.props.showPaging ?
                                 <Paging
                                     totalItems={items.TotalRows}
@@ -115,13 +133,13 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         return (
             <div className='searchWp'>
-                { renderWpContent }
+                {renderWpContent}
             </div>
         );
     }
 
     public async componentDidMount() {
-        
+
         // Don't perform search is there is no keywords
         if (this.props.queryKeywords) {
             try {
@@ -136,6 +154,14 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
                 const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, this.state.currentPage);
                 const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
+
+                if (localizedFilters && localizedFilters.length > 0) {
+                    const filterPanelComponent = await System.import(
+                        /* webpackChunkName: 'search-filterpanel' */
+                        '../FilterPanel'
+                    );
+                    FilterPanel = filterPanelComponent.FilterPanel;
+                }
 
                 // Initial filters are just set once for the filter control during the component initialization
                 // By this way, we are be able to select multiple values whithin a specific filter (OR condition). Otherwise, if we pass every time the new filters retrieved from new results,
@@ -172,7 +198,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
     public async componentWillReceiveProps(nextProps: ISearchContainerProps) {
 
         let query = nextProps.queryKeywords + nextProps.searchDataProvider.queryTemplate + nextProps.selectedProperties.join(',');
-        
+
         // New props are passed to the component when the search query has been changed
         if (JSON.stringify(this.props.refiners) !== JSON.stringify(nextProps.refiners)
             || this.props.maxResultsCount !== nextProps.maxResultsCount
@@ -196,7 +222,16 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
                     // We reset the page number and refinement filters
                     const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
-                    const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);               
+                    const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
+
+                    if (FilterPanel == null && localizedFilters && localizedFilters.length > 0) {
+                        const filterPanelComponent = await System.import(
+                            /* webpackChunkName: 'search-filterpanel' */
+                            '../FilterPanel'
+                        );
+                        FilterPanel = filterPanelComponent.FilterPanel;
+                    }
+
 
                     this.setState({
                         results: searchResults,
@@ -294,9 +329,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
      * @param rawFilters The raw refinement results to translate coming from SharePoint search results
      */
     private async _getLocalizedFilters(rawFilters: IRefinementResult[]): Promise<IRefinementResult[]> {
-        
+
         let termsToLocalize: { uniqueIdentifier: string, termId: string, localizedTermLabel: string }[] = [];
-        let udpatedFilters = [];
+        let updatedFilters = [];
 
         rawFilters.map((filterResult) => {
 
@@ -325,7 +360,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
             // Process all terms in a single JSOM call for performance purpose. In general JSOM is pretty slow so we try to limit the number of calls...
             await this.props.taxonomyDataProvider.initialize();
-            const termValues = await this.props.taxonomyDataProvider.getTermsById(termsToLocalize.map((t)=> { return t.termId; }));
+            const termValues = await this.props.taxonomyDataProvider.getTermsById(termsToLocalize.map((t) => { return t.termId; }));
 
             const termsEnumerator = termValues.getEnumerator();
 
@@ -372,13 +407,13 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     } else {
 
                         // Keep only terms (L0). The crawl property ows_taxid_xxx return term sets too.
-                        if (!/(GTSet|GPP|GP0)/i.test(value.RefinementName))  {
+                        if (!/(GTSet|GPP|GP0)/i.test(value.RefinementName)) {
                             updatedValues.push(value);
                         }
                     }
                 });
 
-                udpatedFilters.push({
+                updatedFilters.push({
                     FilterName: filter.FilterName,
                     Values: updatedValues.sort((a: IRefinementValue, b: IRefinementValue) => {
                         if (a.RefinementName) {
@@ -392,9 +427,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         } else {
             // Return filters without any modification
-            udpatedFilters = rawFilters;
+            updatedFilters = rawFilters;
         }
 
-        return udpatedFilters;
+        return updatedFilters;
     }
 }

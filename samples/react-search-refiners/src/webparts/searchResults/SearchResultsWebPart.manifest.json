@@ -1,5 +1,5 @@
 {
-    "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
     "id": "42ad2740-3c60-49cf-971a-c44e33511b93",
     "alias": "SearchWebPart",
     "componentType": "WebPart",
@@ -13,7 +13,8 @@
                 "default": "PnP"
             },
             "title": {
-                "default": "Search Results with Refiners", "fr-fr": "Résultats de recherche"
+                "default": "Search Results with Refiners",
+                "fr-fr": "Résultats de recherche"
             },
             "description": {
                 "default": "Displays search results with customizable dynamic refiners",
@@ -28,7 +29,8 @@
                 "enableQueryRules": false,
                 "maxResultsCount": 10,
                 "showBlank": true,
-                "showResultsCount": true
+                "showResultsCount": true,
+                "webPartTitle": ""
             }
         }
     ]

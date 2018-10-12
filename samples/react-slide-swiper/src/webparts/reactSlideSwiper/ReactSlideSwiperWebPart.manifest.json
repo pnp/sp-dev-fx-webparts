@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "6d0ab1aa-db7a-4e80-a2b5-c83fd820f165",
   "alias": "ReactSlideSwiperWebPart",
   "componentType": "WebPart",

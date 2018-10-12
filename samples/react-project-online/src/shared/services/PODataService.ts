@@ -1,7 +1,6 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import {
     SPHttpClient,
-    SPHttpClientBatch,
     SPHttpClientResponse
 } from '@microsoft/sp-http';
 import {

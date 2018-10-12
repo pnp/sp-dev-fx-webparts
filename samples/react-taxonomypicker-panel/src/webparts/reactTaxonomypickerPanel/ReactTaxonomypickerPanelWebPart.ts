@@ -10,12 +10,22 @@ import {
 import * as strings from 'ReactTaxonomypickerPanelWebPartStrings';
 import ReactTaxonomypickerPanel from './components/ReactTaxonomypickerPanel';
 import { IReactTaxonomypickerPanelProps } from './components/IReactTaxonomypickerPanelProps';
+import { setup as pnpSetup } from "@pnp/common";
 
 export interface IReactTaxonomypickerPanelWebPartProps {
   description: string;
 }
 
 export default class ReactTaxonomypickerPanelWebPart extends BaseClientSideWebPart<IReactTaxonomypickerPanelWebPartProps> {
+
+  public onInit(): Promise<void> {
+
+    return super.onInit().then(_ => {
+      pnpSetup({
+        spfxContext: this.context
+      });
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IReactTaxonomypickerPanelProps > = React.createElement(

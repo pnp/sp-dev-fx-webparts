@@ -10,7 +10,7 @@ This sample shows you how to build user friendly SharePoint search experiences u
 An associated [blog post](http://thecollaborationcorner.com/2017/10/16/build-dynamic-sharepoint-search-experiences-with-refiners-and-paging-with-spfx-office-ui-fabric-and-pnp-js-library/) is available to give you more details about this sample implementation.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.5.1--plusbeta-blue.svg)
+![drop](https://img.shields.io/badge/drop-1.6.0--plusbeta-blue.svg)
 
 ## Applies to
 
@@ -33,6 +33,7 @@ Version|Date|Comments
 1.3 | April 1, 2018 | Added the result count + entered keywords option
 1.4 | May 10, 2018 | <ul><li>Added the query suggestions feature to the search box Web Part</li><li>Added the automatic translation for taxonomy filter values according to the current site locale.</li> <li>Added the option in the search box Web Part to send the query to an other page</ul>
 1.5 | Jul 2, 2018 | <ul><li>Added a templating feature for search results with Handlebars inspired by the [react-content-query-webpart](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart) sample.</li><li>Upgraded to 1.5.1-plusbeta to use the new SPFx dynamic data feature instead of event aggregator for Web Parts communication.</li> <li>Code refactoring and reorganization.</ul>
+2.0.0.5 | Sept 18, 2018 | <ul><li>Upgraded to 1.6.0-plusbeta.</li><li>Added dynamic loading of parts needed in edit mode to reduce web part footprint.</li><li>Added configuration to sort.</li><li>Added option to set web part title.</li><li>Added result count tokens.</li><li>Added toggel to load/use handlebars helpers/moment.</li></ul>
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -57,6 +58,9 @@ The following settings are available in the Web Part property pane:
     </td>
     <td>
       <p align="center"><img src="./images/property_pane2.png"/><p>
+    </td>
+    <td>
+      <p align="center"><img src="./images/property_pane3.png"/><p>
     </td>
   </tr>
 <table>
@@ -115,6 +119,8 @@ Setting | Description
 -------|----
 `{{showResultsCount}}` | Boolean flag corresponding to the associated in the property pane.
 `{{totalRows}}` | The result count.
+`{{maxResultsCount}}` | The number of results configured to retrieve in the web part.
+`{{actualResultsCount}}` | The actual number of results retreived.
 `{{keywords}}` | The search query.
 `{{getSummary HitHighlightedSummary}}` | Format the *HitHighlightedSummary* property with recognized words in bold.
 `{{getDate <date_managed_property> "<format>}}"` | Format the date with moment.ts according to the current language.
@@ -126,7 +132,7 @@ Setting | Description
 `{{webUrl}}` | The current web relative url. Use `{{../webUrl}}` inside a loop.
 `{{siteUrl}}` | The current site relative url. Use `{{../siteUrl}}` inside a loop.
 
-Also the [Handlebars helpers](https://github.com/helpers/handlebars-helpers) (188 helpers) are also available. You can also define your own in the *BaseTemplateService.ts* file.
+Also the [Handlebars helpers](https://github.com/helpers/handlebars-helpers) (188 helpers) are also available. You can also define your own in the *BaseTemplateService.ts* file. See [helper-moment](https://github.com/helpers/helper-moment) for date samples using moment.
 
 ## Features
 This Web Part illustrates the following concepts on top of the SharePoint Framework:

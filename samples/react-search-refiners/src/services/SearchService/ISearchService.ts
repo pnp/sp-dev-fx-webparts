@@ -23,6 +23,11 @@ interface ISearchService {
     resultSourceId?: string;
 
     /**
+     * The sort order of the results
+     */
+    sortList?: string;
+
+    /**
      * Indicates wheter or not the query rules should be applied in the query
      */
     enableQueryRules?: boolean;

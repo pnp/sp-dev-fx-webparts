@@ -1,14 +1,14 @@
 # SPFx webpart with Taxonomy picker Office UI Fabric Panel.
 
 ## Summary
-Sample webpart with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The webpart uses the Taxonomy API support available in the SP-PNP-JS.
+Sample webpart with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The webpart uses the Taxonomy API support available in the @pnp/taxonomy.
 
 
 ![TaxonomyPickerPanel webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/TaxonomyPanelPicker/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif)
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.5.1-green.svg)
 
 ## Applies to
 
@@ -17,7 +17,7 @@ Sample webpart with Single and Multi-select taxonomy pickers using Office UI Fab
 
 ## Prerequisites
  
-- sp-pnp-js
+- @pnp/sp
 - Office UI Fabric React
 
 ## Solution
@@ -31,6 +31,7 @@ react-taxonomypicker-panel | Vipul Kelkar  @vipulkelkar
 Version|Date|Comments
 -------|----|--------
 1.0|June 22, 2018|Initial release
+1.1|August 20, 2018|Bug fix and version upgrade
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

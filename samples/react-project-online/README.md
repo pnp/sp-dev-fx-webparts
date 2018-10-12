@@ -8,7 +8,7 @@ The web part is currently returning project tasks as a simple proof of concept.
 ![Demo](./assets/Preview.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.6.0-green.svg)
 
 ## Applies to
 
@@ -33,6 +33,7 @@ react-project-online|Joel Rodrigues
 
 Version|Date|Comments
 -------|----|--------
+1.3|October 03, 2018|Updated to SPFx 1.6.0
 1.2|March 16, 2018|Updated to SPFx 1.4.1
 1.1|January 22, 2018|Updated to SPFx 1.4.0
 1.0|October 29, 2017|Initial release

@@ -35,7 +35,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
         } else {
-            // Dynamically load the editor pane to reduce overall bundle size            
+            // Dynamically load the editor pane to reduce overall bundle size
             const editorPopUp = await import(
                 /* webpackChunkName: 'scripteditor' */
                 './components/ScriptEditor'
@@ -54,14 +54,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
 
     protected get dataVersion(): Version {
         return Version.parse('1.0');
-    }
-
-    protected renderLogo(domElement: HTMLElement) {
-        domElement.innerHTML = `
-      <div style="margin-top: 30px">
-        <div style="float:right">Author: <a href="mailto:mikael.svenson@puzzlepart.com" tabindex="-1">Mikael Svenson</a></div>
-        <div style="float:right"><a href="https://www.puzzlepart.com/" target="_blank"><img src="//www.puzzlepart.com/wp-content/uploads/2017/08/Pzl-LogoType-200.png" onerror="this.style.display = \'none\'";"></a></div>
-      </div>`;
     }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

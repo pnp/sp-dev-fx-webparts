@@ -31,7 +31,7 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
         let templateContent = props.templateContent;
 
         // Process the Handlebars template
-        const template = this.props.templateService.processTemplate(props.templateContext, templateContent);
+        const template = await this.props.templateService.processTemplate(props.templateContext, templateContent);
 
         this.setState({
             processedTemplate: template

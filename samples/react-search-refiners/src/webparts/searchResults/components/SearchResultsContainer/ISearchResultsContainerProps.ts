@@ -1,85 +1,95 @@
-import ISearchService from      '../../../../services/SearchService/ISearchService';
-import ITaxonomyService from    '../../../../services/TaxonomyService/ITaxonomyService';
-import { DisplayMode } from     '@microsoft/sp-core-library';
-import TemplateService from     '../../../../services/TemplateService/TemplateService';
+import ISearchService from '../../../../services/SearchService/ISearchService';
+import ITaxonomyService from '../../../../services/TaxonomyService/ITaxonomyService';
+import { DisplayMode } from '@microsoft/sp-core-library';
+import TemplateService from '../../../../services/TemplateService/TemplateService';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 interface ISearchResultsContainerProps {
 
-  /**
-   * The search data provider instance
-   */
-  searchDataProvider: ISearchService;
+    /**
+     * The web part title
+     */
+    webPartTitle: string;
 
-  /**
-   * The taxonomy data provider instance
-   */
-  taxonomyDataProvider: ITaxonomyService;
+    /**
+     * The search data provider instance
+     */
+    searchDataProvider: ISearchService;
 
-  /**
-   * The search query keywords
-   */
-  queryKeywords: string;
+    /**
+     * The taxonomy data provider instance
+     */
+    taxonomyDataProvider: ITaxonomyService;
 
-  /**
-   * Number of results to retrieve
-   */
-  maxResultsCount: number;
+    /**
+     * The search query keywords
+     */
+    queryKeywords: string;
 
-  /**
-   * The SharePoint result source id to target
-   */
-  resultSourceId: string;
+    /**
+     * Number of results to retrieve
+     */
+    maxResultsCount: number;
 
-  /**
-   * Enable SharePoint query rules
-   */
-  enableQueryRules: boolean;
+    /**
+     * The SharePoint result source id to target
+     */
+    resultSourceId: string;
 
-  /**
-   * Properties to retrieve
-   */
-  selectedProperties: string[];
+    /**
+     * The sort order of the results
+     */
+    sortList: string;
 
-  /**
-   * The managed properties used as refiners for the query
-   */
-  refiners: { [key: string]: string };
+    /**
+     * Enable SharePoint query rules
+     */
+    enableQueryRules: boolean;
 
-  /**
-   * Show the paging control
-   */
-  showPaging: boolean;
+    /**
+     * Properties to retrieve
+     */
+    selectedProperties: string[];
 
-  /**
-   * Show the result count and entered keywords
-   */
-  showResultsCount: boolean;
+    /**
+     * The managed properties used as refiners for the query
+     */
+    refiners: { [key: string]: string };
 
-  /**
-   * Show nothing if no result
-   */
-  showBlank: boolean;
+    /**
+     * Show the paging control
+     */
+    showPaging: boolean;
 
-  /** 
-   * The current display mode of Web Part
-   */
-  displayMode: DisplayMode;
+    /**
+     * Show the result count and entered keywords
+     */
+    showResultsCount: boolean;
 
-  /**
-   * The template helper instance
-   */
-  templateService: TemplateService;
+    /**
+     * Show nothing if no result
+     */
+    showBlank: boolean;
 
-  /** 
-   * The template raw content to display
-   */
-  templateContent: string;
+    /** 
+     * The current display mode of Web Part
+     */
+    displayMode: DisplayMode;
 
-  /**
-   * The web part context
-   */
-  context: WebPartContext;
+    /**
+     * The template helper instance
+     */
+    templateService: TemplateService;
+
+    /** 
+     * The template raw content to display
+     */
+    templateContent: string;
+
+    /**
+     * The web part context
+     */
+    context: WebPartContext;
 }
 
 export default ISearchResultsContainerProps;
