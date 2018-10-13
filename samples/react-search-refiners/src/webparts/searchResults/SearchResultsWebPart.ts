@@ -37,12 +37,13 @@ import { update, isEmpty } from '@microsoft/sp-lodash-subset';
 import MockTemplateService from '../../services/TemplateService/MockTemplateService';
 import BaseTemplateService from '../../services/TemplateService/BaseTemplateService';
 import { IDynamicDataSource } from '@microsoft/sp-dynamic-data';
+import DynamicDataHelper from '../../helpers/DynamicDataHelper';
 
 declare var System: any;
 
-const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
-
 export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
+
+    private readonly LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
     private _searchService: ISearchService;
     private _taxonomyService: ITaxonomyService;
@@ -50,8 +51,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private _useResultSource: boolean;
     private _queryKeywords: string;
     private _source: IDynamicDataSource;
-    private _domElement: HTMLElement;
     private _propertyPage = null;
+    private _dynamicDataHelper: DynamicDataHelper;
 
     /**
      * Used to be able to unregister dynamic data events if the source is updated
@@ -71,34 +72,31 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
 
     /**
-     * Resolves the connected data sources
-     * Useful in the case when the data source comes from an extension, 
-     * the id is regenerated every time the page is refreshed causing the property pane configuration be lost
+     * Binds data source properties to the Web Part properties. In some cases, the data source configuration is not retrieved propertly due to updated ids 
      */
-    private _initDynamicDataSource() {
+    private _bindDataSources() {
 
-        if (this.properties.dynamicDataSourceId
-            && this.properties.dynamicDataSourcePropertyId
-            && this.properties.dynamicDataSourceComponentId) {
+        const sourceFound = this._source ? true : false;
 
-            this._source = this.context.dynamicDataProvider.tryGetSource(this.properties.dynamicDataSourceId);
+        if (this.properties.sourceInstance.sourceId && this.properties.sourceInstance.propertyId && !sourceFound) {
+
             let sourceId = undefined;
-
-            if (this._source) {
-                sourceId = this._source.id;
+            this._source = this.context.dynamicDataProvider.tryGetSource(this.properties.sourceInstance.sourceId);
+            
+            if (this._source ) {
+                sourceId = this._source .id;
             } else {
-                // Try to resolve the source and get its id by the name
-                this._source = this._tryGetSourceByComponentId(this.properties.dynamicDataSourceComponentId);
+                this._source = this._dynamicDataHelper._tryGetSourceByInstanceOrComponentId(this.properties.sourceInstance);
                 sourceId = this._source ? this._source.id : undefined;
             }
 
             if (sourceId) {
-                this.context.dynamicDataProvider.registerPropertyChanged(sourceId, this.properties.dynamicDataSourcePropertyId, this.render);
+                this.context.dynamicDataProvider.registerPropertyChanged(sourceId, this.properties.sourceInstance.propertyId, this.render);
 
                 // Update the property for the property pane
-                this.properties.dynamicDataSourceId = sourceId;
-                this._lastSourceId = this.properties.dynamicDataSourceId;
-                this._lastPropertyId = this.properties.dynamicDataSourcePropertyId;
+                this.properties.sourceInstance.sourceId = sourceId;
+                this._lastSourceId = sourceId;
+                this._lastPropertyId = this.properties.sourceInstance.propertyId;
 
                 // If false, means the onInit method is not completed yet so we let it render the web part through the normal process
                 if (this.renderedOnce) {
@@ -109,26 +107,15 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
 
     /**
-     * Gets a dynamic data source by its component id. The component id doesn't change when the page is refreshed
-     * @param dataSourceComponentId the component id
+     * Make sure the data source will be plugged in correctly when refreshing the whole page
+     * In the cas of extension, the source id changes every time so we need to set the correct suorce Id to corresponding property to get the value at render time
      */
-    private _tryGetSourceByComponentId(dataSourceComponentId: string): IDynamicDataSource {
-        const resolvedDataSource = this.context.dynamicDataProvider.getAvailableSources()
-            .filter((item) => {
-                if (item.metadata.componentId) {
-                    if (item.metadata.componentId.localeCompare(dataSourceComponentId) === 0) {
-                        return item;
-                    }
-                }
-            });
-
-        if (resolvedDataSource.length > 0) {
-            return resolvedDataSource[0];
-        } else {
-            Log.verbose(Text.format(LOG_SOURCE, "_tryGetSourceByComponentId()"), `Unable to find dynamic data source with componentId '${dataSourceComponentId}'`);
-            return undefined;
+    private _reconnectDataSource() {
+        if (this.properties.sourceInstance.sourceId && this.properties.sourceInstance.propertyId) {
+            this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._bindDataSources.bind(this));
         }
     }
+
 
     /**
      * Determines the group fields for the search settings options inside the property pane
@@ -178,7 +165,15 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 resizable: true,
                 value: this.properties.refiners,
                 deferredValidationTime: 300,
-            })
+            }),
+            PropertyPaneSlider('maxResultsCount', {
+                label: strings.MaxResultsCount,
+                max: 50,
+                min: 1,
+                showValue: true,
+                step: 1,
+                value: 50,
+            }),
         ];
 
         return searchSettingsFields;
@@ -198,16 +193,25 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         if (this.properties.useSearchBoxQuery) {
             const sourceOptions: IPropertyPaneDropdownOption[] =
-                this.context.dynamicDataProvider.getAvailableSources().map(source => {
-                    return {
-                        key: source.id,
-                        text: source.metadata.title
-                    };
-                }).filter(item => item.key.localeCompare("PageContext") !== 0);
+            this.context.dynamicDataProvider.getAvailableSources().map(source => {
+                return {
+                    key: source.id,
+                    text: source.metadata.title,
+                    instanceId: source.metadata.instanceId,
+                    componentId: source.metadata.componentId                        
+                };
+            }).filter((item) => {
+                // We don't allow as data source:
+                // - The component itself
+                // - Components of the same type 
+                if (item.instanceId !== this.instanceId && this.componentId !== item.componentId) {
+                    return item;
+                }
+            });
 
-            const selectedSource: string = this.properties.dynamicDataSourceId;
-
+            const selectedSource: string = this.properties.sourceInstance.sourceId;
             let propertyOptions: IPropertyPaneDropdownOption[] = [];
+
             if (selectedSource) {
                 const source: IDynamicDataSource = this.context.dynamicDataProvider.tryGetSource(selectedSource);
                 if (source) {
@@ -221,17 +225,17 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             }
 
             searchQueryConfigFields = searchQueryConfigFields.concat([
-                PropertyPaneDropdown('dynamicDataSourceId', {
-                    label: "Source",
+                PropertyPaneDropdown('sourceInstance.sourceId', {
+                    label: strings.DynamicDataSourceLabel,
                     options: sourceOptions,
-                    selectedKey: this.properties.dynamicDataSourceId,
+                    selectedKey: this.properties.sourceInstance.sourceId,
                 }),
-                PropertyPaneDropdown('dynamicDataSourcePropertyId', {
-                    disabled: !this.properties.dynamicDataSourceId,
-                    label: "Source property",
+                PropertyPaneDropdown('sourceInstance.propertyId', {
+                    disabled: !this.properties.sourceInstance.sourceId,
+                    label: strings.DynamicDataSourcePropertyLabel,
                     options: propertyOptions,
-                    selectedKey: this.properties.dynamicDataSourcePropertyId
-                }),
+                    selectedKey: this.properties.sourceInstance.propertyId
+                })
             ]);
 
         } else {
@@ -249,17 +253,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 })
             );
         }
-        searchQueryConfigFields.push(
-            PropertyPaneLabel('', { text: '' }), // dummy space
-            PropertyPaneSlider('maxResultsCount', {
-                label: strings.MaxResultsCount,
-                max: 50,
-                min: 1,
-                showValue: true,
-                step: 1,
-                value: 50,
-            })
-        );
 
         return searchQueryConfigFields;
     }
@@ -514,7 +507,16 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      */
     protected async onInit(): Promise<void> {
 
-        this._domElement = this.domElement;
+        this._dynamicDataHelper = new DynamicDataHelper(this.instanceId, this.componentId, this.context.dynamicDataProvider);
+
+        if(!this.properties.sourceInstance) {
+            this.properties.sourceInstance = {
+                componentId: null,
+                instanceId: null,
+                propertyId: null,
+                sourceId: null
+            };
+        }
 
         if (Environment.type === EnvironmentType.Local) {
             this._searchService = new MockSearchService();
@@ -537,9 +539,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         // Set the default search results layout
         this.properties.selectedLayout = this.properties.selectedLayout ? this.properties.selectedLayout : ResultsLayoutOption.List;
 
-        // Make sure the data source will be plugged in correctly when loaded on the page
-        // Depending of the component loading order, some sources may be unavailable at this time so that's why we use an event listener 
-        this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._initDynamicDataSource.bind(this));
+        this._reconnectDataSource();
 
         return super.onInit();
     }
@@ -564,8 +564,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         const searchContainer: React.ReactElement<ISearchContainerProps> = React.createElement(
             SearchContainer,
             {
-                searchDataProvider: this._searchService,
-                taxonomyDataProvider: this._taxonomyService,
+                searchService: this._searchService,
+                taxonomyService: this._taxonomyService,
                 queryKeywords: this._queryKeywords,
                 maxResultsCount: this.properties.maxResultsCount,
                 resultSourceId: this.properties.resultSourceId,
@@ -596,7 +596,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         );
 
         if ((this.properties.queryKeywords && !this.properties.useSearchBoxQuery) ||
-            (this.properties.useSearchBoxQuery && this.properties.dynamicDataSourcePropertyId)) {
+            (this.properties.useSearchBoxQuery && this.properties.sourceInstance.sourceId)) {
             renderElement = searchContainer;
         } else {
             if (this.displayMode === DisplayMode.Edit) {
@@ -606,7 +606,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             }
         }
 
-        ReactDom.render(renderElement, this._domElement);
+        ReactDom.render(renderElement, this.domElement);
     }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -654,20 +654,53 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         );
     }
 
-    public async onPropertyPaneFieldChanged(changedProperty: string) {
+    public async onPropertyPaneFieldChanged(propertyPath: string) {
 
-        if (changedProperty === 'useSearchBoxQuery') {
+        if (propertyPath === 'useSearchBoxQuery') {
 
-            if (!this.properties.useSearchBoxQuery) {
+            if (!this.properties.useSearchBoxQuery) {                
+                
                 // Reset source settings if we don't use search query
-                this.properties.dynamicDataSourceId = undefined;
-                this.properties.dynamicDataSourcePropertyId = undefined;
-                this.context.dynamicDataProvider.unregisterAvailableSourcesChanged(this._initDynamicDataSource.bind(this));
+                this.properties.sourceInstance.sourceId = undefined;
+                this.properties.sourceInstance.propertyId = undefined;
+                this.properties.sourceInstance.instanceId = undefined;
+                this.properties.sourceInstance.componentId = undefined;
+
+                if (this._lastSourceId) {
+                    if (!this._lastSourceId.startsWith("Extension")) {
+                        this.context.dynamicDataProvider.unregisterPropertyChanged(this._lastSourceId, this._lastPropertyId, this.render);
+                    }
+                }
+
+            } else {
+                // Reset search query
+                this.properties.queryKeywords = undefined;
             }
         }
 
+        if (propertyPath === 'sourceInstance.sourceId') {
+
+            // Select the first property by default
+            this.properties.sourceInstance.propertyId =
+              this.context.dynamicDataProvider.tryGetSource(this.properties.sourceInstance.sourceId).getPropertyDefinitions()[0].id;
+        }
+      
+        if (this._lastSourceId && this._lastPropertyId) {
+
+            // In the case of extension, we don't need to unregister because the id changes every time the page is reloaded so it doesn't exist anymore
+            if (!this._lastSourceId.startsWith("Extension")) {
+                this.context.dynamicDataProvider.unregisterPropertyChanged(this._lastSourceId, this._lastPropertyId, this.render);
+            }
+        }
+
+        if (this.properties.sourceInstance.sourceId && this.properties.sourceInstance.propertyId) {
+            this.context.dynamicDataProvider.registerPropertyChanged(this.properties.sourceInstance.sourceId, this.properties.sourceInstance.propertyId, this.render);
+            this._lastSourceId = this.properties.sourceInstance.sourceId;
+            this._lastPropertyId = this.properties.sourceInstance.propertyId;
+        }
+
         // Detect if the layout has been changed to custom...
-        if (changedProperty === 'inlineTemplateText') {
+        if (propertyPath === 'inlineTemplateText') {
 
             // Automatically switch the option to 'Custom' if a default template has been edited
             // (meaning the user started from a the list or tiles template)
@@ -677,27 +710,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 // Reset also the template URL
                 this.properties.externalTemplateUrl = '';
             }
-        }
-
-        if (changedProperty === 'dynamicDataSourceId') {
-
-            this._source = this.context.dynamicDataProvider.tryGetSource(this.properties.dynamicDataSourceId);
-
-            this.properties.dynamicDataSourcePropertyId = this._source.getPropertyDefinitions()[0].id;
-            this.properties.dynamicDataSourceComponentId = this._source.metadata.componentId;
-
-            // Unregister previous event listeners is the source is updated
-            if (this._lastSourceId && this._lastPropertyId) {
-                // Check if the source is still on the page so we can unregister
-                if (this.context.dynamicDataProvider.tryGetSource(this._lastSourceId)) {
-                    this.context.dynamicDataProvider.unregisterPropertyChanged(this._lastSourceId, this._lastPropertyId, this.render);
-                }
-            }
-
-            this.context.dynamicDataProvider.registerPropertyChanged(this.properties.dynamicDataSourceId, this.properties.dynamicDataSourcePropertyId, this.render);
-
-            this._lastSourceId = this.properties.dynamicDataSourceId;
-            this._lastPropertyId = this.properties.dynamicDataSourcePropertyId;
         }
 
         await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
@@ -716,8 +728,18 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         // If a source is selected, use the value from here
         if (this.properties.useSearchBoxQuery) {
-            if (this.properties.dynamicDataSourceId && this.properties.dynamicDataSourcePropertyId) {
-                this._queryKeywords = this._source ? this._source.getPropertyValue(this.properties.dynamicDataSourcePropertyId) : this._queryKeywords;
+
+            const needsConfiguration: boolean = !this.properties.sourceInstance.sourceId || !this.properties.sourceInstance.propertyId;
+
+            if (!needsConfiguration) {
+                const source: IDynamicDataSource = this.context.dynamicDataProvider.tryGetSource(this.properties.sourceInstance.sourceId);
+                let sourceValue = source ? source.getPropertyValue(this.properties.sourceInstance.propertyId) : undefined;
+
+                if (typeof sourceValue === 'string') {
+                    this._queryKeywords = sourceValue ? sourceValue : "";
+                } else {
+                    Log.warn(Text.format(this.LOG_SOURCE, this.instanceId), `The selected input value from the dynamic data source is not a string. Received (${typeof sourceValue})`, this.context.serviceScope);
+                }
             }
         }
 

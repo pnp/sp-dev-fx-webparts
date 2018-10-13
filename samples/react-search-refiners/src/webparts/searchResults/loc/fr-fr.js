@@ -50,6 +50,8 @@ define([], function() {
     "ErrorTemplateExtension": "Le file modèle doit être un fichier .htm ou .html valide",
     "ErrorTemplateResolve": "Impossible de résoudre le fichier. Détails: '{0}'",
     "WebPartTitle": "Titre de web part",
-    "HandlebarsHelpersDescription": "Activer les fonctions de moment et handlebars helpers. Voir https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens pour plus d'informations."
+    "HandlebarsHelpersDescription": "Activer les fonctions de moment et handlebars helpers. Voir https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens pour plus d'informations.",
+    "DynamicDataSourceLabel": "Source de données disponibles",
+    "DynamicDataSourcePropertyLabel": "Propriétés disponibles"
   }
 });

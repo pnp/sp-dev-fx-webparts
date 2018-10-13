@@ -1,5 +1,10 @@
 .searchWp {
 
+    min-height: 35px;
+
+    // Needed to avoid overlay overflow
+    position: relative;
+
     &__noresult {
         padding:10px;
         text-align: center;

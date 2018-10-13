@@ -16,7 +16,7 @@ import {
     IGroupDividerProps
 } from                                                                 'office-ui-fabric-react/lib/components/GroupedList/index';
 import { Scrollbars } from                                             'react-custom-scrollbars';
-import { ActionButton } from                                           'office-ui-fabric-react/lib/Button';
+import {ActionButton, Link} from 'office-ui-fabric-react';
 
 export default class FilterPanel extends React.Component<IFilterPanelProps, IFilterPanelState> {
 
@@ -34,7 +34,6 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         this._addFilter = this._addFilter.bind(this);
         this._removeFilter = this._removeFilter.bind(this);
         this._isInFilterSelection = this._isInFilterSelection.bind(this);
-        this._applyAllfilters = this._applyAllfilters.bind(this);
         this._removeAllFilters = this._removeAllFilters.bind(this);
         this._onRenderHeader = this._onRenderHeader.bind(this);
         this._onRenderCell = this._onRenderCell.bind(this);
@@ -111,6 +110,11 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
             }
             groups={groups} />;
 
+        const renderLinkRemoveAll = this.state.selectedFilters.length > 0 ?
+                                    <Link onClick={this._removeAllFilters}>
+                                        {strings.RemoveAllFiltersLabel}
+                                    </Link> : null;
+
         return (
             <div>
                 <ActionButton
@@ -127,46 +131,57 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                     : null
                 }
                 <Panel
-                    className='filterPanel'
-                    isOpen={this.state.showPanel}
-                    type={PanelType.smallFixedNear}
-                    isBlocking={false}
-                    isLightDismiss={true}
-                    onDismiss={this._onClosePanel}
-                    headerText={strings.FilterPanelTitle}
-                    closeButtonAriaLabel='Close'
-                    hasCloseButton={true}
-                    headerClassName='filterPanel__header'
-                    onRenderBody={() => {
-                        if (this.props.availableFilters.length > 0) {
-                            return (
-                                <Scrollbars style={{ height: '100%' }}>
-                                    <div className='filterPanel__body'>
-                                        <div className='filterPanel__body__allFiltersToggle'>
-                                            <Toggle
-                                                onText={strings.RemoveAllFiltersLabel}
-                                                offText={strings.ApplyAllFiltersLabel}
-                                                onChanged={(checked: boolean) => {
-                                                    checked ? this._applyAllfilters() : this._removeAllFilters();
-                                                }}
-                                                checked={this.state.selectedFilters.length === 0 ? false : true}
-                                            />
+                        className='filterPanel'
+                        isOpen={this.state.showPanel}
+                        type={PanelType.custom}
+                        customWidth="450px"
+                        isBlocking={false}
+                        isLightDismiss={true}
+                        onDismiss={this._onClosePanel}
+                        headerText={strings.FilterPanelTitle}
+                        closeButtonAriaLabel='Close'
+                        hasCloseButton={true}
+                        headerClassName='filterPanel__header'
+                        onRenderBody={() => {
+                            if (this.props.availableFilters.length > 0) {
+                                return (
+                                    <Scrollbars style={{height: '100%'}}>
+                                        <div className='filterPanel__body'>
+                                            <div
+                                                className={`filterPanel__body__allFiltersToggle ${this.state.selectedFilters.length == 0 && "hiddenLink"}`}>
+                                                {renderLinkRemoveAll}
+                                            </div>
+                                            {renderAvailableFilters}
                                         </div>
-                                        {renderAvailableFilters}
+                                    </Scrollbars>
+                                );
+                            } else {
+                                return (
+                                    <div className='filterPanel__body'>
+                                        {strings.NoFilterConfiguredLabel}
                                     </div>
-                                </Scrollbars>
-                            );
-                        } else {
-                            return (
-                                <div className='filterPanel__body'>
-                                    {strings.NoFilterConfiguredLabel}
-                                </div>
-                            );
-                        }
-                    }}>
-                </Panel>
+                                );
+                            }
+                        }}>
+                    </Panel>
             </div>
         );
+    }
+
+    public componentDidMount() {
+        this.setState({
+            selectedFilters: []
+        });
+    }
+
+    public componentWillReceiveProps(nextProps: IFilterPanelProps) {
+
+        if (nextProps.resetSelectedFilters) {
+            // Reset the selected filter on new query
+            this.setState({
+                selectedFilters: []
+            });
+        }
     }
 
     private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {
@@ -219,7 +234,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
     private _addFilter(filterToAdd: IRefinementFilter): void {
 
         // Add the filter to the selected filters collection
-        let newFilters = update(this.state.selectedFilters, { $push: [filterToAdd] });
+        let newFilters = update(this.state.selectedFilters, {$push: [filterToAdd]});
         this._applyFilters(newFilters);
     }
 
@@ -231,20 +246,6 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         });
 
         this._applyFilters(newFilters);
-    }
-
-    private _applyAllfilters(): void {
-
-        let allFilters: IRefinementFilter[] = [];
-
-        this.props.availableFilters.map((filter) => {
-
-            filter.Values.map((refinementValue: IRefinementValue, index) => {
-                allFilters.push({ FilterName: filter.FilterName, Value: refinementValue });
-            });
-        });
-
-        this._applyFilters(allFilters);
     }
 
     private _removeAllFilters(): void {
