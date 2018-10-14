@@ -4,6 +4,10 @@ import { html } from 'common-tags';
 import { isEmpty } from '@microsoft/sp-lodash-subset';
 import * as strings from 'SearchWebPartStrings';
 import { Text } from '@microsoft/sp-core-library';
+import * as $ from                                 'jquery';
+import                                             'video.js/dist/video-js.css';
+import { Logger } from '@pnp/logging';
+import templateStyles from                         './BaseTemplateService.module.scss';
 declare var System: any;
 
 abstract class BaseTemplateService {
@@ -35,6 +39,43 @@ abstract class BaseTemplateService {
      */
     public static getListDefaultTemplate(): string {
         return html`
+        <style>
+            .template_listItem {
+                display:flex;
+                display: -ms-flexbox;
+                padding: 10px;
+                justify-content: space-between;
+            }
+
+            .template_listItem img.img-preview  {
+                width: 120px;
+            }          
+
+            .template_result {
+                display: flex;    
+                display: -ms-flexbox;
+            }
+
+            .template_listItem iframe, .template_listItem .video-js {
+                width: 350px;
+                height: 250px;
+                margin: 10px;
+            }
+
+            .template_contentContainer {
+                display: flex;
+                width: 100%;
+                display: -ms-flexbox;
+                flex-direction: column;
+                margin-right: 15px;
+            }
+
+            .template_icon {
+                height: 32px;
+                margin-right: 15px;
+            }
+
+        </style>
         <div class="template_root">
             {{#if showResultsCount}}
                 <div class="template_resultCount">
@@ -43,13 +84,28 @@ abstract class BaseTemplateService {
             {{/if}}
             <ul class="ms-List template_defaultList">
                 {{#each items as |item|}}
-                    <li class="ms-ListItem ms-ListItem--image" tabindex="0">
-                    <div class="ms-ListItem-image template_icon" style="background-image:url('{{iconSrc}}')">
-                    </div>
-                    <span class="ms-ListItem-primaryText"><a href="{{getUrl item}}">{{Title}}</a></span>
-                    <span class="ms-ListItem-secondaryText">{{getSummary HitHighlightedSummary}}</span>
-                    <span class="ms-ListItem-tertiaryText">{{getDate Created "LL"}}</span> 
-                    <div class="ms-ListItem-selectionTarget"></div>
+                    <li class="template_listItem" tabindex="0">
+                        <div class="template_result">
+                            <img class="template_icon" src="{{iconSrc}}"/>
+                            <div class="template_contentContainer">
+                                <span class=""><a href="{{getUrl item}}">{{Title}}</a></span>
+                                <span class="">{{getSummary HitHighlightedSummary}}</span>
+                                <span class=""><span>{{getDate Created "LL"}}</span></span> 
+                            </div>
+                        </div>
+                        <div class="template_previewContainer">
+                            {{#eq item.contentclass compare='STS_ListItem_851'}}
+                                <div class="video-container"><img id="preview_{{@index}}" class="img-preview  video-preview-item" src="{{PictureThumbnailURL}}" data-url="{{DefaultEncodingURL}}" data-fileext="{{FileType}}"/></div>
+                            {{/eq}}
+        
+                            {{#eq item.contentclass compare='STS_ListItem_DocumentLibrary'}}
+                                {{#if ServerRedirectedPreviewURL}}
+                                    <div class="doc-container">
+                                        <img id="preview_{{@index}}" class="img-preview document-preview-item" src="{{ServerRedirectedPreviewURL}}" data-url="{{ServerRedirectedEmbedURL}}"/>
+                                    </div>
+                                {{/if}}
+                            {{/eq}}
+                        </div>
                     </li>
                 {{/each}}
             </ul>
@@ -207,9 +263,159 @@ abstract class BaseTemplateService {
         return (pathExtension == '.htm' || pathExtension == '.html');
     }
 
+    /**
+     * Initializes the previews on search results for documents and videos. Called when a template is updated/changed
+     */
+    public initPreviewElements(): void {
+
+        this._initVideoPreviews();
+        this._initDocumentPreviews();
+    }
+
     public abstract getFileContent(fileUrl: string): Promise<string>;
 
     public abstract ensureFileResolves(fileUrl: string): Promise<void>;
+
+    /**
+     * Gets the preview HTML element to render depending on the file type
+     * @param containerId the container id
+     * @param closeButtonId the close button id to be able to bind events on it
+     * @param innerHtml the content to render inside the container depending the file type
+     */
+    private _getPreviewContainerElement(containerId: string, closeButtonId: string, innerHtml: string, containerClass: string): string {
+        return `
+            <div id="${containerId}" class="${containerClass} ms-bgColor-neutralLighter"}>
+                <i id="${closeButtonId}" class="ms-Icon ms-Icon--ChromeClose ${templateStyles.closeBtn}" aria-hidden="true"></i>
+                ${innerHtml}
+            </div>
+        `;
+    }
+
+    private _initDocumentPreviews() {
+
+        $('.document-preview-item').each((index, el) => {
+
+            $(el).on("click", (event) => {
+                const thumbnailElt = $(event.target);
+
+                // Get infos about the video to render
+                const url = $(event.target).attr("data-url");
+
+                const iframeId = `document_${event.target.id}`; // ex: 'document-preview-itemXXX';
+                const previewContainedId = `${iframeId}_container`;
+                let containerElt = $(`#${previewContainedId}`);
+
+                if (containerElt.length > 0) {
+                    thumbnailElt.hide();
+                    containerElt.show();
+                } else {
+                    if (url) {
+
+                        thumbnailElt.hide();
+                        const closeBtnId = `${iframeId}_closeBtn`;
+                        const innerPreviewHtml = `
+                            <iframe id="${iframeId}" src="${url}" frameborder="0">
+                            </iframe>
+                        `;
+
+                        // Build the preview HTML element
+                        const previewHtml = this._getPreviewContainerElement(previewContainedId, closeBtnId, innerPreviewHtml, `${templateStyles.previewContainer} ${templateStyles.documentPreview}`);
+                        $(event.target.parentElement).append(previewHtml);
+
+                        $(`#${closeBtnId}`).on("click", ((ev) => {
+                            thumbnailElt.show();
+                            $(`#${previewContainedId}`).hide();
+                        }).bind(containerElt, thumbnailElt));
+                    } else {
+                        Logger.write(`The URL of the video was empty for the document. Make sure you've included the 'ServerRedirectedEmbedURL' property in the selected properties options in the Web Part property pane`);
+                    }
+                }
+            });
+        });
+    }
+
+    private async _initVideoPreviews() {
+
+        // Load Videos-Js on Demand 
+        // Webpack will create a other bundle loaded on demand just for this library
+        const videoJs = await import(
+            /* webpackChunkName: 'videos-js' */
+            'video.js',
+        );
+        
+        const Video = videoJs.default;
+
+        $('.video-preview-item').each((index, el) => {
+
+            $(el).on("click", (event) => {
+                const thumbnailElt = $(event.target);
+
+                // Get infos about the video to render
+                const url = $(event.target).attr("data-url");
+                const fileExtension = $(event.target).attr("data-fileext");
+                const thumbnailSrc = $(event.target).attr("src");
+
+                const playerId = `video_${event.target.id}`; // ex: 'video-preview-itemXXX';
+                const previewContainedId = `${playerId}_container`;
+                let containerElt = $(`#${previewContainedId}`);
+
+                let player = Video.getPlayer(`#${playerId}`);
+
+                // Case when the player is still registered in Video.js but does not exist in the DOM (due to page mode switch or tempalte update)
+                if (player && $(`#${playerId}`).length === 0) {
+
+                    // In this case, we simply delete the player instance and recreate it
+                    player.dispose();
+                    player = Video.getPlayer(`#${playerId}`);
+                }
+
+                // Remove exiting instance if there is already a player registered with  id
+                if (player) {
+                    thumbnailElt.hide();
+                    containerElt.show();
+                } else {
+                    if (url && fileExtension) {
+
+                        thumbnailElt.hide();
+
+                        const closeBtnId = `${playerId}_closeBtn`;
+
+                        const innerPreviewHtml = `
+                            <video id="${playerId}" class="video-js vjs-big-play-centered">
+                                <source src="${url}" type="video/${fileExtension}">
+                            </video>
+                        `;
+
+                        // Build the preview HTML element
+                        const previewHtml = this._getPreviewContainerElement(previewContainedId, closeBtnId, innerPreviewHtml, `${templateStyles.previewContainer} ${templateStyles.videoPreview}`);
+                        $(event.target.parentElement).append(previewHtml);
+
+                        // Instantiate a new player with Video.js
+                        const videoPlayer = new Video(playerId, {
+                            controls: true,
+                            autoplay: false,
+                            preload: "metadata",
+                            fluid: true,
+                            poster: thumbnailSrc ? thumbnailSrc : null
+                        });
+
+                        $(`#${closeBtnId}`).on("click", ((ev) => {
+                            thumbnailElt.show();
+
+                            if(!videoPlayer.paused()) {
+                                videoPlayer.pause();
+                            }
+                            $(`#${previewContainedId}`).hide();
+                        }).bind(videoPlayer, thumbnailElt));
+
+                    } else {
+                        Logger.write(`The URL of the video was empty for the video. Make sure you've included the 'DefaultEncodingURL' property in the selected properties options in the Web Part property pane`);
+                    }
+                }
+            });
+        });
+    }
+    
 }
 
 export default BaseTemplateService;

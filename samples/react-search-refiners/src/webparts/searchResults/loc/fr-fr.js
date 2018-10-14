@@ -10,7 +10,7 @@ define([], function() {
     "NoResultMessage": "Il n'y a aucun résultat à afficher.",
     "RefinersFieldLabel": "Filtres",
     "FilterPanelTitle": "Filtres disponibles",
-    "FilterResultsButtonLabel": "Filtrer l'affichage",
+    "FilterResultsButtonLabel": "Filtrer",
     "SelectedFiltersLabel": "Filtre(s) appliqué(s):",
     "ApplyAllFiltersLabel": "Appliquer tous les filters",
     "RemoveAllFiltersLabel": "Supprimer tous les filtres",

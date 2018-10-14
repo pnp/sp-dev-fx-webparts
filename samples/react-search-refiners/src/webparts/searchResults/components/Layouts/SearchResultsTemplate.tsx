@@ -22,6 +22,11 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
         this._updateTemplate(this.props);
     }
 
+    public componentDidUpdate() {
+        // Post render operations (previews on elements, etc.)
+        this.props.templateService.initPreviewElements();
+    }
+
     public componentWillReceiveProps(nextProps: ISearchResultsTemplateProps) {
         this._updateTemplate(nextProps);
     }

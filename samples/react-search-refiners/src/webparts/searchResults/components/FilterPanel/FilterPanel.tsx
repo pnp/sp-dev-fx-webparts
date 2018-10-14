@@ -3,12 +3,10 @@ import IFilterPanelProps from                                          './IFilte
 import IFilterPanelState from                                          './IFilterPanelState';
 import { Panel, PanelType } from                                       'office-ui-fabric-react/lib/Panel';
 import { Checkbox } from                                               'office-ui-fabric-react/lib/Checkbox';
-import { Toggle } from                                                 'office-ui-fabric-react/lib/Toggle';
 import * as strings from                                               'SearchWebPartStrings';
 import { IRefinementValue, IRefinementFilter } from '../../../../models/ISearchResult';
 import { Label } from                                                  'office-ui-fabric-react/lib/Label';
 import { Text } from                                                   '@microsoft/sp-core-library';
-import                                                                 '../SearchResultsWebPart.scss';
 import * as update from                                                'immutability-helper';
 import {
     GroupedList,
@@ -17,6 +15,7 @@ import {
 } from                                                                 'office-ui-fabric-react/lib/components/GroupedList/index';
 import { Scrollbars } from                                             'react-custom-scrollbars';
 import {ActionButton, Link} from 'office-ui-fabric-react';
+import styles from '../SearchResultsWebPart.module.scss';
 
 export default class FilterPanel extends React.Component<IFilterPanelProps, IFilterPanelState> {
 
@@ -60,7 +59,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
             items.push(
                 <div key={i}>
-                    <div className='filterPanel__filterProperty'>
+                    <div className={'filterPanel__filterProperty'}>
                         {
                             filter.Values.map((refinementValue: IRefinementValue, j) => {
 
@@ -91,7 +90,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         const renderSelectedFilters: JSX.Element[] = this.state.selectedFilters.map((filter) => {
 
             return (
-                <Label className='filter'>
+                <Label className={styles.filter}>
                     <i className='ms-Icon ms-Icon--ClearFilter' onClick={() => { this._removeFilter(filter); }}></i>
                     {filter.Value.RefinementName}
                 </Label>
@@ -117,21 +116,23 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
         return (
             <div>
-                <ActionButton
-                    className='searchWp__filterResultBtn'
-                    iconProps={{ iconName: 'Filter' }}
-                    text={strings.FilterResultsButtonLabel}
-                    onClick={this._onTogglePanel}
-                />
+                <div className="ms-textAlignRight">
+                    <ActionButton
+                        className={`${styles.searchWp__filterResultBtn} ms-fontWeight-semibold`}
+                        iconProps={{ iconName: 'Filter' }}
+                        text={strings.FilterResultsButtonLabel}
+                        onClick={this._onTogglePanel}
+                    />
+                </div>
                 {(this.state.selectedFilters.length > 0) ?
 
-                    <div className='searchWp__selectedFilters'>
+                    <div className={styles.searchWp__selectedFilters}>
                         {renderSelectedFilters}
                     </div>
                     : null
                 }
                 <Panel
-                        className='filterPanel'
+                        className={styles.searchWp__filterPanel}
                         isOpen={this.state.showPanel}
                         type={PanelType.custom}
                         customWidth="450px"
@@ -141,14 +142,13 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                         headerText={strings.FilterPanelTitle}
                         closeButtonAriaLabel='Close'
                         hasCloseButton={true}
-                        headerClassName='filterPanel__header'
                         onRenderBody={() => {
                             if (this.props.availableFilters.length > 0) {
                                 return (
                                     <Scrollbars style={{height: '100%'}}>
-                                        <div className='filterPanel__body'>
+                                        <div className={styles.searchWp__filterPanel__body}>
                                             <div
-                                                className={`filterPanel__body__allFiltersToggle ${this.state.selectedFilters.length == 0 && "hiddenLink"}`}>
+                                                className={`${styles.searchWp__filterPanel__body__allFiltersToggle} ${this.state.selectedFilters.length == 0 && "hiddenLink"}`}>
                                                 {renderLinkRemoveAll}
                                             </div>
                                             {renderAvailableFilters}
@@ -157,7 +157,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                                 );
                             } else {
                                 return (
-                                    <div className='filterPanel__body'>
+                                    <div className={styles.searchWp__filterPanel__body}>
                                         {strings.NoFilterConfiguredLabel}
                                     </div>
                                 );
@@ -212,7 +212,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                 props.onToggleCollapse(props.group);
             }}>
                 <div className='ms-Grid-col ms-u-sm1 ms-u-md1 ms-u-lg1'>
-                    <div className='header-icon'>
+                    <div className={styles.searchWp__filterPanel__body__headerIcon}>
                         <i className={props.group.isCollapsed ? 'ms-Icon ms-Icon--ChevronDown' : 'ms-Icon ms-Icon--ChevronUp'}></i>
                     </div>
                 </div>

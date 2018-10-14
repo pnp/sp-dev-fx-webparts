@@ -7,12 +7,12 @@ import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from 'o
 import { Logger, LogLevel } from '@pnp/logging';
 import * as strings from 'SearchWebPartStrings';
 import { IRefinementFilter, IRefinementValue, IRefinementResult } from '../../../../models/ISearchResult';
-import '../SearchResultsWebPart.scss';
 import Paging from '../Paging/Paging';
 import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
+import styles from '../SearchResultsWebPart.module.scss';
 
 declare var System: any;
 let FilterPanel = null;
@@ -57,7 +57,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
             if (items.RelevantResults.length > 0) {
                 renderOverlay = <div>
-                    <Overlay isDarkThemed={false} className='overlay'>
+                    <Overlay isDarkThemed={false} className={styles.overlay}>
                         <Spinner size={SpinnerSize.medium} />
                     </Overlay>
                 </div>;
@@ -103,8 +103,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     renderWpContent =
                         <div>
                             {renderWebPartTitle}
-                            {renderFilterPanel}                                
-                            <div className='searchWp__noresult'>{strings.NoResultMessage}</div>
+                            {renderFilterPanel}                             
+                            <div className={styles.searchWp__noresult}>{strings.NoResultMessage}</div>
                         </div>;
                 } else {
                     if (this.props.displayMode === DisplayMode.Edit && !areResultsLoading) {
@@ -147,7 +147,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         }
         
         return (
-            <div className='searchWp'>
+            <div className={styles.searchWp}>
                 {renderWpContent}
             </div>
         );
@@ -247,6 +247,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         resultCount: searchResults.TotalRows,
                         availableFilters: localizedFilters,
                         areResultsLoading: false,
+                        currentPage: 1,
                         lastQuery: query
                     });
 
