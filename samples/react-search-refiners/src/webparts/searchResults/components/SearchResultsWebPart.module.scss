@@ -87,7 +87,8 @@
         position: relative;
 
         &__body {
-            padding: 20px;
+            padding-right: 20px;
+            padding-left: 20px;
             overflow: auto;
     
             &__headerIcon {
@@ -107,12 +108,13 @@
             }
     
             &__allFiltersToggle {
-                margin-bottom: 25px;
+                margin-bottom: 15px;
+                padding-left: 10px;
             }
     
             &__group {
     
-                .ms-List-page~.ms-List-page {
+                &__header {
                     margin-top: 15px;
                 }
     

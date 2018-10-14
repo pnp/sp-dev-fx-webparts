@@ -59,7 +59,6 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
             items.push(
                 <div key={i}>
-                    <div className={'filterPanel__filterProperty'}>
                         {
                             filter.Values.map((refinementValue: IRefinementValue, j) => {
 
@@ -82,7 +81,6 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                                 );
                             })
                         }
-                    </div>
                 </div>
             );
         });
@@ -101,7 +99,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
             ref='groupedList'
             items={items}
             onRenderCell={this._onRenderCell}
-            className='filterPanel__body__group'
+            className={styles.searchWp__filterPanel__body__group}
             groupProps={
                 {
                     onRenderHeader: this._onRenderHeader,
@@ -196,28 +194,29 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
     private _onRenderHeader(props: IGroupDividerProps): JSX.Element {
         return (
+            <div className={styles.searchWp__filterPanel__body__group__header}>
+                <div className='ms-Grid-row' onClick={() => {
 
-            <div className='ms-Grid-row' onClick={() => {
+                    // Update the index for expanded groups to be able to keep it open after a re-render
+                    const updatedExpandedGroups =
+                        props.group.isCollapsed ?
+                            update(this.state.expandedGroups, { $push: [props.group.startIndex] }) :
+                            update(this.state.expandedGroups, { $splice: [[this.state.expandedGroups.indexOf(props.group.startIndex), 1]] });
 
-                // Update the index for expanded groups to be able to keep it open after a re-render
-                const updatedExpandedGroups =
-                    props.group.isCollapsed ?
-                        update(this.state.expandedGroups, { $push: [props.group.startIndex] }) :
-                        update(this.state.expandedGroups, { $splice: [[this.state.expandedGroups.indexOf(props.group.startIndex), 1]] });
+                    this.setState({
+                        expandedGroups: updatedExpandedGroups,
+                    });
 
-                this.setState({
-                    expandedGroups: updatedExpandedGroups,
-                });
-
-                props.onToggleCollapse(props.group);
-            }}>
-                <div className='ms-Grid-col ms-u-sm1 ms-u-md1 ms-u-lg1'>
-                    <div className={styles.searchWp__filterPanel__body__headerIcon}>
-                        <i className={props.group.isCollapsed ? 'ms-Icon ms-Icon--ChevronDown' : 'ms-Icon ms-Icon--ChevronUp'}></i>
+                    props.onToggleCollapse(props.group);
+                }}>
+                    <div className='ms-Grid-col ms-u-sm1 ms-u-md1 ms-u-lg1'>
+                        <div className={styles.searchWp__filterPanel__body__headerIcon}>
+                            <i className={props.group.isCollapsed ? 'ms-Icon ms-Icon--ChevronDown' : 'ms-Icon ms-Icon--ChevronUp'}></i>
+                        </div>
                     </div>
-                </div>
-                <div className='ms-Grid-col ms-u-sm10 ms-u-md10 ms-u-lg10'>
-                    <div className='ms-font-l'>{props.group.name}</div>
+                    <div className='ms-Grid-col ms-u-sm10 ms-u-md10 ms-u-lg10'>
+                        <div className='ms-font-l'>{props.group.name}</div>
+                    </div>
                 </div>
             </div>
         );
