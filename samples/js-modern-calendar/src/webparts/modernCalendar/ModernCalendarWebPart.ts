@@ -126,11 +126,11 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                 this.context.propertyPane.refresh();
                 this.context.statusRenderer.clearLoadingIndicator(this.domElement);
                 this.render();
-              })
+              });
             });
           }
-          })
-        })
+          });
+        });
     } else {
       this._getSitesAsync(); 
     }
@@ -169,6 +169,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
             });
           }
       } else if (propertyPath === 'listTitle' && newValue) {
+        // tslint:disable-next-line:no-duplicate-variable
         var siteUrl = newValue;
         if (this.properties.other) { siteUrl = this.properties.siteOther; }                 
           this._getListColumns(newValue,siteUrl)
@@ -312,7 +313,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
       title: "test",
       theme: true,
       events: calItems,
-      eventClick: function(_event) {
+      eventClick: (_event) => {
         var eventDetail = moment(_event['start']).format('MM/DD/YYYY hh:mm') + ' - '  + moment(_event['end']).format('MM/DD/YYYY hh:mm') + '<br>' + _event['detail'];
         swal2.default(_event.title,eventDetail,'info');
       }
@@ -357,10 +358,10 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                   this.context.propertyPane.refresh();
                   this.context.statusRenderer.clearLoadingIndicator(this.domElement);
                   this.render();
-                })
+                });
             }
           });
-        })
+        });
       });
   }
 
