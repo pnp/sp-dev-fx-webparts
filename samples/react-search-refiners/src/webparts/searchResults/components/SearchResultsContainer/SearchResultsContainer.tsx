@@ -37,7 +37,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             areResultsLoading: false,
             errorMessage: '',
             hasError: false,
-            lastQuery: ''
+            lastQuery: '',
         };
 
         this._onUpdateFilters = this._onUpdateFilters.bind(this);
@@ -358,7 +358,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             }
             catch(error) {
                 Logger.write('[SearchContainer._onUpdateSort(sortOrder:SortOrder,sortField?:string)]: Error: ' + error, LogLevel.Error);
-                const errorMessage = /\"value\":\"[^:]+: SortList\.\"/.test(error.message) ? strings.SortErrorMessage : error.message
+                const errorMessage = /\"value\":\"[^:]+: SortList\.\"/.test(error.message) ? strings.SortErrorMessage : error.message;
 
                 this.setState({
                     areResultsLoading: false,
