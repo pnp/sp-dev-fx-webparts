@@ -321,7 +321,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
             const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
             
-            this.props.searchDataProvider.sortList = `${sortField}:${SortOrder}`;
+            this.props.searchDataProvider.sortList = `${sortField}:${sortOrder}`;
+            console.log(this.props.searchDataProvider.sortList);
             const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, 1);
 
             this.setState({
