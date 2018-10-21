@@ -17,7 +17,8 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
 
         this.state = {
             showPanel: false,
-            sortOrder:SortOrder.Ascending
+            sortField:this.props.sortField,
+            sortOrder:this.props.sortOrder
         };
 
         this._onTogglePanel = this._onTogglePanel.bind(this);
@@ -74,7 +75,7 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
                                         onChanged={(checked: boolean) => {
                                             this._setSortOrder(checked);
                                         }}
-                                        checked={this.state.sortOrder === SortOrder.Ascending}
+                                        checked={this.state.sortOrder === SortOrder.Ascending || typeof(this.state.sortOrder) === 'undefined'}
                                     />
                                 </div>
                             </div>

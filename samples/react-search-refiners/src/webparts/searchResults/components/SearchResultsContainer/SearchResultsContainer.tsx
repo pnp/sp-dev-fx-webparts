@@ -38,7 +38,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             isComponentLoading: true,
             errorMessage: '',
             hasError: false,
-            lastQuery: ''
+            lastQuery: '',
         };
 
         this._onUpdateFilters = this._onUpdateFilters.bind(this);
@@ -84,7 +84,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             } else {
 
                 let filterPanel = this.state.availableFilters && this.state.availableFilters.length > 0 ? <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={this.props.refiners} /> : <span />;
-                let sortPanel = <SortPanel onUpdateSort={this._onUpdateSort} sortableFieldsConfiguration={this.props.sortableFields} />;
+                let sortPanel = <SortPanel onUpdateSort={this._onUpdateSort} sortableFieldsConfiguration={this.props.sortableFields} sortField={this.state.sortField} sortOrder={this.state.sortOrder} />;
 
                 if (items.RelevantResults.length === 0) {
 
