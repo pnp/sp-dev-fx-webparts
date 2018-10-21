@@ -13,6 +13,8 @@ import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
+import { SortPanel } from '../SortPanel';
+import SortOrder from '../../../../models/SortOrder';
 
 declare var System: any;
 let FilterPanel = null;
@@ -40,6 +42,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         };
 
         this._onUpdateFilters = this._onUpdateFilters.bind(this);
+        this._onUpdateSort = this._onUpdateSort.bind(this);
         this._onPageUpdate = this._onPageUpdate.bind(this);
     }
 
@@ -81,6 +84,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             } else {
 
                 let filterPanel = this.state.availableFilters && this.state.availableFilters.length > 0 ? <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={this.props.refiners} /> : <span />;
+                let sortPanel = <SortPanel onUpdateSort={this._onUpdateSort} sortableFieldsConfiguration={this.props.sortableFields} />;
 
                 if (items.RelevantResults.length === 0) {
 
@@ -88,7 +92,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         renderWpContent =
                             <div>
                                 {webPartTitle}
-                                {filterPanel}                                
+                                <div className="searchWp__buttonBar">{filterPanel}{sortPanel}</div>
                                 <div className='searchWp__noresult'>{strings.NoResultMessage}</div>
                             </div>;
                     } else {
@@ -100,7 +104,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     renderWpContent =
                         <div>
                             {webPartTitle}
-                            {filterPanel}                            
+                            <div className="searchWp__buttonBar">{filterPanel}{sortPanel}</div>
                             {renderOverlay}
                             <SearchResultsTemplate
                                 templateService={this.props.templateService}
@@ -140,7 +144,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
     public async componentDidMount() {
 
-        // Don't perform search is there is no keywords
+        // Don't perform search if there are no keywords
         if (this.props.queryKeywords) {
             try {
 
@@ -299,6 +303,32 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             results: searchResults,
             areResultsLoading: false,
         });
+    }
+
+    /**
+     * Callback function to apply new sort configuration coming from the sort panel child component
+     * @param newFilters The new filters to apply
+     */
+    private async _onUpdateSort(sortOrder:SortOrder,sortField?:string) {
+        if(sortField) {
+            // Get back to the first page when new sorting has been selected
+            this.setState({
+                sortField: sortField,
+                sortOrder: sortOrder,
+                currentPage: 1,
+                areResultsLoading: true,
+            });
+
+            const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
+            
+            this.props.searchDataProvider.sortList = `${sortField}:${SortOrder}`;
+            const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, 1);
+
+            this.setState({
+                results: searchResults,
+                areResultsLoading: false,
+            });
+        }
     }
 
     /**

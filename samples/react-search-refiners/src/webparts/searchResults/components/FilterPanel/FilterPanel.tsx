@@ -112,7 +112,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
             groups={groups} />;
 
         return (
-            <div>
+            <div className='filterPanel__panelParent'>
                 <ActionButton
                     className='searchWp__filterResultBtn'
                     iconProps={{ iconName: 'Filter' }}

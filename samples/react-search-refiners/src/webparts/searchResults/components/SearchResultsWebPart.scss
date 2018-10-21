@@ -10,6 +10,10 @@
         width: 100%;
     }
 
+    &__buttonBar {
+        overflow:auto;
+    }
+
     &__filterResultBtn {
         color: "[theme: themePrimary]";
     }
@@ -84,6 +88,9 @@
 }
 
 .filterPanel {
+    &__panelParent {
+        float:left;
+    }
 
     &__body {
         padding: 20px;
@@ -119,6 +126,17 @@
                 padding: 10px;
             }
         }
+    }
+}
+
+.sortPanel {
+    &__panelParent {
+        float:left;
+    }
+
+    &__body {
+        padding: 20px;
+        overflow: auto;
     }
 }
 

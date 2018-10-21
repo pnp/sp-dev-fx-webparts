@@ -9,8 +9,11 @@ define([], function() {
     "MaxResultsCount": "Nombre de résulats à récupérer par page",
     "NoResultMessage": "Il n'y a aucun résultat à afficher.",
     "RefinersFieldLabel": "Filtres",
+    "SortableFieldsLabel": "Triables",
     "FilterPanelTitle": "Filtres disponibles",
+    "SortPanelTitle":"Trier",
     "FilterResultsButtonLabel": "Filtrer l'affichage",
+    "SortResultsButtonLabel":"Trier l'affichage",
     "SelectedFiltersLabel": "Filtre(s) appliqué(s):",
     "ApplyAllFiltersLabel": "Appliquer tous les filters",
     "RemoveAllFiltersLabel": "Supprimer tous les filtres",
@@ -33,6 +36,7 @@ define([], function() {
     "EnableQueryRulesLabel": "Activer les règles de requête",
     "StylingSettingsGroupName": "Options d'affichage",
     "RefinersFieldDescription": "Propriétés gerées à utiliser comme filtres (liste ordonnée séparée par une virgule). Vous pouvez spécifier un label personnalisé en utilisant le format suivant <Nom de la propriété gérée>:\"Nom convivial\".",
+    "SortableFieldsDescription": "Propriétés gerées à utiliser comme triables (liste ordonnée séparée par une virgule). Vous pouvez spécifier un label personnalisé en utilisant le format suivant <Nom de la propriété gérée>:\"Nom convivial\".",
     "SelectedPropertiesFieldDescription": "Propriétés à récupérer des résulats de recherche.",
     "SearchQueryKeywordsFieldDescription": "Utilisez une requête de recherche prédéfinie pour obtenir un ensemble de résultats statique.",
     "CountMessageLong": "<b>{0}</b> résultats pour '<em>{1}</em>'",
@@ -50,6 +54,8 @@ define([], function() {
     "ErrorTemplateExtension": "Le file modèle doit être un fichier .htm ou .html valide",
     "ErrorTemplateResolve": "Impossible de résoudre le fichier. Détails: '{0}'",
     "WebPartTitle": "Titre de web part",
-    "HandlebarsHelpersDescription": "Activer les fonctions de moment et handlebars helpers. Voir https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens pour plus d'informations."
+    "HandlebarsHelpersDescription": "Activer les fonctions de moment et handlebars helpers. Voir https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens pour plus d'informations.",
+    "SortOrderAscendingLabel":"Ascendant",
+    "SortOrderDescendingLabel":"Descendant",
   }
 });

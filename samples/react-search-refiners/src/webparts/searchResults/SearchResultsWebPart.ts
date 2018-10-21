@@ -67,7 +67,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     constructor() {
         super();
 
-        this._parseRefiners = this._parseRefiners.bind(this);
+        this._parseFieldListString = this._parseFieldListString.bind(this);
     }
 
     /**
@@ -158,6 +158,14 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 resizable: true,
                 value: this.properties.sortList,
                 deferredValidationTime: 300
+            }),
+            PropertyPaneTextField('sortableFields', {
+                label: strings.SortableFieldsLabel,
+                description: strings.SortableFieldsDescription,
+                multiline: true,
+                resizable: true,
+                value: this.properties.sortableFields,
+                deferredValidationTime: 300,
             }),
             PropertyPaneToggle('enableQueryRules', {
                 label: strings.EnableQueryRulesLabel,
@@ -396,10 +404,10 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
 
     /**
-     * Parses refiners from the property pane value by extracting the refiner managed property and its label in the filter panel.
+     * Parses a list of Fields from the property pane value by extracting the managed property and its label.
      * @param rawValue the raw value of the refiner
      */
-    private _parseRefiners(rawValue: string): { [key: string]: string } {
+    private _parseFieldListString(rawValue: string): { [key: string]: string } {
 
         let refiners = {};
 
@@ -572,7 +580,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 sortList: this.properties.sortList,
                 enableQueryRules: this.properties.enableQueryRules,
                 selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g, '').split(',') : [],
-                refiners: this._parseRefiners(this.properties.refiners),
+                refiners: this._parseFieldListString(this.properties.refiners),
+                sortableFields: this._parseFieldListString(this.properties.sortableFields),
                 showPaging: this.properties.showPaging,
                 showResultsCount: this.properties.showResultsCount,
                 showBlank: this.properties.showBlank,

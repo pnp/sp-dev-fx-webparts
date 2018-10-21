@@ -3,6 +3,7 @@ import ITaxonomyService from '../../../../services/TaxonomyService/ITaxonomyServ
 import { DisplayMode } from '@microsoft/sp-core-library';
 import TemplateService from '../../../../services/TemplateService/TemplateService';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import SortOrder from '../../../../models/SortOrder';
 
 interface ISearchResultsContainerProps {
 
@@ -55,6 +56,11 @@ interface ISearchResultsContainerProps {
      * The managed properties used as refiners for the query
      */
     refiners: { [key: string]: string };
+
+    /**
+     * The managed properties used as sortable fields for the query
+     */
+    sortableFields: { [key: string]: string };
 
     /**
      * Show the paging control
