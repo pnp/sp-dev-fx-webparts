@@ -9,6 +9,7 @@ import                                             'video.js/dist/video-js.css';
 import { Logger } from '@pnp/logging';
 import templateStyles from                         './BaseTemplateService.module.scss';
 declare var System: any;
+import { Resize } from 'on-el-resize';
 
 abstract class BaseTemplateService {
     private _helper = null;
@@ -57,7 +58,6 @@ abstract class BaseTemplateService {
             }
 
             .template_listItem iframe, .template_listItem .video-js {
-                width: 350px;
                 height: 250px;
                 margin: 10px;
             }
@@ -68,6 +68,12 @@ abstract class BaseTemplateService {
                 display: -ms-flexbox;
                 flex-direction: column;
                 margin-right: 15px;
+            }
+
+            .template_previewContainer {
+                align-items: center;
+                display: flex;
+                display: -ms-flexbox;
             }
 
             .template_icon {
@@ -93,7 +99,7 @@ abstract class BaseTemplateService {
                                 <span class=""><span>{{getDate Created "LL"}}</span></span> 
                             </div>
                         </div>
-                        <div class="template_previewContainer">
+                        <div class="template_previewContainer ms-hiddenSm">
                             {{#eq item.contentclass compare='STS_ListItem_851'}}
                                 <div class="video-container"><img id="preview_{{@index}}" class="img-preview  video-preview-item" src="{{PictureThumbnailURL}}" data-url="{{DefaultEncodingURL}}" data-fileext="{{FileType}}"/></div>
                             {{/eq}}
@@ -300,7 +306,7 @@ abstract class BaseTemplateService {
 
                 // Get infos about the video to render
                 const url = $(event.target).attr("data-url");
-
+                                 
                 const iframeId = `document_${event.target.id}`; // ex: 'document-preview-itemXXX';
                 const previewContainedId = `${iframeId}_container`;
                 let containerElt = $(`#${previewContainedId}`);
@@ -314,7 +320,7 @@ abstract class BaseTemplateService {
                         thumbnailElt.hide();
                         const closeBtnId = `${iframeId}_closeBtn`;
                         const innerPreviewHtml = `
-                            <iframe id="${iframeId}" src="${url}" frameborder="0">
+                            <iframe id="${iframeId}" class="iframePreview" src="${url}" frameborder="0">
                             </iframe>
                         `;
 

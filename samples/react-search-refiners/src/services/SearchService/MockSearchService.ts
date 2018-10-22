@@ -1,7 +1,6 @@
 import ISearchService from                                       './ISearchService';
 import { ISearchResults, IRefinementFilter, ISearchResult } from '../../models/ISearchResult';
-import intersection from                                         'lodash-es/intersection';
-import clone from                                                'lodash-es/clone';
+import { intersection, clone } from '@microsoft/sp-lodash-subset';
 
 class MockSearchService implements ISearchService {
 

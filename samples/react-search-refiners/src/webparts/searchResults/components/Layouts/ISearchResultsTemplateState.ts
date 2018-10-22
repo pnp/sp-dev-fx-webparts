@@ -1,4 +1,8 @@
 interface ISearchResultsTemplateState {
+    
+    /**
+     * The handlebar compiled template
+     */
     processedTemplate: string;
 }
 
