@@ -63,7 +63,7 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
     private onComponentResize() {
 
         // Resize iframes accordingly
-        $(".iframePreview").each((idx, elt) => {
+        $(".iframePreview, .video-js").each((idx, elt) => {
             $(elt).width(Math.floor(this.parentRef.offsetWidth/2));
         });
     }

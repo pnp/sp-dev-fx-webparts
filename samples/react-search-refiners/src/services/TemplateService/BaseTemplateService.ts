@@ -417,12 +417,12 @@ abstract class BaseTemplateService {
 
                 // Remove exiting instance if there is already a player registered with  id
                 if (player) {
-                    thumbnailElt.hide();
+                    thumbnailElt.parent().hide();
                     containerElt.show();
                 } else {
                     if (url && fileExtension) {
 
-                        thumbnailElt.hide();
+                        thumbnailElt.parent().hide();
 
                         const closeBtnId = `${playerId}_closeBtn`;
 
@@ -434,7 +434,7 @@ abstract class BaseTemplateService {
 
                         // Build the preview HTML element
                         const previewHtml = this._getPreviewContainerElement(previewContainedId, closeBtnId, innerPreviewHtml, `${templateStyles.previewContainer} ${templateStyles.videoPreview}`);
-                        $(event.target.parentElement).append(previewHtml);
+                        $(event.target.parentElement).after(previewHtml);
 
                         // Instantiate a new player with Video.js
                         const videoPlayer = new Video(playerId, {
@@ -446,7 +446,7 @@ abstract class BaseTemplateService {
                         });
 
                         $(`#${closeBtnId}`).on("click", ((ev) => {
-                            thumbnailElt.show();
+                            thumbnailElt.parent().show();
 
                             if(!videoPlayer.paused()) {
                                 videoPlayer.pause();
