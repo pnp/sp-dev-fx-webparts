@@ -124,13 +124,15 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                             templateContext={
                                 {
                                     items: this.state.results.RelevantResults,
+                                    promotedResults: this.state.results.PromotedResults,
                                     totalRows: this.state.resultCount,
                                     keywords: this.props.queryKeywords,
                                     showResultsCount: this.props.showResultsCount,
                                     siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
                                     webUrl: this.props.context.pageContext.web.serverRelativeUrl,
                                     maxResultsCount: this.props.maxResultsCount,
-                                    actualResultsCount: items.RelevantResults.length
+                                    actualResultsCount: items.RelevantResults.length,
+                                    strings: strings,
                                 }
                             }
                         />

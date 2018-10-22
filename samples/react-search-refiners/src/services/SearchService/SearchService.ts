@@ -1,6 +1,6 @@
 import * as Handlebars from                                                                           'handlebars';
 import ISearchService from                                                                            './ISearchService';
-import { ISearchResults, ISearchResult, IRefinementResult, IRefinementValue, IRefinementFilter } from '../../models/ISearchResult';
+import { ISearchResults, ISearchResult, IRefinementResult, IRefinementValue, IRefinementFilter, IPromotedResult } from '../../models/ISearchResult';
 import { sp, SearchQuery, SearchResults, SPRest, Sort, SortDirection, SearchSuggestQuery } from                                                '@pnp/sp';
 import { Logger, LogLevel, ConsoleListener } from                                                     '@pnp/logging';
 import { IWebPartContext } from                                                                       '@microsoft/sp-webpart-base';
@@ -217,6 +217,30 @@ class SearchService implements ISearchService {
                         Values: values,
                     });
                 });
+
+                // Query rules handling
+                const secondaryQueryResults = r2.RawSearchResults.SecondaryQueryResults;
+                if (Array.isArray(secondaryQueryResults) && secondaryQueryResults.length > 0) {
+                    
+                    let promotedResults: IPromotedResult[] = [];
+                    
+                    secondaryQueryResults.map((e) => {
+
+                        // Best bets are mapped through the "SpecialTermResults" https://msdn.microsoft.com/en-us/library/dd907265(v=office.12).aspx
+                        if (e.SpecialTermResults) {
+                            
+                            e.SpecialTermResults.Results.map((result) => {
+                                promotedResults.push({
+                                    Title: result.Title,
+                                    Url: result.Url,
+                                    Description: result.Description
+                                } as IPromotedResult);
+                            });
+                        }                        
+                    });
+
+                    results.PromotedResults = promotedResults;
+                }
 
                 // Resolve all the promises once to get news
                 const relevantResults: ISearchResult[] = await Promise.all(allItemsPromises);

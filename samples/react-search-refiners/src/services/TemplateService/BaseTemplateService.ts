@@ -108,13 +108,28 @@ abstract class BaseTemplateService {
               .img-container:hover .hover {
                 opacity: 1;
               }
-              
         </style>
         <div class="template_root">
             {{#if showResultsCount}}
                 <div class="template_resultCount">
                     <label class="ms-fontWeight-semibold">{{getCountMessage totalRows keywords}}</label>
                 </div>
+            {{/if}}
+            {{#if promotedResults}}
+                <ul class="ms-List template_defaultList template_promotedResults">
+                <li class="ms-fontWeight-semibold title">{{strings.PromotedResultsLabel}}</li>
+                {{#each promotedResults as |promotedResult|}}
+                    <li class="ms-ListItem-primaryText">
+                        <div>
+                            <i class="ms-Icon ms-Icon--MiniLink" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <a class="ms-font-l" href="{{Url}}">{{Title}}</a>
+                            <div class="ms-font-s">{{Description}}</div>
+                        </div>
+                    </li>
+                {{/each}}
+                </ul>
             {{/if}}
             <ul class="ms-List template_defaultList">
                 {{#each items as |item|}}
@@ -133,7 +148,7 @@ abstract class BaseTemplateService {
                                     <div class="img-container">
                                         <img id="preview_{{@index}}" class="img-preview  video-preview-item" src="{{PictureThumbnailURL}}" data-url="{{DefaultEncodingURL}}" data-fileext="{{FileType}}"/>
                                         <div class="hover">
-                                            <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--PreviewLink" aria-hidden="true"></i></div>
+                                            <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--ImageSearch" aria-hidden="true"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +160,7 @@ abstract class BaseTemplateService {
                                         <div class="img-container">
                                             <img id="preview_{{@index}}" class="img-preview document-preview-item" src="{{ServerRedirectedPreviewURL}}" data-url="{{ServerRedirectedEmbedURL}}"/>
                                             <div class="hover">
-                                                <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--PreviewLink" aria-hidden="true"></i></div>
+                                                <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--ImageSearch" aria-hidden="true"></i></div>
                                             </div>
                                         </div>
                                     </div>

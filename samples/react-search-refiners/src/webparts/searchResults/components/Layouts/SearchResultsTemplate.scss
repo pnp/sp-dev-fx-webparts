@@ -12,6 +12,27 @@
             color: "[theme: themePrimary, default: #005a9e]";
         }
     }
+
+    .template_promotedResults {
+        border: 1px solid #eaeaea;
+        list-style: none;
+        padding: 15px;
+        margin-bottom: 15px;
+    
+        .title {
+            margin-bottom: 15px;
+        }
+        
+        li {
+            display: flex;
+            white-space: normal;
+        }
+    
+        i {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
     
     .template_defaultCard {
         .singleCard {

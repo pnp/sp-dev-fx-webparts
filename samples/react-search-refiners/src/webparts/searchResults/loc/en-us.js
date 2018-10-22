@@ -52,6 +52,7 @@ define([], function() {
     "WebPartTitle": "Web part title",
     "HandlebarsHelpersDescription": "Enable functions from moment and handlebars helpers. See https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens for more information.",
     "DynamicDataSourceLabel": "Available data sources",
-    "DynamicDataSourcePropertyLabel": "Available properties"
+    "DynamicDataSourcePropertyLabel": "Available properties",
+    "PromotedResultsLabel": "Promoted result(s)"
   }
 });
