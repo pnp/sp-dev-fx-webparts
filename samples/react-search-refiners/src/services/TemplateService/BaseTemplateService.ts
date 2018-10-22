@@ -9,7 +9,6 @@ import                                             'video.js/dist/video-js.css';
 import { Logger } from '@pnp/logging';
 import templateStyles from                         './BaseTemplateService.module.scss';
 declare var System: any;
-import { Resize } from 'on-el-resize';
 
 abstract class BaseTemplateService {
     private _helper = null;
@@ -50,6 +49,11 @@ abstract class BaseTemplateService {
 
             .template_listItem img.img-preview  {
                 width: 120px;
+                opacity: 1;
+                display: block;
+                height: auto;
+                transition: .5s ease;
+                backface-visibility: hidden;
             }          
 
             .template_result {
@@ -81,6 +85,30 @@ abstract class BaseTemplateService {
                 margin-right: 15px;
             }
 
+            .hover {
+                transition: .5s ease;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                text-align: center;
+                pointer-events: none;
+              }
+              
+              .img-container {
+                  position: relative;
+              }
+              
+              .img-container:hover img {
+                opacity: 0.2;
+              }
+              
+              .img-container:hover .hover {
+                opacity: 1;
+              }
+              
         </style>
         <div class="template_root">
             {{#if showResultsCount}}
@@ -101,13 +129,25 @@ abstract class BaseTemplateService {
                         </div>
                         <div class="template_previewContainer ms-hiddenSm">
                             {{#eq item.contentclass compare='STS_ListItem_851'}}
-                                <div class="video-container"><img id="preview_{{@index}}" class="img-preview  video-preview-item" src="{{PictureThumbnailURL}}" data-url="{{DefaultEncodingURL}}" data-fileext="{{FileType}}"/></div>
+                                <div class="video-container">
+                                    <div class="img-container">
+                                        <img id="preview_{{@index}}" class="img-preview  video-preview-item" src="{{PictureThumbnailURL}}" data-url="{{DefaultEncodingURL}}" data-fileext="{{FileType}}"/>
+                                        <div class="hover">
+                                            <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--PreviewLink" aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
                             {{/eq}}
         
                             {{#eq item.contentclass compare='STS_ListItem_DocumentLibrary'}}
                                 {{#if ServerRedirectedPreviewURL}}
                                     <div class="doc-container">
-                                        <img id="preview_{{@index}}" class="img-preview document-preview-item" src="{{ServerRedirectedPreviewURL}}" data-url="{{ServerRedirectedEmbedURL}}"/>
+                                        <div class="img-container">
+                                            <img id="preview_{{@index}}" class="img-preview document-preview-item" src="{{ServerRedirectedPreviewURL}}" data-url="{{ServerRedirectedEmbedURL}}"/>
+                                            <div class="hover">
+                                                <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--PreviewLink" aria-hidden="true"></i></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 {{/if}}
                             {{/eq}}
@@ -312,12 +352,12 @@ abstract class BaseTemplateService {
                 let containerElt = $(`#${previewContainedId}`);
 
                 if (containerElt.length > 0) {
-                    thumbnailElt.hide();
+                    thumbnailElt.parent().hide();
                     containerElt.show();
                 } else {
                     if (url) {
 
-                        thumbnailElt.hide();
+                        thumbnailElt.parent().hide();
                         const closeBtnId = `${iframeId}_closeBtn`;
                         const innerPreviewHtml = `
                             <iframe id="${iframeId}" class="iframePreview" src="${url}" frameborder="0">
@@ -326,10 +366,10 @@ abstract class BaseTemplateService {
 
                         // Build the preview HTML element
                         const previewHtml = this._getPreviewContainerElement(previewContainedId, closeBtnId, innerPreviewHtml, `${templateStyles.previewContainer} ${templateStyles.documentPreview}`);
-                        $(event.target.parentElement).append(previewHtml);
+                        $(event.target.parentElement).after(previewHtml);
 
                         $(`#${closeBtnId}`).on("click", ((ev) => {
-                            thumbnailElt.show();
+                            thumbnailElt.parent().show();
                             $(`#${previewContainedId}`).hide();
                         }).bind(containerElt, thumbnailElt));
                     } else {
