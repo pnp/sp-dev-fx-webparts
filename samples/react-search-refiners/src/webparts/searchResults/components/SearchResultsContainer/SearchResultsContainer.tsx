@@ -366,7 +366,6 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     hasError: true,
                     errorMessage: errorMessage
                 });
-
             }
         }
     }

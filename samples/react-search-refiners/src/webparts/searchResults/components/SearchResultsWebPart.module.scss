@@ -26,6 +26,10 @@
         color: "[theme: themePrimary, default: #005a9e]";
     }
 
+    &__sortResultBtn {
+        color: "[theme: themePrimary]";
+    }
+
     &__selectedFilters {
 
         padding: 10px;
