@@ -706,10 +706,11 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
     private async replaceQueryVariables(queryTemplate: string) {
         const pagePropsVariables = /\{(?:Page)\.(.*?)\}/gi;
-        let match = pagePropsVariables.exec(queryTemplate);
+        let reQueryTemplate = queryTemplate;
+        let match = pagePropsVariables.exec(reQueryTemplate);
         let item = null;
+
         if (match != null) {
-            let listName = this.context.pageContext.list.serverRelativeUrl.replace(this.context.pageContext.web.serverRelativeUrl, "");
             let url = this.context.pageContext.web.absoluteUrl + `/_api/web/GetList(@v1)/RenderExtendedListFormData(itemId=${this.context.pageContext.listItem.id},formId='viewform',mode='2',options=7)?@v1='${this.context.pageContext.list.serverRelativeUrl}'`;
             var client = this.context.spHttpClient;
             try {
@@ -726,7 +727,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 Log.error(Text.format(LOG_SOURCE, "RenderExtendedListFormData"), error);
             }
 
-            while (match != null && item != null) {
+            while (match !== null && item != null) {
                 // matched variable
                 let pageProp = match[1];
                 let itemProp;
@@ -741,7 +742,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                     itemProp = `"${itemProp}"`;
                 }
                 queryTemplate = queryTemplate.replace(match[0], itemProp);
-                match = pagePropsVariables.exec(queryTemplate);
+                match = pagePropsVariables.exec(reQueryTemplate);
             }
         }
         return queryTemplate;
