@@ -37,7 +37,7 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
         return (
             <div className='sortPanel__panelParent'>
                 <ActionButton 
-                    className=''
+                    className='searchWp__sortResultBtn'
                     iconProps={{ iconName:'Sort' }}
                     text={strings.SortResultsButtonLabel}
                     onClick={this._onTogglePanel}

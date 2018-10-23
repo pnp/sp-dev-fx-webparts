@@ -323,12 +323,28 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             
             this.props.searchDataProvider.sortList = `${sortField}:${sortOrder}`;
             console.log(this.props.searchDataProvider.sortList);
-            const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, 1);
+            try
+            {
+                const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, 1);
+    
+                this.setState({
+                    results: searchResults,
+                    areResultsLoading: false,
+                });
+            }
+            catch(error) {
+                Logger.write('[SearchContainer._onUpdateSort(sortOrder:SortOrder,sortField?:string)]: Error: ' + error, LogLevel.Error);
 
-            this.setState({
-                results: searchResults,
-                areResultsLoading: false,
-            });
+                const errorMessage = /\"value\":\"Invalid parameter: SortList\.\"/.test(error.message) ? "Invalid search property (Check if the managed property is sortable)." : error.message
+
+                this.setState({
+                    areResultsLoading: false,
+                    isComponentLoading: false,
+                    results: { RefinementResults: [], RelevantResults: [] },
+                    hasError: true,
+                    errorMessage: errorMessage
+                });
+            }
         }
     }
 

@@ -408,8 +408,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      * @param rawValue the raw value of the refiner
      */
     private _parseFieldListString(rawValue: string): { [key: string]: string } {
-
-        let refiners = {};
+        let returnValues = {};
+        if(!rawValue) return returnValues;
 
         // Get each configuration
         let refinerKeyValuePair = rawValue.split(',');
@@ -421,18 +421,18 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 switch (refinerValues.length) {
                     case 1:
                         // Take the same name as the refiner managed property
-                        refiners[refinerValues[0]] = refinerValues[0];
+                        returnValues[refinerValues[0]] = refinerValues[0];
                         break;
 
                     case 2:
                         // Trim quotes if present
-                        refiners[refinerValues[0]] = refinerValues[1].replace(/^'(.*)'$/, '$1');
+                        returnValues[refinerValues[0]] = refinerValues[1].replace(/^'(.*)'$/, '$1');
                         break;
                 }
             });
         }
 
-        return refiners;
+        return returnValues;
     }
 
     /**
