@@ -4,10 +4,10 @@ import { html } from 'common-tags';
 import { isEmpty } from '@microsoft/sp-lodash-subset';
 import * as strings from 'SearchWebPartStrings';
 import { Text } from '@microsoft/sp-core-library';
-import * as $ from                                 'jquery';
 import                                             'video.js/dist/video-js.css';
 import { Logger } from '@pnp/logging';
 import templateStyles from                         './BaseTemplateService.module.scss';
+import { DomHelper } from '../../helpers/DomHelper';
 declare var System: any;
 
 abstract class BaseTemplateService {
@@ -353,26 +353,27 @@ abstract class BaseTemplateService {
     }
 
     private _initDocumentPreviews() {
-
-        $('.document-preview-item').each((index, el) => {
-
-            $(el).on("click", (event) => {
-                const thumbnailElt = $(event.target);
+      
+        const nodes = document.querySelectorAll('.document-preview-item');
+        
+        DomHelper.forEach(nodes, ((index, el) => {
+            el.addEventListener("click", (event) => {
+                const thumbnailElt = event.srcElement;
 
                 // Get infos about the video to render
-                const url = $(event.target).attr("data-url");
+                const url = event.srcElement.getAttribute("data-url");
                                  
                 const iframeId = `document_${event.target.id}`; // ex: 'document-preview-itemXXX';
                 const previewContainedId = `${iframeId}_container`;
-                let containerElt = $(`#${previewContainedId}`);
+                let containerElt = document.getElementById(previewContainedId);
 
-                if (containerElt.length > 0) {
-                    thumbnailElt.parent().hide();
-                    containerElt.show();
+                if (containerElt) {
+                    thumbnailElt.parentElement.style.display= 'none';
+                    containerElt.style.display= '';
                 } else {
                     if (url) {
 
-                        thumbnailElt.parent().hide();
+                        thumbnailElt.parentElement.style.display= 'none';
                         const closeBtnId = `${iframeId}_closeBtn`;
                         const innerPreviewHtml = `
                             <iframe id="${iframeId}" class="iframePreview" src="${url}" frameborder="0">
@@ -381,18 +382,20 @@ abstract class BaseTemplateService {
 
                         // Build the preview HTML element
                         const previewHtml = this._getPreviewContainerElement(previewContainedId, closeBtnId, innerPreviewHtml, `${templateStyles.previewContainer} ${templateStyles.documentPreview}`);
-                        $(event.target.parentElement).after(previewHtml);
+                        const newEl = document.createElement('div');
+                        newEl.innerHTML = previewHtml;
+                        DomHelper.insertAfter(newEl, thumbnailElt.parentElement);
 
-                        $(`#${closeBtnId}`).on("click", ((ev) => {
-                            thumbnailElt.parent().show();
-                            $(`#${previewContainedId}`).hide();
+                        document.getElementById(closeBtnId).addEventListener("click", ((event) => {
+                            thumbnailElt.parentElement.style.display= '';
+                            document.getElementById(previewContainedId).style.display= 'none';
                         }).bind(containerElt, thumbnailElt));
                     } else {
                         Logger.write(`The URL of the video was empty for the document. Make sure you've included the 'ServerRedirectedEmbedURL' property in the selected properties options in the Web Part property pane`);
                     }
                 }
             });
-        });
+        }));
     }
 
     private async _initVideoPreviews() {
@@ -405,25 +408,27 @@ abstract class BaseTemplateService {
         );
         
         const Video = videoJs.default;
+       
+        const nodes = document.querySelectorAll('.video-preview-item');
+        
+        DomHelper.forEach(nodes, ((index, el) => {
+            el.addEventListener("click", (event) => {
 
-        $('.video-preview-item').each((index, el) => {
-
-            $(el).on("click", (event) => {
-                const thumbnailElt = $(event.target);
+                const thumbnailElt = event.srcElement;
 
                 // Get infos about the video to render
-                const url = $(event.target).attr("data-url");
-                const fileExtension = $(event.target).attr("data-fileext");
-                const thumbnailSrc = $(event.target).attr("src");
+                const url = event.srcElement.getAttribute("data-url");
+                const fileExtension =  event.srcElement.getAttribute("data-fileext");
+                const thumbnailSrc =  event.srcElement.getAttribute("src");
 
                 const playerId = `video_${event.target.id}`; // ex: 'video-preview-itemXXX';
                 const previewContainedId = `${playerId}_container`;
-                let containerElt = $(`#${previewContainedId}`);
+                let containerElt = document.getElementById(previewContainedId);
 
                 let player = Video.getPlayer(`#${playerId}`);
 
                 // Case when the player is still registered in Video.js but does not exist in the DOM (due to page mode switch or tempalte update)
-                if (player && $(`#${playerId}`).length === 0) {
+                if (player && !document.getElementById(playerId)) {
 
                     // In this case, we simply delete the player instance and recreate it
                     player.dispose();
@@ -432,12 +437,12 @@ abstract class BaseTemplateService {
 
                 // Remove exiting instance if there is already a player registered with  id
                 if (player) {
-                    thumbnailElt.parent().hide();
-                    containerElt.show();
+                    thumbnailElt.parentElement.style.display= 'none';
+                    containerElt.style.display= '';
                 } else {
                     if (url && fileExtension) {
 
-                        thumbnailElt.parent().hide();
+                        thumbnailElt.parentElement.style.display= 'none';
 
                         const closeBtnId = `${playerId}_closeBtn`;
 
@@ -449,7 +454,9 @@ abstract class BaseTemplateService {
 
                         // Build the preview HTML element
                         const previewHtml = this._getPreviewContainerElement(previewContainedId, closeBtnId, innerPreviewHtml, `${templateStyles.previewContainer} ${templateStyles.videoPreview}`);
-                        $(event.target.parentElement).after(previewHtml);
+                        const newEl = document.createElement('div');
+                        newEl.innerHTML = previewHtml;
+                        DomHelper.insertAfter(newEl, thumbnailElt.parentElement);
 
                         // Instantiate a new player with Video.js
                         const videoPlayer = new Video(playerId, {
@@ -460,13 +467,13 @@ abstract class BaseTemplateService {
                             poster: thumbnailSrc ? thumbnailSrc : null
                         });
 
-                        $(`#${closeBtnId}`).on("click", ((ev) => {
-                            thumbnailElt.parent().show();
+                        document.getElementById(closeBtnId).addEventListener("click", ((ev) => {
+                            thumbnailElt.parentElement.style.display= '';
 
                             if(!videoPlayer.paused()) {
                                 videoPlayer.pause();
                             }
-                            $(`#${previewContainedId}`).hide();
+                            document.getElementById(previewContainedId).style.display = 'none';
                         }).bind(videoPlayer, thumbnailElt));
 
                     } else {
@@ -474,9 +481,8 @@ abstract class BaseTemplateService {
                     }
                 }
             });
-        });
-    }
-    
+        }));
+    } 
 }
 
 export default BaseTemplateService;

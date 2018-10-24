@@ -27,9 +27,6 @@
             ]
         }
     },
-    "externals": {
-        "jquery": "https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    },
     "localizedResources": {
         "SearchWebPartStrings": "lib/webparts/searchResults/loc/{locale}.js",
         "PropertyControlStrings": "./node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",

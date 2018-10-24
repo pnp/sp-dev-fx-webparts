@@ -3,7 +3,7 @@ import ISearchResultsTemplateProps from './ISearchResultsTemplateProps';
 import ISearchResultsTemplateState from './ISearchResultsTemplateState';
 import                                  './SearchResultsTemplate.scss';
 import { Resize } from 'on-el-resize';
-import * as $ from                                 'jquery';
+import { DomHelper } from '../../../../helpers/DomHelper';
 
 export default class SearchResultsTemplate extends React.Component<ISearchResultsTemplateProps, ISearchResultsTemplateState> {
 
@@ -63,8 +63,10 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
     private onComponentResize() {
 
         // Resize iframes accordingly
-        $(".iframePreview, .video-js").each((idx, elt) => {
-            $(elt).width(Math.floor(this.parentRef.offsetWidth/2));
+        const nodes = document.querySelectorAll(".iframePreview, .video-js");
+
+        DomHelper.forEach(nodes, (index, elt) => {
+            elt.style.width = Math.floor(this.parentRef.offsetWidth/2) + 'px';
         });
     }
 }
