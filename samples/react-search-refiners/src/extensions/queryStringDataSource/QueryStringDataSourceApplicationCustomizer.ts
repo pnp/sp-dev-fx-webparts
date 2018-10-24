@@ -43,6 +43,10 @@ export default class QueryStringDataSourceApplicationCustomizer
 
     this.context.dynamicDataSourceManager.initializeSource(this);
 
+    if (this._searchQuery) {
+      this.context.dynamicDataSourceManager.notifySourceChanged();
+    }
+
     return Promise.resolve();
   }
 
@@ -70,24 +74,34 @@ export default class QueryStringDataSourceApplicationCustomizer
    */
   private _bindPushState() {
 
-    const _pushState = () => {
+    const _pushState = (() => {
       const _defaultPushState = history.pushState;
       const _self = this;
       return function (data: any, title: string, url?: string | null) {
         
-        const queryStringKeywords = UrlHelper.getQueryStringParam("q", url);
-
-        if (queryStringKeywords && queryStringKeywords !== _self._searchQuery) {
-          _self._searchQuery = queryStringKeywords;
-          _self.context.dynamicDataSourceManager.notifyPropertyChanged('queryStringQuery');
-        }
+        _self._updateQuery(_self, url);
 
         // Call the original function with the provided arguments
         // This context is necessary for the context of the history change
         return _defaultPushState.apply(this, [data, title, url]);
       };
-    };
+    }).bind(this);
 
     history.pushState = _pushState();
+
+    // Used when press the "back" button
+    window.onpopstate = ((ev: PopStateEvent) => {
+      this._updateQuery(this, ev.state.url);
+    }).bind(this);
+  }
+
+  private _updateQuery(currentObject: QueryStringDataSourceApplicationCustomizer, url: string) {
+
+    const queryStringKeywords = UrlHelper.getQueryStringParam("q", url);
+
+    if (queryStringKeywords) {
+      currentObject._searchQuery = queryStringKeywords;
+      currentObject.context.dynamicDataSourceManager.notifyPropertyChanged("queryStringQuery");
+    }
   }
 }

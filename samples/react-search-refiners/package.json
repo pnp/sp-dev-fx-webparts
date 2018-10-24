@@ -1,6 +1,6 @@
 {
   "name": "react-search-refiners",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -33,17 +33,18 @@
     "@types/sharepoint": "2013.1.9",
     "@types/webpack-env": "1.13.1",
     "common-tags": "^1.8.0",
-    "downshift": "^1.31.14",
+    "downshift": "1.31.14",
     "handlebars": "^4.0.12",
     "handlebars-helpers": "^0.8.4",
     "immutability-helper": "2.4.0",
-    "lodash-es": "4.17.4",
-    "office-ui-fabric-react": "^5.124.0",
+    "office-ui-fabric-react": "5.124.0",
+    "on-el-resize": "0.0.4",
     "react": "15.6.2",
-    "react-ace": "^6.1.4",
+    "react-ace": "6.1.4",
     "react-custom-scrollbars": "4.1.2",
     "react-dom": "15.6.2",
-    "react-js-pagination": "3.0.0"
+    "react-js-pagination": "3.0.0",
+    "video.js": "^7.1.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.6.0-plusbeta",

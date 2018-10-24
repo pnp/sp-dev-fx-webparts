@@ -12,7 +12,7 @@
             "pageUrl": "https://localhost:5432/workbench"
         },
         "queryStringDataSource": {
-            "pageUrl": "https://collaborationcorner.sharepoint.com/teams/PnPIntranet/SitePages/Search(1).aspx",
+            "pageUrl": "https://collaborationcorner.sharepoint.com/teams/PnPIntranet/_layouts/15/workbench.aspx",
             "customActions": {
                 "24cae67d-dec7-4eff-bb41-49451d5b5a11": {
                     "location": "ClientSideExtension.ApplicationCustomizer",

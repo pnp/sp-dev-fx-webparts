@@ -14,12 +14,12 @@ interface ISearchResultsContainerProps {
     /**
      * The search data provider instance
      */
-    searchDataProvider: ISearchService;
+    searchService: ISearchService;
 
     /**
      * The taxonomy data provider instance
      */
-    taxonomyDataProvider: ITaxonomyService;
+    taxonomyService: ITaxonomyService;
 
     /**
      * The search query keywords

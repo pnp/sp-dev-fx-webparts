@@ -1,10 +1,12 @@
-import { ISearchResult } from '../../../../models/ISearchResult';
+import { ISearchResult, IPromotedResult } from '../../../../models/ISearchResult';
 
 /**
  * Handlebars template context for search results
  */
 interface ISearchResultsTemplateContext {
     items: ISearchResult[];
+    promotedResults?: IPromotedResult[];
+    strings: ISearchWebPartStrings;
     totalRows: number;
     keywords: string;
     showResultsCount: boolean;

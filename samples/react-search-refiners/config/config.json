@@ -27,7 +27,6 @@
             ]
         }
     },
-    "externals": {},
     "localizedResources": {
         "SearchWebPartStrings": "lib/webparts/searchResults/loc/{locale}.js",
         "PropertyControlStrings": "./node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",

@@ -10,7 +10,7 @@ define([], function() {
     "NoResultMessage": "There are no results to show",    
     "RefinersFieldLabel": "Refiners",
     "FilterPanelTitle": "Available filters",
-    "FilterResultsButtonLabel": "Filter results",
+    "FilterResultsButtonLabel": "Filters",
     "SelectedFiltersLabel": "Selected filters:",
     "ApplyAllFiltersLabel": "Apply all filters",
     "RemoveAllFiltersLabel": "Remove all filters",
@@ -50,6 +50,9 @@ define([], function() {
     "ErrorTemplateExtension": "The template must be a valid .htm or .html file",
     "ErrorTemplateResolve": "Unable to resolve the specified template. Error details: '{0}'",
     "WebPartTitle": "Web part title",
-    "HandlebarsHelpersDescription": "Enable functions from moment and handlebars helpers. See https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens for more information."
+    "HandlebarsHelpersDescription": "Enable functions from moment and handlebars helpers. See https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens for more information.",
+    "DynamicDataSourceLabel": "Available data sources",
+    "DynamicDataSourcePropertyLabel": "Available properties",
+    "PromotedResultsLabel": "Promoted result(s)"
   }
 });

@@ -10,6 +10,8 @@ define([], function() {
       "SearchBoxPageOpenBehaviorLabel": "Mode d'ouverture de la page",
       "SearchBoxDynamicPropertyInputLabel": "Valeur du champ de recherche",
       "UseDynamicDataSourceLabel": "Utiliser une source de données dynamique comme requête de recherche",
-      "SearchBoxDynamicDataSourceGroupName": "Configuration de la source de données dynamique"
+      "SearchBoxDynamicDataSourceGroupName": "Configuration de la source de données dynamique",
+      "DynamicDataSourceLabel": "Source de données disponibles",
+      "DynamicDataSourcePropertyLabel": "Propriétés disponibles"
     }
   });
