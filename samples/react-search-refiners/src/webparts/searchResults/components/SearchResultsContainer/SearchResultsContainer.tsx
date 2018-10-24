@@ -335,7 +335,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             catch(error) {
                 Logger.write('[SearchContainer._onUpdateSort(sortOrder:SortOrder,sortField?:string)]: Error: ' + error, LogLevel.Error);
 
-                const errorMessage = /\"value\":\"Invalid parameter: SortList\.\"/.test(error.message) ? "Invalid search property (Check if the managed property is sortable)." : error.message
+                const errorMessage = /\"value\":\"Invalid parameter: SortList\.\"/.test(error.message) ? "Invalid search property (Check if the managed property is sortable)." : error.message;
 
                 this.setState({
                     areResultsLoading: false,
