@@ -22,14 +22,14 @@ steps:
   displayName: 'Run npm install'
 
 - script: |
+    npm test
+  displayName: 'Run npm test'
+
+- script: |
     gulp clean
     gulp bundle --ship
     gulp package-solution --ship
   displayName: 'Build and package the solution'
-
-- script: |
-    npm test
-  displayName: 'Run npm test'
 
 # Publish Build Artifacts SPFx sppkg
 - task: PublishBuildArtifacts@1
