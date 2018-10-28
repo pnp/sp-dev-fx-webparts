@@ -9,8 +9,11 @@ define([], function() {
     "MaxResultsCount": "Nombre de résulats à récupérer par page",
     "NoResultMessage": "Il n'y a aucun résultat à afficher.",
     "RefinersFieldLabel": "Filtres",
+    "SortableFieldsLabel": "Triables",
     "FilterPanelTitle": "Filtres disponibles",
+    "SortPanelTitle":"Trier",
     "FilterResultsButtonLabel": "Filtrer",
+    "SortResultsButtonLabel":"Trier",
     "SelectedFiltersLabel": "Filtre(s) appliqué(s):",
     "ApplyAllFiltersLabel": "Appliquer tous les filters",
     "RemoveAllFiltersLabel": "Supprimer tous les filtres",
@@ -33,6 +36,7 @@ define([], function() {
     "EnableQueryRulesLabel": "Activer les règles de requête",
     "StylingSettingsGroupName": "Options d'affichage",
     "RefinersFieldDescription": "Propriétés gerées à utiliser comme filtres (liste ordonnée séparée par une virgule). Vous pouvez spécifier un label personnalisé en utilisant le format suivant <Nom de la propriété gérée>:\"Nom convivial\".",
+    "SortableFieldsDescription": "Propriétés gerées à utiliser comme triables (liste ordonnée séparée par une virgule). Vous pouvez spécifier un label personnalisé en utilisant le format suivant <Nom de la propriété gérée>:\"Nom convivial\".",
     "SelectedPropertiesFieldDescription": "Propriétés à récupérer des résulats de recherche.",
     "SearchQueryKeywordsFieldDescription": "Utilisez une requête de recherche prédéfinie pour obtenir un ensemble de résultats statique.",
     "CountMessageLong": "<b>{0}</b> résultats pour '<em>{1}</em>'",
@@ -53,6 +57,9 @@ define([], function() {
     "HandlebarsHelpersDescription": "Activer les fonctions de moment et handlebars helpers. Voir https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens pour plus d'informations.",
     "DynamicDataSourceLabel": "Source de données disponibles",
     "DynamicDataSourcePropertyLabel": "Propriétés disponibles",
-    "PromotedResultsLabel": "Résultat(s) promu(s)"
+    "PromotedResultsLabel": "Résultat(s) promu(s)",
+    "SortOrderAscendingLabel":"Ascendant",
+    "SortOrderDescendingLabel":"Descendant",
+    "SortErrorMessage":"Propriété de recherche non valide (Vérifiez si la propriété managée est triable).",
   }
 });
