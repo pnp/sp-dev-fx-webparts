@@ -22,10 +22,9 @@ import MockSearchService from                                                   
 import SearchService from                                                                                              '../../services/SearchService/SearchService';
 import DynamicDataHelper from '../../helpers/DynamicDataHelper';
 
+const LOG_SOURCE: string = '[SearchBoxWebPart_{0}]';
+
 export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWebPartProps> implements IDynamicDataCallables {
-
-  private readonly LOG_SOURCE: string = '[SearchBoxWebPart_{0}]';
-
   private _searchService: ISearchService;
   private _searchQuery: string;
   private _source: IDynamicDataSource;
@@ -325,7 +324,7 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
           if (typeof sourceValue === 'string') {
               this._searchQuery = sourceValue ? sourceValue : "";
           } else {
-              Log.warn(Text.format(this.LOG_SOURCE, this.instanceId), `The selected input value from the dynamic data source is not a string. Received (${typeof sourceValue})`, this.context.serviceScope);
+              Log.warn(Text.format(LOG_SOURCE, this.instanceId), `The selected input value from the dynamic data source is not a string. Received (${typeof sourceValue})`, this.context.serviceScope);
           }
       }
     }

@@ -41,11 +41,9 @@ import { IDynamicDataSource } from '@microsoft/sp-dynamic-data';
 import DynamicDataHelper from '../../helpers/DynamicDataHelper';
 
 declare var System: any;
+const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
 export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
-
-    private readonly LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
-
     private _searchService: ISearchService;
     private _taxonomyService: ITaxonomyService;
     private _templateService: BaseTemplateService;
@@ -783,7 +781,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 if (typeof sourceValue === 'string') {
                     this._queryKeywords = sourceValue ? sourceValue : "";
                 } else {
-                    Log.warn(Text.format(this.LOG_SOURCE, this.instanceId), `The selected input value from the dynamic data source is not a string. Received (${typeof sourceValue})`, this.context.serviceScope);
+                    Log.warn(Text.format(LOG_SOURCE, this.instanceId), `The selected input value from the dynamic data source is not a string. Received (${typeof sourceValue})`, this.context.serviceScope);
                 }
             }
         }
