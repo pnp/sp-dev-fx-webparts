@@ -1,7 +1,7 @@
 import * as Handlebars from 'handlebars';
 import { ISearchResult } from '../../models/ISearchResult';
 import { html } from 'common-tags';
-import { isEmpty } from '@microsoft/sp-lodash-subset';
+import { isEmpty, uniqBy, uniq } from '@microsoft/sp-lodash-subset';
 import * as strings from 'SearchWebPartStrings';
 import { Text } from '@microsoft/sp-core-library';
 import 'video.js/dist/video-js.css';
@@ -298,6 +298,23 @@ abstract class BaseTemplateService {
                 return urlField.substr(0, separatorPos);
             }
             return urlField.substr(separatorPos + 1).trim();
+        });
+
+        // Return the unique count based on an array or property of an object in the array
+        // <p>{{getUniqueCount items "Title"}}</p>
+        Handlebars.registerHelper("getUniqueCount", (array: any[], property: string) => {
+            if (!Array.isArray(array)) return 0;
+            if (array.length === 0) return 0;
+
+            let result;
+            if (property) {
+                result = uniqBy(array, property);
+
+            }
+            else {
+                result = uniq(array);
+            }
+            return result.length;
         });
     }
 
