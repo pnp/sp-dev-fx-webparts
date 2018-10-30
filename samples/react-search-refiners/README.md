@@ -34,6 +34,7 @@ Version|Date|Comments
 1.4 | May 10, 2018 | <ul><li>Added the query suggestions feature to the search box Web Part</li><li>Added the automatic translation for taxonomy filter values according to the current site locale.</li> <li>Added the option in the search box Web Part to send the query to an other page</ul>
 1.5 | Jul 2, 2018 | <ul><li>Added a templating feature for search results with Handlebars inspired by the [react-content-query-webpart](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart) sample.</li><li>Upgraded to 1.5.1-plusbeta to use the new SPFx dynamic data feature instead of event aggregator for Web Parts communication.</li> <li>Code refactoring and reorganization.</ul>
 2.0.0.5 | Sept 18, 2018 | <ul><li>Upgraded to 1.6.0-plusbeta.</li><li>Added dynamic loading of parts needed in edit mode to reduce web part footprint.</li><li>Added configuration to sort.</li><li>Added option to set web part title.</li><li>Added result count tokens.</li><li>Added toggel to load/use handlebars helpers/moment.</li></ul>
+2.1.0.0 | 14 Oct, 2018 | <ul><li>Bug fixes ([#641](https://github.com/SharePoint/sp-dev-fx-webparts/issues/641),[#642](https://github.com/SharePoint/sp-dev-fx-webparts/issues/642))</li><li>Added document and Office 365 videos previews for the list template.</li><li>Added SharePoint best bets support.</li></ul>
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -113,6 +114,35 @@ This Web Part allows you change customize the way you display your search result
   <img src="./images/edit_template.png"/>
 </p>
 
+#### Best bets
+
+This WP supports SharePoint best bets via SharePoint query rules:
+
+<p align="center">
+  <img src="./images/query_rules.png"/>
+</p>
+
+<p align="center">
+  <img src="./images/best_bets.png"/>
+</p>
+
+#### Elements previews
+
+Previews are available, **only for the list view**, for Office documents and Office 365 videos (not Microsoft Stream). The embed URL is directly taken from the `ServerRedirectedEmbedURL` managed property retrieved from the search results. 
+
+<p align="center">
+  <img src="./images/result_preview.png"/>
+</p>
+
+The WebPart must have the following selected properties in the configuration to get the preview feature work (they are set by default): 
+- ServerRedirectedPreviewURL
+- ServerRedirectedURL
+- contentclass
+- ServerRedirectedEmbedURL
+- DefaultEncodingURL
+
+This preview is displayed as an _iframe_ when the user clicks on the corresponding preview image. DOM manipulations occur to add the _iframe_ container dynamically aside with the _<img/>_ container.
+
 #### Available tokens ####
 
 Setting | Description 
@@ -144,5 +174,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Integrate the [@pnp/spfx-property-controls](https://github.com/SharePoint/sp-dev-fx-property-controls) in your solution (*PlaceHolder* control).
 - Integrate multiple Office UI Fabric components (DocumentCard, Panel, GroupedList, ...) to fit with the native Office 365 theme.
 - Use the React container component approach inspiring by the [react-todo-basic sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-todo-basic).
+- Use [on-el-resize](https://www.npmjs.com/package/on-el-resize) by [Andrew Koltyakov](https://github.com/koltyakov) to resize iframes dynamically
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-search-refiners" />

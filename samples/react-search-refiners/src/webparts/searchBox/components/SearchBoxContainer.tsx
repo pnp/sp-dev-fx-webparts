@@ -10,7 +10,7 @@ import { IconType } from                             'office-ui-fabric-react/lib
 import { Spinner, SpinnerSize } from                 'office-ui-fabric-react/lib/Spinner';
 import { Label } from                                'office-ui-fabric-react/lib/Label';
 import * as update from                              'immutability-helper';
-import                                               '../SearchBoxWebPart.scss';
+import styles from '../SearchBoxWebPart.module.scss';
 
 const SUGGESTION_CHAR_COUNT_TRIGGER = 3;
 
@@ -125,9 +125,9 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
     let suggestions: JSX.Element[] = null;
 
     if (this.state.isRetrievingSuggestions && this.state.proposedQuerySuggestions.length === 0) {
-      renderSuggestions = <div className="suggestionPanel">
+      renderSuggestions = <div className={styles.suggestionPanel}>
                             <div {...getItemProps({item: null, disabled: true})}>
-                              <div className="suggestionItem">
+                              <div className={styles.suggestionItem}>
                                 <Spinner size={ SpinnerSize.small }/>
                               </div>
                             </div>
@@ -142,13 +142,13 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
                                   style={{
                                     fontWeight: selectedItem === suggestion ? 'bold' : 'normal'
                                   }}>
-                                      <Label className={ highlightedIndex === index ? 'suggestionItem selected': 'suggestionItem'}>
+                                      <Label className={ highlightedIndex === index ? `${styles.suggestionItem} ${styles.selected}` : `${styles.suggestionItem}`}>
                                           <div dangerouslySetInnerHTML={{ __html: suggestion }}></div>
                                       </Label>
                                   </div>;
                                 });
       
-      renderSuggestions = <div className="suggestionPanel">
+      renderSuggestions = <div className={styles.suggestionPanel}>
                             { suggestions }
                           </div>;
     }
@@ -285,7 +285,7 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
                                             errorMessage: null,
                                           });
                                         }}
-                                        className="errorMessage">
+                                        className={styles.errorMessage}>
                                         { this.state.errorMessage }</MessageBar>;
     }
     
@@ -293,7 +293,7 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
                           this.renderSearchBoxWithAutoComplete() : 
                           this.renderBasicSearchBox();    
     return (
-      <div className="searchBox">
+      <div className={styles.searchBox}>
         { renderErrorMessage }
         { renderSearchBox }
       </div>

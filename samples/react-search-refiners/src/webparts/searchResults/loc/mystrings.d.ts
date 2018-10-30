@@ -50,6 +50,9 @@ declare interface ISearchWebPartStrings {
     ErrorTemplateResolve: string;
     WebPartTitle: string;
     HandlebarsHelpersDescription: string;
+    DynamicDataSourceLabel: string;
+    DynamicDataSourcePropertyLabel: string;
+    PromotedResultsLabel: string;
 }
 
 declare module 'SearchWebPartStrings' {

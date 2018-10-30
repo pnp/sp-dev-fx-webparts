@@ -1,4 +1,5 @@
 import ResultsLayoutOption from '../../models/ResultsLayoutOption';
+import IDynamicDataSourceConnection from '../../models/IDynamicDataSourceConnection';
 
 export interface ISearchResultsWebPartProps {
     queryKeywords: string;
@@ -16,9 +17,7 @@ export interface ISearchResultsWebPartProps {
     selectedLayout: ResultsLayoutOption;
     externalTemplateUrl: string;
     inlineTemplateText: string;
-    dynamicDataSourceId: string;
-    dynamicDataSourcePropertyId: string;
-    dynamicDataSourceComponentId: string;
     useHandlebarsHelpers: boolean;
     webPartTitle: string;
+    sourceInstance: IDynamicDataSourceConnection;
 }
