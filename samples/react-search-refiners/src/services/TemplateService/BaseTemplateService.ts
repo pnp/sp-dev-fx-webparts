@@ -419,7 +419,7 @@ abstract class BaseTemplateService {
 
         // Load Videos-Js on Demand 
         // Webpack will create a other bundle loaded on demand just for this library
-        const videoJs = await import(
+        const videoJs = await System.import(
             /* webpackChunkName: 'videos-js' */
             'video.js',
         );
