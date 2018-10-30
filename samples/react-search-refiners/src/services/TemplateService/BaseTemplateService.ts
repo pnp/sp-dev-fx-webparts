@@ -4,9 +4,9 @@ import { html } from 'common-tags';
 import { isEmpty } from '@microsoft/sp-lodash-subset';
 import * as strings from 'SearchWebPartStrings';
 import { Text } from '@microsoft/sp-core-library';
-import                                             'video.js/dist/video-js.css';
+import 'video.js/dist/video-js.css';
 import { Logger } from '@pnp/logging';
-import templateStyles from                         './BaseTemplateService.module.scss';
+import templateStyles from './BaseTemplateService.module.scss';
 import { DomHelper } from '../../helpers/DomHelper';
 declare var System: any;
 
@@ -287,7 +287,7 @@ abstract class BaseTemplateService {
                 return d;
             } catch (error) {
                 return;
-            }            
+            }
         });
 
         // Return the URL or Title part of a URL automatic managed property
@@ -353,27 +353,27 @@ abstract class BaseTemplateService {
     }
 
     private _initDocumentPreviews() {
-      
+
         const nodes = document.querySelectorAll('.document-preview-item');
-        
+
         DomHelper.forEach(nodes, ((index, el) => {
             el.addEventListener("click", (event) => {
                 const thumbnailElt = event.srcElement;
 
                 // Get infos about the video to render
                 const url = event.srcElement.getAttribute("data-url");
-                                 
+
                 const iframeId = `document_${event.target.id}`; // ex: 'document-preview-itemXXX';
                 const previewContainedId = `${iframeId}_container`;
                 let containerElt = document.getElementById(previewContainedId);
 
                 if (containerElt) {
-                    thumbnailElt.parentElement.style.display= 'none';
-                    containerElt.style.display= '';
+                    thumbnailElt.parentElement.style.display = 'none';
+                    containerElt.style.display = '';
                 } else {
                     if (url) {
 
-                        thumbnailElt.parentElement.style.display= 'none';
+                        thumbnailElt.parentElement.style.display = 'none';
                         const closeBtnId = `${iframeId}_closeBtn`;
                         const innerPreviewHtml = `
                             <iframe id="${iframeId}" class="iframePreview" src="${url}" frameborder="0">
@@ -386,9 +386,9 @@ abstract class BaseTemplateService {
                         newEl.innerHTML = previewHtml;
                         DomHelper.insertAfter(newEl, thumbnailElt.parentElement);
 
-                        document.getElementById(closeBtnId).addEventListener("click", ((event) => {
-                            thumbnailElt.parentElement.style.display= '';
-                            document.getElementById(previewContainedId).style.display= 'none';
+                        document.getElementById(closeBtnId).addEventListener("click", ((_event) => {
+                            thumbnailElt.parentElement.style.display = '';
+                            document.getElementById(previewContainedId).style.display = 'none';
                         }).bind(containerElt, thumbnailElt));
                     } else {
                         Logger.write(`The URL of the video was empty for the document. Make sure you've included the 'ServerRedirectedEmbedURL' property in the selected properties options in the Web Part property pane`);
@@ -406,11 +406,11 @@ abstract class BaseTemplateService {
             /* webpackChunkName: 'videos-js' */
             'video.js',
         );
-        
+
         const Video = videoJs.default;
-       
+
         const nodes = document.querySelectorAll('.video-preview-item');
-        
+
         DomHelper.forEach(nodes, ((index, el) => {
             el.addEventListener("click", (event) => {
 
@@ -418,8 +418,8 @@ abstract class BaseTemplateService {
 
                 // Get infos about the video to render
                 const url = event.srcElement.getAttribute("data-url");
-                const fileExtension =  event.srcElement.getAttribute("data-fileext");
-                const thumbnailSrc =  event.srcElement.getAttribute("src");
+                const fileExtension = event.srcElement.getAttribute("data-fileext");
+                const thumbnailSrc = event.srcElement.getAttribute("src");
 
                 const playerId = `video_${event.target.id}`; // ex: 'video-preview-itemXXX';
                 const previewContainedId = `${playerId}_container`;
@@ -437,12 +437,12 @@ abstract class BaseTemplateService {
 
                 // Remove exiting instance if there is already a player registered with  id
                 if (player) {
-                    thumbnailElt.parentElement.style.display= 'none';
-                    containerElt.style.display= '';
+                    thumbnailElt.parentElement.style.display = 'none';
+                    containerElt.style.display = '';
                 } else {
                     if (url && fileExtension) {
 
-                        thumbnailElt.parentElement.style.display= 'none';
+                        thumbnailElt.parentElement.style.display = 'none';
 
                         const closeBtnId = `${playerId}_closeBtn`;
 
@@ -468,9 +468,9 @@ abstract class BaseTemplateService {
                         });
 
                         document.getElementById(closeBtnId).addEventListener("click", ((ev) => {
-                            thumbnailElt.parentElement.style.display= '';
+                            thumbnailElt.parentElement.style.display = '';
 
-                            if(!videoPlayer.paused()) {
+                            if (!videoPlayer.paused()) {
                                 videoPlayer.pause();
                             }
                             document.getElementById(previewContainedId).style.display = 'none';
@@ -482,7 +482,7 @@ abstract class BaseTemplateService {
                 }
             });
         }));
-    } 
+    }
 }
 
 export default BaseTemplateService;
