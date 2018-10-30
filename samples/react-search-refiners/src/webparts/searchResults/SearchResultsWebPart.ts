@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 import { Text, Log } from '@microsoft/sp-core-library';
 import {
     BaseClientSideWebPart,
@@ -40,11 +41,9 @@ import { IDynamicDataSource } from '@microsoft/sp-dynamic-data';
 import DynamicDataHelper from '../../helpers/DynamicDataHelper';
 
 declare var System: any;
+const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
 export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
-
-    private readonly LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
-
     private _searchService: ISearchService;
     private _taxonomyService: ITaxonomyService;
     private _templateService: BaseTemplateService;
@@ -459,13 +458,16 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      * @param propertyPath the name of the updated property
      * @param newValue the new value for this property
      */
-    private _onCustomPropertyPaneChange(propertyPath: string, newValue: any): void {
+    private async _onCustomPropertyPaneChange(propertyPath: string, newValue: any): Promise<void> {
 
         // Stores the new value in web part properties
         update(this.properties, propertyPath, (): any => { return newValue; });
 
         // Call the default SPFx handler
         this.onPropertyPaneFieldChanged(propertyPath);
+
+        // Refresh setting the right template for the property pane
+        await this._getTemplateContent();
 
         // Refreshes the web part manually because custom fields don't update since sp-webpart-base@1.1.1
         // https://github.com/SharePoint/sp-dev-docs/issues/594
@@ -715,11 +717,55 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
     }
 
+    private async replaceQueryVariables(queryTemplate: string) {
+        const pagePropsVariables = /\{(?:Page)\.(.*?)\}/gi;
+        let reQueryTemplate = queryTemplate;
+        let match = pagePropsVariables.exec(reQueryTemplate);
+        let item = null;
+
+        if (match != null) {
+            let url = this.context.pageContext.web.absoluteUrl + `/_api/web/GetList(@v1)/RenderExtendedListFormData(itemId=${this.context.pageContext.listItem.id},formId='viewform',mode='2',options=7)?@v1='${this.context.pageContext.list.serverRelativeUrl}'`;
+            var client = this.context.spHttpClient;
+            try {
+                const response: SPHttpClientResponse = await client.post(url, SPHttpClient.configurations.v1, {});
+                if (response.ok) {
+                    let result = await response.json();
+                    let itemRow = JSON.parse(result.value);
+                    item = itemRow.Data.Row[0];
+                }
+                else {
+                    throw response.statusText;
+                }
+            } catch (error) {
+                Log.error(Text.format(LOG_SOURCE, "RenderExtendedListFormData"), error);
+            }
+
+            while (match !== null && item != null) {
+                // matched variable
+                let pageProp = match[1];
+                let itemProp;
+                if (pageProp.indexOf(".Label") !== -1 || pageProp.indexOf(".TermID") !== -1) {
+                    let term = pageProp.split(".");
+                    itemProp = item[term[0]][0][term[1]];
+                } else {
+                    itemProp = item[pageProp];
+                }
+                if (itemProp.indexOf(' ') !== -1) {
+                    // add quotes to multi term values
+                    itemProp = `"${itemProp}"`;
+                }
+                queryTemplate = queryTemplate.replace(match[0], itemProp);
+                match = pagePropsVariables.exec(reQueryTemplate);
+            }
+        }
+        return queryTemplate;
+    }
+
     public async render(): Promise<void> {
 
         // Configure the provider before the query according to our needs
         this._searchService.resultsCount = this.properties.maxResultsCount;
-        this._searchService.queryTemplate = this.properties.queryTemplate;
+        this._searchService.queryTemplate = await this.replaceQueryVariables(this.properties.queryTemplate);
         this._searchService.resultSourceId = this.properties.resultSourceId;
         this._searchService.sortList = this.properties.sortList;
         this._searchService.enableQueryRules = this.properties.enableQueryRules;
@@ -738,7 +784,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 if (typeof sourceValue === 'string') {
                     this._queryKeywords = sourceValue ? sourceValue : "";
                 } else {
-                    Log.warn(Text.format(this.LOG_SOURCE, this.instanceId), `The selected input value from the dynamic data source is not a string. Received (${typeof sourceValue})`, this.context.serviceScope);
+                    Log.warn(Text.format(LOG_SOURCE, this.instanceId), `The selected input value from the dynamic data source is not a string. Received (${typeof sourceValue})`, this.context.serviceScope);
                 }
             }
         }
