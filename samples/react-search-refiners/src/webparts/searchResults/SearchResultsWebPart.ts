@@ -458,13 +458,16 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      * @param propertyPath the name of the updated property
      * @param newValue the new value for this property
      */
-    private _onCustomPropertyPaneChange(propertyPath: string, newValue: any): void {
+    private async _onCustomPropertyPaneChange(propertyPath: string, newValue: any): Promise<void> {
 
         // Stores the new value in web part properties
         update(this.properties, propertyPath, (): any => { return newValue; });
 
         // Call the default SPFx handler
         this.onPropertyPaneFieldChanged(propertyPath);
+
+        // Refresh setting the right template for the property pane
+        await this._getTemplateContent();
 
         // Refreshes the web part manually because custom fields don't update since sp-webpart-base@1.1.1
         // https://github.com/SharePoint/sp-dev-docs/issues/594
