@@ -1,5 +1,5 @@
 import { ISearchResults, IRefinementFilter, IRefinementResult } from '../../../../models/ISearchResult';
-import SortOrder from '../../../../models/SortOrder';
+import SortDirection from '../../../../models/SortDirection';
 
 interface ISearchResultsContainerState {
     
@@ -56,7 +56,7 @@ interface ISearchResultsContainerState {
     /**
      * Keeps the order in which the results need to be sorted (after initial sort)
      */
-    sortOrder?: SortOrder;
+    sortDirection?: SortDirection;
 }
 
 export default ISearchResultsContainerState;

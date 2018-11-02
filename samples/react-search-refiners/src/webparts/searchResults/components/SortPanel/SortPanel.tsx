@@ -7,7 +7,7 @@ import { Toggle } from                                                 'office-u
 import * as strings from                                               'SearchWebPartStrings';
 import { Scrollbars } from                                             'react-custom-scrollbars';
 import { ActionButton } from                                           'office-ui-fabric-react/lib/Button';
-import SortOrder from '../../../../models/SortOrder';
+import SortDirection from '../../../../models/SortDirection';
 import styles from '../SearchResultsWebPart.module.scss';
 
 export default class SortPanel extends React.Component<ISortPanelProps, ISortPanelState> {
@@ -17,14 +17,14 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
 
         this.state = {
             showPanel: false,
-            sortOrder:this.props.sortOrder ? this.props.sortOrder :SortOrder.Ascending,
+            sortDirection:this.props.sortDirection ? this.props.sortDirection :SortDirection.Ascending,
             sortField:this.props.sortField ? this.props.sortField : null
         };
 
         this._onTogglePanel = this._onTogglePanel.bind(this);
         this._onClosePanel = this._onClosePanel.bind(this);
         this._getSortableFieldCount = this._getSortableFieldCount.bind(this);
-        this._setSortOrder = this._setSortOrder.bind(this);
+        this._setSortDirection = this._setSortDirection.bind(this);
         this._getDropdownOptions = this._getDropdownOptions.bind(this);
         this._onChangedSelectedField = this._onChangedSelectedField.bind(this);
     }
@@ -53,16 +53,16 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
                     isLightDismiss={true}
                     onDismiss={this._onClosePanel}
                     headerText={strings.SortPanelTitle}
-                    closeButtonAriaLabel='Close'
+                    closeButtonAriaLabel={strings.PanelCloseButtonAria}
                     hasCloseButton={true}
                     onRenderBody={() => {
                         return <Scrollbars style={{ height: '100%' }}>
                             <div className={styles.searchWp__sortPanel__body}>
                                 <div>
                                     <Dropdown
-                                            placeHolder="Select a field"
-                                            label="Sort on field"
-                                            ariaLabel="Select a field"
+                                            placeHolder={strings.SortPanelSortFieldPlaceHolder}
+                                            label={strings.SortPanelSortFieldLabel}
+                                            ariaLabel={strings.SortPanelSortFieldAria}
                                             onChanged={this._onChangedSelectedField}
                                             selectedKey={this.state.sortField}
                                             options={dropdownOptions}
@@ -70,13 +70,13 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
                                 </div>
                                 <div>
                                     <Toggle
-                                        label="Sort order"
-                                        onText={strings.SortOrderAscendingLabel}
-                                        offText={strings.SortOrderDescendingLabel}
+                                        label={strings.SortPanelSortDirectionLabel}
+                                        onText={strings.SortDirectionAscendingLabel}
+                                        offText={strings.SortDirectionDescendingLabel}
                                         onChanged={(checked: boolean) => {
-                                            this._setSortOrder(checked);
+                                            this._setSortDirection(checked);
                                         }}
-                                        checked={this.state.sortOrder === SortOrder.Ascending || typeof(this.state.sortOrder) === 'undefined'}
+                                        checked={this.state.sortDirection === SortDirection.Ascending || typeof(this.state.sortDirection) === 'undefined'}
                                     />
                                 </div>
                             </div>
@@ -96,12 +96,12 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
         }).length;
     }
 
-    private _setSortOrder(checked:boolean) {
-        const sortOrder = checked ? SortOrder.Ascending : SortOrder.Descending;
+    private _setSortDirection(checked:boolean) {
+        const sortDirection = checked ? SortDirection.Ascending : SortDirection.Descending;
         this.setState({
-            sortOrder: sortOrder,
+            sortDirection: sortDirection,
         });
-        this.props.onUpdateSort(sortOrder,this.state.sortField);
+        this.props.onUpdateSort(sortDirection,this.state.sortField);
     }
 
     private _getDropdownOptions():IDropdownOption[] {
@@ -121,7 +121,7 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
         this.setState({          
             sortField: sortField,
         });
-        this.props.onUpdateSort(this.state.sortOrder,sortField);
+        this.props.onUpdateSort(this.state.sortDirection,sortField);
     }
 
     private _onClosePanel() {

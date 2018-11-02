@@ -1,10 +1,10 @@
 import UpdateSortOperationCallback from '../../../../models/UpdateSortOperationCallback';
-import SortOrder from '../../../../models/SortOrder';
+import SortDirection from '../../../../models/SortDirection';
 
 interface ISortPanelProps {
     sortableFieldsConfiguration: { [key: string]: string };
     onUpdateSort: UpdateSortOperationCallback;
-    sortOrder?:SortOrder;
+    sortDirection?:SortDirection;
     sortField?:string;
 }
   

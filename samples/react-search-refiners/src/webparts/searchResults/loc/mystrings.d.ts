@@ -57,9 +57,14 @@ declare interface ISearchWebPartStrings {
     DynamicDataSourceLabel: string;
     DynamicDataSourcePropertyLabel: string;
     PromotedResultsLabel: string;
-    SortOrderAscendingLabel:string;
-    SortOrderDescendingLabel:string;
+    SortDirectionAscendingLabel:string;
+    SortDirectionDescendingLabel:string;
     SortErrorMessage:string;
+    SortPanelSortFieldLabel:string;
+    SortPanelSortFieldAria:string;
+    SortPanelSortFieldPlaceHolder:string;
+    SortPanelSortDirectionLabel:string;
+    PanelCloseButtonAria:string;
 }
 
 declare module 'SearchWebPartStrings' {

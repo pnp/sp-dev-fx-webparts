@@ -58,8 +58,13 @@ define([], function() {
     "DynamicDataSourceLabel": "Source de données disponibles",
     "DynamicDataSourcePropertyLabel": "Propriétés disponibles",
     "PromotedResultsLabel": "Résultat(s) promu(s)",
-    "SortOrderAscendingLabel":"Ascendant",
-    "SortOrderDescendingLabel":"Descendant",
+    "SortDirectionAscendingLabel":"Ascendant",
+    "SortDirectionDescendingLabel":"Descendant",
     "SortErrorMessage":"Propriété de recherche non valide (Vérifiez si la propriété managée est triable).",
+    "SortPanelSortFieldLabel":"Trier sur le champ",
+    "SortPanelSortFieldAria":"Sélectionner un champ",
+    "SortPanelSortFieldPlaceHolder":"Sélectionner un champ",
+    "SortPanelSortDirectionLabel":"Direction de tri",
+    "PanelCloseButtonAria":"Proche",
   }
 });

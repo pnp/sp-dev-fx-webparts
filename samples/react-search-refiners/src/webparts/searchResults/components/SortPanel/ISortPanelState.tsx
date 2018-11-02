@@ -1,10 +1,10 @@
 import { IRefinementFilter } from '../../../../models/ISearchResult';
-import SortOrder from '../../../../models/SortOrder';
+import SortDirection from '../../../../models/SortDirection';
 
 interface IFilterPanelState {
     showPanel?: boolean;
     sortField?: string;
-    sortOrder: SortOrder;
+    sortDirection: SortDirection;
 }
 
 export default IFilterPanelState;

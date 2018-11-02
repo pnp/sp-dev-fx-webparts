@@ -58,8 +58,13 @@ define([], function() {
     "DynamicDataSourceLabel": "Available data sources",
     "DynamicDataSourcePropertyLabel": "Available properties",
     "PromotedResultsLabel": "Promoted result(s)",
-    "SortOrderAscendingLabel":"Ascending",
-    "SortOrderDescendingLabel":"Descending",
+    "SortDirectionAscendingLabel":"Ascending",
+    "SortDirectionDescendingLabel":"Descending",
     "SortErrorMessage":"Invalid search property (Check if the managed property is sortable).",
+    "SortPanelSortFieldLabel":"Sort on field",
+    "SortPanelSortFieldAria":"Select a field",
+    "SortPanelSortFieldPlaceHolder":"Select a field",
+    "SortPanelSortDirectionLabel":"Sort Direction",
+    "PanelCloseButtonAria":"Close",
   }
 });

@@ -3,7 +3,6 @@ import ITaxonomyService from '../../../../services/TaxonomyService/ITaxonomyServ
 import { DisplayMode } from '@microsoft/sp-core-library';
 import TemplateService from '../../../../services/TemplateService/TemplateService';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import SortOrder from '../../../../models/SortOrder';
 
 interface ISearchResultsContainerProps {
 

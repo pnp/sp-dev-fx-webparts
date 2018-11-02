@@ -14,7 +14,7 @@ import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
 import styles from '../SearchResultsWebPart.module.scss';
 import { SortPanel } from '../SortPanel';
-import SortOrder from '../../../../models/SortOrder';
+import SortDirection from '../../../../models/SortDirection';
 
 declare var System: any;
 let FilterPanel = null;
@@ -89,7 +89,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         const sortPanel = <SortPanel 
                                 onUpdateSort={this._onUpdateSort} 
                                 sortableFieldsConfiguration={this.props.sortableFields} 
-                                sortOrder={this.state.sortOrder}
+                                sortDirection={this.state.sortDirection}
                                 sortField={this.state.sortField} />; 
         if (hasError) {
             if(this.state.errorMessage === strings.SortErrorMessage)
@@ -225,6 +225,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         // New props are passed to the component when the search query has been changed
         if (JSON.stringify(this.props.refiners) !== JSON.stringify(nextProps.refiners)
+            || JSON.stringify(this.props.sortableFields) !== JSON.stringify(nextProps.sortableFields)
+            || this.props.sortList !== nextProps.sortList
             || this.props.maxResultsCount !== nextProps.maxResultsCount
             || this.state.lastQuery !== query
             || this.props.resultSourceId !== nextProps.resultSourceId
@@ -238,11 +240,16 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     this.setState({
                         selectedFilters: [],
                         areResultsLoading: true,
+                        hasError: false,
+                        errorMessage: ""
                     });
 
                     this.props.searchService.selectedProperties = nextProps.selectedProperties;
 
                     const refinerManagedProperties = Object.keys(nextProps.refiners).join(',');
+
+                    // Reset sortlist
+                    this.props.searchService.sortList = this.props.sortList;
 
                     // We reset the page number and refinement filters
                     const searchResults = await this.props.searchService.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
@@ -332,12 +339,12 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
      * Callback function to apply new sort configuration coming from the sort panel child component
      * @param newFilters The new filters to apply
      */
-    private async _onUpdateSort(sortOrder:SortOrder,sortField?:string) {
+    private async _onUpdateSort(sortDirection:SortDirection,sortField?:string) {
         if(sortField) {
             // Get back to the first page when new sorting has been selected
             this.setState({
                 sortField: sortField,
-                sortOrder: sortOrder,
+                sortDirection: sortDirection,
                 currentPage: 1,
                 areResultsLoading: true,
                 hasError:false,
@@ -346,7 +353,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
             const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
             
-            this.props.searchService.sortList = `${sortField}:${SortOrder}`;
+            this.props.searchService.sortList = `${sortField}:${sortDirection}`;
             try
             {
                 const searchResults = await this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, 1);
@@ -357,7 +364,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 });
             }
             catch(error) {
-                Logger.write('[SearchContainer._onUpdateSort(sortOrder:SortOrder,sortField?:string)]: Error: ' + error, LogLevel.Error);
+                Logger.write('[SearchContainer._onUpdateSort(sortDirection:SortDirection,sortField?:string)]: Error: ' + error, LogLevel.Error);
                 const errorMessage = /\"value\":\"[^:]+: SortList\.\"/.test(error.message) ? strings.SortErrorMessage : error.message;
 
                 this.setState({
