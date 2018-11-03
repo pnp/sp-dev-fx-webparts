@@ -1,24 +1,26 @@
+import * as Handlebars from                                                                           'handlebars';
 import ISearchService from                                                                            './ISearchService';
-import { ISearchResults, ISearchResult, IRefinementResult, IRefinementValue, IRefinementFilter } from '../../models/ISearchResult';
-import { sp, SearchQuery, SearchResults, SPRest, Web, Sort, SortDirection, SearchSuggestQuery } from  '@pnp/sp';
+import { ISearchResults, ISearchResult, IRefinementResult, IRefinementValue, IRefinementFilter, IPromotedResult } from '../../models/ISearchResult';
+import { sp, SearchQuery, SearchResults, SPRest, Sort, SortDirection, SearchSuggestQuery } from                                                '@pnp/sp';
 import { Logger, LogLevel, ConsoleListener } from                                                     '@pnp/logging';
 import { IWebPartContext } from                                                                       '@microsoft/sp-webpart-base';
 import { Text } from                                                                                  '@microsoft/sp-core-library';
-import sortBy from                                                                                    'lodash-es/sortBy';
-import groupBy from                                                                                   'lodash-es/groupBy';
-import mapValues from                                                                                 'lodash-es/mapValues';
-import mapKeys from                                                                                   'lodash-es/mapKeys';
-import * as moment from                                                                               'moment';
+import {sortBy, groupBy} from                                                                         '@microsoft/sp-lodash-subset';
+const mapKeys: any = require('lodash/mapKeys');
+const mapValues: any = require('lodash/mapValues');
 import LocalizationHelper from                                                                        '../../helpers/LocalizationHelper';
 
-class SearchService implements ISearchService {
+declare var System: any;
 
+class SearchService implements ISearchService {
+    private _helper = null;
     private _initialSearchResult: SearchResults = null;
     private _resultsCount: number;
     private _context: IWebPartContext;
     private _selectedProperties: string[];
     private _queryTemplate: string;
     private _resultSourceId: string;
+    private _sortList: string;
     private _enableQueryRules: boolean;
 
     public get resultsCount(): number { return this._resultsCount; }
@@ -32,6 +34,9 @@ class SearchService implements ISearchService {
 
     public set resultSourceId(value: string) { this._resultSourceId = value; }
     public get resultSourceId(): string { return this._resultSourceId; }
+
+    public set sortList(value: string) { this._sortList = value; }
+    public get sortList(): string { return this._sortList; }
 
     public set enableQueryRules(value: boolean) { this._enableQueryRules = value; }
     public get enableQueryRules(): boolean { return this._enableQueryRules; }
@@ -48,7 +53,7 @@ class SearchService implements ISearchService {
         // To limit the payload size, we set odata=nometadata
         // We just need to get list items here
         // We use a local configuration to avoid conflicts with other Web Parts
-        this._localPnPSetup= sp.configure({
+        this._localPnPSetup = sp.configure({
             headers: {
                 Accept: 'application/json; odata=nometadata',
             },
@@ -97,6 +102,22 @@ class SearchService implements ISearchService {
             }
         ];
 
+        if (this._sortList) {
+            let sortOrders = this._sortList.split(',');
+            sortList = sortOrders.map(sorter => {
+                let sort = sorter.split(':');
+                let s: Sort = { Property: sort[0].trim(), Direction: SortDirection.Descending };
+                if (sort.indexOf('[') !== -1) {
+                    s.Direction = SortDirection.FQLFormula;
+                }
+                else if (sort.length > 1) {
+                    let direction = sort[1].trim().toLocaleLowerCase();
+                    s.Direction = direction === "ascending" ? SortDirection.Ascending : SortDirection.Descending;
+                }
+                return s;
+            });
+        }
+
         searchQuery.SortList = sortList;
 
         if (refiners) {
@@ -140,6 +161,16 @@ class SearchService implements ISearchService {
                 let refinementResultsRows = r2.RawSearchResults.PrimaryQueryResult.RefinementResults;
 
                 const refinementRows = refinementResultsRows ? refinementResultsRows['Refiners'] : [];
+                if (refinementRows.length > 0) {
+                    let component = await System.import(
+                        /* webpackChunkName: 'search-handlebars-helpers' */
+                        'handlebars-helpers'
+                    );
+        
+                    this._helper = component({
+                        handlebars: Handlebars
+                    });
+                }
 
                 // Map search results
                 resultRows.map((elt) => {
@@ -187,6 +218,30 @@ class SearchService implements ISearchService {
                     });
                 });
 
+                // Query rules handling
+                const secondaryQueryResults = r2.RawSearchResults.SecondaryQueryResults;
+                if (Array.isArray(secondaryQueryResults) && secondaryQueryResults.length > 0) {
+                    
+                    let promotedResults: IPromotedResult[] = [];
+                    
+                    secondaryQueryResults.map((e) => {
+
+                        // Best bets are mapped through the "SpecialTermResults" https://msdn.microsoft.com/en-us/library/dd907265(v=office.12).aspx
+                        if (e.SpecialTermResults) {
+                            
+                            e.SpecialTermResults.Results.map((result) => {
+                                promotedResults.push({
+                                    Title: result.Title,
+                                    Url: result.Url,
+                                    Description: result.Description
+                                } as IPromotedResult);
+                            });
+                        }                        
+                    });
+
+                    results.PromotedResults = promotedResults;
+                }
+
                 // Resolve all the promises once to get news
                 const relevantResults: ISearchResult[] = await Promise.all(allItemsPromises);
 
@@ -216,7 +271,7 @@ class SearchService implements ISearchService {
     public async suggest(query: string): Promise<string[]> {
 
         let suggestions: string[] = [];
-    
+
         const searchSuggestQuery: SearchSuggestQuery = {
             preQuery: true,
             querytext: query,
@@ -228,7 +283,7 @@ class SearchService implements ISearchService {
 
         try {
             const response = await this._localPnPSetup.searchSuggest(searchSuggestQuery);
-            
+
             if (response.Queries.length > 0) {
 
                 // Get only the suggesiton string value
@@ -252,18 +307,17 @@ class SearchService implements ISearchService {
     private async _mapToIcon(filename: string): Promise<string> {
 
         const webAbsoluteUrl = this._context.pageContext.web.absoluteUrl;
-        const web = new Web(webAbsoluteUrl);
-
+        
         try {
             const encodedFileName = filename ? filename.replace(/['']/g, '') : '';
-            const iconFileName = await web.mapToIcon(encodedFileName, 1);
+            const iconFileName = await this._localPnPSetup.web.mapToIcon(encodedFileName, 1);
             const iconUrl = webAbsoluteUrl + '/_layouts/15/images/' + iconFileName;
 
             return iconUrl;
 
         } catch (error) {
-            Logger.write('[SharePointDataProvider._mapToIcon()]: Error: ' + error, LogLevel.Error);
-            throw error;
+            Logger.write('[SearchService._mapToIcon()]: Error: ' + error, LogLevel.Error);
+            throw new Error(error);
         }
     }
 
@@ -277,10 +331,10 @@ class SearchService implements ISearchService {
         const matches = inputValue.match(iso8061rgx);
 
         let updatedInputValue = inputValue;
-
-        if (matches) {
+        
+        if (matches) {            
             matches.map(match => {
-                updatedInputValue = updatedInputValue.replace(match, moment(match).format('LL'));
+                updatedInputValue = updatedInputValue.replace(match, this._helper.moment(match, "LL", { lang: this._context.pageContext.cultureInfo.currentUICultureName }));
             });
         }
 
@@ -296,12 +350,13 @@ class SearchService implements ISearchService {
         let refinementQueryConditions: string[] = [];
         let refinementQueryString: string = null;
 
+        // Conditions between values inside a refiner property 
         const refinementFilters = mapValues(groupBy(selectedFilters, 'FilterName'), (values) => {
             const refinementFilter = values.map((filter) => {
                 return filter.Value.RefinementToken;
             });
 
-            return refinementFilter.length > 1 ? Text.format('or({0})', refinementFilter) : refinementFilter.toString();
+            return refinementFilter.length > 1 ? Text.format('and({0})', refinementFilter) : refinementFilter.toString();
         });
 
         mapKeys(refinementFilters, (value, key) => {
@@ -326,6 +381,7 @@ class SearchService implements ISearchService {
 
             // Multiple filters
             case (conditionsCount > 1): {
+                // Conditions between refiner properties
                 refinementQueryString = Text.format('and({0})', refinementQueryConditions.toString());
                 break;
             }

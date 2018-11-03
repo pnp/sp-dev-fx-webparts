@@ -1,23 +1,27 @@
-import * as React from                                                                 'react';
-import ISearchContainerProps from                                                      './ISearchResultsContainerProps';
-import ISearchContainerState from                                                      './ISearchResultsContainerState';
-import { MessageBar, MessageBarType } from                                             'office-ui-fabric-react/lib/MessageBar';
-import { Spinner, SpinnerSize } from                                                   'office-ui-fabric-react/lib/Spinner';
-import { Logger, LogLevel } from                                                       '@pnp/logging';
-import * as strings from                                                               'SearchWebPartStrings';
-import { IRefinementFilter, IRefinementValue, IRefinementResult } from                 '../../../../models/ISearchResult';
-import                                                                                 '../SearchResultsWebPart.scss';
-import FilterPanel from                                                                '../FilterPanel/FilterPanel';
-import Paging from                                                                     '../Paging/Paging';
-import { Overlay } from                                                                'office-ui-fabric-react/lib/Overlay';
-import { DisplayMode } from                                                            '@microsoft/sp-core-library';
-import SearchResultsTemplate from                                                      '../Layouts/SearchResultsTemplate';
+import * as React from 'react';
+import ISearchContainerProps from './ISearchResultsContainerProps';
+import ISearchContainerState from './ISearchResultsContainerState';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from 'office-ui-fabric-react/lib/Shimmer';
+import { Logger, LogLevel } from '@pnp/logging';
+import * as strings from 'SearchWebPartStrings';
+import { IRefinementFilter, IRefinementValue, IRefinementResult } from '../../../../models/ISearchResult';
+import Paging from '../Paging/Paging';
+import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
+import { DisplayMode } from '@microsoft/sp-core-library';
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
+import styles from '../SearchResultsWebPart.module.scss';
+
+declare var System: any;
+let FilterPanel = null;
 
 export default class SearchResultsContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 
     public constructor(props) {
         super(props);
-        
+
         // Set the initial state
         this.state = {
             results: {
@@ -29,7 +33,6 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             availableFilters: [],
             currentPage: 1,
             areResultsLoading: false,
-            isComponentLoading: true,
             errorMessage: '',
             hasError: false,
             lastQuery: ''
@@ -45,83 +48,115 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         const items = this.state.results;
         const hasError = this.state.hasError;
         const errorMessage = this.state.errorMessage;
-        const isComponentLoading = this.state.isComponentLoading;
 
         let renderWpContent: JSX.Element = null;
         let renderOverlay: JSX.Element = null;
+        let renderWebPartTitle: JSX.Element = null;
 
-        if (!isComponentLoading && areResultsLoading) {
-            renderOverlay = <div>
-                <Overlay isDarkThemed={false} className='overlay'>
-                    <Spinner size={SpinnerSize.medium} />
-                </Overlay>
-            </div>;
-        }
+        if (areResultsLoading) {
 
-        if (isComponentLoading) {
-            renderWpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
-        } else {
-
-            if (hasError) {
-                renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
+            if (items.RelevantResults.length > 0) {
+                renderOverlay = <div>
+                    <Overlay isDarkThemed={false} className={styles.overlay}>
+                        <Spinner size={SpinnerSize.medium} />
+                    </Overlay>
+                </div>;
             } else {
-
-                if (items.RelevantResults.length === 0 ) {
-                    
-                    if (!this.props.showBlank) {
-
-                        renderWpContent =
-                            <div>
-                                <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners } /> 
-                                <div className='searchWp__noresult'>{strings.NoResultMessage}</div>                                                  
-                            </div>;
-                    } else {
-                        if (this.props.displayMode === DisplayMode.Edit) {
-                            renderWpContent = <MessageBar messageBarType={ MessageBarType.info }>{ strings.ShowBlankEditInfoMessage }</MessageBar>;
-                        }
-                    }
-                } else {
-                    renderWpContent =
-
-                        <div>
-                            <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={ this.props.refiners }/>
-                            { renderOverlay }
-                            <SearchResultsTemplate
-                                templateService={ this.props.templateService }
-                                templateContent={ this.props.templateContent }
-                                templateContext={
-                                    {
-                                        items: this.state.results.RelevantResults,
-                                        totalRows: this.state.resultCount,
-                                        keywords: this.props.queryKeywords,
-                                        showResultsCount: this.props.showResultsCount,
-                                        siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
-                                        webUrl: this.props.context.pageContext.web.serverRelativeUrl                                    
-                                    }
-                                }
-                            />                        
-                            {this.props.showPaging ?
-                                <Paging
-                                    totalItems={items.TotalRows}
-                                    itemsCountPerPage={this.props.maxResultsCount}
-                                    onPageUpdate={this._onPageUpdate}
-                                    currentPage={this.state.currentPage} />
-                                : null
-                            }
-                        </div>;
+                let i = 0;
+                let renderShimmerElements: JSX.Element[] = [];
+                while (i < 4) {
+                    renderShimmerElements.push(
+                        <Shimmer 
+                        customElementsGroup={this._getShimmerElements()} 
+                        width="100%"
+                        style={{ marginBottom: "20px" }}                    
+                    />);
+                    i++;
                 }
+
+                renderWpContent = <div>{ renderShimmerElements }</div>;
             }
         }
 
+        
+        if (this.props.webPartTitle && this.props.webPartTitle.length > 0) {
+            renderWebPartTitle = <WebPartTitle title={this.props.webPartTitle} updateProperty={null} displayMode={DisplayMode.Read} />;
+        }
+
+        if (hasError) {
+            renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
+        } else {
+
+            const currentQuery = this.props.queryKeywords + this.props.searchService.queryTemplate + this.props.selectedProperties.join(',');
+            const renderFilterPanel = this.state.availableFilters && this.state.availableFilters.length > 0 ? 
+                                    <FilterPanel 
+                                        availableFilters={this.state.availableFilters} 
+                                        onUpdateFilters={this._onUpdateFilters} 
+                                        refinersConfiguration={this.props.refiners} 
+                                        resetSelectedFilters={ this.state.lastQuery !== currentQuery ? true : false}
+                                    /> : <span />;
+
+            if (items.RelevantResults.length === 0) {
+
+                // Check if a search request has already been entered (to distinguish the first use scenario)
+                if (!this.props.showBlank && this.state.lastQuery && !this.state.areResultsLoading) {
+                    renderWpContent =
+                        <div>
+                            {renderWebPartTitle}
+                            {renderFilterPanel}                             
+                            <div className={styles.searchWp__noresult}>{strings.NoResultMessage}</div>
+                        </div>;
+                } else {
+                    if (this.props.displayMode === DisplayMode.Edit && !areResultsLoading) {
+                        renderWpContent = <MessageBar messageBarType={MessageBarType.info}>{strings.ShowBlankEditInfoMessage}</MessageBar>;
+                    }
+                }
+            } else {
+
+                renderWpContent =
+                    <div>
+                        {renderWebPartTitle}
+                        {renderFilterPanel}                            
+                        {renderOverlay}
+                        <SearchResultsTemplate
+                            templateService={this.props.templateService}
+                            templateContent={this.props.templateContent}
+                            templateContext={
+                                {
+                                    items: this.state.results.RelevantResults,
+                                    promotedResults: this.state.results.PromotedResults,
+                                    totalRows: this.state.resultCount,
+                                    keywords: this.props.queryKeywords,
+                                    showResultsCount: this.props.showResultsCount,
+                                    siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
+                                    webUrl: this.props.context.pageContext.web.serverRelativeUrl,
+                                    maxResultsCount: this.props.maxResultsCount,
+                                    actualResultsCount: items.RelevantResults.length,
+                                    strings: strings,
+                                }
+                            }
+                        />
+                        {this.props.showPaging ?
+                            <Paging
+                                totalItems={items.TotalRows}
+                                itemsCountPerPage={this.props.maxResultsCount}
+                                onPageUpdate={this._onPageUpdate}
+                                currentPage={this.state.currentPage} />
+                            : null
+                        }
+                    </div>;
+            }
+        }
+        
         return (
-            <div className='searchWp'>
-                { renderWpContent }
+            <div className={styles.searchWp}>
+                {renderWpContent}
             </div>
         );
     }
 
     public async componentDidMount() {
-        
+
         // Don't perform search is there is no keywords
         if (this.props.queryKeywords) {
             try {
@@ -130,23 +165,27 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     areResultsLoading: true,
                 });
 
-                this.props.searchDataProvider.selectedProperties = this.props.selectedProperties;
+                this.props.searchService.selectedProperties = this.props.selectedProperties;
 
                 const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
 
-                const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, this.state.currentPage);
+                const searchResults = await this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, this.state.currentPage);
                 const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
 
-                // Initial filters are just set once for the filter control during the component initialization
-                // By this way, we are be able to select multiple values whithin a specific filter (OR condition). Otherwise, if we pass every time the new filters retrieved from new results,
-                // previous values will overwritten preventing to select multiple values (default SharePoint behavior)
+                if (localizedFilters && localizedFilters.length > 0) {
+                    const filterPanelComponent = await System.import(
+                        /* webpackChunkName: 'search-filterpanel' */
+                        '../FilterPanel'
+                    );
+                    FilterPanel = filterPanelComponent.FilterPanel;
+                }
+
                 this.setState({
                     results: searchResults,
                     resultCount: searchResults.TotalRows,
                     availableFilters: localizedFilters,
                     areResultsLoading: false,
-                    isComponentLoading: false,
-                    lastQuery: this.props.queryKeywords + this.props.searchDataProvider.queryTemplate + this.props.selectedProperties.join(',')
+                    lastQuery: this.props.queryKeywords + this.props.searchService.queryTemplate + this.props.selectedProperties.join(',')
                 });
 
             } catch (error) {
@@ -155,7 +194,6 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
                 this.setState({
                     areResultsLoading: false,
-                    isComponentLoading: false,
                     results: { RefinementResults: [], RelevantResults: [] },
                     hasError: true,
                     errorMessage: error.message
@@ -163,16 +201,15 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             }
         } else {
             this.setState({
-                areResultsLoading: false,
-                isComponentLoading: false,
+                areResultsLoading: false
             });
         }
     }
 
     public async componentWillReceiveProps(nextProps: ISearchContainerProps) {
 
-        let query = nextProps.queryKeywords + nextProps.searchDataProvider.queryTemplate + nextProps.selectedProperties.join(',');
-        
+        let query = nextProps.queryKeywords + nextProps.searchService.queryTemplate + nextProps.selectedProperties.join(',');
+
         // New props are passed to the component when the search query has been changed
         if (JSON.stringify(this.props.refiners) !== JSON.stringify(nextProps.refiners)
             || this.props.maxResultsCount !== nextProps.maxResultsCount
@@ -190,19 +227,29 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         areResultsLoading: true,
                     });
 
-                    this.props.searchDataProvider.selectedProperties = nextProps.selectedProperties;
+                    this.props.searchService.selectedProperties = nextProps.selectedProperties;
 
                     const refinerManagedProperties = Object.keys(nextProps.refiners).join(',');
 
                     // We reset the page number and refinement filters
-                    const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
-                    const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);               
+                    const searchResults = await this.props.searchService.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
+                    const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
+
+                    if (FilterPanel === null && localizedFilters && localizedFilters.length > 0) {
+                        const filterPanelComponent = await System.import(
+                            /* webpackChunkName: 'search-filterpanel' */
+                            '../FilterPanel'
+                        );
+                        FilterPanel = filterPanelComponent.FilterPanel;
+                    }
+
 
                     this.setState({
                         results: searchResults,
                         resultCount: searchResults.TotalRows,
                         availableFilters: localizedFilters,
                         areResultsLoading: false,
+                        currentPage: 1,
                         lastQuery: query
                     });
 
@@ -212,7 +259,6 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
                     this.setState({
                         areResultsLoading: false,
-                        isComponentLoading: false,
                         results: { RefinementResults: [], RelevantResults: [] },
                         hasError: true,
                         errorMessage: error.message
@@ -220,8 +266,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 }
             } else {
                 this.setState({
-                    areResultsLoading: false,
-                    isComponentLoading: false,
+                    areResultsLoading: false
                 });
             }
         } else {
@@ -258,10 +303,14 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
 
-        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, newFilters, 1);
+        const searchResults = await
+        this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, newFilters, 1);
+        const localizedFilters = await
+        this._getLocalizedFilters(searchResults.RefinementResults);
 
         this.setState({
             results: searchResults,
+            availableFilters: localizedFilters,
             areResultsLoading: false,
         });
     }
@@ -279,7 +328,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
 
-        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, pageNumber);
+        const searchResults = await this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, pageNumber);
 
         this.setState({
             results: searchResults,
@@ -294,9 +343,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
      * @param rawFilters The raw refinement results to translate coming from SharePoint search results
      */
     private async _getLocalizedFilters(rawFilters: IRefinementResult[]): Promise<IRefinementResult[]> {
-        
+
         let termsToLocalize: { uniqueIdentifier: string, termId: string, localizedTermLabel: string }[] = [];
-        let udpatedFilters = [];
+        let updatedFilters = [];
 
         rawFilters.map((filterResult) => {
 
@@ -324,8 +373,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         if (termsToLocalize.length > 0) {
 
             // Process all terms in a single JSOM call for performance purpose. In general JSOM is pretty slow so we try to limit the number of calls...
-            await this.props.taxonomyDataProvider.initialize();
-            const termValues = await this.props.taxonomyDataProvider.getTermsById(termsToLocalize.map((t)=> { return t.termId; }));
+            await this.props.taxonomyService.initialize();
+            const termValues = await this.props.taxonomyService.getTermsById(termsToLocalize.map((t) => { return t.termId; }));
 
             const termsEnumerator = termValues.getEnumerator();
 
@@ -372,13 +421,13 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     } else {
 
                         // Keep only terms (L0). The crawl property ows_taxid_xxx return term sets too.
-                        if (!/(GTSet|GPP|GP0)/i.test(value.RefinementName))  {
+                        if (!/(GTSet|GPP|GP0)/i.test(value.RefinementName)) {
                             updatedValues.push(value);
                         }
                     }
                 });
 
-                udpatedFilters.push({
+                updatedFilters.push({
                     FilterName: filter.FilterName,
                     Values: updatedValues.sort((a: IRefinementValue, b: IRefinementValue) => {
                         if (a.RefinementName) {
@@ -392,9 +441,29 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         } else {
             // Return filters without any modification
-            udpatedFilters = rawFilters;
+            updatedFilters = rawFilters;
         }
 
-        return udpatedFilters;
+        return updatedFilters;
+    }
+
+    private _getShimmerElements(): JSX.Element {
+        return <div style={{ display: 'flex' }}>
+                  <ShimmerElementsGroup
+                    shimmerElements={[
+                        { type: ElemType.line, width: 40, height: 40 },
+                        { type: ElemType.gap, width: 10, height: 40 }
+                    ]}
+                    />
+                    <ShimmerElementsGroup
+                    flexWrap={true}
+                    width="100%"
+                    shimmerElements={[
+                        { type: ElemType.line, width: '100%', height: 10 },
+                        { type: ElemType.line, width: '75%', height: 10 },
+                        { type: ElemType.gap, width: '25%', height: 20 }
+                    ]}
+                    />
+                </div>;
     }
 }

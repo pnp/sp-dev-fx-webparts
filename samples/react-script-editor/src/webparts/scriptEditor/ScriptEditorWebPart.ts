@@ -36,7 +36,10 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             this.executeScript(this.domElement);
         } else {
             // Dynamically load the editor pane to reduce overall bundle size
-            const editorPopUp: any = await SPComponentLoader.loadScript(this.getScriptRoot() + '/editor-pop-up.min.js', { globalExportsName: "EditorPopUp" });
+            const editorPopUp = await import(
+                /* webpackChunkName: 'scripteditor' */
+                './components/ScriptEditor'
+            );
             const element: React.ReactElement<IScriptEditorProps> = React.createElement(
                 editorPopUp.default,
                 {
@@ -49,25 +52,8 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         }
     }
 
-    /**
-     * Use a dummy bundled image to get the path from where the bundle is served.
-     */
-    private getScriptRoot(): string {
-        const runtimePath: string = require('./1x1.png');
-        const scriptRoot = runtimePath.substr(0, runtimePath.lastIndexOf("/"));
-        return scriptRoot;
-    }
-
     protected get dataVersion(): Version {
         return Version.parse('1.0');
-    }
-
-    protected renderLogo(domElement: HTMLElement) {
-        domElement.innerHTML = `
-      <div style="margin-top: 30px">
-        <div style="float:right">Author: <a href="mailto:mikael.svenson@puzzlepart.com" tabindex="-1">Mikael Svenson</a></div>
-        <div style="float:right"><a href="https://www.puzzlepart.com/" target="_blank"><img src="//www.puzzlepart.com/wp-content/uploads/2017/08/Pzl-LogoType-200.png" onerror="this.style.display = \'none\'";"></a></div>
-      </div>`;
     }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

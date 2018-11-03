@@ -43,11 +43,6 @@ interface ISearchResultsContainerState {
     areResultsLoading: boolean;
 
     /**
-     * Indicates whether or not the componetn loads for the first time
-     */
-    isComponentLoading: boolean;
-
-    /**
      * Keeps the last query in case you change the query in the propery panel
      */
     lastQuery: string;

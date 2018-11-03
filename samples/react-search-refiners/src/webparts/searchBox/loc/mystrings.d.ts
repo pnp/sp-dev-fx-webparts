@@ -13,6 +13,8 @@ declare interface ISearchBoxWebPartStrings {
   SearchBoxDynamicPropertyInputLabel: string;
   UseDynamicDataSourceLabel: string;
   SearchBoxDynamicDataSourceGroupName: string;
+  DynamicDataSourceLabel: string;
+  DynamicDataSourcePropertyLabel: string;
 }
 
 declare module 'SearchBoxWebPartStrings' {
