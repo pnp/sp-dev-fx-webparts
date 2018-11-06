@@ -9,6 +9,7 @@ import {sortBy, groupBy} from                                                   
 const mapKeys: any = require('lodash/mapKeys');
 const mapValues: any = require('lodash/mapValues');
 import LocalizationHelper from                                                                        '../../helpers/LocalizationHelper';
+import "@pnp/polyfill-ie11";
 
 declare var System: any;
 

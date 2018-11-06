@@ -1,5 +1,5 @@
 import { ISearchResults, IRefinementFilter, IRefinementResult } from '../../../../models/ISearchResult';
-import SortDirection from '../../../../models/SortDirection';
+import { SortDirection } from "@pnp/sp";
 
 interface ISearchResultsContainerState {
     

@@ -14,7 +14,7 @@ import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
 import styles from '../SearchResultsWebPart.module.scss';
 import { SortPanel } from '../SortPanel';
-import SortDirection from '../../../../models/SortDirection';
+import { SortDirection } from "@pnp/sp";
 
 declare var System: any;
 let FilterPanel = null;

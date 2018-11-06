@@ -1,5 +1,5 @@
 import { IRefinementFilter } from '../../../../models/ISearchResult';
-import SortDirection from '../../../../models/SortDirection';
+import { SortDirection } from "@pnp/sp";
 
 interface IFilterPanelState {
     showPanel?: boolean;

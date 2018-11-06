@@ -7,7 +7,7 @@ import { Toggle } from                                                 'office-u
 import * as strings from                                               'SearchWebPartStrings';
 import { Scrollbars } from                                             'react-custom-scrollbars';
 import { ActionButton } from                                           'office-ui-fabric-react/lib/Button';
-import SortDirection from '../../../../models/SortDirection';
+import { SortDirection } from "@pnp/sp";
 import styles from '../SearchResultsWebPart.module.scss';
 
 export default class SortPanel extends React.Component<ISortPanelProps, ISortPanelState> {

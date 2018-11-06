@@ -1,5 +1,5 @@
 import UpdateSortOperationCallback from '../../../../models/UpdateSortOperationCallback';
-import SortDirection from '../../../../models/SortDirection';
+import { SortDirection } from "@pnp/sp";
 
 interface ISortPanelProps {
     sortableFieldsConfiguration: { [key: string]: string };
