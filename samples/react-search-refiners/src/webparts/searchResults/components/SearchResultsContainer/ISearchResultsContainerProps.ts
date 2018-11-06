@@ -57,6 +57,11 @@ interface ISearchResultsContainerProps {
     refiners: { [key: string]: string };
 
     /**
+     * The managed properties used as sortable fields for the query
+     */
+    sortableFields: { [key: string]: string };
+
+    /**
      * Show the paging control
      */
     showPaging: boolean;

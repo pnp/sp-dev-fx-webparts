@@ -10,6 +10,7 @@ export interface ISearchResultsWebPartProps {
     maxResultsCount: number;
     selectedProperties: string;
     refiners: string;
+    sortableFields: string;
     showPaging: boolean;
     showResultsCount: boolean;
     showBlank: boolean;

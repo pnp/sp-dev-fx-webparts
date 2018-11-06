@@ -103,8 +103,8 @@ class SearchService implements ISearchService {
         ];
 
         if (this._sortList) {
-            let sortOrders = this._sortList.split(',');
-            sortList = sortOrders.map(sorter => {
+            let sortDirections = this._sortList.split(',');
+            sortList = sortDirections.map(sorter => {
                 let sort = sorter.split(':');
                 let s: Sort = { Property: sort[0].trim(), Direction: SortDirection.Descending };
                 if (sort.indexOf('[') !== -1) {

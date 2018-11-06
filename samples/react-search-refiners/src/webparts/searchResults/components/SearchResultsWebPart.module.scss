@@ -10,8 +10,24 @@
         text-align: center;
     }
 
+    &__buttonBar {
+        overflow:auto;
+
+        &__button {
+            float:right;
+        }
+    }
+
     &__filterResultBtn {
         color: "[theme: themePrimary, default: #005a9e]";
+    }
+
+    &__sortResultBtn {
+        color: "[theme: themePrimary, default: #005a9e]";
+    }
+
+    &__sortResultBtn {
+        color: "[theme: themePrimary]";
     }
 
     &__selectedFilters {
@@ -83,9 +99,6 @@
     }
 
     &__filterPanel {
-
-        position: relative;
-
         &__body {
             padding-right: 20px;
             padding-left: 20px;
@@ -122,6 +135,13 @@
                     padding: 10px;
                 }
             }
+        }
+    }
+
+    &__sortPanel {
+        &__body {
+            padding: 20px;
+            overflow: auto;
         }
     }
 }

@@ -13,6 +13,8 @@ import { DisplayMode } from '@microsoft/sp-core-library';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
 import styles from '../SearchResultsWebPart.module.scss';
+import { SortPanel } from '../SortPanel';
+import SortDirection from '../../../../models/SortDirection';
 
 declare var System: any;
 let FilterPanel = null;
@@ -35,10 +37,11 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             areResultsLoading: false,
             errorMessage: '',
             hasError: false,
-            lastQuery: ''
+            lastQuery: '',
         };
 
         this._onUpdateFilters = this._onUpdateFilters.bind(this);
+        this._onUpdateSort = this._onUpdateSort.bind(this);
         this._onPageUpdate = this._onPageUpdate.bind(this);
     }
 
@@ -83,8 +86,18 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             renderWebPartTitle = <WebPartTitle title={this.props.webPartTitle} updateProperty={null} displayMode={DisplayMode.Read} />;
         }
 
+        const sortPanel = <SortPanel 
+                                onUpdateSort={this._onUpdateSort} 
+                                sortableFieldsConfiguration={this.props.sortableFields} 
+                                sortDirection={this.state.sortDirection}
+                                sortField={this.state.sortField} />; 
         if (hasError) {
-            renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
+            if(this.state.errorMessage === strings.SortErrorMessage)
+            {
+                renderWpContent = <div><div className={styles.searchWp__buttonBar}>{sortPanel}</div><MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar></div>;
+            }else {
+                renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
+            }
         } else {
 
             const currentQuery = this.props.queryKeywords + this.props.searchService.queryTemplate + this.props.selectedProperties.join(',');
@@ -94,7 +107,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                                         onUpdateFilters={this._onUpdateFilters} 
                                         refinersConfiguration={this.props.refiners} 
                                         resetSelectedFilters={ this.state.lastQuery !== currentQuery ? true : false}
-                                    /> : <span />;
+                                    /> : <span />;                                   
 
             if (items.RelevantResults.length === 0) {
 
@@ -103,7 +116,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     renderWpContent =
                         <div>
                             {renderWebPartTitle}
-                            {renderFilterPanel}                             
+                            <div className={styles.searchWp__buttonBar}>{sortPanel}{renderFilterPanel}</div>
                             <div className={styles.searchWp__noresult}>{strings.NoResultMessage}</div>
                         </div>;
                 } else {
@@ -116,7 +129,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 renderWpContent =
                     <div>
                         {renderWebPartTitle}
-                        {renderFilterPanel}                            
+                        <div className={styles.searchWp__buttonBar}>{sortPanel}{renderFilterPanel}</div>
                         {renderOverlay}
                         <SearchResultsTemplate
                             templateService={this.props.templateService}
@@ -157,7 +170,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
     public async componentDidMount() {
 
-        // Don't perform search is there is no keywords
+        // Don't perform search if there are no keywords
         if (this.props.queryKeywords) {
             try {
 
@@ -212,6 +225,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         // New props are passed to the component when the search query has been changed
         if (JSON.stringify(this.props.refiners) !== JSON.stringify(nextProps.refiners)
+            || JSON.stringify(this.props.sortableFields) !== JSON.stringify(nextProps.sortableFields)
+            || this.props.sortList !== nextProps.sortList
             || this.props.maxResultsCount !== nextProps.maxResultsCount
             || this.state.lastQuery !== query
             || this.props.resultSourceId !== nextProps.resultSourceId
@@ -225,11 +240,16 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     this.setState({
                         selectedFilters: [],
                         areResultsLoading: true,
+                        hasError: false,
+                        errorMessage: ""
                     });
 
                     this.props.searchService.selectedProperties = nextProps.selectedProperties;
 
                     const refinerManagedProperties = Object.keys(nextProps.refiners).join(',');
+
+                    // Reset sortlist
+                    this.props.searchService.sortList = this.props.sortList;
 
                     // We reset the page number and refinement filters
                     const searchResults = await this.props.searchService.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
@@ -313,6 +333,48 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             availableFilters: localizedFilters,
             areResultsLoading: false,
         });
+    }
+
+    /**
+     * Callback function to apply new sort configuration coming from the sort panel child component
+     * @param newFilters The new filters to apply
+     */
+    private async _onUpdateSort(sortDirection:SortDirection,sortField?:string) {
+        if(sortField) {
+            // Get back to the first page when new sorting has been selected
+            this.setState({
+                sortField: sortField,
+                sortDirection: sortDirection,
+                currentPage: 1,
+                areResultsLoading: true,
+                hasError:false,
+                errorMessage:null
+            });
+
+            const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
+            
+            this.props.searchService.sortList = `${sortField}:${sortDirection}`;
+            try
+            {
+                const searchResults = await this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, 1);
+
+                this.setState({
+                    results: searchResults,
+                    areResultsLoading: false,
+                });
+            }
+            catch(error) {
+                Logger.write('[SearchContainer._onUpdateSort(sortDirection:SortDirection,sortField?:string)]: Error: ' + error, LogLevel.Error);
+                const errorMessage = /\"value\":\"[^:]+: SortList\.\"/.test(error.message) ? strings.SortErrorMessage : error.message;
+
+                this.setState({
+                    areResultsLoading: false,
+                    results: { RefinementResults: [], RelevantResults: [] },
+                    hasError: true,
+                    errorMessage: errorMessage
+                });
+            }
+        }
     }
 
     /**

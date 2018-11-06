@@ -114,7 +114,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
 
         return (
             <div>
-                <div className="ms-textAlignRight">
+                <div className={`${styles.searchWp__buttonBar__button} ms-textAlignRight`}>
                     <ActionButton
                         className={`${styles.searchWp__filterResultBtn} ms-fontWeight-semibold`}
                         iconProps={{ iconName: 'Filter' }}
@@ -130,7 +130,6 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                     : null
                 }
                 <Panel
-                        className={styles.searchWp__filterPanel}
                         isOpen={this.state.showPanel}
                         type={PanelType.custom}
                         customWidth="450px"
