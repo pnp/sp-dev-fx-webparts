@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "b724fd00-ee58-451d-95e1-8d496e6121f6",
-  "alias": "NoFrameworkCrudWebPart",
+  "id": "8019d2e5-c480-4ecd-a8ac-f59ac457af96",
+  "alias": "PnpjsCrudWebPart",
   "componentType": "WebPart",
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",
@@ -17,10 +17,10 @@
         "default": "Under Development"
       },
       "title": {
-        "default": "No framework CRUD"
+        "default": "PnP JS CRUD"
       },
       "description": {
-        "default": "Sample implementation of SharePoint CRUD operations without using any frameworks"
+        "default": "Sample implementation of SharePoint CRUD operations using @pnp/sp library"
       },
       "officeFabricIconFontName": "Page",
       "properties": {

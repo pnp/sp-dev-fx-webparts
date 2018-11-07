@@ -2,12 +2,12 @@
 
 ## Summary
 
-Sample Web Parts illustrating performing SharePoint CRUD operations in React, Angular, JavaScript without any framework and using the [SP PnP JS library](https://github.com/OfficeDev/PnP-JS-Core).
+Sample Web Parts illustrating performing SharePoint CRUD operations in React, Angular, JavaScript without any framework and using the [@pnp/sp library](https://github.com/pnp/pnpjs).
 
 ![Sample To do SharePoint Framework Client-Side Web Part built using Angular and ngOfficeUIFabric](./assets/preview.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.6.0-green.svg)
 
 ## Applies to
 
@@ -24,6 +24,7 @@ sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm), Gautam Sheth (SharePo
 
 Version|Date|Comments
 -------|----|--------
+1.3|November 1, 2018|Updated to SPFx 1.6.0
 1.2|March 30, 2018|Updated to SPFx 1.4.1
 1.1|March 9, 2017|Updated to SPFx GA
 1.0|September 16, 2016|Initial release
@@ -58,7 +59,7 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
     - in React
     - in Angular v1.x
     - without a particular JavaScript framework
-    - using the [SP PnP JS library](https://github.com/OfficeDev/PnP-JS-Core)
+    - using the [@pnp/sp library](https://github.com/PnP/PnPJS)
   - using ETag to ensure data integrity when updating and deleting items
   - chaining promises for performing multiple asynchronous operations as part of one use case
   - breaking a chain of promises in case of an error and handling it gracefully
@@ -72,8 +73,8 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
   - loading Angular and [ngOfficeUIFabric](http://ngofficeuifabric.com) from CDN
   - using conditional rendering for one-time Web Part setup
   - passing Web Part configuration to Angular and reacting to configuration changes in the Angular application
-- SP PnP JS library
-  - using the SP PnP JS library with SharePoint Framework Client-Side Web Parts
+- @pnp/sp library
+  - using the @pnp/sp JS library with SharePoint Framework Client-Side Web Parts
   - configuring global request headers and overriding them for specific requests
   - sorting and selecting top n items from a list using the fluent API
 

@@ -6,6 +6,7 @@ import { IListItem } from './IListItem';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 export default class ReactCrud extends React.Component<IReactCrudProps, IReactCrudState> {
+
   private listItemEntityTypeName: string = undefined;
 
   constructor(props: IReactCrudProps, state: IReactCrudState) {
