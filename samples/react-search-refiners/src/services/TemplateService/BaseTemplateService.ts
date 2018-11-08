@@ -1,3 +1,6 @@
+import 'core-js/modules/es7.array.includes.js';
+import 'core-js/modules/es6.string.includes.js';
+import 'core-js/modules/es6.number.is-nan.js';
 import * as Handlebars from 'handlebars';
 import { ISearchResult } from '../../models/ISearchResult';
 import { html } from 'common-tags';
@@ -12,6 +15,7 @@ declare var System: any;
 
 abstract class BaseTemplateService {
     private _helper = null;
+    private _videoJs = null;
     public CurrentLocale = "en";
 
     constructor() {
@@ -31,7 +35,6 @@ abstract class BaseTemplateService {
             });
         }
     }
-
 
     /**
      * Gets the default Handlebars list item template used in list layout
@@ -218,7 +221,7 @@ abstract class BaseTemplateService {
      * @returns the template HTML markup
      */
     public static getBlankDefaultTemplate(): string {
-        return html`
+        return `
             <style>
                 /* Insert your CSS here */
             </style>
@@ -326,6 +329,9 @@ abstract class BaseTemplateService {
         // Process the Handlebars template
         let template = Handlebars.compile(templateContent);
         let result = template(templateContext);
+        if (result.indexOf("-preview-item") != -1) {
+            await this._loadVideoLibrary();
+        }
 
         return result;
     }
@@ -345,7 +351,6 @@ abstract class BaseTemplateService {
      * Initializes the previews on search results for documents and videos. Called when a template is updated/changed
      */
     public initPreviewElements(): void {
-
         this._initVideoPreviews();
         this._initDocumentPreviews();
     }
@@ -415,7 +420,7 @@ abstract class BaseTemplateService {
         }));
     }
 
-    private async _initVideoPreviews() {
+    private async _loadVideoLibrary(){
 
         // Load Videos-Js on Demand 
         // Webpack will create a other bundle loaded on demand just for this library
@@ -424,8 +429,10 @@ abstract class BaseTemplateService {
             'video.js',
         );
 
-        const Video = videoJs.default;
+        this._videoJs = videoJs.default;
+    }
 
+    private _initVideoPreviews() {
         const nodes = document.querySelectorAll('.video-preview-item');
 
         DomHelper.forEach(nodes, ((index, el) => {
@@ -442,14 +449,14 @@ abstract class BaseTemplateService {
                 const previewContainedId = `${playerId}_container`;
                 let containerElt = document.getElementById(previewContainedId);
 
-                let player = Video.getPlayer(`#${playerId}`);
+                let player = this._videoJs.getPlayer(`#${playerId}`);
 
                 // Case when the player is still registered in Video.js but does not exist in the DOM (due to page mode switch or tempalte update)
                 if (player && !document.getElementById(playerId)) {
 
                     // In this case, we simply delete the player instance and recreate it
                     player.dispose();
-                    player = Video.getPlayer(`#${playerId}`);
+                    player = this._videoJs.getPlayer(`#${playerId}`);
                 }
 
                 // Remove exiting instance if there is already a player registered with  id
@@ -476,7 +483,7 @@ abstract class BaseTemplateService {
                         DomHelper.insertAfter(newEl, thumbnailElt.parentElement);
 
                         // Instantiate a new player with Video.js
-                        const videoPlayer = new Video(playerId, {
+                        const videoPlayer = new this._videoJs(playerId, {
                             controls: true,
                             autoplay: false,
                             preload: "metadata",
