@@ -1,7 +1,7 @@
 import React = require('react');
 import ISearchResultsTemplateProps from './ISearchResultsTemplateProps';
 import ISearchResultsTemplateState from './ISearchResultsTemplateState';
-import                                  './SearchResultsTemplate.scss';
+import './SearchResultsTemplate.scss';
 import { Resize } from 'on-el-resize';
 import { DomHelper } from '../../../../helpers/DomHelper';
 
@@ -12,7 +12,7 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
 
     constructor() {
         super();
-        
+
         this.resize = new Resize();
         this.state = {
             processedTemplate: null
@@ -22,26 +22,29 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
     }
 
     public render() {
+        const objectNode: any = document.querySelector("object[data='about:blank']");
+        if (objectNode) {
+            objectNode.style.display = "none";
+        }
 
-        return  <div ref={el => this.parentRef = el}>
-                    <div dangerouslySetInnerHTML={{ __html: this.state.processedTemplate }}></div>
-                </div>;
+        return <div ref={el => this.parentRef = el}>
+            <div dangerouslySetInnerHTML={{ __html: this.state.processedTemplate }}></div>
+        </div>;
     }
-     
+
     public componentWillUnmount() {
         this.resize.removeResizeListener(this.parentRef, this.onComponentResize);
     }
 
     public componentDidMount() {
-        this._updateTemplate(this.props);        
+        this._updateTemplate(this.props);
         this.resize.addResizeListener(this.parentRef, this.onComponentResize);
     }
 
     public componentDidUpdate() {
-
         // Post render operations (previews on elements, etc.)
-        this.props.templateService.initPreviewElements();        
-        this.onComponentResize();
+        this.props.templateService.initPreviewElements();
+        this.onComponentResize();        
     }
 
     public componentWillReceiveProps(nextProps: ISearchResultsTemplateProps) {
@@ -66,7 +69,7 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
         const nodes = document.querySelectorAll(".iframePreview, .video-js");
 
         DomHelper.forEach(nodes, (index, elt) => {
-            elt.style.width = Math.floor(this.parentRef.offsetWidth/2) + 'px';
+            elt.style.width = Math.floor(this.parentRef.offsetWidth / 2) + 'px';
         });
     }
 }
