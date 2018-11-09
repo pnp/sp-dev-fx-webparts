@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "48e2d130-7eb7-4ee9-aa23-5ddbdfd175b1",
   "alias": "ListFormWebPart",
   "componentType": "WebPart",

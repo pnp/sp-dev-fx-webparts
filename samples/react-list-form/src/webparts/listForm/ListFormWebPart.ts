@@ -32,7 +32,7 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
 
 
   protected onInit(): Promise<void> {
-    return super.onInit().then( _ => {
+    return super.onInit().then( ( _ ) => {
       this.listService = new ListService(this.context.spHttpClient);
     });
   }

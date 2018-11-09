@@ -6,7 +6,7 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import styles from './SPFormField.module.scss';
 
 const SPFieldChoiceEdit: React.SFC<ISPFormFieldProps> = (props) => {
-    if (props.fieldSchema.FieldType !== "MultiChoice") {
+    if (props.fieldSchema.FieldType !== 'MultiChoice') {
         const options = (props.fieldSchema.Required) ? props.fieldSchema.Choices : [''].concat(props.fieldSchema.Choices);
         return <Dropdown
                     className={css(styles.dropDownFormField, 'ard-choiceFormField')}

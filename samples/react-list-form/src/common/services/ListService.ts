@@ -13,7 +13,7 @@ export class ListService {
 
     public getListsFromWeb(webUrl: string): Promise<Array<{url: string, title: string}>> {
         return new Promise<Array<{url: string, title: string}>>((resolve, reject) => {
-            const endpoint = Text.format("{0}/_api/web/lists?$select=Title,RootFolder/ServerRelativeUrl&$filter=(IsPrivate eq false) and (IsCatalog eq false) and (Hidden eq false)&$expand=RootFolder", webUrl);
+            const endpoint = Text.format('{0}/_api/web/lists?$select=Title,RootFolder/ServerRelativeUrl&$filter=(IsPrivate eq false) and (IsCatalog eq false) and (Hidden eq false)&$expand=RootFolder', webUrl);
             this.spHttpClient.get(endpoint, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
                 if (response.ok) {
                     response.json().then((data: any) => {
