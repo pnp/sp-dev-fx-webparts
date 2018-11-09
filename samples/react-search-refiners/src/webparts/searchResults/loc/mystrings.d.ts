@@ -10,9 +10,13 @@ declare interface ISearchWebPartStrings {
     MaxResultsCount: string;
     NoResultMessage: string;
     RefinersFieldLabel: string;
+    SortableFieldsLabel: string;
     RefinersFieldDescription: string;
+    SortableFieldsDescription: string;
     FilterPanelTitle: string;
+    SortPanelTitle: string;
     FilterResultsButtonLabel: string;
+    SortResultsButtonLabel:string;
     SelectedFiltersLabel: string;
     ApplyAllFiltersLabel: string;
     RemoveAllFiltersLabel: string;
@@ -50,6 +54,17 @@ declare interface ISearchWebPartStrings {
     ErrorTemplateResolve: string;
     WebPartTitle: string;
     HandlebarsHelpersDescription: string;
+    DynamicDataSourceLabel: string;
+    DynamicDataSourcePropertyLabel: string;
+    PromotedResultsLabel: string;
+    SortDirectionAscendingLabel:string;
+    SortDirectionDescendingLabel:string;
+    SortErrorMessage:string;
+    SortPanelSortFieldLabel:string;
+    SortPanelSortFieldAria:string;
+    SortPanelSortFieldPlaceHolder:string;
+    SortPanelSortDirectionLabel:string;
+    PanelCloseButtonAria:string;
 }
 
 declare module 'SearchWebPartStrings' {

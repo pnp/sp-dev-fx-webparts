@@ -1,5 +1,7 @@
 import { HttpClient } from "@microsoft/sp-http";
 import { DisplayMode } from "@microsoft/sp-core-library";
+import { DynamicProperty } from "@microsoft/sp-component-base";
+import { ILocation } from "../../../data";
 
 /**
  * Map component properties
@@ -8,7 +10,7 @@ export interface IMapProps {
   /**
    * The address to show on the map
    */
-  address: string;
+  address: ILocation | string | undefined;
   /**
    * The Bing maps API key to use when communicating with the Bing maps API
    */

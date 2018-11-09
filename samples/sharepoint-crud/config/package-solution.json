@@ -1,8 +1,10 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "sharepoint-crud-client-side-solution",
-    "id": "c51ba9f2-6f5c-412a-a5fc-76610f39be8c",
-    "version": "1.1.0.0"
+    "id": "1409e8a2-1ce4-4888-87f8-1dc377b6b62e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
   },
   "paths": {
     "zippedPackage": "solution/sharepoint-crud.sppkg"

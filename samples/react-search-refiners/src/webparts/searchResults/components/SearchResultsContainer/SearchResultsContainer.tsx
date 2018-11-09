@@ -3,16 +3,18 @@ import ISearchContainerProps from './ISearchResultsContainerProps';
 import ISearchContainerState from './ISearchResultsContainerState';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { Shimmer, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from 'office-ui-fabric-react/lib/Shimmer';
 import { Logger, LogLevel } from '@pnp/logging';
 import * as strings from 'SearchWebPartStrings';
 import { IRefinementFilter, IRefinementValue, IRefinementResult } from '../../../../models/ISearchResult';
-import '../SearchResultsWebPart.scss';
 import Paging from '../Paging/Paging';
 import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
+import styles from '../SearchResultsWebPart.module.scss';
+import { SortPanel } from '../SortPanel';
+import { SortDirection } from "@pnp/sp";
 
 declare var System: any;
 let FilterPanel = null;
@@ -33,13 +35,13 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             availableFilters: [],
             currentPage: 1,
             areResultsLoading: false,
-            isComponentLoading: true,
             errorMessage: '',
             hasError: false,
-            lastQuery: ''
+            lastQuery: '',
         };
 
         this._onUpdateFilters = this._onUpdateFilters.bind(this);
+        this._onUpdateSort = this._onUpdateSort.bind(this);
         this._onPageUpdate = this._onPageUpdate.bind(this);
     }
 
@@ -49,90 +51,118 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         const items = this.state.results;
         const hasError = this.state.hasError;
         const errorMessage = this.state.errorMessage;
-        const isComponentLoading = this.state.isComponentLoading;
 
         let renderWpContent: JSX.Element = null;
         let renderOverlay: JSX.Element = null;
+        let renderWebPartTitle: JSX.Element = null;
 
-        if (!isComponentLoading && areResultsLoading) {
-            renderOverlay = <div>
-                <Overlay isDarkThemed={false} className='overlay'>
-                    <Spinner size={SpinnerSize.medium} />
-                </Overlay>
-            </div>;
-        }
+        if (areResultsLoading) {
 
-        let webPartTitle = null;
-        if (this.props.webPartTitle && this.props.webPartTitle.length > 0) {
-            webPartTitle = <WebPartTitle title={this.props.webPartTitle} updateProperty={null} displayMode={DisplayMode.Read} />;
-        }
-
-        if (isComponentLoading) {
-            //renderWpContent = <Spinner size={SpinnerSize.large} label={strings.LoadingMessage} />;
-            renderWpContent = (<div>
-                <Shimmer isDataLoaded={!isComponentLoading} width={'75%'} style={{ marginBottom: "10px" }} />
-                <Shimmer isDataLoaded={!isComponentLoading} width={'90%'} style={{ marginBottom: "10px" }} />
-                <Shimmer isDataLoaded={!isComponentLoading} width={'50%'} />
-            </div>);
-        } else {
-
-            if (hasError) {
-                renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
+            if (items.RelevantResults.length > 0) {
+                renderOverlay = <div>
+                    <Overlay isDarkThemed={false} className={styles.overlay}>
+                        <Spinner size={SpinnerSize.medium} />
+                    </Overlay>
+                </div>;
             } else {
-
-                let filterPanel = this.state.availableFilters && this.state.availableFilters.length > 0 ? <FilterPanel availableFilters={this.state.availableFilters} onUpdateFilters={this._onUpdateFilters} refinersConfiguration={this.props.refiners} /> : <span />;
-
-                if (items.RelevantResults.length === 0) {
-
-                    if (!this.props.showBlank) {
-                        renderWpContent =
-                            <div>
-                                {webPartTitle}
-                                {filterPanel}                                
-                                <div className='searchWp__noresult'>{strings.NoResultMessage}</div>
-                            </div>;
-                    } else {
-                        if (this.props.displayMode === DisplayMode.Edit) {
-                            renderWpContent = <MessageBar messageBarType={MessageBarType.info}>{strings.ShowBlankEditInfoMessage}</MessageBar>;
-                        }
-                    }
-                } else {
-                    renderWpContent =
-                        <div>
-                            {webPartTitle}
-                            {filterPanel}                            
-                            {renderOverlay}
-                            <SearchResultsTemplate
-                                templateService={this.props.templateService}
-                                templateContent={this.props.templateContent}
-                                templateContext={
-                                    {
-                                        items: this.state.results.RelevantResults,
-                                        totalRows: this.state.resultCount,
-                                        keywords: this.props.queryKeywords,
-                                        showResultsCount: this.props.showResultsCount,
-                                        siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
-                                        webUrl: this.props.context.pageContext.web.serverRelativeUrl,
-                                        maxResultsCount: this.props.maxResultsCount,
-                                        actualResultsCount: items.RelevantResults.length
-                                    }
-                                }
-                            />
-                            {this.props.showPaging ?
-                                <Paging
-                                    totalItems={items.TotalRows}
-                                    itemsCountPerPage={this.props.maxResultsCount}
-                                    onPageUpdate={this._onPageUpdate}
-                                    currentPage={this.state.currentPage} />
-                                : null
-                            }
-                        </div>;
+                let i = 0;
+                let renderShimmerElements: JSX.Element[] = [];
+                while (i < 4) {
+                    renderShimmerElements.push(
+                        <Shimmer 
+                        customElementsGroup={this._getShimmerElements()} 
+                        width="100%"
+                        style={{ marginBottom: "20px" }}                    
+                    />);
+                    i++;
                 }
+
+                renderWpContent = <div>{ renderShimmerElements }</div>;
             }
         }
 
+        
+        if (this.props.webPartTitle && this.props.webPartTitle.length > 0) {
+            renderWebPartTitle = <WebPartTitle title={this.props.webPartTitle} updateProperty={null} displayMode={DisplayMode.Read} />;
+        }
+
+        const sortPanel = <SortPanel 
+                                onUpdateSort={this._onUpdateSort} 
+                                sortableFieldsConfiguration={this.props.sortableFields} 
+                                sortDirection={this.state.sortDirection}
+                                sortField={this.state.sortField} />; 
+        if (hasError) {
+            if(this.state.errorMessage === strings.SortErrorMessage)
+            {
+                renderWpContent = <div><div className={styles.searchWp__buttonBar}>{sortPanel}</div><MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar></div>;
+            }else {
+                renderWpContent = <MessageBar messageBarType={MessageBarType.error}>{errorMessage}</MessageBar>;
+            }
+        } else {
+
+            const currentQuery = this.props.queryKeywords + this.props.searchService.queryTemplate + this.props.selectedProperties.join(',');
+            const renderFilterPanel = this.state.availableFilters && this.state.availableFilters.length > 0 ? 
+                                    <FilterPanel 
+                                        availableFilters={this.state.availableFilters} 
+                                        onUpdateFilters={this._onUpdateFilters} 
+                                        refinersConfiguration={this.props.refiners} 
+                                        resetSelectedFilters={ this.state.lastQuery !== currentQuery ? true : false}
+                                    /> : <span />;                                   
+
+            if (items.RelevantResults.length === 0) {
+
+                // Check if a search request has already been entered (to distinguish the first use scenario)
+                if (!this.props.showBlank && this.state.lastQuery && !this.state.areResultsLoading) {
+                    renderWpContent =
+                        <div>
+                            {renderWebPartTitle}
+                            <div className={styles.searchWp__buttonBar}>{sortPanel}{renderFilterPanel}</div>
+                            <div className={styles.searchWp__noresult}>{strings.NoResultMessage}</div>
+                        </div>;
+                } else {
+                    if (this.props.displayMode === DisplayMode.Edit && !areResultsLoading) {
+                        renderWpContent = <MessageBar messageBarType={MessageBarType.info}>{strings.ShowBlankEditInfoMessage}</MessageBar>;
+                    }
+                }
+            } else {
+
+                renderWpContent =
+                    <div>
+                        {renderWebPartTitle}
+                        <div className={styles.searchWp__buttonBar}>{sortPanel}{renderFilterPanel}</div>
+                        {renderOverlay}
+                        <SearchResultsTemplate
+                            templateService={this.props.templateService}
+                            templateContent={this.props.templateContent}
+                            templateContext={
+                                {
+                                    items: this.state.results.RelevantResults,
+                                    promotedResults: this.state.results.PromotedResults,
+                                    totalRows: this.state.resultCount,
+                                    keywords: this.props.queryKeywords,
+                                    showResultsCount: this.props.showResultsCount,
+                                    siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
+                                    webUrl: this.props.context.pageContext.web.serverRelativeUrl,
+                                    maxResultsCount: this.props.maxResultsCount,
+                                    actualResultsCount: items.RelevantResults.length,
+                                    strings: strings,
+                                }
+                            }
+                        />
+                        {this.props.showPaging ?
+                            <Paging
+                                totalItems={items.TotalRows}
+                                itemsCountPerPage={this.props.maxResultsCount}
+                                onPageUpdate={this._onPageUpdate}
+                                currentPage={this.state.currentPage} />
+                            : null
+                        }
+                    </div>;
+            }
+        }
+        
         return (
-            <div className='searchWp'>
+            <div className={styles.searchWp}>
                 {renderWpContent}
             </div>
         );
@@ -140,7 +170,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
     public async componentDidMount() {
 
-        // Don't perform search is there is no keywords
+        // Don't perform search if there are no keywords
         if (this.props.queryKeywords) {
             try {
 
@@ -148,11 +178,11 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     areResultsLoading: true,
                 });
 
-                this.props.searchDataProvider.selectedProperties = this.props.selectedProperties;
+                this.props.searchService.selectedProperties = this.props.selectedProperties;
 
                 const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
 
-                const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, this.state.currentPage);
+                const searchResults = await this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, this.state.currentPage);
                 const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
 
                 if (localizedFilters && localizedFilters.length > 0) {
@@ -163,16 +193,12 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     FilterPanel = filterPanelComponent.FilterPanel;
                 }
 
-                // Initial filters are just set once for the filter control during the component initialization
-                // By this way, we are be able to select multiple values whithin a specific filter (OR condition). Otherwise, if we pass every time the new filters retrieved from new results,
-                // previous values will overwritten preventing to select multiple values (default SharePoint behavior)
                 this.setState({
                     results: searchResults,
                     resultCount: searchResults.TotalRows,
                     availableFilters: localizedFilters,
                     areResultsLoading: false,
-                    isComponentLoading: false,
-                    lastQuery: this.props.queryKeywords + this.props.searchDataProvider.queryTemplate + this.props.selectedProperties.join(',')
+                    lastQuery: this.props.queryKeywords + this.props.searchService.queryTemplate + this.props.selectedProperties.join(',')
                 });
 
             } catch (error) {
@@ -181,7 +207,6 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
                 this.setState({
                     areResultsLoading: false,
-                    isComponentLoading: false,
                     results: { RefinementResults: [], RelevantResults: [] },
                     hasError: true,
                     errorMessage: error.message
@@ -189,18 +214,19 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             }
         } else {
             this.setState({
-                areResultsLoading: false,
-                isComponentLoading: false,
+                areResultsLoading: false
             });
         }
     }
 
     public async componentWillReceiveProps(nextProps: ISearchContainerProps) {
 
-        let query = nextProps.queryKeywords + nextProps.searchDataProvider.queryTemplate + nextProps.selectedProperties.join(',');
+        let query = nextProps.queryKeywords + nextProps.searchService.queryTemplate + nextProps.selectedProperties.join(',');
 
         // New props are passed to the component when the search query has been changed
         if (JSON.stringify(this.props.refiners) !== JSON.stringify(nextProps.refiners)
+            || JSON.stringify(this.props.sortableFields) !== JSON.stringify(nextProps.sortableFields)
+            || this.props.sortList !== nextProps.sortList
             || this.props.maxResultsCount !== nextProps.maxResultsCount
             || this.state.lastQuery !== query
             || this.props.resultSourceId !== nextProps.resultSourceId
@@ -214,17 +240,22 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     this.setState({
                         selectedFilters: [],
                         areResultsLoading: true,
+                        hasError: false,
+                        errorMessage: ""
                     });
 
-                    this.props.searchDataProvider.selectedProperties = nextProps.selectedProperties;
+                    this.props.searchService.selectedProperties = nextProps.selectedProperties;
 
                     const refinerManagedProperties = Object.keys(nextProps.refiners).join(',');
 
+                    // Reset sortlist
+                    this.props.searchService.sortList = this.props.sortList;
+
                     // We reset the page number and refinement filters
-                    const searchResults = await this.props.searchDataProvider.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
+                    const searchResults = await this.props.searchService.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
                     const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
 
-                    if (FilterPanel == null && localizedFilters && localizedFilters.length > 0) {
+                    if (FilterPanel === null && localizedFilters && localizedFilters.length > 0) {
                         const filterPanelComponent = await System.import(
                             /* webpackChunkName: 'search-filterpanel' */
                             '../FilterPanel'
@@ -238,6 +269,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         resultCount: searchResults.TotalRows,
                         availableFilters: localizedFilters,
                         areResultsLoading: false,
+                        currentPage: 1,
                         lastQuery: query
                     });
 
@@ -247,7 +279,6 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
                     this.setState({
                         areResultsLoading: false,
-                        isComponentLoading: false,
                         results: { RefinementResults: [], RelevantResults: [] },
                         hasError: true,
                         errorMessage: error.message
@@ -255,8 +286,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 }
             } else {
                 this.setState({
-                    areResultsLoading: false,
-                    isComponentLoading: false,
+                    areResultsLoading: false
                 });
             }
         } else {
@@ -293,12 +323,58 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
 
-        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, newFilters, 1);
+        const searchResults = await
+        this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, newFilters, 1);
+        const localizedFilters = await
+        this._getLocalizedFilters(searchResults.RefinementResults);
 
         this.setState({
             results: searchResults,
+            availableFilters: localizedFilters,
             areResultsLoading: false,
         });
+    }
+
+    /**
+     * Callback function to apply new sort configuration coming from the sort panel child component
+     * @param newFilters The new filters to apply
+     */
+    private async _onUpdateSort(sortDirection:SortDirection,sortField?:string) {
+        if(sortField) {
+            // Get back to the first page when new sorting has been selected
+            this.setState({
+                sortField: sortField,
+                sortDirection: sortDirection,
+                currentPage: 1,
+                areResultsLoading: true,
+                hasError:false,
+                errorMessage:null
+            });
+
+            const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
+            
+            this.props.searchService.sortList = `${sortField}:${sortDirection}`;
+            try
+            {
+                const searchResults = await this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, 1);
+
+                this.setState({
+                    results: searchResults,
+                    areResultsLoading: false,
+                });
+            }
+            catch(error) {
+                Logger.write('[SearchContainer._onUpdateSort(sortDirection:SortDirection,sortField?:string)]: Error: ' + error, LogLevel.Error);
+                const errorMessage = /\"value\":\"[^:]+: SortList\.\"/.test(error.message) ? strings.SortErrorMessage : error.message;
+
+                this.setState({
+                    areResultsLoading: false,
+                    results: { RefinementResults: [], RelevantResults: [] },
+                    hasError: true,
+                    errorMessage: errorMessage
+                });
+            }
+        }
     }
 
     /**
@@ -314,7 +390,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         const refinerManagedProperties = Object.keys(this.props.refiners).join(',');
 
-        const searchResults = await this.props.searchDataProvider.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, pageNumber);
+        const searchResults = await this.props.searchService.search(this.props.queryKeywords, refinerManagedProperties, this.state.selectedFilters, pageNumber);
 
         this.setState({
             results: searchResults,
@@ -359,8 +435,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         if (termsToLocalize.length > 0) {
 
             // Process all terms in a single JSOM call for performance purpose. In general JSOM is pretty slow so we try to limit the number of calls...
-            await this.props.taxonomyDataProvider.initialize();
-            const termValues = await this.props.taxonomyDataProvider.getTermsById(termsToLocalize.map((t) => { return t.termId; }));
+            await this.props.taxonomyService.initialize();
+            const termValues = await this.props.taxonomyService.getTermsById(termsToLocalize.map((t) => { return t.termId; }));
 
             const termsEnumerator = termValues.getEnumerator();
 
@@ -431,5 +507,25 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         }
 
         return updatedFilters;
+    }
+
+    private _getShimmerElements(): JSX.Element {
+        return <div style={{ display: 'flex' }}>
+                  <ShimmerElementsGroup
+                    shimmerElements={[
+                        { type: ElemType.line, width: 40, height: 40 },
+                        { type: ElemType.gap, width: 10, height: 40 }
+                    ]}
+                    />
+                    <ShimmerElementsGroup
+                    flexWrap={true}
+                    width="100%"
+                    shimmerElements={[
+                        { type: ElemType.line, width: '100%', height: 10 },
+                        { type: ElemType.line, width: '75%', height: 10 },
+                        { type: ElemType.gap, width: '25%', height: 20 }
+                    ]}
+                    />
+                </div>;
     }
 }

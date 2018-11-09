@@ -14,12 +14,12 @@ interface ISearchResultsContainerProps {
     /**
      * The search data provider instance
      */
-    searchDataProvider: ISearchService;
+    searchService: ISearchService;
 
     /**
      * The taxonomy data provider instance
      */
-    taxonomyDataProvider: ITaxonomyService;
+    taxonomyService: ITaxonomyService;
 
     /**
      * The search query keywords
@@ -55,6 +55,11 @@ interface ISearchResultsContainerProps {
      * The managed properties used as refiners for the query
      */
     refiners: { [key: string]: string };
+
+    /**
+     * The managed properties used as sortable fields for the query
+     */
+    sortableFields: { [key: string]: string };
 
     /**
      * Show the paging control

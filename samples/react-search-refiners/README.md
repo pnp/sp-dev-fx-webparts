@@ -27,13 +27,16 @@ react-search-refiners | Franck Cornu (aequos) - [@FranckCornu](http://www.twitte
 
 Version|Date|Comments
 -------|----|--------
-1.0 | October 17, 2017 | Initial release
-1.1 | January 03, 2018 | Improvements and updating to SPFx drop 1.4
-1.2 | February 12, 2018 | Added a search box Web Part + Added a "Result Source Id" and "Enable Query Rules" parameters.
-1.3 | April 1, 2018 | Added the result count + entered keywords option
+1.0 | Oct 17, 2017 | Initial release
+1.1 | Jan 03, 2018 | Improvements and updating to SPFx drop 1.4
+1.2 | Feb 12, 2018 | Added a search box Web Part + Added a "Result Source Id" and "Enable Query Rules" parameters.
+1.3 | Apr1, 2018 | Added the result count + entered keywords option
 1.4 | May 10, 2018 | <ul><li>Added the query suggestions feature to the search box Web Part</li><li>Added the automatic translation for taxonomy filter values according to the current site locale.</li> <li>Added the option in the search box Web Part to send the query to an other page</ul>
 1.5 | Jul 2, 2018 | <ul><li>Added a templating feature for search results with Handlebars inspired by the [react-content-query-webpart](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart) sample.</li><li>Upgraded to 1.5.1-plusbeta to use the new SPFx dynamic data feature instead of event aggregator for Web Parts communication.</li> <li>Code refactoring and reorganization.</ul>
 2.0.0.5 | Sept 18, 2018 | <ul><li>Upgraded to 1.6.0-plusbeta.</li><li>Added dynamic loading of parts needed in edit mode to reduce web part footprint.</li><li>Added configuration to sort.</li><li>Added option to set web part title.</li><li>Added result count tokens.</li><li>Added toggel to load/use handlebars helpers/moment.</li></ul>
+2.1.0.0 | Oct 14, 2018 | <ul><li>Bug fixes ([#641](https://github.com/SharePoint/sp-dev-fx-webparts/issues/641),[#642](https://github.com/SharePoint/sp-dev-fx-webparts/issues/642))</li><li>Added document and Office 365 videos previews for the list template.</li><li>Added SharePoint best bets support.</li></ul>
+2.1.1.0 | Oct 30, 2018 | <ul><li>Bug fix for editing custom template.</li><li>Bug fix for dynamic loading of video helper library.</li><li>Added support for Page context query variables.</li><li>Added `getUniqueCount` helper function.</li></ul>
+2.1.2.0 | Nov 9, 2018 | <ul><li>Bug fix for IE11.</li><li>Added date query variables.</li><li>Added support for both result id and query template.</li><li>Added `getUniqueCount` helper function.</li></ul>
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -82,6 +85,7 @@ Result Source Identifier | The GUID of a SharePoint result source. If you specif
 Enable Query Rules | Enable the query rules if applies
 Selected properties | The search managed properties to retrieve. You can use these properties then in the code like this (`item.property_name`).
 Refiners | The search managed properties to use as refiners. Make sure these are refinable. With SharePoint Online, you have to reuse the default ones to do so (RefinableStringXX etc.). The order is the same as they will appear in the refnement panel. You can also provide your own custom labels using the following format RefinableString01:"You custom filter label",RefinableString02:"You custom filter label",...
+Sortable fields | The search managed properties to use for sorting. Make sure these are sortable. With SharePoint Online, you have to reuse the default ones to do so (RefinableStringXX etc.). The order is the same as they will appear in the sort panel. You can also provide your own custom labels using the following format RefinableString01:"You custom filter label",RefinableString02:"You custom filter label",... If no sortable fields are provided, the 'Sort' button will not be visible.
 Number of items to retrieve per page | Quite explicit. The paging behavior is done directly by the search API (See the *SearchDataProvider.ts* file), not by the code on post-render.
 
 #### Styling Options ####
@@ -113,6 +117,57 @@ This Web Part allows you change customize the way you display your search result
   <img src="./images/edit_template.png"/>
 </p>
 
+#### Query variables
+The following out of the box query variables are supported/tested:
+
+* {searchTerms}
+* {Site}
+* {SiteCollection}
+* {URLToken}
+* {User}
+* {Today}
+* {SearchBoxQuery}
+* {CurrentDisplayLanguage}
+* {CurrentDisplayLCID}
+
+The following custom query variables are supported:
+
+* {Page.&lt;column&gt;} - where column is the internal name of the column.
+   * When used with taxonomy columns, use `{Page.Column.Label}` or `{Page.Column.TermID}`
+* {CurrentYear} - Todays's date four digits, 2018
+* {CurrentMonth} - Today's month, 1-12
+* {CurrentDate} - Today's date, 1-31
+   * Sample query template: {searchTerms} Write>2010-{CurrentMonth}-{CurrentDate}
+
+#### Best bets
+
+This WP supports SharePoint best bets via SharePoint query rules:
+
+<p align="center">
+  <img src="./images/query_rules.png"/>
+</p>
+
+<p align="center">
+  <img src="./images/best_bets.png"/>
+</p>
+
+#### Elements previews
+
+Previews are available, **only for the list view**, for Office documents and Office 365 videos (not Microsoft Stream). The embed URL is directly taken from the `ServerRedirectedEmbedURL` managed property retrieved from the search results. 
+
+<p align="center">
+  <img src="./images/result_preview.png"/>
+</p>
+
+The WebPart must have the following selected properties in the configuration to get the preview feature work (they are set by default): 
+- ServerRedirectedPreviewURL
+- ServerRedirectedURL
+- contentclass
+- ServerRedirectedEmbedURL
+- DefaultEncodingURL
+
+This preview is displayed as an _iframe_ when the user clicks on the corresponding preview image. DOM manipulations occur to add the _iframe_ container dynamically aside with the _<img/>_ container.
+
 #### Available tokens ####
 
 Setting | Description 
@@ -131,6 +186,8 @@ Setting | Description
 `{{<search_managed_property_name>}}` | Any valid search managed property returned in the results set. These are typically managed properties set in the *"Selected properties"* setting in the property pane. You don't need to prefix them with `item.` if you are in the "each" loop.
 `{{webUrl}}` | The current web relative url. Use `{{../webUrl}}` inside a loop.
 `{{siteUrl}}` | The current site relative url. Use `{{../siteUrl}}` inside a loop.
+`{{getUniqueCount items "property"}}` | Get the unique count of a property over the result set (or another array)
+`{{getUniqueCount array}}` | Get the unique count of objects in an array. Example: [1,1,1,2,2,4] would return `3`.
 
 Also the [Handlebars helpers](https://github.com/helpers/handlebars-helpers) (188 helpers) are also available. You can also define your own in the *BaseTemplateService.ts* file. See [helper-moment](https://github.com/helpers/helper-moment) for date samples using moment.
 
@@ -144,5 +201,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Integrate the [@pnp/spfx-property-controls](https://github.com/SharePoint/sp-dev-fx-property-controls) in your solution (*PlaceHolder* control).
 - Integrate multiple Office UI Fabric components (DocumentCard, Panel, GroupedList, ...) to fit with the native Office 365 theme.
 - Use the React container component approach inspiring by the [react-todo-basic sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-todo-basic).
+- Use [on-el-resize](https://www.npmjs.com/package/on-el-resize) by [Andrew Koltyakov](https://github.com/koltyakov) to resize iframes dynamically
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-search-refiners" />

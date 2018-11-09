@@ -46,11 +46,11 @@ export default class FileUpload extends React.Component<IFileUploadProps, {}> {
       processing: function (file, xhr) {
         
         if(_fileUploadTo=="DocumentLibrary")
-          myDropzone.options.url = `${_context.pageContext.web.absoluteUrl}/_api/web/Lists/getById('${_listName}')/rootfolder/files/add(overwrite=true,url='${file.name}')`;          
+          myDropzone.options.url = `${_context.pageContext.web.absoluteUrl}/_api/web/Lists/getById('${_parent.props.listName}')/rootfolder/files/add(overwrite=true,url='${file.name}')`;          
         else
         {          
           if(_itemId)
-            myDropzone.options.url = `${_context.pageContext.web.absoluteUrl}/_api/web/lists/getById('${_listName}')/items(${_itemId})/AttachmentFiles/add(FileName='${file.name}')`;
+            myDropzone.options.url = `${_context.pageContext.web.absoluteUrl}/_api/web/lists/getById('${_parent.props.listName}')/items(${_itemId})/AttachmentFiles/add(FileName='${file.name}')`;
           else
             alert('Item not found or query string value is null!')
         }
@@ -76,7 +76,7 @@ export default class FileUpload extends React.Component<IFileUploadProps, {}> {
     };
     return (
       <DropzoneComponent eventHandlers={eventHandlers} djsConfig={djsConfig} config={componentConfig}>
-        <div className="dz-message icon ion-upload">Drop files here or click to upload.</div>
+        <div className="dz-message icon ion-upload">Drop files here or click to upload.</div>  
       </DropzoneComponent>
     );
   }

@@ -1,0 +1,54 @@
+# Node.js with gulp
+# Build a Node.js project using the gulp task runner.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+trigger:
+  branches:
+      include:
+      - master
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+  displayName: 'Run npm install'
+
+- script: |
+    npm test
+  displayName: 'Run npm test'
+
+- script: |
+    gulp clean
+    gulp bundle --ship
+    gulp package-solution --ship
+  displayName: 'Build and package the solution'
+
+# Publish Build Artifacts SPFx sppkg
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.SourcesDirectory)/sharepoint/solution/react-jest-testing.sppkg' 
+    artifactName: 'SPFx sppkg' 
+  displayName: 'Publish build SPFx artifacts'
+  # https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/publish-build-artifacts?view=vsts
+
+# Publish Build Artifacts Office 365 CLI
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.SourcesDirectory)/devops/release/' 
+    artifactName: 'Office 365 CLI scripts' 
+  displayName: 'Publish build Office 365 CLI artifacts'
+
+# Publish Test Results to Azure Pipelines
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit' # Options: JUnit, NUnit, VSTest, xUnit
+    testResultsFiles: '**/summary-jest-junit.xml'
+  displayName: 'Publish test results'
