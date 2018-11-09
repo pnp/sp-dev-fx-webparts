@@ -1,6 +1,6 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
-.angularCrud {
+.pnpjsCrud {
   .container {
     max-width: 700px;
     margin: 0px auto;
@@ -12,12 +12,6 @@
     @include ms-fontColor-white;
     background-color: $ms-color-themeDark;
     padding: 20px;
-  }
-
-  .listItem {
-    max-width: 715px;
-    margin: 5px auto 5px auto;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
 
   .column {
@@ -83,7 +77,7 @@
       cursor: default;
       pointer-events: none;
 
-      :global .ms-Button-label {
+      .label {
         color: #a6a6a6;
       }
     }
