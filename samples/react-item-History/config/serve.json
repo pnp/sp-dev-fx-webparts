@@ -1,0 +1,29 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://tronoxglobal.sharepoint.com/sites/GLMasterData/Lists/Account%20Requests/AllItems.aspx",
+      "customActions": {
+        "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed": {
+          "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+          "properties": {
+          
+          }
+        }
+      }
+    },
+    "itemHistory": {
+      "pageUrl": "https://tronoxglobal.sharepoint.com/sites/GLMasterData/Lists/Account%20Requests/AllItems.aspx",
+      "customActions": {
+        "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed": {
+          "location": "ClientSideExtension.ListViewCommandSet.CommandBar",
+          "properties": {
+          }
+          
+        }
+      }
+    }
+  }
+}
