@@ -20,12 +20,14 @@ import * as moment from 'moment';
 import * as swal2 from 'sweetalert2';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import {
-  SPHttpClient
+  SPHttpClient, SPHttpClientResponse
 } from '@microsoft/sp-http';
 import {
   Environment,
   EnvironmentType
 } from '@microsoft/sp-core-library';
+import { EventObjectInput, OptionsInput } from 'fullcalendar'; 
+import { Default as View } from 'fullcalendar/View';
 
 export interface ISPLists {
   value: ISPList[];
@@ -37,7 +39,7 @@ export interface ISPList {
 }
 
 export interface EventObjects {
-  value: FC.EventObject[];
+  value: EventObjectInput [];
 }
 
 export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModernCalendarWebPartProps> {
@@ -103,7 +105,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                   }
             }
             this._siteOptions = sites;
-          if (this.properties.site){
+          if (this.properties.site ){
           this._getListTitles(this.properties.site)
             .then((response2) => {
               this._dropdownOptions = response2.value.map((list: ISPList) => {
@@ -124,11 +126,11 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                 this.context.propertyPane.refresh();
                 this.context.statusRenderer.clearLoadingIndicator(this.domElement);
                 this.render();
-              })
+              });
             });
           }
-          })
-        })
+          });
+        });
     } else {
       this._getSitesAsync(); 
     }
@@ -167,6 +169,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
             });
           }
       } else if (propertyPath === 'listTitle' && newValue) {
+        // tslint:disable-next-line:no-duplicate-variable
         var siteUrl = newValue;
         if (this.properties.other) { siteUrl = this.properties.siteOther; }                 
           this._getListColumns(newValue,siteUrl)
@@ -262,41 +265,41 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
 
   private _getSiteRootWeb(): Promise<ISPLists> {
     return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/Site/RootWeb?$select=Title,Url`, SPHttpClient.configurations.v1)
-    .then((response: Response) => {
+    .then((response: SPHttpClientResponse) => {
       return response.json();
     });
   }
 
   private _getSites(rootWebUrl: string): Promise<ISPLists> {
     return this.context.spHttpClient.get(rootWebUrl + `/_api/web/webs?$select=Title,Url`, SPHttpClient.configurations.v1)
-    .then((response: Response) => {
+    .then((response: SPHttpClientResponse) => {
       return response.json();
     });
   }
 
   private _getListTitles(site: string): Promise<ISPLists> {
     return this.context.spHttpClient.get(site + `/_api/web/lists?$filter=Hidden eq false and BaseType eq 0`, SPHttpClient.configurations.v1)
-      .then((response: Response) => {
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       });
   }
 
   private _getListColumns(listNameColumns: string,listsite: string): Promise<any> {
     return this.context.spHttpClient.get(listsite + `/_api/web/lists/GetByTitle('${listNameColumns}')/Fields?$filter=Hidden eq false and ReadOnlyField eq false`, SPHttpClient.configurations.v1)
-      .then((response: Response) => {
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       });
   }
 
   private _getListData(listName: string, site: string): Promise<any> {
     return this.context.spHttpClient.get(site + `/_api/web/lists/GetByTitle('${listName}')/items?$select=${encodeURIComponent(this.properties.title)},${encodeURIComponent(this.properties.start)},${encodeURIComponent(this.properties.end)},${encodeURIComponent(this.properties.detail)},Created,Author/ID,Author/Title&$expand=Author/ID,Author/Title&$orderby=Id desc&$limit=500`,SPHttpClient.configurations.v1)
-      .then((response: Response) => {
+      .then((response: SPHttpClientResponse) => {
         return response.json();
       });
   }
 
   private _renderList(items: any[]): void {
-    var calItems: FC.EventObject[] = items.map((list: any) => {
+    var calItems: EventObjectInput [] = items.map((list: any) => {
           return {
             title: list[this.properties.title],
             start: list[this.properties.start],
@@ -306,10 +309,11 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
           };
     });
     this.context.statusRenderer.clearLoadingIndicator(this.domElement);
-    const calendarOptions:FC.Options = {
+    const calendarOptions:EventObjectInput = {
+      title: "test",
       theme: true,
       events: calItems,
-      eventClick: function(_event) {
+      eventClick: (_event) => {
         var eventDetail = moment(_event['start']).format('MM/DD/YYYY hh:mm') + ' - '  + moment(_event['end']).format('MM/DD/YYYY hh:mm') + '<br>' + _event['detail'];
         swal2.default(_event.title,eventDetail,'info');
       }
@@ -354,10 +358,10 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                   this.context.propertyPane.refresh();
                   this.context.statusRenderer.clearLoadingIndicator(this.domElement);
                   this.render();
-                })
+                });
             }
           });
-        })
+        });
       });
   }
 

@@ -1,10 +1,10 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/client-Side-Component-Manifest.Schema.json",
 
   "id": "c2a397d3-8c8f-47ab-b731-897178313c15",
   "alias": "ModernCalendarWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "*",
   "manifestVersion": 2,
 
   "preconfiguredEntries": [{
