@@ -2,6 +2,7 @@ declare interface IMapWebPartStrings {
   AddressFieldLabel: string;
   BingMapsApiKeyFieldLabel: string;
   BingMapsGroupName: string;
+  CityFieldLabel: string;
   ConnectionGroupName: string;
   DataGroupName: string;
   ErrorText: string;

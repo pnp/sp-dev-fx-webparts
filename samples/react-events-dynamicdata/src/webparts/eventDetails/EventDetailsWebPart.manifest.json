@@ -20,6 +20,7 @@
     "description": { "default": "Shows details of the selected event" },
     "officeFabricIconFontName": "CustomList",
     "properties": {
+      "event": {},
       "title": "Event details"
     }
   }]

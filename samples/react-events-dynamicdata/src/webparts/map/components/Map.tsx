@@ -10,8 +10,8 @@ import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
  * Map component. Renders map for the specified location
  */
 export class Map extends React.Component<IMapProps, IMapState> {
-  constructor() {
-    super();
+  constructor(props: IMapProps) {
+    super(props);
 
     // set default state
     this.state = {
@@ -27,6 +27,10 @@ export class Map extends React.Component<IMapProps, IMapState> {
   private _resolveCoordinates(): void {
     // nothing to do if the parent web part hasn't been configured
     if (this.props.needsConfiguration) {
+      return;
+    }
+
+    if (!this.props.address) {
       return;
     }
 
@@ -68,14 +72,14 @@ export class Map extends React.Component<IMapProps, IMapState> {
       });
   }
 
-  public componentWillMount(): void {
+  public componentDidMount(): void {
     // get coordinates for the current address after the component has been
     // instantiated
     this._resolveCoordinates();
   }
 
-  public componentDidUpdate?(prevProps: IMapProps, prevState: IMapState, prevContext: any): void {
-    if (this.props.address !== prevProps.address) {
+  public componentDidUpdate?(prevProps: IMapProps, prevState: IMapState, snapshot: any): void {
+    if (prevProps.address !== this.props.address)  {
       // get coordinates for the new address
       this._resolveCoordinates();
     }

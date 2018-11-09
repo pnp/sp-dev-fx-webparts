@@ -5,16 +5,17 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneDropdown,
-  IPropertyPaneDropdownOption,
-  PropertyPaneLabel,
-  PropertyPaneLink
+  PropertyPaneLink,
+  IPropertyPaneConditionalGroup,
+  PropertyPaneDynamicFieldSet,
+  PropertyPaneDynamicField,
+  IWebPartPropertiesMetadata,
+  DynamicDataSharedDepth
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'MapWebPartStrings';
 import { Map, IMapProps } from './components';
-import { IDynamicDataSource } from '@microsoft/sp-dynamic-data';
-import { ILocation } from '../../data';
+import { DynamicProperty } from '@microsoft/sp-component-base';
 
 /**
  * Map web part properties
@@ -23,19 +24,15 @@ export interface IMapWebPartProps {
   /**
    * The address to display on the map
    */
-  address: string;
+  address: DynamicProperty<string>;
   /**
    * Bing maps API key to use with the Bing maps API
    */
   bingMapsApiKey: string;
   /**
-   * The ID of the dynamic data to which the web part is subscribed
+   * The city where the address is located
    */
-  propertyId: string;
-  /**
-   * The dynamic data source ID to which the web part is subscribed
-   */
-  sourceId: string;
+  city: DynamicProperty<string>;
   /**
    * Web part title
    */
@@ -45,23 +42,9 @@ export interface IMapWebPartProps {
 /**
  * Map web part. Shows the map of the specified location. The location can be
  * specified either directly in the web part properties or via a dynamic data
- * source connection. 
+ * source connection.
  */
 export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> {
-  /**
-   * The previous ID of the dynamic data source to which the web part is
-   * subscribed. Used to unsubscribe from previously registered dynamic data
-   * source notifications after changing web part configuration in the property
-   * pane.
-   */
-  private _lastSourceId: string;
-  /**
-   * The previous ID of the dynamic data to which the web part is subscribed.
-   * Used to unsubscribe from previously registered dynamic data source
-   * notifications after changing web part configuration in the property pane.
-   */
-  private _lastPropertyId: string;
-
   /**
    * Event handler for clicking the Configure button on the Placeholder
    */
@@ -69,50 +52,14 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     this.context.propertyPane.open();
   }
 
-  protected onInit(): Promise<void> {
-    // bind render method to the current instance so that it can be correctly
-    // invoked when dynamic data change notification is triggered
-    this.render = this.render.bind(this);
-
-    return Promise.resolve();
-  }
-
   public render(): void {
-    // subscribe to dynamic data changes notifications
-    // do this only once the first time the web part is rendered and only,
-    // if the dynamic data source ID and property ID are provided
-    if (this.renderedOnce === false) {
-      if (this.properties.sourceId && this.properties.propertyId) {
-        try {
-          this.context.dynamicDataProvider.registerPropertyChanged(this.properties.sourceId, this.properties.propertyId, this.render);
-          this._lastSourceId = this.properties.sourceId;
-          this._lastPropertyId = this.properties.propertyId;
-        }
-        catch (e) {
-          this.context.statusRenderer.renderError(this.domElement, `${strings.ErrorText}${e}`);
-          return;
-        }
-      }
-    }
-
-    const dynamicAddress: boolean = !!this.properties.sourceId;
-
-    const needsConfiguration: boolean = !this.properties.bingMapsApiKey ||
-      (!dynamicAddress && !this.properties.address) ||
-      (dynamicAddress && !this.properties.propertyId);
-
-    let address: string = dynamicAddress ? undefined : this.properties.address;
-
-    // if the web part is set to retrieve its address from a dynamic data source
-    // and the dynamic data source has been configured, try to retrieve the
-    // currently selected location
-    if (!needsConfiguration && dynamicAddress) {
-      const source: IDynamicDataSource = this.context.dynamicDataProvider.tryGetSource(this.properties.sourceId);
-      const location: ILocation = source ? source.getPropertyValue(this.properties.propertyId) : undefined;
-      if (location) {
-        address = `${location.address} ${location.city}`;
-      }
-    }
+    // Get the location to show on the map. The location will be retrieved
+    // either from the event selected in the connected data source or from the
+    // address entered in web part properties
+    const address: string | undefined = this.properties.address.tryGetValue();
+    const city: string | undefined = this.properties.city.tryGetValue();
+    const needsConfiguration: boolean = !this.properties.bingMapsApiKey || (!address && !this.properties.address.tryGetSource()) || 
+    (!city && !this.properties.city.tryGetSource());
 
     const element: React.ReactElement<IMapProps> = React.createElement(
       Map,
@@ -120,8 +67,8 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
         needsConfiguration: needsConfiguration,
         httpClient: this.context.httpClient,
         bingMapsApiKey: this.properties.bingMapsApiKey,
-        dynamicAddress: dynamicAddress,
-        address: address,
+        dynamicAddress: !!this.properties.address.tryGetSource(),
+        address: `${address} ${city}`,
         onConfigure: this._onConfigure,
         width: this.domElement.clientWidth,
         height: this.domElement.clientHeight,
@@ -140,39 +87,21 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     return Version.parse('1.0');
   }
 
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    // get all available dynamic data sources on the page
-    const sourceOptions: IPropertyPaneDropdownOption[] =
-      this.context.dynamicDataProvider.getAvailableSources().map(source => {
-        return {
-          key: source.id,
-          text: source.metadata.title
-        };
-      });
-    // add an extra option on top to indicate, that the web part should get
-    // its address information from the web part configuration rather than from
-    // a dynamic data source
-    sourceOptions.unshift({
-      key: '',
-      text: 'Web part configuration'
-    });
-    const selectedSource: string = this.properties.sourceId;
-
-    let propertyOptions: IPropertyPaneDropdownOption[] = [];
-    if (selectedSource) {
-      const source: IDynamicDataSource = this.context.dynamicDataProvider.tryGetSource(selectedSource);
-      if (source) {
-        // get the list of all properties exposed by the currently selected
-        // data source
-        propertyOptions = source.getPropertyDefinitions().map(prop => {
-          return {
-            key: prop.id,
-            text: prop.title
-          };
-        });
+  protected get propertiesMetadata(): IWebPartPropertiesMetadata {
+    return {
+      // Denote the address web part property as a dynamic property of type
+      // object to allow the address information to be serialized by
+      // the SharePoint Framework.
+      'address': {
+        dynamicPropertyType: 'string'
+      },
+      'city': {
+        dynamicPropertyType: 'string'
       }
-    }
+    } as any as IWebPartPropertiesMetadata;
+  }
 
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -190,60 +119,53 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                 })
               ]
             },
+            // Web part properties group for specifying the information about
+            // the address to show on the map.
             {
-              groupName: strings.DataGroupName,
-              groupFields: [
-                PropertyPaneTextField('address', {
-                  label: strings.AddressFieldLabel
-                })
-              ]
-            },
-            {
-              groupName: strings.ConnectionGroupName,
-              groupFields: [
-                PropertyPaneDropdown('sourceId', {
-                  label: strings.SourceIdFieldLabel,
-                  options: sourceOptions,
-                  selectedKey: this.properties.sourceId
-                }),
-                PropertyPaneDropdown('propertyId', {
-                  label: strings.PropertyIdFieldLabel,
-                  options: propertyOptions,
-                  selectedKey: this.properties.propertyId
-                })
-              ]
-            }
+              // Primary group is used to provide the address to show on the map
+              // in a text field in the web part properties
+              primaryGroup: {
+                groupName: strings.DataGroupName,
+                groupFields: [
+                  PropertyPaneTextField('address', {
+                    label: strings.AddressFieldLabel
+                  }),
+                  PropertyPaneTextField('city', {
+                    label: strings.CityFieldLabel
+                  })
+                ]
+              },
+              // Secondary group is used to retrieve the address from the
+              // connected dynamic data source
+              secondaryGroup: {
+                groupName: strings.DataGroupName,
+                groupFields: [
+                  PropertyPaneDynamicFieldSet({
+                    label: 'Address',
+                    fields: [
+                      PropertyPaneDynamicField('address', {
+                        label: strings.AddressFieldLabel
+                      }),
+                      PropertyPaneDynamicField('city', {
+                        label: strings.CityFieldLabel
+                      })
+                    ],
+                    sharedConfiguration: {
+                      // because address and city come from the same data source
+                      // the connection can share the selected dynamic property
+                      depth: DynamicDataSharedDepth.Property
+                    }
+                  })
+                ]
+              },
+              // Show the secondary group only if the web part has been
+              // connected to a dynamic data source
+              showSecondaryGroup: !!this.properties.address.tryGetSource()
+            } as IPropertyPaneConditionalGroup
           ]
         }
       ]
     };
-  }
-
-  protected onPropertyPaneFieldChanged(propertyPath: string): void {
-    if (!this.properties.sourceId) {
-      return;
-    }
-
-    if (propertyPath === 'sourceId') {
-      // reset the selected property ID after selecting a different dynamic
-      // data source
-      this.properties.propertyId =
-        this.context.dynamicDataProvider.tryGetSource(this.properties.sourceId).getPropertyDefinitions()[0].id;
-    }
-
-    if (this._lastSourceId && this._lastPropertyId) {
-      // unsubscribe from the previously registered dynamic data changes
-      // notifications
-      this.context.dynamicDataProvider.unregisterPropertyChanged(this._lastSourceId, this._lastPropertyId, this.render);
-    }
-
-    // subscribe to the newly configured dynamic data changes notifications
-    this.context.dynamicDataProvider.registerPropertyChanged(this.properties.sourceId, this.properties.propertyId, this.render);
-    // store current values for the dynamic data source ID and property ID
-    // so that the web part can unsubscribe from notifications when the
-    // web part configuration changes
-    this._lastSourceId = this.properties.sourceId;
-    this._lastPropertyId = this.properties.propertyId;
   }
 
   protected get disableReactivePropertyChanges(): boolean {

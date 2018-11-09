@@ -1,18 +1,18 @@
 import * as React from 'react';
 import styles from './Events.module.scss';
 import { IEventsProps, IEventsState } from '.';
-import { IEvent, IEventItem } from "../../../data";
+import { IEventItem } from "../../../data";
 import { sp } from "@pnp/sp";
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
+import { ListView, SelectionMode } from "@pnp/spfx-controls-react/lib/ListView";
 
 /**
  * Events component
  */
 export class Events extends React.Component<IEventsProps, IEventsState> {
-  constructor() {
-    super();
+  constructor(props: IEventsProps) {
+    super(props);
 
     // set default state
     this.state = {
@@ -38,31 +38,60 @@ export class Events extends React.Component<IEventsProps, IEventsState> {
       loading: true
     });
 
+    this.setState({
+      loading: false,
+      events: [{
+        name: 'Tampa Home Show',
+        city: 'Tampa, FL',
+        address: '333 S Franklin St',
+        organizerName: 'Grady Archie',
+        organizerEmail: 'GradyA@contoso.OnMicrosoft.com',
+        date: '2018-05-29T00:00:00Z'
+      },
+      {
+        name: 'Custom Electronic Design and Installation Association (CEDIA)',
+        city: 'San Diego, CA',
+        address: '111 W Harbor Dr',
+        organizerName: 'Megan Bowen',
+        organizerEmail: 'MeganB@contoso.OnMicrosoft.com',
+        date: '2018-06-15T00:00:00Z'
+      },
+      {
+        name: 'Design Automation Conference (DAC)',
+        city: 'San Francisco, CA',
+        address: '747 Howard St Fl 5',
+        organizerName: 'Irvin Sayers',
+        organizerEmail: 'IrvinSB@contoso.OnMicrosoft.com',
+        date: '2018-07-05T00:00:00Z'
+      }],
+      error: undefined
+    });
+
     // load information about events from the SharePoint list
-    sp.web
-      .getList(`${this.props.siteUrl}/Lists/CompanyEvents`)
-      .items.getAll()
-      .then((items: IEventItem[]): void => {
-        this.setState({
-          loading: false,
-          events: items.map(i => {
-            return {
-              date: i.PnPEventDate,
-              name: i.Title,
-              city: i.PnPCity,
-              address: i.PnPAddress,
-              organizerName: i.PnPOrganizerName,
-              organizerEmail: i.PnPOrganizerEmail
-            };
-          })
-        });
-      }, (error: any): void => {
-        // communicate error
-        this.setState({
-          loading: false,
-          error: error
-        });
-      });
+    // sp.web
+    //   .getList(`${this.props.siteUrl}/Lists/CompanyEvents`)
+    //   .items.getAll()
+    //   .then((items: IEventItem[]): void => {
+    //     this.setState({
+    //       loading: false,
+    //       events: items.map(i => {
+    //         return {
+    //           date: i.PnPEventDate,
+    //           name: i.Title,
+    //           city: i.PnPCity,
+    //           address: i.PnPAddress,
+    //           organizerName: i.PnPOrganizerName,
+    //           organizerEmail: i.PnPOrganizerEmail
+    //         };
+    //       })
+    //     });
+    //   }, (error: any): void => {
+    //     // communicate error
+    //     this.setState({
+    //       loading: false,
+    //       error: error
+    //     });
+    //   });
   }
 
   public render(): React.ReactElement<IEventsProps> {
