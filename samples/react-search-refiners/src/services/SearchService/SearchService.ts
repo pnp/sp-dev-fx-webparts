@@ -82,11 +82,11 @@ class SearchService implements ISearchService {
 
         if (this._resultSourceId) {
             searchQuery.SourceId = this._resultSourceId;
-        } else {
-            // To be able to use search query variable according to the current context
-            // http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html
-            searchQuery.QueryTemplate = this._queryTemplate;
         }
+        
+        // To be able to use search query variable according to the current context
+        // http://www.techmikael.com/2015/07/sharepoint-rest-do-support-query.html
+        searchQuery.QueryTemplate = this._queryTemplate;        
 
         searchQuery.RowLimit = this._resultsCount ? this._resultsCount : 50;
         searchQuery.SelectProperties = this._selectedProperties;
