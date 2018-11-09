@@ -129,7 +129,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 resizable: true,
                 placeholder: strings.SearchQueryPlaceHolderText,
                 deferredValidationTime: 300,
-                disabled: this._useResultSource,
+                //disabled: this._useResultSource,
             }),
             PropertyPaneTextField('resultSourceId', {
                 label: strings.ResultSourceIdLabel,
@@ -768,6 +768,17 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 match = pagePropsVariables.exec(reQueryTemplate);
             }
         }
+
+
+        const currentDate = /\{CurrentDate\}/gi;
+        const currentMonth = /\{CurrentMonth\}/gi;
+        const currentYear = /\{CurrentYear\}/gi;
+
+        const d = new Date();
+        queryTemplate = queryTemplate.replace(currentDate, d.getDate().toString());
+        queryTemplate = queryTemplate.replace(currentMonth, (d.getMonth()+1).toString());
+        queryTemplate = queryTemplate.replace(currentYear, d.getFullYear().toString());
+
         return queryTemplate;
     }
 
