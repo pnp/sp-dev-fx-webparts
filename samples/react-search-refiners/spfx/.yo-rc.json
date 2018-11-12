@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": false,
+    "environment": "spo",
+    "version": "1.7.0",
+    "libraryName": "react-search-refiners",
+    "libraryId": "ec742d56-6535-4ef1-85e0-27e2c79a9fb5",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

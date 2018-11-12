@@ -1,0 +1,134 @@
+.searchWp {
+
+    min-height: 35px;
+
+    // Needed to avoid overlay overflow
+    position: relative;
+
+    &__noresult {
+        padding:10px;
+        text-align: center;
+    }
+
+    &__filterResultBtn {
+        color: "[theme: themePrimary, default: #005a9e]";
+    }
+
+    &__selectedFilters {
+
+        padding: 10px;
+
+        label.filter {        
+            display: inline-block;         
+            margin-bottom: 5px;  
+        }
+
+        label.filter~label.filter:before {
+            padding: 5px;
+            content: "|";
+        }
+
+        i {
+            margin-right: 5px;
+            vertical-align: sub;
+        }
+
+        i:hover {
+            color: "[theme: themePrimary, default: #005a9e]";
+            cursor: pointer;
+        }
+    }
+
+    &__paginationContainer {
+        text-align: center;        
+        margin-top: 15px;
+    
+        &__pagination {
+            display: inline-block;
+            text-align: center;
+
+            ul {
+                display: inline-block;
+                padding-left: 0;
+                margin: 20px 0;
+                border-radius: 4px;
+
+                li {
+                    display: inline;
+
+                    a {
+                        float: left;
+                        color: "[theme: themePrimary, default: #005a9e]";
+                        padding: 5px 10px;
+                        text-decoration: none;
+                        border-radius: 15px;
+        
+                        i {
+                            font-size: 10px;
+                            color: "[theme: themePrimary, default: #005a9e]";
+                        }  
+                    }
+
+                    .active {
+                        background-color: "[theme: themePrimary, default: #005a9e]";
+                        color: white;
+                    }
+        
+                    a:visited {
+                        color: inherit;
+                    }
+                }
+            }
+        }
+    }
+
+    &__filterPanel {
+
+        position: relative;
+
+        &__body {
+            padding-right: 20px;
+            padding-left: 20px;
+            overflow: auto;
+    
+            &__headerIcon {
+                text-align: right;
+                margin-top: 5px;
+    
+                .ms-Icon {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 1.5;
+                    letter-spacing: 0.5px;
+    
+                    &.ms-Icon--CalculatorSubtract, &.ms-Icon--CalculatorAddition {
+                    font-weight: bold;
+                    }
+                }
+            }
+    
+            &__allFiltersToggle {
+                margin-bottom: 15px;
+                padding-left: 10px;
+            }
+    
+            &__group {
+    
+                &__header {
+                    margin-top: 15px;
+                }
+    
+                button {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+
+.overlay {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

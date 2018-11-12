@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "PnP - Search Web Parts",
+    "id": "ec742d56-6535-4ef1-85e0-27e2c79a9fb5",
+    "version": "2.2.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/pnp-react-search-refiners.sppkg"
+  }
+}
