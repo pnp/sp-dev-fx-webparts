@@ -74,7 +74,9 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
         { (this.props.description) && <div className={styles.description}>{this.props.description}</div> }
         { this.renderNotifications() }
         { this.renderErrors() }
-        { (!this.props.listUrl) ? <MessageBar messageBarType={MessageBarType.warning}>Please configure a list for this component first.</MessageBar> : '' }
+        { (!this.props.listUrl)
+          ? <MessageBar messageBarType={MessageBarType.warning}>Please configure a list for this component first.</MessageBar>
+          : '' }
         { (this.state.isLoadingSchema)
           ? (<Spinner size={ SpinnerSize.large } label={strings.LoadingFormIndicator} />)
           : ((this.state.fieldsSchema) &&
