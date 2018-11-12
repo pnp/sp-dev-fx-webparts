@@ -1,10 +1,10 @@
 /**
  * ExtensionService
  */
-import { ICalendarService } from '..';
-import { BaseCalendarService } from '../BaseCalendarService';
-import { ICalendarEvent } from '../ICalendarEvent';
-import { IWordPressFullCalendarEventResponse } from './IWordPressFullCalendarEventResponse';
+import { ICalendarService } from "..";
+import { BaseCalendarService } from "../BaseCalendarService";
+import { ICalendarEvent } from "../ICalendarEvent";
+import { IWordPressFullCalendarEventResponse } from "./IWordPressFullCalendarEventResponse";
 
 export class WordPressFullCalendarService extends BaseCalendarService implements ICalendarService {
     constructor() {

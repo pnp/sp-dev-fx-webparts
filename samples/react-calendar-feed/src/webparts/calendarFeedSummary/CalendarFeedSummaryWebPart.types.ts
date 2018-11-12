@@ -1,4 +1,4 @@
-import { DateRange } from '../../shared/services/CalendarService';
+import { DateRange } from "../../shared/services/CalendarService";
 
 /**
  * Web part properties stored in web part configuration

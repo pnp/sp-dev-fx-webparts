@@ -1,20 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "b83bb343-bc5e-460c-9efd-52de06d32ffa",
+  "id": "0459b501-da31-43c7-9a9a-d5c59cc2d667",
   "alias": "CalendarFeedSummaryWebPart",
   "componentType": "WebPart",
-
-  // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
 
-  // If true, the component can only be installed on sites where Custom Script is allowed.
-  // Components that allow authors to embed arbitrary script code should set this to true.
-  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
-  "preconfiguredEntries": [
-    {
-      "groupId": "cf066440-0614-43d6-98ae-0b31cf14c7c3", // Text, media and content
+
+  "preconfiguredEntries": [{
+    "groupId": "cf066440-0614-43d6-98ae-0b31cf14c7c3",
       "group": {
         "default": "Text, media and content"
       },
@@ -24,16 +19,13 @@
       "description": {
         "default": "Shows a summary view of a list of calendar events retrieved from an external feed."
       },
-      // commented out because of bug with base64 icons
-      // "iconImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSIyOCIgdmlld0JveD0iMCAwIDEwLjU4IDcuNDEiPjxwYXRoIGQ9Ik0yLjQ4LS4wMVYuNUgxLjJ2Ni4xNWg1LjcyVjYuM0gxLjU0VjIuMmg2LjR2Mi44OGguMjVWLjVINi45MVYwaC0uMzZWLjVIMi44MlYwaC0uMTN6bS0uOTQuODVoLjk0di40M2guMzRWLjg0aDMuNzN2LjQzaC4zNlYuODRoMS4wM3YuOTRoLTYuNHYtLjQ3eiIvPjxwYXRoIGQ9Ik03LjIyIDUuNjh2LS40M2EyLjE2IDIuMTYgMCAwIDEgMi4xNyAyLjE3bC0uNDUtLjAxYy4wMi0uNy0uNDktMS43LTEuNzItMS43M3ptMCAuNzJ2LS40M2MuOTIuMDUgMS40My43IDEuNDQgMS40NWgtLjQzYy0uMDEtLjY2LS40NS0xLTEuMDEtMS4wMnptLjYuN2EuMy4zIDAgMCAxLS4zLjMuMy4zIDAgMCAxLS4zMS0uMy4zLjMgMCAwIDEgLjMtLjI5LjMuMyAwIDAgMSAuMy4zeiIvPjxwYXRoIGQ9Ik0yLjQ4LS4wMVYuNUgxLjJsLjAzIDIuMjMtLjAzIDMuOTJoNS43MlY2LjNIMS41NFYyLjJoNi40djIuODhoLjI1Vi41SDYuOTFWMGgtLjM2Vi41SDIuODJWMGgtLjEzem0tLjk0Ljg1aC45NHYuNDNoLjM0Vi44NGgzLjczdi40M2guMzZWLjg0aDEuMDN2Ljk0aC02LjR2LS40N3oiLz48cGF0aCBkPSJNMi41IDIuNzNoMS42OHYuMzZIMi41em00LjA3LjM2aC4zNHYyLjI4aC0uMzR6bS0xLjM3IDBoLjM1djIuMjhINS4yem0wIDIuMjhoMS43MXYuMzZoLTEuN3ptMC0yLjY0aDEuNzF2LjM2aC0xLjd6Ii8+PHBhdGggZD0iTTMuODYgMy4xaC4zNHYyLjI3aC0uMzR6bS0xLjM2IDBoLjM0djIuMjdIMi41em0wIDIuMjdoMS43di4zNkgyLjV6bTAtMi42NGgxLjd2LjM2SDIuNXoiLz48L3N2Zz4=",
       "officeFabricIconFontName": "Calendar",
       "properties": {
         "title": "Upcoming Events",
-        "dateRange": 4, /* Year */
+        "dateRange": 4,
         "maxEvents": 4,
         "useCORS": false,
-        "cacheDuration": 15 /* 15 minutes */
+        "cacheDuration": 15
       }
-    }
-  ]
+  }]
 }
