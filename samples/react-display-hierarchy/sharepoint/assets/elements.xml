@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+   <ListInstance 
+           CustomSchema="schema.xml"
+           FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+           Title="Hierarchy" 
+           Description="List with hierarchy information"
+           TemplateType="100"
+           Url="Lists/Hierarchy">
+      <Data>
+         <Rows>
+            <Row>
+               <Field Name="Title">Director of Human Resources</Field>
+               <Field Name="Parent"></Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Compensation Analysis</Field>
+               <Field Name="Parent">1;#Director of Human Resources</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Risk Management</Field>
+               <Field Name="Parent">1;#Director of Human Resources</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Employee Relations</Field>
+               <Field Name="Parent">1;#Director of Human Resources</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Staffing</Field>
+               <Field Name="Parent">1;#Director of Human Resources</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Job Evaluation</Field>
+               <Field Name="Parent">2;#Compensation Analysis</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Salary Board</Field>
+               <Field Name="Parent">2;#Compensation Analysis</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Merit Admin</Field>
+               <Field Name="Parent">2;#Compensation Analysis</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Emergency Procedures</Field>
+               <Field Name="Parent">3;#Risk Management</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Safety Program</Field>
+               <Field Name="Parent">3;#Risk Management</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Grievance Procedure</Field>
+               <Field Name="Parent">4;#Employee Relations</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Client Consultations</Field>
+               <Field Name="Parent">4;#Employee Relations</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Job Posting</Field>
+               <Field Name="Parent">5;#Staffing</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Application Screening</Field>
+               <Field Name="Parent">5;#Staffing</Field>
+            </Row>
+         </Rows>
+        </Data>
+   </ListInstance>
+
+</Elements>
