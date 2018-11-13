@@ -1,20 +1,36 @@
 # SharePoint Framework search with search box, refiners and paging sample
 
 ## Summary
-This sample shows you how to build user friendly SharePoint search experiences using Office UI fabric tiles, custom refiners, paging and suggestions.
+This sample shows you how to build user friendly SharePoint search experiences using SPFx in the modern interface. The main features include:
+
+- Fully customizable SharePoint search query like the good old Content Search Web Part.
+- Can either use a static query or be connected to a search box component using SPFx dynamic data.
+- Live templating system with Handlebar to meet your requirements in terms of UI + builtin list and tiles templates. Can alos use template from an external file.
+- Search results includings previews for Office documents and Office 365 videos.
+- Customizable refiners supporting multilingual values for taxonomy based filters.
+- Sortable results (unique field).
+- Results paging.
+- SharePoint best bets support.
+- Search query enhancement with NLP tools (like Microsoft LUIS).
 
 <p align="center">
   <img src="./images/react-search-refiners.gif"/>
 </p>
 
-An associated [blog post](http://thecollaborationcorner.com/2017/10/16/build-dynamic-sharepoint-search-experiences-with-refiners-and-paging-with-spfx-office-ui-fabric-and-pnp-js-library/) is available to give you more details about this sample implementation.
+This sample includes the following components and service(s):
 
-This sample includes the following components:
+**Web Part(s)**
 
 Component | Description 
 ----- | ----- 
 Search Box Web Part | Allows users to enter free text/KQL search queries connected to a search results Web Part.
-Search Results Web Part | Performs static or dynamic search query with customizable parameters like refiners, sorting and templating. 
+Search Results Web Part | Performs static or dynamic search query with customizable parameters like refiners, sorting and templating. An associated [blog post](http://thecollaborationcorner.com/2017/10/16/build-dynamic-sharepoint-search-experiences-with-refiners-and-paging-with-spfx-office-ui-fabric-and-pnp-js-library/) is available to give you more details about this Web Part implementation.
+
+**Back-end service(s)**
+
+Service | Description 
+----- | ----- 
+Search Query Enhancer | Sample Azure function to demonstrate the use of Microsoft LUIS and other cognitive services to interpret user intents and enhance the search box query accordingly.
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
