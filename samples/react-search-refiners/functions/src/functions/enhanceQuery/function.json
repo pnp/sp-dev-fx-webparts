@@ -1,0 +1,20 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "scriptFile": "enhanceQuery.js"
+}

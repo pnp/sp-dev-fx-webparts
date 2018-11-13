@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "Optimize": {
+            "matchCondition": {
+                "route": "/api/query/enhance",
+                "methods": [
+                    "POST"
+                ]
+            },
+            "backendUri": "http://%WEBSITE_HOSTNAME%/api/enhanceQuery"
+        }
+    }
+}
