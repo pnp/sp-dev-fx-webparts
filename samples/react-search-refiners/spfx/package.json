@@ -41,7 +41,7 @@
     "lodash": "4.17.11",
     "handlebars-helpers": "^0.8.4",
     "immutability-helper": "2.4.0",
-    "office-ui-fabric-react": "^5.131.2",
+    "office-ui-fabric-react": "5.120.0",
     "on-el-resize": "0.0.4",
     "react-ace": "6.1.4",
     "react-custom-scrollbars": "4.1.2",

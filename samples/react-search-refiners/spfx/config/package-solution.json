@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "PnP - Search Web Parts",
-    "id": "ec742d56-6535-4ef1-85e0-27e2c79a9fb5",
+    "id": "890affef-33e0-4d72-bd72-36399e02143b",
     "version": "2.2.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": false,

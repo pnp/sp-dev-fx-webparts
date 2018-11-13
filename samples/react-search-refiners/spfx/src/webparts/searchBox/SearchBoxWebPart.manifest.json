@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "18a7bdb6-2ac9-4547-ab00-fc692a8c1ea9",
+  "id": "096b96cc-8a44-41fa-9b4d-c0ab2ab2a779",
   "alias": "SearchBoxWebPart",
   "componentType": "WebPart",
 
