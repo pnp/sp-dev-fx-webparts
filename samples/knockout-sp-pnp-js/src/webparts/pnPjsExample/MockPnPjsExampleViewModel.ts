@@ -1,10 +1,8 @@
 import * as ko from 'knockout';
-import styles from './SpPnPjsExample.module.scss';
-import { ISpPnPjsExampleWebPartProps } from './ISpPnPjsExampleWebPartProps';
-import pnp, { List, ListEnsureResult, ItemAddResult } from "sp-pnp-js";
-import { ISpPnPjsExampleBindingContext, OrderListItem } from './SpPnPjsExampleViewModel';
+import styles from './PnPjsExample.module.scss';
+import { IPnPjsExampleBindingContext, OrderListItem } from './PnPjsExampleViewModel';
 
-export default class MockSpPnPjsExampleViewModel {
+export default class MockPnPjsExampleViewModel {
 
     public description: KnockoutObservable<string> = ko.observable('');
     public newItemTitle: KnockoutObservable<string> = ko.observable('');
@@ -12,12 +10,12 @@ export default class MockSpPnPjsExampleViewModel {
     public items: KnockoutObservableArray<OrderListItem> = ko.observableArray([]);
 
     public labelClass: string = styles.label;
-    public helloWorldClass: string = styles.helloWorld;
+    public helloWorldClass: string = styles.pnPjsExample;
     public containerClass: string = styles.container;
     public rowClass: string = `ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`;
     public buttonClass: string = `ms-Button ${styles.button}`;
 
-    constructor(bindings: ISpPnPjsExampleBindingContext) {
+    constructor(bindings: IPnPjsExampleBindingContext) {
         this.description(bindings.description);
 
         // When web part description is updated, change this view model's description.

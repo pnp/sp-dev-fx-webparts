@@ -1,24 +1,25 @@
 import * as ko from 'knockout';
-import {
-  Environment,
-  EnvironmentType,
-  Version
-} from '@microsoft/sp-core-library';
+import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
-import pnp, { Logger, LogLevel, ConsoleListener } from "sp-pnp-js";
 
-import * as strings from 'spPnPjsExampleStrings';
-import SpPnPjsExampleViewModel, { ISpPnPjsExampleBindingContext } from './SpPnPjsExampleViewModel';
-import MockSpPnPjsExampleViewModel from './MockSpPnPjsExampleViewModel';
-import { ISpPnPjsExampleWebPartProps } from './ISpPnPjsExampleWebPartProps';
+import * as strings from 'PnPjsExampleWebPartStrings';
+import PnPjsExampleViewModel, { IPnPjsExampleBindingContext } from './PnPjsExampleViewModel';
+
+import { sp } from "@pnp/sp";
+import { Logger, LogLevel , ConsoleListener} from "@pnp/logging";
+import MockSpPnPjsExampleViewModel from './MockPnPjsExampleViewModel';
 
 let _instance: number = 0;
 
-export default class SpPnPjsExampleWebPart extends BaseClientSideWebPart<ISpPnPjsExampleWebPartProps> {
+export interface IPnPjsExampleWebPartProps {
+  description: string;
+}
+
+export default class PnPjsExampleWebPart extends BaseClientSideWebPart<IPnPjsExampleWebPartProps> {
   private _id: number;
   private _componentElement: HTMLElement;
   private _koDescription: KnockoutObservable<string> = ko.observable('');
@@ -43,23 +44,22 @@ export default class SpPnPjsExampleWebPart extends BaseClientSideWebPart<ISpPnPj
       this._shouter.notifySubscribers(newValue, 'description');
     });
 
-    const bindings: ISpPnPjsExampleBindingContext = {
+    const bindings: IPnPjsExampleBindingContext = {
       description: this.properties.description,
       shouter: this._shouter
     };
 
     ko.applyBindings(bindings, this._componentElement);
 
-    return super.onInit().then(_ => {
-
-      pnp.setup({
-        spfxContext: this.context
-      });
-
-      // optional, we are setting up the sp-pnp-js logging for debugging
-      Logger.activeLogLevel = LogLevel.Info;
-      Logger.subscribe(new ConsoleListener());
+    sp.setup({
+      spfxContext: this.context
     });
+
+    // optional, we are setting up the sp-pnp-js logging for debugging
+    Logger.activeLogLevel = LogLevel.Info;
+    Logger.subscribe(new ConsoleListener());
+
+    return super.onInit();
   }
 
   public render(): void {
@@ -84,7 +84,7 @@ export default class SpPnPjsExampleWebPart extends BaseClientSideWebPart<ISpPnPj
         tagName,
         {
           viewModel: MockSpPnPjsExampleViewModel,
-          template: require('./SpPnPjsExample.template.html'),
+          template: require('./PnPjsExample.template.html'),
           synchronous: false
         }
       );
@@ -92,12 +92,12 @@ export default class SpPnPjsExampleWebPart extends BaseClientSideWebPart<ISpPnPj
       ko.components.register(
         tagName,
         {
-          viewModel: SpPnPjsExampleViewModel,
-          template: require('./SpPnPjsExample.template.html'),
+          viewModel: PnPjsExampleViewModel,
+          template: require('./PnPjsExample.template.html'),
           synchronous: false
         }
       );
-    }
+    }    
   }
 
   protected get dataVersion(): Version {
