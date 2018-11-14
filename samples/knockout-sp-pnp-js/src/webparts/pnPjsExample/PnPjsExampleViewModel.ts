@@ -1,9 +1,13 @@
 import * as ko from 'knockout';
-import styles from './SpPnPjsExample.module.scss';
-import { ISpPnPjsExampleWebPartProps } from './ISpPnPjsExampleWebPartProps';
-import pnp, { List, ListEnsureResult, ItemAddResult } from "sp-pnp-js";
+import styles from './PnPjsExample.module.scss';
+import { IPnPjsExampleWebPartProps } from './PnPjsExampleWebPart';
+require("tslib");
+require("@pnp/logging");
+require("@pnp/common");
+require("@pnp/odata");
+import { sp, List, ListEnsureResult, ItemAddResult } from "@pnp/sp";
 
-export interface ISpPnPjsExampleBindingContext extends ISpPnPjsExampleWebPartProps {
+export interface IPnPjsExampleBindingContext extends IPnPjsExampleWebPartProps {
   shouter: KnockoutSubscribable<{}>;
 }
 
@@ -16,20 +20,19 @@ export interface OrderListItem {
   OrderNumber: string;
 }
 
-export default class SpPnPjsExampleViewModel {
-
+export default class PnPjsExampleViewModel {
   public description: KnockoutObservable<string> = ko.observable('');
   public newItemTitle: KnockoutObservable<string> = ko.observable('');
   public newItemNumber: KnockoutObservable<string> = ko.observable('');
   public items: KnockoutObservableArray<OrderListItem> = ko.observableArray([]);
 
   public labelClass: string = styles.label;
-  public helloWorldClass: string = styles.helloWorld;
+  public helloWorldClass: string = styles.pnPjsExample;
   public containerClass: string = styles.container;
   public rowClass: string = `ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`;
   public buttonClass: string = `ms-Button ${styles.button}`;
 
-  constructor(bindings: ISpPnPjsExampleBindingContext) {
+  constructor(bindings: IPnPjsExampleBindingContext) {
     this.description(bindings.description);
 
     // When web part description is updated, change this view model's description.
@@ -52,7 +55,7 @@ export default class SpPnPjsExampleViewModel {
     return this.ensureList().then(list => {
 
       // here we are using the getAs operator so that our returned value will be typed
-      return list.items.select("Id", "Title", "OrderNumber").getAs<OrderListItem[]>();
+      return list.items.select("Id", "Title", "OrderNumber").get<OrderListItem[]>();
     });
   }
 
@@ -110,7 +113,7 @@ export default class SpPnPjsExampleViewModel {
     return new Promise<List>((resolve, reject) => {
 
       // use lists.ensure to always have the list available
-      pnp.sp.web.lists.ensure("SPPnPJSExampleList").then((ler: ListEnsureResult) => {
+      sp.web.lists.ensure("SPPnPJSExampleList").then((ler: ListEnsureResult) => {
 
         if (ler.created) {
 
@@ -121,7 +124,7 @@ export default class SpPnPjsExampleViewModel {
             // here we use batching
 
             // create a batch
-            let batch = pnp.sp.web.createBatch();
+            let batch = sp.web.createBatch();
 
             ler.list.getListItemEntityTypeFullName().then(typeName => {
 
