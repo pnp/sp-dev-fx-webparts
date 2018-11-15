@@ -163,11 +163,10 @@ class SearchService implements ISearchService {
 
                 const refinementRows = refinementResultsRows ? refinementResultsRows['Refiners'] : [];
                 if (refinementRows.length > 0) {
-                    let component = await System.import(
+                    const component = await import(
                         /* webpackChunkName: 'search-handlebars-helpers' */
                         'handlebars-helpers'
                     );
-        
                     this._helper = component({
                         handlebars: Handlebars
                     });

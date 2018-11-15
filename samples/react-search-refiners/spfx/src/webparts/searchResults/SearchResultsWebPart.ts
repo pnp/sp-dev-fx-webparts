@@ -226,7 +226,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
     
     protected async loadPropertyPaneResources(): Promise<void> {
-        this._propertyPage = await System.import(
+        this._propertyPage = await import(
             /* webpackChunkName: 'search-property-pane' */
             '../controls/PropertyPaneTextDialog/PropertyPaneTextDialog'
         );

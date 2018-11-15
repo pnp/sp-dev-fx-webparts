@@ -182,7 +182,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
 
                 if (localizedFilters && localizedFilters.length > 0) {
-                    const filterPanelComponent = await System.import(
+                    const filterPanelComponent = await import(
                         /* webpackChunkName: 'search-filterpanel' */
                         '../FilterPanel'
                     );
@@ -252,7 +252,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     const localizedFilters = await this._getLocalizedFilters(searchResults.RefinementResults);
 
                     if (FilterPanel === null && localizedFilters && localizedFilters.length > 0) {
-                        const filterPanelComponent = await System.import(
+                        const filterPanelComponent = await import(
                             /* webpackChunkName: 'search-filterpanel' */
                             '../FilterPanel'
                         );
