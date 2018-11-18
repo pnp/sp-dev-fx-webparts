@@ -14,8 +14,8 @@
     "short": "SuggestedTeamMembers"
   },
   "description": {
-    "short": "Webpart / Teams tab that shows you some suggested members for the Group using Graph API",
-    "full": "Webpart / Teams tab that shows you some suggested members for the Group using Graph API"
+    "short": "Shows you some suggested members for the Group using Graph API",
+    "full": "Webpart or Teams tab that shows you some suggested members for the Group using Graph API"
   },
   "icons": {
     "outline": "tab20x20.png",

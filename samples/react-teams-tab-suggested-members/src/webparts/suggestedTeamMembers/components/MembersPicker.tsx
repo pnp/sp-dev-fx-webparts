@@ -15,6 +15,7 @@ import {
   ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
 import { GraphHttpClient, GraphHttpClientResponse, IGraphHttpClientOptions } from '@microsoft/sp-http';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export interface IMembersPickerProps {
   people: IPerson[];
@@ -25,6 +26,7 @@ export interface IMembersPickerProps {
 export interface IMembersPickerState {
   peopleList: IPersonaProps[];
   currentSelectedItems?: IPersonaProps[];
+  resultAddMembers: string;
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -57,7 +59,8 @@ export default class MembersPicker extends React.Component<IMembersPickerProps, 
 
     this.state = {
       peopleList: peopleList,
-      currentSelectedItems: []
+      currentSelectedItems: [],
+      resultAddMembers: null
     };
   }
 
@@ -157,6 +160,7 @@ export default class MembersPicker extends React.Component<IMembersPickerProps, 
           onClick={() => { this._addGroupMembers(); }}
          />
 
+        <Label>{this.state.resultAddMembers}</Label>
       </div>
     );
   }
@@ -189,6 +193,10 @@ export default class MembersPicker extends React.Component<IMembersPickerProps, 
     var responseJson: string = await response.json();
 
     console.log(responseJson);
+
+    this.setState({
+      resultAddMembers: "Members added to the group successfully"
+    });
   }
 
 }

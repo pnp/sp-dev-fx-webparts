@@ -17,7 +17,7 @@
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
     "title": { "default": "SuggestedTeamMembers" },
-    "description": { "default": "Webpart / Teams tab that shows you some suggested members for the Group using Graph API" },
+    "description": { "default": "Webpart or Teams tab that shows you some suggested members for the Group using Graph API" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "SuggestedTeamMembers"
