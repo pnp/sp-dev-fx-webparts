@@ -1,5 +1,13 @@
 {
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ],
   "compilerOptions": {
+    "outDir": "lib",
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
