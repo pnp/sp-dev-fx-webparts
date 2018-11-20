@@ -17,19 +17,19 @@ export enum CreationState {
   /**
    * Initial state - user input
    */
-  notStarted,
+  notStarted = 0,
   /**
    * creating all selected elements (group, team, channel, tab)
    */
-  creating,
+  creating = 1,
   /**
    * everything has been created
    */
-  created,
+  created = 2,
   /**
    * error during creation
    */
-  error
+  error = 4
 }
 
 /**
@@ -38,7 +38,7 @@ export enum CreationState {
 export interface ITeamsApp {
   id: string;
   externalId?: string;
-  name: string;
+  displayName: string;
   version: string;
   distributionMethod: string;
 }
@@ -128,7 +128,7 @@ export default class TeamsCreator extends React.Component<ITeamsCreatorProps, IT
       selectedAppId
     } = this.state;
 
-    const appsDropdownOptions: IDropdownOption[] = apps ? apps.map(app => { return { key: app.id, text: app.name }; }) : [];
+    const appsDropdownOptions: IDropdownOption[] = apps ? apps.map(app => { return { key: app.id, text: app.displayName }; }) : [];
 
     return (
       <div className={styles.teamsCreator}>
@@ -290,13 +290,13 @@ export default class TeamsCreator extends React.Component<ITeamsCreatorProps, IT
     const context = this.props.context;
     const graphClient = await context.msGraphClientFactory.getClient();
 
-    const appsResponse = await graphClient.api('appCatalogs/teamsApps').version('beta').get();
+    const appsResponse = await graphClient.api('appCatalogs/teamsApps').version('v1.0').get();
     const apps = appsResponse.value as ITeamsApp[];
     apps.sort((a, b) => {
-      if (a.name < b.name) {
+      if (a.displayName < b.displayName) {
         return -1;
       }
-      else if (a.name > b.name) {
+      else if (a.displayName > b.displayName) {
         return 1;
       }
       return 0;
@@ -310,7 +310,7 @@ export default class TeamsCreator extends React.Component<ITeamsCreatorProps, IT
   /**
    * Main flow
    */
-  private async _processCreationRequest() {
+  private async _processCreationRequest(): Promise<void> {
     const context = this.props.context;
     // initializing graph client to be used in all requests
     const graphClient = await context.msGraphClientFactory.getClient();
@@ -414,8 +414,8 @@ export default class TeamsCreator extends React.Component<ITeamsCreatorProps, IT
    */
   private async _installApp(teamId: string, graphClient: MSGraphClient): Promise<boolean> {
     try {
-      await graphClient.api(`teams/${teamId}/apps`).version('beta').post({
-        id: this.state.selectedAppId
+      await graphClient.api(`teams/${teamId}/installedApps`).version('v1.0').post({
+        'teamsApp@odata.bind': `https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/${this.state.selectedAppId}`
       });
     }
     catch (error) {
@@ -434,9 +434,9 @@ export default class TeamsCreator extends React.Component<ITeamsCreatorProps, IT
    */
   private async _addTab(teamId: string, channelId: string, graphClient: MSGraphClient): Promise<boolean> {
     try {
-      await graphClient.api(`teams/${teamId}/channels/${channelId}/tabs`).version('beta').post({
-        name: this.state.tabName,
-        teamsAppId: this.state.selectedAppId
+      await graphClient.api(`teams/${teamId}/channels/${channelId}/tabs`).version('v1.0').post({
+        displayName: this.state.tabName,
+        'teamsApp@odata.bind': `https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/${this.state.selectedAppId}`
       });
     }
     catch (error) {
@@ -459,7 +459,7 @@ export default class TeamsCreator extends React.Component<ITeamsCreatorProps, IT
     } = this.state;
 
     try {
-      const response = await graphClient.api(`teams/${teamId}/channels`).version('beta').post({
+      const response = await graphClient.api(`teams/${teamId}/channels`).version('v1.0').post({
         displayName: channelName,
         description: channelDescription
       });
@@ -506,7 +506,7 @@ export default class TeamsCreator extends React.Component<ITeamsCreatorProps, IT
       });
     }
     try {
-      const response = await graphClient.api('groups').version('beta').post(groupRequest);
+      const response = await graphClient.api('groups').version('v1.0').post(groupRequest);
       return response.id;
     }
     catch (error) {
@@ -552,7 +552,7 @@ export default class TeamsCreator extends React.Component<ITeamsCreatorProps, IT
   private async _createTeam(groupId: string, graphClient: MSGraphClient): Promise<string> {
     return new Promise<string>(resolve => {
       setTimeout(() => {
-        graphClient.api(`groups/${groupId}/team`).version('beta').put({
+        graphClient.api(`groups/${groupId}/team`).version('v1.0').put({
           memberSettings: {
             allowCreateUpdateChannels: true
           },

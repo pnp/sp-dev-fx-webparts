@@ -13,7 +13,7 @@ The web part illustrates usage of MS Graph beta APIs to work with Teams:
 ![React Side Panel Client-Side Web Part](./assets/teams-creator.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.6.0-green.svg)
+![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
 
 ## Applies to
 
@@ -32,6 +32,7 @@ teams-creator-client-side-solution | Alex Terentiev ([Sharepointalist Inc.](http
 Version|Date|Comments
 -------|----|--------
 1.0|October 17, 2018|Initial release
+1.1|November 19, 2018|Upgrade to SPFx v1.7.0, updated to use v1.0 MS Graph endpoints
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
