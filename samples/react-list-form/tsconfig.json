@@ -2,6 +2,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "lib",
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "jsx": "react",
@@ -22,5 +23,12 @@
       "dom",
       "es2015.collection"
     ]
-  }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
 }

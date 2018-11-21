@@ -1,19 +1,18 @@
-import { Version } from '@microsoft/sp-core-library';
 // tslint:disable-next-line:max-line-length
-import { BaseClientSideWebPart, IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneDropdown } from '@microsoft/sp-webpart-base';
-import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
-import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
-import { PropertyFieldSliderWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout';
-import { PropertyFieldTextWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldTextWithCallout';
-import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
-import * as strings from 'CalendarFeedSummaryWebPartStrings';
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { CalendarEventRange, DateRange, ICalendarService } from '../../shared/services/CalendarService';
-import { CalendarServiceProviderList } from '../../shared/services/CalendarService/CalendarServiceProviderList';
-import { ICalendarFeedSummaryWebPartProps } from './CalendarFeedSummaryWebPart.types';
-import CalendarFeedSummary from './components/CalendarFeedSummary';
-import { ICalendarFeedSummaryProps } from './components/CalendarFeedSummary.types';
+import { BaseClientSideWebPart, IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneDropdown } from "@microsoft/sp-webpart-base";
+import { CalloutTriggers } from "@pnp/spfx-property-controls/lib/PropertyFieldHeader";
+import { PropertyFieldNumber } from "@pnp/spfx-property-controls/lib/PropertyFieldNumber";
+import { PropertyFieldSliderWithCallout } from "@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout";
+import { PropertyFieldTextWithCallout } from "@pnp/spfx-property-controls/lib/PropertyFieldTextWithCallout";
+import { PropertyFieldToggleWithCallout } from "@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout";
+import * as strings from "CalendarFeedSummaryWebPartStrings";
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import { CalendarEventRange, DateRange, ICalendarService } from "../../shared/services/CalendarService";
+import { CalendarServiceProviderList } from "../../shared/services/CalendarService/CalendarServiceProviderList";
+import { ICalendarFeedSummaryWebPartProps } from "./CalendarFeedSummaryWebPart.types";
+import CalendarFeedSummary from "./components/CalendarFeedSummary";
+import { ICalendarFeedSummaryProps } from "./components/CalendarFeedSummary.types";
 
 // this is the same width that the SharePoint events web parts use to render as narrow
 const MaxMobileWidth: number = 480;
@@ -39,7 +38,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    */
   public render(): void {
     // see if we need to render a mobile view
-    const isNarrow: boolean = this.width <= MaxMobileWidth;
+    const isNarrow: boolean = this.domElement.clientWidth <= MaxMobileWidth;
 
     // display the summary (or the configuration screen)
     const element: React.ReactElement<ICalendarFeedSummaryProps> = React.createElement(
@@ -59,14 +58,6 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     );
 
     ReactDom.render(element, this.domElement);
-  }
-
-  /**
-   * We store our configure in version 1.0. If we ever change how we store our configuration information,
-   * we'll update the version number here.
-   */
-  protected get dataVersion(): Version {
-    return Version.parse("1.0");
   }
 
   /**
@@ -231,7 +222,6 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    */
   private _getDataProvider(): ICalendarService {
     const {
-      feedType,
       feedUrl,
       useCORS,
       cacheDuration

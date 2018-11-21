@@ -1,11 +1,11 @@
 /**
  * ExtensionService
  */
-import { HttpClientResponse } from '@microsoft/sp-http';
-import * as ICAL from 'ical.js';
-import { ICalendarService } from '..';
-import { BaseCalendarService } from '../BaseCalendarService';
-import { ICalendarEvent } from '../ICalendarEvent';
+import { HttpClientResponse } from "@microsoft/sp-http";
+import * as ICAL from "ical.js";
+import { ICalendarService } from "..";
+import { BaseCalendarService } from "../BaseCalendarService";
+import { ICalendarEvent } from "../ICalendarEvent";
 
 // tslint:disable-next-line:class-name
 export class iCalCalendarService extends BaseCalendarService implements ICalendarService {

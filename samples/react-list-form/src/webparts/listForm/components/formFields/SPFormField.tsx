@@ -46,7 +46,8 @@ const EditFieldTypeMappings: {[fieldType: string]: React.StatelessComponent<ISPF
 };
 
 
-const DisplayFieldTypeMappings: {[fieldType: string]: {component: React.StatelessComponent<ISPFormFieldProps>, valuePreProcess?: (value: any) => any}} = {
+const DisplayFieldTypeMappings: {[fieldType: string]: {component: React.StatelessComponent<ISPFormFieldProps>,
+                                 valuePreProcess?: (value: any) => any}} = {
   Text: { component: SPFieldTextDisplay },
   Note: { component: SPFieldTextDisplay },
   Lookup: { component: SPFieldLookupDisplay },

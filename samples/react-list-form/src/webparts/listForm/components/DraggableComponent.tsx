@@ -71,8 +71,11 @@ export default class DraggableComponent extends React.Component<IDraggableCompon
       <div className={css('ard-draggableComponent', styles.draggableComponent, isDragging ? styles.isDragging : null)}>
         {children}
         <div className={css(styles.toolbar)}>
-          <button type="button" className={css('ard-draggableComponent', styles.button)} title={strings.MoveField} ><i className="ms-Icon ms-Icon--Move"></i></button>
-          <button type="button" className={css('ard-draggableComponent', styles.button)} title={strings.RemoveField} onClick={() => this.props.removeField(this.props.index)}><i className="ms-Icon ms-Icon--Delete"></i></button>
+          <button type='button' className={css('ard-draggableComponent', styles.button)} title={strings.MoveField} >
+            <i className='ms-Icon ms-Icon--Move'></i>
+          </button>
+          <button type='button' className={css('ard-draggableComponent', styles.button)} title={strings.RemoveField}
+            onClick={() => this.props.removeField(this.props.index)}><i className='ms-Icon ms-Icon--Delete'></i></button>
         </div>
       </div>,
     ));

@@ -50,6 +50,8 @@ declare interface ICalendarFeedSummaryWebPartStrings {
   ErrorInvalidWordPressFeed: string;
   AddToCalendarAriaLabel: string;
   AddToCalendarButtonLabel: string;
+  AllDayDateFormat: string;
+  LocalizedTimeFormat: string;
 }
 
 declare module 'CalendarFeedSummaryWebPartStrings' {

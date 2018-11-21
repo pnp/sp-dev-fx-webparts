@@ -32,7 +32,8 @@ export default class AsyncDropdown extends React.Component<IAsyncDropdownProps, 
 
   public render(): JSX.Element {
     const loading = this.state.loading;
-    const error: JSX.Element = this.state.error !== undefined ? <div className={'ms-TextField-errorMessage ms-u-slideDownIn20'}>Error while loading items: {this.state.error}</div> : <div />;
+    const error: JSX.Element = this.state.error !== undefined
+    ? <div className={'ms-TextField-errorMessage ms-u-slideDownIn20'}>Error while loading items: {this.state.error}</div> : <div />;
 
     return (
       <div>

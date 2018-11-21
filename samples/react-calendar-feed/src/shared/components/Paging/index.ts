@@ -1,2 +1,2 @@
-export * from './Paging';
-export * from './Paging.types';
+export * from "./Paging";
+export * from "./Paging.types";

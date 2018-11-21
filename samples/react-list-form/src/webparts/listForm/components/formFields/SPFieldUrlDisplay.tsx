@@ -7,7 +7,8 @@ const SPFieldUrlDisplay: React.SFC<ISPFormFieldProps> = (props) => {
         if (props.fieldSchema.DisplayFormat === 1) { // picture field
             return <div><img src={props.value} title={(props.extraData) ? props.extraData.desc : ''}></img></div>;
         } else {
-            return <div><Link target='_blank' href={props.value}>{(props.extraData && props.extraData.desc) ? props.extraData.desc : props.value}</Link></div>;
+            return <div><Link target='_blank' href={props.value}>{(props.extraData && props.extraData.desc)
+                ? props.extraData.desc : props.value}</Link></div>;
         }
     } else {
         return <div></div>;

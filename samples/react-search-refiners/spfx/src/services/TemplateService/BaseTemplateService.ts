@@ -7,7 +7,6 @@ import { html } from 'common-tags';
 import { isEmpty, uniqBy, uniq } from '@microsoft/sp-lodash-subset';
 import * as strings from 'SearchResultsWebPartStrings';
 import { Text } from '@microsoft/sp-core-library';
-import 'video.js/dist/video-js.css';
 import { Logger } from '@pnp/logging';
 import templateStyles from './BaseTemplateService.module.scss';
 import { DomHelper } from '../../helpers/DomHelper';
@@ -25,11 +24,10 @@ abstract class BaseTemplateService {
 
     public async LoadHandlebarsHelpers(load: boolean) {
         if (load) {
-            let component = await System.import(
+            let component = await import(
                 /* webpackChunkName: 'search-handlebars-helpers' */
                 'handlebars-helpers'
             );
-
             this._helper = component({
                 handlebars: Handlebars
             });
@@ -424,12 +422,11 @@ abstract class BaseTemplateService {
 
         // Load Videos-Js on Demand 
         // Webpack will create a other bundle loaded on demand just for this library
-        const videoJs = await System.import(
+        const videoJs = await import(
             /* webpackChunkName: 'videos-js' */
-            'video.js',
+            './video-js',
         );
-
-        this._videoJs = videoJs.default;
+        this._videoJs = videoJs.default.getVideoJs();
     }
 
     private _initVideoPreviews() {
