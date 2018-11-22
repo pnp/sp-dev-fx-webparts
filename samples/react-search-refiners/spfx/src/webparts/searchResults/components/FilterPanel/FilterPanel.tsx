@@ -133,12 +133,9 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                         isOpen={this.state.showPanel}
                         type={PanelType.custom}
                         customWidth="450px"
-                        isBlocking={false}
                         isLightDismiss={true}
                         onDismiss={this._onClosePanel}
                         headerText={strings.FilterPanelTitle}
-                        closeButtonAriaLabel='Close'
-                        hasCloseButton={true}
                         onRenderBody={() => {
                             if (this.props.availableFilters.length > 0) {
                                 return (

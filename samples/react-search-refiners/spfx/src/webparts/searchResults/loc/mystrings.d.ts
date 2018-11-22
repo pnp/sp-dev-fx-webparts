@@ -62,7 +62,8 @@ declare interface ISearchResultsWebPartStrings {
         SortPanelSortFieldAria:string;
         SortPanelSortFieldPlaceHolder:string;
         SortPanelSortDirectionLabel:string;              
-    }
+    },
+    TermNotFound: string;
 }
 
 declare module 'SearchResultsWebPartStrings' {

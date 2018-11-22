@@ -63,6 +63,7 @@ define([], function() {
       "SortPanelSortFieldAria":"Sélectionner un champ",
       "SortPanelSortFieldPlaceHolder":"Sélectionner un champ",
       "SortPanelSortDirectionLabel":"Direction de tri",  
-    }
+    },
+    "TermNotFound": "(Terme avec l'ID '{0}' non trouvé)"
   }
 });

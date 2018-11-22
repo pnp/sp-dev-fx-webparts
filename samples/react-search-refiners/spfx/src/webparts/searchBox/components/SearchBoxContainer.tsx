@@ -282,8 +282,9 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
     }
 
     if (this.props.searchInNewPage) {
-      // Send the query to the a new via the query string
-      const url = UrlHelper.addOrReplaceQueryStringParam(this.props.pageUrl, 'q', encodeURIComponent(queryText));
+      
+      // Send the query to the a new via the hash
+      const url = `${this.props.pageUrl}#${encodeURIComponent(queryText)}`;
 
       const behavior = this.props.openBehavior === PageOpenBehavior.NewTab ? '_blank' : '_self';
       window.open(url, behavior);

@@ -2,6 +2,7 @@ define([], function() {
     return {
       "SearchInputPlaceholder": "Entrez vos termes de recherche...",
       "SearchBoxNewPage": "Options de la boîte de recherche",
+      "SearchBoxEnableQuerySuggestions": "Activer les suggestions de recherche",
       "SearchBoxSearchInNewPageLabel": "Envoyer la requête sur une nouvelle page",
       "SearchBoxPageUrlLabel": "URL de la page",
       "SearchBoxUrlErrorMessage": "Veuillez spécifier une URL valide",
