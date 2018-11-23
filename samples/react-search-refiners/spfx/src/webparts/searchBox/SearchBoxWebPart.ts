@@ -54,7 +54,7 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
 
     let inputValue = this.properties.defaultQueryKeywords.tryGetValue();
 
-    if (inputValue && typeof(inputValue) === 'string' && inputValue.localeCompare(this._searchQuery.rawInputValue) !== 0) {
+    if (inputValue && typeof(inputValue) === 'string') {
       
       // Notify subsscriber a new value if available
       this.context.dynamicDataSourceManager.notifyPropertyChanged('searchQuery');
