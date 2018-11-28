@@ -3,6 +3,8 @@ import { DynamicProperty } from '@microsoft/sp-component-base';
 
 export interface ISearchResultsWebPartProps {
     queryKeywords: DynamicProperty<string>;
+    defaultSearchQuery: string;
+    useDefaultSearchQuery: boolean;
     queryTemplate: string;
     resultSourceId: string;
     sortList: string;

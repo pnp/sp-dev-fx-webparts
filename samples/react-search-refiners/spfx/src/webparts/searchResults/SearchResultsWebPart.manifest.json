@@ -21,11 +21,11 @@
         },
         "title": {
             "default": "Search Results with Refiners",
-            "fr-fr": "RÃ©sultats de recherche"
+            "fr-fr": "Résultats de recherche"
         },
         "description": {
             "default": "Displays search results with customizable dynamic refiners",
-            "fr-fr": "Affiche des rÃ©sulats de recherche avec filtres personnalisables"
+            "fr-fr": "Affiche des résulats de recherche avec filtres personnalisables"
         },
         "officeFabricIconFontName": "SearchAndApps",
         "properties": {
@@ -37,7 +37,8 @@
             "maxResultsCount": 10,
             "showBlank": true,
             "showResultsCount": true,
-            "webPartTitle": ""
+            "webPartTitle": "",
+            "useDefaultSearchQuery": false
         }
     }
   ]

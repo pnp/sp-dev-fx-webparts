@@ -64,6 +64,9 @@ define([], function() {
       "SortPanelSortFieldPlaceHolder":"Sélectionner un champ",
       "SortPanelSortDirectionLabel":"Direction de tri",  
     },
-    "TermNotFound": "(Terme avec l'ID '{0}' non trouvé)"
+    "TermNotFound": "(Terme avec l'ID '{0}' non trouvé)",
+    "UseDefaultSearchQueryKeywordsFieldLabel": "Utiliser une requête initiale",
+    "DefaultSearchQueryKeywordsFieldLabel": "Requête de recherche par défaut",
+    "DefaultSearchQueryKeywordsFieldDescription": "Cette requête sera utilisée par défault dans le cas où la valeur de la source de données est encore vide."
   }
 });

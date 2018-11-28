@@ -64,6 +64,9 @@ declare interface ISearchResultsWebPartStrings {
         SortPanelSortDirectionLabel:string;              
     },
     TermNotFound: string;
+    UseDefaultSearchQueryKeywordsFieldLabel: string;
+    DefaultSearchQueryKeywordsFieldLabel: string;
+    DefaultSearchQueryKeywordsFieldDescription: string;
 }
 
 declare module 'SearchResultsWebPartStrings' {

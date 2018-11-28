@@ -64,6 +64,9 @@ define([], function() {
       "SortPanelSortFieldPlaceHolder":"Select a field",
       "SortPanelSortDirectionLabel":"Sort Direction",
     },
-    "TermNotFound": "(Term with ID '{0}' not found)"
+    "TermNotFound": "(Term with ID '{0}' not found)",
+    "UseDefaultSearchQueryKeywordsFieldLabel": "Use a default search query",
+    "DefaultSearchQueryKeywordsFieldLabel": "Default search query",
+    "DefaultSearchQueryKeywordsFieldDescription": "This query will be used when the data source value is still empty."
   }
 });

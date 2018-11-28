@@ -285,7 +285,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 }
             } else {
                 this.setState({
-                    areResultsLoading: false
+                    areResultsLoading: false,
+                    lastQuery: '',
+                    results: { RefinementResults: [], RelevantResults: [] },
                 });
             }
         } else {
