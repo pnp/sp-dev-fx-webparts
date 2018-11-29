@@ -248,7 +248,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     const refinerManagedProperties = nextProps.refiners.map(e => { return e.refinerName ;}).join(',');
 
                     // Reset sortlist
-                    this.props.searchService.sortList = this.props.sortList;
+                    this.props.searchService.sortList = nextProps.sortList;
 
                     // We reset the page number and refinement filters
                     const searchResults = await this.props.searchService.search(nextProps.queryKeywords, refinerManagedProperties, [], 1);
@@ -355,7 +355,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
             const refinerManagedProperties = this.props.refiners.map(e => { return e.refinerName ;}).join(',');
                        
-            this.props.searchService.sortList = `${sortField}:${SortDirection[sortDirection].toLocaleLowerCase()}`;
+            this.props.searchService.sortList = [{Property: sortField, Direction: sortDirection}];
 
             try
             {

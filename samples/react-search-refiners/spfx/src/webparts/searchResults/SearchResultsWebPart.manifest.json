@@ -31,6 +31,16 @@
         "properties": {
             "queryKeywords": "",
             "queryTemplate": "{searchTerms} Path:{Site}",
+            "sortList": [
+                {
+                    "sortField": "Created",
+                    "sortDirection": 1
+                },
+                {
+                    "sortField": "Size",
+                    "sortDirection": 2
+                }
+            ],
             "refiners": [
                 {
                     "refinerName": "Created",

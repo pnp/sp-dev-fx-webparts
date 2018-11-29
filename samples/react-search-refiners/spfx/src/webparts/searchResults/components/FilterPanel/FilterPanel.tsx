@@ -51,7 +51,7 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
             // Get group name
             let groupName = filter.FilterName;
             const configuredFilter = this.props.refinersConfiguration.filter(e => { return e.refinerName === filter.FilterName;});
-            groupName = configuredFilter.length > 0 ? configuredFilter[0].displayValue : groupName;
+            groupName = configuredFilter.length > 0 && configuredFilter[0].displayValue ? configuredFilter[0].displayValue : groupName;
 
             groups.push({
                 key: i.toString(),

@@ -9,17 +9,10 @@ declare interface ISearchResultsWebPartStrings {
     LoadingMessage: string;
     MaxResultsCount: string;
     NoResultMessage: string;
-    RefinersFieldLabel: string;
     SortableFieldsLabel: string;
-    RefinersFieldDescription: string;
-    ConfigureRefinersLabel: string;
-    RefinerManagedPropertyField: string;
-    RefinerDisplayValueField: string;
     SortableFieldsDescription: string;
     FilterPanelTitle: string;
-    SortPanelTitle: string;
     FilterResultsButtonLabel: string;
-    SortResultsButtonLabel:string;
     SelectedFiltersLabel: string;
     RemoveAllFiltersLabel: string;
     ShowPagingLabel: string;
@@ -56,7 +49,8 @@ declare interface ISearchResultsWebPartStrings {
     PromotedResultsLabel: string;
     PanelCloseButtonAria:string;  
     Sort: {
-        SortList: string;
+        SortPropertyPaneFieldLabel
+        ConfigureInitialSortList: string;
         SortListDescription: string;
         SortDirectionAscendingLabel:string;
         SortDirectionDescendingLabel:string;
@@ -65,6 +59,13 @@ declare interface ISearchResultsWebPartStrings {
         SortPanelSortFieldAria:string;
         SortPanelSortFieldPlaceHolder:string;
         SortPanelSortDirectionLabel:string;              
+    },
+    Refiners: {
+        RefinersFieldLabel: string;
+        RefinersFieldDescription: string;
+        ConfigureRefinersLabel: string;
+        RefinerManagedPropertyField: string;
+        RefinerDisplayValueField: string;
     },
     TermNotFound: string;
     UseDefaultSearchQueryKeywordsFieldLabel: string;

@@ -4,6 +4,7 @@ import { DisplayMode } from '@microsoft/sp-core-library';
 import TemplateService from '../../../../services/TemplateService/TemplateService';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import IRefinerConfiguration from '../../../../models/IRefinerConfiguration';
+import { Sort } from '@pnp/sp';
 
 interface ISearchResultsContainerProps {
 
@@ -40,7 +41,7 @@ interface ISearchResultsContainerProps {
     /**
      * The sort order of the results
      */
-    sortList: string;
+    sortList: Sort[];
 
     /**
      * Enable SharePoint query rules

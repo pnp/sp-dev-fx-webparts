@@ -35,6 +35,8 @@ import ISearchResultsContainerProps from './components/SearchResultsContainer/IS
 import { Placeholder, IPlaceholderProps } from '@pnp/spfx-controls-react/lib/Placeholder';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
+import { SortDirection, Sort } from '@pnp/sp';
+import { ISortFieldConfiguration, ISortFieldDirection } from '../../models/ISortFieldConfiguration';
 
 const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
@@ -62,7 +64,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         this._searchService.resultsCount = this.properties.maxResultsCount;
         this._searchService.queryTemplate = await this.replaceQueryVariables(this.properties.queryTemplate);
         this._searchService.resultSourceId = this.properties.resultSourceId;
-        this._searchService.sortList = this.properties.sortList;
+        this._searchService.sortList = this._convertToSortList(this.properties.sortList);
         this._searchService.enableQueryRules = this.properties.enableQueryRules;
 
         // Determine the template content to display
@@ -115,7 +117,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 queryKeywords: queryKeywords,
                 maxResultsCount: this.properties.maxResultsCount,
                 resultSourceId: this.properties.resultSourceId,
-                sortList: this.properties.sortList,
+                sortList: this._convertToSortList(this.properties.sortList),
                 enableQueryRules: this.properties.enableQueryRules,
                 selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g, '').split(',') : [],
                 refiners: this.properties.refiners,
@@ -159,7 +161,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     
     protected async onInit(): Promise<void> {
 
-        this.initDefaultProperties();
+        this.initializeRequiredProperties();
 
         if (Environment.type === EnvironmentType.Local) {
             this._searchService = new MockSearchService();
@@ -185,6 +187,32 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         return super.onInit();
     }
 
+    private _convertToSortList(sortList: ISortFieldConfiguration[]): Sort[] {
+        return sortList.map(e => {
+            
+            let direction;
+
+            switch (e.sortDirection) {
+                case ISortFieldDirection.Ascending:
+                    direction = SortDirection.Ascending;
+                    break;
+
+                case ISortFieldDirection.Descending:
+                    direction = SortDirection.Descending;
+                    break;
+
+                default:
+                    direction = SortDirection.Ascending;
+                    break;
+            }
+
+            return {
+                Property: e.sortField,
+                Direction: direction
+            } as Sort;
+        });
+    }
+
     protected onDispose(): void {
         ReactDom.unmountComponentAtNode(this.domElement);
     }
@@ -193,17 +221,30 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         return Version.parse('1.0');
     }
 
-    private initDefaultProperties() {
+    /**
+     * Initializes the Web Part required properties if there are not present in the manifest (i.e. during an update scenario)
+     */
+    private initializeRequiredProperties() {
 
         this.properties.queryTemplate = this.properties.queryTemplate ? this.properties.queryTemplate : "{searchTerms} Path:{Site}";
-        this.properties.refiners = Array.isArray(this.properties.refiners) ? this.properties.refiners :     [
+        this.properties.refiners = Array.isArray(this.properties.refiners) ? this.properties.refiners : [
                                                                                                             {
-                                                                                                                "refinerName": "Created",
-                                                                                                                "displayValue": "Created Date"
+                                                                                                                refinerName: "Created",
+                                                                                                                displayValue: "Created Date"
                                                                                                             },
                                                                                                             {
-                                                                                                                "refinerName": "Size",
-                                                                                                                "displayValue": "Size of the file"
+                                                                                                                refinerName: "Size",
+                                                                                                                displayValue: "Size of the file"
+                                                                                                            }
+                                                                                                        ];
+        this.properties.sortList = Array.isArray(this.properties.sortList) ? this.properties.sortList : [
+                                                                                                            {
+                                                                                                                sortField: "Created",
+                                                                                                                sortDirection: ISortFieldDirection.Ascending
+                                                                                                            },
+                                                                                                            {
+                                                                                                                sortField: "Size",
+                                                                                                                sortDirection: ISortFieldDirection.Descending
                                                                                                             }
                                                                                                         ];
         this.properties.selectedProperties = this.properties.selectedProperties ? this.properties.selectedProperties : "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL";
@@ -522,13 +563,37 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 onGetErrorMessage: this.validateSourceId.bind(this),
                 deferredValidationTime: 300
             }),
-            PropertyPaneTextField('sortList', {
-                label: strings.Sort.SortList,
-                description: strings.Sort.SortListDescription,
-                multiline: false,
-                resizable: true,
+            PropertyFieldCollectionData('sortList', {
+                manageBtnLabel: strings.Sort.ConfigureInitialSortList,
+                key: 'sortList',
+                panelHeader: strings.Refiners.ConfigureRefinersLabel,
+                panelDescription: strings.Sort.SortListDescription,
+                label: strings.Sort.SortPropertyPaneFieldLabel,
                 value: this.properties.sortList,
-                deferredValidationTime: 300
+                fields: [
+                    {
+                        id: 'sortField',
+                        title: "Field name",
+                        type: CustomCollectionFieldType.string,
+                        required: true
+                    },
+                    {
+                        id: 'sortDirection',
+                        title: "Direction",
+                        type: CustomCollectionFieldType.dropdown,
+                        required: true,
+                        options: [
+                            {
+                                key: ISortFieldDirection.Ascending,
+                                text: strings.Sort.SortDirectionAscendingLabel
+                            },
+                            {
+                                key: ISortFieldDirection.Descending,
+                                text: strings.Sort.SortDirectionDescendingLabel
+                            }
+                        ]
+                    }
+                ]
             }),
             PropertyPaneTextField('sortableFields', {
                 label: strings.SortableFieldsLabel,
@@ -551,20 +616,21 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 deferredValidationTime: 300
             }),
             PropertyFieldCollectionData('refiners', {
-                manageBtnLabel: strings.ConfigureRefinersLabel,
+                manageBtnLabel: strings.Refiners.ConfigureRefinersLabel,
                 key: 'refiners',
-                panelHeader: strings.ConfigureRefinersLabel,
-                label: strings.RefinersFieldLabel,
+                panelHeader: strings.Refiners.ConfigureRefinersLabel,
+                panelDescription: strings.Refiners.RefinersFieldDescription,
+                label: strings.Refiners.RefinersFieldLabel,
                 value: this.properties.refiners,
                 fields: [
                     {
                         id: 'refinerName',
-                        title: strings.RefinerManagedPropertyField,
+                        title: strings.Refiners.RefinerManagedPropertyField,
                         type: CustomCollectionFieldType.string,
                     },
                     {
                         id: 'displayValue',
-                        title: strings.RefinerDisplayValueField,
+                        title: strings.Refiners.RefinerDisplayValueField,
                         type: CustomCollectionFieldType.string
                     }
                 ]
