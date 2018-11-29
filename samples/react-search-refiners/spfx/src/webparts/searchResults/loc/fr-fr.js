@@ -8,7 +8,6 @@ define([], function() {
     "LoadingMessage": "Les résultats sont en cours de chargement, veuillez patienter...",
     "MaxResultsCount": "Nombre de résulats à récupérer par page",
     "NoResultMessage": "Il n'y a aucun résultat à afficher.",
-    "SortableFieldsLabel": "Triables",
     "FilterPanelTitle": "Filtres disponibles",
     "FilterResultsButtonLabel": "Filtrer",
     "SelectedFiltersLabel": "Filtre(s) appliqué(s):",
@@ -28,7 +27,6 @@ define([], function() {
     "InvalidResultSourceIdMessage": "Identifiant invalide",
     "EnableQueryRulesLabel": "Activer les règles de requête",
     "StylingSettingsGroupName": "Options d'affichage",
-    "SortableFieldsDescription": "Propriétés gerées à utiliser comme triables (liste ordonnée séparée par une virgule). Vous pouvez spécifier un label personnalisé en utilisant le format suivant <Nom de la propriété gérée>:\"Nom convivial\".",
     "SelectedPropertiesFieldDescription": "Propriétés à récupérer des résulats de recherche.",
     "SearchQueryKeywordsFieldDescription": "Utilisez une requête de recherche prédéfinie pour obtenir un ensemble de résultats statique.",
     "CountMessageLong": "<b>{0}</b> résultats pour '<em>{1}</em>'",
@@ -50,8 +48,9 @@ define([], function() {
     "PromotedResultsLabel": "Résultat(s) promu(s)",
     "PanelCloseButtonAria":"Proche",
     "Sort": {
+      "SortableFieldsPropertyPaneField":"Propriétés triables",
+      "SortableFieldsDescription": "Propriétés à utiliser pour permettre aux utilisateurs de trier les résultats depuis l'interface. Le tri ne peut être porter que sur une seule propriété à la fois et surpasse le tri par défaut des résulats si existant.",
       "SortPropertyPaneFieldLabel":"Ordre de tri",
-      "ConfigureInitialSortList": "Configurer l'ordre de tri",
       "SortListDescription": "Spécifiez l'ordre de tri des résultats de recherche. Ceux-ci ne s'appliqueront que si aucun champ de tri n'a été configurée pour ce Web Part (i.e propriétés triables)",
       "SortDirectionAscendingLabel":"Ascendant",
       "SortDirectionDescendingLabel":"Descendant",
@@ -59,18 +58,20 @@ define([], function() {
       "SortPanelSortFieldLabel":"Trier sur le champ",
       "SortPanelSortFieldAria":"Sélectionner un champ",
       "SortPanelSortFieldPlaceHolder":"Sélectionner un champ",
-      "SortPanelSortDirectionLabel":"Direction de tri",  
+      "SortPanelSortDirectionLabel":"Direction de tri",
+      "SortableFieldManagedPropertyField": "Propriété gérée de tri",
+      "SortableFieldDisplayValueField": "Intitulé du champ à afficher"  
     },
     "Refiners": {
       "RefinersFieldLabel": "Filtres",
       "RefinersFieldDescription": "Configurez ici les propriétés gerées à utiliser comme filtres. Si il n'existe pas de valeurs pour le filtre spécifié, il n'apparaîtra pas dans le panneau.",
-      "ConfigureRefinersLabel": "Configurer les filtres",
       "RefinerManagedPropertyField": "Propriété gérée de filtre",
       "RefinerDisplayValueField": "Intitulé du filtre à afficher",
     },
     "TermNotFound": "(Terme avec l'ID '{0}' non trouvé)",
     "UseDefaultSearchQueryKeywordsFieldLabel": "Utiliser une requête initiale",
     "DefaultSearchQueryKeywordsFieldLabel": "Requête de recherche par défaut",
-    "DefaultSearchQueryKeywordsFieldDescription": "Cette requête sera utilisée par défault dans le cas où la valeur de la source de données est encore vide."
+    "DefaultSearchQueryKeywordsFieldDescription": "Cette requête sera utilisée par défault dans le cas où la valeur de la source de données est encore vide.",
+    "ConfigureBtnLabel": "Configurer"
   }
 });

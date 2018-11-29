@@ -48,9 +48,9 @@ declare interface ISearchResultsWebPartStrings {
     HandlebarsHelpersDescription: string;
     PromotedResultsLabel: string;
     PanelCloseButtonAria:string;  
+    ConfigureBtnLabel: string;
     Sort: {
         SortPropertyPaneFieldLabel
-        ConfigureInitialSortList: string;
         SortListDescription: string;
         SortDirectionAscendingLabel:string;
         SortDirectionDescendingLabel:string;
@@ -58,12 +58,15 @@ declare interface ISearchResultsWebPartStrings {
         SortPanelSortFieldLabel:string;
         SortPanelSortFieldAria:string;
         SortPanelSortFieldPlaceHolder:string;
-        SortPanelSortDirectionLabel:string;              
+        SortPanelSortDirectionLabel:string;         
+        SortableFieldsPropertyPaneField: string;
+        SortableFieldsDescription: string;
+        SortableFieldManagedPropertyField: string;   
+        SortableFieldDisplayValueField: string;
     },
     Refiners: {
         RefinersFieldLabel: string;
         RefinersFieldDescription: string;
-        ConfigureRefinersLabel: string;
         RefinerManagedPropertyField: string;
         RefinerDisplayValueField: string;
     },

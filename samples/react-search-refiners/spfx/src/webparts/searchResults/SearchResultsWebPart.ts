@@ -53,12 +53,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      */
     private _templateContentToDisplay: string;
 
-    constructor() {
-        super();
-        this._parseFieldListString = this._parseFieldListString.bind(this);
-
-    }
-
     public async render(): Promise<void> {
         // Configure the provider before the query according to our needs
         this._searchService.resultsCount = this.properties.maxResultsCount;
@@ -121,7 +115,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 enableQueryRules: this.properties.enableQueryRules,
                 selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g, '').split(',') : [],
                 refiners: this.properties.refiners,
-                sortableFields: this._parseFieldListString(this.properties.sortableFields),
+                sortableFields: this.properties.sortableFields,
                 showPaging: this.properties.showPaging,
                 showResultsCount: this.properties.showResultsCount,
                 showBlank: this.properties.showBlank,
@@ -247,6 +241,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                                                                                                                 sortDirection: ISortFieldDirection.Descending
                                                                                                             }
                                                                                                         ];
+        this.properties.sortableFields = Array.isArray(this.properties.sortableFields) ? this.properties.sortableFields : [];                                                                        
         this.properties.selectedProperties = this.properties.selectedProperties ? this.properties.selectedProperties : "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL";
         this.properties.maxResultsCount = this.properties.maxResultsCount ? this.properties.maxResultsCount : 10;
     }
@@ -366,39 +361,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
 
         return '';
-    }
-
-	/**
-     * Parses a list of Fields from the property pane value by extracting the managed property and its label.
-     * @param rawValue the raw value of the refiner
-     */
-    private _parseFieldListString(rawValue: string): { [key: string]: string } {
-
-        let returnValues = {};
-        if(!rawValue) { return returnValues; }
-
-        // Get each configuration
-        let refinerKeyValuePair = rawValue.split(',');
-
-        if (refinerKeyValuePair.length > 0) {
-            refinerKeyValuePair.map((e) => {
-
-                const refinerValues = e.split(':');
-                switch (refinerValues.length) {
-                    case 1:
-                        // Take the same name as the refiner managed property
-                        returnValues[refinerValues[0]] = refinerValues[0];
-                        break;
-
-                    case 2:
-                        // Trim quotes if present
-                        returnValues[refinerValues[0]] = refinerValues[1].replace(/^'(.*)'$/, '$1');
-                        break;
-                }
-            });
-        }
-
-        return returnValues;
     }
 
     /**
@@ -564,9 +526,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 deferredValidationTime: 300
             }),
             PropertyFieldCollectionData('sortList', {
-                manageBtnLabel: strings.Sort.ConfigureInitialSortList,
+                manageBtnLabel: strings.ConfigureBtnLabel,
                 key: 'sortList',
-                panelHeader: strings.Refiners.ConfigureRefinersLabel,
+                panelHeader: strings.Sort.SortPropertyPaneFieldLabel,
                 panelDescription: strings.Sort.SortListDescription,
                 label: strings.Sort.SortPropertyPaneFieldLabel,
                 value: this.properties.sortList,
@@ -575,7 +537,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                         id: 'sortField',
                         title: "Field name",
                         type: CustomCollectionFieldType.string,
-                        required: true
+                        required: true,
+                        placeholder: '\"Created\", \"Size\", etc.'
                     },
                     {
                         id: 'sortDirection',
@@ -595,13 +558,27 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                     }
                 ]
             }),
-            PropertyPaneTextField('sortableFields', {
-                label: strings.SortableFieldsLabel,
-                description: strings.SortableFieldsDescription,
-                multiline: true,
-                resizable: true,
+            PropertyFieldCollectionData('sortableFields', {
+                manageBtnLabel: strings.ConfigureBtnLabel,
+                key: 'sortableFields',
+                panelHeader: strings.Sort.SortableFieldsPropertyPaneField,
+                panelDescription: strings.Sort.SortableFieldsDescription,
+                label: strings.Sort.SortableFieldsPropertyPaneField,
                 value: this.properties.sortableFields,
-                deferredValidationTime: 300,
+                fields: [
+                    {
+                        id: 'sortField',
+                        title: strings.Sort.SortableFieldManagedPropertyField,
+                        type: CustomCollectionFieldType.string,
+                        placeholder: '\"Created\", \"Size\", etc.',
+                        required: true
+                    },
+                    {
+                        id: 'displayValue',
+                        title: strings.Sort.SortableFieldDisplayValueField,
+                        type: CustomCollectionFieldType.string
+                    }
+                ]
             }),
             PropertyPaneToggle('enableQueryRules', {
                 label: strings.EnableQueryRulesLabel,
@@ -616,9 +593,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 deferredValidationTime: 300
             }),
             PropertyFieldCollectionData('refiners', {
-                manageBtnLabel: strings.Refiners.ConfigureRefinersLabel,
+                manageBtnLabel: strings.ConfigureBtnLabel,
                 key: 'refiners',
-                panelHeader: strings.Refiners.ConfigureRefinersLabel,
+                panelHeader: strings.Refiners.RefinersFieldLabel,
                 panelDescription: strings.Refiners.RefinersFieldDescription,
                 label: strings.Refiners.RefinersFieldLabel,
                 value: this.properties.refiners,
@@ -627,6 +604,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                         id: 'refinerName',
                         title: strings.Refiners.RefinerManagedPropertyField,
                         type: CustomCollectionFieldType.string,
+                        placeholder: '\"RefinableStringXXX\", etc.'
                     },
                     {
                         id: 'displayValue',

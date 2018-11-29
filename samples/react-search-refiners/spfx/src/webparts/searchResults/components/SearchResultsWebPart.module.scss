@@ -30,6 +30,11 @@
         color: "[theme: themePrimary, default: #005a9e]";
     }
 
+    &__sortDropdown {
+        min-width: 135px;
+        max-width: 200px;
+    }
+
     &__sortResultBtn {
         color: "[theme: themePrimary]";
     }

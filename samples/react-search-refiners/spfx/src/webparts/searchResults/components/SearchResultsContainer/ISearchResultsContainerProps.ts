@@ -5,6 +5,7 @@ import TemplateService from '../../../../services/TemplateService/TemplateServic
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import IRefinerConfiguration from '../../../../models/IRefinerConfiguration';
 import { Sort } from '@pnp/sp';
+import ISortableFieldConfiguration from '../../../../models/ISortableFieldConfiguration';
 
 interface ISearchResultsContainerProps {
 
@@ -61,7 +62,7 @@ interface ISearchResultsContainerProps {
     /**
      * The managed properties used as sortable fields for the query
      */
-    sortableFields: { [key: string]: string };
+    sortableFields: ISortableFieldConfiguration[];
 
     /**
      * Show the paging control

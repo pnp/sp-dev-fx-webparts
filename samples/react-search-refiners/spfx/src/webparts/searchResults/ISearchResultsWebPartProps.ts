@@ -2,6 +2,7 @@ import ResultsLayoutOption from '../../models/ResultsLayoutOption';
 import { DynamicProperty } from '@microsoft/sp-component-base';
 import IRefinerConfiguration from '../../models/IRefinerConfiguration';
 import { ISortFieldConfiguration } from '../../models/ISortFieldConfiguration';
+import ISortableFieldConfiguration from '../../models/ISortableFieldConfiguration';
 
 export interface ISearchResultsWebPartProps {
     queryKeywords: DynamicProperty<string>;
@@ -14,7 +15,7 @@ export interface ISearchResultsWebPartProps {
     maxResultsCount: number;
     selectedProperties: string;
     refiners: IRefinerConfiguration[];
-    sortableFields: string;
+    sortableFields: ISortableFieldConfiguration[];
     showPaging: boolean;
     showResultsCount: boolean;
     showBlank: boolean;

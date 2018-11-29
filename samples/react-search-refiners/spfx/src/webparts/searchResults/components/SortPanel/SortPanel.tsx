@@ -4,7 +4,7 @@ import ISortPanelState from                                            './ISortP
 import { Dropdown, IDropdownOption } from                              'office-ui-fabric-react/lib/Dropdown';
 import * as strings from                                               'SearchResultsWebPartStrings';
 import { ActionButton } from                                           'office-ui-fabric-react/lib/Button';
-import { SortDirection } from "@pnp/sp";
+import { SortDirection } from '@pnp/sp';
 import styles from '../SearchResultsWebPart.module.scss';
 
 export default class SortPanel extends React.Component<ISortPanelProps, ISortPanelState> {
@@ -17,14 +17,13 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
             sortField:this.props.sortField ? this.props.sortField : null
         };
 
-        this._getSortableFieldCount = this._getSortableFieldCount.bind(this);
         this._setSortDirection = this._setSortDirection.bind(this);
         this._getDropdownOptions = this._getDropdownOptions.bind(this);
         this._onChangedSelectedField = this._onChangedSelectedField.bind(this);
     }
 
     public render(): React.ReactElement<ISortPanelProps> {
-        if (this._getSortableFieldCount() === 0) return <span />;
+        if (this.props.sortableFieldsConfiguration.length === 0) return <span />;
 
         const dropdownOptions: IDropdownOption[] = this._getDropdownOptions();
 
@@ -42,6 +41,7 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
                         }}
                     />
                     <Dropdown
+                            className={ styles.searchWp__sortDropdown }
                             placeHolder={strings.Sort.SortPanelSortFieldPlaceHolder}
                             ariaLabel={strings.Sort.SortPanelSortFieldAria}
                             onChanged={this._onChangedSelectedField}
@@ -50,14 +50,6 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
                         />
                 </div>
         );
-    }
-
-    private _getSortableFieldCount() {
-        if(!this.props.sortableFieldsConfiguration) return 0;
-
-        return Object.keys(this.props.sortableFieldsConfiguration).filter(value => {
-            return value;
-        }).length;
     }
 
     private _setSortDirection() {
@@ -86,14 +78,16 @@ export default class SortPanel extends React.Component<ISortPanelProps, ISortPan
     }
 
     private _getDropdownOptions():IDropdownOption[] {
-        let dropdownOptions:IDropdownOption[] = [];
-        const sortableFields = Object.keys(this.props.sortableFieldsConfiguration);
 
-        sortableFields.forEach((fieldKey) => {
-            //Strip " from start and end of the display name if present
-            const fieldDisplayName = this.props.sortableFieldsConfiguration[fieldKey].replace(/^\"+|\"+$/g, '');
-            dropdownOptions.push({ key: fieldKey, text: fieldDisplayName});
+        let dropdownOptions:IDropdownOption[] = [];
+
+        this.props.sortableFieldsConfiguration.map(e => {
+            dropdownOptions.push({ 
+                key: e.sortField, 
+                text: e.displayValue
+            });
         });
+
         return dropdownOptions;
     }
 
