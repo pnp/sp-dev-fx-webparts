@@ -16,7 +16,6 @@ import {
   IPropertyPaneChoiceGroupOption,
   PropertyPaneChoiceGroup,
   PropertyPaneCheckbox,
-
 } from '@microsoft/sp-webpart-base';
 import * as strings from 'SearchResultsWebPartStrings';
 import SearchResultsContainer from './components/SearchResultsContainer/SearchResultsContainer';
@@ -34,6 +33,7 @@ import TaxonomyService from '../../services/TaxonomyService/TaxonomyService';
 import MockTaxonomyService from '../../services/TaxonomyService/MockTaxonomyService';
 import ISearchResultsContainerProps from './components/SearchResultsContainer/ISearchResultsContainerProps';
 import { Placeholder, IPlaceholderProps } from '@pnp/spfx-controls-react/lib/Placeholder';
+import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 
 const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
@@ -118,7 +118,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 sortList: this.properties.sortList,
                 enableQueryRules: this.properties.enableQueryRules,
                 selectedProperties: this.properties.selectedProperties ? this.properties.selectedProperties.replace(/\s|,+$/g, '').split(',') : [],
-                refiners: this._parseFieldListString(this.properties.refiners),
+                refiners: this.properties.refiners,
                 sortableFields: this._parseFieldListString(this.properties.sortableFields),
                 showPaging: this.properties.showPaging,
                 showResultsCount: this.properties.showResultsCount,
@@ -159,6 +159,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     
     protected async onInit(): Promise<void> {
 
+        this.initDefaultProperties();
+
         if (Environment.type === EnvironmentType.Local) {
             this._searchService = new MockSearchService();
             this._taxonomyService = new MockTaxonomyService();
@@ -189,6 +191,23 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
     protected get dataVersion(): Version {
         return Version.parse('1.0');
+    }
+
+    private initDefaultProperties() {
+
+        this.properties.queryTemplate = this.properties.queryTemplate ? this.properties.queryTemplate : "{searchTerms} Path:{Site}";
+        this.properties.refiners = Array.isArray(this.properties.refiners) ? this.properties.refiners :     [
+                                                                                                            {
+                                                                                                                "refinerName": "Created",
+                                                                                                                "displayValue": "Created Date"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "refinerName": "Size",
+                                                                                                                "displayValue": "Size of the file"
+                                                                                                            }
+                                                                                                        ];
+        this.properties.selectedProperties = this.properties.selectedProperties ? this.properties.selectedProperties : "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL";
+        this.properties.maxResultsCount = this.properties.maxResultsCount ? this.properties.maxResultsCount : 10;
     }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -531,13 +550,24 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 value: this.properties.selectedProperties,
                 deferredValidationTime: 300
             }),
-            PropertyPaneTextField('refiners', {
+            PropertyFieldCollectionData('refiners', {
+                manageBtnLabel: strings.ConfigureRefinersLabel,
+                key: 'refiners',
+                panelHeader: strings.ConfigureRefinersLabel,
                 label: strings.RefinersFieldLabel,
-                description: strings.RefinersFieldDescription,
-                multiline: true,
-                resizable: true,
                 value: this.properties.refiners,
-                deferredValidationTime: 300,
+                fields: [
+                    {
+                        id: 'refinerName',
+                        title: strings.RefinerManagedPropertyField,
+                        type: CustomCollectionFieldType.string,
+                    },
+                    {
+                        id: 'displayValue',
+                        title: strings.RefinerDisplayValueField,
+                        type: CustomCollectionFieldType.string
+                    }
+                ]
             }),
             PropertyPaneSlider('maxResultsCount', {
                 label: strings.MaxResultsCount,

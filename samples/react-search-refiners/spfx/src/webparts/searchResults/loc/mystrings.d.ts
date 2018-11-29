@@ -12,6 +12,9 @@ declare interface ISearchResultsWebPartStrings {
     RefinersFieldLabel: string;
     SortableFieldsLabel: string;
     RefinersFieldDescription: string;
+    ConfigureRefinersLabel: string;
+    RefinerManagedPropertyField: string;
+    RefinerDisplayValueField: string;
     SortableFieldsDescription: string;
     FilterPanelTitle: string;
     SortPanelTitle: string;
