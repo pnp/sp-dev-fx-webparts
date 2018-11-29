@@ -34,7 +34,6 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
 
     public componentWillUnmount() {
         try {
-            debugger;
             this.resize.removeResizeListener(this.parentRef, this.onComponentResize);            
         } catch (error) {}
     }
