@@ -161,8 +161,9 @@ class SearchService implements ISearchService {
                 const resultRows = r2.RawSearchResults.PrimaryQueryResult.RelevantResults.Table.Rows;
                 let refinementResultsRows = r2.RawSearchResults.PrimaryQueryResult.RefinementResults;
 
-                const refinementRows = refinementResultsRows ? refinementResultsRows['Refiners'] : [];
+                const refinementRows: any = refinementResultsRows ? refinementResultsRows.Refiners : [];
                 if (refinementRows.length > 0) {
+
                     const component = await import(
                         /* webpackChunkName: 'search-handlebars-helpers' */
                         'handlebars-helpers'

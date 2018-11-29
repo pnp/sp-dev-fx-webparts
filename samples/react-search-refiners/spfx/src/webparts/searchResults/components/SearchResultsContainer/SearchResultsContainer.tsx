@@ -15,6 +15,9 @@ import SearchResultsTemplate from '../Layouts/SearchResultsTemplate';
 import styles from '../SearchResultsWebPart.module.scss';
 import { SortPanel } from '../SortPanel';
 import { SortDirection } from "@pnp/sp";
+import { ITermData, ITerm } from '@pnp/sp-taxonomy';
+import LocalizationHelper from '../../../../helpers/LocalizationHelper';
+import { Text } from '@microsoft/sp-core-library';
 
 declare var System: any;
 let FilterPanel = null;
@@ -282,7 +285,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 }
             } else {
                 this.setState({
-                    areResultsLoading: false
+                    areResultsLoading: false,
+                    lastQuery: '',
+                    results: { RefinementResults: [], RelevantResults: [] },
                 });
             }
         } else {
@@ -404,8 +409,12 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
      */
     private async _getLocalizedFilters(rawFilters: IRefinementResult[]): Promise<IRefinementResult[]> {
 
+        // Get the current lcid according to current page language
+        const lcid = LocalizationHelper.getLocaleId(this.props.context.pageContext.cultureInfo.currentUICultureName);
+
         let termsToLocalize: { uniqueIdentifier: string, termId: string, localizedTermLabel: string }[] = [];
         let updatedFilters = [];
+        let localizedTerms = [];
 
         rawFilters.map((filterResult) => {
 
@@ -432,45 +441,49 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
 
         if (termsToLocalize.length > 0) {
 
-            // Process all terms in a single JSOM call for performance purpose. In general JSOM is pretty slow so we try to limit the number of calls...
-            await this.props.taxonomyService.initialize();
+            // Get the terms from taxonomy
+            // If a term doesn't exist anymore, it won't be retrieved by the API so the termValues count could be less than termsToLocalize count
             const termValues = await this.props.taxonomyService.getTermsById(termsToLocalize.map((t) => { return t.termId; }));
 
-            const termsEnumerator = termValues.getEnumerator();
+            termsToLocalize.map((termToLocalize) => {
 
-            while (termsEnumerator.moveNext()) {
+                // Check if the term has been retrieved from taxonomy (i.e. exists)
+                const termsFromTaxonomy = termValues.filter((taxonomyTerm: ITerm & ITermData) => {
+                    const termIdFromTaxonomy = taxonomyTerm.Id.substring(taxonomyTerm.Id.indexOf('(') + 1, taxonomyTerm.Id.indexOf(')'));
+                    return termIdFromTaxonomy === termToLocalize.termId;
+                });
 
-                const currentTerm = termsEnumerator.get_current();
+                if (termsFromTaxonomy.length > 0) {
 
-                // Need to do this check in the case where the term indexed by the search doesn't exist anymore in the term store
-                if (!currentTerm.get_serverObjectIsNull()) {
+                    // Should be always unique since we can't have two terms with the same ids
+                    const termFromTaxonomy: ITerm & ITermData = termsFromTaxonomy[0];
 
-                    const termId = currentTerm.get_id();
-
-                    // Check if retrieved term is part of terms to localize
-                    const terms = termsToLocalize.filter((e) => { return e.termId === termId.toString(); });
-                    if (terms.length > 0) {
-                        termsToLocalize = termsToLocalize.map((term) => {
-                            if (term.termId === terms[0].termId) {
-                                return {
-                                    uniqueIdentifier: term.uniqueIdentifier,
-                                    termId: termId.toString(),
-                                    localizedTermLabel: termsEnumerator.get_current().get_name(),
-                                };
-                            } else {
-                                return term;
-                            }
-                        });
-                    }
+                    // It supposes the 'Label' property has been selected in the underlying call
+                    // A term always have a default label so the collection can't be empty
+                    const localizedLabel = termFromTaxonomy["Labels"]._Child_Items_.filter((label: any) => {
+                        return label.Language === lcid;
+                    });
+                    
+                    localizedTerms.push({
+                        uniqueIdentifier: termToLocalize.uniqueIdentifier,
+                        termId: termToLocalize.termId,
+                        localizedTermLabel: localizedLabel.length > 0 ? localizedLabel[0].Value : termFromTaxonomy.Name
+                    });
+                } else {
+                    localizedTerms.push({
+                        uniqueIdentifier: termToLocalize.uniqueIdentifier,
+                        termId: termToLocalize.termId,
+                        localizedTermLabel: Text.format(strings.TermNotFound, termToLocalize.termId)
+                    });
                 }
-            }
+            });
 
             // Update original filters with localized values
             rawFilters.map((filter) => {
                 let updatedValues = [];
 
                 filter.Values.map((value) => {
-                    const existingFilters = termsToLocalize.filter((e) => { return e.uniqueIdentifier === value.RefinementToken; });
+                    const existingFilters = localizedTerms.filter((e) => { return e.uniqueIdentifier === value.RefinementToken; });
                     if (existingFilters.length > 0) {
                         updatedValues.push({
                             RefinementCount: value.RefinementCount,

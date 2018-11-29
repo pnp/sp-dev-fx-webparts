@@ -1,4 +1,4 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version, Text, Environment, EnvironmentType, DisplayMode, Log } from '@microsoft/sp-core-library';
 import {
@@ -14,7 +14,9 @@ import {
   PropertyPaneToggle,
   PropertyPaneSlider,
   IPropertyPaneChoiceGroupOption,
-  PropertyPaneChoiceGroup
+  PropertyPaneChoiceGroup,
+  PropertyPaneCheckbox,
+
 } from '@microsoft/sp-webpart-base';
 import * as strings from 'SearchResultsWebPartStrings';
 import SearchResultsContainer from './components/SearchResultsContainer/SearchResultsContainer';
@@ -27,7 +29,6 @@ import TemplateService from '../../services/TemplateService/TemplateService';
 import { update, isEmpty } from '@microsoft/sp-lodash-subset';
 import MockSearchService from '../../services/SearchService/MockSearchService';
 import MockTemplateService from '../../services/TemplateService/MockTemplateService';
-import LocalizationHelper from '../../helpers/LocalizationHelper';
 import SearchService from '../../services/SearchService/SearchService';
 import TaxonomyService from '../../services/TaxonomyService/TaxonomyService';
 import MockTaxonomyService from '../../services/TaxonomyService/MockTaxonomyService';
@@ -35,7 +36,6 @@ import ISearchResultsContainerProps from './components/SearchResultsContainer/IS
 import { Placeholder, IPlaceholderProps } from '@pnp/spfx-controls-react/lib/Placeholder';
 import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 
-declare var System: any;
 const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
 export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchResultsWebPartProps> {
@@ -54,6 +54,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     constructor() {
         super();
         this._parseFieldListString = this._parseFieldListString.bind(this);
+
     }
 
     public async render(): Promise<void> {
@@ -83,6 +84,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     protected renderCompleted(): void {
         super.renderCompleted();
 
+        let queryKeywords;
+
         let renderElement = null;
         if (typeof this.properties.useHandlebarsHelpers === 'undefined') {
             this.properties.useHandlebarsHelpers = true;
@@ -96,6 +99,12 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             this.context.propertyPane.refresh();
         }
 
+        if (!dataSourceValue) {
+            queryKeywords = this.properties.defaultSearchQuery;
+        } else {
+            queryKeywords = dataSourceValue;
+        }
+
         const isValueConnected = !!this.properties.queryKeywords.tryGetSource();
 
         const searchContainer: React.ReactElement<ISearchResultsContainerProps> = React.createElement(
@@ -103,7 +112,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             {
                 searchService: this._searchService,
                 taxonomyService: this._taxonomyService,
-                queryKeywords: this.properties.queryKeywords.tryGetValue(),
+                queryKeywords: queryKeywords,
                 maxResultsCount: this.properties.maxResultsCount,
                 resultSourceId: this.properties.resultSourceId,
                 sortList: this.properties.sortList,
@@ -133,7 +142,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             }
         );
 
-        if (isValueConnected || (!isValueConnected && !isEmpty(this.properties.queryKeywords.tryGetValue()))) {
+        if (isValueConnected && !this.properties.useDefaultSearchQuery ||
+            isValueConnected && this.properties.useDefaultSearchQuery && this.properties.defaultSearchQuery || 
+            !isValueConnected && !isEmpty(queryKeywords)) {
             renderElement = searchContainer;
         } else {
             if (this.displayMode === DisplayMode.Edit) {
@@ -155,10 +166,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         } else {
 
-            const lcid = LocalizationHelper.getLocaleId(this.context.pageContext.cultureInfo.currentUICultureName);
-
             this._searchService = new SearchService(this.context);
-            this._taxonomyService = new TaxonomyService(this.context, lcid);
+            this._taxonomyService = new TaxonomyService(this.context.pageContext.site.absoluteUrl);
             this._templateService = new TemplateService(this.context.spHttpClient, this.context.pageContext.cultureInfo.currentUICultureName);
         }
 
@@ -166,6 +175,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         // Configure search query settings
         this._useResultSource = false;
+
 
         // Set the default search results layout
         this.properties.selectedLayout = this.properties.selectedLayout ? this.properties.selectedLayout : ResultsLayoutOption.List;
@@ -233,6 +243,10 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
 
     protected async onPropertyPaneFieldChanged(propertyPath: string) {
+
+        if (!this.properties.useDefaultSearchQuery) {
+            this.properties.defaultSearchQuery = '';
+        }
 
         if (propertyPath === 'selectedLayout') {
             // Refresh setting the right template for the property pane
@@ -543,6 +557,30 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      */
     private _getSearchQueryFields(): IPropertyPaneConditionalGroup {
 
+        let defaultSearchQueryFields: IPropertyPaneField<any>[] = [];
+
+        if (!!this.properties.queryKeywords.tryGetSource()) {
+            defaultSearchQueryFields.push(
+                PropertyPaneCheckbox('useDefaultSearchQuery', {
+                    text: strings.UseDefaultSearchQueryKeywordsFieldLabel
+                })
+            );
+        }
+
+        if (this.properties.useDefaultSearchQuery) {
+            defaultSearchQueryFields.push(
+                PropertyPaneTextField('defaultSearchQuery', {
+                    label: strings.DefaultSearchQueryKeywordsFieldLabel,
+                    description: strings.DefaultSearchQueryKeywordsFieldDescription,
+                    multiline: true,
+                    resizable: true,
+                    placeholder: strings.SearchQueryPlaceHolderText,
+                    onGetErrorMessage: this._validateEmptyField.bind(this),
+                    deferredValidationTime: 500
+                })
+            );
+        }
+
         return {
             primaryGroup: {
               groupFields: [
@@ -561,20 +599,29 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
               groupFields: [
                 PropertyPaneDynamicFieldSet({
                   label: strings.SearchQueryKeywordsFieldLabel,
+                
                   fields: [
                     PropertyPaneDynamicField('queryKeywords', {
-                      label: strings.SearchQueryKeywordsFieldLabel
+                        label: strings.SearchQueryKeywordsFieldLabel
                     })
                   ],
                   sharedConfiguration: {
                     depth: DynamicDataSharedDepth.Source,
-                  }
-                })
-              ]
+                  },
+                }),                
+              ].concat(defaultSearchQueryFields)
             },
             // Show the secondary group only if the web part has been
             // connected to a dynamic data source
             showSecondaryGroup: !!this.properties.queryKeywords.tryGetSource(),
+            onShowPrimaryGroup: () => {
+
+                // Reset dynamic data fields related values to be consistent
+                this.properties.useDefaultSearchQuery = false;
+                this.properties.defaultSearchQuery = '';
+                this.properties.queryKeywords.setValue('');
+                this.render();
+            }
           } as IPropertyPaneConditionalGroup;
     }
 

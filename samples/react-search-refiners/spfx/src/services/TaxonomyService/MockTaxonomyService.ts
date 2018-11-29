@@ -1,5 +1,6 @@
 
 import ITaxonomyService from './ITaxonomyService';
+import { ITerm } from '@pnp/sp-taxonomy';
 
 class MockTaxonomyService implements ITaxonomyService {
 
@@ -11,7 +12,7 @@ class MockTaxonomyService implements ITaxonomyService {
         return p1;
     }
 
-    public getTermsById(termIds: string[]): Promise<SP.Taxonomy.TermCollection> {
+    public getTermsById(termIds: string[]): Promise<ITerm[]> {
         throw new Error('Method not implemented.');
     }
 }

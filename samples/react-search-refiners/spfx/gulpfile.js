@@ -44,7 +44,5 @@ build.configureWebpack.mergeConfig({
     return generatedConfiguration;
   }
 });
-build.webpack.buildConfig
-build.addSuppression(new RegExp("\[sass\]",'g'));
 
 build.initialize(gulp);

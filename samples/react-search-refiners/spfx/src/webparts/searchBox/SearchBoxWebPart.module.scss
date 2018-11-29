@@ -1,5 +1,7 @@
 .searchBox {
 
+    position: relative;
+
     .errorMessage {
         margin-bottom: 10px;
     }
@@ -12,10 +14,31 @@
         padding: 10px;    
     }
 
+    .searchFieldGroup {
+        
+        display: flex;
+        position: relative;
+
+        .searchTextField {
+            width: 100%;
+        }
+
+        .searchBtn {
+            position: absolute;
+            right: 0;
+        }
+    }
+
     .suggestionPanel {
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 1;
+        background-color: #ffffff;
         border-bottom: 1px solid #ccc;
         border-left: 1px solid #ccc;
         border-right: 1px solid #ccc;
+        box-sizing: border-box;
     }
 
     .selected {
