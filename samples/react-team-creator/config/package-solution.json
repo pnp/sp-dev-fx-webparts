@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "teams-creator-client-side-solution",
+    "id": "3284bbaa-0441-4153-9738-69a27a4b5956",
+    "version": "1.1.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [{
+        "resource": "Microsoft Graph",
+        "scope": "Group.ReadWrite.All"
+      }, {
+        "resource": "Microsoft Graph",
+        "scope": "AppCatalog.ReadWrite.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/teams-creator.sppkg"
+  }
+}

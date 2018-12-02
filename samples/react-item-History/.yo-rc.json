@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "react-item-history",
+    "libraryId": "bc845683-0162-4f0c-b58a-f7f4237a1c46",
+    "environment": "spo"
+  }
+}

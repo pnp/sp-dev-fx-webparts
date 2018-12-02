@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "44181a37-27e5-4802-8f0b-4f8766792ede",
+  "id": "44181a37-27e5-4802-8f0b-4f8766792eda",
   "alias": "MapWebPart",
   "componentType": "WebPart",
 
@@ -22,6 +22,7 @@
     "properties": {
       "address": "",
       "bingMapsApiKey": "",
+      "city": "",
       "title": ""
     }
   }]

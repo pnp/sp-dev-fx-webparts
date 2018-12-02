@@ -1,0 +1,68 @@
+{
+  "luis_schema_version": "2.2.0",
+  "versionId": "1.0",
+  "name": "PnP - Optimiseur de recherche SharePoint (fr-fr)",
+  "desc": "PnP - Reconnaissance de mots clés de recherche (Français)",
+  "culture": "fr-fr",
+  "intents": [
+    {
+      "name": "None"
+    },
+    {
+      "name": "PnP.SearchByKeywords"
+    }
+  ],
+  "entities": [
+
+  ],
+  "composites": [],
+  "closedLists": [
+  ],
+  "regex_entities": [
+  ],
+  "bing_entities": [],
+  "model_features": [],
+  "regex_features": [],
+  "prebuiltEntities": [
+    {
+      "name": "keyPhrase",
+      "roles": []
+    }
+  ],
+  "patterns": [
+    {
+      "pattern": "je cherche des informations sur {keyPhrase} et {keyPhrase}",
+      "intent": "PnP.SearchByKeywords"
+    },
+    {
+      "pattern": "{keyPhrase}",
+      "intent": "PnP.SearchByKeywords"
+    },
+    {
+      "pattern": "documents sur {keyPhrase}",
+      "intent": "PnP.SearchByKeywords"
+    }
+  ],
+  "utterances": [
+    {
+      "text": "documents sur sharepoint",
+      "intent": "PnP.SearchByKeywords",
+      "entities": []
+    },
+    {
+      "text": "je cherche des ressources sur azure",
+      "intent": "PnP.SearchByKeywords",
+      "entities": []
+    },
+    {
+      "text": "plan de gouvernance office 365",
+      "intent": "PnP.SearchByKeywords",
+      "entities": []
+    },
+    {
+      "text": "schémas d'architecture",
+      "intent": "PnP.SearchByKeywords",
+      "entities": []
+    }
+  ]
+}

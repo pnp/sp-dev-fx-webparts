@@ -2,10 +2,11 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.5.0",
+    "version": "1.7.0",
     "libraryName": "skype-presence-spfx",
     "libraryId": "fcfeb3e4-bf84-4405-81c1-9c8f5dbaabe6",
     "packageManager": "npm",
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "isDomainIsolated": false
   }
 }

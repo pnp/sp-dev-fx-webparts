@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-    <CustomAction
-        Title="QueryStringDataSource"
-        Location="ClientSideExtension.ApplicationCustomizer"
-        ClientSideComponentId="24cae67d-dec7-4eff-bb41-49451d5b5a11"
-        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
-    </CustomAction>
-</Elements>

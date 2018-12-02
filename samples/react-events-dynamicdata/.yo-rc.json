@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.7.0",
+    "libraryName": "react-events-dynamicdata",
+    "libraryId": "dcd4558f-8ea7-4f77-b494-c2b8a4d51b1d",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

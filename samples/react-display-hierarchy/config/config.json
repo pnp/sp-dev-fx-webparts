@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-hierarchy-view-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactHierarchyView/ReactHierarchyViewWebPart.js",
+          "manifest": "./src/webparts/reactHierarchyView/ReactHierarchyViewWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactHierarchyViewWebPartStrings": "lib/webparts/reactHierarchyView/loc/{locale}.js"
+  }
+}

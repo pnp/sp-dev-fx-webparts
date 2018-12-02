@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.6.0",
+    "libraryName": "react-graph-personalemail",
+    "libraryId": "08d71f2b-958d-4a90-8ecf-05d08063b537",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

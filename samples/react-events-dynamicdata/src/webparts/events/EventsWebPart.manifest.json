@@ -20,6 +20,7 @@
     "description": { "default": "Shows upcoming events" },
     "officeFabricIconFontName": "Calendar",
     "properties": {
+      "event": "",
       "title": "Upcoming events"
     }
   }]

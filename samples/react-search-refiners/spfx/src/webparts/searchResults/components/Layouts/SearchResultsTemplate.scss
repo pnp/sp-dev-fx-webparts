@@ -1,0 +1,70 @@
+
+.template_root {
+    @import '~office-ui-fabric/dist/sass/Fabric.scss';
+    @import '~office-ui-fabric/dist/components/Label/Label.scss';
+    @import '~office-ui-fabric/dist/components/List/List.scss';
+    @import '~office-ui-fabric/dist/components/ListItem/ListItem.scss';
+    @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/FabricCore.scss';
+    
+    .template_defaultList {
+    
+        strong {
+            color: "[theme: themePrimary, default: #005a9e]";
+        }
+    }
+
+    .template_promotedResults {
+        border: 1px solid #eaeaea;
+        list-style: none;
+        padding: 15px;
+        margin-bottom: 15px;
+    
+        .title {
+            margin-bottom: 15px;
+        }
+        
+        li {
+            display: flex;
+            white-space: normal;
+        }
+    
+        i {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
+    
+    .template_defaultCard {
+        .singleCard {
+            margin: 10px;
+            border: 1px solid #eaeaea;
+            min-height: 200px;
+            .previewImg {
+                width: 100%;
+                height: 111px;
+                background-size: cover;
+                background-color: #eaeaea;
+                position: relative;
+                border-bottom: 1px solid #eaeaea;
+            }
+            .cardInfo {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .cardFileIcon {
+                left: 10px;
+                bottom: 8px;
+                position: absolute;
+            }
+        }
+        .singleCard:hover {
+            border-color: #c8c8c8;
+            cursor: pointer;
+        }
+    }
+    
+    .template_resultCount {
+        padding-left: 10px;
+        margin-bottom: 10px;
+    }
+}

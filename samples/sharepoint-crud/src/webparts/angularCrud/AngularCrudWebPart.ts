@@ -11,11 +11,13 @@ import * as strings from 'AngularCrudWebPartStrings';
 import * as angular from 'angular';
 import './app/app-module';
 
+
 export interface IAngularCrudWebPartProps {
   listName: string;
 }
 
 export default class AngularCrudWebPart extends BaseClientSideWebPart<IAngularCrudWebPartProps> {
+
   private $injector: angular.auto.IInjectorService;
 
   public render(): void {

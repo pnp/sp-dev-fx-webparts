@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "appId": "0c49d128-4705-4a37-9e62-c7f16e5f8c8e",
+            "language": "fr",
+            "version": "1.0"
+        },
+        {
+            "appId": "980e7fbb-9438-48c5-ad77-5ea2e1357d4f",
+            "language": "en",
+            "version": "1.0"
+        }
+    ]
+}

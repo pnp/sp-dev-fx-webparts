@@ -15,7 +15,6 @@ const styles: any = stylesImport;
 
 import ardStyles from './FormField.module.scss';
 
-
 export interface IFormFieldProps {
   className?: string;
   controlMode: ControlMode;
@@ -53,7 +52,8 @@ const FormField: React.SFC<IFormFieldProps> = (props) => {
       <div className={ css(formFieldClassName, 'od-ClientFormFields-field') }>
         <div className={ css('ard-FormField-wrapper', styles.wrapper) }>
           { label && <Label className={ css(ardStyles.label, {['is-required']: required}) } htmlFor={ this._id }>{ label }</Label> }
-          <div className={ css('ard-FormField-fieldGroup', ardStyles.controlContainerDisplay, active && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
+          <div className={ css('ard-FormField-fieldGroup', ardStyles.controlContainerDisplay, active
+          && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             {children}
           </div>
         </div>

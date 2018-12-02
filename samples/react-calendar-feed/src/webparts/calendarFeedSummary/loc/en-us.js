@@ -49,6 +49,8 @@ define([], function() {
     "ErrorInvalidiCalFeed": "The URL you provided does not appear to be an iCal feed. Are you sure you selected the right feed type?",
     "ErrorInvalidWordPressFeed": "The URL you provided does not appear to be a WordPress feed. Are you sure you selected the right feed type?",
     "AddToCalendarAriaLabel": "Press enter to download the calendar file to your device.",
-    "AddToCalendarButtonLabel": "Add to my calendar"
+    "AddToCalendarButtonLabel": "Add to my calendar",
+    "AllDayDateFormat": "dddd, MMMM Do YYYY",
+    "LocalizedTimeFormat": "llll"
   }
 });
