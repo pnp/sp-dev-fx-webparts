@@ -19,6 +19,5 @@ export interface ISearchResultsWebPartProps {
     selectedLayout: ResultsLayoutOption;
     externalTemplateUrl: string;
     inlineTemplateText: string;
-    useHandlebarsHelpers: boolean;
     webPartTitle: string;
 }

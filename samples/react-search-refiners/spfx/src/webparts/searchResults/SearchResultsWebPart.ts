@@ -87,9 +87,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         let queryKeywords;
 
         let renderElement = null;
-        if (typeof this.properties.useHandlebarsHelpers === 'undefined') {
-            this.properties.useHandlebarsHelpers = true;
-        }
 
         // Get value from data source
         const dataSourceValue = this.properties.queryKeywords.tryGetValue();
@@ -171,11 +168,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             this._templateService = new TemplateService(this.context.spHttpClient, this.context.pageContext.cultureInfo.currentUICultureName);
         }
 
-        await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
-
         // Configure search query settings
         this._useResultSource = false;
-
 
         // Set the default search results layout
         this.properties.selectedLayout = this.properties.selectedLayout ? this.properties.selectedLayout : ResultsLayoutOption.List;
@@ -265,8 +259,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 this.properties.externalTemplateUrl = '';
             }
         }
-
-        await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
     }
 
     /**
@@ -689,10 +681,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                     dialogTitle: strings.DialogTitle,
                     saveButtonText: strings.SaveButtonText
                 }
-            }),
-            PropertyPaneToggle('useHandlebarsHelpers', {
-                label: "Handlebars Helpers",
-                checked: this.properties.useHandlebarsHelpers
             })
         ];
 
