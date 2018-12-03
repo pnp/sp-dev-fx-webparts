@@ -8,12 +8,8 @@ define([], function() {
     "LoadingMessage": "Results are loading, please wait...",
     "MaxResultsCount": "Number of items to retrieve per page",
     "NoResultMessage": "There are no results to show",    
-    "RefinersFieldLabel": "Refiners",
-    "SortableFieldsLabel": "Sortable fields",
     "FilterPanelTitle": "Available filters",
-    "SortPanelTitle":"Sort",
     "FilterResultsButtonLabel": "Filters",
-    "SortResultsButtonLabel":"Sort",
     "SelectedFiltersLabel": "Selected filters:",
     "RemoveAllFiltersLabel": "Remove all filters",
     "ShowPagingLabel": "Show paging",
@@ -31,8 +27,6 @@ define([], function() {
     "InvalidResultSourceIdMessage": "Invalid identifier",
     "EnableQueryRulesLabel": "Enable query rules",
     "StylingSettingsGroupName": "Styling options",
-    "RefinersFieldDescription": "Specifies managed properties used as refiners (ordered comma-separated list). You can specify the label by using the following format <Managed Property Name>:\"My friendly name\".",
-    "SortableFieldsDescription": "Specifies sortable properties used by the sort panel (ordered comma-separated list). You can specify the label by using the following format <Managed Property Name>:\"My friendly name\".",
     "SelectedPropertiesFieldDescription": "Speficies the properties to retrieve from the search results.",
     "SearchQueryKeywordsFieldDescription": "Use pre-defined search query keywords to retrieve a static set of results.",
     "CountMessageLong": "<b>{0}</b> results for '<em>{1}</em>'",
@@ -54,8 +48,10 @@ define([], function() {
     "PromotedResultsLabel": "Promoted result(s)",
     "PanelCloseButtonAria":"Close",
     "Sort": {
-      "SortList": "Initial sort order",
-      "SortListDescription": "Specify initial sort order in a comma separated list on the format <Managed Property Name>:ascending/descending (default:Created:descending,Size:ascending).",
+      "SortableFieldsPropertyPaneField": "Sortable properties",
+      "SortableFieldsDescription": "Specifies sortable properties that users can use in the UI. Only one property can be used at a time for sorting and will override the search order specified in the WP if exists.",
+      "SortPropertyPaneFieldLabel": "Sort order",
+      "SortListDescription": "Specify the sort order for the search results. This will only  applied when no manual filters have been set (i.e. sortable fields)",
       "SortDirectionAscendingLabel":"Ascending",
       "SortDirectionDescendingLabel":"Descending",
       "SortErrorMessage":"Invalid search property (Check if the managed property is sortable).",
@@ -63,10 +59,19 @@ define([], function() {
       "SortPanelSortFieldAria":"Select a field",
       "SortPanelSortFieldPlaceHolder":"Select a field",
       "SortPanelSortDirectionLabel":"Sort Direction",
+      "SortableFieldManagedPropertyField": "Sort managed property",
+      "SortableFieldDisplayValueField": "Field name to display"  
+    },
+    "Refiners": {
+      "RefinersFieldLabel": "Refiners",
+      "RefinerManagedPropertyField": "Filter managed property",
+      "RefinerDisplayValueField": "Filter name to display",
+      "RefinersFieldDescription": "Specifies managed properties used as refiners. If there are no values for a filter property, it won't appear in the panel.",
     },
     "TermNotFound": "(Term with ID '{0}' not found)",
     "UseDefaultSearchQueryKeywordsFieldLabel": "Use a default search query",
     "DefaultSearchQueryKeywordsFieldLabel": "Default search query",
-    "DefaultSearchQueryKeywordsFieldDescription": "This query will be used when the data source value is still empty."
+    "DefaultSearchQueryKeywordsFieldDescription": "This query will be used when the data source value is still empty.",
+    "ConfigureBtnLabel": "Configure"
   }
 });

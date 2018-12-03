@@ -26,7 +26,26 @@
         "properties": {
             "queryKeywords": "",
             "queryTemplate": "{searchTerms} Path:{Site}",
-            "refiners": "Created:\"Created Date\",Size:\"Size of the file\"",
+            "sortList": [
+                {
+                    "sortField": "Created",
+                    "sortDirection": 1
+                },
+                {
+                    "sortField": "Size",
+                    "sortDirection": 2
+                }
+            ],
+            "refiners": [
+                {
+                    "refinerName": "Created",
+                    "displayValue": "Created Date"
+                },
+                {
+                    "refinerName": "Size",
+                    "displayValue": "Size of the file"
+                }
+            ],
             "selectedProperties": "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL",
             "enableQueryRules": false,
             "maxResultsCount": 10,

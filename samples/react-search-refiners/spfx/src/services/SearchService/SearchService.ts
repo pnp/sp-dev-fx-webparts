@@ -21,7 +21,7 @@ class SearchService implements ISearchService {
     private _selectedProperties: string[];
     private _queryTemplate: string;
     private _resultSourceId: string;
-    private _sortList: string;
+    private _sortList: Sort[];
     private _enableQueryRules: boolean;
 
     public get resultsCount(): number { return this._resultsCount; }
@@ -36,8 +36,8 @@ class SearchService implements ISearchService {
     public set resultSourceId(value: string) { this._resultSourceId = value; }
     public get resultSourceId(): string { return this._resultSourceId; }
 
-    public set sortList(value: string) { this._sortList = value; }
-    public get sortList(): string { return this._sortList; }
+    public set sortList(value: Sort[]) { this._sortList = value; }
+    public get sortList(): Sort[] { return this._sortList; }
 
     public set enableQueryRules(value: boolean) { this._enableQueryRules = value; }
     public get enableQueryRules(): boolean { return this._enableQueryRules; }
@@ -91,35 +91,7 @@ class SearchService implements ISearchService {
         searchQuery.RowLimit = this._resultsCount ? this._resultsCount : 50;
         searchQuery.SelectProperties = this._selectedProperties;
         searchQuery.TrimDuplicates = false;
-
-        let sortList: Sort[] = [
-            {
-                Property: 'Created',
-                Direction: SortDirection.Descending
-            },
-            {
-                Property: 'Size',
-                Direction: SortDirection.Ascending
-            }
-        ];
-
-        if (this._sortList) {
-            let sortDirections = this._sortList.split(',');
-            sortList = sortDirections.map(sorter => {
-                let sort = sorter.split(':');
-                let s: Sort = { Property: sort[0].trim(), Direction: SortDirection.Descending };
-                if (sort.indexOf('[') !== -1) {
-                    s.Direction = SortDirection.FQLFormula;
-                }
-                else if (sort.length > 1) {
-                    let direction = sort[1].trim().toLocaleLowerCase();
-                    s.Direction = direction === "ascending" ? SortDirection.Ascending : SortDirection.Descending;
-                }
-                return s;
-            });
-        }
-
-        searchQuery.SortList = sortList;
+        searchQuery.SortList = this._sortList ? this._sortList : [];
 
         if (refiners) {
             // Get the refiners order specified in the property pane
