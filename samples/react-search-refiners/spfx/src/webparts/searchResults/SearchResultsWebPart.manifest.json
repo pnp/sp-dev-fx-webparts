@@ -3,14 +3,9 @@
   "id": "42ad2740-3c60-49cf-971a-c44e33511b93",
   "alias": "SearchResultsWebPart",
   "componentType": "WebPart",
-
-  // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
-
-  // If true, the component can only be installed on sites where Custom Script is allowed.
-  // Components that allow authors to embed arbitrary script code should set this to true.
-  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "supportsFullBleed": true,
   "requiresCustomScript": false,
 
   "preconfiguredEntries": [
