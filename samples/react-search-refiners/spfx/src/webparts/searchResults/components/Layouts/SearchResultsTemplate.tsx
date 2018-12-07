@@ -48,7 +48,7 @@ export default class SearchResultsTemplate extends React.Component<ISearchResult
     public componentDidUpdate() {
         // Post render operations (previews on elements, etc.)
         this.props.templateService.initPreviewElements();
-        this.onComponentResize();        
+        //this.onComponentResize();        
     }
 
     public componentWillReceiveProps(nextProps: ISearchResultsTemplateProps) {

@@ -80,6 +80,10 @@ abstract class BaseTemplateService {
                 display: flex;
                 display: -ms-flexbox;
             }
+            
+            .video-js, .iframePreview {
+                width: 400px;
+            }
 
             .template_icon {
                 height: 32px;
@@ -484,7 +488,7 @@ abstract class BaseTemplateService {
                             controls: true,
                             autoplay: false,
                             preload: "metadata",
-                            fluid: true,
+                            fluid: false,
                             poster: thumbnailSrc ? thumbnailSrc : null
                         });
 

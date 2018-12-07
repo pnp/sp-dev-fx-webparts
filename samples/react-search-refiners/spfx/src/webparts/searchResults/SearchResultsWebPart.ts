@@ -33,6 +33,7 @@ import TaxonomyService from '../../services/TaxonomyService/TaxonomyService';
 import MockTaxonomyService from '../../services/TaxonomyService/MockTaxonomyService';
 import ISearchResultsContainerProps from './components/SearchResultsContainer/ISearchResultsContainerProps';
 import { Placeholder, IPlaceholderProps } from '@pnp/spfx-controls-react/lib/Placeholder';
+import { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } from '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 import { SortDirection, Sort } from '@pnp/sp';
@@ -52,6 +53,11 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      * The template to display at render time
      */
     private _templateContentToDisplay: string;
+
+    public constructor() {
+        super();
+        this._templateContentToDisplay = '';
+    }
 
     public async render(): Promise<void> {
         // Configure the provider before the query according to our needs
@@ -306,6 +312,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         if (propertyPath === 'selectedLayout') {
             // Refresh setting the right template for the property pane
             await this._getTemplateContent();
+
+            this.context.propertyPane.refresh();
         }
 
         // Detect if the layout has been changed to custom...
@@ -398,32 +406,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
 
     /**
-     * Custom handler when a custom property pane field is updated
-     * @param propertyPath the name of the updated property
-     * @param newValue the new value for this property
-     */
-    private async _onCustomPropertyPaneChange(propertyPath: string, newValue: any): Promise<void> {
-
-        // Stores the new value in web part properties
-        update(this.properties, propertyPath, (): any => { return newValue; });
-
-        // Call the default SPFx handler
-        this.onPropertyPaneFieldChanged(propertyPath);
-
-        // Refresh setting the right template for the property pane
-        await this._getTemplateContent();
-
-        // Refreshes the web part manually because custom fields don't update since sp-webpart-base@1.1.1
-        // https://github.com/SharePoint/sp-dev-docs/issues/594
-        if (!this.disableReactivePropertyChanges) {
-            // The render has to be completed before the property pane to refresh to set up the correct property value 
-            // so the property pane field will use the correct value for future edit
-            this.render();
-            this.context.propertyPane.refresh();
-        }
-    }
-
-    /**
      * Custom handler when the external template file URL
      * @param value the template file URL value
      */
@@ -477,7 +459,13 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 let itemProp;
                 if (pageProp.indexOf(".Label") !== -1 || pageProp.indexOf(".TermID") !== -1) {
                     let term = pageProp.split(".");
-                    itemProp = item[term[0]][0][term[1]];
+                    
+                    // Handle multi or single values
+                    if (item[term[0]].length > 0) {
+                        itemProp = item[term[0]][0][term[1]];                 
+                    } else {
+                        itemProp = item[term[0]][term[1]];   
+                    }
                 } else {
                     itemProp = item[pageProp];
                 }
@@ -516,8 +504,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 multiline: true,
                 resizable: true,
                 placeholder: strings.SearchQueryPlaceHolderText,
-                deferredValidationTime: 300,
-                disabled: this._useResultSource,
+                deferredValidationTime: 300
             }),
             PropertyPaneTextField('resultSourceId', {
                 label: strings.ResultSourceIdLabel,
@@ -752,7 +739,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 label: 'Results layout',
                 options: layoutOptions
             }),
-            new this._propertyPage.PropertyPaneTextDialog('inlineTemplateText', {
+            /*new this._propertyPage.PropertyPaneTextDialog('inlineTemplateText', {
                 dialogTextFieldValue: this._templateContentToDisplay,
                 onPropertyChange: this._onCustomPropertyPaneChange.bind(this),
                 disabled: !canEditTemplate,
@@ -763,6 +750,17 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                     dialogTitle: strings.DialogTitle,
                     saveButtonText: strings.SaveButtonText
                 }
+            }),*/
+            PropertyFieldCodeEditor('inlineTemplateText', {
+                label: strings.DialogButtonLabel,
+                panelTitle: strings.DialogTitle,
+                initialValue: this._templateContentToDisplay,
+                deferredValidationTime: 500,
+                onPropertyChange: this.onPropertyPaneFieldChanged,
+                properties: this.properties,
+                disabled: !canEditTemplate,
+                key: 'inlineTemplateTextCodeEditor',
+                language: PropertyFieldCodeEditorLanguages.Handlebars
             }),
             PropertyPaneToggle('useHandlebarsHelpers', {
                 label: "Handlebars Helpers",
