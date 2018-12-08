@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-adaptive-cards-image-gallery-client-side-solution",
+    "id": "2321325f-19a4-4895-8bdd-9a5447d462b1",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "features": [
+      {
+        "title": "react-adaptive-cards-image-gallery-deployment",
+        "description": "react-adaptive-cards-image-gallery-deployment",
+        "id": "bf461e6f-0fd4-4f3c-a77a-bd185e91cf8f",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-adaptive-cards-image-gallery.sppkg"
+  }
+}
