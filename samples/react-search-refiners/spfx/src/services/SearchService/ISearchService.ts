@@ -1,4 +1,5 @@
 import { ISearchResults, IRefinementFilter } from '../../models/ISearchResult';
+import { Sort } from '@pnp/sp';
 
 interface ISearchService {
 
@@ -25,7 +26,7 @@ interface ISearchService {
     /**
      * The sort order of the results
      */
-    sortList?: string;
+    sortList?: Sort[];
 
     /**
      * Indicates wheter or not the query rules should be applied in the query

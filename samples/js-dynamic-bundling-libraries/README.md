@@ -10,7 +10,7 @@ Post Button Click that imports jQuery and additional functionality:
 ![preview](./assets/WebPart-Preview-PostjQueryClick.jpg)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.6.0-blue.svg)
+![drop](https://img.shields.io/badge/drop-1.7.0-orange.svg)
 
 ## Applies to
 
@@ -29,6 +29,7 @@ js-dynamic-bundling-libaries | David Warner II ([@DavidWarnerII](https://twitter
 Version|Date|Comments
 -------|----|--------
 1.0|September 21, 2018|Initial release
+1.1|December 3, 2018|Updated for SPFx 1.7.0
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

@@ -3,7 +3,7 @@
   "solution": {
     "name": "PnP - Search Web Parts",
     "id": "890affef-33e0-4d72-bd72-36399e02143b",
-    "version": "2.2.0.0",
+    "version": "2.2.0.1",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": false,
     "isDomainIsolated": false

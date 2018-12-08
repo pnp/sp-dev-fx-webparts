@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+   <ListInstance 
+           CustomSchema="schema.xml"
+           FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+           Title="Adaptive Card Images" 
+           Description="List with image information"
+           TemplateType="100"
+           Url="Lists/AdaptiveCardImages">
+      <Data>
+         <Rows>
+            <Row>
+               <Field Name="Title">Sea</Field>
+               <Field Name="ImageLink">https://picsum.photos/200/200?image=100, Sea Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Sea, Sea Wikipedia</Field>
+               <Field Name="SortOrder">1</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Yak</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=200, Yak Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Domestic_yak, Yak Wikipedia</Field>
+               <Field Name="SortOrder">2</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Autumn</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=301, Autumn Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Autumn, Autumn Wikipedia</Field>
+               <Field Name="SortOrder">3</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Plant</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=400, Plant Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Plant, Plant Wikipedia</Field>
+               <Field Name="SortOrder">4</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Building</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=500, Building Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Building, Building Wikipedia</Field>
+               <Field Name="SortOrder">5</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Forest</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=600, Forest Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Forest, Forest Wikipedia</Field>
+               <Field Name="SortOrder">6</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Fish</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=700, Fish Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Fish, Fish Wikipedia</Field>
+               <Field Name="SortOrder">7</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Auditorium</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=800, Auditorium Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Auditorium, Auditorium Wikipedia</Field>
+               <Field Name="SortOrder">8</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Bridge</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=900, Bridge Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Bridge, Bridge Wikipedia</Field>
+               <Field Name="SortOrder">9</Field>
+            </Row>
+            <Row>
+               <Field Name="Title">Sea Link</Field>
+               <Field Name="ImageLink">https://picsum.photos/300/200?image=950, Sea Link Image</Field>
+               <Field Name="NavigationURL">https://en.wikipedia.org/wiki/Sealink, Sea Link Wikipedia</Field>
+               <Field Name="SortOrder">10</Field>
+            </Row>
+         </Rows>
+        </Data>
+   </ListInstance>
+
+</Elements>
