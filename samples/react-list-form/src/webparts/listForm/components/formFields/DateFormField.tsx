@@ -11,8 +11,8 @@ export interface IDateFormFieldProps extends IDatePickerProps {
 
 
 export default class DateFormField extends React.Component<IDateFormFieldProps> {
-  public constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   public render() {
