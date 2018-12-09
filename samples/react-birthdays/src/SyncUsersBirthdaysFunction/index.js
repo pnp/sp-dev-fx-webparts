@@ -68,7 +68,7 @@ async function GetMSGraphToken() {
             access_token = result.access_token;
         }
     } catch (e) {
-        __context.log(`Error getting AccessToken, error: ${e}`);
+        _context.log(`Error getting AccessToken, error: ${e}`);
     }
 
     return access_token;
