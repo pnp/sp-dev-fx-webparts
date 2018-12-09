@@ -1,12 +1,12 @@
 
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { ApplicationCustomizerContext } from "@microsoft/sp-application-base";
-
 import { SPHttpClient, SPHttpClientResponse, MSGraphClient } from "@microsoft/sp-http";
 import * as moment from 'moment';
 
 export class SPService {
   private graphClient: MSGraphClient = null;
+  private  birthdayListTitle: string = "Birthdays";
   constructor(private _context: WebPartContext | ApplicationCustomizerContext) {
 
   }
@@ -37,7 +37,7 @@ export class SPService {
         }
       }
       this.graphClient = await this._context.msGraphClientFactory.getClient();
-      _results = await this.graphClient.api("sites/root/lists/d711e9ce-6f41-41e7-8840-e9e89532013e/items")
+      _results = await this.graphClient.api(`sites/root/lists('${this.birthdayListTitle}')/items`)
         .version('v1.0')
         .expand('fields')
         .top(upcommingDays)

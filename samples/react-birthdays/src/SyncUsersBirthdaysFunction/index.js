@@ -16,7 +16,7 @@ let _deltaLink;
 let _appCatalog;
 
 module.exports = async function (context, myTimer) {
-    // Main 
+    // Main
     var timeStamp = new Date().toISOString();
     if (myTimer.isPastDue) {
         context.log('User Birthdays Sync is running late!');
@@ -34,7 +34,7 @@ module.exports = async function (context, myTimer) {
             context.log(`Error Create or Access Birthday List ${timeStamp}`);
             // process.exit(1);
         }
-        // End 
+        // End
         context.log(`User Birthdays Sync ended at ${timeStamp}`);
         process.exit(0);
     }
@@ -61,7 +61,7 @@ async function GetMSGraphToken() {
         body: payload,
         json: true
     };
-    // Request 
+    // Request
     try {
         const result = await request(options)
         if (result && result.access_token) {
@@ -114,7 +114,7 @@ async function GetUsersBirthday(userId) {
 // Read all Users
 async function getAllUsers(uri) {
     try {
-        // get users 'https://graph.microsoft.com/v1.0/users/delta?$select=displayName,jobTitle,mail,Id'; or  nextLink URL 
+        // get users 'https://graph.microsoft.com/v1.0/users/delta?$select=displayName,jobTitle,mail,Id'; or  nextLink URL
         const _users = await GetUsers(uri);
         // has data?
         if ( _users && _users.value && _users.value.length === 0 ){
@@ -137,13 +137,13 @@ async function getAllUsers(uri) {
                 const _year = moment(_birthday.toString()).format('YYYY');
                 // The Birthday Date has year 2000
                 if (_year === '2000') {
-                    // check if user exists 
+                    // check if user exists
                     _exists = await checkUserExist(user);
                     if (!_exists) {
                         // Add user to List
                         await addUser(user, _birthday)
                     } else {
-                        //Update user  
+                        //Update user
                         await updateUser(user, _birthday)
                     }
                 }
@@ -176,7 +176,7 @@ async function getAllUsers(uri) {
 async function onInit(context, myTimer) {
     _context = context;
     try {
-        // setup PnPJs 
+        // setup PnPJs
         sp.setup({
             sp: {
                 fetchClientFactory: () => {
@@ -219,7 +219,7 @@ async function addUser(user, _birthday) {
     return _item ? _item : null;
 }
 
-// Update User Data 
+// Update User Data
 async function updateUser(user, _birthday) {
     let _userUpdated = null;
     const _item = await sp.web.lists.getByTitle(birthdayListTitle).items.top(1).filter(`userAADGUID eq '${user.id}'`).get()
@@ -292,7 +292,7 @@ async function ensureBirthdaysList() {
                     { Required: true });
                 await emailFieldAddResult.field.update({ Title: "Email" });
                 const BirthdayFieldAddResult = await ensureResult.list.fields.addDateTime(
-                    "Birthday", 
+                    "Birthday",
                    );
                 await BirthdayFieldAddResult.field.update({ Title: "Birthday" });
                 const userAADGUIDFieldAddResult = await ensureResult.list.fields.addText(

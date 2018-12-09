@@ -1,7 +1,7 @@
 # React Birthdays Web Part
 
 ## Summary
-The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's home site called "Birthdays."
+The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's home site with title "Birthdays."
 
 
 There is an Azure function available that receives ADA user birthdays, this function creates a list on the tenant root site, if it does not exist.
@@ -24,7 +24,7 @@ But you can synchronize the Birthdays list with other applications eg ERP System
 
 ## Prerequisites
  
-Existing list in tenant root site, with the name "Birthdays"  and columns:
+Existing list in tenant root site, with the Title "Birthdays"  and columns:
 
 Column Internal Name|Type|Required| comments
 --------------------|----|--------|----------
@@ -62,7 +62,8 @@ Version|Date|Comments
  
 
 ## Features
-This project contains sample Birthday web parts built on the SharePoint Framework using React.
+This project contains sample Birthday web parts built on the SharePoint Framework using React
+and an Azure Function to get user Birthdays from AAD.
 This sample illustrates the following concepts on top of the SharePoint Framework:
 - using React for building SharePoint Framework client-side web parts
 - using React components for building Birthday web part
