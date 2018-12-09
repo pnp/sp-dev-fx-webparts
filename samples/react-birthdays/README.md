@@ -24,7 +24,7 @@ But ypu can sync the Birthday list from LOBS system for example company ERP, HR 
 
 ## Prerequisites
  
-> Existing list in tenant root site, with the name "Birthdays"  and columns:
+Existing list in tenant root site, with the name "Birthdays"  and columns:
 
 Column Internal Name|Type|Required| comments
 --------------------|----|--------|----------
