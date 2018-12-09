@@ -1,13 +1,13 @@
 # React Birthdays Web Part
 
 ## Summary
-The Birthdays web part show upcoming birthdays in company, the web part read the birthdays from a list that is locate on tenant root site, called "Birthdays".
+The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's home site called "Birthdays."
 
 
-There are available a Azure Function that get user Birthdays from AAD, this function create a list in Tenant Root Site if not exists.
-See the local.settings.json for detail of application variavel required.
+There is an Azure function available that receives ADA user birthdays, this function creates a list on the tenant root site, if it does not exist.
+See the local.settings.json for details on the required application variable.
 
-But ypu can sync the Birthday list from LOBS system for example company ERP, HR or other sources.
+But you can synchronize the Birthdays list with other applications eg ERP Systems, HR or other sources
 
 
 ![Brithdays Web Part](./assets/birthdays.png)
@@ -58,6 +58,8 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
+
+ 
 
 ## Features
 This project contains sample Birthday web parts built on the SharePoint Framework using React.
