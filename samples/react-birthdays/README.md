@@ -27,6 +27,7 @@ But ypu can sync the Birthday list from LOBS system for example company ERP, HR 
 > Existing list in tenant root site, with the name "Birthdays"  and columns:
 
 Column Internal Name|Type|Required| comments
+--------------------|----|--------|----------
 jobTitle| Text| no|
 Birthday| DateTime | true|
 userAADGUID| Text| no | required if used Azure Function to get Birthdays from AAD
