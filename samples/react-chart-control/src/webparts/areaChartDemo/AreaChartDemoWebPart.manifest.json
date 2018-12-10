@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "fcba1920-e685-428a-8637-ab15883a2d0b",
+  "alias": "AreaChartDemoWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Area Chart" },
+    "description": { "default": "Demonstrates how to use an area chart" },
+    "officeFabricIconFontName": "AreaChart",
+    "properties": {
+      "description": "Area Chart"
+    }
+  }]
+}

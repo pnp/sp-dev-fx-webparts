@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "98c90b31-f355-4c24-9997-a7c25e0ff016",
+  "alias": "RealtimePluginDemoWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Realtime Plugin" },
+    "description": { "default": "Demonstrates using a plugin to render real-time charts." },
+    "officeFabricIconFontName": "Streaming",
+    "properties": {
+      "description": "Realtime Plugin"
+    }
+  }]
+}

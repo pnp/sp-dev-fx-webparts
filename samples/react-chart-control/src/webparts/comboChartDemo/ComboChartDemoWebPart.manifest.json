@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "849fad01-2cf4-4653-88ef-1fa9151a7b17",
+  "alias": "ComboChartDemoWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Combo Chart" },
+    "description": { "default": "Demonstrates how to create combination charts" },
+    "officeFabricIconFontName": "BIDashboard",
+    "properties": {
+      "description": "Combo Chart"
+    }
+  }]
+}

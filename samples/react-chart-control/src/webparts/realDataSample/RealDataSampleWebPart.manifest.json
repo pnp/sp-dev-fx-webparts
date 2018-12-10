@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "c00f0158-544d-4ccf-96cb-b13355516650",
+  "alias": "RealDataSampleWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Real Data Sample" },
+    "description": { "default": "Demonstrates how to render a chart using real data coming from an external feed" },
+    "officeFabricIconFontName": "GitGraph",
+    "properties": {
+      "repoOwner": "SharePoint",
+      "repo": "sp-dev-fx-webparts"
+    }
+  }]
+}
