@@ -141,6 +141,7 @@ abstract class BaseTemplateService {
                 {{#each items as |item|}}
                     <li class="template_listItem" tabindex="0">
                         {{#> resultTypes}}
+                            {{!-- The block below will be used as default item template if no result types matched --}}
                             <div class="template_result">
                                     <img class="template_icon" src="{{iconSrc}}"/>
                                     <div class="template_contentContainer">
@@ -199,6 +200,7 @@ abstract class BaseTemplateService {
                     {{#each items as |item|}}
                         <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg4">
                             {{#> resultTypes}}
+                                {{!-- The block below will be used as default item template if no result types matched --}}
                                 <div class="singleCard">
                                     <div class="previewImg" style="background-image: url('{{getPreviewSrc item}}')">
                                         <img class="cardFileIcon" src="{{iconSrc}}"/>
@@ -236,6 +238,7 @@ abstract class BaseTemplateService {
                 <ul class="ms-List">
                     {{#each items as |item|}}
                         {{#> resultTypes}}
+                            {{!-- The block below will be used as default item template if no result types matched --}}
                             <li class="ms-ListItem ms-ListItem--image" tabindex="0">
                                 <span class="ms-ListItem-primaryText"><a href="{{getUrl item}}">{{Title}}</a></span>
                             </li>
@@ -429,9 +432,13 @@ abstract class BaseTemplateService {
             templateContent = await this.getFileContent(currentResultType.externalTemplateUrl);
         }
 
+        let handlebarsToken = currentResultType.value.match(/^\{\{(.*)\}\}$/);
+
         let operator = currentResultType.operator;
         let param1 = currentResultType.property;
-        let param2 = `"${currentResultType.value}"`;
+
+        // Use a token or a string value
+        let param2 = handlebarsToken ? handlebarsToken[1] : `"${currentResultType.value}"`;
 
         // Operator: "Starts With"
         if (currentResultType.operator === ResultTypeOperator.StartsWith) {

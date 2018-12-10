@@ -729,7 +729,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
             default:
                 dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeCustomItem();
-                break
+                break;
         }
 
         // Sets up styling fields
@@ -837,7 +837,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                               React.createElement(TextDialog, { 
                                     language: PropertyFieldCodeEditorLanguages.Handlebars,
                                     dialogTextFieldValue: value ? value : dialogTextFieldValue,
-                                    onChanged: (value) => onUpdate(field.id, value),
+                                    onChanged: (fieldValue) => onUpdate(field.id, fieldValue),
                                     strings: {
                                         cancelButtonText: strings.CancelButtonText,
                                         dialogButtonText: strings.DialogButtonText,
