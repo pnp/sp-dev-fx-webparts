@@ -24,6 +24,8 @@ let FilterPanel = null;
 
 export default class SearchResultsContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 
+    private _searchWpRef: HTMLElement;
+
     public constructor(props) {
         super(props);
 
@@ -144,7 +146,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                                     webUrl: this.props.context.pageContext.web.serverRelativeUrl,
                                     maxResultsCount: this.props.maxResultsCount,
                                     actualResultsCount: items.RelevantResults.length,
-                                    strings: strings,
+                                    strings: strings
                                 }
                             }
                         />
@@ -162,6 +164,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         
         return (
             <div className={styles.searchWp}>
+                <div tabIndex={-1} ref={ (ref) => { this._searchWpRef = ref; }}></div>
                 {renderWpContent}
             </div>
         );
@@ -390,6 +393,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             currentPage: pageNumber,
             areResultsLoading: true,
         });
+
+        this._searchWpRef.focus();
 
         const refinerManagedProperties = this.props.refiners.map(e => { return e.refinerName ;}).join(',');
 

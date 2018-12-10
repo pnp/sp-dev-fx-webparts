@@ -16,6 +16,7 @@ import {
   IPropertyPaneChoiceGroupOption,
   PropertyPaneChoiceGroup,
   PropertyPaneCheckbox,
+  PropertyPaneHorizontalRule,
 } from '@microsoft/sp-webpart-base';
 import * as strings from 'SearchResultsWebPartStrings';
 import SearchResultsContainer from './components/SearchResultsContainer/SearchResultsContainer';
@@ -38,6 +39,8 @@ import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spf
 import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 import { SortDirection, Sort } from '@pnp/sp';
 import { ISortFieldConfiguration, ISortFieldDirection } from '../../models/ISortFieldConfiguration';
+import { ResultTypeOperator } from '../../models/ISearchResultType';
+import { TextDialog } from '../controls/TextDialog/TextDialog';
 
 const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
@@ -46,7 +49,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private _searchService: ISearchService;
     private _taxonomyService: ITaxonomyService;
     private _templateService: BaseTemplateService;
-    private _useResultSource: boolean;
     private _propertyPage = null;
 
     /**
@@ -129,7 +131,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 templateService: this._templateService,
                 templateContent: this._templateContentToDisplay,
                 webPartTitle: this.properties.webPartTitle,
-                context: this.context
+                context: this.context,
+                resultTypes: this.properties.resultTypes
             } as ISearchResultsContainerProps
         );
 
@@ -176,10 +179,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
 
         await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
-
-        // Configure search query settings
-        this._useResultSource = false;
-
 
         // Set the default search results layout
         this.properties.selectedLayout = this.properties.selectedLayout ? this.properties.selectedLayout : ResultsLayoutOption.List;
@@ -250,6 +249,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         this.properties.sortableFields = Array.isArray(this.properties.sortableFields) ? this.properties.sortableFields : [];                                                                        
         this.properties.selectedProperties = this.properties.selectedProperties ? this.properties.selectedProperties : "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL";
         this.properties.maxResultsCount = this.properties.maxResultsCount ? this.properties.maxResultsCount : 10;
+        this.properties.resultTypes = Array.isArray(this.properties.resultTypes) ? this.properties.resultTypes : [];
     }
 
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -299,7 +299,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     protected async loadPropertyPaneResources(): Promise<void> {
         this._propertyPage = await import(
             /* webpackChunkName: 'search-property-pane' */
-            '../controls/PropertyPaneTextDialog/PropertyPaneTextDialog'
+            '../controls/TextDialog/TextDialog'
         );
     }
 
@@ -359,13 +359,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private validateSourceId(value: string): string {
         if (value.length > 0) {
             if (!/^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$/.test(value)) {
-                this._useResultSource = false;
                 return strings.InvalidResultSourceIdMessage;
-            } else {
-                this._useResultSource = true;
             }
-        } else {
-            this._useResultSource = false;
         }
 
         return '';
@@ -401,6 +396,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             default:
                 break;
         }
+
+        // Register result types inside the template      
+        this._templateService.registerResultTypes(this.properties.resultTypes);
 
         this._templateContentToDisplay = templateContent;
     }
@@ -462,7 +460,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                     
                     // Handle multi or single values
                     if (item[term[0]].length > 0) {
-                        itemProp = item[term[0]][0][term[1]];                 
+                        itemProp = item[term[0]].map(e => { return e[term[1]]; }).join(',');                 
                     } else {
                         itemProp = item[term[0]][term[1]];   
                     }
@@ -513,9 +511,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 deferredValidationTime: 300
             }),
             PropertyFieldCollectionData('sortList', {
-                manageBtnLabel: strings.ConfigureBtnLabel,
+                manageBtnLabel: strings.Sort.EditSortLabel,
                 key: 'sortList',
-                panelHeader: strings.Sort.SortPropertyPaneFieldLabel,
+                panelHeader: strings.Sort.EditSortLabel,
                 panelDescription: strings.Sort.SortListDescription,
                 label: strings.Sort.SortPropertyPaneFieldLabel,
                 value: this.properties.sortList,
@@ -546,9 +544,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 ]
             }),
             PropertyFieldCollectionData('sortableFields', {
-                manageBtnLabel: strings.ConfigureBtnLabel,
+                manageBtnLabel: strings.Sort.EditSortableFieldsLabel,
                 key: 'sortableFields',
-                panelHeader: strings.Sort.SortableFieldsPropertyPaneField,
+                panelHeader: strings.Sort.EditSortableFieldsLabel,
                 panelDescription: strings.Sort.SortableFieldsDescription,
                 label: strings.Sort.SortableFieldsPropertyPaneField,
                 value: this.properties.sortableFields,
@@ -580,9 +578,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 deferredValidationTime: 300
             }),
             PropertyFieldCollectionData('refiners', {
-                manageBtnLabel: strings.ConfigureBtnLabel,
+                manageBtnLabel: strings.Refiners.EditRefinersLabel,
                 key: 'refiners',
-                panelHeader: strings.Refiners.RefinersFieldLabel,
+                panelHeader: strings.Refiners.EditRefinersLabel,
                 panelDescription: strings.Refiners.RefinersFieldDescription,
                 label: strings.Refiners.RefinersFieldLabel,
                 value: this.properties.refiners,
@@ -718,6 +716,22 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         const canEditTemplate = this.properties.externalTemplateUrl && this.properties.selectedLayout === ResultsLayoutOption.Custom ? false : true;
 
+        let dialogTextFieldValue;
+
+        switch (this.properties.selectedLayout) {
+            case ResultsLayoutOption.List:
+                dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeListItem();
+                break;
+
+            case ResultsLayoutOption.Tiles:
+                dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeTileItem();    
+                break;
+
+            default:
+                dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeCustomItem();
+                break
+        }
+
         // Sets up styling fields
         let stylingFields: IPropertyPaneField<any>[] = [
             PropertyPaneTextField('webPartTitle', {
@@ -735,22 +749,11 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 label: strings.ShowPagingLabel,
                 checked: this.properties.showPaging,
             }),
+            PropertyPaneHorizontalRule(),
             PropertyPaneChoiceGroup('selectedLayout', {
                 label: 'Results layout',
                 options: layoutOptions
             }),
-            /*new this._propertyPage.PropertyPaneTextDialog('inlineTemplateText', {
-                dialogTextFieldValue: this._templateContentToDisplay,
-                onPropertyChange: this._onCustomPropertyPaneChange.bind(this),
-                disabled: !canEditTemplate,
-                strings: {
-                    cancelButtonText: strings.CancelButtonText,
-                    dialogButtonLabel: strings.DialogButtonLabel,
-                    dialogButtonText: strings.DialogButtonText,
-                    dialogTitle: strings.DialogTitle,
-                    saveButtonText: strings.SaveButtonText
-                }
-            }),*/
             PropertyFieldCodeEditor('inlineTemplateText', {
                 label: strings.DialogButtonLabel,
                 panelTitle: strings.DialogTitle,
@@ -762,6 +765,99 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 key: 'inlineTemplateTextCodeEditor',
                 language: PropertyFieldCodeEditorLanguages.Handlebars
             }),
+            PropertyFieldCollectionData('resultTypes', {
+                manageBtnLabel: strings.ResultTypes.EditResultTypesLabel,
+                key: 'resultTypes',
+                panelHeader: strings.ResultTypes.EditResultTypesLabel,
+                panelDescription: strings.ResultTypes.ResultTypesDescription,
+                enableSorting: true,
+                label: strings.ResultTypes.ResultTypeslabel,
+                value: this.properties.resultTypes,
+                fields: [
+                    {
+                        id: 'property',
+                        title: strings.ResultTypes.ConditionPropertyLabel,
+                        type: CustomCollectionFieldType.string,
+                        required: true,
+                    },
+                    {
+                        id: 'operator',
+                        title: strings.ResultTypes.CondtionOperatorValue,
+                        type: CustomCollectionFieldType.dropdown,
+                        defaultValue: ResultTypeOperator.Equal,
+                        required: true,
+                        options: [
+                            {
+                                key: ResultTypeOperator.Equal,
+                                text: strings.ResultTypes.EqualOperator
+                            },
+                            {
+                                key: ResultTypeOperator.Contains,
+                                text: strings.ResultTypes.ContainsOperator
+                            },
+                            {
+                                key: ResultTypeOperator.StartsWith,
+                                text: strings.ResultTypes.StartsWithOperator
+                            },
+                            {
+                                key: ResultTypeOperator.NotNull,
+                                text: strings.ResultTypes.NotNullOperator
+                            },
+                            {
+                                key: ResultTypeOperator.GreaterOrEqual,
+                                text: strings.ResultTypes.GreaterOrEqualOperator
+                            },
+                            {
+                                key: ResultTypeOperator.GreaterThan,
+                                text: strings.ResultTypes.GreaterThanOperator
+                            },
+                            {
+                                key: ResultTypeOperator.LessOrEqual,
+                                text: strings.ResultTypes.LessOrEqualOperator
+                            },
+                            {
+                                key: ResultTypeOperator.LessThan,
+                                text: strings.ResultTypes.LessThanOperator
+                            }
+                        ]
+                    },
+                    {
+                        id: 'value',
+                        title: strings.ResultTypes.ConditionValueLabel,
+                        type: CustomCollectionFieldType.string,
+                        required: false,
+                    },
+                    {
+                        id: "inlineTemplateContent",
+                        title: "Inline template",
+                        type: CustomCollectionFieldType.custom,
+                        onCustomRender: (field, value, onUpdate) => {
+                          return (
+                            React.createElement("div", null,
+                              React.createElement(TextDialog, { 
+                                    language: PropertyFieldCodeEditorLanguages.Handlebars,
+                                    dialogTextFieldValue: value ? value : dialogTextFieldValue,
+                                    onChanged: (value) => onUpdate(field.id, value),
+                                    strings: {
+                                        cancelButtonText: strings.CancelButtonText,
+                                        dialogButtonText: strings.DialogButtonText,
+                                        dialogTitle: strings.DialogTitle,
+                                        saveButtonText: strings.SaveButtonText
+                                    }
+                                })
+                            )
+                          );
+                        }
+                    },
+                    {
+                        id: 'externalTemplateUrl',
+                        title: strings.ResultTypes.ExternalUrlLabel,
+                        type: CustomCollectionFieldType.url,
+                        onGetErrorMessage: this._onTemplateUrlChange.bind(this),
+                        placeholder: 'https://mysite/Documents/external.html'
+                    },
+                ]
+            }),
             PropertyPaneToggle('useHandlebarsHelpers', {
                 label: "Handlebars Helpers",
                 checked: this.properties.useHandlebarsHelpers
@@ -770,7 +866,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         // Only show the template external URL for 'Custom' option
         if (this.properties.selectedLayout === ResultsLayoutOption.Custom) {
-            stylingFields.push(PropertyPaneTextField('externalTemplateUrl', {
+            stylingFields.splice(6, 0, PropertyPaneTextField('externalTemplateUrl', {
                 label: strings.TemplateUrlFieldLabel,
                 placeholder: strings.TemplateUrlPlaceholder,
                 deferredValidationTime: 500,

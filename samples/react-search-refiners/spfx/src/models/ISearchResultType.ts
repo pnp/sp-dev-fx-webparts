@@ -1,23 +1,18 @@
 ﻿export interface ISearchResultType {
-    condition: ISearchResulTypeCondition;
-    templateContent: string;
-}
-
-export enum ResultTypeOperator {
-    Equal,
-    LessThan,
-    GreaterThan,
-    LessOrEqual,
-    GreaterOrEqual
-}
-
-export interface ISearchResulTypeCondition {
     property: string;
     operator: ResultTypeOperator;
     value: string;
+    inlineTemplateContent: string;
+    externalTemplateUrl: string;
 }
 
-export enum ResultTypeEditOption {
-    External,
-    Inline
+export enum ResultTypeOperator {
+    Equal = 'eq',
+    LessThan = 'lt',
+    GreaterThan = 'gt',
+    LessOrEqual = 'lte',
+    GreaterOrEqual = 'gte',
+    Contains = 'contains',
+    StartsWith = 'startsWith',
+    NotNull = 'if',
 }

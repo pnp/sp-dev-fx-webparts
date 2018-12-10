@@ -3,6 +3,7 @@ import { DynamicProperty } from '@microsoft/sp-component-base';
 import IRefinerConfiguration from '../../models/IRefinerConfiguration';
 import { ISortFieldConfiguration } from '../../models/ISortFieldConfiguration';
 import ISortableFieldConfiguration from '../../models/ISortableFieldConfiguration';
+import { ISearchResultType } from '../../models/ISearchResultType';
 
 export interface ISearchResultsWebPartProps {
     queryKeywords: DynamicProperty<string>;
@@ -24,4 +25,5 @@ export interface ISearchResultsWebPartProps {
     inlineTemplateText: string;
     useHandlebarsHelpers: boolean;
     webPartTitle: string;
+    resultTypes: ISearchResultType[];
 }
