@@ -414,6 +414,8 @@ abstract class BaseTemplateService {
             let content = await this._buildCondition(resultTypes, resultTypes[0], 0);
             let template = Handlebars.compile(content);
             Handlebars.registerPartial('resultTypes', template);
+        } else {
+            Handlebars.registerPartial('resultTypes', '{{> @partial-block }}');
         }
     }
 

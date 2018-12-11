@@ -77,7 +77,7 @@ define([], function() {
     "DefaultSearchQueryKeywordsFieldDescription": "Cette requête sera utilisée par défault dans le cas où la valeur de la source de données est encore vide.",
     "ResultTypes": {
       "ResultTypeslabel": "Types de résultats",
-      "ResultTypesDescription": "Ajoutez ici les modèles d'affichage à utiliser pour les éléments correspondant selon une ou plusieurs conditions. Les conditions sont évaluées dans l'ordre.";
+      "ResultTypesDescription": "Ajoutez ici les modèles d'affichage à utiliser pour les éléments correspondant à une ou plusieurs conditions. Les conditions sont évaluées dans l'ordre et les modèles externes ont priorité sur ceux définis à même le composant. Vérifiez également que les propriétés gérées de recherche utilisées comme conditions sont présentes dans le paramètre 'Propriétés à récupérer' de ce Web Part.",
       "EditResultTypesLabel": "Éditer les types de résultats",
       "ConditionPropertyLabel": "Propriété gérée",
       "ConditionValueLabel": "Valeur de la condition",

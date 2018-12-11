@@ -164,6 +164,7 @@ Show blank if no result | Shows nothing if there is no result
 Show result count | Shows the result count and entered keywords  
 Show paging | Indicates whether or not the component should show the paging control at the bottom.
 Result Layouts options | Choose the template to use to display search results. Some layouts are defined by default (List oand Tiles) but you can create your own either by clinkg on the **"Custom"** tile, or **"Edit template"** from an existing chosen template. In custom mode, you can set an external template. It has to be in the same SharePoint tenant. Behind the scenes, the Office UI Fabric core CSS components are used in a isolated way.
+Result types | Allows you to set a custom template at item level according to a specific condition (ex: FileType equals 'pdf').
 Handlebars Helpers | Load [handlebar helpers](https://github.com/helpers/handlebars-helpers) to use in your template. Disable this option will make Web Part loading faster if you don't need them.
 
 ---

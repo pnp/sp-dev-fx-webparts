@@ -77,7 +77,7 @@ define([], function() {
     "DefaultSearchQueryKeywordsFieldDescription": "This query will be used when the data source value is still empty.",
     "ResultTypes": {
       "ResultTypeslabel": "Result Types",
-      "ResultTypesDescription": "Add here the display templates to use for result items according one ore more conditions. Conditions are evalued in the configured order.",
+      "ResultTypesDescription": "Add here the display templates to use for result items according to one ore more conditions. Conditions are evaluated in the configured order and external template takes precedence over inline templates. Make sure the managed properties you use are present in the 'Selected Properties' of this Web Part.",
       "EditResultTypesLabel": "Edit Result Types",
       "ConditionPropertyLabel": "Managed Property",
       "ConditionValueLabel": "Condition Value",
