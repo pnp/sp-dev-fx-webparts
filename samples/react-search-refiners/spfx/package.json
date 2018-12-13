@@ -27,7 +27,7 @@
     "@pnp/sp-clientsvc": "1.2.6",
     "@pnp/sp-taxonomy": "1.2.6",
     "@pnp/spfx-controls-react": "1.10.0",
-    "@pnp/spfx-property-controls": "^1.13.0-beta.69194a1",
+    "@pnp/spfx-property-controls": "1.13.0",
     "@types/es6-promise": "0.0.33",
     "@types/fabric": "^1.5.43",
     "@types/handlebars": "^4.0.39",
