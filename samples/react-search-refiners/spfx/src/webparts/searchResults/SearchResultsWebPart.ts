@@ -89,18 +89,30 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         super.renderCompleted();
 
         let queryKeywords;
-
         let renderElement = null;
+        let dataSourceValue;
+
+        let source = this.properties.queryKeywords.tryGetSource();
+
+        // Try to get the source if a source id is present
+        if (!source && this.properties.sourceId) {
+            source = this.context.dynamicDataProvider.tryGetSource(this.properties.sourceId);
+
+            if (source && this.properties.propertyId) {
+                dataSourceValue = source.getPropertyValue(this.properties.propertyId)[this.properties.propertyPath];
+            }
+
+        } else {
+            dataSourceValue = this.properties.queryKeywords.tryGetValue();
+        }
+        
+        if (typeof(dataSourceValue) !== 'string') {
+            dataSourceValue = '';
+            this.context.propertyPane.refresh();
+        }
+        
         if (typeof this.properties.useHandlebarsHelpers === 'undefined') {
             this.properties.useHandlebarsHelpers = true;
-        }
-
-        // Get value from data source
-        const dataSourceValue = this.properties.queryKeywords.tryGetValue();
-
-        if (typeof(dataSourceValue) !== 'string') {
-            this.properties.queryKeywords.setValue('');
-            this.context.propertyPane.refresh();
         }
 
         if (!dataSourceValue) {
@@ -109,7 +121,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             queryKeywords = dataSourceValue;
         }
 
-        const isValueConnected = !!this.properties.queryKeywords.tryGetSource();
+        const isValueConnected = !!source; 
 
         const searchContainer: React.ReactElement<ISearchResultsContainerProps> = React.createElement(
             SearchResultsContainer,
@@ -179,6 +191,12 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
 
         await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
+
+        if (this.properties.sourceId) {
+            // Needed to retrieve manually the value for the dynamic property at render time. See the associated SPFx bug
+            // https://github.com/SharePoint/sp-dev-docs/issues/2985
+            this.context.dynamicDataProvider.registerSourceChanged(this.properties.sourceId, this.render);
+        } 
 
         // Set the default search results layout
         this.properties.selectedLayout = this.properties.selectedLayout ? this.properties.selectedLayout : ResultsLayoutOption.List;
@@ -331,6 +349,28 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
     }
+
+    protected onBeforeSerialize() {
+        this._saveDataSourceInfo();
+        super.onBeforeSerialize();
+    }
+
+    /**
+    * Save the useful information for the connected data source. 
+    * They will be used to get the value of the dynamic property if this one fails.
+    */
+    private _saveDataSourceInfo() {
+
+        if (this.properties.queryKeywords.reference) {
+            this.properties.sourceId = this.properties.queryKeywords["_reference"]._sourceId;
+            this.properties.propertyId = this.properties.queryKeywords["_reference"]._property;
+            this.properties.propertyPath = this.properties.queryKeywords["_reference"]._propertyPath;
+        } else {
+            this.properties.sourceId = null;
+            this.properties.propertyId = null;
+            this.properties.propertyPath = null;
+        }
+    } 
 
     /**
      * Opens the Web Part property pane

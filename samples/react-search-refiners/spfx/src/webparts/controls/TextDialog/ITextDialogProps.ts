@@ -7,5 +7,5 @@ export interface ITextDialogProps {
   disabled?: boolean;
   strings: ITextDialogStrings;
   stateKey?: string;
-  language?: PropertyFieldCodeEditorLanguages
+  language?: PropertyFieldCodeEditorLanguages;
 }

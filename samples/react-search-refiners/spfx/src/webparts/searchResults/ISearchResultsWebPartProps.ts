@@ -26,4 +26,7 @@ export interface ISearchResultsWebPartProps {
     useHandlebarsHelpers: boolean;
     webPartTitle: string;
     resultTypes: ISearchResultType[];
+    sourceId: string;
+    propertyId: string;
+    propertyPath: string; 
 }
