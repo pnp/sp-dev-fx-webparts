@@ -2,6 +2,8 @@
 
 Samples around the SharePoint Framework client-side web parts to demonstrate different capabilities and possibilities on the framework. Each sample has it's own dedicated readme file to explain setup instructions and demonstrated capability.
 
+## List of samples
+
 Title|Description| Preview | Drop
 ----|----|-------|------
 Call custom APIs secured with Azure Active Directory without ADAL JS<br/>[aad-api-spo-cookie](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/aad-api-spo-cookie)|Sample SharePoint Framework client-side web part showing how to access a custom API secured with Azure Active Directory (AAD) without using ADAL JS.|![aad-api-spo-cookie](https://raw.githubusercontent.com/SharePoint/sp-dev-fx-webparts/master/samples/aad-api-spo-cookie/assets/preview-orders.png)|![drop](https://img.shields.io/badge/drop-GA-green.svg)
