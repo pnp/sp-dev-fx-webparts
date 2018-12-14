@@ -23,10 +23,9 @@ export interface ISearchResultsWebPartProps {
     selectedLayout: ResultsLayoutOption;
     externalTemplateUrl: string;
     inlineTemplateText: string;
-    useHandlebarsHelpers: boolean;
     webPartTitle: string;
     resultTypes: ISearchResultType[];
-    sourceId: string;
-    propertyId: string;
-    propertyPath: string; 
+    sourceId: string;
+    propertyId: string
+    propertyPath: string
 }

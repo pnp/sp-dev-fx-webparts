@@ -111,10 +111,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             this.context.propertyPane.refresh();
         }
         
-        if (typeof this.properties.useHandlebarsHelpers === 'undefined') {
-            this.properties.useHandlebarsHelpers = true;
-        }
-
         if (!dataSourceValue) {
             queryKeywords = this.properties.defaultSearchQuery;
         } else {
@@ -189,8 +185,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             this._taxonomyService = new TaxonomyService(this.context.pageContext.site.absoluteUrl);
             this._templateService = new TemplateService(this.context.spHttpClient, this.context.pageContext.cultureInfo.currentUICultureName);
         }
-
-        await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
 
         if (this.properties.sourceId) {
             // Needed to retrieve manually the value for the dynamic property at render time. See the associated SPFx bug
@@ -346,8 +340,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 this.properties.externalTemplateUrl = '';
             }
         }
-
-        await this._templateService.LoadHandlebarsHelpers(this.properties.useHandlebarsHelpers);
     }
 
     protected onBeforeSerialize() {
@@ -897,10 +889,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                         placeholder: 'https://mysite/Documents/external.html'
                     },
                 ]
-            }),
-            PropertyPaneToggle('useHandlebarsHelpers', {
-                label: "Handlebars Helpers",
-                checked: this.properties.useHandlebarsHelpers
             })
         ];
 
