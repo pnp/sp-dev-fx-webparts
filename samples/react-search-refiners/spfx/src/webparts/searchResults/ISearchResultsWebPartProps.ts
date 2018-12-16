@@ -26,6 +26,6 @@ export interface ISearchResultsWebPartProps {
     webPartTitle: string;
     resultTypes: ISearchResultType[];
     sourceId: string;
-    propertyId: string
-    propertyPath: string
+    propertyId: string;
+    propertyPath: string;
 }

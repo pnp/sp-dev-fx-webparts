@@ -40,7 +40,6 @@ import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 import { SortDirection, Sort } from '@pnp/sp';
 import { ISortFieldConfiguration, ISortFieldDirection } from '../../models/ISortFieldConfiguration';
 import { ResultTypeOperator } from '../../models/ISearchResultType';
-import { TextDialog } from '../controls/TextDialog/TextDialog';
 
 const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
@@ -49,7 +48,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private _searchService: ISearchService;
     private _taxonomyService: ITaxonomyService;
     private _templateService: BaseTemplateService;
-    private _propertyPage = null;
+    private _textDialogComponent = null;
 
     /**
      * The template to display at render time
@@ -309,9 +308,11 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
     
     protected async loadPropertyPaneResources(): Promise<void> {
-        this._propertyPage = await import(
+
+        // Code editor component for result types
+        this._textDialogComponent = await import(
             /* webpackChunkName: 'search-property-pane' */
-            '../controls/TextDialog/TextDialog'
+            '../controls/TextDialog'
         );
     }
 
@@ -340,6 +341,10 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 this.properties.externalTemplateUrl = '';
             }
         }
+    }
+
+    protected async onPropertyPaneConfigurationStart() {
+        await this.loadPropertyPaneResources();
     }
 
     protected onBeforeSerialize() {
@@ -866,7 +871,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                         onCustomRender: (field, value, onUpdate) => {
                           return (
                             React.createElement("div", null,
-                              React.createElement(TextDialog, { 
+                              React.createElement(this._textDialogComponent.TextDialog, { 
                                     language: PropertyFieldCodeEditorLanguages.Handlebars,
                                     dialogTextFieldValue: value ? value : dialogTextFieldValue,
                                     onChanged: (fieldValue) => onUpdate(field.id, fieldValue),
