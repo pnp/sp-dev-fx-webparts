@@ -60,18 +60,37 @@ define([], function() {
       "SortPanelSortFieldPlaceHolder":"Select a field",
       "SortPanelSortDirectionLabel":"Sort Direction",
       "SortableFieldManagedPropertyField": "Sort managed property",
-      "SortableFieldDisplayValueField": "Field name to display"  
+      "SortableFieldDisplayValueField": "Field name to display",
+      "EditSortableFieldsLabel": "Edit sortable fields",
+      "EditSortLabel": "Edit sort order"
     },
     "Refiners": {
       "RefinersFieldLabel": "Refiners",
       "RefinerManagedPropertyField": "Filter managed property",
       "RefinerDisplayValueField": "Filter name to display",
       "RefinersFieldDescription": "Specifies managed properties used as refiners. If there are no values for a filter property, it won't appear in the panel.",
+      "EditRefinersLabel": "Edit refiners"
     },
     "TermNotFound": "(Term with ID '{0}' not found)",
     "UseDefaultSearchQueryKeywordsFieldLabel": "Use a default search query",
     "DefaultSearchQueryKeywordsFieldLabel": "Default search query",
     "DefaultSearchQueryKeywordsFieldDescription": "This query will be used when the data source value is still empty.",
-    "ConfigureBtnLabel": "Configure"
+    "ResultTypes": {
+      "ResultTypeslabel": "Result Types",
+      "ResultTypesDescription": "Add here the display templates to use for result items according to one ore more conditions. Conditions are evaluated in the configured order and external template takes precedence over inline templates. Make sure the managed properties you use are present in the 'Selected Properties' of this Web Part.",
+      "EditResultTypesLabel": "Edit Result Types",
+      "ConditionPropertyLabel": "Managed Property",
+      "ConditionValueLabel": "Condition Value",
+      "CondtionOperatorValue": "Operator",
+      "ExternalUrlLabel": "External Template Url",
+      "EqualOperator": "Equals",
+      "ContainsOperator": "Contains",
+      "StartsWithOperator": "Starts with",
+      "NotNullOperator": "Is not null",
+      "GreaterOrEqualOperator": "Greater or equal",
+      "GreaterThanOperator": "Greater than",
+      "LessOrEqualOperator": "Less or equal",
+      "LessThanOperator": "Less than"
+    }
   }
 });

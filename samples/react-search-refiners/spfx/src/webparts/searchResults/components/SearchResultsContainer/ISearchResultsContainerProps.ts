@@ -6,6 +6,7 @@ import { WebPartContext } from '@microsoft/sp-webpart-base';
 import IRefinerConfiguration from '../../../../models/IRefinerConfiguration';
 import { Sort } from '@pnp/sp';
 import ISortableFieldConfiguration from '../../../../models/ISortableFieldConfiguration';
+import { ISearchResultType } from '../../../../models/ISearchResultType';
 
 interface ISearchResultsContainerProps {
 
@@ -98,6 +99,9 @@ interface ISearchResultsContainerProps {
      * The web part context
      */
     context: WebPartContext;
+
+    /** The configured result types */
+    resultTypes: ISearchResultType[];
 }
 
 export default ISearchResultsContainerProps;

@@ -1,7 +1,6 @@
 import * as React                               from 'react';
 import { Dialog, DialogType, DialogFooter } 	from 'office-ui-fabric-react/lib/Dialog';
 import { Button, ButtonType } 			        from 'office-ui-fabric-react/lib/Button';
-import { Label } 							    from 'office-ui-fabric-react/lib/Label';
 import { ITextDialogProps }                  	from './ITextDialogProps';
 import { ITextDialogState }                  	from './ITextDialogState';
 import AceEditor 								from 'react-ace';
@@ -12,8 +11,9 @@ import 'brace';
 import 'brace/mode/html';
 import 'brace/theme/monokai';
 import 'brace/ext/language_tools';
+import { Link } from 'office-ui-fabric-react';
 
-export class TextDialog extends React.Component<ITextDialogProps, ITextDialogState> {
+export default class TextDialog extends React.Component<ITextDialogProps, ITextDialogState> {
 
     /*************************************************************************************
      * Component's constructor
@@ -77,14 +77,12 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
      *************************************************************************************/
     public render() {
         return (
-            <div>
-				<Label>{ this.props.strings.dialogButtonLabel }</Label>
-				
-				<Button label={ this.props.strings.dialogButtonLabel } 
+            <div>		
+				<Link label={ this.props.strings.dialogButtonLabel } 
 						onClick={ this.showDialog.bind(this) }
 						disabled={ this.props.disabled }>
 						{ this.props.strings.dialogButtonText }
-				</Button>
+				</Link>
 
 				<Dialog type={ DialogType.normal }
 						isOpen={ this.state.showDialog }
@@ -100,7 +98,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 				
 					<AceEditor
 						width="600px"
-						mode="html"
+						mode={ this.props.language ? this.props.language: 'html' }
 						theme="monokai"
 						enableLiveAutocompletion={ true }
 						showPrintMargin={ false }

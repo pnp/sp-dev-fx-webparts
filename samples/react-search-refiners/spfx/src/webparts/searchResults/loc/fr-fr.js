@@ -60,18 +60,37 @@ define([], function() {
       "SortPanelSortFieldPlaceHolder":"Sélectionner un champ",
       "SortPanelSortDirectionLabel":"Direction de tri",
       "SortableFieldManagedPropertyField": "Propriété gérée de tri",
-      "SortableFieldDisplayValueField": "Intitulé du champ à afficher"  
+      "SortableFieldDisplayValueField": "Intitulé du champ à afficher",
+      "EditSortableFieldsLabel": "Éditer les champs de tri",
+      "EditSortLabel": "Éditer l'ordre de tri"
     },
     "Refiners": {
       "RefinersFieldLabel": "Filtres",
       "RefinersFieldDescription": "Configurez ici les propriétés gerées à utiliser comme filtres. Si il n'existe pas de valeurs pour le filtre spécifié, il n'apparaîtra pas dans le panneau.",
       "RefinerManagedPropertyField": "Propriété gérée de filtre",
       "RefinerDisplayValueField": "Intitulé du filtre à afficher",
+      "EditRefinersLabel": "Éditer les filtres"
     },
     "TermNotFound": "(Terme avec l'ID '{0}' non trouvé)",
     "UseDefaultSearchQueryKeywordsFieldLabel": "Utiliser une requête initiale",
     "DefaultSearchQueryKeywordsFieldLabel": "Requête de recherche par défaut",
     "DefaultSearchQueryKeywordsFieldDescription": "Cette requête sera utilisée par défault dans le cas où la valeur de la source de données est encore vide.",
-    "ConfigureBtnLabel": "Configurer"
+    "ResultTypes": {
+      "ResultTypeslabel": "Types de résultats",
+      "ResultTypesDescription": "Ajoutez ici les modèles d'affichage à utiliser pour les éléments correspondant à une ou plusieurs conditions. Les conditions sont évaluées dans l'ordre et les modèles externes ont priorité sur ceux définis à même le composant. Vérifiez également que les propriétés gérées de recherche utilisées comme conditions sont présentes dans le paramètre 'Propriétés à récupérer' de ce Web Part.",
+      "EditResultTypesLabel": "Éditer les types de résultats",
+      "ConditionPropertyLabel": "Propriété gérée",
+      "ConditionValueLabel": "Valeur de la condition",
+      "CondtionOperatorValue": "Opérateur",
+      "ExternalUrlLabel": "URL du template externe",
+      "EqualOperator": "Égal",
+      "ContainsOperator": "Contient",
+      "StartsWithOperator": "Commence par",
+      "NotNullOperator": "N'est pas nul",
+      "GreaterOrEqualOperator": "Supérieur ou égal",
+      "GreaterThanOperator": "Supérieur à",
+      "LessOrEqualOperator": "Inférieur ou égal",
+      "LessThanOperator": "Inférieur"
+    }
   }
 });

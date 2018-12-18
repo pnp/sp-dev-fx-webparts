@@ -10,7 +10,7 @@ import { Text } from '@microsoft/sp-core-library';
 import { Logger } from '@pnp/logging';
 import templateStyles from './BaseTemplateService.module.scss';
 import { DomHelper } from '../../helpers/DomHelper';
-declare var System: any;
+import { ISearchResultType, ResultTypeOperator } from '../../models/ISearchResultType';
 
 abstract class BaseTemplateService {
     private _helper = null;
@@ -78,6 +78,11 @@ abstract class BaseTemplateService {
                 display: flex;
                 display: -ms-flexbox;
             }
+            
+            /* Width for the documents and videos preview */
+            .videoPreview, .iframePreview {
+                width: 400px;
+            }
 
             .template_icon {
                 height: 32px;
@@ -133,39 +138,41 @@ abstract class BaseTemplateService {
             <ul class="ms-List template_defaultList">
                 {{#each items as |item|}}
                     <li class="template_listItem" tabindex="0">
-                        <div class="template_result">
-                            <img class="template_icon" src="{{iconSrc}}"/>
-                            <div class="template_contentContainer">
-                                <span class=""><a href="{{getUrl item}}">{{Title}}</a></span>
-                                <span class="">{{getSummary HitHighlightedSummary}}</span>
-                                <span class=""><span>{{getDate Created "LL"}}</span></span> 
-                            </div>
-                        </div>
-                        <div class="template_previewContainer ms-hiddenSm">
-                            {{#eq item.contentclass compare='STS_ListItem_851'}}
-                                <div class="video-container">
-                                    <div class="img-container">
-                                        <img id="preview_{{@index}}" class="img-preview  video-preview-item" src="{{PictureThumbnailURL}}" data-url="{{DefaultEncodingURL}}" data-fileext="{{FileType}}"/>
-                                        <div class="hover">
-                                            <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--ImageSearch" aria-hidden="true"></i></div>
-                                        </div>
+                        {{#> resultTypes}}
+                            {{!-- The block below will be used as default item template if no result types matched --}}
+                            <div class="template_result">
+                                    <img class="template_icon" src="{{iconSrc}}"/>
+                                    <div class="template_contentContainer">
+                                        <span class=""><a href="{{getUrl item}}">{{Title}}</a></span>
+                                        <span class="">{{getSummary HitHighlightedSummary}}</span>
+                                        <span class=""><span>{{getDate Created "LL"}}</span></span> 
                                     </div>
-                                </div>
-                            {{/eq}}
-        
-                            {{#eq item.contentclass compare='STS_ListItem_DocumentLibrary'}}
-                                {{#if ServerRedirectedPreviewURL}}
-                                    <div class="doc-container">
+                            </div>
+                            <div class="template_previewContainer ms-hiddenSm">                           
+                                {{#eq item.contentclass 'STS_ListItem_851'}}
+                                    <div class="video-container">
                                         <div class="img-container">
-                                            <img id="preview_{{@index}}" class="img-preview document-preview-item" src="{{ServerRedirectedPreviewURL}}" data-url="{{ServerRedirectedEmbedURL}}"/>
+                                            <img id="preview_{{@index}}" class="img-preview  video-preview-item" src="{{PictureThumbnailURL}}" data-url="{{DefaultEncodingURL}}" data-fileext="{{FileType}}"/>
                                             <div class="hover">
                                                 <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--ImageSearch" aria-hidden="true"></i></div>
                                             </div>
                                         </div>
                                     </div>
-                                {{/if}}
-                            {{/eq}}
-                        </div>
+                                {{/eq}}                                
+                                {{#eq item.contentclass 'STS_ListItem_DocumentLibrary'}}
+                                    {{#if ServerRedirectedPreviewURL}}
+                                        <div class="doc-container">
+                                            <div class="img-container">
+                                                <img id="preview_{{@index}}" class="img-preview document-preview-item" src="{{ServerRedirectedPreviewURL}}" data-url="{{ServerRedirectedEmbedURL}}"/>
+                                                <div class="hover">
+                                                    <div class="${templateStyles.hoverIcon}"><i class="ms-Icon ms-Icon--ImageSearch" aria-hidden="true"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                {{/eq}}
+                            </div>
+                        {{/resultTypes}}
                     </li>
                 {{/each}}
             </ul>
@@ -190,19 +197,22 @@ abstract class BaseTemplateService {
                     <div class="ms-Grid-row">
                     {{#each items as |item|}}
                         <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg4">
-                            <div class="singleCard">
-                                <div class="previewImg" style="background-image: url('{{getPreviewSrc item}}')">
-                                    <img class="cardFileIcon" src="{{iconSrc}}"/>
-                                </div>
-                                <li class="ms-ListItem ms-ListItem--document" tabindex="0">
-                                    <div class="cardInfo">
-                                    <span class="ms-ListItem-primaryText"><a href="{{getUrl item}}">{{Title}}</a></span>
-                                    <span class="ms-ListItem-secondaryText">{{getSummary HitHighlightedSummary}}</span>
-                                    <span class="ms-ListItem-tertiaryText">{{getDate Created "LL"}}</span> 
-                                    <div class="ms-ListItem-selectionTarget"></div>
+                            {{#> resultTypes}}
+                                {{!-- The block below will be used as default item template if no result types matched --}}
+                                <div class="singleCard">
+                                    <div class="previewImg" style="background-image: url('{{getPreviewSrc item}}')">
+                                        <img class="cardFileIcon" src="{{iconSrc}}"/>
                                     </div>
-                                </li>
-                            </div>
+                                    <li class="ms-ListItem ms-ListItem--document" tabindex="0">
+                                        <div class="cardInfo">
+                                            <span class="ms-ListItem-primaryText"><a href="{{getUrl item}}">{{Title}}</a></span>
+                                            <span class="ms-ListItem-secondaryText">{{getSummary HitHighlightedSummary}}</span>
+                                            <span class="ms-ListItem-tertiaryText">{{getDate Created "LL"}}</span> 
+                                            <div class="ms-ListItem-selectionTarget"></div>
+                                        </div>
+                                    </li>
+                                </div>
+                            {{/resultTypes}}
                         </div>
                     {{/each}}
                     </div>
@@ -217,7 +227,7 @@ abstract class BaseTemplateService {
      * @returns the template HTML markup
      */
     public static getBlankDefaultTemplate(): string {
-        return `
+        return html`
             <style>
                 /* Insert your CSS here */
             </style>
@@ -225,12 +235,71 @@ abstract class BaseTemplateService {
             <div class="template_root">
                 <ul class="ms-List">
                     {{#each items as |item|}}
-                        <li class="ms-ListItem ms-ListItem--image" tabindex="0">
-                        <span class="ms-ListItem-primaryText"><a href="{{getUrl item}}">{{Title}}</a></span>
-                        </li>
+                        {{#> resultTypes}}
+                            {{!-- The block below will be used as default item template if no result types matched --}}
+                            <li class="ms-ListItem ms-ListItem--image" tabindex="0">
+                                <span class="ms-ListItem-primaryText"><a href="{{getUrl item}}">{{Title}}</a></span>
+                            </li>
+                        {{/resultTypes}}
                     {{/each}}
                 </ul>
             </div>
+        `;
+    }
+    
+    /**
+     * Gets the default Handlebars result type list item
+     * @returns the template HTML markup
+     */
+    public static getDefaultResultTypeListItem(): string {
+        return html`
+            <style>
+                /* Insert your CSS here */
+            </style>
+            
+            <div class="template_result">
+                    <img class="template_icon" src="{{iconSrc}}"/>
+                    <div class="template_contentContainer">
+                        <span class=""><a href="{{getUrl item}}">{{Title}}</a></span>
+                        <span class="">{{getSummary HitHighlightedSummary}}</span>
+                    </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Gets the default Handlebars result type tile item
+     * @returns the template HTML markup
+     */
+    public static getDefaultResultTypeTileItem(): string {
+        return html`
+            <style>
+                /* Insert your CSS here */
+            </style>
+            
+            <div class="singleCard">
+                <div class="previewImg" style="background-image: url('{{getPreviewSrc item}}')">
+                    <img class="cardFileIcon" src="{{iconSrc}}"/>
+                </div>
+                <li class="ms-ListItem ms-ListItem--document" tabindex="0">
+                    <div class="cardInfo">
+                        <span class="ms-ListItem-primaryText"><a href="{{getUrl item}}">{{Title}}</a></span>
+                        <span class="ms-ListItem-secondaryText">{{getSummary HitHighlightedSummary}}</span>
+                    </div>
+                </li>
+            </div>
+        `;
+    }
+
+    /**
+     * Gets the default Handlebars result type custom item
+     * @returns the template HTML markup
+     */
+    public static getDefaultResultTypeCustomItem(): string {
+        return html`
+            <li class="ms-ListItem ms-ListItem--image" tabindex="0">
+                <span class="ms-ListItem-primaryText"><a href="{{getUrl item}}">{{Title}}</a></span>
+            </li>
         `;
     }
 
@@ -487,11 +556,77 @@ abstract class BaseTemplateService {
 
         let template = Handlebars.compile(templateContent);
         let result = template(templateContext);
-        if (result.indexOf("-preview-item") != -1) {
+        if (result.indexOf("-preview-item") !== -1) {
             await this._loadVideoLibrary();
         }
 
         return result;
+    }
+
+    /**
+     * Builds and registers the result types as Handlebars partials 
+     * Based on https://github.com/helpers/handlebars-helpers/ operators
+     * @param resultTypes the configured result types from the property pane
+     */
+    public async registerResultTypes(resultTypes: ISearchResultType[]) : Promise<void> {
+  
+        if (resultTypes.length > 0) {
+            let content = await this._buildCondition(resultTypes, resultTypes[0], 0);
+            let template = Handlebars.compile(content);
+            Handlebars.registerPartial('resultTypes', template);
+        } else {
+            Handlebars.registerPartial('resultTypes', '{{> @partial-block }}');
+        }
+    }
+
+    /**
+     * Builds the Handlebars nested conditions recursively to reflect the result types configuration
+     * @param resultTypes the configured result types from the property pane 
+     * @param currentResultType the current processed result type
+     * @param currentIdx current index
+     */
+    private async _buildCondition(resultTypes: ISearchResultType[], currentResultType: ISearchResultType, currentIdx: number): Promise<string> {
+
+        let conditionBlockContent;
+        let templateContent = currentResultType.inlineTemplateContent;
+
+        if (currentResultType.externalTemplateUrl) {
+            templateContent = await this.getFileContent(currentResultType.externalTemplateUrl);
+        }
+
+        let handlebarsToken = currentResultType.value.match(/^\{\{(.*)\}\}$/);
+
+        let operator = currentResultType.operator;
+        let param1 = currentResultType.property;
+
+        // Use a token or a string value
+        let param2 = handlebarsToken ? handlebarsToken[1] : `"${currentResultType.value}"`;
+
+        // Operator: "Starts With"
+        if (currentResultType.operator === ResultTypeOperator.StartsWith) {
+            param1 = `"${currentResultType.value}"`;
+            param2 = `${currentResultType.property}`;
+        }
+
+        // Operator: "Not null"
+        if (currentResultType.operator === ResultTypeOperator.NotNull) {
+            param2 = null; 
+        }
+
+        const baseCondition = `{{#${operator} ${param1} ${param2 || ""}}} 
+                                    ${templateContent}`;
+
+         if (currentIdx === resultTypes.length - 1) {
+            // Renders inner content set in the 'resultTypes' partial
+            conditionBlockContent = "{{> @partial-block }}";
+         } else {
+            conditionBlockContent = await this._buildCondition(resultTypes, resultTypes[currentIdx+1], currentIdx+1);
+         }
+                
+        return `${baseCondition}   
+                {{else}} 
+                    ${conditionBlockContent}
+                {{/${operator}}}`;                       
     }
 
     /**
@@ -628,7 +763,7 @@ abstract class BaseTemplateService {
                         const closeBtnId = `${playerId}_closeBtn`;
 
                         const innerPreviewHtml = `
-                            <video id="${playerId}" class="video-js vjs-big-play-centered">
+                            <video id="${playerId}" class="videoPreview video-js vjs-big-play-centered">
                                 <source src="${url}" type="video/${fileExtension}">
                             </video>
                         `;
@@ -644,13 +779,12 @@ abstract class BaseTemplateService {
                             controls: true,
                             autoplay: false,
                             preload: "metadata",
-                            fluid: true,
+                            fluid: false,
                             poster: thumbnailSrc ? thumbnailSrc : null
                         });
 
-                        document.getElementById(closeBtnId).addEventListener("click", ((ev) => {
+                        document.getElementById(closeBtnId).addEventListener("click", (() => {
                             thumbnailElt.parentElement.style.display = '';
-
                             if (!videoPlayer.paused()) {
                                 videoPlayer.pause();
                             }
