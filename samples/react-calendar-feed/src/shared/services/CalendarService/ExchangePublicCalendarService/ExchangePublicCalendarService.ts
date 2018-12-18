@@ -1,9 +1,9 @@
 /**
  * Exchange Public Calendar Service
  */
-import { ICalendarService } from '..';
-import { ICalendarEvent } from '../ICalendarEvent';
-import { iCalCalendarService } from '../iCalCalendarService';
+import { ICalendarService } from "..";
+import { ICalendarEvent } from "../ICalendarEvent";
+import { iCalCalendarService } from "../iCalCalendarService";
 
 // tslint:disable-next-line:class-name
 export class ExchangePublicCalendarService extends iCalCalendarService implements ICalendarService {
@@ -13,8 +13,8 @@ export class ExchangePublicCalendarService extends iCalCalendarService implement
     }
 
     public getEvents = (): Promise<ICalendarEvent[]> => {
-        // Exchange public calendar shares are really ICS calendars.
-        // we allow users to pass either the .html URL or 
+        // exchange public calendar shares are really ICS calendars.
+        // we allow users to pass either the .html URL or
         // the .ics, but we really need the .ics file
 
         const htmlExtension:string = ".html";
@@ -25,15 +25,5 @@ export class ExchangePublicCalendarService extends iCalCalendarService implement
         }
 
         return this.getEvents();
-    } 
-
-    private changeExtensionToIcs(url: string): string {
-        const htmlExtension:string = ".html";
-        if (url.indexOf(htmlExtension, url.length - htmlExtension.length) >= 0) {
-            // the url ends with .html. Replace it with .ics
-            const root: string = url.substring(0, url.length - htmlExtension.length);
-            return `${root}.ics`;
-        }
-        return url;
-      }
+    }
 }

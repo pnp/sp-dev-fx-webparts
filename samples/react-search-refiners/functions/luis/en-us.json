@@ -1,0 +1,66 @@
+{
+  "luis_schema_version": "2.2.0",
+  "versionId": "1.0",
+  "name": "PnP - SharePoint Search Enhancement (en-us)",
+  "desc": "PnP - Search keywords and intents recognition (English)",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "None"
+    },
+    {
+      "name": "PnP.SearchByKeywords"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "closedLists": [
+  ],
+  "regex_entities": [
+  ],
+  "bing_entities": [],
+  "model_features": [],
+  "regex_features": [],
+  "prebuiltEntities": [
+    {
+      "name": "keyPhrase",
+      "roles": []
+    }
+  ],
+  "patterns": [
+    {
+      "pattern": "i'm looking for {keyPhrase}",
+      "intent": "PnP.SearchByKeywords"
+    },
+    {
+      "pattern": "give me infos about {keyPhrase}",
+      "intent": "PnP.SearchByKeywords"
+    },
+    {
+      "pattern": "{keyPhrase}",
+      "intent": "PnP.SearchByKeywords"
+    }
+  ],
+  "utterances": [
+    {
+      "text": "sharepoint documents",
+      "intent": "PnP.SearchByKeywords",
+      "entities": []
+    },
+    {
+      "text": "architectural schemas",
+      "intent": "PnP.SearchByKeywords",
+      "entities": []
+    },
+    {
+      "text": "i'm looking for azure resources",
+      "intent": "PnP.SearchByKeywords",
+      "entities": []
+    },
+    {
+      "text": "office 365 governance plan",
+      "intent": "PnP.SearchByKeywords",
+      "entities": []
+    }
+  ]
+}

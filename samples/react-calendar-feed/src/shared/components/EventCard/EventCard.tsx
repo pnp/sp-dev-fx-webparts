@@ -1,15 +1,13 @@
-import { Guid } from '@microsoft/sp-core-library';
-import * as strings from 'CalendarFeedSummaryWebPartStrings';
-import * as ICS from 'ics-js';
-import * as moment from 'moment';
-import { ActionButton, DocumentCard, DocumentCardType, FocusZone, css } from 'office-ui-fabric-react';
-import * as React from 'react';
-import { IEventCardProps, IEventCardState } from '.';
-import { DateBox, DateBoxSize } from '../DateBox';
-import styles from './EventCard.module.scss';
-const AllDayFormat: string = 'dddd, MMMM Do YYYY';
-const LocalizedTimeFormat: string = 'llll';
-import { Text } from '@microsoft/sp-core-library';
+import { Guid } from "@microsoft/sp-core-library";
+import * as strings from "CalendarFeedSummaryWebPartStrings";
+import * as ICS from "ics-js";
+import * as moment from "moment";
+import { ActionButton, DocumentCard, DocumentCardType, FocusZone, css } from "office-ui-fabric-react";
+import * as React from "react";
+import { IEventCardProps, IEventCardState } from ".";
+import { DateBox, DateBoxSize } from "../DateBox";
+import styles from "./EventCard.module.scss";
+import { Text } from "@microsoft/sp-core-library";
 /**
  * Shows an event in a document card
  */
@@ -31,10 +29,10 @@ export class EventCard extends React.Component<IEventCardProps, IEventCardState>
             title,
             url,
             category,
-            description,
+            // description,
             location } = this.props.event;
         const eventDate: moment.Moment = moment(start);
-        const dateString: string = allDay ? eventDate.format(AllDayFormat) : eventDate.format(LocalizedTimeFormat);
+        const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
         const { isEditMode } = this.props;
         return (
             <div>
@@ -87,10 +85,11 @@ export class EventCard extends React.Component<IEventCardProps, IEventCardState>
             allDay,
             title,
             url,
-            category,
-            location } = this.props.event;
+            // category,
+            // location
+          } = this.props.event;
         const eventDate: moment.Moment = moment.utc(start);
-        const dateString: string = allDay ? eventDate.format(AllDayFormat) : eventDate.format(LocalizedTimeFormat);
+        const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
         return (
             <div>
                 <div

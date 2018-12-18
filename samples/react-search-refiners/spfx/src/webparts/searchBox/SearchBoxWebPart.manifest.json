@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "096b96cc-8a44-41fa-9b4d-c0ab2ab2a779",
+  "alias": "SearchBoxWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "supportsFullBleed": true,
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { 
+      "default": "PnP" 
+    },
+    "title": { 
+      "default": "Search Box" , "fr-fr": "Boîte de recherche"
+    },
+    "description": { "default": "Allows users to enter query keywords", "fr-fr": "Permets aux utilisateurs d'entrer des mots clÃ©s de recherche." },
+    "officeFabricIconFontName": "Search",
+    "properties": {
+      "defaultQueryKeywords": ""
+    }
+  }]
+}

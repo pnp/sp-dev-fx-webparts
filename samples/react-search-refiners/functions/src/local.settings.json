@@ -1,0 +1,19 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "LUIS_SubscriptionKey": "0065cf294a8244409cf40f1400ed74ab",
+    "LUIS_AzureRegion": "eastus",
+    "LUIS_AppConfigFolderPath": ".\\config",
+    "LUIS_MappingsFile": ".\\config\\luismappings.json",
+    "Bing_SpellCheckApiKey": "c5895173d71242b6b1c20cdb28362549",
+    "TextAnalytics_SubscriptionKey": "5332d75141cb4b2c90365299e5262318",
+    "TextAnalytics_AzureRegion": "canadacentral",
+    "Azure_Function_Name": "pnpsearchfunction",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "NODE_OPTIONS": "--inspect=5858"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*"
+  }
+}

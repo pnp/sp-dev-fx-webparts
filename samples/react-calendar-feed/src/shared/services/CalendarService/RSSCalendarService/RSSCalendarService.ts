@@ -6,12 +6,12 @@
  * every one I could find on NPM and GitHub and found that they did not meet my needs.
  * I'm open to suggestions, though, if you have a library that you think would work better.
  */
-import { HttpClientResponse } from '@microsoft/sp-http';
-import * as convert from 'xml-js';
-import { ICalendarService } from '..';
-import { BaseCalendarService } from '../BaseCalendarService';
-import { ICalendarEvent } from '../ICalendarEvent';
-import { escape, unescape } from '@microsoft/sp-lodash-subset';
+import { HttpClientResponse } from "@microsoft/sp-http";
+import * as convert from "xml-js";
+import { ICalendarService } from "..";
+import { BaseCalendarService } from "../BaseCalendarService";
+import { ICalendarEvent } from "../ICalendarEvent";
+import { unescape } from "@microsoft/sp-lodash-subset";
 
 export class RSSCalendarService extends BaseCalendarService implements ICalendarService {
     constructor() {
@@ -51,7 +51,6 @@ export class RSSCalendarService extends BaseCalendarService implements ICalendar
                     let title: string = this._getElementValue(item, "title");
                     let link: string = this._getElementValue(item, "link");
                     let pubDate: Date = new Date(this._getElementValue(item, "pubDate"));
-                    let category: string = this._getElementValue(item, "category");
                     let description: string = this._getElementValue(item, "description");
                     return {
                         title: title,

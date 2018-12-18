@@ -5,10 +5,10 @@
  * file because that's what the Office UI Fabric team does and
  * I kinda liked it.
  */
-import { DisplayMode } from '@microsoft/sp-core-library';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { Moment } from 'moment';
-import { ICalendarEvent, ICalendarService } from '../../../shared/services/CalendarService';
+import { DisplayMode } from "@microsoft/sp-core-library";
+import { IWebPartContext } from "@microsoft/sp-webpart-base";
+import { Moment } from "moment";
+import { ICalendarEvent, ICalendarService } from "../../../shared/services/CalendarService";
 
 /**
  * The props for the calendar feed summary component
