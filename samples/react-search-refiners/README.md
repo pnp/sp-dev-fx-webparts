@@ -209,6 +209,38 @@ Setting | Description
 
 Also the [Handlebars helpers](https://github.com/helpers/handlebars-helpers) (188 helpers) are also available. You can also define your own in the *BaseTemplateService.ts* file. See [helper-moment](https://github.com/helpers/helper-moment) for date samples using moment.
 
+##### Use result types
+
+The result types feature is a convenient way to split your templates according to results characteristics instead of making a huge central template with multiple conditions. They can be defined in 'inline' mode or using an external file. You can use the sorting option to determine to order of evaluation for each condition. 
+
+<p align="center">
+  <img width="5700px" src="./images/result_types.png"/>
+</p>
+
+The following operators are supported:
+- Equals
+- Contains
+- StartsWith
+- Greater Or Equal
+- Less Or Equal
+- Less than
+- Greater than
+- Is not null
+
+To use it in your main template, just follow this pattern. This block is not mandatory.
+
+```
+{{#> resultTypes}}
+  {{!-- The block below will be used as default item template if no result types matched --}}
+  <div class="template_result">
+      <!-- Your default template markup -->
+  </div>
+  
+{{/resultTypes}}
+```
+
+Handlebars [partials](https://handlebarsjs.com/partials.html) are used behind the scenes and conditions are built dynamically using a recursive if/else structure.
+
 #### Query variables
 
 The following out of the box query variables are supported/tested:

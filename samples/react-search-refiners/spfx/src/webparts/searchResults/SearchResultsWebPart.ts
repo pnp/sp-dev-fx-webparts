@@ -26,7 +26,7 @@ import ISearchService from '../../services/SearchService/ISearchService';
 import ITaxonomyService from '../../services/TaxonomyService/ITaxonomyService';
 import ResultsLayoutOption from '../../models/ResultsLayoutOption';
 import TemplateService from '../../services/TemplateService/TemplateService';
-import { update, isEmpty } from '@microsoft/sp-lodash-subset';
+import { isEmpty } from '@microsoft/sp-lodash-subset';
 import MockSearchService from '../../services/SearchService/MockSearchService';
 import MockTemplateService from '../../services/TemplateService/MockTemplateService';
 import SearchService from '../../services/SearchService/SearchService';
@@ -34,7 +34,6 @@ import TaxonomyService from '../../services/TaxonomyService/TaxonomyService';
 import MockTaxonomyService from '../../services/TaxonomyService/MockTaxonomyService';
 import ISearchResultsContainerProps from './components/SearchResultsContainer/ISearchResultsContainerProps';
 import { Placeholder, IPlaceholderProps } from '@pnp/spfx-controls-react/lib/Placeholder';
-import { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } from '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 import { SortDirection, Sort } from '@pnp/sp';
@@ -49,6 +48,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private _taxonomyService: ITaxonomyService;
     private _templateService: BaseTemplateService;
     private _textDialogComponent = null;
+    private _propertyFieldCodeEditor = null;
+    private _propertyFieldCodeEditorLanguages = null;
 
     /**
      * The template to display at render time
@@ -314,6 +315,15 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             /* webpackChunkName: 'search-property-pane' */
             '../controls/TextDialog'
         );
+
+        // tslint:disable-next-line:no-shadowed-variable
+        const { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } = await import (
+            /* webpackChunkName: 'search-property-pane' */
+            '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor'
+          );
+
+        this._propertyFieldCodeEditor = PropertyFieldCodeEditor;
+        this._propertyFieldCodeEditorLanguages = PropertyFieldCodeEditorLanguages;
     }
 
     protected async onPropertyPaneFieldChanged(propertyPath: string) {
@@ -791,7 +801,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 label: 'Results layout',
                 options: layoutOptions
             }),
-            PropertyFieldCodeEditor('inlineTemplateText', {
+            this._propertyFieldCodeEditor('inlineTemplateText', {
                 label: strings.DialogButtonLabel,
                 panelTitle: strings.DialogTitle,
                 initialValue: this._templateContentToDisplay,
@@ -800,7 +810,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 properties: this.properties,
                 disabled: !canEditTemplate,
                 key: 'inlineTemplateTextCodeEditor',
-                language: PropertyFieldCodeEditorLanguages.Handlebars
+                language: this._propertyFieldCodeEditorLanguages.Handlebars
             }),
             PropertyFieldCollectionData('resultTypes', {
                 manageBtnLabel: strings.ResultTypes.EditResultTypesLabel,
@@ -872,7 +882,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                           return (
                             React.createElement("div", null,
                               React.createElement(this._textDialogComponent.TextDialog, { 
-                                    language: PropertyFieldCodeEditorLanguages.Handlebars,
+                                    language: this._propertyFieldCodeEditorLanguages.Handlebars,
                                     dialogTextFieldValue: value ? value : dialogTextFieldValue,
                                     onChanged: (fieldValue) => onUpdate(field.id, fieldValue),
                                     strings: {
