@@ -1,6 +1,6 @@
 {
   "name": "react-slide-swiper",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -11,27 +11,26 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "1.6.0",
-    "@microsoft/sp-lodash-subset": "1.6.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.6.0",
-    "@microsoft/sp-webpart-base": "1.6.0",
+    "@microsoft/sp-core-library": "1.7.0",
+    "@microsoft/sp-lodash-subset": "1.7.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.7.0",
+    "@microsoft/sp-webpart-base": "1.7.0",
     "@types/es6-promise": "0.0.33",
-    "@types/react": "15.6.6",
-    "@types/react-dom": "15.5.6",
+    "@types/react": "16.4.2",
+    "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.1",
-    "react": "15.6.2",
-    "react-dom": "15.6.2",
-    "swiper": "4.1.0"
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "swiper": "4.4.2"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.6.0",
-    "@microsoft/sp-module-interfaces": "1.6.0",
-    "@microsoft/sp-webpart-workbench": "1.6.0",
+    "@microsoft/sp-build-web": "1.7.0",
+    "@microsoft/sp-module-interfaces": "1.7.0",
+    "@microsoft/sp-webpart-workbench": "1.7.0",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
     "gulp": "~3.9.1",
-    "tslint-microsoft-contrib": "5.0.0",
     "webpack-bundle-analyzer": "2.9.2"
   }
 }
