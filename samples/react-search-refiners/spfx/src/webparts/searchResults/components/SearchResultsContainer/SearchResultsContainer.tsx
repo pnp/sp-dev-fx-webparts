@@ -128,25 +128,29 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     }
                 }
             } else {
-                const searchResultTemplate = (
-                    <SearchResultsTemplate
-                        templateService={this.props.templateService}
-                        templateContent={this.props.templateContent}
-                        templateContext={
-                            {
-                                items: this.state.results.RelevantResults,
-                                promotedResults: this.state.results.PromotedResults,
-                                totalRows: this.state.resultCount,
-                                keywords: this.props.queryKeywords,
-                                showResultsCount: this.props.showResultsCount,
-                                siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
-                                webUrl: this.props.context.pageContext.web.serverRelativeUrl,
-                                maxResultsCount: this.props.maxResultsCount,
-                                actualResultsCount: items.RelevantResults.length,
-                                strings: strings
+
+                let searchResultTemplate = <div></div>;
+                 if(!this.props.useCodeRenderer) {
+                    searchResultTemplate =  (
+                        <SearchResultsTemplate
+                            templateService={this.props.templateService}
+                            templateContent={this.props.templateContent}
+                            templateContext={
+                                {
+                                    items: this.state.results.RelevantResults,
+                                    promotedResults: this.state.results.PromotedResults,
+                                    totalRows: this.state.resultCount,
+                                    keywords: this.props.queryKeywords,
+                                    showResultsCount: this.props.showResultsCount,
+                                    siteUrl: this.props.context.pageContext.site.serverRelativeUrl,
+                                    webUrl: this.props.context.pageContext.web.serverRelativeUrl,
+                                    maxResultsCount: this.props.maxResultsCount,
+                                    actualResultsCount: items.RelevantResults.length,
+                                    strings: strings
+                                }
                             }
-                        }
-                    />);
+                        />);
+                }
                 renderWpContent =
                     <div>
                         {renderWebPartTitle}
@@ -559,11 +563,8 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
     }
 
     private handleResultUpdateBroadCast(results) {
-        console.log(results);
-        console.log(this.props.customRenderer);
-        if(this.props.customRenderer) {
-            this.props.resultService.updateResultData(results, this.props.rendererId, `pnp-search-render-node-${this.state.mountingNodeGuid}` );
-        }
+        console.log("Should be broadcasting");
+        this.props.resultService.updateResultData(results, this.props.rendererId, `pnp-search-render-node-${this.state.mountingNodeGuid}`, this.props.customTemplateFieldValues);
     }
 
     /**

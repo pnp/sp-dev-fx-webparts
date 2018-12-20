@@ -26,7 +26,7 @@ import ISearchService from '../../services/SearchService/ISearchService';
 import ITaxonomyService from '../../services/TaxonomyService/ITaxonomyService';
 import ResultsLayoutOption from '../../models/ResultsLayoutOption';
 import TemplateService from '../../services/TemplateService/TemplateService';
-import { isEmpty } from '@microsoft/sp-lodash-subset';
+import { isEmpty, find } from '@microsoft/sp-lodash-subset';
 import MockSearchService from '../../services/SearchService/MockSearchService';
 import MockTemplateService from '../../services/TemplateService/MockTemplateService';
 import SearchService from '../../services/SearchService/SearchService';
@@ -40,7 +40,8 @@ import { SortDirection, Sort } from '@pnp/sp';
 import { ISortFieldConfiguration, ISortFieldDirection } from '../../models/ISortFieldConfiguration';
 import { ResultTypeOperator } from '../../models/ISearchResultType';
 import IResultService from '../../services/ResultService/IResultService';
-import { ResultService } from '../../services/ResultService/ResultService';
+import { ResultService, IRenderer } from '../../services/ResultService/ResultService';
+
 
 const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
@@ -53,6 +54,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private _propertyFieldCodeEditor = null;
     private _propertyFieldCodeEditorLanguages = null;
     private _resultService: IResultService;
+    private _codeRenderers: IRenderer[];
 
     /**
      * The template to display at render time
@@ -121,8 +123,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
 
         const isValueConnected = !!source; 
-        const customRenderer = this.isCodeRenderer();
-        const customRendererId = customRenderer ? this.properties.selectedLayout : '';
         const searchContainer: React.ReactElement<ISearchResultsContainerProps> = React.createElement(
             SearchResultsContainer,
             {
@@ -145,8 +145,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 webPartTitle: this.properties.webPartTitle,
                 context: this.context,
                 resultTypes: this.properties.resultTypes,
-                customRenderer: customRenderer,
-                rendererId: customRendererId,
+                useCodeRenderer: this.codeRendererIsSelected(),
+                customTemplateFieldValues: this.properties.customTemplateFieldValues,
+                rendererId: this.properties.selectedLayout as any,
                 resultService: this._resultService,
             } as ISearchResultsContainerProps
         );
@@ -193,7 +194,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             this._templateService = new TemplateService(this.context.spHttpClient, this.context.pageContext.cultureInfo.currentUICultureName);
         }
         this._resultService = new ResultService();
-
+        this._codeRenderers = this._resultService.getRegisteredRenderers();
 
         if (this.properties.sourceId) {
             // Needed to retrieve manually the value for the dynamic property at render time. See the associated SPFx bug
@@ -343,8 +344,11 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         if (propertyPath === 'selectedLayout') {
             // Refresh setting the right template for the property pane
-            if(!this.isCodeRenderer()) {
+            if(!this.codeRendererIsSelected()) {
                 await this._getTemplateContent();
+            }
+            if(this.codeRendererIsSelected) {
+                this.properties.customTemplateFieldValues = undefined;
             }
 
             this.context.propertyPane.refresh();
@@ -779,19 +783,20 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         const canEditTemplate = this.properties.externalTemplateUrl && this.properties.selectedLayout === ResultsLayoutOption.Custom ? false : true;
 
         let dialogTextFieldValue;
+        if(!this.codeRendererIsSelected()) {
+            switch (this.properties.selectedLayout) {
+                case ResultsLayoutOption.List:
+                    dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeListItem();
+                    break;
 
-        switch (this.properties.selectedLayout) {
-            case ResultsLayoutOption.List:
-                dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeListItem();
-                break;
+                case ResultsLayoutOption.Tiles:
+                    dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeTileItem();    
+                    break;
 
-            case ResultsLayoutOption.Tiles:
-                dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeTileItem();    
-                break;
-
-            default:
-                dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeCustomItem();
-                break;
+                default:
+                    dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeCustomItem();
+                    break;
+            }
         }
 
         // Sets up styling fields
@@ -932,12 +937,52 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             }));
         }
 
+        if(this.codeRendererIsSelected()) {
+            const currentCodeRenderer = find(this._codeRenderers, (renderer) => renderer.id === (this.properties.selectedLayout as any));
+            console.log(this.properties.customTemplateFieldValues);
+            if(!this.properties.customTemplateFieldValues) {
+                this.properties.customTemplateFieldValues = currentCodeRenderer.customFields.map(field => {
+                    return {
+                        fieldName: field,
+                        searchProperty: ''
+                    };
+                });
+            }
+            if(currentCodeRenderer.customFields && currentCodeRenderer.customFields.length > 0) {
+                const searchPropertyOptions = this.properties.selectedProperties.split(',').map(prop => {
+                    return ({
+                        key: prop,
+                        text: prop
+                    });
+                });
+                stylingFields.push(PropertyFieldCollectionData('customTemplateFieldValues', {
+                    key: 'customTemplateFieldValues',
+                    label: 'Custom template field values',
+                    panelHeader: 'Custom template field values',
+                    manageBtnLabel: 'Configure',
+                    value: this.properties.customTemplateFieldValues,
+                    fields: [
+                        {
+                            id: 'fieldName',
+                            title: 'FieldName',
+                            type: CustomCollectionFieldType.string,
+                        },
+                        {
+                            id: 'searchProperty',
+                            title: 'Search Property',
+                            type: CustomCollectionFieldType.dropdown,
+                            options: searchPropertyOptions
+                        }
+                    ]
+                }));
+            }
+        }
+
         return stylingFields;
     }
 
     protected getCodeRenderers(): IPropertyPaneChoiceGroupOption[] {
-        const registeredRenderers = this._resultService.getRegisteredRenderers();
-        console.log(registeredRenderers);
+        const registeredRenderers = this._codeRenderers;
         if(registeredRenderers && registeredRenderers.length > 0) {
             return registeredRenderers.map(ca => {
                 return {
@@ -953,7 +998,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
     }
 
-    private isCodeRenderer(): boolean {
+    protected codeRendererIsSelected(): boolean {
             if(this.properties.selectedLayout === ResultsLayoutOption.List ||
                 this.properties.selectedLayout === ResultsLayoutOption.Custom ||
                 this.properties.selectedLayout === ResultsLayoutOption.Tiles) {

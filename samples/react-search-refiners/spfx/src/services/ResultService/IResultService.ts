@@ -1,6 +1,6 @@
 import { ISearchResults } from "../../models/ISearchResult";
 import { IRenderer } from "./ResultService";
-
+import {ICustomTemplateFieldValue} from './ResultService';
 
 export default interface IResultService {
     /**
@@ -9,7 +9,7 @@ export default interface IResultService {
      * @param rendererId The Id of the custom action chosen to render the resultdata.
      * @param mountNode The name of the html node which the renderers should use to display the results
      */
-    updateResultData(results: ISearchResults, rendererId: string, mountNode: string);
+    updateResultData(results: ISearchResults, rendererId: string, mountNode: string, customTemplateFieldValues?: ICustomTemplateFieldValue[]);
     
     /**
      * Registerer the renderer as an renderer to be picked up by the search-refiners webpart.
@@ -18,7 +18,7 @@ export default interface IResultService {
      * @param rendererIcon The office-ui-fabric icon to be displayed.
      * @param callback The function that should run whenever the renderer recieves data
      */
-    registerRenderer(rendererId: string, rendererName: string, rendererIcon: string, callback: (e) => void);
+    registerRenderer(rendererId: string, rendererName: string, rendererIcon: string, callback: (e) => void, customFields?:string[]);
 
     /**
      * Get all registered renderers on the current page. 
