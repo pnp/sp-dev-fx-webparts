@@ -39,6 +39,8 @@ import { SPHttpClientResponse, SPHttpClient } from '@microsoft/sp-http';
 import { SortDirection, Sort } from '@pnp/sp';
 import { ISortFieldConfiguration, ISortFieldDirection } from '../../models/ISortFieldConfiguration';
 import { ResultTypeOperator } from '../../models/ISearchResultType';
+import IResultService from '../../services/ResultService/IResultService';
+import { ResultService } from '../../services/ResultService/ResultService';
 
 const LOG_SOURCE: string = '[SearchResultsWebPart_{0}]';
 
@@ -50,6 +52,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private _textDialogComponent = null;
     private _propertyFieldCodeEditor = null;
     private _propertyFieldCodeEditorLanguages = null;
+    private _resultService: IResultService;
 
     /**
      * The template to display at render time
@@ -118,7 +121,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
 
         const isValueConnected = !!source; 
-
+        const customRenderer = this.isCodeRenderer();
+        const customRendererId = customRenderer ? this.properties.selectedLayout : '';
         const searchContainer: React.ReactElement<ISearchResultsContainerProps> = React.createElement(
             SearchResultsContainer,
             {
@@ -140,7 +144,10 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 templateContent: this._templateContentToDisplay,
                 webPartTitle: this.properties.webPartTitle,
                 context: this.context,
-                resultTypes: this.properties.resultTypes
+                resultTypes: this.properties.resultTypes,
+                customRenderer: customRenderer,
+                rendererId: customRendererId,
+                resultService: this._resultService,
             } as ISearchResultsContainerProps
         );
 
@@ -185,6 +192,8 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             this._taxonomyService = new TaxonomyService(this.context.pageContext.site.absoluteUrl);
             this._templateService = new TemplateService(this.context.spHttpClient, this.context.pageContext.cultureInfo.currentUICultureName);
         }
+        this._resultService = new ResultService();
+
 
         if (this.properties.sourceId) {
             // Needed to retrieve manually the value for the dynamic property at render time. See the associated SPFx bug
@@ -334,7 +343,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         if (propertyPath === 'selectedLayout') {
             // Refresh setting the right template for the property pane
-            await this._getTemplateContent();
+            if(!this.isCodeRenderer()) {
+                await this._getTemplateContent();
+            }
 
             this.context.propertyPane.refresh();
         }
@@ -751,15 +762,19 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 },
                 text: strings.TilesLayoutOption,
                 key: ResultsLayoutOption.Tiles
-            },
-            {
+            }
+        ] as IPropertyPaneChoiceGroupOption[];
+        
+        layoutOptions.push(...this.getCodeRenderers());
+        layoutOptions.push({
                 iconProps: {
                     officeFabricIconFontName: 'Code'
                 },
                 text: strings.CustomLayoutOption,
                 key: ResultsLayoutOption.Custom,
-            }
-        ] as IPropertyPaneChoiceGroupOption[];
+        });
+
+
 
         const canEditTemplate = this.properties.externalTemplateUrl && this.properties.selectedLayout === ResultsLayoutOption.Custom ? false : true;
 
@@ -918,5 +933,33 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
 
         return stylingFields;
+    }
+
+    protected getCodeRenderers(): IPropertyPaneChoiceGroupOption[] {
+        const registeredRenderers = this._resultService.getRegisteredRenderers();
+        console.log(registeredRenderers);
+        if(registeredRenderers && registeredRenderers.length > 0) {
+            return registeredRenderers.map(ca => {
+                return {
+                    key: ca.id,
+                    text: ca.name,
+                    iconProps: {
+                        officeFabricIconFontName: ca.icon
+                    },
+                };
+            });
+        } else {
+            return [];
+        }
+    }
+
+    private isCodeRenderer(): boolean {
+            if(this.properties.selectedLayout === ResultsLayoutOption.List ||
+                this.properties.selectedLayout === ResultsLayoutOption.Custom ||
+                this.properties.selectedLayout === ResultsLayoutOption.Tiles) {
+                    return false;
+            } else {
+                return true;
+            }
     }
 }

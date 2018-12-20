@@ -28,4 +28,5 @@ export interface ISearchResultsWebPartProps {
     sourceId: string;
     propertyId: string;
     propertyPath: string;
+    rendererId: string;
 }
