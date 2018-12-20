@@ -563,7 +563,6 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
     }
 
     private handleResultUpdateBroadCast(results) {
-        console.log("Should be broadcasting");
         this.props.resultService.updateResultData(results, this.props.rendererId, `pnp-search-render-node-${this.state.mountingNodeGuid}`, this.props.customTemplateFieldValues);
     }
 

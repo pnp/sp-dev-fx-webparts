@@ -939,7 +939,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         if(this.codeRendererIsSelected()) {
             const currentCodeRenderer = find(this._codeRenderers, (renderer) => renderer.id === (this.properties.selectedLayout as any));
-            console.log(this.properties.customTemplateFieldValues);
             if(!this.properties.customTemplateFieldValues) {
                 this.properties.customTemplateFieldValues = currentCodeRenderer.customFields.map(field => {
                     return {
@@ -999,12 +998,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
 
     protected codeRendererIsSelected(): boolean {
-            if(this.properties.selectedLayout === ResultsLayoutOption.List ||
-                this.properties.selectedLayout === ResultsLayoutOption.Custom ||
-                this.properties.selectedLayout === ResultsLayoutOption.Tiles) {
-                    return false;
-            } else {
-                return true;
-            }
+        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+        return regex.test(this.properties.selectedLayout as any);
     }
 }

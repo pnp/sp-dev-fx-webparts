@@ -30,7 +30,6 @@ export class ResultService implements IResultService {
         searchEvent.results = results; 
         searchEvent.mountNode = mountNode;
         searchEvent.customTemplateFieldValues = customTemplateFieldValues;
-        console.log("Is broadcasting to:" + this.SEARCH_CHANGED_EVENT_NAME);
         window.dispatchEvent(searchEvent);
     }
 
