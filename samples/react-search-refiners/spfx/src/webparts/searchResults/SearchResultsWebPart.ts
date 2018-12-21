@@ -73,7 +73,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         this._searchService.resultSourceId = this.properties.resultSourceId;
         this._searchService.sortList = this._convertToSortList(this.properties.sortList);
         this._searchService.enableQueryRules = this.properties.enableQueryRules;
-
         // Determine the template content to display
         // In the case of an external template is selected, the render is done asynchronously waiting for the content to be fetched
         await this._getTemplateContent();
@@ -248,16 +247,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private initializeRequiredProperties() {
 
         this.properties.queryTemplate = this.properties.queryTemplate ? this.properties.queryTemplate : "{searchTerms} Path:{Site}";
-        this.properties.refiners = Array.isArray(this.properties.refiners) ? this.properties.refiners : [
-                                                                                                            {
-                                                                                                                refinerName: "Created",
-                                                                                                                displayValue: "Created Date"
-                                                                                                            },
-                                                                                                            {
-                                                                                                                refinerName: "Size",
-                                                                                                                displayValue: "Size of the file"
-                                                                                                            }
-                                                                                                        ];
+        this.properties.refiners = Array.isArray(this.properties.refiners) ? this.properties.refiners : [];
         this.properties.sortList = Array.isArray(this.properties.sortList) ? this.properties.sortList : [
                                                                                                             {
                                                                                                                 sortField: "Created",
@@ -821,112 +811,116 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 label: 'Results layout',
                 options: layoutOptions
             }),
-            this._propertyFieldCodeEditor('inlineTemplateText', {
-                label: strings.DialogButtonLabel,
-                panelTitle: strings.DialogTitle,
-                initialValue: this._templateContentToDisplay,
-                deferredValidationTime: 500,
-                onPropertyChange: this.onPropertyPaneFieldChanged,
-                properties: this.properties,
-                disabled: !canEditTemplate,
-                key: 'inlineTemplateTextCodeEditor',
-                language: this._propertyFieldCodeEditorLanguages.Handlebars
-            }),
-            PropertyFieldCollectionData('resultTypes', {
-                manageBtnLabel: strings.ResultTypes.EditResultTypesLabel,
-                key: 'resultTypes',
-                panelHeader: strings.ResultTypes.EditResultTypesLabel,
-                panelDescription: strings.ResultTypes.ResultTypesDescription,
-                enableSorting: true,
-                label: strings.ResultTypes.ResultTypeslabel,
-                value: this.properties.resultTypes,
-                fields: [
-                    {
-                        id: 'property',
-                        title: strings.ResultTypes.ConditionPropertyLabel,
-                        type: CustomCollectionFieldType.string,
-                        required: true,
-                    },
-                    {
-                        id: 'operator',
-                        title: strings.ResultTypes.CondtionOperatorValue,
-                        type: CustomCollectionFieldType.dropdown,
-                        defaultValue: ResultTypeOperator.Equal,
-                        required: true,
-                        options: [
-                            {
-                                key: ResultTypeOperator.Equal,
-                                text: strings.ResultTypes.EqualOperator
-                            },
-                            {
-                                key: ResultTypeOperator.Contains,
-                                text: strings.ResultTypes.ContainsOperator
-                            },
-                            {
-                                key: ResultTypeOperator.StartsWith,
-                                text: strings.ResultTypes.StartsWithOperator
-                            },
-                            {
-                                key: ResultTypeOperator.NotNull,
-                                text: strings.ResultTypes.NotNullOperator
-                            },
-                            {
-                                key: ResultTypeOperator.GreaterOrEqual,
-                                text: strings.ResultTypes.GreaterOrEqualOperator
-                            },
-                            {
-                                key: ResultTypeOperator.GreaterThan,
-                                text: strings.ResultTypes.GreaterThanOperator
-                            },
-                            {
-                                key: ResultTypeOperator.LessOrEqual,
-                                text: strings.ResultTypes.LessOrEqualOperator
-                            },
-                            {
-                                key: ResultTypeOperator.LessThan,
-                                text: strings.ResultTypes.LessThanOperator
-                            }
-                        ]
-                    },
-                    {
-                        id: 'value',
-                        title: strings.ResultTypes.ConditionValueLabel,
-                        type: CustomCollectionFieldType.string,
-                        required: false,
-                    },
-                    {
-                        id: "inlineTemplateContent",
-                        title: "Inline template",
-                        type: CustomCollectionFieldType.custom,
-                        onCustomRender: (field, value, onUpdate) => {
-                          return (
-                            React.createElement("div", null,
-                              React.createElement(this._textDialogComponent.TextDialog, { 
-                                    language: this._propertyFieldCodeEditorLanguages.Handlebars,
-                                    dialogTextFieldValue: value ? value : dialogTextFieldValue,
-                                    onChanged: (fieldValue) => onUpdate(field.id, fieldValue),
-                                    strings: {
-                                        cancelButtonText: strings.CancelButtonText,
-                                        dialogButtonText: strings.DialogButtonText,
-                                        dialogTitle: strings.DialogTitle,
-                                        saveButtonText: strings.SaveButtonText
-                                    }
-                                })
-                            )
-                          );
-                        }
-                    },
-                    {
-                        id: 'externalTemplateUrl',
-                        title: strings.ResultTypes.ExternalUrlLabel,
-                        type: CustomCollectionFieldType.url,
-                        onGetErrorMessage: this._onTemplateUrlChange.bind(this),
-                        placeholder: 'https://mysite/Documents/external.html'
-                    },
-                ]
-            })
         ];
-
+        console.log(stylingFields);
+        if(!this.codeRendererIsSelected()) {
+            stylingFields.push(
+                this._propertyFieldCodeEditor('inlineTemplateText', {
+                    label: strings.DialogButtonLabel,
+                    panelTitle: strings.DialogTitle,
+                    initialValue: this._templateContentToDisplay,
+                    deferredValidationTime: 500,
+                    onPropertyChange: this.onPropertyPaneFieldChanged,
+                    properties: this.properties,
+                    disabled: !canEditTemplate,
+                    key: 'inlineTemplateTextCodeEditor',
+                    language: this._propertyFieldCodeEditorLanguages.Handlebars
+                }),
+                PropertyFieldCollectionData('resultTypes', {
+                    manageBtnLabel: strings.ResultTypes.EditResultTypesLabel,
+                    key: 'resultTypes',
+                    panelHeader: strings.ResultTypes.EditResultTypesLabel,
+                    panelDescription: strings.ResultTypes.ResultTypesDescription,
+                    enableSorting: true,
+                    label: strings.ResultTypes.ResultTypeslabel,
+                    value: this.properties.resultTypes,
+                    fields: [
+                        {
+                            id: 'property',
+                            title: strings.ResultTypes.ConditionPropertyLabel,
+                            type: CustomCollectionFieldType.string,
+                            required: true,
+                        },
+                        {
+                            id: 'operator',
+                            title: strings.ResultTypes.CondtionOperatorValue,
+                            type: CustomCollectionFieldType.dropdown,
+                            defaultValue: ResultTypeOperator.Equal,
+                            required: true,
+                            options: [
+                                {
+                                    key: ResultTypeOperator.Equal,
+                                    text: strings.ResultTypes.EqualOperator
+                                },
+                                {
+                                    key: ResultTypeOperator.Contains,
+                                    text: strings.ResultTypes.ContainsOperator
+                                },
+                                {
+                                    key: ResultTypeOperator.StartsWith,
+                                    text: strings.ResultTypes.StartsWithOperator
+                                },
+                                {
+                                    key: ResultTypeOperator.NotNull,
+                                    text: strings.ResultTypes.NotNullOperator
+                                },
+                                {
+                                    key: ResultTypeOperator.GreaterOrEqual,
+                                    text: strings.ResultTypes.GreaterOrEqualOperator
+                                },
+                                {
+                                    key: ResultTypeOperator.GreaterThan,
+                                    text: strings.ResultTypes.GreaterThanOperator
+                                },
+                                {
+                                    key: ResultTypeOperator.LessOrEqual,
+                                    text: strings.ResultTypes.LessOrEqualOperator
+                                },
+                                {
+                                    key: ResultTypeOperator.LessThan,
+                                    text: strings.ResultTypes.LessThanOperator
+                                }
+                            ]
+                        },
+                        {
+                            id: 'value',
+                            title: strings.ResultTypes.ConditionValueLabel,
+                            type: CustomCollectionFieldType.string,
+                            required: false,
+                        },
+                        {
+                            id: "inlineTemplateContent",
+                            title: "Inline template",
+                            type: CustomCollectionFieldType.custom,
+                            onCustomRender: (field, value, onUpdate) => {
+                              return (
+                                React.createElement("div", null,
+                                  React.createElement(this._textDialogComponent.TextDialog, { 
+                                        language: this._propertyFieldCodeEditorLanguages.Handlebars,
+                                        dialogTextFieldValue: value ? value : dialogTextFieldValue,
+                                        onChanged: (fieldValue) => onUpdate(field.id, fieldValue),
+                                        strings: {
+                                            cancelButtonText: strings.CancelButtonText,
+                                            dialogButtonText: strings.DialogButtonText,
+                                            dialogTitle: strings.DialogTitle,
+                                            saveButtonText: strings.SaveButtonText
+                                        }
+                                    })
+                                )
+                              );
+                            }
+                        },
+                        {
+                            id: 'externalTemplateUrl',
+                            title: strings.ResultTypes.ExternalUrlLabel,
+                            type: CustomCollectionFieldType.url,
+                            onGetErrorMessage: this._onTemplateUrlChange.bind(this),
+                            placeholder: 'https://mysite/Documents/external.html'
+                        },
+                    ]
+                })
+            );
+        }
         // Only show the template external URL for 'Custom' option
         if (this.properties.selectedLayout === ResultsLayoutOption.Custom) {
             stylingFields.splice(6, 0, PropertyPaneTextField('externalTemplateUrl', {
@@ -936,7 +930,6 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 onGetErrorMessage: this._onTemplateUrlChange.bind(this)
             }));
         }
-
         if(this.codeRendererIsSelected()) {
             const currentCodeRenderer = find(this._codeRenderers, (renderer) => renderer.id === (this.properties.selectedLayout as any));
             if(!this.properties.customTemplateFieldValues) {
@@ -974,7 +967,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                         }
                     ]
                 }));
-            }
+            } 
         }
 
         return stylingFields;
