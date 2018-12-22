@@ -46,6 +46,8 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
       rawInputValue: '',
       enhancedQuery: ''
     };
+
+    this._bindHashChange = this._bindHashChange.bind(this);
   }
 
   public render(): void {
@@ -53,6 +55,9 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
     let inputValue = this.properties.defaultQueryKeywords.tryGetValue();
 
     if (inputValue && typeof(inputValue) === 'string') {
+      
+      // Notify subsscriber a new value if available
+      this.context.dynamicDataSourceManager.notifyPropertyChanged('searchQuery');
       this._searchQuery.rawInputValue = inputValue;
     }
     
@@ -119,6 +124,8 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
     this.initSearchService();
     this.initNlpService();
 
+    this._bindHashChange();
+
     return Promise.resolve();
   }
 
@@ -157,6 +164,16 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
   protected onPropertyPaneFieldChanged(propertyPath: string) {
     this.initSearchService();
     this.initNlpService();
+
+    if (!this.properties.useDynamicDataSource) {
+      this.properties.defaultQueryKeywords.setValue("");
+    } else {
+        this._bindHashChange();
+    }
+
+    if (propertyPath === 'enableNlpService') {
+      this.properties.enableDebugMode = !this.properties.enableDebugMode ? false : true;
+    }
   }
 
   /**
@@ -351,5 +368,20 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
       }
 
       return searchQueryOptimizationFields;
+  }
+
+  /**
+   * Subscribes to URL hash change if the dynamic property is set to the default 'URL Fragment' property
+   */
+  private _bindHashChange() {
+
+    if (this.properties.defaultQueryKeywords.tryGetSource()) {
+        if (this.properties.defaultQueryKeywords.reference.localeCompare('PageContext:UrlData:fragment') === 0) {
+            // Manually subscribe to hash change since the default property doesn't
+            window.addEventListener('hashchange', this.render);
+        } else {
+            window.removeEventListener('hashchange', this.render); 
+        }
+    }
   }
 }

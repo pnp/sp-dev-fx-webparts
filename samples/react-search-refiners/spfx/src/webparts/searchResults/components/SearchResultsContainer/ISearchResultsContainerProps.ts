@@ -3,6 +3,9 @@ import ITaxonomyService from '../../../../services/TaxonomyService/ITaxonomyServ
 import { DisplayMode } from '@microsoft/sp-core-library';
 import TemplateService from '../../../../services/TemplateService/TemplateService';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
+import IRefinerConfiguration from '../../../../models/IRefinerConfiguration';
+import { Sort } from '@pnp/sp';
+import ISortableFieldConfiguration from '../../../../models/ISortableFieldConfiguration';
 
 interface ISearchResultsContainerProps {
 
@@ -39,7 +42,7 @@ interface ISearchResultsContainerProps {
     /**
      * The sort order of the results
      */
-    sortList: string;
+    sortList: Sort[];
 
     /**
      * Enable SharePoint query rules
@@ -54,12 +57,12 @@ interface ISearchResultsContainerProps {
     /**
      * The managed properties used as refiners for the query
      */
-    refiners: { [key: string]: string };
+    refiners: IRefinerConfiguration[];
 
     /**
      * The managed properties used as sortable fields for the query
      */
-    sortableFields: { [key: string]: string };
+    sortableFields: ISortableFieldConfiguration[];
 
     /**
      * Show the paging control

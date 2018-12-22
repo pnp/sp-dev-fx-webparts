@@ -3,14 +3,9 @@
   "id": "42ad2740-3c60-49cf-971a-c44e33511b93",
   "alias": "SearchResultsWebPart",
   "componentType": "WebPart",
-
-  // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
-
-  // If true, the component can only be installed on sites where Custom Script is allowed.
-  // Components that allow authors to embed arbitrary script code should set this to true.
-  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "supportsFullBleed": true,
   "requiresCustomScript": false,
 
   "preconfiguredEntries": [
@@ -21,23 +16,43 @@
         },
         "title": {
             "default": "Search Results with Refiners",
-            "fr-fr": "RÃ©sultats de recherche"
+            "fr-fr": "Résultats de recherche"
         },
         "description": {
             "default": "Displays search results with customizable dynamic refiners",
-            "fr-fr": "Affiche des rÃ©sulats de recherche avec filtres personnalisables"
+            "fr-fr": "Affiche des résulats de recherche avec filtres personnalisables"
         },
         "officeFabricIconFontName": "SearchAndApps",
         "properties": {
             "queryKeywords": "",
             "queryTemplate": "{searchTerms} Path:{Site}",
-            "refiners": "Created:\"Created Date\",Size:\"Size of the file\"",
+            "sortList": [
+                {
+                    "sortField": "Created",
+                    "sortDirection": 1
+                },
+                {
+                    "sortField": "Size",
+                    "sortDirection": 2
+                }
+            ],
+            "refiners": [
+                {
+                    "refinerName": "Created",
+                    "displayValue": "Created Date"
+                },
+                {
+                    "refinerName": "Size",
+                    "displayValue": "Size of the file"
+                }
+            ],
             "selectedProperties": "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL",
             "enableQueryRules": false,
             "maxResultsCount": 10,
             "showBlank": true,
             "showResultsCount": true,
-            "webPartTitle": ""
+            "webPartTitle": "",
+            "useDefaultSearchQuery": false
         }
     }
   ]

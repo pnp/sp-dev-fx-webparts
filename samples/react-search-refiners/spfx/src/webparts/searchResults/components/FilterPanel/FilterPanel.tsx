@@ -48,9 +48,14 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
         // Initialize the Office UI grouped list
         this.props.availableFilters.map((filter, i) => {
 
+            // Get group name
+            let groupName = filter.FilterName;
+            const configuredFilter = this.props.refinersConfiguration.filter(e => { return e.refinerName === filter.FilterName;});
+            groupName = configuredFilter.length > 0 && configuredFilter[0].displayValue ? configuredFilter[0].displayValue : groupName;
+
             groups.push({
                 key: i.toString(),
-                name: this.props.refinersConfiguration[filter.FilterName],
+                name: groupName,
                 count: 1,
                 startIndex: i,
                 isDropEnabled: true,
@@ -133,12 +138,9 @@ export default class FilterPanel extends React.Component<IFilterPanelProps, IFil
                         isOpen={this.state.showPanel}
                         type={PanelType.custom}
                         customWidth="450px"
-                        isBlocking={false}
                         isLightDismiss={true}
                         onDismiss={this._onClosePanel}
                         headerText={strings.FilterPanelTitle}
-                        closeButtonAriaLabel='Close'
-                        hasCloseButton={true}
                         onRenderBody={() => {
                             if (this.props.availableFilters.length > 0) {
                                 return (

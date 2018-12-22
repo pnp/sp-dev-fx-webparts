@@ -1,8 +1,9 @@
 import UpdateSortOperationCallback from '../../../../models/UpdateSortOperationCallback';
 import { SortDirection } from "@pnp/sp";
+import ISortableFieldConfiguration from '../../../../models/ISortableFieldConfiguration';
 
 interface ISortPanelProps {
-    sortableFieldsConfiguration: { [key: string]: string };
+    sortableFieldsConfiguration: ISortableFieldConfiguration[];
     onUpdateSort: UpdateSortOperationCallback;
     sortDirection?:SortDirection;
     sortField?:string;

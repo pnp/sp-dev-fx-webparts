@@ -13,6 +13,7 @@ import * as update from                              'immutability-helper';
 import styles from '../SearchBoxWebPart.module.scss';
 import ISearchQuery from '../../../models/ISearchQuery';
 import NlpDebugPanel from './NlpDebugPanel/NlpDebugPanel';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 
 const SUGGESTION_CHAR_COUNT_TRIGGER = 3;
 
@@ -48,45 +49,49 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
           selectedItem,
           highlightedIndex,
           openMenu,
-          clearItems
+          clearItems,
         }) => (
           <div>
-            <TextField {...getInputProps({
-                placeholder: strings.SearchInputPlaceholder,
-                onKeyDown: event => {
+            <div className={ styles.searchFieldGroup }>
+              <TextField {...getInputProps({
+                  placeholder: strings.SearchInputPlaceholder,
+                  onKeyDown: event => {
 
-                  // Submit search on "Enter" 
-                  if (event.keyCode === 13 && (!isOpen || (isOpen && highlightedIndex === null))) {
-                    this._onSearch(this.state.searchInputValue);
+                    // Submit search on "Enter" 
+                    if (event.keyCode === 13 && (!isOpen || (isOpen && highlightedIndex === null))) {
+                      this._onSearch(this.state.searchInputValue);
+                    }
                   }
-                }
-            })}
-            value={ this.state.searchInputValue }
-            autoComplete= "off"
-            onChanged={ (value) => {
+              })}
+              className={ styles.searchTextField }
+              value={ this.state.searchInputValue }
+              autoComplete= "off"
+              onChanged={ (value) => {
 
-                this.setState({
-                  searchInputValue: value,
-                });
+                  this.setState({
+                    searchInputValue: value,
+                  });
 
-                if (this.state.selectedQuerySuggestions.length === 0) {
-                  clearItems();
-                  this._onChange(value);
-                  openMenu();
-                } else {
-                  if (!value) {
+                  if (this.state.selectedQuerySuggestions.length === 0) {
+                    clearItems();
+                    this._onChange(value);
+                    openMenu();
+                  } else {
+                    if (!value) {
 
-                    // Reset the selected suggestions if input is empty
-                    this.setState({
-                      selectedQuerySuggestions: [],
-                    });
+                      // Reset the selected suggestions if input is empty
+                      this.setState({
+                        selectedQuerySuggestions: [],
+                      });
+                    }
                   }
-                }
-            }} 
-            iconProps={{
-              iconName: 'Search',
-              iconType: IconType.default
-            }}/>
+              }}/>
+              <IconButton iconProps={{
+                  iconName: 'Search',
+                  iconType: IconType.default,
+                }} onClick= {() => { this._onSearch(this.state.searchInputValue);} } className={ styles.searchBtn }>
+              </IconButton>
+            </div>
             {isOpen ?
               this.renderSuggestions(getItemProps, selectedItem, highlightedIndex)
             : null}
@@ -96,25 +101,30 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
   }
 
   private renderBasicSearchBox(): JSX.Element {
-    return <TextField 
-      placeholder={ strings.SearchInputPlaceholder }
-      value={ this.state.searchInputValue }
-      onChanged={ (value) => {
-        this.setState({
-          searchInputValue: value,
-        });
-      }}
-      onKeyDown={ (event) => {
+    return  <div className={ styles.searchFieldGroup }>
+              <TextField 
+                className={ styles.searchTextField }
+                placeholder={ strings.SearchInputPlaceholder }
+                value={ this.state.searchInputValue }
+                onChanged={ (value) => {
+                  this.setState({
+                    searchInputValue: value,
+                  });
+                }}
+                onKeyDown={ (event) => {
 
-          // Submit search on "Enter" 
-          if (event.keyCode === 13) {
-            this._onSearch(this.state.searchInputValue);
-          }
-      }}
-      iconProps={{
-        iconName: 'Search',
-        iconType: IconType.default
-      }}/>;
+                    // Submit search on "Enter" 
+                    if (event.keyCode === 13) {
+                      this._onSearch(this.state.searchInputValue);
+                    }
+                }}
+              />
+              <IconButton iconProps={{
+                  iconName: 'Search',
+                  iconType: IconType.default,
+                }} onClick= {() => { this._onSearch(this.state.searchInputValue);} } className={ styles.searchBtn }>
+              </IconButton>
+            </div>;
   }
 
   /**
@@ -251,47 +261,52 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
    */
   public async _onSearch(queryText: string) {    
 
-    let query: ISearchQuery = {
-      rawInputValue: queryText,
-      enhancedQuery: ''
-    };
+    // Don't send empty value
+    if (queryText) {
 
-    this.setState({
-      searchInputValue: queryText,
-    });
+      let query: ISearchQuery = {
+        rawInputValue: queryText,
+        enhancedQuery: ''
+      };
 
-    if (this.props.enableNlpService && this.props.NlpService && queryText) {
+      this.setState({
+        searchInputValue: queryText,
+      });
 
-      try {
+      if (this.props.enableNlpService && this.props.NlpService && queryText) {
 
-        let enhancedQuery = await this.props.NlpService.enhanceSearchQuery(queryText, this.props.isStaging);
-        query.enhancedQuery = enhancedQuery.enhancedQuery;
+        try {
 
-        enhancedQuery.entities.map((entity) => {          
-        });
+          let enhancedQuery = await this.props.NlpService.enhanceSearchQuery(queryText, this.props.isStaging);
+          query.enhancedQuery = enhancedQuery.enhancedQuery;
 
-        this.setState({
-          enhancedQuery: enhancedQuery,
-        });
+          enhancedQuery.entities.map((entity) => {          
+          });
 
-      } catch (error) {
-        
-        // In case of failure, use the non-optimized query instead
-        query.enhancedQuery = queryText;  
+          this.setState({
+            enhancedQuery: enhancedQuery,
+          });
+
+        } catch (error) {
+          
+          // In case of failure, use the non-optimized query instead
+          query.enhancedQuery = queryText;  
+        }
       }
-    }
 
-    if (this.props.searchInNewPage) {
-      // Send the query to the a new via the query string
-      const url = UrlHelper.addOrReplaceQueryStringParam(this.props.pageUrl, 'q', encodeURIComponent(queryText));
+      if (this.props.searchInNewPage) {
+        
+        // Send the query to the a new via the hash
+        const url = `${this.props.pageUrl}#${encodeURIComponent(queryText)}`;
 
-      const behavior = this.props.openBehavior === PageOpenBehavior.NewTab ? '_blank' : '_self';
-      window.open(url, behavior);
-      
-    } else {
+        const behavior = this.props.openBehavior === PageOpenBehavior.NewTab ? '_blank' : '_self';
+        window.open(url, behavior);
+        
+      } else {
 
-      // Notify the dynamic data controller
-      this.props.onSearch(query);
+        // Notify the dynamic data controller
+        this.props.onSearch(query);
+      }
     }
   }
 

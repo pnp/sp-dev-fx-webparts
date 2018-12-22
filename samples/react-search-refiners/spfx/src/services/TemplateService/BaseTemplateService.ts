@@ -22,16 +22,14 @@ abstract class BaseTemplateService {
         this.registerTemplateServices();
     }
 
-    public async LoadHandlebarsHelpers(load: boolean) {
-        if (load) {
-            let component = await import(
-                /* webpackChunkName: 'search-handlebars-helpers' */
-                'handlebars-helpers'
-            );
-            this._helper = component({
-                handlebars: Handlebars
-            });
-        }
+    private async LoadHandlebarsHelpers() {
+        let component = await import(
+            /* webpackChunkName: 'search-handlebars-helpers' */
+            'handlebars-helpers'
+        );
+        this._helper = component({
+            handlebars: Handlebars
+        });
     }
 
     /**
@@ -292,7 +290,7 @@ abstract class BaseTemplateService {
         });
 
         // Return the URL or Title part of a URL automatic managed property
-        // <p>{{getDate MyLinkOWSURLH "Title"}}</p>
+        // <p>{{getUrlField MyLinkOWSURLH "Title"}}</p>
         Handlebars.registerHelper("getUrlField", (urlField: string, value: "URL" | "Title") => {
             let separatorPos = urlField.indexOf(",");
             if (value === "URL") {
@@ -325,6 +323,168 @@ abstract class BaseTemplateService {
      */
     public async processTemplate(templateContext: any, templateContent: string): Promise<string> {
         // Process the Handlebars template
+        const handlebarFunctionNames = [
+            "getDate",
+            "after",
+            "arrayify",
+            "before",
+            "eachIndex",
+            "filter",
+            "first",
+            "forEach",
+            "inArray",
+            "isArray",
+            "itemAt",
+            "join",
+            "last",
+            "lengthEqual",
+            "map",
+            "some",
+            "sort",
+            "sortBy",
+            "withAfter",
+            "withBefore",
+            "withFirst",
+            "withGroup",
+            "withLast",
+            "withSort",
+            "embed",
+            "gist",
+            "jsfiddle",
+            "isEmpty",
+            "iterate",
+            "length",
+            "and",
+            "compare",
+            "contains",
+            "gt",
+            "gte",
+            "has",
+            "eq",
+            "ifEven",
+            "ifNth",
+            "ifOdd",
+            "is",
+            "isnt",
+            "lt",
+            "lte",
+            "neither",
+            "or",
+            "unlessEq",
+            "unlessGt",
+            "unlessLt",
+            "unlessGteq",
+            "unlessLteq",
+            "moment",
+            "fileSize",
+            "read",
+            "readdir",
+            "css",
+            "ellipsis",
+            "js",
+            "sanitize",
+            "truncate",
+            "ul",
+            "ol",
+            "thumbnailImage",
+            "i18n",
+            "inflect",
+            "ordinalize",
+            "info",
+            "bold",
+            "warn",
+            "error",
+            "debug",
+            "_inspect",
+            "markdown",
+            "md",
+            "mm",
+            "match",
+            "isMatch",
+            "add",
+            "subtract",
+            "divide",
+            "multiply",
+            "floor",
+            "ceil",
+            "round",
+            "sum",
+            "avg",
+            "default",
+            "option",
+            "noop",
+            "withHash",
+            "addCommas",
+            "phoneNumber",
+            "random",
+            "toAbbr",
+            "toExponential",
+            "toFixed",
+            "toFloat",
+            "toInt",
+            "toPrecision",
+            "extend",
+            "forIn",
+            "forOwn",
+            "toPath",
+            "get",
+            "getObject",
+            "hasOwn",
+            "isObject",
+            "merge",
+            "JSONparse",
+            "parseJSON",
+            "pick",
+            "JSONstringify",
+            "stringify",
+            "absolute",
+            "dirname",
+            "relative",
+            "basename",
+            "stem",
+            "extname",
+            "segments",
+            "camelcase",
+            "capitalize",
+            "capitalizeAll",
+            "center",
+            "chop",
+            "dashcase",
+            "dotcase",
+            "hyphenate",
+            "isString",
+            "lowercase",
+            "occurrences",
+            "pascalcase",
+            "pathcase",
+            "plusify",
+            "reverse",
+            "replace",
+            "sentence",
+            "snakecase",
+            "split",
+            "startsWith",
+            "titleize",
+            "trim",
+            "uppercase",
+            "encodeURI",
+            "decodeURI",
+            "urlResolve",
+            "urlParse",
+            "stripQuerystring",
+            "stripProtocol"
+        ];
+
+        for (let i = 0; i < handlebarFunctionNames.length; i++) {
+            const element = handlebarFunctionNames[i];
+
+            let regEx = new RegExp("{{#.*?" + element + ".*?}}", "m");
+            if (regEx.test(templateContent)) {
+                await this.LoadHandlebarsHelpers();
+                break;
+            }
+        }
+
         let template = Handlebars.compile(templateContent);
         let result = template(templateContext);
         if (result.indexOf("-preview-item") != -1) {
@@ -418,7 +578,7 @@ abstract class BaseTemplateService {
         }));
     }
 
-    private async _loadVideoLibrary(){
+    private async _loadVideoLibrary() {
 
         // Load Videos-Js on Demand 
         // Webpack will create a other bundle loaded on demand just for this library
