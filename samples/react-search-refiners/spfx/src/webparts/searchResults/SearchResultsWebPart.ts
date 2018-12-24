@@ -246,7 +246,11 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                                                                                                             {
                                                                                                                 refinerName: "Size",
                                                                                                                 displayValue: "Size of the file"
-                                                                                                            }
+                                                                                                            },
+                                                                                                            {
+                                                                                                                refinerName: "owstaxidmetadataalltagsinfo",
+                                                                                                                displayValue: "Tags"
+                                                                                                            }                                                                                                            
                                                                                                         ];
         this.properties.sortList = Array.isArray(this.properties.sortList) ? this.properties.sortList : [
                                                                                                             {
