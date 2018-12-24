@@ -7,7 +7,7 @@ This sample shows how we can use the [ReactiveX (RxJs)](http://reactivex.io/) li
 ![SPFx ReactiveX (RxJs) Event Emitter Sample](./assets/spfx-event-emitter.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
 
 ## Applies to
 
@@ -31,6 +31,7 @@ Version|Date|Comments
 -------|----|--------
 0.0.1|August 22, 2017 | Initial commit
 0.0.2|April 20, 2018 | Updated to SPFx v1.4.1
+0.0.3|December 10, 2018 | Updated to SPFx v1.7.0
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -42,7 +43,6 @@ Version|Date|Comments
 - Clone this repository.
 - Open the command line, navigate to the web part folder and execute:
     - `npm i`
-    - `gulp test` (optional)
     - `gulp serve`
 
 ## Features
@@ -53,7 +53,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Using Office UI Fabric React styles for building user experience consistent with SharePoint and Office.
 - The use the ReactiveX (RxJs) Event Emitter to broadcast messages (events).
 - The use the ReactiveX (RxJs) Event Emitter to subscribe and receive broadcasted messages (events).
-- Unit tests including spies, mocks and faking class methods and properties.
 
 ## Making the RxJsEventEmitter external SPFx library.
 
