@@ -949,19 +949,19 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 });
                 stylingFields.push(PropertyFieldCollectionData('customTemplateFieldValues', {
                     key: 'customTemplateFieldValues',
-                    label: 'Custom template field values',
-                    panelHeader: 'Custom template field values',
-                    manageBtnLabel: 'Configure',
+                    label: strings.customTemplateFieldsLabel,
+                    panelHeader: strings.customTemplateFieldsPanelHeader,
+                    manageBtnLabel: strings.customTemplateFieldsConfigureButtonLabel,
                     value: this.properties.customTemplateFieldValues,
                     fields: [
                         {
                             id: 'fieldName',
-                            title: 'FieldName',
+                            title: strings.customTemplateFieldTitleLabel,
                             type: CustomCollectionFieldType.string,
                         },
                         {
                             id: 'searchProperty',
-                            title: 'Search Property',
+                            title: strings.customTemplateFieldPropertyLabel,
                             type: CustomCollectionFieldType.dropdown,
                             options: searchPropertyOptions
                         }
@@ -991,7 +991,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
 
     protected codeRendererIsSelected(): boolean {
-        const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
-        return regex.test(this.properties.selectedLayout as any);
+        const guidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+        return guidRegex.test(this.properties.selectedLayout as any);
     }
 }

@@ -47,6 +47,11 @@ define([], function() {
     "HandlebarsHelpersDescription": "Enable functions from moment and handlebars helpers. See https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens for more information.",
     "PromotedResultsLabel": "Promoted result(s)",
     "PanelCloseButtonAria":"Close",
+    "customTemplateFieldsLabel":"Custom template field values",  
+    "customTemplateFieldsPanelHeader":"Custom template field values",  
+    "customTemplateFieldsConfigureButtonLabel":"Configure",  
+    "customTemplateFieldTitleLabel":"Field Name",  
+    "customTemplateFieldPropertyLabel":"Search Property",
     "Sort": {
       "SortableFieldsPropertyPaneField": "Sortable properties",
       "SortableFieldsDescription": "Specifies sortable properties that users can use in the UI. Only one property can be used at a time for sorting and will override the search order specified in the WP if exists.",
