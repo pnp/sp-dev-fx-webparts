@@ -39,79 +39,80 @@ abstract class BaseTemplateService {
     public static getListDefaultTemplate(): string {
         return html`
         <style>
-            .template_listItem {
-                display:flex;
-                display: -ms-flexbox;
-                padding: 10px;
-                justify-content: space-between;
-            }
+        .template_listItem {
+            display:flex;
+            display: -ms-flexbox;
+            padding: 10px;
+            justify-content: space-between;
+        }
 
-            .template_listItem img.img-preview  {
-                width: 120px;
-                opacity: 1;
-                display: block;
-                height: auto;
-                transition: .5s ease;
-                backface-visibility: hidden;
-            }          
+        .template_listItem img.img-preview  {
+            width: 120px;
+            opacity: 1;
+            display: block;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }          
 
-            .template_result {
-                display: flex;    
-                display: -ms-flexbox;
-            }
+        .template_result {
+            display: flex;    
+            display: -ms-flexbox;
+        }
 
-            .template_listItem iframe, .template_listItem .video-js {
-                height: 250px;
-                margin: 10px;
-            }
+        .template_listItem iframe, .template_listItem .video-js {
+            height: 250px;
+            margin: 10px;
+        }
 
-            .template_contentContainer {
-                display: flex;
-                width: 100%;
-                display: -ms-flexbox;
-                flex-direction: column;
-                margin-right: 15px;
-            }
+        .template_contentContainer {
+            display: flex;
+            width: 100%;
+            display: -ms-flexbox;
+            flex-direction: column;
+            margin-right: 15px;
+        }
 
-            .template_previewContainer {
-                align-items: center;
-                display: flex;
-                display: -ms-flexbox;
-            }
-            
-            /* Width for the documents and videos preview */
-            .videoPreview, .iframePreview {
-                width: 400px;
-            }
+        .template_previewContainer {
+            align-items: center;
+            display: flex;
+            display: -ms-flexbox;
+        }
 
-            .template_icon {
-                height: 32px;
-                margin-right: 15px;
-            }
+        /* Width for the documents and videos preview */
+        .videoPreview, .iframePreview {
+            width: 400px;
+        }
 
-            .hover {
-                transition: .5s ease;
-                opacity: 0;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                text-align: center;
-                pointer-events: none;
-              }
-              
-              .img-container {
-                  position: relative;
-              }
-              
-              .img-container:hover img {
-                opacity: 0.2;
-              }
-              
-              .img-container:hover .hover {
-                opacity: 1;
-              }
+        .template_icon {
+            height: 32px;
+            margin-right: 15px;
+        }
+
+        .hover {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .img-container {
+            position: relative;
+        }
+
+        .img-container:hover img {
+            opacity: 0.2;
+        }
+
+        .img-container:hover .hover {
+            opacity: 1;
+        }
+
         </style>
         <div class="template_root">
             {{#if showResultsCount}}
@@ -145,7 +146,15 @@ abstract class BaseTemplateService {
                                     <div class="template_contentContainer">
                                         <span class=""><a href="{{getUrl item}}">{{Title}}</a></span>
                                         <span class="">{{getSummary HitHighlightedSummary}}</span>
-                                        <span class=""><span>{{getDate Created "LL"}}</span></span> 
+                                        <span class=""><span>{{getDate Created "LL"}}</span></span>   
+                                        <div class="${templateStyles.tags}">
+                                            {{#if owstaxidmetadataalltagsinfo}}
+                                                <i class="ms-Icon ms-Icon--Tag" aria-hidden="true"></i>
+                                                {{#each (split owstaxidmetadataalltagsinfo ";") as |tag| }}                                                    
+                                                    <a href="#owstaxidmetadataalltagsinfo:{{getLabel tag}}">{{getLabel tag}}</a>
+                                                {{/each}}
+                                            {{/if}}
+                                        </div>
                                     </div>
                             </div>
                             <div class="template_previewContainer ms-hiddenSm">                           
@@ -383,6 +392,19 @@ abstract class BaseTemplateService {
                 result = uniq(array);
             }
             return result.length;
+        });
+
+        // Return the text label from amn'owstaxid_' type managed property 
+        // <p>{{getLabel "L0|#045686734-5215-4aad-bed7-8c3f0dbb61fc|Document"}}</p>
+        Handlebars.registerHelper("getLabel", (owsTaxIdValue: string) => {
+
+            let termLabel = owsTaxIdValue;
+            const matches = /L0\|#.+\|(.*)/.exec(owsTaxIdValue);
+            if (matches) {
+                termLabel = matches[1];
+            }
+
+            return termLabel;
         });
     }
 

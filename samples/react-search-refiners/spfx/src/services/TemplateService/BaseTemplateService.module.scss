@@ -27,3 +27,27 @@
 .hoverIcon {
     color: '[theme:themeDarker, default:#0078d7]';
 }
+
+.tags {
+
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+
+    * + * {
+        margin-left: 3px;
+    }
+
+    a, a:visited, a:focus, a:link, a:active {
+        color: '[theme:themePrimary, default:#0078d7]';
+    }
+
+    a:not(:empty):after {
+        content: ",";
+        display: inline-block;
+    }
+
+    a:not(:empty):last-child:after {
+        content: "";
+    }
+}
