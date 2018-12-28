@@ -9,6 +9,8 @@ export interface ISuggestedTeamMembersProps {
 
 export interface ISuggestedTeamMembersState {
   people: IPerson[];
+  userIsGroupOwner: boolean;
+  loading: boolean;
 }
 
 export interface IPerson {

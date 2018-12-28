@@ -44,9 +44,13 @@
                 {
                     "refinerName": "Size",
                     "displayValue": "Size of the file"
+                },
+                {
+                    "refinerName": "owstaxidmetadataalltagsinfo",
+                    "displayValue": "Tags"
                 }
             ],
-            "selectedProperties": "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL",
+            "selectedProperties": "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL,owstaxidmetadataalltagsinfo",
             "enableQueryRules": false,
             "maxResultsCount": 10,
             "showBlank": true,

@@ -5,6 +5,7 @@ import styles from './SuggestedTeamMembers.module.scss';
 import { IPersonaProps, Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 import {
   CompactPeoplePicker,
@@ -26,7 +27,7 @@ export interface IMembersPickerProps {
 export interface IMembersPickerState {
   peopleList: IPersonaProps[];
   currentSelectedItems?: IPersonaProps[];
-  resultAddMembers: string;
+  resultAddMembers: string[];
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -60,7 +61,7 @@ export default class MembersPicker extends React.Component<IMembersPickerProps, 
     this.state = {
       peopleList: peopleList,
       currentSelectedItems: [],
-      resultAddMembers: null
+      resultAddMembers: []
     };
   }
 
@@ -160,7 +161,15 @@ export default class MembersPicker extends React.Component<IMembersPickerProps, 
           onClick={() => { this._addGroupMembers(); }}
          />
 
-        <Label>{this.state.resultAddMembers}</Label>
+        {
+          this.state.resultAddMembers.map(s => {
+            let type: MessageBarType = MessageBarType.info;
+            if (s.indexOf("Error") >= 0) {
+              type = MessageBarType.error;
+            }
+            return <MessageBar messageBarType={type} isMultiline={false}>{s}</MessageBar>;
+          })
+        }
       </div>
     );
   }
@@ -190,12 +199,21 @@ export default class MembersPicker extends React.Component<IMembersPickerProps, 
     };
 
     var response: GraphHttpClientResponse = await this.props.graphHttpClient.post('v1.0/$batch', GraphHttpClient.configurations.v1, options);
-    var responseJson: string = await response.json();
+    var responseJson: any = await response.json();
 
     console.log(responseJson);
 
+    let responsesInfo: string[] = [];
+    responseJson.responses.forEach((r: any) => {
+      if (r.status === 204) {
+        responsesInfo.push(`User ${r.id} added succesfuly`);
+      } else {
+        responsesInfo.push(`Error adding User ${r.id}. Maybe the user is already a member`);
+      }
+    });
+
     this.setState({
-      resultAddMembers: "Members added to the group successfully"
+      resultAddMembers: responsesInfo
     });
   }
 
