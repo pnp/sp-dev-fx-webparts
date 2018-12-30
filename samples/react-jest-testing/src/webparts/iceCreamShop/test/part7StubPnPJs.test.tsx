@@ -1,12 +1,11 @@
 /// <reference types="jest" />
 
-import * as React from 'react';
-import { configure, mount, ReactWrapper } from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-15';
+import { configure } from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 
 import { IceCreamPnPJsProvider } from '../iceCreamProviders/IceCreamPnPJsProvider';
 import { IceCream } from '../iceCreamProviders/IceCream';
-import { sp, SearchResults, Items } from "@pnp/sp";
+import { sp, Items } from "@pnp/sp";
 
 import * as sinon from 'sinon';
 

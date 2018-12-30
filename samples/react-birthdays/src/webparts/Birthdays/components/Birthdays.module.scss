@@ -1,0 +1,144 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.happyBirthday {
+  .backgroundImgBallons{
+    text-align: center;
+    text-align: -webkit-center;
+    opacity: 0.21;
+
+  }
+  .documentCard {
+    -webkit-font-smoothing: antialiased;
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 236px;
+    min-height: 300px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+
+  }
+  .documentCardWrapper {
+   margin-top: 15px;
+   min-Width: 238px;
+   width: 238px;
+   min-height: 300px;
+
+
+   margin-Left: 12px;
+   position: relative;
+   text-align: center;
+  }
+  .container {
+    display: inline-block;
+    max-width: 100%;
+    margin: 0px auto;
+
+  }
+  .today{
+    @include ms-font-xl;
+    @include ms-fontWeight-semibold;
+    position: absolute;
+    top: 75px;
+    width: 100%;
+    font-style: italic;
+    text-align: top;
+    padding-bottom: 15px;
+  }
+  .centered {
+    @include ms-font-xl;
+    @include ms-fontWeight-semibold;
+    position: absolute;
+    top: 100px;
+     width: 100%;
+    font-style: italic;
+    text-align: top;
+}
+.persona{
+  position: absolute;
+    top: 170px;
+    max-width: 236px;
+}
+.actions{
+  position: absolute;
+    top: 290px;
+    width: 100%;
+    border-top-style: solid;
+    border-top-color: #f4f4f4;
+    border-top-width: 1.1px;
+   // background-color: #f8f8f8;
+}
+  .row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+    @include ms-fontColor-white;
+  }
+  .centeredHeader {
+    position: relative;
+
+}
+
+  .subTitle {
+    @include ms-font-m;
+    @include ms-fontWeight-semibold;
+  }
+
+  .description {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+}

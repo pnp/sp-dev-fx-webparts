@@ -275,7 +275,6 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         FilterPanel = filterPanelComponent.FilterPanel;
                     }
 
-
                     this.setState({
                         results: searchResults,
                         resultCount: searchResults.TotalRows,
@@ -346,6 +345,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
         this._getLocalizedFilters(searchResults.RefinementResults);
 
         this.setState({
+            resultCount: searchResults.TotalRows,
             results: searchResults,
             availableFilters: localizedFilters,
             areResultsLoading: false,
