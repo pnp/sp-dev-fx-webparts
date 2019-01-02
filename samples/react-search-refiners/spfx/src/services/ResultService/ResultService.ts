@@ -1,7 +1,8 @@
 import { ISearchResults } from "../../models/ISearchResult";
 import IResultService from "./IResultService";
+import 'custom-event-polyfill';
 
-export interface ISearchEvent extends Event {
+export interface ISearchEvent extends CustomEvent {
     rendererId?: string;
     results?: ISearchResults;
     mountNode?: string;
@@ -12,7 +13,7 @@ export interface IRenderer {
     id: string;
     name: string;
     icon: string;
-    customFields?: string[]
+    customFields?: string[];
 }
 
 export interface ICustomTemplateFieldValue {
@@ -25,7 +26,7 @@ export class ResultService implements IResultService {
     private SEARCH_RENDERERS_OBJECT_NAME: string = "pnp-spfx-search-renderers";
 
     public updateResultData(results: ISearchResults, rendererId: string, mountNode: string, customTemplateFieldValues?: ICustomTemplateFieldValue[]) {
-        let searchEvent: ISearchEvent = new Event(this.SEARCH_CHANGED_EVENT_NAME);
+        let searchEvent: ISearchEvent = new CustomEvent(this.SEARCH_CHANGED_EVENT_NAME);
         searchEvent.rendererId = rendererId;
         searchEvent.results = results; 
         searchEvent.mountNode = mountNode;
