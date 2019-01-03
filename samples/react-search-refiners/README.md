@@ -247,7 +247,7 @@ Handlebars [partials](https://handlebarsjs.com/partials.html) are used behind th
 You may also define  your own renderers, which most often should be SPFx application customizers. These should use the resultservice to register themselves as renderers, and will upon registration be available as a rendering choice in the "Result Layouts" Section.
 
 <p align="center">
-  <img width="500px" src="./images/results_layout.png"/>
+  <img width="500px" src="./images/results_layout.PNG"/>
 </p>
 
 When registering new renderers, must include:
@@ -269,7 +269,7 @@ If you register fields as template fields in your renderer, they will become edi
 
 The users may choose what values to display from a dropdown, which is populated by properties chosen in the "Selected properties" field in the webpart settings.
 <p align="center">
-  <img width="5000px" src="./images/custom_template_fields_selection.png"/>
+  <img width="5000px" src="./images/custom_template_fields_selection.PNG"/>
 </p>
 
 
