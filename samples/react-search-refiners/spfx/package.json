@@ -1,6 +1,6 @@
 {
   "name": "pnp-react-search-refiners",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -36,7 +36,9 @@
     "@types/sharepoint": "2013.1.9",
     "@types/webpack-env": "1.13.1",
     "common-tags": "^1.8.0",
+    "custom-event-polyfill": "^1.0.6",
     "downshift": "3.1.5",
+    "es6-iterator": "^2.0.3",
     "handlebars": "^4.0.12",
     "handlebars-helpers": "^0.8.4",
     "immutability-helper": "2.4.0",
