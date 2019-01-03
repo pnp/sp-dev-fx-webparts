@@ -63,6 +63,7 @@ Version|Date|Comments
 2.2.0.0 | Nov 11, 2018 | <ul><li>Upgraded to SPFx 1.7.0</li><li>Added a TypeScript Azure Function to demonstrate NLP processing on search query</li><li>Removed extension data source. Now we use the default SPFx 'Page Environment' data source.</li></ul>
 2.2.0.1 | Dec 3, 2018 | <ul><li>Remove switch for handlebar helpers, and instead load helpers if used in the template.</li></ul>
 2.3.0.0 | Dec 13, 2018 | <ul><li>Upgraded to @pnp/controls 1.13.0</li><li>Added a result types features</li><li>Fix bug regarding dynamic data source connection</li></ul>
+2.4.0.0 | Jan 03, 2019 | Added custom code renderer support.
 
 ## Important notice on upgrading the solution from pre v2.2.0.0
 **Due to code restucturing we have hit an edge case which impacts upgrades from previous versions. To solve the issue go to `https://<tenant>.sharepoint.com/sites/<appcatalog>/Lists/ComponentManifests` and remove the entries for SearchBox and Search Results, and then upload the .sppkg for the new release.**
@@ -172,7 +173,7 @@ Web Part Title | Shows a title for this Web Part. Set blank if you don't want a 
 Show blank if no result | Shows nothing if there is no result
 Show result count | Shows the result count and entered keywords  
 Show paging | Indicates whether or not the component should show the paging control at the bottom.
-Result Layouts options | Choose the template to use to display search results. Some layouts are defined by default (List oand Tiles) but you can create your own either by clinkg on the **"Custom"** tile, or **"Edit template"** from an existing chosen template. In custom mode, you can set an external template. It has to be in the same SharePoint tenant. Behind the scenes, the Office UI Fabric core CSS components are used in a isolated way.
+Result Layouts options | Choose the template to use to display search results. Some layouts are defined by default (List oand Tiles) but you can create your own either by clinkg on the **"Custom"** tile, or **"Edit template"** from an existing chosen template. In custom mode, you can set an external template. It has to be in the same SharePoint tenant. Behind the scenes, the Office UI Fabric core CSS components are used in a isolated way. Custom code templates will also automaticly be displayed here upon registration.
 Result types | Allows you to set a custom template at item level according to a specific condition (ex: FileType equals 'pdf').
 Handlebars Helpers | Load [handlebar helpers](https://github.com/helpers/handlebars-helpers) to use in your template. Disable this option will make Web Part loading faster if you don't need them.
 
@@ -240,6 +241,39 @@ To use it in your main template, just follow this pattern. This block is not man
 ```
 
 Handlebars [partials](https://handlebarsjs.com/partials.html) are used behind the scenes and conditions are built dynamically using a recursive if/else structure.
+
+
+#### Custom code renderers
+You may also define  your own renderers, which most often should be SPFx application customizers. These should use the resultservice to register themselves as renderers, and will upon registration be available as a rendering choice in the "Result Layouts" Section.
+
+<p align="center">
+  <img width="500px" src="./images/results_layout.png"/>
+</p>
+
+When registering new renderers, must include:
+ - The component id
+ - The name of the renderer (displayed in the settings panel of the react-search-refiners webpart)
+ - The icon of the renderer (displayed in the settings panel of the react-search-refiners webpart)
+ - The Update-function that takes care of any updates in the results. 
+ - A list of properties that may be selected for usage of template funcitonality (a list of strings that should be descriptions of the template fields).
+
+A typical registration looks like this:
+```
+    this._resultService = new ResultService();
+    this.onChangeHappened.bind(this);
+    this._resultService.registerRenderer(this.componentId, 'Defaultrenderer', 'QueryList', this.onChangeHappened, ['subheader']);
+```
+
+#### Custom code renderer template fields
+If you register fields as template fields in your renderer, they will become editable through a menu in the webpart.
+
+The users may choose what values to display from a dropdown, which is populated by properties chosen in the "Selected properties" field in the webpart settings.
+<p align="center">
+  <img width="5000px" src="./images/custom_template_fields_selection.png"/>
+</p>
+
+
+
 
 #### Query variables
 

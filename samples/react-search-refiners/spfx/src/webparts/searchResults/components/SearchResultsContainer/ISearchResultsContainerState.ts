@@ -57,6 +57,10 @@ interface ISearchResultsContainerState {
      * Keeps the order in which the results need to be sorted (after initial sort)
      */
     sortDirection?: SortDirection;
+    /**
+     *  Guid for the current mounting node
+     */
+    mountingNodeGuid: string;
 }
 
 export default ISearchResultsContainerState;

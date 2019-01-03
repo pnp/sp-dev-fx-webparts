@@ -47,7 +47,12 @@ declare interface ISearchResultsWebPartStrings {
     WebPartTitle: string;
     HandlebarsHelpersDescription: string;
     PromotedResultsLabel: string;
-    PanelCloseButtonAria:string;  
+    PanelCloseButtonAria:string;
+    customTemplateFieldsLabel: string;  
+    customTemplateFieldsPanelHeader: string;  
+    customTemplateFieldsConfigureButtonLabel: string;  
+    customTemplateFieldTitleLabel: string;  
+    customTemplateFieldPropertyLabel: string;  
     Sort: {
         SortPropertyPaneFieldLabel
         SortListDescription: string;

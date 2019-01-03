@@ -47,6 +47,11 @@ define([], function() {
     "HandlebarsHelpersDescription": "Activer les fonctions de moment et handlebars helpers. Voir https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-search-refiners/README.md#available-tokens pour plus d'informations.",
     "PromotedResultsLabel": "Résultat(s) promu(s)",
     "PanelCloseButtonAria":"Proche",
+    "customTemplateFieldsLabel": "Valeurs de champ de modèle personnalisé",
+    "customTemplateFieldsPanelHeader": "Valeurs de champ de modèle personnalisé",
+    "customTemplateFieldsConfigureButtonLabel": "Configurer",
+    "customTemplateFieldTitleLabel": "Nom du champ",
+    "customTemplateFieldPropertyLabel": "Propriété de recherche",
     "Sort": {
       "SortableFieldsPropertyPaneField":"Propriétés triables",
       "SortableFieldsDescription": "Propriétés à utiliser pour permettre aux utilisateurs de trier les résultats depuis l'interface. Le tri ne peut être porter que sur une seule propriété à la fois et surpasse le tri par défaut des résulats si existant.",

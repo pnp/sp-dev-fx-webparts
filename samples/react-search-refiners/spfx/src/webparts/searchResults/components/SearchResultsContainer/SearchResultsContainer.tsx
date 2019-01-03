@@ -19,6 +19,7 @@ import { ITermData, ITerm } from '@pnp/sp-taxonomy';
 import LocalizationHelper from '../../../../helpers/LocalizationHelper';
 import { Text } from '@microsoft/sp-core-library';
 
+
 declare var System: any;
 let FilterPanel = null;
 
@@ -43,6 +44,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             errorMessage: '',
             hasError: false,
             lastQuery: '',
+            mountingNodeGuid: this.getGUID(),
         };
 
         this._onUpdateFilters = this._onUpdateFilters.bind(this);
@@ -127,11 +129,9 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                 }
             } else {
 
-                renderWpContent =
-                    <div>
-                        {renderWebPartTitle}
-                        <div className={styles.searchWp__buttonBar}>{sortPanel}{renderFilterPanel}</div>
-                        {renderOverlay}
+                let searchResultTemplate = <div></div>;
+                 if(!this.props.useCodeRenderer) {
+                    searchResultTemplate =  (
                         <SearchResultsTemplate
                             templateService={this.props.templateService}
                             templateContent={this.props.templateContent}
@@ -149,7 +149,15 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                                     strings: strings
                                 }
                             }
-                        />
+                        />);
+                }
+                renderWpContent =
+                    <div>
+                        {renderWebPartTitle}
+                        <div className={styles.searchWp__buttonBar}>{sortPanel}{renderFilterPanel}</div>
+                        {renderOverlay}
+                        <div id={`pnp-search-render-node-${this.state.mountingNodeGuid}`} />
+                        {searchResultTemplate}
                         {this.props.showPaging ?
                             <Paging
                                 totalItems={items.TotalRows}
@@ -202,6 +210,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     areResultsLoading: false,
                     lastQuery: this.props.queryKeywords + this.props.searchService.queryTemplate + this.props.selectedProperties.join(',')
                 });
+                this.handleResultUpdateBroadCast(searchResults);
 
             } catch (error) {
 
@@ -213,6 +222,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     hasError: true,
                     errorMessage: error.message
                 });
+                this.handleResultUpdateBroadCast({ RefinementResults: [], RelevantResults: [] });
             }
         } else {
             this.setState({
@@ -273,6 +283,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         currentPage: 1,
                         lastQuery: query
                     });
+                    this.handleResultUpdateBroadCast(searchResults);
 
                 } catch (error) {
 
@@ -284,6 +295,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                         hasError: true,
                         errorMessage: error.message
                     });
+                    this.handleResultUpdateBroadCast({ RefinementResults: [], RelevantResults: [] });
                 }
             } else {
                 this.setState({
@@ -291,6 +303,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     lastQuery: '',
                     results: { RefinementResults: [], RelevantResults: [] },
                 });
+                this.handleResultUpdateBroadCast({ RefinementResults: [], RelevantResults: [] });
             }
         } else {
             // Refresh the template without making a new search query because we don't need to
@@ -337,6 +350,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             availableFilters: localizedFilters,
             areResultsLoading: false,
         });
+        this.handleResultUpdateBroadCast(searchResults);
     }
 
     /**
@@ -368,6 +382,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     results: searchResults,
                     areResultsLoading: false,
                 });
+                this.handleResultUpdateBroadCast(searchResults);
             }
             catch(error) {
                 Logger.write('[SearchContainer._onUpdateSort()]: Error: ' + error, LogLevel.Error);
@@ -379,6 +394,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     hasError: true,
                     errorMessage: errorMessage
                 });
+                this.handleResultUpdateBroadCast({ RefinementResults: [], RelevantResults: [] });
             }
         }
     }
@@ -404,6 +420,7 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
             results: searchResults,
             areResultsLoading: false,
         });
+        this.handleResultUpdateBroadCast(searchResults);
     }
 
     /**
@@ -543,5 +560,25 @@ export default class SearchResultsContainer extends React.Component<ISearchConta
                     ]}
                     />
                 </div>;
+    }
+
+    private handleResultUpdateBroadCast(results) {
+        this.props.resultService.updateResultData(results, this.props.rendererId, `pnp-search-render-node-${this.state.mountingNodeGuid}`, this.props.customTemplateFieldValues);
+    }
+
+    /**
+     * Gets a random GUID value
+     *
+     * http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+     */
+    /* tslint:disable no-bitwise */
+    private getGUID(): string {
+        let d = new Date().getTime();
+        const guid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+            const r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c === "x" ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return guid;
     }
 }

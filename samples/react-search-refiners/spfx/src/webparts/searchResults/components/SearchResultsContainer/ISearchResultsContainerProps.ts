@@ -7,6 +7,8 @@ import IRefinerConfiguration from '../../../../models/IRefinerConfiguration';
 import { Sort } from '@pnp/sp';
 import ISortableFieldConfiguration from '../../../../models/ISortableFieldConfiguration';
 import { ISearchResultType } from '../../../../models/ISearchResultType';
+import IResultService from '../../../../services/ResultService/IResultService';
+import {ICustomTemplateFieldValue} from '../../../../services/ResultService/ResultService';
 
 interface ISearchResultsContainerProps {
 
@@ -102,6 +104,16 @@ interface ISearchResultsContainerProps {
 
     /** The configured result types */
     resultTypes: ISearchResultType[];
+    /**
+     * The name of the CustomAction that should render this data. 
+     */
+    rendererId: string;
+    /**
+     * The data passing service for custom action renderers
+     */
+    resultService: IResultService;
+    useCodeRenderer: boolean;
+    customTemplateFieldValues:  ICustomTemplateFieldValue[];
 }
 
 export default ISearchResultsContainerProps;
