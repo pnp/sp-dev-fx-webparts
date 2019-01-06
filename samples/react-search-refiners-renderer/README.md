@@ -48,7 +48,7 @@ The parameters of the registerRenderer function:
  - callback:  The callback function that is used to render the webpart. This will be called when the renderer is selected and new data is available. 
  - customFields: Optional names of custom fields that may be used for templating in the renderer.
 
- <p align="center"><img width="300px" src="./img/variables.png"/><p>
+ <p align="center"><img width="300px" src="./img/renderervariables.png"/><p>
 
 ### Templating
 By registering a field-name in the 'customFields' value, you may expose them to the user, letting them choose which fields should be displayed in different places in your renderer. In the bundled example, a subheader is passed along as a template field, and shoud
