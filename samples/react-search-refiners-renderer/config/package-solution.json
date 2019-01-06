@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-search-refiners-renderer-client-side-solution",
+    "name": " Code renderer for React Search Refiners",
     "id": "41f46e12-4ce6-4826-b1e3-10e7a2a0b895",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
