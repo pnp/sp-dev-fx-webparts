@@ -246,7 +246,7 @@ Handlebars [partials](https://handlebarsjs.com/partials.html) are used behind th
 #### Custom code renderers
 You may also define  your own renderers, which most often should be SPFx application customizers. These should use the resultservice to register themselves as renderers, and will upon registration be available as a rendering choice in the "Result Layouts" Section.
 
-More information about custom code renderers may be found in a [seperate sample](../react-search-refiners-renderer/readme.md), which showcases such a renderer.
+More information about custom code renderers may be found in a [seperate sample](../react-search-refiners-renderer), which showcases such a renderer.
 
 #### Query variables
 
