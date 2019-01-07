@@ -2,21 +2,21 @@
 import * as ReactDom from 'react-dom';
 import { Version, Text, Environment, EnvironmentType, DisplayMode, Log } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  IWebPartPropertiesMetadata,
-  PropertyPaneDynamicFieldSet,
-  PropertyPaneDynamicField,
-  DynamicDataSharedDepth,
-  IPropertyPaneConditionalGroup,
-  IPropertyPaneField,
-  PropertyPaneToggle,
-  PropertyPaneSlider,
-  IPropertyPaneChoiceGroupOption,
-  PropertyPaneChoiceGroup,
-  PropertyPaneCheckbox,
-  PropertyPaneHorizontalRule,
+    BaseClientSideWebPart,
+    IPropertyPaneConfiguration,
+    PropertyPaneTextField,
+    IWebPartPropertiesMetadata,
+    PropertyPaneDynamicFieldSet,
+    PropertyPaneDynamicField,
+    DynamicDataSharedDepth,
+    IPropertyPaneConditionalGroup,
+    IPropertyPaneField,
+    PropertyPaneToggle,
+    PropertyPaneSlider,
+    IPropertyPaneChoiceGroupOption,
+    PropertyPaneChoiceGroup,
+    PropertyPaneCheckbox,
+    PropertyPaneHorizontalRule,
 } from '@microsoft/sp-webpart-base';
 import * as strings from 'SearchResultsWebPartStrings';
 import SearchResultsContainer from './components/SearchResultsContainer/SearchResultsContainer';
@@ -94,34 +94,34 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         let queryKeywords;
         let renderElement = null;
-        let dataSourceValue;
+        let dataSourceValue;
 
-        let source = this.properties.queryKeywords.tryGetSource();
+        let source = this.properties.queryKeywords.tryGetSource();
 
         // Try to get the source if a source id is present
-        if (!source && this.properties.sourceId) {
-            source = this.context.dynamicDataProvider.tryGetSource(this.properties.sourceId);
+        if (!source && this.properties.sourceId) {
+            source = this.context.dynamicDataProvider.tryGetSource(this.properties.sourceId);
 
-            if (source && this.properties.propertyId) {
-                dataSourceValue = source.getPropertyValue(this.properties.propertyId)[this.properties.propertyPath];
+            if (source && this.properties.propertyId) {
+                dataSourceValue = source.getPropertyValue(this.properties.propertyId)[this.properties.propertyPath];
             }
 
-        } else {
-            dataSourceValue = this.properties.queryKeywords.tryGetValue();
+        } else {
+            dataSourceValue = this.properties.queryKeywords.tryGetValue();
         }
-        
-        if (typeof(dataSourceValue) !== 'string') {
-            dataSourceValue = '';
+
+        if (typeof (dataSourceValue) !== 'string') {
+            dataSourceValue = '';
             this.context.propertyPane.refresh();
         }
-        
+
         if (!dataSourceValue) {
             queryKeywords = this.properties.defaultSearchQuery;
         } else {
             queryKeywords = dataSourceValue;
         }
 
-        const isValueConnected = !!source; 
+        const isValueConnected = !!source;
         const searchContainer: React.ReactElement<ISearchResultsContainerProps> = React.createElement(
             SearchResultsContainer,
             {
@@ -163,7 +163,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         );
 
         if (isValueConnected && !this.properties.useDefaultSearchQuery ||
-            isValueConnected && this.properties.useDefaultSearchQuery && this.properties.defaultSearchQuery || 
+            isValueConnected && this.properties.useDefaultSearchQuery && this.properties.defaultSearchQuery ||
             !isValueConnected && !isEmpty(queryKeywords)) {
             renderElement = searchContainer;
         } else {
@@ -176,7 +176,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         ReactDom.render(renderElement, this.domElement);
     }
-    
+
     protected async onInit(): Promise<void> {
 
         this.initializeRequiredProperties();
@@ -195,11 +195,11 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         this._resultService = new ResultService();
         this._codeRenderers = this._resultService.getRegisteredRenderers();
 
-        if (this.properties.sourceId) {
+        if (this.properties.sourceId) {
             // Needed to retrieve manually the value for the dynamic property at render time. See the associated SPFx bug
             // https://github.com/SharePoint/sp-dev-docs/issues/2985
-            this.context.dynamicDataProvider.registerSourceChanged(this.properties.sourceId, this.render);
-        } 
+            this.context.dynamicDataProvider.registerSourceChanged(this.properties.sourceId, this.render);
+        }
 
         // Set the default search results layout
         this.properties.selectedLayout = this.properties.selectedLayout ? this.properties.selectedLayout : ResultsLayoutOption.List;
@@ -207,9 +207,27 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         return super.onInit();
     }
 
+    private _convertToSortConfig(sortList: string): ISortFieldConfiguration[] {
+        let pairs = sortList.split(',');
+        return pairs.map(sort => {
+            let direction;
+            let kvp = sort.split(':');
+            if (kvp[1].toLocaleLowerCase().trim() === "ascending") {
+                direction = ISortFieldDirection.Ascending;
+            } else {
+                direction = ISortFieldDirection.Descending;
+            }
+
+            return {
+                sortField: kvp[0].trim(),
+                sortDirection: direction
+            } as ISortFieldConfiguration;
+        });
+    }
+
     private _convertToSortList(sortList: ISortFieldConfiguration[]): Sort[] {
         return sortList.map(e => {
-            
+
             let direction;
 
             switch (e.sortDirection) {
@@ -247,31 +265,41 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     private initializeRequiredProperties() {
 
         this.properties.queryTemplate = this.properties.queryTemplate ? this.properties.queryTemplate : "{searchTerms} Path:{Site}";
+
+        if(isEmpty(this.properties.refiners)) {
+            this.properties.refiners = [];
+        }
+
         this.properties.refiners = Array.isArray(this.properties.refiners) ? this.properties.refiners : [
-                                                                                                            {
-                                                                                                                refinerName: "Created",
-                                                                                                                displayValue: "Created Date"
-                                                                                                            },
-                                                                                                            {
-                                                                                                                refinerName: "Size",
-                                                                                                                displayValue: "Size of the file"
-                                                                                                            },
-                                                                                                            {
-                                                                                                                refinerName: "owstaxidmetadataalltagsinfo",
-                                                                                                                displayValue: "Tags"
-                                                                                                            }                                                                                                            
-                                                                                                        ];
+            {
+                refinerName: "Created",
+                displayValue: "Created Date"
+            },
+            {
+                refinerName: "Size",
+                displayValue: "Size of the file"
+            },
+            {
+                refinerName: "owstaxidmetadataalltagsinfo",
+                displayValue: "Tags"
+            }
+        ];
+
+        if(!Array.isArray(this.properties.sortList) && !isEmpty(this.properties.sortList)) {
+            this.properties.sortList = this._convertToSortConfig(this.properties.sortList);
+        }
+
         this.properties.sortList = Array.isArray(this.properties.sortList) ? this.properties.sortList : [
-                                                                                                            {
-                                                                                                                sortField: "Created",
-                                                                                                                sortDirection: ISortFieldDirection.Ascending
-                                                                                                            },
-                                                                                                            {
-                                                                                                                sortField: "Size",
-                                                                                                                sortDirection: ISortFieldDirection.Descending
-                                                                                                            }
-                                                                                                        ];
-        this.properties.sortableFields = Array.isArray(this.properties.sortableFields) ? this.properties.sortableFields : [];                                                                        
+            {
+                sortField: "Created",
+                sortDirection: ISortFieldDirection.Ascending
+            },
+            {
+                sortField: "Size",
+                sortDirection: ISortFieldDirection.Descending
+            }
+        ];
+        this.properties.sortableFields = Array.isArray(this.properties.sortableFields) ? this.properties.sortableFields : [];
         this.properties.selectedProperties = this.properties.selectedProperties ? this.properties.selectedProperties : "Title,Path,Created,Filename,SiteLogo,PreviewUrl,PictureThumbnailURL,ServerRedirectedPreviewURL,ServerRedirectedURL,HitHighlightedSummary,FileType,contentclass,ServerRedirectedEmbedURL,DefaultEncodingURL,owstaxidmetadataalltagsinfo";
         this.properties.maxResultsCount = this.properties.maxResultsCount ? this.properties.maxResultsCount : 10;
         this.properties.resultTypes = Array.isArray(this.properties.resultTypes) ? this.properties.resultTypes : [];
@@ -287,7 +315,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                     },
                     groups: [
                         this._getSearchQueryFields()
-                    ]           
+                    ]
                 },
                 {
                     header: {
@@ -320,7 +348,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             }
         };
     }
-    
+
     protected async loadPropertyPaneResources(): Promise<void> {
 
         // Code editor component for result types
@@ -330,10 +358,10 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         );
 
         // tslint:disable-next-line:no-shadowed-variable
-        const { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } = await import (
+        const { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } = await import(
             /* webpackChunkName: 'search-property-pane' */
             '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor'
-          );
+        );
 
         this._propertyFieldCodeEditor = PropertyFieldCodeEditor;
         this._propertyFieldCodeEditorLanguages = PropertyFieldCodeEditorLanguages;
@@ -347,10 +375,10 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         if (propertyPath === 'selectedLayout') {
             // Refresh setting the right template for the property pane
-            if(!this.codeRendererIsSelected()) {
+            if (!this.codeRendererIsSelected()) {
                 await this._getTemplateContent();
             }
-            if(this.codeRendererIsSelected) {
+            if (this.codeRendererIsSelected) {
                 this.properties.customTemplateFieldValues = undefined;
             }
 
@@ -375,7 +403,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         await this.loadPropertyPaneResources();
     }
 
-    protected onBeforeSerialize() {
+    protected onBeforeSerialize() {
         this._saveDataSourceInfo();
         super.onBeforeSerialize();
     }
@@ -384,18 +412,18 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     * Save the useful information for the connected data source. 
     * They will be used to get the value of the dynamic property if this one fails.
     */
-    private _saveDataSourceInfo() {
+    private _saveDataSourceInfo() {
 
-        if (this.properties.queryKeywords.reference) {
-            this.properties.sourceId = this.properties.queryKeywords["_reference"]._sourceId;
-            this.properties.propertyId = this.properties.queryKeywords["_reference"]._property;
-            this.properties.propertyPath = this.properties.queryKeywords["_reference"]._propertyPath;
-        } else {
-            this.properties.sourceId = null;
-            this.properties.propertyId = null;
-            this.properties.propertyPath = null;
+        if (this.properties.queryKeywords.reference) {
+            this.properties.sourceId = this.properties.queryKeywords["_reference"]._sourceId;
+            this.properties.propertyId = this.properties.queryKeywords["_reference"]._property;
+            this.properties.propertyPath = this.properties.queryKeywords["_reference"]._propertyPath;
+        } else {
+            this.properties.sourceId = null;
+            this.properties.propertyId = null;
+            this.properties.propertyPath = null;
         }
-    } 
+    }
 
     /**
      * Opens the Web Part property pane
@@ -522,12 +550,12 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 let itemProp;
                 if (pageProp.indexOf(".Label") !== -1 || pageProp.indexOf(".TermID") !== -1) {
                     let term = pageProp.split(".");
-                    
+
                     // Handle multi or single values
                     if (item[term[0]].length > 0) {
-                        itemProp = item[term[0]].map(e => { return e[term[1]]; }).join(',');                 
+                        itemProp = item[term[0]].map(e => { return e[term[1]]; }).join(',');
                     } else {
-                        itemProp = item[term[0]][term[1]];   
+                        itemProp = item[term[0]][term[1]];
                     }
                 } else {
                     itemProp = item[pageProp];
@@ -548,7 +576,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         const d = new Date();
         queryTemplate = queryTemplate.replace(currentDate, d.getDate().toString());
-        queryTemplate = queryTemplate.replace(currentMonth, (d.getMonth()+1).toString());
+        queryTemplate = queryTemplate.replace(currentMonth, (d.getMonth() + 1).toString());
         queryTemplate = queryTemplate.replace(currentYear, d.getFullYear().toString());
 
         return queryTemplate;
@@ -558,7 +586,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      * Determines the group fields for the search settings options inside the property pane
      */
     private _getSearchSettingsFields(): IPropertyPaneField<any>[] {
-        
+
         // Sets up search settings fields
         const searchSettingsFields: IPropertyPaneField<any>[] = [
             PropertyPaneTextField('queryTemplate', {
@@ -707,7 +735,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         return {
             primaryGroup: {
-              groupFields: [
+                groupFields: [
                     PropertyPaneTextField('queryKeywords', {
                         label: strings.SearchQueryKeywordsFieldLabel,
                         description: strings.SearchQueryKeywordsFieldDescription,
@@ -720,20 +748,20 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 ]
             },
             secondaryGroup: {
-              groupFields: [
-                PropertyPaneDynamicFieldSet({
-                  label: strings.SearchQueryKeywordsFieldLabel,
-                
-                  fields: [
-                    PropertyPaneDynamicField('queryKeywords', {
-                        label: strings.SearchQueryKeywordsFieldLabel
-                    })
-                  ],
-                  sharedConfiguration: {
-                    depth: DynamicDataSharedDepth.Source,
-                  },
-                }),                
-              ].concat(defaultSearchQueryFields)
+                groupFields: [
+                    PropertyPaneDynamicFieldSet({
+                        label: strings.SearchQueryKeywordsFieldLabel,
+
+                        fields: [
+                            PropertyPaneDynamicField('queryKeywords', {
+                                label: strings.SearchQueryKeywordsFieldLabel
+                            })
+                        ],
+                        sharedConfiguration: {
+                            depth: DynamicDataSharedDepth.Source,
+                        },
+                    }),
+                ].concat(defaultSearchQueryFields)
             },
             // Show the secondary group only if the web part has been
             // connected to a dynamic data source
@@ -746,7 +774,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 this.properties.queryKeywords.setValue('');
                 this.render();
             }
-          } as IPropertyPaneConditionalGroup;
+        } as IPropertyPaneConditionalGroup;
     }
 
     /**
@@ -771,14 +799,14 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 key: ResultsLayoutOption.Tiles
             }
         ] as IPropertyPaneChoiceGroupOption[];
-        
+
         layoutOptions.push(...this.getCodeRenderers());
         layoutOptions.push({
-                iconProps: {
-                    officeFabricIconFontName: 'Code'
-                },
-                text: strings.CustomLayoutOption,
-                key: ResultsLayoutOption.Custom,
+            iconProps: {
+                officeFabricIconFontName: 'Code'
+            },
+            text: strings.CustomLayoutOption,
+            key: ResultsLayoutOption.Custom,
         });
 
 
@@ -786,14 +814,14 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         const canEditTemplate = this.properties.externalTemplateUrl && this.properties.selectedLayout === ResultsLayoutOption.Custom ? false : true;
 
         let dialogTextFieldValue;
-        if(!this.codeRendererIsSelected()) {
+        if (!this.codeRendererIsSelected()) {
             switch (this.properties.selectedLayout) {
                 case ResultsLayoutOption.List:
                     dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeListItem();
                     break;
 
                 case ResultsLayoutOption.Tiles:
-                    dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeTileItem();    
+                    dialogTextFieldValue = BaseTemplateService.getDefaultResultTypeTileItem();
                     break;
 
                 default:
@@ -826,7 +854,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
             }),
         ];
         console.log(stylingFields);
-        if(!this.codeRendererIsSelected()) {
+        if (!this.codeRendererIsSelected()) {
             stylingFields.push(
                 this._propertyFieldCodeEditor('inlineTemplateText', {
                     label: strings.DialogButtonLabel,
@@ -906,21 +934,21 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                             title: "Inline template",
                             type: CustomCollectionFieldType.custom,
                             onCustomRender: (field, value, onUpdate) => {
-                              return (
-                                React.createElement("div", null,
-                                  React.createElement(this._textDialogComponent.TextDialog, { 
-                                        language: this._propertyFieldCodeEditorLanguages.Handlebars,
-                                        dialogTextFieldValue: value ? value : dialogTextFieldValue,
-                                        onChanged: (fieldValue) => onUpdate(field.id, fieldValue),
-                                        strings: {
-                                            cancelButtonText: strings.CancelButtonText,
-                                            dialogButtonText: strings.DialogButtonText,
-                                            dialogTitle: strings.DialogTitle,
-                                            saveButtonText: strings.SaveButtonText
-                                        }
-                                    })
-                                )
-                              );
+                                return (
+                                    React.createElement("div", null,
+                                        React.createElement(this._textDialogComponent.TextDialog, {
+                                            language: this._propertyFieldCodeEditorLanguages.Handlebars,
+                                            dialogTextFieldValue: value ? value : dialogTextFieldValue,
+                                            onChanged: (fieldValue) => onUpdate(field.id, fieldValue),
+                                            strings: {
+                                                cancelButtonText: strings.CancelButtonText,
+                                                dialogButtonText: strings.DialogButtonText,
+                                                dialogTitle: strings.DialogTitle,
+                                                saveButtonText: strings.SaveButtonText
+                                            }
+                                        })
+                                    )
+                                );
                             }
                         },
                         {
@@ -943,9 +971,9 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 onGetErrorMessage: this._onTemplateUrlChange.bind(this)
             }));
         }
-        if(this.codeRendererIsSelected()) {
+        if (this.codeRendererIsSelected()) {
             const currentCodeRenderer = find(this._codeRenderers, (renderer) => renderer.id === (this.properties.selectedLayout as any));
-            if(!this.properties.customTemplateFieldValues) {
+            if (!this.properties.customTemplateFieldValues) {
                 this.properties.customTemplateFieldValues = currentCodeRenderer.customFields.map(field => {
                     return {
                         fieldName: field,
@@ -953,7 +981,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                     };
                 });
             }
-            if(currentCodeRenderer.customFields && currentCodeRenderer.customFields.length > 0) {
+            if (currentCodeRenderer.customFields && currentCodeRenderer.customFields.length > 0) {
                 const searchPropertyOptions = this.properties.selectedProperties.split(',').map(prop => {
                     return ({
                         key: prop,
@@ -980,7 +1008,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                         }
                     ]
                 }));
-            } 
+            }
         }
 
         return stylingFields;
@@ -988,7 +1016,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
     protected getCodeRenderers(): IPropertyPaneChoiceGroupOption[] {
         const registeredRenderers = this._codeRenderers;
-        if(registeredRenderers && registeredRenderers.length > 0) {
+        if (registeredRenderers && registeredRenderers.length > 0) {
             return registeredRenderers.map(ca => {
                 return {
                     key: ca.id,
