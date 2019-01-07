@@ -352,7 +352,7 @@ abstract class BaseTemplateService {
         // <p>{{summary HitHighlightedSummary}}</p>
         Handlebars.registerHelper("getSummary", (hitHighlightedSummary: string) => {
             if (!isEmpty(hitHighlightedSummary)) {
-                return new Handlebars.SafeString(hitHighlightedSummary.replace(/c0/g, "strong").replace(/<ddd\/>/g, "&#8230;"));
+                return new Handlebars.SafeString(hitHighlightedSummary.replace(/<c0\>/g, "<strong>").replace(/<\/c0\>/g, "</strong>").replace(/<ddd\/>/g, "&#8230;"));
             }
         });
 

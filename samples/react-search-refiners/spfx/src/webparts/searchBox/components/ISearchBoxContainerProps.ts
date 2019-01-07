@@ -15,4 +15,5 @@ export interface ISearchBoxContainerProps {
     NlpService: INlpService;
     enableDebugMode: boolean;
     isStaging: boolean;
+    domElement: HTMLElement;
 }

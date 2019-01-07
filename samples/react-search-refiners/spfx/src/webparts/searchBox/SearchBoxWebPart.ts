@@ -73,7 +73,8 @@ export default class SearchBoxWebPart extends BaseClientSideWebPart<ISearchBoxWe
         enableDebugMode: this.properties.enableDebugMode,
         enableNlpService: this.properties.enableNlpService,
         isStaging: this.properties.isStaging,
-        NlpService: this._nlpService
+        NlpService: this._nlpService,
+        domElement: this.domElement
       } as ISearchBoxContainerProps);
 
     ReactDom.render(element, this.domElement);

@@ -198,7 +198,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         if (this.properties.sourceId) {
             // Needed to retrieve manually the value for the dynamic property at render time. See the associated SPFx bug
             // https://github.com/SharePoint/sp-dev-docs/issues/2985
-            this.context.dynamicDataProvider.registerSourceChanged(this.properties.sourceId, this.render);
+            this.context.dynamicDataProvider.registerAvailableSourcesChanged(this.render);
         }
 
         // Set the default search results layout

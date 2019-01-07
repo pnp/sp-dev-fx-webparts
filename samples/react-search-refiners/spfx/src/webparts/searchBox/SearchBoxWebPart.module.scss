@@ -46,3 +46,8 @@
         background-color: '[theme:themeDarker, default:#0078d7]';
     }
 }
+
+.parentStackingCtx {
+    position: relative;
+    z-index: 1;
+}

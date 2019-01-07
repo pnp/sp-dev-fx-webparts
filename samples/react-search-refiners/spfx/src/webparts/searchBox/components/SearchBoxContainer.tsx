@@ -138,6 +138,16 @@ export default class SearchBoxContainer extends React.Component<ISearchBoxContai
     let renderSuggestions: JSX.Element = null;
     let suggestions: JSX.Element[] = null;
 
+    // Edge case with SPFx
+    // Only in Chrome/Firefox the parent element class ".Canvas-slideUpIn" create a new stacking context due to a 'transform' operation preventing the inner content to overlap other WP
+    // We need to manually set a z-index on this element to render suggestions correctly above all content.
+    try {
+      const parentStackingContext = this.props.domElement.closest(".Canvas-slideUpIn");
+      if (parentStackingContext) {
+          parentStackingContext.classList.add(styles.parentStackingCtx);
+      }
+    } catch (error) {}
+
     if (this.state.isRetrievingSuggestions && this.state.proposedQuerySuggestions.length === 0) {
       renderSuggestions = <div className={styles.suggestionPanel}>
                             <div {...getItemProps({item: null, disabled: true})}>
