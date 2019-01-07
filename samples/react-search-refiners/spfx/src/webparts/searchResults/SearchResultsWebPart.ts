@@ -266,7 +266,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
 
         this.properties.queryTemplate = this.properties.queryTemplate ? this.properties.queryTemplate : "{searchTerms} Path:{Site}";
 
-        if(isEmpty(this.properties.refiners)) {
+        if(<any>this.properties.refiners === "") {
             this.properties.refiners = [];
         }
 
