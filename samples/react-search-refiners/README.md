@@ -246,34 +246,7 @@ Handlebars [partials](https://handlebarsjs.com/partials.html) are used behind th
 #### Custom code renderers
 You may also define  your own renderers, which most often should be SPFx application customizers. These should use the resultservice to register themselves as renderers, and will upon registration be available as a rendering choice in the "Result Layouts" Section.
 
-<p align="center">
-  <img width="500px" src="./images/results_layout.PNG"/>
-</p>
-
-When registering new renderers, must include:
- - The component id
- - The name of the renderer (displayed in the settings panel of the react-search-refiners webpart)
- - The icon of the renderer (displayed in the settings panel of the react-search-refiners webpart)
- - The Update-function that takes care of any updates in the results. 
- - A list of properties that may be selected for usage of template funcitonality (a list of strings that should be descriptions of the template fields).
-
-A typical registration looks like this:
-```
-    this._resultService = new ResultService();
-    this.onChangeHappened.bind(this);
-    this._resultService.registerRenderer(this.componentId, 'Defaultrenderer', 'QueryList', this.onChangeHappened, ['subheader']);
-```
-
-#### Custom code renderer template fields
-If you register fields as template fields in your renderer, they will become editable through a menu in the webpart.
-
-The users may choose what values to display from a dropdown, which is populated by properties chosen in the "Selected properties" field in the webpart settings.
-<p align="center">
-  <img width="5000px" src="./images/custom_template_fields_selection.PNG"/>
-</p>
-
-
-
+More information about custom code renderers may be found in a [seperate sample](../react-search-refiners-renderer), which showcases such a renderer.
 
 #### Query variables
 
