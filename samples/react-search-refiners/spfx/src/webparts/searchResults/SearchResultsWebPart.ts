@@ -560,7 +560,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 } else {
                     itemProp = item[pageProp];
                 }
-                if (itemProp.indexOf(' ') !== -1) {
+                if (itemProp && itemProp.indexOf(' ') !== -1) {
                     // add quotes to multi term values
                     itemProp = `"${itemProp}"`;
                 }
