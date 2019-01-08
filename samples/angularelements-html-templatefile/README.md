@@ -1,8 +1,8 @@
-# Angular Elements in SharePoint Framework
+# Angular Elements with HTML Template File in SharePoint Framework
 
 ## Summary
 
-Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.
+A sample web part illustrating how to use Angular Elements in the SharePoint Framework with the help of separate template HTML File.
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
@@ -16,13 +16,13 @@ Set of sample web parts illustrating how to use Angular Elements in the SharePoi
 
 Solution|Author(s)
 --------|---------
-angularelements-helloworld|Waldek Mastykarz (MVP, Rencore, @waldekm), Sébastien Levert (MVP, Valo, @sebastienlevert)
+angularelements-html-templatefile| Jayakumar Balasubramaniam (C# Corner MVP, Hubfly, @jayakumrB)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|June 1, 2018|Initial release
+1.0|Jan 8, 2019|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -38,18 +38,34 @@ Version|Date|Comments
 
 ## Features
 
-This sample contains a set of web parts that illustrate using Angular Elements in the SharePoint Framework.
-
 This web part illustrates the following concepts on top of the SharePoint Framework:
 
 * adding Angular Elements to a no-framework SharePoint Framework project
 * bootstrapping Angular Elements inside a SharePoint Framework web part
 * extending the building configuration to build Angular Elements
-* checking if the particular web component has already been registered to avoid conflicts
-* passing web part configuration to Angular Elements and reacting to configuration changes
-* calling the SharePoint REST API from an Angular Element using the native Angular HttpClient
-* calling the Microsoft Graph from an Angular Element using the SharePoint Framework MSGraphClient
-* calling the SharePoint REST API from an Angular Element using PnPjs
-* calling the Microsoft Graph from an Angular Element using PnPjs
+* utilizing build pipeline to compile and run angular template files in gulpfile.js
+
+## Implementation
+
+The below piece of code in gulpfile.js is the key to update the build pipeline:
+```
+//************START: Added to handle Template file url ************/
+
+var inlineNgxTemplate = require('gulp-inline-ngx-template');
+var ts = require('gulp-typescript');
+var tsProject = ts.createProject('./tsconfig.json');
+
+let tsInlines = build.subTask('tsInlines', function(gulp, buildOptions, done) {
+  return  gulp.src('src/webparts/helloAngularTemplate/app/**/*.ts')
+       .pipe(inlineNgxTemplate({ base: '/src/webparts/helloAngularTemplate/app/', useRelativePaths: true }))
+       .pipe(tsProject())
+       .pipe(gulp.dest('lib/webparts/helloAngularTemplate/app'));
+})
+
+build.rig.addPostTypescriptTask(tsInlines);
+
+//************END: Added to handle Template file url ************/
+```
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angularelements-helloworld" />
