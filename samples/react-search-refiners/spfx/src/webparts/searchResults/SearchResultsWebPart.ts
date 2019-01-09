@@ -409,7 +409,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
     }
 
     /**
-    * Save the useful information for the connected data source. 
+    * Save the useful information for the connected data source.
     * They will be used to get the value of the dynamic property if this one fails.
     */
     private _saveDataSourceInfo() {
@@ -490,7 +490,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
                 break;
         }
 
-        // Register result types inside the template      
+        // Register result types inside the template
         this._templateService.registerResultTypes(this.properties.resultTypes);
 
         this._templateContentToDisplay = templateContent;
@@ -782,7 +782,7 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
      */
     private _getStylingFields(): IPropertyPaneField<any>[] {
 
-        // Options for the search results layout 
+        // Options for the search results layout
         const layoutOptions = [
             {
                 iconProps: {
@@ -973,42 +973,44 @@ export default class SearchResultsWebPart extends BaseClientSideWebPart<ISearchR
         }
         if (this.codeRendererIsSelected()) {
             const currentCodeRenderer = find(this._codeRenderers, (renderer) => renderer.id === (this.properties.selectedLayout as any));
-            if (!this.properties.customTemplateFieldValues) {
-                this.properties.customTemplateFieldValues = currentCodeRenderer.customFields.map(field => {
-                    return {
-                        fieldName: field,
-                        searchProperty: ''
-                    };
-                });
+            if(currentCodeRenderer) {
+              if (!this.properties.customTemplateFieldValues) {
+                  this.properties.customTemplateFieldValues = currentCodeRenderer.customFields.map(field => {
+                      return {
+                          fieldName: field,
+                          searchProperty: ''
+                      };
+                  });
+              }
+              if (currentCodeRenderer.customFields && currentCodeRenderer.customFields.length > 0) {
+                  const searchPropertyOptions = this.properties.selectedProperties.split(',').map(prop => {
+                      return ({
+                          key: prop,
+                          text: prop
+                      });
+                  });
+                  stylingFields.push(PropertyFieldCollectionData('customTemplateFieldValues', {
+                      key: 'customTemplateFieldValues',
+                      label: strings.customTemplateFieldsLabel,
+                      panelHeader: strings.customTemplateFieldsPanelHeader,
+                      manageBtnLabel: strings.customTemplateFieldsConfigureButtonLabel,
+                      value: this.properties.customTemplateFieldValues,
+                      fields: [
+                          {
+                              id: 'fieldName',
+                              title: strings.customTemplateFieldTitleLabel,
+                              type: CustomCollectionFieldType.string,
+                          },
+                          {
+                              id: 'searchProperty',
+                              title: strings.customTemplateFieldPropertyLabel,
+                              type: CustomCollectionFieldType.dropdown,
+                              options: searchPropertyOptions
+                          }
+                      ]
+                  }));
             }
-            if (currentCodeRenderer.customFields && currentCodeRenderer.customFields.length > 0) {
-                const searchPropertyOptions = this.properties.selectedProperties.split(',').map(prop => {
-                    return ({
-                        key: prop,
-                        text: prop
-                    });
-                });
-                stylingFields.push(PropertyFieldCollectionData('customTemplateFieldValues', {
-                    key: 'customTemplateFieldValues',
-                    label: strings.customTemplateFieldsLabel,
-                    panelHeader: strings.customTemplateFieldsPanelHeader,
-                    manageBtnLabel: strings.customTemplateFieldsConfigureButtonLabel,
-                    value: this.properties.customTemplateFieldValues,
-                    fields: [
-                        {
-                            id: 'fieldName',
-                            title: strings.customTemplateFieldTitleLabel,
-                            type: CustomCollectionFieldType.string,
-                        },
-                        {
-                            id: 'searchProperty',
-                            title: strings.customTemplateFieldPropertyLabel,
-                            type: CustomCollectionFieldType.dropdown,
-                            options: searchPropertyOptions
-                        }
-                    ]
-                }));
-            }
+          }
         }
 
         return stylingFields;
