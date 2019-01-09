@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "pn-p-graph-web-part-client-side-solution",
+    "id": "243a3aaf-cb6c-43b5-b297-133c2310a406",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/pn-p-graph-web-part.sppkg"
+  }
+}
