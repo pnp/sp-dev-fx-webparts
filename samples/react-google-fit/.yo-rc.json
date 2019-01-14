@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.7.1",
+    "libraryName": "react-google-fit",
+    "libraryId": "2469a81b-8fb7-4cb4-a710-50f324465560",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
