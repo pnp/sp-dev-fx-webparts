@@ -21,16 +21,20 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     public async render(): Promise<void> {
         if (this.displayMode == DisplayMode.Read) {
             if (this.properties.removePadding) {
-                this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "0";
-                this.domElement.parentElement.parentElement.parentElement.style.paddingBottom = "0";
-                this.domElement.parentElement.parentElement.parentElement.style.marginTop = "0";
-                this.domElement.parentElement.parentElement.parentElement.style.marginBottom = "0";
-            } else {
-                this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "";
-                this.domElement.parentElement.parentElement.parentElement.style.paddingBottom = "";
-                this.domElement.parentElement.parentElement.parentElement.style.marginTop = "";
-                this.domElement.parentElement.parentElement.parentElement.style.marginBottom = "";
-
+                let element = this.domElement.parentElement;
+                // check up to 5 levels up for padding and exit once found
+                for (let i = 0; i < 5; i++) {
+                    let style = window.getComputedStyle(element);
+                    let hasPadding = style.paddingTop !== "0px"
+                    if (hasPadding) {
+                        element.style.paddingTop = "0";
+                        element.style.paddingBottom = "0";
+                        element.style.marginTop = "0";
+                        element.style.marginBottom = "0";                        
+                        break;
+                    }
+                    element = element.parentElement;
+                }
             }
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
