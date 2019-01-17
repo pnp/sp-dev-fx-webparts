@@ -2,11 +2,10 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.7.0",
+    "version": "1.7.1",
     "libraryName": "react-calendar-feed",
-    "libraryId": "dd42aa00-b07d-48a2-8896-cc2f8c0d3fae",
+    "libraryId": "25653136-fc83-4abe-b9d2-a4ac041959d5",
     "packageManager": "npm",
-    "isDomainIsolated": false,
     "componentType": "webpart"
   }
 }
