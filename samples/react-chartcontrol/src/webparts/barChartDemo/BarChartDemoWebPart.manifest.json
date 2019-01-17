@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "74f7231a-c3f1-4ef5-94e7-3d2dd97cb39b",
+  "alias": "BarChartDemoWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Bar Chart" },
+    "description": { "default": "Demonstrates how to create a bar chart with the least possible amount of code" },
+    "officeFabricIconFontName": "BarChartVertical",
+    "properties": {
+      "description": "BarChartDemo"
+    }
+  }]
+}

@@ -1,0 +1,18 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.polarAreaDemo {
+  color: inherit;
+}
+
+:export {
+  color1: rgba(255, 99, 132, 0.5);
+  color2: rgba(255, 159, 64, 0.5);
+  color3: rgba(255, 205, 86, 0.5);
+  color4: rgba(75, 192, 192, 0.5);
+  color5: rgba(54, 162, 235, 0.5);
+  borderColor1: rgb(255, 99, 132);
+  borderColor2: rgb(255, 159, 64);
+  borderColor3: rgb(255, 205, 86);
+  borderColor4: rgb(75, 192, 192);
+  borderColor5: rgb(54, 162, 235);
+}

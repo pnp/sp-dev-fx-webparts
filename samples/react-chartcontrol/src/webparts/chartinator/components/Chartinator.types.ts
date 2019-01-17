@@ -1,0 +1,55 @@
+import { INumberChartData, IScatterChartData, IBubbleChartData } from "../controls/PropertyFieldRepeatingData";
+import { DisplayMode } from '@microsoft/sp-core-library';
+import { ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+
+export interface IChartinatorProps {
+  chartType: ChartType;
+  dataSourceType: number;
+  data: Array<INumberChartData | IScatterChartData | IBubbleChartData>;
+  title: string;
+  displayMode: DisplayMode;
+  animationDuration: number;
+  animationEasing: string;
+  leftPadding: number;
+  topPadding: number;
+  rightPadding: number;
+  bottomPadding: number;
+  legendPosition: string;
+  legendReversed: boolean;
+  tooltipEnabled: boolean;
+  tooltipMode: string;
+  tooltipIntersect: boolean;
+  tooltipPosition: string;
+  dataSetName: string;
+  xAxisLabelEnabled: boolean;
+  xAxisLabelText: string;
+  yAxisLabelEnabled: boolean;
+  yAxisLabelText: string;
+  radialChart: boolean;
+  chartPalette: string;
+  yAxisBeginAtZero: boolean;
+  yAxisMin: number;
+  yAxisMax: number;
+  yAxisMaxTicksLimit: number;
+  yAxisStepSize: number;
+  lineFill: string;
+  lineStepped: boolean;
+  lineCurved: boolean;
+  lineShowLine: boolean;
+  pointStyle: Chart.PointStyle;
+  pointRadius: number;
+  pointRotation: number;
+  cutoutPercentage: number;
+  chartRotation: number;
+  circumference: number;
+  animateRotate: boolean;
+  animateScale: boolean;
+  offsetGridLines: boolean;
+  dataSourceListId: string;
+  dataLabelField: string;
+  dataValueField: string;
+  dataYValueField: string;
+  dataRValueField: string;
+  updateTitle: (value: string) => void;
+}
+

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "a63646aa-098e-4c3f-b1f4-f32e9eed4013",
+  "alias": "HorizontalBarDemoWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+
+    "title": { "default": "Horizontal Bar" },
+    "description": { "default": "Demonstrates how to create a horizontal bar chart" },
+    "officeFabricIconFontName": "BarChartHorizontal",
+    "properties": {
+      "description": "HorizontalBarDemo"
+    }
+  }]
+}

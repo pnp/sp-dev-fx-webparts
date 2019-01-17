@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d5db1f38-c34b-4083-b2b0-99b09d9161b1",
+  "alias": "DynamicDataConsumerWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Dynamic Data Consumer" },
+    "description": { "default": "Demonstrates how to create a dynamic data consumer web part that renders a chart upon receiving dynamic data" },
+    "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAYAAADj79JYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNWRHWFIAAASISURBVHhe7ZxZyH1TGIc/lAtDblxIkQsZEm6kTBkzXODCnExFohDiRiIuTBkypgwplKm4QDKGSKSUKReSobgzlxDP79/31rJ6z9lrrb3397e+3qeeTuecvdbe6/f1rbP22mvvlSAIgiAIgiAIgiAIgrXjbHwUP8Wf8Gf8HB/HMzGYiH3xPfxnwDdxLwxGcAV64S7zIgwauAq9QEu8BIMK9kMvyBqje6ngffRCrPF1DArQaMQLsMXTMBjgMfTCa/FJDAbQONsLr8VvMRhAJzVeeK0GA3yPXnAt/obBAC+hF16L72AwwE3ohdfifRgMcCp64bV4HgYFvIpegDVqwiso5BD0QqzxWAwqGNOX34FBA5eiF+gyY6ZwJJoP+Qi9cFN1AeI4DCbiMHwK86Afwn0wmIk88L0xmJE88FMwmJE88GsxWMA2q69jyAN/ArvFGrHzhnfTsiP+gA9seNdOGrb8A7fALrFGzBH4ZWj1368PGrE6UrudM7EGzBG4uBhtH/fqgwasfOob2CXWgLkCFxeg7ecufVCJlc09ELvDDn7OwMX5aPuqnfewcrmvYHfYwVvgm8+o5jxsf7diKVbG8yzsCjtwCzxtzNzejCV4Zc2vcEvsBjvwjRH4g1iCVzb1GewGO2gLfLMZVd9t+ysNW1gZ83nns9L/lhpOwBvwBfwOtT79E3wEz8Am7IDn/tG8HW1fNWELK2fq7PWD7DOpH+Yp2B9fxLz+3Kb16VZ4zsDTKzktZ51W1rTpgi8x/077GoPmafI6h6xan26F5gr8GrR9tJ7iW3nTAt8df8T8e/XpW2Et6dC11uKrTlZgjsCvRKt/zHyK1WGmE2JHoLdU7mus6WePx7wOqbPjk3E33AVPxNvQ27aoe7GN5wh8B9Qytqknr/IZyF3xbcy3k8/hHjjEu5iW+xP1R1jEUZgvQv1frE/fevV1DGmjZB64oVVX+bamRhrnoNfVaIog335Z2MbhmJdbF+vT80YtClxciPn2qX+hwtecjibWDkWtKU+3qZlkuwXTsutifXraILkscHEQehefS1WfXcoxmJZdF+vT0wbJocAN9d1349+Y17FM/UCWsj3m5bsnb1Bp4Ma2eDV+gXldnhqNlLId5uU3xa7JG1QbeMpOqNvG78RFZ5Ma+pVyJKZlNQXQLUfjs5g2SGqop++m4mFM69c4u5TrMS37NHaHhlYfY9oQz89QQ72xeCt3Nc4ewhtOdrdmpmUxp8qMRX+8tE6d1GicvYgD8FdMy3R3BWrMcuXrcAyno1evxtnqvjQa0Q+k+uy8GzG7uvV8igX5Gn+P4XL06i1RT8HoiiluOZli6UR+5lhid2FPeVPVuTiWg/E19OpPfRn3xO7Q5TGvQS1OedugVgTcg5qJ/AVV/zeoR0CdhN3Sy42xm6y+ds+Ut37/jsEA8XCDNSYe37HG6NmEXngtxgNqCohHMG0EPkQvwBrfwqCQKU7t9UTPoIIb0QuyRF3RCRpoCT1uIxyJupeSPl2Ld/REz2Ai4nHWQRAEQRAEQRAEQRAEQRAEQRAE/2Vl5V//q3IsGyKfUAAAAABJRU5ErkJggg==",
+    "properties": {
+      "contributor": {}
+    }
+  }]
+}

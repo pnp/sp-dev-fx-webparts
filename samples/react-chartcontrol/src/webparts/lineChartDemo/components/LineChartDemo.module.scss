@@ -1,0 +1,21 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.lineChartDemo {
+  color: inherit;
+}
+
+:export {
+  backgroundColor1: rgba(75,192,192,0.4);
+  borderColor1: rgba(75,192,192,1);
+  pointBorderColor1: rgba(75,192,192,1);
+  pointBackgroundColor1:   rgba(75,192,192,1);;
+  pointHoverBackgroundColor1: rgba(75,192,192,1);
+  pointHoverBorderColor1: rgba(220,220,220,1);
+
+  backgroundColor2: rgba(192,75,192,0.4);
+  borderColor2: rgba(192,75, 192,1);
+  pointBorderColor2:rgba(192,75, 192,1);
+  pointBackgroundColor2:  rgba(192,75, 192,1);
+  pointHoverBackgroundColor2: rgba(192,75,192,1);
+  pointHoverBorderColor2: rgba(220,220,220,1);
+}

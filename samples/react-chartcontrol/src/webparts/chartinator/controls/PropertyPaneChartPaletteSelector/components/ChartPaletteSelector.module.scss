@@ -1,0 +1,39 @@
+.chartPaletteSelector {
+  color: inherit;
+}
+
+.colorChoice {
+  display: table-row;
+}
+
+.colorCell {
+  position: relative;
+  box-sizing: border-box;
+  display: table-cell;
+  cursor: pointer;
+  vertical-align: top;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  user-select: none;
+  outline: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: initial;
+  text-decoration: none;
+  border-radius: 0px;
+  overflow: visible;
+  background: transparent;
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+  padding-top: 4px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  box-sizing: content-box;
+}

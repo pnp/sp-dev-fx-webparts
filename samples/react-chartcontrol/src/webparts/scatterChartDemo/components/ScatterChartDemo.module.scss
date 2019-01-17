@@ -1,0 +1,10 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.scatterChartDemo {
+  color: inherit;
+}
+
+:export {
+  color1: rgb(255, 99, 132);
+  color2: rgba(255, 99, 132, 0.5);
+}

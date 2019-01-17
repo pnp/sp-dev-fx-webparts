@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "612ed0fa-453a-480a-81bf-2d3cb872d938",
+  "alias": "ScatterChartDemoWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Scatter Chart"
+      },
+      "description": {
+        "default": "Demonstrates how to render a scatter chart using a logarithmic scale"
+      },
+      "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAcCAYAAAATFf3WAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAvdEVYdFRpdGxlAENoYXJ0cyBTVkcgRXhhbXBsZSAtIFNpbXBsZSBTY2F0dGVyIENoYXJ0s5lgbwAABNZJREFUWIW9139sVeUZB/DP6a39QVtCKS3YijgzmX9sYyYmKhAJ4g+MRNwEE2OYiZK5hWRTQuKvGBMTUSPRGGPU+Cvxxz8WIzoimToLi5WxLIGxwX4E0g0n4i2ISGspvbfHP845vefenltFq09ycu/5vs/7PM/7Pu/zPc8biKQLTTiA6b5fCRBm4AP4PHlpxkzVg+uYBPxUbbRDTfzSiR+itory5Mv7OvU431ynVdEIpAI6jCJyaM1QnoaRb4mXsG7XKHhKoM7j/uYBS201XKHfkA5wBMPx74kMhycmAS9hbdaiDtSbZ63FttpUoT8lHeB0nIV/YqiKw1PHt7pM4F6hQTs86HYHQI2jZdrN8hl2RojzjDa04Ascy3DYjv5Twu83YoF9ogKk4IBLzQUb/cwML+JMx7xieeFMyY6C44/S+hd8nOxgoFQwzRkOmzJWWI4/bK4u5+rV6wmBBm1ltmqdYYE2vYatsA/ztQgc10bNboJUgIObsCualkxnFvbhSEYguQnxbX4h9CpyVuo3xeVm24E/40IwZJPecDbmjM0+7mOCfxNU8GDXQLLwJMAiPpRNmF8toVviYKHdfMv93C4fuMRJKwQGrbIdD+OG1Mw/4JcTmU4HmIvfOzP0ZqjkyHXmONtSx/QadFhTamy/AXSaD/44FrjjjdFRT2SoHrP4rJsgxYe7jogU84nTUVEV70U+I8BCGd7jxwLviqhgVOAmoUbME+p2r5fxyXgbLRXnuHEYh2hdleGzg1JhDOFfvm6KAyvj4CIboeXq3CCwXmC/CyKSnQxJF8k0EcV8dYo/1G92avSYjzR4R70FYJ1dtltmqGzBM+i6k9a7StDRUFScWZ/YRuQTHmzAPPQpT2WtxQqi7c7rcasaK4R2C3yu4Co5HyhaL+e/FUufY2FMzJF0yD4+E+JJ5AXsHxv6qykGdGOpbXbabLVlzhd6NN6TBUY9ZoklyHtVToePRG0boX6tDkXGwul4iRN1NJyMPdxJsDsjqHGSUENTbPwkplpijWa/EhF4p+naDWrQ5OKxmSMKXvIn5HRrdo73tZulqM/vrXejfrTQ0MXCDdSejXOiZ3sPz30WjeuI42ipeJpwNH0GZ4g+W3kzFcuW0Synzsu4LZ5IvRdwSJKeux1UopRU2u7I2JeLjuBg/FLOECUpq+Kj2COiGwqeU0r5p/Z6Ws6FQk8K3SOwyCLPZxiddEl2sEWU4jw6XYqfusz1fmSbPqvdL3StAEV5j9jIUxdx3YbUucKzt/Pb/yur+lumsuGNiJQb455vS6jEFuM/ApGMq+LzsF+PT/FrgXkCr1vkLe85oiZ1HQhdaXF4CDsrjP6E4B+yK/MbVXGS4qKoUSjiDoHHsVpos23mK/h7auIJNfZkGPxOJNna03A6DhtxRaozC+Qt84z7/M7Nctr1ed5vFHmznasrzHV3iFKXlbZqqZwwxcnAsKhgCupswcIYH9XmDW/r83ZZF4KraxnYSHOqtV/5H1F1ZlVmtWqdsIrT3cz/UCPvITMdxnlGveYSO2ReDYMDWFPF+KRJkPr/AxEPTpPQTUnqGXfrIiqurEtTFl4rakaKFXidaBcrfTbIuE7MqQRiaauCz8rAcuJLd4W0YmoGXs1nJt5YRTlXBZ+SgdWcop0sG2P4l/rcYKEmuvdjAAAAAElFTkSuQmCC",
+      "properties": {
+        "description": "Scatter Chart"
+      }
+    }
+  ]
+}
