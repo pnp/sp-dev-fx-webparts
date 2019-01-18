@@ -19,6 +19,7 @@ declare interface IDynamicDataConsumerWebPartStrings {
   PlaceHolderConfigureTitle: string;
   PlaceHolderConfigureDescription: string;
   ConfigureButtonLabel: string;
+  TooltipDateFormat: string;
 }
 
 declare module 'DynamicDataConsumerWebPartStrings' {

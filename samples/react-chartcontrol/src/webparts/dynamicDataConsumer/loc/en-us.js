@@ -19,6 +19,7 @@ define([], function () {
     "PlaceHolderDynamicDataDescription": "In order to see a contributor's commits, you need to select a contributor from the GitHub Contributors web part",
     "PlaceHolderConfigureTitle":"Configure your web part",
     "PlaceHolderConfigureDescription":"Please configure the web part.",
-    "ConfigureButtonLabel":"Configure"
+    "ConfigureButtonLabel":"Configure",
+    "TooltipDateFormat": "MMM YYYY"
   }
 });
