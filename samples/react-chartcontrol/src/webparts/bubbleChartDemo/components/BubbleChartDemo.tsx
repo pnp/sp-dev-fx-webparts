@@ -8,7 +8,7 @@ import * as Color from 'color';
 import { ChartControl, ChartType, PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
 
 // used to retrieve (fake) data from a (fake) service
-import IChartDataProvider, { IBubblePoint } from '../../../services/ChartDataProvider/IChartDataProvider';
+import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
 import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 // used to render the toolbar above the chart
@@ -159,7 +159,7 @@ export default class BubbleChartDemo extends React.Component<IBubbleChartDemoPro
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
       dataProvider
         .getMultiBubbleArrays(DATSET_LENGTH, DATA_COUNT)  // we only need 5 data elements for this demo
-        .then((bubbleArrays: Array<IBubblePoint[]>) => {
+        .then((bubbleArrays: Array<Chart.ChartPoint[]>) => {
           const data: Chart.ChartData = {
             datasets: [{
               label: strings.DataSet1Label,
@@ -191,7 +191,6 @@ export default class BubbleChartDemo extends React.Component<IBubbleChartDemoPro
     const { data } = this._chartElem.getChart();
     data.datasets.forEach((dataset) => {
       // get the data as array of IBubblePoint
-      //const bubbleArray: IBubblePoint[] = dataset.data as IBubblePoint[];
       dataset.data = this._generateData();
     });
 
@@ -228,8 +227,8 @@ export default class BubbleChartDemo extends React.Component<IBubbleChartDemoPro
     this._chartElem.update();
   }
 
-  private _generateData(): IBubblePoint[] {
-    const data: IBubblePoint[] = [];
+  private _generateData(): Chart.ChartPoint[] {
+    const data: Chart.ChartPoint[] = [];
 
     for (let i = 0; i < DATA_COUNT; ++i) {
       data.push({

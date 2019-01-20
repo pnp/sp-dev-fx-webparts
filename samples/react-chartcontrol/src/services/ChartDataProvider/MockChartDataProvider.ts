@@ -1,5 +1,6 @@
-import IChartDataProvider, { IBubblePoint } from "./IChartDataProvider";
+import IChartDataProvider from "./IChartDataProvider";
 
+const FAKE_DELAY: number = 500;
 /**
  * Returns an array of chart points (x,y)
  */
@@ -13,17 +14,22 @@ export default class MockChartDataProvider implements IChartDataProvider {
           numArray.push(MockChartDataProvider.getRandomSignedNumber());
         }
         resolve(numArray);
-      }, 500);
+      }, FAKE_DELAY);
     });
   }
 
-  public getMultiBubbleArrays(numDatasets: number, length: number): Promise<Array<IBubblePoint[]>> {
-    return new Promise<Array<IBubblePoint[]>>((resolve) => {
+  /**
+   * Returns a multi-dataset array of points for a bubble chart
+   * @param numDatasets How many datesets to generate
+   * @param length How long should each dataset be?
+   */
+  public getMultiBubbleArrays(numDatasets: number, length: number): Promise<Array<Chart.ChartPoint[]>> {
+    return new Promise<Array<Chart.ChartPoint[]>>((resolve) => {
       // pretend we're getting the data from a service
       setTimeout(() => {
-        let dataSetArray: Array<IBubblePoint[]> = [];
+        let dataSetArray: Array<Chart.ChartPoint[]> = [];
         for (let dsIndex = 0; dsIndex < numDatasets; dsIndex++) {
-          let bubbleArray: IBubblePoint[] = [];
+          let bubbleArray: Chart.ChartPoint[] = [];
           for (let index = 0; index < length; index++) {
             bubbleArray.push({
               x: MockChartDataProvider.getRandomNumber(),
@@ -34,10 +40,15 @@ export default class MockChartDataProvider implements IChartDataProvider {
           dataSetArray.push(bubbleArray);
         }
         resolve(dataSetArray);
-      }, 500);
+      }, FAKE_DELAY);
     });
   }
 
+  /**
+   * Returns a multi-dataset array of numbers for use in a chart
+   * @param numDatasets The number of datasets you would like
+   * @param length The length of each dataset
+   */
   public getMultiDataset(numDatasets: number, length: number): Promise<Array<number[]>> {
     return new Promise<Array<number[]>>((resolve) => {
       // pretend we're getting the data from a service
@@ -53,15 +64,19 @@ export default class MockChartDataProvider implements IChartDataProvider {
         }
 
         resolve(dataSetArray);
-      }, 500);
+      }, FAKE_DELAY);
     });
   }
 
+  /**
+   * Gets an array of points to render on a chart requiring X, Y coordinates
+   * @param length Length of the dataset to generate
+   */
   public getPointArray(length: number): Promise<{}[]> {
     return new Promise<{}[]>((resolve) => {
       // pretend we're getting the data from a service
       setTimeout(() => {
-        let numArray = [];
+        let numArray: Chart.ChartPoint[] = [];
         for (let index = 0; index < length; index++) {
           numArray.push(
             {
@@ -71,15 +86,19 @@ export default class MockChartDataProvider implements IChartDataProvider {
           );
         }
         resolve(numArray);
-      }, 500);
+      }, FAKE_DELAY);
     });
   }
 
+  /**
+   * Gets an array of points for a scatter chart
+   * @param length Length of the dataset to generate
+   */
   public getScatterArray(length: number): Promise<{}[]> {
     return new Promise<{}[]>((resolve) => {
       // pretend we're getting the data from a service
       setTimeout(() => {
-        let numArray = [];
+        let numArray: Chart.ChartPoint[] = [];
         for (let index = 0; index < length; index++) {
           numArray.push(
             {
@@ -89,7 +108,7 @@ export default class MockChartDataProvider implements IChartDataProvider {
           );
         }
         resolve(numArray);
-      }, 500);
+      }, FAKE_DELAY);
     });
   }
 
@@ -105,18 +124,22 @@ export default class MockChartDataProvider implements IChartDataProvider {
           numArray.push(MockChartDataProvider.getRandomNumber());
         }
         resolve(numArray);
-      }, waitduration && 500);
+      }, waitduration && FAKE_DELAY);
     });
   }
 
   /**
    * Returns a random number between 1-100.
-   * This method is only used for demo purposes.
    */
   public static getRandomNumber(): number {
     return Math.round(Math.random() * 101);
   }
 
+  /**
+   * Returns a random signed number between -100 and 100
+   * This method is used for charts with signed numbers,
+   * such as line charts.
+   */
   public static getRandomSignedNumber(): number {
     return Math.round(Math.random() * 201) - 100;
   }

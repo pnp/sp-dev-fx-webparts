@@ -7,30 +7,30 @@ import {
 
 import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
 
-import { IChartPaletteSelectorProps } from './components/ChartPaletteSelector.types';
-import ChartPaletteSelector from './components/ChartPaletteSelector';
+import { IDashSelectorProps } from './components/DashSelector.types';
+import DashSelector from './components/DashSelector';
 import {
-  IPropertyPaneChartPaletteSelectorProps,
-  IPropertyPaneChartPaletteSelectorInternalProps,
+  IPropertyPaneDashSelectorProps,
+  IPropertyPaneDashSelectorInternalProps,
 } from '.';
 
 /**
- * Palette selector control for property panes
+ * Dash selector control for property panes
  */
-export class PropertyPaneChartPaletteSelectorBuilder implements IPropertyPaneField<IPropertyPaneChartPaletteSelectorProps> {
+class PropertyPaneDashSelectorBuilder implements IPropertyPaneField<IPropertyPaneDashSelectorProps> {
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
-  public properties: IPropertyPaneChartPaletteSelectorInternalProps;
+  public properties: IPropertyPaneDashSelectorInternalProps;
   private element: HTMLElement;
 
-  constructor(public targetProperty: string, properties: IPropertyPaneChartPaletteSelectorProps) {
+  constructor(public targetProperty: string, properties: IPropertyPaneDashSelectorProps) {
     this.properties = {
       key: properties.label,
       label: properties.label,
       disabled: properties.disabled,
-      options: properties.options,
       selectedKey: properties.selectedKey,
       onPropertyChange: properties.onPropertyChange,
-      onRender: this.onRender.bind(this)
+      onRender: this.onRender.bind(this),
+      options: properties.options
     };
   }
 
@@ -50,14 +50,15 @@ export class PropertyPaneChartPaletteSelectorBuilder implements IPropertyPaneFie
     }
 
     // render the palette selector
-    const reactElement: React.ReactElement<IChartPaletteSelectorProps> = React.createElement(ChartPaletteSelector, <IChartPaletteSelectorProps>{
+    const reactElement: React.ReactElement<IDashSelectorProps> = React.createElement(DashSelector, <IDashSelectorProps>{
       label: this.properties.label,
-      onChanged: (option: IDropdownOption, index?: number) => this.onChanged(option, index),
-      options: this.properties.options,
+      onChanged: (option: IDropdownOption, index?: number) => this.handleChange(option, index),
       selectedKey: this.properties.selectedKey,
       disabled: this.properties.disabled,
+      options: this.properties.options,
       stateKey: new Date().toString() // hack to allow for externally triggered re-rendering
     });
+
     ReactDom.render(reactElement, element);
   }
 
@@ -66,14 +67,13 @@ export class PropertyPaneChartPaletteSelectorBuilder implements IPropertyPaneFie
    * @param option
    * @param index
    */
-  private onChanged(option: IDropdownOption, index?: number): void {
+  private handleChange(option: IDropdownOption, index?: number): void {
     this.properties.onPropertyChange(this.targetProperty, option.key);
   }
 }
 
-export function PropertyPaneChartPaletteSelector(targetProperty: string, properties: IPropertyPaneChartPaletteSelectorProps): IPropertyPaneField<IPropertyPaneChartPaletteSelectorInternalProps> {
-  return new PropertyPaneChartPaletteSelectorBuilder(targetProperty, {
+export function PropertyPaneDashSelector(targetProperty: string, properties: IPropertyPaneDashSelectorProps): IPropertyPaneField<IPropertyPaneDashSelectorInternalProps> {
+  return new PropertyPaneDashSelectorBuilder(targetProperty, {
     ...properties,
   });
 }
-

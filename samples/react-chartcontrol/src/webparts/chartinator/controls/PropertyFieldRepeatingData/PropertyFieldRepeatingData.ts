@@ -5,16 +5,20 @@ import {
   PropertyPaneFieldType
 } from '@microsoft/sp-webpart-base';
 
-import { IPropertyFieldRepeatingDataProps, IPropertyFieldRepeatingDataPropsInternal } from "./PropertyFieldRepeatingData.types";
+import { IPropertyFieldRepeatingDataProps } from "./PropertyFieldRepeatingData.types";
 import { IPropertyFieldRepeatingDataHostProps } from './PropertyFieldRepeatingData.types';
 import PropertyFieldRepeatingNumberDataHost from './PropertyFieldRepeatingDataHost';
+import { IPropertyFieldRepeatingDataInternalProps } from './IPropertyFieldRepeatingDataInternalProps';
 
+/**
+ * Handles entering repeating rows of data
+ */
 class PropertyFieldRepeatingDataBuilder implements IPropertyPaneField<IPropertyFieldRepeatingDataProps> {
 
   //Properties defined by IPropertyPaneField
 	public targetProperty: string;
 	public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
-	public properties: IPropertyFieldRepeatingDataPropsInternal;
+	public properties: IPropertyFieldRepeatingDataInternalProps;
 
 	private elem: HTMLElement;
 
@@ -24,7 +28,6 @@ class PropertyFieldRepeatingDataBuilder implements IPropertyPaneField<IPropertyF
       data: _properties.data,
       chartType: _properties.chartType,
       onRender: this.onRender.bind(this),
-      //onChanged: (id: string, dataElem: string, value: any) => _properties.onChanged(id, dataElem, value),
       onDataChanged: (data: any) => _properties.onDataChanged(data)
 		};
 	}
@@ -36,7 +39,8 @@ class PropertyFieldRepeatingDataBuilder implements IPropertyPaneField<IPropertyF
 		this.onRender(this.elem);
 	}
 
-	private onRender(elem: HTMLElement, ctx?: any, changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
+  /** Renders the repeating data control */
+	private onRender(elem: HTMLElement, _ctx?: any, _changeCallback?: (targetProperty?: string, newValue?: any) => void): void {
 		if (!this.elem) {
 			this.elem = elem;
 		}
@@ -44,13 +48,16 @@ class PropertyFieldRepeatingDataBuilder implements IPropertyPaneField<IPropertyF
 		const element: React.ReactElement<IPropertyFieldRepeatingDataHostProps> = React.createElement(PropertyFieldRepeatingNumberDataHost, {
       data: this.properties.data,
       chartType: this.properties.chartType,
-      //onChanged: (id: string, dataElem: string, value: any) => this.properties.onChanged(id, dataElem, value),
       onDataChanged: (data: any) => this.properties.onDataChanged(data)
 		});
 		ReactDom.render(element, elem);
 	}
 }
 
+/**
+ * Creates an instance of PropertyFieldRepeatingData
+ * @param properties The IPropertyFieldRepeatingDataProps to configure the control
+ */
 export function PropertyFieldRepeatingData(properties: IPropertyFieldRepeatingDataProps): IPropertyPaneField<IPropertyFieldRepeatingDataProps> {
 	return new PropertyFieldRepeatingDataBuilder(properties);
 }

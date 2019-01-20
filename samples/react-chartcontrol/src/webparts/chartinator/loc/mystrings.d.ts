@@ -1,203 +1,193 @@
 declare interface IChartinatorWebPartStrings {
-  PropertyPaneDescription: string;
-
-  // Description and title
+  AddButtonLabel: string;
+  AnimateRotateFieldLabel: string;
+  AnimateScaleFieldLabel: string;
+  AnimationGroupDescription: string;
+  AnimationGroupName: string;
+  AxisLabelText: string;
+  AxisShowLabel: string;
+  BarChartType: string;
+  BarSettingsGroupDescription: string;
+  BarSettingsGroupName: string;
+  BorderColorFieldLabel: string;
+  BorderDashFieldLabel: string;
+  BorderWidthFieldLabel: string;
+  Bottom: string;
+  BottomPaddingFieldLabel: string;
+  BubbleChartType: string;
+  CapStyleButt: string;
+  CapStyleRound: string;
+  CapStyleSquare: string;
   ChartDescription: { [key: string]: string };
+  ChartRotationFieldLabel: string;
+  ChartSettingsPrefix: string;
+  ChartSettingsSuffix: string;
   ChartTitlePlaceholder: string;
-
-  // Chart types
   ChartTypeGroupName: string;
   ChartTypeLabel: string;
-  BarChartType: string;
-  BubbleChartType: string;
-  DonutChartType: string;
-  HorizontalBarChartType: string;
-  LineChartType: string;
-  PieChartType: string;
-  PolarChartType: string;
-  RadarChartType: string;
-  ScatterChartType: string;
-
-  // Data source
+  ChartTypeName: string[];
+  CircumferenceFieldLabel: string;
+  ColorPaletteFieldLabel: string;
+  DashNames: string[];
+  DashTypeFieldLabel: string;
   DataGroupName: string;
-  ManualDataSource: string;
-  ListDataSource: string;
   DataLabelFieldLabel: string;
   DataLabelFieldPlaceholder: string;
+  DataRemoveButtonLabel: string;
+  DataSetDefault: string;
+  DataSetFieldName: string;
+  DataSourceDataLabelFieldLabel: string;
+  DataSourceDataRValueFieldLabel: string;
+  DataSourceDataValueFieldLabel: string;
+  DataSourceDataXValueFieldLabel: string;
+  DataSourceDataYValueFieldLabel: string;
+  DataSourcListIdFieldLabel: string;
   DataValueFieldLabel: string;
   DataValueFieldPlaceholder: string;
+  DataValueRFieldLabel: string;
+  DataValueRFieldPlaceholder: string;
   DataValueXFieldLabel: string;
   DataValueXFieldPlaceholder: string;
   DataValueYFieldLabel: string;
   DataValueYFieldPlaceholder: string;
-  DataValueRFieldLabel: string;
-  DataValueRFieldPlaceholder: string;
-  DataRemoveButtonLabel: string;
-  NumberErrorMessage: string;
-  AddButtonLabel: string;
-  DataSetFieldName: string;
-  DataSetDefault: string;
-
-  // Layout
-  LayoutGroupName: string;
-  LayoutGroupDescription: string;
-  LeftPaddingFieldLabel: string;
-  RightPaddingFieldLabel: string;
-  TopPaddingFieldLabel: string;
-  BottomPaddingFieldLabel: string;
-
-  // Legend
-  LegendGroupName: string;
-  LegendGroupDescription: string;
-  LegendDisplayLabel: string;
-  Show: string;
-  Hide: string;
-  LegendPositionFieldLabel: string;
-  Left: string;
-  Right: string;
-  Top: string;
-  Bottom: string;
-  None: string;
-  On: string;
-  Off: string;
-  LegendReversedFieldLabel: string;
-
-  // Palette settings
-  PaletteGroupName: string;
-  PaletteGroupDescription: string;
-  PaletteName: string[];
-  PaletteDescription: string[];
-  ColorPaletteFieldLabel: string;
-
-  // Tooltip settings
-  TooltipsGroupName: string;
-  TooltipGroupDescription: string;
-  TooltipsEnabledFieldLabel: string;
-  TooltipModeFieldLabel: string;
-  TooltipModePoint: string;
-  TooltipModeNearest: string;
-  TooltipModeIndex: string;
-  TooltipModeDataset: string;
-  TooltipModeX: string;
-  TooltipModeY: string;
-  TooltipsIntersectFieldLabel: string;
-  TooltipsPositionFieldLabel: string;
-  TooltipsPositionAverage: string;
-  TooltipsPositionNearest: string;
-
-  GroupNotAvailable: string;
-  ChartSettingsPrefix: string;
-  ChartSettingsSuffix: string;
-  ChartTypeName: string[];
-
-  // Line settings
-  LineSettingsGroupName: string;
+  DonutChartType: string;
+  DonutCutoutPercentageFieldLabel: string;
+  DonutSettingsGroupName: string;
+  DurationFieldDescription: string;
+  DurationFieldLabel: string;
+  EasingEaseInBack: string;
+  EasingEaseInBounce: string;
+  EasingEaseInCirc: string;
+  EasingEaseInCubic: string;
+  EasingEaseInElastic: string;
+  EasingEaseInExpo: string;
+  EasingEaseInOutBack: string;
+  EasingEaseInOutBounce: string;
+  EasingEaseInOutCirc: string;
+  EasingEaseInOutCubic: string;
+  EasingEaseInOutElastic: string;
+  EasingEaseInOutExpo: string;
+  EasingEaseInOutQuad: string;
+  EasingEaseInOutQuart: string;
+  EasingEaseInOutQuint: string;
+  EasingEaseInOutSine: string;
+  EasingEaseInQuad: string;
+  EasingEaseInQuart: string;
+  EasingEaseInQuint: string;
+  EasingEaseInSine: string;
+  EasingEaseOutBack: string;
+  EasingEaseOutBounce: string;
+  EasingEaseOutCirc: string;
+  EasingEaseOutCubic: string;
+  EasingEaseOutElastic: string;
+  EasingEaseOutExpo: string;
+  EasingEaseOutQuad: string;
+  EasingEaseOutQuart: string;
+  EasingEaseOutQuint: string;
+  EasingEaseOutSine: string;
+  EasingFieldLabel: string;
+  EasingLinear: string;
+  FillEnd: string;
   FillFieldLabel: string;
   FillNone: string;
-  FillStart: string;
-  FillEnd: string;
   FillOrigin: string;
-
+  FillStart: string;
+  GroupNotAvailable: string;
+  Hide: string;
+  HorizontalBarChartType: string;
+  JoinTypeBevel
+  JoinTypeMiter: string;
+  JoinTypeRound: string;
+  LayoutGroupDescription: string;
+  LayoutGroupName: string;
+  Left: string;
+  LeftPaddingFieldLabel: string;
+  LegendDisplayLabel: string;
+  LegendGroupDescription: string;
+  LegendGroupName: string;
+  LegendPositionFieldLabel: string;
+  LegendReversedFieldLabel: string;
+  LineCapStyleFieldLabel: string;
+  LineChartType: string;
   LineCurvedFieldName: string;
   LineCurvedFieldTooltipDisabled: string;
   LineCurvedFieldTooltipDisabledCozStepped: string;
   LineCurvedFieldTooltipEnabled: string;
-  LineCurvedOn: string;
   LineCurvedOff: string;
+  LineCurvedOn: string;
+  LineJoinStyleFieldLabel: string;
+  LineSettingsGroupName: string;
+  LineShowLinesFieldLabel: string;
+  LineShowLinesFieldTooltip: string;
+  LineShowLinesOff: string;
+  LineShowLinesOn: string;
   LineSteppedFieldLabel: string;
   LineSteppedFieldTooltipDisabled: string;
   LineSteppedFieldTooltipEnabled: string;
-  LineSteppedOn: string;
   LineSteppedOff: string;
-  LineShowLinesFieldLabel: string;
-  LineShowLinesOn: string;
-  LineShowLinesOff: string;
-  LineShowLinesFieldTooltip: string;
-
-  XAxisGroupName: string;
-  XAxisGroupDescription: string;
-  YAxisGroupName: string;
-  YAxisGroupDescription: string;
-  YAxisBeginAtZero: string;
-  YAxisMinValueFieldLabel: string;
-  YAxisMaxValueFieldLabel: string;
-  YAxisMaxStepsFieldLabel: string;
-  YAxisStepSizeFieldLabel: string;
-  AxisShowLabel: string;
-  AxisLabelText: string;
-
-
-  // Point settings
+  LineSteppedOn: string;
+  ListDataSource: string;
+  None: string;
+  NumberErrorMessage: string;
+  Off: string;
+  OffsetGridLinesFieldName: string;
+  On: string;
+  PaletteDescription: string[];
+  PaletteGroupDescription: string;
+  PaletteGroupName: string;
+  PaletteName: string[];
+  PieChartType: string;
+  PieSettingsGroupName: string;
+  PixelUnitSuffix: string;
+  PointRadiusFieldLabel: string;
+  PointRotationFieldLabel: string;
   PointSettingsGroup: string;
-  PointStyleFieldLabel: string;
-
-  // Palette
   PointStyleCircle: string;
   PointStyleCross: string;
   PointStyleCrossRot: string;
   PointStyleDash: string;
+  PointStyleFieldLabel: string;
   PointStyleLine: string;
   PointStyleRect: string;
-  PointStyleRectRounded: string;
   PointStyleRectRot: string;
+  PointStyleRectRounded: string;
   PointStyleStar: string;
   PointStyleTriangle: string;
-  PointRadiusFieldLabel: string;
-  PointRotationFieldLabel: string;
-
-  // Easing & animation
-  AnimationGroupName: string;
-  AnimationGroupDescription: string;
-  DurationFieldLabel: string;
-  DurationFieldDescription: string;
-  EasingFieldLabel: string;
-  EasingLinear: string;
-  EasingEaseInQuad: string;
-  EasingEaseOutQuad: string;
-  EasingEaseInOutQuad: string;
-  EasingEaseInCubic: string;
-  EasingEaseOutCubic: string;
-  EasingEaseInOutCubic: string;
-  EasingEaseInQuart: string;
-  EasingEaseOutQuart: string;
-  EasingEaseInOutQuart: string;
-  EasingEaseInQuint: string;
-  EasingEaseOutQuint: string;
-  EasingEaseInOutQuint: string;
-  EasingEaseInSine: string;
-  EasingEaseOutSine: string;
-  EasingEaseInOutSine: string;
-  EasingEaseInExpo: string;
-  EasingEaseOutExpo: string;
-  EasingEaseInOutExpo: string;
-  EasingEaseInCirc: string;
-  EasingEaseOutCirc: string;
-  EasingEaseInOutCirc: string;
-  EasingEaseInElastic: string;
-  EasingEaseOutElastic: string;
-  EasingEaseInOutElastic: string;
-  EasingEaseInBack: string;
-  EasingEaseOutBack: string;
-  EasingEaseInOutBack: string;
-  EasingEaseInBounce: string;
-  EasingEaseOutBounce: string;
-  EasingEaseInOutBounce: string;
-
-  //Donut and Pie settings and polar too
-  DonutSettingsGroupName: string;
-  PieSettingsGroupName: string;
+  PolarChartType: string;
   PolarSettingsGroupName: string;
-  DonutCutoutPercentageFieldLabel: string;
-  ChartRotationFieldLabel: string;
-  CircumferenceFieldLabel: string;
-  AnimateRotateFieldLabel: string;
-  AnimateScaleFieldLabel: string;
+  PropertyPaneDescription: string;
+  RadarChartType: string;
   ResetDonutPieSettingsButtonLabel: string;
-
-  //Bar settings
-  BarSettingsGroupName: string;
-  OffsetGridLinesFieldName: string;
-  BarSettingsGroupDescription: string;
+  Right: string;
+  RightPaddingFieldLabel: string;
+  ScatterChartType: string;
+  Show: string;
+  StaticDataSource: string;
+  TooltipGroupDescription: string;
+  TooltipModeDataset: string;
+  TooltipModeFieldLabel: string;
+  TooltipModeIndex: string;
+  TooltipModeNearest: string;
+  TooltipModePoint: string;
+  TooltipModeX: string;
+  TooltipModeY: string;
+  TooltipsEnabledFieldLabel: string;
+  TooltipsGroupName: string;
+  TooltipsIntersectFieldLabel: string;
+  TooltipsPositionAverage: string;
+  TooltipsPositionFieldLabel: string;
+  TooltipsPositionNearest: string;
+  Top: string;
+  TopPaddingFieldLabel: string;
+  XAxisGroupDescription: string;
+  XAxisGroupName: string;
+  YAxisBeginAtZero: string;
+  YAxisGroupDescription: string;
+  YAxisGroupName: string;
+  YAxisMaxStepsFieldLabel: string;
+  YAxisMaxValueFieldLabel: string;
+  YAxisMinValueFieldLabel: string;
+  YAxisStepSizeFieldLabel: string;
 }
 
 declare module 'ChartinatorWebPartStrings' {

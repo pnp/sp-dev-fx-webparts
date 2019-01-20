@@ -5,22 +5,28 @@ import {
 } from 'office-ui-fabric-react/lib/components/Dropdown';
 import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
 
-import styles from './ChartPaletteSelector.module.scss';
-import { IChartPaletteSelectorProps, IChartPaletteSelectorState } from './ChartPaletteSelector.types';
+import styles from './DashSelector.module.scss';
+import { IDashSelectorProps, IDashSelectorState, DashType, DashStrokes } from './DashSelector.types';
 
 /**
- * Displays a list of palette colours
+ * Displays a list of dash options.
+ *
  */
-export default class ChartPaletteSelector extends React.Component<IChartPaletteSelectorProps, IChartPaletteSelectorState> {
-  constructor(props: IChartPaletteSelectorProps) {
+export default class DashSelector extends React.Component<IDashSelectorProps, IDashSelectorState> {
+  /**
+   *
+   */
+  constructor(props: IDashSelectorProps) {
     super(props);
     this.state = {
       selectedKey: this.props.selectedKey
     };
   }
+
+  /** Renders the dash selector */
   public render(): JSX.Element {
     return (
-      <div className={styles.chartPaletteSelector}>
+      <div className={styles.dashSelector}>
         <Dropdown label={this.props.label}
           disabled={this.props.disabled}
           selectedKey={this.state.selectedKey}
@@ -37,10 +43,20 @@ export default class ChartPaletteSelector extends React.Component<IChartPaletteS
    */
   private _onRenderOption = (option: IDropdownOption): JSX.Element => {
     // Get the palette name
-    const paletteName: string = option.key as string;
+    const dashName: string = option.key as string;
 
     // Get the colors
-    const colors: string[] = option.data.colors;
+    const strokes: number[] = option.data.strokes;
+
+    // Build a string describing the dash
+    // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash
+    let dashString: string = "";
+    strokes.forEach((dashValue: number, index: number) => {
+      if (index > 0) {
+        dashString = dashString + ', ';
+      }
+      dashString = dashString + `${dashValue}px`;
+    });
 
     return (
       <TooltipHost
@@ -48,30 +64,24 @@ export default class ChartPaletteSelector extends React.Component<IChartPaletteS
         tooltipProps={{
           onRenderContent: () => {
             return (
-              <div>
-                <strong>{option.text}</strong>
-                <br />
-                {option.data.description}
-              </div>
+              <div>{option.text}</div>
             );
           }
         }}
-        id={`${paletteName}_tooltip`}
+        id={`${dashName}_tooltip`}
         directionalHint={DirectionalHint.bottomCenter}
       >
-        <div className={styles.colorChoice} aria-describedby={`${paletteName}_tooltip`}>
-          {colors.map((colorValue: string, index: number) => {
-            return <div
-              className={styles.colorCell}
-              key={`${paletteName}_${index}`}
-            >
-              <svg
-                className={styles.svg}
-                viewBox="0 0 20 20"
-                fill={colorValue} focusable="false"><rect width="100%" height="100%"></rect></svg>
-            </div>;
-          })}
-
+        <div className={styles.dashChoice} aria-describedby={`${dashName}_tooltip`}>
+          <div
+            className={styles.dashCell}
+            key={`${dashName}`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg"
+              className={styles.svg}
+              width="350" height="20" version="1.1">
+              <line stroke-dasharray={dashString} x1="0" y1="10" x2="350" y2="10" />
+            </svg>
+          </div>
         </div>
       </TooltipHost>
     );

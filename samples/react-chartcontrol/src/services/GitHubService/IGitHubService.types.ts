@@ -1,29 +1,36 @@
 import { HttpClient } from '@microsoft/sp-http';
 
+/**
+ * Exposes GitHub API calls
+ */
 export interface IGitHubService {
-  getContributors(client: HttpClient, repoOwner: string, repo: string): Promise<IGitHubContributor[]>;
   getCommits(client: HttpClient, repoOwner: string, repo: string, alias: string): Promise<IAuthorCommit[]>;
+  getContributors(client: HttpClient, repoOwner: string, repo: string): Promise<IGitHubContributor[]>;
 }
+
+// The majority of the interfaces in this file were auto-generated from JSON.
+// I don't use everything, but I left everything here in case you'd like to
+// use this code for your own purpose.
 export interface IGitHubContributor {
-  login: string;
-  id: number;
-  node_id: string;
   avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
+  contributions: number;
+  events_url: string;
   followers_url: string;
   following_url: string;
   gists_url: string;
+  gravatar_id: string;
+  html_url: string;
+  id: number;
+  login: string;
+  node_id: string;
+  organizations_url: string;
+  received_events_url: string;
+  repos_url: string;
+  site_admin: boolean;
   starred_url: string;
   subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
   type: string;
-  site_admin: boolean;
-  contributions: number;
+  url: string;
 }
 
 export interface IContributor {
@@ -32,97 +39,100 @@ export interface IContributor {
   repo: string;
 }
 
-  export interface Author {
-      name: string;
-      email: string;
-      date: Date;
-  }
+export interface Author {
+  date: Date;
+  email: string;
+  name: string;
+}
 
-  export interface Committer {
-      name: string;
-      email: string;
-      date: Date;
-  }
+export interface Committer {
+  date: Date;
+  email: string;
+  name: string;
+}
 
-  export interface Tree {
-      sha: string;
-      url: string;
-  }
+export interface Tree {
+  sha: string;
+  url: string;
+}
 
-  export interface Verification {
-      verified: boolean;
-      reason: string;
-      signature?: any;
-      payload?: any;
-  }
+export interface Verification {
+  payload?: any;
+  reason: string;
+  signature?: any;
+  verified: boolean;
+}
 
-  export interface Commit {
-      author: Author;
-      committer: Committer;
-      message: string;
-      tree: Tree;
-      url: string;
-      comment_count: number;
-      verification: Verification;
-  }
+export interface Commit {
+  author: Author;
+  comment_count: number;
+  committer: Committer;
+  message: string;
+  tree: Tree;
+  url: string;
+  verification: Verification;
+}
 
-  export interface Author2 {
-      login: string;
-      id: number;
-      node_id: string;
-      avatar_url: string;
-      gravatar_id: string;
-      url: string;
-      html_url: string;
-      followers_url: string;
-      following_url: string;
-      gists_url: string;
-      starred_url: string;
-      subscriptions_url: string;
-      organizations_url: string;
-      repos_url: string;
-      events_url: string;
-      received_events_url: string;
-      type: string;
-      site_admin: boolean;
-  }
+export interface Author2 {
+  avatar_url: string;
+  events_url: string;
+  followers_url: string;
+  following_url: string;
+  gists_url: string;
+  gravatar_id: string;
+  html_url: string;
+  id: number;
+  login: string;
+  node_id: string;
+  organizations_url: string;
+  received_events_url: string;
+  repos_url: string;
+  site_admin: boolean;
+  starred_url: string;
+  subscriptions_url: string;
+  type: string;
+  url: string;
+}
 
-  export interface Committer2 {
-      login: string;
-      id: number;
-      node_id: string;
-      avatar_url: string;
-      gravatar_id: string;
-      url: string;
-      html_url: string;
-      followers_url: string;
-      following_url: string;
-      gists_url: string;
-      starred_url: string;
-      subscriptions_url: string;
-      organizations_url: string;
-      repos_url: string;
-      events_url: string;
-      received_events_url: string;
-      type: string;
-      site_admin: boolean;
-  }
+export interface Committer2 {
+  avatar_url: string;
+  events_url: string;
+  followers_url: string;
+  following_url: string;
+  gists_url: string;
+  gravatar_id: string;
+  html_url: string;
+  id: number;
+  login: string;
+  node_id: string;
+  organizations_url: string;
+  received_events_url: string;
+  repos_url: string;
+  site_admin: boolean;
+  starred_url: string;
+  subscriptions_url: string;
+  type: string;
+  url: string;
+}
 
-  export interface Parent {
-      sha: string;
-      url: string;
-      html_url: string;
-  }
+export interface Parent {
+  html_url: string;
+  sha: string;
+  url: string;
+}
 
-  export interface IAuthorCommit {
-      sha: string;
-      node_id: string;
-      commit: Commit;
-      url: string;
-      html_url: string;
-      comments_url: string;
-      author: Author2;
-      committer: Committer2;
-      parents: Parent[];
-  }
+/**
+ * Describes a commit
+ */
+export interface IAuthorCommit {
+  author: Author2;
+  comments_url: string;
+  commit: Commit;
+  committer: Committer2;
+  html_url: string;
+  node_id: string;
+  parents: Parent[];
+  sha: string;
+  url: string;
+}
 

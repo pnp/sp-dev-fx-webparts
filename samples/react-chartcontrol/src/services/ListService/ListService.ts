@@ -23,17 +23,30 @@ export class ListService implements IListService {
       .select("Id", "Title", "InternalName", "TypeAsString").get();
   }
 
-  public getListItems(listId: string, labelField: string, xValueField: string, yValueField?: string, rValueField?: string): Promise<Array<IListItem>> {
+  public getListItems(listId: string, labelField: string, valueField: string, yValueField?: string, rValueField?: string): Promise<Array<IListItem>> {
     sp.setup({
       spfxContext: this._context
     });
 
-    return sp.web.lists.getById(listId).items.select("Id", labelField).getAll().then((rows: any[]) => {
+    // build the list of fields we need
+    let fields: string[] = ["Id", labelField, valueField];
+
+    // Add the y value if necessary
+    if (yValueField) {
+      fields.push(yValueField);
+    }
+
+    // Add a R value if necessary
+    if (rValueField) {
+      fields.push(rValueField);
+    }
+
+    return sp.web.lists.getById(listId).items.select(...fields).getAll().then((rows: any[]) => {
       return rows.map((item: any) => {
         let listItem: IListItem = {
           Id: item.Id,
           Label: item[labelField],
-          XValue: xValueField && item[xValueField],
+          Value: valueField && item[valueField],
           YValue: yValueField && item[yValueField],
           RValue: rValueField && item[rValueField]
         };

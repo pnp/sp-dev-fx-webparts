@@ -45,13 +45,15 @@ import { Guid } from '@microsoft/sp-core-library';
 // Custom property field
 import { PropertyFieldRepeatingData } from './controls/PropertyFieldRepeatingData';
 import { PropertyPaneChartPaletteSelector, IPropertyPaneChartPaletteSelectorProps } from './controls/PropertyPaneChartPaletteSelector';
+import { PropertyPaneDashSelector, IPropertyPaneDashSelectorProps } from './controls/PropertyPaneDashSelector';
+import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
 
 // Properties for this web part
 // I prefer to keep the web part props as a
 // separate file -- keeps things cleaner
 // (in my mind, at least)
 import {
-  IChartinatorWebPartProps,
+  IChartinatorWebPartProps, DataSourceType,
 } from './ChartinatorWebPart.types';
 
 // Needed for localization and other resource-types
@@ -60,6 +62,7 @@ import * as strings from 'ChartinatorWebPartStrings';
 import { ListService } from '../../services/ListService/ListService';
 import { IListService } from '../../services/ListService/IListService';
 import { IListField } from '../../services/ListService/IListField';
+import { DashType, DashStrokes } from './controls/PropertyPaneDashSelector/components/DashSelector.types';
 
 /**
  * Constant for the number of colors to show in the
@@ -88,6 +91,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
       Chartinator,
       {
         ...this.properties, // passes all properties without having to list every single one
+        context: this.context,
         displayMode: this.displayMode,
         radialChart: this._isRadialChart(),
         updateTitle: (value: string) => {
@@ -106,7 +110,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
     // If the chart type is changed, always reset the data to prevent
     // nasty errors from ChartJs.
-    if (propertyPath === "chartType") {
+    if (propertyPath === 'chartType') {
       // Bubble charts datasets are incompatible with other chart types
       if (oldValue === ChartType.Bubble || newValue === ChartType.Bubble) {
         this._initalizeData();
@@ -120,9 +124,8 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
       // every other chart type is compatible with other charts
     }
 
-    if (propertyPath === "dataSourceListId" && newValue) {
+    if (propertyPath === 'dataSourceListId' && newValue) {
       this._getFields().then(fields => {
-        console.log("Fields", fields);
         this.properties.dataLabelField = undefined;
         this.properties.dataValueField = undefined;
         this.properties.dataYValueField = undefined;
@@ -135,7 +138,6 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
 
   protected onPropertyPaneConfigurationStart(): void {
     this._getFields().then(fields => {
-      console.log("OnProperty Pane Configuraiton Start Fields", fields);
       this._fields = fields;
       this.context.propertyPane.refresh();
     });
@@ -177,7 +179,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
 
       // Default data type is manual
       if (this.properties.dataSourceType === undefined) {
-        this.properties.dataSourceType = 0;
+        this.properties.dataSourceType = DataSourceType.Static;
       }
 
       // Default ChartJs animation duration is 1000 milliseconds
@@ -187,7 +189,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
 
       // Default ChartJs animation is easOutQuart
       if (this.properties.animationEasing === undefined) {
-        this.properties.animationEasing = "easeOutQuart";
+        this.properties.animationEasing = 'easeOutQuart';
       }
 
       // Layout: default is no padding.
@@ -219,7 +221,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
         this.properties.legendReversed = false;
       }
 
-      // ChartJs will render "undefined" in the tooltips
+      // ChartJs will render 'undefined' in the tooltips
       // and legends if you don't provide a dataset name.
       // Use the standard 'My Dataset' as the default value.
       if (this.properties.dataSetName === undefined) {
@@ -252,7 +254,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
       // ChartControl uses Colorful1 as the default option
       // -- just like Office charts do.
       if (this.properties.chartPalette === undefined) {
-        this.properties.chartPalette = "Colorful1";
+        this.properties.chartPalette = ChartPalette.OfficeColorful1;
       }
 
       // Lines are usually on for line charts... otherwise, they'd
@@ -264,6 +266,10 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
       // Stepped lines are off by default
       if (this.properties.lineStepped === undefined) {
         this.properties.lineStepped = false;
+      }
+
+      if (this.properties.lineFill === undefined) {
+        this.properties.lineFill = 'none';
       }
 
       // Point style default in ChartJs is circle
@@ -296,6 +302,22 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
 
       if (this.properties.offsetGridLines === undefined) {
         this.properties.offsetGridLines = true;
+      }
+
+      if (this.properties.borderWidth === undefined) {
+        this.properties.borderWidth = 1;
+      }
+
+      if (this.properties.borderDash === undefined) {
+        this.properties.borderDash = DashType.Solid;
+      }
+
+      if (this.properties.borderJoinStyle === undefined) {
+        this.properties.borderJoinStyle = 'miter';
+      }
+
+      if (this.properties.borderCapStyle === undefined) {
+        this.properties.borderCapStyle = 'butt';
       }
 
       resolve(undefined);
@@ -403,38 +425,38 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           label: strings.LegendPositionFieldLabel,
           options: [
             {
-              key: "none",
+              key: 'none',
               text: strings.None,
               selectedImageSrc: Assets.LegendNone,
               imageSrc: Assets.LegendNone,
             },
             {
-              key: "top",
+              key: 'top',
               text: strings.Top,
               selectedImageSrc: Assets.LegendTop,
               imageSrc: Assets.LegendTop,
             },
             {
-              key: "bottom",
+              key: 'bottom',
               text: strings.Bottom,
               selectedImageSrc: Assets.LegendBottom,
               imageSrc: Assets.LegendBottom,
             },
             {
-              key: "left",
+              key: 'left',
               text: strings.Left,
               selectedImageSrc: Assets.LegendLeft,
               imageSrc: Assets.LegendLeft,
             },
             {
-              key: "right",
+              key: 'right',
               text: strings.Right,
               selectedImageSrc: Assets.LegendRight,
               imageSrc: Assets.LegendRight,
             },
           ]
         }),
-        this.properties.legendPosition !== 'none' && PropertyPaneToggle("legendReversed", {
+        this.properties.legendPosition !== 'none' && PropertyPaneToggle('legendReversed', {
           label: strings.LegendReversedFieldLabel,
           onText: strings.On,
           offText: strings.Off
@@ -460,26 +482,26 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
         PropertyPaneLabel('topPadding', {
           text: strings.LayoutGroupDescription
         }),
-        PropertyFieldNumber("topPadding", {
-          key: "topPadding",
+        PropertyFieldNumber('topPadding', {
+          key: 'topPadding',
           label: strings.TopPaddingFieldLabel,
           value: topPadding,
           minValue: 0
         }),
-        PropertyFieldNumber("leftPadding", {
-          key: "leftPadding",
+        PropertyFieldNumber('leftPadding', {
+          key: 'leftPadding',
           label: strings.LeftPaddingFieldLabel,
           value: leftPadding,
           minValue: 0
         }),
-        PropertyFieldNumber("bottomPadding", {
-          key: "bottomPadding",
+        PropertyFieldNumber('bottomPadding', {
+          key: 'bottomPadding',
           label: strings.BottomPaddingFieldLabel,
           value: bottomPadding,
           minValue: 0
         }),
-        PropertyFieldNumber("rightPadding", {
-          key: "rightPadding",
+        PropertyFieldNumber('rightPadding', {
+          key: 'rightPadding',
           label: strings.RightPaddingFieldLabel,
           value: rightPadding,
           minValue: 0
@@ -556,26 +578,26 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           offText: strings.Off,
           onText: strings.On
         }),
-        PropertyFieldNumber("yAxisMin", {
-          key: "yAxisMin",
+        PropertyFieldNumber('yAxisMin', {
+          key: 'yAxisMin',
           label: strings.YAxisMinValueFieldLabel,
           value: yAxisMin,
           disabled: radialChart || yAxisBeginAtZero
         }),
-        PropertyFieldNumber("yAxisMax", {
-          key: "yAxisMax",
+        PropertyFieldNumber('yAxisMax', {
+          key: 'yAxisMax',
           label: strings.YAxisMaxValueFieldLabel,
           value: yAxisMax,
           disabled: radialChart
         }),
-        PropertyFieldNumber("yAxisMaxTicksLimit", {
-          key: "yAxisMaxTicksLimit",
+        PropertyFieldNumber('yAxisMaxTicksLimit', {
+          key: 'yAxisMaxTicksLimit',
           label: strings.YAxisMaxStepsFieldLabel,
           value: yAxisMaxTicksLimit,
           disabled: radialChart
         }),
-        PropertyFieldNumber("yAxisStepSize", {
-          key: "yAxisStepSize",
+        PropertyFieldNumber('yAxisStepSize', {
+          key: 'yAxisStepSize',
           label: strings.YAxisStepSizeFieldLabel,
           value: yAxisStepSize,
           disabled: radialChart
@@ -598,7 +620,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
         PropertyPaneLabel('chartPalette', {
           text: strings.PaletteGroupDescription
         }),
-        new PropertyPaneChartPaletteSelector('chartPalette', <IPropertyPaneChartPaletteSelectorProps>{
+        PropertyPaneChartPaletteSelector('chartPalette', {
           label: strings.ColorPaletteFieldLabel,
           disabled: false,
           selectedKey: chartPalette,
@@ -649,11 +671,11 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
         PropertyPaneChoiceGroup('dataSourceType', {
           options: [
             {
-              key: 0,
-              text: strings.ManualDataSource,
+              key: DataSourceType.Static,
+              text: strings.StaticDataSource,
             },
             {
-              key: 1,
+              key: DataSourceType.List,
               text: strings.ListDataSource,
             }
           ]
@@ -662,14 +684,14 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           label: strings.DataSetFieldName,
         }),
         dataSourceType === 0 && PropertyFieldRepeatingData({
-          key: "repeatingData",
+          key: 'repeatingData',
           data: this.properties.data,
           chartType: chartType,
 
           onDataChanged: (data: any) => this._dataChangedHandler(data)
         }),
         dataSourceType === 1 && PropertyFieldListPicker('dataSourceListId', {
-          label: 'Select a list',
+          label: strings.DataSourcListIdFieldLabel,
           selectedList: this.properties.dataSourceListId,
           includeHidden: false,
           orderBy: PropertyFieldListPickerOrderBy.Title,
@@ -681,25 +703,29 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           deferredValidationTime: 0,
           key: 'dataSourceListId'
         }),
-        dataSourceType === 1 && !hasX && PropertyPaneDropdown('dataValueField', {
+        dataSourceType === 1 && PropertyPaneDropdown('dataValueField', {
           options: this._getDataFields(),
-          label: "Column that has the data to display"
+          label: hasX ? strings.DataSourceDataXValueFieldLabel : strings.DataSourceDataValueFieldLabel,
+selectedKey: this.properties.dataValueField
         }),
-        dataSourceType === 1 && hasX && PropertyPaneDropdown('dataValueField', {
-          options: this._getDataFields(),
-          label: "Column that has the X values"
-        }),
+        // dataSourceType === 1 && hasX && PropertyPaneDropdown('dataValueField', {
+        //   options: this._getDataFields(),
+        //   label:
+        // }),
         dataSourceType === 1 && hasY && PropertyPaneDropdown('dataYValueField', {
           options: this._getDataFields(),
-          label: "Column that has the Y values"
+          label: strings.DataSourceDataYValueFieldLabel,
+          selectedKey: this.properties.dataYValueField
         }),
         dataSourceType === 1 && hasR && PropertyPaneDropdown('dataRValueField', {
           options: this._getDataFields(),
-          label: "Column that has the R values"
+          label: strings.DataSourceDataRValueFieldLabel,
+          selectedKey: this.properties.dataRValueField
         }),
-        dataSourceType === 1 && PropertyPaneDropdown('dataSourceLabelField', {
+        dataSourceType === 1 && PropertyPaneDropdown('dataLabelField', {
           options: this._getLabelFields(),
-          label: "Column with labels for each data point",
+          label: strings.DataSourceDataLabelFieldLabel,
+          selectedKey: this.properties.dataLabelField
         })
       ]
     };
@@ -709,43 +735,13 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
    * Shows line chart-specific settings
    */
   private _renderLineSettingsPropertyGroup = (): IPropertyPaneGroup => {
-    const { chartType } = this.properties;
     return {
       groupName: strings.LineSettingsGroupName,
       isCollapsed: true,
       groupFields: [
-        chartType === ChartType.Line && PropertyPaneChoiceGroup('lineFill', {
-          label: strings.FillFieldLabel,
-          options: [
-            {
-              key: "none",
-              text: strings.FillNone,
-              selectedImageSrc: Assets.FillNone,
-              imageSrc: Assets.FillNone,
-            },
-            {
-              key: "start",
-              text: strings.FillStart,
-              selectedImageSrc: Assets.FillStart,
-              imageSrc: Assets.FillStart,
-            },
-            {
-              key: "end",
-              text: strings.FillEnd,
-              selectedImageSrc: Assets.FillEnd,
-              imageSrc: Assets.FillEnd,
-            },
-            {
-              key: "origin",
-              text: strings.FillOrigin,
-              selectedImageSrc: Assets.FillOrigin,
-              imageSrc: Assets.FillOrigin,
-            },
-          ]
-        }),
-        PropertyFieldToggleWithCallout("lineShowLine", {
+        PropertyFieldToggleWithCallout('lineShowLine', {
           disabled: this.properties.lineStepped === true,
-          key: "lineShowLine",
+          key: 'lineShowLine',
           label: strings.LineShowLinesFieldLabel,
           onText: strings.LineShowLinesOn,
           offText: strings.LineShowLinesOff,
@@ -753,9 +749,9 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           calloutContent: React.createElement('div', {}, strings.LineShowLinesFieldTooltip),
           calloutTrigger: CalloutTriggers.Hover,
         }),
-        PropertyFieldToggleWithCallout("lineStepped", {
+        PropertyFieldToggleWithCallout('lineStepped', {
           disabled: this.properties.lineShowLine === false,
-          key: "lineStepped",
+          key: 'lineStepped',
           label: strings.LineSteppedFieldLabel,
           onText: strings.LineSteppedOn,
           offText: strings.LineSteppedOff,
@@ -768,10 +764,10 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           ),
           calloutTrigger: CalloutTriggers.Hover,
         }),
-        PropertyFieldToggleWithCallout("lineCurved", {
+        PropertyFieldToggleWithCallout('lineCurved', {
           disabled: this.properties.lineStepped === true || this.properties.lineShowLine === false,
           // I know, I know, I just like to explictly say true to make it more legible
-          key: "lineCurved",
+          key: 'lineCurved',
           label: strings.LineCurvedFieldName,
           onText: strings.LineCurvedOn,
           offText: strings.LineCurvedOff,
@@ -786,13 +782,104 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           ),
           calloutTrigger: CalloutTriggers.Hover,
         }),
+        PropertyFieldSpinButton('borderWidth', {
+          decimalPlaces: 0,
+          min: 0,
+          step: 1,
+          suffix: strings.PixelUnitSuffix,
+          label: strings.BorderWidthFieldLabel,
+          key: 'borderWidthId',
+          onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+          properties: this.properties,
+          initialValue: this.properties.borderWidth
+        }),
+        PropertyFieldColorPicker('borderColor', {
+          label: strings.BorderColorFieldLabel,
+          selectedColor: this.properties.borderColor,
+          onPropertyChange: this.onPropertyPaneFieldChanged,
+          properties: this.properties,
+          alphaSliderHidden: false,
+          style: PropertyFieldColorPickerStyle.Inline,
+          key: 'borderColorId'
+        }),
+        PropertyPaneDashSelector('borderDash', {
+          label: "Dash type",
+          disabled: false,
+          selectedKey: this.properties.borderDash,
+          options: this._getDashOptions(),
+          onPropertyChange: (propertyPath: string, newValue: any) => this._propertyChangeHandler(propertyPath, newValue)
+        }),
+        PropertyPaneDropdown('borderCapStyle', {
+          label: strings.LineCapStyleFieldLabel,
+          selectedKey: this.properties.borderCapStyle,
+          options: [
+            {
+              key: 'butt',
+              text: strings.CapStyleButt // tee hee
+            },
+            {
+              key: 'round',
+              text: strings.CapStyleRound
+            },
+            {
+              key: 'square',
+              text: strings.CapStyleSquare
+            }
+          ]
+        }),
+        PropertyPaneDropdown('borderJoinStyle', {
+          label: strings.LineJoinStyleFieldLabel,
+          selectedKey: this.properties.borderJoinStyle,
+          options: [
+            {
+              key: 'bevel',
+              text: strings.JoinTypeBevel
+            },
+            {
+              key: 'round',
+              text: strings.JoinTypeRound
+            },
+            {
+              key: 'miter',
+              text: strings.JoinTypeMiter
+            }
+          ]
+        }),
+        PropertyPaneChoiceGroup('lineFill', {
+          label: strings.FillFieldLabel,
+          options: [
+            {
+              key: 'none',
+              text: strings.FillNone,
+              selectedImageSrc: Assets.FillNone,
+              imageSrc: Assets.FillNone,
+            },
+            {
+              key: 'start',
+              text: strings.FillStart,
+              selectedImageSrc: Assets.FillStart,
+              imageSrc: Assets.FillStart,
+            },
+            {
+              key: 'end',
+              text: strings.FillEnd,
+              selectedImageSrc: Assets.FillEnd,
+              imageSrc: Assets.FillEnd,
+            },
+            {
+              key: 'origin',
+              text: strings.FillOrigin,
+              selectedImageSrc: Assets.FillOrigin,
+              imageSrc: Assets.FillOrigin,
+            },
+          ]
+        }),
+
       ]
     };
   }
 
   private _renderPointSettingsPropertyGroup = (): IPropertyPaneGroup => {
-    //(chartType === ChartType.Line || chartType === ChartType.Scatter)
-    const { chartType } = this.properties;
     return {
       groupName: strings.PointSettingsGroup,
       isCollapsed: true,
@@ -862,9 +949,9 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
             },
           ]
         }),
-        PropertyFieldSpinButton("pointRadius", {
+        PropertyFieldSpinButton('pointRadius', {
           properties: this.properties,
-          key: "pointRadius",
+          key: 'pointRadiusId',
           label: strings.PointRadiusFieldLabel,
           initialValue: this.properties.pointRadius,
           min: 0,
@@ -989,28 +1076,28 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           label: strings.TooltipModeFieldLabel,
           options: [
             {
-              key: "nearest",
+              key: 'nearest',
               text: strings.TooltipModeNearest
             },
             {
-              key: "point",
+              key: 'point',
               text: strings.TooltipModePoint
             },
 
             {
-              key: "index",
+              key: 'index',
               text: strings.TooltipModeIndex
             },
             {
-              key: "dataset",
+              key: 'dataset',
               text: strings.TooltipModeDataset
             },
             {
-              key: "x",
+              key: 'x',
               text: strings.TooltipModeX
             },
             {
-              key: "y",
+              key: 'y',
               text: strings.TooltipModeY
             },
           ]
@@ -1026,11 +1113,11 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           label: strings.TooltipsPositionFieldLabel,
           options: [
             {
-              key: "average",
+              key: 'average',
               text: strings.TooltipsPositionAverage
             },
             {
-              key: "nearest",
+              key: 'nearest',
               text: strings.TooltipsPositionNearest
             },
           ]
@@ -1054,14 +1141,14 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
         PropertyPaneLabel('animationDuration', {
           text: strings.AnimationGroupDescription
         }),
-        PropertyFieldNumber("animationDuration", {
-          key: "animationDuration",
+        PropertyFieldNumber('animationDuration', {
+          key: 'animationDurationId',
           label: strings.DurationFieldLabel,
           description: strings.DurationFieldDescription,
           value: animationDuration,
           minValue: 0
         }),
-        PropertyPaneChoiceGroup("animationEasing", {
+        PropertyPaneChoiceGroup('animationEasing', {
           label: strings.EasingFieldLabel,
           options: [
             {
@@ -1257,8 +1344,8 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
   }
 
   /**
-   * Lists all palette choices for the palette property pane group
-   */
+ * Lists all palette choices for the palette property pane group
+ */
   private _getPaletteOptions = (): IDropdownOption[] => {
     // Because I'm lazy, I am NOT going to list
     // every single palette option manually,
@@ -1273,7 +1360,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
       const displayName: string = strings.PaletteName[paletteName];
       const description: string = strings.PaletteDescription[paletteName];
       return {
-        key: paletteName,
+        key: ChartPalette[paletteName],
         text: displayName,
         data: {
           colors: PaletteGenerator.GetPalette(ChartPalette[paletteName], NUMCOLORS).slice(0, NUMCOLORS),
@@ -1283,6 +1370,26 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
     });
 
     return paletteOptions;
+  }
+
+  private _getDashOptions = (): IDropdownOption[] => {
+    const names = Object.keys(DashType)
+      .filter(k => typeof DashType[k] === "number") as string[];
+
+    // Generate the dash options from dash names
+    const dashOptions: IDropdownOption[] = names.map((dashName: string, index: number) => {
+      const displayName: string = strings.DashNames[index];
+      const strokes: number[] = DashStrokes[DashType[dashName]];
+      return {
+        key: DashType[dashName],
+        text: displayName,
+        data: {
+          strokes: strokes
+        }
+      };
+    });
+
+    return dashOptions;
   }
 
   private _getFields(): Promise<IListField[]> {
@@ -1299,28 +1406,28 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
 
   private _getLabelFields(): IPropertyPaneDropdownOption[] {
     if (this._fields === undefined) {
-      console.log("Get label fields: no fields");
       return undefined;
     }
-    return this._fields!.filter(f => f.TypeAsString === "Text" || f.TypeAsString === "DateTime").map(field => {
+    const labelFields = this._fields!.filter(f => f.TypeAsString === 'Text' || f.TypeAsString === 'DateTime').map(field => {
       return {
         key: field.InternalName,
         text: `${field.Title}`,
       };
     });
+    return labelFields;
   }
 
   private _getDataFields(): IPropertyPaneDropdownOption[] {
     if (this._fields === undefined) {
-      console.log("Get data fields: no fields");
       return undefined;
     }
-    return this._fields!.filter(f => f.TypeAsString === "Number" || f.TypeAsString === "Currency").map(field => {
+    const dataFields =  this._fields!.filter(f => f.TypeAsString === 'Number' || f.TypeAsString === 'Currency').map(field => {
       return {
         key: field.InternalName,
         text: `${field.Title}`,
       };
     });
+    return dataFields;
   }
 
   /**
@@ -1339,29 +1446,29 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
       // Only some of charts types have Office Fabric UI icon equivalents.
       // This code finds the Office Fabric icon or the icon asset
       switch (chartTypeName) {
-        case "Bar":
+        case 'Bar':
           choice.iconProps = {
-            officeFabricIconFontName: "BarChartVertical"
+            officeFabricIconFontName: 'BarChartVertical'
           };
           break;
-        case "HorizontalBar":
+        case 'HorizontalBar':
           choice.iconProps = {
-            officeFabricIconFontName: "BarChartHorizontal"
+            officeFabricIconFontName: 'BarChartHorizontal'
           };
           break;
-        case "Doughnut":
+        case 'Doughnut':
           choice.iconProps = {
-            officeFabricIconFontName: "DonutChart"
+            officeFabricIconFontName: 'DonutChart'
           };
           break;
-        case "Line":
+        case 'Line':
           choice.iconProps = {
-            officeFabricIconFontName: "LineChart"
+            officeFabricIconFontName: 'LineChart'
           };
           break;
-        case "Pie":
+        case 'Pie':
           choice.iconProps = {
-            officeFabricIconFontName: "PieDouble"
+            officeFabricIconFontName: 'PieDouble'
           };
           break;
         default:
@@ -1397,6 +1504,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
    */
   private _propertyChangeHandler(propertyPath: string, newValue: any): void {
     this.properties[propertyPath] = newValue;
+
     this.render();
   }
 

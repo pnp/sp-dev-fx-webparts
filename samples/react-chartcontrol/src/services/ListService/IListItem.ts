@@ -1,7 +1,7 @@
 export interface IListItem {
   Id: string;
   Label: string;
-  XValue: number;
+  Value: number;
   YValue?: number;
   RValue?: number;
 }

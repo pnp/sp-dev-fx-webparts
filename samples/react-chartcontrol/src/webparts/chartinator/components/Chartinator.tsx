@@ -4,13 +4,44 @@ import { IChartinatorProps } from './Chartinator.types';
 import * as strings from 'ChartinatorWebPartStrings';
 
 // used to add a chart control
-import { ChartControl, ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartControl, ChartType, ChartPalette, PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
 import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
-import IChartDataProvider, { IBubblePoint } from '../../../services/ChartDataProvider/IChartDataProvider';
+import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
 import { IBubbleChartData, IScatterChartData, INumberChartData } from '../controls/PropertyFieldRepeatingData';
 import { ChartTitle } from '../controls/ChartTitle';
+import { DashStrokes } from '../controls/PropertyPaneDashSelector/components/DashSelector.types';
+
+// Patternomaly is used to render patterns
+import * as pattern from 'patternomaly';
+import { IListService, ListService, IListItem } from '../../../services/ListService';
 
 const DATA_COUNT: number = 7;
+
+const colors: string[] = PaletteGenerator.GetPalette(ChartPalette.OfficeColorful1, DATA_COUNT);
+
+const patterns: CanvasPattern[] = [
+  pattern.draw('plus', colors[0]),
+  pattern.draw('cross', colors[1]),
+  pattern.draw('dash', colors[2]),
+  pattern.draw('cross-dash', colors[3]),
+  pattern.draw('dot', colors[4]),
+  pattern.draw('dot-dash', colors[5]),
+  pattern.draw('disc', colors[6]),
+  pattern.draw('ring', colors[7]),
+  pattern.draw('line', colors[8]),
+  pattern.draw('line-vertical', colors[9]),
+  pattern.draw('weave', colors[10]),
+  pattern.draw('zigzag', colors[11]),
+  pattern.draw('zigzag-vertical', colors[12]),
+  pattern.draw('diagonal', colors[13]),
+  pattern.draw('diagonal-right-left', colors[14]),
+  pattern.draw('square', colors[15]),
+  pattern.draw('box', colors[16]),
+  pattern.draw('triangle', colors[17]),
+  pattern.draw('triangle-inverted', colors[18]),
+  pattern.draw('diamond', colors[19]),
+  pattern.draw('diamond-box', colors[20])
+];
 
 export default class Chartinator extends React.Component<IChartinatorProps, {}> {
   /**
@@ -144,7 +175,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
         <ChartControl
           type={chartType}
           ref={this._linkElement}
-          palette={ChartPalette[this.props.chartPalette]}
+          palette={this.props.chartPalette}
           datapromise={this._loadAsyncData()}
           options={options}
         />
@@ -169,11 +200,76 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
 
     const { data } = this.props;
 
+    // Check if we received data
     if (data !== undefined && data.length > 0 && data[0].name !== '') {
+      // Yes, load the manual data
       return this._loadManualData();
     } else {
+      // If the data source is configured, get the data from the list
+      if (this.props.dataSourceListId && this.props.dataLabelField && this.props.dataValueField) {
+        return this._loadListData();
+      }
+
+      //No data from a list, no manual data. Load sample data
       return this._loadSampleData();
     }
+  }
+
+  private _loadListData = (): Promise<Chart.ChartData> => {
+    const { chartType } = this.props;
+    return new Promise<Chart.ChartData>((resolve, reject) => {
+
+      const service: IListService = new ListService(this.props.context);
+      return service.getListItems(this.props.dataSourceListId,
+        this.props.dataLabelField,
+        this.props.dataValueField,
+        this.props.dataYValueField,
+        this.props.dataRValueField,
+      ).then((listItems: IListItem[]) => {
+
+        let dataItems = [];
+        if (chartType === ChartType.Bubble) {
+          dataItems = listItems.map((listItem: IListItem) => {
+            const dataItem: Chart.ChartPoint = {
+              x: listItem.Value,
+              y: listItem.YValue,
+              r: listItem.RValue
+            };
+            return dataItem;
+          });
+        } else if (chartType === ChartType.Scatter) {
+          dataItems = listItems.map((listItem: IListItem) => {
+            const dataItem: Chart.ChartPoint = {
+              x: listItem.Value,
+              y: listItem.YValue
+            };
+            return dataItem;
+          });
+        } else {
+          dataItems = listItems.map((listItem: IListItem) => {
+            return listItem.Value;
+          });
+        }
+
+        const data: Chart.ChartData =
+        {
+          labels: listItems.map((listItem: IListItem) => {
+            return listItem.Label;
+          }),
+          datasets: [
+            {
+              label: this.props.dataSetName,
+              data: dataItems
+            }
+          ]
+        };
+
+        // Line fill
+        this._addDataOptions(data);
+        resolve(data);
+
+      });
+    });
   }
 
   private _loadSampleData = (): Promise<Chart.ChartData> => {
@@ -256,10 +352,6 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
           ]
         };
 
-        // // Line fill
-        // if (this.props.lineFill && this.props.chartType === 'line') {
-        //   data.datasets[0].fill = this.props.lineFill;
-        // }
         this._addDataOptions(data);
 
         resolve(data);
@@ -271,7 +363,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
     return new Promise<Chart.ChartData>((resolve, reject) => {
       // we're using a mock service that returns random numbers.
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
-      dataProvider.getMultiBubbleArrays(1, DATA_COUNT).then((dataSet: Array<IBubblePoint[]>) => {
+      dataProvider.getMultiBubbleArrays(1, DATA_COUNT).then((dataSet: Array<Chart.ChartPoint[]>) => {
         const data: Chart.ChartData =
         {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -313,31 +405,52 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
 
   private _addDataOptions = (data: Chart.ChartData): void => {
     const { chartType } = this.props;
+    const primaryDataSet: Chart.ChartDataSets = data.datasets[0];
 
+    if (primaryDataSet === undefined) {
+      return;
+    }
 
     if (chartType === ChartType.Line) {
-      data.datasets[0].showLine = this.props.lineShowLine === true;
-      data.datasets[0].steppedLine = this.props.lineStepped;
+      primaryDataSet.showLine = this.props.lineShowLine === true;
+      primaryDataSet.steppedLine = this.props.lineStepped;
+      primaryDataSet.borderWidth = this.props.borderWidth;
+
+      if (this.props.borderColor !== undefined) {
+        primaryDataSet.borderColor = this.props.borderColor;
+      }
+
+      if (this.props.borderDash !== undefined) {
+        primaryDataSet.borderDash = DashStrokes[this.props.borderDash];
+      }
+
+      if (this.props.borderJoinStyle !== undefined) {
+        primaryDataSet.borderJoinStyle = this.props.borderJoinStyle;
+      }
+
+      if (this.props.borderCapStyle !== undefined) {
+        primaryDataSet.borderCapStyle = this.props.borderCapStyle;
+      }
 
       if (!this.props.lineCurved) {
-        data.datasets[0].lineTension = 0;
+        primaryDataSet.lineTension = 0;
       }
 
       // Line fill
       if (this.props.lineFill && chartType === ChartType.Line) {
-        data.datasets[0].fill = this.props.lineFill;
+        primaryDataSet.fill = this.props.lineFill;
       }
     }
 
     if (chartType === ChartType.Line || chartType === ChartType.Scatter) {
-      data.datasets[0].pointRadius = this.props.pointRadius;
+      primaryDataSet.pointRadius = this.props.pointRadius;
     }
 
     if (chartType === ChartType.Line || chartType === ChartType.Scatter || chartType === ChartType.Bubble) {
-      data.datasets[0].pointStyle = this.props.pointStyle;
+      primaryDataSet.pointStyle = this.props.pointStyle;
 
       // chart.js seems to not declare a point rotation, but it is a valid property
-      data.datasets[0]["pointRotation"] = this.props.pointRotation;
+      primaryDataSet["pointRotation"] = this.props.pointRotation;
     }
   }
 }

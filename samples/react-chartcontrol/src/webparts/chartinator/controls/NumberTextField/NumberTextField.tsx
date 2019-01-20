@@ -1,18 +1,11 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import * as strings from 'ChartinatorWebPartStrings';
+import { INumberTextFieldProps, INumberTextFieldState } from './NumberTextField.types';
 
-export interface INumberTextFieldProps {
-  label: string;
-  value: number;
-  placeholder: string;
-  onChanged: (newValue: string) => void;
-}
-
-export interface INumberTextFieldState {
-  value: string;
-}
-
+/**
+ * Textbox for only signed numbers
+ */
 export class NumberTextField extends React.Component<INumberTextFieldProps, INumberTextFieldState> {
   constructor(props: INumberTextFieldProps) {
     super(props);
@@ -22,26 +15,33 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
     };
   }
 
+  /**
+   * Renders the textobx
+   */
   public render(): JSX.Element {
     return (
-      <div className="NumberTextField">
-        <TextField
-          className="NumberTextField-textField"
-          label={this.props.label}
-          value={this.state.value}
-          placeholder={this.props.placeholder}
-          onChanged={(newValue:string)=>this._onChanged(newValue)}
-          onGetErrorMessage={(value: string)=>this._validateNumber(value)}
-        />
-      </div>
+      <TextField
+        label={this.props.label}
+        value={this.state.value}
+        placeholder={this.props.placeholder}
+        onChanged={(newValue: string) => this._handleChange(newValue)}
+        onGetErrorMessage={(value: string) => this._validateNumber(value)}
+      />
     );
   }
 
+  /**
+   * Validates a number as it is typed in
+   * @param value the value
+   */
   private _validateNumber(value: string): string {
     return isNaN(Number(value)) ? strings.NumberErrorMessage : '';
   }
 
-  private _onChanged(newValue: string): void {
+  /**
+   * Handles changes in the textbox
+   */
+  private _handleChange(newValue: string): void {
     this.setState({
       value: newValue
     });

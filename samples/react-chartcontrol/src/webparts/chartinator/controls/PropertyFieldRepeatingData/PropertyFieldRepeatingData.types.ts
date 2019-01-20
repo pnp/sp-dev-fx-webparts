@@ -1,37 +1,44 @@
 import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
 
-export interface IPropertyFieldRepeatingDataProps {
-  /**
- * An UNIQUE key indicates the identity of this control
+/**
+ * Configuration properties for the PropertyFieldRepeatingData control
  */
-  key: string;
-  chartType: string;
+export interface IPropertyFieldRepeatingDataProps {
+  chartType: ChartType;
   data: {}[];
+  key: string;
   onDataChanged: (any) => void;
 }
 
+/**
+ * State for the PropertyFieldRepeatingData cotnrol
+ */
 export interface IPropertyFieldRepeatingDataState {
   data: {}[];
 }
 
+/**
+ * Properties for the PropertyFieldRepeatingDataHost
+ */
 export interface IPropertyFieldRepeatingDataHostProps {
-  chartType: string;
+  chartType: ChartType;
   data: {}[];
   onDataChanged: (any) => void;
 }
 
-export interface IPropertyFieldRepeatingDataPropsInternal extends IPropertyPaneCustomFieldProps {
-  chartType: string;
-  data: {}[];
-  onDataChanged: (any) => void;
-}
-
+/**
+ * Contains points for number charts
+ */
 export interface INumberChartData {
   id: string;
   name: string;
   value: number;
 }
 
+/**
+ * Contains points for bubble chart
+ */
 export interface IBubbleChartData {
   id: string;
   name: string;
@@ -40,6 +47,9 @@ export interface IBubbleChartData {
   r: number;
 }
 
+/**
+ * Contains points for scatter charts
+ */
 export interface IScatterChartData {
   id: string;
   name: string;
