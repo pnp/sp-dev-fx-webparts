@@ -1,6 +1,7 @@
 import { INumberChartData, IBubbleChartData, IScatterChartData } from './controls/PropertyFieldRepeatingData';
 import { ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
 import { DashType } from './controls/PropertyPaneDashSelector/components/DashSelector.types';
+import { DataSourceType, EasingType, CapType, JoinType } from './components/Chartinator.types';
 
 /**
  * There are a LOT of options to store with this web part.
@@ -11,11 +12,11 @@ export interface IChartinatorWebPartProps {
   animateRotate: boolean;
   animateScale: boolean;
   animationDuration: number;
-  animationEasing: string;
-  borderCapStyle: 'butt' | 'round' | 'square';
+  animationEasing: EasingType;
+  borderCapStyle: CapType;
   borderColor: string;
   borderDash: DashType;
-  borderJoinStyle: 'bevel' | 'round' | 'miter';
+  borderJoinStyle: JoinType;
   borderWidth: number;
   bottomPadding: number;
   chartPalette: ChartPalette;
@@ -32,7 +33,7 @@ export interface IChartinatorWebPartProps {
   dataValueField: string;
   dataYValueField: string;
   leftPadding: number;
-  legendPosition: string;
+  legendPosition: Chart.PositionType | 'none';
   legendReversed: boolean;
   lineCurved: boolean;
   lineFill: string;
@@ -46,11 +47,12 @@ export interface IChartinatorWebPartProps {
   title: string;
   tooltipEnabled: boolean;
   tooltipIntersect: boolean;
-  tooltipMode: string;
+  tooltipMode: Chart.InteractionMode;
   tooltipPosition: string;
   topPadding: number;
   xAxisLabelEnabled: boolean;
   xAxisLabelText: string;
+  xAxisShowGridlines: boolean;
   yAxisBeginAtZero: boolean;
   yAxisLabelEnabled: boolean;
   yAxisLabelText: string;
@@ -58,9 +60,5 @@ export interface IChartinatorWebPartProps {
   yAxisMaxTicksLimit: number;
   yAxisMin: number;
   yAxisStepSize: number;
-}
-
-export enum DataSourceType {
-  Static,
-  List
+  yAxisShowGridlines: boolean;
 }

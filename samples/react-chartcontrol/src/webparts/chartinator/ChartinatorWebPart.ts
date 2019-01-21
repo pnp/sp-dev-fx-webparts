@@ -17,7 +17,8 @@ import {
   PropertyPaneSlider,
   IPropertyPaneGroup,
   PropertyPaneButton,
-  IPropertyPaneDropdownOption
+  IPropertyPaneDropdownOption,
+  PropertyPaneHorizontalRule
 } from '@microsoft/sp-webpart-base';
 
 // Needed to create drop down choices
@@ -34,26 +35,26 @@ import { PropertyFieldSpinButton } from '@pnp/spfx-property-controls/lib/Propert
 import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
+import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
 
 // Component that actually renders the web part content
 import Chartinator from './components/Chartinator';
-import { IChartinatorProps } from './components/Chartinator.types';
+import { IChartinatorProps, DataSourceType } from './components/Chartinator.types';
 
 // Needed to generate unique data row ids
 import { Guid } from '@microsoft/sp-core-library';
 
 // Custom property field
 import { PropertyFieldRepeatingData } from './controls/PropertyFieldRepeatingData';
-import { PropertyPaneChartPaletteSelector, IPropertyPaneChartPaletteSelectorProps } from './controls/PropertyPaneChartPaletteSelector';
-import { PropertyPaneDashSelector, IPropertyPaneDashSelectorProps } from './controls/PropertyPaneDashSelector';
-import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
+import { PropertyPaneChartPaletteSelector } from './controls/PropertyPaneChartPaletteSelector';
+import { PropertyPaneDashSelector } from './controls/PropertyPaneDashSelector';
 
 // Properties for this web part
 // I prefer to keep the web part props as a
 // separate file -- keeps things cleaner
 // (in my mind, at least)
 import {
-  IChartinatorWebPartProps, DataSourceType,
+  IChartinatorWebPartProps,
 } from './ChartinatorWebPart.types';
 
 // Needed for localization and other resource-types
@@ -81,8 +82,8 @@ const DEFAULT_CHARTROTATION: number = -180;
 const DEFAULT_POINTRADIUS = 3;
 
 export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinatorWebPartProps> {
-  private _fieldChoices: IPropertyPaneDropdownOption[];
   private _fields: IListField[];
+
   /**
    * Draws the chartinator
    */
@@ -320,6 +321,19 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
         this.properties.borderCapStyle = 'butt';
       }
 
+      // We like to show gridlines by default
+      if (this.properties.xAxisShowGridlines === undefined) {
+        this.properties.xAxisShowGridlines = true;
+      }
+
+      if (this.properties.yAxisShowGridlines === undefined) {
+        this.properties.yAxisShowGridlines = true;
+      }
+
+      if (this.properties.yAxisBeginAtZero === undefined) {
+        this.properties.yAxisBeginAtZero = true;
+      }
+
       resolve(undefined);
     });
   }
@@ -537,6 +551,12 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           disabled: xAxisLabelEnabled !== true,
           label: strings.AxisLabelText,
         }),
+        PropertyPaneHorizontalRule(),
+        PropertyPaneToggle('xAxisShowGridlines', {
+          label: strings.ShowGridlinesFieldLabel,
+          offText: strings.Hide,
+          onText: strings.Show
+        }),
       ]
     };
   }
@@ -572,6 +592,13 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           disabled: yAxisLabelEnabled !== true,
           label: strings.AxisLabelText,
         }),
+        PropertyPaneHorizontalRule(),
+        PropertyPaneToggle('yAxisShowGridlines', {
+          label: strings.ShowGridlinesFieldLabel,
+          offText: strings.Hide,
+          onText: strings.Show
+        }),
+        PropertyPaneHorizontalRule(),
         PropertyPaneToggle('yAxisBeginAtZero', {
           disabled: radialChart,
           label: strings.YAxisBeginAtZero,
@@ -625,7 +652,7 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           disabled: false,
           selectedKey: chartPalette,
           options: this._getPaletteOptions(),
-          onPropertyChange: (propertyPath: string, newValue: any) => this._propertyChangeHandler(propertyPath, newValue),
+          onPropertyChange: (propertyPath: string, newValue: any) => this._handlePropertyChange(propertyPath, newValue),
         }),
       ]
     };
@@ -668,6 +695,10 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
     return {
       groupName: strings.DataGroupName,
       groupFields: [
+        PropertyPaneTextField('dataSetName', {
+          label: strings.DataSetFieldName,
+        }),
+        PropertyPaneHorizontalRule(),
         PropertyPaneChoiceGroup('dataSourceType', {
           options: [
             {
@@ -680,17 +711,13 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
             }
           ]
         }),
-        PropertyPaneTextField('dataSetName', {
-          label: strings.DataSetFieldName,
-        }),
-        dataSourceType === 0 && PropertyFieldRepeatingData({
+        dataSourceType === DataSourceType.Static && PropertyFieldRepeatingData({
           key: 'repeatingData',
           data: this.properties.data,
           chartType: chartType,
-
-          onDataChanged: (data: any) => this._dataChangedHandler(data)
+          onDataChanged: (data: any) => this._handleChangeData(data)
         }),
-        dataSourceType === 1 && PropertyFieldListPicker('dataSourceListId', {
+        dataSourceType === DataSourceType.List && PropertyFieldListPicker('dataSourceListId', {
           label: strings.DataSourcListIdFieldLabel,
           selectedList: this.properties.dataSourceListId,
           includeHidden: false,
@@ -703,26 +730,22 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
           deferredValidationTime: 0,
           key: 'dataSourceListId'
         }),
-        dataSourceType === 1 && PropertyPaneDropdown('dataValueField', {
+        dataSourceType === DataSourceType.List && PropertyPaneDropdown('dataValueField', {
           options: this._getDataFields(),
           label: hasX ? strings.DataSourceDataXValueFieldLabel : strings.DataSourceDataValueFieldLabel,
-selectedKey: this.properties.dataValueField
+          selectedKey: this.properties.dataValueField
         }),
-        // dataSourceType === 1 && hasX && PropertyPaneDropdown('dataValueField', {
-        //   options: this._getDataFields(),
-        //   label:
-        // }),
-        dataSourceType === 1 && hasY && PropertyPaneDropdown('dataYValueField', {
+        dataSourceType === DataSourceType.List && hasY && PropertyPaneDropdown('dataYValueField', {
           options: this._getDataFields(),
           label: strings.DataSourceDataYValueFieldLabel,
           selectedKey: this.properties.dataYValueField
         }),
-        dataSourceType === 1 && hasR && PropertyPaneDropdown('dataRValueField', {
+        dataSourceType === DataSourceType.List && hasR && PropertyPaneDropdown('dataRValueField', {
           options: this._getDataFields(),
           label: strings.DataSourceDataRValueFieldLabel,
           selectedKey: this.properties.dataRValueField
         }),
-        dataSourceType === 1 && PropertyPaneDropdown('dataLabelField', {
+        dataSourceType === DataSourceType.List && PropertyPaneDropdown('dataLabelField', {
           options: this._getLabelFields(),
           label: strings.DataSourceDataLabelFieldLabel,
           selectedKey: this.properties.dataLabelField
@@ -807,7 +830,7 @@ selectedKey: this.properties.dataValueField
           disabled: false,
           selectedKey: this.properties.borderDash,
           options: this._getDashOptions(),
-          onPropertyChange: (propertyPath: string, newValue: any) => this._propertyChangeHandler(propertyPath, newValue)
+          onPropertyChange: (propertyPath: string, newValue: any) => this._handlePropertyChange(propertyPath, newValue)
         }),
         PropertyPaneDropdown('borderCapStyle', {
           label: strings.LineCapStyleFieldLabel,
@@ -845,6 +868,7 @@ selectedKey: this.properties.dataValueField
             }
           ]
         }),
+        PropertyPaneHorizontalRule(),
         PropertyPaneChoiceGroup('lineFill', {
           label: strings.FillFieldLabel,
           options: [
@@ -879,6 +903,9 @@ selectedKey: this.properties.dataValueField
     };
   }
 
+  /**
+   * Renders the point configuration propety group
+   */
   private _renderPointSettingsPropertyGroup = (): IPropertyPaneGroup => {
     return {
       groupName: strings.PointSettingsGroup,
@@ -957,7 +984,7 @@ selectedKey: this.properties.dataValueField
           min: 0,
           step: 1,
           decimalPlaces: 0,
-          onPropertyChange: (propertyPath: string, newValue: any) => this._propertyChangeHandler(propertyPath, newValue),
+          onPropertyChange: (propertyPath: string, newValue: any) => this._handlePropertyChange(propertyPath, newValue),
         }),
         PropertyPaneSlider('pointRotation', {
           label: strings.PointRotationFieldLabel,
@@ -971,6 +998,10 @@ selectedKey: this.properties.dataValueField
     };
   }
 
+  /**
+   * Render property groups for donuts, pie, or polar charts.
+   * You know... the round ones.
+   */
   private _renderDonutPiePolarSettingsPropertyGroup = (): IPropertyPaneGroup => {
 
     const isDonut: boolean = this.properties.chartType === ChartType.Doughnut;
@@ -1034,6 +1065,9 @@ selectedKey: this.properties.dataValueField
     };
   }
 
+  /**
+   * Renders settings for bar charts (and vertical ones too)
+   */
   private _renderBarSettingsPropertyGroup = (): IPropertyPaneGroup => {
     return {
       groupName: strings.BarSettingsGroupName,
@@ -1372,7 +1406,12 @@ selectedKey: this.properties.dataValueField
     return paletteOptions;
   }
 
+  /**
+   * Returns the list of dash styles
+   */
   private _getDashOptions = (): IDropdownOption[] => {
+    // Enums often return two copies of each value: one by numerical value, and one by text.
+    // we use the number enums so that we only get one instance of each type
     const names = Object.keys(DashType)
       .filter(k => typeof DashType[k] === "number") as string[];
 
@@ -1392,22 +1431,29 @@ selectedKey: this.properties.dataValueField
     return dashOptions;
   }
 
+  /**
+   * Gets the list of fields
+   */
   private _getFields(): Promise<IListField[]> {
-
     // No list selected
     if (!this.properties.dataSourceListId) {
       return Promise.resolve();
     }
 
+    // Call the list service
     const service: IListService = new ListService(this.context);
     return service.getFields(this.properties.dataSourceListId);
   }
 
-
+  /**
+   * Get the list of fields that can be used for labels
+   */
   private _getLabelFields(): IPropertyPaneDropdownOption[] {
     if (this._fields === undefined) {
       return undefined;
     }
+
+    // Fields that contain text or date can be used as labels
     const labelFields = this._fields!.filter(f => f.TypeAsString === 'Text' || f.TypeAsString === 'DateTime').map(field => {
       return {
         key: field.InternalName,
@@ -1417,11 +1463,14 @@ selectedKey: this.properties.dataValueField
     return labelFields;
   }
 
+  /**
+   * Returns the list of fields that can be used for data
+   */
   private _getDataFields(): IPropertyPaneDropdownOption[] {
     if (this._fields === undefined) {
       return undefined;
     }
-    const dataFields =  this._fields!.filter(f => f.TypeAsString === 'Number' || f.TypeAsString === 'Currency').map(field => {
+    const dataFields = this._fields!.filter(f => f.TypeAsString === 'Number' || f.TypeAsString === 'Currency').map(field => {
       return {
         key: field.InternalName,
         text: `${field.Title}`,
@@ -1436,6 +1485,8 @@ selectedKey: this.properties.dataValueField
   private _getChartChoices = (): IPropertyPaneChoiceGroupOption[] => {
 
     const names = Object.keys(ChartType) as string[];
+
+    // Make sure we retrieve chart types that have a string resource for them.
     const chartOptions: IPropertyPaneChoiceGroupOption[] = names.filter(type => strings.ChartTypeName[type] !== undefined).map((chartTypeName: string) => {
 
       const choice: IPropertyPaneChoiceGroupOption = {
@@ -1493,7 +1544,7 @@ selectedKey: this.properties.dataValueField
    * Notified when data is changed.
    * Forces chart to re-render
    */
-  private _dataChangedHandler = (data: any) => {
+  private _handleChangeData = (data: any) => {
     this.properties.data = data;
     this.render();
   }
@@ -1502,7 +1553,7 @@ selectedKey: this.properties.dataValueField
    * Notified when a property is changed.
    * Forces chart to re-render.
    */
-  private _propertyChangeHandler(propertyPath: string, newValue: any): void {
+  private _handlePropertyChange(propertyPath: string, newValue: any): void {
     this.properties[propertyPath] = newValue;
 
     this.render();

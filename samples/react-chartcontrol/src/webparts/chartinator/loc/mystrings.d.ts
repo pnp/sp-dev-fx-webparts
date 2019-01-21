@@ -160,8 +160,10 @@ declare interface IChartinatorWebPartStrings {
   ResetDonutPieSettingsButtonLabel: string;
   Right: string;
   RightPaddingFieldLabel: string;
+  SampleLabels: string[];
   ScatterChartType: string;
   Show: string;
+  ShowGridlinesFieldLabel: string;
   StaticDataSource: string;
   TooltipGroupDescription: string;
   TooltipModeDataset: string;

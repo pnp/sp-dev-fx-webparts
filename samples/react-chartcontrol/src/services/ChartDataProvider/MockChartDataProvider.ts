@@ -72,8 +72,8 @@ export default class MockChartDataProvider implements IChartDataProvider {
    * Gets an array of points to render on a chart requiring X, Y coordinates
    * @param length Length of the dataset to generate
    */
-  public getPointArray(length: number): Promise<{}[]> {
-    return new Promise<{}[]>((resolve) => {
+  public getPointArray(length: number): Promise<Chart.ChartPoint[]> {
+    return new Promise<Chart.ChartPoint[]>((resolve) => {
       // pretend we're getting the data from a service
       setTimeout(() => {
         let numArray: Chart.ChartPoint[] = [];
@@ -94,8 +94,8 @@ export default class MockChartDataProvider implements IChartDataProvider {
    * Gets an array of points for a scatter chart
    * @param length Length of the dataset to generate
    */
-  public getScatterArray(length: number): Promise<{}[]> {
-    return new Promise<{}[]>((resolve) => {
+  public getScatterArray(length: number): Promise<Chart.ChartPoint[]> {
+    return new Promise<Chart.ChartPoint[]>((resolve) => {
       // pretend we're getting the data from a service
       setTimeout(() => {
         let numArray: Chart.ChartPoint[] = [];

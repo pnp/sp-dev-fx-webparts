@@ -11,37 +11,8 @@ import { IBubbleChartData, IScatterChartData, INumberChartData } from '../contro
 import { ChartTitle } from '../controls/ChartTitle';
 import { DashStrokes } from '../controls/PropertyPaneDashSelector/components/DashSelector.types';
 
-// Patternomaly is used to render patterns
-import * as pattern from 'patternomaly';
-import { IListService, ListService, IListItem } from '../../../services/ListService';
-
-const DATA_COUNT: number = 7;
-
-const colors: string[] = PaletteGenerator.GetPalette(ChartPalette.OfficeColorful1, DATA_COUNT);
-
-const patterns: CanvasPattern[] = [
-  pattern.draw('plus', colors[0]),
-  pattern.draw('cross', colors[1]),
-  pattern.draw('dash', colors[2]),
-  pattern.draw('cross-dash', colors[3]),
-  pattern.draw('dot', colors[4]),
-  pattern.draw('dot-dash', colors[5]),
-  pattern.draw('disc', colors[6]),
-  pattern.draw('ring', colors[7]),
-  pattern.draw('line', colors[8]),
-  pattern.draw('line-vertical', colors[9]),
-  pattern.draw('weave', colors[10]),
-  pattern.draw('zigzag', colors[11]),
-  pattern.draw('zigzag-vertical', colors[12]),
-  pattern.draw('diagonal', colors[13]),
-  pattern.draw('diagonal-right-left', colors[14]),
-  pattern.draw('square', colors[15]),
-  pattern.draw('box', colors[16]),
-  pattern.draw('triangle', colors[17]),
-  pattern.draw('triangle-inverted', colors[18]),
-  pattern.draw('diamond', colors[19]),
-  pattern.draw('diamond-box', colors[20])
-];
+// List methods to retrieve data
+import { IListService, ListService, IListItem, MockListService } from '../../../services/ListService';
 
 export default class Chartinator extends React.Component<IChartinatorProps, {}> {
   /**
@@ -60,11 +31,19 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
     }
   }
 
+  /**
+   * Render the chart
+   */
   public render(): React.ReactElement<IChartinatorProps> {
     const { chartType } = this.props;
     const { radialChart } = this.props;
+
+    // Scales should not be defined for radial charts.
     const chartScales: Chart.ChartScales = radialChart ? undefined : {
       yAxes: [{
+        gridLines: {
+          display: this.props.yAxisShowGridlines
+        },
         ticks: {
           beginAtZero: this.props.yAxisBeginAtZero,
         },
@@ -74,6 +53,10 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
         }
       }],
       xAxes: [{
+        gridLines: {
+          display: this.props.xAxisShowGridlines
+
+        },
         scaleLabel: {
           display: this.props.xAxisLabelEnabled,
           labelString: this.props.xAxisLabelText,
@@ -81,15 +64,13 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
       }]
     };
 
+    // This option only applies to bar and horizontal bards
     if (chartType === ChartType.Bar) {
-      chartScales.xAxes[0].gridLines = {
-        offsetGridLines: this.props.offsetGridLines
-      };
+      chartScales.xAxes[0].gridLines.offsetGridLines = this.props.offsetGridLines;
     } else if (chartType === ChartType.HorizontalBar) {
-      chartScales.yAxes[0].gridLines = {
-        offsetGridLines: this.props.offsetGridLines
-      };
+      chartScales.yAxes[0].gridLines.offsetGridLines = this.props.offsetGridLines;
     }
+
     // some of these settings should only be defined if there are values
 
     // set the minimum Y axis -- if available
@@ -154,6 +135,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
       options.circumference = (this.props.circumference / 100) * 2 * Math.PI;
     }
 
+    // Only apply rotation to pie, doughnuts and polar area
     if (chartType === ChartType.Doughnut || chartType === ChartType.Pie || chartType === ChartType.PolarArea) {
       options.rotation = (this.props.chartRotation / 360) * Math.PI;
 
@@ -187,8 +169,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
  * Links a reference to the chart so that we can
  * refer to it later and change its data
  */
-  //  tslint:disable-next-line no-any
-  private _linkElement = (e: any) => {
+  private _linkElement = (e: ChartControl) => {
     this._chartElem = e;
   }
 
@@ -205,21 +186,27 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
       // Yes, load the manual data
       return this._loadManualData();
     } else {
-      // If the data source is configured, get the data from the list
-      if (this.props.dataSourceListId && this.props.dataLabelField && this.props.dataValueField) {
-        return this._loadListData();
-      }
-
-      //No data from a list, no manual data. Load sample data
-      return this._loadSampleData();
+      return this._loadListData();
     }
   }
 
+  /**
+   * Loads data from a list or, if no data is provided,
+   * from a mock list.
+   */
   private _loadListData = (): Promise<Chart.ChartData> => {
     const { chartType } = this.props;
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+    return new Promise<Chart.ChartData>((resolve, _reject) => {
+      let service: IListService;
 
-      const service: IListService = new ListService(this.props.context);
+      // If the data source is configured, get the data from the list
+      if (this.props.dataSourceListId && this.props.dataLabelField && this.props.dataValueField) {
+        service = new ListService(this.props.context);
+      } else {
+        // no data provided, and no data source. Load bogus data
+        service = new MockListService(chartType, strings.SampleLabels);
+      }
+
       return service.getListItems(this.props.dataSourceListId,
         this.props.dataLabelField,
         this.props.dataValueField,
@@ -267,27 +254,13 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
         // Line fill
         this._addDataOptions(data);
         resolve(data);
-
       });
     });
   }
 
-  private _loadSampleData = (): Promise<Chart.ChartData> => {
-    const { chartType } = this.props;
-    if (chartType === ChartType.Bubble) {
-      return this._getSampleBubbleData();
-    }
-
-    if (chartType === ChartType.Scatter) {
-      return this._getSampleScatterData();
-    }
-
-    return this._getSampleArrayData();
-  }
-
   private _loadManualData = (): Promise<Chart.ChartData> => {
     const { chartType } = this.props;
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+    return new Promise<Chart.ChartData>((resolve, _reject) => {
       const labels: string[] = this.props.data.map(dataRow => {
         return dataRow.name;
       });
@@ -327,79 +300,9 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
         ]
       };
 
-      // // Line fill
-      // if (this.props.lineFill && this.props.chartType === 'line') {
-      //   data.datasets[0].fill = this.props.lineFill;
-      // }
       this._addDataOptions(data);
 
       resolve(data);
-    });
-  }
-
-  private _getSampleArrayData = (): Promise<Chart.ChartData> => {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
-      // we're using a mock service that returns random numbers.
-      const dataProvider: IChartDataProvider = new MockChartDataProvider();
-      dataProvider.getNumberArray(DATA_COUNT, 500).then((dataSet: number[]) => {
-        const data: Chart.ChartData =
-        {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-            {
-              data: dataSet,
-            }
-          ]
-        };
-
-        this._addDataOptions(data);
-
-        resolve(data);
-      });
-    });
-  }
-
-  private _getSampleBubbleData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
-      // we're using a mock service that returns random numbers.
-      const dataProvider: IChartDataProvider = new MockChartDataProvider();
-      dataProvider.getMultiBubbleArrays(1, DATA_COUNT).then((dataSet: Array<Chart.ChartPoint[]>) => {
-        const data: Chart.ChartData =
-        {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-            {
-              data: dataSet[0],
-            }
-          ]
-        };
-
-        this._addDataOptions(data);
-
-        resolve(data);
-      });
-    });
-  }
-
-  private _getSampleScatterData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
-      // we're using a mock service that returns random numbers.
-      const dataProvider: IChartDataProvider = new MockChartDataProvider();
-      dataProvider.getScatterArray(DATA_COUNT).then((dataSet: {}[]) => {
-        const data: Chart.ChartData =
-        {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [
-            {
-              data: dataSet,
-            }
-          ]
-        };
-
-        this._addDataOptions(data);
-
-        resolve(data);
-      });
     });
   }
 

@@ -1,7 +1,6 @@
 import { INumberChartData, IScatterChartData, IBubbleChartData } from "../controls/PropertyFieldRepeatingData";
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
-import { DataSourceType } from "../ChartinatorWebPart.types";
 import { DashType } from "../controls/PropertyPaneDashSelector/components/DashSelector.types";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 
@@ -9,11 +8,11 @@ export interface IChartinatorProps {
   animateRotate: boolean;
   animateScale: boolean;
   animationDuration: number;
-  animationEasing: string;
-  borderCapStyle: 'butt' | 'round' | 'square';
+  animationEasing: EasingType;
+  borderCapStyle: CapType;
   borderColor: string;
   borderDash: DashType;
-  borderJoinStyle: 'bevel' | 'round' | 'miter';
+  borderJoinStyle: JoinType;
   borderWidth: number;
   bottomPadding: number;
   chartPalette: ChartPalette;
@@ -32,7 +31,7 @@ export interface IChartinatorProps {
   dataYValueField: string;
   displayMode: DisplayMode;
   leftPadding: number;
-  legendPosition: string;
+  legendPosition: Chart.PositionType | 'none';
   legendReversed: boolean;
   lineCurved: boolean;
   lineFill: string;
@@ -47,11 +46,12 @@ export interface IChartinatorProps {
   title: string;
   tooltipEnabled: boolean;
   tooltipIntersect: boolean;
-  tooltipMode: string;
+  tooltipMode: Chart.InteractionMode;
   tooltipPosition: string;
   topPadding: number;
   xAxisLabelEnabled: boolean;
   xAxisLabelText: string;
+  xAxisShowGridlines: boolean;
   yAxisBeginAtZero: boolean;
   yAxisLabelEnabled: boolean;
   yAxisLabelText: string;
@@ -59,6 +59,47 @@ export interface IChartinatorProps {
   yAxisMaxTicksLimit: number;
   yAxisMin: number;
   yAxisStepSize: number;
+  yAxisShowGridlines: boolean;
   updateTitle: (value: string) => void;
 }
 
+export enum DataSourceType {
+  Static,
+  List
+}
+
+export type EasingType = 'linear' |
+  'easeInQuad' |
+  'easeOutQuad' |
+  'easeInOutQuad' |
+  'easeInCubic' |
+  'easeOutCubic' |
+  'easeInOutCubic' |
+  'easeInQuart' |
+  'easeOutQuart' |
+  'easeInOutQuart' |
+  'easeInQuint' |
+  'easeOutQuint' |
+  'easeInOutQuint' |
+  'easeInSine' |
+  'easeOutSine' |
+  'easeInOutSine' |
+  'easeInExpo' |
+  'easeOutExpo' |
+  'easeInOutExpo' |
+  'easeInCirc' |
+  'easeOutCirc' |
+  'easeInOutCirc' |
+  'easeInElastic' |
+  'easeOutElastic' |
+  'easeInOutElastic' |
+  'easeInBack' |
+  'easeOutBack' |
+  'easeInOutBack' |
+  'easeInBounce' |
+  'easeOutBounce' |
+  'easeInOutBounce';
+
+  export type CapType = 'butt' | 'round' | 'square';
+
+  export type JoinType = 'bevel' | 'round' | 'miter';

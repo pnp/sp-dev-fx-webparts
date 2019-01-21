@@ -6,7 +6,7 @@ export default interface IChartDataProvider {
   getMultiBubbleArrays(numDatasets: number, length: number): Promise<Array<Chart.ChartPoint[]>>;
   getMultiDataset(numDatasets: number, length: number): Promise<Array<number[]>>;
   getNumberArray(length: number, waitduration?: number): Promise<number[]>;
-  getPointArray(length: number): Promise<{}[]>;
-  getScatterArray(length: number): Promise<{}[]>;
+  getPointArray(length: number): Promise<Chart.ChartPoint[]>;
+  getScatterArray(length: number): Promise<Chart.ChartPoint[]>;
   getSignedNumberArray(length: number): Promise<number[]>;
 }
