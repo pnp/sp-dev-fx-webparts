@@ -1,0 +1,17 @@
+<div class="template_root">
+    <div class="template_rss_list">
+        {{#each items as |item|}}
+            <div class="listItem">
+                <div class="itemTitle">
+                    <a href="{{channel/item/link}}" target="_blank">{{channel/item/title}}</a>
+                </div>
+                <div class="itemDate">
+                    {{getDate channel/item/pubDate "MM/DD/YYYY"}}
+                </div>
+                <div class="itemContent">
+                    {{{getShortText channel/item/description 100 true}}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
