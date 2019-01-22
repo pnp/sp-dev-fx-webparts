@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "907cfe87-fffe-4d9c-8fac-3ea23c3f2c09",
+  "alias": "DonutPatternsDemoWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+
+    "title": { "default": "Donut with Patterns" },
+    "description": { "default": "Demonstrates how to render a donut chart and use patterns instead of colors" },
+    "officeFabricIconFontName": "DonutChart",
+    "properties": {
+      "description": "DonutPatternsDemo"
+    }
+  }]
+}

@@ -1,0 +1,47 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.dynamicDataCallable {
+  color: inherit;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  height: 64px;
+  overflow-y: hidden;
+}
+
+.tooltipTitle {
+  color: inherit;
+}
+
+.tooltipLegend {
+  width: 16px;
+  height: 16px;
+  display: table-cell;
+}
+
+.tooltipValue {
+  display: table-cell;
+}
+
+.tooltipThumb {
+  float: left;
+}
+
+.tooltipContent {
+  margin-left: 64px;
+}
+
+.avatarImg {
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+
+:export {
+  vesaChromaticStart: #ffa500;
+  vesaChromaticEnd: #fff6e5;
+  borderColor: #fff;
+}
+

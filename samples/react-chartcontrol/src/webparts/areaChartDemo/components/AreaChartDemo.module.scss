@@ -1,0 +1,10 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.areaChartDemo {
+  color:inherit;
+}
+
+:export {
+  backgroundColor: rgba(255, 99, 132, 0.2);
+  borderColor: rgba(255,99,132,1);
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "8459e5ba-c215-4887-a23b-563af4733ddc",
+  "alias": "BarChartStaticWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Bar Chart - Static Data" },
+    "description": { "default": "Shows the easiest way to display static data." },
+    "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAcCAYAAAATFf3WAAABG2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+Gkqr6gAAAYFpQ0NQc1JHQiBJRUM2MTk2Ni0yLjEAACiRdZG/S0JRFMc/aqGUYVBDUIOENWlYQdTSoJQF1aAGWS368keg9nhPCWkNWoWCqKVfQ/0FtQbNQVAUQTQ0NRe1lLzOy8CIPJdzz+d+7z2He88FazSr5PQGP+TyBS0cCrjnYvNu+xNOHFjpxB5XdHU6Mh6lrr3fYjHjtc+sVf/cv9a8lNQVsDiERxVVKwhPCE+tFlSTt4TblUx8SfhE2KvJBYVvTD1R5WeT01X+NFmLhoNgbRV2p39x4hcrGS0nLC/Hk8sWlZ/7mC9xJvOzEYnd4l3ohAkRwM0kYwQZop8RmYfwMUCfrKiT7//On2FFchWZVUpoLJMmQwGvqEWpnpSYEj0pI0vJ7P/fvuqpwYFqdWcAGh8N47UH7JtQKRvGx4FhVA7B9gDn+Vr+yj4Mv4lermmePXCtw+lFTUtsw9kGdNyrcS3+LdnErakUvBxDSwzarqBpodqzn32O7iC6Jl91CTu70CvnXYtfBnVnugxnM5UAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAGoSURBVFiFzZY/bsIwFId/pj1AxVgppBITqlTWKoOdDpSBSyC2DohWIorY4CQ5BXsSJEaUTKw5Qm/gDhDEHyfYxHH5JCvRs579ybFfDNw5D4LYE4D3/fuvQRdpXAAcwPx/NXY81jj2EMDLWSzcN2nqFmSCeKgySEOHyRU+APzcmlznCuaEVZJlVjDE7tAct3mVSVVQ+cQRgLQukSJUBF0A3zV5FFJ1Dw6hoZSUoUOwcikpQ1eZqVRKytBVZkJN41xgolBXwqjgYrF4zd89z+OUUk4p5Z7n8aIco4KO49gA4Ps+t20bcRyTOI5Jq9WC7/tCSRO/ugOdTscCgPV6jdVqRfL4eDwmlFKhoLEV7Ha74JxzAGg0LqclhFzEAEOCs9msnaYpsSzrWTXXiGCv13sDgCAIOGOMJ0kCxhg/bnksCIKTT62yBwtP2rW+zWYDAJMsyxBFEQAcnsdEUQTXdU9iMoKJIJap9DWbzbbEPEJkBMtuMFJ9o9FIWuicMkEXmi6my+XyczAYOLfklgkyiG8qymy325tzRYIJdrcTbfT7/a/pdKpzyPvhD3sccj6XxnsRAAAAAElFTkSuQmCC",
+    "properties": {
+      "description": "BarChartStatic"
+    }
+  }]
+}
