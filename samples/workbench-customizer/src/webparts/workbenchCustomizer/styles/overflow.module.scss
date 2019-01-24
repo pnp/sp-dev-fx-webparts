@@ -1,0 +1,10 @@
+:global #workbenchPageContent {
+    &>div {
+        &>div {
+            overflow: visible;
+            &>div {
+                overflow: visible;
+            }
+        }
+    }
+}

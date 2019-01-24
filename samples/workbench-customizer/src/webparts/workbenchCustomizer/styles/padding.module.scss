@@ -1,0 +1,16 @@
+:global #workbenchPageContent {
+    &>div {
+        &>div {
+            &>div {
+                padding: 0;
+                .CanvasComponent {
+                    .CanvasZoneContainer {
+                        .CanvasZone {
+                            padding-left: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
