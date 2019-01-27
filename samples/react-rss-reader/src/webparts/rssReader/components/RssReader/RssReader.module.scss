@@ -1,0 +1,86 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.rssReader {
+  .rssReaderHeader {
+    position: relative;
+
+    .rssReaderListViewAll {
+      position: absolute;
+      top: 7px;
+      right: 0px;
+
+      padding: 0px;
+
+      A {
+        color: $ms-color-themePrimary;
+      }
+    }
+  }
+
+  .rssReaderList {
+    width: 100%;
+    list-style: none outside none;
+    border: 0px solid $ms-color-neutralLighterAlt;
+    padding: 0px;
+    color: $ms-color-black;
+
+    &.rssReaderListPadding {
+      padding: 10px;
+      width: auto;
+    }
+  }
+
+  :global {
+    .ms-List-cell {
+      display: block;
+      border-bottom:1px solid $ms-color-neutralLighterAlt;
+      padding: 5px 0px;
+
+      &:last-child{
+        border-bottom:none;
+      }
+    }
+  }
+  .rssReaderListItem {
+    display: block;
+  }
+
+  .itemTitle {
+
+    A {
+      color: $ms-color-themePrimary;
+      text-decoration:none;
+
+      &:hover {
+        text-decoration:underline;
+      }
+    }
+  }
+
+  .itemDate {
+    font-size:11px;
+    color:$ms-color-neutralDark;
+  }
+
+  .itemContent {
+    display: block;
+    margin: 1em 0;
+  }
+
+  .messageError {
+    text-align: center;
+  }
+  .messageErrorIcon {
+    font-size: 14px;
+    vertical-align: middle;
+    color: $ms-color-themeDark;
+  }
+  .messageErrorLabel {
+    font-size: 14px;
+    display: inline-block;
+    padding: 0px 0px 0px 10px;
+    overflow: hidden;
+    vertical-align: middle;
+    color: $ms-color-themeDark;
+  }
+}

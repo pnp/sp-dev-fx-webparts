@@ -1,0 +1,108 @@
+.templateRoot{
+  display: initial;
+}
+
+:global {
+  .template_root {
+    /*include fabric here to surpress warnings*/
+    @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/FabricCore.scss';
+
+    @import '~office-ui-fabric/dist/sass/Fabric.scss';
+    @import '~office-ui-fabric/dist/components/Label/Label.scss';
+    @import '~office-ui-fabric/dist/components/List/List.scss';
+    @import '~office-ui-fabric/dist/components/ListItem/ListItem.scss';
+
+    .template_rss_tileList {
+      .singleCard {
+        margin: 0px 0px 15px;
+        padding: 15px;
+        border: 1px solid $ms-color-neutralLighterAlt;
+
+        &:hover {
+          border-color: $ms-color-neutralLight;
+          cursor: pointer;
+        }
+      }
+
+      .primaryText {
+        display: block;
+        margin: 0px 0px 10px;
+        padding: 0px;
+        top: 0px;
+        color: "[theme: themePrimary, default: #005a9e]";
+        font-size: 15px;
+        line-height: 1.4em;
+        height: 1.4em;
+
+        overflow: hidden;
+        white-space: normal;
+        outline: transparent;
+
+        A {
+          color: $ms-color-themeSecondary;
+        }
+      }
+
+      .secondaryText {
+        display: block;
+        font-size: 1em;
+        line-height: 1.4em;
+        height: 2.8em;
+        top: 0px;
+        padding: 0px;
+        white-space: normal;
+        overflow: hidden;
+      }
+
+      .dateText {
+        display: block;
+        padding: 10px 15px 5px;
+        margin: 10px -15px 0px;
+        border-top: 1px solid $ms-color-neutralLighterAlt;
+        font-size: 13px;
+        line-height: 1.4em;
+      }
+    }
+
+    .template_rss_list {
+      width:100%;
+      list-style:none outside none;
+      border:0px solid $ms-color-neutralLighterAlt;
+      padding:4px 6px;
+      color:$ms-color-black;
+
+      .listItem {
+        display: block;
+        border-bottom: 1px solid $ms-color-neutralLighterAlt;
+        padding: 5px;
+      }
+
+      .itemTitle {
+
+        A {
+          color: $ms-color-themePrimary;
+          text-decoration:none
+
+          &:hover {
+            text-decoration:underline
+          }
+        }
+      }
+
+      .itemDate {
+        font-size:11px;
+        color: $ms-color-neutralDark;
+      }
+
+      .itemContent {
+        display: block;
+        margin: 1em 0;
+      }
+    }
+
+    .template_resultCount {
+        padding-left: 0px;
+        margin-bottom: 10px;
+    }
+  }
+}
