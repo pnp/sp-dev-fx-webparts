@@ -11,8 +11,6 @@ import { css } from "@uifabric/utilities/lib/css";
 import { ItemType } from '../IPropertyPaneFilePicker';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 
-
-
 export default class RecentFilesTab extends React.Component<IRecentFilesTabProps, IRecentFilesTabState> {
   constructor(props: IRecentFilesTabProps) {
     super(props);

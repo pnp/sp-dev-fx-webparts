@@ -256,7 +256,6 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
           aria-label={searchResultAltText}
           className={css(styles.bingTile, isSelected ? styles.isSelected : undefined)}
           data-is-focusable={true}
-          data-
           data-selection-index={index}
           style={{
             width: `${thumbnailWidth}px`,

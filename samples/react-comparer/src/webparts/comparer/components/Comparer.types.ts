@@ -15,6 +15,8 @@ export interface IComparerProps {
   startPosition: number;
   title: string;
   width: number;
+  beforeAlternateText: string;
+  afterAlternateText: string;
   onConfigure: () => void;
   onUpdateTitle: (value: string) => void;
 }

@@ -120,6 +120,8 @@ export default class Comparer extends React.Component<IComparerProps, IComparerS
             }}
           >
             <BlockImage
+              role={"Image"}
+              aria-label={this.props.beforeAlternateText}
               src={afterImg}
               className={css(styles.comparerAfter, afterClassName)}
               style={{ width }}
@@ -127,6 +129,8 @@ export default class Comparer extends React.Component<IComparerProps, IComparerS
             <div className={css(styles.comparerLabel, styles.comparerLabelAfter)} ref={this._linkAfterLabel}>{this.props.afterLabel}</div>
           </div>
           <BlockImage
+            role={"Image"}
+            aria-label={this.props.afterAlternateText}
             src={beforeImg}
             className={css(styles.comparerBefore, beforeClassName)}
           />

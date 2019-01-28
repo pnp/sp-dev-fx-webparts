@@ -39,7 +39,7 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
             validateOnFocusOut={false}
             validateOnLoad={true}
             value={this.state.fileUrl}
-            onChanged={(newValue?: string) => this._handleChange(newValue)}
+            onChanged={(_event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => this._handleChange(newValue)}
           />
         </div>
         <div className={styles.actionButtonsContainer}>

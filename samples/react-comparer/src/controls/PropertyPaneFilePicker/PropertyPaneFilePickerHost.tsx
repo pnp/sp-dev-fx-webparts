@@ -5,7 +5,7 @@ import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/compone
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
 import { Label } from 'office-ui-fabric-react/lib/components/Label';
 import * as strings from 'PropertyPaneFilePickerStrings';
-import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { css } from "@uifabric/utilities/lib/css";
 import LinkFilePickerTab from './LinkFilePickerTab/LinkFilePickerTab';
 import UploadFilePickerTab from './UploadFilePickerTab/UploadFilePickerTab';
@@ -31,10 +31,57 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
     const accepts: string = this.props.accepts !== undefined ? this.props.accepts
       : this.props.itemType === ItemType.Images && this.props.accepts === undefined ? ACCEPTABLE_FILE_EXTENSIONS
         : undefined;
+
+    // Get a list of groups to display
+    let groups:INavLinkGroup[] = [
+      {
+        links: [
+          {
+            name: strings.RecentLinkLabel,
+            url: '#recent',
+            icon: 'Recent',
+            key: 'keyRecent',
+          },
+          {
+            name: strings.WebSearchLinkLabel,
+            url: '#search',
+            key: 'keyWeb',
+            icon: 'Search',
+          },
+          {
+            name: strings.SiteLinkLabel,
+            url: '#globe',
+            key: 'keySite',
+            icon: 'Globe',
+          },
+          {
+            name: strings.UploadLinkLabel,
+            url: '#upload',
+            key: 'keyUpload',
+            icon: 'System'
+          },
+          {
+            name: strings.FromLinkLinkLabel,
+            url: '#link',
+            key: 'keyLink',
+            icon: 'Link'
+          }
+        ]
+      }
+    ];
+
+
+    if (this.props.disableLocalUpload) {
+      groups[0].links.splice(3,1);
+    }
+
+    if (this.props.disableWebSearchTab) {
+      groups[0].links.splice(1,1);
+    }
+
     return (
       <div >
         <Label required={this.props.required}>{this.props.label}</Label>
-
         <PrimaryButton text={this.props.buttonLabel}
           onClick={this._handleOpenPanel}
           disabled={this.props.disabled} />
@@ -54,43 +101,7 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
 
           <div className={styles.nav}>
             <Nav
-
-              groups={[
-                {
-                  links: [
-                    {
-                      name: strings.RecentLinkLabel,
-                      url: '#recent',
-                      icon: 'Recent',
-                      key: 'keyRecent',
-                    },
-                    this.props.disableWebSearchTab !== false && {
-                      name: strings.WebSearchLinkLabel,
-                      url: '#search',
-                      key: 'keyWeb',
-                      icon: 'Search',
-                    },
-                    {
-                      name: strings.SiteLinkLabel,
-                      url: '#globe',
-                      key: 'keySite',
-                      icon: 'Globe',
-                    },
-                    this.props.disableLocalUpload !== false && {
-                      name: strings.UploadLinkLabel,
-                      url: '#upload',
-                      key: 'keyUpload',
-                      icon: 'System'
-                    },
-                    {
-                      name: strings.FromLinkLinkLabel,
-                      url: '#link',
-                      key: 'keyLink',
-                      icon: 'Link'
-                    }
-                  ]
-                }
-              ]}
+              groups={groups}
               selectedKey={this.state.selectedTab}
               onLinkClick={(ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => this._handleLinkClick(ev, item)}
             />

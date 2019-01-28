@@ -6,6 +6,8 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneHorizontalRule,
+  PropertyPaneLabel,
+  PropertyPaneLink,
   PropertyPaneSlider
 } from '@microsoft/sp-webpart-base';
 import { PropertyFieldSpinButton } from '@pnp/spfx-property-controls/lib/PropertyFieldSpinButton';
@@ -22,6 +24,8 @@ export interface IComparerWebPartProps {
   height: number;
   startPosition: number;
   title: string;
+  beforeAlternateText: string;
+  afterAlternateText: string;
 }
 
 import { PropertyPaneFilePicker, ItemType } from '../../controls/PropertyPaneFilePicker';
@@ -63,6 +67,8 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
         startPosition: this.properties.startPosition,
         title: this.properties.title,
         width: clientWidth,
+        beforeAlternateText: this.properties.beforeAlternateText,
+        afterAlternateText: this.properties.afterAlternateText,
         onUpdateTitle: (value: string) => {
           // when title is changed, store the new title
           this.properties.title = value;
@@ -101,10 +107,13 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
             {
               groupName: strings.ImagesGroupName,
               groupFields: [
+                PropertyPaneLabel('beforeImg', {
+                  text: strings.ImageDescriptionsLabel
+                }),
                 PropertyPaneFilePicker('beforeImg', {
                   key: 'beforeImgId',
                   label: strings.BeforeImageFieldLabel,
-                  buttonLabel: strings.BeforeImageButtonLabel,
+                  buttonLabel: this.properties.beforeImg ? strings.BeforeImageChangeButtonLabel : strings.BeforeImageButtonLabel,
                   value: this.properties.beforeImg,
                   webPartContext: this.context,
                   itemType: ItemType.Images,
@@ -115,11 +124,24 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
                 PropertyPaneTextField('beforeLabel', {
                   label: strings.BeforeImageLabelFieldLabel
                 }),
+                PropertyPaneTextField('beforeAlternateText', {
+                  label: strings.BeforeImageAlternateTextFieldLabel,
+                  multiline: true,
+                  rows: 3
+                }),
+                PropertyPaneLabel('beforeAlternateText', {
+                  text: strings.AlternateTextLabel
+                }),
+                PropertyPaneLink('beforeAlternateText', {
+                  text: strings.LearnMoreLink,
+                  target: "_blank",
+                  href: "https://go.microsoft.com/fwlink/?LinkId=734040"
+                }),
                 PropertyPaneHorizontalRule(),
                 PropertyPaneFilePicker('afterImg', {
                   key: 'afterImgId',
                   label: strings.AfterImageFieldLabel,
-                  buttonLabel: strings.AfterImageButtonLabel,
+                  buttonLabel: this.properties.afterImg ? strings.AfterImageChangeButtonLabel : strings.AfterImageButtonLabel,
                   value: this.properties.afterImg,
                   webPartContext: this.context,
                   itemType: ItemType.Images,
@@ -128,7 +150,12 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
                   onSave: (value: string) => { this.properties.afterImg = value; }
                 }),
                 PropertyPaneTextField('afterLabel', {
-                  label: strings.AfterImageLabelFieldLabel
+                  label: strings.AfterImageLabelFieldLabel,
+                }),
+                PropertyPaneTextField('afterAlternateText', {
+                  label: strings.AfterImageAlternateTextFieldLabel,
+                  multiline: true,
+                  rows: 3
                 })
               ]
             },

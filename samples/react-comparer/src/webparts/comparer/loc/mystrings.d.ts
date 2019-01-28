@@ -1,8 +1,6 @@
 declare interface IComparerWebPartStrings {
   PropertyPaneDescription: string;
   LayoutGroupName: string;
-  BeforeLabelFieldLabel: string;
-  AfterLabelFieldLabel: string;
   PlaceholderIconText: string;
   PlaceholderDescription: string;
   PlaceholderButtonLabel: string;
@@ -10,13 +8,18 @@ declare interface IComparerWebPartStrings {
   BeforeImageLabelFieldLabel: string;
   BeforeImageFieldLabel: string;
   BeforeImageButtonLabel: string;
+  BeforeImageChangeButtonLabel: string;
   AfterImageLabelFieldLabel: string;
   AfterImageFieldLabel: string;
   AfterImageButtonLabel: string;
+  AfterImageChangeButtonLabel: string;
   StartPositionFieldLabel: string;
   HeightFieldLabel: string;
-  ReadOnlyPlaceholderIconText: string;
-  ReadOnlyPlaceholderDescription: string;
+  AlternateTextLabel: string;
+  BeforeImageAlternateTextFieldLabel: string;
+  AfterImageAlternateTextFieldLabel: string;
+  ImageDescriptionsLabel: string;
+  LearnMoreLink: string;
 }
 
 declare module 'ComparerWebPartStrings' {
