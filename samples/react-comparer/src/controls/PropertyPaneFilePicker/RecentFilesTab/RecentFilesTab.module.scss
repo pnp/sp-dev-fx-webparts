@@ -1,0 +1,176 @@
+@import "../PropertyPaneFilePicker.module.scss";
+
+// :global {
+//   .ms-ItemTile-subText {
+//     font-size: 11px;
+//     opacity: 0.7;
+//   }
+//   .ms-ItemTile-childCount,
+//   .ms-ItemTile-name,
+//   .ms-ItemTile-subText {
+//     overflow: hidden;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+//   }
+
+//   .ms-ItemTile-namePlate {
+//     //position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     min-height: 20px;
+//     padding: 4px 8px 8px;
+//     background-color: #ffffff;
+//     color: #333333;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+//   }
+//   .ms-ItemTile {
+//     position: relative;
+//     display: inline-block;
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//     cursor: pointer;
+//     -webkit-touch-callout: none;
+//     -webkit-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+//     overflow: hidden;
+//     -webkit-box-sizing: border-box;
+//     box-sizing: border-box;
+//   }
+// }
+
+.gridListCell {
+  margin-bottom: 8px;
+}
+
+[dir="ltr"] .gridListCell {
+  margin-right: 8px;
+}
+
+[dir="ltr"] .gridListCell.cellRight {
+  margin-right: 0;
+}
+
+.gridListCell.cellLastRow {
+  margin-bottom: 0;
+}
+
+.itemTile.isFile,
+.itemTile.isPhoto,
+.itemTile.isVideo {
+  background-color: #f4f4f4;
+}
+
+.itemTile {
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+}
+
+.itemTile {
+  //position: relative;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.hasThumbnail {
+  color: inherit;
+}
+
+.itemTileContent {
+  width: 100%;
+  height: 100%;
+}
+
+.itemTile.isFile .itemTileDiscoverFileContainer,
+.itemTile.isFile .itemTileFileContainer {
+  border: 1px solid #eaeaea;
+}
+
+.itemTileFile {
+  .itemTileFileContainer {
+    background-color: #f4f4f4;
+    //position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    .itemTileThumbnail {
+      text-align: center;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+
+      .image {
+        img {
+          display: block;
+          opacity: 1;
+          width: 100%;
+          height: auto;
+          //position: absolute;
+          //left: 50%;
+          //top: 50%;
+          //transform: translate(-50%, -50%);
+          //animation-name: css-1;
+          animation-duration: 0.367s;
+          animation-timing-function: cubic-bezier(0.1, 0.25, 0.75, 0.9);
+          animation-fill-mode: both;
+        }
+      }
+    }
+  }
+}
+
+.itemTileNamePlate {
+  //position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  min-height:20px;
+  padding:4px 8px 8px;
+  background-color:#ffffff;
+  color:#333333;
+  white-space:nowrap;
+  text-overflow:ellipsis
+}
+.itemTile.isFile .itemTileNamePlate {
+  opacity: .95;
+  border-top: 1px solid #eaeaea;
+  min-height: 35px;
+}
+
+.itemTileName {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+
+.itemTileChildCount, .itemTileName, .itemTileSubText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.itemTileSubText {
+  font-size: 11px;
+  opacity: .7;
+}
