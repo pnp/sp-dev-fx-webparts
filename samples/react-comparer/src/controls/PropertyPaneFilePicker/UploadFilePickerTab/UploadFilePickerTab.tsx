@@ -1,9 +1,17 @@
 import * as React from 'react';
+
+// Makes thingy pretty
 import styles from './UploadFilePickerTab.module.scss';
+
+// Needed for our custom pane tab
 import { IUploadFilePickerTabProps, IUploadFilePickerTabState } from '.';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-import * as strings from 'PropertyPaneFilePickerStrings';
 import { ItemType } from '../IPropertyPaneFilePicker';
+
+// Office Fabric to the rescue!
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
+
+// Localization
+import * as strings from 'PropertyPaneFilePickerStrings';
 
 export default class UploadFilePickerTab extends React.Component<IUploadFilePickerTabProps, IUploadFilePickerTabState> {
   constructor(props: IUploadFilePickerTabProps) {
@@ -48,18 +56,24 @@ export default class UploadFilePickerTab extends React.Component<IUploadFilePick
     );
   }
 
+  /**
+   * Gets called when a file is uploaded
+   */
   private _handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files || event.target.files.length < 1) {
       return;
     }
 
+    // Get the files that were uploaded
     let files = event.target.files;
 
+    // Grab the first file -- there should always only be one
     const file = files[0];
+
+    // Convert to base64 image
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-
       this.setState({
         fileUrl: reader.result as string,
         fileName: file.name
@@ -67,11 +81,16 @@ export default class UploadFilePickerTab extends React.Component<IUploadFilePick
     };
   }
 
-
+  /**
+   * Saves base64 encoded image back to property pane file picker
+   */
   private _handleSave = () => {
     this.props.onSave(this.state.fileUrl);
   }
 
+  /**
+   * Closes tab without saving
+   */
   private _handleClose = () => {
     this.props.onClose();
   }

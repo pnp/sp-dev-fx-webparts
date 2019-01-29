@@ -121,31 +121,37 @@ export default class Comparer extends React.Component<IComparerProps, IComparerS
           >
             <BlockImage
               role={"Image"}
-              aria-label={this.props.beforeAlternateText}
+              aria-label={this.props.afterAlternateText}
               src={afterImg}
               className={css(styles.comparerAfter, afterClassName)}
               style={{ width }}
             />
-            <div className={css(styles.comparerLabel, styles.comparerLabelAfter)} ref={this._linkAfterLabel}>{this.props.afterLabel}</div>
+            <div
+              className={css(styles.comparerLabel, styles.comparerLabelAfter)}
+              ref={this._linkAfterLabel}>{this.props.afterLabel}</div>
           </div>
           <BlockImage
             role={"Image"}
-            aria-label={this.props.afterAlternateText}
+            aria-label={this.props.beforeAlternateText}
             src={beforeImg}
             className={css(styles.comparerBefore, beforeClassName)}
           />
-          <div className={css(styles.comparerLabel, styles.comparerLabelBefore)} ref={this._linkBeforeLabel}>{this.props.beforeLabel}</div>
+          <div
+            className={css(styles.comparerLabel, styles.comparerLabelBefore)}
+            ref={this._linkBeforeLabel}>{this.props.beforeLabel}</div>
         </div>
 
       </React.Fragment>
     );
   }
 
+  /**
+   * If the web part isn't configured, renders a placeholder
+   */
   private _renderPlaceholders = (): JSX.Element => {
     const {
       onConfigure
     } = this.props;
-
 
     if (this.props.displayMode === DisplayMode.Edit) {
       return <div
@@ -161,9 +167,16 @@ export default class Comparer extends React.Component<IComparerProps, IComparerS
     }
   }
 
+  /**
+   * Verifies if labels were specified or now
+   */
   private _checkHasLabels = (props: IComparerProps): boolean => {
     return props.beforeLabel!.length > 0 || props.afterLabel!.length > 0;
   }
+
+  /**
+   * Called when user drags the slider
+   */
   private _handleDrag(_e, data: DraggableData) {
     const { sliderPositionX } = this.state;
     const { width } = this.props;
@@ -178,10 +191,13 @@ export default class Comparer extends React.Component<IComparerProps, IComparerS
       return;
     }
 
+    // We DO have labels, we need to move some labels, and maybe hide them
+    // otherwise they get squished when the slider goes too far to the left or right
+
     // Get the position of the right label and see if we need to hide it
-    const topPos: ClientRect = this._topElem.getBoundingClientRect();
+    const parentPos: ClientRect = this._topElem.getBoundingClientRect();
     const labelPos: ClientRect = this._beforeLabelElem.getBoundingClientRect();
-    const labelX: number = labelPos.left - topPos.left;
+    const labelX: number = labelPos.left - parentPos.left;
 
     // Is the slider past the label?
     if (labelX < data.x) {
@@ -195,7 +211,7 @@ export default class Comparer extends React.Component<IComparerProps, IComparerS
 
     // Get the right-most position of the left label
     const afterLabelPos: ClientRect = this._afterLabelElem.getBoundingClientRect();
-    const afterLabelX: number = afterLabelPos.left - topPos.left + afterLabelPos.width;
+    const afterLabelX: number = afterLabelPos.left - parentPos.left + afterLabelPos.width;
 
     // If the slider is to the left of the label
     if (data.x < afterLabelX) {

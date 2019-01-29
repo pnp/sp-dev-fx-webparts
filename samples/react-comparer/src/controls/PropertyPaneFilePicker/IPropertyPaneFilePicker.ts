@@ -6,7 +6,6 @@ export interface IPropertyPaneFilePickerProps {
   buttonLabel: string;
   value: string;
   disabled?: boolean;
-  panelHeader?: string;
   webPartContext: WebPartContext;
   disableLocalUpload?: boolean;
   disableWebSearchTab?: boolean;

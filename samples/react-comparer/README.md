@@ -17,7 +17,7 @@ I wanted to re-create a version of the slider that would allow a user to compare
 Re-creating the slider was pretty easy (they use [react-draggable](https://github.com/mzabriskie/react-draggable) to handle dragging); I wanted to make it possible for users to select the
 Before and After pictures to use the SharePoint File Picker dialog.
 
-After a lot of digging around, I decided to re-create my own. 
+After a lot of digging around, I decided to re-create my own.
 
 After all, one of the premises of SPFx is that SPFx gives us -- the SharePoint developer community -- a framework to build the same web parts that Microsoft's own developers do. Right?
 
@@ -98,8 +98,8 @@ However, the feature requires a Bing API key in order to work. If you do not hav
 
 ### To Configure a Bing API key (Optional)
 
-This sampple uses **SharePoint Online Tenant Properties** to store the API key. The idea is that if you get an 
-API key for your organization to use, you want to store it in one place -- the **Tenant Properties** -- instead of having to re-enter the API key 
+This sampple uses **SharePoint Online Tenant Properties** to store the API key. The idea is that if you get an
+API key for your organization to use, you want to store it in one place -- the **Tenant Properties** -- instead of having to re-enter the API key
 in every web part that needs it.
 
 To configure your API key, use the following steps:
@@ -159,6 +159,7 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
   * [MessageBar](https://developer.microsoft.com/en-us/fabric#/components/messagebar)
   * [Nav](https://developer.microsoft.com/en-us/fabric#/components/nav)
   * [Panel](https://developer.microsoft.com/en-us/fabric#/components/panel)
+  * [SearchBox](https://developer.microsoft.com/en-us/fabric#/components/searchbox)
   * [Selection](https://developer.microsoft.com/en-us/fabric#/components/selection)
   * [Spinner](https://developer.microsoft.com/en-us/fabric#/components/spinner)
   * [TextField](https://developer.microsoft.com/en-us/fabric#/components/textfield)
@@ -168,7 +169,7 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
   * [WebPartTitle](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/WebPartTitle/)
 * [@pnp/sp](https://pnp.github.io/pnpjs/sp/docs/)
 * [React-draggable](https://github.com/mzabriskie/react-draggable)
+* [React-block-image](https://github.com/transitive-bullshit/react-block-image)
 * [StackExchange - SPFx calls blocked by CORS policy](https://sharepoint.stackexchange.com/questions/254050/spfx-calls-blocked-by-cors-policy)
-
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-comparer" />

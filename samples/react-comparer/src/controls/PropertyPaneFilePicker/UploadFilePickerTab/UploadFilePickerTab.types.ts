@@ -1,7 +1,7 @@
 import { IFilePickerTab } from "../IFilePickerTab.types";
 
 export interface IUploadFilePickerTabProps extends IFilePickerTab {
-  //accepts: string;
+  // inherited from the base interface
 }
 
 export interface IUploadFilePickerTabState {

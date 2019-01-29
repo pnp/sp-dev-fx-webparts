@@ -8,7 +8,6 @@ export interface IComparerProps {
   beforeImg: string;
   beforeLabel: string;
   className?: string;
-  defaultProgress?: number;
   displayMode: DisplayMode;
   handleClassName?: string;
   height: number;

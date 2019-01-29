@@ -1,9 +1,16 @@
 import * as React from 'react';
-import styles from './FileBrowser.module.scss';
-import { IFileBrowserProps, IFileBrowserState, IFile } from './FileBrowser.types';
-import { sp } from "@pnp/sp";
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 
+// Custom styles
+import styles from './FileBrowser.module.scss';
+
+// Custom properties and state
+import { IFileBrowserProps, IFileBrowserState, IFile } from './FileBrowser.types';
+
+// PnP library for navigating through libraries
+import { sp } from "@pnp/sp";
+
+// Office Fabric
+import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -13,11 +20,18 @@ import {
   IDetailsRowProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
+
+// Localized strings
 import * as strings from 'PropertyPaneFilePickerStrings';
 
 // used to format date
 import * as moment from 'moment';
 
+/**
+ * Renders list of file in a list.
+ * I should have used the PnP ListView control, but I wanted specific behaviour that I didn't
+ * get with the PnP control.
+ */
 export default class FileBrowser extends React.Component<IFileBrowserProps, IFileBrowserState> {
   private _selection: Selection;
 
@@ -37,9 +51,9 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
         onRender: (item: IFile) => {
-          const folderIcon: string = "https://spoprod-a.akamaihd.net/files/odsp-next-prod_2019-01-11_20190116.001/odsp-media/images/itemtypes/20/folder.svg";
-          const iconUrl: string = "https://spoprod-a.akamaihd.net/files/odsp-next-prod_2019-01-11_20190116.001/odsp-media/images/itemtypes/20_2x/photo.png";
-          const altText: string = item.isFolder ? 'Folder' : `.${item.docIcon} Image`;
+          const folderIcon: string = strings.FolderIconUrl;
+          const iconUrl: string = strings.PhotoIconUrl;
+          const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.docIcon);
           return <div className={styles.fileTypeIcon}>
             <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
           </div>;
@@ -127,6 +141,11 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
     };
   }
 
+  /**
+   * Gets the list of files when settings change
+   * @param prevProps
+   * @param prevState
+   */
   public componentDidUpdate(prevProps: IFileBrowserProps, prevState: IFileBrowserState): void {
 
     if (prevState.currentPath !== prevState.currentPath) {
@@ -134,6 +153,9 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
     }
   }
 
+  /**
+   * Gets the list of files when tab first loads
+   */
   public componentDidMount(): void {
     this._getListItems();
   }
@@ -158,8 +180,6 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
           onActiveItemChanged={(item: IFile, index: number, ev: React.FormEvent<Element>) => this._itemChangedHandler(item, index, ev)}
           enterModalSelectionOnTouch={true}
           onRenderRow={this._onRenderRow}
-        // ariaLabelForSelectionColumn="Toggle selection"
-        // ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         />
       </div>
     );
@@ -171,6 +191,9 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
     return <DetailsRow {...props} className={fileItem.isFolder ? styles.folderRow : styles.fileRow} />;
   }
 
+  /**
+   * Gratuitous sorting
+   */
   private _onColumnClick = (event: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     const { columns } = this.state;
     let { items } = this.state;
@@ -208,6 +231,9 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
     });
   }
 
+  /**
+ * When a folder is opened, calls parent tab to navigate down
+ */
   private _handleOpenFolder = (item: IFile) => {
     // De-select the list item that was clicked, the item in the same position
     // item in the folder will appear selected
@@ -215,10 +241,12 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
       fileUrl: undefined,
       currentPath: item.fileRef
     }, () => this._getListItems());
-    console.log("Folder is open", item.fileRef);
     this.props.onOpenFolder(item);
   }
 
+  /**
+   * When user selects an item, save selection
+   */
   private _itemChangedHandler = (item: IFile, _index: number, _ev): void => {
     if (item.isFolder) {
       this.setState({
@@ -227,6 +255,7 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
       return;
     }
 
+    // Notify parent tab
     const absoluteFileUrl: string = item.absoluteRef;
     this.props.onChange(absoluteFileUrl);
     this.setState({
@@ -234,12 +263,14 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
     });
   }
 
+  /**
+   * Gets all files in a library with a matchihg path
+   */
   private _getListItems() {
     this.setState({
       isLoading: true
     });
 
-    console.log("Listing files in current path", this.state.currentPath);
     let itemsAndUsers: [Promise<any[]>, Promise<any[]>] = [sp.web.lists.getByTitle(this.props.libraryName).items.select("DocIcon",
       "FileRef",
       "FileLeafRef",
@@ -287,11 +318,17 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
 
   }
 
+  /**
+   * Creates an absolute URL
+   */
   private _buildAbsoluteUrl = (relativeUrl: string) => {
     const siteUrl: string = this._getAbsoluteDomainUrl(this.props.context.pageContext.web.absoluteUrl);
     return siteUrl + relativeUrl;
   }
 
+  /**
+   * Gets the current domain url
+   */
   private _getAbsoluteDomainUrl = (url: string): string => {
     if (url !== undefined) {
       const myURL = new URL(url.toLowerCase());
@@ -301,6 +338,9 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
     }
   }
 
+  /**
+   * Formats a file size in the right unit
+   */
   private _formatBytes(bytes, decimals) {
     if (bytes == 0) {
       return strings.EmptyFileSize;

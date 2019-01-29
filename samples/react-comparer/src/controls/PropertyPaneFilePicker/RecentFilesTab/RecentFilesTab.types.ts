@@ -1,8 +1,7 @@
 import { IFilePickerTab } from "../IFilePickerTab.types";
-import { SearchResult } from "@pnp/sp";
 
 export interface IRecentFilesTabProps extends IFilePickerTab {
-
+  //inherited
 }
 
 export interface IRecentFilesTabState {

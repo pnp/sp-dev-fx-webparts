@@ -1,12 +1,20 @@
 import * as React from 'react';
+
+// Custom styles
 import styles from './SiteFilePickerTab.module.scss';
+
+// Custom picker interface
 import { ISiteFilePickerTabProps, ISiteFilePickerTabState } from '.';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-import DocumentLibraryBrowser from './DocumentLibraryBrowser/DocumentLibraryBrowser';
 import { ILibrary } from './DocumentLibraryBrowser/DocumentLibraryBrowser.types';
 import FileBrowser from './FileBrowser/FileBrowser';
-import * as strings from 'PropertyPaneFilePickerStrings';
 import { IFile } from './FileBrowser/FileBrowser.types';
+import DocumentLibraryBrowser from './DocumentLibraryBrowser/DocumentLibraryBrowser';
+
+// Office Fabric
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
+
+// Localized strings
+import * as strings from 'PropertyPaneFilePickerStrings';
 
 export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTabProps, ISiteFilePickerTabState> {
   constructor(props: ISiteFilePickerTabProps) {
@@ -20,10 +28,7 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
     };
   }
 
-
   public render(): React.ReactElement<ISiteFilePickerTabProps> {
-
-
     return (
       <div className={styles.tabContainer}>
         <div className={styles.tabHeaderContainer}>
@@ -55,21 +60,32 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
     );
   }
 
-
+  /**
+   * Is called when user selects a different file
+   */
   private _handleSelectionChange = (imageUrl: string) => {
     this.setState({
       fileUrl: imageUrl
     });
   }
 
+  /**
+   * Called when user saves
+   */
   private _handleSave = () => {
     this.props.onSave(this.state.fileUrl);
   }
 
+  /**
+   * Called when user closes tab
+   */
   private _handleClose = () => {
     this.props.onClose();
   }
 
+  /**
+   * Triggered when user opens a file folder
+   */
   private _handleOpenFolder = (folder: IFile) => {
     this.setState({
       libraryPath: folder.fileRef,
@@ -78,6 +94,9 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
     });
   }
 
+  /**
+   * Triggered when user opens a top-level document library
+   */
   private _handleOpenLibrary = (library: ILibrary) => {
     this.setState({
       libraryAbsolutePath: library.absoluteUrl,

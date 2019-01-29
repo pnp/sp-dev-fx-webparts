@@ -1,16 +1,25 @@
 import * as React from 'react';
+
+// Custom styles
 import styles from './LinkFilePickerTab.module.scss';
+
+// Custom props and state
 import { ILinkFilePickerTabProps, ILinkFilePickerTabState } from '.';
+import { ItemType } from '../IPropertyPaneFilePicker';
+
+// Office Fabric
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
+
+// PnP
 import { FetchClient } from "@pnp/common";
+
+// Localized strings
 import * as strings from 'PropertyPaneFilePickerStrings';
-import { ItemType } from '../IPropertyPaneFilePicker';
 
 export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTabProps, ILinkFilePickerTabState> {
   constructor(props: ILinkFilePickerTabProps) {
     super(props);
-
     this.state = { isValid: false };
   }
 
@@ -54,34 +63,44 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
     );
   }
 
-
+  /**
+   * Called as user types in a new value
+   */
   private _handleChange = (newValue?: string) => {
     this.setState({
       fileUrl: newValue
     });
   }
 
+  /**
+   * Verifies the url that was typed in
+   * @param value
+   */
   private _getErrorMessagePromise(value: string): Promise<string> {
     return new Promise(resolve => {
 
-      if (value === undefined) {
+      // DOn't give an error for blank or placeholder value, but don't make it a valid entry either
+      if (value === undefined || value === 'https://') {
         this.setState({ isValid: false });
         resolve('');
         return;
       }
 
+      // Make sure that user is typing a valid URL format
       if (!this._isUrl(value)) {
         this.setState({ isValid: false });
         resolve('');
         return;
       }
 
+      // If we don't allow external links, verify that we're in the same domain
       if (!this.props.allowExternalTenantLinks && !this._isSameDomain(value)) {
         this.setState({ isValid: false });
         resolve(strings.NoExternalLinksValidationMessage);
         return;
       }
 
+      // Make sure that item is an image
       if (this.props.itemType === ItemType.Images) {
         if (!this._isImage(value)) {
           this.setState({ isValid: false });
@@ -90,7 +109,7 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
         }
       }
 
-      // Verify the file exists
+      // Verify the file exists by actually getting the item
       try {
         const client = new FetchClient();
         client.fetch(value, { method: "HEAD" }).then((response) => {
@@ -110,20 +129,31 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
           resolve(strings.CantValidateValidationMessage);
         });
       } catch (error) {
+        console.log("Error verifying file", error);
         this.setState({ isValid: false });
         resolve(strings.CantValidateValidationMessage);
       }
     });
   }
 
+  /**
+   * Handles when user saves
+   */
   private _handleSave = () => {
     this.props.onSave(this.state.fileUrl);
   }
 
+  /**
+   * HAndles when user closes without saving
+   */
   private _handleClose = () => {
     this.props.onClose();
   }
 
+  /**
+   * Is this a URL ?
+   * (insert guy holding a butterfly meme)
+   */
   private _isUrl = (fileUrl: string): boolean => {
     try {
       const myURL = new URL(fileUrl.toLowerCase());
@@ -132,6 +162,11 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
       return false;
     }
   }
+
+  /**
+   * Verifies that file ends with an image extension.
+   * Should really check the content type instead.
+   */
   private _isImage = (fileName: string): boolean => {
     const acceptableExtensions: string[] = this.props.accepts.toLowerCase().split(",");
     // ".gif,.jpg,.jpeg,.bmp,.dib,.tif,.tiff,.ico,.png,.jxr,.svg"

@@ -1,20 +1,29 @@
 import * as React from 'react';
+
+// Custom styles
 import styles from './RecentFilesTab.module.scss';
+
+// Office Fabric
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
-import { IRecentFilesTabProps, IRecentFilesTabState, IRecentFile } from './RecentFilesTab.types';
-import * as strings from 'PropertyPaneFilePickerStrings';
-import { sp, SearchResults, SearchResult } from "@pnp/sp";
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { css } from "@uifabric/utilities/lib/css";
-import { ItemType } from '../IPropertyPaneFilePicker';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { Check } from 'office-ui-fabric-react/lib/Check';
-import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
+
+// Custom props and states
+import { IRecentFilesTabProps, IRecentFilesTabState, IRecentFile } from './RecentFilesTab.types';
+import { ItemType } from '../IPropertyPaneFilePicker';
+
+// Localized resources
+import * as strings from 'PropertyPaneFilePickerStrings';
+
+// PnP
+import { sp, SearchResults, SearchResult } from "@pnp/sp";
 
 /**
  * Rows per page
@@ -75,23 +84,12 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    */
   public componentDidMount(): void {
     const { absoluteUrl } = this.props.context.pageContext.web;
-    const { spHttpClient } = this.props.context;
-
-    console.log("Setting context to siteUrl", absoluteUrl);
 
     // Build a filter criteria for each accepted file type, if applicable
     const fileFilter: string = this._getFileFilter();
 
-
-    // const getWebapiUrl: string = `${absoluteUrl}/_api/site?$select=Id`;
-    // const getSiteapiUrl: string = `${absoluteUrl}/_api/web?$select=Id`;
-
     // // This is how you make two promises at once and wait for both results to return
     // // TODO: research to see if there is a way to get this info in one call. Perhaps as context info?
-    // const getContext: [Promise<any[]>, Promise<any[]>] = [
-    //   spHttpClient.get(getWebapiUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => response.json()),
-    //   spHttpClient.get(getSiteapiUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => response.json())];
-
     sp.setup({
       sp: { baseUrl: absoluteUrl }
     });
@@ -163,6 +161,9 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
     });
   }
 
+  /**
+   * Render the tab
+   */
   public render(): React.ReactElement<IRecentFilesTabProps> {
     const imageType: boolean = this.props.itemType === ItemType.Images;
     const { results,
@@ -341,6 +342,9 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
     return fileFilter;
   }
 
+  /**
+   * Creates a ref to the list
+   */
   private _linkElement = (e: any) => {
     this._listElem = e;
   }

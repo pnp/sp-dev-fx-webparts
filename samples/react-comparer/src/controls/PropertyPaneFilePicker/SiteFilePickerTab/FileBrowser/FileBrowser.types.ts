@@ -30,8 +30,3 @@ export interface IFile {
   isFolder: boolean;
   absoluteRef: string;
 }
-
-// export interface IUser {
-//   //title: string;
-//   [id:string]: string;
-// }

@@ -1,12 +1,22 @@
 import * as React from 'react';
+
+// Our custom styles
 import styles from './PropertyPaneFilePicker.module.scss';
+
+// Our props
 import { IPropertyPaneFilePickerHostProps, IPropertyPaneFilePickerHostState } from '.';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/components/Button';
+
+// Office Fabric controls
+import { PrimaryButton } from 'office-ui-fabric-react/lib/components/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/components/Panel';
 import { Label } from 'office-ui-fabric-react/lib/components/Label';
-import * as strings from 'PropertyPaneFilePickerStrings';
 import { Nav, INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { css } from "@uifabric/utilities/lib/css";
+
+// Localization
+import * as strings from 'PropertyPaneFilePickerStrings';
+
+// Custom property pane file picker tabs
 import LinkFilePickerTab from './LinkFilePickerTab/LinkFilePickerTab';
 import UploadFilePickerTab from './UploadFilePickerTab/UploadFilePickerTab';
 import SiteFilePickerTab from './SiteFilePickerTab/SiteFilePickerTab';
@@ -14,7 +24,8 @@ import WebSearchTab from './WebSearchTab/WebSearchTab';
 import RecentFilesTab from './RecentFilesTab/RecentFilesTab';
 import { ItemType } from './IPropertyPaneFilePicker';
 
-const ACCEPTABLE_FILE_EXTENSIONS: string = ".gif,.jpg,.jpeg,.bmp,.dib,.tif,.tiff,.ico,.png,.jxr,.svg";
+// The list of acceptable image file types
+const ACCEPTABLE_IMAGEFILE_EXTENSIONS: string = ".gif,.jpg,.jpeg,.bmp,.dib,.tif,.tiff,.ico,.png,.jxr,.svg";
 
 export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFilePickerHostProps, IPropertyPaneFilePickerHostState> {
   constructor(props: IPropertyPaneFilePickerHostProps) {
@@ -28,8 +39,9 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
   }
 
   public render(): JSX.Element {
+    // If no acceptable file type was passed, and we're expecting images, set the default image filter
     const accepts: string = this.props.accepts !== undefined ? this.props.accepts
-      : this.props.itemType === ItemType.Images && this.props.accepts === undefined ? ACCEPTABLE_FILE_EXTENSIONS
+      : this.props.itemType === ItemType.Images && this.props.accepts === undefined ? ACCEPTABLE_IMAGEFILE_EXTENSIONS
         : undefined;
 
     // Get a list of groups to display
@@ -70,11 +82,16 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
       }
     ];
 
+    // Hide tabs we don't want. Star from bottom of the list
+    // so we're not changing the relative position of items
+    // as we remove them.
 
+    // If we don't want local uploads, remove it from the list
     if (this.props.disableLocalUpload) {
       groups[0].links.splice(3,1);
     }
 
+    // If we don't want web search, remove it from the list
     if (this.props.disableWebSearchTab) {
       groups[0].links.splice(1,1);
     }
@@ -94,7 +111,7 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
           type={PanelType.extraLarge}
           isFooterAtBottom={true}
           onRenderNavigation={() => { return undefined; }}
-          headerText={"File picker"}
+          headerText={strings.FilePickerHeader}
           isLightDismiss={true}
           onRenderHeader={() => this._renderHeader()}
         >
@@ -150,6 +167,9 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
     );
   }
 
+  /**
+   * Renders the panel header
+   */
   private _renderHeader = (): JSX.Element => {
     return <div className={"ms-Panel-header"}><p className={css("ms-Panel-headerText", styles.header)} role="heading">{strings.FilePickerHeader}</p></div>;
   }
@@ -182,6 +202,9 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
     });
   }
 
+  /**
+   * Changes the selected tab when a link is selected
+   */
   private _handleLinkClick = (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => {
     this.setState({ selectedTab: item.key });
   }

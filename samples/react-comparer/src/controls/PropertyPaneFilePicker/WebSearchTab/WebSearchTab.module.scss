@@ -119,6 +119,11 @@
     color: $ms-color-neutralLight;
     background-color: rgba(0, 0, 0, 0.6);
   }
+
+  &:active {
+    background-color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
+  }
 }
 
 [dir="ltr"] .bingGridListCell {
@@ -256,7 +261,7 @@
 }
 
 .bingGrildList :global(.ms-List-cell),
-.bingGrildList :global(.ms-List-page), {
+.bingGrildList :global(.ms-List-page) {
   display: inline-block;
   overflow: hidden;
 }

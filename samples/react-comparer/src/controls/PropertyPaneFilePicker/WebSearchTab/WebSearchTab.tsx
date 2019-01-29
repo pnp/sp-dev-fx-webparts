@@ -103,6 +103,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
   private _rowHeight: number;
   private _selection: Selection;
   private _listElem: List = undefined;
+
   constructor(props: IWebSearchTabProps) {
     super(props);
 
@@ -174,7 +175,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
           </MessageBar>}
           <Label className={styles.copyrightLabel}>
             {strings.CopyrightWarning}&nbsp;&nbsp;
-            <Link target='_blank' href='https://www.microsoft.com/en-US/legal/copyright/default.aspx'>{strings.LearnMoreLink}</Link>
+            <Link target='_blank' href={strings.CopyrightUrl}>{strings.LearnMoreLink}</Link>
           </Label>
 
           <div className={styles.actionButtons}>
@@ -378,10 +379,16 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
     return this._columnCount * ROWS_PER_PAGE;
   }
 
+  /**
+   * Gets the height of a list "page"
+   */
   private _getPageHeight = (): number => {
     return this._rowHeight * ROWS_PER_PAGE;
   }
 
+  /**
+   * Renders a cell for search suggestions
+   */
   private _onRenderSuggestionCell = (item: ISearchSuggestion, index: number | undefined): JSX.Element => {
     return (
       <div
@@ -401,6 +408,9 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
     );
   }
 
+  /**
+   * Renders the search box
+   */
   private _renderSearchBox = (): JSX.Element => {
     const { query } = this.state;
     const hasQuery: boolean = query !== undefined;
@@ -429,8 +439,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
             { key: 'Large', text: strings.SizeOptionLarge },
             { key: 'Wallpaper', text: strings.SizeOptionExtraLarge }
           ]}
-          // I know that onChanged is deprecated, but onChange doesn't actually **work**
-          onChanged={(option: IDropdownOption) => this._handleChangeSize(option)}
+          onChange={(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => this._handleChangeSize(option)}
         />
         <Dropdown
           className={styles.filterDropdown}
@@ -443,7 +452,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
             { key: 'Wide', text: strings.LayoutOptionWide },
             { key: 'Tall', text: strings.LayoutOptionTall },
           ]}
-          onChanged={(option: IDropdownOption) => this._handleChangeLayout(option)}
+          onChange={(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => this._handleChangeLayout(option)}
         />
         <Dropdown
           className={styles.filterDropdown}
@@ -454,44 +463,69 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
             { key: 'All', text: strings.LicenseOptionAll },
             { key: 'Any', text: strings.LicenseOptionAny }
           ]}
-          onChanged={(option: IDropdownOption) => this._handleChangeLicense(option)}
+          onChange={(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => this._handleChangeLicense(option)}
         />
       </div>}
     </div>;
   }
 
+  /**
+   * Handles when a user changes the size drop down.
+   * Resubmits search query
+   */
   private _handleChangeSize = (option: IDropdownOption) => {
     this.setState({
       size: option.key as ImageSize
     }, () => this._getSearchResults());
   }
 
+  /**
+   * Handles when user selects a new layout from the drop down.
+   * Resubmits search query.
+   */
   private _handleChangeLayout = (option: IDropdownOption) => {
     this.setState({
       aspect: option.key as ImageAspect
     }, () => this._getSearchResults());
   }
 
+  /**
+   * Handles when a user changes the license from the drop down
+   * Resubits search query
+   */
   private _handleChangeLicense = (option: IDropdownOption) => {
     this.setState({
       license: option.key as ImageLicense
     }, () => this._getSearchResults());
   }
 
+  /**
+   * Renders the drop down placeholders
+   */
   private _renderFilterPlaceholder = (props: IDropdownProps): JSX.Element => {
     return <span>{props.placeholder}</span>;
   }
 
+  /**
+   * Handles when user triggers search query
+   */
   private _handleSearch = (newQuery?: string) => {
     this.setState({
       query: newQuery
     }, () => this._getSearchResults());
   }
 
+  /**
+   * Handles when user closes search pane
+   */
   private _handleClose = () => {
     this.props.onClose();
   }
 
+  /**
+   * Handes when user saves selection
+   * Calls property pane file picker's save function
+   */
   private _handleSave = () => {
     this.props.onSave(this.state.fileUrl);
   }
@@ -536,6 +570,9 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
       });
   }
 
+  /**
+   * Creates a reference to the list
+   */
   private _linkElement = (e: any) => {
     this._listElem = e;
   }

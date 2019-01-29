@@ -1,20 +1,28 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+
+// Needed for base SharePoint stuff
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneHorizontalRule,
   PropertyPaneLabel,
-  PropertyPaneLink,
   PropertyPaneSlider
 } from '@microsoft/sp-webpart-base';
+
+//
 import { PropertyFieldSpinButton } from '@pnp/spfx-property-controls/lib/PropertyFieldSpinButton';
 
+// Localized strings
 import * as strings from 'ComparerWebPartStrings';
+
+// Used to load the Comparer component
 import Comparer from './components/Comparer';
 import { IComparerProps } from './components/Comparer.types';
+
+// Needed to display a custom property pane file picker
+import { PropertyPaneFilePicker, ItemType } from '../../controls/PropertyPaneFilePicker';
 
 export interface IComparerWebPartProps {
   afterImg: string;
@@ -28,32 +36,29 @@ export interface IComparerWebPartProps {
   afterAlternateText: string;
 }
 
-import { PropertyPaneFilePicker, ItemType } from '../../controls/PropertyPaneFilePicker';
-
-import { sp } from "@pnp/sp";
-
 /**
- * Change this to true if you want to hide the Web search tab.
+ * Change the line below to true if you want to hide the Web search tab.
  */
 const DISABLE_WEB_SEARCH_TAB: boolean = false;
 export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebPartProps> {
 
-  protected onInit(): Promise<void> {
-    return new Promise<void>((resolve, _reject) => {
+  // protected onInit(): Promise<void> {
+  //   return new Promise<void>((resolve, _reject) => {
 
-      if (this.properties.startPosition === undefined) {
-        this.properties.startPosition = 50;
-      }
+  //     if (this.properties.startPosition === undefined) {
+  //       this.properties.startPosition = 50;
+  //     }
 
-      if (this.properties.height === undefined) {
-        this.properties.height = 400;
-      }
+  //     if (this.properties.height === undefined) {
+  //       this.properties.height = 400;
+  //     }
 
-      resolve(undefined);
-    });
-  }
+  //     resolve(undefined);
+  //   });
+  // }
 
   public render(): void {
+    // Get the width of this web part, we'll need it to resize the images
     const { clientWidth } = this.domElement;
 
     const element: React.ReactElement<IComparerProps> = React.createElement(

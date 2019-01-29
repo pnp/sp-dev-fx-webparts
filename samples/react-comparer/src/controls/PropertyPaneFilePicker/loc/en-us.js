@@ -9,6 +9,7 @@ define([], function () {
     "ChooseFileLinkLabel": "Choose file",
     "ChooseImageLinkLabel": "Choose image",
     "CopyrightWarning": "You are responsible for respecting others' rights, including copyright.",
+    "CopyrightUrl": "https://www.microsoft.com/en-US/legal/copyright/default.aspx",
     "CreativeCommonsMessage": "These results are tagged with Creative Commons licenses. Review the licenses to ensure you comply.",
     "DateFormat": "MM/DD/YYYY hh:mm A",
     "DocumentLibraries": "Document libraries",
@@ -16,8 +17,13 @@ define([], function () {
     "EmptyFileSize": "0 bytes",
     "FilePickerHeader": "File Picker",
     "FileSizeField": "File Size",
+    "FolderAltText": "Folder",
+    "FolderIconUrl": "https://spoprod-a.akamaihd.net/files/odsp-next-prod_2019-01-11_20190116.001/odsp-media/images/itemtypes/20/folder.svg", // should really find the right way to embed folder icon
+    "PhotoIconUrl": "https://spoprod-a.akamaihd.net/files/odsp-next-prod_2019-01-11_20190116.001/odsp-media/images/itemtypes/20_2x/photo.png",
+    "FolderBackPlate": "https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_backplate.svg",
+    "FolderFrontPlate": "https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_nopreview.svg",
     "FromLinkLinkLabel": "From a link",
-    "FromListTabLabel": "From a link",
+    "ImageAltText": ".{0} Image",
     "ImageLayoutPlaceholderText": "Layout",
     "ImageSizePlaceholderText": "Image size",
     "LayoutOptionAll": "All",
@@ -45,12 +51,10 @@ define([], function () {
     "RecentDocumentsHeader": "Recent documents",
     "RecentImagesHeader": "Recent images",
     "RecentLinkLabel": "Recent",
-    "RecentTabLabel": "Recent",
     "SearchBoxPlaceholder": "Web search",
     "SearchResultAlt": "Image result for {0}.",
     "SearchResultAriaLabel": "Press enter to open the image source in a new tab.",
     "SiteLinkLabel": "Site",
-    "SiteTabLabel": "Site",
     "SizeOptionAll": "All",
     "SizeOptionExtraLarge": "Extra Large",
     "SizeOptionLarge": "Large",
@@ -67,7 +71,6 @@ define([], function () {
       "ZB",
       "YB"
     ],
-    "SorryRecentImages": "Sorry, this function isn't implemented in this sample, because it would require granting permissions to the Graph API.",
     "SorryWebSearch": "Sorry, this function isn't implemented in this sample, because it would require a Bing API key.",
     "SortedAscending": "Sorted A to Z",
     "SortedDescending": "Sorted Z to A",
@@ -75,7 +78,6 @@ define([], function () {
     "UploadFileHeader": "Upload file",
     "UploadImageHeader": "Upload image",
     "UploadLinkLabel": "Upload",
-    "UploadTabLabel": "Upload",
     "WebSearchLinkLabel": "Web search"
   }
 });

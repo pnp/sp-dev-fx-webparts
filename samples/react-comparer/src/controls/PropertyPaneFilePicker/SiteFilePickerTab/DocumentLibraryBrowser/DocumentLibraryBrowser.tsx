@@ -9,6 +9,9 @@ import { IDocumentLibraryBrowserProps, IDocumentLibraryBrowserState, ILibrary } 
 import * as strings from 'PropertyPaneFilePickerStrings';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
+/**
+ * This would have been better done as an Office Fabric TileList, but it isn't available yet
+ */
 export default class DocumentLibraryBrowser extends React.Component<IDocumentLibraryBrowserProps, IDocumentLibraryBrowserState> {
   constructor(props: IDocumentLibraryBrowserProps) {
     super(props);
@@ -59,6 +62,9 @@ export default class DocumentLibraryBrowser extends React.Component<IDocumentLib
     );
   }
 
+  /**
+   * Renders a file folder cover
+   */
   private _onRenderCell = (item: ILibrary, index: number | undefined): JSX.Element => {
     return (
       <div
@@ -71,8 +77,8 @@ export default class DocumentLibraryBrowser extends React.Component<IDocumentLib
               <span className={styles.aboveNameplate}>
                 <span className={styles.content}>
                   <div className={css(styles.folderCover, styles.isLarge)}>
-                    <img src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_backplate.svg" className={styles.folderCoverBack}></img>
-                    <img src={"https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons/folder-large_frontplate_nopreview.svg"} className={styles.folderCoverFront} />
+                    <img src={strings.FolderBackPlate} className={styles.folderCoverBack}></img>
+                    <img src={strings.FolderFrontPlate} className={styles.folderCoverFront} />
                   </div>
                 </span>
               </span>
@@ -84,6 +90,9 @@ export default class DocumentLibraryBrowser extends React.Component<IDocumentLib
     );
   }
 
+/**
+ * Calls parent when library is opened
+ */
   private _handleOpenLibrary = (library: ILibrary) => {
     this.props.onOpenLibrary(library);
   }
