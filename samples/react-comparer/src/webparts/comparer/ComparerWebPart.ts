@@ -103,12 +103,14 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
           header: {
             description: strings.PropertyPaneDescription
           },
+          displayGroupsAsAccordion: true,
           groups: [
             {
-              groupName: strings.ImagesGroupName,
+
+              groupName: strings.BeforeImageGroupName,
               groupFields: [
                 PropertyPaneLabel('beforeImg', {
-                  text: strings.ImageDescriptionsLabel
+                  text: strings.BeforeImageGroupDescription
                 }),
                 PropertyPaneFilePicker('beforeImg', {
                   key: 'beforeImgId',
@@ -127,17 +129,17 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
                 PropertyPaneTextField('beforeAlternateText', {
                   label: strings.BeforeImageAlternateTextFieldLabel,
                   multiline: true,
-                  rows: 3
+                  rows: 3,
+                  description: strings.AlternateTextFieldDescription
+                })
+              ]
+            },
+            {
+              groupName: strings.AfterImageGroupName,
+              groupFields: [
+                PropertyPaneLabel('afterImg', {
+                  text: strings.AfterImageGroupDescription
                 }),
-                PropertyPaneLabel('beforeAlternateText', {
-                  text: strings.AlternateTextLabel
-                }),
-                PropertyPaneLink('beforeAlternateText', {
-                  text: strings.LearnMoreLink,
-                  target: "_blank",
-                  href: "https://go.microsoft.com/fwlink/?LinkId=734040"
-                }),
-                PropertyPaneHorizontalRule(),
                 PropertyPaneFilePicker('afterImg', {
                   key: 'afterImgId',
                   label: strings.AfterImageFieldLabel,
@@ -155,12 +157,14 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
                 PropertyPaneTextField('afterAlternateText', {
                   label: strings.AfterImageAlternateTextFieldLabel,
                   multiline: true,
-                  rows: 3
+                  rows: 3,
+                  description: strings.AlternateTextFieldDescription
                 })
               ]
             },
             {
-              groupName: strings.LayoutGroupName,
+              groupName: strings.OptionsGroupName,
+              isCollapsed: true,
               groupFields: [
                 PropertyPaneSlider('startPosition', {
                   label: strings.StartPositionFieldLabel,

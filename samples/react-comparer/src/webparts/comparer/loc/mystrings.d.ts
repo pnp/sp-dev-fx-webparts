@@ -1,25 +1,27 @@
 declare interface IComparerWebPartStrings {
-  PropertyPaneDescription: string;
-  LayoutGroupName: string;
-  PlaceholderIconText: string;
-  PlaceholderDescription: string;
-  PlaceholderButtonLabel: string;
-  ImagesGroupName: string;
-  BeforeImageLabelFieldLabel: string;
-  BeforeImageFieldLabel: string;
-  BeforeImageButtonLabel: string;
-  BeforeImageChangeButtonLabel: string;
-  AfterImageLabelFieldLabel: string;
-  AfterImageFieldLabel: string;
+
+  AfterImageAlternateTextFieldLabel: string;
   AfterImageButtonLabel: string;
   AfterImageChangeButtonLabel: string;
-  StartPositionFieldLabel: string;
-  HeightFieldLabel: string;
-  AlternateTextLabel: string;
+  AfterImageFieldLabel: string;
+  AfterImageGroupName: string;
+  AfterImageGroupDescription: string;
+  AfterImageLabelFieldLabel: string;
+  AlternateTextFieldDescription: string;
   BeforeImageAlternateTextFieldLabel: string;
-  AfterImageAlternateTextFieldLabel: string;
-  ImageDescriptionsLabel: string;
-  LearnMoreLink: string;
+  BeforeImageButtonLabel: string;
+  BeforeImageChangeButtonLabel: string;
+  BeforeImageFieldLabel: string;
+  BeforeImageGroupDescription: string;
+  BeforeImageGroupName: string;
+  BeforeImageLabelFieldLabel: string;
+  HeightFieldLabel: string;
+  OptionsGroupName: string;
+  PlaceholderButtonLabel: string;
+  PlaceholderDescription: string;
+  PlaceholderIconText: string;
+  PropertyPaneDescription: string;
+  StartPositionFieldLabel: string;
 }
 
 declare module 'ComparerWebPartStrings' {

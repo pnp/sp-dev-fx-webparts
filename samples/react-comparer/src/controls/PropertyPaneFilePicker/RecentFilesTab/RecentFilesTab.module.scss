@@ -1,49 +1,5 @@
 @import "../PropertyPaneFilePicker.module.scss";
 
-// :global {
-//   .ms-ItemTile-subText {
-//     font-size: 11px;
-//     opacity: 0.7;
-//   }
-//   .ms-ItemTile-childCount,
-//   .ms-ItemTile-name,
-//   .ms-ItemTile-subText {
-//     overflow: hidden;
-//     white-space: nowrap;
-//     text-overflow: ellipsis;
-//   }
-
-//   .ms-ItemTile-namePlate {
-//     //position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     right: 0;
-//     min-height: 20px;
-//     padding: 4px 8px 8px;
-//     background-color: #ffffff;
-//     color: #333333;
-//     white-space: nowrap;
-//     text-overflow: ellipsis;
-//   }
-//   .ms-ItemTile {
-//     position: relative;
-//     display: inline-block;
-//     left: 0;
-//     right: 0;
-//     top: 0;
-//     bottom: 0;
-//     cursor: pointer;
-//     -webkit-touch-callout: none;
-//     -webkit-user-select: none;
-//     -moz-user-select: none;
-//     -ms-user-select: none;
-//     user-select: none;
-//     overflow: hidden;
-//     -webkit-box-sizing: border-box;
-//     box-sizing: border-box;
-//   }
-// }
-
 .gridListCell {
   margin-bottom: 8px;
 }
@@ -63,18 +19,15 @@
 .itemTile.isFile,
 .itemTile.isPhoto,
 .itemTile.isVideo {
-  background-color: #f4f4f4;
+  background-color: $ms-color-neutralLighter;
 }
 
 .itemTile {
-  -webkit-transition: -webkit-transform 0.1s linear;
-  transition: -webkit-transform 0.1s linear;
-  transition: transform 0.1s linear;
-  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
-}
-
-.itemTile {
-  //position: relative;
+  -webkit-transition: -webkit-transform .1s linear;
+  transition: -webkit-transform .1s linear;
+  transition: transform .1s linear;
+  transition: transform .1s linear,-webkit-transform .1s linear;
+  position: relative;
   display: inline-block;
   left: 0;
   right: 0;
@@ -89,6 +42,28 @@
   overflow: hidden;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+  }
+
+  &:focus:after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    border: 1px solid;
+    border-color: $ms-color-white;
+    -webkit-box-shadow: 0 0 0 2px $ms-color-neutralSecondaryAlt;
+    box-shadow: 0 0 0 2px $ms-color-neutralSecondaryAlt;
+  }
 }
 
 .hasThumbnail {
@@ -102,13 +77,14 @@
 
 .itemTile.isFile .itemTileDiscoverFileContainer,
 .itemTile.isFile .itemTileFileContainer {
-  border: 1px solid #eaeaea;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $ms-color-neutralLight;
 }
 
 .itemTileFile {
   .itemTileFileContainer {
-    background-color: #f4f4f4;
-    //position: absolute;
+    background-color: $ms-color-neutralLighter;
     left: 0;
     right: 0;
     top: 0;
@@ -126,11 +102,6 @@
           opacity: 1;
           width: 100%;
           height: auto;
-          //position: absolute;
-          //left: 50%;
-          //top: 50%;
-          //transform: translate(-50%, -50%);
-          //animation-name: css-1;
           animation-duration: 0.367s;
           animation-timing-function: cubic-bezier(0.1, 0.25, 0.75, 0.9);
           animation-fill-mode: both;
@@ -140,21 +111,43 @@
   }
 }
 
+[dir="ltr"] .itemTileCheckCircle {
+  right: 8px;
+}
+
+.itemTileCheckCircle {
+  display: block;
+  position: absolute;
+  top: 6px;
+  opacity: 0;
+  background: 0 0;
+  border: none;
+  outline: 0;
+  top: 8px;
+}
+
+.gridListCell.isSelected .itemTileCheckCircle,
+.gridListCell:hover,
+.gridListCell:hover .itemTileCheckCircle {
+  opacity: 1;
+}
+
 .itemTileNamePlate {
-  //position:absolute;
   bottom:0;
   left:0;
   right:0;
   min-height:20px;
   padding:4px 8px 8px;
-  background-color:#ffffff;
-  color:#333333;
+  background-color:$ms-color-white;
+  color:$ms-color-neutralPrimary;
   white-space:nowrap;
   text-overflow:ellipsis
 }
 .itemTile.isFile .itemTileNamePlate {
   opacity: .95;
-  border-top: 1px solid #eaeaea;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: $ms-color-neutralLight;
   min-height: 35px;
 }
 
@@ -173,4 +166,8 @@
 .itemTileSubText {
   font-size: 11px;
   opacity: .7;
+}
+
+.recentGridList {
+  font-size: 0;
 }
