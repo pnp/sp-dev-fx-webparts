@@ -14,6 +14,7 @@ import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { Check } from 'office-ui-fabric-react/lib/Check';
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 /**
  * Rows per page
@@ -73,12 +74,29 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Gets the most recently used files
    */
   public componentDidMount(): void {
+    const { absoluteUrl } = this.props.context.pageContext.web;
+    const { spHttpClient } = this.props.context;
+
+    console.log("Setting context to siteUrl", absoluteUrl);
+
     // Build a filter criteria for each accepted file type, if applicable
     const fileFilter: string = this._getFileFilter();
 
-    // This is how you make two promises at once and wait for both results to return
-    // TODO: research to see if there is a way to get this info in one call. Perhaps as context info?
+
+    // const getWebapiUrl: string = `${absoluteUrl}/_api/site?$select=Id`;
+    // const getSiteapiUrl: string = `${absoluteUrl}/_api/web?$select=Id`;
+
+    // // This is how you make two promises at once and wait for both results to return
+    // // TODO: research to see if there is a way to get this info in one call. Perhaps as context info?
+    // const getContext: [Promise<any[]>, Promise<any[]>] = [
+    //   spHttpClient.get(getWebapiUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => response.json()),
+    //   spHttpClient.get(getSiteapiUrl, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => response.json())];
+
+    sp.setup({
+      sp: { baseUrl: absoluteUrl }
+    });
     const getContext: [Promise<any[]>, Promise<any[]>] = [sp.web.select("Id").get(), sp.site.select("Id").get()];
+
 
     Promise.all(getContext).then((results: any[]) => {
       // retrieve site id and web id

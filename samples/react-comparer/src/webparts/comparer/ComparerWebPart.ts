@@ -30,6 +30,8 @@ export interface IComparerWebPartProps {
 
 import { PropertyPaneFilePicker, ItemType } from '../../controls/PropertyPaneFilePicker';
 
+import { sp } from "@pnp/sp";
+
 /**
  * Change this to true if you want to hide the Web search tab.
  */

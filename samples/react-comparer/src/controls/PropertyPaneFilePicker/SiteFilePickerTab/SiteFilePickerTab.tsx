@@ -71,7 +71,6 @@ export default class SiteFilePickerTab extends React.Component<ISiteFilePickerTa
   }
 
   private _handleOpenFolder = (folder: IFile) => {
-    console.log("Handle open folder", folder);
     this.setState({
       libraryPath: folder.fileRef,
       folderName: folder.fileLeafRef,
