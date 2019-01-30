@@ -16,7 +16,6 @@ export interface IFileBrowserState {
   currentPath: string;
   fileUrl?: string;
   columns: IColumn[];
-  users: { [id: string] : string; };
 }
 
 export interface IFile {
