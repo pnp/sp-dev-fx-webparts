@@ -26,7 +26,7 @@ export default class DocumentLibraryBrowser extends React.Component<IDocumentLib
 
     const { absoluteUrl } = this.props.context.pageContext.web;
 
-    const apiUrl: string = `${absoluteUrl}/_api/SP.Web.GetDocumentAndMediaLibraries?webFullUrl=%27${encodeURIComponent(absoluteUrl)}%27&includePageLibraries=%27false%27`;
+    const apiUrl: string = `${absoluteUrl}/_api/SP.Web.GetDocumentAndMediaLibraries?webFullUrl='${encodeURIComponent(absoluteUrl)}'&includePageLibraries='false'`;
     this.props.context.spHttpClient.get(apiUrl,
       SPHttpClient.configurations.v1)
       .then((response: SPHttpClientResponse) => {
