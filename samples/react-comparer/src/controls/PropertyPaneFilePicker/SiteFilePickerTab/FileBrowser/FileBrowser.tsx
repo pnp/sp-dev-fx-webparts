@@ -79,7 +79,6 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
           } else {
             return <span className={styles.fileItem}>{item.fileLeafRef}</span>;
           }
-
         },
       },
       {
@@ -105,9 +104,7 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
         data: 'string',
         onColumnClick: this._onColumnClick,
         onRender: (item: IFile) => {
-          // Find the user name
-          const userName: string = this.state.users[item.modifiedBy];
-          return <span>{userName}</span>;
+          return <span>{item.modifiedBy}</span>;
         },
         isPadded: true
       },
@@ -136,8 +133,7 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
       columns: columns,
       items: [],
       isLoading: true,
-      currentPath: this.props.rootPath,
-      users: {}
+      currentPath: this.props.rootPath
     };
   }
 
@@ -271,50 +267,42 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
       isLoading: true
     });
 
-    let itemsAndUsers: [Promise<any[]>, Promise<any[]>] = [sp.web.lists.getByTitle(this.props.libraryName).items.select("DocIcon",
-      "FileRef",
-      "FileLeafRef",
-      "Modified_x0020_By",
-      "Modified",
-      "File_x0020_Type",
-      "FileSizeDisplay",
-      "FileDirRef",
-      "FSObjType")
+    sp.web.lists.getByTitle(this.props.libraryName).items.select("DocIcon",
+      'FileRef',
+      'FileLeafRef',
+      'Modified_x0020_By',
+      'Modified',
+      'File_x0020_Type',
+      'FileSizeDisplay',
+      'FileDirRef',
+      'FSObjType',
+      'Editor/Name',
+      'Editor/Title')
       .filter(`FileDirRef eq '${this.state.currentPath}'`)
-      .getAll(),
-    sp.web.siteUsers.select("Title", "LoginName").get()];
+      .expand('Editor/Id')
+      .getAll().then((results: any[]) => {
+        const fileItems: IFile[] = results.map(fileItem => {
+          const file: IFile = {
+            fileLeafRef: fileItem.FileLeafRef,
+            docIcon: fileItem.DocIcon,
+            fileRef: fileItem.FileRef,
+            modified: fileItem.Modified,
+            fileSize: fileItem.FileSizeDisplay,
+            fileType: fileItem.File_x0020_Type,
+            modifiedBy: fileItem.Editor.Title,
+            isFolder: fileItem.FSObjType === 1,
+            absoluteRef: this._buildAbsoluteUrl(fileItem.FileRef)
+          };
+          return file;
+        });
 
-    Promise.all(itemsAndUsers).then((results: any[]) => {
-      const allItems: any = results[0];
-      const allUsers: any = results[1];
-      const fileItems: IFile[] = allItems.map(fileItem => {
-        const file: IFile = {
-          fileLeafRef: fileItem.FileLeafRef,
-          docIcon: fileItem.DocIcon,
-          fileRef: fileItem.FileRef,
-          modified: fileItem.Modified,
-          fileSize: fileItem.FileSizeDisplay,
-          fileType: fileItem.File_x0020_Type,
-          modifiedBy: fileItem.Modified_x0020_By,
-          isFolder: fileItem.FSObjType === 1,
-          absoluteRef: this._buildAbsoluteUrl(fileItem.FileRef)
-        };
-        return file;
+        // de-select anything that was previously selected
+        this._selection.setAllSelected(false);
+        this.setState({
+          items: fileItems.filter(fileItem => this.props.accepts.indexOf(fileItem.docIcon) > -1 || fileItem.isFolder),
+          isLoading: false
+        });
       });
-
-      let siteUsers: { [id: string]: string; } = {};
-      allUsers.forEach(user => {
-        siteUsers[user.LoginName] = user.Title;
-      });
-
-      // de-select anything that was previously selected
-      this._selection.setAllSelected(false);
-      this.setState({
-        items: fileItems.filter(fileItem => this.props.accepts.indexOf(fileItem.docIcon) > -1 || fileItem.isFolder),
-        users: siteUsers,
-        isLoading: false
-      });
-    });
 
   }
 
