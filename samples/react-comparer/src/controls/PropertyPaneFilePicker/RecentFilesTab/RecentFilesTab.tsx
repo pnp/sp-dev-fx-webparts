@@ -131,7 +131,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
           "UniqueID",
           "SPWebUrl",
           "DefaultEncodingURL",
-          "PictureThumbnailURL"
+          "PictureThumbnailURL",
         ],
         SortList: [
           {
@@ -140,8 +140,6 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
           }
         ]
       }).then((r: SearchResults) => {
-        console.log("Results", r.PrimarySearchResults);
-
         const recentFilesResult: IRecentFile[] = r.PrimarySearchResults.map((result: SearchResult) => {
           const recentFile: IRecentFile = {
             key: result["UniqueID"],
