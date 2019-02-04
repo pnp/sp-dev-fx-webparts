@@ -8,7 +8,9 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneLabel,
-  PropertyPaneSlider
+  PropertyPaneSlider,
+  PropertyPaneChoiceGroup,
+  IPropertyPaneChoiceGroupOption,
 } from '@microsoft/sp-webpart-base';
 
 //
@@ -27,14 +29,16 @@ import { PropertyPaneFilePicker, ItemType } from '../../controls/PropertyPaneFil
 export interface IComparerWebPartProps {
   afterImg: string;
   afterLabel: string;
+  aspectRatio: '1:1' | '3:2' | '4:3' | '16:9';
   beforeImg: string;
   beforeLabel: string;
-  height: number;
   startPosition: number;
   title: string;
   beforeAlternateText: string;
   afterAlternateText: string;
 }
+
+const aspectRatio1_1: string = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4E5OyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNWRHWFIAAADeSURBVHhe7dAxCsNAEARBvVP//8fZDgxi6GjBJ4seQSnoS5Y51lp1gdEMoxlGM4xmGM0wmmE0w2iG0QyjGUYzjGYYzTCaYTTDaIbRDKMZxon39/ndJu+ZwjiRB+6W90xhnPgedp7nVo8YJN9+pYOEDhI6SOggoYOEDhI6SOggoYOEDhI6SOggoYOEDhI6SOggoYOEDhI6SOggoYOEDhI6SOggoYOExwyy098Pcpe8ZwrjRB64W94zhdEMoxlGM4xmGM0wmmE0w2iG0QyjGUYzjGYYzTCaYTTDaIbRax0vGYi5boi8iG0AAAAASUVORK5CYII=`;
 
 /**
  * Change the line below to true if you want to hide the Web search tab.
@@ -45,12 +49,8 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
   // protected onInit(): Promise<void> {
   //   return new Promise<void>((resolve, _reject) => {
 
-  //     if (this.properties.startPosition === undefined) {
-  //       this.properties.startPosition = 50;
-  //     }
-
-  //     if (this.properties.height === undefined) {
-  //       this.properties.height = 400;
+  //     if (this.properties.aspectRatio === undefined) {
+  //       this.properties.aspectRatio = '1:1';
   //     }
 
   //     resolve(undefined);
@@ -61,6 +61,26 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
     // Get the width of this web part, we'll need it to resize the images
     const { clientWidth } = this.domElement;
 
+    // Calculate the aspect ratio
+    let ratio: number = undefined;
+    switch (this.properties.aspectRatio) {
+      case "1:1":
+        ratio = 1;
+        break;
+      case "4:3":
+        ratio = 4 / 3;
+        break;
+      case "3:2":
+        ratio = 3 / 2;
+        break;
+      case "16:9":
+      default:
+        ratio = 16 / 9;
+    }
+
+    // Calculate the height based on the selected aspect ratio
+    const calculatedHeight: number = clientWidth / ratio;
+
     const element: React.ReactElement<IComparerProps> = React.createElement(
       Comparer,
       {
@@ -69,7 +89,7 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
         beforeImg: this.properties.beforeImg,
         beforeLabel: this.properties.beforeLabel,
         displayMode: this.displayMode,
-        height: this.properties.height,
+        height: calculatedHeight,
         onConfigure: this.context.propertyPane.open,
         startPosition: this.properties.startPosition,
         title: this.properties.title,
@@ -180,16 +200,34 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
                   showValue: true,
                   step: 1
                 }),
-                PropertyFieldSpinButton('height', {
-                  label: strings.HeightFieldLabel,
-                  step: 1,
-                  min: 0,
-                  key: 'heightId',
-                  suffix: 'px',
-                  decimalPlaces: 0,
-                  initialValue: this.properties.height,
-                  properties: this.properties,
-                  onPropertyChange: (propertyPath: string, newValue: any) => this._handlePropertyChange(propertyPath, newValue),
+                PropertyPaneChoiceGroup('aspectRatio', {
+                  label: strings.AspectRatioFieldLabel,
+                  options: [
+                    {
+                      key: '1:1',
+                      text: '1:1',
+                      selectedImageSrc: require('./assets/AspectRatio1_1.png'),
+                      imageSrc: require('./assets/AspectRatio1_1.png'),
+                    },
+                    {
+                      key: '3:2',
+                      text: '3:2',
+                      selectedImageSrc: require('./assets/AspectRatio3_2.png'),
+                      imageSrc: require('./assets/AspectRatio3_2.png'),
+                    },
+                    {
+                      key: '4:3',
+                      text: '4:3',
+                      selectedImageSrc: require('./assets/AspectRatio4_3.png'),
+                      imageSrc: require('./assets/AspectRatio4_3.png'),
+                    },
+                    {
+                      key: '16:9',
+                      text: '16:9',
+                      selectedImageSrc: require('./assets/AspectRatio16_9.png'),
+                      imageSrc: require('./assets/AspectRatio16_9.png'),
+                    }
+                  ]
                 })
               ]
             }
@@ -197,11 +235,5 @@ export default class ComparerWebPart extends BaseClientSideWebPart<IComparerWebP
         }
       ]
     };
-  }
-
-  private _handlePropertyChange(propertyPath: string, newValue: any): void {
-    this.properties[propertyPath] = newValue;
-
-    this.render();
   }
 }

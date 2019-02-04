@@ -16,6 +16,7 @@ export interface IFileBrowserState {
   currentPath: string;
   fileUrl?: string;
   columns: IColumn[];
+  selectedView: ViewType;
 }
 
 export interface IFile {
@@ -29,3 +30,5 @@ export interface IFile {
   isFolder: boolean;
   absoluteRef: string;
 }
+
+export type ViewType = 'list' | 'compact' | 'tiles';

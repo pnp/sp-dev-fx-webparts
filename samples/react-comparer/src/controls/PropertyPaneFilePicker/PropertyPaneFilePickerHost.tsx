@@ -23,6 +23,7 @@ import SiteFilePickerTab from './SiteFilePickerTab/SiteFilePickerTab';
 import WebSearchTab from './WebSearchTab/WebSearchTab';
 import RecentFilesTab from './RecentFilesTab/RecentFilesTab';
 import { ItemType } from './IPropertyPaneFilePicker';
+import OneDriveTab from './OneDriveTab/OneDriveTab';
 
 // The list of acceptable image file types
 const ACCEPTABLE_IMAGEFILE_EXTENSIONS: string = ".gif,.jpg,.jpeg,.bmp,.dib,.tif,.tiff,.ico,.png,.jxr,.svg";
@@ -45,7 +46,7 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
         : undefined;
 
     // Get a list of groups to display
-    let groups:INavLinkGroup[] = [
+    let groups: INavLinkGroup[] = [
       {
         links: [
           {
@@ -59,6 +60,12 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
             url: '#search',
             key: 'keyWeb',
             icon: 'Search',
+          },
+          {
+            name: "OneDrive",
+            url: '#onedrive',
+            key: 'keyOneDrive',
+            icon: 'OneDrive',
           },
           {
             name: strings.SiteLinkLabel,
@@ -82,18 +89,25 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
       }
     ];
 
-    // Hide tabs we don't want. Star from bottom of the list
+    // Hide tabs we don't want. Start from bottom of the list
     // so we're not changing the relative position of items
     // as we remove them.
 
+    // I'm sure there is a better way to do this...
+
     // If we don't want local uploads, remove it from the list
     if (this.props.disableLocalUpload) {
-      groups[0].links.splice(3,1);
+      groups[0].links.splice(4, 1);
+    }
+
+    // If we don't want OneDrive, remove it from the list
+    if (this.props.hasMySiteTab === false) {
+      groups[0].links.splice(2, 1);
     }
 
     // If we don't want web search, remove it from the list
     if (this.props.disableWebSearchTab) {
-      groups[0].links.splice(1,1);
+      groups[0].links.splice(1, 1);
     }
 
     return (
@@ -153,6 +167,13 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
               onClose={() => this._handleClosePanel()}
               onSave={(value: string) => this._handleSave(value)}
             />}
+            {this.state.selectedTab === "keyOneDrive" && <OneDriveTab
+              itemType={this.props.itemType}
+              context={this.props.webPartContext}
+              accepts={accepts}
+              onClose={() => this._handleClosePanel()}
+              onSave={(value: string) => this._handleSave(value)}
+            />}
             {this.state.selectedTab === "keyRecent" && <RecentFilesTab
               itemType={this.props.itemType}
               context={this.props.webPartContext}
@@ -179,7 +200,8 @@ export class PropertyPaneFilePickerHost extends React.Component<IPropertyPaneFil
    */
   private _handleOpenPanel = () => {
     this.setState({
-      panelOpen: true
+      panelOpen: true,
+      selectedTab: 'keyRecent'
     });
   }
 

@@ -10,9 +10,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased/TODO]
 
-- Add support for OneDrive browsing
 - Improve support for files (vs. images)
-- Consider moving file picker to PnP property control
+- OneDrive lists should have a chevron on headers
+- Site file picker: list browsing should support tile view.
+- Little sev 3 bug when selecting folders in OneDrive where it quickly marks the file in the same 
+  ordinal position as the folder as selected before folder is loaded.
+- Test for mobile devices (and fix issues)
+- Test for accessibility
+- Fix other inconsistencies
 
 ## [1.0.0] - 2019-01-27
 
@@ -23,7 +28,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - RecentFilesTab: allows users to select a file from their recent files in SharePoint.
 - SiteFilePickerTab: allows users to find files from within the current site.
 - UploadFilePickerTab: allows users to upload a file.
-- WebSearch: allows users to search Bing for files
+- WebSearch: allows users to search Bing for files.
+- OneDriveTab: allows users to select files from their OneDrive.
+- Tile doesn't show hover border in recent files
+- Add ability to enter bing API and store in tenant store
+- Add ratio selector
 
 ### Changed
 

@@ -16,12 +16,12 @@ define([], function() {
   "BeforeImageGroupDescription": "The Before image appears on the right of the comparer. It covers the After image as users drag the divider to the left.",
   "BeforeImageGroupName": "Before image",
   "BeforeImageLabelFieldLabel": "Label",
-  "HeightFieldLabel": "Height",
   "OptionsGroupName": "Options",
   "PlaceholderButtonLabel": "Add images",
   "PlaceholderDescription": "In order to compare images, you need to insert a 'Before' and an 'After' image.",
   "PlaceholderIconText": "Compare images",
   "PropertyPaneDescription": "Select a Before and After image. Add text labels over your images and description. Choose options such as starting position and web part height.",
-  "StartPositionFieldLabel": "Start position (%)"
+  "StartPositionFieldLabel": "Start position (%)",
+  "AspectRatioFieldLabel": "Aspect ratio",
 }
 });

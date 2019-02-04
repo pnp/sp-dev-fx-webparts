@@ -10,7 +10,7 @@ import * as strings from 'PropertyPaneFilePickerStrings';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
 /**
- * This would have been better done as an Office Fabric TileList, but it isn't available yet
+ * This would have been better done as an Office Fabric TileList, but it isn't available yet for production use
  */
 export default class DocumentLibraryBrowser extends React.Component<IDocumentLibraryBrowserProps, IDocumentLibraryBrowserState> {
   constructor(props: IDocumentLibraryBrowserProps) {

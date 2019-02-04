@@ -4,10 +4,10 @@ import * as React from 'react';
 import styles from './FileBrowser.module.scss';
 
 // Custom properties and state
-import { IFileBrowserProps, IFileBrowserState, IFile } from './FileBrowser.types';
+import { IFileBrowserProps, IFileBrowserState, IFile, ViewType } from './FileBrowser.types';
 
 // PnP library for navigating through libraries
-import { sp } from "@pnp/sp";
+import { sp, RenderListDataParameters, RenderListDataOptions } from "@pnp/sp";
 
 // Office Fabric
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
@@ -20,12 +20,17 @@ import {
   IDetailsRowProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+
+const LAYOUT_STORAGE_KEY: string = 'comparerSiteFilesLayout';
 
 // Localized strings
 import * as strings from 'PropertyPaneFilePickerStrings';
 
-// used to format date
-import * as moment from 'moment';
+// OneDrive services
+import { OneDriveServices } from '../../../../services/OneDriveServices';
+import { FormatBytes, GetAbsoluteDomainUrl } from '../../../../CommonUtils';
 
 /**
  * Renders list of file in a list.
@@ -37,6 +42,11 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
 
   constructor(props: IFileBrowserProps) {
     super(props);
+
+    // If possible, load the user's favourite layout
+    const lastLayout: ViewType = localStorage ?
+      localStorage.getItem(LAYOUT_STORAGE_KEY) as ViewType
+      : 'list' as ViewType;
 
     const columns: IColumn[] = [
       {
@@ -53,7 +63,7 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
         onRender: (item: IFile) => {
           const folderIcon: string = strings.FolderIconUrl;
           const iconUrl: string = strings.PhotoIconUrl;
-          const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.docIcon);
+          const altText: string = item.isFolder ? strings.FolderAltText : strings.ImageAltText.replace('{0}', item.fileType);
           return <div className={styles.fileTypeIcon}>
             <img src={item.isFolder ? folderIcon : iconUrl} className={styles.fileTypeIconIcon} alt={altText} title={altText} />
           </div>;
@@ -90,8 +100,8 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
         onColumnClick: this._onColumnClick,
         data: 'number',
         onRender: (item: IFile) => {
-          const dateModified = moment(item.modified).format(strings.DateFormat);
-          return <span>{dateModified}</span>;
+          //const dateModified = moment(item.modified).format(strings.DateFormat);
+          return <span>{item.modified}</span>;
         },
         isPadded: true
       },
@@ -118,7 +128,7 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
         data: 'number',
         onColumnClick: this._onColumnClick,
         onRender: (item: IFile) => {
-          return <span>{item.fileSize ? this._formatBytes(item.fileSize, 2) : undefined}</span>;
+          return <span>{item.fileSize ? FormatBytes(item.fileSize, 1) : undefined}</span>;
         }
       }
     ];
@@ -133,7 +143,8 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
       columns: columns,
       items: [],
       isLoading: true,
-      currentPath: this.props.rootPath
+      currentPath: this.props.rootPath,
+      selectedView: lastLayout
     };
   }
 
@@ -163,9 +174,15 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
 
     return (
       <div>
+        <div className={styles.itemPickerTopBar}>
+          <CommandBar
+            items={this._getToolbarItems()}
+            farItems={this.getFarItems()}
+          />
+        </div>
         <DetailsList
           items={this.state.items}
-          compact={false}
+          compact={this.state.selectedView === 'compact'}
           columns={this.state.columns}
           selectionMode={SelectionMode.single}
           setKey="set"
@@ -177,14 +194,146 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
           enterModalSelectionOnTouch={true}
           onRenderRow={this._onRenderRow}
         />
+        {this.state.items === undefined || this.state.items.length < 1 &&
+          this._renderEmptyFolder()
+        }
       </div>
     );
   }
+
+  /**
+  * Renders a placeholder to indicate that the folder is empty
+  */
+  private _renderEmptyFolder = (): JSX.Element => {
+    return (<div className={styles.emptyFolder}>
+      <div className={styles.emptyFolderImage}>
+        <img
+          className={styles.emptyFolderImageTag}
+          src={strings.OneDriveEmptyFolderIconUrl}
+          alt={strings.OneDriveEmptyFolderAlt} />
+      </div>
+      <div role="alert">
+        <div className={styles.emptyFolderTitle}>
+          {strings.OneDriveEmptyFolderTitle}
+        </div>
+        <div className={styles.emptyFolderSubText}>
+          <span className={styles.emptyFolderPc}>
+            {strings.OneDriveEmptyFolderDescription}
+          </span>
+          {/* Removed until we add support to upload */}
+          {/* <span className={styles.emptyFolderMobile}>
+            Tap <Icon iconName="Add" className={styles.emptyFolderIcon} /> to add files here.
+        </span> */}
+        </div>
+      </div>
+    </div>);
+  }
+
 
   private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {
     const fileItem: IFile = props.item;
 
     return <DetailsRow {...props} className={fileItem.isFolder ? styles.folderRow : styles.fileRow} />;
+  }
+
+  /**
+   * Get the list of toolbar items on the left side of the toolbar.
+   * We leave it empty for now, but we may add the ability to upload later.
+   */
+  private _getToolbarItems = (): ICommandBarItemProps[] => {
+    return [
+
+    ];
+  }
+
+  private getFarItems = (): ICommandBarItemProps[] => {
+    const { selectedView } = this.state;
+
+    let viewIconName: string = undefined;
+    let viewName: string = undefined;
+    switch (this.state.selectedView) {
+      case 'list':
+        viewIconName = 'List';
+        viewName = strings.ListLayoutList;
+        break;
+      case 'compact':
+        viewIconName = 'AlignLeft';
+        viewName = strings.ListLayoutCompact;
+        break;
+      default:
+        viewIconName = 'GridViewMedium';
+        viewName = strings.ListLayoutTile;
+    }
+
+    const farItems: ICommandBarItemProps[] = [
+      {
+        key: 'listOptions',
+        className: styles.commandBarNoChevron,
+        title: strings.ListOptionsTitle,
+        ariaLabel: strings.ListOptionsAlt.replace('{0}', viewName),
+        iconProps: {
+          iconName: viewIconName
+        },
+        iconOnly: true,
+        subMenuProps: {
+          items: [
+            {
+              key: 'list',
+              name: strings.ListLayoutList,
+              iconProps: {
+                iconName: 'List'
+              },
+              canCheck: true,
+              checked: this.state.selectedView === 'list',
+              ariaLabel: strings.ListLayoutAriaLabel.replace('{0}', strings.ListLayoutList).replace('{1}', selectedView === 'list' ? strings.Selected : undefined),
+              title: strings.ListLayoutListDescrition,
+              onClick: (_ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => this._handleSwitchLayout(item)
+            },
+            {
+              key: 'compact',
+              name: strings.ListLayoutCompact,
+              iconProps: {
+                iconName: 'AlignLeft'
+              },
+              canCheck: true,
+              checked: this.state.selectedView === 'compact',
+              ariaLabel: strings.ListLayoutAriaLabel.replace('{0}', strings.ListLayoutCompact).replace('{1}', selectedView === 'compact' ? strings.Selected : undefined),
+              title: strings.ListLayoutCompactDescription,
+              onClick: (_ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => this._handleSwitchLayout(item)
+            },
+            {
+              key: 'tiles',
+              name: 'Tiles',
+              iconProps: {
+                iconName: 'GridViewMedium'
+              },
+              canCheck: true,
+              checked: this.state.selectedView === 'tiles',
+              ariaLabel: strings.ListLayoutAriaLabel.replace('{0}', strings.ListLayoutTile).replace('{1}', selectedView === 'tiles' ? strings.Selected : undefined),
+              title: strings.ListLayoutTileDescription,
+              onClick: (_ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => this._handleSwitchLayout(item)
+            }
+          ]
+        }
+      }
+    ];
+    return farItems;
+  }
+
+  /**
+   * Called when users switch the view
+   */
+  private _handleSwitchLayout = (item?: IContextualMenuItem) => {
+    if (item) {
+      // Store the user's favourite layout
+      if (localStorage) {
+        localStorage.setItem(LAYOUT_STORAGE_KEY, item.key);
+      }
+
+      this.setState({
+        selectedView: item.key as ViewType
+      });
+    }
   }
 
   /**
@@ -267,42 +416,87 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
       isLoading: true
     });
 
-    sp.web.lists.getByTitle(this.props.libraryName).items.select("DocIcon",
-      'FileRef',
-      'FileLeafRef',
-      'Modified_x0020_By',
-      'Modified',
-      'File_x0020_Type',
-      'FileSizeDisplay',
-      'FileDirRef',
-      'FSObjType',
-      'Editor/Name',
-      'Editor/Title')
-      .filter(`FileDirRef eq '${this.state.currentPath}'`)
-      .expand('Editor/Id')
-      .getAll().then((results: any[]) => {
-        const fileItems: IFile[] = results.map(fileItem => {
-          const file: IFile = {
-            fileLeafRef: fileItem.FileLeafRef,
-            docIcon: fileItem.DocIcon,
-            fileRef: fileItem.FileRef,
-            modified: fileItem.Modified,
-            fileSize: fileItem.FileSizeDisplay,
-            fileType: fileItem.File_x0020_Type,
-            modifiedBy: fileItem.Editor.Title,
-            isFolder: fileItem.FSObjType === 1,
-            absoluteRef: this._buildAbsoluteUrl(fileItem.FileRef)
-          };
-          return file;
-        });
+    const fileFilter: string = OneDriveServices.GetFileTypeFilter(this.props.accepts);
 
-        // de-select anything that was previously selected
-        this._selection.setAllSelected(false);
-        this.setState({
-          items: fileItems.filter(fileItem => this.props.accepts.indexOf(fileItem.docIcon) > -1 || fileItem.isFolder),
-          isLoading: false
-        });
+    const parms: RenderListDataParameters = {
+      RenderOptions: RenderListDataOptions.ContextInfo | RenderListDataOptions.ListData | RenderListDataOptions.ListSchema | RenderListDataOptions.ViewMetadata | RenderListDataOptions.EnableMediaTAUrls | RenderListDataOptions.ParentInfo,//4231, //4103, //4231, //192, //64
+      AllowMultipleValueFilterForTaxonomyFields: true,
+      FolderServerRelativeUrl: this.state.currentPath,
+      ViewXml:
+        `<View>
+        <Query>
+          <Where>
+            <Or>
+              <And>
+                <Eq>
+                  <FieldRef Name="FSObjType" />
+                  <Value Type="Text">1</Value>
+                </Eq>
+                <Eq>
+                  <FieldRef Name="SortBehavior" />
+                  <Value Type="Text">1</Value>
+                </Eq>
+              </And>
+              <In>
+                <FieldRef Name="File_x0020_Type" />
+                ${fileFilter}
+              </In>
+            </Or>
+          </Where>
+        </Query>
+        <ViewFields>
+          <FieldRef Name="DocIcon"/>
+          <FieldRef Name="LinkFilename"/>
+          <FieldRef Name="Modified"/>
+          <FieldRef Name="Editor"/>
+          <FieldRef Name="FileSizeDisplay"/>
+          <FieldRef Name="SharedWith"/>
+          <FieldRef Name="MediaServiceFastMetadata"/>
+          <FieldRef Name="MediaServiceOCR"/>
+          <FieldRef Name="_ip_UnifiedCompliancePolicyUIAction"/>
+          <FieldRef Name="ItemChildCount"/>
+          <FieldRef Name="FolderChildCount"/>
+          <FieldRef Name="SMTotalFileCount"/>
+          <FieldRef Name="SMTotalSize"/>
+        </ViewFields>
+        <RowLimit Paged="TRUE">100</RowLimit>
+      </View>`
+    };
+
+    sp.web.lists.getByTitle(this.props.libraryName).renderListDataAsStream(parms).then((value: any) => {
+      const fileItems: IFile[] = value.ListData.Row.map(fileItem => {
+        const modifiedFriendly: string = fileItem["Modified.FriendlyDisplay"];
+
+        // Get the modified date
+        const modifiedParts: string[] = modifiedFriendly!.split('|');
+        let modified: string = fileItem.Modified;
+
+        // If there is a friendly modified date, use that
+        if (modifiedParts.length === 2) {
+          modified = modifiedParts[1];
+        }
+
+        const file: IFile = {
+          fileLeafRef: fileItem.FileLeafRef,
+          docIcon: fileItem.DocIcon,
+          fileRef: fileItem.FileRef,
+          modified: modified,
+          fileSize: fileItem.File_x0020_Size,
+          fileType: fileItem.File_x0020_Type,
+          modifiedBy: fileItem.Editor![0]!.title,
+          isFolder: fileItem.FSObjType === "1",
+          absoluteRef: this._buildAbsoluteUrl(fileItem.FileRef)
+        };
+        return file;
       });
+
+      // de-select anything that was previously selected
+      this._selection.setAllSelected(false);
+      this.setState({
+        items: fileItems,
+        isLoading: false
+      });
+    });
 
   }
 
@@ -310,33 +504,7 @@ export default class FileBrowser extends React.Component<IFileBrowserProps, IFil
    * Creates an absolute URL
    */
   private _buildAbsoluteUrl = (relativeUrl: string) => {
-    const siteUrl: string = this._getAbsoluteDomainUrl(this.props.context.pageContext.web.absoluteUrl);
+    const siteUrl: string = GetAbsoluteDomainUrl(this.props.context.pageContext.web.absoluteUrl);
     return siteUrl + relativeUrl;
-  }
-
-  /**
-   * Gets the current domain url
-   */
-  private _getAbsoluteDomainUrl = (url: string): string => {
-    if (url !== undefined) {
-      const myURL = new URL(url.toLowerCase());
-      return myURL.protocol + "//" + myURL.host;
-    } else {
-      return undefined;
-    }
-  }
-
-  /**
-   * Formats a file size in the right unit
-   */
-  private _formatBytes(bytes, decimals) {
-    if (bytes == 0) {
-      return strings.EmptyFileSize;
-    }
-
-    const k: number = 1024;
-    const dm = decimals <= 0 ? 0 : decimals || 2;
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + strings.SizeUnit[i];
   }
 }

@@ -10,7 +10,7 @@ export interface IPropertyPaneFilePickerProps {
   disableLocalUpload?: boolean;
   disableWebSearchTab?: boolean;
   disableCentralAssetRepo?: boolean; // not supported yet
-  hasMySiteTab?: boolean; // not supported yet
+  hasMySiteTab?: boolean;
   accepts?: string;
   itemType: ItemType;
   required?: boolean;

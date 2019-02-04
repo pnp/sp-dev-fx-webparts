@@ -527,7 +527,7 @@ export default class WebSearchTab extends React.Component<IWebSearchTabProps, IW
    * Calls property pane file picker's save function
    */
   private _handleSave = () => {
-    this.props.onSave(this.state.fileUrl);
+    this.props.onSave(encodeURI(this.state.fileUrl));
   }
 
   /**

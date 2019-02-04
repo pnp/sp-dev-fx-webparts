@@ -85,7 +85,7 @@ export default class UploadFilePickerTab extends React.Component<IUploadFilePick
    * Saves base64 encoded image back to property pane file picker
    */
   private _handleSave = () => {
-    this.props.onSave(this.state.fileUrl);
+    this.props.onSave(encodeURI(this.state.fileUrl));
   }
 
   /**

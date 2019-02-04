@@ -15,13 +15,13 @@ declare interface IComparerWebPartStrings {
   BeforeImageGroupDescription: string;
   BeforeImageGroupName: string;
   BeforeImageLabelFieldLabel: string;
-  HeightFieldLabel: string;
   OptionsGroupName: string;
   PlaceholderButtonLabel: string;
   PlaceholderDescription: string;
   PlaceholderIconText: string;
   PropertyPaneDescription: string;
   StartPositionFieldLabel: string;
+  AspectRatioFieldLabel: string;
 }
 
 declare module 'ComparerWebPartStrings' {

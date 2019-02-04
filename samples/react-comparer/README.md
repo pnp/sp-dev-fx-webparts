@@ -4,7 +4,7 @@
 
 ## Summary
 
-Allows users to compare Before and After pictures, with a drag-and-drop slider. Implements a custom file picker.
+Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker.
 
 ## Background
 
@@ -21,10 +21,12 @@ After a lot of digging around, I decided to re-create my own.
 
 After all, one of the premises of SPFx is that SPFx gives us -- the SharePoint developer community -- a framework to build the same web parts that Microsoft's own developers do. Right?
 
-This sample re-creates the SharePoint file picker (or, more accurately, the SharePoint image picker) that is used by out-of-the-box web parts such as the Image and Hero web parts. My goal was to create something that would be re-usable (maybe even a candidate for the PnP controls?),
-and would be _virtually indistinguishable_ from the out-of-the-box picker. In fact, as I was testing the app, I found myself testing the out-of-the-box picker when I thought I was testing my own file picker.
+This sample re-creates the SharePoint file picker (or, more accurately, the SharePoint image picker) that is used by out-of-the-box web parts such as the Image and Hero web parts. My goal was to create something that would be re-usable,
+and would be as close as possible from the out-of-the-box picker. In fact, as I was testing the app, I found myself testing the out-of-the-box picker when I thought I was testing my own file picker.
 
-It includes the following tabs:
+After building this sample, I can confirm that it _is_ possible to build web parts that look and feel like the out-of-the-box web parts using SPFx.
+
+The file picker includes the following tabs:
 
 ### Recent
 
@@ -34,6 +36,10 @@ It includes the following tabs:
 
 ![Web search tab](./assets/WebSearchTab.gif)
 > NOTE: Requires a Bing API key, see below
+
+### OneDrive
+
+![OneDrive tab](./assets/OneDriveTab.gif)
 
 ### Site
 
@@ -47,9 +53,6 @@ It includes the following tabs:
 
 ![From a link tab](./assets/FromLinkTab.gif)
 
-Sorry, I didn't get to write the **OneDrive** tab.
-
-After building this sample, I can confirm that it _is_ possible to build web parts that look and feel like the out-of-the-box web parts using SPFx.
 
 ## Used SharePoint Framework Version
 
@@ -151,6 +154,7 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
 * [Build custom controls for the property pane](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/build-custom-property-pane-controls)
 * [Office UI Fabric](https://dev.office.com/fabric)
   * [Button](https://developer.microsoft.com/en-us/fabric#/components/button)
+  * [CommandBar](https://developer.microsoft.com/en-us/fabric#/components/commandbar)
   * [DetailsList](https://developer.microsoft.com/en-us/fabric#/components/detailslist)
   * [FocusZone](https://developer.microsoft.com/en-us/fabric#/components/focuszone)
   * [Label](https://developer.microsoft.com/en-us/fabric#/components/label)

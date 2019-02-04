@@ -255,3 +255,122 @@
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.xlg, .xxlg, .xxxlg, .xxxxlg {
+  color: inherit;
+}
+
+.itemPickerTopBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-color: red;
+}
+
+.commandBarNoChevron :global(.ms-CommandBarItem-chevronDown) {
+  display: none;
+}
+
+
+.fileItem {
+  cursor: default;
+}
+
+.folderItem {
+  cursor: pointer;
+}
+
+.folderItem:hover {
+  text-decoration: underline;
+}
+
+.fileTypeIcon {
+  margin: 0 -2px;
+  display: inline-block;
+}
+
+.fileTypeIconIcon {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+}
+
+.detailsListHeaderFileTypeIcon {
+  font-size: 16px;
+  padding: 0;
+}
+
+.iconColumnHeader {
+  width: 40px!important;
+  margin-right: -8px;
+}
+
+.iconColumnHeader i {
+  font-size:16px;
+}
+
+.fileRow {
+color: inherit;
+}
+
+.folderRow {
+  color: inherit;
+}
+
+.folderRow :global(.ms-DetailsRow-check) {
+  visibility: hidden;
+}
+
+.emptyFolder {
+  text-align: center;
+
+  .emptyFolderImage {
+    padding-top: 52px;
+    height: 208px;
+    width: auto;
+    margin: 0 auto;
+
+    .emptyFolderImageTag {
+      height: 208px;
+      width: auto;
+    }
+  }
+
+  .emptyFolderTitle {
+    padding: 16px 16px 0 16px;
+    font-size: 21px;
+    font-weight: 100;
+    max-width: 400px;
+    color: #858585;
+    margin: 0 auto;
+  }
+
+  .emptyFolderSubText {
+    padding: 6px 16px 0 16px;
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 400px;
+    color: #858585;
+    margin: 0 auto;
+  }
+
+  .emptyFolderMobile {
+    display: none;
+  }
+
+  .emptyFolderPc {
+    color: inherit;
+  }
+
+  .emptyFolderIcon {
+    display: inline;
+    font-size: 13px;
+    padding-left: 2px;
+    padding-right: 1px;
+  }
+}

@@ -16,6 +16,7 @@ import { FetchClient } from "@pnp/common";
 
 // Localized strings
 import * as strings from 'PropertyPaneFilePickerStrings';
+import { GetAbsoluteDomainUrl } from '../../../CommonUtils';
 
 export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTabProps, ILinkFilePickerTabState> {
   constructor(props: ILinkFilePickerTabProps) {
@@ -140,7 +141,7 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
    * Handles when user saves
    */
   private _handleSave = () => {
-    this.props.onSave(this.state.fileUrl);
+    this.props.onSave(encodeURI(this.state.fileUrl));
   }
 
   /**
@@ -198,15 +199,6 @@ export default class LinkFilePickerTab extends React.Component<ILinkFilePickerTa
 
   private _isSameDomain = (fileUrl: string): boolean => {
     const siteUrl: string = this.props.context.pageContext.web.absoluteUrl;
-    return this._getAbsoluteDomainUrl(siteUrl) === this._getAbsoluteDomainUrl(fileUrl);
-  }
-
-  private _getAbsoluteDomainUrl = (url: string): string => {
-    if (url !== undefined) {
-      const myURL = new URL(url.toLowerCase());
-      return myURL.protocol + "//" + myURL.host;
-    } else {
-      return undefined;
-    }
+    return GetAbsoluteDomainUrl(siteUrl) === GetAbsoluteDomainUrl(fileUrl);
   }
 }

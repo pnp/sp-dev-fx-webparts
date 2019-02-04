@@ -12,7 +12,7 @@ import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import { css } from "@uifabric/utilities/lib/css";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
-import { Image } from 'office-ui-fabric-react/lib/Image';
+import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 
 // Custom props and states
@@ -167,27 +167,27 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
     const { results,
       isLoading } = this.state;
     return (
-      <div className={styles.tabContainer}>
-        <div className={styles.tabHeaderContainer}>
+      <span className={styles.tabContainer}>
+        <span className={styles.tabHeaderContainer}>
           <h2 className={styles.tabHeader}>{imageType ? strings.RecentImagesHeader : strings.RecentDocumentsHeader}</h2>
-        </div>
-        <div className={styles.tab}>
+        </span>
+        <span className={styles.tab}>
           {isLoading ?
             this._renderSpinner() :
             results === undefined || results.length < 1 ? this._renderPlaceholder() : this._renderGridList()
           }
-        </div>
-        <div className={styles.actionButtonsContainer}>
-          <div className={styles.actionButtons}>
+        </span>
+        <span className={styles.actionButtonsContainer}>
+          <span className={styles.actionButtons}>
             <PrimaryButton
               disabled={!this.state.fileUrl}
               onClick={() => this._handleSave()}
               className={styles.actionButton}
             >{strings.OpenButtonLabel}</PrimaryButton>
             <DefaultButton onClick={() => this._handleClose()} className={styles.actionButton}>{strings.CancelButtonLabel}</DefaultButton>
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     );
   }
 
@@ -231,7 +231,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Renders a grid list containing results
    */
   private _renderGridList = (): JSX.Element => {
-    return <div className={styles.recentGridList} role="grid">
+    return <span className={styles.recentGridList} role="grid">
       <FocusZone>
         <SelectionZone selection={this._selection}
           onItemInvoked={(item: IRecentFile) => this._handleItemInvoked(item)}>
@@ -245,7 +245,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
           />
         </SelectionZone>
       </FocusZone>
-    </div>;
+    </span>;
   }
 
   /**
@@ -270,14 +270,19 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
           data-selection-index={index}
           data-selection-invoke="true"
           data-item-index={index}
-          data-automationid="ItemTile">
+          data-automationid="ItemTile"
+          style={{
+            width: this._columnWidth,
+            height: this._rowHeight
+          }}
+          >
           <div className={styles.itemTileContent}>
             <div className={styles.itemTileFile}>
               <div className={styles.itemTileFileContainer}>
                 <div className={styles.itemTileThumbnail}>
-                  <div className={styles.image}>
-                    <Image src={item.fileUrl} />
-                  </div>
+                  {/* <div className={styles.image}> */}
+                    <Image src={item.fileUrl} width={this._columnWidth} height={this._rowHeight} imageFit={ImageFit.cover} />
+                  {/* </div> */}
                 </div>
                 <div className={styles.itemTileCheckCircle}
                   role='checkbox'
@@ -310,7 +315,7 @@ export default class RecentFilesTab extends React.Component<IRecentFilesTabProps
    * Gets called when it is time to save the currently selected item
    */
   private _handleSave = () => {
-    this.props.onSave(this.state.fileUrl);
+    this.props.onSave(encodeURI(this.state.fileUrl));
   }
 
   /**

@@ -84,6 +84,7 @@
 
 .itemTileFile {
   .itemTileFileContainer {
+    position: absolute;
     background-color: $ms-color-neutralLighter;
     left: 0;
     right: 0;
@@ -124,6 +125,10 @@
   border: none;
   outline: 0;
   top: 8px;
+
+  :global(.ms-Check-check) {
+    opacity: 1;
+  }
 }
 
 .gridListCell.isSelected .itemTileCheckCircle,
@@ -133,6 +138,7 @@
 }
 
 .itemTileNamePlate {
+  position: absolute;
   bottom:0;
   left:0;
   right:0;
@@ -170,4 +176,19 @@
 
 .recentGridList {
   font-size: 0;
+}
+
+.recentGridList :global(.ms-List-page) {
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }

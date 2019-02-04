@@ -15,10 +15,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  // -webkit-box-orient: vertical;
+  // -webkit-box-direction: normal;
+  // -ms-flex-direction: column;
+  // flex-direction: column;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -80,10 +84,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  // -webkit-box-orient: vertical;
+  // -webkit-box-direction: normal;
+  // -ms-flex-direction: column;
+  // flex-direction: column;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .grid {
@@ -208,13 +216,22 @@ html[dir="ltr"] .name {
   text-decoration: underline;
 }
 
+.folderList {
+  padding-top: 20px;
+}
+
 .folderList :global(.ms-List-cell) {
-  display: table-cell;
+  display: block;
 }
 
 .folderList :global(.ms-List-page) {
   overflow: hidden;
   font-size: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
 }
 
 .folderList :global(.ms-List-surface) {
