@@ -27,7 +27,6 @@ js-public-unjoined-teams | Laura Kokkarinen ([laurakokkarinen.com](https://laura
 
 Version|Date|Comments
 -------|----|--------
-
 1.0|February 5, 2019|Initial release
 
 ## Disclaimer
