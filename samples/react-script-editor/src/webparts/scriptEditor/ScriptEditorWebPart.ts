@@ -30,7 +30,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                         element.style.paddingTop = "0";
                         element.style.paddingBottom = "0";
                         element.style.marginTop = "0";
-                        element.style.marginBottom = "0";                        
+                        element.style.marginBottom = "0";
                         break;
                     }
                     element = element.parentElement;
@@ -122,7 +122,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         return elem.nodeName && elem.nodeName.toUpperCase() === name.toUpperCase();
     }
 
-
     // Finds and executes scripts in a newly added element's body.
     // Needed since innerHTML does not run scripts.
     //
@@ -150,10 +149,14 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
 
         const urls = [];
         const onLoads = [];
+        const forceReload = [];
         for (let i = 0; scripts[i]; i++) {
             const scriptTag = scripts[i];
             if (scriptTag.src && scriptTag.src.length > 0) {
                 urls.push(scriptTag.src);
+                if (scriptTag.attributes["reload"]) {
+                    forceReload.push(scriptTag.src);
+                }
             }
             if (scriptTag.onload && scriptTag.onload.length > 0) {
                 onLoads.push(scriptTag.onload);
@@ -166,11 +169,21 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             window["define"].amd = null;
         }
 
+
         for (let i = 0; i < urls.length; i++) {
             try {
+                const scriptUrl = urls[i];
+                try {
+                    if (forceReload.indexOf(scriptUrl) !== -1) {
+                        let hackReload = (<any>SPComponentLoader)._instance;
+                        hackReload._systemJsLoader.delete(urls[i]);
+                    }
+                } catch (silent) { }
                 await SPComponentLoader.loadScript(urls[i], { globalExportsName: "ScriptGlobal" });
             } catch (error) {
-                console.error(error);
+                if (console.error) {
+                    console.error(error);
+                }
             }
         }
         if (oldamd) {
