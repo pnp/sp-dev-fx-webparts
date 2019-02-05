@@ -101,7 +101,7 @@ However, the feature requires a Bing API key in order to work. If you do not hav
 
 ### To Configure a Bing API key (Optional)
 
-This sampple uses **SharePoint Online Tenant Properties** to store the API key. The idea is that if you get an
+This sample uses **SharePoint Online Tenant Properties** to store the API key. The idea is that if you get an
 API key for your organization to use, you want to store it in one place -- the **Tenant Properties** -- instead of having to re-enter the API key
 in every web part that needs it.
 
