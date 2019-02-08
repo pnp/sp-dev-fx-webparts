@@ -47,7 +47,10 @@ bot-framework | Gary Pretty ([@garypretty](http://www.twitter.com/garypretty), [
 Version|Date|Comments
 -------|----|--------
 1.0|October 11th, 2016|Initial release
-1.1|February 8, 2018|Updated to SPFx 1.7
+1.1|Jan 24th, 2017|Updated to RC0
+1.2|Feb 23rd, 2017|Initial load bug fix
+1.3|February 8, 2018|Updated to SPFx 1.7
+
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
