@@ -1,6 +1,6 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 
-export interface IBotFrameworkChatWebPartProps {
+export interface IBotFrameworkChatProps {
   description: string;
   message: string;
   directLineSecret: string;
