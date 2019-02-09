@@ -1,0 +1,13 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "angularelements-using-templatefile-client-side-solution",
+    "id": "446c046f-46a4-42e5-a5e6-e9e4edfcf09d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/angularelements-using-templatefile.sppkg"
+  }
+}
