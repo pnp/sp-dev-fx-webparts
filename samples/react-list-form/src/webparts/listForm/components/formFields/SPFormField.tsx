@@ -22,8 +22,7 @@ import SPFieldUrlDisplay from './SPFieldUrlDisplay';
 import * as strings from 'FormFieldStrings';
 import styles from './SPFormField.module.scss';
 
-
-const EditFieldTypeMappings: {[fieldType: string]: React.StatelessComponent<ISPFormFieldProps>} = {
+const EditFieldTypeMappings: { [fieldType: string]: React.StatelessComponent<ISPFormFieldProps> } = {
   Text: SPFieldTextEdit,
   Note: SPFieldTextEdit,
   Lookup: SPFieldLookupEdit,
@@ -45,15 +44,18 @@ const EditFieldTypeMappings: {[fieldType: string]: React.StatelessComponent<ISPF
   */
 };
 
-
-const DisplayFieldTypeMappings: {[fieldType: string]: {component: React.StatelessComponent<ISPFormFieldProps>,
-                                 valuePreProcess?: (value: any) => any}} = {
+const DisplayFieldTypeMappings: {
+  [fieldType: string]: {
+    component: React.StatelessComponent<ISPFormFieldProps>,
+    valuePreProcess?: (value: any) => any
+  }
+} = {
   Text: { component: SPFieldTextDisplay },
   Note: { component: SPFieldTextDisplay },
   Lookup: { component: SPFieldLookupDisplay },
   LookupMulti: { component: SPFieldLookupDisplay },
   Choice: { component: SPFieldTextDisplay },
-  MultiChoice: {component: SPFieldTextDisplay, valuePreProcess: (val) => val ? val.join(', ') : '' },
+  MultiChoice: { component: SPFieldTextDisplay, valuePreProcess: (val) => val ? val.join(', ') : '' },
   Number: { component: SPFieldTextDisplay },
   Currency: { component: SPFieldTextDisplay },
   DateTime: { component: SPFieldTextDisplay },
@@ -61,21 +63,19 @@ const DisplayFieldTypeMappings: {[fieldType: string]: {component: React.Stateles
   User: { component: SPFieldUserDisplay },
   UserMulti: { component: SPFieldUserDisplay },
   URL: { component: SPFieldUrlDisplay },
-  File: { component: SPFieldTextDisplay},
+  File: { component: SPFieldTextDisplay },
   TaxonomyFieldType: { component: SPFieldTextDisplay, valuePreProcess: (val) => val ? val.Label : '' },
-  TaxonomyFieldTypeMulti: { component: SPFieldTextDisplay, valuePreProcess: (val) => val ? val.map( (v) => v.Label ).join(', ') : '' },
+  TaxonomyFieldTypeMulti: { component: SPFieldTextDisplay, valuePreProcess: (val) => val ? val.map((v) => v.Label).join(', ') : '' },
   /* The following are known but unsupported types as of now:
   Attachments: null,
   */
 };
 
-
 export interface ISPFormFieldProps extends IFormFieldProps {
-    extraData?: any;
-    fieldSchema: IFieldSchema;
-    hideIfFieldUnsupported?: boolean;
+  extraData?: any;
+  fieldSchema: IFieldSchema;
+  hideIfFieldUnsupported?: boolean;
 }
-
 
 const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
   let fieldControl = null;
@@ -83,42 +83,41 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
   if (props.controlMode === ControlMode.Display) {
     if (DisplayFieldTypeMappings.hasOwnProperty(fieldType)) {
       const fieldMapping = DisplayFieldTypeMappings[fieldType];
-      const childProps = fieldMapping.valuePreProcess ? {...props, value: fieldMapping.valuePreProcess(props.value)} : props;
-      fieldControl = React.createElement( fieldMapping.component, childProps );
+      const childProps = fieldMapping.valuePreProcess ? { ...props, value: fieldMapping.valuePreProcess(props.value) } : props;
+      fieldControl = React.createElement(fieldMapping.component, childProps);
     } else if (!props.hideIfFieldUnsupported) {
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
       fieldControl = <div className={`ard-${fieldType}field-display`}>
-          <span>{value}</span>
-          <div className={styles.unsupportedFieldMessage}><Icon iconName='Error' />{`${strings.UnsupportedFieldType} "${fieldType}"`}</div>
-        </div>;
+        <span>{value}</span>
+        <div className={styles.unsupportedFieldMessage}><Icon iconName='Error' />{`${strings.UnsupportedFieldType} "${fieldType}"`}</div>
+      </div>;
     }
   } else {
     if (EditFieldTypeMappings.hasOwnProperty(fieldType)) {
-      fieldControl = React.createElement( EditFieldTypeMappings[fieldType], props );
+      fieldControl = React.createElement(EditFieldTypeMappings[fieldType], props);
     } else if (!props.hideIfFieldUnsupported) {
       const isObjValue = (props.value) && (typeof props.value !== 'string');
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
       fieldControl = <TextField
-                readOnly
-                multiline={isObjValue}
-                value={value}
-                errorMessage={`${strings.UnsupportedFieldType} "${fieldType}"`}
-                underlined
-              />;
+        readOnly
+        multiline={isObjValue}
+        value={value}
+        errorMessage={`${strings.UnsupportedFieldType} "${fieldType}"`}
+        underlined
+      />;
     }
   }
   return (fieldControl)
     ? <FormField
-            {...props}
-            label={props.label || props.fieldSchema.Title}
-            description={props.description || props.fieldSchema.Description}
-            required={props.fieldSchema.Required}
-            errorMessage={props.errorMessage}
-            >
-            {fieldControl}
-      </FormField>
+      {...props}
+      label={props.label || props.fieldSchema.Title}
+      description={props.description || props.fieldSchema.Description}
+      required={props.fieldSchema.Required}
+      errorMessage={props.errorMessage}
+    >
+      {fieldControl}
+    </FormField>
     : null;
 };
-
 
 export default SPFormField;

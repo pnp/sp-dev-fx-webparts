@@ -1,4 +1,4 @@
-define([], function() {
+define([], function () {
     return {
         'SaveButtonText': 'Kaydet',
         'CancelButtonText': 'İptal',
@@ -11,7 +11,7 @@ define([], function() {
         'ItemSavedSuccessfully': 'Öğe başarıyla kaydedildi.',
         'FieldsErrorOnSaving': 'Öğe kaydedilemedi. Lütfen aşağıdaki alanlardaki ayrıntılı hata mesajlarını kontrol edin.',
         'ErrorOnSavingListItem': 'Listeler yüklenirken hata oluştu: ',
-        'MoveField' : "Alan taşı",
-        'RemoveField' : "Alan sil"
+        'MoveField': "Alan taşı",
+        'RemoveField': "Alan sil"
     }
 });

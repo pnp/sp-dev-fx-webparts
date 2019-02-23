@@ -1,6 +1,5 @@
 import { IFieldSchema } from '../../../common/services/datatypes/RenderListData';
 
-
 export interface IListFormState {
   isLoadingSchema: boolean;
   isLoadingData: boolean;
@@ -10,6 +9,6 @@ export interface IListFormState {
   originalData: any;
   errors: string[];
   notifications: string[];
-  fieldErrors: {[fieldName: string]: string};
+  fieldErrors: { [fieldName: string]: string };
   showUnsupportedFields?: boolean;
 }
