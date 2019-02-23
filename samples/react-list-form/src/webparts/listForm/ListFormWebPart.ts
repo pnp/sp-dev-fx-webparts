@@ -129,7 +129,10 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
           deferredValidationTime: 2000,
           description: strings.ItemIdFieldDescription
         }));
+    } else {
+      this.properties.itemId = null;
     }
+
     mainGroup.groupFields.push(
       PropertyPaneToggle('showUnsupportedFields', {
         label: strings.ShowUnsupportedFieldsLabel,
