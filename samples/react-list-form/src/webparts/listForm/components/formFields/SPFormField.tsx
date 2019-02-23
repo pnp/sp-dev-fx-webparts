@@ -9,12 +9,14 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 import SPFieldTextEdit from './SPFieldTextEdit';
+import SPFieldRichTextEdit from './SPFieldRichTextEdit';
 import SPFieldLookupEdit from './SPFieldLookupEdit';
 import SPFieldChoiceEdit from './SPFieldChoiceEdit';
 import SPFieldNumberEdit from './SPFieldNumberEdit';
 import SPFieldDateEdit from './SPFieldDateEdit';
 import SPFieldBooleanEdit from './SPFieldBooleanEdit';
 import SPFieldTextDisplay from './SPFieldTextDisplay';
+import SPFieldRichTextDisplay from './SPFieldRichTextDisplay';
 import SPFieldLookupDisplay from './SPFieldLookupDisplay';
 import SPFieldUserDisplay from './SPFieldUserDisplay';
 import SPFieldUrlDisplay from './SPFieldUrlDisplay';
@@ -24,6 +26,7 @@ import styles from './SPFormField.module.scss';
 
 const EditFieldTypeMappings: { [fieldType: string]: React.StatelessComponent<ISPFormFieldProps> } = {
   Text: SPFieldTextEdit,
+  RichText: SPFieldRichTextEdit,
   Note: SPFieldTextEdit,
   Lookup: SPFieldLookupEdit,
   LookupMulti: SPFieldLookupEdit,
@@ -48,9 +51,10 @@ const DisplayFieldTypeMappings: {
   [fieldType: string]: {
     component: React.StatelessComponent<ISPFormFieldProps>,
     valuePreProcess?: (value: any) => any
-  }
+  },
 } = {
   Text: { component: SPFieldTextDisplay },
+  RichText: { component: SPFieldRichTextDisplay },
   Note: { component: SPFieldTextDisplay },
   Lookup: { component: SPFieldLookupDisplay },
   LookupMulti: { component: SPFieldLookupDisplay },
@@ -80,9 +84,11 @@ export interface ISPFormFieldProps extends IFormFieldProps {
 const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
   let fieldControl = null;
   const fieldType = props.fieldSchema.FieldType;
+  const richText = props.fieldSchema.RichText;
+
   if (props.controlMode === ControlMode.Display) {
     if (DisplayFieldTypeMappings.hasOwnProperty(fieldType)) {
-      const fieldMapping = DisplayFieldTypeMappings[fieldType];
+      const fieldMapping = richText ? DisplayFieldTypeMappings['RichText'] : DisplayFieldTypeMappings[fieldType];
       const childProps = fieldMapping.valuePreProcess ? { ...props, value: fieldMapping.valuePreProcess(props.value) } : props;
       fieldControl = React.createElement(fieldMapping.component, childProps);
     } else if (!props.hideIfFieldUnsupported) {
@@ -94,7 +100,7 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
     }
   } else {
     if (EditFieldTypeMappings.hasOwnProperty(fieldType)) {
-      fieldControl = React.createElement(EditFieldTypeMappings[fieldType], props);
+      fieldControl = richText ? React.createElement(EditFieldTypeMappings['RichText'], props) : React.createElement(EditFieldTypeMappings[fieldType], props);
     } else if (!props.hideIfFieldUnsupported) {
       const isObjValue = (props.value) && (typeof props.value !== 'string');
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
