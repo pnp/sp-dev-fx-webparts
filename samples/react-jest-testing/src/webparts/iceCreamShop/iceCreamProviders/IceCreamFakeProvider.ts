@@ -8,10 +8,10 @@ export class IceCreamFakeProvider implements IIceCreamProvider {
         return new Promise<Array<IceCream>>(resolve => {
 
             let list = [
-                { UniqueId: "1", Title: "Cherry" },
-                { UniqueId: "2", Title: "Chocolate" },
-                { UniqueId: "3", Title: "Coffee and Cookie" },
-                { UniqueId: "10", Title: "Vanilla" }
+                { UniqueId: "1", Title: "Cherry", Price: 1 },
+                { UniqueId: "2", Title: "Chocolate", Price: 2 },
+                { UniqueId: "3", Title: "Coffee and Cookie", Price: 2.11 },
+                { UniqueId: "10", Title: "Vanilla", Price: 2.5 }
             ] as IceCream[];
             
             resolve(list);

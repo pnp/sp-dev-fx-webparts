@@ -1,23 +1,13 @@
+// Place your settings in this file to overwrite default and user settings.
 {
-  // The number of spaces a tab is equal to.
-  "editor.tabSize": 2,
-
-  // When enabled, will trim trailing whitespace when you save a file.
-  "files.trimTrailingWhitespace": true,
-
-  // Controls if the editor should automatically close brackets after opening them
-  "editor.autoClosingBrackets": false,
-
-  // Configure glob patterns for excluding files and folders.
-  "search.exclude": {
+  // Configure glob patterns for excluding files and folders in the file explorer.
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
     "**/bower_components": true,
-    "**/node_modules": true,
-    "coverage": true,
-    "dist": true,
-    "lib-amd": true,
-    "lib": true,
-    "temp": true
-  }
-,
-"typescript.check.workspaceVersion": false
+    "**/coverage": true,
+    "**/lib-amd": true,
+    "src/**/*.scss.ts": true
+  },
+  "typescript.tsdk": ".\\node_modules\\typescript\\lib"
 }

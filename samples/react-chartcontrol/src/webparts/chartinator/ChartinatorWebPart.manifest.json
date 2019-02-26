@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "604dd344-80a9-4efb-9cd5-7caddc5ac653",
+  "alias": "ChartinatorWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Chartinator"
+      },
+      "description": {
+        "default": "Easily create and configure a chart to show your data visually."
+      },
+      "officeFabricIconFontName": "Chart",
+      "properties": {
+        "description": "Chartinator",
+        "dataSourceType": 0,
+        "data": []
+      }
+    }
+  ]
+}

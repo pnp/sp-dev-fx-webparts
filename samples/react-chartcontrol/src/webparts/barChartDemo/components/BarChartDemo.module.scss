@@ -1,0 +1,21 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.barChartDemo {
+  color: inherit; // so that SCSS doesn't complain about an empty class
+}
+
+:export {
+  background1: rgba(255, 99, 132, 0.2);
+  background2: rgba(54, 162, 235, 0.2);
+  background3: rgba(255, 206, 86, 0.2);
+  background4: rgba(75, 192, 192, 0.2);
+  background5: rgba(153, 102, 255, 0.2);
+  background6: rgba(255, 159, 64, 0.2);
+
+  border1: rgba(255, 99, 132, 1);
+  border2: rgba(54, 162, 235, 1);
+  border3: rgba(255, 206, 86, 1);
+  border4: rgba(75, 192, 192, 1);
+  border5: rgba(153, 102, 255, 1);
+  border6: rgba(255, 159, 64, 1);
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "afb76932-d38c-482c-ade4-649d5b65ad99",
+  "alias": "AccessibleTableWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Accessible Table" },
+    "description": { "default": "Shows how to use the accessibility features of the PnP ChartControl to render an accessible table" },
+    "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAcCAYAAAATFf3WAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAD6AAAA+gBtXtSawAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIdSURBVFiF5dc5aBZBGMbxn0aMt+SQxCMEBDWNB0lh8MDCxsZGo4JgGkubgDairSAIFqKVqRURCxERFUQURVErUVARtPKoYhpRQ2Ixm3ybZffLfsuuKXzghZnZ2Yf/zuy8M8N/oNN4GYuVZZrPK8GjG32x+vwSPKc0t0yzKlQUcAF2YnmJLKlqFLALF/EVj9BZOlFCjfyDQziDRRWxpCov4FacRXOFLKnKO8XPsRvfMY5h9ONdRVxTmmkE9+EPbuGJMJIdAvCsayG+YAwn6vS7jIlYdJcJUW+KB4VV2oRzwuj9c9UDPBwrP1X+tG6WIyNkATZjW6x+JaPfBrQn2jZiXaJtMVoScRD3o3LDahfSymR0ZfQbElZ1/B/8JowOrMWHxPNkvMGaIpB5dUxYSBP4iJ6ovTeCrQc3Ge+F7bMy7RVSUVtU34WRnHC/MJBlPCejvRNvY/UBPMgJu0RISzONyCbhwLEf9xoFJBwIOqLyeRzPCZjUDmyPymOR14Tw0Z/xoqDvtAQ8gtaCPndiPneLwqSpL2b8GqsL+qzA48jnQDloNd3AbSwr8G6/Wp5txikVnOBbhK2OcNcYxjWsqvPOclwQ8uNNYdFUrjY8VJvyn7iKo1ga9ekRPmDU9DTySskXqTRtwSfpeaw36jOY8uwH9lQNN6lWXMLvDMAjsbZxXFfxFpalbpwUTjijanfiQ3gm7N3rZwMsS00zdymuv/ffiLs8snLxAAAAAElFTkSuQmCC",
+    "properties": {
+      "title": "Top Contributors",
+      "datasetlabel": "Number of commits",
+      "summary": "This is a text representation of the chart above"
+    }
+  }]
+}

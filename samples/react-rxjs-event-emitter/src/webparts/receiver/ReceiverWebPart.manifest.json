@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "891b997e-67da-4da3-a6e1-3caf8bb264be",
   "alias": "ReceiverWebPart",
   "componentType": "WebPart",
