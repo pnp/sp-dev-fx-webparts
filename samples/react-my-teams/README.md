@@ -6,7 +6,7 @@ This sample uses Microsoft Graph to list the Teams the current user is a member 
 The web part can be configured to open the team on the web browser or client app.
 
 
-![Demo](./assets/Preview.PNG)
+![Demo](./assets/Preview.png)
 
 ## Used SharePoint Framework Version
 
