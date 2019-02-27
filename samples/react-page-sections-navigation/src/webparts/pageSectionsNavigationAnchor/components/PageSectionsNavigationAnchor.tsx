@@ -1,12 +1,17 @@
 import * as React from 'react';
 import styles from './PageSectionsNavigationAnchor.module.scss';
 import { DisplayMode } from '@microsoft/sp-core-library';
-import * as strings from 'PageSectionsNavigationAnchorWebPartStrings';
+import * as strings from 'PageSectionsNavigationStrings';
+import { css, ICssInput } from 'office-ui-fabric-react/lib/Utilities';
+import { NavPosition } from '../../../common/types';
 
 export interface IPageSectionsNavigationAnchorProps {
   displayMode: DisplayMode;
   title: string;
   updateProperty: (value: string) => void;
+  showTitle: boolean;
+  anchorElRef: (el: HTMLDivElement) => void;
+  navPosition: NavPosition;
 }
 
 export class PageSectionsNavigationAnchor extends React.Component<IPageSectionsNavigationAnchorProps, {}> {
@@ -20,17 +25,30 @@ export class PageSectionsNavigationAnchor extends React.Component<IPageSectionsN
    * Default React component render method
    */
   public render(): React.ReactElement<IPageSectionsNavigationAnchorProps> {
-    if (this.props.displayMode === DisplayMode.Edit) {
+    const { title, displayMode, showTitle, anchorElRef, navPosition } = this.props;
+
+    const anchorElClassNames: ICssInput = {};
+    anchorElClassNames[styles.anchorEl] = true;
+    if (navPosition === 'section') {
+      anchorElClassNames[styles.offset] = true;
+    }
+
+    if (displayMode === DisplayMode.Edit || showTitle) {
       return (
-        <div className={styles.webPartTitle}>
-          <textarea
-            placeholder={strings.AnchorTitlePlaceholder}
-            aria-label={strings.AnchorTitlePlaceholder}
-            onChange={this._onChange}
-            defaultValue={this.props.title}></textarea>
+        <div className={css(styles.webPartTitle, 'psn-anchorTitle')}>
+          <div className={css(anchorElClassNames)} ref={anchorElRef}></div>
+          {
+            displayMode === DisplayMode.Edit
+              ? <textarea
+                placeholder={strings.AnchorTitlePlaceholder}
+                aria-label={strings.AnchorTitlePlaceholder}
+                onChange={this._onChange}
+                defaultValue={title}></textarea>
+              : <span className={'psn-anchorTitle'}>{title}</span>}
         </div>
       );
     }
+
     return null;
   }
 

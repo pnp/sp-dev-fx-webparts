@@ -1,5 +1,6 @@
 export interface IAnchorItem {
     title?: string;
     uniqueId?: string;
-    scrollTop?: number;
+    //scrollTop?: number;
+    domElement?: HTMLElement;
 }

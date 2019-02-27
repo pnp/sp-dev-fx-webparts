@@ -21,7 +21,6 @@
   },
   "externals": {},
   "localizedResources": {
-    "PageSectionsNavigationWebPartStrings": "lib/webparts/pageSectionsNavigation/loc/{locale}.js",
-    "PageSectionsNavigationAnchorWebPartStrings": "lib/webparts/pageSectionsNavigationAnchor/loc/{locale}.js"
+    "PageSectionsNavigationStrings": "lib/loc/{locale}.js"
   }
 }

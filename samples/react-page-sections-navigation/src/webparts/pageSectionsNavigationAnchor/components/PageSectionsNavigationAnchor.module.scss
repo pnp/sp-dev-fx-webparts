@@ -1,4 +1,5 @@
 .webPartTitle {
+  position: relative;
   font-size: 14px;
   font-weight: 100;
   margin-bottom: 11px;
@@ -35,6 +36,15 @@
 
   // View mode
   span {
-    // Nothing at the moment
+    font-weight: 300;
+  }
+
+  .anchorEl {
+    position: absolute;
+    top: 0;
+    
+    &.offset {
+      top: -40px;
+    }
   }
 }
