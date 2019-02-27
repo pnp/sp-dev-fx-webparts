@@ -19,7 +19,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Page Sections Navigation Anchor" },
     "description": { "default": "Web part to create an anchor for Page Sections Navigation" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "MiniLink",
     "properties": {
       "description": "Page Sections Navigation Anchor"
     }

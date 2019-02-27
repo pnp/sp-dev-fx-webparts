@@ -19,7 +19,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Page Sections Navigation" },
     "description": { "default": "Master web part to display Page Sections Navigation menu" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Favicon",
     "properties": {
       "scrollBehavior": "auto",
       "position": "section",
