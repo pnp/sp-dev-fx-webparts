@@ -44,7 +44,7 @@ export class PageSectionsNavigationAnchor extends React.Component<IPageSectionsN
                 aria-label={strings.AnchorTitlePlaceholder}
                 onChange={this._onChange}
                 defaultValue={title}></textarea>
-              : <span className={'psn-anchorTitle'}>{title}</span>}
+              : <span className={'psn-anchorTitleText'}>{title}</span>}
         </div>
       );
     }

@@ -49,3 +49,7 @@ Version|Date|Comments
 
 This sample illustrates how to use SharePoint Framework Dynamic Data features to connect web parts on the page.
 It also can be used as ready-to-go solution to add page sections navigation to SharePoint pages.
+
+## Custom CSS
+The web parts in the sample allow to use custom CSS to override the styles. You can set _Custom CSS URL_ property of *Page Sections Navigation* web part and include css classes for both Navigation and Anchor in referenced file.
+Please, refer [custom css sample](./assets/psn-custom.css) for the CSS sample.

@@ -40,18 +40,7 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
     this._initDataSources();
     this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._initDataSources.bind(this, true));
 
-    if (customCssUrl) {
-      //SPComponentLoader doesn't work on Comm Sites: https://github.com/SharePoint/sp-dev-docs/issues/3503
-      //SPComponentLoader.loadCss(this.properties.customCssUrl);
-      const head = document.head;
-      let styleEl = head.querySelector(`link[href=${customCssUrl}]`);
-      if (!styleEl) {
-        styleEl = document.createElement('link');
-        styleEl.setAttribute('rel', 'stylesheet');
-        styleEl.setAttribute('href', customCssUrl);
-        head.appendChild(styleEl);
-      }
-    }
+    this._addCustomCss(customCssUrl);
 
     this.context.dynamicDataSourceManager.initializeSource(this);
 
@@ -111,6 +100,19 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any) {
     if (propertyPath === 'position') {
       this.context.dynamicDataSourceManager.notifyPropertyChanged('position');
+    }
+    else if (propertyPath === 'customCssUrl') {
+      //
+      // removing prev css
+      //
+      if (oldValue) {
+        const oldCssLink = this._getCssLink(oldValue);
+        if (oldCssLink) {
+          oldCssLink.parentElement.removeChild(oldCssLink);
+        }
+      }
+
+      this._addCustomCss(newValue);
     }
   }
 
@@ -249,5 +251,25 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
   private _onAnchorChanged() {
     this.render();
     //console.log(ds.getPropertyValue('anchor'));
+  }
+
+  private _addCustomCss(customCssUrl: string) {
+    if (customCssUrl) {
+      //SPComponentLoader doesn't work on Comm Sites: https://github.com/SharePoint/sp-dev-docs/issues/3503
+      //SPComponentLoader.loadCss(this.properties.customCssUrl);
+      const head = document.head;
+      let styleEl = this._getCssLink(customCssUrl);
+      if (!styleEl) {
+        styleEl = document.createElement('link');
+        styleEl.setAttribute('rel', 'stylesheet');
+        styleEl.setAttribute('href', customCssUrl);
+        head.appendChild(styleEl);
+      }
+    }
+  }
+
+  private _getCssLink(customCssUrl: string): Element | null {
+    const head = document.head;
+    return head.querySelector(`link[href="${customCssUrl}"]`);
   }
 }

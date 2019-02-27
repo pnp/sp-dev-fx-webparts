@@ -152,7 +152,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
         }
 
         this._layerElement = doc.createElement('div');
-        this._layerElement.className = css(styles.psnLayer, 'psn-Layer');
+        this._layerElement.className = css(styles.psnLayer, 'psn-layer');
 
         host.insertBefore(this._layerElement, host.firstChild);
       }
