@@ -1,7 +1,7 @@
 # React Tree Organization Web Part
 
 ## Summary
-The Tree Organization WebPart shows the Organization Chart of the  or the team, the web part reads  infomation from current user to build the Organization Chart.  
+The Tree Organization WebPart shows the Organization Chart of the  or the team, the web part reads infomation from current user to build the Organization Chart.  
 
 We can configure in the webpart properties if it show all Organization Chart or the only user team, (same manager and peers). 
  
