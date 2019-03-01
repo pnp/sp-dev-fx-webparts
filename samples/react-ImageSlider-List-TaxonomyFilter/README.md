@@ -3,11 +3,11 @@
 ## Summary
 This webpart display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy. This web part showcase 3 important implementation.
 
-1 - How to add the Terms in the propertypage and pass the values to react component
-2 - How to filter the list based on Taxonomy and extract the Image URL
-3 - Implementation of Slick Slider
+- How to add the Terms in the propertypage and pass the values to react component
+- How to filter the list based on Taxonomy and extract the Image URL
+- Implementation of Slick Slider
 
-[picture of the web part in action]
+<img src=https://github.com/sudhir007rawat/sp-dev-fx-webparts/blob/sample-Contribution/samples/react-ImageSlider-List-TaxonomyFilter/assets/ImageSlider.gif />
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
