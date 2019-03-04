@@ -7,22 +7,29 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'reactAppSettingsStrings';
-import ReactAppSettings from './components/ReactAppSettings';
-import { IReactAppSettingsProps } from './components/IReactAppSettingsProps';
-import { IReactAppSettingsWebPartProps } from './IReactAppSettingsWebPartProps';
+import * as strings from 'IceCreamLorryWebPartStrings';
+import IceCreamLorry from './components/IceCreamLorry';
+import { IIceCreamLorryProps } from './components/IIceCreamLorryProps';
 
-export default class ReactAppSettingsWebPart extends BaseClientSideWebPart<IReactAppSettingsWebPartProps> {
+export interface IIceCreamLorryWebPartProps {
+  description: string;
+}
+
+export default class IceCreamLorryWebPart extends BaseClientSideWebPart<IIceCreamLorryWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IReactAppSettingsProps> = React.createElement(
-      ReactAppSettings,
+    const element: React.ReactElement<IIceCreamLorryProps > = React.createElement(
+      IceCreamLorry,
       {
         description: this.properties.description
       }
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  protected onDispose(): void {
+    ReactDom.unmountComponentAtNode(this.domElement);
   }
 
   protected get dataVersion(): Version {
