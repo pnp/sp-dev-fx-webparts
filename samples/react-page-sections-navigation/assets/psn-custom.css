@@ -1,0 +1,42 @@
+/* --------------- */
+/* Page Navigation */
+/* --------------- */
+
+/* Root container that breaks DOM flow. Use it for additional offsets */
+.psn-layer {
+
+}
+
+/* Main container for navigation */
+.psn-container {
+    background: red !important;
+}
+
+/* navigation list (ul) */
+.psn-nav {
+    margin: 10px 0 !important;
+}
+
+/* navigation item (li) */
+.psn-navItem {
+    margin-right: 50px !important;
+}
+
+/* navigation link */
+.psn-navItemLink:hover {
+    border-bottom: 2px solid #f4f4f4;
+}
+
+/* --------------- */
+/* Page Nav Anchor */
+/* --------------- */
+
+/* Container */
+.psn-anchorTitle {
+    margin: 20px;
+}
+
+.psn-anchorTitleText {
+    font-size: 30px;
+    font-weight: 700;
+}
