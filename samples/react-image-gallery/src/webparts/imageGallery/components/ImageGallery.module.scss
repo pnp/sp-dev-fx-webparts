@@ -1,0 +1,182 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+// Make workbench canvas use full page width  
+:global(#workbenchPageContent) {
+    max-width: initial;
+}
+
+:global(.ControlZone) {
+    max-width: initial;
+}
+
+:global(.ms-TextField-fieldGroup) {
+    height: 34px;
+}
+
+.imageGallery {
+    .container {
+        @include ms-Grid;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .row {
+        @include ms-Grid-row;
+    }
+    .column {
+        @include ms-Grid-col;
+    }
+    .mslg12 {
+        @include ms-lg12;
+    }
+    .mslg6 {
+        @include ms-lg6;
+    }
+    .mslg3 {
+        @include ms-lg3;
+    }
+    .header {
+        .pageTitle {
+            padding-bottom: 9px;
+            margin: 40px 0 20px;
+            border-bottom: 1px solid #eee;
+        }
+        small {
+            font-size: 65%;
+            font-weight: 400;
+            line-height: 1;
+            color: #777;
+        }
+    }
+    .filters {
+        .filter {
+            padding-top: 0px;
+            padding-bottom: 15px;
+        }
+        .searchBox {
+            padding-top: 0px;
+            padding-bottom: 15px;
+            .searchBoxInputField {
+                padding: 0px;
+            }
+        }
+    }
+    .mainContent {
+        .thumbnail {
+            cursor: pointer;
+            display: block;
+            padding: 4px;
+            margin-bottom: 20px;
+            line-height: 1.42857143;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            -webkit-transition: border .2s ease-in-out;
+            -o-transition: border .2s ease-in-out;
+            transition: border .2s ease-in-out;
+            img {
+                margin-right: auto;
+                margin-left: auto;
+                display: block;
+                max-width: 100%;
+                height: auto;
+                border: 0px;
+            }
+        }
+        .modalContent {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            position: relative;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 6px;
+            outline: 0;
+            .modalBody {
+                position: relative;
+                padding: 15px;
+            }
+        }
+    }
+    .pagination {
+        .pager {
+            padding-left: 0;
+            margin: 20px 0;
+            text-align: center;
+            list-style: none;
+            li {
+                display: inline;
+                padding: 0px 10px;
+                button {
+                    display: inline-block;
+                    padding: 5px 14px;
+                    background-color: $ms-color-themePrimary;
+                    border: 1px solid #ddd;
+                    border-radius: 15px;
+                    color: #fff;
+                    text-decoration: none;
+                    &:disabled {
+                        background-color: $ms-color-neutralTertiary;
+                    }
+                }
+            }
+        }
+    }
+    .loader {
+        margin: 0 auto;
+        .circle {
+            width: 70px;
+            height: 70px;
+        }
+    }
+    .customIcons {
+        .msIconTag {
+            font-size: 18px;
+            vertical-align: middle;
+        }
+    }
+    .hidden {
+        display: none !important;
+    }
+    .visible {
+        visibility: visible !important;
+    }
+    .status{
+        float:left
+    }
+    figcaption{
+        background-color: #eee;
+        padding: 5px 0px;
+        text-align: center;
+        text-decoration: none;
+    }
+    
+}
+
+//common
+.panel {
+    border-color: #ddd;
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-sizing: border-box;
+    .panelBody {
+        padding: 15px 0px;
+    }
+}
+
+.listGroup {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    max-width: 400px;
+    margin-top: 0;
+    .listGroupItem {
+        position: relative;
+        display: block;
+        padding: .75rem 1.25rem;
+        margin-bottom: -1px;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, .125);
+    }
+}
