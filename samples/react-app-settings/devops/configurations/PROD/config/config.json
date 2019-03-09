@@ -9,14 +9,6 @@
           "manifest": "./src/webparts/iceCreamShop/IceCreamShopWebPart.manifest.json"
         }
       ]
-    },
-    "ice-cream-lorry-web-part": {
-      "components": [
-        {
-          "entrypoint": "./lib/webparts/iceCreamLorry/IceCreamLorryWebPart.js",
-          "manifest": "./src/webparts/iceCreamLorry/IceCreamLorryWebPart.manifest.json"
-        }
-      ]
     }
   },
   "localizedResources": {
