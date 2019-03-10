@@ -3,7 +3,7 @@ import { ISPFormFieldProps } from './SPFormField';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 
 const SPFieldUrlDisplay: React.SFC<ISPFormFieldProps> = (props) => {
-    if (props.value)  {
+    if (props.value) {
         if (props.fieldSchema.DisplayFormat === 1) { // picture field
             return <div><img src={props.value} title={(props.extraData) ? props.extraData.desc : ''}></img></div>;
         } else {
