@@ -7,7 +7,7 @@ This webpart display the image in slider based on the filter of Taxonomy from Pr
 - How to filter the list based on Taxonomy and extract the Image URL
 - Implementation of Slick Slider
 
-<img src=https://github.com/sudhir007rawat/sp-dev-fx-webparts/blob/sample-Contribution/samples/react-ImageSlider-List-TaxonomyFilter/assets/ImageSlider.gif />
+![preview](./assets/ImageSlider.gif)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
@@ -17,12 +17,10 @@ This webpart display the image in slider based on the filter of Taxonomy from Pr
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
-
 ## Prerequisites
  
-> PhotoGalley list names "Photos" and Managed Metadata field attached to Site collection Terms
-> Upload few photos in the "Photos" library and tag it.
+- PhotoGalley list names "Photos" and Managed Metadata field attached to Site collection Terms
+- Upload few photos in the "Photos" library and tag it.
 
 ## Solution
 
