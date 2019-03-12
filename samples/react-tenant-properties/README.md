@@ -8,7 +8,7 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 #### User without Tenant Admin Role got this message
 ![tenant properties](/assets/TenantProperties5.jpg)
 #### List tenant properties
-![tenant properties](/assets/TenantProperties1.jpg)
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties1.jpg)
 
 #### Add Tenant property
 ![tenant properties](/assets/TenantProperties2.jpg)
