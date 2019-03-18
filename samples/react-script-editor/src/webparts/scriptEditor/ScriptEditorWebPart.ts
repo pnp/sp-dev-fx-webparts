@@ -13,7 +13,6 @@ import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 import PropertyPaneLogo from './PropertyPaneLogo';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
-
     public save: (script: string) => void = (script: string) => {
         this.properties.script = script;
         this.render();
@@ -170,10 +169,8 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         for (let i = 0; i < urls.length; i++) {
             try {
                 let scriptUrl = urls[i];
-                if (this.renderedOnce) {
-                    let prefix = scriptUrl.indexOf('?') === -1 ? '?' : '&';
-                    scriptUrl += prefix + 'cow=' + new Date().getTime();
-                }
+                const prefix = scriptUrl.indexOf('?') === -1 ? '?' : '&';
+                scriptUrl += prefix + 'cow=' + new Date().getTime();
                 await SPComponentLoader.loadScript(scriptUrl, { globalExportsName: "ScriptGlobal" });
             } catch (error) {
                 if (console.error) {
