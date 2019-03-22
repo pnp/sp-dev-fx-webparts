@@ -23,6 +23,7 @@ page-sections-navigation|Alex Terentiev (MVP, [Sharepointalist Inc.](http://www.
 Version|Date|Comments
 -------|----|--------
 1.0|February 27, 2019|Initial release
+1.1|March 22, 2019| Update to SPFx 1.8, additional theme, comments
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
