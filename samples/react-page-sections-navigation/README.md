@@ -5,7 +5,7 @@ Sample web parts allowing to add sections navigation to the SharePoint page.
 ![Navigation configuration](./assets/page-nav.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.7.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.8.0-green.svg)
 
 ## Applies to
 
