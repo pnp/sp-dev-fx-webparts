@@ -27,13 +27,18 @@ export interface IPageSectionsNavigationState {
 
 
 export class PageSectionsNavigation extends React.Component<IPageSectionsNavigationProps, IPageSectionsNavigationState> {
-
+  // layer div to host navigation elements OUTSIDE of normal DOM hierarchy
   private _layerElement: HTMLElement | undefined;
+  // parent node where the current component should be renderred
   private _host: Node;
+  // span DOM element that is renderered IN normal DOM hierarchy
   private _sectionHostSpanRef = React.createRef<HTMLSpanElement>();
+  // first scrollable parent in normal DOM hierarchy. Needed for Home click implementation
   private _scrollableParent: Element;
 
+  // page canvas DOM element id
   private readonly _pageCanvasId = 'spPageCanvasContent';
+  // page layout element selector
   private readonly _pageLayoutSelector = '[class*="layoutWrapper_"]';
 
   constructor(props: IPageSectionsNavigationProps) {
@@ -51,10 +56,12 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
 
   public componentWillUpdate(nextProps: IPageSectionsNavigationProps) {
     if (nextProps.position !== this.props.position) {
+      // updating layer based on position
       this._removeLayerElement();
       this._layerElement = this._getLayerElement(nextProps.position);
     }
     else if (!this._layerElement) {
+      // creating layer if not exist
       this._layerElement = this._getLayerElement();
     }
   }
@@ -81,8 +88,11 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
     if (theme === 'dark') {
       rootDivClassNames[styles.dark] = true;
     }
+    else if (theme === 'theme') {
+      rootDivClassNames[styles.theme] = true;
+    }
 
-    const navItems: JSX.Element[] = this.props.anchors.map((anchor, index) => {
+    const navItems: JSX.Element[] = this.props.anchors.map((anchor) => {
       return <li className={css(styles.navItem, 'psn-navItem')}>
         <a className={css(styles.navItemLink, 'psn-navItemLink')} onClick={this._onClick.bind(this, anchor)}>{anchor.title}</a>
       </li>;
@@ -93,6 +103,9 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
       </li>);
     }
 
+    //
+    // React Portal component is used to render navigation outside of normal div hierarchy
+    //
     return (
       <span ref={this._sectionHostSpanRef}>
         {
@@ -116,6 +129,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
   }
 
   private _onHomeClick() {
+    // home click
     if (!this._scrollableParent) {
       this._initScrollParent();
     }
@@ -127,6 +141,7 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
 
   private _onClick(anchor: IAnchorItem, index: number) {
 
+    // click on one of anchor's nav items
     if (anchor.domElement) {
       anchor.domElement.scrollIntoView({
         behavior: this.props.scrollBehavior,
@@ -135,6 +150,10 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
     }
   }
 
+  /**
+   * creates layer element to host the navigation outside of normal DOM hierarchy
+   * @param position - current position value
+   */
   private _getLayerElement(position?: NavPosition): HTMLElement | undefined {
     const host = this._getHost(position);
 
@@ -172,6 +191,10 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
     }
   }
 
+  /**
+   * gets host DOM element based on position property
+   * @param position - current position value
+   */
   private _getHost(position: NavPosition): Node | undefined {
 
     const navPos = position || this.props.position;

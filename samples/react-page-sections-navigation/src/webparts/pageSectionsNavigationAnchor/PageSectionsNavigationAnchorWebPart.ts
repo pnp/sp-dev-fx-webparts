@@ -27,7 +27,9 @@ export interface IPageSectionsNavigationAnchorWebPartProps {
 
 export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideWebPart<IPageSectionsNavigationAnchorWebPartProps> implements IDynamicDataCallables {
 
+  // anchor data object related to the current web part
   private _anchor: IAnchorItem;
+  // "Master" data source
   private _pageNavDataSource: IDynamicDataSource;
 
   protected onInit(): Promise<void> {
@@ -42,8 +44,11 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
       uniqueId: uniqueId
     };
 
+    // getting data sources that have already been added on the page
     this._initDataSource();
+    // registering for changes in available datasources
     this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._initDataSource.bind(this));
+    // registering current web part as a data source
     this.context.dynamicDataSourceManager.initializeSource(this);
 
     if (!uniqueId) {
@@ -65,8 +70,8 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
         showTitle: showTitle,
         updateProperty: this._onTitleChanged.bind(this),
         anchorElRef: (el => {
-          this._anchor.domElement = el; //this.domElement;
-          //this._anchor.scrollTop = this.domElement.scrollTop;
+          // notifying subscribers that the anchor component has been rendered
+          this._anchor.domElement = el;
           this.context.dynamicDataSourceManager.notifyPropertyChanged('anchor');
         }),
         navPosition: position
@@ -77,12 +82,20 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
 
   }
 
+  /**
+   * implementation of getPropertyDefinitions from IDynamicDataCallables
+   */
   public getPropertyDefinitions(): ReadonlyArray<IDynamicDataPropertyDefinition> {
     return [{
       id: 'anchor',
       title: 'Anchor'
     }];
   }
+
+  /**
+   * implementation of getPropertyValue from IDynamicDataCallables
+   * @param propertyId property Id
+   */
   public getPropertyValue(propertyId: string): IAnchorItem {
     switch (propertyId) {
       case 'anchor':
@@ -125,11 +138,19 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
 
   private _onTitleChanged(title: string) {
     this._anchor.title = this.properties.title = title;
+    // notifying that web part's title has been changed
     this.context.dynamicDataSourceManager.notifyPropertyChanged('anchor');
   }
 
+  /**
+   * Initializes "master" data source
+   */
   private _initDataSource(): void {
+    // all data sources on the page
     const availableDataSources = this.context.dynamicDataProvider.getAvailableSources();
+    //
+    // searching for "master" data source
+    //
     let hasPageNavDataSource = false;
     for (let i = 0, len = availableDataSources.length; i < len; i++) {
       let dataSource = availableDataSources[i];

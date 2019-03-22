@@ -9,6 +9,7 @@ declare interface IPageSectionsNavigationStrings {
     ThemeLabel: string;
     ThemeLight: string;
     ThemeDark: string;
+    ThemeTheme: string;
     AlignLabel: string;
     AlignLeft: string;
     AlignCenter: string;
