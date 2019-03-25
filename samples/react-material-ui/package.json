@@ -1,0 +1,49 @@
+{
+  "name": "react-material-ui",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "@microsoft/sp-core-library": "1.8.0",
+    "@microsoft/sp-lodash-subset": "1.8.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.8.0",
+    "@microsoft/sp-property-pane": "1.8.0",
+    "@microsoft/sp-webpart-base": "1.8.0",
+    "@pnp/common": "^1.3.1",
+    "@pnp/logging": "^1.3.1",
+    "@pnp/odata": "^1.3.1",
+    "@pnp/sp": "^1.3.1",
+    "@types/es6-promise": "0.0.33",
+    "@types/react": "16.4.2",
+    "@types/react-dom": "16.0.5",
+    "@types/webpack-env": "1.13.1",
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
+    "rxjs": "^6.4.0"
+  },
+  "resolutions": {
+    "@types/react": "16.4.2"
+  },
+  "devDependencies": {
+    "@microsoft/rush-stack-compiler-3.3": "^0.1.15",
+    "@microsoft/sp-build-web": "1.8.0",
+    "@microsoft/sp-module-interfaces": "1.8.0",
+    "@microsoft/sp-tslint-rules": "1.8.0",
+    "@microsoft/sp-webpart-workbench": "1.8.0",
+    "@types/chai": "3.4.34",
+    "@types/material-ui": "^0.21.6",
+    "@types/mocha": "2.2.38",
+    "@types/rx": "^4.1.1",
+    "ajv": "~5.2.2",
+    "gulp": "~3.9.1"
+  }
+}
