@@ -48,5 +48,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - RXJS
 - Provision SharePoint assets
 - TypeScript 3.3
+- @pnp/sp
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
