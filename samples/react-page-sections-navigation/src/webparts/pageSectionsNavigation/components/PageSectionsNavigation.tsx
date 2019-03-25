@@ -195,11 +195,15 @@ export class PageSectionsNavigation extends React.Component<IPageSectionsNavigat
    * gets host DOM element based on position property
    * @param position - current position value
    */
-  private _getHost(position: NavPosition): Node | undefined {
+  private _getHost(position?: NavPosition): Node | undefined {
 
     const navPos = position || this.props.position;
 
     const doc = getDocument();
+    if (!doc) {
+      return undefined;
+    }
+    
     let hostNode: Node;
 
     if (navPos === 'section') {

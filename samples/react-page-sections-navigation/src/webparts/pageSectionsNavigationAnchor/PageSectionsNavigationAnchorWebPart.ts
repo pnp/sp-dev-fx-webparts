@@ -4,7 +4,6 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField,
   PropertyPaneCheckbox
 } from '@microsoft/sp-webpart-base';
 
@@ -30,7 +29,7 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
   // anchor data object related to the current web part
   private _anchor: IAnchorItem;
   // "Master" data source
-  private _pageNavDataSource: IDynamicDataSource;
+  private _pageNavDataSource: IDynamicDataSource | undefined;
 
   protected onInit(): Promise<void> {
 

@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.3/includes/tsconfig-web.json",
+  "extends": "@microsoft/sp-tslint-rules/base-tslint.json",
   "rules": {
     "class-name": false,
     "export-name": false,
@@ -11,15 +11,19 @@
     "no-construct": false,
     "no-duplicate-variable": true,
     "no-eval": false,
+    "no-function-expression": true,
     "no-internal-module": true,
     "no-shadowed-variable": true,
     "no-switch-case-fall-through": true,
+    "no-unnecessary-semicolons": true,
     "no-unused-expression": true,
     "no-use-before-declare": true,
+    "no-with-statement": true,
     "semicolon": true,
     "trailing-comma": false,
     "typedef": false,
     "typedef-whitespace": false,
+    "use-named-parameter": true,
     "variable-name": false,
     "whitespace": false
   }

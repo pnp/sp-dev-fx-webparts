@@ -5,7 +5,6 @@ import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneDropdown,
-  PropertyPaneToggle,
   PropertyPaneChoiceGroup,
   PropertyPaneCheckbox,
   PropertyPaneTextField
@@ -70,7 +69,7 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
         theme: theme ? theme : (isDark ? 'dark' : 'light'),
         align: align,
         isEditMode: this.displayMode === DisplayMode.Edit,
-        homeItem: showHomeItem && homeItemText
+        homeItem: showHomeItem ? homeItemText : ''
       }
     );
 
@@ -127,7 +126,7 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
       if (oldValue) {
         const oldCssLink = this._getCssLink(oldValue);
         if (oldCssLink) {
-          oldCssLink.parentElement.removeChild(oldCssLink);
+          oldCssLink.parentElement!.removeChild(oldCssLink);
         }
       }
 
