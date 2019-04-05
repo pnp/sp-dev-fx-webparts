@@ -8,7 +8,7 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 
 ##  Site Designs List
 
-![site design list](/assets/screen1.jpg)
+![site design list](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-manage-sitedesigns/assets/screen1.jpg)
 
 ## Add, Edit and Delete site designs
 
