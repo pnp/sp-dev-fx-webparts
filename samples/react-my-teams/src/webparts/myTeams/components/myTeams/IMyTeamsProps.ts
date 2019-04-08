@@ -1,7 +1,10 @@
-import { MSGraphClient } from "@microsoft/sp-http";
+import { ITeamsService } from "../../../../shared/services";
+import { ITenant } from "../../../../shared/interfaces";
+import { IWebPartContext } from "@microsoft/sp-webpart-base";
 
 export interface IMyTeamsProps {
-  graphClient: MSGraphClient;
-  tenantId: string;
+  teamsService: ITeamsService;
+  tenantInfo: ITenant;
+  updateTenantInfo: (value: ITenant) => void;
   openInClientApp: boolean;
 }

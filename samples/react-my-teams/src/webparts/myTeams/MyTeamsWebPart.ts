@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -11,6 +11,7 @@ import * as strings from 'MyTeamsWebPartStrings';
 import { MyTeams, IMyTeamsProps } from './components/myTeams';
 import { ITenant } from '../../shared/interfaces';
 import { MSGraphClient } from '@microsoft/sp-http';
+import { TeamsService, ITeamsService } from '../../shared/services';
 
 export interface IMyTeamsWebPartProps {
   tenantInfo: ITenant;
@@ -20,25 +21,32 @@ export interface IMyTeamsWebPartProps {
 export default class MyTeamsWebPart extends BaseClientSideWebPart<IMyTeamsWebPartProps> {
 
   private _graphClient: MSGraphClient;
+  private _teamsService: ITeamsService;
 
   public async onInit(): Promise<void> {
 
-    this._graphClient = await this.context.msGraphClientFactory.getClient();
-    // get tenant info if not available yet
-    if (!this.properties.tenantInfo && this.properties.openInClientApp) {
-      this.properties.tenantInfo = await this._getTenantInfo();
+
+
+    if (DEBUG && Environment.type === EnvironmentType.Local) {
+      console.log("Mock data service not implemented yet");
+    } else {
+
+      this._graphClient = await this.context.msGraphClientFactory.getClient();
+      this._teamsService = new TeamsService(this._graphClient);
     }
 
     return super.onInit();
   }
 
   public async render(): Promise<void> {
-
     const element: React.ReactElement<IMyTeamsProps> = React.createElement(
       MyTeams,
       {
-        graphClient: this._graphClient,
-        tenantId: this.properties.tenantInfo.id,
+        teamsService: this._teamsService,
+        tenantInfo: this.properties.tenantInfo,
+        updateTenantInfo: (value: ITenant) => {
+          this.properties.tenantInfo = value;
+        },
         openInClientApp: this.properties.openInClientApp
       }
     );
@@ -74,17 +82,5 @@ export default class MyTeamsWebPart extends BaseClientSideWebPart<IMyTeamsWebPar
         }
       ]
     };
-  }
-
-  private _getTenantInfo = async (): Promise<ITenant> => {
-    let tenant: ITenant = null;
-    try {
-      const tenantResponse = await this._graphClient.api('organization').select('id').version('v1.0').get();
-      tenant = tenantResponse.value as ITenant;
-      console.log(tenant);
-    } catch (error) {
-      console.log('Error getting tenant information');
-    }
-    return tenant;
   }
 }
