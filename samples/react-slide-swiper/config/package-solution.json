@@ -3,9 +3,8 @@
   "solution": {
     "name": "react-slide-swiper-client-side-solution",
     "id": "c7fdd51c-469e-432f-bdde-930294d3a133",
-    "version": "1.0.0.0",
-    "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "version": "1.0.1.0",
+    "includeClientSideAssets": true
   },
   "paths": {
     "zippedPackage": "solution/react-slide-swiper.sppkg"

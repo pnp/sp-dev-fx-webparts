@@ -35,7 +35,7 @@ export class PageSectionsNavigationAnchor extends React.Component<IPageSectionsN
 
     if (displayMode === DisplayMode.Edit || showTitle) {
       return (
-        <div className={css(styles.webPartTitle, 'psn-anchorTitle')}>
+        <div className={css(styles.webPartTitle, styles.visible, 'psn-anchorTitle')}>
           <div className={css(anchorElClassNames)} ref={anchorElRef}></div>
           {
             displayMode === DisplayMode.Edit
@@ -48,8 +48,13 @@ export class PageSectionsNavigationAnchor extends React.Component<IPageSectionsN
         </div>
       );
     }
-
-    return null;
+    else {
+      return (
+        <div className={styles.webPartTitle}>
+          <div className={css(anchorElClassNames)} ref={anchorElRef}></div>
+        </div>
+      );
+    }
   }
 
   /**

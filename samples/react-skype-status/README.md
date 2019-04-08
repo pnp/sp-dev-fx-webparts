@@ -27,6 +27,7 @@ react-skype-status|[Vincent Biret](https://github.com/baywet)
 
 Version|Date|Comments
 -------|----|--------
+1.4|March 27th, 2019|Upgrade to SPFx 1.8.0
 1.3|November 18th, 2018|Upgrade to SPFX 1.7.0
 1.2|July 4th, 2018|Fixed a bug when subscribing to the current user's status
 1.1|June 25th, 2018|Upgrade to 1.5

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-material-ui-client-side-solution",
+    "id": "868ce19b-5d78-49f0-b782-aba19682f78b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false,
+    "features": [{
+      "title": "React Material UI Sample",
+      "description": "A sample using Material UI with SharePoint Framework",
+      "id": "651c78e8-4195-48fb-87ea-ca569db530c3",
+      "version": "1.0.0.0",
+      "assets": {        
+        "elementManifests": [
+          "elements.xml"
+        ],
+        "elementFiles":[
+          "listSchema.xml"
+        ]
+      }
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-material-ui.sppkg"
+  }
+}

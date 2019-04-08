@@ -1,0 +1,44 @@
+<List xmlns:ows="Microsoft SharePoint" Title="Books" Name="Books" Direction="$Resources:Direction;" 
+Url="Lists/Books" BaseType="0" EnableContentTypes="TRUE" FolderCreation="FALSE" VersioningEnabled="false"
+ EnableMinorVersions="FALSE" DisableAttachments="FALSE" xmlns="http://schemas.microsoft.com/sharepoint/" RootWebOnly="FALSE">
+	<MetaData>
+		<Fields>
+			<Field DisplayName="Image" Format="Image" Title="Image" Type="URL" ID="{b2774cc1-ac12-467d-938c-032e078ae21e}" StaticName="Image" Name="Image" />
+            <Field Type="Text" DisplayName="AuthorName" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" ID="{6f319acc-3a53-45ea-9362-cd0ec70b7aff}" StaticName="AuthorName" Name="AuthorName"/>
+            <Field AppendOnly="FALSE" DisplayName="Details" Format="Dropdown" IsolateStyles="FALSE" NumLines="6" RichText="FALSE" RichTextMode="Compatible" Title="Details" Type="Note" ID="{8d042710-c432-42d4-80b7-093961b59f37}" StaticName="Details" Name="Details"/>          
+		</Fields>
+    <Views>
+      <View BaseViewID="1" 
+            Type="HTML"
+            WebPartZoneID="Main"
+            DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;"
+            DefaultView="TRUE"
+            MobileView="TRUE"
+            MobileDefaultView="TRUE"
+            SetupPath="pages\viewpage.aspx"
+            ImageUrl="/_layouts/images/generic.png"
+            Url="AllItems.aspx">
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <Toolbar Type="Standard" />
+        <ViewFields>
+          <FieldRef Name="Image"></FieldRef>
+			<FieldRef Name="LinkTitle"></FieldRef>
+			<FieldRef Name="AuthorName"></FieldRef>
+			<FieldRef Name="Details"></FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="ID" />
+          </OrderBy>
+        </Query>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>
