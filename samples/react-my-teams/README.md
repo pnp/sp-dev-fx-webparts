@@ -44,7 +44,15 @@ The web part can be configured to open the team on the web browser or client app
 - in the command line run:
   - `npm install`
   - `gulp serve --nobrowser`
-- navigate to the hosted version of SharePoint workbench, eg. https://contoso.sharepoint.com/sites/test/_layouts/15/workbench.aspx
+- navigate to the hosted version of SharePoint workbench, eg. https://contoso.sharepoint.com/_layouts/15/workbench.aspx
+
+### Grant the service principal permission to the MicroSoft Graph API
+
+o365 spo login https://contoso-admin.sharepoint.com
+o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.Read.All'
+o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.ReadWrite.All'
+o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Group.Read.All'
+o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Group.ReadWrite.All'
 
 ## Features
 
