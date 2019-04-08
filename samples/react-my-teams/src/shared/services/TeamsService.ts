@@ -26,7 +26,7 @@ export class TeamsService implements ITeamsService {
       const tenantResponse = await this._graphClient.api('organization').select('id').version('v1.0').get();
       tenant = tenantResponse.value as ITenant;
     } catch (error) {
-      console.log('Error getting tenant information');
+      console.log('Error getting tenant information', error);
     }
     return tenant;
   }
@@ -41,7 +41,7 @@ export class TeamsService implements ITeamsService {
       const teamsResponse = await this._graphClient.api('me/joinedTeams').version('v1.0').get();
       myTeams = teamsResponse.value as ITeam[];
     } catch (error) {
-      console.log('Error getting teams');
+      console.log('Error getting teams', error);
     }
     return myTeams;
   }
@@ -56,7 +56,7 @@ export class TeamsService implements ITeamsService {
       const channelsResponse = await this._graphClient.api(`teams/${teamId}/channels`).version('v1.0').get();
       channels = channelsResponse.value as IChannel[];
     } catch (error) {
-      console.log('Error getting channels for team ' + teamId);
+      console.log('Error getting channels for team ' + teamId, error);
     }
     return channels;
   }

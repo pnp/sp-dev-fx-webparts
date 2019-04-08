@@ -94,7 +94,7 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
       tenant = await this.props.teamsService.GetTenantInfo();
       console.log(tenant);
     } catch (error) {
-      console.log('Error getting tenant information');
+      console.log('Error getting tenant information', error);
     }
     return tenant;
   }
@@ -105,7 +105,7 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
       myTeams = await this.props.teamsService.GetTeams();
       console.log(myTeams);
     } catch (error) {
-      console.log('Error getting teams');
+      console.log('Error getting teams', error);
     }
     return myTeams;
   }
@@ -116,7 +116,7 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
       channels = await this.props.teamsService.GetTeamChannels(teamId);
       console.log(channels);
     } catch (error) {
-      console.log('Error getting channels for team ' + teamId);
+      console.log('Error getting channels for team ' + teamId, error);
     }
     return channels;
   }
