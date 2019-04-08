@@ -37,6 +37,22 @@
       }
     }
 
+    &.theme {
+      background: "[theme: themePrimary, default: #0078d4]";
+      border-bottom-color: "[theme:themePrimary, default: #0078d4]";
+      .nav {
+        .navItem {
+          .navItemLink {
+            color: "[theme:white, default: #fff]";
+
+            &:hover {
+              color: "[theme:neutralLighter, default: #f4f4f4]"
+            }
+          }
+        }
+      }
+    }
+
     &.dark {
       background: "[theme: neutralDark, default: #212121]";
       border-bottom-color: "[theme:white, default: #fff]";

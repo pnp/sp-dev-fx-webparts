@@ -10,6 +10,7 @@ define([], function () {
         "ThemeLabel": "Navigation Theme color",
         "ThemeLight": "Light",
         "ThemeDark": "Dark",
+        "ThemeTheme": "Theme color",
         "AlignLabel": "Navigation align",
         "AlignLeft": "Left",
         "AlignCenter": "Center",

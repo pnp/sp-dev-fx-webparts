@@ -23,8 +23,8 @@
     "properties": {
       "scrollBehavior": "auto",
       "position": "section",
-      "isDark": false,
-      "align": "left"
+      "align": "left",
+      "theme": "light"
     }
   }]
 }
