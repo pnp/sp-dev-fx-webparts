@@ -25,8 +25,6 @@ export default class MyTeamsWebPart extends BaseClientSideWebPart<IMyTeamsWebPar
 
   public async onInit(): Promise<void> {
 
-
-
     if (DEBUG && Environment.type === EnvironmentType.Local) {
       console.log("Mock data service not implemented yet");
     } else {

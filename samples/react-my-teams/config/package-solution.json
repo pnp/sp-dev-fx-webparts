@@ -14,14 +14,6 @@
       {
         "resource": "Microsoft Graph",
         "scope": "User.ReadWrite.All"
-      },
-      {
-        "resource": "Microsoft Graph",
-        "scope": "Group.Read.All"
-      },
-      {
-        "resource": "Microsoft Graph",
-        "scope": "Group.ReadWrite.All"
       }
     ]
   },

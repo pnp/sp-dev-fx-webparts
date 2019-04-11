@@ -40,19 +40,27 @@ The web part can be configured to open the team on the web browser or client app
 
 ## Minimal Path to Awesome
 
-- Clone this repository
-- in the command line run:
-  - `npm install`
-  - `gulp serve --nobrowser`
-- navigate to the hosted version of SharePoint workbench, eg. https://contoso.sharepoint.com/_layouts/15/workbench.aspx
+Clone this repository.
+
+In the command line run:
+
+```bash
+npm install
+gulp serve --nobrowser
+```
+
+Navigate to the hosted version of SharePoint workbench, eg. https://contoso.sharepoint.com/_layouts/15/workbench.aspx
 
 ### Grant the service principal permission to the MicroSoft Graph API
 
+Once installed, the solution will request the required permissions via the Office 365 admin portal.
+If you prefer to approve the permissions in advance, for example when testing the solution in the Workbench page without installing it, you can do so using Office 365 CLI:
+
+```bash
 o365 spo login https://contoso-admin.sharepoint.com
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.Read.All'
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.ReadWrite.All'
-o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Group.Read.All'
-o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Group.ReadWrite.All'
+```
 
 ## Features
 
