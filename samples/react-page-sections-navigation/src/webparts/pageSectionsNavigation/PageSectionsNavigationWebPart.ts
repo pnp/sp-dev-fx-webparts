@@ -35,10 +35,11 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
     const { customCssUrl } = this.properties;
 
     this._onAnchorChanged = this._onAnchorChanged.bind(this);
+    this._availableSourcesChanged = this._availableSourcesChanged.bind(this);
     // getting data sources that have already been added on the page
     this._initDataSources();
     // registering for changes in available datasources
-    this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._initDataSources.bind(this, true));
+    this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._availableSourcesChanged);
 
     this._addCustomCss(customCssUrl);
 
@@ -100,7 +101,15 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
   }
 
   protected onDispose(): void {
+    this.context.dynamicDataProvider.unregisterAvailableSourcesChanged(this._availableSourcesChanged);
+    if (this._dataSources) {
+      this._dataSources.forEach(ds => {
+        this.context.dynamicDataProvider.unregisterPropertyChanged(ds.id, 'anchor', this._onAnchorChanged);
+      });
+      delete this._dataSources;
+    }
     ReactDom.unmountComponentAtNode(this.domElement);
+    super.onDispose();
   }
 
   protected get dataVersion(): Version {
@@ -234,6 +243,10 @@ export default class PageSectionsNavigationWebPart extends BaseClientSideWebPart
         }
       ]
     };
+  }
+
+  private _availableSourcesChanged() {
+    this._initDataSources(true);
   }
 
   /**
