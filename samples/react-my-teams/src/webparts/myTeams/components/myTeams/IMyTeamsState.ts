@@ -1,6 +1,5 @@
-import { ITeam, ITenant } from "../../../../shared/interfaces";
+import { ITeam } from "../../../../shared/interfaces";
 
 export interface IMyTeamsState {
   items: ITeam[];
-  tenantInfo: ITenant;
 }

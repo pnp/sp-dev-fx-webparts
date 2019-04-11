@@ -9,12 +9,10 @@ import {
 
 import * as strings from 'MyTeamsWebPartStrings';
 import { MyTeams, IMyTeamsProps } from './components/myTeams';
-import { ITenant } from '../../shared/interfaces';
 import { MSGraphClient } from '@microsoft/sp-http';
 import { TeamsService, ITeamsService } from '../../shared/services';
 
 export interface IMyTeamsWebPartProps {
-  tenantInfo: ITenant;
   openInClientApp: boolean;
 }
 
@@ -41,10 +39,6 @@ export default class MyTeamsWebPart extends BaseClientSideWebPart<IMyTeamsWebPar
       MyTeams,
       {
         teamsService: this._teamsService,
-        tenantInfo: this.properties.tenantInfo,
-        updateTenantInfo: (value: ITenant) => {
-          this.properties.tenantInfo = value;
-        },
         openInClientApp: this.properties.openInClientApp
       }
     );
