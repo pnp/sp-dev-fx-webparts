@@ -1,5 +1,5 @@
 import { MSGraphClient } from "@microsoft/sp-http";
-import { ITeam, IChannel, ITenant } from "../interfaces";
+import { ITeam, IChannel } from "../interfaces";
 import { ITeamsService } from "./ITeamsService";
 
 export class TeamsService implements ITeamsService {
@@ -14,21 +14,6 @@ export class TeamsService implements ITeamsService {
   constructor(graphClient: MSGraphClient) {
     // set web part context
     this._graphClient = graphClient;
-  }
-
-  public GetTenantInfo = async (): Promise<ITenant> => {
-    return await this._getTenantInfo();
-  }
-
-  private _getTenantInfo = async (): Promise<ITenant> => {
-    let tenant: ITenant = null;
-    try {
-      const tenantResponse = await this._graphClient.api('organization').select('id').version('v1.0').get();
-      tenant = tenantResponse.value as ITenant;
-    } catch (error) {
-      console.log('Error getting tenant information', error);
-    }
-    return tenant;
   }
 
   public GetTeams = async (): Promise<ITeam[]> => {

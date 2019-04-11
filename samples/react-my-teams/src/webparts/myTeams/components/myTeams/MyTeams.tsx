@@ -4,7 +4,7 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import styles from '../myTeams/MyTeams.module.scss';
 import { IMyTeamsProps, IMyTeamsState } from '.';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { ITeam, IChannel, ITenant } from '../../../../shared/interfaces';
+import { ITeam, IChannel } from '../../../../shared/interfaces';
 
 export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
 
@@ -14,8 +14,7 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
     super(props);
 
     this.state = {
-      items: [],
-      tenantInfo: null
+      items: []
     };
   }
 
@@ -31,21 +30,12 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
 
   private _load = async (): Promise<void> => {
 
-    // get tenant info if required and not available yet
-    // then update the web part properties to persist the value
-    let tenantInfo: ITenant = this.props.tenantInfo;
-    if ((!this.props.tenantInfo || this.props.tenantInfo === undefined) && this.props.openInClientApp) {
-      tenantInfo = await this._getTenantInfo();
-      this.props.updateTenantInfo(tenantInfo);
-    }
-
     // get teams
     this._myTeams = await this._getTeams();
 
 
     this.setState({
       items: this._myTeams,
-      tenantInfo: tenantInfo
     });
   }
 
@@ -79,24 +69,13 @@ export class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
     const teamChannels: IChannel[] = await this._getTeamChannels(teamId);
     const channel = teamChannels[0];
 
-    if (this.props.openInClientApp && this.state.tenantInfo) {
-      link = `https://teams.microsoft.com/l/channel/${channel.id}/${channel.displayName}?groupId=${teamId}&tenantId=${this.state.tenantInfo.id}`;
+    if (this.props.openInClientApp) {
+      link = channel.webUrl;
     } else {
       link = `https://teams.microsoft.com/_#/conversations/${channel.displayName}?threadId=${channel.id}&ctx=channel`;
     }
 
     window.open(link, '_blank');
-  }
-
-  private _getTenantInfo = async (): Promise<ITenant> => {
-    let tenant: ITenant = null;
-    try {
-      tenant = await this.props.teamsService.GetTenantInfo();
-      console.log(tenant);
-    } catch (error) {
-      console.log('Error getting tenant information', error);
-    }
-    return tenant;
   }
 
   private _getTeams = async (): Promise<ITeam[]> => {
