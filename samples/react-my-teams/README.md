@@ -60,6 +60,8 @@ If you prefer to approve the permissions in advance, for example when testing th
 o365 spo login https://contoso-admin.sharepoint.com
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.Read.All'
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.ReadWrite.All'
+o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Group.Read.All'
+o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Group.ReadWrite.All'
 ```
 
 ## Features
