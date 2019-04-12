@@ -43,10 +43,13 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
       uniqueId: uniqueId
     };
 
+    this._initDataSource = this._initDataSource.bind(this);
+    this._onPageNavPositionChanged = this._onPageNavPositionChanged.bind(this);
+
     // getting data sources that have already been added on the page
     this._initDataSource();
     // registering for changes in available datasources
-    this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._initDataSource.bind(this));
+    this.context.dynamicDataProvider.registerAvailableSourcesChanged(this._initDataSource);
     // registering current web part as a data source
     this.context.dynamicDataSourceManager.initializeSource(this);
 
@@ -69,9 +72,11 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
         showTitle: showTitle,
         updateProperty: this._onTitleChanged.bind(this),
         anchorElRef: (el => {
-          // notifying subscribers that the anchor component has been rendered
-          this._anchor.domElement = el;
-          this.context.dynamicDataSourceManager.notifyPropertyChanged('anchor');
+          if (!this.isDisposed) {
+            // notifying subscribers that the anchor component has been rendered
+            this._anchor.domElement = el;
+            this.context.dynamicDataSourceManager.notifyPropertyChanged('anchor');
+          }
         }),
         navPosition: position
       }
@@ -105,7 +110,15 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
   }
 
   protected onDispose(): void {
+    this.context.dynamicDataProvider.unregisterAvailableSourcesChanged(this._initDataSource);
+    if (this._pageNavDataSource) {
+      this.context.dynamicDataProvider.unregisterPropertyChanged(this._pageNavDataSource.id, 'position', this._onPageNavPositionChanged);
+      delete this._pageNavDataSource;
+    }
     ReactDom.unmountComponentAtNode(this.domElement);
+    delete this._anchor;
+    super.onDispose();
+
   }
 
   protected get dataVersion(): Version {
@@ -155,7 +168,7 @@ export default class PageSectionsNavigationAnchorWebPart extends BaseClientSideW
       let dataSource = availableDataSources[i];
       if (dataSource.getPropertyDefinitions().filter(pd => pd.id === 'position').length) {
         this._pageNavDataSource = dataSource;
-        this.context.dynamicDataProvider.registerPropertyChanged(dataSource.id, 'position', this._onPageNavPositionChanged.bind(this));
+        this.context.dynamicDataProvider.registerPropertyChanged(dataSource.id, 'position', this._onPageNavPositionChanged);
         hasPageNavDataSource = true;
         break;
       }
