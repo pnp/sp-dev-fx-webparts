@@ -14,8 +14,6 @@ This sample describe a SPFX application which reterive an office 365 usage repor
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
-
 ## Prerequisites
  
 > You need following set of permissions in order to retrieve office 365 usage reports. Find out more about consuming the [Microsoft Graph API in the SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial)<br><br>![Microsoft Graph API Permissions](./assets/graph-api-permissions-usage-reports.png) 
@@ -45,8 +43,12 @@ Version|Date|Comments
   - `npm install`
   - `gulp serve`
 
-> Include any additional steps as needed.
+If you have not previously granted the required Microsoft Graph permissions, you need to:
 
+- Run `gulp bundle --ship`
+- Run `gulp package-solution --ship`
+- Install the .sppkg file (under .\sharepoint\solution) to the SP app catalog
+- Approve the API permissions in the new SP admin center
 
 ## Features
 Here are main features for this application
@@ -55,3 +57,5 @@ Here are main features for this application
 - Microsoft Graph API to reterive Office 365 Usage reports
 - ChartJS integrations
 - Dependency Injection in SPFX using Service Scope
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-graph-reports" />
