@@ -1,11 +1,13 @@
 ## Web part displaying Google Fit information
 
 ### Summary 
+
 This sample demonstrates integration of Google Fit information with SharePoint Framework. The Google Fitness REST APIs allows developers to extend it further and create their own dashboards. Google Fitness REST APIs are useful if you have fitness app and you want to integrate your data with google fit or if you just want to collect Fitness data and display some information to the users. This web part helps to display the key fitness information (activity time spent,  distance travelled, calories burned, step count) from the Google fit data source.
 
 ![Web part preview][figure1]
 
 ### Generate OAuth 2.0 client ID
+
 In order to use Google REST APIs, we need to generate an OAuth 2.0 client ID. Follow below procedure to generate it.
 1. Open Google API Console from [here](https://console.developers.google.com/flows/enableapi?apiid=fitness).
 2. Select any existing project or choose to create a new project.
@@ -83,6 +85,7 @@ This sample web part shows how adaptive cards can be used effectively with Share
 - Creating extensible services
 - Using @react-google-authorize
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-google-fit" />
 
 [figure1]: ./assets/webpart-preview.png
 [figure2]: ./assets/sharepoint-run.gif
@@ -92,3 +95,4 @@ This sample web part shows how adaptive cards can be used effectively with Share
 [figure6]: ./assets/add-authorized-origins.png
 [figure7]: ./assets/setup-oauth-consent.png
 [figure8]: ./assets/oauth-clientid.png
+

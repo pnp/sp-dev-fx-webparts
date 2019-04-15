@@ -67,3 +67,5 @@ o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Group.
 ## Features
 
 This Web Part lists all the teams the current user is a member of.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-my-teams" />

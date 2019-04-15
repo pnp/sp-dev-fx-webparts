@@ -79,3 +79,4 @@ This sample web part shows how adaptive cards can be used effectively with Share
 [figure4]: ./assets/list-sample-data.png
 
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-adaptive-cards-image-gallery" />

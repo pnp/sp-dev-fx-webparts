@@ -1,8 +1,0 @@
-{
-  "@microsoft/generator-sharepoint": {
-    "version": "1.4.1",
-    "libraryName": "react-relay-service",
-    "libraryId": "3d8b2b8b-cc29-4cf9-b3f1-62edd5ca9b52",
-    "environment": "spo"
-  }
-}
