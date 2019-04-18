@@ -20,11 +20,12 @@ export default class ReactSlideSwiper extends React.Component<IReactSlideSwiperP
 
   public componentDidMount(): void {
 
-    this.props.listService.getAll().then((result: Array<ListItem>) => {
+    this.props.listService.getAll(this.props.listName).then((result: Array<ListItem>) => {
 
       // List items returned from the ListMock so we can
       // change the state and display them.
       this.setState({ listItems: result });
+      console.log(this.state.listItems.length);
 
       // Since we have list items rendered
       // we can call the swiper and let it

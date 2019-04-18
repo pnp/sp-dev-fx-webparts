@@ -1,8 +1,0 @@
-<testsuites name="jest tests" tests="2" failures="0" time="6.464">
-  <testsuite name="POST /api/query/enhance" errors="0" failures="0" skipped="0" timestamp="2018-11-11T22:25:37" time="4.132" tests="2">
-    <testcase classname="POST /api/query/enhance should throw a warning message if the input query is empty" name="POST /api/query/enhance should throw a warning message if the input query is empty" time="0.005">
-    </testcase>
-    <testcase classname="POST /api/query/enhance should throw an error if the language is not supported" name="POST /api/query/enhance should throw an error if the language is not supported" time="0.003">
-    </testcase>
-  </testsuite>
-</testsuites>

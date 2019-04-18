@@ -1,0 +1,13 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.bubbleChartDemo {
+  color: inherit;
+}
+
+:export {
+color1: rgb(255, 99, 132);
+color2: rgb(255, 159, 64);
+color3: rgb(255, 205, 86);
+color4: rgb(75, 192, 192);
+color5: rgb(54, 162, 235);
+}

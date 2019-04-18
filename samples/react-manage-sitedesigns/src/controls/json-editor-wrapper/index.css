@@ -1,0 +1,8 @@
+div.jsoneditor-menu {
+    color: white;
+    background-color: #414141;
+    border-bottom: 1px solid #aeaeae;
+}
+div.jsoneditor-menu .jsoneditor-poweredBy{
+    display: none;
+}

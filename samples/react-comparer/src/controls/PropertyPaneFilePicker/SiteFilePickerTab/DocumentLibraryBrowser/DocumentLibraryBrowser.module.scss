@@ -1,0 +1,267 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+//@import "../PropertyPaneFilePicker.module.scss";
+
+.aboveNameplate {
+  position: relative;
+  margin: 16px 16px 0 16px;
+}
+
+.tileContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  // -webkit-box-orient: vertical;
+  // -webkit-box-direction: normal;
+  // -ms-flex-direction: column;
+  // flex-direction: column;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.foreground {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  opacity: 1;
+  -webkit-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.folderCover {
+  display: inline-block;
+  margin: 3px;
+}
+
+.folderCover.isLarge {
+  width: 112px;
+  height: 80px;
+}
+
+.folderCoverBack {
+  display: block;
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: -4px;
+}
+
+.folderCoverFront {
+  display: block;
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: -4px;
+}
+
+.listPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  // -webkit-box-orient: vertical;
+  // -webkit-box-direction: normal;
+  // -ms-flex-direction: column;
+  // flex-direction: column;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+}
+
+.cellContent {
+  //position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.content {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.tile {
+  outline: transparent;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  background-color: $ms-color-white;
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+  color: $ms-color-neutralPrimary;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.namePlate {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  left: 0;
+  width: 100%;
+  font-size: $ms-font-size-s;
+  box-sizing: border-box;
+  margin: auto 0 0 0;
+  padding: 12px 8px;
+  text-align: center;
+  z-index: 0;
+}
+
+.nameplate .name {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+html[dir="ltr"] .name {
+  padding-left: 8px;
+}
+
+html[dir="ltr"] .name {
+  margin-left: -8px;
+}
+
+.name,
+.isLarge .name {
+  font-size: 14px;
+  height: 30px;
+  margin-top: -7px;
+  margin-bottom: -8px;
+}
+
+.nameplate .name {
+  -webkit-transition: color 0.2s linear;
+  transition: color 0.2s linear;
+}
+
+.name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-weight: 400;
+  color: $ms-color-neutralPrimary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.link:hover .name {
+  text-decoration: underline;
+}
+
+.folderList {
+  padding-top: 20px;
+}
+
+.folderList :global(.ms-List-cell) {
+  display: block;
+}
+
+.folderList :global(.ms-List-page) {
+  overflow: hidden;
+  font-size: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+}
+
+.folderList :global(.ms-List-surface) {
+  position: relative;
+}
+
+.link {
+  cursor: pointer;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  background-color: $ms-color-white;
+  outline: transparent;
+}
+
+.cell {
+  //padding-top: 97.16%;
+  padding-top: 140px;
+}
+
+.listCell {
+  text-align: center;
+  outline: none;
+  position: relative;
+  max-width: 176px;
+  max-height: 171px;
+  margin: 4px;
+  border-style: none;
+  border-width: 0px;
+  width: 176px;
+}

@@ -73,12 +73,21 @@ export abstract class BaseCalendarService implements ICalendarService {
      */
     protected fetchResponse(feedUrl: string): Promise<HttpClientResponse> {
         // would love to use a different approach to workaround CORS issues
-        const requestUrl: string = this.UseCORS ?
-            `https://cors-anywhere.herokuapp.com/${feedUrl}` :
-            feedUrl;
+        const requestUrl: string = this.getCORSUrl(feedUrl);
 
         return this.Context.httpClient.fetch(requestUrl,
             HttpClient.configurations.v1, {});
+    }
+
+    /**
+     * Returns a URL or a CORS-formatted URL
+     * @param feedUrl The URL for the feed
+     */
+    protected getCORSUrl(feedUrl: string): string {
+               // would love to use a different approach to workaround CORS issues
+      return this.UseCORS ?
+          `https://cors-anywhere.herokuapp.com/${feedUrl}` :
+          feedUrl;
     }
 
     /**

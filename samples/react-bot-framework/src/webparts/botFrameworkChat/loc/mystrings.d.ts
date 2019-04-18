@@ -4,7 +4,7 @@ declare interface IBotFrameworkChatStrings {
   DescriptionFieldLabel: string;
 }
 
-declare module 'botFrameworkChatStrings' {
+declare module 'BotFrameworkChatWebPartStrings' {
   const strings: IBotFrameworkChatStrings;
   export = strings;
 }

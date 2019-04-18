@@ -1,0 +1,25 @@
+{
+  "@pnp/generator-spfx": {
+    "framework": "react",
+    "pnpFramework": "reactjs.plus",
+    "pnp-libraries": [
+      "jquery@3",
+      "@pnp/pnpjs",
+      "@pnp/spfx-property-controls",
+      "@pnp/spfx-controls-react"
+    ],
+    "pnp-ci": [],
+    "pnp-vetting": [],
+    "spfxenv": "spo"
+  },
+  "@microsoft/generator-sharepoint": {
+    "environment": "spo",
+    "framework": "react",
+    "isCreatingSolution": true,
+    "version": "1.7.1",
+    "libraryName": "react-tenant-properties",
+    "libraryId": "d5bc38a6-0b5c-4644-9087-efa6de87ece1",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

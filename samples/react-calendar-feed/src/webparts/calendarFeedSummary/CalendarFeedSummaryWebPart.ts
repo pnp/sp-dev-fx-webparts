@@ -1,16 +1,35 @@
-// tslint:disable-next-line:max-line-length
-import { BaseClientSideWebPart, IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneDropdown } from "@microsoft/sp-webpart-base";
+import * as React from "react";
+import * as ReactDom from "react-dom";
+
+// SharePoint imports
+import {
+  BaseClientSideWebPart,
+  IPropertyPaneConfiguration,
+  IPropertyPaneDropdownOption,
+  PropertyPaneDropdown
+} from "@microsoft/sp-webpart-base";
+
+// Needed for data versions
+import { Version } from '@microsoft/sp-core-library';
+
+// PnP Property controls
 import { CalloutTriggers } from "@pnp/spfx-property-controls/lib/PropertyFieldHeader";
 import { PropertyFieldNumber } from "@pnp/spfx-property-controls/lib/PropertyFieldNumber";
 import { PropertyFieldSliderWithCallout } from "@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout";
 import { PropertyFieldTextWithCallout } from "@pnp/spfx-property-controls/lib/PropertyFieldTextWithCallout";
 import { PropertyFieldToggleWithCallout } from "@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout";
+
+// Localization
 import * as strings from "CalendarFeedSummaryWebPartStrings";
-import * as React from "react";
-import * as ReactDom from "react-dom";
+
+// Calendar services
 import { CalendarEventRange, DateRange, ICalendarService } from "../../shared/services/CalendarService";
-import { CalendarServiceProviderList } from "../../shared/services/CalendarService/CalendarServiceProviderList";
+import { CalendarServiceProviderList, CalendarServiceProviderType } from "../../shared/services/CalendarService/CalendarServiceProviderList";
+
+// Web part properties
 import { ICalendarFeedSummaryWebPartProps } from "./CalendarFeedSummaryWebPart.types";
+
+// Calendar Feed Summary component
 import CalendarFeedSummary from "./components/CalendarFeedSummary";
 import { ICalendarFeedSummaryProps } from "./components/CalendarFeedSummary.types";
 
@@ -31,6 +50,29 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
 
     // get the list of providers so that we can offer it to users
     this._providerList = CalendarServiceProviderList.getProviders();
+  }
+
+  protected onInit(): Promise<void> {
+    return new Promise<void>((resolve, _reject) => {
+
+      let {
+        cacheDuration,
+        dateRange,
+      } = this.properties;
+
+      // make sure to set a default date range if it isn't defined
+      // somehow this is an issue when binding to properties that are enums
+      if (dateRange === undefined) {
+        dateRange = DateRange.Year;
+      }
+
+      if (cacheDuration === undefined) {
+        // default to 15 minutes
+        cacheDuration = 15;
+      }
+
+      resolve(undefined);
+    });
   }
 
   /**
@@ -73,46 +115,50 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    * Show the configuration pane
    */
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+
     // create a drop down of feed providers from our list
     const feedTypeOptions: IPropertyPaneDropdownOption[] = this._providerList.map(provider => {
       return { key: provider.key, text: provider.label };
     });
 
-    // make sure to set a default date range if it isn't defined
-    // somehow this is an issue when binding to properties that are enums
-    if (this.properties.dateRange === undefined) {
-      this.properties.dateRange = DateRange.Year;
-    }
 
-    if (this.properties.cacheDuration === undefined) {
-      // default to 15 minutes
-      this.properties.cacheDuration = 15;
-    }
+    const {
+      feedUrl,
+      maxEvents,
+      useCORS,
+      cacheDuration,
+      feedType
+    } = this.properties;
+
+    const isMock: boolean = feedType === CalendarServiceProviderType.Mock;
 
     return {
       pages: [
         {
+          displayGroupsAsAccordion: true,
           header: {
             description: strings.PropertyPaneDescription
           },
           groups: [
             {
+              groupName: strings.FeedSettingsGroupName,
               groupFields: [
                 // feed type drop down. Add your own types in the drop-down list
                 PropertyPaneDropdown("feedType", {
                   label: strings.FeedTypeFieldLabel,
                   options: feedTypeOptions
                 }),
-                // feed url input box
-                PropertyFieldTextWithCallout("feedUrl", {
+                // feed url input box -- only if not using a mock provider
+                !isMock && PropertyFieldTextWithCallout("feedUrl", {
                   calloutTrigger: CalloutTriggers.Hover,
                   key: "feedUrlFieldId",
                   label: strings.FeedUrlFieldLabel,
                   calloutContent:
-                    React.createElement("p", {}, strings.FeedUrlCallout),
+                    React.createElement("div", {}, strings.FeedUrlCallout),
                   calloutWidth: 200,
-                  value: this.properties.feedUrl,
-                  deferredValidationTime: 500,
+                  value: feedUrl,
+                  placeholder: "https://",
+                  deferredValidationTime: 200,
                   onGetErrorMessage: this._validateFeedUrl.bind(this)
                 }),
                 // how days ahead from today are we getting
@@ -131,30 +177,32 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
             // advanced group
             {
               groupName: strings.AdvancedGroupName,
+              isCollapsed: true,
               groupFields: [
-                 // how many items are we diplaying in a page
-                 PropertyFieldNumber("maxEvents", {
+                // how many items are we diplaying in a page
+                PropertyFieldNumber("maxEvents", {
                   key: "maxEventsFieldId",
                   label: strings.MaxEventsFieldLabel,
                   description: strings.MaxEventsFieldDescription,
-                  value: this.properties.maxEvents,
+                  value: maxEvents,
                   minValue: 0,
                   disabled: false
                 }),
                 // use CORS toggle
                 PropertyFieldToggleWithCallout("useCORS", {
+                  disabled: isMock,
                   calloutTrigger: CalloutTriggers.Hover,
                   key: "useCORSFieldId",
                   label: strings.UseCORSFieldLabel,
                   calloutWidth: 200,
-                  calloutContent: React.createElement("p", {}, strings.UseCORSFieldCallout),
+                  calloutContent: React.createElement("div", {}, isMock ? strings.UseCORSFieldCalloutDisabled : strings.UseCORSFieldCallout),
                   onText: strings.CORSOn,
                   offText: strings.CORSOff,
-                  checked: this.properties.useCORS
+                  checked: useCORS
                 }),
                 // cache duration slider
                 PropertyFieldSliderWithCallout("cacheDuration", {
-                  calloutContent: React.createElement("p", {}, strings.CacheDurationFieldCallout),
+                  calloutContent: React.createElement("div", {}, strings.CacheDurationFieldCallout),
                   calloutTrigger: CalloutTriggers.Hover,
                   calloutWidth: 200,
                   key: "cacheDurationFieldId",
@@ -163,7 +211,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
                   min: 0,
                   step: 15,
                   showValue: true,
-                  value: this.properties.cacheDuration
+                  value: cacheDuration
                 })
               ],
             }
@@ -182,19 +230,33 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
   }
 
   /**
+     * Returns the data version
+     */
+  protected get dataVersion(): Version {
+    return Version.parse('2.0');
+  }
+
+
+  /**
    * Returns true if the web part is configured and ready to show events. If it returns false, we'll show the configuration placeholder.
    */
   private _isConfigured(): boolean {
     const { feedUrl, feedType } = this.properties;
+
+    // see if web part has a feed type configured
+    const hasFeedType: boolean = feedType !== null
+      && feedType !== undefined;
+
+    // Mock feeds don't need anything else
+    if (feedType === CalendarServiceProviderType.Mock) {
+      return true;
+    }
 
     // see if web part has a feed url configured
     const hasFeedUrl: boolean = feedUrl !== null
       && feedUrl !== undefined
       && feedUrl !== "";
 
-    // see if web part has a feed type configured
-    const hasFeedType: boolean = feedType !== null
-      && feedType !== undefined;
 
     // if we have a feed url and a feed type, we are configured
     return hasFeedUrl && hasFeedType;
@@ -205,6 +267,12 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    * @param feedUrl The URL to validate
    */
   private _validateFeedUrl(feedUrl: string): string {
+    if (this.properties.feedType === CalendarServiceProviderType.Mock) {
+      // we don't need a URL for mock feeds
+      return '';
+    }
+
+    // Make sure the feed isn't empty or null
     if (feedUrl === null ||
       feedUrl.trim().length === 0) {
       return strings.FeedUrlValidationNoUrl;
@@ -212,9 +280,10 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
 
     if (!feedUrl.match(/(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/)) {
       return strings.FeedUrlValidationInvalidFormat;
-    } else {
-      return "";
     }
+
+    // No errors
+    return '';
   }
 
   /**

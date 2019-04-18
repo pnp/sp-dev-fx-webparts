@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "rss-reader-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rssReader/RssReaderWebPart.js",
+          "manifest": "./src/webparts/rssReader/RssReaderWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "moment": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js",
+      "globalName": "Moment"
+    }
+  },
+  "localizedResources": {
+    "RssReaderWebPartStrings": "lib/webparts/rssReader/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

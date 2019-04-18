@@ -1,0 +1,27 @@
+<div class="template_root">
+    <div class="template_rss_tileList">
+        <div class="ms-Grid">
+            <div class="ms-Grid-row">
+                {{#each items as |item|}}
+                    <div class="ms-Grid-col ms-sm12 ms-md6 ms-lg6">
+                        <div class="singleCard" onClick="window.location = '{{channel/item/link}}'; return false;">
+                            <div class="ms-Grid">
+                                <div class="ms-Grid-row">
+                                    <div class="ms-Grid-col ms-sm12">
+                                        <span class="primaryText"><a href="{{channel/item/link}}">{{channel/item/title}}</a></span>
+                                        <span class="secondaryText">{{{getShortText channel/item/description 100 true}}}</span>
+                                        <span class="dateText">{{getDate channel/item/pubDate "MM/DD/YYYY"}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+            <div class="template_resultCount">
+                <label class="ms-fontWeight-normal">Total items: {{returnedItemCount}}</label>
+            </div>
+        </div>
+    </div>
+</div>

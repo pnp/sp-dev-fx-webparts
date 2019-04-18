@@ -10,11 +10,12 @@ You can see this web part sample, including a sample VS 2015 bot application in 
 where sample was demonstrated.
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+
+![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 * [Microsoft Bot Framework](http://dev.botframework.com)
 
@@ -40,7 +41,6 @@ under the [vs2015-bot-application](./vs2015-bot-application) folder. This is sim
 Solution|Author(s)
 --------|---------
 bot-framework | Gary Pretty ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
-RC0 Update / BugFixing | Raul Garita ([Raul.Garita@buildingi.com](mailto:raul.garita@buildingi.com), [Buildingi](http://www.buildingi.com))
 
 ## Version history
 
@@ -49,6 +49,8 @@ Version|Date|Comments
 1.0|October 11th, 2016|Initial release
 1.1|Jan 24th, 2017|Updated to RC0
 1.2|Feb 23rd, 2017|Initial load bug fix
+1.3|February 8, 2018|Updated to SPFx 1.7
+
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

@@ -1,8 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "0459b501-da31-43c7-9a9a-d5c59cc2d667",
+  "id": "acef6c3f-852a-42e3-8a4b-7ea191ae9687",
   "alias": "CalendarFeedSummaryWebPart",
   "componentType": "WebPart",
+
   "version": "*",
   "manifestVersion": 2,
 

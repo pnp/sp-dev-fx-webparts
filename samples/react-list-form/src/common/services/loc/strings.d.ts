@@ -7,4 +7,4 @@ declare interface IServicesStrings {
 declare module 'servicesStrings' {
     const strings: IServicesStrings;
     export = strings;
-  }
+}

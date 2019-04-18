@@ -2,11 +2,9 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-calendar-feed-client-side-solution",
-    "id": "dd42aa00-b07d-48a2-8896-cc2f8c0d3fae",
-    "version": "3.0.0.0",
-    "includeClientSideAssets": true,
-    "isDomainIsolated": false,
-    "iconPath": "images/appicon.png"
+    "id": "25653136-fc83-4abe-b9d2-a4ac041959d5",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
   },
   "paths": {
     "zippedPackage": "solution/react-calendar-feed.sppkg"

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "62eb4ba8-6014-4bd8-a428-097ff64f01c6",
+  "alias": "PublicUnjoinedTeamsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Public Unjoined Teams" },
+    "description": { "default": "Lists all the public teams the current user is not a member of, and displays a button for joining." },
+    "officeFabricIconFontName": "TeamsLogoInverse",
+    "properties": {
+      "title": "Public Teams I'm not a member of"
+    }
+  }]
+}
