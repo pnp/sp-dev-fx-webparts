@@ -1,0 +1,40 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+// @import 'typeface-roboto';
+.graphReports {
+    flex-grow: 1;
+
+    .topHeader{
+        font-size: 25px;
+    }
+    .tabBackground{
+        background-color: #0078d4;
+    }
+
+    .paper {
+        padding: 8px;
+    }
+
+    .sharepointDashboard {
+        padding: 0 6px;
+    }
+
+    .divider {
+        display: block;
+        border: 0;
+        margin: 4em 0;
+        padding: 0;
+    }
+
+    .oneDriveDashboard {
+        padding: 0 6px;
+
+        .header {
+            margin: 10px 0px;
+
+        }
+    }
+    .formControl {
+        margin: 0px;
+    }
+}

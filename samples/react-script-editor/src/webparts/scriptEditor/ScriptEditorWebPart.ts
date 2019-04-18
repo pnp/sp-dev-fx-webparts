@@ -27,11 +27,10 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                     const style = window.getComputedStyle(element);
                     const hasPadding = style.paddingTop !== "0px";
                     if (hasPadding) {
-                        element.style.paddingTop = "0";
-                        element.style.paddingBottom = "0";
-                        element.style.marginTop = "0";
-                        element.style.marginBottom = "0";
-                        break;
+                        element.style.paddingTop = "0px";
+                        element.style.paddingBottom = "0px";
+                        element.style.marginTop = "0px";
+                        element.style.marginBottom = "0px";
                     }
                     element = element.parentElement;
                 }
@@ -149,14 +148,10 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
 
         const urls = [];
         const onLoads = [];
-        const forceReload = [];
         for (let i = 0; scripts[i]; i++) {
             const scriptTag = scripts[i];
             if (scriptTag.src && scriptTag.src.length > 0) {
                 urls.push(scriptTag.src);
-                if (scriptTag.attributes["reload"]) {
-                    forceReload.push(scriptTag.src);
-                }
             }
             if (scriptTag.onload && scriptTag.onload.length > 0) {
                 onLoads.push(scriptTag.onload);
@@ -172,14 +167,10 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
 
         for (let i = 0; i < urls.length; i++) {
             try {
-                const scriptUrl = urls[i];
-                try {
-                    if (forceReload.indexOf(scriptUrl) !== -1) {
-                        let hackReload = (<any>SPComponentLoader)._instance;
-                        hackReload._systemJsLoader.delete(urls[i]);
-                    }
-                } catch (silent) { }
-                await SPComponentLoader.loadScript(urls[i], { globalExportsName: "ScriptGlobal" });
+                let scriptUrl = urls[i];
+                const prefix = scriptUrl.indexOf('?') === -1 ? '?' : '&';
+                scriptUrl += prefix + 'cow=' + new Date().getTime();
+                await SPComponentLoader.loadScript(scriptUrl, { globalExportsName: "ScriptGlobal" });
             } catch (error) {
                 if (console.error) {
                     console.error(error);

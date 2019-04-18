@@ -73,3 +73,5 @@ Version|Date|Comments
     name : "<Term Name>",
     key : "<Term ID>"
   }
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-taxonomypicker-panel" />

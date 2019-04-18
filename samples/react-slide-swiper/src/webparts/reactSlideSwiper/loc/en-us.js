@@ -16,5 +16,6 @@ define([], function() {
     "InPixels": "In pixels",
     "EnableGrabCursor": "Enable grab cursor",
     "EnableLoop": "Enable loop",
+    "ListName": "SharePoint List Name",
   }
 });

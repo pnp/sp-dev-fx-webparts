@@ -52,3 +52,5 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 -Using the SharePoint rest API for retrieving documents from the search index.
 -Passing web part properties to React components.
 -Reusing single React component between two web parts.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-documents-detailslist" />

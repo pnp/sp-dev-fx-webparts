@@ -15,6 +15,7 @@ declare interface IReactSlideSwiperWebPartStrings {
   InPixels: string;
   EnableGrabCursor: string;
   EnableLoop: string;
+  ListName:string;
 }
 
 declare module 'ReactSlideSwiperWebPartStrings' {

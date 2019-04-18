@@ -77,3 +77,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Logging.
 * Rendering error messages.
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-employee-spotlight" />

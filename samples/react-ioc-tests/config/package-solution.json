@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "ioc-tests-client-side-solution",
+    "id": "d831edc5-e461-4c60-8ebe-178f5270e58e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/ioc-tests.sppkg"
+  }
+}

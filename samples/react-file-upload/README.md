@@ -58,4 +58,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - ability limit users to upload accepted file types
 - using sp-pnp-js to delete uploaded files
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-file-upload" />
+
