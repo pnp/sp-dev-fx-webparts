@@ -27,7 +27,8 @@ export class PropertyPaneAsyncDropdown implements IPropertyPaneField<IPropertyPa
         onPropertyChange: properties.onPropertyChange,
         selectedKey: properties.selectedKey,
         disabled: properties.disabled,
-        onRender: this.onRender.bind(this)
+        onRender: this.onRender.bind(this),
+        onDispose: this.onDispose.bind(this)
     };
   }
 
@@ -37,6 +38,10 @@ export class PropertyPaneAsyncDropdown implements IPropertyPaneField<IPropertyPa
     }
 
     this.onRender(this.elem);
+  }
+
+  private onDispose(element: HTMLElement): void {
+    ReactDom.unmountComponentAtNode(element);
   }
 
   private onRender(elem: HTMLElement): void {
