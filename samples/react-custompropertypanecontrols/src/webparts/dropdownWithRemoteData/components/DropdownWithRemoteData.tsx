@@ -5,7 +5,7 @@ import { IDropdownWithRemoteDataProps } from './IDropdownWithRemoteDataProps';
 
 import { Config } from './Config';
 
-export default class DropdownWithRemoteData extends React.Component<IDropdownWithRemoteDataProps, void> {
+export default class DropdownWithRemoteData extends React.Component<IDropdownWithRemoteDataProps, {}> {
   public render(): React.ReactElement<IDropdownWithRemoteDataProps> {
 
     const { needsConfiguration, configureWebPart} = this.props;

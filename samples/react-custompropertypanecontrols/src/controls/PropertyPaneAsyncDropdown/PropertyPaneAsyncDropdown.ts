@@ -1,9 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import {
-  IPropertyPaneField,
-  PropertyPaneFieldType
-} from '@microsoft/sp-webpart-base';
+import { IPropertyPaneField, PropertyPaneFieldType } from "@microsoft/sp-property-pane";
 import { IDropdownOption } from 'office-ui-fabric-react';
 import { IPropertyPaneAsyncDropdownProps } from './IPropertyPaneAsyncDropdownProps';
 import { IPropertyPaneAsyncDropdownInternalProps } from './IPropertyPaneAsyncDropdownInternalProps';
@@ -59,7 +56,7 @@ export class PropertyPaneAsyncDropdown implements IPropertyPaneField<IPropertyPa
     ReactDom.render(element, elem);
   }
 
-  private onChanged(option: IDropdownOption, index?: number): void {   
+  private onChanged(option: IDropdownOption, index?: number): void {
     //set the old value to what was the new value;
     var oldValue : any = this.storedValue;
 
