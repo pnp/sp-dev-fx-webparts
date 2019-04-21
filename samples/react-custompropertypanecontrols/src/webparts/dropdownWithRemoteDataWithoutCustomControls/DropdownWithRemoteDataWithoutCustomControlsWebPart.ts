@@ -125,7 +125,8 @@ export default class DropdownWithRemoteDataWithoutCustomControlsWebPart extends 
               groupFields: [
                 PropertyPaneDropdown('list', {
                   label: strings.ListFieldLabel,
-                  options: this.lists
+                  options: this.lists,
+                  disabled: this.listsDropdownDisabled
                 }),
                 PropertyPaneDropdown('item', {
                   label: strings.ItemFieldLabel,
