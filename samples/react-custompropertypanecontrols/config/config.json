@@ -5,7 +5,6 @@
   "localizedResources": {
     "dropdownWithRemoteDataStrings": "lib/webparts/dropdownWithRemoteData/loc/{locale}.js",
     "dropdownWithRemoteDataWithoutCustomControlsStrings": "lib/webparts/dropdownWithRemoteDataWithoutCustomControls/loc/{locale}.js",
-    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   },
   "bundles": {
