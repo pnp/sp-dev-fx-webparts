@@ -6,7 +6,7 @@ import { sp, Fields, Web, SearchResults, } from '@pnp/sp';
 import { graph, } from "@pnp/graph";
 import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions, HttpClient } from '@microsoft/sp-http';
 import * as $ from 'jquery';
-import  {IEventData}  from './IEventData';
+import { IEventData } from './IEventData';
 import { registerDefaultFontFaces } from "@uifabric/styling";
 import { EventArgs } from "@microsoft/sp-core-library";
 import * as moment from 'moment';
@@ -44,12 +44,12 @@ export default class spservices {
    * @returns
    * @memberof spservices
    */
-  public async addEvent(newEvent: IEventData, siteUrl:string, listId:string) {
+  public async addEvent(newEvent: IEventData, siteUrl: string, listId: string) {
     let results = null;
     try {
       const web = new Web(siteUrl);
       //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
-        results = await web.lists.getById(listId).items.add({
+      results = await web.lists.getById(listId).items.add({
         Title: newEvent.title,
         Description: newEvent.Description,
         Geolocation: newEvent.geolocation,
@@ -63,54 +63,54 @@ export default class spservices {
     }
     return results;
   }
-/**
- *
- * @param {IEventData} newEvent
- * @param {string} siteUrl
- * @param {string} listId
- * @returns
- * @memberof spservices
- */
-public async updateEvent(newEvent: IEventData, siteUrl:string, listId:string){
-  let results = null;
-  try {
-    const web = new Web(siteUrl);
-    //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
+  /**
+   *
+   * @param {IEventData} newEvent
+   * @param {string} siteUrl
+   * @param {string} listId
+   * @returns
+   * @memberof spservices
+   */
+  public async updateEvent(newEvent: IEventData, siteUrl: string, listId: string) {
+    let results = null;
+    try {
+      const web = new Web(siteUrl);
+      //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
       results = await web.lists.getById(listId).items.getById(newEvent.id).update({
-      Title: newEvent.title,
-      Description: newEvent.Description,
-      Geolocation: newEvent.geolocation,
-      ParticipantsPickerId: { results: newEvent.attendes },
-      EventDate: newEvent.start,
-      EndDate: newEvent.end,
-      Location: newEvent.location
-    });
-  } catch (error) {
-    return Promise.reject(error);
+        Title: newEvent.title,
+        Description: newEvent.Description,
+        Geolocation: newEvent.geolocation,
+        ParticipantsPickerId: { results: newEvent.attendes },
+        EventDate: newEvent.start,
+        EndDate: newEvent.end,
+        Location: newEvent.location
+      });
+    } catch (error) {
+      return Promise.reject(error);
+    }
+    return results;
   }
-  return results;
-}
 
-/**
- *
- *
- * @param {IEventData} event
- * @param {string} siteUrl
- * @param {string} listId
- * @returns
- * @memberof spservices
- */
-public async deleteEvent(event: IEventData, siteUrl:string, listId:string){
-  let results = null;
-  try {
-    const web = new Web(siteUrl);
-    //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
+  /**
+   *
+   *
+   * @param {IEventData} event
+   * @param {string} siteUrl
+   * @param {string} listId
+   * @returns
+   * @memberof spservices
+   */
+  public async deleteEvent(event: IEventData, siteUrl: string, listId: string) {
+    let results = null;
+    try {
+      const web = new Web(siteUrl);
+      //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
       results = await web.lists.getById(listId).items.getById(event.id).delete();
-  } catch (error) {
-    return Promise.reject(error);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+    return results;
   }
-  return results;
-}
   /**
    *
    *
@@ -119,20 +119,31 @@ public async deleteEvent(event: IEventData, siteUrl:string, listId:string){
    * @returns {Promise<SiteUser>}
    * @memberof spservices
    */
-  public async getUserById(userId: number,siteUrl: string): Promise<SiteUser>{
+  public async getUserById(userId: number, siteUrl: string): Promise<SiteUser> {
     let results: SiteUser = null;
 
     if (!userId && !siteUrl) {
-      return null ;
+      return null;
     }
 
     try {
       const web = new Web(siteUrl);
-      results = await  web.siteUsers.getById(userId).get();
+      results = await web.siteUsers.getById(userId).get();
     } catch (error) {
       return Promise.reject(error);
     }
     return results;
+  }
+
+  public async getUserProfilePictureUrl(loginName: string) {
+    let results: any = null;
+    try {
+      results = await sp.profiles.getPropertiesFor(loginName);
+
+    } catch (error) {
+      results = null;
+    }
+    return results.PictureUrl;
   }
   /**
    *
@@ -165,13 +176,13 @@ public async deleteEvent(event: IEventData, siteUrl:string, listId:string){
    * @returns
    * @memberof spservices
    */
-  private  async colorGenerate() {
+  private async colorGenerate() {
 
-    var hexValues = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e"];
+    var hexValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e"];
     var newColor = "#";
 
-    for ( var i = 0; i < 6; i++ ) {
-      var x = Math.round( Math.random() * 14 );
+    for (var i = 0; i < 6; i++) {
+      var x = Math.round(Math.random() * 14);
       var y = hexValues[x];
       newColor += y;
     }
@@ -188,34 +199,38 @@ public async deleteEvent(event: IEventData, siteUrl:string, listId:string){
    * @memberof spservices
    */
   public async getEvents(siteUrl: string, listId: string): Promise<IEventData[]> {
-    let events:IEventData[] = [];
+    let events: IEventData[] = [];
 
     if (!siteUrl) {
       return [];
     }
     try {
       const web = new Web(siteUrl);
-      const results = await web.lists.getById(listId).items.select("Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId","Author/EMail","Author/Title").expand('Author').orderBy('EventDate').getAll();
-      if (results && results.length > 0){
-          for (const event of results){
-              events.push({
-                id: event.ID,
-                title: event.Title,
-                Description: event.Description,
-                start: new Date(moment(event.EventDate).toLocaleString()),
-                end: new Date(moment(event.EndDate).toLocaleString()),
-                location: event.Location,
-                ownerEmail: event.Author.EMail,
-                ownerPhoto: `/_layouts/15/userphoto.aspx?size=L&accountname=${event.Author.EMail}`,
-                ownerInitial:  '',
-                color : await this.colorGenerate(),
-                ownerName: event.Author.Title,
-                attendes: event.ParticipantsPickerId,
-                allDayEvent: event.fAllDayEvent,
-                geolocation: event.Geolocation
+      const results = await web.lists.getById(listId).items.select("Title", "fRecurrence", "fAllDayEvent", "EventDate", "EndDate", "Description", "ID", "Location", "Geolocation", "ParticipantsPickerId", "Author/EMail", "Author/Title").expand('Author').orderBy('EventDate').getAll();
+      if (results && results.length > 0) {
+        for (const event of results) {
+          const initialsArray: string[] = event.Author.Title.split(' ');
+          const initials = initialsArray[0].charAt(0) + initialsArray[initialsArray.length - 1].charAt(0);
+          const userPictureUrl = await this.getUserProfilePictureUrl(`i:0#.f|membership|${event.Author.EMail}`);
+          events.push({
+            id: event.ID,
+            title: event.Title,
+            Description: event.Description,
+            start: new Date(moment(event.EventDate).toLocaleString()),
+            end: new Date(moment(event.EndDate).toLocaleString()),
+            location: event.Location,
+            ownerEmail: event.Author.EMail,
+            ownerPhoto: userPictureUrl ?
+              `https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=${event.Author.EMail}&UA=0&size=HR96x96` : '',
+            ownerInitial: initials,
+            color: await this.colorGenerate(),
+            ownerName: event.Author.Title,
+            attendes: event.ParticipantsPickerId,
+            allDayEvent: event.fAllDayEvent,
+            geolocation: event.Geolocation
 
-              });
-          }
+          });
+        }
 
       }
     } catch (error) {
