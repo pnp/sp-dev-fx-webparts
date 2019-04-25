@@ -20,11 +20,7 @@
     "description": { "default": "Workbench Customizer web part to configure workbench page styles" },
     "officeFabricIconFontName": "DeveloperTools",
     "properties": {
-      "requiresPageRefresh": false,
-      "maxWidth": true,
-      "centerCanvas": true,
-      "overflow": true,
-      "padding": true
+      "requiresPageRefresh": false
     }
   }]
 }
