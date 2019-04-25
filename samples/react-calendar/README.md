@@ -6,7 +6,7 @@ Uses an existing calender list on any site.
 The location and name of the list is defined in the properties of the web part. 
 
 ##  Web Part  - Screenshots
-![callendar](/assets/screen1.png)
+![callendar](/samples/react-calendar/assets/screen1.png)
 
 
 ![callendar](/assets/screen1.0.png)
