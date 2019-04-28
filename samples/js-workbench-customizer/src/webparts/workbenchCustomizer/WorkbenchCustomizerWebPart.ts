@@ -11,6 +11,7 @@ import * as strings from 'WorkbenchCustomizerWebPartStrings';
 export interface IWorkbenchCustomizerWebPartProps {
   requiresPageRefresh: boolean;
   customWorkbenchStyles: boolean;
+  previewMode: boolean;
 }
 
 export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IWorkbenchCustomizerWebPartProps> {
@@ -22,18 +23,26 @@ export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IW
 
   public async render(): Promise<void> {
 
-    if (this.properties.customWorkbenchStyles) {
-      await import('./styles/customWorkbenchStyles.module.scss');
-    }
+    if (!this.renderedOnce) {
 
-    this.domElement.innerHTML = `
+      if (this.properties.customWorkbenchStyles) {
+        await import('./styles/customWorkbenchStyles.module.scss');
+      }
+
+      if (this.properties.previewMode) {
+        const previewBtn = document.getElementsByName("Preview")[0];
+        previewBtn.click();
+      }
+
+      this.domElement.innerHTML = `
     <div class="${styles.workbenchCustomizer}">
       ${this.properties.requiresPageRefresh
-        ? `<div class="${styles.redMessage}">Please refresh the page to remove custom workbench styles</div>`
-        : ''
-      }
+          ? `<div class="${styles.redMessage}">Please refresh the page to remove custom workbench styles</div>`
+          : ''
+        }
       *** Workbench Customizer web part ***
     </div>`;
+    }
   }
 
   public onPropertyPaneFieldChanged(path: string, oldValue: any, newValue: any): void {
@@ -61,6 +70,9 @@ export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IW
               groupFields: [
                 PropertyPaneToggle('customWorkbenchStyles', {
                   label: strings.CustomWorkbenchStylesFieldLabel
+                }),
+                PropertyPaneToggle('previewMode', {
+                  label: strings.PreviewModeFieldLabel
                 })
               ]
             }

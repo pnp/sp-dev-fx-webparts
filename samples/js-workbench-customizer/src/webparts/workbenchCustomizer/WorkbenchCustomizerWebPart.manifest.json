@@ -20,7 +20,9 @@
     "description": { "default": "Workbench Customizer web part to configure workbench page styles" },
     "officeFabricIconFontName": "DeveloperTools",
     "properties": {
-      "requiresPageRefresh": false
+      "requiresPageRefresh": false,
+      "customWorkbenchStyles": true,
+      "previewMode": true
     }
   }]
 }
