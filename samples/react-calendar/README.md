@@ -18,25 +18,25 @@ The Web Part does not show recurring events, I will work on it soon.
 
 
 ##  Web Part  - Screenshots
-![callendar](/assets/screen1.png)
+![callendar](/samples/react-calendar//assets/screen1.png)
 
 
-![callendar](/assets/screen1.0.png)
+![callendar](/samples/react-calendar//assets/screen1.0.png)
 
 
-![callendar](/assets/screen1.1.png)
+![callendar](/samples/react-calendar//assets/screen1.1.png)
 
 
-![callendar](/assets/screen1.2.png)
+![callendar](/samples/react-calendar//assets/screen1.2.png)
 
 
 ![callendar](/assets/screen1.3.png)
 
 
-![callendar](/assets/screen1.4.png)
+![callendar](/samples/react-calendar//assets/screen1.4.png)
 
 
-![callendar](/assets/screen2.png)
+![callendar](/samples/react-calendar//assets/screen2.png)
 
 
 
@@ -44,24 +44,24 @@ The Web Part does not show recurring events, I will work on it soon.
 
 
 
-![callendar](/assets/screen4.png)
+![callendar](/samples/react-calendar//assets/screen4.png)
 
 
 
 ![callendar](/assets/screen5.png)
 
 
-![callendar](/assets/screen6.png)
+![callendar](/samples/react-calendar//assets/screen6.png)
 
 
-![callendar](/assets/screen7.png)
+![callendar](/samples/react-calendar//assets/screen7.png)
 
 
 ![callendar](/assets/screen8.png)
 
 
 
-![callendar](/assets/screen9.png)
+![callendar](/samples/react-calendar//assets/screen9.png)
 ##   
  
 
