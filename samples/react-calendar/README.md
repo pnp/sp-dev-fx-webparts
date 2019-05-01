@@ -14,7 +14,7 @@ The Web Part does not show recurring events, I will work on it soon.
 
 
 ##  
-![callendar](/assets/animatevideo.gif)  
+![callendar](/samples/react-calendar/assets/animatevideo.gif)  
 
 
 ##  Web Part  - Screenshots
