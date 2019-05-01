@@ -21,7 +21,7 @@ The Web Part does not show recurring events, I will work on it soon.
 ![callendar](/assets/screen1.png)
 
 
-![callendar](/assets/screen1.0.png)
+![callendar](/assets/screen1.0.jpg)
 
 
 ![callendar](/assets/screen1.1.png)
