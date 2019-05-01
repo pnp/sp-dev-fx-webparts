@@ -9,11 +9,11 @@
   padding-top: 10px;
   height: 300px;
   max-height: 320px;
-  overflow:auto;
+  overflow: auto;
 }
 
-.description:hover{
-  border-color:rgb(51, 51, 51);
+.description:hover {
+  border-color: rgb( 51, 51, 51 );
 }
 
 .calendar {
@@ -22,9 +22,7 @@
     min-height: 400px;
     height: 600px;
     margin: 0px auto;
-
   }
-
 
   .eventTitle {
     white-space: nowrap;
@@ -37,7 +35,7 @@
     @include ms-fontColor-white;
     background-color: $ms-color-themeDark;
     padding: 20px;
-    border-style: solid
+    border-style: solid;
   }
 
   .column {
@@ -62,7 +60,6 @@
     @include ms-font-l;
     @include ms-fontColor-white;
   }
-
 
   .button {
     // Our button

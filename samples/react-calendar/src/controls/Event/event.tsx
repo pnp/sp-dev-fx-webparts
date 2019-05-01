@@ -17,6 +17,7 @@ import {
 import { EnvironmentType } from '@microsoft/sp-core-library';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { IEventData } from '../../services/IEventData';
+import { IUserPermissions } from '../../services/IUserPermissions';
 import {
   DatePicker,
   DayOfWeek,
@@ -34,8 +35,8 @@ import {
   SpinnerSize,
   Dialog,
   DialogType,
-  DialogFooter
-
+  DialogFooter,
+  Toggle
 
 }
   from 'office-ui-fabric-react';
@@ -64,7 +65,6 @@ const DayPickerStrings: IDatePickerStrings = {
   closeButtonAriaLabel: strings.CloseDate,
   isRequiredErrorMessage: strings.IsRequired,
   invalidInputErrorMessage: strings.InvalidDateFormat,
-
 };
 
 export class Event extends React.Component<IEventProps, IEventState> {
@@ -72,7 +72,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
   private attendees: IPersonaProps[] = [];
   private latitude: number = 41.1931819;
   private longitude: number = -8.4897452;
-  private panelMode: IPanelModelEnum;
+
+  private categoryDropdownOption: IDropdownOption[] = [];
 
   public constructor(props) {
     super(props);
@@ -82,7 +83,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        console.log(position.coords.latitude, position.coords.longitude);
+
       });
     } else {
       /* geolocation IS NOT available */
@@ -98,10 +99,10 @@ export class Event extends React.Component<IEventProps, IEventState> {
     this.state = {
       showPanel: false,
       eventData: this.props.event,
-      startSelectedHour: { key: '00', text: '00' },
-      startSelectedMin: { key: '05', text: '00' },
-      endSelectedHour: { key: '00', text: '00' },
-      endSelectedMin: { key: '05', text: '00' },
+      startSelectedHour: { key: '09', text: '00' },
+      startSelectedMin: { key: '00', text: '00' },
+      endSelectedHour: { key: '18', text: '00' },
+      endSelectedMin: { key: '00', text: '00' },
       editorState: EditorState.createEmpty(),
       selectedUsers: [],
       locationLatitude: this.latitude,
@@ -111,6 +112,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
       disableButton: true,
       isSaving: false,
       displayDialog: false,
+      isloading: false,
+      userPermissions: { hasPermissionAdd: false, hasPermissionDelete: false, hasPermissionEdit: false, hasPermissionView: false },
     };
     // local copia of props
     this.onStartChangeHour = this.onStartChangeHour.bind(this);
@@ -129,7 +132,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
     this.onDelete = this.onDelete.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
     this.confirmDelete = this.confirmDelete.bind(this);
-
+    this.onAllDayEventChange = this.onAllDayEventChange.bind(this);
+    this.onCategoryChanged = this.onCategoryChanged.bind(this);
     this.spService = new spservices(this.props.context);
   }
   /**
@@ -148,19 +152,23 @@ export class Event extends React.Component<IEventProps, IEventState> {
    */
   private async onSave() {
 
-    let eventData = this.state.eventData;
-    // Start Date
+    let eventData: IEventData = this.state.eventData;
+    // All Day event ?
+
     const startDate = `${moment(this.state.startDate).format('YYYY/MM/DD')}`;
     const startTime = `${this.state.startSelectedHour.key}:${this.state.startSelectedMin.key}`;
     const startDateTime = `${startDate} ${startTime}`;
-    const start = moment(startDateTime, 'YYYY/MM/DD HH:mm').format();
+    const start = moment(startDateTime, 'YYYY/MM/DD HH:mm').toLocaleString();
     eventData.start = new Date(start);
+
     // End Date
     const endDate = `${moment(this.state.endDate).format('YYYY/MM/DD')}`;
     const endTime = `${this.state.endSelectedHour.key}:${this.state.endSelectedMin.key}`;
     const endDateTime = `${endDate} ${endTime}`;
-    const end = moment(endDateTime, 'YYYY/MM/DD HH:mm').format();
+    const end = moment(endDateTime, 'YYYY/MM/DD HH:mm').toLocaleString();
     eventData.end = new Date(end);
+
+
     // get Geolocation
     eventData.geolocation = { Latitude: this.latitude, Longitude: this.longitude };
     const locationInfo = await this.spService.getGeoLactionName(this.latitude, this.longitude);
@@ -211,9 +219,12 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event
    */
   public async componentDidMount() {
-
+    this.setState({ isloading:true});
     let editorState;
-
+    // chaeck User list Permissions
+    const userListPermissions: IUserPermissions = await this.spService.getUserPermissions(this.props.siteUrl, this.props.listId);
+    // Load Categories
+    this.categoryDropdownOption = await this.spService.getChoiceFieldOptions(this.props.siteUrl, this.props.listId, 'Category');
     // Edit Mode ?
     if (this.props.panelMode == IPanelModelEnum.edit && this.props.event) {
 
@@ -254,13 +265,17 @@ export class Event extends React.Component<IEventProps, IEventState> {
         endSelectedMin: { key: endMin, text: endMin },
         editorState: editorState,
         selectedUsers: selectedUsers,
+        userPermissions: userListPermissions,
+        isloading:false,
       });
     } else {
       editorState = EditorState.createEmpty();
       this.setState({
         startDate: this.props.startDate ? this.props.startDate : new Date(),
         endDate: this.props.endDate ? this.props.endDate : new Date(),
-        editorState: editorState
+        editorState: editorState,
+        userPermissions: userListPermissions,
+        isloading:false
       });
     }
   }
@@ -342,8 +357,13 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @private
    * @memberof Event
    */
-  private onEndChangeMin(event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
+  private onEndChangeMin(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
     this.setState({ endSelectedMin: item });
+  }
+
+
+  private onCategoryChanged(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
+    this.setState({ eventData: { ...this.state.eventData, Category: item.text } });
   }
 
   /**
@@ -399,15 +419,20 @@ export class Event extends React.Component<IEventProps, IEventState> {
           {strings.CancelButtonLabel}
         </DefaultButton>
         {
-          this.props.panelMode == 2 && (
+          this.props.panelMode == IPanelModelEnum.edit && this.state.userPermissions.hasPermissionDelete && (
             <DefaultButton onClick={this.onDelete} style={{ marginBottom: '15px', marginRight: '8px', float: 'right' }}>
               {strings.DeleteButtonLabel}
             </DefaultButton>
           )
         }
-        <PrimaryButton disabled={this.state.disableButton} onClick={this.onSave} style={{ marginBottom: '15px', marginRight: '8px', float: 'right' }}>
-          {strings.SaveButtonLabel}
-        </PrimaryButton>
+        {
+          this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ?
+            <PrimaryButton disabled={this.state.disableButton} onClick={this.onSave} style={{ marginBottom: '15px', marginRight: '8px', float: 'right' }}>
+              {strings.SaveButtonLabel}
+            </PrimaryButton>
+            :
+            ''
+        }
         {
           this.state.isSaving &&
           <Spinner size={SpinnerSize.medium} style={{ marginBottom: '15px', marginRight: '8px', float: 'right' }} />
@@ -435,6 +460,10 @@ export class Event extends React.Component<IEventProps, IEventState> {
     this.setState({ endDate: newDate });
   }
 
+
+  private onAllDayEventChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+    this.setState({ eventData: { ...this.state.eventData, allDayEvent: checked } });
+  }
   /**
    *
    *
@@ -469,187 +498,215 @@ export class Event extends React.Component<IEventProps, IEventState> {
                 {this.state.errorMessage}
               </MessageBar>
             }
-            <div>
-              <TextField
-                label={strings.EventTitleLabel}
-                value={this.state.eventData ? this.state.eventData.title : ''}
-                onGetErrorMessage={this.onGetErrorMessageTitle}
-                deferredValidationTime={500}
-              />
+            {
+              this.state.isloading && (
+                <Spinner size={SpinnerSize.large}  />
+              )
+            }
+            {
+              !this.state.isloading &&
+              <div>
+                <div>
+                  <TextField
+                    label={strings.EventTitleLabel}
+                    value={this.state.eventData ? this.state.eventData.title : ''}
+                    onGetErrorMessage={this.onGetErrorMessageTitle}
+                    deferredValidationTime={500}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                  />
 
-            </div>
-            <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: 10 }}>
-              <DatePicker
-                isRequired={false}
-                strings={DayPickerStrings}
-                placeholder={strings.StartDatePlaceHolder}
-                ariaLabel={strings.StartDatePlaceHolder}
-                allowTextInput={true}
-                value={this.state.startDate}
-                label={strings.StartDateLabel}
-                onSelectDate={this.onSelectDateStart}
-              />
-            </div>
-            <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: 10 }}>
-              <Dropdown
-                selectedKey={this.state.startSelectedHour.key}
-                onChange={this.onStartChangeHour}
-                label={strings.StartHourLabel}
-                options={[
-                  { key: '00', text: '00' },
-                  { key: '01', text: '01' },
-                  { key: '02', text: '02' },
-                  { key: '03', text: '03' },
-                  { key: '04', text: '04' },
-                  { key: '05', text: '05' },
-                  { key: '06', text: '06' },
-                  { key: '07', text: '07' },
-                  { key: '08', text: '08' },
-                  { key: '09', text: '09' },
-                  { key: '10', text: '10' },
-                  { key: '11', text: '11' },
-                  { key: '12', text: '12' },
-                  { key: '13', text: '13' },
-                  { key: '14', text: '14' },
-                  { key: '15', text: '15' },
-                  { key: '16', text: '16' },
-                  { key: '17', text: '17' },
-                  { key: '18', text: '18' },
-                  { key: '19', text: '19' },
-                  { key: '20', text: '20' },
-                  { key: '21', text: '21' },
-                  { key: '22', text: '22' },
-                  { key: '23', text: '23' }
-                ]}
-              />
-            </div>
-            <div style={{ display: 'inline-block', verticalAlign: 'top', }}>
-              <Dropdown
-                label={strings.StartMinLabel}
-                selectedKey={this.state.startSelectedMin.key}
-                onChange={this.onStartChangeMin}
-                options={[
-                  { key: '00', text: '00' },
-                  { key: '05', text: '05' },
-                  { key: '10', text: '10' },
-                  { key: '15', text: '15' },
-                  { key: '20', text: '20' },
-                  { key: '25', text: '25' },
-                  { key: '30', text: '30' },
-                  { key: '35', text: '35' },
-                  { key: '40', text: '40' },
-                  { key: '45', text: '45' },
-                  { key: '50', text: '50' },
-                  { key: '55', text: '55' }
-                ]}
-              />
-            </div>
-            <br />
-            <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: 10 }}>
-              <DatePicker
-                isRequired={false}
-                strings={DayPickerStrings}
-                placeholder={strings.EndDatePlaceHolder}
-                ariaLabel={strings.EndDatePlaceHolder}
-                allowTextInput={true}
-                value={this.state.endDate}
-                label={strings.EndDateLabel}
-                onSelectDate={this.onSelectDateEnd}
-              />
-            </div>
-            <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: 10 }}>
-              <Dropdown
-                selectedKey={this.state.endSelectedHour.key}
-                onChange={this.onEndChangeHour}
-                label={strings.EndHourLabel}
-                options={[
-                  { key: '00', text: '00' },
-                  { key: '01', text: '01' },
-                  { key: '02', text: '02' },
-                  { key: '03', text: '03' },
-                  { key: '04', text: '04' },
-                  { key: '05', text: '05' },
-                  { key: '06', text: '06' },
-                  { key: '07', text: '07' },
-                  { key: '08', text: '08' },
-                  { key: '09', text: '09' },
-                  { key: '10', text: '10' },
-                  { key: '11', text: '11' },
-                  { key: '12', text: '12' },
-                  { key: '13', text: '13' },
-                  { key: '14', text: '14' },
-                  { key: '15', text: '15' },
-                  { key: '16', text: '16' },
-                  { key: '17', text: '17' },
-                  { key: '18', text: '18' },
-                  { key: '19', text: '19' },
-                  { key: '20', text: '20' },
-                  { key: '21', text: '21' },
-                  { key: '22', text: '22' },
-                  { key: '23', text: '23' }
-                ]}
-              />
-            </div>
-            <div style={{ display: 'inline-block', verticalAlign: 'top', }}>
-              <Dropdown
-                label={strings.EndMinLabel}
-                selectedKey={this.state.endSelectedMin.key}
-                onChange={this.onEndChangeMin}
-                options={[
-                  { key: '00', text: '00' },
-                  { key: '05', text: '05' },
-                  { key: '10', text: '10' },
-                  { key: '15', text: '15' },
-                  { key: '20', text: '20' },
-                  { key: '25', text: '25' },
-                  { key: '30', text: '30' },
-                  { key: '35', text: '35' },
-                  { key: '40', text: '40' },
-                  { key: '45', text: '45' },
-                  { key: '50', text: '50' },
-                  { key: '55', text: '55' }
-                ]}
-              />
-            </div>
-            <br />
-            <Label>Event Description</Label>
+                </div>
+                <div>
+                  <Dropdown
+                    label={strings.CategoryLabel}
+                    selectedKey={this.state.eventData && this.state.eventData.Category ? this.state.eventData.Category : ''}
+                    onChange={this.onCategoryChanged}
+                    options={this.categoryDropdownOption}
+                    placeholder={strings.CategoryPlaceHolder}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                  />
+                </div>
+                <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: 10 }}>
+                  <DatePicker
+                    isRequired={false}
+                    strings={DayPickerStrings}
+                    placeholder={strings.StartDatePlaceHolder}
+                    ariaLabel={strings.StartDatePlaceHolder}
+                    allowTextInput={true}
+                    value={this.state.startDate}
+                    label={strings.StartDateLabel}
+                    onSelectDate={this.onSelectDateStart}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                  />
+                </div>
+                <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: 10 }}>
+                  <Dropdown
+                    selectedKey={this.state.startSelectedHour.key}
+                    onChange={this.onStartChangeHour}
+                    label={strings.StartHourLabel}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                    options={[
+                      { key: '00', text: '00' },
+                      { key: '01', text: '01' },
+                      { key: '02', text: '02' },
+                      { key: '03', text: '03' },
+                      { key: '04', text: '04' },
+                      { key: '05', text: '05' },
+                      { key: '06', text: '06' },
+                      { key: '07', text: '07' },
+                      { key: '08', text: '08' },
+                      { key: '09', text: '09' },
+                      { key: '10', text: '10' },
+                      { key: '11', text: '11' },
+                      { key: '12', text: '12' },
+                      { key: '13', text: '13' },
+                      { key: '14', text: '14' },
+                      { key: '15', text: '15' },
+                      { key: '16', text: '16' },
+                      { key: '17', text: '17' },
+                      { key: '18', text: '18' },
+                      { key: '19', text: '19' },
+                      { key: '20', text: '20' },
+                      { key: '21', text: '21' },
+                      { key: '22', text: '22' },
+                      { key: '23', text: '23' }
+                    ]}
+                  />
+                </div>
+                <div style={{ display: 'inline-block', verticalAlign: 'top', }}>
+                  <Dropdown
+                    label={strings.StartMinLabel}
+                    selectedKey={this.state.startSelectedMin.key}
+                    onChange={this.onStartChangeMin}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                    options={[
+                      { key: '00', text: '00' },
+                      { key: '05', text: '05' },
+                      { key: '10', text: '10' },
+                      { key: '15', text: '15' },
+                      { key: '20', text: '20' },
+                      { key: '25', text: '25' },
+                      { key: '30', text: '30' },
+                      { key: '35', text: '35' },
+                      { key: '40', text: '40' },
+                      { key: '45', text: '45' },
+                      { key: '50', text: '50' },
+                      { key: '55', text: '55' }
+                    ]}
+                  />
+                </div>
+                <br />
+                <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: 10 }}>
+                  <DatePicker
+                    isRequired={false}
+                    strings={DayPickerStrings}
+                    placeholder={strings.EndDatePlaceHolder}
+                    ariaLabel={strings.EndDatePlaceHolder}
+                    allowTextInput={true}
+                    value={this.state.endDate}
+                    label={strings.EndDateLabel}
+                    onSelectDate={this.onSelectDateEnd}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                  />
+                </div>
+                <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: 10 }}>
+                  <Dropdown
+                    selectedKey={this.state.endSelectedHour.key}
+                    onChange={this.onEndChangeHour}
+                    label={strings.EndHourLabel}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                    options={[
+                      { key: '00', text: '00' },
+                      { key: '01', text: '01' },
+                      { key: '02', text: '02' },
+                      { key: '03', text: '03' },
+                      { key: '04', text: '04' },
+                      { key: '05', text: '05' },
+                      { key: '06', text: '06' },
+                      { key: '07', text: '07' },
+                      { key: '08', text: '08' },
+                      { key: '09', text: '09' },
+                      { key: '10', text: '10' },
+                      { key: '11', text: '11' },
+                      { key: '12', text: '12' },
+                      { key: '13', text: '13' },
+                      { key: '14', text: '14' },
+                      { key: '15', text: '15' },
+                      { key: '16', text: '16' },
+                      { key: '17', text: '17' },
+                      { key: '18', text: '18' },
+                      { key: '19', text: '19' },
+                      { key: '20', text: '20' },
+                      { key: '21', text: '21' },
+                      { key: '22', text: '22' },
+                      { key: '23', text: '23' }
+                    ]}
+                  />
+                </div>
+                <div style={{ display: 'inline-block', verticalAlign: 'top', }}>
+                  <Dropdown
+                    label={strings.EndMinLabel}
+                    selectedKey={this.state.endSelectedMin.key}
+                    onChange={this.onEndChangeMin}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                    options={[
+                      { key: '00', text: '00' },
+                      { key: '05', text: '05' },
+                      { key: '10', text: '10' },
+                      { key: '15', text: '15' },
+                      { key: '20', text: '20' },
+                      { key: '25', text: '25' },
+                      { key: '30', text: '30' },
+                      { key: '35', text: '35' },
+                      { key: '40', text: '40' },
+                      { key: '45', text: '45' },
+                      { key: '50', text: '50' },
+                      { key: '55', text: '55' },
+                      { key: '59', text: '59' }
+                    ]}
+                  />
+                </div>
+                <br />
+                <Label>Event Description</Label>
 
-            <div className={styles.description}>
-              <Editor
-                editorState={editorState}
-                onEditorStateChange={this.onEditorStateChange}
-              />
-            </div>
-            <div>
-              <PeoplePicker
-                ensureUser
-                context={this.props.context}
-                titleText={strings.AttendeesLabel}
-                principalTypes={[PrincipalType.User]}
-                resolveDelay={1000}
-                showtooltip={true}
-                selectedItems={this.getPeoplePickerItems}
-                personSelectionLimit={10}
-                defaultSelectedUsers={this.state.selectedUsers}
-              />
-            </div>
-            <div>
-              <TextField
-                value={this.state.eventData && this.state.eventData.location ? this.state.eventData.location : ''}
-                label={strings.LocationTextLabel}
-                readOnly
-                multiline />
-            </div>
-            <div>
-              <Map titleText={strings.LocationLabel}
-                coordinates={{ latitude: this.state.locationLatitude, longitude: this.state.locationLongitude }}
-
-                enableSearch={true}
-                onUpdateCoordinates={this.onUpdateCoordinates}
-              />
-            </div>
+                <div className={styles.description}>
+                  <Editor
+                    editorState={editorState}
+                    onEditorStateChange={this.onEditorStateChange}
+                    ReadOnly={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                  />
+                </div>
+                <div>
+                  <PeoplePicker
+                    ensureUser
+                    context={this.props.context}
+                    titleText={strings.AttendeesLabel}
+                    principalTypes={[PrincipalType.User]}
+                    resolveDelay={1000}
+                    showtooltip={true}
+                    selectedItems={this.getPeoplePickerItems}
+                    personSelectionLimit={10}
+                    defaultSelectedUsers={this.state.selectedUsers}
+                    disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
+                  />
+                </div>
+                <div>
+                  <TextField
+                    value={this.state.eventData && this.state.eventData.location ? this.state.eventData.location : ''}
+                    label={strings.LocationTextLabel}
+                    readOnly
+                    multiline />
+                </div>
+                <div>
+                  <Map titleText={strings.LocationLabel}
+                    coordinates={{ latitude: this.state.locationLatitude, longitude: this.state.locationLongitude }}
+                    enableSearch={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? true : false}
+                    onUpdateCoordinates={this.onUpdateCoordinates}
+                  />
+                </div>
+              </div>
+            }
           </div>
-
           {
             this.state.displayDialog &&
             <div>
@@ -671,7 +728,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
                   <Spinner size={SpinnerSize.medium} ariaLabel={strings.SpinnerDeletingLabel} />
                 }
                 <DialogFooter>
-
                   <PrimaryButton onClick={this.confirmDelete} text={strings.DialogConfirmDeleteLabel} disabled={this.state.isDeleting} />
                   <DefaultButton onClick={this.closeDialog} text={strings.DialogCloseButtonLabel} />
                 </DialogFooter>
@@ -679,7 +735,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
             </div>
           }
         </Panel>
-
       </div>
     );
   }

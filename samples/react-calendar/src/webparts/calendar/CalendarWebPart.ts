@@ -8,26 +8,32 @@ import {
   PropertyPaneDropdown,
   IPropertyPaneDropdownOption,
   PropertyPaneLabel
+
 } from '@microsoft/sp-property-pane';
 
 import * as strings from 'CalendarWebPartStrings';
 import Calendar from './components/Calendar';
 import { ICalendarProps } from './components/ICalendarProps';
+import { PropertyFieldDateTimePicker, DateConvention, TimeConvention, IDateTimeFieldValue } from '@pnp/spfx-property-controls/lib/PropertyFieldDateTimePicker';
 
 export interface ICalendarWebPartProps {
   title: string;
   siteUrl: string;
   list: string;
-  errorMessage:string;
+  eventStartDate: IDateTimeFieldValue ;
+  eventEndDate: IDateTimeFieldValue;
+  errorMessage: string;
 }
 import spservices from '../../services/spservices';
+import * as moment from 'moment';
+import { format } from '@uifabric/utilities';
 
 export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebPartProps> {
 
   private lists: IPropertyPaneDropdownOption[] = [];
   private listsDropdownDisabled: boolean = true;
   private spService: spservices = null;
-  private errorMessage:string;
+  private errorMessage: string;
 
   public constructor() {
     super();
@@ -46,7 +52,9 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
         updateProperty: (value: string) => {
           this.properties.title = value;
         },
-        context: this.context
+        context: this.context,
+        eventStartDate: this.properties.eventStartDate,
+        eventEndDate: this.properties.eventEndDate,
       }
     );
 
@@ -82,6 +90,7 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
         this.listsDropdownDisabled = false;
         this.context.propertyPane.refresh();
       }
+
     } catch (error) {
 
     }
@@ -106,11 +115,44 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
       }
       // push new item value
     } catch (error) {
-      this.errorMessage =  error.message;
+      this.errorMessage = error.message;
       this.properties.errorMessage = this.errorMessage;
       this.context.propertyPane.refresh();
     }
     return _lists;
+  }
+
+  /**
+   *
+   *
+   * @private
+   * @param {string} date
+   * @returns
+   * @memberof CalendarWebPart
+   */
+  private onEventStartDateValidation(date:string){
+    if (date && this.properties.eventEndDate.value){
+      if (moment(date).isAfter(moment(this.properties.eventEndDate.value))){
+        return strings.SartDateValidationMessage;
+      }
+    }
+    return '';
+  }
+
+  /**
+   *
+   * @private
+   * @param {string} date
+   * @returns
+   * @memberof CalendarWebPart
+   */
+  private onEventEndDateValidation(date:string){
+    if (date && this.properties.eventEndDate.value){
+      if (moment(date).isBefore( moment(this.properties.eventStartDate.value))){
+        return strings.EnDateValidationMessage;
+      }
+    }
+    return '';
   }
   /**
    *
@@ -151,7 +193,7 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
     try {
       // reset any error
       this.properties.errorMessage = undefined;
-      this.errorMessage=undefined;
+      this.errorMessage = undefined;
       this.context.propertyPane.refresh();
 
       if (propertyPath === 'siteUrl' && newValue) {
@@ -162,7 +204,7 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
         const _lists = await this.loadLists();
         this.lists = _lists;
         this.listsDropdownDisabled = false;
-        this.properties.list = this.lists.length > 0 ?  this.lists[0].key.toString() : undefined;
+        this.properties.list = this.lists.length > 0 ? this.lists[0].key.toString() : undefined;
         this.context.propertyPane.refresh();
         this.render();
       }
@@ -182,6 +224,7 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
    * @memberof CalendarWebPart
    */
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+      // EndDate and Start Date defualt values
 
     return {
       pages: [
@@ -199,15 +242,37 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
                   value: this.context.pageContext.site.absoluteUrl,
                   deferredValidationTime: 1200,
                 }),
-
                 PropertyPaneDropdown('list', {
                   label: strings.ListFieldLabel,
                   options: this.lists,
                   disabled: this.listsDropdownDisabled,
                 }),
+                PropertyPaneLabel('eventStartDate', {
+                  text: strings.eventSelectDatesLabel
+                }),
+                PropertyFieldDateTimePicker('eventStartDate', {
+                  label: 'From',
+                  initialDate: this.properties.eventStartDate,
+                  dateConvention: DateConvention.Date,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  onGetErrorMessage: this.onEventStartDateValidation,
+                  deferredValidationTime: 0,
+                  key: 'eventStartDateId'
+                }),
+                PropertyFieldDateTimePicker('eventEndDate', {
+                  label: 'to',
+                  initialDate:  this.properties.eventEndDate,
+                  dateConvention: DateConvention.Date,
+                  onPropertyChange: this.onPropertyPaneFieldChanged,
+                  properties: this.properties,
+                  onGetErrorMessage:  this.onEventEndDateValidation,
+                  deferredValidationTime: 0,
+                  key: 'eventEndDateId'
+                }),
                 PropertyPaneLabel('errorMessage', {
-                  text: this.errorMessage,
-                })
+                  text:  this.errorMessage,
+                }),
               ]
             }
           ]

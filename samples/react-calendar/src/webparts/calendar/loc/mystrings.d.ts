@@ -1,4 +1,10 @@
 declare interface ICalendarWebPartStrings {
+  HttpErrorMessage: string;
+  CategoryPlaceHolder: string;
+  CategoryLabel: string;
+  EnDateValidationMessage: string;
+  SartDateValidationMessage: string;
+  eventSelectDatesLabel: string;
   ConfirmeDeleteMessage: string;
   DialogConfirmDeleteTitle: string;
   SpinnerDeletingLabel: string;

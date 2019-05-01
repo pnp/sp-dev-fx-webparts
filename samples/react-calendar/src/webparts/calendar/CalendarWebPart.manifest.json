@@ -30,7 +30,9 @@
       "properties": {
         "title": "Calendar",
         "siteUrl": "",
-        "list": ""
+        "list": "",
+        "eventStartDate": "",
+        "eventEndDate": ""
       }
     }
   ]

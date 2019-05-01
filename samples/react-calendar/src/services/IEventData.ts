@@ -13,4 +13,5 @@ export interface IEventData {
   allDayEvent?: boolean;
   attendes?: number[];
   geolocation?: {Longitude:number,  Latitude: number};
+  Category?: string;
 }

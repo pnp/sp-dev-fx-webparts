@@ -1,4 +1,5 @@
 import { IEventData } from '../../services/IEventData';
+import { IUserPermissions } from '../../services/IUserPermissions';
 import { DayOfWeek} from 'office-ui-fabric-react/lib/DatePicker';
 import {  IDropdownOption } from 'office-ui-fabric-react/';
 export interface IEventState {
@@ -21,4 +22,6 @@ export interface IEventState {
   isSaving?:boolean;
   isDeleting?:boolean;
   displayDialog:boolean;
+  userPermissions?: IUserPermissions;
+  isloading:boolean;
 }

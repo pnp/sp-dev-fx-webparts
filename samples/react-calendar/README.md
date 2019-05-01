@@ -1,55 +1,67 @@
 # React Calendar
 
 ## Summary
-This Web Part allows you to manage events on a calendar.
-Uses an existing calender list on any site.
-The location and name of the list is defined in the properties of the web part. 
+This Web Part allows you to manage events in a calendar.
+Uses a list of existing calendars on any website.
+The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
+
+Each category has its own color that is generated in the load.
+
+The Web Part checks the user's permissions for the View, Add, Edit, and Delete events.
+
+The Web Part does not show recurring events, I will work on it soon.
+
+
+
+##  
+![callendar](/assets/animatevideo.gif)  
+
 
 ##  Web Part  - Screenshots
-![callendar](/samples/react-calendar/assets/screen1.png)
+![callendar](/assets/screen1.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.0.png)
+![callendar](/assets/screen1.0.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.1.png)
+![callendar](/assets/screen1.1.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.2.png)
+![callendar](/assets/screen1.2.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.3.png)
+![callendar](/assets/screen1.3.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.4.png)
+![callendar](/assets/screen1.4.png)
 
 
-![callendar](/samples/react-calendar/assets/screen2.png)
-
-
-
-![callendar](/samples/react-calendar/assets/screen3.png)
+![callendar](/assets/screen2.png)
 
 
 
-![callendar](/samples/react-calendar/assets/screen4.png)
+![callendar](/assets/screen3.png)
 
 
 
-![callendar](/samples/react-calendar/assets/screen5.png)
-
-
-![callendar](/samples/react-calendar/assets/screen6.png)
-
-
-![callendar](/samples/react-calendar/assets/screen7.png)
-
-
-![callendar](/samples/react-calendar/assets/screen8.png)
+![callendar](/assets/screen4.png)
 
 
 
-![callendar](/samples/react-calendar/assets/screen9.png)
+![callendar](/assets/screen5.png)
+
+
+![callendar](/assets/screen6.png)
+
+
+![callendar](/assets/screen7.png)
+
+
+![callendar](/assets/screen8.png)
+
+
+
+![callendar](/assets/screen9.png)
 ##   
  
 
@@ -73,10 +85,12 @@ Property |Type|Required| comments
 --------------------|----|--------|----------
 Site Url of Calendar List | Text| yes|
 Calendar list| Text| yes|  this is filled with all list of  type "event list" created
+Start Date | Date | yes | Event Date 
+End Date| Date| yes | Event Date
  
 
 ## Solution
-The Web Part Use PnPjs library, Office-ui-fabric-react components.
+The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Calendar Compoment
 
 Solution|Author(s)
 --------|---------
