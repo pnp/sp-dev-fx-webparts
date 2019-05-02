@@ -51,7 +51,6 @@ import htmlToDraft from 'html-to-draftjs';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import spservices from '../../services/spservices';
 import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
-import { ControlMode } from '@pnp/sp';
 
 
 const today: Date = new Date(Date.now());
@@ -226,8 +225,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
    */
   public async componentDidMount() {
     this.setState({ isloading: true });
-    let editorState;
-    //
+    let editorState:EditorState;
+    // Load Regional Settings
     const siteRegionalSettigns = await this.spService.getSiteRegionalSettingsTimeZone(this.props.siteUrl);
     // chaeck User list Permissions
     const userListPermissions: IUserPermissions = await this.spService.getUserPermissions(this.props.siteUrl, this.props.listId);
