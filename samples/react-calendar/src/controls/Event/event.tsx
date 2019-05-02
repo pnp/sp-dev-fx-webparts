@@ -11,7 +11,8 @@ import {
   Panel,
   PanelType,
   TextField,
-  Label
+  Label,
+  extendComponent
 
 } from 'office-ui-fabric-react';
 import { EnvironmentType } from '@microsoft/sp-core-library';
@@ -50,6 +51,7 @@ import htmlToDraft from 'html-to-draftjs';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import spservices from '../../services/spservices';
 import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
+import { ControlMode } from '@pnp/sp';
 
 
 const today: Date = new Date(Date.now());
@@ -91,12 +93,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
       console.log('browser Geolocation is not available');
     }
     // Initialize Map coordinates
-    if (this.props.event) {
-      this.latitude = this.props.event.geolocation && this.props.event.geolocation.Latitude ? this.props.event.geolocation.Latitude : this.latitude;
-      this.longitude = this.props.event.geolocation && this.props.event.geolocation.Longitude ? this.props.event.geolocation.Longitude : this.longitude;
 
-    }
-
+    console.log('ini', this.latitude, this.longitude);
     this.state = {
       showPanel: false,
       eventData: this.props.event,
@@ -170,11 +168,13 @@ export class Event extends React.Component<IEventProps, IEventState> {
     const end = moment(endDateTime, 'YYYY/MM/DD HH:mm').toLocaleString();
     eventData.end = new Date(end);
 
-
+    debugger;
     // get Geolocation
+
     eventData.geolocation = { Latitude: this.latitude, Longitude: this.longitude };
     const locationInfo = await this.spService.getGeoLactionName(this.latitude, this.longitude);
     eventData.location = locationInfo ? locationInfo.display_name : 'N/A';
+    console.log('beforeupd',eventData.geolocation);
     // get Attendees
     if (!eventData.attendes) { //vinitialize if no attendees
       eventData.attendes = [];
@@ -227,7 +227,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
   public async componentDidMount() {
     this.setState({ isloading: true });
     let editorState;
-
+    //
     const siteRegionalSettigns = await this.spService.getSiteRegionalSettingsTimeZone(this.props.siteUrl);
     // chaeck User list Permissions
     const userListPermissions: IUserPermissions = await this.spService.getUserPermissions(this.props.siteUrl, this.props.listId);
@@ -262,6 +262,10 @@ export class Event extends React.Component<IEventProps, IEventState> {
           }
         }
       }
+      // Has geolocation ?
+        this.latitude = this.props.event.geolocation && this.props.event.geolocation.Latitude ? this.props.event.geolocation.Latitude : this.latitude;
+        this.longitude = this.props.event.geolocation && this.props.event.geolocation.Longitude ? this.props.event.geolocation.Longitude : this.longitude;
+
       // Update Component Data
       this.setState({
         eventData: this.props.event,
@@ -276,6 +280,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
         userPermissions: userListPermissions,
         isloading: false,
         siteRegionalSettings: siteRegionalSettigns,
+        locationLatitude: this.latitude,
+        locationLongitude: this.longitude,
       });
     } else {
       editorState = EditorState.createEmpty();
@@ -302,7 +308,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @private
    * @memberof Event
    */
-  private onStartChangeHour = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+  private onStartChangeHour = (ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+    ev.preventDefault();
     this.setState({ startSelectedHour: item });
   }
 
@@ -310,16 +317,17 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @private
    * @memberof Event
    */
-  private onEndChangeHour = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+  private onEndChangeHour = (ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+    ev.preventDefault();
     this.setState({ endSelectedHour: item });
   }
-  /**
 
   /**
    * @private
    * @memberof Event
    */
-  private onStartChangeMin = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+  private onStartChangeMin = (ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+    ev.preventDefault();
     this.setState({ startSelectedMin: item });
   }
 
@@ -329,6 +337,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event
    */
   private getPeoplePickerItems(items: any[]) {
+
     this.attendees = [];
     this.attendees = items;
   }
@@ -346,7 +355,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
   }
 
   /**
-   *
    *
    * @private
    * @param {string} value
@@ -368,11 +376,20 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event
    */
   private onEndChangeMin(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
+    ev.preventDefault();
     this.setState({ endSelectedMin: item });
   }
 
-
+  /**
+   *
+   *
+   * @private
+   * @param {React.FormEvent<HTMLDivElement>} ev
+   * @param {IDropdownOption} item
+   * @memberof Event
+   */
   private onCategoryChanged(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
+    ev.preventDefault();
     this.setState({ eventData: { ...this.state.eventData, Category: item.text } });
   }
 
@@ -436,12 +453,11 @@ export class Event extends React.Component<IEventProps, IEventState> {
           )
         }
         {
-          this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ?
+          (this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit) &&
             <PrimaryButton disabled={this.state.disableButton} onClick={this.onSave} style={{ marginBottom: '15px', marginRight: '8px', float: 'right' }}>
               {strings.SaveButtonLabel}
             </PrimaryButton>
-            :
-            ''
+
         }
         {
           this.state.isSaving &&
@@ -472,10 +488,10 @@ export class Event extends React.Component<IEventProps, IEventState> {
 
 
   private onAllDayEventChange(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+    ev.preventDefault();
     this.setState({ eventData: { ...this.state.eventData, allDayEvent: checked } });
   }
   /**
-   *
    *
    * @private
    * @param {ICoordinates} coordinates
@@ -484,12 +500,13 @@ export class Event extends React.Component<IEventProps, IEventState> {
   private async onUpdateCoordinates(coordinates: ICoordinates) {
     this.latitude = coordinates.latitude;
     this.longitude = coordinates.longitude;
+    console.log('upcoor',this.latitude + ' ' + this.longitude);
     const locationInfo = await this.spService.getGeoLactionName(this.latitude, this.longitude);
     this.setState({ eventData: { ...this.state.eventData, location: locationInfo.display_name } });
   }
 
   public render(): React.ReactElement<IEventProps> {
-
+    console.log(this.state.locationLatitude + '-' + this.state.locationLongitude);
     const { editorState } = this.state;
     return (
       <div>
