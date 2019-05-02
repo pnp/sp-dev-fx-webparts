@@ -51,6 +51,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import spservices from '../../services/spservices';
 import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
 
+
 const today: Date = new Date(Date.now());
 const DayPickerStrings: IDatePickerStrings = {
   months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.Dezember],
@@ -113,6 +114,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
       isSaving: false,
       displayDialog: false,
       isloading: false,
+      siteRegionalSettings: undefined,
       userPermissions: { hasPermissionAdd: false, hasPermissionDelete: false, hasPermissionEdit: false, hasPermissionView: false },
     };
     // local copia of props
@@ -177,13 +179,17 @@ export class Event extends React.Component<IEventProps, IEventState> {
     if (!eventData.attendes) { //vinitialize if no attendees
       eventData.attendes = [];
     }
-    for (const user of this.attendees) {
-      eventData.attendes.push(parseInt(user.id));
-    }
+
     // Get Descript from RichText Compoment
     eventData.Description = draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()));
 
     try {
+      for (const user of this.attendees) {
+
+        const userInfo: any= await this.spService.getUserByLoginName(user.id, this.props.siteUrl);
+        eventData.attendes.push(parseInt(userInfo.Id));
+      }
+
       this.setState({ isSaving: true });
 
       switch (this.props.panelMode) {
@@ -219,8 +225,10 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event
    */
   public async componentDidMount() {
-    this.setState({ isloading:true});
+    this.setState({ isloading: true });
     let editorState;
+
+    const siteRegionalSettigns = await this.spService.getSiteRegionalSettingsTimeZone(this.props.siteUrl);
     // chaeck User list Permissions
     const userListPermissions: IUserPermissions = await this.spService.getUserPermissions(this.props.siteUrl, this.props.listId);
     // Load Categories
@@ -266,7 +274,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
         editorState: editorState,
         selectedUsers: selectedUsers,
         userPermissions: userListPermissions,
-        isloading:false,
+        isloading: false,
+        siteRegionalSettings: siteRegionalSettigns,
       });
     } else {
       editorState = EditorState.createEmpty();
@@ -275,7 +284,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
         endDate: this.props.endDate ? this.props.endDate : new Date(),
         editorState: editorState,
         userPermissions: userListPermissions,
-        isloading:false
+        isloading: false,
+        siteRegionalSettings: siteRegionalSettigns,
       });
     }
   }
@@ -500,7 +510,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
             }
             {
               this.state.isloading && (
-                <Spinner size={SpinnerSize.large}  />
+                <Spinner size={SpinnerSize.large} />
               )
             }
             {
@@ -666,6 +676,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     ]}
                   />
                 </div>
+                <Label>{this.state.siteRegionalSettings ? this.state.siteRegionalSettings.Description : ''}</Label>
                 <br />
                 <Label>Event Description</Label>
 
@@ -678,7 +689,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
                 </div>
                 <div>
                   <PeoplePicker
-                    ensureUser
+
+                    webAbsoluteUrl={this.props.siteUrl}
                     context={this.props.context}
                     titleText={strings.AttendeesLabel}
                     principalTypes={[PrincipalType.User]}

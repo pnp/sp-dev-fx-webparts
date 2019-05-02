@@ -24,4 +24,5 @@ export interface IEventState {
   displayDialog:boolean;
   userPermissions?: IUserPermissions;
   isloading:boolean;
+  siteRegionalSettings: any;
 }
