@@ -320,36 +320,37 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
               :
               // show Calendar
               // Test if is loading Events
+              <div>
+                {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> :
+                  <div className={styles.container}>
+                    <BigCalendar
+                      localizer={localizer}
+                      selectable
+                      events={this.state.eventData}
+                      startAccessor="start"
+                      endAccessor="end"
+                      eventPropGetter={this.eventStyleGetter}
+                      onSelectSlot={this.onSelectSlot}
+                      components={{
+                        event: this.renderEvent
 
-              <div className={styles.container}>
-                {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> : ''}
-                <br />
-                <BigCalendar
-                  localizer={localizer}
-                  selectable
-                  events={this.state.eventData}
-                  startAccessor="start"
-                  endAccessor="end"
-                  eventPropGetter={this.eventStyleGetter}
-                  onSelectSlot={this.onSelectSlot}
-                  components={{
-                    event: this.renderEvent
-
-                  }}
-                  onSelectEvent={this.onSelectEvent}
-                  defaultDate={moment().startOf('day').toDate()}
-                  messages={
-                    {
-                      'today': strings.todayLabel,
-                      'previous': strings.previousLabel,
-                      'next': strings.nextLabel,
-                      'month': strings.monthLabel,
-                      'week': strings.weekLabel,
-                      'day': strings.dayLable,
-                      'showMore': total => `+${total} ${strings.showMore}`
-                    }
-                  }
-                />
+                      }}
+                      onSelectEvent={this.onSelectEvent}
+                      defaultDate={moment().startOf('day').toDate()}
+                      messages={
+                        {
+                          'today': strings.todayLabel,
+                          'previous': strings.previousLabel,
+                          'next': strings.nextLabel,
+                          'month': strings.monthLabel,
+                          'week': strings.weekLabel,
+                          'day': strings.dayLable,
+                          'showMore': total => `+${total} ${strings.showMore}`
+                        }
+                      }
+                    />
+                  </div>
+                }
               </div>
         }
         {

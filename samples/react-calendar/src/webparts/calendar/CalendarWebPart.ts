@@ -61,6 +61,19 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
     ReactDom.render(element, this.domElement);
   }
 
+  // onInit
+  public onInit(): Promise<void> {
+    if (!this.properties.eventStartDate){
+      this.properties.eventStartDate = { value: moment().subtract(2,'years').startOf('month').toDate(), displayValue: moment().format('ddd MMM MM YYYY')  }
+    }
+    if (!this.properties.eventEndDate){
+      this.properties.eventEndDate = { value: moment().add(20,'years').endOf('month').toDate(), displayValue: moment().format('ddd MMM MM YYYY')  }
+    }
+
+    return Promise.resolve();
+  }
+
+
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
   }

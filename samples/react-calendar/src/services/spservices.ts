@@ -344,43 +344,38 @@ export default class spservices {
       for (const cat of categoryDropdownOption) {
         categoryColor.push({ category: cat.text, color: await this.colorGenerate() });
       }
-      const spOpts: ISPHttpClientOptions = {
-      };
-      const apiUrl = `${siteUrl}/_api/web/Lists(guid'${listId}')/RenderListDataAsStream?SortField=EventDate&SortDir=Asc`;
 
-      const data: SPHttpClientResponse = await this.context.spHttpClient.post(apiUrl, SPHttpClient.configurations.v1, {
-        body: JSON.stringify({
-          parameters: {
-            RenderOptions: 3,
-            DatesInUtc: true,
-            ViewXml: `<View><ViewFields><FieldRef Name='Author'/><FieldRef Name='Category'/><FieldRef Name='Description'/><FieldRef Name='ParticipantsPicker'/><FieldRef Name='Geolocation'/><FieldRef Name='ID'/><FieldRef Name='EndDate'/><FieldRef Name='EventDate'/><FieldRef Name='ID'/><FieldRef Name='Location'/><FieldRef Name='Title'/><FieldRef Name='fAllDayEvent'/></ViewFields><Query><RowLimit Paged=\"FALSE\">2000</RowLimit><Where>
-              <And>
-               <And>
-                <Geq>
-                  <FieldRef Name='EventDate' />
-                  <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventStartDate).format('YYYY-MM-DD')}</Value>
-                </Geq>
-                <Leq>
-                  <FieldRef Name='EventDate' />
-                  <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventEndDate).format('YYYY-MM-DD')}</Value>
-                </Leq>
-                </And>
-                <Eq>
-                <FieldRef Name='fRecurrence' />
-                  <Value Type='Recurrence'>0</Value>
-                </Eq>
+      const web = new Web(siteUrl);
+      const results = await web.lists.getById(listId).renderListDataAsStream(
+        {
+          ViewXml: `<View><ViewFields><FieldRef Name='Author'/><FieldRef Name='Category'/><FieldRef Name='Description'/><FieldRef Name='ParticipantsPicker'/><FieldRef Name='Geolocation'/><FieldRef Name='ID'/><FieldRef Name='EndDate'/><FieldRef Name='EventDate'/><FieldRef Name='ID'/><FieldRef Name='Location'/><FieldRef Name='Title'/><FieldRef Name='fAllDayEvent'/></ViewFields>
+          <Query>
+          <Where>
+            <And>
+             <And>
+              <Geq>
+                <FieldRef Name='EventDate' />
+                <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventStartDate).format('YYYY-MM-DD')}</Value>
+              </Geq>
+              <Leq>
+                <FieldRef Name='EventDate' />
+                <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventEndDate).format('YYYY-MM-DD')}</Value>
+              </Leq>
               </And>
-            </Where></Query></View>`
-          }
-        })
-      }
+              <Eq>
+              <FieldRef Name='fRecurrence' />
+                <Value Type='Recurrence'>0</Value>
+              </Eq>
+            </And>
+          </Where>
+          </Query>
+          <RowLimit Paged=\"FALSE\">2000</RowLimit>
+          </View>`
+        }
       );
-      if (data.ok) {
-        const results = await data.json();
 
-        if (results) {
-          if (results.ListData && results.ListData.Row.length > 0) {
-            for (const event of results.ListData.Row) {
+          if (results && results.Row.length > 0) {
+            for (const event of results.Row) {
               const initialsArray: string[] = event.Author[0].title.split(' ');
               const initials: string = initialsArray[0].charAt(0) + initialsArray[initialsArray.length - 1].charAt(0);
               const userPictureUrl = await this.getUserProfilePictureUrl(`i:0#.f|membership|${event.Author[0].email}`);
@@ -419,12 +414,6 @@ export default class spservices {
               });
             }
           }
-
-        }
-      }
-      else { // Status not OK
-        throw new Error(`Error reading calendar events: ${data.statusMessage}`);
-      }
       // Return Data
       return events;
     } catch (error) {
