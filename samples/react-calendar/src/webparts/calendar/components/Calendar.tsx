@@ -304,7 +304,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
           title={this.props.title}
           updateProperty={this.props.updateProperty} />
         {
-          !this.props.list || !this.props.eventStartDate.value || !this.props.eventEndDate.value ?
+          (!this.props.list || !this.props.eventStartDate.value || !this.props.eventEndDate.value) ?
             <Placeholder iconName='Edit'
               iconText={strings.WebpartConfigIconText}
               description={strings.WebpartConfigDescription}

@@ -1,5 +1,6 @@
 define([], function () {
   return {
+    PropPanelSiteUrlErrorMessage:'Please verify if site url is valid',
     HttpErrorMessage: "Error reading calendar events:",
     CategoryPlaceHolder: "Please select category",
     CategoryLabel: "Category",

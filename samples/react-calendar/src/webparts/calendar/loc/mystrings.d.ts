@@ -91,6 +91,7 @@ declare interface ICalendarWebPartStrings {
   previousLabel: string;
   nextLabel: string;
   showMore: string;
+  PropPanelSiteUrlErrorMessage: string;
 }
 
 declare module 'CalendarWebPartStrings' {

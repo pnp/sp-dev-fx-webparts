@@ -370,7 +370,6 @@ export default class spservices {
             </And>
           </Where>
           </Query>
-
           <RowLimit Paged=\"FALSE\">2000</RowLimit>
           </View>`
         }
