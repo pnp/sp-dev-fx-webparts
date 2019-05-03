@@ -130,7 +130,6 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
       for (const list of results) {
         _lists.push({ key: list.Id, text: list.Title });
       }
-      // push new item value
     } catch (error) {
       this.errorMessage =  `${error.message} -  ${strings.PropPanelSiteUrlErrorMessage}` ;
       this.context.propertyPane.refresh();
@@ -139,7 +138,6 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
   }
 
   /**
-   *
    *
    * @private
    * @param {string} date
@@ -239,8 +237,6 @@ export default class CalendarWebPart extends BaseClientSideWebPart<ICalendarWebP
    * @memberof CalendarWebPart
    */
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-      // EndDate and Start Date defualt values
-
     return {
       pages: [
         {
