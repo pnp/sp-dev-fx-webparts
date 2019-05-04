@@ -38,10 +38,11 @@
   border-style: 'solid';
   border-width: 1.3px;
   border-color: #e6e6e6;
-  height: 40px;
+  height:auto;
   justify-content: 'center';
   display: 'flex';
   align-items: 'top';
+
 }
 
 .eventStyle{
@@ -55,12 +56,15 @@
 }
 
 .DocumentCardTitle {
-  font-weight: 'bold';
+  font-weight:  $ms-font-weight-semibold;
    height: '100%';
+   text-overflow: ellipsis;
+   display: 'flex';
+   justify-content: 'center';
 }
 
 .DocumentCardTitleTime{
-
+  padding-top: 10px;
   justify-content: 'center';
   display: 'flex';
   align-items: 'top';
