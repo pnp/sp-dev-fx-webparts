@@ -54,3 +54,5 @@ It also can be used as ready-to-go solution to add page sections navigation to S
 ## Custom CSS
 The web parts in the sample allow to use custom CSS to override the styles. You can set _Custom CSS URL_ property of *Page Sections Navigation* web part and include css classes for both Navigation and Anchor in referenced file.
 Please, refer [custom css sample](./assets/psn-custom.css) for the CSS sample.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-page-sections-navigation" />

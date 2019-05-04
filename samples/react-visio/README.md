@@ -58,3 +58,5 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 - Using the Visio JavaScript APIs to embed a diagram on a page
 - Using the Visio JavaScript APIs to interact with the Visio diagram and data available
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-visio" />

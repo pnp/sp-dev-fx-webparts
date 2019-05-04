@@ -67,6 +67,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Using the SharePoint Online REST API to manage Modern Experience Themes
 
 ## Additional Information:
+
 - [Office UI Fabric Theme Palette Generator](https://developer.microsoft.com/en-us/fabric#/styles/themegenerator)
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-theme-manager" />

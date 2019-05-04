@@ -57,4 +57,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - How to filter the list based on Taxonomy and extract the Image URL
 - Implementation of Slick Slider
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-image-slider-list-taxonomy-filter" />

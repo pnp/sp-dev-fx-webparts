@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-graph-reports-client-side-solution",
+    "id": "94cfede6-79e3-4298-8946-0347885a12d5",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Reports.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-graph-reports.sppkg"
+  }
+}

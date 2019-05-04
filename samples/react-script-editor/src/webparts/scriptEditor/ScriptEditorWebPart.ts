@@ -27,11 +27,10 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                     const style = window.getComputedStyle(element);
                     const hasPadding = style.paddingTop !== "0px";
                     if (hasPadding) {
-                        element.style.paddingTop = "0";
-                        element.style.paddingBottom = "0";
-                        element.style.marginTop = "0";
-                        element.style.marginBottom = "0";
-                        break;
+                        element.style.paddingTop = "0px";
+                        element.style.paddingBottom = "0px";
+                        element.style.marginTop = "0px";
+                        element.style.marginBottom = "0px";
                     }
                     element = element.parentElement;
                 }

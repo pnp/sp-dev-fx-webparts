@@ -96,6 +96,8 @@ To identify a list or document library the following two token will be use:
 * 'Forms' - View or SharePoint List Form for document libraries
 * 'Lists' - SharePoint stores all lists in the sub folder lists so this will be use to identify if a list is present in the URL
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-grahp-evalurl" />
+
 
 
 [figure1]: ./assets/evaluation-client-searching-for-site-collection.png

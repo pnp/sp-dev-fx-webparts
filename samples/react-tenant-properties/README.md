@@ -20,8 +20,8 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties4.jpg)
 
 
-
 ## Used SharePoint Framework Version 
+
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
 
 ## Applies to
@@ -67,7 +67,4 @@ Version|Date|Comments
   - `Add to AppCatalog and deploy`
   - `Approve API permission on SharePoint Admin Center`
 
-
-
-
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-tenant-properties" />

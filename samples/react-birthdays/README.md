@@ -29,10 +29,13 @@ Existing list in tenant root site, with the Title "Birthdays"  and columns:
 
 Column Internal Name|Type|Required| comments
 --------------------|----|--------|----------
-jobTitle| Text| no|
+JobTitle| Text| no|
 Birthday| DateTime | true|
 userAADGUID| Text| no | required if used Azure Function to get Birthdays from AAD
 Title| Text| true
+email| Text| true
+
+## After create a column Index on column "Brithday" - Important!
 
 ## Solution
 
@@ -51,7 +54,7 @@ Version|Date|Comments
 
 ---
 
-## Minimal Path to Awesome
+## Minimal Path to Awesome - please follow all the steps.
 
 - Clone this repository
 - in the command line run:
@@ -59,6 +62,8 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
+  - `Add and Deploy Package to AppCatalog `
+  - `Go to API Management - from SharePoint Admin Center new experience,  and Approve the Permission Require to Use Graph API SCOPES`
 
  
 
@@ -73,4 +78,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - using @PnP/PnPjs to create a List, add, update, delete Items.
  
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-birthdays" />
+

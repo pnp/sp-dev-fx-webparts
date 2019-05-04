@@ -59,4 +59,4 @@ Here are main features for this application
 - Right side popup panel
 - Server side pagination using REST API
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-image-gallery" />

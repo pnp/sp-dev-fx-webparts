@@ -58,5 +58,4 @@ Version|Date|Comments
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
 
-
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-tree-orgchart" />

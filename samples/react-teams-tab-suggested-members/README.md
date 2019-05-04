@@ -46,3 +46,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * Gulp custom task to zip Teams folder
 * Using _async / await_ for the async calls
 * Office UI fabric PeoplePicker
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-tab-suggested-members" />
