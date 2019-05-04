@@ -75,7 +75,6 @@ This Web Part displays the events from multiple calendars located in various sit
 
 
 
-
 ### Building the code
 
 ```bash
@@ -98,3 +97,5 @@ gulp test
 gulp serve
 gulp bundle
 gulp package-solution
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-aggregated-calendar" />

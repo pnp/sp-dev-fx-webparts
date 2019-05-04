@@ -63,10 +63,3 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-accordion" />
 
-### Build options
-
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO

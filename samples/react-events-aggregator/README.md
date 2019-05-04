@@ -64,5 +64,3 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Unit tests including spies, mocks and faking class methods and properties.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-events-aggregator" />
-
-

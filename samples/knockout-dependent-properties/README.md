@@ -52,4 +52,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - styling components to match Fabric UI experience
 - creating custom Property Pane fields (custom markup, logic) based on Knockout.js framework
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/ko-dependent-properties" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/knockout-dependent-properties" />

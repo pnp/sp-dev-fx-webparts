@@ -1,0 +1,71 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+   vmImage: 'Ubuntu-16.04'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
+  displayName: 'Install Node.js'
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**/*'
+    targetFolder: '$(Build.ArtifactStagingDirectory)/dev'
+  displayName: 'CopyFiles to folder staging/dev'
+
+- script: |
+    cd '$(Build.ArtifactStagingDirectory)/dev'
+    npm i
+    gulp bundle --ship
+    gulp package-solution --ship
+  displayName: 'Build DEV package'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/dev/sharepoint/solution/react-app-settings.sppkg' 
+    artifactName: 'DEV-sppkg' 
+  displayName: 'Publish DEV env SPFx artifacts'
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**/*'
+    targetFolder: '$(Build.ArtifactStagingDirectory)/prod'
+  displayName: 'CopyFiles to folder staging/prod'
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)/devops/configurations/PROD'
+    contents: '**/*'
+    targetFolder: '$(Build.ArtifactStagingDirectory)/prod'
+    overWrite: true
+  displayName: 'Apply PROD configuration (overrite dev env files)'
+
+- script: |
+    cd '$(Build.ArtifactStagingDirectory)/prod'
+    rm package-lock.json
+    npm i
+    gulp bundle --ship
+    gulp package-solution --ship
+  displayName: 'Build PROD package'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/prod/sharepoint/solution/react-app-settings.sppkg' 
+    artifactName: 'PROD-sppkg' 
+  displayName: 'Publish PROD env SPFx artifacts'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.SourcesDirectory)/devops/release/' 
+    artifactName: 'Release-scripts' 
+  displayName: 'Publish release scripts'

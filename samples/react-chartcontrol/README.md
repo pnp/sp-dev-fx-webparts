@@ -221,4 +221,4 @@ This Web Part sample pack illustrates the following concepts on top of the Share
 * Rendering conditional property pane fields
 * Creating custom property pane controls
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-chart-control" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-chartcontrol" />

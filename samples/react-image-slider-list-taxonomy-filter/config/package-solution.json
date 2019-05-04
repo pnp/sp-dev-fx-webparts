@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-photos-sol-react-client-side-solution",
+    "id": "a4282f62-8f32-4d1f-bf80-d25bc778c069",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-photos-sol-react.sppkg"
+  }
+}

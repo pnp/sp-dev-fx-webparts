@@ -1,0 +1,41 @@
+{
+  "name": "section-background",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "office-ui-fabric-react": "6.0.0",
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "@types/react": "16.4.2",
+    "@types/react-dom": "16.0.5",
+    "@microsoft/sp-component-base": "1.7.1-plusbeta",
+    "@microsoft/sp-core-library": "1.7.1-plusbeta",
+    "@microsoft/sp-webpart-base": "1.7.1-plusbeta",
+    "@microsoft/sp-lodash-subset": "1.7.1-plusbeta",
+    "@microsoft/sp-office-ui-fabric-core": "1.7.1-plusbeta",
+    "@types/webpack-env": "1.13.1",
+    "@types/es6-promise": "0.0.33",
+    "@uifabric/utilities": "6.0.0"
+  },
+  "resolutions": {
+    "@types/react": "16.4.2"
+  },
+  "devDependencies": {
+    "@microsoft/sp-build-web": "1.7.1-plusbeta",
+    "@microsoft/sp-tslint-rules": "1.7.1-plusbeta",
+    "@microsoft/sp-module-interfaces": "1.7.1-plusbeta",
+    "@microsoft/sp-webpart-workbench": "1.7.1-plusbeta",
+    "gulp": "~3.9.1",
+    "@types/chai": "3.4.34",
+    "@types/mocha": "2.2.38",
+    "ajv": "~5.2.2"
+  }
+}

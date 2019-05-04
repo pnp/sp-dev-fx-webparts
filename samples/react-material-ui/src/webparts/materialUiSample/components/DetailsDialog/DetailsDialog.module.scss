@@ -1,0 +1,20 @@
+.DetailsDialog{
+  .dialogTitle{
+    border-bottom:  1px solid grey;
+  }
+      .closeButton {
+        position: absolute;
+        color:#E31F2D;
+        top:8px;
+        right:8px;
+      }
+      .image{
+        float: left;
+        width: 120px;
+        height: 195px;
+        margin-right:15px;
+      }
+      .details{
+        text-align: justify;
+      }
+}

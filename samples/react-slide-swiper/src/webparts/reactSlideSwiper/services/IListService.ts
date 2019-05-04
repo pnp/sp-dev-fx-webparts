@@ -1,5 +1,6 @@
 import { ListItem } from "./ListItem";
+import { SPHttpClient } from "@microsoft/sp-http";
 
-export interface IListServce {
-    getAll(): Promise<Array<ListItem>>;
+export interface IListService {
+    getAll(listName:string): Promise<Array<ListItem>>;
 }

@@ -55,4 +55,4 @@ npm install
 gulp serve --nobrowser
 ```
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/pnp-controls)
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/pnp-controls" />

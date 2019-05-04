@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "photo-gallery-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/photoGallery/PhotoGalleryWebPart.js",
+          "manifest": "./src/webparts/photoGallery/PhotoGalleryWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": "https://code.jquery.com/jquery-3.1.0.min.js"
+  },
+  "localizedResources": {
+    "PhotoGalleryWebPartStrings": "lib/webparts/photoGallery/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

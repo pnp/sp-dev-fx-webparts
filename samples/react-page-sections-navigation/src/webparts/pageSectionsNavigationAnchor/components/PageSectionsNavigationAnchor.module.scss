@@ -1,0 +1,53 @@
+.webPartTitle {
+  position: relative;
+
+  &.visible {
+    font-size: 14px;
+    font-weight: 100;
+    margin-bottom: 11px;
+    color: "[theme:neutralPrimary, default: #333333]";
+
+    @media (min-width: 320px) {
+      font-size: 21px;
+    }
+
+    @media (min-width: 480px) {
+      font-size: 24px;
+    }
+
+    // Edit mode
+    textarea {
+      background-color: transparent;
+      border: none;
+      box-sizing: border-box;
+      color: inherit;
+      display: block;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      height: 40px;
+      line-height: inherit;
+      margin: 0;
+      outline: 0;
+      overflow: hidden;
+      resize: none;
+      text-align: inherit;
+      white-space: pre;
+      width: 100%;
+    }
+
+    // View mode
+    span {
+      font-weight: 300;
+    }
+  }
+
+  .anchorEl {
+    position: absolute;
+    top: 0;
+    
+    &.offset {
+      top: -40px;
+    }
+  }
+}

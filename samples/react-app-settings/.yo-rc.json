@@ -1,8 +1,12 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.1.1",
+    "version": "1.7.1",
     "libraryName": "react-app-settings",
     "libraryId": "9573efb7-06d1-4134-aa8d-f6b4803d6096",
-    "environment": "spo"
+    "environment": "spo",
+    "isDomainIsolated": false,
+    "isCreatingSolution": false,
+    "packageManager": "npm",
+    "componentType": "webpart"
   }
 }

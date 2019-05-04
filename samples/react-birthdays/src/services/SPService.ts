@@ -37,7 +37,7 @@ export class SPService {
         }
       }
       this.graphClient = await this._context.msGraphClientFactory.getClient();
-      _results = await this.graphClient.api(`sites/root/lists('${this.birthdayListTitle}')/items`)
+      _results = await this.graphClient.api(`sites/root/lists('${this.birthdayListTitle}')/items?orderby=Fields/Birthday`)
         .version('v1.0')
         .expand('fields')
         .top(upcommingDays)

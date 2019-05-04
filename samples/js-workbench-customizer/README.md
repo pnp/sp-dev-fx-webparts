@@ -45,3 +45,5 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-workbench-customizer" />

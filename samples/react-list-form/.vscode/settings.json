@@ -71,5 +71,6 @@
       ],
       "url": "./node_modules/@microsoft/sp-build-core-tasks/lib/copyStaticAssets/copy-static-assets.schema.json"
     }
-  ]
+  ],
+  "editor.formatOnSave": true
 }
