@@ -66,3 +66,5 @@ To work with real data, the web part requires content to be in place including:
 * Documents and photos in SharePoint
 
 [Detailed setup instructions are here](./documentation/setup.md).
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-tab-field-visit-mashup" />
