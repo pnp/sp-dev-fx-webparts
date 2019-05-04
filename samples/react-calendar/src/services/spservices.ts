@@ -61,7 +61,11 @@ export default class spservices {
 
       // Formula to calculate the number of  hours need to get UTC Date.
       // numberHours = (siteTimeZoneBias / 60) + (siteTimeZoneDaylightBias / 60) - currentDateTimeOffSet;
-      numberHours = (siteTimeZoneBias / 60) - currentDateTimeOffSet;
+      if ( siteTimeZoneBias >= 0 ){
+        numberHours = ((siteTimeZoneBias / 60) - currentDateTimeOffSet) + siteTimeZoneDaylightBias/60 ;
+      }else {
+        numberHours = ((siteTimeZoneBias / 60) - currentDateTimeOffSet)  ;
+      }
     }
     catch (error) {
       return Promise.reject(error);
@@ -397,7 +401,9 @@ export default class spservices {
             id: event.ID,
             title: await this.deCodeHtmlEntities(event.Title),
             Description: event.Description,
+            //  start: moment(event.EventDate).utc().toDate().setUTCMinutes(this.siteTimeZoneOffSet),
             start: new Date(moment(event.EventDate).subtract((siteTimeZoneHoursToUTC), 'hour').toISOString()),
+            // end: new Date(moment(event.EndDate).toLocaleString()),
             end: new Date(moment(event.EndDate).subtract(siteTimeZoneHoursToUTC, 'hour').toISOString()),
             location: event.Location,
             ownerEmail: event.Author[0].email,
@@ -729,7 +735,7 @@ export default class spservices {
   public async deCodeHtmlEntities(string: string) {
 
     const HtmlEntitiesMap = {
-      "'": "&apos;",
+      "'": "&#39;",
       "<": "&lt;",
       ">": "&gt;",
       " ": "&nbsp;",
