@@ -39,12 +39,6 @@ The web part works by loading each script in a `<script src>` tag sequentially i
 
 ![site page header configurator web part](./assets/modern-script-editor-wp.gif)
 
-If you for some reason need the script to force load on each new page, add the attribute `reload` to the script tag.
-This will reload the script even on smart modern page loads.
-```html
-<script src="myscript.js" reload></script>
-```
-
 If all you want is to add markup on the page, you can do that as well. Adding the following html would show a headline and a list.
 
 ```html

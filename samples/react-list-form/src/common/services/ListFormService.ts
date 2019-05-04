@@ -21,7 +21,7 @@ export class ListFormService implements IListFormService {
      * @param formType The type of form (Display, New, Edit)
      * @returns Promise object represents the array of field schema for all relevant fields for this list form.
      */
-    public getFieldSchemasForForm( webUrl: string, listUrl: string, formType: ControlMode ): Promise<IFieldSchema[]> {
+    public getFieldSchemasForForm(webUrl: string, listUrl: string, formType: ControlMode): Promise<IFieldSchema[]> {
         return new Promise<IFieldSchema[]>((resolve, reject) => {
             const httpClientOptions: ISPHttpClientOptions = {
                 headers: {
@@ -38,24 +38,24 @@ export class ListFormService implements IListFormService {
                         ViewXml: '<View><ViewFields><FieldRef Name="ID"/></ViewFields></View>',
                         RenderOptions: RenderListDataOptions.clientFormSchema,
                     },
-                  }),
+                }),
             };
             const endpoint = `${webUrl}/_api/web/GetList(@listUrl)/RenderListDataAsStream`
-                             + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}`;
+                + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}`;
             this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions)
                 .then((response: SPHttpClientResponse) => {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        reject( this.getErrorMessage(webUrl, response) );
+                        reject(this.getErrorMessage(webUrl, response));
                     }
                 })
                 .then((data) => {
                     const form = (formType === ControlMode.New) ? data.ClientForms.New : data.ClientForms.Edit;
-                    resolve( form[ Object.keys( form )[0] ] );
+                    resolve(form[Object.keys(form)[0]]);
                 })
                 .catch((error) => {
-                    reject( this.getErrorMessage(webUrl, error) );
+                    reject(this.getErrorMessage(webUrl, error));
                 });
         });
     }
@@ -69,28 +69,28 @@ export class ListFormService implements IListFormService {
      * @param formType The type of form (Display, New, Edit)
      * @returns Promise representing an object containing all the field values for the list item.
      */
-    public getDataForForm( webUrl: string, listUrl: string, itemId: number, formType: ControlMode ): Promise<any> {
+    public getDataForForm(webUrl: string, listUrl: string, itemId: number, formType: ControlMode): Promise<any> {
         if (!listUrl || (!itemId) || (itemId === 0)) {
             return Promise.resolve({}); // no data, so returns empty
         }
         return new Promise<any>((resolve, reject) => {
             const httpClientOptions: ISPHttpClientOptions = {
                 headers: {
-                'Accept': 'application/json;odata=verbose',
-                'Content-type': 'application/json;odata=verbose',
-                'X-SP-REQUESTRESOURCES': 'listUrl=' + encodeURIComponent(listUrl),
-                'odata-version': '',
+                    'Accept': 'application/json;odata=verbose',
+                    'Content-type': 'application/json;odata=verbose',
+                    'X-SP-REQUESTRESOURCES': 'listUrl=' + encodeURIComponent(listUrl),
+                    'odata-version': '',
                 },
             };
             const endpoint = `${webUrl}/_api/web/GetList(@listUrl)/RenderExtendedListFormData`
-                             + `(itemId=${itemId},formId='editform',mode='2',options=7)`
-                             + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}`;
+                + `(itemId=${itemId},formId='editform',mode='2',options=7)`
+                + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}`;
             this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions)
                 .then((response: SPHttpClientResponse) => {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        reject( this.getErrorMessage(webUrl, response) );
+                        reject(this.getErrorMessage(webUrl, response));
                     }
                 })
                 .then((data) => {
@@ -102,7 +102,7 @@ export class ListFormService implements IListFormService {
                     }
                 })
                 .catch((error) => {
-                    reject( this.getErrorMessage(webUrl, error) );
+                    reject(this.getErrorMessage(webUrl, error));
                 });
         });
     }
@@ -118,8 +118,8 @@ export class ListFormService implements IListFormService {
      * @param originalData An object containing all the field values retrieved on loading from list item.
      * @returns Promise object represents the updated or erroneous form field values.
      */
-    public updateItem( webUrl: string, listUrl: string, itemId: number,
-                       fieldsSchema: IFieldSchema[], data: any, originalData: any ): Promise<any> {
+    public updateItem(webUrl: string, listUrl: string, itemId: number,
+        fieldsSchema: IFieldSchema[], data: any, originalData: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             const httpClientOptions: ISPHttpClientOptions = {
                 headers: {
@@ -127,7 +127,7 @@ export class ListFormService implements IListFormService {
                     'Content-type': 'application/json;odata=verbose',
                     'X-SP-REQUESTRESOURCES': 'listUrl=' + encodeURIComponent(listUrl),
                     'odata-version': '',
-                    },
+                },
             };
             const formValues = this.GetFormValues(fieldsSchema, data, originalData);
 
@@ -137,20 +137,20 @@ export class ListFormService implements IListFormService {
                 formValues,
             });
             const endpoint = `${webUrl}/_api/web/GetList(@listUrl)/items(@itemId)/ValidateUpdateListItem()`
-                             + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}&@itemId=%27${itemId}%27`;
-            this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions )
+                + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}&@itemId=%27${itemId}%27`;
+            this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions)
                 .then((response: SPHttpClientResponse) => {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        reject( this.getErrorMessage(webUrl, response) );
+                        reject(this.getErrorMessage(webUrl, response));
                     }
                 })
                 .then((respData) => {
-                    resolve( respData.d.ValidateUpdateListItem.results );
+                    resolve(respData.d.ValidateUpdateListItem.results);
                 })
                 .catch((error) => {
-                    reject( this.getErrorMessage(webUrl, error) );
+                    reject(this.getErrorMessage(webUrl, error));
                 });
         });
     }
@@ -164,7 +164,7 @@ export class ListFormService implements IListFormService {
      * @param data An object containing all the field values to set on creating item.
      * @returns Promise object represents the updated or erroneous form field values.
      */
-    public createItem( webUrl: string, listUrl: string, fieldsSchema: IFieldSchema[], data: any ): Promise<any> {
+    public createItem(webUrl: string, listUrl: string, fieldsSchema: IFieldSchema[], data: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             const formValues = this.GetFormValues(fieldsSchema, data, {});
             const httpClientOptions: ISPHttpClientOptions = {
@@ -188,9 +188,9 @@ export class ListFormService implements IListFormService {
                 }),
             };
             const endpoint = `${webUrl}/_api/web/GetList(@listUrl)/AddValidateUpdateItemUsingPath`
-                             + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}`;
-            this.spHttpClient.post( endpoint, SPHttpClient.configurations.v1, httpClientOptions )
-                .then( (response: SPHttpClientResponse) => {
+                + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}`;
+            this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions)
+                .then((response: SPHttpClientResponse) => {
                     if (response.ok) {
                         return response.json();
                     } else {
@@ -198,25 +198,25 @@ export class ListFormService implements IListFormService {
                     }
                 })
                 .then((respData) => {
-                    resolve( respData.d.AddValidateUpdateItemUsingPath.results );
+                    resolve(respData.d.AddValidateUpdateItemUsingPath.results);
                 })
                 .catch((error) => {
-                    reject( this.getErrorMessage(webUrl, error) );
+                    reject(this.getErrorMessage(webUrl, error));
                 });
         });
     }
 
-    private GetFormValues( fieldsSchema: IFieldSchema[], data: any, originalData: any )
-                : Array<{ FieldName: string, FieldValue: any, HasException: boolean, ErrorMessage: string }> {
+    private GetFormValues(fieldsSchema: IFieldSchema[], data: any, originalData: any)
+        : Array<{ FieldName: string, FieldValue: any, HasException: boolean, ErrorMessage: string }> {
         return fieldsSchema.filter(
-                (field) => (
-                    (!field.ReadOnlyField)
-                    && (field.InternalName in data)
-                    && (data[field.InternalName] !== null)
-                    && (data[field.InternalName] !== originalData[field.InternalName])
-                ),
-            )
-            .map( (field) => {
+            (field) => (
+                (!field.ReadOnlyField)
+                && (field.InternalName in data)
+                && (data[field.InternalName] !== null)
+                && (data[field.InternalName] !== originalData[field.InternalName])
+            ),
+        )
+            .map((field) => {
                 return {
                     ErrorMessage: null,
                     FieldName: field.InternalName,
@@ -224,14 +224,14 @@ export class ListFormService implements IListFormService {
                     HasException: false,
                 };
             },
-        );
+            );
     }
 
     /**
      * Returns an error message based on the specified error object
      * @param error : An error string/object
      */
-    private getErrorMessage( webUrl: string, error: any ): string {
+    private getErrorMessage(webUrl: string, error: any): string {
         let errorMessage: string = error.statusText ? error.statusText : error.statusMessage ? error.statusMessage : error;
         const serverUrl = `{window.location.protocol}//{window.location.hostname}`;
         const webServerRelativeUrl = webUrl.replace(serverUrl, '');

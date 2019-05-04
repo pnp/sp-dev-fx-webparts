@@ -47,3 +47,5 @@ The _PowerBI Embedded_ Client-Side Web Part is built on the SharePoint Framework
 All authentication and rendering happens client-side, there is no server-side component required.
 
 It uses the [PowerBI Client](https://www.npmjs.com/package/powerbi-client) for rendering the PowerBI report.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-powerbi-embedded" />

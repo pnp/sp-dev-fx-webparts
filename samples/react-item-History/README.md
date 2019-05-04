@@ -53,3 +53,4 @@ Add-PnPCustomAction `
     -RegistrationId "101" `
     -ClientSideComponentProperties "{}"
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-item-history" />

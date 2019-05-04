@@ -25,7 +25,8 @@ react-list-form|Dany Wyss
 
 Version|Date|Comments
 -------|----|--------
-1.0|November 24, 2017|Initial release
+1.0.0|November 24, 2017|Initial release
+1.0.1|February 22, 2019|Updated to SPFx 1.7.1 and dependencies, Added Turkish translation, Added RichText Mode and Tinymce Editor
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

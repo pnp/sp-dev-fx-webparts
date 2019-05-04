@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "teams-tagging-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/teamsTagging/TeamsTaggingWebPart.js",
+          "manifest": "./src/webparts/teamsTagging/TeamsTaggingWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TeamsTaggingWebPartStrings": "lib/webparts/teamsTagging/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

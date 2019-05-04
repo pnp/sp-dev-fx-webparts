@@ -1,4 +1,4 @@
-define([], function() {
+define([], function () {
     return {
         UnsupportedFieldType: 'Type de champ non pris en charge',
         InvalidNumberValue: 'La valeur doit être un nombre, la valeur actuel est',
@@ -12,10 +12,10 @@ define([], function() {
         LookupEmptyOptionText: '(Aucun)',
 
         // IDatePickerStrings
-        months: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
-        shortMonths: [ 'Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ],
-        days: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
-        shortDays: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+        months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        shortMonths: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+        days: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        shortDays: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
         goToToday: 'Aller à aujourd\'hui',
         prevMonthAriaLabel: 'Aller au mois précédent',
         nextMonthAriaLabel: 'Aller au mois suivant',

@@ -21,10 +21,8 @@
     "officeFabricIconFontName": "DeveloperTools",
     "properties": {
       "requiresPageRefresh": false,
-      "maxWidth": true,
-      "centerCanvas": true,
-      "overflow": true,
-      "padding": true
+      "customWorkbenchStyles": true,
+      "previewMode": true
     }
   }]
 }

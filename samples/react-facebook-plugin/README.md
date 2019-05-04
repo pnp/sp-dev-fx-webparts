@@ -55,3 +55,5 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 
 * Observe parent container width and dynamic adaptation of absolute-width'ed HTML elements
 * React
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-facebook-plugin" />

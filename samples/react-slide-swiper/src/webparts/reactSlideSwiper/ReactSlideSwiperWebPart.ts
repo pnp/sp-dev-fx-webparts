@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -8,11 +8,19 @@ import {
   PropertyPaneToggle,
 } from '@microsoft/sp-webpart-base';
 
+import {   
+  Environment,
+  EnvironmentType,
+  Version 
+} from '@microsoft/sp-core-library';
+
+
 import * as strings from 'ReactSlideSwiperWebPartStrings';
 import ReactSlideSwiper from './components/ReactSlideSwiper';
 import { IReactSlideSwiperProps } from './components/IReactSlideSwiperProps';
-import { IListServce } from './services/IListService';
+import { IListService } from './services/IListService';
 import { ListMock } from './services/ListMock';
+import { ListSharePoint } from './services/ListSharePoint';
 
 export interface IReactSlideSwiperWebPartProps {
   enableNavigation: boolean;
@@ -25,16 +33,28 @@ export interface IReactSlideSwiperWebPartProps {
   spaceBetweenSlides: string;
   enableGrabCursor: boolean;
   enableLoop: boolean;
+  listName: string;
 }
 
 export default class ReactSlideSwiperWebPart extends BaseClientSideWebPart<IReactSlideSwiperWebPartProps> {
 
   public render(): void {
+    var listProvider: IListService;
+
+    //use the mock service if running locally, otherwise use the SharePoint List Service
+    if (Environment.type === EnvironmentType.Local) {
+      listProvider = new ListMock();
+    }
+    else if (Environment.type == EnvironmentType.SharePoint) {
+      listProvider = this.context.serviceScope.consume(ListSharePoint.serviceKey);
+    }
+
     const element: React.ReactElement<IReactSlideSwiperProps> = React.createElement(
       ReactSlideSwiper,
       {
-        listService: new ListMock(),
-        swiperOptions: this.properties
+        listService: listProvider,
+        swiperOptions: this.properties,
+        listName: this.properties.listName
       }
     );
 
@@ -67,6 +87,10 @@ export default class ReactSlideSwiperWebPart extends BaseClientSideWebPart<IReac
                 PropertyPaneTextField('slidesPerView', {
                   label: strings.SlidesPerWiew,
                   value: '3'
+                }),
+                PropertyPaneTextField('listName', {
+                  label: strings.ListName,
+                  value: 'Swiper Content'
                 })
               ]
             },

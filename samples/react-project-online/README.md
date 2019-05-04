@@ -55,3 +55,5 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 -Using the SharePoint rest API for querying web properties.
 -Using the Project Online rest API for retrieving project tasks.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-project-online" />

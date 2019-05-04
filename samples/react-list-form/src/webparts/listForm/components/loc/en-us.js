@@ -1,4 +1,4 @@
-define([], function() {
+define([], function () {
     return {
         'SaveButtonText': 'Save',
         'CancelButtonText': 'Cancel',
@@ -11,7 +11,7 @@ define([], function() {
         'ItemSavedSuccessfully': 'Item saved successfully.',
         'FieldsErrorOnSaving': 'The item could not be saved. Please check detailed error messages on the fields below.',
         'ErrorOnSavingListItem': 'Error on loading lists: ',
-        'MoveField' : "Move field",
-        'RemoveField' : "Remove field"
+        'MoveField': "Move field",
+        'RemoveField': "Remove field"
     }
 });

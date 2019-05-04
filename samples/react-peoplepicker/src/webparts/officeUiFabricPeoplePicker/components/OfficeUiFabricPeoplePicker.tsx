@@ -28,7 +28,7 @@ import {
   IEnsureUser,
   IOfficeUiFabricPeoplePickerState,
   SharePointUserPersona } from '../models/OfficeUiFabricPeoplePicker';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+  import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
@@ -67,8 +67,8 @@ export default class OfficeUiFabricPeoplePicker extends React.Component<IOfficeU
       disabled: true
     }
   ];
-  constructor() {
-    super();
+  constructor(props: IOfficeUiFabricPeoplePickerProps) {
+    super(props);
     this._peopleList = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};

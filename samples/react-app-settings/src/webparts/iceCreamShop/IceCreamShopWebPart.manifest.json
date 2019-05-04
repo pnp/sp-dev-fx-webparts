@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "4e6bdbca-212c-40b2-8de8-7d877b6c6db9",
+  "alias": "IceCreamShopWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+    "group": { "default": "Other" },
+    "title": { "default": "IceCreamShop" },
+    "description": { "default": "IceCreamShop description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "IceCreamShop"
+    }
+  }]
+}
