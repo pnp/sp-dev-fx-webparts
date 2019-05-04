@@ -1,0 +1,71 @@
+resources:
+- repo: self
+trigger:
+- master
+- develop
+queue:
+  name: Hosted VS2017
+  demands:
+  - npm
+  - node.js
+
+steps:
+#install node 8.x
+- task: NodeTool@0
+  displayName: 'Use Node 8.x'
+  inputs:
+    versionSpec: 8.x
+    checkLatest: true
+
+#install nodejs modules with npm
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    workingDir: '$(Build.SourcesDirectory)'
+    verbose: false
+
+#start unit tests
+- task: Gulp@0
+  displayName: 'gulp test'
+  inputs:
+    gulpFile: '$(Build.SourcesDirectory)/gulpfile.js'
+    targets: test
+    publishJUnitResults: true
+    testResultsFiles: '**/test-*.xml'
+#publish test results
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish Code Coverage Results $(Build.SourcesDirectory)/temp/coverage/cobertura/cobertura.xml'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(Build.SourcesDirectory)/temp/coverage/cobertura/cobertura.xml'
+    reportDirectory: '$(Build.SourcesDirectory)/temp/coverage/cobertura'
+
+#bundle code with gulp
+- task: Gulp@0
+  displayName: 'gulp bundle'
+  inputs:
+    gulpFile: '$(Build.SourcesDirectory)/gulpfile.js'
+    targets: bundle
+    arguments: '--ship'
+  continueOnError: true
+
+#package solution with gulp
+- task: Gulp@0
+  displayName: 'gulp package-solution'
+  inputs:
+    gulpFile: '$(Build.SourcesDirectory)/gulpfile.js'
+    targets: 'package-solution'
+    arguments: '--ship'
+
+#copy files to artifact repository
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)/drop'
+  inputs:
+    Contents: '**\*.sppkg'
+    TargetFolder: '$(build.artifactstagingdirectory)/drop'
+
+#publish artifacts
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact:  drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)/drop'
