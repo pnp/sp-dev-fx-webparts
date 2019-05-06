@@ -240,11 +240,12 @@ export default class spservices {
     let userPermissions: IUserPermissions = undefined;
     try {
       const web = new Web(siteUrl);
-      hasPermissionAdd = await web.lists.getById(listId).currentUserHasPermissions(PermissionKind.AddListItems);
-      hasPermissionEdit = await web.lists.getById(listId).currentUserHasPermissions(PermissionKind.EditListItems);
-      hasPermissionDelete = await web.lists.getById(listId).currentUserHasPermissions(PermissionKind.DeleteListItems);
-      hasPermissionView = await web.lists.getById(listId).currentUserHasPermissions(PermissionKind.ViewListItems);
-      userPermissions = { hasPermissionAdd: hasPermissionAdd, hasPermissionEdit: hasPermissionEdit, hasPermissionDelete: hasPermissionDelete, hasPermissionView: hasPermissionView };
+      const  userEffectivePermissions = await web.lists.getById(listId).effectiveBasePermissions.get();
+        // chaeck user permissions
+        hasPermissionAdd = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.AddListItems);
+        hasPermissionEdit =sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.EditListItems);
+        hasPermissionView = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.ViewListItems);
+        userPermissions = { hasPermissionAdd: hasPermissionAdd, hasPermissionEdit: hasPermissionEdit, hasPermissionDelete: hasPermissionDelete, hasPermissionView: hasPermissionView };
     } catch (error) {
       return Promise.reject(error);
     }
