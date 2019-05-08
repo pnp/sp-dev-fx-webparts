@@ -5,7 +5,7 @@ import { IDropdownWithRemoteDataWithoutCustomControlsProps } from './IDropdownWi
 
 import { Config } from './Config';
 
-export default class DropdownWithRemoteDataWithoutCustomControls extends React.Component<IDropdownWithRemoteDataWithoutCustomControlsProps, void> {
+export default class DropdownWithRemoteDataWithoutCustomControls extends React.Component<IDropdownWithRemoteDataWithoutCustomControlsProps, {}> {
   public render(): React.ReactElement<IDropdownWithRemoteDataWithoutCustomControlsProps> {
 
     const { needsConfiguration, configureWebPart} = this.props;
