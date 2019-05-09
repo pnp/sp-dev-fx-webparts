@@ -13,11 +13,7 @@ import * as moment from 'moment';
 import { SiteUser } from "@pnp/sp/src/siteusers";
 import { IUserPermissions } from './IUserPermissions';
 import { dateAdd } from "@pnp/common";
-<<<<<<< HEAD
 import { escape } from '@microsoft/sp-lodash-subset';
-=======
-
->>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
 
 const ADMIN_ROLETEMPLATE_ID = "62e90394-69f5-4237-9190-012177145e10"; // Global Admin TemplateRoleId
 // Class Services
@@ -64,16 +60,12 @@ export default class spservices {
       siteTimeZoneDaylightBias = siteRegionalSettings.Information.DaylightBias;
 
       // Formula to calculate the number of  hours need to get UTC Date.
-<<<<<<< HEAD
       // numberHours = (siteTimeZoneBias / 60) + (siteTimeZoneDaylightBias / 60) - currentDateTimeOffSet;
       if ( siteTimeZoneBias >= 0 ){
         numberHours = ((siteTimeZoneBias / 60) - currentDateTimeOffSet) + siteTimeZoneDaylightBias/60 ;
       }else {
         numberHours = ((siteTimeZoneBias / 60) - currentDateTimeOffSet)  ;
       }
-=======
-      numberHours = (siteTimeZoneBias / 60) + (siteTimeZoneDaylightBias / 60) - currentDateTimeOffSet;
->>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
     }
     catch (error) {
       return Promise.reject(error);
@@ -248,20 +240,12 @@ export default class spservices {
     let userPermissions: IUserPermissions = undefined;
     try {
       const web = new Web(siteUrl);
-<<<<<<< HEAD
       const  userEffectivePermissions = await web.lists.getById(listId).effectiveBasePermissions.get();
         // chaeck user permissions
         hasPermissionAdd = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.AddListItems);
         hasPermissionEdit =sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.EditListItems);
         hasPermissionView = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.ViewListItems);
         userPermissions = { hasPermissionAdd: hasPermissionAdd, hasPermissionEdit: hasPermissionEdit, hasPermissionDelete: hasPermissionDelete, hasPermissionView: hasPermissionView };
-=======
-      hasPermissionAdd = await web.lists.getById(listId).currentUserHasPermissions(PermissionKind.AddListItems);
-      hasPermissionEdit = await web.lists.getById(listId).currentUserHasPermissions(PermissionKind.EditListItems);
-      hasPermissionDelete = await web.lists.getById(listId).currentUserHasPermissions(PermissionKind.DeleteListItems);
-      hasPermissionView = await web.lists.getById(listId).currentUserHasPermissions(PermissionKind.ViewListItems);
-      userPermissions = { hasPermissionAdd: hasPermissionAdd, hasPermissionEdit: hasPermissionEdit, hasPermissionDelete: hasPermissionDelete, hasPermissionView: hasPermissionView };
->>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
     } catch (error) {
       return Promise.reject(error);
     }
@@ -397,7 +381,6 @@ export default class spservices {
         }
       );
 
-<<<<<<< HEAD
       if (results && results.Row.length > 0) {
         for (const event of results.Row) {
           const initialsArray: string[] = event.Author[0].title.split(' ');
@@ -438,48 +421,6 @@ export default class spservices {
           });
         }
       }
-=======
-          if (results && results.Row.length > 0) {
-            for (const event of results.Row) {
-              const initialsArray: string[] = event.Author[0].title.split(' ');
-              const initials: string = initialsArray[0].charAt(0) + initialsArray[initialsArray.length - 1].charAt(0);
-              const userPictureUrl = await this.getUserProfilePictureUrl(`i:0#.f|membership|${event.Author[0].email}`);
-              const attendees: number[] = [];
-              const first: number = event.Geolocation.indexOf('(') + 1;
-              const last: number = event.Geolocation.indexOf(')');
-              const geo = event.Geolocation.substring(first, last);
-              const geolocation = geo.split(' ');
-              const CategoryColorValue: any[] = categoryColor.filter((value) => {
-                return value.category == event.Category;
-              });
-              for (const attendee of event.ParticipantsPicker) {
-                attendees.push(parseInt(attendee.id));
-              }
-
-              events.push({
-                id: event.ID,
-                title: event.Title,
-                Description: event.Description,
-                //  start: moment(event.EventDate).utc().toDate().setUTCMinutes(this.siteTimeZoneOffSet),
-                start: new Date(moment(event.EventDate).subtract(siteTimeZoneHoursToUTC, 'hour').toISOString()),
-                // end: new Date(moment(event.EndDate).toLocaleString()),
-                end: new Date(moment(event.EndDate).subtract(siteTimeZoneHoursToUTC, 'hour').toISOString()),
-                location: event.Location,
-                ownerEmail: event.Author[0].email,
-                ownerPhoto: userPictureUrl ?
-                  `https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=${event.Author[0].email}&UA=0&size=HR96x96` : '',
-                ownerInitial: initials,
-                // color: await this.colorGenerate(),
-                color: CategoryColorValue.length > 0 ? CategoryColorValue[0].color : await this.colorGenerate,
-                ownerName: event.Author[0].title,
-                attendes: attendees,
-                allDayEvent: false,
-                geolocation: { Longitude: parseFloat(geolocation[0]), Latitude: parseFloat(geolocation[1]) },
-                Category: event.Category
-              });
-            }
-          }
->>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
       // Return Data
       return events;
     } catch (error) {
@@ -532,7 +473,6 @@ export default class spservices {
       return Promise.reject(error);
     }
   }
-<<<<<<< HEAD
 
   public async enCodeHtmlEntities(string: string) {
 
@@ -1054,6 +994,4 @@ export default class spservices {
 
 
 
-=======
->>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
 }
