@@ -167,7 +167,11 @@ export class Event extends React.Component<IEventProps, IEventState> {
     const end = moment(endDateTime, 'YYYY/MM/DD HH:mm').toLocaleString();
     eventData.end = new Date(end);
 
+<<<<<<< HEAD
 
+=======
+    debugger;
+>>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
     // get Geolocation
 
     eventData.geolocation = { Latitude: this.latitude, Longitude: this.longitude };

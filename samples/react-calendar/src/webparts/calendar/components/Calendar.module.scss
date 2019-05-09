@@ -38,11 +38,18 @@
   border-style: 'solid';
   border-width: 1.3px;
   border-color: #e6e6e6;
+<<<<<<< HEAD
   height:auto;
   justify-content: 'center';
   display: 'flex';
   align-items: 'top';
 
+=======
+  height: 40px;
+  justify-content: 'center';
+  display: 'flex';
+  align-items: 'top';
+>>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
 }
 
 .eventStyle{
@@ -56,6 +63,7 @@
 }
 
 .DocumentCardTitle {
+<<<<<<< HEAD
   font-weight:  $ms-font-weight-semibold;
    height: '100%';
    text-overflow: ellipsis;
@@ -65,6 +73,14 @@
 
 .DocumentCardTitleTime{
   padding-top: 10px;
+=======
+  font-weight: 'bold';
+   height: '100%';
+}
+
+.DocumentCardTitleTime{
+
+>>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
   justify-content: 'center';
   display: 'flex';
   align-items: 'top';

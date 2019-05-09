@@ -1,6 +1,10 @@
 {
   "name": "react-calendar",
+<<<<<<< HEAD
   "version": "1.0.0",
+=======
+  "version": "0.0.1",
+>>>>>>> 55ac20686ab74854a358211788f8f4eb2ca930a5
   "private": true,
   "engines": {
     "node": ">=0.10.0"
