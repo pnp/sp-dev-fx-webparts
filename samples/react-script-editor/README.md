@@ -118,11 +118,9 @@ Version|Date|Comments
   - `gulp serve`
 
 ### Deploy
-* Set CDN path in config\write-manifest.json to where you want to host the web part
-	* E.g.:  https://&lt;tenant&gt;.sharepoint.com/sites/CDN/SiteAssets/SPFx/&lt;partname&gt;
-* gulp --ship
+* gulp clean
+* gulp bundle --ship
 * gulp package-solution --ship
-* Copy contents of temp\deploy to the CDN folder
 * Upload .sppkg file from sharepoint\solution to your tenant App Catalog
 	* E.g.: https://&lt;tenant&gt;.sharepoint.com/sites/AppCatalog/AppCatalog
 * Add the web part to a site collection, and test it on a page

@@ -193,7 +193,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
             </div>
             <DocumentCardDetails>
               <div className={styles.DocumentCardDetails}>
-                <DocumentCardTitle title={event.title} shouldTruncate={true} className={styles.DocumentCardTitle} styles={{ root: { color: event.color } }} />
+                <DocumentCardTitle title={event.title} shouldTruncate={true} className={styles.DocumentCardTitle} styles={{ root: { color: event.color} }} />
               </div>
 
               {
@@ -202,7 +202,6 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                   :
                   <span className={styles.DocumentCardTitleTime}>{moment(event.start).format('dddd')} </span>
               }
-
               <span className={styles.DocumentCardTitleTime}>{moment(event.start).format('HH:mm')}H - {moment(event.end).format('HH:mm')}H</span>
               <Icon iconName='MapPin' className={styles.locationIcon} style={{ color: event.color }} />
               <DocumentCardTitle
