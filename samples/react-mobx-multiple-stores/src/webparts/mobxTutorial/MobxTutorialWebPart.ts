@@ -1,29 +1,24 @@
+import { Version } from '@microsoft/sp-core-library';
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { configure } from "mobx";
+import * as strings from 'MobxTutorialWebPartStrings';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import {
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-property-pane';
-
-import * as strings from 'MobxTutorialWebPartStrings';
-import MobxTutorial from './components/MobxTutorial';
 import { IMobxTutorialProps } from './components/IMobxTutorialProps';
-import { configure } from "mobx";
-configure({ enforceActions: "strict" });
+import MobxTutorialProvider from './components/MobxTutorialProvider';
+
+configure({ enforceActions: "always" });
 
 export interface IMobxTutorialWebPartProps {
   description: string;
 }
 
 export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTutorialWebPartProps> {
-
   public render(): void {
-    const element: React.ReactElement<IMobxTutorialProps> = React.createElement(
-      MobxTutorial,
+    const element: React.ReactElement<{}> = React.createElement(
+      MobxTutorialProvider,
       {
-        description: this.properties.description
       }
     );
 

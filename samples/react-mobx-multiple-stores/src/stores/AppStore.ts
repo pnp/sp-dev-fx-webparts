@@ -1,5 +1,5 @@
-import { RootStore } from "./rootStore";
-import { observable, action } from "mobx";
+import { RootStore } from "./RootStore";
+import { observable, action, computed } from "mobx";
 
 export enum ApplicationStatus {
     CreateList = "Create List",
@@ -14,24 +14,41 @@ export interface IFakeItem {
 
 export class AppStore {
 
-    @observable public status: ApplicationStatus = ApplicationStatus.CreateList;
-    @observable public listTitle: string = null;
-    @observable public items: IFakeItem[] = [];
+    @observable public isLoading: boolean;
+    @observable public status: ApplicationStatus;
+    @observable public listTitle: string;
+    @observable public items: IFakeItem[];
 
     constructor(private rootStore: RootStore) {
+        this.setInitialState();
     }
 
-    @action confirmListCreation(listTitle: string) {
+    @action
+    private setInitialState() {
+        this.status = ApplicationStatus.CreateList;
+        this.listTitle = null;
+        this.items = [];
+        this.isLoading = true;
+    }
+
+    @computed
+    public get appStatus(): string {
+        return `The current status is: ${this.status}`;
+    }
+
+    @action
+    public confirmListCreation(listTitle: string) {
         this.status = ApplicationStatus.CreateItems;
         this.listTitle = listTitle;
     }
 
-    @action addListItem(item: IFakeItem) {
+    @action
+    public addListItem(item: IFakeItem) {
         this.items.push(item);
     }
 
-    @action confirmItems() {
+    @action
+    public confirmItems() {
         this.status = ApplicationStatus.Completed;
     }
-
 }
