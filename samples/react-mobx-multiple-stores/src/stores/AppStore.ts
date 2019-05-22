@@ -2,6 +2,7 @@ import { RootStore } from "./RootStore";
 import { observable, action, computed } from "mobx";
 
 export enum ApplicationStatus {
+    Loading = "Loading",
     CreateList = "Create List",
     CreateItems = "Create Items",
     Completed = "Completed"
@@ -14,7 +15,8 @@ export interface IFakeItem {
 
 export class AppStore {
 
-    @observable public isLoading: boolean;
+    @observable public isLoadingConfiguration: boolean;
+    @observable public isLoadingOtherStuff: boolean;
     @observable public status: ApplicationStatus;
     @observable public listTitle: string;
     @observable public items: IFakeItem[];
@@ -28,12 +30,23 @@ export class AppStore {
         this.status = ApplicationStatus.CreateList;
         this.listTitle = null;
         this.items = [];
-        this.isLoading = true;
+        this.isLoadingConfiguration = true;
+        this.isLoadingOtherStuff = false;
     }
 
     @computed
     public get appStatus(): string {
         return `The current status is: ${this.status}`;
+    }
+
+    @computed
+    public get importantItems(): IFakeItem[] {
+        return this.items.filter(x => x.important);
+    }
+
+    @computed
+    public get isLoading(): boolean {
+        return this.isLoadingConfiguration || this.isLoadingOtherStuff;
     }
 
     @action

@@ -1,7 +1,7 @@
 declare interface IMobxTutorialWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  AppTitleFieldLabel: string;
 }
 
 declare module 'MobxTutorialWebPartStrings' {

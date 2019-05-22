@@ -5,7 +5,7 @@ import { configure } from "mobx";
 import * as strings from 'MobxTutorialWebPartStrings';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { IMobxTutorialProps } from './components/IMobxTutorialProps';
+import { RootStore } from '../../stores/RootStore';
 import MobxTutorialProvider from './components/MobxTutorialProvider';
 
 configure({ enforceActions: "always" });
@@ -15,14 +15,25 @@ export interface IMobxTutorialWebPartProps {
 }
 
 export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTutorialWebPartProps> {
+  private readonly dependencies = { rootStore: new RootStore() };
+
   public render(): void {
+
     const element: React.ReactElement<{}> = React.createElement(
       MobxTutorialProvider,
       {
+        stores: { ...this.dependencies.rootStore }
       }
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+    if (propertyPath === "Application title") {
+      const { configStore } = this.dependencies.rootStore;
+      configStore.setApplicationTitle(newValue);
+    }
   }
 
   protected onDispose(): void {
@@ -44,8 +55,8 @@ export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTuto
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('Application title', {
+                  label: strings.AppTitleFieldLabel
                 })
               ]
             }

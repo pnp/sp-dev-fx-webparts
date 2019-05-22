@@ -1,14 +1,16 @@
 import { Provider } from "mobx-react";
 import * as React from 'react';
-import { RootStore } from '../../../stores/RootStore';
 import { MobxTutorial } from './MobxTutorial';
 
-export default class MobxTutorialProvider extends React.Component<{}, {}> {
-  private readonly dependencies = { rootStore: new RootStore() };
+export type MobxTutorialProviderOwnProps = {
+  stores: {};
+};
+
+export default class MobxTutorialProvider extends React.Component<MobxTutorialProviderOwnProps, {}> {
 
   public render(): React.ReactElement<{}> {
     return (
-      <Provider {...this.dependencies.rootStore}>
+      <Provider {...this.props.stores}>
         <MobxTutorial></MobxTutorial>
       </Provider>
     );

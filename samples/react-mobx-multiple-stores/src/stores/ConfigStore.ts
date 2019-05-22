@@ -1,5 +1,5 @@
+import { action, observable } from "mobx";
 import { RootStore } from "./RootStore";
-import { observable, action, runInAction } from "mobx";
 
 export class ConfigStore {
 
@@ -13,7 +13,7 @@ export class ConfigStore {
         // Mock REST call for fetching configuration data, 5 seconds
         setTimeout(() => {
             this.loadConfigration();
-        }, 5000);
+        }, 1000);
     }
 
     @action
@@ -26,9 +26,9 @@ export class ConfigStore {
     @action
     private loadConfigration() {
         this.isLoading = false;
-        this.applicationTitle = "So cool man";
+        this.applicationTitle = "Default Application Title";
         this.allowImportantItems = true;
-        this.rootStore.appStore.isLoading = false;
+        this.rootStore.appStore.isLoadingConfiguration = false;
     }
 
     @action

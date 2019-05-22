@@ -1,5 +1,5 @@
-import { ConfigStore } from "./ConfigStore";
 import { AppStore } from "./AppStore";
+import { ConfigStore } from "./ConfigStore";
 
 export enum Stores {
     AppStore = "appStore",
@@ -9,12 +9,9 @@ export enum Stores {
 export class RootStore {
     public readonly appStore: AppStore;
     public readonly configStore: ConfigStore;
-    public readonly rootStore: RootStore;
 
     constructor() {
-        this.rootStore = this;
         this.configStore = new ConfigStore(this);
         this.appStore = new AppStore(this);
     }
-
 }
