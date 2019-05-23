@@ -26,7 +26,6 @@ export class ConfigStore {
     @action
     private loadConfigration() {
         this.isLoading = false;
-        this.applicationTitle = "Default Application Title";
         this.allowImportantItems = true;
         this.rootStore.appStore.isLoadingConfiguration = false;
     }

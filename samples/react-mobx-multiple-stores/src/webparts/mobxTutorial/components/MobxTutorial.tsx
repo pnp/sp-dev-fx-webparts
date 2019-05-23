@@ -6,6 +6,8 @@ import { ConfigStore } from '../../../stores/ConfigStore';
 import { Stores } from '../../../stores/RootStore';
 import { FakeItemContainer } from './FakeItemContainer';
 import { ProgressIndicator } from './ProgressIndicator';
+import { ListCreator } from './ListCreator';
+import styles from './MobxTutorial.module.scss';
 
 export type MobxTutorialStoreProps = {
   appStore: AppStore;
@@ -24,10 +26,23 @@ export class MobxTutorial extends React.Component<MobxTutorialProps, {}> {
       return (<Spinner size={SpinnerSize.large} label="Loading... please hodl" ariaLive="assertive" labelPosition="left" />);
 
     return (
-      <div>
-        <h1>{configStore.applicationTitle}</h1>
-        <ProgressIndicator></ProgressIndicator>
-        <FakeItemContainer></FakeItemContainer>
+      <div className={styles.mobxTutorial}>
+
+        <div className={styles.row}>
+          <div className={styles.title}>{configStore.applicationTitle}</div>
+          <ProgressIndicator></ProgressIndicator>
+        </div>
+
+        <div className={styles.row}>
+          <div className={styles.subTitle}>1) Create List</div>
+          <ListCreator></ListCreator>
+        </div>
+
+        <div className={styles.row}>
+          <div className={styles.subTitle}>2) Create Items</div>
+          <FakeItemContainer></FakeItemContainer>
+        </div>
+
       </div>
     );
   }

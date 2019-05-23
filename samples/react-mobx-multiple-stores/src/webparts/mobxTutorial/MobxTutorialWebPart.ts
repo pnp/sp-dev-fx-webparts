@@ -11,14 +11,21 @@ import MobxTutorialProvider from './components/MobxTutorialProvider';
 configure({ enforceActions: "always" });
 
 export interface IMobxTutorialWebPartProps {
-  description: string;
+  ApplicationTitle: string;
 }
 
 export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTutorialWebPartProps> {
   private readonly dependencies = { rootStore: new RootStore() };
 
-  public render(): void {
+  protected onInit() {
+    return new Promise<void>((resolve, reject) => {
+      const { configStore } = this.dependencies.rootStore;
+      configStore.setApplicationTitle(this.properties.ApplicationTitle);
+      resolve();
+    });
 
+  }
+  public render(): void {
     const element: React.ReactElement<{}> = React.createElement(
       MobxTutorialProvider,
       {
@@ -30,7 +37,7 @@ export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTuto
   }
 
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
-    if (propertyPath === "Application title") {
+    if (propertyPath === "ApplicationTitle") {
       const { configStore } = this.dependencies.rootStore;
       configStore.setApplicationTitle(newValue);
     }
@@ -55,8 +62,8 @@ export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTuto
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('Application title', {
-                  label: strings.AppTitleFieldLabel
+                PropertyPaneTextField('ApplicationTitle', {
+                  label: strings.AppTitleFieldLabel,
                 })
               ]
             }
