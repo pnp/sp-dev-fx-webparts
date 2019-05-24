@@ -21,7 +21,8 @@
     "description": { "default": "An example of a webpart using mobx for managing the application state" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "ApplicationTitle": "Mobx Tutorial Title (change in webpart properties) 😎"
+      "ApplicationTitle": "Mobx Tutorial Title (change in webpart properties) 😎",
+      "AllowImportantItems": true
     }
   }]
 }

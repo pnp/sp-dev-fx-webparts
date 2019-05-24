@@ -15,6 +15,6 @@ export type ProgressIndicatorProps = Partial<ProgressIndicatorStoreProps> & Prog
 export class ProgressIndicator extends React.Component<ProgressIndicatorProps, {}> {
     public render(): React.ReactElement<ProgressIndicatorProps> {
         const { appStore } = this.props;
-        return (<>{appStore.appStatus}</>);
+        return (<p>{appStore.appStatus}</p>);
     }
 }

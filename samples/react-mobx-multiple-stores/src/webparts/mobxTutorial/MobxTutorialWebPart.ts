@@ -1,6 +1,6 @@
 import { Version } from '@microsoft/sp-core-library';
 import { IPropertyPaneConfiguration, PropertyPaneTextField } from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart, PropertyPaneCheckbox } from '@microsoft/sp-webpart-base';
 import { configure } from "mobx";
 import * as strings from 'MobxTutorialWebPartStrings';
 import * as React from 'react';
@@ -8,10 +8,12 @@ import * as ReactDom from 'react-dom';
 import { RootStore } from '../../stores/RootStore';
 import MobxTutorialProvider from './components/MobxTutorialProvider';
 
+// State modification should always happen through actions
 configure({ enforceActions: "always" });
 
 export interface IMobxTutorialWebPartProps {
   ApplicationTitle: string;
+  AllowImportantItems: boolean;
 }
 
 export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTutorialWebPartProps> {
@@ -20,6 +22,7 @@ export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTuto
   protected onInit() {
     return new Promise<void>((resolve, reject) => {
       const { configStore } = this.dependencies.rootStore;
+      configStore.setAllowImportantItems(this.properties.AllowImportantItems);
       configStore.setApplicationTitle(this.properties.ApplicationTitle);
       resolve();
     });
@@ -37,9 +40,13 @@ export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTuto
   }
 
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+    const { configStore } = this.dependencies.rootStore;
+
     if (propertyPath === "ApplicationTitle") {
-      const { configStore } = this.dependencies.rootStore;
       configStore.setApplicationTitle(newValue);
+    }
+    else if (propertyPath === "AllowImportantItems") {
+      configStore.setAllowImportantItems(newValue);
     }
   }
 
@@ -64,6 +71,9 @@ export default class MobxTutorialWebPart extends BaseClientSideWebPart<IMobxTuto
               groupFields: [
                 PropertyPaneTextField('ApplicationTitle', {
                   label: strings.AppTitleFieldLabel,
+                }),
+                PropertyPaneCheckbox('AllowImportantItems', {
+                  text: strings.AllowImportantItemsLabel
                 })
               ]
             }

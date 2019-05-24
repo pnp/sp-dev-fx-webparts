@@ -10,7 +10,7 @@ export class ConfigStore {
     constructor(private rootStore: RootStore) {
         this.setInitialState();
 
-        // Mock REST call for fetching configuration data, 5 seconds
+        // Mock REST call for fetching configuration data
         setTimeout(() => {
             this.loadConfigration();
         }, 1000);
@@ -19,19 +19,23 @@ export class ConfigStore {
     @action
     public setInitialState(): void {
         this.isLoading = true;
+        this.allowImportantItems = true;
         this.applicationTitle = null;
-        this.allowImportantItems = false;
     }
 
     @action
     private loadConfigration() {
         this.isLoading = false;
-        this.allowImportantItems = true;
         this.rootStore.appStore.isLoadingConfiguration = false;
     }
 
     @action
     public setApplicationTitle(title: string): void {
         this.applicationTitle = title;
+    }
+
+    @action
+    public setAllowImportantItems(allow: boolean): void {
+        this.allowImportantItems = allow;
     }
 }

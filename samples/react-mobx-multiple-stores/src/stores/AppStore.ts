@@ -36,7 +36,10 @@ export class AppStore {
 
     @computed
     public get appStatus(): string {
-        return `The current status is: ${this.status}`;
+        let result: string = `The current status is '${this.status}'. `;
+        result += this.status === ApplicationStatus.CreateItems || this.items.length > 0 ? `List '${this.listTitle}' successfully created. ` : "";
+        result += this.status === ApplicationStatus.Completed ? `In total there were ${this.items.length} items added. ` : "";
+        return result + `${this.rootStore.configStore.allowImportantItems ? "" : "Adding important items is currently not allowed."}`;
     }
 
     @computed
@@ -45,7 +48,7 @@ export class AppStore {
     }
 
     @computed
-    public get isLoading(): boolean {
+    public get isInitializing(): boolean {
         return this.isLoadingConfiguration || this.isLoadingOtherStuff;
     }
 
@@ -54,6 +57,7 @@ export class AppStore {
         return new Promise<void>((resolve, reject) => {
             // Mock creating list
             setTimeout(() => {
+                // Make sure we change our state in an action. 
                 runInAction(() => {
                     this.status = ApplicationStatus.CreateItems;
                     this.listTitle = listTitle;

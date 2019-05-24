@@ -4,6 +4,8 @@ import * as React from 'react';
 import { AppStore } from "../../../stores/AppStore";
 import { Stores } from '../../../stores/RootStore';
 import { DetailedFakeItemViewer } from "./DetailedFakeItemViewer";
+import { FakeItemCreator } from "./FakeItemCreator";
+import styles from "./MobxTutorial.module.scss";
 
 export type FakeItemContainerStoreProps = {
     appStore: AppStore;
@@ -18,14 +20,27 @@ export class FakeItemContainer extends React.Component<FakeItemContainerProps, {
     public render(): React.ReactElement<FakeItemContainerProps> {
         const { appStore } = this.props;
         return (
-            <div>
-                <PrimaryButton
-                    text="Add Fake Item"
-                    onClick={() => { appStore.addListItem({ title: "dsf", important: true }); }}
-                    allowDisabledFocus={true}
-                />
-                Count items: {appStore.items.length} | Count important items: {appStore.importantItems.length}
-                <DetailedFakeItemViewer items={appStore.items}></DetailedFakeItemViewer>
+            <div className={styles.grid}>
+
+                <div className={styles.row}>
+                    <PrimaryButton
+                        text="Confirm items"
+                        onClick={() => { appStore.confirmItems(); }}
+                        className={styles.inputElement}
+                    />
+                </div>
+
+                <div className={styles.row}>
+                    <div className={`${styles.columnCreateItems}`}>
+                        <FakeItemCreator></FakeItemCreator>
+                    </div>
+
+                    <div className={`${styles.columnItemDetails}`}>
+                        <p>Count items: {appStore.items.length} | Count important items: {appStore.importantItems.length}</p>
+                        <DetailedFakeItemViewer items={appStore.items}></DetailedFakeItemViewer>
+                    </div>
+                </div>
+
             </div>
         );
     }
