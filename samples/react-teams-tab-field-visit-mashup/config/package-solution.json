@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "field-visit-demo-tab-client-side-solution",
+    "id": "67407b5b-e3eb-480a-97a3-195810f83702",
+    "version": "1.0.1.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.ReadWrite.All"
+      }
+    ],
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/field-visit-demo-tab.sppkg"
+  }
+}

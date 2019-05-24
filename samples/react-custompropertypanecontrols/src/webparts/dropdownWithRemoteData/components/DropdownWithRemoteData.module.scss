@@ -1,3 +1,5 @@
+@import '~office-ui-fabric-react/dist/sass/_References.scss';
+
 .dropdownWithRemoteData {
   .container {
     max-width: 700px;
@@ -6,7 +8,25 @@
   }
 
   .row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
     padding: 20px;
+  }
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+  }
+
+  .subTitle {
+    @include ms-font-m;
   }
 
   .listItem {

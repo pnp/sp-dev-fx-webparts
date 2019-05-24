@@ -20,7 +20,6 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties4.jpg)
 
 
-
 ## Used SharePoint Framework Version 
 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)

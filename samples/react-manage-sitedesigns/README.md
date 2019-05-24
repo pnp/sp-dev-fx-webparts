@@ -85,7 +85,6 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-manage-sitedesigns/assets/screen17.jpg)  
 
 
- 
 
 
 
@@ -127,14 +126,12 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repository
+- Move to sample folder
 - in the command line run:
   - `npm install`
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - `Add to AppCatalog and deploy`
-
-
-
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-sitedesigns" />
