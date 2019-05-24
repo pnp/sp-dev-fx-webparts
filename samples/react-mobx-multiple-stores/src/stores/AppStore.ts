@@ -2,7 +2,6 @@ import { action, computed, observable, runInAction } from "mobx";
 import { RootStore } from "./RootStore";
 
 export enum ApplicationStatus {
-    Loading = "Loading",
     CreateList = "Create List",
     CreateItems = "Create Items",
     Completed = "Completed"
@@ -69,8 +68,18 @@ export class AppStore {
     }
 
     @action
-    public addListItem(item: IFakeItem): void {
-        this.items.push(item);
+    public async addListItem(item: IFakeItem): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
+            // Mock adding item a new item
+            setTimeout(() => {
+                // Make sure we change our state in an action. 
+                runInAction(() => {
+                    this.items.push(item);
+                    resolve();
+                });
+
+            }, 500);
+        });
     }
 
     @action

@@ -3,12 +3,12 @@ import * as React from 'react';
 import { AppStore } from "../../../stores/AppStore";
 import { Stores } from '../../../stores/RootStore';
 
-export type ProgressIndicatorStoreProps = {
+type ProgressIndicatorStoreProps = {
     appStore: AppStore;
 };
 
-export type ProgressIndicatorOwnProps = {};
-export type ProgressIndicatorProps = Partial<ProgressIndicatorStoreProps> & ProgressIndicatorOwnProps;
+type ProgressIndicatorOwnProps = {};
+type ProgressIndicatorProps = Partial<ProgressIndicatorStoreProps> & ProgressIndicatorOwnProps;
 
 @inject(Stores.AppStore)
 @observer

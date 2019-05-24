@@ -7,12 +7,12 @@ import { AppStore } from '../../../stores/AppStore';
 import { Stores } from "../../../stores/RootStore";
 import styles from './MobxTutorial.module.scss';
 
-export type ListCreatorStoreProps = {
+type ListCreatorStoreProps = {
     appStore: AppStore;
 };
 
-export type ListCreatorProps = Partial<ListCreatorStoreProps>;
-export type ListCreatorState = {
+type ListCreatorProps = Partial<ListCreatorStoreProps>;
+type ListCreatorState = {
     loading: boolean;
     errorMessage: string;
     listTitle: string;
@@ -31,23 +31,25 @@ export class ListCreator extends React.Component<ListCreatorProps, ListCreatorSt
         const spinner = (<Spinner size={SpinnerSize.xSmall} label="Creating list ..." labelPosition="right" />);
 
         return (
-            <div className={styles.row}>
-                <TextField
-                    label="List title"
-                    errorMessage={this.state.errorMessage}
-                    onChange={this._onChangeListTitle}
-                    value={this.state.listTitle}
-                    disabled={this.state.loading}
-                    required
-                />
+            <div className={styles.grid}>
+                <div className={styles.row}>
+                    <TextField
+                        label="List title"
+                        errorMessage={this.state.errorMessage}
+                        onChange={this._onChangeListTitle}
+                        value={this.state.listTitle}
+                        disabled={this.state.loading}
+                        required
+                    />
 
-                <PrimaryButton
-                    onClick={() => this.createList()}
-                    disabled={this.state.loading}
-                    className={styles.inputElement}
-                >
-                    {this.state.loading ? spinner : "Create List"}
-                </PrimaryButton>
+                    <PrimaryButton
+                        onClick={() => this.createList()}
+                        disabled={this.state.loading}
+                        className={styles.inputElement}
+                    >
+                        {this.state.loading ? spinner : "Create List"}
+                    </PrimaryButton>
+                </div>
             </div>
         );
     }

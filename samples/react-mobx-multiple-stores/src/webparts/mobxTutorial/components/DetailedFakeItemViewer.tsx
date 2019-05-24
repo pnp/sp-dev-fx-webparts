@@ -3,7 +3,7 @@ import { DetailsList, DetailsListLayoutMode, IColumn } from 'office-ui-fabric-re
 import * as React from 'react';
 import { IFakeItem } from '../../../stores/AppStore';
 
-export type DetailedFakeItemViewerProps = {
+type DetailedFakeItemViewerProps = {
     items: IFakeItem[];
 };
 

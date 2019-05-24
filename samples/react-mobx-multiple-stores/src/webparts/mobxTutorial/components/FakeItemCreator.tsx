@@ -8,27 +8,27 @@ import { Stores } from '../../../stores/RootStore';
 import styles from "./MobxTutorial.module.scss";
 import { ConfigStore } from "../../../stores/ConfigStore";
 
-export type FakeItemCreatorStoreProps = {
+type FakeItemCreatorStoreProps = {
     appStore: AppStore;
     configStore: ConfigStore;
 };
 
-export type FakeItemCreatorOwnProps = {
-};
+type FakeItemCreatorOwnProps = {};
 
-export type FakeItemCreatorState = {
+type FakeItemCreatorState = {
     itemTitle: string;
     isImportant: boolean;
     requiredTitle: string;
+    isLoading: boolean;
 };
 
-
-export type FakeItemCreatorProps = Partial<FakeItemCreatorStoreProps> & FakeItemCreatorOwnProps;
+type FakeItemCreatorProps = Partial<FakeItemCreatorStoreProps> & FakeItemCreatorOwnProps;
 
 const initialState: FakeItemCreatorState = {
     itemTitle: "",
     isImportant: false,
-    requiredTitle: undefined
+    requiredTitle: undefined,
+    isLoading: false
 };
 
 @inject(Stores.AppStore, Stores.ConfigurationStore)
@@ -39,8 +39,7 @@ export class FakeItemCreator extends React.Component<FakeItemCreatorProps, FakeI
     public render(): React.ReactElement<FakeItemCreatorProps> {
         const { configStore } = this.props;
         return (
-            <div className={styles.row}>
-
+            <>
                 <TextField
                     label="Title"
                     errorMessage={this.state.requiredTitle}
@@ -59,24 +58,28 @@ export class FakeItemCreator extends React.Component<FakeItemCreatorProps, FakeI
                 />
 
                 <DefaultButton
-                    onClick={this._onAddFakeItem}
+                    onClick={() => this._onAddFakeItem()}
                     iconProps={{ iconName: 'Add' }}
                     allowDisabledFocus={true}
                     className={styles.inputElement}
-                >Add</DefaultButton>
-
-            </div>
+                    disabled={this.state.isLoading}
+                >{this.state.isLoading ? "Adding..." : "Add"}</DefaultButton>
+            </>
         );
     }
 
-    private _onAddFakeItem = (): void => {
+    private async _onAddFakeItem(): Promise<void> {
         if (this.state.itemTitle === "" && this.state.itemTitle.length === 0) {
             this.setState({ ...this.state, requiredTitle: "Required" });
             return;
         }
 
         const { appStore, configStore } = this.props;
-        appStore.addListItem({ title: this.state.itemTitle, important: configStore.allowImportantItems && this.state.isImportant });
+        this.setState({ ...this.state, isLoading: true });
+        await appStore.addListItem({
+            title: this.state.itemTitle,
+            important: configStore.allowImportantItems && this.state.isImportant
+        });
         this.setState(initialState);
     }
 

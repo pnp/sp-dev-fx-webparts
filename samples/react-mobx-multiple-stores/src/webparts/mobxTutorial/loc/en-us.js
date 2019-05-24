@@ -1,8 +1,8 @@
-define([], function() {
+define([], function () {
   return {
     "PropertyPaneDescription": "Application configuration",
-    "BasicGroupName": "Group Name",
-    "AppTitleFieldLabel": "Application Title Field",
+    "BasicGroupName": "Global Settings",
+    "AppTitleFieldLabel": "Application Title",
     "AllowImportantItemsLabel": "Allow important items"
   }
 });

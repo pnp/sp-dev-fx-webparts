@@ -2,7 +2,7 @@ import { Provider } from "mobx-react";
 import * as React from 'react';
 import { MobxTutorial } from './MobxTutorial';
 
-export type MobxTutorialProviderOwnProps = {
+type MobxTutorialProviderOwnProps = {
   stores: {};
 };
 

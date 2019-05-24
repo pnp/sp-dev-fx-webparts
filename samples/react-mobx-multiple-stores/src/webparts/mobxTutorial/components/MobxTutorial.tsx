@@ -4,6 +4,7 @@ import * as React from 'react';
 import { ApplicationStatus, AppStore } from '../../../stores/AppStore';
 import { ConfigStore } from '../../../stores/ConfigStore';
 import { Stores } from '../../../stores/RootStore';
+import { DetailedFakeItemViewer } from './DetailedFakeItemViewer';
 import { FakeItemContainer } from './FakeItemContainer';
 import { ListCreator } from './ListCreator';
 import styles from './MobxTutorial.module.scss';
@@ -37,14 +38,20 @@ export class MobxTutorial extends React.Component<MobxTutorialProps, {}> {
             <div className={styles.subTitle}>1) Create List</div>
             <ListCreator></ListCreator>
           </div>
-          :
-          null
+          : null
         }
 
         {appStore.status === ApplicationStatus.CreateItems ?
           <div className={styles.row}>
             <div className={styles.subTitle}>2) Create Items</div>
             <FakeItemContainer></FakeItemContainer>
+          </div>
+          : null
+        }
+
+        {appStore.status === ApplicationStatus.Completed ?
+          <div className={styles.row}>
+            <DetailedFakeItemViewer items={appStore.items}></DetailedFakeItemViewer>
           </div>
           :
           null
