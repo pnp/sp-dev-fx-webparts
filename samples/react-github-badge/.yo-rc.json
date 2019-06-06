@@ -1,8 +1,8 @@
 {
   "@microsoft/generator-sharepoint": {
-    "isCreatingSolution": true,
+    "isCreatingSolution": false,
     "environment": "spo",
-    "version": "1.8.1",
+    "version": "1.8.2",
     "libraryName": "react-github-badge",
     "libraryId": "566f9f40-96ac-41b6-bf11-a1f4675dc838",
     "packageManager": "npm",

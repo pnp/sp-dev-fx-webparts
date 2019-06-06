@@ -9,10 +9,20 @@
           "manifest": "./src/webparts/gitHubBadge/GitHubBadgeWebPart.manifest.json"
         }
       ]
+    },
+    "git-hub-badge-v-2-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/gitHubBadgeV2/GitHubBadgeV2WebPart.js",
+          "manifest": "./src/webparts/gitHubBadgeV2/GitHubBadgeV2WebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "GitHubBadgeWebPartStrings": "lib/webparts/gitHubBadge/loc/{locale}.js"
+    "GitHubBadgeWebPartStrings": "lib/webparts/gitHubBadge/loc/{locale}.js",
+    "GitHubBadgeV2WebPartStrings": "lib/webparts/gitHubBadgeV2/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }
