@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "dd21a307-fd9f-4fef-8d9f-d8abcb83b814",
+  "alias": "BubbleChartDemoWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+
+    "title": { "default": "Bubble Chart" },
+    "description": { "default": "Demonstrates how to use bubble charts" },
+    "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAcCAYAAAATFf3WAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAO3QAADt0BKvL0UAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARcSURBVFiF7Zh/SKN1HMffcw43vXM2/9C5sJhyxoyJNg1s5jkOpEKzKeIho4H/mDgcYnj+ERSoRafpdQYFlwaHYDjxSJyxzCRNGUuW4hy7cj8YrtJukT8677z89Iduzcdn3q7YKOgNDzzf7+fD5/N6ns/3+X6+PBycVg2A1wFkA+Cw2KMhAvA9gKsAxkINTIDnAcwAuA7gp5ig/aV0ADoAFwHMh3N6H8BqjIDYtArgWuhEHMPhMQAHgUF/f/+1lpaWOYvFIo0BHI5zi0InmIAn5HK5FAaD4dnd3V15VLEeQTcBWAMDi8UinZ2dfSWG+a3HDEHFn+VdWFjoBOCMJtHDdGaJ/w36H/Cf6r8NSESSlZWV6zab7W0iEsYK6iwFtxkiSpuamvohPT2dsrOzaXFx8Tsi4kc5/6ltJiygw+G4IpPJCEeNnKqqqu7t7+9fijVg2BLz+XyfRCIJtj2ZTPZ7QkLCnSjCsYp5mrkJ4GkA+UTEtVqtUxMTE0UbGxuJNpsNqampXpVK9bFer+8+K6jRaMw3m811Ozs75+VyuUWr1Q5FyGPF0YFBE87hRKvzer2iiooKN47LDIDS0tLuDQ4OXg4XYGhoSJ2fn/9zwD85OfmPzs7OTx4BMLI1CAAGg+FVLpcbhAtcOp0u7Bupr6//lukvEokOxsbGIunpka9BAEhMTNzn8Xin5rlc7v3A/ebmptJut3+5vr7+GhGl2u32p5j+fr8/3mazKSIAPCVWQCLiarXaWz09PW81NDTcDrXl5OT8Vlxc/Glg7PF4buTl5anMZvMbAM6JxWLWD0ksFm/9HUDW04zL5XrcZDK95PP54nNzcwdbW1uFKysraTweD+Xl5bba2tqZgG9CQsKeQqGARCJ5AGC7tLR03GQytRwcBDcAVFdXr6pUqqGQ+PyRkZHO9fV1qUKhMDU2Nn4YKXBwDer1+jfVavXI5ORkY1JSUnA9ZWVl3Xc4HMEyzs3NXV5YWPh8a2vrIgAQUXxvb+87arV6ubKy0tnc3Dw+PT0tC03S3d19NS4ujgBQRkbG3dHR0ReOTZGdB4mI39HRka1UKj8TCoVeoVB4sLe3xwOAlJSUuwKBYBsAhoeHX9ZoNDfcbndiU1PTeQDPcTicBwCuHF8AgIGBgRPxnU5n1uHhIQDA5/PxvV5vPoApNhbWNbi0tPTk/Px8hd/vv6RUKud0Ot1HRUVF2yUlJXfq6urey8zM9AGAx+MpcLvdiQCwtrZ2gYgEjAeNI6JTL6GwsPALiUSyDwBlZWVeuVx+i42DTcESO53OJ4go+AkTkYiIkkOdZ2ZmcjQazXJBQcFuV1fXB8xg7e3txra2tq/ZEhkMhhf7+vo6GOV/aIl/BcADAKlU6gk1cDgcPzOJSqVyENEzAFI4HM4vTLtAIFgmonNsgDU1NUYARsY0D8CJPMxWVwLgKwADAH5kCxxFiQE0AygF8E1gku3XhhpHvz4uhLFHQwTgNoB3AYyHGv4Ec4GuEtcWUi8AAAAASUVORK5CYII=",
+    "properties": {
+      "description": "Bubble Chart"
+    }
+  }]
+}

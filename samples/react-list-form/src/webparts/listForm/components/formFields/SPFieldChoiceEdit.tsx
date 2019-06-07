@@ -9,25 +9,24 @@ const SPFieldChoiceEdit: React.SFC<ISPFormFieldProps> = (props) => {
     if (props.fieldSchema.FieldType !== 'MultiChoice') {
         const options = (props.fieldSchema.Required) ? props.fieldSchema.Choices : [''].concat(props.fieldSchema.Choices);
         return <Dropdown
-                    className={css(styles.dropDownFormField, 'ard-choiceFormField')}
-                    options = {options.map( (option: string) => ({key: option, text: option}) )}
-                    selectedKey = {props.value}
-                    onChanged={ (item) => props.valueChanged( item.key.toString() )  }
-                />;
+            className={css(styles.dropDownFormField, 'ard-choiceFormField')}
+            options={options.map((option: string) => ({ key: option, text: option }))}
+            selectedKey={props.value}
+            onChanged={(item) => props.valueChanged(item.key.toString())}
+        />;
     } else {
         const options = props.fieldSchema.MultiChoices;
         const values = props.value ? props.value.split(';#').filter((s) => s) : [];
         return <Dropdown
-                    title = {JSON.stringify(props.fieldSchema) + props.value}
-                    className={css(styles.dropDownFormField, 'ard-multiChoiceFormField')}
-                    options = {options.map( (option: string) => ({key: option, text: option}) )}
-                    selectedKeys = {values}
-                    multiSelect
-                    onChanged={ (item) => props.valueChanged( getUpdatedValue(values, item) )  }
-                />;
+            title={JSON.stringify(props.fieldSchema) + props.value}
+            className={css(styles.dropDownFormField, 'ard-multiChoiceFormField')}
+            options={options.map((option: string) => ({ key: option, text: option }))}
+            selectedKeys={values}
+            multiSelect
+            onChanged={(item) => props.valueChanged(getUpdatedValue(values, item))}
+        />;
     }
 };
-
 
 function getUpdatedValue(oldValues: string[], changedItem: IDropdownOption): string {
     const changedKey = changedItem.key.toString();
@@ -42,6 +41,5 @@ function getUpdatedValue(oldValues: string[], changedItem: IDropdownOption): str
     }
     return newValues.join(';#');
 }
-
 
 export default SPFieldChoiceEdit;

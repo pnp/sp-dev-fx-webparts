@@ -8,6 +8,7 @@ import { DefaultButton, PrimaryButton, IButtonProps, ActionButton } from 'office
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Guid } from '@microsoft/sp-core-library';
 import MembersPicker from './MembersPicker';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 export default class SuggestedTeamMembers extends React.Component<ISuggestedTeamMembersProps, ISuggestedTeamMembersState> {
 
@@ -15,16 +16,39 @@ export default class SuggestedTeamMembers extends React.Component<ISuggestedTeam
     super(props);
 
     this.state = {
-      people: []
+      loading: true,
+      people: [],
+      userIsGroupOwner: false
     };
   }
 
   public componentDidMount(): void {
-    this._getMyPeople().then(people => {
-      this.setState({
-        people: people
-      });
+    this._userIsOwner().then(isOwner => {
+      if (!isOwner) {
+        this.setState({
+          loading: false,
+          userIsGroupOwner: false
+        });
+      } else {
+        this._getMyPeople().then(people => {
+          this.setState({
+            loading: false,
+            people: people,
+            userIsGroupOwner: true
+          });
+        });
+      }
     });
+  }
+
+  private async _userIsOwner(): Promise<boolean> {
+    const query: string = `v1.0/me/ownedObjects?$filter=id eq '${this.props.groupId}'`;
+
+    const response: GraphHttpClientResponse = await this.props.graphHttpClient.get(
+      query,
+      GraphHttpClient.configurations.v1);
+
+    return response.ok;
   }
 
   private async _getMyPeople(): Promise<IPerson[]> {
@@ -51,17 +75,29 @@ export default class SuggestedTeamMembers extends React.Component<ISuggestedTeam
 
   public render(): React.ReactElement<ISuggestedTeamMembersProps> {
 
-    if (this.state.people == null || this.state.people.length === 0) {
+    let title: string = '';
+    if (this.state.loading) {
       return <div>Loading data...</div>;
     }
 
+    if (!this.state.userIsGroupOwner) {
+      return <MessageBar messageBarType={MessageBarType.error} isMultiline={false}>You are not Owner of this Group</MessageBar>;
+    }
+
+    if (this.props.teamsContext) {
+      title = 'Team: ' + this.props.teamsContext.teamName;
+    } else {
+      title = 'Group: ' + this.props.groupId;
+    }
+
+    const headerTitle = "These are suggested members to add to the " + title + "...";
     return <div className={styles.suggestedTeamMembers}>
-      <p>These are suggested members to add to the group...</p>
-      <MembersPicker
-        people = {this.state.people}
-        groupId = {this.props.groupId}
-        graphHttpClient={this.props.graphHttpClient}
-      />
-    </div>;
+            <p>{headerTitle}</p>
+            <MembersPicker
+              people = {this.state.people}
+              groupId = {this.props.groupId}
+              graphHttpClient={this.props.graphHttpClient}
+            />
+          </div>;
   }
 }

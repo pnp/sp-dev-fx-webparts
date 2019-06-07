@@ -1,0 +1,26 @@
+@import "../PropertyPaneFilePicker.module.scss";
+
+.localTabSinglePreview {
+  margin-bottom: 20px;
+}
+
+.localTabSinglePreviewImage {
+  display: block;
+  max-width: 100%;
+  max-height: 220px;
+  image-orientation: from-image;
+}
+
+.localTabLabel {
+  color: $ms-color-themePrimary;
+  cursor: pointer;
+}
+
+.localTabInput {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}

@@ -1,7 +1,7 @@
 import { ListItem } from "./ListItem";
-import { IListServce } from "./IListService";
+import { IListService } from "./IListService";
 
-export class ListMock implements IListServce {
+export class ListMock implements IListService {
 
     public getAll(): Promise<Array<ListItem>> {
       return new Promise<Array<ListItem>>((resolve:any) => {

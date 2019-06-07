@@ -1,0 +1,68 @@
+{
+    "rules": {
+      "export-name": false,
+      "no-duplicate-switch-case": true,
+      "no-function-expression": false,
+      "no-use-before-declare": true,
+      "prefer-const": true,
+      "member-ordering": [false],
+      "no-constant-condition": [false],
+
+      "class-name": false,
+      "forin": false,
+      "label-position": false,
+      "label-undefined": false,
+      "member-access": true,
+      "no-arg": true,
+      "no-console": [true, "log", "error"],
+      "no-construct": true,
+      "no-duplicate-variable": true,
+      "no-eval": true,
+      "no-internal-module": true,
+      "no-shadowed-variable": true,
+      "no-switch-case-fall-through": true,
+      "no-unused-expression": true,
+      "no-unused-variable": false,
+      "semicolon": [true, "always"],
+      "typedef": [true, "call-signature", "parameter", "member-variable-declaration", "property-declaration"],
+      "typedef-whitespace": [
+        false,
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        },
+        {
+          "call-signature": "onespace",
+          "index-signature": "onespace",
+          "parameter": "onespace",
+          "property-declaration": "onespace",
+          "variable-declaration": "onespace"
+        }
+      ],
+      "variable-name": false,
+      "whitespace": [false],
+      "comment-format": [false, "check-space"],
+      "curly": true,
+      "indent": [false],
+      "interface-name": [true, "always-prefix"],
+      "max-line-length": [true, 150],
+      "no-any": false,
+      "no-bitwise": true,
+      "no-consecutive-blank-lines": false,
+      "no-debugger": true,
+      "no-empty": true,
+      "no-null-keyword": false,
+      "no-string-literal": true,
+      "no-trailing-whitespace": false,
+      "no-var-keyword": true,
+      "one-line": [true, "check-open-brace"],
+      "quotemark": [false, "double", "jsx-double", "avoid-escape"],
+      "radix": false,
+      "triple-equals": true,
+      "trailing-comma": [false, {"multiline": "never", "singleline": "never"}],
+      "object-literal-sort-keys": false
+    }
+}

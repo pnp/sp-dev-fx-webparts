@@ -1,0 +1,36 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.publicUnjoinedTeams {
+  .title {
+    @include ms-font-xl;
+    color: "[theme: neutralSecondary, default: #80539D]";
+    margin-bottom: 15px;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .row {
+    @include ms-Grid-row;
+    padding: 4px 15px;
+  }
+
+  button:disabled {
+    background-color: $ms-color-neutralLight;
+    color: $ms-color-black;
+    cursor: auto;
+  }
+
+  button {
+    text-decoration: none;
+    height: 30px;
+    min-width: 65px;
+    background-color: $ms-color-themePrimary;
+    border: none;
+    color: $ms-color-white;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "GraphClientId": "",
+    "GraphClientSecret": "",
+    "TenantId": "",
+    "TenantUrl": "https://contoso.sharepoint.com",
+    "BirthdayListTitle": "Birthdays"
+  }
+}

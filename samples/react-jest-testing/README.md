@@ -62,7 +62,7 @@ The sample uses SPFx web part, but the same setup applies for SPFx extensions an
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.6.0-green.svg)
+![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
 
 ## Applies to
 
@@ -87,6 +87,7 @@ Version|Date|Comments
 0.0.1|May 9, 2018 | Initial commit
 0.0.2|June 12, 2018 | Update to 1.5.0, missing launch.json added
 0.0.3|September 27, 2018 | Update to 1.6.0
+0.0.4|December 10, 2018 | Update to 1.7.0
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

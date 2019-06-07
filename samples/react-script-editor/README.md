@@ -7,29 +7,32 @@ Script Editor Web Part, and allows you do drop arbitrary script or html on a mod
 
 > Notice. All client-side web parts are deployed or enabled to be available in site level by tenant administrator using tenant app catalog. If there are concerns on enabling script options in a tenant, this web part or a approach should not be approved by tenant administrators.
 
-As an example add the following scripts to the web part in order to show weather info on your page. First *jQuery* is loaded, then the *simpleWeather* extension, and finally the last script block is executed to show the weather.
+As an example add the following scripts to the web part in order to show stock ticker info on your page. First *tv.js* is loaded, and then the script block is executed to show the ticker information.
 
 ```html
-<div id="weather"></div>
-<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
-<script>
-  jQuery.simpleWeather({
-	location: 'Oslo, Norway',
-	woeid: '',
-	unit: 'c',
-	success: function(weather) {
-	  html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
-	  html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
-	  html += '<li>'+weather.currently+'</li></ul>';
-  
-	  jQuery("#weather").html(html);
-	},
-	error: function(error) {
-	  jQuery("#weather").html('<p>'+error+'</p>');
-	}
-  });
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div id="tradingview_ab4e5"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-MSFT/" rel="noopener" target="_blank"><span class="blue-text">MSFT chart</span></a> by TradingView</div>
+</div>
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+<script type="text/javascript">
+    new TradingView.widget({
+        "width": 400,
+        "height": 200,
+        "symbol": "NASDAQ:MSFT",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "Light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_ab4e5"
+    });
 </script>
+<!-- TradingView Widget END -->
 ```
 
 The web part works by loading each script in a `<script src>` tag sequentially in the order they are specified, then any other `<script>` block is executed.
@@ -115,11 +118,9 @@ Version|Date|Comments
   - `gulp serve`
 
 ### Deploy
-* Set CDN path in config\write-manifest.json to where you want to host the web part
-	* E.g.:  https://&lt;tenant&gt;.sharepoint.com/sites/CDN/SiteAssets/SPFx/&lt;partname&gt;
-* gulp --ship
+* gulp clean
+* gulp bundle --ship
 * gulp package-solution --ship
-* Copy contents of temp\deploy to the CDN folder
 * Upload .sppkg file from sharepoint\solution to your tenant App Catalog
 	* E.g.: https://&lt;tenant&gt;.sharepoint.com/sites/AppCatalog/AppCatalog
 * Add the web part to a site collection, and test it on a page

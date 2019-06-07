@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "eeadd4a5-4787-4d86-a606-17271bcfe81b",
+  "alias": "DynamicDataCallableWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Dynamic Data Callable" },
+    "description": { "default": "Demonstrates how to create a dynamic data callable web part with a chart" },
+    "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAYAAADj79JYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNWRHWFIAAASXSURBVHhe7ZxJqB1FFIafBlw44MaFCIoLiYqoGxEcgkNC1EV04Yw4gSIKGlSSjUiCLpIoDiQxEnBAUMEJdKEiTiGKIooQUCMuRBxAd84gKvr/8R0oD+ferq6uern9+D/4eLzb3ae7/wt1q6ure04IIYQQQgghhBCLnWvgk/Az+BP8GX4On4ZXQVGJk+EH8J8Od8IToBjAGhiFO82boSjgDhgFmuNqKHpwCoyC7KOalx58CKMQ+/g2FBmwNxIFWOLlUHTwFIzCK/FZKDpgPzsKr8RvoeiAFzVReKWKDr6HUXAl/gZFB6/BKLwS34Oig00wCq/Eh6Ho4DIYhVfi9VBk8CaMAuwjB7xEJmfCKMQ+roKiB0Pa8gehKOBWGAU6TY0UDoTjIbtgFG4qb0CcD0UlzobPQR/0Y/AkKBrhAz8Riob4wC+FoiE+8PVQNMQH/gwU/3Hw/N+q+MD/gPvDMWDHfNSe/+pyBPwBPrLnv4qkYZtjGTOx420R+G3Q6m/nB7Wwoqk74Biw420ROLkF2j628YMaWEHv6XDWsWNtFTi5Edp+tvCDoVgx7xtw1rFjbRk4uQHavgaPK1mhyKvhLGPHaYHv11COKdn+7oPFWJHIr+ABcFax47TA02Nv7T2wiKhY6gtwVrFj3BuBPwqL8IVeDj4r/jancCHcAF+B30HOT/8UPgGvhDnY8VngSxrKttv2Vxw2sSImr64+cp9R/nDU4FT4KvT1vTnz023d1j+aD0Db16CwiRUy7XL2S+iX8a7REDhO42t2OW1+uq3TMvD0TlmVq04rZlrgx8IfoV/ONv1A2Je0a9XXSXedbHmrwNdB20e1S3wraKYDNitgNFXua5jbzpILoK9BefV2CTwGLoUXwfthtG7UvNiyFoGvhVa/6niKFTX9CNnR8F3o16MvweNgF+/DdLs/Ib+ESZwD/STUaH66LWsR+OGQ0wSbD175wA3OuvLrmuxpXAujpoZDBH79aWEby6HfbqHnpx80/7cq/qQmBU5ugn791L8gw+eYAwd+zoKcU56u02cQ6F6Ybrso5qenJ0SnBU6Wwejmc65ss3M5D6bbLor56ekJ0a7ADbbdW+Hf0NeYJn8gczkM+u1Hjz+h3MCNQ+Cd8Avoa0WyN5LLodBvvy8cNf6E+gaeciTkY+Ob4aSrSXb9clkJ0205BDBazoUvwvSEKLt6XFaLx2Fan/3sXO6G6bbPw9HBrtUnMD2RyN2QXb2hRDN32c/uIupOjm7OTMlkTm4zFH55aU1e1LCfPYnT4K8w3WYMd6D+x5DpynfBIVwBo7rsZ7P5Ym+EP5Bss30zYo7q0fMaE/LZ/x7C7TCqmyPfgjEqajxyUmPqhL9yzHF0Ydd8qOo6OJQz4Fswqp/6Ojwejg7eHotOqMSajw1yRsBDkCORv0DW/wbyFVAXw9Eylgdj95n/O3pqPvr9OxQd6OUGC4xe37HA8N2EUXgl6gU1GegVTHuBj2EUYB/fgSKTGpf2fKOn6MFGGAWZI+/oiAJKQtdjhANh85LTpnPyDt/oKSqh11kLIYQQQgghhBBCCCGEEELMLnNz/wIB5HIsRa7e4QAAAABJRU5ErkJggg==",
+    "properties": {
+      "repoOwner": "SharePoint",
+      "repo": "sp-dev-fx-webparts"
+    }
+  }]
+}

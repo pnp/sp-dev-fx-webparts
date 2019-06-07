@@ -3,7 +3,7 @@
 ## Summary
 This sample shows how read and update a custom Schema extension in MS Graph to Tag a Team using metadata from a specific TermSet in SharePoint. The user can select different Terms (up to 3), and are saved as a custom Schema extension in Group Graph entity. Besides, the webpart allows to find other Teams tagged wit the same Tag (for demo puposes only 1st Tag is used to run the query)
 
-![Custom Schema Extension Webpart](./assets/webpart.jpg)
+![Custom Schema Extension Webpart](./assets/webpart.JPG)
 
 ## Used SharePoint Framework Version
 
@@ -90,3 +90,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * How to filter Graph data using a custom Schema Extension
 * Using async / await for the async calls
 * Office UI fabric components
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-tagging" />

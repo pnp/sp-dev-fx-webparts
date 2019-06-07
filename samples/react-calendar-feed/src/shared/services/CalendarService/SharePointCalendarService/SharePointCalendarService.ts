@@ -5,7 +5,7 @@ import { HttpClientResponse } from "@microsoft/sp-http";
 import { ICalendarService } from "..";
 import { BaseCalendarService } from "../BaseCalendarService";
 import { ICalendarEvent } from "../ICalendarEvent";
-import { Web, sp } from "@pnp/sp";
+import { Web } from "@pnp/sp";
 import { combine } from "@pnp/common";
 
 export class SharePointCalendarService extends BaseCalendarService

@@ -286,7 +286,6 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
       events } = this.state;
     const isEditMode: boolean = this.props.displayMode === DisplayMode.Edit;
 
-    console.log("EVENTS", events);
     return (<div>
       <div>
         <div role="application">

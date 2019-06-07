@@ -22,6 +22,7 @@ define([], function() {
     "DateRangeOptionQuarter": "Next quarter",
     "UseCORSFieldLabel": "Use proxy",
     "UseCORSFieldCallout": "Enable this option if you get a CORS message",
+    "UseCORSFieldCalloutDisabled": "This option is disabled when using the Mock provider",
     "CORSOn": "On",
     "CORSOff": "Off",
     "AdvancedGroupName": "Advanced",
@@ -51,6 +52,7 @@ define([], function() {
     "AddToCalendarAriaLabel": "Press enter to download the calendar file to your device.",
     "AddToCalendarButtonLabel": "Add to my calendar",
     "AllDayDateFormat": "dddd, MMMM Do YYYY",
-    "LocalizedTimeFormat": "llll"
+    "LocalizedTimeFormat": "llll",
+    "FeedSettingsGroupName": "Calendar feed"
   }
 });

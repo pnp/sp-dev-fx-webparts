@@ -21,16 +21,19 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     public async render(): Promise<void> {
         if (this.displayMode == DisplayMode.Read) {
             if (this.properties.removePadding) {
-                this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "0";
-                this.domElement.parentElement.parentElement.parentElement.style.paddingBottom = "0";
-                this.domElement.parentElement.parentElement.parentElement.style.marginTop = "0";
-                this.domElement.parentElement.parentElement.parentElement.style.marginBottom = "0";
-            } else {
-                this.domElement.parentElement.parentElement.parentElement.style.paddingTop = "";
-                this.domElement.parentElement.parentElement.parentElement.style.paddingBottom = "";
-                this.domElement.parentElement.parentElement.parentElement.style.marginTop = "";
-                this.domElement.parentElement.parentElement.parentElement.style.marginBottom = "";
-
+                let element = this.domElement.parentElement;
+                // check up to 5 levels up for padding and exit once found
+                for (let i = 0; i < 5; i++) {
+                    const style = window.getComputedStyle(element);
+                    const hasPadding = style.paddingTop !== "0px";
+                    if (hasPadding) {
+                        element.style.paddingTop = "0px";
+                        element.style.paddingBottom = "0px";
+                        element.style.marginTop = "0px";
+                        element.style.marginBottom = "0px";
+                    }
+                    element = element.parentElement;
+                }
             }
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
@@ -118,7 +121,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         return elem.nodeName && elem.nodeName.toUpperCase() === name.toUpperCase();
     }
 
-
     // Finds and executes scripts in a newly added element's body.
     // Needed since innerHTML does not run scripts.
     //
@@ -162,11 +164,17 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             window["define"].amd = null;
         }
 
+
         for (let i = 0; i < urls.length; i++) {
             try {
-                await SPComponentLoader.loadScript(urls[i], { globalExportsName: "ScriptGlobal" });
+                let scriptUrl = urls[i];
+                const prefix = scriptUrl.indexOf('?') === -1 ? '?' : '&';
+                scriptUrl += prefix + 'cow=' + new Date().getTime();
+                await SPComponentLoader.loadScript(scriptUrl, { globalExportsName: "ScriptGlobal" });
             } catch (error) {
-                console.error(error);
+                if (console.error) {
+                    console.error(error);
+                }
             }
         }
         if (oldamd) {

@@ -1,4 +1,4 @@
-import { DateRange } from "../../shared/services/CalendarService";
+import { DateRange, CalendarServiceProviderType } from "../../shared/services/CalendarService";
 
 /**
  * Web part properties stored in web part configuration
@@ -6,7 +6,7 @@ import { DateRange } from "../../shared/services/CalendarService";
 export interface ICalendarFeedSummaryWebPartProps {
     title: string; // title of the web part
     feedUrl: string; // the URL where to get the feed from
-    feedType: string; // the type of feed provider
+    feedType: CalendarServiceProviderType; // the type of feed provider
     maxEvents: number; // maximum number of events
     dateRange: DateRange; // date range to retrieve events
     useCORS: boolean; // use CORS proxy when retrieving events

@@ -25,10 +25,10 @@ export default class NumberFormField extends React.Component<INumberFormFieldPro
       <TextField
         {...this.props}
         className='NumberFormField'
-        label={ this.props.label }
+        label={this.props.label}
         value={value}
-        onChanged={ this.props.valueChanged }
-        onGetErrorMessage={ this._validateNumber }
+        onChanged={this.props.valueChanged}
+        onGetErrorMessage={this._validateNumber}
       />
     );
   }
@@ -40,13 +40,12 @@ export default class NumberFormField extends React.Component<INumberFormFieldPro
   }
 
   private parseNumber(value, locale = navigator.language) {
-    const decimalSperator = Intl.NumberFormat(locale).format(1.1).charAt( 1 );
+    const decimalSperator = Intl.NumberFormat(locale).format(1.1).charAt(1);
     // const cleanPattern = new RegExp(`[^-+0-9${ example.charAt( 1 ) }]`, 'g');
-    const cleanPattern = new RegExp(`[${ '\' ,.'.replace(decimalSperator, '') }]`, 'g');
+    const cleanPattern = new RegExp(`[${'\' ,.'.replace(decimalSperator, '')}]`, 'g');
     const cleaned = value.replace(cleanPattern, '');
     const normalized = cleaned.replace(decimalSperator, '.');
     return Number(normalized);
   }
 
 }
-

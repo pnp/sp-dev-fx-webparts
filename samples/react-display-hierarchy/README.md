@@ -83,3 +83,4 @@ This sample web part shows how data stored in SharePoint list can be transformed
 [figure5]: ./assets/list-sample-data.png
 
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-display-hierarchy" />

@@ -1,0 +1,184 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.happyBirdthay {
+  .documentCard {
+    -webkit-font-smoothing: antialiased;
+    background-color: #ffffff;
+    border: 2px solid #eaeaea;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 320px;
+    min-width: 200px;
+    min-height: 190px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    display: inline-block;
+  }
+  .documentCard:hover{
+    border-color: #c8c8c8;
+  }
+  .documentCardWrapper {
+   margin-top: 15px;
+   min-Width: 200px;
+   width: 200px;
+   min-height: 190px;
+   margin-Left: 15px;
+   position: relative;
+   text-align: center;
+   display: inline-block;
+  }
+  .container {
+
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+  .today{
+    @include ms-font-xl;
+    @include ms-fontWeight-semibold;
+    position: absolute;
+    top: 61px;
+    width: 100%;
+    font-style: italic;
+    text-align: top;
+    padding-bottom: 15px;
+  }
+  .centered {
+    @include ms-font-l;
+    @include ms-fontWeight-semibold;
+    position: absolute;
+    top: 78px;
+     width: 100%;
+    font-style: italic;
+    text-align: top;
+    color: #666666;
+
+}
+.personaContainer {
+   margin-Top: 40px;
+   margin-Left: 10px;
+   margin-Right: 10px;
+   
+}
+.persona{
+  position: absolute;
+    top: 137px;
+    max-width: 200px;
+
+}
+.actions{
+  position: absolute;
+    top: 190px;
+    width: 100%;
+    border-top-style: solid;
+    border-top-color: #f4f4f4;
+    border-top-width: 1.1px;
+   // background-color: #f8f8f8;
+}
+  .row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+    @include ms-fontColor-white;
+
+  }
+  .centeredHeader {
+    position: relative;
+
+}
+
+  .subTitle {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .birthdaycake {
+    font-Size: 20px;
+
+    width: 30px;
+    height: 30px;
+    color: #ff6f69;
+     // color: $ms-color-themeTertiary;
+      top: 60px;
+      position: absolute;
+       border-radius: 50%;
+     background-color: #eaeaea;
+       @include ms-fontWeight-semibold;
+  }
+
+  .displayBirthdayToday{
+    @include ms-fontWeight-semibold;
+      width: 100%;
+      //color: $ms-color-themeTertiary;
+      color:  #ff6f69;
+      top: 107px;
+      position: absolute;
+      font-size: $ms-font-size-s;
+
+  }
+  .displayBirthday{
+    @include ms-fontWeight-semibold;
+      width: 100%;
+       color: $ms-color-themeTertiary;
+      top: 107px;
+      position: absolute;
+      font-size: $ms-font-size-s;
+
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+}

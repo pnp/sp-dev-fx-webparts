@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "245378e3-d4e2-480b-a32f-5508a8c398e3",
+  "alias": "ComparerWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Comparer"
+      },
+      "description": {
+        "default": "Compare two images side-by-side using a slider."
+      },
+      "iconImageUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAYCAYAAAAPtVbGAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAeQAAAHkBOLWIEgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGySURBVEiJrdQ9aFRBFAXg7212NSDa2VpZaeEfRkQsVJBgnaCNP4iFWAh2gkIEbQQbCwUlxD4ERUUCgkLAXkRQFEEknX9goYUhPIuZxGF5LzvvsQcWhnfPuWfnzr23wGvsNBiPcQf70MVUhgZ+Q4mRTMEEbmVyoYey00DQGsMyGRX+dWuTo1jApZr4KfzCdxxpY7IZD2OCxRrOFNZhEy63MdmKDcIt5mo4X2rOq+gOMHkThQu4h08VnNO4IrTq9TYmf3AA5/Fe9eMuxvia6J+TAhexp4I7lDkZwTRu4wXGGiTcURdITbp4gBM4hmd4jr0Dkhe4KaynC3WkUuigJ0K/H0xM5/ADu7DF/3Jti5zRyCnjbxnnkty9+F2JlzFZf3l6eISfmE1Mrgkd9SoxSI3OpiYr3bUdh4WWTbGE47hfEbtRURXCE0xHg5mVksAhvKsR/cWZeJ6o4fSjwF3hVqsP/yFT3AQdYYCHtoXXMtLFR3zLEMwLTdAUS0U02phDxjj246rQvtkmuRjDbmGtf8bTBtpsnEzOk1ifK2zy8OmtO+Ik52DQqk/xVpiXZXwV5icL/wCnaVnpdL2nMAAAAABJRU5ErkJggg==",
+      "properties": {
+        "beforeLabel": "",
+        "afterLabel": "",
+        "startPosition": 50,
+        "aspectRatio": "16:9"
+      }
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { IDropdownWithRemoteDataProps } from './IDropdownWithRemoteDataProps';
 
 import { Config } from './Config';
 
-export default class DropdownWithRemoteData extends React.Component<IDropdownWithRemoteDataProps, void> {
+export default class DropdownWithRemoteData extends React.Component<IDropdownWithRemoteDataProps, {}> {
   public render(): React.ReactElement<IDropdownWithRemoteDataProps> {
 
     const { needsConfiguration, configureWebPart} = this.props;
@@ -17,15 +17,15 @@ export default class DropdownWithRemoteData extends React.Component<IDropdownWit
         }
         { needsConfiguration === false &&
           <div className={styles.container}>
-            <div className={`ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}`}>
-              <div className="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-                <span className="ms-font-xl ms-fontColor-white">Welcome to SharePoint!</span>
-                <p className="ms-font-l ms-fontColor-white">Customize SharePoint experiences using Web Parts.</p>
+            <div className={styles.row}>
+              <div className={styles.column}>
+                <span className={styles.title}>Welcome to SharePoint!</span>
+                <p className={styles.subTitle}>Customize SharePoint experiences using Web Parts.</p>
 
-                <p className='ms-font-l ms-fontColor-white'>
+                <p className={styles.subTitle}>
                   Selected list ID: {this.props.list || 'no list selected'}
                 </p>
-                <p className='ms-font-l ms-fontColor-white'>
+                <p className={styles.subTitle}>
                   Selected item ID: {this.props.item || 'no item selected'}
                 </p>
 
