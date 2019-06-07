@@ -1,13 +1,15 @@
 import * as React from 'react';
 import styles from './TeamsTagging.module.scss';
 import { ITeamsTaggingProps, ITeamInfo } from './ITeamsTaggingProps';
-import { TaxonomyPicker, IPickerTerms } from "@pnp/spfx-controls-react/lib/TaxonomyPicker";
+import { TaxonomyPicker, IPickerTerms, IPickerTerm } from "@pnp/spfx-controls-react/lib/TaxonomyPicker";
 import { ITeamsTaggingState } from './ITeamsTaggingState';
 import { DefaultButton } from "office-ui-fabric-react";
 import { Guid } from '@microsoft/sp-core-library';
 import { HttpClientResponse, GraphHttpClient, IGraphHttpClientOptions } from '@microsoft/sp-http';
 
 export default class TeamsTagging extends React.Component<ITeamsTaggingProps, ITeamsTaggingState> {
+
+  private readonly separator: string = "__";
 
   constructor(props: ITeamsTaggingProps) {
     super(props);
@@ -17,13 +19,13 @@ export default class TeamsTagging extends React.Component<ITeamsTaggingProps, IT
     this._onTaxPickerChange = this._onTaxPickerChange.bind(this);
 
     this.state = {
-      selectedTags: [],
-      savedTags: [],
-      similarTeams: []
+      similarTeams: [],
+      tags: [],
+      tagsUpdatedResult: ''
     };
   }
 
-  private async _getTeamTags(): Promise<string[]> {
+  private async _getTeamTags(): Promise<IPickerTerms> {
     const groupId: Guid = this.props.context.pageContext.site.group.id;
 
     const response: HttpClientResponse = await this.props.context.graphHttpClient.get(
@@ -32,16 +34,16 @@ export default class TeamsTagging extends React.Component<ITeamsTaggingProps, IT
 
     const responseJson: any = await response.json();
 
-    let tags: string[] = [];
-    if (responseJson.inheritscloud_TeamsTagging.tag1) tags.push(responseJson.inheritscloud_TeamsTagging.tag1);
-    if (responseJson.inheritscloud_TeamsTagging.tag2) tags.push(responseJson.inheritscloud_TeamsTagging.tag2);
-    if (responseJson.inheritscloud_TeamsTagging.tag3) tags.push(responseJson.inheritscloud_TeamsTagging.tag3);
+    let tags: IPickerTerms = [];
+    if (responseJson.inheritscloud_TeamsTagging.tag1) tags.push(this._toIPickerTerm(responseJson.inheritscloud_TeamsTagging.tag1));
+    if (responseJson.inheritscloud_TeamsTagging.tag2) tags.push(this._toIPickerTerm(responseJson.inheritscloud_TeamsTagging.tag2));
+    if (responseJson.inheritscloud_TeamsTagging.tag3) tags.push(this._toIPickerTerm(responseJson.inheritscloud_TeamsTagging.tag3));
 
     return tags;
   }
 
   private async _findSimilarTeams(): Promise<void> {
-    const tag1 = this.state.savedTags[0];
+    const tag1: string = this._serializeIPickerTerm(this.state.tags[0]);
 
     const response: HttpClientResponse = await this.props.context.graphHttpClient.get(
       `v1.0/groups/?$filter=inheritscloud_TeamsTagging/tag1 eq '${tag1}'&$select=id,displayName,inheritscloud_TeamsTagging`,
@@ -50,14 +52,16 @@ export default class TeamsTagging extends React.Component<ITeamsTaggingProps, IT
     const responseJson: any = await response.json();
 
     const similarTeams = responseJson.value.map((team) => {
-      let tags: string[] = [];
-      if (team.inheritscloud_TeamsTagging.tag1) tags.push(team.inheritscloud_TeamsTagging.tag1);
-      if (team.inheritscloud_TeamsTagging.tag2) tags.push(team.inheritscloud_TeamsTagging.tag2);
-      if (team.inheritscloud_TeamsTagging.tag3) tags.push(team.inheritscloud_TeamsTagging.tag3);
+      let tags: IPickerTerms = [];
+
+      if (team.inheritscloud_TeamsTagging.tag1) tags.push(this._toIPickerTerm(team.inheritscloud_TeamsTagging.tag1));
+      if (team.inheritscloud_TeamsTagging.tag2) tags.push(this._toIPickerTerm(team.inheritscloud_TeamsTagging.tag2));
+      if (team.inheritscloud_TeamsTagging.tag3) tags.push(this._toIPickerTerm(team.inheritscloud_TeamsTagging.tag3));
+
       const similarTeam: ITeamInfo = {
         id: team.id,
         name: team.displayName,
-        tags: tags
+        tags: tags.map((t: IPickerTerm) => t.name)
       };
       return similarTeam;
     });
@@ -71,7 +75,7 @@ export default class TeamsTagging extends React.Component<ITeamsTaggingProps, IT
     const updated: any = await this._updateExtensionInGroup();
     if (updated === 204) {
       this.setState({
-        savedTags: this.state.selectedTags
+        tagsUpdatedResult: 'Team tags updated successfully!'
       });
     } else {
       console.log("Error updating data");
@@ -84,9 +88,9 @@ export default class TeamsTagging extends React.Component<ITeamsTaggingProps, IT
       method: "PATCH",
       body: JSON.stringify({
         "inheritscloud_TeamsTagging": {
-          "tag1": this.state.selectedTags[0] ? this.state.selectedTags[0] : '',
-          "tag2": this.state.selectedTags[1] ? this.state.selectedTags[1] : '',
-          "tag3": this.state.selectedTags[2] ? this.state.selectedTags[2] : ''
+          "tag1": this.state.tags[0] ? this._serializeIPickerTerm(this.state.tags[0]) : '',
+          "tag2": this.state.tags[1] ? this._serializeIPickerTerm(this.state.tags[1]) : '',
+          "tag3": this.state.tags[2] ? this._serializeIPickerTerm(this.state.tags[2]) : ''
         }
       })
     };
@@ -105,24 +109,17 @@ export default class TeamsTagging extends React.Component<ITeamsTaggingProps, IT
     this._getTeamTags().then((value) => {
       console.log(value);
       this.setState({
-        savedTags: value
+        tags: value
       });
     });
   }
 
   public render(): React.ReactElement<ITeamsTaggingProps> {
-    let tags: any = <div>Getting Team tags from Graph API ...</div>;
-
-    if (this.state.savedTags.length > 0) {
-      tags = <div><h2>Team tags:</h2><ul>
-        {this.state.savedTags.map(t => <li>{t}</li>)}
-      </ul></div>;
-    }
 
     let similarTeams: any;
     if (this.state.similarTeams.length > 0) {
       similarTeams = <div><h3>Similar teams:</h3><ul>
-        {this.state.similarTeams.map(t => <li>{t.name}</li>)}
+        {this.state.similarTeams.map(t => <li>{t.name} ({t.tags.map(tag => <span>{tag}, </span>)}) </li>)}
       </ul></div>;
     }
 
@@ -132,22 +129,23 @@ export default class TeamsTagging extends React.Component<ITeamsTaggingProps, IT
           <div className={styles.row}>
             <div className={styles.column}>
 
-              <div>{tags}</div>
-
-              <div className={styles.description}>
+              <div>
                 <TaxonomyPicker allowMultipleSelections={true}
                   termsetNameOrID={this.props.termSetId}
                   panelTitle="Select Term"
                   label="Select Tags for Team/Group..."
                   context={this.props.context}
                   onChange={this._onTaxPickerChange}
-                  isTermSetSelectable={false} />
+                  isTermSetSelectable={false}
+                  initialValues={this.state.tags} />
 
                 <DefaultButton
                   primary={true}
                   text="Update Team Tags"
                   onClick={this._updateTeamTags}
                 />
+
+                <p>{this.state.tagsUpdatedResult}</p>
               </div>
             </div>
           </div>
@@ -169,11 +167,24 @@ export default class TeamsTagging extends React.Component<ITeamsTaggingProps, IT
   }
 
   private _onTaxPickerChange(terms: IPickerTerms) {
-    console.log("Terms", terms);
-    const tags = terms.map(t => t.name);
-
     this.setState({
-      selectedTags: tags
+      tags: terms
     });
+  }
+
+  private _toIPickerTerm(input: string): IPickerTerm
+  {
+    const parts: string[] = input.split(this.separator);
+    const pickerTerm: IPickerTerm = {
+      key: parts[0],
+      name: parts[1],
+      path: parts[2],
+      termSet: parts[3]
+    };
+    return pickerTerm;
+  }
+
+  private _serializeIPickerTerm(term: IPickerTerm): string {
+    return `${term.key}${this.separator}${term.name}${this.separator}${term.path}${this.separator}${term.termSet}`;
   }
 }
