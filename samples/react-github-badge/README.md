@@ -4,13 +4,13 @@
 
 React version of Eric Skaggs [@skaggej](https://www.twitter.com/skaggej) js-GitHubBadge sample.
 
-Displays information from GitHub for a specified user.
+Displays information about a GitHub user.
 
-![React GitHub Badge in action](./assets/GitHubBadge.png)
+![React GitHub Badge in action](https://github.com/hugoabernier/sp-dev-fx-webparts/raw/master/samples/react-github-badge/assets/githubbadge.png)
 
 ## Used SharePoint Framework Version
 
-![SPFx v1.8.1](https://img.shields.io/badge/SPFx-1.8.1-green.svg)
+![SPFx v1.8.2](https://img.shields.io/badge/SPFx-1.8.2-green.svg)
 
 ## Applies to
 
@@ -29,6 +29,7 @@ Converted from: [js-GitHubBadge](https://github.com/SharePoint/sp-dev-fx-webpart
 Version|Date|Comments
 -------|----|--------
 1.0 | April 18, 2019 | Initial release
+2.0 | June 06, 2019 | Upgraded to SPFx 1.8.2. Added GitHub Badge v2.
 
 ## Disclaimer
 
@@ -46,6 +47,8 @@ Version|Date|Comments
 ## Features
 
 This sample illustrates how to convert an existing Javascript-only SPFx web part to a React SPFx web part while keeping the same look and feel. Please refer to the [js-GitHubBadge](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-gitHubBadge) sample for the original Javascript-only web part.
+
+A second webpart (called `GitHub Badge v2`) demonstrates how to render the same data using a Fabric UI persona card.
 
 For more information about the conversion process, refer to this [blog article](https://tahoeninjas.blog/2019/04/19/converting-spfx-from-javascript-to-react/).
 

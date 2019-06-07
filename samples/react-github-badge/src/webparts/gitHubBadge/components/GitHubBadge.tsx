@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './GitHubBadge.module.scss';
 import { IGitHubBadgeProps, IGitHubBadgeState } from './GitHubBadge.types';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { IGitHubService, IGitHubUserProfile, MockGitHubService, GitHubService } from '../../../services/GitHubServices';
 
 export default class GitHubBadge extends React.Component<IGitHubBadgeProps, IGitHubBadgeState> {
@@ -17,12 +16,12 @@ export default class GitHubBadge extends React.Component<IGitHubBadgeProps, IGit
   }
 
   public componentDidMount(): void {
-    this.getUserProfile();
+    this.getGitHubData();
   }
 
   public componentDidUpdate(prevProps: IGitHubBadgeProps, prevState: IGitHubBadgeState): void {
     if (prevProps.gitHubUserName !== this.props.gitHubUserName) {
-      this.getUserProfile();
+      this.getGitHubData();
     }
   }
 
@@ -86,7 +85,7 @@ export default class GitHubBadge extends React.Component<IGitHubBadgeProps, IGit
     );
   }
 
-  private getUserProfile()  {
+  private getGitHubData()  {
     // Create an instance of the GitHub service
     //const service: IGitHubService = new MockGitHubService();
     const service: IGitHubService = new GitHubService(this.props.httpClient);
