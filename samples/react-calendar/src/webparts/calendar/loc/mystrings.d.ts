@@ -1,4 +1,6 @@
 declare interface ICalendarWebPartStrings {
+  EndByLabel: string;
+  EndAfterLabel: string;
   HttpErrorMessage: string;
   CategoryPlaceHolder: string;
   CategoryLabel: string;
@@ -91,7 +93,6 @@ declare interface ICalendarWebPartStrings {
   previousLabel: string;
   nextLabel: string;
   showMore: string;
-  PropPanelSiteUrlErrorMessage: string;
 }
 
 declare module 'CalendarWebPartStrings' {

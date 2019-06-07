@@ -1,6 +1,8 @@
 // João Mendes
 // March 2019
 
+/// <reference path="./parseRecurrentEvent.d.ts"/>
+
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { sp, Fields, Web, SearchResults, Field, PermissionKind, RegionalSettings } from '@pnp/sp';
 import { graph, } from "@pnp/graph";
@@ -13,7 +15,10 @@ import * as moment from 'moment';
 import { SiteUser } from "@pnp/sp/src/siteusers";
 import { IUserPermissions } from './IUserPermissions';
 import { dateAdd } from "@pnp/common";
-import { escape } from '@microsoft/sp-lodash-subset';
+import { escape, update } from '@microsoft/sp-lodash-subset';
+import parseRecurrentEvent from './parseRecurrentEvent';
+
+
 
 const ADMIN_ROLETEMPLATE_ID = "62e90394-69f5-4237-9190-012177145e10"; // Global Admin TemplateRoleId
 // Class Services
@@ -46,9 +51,9 @@ export default class spservices {
    * @returns {Promise<number>}
    * @memberof spservices
    */
-  private async getSiteTimeZoneHoursToUtc(siteUrl: string): Promise<number> {
+  public async getSiteTimeZoneHours(siteUrl: string): Promise<number> {
     let numberHours: number = 0;
-    let siteTimeZoneHoursToUTC: any;
+    let siteTimeZoneHours: any;
     let siteTimeZoneBias: number;
     let siteTimeZoneDaylightBias: number;
     let currentDateTimeOffSet: number = new Date().getTimezoneOffset() / 60;
@@ -61,10 +66,10 @@ export default class spservices {
 
       // Formula to calculate the number of  hours need to get UTC Date.
       // numberHours = (siteTimeZoneBias / 60) + (siteTimeZoneDaylightBias / 60) - currentDateTimeOffSet;
-      if ( siteTimeZoneBias >= 0 ){
-        numberHours = ((siteTimeZoneBias / 60) - currentDateTimeOffSet) + siteTimeZoneDaylightBias/60 ;
-      }else {
-        numberHours = ((siteTimeZoneBias / 60) - currentDateTimeOffSet)  ;
+      if (siteTimeZoneBias >= 0) {
+        numberHours = ((siteTimeZoneBias / 60) - currentDateTimeOffSet) + siteTimeZoneDaylightBias / 60;
+      } else {
+        numberHours = ((siteTimeZoneBias / 60) - currentDateTimeOffSet);
       }
     }
     catch (error) {
@@ -86,7 +91,7 @@ export default class spservices {
     try {
       const web = new Web(siteUrl);
 
-      const siteTimeZoneHoursToUTC: number = await this.getSiteTimeZoneHoursToUtc(siteUrl);
+      const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
       //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
 
       results = await web.lists.getById(listId).items.add({
@@ -94,18 +99,81 @@ export default class spservices {
         Description: newEvent.Description,
         Geolocation: newEvent.geolocation,
         ParticipantsPickerId: { results: newEvent.attendes },
-        EventDate: new Date(moment(newEvent.start).add(siteTimeZoneHoursToUTC, 'hours').toISOString()),
-        EndDate: new Date(moment(newEvent.end).add(siteTimeZoneHoursToUTC, 'hours').toISOString()),
+        EventDate: new Date(moment(newEvent.EventDate).add(siteTimeZoneHours, 'hours').toISOString()),
+        EndDate: new Date(moment(newEvent.EndDate).add(siteTimeZoneHours, 'hours').toISOString()),
         Location: newEvent.location,
         fAllDayEvent: false,
-        fRecurrence: false,
+        fRecurrence: newEvent.fRecurrence,
         Category: newEvent.Category,
+        EventType: newEvent.EventType,
+        UID: newEvent.UID,
+        RecurrenceData: newEvent.RecurrenceData ? await this.deCodeHtmlEntities(newEvent.RecurrenceData) : "",
+        MasterSeriesItemID: newEvent.MasterSeriesItemID,
+        RecurrenceID: newEvent.RecurrenceID,
       });
     } catch (error) {
       return Promise.reject(error);
     }
     return results;
   }
+
+
+  /**
+   *
+   *
+   * @param {string} siteUrl
+   * @param {string} listId
+   * @param {number} eventId
+   * @returns {Promise<IEventData>}
+   * @memberof spservices
+   */
+  public async getEvent(siteUrl: string, listId: string, eventId: number): Promise<IEventData> {
+    let returnEvent: IEventData = undefined;
+    try {
+      const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
+      const web = new Web(siteUrl);
+      //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
+      const event = await web.lists.getById(listId).items.usingCaching().getById(eventId)
+        .select("RecurrenceID", "MasterSeriesItemID", "Id", "ID", "ParticipantsPickerId", "EventType", "Title", "Description", "EventDate", "EndDate", "Location", "Author/SipAddress", "Author/Title", "Geolocation", "fAllDayEvent", "fRecurrence", "RecurrenceData", "RecurrenceData", "Duration", "Category", "UID")
+        .expand("Author")
+        .get();
+
+
+      returnEvent = {
+        Id: event.ID,
+        ID: event.ID,
+        EventType: event.EventType,
+        title: await this.deCodeHtmlEntities(event.Title),
+        Description: event.Description ? event.Description : '',
+        //  start: moment(event.EventDate).utc().toDate().setUTCMinutes(this.siteTimeZoneOffSet),
+        EventDate: new Date(moment(event.EventDate).subtract((siteTimeZoneHours), 'hour').toISOString()),
+        // end: new Date(moment(event.EndDate).toLocaleString()),
+        EndDate: new Date(moment(event.EndDate).subtract(siteTimeZoneHours, 'hour').toISOString()),
+        location: event.Location,
+        ownerEmail: event.Author.SipAddress,
+        ownerPhoto: "",
+        ownerInitial: '',
+        // color: await this.colorGenerate(),
+        color: '',
+        ownerName: event.Author.Title,
+        attendes: event.ParticipantsPickerId,
+        fAllDayEvent: false,
+        geolocation: { Longitude: event.Geolocation ? event.Geolocation.Longitude : 0, Latitude: event.Geolocation ? event.Geolocation.Latitude : 0 },
+        Category: event.Category,
+        Duration: event.Duration,
+        UID: event.UID,
+        RecurrenceData: event.RecurrenceData ? await this.deCodeHtmlEntities(event.RecurrenceData) : "",
+        fRecurrence: event.fRecurrence,
+        RecurrenceID: event.RecurrenceID,
+        MasterSeriesItemID: event.MasterSeriesItemID,
+      };
+    } catch (error) {
+      return Promise.reject(error);
+    }
+    return returnEvent;
+  }
+
+
   /**
    *
    * @param {IEventData} newEvent
@@ -118,26 +186,50 @@ export default class spservices {
     let results = null;
     try {
 
-      const siteTimeZoneHoursToUTC: number = await this.getSiteTimeZoneHoursToUtc(siteUrl);
+      // delete all recursive extentions before update  recurrence event
+      if (updateEvent.EventType.toString() == "1" ) await this.deleteRecurrenceExceptions(updateEvent, siteUrl, listId);
+
+      const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
 
       const web = new Web(siteUrl);
       //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
-      results = await web.lists.getById(listId).items.getById(updateEvent.id).update({
+      results = await web.lists.getById(listId).items.getById(updateEvent.Id).update({
         Title: updateEvent.title,
         Description: updateEvent.Description,
         Geolocation: updateEvent.geolocation,
         ParticipantsPickerId: { results: updateEvent.attendes },
-        EventDate: new Date(moment(updateEvent.start).add(siteTimeZoneHoursToUTC, 'hours').toISOString()),
-        EndDate: new Date(moment(updateEvent.end).add(siteTimeZoneHoursToUTC, 'hours').toISOString()),
+        EventDate: new Date(moment(updateEvent.EventDate).add(siteTimeZoneHours, 'hours').toISOString()),
+        EndDate: new Date(moment(updateEvent.EndDate).add(siteTimeZoneHours, 'hours').toISOString()),
         Location: updateEvent.location,
         fAllDayEvent: false,
-        fRecurrence: false,
+        fRecurrence: updateEvent.fRecurrence,
         Category: updateEvent.Category,
+        RecurrenceData: updateEvent.RecurrenceData ? await this.deCodeHtmlEntities(updateEvent.RecurrenceData) : "",
+        EventType: updateEvent.EventType,
       });
     } catch (error) {
       return Promise.reject(error);
     }
     return results;
+  }
+
+  public async deleteRecurrenceExceptions(event: IEventData, siteUrl: string, listId: string) {
+    let results = null;
+    try {
+      const web = new Web(siteUrl);
+      results = await web.lists.getById(listId).items
+        .select('Id')
+        .filter(`EventType eq '3' or EventType eq '4' and MasterSeriesItemID eq '${event.Id}' `)
+        .get();
+      if (results && results.length > 0) {
+        for (const recurrenceException of results) {
+          await web.lists.getById(listId).items.getById(recurrenceException.Id).delete();
+        }
+      }
+    } catch (error) {
+      return Promise.reject(error);
+    }
+    return;
   }
 
   /**
@@ -152,13 +244,28 @@ export default class spservices {
     let results = null;
     try {
       const web = new Web(siteUrl);
+      // Exception Recurrence eventtype = 4 ?  update to deleted Recurrence eventtype=3
+      switch (event.EventType.toString()) {
+        case '4': // Exception Recurrence Event
+          results = await web.lists.getById(listId).items.getById(event.Id).update({
+            Title: `Delete: ${event.title}`,
+            EventType: '3',
+          });
+          break;
+        case '1': // recurrence Event
+          // delete execptions if exists before delete recurrence event
+          await this.deleteRecurrenceExceptions(event, siteUrl, listId);
+          await web.lists.getById(listId).items.getById(event.Id).delete();
+          break;
+        case '0': // normal Event
+          await web.lists.getById(listId).items.getById(event.Id).delete();
+          break;
+      }
 
-      //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
-      results = await web.lists.getById(listId).items.getById(event.id).delete();
     } catch (error) {
       return Promise.reject(error);
     }
-    return results;
+    return ;
   }
   /**
    *
@@ -218,7 +325,7 @@ export default class spservices {
   public async getUserProfilePictureUrl(loginName: string) {
     let results: any = null;
     try {
-      results = await sp.profiles.getPropertiesFor(loginName);
+      results = await sp.profiles.usingCaching().getPropertiesFor(loginName);
     } catch (error) {
       results = null;
     }
@@ -240,13 +347,14 @@ export default class spservices {
     let userPermissions: IUserPermissions = undefined;
     try {
       const web = new Web(siteUrl);
-      const  userEffectivePermissions = await web.lists.getById(listId).effectiveBasePermissions.get();
-        // chaeck user permissions
-        hasPermissionAdd = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.AddListItems);
-        hasPermissionEdit =sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.EditListItems);
-        hasPermissionDelete =sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.DeleteListItems);
-        hasPermissionView = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.ViewListItems);
-        userPermissions = { hasPermissionAdd: hasPermissionAdd, hasPermissionEdit: hasPermissionEdit, hasPermissionDelete: hasPermissionDelete, hasPermissionView: hasPermissionView };
+      const userEffectivePermissions = await web.lists.getById(listId).effectiveBasePermissions.get();
+      // ...
+      hasPermissionAdd = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.AddListItems);
+      hasPermissionDelete = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.DeleteListItems);
+      hasPermissionEdit = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.EditListItems);
+      hasPermissionView = sp.web.lists.getById(listId).hasPermissions(userEffectivePermissions, PermissionKind.ViewListItems);
+      userPermissions = { hasPermissionAdd: hasPermissionAdd, hasPermissionEdit: hasPermissionEdit, hasPermissionDelete: hasPermissionDelete, hasPermissionView: hasPermissionView };
+
     } catch (error) {
       return Promise.reject(error);
     }
@@ -344,7 +452,7 @@ export default class spservices {
     }
     try {
       // Get Regional Settings TimeZone Hours to UTC
-      const siteTimeZoneHoursToUTC: number = await this.getSiteTimeZoneHoursToUtc(siteUrl);
+      const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
       // Get Category Field Choices
       const categoryDropdownOption = await this.getChoiceFieldOptions(siteUrl, listId, 'Category');
       let categoryColor: { category: string, color: string }[] = [];
@@ -353,14 +461,13 @@ export default class spservices {
       }
 
       const web = new Web(siteUrl);
-      const results = await web.lists.getById(listId).renderListDataAsStream(
+      const results = await web.lists.getById(listId).usingCaching().renderListDataAsStream(
         {
           DatesInUtc: true,
-          ViewXml: `<View><ViewFields><FieldRef Name='Author'/><FieldRef Name='Category'/><FieldRef Name='Description'/><FieldRef Name='ParticipantsPicker'/><FieldRef Name='Geolocation'/><FieldRef Name='ID'/><FieldRef Name='EndDate'/><FieldRef Name='EventDate'/><FieldRef Name='ID'/><FieldRef Name='Location'/><FieldRef Name='Title'/><FieldRef Name='fAllDayEvent'/></ViewFields>
+          ViewXml: `<View><ViewFields><FieldRef Name='RecurrenceData'/><FieldRef Name='Duration'/><FieldRef Name='Author'/><FieldRef Name='Category'/><FieldRef Name='Description'/><FieldRef Name='ParticipantsPicker'/><FieldRef Name='Geolocation'/><FieldRef Name='ID'/><FieldRef Name='EndDate'/><FieldRef Name='EventDate'/><FieldRef Name='ID'/><FieldRef Name='Location'/><FieldRef Name='Title'/><FieldRef Name='fAllDayEvent'/><FieldRef Name='EventType'/><FieldRef Name='UID' /><FieldRef Name='fRecurrence' /></ViewFields>
           <Query>
           <Where>
             <And>
-             <And>
               <Geq>
                 <FieldRef Name='EventDate' />
                 <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventStartDate).format('YYYY-MM-DD')}</Value>
@@ -370,11 +477,6 @@ export default class spservices {
                 <Value IncludeTimeValue='false' Type='DateTime'>${moment(eventEndDate).format('YYYY-MM-DD')}</Value>
               </Leq>
               </And>
-              <Eq>
-              <FieldRef Name='fRecurrence' />
-                <Value Type='Recurrence'>0</Value>
-              </Eq>
-            </And>
           </Where>
           </Query>
           <RowLimit Paged=\"FALSE\">2000</RowLimit>
@@ -383,7 +485,8 @@ export default class spservices {
       );
 
       if (results && results.Row.length > 0) {
-        for (const event of results.Row) {
+        let event: any = '';
+        for (event of results.Row) {
           const initialsArray: string[] = event.Author[0].title.split(' ');
           const initials: string = initialsArray[0].charAt(0) + initialsArray[initialsArray.length - 1].charAt(0);
           const userPictureUrl = await this.getUserProfilePictureUrl(`i:0#.f|membership|${event.Author[0].email}`);
@@ -399,14 +502,18 @@ export default class spservices {
             attendees.push(parseInt(attendee.id));
           }
 
+
+
           events.push({
-            id: event.ID,
+            Id: event.ID,
+            ID: event.ID,
+            EventType: event.EventType,
             title: await this.deCodeHtmlEntities(event.Title),
             Description: event.Description,
             //  start: moment(event.EventDate).utc().toDate().setUTCMinutes(this.siteTimeZoneOffSet),
-            start: new Date(moment(event.EventDate).subtract((siteTimeZoneHoursToUTC), 'hour').toISOString()),
+            EventDate: new Date(moment(event.EventDate).subtract((siteTimeZoneHours), 'hour').toISOString()),
             // end: new Date(moment(event.EndDate).toLocaleString()),
-            end: new Date(moment(event.EndDate).subtract(siteTimeZoneHoursToUTC, 'hour').toISOString()),
+            EndDate: new Date(moment(event.EndDate).subtract(siteTimeZoneHours, 'hour').toISOString()),
             location: event.Location,
             ownerEmail: event.Author[0].email,
             ownerPhoto: userPictureUrl ?
@@ -416,11 +523,20 @@ export default class spservices {
             color: CategoryColorValue.length > 0 ? CategoryColorValue[0].color : await this.colorGenerate,
             ownerName: event.Author[0].title,
             attendes: attendees,
-            allDayEvent: false,
+            fAllDayEvent: false,
             geolocation: { Longitude: parseFloat(geolocation[0]), Latitude: parseFloat(geolocation[1]) },
-            Category: event.Category
+            Category: event.Category,
+            Duration: event.Duration,
+            RecurrenceData: event.RecurrenceData ? await this.deCodeHtmlEntities(event.RecurrenceData) : "",
+            fRecurrence: event.fRecurrence,
+            RecurrenceID: event.RecurrenceID,
+            MasterSeriesItemID: event.MasterSeriesItemID,
+            UID: event.UID.replace("{", "").replace("}", ""),
           });
         }
+
+        let parseEvt: parseRecurrentEvent = new parseRecurrentEvent();
+        events = parseEvt.parseEvents(events, null, null);
       }
       // Return Data
       return events;
@@ -441,7 +557,7 @@ export default class spservices {
     let regionalSettings: RegionalSettings;
     try {
       const web = new Web(siteUrl);
-      regionalSettings = await web.regionalSettings.timeZone.get();
+      regionalSettings = await web.regionalSettings.timeZone.usingCaching().get();
 
     } catch (error) {
       return Promise.reject(error);
@@ -723,15 +839,15 @@ export default class spservices {
       "♦": "&diams;"
     };
 
-      var entityMap = HtmlEntitiesMap;
-      string = string.replace(/&/g, '&amp;');
-      string = string.replace(/"/g, '&quot;');
-      for (var key in entityMap) {
-        var entity = entityMap[key];
-        var regex = new RegExp(key, 'g');
-        string = string.replace(regex, entity);
-      }
-      return string;
+    var entityMap = HtmlEntitiesMap;
+    string = string.replace(/&/g, '&amp;');
+    string = string.replace(/"/g, '&quot;');
+    for (var key in entityMap) {
+      var entity = entityMap[key];
+      var regex = new RegExp(key, 'g');
+      string = string.replace(regex, entity);
+    }
+    return string;
   }
 
   public async deCodeHtmlEntities(string: string) {

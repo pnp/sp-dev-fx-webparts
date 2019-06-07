@@ -1,4 +1,4 @@
-import { IPanelModelEnum} from '../../../controls/Event/IPanelModeEnum';
+import { IPanelModelEnum} from './Event/IPanelModeEnum';
 import { IEventData } from './../../../services/IEventData';
 export interface ICalendarState {
   showDialog: boolean;
