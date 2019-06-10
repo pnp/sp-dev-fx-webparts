@@ -84,7 +84,6 @@ export default class spservices {
       const web = new Web(siteUrl);
 
       const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
-      //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
 
       results = await web.lists.getById(listId).items.add({
         Title: newEvent.title,
@@ -137,15 +136,12 @@ export default class spservices {
         EventType: event.EventType,
         title: await this.deCodeHtmlEntities(event.Title),
         Description: event.Description ? event.Description : '',
-        //  start: moment(event.EventDate).utc().toDate().setUTCMinutes(this.siteTimeZoneOffSet),
         EventDate: new Date(moment(event.EventDate).subtract((siteTimeZoneHours), 'hour').toISOString()),
-        // end: new Date(moment(event.EndDate).toLocaleString()),
         EndDate: new Date(moment(event.EndDate).subtract(siteTimeZoneHours, 'hour').toISOString()),
         location: event.Location,
         ownerEmail: event.Author.SipAddress,
         ownerPhoto: "",
         ownerInitial: '',
-        // color: await this.colorGenerate(),
         color: '',
         ownerName: event.Author.Title,
         attendes: event.ParticipantsPickerId,
