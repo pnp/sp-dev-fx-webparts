@@ -13,70 +13,71 @@ The Web Part does not show recurring events, I will work on it soon.
 
 
 ##  
-![callendar](/assets/animatevideo.gif) 
+![callendar](/samples/react-calendar/assets/animatevideo.gif) 
+
 
 ##  
-![callendar](/assets/weekly_moderncalendar.gif) 
+![callendar](/samples/react-calendar/assets/weekly_moderncalendar.gif) 
 
 ##  
-![callendar](/assets/modercalendar_monthly.gif) 
+![callendar](/samples/react-calendar/assets/modercalendar_monthly.gif) 
 
 ##  
-![callendar](/assets/moderncalendar_yearly.gif) 
+![callendar](/samples/react-calendar/assets/moderncalendar_yearly.gif) 
 
  
 
 
 ##  Web Part  - Screenshots
 
-![callendar](/assets/calendar_teams.jpg)
+![callendar](/samples/react-calendar/assets/calendar_teams.jpg)
 
-![callendar](/assets/calendar_teams2.jpg)
+![callendar](/samples/react-calendar/assets/calendar_teams2.jpg)
 
-![callendar](/assets/screen1.png)
-
-
-![callendar](/assets/screen1.0.png)
+![callendar](/samples/react-calendar/assets/screen1.png)
 
 
-![callendar](/assets/screen1.1.png)
+![callendar](/samples/react-calendar/assets/screen1.0.png)
 
 
-![callendar](/assets/screen1.2.png)
+![callendar](/samples/react-calendar/assets/screen1.1.png)
 
 
-![callendar](/assets/screen1.3.png)
+![callendar](/samples/react-calendar/assets/screen1.2.png)
 
 
-![callendar](/assets/screen1.4.png)
+![callendar](/samples/react-calendar/assets/screen1.3.png)
 
 
-![callendar](/assets/screen2.png)
+![callendar](/samples/react-calendar/assets/screen1.4.png)
 
 
-
-![callendar](/assets/screen3.png)
+![callendar](/samples/react-calendar/samples/react-calenda/assets/screen2.png)
 
 
 
-![callendar](/assets/screen4.png)
+![callendar](/samples/react-calendar/assets/screen3.png)
 
 
 
-![callendar](/assets/screen5.png)
-
-
-![callendar](/assets/screen6.png)
-
-
-![callendar](/assets/screen7.png)
-
-
-![callendar](/assets/screen8.png)
+![callendar](/samples/react-calendar/assets/screen4.png)
 
 
 
-![callendar](/assets/screen9.png)
+![callendar](/samples/react-calendar/assets/screen5.png)
+
+
+![callendar](/samples/react-calendar/assets/screen6.png)
+
+
+![callendar](/samples/react-calendar/assets/screen7.png)
+
+
+![callendar](/samples/react-calendar/assets/screen8.png)
+
+
+
+![callendar](/samples/react-calendar/assets/screen9.png)
 ##   
  
 
