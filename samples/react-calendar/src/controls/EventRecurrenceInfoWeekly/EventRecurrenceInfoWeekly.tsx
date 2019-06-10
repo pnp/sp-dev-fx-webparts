@@ -23,7 +23,7 @@ import {
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { Root } from '@pnp/graph';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { _MinimalWebPartContainer } from '@microsoft/sp-webpart-base';
+
 import spservices from '../../services/spservices';
 
 const DayPickerStrings: IDatePickerStrings = {
@@ -54,9 +54,9 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
   private spService: spservices = null;
   public constructor(props) {
     super(props);
-
-
     this.onPaternChange = this.onPaternChange.bind(this);
+
+
     this.state = {
       selectedKey: 'daily',
       selectPatern: 'every',
@@ -68,13 +68,13 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
       disableNumberOcurrences: true,
       selectdateRangeOption: 'noDate',
       disableEndDate: true,
-      weeklySunday: false,
-      weeklyMonday: false,
-      weekklyTuesday: false,
-      weekklyWednesday: false,
-      weekklyThursday: false,
-      weeklyFriday: false,
-      weeklySaturday: false,
+      weeklySunday:  moment().weekday() === 0 ? true: false,
+      weeklyMonday: moment().weekday() === 1 ? true: false,
+      weekklyTuesday: moment().weekday() === 2 ? true: false,
+      weekklyWednesday: moment().weekday() === 3 ? true: false,
+      weekklyThursday: moment().weekday() === 4 ? true: false,
+      weeklyFriday: moment().weekday() === 5 ? true: false,
+      weeklySaturday: moment().weekday() === 6 ? true: false,
       isLoading: false,
       errorMessageNumberOfWeeks: '',
     };
@@ -190,7 +190,7 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
     this.applyRecurrence();
   }
 
-  public async componentDidMount() {
+  public async componentWillMount() {
     //  await this.load();
     await this.load();
   }
@@ -270,8 +270,9 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
         disableEndDate: dateRange.windowEnd ? false : true,
         isLoading: false,
       });
-      await this.applyRecurrence();
+
     }
+    await this.applyRecurrence();
   }
 
 
@@ -331,7 +332,7 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
     const recurrenceXML = `<recurrence><rule><firstDayOfWeek>su</firstDayOfWeek><repeat>` +
       `<weekly ${weekdays} weekFrequency="${this.state.numberOfWeeks.trim()}" /></repeat>${selectDateRangeOption}</rule></recurrence>`;
     console.log(recurrenceXML);
-    this.props.returnRecurrenceData(eventDate, recurrenceXML);
+    this.props.returnRecurrenceData(this.state.startDate, recurrenceXML);
   }
 
   private async onCheckboxSundayChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
@@ -377,9 +378,9 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
 
             </div>
             <div style={{ width: '100%', paddingTop: '10px' }}>
-              <Label>Patern</Label>
+              <Label>{strings.PaternLabel}</Label>
               <div>
-                <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '40px' } }}>Every</Label>
+                <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '40px' } }}>{strings.every}</Label>
                 <MaskedTextField
                   styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '100px', paddingLeft: '5px' } }}
                   mask="999"
@@ -387,7 +388,7 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
                   errorMessage={this.state.errorMessageNumberOfWeeks}
                   value={this.state.numberOfWeeks}
                   onChange={this.onNumberOfWeeksChange} />
-                <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '80px', paddingLeft: '10px' } }}>week(s) on</Label>
+                <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '80px', paddingLeft: '10px' } }}>{strings.WeeksOnLabel}</Label>
 
               </div>
               <div style={{ marginTop: '10px' }}>
@@ -404,15 +405,15 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
             </div>
 
             <div style={{ paddingTop: '22px' }}>
-              <Label>Date Range</Label>
+              <Label>{strings.dateRangeLabel}</Label>
               <div className={styles.dateRange}>
 
                 <DatePicker
                   firstDayOfWeek={DayOfWeek.Sunday}
                   strings={DayPickerStrings}
-                  placeholder="Select a date..."
-                  ariaLabel="Select a date"
-                  label="Start Date"
+                  placeholder={strings.StartDatePlaceHolder}
+                  ariaLabel={strings.StartDatePlaceHolder}
+                  label={strings.StartDateLabel}
                   value={this.state.startDate}
                   onSelectDate={this.onStartDateChange}
                 />
@@ -425,7 +426,7 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
                   options={[
                     {
                       key: 'noDate',
-                      text: 'no end date',
+                      text: strings.noEndDate,
                     },
                     {
                       key: 'endDate',
@@ -437,8 +438,8 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
                             <DatePicker
                               firstDayOfWeek={DayOfWeek.Sunday}
                               strings={DayPickerStrings}
-                              placeholder="Select a date..."
-                              ariaLabel="Select a date"
+                              placeholder={strings.StartDatePlaceHolder}
+                              ariaLabel={strings.StartDatePlaceHolder}
                               style={{ display: 'inline-block', verticalAlign: 'top', paddingLeft: '22px', }}
                               onSelectDate={this.onEndDateChange}
                               value={this.state.endDate}
@@ -459,11 +460,10 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
                               styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '100px', paddingLeft: '10px' } }}
                               mask="999"
                               maskChar=' '
-
                               value={this.state.numberOcurrences}
                               disabled={this.state.disableNumberOcurrences}
                               onChange={this.onNumberOfOcurrencesChange} />
-                            <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', paddingLeft: '10px' } }}>Ocurrences</Label>
+                            <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', paddingLeft: '10px' } }}>{strings.OcurrencesLabel}</Label>
                           </div>
                         );
                       }

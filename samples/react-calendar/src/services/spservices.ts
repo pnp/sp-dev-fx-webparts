@@ -1,8 +1,6 @@
 // João Mendes
 // March 2019
 
-/// <reference path="./parseRecurrentEvent.d.ts"/>
-
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { sp, Fields, Web, SearchResults, Field, PermissionKind, RegionalSettings } from '@pnp/sp';
 import { graph, } from "@pnp/graph";
@@ -10,7 +8,6 @@ import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions, HttpClient, M
 import * as $ from 'jquery';
 import { IEventData } from './IEventData';
 import { registerDefaultFontFaces } from "@uifabric/styling";
-import { EventArgs } from "@microsoft/sp-core-library";
 import * as moment from 'moment';
 import { SiteUser } from "@pnp/sp/src/siteusers";
 import { IUserPermissions } from './IUserPermissions';
@@ -18,9 +15,6 @@ import { dateAdd } from "@pnp/common";
 import { escape, update } from '@microsoft/sp-lodash-subset';
 import parseRecurrentEvent from './parseRecurrentEvent';
 
-
-
-const ADMIN_ROLETEMPLATE_ID = "62e90394-69f5-4237-9190-012177145e10"; // Global Admin TemplateRoleId
 // Class Services
 export default class spservices {
 
@@ -40,8 +34,6 @@ export default class spservices {
   }
   // OnInit Function
   private async onInit() {
-    //this.appCatalogUrl = await this.getAppCatalogUrl();
-
   }
 
   /**
@@ -109,7 +101,7 @@ export default class spservices {
         UID: newEvent.UID,
         RecurrenceData: newEvent.RecurrenceData ? await this.deCodeHtmlEntities(newEvent.RecurrenceData) : "",
         MasterSeriesItemID: newEvent.MasterSeriesItemID,
-        RecurrenceID: newEvent.RecurrenceID,
+        RecurrenceID: newEvent.RecurrenceID ? moment(newEvent.RecurrenceID).add(siteTimeZoneHours, 'hours').toISOString() : undefined,
       });
     } catch (error) {
       return Promise.reject(error);
@@ -187,7 +179,7 @@ export default class spservices {
     try {
 
       // delete all recursive extentions before update  recurrence event
-      if (updateEvent.EventType.toString() == "1" ) await this.deleteRecurrenceExceptions(updateEvent, siteUrl, listId);
+      if (updateEvent.EventType.toString() == "1") await this.deleteRecurrenceExceptions(updateEvent, siteUrl, listId);
 
       const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
 
@@ -204,8 +196,10 @@ export default class spservices {
         fAllDayEvent: false,
         fRecurrence: updateEvent.fRecurrence,
         Category: updateEvent.Category,
+        UID: updateEvent.UID,
         RecurrenceData: updateEvent.RecurrenceData ? await this.deCodeHtmlEntities(updateEvent.RecurrenceData) : "",
         EventType: updateEvent.EventType,
+        MasterSeriesItemID: updateEvent.MasterSeriesItemID,
       });
     } catch (error) {
       return Promise.reject(error);
@@ -240,7 +234,7 @@ export default class spservices {
    * @returns
    * @memberof spservices
    */
-  public async deleteEvent(event: IEventData, siteUrl: string, listId: string) {
+  public async deleteEvent(event: IEventData, siteUrl: string, listId: string, recurrenceSeriesEdited: boolean) {
     let results = null;
     try {
       const web = new Web(siteUrl);
@@ -253,9 +247,21 @@ export default class spservices {
           });
           break;
         case '1': // recurrence Event
-          // delete execptions if exists before delete recurrence event
-          await this.deleteRecurrenceExceptions(event, siteUrl, listId);
-          await web.lists.getById(listId).items.getById(event.Id).delete();
+          // if  delete is a main recrrence delete all recurrences and main recurrence
+          if (recurrenceSeriesEdited) {
+            // delete execptions if exists before delete recurrence event
+            await this.deleteRecurrenceExceptions(event, siteUrl, listId);
+            await web.lists.getById(listId).items.getById(event.Id).delete();
+          } else {
+            // delete a single recurrence Exception.  add new entry with eventtype 3
+
+            event.RecurrenceID = event.EventDate.toString();
+            event.MasterSeriesItemID = event.ID.toString();
+            event.fRecurrence = true;
+            event.EventType = '3';
+            await this.addEvent(event, siteUrl, listId);
+          }
+
           break;
         case '0': // normal Event
           await web.lists.getById(listId).items.getById(event.Id).delete();
@@ -265,7 +271,7 @@ export default class spservices {
     } catch (error) {
       return Promise.reject(error);
     }
-    return ;
+    return;
   }
   /**
    *
@@ -397,6 +403,7 @@ export default class spservices {
 
     for (var i = 0; i < 6; i++) {
       var x = Math.round(Math.random() * 14);
+
       var y = hexValues[x];
       newColor += y;
     }
@@ -510,17 +517,16 @@ export default class spservices {
             EventType: event.EventType,
             title: await this.deCodeHtmlEntities(event.Title),
             Description: event.Description,
-            //  start: moment(event.EventDate).utc().toDate().setUTCMinutes(this.siteTimeZoneOffSet),
+
             EventDate: new Date(moment(event.EventDate).subtract((siteTimeZoneHours), 'hour').toISOString()),
-            // end: new Date(moment(event.EndDate).toLocaleString()),
+
             EndDate: new Date(moment(event.EndDate).subtract(siteTimeZoneHours, 'hour').toISOString()),
             location: event.Location,
             ownerEmail: event.Author[0].email,
             ownerPhoto: userPictureUrl ?
               `https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=${event.Author[0].email}&UA=0&size=HR96x96` : '',
             ownerInitial: initials,
-            // color: await this.colorGenerate(),
-            color: CategoryColorValue.length > 0 ? CategoryColorValue[0].color : await this.colorGenerate,
+            color: CategoryColorValue.length > 0 ? CategoryColorValue[0].color : '#1a75ff', // blue default
             ownerName: event.Author[0].title,
             attendes: attendees,
             fAllDayEvent: false,
@@ -529,7 +535,7 @@ export default class spservices {
             Duration: event.Duration,
             RecurrenceData: event.RecurrenceData ? await this.deCodeHtmlEntities(event.RecurrenceData) : "",
             fRecurrence: event.fRecurrence,
-            RecurrenceID: event.RecurrenceID,
+            RecurrenceID: event.RecurrenceID ? moment(event.RecurrenceID).subtract(siteTimeZoneHours, 'hour').toISOString() : undefined,
             MasterSeriesItemID: event.MasterSeriesItemID,
             UID: event.UID.replace("{", "").replace("}", ""),
           });

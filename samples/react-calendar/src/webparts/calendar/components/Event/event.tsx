@@ -44,7 +44,7 @@ import {
 }
   from 'office-ui-fabric-react';
 import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { _ComponentBaseKillSwitches } from '@microsoft/sp-component-base';
+
 import { IPanelModelEnum } from './IPanelModeEnum';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -54,13 +54,12 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import spservices from '../../../../services/spservices';
 import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
 import { EventRecurrenceInfo } from '../../../../controls/EventRecurrenceInfo/EventRecurrenceInfo';
-import { EventRecurrenceInfoDaily } from '../../../../controls/EventRecurrenceInfoDaily/EventRecurrenceInfoDaily';
 import { string } from 'prop-types';
 import { getGUID } from '@pnp/common';
 
 const today: Date = new Date(Date.now());
 const DayPickerStrings: IDatePickerStrings = {
-  months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.Dezember],
+  months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.December],
   shortMonths: [strings.Jan, strings.Feb, strings.Mar, strings.Apr, strings.May, strings.Jun, strings.Jul, strings.Aug, strings.Sep, strings.Oct, strings.Nov, strings.Dez],
   days: [strings.Sunday, strings.Monday, strings.Tuesday, strings.Wednesday, strings.Thursday, strings.Friday, strings.Saturday],
   shortDays: [strings.ShortDay_S, strings.ShortDay_M, strings.ShortDay_T, strings.ShortDay_W, strings.ShortDay_Tursday, strings.ShortDay_Friday, strings.ShortDay_Saunday],
@@ -166,6 +165,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
 
     let startDate: string = null;
     let endDate: string = null;
+    eventData.fRecurrence = false;
     // if there are new Event recurrence or Edited recurrence series
     if (this.state.recurrenceSeriesEdited || this.state.newRecurrenceEvent) {
       eventData.RecurrenceData = this.returnedRecurrenceInfo.recurrenceData;
@@ -177,13 +177,18 @@ export class Event extends React.Component<IEventProps, IEventState> {
         eventData.fRecurrence= true;
         eventData.UID = getGUID();
       }
+      if (eventData.EventType == "1" && this.state.recurrenceSeriesEdited) {
+        eventData.fRecurrence= true;
+        eventData.UID = getGUID();
+      }
 
     } else {
       if (this.state.eventData.EventType  == '1'){ // recurrence exception
-        eventData.RecurrenceID = eventData.EventDate.toISOString();
+        eventData.RecurrenceID = eventData.EventDate.toString();
         eventData.MasterSeriesItemID = eventData.ID.toString();
         eventData.EventType = "4";
-        eventData.fRecurrence= true;
+        eventData.fRecurrence = true;
+        eventData.UID = getGUID();
         panelMode = IPanelModelEnum.add;
       }
       startDate = `${moment(this.state.startDate).format('YYYY/MM/DD')}`;
@@ -305,6 +310,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
       this.latitude = event.geolocation && event.geolocation.Latitude ? event.geolocation.Latitude : this.latitude;
       this.longitude = event.geolocation && event.geolocation.Longitude ? event.geolocation.Longitude : this.longitude;
 
+      event.geolocation.Latitude = this.latitude;
+      event.geolocation.Longitude = this.longitude;
       // Update Component Data
       this.setState({
         eventData: event,
@@ -473,7 +480,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
 
       switch (this.props.panelMode) {
         case IPanelModelEnum.edit:
-          await this.spService.deleteEvent(this.state.eventData, this.props.siteUrl, this.props.listId);
+          await this.spService.deleteEvent(this.state.eventData, this.props.siteUrl, this.props.listId, this.state.recurrenceSeriesEdited);
           break;
         default:
           break;
@@ -481,7 +488,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
       this.setState({ isDeleting: false });
       this.props.onDissmissPanel(true);
     } catch (error) {
-      this.setState({ hasError: true, errorMessage: error.message, isDeleting: false });
+      this.setState({ hasError: true, errorMessage: error.message, isDeleting: false, displayDialog:false });
     }
   }
 
@@ -572,6 +579,13 @@ export class Event extends React.Component<IEventProps, IEventState> {
     this.setState({ showRecurrenceSeriesInfo: true, recurrenceSeriesEdited: true });
   }
 
+  /**
+   *
+   *
+   * @param {Date} startDate
+   * @param {string} recurrenceData
+   * @memberof Event
+   */
   public async returnRecurrenceInfo(startDate: Date, recurrenceData: string) {
     this.returnedRecurrenceInfo = { recurrenceData: recurrenceData, eventDate: startDate, endDate: moment().add(20, 'years').toDate() };
     //this.setState({ editRecurrenceSeries:false})
@@ -818,7 +832,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                       context={this.props.context}
                       display={true}
                       recurrenceData={this.state.eventData.RecurrenceData}
-                      startDate={this.state.eventData.EventDate}
+                      startDate={this.state.startDate}
                       siteUrl={this.props.siteUrl}
                       returnRecurrenceData={this.returnRecurrenceInfo}
                     >

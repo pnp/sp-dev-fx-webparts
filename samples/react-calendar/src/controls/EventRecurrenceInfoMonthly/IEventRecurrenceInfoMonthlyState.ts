@@ -15,7 +15,7 @@ export interface IEventRecurrenceInfoMonthlyState {
   errorMessageDayOfMonth:string;
   errorMessageNumberOfMonth:string;
   selectedWeekOrderMonth:string;
-  selectedWeekDay:string;
+  selectedWeekDay:string | number;
   everyNumberOfMonthsWeekDay:string;
   errorMessageNumberOfMonthWeekDay:string;
 }

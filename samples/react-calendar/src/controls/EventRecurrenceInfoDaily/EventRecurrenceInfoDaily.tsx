@@ -9,37 +9,26 @@ import { parseString, Builder } from "xml2js";
 import {
   ChoiceGroup,
   IChoiceGroupOption,
-  Dropdown,
-  IDropdownOption,
-  TextField,
-  SpinButton,
   Label,
-  PrimaryButton,
   MaskedTextField,
-  CommandBarButton, IButtonProps,
-  DefaultButton
 } from 'office-ui-fabric-react';
-import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { Root } from '@pnp/graph';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import { _MinimalWebPartContainer } from '@microsoft/sp-webpart-base';
+
 import spservices from '../../services/spservices';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-
-  goToToday: 'Go to today',
-  prevMonthAriaLabel: 'Go to previous month',
-  nextMonthAriaLabel: 'Go to next month',
-  prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.December],
+  shortMonths: [strings.Jan, strings.Feb, strings.Mar, strings.Apr, strings.May, strings.Jun, strings.Jul, strings.Aug, strings.Sep, strings.Oct, strings.Nov, strings.Dez],
+  days: [strings.Sunday, strings.Monday, strings.Tuesday, strings.Wednesday, strings.Thursday, strings.Friday, strings.Saturday],
+  shortDays: [strings.ShortDay_S, strings.ShortDay_M, strings.ShortDay_T, strings.ShortDay_W, strings.ShortDay_Tursday, strings.ShortDay_Friday, strings.ShortDay_Saunday],
+  goToToday: strings.GoToDay,
+  prevMonthAriaLabel: strings.PrevMonth,
+  nextMonthAriaLabel: strings.NextMonth,
+  prevYearAriaLabel: strings.PrevYear,
+  nextYearAriaLabel: strings.NextYear,
+  closeButtonAriaLabel: strings.CloseDate,
+  isRequiredErrorMessage: strings.IsRequired,
+  invalidInputErrorMessage: strings.InvalidDateFormat,
 };
 
 /**
@@ -182,7 +171,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
     this.applyRecurrence();
   }
 
-  public async componentDidMount() {
+  public async componentWillMount() {
     //  await this.load();
     await this.load();
   }
@@ -249,14 +238,14 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
         numberOfDays: dailyPatern.dayFrequency ? dailyPatern.dayFrequency : '1',
         disableNumberOfDays: dailyPatern.dayFrequency ? false : true,
         selectdateRangeOption: selectDateRangeOption,
-        numberOcurrences: dateRange.repeatInstances ? dateRange.repeatInstances : '1',
+        numberOcurrences: dateRange.repeatInstances ? dateRange.repeatInstances : '10',
         disableNumberOcurrences: dateRange.repeatInstances ? false : true,
         endDate: dateRange.windowEnd ? new Date(moment(dateRange.windowEnd).format('YYYY/MM/DD')) : this.state.endDate,
         disableEndDate: dateRange.windowEnd ? false : true,
         isLoading: false,
       });
-      await this.applyRecurrence();
     }
+    await this.applyRecurrence();
   }
 
 
@@ -292,7 +281,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
     const recurrenceXML = `<recurrence><rule><firstDayOfWeek>su</firstDayOfWeek><repeat>` +
       `<daily ${ this.state.selectPatern === 'every' ? `dayFrequency="${this.state.numberOfDays.trim()}"/>` : 'weekday'}</repeat>${selectDateRangeOption}</rule></recurrence>`;
     console.log(recurrenceXML);
-    this.props.returnRecurrenceData(eventDate, recurrenceXML);
+    this.props.returnRecurrenceData(this.state.startDate, recurrenceXML);
   }
   /**
    *
@@ -315,7 +304,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                 options={[
                   {
                     key: 'every',
-                    text: 'every',
+                    text: strings.every,
                     ariaLabel: 'every',
 
                     onRenderField: (props, render) => {
@@ -330,14 +319,14 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                             value={this.state.numberOfDays}
                             errorMessage={this.state.errorMessageNumberOfDays}
                             onChange={this.onNumberOfDaysChange} />
-                          <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '60px', paddingLeft: '10px' } }}>days</Label>
+                          <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '60px', paddingLeft: '10px' } }}>{strings.days}</Label>
                         </div>
                       );
                     }
                   },
                   {
                     key: 'everweekday',
-                    text: 'every weekdays',
+                    text: strings.everyweekdays,
                   }
                 ]}
                 onChange={this.onPaternChange}
@@ -352,9 +341,9 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                 <DatePicker
                   firstDayOfWeek={DayOfWeek.Sunday}
                   strings={DayPickerStrings}
-                  placeholder="Select a date..."
-                  ariaLabel="Select a date"
-                  label="Start Date"
+                  placeholder={strings.StartDatePlaceHolder}
+                  ariaLabel={strings.StartDatePlaceHolder}
+                  label={strings.StartDateLabel}
                   value={this.state.startDate}
                   onSelectDate={this.onStartDateChange}
                 />
@@ -367,7 +356,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                   options={[
                     {
                       key: 'noDate',
-                      text: 'no end date',
+                      text: strings.noEndDate,
                     },
                     {
                       key: 'endDate',
@@ -379,7 +368,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                             <DatePicker
                               firstDayOfWeek={DayOfWeek.Sunday}
                               strings={DayPickerStrings}
-                              placeholder="Select a date..."
+                              placeholder={strings.StartDatePlaceHolder}
                               ariaLabel="Select a date"
                               style={{ display: 'inline-block', verticalAlign: 'top', paddingLeft: '22px', }}
                               onSelectDate={this.onEndDateChange}

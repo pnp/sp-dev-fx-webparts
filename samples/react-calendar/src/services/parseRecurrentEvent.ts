@@ -14,7 +14,7 @@ export default class parseRecurrentEvent {
 
         wDtEnd = wDtEnd.substring(0, wDtEnd.indexOf('<'));
         end = moment(wDtEnd).toDate();
-        console.log("enddateevent", end);
+
       }
 
       this.full = this.full.concat(this.parseEvent(events[i], start, end));
@@ -232,7 +232,7 @@ export default class parseRecurrentEvent {
             }
             else if (arr.indexOf("day") != -1) {//just looking for the Nth day in the month...
               if (weekdayOfMonth == 'last') {
-                var nd: any = nd.setMonth(nd.getMonth() + 1);
+                nd.setMonth(nd.getMonth() + 1);
                 nd.setDate(0);
               }
               else nd.setDate(nd.getDate() + (wom.indexOf(weekdayOfMonth))); //now add days to get to the Nth instance of this day
@@ -242,7 +242,7 @@ export default class parseRecurrentEvent {
                 if (arr.indexOf(wd[i]) != -1) {
                   if (nd.getDay() > i)  nd.setDate(nd.getDate() + (7 - (nd.getDay() - i)));
                   else nd.setDate(nd.getDate() + (i - nd.getDay() ));
-                  console.log(nd);
+
                 }
               }
 
@@ -254,7 +254,7 @@ export default class parseRecurrentEvent {
                 nd = new Date(temp);
               }
               else {
-                console.log(wom.indexOf(weekdayOfMonth));
+
                 for (var i: any = 0; i < wom.indexOf(weekdayOfMonth); i++) {
                     nd.setDate(nd.getDate() + 7);  //add a week to each instance to get the Nth instance
                     console.log(nd);
