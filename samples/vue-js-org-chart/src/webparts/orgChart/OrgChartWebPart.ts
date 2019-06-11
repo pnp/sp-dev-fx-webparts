@@ -17,6 +17,7 @@ import OfficeUIFabricVue from 'office-ui-fabric-vue';
   // import css style
   import 'office-ui-fabric-vue/dist/index.css';
   import OrgChartService from './services/OrgChartService';
+  import { setup as pnpSetup } from "@pnp/common";
 
 export interface IOrgChartWebPartProps {
   description: string;
@@ -24,6 +25,13 @@ export interface IOrgChartWebPartProps {
 
 export default class OrgChartWebPart extends BaseClientSideWebPart<IOrgChartWebPartProps> {
 
+  public onInit(): Promise<void> {
+
+    return super.onInit().then(_ => {
+      pnpSetup({spfxContext: this.context});
+    });
+  }
+  
   public render(): void {
     const id: string = `wp-${this.instanceId}`;
     this.domElement.innerHTML = `<div id="${id}"></div>`;

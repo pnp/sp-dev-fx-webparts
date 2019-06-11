@@ -21,7 +21,7 @@
       }
     ],
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true,
+    "skipFeatureDeployment": false,
     "isDomainIsolated": false
   },
   "paths": {
