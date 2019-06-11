@@ -1,4 +1,21 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import './node_modules/spfx-uifabric-themes/office.theme.vars';
+
+:export {
+  themeDark: $ms-color-themePrimary;
+}
+.eventStyleSetter {
+  background-color: white;
+  border-radius: 0px;
+  color:  $ms-color-themePrimary;
+  opacity: 1;
+
+  border-width: '1.1px';
+  border-style: 'solid';
+  border-color:   $ms-color-themePrimary;
+  border-left-width: '6px';
+  display: 'block';
+}
 
 
 .Documentcard {

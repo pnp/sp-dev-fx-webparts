@@ -5,8 +5,6 @@ This Web Part allows you to manage events in a calendar.
 Uses a list of existing calendars on any website.
 The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
 
-The Events are created in Site TimeZone, defined in site Regional Settings.
-
 Each category has its own color that is generated in the load.
 
 The Web Part checks the user's permissions for the View, Add, Edit, and Delete events.
@@ -14,56 +12,72 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 The Web Part does not show recurring events, I will work on it soon.
 
 
+##  
+![callendar](/assets/animatevideo.gif) 
+
 
 ##  
-![callendar](/samples/react-calendar/assets/animatevideo.gif)  
+![callendar](/assets/weekly_moderncalendar.gif) 
+
+##  
+![callendar](/assets/modercalendar_monthly.gif) 
+
+##  
+![callendar](/assets/moderncalendar_yearly.gif) 
+
+ 
 
 
 ##  Web Part  - Screenshots
-![callendar](/samples/react-calendar//assets/screen1.png)
+
+![callendar](/assets/calendar_teams.jpg)
+
+![callendar](/assets/calendar_teams2.jpg)
+
+![callendar](/assets/screen1.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.0.jpg)
+![callendar](/assets/screen1.0.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.1.png)
+![callendar](/assets/screen1.1.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.2.png)
+![callendar](/assets/screen1.2.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.3.png)
+![callendar](/assets/screen1.3.png)
 
 
-![callendar](/samples/react-calendar//assets/screen1.4.png)
+![callendar](/assets/screen1.4.png)
 
 
-![callendar](/samples/react-calendar//assets/screen2.png)
-
-
-
-![callendar](/samples/react-calendar/assets/screen3.png)
-
-
-
-![callendar](/samples/react-calendar//assets/screen4.png)
+![callendar](/assets/screen2.png)
 
 
 
-![callendar](/samples/react-calendar/assets/screen5.png)
-
-
-![callendar](/samples/react-calendar//assets/screen6.png)
-
-
-![callendar](/samples/react-calendar//assets/screen7.png)
-
-
-![callendar](/samples/react-calendar/assets/screen8.png)
+![callendar](/assets/screen3.png)
 
 
 
-![callendar](/samples/react-calendar//assets/screen9.png)
+![callendar](/assets/screen4.png)
+
+
+
+![callendar](/assets/screen5.png)
+
+
+![callendar](/assets/screen6.png)
+
+
+![callendar](/assets/screen7.png)
+
+
+![callendar](/assets/screen8.png)
+
+
+
+![callendar](/assets/screen9.png)
 ##   
  
 
@@ -103,6 +117,7 @@ Calendar  Web Part|João Mendes
 Version|Date|Comments
 -------|----|--------
 1.0.0|April 25, 2019|Initial release
+1.0.1|June 10, 2019|update add recurrence events
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
