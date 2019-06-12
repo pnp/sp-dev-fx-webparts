@@ -13,71 +13,71 @@ The Web Part does not show recurring events, I will work on it soon.
 
 
 ##  
-![callendar](/assets/animatevideo.gif) 
+![callendar](/samples/react-calendar/assets/animatevideo.gif) 
 
 
 ##  
-![callendar](/assets/weekly_moderncalendar.gif) 
+![callendar](/samples/react-calendar/assets/weekly_moderncalendar.gif) 
 
 ##  
-![callendar](/assets/modercalendar_monthly.gif) 
+![callendar](/samples/react-calendar/assets/modercalendar_monthly.gif) 
 
 ##  
-![callendar](/assets/moderncalendar_yearly.gif) 
+![callendar](/samples/react-calendar/assets/moderncalendar_yearly.gif) 
 
  
 
 
 ##  Web Part  - Screenshots
 
-![callendar](/assets/calendar_teams.jpg)
+![callendar](/samples/react-calendar/assets/calendar_teams.jpg)
 
-![callendar](/assets/calendar_teams2.jpg)
+![callendar](/samples/react-calendar/assets/calendar_teams2.jpg)
 
-![callendar](/assets/screen1.png)
-
-
-![callendar](/assets/screen1.0.png)
+![callendar](/samples/react-calendar/assets/screen1.png)
 
 
-![callendar](/assets/screen1.1.png)
+![callendar](/samples/react-calendar/assets/screen1.0.png)
 
 
-![callendar](/assets/screen1.2.png)
+![callendar](/samples/react-calendar/assets/screen1.1.png)
 
 
-![callendar](/assets/screen1.3.png)
+![callendar](/samples/react-calendar/assets/screen1.2.png)
 
 
-![callendar](/assets/screen1.4.png)
+![callendar](/samples/react-calendar/assets/screen1.3.png)
 
 
-![callendar](/assets/screen2.png)
+![callendar](/samples/react-calendar/assets/screen1.4.png)
 
 
-
-![callendar](/assets/screen3.png)
+![callendar](/samples/react-calendar/assets/screen2.png)
 
 
 
-![callendar](/assets/screen4.png)
+![callendar](/samples/react-calendar/assets/screen3.png)
 
 
 
-![callendar](/assets/screen5.png)
-
-
-![callendar](/assets/screen6.png)
-
-
-![callendar](/assets/screen7.png)
-
-
-![callendar](/assets/screen8.png)
+![callendar](/samples/react-calendar/assets/screen4.png)
 
 
 
-![callendar](/assets/screen9.png)
+![callendar](/samples/react-calendar/assets/screen5.png)
+
+
+![callendar](/samples/react-calendar/assets/screen6.png)
+
+
+![callendar](/samples/react-calendar/assets/screen7.png)
+
+
+![callendar](/samples/react-calendar/assets/screen8.png)
+
+
+
+![callendar](/samples/react-calendar/assets/screen9.png)
 ##   
  
 
@@ -86,21 +86,20 @@ The Web Part does not show recurring events, I will work on it soon.
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
 
 ## WebPart Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
 Site Url of Calendar List | Text| yes|
-Calendar list| Text| yes|  this is filled with all list of  type "event list" created
+Calendar list| Choice/Dropdown | yes|  this is filled with all list of  type "event list" created
 Start Date | Date | yes | Event Date 
 End Date| Date| yes | Event Date
  
@@ -137,4 +136,4 @@ Version|Date|Comments
 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-calendar" />
