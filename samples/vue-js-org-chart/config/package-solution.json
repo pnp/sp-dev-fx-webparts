@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "vue-js-org-chart-client-side-solution",
+    "id": "6d311b84-a90e-4090-b632-f4c87624d2f4",
+    "version": "1.0.0.0",
+    "features": [
+      {
+        "title": "provision-employees-list-client-side-solution",
+        "description": "provision-employees-list-client-side-solution",
+        "id": "ce98fa61-31a7-41de-98d9-90feb2c5dc96",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ]
+        }
+      }
+    ],
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/vue-js-org-chart.sppkg"
+  }
+}
