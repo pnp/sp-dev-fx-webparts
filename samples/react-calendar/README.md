@@ -84,7 +84,6 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
  
 
 
-
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
 
