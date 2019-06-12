@@ -1,7 +1,7 @@
 # React Calendar
 
 ## Summary
-This Web Part allows you to manage events in a calendar.
+This Web Part allows you to manage events in a calendar. 
 Uses a list of existing calendars on any website.
 The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
 
@@ -9,7 +9,7 @@ Each category has its own color that is generated in the load.
 
 The Web Part checks the user's permissions for the View, Add, Edit, and Delete events.
 
-The Web Part does not show recurring events, I will work on it soon.
+
 
 
 ##  
