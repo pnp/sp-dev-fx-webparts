@@ -1,10 +1,61 @@
 # React Functional Component web part
 
+## Summary
+
+This web part is intended to be easier to understand for new developers building their first SPFx web part. It is a refactoring of the HelloWorld web part that is created by the **@microsoft/generator-sharepoint** Yeoman generator, and introduces React Functional Components.
+
+![Screenshot](Screenshot.png "Screenshot - nothing to see here, move along")
+
+## Used SharePoint Framework Version
+
+![drop](https://img.shields.io/badge/version-GA-green.svg)
+
+## Applies to
+
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+
+## Prerequisites
+
+This sample was built with version 1.82 of the SharePoint Framework. It has been modified to use version 16.8 of the React framework (by default the version used is React 16.7). React 16.8 supports React Hooks although this is not needed in the sample code because HelloWorld.tsx is a pure (or stateless) functional component.
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-functional-component | Bill Ayers
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|June 5, 2019|Initial release
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+* Clone this repository
+* Move to /samples/react-functional-component folder
+* At the command line run:
+  * `npm install`
+  * `gulp serve`
+
+## Features
+
 The purpose of this web part is to make it easier to understand for new developers building their first SPFx web part, when teaching the SharePoint Framework. The web part is a refactoring of the HelloWorld web part that is created by the **@microsoft/generator-sharepoint** Yeoman generator. The resulting rendered web part should look exactly the same, but the complexity of the code has been significantly reduced, and should be much easier to understand for a newcomer to the framework. 
 
 It also introduces React Functional Components which offers a simpler way of building React Components using functions instead of classes.
 
-![Screenshot](Screenshot.png "Screenshot - nothing to see here, move along")
+* Simplification
+* Functional Component
+* Adding State
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-functional-component" />
 
 ## HelloWorldWebPart.ts Simplification
 
@@ -27,6 +78,4 @@ You may be wondering how maintaining state, side effects or other complexities c
 ## Building and testing
 
 In the react-functional-component directory run **npm install** to resolve all the dependencies. Once this has completed you can run **gulp serve** to test the web part in the local workbench.
-
-This sample was built with version 1.82 of the SharePoint Framework. It has been modified to use version 16.8 of the React framework (by default the version used is React 16.7). React 16.8 supports React Hooks although this is not needed in the sample code because HelloWorld.tsx is a pure (or stateless) functional component.
 
