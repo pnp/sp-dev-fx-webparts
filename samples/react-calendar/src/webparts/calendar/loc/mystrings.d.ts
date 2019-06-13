@@ -1,4 +1,25 @@
 declare interface ICalendarWebPartStrings {
+  WeeksOnLabel: string;
+  PaternLabel: string;
+  OcurrencesLabel: string;
+  dateRangeLabel: string;
+  weekEndDay: string;
+  weekDayLabel: string;
+  lastLabel: string;
+  fourthLabel: string;
+  thirdLabel: string;
+  secondLabel: string;
+  firstLabel: string;
+  theLabel: string;
+  MonthsLabel: string;
+  ofEveryLabel: string;
+  AllowedValues1to12Label: string;
+  noEndDate: string;
+  everyweekdays: string;
+  days: string;
+  every: string;
+  EndByLabel: string;
+  EndAfterLabel: string;
   HttpErrorMessage: string;
   CategoryPlaceHolder: string;
   CategoryLabel: string;
@@ -52,7 +73,7 @@ declare interface ICalendarWebPartStrings {
   Oct:string;
   Nov:string;
   Dez:string;
-  Dezember: string;
+  December: string;
   November: string;
   October: string;
   September: string;
@@ -91,7 +112,6 @@ declare interface ICalendarWebPartStrings {
   previousLabel: string;
   nextLabel: string;
   showMore: string;
-  PropPanelSiteUrlErrorMessage: string;
 }
 
 declare module 'CalendarWebPartStrings' {

@@ -12,7 +12,8 @@
   "requiresCustomScript": false,
   "supportedHosts": [
     "SharePointWebPart",
-    "TeamsTab"
+    "TeamsTab",
+    "SharePointFullPage"
   ],
   "preconfiguredEntries": [
     {
