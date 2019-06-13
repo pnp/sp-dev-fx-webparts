@@ -11,30 +11,32 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "react": "16.7.0",
-    "react-dom": "16.7.0",
-    "@types/react": "16.4.2",
-    "@types/react-dom": "16.0.5",
-    "@microsoft/sp-core-library": "1.8.1",
-    "@microsoft/sp-property-pane": "1.8.1",
-    "@microsoft/sp-webpart-base": "1.8.1",
-    "@microsoft/sp-lodash-subset": "1.8.1",
-    "@microsoft/sp-office-ui-fabric-core": "1.8.1",
+    "@microsoft/sp-core-library": "1.8.2",
+    "@microsoft/sp-lodash-subset": "1.8.2",
+    "@microsoft/sp-office-ui-fabric-core": "1.8.2",
+    "@microsoft/sp-property-pane": "1.8.2",
+    "@microsoft/sp-webpart-base": "1.8.2",
+    "@pnp/spfx-controls-react": "1.13.2",
+    "@types/es6-promise": "0.0.33",
+    "@types/react": "16.7.22",
+    "@types/react-dom": "16.8.0",
     "@types/webpack-env": "1.13.1",
-    "@types/es6-promise": "0.0.33"
+    "office-ui-fabric-react": "6.143.0",
+    "react": "16.7.0",
+    "react-dom": "16.7.0"
   },
   "resolutions": {
-    "@types/react": "16.4.2"
+    "@types/react": "16.7.22"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.8.1",
-    "@microsoft/sp-tslint-rules": "1.8.1",
-    "@microsoft/sp-module-interfaces": "1.8.1",
-    "@microsoft/sp-webpart-workbench": "1.8.1",
-    "@microsoft/rush-stack-compiler-2.7": "0.4.0",
-    "gulp": "~3.9.1",
+    "@microsoft/rush-stack-compiler-2.9": "0.7.7",
+    "@microsoft/sp-build-web": "1.8.2",
+    "@microsoft/sp-module-interfaces": "1.8.2",
+    "@microsoft/sp-tslint-rules": "1.8.2",
+    "@microsoft/sp-webpart-workbench": "1.8.2",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
-    "ajv": "~5.2.2"
+    "ajv": "~5.2.2",
+    "gulp": "~3.9.1"
   }
 }
