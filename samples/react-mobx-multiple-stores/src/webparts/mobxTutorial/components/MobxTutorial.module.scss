@@ -1,0 +1,41 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.mobxTutorial {
+  margin: 20px;
+
+  .grid {
+    @include ms-Grid;
+    padding: 10px;
+  }
+
+  .row {
+    @include ms-Grid-row;
+  }
+
+  .columnCreateItems {
+    @include ms-Grid-col;
+    @include ms-lg4;
+    @include ms-xl4;
+    @include ms-sm12;
+    padding-right: 50px;
+  }
+
+  .columnItemDetails {
+    @include ms-Grid-col;
+    @include ms-lg8;
+    @include ms-xl8;
+    @include ms-sm12;
+  }
+
+  .title {
+    @include ms-font-xl;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+  }
+
+  .inputElement {
+    margin-top: 5px;
+  }
+}

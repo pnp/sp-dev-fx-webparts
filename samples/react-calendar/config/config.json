@@ -8,6 +8,7 @@
           "entrypoint": "./lib/webparts/calendar/CalendarWebPart.js",
           "manifest": "./src/webparts/calendar/CalendarWebPart.manifest.json"
         }
+
       ]
     }
   },

@@ -15,7 +15,6 @@
 .description:hover {
   border-color: rgb( 51, 51, 51 );
 }
-
 .calendar {
   .container {
     max-width: 100%;
@@ -23,13 +22,11 @@
     height: 600px;
     margin: 0px auto;
   }
-
   .eventTitle {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
   .row {
     @include ms-Grid-row;
     @include ms-fontColor-white;
@@ -37,7 +34,6 @@
     padding: 20px;
     border-style: solid;
   }
-
   .column {
     @include ms-Grid-col;
     @include ms-lg10;
@@ -45,22 +41,18 @@
     @include ms-xlPush2;
     @include ms-lgPush1;
   }
-
   .title {
     @include ms-font-xl;
     @include ms-fontColor-white;
   }
-
   .subTitle {
     @include ms-font-l;
     @include ms-fontColor-white;
   }
-
   .description {
     @include ms-font-l;
     @include ms-fontColor-white;
   }
-
   .button {
     // Our button
     text-decoration: none;
@@ -84,6 +76,7 @@
     cursor: pointer;
     display: inline-block;
     padding: 0 16px;
+  }
 
     .label {
       font-weight: $ms-font-weight-semibold;
@@ -94,5 +87,4 @@
       vertical-align: top;
       display: inline-block;
     }
-  }
 }

@@ -91,4 +91,4 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * Using async / await for the async calls
 * Office UI fabric components
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-tagging" /> 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-tagging" />
