@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "js-theme-manager-2019-client-side-solution",
+    "id": "a828ebcf-33a4-478c-99d6-de70c11a6762",
+    "version": "2019.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/js-theme-manager-2019.sppkg"
+  }
+}
