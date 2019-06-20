@@ -47,7 +47,8 @@ Version|Date|Comments
 - Clone this repository
 - in the command line run:
   - `npm install`
-  - `gulp serve`
+  - `gulp serve --nobrowser`
+  - In your browser, go to `https://yourtenantname.sharepoint.com/_layouts/15/workbench.aspx`
 
 
 
