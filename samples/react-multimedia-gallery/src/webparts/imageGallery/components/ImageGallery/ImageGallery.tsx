@@ -306,7 +306,8 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
       arrows: false,
       draggable: false,
       adaptiveHeight: true,
-      fade: true,
+      useCSS: true,
+      useTransform: true,
     };
 
     return (
