@@ -115,15 +115,11 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
     const tenantUrl = `https://${location.host}`;
     try {
       this.images = await this.spService.getImages(this.props.siteUrl, this.props.list, this.props.numberImages);
-      //   const el =  <Label style={{fontSize: FontSizes.size18, bottom:0,transition:'.5s ease', textAlign: 'center', width:'100%', position:'absolute', background: 'rgba(0, 0, 0, 0.5)', color: '#f1f1f1', padding: '10px'}}>Teste</Label>;
-      const el = <Label className={styles.overlay}>Teste</Label>;
-      for (const image of this.images) {
 
-        if (image.FileSystemObjectType == 1) continue; // by pass folder item
+      for (const image of this.images) {
         const pURL = `${tenantUrl}/_api/v2.0/sharePoint:${image.File.ServerRelativeUrl}:/driveItem/thumbnails/0/large/content?preferNoRedirect=true `;
         const thumbnailUrl = `${tenantUrl}/_api/v2.0/sharePoint:${image.File.ServerRelativeUrl}:/driveItem/thumbnails/0/c240x240/content?preferNoRedirect=true `;
-        //    const splitFileServerUrl: string[] = image.File.ServerRelativeUrl.split('.');
-        //    const extention: string = splitFileServerUrl[1];
+
         let mediaType: string = '';
         switch (image.File_x0020_Type) {
           case ('jpg' || 'jpeg' || 'png' || 'tiff' || 'gif'):
@@ -256,16 +252,10 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
 
   private onNext = () => {
     this._slider.slickNext();
-    /*   this.setState(state => ({
-         photoIndex: state.photoIndex + 1
-       })); */
   }
 
   private onPrev = () => {
     this._slider.slickPrev();
-    /*    this.setState(state => ({
-          photoIndex: state.photoIndex - 1
-        }));*/
   }
 
 
