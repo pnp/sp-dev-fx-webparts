@@ -3,7 +3,6 @@ import styles from './Event.module.scss';
 import * as strings from 'CalendarWebPartStrings';
 import { IEventProps } from './IEventProps';
 import { IEventState } from './IEventState';
-import { escape } from '@microsoft/sp-lodash-subset';
 import * as moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
@@ -11,21 +10,14 @@ import {
   Panel,
   PanelType,
   TextField,
-  Label,
-  extendComponent
-
+  Label
 } from 'office-ui-fabric-react';
-import { EnvironmentType } from '@microsoft/sp-core-library';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { IEventData } from '../../services/IEventData';
 import { IUserPermissions } from '../../services/IUserPermissions';
 import {
   DatePicker,
-  DayOfWeek,
   IDatePickerStrings,
   Dropdown,
-  DropdownMenuItemType,
-  IDropdownStyles,
   IDropdownOption,
   DefaultButton,
   PrimaryButton,
@@ -37,13 +29,9 @@ import {
   Dialog,
   DialogType,
   DialogFooter,
-  Toggle,
-  ActionButton,
-  IButtonProps
-
+  Toggle
 }
   from 'office-ui-fabric-react';
-import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 import { IPanelModelEnum } from './IPanelModeEnum';
 import { EditorState, convertToRaw, ContentState } from 'draft-js';
@@ -54,10 +42,8 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import spservices from '../../services/spservices';
 import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
 import { EventRecurrenceInfo } from '../../controls/EventRecurrenceInfo/EventRecurrenceInfo';
-import { string } from 'prop-types';
 import { getGUID } from '@pnp/common';
 
-const today: Date = new Date(Date.now());
 const DayPickerStrings: IDatePickerStrings = {
   months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.December],
   shortMonths: [strings.Jan, strings.Feb, strings.Mar, strings.Apr, strings.May, strings.Jun, strings.Jul, strings.Aug, strings.Sep, strings.Oct, strings.Nov, strings.Dez],

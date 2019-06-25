@@ -2,23 +2,18 @@
 // March 2019
 
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { sp, Fields, Web, SearchResults, Field, PermissionKind, RegionalSettings } from '@pnp/sp';
+import { sp, Web, PermissionKind, RegionalSettings } from '@pnp/sp';
 import { graph, } from "@pnp/graph";
-import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions, HttpClient, MSGraphClient } from '@microsoft/sp-http';
 import * as $ from 'jquery';
 import { IEventData } from './IEventData';
-import { registerDefaultFontFaces } from "@uifabric/styling";
 import * as moment from 'moment';
 import { SiteUser } from "@pnp/sp/src/siteusers";
 import { IUserPermissions } from './IUserPermissions';
-import { dateAdd } from "@pnp/common";
-import { escape, update } from '@microsoft/sp-lodash-subset';
 import parseRecurrentEvent from './parseRecurrentEvent';
 
 // Class Services
 export default class spservices {
 
-  private graphClient: MSGraphClient = null;
 
   constructor(private context: WebPartContext) {
     // Setuo Context to PnPjs and MSGraph
@@ -45,7 +40,6 @@ export default class spservices {
    */
   public async getSiteTimeZoneHours(siteUrl: string): Promise<number> {
     let numberHours: number = 0;
-    let siteTimeZoneHours: any;
     let siteTimeZoneBias: number;
     let siteTimeZoneDaylightBias: number;
     let currentDateTimeOffSet: number = new Date().getTimezoneOffset() / 60;
