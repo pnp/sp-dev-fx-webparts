@@ -188,7 +188,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
                 :
                 <div style={{ maxWidth: '100%' }}>
                   <Image src={GalleryImage.imageUrl}
-                    style={{ width: '100%', height: 'auto', overflow: 'hidden', maxHeight: '100%' }}
+                    style={{ height: 'auto', overflow: 'hidden', maxHeight: '100%' }}
                     onLoadingStateChange={async (loadState: ImageLoadState) => {
                       console.log('imageload Status ' + i, loadState, GalleryImage.imageUrl);
                       if (loadState == ImageLoadState.loaded) {
@@ -306,6 +306,7 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
       arrows: false,
       draggable: false,
       adaptiveHeight: true,
+      fade: true,
     };
 
     return (
