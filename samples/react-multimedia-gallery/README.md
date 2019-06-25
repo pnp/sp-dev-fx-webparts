@@ -10,7 +10,7 @@ It uses Microsoft Graph API to get thumbnails and image/video url and use PnPjs 
 ##  
 ![callendar](/samples/react-multimedia-gallery/assets/MultimediaGallery.gif) 
 
-D:/Documents/GitHub/sp-dev-fx-webparts/samples/react-multimedia-gallery/assets/Annotation0.jpg
+ 
 ##  Web Part  - Screenshots
 
 ![gallery](/samples/react-multimedia-gallery/assets/Annotation2.jpg)
