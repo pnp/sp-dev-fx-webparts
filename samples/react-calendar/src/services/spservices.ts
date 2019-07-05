@@ -181,7 +181,7 @@ export default class spservices {
 
       const web = new Web(siteUrl);
       //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
-      results = await web.lists.getById(listId).items.getById(updateEvent.Id).update({
+      let newItem: any = {
         Title: updateEvent.title,
         Description: updateEvent.Description,
         Geolocation: updateEvent.geolocation,
@@ -192,11 +192,17 @@ export default class spservices {
         fAllDayEvent: false,
         fRecurrence: updateEvent.fRecurrence,
         Category: updateEvent.Category,
-        UID: updateEvent.UID,
         RecurrenceData: updateEvent.RecurrenceData ? await this.deCodeHtmlEntities(updateEvent.RecurrenceData) : "",
         EventType: updateEvent.EventType,
-        MasterSeriesItemID: updateEvent.MasterSeriesItemID,
-      });
+      };
+      if (updateEvent.UID) {
+        newItem.UID = updateEvent.UID;
+      }
+      if (updateEvent.MasterSeriesItemID) {
+        newItem.MasterSeriesItemID = updateEvent.MasterSeriesItemID;
+      }
+
+      results = await web.lists.getById(listId).items.getById(updateEvent.Id).update(newItem);
     } catch (error) {
       return Promise.reject(error);
     }
