@@ -7,7 +7,7 @@ export default class parseRecurrentEvent {
   public parseEvents(events: any[], start: any, end: any) {
 
     this.wEvents = events;
-    for (var i = 0; i < events.length; i++) {
+    for (let i = 0; i < events.length; i++) {
       end = null;
       if (events[i].RecurrenceData.indexOf('<windowEnd>') != -1) {
         let wDtEnd = events[i].RecurrenceData.substring(events[i].RecurrenceData.indexOf("<windowEnd>") + 11);
@@ -42,7 +42,7 @@ export default class parseRecurrentEvent {
   //
 
   public formatString(str: string) {
-    var arr = str.split("'");
+    let arr = str.split("'");
     str = arr.join('');
     arr = str.split('"');
     str = arr.join('');
@@ -57,7 +57,7 @@ export default class parseRecurrentEvent {
     if (typeof date == 'string') {
       if (allDay) {
         if (date.lastIndexOf('Z') == date.length - 1) {
-          var dt = date.substring(0, date.length - 1);
+          const dt = date.substring(0, date.length - 1);
           return new Date(dt);
         }
       }
@@ -76,29 +76,29 @@ export default class parseRecurrentEvent {
     else {
       start = start || this.parseDate(e.EventDate, e.fAllDayEvent);
       end = end || this.parseDate(e.EndDate, e.fAllDayEvent);
-      var er = [];
-      var wd = ['su', 'mo', 'tu', 'we', 'th', 'fr', 'sa'];
-      var wom = ['first', 'second', 'third', 'fourth'];
-      var rTotal: any = 0;
-      var total: any = 0;
+      const er = [];
+      const wd = ['su', 'mo', 'tu', 'we', 'th', 'fr', 'sa'];
+      const wom = ['first', 'second', 'third', 'fourth'];
+      let rTotal: any = 0;
+      let total: any = 0;
       if (e.RecurrenceData.indexOf('<repeatInstances>') != -1) {
         rTotal = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<repeatInstances>") + 17);
         rTotal = parseInt(rTotal.substring(0, rTotal.indexOf('<')));
       }
       if (e.RecurrenceData.indexOf("<daily ") != -1) {
-        var str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<daily "));
+        let str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<daily "));
         str = str.substring(7, str.indexOf('/>') - 1);
-        var arr = this.formatString(str);
+        const arr = this.formatString(str);
         if (arr.indexOf("dayFrequency") != -1) {
-          var frequency = parseInt(arr[arr.indexOf("dayFrequency") + 1]);
-          var loop = true;
-          var init = this.parseDate(e.EventDate, e.fAllDayEvent);
+          const frequency = parseInt(arr[arr.indexOf("dayFrequency") + 1]);
+          let loop = true;
+          const init = this.parseDate(e.EventDate, e.fAllDayEvent);
           while (loop) {
             total++;
             if ((new Date(init)).getTime() >= start.getTime()) {
-              var ed = new Date(init);
+              const ed = new Date(init);
               ed.setSeconds(ed.getSeconds() + e.Duration);
-              var ni = this.cloneObj(e);
+              const ni = this.cloneObj(e);
               ni.EventDate = new Date(init);
               if (!this.RecurrenceExceptionExists(e.Id, ni.EventDate)) {
                 ni.EndDate = ed;
@@ -117,23 +117,23 @@ export default class parseRecurrentEvent {
         }
       }
       if (e.RecurrenceData.indexOf("<weekly ") != -1) {
-        var str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<weekly "));
+        let str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<weekly "));
         str = str.substring(8, str.indexOf('/>') - 1);
-        var arr = this.formatString(str);
-        var frequency = parseInt(arr[arr.indexOf("weekFrequency") + 1]);
-        var loop = true;
-        var init = this.parseDate(e.EventDate, e.fAllDayEvent);
-        var initDay = init.getDay();
+        const arr = this.formatString(str);
+        const frequency = parseInt(arr[arr.indexOf("weekFrequency") + 1]);
+        let loop = true;
+        const init = this.parseDate(e.EventDate, e.fAllDayEvent);
+        let initDay = init.getDay();
         while (loop) {
-          for (var i = initDay; i < 7; i++) {
+          for (let i = initDay; i < 7; i++) {
             if (arr.indexOf(wd[i]) != -1 && (rTotal > total || rTotal == 0)) {
               total++;
               if ((new Date(init)).getTime() >= start.getTime()) {
-                var nd: any = new Date(init);
+                const nd: any = new Date(init);
                 nd.setDate(nd.getDate() + (i - initDay));
-                var ed = new Date(nd);
+                const ed = new Date(nd);
                 ed.setSeconds(ed.getSeconds() + e.Duration);
-                var ni = this.cloneObj(e);
+                const ni = this.cloneObj(e);
                 ni.EventDate = new Date(nd);
                 if (!this.RecurrenceExceptionExists(e.Id, ni.EventDate)) {
                   ni.EndDate = ed;
@@ -151,22 +151,22 @@ export default class parseRecurrentEvent {
         }
       }
       if (e.RecurrenceData.indexOf("<monthly ") != -1) {
-        var str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<monthly "));
+        let str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<monthly "));
         str = str.substring(9, str.indexOf('/>') - 1);
-        var arr = this.formatString(str);
-        var frequency = parseInt(arr[arr.indexOf("monthFrequency") + 1]);
-        var loop = true;
-        var init = this.parseDate(e.EventDate, e.fAllDayEvent);
-        var day = parseInt(arr[arr.indexOf("day") + 1]);
+        const arr = this.formatString(str);
+        const frequency = parseInt(arr[arr.indexOf("monthFrequency") + 1]);
+        let loop = true;
+        const init = this.parseDate(e.EventDate, e.fAllDayEvent);
+        const day = parseInt(arr[arr.indexOf("day") + 1]);
         while (loop) {
           total++;
           if ((new Date(init)).getTime() >= start.getTime()) {
-            var nd: any = new Date(init);
+            const nd: any = new Date(init);
             nd.setDate(day);
             if (nd.getMonth() == init.getMonth()) {
-              var ed = new Date(nd);
+              const ed = new Date(nd);
               ed.setSeconds(ed.getSeconds() + e.Duration);
-              var ni = this.cloneObj(e);
+              const ni = this.cloneObj(e);
               ni.EventDate = new Date(nd);
               if (!this.RecurrenceExceptionExists(e.Id, ni.EventDate)) {
                 ni.EndDate = ed;
@@ -182,18 +182,18 @@ export default class parseRecurrentEvent {
         }
       }
       if (e.RecurrenceData.indexOf("<monthlyByDay ") != -1) {
-        var str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<monthlyByDay "));
+        let str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<monthlyByDay "));
         str = str.substring(14, str.indexOf('/>') - 1);
-        var arr = this.formatString(str);
-        var frequency = parseInt(arr[arr.indexOf("monthFrequency") + 1]);
-        var loop = true;
-        var init = this.parseDate(e.EventDate, e.fAllDayEvent);
-        var weekdayOfMonth = arr[arr.indexOf("weekdayOfMonth") + 1];
-        var temp: any = new Date();
+        const arr = this.formatString(str);
+        const frequency = parseInt(arr[arr.indexOf("monthFrequency") + 1]);
+        let loop = true;
+        const init = this.parseDate(e.EventDate, e.fAllDayEvent);
+        const weekdayOfMonth = arr[arr.indexOf("weekdayOfMonth") + 1];
+        let temp: any = new Date();
         while (loop) {
           total++;
           if ((new Date(init)).getTime() >= start.getTime()) {
-            var nd: any = new Date(init);
+            let nd: any = new Date(init);
             nd.setDate(1); //set to first day of month
             if (arr.indexOf("weekday") != -1) { //find first weekday - if not saturday or sunday, then current date is a weekday
               if (nd.getDay() == 0) nd.setDate(nd.getDate() + 1);// add one day to sunday
@@ -207,7 +207,7 @@ export default class parseRecurrentEvent {
                 nd = new Date(temp);
               }
               else {
-                for (var i: any = 0; i < wom.indexOf(weekdayOfMonth); i++) {
+                for (let i: any = 0; i < wom.indexOf(weekdayOfMonth); i++) {
                   if (nd.getDay() == 5) nd.setDate(nd.getDate() + 3); //if the current date is friday, add three days to get to monday
                   else nd.setDate(nd.getDate() + 1); //otherwise, just add one day
                 }
@@ -224,7 +224,7 @@ export default class parseRecurrentEvent {
                 nd = new Date(temp);
               }
               else {
-                for (var i: any = 0; i < wom.indexOf(weekdayOfMonth); i++) {
+                for (let i: any = 0; i < wom.indexOf(weekdayOfMonth); i++) {
                   if (nd.getDay() == 0) nd.setDate(nd.getDate() + 6); //if the current date is sunday, add six days to get to saturday
                   else nd.setDate(nd.getDate() + 1); //otherwise, just add one day
                 }
@@ -238,7 +238,7 @@ export default class parseRecurrentEvent {
               else nd.setDate(nd.getDate() + (wom.indexOf(weekdayOfMonth))); //now add days to get to the Nth instance of this day
             }
             else {
-              for (var i: any = 0; i < wd.length; i++) { //get first instance of the specified day
+              for (let i: any = 0; i < wd.length; i++) { //get first instance of the specified day
                 if (arr.indexOf(wd[i]) != -1) {
                   if (nd.getDay() > i)  nd.setDate(nd.getDate() + (7 - (nd.getDay() - i)));
                   else nd.setDate(nd.getDate() + (i - nd.getDay() ));
@@ -255,16 +255,16 @@ export default class parseRecurrentEvent {
               }
               else {
 
-                for (var i: any = 0; i < wom.indexOf(weekdayOfMonth); i++) {
+                for (let i: any = 0; i < wom.indexOf(weekdayOfMonth); i++) {
                     nd.setDate(nd.getDate() + 7);  //add a week to each instance to get the Nth instance
                     console.log(nd);
                 }
               }
             }
             if (nd.getMonth() == init.getMonth()) { //make sure the new date calculated actually falls within the current month (sometimes there may be no 4th instance of a day)
-              var ed = new Date(nd);
+              const ed = new Date(nd);
               ed.setSeconds(ed.getSeconds() + e.Duration);
-              var ni = this.cloneObj(e);
+              const ni = this.cloneObj(e);
               ni.EventDate = new Date(nd);
               if (!this.RecurrenceExceptionExists(e.Id, ni.EventDate)) {
                 ni.EndDate = ed;
@@ -280,24 +280,24 @@ export default class parseRecurrentEvent {
         }
       }
       if (e.RecurrenceData.indexOf("<yearly ") != -1) {
-        var str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<yearly "));
+        let str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<yearly "));
         str = str.substring(8, str.indexOf('/>') - 1);
-        var arr = this.formatString(str);
-        var frequency = parseInt(arr[arr.indexOf("yearFrequency") + 1]);
-        var loop = true;
-        var init = this.parseDate(e.EventDate, e.fAllDayEvent);
-        var month = (parseInt(arr[arr.indexOf("month") + 1]) - 1);
-        var day = parseInt(arr[arr.indexOf("day") + 1]);
+        const arr = this.formatString(str);
+        const frequency = parseInt(arr[arr.indexOf("yearFrequency") + 1]);
+        let loop = true;
+        const init = this.parseDate(e.EventDate, e.fAllDayEvent);
+        const month = (parseInt(arr[arr.indexOf("month") + 1]) - 1);
+        const day = parseInt(arr[arr.indexOf("day") + 1]);
         while (loop) {
-          var nd: any = new Date(init);
+          const nd: any = new Date(init);
           nd.setMonth(month);
           nd.setDate(day);
           if ((new Date(init)).getTime() <= nd.getTime()) {
             total++;
             if ((new Date(init)).getTime() >= start.getTime()) {
-              var ed = new Date(nd);
+              const ed = new Date(nd);
               ed.setSeconds(ed.getSeconds() + e.Duration);
-              var ni = this.cloneObj(e);
+              const ni = this.cloneObj(e);
               ni.EventDate = new Date(nd);
               if (!this.RecurrenceExceptionExists(e.Id, ni.EventDate)) {
                 ni.EndDate = ed;
@@ -313,32 +313,32 @@ export default class parseRecurrentEvent {
         }
       }
       if (e.RecurrenceData.indexOf("<yearlyByDay ") != -1) {
-        var str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<yearlyByDay "));
+        let str = e.RecurrenceData.substring(e.RecurrenceData.indexOf("<yearlyByDay "));
         str = str.substring(13, str.indexOf('/>') - 1);
-        var arr = this.formatString(str);
-        var frequency = parseInt(arr[arr.indexOf("yearFrequency") + 1]);
-        var loop = true;
-        var init = this.parseDate(e.EventDate, e.fAllDayEvent);
-        var month = (parseInt(arr[arr.indexOf("month") + 1]) - 1);
-        var weekdayOfMonth = arr[arr.indexOf("weekdayOfMonth") + 1];
-        var day = 0;
-        for (var i: any = 0; i < wd.length; i++) {
+        const arr = this.formatString(str);
+        const frequency = parseInt(arr[arr.indexOf("yearFrequency") + 1]);
+        let loop = true;
+        const init = this.parseDate(e.EventDate, e.fAllDayEvent);
+        const month = (parseInt(arr[arr.indexOf("month") + 1]) - 1);
+        const weekdayOfMonth = arr[arr.indexOf("weekdayOfMonth") + 1];
+        let day = 0;
+        for (let i: any = 0; i < wd.length; i++) {
           if (arr.indexOf(wd[i]) != -1) {
             if (arr[arr.indexOf(wd[i]) + 1].toLowerCase() == 'true') day = i;
           }
         }
         while (loop) {
-          var nd: any = new Date(init);
+          let nd: any = new Date(init);
           nd.setMonth(month);
           if ((new Date(init)).getTime() <= nd.getTime()) {
             total++;
             if ((new Date(init)).getTime() >= start.getTime()) {
               nd.setDate(1);
-              var dayOfMonth = nd.getDay();
+              const dayOfMonth = nd.getDay();
               if (day < dayOfMonth) nd.setDate(nd.getDate() + ((7 - dayOfMonth) + day)); //first instance of this day in the selected month
               else nd.setDate(nd.getDate() + (day - dayOfMonth));
               if (weekdayOfMonth == 'last') {
-                var temp: any = new Date(nd);
+                const temp: any = new Date(nd);
                 while (temp.getMonth() == month) {
                   nd = new Date(temp);
                   temp.setDate(temp.getDate() + 7); //loop from first instance of month to last instance of month
@@ -348,9 +348,9 @@ export default class parseRecurrentEvent {
                 nd.setDate(nd.getDate() + (7 * (wom.indexOf(weekdayOfMonth))));
               }
               if (nd.getMonth() == month) {
-                var ed = new Date(nd);
+                const ed = new Date(nd);
                 ed.setSeconds(ed.getSeconds() + e.Duration);
-                var ni = this.cloneObj(e);
+                const ni = this.cloneObj(e);
                 ni.EventDate = new Date(nd);
                 if (!this.RecurrenceExceptionExists(e.Id, ni.EventDate)) {
                   ni.EndDate = ed;
@@ -373,7 +373,7 @@ export default class parseRecurrentEvent {
   }
 
   public cloneObj(obj: any): any {
-    var copy: any;
+    let copy: any;
     if (null == obj || "object" != typeof obj) return obj;
     if (obj instanceof Date) {
       copy = new Date();
@@ -382,14 +382,14 @@ export default class parseRecurrentEvent {
     }
     if (obj instanceof Array) {
       copy = [];
-      for (var i = 0, len = obj.length; i < len; i++) {
+      for (let i = 0, len = obj.length; i < len; i++) {
         copy[i] = this.cloneObj(obj[i]);
       }
       return copy;
     }
     if (obj instanceof Object) {
       copy = {};
-      for (var attr in obj) {
+      for (const attr in obj) {
         if (obj.hasOwnProperty(attr)) copy[attr] = this.cloneObj(obj[attr]);
       }
       return copy;

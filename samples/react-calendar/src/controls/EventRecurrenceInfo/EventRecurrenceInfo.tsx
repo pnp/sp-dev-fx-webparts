@@ -5,22 +5,16 @@ import { IEventRecurrenceInfoProps } from './IEventRecurrenceInfoProps';
 import { IEventRecurrenceInfoState } from './IEventRecurrenceInfoState';
 import { escape } from '@microsoft/sp-lodash-subset';
 import * as moment from 'moment';
-import { parseString, Builder } from "xml2js";
 import {
   ChoiceGroup,
   IChoiceGroupOption,
 
 } from 'office-ui-fabric-react';
 
-
 import { EventRecurrenceInfoDaily } from './../EventRecurrenceInfoDaily/EventRecurrenceInfoDaily';
 import { EventRecurrenceInfoWeekly } from './../EventRecurrenceInfoWeekly/EventRecurrenceInfoWeekly';
 import { EventRecurrenceInfoMonthly } from './../EventRecurrenceInfoMonthly/EventRecurrenceInfoMonthly';
 import { EventRecurrenceInfoYearly } from './../EventRecurrenceInfoYearly/EventRecurrenceInfoYearly';
-
-
-
-
 export class EventRecurrenceInfo extends React.Component<IEventRecurrenceInfoProps, IEventRecurrenceInfoState> {
 
   public constructor(props) {
