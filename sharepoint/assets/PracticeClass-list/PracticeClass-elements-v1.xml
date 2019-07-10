@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <ListInstance FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+                  Title="PracticeClass"
+                  Description=""
+                  CustomSchema="PracticeClass-schema.xml"
+                  TemplateType="100"
+                  Url="Lists/PracticeClass">
+    <Data>
+        <Rows>
+            <Row>
+                <Field Name="PrctClsCode">1</Field>                
+                <Field Name="PrctClsDesc">BUSINESS LOAN</Field>
+                <Field Name="Title">Unused</Field>                                
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">2</Field>                
+                <Field Name="PrctClsDesc">BUSINESS INFORMATION</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">3</Field>                
+                <Field Name="PrctClsDesc">BUSINESS GENERAL REP</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">4</Field>                
+                <Field Name="PrctClsDesc">BUSINESS OTHER</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">5</Field>                
+                <Field Name="PrctClsDesc">COLLECTION</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">6</Field>                
+                <Field Name="PrctClsDesc">DOMESTIC</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">7</Field>                
+                <Field Name="PrctClsDesc">ESTATE</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">8</Field>                
+                <Field Name="PrctClsDesc">FORCLOSURE/BANKRUPTCY</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">9</Field>                
+                <Field Name="PrctClsDesc">LITIGATION COMMERCIAL</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">10</Field>                
+                <Field Name="PrctClsDesc">LITIGATION ENVIRONMENTAL</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">11</Field>                
+                <Field Name="PrctClsDesc">LITIGATION MEDICAL MALPRACTICE</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">12</Field>                
+                <Field Name="PrctClsDesc">LITIGATION PERSONAL INJURY</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">13</Field>                
+                <Field Name="PrctClsDesc">LITIGATION</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">14</Field>                
+                <Field Name="PrctClsDesc">MUNICIPAL</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">15</Field>                
+                <Field Name="PrctClsDesc">REAL ESTATE</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">16</Field>                
+                <Field Name="PrctClsDesc">SCHOOL DISTRICTS SPECIAL ED.</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">17</Field>                
+                <Field Name="PrctClsDesc">SCHOOL DISTRICTS TUITION</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">18</Field>                
+                <Field Name="PrctClsDesc">SCHOOL DISTRICTS OTHER</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">19</Field>                
+                <Field Name="PrctClsDesc">TAX</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">20</Field>                
+                <Field Name="PrctClsDesc">TAX ASSESSMENT</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">21</Field>                
+                <Field Name="PrctClsDesc">WILLS (_TAX CHANGE NOTICE)</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">22</Field>                
+                <Field Name="PrctClsDesc">WILLS (_OTHER)</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">23</Field>                
+                <Field Name="PrctClsDesc">ZONING</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">24</Field>                
+                <Field Name="PrctClsDesc">OTHER</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">25</Field>                
+                <Field Name="PrctClsDesc">MUNICIPAL LITIGATION</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">26</Field>                
+                <Field Name="PrctClsDesc">TRUST</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">27</Field>                
+                <Field Name="PrctClsDesc">INDIVIDUAL-GENERAL REPRESENTATION</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">28</Field>                
+                <Field Name="PrctClsDesc">ARBITRATION</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">29</Field>                
+                <Field Name="PrctClsDesc">SEMINAR - SCHOOL</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">30</Field>                
+                <Field Name="PrctClsDesc">BUSINESS - EMPLOYMENT</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">31</Field>                
+                <Field Name="PrctClsDesc">LITIGATION - OTHER</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">32</Field>                
+                <Field Name="PrctClsDesc">PARTNERSHIP - GENERAL REPRESEN</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">33</Field>                
+                <Field Name="PrctClsDesc">MISCELLANEOUS - PERSONAL</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">34</Field>                
+                <Field Name="PrctClsDesc">LANDLORD/TENANT</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">35</Field>                
+                <Field Name="PrctClsDesc">MCHA - OTHER</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">36</Field>                
+                <Field Name="PrctClsDesc">RECEIVERSHIP</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">37</Field>                
+                <Field Name="PrctClsDesc">PERSONAL - GENERAL REPRESENTAT</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">38</Field>                
+                <Field Name="PrctClsDesc">LAND DEVELOPMENT</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">39</Field>                
+                <Field Name="PrctClsDesc">NON-BILLABLE MATTERS</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">40</Field>                
+                <Field Name="PrctClsDesc">EMPLOYMENT RELATED MATTERS</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">41</Field>                
+                <Field Name="PrctClsDesc">CRIMINAL</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">42</Field>                
+                <Field Name="PrctClsDesc">INSURANCE</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">43</Field>                
+                <Field Name="PrctClsDesc">WITNESS EXPERT</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">44</Field>                
+                <Field Name="PrctClsDesc">OFFICE FORMS</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">45</Field>                
+                <Field Name="PrctClsDesc">SCHOOL DISTRICT - NON BILLABLE</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">46</Field>                
+                <Field Name="PrctClsDesc">CHARITABLE ORGANIZATION</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">47</Field>                
+                <Field Name="PrctClsDesc">OPEN TO CLOSE FILES</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">48</Field>                
+                <Field Name="PrctClsDesc">MUNICIPAL - OTHER</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">49</Field>                
+                <Field Name="PrctClsDesc">PERSONAL SERVICES - OTHER</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">50</Field>                
+                <Field Name="PrctClsDesc">LITIGATION - EMPLOYMENT</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">51</Field>                
+                <Field Name="PrctClsDesc">GUARDIANSHIP</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">52</Field>                
+                <Field Name="PrctClsDesc">COPYRIGHT/TRADEMARK</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">53</Field>                
+                <Field Name="PrctClsDesc">BANKING</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+            <Row>
+                <Field Name="PrctClsCode">54</Field>                
+                <Field Name="PrctClsDesc">GENERAL COUNSEL INITIATIVE</Field>                
+                <Field Name="Title">Unused</Field>
+            </Row>
+                        
+        </Rows>
+    </Data>    
+    </ListInstance>
+    
+</Elements>

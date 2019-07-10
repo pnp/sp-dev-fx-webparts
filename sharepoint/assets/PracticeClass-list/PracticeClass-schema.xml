@@ -1,0 +1,47 @@
+<List xmlns="http://schemas.microsoft.com/sharepoint/" 
+      xmlns:ows="Microsoft SharePoint"
+      Title="PracticeClass"
+      EnableContentTypes="TRUE"
+      FolderCreation="FALSE"
+      Direction="$Resources:Direction;"
+      Url="Lists/PracticeClass"
+      BaseType="0">
+    <MetaData>
+        <ContentTypes>
+            <ContentTypeRef ID="0x0100B3DB2B749CA44CBAB4B81DC67952343C" />
+        </ContentTypes>
+        <Fields></Fields>
+        <Views>
+            <View BaseViewID="1"
+                  Type="HTML"
+                  WebPartZoneID="Main"
+                  DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;"
+                  DefaultView="TRUE"
+                  MobileView="TRUE"
+                  MobileDefaultView="TRUE"
+                  SetupPath="pages\viewpage.aspx"
+                  ImageUrl="/_layouts/images/generic.png"
+                  Url="AllItems.aspx">
+                <XslLink Default="TRUE">main.xsl</XslLink>
+                <JSLink>clienttemplates.js</JSLink>
+                <RowLimit Paged="TRUE">30</RowLimit>
+                <Toolbar Type="Standard" />
+                <ViewFields>
+                    <FieldRef Name="PrctClsCode"></FieldRef>
+                    <FieldRef Name="PrctClsDesc"></FieldRef>
+                    <FieldRef Name="LinkTitle"></FieldRef>                    
+                </ViewFields>
+                <Query>
+                    <OrderBy>
+                        <FieldRef Name="ID" />
+                    </OrderBy>
+                </Query>
+            </View>
+        </Views>
+        <Forms>
+            <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+            <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+            <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+        </Forms>
+    </MetaData>
+</List>

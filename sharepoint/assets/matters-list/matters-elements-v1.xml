@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <ListInstance FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+                  Title="Matters"
+                  Description=""
+                  CustomSchema="matters-schema.xml"
+                  TemplateType="100"
+                  Url="Lists/Matters">    
+    <Data>
+        <Rows>
+            <Row>
+                <Field Name="Title">BEDMINSTER TOWNSHIP-ZONING MATTER</Field>
+                <Field Name="MatSysNbr">1</Field>
+                <Field Name="MatCliNbr">11523</Field>
+                <Field Name="MatBillTo">11523</Field>
+                <Field Name="MatCode">23</Field>
+                <Field Name="MatDescription">BEDMINSTER TOWNSHIP-ZONING MATTER</Field>
+                <Field Name="MatDateOpen">2019-01-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">23</Field>
+                <Field Name="MatNickName">BEDMINSTER TOWNSHIP-ZONING MATTER</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">HILLTOWN TOWNSHIP SUBDIVISION</Field>
+                <Field Name="MatSysNbr">2</Field>
+                <Field Name="MatCliNbr">11522</Field>
+                <Field Name="MatBillTo">11522</Field>
+                <Field Name="MatCode">15</Field>
+                <Field Name="MatDescription">HILLTOWN TOWNSHIP SUBDIVISION</Field>
+                <Field Name="MatDateOpen">2019-02-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">15</Field>
+                <Field Name="MatNickName">HILLTOWN TOWNSHIP SUBDIVISION</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">SALE OF NEWTOWN TOWNSHIP PROPERTY</Field>
+                <Field Name="MatSysNbr">3</Field>
+                <Field Name="MatCliNbr">9999</Field>
+                <Field Name="MatBillTo">9999</Field>
+                <Field Name="MatCode">15</Field>
+                <Field Name="MatDescription">SALE OF NEWTOWN TOWNSHIP PROPERTY</Field>
+                <Field Name="MatDateOpen">2019-03-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">15</Field>
+                <Field Name="MatNickName">SALE OF NEWTOWN TOWNSHIP PROPERTY</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">SOUDERTON BOROUGH ZONING PROBLEM</Field>
+                <Field Name="MatSysNbr">4</Field>
+                <Field Name="MatCliNbr">9769</Field>
+                <Field Name="MatBillTo">9769</Field>
+                <Field Name="MatCode">23</Field>
+                <Field Name="MatDescription">SOUDERTON BOROUGH ZONING PROBLEM</Field>
+                <Field Name="MatDateOpen">2019-04-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">23</Field>
+                <Field Name="MatNickName">SOUDERTON BOROUGH ZONING PROBLEM</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">111 W. 6TH STREET - PURCHASE (PAUL M. AND JACQUELINE A. STINSON)</Field>
+                <Field Name="MatSysNbr">5</Field>
+                <Field Name="MatCliNbr">11519</Field>
+                <Field Name="MatBillTo">11519</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MatDescription">111 W. 6TH STREET - PURCHASE (PAUL M. AND JACQUELINE A. STINSON)</Field>
+                <Field Name="MatDateOpen">2019-05-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">3</Field>
+                <Field Name="MatNickName">111 W. 6TH STREET - PURCHASE (PAUL M. AND JACQUELINE A. STINSON)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">AVERY F. GREEN-247 CHESWOLD LANE, HAVERFORD, PA</Field>
+                <Field Name="MatSysNbr">6</Field>
+                <Field Name="MatCliNbr">11519</Field>
+                <Field Name="MatBillTo">11519</Field>
+                <Field Name="MatCode">15</Field>
+                <Field Name="MatDescription">AVERY F. GREEN-247 CHESWOLD LANE, HAVERFORD, PA</Field>
+                <Field Name="MatDateOpen">2019-06-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">15</Field>
+                <Field Name="MatNickName">AVERY F. GREEN-247 CHESWOLD LANE, HAVERFORD, PA</Field>
+            </Row> 
+            <Row>
+                <Field Name="Title">1292 ALLENTOWN ROAD - LAND DEVELOPMENT</Field>
+                <Field Name="MatSysNbr">7</Field>
+                <Field Name="MatCliNbr">11521</Field>
+                <Field Name="MatBillTo">11521</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MatDescription">1292 ALLENTOWN ROAD - LAND DEVELOPMENT</Field>
+                <Field Name="MatDateOpen">2019-07-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">3</Field>
+                <Field Name="MatNickName">1292 ALLENTOWN ROAD - LAND DEVELOPMENT</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">MONTGOMERY BAR ASSOCIATION / EDUCATION LAW COMMITTEE</Field>
+                <Field Name="MatSysNbr">8</Field>
+                <Field Name="MatCliNbr">11522</Field>
+                <Field Name="MatBillTo">11522</Field>
+                <Field Name="MatCode">39</Field>
+                <Field Name="MatDescription">MONTGOMERY BAR ASSOCIATION / EDUCATION LAW COMMITTEE</Field>
+                <Field Name="MatDateOpen">2019-08-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">39</Field>
+                <Field Name="MatNickName">MONTGOMERY BAR ASSOCIATION / EDUCATION LAW COMMITTEE</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">118 W. 7TH STREET - PURCHASE (HOPE VLOCK)</Field>
+                <Field Name="MatSysNbr">9</Field>
+                <Field Name="MatCliNbr">11522</Field>
+                <Field Name="MatBillTo">11522</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MatDescription">118 W. 7TH STREET - PURCHASE (HOPE VLOCK)</Field>
+                <Field Name="MatDateOpen">2019-01-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">3</Field>
+                <Field Name="MatNickName">118 W. 7TH STREET - PURCHASE (HOPE VLOCK)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">116 W. 7TH STREET - PURCHASE (LAURENCE AND JENNIFER SHERZER)</Field>
+                <Field Name="MatSysNbr">10</Field>
+                <Field Name="MatCliNbr">11522</Field>
+                <Field Name="MatBillTo">11522</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MatDescription">116 W. 7TH STREET - PURCHASE (LAURENCE AND JENNIFER SHERZER)</Field>
+                <Field Name="MatDateOpen">2019-02-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">3</Field>
+                <Field Name="MatNickName">116 W. 7TH STREET - PURCHASE (LAURENCE AND JENNIFER SHERZER)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">623 WALNUT STREET - PURCHASE (GERD D. MUENZEL)</Field>
+                <Field Name="MatSysNbr">11</Field>
+                <Field Name="MatCliNbr">2369</Field>
+                <Field Name="MatBillTo">2369</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MatDescription">623 WALNUT STREET - PURCHASE (GERD D. MUENZEL)</Field>
+                <Field Name="MatDateOpen">2019-03-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">3</Field>
+                <Field Name="MatNickName">623 WALNUT STREET - PURCHASE (GERD D. MUENZEL)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">PARKFORD 537 PLAN AMENDMENT</Field>
+                <Field Name="MatSysNbr">12</Field>
+                <Field Name="MatCliNbr">2369</Field>
+                <Field Name="MatBillTo">2369</Field>
+                <Field Name="MatCode">14</Field>
+                <Field Name="MatDescription">PARKFORD 537 PLAN AMENDMENT</Field>
+                <Field Name="MatDateOpen">2019-04-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">14</Field>
+                <Field Name="MatNickName">PARKFORD 537 PLAN AMENDMENT</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">ESTAT OF JEAN L. CRAIG</Field>
+                <Field Name="MatSysNbr">13</Field>
+                <Field Name="MatCliNbr">11520</Field>
+                <Field Name="MatBillTo">11520</Field>
+                <Field Name="MatCode">7</Field>
+                <Field Name="MatDescription">ESTAT OF JEAN L. CRAIG</Field>
+                <Field Name="MatDateOpen">2019-05-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">7</Field>
+                <Field Name="MatNickName">ESTAT OF JEAN L. CRAIG</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">TRANSFER OF 3 PROPERTIES TO FAMILY MEMBERS</Field>
+                <Field Name="MatSysNbr">14</Field>
+                <Field Name="MatCliNbr">851</Field>
+                <Field Name="MatBillTo">851</Field>
+                <Field Name="MatCode">23</Field>
+                <Field Name="MatDescription">TRANSFER OF 3 PROPERTIES TO FAMILY MEMBERS</Field>
+                <Field Name="MatDateOpen">2019-06-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">23</Field>
+                <Field Name="MatNickName">TRANSFER OF 3 PROPERTIES TO FAMILY MEMBERS</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">RHIANNA ROBINSON</Field>
+                <Field Name="MatSysNbr">15</Field>
+                <Field Name="MatCliNbr">10544</Field>
+                <Field Name="MatBillTo">10544</Field>
+                <Field Name="MatCode">18</Field>
+                <Field Name="MatDescription">RHIANNA ROBINSON</Field>
+                <Field Name="MatDateOpen">2019-07-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">18</Field>
+                <Field Name="MatNickName">RHIANNA ROBINSON</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">DAMIAN RUSOFF-HOLZMAN (SPECIAL EDUCATION)</Field>
+                <Field Name="MatSysNbr">16</Field>
+                <Field Name="MatCliNbr">4500</Field>
+                <Field Name="MatBillTo">4500</Field>
+                <Field Name="MatCode">16</Field>
+                <Field Name="MatDescription">DAMIAN RUSOFF-HOLZMAN (SPECIAL EDUCATION)</Field>
+                <Field Name="MatDateOpen">2019-08-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">16</Field>
+                <Field Name="MatNickName">DAMIAN RUSOFF-HOLZMAN (SPECIAL EDUCATION)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">ALEXANDRE LEPAPE (SPECIAL EDUCATION)</Field>
+                <Field Name="MatSysNbr">17</Field>
+                <Field Name="MatCliNbr">4500</Field>
+                <Field Name="MatBillTo">4500</Field>
+                <Field Name="MatCode">16</Field>
+                <Field Name="MatDescription">ALEXANDRE LEPAPE (SPECIAL EDUCATION)</Field>
+                <Field Name="MatDateOpen">2019-01-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">16</Field>
+                <Field Name="MatNickName">ALEXANDRE LEPAPE (SPECIAL EDUCATION)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">UPPER MERION TOWNSHIP- EMPLOYEE ISSUE</Field>
+                <Field Name="MatSysNbr">18</Field>
+                <Field Name="MatCliNbr">11519</Field>
+                <Field Name="MatBillTo">11519</Field>
+                <Field Name="MatCode">30</Field>
+                <Field Name="MatDescription">UPPER MERION TOWNSHIP- EMPLOYEE ISSUE</Field>
+                <Field Name="MatDateOpen">2019-02-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">30</Field>
+                <Field Name="MatNickName">UPPER MERION TOWNSHIP- EMPLOYEE ISSUE</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">JENNEYLEE TULL (SPECIAL EDUCATION)</Field>
+                <Field Name="MatSysNbr">19</Field>
+                <Field Name="MatCliNbr">11378</Field>
+                <Field Name="MatBillTo">11378</Field>
+                <Field Name="MatCode">16</Field>
+                <Field Name="MatDescription">JENNEYLEE TULL (SPECIAL EDUCATION)</Field>
+                <Field Name="MatDateOpen">2019-03-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">16</Field>
+                <Field Name="MatNickName">JENNEYLEE TULL (SPECIAL EDUCATION)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">SAUDEEYAH ESTI HUBBARD (SPECIAL EDUCATION)</Field>
+                <Field Name="MatSysNbr">20</Field>
+                <Field Name="MatCliNbr">11378</Field>
+                <Field Name="MatBillTo">11378</Field>
+                <Field Name="MatCode">16</Field>
+                <Field Name="MatDescription">SAUDEEYAH ESTI HUBBARD (SPECIAL EDUCATION)</Field>
+                <Field Name="MatDateOpen">2019-04-01T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">16</Field>
+                <Field Name="MatNickName">SAUDEEYAH ESTI HUBBARD (SPECIAL EDUCATION)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">AMIYAH MCDOWELL (SPECIAL EDUCATION)</Field>
+                <Field Name="MatSysNbr">21</Field>
+                <Field Name="MatCliNbr">11378</Field>
+                <Field Name="MatBillTo">11378</Field>
+                <Field Name="MatCode">18</Field>
+                <Field Name="MatDescription">AMIYAH MCDOWELL (SPECIAL EDUCATION)</Field>
+                <Field Name="MatDateOpen">2019-05-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">18</Field>
+                <Field Name="MatNickName">AMIYAH MCDOWELL (SPECIAL EDUCATION)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">STAGE REYES (SPECIAL EDUCATION)</Field>
+                <Field Name="MatSysNbr">22</Field>
+                <Field Name="MatCliNbr">11378</Field>
+                <Field Name="MatBillTo">11378</Field>
+                <Field Name="MatCode">16</Field>
+                <Field Name="MatDescription">STAGE REYES (SPECIAL EDUCATION)</Field>
+                <Field Name="MatDateOpen">2019-06-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">16</Field>
+                <Field Name="MatNickName">STAGE REYES (SPECIAL EDUCATION)</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">RAY MCFALL</Field>
+                <Field Name="MatSysNbr">23</Field>
+                <Field Name="MatCliNbr">178</Field>
+                <Field Name="MatBillTo">178</Field>
+                <Field Name="MatCode">18</Field>
+                <Field Name="MatDescription">RAY MCFALL</Field>
+                <Field Name="MatDateOpen">2019-07-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">18</Field>
+                <Field Name="MatNickName">RAY MCFALL</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">4460 TOWNSHIP LINE ROAD - ALDERFER</Field>
+                <Field Name="MatSysNbr">24</Field>
+                <Field Name="MatCliNbr">11008</Field>
+                <Field Name="MatBillTo">11008</Field>
+                <Field Name="MatCode">14</Field>
+                <Field Name="MatDescription">4460 TOWNSHIP LINE ROAD - ALDERFER</Field>
+                <Field Name="MatDateOpen">2019-08-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">14</Field>
+                <Field Name="MatNickName">4460 TOWNSHIP LINE ROAD - ALDERFER</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">DEVON SQUARE OFFICE ASSOCIATES</Field>
+                <Field Name="MatSysNbr">25</Field>
+                <Field Name="MatCliNbr">4502</Field>
+                <Field Name="MatBillTo">4502</Field>
+                <Field Name="MatCode">18</Field>
+                <Field Name="MatDescription">DEVON SQUARE OFFICE ASSOCIATES</Field>
+                <Field Name="MatDateOpen">2019-06-15T21:00:00Z</Field>
+                <Field Name="MatPracticeClass">18</Field>
+                <Field Name="MatNickName">DEVON SQUARE OFFICE ASSOCIATES</Field>
+            </Row>                  
+        </Rows>
+    </Data>
+    </ListInstance>
+</Elements>

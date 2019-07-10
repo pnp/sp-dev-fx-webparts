@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "TeamsInABox",
+    "id": "1c426519-5956-4644-a91f-a9e402d66640",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "features": [
+        {
+            "title": "Team In A Box Lists",
+            "description": "Deploys site columns, content types, list templates, and list instances for the team in a box application.",
+            "id": "3F6340F8-D589-4538-B06B-6C3473D8A0D7",
+            "version": "1.0.0.0",
+            "assets": {
+                "elementManifests": [
+                    "site-columns-v1.xml",
+                    "content-types-v1.xml",
+                    "clients-list/clients-elements-v1.xml",
+                    "matters-list/matters-elements-v1.xml",
+                    "notes-list/notes-elements-v1.xml",
+                    "billed-time-list/billed-time-elements-v1.xml",
+                    "bills/all-bills-elements-v1.xml",
+                    "employee-list/employee-elements-v1.xml",
+                    "PracticeClass-list/PracticeClass-elements-v1.xml",
+                    "unbilled-time-list/UnbilledTime-elements-v1.xml"
+                ],
+                "elementFiles": [
+                    "clients-list/clients-schema.xml",
+                    "matters-list/matters-schema.xml",
+                    "notes-list/notes-schema.xml",
+                    "billed-time-list/billed-time-schema.xml",
+                    "bills/all-bills-schema.xml",
+                    "employee-list/employee-schema.xml",
+                    "PracticeClass-list/PracticeClass-schema.xml",
+                    "unbilled-time-list/UnbilledTime-schema.xml"
+                ],
+                "upgradeActions": []
+            }
+        }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/TeamsInABox.sppkg"
+  }
+}

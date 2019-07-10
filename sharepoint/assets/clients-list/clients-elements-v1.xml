@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <ListInstance FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+                Title="Clients"
+                Description=""
+                CustomSchema="clients-schema.xml"
+                TemplateType="100"
+                Url="Lists/Clients">
+    <Data>
+        <Rows>
+            <Row>
+                <Field Name="Title">CHELTENHAM SCHOOL DISTRICT</Field>
+                <Field Name="CliSysNbr">178</Field>                
+                <Field Name="CliNickName">CHELTENHAM SCHOOL DISTRICT</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">HARRY MIRABILE</Field>
+                <Field Name="CliSysNbr">851</Field>                
+                <Field Name="CliNickName">HARRY MIRABILE</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">ELM TERRACE GARDENS, INC.</Field>
+                <Field Name="CliSysNbr">2369</Field>                
+                <Field Name="CliNickName">ELM TERRACE GARDENS, INC.</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">SIEGEL FAMILY MATTERS</Field>
+                <Field Name="CliSysNbr">3272</Field>                
+                <Field Name="CliNickName">SIEGEL FAMILY MATTERS</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">AIG (LOWER MERION SCHOOL DISTR</Field>
+                <Field Name="CliSysNbr">4500</Field>                
+                <Field Name="CliNickName">AIG (LOWER MERION SCHOOL DISTR</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">AIG (TREDYFFRIN/EASTTOWN SCHOO</Field>
+                <Field Name="CliSysNbr">4502</Field>                
+                <Field Name="CliNickName">AIG (TREDYFFRIN/EASTTOWN SCHOO</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">EDUCATION PRACTICE GROUP - NON</Field>
+                <Field Name="CliSysNbr">5884</Field>                
+                <Field Name="CliNickName">EDUCATION PRACTICE GROUP - NON</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">EAST COVENTRY TOWNSHIP</Field>
+                <Field Name="CliSysNbr">6622</Field>                
+                <Field Name="CliNickName">EAST COVENTRY TOWNSHIP</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">SOUDERTON CHARTERN SCHOOL COLLA</Field>
+                <Field Name="CliSysNbr">9769</Field>                
+                <Field Name="CliNickName">SOUDERTON CHARTERN SCHOOL COLLA</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">WILLIAM AND LAURA JEAN TANNER</Field>
+                <Field Name="CliSysNbr">9999</Field>                
+                <Field Name="CliNickName">WILLIAM AND LAURA JEAN TANNER</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">NORRISTOWN AREA SCHOOL DISTRIC</Field>
+                <Field Name="CliSysNbr">10544</Field>                
+                <Field Name="CliNickName">NORRISTOWN AREA SCHOOL DISTRIC</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">SKIPPACK TOWNSHIP SPECIAL</Field>
+                <Field Name="CliSysNbr">11008</Field>                
+                <Field Name="CliNickName">SKIPPACK TOWNSHIP SPECIAL</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">SCHOOL DISTRICT OF PHILADELPHI</Field>
+                <Field Name="CliSysNbr">11378</Field>                
+                <Field Name="CliNickName">SCHOOL DISTRICT OF PHILADELPHI</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">WILLIAM SCHUTTER</Field>
+                <Field Name="CliSysNbr">11519</Field>                
+                <Field Name="CliNickName">WILLIAM SCHUTTER</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">PAMELA J. CRAIG, EXECUTRIX</Field>
+                <Field Name="CliSysNbr">11520</Field>                
+                <Field Name="CliNickName">PAMELA J. CRAIG, EXECUTRIX</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">BETHLEHEM PIKE APARTMENTS, LLC</Field>
+                <Field Name="CliSysNbr">11521</Field>                
+                <Field Name="CliNickName">BETHLEHEM PIKE APARTMENTS, LLC</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">BRITTON INDUSTRIES, INC.</Field>
+                <Field Name="CliSysNbr">11522</Field>                
+                <Field Name="CliNickName">BRITTON INDUSTRIES, INC.</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">GILBERT AND PRISCILLA MUNZ, H/W</Field>
+                <Field Name="CliSysNbr">11523</Field>                
+                <Field Name="CliNickName">GILBERT AND PRISCILLA MUNZ, H/W</Field>
+            </Row>
+        </Rows>
+    </Data>    
+    </ListInstance>
+</Elements>
