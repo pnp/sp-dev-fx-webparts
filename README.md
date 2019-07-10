@@ -1,4 +1,4 @@
-## wisler-pearlstein-team-in-a-box
+## Team-in-a-box
 
 This is where you include your WebPart documentation.
 
