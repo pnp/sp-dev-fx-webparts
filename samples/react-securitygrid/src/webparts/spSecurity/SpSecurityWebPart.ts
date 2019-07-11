@@ -11,7 +11,7 @@ import {
   PropertyPaneCheckbox,
   PropertyPaneToggle
 } from "@microsoft/sp-webpart-base";
-import pnp from "sp-pnp-js";
+import {sp} from "@pnp/sp";
 import * as strings from "spSecurityStrings";
 import SpSecurity from "./components/SpSecurity";
 import { ISpSecurityProps } from "./components/ISpSecurityProps";
@@ -23,7 +23,7 @@ import PropertyPane from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPa
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
   public onInit(): Promise<void> {
     return super.onInit().then(_ => {
-      pnp.setup({
+      sp.setup({
         spfxContext: this.context,
         defaultCachingStore: "session", // or "local"
         defaultCachingTimeoutSeconds: 30,

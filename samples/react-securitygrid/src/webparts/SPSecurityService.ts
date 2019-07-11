@@ -1,4 +1,4 @@
-﻿import pnp from "sp-pnp-js";
+﻿import {sp} from "@pnp/sp";
 import { find, indexOf, includes } from "lodash";
 import { SPPermission } from "@microsoft/sp-page-context";
 import { GraphHttpClient, HttpClientResponse, IGraphHttpClientOptions } from "@microsoft/sp-http";
@@ -229,7 +229,7 @@ export default class SPSecurityService {
         " </View>"
     };
 
-    return pnp.sp.web.lists.getByTitle(listTitle).getItemsByCAMLQuery(caml, "ContentType", "Folder", "Folder/ParentFolder", "File",
+    return sp.web.lists.getByTitle(listTitle).getItemsByCAMLQuery(caml, "ContentType", "Folder", "Folder/ParentFolder", "File",
       "File/ParentFolder", "RoleAssignments", "RoleAssignments/RoleDefinitionBindings", "RoleAssignments/Member",
       "RoleAssignments/Member/Users", "RoleAssignments/Member/Groups")
       .then((response) => {
@@ -304,9 +304,9 @@ export default class SPSecurityService {
   /// Loads data for intial display
   public loadData(showHiddenLists: boolean, showCatalogs: boolean, graphHttpClient: GraphHttpClient, forceReload: boolean): Promise<SPSecurityInfo> {
     let securityInfo: SPSecurityInfo = new SPSecurityInfo();
-    let batch: any = pnp.sp.createBatch();
+    let batch: any = sp.createBatch();
 
-    pnp.sp.web.siteUsers
+    sp.web.siteUsers
       .inBatch(batch).get().then((response) => {
         console.table(response);
         securityInfo.siteUsers = response.map((u) => {
@@ -326,7 +326,7 @@ export default class SPSecurityService {
         });
         return securityInfo.siteUsers;
       });
-    pnp.sp.web.siteGroups.expand("Users").select("Title", "Id", "IsHiddenInUI", "IsShareByEmailGuestUse", "IsSiteAdmin", "IsSiteAdmin")
+    sp.web.siteGroups.expand("Users").select("Title", "Id", "IsHiddenInUI", "IsShareByEmailGuestUse", "IsSiteAdmin", "IsSiteAdmin")
       .inBatch(batch).get().then((response) => {
         let AdGroupPromises: Array<Promise<any>> = [];
         // if group contains an ad group(PrincipalType=4) expand it
@@ -366,7 +366,7 @@ export default class SPSecurityService {
         });
 
       });
-    pnp.sp.web.roleDefinitions.expand("BasePermissions").inBatch(batch).get().then((response) => {
+    sp.web.roleDefinitions.expand("BasePermissions").inBatch(batch).get().then((response) => {
       securityInfo.roleDefinitions = response.map((rd) => {
 
         const bp: SPBasePermissions = new SPBasePermissions(rd.BasePermissions.High, rd.BasePermissions.Low);
@@ -390,7 +390,7 @@ export default class SPSecurityService {
       filters.push("IsCatalog eq false");
     }
     let filter: string = filters.join(" and ");
-    pnp.sp.web.lists
+    sp.web.lists
       .expand("RootFolder", "RoleAssignments", "RoleAssignments/RoleDefinitionBindings", "RoleAssignments/Member",
       "RoleAssignments/Member/Users", "RoleAssignments/Member/Groups", "RoleAssignments/Member/UserId")
       .filter(filter)
