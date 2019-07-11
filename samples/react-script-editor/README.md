@@ -103,6 +103,11 @@ Version|Date|Comments
 1.0.0.6|March 26th, 2018|Fixed so that AMD modules don't detect `define`, and load as non-modules.
 1.0.0.7|May 23rd, 2018|Added supportsFullBleed to manifest.
 1.0.0.8|May 23rd, 2018|Updated SPFx to v1.5.1, made editor load dynamically to reduce runtime bundle size, fixed white space issue.
+1.0.0.9|Aug 22, 2018|Improved bundle size
+1.0.0.10|Jan 16th, 2019|Fix for removing of web part padding
+1.0.0.11|March 18th, 2019|Fix for re-loading of script on smart navigation
+1.0.0.12|April 15th, 2019|Re-fix for pad removal of web part
+1.0.0.13|July 1th, 2019|Downgrade to SPFx v1.4.1 to support SP2019
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

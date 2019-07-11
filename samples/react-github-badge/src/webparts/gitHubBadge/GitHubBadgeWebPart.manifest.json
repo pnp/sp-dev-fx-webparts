@@ -15,7 +15,7 @@
     "group": { "default": "Other" },
     "title": { "default": "GitHub Badge" },
     "description": { "default": "Displays information from GitHub for a specified user" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "GitGraph",
     "properties": {
       "gitHubUserName": "skaggej"
     }

@@ -18,7 +18,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         this.render();
     }
 
-    public async render(): Promise<void> {
+    public render(): void {
         if (this.displayMode == DisplayMode.Read) {
             if (this.properties.removePadding) {
                 let element = this.domElement.parentElement;
@@ -38,21 +38,25 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
         } else {
-            // Dynamically load the editor pane to reduce overall bundle size
-            const editorPopUp = await import(
-                /* webpackChunkName: 'scripteditor' */
-                './components/ScriptEditor'
-            );
-            const element: React.ReactElement<IScriptEditorProps> = React.createElement(
-                editorPopUp.default,
-                {
-                    script: this.properties.script,
-                    title: this.properties.title,
-                    save: this.save
-                }
-            );
-            ReactDom.render(element, this.domElement);
+            this.renderEditor();
         }
+    }
+
+    private async renderEditor(){
+        // Dynamically load the editor pane to reduce overall bundle size
+        const editorPopUp = await import(
+            /* webpackChunkName: 'scripteditor' */
+            './components/ScriptEditor'
+        );
+        const element: React.ReactElement<IScriptEditorProps> = React.createElement(
+            editorPopUp.default,
+            {
+                script: this.properties.script,
+                title: this.properties.title,
+                save: this.save
+            }
+        );
+        ReactDom.render(element, this.domElement);
     }
 
     protected get dataVersion(): Version {
