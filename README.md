@@ -1,8 +1,9 @@
-# title of the sample
+# React Kanban Board Webpart
 
 ## Summary
 
-Short summary on functionality and used technologies.
+This solution contains an SPFx webpart which shows a Kanban board using jqxKanban ReactJS component (from [JQWidgets](https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxkanban/jquery-kanban-getting-started.htm?search=kanban)).
+The webpart uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.
 
 ![picture of the web part in action](assets/kanban-board.gif)
 
@@ -17,7 +18,15 @@ Short summary on functionality and used technologies.
 
 ## Prerequisites
 
-> Any special pre-requisites?
+This webpart reads the information from a Tasks list and uses the following OOB columns
+* Task Name
+* Assigned To
+* % Complete
+* Description
+* Priority
+* Task Status
+
+The Task list can be chosen using the webpart properties
 
 ## Solution
 
@@ -29,12 +38,13 @@ react-kanban-board | [Ram](https://github.com/RamPrasadMeenavalli)
 
 Version|Date|Comments
 -------|----|--------
-1.1|September 2, 2025|Update comment
-1.0|August 29, 2025|Initial release
+1.0.0.0|July 17, 2019|Initial release
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+**THIS WEBPART USES jQWidgets FOR SHOWING THE KANBAN BOARD. jQWidgets IS FREE TO USE UNDER THE CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 3.0 LICENSE. FOR COMMERCIAL USE, PLEASE CHECK THE [LICENSING TERMS](https://www.jqwidgets.com/license/) FOR jQWidgets**
 
 ---
 
@@ -45,15 +55,12 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
-> Include any additional steps as needed.
-
 ## Features
 
-Description of the web part with possible additional details than in short summary. 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+This sample highlights the following concepts
+* Binding SharePoint list data to jqxKanban React Component
+* Updating SharePoint List Items based on events from the jqxKanban board
 
-* topic 1
-* topic 2
-* topic 3
+When a task is moved to different columns in the Kanban Board, the status of the respective SharePoint list item is updated using PnP JS
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-kanban-board" />
