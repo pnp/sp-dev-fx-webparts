@@ -32,7 +32,7 @@ The Task list can be chosen using the webpart properties
 
 Solution|Author(s)
 --------|---------
-react-kanban-board | [Ram](https://github.com/RamPrasadMeenavalli)
+react-kanban-board | [Ram](https://twitter.com/ram_meenavalli)
 
 ## Version history
 
