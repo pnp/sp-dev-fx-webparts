@@ -11,6 +11,7 @@ See the local.settings.json for details on the required application variable loc
 
 But you can synchronize the Birthdays list with other applications HR Systems, or other sources
 
+![Brithdays Web Part](./assets/birthdays.gif)
 
 ![Brithdays Web Part](./assets/birthdays.png)
 
