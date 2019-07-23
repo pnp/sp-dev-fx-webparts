@@ -1,7 +1,9 @@
 # React Birthdays Web Part
 
 ## Summary
-The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's home site with title "Birthdays."
+The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title "Birthdays."
+
+Now is possible to the user select an image for the background in the properties of the webpart.
 
 
 There is an Azure function available that get AAD user birthdays, this function creates a list on the tenant root site, if it does not exist.
@@ -48,6 +50,7 @@ react Birthday Web Part|João Mendes
 Version|Date|Comments
 -------|----|--------
 1.0.0|November 6, 2018|Initial release
+1.1.0|July 23, 2019 | new version
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
