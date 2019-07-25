@@ -56,6 +56,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
       teamsTheme: 'default',
       photoIndex: 0,
       carouselImages: [],
+      loadingImage: true
     };
   }
 
@@ -71,7 +72,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
     this.setState({ isLoading: true, hasError: false });
     const tenantUrl = `https://${location.host}`;
     let galleryImages: ICarouselImages[] = [];
-    let carouselImages: any[] = [];
+    let carouselImages: React.ReactElement<HTMLElement>[] = [];
 
     try {
       const images = await this.spService.getImages(this.props.siteUrl, this.props.list, this.props.numberImages);
@@ -110,7 +111,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 
         carouselImages = galleryImages.map((galleryImage, i) => {
           return (
-            <div className='slideLoading'>
+            <div className='slideLoading' >
 
               {galleryImage.mediaType == 'video' ?
                 <div >
@@ -128,7 +129,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
                     onLoadingStateChange={async (loadState: ImageLoadState) => {
                       console.log('imageload Status ' + i, loadState, galleryImage.imageUrl);
                       if (loadState == ImageLoadState.loaded) {
-                        this.setState({ isLoading: false });
+                        this.setState({ loadingImage: false });
                       }
                     }}
                     height={'400px'}
@@ -222,7 +223,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
                         {...sliderSettings}
                         autoplay={true}
                         onReInit={() => {
-                          if (!this.state.isLoading)
+                          if (!this.state.loadingImage)
                             $(".slideLoading").removeClass("slideLoading");
                         }}>
                         {
@@ -231,8 +232,8 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
                       </Slider>
                     </div>
                     {
-                      this.state.isLoading &&
-                      <Spinner size={SpinnerSize.large} label={'Loading...'} style={{ fontSize: FontSizes.size18, color: CommunicationColors.primary }}></Spinner>
+                      this.state.loadingImage &&
+                      <Spinner size={SpinnerSize.small} label={'Loading...'} style={{verticalAlign:'middle', right:'30%', top:20, position: 'absolute', fontSize: FontSizes.size18, color: CommunicationColors.primary }}></Spinner>
                     }
                   </div>
         }

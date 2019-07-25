@@ -6,4 +6,5 @@ export interface ICarouselState {
   hasError: boolean;
   teamsTheme: string;
   photoIndex: number;
+  loadingImage: boolean;
 }
