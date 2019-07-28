@@ -52,7 +52,7 @@ export default class Birthdays extends React.Component<IBirthdaysProps, IBirthda
                 <Label className={styles.subTitle}>{strings.MessageNoBirthdays}</Label>
               </div>
               :
-              <HappyBirthday users={this.state.Users}
+              <HappyBirthday users={this.state.Users} imageTemplate={this.props.imageTemplate}
               />
           }
         </div>

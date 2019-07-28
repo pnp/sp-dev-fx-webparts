@@ -15,6 +15,7 @@ export class HappyBirthday extends React.Component<IHappyBirthdayProps, IHappbir
   private _showBirthdays: boolean = true;
   constructor(props: IHappyBirthdayProps) {
     super(props);
+    console.log(props.imageTemplate);
   }
 
   public async componentDidMount() {
@@ -35,6 +36,7 @@ export class HappyBirthday extends React.Component<IHappyBirthdayProps, IHappbir
                   jobDescription={user.jobDescription}
                   birthday={moment(user.birthday, ["MM-DD-YYYY", "YYYY-MM-DD", "DD/MM/YYYY", "MM/DD/YYYY"]).format('Do MMMM')}
                   userEmail={user.userEmail}
+                  imageTemplate={this.props.imageTemplate}
                 />
               </div>
             );

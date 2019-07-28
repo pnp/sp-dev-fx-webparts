@@ -4,4 +4,5 @@ export interface IHappyBirthdayCardProps {
   birthday: string;
   userEmail:string;
   congratulationsMsg?: string;
+  imageTemplate:string;
 }
