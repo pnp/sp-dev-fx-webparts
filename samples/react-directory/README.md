@@ -10,9 +10,9 @@
 
 ![directory](/samples/react-directory/assets/react-directory-teams1.jpg) 
 
-![directory](/samples/react-directory/assets/react-directory2.png) 
+![directory](/samples/react-directory/assets/react-directory2.jpg) 
 
-![directory](/samples/react-directory/assets/react-directory-teams2.jpg) 
+![directory](/samples/react-directory/assets/react-directory-teams2.png) 
 
 ![directory](/samples/react-directory/assets/react-directory21.png) 
 
