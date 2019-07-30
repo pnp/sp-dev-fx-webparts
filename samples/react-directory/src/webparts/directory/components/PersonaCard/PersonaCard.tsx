@@ -93,7 +93,7 @@ export class PersonaCard extends React.PureComponent<IPersonaCardProps, IPersona
    */
   private _PersonaCard(): JSX.Element {
     return (
-      <DocumentCard className={styles.documentCard} type={DocumentCardType.compact}>
+      <DocumentCard className={styles.documentCard} type={DocumentCardType.normal} style={{maxWidth: 350}}>
 
         <div className={styles.persona}>
           <Persona
