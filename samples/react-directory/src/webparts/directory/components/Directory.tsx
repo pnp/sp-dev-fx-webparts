@@ -48,8 +48,11 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
   private async _searchUsers(searchText:string){
     this.setState({ isLoading: true });
     try {
-      const users: PeoplePickerEntity[] = await this._services.getUsers(searchText);
-      this.setState({ users: users, isLoading: false, errorMessage: '', hasError: false });
+      setTimeout( async () => {
+        const users: PeoplePickerEntity[] = await this._services.getUsers(searchText);
+        this.setState({ users: users, isLoading: false, errorMessage: '', hasError: false });
+      }, 2500);
+
     } catch (error) {
       this.setState({ errorMessage: error.message, hasError: true });
     }
