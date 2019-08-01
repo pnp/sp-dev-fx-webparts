@@ -4,6 +4,6 @@ define([], function() {
     "PropertyPaneDescription": "Search People from Organization Directory",
     "BasicGroupName": "Properties",
     "TitleFieldLabel": "Web Part Title",
-    "DirectoryMessage": "Please Search Directory"
+    "DirectoryMessage": "No users found in directory"
   }
 });

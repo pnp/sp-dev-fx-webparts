@@ -14,12 +14,19 @@ import {
   MessageBarType,
   SearchBox,
   Icon,
-  Label
+  Label,
+  Pivot,
+  PivotItem,
+  PivotLinkFormat,
+  PivotLinkSize
 }
   from 'office-ui-fabric-react';
 import { IProfileProperties } from '../../../SPServices/IProfileProperties';
-import { PeoplePickerEntity, Search } from '@pnp/sp';
+import { PeoplePickerEntity, Search, SearchResult } from '@pnp/sp';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+import { Root } from '@pnp/graph';
+
+const az: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 export default class Directory extends React.Component<IDirectoryProps, IDirectoryState> {
 
@@ -28,10 +35,19 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
   constructor(props: IDirectoryProps) {
     super(props);
 
-    this.state = { users: [], isLoading: true, errorMessage: '', hasError: false };
+    this.state = {
+      users: [],
+      isLoading: true,
+      errorMessage: '',
+      hasError: false,
+      indexSelectedKey: 'A',
+      searchString: ''
+    };
 
     this._services = new spservices(this.props.context);
+    // Register event handlers
     this._searchUsers = this._searchUsers.bind(this);
+    this._selectedIndex = this._selectedIndex.bind(this);
   }
 
 
@@ -41,21 +57,20 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
    * @memberof Directory
    */
   public async componentDidMount() {
-
-
+    await this._searchUsers('A');
   }
 
-  private async _searchUsers(searchText:string){
-    this.setState({ isLoading: true });
-    try {
-      setTimeout( async () => {
-        const users: PeoplePickerEntity[] = await this._services.getUsers(searchText);
-        this.setState({ users: users, isLoading: false, errorMessage: '', hasError: false });
-      }, 2500);
+  private async _searchUsers(searchText: string) {
+    searchText = searchText ? searchText : 'A';
+    this.setState({ isLoading: true, indexSelectedKey: searchText.substring(0, 1).toLocaleUpperCase() });
 
+    try {
+      const users = await this._services.searchUsers(searchText);
+      this.setState({ users: users && users.PrimarySearchResults ? users.PrimarySearchResults : null, isLoading: false, errorMessage: '', hasError: false });
     } catch (error) {
       this.setState({ errorMessage: error.message, hasError: true });
     }
+
   }
 
   /**
@@ -69,6 +84,19 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
 
   }
 
+
+  /**
+   *
+   *
+   * @private
+   * @param {PivotItem} [item]
+   * @param {React.MouseEvent<HTMLElement>} [ev]
+   * @memberof Directory
+   */
+  private _selectedIndex(item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) {
+
+    this._searchUsers(item.props.itemKey);
+  }
   /**
    *
    *
@@ -87,16 +115,38 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
         <div style={{ width: '100%', verticalAlign: 'middle', marginBottom: 40 }}>
           <SearchBox
             placeholder={strings.SearchPlaceHolder}
-            styles={{ root: { minWidth: 180, width: 360, marginLeft: 'auto', marginRight: 'auto' } }}
+            styles={{ root: { minWidth: 180, width: 360, marginLeft: 'auto', marginRight: 'auto', marginBottom: 25 } }}
             onSearch={this._searchUsers}
-            onFocus={() => console.log('onFocus called')}
-            onBlur={() => console.log('onBlur called')}
-            onChange={this._searchUsers}/>
+            onClear={() => { this._searchUsers('A'); }}
+            onChange={this._searchUsers} />
+          <div>
+            <Pivot
+              styles={{ root: { paddingLeft: 10, paddingRight: 10, whiteSpace: 'normal', textAlign: 'center' } }}
+              linkFormat={PivotLinkFormat.tabs}
+              selectedKey={this.state.indexSelectedKey}
+              onLinkClick={this._selectedIndex}
+              linkSize={PivotLinkSize.normal}>
+              {
+                az.map((index) => {
+                  return (
+                    <PivotItem
+                      headerText={index}
+                      itemKey={index}
+                      key={index} >
+                    </PivotItem>
+                  );
+                })
+              }
+            </Pivot>
+          </div>
+
+
+
         </div>
         {
-          this.state.users.length == 0 ?
+          !this.state.users || this.state.users.length == 0 ?
             <div style={{ marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
-              <Icon iconName={'ProfileSearch'} style={{ fontSize: '54px' , color: color}} />
+              <Icon iconName={'ProfileSearch'} style={{ fontSize: '54px', color: color }} />
               <Label>
                 <span style={{ marginLeft: 5, fontSize: '26px', color: color }}>{strings.DirectoryMessage}</span>
               </Label>
@@ -108,11 +158,18 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
               this.state.hasError ?
                 <MessageBar messageBarType={MessageBarType.error}>{this.state.errorMessage}</MessageBar>
                 :
-                this.state.users.map((user: PeoplePickerEntity) => {
+                this.state.users.map((user: any) => {
                   return (
                     <PersonaCard
                       context={this.props.context}
-                      profileProperties={user}>
+                      profileProperties={{
+                        DisplayName: user.PreferredName,
+                        Title: user.JobTitle,
+                        PictureUrl: user.PictureURL,
+                        Email: user.WorkEmail,
+                        Department: user.Department,
+                        MobilePhone: user.MobilePhone
+                      }}>
                     </PersonaCard>
                   );
                 })

@@ -23,7 +23,7 @@ import {
 
 const EXP_SOURCE: string = "SPFxDirectory";
 const LIVE_PERSONA_COMPONENT_ID: string = "914330ee-2df2-4f6e-a858-30c23a812408";
-const PROFILE_IMAGE_URL: string = '/_layouts/15/userphoto.aspx?size={0}&accountname={1}';
+const PROFILE_IMAGE_URL: string = 'https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email={0}&UA=0&size=HR96x96&sc=1564597822258';
 
 export class PersonaCard extends React.PureComponent<IPersonaCardProps, IPersonaCardState> {
 
@@ -42,7 +42,7 @@ export class PersonaCard extends React.PureComponent<IPersonaCardProps, IPersona
 
     const sharedLibrary = await this.loadSPComponentById(LIVE_PERSONA_COMPONENT_ID);
     const livePersonaCard: any = sharedLibrary.LivePersonaCard;
-    this.setState({ pictureUrl: Text.format(PROFILE_IMAGE_URL, 'M', this.props.profileProperties.EntityData.Email), livePersonaCard: livePersonaCard });
+    this.setState({ pictureUrl: Text.format(PROFILE_IMAGE_URL,  this.props.profileProperties.Email), livePersonaCard: livePersonaCard });
   }
 
 
@@ -75,7 +75,7 @@ export class PersonaCard extends React.PureComponent<IPersonaCardProps, IPersona
         PersonaType: "User"
       },
       serviceScope: this.props.context.serviceScope,
-      upn: this.props.profileProperties.EntityData.Email,
+      upn: this.props.profileProperties.Email,
       onCardOpen: () => {
       },
       onCardClose: () => {
@@ -97,19 +97,19 @@ export class PersonaCard extends React.PureComponent<IPersonaCardProps, IPersona
 
         <div className={styles.persona}>
           <Persona
-            text={this.props.profileProperties.DisplayText}
-            secondaryText={this.props.profileProperties.EntityData.Title}
-            tertiaryText={this.props.profileProperties.EntityData.Department}
-            imageUrl={this.state.pictureUrl}
+            text={this.props.profileProperties.DisplayName}
+            secondaryText={this.props.profileProperties.Title}
+            tertiaryText={this.props.profileProperties.Department}
+            imageUrl={this.props.profileProperties.PictureUrl}
             size={PersonaSize.size72}
             imageShouldFadeIn={false}
             imageShouldStartVisible={true}>
             <Label>
               {
-                this.props.profileProperties.EntityData.MobilePhone ?
+                this.props.profileProperties.MobilePhone ?
                   <div>
                     <Icon iconName='Phone'  style={{ fontSize: '12px' }}/>
-                    <span style={{ marginLeft: 5, fontSize: '12px' }}> {this.props.profileProperties.EntityData.MobilePhone}</span>
+                    <span style={{ marginLeft: 5, fontSize: '12px' }}> {this.props.profileProperties.MobilePhone}</span>
                   </div>
                   :
                   ''
