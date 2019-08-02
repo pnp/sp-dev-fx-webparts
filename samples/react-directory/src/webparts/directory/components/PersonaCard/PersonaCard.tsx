@@ -38,7 +38,7 @@ export class PersonaCard extends React.Component<IPersonaCardProps, IPersonaCard
 
     const sharedLibrary = await this.loadSPComponentById(LIVE_PERSONA_COMPONENT_ID);
     const livePersonaCard: any = sharedLibrary.LivePersonaCard;
-    this.setState({ pictureUrl: Text.format(PROFILE_IMAGE_URL,  this.props.profileProperties.Email), livePersonaCard: livePersonaCard });
+    this.setState( {livePersonaCard: livePersonaCard });
   }
 
 
