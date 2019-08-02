@@ -21,7 +21,7 @@ import {
 
 const EXP_SOURCE: string = "SPFxDirectory";
 const LIVE_PERSONA_COMPONENT_ID: string = "914330ee-2df2-4f6e-a858-30c23a812408";
-const PROFILE_IMAGE_URL: string = 'https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email={0}&UA=0&size=HR96x96&sc=1564597822258';
+//const PROFILE_IMAGE_URL: string = 'https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email={0}&UA=0&size=HR96x96&sc=1564597822258';
 
 export class PersonaCard extends React.Component<IPersonaCardProps, IPersonaCardState> {
 
