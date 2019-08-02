@@ -25,6 +25,7 @@ import { IProfileProperties } from '../../../SPServices/IProfileProperties';
 import { PeoplePickerEntity, Search, SearchResult } from '@pnp/sp';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Root } from '@pnp/graph';
+import { IUserProperties } from './PersonaCard/IUserProperties';
 
 const az: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -168,7 +169,7 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
                         PictureUrl: user.PictureURL,
                         Email: user.WorkEmail,
                         Department: user.Department,
-                        MobilePhone: user.MobilePhone
+                        WorkPhone: user.WorkPhone
                       }}>
                     </PersonaCard>
                   );

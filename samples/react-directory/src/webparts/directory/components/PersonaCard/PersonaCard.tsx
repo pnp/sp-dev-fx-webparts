@@ -6,7 +6,6 @@ import { Version, Environment, EnvironmentType, ServiceScope, Log, Text } from "
 import { SPComponentLoader } from "@microsoft/sp-loader";
 
 import {
-
   Persona,
   PersonaCoin,
   PersonaInitialsColor,
@@ -17,7 +16,6 @@ import {
   IDocumentCardStyles,
   DocumentCardType,
   Icon
-
 }
   from 'office-ui-fabric-react';
 
@@ -25,14 +23,12 @@ const EXP_SOURCE: string = "SPFxDirectory";
 const LIVE_PERSONA_COMPONENT_ID: string = "914330ee-2df2-4f6e-a858-30c23a812408";
 const PROFILE_IMAGE_URL: string = 'https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email={0}&UA=0&size=HR96x96&sc=1564597822258';
 
-export class PersonaCard extends React.PureComponent<IPersonaCardProps, IPersonaCardState> {
+export class PersonaCard extends React.Component<IPersonaCardProps, IPersonaCardState> {
 
   constructor(props: IPersonaCardProps) {
     super(props);
     this.state = { livePersonaCard: undefined, pictureUrl: undefined };
   }
-
-
   /**
    *
    *
@@ -106,10 +102,10 @@ export class PersonaCard extends React.PureComponent<IPersonaCardProps, IPersona
             imageShouldStartVisible={true}>
             <Label>
               {
-                this.props.profileProperties.MobilePhone ?
+                this.props.profileProperties.WorkPhone ?
                   <div>
                     <Icon iconName='Phone'  style={{ fontSize: '12px' }}/>
-                    <span style={{ marginLeft: 5, fontSize: '12px' }}> {this.props.profileProperties.MobilePhone}</span>
+                    <span style={{ marginLeft: 5, fontSize: '12px' }}> {this.props.profileProperties.WorkPhone}</span>
                   </div>
                   :
                   ''
