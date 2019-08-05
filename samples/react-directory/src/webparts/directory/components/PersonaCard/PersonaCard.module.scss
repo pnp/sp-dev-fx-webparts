@@ -11,10 +11,13 @@ vertical-align: top;
 .documentCard {
  border-color: $ms-color-themeDark;
  border-top-width: 5px;
- width: 100%,
+ width: 100%;
+ max-width: 350px;
+ height:120px;
 }
 .persona {
   padding: 15px;
+
 }
 
 .bottomColor {

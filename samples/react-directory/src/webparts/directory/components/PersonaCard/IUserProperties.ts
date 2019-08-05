@@ -6,4 +6,5 @@ export interface IUserProperties {
   DisplayName: string;
   Email:string;
   WorkPhone?: string;
+  Location?:string;
 }

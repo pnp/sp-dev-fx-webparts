@@ -5,8 +5,22 @@
 
 .directory {
 
+.dropDownSortBy {
+  margin-top: 35px;
+  margin-bottom:  15px;
+}
 
-
+.searchBox {
+width: '100%';
+vertical-align: 'middle';
+margin-bottom: 25;
+}
+ .noUsers{
+  margin-left: 'auto';
+  margin-right: 'auto';
+  text-align: 'center';
+  padding-top: 40px;
+ }
 
   .pivotItem {
     overflow-wrap: break-word;

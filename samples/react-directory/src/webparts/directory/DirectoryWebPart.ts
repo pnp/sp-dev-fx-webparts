@@ -5,7 +5,9 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { DisplayMode } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle,
+  IPropertyPaneToggleProps
 } from '@microsoft/sp-property-pane';
 
 import * as strings from 'DirectoryWebPartStrings';
@@ -15,6 +17,7 @@ import { IDirectoryProps } from './components/IDirectoryProps';
 
 export interface IDirectoryWebPartProps {
   title: string;
+  searchFirstName: boolean;
 }
 
 export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWebPartProps> {
@@ -25,6 +28,7 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
       {
         title: this.properties.title,
         context: this.context,
+        searchFirstName: this.properties.searchFirstName,
         displayMode: this.displayMode,
         updateProperty: (value: string) => {
           this.properties.title = value;
@@ -44,6 +48,7 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+
     return {
       pages: [
         {
@@ -56,7 +61,10 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
               groupFields: [
                 PropertyPaneTextField('title', {
                   label: strings.TitleFieldLabel
-                })
+                }),
+                PropertyPaneToggle("searchFirstName",
+                  { checked: false, label: "Search on First Name ?" }
+                )
               ]
             }
           ]

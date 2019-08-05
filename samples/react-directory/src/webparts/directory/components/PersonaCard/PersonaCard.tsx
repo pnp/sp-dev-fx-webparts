@@ -89,7 +89,7 @@ export class PersonaCard extends React.Component<IPersonaCardProps, IPersonaCard
    */
   private _PersonaCard(): JSX.Element {
     return (
-      <DocumentCard className={styles.documentCard} type={DocumentCardType.normal} style={{maxWidth: 350}}>
+      <DocumentCard className={styles.documentCard} type={DocumentCardType.normal}>
 
         <div className={styles.persona}>
           <Persona
@@ -100,7 +100,7 @@ export class PersonaCard extends React.Component<IPersonaCardProps, IPersonaCard
             size={PersonaSize.size72}
             imageShouldFadeIn={false}
             imageShouldStartVisible={true}>
-            <Label>
+
               {
                 this.props.profileProperties.WorkPhone ?
                   <div>
@@ -110,8 +110,16 @@ export class PersonaCard extends React.Component<IPersonaCardProps, IPersonaCard
                   :
                   ''
               }
+              {
+                this.props.profileProperties.Location ?
+                  <div>
+                    <Icon iconName='World'  style={{ fontSize: '12px' }}/>
+                    <span style={{ marginLeft: 5, fontSize: '12px' }}> {this.props.profileProperties.Location}</span>
+                  </div>
+                  :
+                  ''
+              }
 
-            </Label>
           </Persona>
         </div>
 
