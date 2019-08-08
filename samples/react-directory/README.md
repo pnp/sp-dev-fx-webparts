@@ -6,6 +6,12 @@
 
 
 ##  
+![directory](/samples/react-directory/assets/react-directory7.jpg) 
+
+![directory](/samples/react-directory/assets/react-directory8.jpg) 
+
+![directory](/samples/react-directory/assets/react-directory9.jpg) 
+
 ![directory](/samples/react-directory/assets/react-directory.jpg) 
 
 ![directory](/samples/react-directory/assets/react-directory-teams1.jpg) 
