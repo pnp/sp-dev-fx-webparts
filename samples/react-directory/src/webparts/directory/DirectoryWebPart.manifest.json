@@ -21,7 +21,8 @@
     "description": { "default": "Search Directory" },
     "officeFabricIconFontName": "ProfileSearch",
     "properties": {
-      "title": "Directory"
+      "title": "Directory",
+      "searchFirstName":  0
     }
   }]
 }

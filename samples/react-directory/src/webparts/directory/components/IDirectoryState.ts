@@ -1,10 +1,10 @@
-import { IProfileProperties}  from './../../../SPServices/IProfileProperties';
-import { PeoplePickerEntity, SearchResult, SearchResults } from '@pnp/pnpjs';
+import { IProfileProperties } from "./../../../SPServices/IProfileProperties";
+import { PeoplePickerEntity, SearchResult, SearchResults } from "@pnp/pnpjs";
 export interface IDirectoryState {
-  users:any;
+  users: any;
   isLoading: boolean;
-  errorMessage:string;
-  hasError:boolean;
+  errorMessage: string;
+  hasError: boolean;
   indexSelectedKey: string;
-  searchString:string;
+  searchString: string;
 }

@@ -1,12 +1,12 @@
-import * as React from 'react';
-import styles from './Directory.module.scss';
-import { IDirectoryProps } from './IDirectoryProps';
-import { escape } from '@microsoft/sp-lodash-subset';
-import { PersonaCard } from './PersonaCard/PersonaCard';
-import { spservices } from '../../../SPServices/spservices';
-import { IDirectoryState } from './IDirectoryState';
-import { DisplayMode } from '@microsoft/sp-core-library';
-import * as strings from 'DirectoryWebPartStrings';
+import * as React from "react";
+import styles from "./Directory.module.scss";
+import { IDirectoryProps } from "./IDirectoryProps";
+import { escape } from "@microsoft/sp-lodash-subset";
+import { PersonaCard } from "./PersonaCard/PersonaCard";
+import { spservices } from "../../../SPServices/spservices";
+import { IDirectoryState } from "./IDirectoryState";
+import { DisplayMode } from "@microsoft/sp-core-library";
+import * as strings from "DirectoryWebPartStrings";
 import {
   Spinner,
   SpinnerSize,
@@ -18,19 +18,57 @@ import {
   Pivot,
   PivotItem,
   PivotLinkFormat,
-  PivotLinkSize
-}
-  from 'office-ui-fabric-react';
-import { IProfileProperties } from '../../../SPServices/IProfileProperties';
-import { PeoplePickerEntity, Search, SearchResult } from '@pnp/sp';
+  PivotLinkSize,
+  Dropdown,
+  DropdownMenuItemType,
+  IDropdownStyles,
+  IDropdownOption
+} from "office-ui-fabric-react";
+import { IProfileProperties } from "../../../SPServices/IProfileProperties";
+import { PeoplePickerEntity, Search, SearchResult } from "@pnp/sp";
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { Root } from '@pnp/graph';
-import { IUserProperties } from './PersonaCard/IUserProperties';
+import { Root } from "@pnp/graph";
+import { IUserProperties } from "./PersonaCard/IUserProperties";
 
-const az: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
-export default class Directory extends React.Component<IDirectoryProps, IDirectoryState> {
-
+const az: string[] = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z"
+];
+const orderOptions: IDropdownOption[] = [
+  { key: "FirstName", text: "First Name" },
+  { key: "LastName", text: "Last Name" },
+  { key: "Department", text: "Department" },
+  { key: "Location", text: "Location" },
+  { key: "JobTitle", text: "Job Title" }
+];
+export default class Directory extends React.Component<
+  IDirectoryProps,
+  IDirectoryState
+> {
   private _services: spservices = null;
 
   constructor(props: IDirectoryProps) {
@@ -39,18 +77,18 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
     this.state = {
       users: [],
       isLoading: true,
-      errorMessage: '',
+      errorMessage: "",
       hasError: false,
-      indexSelectedKey: 'A',
-      searchString: ''
+      indexSelectedKey: "A",
+      searchString: "LastName"
     };
 
     this._services = new spservices(this.props.context);
     // Register event handlers
     this._searchUsers = this._searchUsers.bind(this);
     this._selectedIndex = this._selectedIndex.bind(this);
+    this._sortPeople = this._sortPeople.bind(this);
   }
-
 
   /**
    *
@@ -58,20 +96,34 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
    * @memberof Directory
    */
   public async componentDidMount() {
-    await this._searchUsers('A');
+    await this._searchUsers("A");
   }
 
   private async _searchUsers(searchText: string) {
-    searchText = searchText ? searchText : 'A';
-    this.setState({ isLoading: true, indexSelectedKey: searchText.substring(0, 1).toLocaleUpperCase() });
+    searchText = searchText.trim().length > 0 ? searchText : "A";
+    this.setState({
+      isLoading: true,
+      indexSelectedKey: searchText.substring(0, 1).toLocaleUpperCase(),
+      searchString: "LastName"
+    });
 
     try {
-      const users = await this._services.searchUsers(searchText);
-      this.setState({ users: users && users.PrimarySearchResults ? users.PrimarySearchResults : null, isLoading: false, errorMessage: '', hasError: false });
+      const users = await this._services.searchUsers(
+        searchText,
+        this.props.searchFirstName
+      );
+      this.setState({
+        users:
+          users && users.PrimarySearchResults
+            ? users.PrimarySearchResults
+            : null,
+        isLoading: false,
+        errorMessage: "",
+        hasError: false
+      });
     } catch (error) {
       this.setState({ errorMessage: error.message, hasError: true });
     }
-
   }
 
   /**
@@ -81,11 +133,105 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
    * @param {IDirectoryState} prevState
    * @memberof Directory
    */
-  public componentDidUpdate(prevProps: IDirectoryProps, prevState: IDirectoryState): void {
-
+  public async componentDidUpdate(
+    prevProps: IDirectoryProps,
+    prevState: IDirectoryState
+  ) {
+    if (
+      this.props.title != prevProps.title ||
+      this.props.searchFirstName != prevProps.searchFirstName
+    ) {
+      await this._searchUsers("A");
+    }
   }
 
-
+  /**
+   *
+   *
+   * @private
+   * @param {string} sortField
+   * @memberof Directory
+   */
+  private async _sortPeople(sortField: string) {
+    let _users = this.state.users;
+    _users = _users.sort((a: any, b: any) => {
+      switch (sortField) {
+        // Sorte by FirstName
+        case "FirstName":
+          const aFirstName = a.FirstName ? a.FirstName : "";
+          const bFirstName = b.FirstName ? b.FirstName : "";
+          if (aFirstName.toUpperCase() < bFirstName.toUpperCase()) {
+            return -1;
+          }
+          if (aFirstName.toUpperCase() > bFirstName.toUpperCase()) {
+            return 1;
+          }
+          return 0;
+          break;
+        // Sort by LastName
+        case "LastName":
+          const aLastName = a.LastName ? a.LastName : "";
+          const bLastName = b.LastName ? b.LastName : "";
+          if (aLastName.toUpperCase() < bLastName.toUpperCase()) {
+            return -1;
+          }
+          if (aLastName.toUpperCase() > bLastName.toUpperCase()) {
+            return 1;
+          }
+          return 0;
+          break;
+        // Sort by Location
+        case "Location":
+          const aBaseOfficeLocation = a.BaseOfficeLocation
+            ? a.BaseOfficeLocation
+            : "";
+          const bBaseOfficeLocation = b.BaseOfficeLocation
+            ? b.BaseOfficeLocation
+            : "";
+          if (
+            aBaseOfficeLocation.toUpperCase() <
+            bBaseOfficeLocation.toUpperCase()
+          ) {
+            return -1;
+          }
+          if (
+            aBaseOfficeLocation.toUpperCase() >
+            bBaseOfficeLocation.toUpperCase()
+          ) {
+            return 1;
+          }
+          return 0;
+          break;
+        // Sort by JobTitle
+        case "JobTitle":
+          const aJobTitle = a.JobTitle ? a.JobTitle : "";
+          const bJobTitle = b.JobTitle ? b.JobTitle : "";
+          if (aJobTitle.toUpperCase() < bJobTitle.toUpperCase()) {
+            return -1;
+          }
+          if (aJobTitle.toUpperCase() > bJobTitle.toUpperCase()) {
+            return 1;
+          }
+          return 0;
+          break;
+        // Sort by Department
+        case "Department":
+          const aDepartment = a.Department ? a.Department : "";
+          const bDepartment = b.Department ? b.Department : "";
+          if (aDepartment.toUpperCase() < bDepartment.toUpperCase()) {
+            return -1;
+          }
+          if (aDepartment.toUpperCase() > bDepartment.toUpperCase()) {
+            return 1;
+          }
+          return 0;
+          break;
+        default:
+          break;
+      }
+    });
+    this.setState({ users: _users, searchString: sortField });
+  }
   /**
    *
    *
@@ -95,7 +241,6 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
    * @memberof Directory
    */
   private _selectedIndex(item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) {
-
     this._searchUsers(item.props.itemKey);
   }
   /**
@@ -105,76 +250,112 @@ export default class Directory extends React.Component<IDirectoryProps, IDirecto
    * @memberof Directory
    */
   public render(): React.ReactElement<IDirectoryProps> {
-    const color = this.props.context.microsoftTeams ? 'white' : '';
+    const color = this.props.context.microsoftTeams ? "white" : "";
+
+    const diretoryGrid =
+      this.state.users && this.state.users.length > 0
+        ? this.state.users.map((user: any) => {
+            return (
+              <PersonaCard
+                context={this.props.context}
+                profileProperties={{
+                  DisplayName: user.PreferredName,
+                  Title: user.JobTitle,
+                  PictureUrl: user.PictureURL,
+                  Email: user.WorkEmail,
+                  Department: user.Department,
+                  WorkPhone: user.WorkPhone,
+                  Location: user.OfficeNumber
+                    ? user.OfficeNumber
+                    : user.BaseOfficeLocation
+                }}
+              />
+            );
+          })
+        : [];
 
     return (
       <div className={styles.directory}>
-        <WebPartTitle displayMode={this.props.displayMode}
+        <WebPartTitle
+          displayMode={this.props.displayMode}
           title={this.props.title}
-          updateProperty={this.props.updateProperty} />
+          updateProperty={this.props.updateProperty}
+        />
 
-        <div style={{ width: '100%', verticalAlign: 'middle', marginBottom: 40 }}>
+        <div className={styles.searchBox}>
           <SearchBox
             placeholder={strings.SearchPlaceHolder}
-            styles={{ root: { minWidth: 180, width: 360, marginLeft: 'auto', marginRight: 'auto', marginBottom: 25 } }}
+            styles={{
+              root: {
+                minWidth: 180,
+                maxWidth: 300,
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginBottom: 25
+              }
+            }}
             onSearch={this._searchUsers}
-            onClear={() => { this._searchUsers('A'); }}
-            onChange={this._searchUsers} />
+            onClear={() => {
+              this._searchUsers("A");
+            }}
+            onChange={this._searchUsers}
+          />
           <div>
             <Pivot
-              styles={{ root: { paddingLeft: 10, paddingRight: 10, whiteSpace: 'normal', textAlign: 'center' } }}
+              styles={{
+                root: {
+                  paddingLeft: 10,
+                  paddingRight: 10,
+                  whiteSpace: "normal",
+                  textAlign: "center"
+                }
+              }}
               linkFormat={PivotLinkFormat.tabs}
               selectedKey={this.state.indexSelectedKey}
               onLinkClick={this._selectedIndex}
-              linkSize={PivotLinkSize.normal}>
-              {
-                az.map((index) => {
-                  return (
-                    <PivotItem
-                      headerText={index}
-                      itemKey={index}
-                      key={index} >
-                    </PivotItem>
-                  );
-                })
-              }
+              linkSize={PivotLinkSize.normal}
+            >
+              {az.map((index: string) => {
+                return (
+                  <PivotItem headerText={index} itemKey={index} key={index} />
+                );
+              })}
             </Pivot>
           </div>
-
-
-
         </div>
-        {
-          !this.state.users || this.state.users.length == 0 ?
-            <div style={{ marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
-              <Icon iconName={'ProfileSearch'} style={{ fontSize: '54px', color: color }} />
-              <Label>
-                <span style={{ marginLeft: 5, fontSize: '26px', color: color }}>{strings.DirectoryMessage}</span>
-              </Label>
-            </div>
-            :
-            this.state.isLoading ?
-              <Spinner size={SpinnerSize.large} label={'searching ...'}></Spinner>
-              :
-              this.state.hasError ?
-                <MessageBar messageBarType={MessageBarType.error}>{this.state.errorMessage}</MessageBar>
-                :
-                this.state.users.map((user: any) => {
-                  return (
-                    <PersonaCard
-                      context={this.props.context}
-                      profileProperties={{
-                        DisplayName: user.PreferredName,
-                        Title: user.JobTitle,
-                        PictureUrl: user.PictureURL,
-                        Email: user.WorkEmail,
-                        Department: user.Department,
-                        WorkPhone: user.WorkPhone
-                      }}>
-                    </PersonaCard>
-                  );
-                })
-        }
+        {!this.state.users || this.state.users.length == 0 ? (
+          <div className={styles.noUsers}>
+            <Icon
+              iconName={"ProfileSearch"}
+              style={{ fontSize: "54px", color: color }}
+            />
+            <Label>
+              <span style={{ marginLeft: 5, fontSize: "26px", color: color }}>
+                {strings.DirectoryMessage}
+              </span>
+            </Label>
+          </div>
+        ) : this.state.isLoading ? (
+          <Spinner size={SpinnerSize.large} label={"searching ..."} />
+        ) : this.state.hasError ? (
+          <MessageBar messageBarType={MessageBarType.error}>
+            {this.state.errorMessage}
+          </MessageBar>
+        ) : (
+          <div className={styles.dropDownSortBy}>
+            <Dropdown
+              placeholder={strings.DropDownPlaceHolderMessage}
+              label={strings.DropDownPlaceLabelMessage}
+              options={orderOptions}
+              selectedKey={this.state.searchString}
+              onChange={(ev: any, value: IDropdownOption) => {
+                this._sortPeople(value.key.toString());
+              }}
+              styles={{ dropdown: { width: 200 } }}
+            />
+            <div>{diretoryGrid}</div>
+          </div>
+        )}
       </div>
     );
   }

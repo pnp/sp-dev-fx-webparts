@@ -1,22 +1,31 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
-
-
-
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
 
 .directory {
+  .dropDownSortBy {
+    margin-top: 35px;
+    margin-bottom: 15px;
+  }
 
-
-
+  .searchBox {
+    width: "100%";
+    vertical-align: "middle";
+    margin-bottom: 25;
+  }
+  .noUsers {
+    margin-left: "auto";
+    margin-right: "auto";
+    text-align: "center";
+    padding-top: 40px;
+  }
 
   .pivotItem {
     overflow-wrap: break-word;
   }
-    .pivotItem:hover {
+  .pivotItem:hover {
     border-style: solid;
     border-width: 1.2;
-    border-color:  $ms-color-themeDark;
+    border-color: $ms-color-themeDark;
   }
-
 
   .container {
     max-width: 700px;
@@ -68,7 +77,8 @@
     // Basic Button
     outline: transparent;
     position: relative;
-    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+      BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;
