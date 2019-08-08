@@ -6,11 +6,11 @@
 
 
 ##  
-![directory](/samples/react-directory/assets/react-directory7.jpg) 
+![directory](/samples/react-directory/assets/react-directory7.png) 
 
-![directory](/samples/react-directory/assets/react-directory8.jpg) 
+![directory](/samples/react-directory/assets/react-directory8.png) 
 
-![directory](/samples/react-directory/assets/react-directory9.jpg) 
+![directory](/samples/react-directory/assets/react-directory9.png) 
 
 ![directory](/samples/react-directory/assets/react-directory.jpg) 
 
