@@ -24,7 +24,12 @@ iframe {
   width:100%;
 }
 
-.title {
+.titleSharePoint{
   @include ms-font-xl;
   @include ms-fontSize-24;
+}
+.titleTeams{
+  @include ms-font-xl;
+  @include ms-fontSize-24;
+  color: white;
 }

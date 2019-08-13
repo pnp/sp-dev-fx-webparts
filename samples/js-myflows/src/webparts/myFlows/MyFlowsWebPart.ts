@@ -28,9 +28,10 @@ export default class MyFlowsWebPart extends BaseClientSideWebPart<
   }
 
   public render(): void {
+    const classColor = this.context.microsoftTeams ? styles.titleTeams : styles.titleSharePoint;
     this.domElement.setAttribute("Id", `"${this._guid}"`);
     this.domElement.setAttribute("class", `"${styles.sdk}"`);
-    this.domElement.innerHTML = `<div><label class=${styles.title}>${this.properties.title}</label></div>`;
+    this.domElement.innerHTML = `<div><label class=${classColor}>${this.properties.title}</label></div>`;
     this._services = new service(this.context);
     this._services.getAccessToken().then((token: string) => {
       const flowSDK = new this._msFlowSdk({
