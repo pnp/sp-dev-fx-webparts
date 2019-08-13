@@ -12,7 +12,7 @@ import {
 
 
 import * as strings from 'BirthdaysWebPartStrings';
-import Birdthays from './components/Birthdays';
+import Birthdays from './components/Birthdays';
 import { IBirthdaysProps } from './components/IBirthdaysProps';
 import { MSGraphClient } from '@microsoft/sp-http';
 
@@ -100,7 +100,7 @@ export default class BirthdaysWebPart extends BaseClientSideWebPart<IBirthdaysWe
 
   public render(): void {
     const element: React.ReactElement<IBirthdaysProps> = React.createElement(
-      Birdthays,
+      Birthdays,
       {
         title: this.properties.title,
         numberUpcomingDays: this.properties.numberUpcomingDays,
