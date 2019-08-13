@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <!--
+        Make sure fields with the same name are not added twice (these are scoped to the site level),
+        e.g., fields like the MNMatter field which refer to the matters list.
+    -->
+
+    <!-- Clients List Fields -->
+    <Field Group="Team in a Box" Type="Number" DisplayName="CliSysNbr" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{51a49d01-c774-469a-b719-5d36596f05dd}" StaticName="CliSysNbr" Name="CliSysNbr" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="CliCode" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="99" ID="{560926e2-6ff6-48db-a729-02f9e4500790}" StaticName="CliCode" Name="CliCode" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="CliNickName" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="30" ID="{7bead902-5710-49ef-927d-785126e36d6b}" StaticName="CliNickName" Name="CliNickName" />
+
+    <!-- Matters List Fields -->
+    <Field Group="Team in a Box" Type="Number" DisplayName="MatSysNbr" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{0e61a8b6-bdd6-4699-8b9e-fb3ec2cd0a50}" StaticName="MatSysNbr" Name="MatSysNbr" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="MatCliNbr" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{38159ede-95ae-4ca6-ba14-23c2f16465e3}" StaticName="MatCliNbr" Name="MatCliNbr" />
+    <!-- <Field Group="Team in a Box" Type="Lookup" DisplayName="Client" Required="FALSE" EnforceUniqueValues="FALSE" List="Lists/Clients" ShowField="CliSysNbr" UnlimitedLengthInDocumentLibrary="FALSE" RelationshipDeleteBehavior="None" ID="{1eecd496-bd81-4510-b608-58c0766f827d}" StaticName="Client" Name="Client" /> -->
+    <Field Group="Team in a Box" Type="Number" DisplayName="MatBillTo" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{9d35ce4d-cca0-4898-972a-8546bbaf351e}" StaticName="MatBillTo" Name="MatBillTo" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="MatCode" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="99" ID="{a68316e1-0210-45a2-a5e5-26e1c1aebce5}" StaticName="MatCode" Name="MatCode" />
+    <Field Group="Team in a Box" Name="MatDescription" FromBaseType="FALSE" Type="Note" DisplayName="MatDescription" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" ID="{c55e0355-a465-44e3-9205-7b3750021617}" StaticName="MatDescription" />
+
+    <!-- Notes List Fields -->
+    <Field Group="Team in a Box" Type="Number" DisplayName="MNMatter" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{b57f6d6c-ad5d-49b6-8af2-e29736e44d58}" StaticName="MNMatter" Name="MNMatter" />
+    <Field Group="Team in a Box" Type="Note" DisplayName="MNNoteText" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" Sortable="FALSE" ID="{460f100f-6b0a-4881-9e08-d8163ec30525}" StaticName="MNNoteText" Name="MNNoteText" />
+
+    <!-- Billed Time Fields -->
+    <!-- MNMatter: {b57f6d6c-ad5d-49b6-8af2-e29736e44d58} -->
+    <Field Group="Team in a Box" Type="Number" DisplayName="BTBillNbr" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{4B31709D-8869-4707-AD6A-8FBE7CB04BBB}" StaticName="BTBillNbr" Name="BTBillNbr" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="BTMatter" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{45DFB1F0-827E-44F9-9FF2-526B9DF4FBA2}" StaticName="BTMatter" Name="BTMatter" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="BTActualHrsWrk" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{8f5f33a8-c3fb-47ad-8eb4-529de0003a3b}" StaticName="BTActualHrsWrk" Name="BTActualHrsWrk" />
+    <Field Group="Team in a Box" Type="DateTime" DisplayName="BTDate" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" FriendlyDisplayFormat="Disabled" ID="{17dea31b-c1e0-4f21-94a5-8f9de14d91b0}"  StaticName="BTDate" Name="BTDate" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="BTTkpr" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{012d9ce1-6a8b-4d49-824e-dd04e9568135}" StaticName="BTTkpr" Name="BTTkpr" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="BTTkprName" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="99" ID="{9B855D37-E277-4DDD-BFBD-502B729CFF26}" StaticName="BTTkprName" Name="BTTkprName" />
+
+    <!-- All Bills -->
+    <Field Group="Team in a Box" Type="Text" DisplayName="BillType" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="99" ID="{0a27b514-59b3-4153-8f5e-b5d96e14bc22}" StaticName="BillType" Name="BillType" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="BillNbr" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{fef0c7a5-03ef-40b3-9fac-9014a996e469}" StaticName="BillNbr" Name="BillNbr" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="BillAmt" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{c624ffcc-501b-4956-9c72-b4f055d33ff2}" StaticName="BillAmt" Name="BillAmt" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="BillBalance" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{71f48ff7-8166-43b0-a17a-b9b0480abf41}"  StaticName="BillBalance" Name="BillBalance" />
+
+    <!-- People -->
+    <Field Group="Team in a Box" Type="User" DisplayName="MNEmployee" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{696f5433-afd2-4f35-a5b3-754f04479b76}" StaticName="MNEmployee" Name="MNEmployee" />
+
+    <!-- Power BI Fields -->
+    <Field Group="Team in a Box" Type="Number" DisplayName="BTAmount" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{1f7e8d69-5780-49f5-9b26-1e7add125528}" StaticName="BTAmount" Name="BTAmount" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="MatNickName" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{cad6e832-e648-4b7f-809f-f27e0764e175}" StaticName="MatNickName" Name="MatNickName" />
+    <Field Group="Team in a Box" Type="DateTime" DisplayName="MatDateOpen" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="DateTime" FriendlyDisplayFormat="Disabled" ID="{c4cb861d-60df-497e-ae5a-43050cb61714}"  StaticName="MatDateOpen" Name="MatDateOpen" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="MatPracticeClass" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{234bd017-29c7-487d-9976-f761c108ff0f}" StaticName="MatPracticeClass" Name="MatPracticeClass" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="PrctClsCode" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{70ee865c-6b87-4a3b-a4de-e3044b8b35d8}" StaticName="PrctClsCode" Name="PrctClsCode" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="PrctClsDesc" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{d7fc6373-a02b-4453-8930-26bd33c6e5fd}" StaticName="PrctClsDesc" Name="PrctClsDesc" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="EmpName" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{98549502-2ffb-4b36-9cd6-969c85677e48}" StaticName="EmpName" Name="EmpName" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="EmpSysNbr" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{4ed52b43-540b-4f78-a46b-6576f406128c}" StaticName="EmpSysNbr" Name="EmpSysNbr" />
+    <Field Group="Team in a Box" Type="Text" DisplayName="EmpInitials" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{b944387e-38f7-4eff-9ad4-4f82f14a3e4a}" StaticName="EmpInitials" Name="EmpInitials" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="UTAmount" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{e120af98-80b3-42d0-ad25-76e34568b07c}" StaticName="UTAmount" Name="UTAmount" />
+    <Field Group="Team in a Box" Type="Number" DisplayName="UTMatter" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" ID="{f035826c-5ed6-4e91-a51d-e2e5dd5c5e54}" StaticName="UTMatter" Name="UTMatter" />
+    
+    
+    <!-- Other field type examples -->
+    <!--
+    <Field ID="{33c86334-120b-4efa-a372-a96b0bbf62c0}"
+           Name="ChoiceFieldName"
+           DisplayName="Choice Field"
+           Type="Choice"
+           Group="Team in a Box">
+        <CHOICES>
+            <CHOICE>Opt 1</CHOICE>
+            <CHOICE>Opt 2</CHOICE>
+        </CHOICES>
+    </Field>
+    -->
+</Elements>

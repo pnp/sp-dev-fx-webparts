@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <ListInstance FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+                  Title="Billed Time"
+                  Description=""
+                  CustomSchema="billed-time-schema.xml"
+                  TemplateType="100"
+                  Url="Lists/BilledTime">
+    <Data>
+        <Rows>
+            <Row>
+                <Field Name="BTMatter">1</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">1</Field>
+                <Field Name="MNMatter">1</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,000</Field>
+                <Field Name="BTActualHrsWrk">33.3333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">2</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">2</Field>
+                <Field Name="MNMatter">1</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4,500</Field>
+                <Field Name="BTActualHrsWrk">30</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">3</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MNMatter">2</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4250</Field>
+                <Field Name="BTActualHrsWrk">28.3333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>                   
+            <Row>
+                <Field Name="BTMatter">4</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">4</Field>
+                <Field Name="MNMatter">2</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">1,200</Field>
+                <Field Name="BTActualHrsWrk">8</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>     
+            <Row>
+                <Field Name="BTMatter">5</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">5</Field>
+                <Field Name="MNMatter">3</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">10,250</Field>
+                <Field Name="BTActualHrsWrk">68.3333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">6</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">3</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4,800</Field>
+                <Field Name="BTActualHrsWrk">32</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">7</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">8</Field>
+                <Field Name="MNMatter">4</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">7,420</Field>
+                <Field Name="BTActualHrsWrk">49.46666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">8</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">1</Field>
+                <Field Name="MNMatter">4</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">6.610</Field>
+                <Field Name="BTActualHrsWrk">44.066666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">9</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">2</Field>
+                <Field Name="MNMatter">5</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4.380</Field>
+                <Field Name="BTActualHrsWrk">29.2</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">10</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MNMatter">5</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">1,122</Field>
+                <Field Name="BTActualHrsWrk">7.48</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">11</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">4</Field>
+                <Field Name="MNMatter">6</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,330</Field>
+                <Field Name="BTActualHrsWrk">35.53333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">12</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">5</Field>
+                <Field Name="MNMatter">6</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">6,000</Field>
+                <Field Name="BTActualHrsWrk">40</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">13</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">7</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">18,250</Field>
+                <Field Name="BTActualHrsWrk">121.66666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">14</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">7</Field>
+                <Field Name="MNMatter">7</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">11,200</Field>
+                <Field Name="BTActualHrsWrk">74.66666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">15</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">8</Field>
+                <Field Name="MNMatter">8</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,400</Field>
+                <Field Name="BTActualHrsWrk">36</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">16</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">9</Field>
+                <Field Name="MNMatter">8</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">1,200</Field>
+                <Field Name="BTActualHrsWrk">8</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">17</Field>
+                <Field Name="Title">Internal Review</Field>
+                <Field Name="MatCode">1</Field>
+                <Field Name="MNMatter">1</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,000</Field>
+                <Field Name="BTActualHrsWrk">33.3333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">18</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">2</Field>
+                <Field Name="MNMatter">1</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/13/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">49,729</Field>
+                <Field Name="BTActualHrsWrk">331.5266667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">19</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MNMatter">2</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">20,221</Field>
+                <Field Name="BTActualHrsWrk">134.8066667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">20</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">4</Field>
+                <Field Name="MNMatter">2</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">10,965</Field>
+                <Field Name="BTActualHrsWrk">73.1</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">21</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">5</Field>
+                <Field Name="MNMatter">3</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">35,429</Field>
+                <Field Name="BTActualHrsWrk">236.1933333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">22</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">3</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4.231</Field>
+                <Field Name="BTActualHrsWrk">28.20666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">23</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">8</Field>
+                <Field Name="MNMatter">4</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">46,009</Field>
+                <Field Name="BTActualHrsWrk">306.7266667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">24</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">1</Field>
+                <Field Name="MNMatter">4</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/7/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">17,911</Field>
+                <Field Name="BTActualHrsWrk">119.4066667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">25</Field>
+                <Field Name="Title">Initial Reivew</Field>
+                <Field Name="MatCode">2</Field>
+                <Field Name="MNMatter">5</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">34,835</Field>
+                <Field Name="BTActualHrsWrk">232.233333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">6</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MNMatter">5</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">28,084</Field>
+                <Field Name="BTActualHrsWrk">187.2266667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">12</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">4</Field>
+                <Field Name="MNMatter">6</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">27,893</Field>
+                <Field Name="BTActualHrsWrk">185.9533333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">12</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">5</Field>
+                <Field Name="MNMatter">6</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">24,235</Field>
+                <Field Name="BTActualHrsWrk">161.5666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">22</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">7</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">44,289</Field>
+                <Field Name="BTActualHrsWrk">295.26</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">4</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">7</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">16,997</Field>
+                <Field Name="BTActualHrsWrk">113.3133333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">8</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">8</Field>
+                <Field Name="MNMatter">8</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,779</Field>
+                <Field Name="BTActualHrsWrk">38.52666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">9</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">9</Field>
+                <Field Name="MNMatter">8</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">27,827</Field>
+                <Field Name="BTActualHrsWrk">185.5133333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">1</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">1</Field>
+                <Field Name="MNMatter">1</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,000</Field>
+                <Field Name="BTActualHrsWrk">33.3333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">2</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">2</Field>
+                <Field Name="MNMatter">1</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4,500</Field>
+                <Field Name="BTActualHrsWrk">30</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">3</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MNMatter">2</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4250</Field>
+                <Field Name="BTActualHrsWrk">28.3333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>                   
+            <Row>
+                <Field Name="BTMatter">4</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">4</Field>
+                <Field Name="MNMatter">2</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">1,200</Field>
+                <Field Name="BTActualHrsWrk">8</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>     
+            <Row>
+                <Field Name="BTMatter">5</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">5</Field>
+                <Field Name="MNMatter">3</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">10,250</Field>
+                <Field Name="BTActualHrsWrk">68.3333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">6</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">3</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4,800</Field>
+                <Field Name="BTActualHrsWrk">32</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">7</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">8</Field>
+                <Field Name="MNMatter">4</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">7,420</Field>
+                <Field Name="BTActualHrsWrk">49.46666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">8</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">1</Field>
+                <Field Name="MNMatter">4</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">6.610</Field>
+                <Field Name="BTActualHrsWrk">44.066666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">9</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">2</Field>
+                <Field Name="MNMatter">5</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4.380</Field>
+                <Field Name="BTActualHrsWrk">29.2</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">10</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MNMatter">5</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">1,122</Field>
+                <Field Name="BTActualHrsWrk">7.48</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">11</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">4</Field>
+                <Field Name="MNMatter">6</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,330</Field>
+                <Field Name="BTActualHrsWrk">35.53333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">12</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">5</Field>
+                <Field Name="MNMatter">6</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">6,000</Field>
+                <Field Name="BTActualHrsWrk">40</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">13</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">7</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">18,250</Field>
+                <Field Name="BTActualHrsWrk">121.66666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">14</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">7</Field>
+                <Field Name="MNMatter">7</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">11,200</Field>
+                <Field Name="BTActualHrsWrk">74.66666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">15</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">8</Field>
+                <Field Name="MNMatter">8</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,400</Field>
+                <Field Name="BTActualHrsWrk">36</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">16</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">9</Field>
+                <Field Name="MNMatter">8</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">1,200</Field>
+                <Field Name="BTActualHrsWrk">8</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">17</Field>
+                <Field Name="Title">Internal Review</Field>
+                <Field Name="MatCode">1</Field>
+                <Field Name="MNMatter">1</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,000</Field>
+                <Field Name="BTActualHrsWrk">33.3333333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">18</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">2</Field>
+                <Field Name="MNMatter">1</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/13/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">49,729</Field>
+                <Field Name="BTActualHrsWrk">331.5266667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">19</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MNMatter">2</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">20,221</Field>
+                <Field Name="BTActualHrsWrk">134.8066667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">20</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">4</Field>
+                <Field Name="MNMatter">2</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">10,965</Field>
+                <Field Name="BTActualHrsWrk">73.1</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">21</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">5</Field>
+                <Field Name="MNMatter">3</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">35,429</Field>
+                <Field Name="BTActualHrsWrk">236.1933333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">22</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">3</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">4.231</Field>
+                <Field Name="BTActualHrsWrk">28.20666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">23</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">8</Field>
+                <Field Name="MNMatter">4</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">46,009</Field>
+                <Field Name="BTActualHrsWrk">306.7266667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">24</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">1</Field>
+                <Field Name="MNMatter">4</Field>
+                <Field Name="BTTkpr">12</Field>
+                <Field Name="BTTkprName">5/7/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">17,911</Field>
+                <Field Name="BTActualHrsWrk">119.4066667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">25</Field>
+                <Field Name="Title">Initial Reivew</Field>
+                <Field Name="MatCode">2</Field>
+                <Field Name="MNMatter">5</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">34,835</Field>
+                <Field Name="BTActualHrsWrk">232.233333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">6</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">3</Field>
+                <Field Name="MNMatter">5</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">28,084</Field>
+                <Field Name="BTActualHrsWrk">187.2266667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">12</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">4</Field>
+                <Field Name="MNMatter">6</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">27,893</Field>
+                <Field Name="BTActualHrsWrk">185.9533333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">12</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">5</Field>
+                <Field Name="MNMatter">6</Field>
+                <Field Name="BTTkpr">10</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">24,235</Field>
+                <Field Name="BTActualHrsWrk">161.5666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">22</Field>
+                <Field Name="Title">Initial Review</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">7</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/13/19 7:30 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">44,289</Field>
+                <Field Name="BTActualHrsWrk">295.26</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">4</Field>
+                <Field Name="Title">Internal Briefing</Field>
+                <Field Name="MatCode">6</Field>
+                <Field Name="MNMatter">7</Field>
+                <Field Name="BTTkpr">11</Field>
+                <Field Name="BTTkprName">5/15/19 9:00 AM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">16,997</Field>
+                <Field Name="BTActualHrsWrk">113.3133333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">8</Field>
+                <Field Name="Title">On-site Interview</Field>
+                <Field Name="MatCode">8</Field>
+                <Field Name="MNMatter">8</Field>
+                <Field Name="BTTkpr">13</Field>
+                <Field Name="BTTkprName">5/7/19 2:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">5,779</Field>
+                <Field Name="BTActualHrsWrk">38.52666667</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>
+            <Row>
+                <Field Name="BTMatter">9</Field>
+                <Field Name="Title">Preliminary Findings</Field>
+                <Field Name="MatCode">9</Field>
+                <Field Name="MNMatter">8</Field>
+                <Field Name="BTTkpr">15</Field>
+                <Field Name="BTTkprName">5/8/19 3:00 PM EST Duration 1 hour</Field>
+                <Field Name="BTAmount">27,827</Field>
+                <Field Name="BTActualHrsWrk">185.5133333</Field>
+                <Field Name="BTBillNbr">1</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>                
+            </Row>              
+        </Rows>
+    </Data>    
+    </ListInstance>
+    
+</Elements>

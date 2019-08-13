@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <ListInstance FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+                  Title="All Bills"
+                  Description=""
+                  CustomSchema="all-bills-schema.xml"
+                  TemplateType="100"
+                  Url="Lists/AllBills">
+    <Data>
+        <Rows>
+            <Row>
+                <Field Name="Title">Matter 1.1 Bill 1</Field>
+                <Field Name="CliCode">1112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1223</Field>
+                <Field Name="BillAmt">500</Field>
+                <Field Name="BillBalance">250</Field>
+                <Field Name="MatBillTo">1</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 1.1 Bill 2</Field>
+                <Field Name="CliCode">2112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1224</Field>
+                <Field Name="BillAmt">250</Field>
+                <Field Name="BillBalance">500</Field>
+                <Field Name="MatBillTo">1</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 1.2 Bill 1</Field>
+                <Field Name="CliCode">1112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1223</Field>
+                <Field Name="BillAmt">500</Field>
+                <Field Name="BillBalance">250</Field>
+                <Field Name="MatBillTo">2</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 1.2 Bill 2</Field>
+                <Field Name="CliCode">2112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1224</Field>
+                <Field Name="BillAmt">250</Field>
+                <Field Name="BillBalance">500</Field>
+                <Field Name="MatBillTo">2</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 2.1 Bill 1</Field>
+                <Field Name="CliCode">1112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1223</Field>
+                <Field Name="BillAmt">500</Field>
+                <Field Name="BillBalance">250</Field>
+                <Field Name="MatBillTo">3</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 2.1 Bill 2</Field>
+                <Field Name="CliCode">2112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1224</Field>
+                <Field Name="BillAmt">250</Field>
+                <Field Name="BillBalance">500</Field>
+                <Field Name="MatBillTo">3</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 2.2 Bill 1</Field>
+                <Field Name="CliCode">1112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1223</Field>
+                <Field Name="BillAmt">500</Field>
+                <Field Name="BillBalance">250</Field>
+                <Field Name="MatBillTo">4</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 2.2 Bill 2</Field>
+                <Field Name="CliCode">2112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1224</Field>
+                <Field Name="BillAmt">250</Field>
+                <Field Name="BillBalance">500</Field>
+                <Field Name="MatBillTo">4</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 3.1 Bill 1</Field>
+                <Field Name="CliCode">1112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1223</Field>
+                <Field Name="BillAmt">500</Field>
+                <Field Name="BillBalance">250</Field>
+                <Field Name="MatBillTo">5</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 3.1 Bill 2</Field>
+                <Field Name="CliCode">2112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1224</Field>
+                <Field Name="BillAmt">250</Field>
+                <Field Name="BillBalance">500</Field>
+                <Field Name="MatBillTo">5</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 3.2 Bill 1</Field>
+                <Field Name="CliCode">1112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1223</Field>
+                <Field Name="BillAmt">500</Field>
+                <Field Name="BillBalance">250</Field>
+                <Field Name="MatBillTo">6</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 3.2 Bill 2</Field>
+                <Field Name="CliCode">2112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1224</Field>
+                <Field Name="BillAmt">250</Field>
+                <Field Name="BillBalance">500</Field>
+                <Field Name="MatBillTo">6</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 4.1 Bill 1</Field>
+                <Field Name="CliCode">1112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1223</Field>
+                <Field Name="BillAmt">500</Field>
+                <Field Name="BillBalance">250</Field>
+                <Field Name="MatBillTo">7</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 4.1 Bill 2</Field>
+                <Field Name="CliCode">2112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1224</Field>
+                <Field Name="BillAmt">250</Field>
+                <Field Name="BillBalance">500</Field>
+                <Field Name="MatBillTo">7</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 4.2 Bill 1</Field>
+                <Field Name="CliCode">1112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1223</Field>
+                <Field Name="BillAmt">500</Field>
+                <Field Name="BillBalance">250</Field>
+                <Field Name="MatBillTo">8</Field>
+            </Row>
+            <Row>
+                <Field Name="Title">Matter 4.2 Bill 2</Field>
+                <Field Name="CliCode">2112</Field>
+                <Field Name="BTDate">2019-05-05T21:00:00Z</Field>
+                <Field Name="BillType">Check</Field>
+                <Field Name="BillNbr">1224</Field>
+                <Field Name="BillAmt">250</Field>
+                <Field Name="BillBalance">500</Field>
+                <Field Name="MatBillTo">8</Field>
+            </Row>
+        </Rows>
+    </Data>
+    </ListInstance>
+    
+</Elements>
