@@ -17,7 +17,7 @@
 
 ![directory](/samples/js-myflows/assets/Screenshot3.png) 
 
-![directory](/samples/js-myflows/assets/Screenshot4.png 
+![directory](/samples/js-myflows/assets/Screenshot4.png)
 
 
 
