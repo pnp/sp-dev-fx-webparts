@@ -9,13 +9,15 @@
 ##  
 ![directory](/samples/js-myflows/assets/MyFlows.gif) 
 
+
+
 ![directory](/samples/js-myflows/assets/Screenshot1.png) 
 
 ![directory](/samples/js-myflows/assets/Screenshot2.png) 
 
-![directory](/samples/js-myflows/assets/rScreenshot3.png) 
+![directory](/samples/js-myflows/assets/Screenshot3.png) 
 
-![directory](/samples/js-myflows/assets/Screenshot4.jpg) 
+![directory](/samples/js-myflows/assets/Screenshot4.png 
 
 
 
