@@ -11,11 +11,11 @@
 
 ![directory](/samples/js-myflows/assets/Screenshot1.png) 
 
-![directory](/samples/react-directory/assets/Screenshot2.png) 
+![directory](/samples/js-myflows/assets/Screenshot2.png) 
 
-![directory](/samples/react-directory/assets/rScreenshot3.png) 
+![directory](/samples/js-myflows/assets/rScreenshot3.png) 
 
-![directory](/samples/react-directory/assets/Screenshot4.jpg) 
+![directory](/samples/js-myflows/assets/Screenshot4.jpg) 
 
 
 
