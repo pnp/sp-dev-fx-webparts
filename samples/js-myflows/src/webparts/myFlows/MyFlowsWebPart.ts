@@ -19,28 +19,29 @@ export default class MyFlowsWebPart extends BaseClientSideWebPart<
 > {
   private _msFlowSdk: any = null;
   private _services: service = null;
-  private _guid =  Guid.newGuid();
-  private _classColor:string;
+  private _guid = Guid.newGuid();
+  private _classColor: string;
   public constructor(props: IMyFlowsWebPartProps) {
     super();
 
     // Initialize flow SDK
     this._msFlowSdk = window["MsFlowSdk"];
-
   }
 
   /**
    * Gets context
    * @returns context
    */
-  private getContext():Promise<string>{
-    return new Promise( (resolve, reject)=>{
+  private getContext(): Promise<string> {
+    return new Promise((resolve, reject) => {
       let classColor = styles.titleSharePoint;
-     this.context.microsoftTeams.getContext( (teamsContext) => {
-       classColor = teamsContext.theme !== 'default!' ? styles.titleTeams : styles.titleSharePoint;
-       resolve(classColor);
-    });
-
+      this.context.microsoftTeams.getContext(teamsContext => {
+        classColor =
+          teamsContext.theme !== "default!"
+            ? styles.titleTeams
+            : styles.titleSharePoint;
+        resolve(classColor);
+      });
     });
   }
   /**
@@ -49,10 +50,12 @@ export default class MyFlowsWebPart extends BaseClientSideWebPart<
   public render(): void {
     this.domElement.setAttribute("Id", `"${this._guid}"`);
     this.domElement.setAttribute("class", `"${styles.sdk}"`);
-    this.getContext().then( (classColor)=>{
-      this.domElement.innerHTML = `<div><label class=${classColor}>${this.properties.title}</label></div>`;
+    this.getContext().then(classColor => {
+      this.domElement.innerHTML = `<div><label class=${classColor}>${
+        this.properties.title
+      }</label></div>`;
     });
-   //
+    //
     this._services = new service(this.context);
     this._services.getAccessToken().then((token: string) => {
       const flowSDK = new this._msFlowSdk({
@@ -73,7 +76,7 @@ export default class MyFlowsWebPart extends BaseClientSideWebPart<
           enableBusinessProcessFlow: true
         },
         templatesSettings: {
-          defaultParams: '',
+          defaultParams: "",
           category: "PowerAppsButton",
           destination: "new",
           metadataSortProperty: "",
