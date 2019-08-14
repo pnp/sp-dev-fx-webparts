@@ -20,18 +20,39 @@ export default class MyFlowsWebPart extends BaseClientSideWebPart<
   private _msFlowSdk: any = null;
   private _services: service = null;
   private _guid =  Guid.newGuid();
+  private _classColor:string;
   public constructor(props: IMyFlowsWebPartProps) {
     super();
 
     // Initialize flow SDK
     this._msFlowSdk = window["MsFlowSdk"];
+
   }
 
+  /**
+   * Gets context
+   * @returns context
+   */
+  private getContext():Promise<string>{
+    return new Promise( (resolve, reject)=>{
+      let classColor = styles.titleSharePoint;
+     this.context.microsoftTeams.getContext( (teamsContext) => {
+       classColor = teamsContext.theme !== 'default!' ? styles.titleTeams : styles.titleSharePoint;
+       resolve(classColor);
+    });
+
+    });
+  }
+  /**
+   * Renders my flows web part
+   */
   public render(): void {
-    const classColor = this.context.microsoftTeams ? styles.titleTeams : styles.titleSharePoint;
     this.domElement.setAttribute("Id", `"${this._guid}"`);
     this.domElement.setAttribute("class", `"${styles.sdk}"`);
-    this.domElement.innerHTML = `<div><label class=${classColor}>${this.properties.title}</label></div>`;
+    this.getContext().then( (classColor)=>{
+      this.domElement.innerHTML = `<div><label class=${classColor}>${this.properties.title}</label></div>`;
+    });
+   //
     this._services = new service(this.context);
     this._services.getAccessToken().then((token: string) => {
       const flowSDK = new this._msFlowSdk({
