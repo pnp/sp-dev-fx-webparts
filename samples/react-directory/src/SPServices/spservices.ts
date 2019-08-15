@@ -54,14 +54,6 @@ user:string   */
     }
   }
 
-
-
-  /**
-   * Searchs users
-   * @param searchString
-   * @param searchFirstName
-   * @returns
-   */
   public async searchUsers(searchString: string, searchFirstName:boolean) {
     const _search =  !searchFirstName ? `LastName:${searchString}*` :  `FirstName:${searchString}*` ;
     const searchProperties: string[] = ["FirstName", "LastName", "PreferredName", "WorkEmail", "OfficeNumber","PictureURL", "WorkPhone", "MobilePhone", "JobTitle", "Department", "Skills", "PastProjects", "BaseOfficeLocation", "SPS-UserType","GroupId"];
