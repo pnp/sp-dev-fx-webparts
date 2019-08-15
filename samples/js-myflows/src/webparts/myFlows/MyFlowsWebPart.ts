@@ -20,7 +20,7 @@ export default class MyFlowsWebPart extends BaseClientSideWebPart<
   private _msFlowSdk: any = null;
   private _services: service = null;
   private _guid = Guid.newGuid();
-  private _classColor: string;
+
   public constructor(props: IMyFlowsWebPartProps) {
     super();
 
@@ -34,30 +34,35 @@ export default class MyFlowsWebPart extends BaseClientSideWebPart<
    */
   private getContext(): Promise<string> {
     return new Promise((resolve, reject) => {
-      let classColor = styles.titleSharePoint;
-      this.context.microsoftTeams.getContext(teamsContext => {
-        classColor =
-          teamsContext.theme !== "default!"
-            ? styles.titleTeams
-            : styles.titleSharePoint;
+      let classColor = styles.titleTheme;
+      if (this.context.microsoftTeams) {
+        this.context.microsoftTeams.getContext(teamsContext => {
+          classColor =
+            teamsContext.theme !== "default"
+              ? styles.titleWhite
+              : styles.titleTheme;
+          resolve(classColor);
+        });
+      } else {
         resolve(classColor);
-      });
+      }
     });
   }
   /**
    * Renders my flows web part
    */
-  public render(): void {
+  public async render(): Promise<void> {
     this.domElement.setAttribute("Id", `"${this._guid}"`);
     this.domElement.setAttribute("class", `"${styles.sdk}"`);
-    this.getContext().then(classColor => {
-      this.domElement.innerHTML = `<div><label class=${classColor}>${
-        this.properties.title
-      }</label></div>`;
-    });
+    const classColor = await this.getContext();
+    this.domElement.innerHTML = `<div><label class=${classColor}>${
+      this.properties.title
+    }</label></div>`;
+
     //
     this._services = new service(this.context);
-    this._services.getAccessToken().then((token: string) => {
+    try {
+      const token: string = await this._services.getAccessToken();
       const flowSDK = new this._msFlowSdk({
         hostName: "https://flow.microsoft.com",
         locale: this.context.pageContext.cultureInfo.currentCultureName
@@ -105,7 +110,14 @@ export default class MyFlowsWebPart extends BaseClientSideWebPart<
       widget.listen("WIDGET_READY", () => {
         console.log("The flow widget is now ready.");
       });
-    });
+    } catch (error) {
+      // error
+      this.domElement.innerHTML = `<div><label class=${classColor}>${
+        this.properties.title
+      }</label></div>
+      <div ><label class=${styles.error}>${error}</label></div>
+      `;
+    }
   }
 
   protected get dataVersion(): Version {
