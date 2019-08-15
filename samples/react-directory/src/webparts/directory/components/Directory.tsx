@@ -118,7 +118,7 @@ export default class Directory extends React.Component<
             } catch (e) {
                 return "";
             }
-           // base64Str = base64Str.replace(/^data:image\/png;base64,/, "");
+
             resolve(base64Str);
         });
         image.src = pictureUrl;
