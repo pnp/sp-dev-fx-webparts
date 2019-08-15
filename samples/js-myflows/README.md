@@ -46,7 +46,7 @@ The web part Use msflowsdk-1.1.js library
 
 Solution|Author(s)
 --------|---------
-Directory Web Part|João Mendes
+My FLows Web Part|João Mendes
 
 ## Version history
 
