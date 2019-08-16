@@ -11,7 +11,7 @@ export default class BasicPlainSectionBackgroundExampleWebPart extends BaseClien
     // See https://github.com/OfficeDev/office-ui-fabric-react/wiki/Theming
     const semanticColors: Readonly<ISemanticColors> | undefined = this._themeVariant && this._themeVariant.semanticColors;
 
-    const style: string = ` style="color:${semanticColors.bodyText}"`;
+    const style: string = ` style="background-color:${semanticColors.bodyBackground}"`;
     this.domElement.innerHTML = `<p${'' || (this._themeProvider && style)}>${this._textContent}</p>`;
   }
 
