@@ -11,7 +11,9 @@ export class DateBox extends React.Component<IDateBoxProps, IDateBoxState> {
   public render(): React.ReactElement<IDateBoxProps> {
     // convert start and end date into moments so that we can manipulate them
     const startMoment: moment.Moment = moment(this.props.startDate);
-    const endMoment: moment.Moment = moment(this.props.endDate);
+
+    // event actually ends one second before the end date
+    const endMoment: moment.Moment = moment(this.props.endDate).add(-1, "s");
 
     // check if both dates are on the same day
     const isSameDay: boolean = startMoment.isSame(endMoment, "day");

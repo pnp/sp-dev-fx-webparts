@@ -1,4 +1,12 @@
 declare interface ICalendarFeedSummaryWebPartStrings {
+  UseCorsFieldDescription: string;
+  ConvertFromUTCFieldDescription: string;
+  ConvertFromUTCOptionNo: string;
+  ConvertFromUTCOptionYes: string;
+  ConvertFromUTCLabel: string;
+  MaxTotalFieldDescription: string;
+  MaxTotalFieldLabel: string;
+  FilmStripAriaLabel: string;
   PropertyPaneDescription: string;
   BasicGroupName: string;
   AllItemsUrlFieldLabel: string;
