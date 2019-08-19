@@ -43,12 +43,13 @@ import spservices from '../../services/spservices';
 import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
 import { EventRecurrenceInfo } from '../../controls/EventRecurrenceInfo/EventRecurrenceInfo';
 import { getGUID } from '@pnp/common';
+import { toLocaleShortDateString } from '../../utils/dateUtils';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.December],
   shortMonths: [strings.Jan, strings.Feb, strings.Mar, strings.Apr, strings.May, strings.Jun, strings.Jul, strings.Aug, strings.Sep, strings.Oct, strings.Nov, strings.Dez],
   days: [strings.Sunday, strings.Monday, strings.Tuesday, strings.Wednesday, strings.Thursday, strings.Friday, strings.Saturday],
-  shortDays: [strings.ShortDay_S, strings.ShortDay_M, strings.ShortDay_T, strings.ShortDay_W, strings.ShortDay_Tursday, strings.ShortDay_Friday, strings.ShortDay_Saunday],
+  shortDays: [strings.ShortDay_S, strings.ShortDay_M, strings.ShortDay_T, strings.ShortDay_W, strings.ShortDay_Thursday, strings.ShortDay_Friday, strings.ShortDay_Sunday],
   goToToday: strings.GoToDay,
   prevMonthAriaLabel: strings.PrevMonth,
   nextMonthAriaLabel: strings.NextMonth,
@@ -528,6 +529,16 @@ export class Event extends React.Component<IEventProps, IEventState> {
   }
 
   /**
+   * 
+   * @private
+   * @param date 
+   * @memberof Event
+   */
+  private formatDate(date: Date) {
+    return toLocaleShortDateString(date);
+  }
+
+  /**
    * @private
    * @param {Date} newDate
    * @memberof Event
@@ -615,14 +626,14 @@ export class Event extends React.Component<IEventProps, IEventState> {
                 {
                   (this.state.eventData && (this.state.eventData.EventType !== "0" && this.state.showRecurrenceSeriesInfo !== true)) ?
                   <div>
-                      <h2 style={{ display: 'inline-block', verticalAlign: 'top' }}>Recurrence Event</h2>
+                      <h2 style={{ display: 'inline-block', verticalAlign: 'top' }}>{ strings.recurrenceEventLabel }</h2>
                       <DefaultButton
                         style={{ display: 'inline-block', marginLeft: '330px', verticalAlign: 'top', width: 'auto' }}
                         iconProps={{ iconName: 'RecurringEvent' }}
                         allowDisabledFocus={true}
                         onClick={this.onEditRecurrence}
                       >
-                        Edit Recurrence Series
+                        { strings.editRecurrenceSeries }
                      </DefaultButton>
 
                     </div>
@@ -658,6 +669,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     value={this.state.startDate}
                     label={strings.StartDateLabel}
                     onSelectDate={this.onSelectDateStart}
+                    formatDate={this.formatDate}
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
                     hidden={this.state.showRecurrenceSeriesInfo}
                   />
@@ -729,6 +741,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     value={this.state.endDate}
                     label={strings.EndDateLabel}
                     onSelectDate={this.onSelectDateEnd}
+                    formatDate={this.formatDate}
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
                     hidden={this.state.showRecurrenceSeriesInfo}
                   />
@@ -799,9 +812,9 @@ export class Event extends React.Component<IEventProps, IEventState> {
                       <Toggle
                         defaultChecked={false}
                         inlineLabel={true}
-                        label="Recurrence ?"
-                        onText="On"
-                        offText="Off"
+                        label={ strings.ifRecurrenceLabel }
+                        onText={ strings.onLabel }
+                        offText={ strings.offLabel }
                         onChange={(ev, checked: boolean) => {
                           ev.preventDefault();
                           this.setState({ showRecurrenceSeriesInfo: checked, newRecurrenceEvent: checked });
@@ -827,7 +840,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                   )
                 }
 
-                < Label > Event Description</Label>
+                < Label > {strings.eventDescriptionLabel }</Label>
 
                 <div className={styles.description}>
                   <Editor

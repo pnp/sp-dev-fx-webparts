@@ -15,7 +15,7 @@ import {
   MaskedTextField
 } from 'office-ui-fabric-react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-
+import { toLocaleShortDateString }  from '../../utils/dateUtils';
 import spservices from '../../services/spservices';
 
 const DayPickerStrings: IDatePickerStrings = {
@@ -107,6 +107,16 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
   private onEndDateChange(date: Date) {
     this.setState({ endDate: date });
     this.applyRecurrence();
+  }
+
+  /**
+   * 
+   * @private
+   * @param date 
+   * @memberof EventRecurrenceInfoDaily
+   */
+  private formatDate(date: Date): string {
+    return toLocaleShortDateString(date);
   }
 
   /**
@@ -561,7 +571,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
             </div>
 
             <div style={{ paddingTop: '22px' }}>
-              <Label>Date Range</Label>
+              <Label>{ strings.dateRangeLabel }</Label>
               <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: '35px', paddingTop: '10px' }}>
 
                 <DatePicker
@@ -572,6 +582,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
                   label={strings.StartDateLabel}
                   value={this.state.startDate}
                   onSelectDate={this.onStartDateChange}
+                  formatDate={this.formatDate}
                 />
 
               </div>
@@ -598,6 +609,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
                               ariaLabel={strings.StartDatePlaceHolder}
                               style={{ display: 'inline-block', verticalAlign: 'top', paddingLeft: '22px', }}
                               onSelectDate={this.onEndDateChange}
+                              formatDate={this.formatDate}
                               value={this.state.endDate}
                               disabled={this.state.disableEndDate}
                             />

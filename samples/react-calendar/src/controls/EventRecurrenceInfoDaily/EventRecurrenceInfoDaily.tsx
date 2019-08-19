@@ -13,6 +13,7 @@ import {
   MaskedTextField,
 } from 'office-ui-fabric-react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
+import { toLocaleShortDateString } from '../../utils/dateUtils';
 
 import spservices from '../../services/spservices';
 
@@ -20,7 +21,7 @@ const DayPickerStrings: IDatePickerStrings = {
   months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.December],
   shortMonths: [strings.Jan, strings.Feb, strings.Mar, strings.Apr, strings.May, strings.Jun, strings.Jul, strings.Aug, strings.Sep, strings.Oct, strings.Nov, strings.Dez],
   days: [strings.Sunday, strings.Monday, strings.Tuesday, strings.Wednesday, strings.Thursday, strings.Friday, strings.Saturday],
-  shortDays: [strings.ShortDay_S, strings.ShortDay_M, strings.ShortDay_T, strings.ShortDay_W, strings.ShortDay_Tursday, strings.ShortDay_Friday, strings.ShortDay_Saunday],
+  shortDays: [strings.ShortDay_S, strings.ShortDay_M, strings.ShortDay_T, strings.ShortDay_W, strings.ShortDay_Thursday, strings.ShortDay_Friday, strings.ShortDay_Sunday],
   goToToday: strings.GoToDay,
   prevMonthAriaLabel: strings.PrevMonth,
   nextMonthAriaLabel: strings.NextMonth,
@@ -44,7 +45,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
     super(props);
 
 
-    this.onPaternChange = this.onPaternChange.bind(this);
+    this.onPatternChange = this.onPatternChange.bind(this);
     this.state = {
       selectedKey: 'daily',
       selectPatern: 'every',
@@ -83,6 +84,16 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
   private onStartDateChange(date: Date) {
     this.setState({ startDate: date });
     this.applyRecurrence();
+  }
+
+  /**
+   * 
+   * @private
+   * @param date 
+   * @memberof EventRecurrenceInfoDaily
+   */
+  private formatDate(date: Date) {
+    return toLocaleShortDateString(date);
   }
 
   /**
@@ -162,7 +173,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
     });
     this.applyRecurrence();
   }
-  private onPaternChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
+  private onPatternChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
     ev.preventDefault();
     this.setState({
       selectPatern: option.key,
@@ -294,7 +305,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
 
             </div>
             <div style={{ width: '100%', paddingTop: '10px' }}>
-              <Label>Patern</Label>
+              <Label>{ strings.patternLabel }</Label>
               <ChoiceGroup
                 selectedKey={this.state.selectPatern}
                 options={[
@@ -325,13 +336,13 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                     text: strings.everyweekdays,
                   }
                 ]}
-                onChange={this.onPaternChange}
+                onChange={this.onPatternChange}
                 required={true}
               />
             </div>
 
             <div style={{ paddingTop: '22px' }}>
-              <Label>Date Range</Label>
+              <Label>{ strings.dateRangeLabel }</Label>
               <div style={{ display: 'inline-block', verticalAlign: 'top', paddingRight: '35px', paddingTop: '10px' }}>
 
                 <DatePicker
@@ -342,6 +353,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                   label={strings.StartDateLabel}
                   value={this.state.startDate}
                   onSelectDate={this.onStartDateChange}
+                  formatDate={this.formatDate}
                 />
 
               </div>
@@ -368,8 +380,10 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                               ariaLabel="Select a date"
                               style={{ display: 'inline-block', verticalAlign: 'top', paddingLeft: '22px', }}
                               onSelectDate={this.onEndDateChange}
+                              formatDate={this.formatDate}
                               value={this.state.endDate}
                               disabled={this.state.disableEndDate}
+
                             />
                           </div>
                         );
@@ -390,7 +404,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                               disabled={this.state.disableNumberOcurrences}
                               errorMessage={this.state.errorMessageNumberOcurrences}
                               onChange={this.onNumberOfOcurrencesChange} />
-                            <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', paddingLeft: '10px' } }}>Ocurrences</Label>
+                            <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', paddingLeft: '10px' } }}>{ strings.occurrencesLabel }</Label>
                           </div>
                         );
                       }

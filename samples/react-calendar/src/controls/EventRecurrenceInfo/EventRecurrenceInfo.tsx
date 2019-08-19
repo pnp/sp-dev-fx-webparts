@@ -84,29 +84,29 @@ export class EventRecurrenceInfo extends React.Component<IEventRecurrenceInfoPro
 
         <div style={{ display: 'inline-block', verticalAlign: 'top' }}>
           <ChoiceGroup
-            label="Recurrence Information"
+            label={ strings.recurrenceInformationLabel }
             selectedKey={this.state.selectedRecurrenceRule}
             options={[
               {
                 key: 'daily',
                 iconProps: { iconName: 'CalendarDay' },
-                text: 'Daily'
+                text: strings.dailyLabel
               },
               {
                 key: 'weekly',
                 iconProps: { iconName: 'CalendarWeek' },
-                text: 'Weekly'
+                text: strings.weeklyLabel
               },
               {
                 key: 'monthly',
                 iconProps: { iconName: 'Calendar' },
-                text: 'Monthly',
+                text: strings.monthlyLabel,
 
               },
               {
                 key: 'yearly',
                 iconProps: { iconName: 'Calendar' },
-                text: 'Yearly',
+                text: strings.yearlyLabel,
               }
             ]}
             onChange={this._onRecurrenceFrequenceChange}
