@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/termSetRequester/TermSetRequesterWebPart.js",
+      "manifest": "./src/webparts/termSetRequester/TermSetRequesterWebPart.manifest.json",
+      "outputPath": "./dist/term-set-requester.bundle.js"
+    }
+  ],
+  "externals": {
+    "knockout": "node_modules/knockout/build/output/knockout-latest.debug.js"
+  },
+  "localizedResources": {
+    "termSetRequesterStrings": "webparts/termSetRequester/loc/{locale}.js"
+  }
+}

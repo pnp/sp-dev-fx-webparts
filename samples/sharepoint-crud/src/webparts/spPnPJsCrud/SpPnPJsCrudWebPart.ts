@@ -1,29 +1,33 @@
+import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneSettings,
-  IWebPartContext,
+  IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
-import styles from './SpPnPJsCrud.module.scss';
-import * as strings from 'spPnPJsCrudStrings';
-import { ISpPnPJsCrudWebPartProps } from './ISpPnPJsCrudWebPartProps';
+import styles from './SpPnPJsCrudWebPart.module.scss';
+import * as strings from 'SpPnPJsCrudWebPartStrings';
 
-import * as pnp from 'sp-pnp-js';
-import { Item, ItemAddResult, ItemUpdateResult } from '../../../node_modules/sp-pnp-js/lib/sharepoint/rest/items';
+import { IListItem } from './IListItem';
 
-interface IListItem {
-  Title?: string;
-  Id: number;
+import { sp, Item, ItemAddResult, ItemUpdateResult } from '@pnp/sp';
+
+export interface ISpPnPJsCrudWebPartProps {
+  listName: string;
 }
 
 export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCrudWebPartProps> {
-  constructor(context: IWebPartContext) {
-    super(context);
-    pnp.setup({
-      headers: {
-        'Accept': 'application/json;odata=nometadata'
-      }
+
+  protected onInit(): Promise<void> {
+    return new Promise<void>((resolve: () => void, reject: (error?: any) => void): void => {
+      sp.setup({
+        sp: {
+          headers: {
+            "Accept": "application/json; odata=nometadata"
+          }
+        }
+      });
+      resolve();
     });
   }
 
@@ -40,28 +44,28 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
       </div>
       <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
         <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button create-Button">
-            <span class="ms-Button-label">Create item</span>
+          <button class="${styles.button} create-Button">
+            <span class="${styles.label}">Create item</span>
           </button>
-          <button class="ms-Button read-Button">
-            <span class="ms-Button-label">Read item</span>
-          </button>
-        </div>
-      </div>
-      <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
-        <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button readall-Button">
-            <span class="ms-Button-label">Read all items</span>
+          <button class="${styles.button} read-Button">
+            <span class="${styles.label}">Read item</span>
           </button>
         </div>
       </div>
       <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
         <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
-          <button class="ms-Button update-Button">
-            <span class="ms-Button-label">Update item</span>
+          <button class="${styles.button} readall-Button">
+            <span class="${styles.label}">Read all items</span>
           </button>
-          <button class="ms-Button delete-Button">
-            <span class="ms-Button-label">Delete item</span>
+        </div>
+      </div>
+      <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
+        <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
+          <button class="${styles.button} update-Button">
+            <span class="${styles.label}">Update item</span>
+          </button>
+          <button class="${styles.button} delete-Button">
+            <span class="${styles.label}">Delete item</span>
           </button>
         </div>
       </div>
@@ -81,7 +85,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
   }
 
   private setButtonsState(): void {
-    const buttons: NodeListOf<Element> = this.domElement.querySelectorAll('button.ms-Button');
+    const buttons: NodeListOf<Element> = this.domElement.querySelectorAll(`button.${styles.button}`);
     const listNotConfigured: boolean = this.listNotConfigured();
 
     for (let i: number = 0; i < buttons.length; i++) {
@@ -104,7 +108,11 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
     this.domElement.querySelector('button.delete-Button').addEventListener('click', () => { webPart.deleteItem(); });
   }
 
-  protected get propertyPaneSettings(): IPropertyPaneSettings {
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
@@ -134,7 +142,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
 
   private createItem(): void {
     this.updateStatus('Creating item...');
-    pnp.sp.web.lists.getByTitle(this.properties.listName).items.add({
+    sp.web.lists.getByTitle(this.properties.listName).items.add({
       'Title': `Item ${new Date()}`
     }).then((result: ItemAddResult): void => {
       const item: IListItem = result.data as IListItem;
@@ -153,7 +161,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
         }
 
         this.updateStatus(`Loading information about item ID: ${itemId}...`);
-        return pnp.sp.web.lists.getByTitle(this.properties.listName)
+        return sp.web.lists.getByTitle(this.properties.listName)
           .items.getById(itemId).select('Title', 'Id').get();
       })
       .then((item: IListItem): void => {
@@ -165,7 +173,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
 
   private getLatestItemId(): Promise<number> {
     return new Promise<number>((resolve: (itemId: number) => void, reject: (error: any) => void): void => {
-      pnp.sp.web.lists.getByTitle(this.properties.listName)
+      sp.web.lists.getByTitle(this.properties.listName)
         .items.orderBy('Id', false).top(1).select('Id').get()
         .then((items: { Id: number }[]): void => {
           if (items.length === 0) {
@@ -182,7 +190,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
 
   private readItems(): void {
     this.updateStatus('Loading all items...');
-    pnp.sp.web.lists.getByTitle(this.properties.listName)
+    sp.web.lists.getByTitle(this.properties.listName)
       .items.select('Title', 'Id').get()
       .then((items: IListItem[]): void => {
         this.updateStatus(`Successfully loaded ${items.length} items`, items);
@@ -204,7 +212,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
 
         latestItemId = itemId;
         this.updateStatus(`Loading information about item ID: ${itemId}...`);
-        return pnp.sp.web.lists.getByTitle(this.properties.listName)
+        return sp.web.lists.getByTitle(this.properties.listName)
           .items.getById(itemId).get(undefined, {
             headers: {
               'Accept': 'application/json;odata=minimalmetadata'
@@ -216,7 +224,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
         return Promise.resolve((item as any) as IListItem);
       })
       .then((item: IListItem): Promise<ItemUpdateResult> => {
-        return pnp.sp.web.lists.getByTitle(this.properties.listName)
+        return sp.web.lists.getByTitle(this.properties.listName)
           .items.getById(item.Id).update({
             'Title': `Item ${new Date()}`
           }, etag);
@@ -244,7 +252,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
 
         latestItemId = itemId;
         this.updateStatus(`Loading information about item ID: ${latestItemId}...`);
-        return pnp.sp.web.lists.getByTitle(this.properties.listName)
+        return sp.web.lists.getByTitle(this.properties.listName)
           .items.getById(latestItemId).select('Id').get(undefined, {
             headers: {
               'Accept': 'application/json;odata=minimalmetadata'
@@ -257,7 +265,7 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
       })
       .then((item: IListItem): Promise<void> => {
         this.updateStatus(`Deleting item with ID: ${latestItemId}...`);
-        return pnp.sp.web.lists.getByTitle(this.properties.listName)
+        return sp.web.lists.getByTitle(this.properties.listName)
           .items.getById(item.Id).delete(etag);
       })
       .then((): void => {
@@ -273,11 +281,6 @@ export default class SpPnPJsCrudWebPart extends BaseClientSideWebPart<ISpPnPJsCr
   }
 
   private updateItemsHtml(items: IListItem[]): void {
-    const itemsHtml: string[] = [];
-    for (let i: number = 0; i < items.length; i++) {
-      itemsHtml.push(`<li>${items[i].Title} (${items[i].Id})</li>`);
-    }
-
-    this.domElement.querySelector('.items').innerHTML = itemsHtml.join('');
+    this.domElement.querySelector('.items').innerHTML = items.map(item => `<li>${item.Title} (${item.Id})</li>`).join("");
   }
 }

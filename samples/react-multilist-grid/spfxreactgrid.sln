@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.25928.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "spfxreactgrid", "spfxreactgrid.njsproj", "{28BF799F-01FC-45E9-8997-F7982EAF8B53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28BF799F-01FC-45E9-8997-F7982EAF8B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28BF799F-01FC-45E9-8997-F7982EAF8B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28BF799F-01FC-45E9-8997-F7982EAF8B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28BF799F-01FC-45E9-8997-F7982EAF8B53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

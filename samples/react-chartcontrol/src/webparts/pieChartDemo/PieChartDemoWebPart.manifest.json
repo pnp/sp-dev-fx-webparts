@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "0ccdae4a-e8b0-4bd8-aba3-30d54444ee10",
+  "alias": "PieChartDemoWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+
+    "title": { "default": "Pie Chart" },
+    "description": { "default": "Demonstrates how to render a pie chart" },
+    "officeFabricIconFontName": "PieDouble",
+    "properties": {
+      "description": "Pie Chart"
+    }
+  }]
+}

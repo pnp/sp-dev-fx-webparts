@@ -1,0 +1,7 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.propertyPaneGroupField {
+  padding-top  :  4px;
+  color  :  $ms-color-neutralPrimary;
+  word-wrap  :  break-word;
+}

@@ -1,0 +1,14 @@
+{
+    "entries": [{
+        "entry": "./lib/webparts/employeeSpotlight/EmployeeSpotlightWebPart.js",
+        "manifest": "./src/webparts/employeeSpotlight/EmployeeSpotlightWebPart.manifest.json",
+        "outputPath": "./dist/employee-spotlight.bundle.js"
+    }],
+    "externals": {
+        "sp-client-custom-fields": "node_modules/sp-client-custom-fields/dist/sp-client-custom-fields.bundle.js"
+    },
+    "localizedResources": {
+        "sp-client-custom-fields/strings": "../node_modules/sp-client-custom-fields/lib/loc/{locale}.js",
+        "employeeSpotlightStrings": "webparts/employeeSpotlight/loc/{locale}.js"
+    }
+}

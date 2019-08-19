@@ -1,0 +1,13 @@
+$primary: "[theme:primaryBackground, default: #fff]";
+$primaryText: "[theme:primaryText, default: #333333]";
+$themePrimary: "[theme:themePrimary, default: #0078d7]";
+
+.main {
+  background: $primary;
+  color: $primaryText;
+  font-size: 14px;
+
+  .themePrimary {
+    background: $themePrimary;
+  }
+}

@@ -1,0 +1,19 @@
+[{
+    "key": "month",
+    "text": "Month"
+
+  },
+  {
+    "key": "agendaWeek",
+    "text": "Weekly"
+  },
+  {
+    "key": "agendaDay",
+    "text": "Daily"
+  },
+  {
+    "key": "listMonth",
+    "text": "Monthly List"
+
+  }
+]

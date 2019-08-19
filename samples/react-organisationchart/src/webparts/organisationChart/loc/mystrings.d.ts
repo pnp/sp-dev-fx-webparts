@@ -1,7 +1,7 @@
 declare interface IOrganisationChartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  OrganisationNameFieldLabel: string;
 }
 
 declare module 'organisationChartStrings' {

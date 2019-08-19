@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "externals": {},
+  "localizedResources": {
+    "dropdownWithRemoteDataStrings": "lib/webparts/dropdownWithRemoteData/loc/{locale}.js",
+    "dropdownWithRemoteDataWithoutCustomControlsStrings": "lib/webparts/dropdownWithRemoteDataWithoutCustomControls/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  },
+  "bundles": {
+    "dropdown-with-remote-data-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dropdownWithRemoteData/DropdownWithRemoteDataWebPart.js",
+          "manifest": "./src/webparts/dropdownWithRemoteData/DropdownWithRemoteDataWebPart.manifest.json"
+        }
+      ]
+    },
+    "dropdown-with-remote-data-without-custom-controls-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dropdownWithRemoteDataWithoutCustomControls/DropdownWithRemoteDataWithoutCustomControlsWebPart.js",
+          "manifest": "./src/webparts/dropdownWithRemoteDataWithoutCustomControls/DropdownWithRemoteDataWithoutCustomControlsWebPart.manifest.json"
+        }
+      ]
+    }
+  }
+}

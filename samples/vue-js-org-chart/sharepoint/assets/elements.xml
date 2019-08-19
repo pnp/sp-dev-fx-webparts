@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/"> 
+   
+     <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
+      <Field Name="ManagerID" ID="{cc01bddf-1b19-4214-861d-45aa39cb707b}" DisplayName="Manager" Type="Lookup" List="Lists/Employees" ShowField="Title" />
+      <Field Name="PhotoUrl" ID="{6346c3e1-4866-4bc8-855a-cd74e3d1fb2a}" DisplayName="Photo URL" Type="Text" />
+      <Field ID="{c4e0f350-52cc-4ede-904c-dd71a3d11f7d}" Name="JobTitle" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="JobTitle" Group="$Resources:core,Person_Event_Columns;" DisplayName="$Resources:core,Job_Title;" Type="Text" />
+      <Field ID="{C814B2CF-84C6-4f56-B4A4-C766938A97C5}" Name="ol_Department" StaticName="ol_Department" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplayName="$Resources:core,Department_OL;" Group="$Resources:core,Person_Event_Columns;" Type="Text" Sealed="TRUE" AllowDeletion="TRUE" />
+      <Field ID="{26169AB2-4BD2-4870-B077-10F49C8A5822}" Name="Office" StaticName="Office" SourceID="http://schemas.microsoft.com/sharepoint/v3" DisplayName="$Resources:core,Office_OL;" Group="$Resources:core,Person_Event_Columns;" Type="Text" Sealed="TRUE" AllowDeletion="TRUE" />
+      <Field ID="{fd630629-c165-4513-b43c-fdb16b86a14d}" Name="WorkPhone" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="WorkPhone" Group="$Resources:core,Person_Event_Columns;" DisplayName="$Resources:core,Business_Phone;" Type="Text" IMEMode="inactive" />
+      <Field ID="{fce16b4c-fe53-4793-aaab-b4892e736d15}" Name="EMail" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="EMail" Group="$Resources:core,Person_Event_Columns;" DisplayName="$Resources:core,E-Mail;" ReadOnly="FALSE" Type="Text" FromBaseType="TRUE" AllowDeletion="TRUE" />
+  
+      <ContentType ID="0x01008b18f3d769d4440f96e903ad1c086192" Name="EmployeeContentType" Group="Employee Content Types" Description="This is the Content Type for Employee Onboarding"> 
+      <FieldRefs>
+          <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" />
+          <FieldRef ID="{cc01bddf-1b19-4214-861d-45aa39cb707b}" Name="ManagerID" />
+          <FieldRef ID="{6346c3e1-4866-4bc8-855a-cd74e3d1fb2a}" Name="PhotoUrl" />
+          <FieldRef ID="{c4e0f350-52cc-4ede-904c-dd71a3d11f7d}" Name="JobTitle" />
+          <FieldRef ID="{C814B2CF-84C6-4f56-B4A4-C766938A97C5}" Name="ol_Department" />
+          <FieldRef ID="{26169AB2-4BD2-4870-B077-10F49C8A5822}" Name="Office" />
+          <FieldRef ID="{fd630629-c165-4513-b43c-fdb16b86a14d}" Name="WorkPhone" />
+          <FieldRef ID="{fce16b4c-fe53-4793-aaab-b4892e736d15}" Name="EMail" />
+        </FieldRefs>
+    </ContentType> 
+    <ListInstance CustomSchema="schema.xml" FeatureId="00bfea71-de22-43b2-a848-c05709900100" Title="Employees" Description="Employees List" TemplateType="100" Url="Lists/Employees"> 
+        <Data> 
+<Rows> 
+<Row> 
+<Field Name="Title">Serdar Ketenci</Field> 
+<Field Name="ManagerID"></Field> 
+<Field Name="PhotoUrl"></Field> 
+<Field Name="JobTitle">Tech Lead</Field> 
+<Field Name="ol_Department">SharePoint</Field>
+<Field Name="Office">YTU</Field>
+<Field Name="WorkPhone">545 871 7767</Field>
+<Field Name="EMail">sketenci@nuevo.com.tr</Field> 
+</Row> 
+<Row> 
+<Field Name="Title">Ahmet Örnekadam</Field> 
+<Field Name="ManagerID">1</Field> 
+<Field Name="PhotoUrl"></Field> 
+<Field Name="JobTitle">Senior Developer</Field> 
+<Field Name="ol_Department">SharePoint</Field>
+<Field Name="Office">YTU</Field>
+<Field Name="WorkPhone">545 777 7767</Field>
+<Field Name="EMail">aornekadam@nuevo.com.tr</Field> 
+</Row> 
+<Row> 
+<Field Name="Title">Yeliz Kurt</Field> 
+<Field Name="ManagerID">1</Field> 
+<Field Name="PhotoUrl"></Field> 
+<Field Name="JobTitle">Senior Developer</Field> 
+<Field Name="ol_Department">SharePoint</Field>
+<Field Name="Office">YTU</Field>
+<Field Name="WorkPhone">545 888 7767</Field>
+<Field Name="EMail">ykurt@nuevo.com.tr</Field> 
+</Row> 
+</Rows> 
+</Data> </ListInstance> 
+</Elements>

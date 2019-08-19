@@ -1,0 +1,11 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "React Content Query",
+    "id": "00406271-0276-406f-9666-512623eb6709",
+    "version": "1.0.11.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-content-query-webpart.sppkg"
+  }
+}

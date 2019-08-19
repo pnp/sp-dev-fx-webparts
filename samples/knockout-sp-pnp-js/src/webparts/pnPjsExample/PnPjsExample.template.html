@@ -1,0 +1,55 @@
+<div data-bind="attr: {class:helloWorldClass}">
+  <div data-bind="attr: {class:containerClass}">
+
+    <div data-bind="attr: {class:rowClass}">
+      <div class="ms-Grid-col ms-u-sm12">
+        <span class="ms-font-xl ms-fontColor-white ms-fontWeight-semibold" data-bind="text: description"></span>
+      </div>
+    </div>
+
+    <div data-bind="attr: {class:rowClass}">
+      <div class="ms-Grid-col ms-u-sm6">
+        <span class="ms-font-l ms-fontColor-white ms-fontWeight-semibold">Title</span>
+      </div>
+      <div class="ms-Grid-col  ms-u-sm6">
+        <span class="ms-font-l ms-fontColor-white ms-fontWeight-semibold">Order Number</span>
+      </div>
+    </div>
+
+    <!-- ko foreach: items -->
+    <div data-bind="attr: {class:$parent.rowClass}">
+      <div class="ms-Grid-col ms-u-sm6">
+        <span class="ms-font-l ms-fontColor-white" data-bind="text: Title"></span>
+      </div>
+      <div class="ms-Grid-col  ms-u-sm5">
+        <span class="ms-font-l ms-fontColor-white" data-bind="text: OrderNumber"></span>
+      </div>
+      <div class="ms-Grid-col  ms-u-sm1">
+        <i class="ms-Icon ms-Icon--Delete" aria-hidden="true" data-bind="click: $parent.deleteItem.bind($parent, $data)"></i>
+      </div>
+    </div>
+    <!-- /ko -->
+
+    <div data-bind="attr: {class:rowClass}">
+      <div class="ms-Grid-col  ms-u-sm12">
+        <span class="ms-font-l ms-fontColor-white ms-fontWeight-semibold">Add New</span>
+      </div>
+    </div>
+
+    <div data-bind="attr: {class:rowClass}">
+      <form data-bind="submit: addItem">
+        <div class="ms-Grid-col ms-u-sm5">
+          <input class="ms-TextField-field" placeholder="Title" data-bind='value: newItemTitle, valueUpdate: "afterkeydown"' />
+        </div>
+        <div class="ms-Grid-col ms-u-sm5">
+          <input class="ms-TextField-field" placeholder="Order Number" data-bind='value: newItemNumber, valueUpdate: "afterkeydown"'
+          />
+        </div>
+        <div class="ms-Grid-col ms-u-sm2">
+          <button class="ms-Button--default ms-Button" type="submit" data-bind="enable: newItemTitle().length > 0 && newItemNumber().length > 0"><span class="ms-Button-label">Add</span></button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

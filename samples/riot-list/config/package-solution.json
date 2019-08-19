@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "riot-list-client-side-solution",
+    "id": "6e137a70-041c-49e1-aa9e-470b704180a0",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/riot-list.sppkg"
+  }
+}

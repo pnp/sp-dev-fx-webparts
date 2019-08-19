@@ -1,0 +1,20 @@
+$container-bg-color: #f4f4f4;
+$container-border: 1px solid #dadada;
+
+.cqwp {
+	.cqwpValidations {
+		background-color: $container-bg-color;
+		border: $container-border;
+		padding: 20px 20px 15px 20px;
+
+		:global .ms-Checkbox {
+			margin-top: 10px;
+		}
+	}
+	.cqwpError {
+		background-color: $container-bg-color;
+		border: $container-border;
+		padding: 20px;
+		text-align: center;
+	}
+}

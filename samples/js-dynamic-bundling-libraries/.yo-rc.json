@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.7.0",
+    "libraryName": "dynamic-bundling",
+    "libraryId": "c40970b0-7ef0-40f2-b03b-718751fbc4b5",
+    "packageManager": "npm",
+    "componentType": "webpart",
+    "isDomainIsolated": false
+  }
+}

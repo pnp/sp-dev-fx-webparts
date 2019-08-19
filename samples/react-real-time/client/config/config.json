@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/realTimeNewsFeed/RealTimeNewsFeedWebPart.js",
+      "manifest": "./src/webparts/realTimeNewsFeed/RealTimeNewsFeedWebPart.manifest.json",
+      "outputPath": "./dist/real-time-news-feed.bundle.js"
+    }
+  ],
+  "externals": {
+    "@microsoft/sp-client-base": "node_modules/@microsoft/sp-client-base/dist/sp-client-base.js",
+    "@microsoft/sp-webpart-base": "node_modules/@microsoft/sp-webpart-base/dist/sp-webpart-base.js",
+    "@microsoft/sp-lodash-subset": "node_modules/@microsoft/sp-lodash-subset/dist/sp-lodash-subset.js",
+    "office-ui-fabric-react": "node_modules/office-ui-fabric-react/dist/office-ui-fabric-react.js",
+    "react": "node_modules/react/dist/react.min.js",
+    "react-dom": "node_modules/react-dom/dist/react-dom.min.js",
+    "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js",
+    "socket.io-client": "https://WebAppac61f1b1-ecd7-4bc0-ad7d-619b0df1f757.azurewebsites.net/socket.io/socket.io.js"
+  },
+  "localizedResources": {
+    "realTimeNewsFeedStrings": "webparts/realTimeNewsFeed/loc/{locale}.js"
+  }
+}

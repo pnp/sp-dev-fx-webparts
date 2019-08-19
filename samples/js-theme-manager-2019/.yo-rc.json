@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.8.1",
+    "libraryName": "js-theme-manager-2019",
+    "libraryId": "13993f26-4e3c-4518-9ef0-97da21759508",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

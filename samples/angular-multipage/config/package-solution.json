@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "angular-multipage-client-side-solution",
+    "id": "2edf4e93-fd5d-4c59-8b46-480af77c2233",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/angular-multipage.spapp"
+  }
+}

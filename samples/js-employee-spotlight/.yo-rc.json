@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "js-employee-spotlight",
+    "framework": "none",
+    "version": "1.0.2",
+    "libraryId": "d57c7f34-22d4-45b5-9c26-441ef9fef48a"
+  }
+}

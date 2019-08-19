@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "482dd760-ae6d-4d63-ae5a-3e28dfea1007",
+  "alias": "ListViewerWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "482dd760-ae6d-4d63-ae5a-3e28dfea1007",
+    "group": { "default": "Under Development" },
+    "title": { "default": "List Viewer" },
+    "description": { "default": "List Viewer of a selected SharePoint List of Document Library using RiotJS" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+    }
+  }]
+}

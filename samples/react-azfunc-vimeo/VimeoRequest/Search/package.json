@@ -1,0 +1,16 @@
+{
+  "name": "vimeo-search-api",
+  "version": "0.0.1",
+  "description": "Vimeo Search Api for use in Web Parts",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "vimeo": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stefan Bauer",
+  "license": "ISC"
+}

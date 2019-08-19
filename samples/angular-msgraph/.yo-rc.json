@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "angular-msgraph",
+    "framework": "none",
+    "version": "1.0.0",
+    "libraryId": "bb9709f1-ce33-47e1-9ad0-edcba4c6932c"
+  }
+}

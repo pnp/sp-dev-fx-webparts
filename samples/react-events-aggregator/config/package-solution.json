@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-events-aggregator-client-side-solution",
+    "id": "0443cb2b-2068-4b30-9893-ef6eeabe2a01",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-events-aggregator.sppkg"
+  }
+}

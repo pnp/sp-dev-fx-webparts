@@ -1,0 +1,376 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.filePicker {
+  color: inherit;
+}
+
+.filePicker :global(.ms-Panel-commands) {
+  display: none;
+}
+
+.filePicker :global(.ms-Panel-main) {
+  top: 50px;
+  border: none;
+  overflow-y: hidden;
+}
+
+[dir="ltr"] .filePicker :global(.ms-Panel-content) {
+  padding-left: 0;
+}
+
+.filePicker :global(.ms-Panel-contentInner) {
+  padding: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.filePicker :global(.ms-Panel-header) {
+  margin: 0;
+}
+
+.filePicker
+  :global(.ms-Panel-main)
+  :global(.ms-Panel-contentInner)
+  :global(.ms-Panel-content) {
+  height: 100%;
+}
+
+.filePicker :global(.ms-Nav-link) {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 400;
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  height: 36px;
+  color: $ms-color-neutralPrimary;
+  background-color: transparent;
+  width: 100%;
+  line-height: 36px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+  outline: transparent;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  text-decoration: none;
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+.filePicker :global(.is-selected) :global(.ms-Nav-link) {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 400;
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  height: 36px;
+  color: $ms-color-themePrimary;
+  background-color: $ms-color-neutralLighter;
+  width: 100%;
+  line-height: 36px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+  outline: transparent;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  text-decoration: none;
+  border-radius: 0px;
+  overflow: hidden;
+}
+.tabsContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: auto;
+}
+
+.tabContainer {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+[dir="ltr"] .tabsContainer {
+  left: 212px;
+}
+
+[dir="ltr"] .tabsContainer {
+  right: 0;
+}
+
+.nav {
+  height: 100%;
+  color: $ms-color-neutralLighter;
+}
+
+[dir="ltr"] .nav {
+  border-right: 2px solid;
+  width: 210px;
+}
+
+.nav :global(.ms-Nav) {
+  height: 100%;
+  width: 210px;
+  padding-top: 60px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-top-width: 40px;
+  border-top-style: solid;
+  color: $ms-color-neutralLighter;
+}
+
+.tabHeaderContainer {
+  display: inline-block;
+  width: 100%;
+  color: $ms-color-neutralLighter;
+  border-top: 40px solid;
+}
+
+.tab {
+  padding: 0 32px;
+  overflow-y: auto;
+  -webkit-box-flex: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+}
+
+.actionButtonsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  background-color: $ms-color-white;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.actionButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.actionButton {
+  height: 30px;
+  padding-bottom: 3px;
+}
+
+[dir="ltr"] .actionButton {
+  padding-left: 16px;
+}
+
+[dir="ltr"] .actionButton {
+  margin-left: 0;
+}
+
+[dir="ltr"] .actionButton {
+  margin-right: 10px;
+}
+
+[dir="ltr"] .actionButtons {
+  padding-left: 20px;
+}
+
+[dir="ltr"] .actionButtons {
+  padding-right: 11px;
+}
+
+.tabHeader {
+  color: $ms-color-neutralPrimary;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 100;
+  padding: 22px 0 20px 32px;
+}
+
+.tabContainer {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.filePicker :global(.ms-Panel-main) {
+  top: 50px;
+  border: none;
+  overflow-y: hidden;
+}
+
+.tabsContainer .selectedTab {
+  display: block;
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.header {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.xlg, .xxlg, .xxxlg, .xxxxlg {
+  color: inherit;
+}
+
+.itemPickerTopBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-color: red;
+}
+
+.commandBarNoChevron :global(.ms-CommandBarItem-chevronDown) {
+  display: none;
+}
+
+
+.fileItem {
+  cursor: default;
+}
+
+.folderItem {
+  cursor: pointer;
+}
+
+.folderItem:hover {
+  text-decoration: underline;
+}
+
+.fileTypeIcon {
+  margin: 0 -2px;
+  display: inline-block;
+}
+
+.fileTypeIconIcon {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+}
+
+.detailsListHeaderFileTypeIcon {
+  font-size: 16px;
+  padding: 0;
+}
+
+.iconColumnHeader {
+  width: 40px!important;
+  margin-right: -8px;
+}
+
+.iconColumnHeader i {
+  font-size:16px;
+}
+
+.fileRow {
+color: inherit;
+}
+
+.folderRow {
+  color: inherit;
+}
+
+.folderRow :global(.ms-DetailsRow-check) {
+  visibility: hidden;
+}
+
+.emptyFolder {
+  text-align: center;
+
+  .emptyFolderImage {
+    padding-top: 52px;
+    height: 208px;
+    width: auto;
+    margin: 0 auto;
+
+    .emptyFolderImageTag {
+      height: 208px;
+      width: auto;
+    }
+  }
+
+  .emptyFolderTitle {
+    padding: 16px 16px 0 16px;
+    font-size: 21px;
+    font-weight: 100;
+    max-width: 400px;
+    color: #858585;
+    margin: 0 auto;
+  }
+
+  .emptyFolderSubText {
+    padding: 6px 16px 0 16px;
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 400px;
+    color: #858585;
+    margin: 0 auto;
+  }
+
+  .emptyFolderMobile {
+    display: none;
+  }
+
+  .emptyFolderPc {
+    color: inherit;
+  }
+
+  .emptyFolderIcon {
+    display: inline;
+    font-size: 13px;
+    padding-left: 2px;
+    padding-right: 1px;
+  }
+}

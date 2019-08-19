@@ -1,0 +1,173 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "bar-chart-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/barChartDemo/BarChartDemoWebPart.js",
+          "manifest": "./src/webparts/barChartDemo/BarChartDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "bar-chart-static-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/barChartStatic/BarChartStaticWebPart.js",
+          "manifest": "./src/webparts/barChartStatic/BarChartStaticWebPart.manifest.json"
+        }
+      ]
+    },
+    "donut-patterns-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/donutPatternsDemo/DonutPatternsDemoWebPart.js",
+          "manifest": "./src/webparts/donutPatternsDemo/DonutPatternsDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "line-chart-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/lineChartDemo/LineChartDemoWebPart.js",
+          "manifest": "./src/webparts/lineChartDemo/LineChartDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "horizontal-bar-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/horizontalBarDemo/HorizontalBarDemoWebPart.js",
+          "manifest": "./src/webparts/horizontalBarDemo/HorizontalBarDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "radar-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/radarDemo/RadarDemoWebPart.js",
+          "manifest": "./src/webparts/radarDemo/RadarDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "pie-chart-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pieChartDemo/PieChartDemoWebPart.js",
+          "manifest": "./src/webparts/pieChartDemo/PieChartDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "polar-area-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/polarAreaDemo/PolarAreaDemoWebPart.js",
+          "manifest": "./src/webparts/polarAreaDemo/PolarAreaDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "bubble-chart-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/bubbleChartDemo/BubbleChartDemoWebPart.js",
+          "manifest": "./src/webparts/bubbleChartDemo/BubbleChartDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "scatter-chart-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/scatterChartDemo/ScatterChartDemoWebPart.js",
+          "manifest": "./src/webparts/scatterChartDemo/ScatterChartDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "area-chart-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/areaChartDemo/AreaChartDemoWebPart.js",
+          "manifest": "./src/webparts/areaChartDemo/AreaChartDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "combo-chart-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/comboChartDemo/ComboChartDemoWebPart.js",
+          "manifest": "./src/webparts/comboChartDemo/ComboChartDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "custom-plugin-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/customPluginDemo/CustomPluginDemoWebPart.js",
+          "manifest": "./src/webparts/customPluginDemo/CustomPluginDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "realtime-plugin-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/realtimePluginDemo/RealtimePluginDemoWebPart.js",
+          "manifest": "./src/webparts/realtimePluginDemo/RealtimePluginDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "accessible-table-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/accessibleTable/AccessibleTableWebPart.js",
+          "manifest": "./src/webparts/accessibleTable/AccessibleTableWebPart.manifest.json"
+        }
+      ]
+    },
+    "dynamic-data-callable-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dynamicDataCallable/DynamicDataCallableWebPart.js",
+          "manifest": "./src/webparts/dynamicDataCallable/DynamicDataCallableWebPart.manifest.json"
+        }
+      ]
+    },
+    "dynamic-data-consumer-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dynamicDataConsumer/DynamicDataConsumerWebPart.js",
+          "manifest": "./src/webparts/dynamicDataConsumer/DynamicDataConsumerWebPart.manifest.json"
+        }
+      ]
+    },
+    "chartinator-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/chartinator/ChartinatorWebPart.js",
+          "manifest": "./src/webparts/chartinator/ChartinatorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "BarChartDemoWebPartStrings": "lib/webparts/barChartDemo/loc/{locale}.js",
+    "BarChartStaticWebPartStrings": "lib/webparts/barChartStatic/loc/{locale}.js",
+    "DonutPatternsDemoWebPartStrings": "lib/webparts/donutPatternsDemo/loc/{locale}.js",
+    "LineChartDemoWebPartStrings": "lib/webparts/lineChartDemo/loc/{locale}.js",
+    "HorizontalBarDemoWebPartStrings": "lib/webparts/horizontalBarDemo/loc/{locale}.js",
+    "RadarDemoWebPartStrings": "lib/webparts/radarDemo/loc/{locale}.js",
+    "PieChartDemoWebPartStrings": "lib/webparts/pieChartDemo/loc/{locale}.js",
+    "PolarAreaDemoWebPartStrings": "lib/webparts/polarAreaDemo/loc/{locale}.js",
+    "BubbleChartDemoWebPartStrings": "lib/webparts/bubbleChartDemo/loc/{locale}.js",
+    "ScatterChartDemoWebPartStrings": "lib/webparts/scatterChartDemo/loc/{locale}.js",
+    "AreaChartDemoWebPartStrings": "lib/webparts/areaChartDemo/loc/{locale}.js",
+    "ComboChartDemoWebPartStrings": "lib/webparts/comboChartDemo/loc/{locale}.js",
+    "CustomPluginDemoWebPartStrings": "lib/webparts/customPluginDemo/loc/{locale}.js",
+    "RealtimePluginDemoWebPartStrings": "lib/webparts/realtimePluginDemo/loc/{locale}.js",
+    "AccessibleTableWebPartStrings": "lib/webparts/accessibleTable/loc/{locale}.js",
+    "DynamicDataCallableWebPartStrings": "lib/webparts/dynamicDataCallable/loc/{locale}.js",
+    "DynamicDataConsumerWebPartStrings": "lib/webparts/dynamicDataConsumer/loc/{locale}.js",
+    "ChartinatorWebPartStrings": "lib/webparts/chartinator/loc/{locale}.js"
+  }
+}

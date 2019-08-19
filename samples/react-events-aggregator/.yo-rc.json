@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "react-events-aggregator",
+    "libraryId": "0443cb2b-2068-4b30-9893-ef6eeabe2a01",
+    "environment": "spo"
+  }
+}

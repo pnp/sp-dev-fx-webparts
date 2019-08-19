@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "1a0fca78-3469-4b6e-8bc4-7a4cea290c51",
+  "alias": "DepPropsWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "1a0fca78-3469-4b6e-8bc4-7a4cea290c51",
+    "group": { "default": "Under Development" },
+    "title": { "default": "DepProps" },
+    "description": { "default": "DepProps description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "depProps": {
+        "listId": "-1",
+        "viewId": "-1"
+      }
+    }
+  }]
+}

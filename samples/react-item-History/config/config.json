@@ -1,0 +1,20 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "item-history-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/itemHistory/ItemHistoryCommandSet.js",
+          "manifest": "./src/extensions/itemHistory/ItemHistoryCommandSet.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ItemHistoryCommandSetStrings": "lib/extensions/itemHistory/loc/{locale}.js",
+
+    
+  }
+}

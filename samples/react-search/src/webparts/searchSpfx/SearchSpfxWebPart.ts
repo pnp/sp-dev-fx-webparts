@@ -1,16 +1,18 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
 import {
 	BaseClientSideWebPart,
-	IPropertyPaneSettings,
-	IWebPartContext,
+	IPropertyPaneConfiguration,
 	PropertyPaneTextField,
 	PropertyPaneDropdown,
 	PropertyPaneSlider,
 	PropertyPaneToggle
-} from '@microsoft/sp-client-preview';
+} from '@microsoft/sp-webpart-base';
 
-import ModuleLoader from '@microsoft/sp-module-loader';
+import { PropertyPaneLoggingField } from './PropertyPaneControls/PropertyPaneLoggingField';
+
+import { SPComponentLoader, ILoadScriptOptions } from '@microsoft/sp-loader';
 
 import * as strings from 'mystrings';
 import SearchSpfx, { ISearchSpfxProps } from './components/SearchSpfx';
@@ -19,15 +21,28 @@ import { IExternalTemplate, IScripts, IStyles } from './utils/ITemplates';
 import { defer, IDeferred } from './utils/defer';
 import { allTemplates } from './templates/TemplateLoader';
 
+// Import the search store, needed for logging the search requests
+import searchStore from './flux/stores/searchStore';
+
 // Expose React to window -> required for external template loading
 require("expose?React!react");
 
 export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfxWebPartProps> {
 	private crntExternalTemplateUrl: string = "";
 	private crntExternalTemplate: IExternalTemplate = null;
+	private onChangeBinded: boolean = false;
+	private removeChangeBinding: number = null;
 
-	public constructor(context: IWebPartContext) {
-		super(context);
+	public constructor() {
+		super();
+
+		// Bind this to the setLogging method
+		this.setLogging = this.setLogging.bind(this);
+		this.removeLogging = this.removeLogging.bind(this);
+	}
+
+	protected get dataVersion(): Version {
+		return Version.parse('1.0');
 	}
 
 	/**
@@ -109,7 +124,7 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 	 */
 	private _loadStyles(stylesToLoad: IStyles[]): void {
 		stylesToLoad.forEach(style => {
-			ModuleLoader.loadCss(style.url);
+			SPComponentLoader.loadCss(style.url);
 		});
 	}
 
@@ -122,7 +137,10 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 			// Check if the external template URL has been changed (otherwise load from memory)
 			if (this.crntExternalTemplateUrl !== this.properties.externalUrl) {
 				// Loading external template
-				ModuleLoader.loadScript(this.properties.externalUrl, "externalTemplate").then((externalTemplate: IExternalTemplate): void => {
+				const externalTmpl: ILoadScriptOptions = {
+					globalExportsName: "externalTemplate"
+				};
+				SPComponentLoader.loadScript(this.properties.externalUrl, externalTmpl).then((externalTemplate: IExternalTemplate): void => {
 					// Store the current template information
 					this.crntExternalTemplate = externalTemplate;
 					this.crntExternalTemplateUrl = this.properties.externalUrl;
@@ -159,10 +177,30 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 		}
 	}
 
+	protected onPropertyPaneRendered(): void {
+		// Clear remove binding timeout. This is necessary if user applied a new configuration.
+		if (this.removeChangeBinding !== null) {
+			clearTimeout(this.removeChangeBinding);
+			this.removeChangeBinding = null;
+		}
+		// Check if there is a change binding in place
+		if (!this.onChangeBinded) {
+			this.onChangeBinded = true;
+			searchStore.addChangeListener(this.setLogging);
+		}
+	}
+
+
+	// Will probably be renamed to onPropertyConfigurationComplete in the next drop
+	protected onPropertyPaneConfigurationComplete() {
+		// Remove the change binding
+		this.removeChangeBinding = setTimeout(this.removeLogging, 500);
+	}
+
 	/**
 	 * Property pane settings
 	 */
-	protected get propertyPaneSettings(): IPropertyPaneSettings {
+	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
 		// Default template property
 		let templateProperty: any = PropertyPaneDropdown('template', {
 			label: strings.FieldsTemplateLabel,
@@ -185,9 +223,6 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 				groups: [{
 					groupName: strings.BasicGroupName,
 					groupFields: [
-						PropertyPaneTextField('title', {
-							label: strings.FieldsTitleLabel
-						}),
 						PropertyPaneTextField('query', {
 							label: strings.QueryFieldLabel,
 							description: strings.QueryInfoDescription,
@@ -200,15 +235,58 @@ export default class SearchSpfxWebPart extends BaseClientSideWebPart<ISearchSpfx
 						}),
 						PropertyPaneTextField('sorting', {
 							label: strings.FieldsSorting
+						})
+					]
+				}, {
+					groupName: strings.TemplateGroupName,
+					groupFields: [
+						PropertyPaneTextField('title', {
+							label: strings.FieldsTitleLabel
 						}),
 						PropertyPaneToggle('external', {
 							label: strings.FieldsExternalLabel
 						}),
 						templateProperty
 					]
-				}]
+				}, {
+					groupName: strings.LoggingGroupName,
+					groupFields: [
+						PropertyPaneLoggingField({
+							label: strings.LoggingFieldLabel,
+							description: strings.LoggingFieldDescription,
+							value: searchStore.getLoggingInfo(),
+							retrieve: this.getLogging
+						})
+					]
+				}],
+				displayGroupsAsAccordion: true
 			}]
 		};
+	}
+
+	/**
+	 * Function to retrieve the logging value from the store
+	 */
+	private getLogging(): any {
+		return searchStore.getLoggingInfo();
+	}
+
+	/**
+	 * Function to refresh the property pane when a change is retrieved from the store
+	 */
+	private setLogging(): void {
+		// Refresh the property pane when search rest call is completed
+		this.context.propertyPane.refresh();
+	}
+
+	/**
+	 * Function to remove the change binding when property pane is closed
+	 */
+	private removeLogging(): void {
+		if (this.onChangeBinded) {
+			this.onChangeBinded = false;
+			searchStore.removeChangeListener(this.setLogging);
+		}
 	}
 
 	/**

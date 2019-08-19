@@ -1,0 +1,10 @@
+{
+    "solution": {
+        "name": "Employee Spotlight-v1",
+        "id": "d57c7f34-22d4-45b5-9c26-441ef9fef482",
+        "version": "2.0.0.0"
+    },
+    "paths": {
+        "zippedPackage": "solution/EmployeeSpotlight-v1.sppkg"
+    }
+}

@@ -1,10 +1,13 @@
-# Embed a PowerBI report in a Client-Side Web Part
+﻿# Embed a PowerBI report in a Client-Side Web Part
 
 ## Summary
 
-Sample SharePoint Framework Client-Side Web Part embedding a PowerBI report using PowerBI Embedded without any server-side code.
+This sample SharePoint Framework client-side web part embedding a PowerBI report using PowerBI Embedded without any server-side code.
 
 ![PowerBI Embedded Client-SideWeb Part in the SharePoint Workbench](./assets/screenshot_powerbi_embedded_spfx.png)
+
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-drop2-red.svg)
 
 ## Solution
 
@@ -44,3 +47,5 @@ The _PowerBI Embedded_ Client-Side Web Part is built on the SharePoint Framework
 All authentication and rendering happens client-side, there is no server-side component required.
 
 It uses the [PowerBI Client](https://www.npmjs.com/package/powerbi-client) for rendering the PowerBI report.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-powerbi-embedded" />

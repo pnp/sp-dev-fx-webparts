@@ -1,0 +1,31 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-aggregated-calendar-web-part": {
+      "components": [{
+        "entrypoint": "./lib/webparts/reactAggregatedCalendar/ReactAggregatedCalendarWebPart.js",
+        "manifest": "./src/webparts/reactAggregatedCalendar/ReactAggregatedCalendarWebPart.manifest.json"
+      }]
+    }
+  },
+  "externals": {
+    "sp-client-custom-fields": "node_modules/sp-client-custom-fields/dist/sp-client-custom-fields.bundle.js",
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-1.11.1.min.js",
+      "globalName": "jQuery"
+    },
+    "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js",
+    "fullcalendar": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js",
+      "globalName": "jQuery",
+      "globalDependencies": [
+        "jquery"
+      ]
+    }
+  },
+  "localizedResources": {
+    "sp-client-custom-fields/strings": "node_modules/sp-client-custom-fields/lib/loc/{locale}.js",
+    "ReactAggregatedCalendarWebPartStrings": "lib/webparts/reactAggregatedCalendar/loc/{locale}.js"
+  }
+}

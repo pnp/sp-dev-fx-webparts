@@ -1,0 +1,20 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.suggestedTeamMembers {
+
+  .controlledPickerButton {
+    height: auto;
+    padding: 5px;
+    background-color: white;
+  }
+}
+
+:global {
+  .dropdown-div {
+    width: 200px;
+  }
+
+  .ms-PeoplePicker {
+    width: 100%;
+  }
+}

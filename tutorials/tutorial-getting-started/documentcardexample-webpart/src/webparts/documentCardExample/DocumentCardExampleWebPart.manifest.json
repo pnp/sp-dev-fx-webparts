@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "067e32de-308d-4d74-95e1-8a21081b1f2d",
+  "alias": "DocumentCardExampleWebPart",
+  "componentType": "WebPart",
+  "version": "*", // The "*" signifies that the version should be taken from the package.json
+  "manifestVersion": 2,
+
+  /**
+   * This property should only be set to true if it is certain that the webpart does not
+   *  allow arbitrary scripts to be called
+   */
+  "safeWithCustomScriptDisabled": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "067e32de-308d-4d74-95e1-8a21081b1f2d",
+    "group": { "default": "Under Development" },
+    "title": { "default": "DocumentCardExample" },
+    "description": { "default": "DocumentCardExample description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "DocumentCardExample"
+    }
+  }]
+}

@@ -2,9 +2,12 @@
 
 ## Summary
 
-Sample Web Parts illustrating performing SharePoint CRUD operations in React, Angular, JavaScript without any framework and using the [SP PnP JS library](https://github.com/OfficeDev/PnP-JS-Core).
+Sample Web Parts illustrating performing SharePoint CRUD operations in React, Angular, JavaScript without any framework and using the [@pnp/sp library](https://github.com/pnp/pnpjs).
 
 ![Sample To do SharePoint Framework Client-Side Web Part built using Angular and ngOfficeUIFabric](./assets/preview.png)
+
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/drop-1.6.0-green.svg)
 
 ## Applies to
 
@@ -15,12 +18,15 @@ Sample Web Parts illustrating performing SharePoint CRUD operations in React, An
 
 Solution|Author(s)
 --------|---------
-sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm)
+sharepoint-crud|Waldek Mastykarz (MVP, Rencore, @waldekm), Gautam Sheth (SharePoint Consultant, RapidCircle)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.3|November 1, 2018|Updated to SPFx 1.6.0
+1.2|March 30, 2018|Updated to SPFx 1.4.1
+1.1|March 9, 2017|Updated to SPFx GA
 1.0|September 16, 2016|Initial release
 
 ## Disclaimer
@@ -32,23 +38,19 @@ Version|Date|Comments
 
 - clone this repo
 - in the command line run:
-  - `npm i typings -g`
   - `npm i`
   - `gulp serve --nobrowser`
 - in your SharePoint Site create a list
 
 > Note: this Site should be located in a Site Collection under the **/sites/** managed path, eg. **https://contoso.sharepoint.com/sites/my-team-site**
 
-- from the **./temp** folder copy the **workbench.html** file and rename it to **workbench.aspx**
-- in the **workbench.aspx** file change the value of the **webAbsoluteUrl** to the URL of your web, where you will upload the Workbench
-- upload the **workbench.aspx** file to a Document Library in the same SharePoint Site as where the list is located
-- navigate to the workbench page uploaded to your SharePoint site, ie. **https://contoso.sharepoint.com/sites/my-team-site/documents/workbench.aspx**
+- navigate to the hosted version of SharePoint workbench, eg. **https://contoso.sharepoint.com/sites/my-team-site/_layouts/15/workbench.aspx**
 - add the Web Part to canvas and in its configuration specify:
   - name of the lists where items should be stored, eg. **Items**
 
 ## Features
 
-This project contains sample Client-Side Web Parts built on the SharePoint Framework illustrating how to perform SharePoint CRUD operations on different JavaScript frameworks.
+This project contains sample client-side web parts built on the SharePoint Framework illustrating how to perform SharePoint CRUD operations on different JavaScript frameworks.
 
 This sample illustrates the following concepts on top of the SharePoint Framework:
 
@@ -57,7 +59,7 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
     - in React
     - in Angular v1.x
     - without a particular JavaScript framework
-    - using the [SP PnP JS library](https://github.com/OfficeDev/PnP-JS-Core)
+    - using the [@pnp/sp library](https://github.com/PnP/PnPJS)
   - using ETag to ensure data integrity when updating and deleting items
   - chaining promises for performing multiple asynchronous operations as part of one use case
   - breaking a chain of promises in case of an error and handling it gracefully
@@ -71,8 +73,8 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
   - loading Angular and [ngOfficeUIFabric](http://ngofficeuifabric.com) from CDN
   - using conditional rendering for one-time Web Part setup
   - passing Web Part configuration to Angular and reacting to configuration changes in the Angular application
-- SP PnP JS library
-  - using the SP PnP JS library with SharePoint Framework Client-Side Web Parts
+- @pnp/sp library
+  - using the @pnp/sp JS library with SharePoint Framework Client-Side Web Parts
   - configuring global request headers and overriding them for specific requests
   - sorting and selecting top n items from a list using the fluent API
 

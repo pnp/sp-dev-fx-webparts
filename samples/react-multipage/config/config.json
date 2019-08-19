@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/poll/PollWebPart.js",
+      "manifest": "./src/webparts/poll/PollWebPart.manifest.json",
+      "outputPath": "./dist/poll.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "pollStrings": "webparts/poll/loc/{locale}.js"
+  }
+}

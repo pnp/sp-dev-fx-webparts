@@ -10,14 +10,14 @@ import {
 
 import styles from '../MyRecentDocuments.module.scss';
 import { IMyRecentDocumentsWebPartProps } from '../IMyRecentDocumentsWebPartProps';
-import { HttpClient } from '@microsoft/sp-client-base';
+import { SPHttpClient, SPHttpClientConfiguration, SPHttpClientResponse, ODataVersion, ISPHttpClientConfiguration } from '@microsoft/sp-http';
 import { ITrendingDocument } from '../../ITrendingDocument';
 import { IActorInformation } from '../../IActorInformation';
 import { SearchUtils, ISearchQueryResponse, IRow, ICell, IEdge } from '../../SearchUtils';
 import { Utils } from '../../Utils';
 
 export interface IMyRecentDocumentsProps extends IMyRecentDocumentsWebPartProps {
-  httpClient: HttpClient;
+  httpClient: SPHttpClient;
   siteUrl: string;
 }
 
@@ -94,13 +94,13 @@ export default class MyRecentDocuments extends React.Component<IMyRecentDocument
 
   private loadMyDocuments(siteUrl: string, numberOfDocuments: number): void {
     const myDocuments: ITrendingDocument[] = [];
-    this.props.httpClient.get(`${siteUrl}/_api/search/query?querytext='*'&properties='GraphQuery:actor(me\\,or(action\\:1001\\,action\\:1003)),GraphRankingModel:{"features"\\:[{"function"\\:"EdgeTime"}]}'&selectproperties='Author,AuthorOwsUser,DocId,DocumentPreviewMetadata,Edges,EditorOwsUser,FileExtension,FileType,HitHighlightedProperties,HitHighlightedSummary,LastModifiedTime,LikeCountLifetime,ListID,ListItemID,OriginalPath,Path,Rank,SPWebUrl,SecondaryFileExtension,ServerRedirectedURL,SiteTitle,Title,ViewCountLifetime,siteID,uniqueID,webID'&rowlimit=${numberOfDocuments}&ClientType='MyRecentDocuments'&RankingModelId='0c77ded8-c3ef-466d-929d-905670ea1d72'`, {
+    this.props.httpClient.get(`${siteUrl}/_api/search/query?querytext='*'&properties='GraphQuery:actor(me\\,or(action\\:1001\\,action\\:1003)),GraphRankingModel:{"features"\\:[{"function"\\:"EdgeTime"}]}'&selectproperties='Author,AuthorOwsUser,DocId,DocumentPreviewMetadata,Edges,EditorOwsUser,FileExtension,FileType,HitHighlightedProperties,HitHighlightedSummary,LastModifiedTime,LikeCountLifetime,ListID,ListItemID,OriginalPath,Path,Rank,SPWebUrl,SecondaryFileExtension,ServerRedirectedURL,SiteTitle,Title,ViewCountLifetime,siteID,uniqueID,webID'&rowlimit=${numberOfDocuments}&ClientType='MyRecentDocuments'&RankingModelId='0c77ded8-c3ef-466d-929d-905670ea1d72'`, SPHttpClient.configurations.v1, {
       headers: {
         'Accept': 'application/json;odata=nometadata',
         'odata-version': ''
       }
     })
-      .then((response: Response): Promise<ISearchQueryResponse> => {
+      .then((response: SPHttpClientResponse): Promise<ISearchQueryResponse> => {
         return response.json();
       })
       .then((response: ISearchQueryResponse): Promise<IActorInformation> => {
@@ -189,13 +189,13 @@ export default class MyRecentDocuments extends React.Component<IMyRecentDocument
     }
 
     return new Promise((resolve: (actorInformation: IActorInformation) => void, reject: (error: any) => void): void => {
-      this.props.httpClient.get(`${siteUrl}/_api/search/query?querytext='WorkId:${actorId}'&selectproperties='DocId,Title,WorkEmail'&ClientType='MyRecentDocuments'&SourceId='b09a7990-05ea-4af9-81ef-edfab16c4e31'`, {
+      this.props.httpClient.get(`${siteUrl}/_api/search/query?querytext='WorkId:${actorId}'&selectproperties='DocId,Title,WorkEmail'&ClientType='MyRecentDocuments'&SourceId='b09a7990-05ea-4af9-81ef-edfab16c4e31'`, SPHttpClient.configurations.v1 , {
         headers: {
           'Accept': 'application/json;odata=nometadata',
           'odata-version': ''
         }
       })
-        .then((response: Response): Promise<ISearchQueryResponse> => {
+        .then((response: SPHttpClientResponse): Promise<ISearchQueryResponse> => {
           return response.json();
         })
         .then((response: ISearchQueryResponse): Promise<IActorInformation> => {

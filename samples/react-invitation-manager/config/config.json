@@ -1,0 +1,14 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+    "version": "2.0",
+    "bundles": {
+      "invitation-manager-bundle": {
+        "components": [
+          {
+            "entrypoint": "./lib/webparts/invitationManager/InvitationManagerWebPart.js",
+            "manifest": "./src/webparts/invitationManager/InvitationManagerWebPart.manifest.json"
+          }
+        ]
+    }
+  }
+}

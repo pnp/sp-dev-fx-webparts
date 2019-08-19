@@ -1,0 +1,6 @@
+{
+  "workingDir": "./temp/deploy/",
+  "account": "<!-- STORAGE ACCOUNT NAME -->",
+  "container": "bootstrap-slider",
+  "accessKey": "<!-- ACCESS KEY -->"
+}

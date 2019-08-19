@@ -1,0 +1,86 @@
+<List xmlns:ows="Microsoft SharePoint" 
+      Title="Library Schema" 
+      Name="LibrarySchema" 
+      Direction="$Resources:Direction;" 
+      Url="LibrarySchema" 
+      BaseType="1"
+      EnableContentTypes="TRUE"
+      VersioningEnabled="TRUE"
+      MajorVersionLimit="100" 
+      EnableMinorVersions="FALSE"
+      MajorWithMinorVersionsLimit="0"
+      DisableAttachments="FALSE"
+      FolderCreation="TRUE"
+      RootWebOnly="FALSE">
+  <MetaData>
+    <Fields></Fields>
+    <ContentTypes>
+        <!-- Folder Content Type (0x0120) -->
+        <ContentTypeRef ID="0x0120" />
+        <!-- Document Content Type (0x0101) -->
+        <!--<ContentTypeRef ID="0x0101" />-->
+        <!-- 
+            I could not make the required fields work 
+            by just specifying <ContentTypeRef ID="0x0101A33D9AD9805788419BDAAC2CCB37500F" />.
+            If ContentTypeRef used, it creates new 'Document' ContentType that inherits from SPFxDocument (0x0101A33D9AD9805788419BDAAC2CCB37500F)
+            but this removes the Required="TRUE" rule from the fields this is why I came with bellow solution.
+            See: https://msdn.microsoft.com/en-us/library/office/aa543822(v=office.14).aspx.
+        -->
+        <ContentType ID="0x0101A33D9AD9805788419BDAAC2CCB37500F"
+              Name="SPFxDocument" 
+              Group="SPFx Content Types" 
+              Description=""
+              Version="0"
+              Hidden="FALSE"
+              Sealed="FALSE"
+              >
+          <FieldRefs>
+            <!--Title Site Column -->
+            <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SPFxDescription Site Column -->
+            <FieldRef ID="{f4e5dd71-448f-40e2-b991-35874a0d7fd6}"  Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SPFxImage Site Column -->
+            <FieldRef ID="{0ad9d45c-b110-4635-b149-2890aa3a2513}"  Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+          </FieldRefs>
+          <DocumentTemplate TargetName="/_layouts/15/upload.aspx"/>
+      </ContentType>
+    </ContentTypes>
+    <Views>
+      <View BaseViewID="1" 
+            Type="HTML"
+            WebPartZoneID="Main"
+            DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;"
+            DefaultView="TRUE"
+            MobileView="TRUE"
+            MobileDefaultView="TRUE"
+            SetupPath="pages\viewpage.aspx"
+            ImageUrl="/_layouts/images/generic.png"
+            Url="Forms/AllItems.aspx"
+            ContentTypeID="0x">
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <Toolbar Type="Standard" />    
+        <Aggregations Value="Off" />
+        <ViewFields>
+          <!-- Name is the InternalName -->
+          <FieldRef Name="DocIcon" />
+          <FieldRef Name="LinkFilename"></FieldRef>
+          <FieldRef Name="Title"></FieldRef>
+          <FieldRef Name="SPFxDescription"></FieldRef>
+          <FieldRef Name="SPFxImage"></FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="FileLeafRef" />
+          </OrderBy>
+        </Query>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="Forms/DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="Forms/EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="Forms/Upload.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>

@@ -1,0 +1,47 @@
+{
+  "name": "react-realtime-documents",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "author": {
+    "name": "Waldek Mastykarz",
+    "url": "https://rencore.com"
+  },
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "@microsoft/sp-core-library": "1.7.0",
+    "@microsoft/sp-list-subscription": "1.7.0",
+    "@microsoft/sp-lodash-subset": "1.7.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.7.0",
+    "@microsoft/sp-webpart-base": "1.7.0",
+    "@pnp/common": "^1.2.3",
+    "@pnp/logging": "^1.2.3",
+    "@pnp/odata": "^1.2.3",
+    "@pnp/sp": "^1.2.3",
+    "@pnp/spfx-controls-react": "1.9.0",
+    "@pnp/spfx-property-controls": "1.11.0",
+    "@types/es6-promise": "0.0.33",
+    "@types/react": "16.4.2",
+    "@types/react-dom": "16.0.5",
+    "@types/webpack-env": "1.13.1",
+    "office-ui-fabric-react": "^5.131.1",
+    "react": "16.3.2",
+    "react-dom": "16.3.2"
+  },
+  "devDependencies": {
+    "@microsoft/sp-build-web": "1.7.0",
+    "@microsoft/sp-tslint-rules": "1.7.0",
+    "@microsoft/sp-module-interfaces": "1.7.0",
+    "@microsoft/sp-webpart-workbench": "1.7.0",
+    "gulp": "~3.9.1",
+    "@types/chai": "3.4.34",
+    "@types/mocha": "2.2.38",
+    "ajv": "~5.2.2"
+  }
+}

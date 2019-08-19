@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "image-magnifier-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/imageMagnifier/ImageMagnifierWebPart.js",
+          "manifest": "./src/webparts/imageMagnifier/ImageMagnifierWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ImageMagnifierWebPartStrings": "lib/webparts/imageMagnifier/loc/{locale}.js"
+  }
+}

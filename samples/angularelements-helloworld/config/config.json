@@ -1,0 +1,38 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "angular-web-parts": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/helloAngular/HelloAngularWebPart.js",
+          "manifest": "./src/webparts/helloAngular/HelloAngularWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/webparts/helloSharePoint/HelloSharePointWebPart.js",
+          "manifest": "./src/webparts/helloSharePoint/HelloSharePointWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/webparts/helloGraph/HelloGraphWebPart.js",
+          "manifest": "./src/webparts/helloGraph/HelloGraphWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/webparts/helloPnPjsSharePoint/HelloPnPjsSharePointWebPart.js",
+          "manifest": "./src/webparts/helloPnPjsSharePoint/HelloPnPjsSharePointWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/webparts/helloPnPjsGraph/HelloPnPjsGraphWebPart.js",
+          "manifest": "./src/webparts/helloPnPjsGraph/HelloPnPjsGraphWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HelloAngularWebPartStrings": "lib/webparts/helloAngular/loc/{locale}.js",
+    "HelloSharePointWebPartStrings": "lib/webparts/helloSharePoint/loc/{locale}.js",
+    "HelloGraphWebPartStrings": "lib/webparts/helloGraph/loc/{locale}.js",
+    "HelloPnPjsSharePointWebPartStrings": "lib/webparts/helloPnPjsSharePoint/loc/{locale}.js",
+    "HelloPnPjsGraphWebPartStrings": "lib/webparts/helloPnPjsGraph/loc/{locale}.js"
+  }
+}

@@ -1,6 +1,6 @@
 import appDispatcher from '../dispatcher/appDispatcher';
 import searchActionIDs from './searchActionIDs';
-import {IWebPartContext} from '@microsoft/sp-client-preview';
+import {IWebPartContext} from '@microsoft/sp-webpart-base';
 
 export class SearchActionsStatic {
 	/**

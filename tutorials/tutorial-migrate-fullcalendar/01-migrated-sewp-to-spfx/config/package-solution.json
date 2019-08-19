@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "spfx-js-fullcalendar-client-side-solution",
+    "id": "e6a89529-5fef-4883-b84c-c6bc27b0bfb0",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-js-fullcalendar.sppkg"
+  }
+}

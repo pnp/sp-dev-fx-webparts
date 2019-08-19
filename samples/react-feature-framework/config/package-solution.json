@@ -1,0 +1,24 @@
+{
+  "solution": {
+    "name": "react-feature-framework-client-side-solution",
+    "id": "54302acc-03bb-465a-81ba-4d14603b4154",
+    "version": "1.0.0.0",
+    "features": [{
+      "title": "hello-world-client-side-solution",
+      "description": "hello-world-client-side-solution",
+      "id": "d46cd9d6-87fc-473b-a4c0-db9ad9162b64",
+      "version": "1.0.0.0",
+      "assets": {        
+        "elementManifests": [
+          "elements.xml"
+        ],
+        "elementFiles":[
+          "schema.xml"
+        ]
+      }
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-feature-framework.sppkg"
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "editions": [{
+        "edition": "trial",
+        "azureContainer": "js-solution-editions-trial",
+        "cdnPath": "<!-- PATH TO CDN TRIAL -->",
+        "revision": "0",
+        "pkgPath": "solution/trail/js-solution-editions.sppkg"
+    }, {
+        "edition": "lite",
+        "azureContainer": "js-solution-editions-lite",
+        "cdnPath": "<!-- PATH TO CDN LITE -->",
+        "revision": "1",
+        "pkgPath": "solution/lite/js-solution-editions.sppkg"
+    }, {
+        "edition": "full",
+        "azureContainer": "js-solution-editions-full",
+        "cdnPath": "<!-- PATH TO CDN TRIAL -->",
+        "revision": "2",
+        "pkgPath": "solution/full/js-solution-editions.sppkg"
+    }]
+}

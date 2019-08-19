@@ -1,9 +1,8 @@
-import { IPerson } from '../interfaces/IPerson';
-import { ServiceScope } from '@microsoft/sp-client-base';
-import { IUserProfileService } from '../interfaces/IUserProfileService';
+import { IPerson, IUserProfileService } from '../interfaces';
+import { ServiceScope, ServiceKey } from '@microsoft/sp-core-library';
 
 export class MockUserProfileService implements IUserProfileService {
-
+  public static readonly serviceKey: ServiceKey<IUserProfileService> = ServiceKey.create<IUserProfileService>('vrd:MockUserProfileService', MockUserProfileService);
 
   constructor(serviceScope: ServiceScope) {
 
@@ -11,7 +10,7 @@ export class MockUserProfileService implements IUserProfileService {
 
   public getPropertiesForCurrentUser(): Promise<IPerson> {
     return new Promise<IPerson>((resolve, reject) => {
-      const user: IPerson = { Title: "Consultant", DisplayName: "Adam Jones", PictureUrl: "http://dev.office.com/Modules/DevOffice.Fabric/Fabric/components/persona/Persona.Person2.png" };
+      const user: IPerson = { Title: "Consultant", DisplayName: "Adam Jones", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-male.png" };
       resolve(user);
     });
   }
@@ -20,8 +19,8 @@ export class MockUserProfileService implements IUserProfileService {
     return new Promise<IPerson[]>((resolve, reject) => {
       const users: IPerson[] = [];
 
-      users.push({ Title: "Manager", DisplayName: "Grant Steel", PictureUrl: "http://dev.office.com/Modules/DevOffice.Fabric/Fabric/components/persona/Persona.Person2.png" });
-      users.push({ Title: "Head of Management", DisplayName: "Marcel Grose", PictureUrl: "http://dev.office.com/Modules/DevOffice.Fabric/Fabric/components/persona/Persona.Person2.png" });
+      users.push({ Title: "Manager", DisplayName: "Grant Steel", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-male.png" });
+      users.push({ Title: "Head of Management", DisplayName: "Marcel Grose", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-female.png" });
 
       resolve(users);
     });
@@ -31,14 +30,14 @@ export class MockUserProfileService implements IUserProfileService {
     return new Promise<IPerson[]>((resolve, reject) => {
       const users: IPerson[] = [];
 
-      users.push({ Title: "Developer", DisplayName: "Russel Miller", PictureUrl: "http://dev.office.com/Modules/DevOffice.Fabric/Fabric/components/persona/Persona.Person2.png" });
-      users.push({ Title: "IT Admin", DisplayName: "Robert Fischer", PictureUrl: "http://dev.office.com/Modules/DevOffice.Fabric/Fabric/components/persona/Persona.Person2.png" });
+      users.push({ Title: "Developer", DisplayName: "Russel Miller", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-female.png" });
+      users.push({ Title: "IT Admin", DisplayName: "Robert Fischer", PictureUrl: "https://raw.githubusercontent.com/OfficeDev/office-ui-fabric-react/master/packages/office-ui-fabric-react/images/persona-female.png" });
 
       resolve(users);
     });
   }
 
-  public getProfilePhoto(photoUrl: string){
+  public getProfilePhoto(photoUrl: string) {
     return photoUrl;
   }
 }

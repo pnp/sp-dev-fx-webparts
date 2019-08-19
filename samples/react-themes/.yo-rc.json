@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-themes",
+    "framework": "react",
+    "version": "1.0.2",
+    "libraryId": "46489282-ffa9-4f00-939c-6fff916b182f"
+  }
+}

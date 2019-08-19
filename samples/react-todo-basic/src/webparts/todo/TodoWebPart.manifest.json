@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "acbc7f18-e38b-40c1-bf84-3e9eea368ca5",
+  "alias": "TodoWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "acbc7f18-e38b-40c1-bf84-3e9eea368ca5",
+    "group": { "default": "Under Development" },
+    "title": { "default": "todo" },
+    "description": { "default": "Webpart for managing team tasks" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "todo"
+    }
+  }]
+}

@@ -1,0 +1,281 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.fieldVisits {
+
+  .fieldVisitsRow {
+    @include ms-Grid-row;
+  }
+
+  .fieldVisitsLeftColumn {
+    @include ms-Grid-col;
+    @include ms-lg8;
+    padding: 10px;
+  }
+
+  .fieldVisitsRightColumn {
+    @include ms-Grid-col;
+    @include ms-lg4;
+    padding: 10px;
+  }
+
+}
+
+.userTabs {
+
+  margin: 0 0 5px 0;
+  padding: 0;
+
+  .userTab {
+    display: inline;
+    border: solid;
+    border-width: 1px 1px 0 1px;
+    padding: 5px 10px;
+    font-size: x-large;
+    margin: 0 10px 0 0;
+  }
+
+  .userTabSelected {
+    background-color: $ms-color-themeLight;
+  }
+
+}
+
+.visitList {
+
+  border-top-style: solid;
+  border-width: 1px;
+
+  .visitListRow {
+    @include ms-Grid-row;
+    border-color: black;
+    border-top-style: hidden;
+    border-bottom-style: solid;
+    border-width: 1px;
+  }
+
+  .visitListRow:hover {
+    background-color: $ms-color-neutralLight
+  }
+  
+  .visitListRowSelected, 
+  .visitListRowSelected:hover {
+      background-color: $ms-color-themeLight;
+  }
+
+  .visitListDateColumn {
+    @include ms-Grid-col;
+    @include ms-sm4;
+    @include ms-md3;
+    @include ms-lg2;
+  };
+
+  .visitListDetailColumn {
+    @include ms-Grid-col;
+    @include ms-sm8;
+    @include ms-md9;
+    @include ms-lg10;
+  }
+
+  .visitListTime {
+    @include ms-font-xl;
+  }
+  
+  .visitListDate {
+    @include ms-font-m;
+  }
+
+  .visitListTitle {
+    @include ms-font-l;
+  }
+
+  .visitListLocation {
+    @include ms-font-s;
+  }
+
+  .visitListContact {
+    @include ms-font-s;
+  }
+}
+
+.weather {
+  .weatherContainer {
+    max-width: 700px;
+    margin: 10px auto;
+  }
+
+  .weatherrow {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
+    padding: 10px;
+  }
+
+  .weathercolumn1 {
+    @include ms-Grid-col;
+    @include ms-xl2;
+    @include ms-lg3;
+    @include ms-md5;
+    @include ms-sm12;
+  }
+
+  .weathercolumn2 {
+    @include ms-Grid-col;
+    @include ms-xl10;
+    @include ms-lg9;
+    @include ms-md7;
+    @include ms-sm12;
+  }
+
+  .weatherTemp {
+    @include ms-font-xxl;
+    @include ms-fontColor-white;
+  }
+}
+
+.map {
+  .mapImage {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.documents {
+
+  border-top-style: solid;
+  border-width: 1px;
+  padding: 10px;
+
+  .documentsRow {
+    @include ms-Grid-row;
+    border-color: $ms-color-neutralLight;
+    border-bottom-style: solid;
+    border-width: 1px;
+  }
+
+  .documentsHeadingRow {
+    @include ms-Grid-row;
+    color: $ms-color-white;
+    background-color: $ms-color-themeDark;
+    padding: 5px;
+  }
+
+  .documentsRow:hover {
+    background-color: $ms-color-neutralLight
+  }
+  
+  .documentsNameColumn {
+    @include ms-Grid-col;
+    @include ms-sm8;
+    @include ms-md6;
+    @include ms-lg5;
+  };
+
+  .documentsAuthorColumn {
+    @include ms-Grid-col;
+    @include ms-sm1;
+    @include ms-md3;
+    @include ms-lg2;
+  };
+
+  .documentsDateColumn {
+    @include ms-Grid-col;
+    @include ms-sm4;
+    @include ms-md3;
+    @include ms-lg5;
+  };
+
+}
+
+.activities {
+
+  border-top-style: solid;
+  border-width: 1px;
+  padding: 10px;
+
+  .activitiesRow {
+    @include ms-Grid-row;
+    border-color: $ms-color-neutralLight;
+    border-bottom-style: solid;
+    border-width: 1px;
+  }
+
+  .activitiesHeadingRow {
+    @include ms-Grid-row;
+    color: $ms-color-white;
+    background-color: $ms-color-themeDark;
+    padding: 5px;
+  }
+
+  .activitiesRow:hover {
+    background-color: $ms-color-neutralLight
+  }
+  
+  .activitiesDateColumn {
+    @include ms-Grid-col;
+    @include ms-sm4;
+    @include ms-md3;
+    @include ms-lg2;
+  };
+
+  .activitiesNameColumn {
+    @include ms-Grid-col;
+    @include ms-sm4;
+    @include ms-md3;
+    @include ms-lg3;
+  };
+
+  .activitiesAmountColumn {
+    @include ms-Grid-col;
+    @include ms-sm4;
+    @include ms-md3;
+    @include ms-lg2;
+  };
+
+  .activitiesDescriptionColumn {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    @include ms-md3;
+    @include ms-lg5;
+  };
+
+}
+
+.postToChannel {
+
+  margin: 5px;
+  @include ms-Grid;
+
+  .postToChannelRow {
+    @include ms-Grid-row;
+    border-color: $ms-color-neutralLight;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 2px;
+  }
+
+  .postToChannelTextColumn {
+      @include ms-Grid-col;
+      @include ms-sm9;
+      @include ms-md9;
+      @include ms-lg9;
+  }
+
+  .postToChannelButtonColumn {
+    @include ms-Grid-col;
+    @include ms-sm3;
+    @include ms-md3;
+    @include ms-lg3;
+  }
+
+  .postToChannelTextArea {
+    width: 100%;
+    padding: 2px;
+    height: 60px;
+  }
+
+  .postToChannelButton {
+    width: 50px;
+    padding: 2px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "548f8eb2-51ba-43f4-8e36-39f5adc182fd",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "548f8eb2-51ba-43f4-8e36-39f5adc182fd",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Recent orders" },
+    "description": { "default": "Shows list of recent orders" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "title": "Recent orders"
+    }
+  }]
+}
