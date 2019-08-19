@@ -4,7 +4,7 @@
 
 ## Summary
 
-Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker.
+Allows users to compare Before and After pictures, with a draggable slider. Also implements a custom file picker.
 
 ## Background
 
