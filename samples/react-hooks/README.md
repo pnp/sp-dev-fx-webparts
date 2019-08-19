@@ -52,6 +52,6 @@ Version|Date|Comments
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - Using React Hooks for building SharePoint Framework client-side web parts.
-- Using @PnP/PnPjs to create a List, add, update, delete Items..
+- Using @PnP/PnPjs to read items ...
 
 
