@@ -87,16 +87,6 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
   }
 
   /**
-   * 
-   * @private
-   * @param date 
-   * @memberof EventRecurrenceInfoDaily
-   */
-  private formatDate(date: Date) {
-    return toLocaleShortDateString(date);
-  }
-
-  /**
    *
    *
    * @private
@@ -353,7 +343,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                   label={strings.StartDateLabel}
                   value={this.state.startDate}
                   onSelectDate={this.onStartDateChange}
-                  formatDate={this.formatDate}
+                  formatDate={toLocaleShortDateString}
                 />
 
               </div>
@@ -380,7 +370,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
                               ariaLabel="Select a date"
                               style={{ display: 'inline-block', verticalAlign: 'top', paddingLeft: '22px', }}
                               onSelectDate={this.onEndDateChange}
-                              formatDate={this.formatDate}
+                              formatDate={toLocaleShortDateString}
                               value={this.state.endDate}
                               disabled={this.state.disableEndDate}
 

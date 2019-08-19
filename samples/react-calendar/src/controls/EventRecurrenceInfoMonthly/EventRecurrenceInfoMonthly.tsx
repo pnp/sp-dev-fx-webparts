@@ -113,15 +113,6 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
   }
 
   /**
-   * 
-   * @private
-   * @param date 
-   * @memberof EventRecurrenceInfoMonthly
-   */
-  private formatDate(date: Date) : string {
-    return toLocaleShortDateString(date);
-  }
-  /**
    *
    *
    * @private
@@ -590,7 +581,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
                   label={strings.StartDateLabel}
                   value={this.state.startDate}
                   onSelectDate={this.onStartDateChange}
-                  formatDate= {this.formatDate}
+                  formatDate= {toLocaleShortDateString}
                 />
 
               </div>
@@ -617,7 +608,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
                               ariaLabel={strings.StartDatePlaceHolder}
                               style={{ display: 'inline-block', verticalAlign: 'top', paddingLeft: '22px', }}
                               onSelectDate={this.onEndDateChange}
-                              formatDate={this.formatDate}
+                              formatDate={toLocaleShortDateString}
                               value={this.state.endDate}
                               disabled={this.state.disableEndDate}
                             />

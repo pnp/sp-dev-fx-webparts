@@ -529,16 +529,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
   }
 
   /**
-   * 
-   * @private
-   * @param date 
-   * @memberof Event
-   */
-  private formatDate(date: Date) {
-    return toLocaleShortDateString(date);
-  }
-
-  /**
    * @private
    * @param {Date} newDate
    * @memberof Event
@@ -669,7 +659,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     value={this.state.startDate}
                     label={strings.StartDateLabel}
                     onSelectDate={this.onSelectDateStart}
-                    formatDate={this.formatDate}
+                    formatDate={toLocaleShortDateString}
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
                     hidden={this.state.showRecurrenceSeriesInfo}
                   />
@@ -741,7 +731,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                     value={this.state.endDate}
                     label={strings.EndDateLabel}
                     onSelectDate={this.onSelectDateEnd}
-                    formatDate={this.formatDate}
+                    formatDate={toLocaleShortDateString}
                     disabled={this.state.userPermissions.hasPermissionAdd || this.state.userPermissions.hasPermissionEdit ? false : true}
                     hidden={this.state.showRecurrenceSeriesInfo}
                   />
