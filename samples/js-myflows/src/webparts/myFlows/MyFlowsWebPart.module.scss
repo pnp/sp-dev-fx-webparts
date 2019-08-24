@@ -1,0 +1,42 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+iframe {
+  width:100%;
+  min-height: 800px;
+  padding: 10px;
+  overflow: hidden;
+  border-width: 0px;
+  border-style: solid;
+  border-color: $ms-color-white;
+  margin-top: 20px;
+}
+
+.label {
+  font-size: $ms-font-size-l;
+  height: 32px;
+  line-height: 32px;
+  margin: 0 4px;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.sdk{
+  width:100%;
+}
+
+.titleTheme{
+  @include ms-font-xl;
+  @include ms-fontSize-24;
+}
+.titleWhite{
+  @include ms-font-xl;
+  @include ms-fontSize-24;
+  color: white;
+}
+
+.error{
+  @include ms-font-xl;
+  @include ms-fontSize-24;
+  color: red;
+  margin: 15px;
+}
