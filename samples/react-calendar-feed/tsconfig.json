@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "inlineSources": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
@@ -30,5 +33,6 @@
   "exclude": [
     "node_modules",
     "lib"
-  ]
+  ],
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-2.9/includes/tsconfig-web.json"
 }

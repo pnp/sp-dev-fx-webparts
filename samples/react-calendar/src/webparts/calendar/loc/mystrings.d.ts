@@ -47,9 +47,9 @@ declare interface ICalendarWebPartStrings {
   NextMonth: string;
   PrevMonth: string;
   GoToDay: string;
-  ShortDay_Saunday: string;
+  ShortDay_Sunday: string;
   ShortDay_Friday: string;
-  ShortDay_Tursday: string;
+  ShortDay_Thursday: string;
   ShortDay_W: string;
   ShortDay_T: string;
   ShortDay_M: string;
@@ -112,6 +112,21 @@ declare interface ICalendarWebPartStrings {
   previousLabel: string;
   nextLabel: string;
   showMore: string;
+  recurrenceEventLabel: string;
+  editRecurrenceSeries: string;
+  ifRecurrenceLabel: string;
+  onLabel: string;
+  offLabel: string;
+  eventDescriptionLabel: string;
+  recurrenceInformationLabel: string;
+  dailyLabel: string;
+  weeklyLabel: string;
+  monthlyLabel: string;
+  yearlyLabel: string;
+  patternLabel: string;
+  dateRangeLabel: string;
+  occurrencesLabel: string;
+
 }
 
 declare module 'CalendarWebPartStrings' {

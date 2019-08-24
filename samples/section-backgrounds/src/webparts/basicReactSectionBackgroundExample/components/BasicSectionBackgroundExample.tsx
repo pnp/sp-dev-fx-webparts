@@ -11,7 +11,7 @@ export default class BasicSectionBackgroundExample extends React.Component<IBasi
     const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
     return (
-      <div style={{color: semanticColors.bodyText}}>
+      <div style={{backgroundColor: semanticColors.bodyBackground}}>
         <p>This React web part has support for section backgrounds and will inherit its background from the section</p>
       </div>
     );

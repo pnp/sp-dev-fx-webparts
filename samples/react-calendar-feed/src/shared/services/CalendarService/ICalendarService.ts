@@ -7,6 +7,8 @@ export interface ICalendarService {
     EventRange: CalendarEventRange;
     UseCORS: boolean;
     CacheDuration: number;
+    MaxTotal: number;
+    ConvertFromUTC: boolean;
     Name: string;
     getEvents: () => Promise<ICalendarEvent[]>;
 }
