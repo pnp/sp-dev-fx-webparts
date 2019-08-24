@@ -14,24 +14,25 @@ import {
   Checkbox,
 } from 'office-ui-fabric-react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
+import { toLocaleShortDateString } from '../../utils/dateUtils';
 
 import spservices from '../../services/spservices';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.December],
 
-  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  shortMonths: [strings.Jan, strings.Feb, strings.Mar, strings.Apr, strings.May, strings.Jun, strings.Jul, strings.Aug, strings.Sep, strings.Oct, strings.Nov, strings.Dez],
 
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  days: [strings.Sunday, strings.Monday, strings.Tuesday, strings.Wednesday, strings.Thursday, strings.Friday, strings.Saturday],
 
-  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  shortDays: [strings.ShortDay_Sunday, strings.ShortDay_M, strings.ShortDay_T, strings.ShortDay_W, strings.ShortDay_Thursday, strings.ShortDay_Friday, strings.ShortDay_S],
 
-  goToToday: 'Go to today',
-  prevMonthAriaLabel: 'Go to previous month',
-  nextMonthAriaLabel: 'Go to next month',
-  prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  goToToday: strings.GoToDay,
+  prevMonthAriaLabel: strings.PrevMonth,
+  nextMonthAriaLabel: strings.NextMonth,
+  prevYearAriaLabel: strings.PrevYear,
+  nextYearAriaLabel: strings.NextYear,
+  closeButtonAriaLabel: strings.CloseDate
 };
 
 /**
@@ -407,6 +408,7 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
                   label={strings.StartDateLabel}
                   value={this.state.startDate}
                   onSelectDate={this.onStartDateChange}
+                  formatDate={toLocaleShortDateString}    
                 />
 
               </div>
@@ -433,6 +435,7 @@ export class EventRecurrenceInfoWeekly extends React.Component<IEventRecurrenceI
                               ariaLabel={strings.StartDatePlaceHolder}
                               style={{ display: 'inline-block', verticalAlign: 'top', paddingLeft: '22px', }}
                               onSelectDate={this.onEndDateChange}
+                              formatDate={toLocaleShortDateString}
                               value={this.state.endDate}
                               disabled={this.state.disableEndDate}
                             />
