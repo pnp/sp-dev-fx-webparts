@@ -6,12 +6,12 @@ import * as strings from "CalendarFeedSummaryWebPartStrings";
 import * as moment from "moment";
 import { FocusZone, FocusZoneDirection, List, Spinner, css } from "office-ui-fabric-react";
 import * as React from "react";
-import { CarouselContainer } from "../../../shared/components/CarouselContainer";
 import { EventCard } from "../../../shared/components/EventCard";
 import { Paging } from "../../../shared/components/Paging";
 import { CalendarServiceProviderType, ICalendarEvent, ICalendarService } from "../../../shared/services/CalendarService";
 import styles from "./CalendarFeedSummary.module.scss";
 import { ICalendarFeedSummaryProps, ICalendarFeedSummaryState, IFeedCache } from "./CalendarFeedSummary.types";
+import { FilmstripLayout } from "../../../shared/components/filmstripLayout/index";
 
 // the key used when caching events
 const CacheKey: string = "calendarFeedSummary";
@@ -28,10 +28,6 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
       error: undefined,
       currentPage: 1
     };
-
-    // needed for the slick slider in normal mode
-    SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css");
-    SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css");
   }
 
   /**
@@ -73,7 +69,9 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
       prevProvider.FeedUrl !== currProvider.FeedUrl ||
       prevProvider.Name !== currProvider.Name ||
       prevProvider.EventRange.DateRange !== currProvider.EventRange.DateRange ||
-      prevProvider.UseCORS !== currProvider.UseCORS;
+      prevProvider.UseCORS !== currProvider.UseCORS ||
+      prevProvider.MaxTotal !== currProvider.MaxTotal ||
+      prevProvider.ConvertFromUTC !== currProvider.ConvertFromUTC;
 
     if (settingsHaveChanged) {
       // only load from cache if the providers haven't changed, otherwise reload.
@@ -289,7 +287,9 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     return (<div>
       <div>
         <div role="application">
-          <CarouselContainer >
+          <FilmstripLayout
+            ariaLabel={strings.FilmStripAriaLabel}
+          >
             {events.map((event: ICalendarEvent, index: number) => {
               return (<EventCard
                 key={`eventCard${index}`}
@@ -297,7 +297,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
                 event={event}
                 isNarrow={false} />);
             })}
-          </CarouselContainer>
+          </FilmstripLayout>
         </div>
       </div>
     </div>);
@@ -313,7 +313,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
   /**
    * Load events from the cache or, if expired, load from the event provider
    */
-  private _loadEvents(useCacheIfPossible: boolean): Promise<void> {
+  private async _loadEvents(useCacheIfPossible: boolean): Promise<void> {
     // before we do anything with the data provider, let's make sure that we don't have stuff stored in the cache
 
     // load from cache if: 1) we said to use cache, and b) if we have something in cache
@@ -340,7 +340,11 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
         isLoading: true
       });
 
-      return dataProvider.getEvents().then((events: ICalendarEvent[]) => {
+      try {
+        let events = await dataProvider.getEvents();
+        if (dataProvider.MaxTotal > 0) {
+          events = events.slice(0, dataProvider.MaxTotal);
+        }
         // don't cache in the case of errors
         this.setState({
           isLoading: false,
@@ -348,14 +352,15 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
           events: events
         });
         return;
-      }).catch((error: any) => {
+      }
+      catch (error) {
         console.log("Exception returned by getEvents", error.message);
         this.setState({
           isLoading: false,
           error: error.message,
           events: []
         });
-      });
+      }
     }
   }
 }

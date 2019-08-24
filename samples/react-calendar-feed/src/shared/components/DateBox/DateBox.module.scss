@@ -1,10 +1,9 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
-$neutralPrimary: '[theme:neutralPrimary,default:#333333]';
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .box {
   font-weight: 400;
   border: 1px solid;
-  color: $neutralPrimary;
+  color: $ms-color-neutralPrimary;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;

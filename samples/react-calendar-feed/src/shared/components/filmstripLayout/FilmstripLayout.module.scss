@@ -1,0 +1,89 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+:export {
+  centerPadding: 50px;
+}
+
+.filmstripLayout {
+  position: relative;
+
+  &.filmStrip {
+    margin: 0 -10px;
+
+    :global(.slick-slide) {
+      box-sizing: border-box;
+      padding: 0 10px;
+    }
+  }
+
+  .sliderButtons {
+    opacity: 0;
+  }
+
+  .sliderButtonRight {
+    right: 10px;
+  }
+
+  .sliderButtonLeft {
+    left: 10px;
+  }
+
+  &:hover .sliderButtons {
+    opacity: 1;
+
+    &:hover {
+      color: $ms-color-white;
+    }
+  }
+}
+
+.indexButtonContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.indexButton {
+  font-size: 17px;
+  font-weight: 300;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: 0 0;
+  cursor: pointer;
+  color: $ms-color-white;
+  width: 40px;
+  min-width: 20px;
+  margin-left: 0;
+  line-height: 40px;
+  box-sizing: content-box;
+  background-color: $ms-color-black;
+  opacity: 0.6;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s;
+
+  &:hover {
+    color: $ms-color-white;
+  }
+
+  &:active {
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+}
+
+.indexButton:global(.ms-Button-flexContainer):hover:global(.ms-Icon),
+.indexButton:global(.ms-Icon:hover),
+.indexButton:hover:global(.ms-Icon) {
+  color: $ms-color-white;
+}
+
+.leftPositioned {
+  left: 0;
+}
+
+.rightPositioned {
+  right: 0;
+}

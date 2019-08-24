@@ -1,13 +1,14 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 
-// SharePoint imports
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   IPropertyPaneDropdownOption,
-  PropertyPaneDropdown
-} from "@microsoft/sp-webpart-base";
+  PropertyPaneDropdown,
+  PropertyPaneToggle,
+  PropertyPaneLabel
+} from "@microsoft/sp-property-pane";
 
 // Needed for data versions
 import { Version } from '@microsoft/sp-core-library';
@@ -58,6 +59,8 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
       let {
         cacheDuration,
         dateRange,
+        maxTotal,
+        convertFromUTC: convertFromUTC
       } = this.properties;
 
       // make sure to set a default date range if it isn't defined
@@ -69,6 +72,14 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
       if (cacheDuration === undefined) {
         // default to 15 minutes
         cacheDuration = 15;
+      }
+
+      if (maxTotal === undefined) {
+        maxTotal = 0;
+      }
+
+      if (convertFromUTC === undefined) {
+        convertFromUTC = false;
       }
 
       resolve(undefined);
@@ -127,7 +138,9 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
       maxEvents,
       useCORS,
       cacheDuration,
-      feedType
+      feedType,
+      maxTotal,
+      convertFromUTC
     } = this.properties;
 
     const isMock: boolean = feedType === CalendarServiceProviderType.Mock;
@@ -179,14 +192,19 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
               groupName: strings.AdvancedGroupName,
               isCollapsed: true,
               groupFields: [
-                // how many items are we diplaying in a page
-                PropertyFieldNumber("maxEvents", {
-                  key: "maxEventsFieldId",
-                  label: strings.MaxEventsFieldLabel,
-                  description: strings.MaxEventsFieldDescription,
-                  value: maxEvents,
-                  minValue: 0,
-                  disabled: false
+                PropertyPaneLabel('convertFromUTC', {
+                  text: strings.ConvertFromUTCFieldDescription
+                }),
+                // Convert from UTC toggle
+                PropertyPaneToggle("convertFromUTC", {
+                  key: "convertFromUTCFieldId",
+                  label: strings.ConvertFromUTCLabel,
+                  onText: strings.ConvertFromUTCOptionYes,
+                  offText: strings.ConvertFromUTCOptionNo,
+                  checked: convertFromUTC,
+                }),
+                PropertyPaneLabel('useCORS', {
+                  text: strings.UseCorsFieldDescription
                 }),
                 // use CORS toggle
                 PropertyFieldToggleWithCallout("useCORS", {
@@ -194,8 +212,8 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
                   calloutTrigger: CalloutTriggers.Hover,
                   key: "useCORSFieldId",
                   label: strings.UseCORSFieldLabel,
-                  calloutWidth: 200,
-                  calloutContent: React.createElement("div", {}, isMock ? strings.UseCORSFieldCalloutDisabled : strings.UseCORSFieldCallout),
+                  //calloutWidth: 200,
+                  calloutContent: React.createElement("p", {}, isMock ? strings.UseCORSFieldCalloutDisabled : strings.UseCORSFieldCallout),
                   onText: strings.CORSOn,
                   offText: strings.CORSOff,
                   checked: useCORS
@@ -212,6 +230,23 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
                   step: 15,
                   showValue: true,
                   value: cacheDuration
+                }),
+                // how many items are we diplaying in a page
+                PropertyFieldNumber("maxEvents", {
+                  key: "maxEventsFieldId",
+                  label: strings.MaxEventsFieldLabel,
+                  description: strings.MaxEventsFieldDescription,
+                  value: maxEvents,
+                  minValue: 0,
+                  disabled: false
+                }),
+                PropertyFieldNumber("maxTotal", {
+                  key: "maxTotalFieldId",
+                  label: strings.MaxTotalFieldLabel,
+                  description: strings.MaxTotalFieldDescription,
+                  value: maxTotal,
+                  minValue: 0,
+                  disabled: false
                 })
               ],
             }
@@ -293,7 +328,9 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     const {
       feedUrl,
       useCORS,
-      cacheDuration
+      cacheDuration,
+      convertFromUTC,
+      maxTotal
     } = this.properties;
 
     // get the first provider matching the type selected
@@ -314,6 +351,8 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     provider.UseCORS = useCORS;
     provider.CacheDuration = cacheDuration;
     provider.EventRange = new CalendarEventRange(this.properties.dateRange);
+    provider.ConvertFromUTC = convertFromUTC;
+    provider.MaxTotal = maxTotal;
     return provider;
   }
 }
