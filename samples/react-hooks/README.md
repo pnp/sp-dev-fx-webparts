@@ -7,7 +7,7 @@ Hooks is a new feature included in React version 16.8, with the new version of *
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
 
 ## Applies to
 
@@ -17,7 +17,7 @@ Hooks is a new feature included in React version 16.8, with the new version of *
 ## Prerequisites
 Existing list in tenant root site, with the Title "AvengersList"  and columns:
 
-Column Internal Name|Type|Required| comments
+Column Internal Name|Type|Required|Comments
 --------------------|----|--------|----------
 Title| Text| true
 
@@ -54,4 +54,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Using React Hooks for building SharePoint Framework client-side web parts.
 - Using @PnP/PnPjs to read items ...
 
-
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-hooks" />
