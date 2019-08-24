@@ -1,16 +1,16 @@
-import * as React from "react";
-import styles from "./PersonaCard.module.scss";
-import { IPersonaCardProps } from "./IPersonaCardProps";
-import { IPersonaCardState } from "./IPersonaCardState";
+import * as React from 'react';
+import styles from './PersonaCard.module.scss';
+import { IPersonaCardProps } from './IPersonaCardProps';
+import { IPersonaCardState } from './IPersonaCardState';
 import {
   Version,
   Environment,
   EnvironmentType,
   ServiceScope,
   Log,
-  Text
-} from "@microsoft/sp-core-library";
-import { SPComponentLoader } from "@microsoft/sp-loader";
+  Text,
+} from '@microsoft/sp-core-library';
+import { SPComponentLoader } from '@microsoft/sp-loader';
 
 import {
   Persona,
@@ -22,13 +22,12 @@ import {
   DocumentCard,
   IDocumentCardStyles,
   DocumentCardType,
-  Icon
-} from "office-ui-fabric-react";
+  Icon,
+} from 'office-ui-fabric-react';
 
-const EXP_SOURCE: string = "SPFxDirectory";
+const EXP_SOURCE: string = 'SPFxDirectory';
 const LIVE_PERSONA_COMPONENT_ID: string =
-  "914330ee-2df2-4f6e-a858-30c23a812408";
-//const PROFILE_IMAGE_URL: string = 'https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email={0}&UA=0&size=HR96x96&sc=1564597822258';
+  '914330ee-2df2-4f6e-a858-30c23a812408';
 
 export class PersonaCard extends React.Component<
   IPersonaCardProps,
@@ -36,6 +35,7 @@ export class PersonaCard extends React.Component<
 > {
   constructor(props: IPersonaCardProps) {
     super(props);
+
     this.state = { livePersonaCard: undefined, pictureUrl: undefined };
   }
   /**
@@ -78,11 +78,11 @@ export class PersonaCard extends React.Component<
         serviceScope: this.props.context.serviceScope,
         upn: this.props.profileProperties.Email,
         onCardOpen: () => {
-          console.log("LivePersonaCard Open");
+          console.log('LivePersonaCard Open');
         },
         onCardClose: () => {
-          console.log("LivePersonaCard Close");
-        }
+          console.log('LivePersonaCard Close');
+        },
       },
       this._PersonaCard()
     );
@@ -113,25 +113,25 @@ export class PersonaCard extends React.Component<
           >
             {this.props.profileProperties.WorkPhone ? (
               <div>
-                <Icon iconName="Phone" style={{ fontSize: "12px" }} />
-                <span style={{ marginLeft: 5, fontSize: "12px" }}>
-                  {" "}
+                <Icon iconName="Phone" style={{ fontSize: '12px' }} />
+                <span style={{ marginLeft: 5, fontSize: '12px' }}>
+                  {' '}
                   {this.props.profileProperties.WorkPhone}
                 </span>
               </div>
             ) : (
-              ""
+              ''
             )}
             {this.props.profileProperties.Location ? (
               <div>
-                <Icon iconName="Poi" style={{ fontSize: "12px" }} />
-                <span style={{ marginLeft: 5, fontSize: "12px" }}>
-                  {" "}
+                <Icon iconName="Poi" style={{ fontSize: '12px' }} />
+                <span style={{ marginLeft: 5, fontSize: '12px' }}>
+                  {' '}
                   {this.props.profileProperties.Location}
                 </span>
               </div>
             ) : (
-              ""
+              ''
             )}
           </Persona>
         </div>
