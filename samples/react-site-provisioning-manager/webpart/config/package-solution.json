@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-site-provisioning-manager-client-side-solution",
+    "id": "5df6f62a-b141-4997-8944-029a1fd73237",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [{
+      "resource": "Site-Provisioning-App",
+      "scope": "user_impersonation"
+    },
+    {
+      "resource": "Microsoft Graph",
+      "scope": "Directory.Read.All"
+    }],
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-site-provisioning-manager.sppkg"
+  }
+}

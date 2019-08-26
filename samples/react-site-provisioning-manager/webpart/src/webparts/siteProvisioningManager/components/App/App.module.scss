@@ -1,0 +1,44 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.siteProvisioningWebPart {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+    @include ms-Grid-row;
+  }
+  .loadingImage{
+    width: 150px;
+    height: 140px;
+  }
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg6;
+    @include ms-sm6;
+    @include ms-md6;
+    @include ms-xl6;
+  }
+  .handlerCheckbox{
+    margin-top:5px;
+  }
+  .topMargin{
+    margin-top:10px;
+  }
+  .pivotContainer{
+    margin-left:10px;
+  }
+  .flexRow{
+    width: 100%;
+    display: flex;
+  }
+  .provisioningButton{
+    margin-top:10px;
+    margin-right: 10px;
+  }
+  .error{
+    margin-top:10px;
+  }
+}
