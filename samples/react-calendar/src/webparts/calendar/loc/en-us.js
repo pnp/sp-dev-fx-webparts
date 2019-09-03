@@ -1,7 +1,7 @@
 define([], function () {
   return {
     WeeksOnLabel: "week(s) on",
-    PaternLabel: "Patern",
+    PaternLabel: "Pattern",
     OcurrencesLabel: "Ocurrences",
     dateRangeLabel: "Date Range",
     weekEndDay: "Weekend Day",
@@ -125,6 +125,7 @@ define([], function () {
     yearlyLabel: "Yearly",
     patternLabel: "Pattern",
     dateRangeLabel: "Date Range",
-    occurrencesLabel: "occurrences"
+    occurrencesLabel: "occurrences",
+    ofMonthLabel: "of"
   }
 });

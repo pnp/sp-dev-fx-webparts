@@ -125,7 +125,8 @@ define([], function () {
       yearlyLabel: "Årligen",
       patternLabel: "Schema",
       dateRangeLabel: "Datumintervall",
-      occurrencesLabel: "tillfällen"
+      occurrencesLabel: "tillfällen",
+      ofMonthLabel: "i"
     }
   });
   

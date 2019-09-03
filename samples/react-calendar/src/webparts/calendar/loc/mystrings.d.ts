@@ -126,6 +126,7 @@ declare interface ICalendarWebPartStrings {
   patternLabel: string;
   dateRangeLabel: string;
   occurrencesLabel: string;
+  ofMonthLabel:string;
 
 }
 
