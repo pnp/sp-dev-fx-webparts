@@ -254,7 +254,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
    * @memberof EventRecurrenceInfoMonthly
    */
   private  onWeekOrderMonthChange(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption):void {
-    this.setState({selectedWeekOrderMonth: item.text});
+    this.setState({selectedWeekOrderMonth: item.key.toString()});
     this.applyRecurrence();
   }
 
@@ -472,7 +472,7 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
 
             </div>
             <div style={{ width: '100%', paddingTop: '10px' }}>
-              <Label>Patern</Label>
+              <Label>{ strings.patternLabel }</Label>
               <ChoiceGroup
                 selectedKey={this.state.selectPatern}
                 options={[
@@ -521,9 +521,9 @@ export class EventRecurrenceInfoMonthly extends React.Component<IEventRecurrence
                               disabled={!this.state.disableDayOfMonth}
                               options={[
                                 { key: 'first', text: strings.firstLabel },
-                                { key: 'second', text:strings.secondLabel},
+                                { key: 'second', text: strings.secondLabel},
                                 { key: 'third', text: strings.thirdLabel },
-                                { key: 'fourth', text:strings.fourthLabel },
+                                { key: 'fourth', text: strings.fourthLabel },
                                 { key: 'last', text: strings.lastLabel },
 
                               ]}

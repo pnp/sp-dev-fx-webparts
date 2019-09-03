@@ -207,7 +207,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
    * @memberof EventRecurrenceInfoYearly
    */
   private onWeekOrderMonthChange(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
-    this.setState({ selectedWeekOrderMonth: item.text });
+    this.setState({ selectedWeekOrderMonth: item.key.toString() });
     this.applyRecurrence();
   }
 
@@ -232,7 +232,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
    * @memberof EventRecurrenceInfoYearly
    */
   private onSelectedWeekDayChange(ev: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void {
-    this.setState({ selectedWeekDay: item.text });
+    this.setState({ selectedWeekDay: item.key.toString() });
     this.applyRecurrence();
   }
 
@@ -526,7 +526,7 @@ export class EventRecurrenceInfoYearly extends React.Component<IEventRecurrenceI
                               ]}
                             />
                           </div>
-                          <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '30px', paddingLeft: '10px' } }}>of</Label>
+                          <Label styles={{ root: { display: 'inline-block', verticalAlign: 'top', width: '30px', paddingLeft: '10px' } }}>{ strings.ofMonthLabel} </Label>
                           <div style={{ display: 'inline-block', verticalAlign: 'top', width: '100px', paddingLeft: '5px' }}>
                             <Dropdown
                               selectedKey={this.state.selectedYearlyByDayMonth}
