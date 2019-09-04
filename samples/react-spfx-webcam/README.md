@@ -2,8 +2,7 @@
 
 ## Summary
 
-This is demo of how to open webcam and take photo in SPFx webpart. It will open camera in mobile web browser also. 
-This can be extended to capture photo and store in document library or it can be saved as user profile photo using GRAPH API.
+This is sample webpart which showcase how to open webcam and take photo in SPFx. This will work in desktop/laptop with webcam and in mobile device also on mobile browser. This can be extended to stored captured photo in document library or it can be saved as user profile photo using GRAPH API.
 
 * [Please refer this link on How to build this from Scratch](https://www.c-sharpcorner.com/article/how-to-open-webmobile-camera-and-take-photo-from-spfx-webpart/)
 
