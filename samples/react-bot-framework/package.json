@@ -19,6 +19,8 @@
     "@types/react": "16.4.2",
     "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.1",
+    "botframework-directlinejs": "^0.11.4",
+    "botframework-webchat": "^4.5.2",
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "swagger-client": "^2.1.23"
