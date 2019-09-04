@@ -81,7 +81,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 When adding the web part to a page you need to obtain your bot's DirectLine channel secret via the [Azure Portal](http://portal.azure.com).
 You then add this secret via the Property Pane of the web part. If there is an error initializing the DirectLine Client with the bot then they will be shown in the console within the browser.
 
-You can add DirectLine channel to bot from the bot details page under the "Add another channel" section
+You can add DirectLine channel to bot from the bot details page under the "Add a featured channel" section
 
 ![bot framework client web part](./assets/bf-add-directline-channel.png)
 
