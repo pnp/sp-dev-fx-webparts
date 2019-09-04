@@ -89,12 +89,16 @@ After this, you can click Edit for the just added Channel to get the needed secr
 
 ![bot framework client web part](./assets/bf-configure-directline-secret.png)
 
-Additional settings can be set to style the web part, including;
+Additional settings can be set to style the web part, including:
 
- - Display title of the web part
- - Web part header background color
- - Placeholder text
- - Foreground / background colors for messages, both from the user and from the bot
+|Version|Description|
+|-------|----|
+|v3 & v4 | Foreground / background colors for messages & sendbox, both from the user and from the bot|
+|v4| Add avatar images or initials for both user and bot|
+|v4| Hide upload button in sendbox|
+|v3| Display title of the web part|
+|v3| Web part header background color|
+|v3| Placeholder text|
 
 Currently the [Bot Framework Webchat v3 web part](./src/webparts/botFrameworkChat) only supports plain text conversations with a bot. Other message types, such as Rich Cards and Attachments are not supported, so in order to use that, use the [Bot Framework Webchat v4 web part](./src/webparts/botFrameworkChatv4)
 
