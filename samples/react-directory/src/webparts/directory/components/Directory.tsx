@@ -99,6 +99,33 @@ export default class Directory extends React.Component<
     await this._searchUsers("A");
   }
 
+  /**
+   * Gets image base64
+   * @param pictureUrl
+   * @returns
+   */
+  private getImageBase64(pictureUrl: string):Promise<string>{
+    return new Promise((resolve, reject) => {
+        let image = new Image();
+        image.addEventListener("load", () => {
+            let tempCanvas = document.createElement("canvas");
+            tempCanvas.width = image.width,
+                tempCanvas.height = image.height,
+                tempCanvas.getContext("2d").drawImage(image, 0, 0);
+            let base64Str;
+            try {
+                base64Str = tempCanvas.toDataURL("image/png");
+            } catch (e) {
+                return "";
+            }
+
+            resolve(base64Str);
+        });
+        image.src = pictureUrl;
+    });
+}
+
+
   private async _searchUsers(searchText: string) {
     searchText = searchText.trim().length > 0 ? searchText : "A";
     this.setState({
@@ -112,6 +139,17 @@ export default class Directory extends React.Component<
         searchText,
         this.props.searchFirstName
       );
+
+      if (users && users.PrimarySearchResults.length > 0){
+        for (let index = 0; index < users.PrimarySearchResults.length; index++) {
+          let user:any = users.PrimarySearchResults[index]  ;
+          if (user.PictureURL){
+            user = { ...user, PictureURL: await this.getImageBase64(`/_layouts/15/userphoto.aspx?size=M&accountname=${user.WorkEmail}`)};
+           users.PrimarySearchResults[index]  =  user ;
+          }
+        }
+       }
+
       this.setState({
         users:
           users && users.PrimarySearchResults

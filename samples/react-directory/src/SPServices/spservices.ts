@@ -2,6 +2,7 @@ import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { graph } from "@pnp/graph";
 import { sp, PeoplePickerEntity, ClientPeoplePickerQueryParameters, SearchQuery, SearchResults, SearchProperty, SortDirection } from '@pnp/sp';
 import { PrincipalType } from "@pnp/sp/src/sitegroups";
+import { isRelativeUrl } from "office-ui-fabric-react";
 
 
 export class spservices {
@@ -66,6 +67,9 @@ user:string   */
         SourceId: 'b09a7990-05ea-4af9-81ef-edfab16c4e31',
         SortList: [{ "Property": "LastName", "Direction": SortDirection.Ascending }],
       });
+
+
+
 
       return users;
     } catch (error) {
