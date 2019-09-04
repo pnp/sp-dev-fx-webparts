@@ -1,0 +1,63 @@
+# SPFx Web/Mobile Camera Demo
+
+## Summary
+
+This is demo of how to open webcam and take photo in SPFx webpart. It will open camera in mobile web browser also. 
+This can be extended to capture photo and store in document library or it can be saved as user profile photo using GRAPH API.
+
+* [Please refer this link on How to build this from Scratch](https://www.c-sharpcorner.com/article/how-to-open-webmobile-camera-and-take-photo-from-spfx-webpart/)
+
+![Options Available](screens/3.png?raw=true "Options Available")
+![Opening webcam](screens/4.png?raw=true "Opening webcam")
+![Taking photo](screens/4.png?raw=true "Taking photo")
+
+## Used SharePoint Framework Version
+
+![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+
+## Applies to
+
+* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+
+> Update accordingly as needed.
+
+## Prerequisites
+
+> NA
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-spfx-webcam | Siddharth Vaghasia(@siddh_me)
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0.0|Sept 04, 2019|Initial release
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+* Clone this repository
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
+
+
+## Features
+
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
+
+* Using react framework in SPFx webpart
+* Using React-webcam npm package in SPFx webpart
+* Open web cam or mobile camera to catpure photo and display in img html element
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-spfx-webcam" />
