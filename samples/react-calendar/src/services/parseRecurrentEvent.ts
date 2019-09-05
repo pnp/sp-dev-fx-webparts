@@ -368,6 +368,10 @@ export default class parseRecurrentEvent {
           if ((new Date(init) > end) || (rTotal > 0 && rTotal <= total)) loop = false;
         }
       }
+      if (e.fRecurrence === "1" && e.MasterSeriesItemID !== "") {
+        const ni = this.cloneObj(e);
+        er.push(ni);
+      }
       return er;
     } //end recurrence check
   }

@@ -5,7 +5,7 @@ define([], function () {
       OcurrencesLabel: "Tillfällen",
       dateRangeLabel: "Datumintervall",
       weekEndDay: "Helgdag",
-      weekDayLabel: "Veckodag",
+      weekDayLabel: "Arbetsdag",
       lastLabel: "sista",
       fourthLabel: "fjärde",
       thirdLabel: "tredje",
@@ -16,7 +16,7 @@ define([], function () {
       ofEveryLabel: "för varje ",
       AllowedValues1to12Label: "Tillåtna värder 1 till 12",
       noEndDate: "inget slutdatum",
-      everyweekdays: "alla veckodagar",
+      everyweekdays: "alla arbetsdagar",
       days: "dag",
       every: "var",
       EndByLabel: "slutar den",
@@ -113,7 +113,7 @@ define([], function () {
       nextLabel: "Nästa",
       showMore: "mer",
       recurrenceEventLabel: "Återkommande händelse",
-      editRecurrenceSeries: "Redigera återkommande händelse",
+      editRecurrenceSeries: "Redigera serie",
       ifRecurrenceLabel: "Återkommande ?",
       onLabel: "På",
       offLabel: "Av",
@@ -126,7 +126,15 @@ define([], function () {
       patternLabel: "Schema",
       dateRangeLabel: "Datumintervall",
       occurrencesLabel: "tillfällen",
-      ofMonthLabel: "i"
+      ofMonthLabel: "i",
+      everyFormat: "Varje ",
+      everySecondFormat: "Varannan ",
+      everyNthFormat: "Var {0}:e ",
+      onTheDayFormat: "den {0}:e dagen",
+      onTheLabel: "på den",
+      theSuffix: "en",
+      theNthOfMonthFormat: "den {1} {0}",
+      onTheDayTypeFormat: "på den {0} {1}{2}"
     }
   });
   
