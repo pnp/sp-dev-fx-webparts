@@ -12,18 +12,18 @@ This is sample webpart which showcase how to open webcam and take photo in SPFx.
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
-> Update accordingly as needed.
+
 
 ## Prerequisites
 
-> NA
+> N/A
 
 ## Solution
 
@@ -35,6 +35,7 @@ react-spfx-webcam | Siddharth Vaghasia(@siddh_me)
 
 Version|Date|Comments
 -------|----|--------
+1.0.0|Sept 05, 2019|Upgraded to Latest SPFx Version 1.9.1
 1.0.0|Sept 04, 2019|Initial release
 
 ## Disclaimer

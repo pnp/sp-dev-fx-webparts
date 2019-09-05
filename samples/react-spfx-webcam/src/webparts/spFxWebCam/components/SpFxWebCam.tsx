@@ -4,8 +4,12 @@ import { ISpFxWebCamProps } from './ISpFxWebCamProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 import * as Webcam from "react-webcam";
 import * as ReactDom from 'react-dom';
+import { Button } from 'office-ui-fabric-react/lib/Button';
 export default class SpFxWebCam extends React.Component<ISpFxWebCamProps,{imageData: string, image_name:string,webcam:Webcam,stream:any}> {
-  
+
+  private _camContainer: HTMLElement = undefined;
+  private _capturedPhoto: HTMLElement = undefined;
+
 
 public render(): React.ReactElement<ISpFxWebCamProps> {
     return (
@@ -26,14 +30,13 @@ public render(): React.ReactElement<ISpFxWebCamProps> {
                 <a onClick={() => this.close()} className={ styles.button }>
                 <span className={ styles.label }>Close webcam</span>
               </a>
-         
             </div>
           </div>
         </div>
       </div>
-      <div id="camContainer">
+      <div id="camContainer"   ref={(elm) => { this._camContainer = elm; }}>
         </div>
-      <div id="capturedPhoto"> 
+      <div id="capturedPhoto" ref={(elm) => { this._capturedPhoto = elm; }}> 
         </div>
       </div>
     );
@@ -43,7 +46,7 @@ public render(): React.ReactElement<ISpFxWebCamProps> {
     this.setState({webcam:webcam})
   }
   public close(){
-    ReactDom.unmountComponentAtNode(document.getElementById('camContainer'));
+    ReactDom.unmountComponentAtNode(this._camContainer);
   }
   private capture(){
     const imageSrc  =  this.state.webcam.getScreenshot();
@@ -53,7 +56,7 @@ public render(): React.ReactElement<ISpFxWebCamProps> {
         src:imageSrc
       }
     );
-    ReactDom.render(element, document.getElementById("capturedPhoto"));
+    ReactDom.render(element, this._capturedPhoto);
   }
   private opencam () {
       const element2: React.ReactElement<Webcam.WebcamProps > = React.createElement(
@@ -67,8 +70,8 @@ public render(): React.ReactElement<ISpFxWebCamProps> {
       
       }
     );
-    
-    ReactDom.render(element2, document.getElementById("camContainer"));
+    //const camContainer = document.getElementById("camContainer")
+    ReactDom.render(element2, this._camContainer);
 }
 
 

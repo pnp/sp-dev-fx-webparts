@@ -19,7 +19,7 @@
     "group": { "default": "Other" },
     "title": { "default": "SPFxWebCam" },
     "description": { "default": "SPFxWebCam description" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Camera",
     "properties": {
       "description": "SPFxWebCam"
     }
