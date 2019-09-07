@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is sample webpart which showcase how to open webcam and take photo in SPFx. This will work in desktop/laptop with webcam and in mobile device also on mobile browser. This can be extended to stored captured photo in document library or it can be saved as user profile photo using GRAPH API.
+This is sample webpart to showcase how to open webcam and take photo in SPFx webpart. This will work in desktop/laptop with webcam and mobile device also(from browser). This can be extended to stored captured photo in document library or it can be saved as user profile photo using GRAPH API.
 
 * [Please refer this link on How to build this from Scratch](https://www.c-sharpcorner.com/article/how-to-open-webmobile-camera-and-take-photo-from-spfx-webpart/)
 
@@ -18,7 +18,6 @@ This is sample webpart which showcase how to open webcam and take photo in SPFx.
 
 * [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
-
 
 
 ## Prerequisites
@@ -57,7 +56,7 @@ Version|Date|Comments
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 * Using react framework in SPFx webpart
-* Using React-webcam npm package in SPFx webpart
-* Open web cam or mobile camera to catpure photo and display in img html element
+* Using react-webcam npm package in SPFx webpart
+* Open web cam or mobile camera to capture photo and display in img html element
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-spfx-webcam" />
