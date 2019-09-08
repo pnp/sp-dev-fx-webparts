@@ -127,7 +127,15 @@ declare interface ICalendarWebPartStrings {
   dateRangeLabel: string;
   occurrencesLabel: string;
   ofMonthLabel:string;
-
+  everyFormat: string;
+  everySecondFormat: string;
+  everyNthFormat: string;
+  onTheDayFormat: string;
+  onTheLabel: string;
+  theSuffix: string;
+  yearLabel: string;
+  theNthOfMonthFormat: string;
+  onTheDayTypeFormat: string;
 }
 
 declare module 'CalendarWebPartStrings' {

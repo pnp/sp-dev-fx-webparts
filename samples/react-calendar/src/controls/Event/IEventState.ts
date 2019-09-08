@@ -29,4 +29,5 @@ export interface IEventState {
   showRecurrenceSeriesInfo:boolean;
   newRecurrenceEvent:boolean;
   recurrenceAction:string;
+  recurrenceDescription?:string;
 }
