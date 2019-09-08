@@ -126,6 +126,15 @@ define([], function () {
     patternLabel: "Pattern",
     dateRangeLabel: "Date Range",
     occurrencesLabel: "occurrences",
-    ofMonthLabel: "of"
+    ofMonthLabel: "of",
+    everyFormat: "Every {0} ",
+    everySecondFormat: "Every {0} ",
+    everyNthFormat: "Every {0} ",
+    onTheDayFormat: "on the {0}th day",
+    onTheLabel: "on the",
+    theSuffix: "",
+    yearLabel: "year",
+    theNthOfMonthFormat: "on {0} {1}",
+    onTheDayTypeFormat: "on the {0} {1}"
   }
 });

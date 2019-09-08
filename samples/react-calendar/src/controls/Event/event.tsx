@@ -4,6 +4,7 @@ import * as strings from 'CalendarWebPartStrings';
 import { IEventProps } from './IEventProps';
 import { IEventState } from './IEventState';
 import * as moment from 'moment';
+import { parseString } from 'xml2js';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import {
@@ -44,6 +45,7 @@ import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
 import { EventRecurrenceInfo } from '../../controls/EventRecurrenceInfo/EventRecurrenceInfo';
 import { getGUID } from '@pnp/common';
 import { toLocaleShortDateString } from '../../utils/dateUtils';
+const format = require('string-format');
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [strings.January, strings.February, strings.March, strings.April, strings.May, strings.June, strings.July, strings.August, strings.September, strings.October, strings.November, strings.December],
@@ -177,6 +179,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
         eventData.fRecurrence = true;
         eventData.UID = getGUID();
         panelMode = IPanelModelEnum.add;
+        eventData.RecurrenceData = await this.returnExceptionRecurrenceInfo(eventData.RecurrenceData); 
       }
       startDate = `${moment(this.state.startDate).format('YYYY/MM/DD')}`;
       endDate = `${moment(this.state.endDate).format('YYYY/MM/DD')}`;
@@ -299,6 +302,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
 
       event.geolocation.Latitude = this.latitude;
       event.geolocation.Longitude = this.longitude;
+
+      const recurrenceInfo = event.EventType === "4" && event.MasterSeriesItemID !== "" ? event.RecurrenceData : await this.returnExceptionRecurrenceInfo(event.RecurrenceData);
       // Update Component Data
       this.setState({
         eventData: event,
@@ -315,6 +320,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
         siteRegionalSettings: siteRegionalSettigns,
         locationLatitude: this.latitude,
         locationLongitude: this.longitude,
+        recurrenceDescription: recurrenceInfo
       });
     } else {
       editorState = EditorState.createEmpty();
@@ -337,8 +343,6 @@ export class Event extends React.Component<IEventProps, IEventState> {
    * @memberof Event
    */
   public async componentDidMount() {
-
-
     await this.renderEventData();
   }
 
@@ -567,6 +571,280 @@ export class Event extends React.Component<IEventProps, IEventState> {
   }
 
   /**
+   * 
+   * 
+   * @private
+   * @param {string} rule 
+   * @memberof Event
+   */
+  private parseDailyRule(rule): string {
+    const keys = Object.keys(rule);
+    if (keys.indexOf("weekday") !== -1 && rule["weekday"] === "TRUE")
+      return format("{} {}", format(strings.everyFormat, 1), strings.weekDayLabel); 
+
+    if (keys.indexOf("dayFrequency") !== -1) {
+      const dayFrequency: number = parseInt(rule["dayFrequency"]);
+      const frequencyFormat = dayFrequency === 1 ? strings.everyFormat : dayFrequency === 2 ? strings.everySecondFormat : strings.everyNthFormat;
+      return format("{} {}", format(frequencyFormat, dayFrequency), strings.dayLable);
+    }
+
+    return "Invalid recurrence format";
+  }
+
+  /**
+   * 
+   * 
+   * @private
+   * @param { string } rule
+   * @memberof Event 
+   */
+  private parseWeeklyRule(rule): string {
+    const frequency: number = parseInt(rule["weekFrequency"]);
+    const keys = Object.keys(rule);
+    const dayMap: any = {
+      "mo": strings.Monday,
+      "tu": strings.Tuesday,
+      "we": strings.Wednesday,
+      "th": strings.Thursday,
+      "fr": strings.Friday,
+      "sa": strings.Saturday,
+      "su": strings.Sunday
+    }; 
+    let days: string[] = [];
+    for (let key of keys) {
+      days.push(dayMap[key]);
+    }
+
+    return format("{}{} {} {}", 
+      frequency === 1 ? format(strings.everyFormat, frequency) : frequency === 2 ? format(strings.everySecondFormat, frequency): format(strings.everyNthFormat, frequency),
+      strings.weekLabel, 
+      strings.onLabel, 
+      days.join(", "));
+  }
+
+  /**
+   * 
+   * 
+   * @private
+   * @param { string } rule 
+   * @memberof Event
+   */
+  private parseMonthlyRule(rule): string {
+    const frequency: number = parseInt(rule["monthFrequency"]);
+    const day: number = parseInt(rule["day"]);
+
+    return format("{}{} {}",
+      frequency === 1 ? format(strings.everyFormat, frequency) : frequency === 2 ? format(strings.everySecondFormat, frequency): format(strings.everyNthFormat, frequency),
+      strings.monthLabel,
+      format(strings.onTheDayFormat, day)
+    );
+  }
+
+  /**
+   * 
+   * @private
+   * @param { string } rule 
+   * @memberof Event
+   */
+  private parseMonthlyByDayRule(rule): string {
+    let keys: string[] = Object.keys(rule);
+    const dayTypeMap: any = {
+      "day": strings.weekDayLabel, 
+      "weekend_day": strings.weekEndDay, 
+      "mo": strings.Monday, 
+      "tu": strings.Tuesday, 
+      "we": strings.Wednesday, 
+      "th": strings.Thursday, 
+      "fr": strings.Friday, 
+      "sa": strings.Saturday, 
+      "su": strings.Sunday
+    };
+    
+    const orderType: any = {
+      "first": strings.firstLabel,
+      "second": strings.secondLabel,
+      "third": strings.thirdLabel,
+      "fourth": strings.fourthLabel,
+      "last": strings.lastLabel
+    };
+
+    let order: string;
+    let dayType: string;
+    let frequencyFormat: string;
+    
+    for (let key of keys) {
+      switch (key) {
+        case "monthFrequency":
+          const frequency = parseInt(rule[key]);
+          switch(frequency) {
+            case 1: 
+              frequencyFormat = format(strings.everyFormat, frequency);
+              break;
+            case 2: 
+              frequencyFormat = format(strings.everySecondFormat, frequency);
+              break;
+            default:
+              frequencyFormat = format(strings.everyNthFormat, frequency);
+              break;
+          } 
+          break;
+        case "weekDayOfMonth":
+          order = orderType[rule[key]];
+          break;
+        default:
+          dayType = dayTypeMap[rule[key]];
+          break;
+      }
+    }
+
+    return format("{} {} {} {} {}{}", 
+      frequencyFormat, 
+      strings.monthLabel.toLowerCase(), 
+      strings.onTheLabel, 
+      order,
+      dayType,
+      strings.theSuffix);
+  }
+
+  /**
+   * 
+   * @private
+   * @param rule
+   * @memberof Event 
+   */
+  private parseYearlyRule(rule): string {
+    const keys: string[] = Object.keys(rule);
+    const months: string[] = DayPickerStrings.months;
+    let frequencyString: string;
+    let month: string;
+    let day: string;
+    for (let key of keys) {
+      switch(key) {
+        case "yearFrequency":
+          const frequency = parseInt(rule[key]);
+          const frequencyFormat = frequency == 1 ? strings.everyFormat : frequency == 2 ? strings.everySecondFormat : strings.everyNthFormat;
+          frequencyString = format(frequencyFormat, frequency);
+          break; 
+        case "month":
+          month = months[parseInt(rule[key]) - 1];
+          break;
+        case "day":
+          day = rule[key];
+          break;
+      }
+    }
+
+    return format("{} {} {}", frequencyString, strings.yearLabel, format(strings.theNthOfMonthFormat, month, day));
+  }
+
+  /**
+   * 
+   * 
+   * @private
+   * @param rule 
+   * @memberof Event
+   */
+  private parseYearlyByDayRule(rule): string {
+    const keys: string[] = Object.keys(rule);
+    const months: string[] = DayPickerStrings.months;
+    const orderMap: any = {
+      "first": strings.firstLabel,
+      "second": strings.secondLabel,
+      "third": strings.thirdLabel,
+      "fourth": strings.fourthLabel,
+      "last": strings.lastLabel
+    };
+    const dayTypeMap: any = {
+      "day": strings.weekDayLabel, 
+      "weekend_day": strings.weekEndDay, 
+      "mo": strings.Monday, 
+      "tu": strings.Tuesday, 
+      "we": strings.Wednesday, 
+      "th": strings.Thursday, 
+      "fr": strings.Friday, 
+      "sa": strings.Saturday, 
+      "su": strings.Sunday
+    };
+    let frequencyString: string;
+    let month: string;
+    let order: string;
+    let dayTypeString: string;
+    for (let key of keys) {
+      switch(key) {
+        case "yearFrequency":
+          const frequency = parseInt(rule[key]);
+          const frequencyFormat = frequency === 1 ? strings.everyFormat : frequency === 2 ? strings.everySecondFormat : strings.everyNthFormat;
+          frequencyString = format(frequencyFormat, frequency);
+          break;
+        case "weekDayOfMonth":
+          order = orderMap[rule[key]];
+          break;
+        case "month": 
+          month = months[parseInt(rule[key]) - 1];
+          break;
+        default:
+          dayTypeString = dayTypeMap[rule[key]];
+          break;
+      }
+
+      return format("{} {} {}", 
+        frequencyString,
+        strings.yearLabel,
+        format(strings.onTheDayTypeFormat, order, dayTypeString.toLowerCase(), strings.theSuffix)
+      );
+    }
+  }
+
+  /**
+   * 
+   * 
+   * @private
+   * @param {string} recurrenceData
+   * @memberof Event 
+   */
+  private async returnExceptionRecurrenceInfo(recurrenceData: string) {
+    const promise = new Promise<object>((resolve, reject) => {
+      parseString(recurrenceData, (err, result) => {
+        if (err) {
+          reject(err);
+        }
+
+        resolve(result);
+      });
+    });
+    
+    const recurrenceInfo: any = await promise;
+    let keys = Object.keys(recurrenceInfo.recurrence.rule[0].repeat[0]);
+    const recurrenceTypes = ["daily", "weekly", "monthly", "monthlyByDay", "yearly", "yearlyByDay"];
+    for (var key of keys) {
+      const rule = recurrenceInfo.recurrence.rule[0].repeat[0][key][0]['$'];
+      switch(recurrenceTypes.indexOf(key)) {
+        case 0:
+          return this.parseDailyRule(rule);
+          break;
+        case 1:
+          return this.parseWeeklyRule(rule);
+          break;
+        case 2:
+          return this.parseMonthlyRule(rule); 
+          break;
+        case 3:
+          return this.parseMonthlyByDayRule(rule);
+          break;
+        case 4:
+          return this.parseYearlyRule(rule);
+          break;
+        case 5: 
+          return this.parseYearlyByDayRule(rule);
+          break;
+        default:
+          continue;
+      }
+    }
+  }
+
+
+  /**
    *
    *
    * @param {Date} startDate
@@ -579,6 +857,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
     //console.log(this.returnedRecurrenceInfo);
   }
 
+
   /**
    *
    *
@@ -588,6 +867,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
   public render(): React.ReactElement<IEventProps> {
 
     const { editorState } = this.state;
+
     return (
       <div>
         <Panel
@@ -617,6 +897,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
                   (this.state.eventData && (this.state.eventData.EventType !== "0" && this.state.showRecurrenceSeriesInfo !== true)) ?
                   <div>
                       <h2 style={{ display: 'inline-block', verticalAlign: 'top' }}>{ strings.recurrenceEventLabel }</h2>
+                      { this.state.recurrenceDescription ? <span style={{ display: 'block' }} >{ this.state.recurrenceDescription }</span> : null }
                       <DefaultButton
                         style={{ display: 'inline-block', marginLeft: '330px', verticalAlign: 'top', width: 'auto' }}
                         iconProps={{ iconName: 'RecurringEvent' }}
