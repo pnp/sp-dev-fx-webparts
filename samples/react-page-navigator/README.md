@@ -24,8 +24,8 @@ Version|Date|Comments
 - npm i
 - gulp bundle --ship
 - gulp package-solution --ship
-- Add to App Catalog and Install the App
-- Add the web part to a page
+- Add the app package to Site Collection App Catalog and Install the App
+- Add the web part to a page in the Site Collection
 
 ## Solution
 
