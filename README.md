@@ -2,7 +2,7 @@
 
 ## Summary
 
-Using Microsoft Graph this webpart grabs the Office 365 groups and links to the SharePoint sites and outputs them to a list.
+Using Microsoft Graph this webpart grabs the current user's Office 365 groups with links to the groups SharePoint site.
 
 ![Demo](./assets/example.png)
 
