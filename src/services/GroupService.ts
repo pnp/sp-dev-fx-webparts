@@ -2,6 +2,8 @@ import { MSGraphClient } from "@microsoft/sp-http";
 import * as MicrosoftGraph from "@microsoft/microsoft-graph-types";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { IGroup, IGroupCollection } from "../models";
+import { GraphRequest } from "@microsoft/microsoft-graph-client";
+
 
 export class GroupServiceManager {
   public context: WebPartContext;
@@ -38,6 +40,25 @@ export class GroupServiceManager {
           .api(`/groups/${groups.id}/sites/root/weburl`)
           .get((error: any, group: any, rawResponse: any) => {
             resolve(group);
+          });
+        });
+      } catch(error) {
+        console.error(error);
+      }
+    });
+  }
+
+  public getGroupThumbnails(groups: IGroup): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      try {
+        this.context.msGraphClientFactory
+        .getClient()
+        .then((client: MSGraphClient) => {
+          client
+          .api(`/groups/${groups.id}/photos/48x48/$value`)
+          .responseType('blob')
+          .get((error: any, group: any, rawResponse: any) => {
+            resolve(window.URL.createObjectURL(group));
           });
         });
       } catch(error) {
