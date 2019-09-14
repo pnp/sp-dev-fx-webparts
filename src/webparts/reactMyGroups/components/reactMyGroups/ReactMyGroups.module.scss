@@ -1,6 +1,11 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .reactMyGroups {
+
+  a {
+    text-decoration: none;
+  }
+
   .container {
     max-width: 700px;
     margin: 0px auto;

@@ -83,9 +83,11 @@ export class ReactMyGroups extends React.Component<IReactMyGroupsProps, IReactMy
         >
           <DocumentCardPreview {...previewProps} />
           <DocumentCardDetails>
-            <DocumentCardTitle 
-              title={item.displayName}
-            />
+            <a href={item.url}>
+              <DocumentCardTitle 
+                title={item.displayName}
+              />
+            </a>
           </DocumentCardDetails>
         </DocumentCard>
       </div>
