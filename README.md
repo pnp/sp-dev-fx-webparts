@@ -15,10 +15,6 @@ Using Microsoft Graph this webpart grabs the Office 365 groups and links to the 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 
 
-## Prerequisites
-
-> Any special pre-requisites?
-
 ## Solution
 
 Solution|Author(s)
@@ -42,9 +38,12 @@ Version|Date|Comments
 * Clone this repository
 * in the command line run:
   * `npm install`
-  * `gulp serve --nobrowser`
+  * `gulp bundle --ship`
+  * `gulp package-solution --ship`
+* Add the package to your app catalog
+* Approve the Graph API permissions in the SharePoint admin center
+* Add the webpart to your page
 
-Browse to SharePoint Online workbench (https://tenant.sharepoint.com/_layouts/15/workbench.aspx)
 
 ## Features
 
