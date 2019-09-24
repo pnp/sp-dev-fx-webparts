@@ -260,8 +260,6 @@ extra:
       name: js-dynamic-bundling-libraries
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg
       author: David Warner II
-      status: Wrong metadata
-      statustext: README has wrong title
       summary: This sample illustrates how SPFx functionality and packages can be bundled in multiple '.js' files then be dynamically & asynchronously loaded into the page at execution time, such as with a button click.
       version: 1.1
       modifiedtext: December 3, 2018
@@ -274,8 +272,6 @@ extra:
       name: js-employee-spotlight
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png
       author: SPS
-      status: Spelling mistake
-      statustext: README needs spell-check
       summary: Simple Web Part that demonstrates the use of SharePoint Framework for showcasing Employee Spotlight. The web part pulls data from a configured list and User Profile service. The properties pane for this web part has 5 cascading dropdowns.
       version: 1.0
       modifiedtext: June 12, 2017
@@ -312,8 +308,6 @@ extra:
       name: js-gitHubBadge
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-gitHubBadge/assets/1.png
       author: Eric Skaggs
-      status: Wrong version
-      statustext: README has the wrong SPFx version
       version: 1.0
       modifiedtext: April 18, 2019
       modified: 2019-04-18
@@ -329,8 +323,6 @@ extra:
       version: 1.0.0.0
       modifiedtext: February 11, 2017
       modified: 2017-02-11
-      status: Wrong version
-      statustext: README has wrong SPFx version
     - framework: Javascript
       spfx: 1.8.2
       year: 2019
@@ -394,8 +386,6 @@ extra:
       version: 1.4
       modifiedtext: March 27, 2019
       modified: 2019-03-27
-      status: Wrong version
-      statustext: README has wrong version
     - framework: Javascript
       spfx: GA
       year: 2017
@@ -456,8 +446,6 @@ extra:
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/knockout-dependent-properties
       name: knockout-dependent-properties
       title: Knockout Dependent Properties
-      status: Missing title
-      statustext: README is missing a title
       summary: Sample Web Part illustrating...
       version: 1.1
       modifiedtext: May 20, 2017
@@ -564,8 +552,6 @@ extra:
       thumbnailtype: video
       author: Nanddeep Nachan, Ravi Kulkarni
       summary: This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.
-      status: Invalid markdown
-      statustext: Markdown has invalid syntax
       version: 1.0.0
       modifiedtext: November 28, 2018
       modified: 2018-11-28
@@ -579,8 +565,6 @@ extra:
       thumbnailtype: video
       author: Dhaval Shah
       summary: This is a sample webpart developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io
-      status: Invalid markdown
-      statustext: README has invalid syntax and invalid version.
       version: 1.0
       modifiedtext: July 16, 2018
       modified: 2018-07-16
@@ -633,8 +617,6 @@ extra:
       version: 1.1.0
       modifiedtext: July 23, 2019
       modified: 2019-07-23
-      status: Wrong version, Incomplete Readme
-      statustext: Wrong version in README, README still has template text
     - framework: React
       spfx: 1.7.0
       year: 2017
@@ -713,8 +695,6 @@ extra:
       version: 1.0
       modifiedtext: January 27, 2019
       modified: 2019-01-27
-      status: Wrong title
-      statustext: README has wrong title
     - framework: React
       spfx: 1.6.0
       year: 2018
@@ -778,8 +758,6 @@ extra:
       name: react-directory
       title:  React Directory Web Part
       summary: Search People from Organization Directory and show live persona card on hover.
-      status: Spelling mistake
-      statustext: README has spelling mistakes
       version: 1.0.0
       modifiedtext: July 29, 2019
       modified: 2019-07-29
@@ -872,8 +850,6 @@ extra:
       version: 1.0.0
       modifiedtext: February 14, 2018
       modified: 2018-02-14
-      status: Incomplete Readme
-      Statustext: README still has template text
     - framework: React
       spfx: 1.8.2
       year: 2019
@@ -898,8 +874,6 @@ extra:
       version: 1.0
       modifiedtext: June 5, 2019
       modified: 2019-06-05
-      status: Wrong version
-      statustext: README has wrong version
     - framework: React
       spfx: 1.8.2
       year: 2019
@@ -912,8 +886,6 @@ extra:
       version: 1.0
       modifiedtext: June 5, 2019
       modified: 2019-06-05
-      status: Wrong version
-      statustet: README has wrong version
     - framework: React
       spfx: 1.8.2
       year: 2019
@@ -964,8 +936,6 @@ extra:
       version: 1.0
       modifiedtext: August 12, 2019
       modified: 2019-08-12
-      status: Wrong version
-      statustext: README has wrong version
     - framework: React
       spfx: 1.6.0
       year: 2018
@@ -1000,8 +970,6 @@ extra:
       thumbnailtype: video
       author: Ejaz Hussain
       summary: This sample describe a SPFX application which retrieves an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph.
-      status: Spelling mistakes, Wrong version
-      statustext: README has spelling mistakes and wrong version
       version: 1.0
       modifiedtext: April 09, 2019
       modified: 2019-04-09
@@ -1042,8 +1010,6 @@ extra:
       version: 1.0
       modifiedtext: March 01, 2019
       modified: 2019-03-01
-      status: Incomplete README, Wrong version
-      statustext: README still has template text and wrong version
     - framework: React
       spfx: GA
       year: 2017
@@ -1070,8 +1036,6 @@ extra:
       version: 1.0
       modifiedtext: March 1, 2019
       modified: 2019-03-01
-      status: Wrong version
-      statustext: README has wrong version
     - framework: React
       spfx: 1.3.0
       year: 2017
@@ -1147,8 +1111,6 @@ extra:
       version: 1.0.1
       modifiedtext: February 22, 2019
       modified: 2019-02-22
-      status: Wrong version + modernize
-      statustext: README has wrong version
     - framework: React
       spfx: 1.8.0
       year: 2019
@@ -1157,8 +1119,6 @@ extra:
       title:  React Site Designs Manager
       thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/dev/samples/react-manage-sitedesigns/assets/screen1.jpg
       author: João Mendes
-      status: Incomplete Readme, Wrong Version
-      statustext: README still has template text, wrong version
       summary: This web part allows tenant administrators to manage site designs through a graphical interface.
       version: 1.0.0
       modifiedtext: April 08, 2019
@@ -1396,8 +1356,6 @@ extra:
       title:  Property Bag Navigation Webparts
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-property-bag-editor/src/images/PropertyBagEditorDisplay.PNG
       author: Russell Gove
-      status: Invalid markdown
-      statustext: README has invalid markdown
       summary: A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties.
       version: 1.0
       modifiedtext: March 19, 2017
@@ -1474,8 +1432,6 @@ extra:
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-reduxform/assets/ReduxFormWebpart.gif?raw=true
       author: Vipul Kelkar
       summary: Sample webpart to demonstrate the use of Redux-Form library with SPFx, React and Typescript. Demonstrates how to easily build a dynamic grid using redux-form.
-      status: Broken images
-      statustext: README has missing image
       version: 1.0
       modifiedtext: May 02, 2018
       modified: 2018-05-02
@@ -1644,8 +1600,6 @@ extra:
       version: 1.1
       modifiedtext: August 20, 2018
       modified: 2018-07-20
-      status: Missing image
-      statustext: README is missing an image
     - framework: React
       spfx: GA
       year: 2017
@@ -1716,8 +1670,6 @@ extra:
       title:  React Tenant Properties Web Part
       thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/master/samples/react-tenant-properties/assets/TenantProperties2.jpg
       author: João Mendes
-      status: Incomplete Readme
-      Statustext: README still has template text
       summary: This web part allows tenant administrators to manage tenant properties through a graphical interface. We can create, edit or delete tenant properties.
       modifiedtext: March 08, 2019
       modified: 2019-03-08
@@ -1742,8 +1694,6 @@ extra:
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-tinymce/assets/preview.gif
       thumbnailtype: video
       author: AustinBreslinDev
-      statustext: README still has template text
-      status: Incomplete Readme + Spelling mistakes
       summary: React TinyMCE is one of the worlds most popular editors for the web. It has many features out of the box and many more plugins that can be added when needed. You can create your own plugins if you want, the editor is powered by the communitiy.
       version: 1.0
       modifiedtext: February 01, 2018
@@ -1769,8 +1719,6 @@ extra:
       title:  React Tree Organization Web Part
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-tree-orgchart/assets/Screenshot1.png
       author: João Mendes
-      status: Incomplete Readme
-      statustext: README still has template text
       summary: The Tree Organization WebPart shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.
       version: 1.0.0
       modifiedtext: February 25, 2019
@@ -1897,8 +1845,6 @@ extra:
       author: Serdar Ketenci̇
       summary: A simple Organisation Chart webpart using Office UI Fabric, VueJS, REST API.
       version: 1.0
-      status: Incomplete Readme
-      statustext: README is missing some content
       modifiedtext: June 11, 2019
       modified: 2019-06-11
     - framework: VueJS
