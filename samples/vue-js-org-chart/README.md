@@ -7,7 +7,7 @@ A simple Organisation Chart webpart using Office UI Fabric, VueJS, REST API.
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.1-green.svg)
 
 ## Applies to
 

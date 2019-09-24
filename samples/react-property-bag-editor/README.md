@@ -29,7 +29,6 @@ react-property-bag-editor| Russell Gove
 
 Version|Date|Comments
 -------|----|--------
-
 1.0|march 19, 2017|Initial release
 
 ## Disclaimer
@@ -69,6 +68,7 @@ The Site whose properties are to be edited can be passed in via a query paramete
 
 The following script shows how to add such a link to all sites &#39;Site Settings&#39; page using PNP Powershell. It will add a menu item named &#39;Edit Site Metadata &#39; to the  Site Settings of each Team Site that links to the PropertBagEdcitor.aspx page on the tenants infrastructure site (this site is named 'cdn' in the example below).
 
+```
 $adminSiteUrl=&quot;https://tenant-admin.sharepoint.com&quot;
 
 $customActionDescription=&quot;CUSTOM_\ ___Navigation__ \__Metadata&quot;
@@ -108,8 +108,8 @@ foreach($site in $sites){
         Execute-SPOQuery
 
         }
-
 }
+```
 
 - PropertyBagDisplay
 The propertyBagDisplay webpart can be used by an administrator to view and edit selected properties across sites in the tenant:

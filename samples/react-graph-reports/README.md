@@ -1,13 +1,13 @@
 ## react-graph-reports
 
 ## Summary
-This sample describe a SPFX application which reterive an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph.
+This sample describe a SPFX application which retrieve an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph.
 
 
 ![Office 365 Usage Reports using Microsoft Graph API](./assets/react-graph-reports.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.0-green.svg)
 
 ## Applies to
 
@@ -54,7 +54,7 @@ If you have not previously granted the required Microsoft Graph permissions, you
 Here are main features for this application
 
 - Material UI Components (Tab)
-- Microsoft Graph API to reterive Office 365 Usage reports
+- Microsoft Graph API to retrieve Office 365 Usage reports
 - ChartJS integrations
 - Dependency Injection in SPFX using Service Scope
 
