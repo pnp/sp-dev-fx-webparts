@@ -1,5 +1,6 @@
 # SharePoint Framework Client-Side Web Part Samples & Tutorial Materials
 
+## DOCS
 This repository contains community samples that demonstrate different usage patterns for the SharePoint Framework client-side web parts.
 
 > We do welcome community contributions to the samples folder in this repository for demonstrating different use cases with SharePoint Framework. Notice that if you use 3rd party libraries, please make sure that library license allows distributions of it as part of your sample.
