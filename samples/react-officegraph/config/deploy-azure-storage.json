@@ -1,6 +1,0 @@
-{
-  "workingDir": "./temp/deploy/",
-  "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "my-recent-documents",
-  "accessKey": "<!-- ACCESS KEY -->"
-}

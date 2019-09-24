@@ -1,1 +1,0 @@
-Copy your pfx file here before publish the function.

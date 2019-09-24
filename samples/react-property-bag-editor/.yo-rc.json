@@ -1,7 +1,0 @@
-{
-  "@microsoft/generator-sharepoint": {
-    "libraryName": "react-property-bag-editor",
-    "libraryId": "12dac38e-b255-44ce-9f06-050571b34d39",
-    "framework": "react"
-  }
-}

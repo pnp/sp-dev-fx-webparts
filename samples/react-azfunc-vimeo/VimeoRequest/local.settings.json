@@ -1,9 +1,0 @@
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "",
-    "VimeoAPI": "<Enter your APPID here>",
-    "VimeoSecret": "<Enter your Secret here>",
-    "VimeoEndPoint": "https://api.vimeo.com"
-  }
-}

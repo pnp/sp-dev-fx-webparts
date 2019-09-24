@@ -1,6 +1,0 @@
-{
-  "workingDir": "./temp/deploy/",
-  "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "ang-2-webparts",
-  "accessKey": "<!-- ACCESS KEY -->"
-}

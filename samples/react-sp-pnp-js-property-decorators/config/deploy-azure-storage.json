@@ -1,6 +1,0 @@
-{
-  "workingDir": "./temp/deploy/",
-  "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "react-sp-pnp-js-property-decorators",
-  "accessKey": "<!-- ACCESS KEY -->"
-}

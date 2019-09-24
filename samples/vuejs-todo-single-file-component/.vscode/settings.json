@@ -1,7 +1,0 @@
-// Place your settings in this file to overwrite default and user settings.
-{
-    "tslint.configFile": "./config/tslint.json",
-    "tslint.ignoreDefinitionFiles": true,
-    "editor.minimap.maxColumn": 80,
-    "editor.minimap.renderCharacters": false
-}

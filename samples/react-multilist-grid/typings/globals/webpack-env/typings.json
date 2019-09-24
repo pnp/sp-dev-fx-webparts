@@ -1,8 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/d20a983f78abfcda79fc85c66a5f0736e45ab99f/webpack-env/index.d.ts",
-    "raw": "registry:dt/webpack-env#1.13.0+20170105061735",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/d20a983f78abfcda79fc85c66a5f0736e45ab99f/webpack-env/index.d.ts"
-  }
-}

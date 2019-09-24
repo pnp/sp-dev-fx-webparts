@@ -1,1 +1,0 @@
-export { HierarchyService } from './HierarchyService';

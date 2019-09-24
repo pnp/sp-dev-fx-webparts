@@ -1,8 +1,0 @@
-{
-  "@microsoft/generator-sharepoint": {
-    "libraryName": "react-todo-basic",
-    "framework": "react",
-    "version": "1.0.2",
-    "libraryId": "40efb476-b506-409a-8848-5fbfb9456af6"
-  }
-}
