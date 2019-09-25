@@ -9,7 +9,6 @@ All samples are compatible with SharePoint Online. If you wish to find web parts
       2019</button>
     <button class="button" data-filter="[data-compatibility*='Microsoft Teams']">Microsoft Teams</button>
   </div>
-
 </div>
 
 <div class="grid">

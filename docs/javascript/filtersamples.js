@@ -30,7 +30,7 @@ $('.button-group').each(function (i, buttonGroup) {
 });
 
 // bind sort button click
-$('.sort-button-group').on( 'click', 'button', function() {
+$('.sort-button-group').on('click', 'button', function () {
 
   /* Get the element name to sort */
   var sortValue = $(this).attr('data-sort-value');
@@ -62,3 +62,14 @@ $("a img[data-fullsize$='.gif']").hover((e) => {
   $(img).attr('src', customdata);
 });
 
+$("#author").on('change keyup paste', function() {
+  console.log('I am pretty sure the text box changed');
+  var selection = $('#author').val();
+  if (selection !=="") {
+    console.log('Selection', selection, `[data-author*='${selection}']`);
+    $grid.isotope({ filter: `[data-author*='${selection}']` });
+  } else {
+    $grid.isotope({ filter: '*' });
+  }
+  
+});

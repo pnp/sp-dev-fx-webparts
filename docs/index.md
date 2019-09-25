@@ -15,7 +15,7 @@ You can head directly to those folders and start looking around if you'd like. B
 - [By **SPFx Version**](./samples/spfx.md)
 - [By **Compatibility**](./samples/compatibility.md)
 - [By **Year**](./samples/year.md)
-- [By **Status**](./samples/status.md)
+- [By **Author**](./samples/author.md)
 - [All](./samples/all.md)
 
 ## Detailed Documentation

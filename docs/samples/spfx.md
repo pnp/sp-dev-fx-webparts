@@ -61,8 +61,10 @@
             <img src="https://img.shields.io/badge/drop-{{ sample.spfx }}-red.svg" alt="{{ sample.spfx }}"/>
         {% elif sample.spfx == "drop5" %}
             <img src="https://img.shields.io/badge/drop-{{ sample.spfx }}-red.svg" alt="{{ sample.spfx }}"/>
+        {% elif sample.spfx == "rc0" %}
+            <img src="https://img.shields.io/badge/drop-{{ sample.spfx }}-red.svg" alt="{{ sample.spfx }}"/>
         {% else %}
-            <img src="https://img.shields.io/badge/drop-{{ sample.spfx }}-green.svg" alt="{{ sample.spfx }}"/>
+            <img src="https://img.shields.io/badge/version-{{ sample.spfx }}-green.svg" alt="{{ sample.spfx }}"/>
         {% endif %}
 </span>
   <h2 class="name">
