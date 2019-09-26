@@ -222,6 +222,10 @@
     cursor:pointer; 
     height:120px; 
     overflow-y:scroll;
-  }    
+  }
+
+  #samplestable th {
+    cursor: pointer;
+  }
 
   html { overflow-y: scroll; }

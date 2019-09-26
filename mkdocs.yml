@@ -1,16 +1,19 @@
-site_name: sp-dev-fx-webparts
+site_name: SharePoint Framework Client-Side Web Part Samples
 theme: readthedocs
 plugins:
     - search
     - macros
     - markdownextradata
-site_name: SharePoint Framework Client-Side Web Part Samples
 nav:
   - Home: index.md
   - Getting Started:
     - Using the Samples: gettingstarted/index.md
   - Tutorials: 
     - Tutorials: tutorials/index.md
+    - Getting started with client-side web parts: tutorials/getting-started.md
+    - Migrate jQuery and DataTables solution built using Script Editor Web Part to SharePoint Framework: tutorials/migrate-datatables.md
+    - Migrate jQuery and FullCalendar solution built using Script Editor Web Part to SharePoint Framework: tutorials/migrate-fullcalendar.md
+    - Consuming APIs secured with Azure Active Directory within SharePoint Framework: tutorials/api-scopes.md
   - Samples:
     - By Framework: samples/framework.md
     - By SPFx Version: samples/spfx.md
@@ -1927,5 +1930,6 @@ extra:
     - Vipul Kelkar
     - Waldek Mastykarz
 repo_url: https://github.com/SharePoint/sp-dev-fx-webparts
-edit_uri: tree/master/docs
+edit_uri: tree/Docs/docs
 site_url: https://sharepoint.github.io/sp-dev-fx-webparts/
+site_favicon: favicon.ico

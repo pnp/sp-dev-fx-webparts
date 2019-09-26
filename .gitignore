@@ -59,3 +59,4 @@ typings/
 
 # mkdocs build folder
 site/
+/assets/images/favicon.png

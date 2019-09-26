@@ -1,6 +1,6 @@
 # All Samples
 
-<table id="samplestable" >
+<table id="samplestable">
     <thead>
         <tr>
             <th>Title</th>
