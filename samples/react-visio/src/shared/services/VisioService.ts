@@ -299,8 +299,8 @@ export class VisioService {
       // trigger document and page loaded event handlers manually as sometimes Visio fails to trigger them
       // we are sending a null event, which is fine in this case as we don't need any of the event data
       // this is randomly happening on chrome, but seems to always fail on IE...
-        this._onDocumentLoadComplete(null);
-        this._onPageLoadComplete(null);
+        // this._onDocumentLoadComplete(null);
+        // this._onPageLoadComplete(null);
 
     } catch (error) {
       this.logError(error);

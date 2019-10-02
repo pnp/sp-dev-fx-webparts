@@ -1,11 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 
 import 'officejs';
 import * as strings from 'VisioSampleWebPartStrings';
@@ -31,7 +28,7 @@ export default class VisioSampleWebPart extends BaseClientSideWebPart<IVisioSamp
   }
 
   public render(): void {
-    const element: React.ReactElement<IVisioSampleProps > = React.createElement(
+    const element: React.ReactElement<IVisioSampleProps> = React.createElement(
       VisioSample,
       {
         visioService: this._visioService,
