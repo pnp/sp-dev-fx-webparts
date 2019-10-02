@@ -1,4 +1,4 @@
-# title of the sample
+# Sample Web Part implementing dependent properties in Property Pane
 
 ## Summary
 Sample Web Part illustrating
@@ -47,7 +47,7 @@ This project contains Client-Side Web Part built on the SharePoint Framework ill
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - loading Lists and Views data from SharePoint REST API
-- creating cust Knockout data bindings
+- creating custom Knockout data bindings
 - creating custom Knockout components
 - styling components to match Fabric UI experience
 - creating custom Property Pane fields (custom markup, logic) based on Knockout.js framework

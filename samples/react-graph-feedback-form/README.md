@@ -8,7 +8,7 @@ Sample SPFx React web part which allows sending emails using Microsoft Graph.
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
 

@@ -8,7 +8,7 @@ This web part is intended to be easier to understand for new developers building
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
 

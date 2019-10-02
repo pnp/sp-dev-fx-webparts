@@ -10,7 +10,7 @@ This webpart display the image in slider based on the filter of Taxonomy from Pr
 ![preview](./assets/ImageSlider.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.6.0-green.svg)
 
 ## Applies to
 

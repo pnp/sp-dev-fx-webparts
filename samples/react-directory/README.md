@@ -2,7 +2,7 @@
 
 ## Summary
 
- Search People from Organization Directory and show live persona card on houver.
+ Search People from Organization Directory and show live persona card on hover.
 
 
 ##  

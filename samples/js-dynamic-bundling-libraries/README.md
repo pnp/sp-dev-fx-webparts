@@ -1,4 +1,4 @@
-# title of the sample
+# Dynamics Bundling & Loading of SPFx Packages
 
 ## Summary
 This sample illustrates how SPFx functionality and packages can be bundled in multiple '.js' files then be dynamically & asynchronously loaded into the page at execution time, such as with a button click.
