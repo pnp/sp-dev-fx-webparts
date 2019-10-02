@@ -1,8 +1,8 @@
-# react-my-groups
+# React My Groups
 
 ## Summary
 
-Using Microsoft Graph this webpart grabs the current user's Office 365 groups with links to the groups SharePoint site.
+Using Microsoft Graph, this webpart grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.
 
 ![Demo](./assets/example.png)
 
