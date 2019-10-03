@@ -35,38 +35,46 @@ export default class BotFrameworkChat extends React.Component<IBotFrameworkChatP
     );
   }
 
+  public componentDidMount(){
+    this.initSwagger();
+  }
+
   public componentDidUpdate(prevProps: IBotFrameworkChatProps, prevState: {}, prevContext: any): void {
     if (this.props.directLineSecret !== prevProps.directLineSecret) {
-      if (this.props.directLineSecret) {
-        var Swagger = require('swagger-client');
-        var directLineSpec = require('./directline-swagger.json');
+      this.initSwagger();
+    }
+  }
 
-        this.directLineClientSwagger = new Swagger(
-          {
-            spec: directLineSpec,
-            usePromise: true,
-          }).then((client) => {
-            client.clientAuthorizations.add('AuthorizationBotConnector', new Swagger.ApiKeyAuthorization('Authorization', 'BotConnector ' + this.props.directLineSecret, 'header'));
-            console.log('DirectLine client generated');
-            return client;
-          }).catch((err) =>
-            console.error('Error initializing DirectLine client', err));
+  public initSwagger(){
+    if (this.props.directLineSecret) {
+      var Swagger = require('swagger-client');
+      var directLineSpec = require('./directline-swagger.json');
 
-        this.directLineClientSwagger.then((client) => {
-          client.Conversations.Conversations_NewConversation()
-            .then((response) => response.obj.conversationId)
-            .then((conversationId) => {
+      this.directLineClientSwagger = new Swagger(
+        {
+          spec: directLineSpec,
+          usePromise: true,
+        }).then((client) => {
+          client.clientAuthorizations.add('AuthorizationBotConnector', new Swagger.ApiKeyAuthorization('Authorization', 'BotConnector ' + this.props.directLineSecret, 'header'));
+          console.log('DirectLine client generated');
+          return client;
+        }).catch((err) =>
+          console.error('Error initializing DirectLine client', err));
 
-              this.conversationId = conversationId;
-              this.pollMessages(client, conversationId);
-              this.directLineClient = client;
-            });
-        });
+      this.directLineClientSwagger.then((client) => {
+        client.Conversations.Conversations_NewConversation()
+          .then((response) => response.obj.conversationId)
+          .then((conversationId) => {
 
-        this.sendAsUserName = this.props.context.pageContext.user.loginName;
+            this.conversationId = conversationId;
+            this.pollMessages(client, conversationId);
+            this.directLineClient = client;
+          });
+      });
 
-        this.printMessage = this.printMessage.bind(this);
-      }
+      this.sendAsUserName = this.props.context.pageContext.user.loginName;
+
+      this.printMessage = this.printMessage.bind(this);
     }
   }
 

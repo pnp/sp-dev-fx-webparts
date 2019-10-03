@@ -8,7 +8,7 @@ The web part allows configuring which list to use and if a form for adding a new
 ![Demo](./assets/React-ListForm-Overview.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.7.1-green.svg)
 
 ## Applies to
 

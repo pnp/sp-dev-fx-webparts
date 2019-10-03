@@ -4,22 +4,21 @@
 React TinyMCE is one of the worlds most popular editors for the web.
 It has many features out of the box and many more plugins that can be
 added when needed. You can create your own plugins if you want, the
-editor is powered by the communitiy.
+editor is powered by the community.
 
 ![picture of the web part in action](./assets/preview.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.4.1-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
 
 ## Prerequisites
-If you are going to use tinymce be aware of it's lincense, and you must
+If you are going to use tinymce be aware of it's license, and you must
 agree to it.
 
 ## Solution
@@ -56,7 +55,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Uses an Open Source, community driven Editor.
 - Can be extended to accept copy/paste from using Paste Plugin.
 - Can be extended to accept images using the manager in the Editor.
-- Can write your own Stlyes for all content on your site.
+- Can write your own Styles for all content on your site.
 - Can style your authoring experience using the skins folder.
 - For more features please look at the extensive list of extensions available.
 

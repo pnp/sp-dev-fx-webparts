@@ -11,20 +11,19 @@ See the local.settings.json for details on the required application variable loc
 
 But you can synchronize the Birthdays list with other applications HR Systems, or other sources
 
-![Brithdays Web Part](./assets/birthdays.gif)
+![Birthdays Web Part](./assets/birthdays.gif)
 
-![Brithdays Web Part](./assets/birthdays.png)
+![Birthdays Web Part](./assets/birthdays.png)
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
 
 ## Prerequisites
  
@@ -38,7 +37,7 @@ userAADGUID| Text| no | required if used Azure Function to get Birthdays from AA
 Title| Text| true
 email| Text| true
 
-## After create a column Index on column "Brithday" - Important!
+## After create a column Index on column "Birthday" - Important!
 
 ## Solution
 

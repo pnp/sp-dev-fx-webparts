@@ -2,7 +2,7 @@
 
 ## Summary
 This web part allows tenant administrators to manage site designs through a graphical interface.  
-We can create, edit, delete work whith site scripts associated to a site design, manage permissions and apply site design to one or more sites.
+We can create, edit, delete work with site scripts associated to a site design, manage permissions and apply site design to one or more sites.
 
 Only users with Tenant Admin Role are allowed to managed tenant properties. 
 
@@ -89,14 +89,12 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.0-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
-
-> Update accordingly as needed.
 
 ## WebPart Properties
  

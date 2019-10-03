@@ -8,7 +8,7 @@ This web part demonstrates building a React functional component that includes s
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
 

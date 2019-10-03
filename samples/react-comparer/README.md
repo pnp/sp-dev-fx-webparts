@@ -1,4 +1,4 @@
-# react-comparer
+# React Comparer with File Picker
 
 ![The web part in action](./assets/ComparerWebPart.gif)
 

@@ -13,7 +13,6 @@ The file upload web part allowing users to upload multiple files to a document l
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
 
 ## Prerequisites
  

@@ -6,30 +6,29 @@ We can create, edit or delete tenant properties.
 
 Only users with Tenant Admin Role are allowed to managed tenant properties.      
 #### User without Tenant Admin Role got this message
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties5.jpg)
+![tenant properties](./assets/TenantProperties5.jpg)
 #### List tenant properties
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties1.jpg)
+![tenant properties](./assets/TenantProperties1.jpg)
 
 #### Add Tenant property
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties2.jpg)
+![tenant properties](./assets/TenantProperties2.jpg)
 
 #### Edit tenant property
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties3.jpg)
+![tenant properties](./assets/TenantProperties3.jpg)
 
 #### Delete tenant property
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties4.jpg)
+![tenant properties](./assets/TenantProperties4.jpg)
 
 
 ## Used SharePoint Framework Version 
 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.7.1-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
 
 ## WebPart Properties
  
@@ -39,7 +38,7 @@ WebPart Title| Text| no|
  
 
 ## Solution
-The Web Part Use MSGraph API and need to SharePoint Administrator appprove de scope "Directory.ReadWrite.All" in SharePoint Admin Center.
+The Web Part Use MSGraph API and need to SharePoint Administrator approve de scope "Directory.ReadWrite.All" in SharePoint Admin Center.
 
 Solution|Author(s)
 --------|---------
