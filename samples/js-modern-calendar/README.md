@@ -8,7 +8,7 @@ This is a modern webpart built on the GA version of the [SharePoint Framework](h
 ![SS3](https://cloud.githubusercontent.com/assets/13068139/23584807/14b88f34-0121-11e7-8c91-56ecff9343e1.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.6.0-green.svg)
 
 ## Applies to
 

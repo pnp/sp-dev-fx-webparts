@@ -13,14 +13,13 @@ We can configure in the webpart properties if it show all Organization Chart or 
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.7.1-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
 
 ## WebPart Properties
  
@@ -42,7 +41,7 @@ Tree Organization WebPart|João Mendes
 
 Version|Date|Comments
 -------|----|--------
-1.0.0|Fev 25, 2019|Initial release
+1.0.0|Feb 25, 2019|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

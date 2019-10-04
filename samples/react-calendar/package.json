@@ -43,6 +43,7 @@
     "react-dom": "16.7.0",
     "react-draft-wysiwyg": "^1.13.2",
     "spfx-uifabric-themes": "^0.6.0",
+    "string-format": "^2.0.0",
     "typescript": "^3.2.4",
     "xml2js": "^0.4.19"
   },

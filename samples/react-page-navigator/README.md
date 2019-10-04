@@ -12,6 +12,12 @@ When added to a Vertical Section it can be used as a Contents table for the page
 
 ![version](https://img.shields.io/badge/version-1.9.1-green.svg)
 
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|September 5, 2019|Initial release
+
 ## Minimal Path to Awesome
 
 - git clone the repo
@@ -31,4 +37,4 @@ react-page-navigator|Aakash Bhardwaj
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
----
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-page-navigator" />
