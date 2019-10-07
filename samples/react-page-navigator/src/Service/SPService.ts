@@ -17,7 +17,6 @@ export class SPService {
       let canvasContent1JSON: any[] = JSON.parse(canvasContent1);
 
       /* Initialize variables to be used for sorting and adding the Navigation links */
-      let depth = 0;
       let headingIndex = 0;
       let subHeadingIndex = -1;
       let headingOrder = 0;
@@ -53,35 +52,32 @@ export class SPService {
             /* Add links to Nav element */
             if (anchorLinks.length === 0) {
               anchorLinks.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-              prevHeadingOrder = headingOrder;
             } else {
               if (headingOrder <= prevHeadingOrder) {
                 /* Adding or Promoting links */
-                if (depth === 0) {
+                if (headingOrder === 2) {
                   anchorLinks.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
                   headingIndex++;
                   subHeadingIndex = -1;
                 } else {
-                  if ((depth === 2) && (headingOrder === prevHeadingOrder)) {
+                  if (headingOrder === 4) {
                     anchorLinks[headingIndex].links[subHeadingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                  } else {
+                  } else if (headingOrder === 3){
                     anchorLinks[headingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
                     subHeadingIndex++;
                   }
-                  prevHeadingOrder = headingOrder;
                 }
               } else {
                 /* Making sub links */
-                if (depth === 0) {
+                if (headingOrder === 3) {
                   anchorLinks[headingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
                   subHeadingIndex++;
                 } else {
                   anchorLinks[headingIndex].links[subHeadingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
                 }
-                depth++;
-                prevHeadingOrder = headingOrder;
               }
             }
+            prevHeadingOrder = headingOrder;
 
             /* Replace the added header links from the string so they don't get processed again */
             HTMLString = HTMLString.replace(`<h${headingOrder}>`, '');
