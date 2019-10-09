@@ -21,7 +21,7 @@
     "description": { "default": "This is sample webpart to showcase usage of reCaptcha in spfx webpart" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "recaptcha"
+      "sitekey": ""
     }
   }]
 }

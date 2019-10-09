@@ -1,7 +1,8 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field"
+    "PropertyPaneDescription": "Please enter Site key to use reCaptcha",
+    "BasicGroupName": "Basic",
+    "SiteKeyFieldLabel": "Site Key",
+    "SubmitButtonLabel" : "Submit"
   }
 });

@@ -5,7 +5,9 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import ReCAPTCHA from 'react-google-recaptcha';
 import * as ReactDom from 'react-dom';
 import { TextField, MaskedTextField,PrimaryButton,MessageBar, MessageBarType   } from 'office-ui-fabric-react';
-
+import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder"
+import { DisplayMode } from '@microsoft/sp-core-library';  
+import * as strings from 'RecaptchaWebPartStrings';
 
 export default class Recaptcha extends React.Component<IRecaptchaProps, {}> {
 
@@ -14,21 +16,43 @@ export default class Recaptcha extends React.Component<IRecaptchaProps, {}> {
   
   public render(): React.ReactElement<IRecaptchaProps> {
     return (
+      
       <div className={ styles.recaptcha }>
-      <p>
+     {/* Show Placeholder control, when description web part property is not set */}  
+     {this.props.sitekey == "" &&  
+                <Placeholder iconName='Edit'  
+                  iconText='Configure your web part'  
+                  description='Please configure the web part.'  
+                  buttonLabel='Configure'  
+                  hideButton={this.props.displayMode === DisplayMode.Read}  
+                  onConfigure={() => this._onConfigure()} /> 
+              }  
+  
+
+      {/* Show description web part property, when set */} 
+      {this.props.sitekey  &&  
+        <div>
+           <p>
         <TextField label="Enter your name" styles={{ fieldGroup: { width: 300 } }} />
         </p>
         <ReCAPTCHA ref={ (el) => { this.captcha = el; } }
-        sitekey="6LeZV7oUAAAAALiIfCUnnrlXE0fYrcyvM9JHVN72"
+        sitekey={escape(this.props.sitekey)}
         onChange={this.onChange} />
         <p>
-       <div id="messageContainer"   ref={(elm) => { this._messageContainer = elm; }}>
-        </div>
+            <p ref={(elm) => { this._messageContainer = elm; }}>
+          </p>
         </p>
 
-        <PrimaryButton text="Submit"  onClick={() => this.buttonClicked()}   />
+        <PrimaryButton text={strings.SubmitButtonLabel}  onClick={() => this.buttonClicked()}   />
+          </div> 
+      }
       </div>
     );
+  }
+
+  private _onConfigure() {
+    // Context of the web part
+    this.props.context.propertyPane.open();
   }
 
   public buttonClicked(): void {

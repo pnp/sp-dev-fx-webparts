@@ -1,7 +1,8 @@
 declare interface IRecaptchaWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  SiteKeyFieldLabel: string;
+  SubmitButtonLabel:string;
 }
 
 declare module 'RecaptchaWebPartStrings' {

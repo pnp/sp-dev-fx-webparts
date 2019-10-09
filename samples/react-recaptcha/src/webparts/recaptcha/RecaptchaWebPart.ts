@@ -10,9 +10,11 @@ import {
 import * as strings from 'RecaptchaWebPartStrings';
 import Recaptcha from './components/Recaptcha';
 import { IRecaptchaProps } from './components/IRecaptchaProps';
+import { WebPartContext } from '@microsoft/sp-webpart-base'; 
+
 
 export interface IRecaptchaWebPartProps {
-  description: string;
+  sitekey: string;
 }
 
 export default class RecaptchaWebPart extends BaseClientSideWebPart<IRecaptchaWebPartProps> {
@@ -21,7 +23,9 @@ export default class RecaptchaWebPart extends BaseClientSideWebPart<IRecaptchaWe
     const element: React.ReactElement<IRecaptchaProps > = React.createElement(
       Recaptcha,
       {
-        description: this.properties.description
+        sitekey: this.properties.sitekey,  
+        displayMode: this.displayMode,  
+        context: this.context  
       }
     );
 
@@ -47,8 +51,8 @@ export default class RecaptchaWebPart extends BaseClientSideWebPart<IRecaptchaWe
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('sitekey', {
+                  label: strings.SiteKeyFieldLabel
                 })
               ]
             }
