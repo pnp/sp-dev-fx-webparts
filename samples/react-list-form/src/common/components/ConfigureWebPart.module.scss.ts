@@ -1,10 +1,10 @@
 /* tslint:disable */
-require('./ConfigureWebPart.module.css');
+require("./ConfigureWebPart.module.css");
 const styles = {
-  container: 'container_0bf126c2',
-  title: 'title_0bf126c2',
-  description: 'description_0bf126c2',
-  button: 'button_0bf126c2',
+  container: 'container_f7c71bef',
+  title: 'title_f7c71bef',
+  description: 'description_f7c71bef',
+  button: 'button_f7c71bef'
 };
 
 export default styles;

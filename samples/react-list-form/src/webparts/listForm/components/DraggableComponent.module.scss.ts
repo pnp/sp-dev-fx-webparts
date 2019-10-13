@@ -1,10 +1,10 @@
 /* tslint:disable */
-require('./DraggableComponent.module.css');
+require("./DraggableComponent.module.css");
 const styles = {
-  draggableComponent: 'draggableComponent_983b2b46',
-  isDragging: 'isDragging_983b2b46',
-  toolbar: 'toolbar_983b2b46',
-  button: 'button_983b2b46',
+  draggableComponent: 'draggableComponent_98a40df4',
+  isDragging: 'isDragging_98a40df4',
+  toolbar: 'toolbar_98a40df4',
+  button: 'button_98a40df4'
 };
 
 export default styles;
