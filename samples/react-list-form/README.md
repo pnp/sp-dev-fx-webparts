@@ -8,7 +8,7 @@ The web part allows configuring which list to use and if a form for adding a new
 ![Demo](./assets/React-ListForm-Overview.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.7.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
 
 ## Applies to
 
@@ -27,6 +27,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|November 24, 2017|Initial release
 1.0.1|February 22, 2019|Updated to SPFx 1.7.1 and dependencies, Added Turkish translation, Added RichText Mode and Tinymce Editor
+1.0.2|October 14, 2019|Updated to SPFx 1.9.1 and dependencies
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
