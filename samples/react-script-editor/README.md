@@ -108,6 +108,7 @@ Version|Date|Comments
 1.0.0.11|March 18th, 2019|Fix for re-loading of script on smart navigation
 1.0.0.12|April 15th, 2019|Re-fix for pad removal of web part
 1.0.0.13|July 1th, 2019|Downgrade to SPFx v1.4.1 to support SP2019
+1.0.0.14|Oct 13th, 2019|Added resolve to fix pnpm issue. Updated author info.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
