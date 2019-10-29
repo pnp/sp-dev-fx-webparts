@@ -10,12 +10,29 @@ import {
 import * as strings from 'ReactTeamsTabsPnpjsWebPartStrings';
 import ReactTeamsTabsPnpjs from './components/ReactTeamsTabsPnpjs';
 import { IReactTeamsTabsPnpjsProps } from './components/IReactTeamsTabsPnpjsProps';
+import { graph } from "@pnp/graph";
+import { sp } from "@pnp/sp";
+
+
 
 export interface IReactTeamsTabsPnpjsWebPartProps {
   description: string;
 }
 
 export default class ReactTeamsTabsPnpjsWebPart extends BaseClientSideWebPart<IReactTeamsTabsPnpjsWebPartProps> {
+
+  public onInit(): Promise<void> {
+
+    return super.onInit().then(_ => {
+      sp.setup({
+        spfxContext: this.context
+      });
+
+      graph.setup({
+        spfxContext: this.context
+      });
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IReactTeamsTabsPnpjsProps > = React.createElement(

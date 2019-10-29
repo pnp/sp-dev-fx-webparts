@@ -7,7 +7,8 @@ import { Pivot, PivotItem, IPivotProps, PivotLinkSize, PivotLinkFormat } from 'o
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { sp } from "@pnp/sp";
+import { ReactTeamsTabsHelper } from './ReactTeamsTabsHelper';
 
 
 export interface IReactTeamsTabsPnpjsState {
@@ -20,20 +21,6 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
     this.state = {
       pivotArray: []
     };
-
-
-    // sp.web.lists.getByTitle("Site Pages").items.filter("Is_x0020_Model eq 1").select("Title,FileRef").getAll().then((items: any[]) => {
-    //   var tmpItems: any[] = new Array();
-    //
-    //   //DropDown initialization
-    //   items.forEach(element => {
-    //     var item = { key: element["FileRef"], text: element["Title"] };
-    //     tmpItems.push(item);
-    //   });
-    //
-    //   this.setState({ allItems: tmpItems });
-    // });
-
     this._onRenderTabItem = this._onRenderTabItem.bind(this);
 
   }
@@ -45,7 +32,7 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
           <div className={styles.row}>
             <div className={styles.column}>
               <div>
-                <Pivot linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>{this.state.pivotArray}</Pivot>
+                <Pivot linkSize={PivotLinkSize.large} >{this.state.pivotArray}</Pivot>
               </div>
             </div>
           </div>
@@ -54,23 +41,44 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
     );
   }
   public componentDidMount() {
-    var activeTasks: any[] = [];
-    var tmPpivotArray: any[] = [];
 
 
-    activeTasks.push({ name: 'a name', description: 'a desc' });
-    activeTasks.push({ name: 'b name', description: 'b desc' });
-    activeTasks.push({ name: 'c name', description: 'c desc' });
+    var groupId: Promise<string> = ReactTeamsTabsHelper.getGroupId();
 
-    tmPpivotArray.push(this._renderPivotItemList(activeTasks, "test1"));
-    tmPpivotArray.push(this._renderPivotItemList(activeTasks, "test2"));
-    tmPpivotArray.push(this._renderPivotItemList(activeTasks, "test3"));
+    groupId.then(group => {
+      console.log("GroupID: " + group);
+      var tmpChannels: any[] = [];
+      if (group != "") {
+        var channels: Promise<any[]> = ReactTeamsTabsHelper.getChannels(group);
+
+        channels.then(chans => {
+          console.log("Channels " + chans.length);
+          chans.forEach(channel => {
+            var tabs: Promise<any[]> = ReactTeamsTabsHelper.getTabsFromChannel(group, channel.id);
+            var tmpTabs: any[] = [];
+            tabs.then(itemTabs => {
+              console.log("Channel" + channel.displayName + "tabs " + itemTabs.length);
+              itemTabs.forEach(tab => {
+                tmpTabs.push({ name: tab.displayName, tabURL: tab.webUrl });
+              });
+              tmpChannels.push(this._renderPivotItemList(tmpTabs, channel.displayName));
+              this.setState({ pivotArray: tmpChannels });
+            });
+          });
+        });
+
+      } else {
+        //TODO show generic message, because there is not a team linked to current site
+      }
 
 
-    this.setState({ pivotArray: tmPpivotArray });
+
+    });
+
+
   }
 
-  private _renderPivotItemList(channels: any[], tabName: string){
+  private _renderPivotItemList(channels: any[], tabName: string) {
     return (
       <PivotItem headerText={`${tabName} (${channels.length})`}>
         <FocusZone direction={FocusZoneDirection.vertical} >
@@ -85,8 +93,7 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
       <div className={styles.itemCell} data-is-focusable={true}>
         <div className={styles.itemContent}>
           <div className={styles.itemName}>{item.name}</div>
-          <Link className={styles.tablink} href="http://dev.office.com/fabric/components/link" target="_blank">it renders as an anchor tag.</Link>
-          <div className={styles.subTitle}>{item.description}</div>
+          <Link className={styles.tablink} href={item.tabURL} target="_blank">{item.name}</Link>
         </div>
       </div>
     );
