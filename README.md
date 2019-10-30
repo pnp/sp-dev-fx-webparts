@@ -31,7 +31,7 @@ react-teams-tabs-pnpjs |  [Federico Porceddu](https://www.federicoporceddu.com)
 
 Version|Date|Comments
 -------|----|--------
-1.0|November 30, 2019|Initial release
+1.0|October 30, 2019|Initial release
 
 ## Disclaimer
 
