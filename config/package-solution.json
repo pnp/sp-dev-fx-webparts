@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-teams-tabs-pnpjs-client-side-solution",
     "id": "1e68649b-930f-4502-a858-12aa997bda01",
-    "version": "3.0.0.0",
+    "version": "4.0.0.0",
     "includeClientSideAssets": true,
     "webApiPermissionRequests": [
       {
