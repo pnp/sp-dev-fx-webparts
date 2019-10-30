@@ -1,4 +1,4 @@
-# react-teams-tabs-pnpjs: show Channels and Tabs from a Modern Team Site connected to MS Teams
+# react-teams-tabs-pnpjs
 
 ## Summary
 
