@@ -1,13 +1,8 @@
 import * as React from 'react';
 import styles from './ReactTeamsTabsPnpjs.module.scss';
 import { IReactTeamsTabsPnpjsProps } from './IReactTeamsTabsPnpjsProps';
-import { escape } from '@microsoft/sp-lodash-subset';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Pivot, PivotItem, IPivotProps, PivotLinkSize, PivotLinkFormat } from 'office-ui-fabric-react/lib/Pivot';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { List } from 'office-ui-fabric-react/lib/List';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { sp } from "@pnp/sp";
+import { Nav } from 'office-ui-fabric-react/lib/Nav';
+import { MessageBar } from 'office-ui-fabric-react';
 import { ReactTeamsTabsHelper } from './ReactTeamsTabsHelper';
 
 
@@ -21,8 +16,6 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
     this.state = {
       pivotArray: []
     };
-    this._onRenderTabItem = this._onRenderTabItem.bind(this);
-
   }
 
   public render() {
@@ -32,7 +25,12 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
           <div className={styles.row}>
             <div className={styles.column}>
               <div>
-                <Pivot linkSize={PivotLinkSize.large} >{this.state.pivotArray}</Pivot>
+                <MessageBar>
+                  Here you can find Channels list and Tabs from MS Teams linked to this site.
+                </MessageBar>
+                <Nav
+                  groups={this.state.pivotArray}
+                />
               </div>
             </div>
           </div>
@@ -59,9 +57,9 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
             tabs.then(itemTabs => {
               console.log("Channel" + channel.displayName + "tabs " + itemTabs.length);
               itemTabs.forEach(tab => {
-                tmpTabs.push({ name: tab.displayName, tabURL: tab.webUrl });
+                tmpTabs.push({ key: tab.id, name: tab.displayName, url: tab.webUrl, target: '_blank' });
               });
-              tmpChannels.push(this._renderPivotItemList(tmpTabs, channel.displayName));
+              tmpChannels.push({ name: channel.displayName + " (" + tmpTabs.length + ")", links: tmpTabs });
               this.setState({ pivotArray: tmpChannels });
             });
           });
@@ -71,31 +69,8 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
         //TODO show generic message, because there is not a team linked to current site
       }
 
-
-
     });
 
 
-  }
-
-  private _renderPivotItemList(channels: any[], tabName: string) {
-    return (
-      <PivotItem headerText={`${tabName} (${channels.length})`}>
-        <FocusZone direction={FocusZoneDirection.vertical} >
-          <List items={channels} onRenderCell={this._onRenderTabItem} />
-        </FocusZone>
-      </PivotItem>
-    );
-  }
-
-  private _onRenderTabItem(item: any, index: number | undefined) {
-    return (
-      <div className={styles.itemCell} data-is-focusable={true}>
-        <div className={styles.itemContent}>
-          <div className={styles.itemName}>{item.name}</div>
-          <Link className={styles.tablink} href={item.tabURL} target="_blank">{item.name}</Link>
-        </div>
-      </div>
-    );
   }
 }
