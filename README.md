@@ -45,8 +45,8 @@ Version|Date|Comments
 * in the command line run:
   * restore dependencies: `npm install`
   * build solution `gulp build --ship`
-  * bundle solution: `$ gulp bundle --ship`
-  * package solution: `$ gulp package-solution --ship`
+  * bundle solution: `gulp bundle --ship`
+  * package solution: `gulp package-solution --ship`
   * locate solution at `.\sharepoint\solution\react-teams-tabs-pnpjs.sppkg` 
   * upload it to your tenant app catalog
   * [approve permission requests](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) from this SharePoint Framework WebPart
