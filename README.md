@@ -2,7 +2,7 @@
 
 ## Summary
 
-A SPFx WebPart using [@pnp/graph/teams](https://pnp.github.io/pnpjs/graph/docs/teams/) that show Channels and Tabs from a Modern Team Site connected to Microsoft Teams. 
+A SPFx WebPart using [@pnp/graph/teams](https://pnp.github.io/pnpjs/graph/docs/teams/). It shows Channels and Tabs from a Modern Team Site connected to Microsoft Teams. 
 The WebPart will show the list of all channels of the Modern Team Sites linked teams. Nested inside Channels list, you will find Tabs link.
 
 ## react-teams-tabs-pnpjs preview
