@@ -60,6 +60,7 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
                 tmpTabs.push({ key: tab.id, name: tab.displayName, url: tab.webUrl, target: '_blank' });
               });
               tmpChannels.push({ name: channel.displayName + " (" + tmpTabs.length + ")", links: tmpTabs });
+              tmpChannels.sort(this.mySorter);
               this.setState({ pivotArray: tmpChannels });
             });
           });
@@ -72,5 +73,18 @@ export default class ReactTeamsTabsPnpjs extends React.Component<IReactTeamsTabs
     });
 
 
+  }
+
+  public mySorter(a: any, b: any) {
+    var x = a.name.toLowerCase();
+    var y = b.name.toLowerCase();
+    //fix to manage general channel at first position, like Teams order
+    //verify language general label
+    if (x.startsWith("general")) {
+      return -1;
+    } else if (y.startsWith("general")) {
+      return 1;
+    }
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
   }
 }
