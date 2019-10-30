@@ -49,7 +49,7 @@ Version|Date|Comments
   * package solution: `gulp package-solution --ship`
   * locate solution at `.\sharepoint\solution\react-teams-tabs-pnpjs.sppkg` 
   * upload it to your tenant app catalog
-  * [approve permission requests](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) from this SharePoint Framework WebPart
+  * [approve permission requests](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) into SharePoint Online Admin API Permission page
   * add `react-teams-tabs-pnpjs` app to your site
   * add `react-teams-tabs-pnpjs` webpart to your page to see it in action
 
@@ -61,5 +61,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * How to use [@pnp/graph/teams](https://pnp.github.io/pnpjs/graph/docs/teams/)
 * How to configure SharePoint Online Tenant and SPFx solution to allow Microsoft Graph calls.
 * Microsoft Graph API for Microsoft Teams
+* [Fabric UI Nav component](https://developer.microsoft.com/en-us/fabric#/controls/web/nav)
 
 
