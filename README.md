@@ -64,3 +64,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * [Fabric UI Nav component](https://developer.microsoft.com/en-us/fabric#/controls/web/nav)
 
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/react-teams-tabs-pnpjs" />
