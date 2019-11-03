@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-msgraph-extension-client-side-solution",
+    "id": "7ecf1b13-cb5b-451d-bfda-b11fa316d6c1",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadWrite.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-msgraph-extension.sppkg"
+  }
+}
