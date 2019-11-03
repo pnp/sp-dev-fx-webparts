@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.7.1",
+    "libraryName": "react-teams-tabs-pnpjs",
+    "libraryId": "1e68649b-930f-4502-a858-12aa997bda01",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
