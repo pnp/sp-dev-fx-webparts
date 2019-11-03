@@ -1,9 +1,9 @@
 /* tslint:disable */
-require('./SPFormField.module.css');
+require("./SPFormField.module.css");
 const styles = {
-  dropDownFormField: 'dropDownFormField_e5e89a2f',
-  dateFormField: 'dateFormField_e5e89a2f',
-  unsupportedFieldMessage: 'unsupportedFieldMessage_e5e89a2f',
+  dropDownFormField: 'dropDownFormField_2427d638',
+  dateFormField: 'dateFormField_2427d638',
+  unsupportedFieldMessage: 'unsupportedFieldMessage_2427d638'
 };
 
 export default styles;

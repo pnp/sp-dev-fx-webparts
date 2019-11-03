@@ -58,6 +58,10 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - How JavaScript library can be loaded by the help of requirejs in web part.
 - Mobile Touch capabilities
 
+## SharePoint info
+
+When using the webpart in SharePoint, either in the SharePoint Workbench or deployed, the webpart reads by default from a List called "Swiper Content" with fields Title, ImageUrl, Description of type Single line of text. The list has to be created manually.
+
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-slide-swiper" />
 
 

@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { DisplayMode, Environment, EnvironmentType, Version } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+
 import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneDropdown,
-  PropertyPaneToggle
-} from '@microsoft/sp-webpart-base';
+  IPropertyPaneConfiguration, PropertyPaneDropdown,
+  PropertyPaneTextField, PropertyPaneToggle, IPropertyPaneField
+} from "@microsoft/sp-property-pane";
 
 import * as strings from 'ListFormWebPartStrings';
 import ListForm from './components/ListForm';
@@ -137,7 +136,7 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
       PropertyPaneToggle('showUnsupportedFields', {
         label: strings.ShowUnsupportedFieldsLabel,
         disabled: !this.properties.listUrl
-      })
+      }) as IPropertyPaneField<any> // for some reasong the PropertyPaneToggle was not being accepted as IPropertyPaneField<any>
     );
     mainGroup.groupFields.push(
       PropertyPaneTextField('redirectUrl', {
