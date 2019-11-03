@@ -60,6 +60,56 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.7.0
+      year: 2018
+      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-slide-swiper
+      name: react-slide-swiper
+      title: Slide Swiper
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-slide-swiper/assets/SPFx-React-Slider-Swiper.gif
+      thumbnailtype: video
+      author: Velin Georgiev
+      summary: This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easly be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called Swiper.
+      version: 0.0.3
+      modifiedtext: November 1, 2019
+      modified: 2019-11-01
+    - framework: React
+      spfx: 1.9.1
+      year: 2019
+      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-teams-tabs-pnpjs
+      name: react-teams-tabs-pnpjs
+      title: MS Teams Channels and Tabs from Modern Team site
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart-animated.gif
+      author: Federico Porceddu
+      version: 1.0
+      modified: 2019-10-30
+      modifiedtext: October 30, 2019
+      summary: A SPFx WebPart using @pnp/graph/teams. It shows Channels and Tabs (with link) from a Modern Team Site connected to Microsoft Teams.
+    - framework: React
+      spfx: 1.9.1
+      year: 2019
+      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-msgraph-extension
+      name: react-msgraph-extension
+      title: Manage Microsoft Graph Open Extension in SPFx
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-msgraph-extension/assets/create-graph-extension.png
+      author: Ejaz Hussain
+      version: 1.0
+      modified: 2019-10-20
+      modifiedtext: October 20, 2019
+      summary: This sample shows how to managed Microsoft Graph Open Extension in SPFX. This application uses User Resource to create Open Extension.      
+    - framework: React
+      spfx: 1.9.1
+      year: 2019
+      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-list-form
+      name: react-list-form
+      title: List Form WebPart
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
+      thumbnailtype: video
+      author: Dany Wyss
+      summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
+      version: 1.0.2
+      modifiedtext: October 14, 2019
+      modified: 2019-10-14    
+    - framework: React
       spfx: 1.9.1
       year: 2019
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-check-flows
@@ -1124,19 +1174,6 @@ extra:
       modifiedtext: July 17, 2019
       modified: 2019-07-17
     - framework: React
-      spfx: 1.7.1
-      year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-list-form
-      name: react-list-form
-      title: List Form WebPart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
-      thumbnailtype: video
-      author: Dany Wyss
-      summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
-      version: 1.0.1
-      modifiedtext: February 22, 2019
-      modified: 2019-02-22
-    - framework: React
       spfx: 1.8.0
       year: 2019
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-manage-sitedesigns
@@ -1577,19 +1614,6 @@ extra:
       modifiedtext: March 27, 2019
       modified: 2019-03-27
     - framework: React
-      spfx: 1.7.0
-      year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-slide-swiper
-      name: react-slide-swiper
-      title: Slide Swiper
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-slide-swiper/assets/SPFx-React-Slider-Swiper.gif
-      thumbnailtype: video
-      author: Velin Georgiev
-      summary: This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easly be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called Swiper.
-      version: 0.0.3
-      modifiedtext: December 10, 2018
-      modified: 2018-12-10
-    - framework: React
       spfx: drop4
       year: 2016
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-sp-elevatedprivileges
@@ -1909,6 +1933,7 @@ extra:
     - Eric Overfield
     - Eric Skaggs
     - Franck Cornu
+    - Federico Porceddu
     - Gary Pretty
     - Gautam Sheth
     - Giuliano De Luca
