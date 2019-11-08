@@ -27,32 +27,46 @@ export class SiteCollectionCatalogHelper {
 
       if (apps.length == 0) {
         let tmpApp = new SiteCatalogApps();
-        tmpApp.SiteTitle = tmpWeb["Title"];
-        tmpApp.SiteURL = combine(siteUrl, "/AppCatalog/");
-        tmpApp.AppTitle = "There are no apps Available ";
-        tmpApp.AppCatalogVersion = "-";
-        tmpApp.Deployed = "-";
-        tmpApp.InstalledVersion = "-";
-        tmpApp.IsEnabled = "-";
-        tmpApp.IsClientSideSolution = "-";
+        tmpApp = this.MapAppProps(tmpWeb, siteUrl, null, true);
+
         resultData.push(tmpApp);
       } else {
         apps.forEach(app => {
           let tmpApp = new SiteCatalogApps();
-          tmpApp.SiteTitle = tmpWeb["Title"];
-          tmpApp.SiteURL = combine(siteUrl, "/AppCatalog/");
-          tmpApp.AppTitle = app["Title"];
-          tmpApp.AppCatalogVersion = app["AppCatalogVersion"];
-          tmpApp.Deployed = String(app["Deployed"]);
-          tmpApp.InstalledVersion = app["InstalledVersion"];
-          tmpApp.IsEnabled = String(app["IsEnabled"]);
-          tmpApp.IsClientSideSolution = String(app["IsClientSideSolution"]);
+          tmpApp = this.MapAppProps(tmpWeb, siteUrl, app, false);
           resultData.push(tmpApp);
         });
       }
     }));
 
     return await resultData;
+  }
+
+  public static MapAppProps(tmpWeb: any, siteUrl: string, app: any, IsEmpty: boolean): SiteCatalogApps {
+    var tmpApp: SiteCatalogApps = new SiteCatalogApps();
+
+    if (IsEmpty) {
+      tmpApp.SiteTitle = tmpWeb["Title"];
+      tmpApp.SiteURL = combine(siteUrl, "/AppCatalog/");
+      tmpApp.AppTitle = "There are no apps Available ";
+      tmpApp.AppCatalogVersion = "-";
+      tmpApp.Deployed = "-";
+      tmpApp.InstalledVersion = "-";
+      tmpApp.IsEnabled = "-";
+      tmpApp.IsClientSideSolution = "-";
+      tmpApp.NoApps = true;
+    } else {
+      tmpApp.SiteTitle = tmpWeb["Title"];
+      tmpApp.SiteURL = combine(siteUrl, "/AppCatalog/");
+      tmpApp.AppTitle = app["Title"];
+      tmpApp.AppCatalogVersion = app["AppCatalogVersion"];
+      tmpApp.Deployed = String(app["Deployed"]);
+      tmpApp.InstalledVersion = app["InstalledVersion"];
+      tmpApp.IsEnabled = String(app["IsEnabled"]);
+      tmpApp.IsClientSideSolution = String(app["IsClientSideSolution"]);
+      tmpApp.NoApps = false;
+    }
+    return tmpApp;
   }
 }
 
@@ -65,5 +79,6 @@ export class SiteCatalogApps {
   public InstalledVersion: string;
   public IsEnabled: string;
   public IsClientSideSolution: string;
+  public NoApps: boolean;
 }
 

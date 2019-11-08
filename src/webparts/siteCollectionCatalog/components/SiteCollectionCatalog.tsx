@@ -27,7 +27,7 @@ const _viewFields: IViewField[] = [
     isResizable: true,
     render: (item: any) => {
       var _color = "Red";
-      if (!(String(item.AppTitle).toLowerCase().trim() == "There are no apps Available".toLowerCase().trim())) {
+      if (!item.NoApps) {
         _color = "Green";
       }
       const element: any = React.createElement("span", { style: { color: _color } }, item.AppTitle);
