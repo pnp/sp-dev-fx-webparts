@@ -1,4 +1,4 @@
-# react-admin-sc-catalog-pnpjs - Site Collection App Catalog Summary.
+# react-admin-sc-catalog-pnpjs - Site Collection App Catalogs Summary View.
 
 ## Summary
 
