@@ -12,7 +12,6 @@ export class SiteCollectionCatalogHelper {
 
     var tenantAppCatalogWeb = await sp.getTenantAppCatalogWeb();
 
-    //let siteCollectionAppCatalogs = await tenantAppCatalogWeb.getList("/sites/appcatalog/Lists/SiteCollectionAppCatalogs").items.get();
     let siteCollectionAppCatalogs = await tenantAppCatalogWeb.lists.getByTitle("Site Collection App Catalogs").items.get();
 
     let data = await Promise.all(siteCollectionAppCatalogs.map(async siteCollCatalog => {
