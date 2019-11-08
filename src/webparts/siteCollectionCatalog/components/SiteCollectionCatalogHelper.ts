@@ -1,4 +1,6 @@
-import { sp, Web, AppCatalog, Site } from "@pnp/sp";
+import { sp, Site } from "@pnp/sp";
+import { combine } from "@pnp/common";
+
 
 
 export class SiteCollectionCatalogHelper {
@@ -27,14 +29,19 @@ export class SiteCollectionCatalogHelper {
       if (apps.length == 0) {
         let tmpApp = new SiteCatalogApps();
         tmpApp.SiteTitle = tmpWeb["Title"];
-        tmpApp.SiteURL = siteUrl;
+        tmpApp.SiteURL = combine(siteUrl, "/AppCatalog/");
         tmpApp.AppTitle = "There are no apps Available ";
+        tmpApp.AppCatalogVersion = "-";
+        tmpApp.Deployed = "-";
+        tmpApp.InstalledVersion = "-";
+        tmpApp.IsEnabled = "-";
+        tmpApp.IsClientSideSolution = "-";
         resultData.push(tmpApp);
       } else {
-        apps.forEach(app =>{
+        apps.forEach(app => {
           let tmpApp = new SiteCatalogApps();
           tmpApp.SiteTitle = tmpWeb["Title"];
-          tmpApp.SiteURL = siteUrl;
+          tmpApp.SiteURL = combine(siteUrl, "/AppCatalog/");
           tmpApp.AppTitle = app["Title"];
           tmpApp.AppCatalogVersion = app["AppCatalogVersion"];
           tmpApp.Deployed = String(app["Deployed"]);

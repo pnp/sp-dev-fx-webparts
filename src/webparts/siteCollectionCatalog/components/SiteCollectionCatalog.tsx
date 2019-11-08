@@ -1,30 +1,38 @@
 import * as React from 'react';
 import styles from './SiteCollectionCatalog.module.scss';
-import { ISiteCollectionCatalogProps, ISiteCollectionCatalogState } from './ISiteCollectionCatalogProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+import { ISiteCollectionCatalogState } from './ISiteCollectionCatalogProps';
 import { SiteCollectionCatalogHelper } from './SiteCollectionCatalogHelper';
-import { Label } from 'office-ui-fabric-react';
-import { ListView, IViewField, SelectionMode, GroupOrder, IGrouping } from "@pnp/spfx-controls-react/lib/ListView";
+import { ListView, IViewField, SelectionMode } from "@pnp/spfx-controls-react/lib/ListView";
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+import { ISiteCollectionCatalogWebPartProps } from '../SiteCollectionCatalogWebPart';
+import { IColumn } from 'office-ui-fabric-react/lib/components/DetailsList';
 
-const _groupByFields: IGrouping[] = [
-  {
-    name: "SiteURL",
-    order: GroupOrder.ascending
-  }
-];
+
+
+
 const _viewFields: IViewField[] = [
- {
-   name: "SiteTitle",
-   linkPropertyName: "SiteURL",
-   displayName: "Site Collection",
-   sorting: true,
-   minWidth: 120
- },
+  {
+    name: "SiteTitle",
+    linkPropertyName: "SiteURL",
+    displayName: "Site Collection",
+    sorting: true,
+    minWidth: 120,
+    isResizable: true
+  },
   {
     name: "AppTitle",
     displayName: "App Title",
     sorting: true,
-    minWidth: 200
+    minWidth: 200,
+    isResizable: true,
+    render: (item: any) => {
+      var _color = "Red";
+      if (!(String(item.AppTitle).toLowerCase().trim() == "There are no apps Available".toLowerCase().trim())) {
+        _color = "Green";
+      }
+      const element: any = React.createElement("span", { style: { color: _color } }, item.AppTitle);
+      return element;
+    }
   },
   {
     name: "AppCatalogVersion",
@@ -35,7 +43,15 @@ const _viewFields: IViewField[] = [
   {
     name: "Deployed",
     displayName: "Deployed",
-    minWidth: 70
+    minWidth: 70,
+    render: (item: any) => {
+      var _color = "Red";
+      if (String(item.Deployed).toLowerCase() == "true") {
+        _color = "Green";
+      }
+      const element: any = React.createElement("span", { style: { color: _color } }, item.Deployed);
+      return element;
+    }
   },
   {
     name: "InstalledVersion",
@@ -46,21 +62,26 @@ const _viewFields: IViewField[] = [
   {
     name: "IsClientSideSolution",
     displayName: "Is Client Side Solution",
-    minWidth: 150
+    minWidth: 150,
+    render: (item: any) => {
+      var _color = "Red";
+      if (String(item.IsClientSideSolution).toLowerCase() == "true") {
+        _color = "Green";
+      }
+      const element: any = React.createElement("span", { style: { color: _color } }, item.IsClientSideSolution);
+      return element;
+    }
   }
 ];
 
-export default class SiteCollectionCatalog extends React.Component<ISiteCollectionCatalogProps, ISiteCollectionCatalogState> {
+export default class SiteCollectionCatalog extends React.Component<ISiteCollectionCatalogWebPartProps, ISiteCollectionCatalogState> {
 
-  constructor(props: ISiteCollectionCatalogProps) {
+  constructor(props: ISiteCollectionCatalogWebPartProps) {
     super(props);
     this.state = {
       siteAppCatalogs: []
     };
   }
-
-
-
 
 
   public componentDidMount() {
@@ -76,21 +97,20 @@ export default class SiteCollectionCatalog extends React.Component<ISiteCollecti
     console.log('Selected items:', items);
   }
 
-  public render(): React.ReactElement<ISiteCollectionCatalogProps> {
+  public render(): React.ReactElement<ISiteCollectionCatalogWebPartProps> {
     return (
       <div className={styles.siteCollectionCatalog}>
-
+        <WebPartTitle displayMode={this.props.displayMode}
+          title={this.props.title}
+          updateProperty={this.props.updateProperty} />
         <ListView
           items={this.state.siteAppCatalogs}
           viewFields={_viewFields}
-          //iconFieldName="ServerRelativeUrl"
           compact={true}
           selectionMode={SelectionMode.none}
           selection={this._getSelection}
           showFilter={true}
-          //defaultFilter="John"
           filterPlaceHolder="Search..."
-          //groupByFields={_groupByFields}
         />
       </div>
     );

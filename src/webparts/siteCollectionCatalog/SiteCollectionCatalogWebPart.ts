@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, DisplayMode } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -9,22 +9,42 @@ import {
 
 import * as strings from 'SiteCollectionCatalogWebPartStrings';
 import SiteCollectionCatalog from './components/SiteCollectionCatalog';
-import { ISiteCollectionCatalogProps } from './components/ISiteCollectionCatalogProps';
+import { sp } from "@pnp/sp";
+
 
 export interface ISiteCollectionCatalogWebPartProps {
   description: string;
+  title: string;
+  displayMode: DisplayMode;
+  updateProperty: (value: string) => void;
 }
 
 export default class SiteCollectionCatalogWebPart extends BaseClientSideWebPart<ISiteCollectionCatalogWebPartProps> {
 
+  public onInit(): Promise<void> {
+
+    return super.onInit().then(_ => {
+
+      // other init code may be present
+
+      sp.setup({
+        spfxContext: this.context
+      });
+    });
+  }
+
   public render(): void {
-    const element: React.ReactElement<ISiteCollectionCatalogProps > = React.createElement(
+    const element: React.ReactElement<ISiteCollectionCatalogWebPartProps> = React.createElement(
       SiteCollectionCatalog,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        title: this.properties.title,
+        displayMode: this.displayMode,
+        updateProperty: (value: string) => {
+          this.properties.title = value;
+        }
       }
     );
-
     ReactDom.render(element, this.domElement);
   }
 
