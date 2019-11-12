@@ -1,10 +1,10 @@
-# title of the sample
+# react-quotes
 
 ## Summary
 
 This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.
 
-![picture of the web part in action](assets\react-quotes-sample.png)
+![picture of the web part in action](./assets/react-quotes-sample.png)
 
 ## Used SharePoint Framework Version
 
