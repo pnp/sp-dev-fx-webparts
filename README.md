@@ -2,9 +2,9 @@
 
 ## Summary
 
-Short summary on functionality and used technologies.
+This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.
 
-[picture of the web part in action]
+![picture of the web part in action](assets\react-quotes-sample.png)
 
 ## Used SharePoint Framework Version
 
@@ -13,26 +13,18 @@ Short summary on functionality and used technologies.
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
-
-> Update accordingly as needed.
-
-## Prerequisites
-
-> Any special pre-requisites?
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-quotes | Zach Roberts
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1|September 2, 2025|Update comment
-1.0|August 29, 2025|Initial release
+1.0| November 11, 2019| Initial Release
 
 ## Disclaimer
 
@@ -46,16 +38,11 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
-
-> Include any additional steps as needed.
+* In the browser that opens add the webpart to your page.
+* After the webpart has loaded it will load the quote automatically or you can edit the webparts properties to display a manual quote.
 
 ## Features
 
-Description of the web part with possible additional details than in short summary. 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
-
-* topic 1
-* topic 2
-* topic 3
+This webpart loads a random quote from a third-party api (https://favqs.com/api). Additionally a quote can be entered manually and the text color of the quote and author can be adjusted through the webpart properties.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
