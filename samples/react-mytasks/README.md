@@ -8,44 +8,43 @@ Use MSGraph API's and PnPjs to data access.
 
 The user can Search Task by name, can filter by progress status, all data are dynamic updated on change.
 
-
  
 
 ##  List of Task Cards
 
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen1.png)
+![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen1.png)
 
 ## Filter Tasks
 
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen2.png)  
+![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen2.png)  
 
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen3.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen3.png)  
 
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen4.png) 
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen4.png) 
 
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen5.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen5.png)  
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen6.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen6.png)  
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen7.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen7.png)  
 
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen8.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen8.png)  
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen9.png)  
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen10.png)  
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen11.png)  
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen12.png)  
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-mytasks/assets/screen13.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen9.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen10.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen11.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen12.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen13.png)  
 
 
 
