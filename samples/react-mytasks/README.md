@@ -1,35 +1,43 @@
 # React  My Task Web Part 
 
 ## Summary
-This web part allows user to manage planner tasks in SharePoint Site.
 
-The UI was inspired on Planner UI, it is full implemented with Office-UI-Fabric Components.
-Use MSGraph API's and PnPjs to data access.
 
-The user can Search Task by name, can filter by progress status, all data are dynamic updated on change.
+This web part allows user to manage planner tasks in SharePoint Site. The UI was inspired on Planner UI, it is full implemented with Office-UI-Fabric Components. Use MSGraph API's and PnPjs to data access.
+
+The user can search task by name, can filter by progress status, all data are dynamic updated on change.
 
  
 
 ##  List of Task Cards
 
+
+
 ![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen1.png)
 
 ## Filter Tasks
+
 
 ![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen2.png)  
 
 </br>
 </br>
+
+
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen3.png)  
 
 
 </br>
 </br>
+
+
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen4.png) 
 
 
 </br>
 </br>
+
+
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen5.png)  
 
 </br>
@@ -43,6 +51,7 @@ The user can Search Task by name, can filter by progress status, all data are dy
 
 </br>
 </br>
+
 
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen7.png)  
 
@@ -92,7 +101,14 @@ The user can Search Task by name, can filter by progress status, all data are dy
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen13.png)  
 
   
+</br>
+</br>
 
+
+
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen14.png)  
+
+  
 
 
 ## Used SharePoint Framework Version 
