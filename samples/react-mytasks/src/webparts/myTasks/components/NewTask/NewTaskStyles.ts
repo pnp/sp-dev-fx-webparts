@@ -36,7 +36,7 @@ export const stackItemStyles: IStackItemStyles = {
 };
 
 export const textFieldStylesTaskName: ITextFieldStyles = {
-  field: { backgroundColor: theme.palette.neutralLighter },
+  field: { backgroundColor: `${theme.palette.neutralLighter} !important` },
   root: {},
   description: {},
   errorMessage: {},

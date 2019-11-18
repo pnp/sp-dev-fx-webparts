@@ -7,7 +7,9 @@ This web part allows user to manage planner tasks in SharePoint Site. The UI was
 
 The user can search task by name, can filter by progress status, all data are dynamic updated on change.
 
- 
+![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/MyTasks.gif)
+
+
 
 ##  List of Task Cards
 
@@ -45,6 +47,11 @@ The user can search task by name, can filter by progress status, all data are dy
 
 ## Add Task  
   
+![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/AddTask.gif)
+
+</br>
+</br>
+
 
 
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen6.png)  
@@ -61,6 +68,10 @@ The user can search task by name, can filter by progress status, all data are dy
 ## Edit Tasks
 
 
+![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/EditTask.gif)
+
+</br>
+</br>
 
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen8.png)  
   
