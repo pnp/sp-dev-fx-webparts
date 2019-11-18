@@ -1,26 +1,100 @@
-## react-my-task
+# React  My Task Web Part 
 
-This is where you include your WebPart documentation.
+## Summary
+This web part allows user to manage planner tasks in SharePoint Site.
 
-### Building the code
+The UI was inspired on Planner UI, it is full implemented with Office-UI-Fabric Components.
+Use MSGraph API's and PnPjs to data access.
 
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
+The user can Search Task by name, can filter by progress status, all data are dynamic updated on change.
 
-This package produces the following:
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+ 
 
-### Build options
+##  List of Task Cards
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen1.png)
+
+## Filter Tasks
+
+![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen2.png)  
+
+
+
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen3.png)  
+
+
+
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen4.png) 
+
+
+
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen5.png)  
+
+
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen6.png)  
+
+
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen7.png)  
+
+
+
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen8.png)  
+
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen9.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen10.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen11.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen12.png)  
+![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-myTask/assets/screen13.png)  
+
+
+
+
+
+## Used SharePoint Framework Version 
+![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+
+## Applies to
+
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+
+## WebPart Properties
+ 
+Property |Type|Required| comments
+--------------------|----|--------|----------
+WebPart Title| Text| no|
+ 
+
+## Solution
+The Web Part Use PnPjs library, Office-ui-fabric-react components and MSGraph API's
+
+Solution|Author(s)
+--------|---------
+My Tasks |João Mendes
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0.0|November 17, 2019|Initial release
+
+## Disclaimer
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- Move to sample folder
+- in the command line run:
+  - `npm install`
+  - `gulp build`
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
+  - `Add to AppCatalog and deploy`
+   - `go to SharePoint Admin Center and Approve required API Permissions`
+
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-MyTask" />
