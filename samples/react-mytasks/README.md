@@ -59,23 +59,33 @@ The user can Search Task by name, can filter by progress status, all data are dy
 </br>
 </br>
 
+
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen9.png)  
   
 
 </br>
 </br>
+
+
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen10.png)  
 
 </br>
 </br>
+
+
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen11.png)  
 
   
 
 </br>
 </br>
+
+
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen12.png)  
 
+
+</br>
+</br>
 
 
 
