@@ -1,4 +1,4 @@
-# React  My Task Web Part 
+# React My Tasks Web Part 
 
 ## Summary
 
@@ -6,6 +6,11 @@
 This web part allows user to manage planner tasks in SharePoint Site. The UI was inspired on Planner UI, it is full implemented with Office-UI-Fabric Components. Use MSGraph API's and PnPjs to data access.
 
 The user can search task by name, can filter by progress status, all data are dynamic updated on change.
+
+
+</br>
+</br>
+
 
 ![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/MyTasks.gif)
 
