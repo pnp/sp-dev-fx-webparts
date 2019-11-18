@@ -18,19 +18,22 @@ The user can Search Task by name, can filter by progress status, all data are dy
 
 ![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen2.png)  
 
-
-
+</br>
+</br>
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen3.png)  
 
 
-
+</br>
+</br>
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen4.png) 
 
 
-
+</br>
+</br>
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen5.png)  
 
-
+</br>
+</br>
 
 ## Add Task  
   
@@ -38,11 +41,13 @@ The user can Search Task by name, can filter by progress status, all data are dy
 
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen6.png)  
 
-
+</br>
+</br>
 
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen7.png)  
 
-
+</br>
+</br>
 
 ## Edit Tasks
 
@@ -51,21 +56,24 @@ The user can Search Task by name, can filter by progress status, all data are dy
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen8.png)  
   
 
-
+</br>
+</br>
 
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen9.png)  
   
 
-
+</br>
+</br>
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen10.png)  
 
-
-
+</br>
+</br>
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen11.png)  
 
   
 
-
+</br>
+</br>
 ![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen12.png)  
 
 
