@@ -9,15 +9,15 @@
     "isDomainIsolated": false,
     "webApiPermissionRequests": [
       {
-        "resource": "graph.microsoft.com",
+        "resource": "Microsoft Graph",
         "scope": "Group.ReadWrite.All"
       },
       {
-        "resource": "graph.microsoft.com",
+        "resource": "Microsoft Graph",
         "scope": "Directory.ReadWrite.All"
       },
       {
-        "resource": "graph.microsoft.com",
+        "resource": "Microsoft Graph",
         "scope": "Directory.AccessAsUser.All"
       }
     ]
