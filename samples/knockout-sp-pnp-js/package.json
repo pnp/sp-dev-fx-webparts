@@ -22,7 +22,7 @@
     "@types/es6-promise": "0.0.33",
     "@types/knockout": "3.4.39",
     "@types/webpack-env": "1.13.1",
-    "knockout": "3.4.0"
+    "knockout": "3.5.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.7.0",
