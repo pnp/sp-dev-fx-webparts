@@ -21,7 +21,8 @@
     "description": { "default": "Tour description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "Tour"
+      "description": "Tour description",
+      "actionValue": "Start Tutorial"
     }
   }]
 }
