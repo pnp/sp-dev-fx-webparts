@@ -27,6 +27,9 @@ export default class Tour extends React.Component<ITourProps, ITourState> {
     this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
   }
 
+  public LoadValue(){
+    this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
+  }
   //public componentDidUpdate(propsPrecedenti) {
   //   this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
   //}

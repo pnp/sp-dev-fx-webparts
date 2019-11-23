@@ -41,14 +41,14 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
 
 
   public render(): void {
-    const element: React.ReactElement<ITourProps> = React.createElement(
-      Tour,
-      {
-        description: this.properties.description,
-        actionValue: this.properties.actionValue,
-        collectionData: this.properties.collectionData,
-      }
-    );
+const element: React.ReactElement<ITourProps> = React.createElement(
+  Tour,
+  {
+    description: this.properties.description,
+    actionValue: this.properties.actionValue,
+    collectionData: this.properties.collectionData,
+  }
+);
     ReactDom.render(element, this.domElement);
   }
 
@@ -87,6 +87,11 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
       self.context.propertyPane.refresh();
 
     });
+  }
+
+  protected onPropertyPaneConfigurationComplete() {
+    //this.element.props.collectionData=this.properties.collectionData;
+    //this.render();
   }
 
 

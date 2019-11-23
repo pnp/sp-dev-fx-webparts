@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-tour-pnpjs-client-side-solution",
     "id": "9060fda4-14af-4588-aa3a-b746b46420d8",
-    "version": "1.0.0.3",
+    "version": "1.0.0.6",
     "includeClientSideAssets": true,
     "isDomainIsolated": false
   },
