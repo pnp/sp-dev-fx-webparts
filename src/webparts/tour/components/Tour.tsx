@@ -48,8 +48,9 @@ export default class Tour extends React.Component<ITourProps, ITourState> {
     return (
       <div className={styles.tour}>
         <CompoundButton primary text={this.props.actionValue} secondaryText={this.props.description}
-          disabled={this.state.tourDisabled} onClick={this._openTour} checked={this.state.isTourOpen}>
-          Primary
+          disabled={this.state.tourDisabled} onClick={this._openTour} checked={this.state.isTourOpen}
+          className={styles.tutorialButton}>
+
       </CompoundButton>
         <Tours
           onRequestClose={this._closeTour}

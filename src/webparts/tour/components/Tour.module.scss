@@ -19,7 +19,7 @@
 
 .tour {
   .container {
-    max-width: 700px;
+    //max-width: 700px;
     margin: 0px auto;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
@@ -54,6 +54,10 @@
     @include ms-fontColor-white;
   }
 
+  .tutorialButton{
+    width: 100%;
+    max-width: initial!important;
+  }
 
   .button {
     // Our button
@@ -78,9 +82,7 @@
     cursor: pointer;
     display: inline-block;
     padding: 0 16px;
-    //custom
-    width: 100%;
-    max-width: initial!important;
+
 
     .label {
       font-weight: $ms-font-weight-semibold;
