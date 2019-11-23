@@ -1,5 +1,22 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
+.reactTourCustomCss {
+  --reactour-accent: #5cb7b7 !important;
+  line-height: 1.3 !important;
+  color: #2d2323 !important;
+  font-family: -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  'Roboto',
+  'Oxygen',
+  'Ubuntu',
+  'Cantarell',
+  'Fira Sans',
+  'Droid Sans',
+  'Helvetical Neue',
+  sans-serif !important;
+}
+
 .tour {
   .container {
     max-width: 700px;
@@ -36,6 +53,7 @@
     @include ms-font-l;
     @include ms-fontColor-white;
   }
+
 
   .button {
     // Our button

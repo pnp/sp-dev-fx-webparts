@@ -57,7 +57,7 @@ export default class Tour extends React.Component<ITourProps, ITourState> {
           steps={this.state.steps}
           isOpen={this.state.isTourOpen}
           maskClassName="mask"
-          className="helper"
+          className={styles.reactTourCustomCss}
           accentColor={"#5cb7b7"}
           rounded={5}
           onAfterOpen={this._disableBody}
