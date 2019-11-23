@@ -3,9 +3,9 @@
 ## Summary
 
 A SPFx WebPart using [PnP/PnPjs](https://pnp.github.io/pnpjs/), [@pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldCollectionData/) and [ReactTourJS](https://reactour.js.org/). 
-It allows to create a configurable tutorial/tour of a SharePoint modern page for end-users for adoption scope.
-When you start the tour, a modal will be displayed, with a description of the highlighted area, and you can go to the next step or go back, thus navigating inside the page. The user will see the descriptions and will have the opportunity to preview the advice that the editor will have thought for him.
-The property pane shows dinamically all webparts in the page using [PnP/PnPjs](https://pnp.github.io/pnpjs/), in this tour way configuration is quickly.
+It allows to create a configurable tutorial/tour of a SharePoint modern page for adoption scope.
+When you start the tour, a modal will be displayed, with a description of the highlighted area, and you can go to the next step or go back, thus navigating inside the page. The user will see the descriptions and will have the opportunity to preview the advice that the publisher thought for him.
+The property pane shows dinamically all webparts in the current page, using [PnP/PnPjs](https://pnp.github.io/pnpjs/) to make easy page tour configuration.
 
 ## react-tour-pnpjs in action
 ![WebPartInAction](./assets/react-tour-pnpjs-webpart-animated.gif)
