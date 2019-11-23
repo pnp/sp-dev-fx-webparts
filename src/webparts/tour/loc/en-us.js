@@ -1,8 +1,8 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Please ",
+    "PropertyPaneDescription": "Configure the tutorial to explain your users all features of the page",
     "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field",
+    "DescriptionFieldLabel": "Tour Description",
     "ActionValueFieldLabel":"Button Label",
   }
 });

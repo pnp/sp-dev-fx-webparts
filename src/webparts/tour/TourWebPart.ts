@@ -16,8 +16,8 @@ import { PageContext } from '@microsoft/sp-page-context'; // load page context d
 
 
 export interface ITourWebPartProps {
-  description: string;
   actionValue: string;
+  description: string;
   collectionData: any[];
 
 }
@@ -41,14 +41,14 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
 
 
   public render(): void {
-const element: React.ReactElement<ITourProps> = React.createElement(
-  Tour,
-  {
-    description: this.properties.description,
-    actionValue: this.properties.actionValue,
-    collectionData: this.properties.collectionData,
-  }
-);
+    const element: React.ReactElement<ITourProps> = React.createElement(
+      Tour,
+      {
+        actionValue: this.properties.actionValue,
+        description: this.properties.description,
+        collectionData: this.properties.collectionData,
+      }
+    );
     ReactDom.render(element, this.domElement);
   }
 
@@ -106,17 +106,17 @@ const element: React.ReactElement<ITourProps> = React.createElement(
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                }),
                 PropertyPaneTextField('actionValue', {
                   label: strings.ActionValueFieldLabel
                 }),
+                PropertyPaneTextField('description', {
+                  label: strings.DescriptionFieldLabel
+                }),
                 PropertyFieldCollectionData("collectionData", {
                   key: "collectionData",
-                  label: "Collection data",
+                  label: "Tour steps",
                   panelHeader: "Collection data panel header",
-                  manageBtnLabel: "Manage collection data",
+                  manageBtnLabel: "Configure tour steps",
                   value: this.properties.collectionData,
                   fields: [
                     {

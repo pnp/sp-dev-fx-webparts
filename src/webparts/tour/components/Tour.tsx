@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './Tour.module.scss';
 import { ITourProps } from './ITourProps';
 import Tours from 'reactour';
-import { DefaultButton } from 'office-ui-fabric-react';
+import { CompoundButton } from 'office-ui-fabric-react';
 import { TourHelper } from './TourHelper';
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
@@ -11,6 +11,7 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 export interface ITourState {
   isTourOpen: boolean;
   steps: any[];
+  tourDisabled: boolean;
 }
 
 export default class Tour extends React.Component<ITourProps, ITourState> {
@@ -19,29 +20,40 @@ export default class Tour extends React.Component<ITourProps, ITourState> {
     super(props);
     this.state = {
       isTourOpen: false,
-      steps: []
+      steps: [],
+      tourDisabled: true
     };
   }
 
   public componentDidMount() {
     this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
+    if (this.props.collectionData != undefined && this.props.collectionData.length > 0) {
+      this.setState({ tourDisabled: false });
+    }
   }
 
-  public LoadValue(){
-    this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
+  public componentDidUpdate(newProps) {
+    if (JSON.stringify(this.props.collectionData) != JSON.stringify(newProps.collectionData)) {
+      this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
+      if (this.props.collectionData != undefined && this.props.collectionData.length > 0) {
+        this.setState({ tourDisabled: false });
+      } else {
+        this.setState({ tourDisabled: true });
+      }
+    }
   }
-  //public componentDidUpdate(propsPrecedenti) {
-  //   this.setState({ steps: TourHelper.getTourSteps(this.props.collectionData) });
-  //}
 
 
   public render(): React.ReactElement<ITourState> {
     return (
-      <div className={styles.tour} >
-        <DefaultButton text={this.props.actionValue} onClick={this._openTour} allowDisabledFocus />
-
+      <div className={styles.tour}>
+        <CompoundButton primary text={this.props.actionValue} secondaryText={this.props.description}
+          disabled={this.state.tourDisabled} onClick={this._openTour} checked={this.state.isTourOpen}>
+          Primary
+      </CompoundButton>
         <Tours
           onRequestClose={this._closeTour}
+          startAt={0}
           steps={this.state.steps}
           isOpen={this.state.isTourOpen}
           maskClassName="mask"

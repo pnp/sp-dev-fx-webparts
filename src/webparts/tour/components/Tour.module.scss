@@ -60,6 +60,9 @@
     cursor: pointer;
     display: inline-block;
     padding: 0 16px;
+    //custom
+    width: 100%;
+    max-width: initial!important;
 
     .label {
       font-weight: $ms-font-weight-semibold;

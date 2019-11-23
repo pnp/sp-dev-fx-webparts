@@ -17,12 +17,12 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "Tour" },
-    "description": { "default": "Tour description" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "Tour - Tutoria WebPart" },
+    "description": { "default": "Start page tutorial to discover all the features" },
+    "officeFabricIconFontName": "HintText",
     "properties": {
-      "description": "Tour description",
-      "actionValue": "Start Tutorial"
+      "actionValue": "Start page tour",
+      "description": "Start page tutorial to discover all the features."
     }
   }]
 }
