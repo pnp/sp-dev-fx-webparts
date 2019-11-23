@@ -12,7 +12,6 @@ import Tour from './components/Tour';
 import { ITourProps } from './components/ITourProps';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import { sp, ClientSidePage, ClientSideWebpart, IClientControlEmphasis } from '@pnp/sp';
-import { PageContext } from '@microsoft/sp-page-context'; // load page context declaration
 
 
 export interface ITourWebPartProps {
@@ -27,7 +26,6 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
 
   private loadIndicator: boolean = true;
   private webpartList: any[] = new Array<any[]>();
-  private updateConfig: () => void = () => { };
 
   public onInit(): Promise<void> {
 
@@ -63,6 +61,7 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
   public async GetAllWebpart(): Promise<any[]> {
     // page file
     const file = sp.web.getFileByServerRelativePath(this.context.pageContext.site.serverRequestPath);
+
     const page = await ClientSidePage.fromFile(file);
 
     const wpData: any[] = [];
@@ -70,7 +69,8 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
     page.sections.forEach(section => {
       section.columns.forEach(column => {
         column.controls.forEach(control => {
-          var wp = { text: control.data.webPartData.title, key: control.data.webPartData.instanceId };
+          var wpName = `sec[${section.order}] col[${column.order}] - ${control.data.webPartData.title}`;
+          var wp = { text: wpName, key: control.data.webPartData.instanceId };
           wpData.push(wp);
         });
 
@@ -87,11 +87,6 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
       self.context.propertyPane.refresh();
 
     });
-  }
-
-  protected onPropertyPaneConfigurationComplete() {
-    //this.element.props.collectionData=this.properties.collectionData;
-    //this.render();
   }
 
 
@@ -121,16 +116,32 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
                   fields: [
                     {
                       id: "WebPart",
-                      title: "WebPart",
+                      title: "section[x] column[y] - WebPart Title",
                       type: CustomCollectionFieldType.dropdown,
                       options: this.webpartList,
-                      required: true
+                      required: true,
                     },
                     {
                       id: "StepDescription",
                       title: "Step Description",
-                      type: CustomCollectionFieldType.string,
-                      required: true
+                      type: CustomCollectionFieldType.custom,
+                      onCustomRender: (field, value, onUpdate, item, itemId) => {
+                        return (
+                          React.createElement("div", null,
+                            React.createElement("textarea",
+                              {
+                                style: { width: "600px", height: "100px" },
+                                placeholder:"Step description",
+                                key: itemId,
+                                value: value,
+                                onChange: (event: React.FormEvent<HTMLTextAreaElement>) => {
+                                  console.log(event);
+                                  onUpdate(field.id, event.currentTarget.value);
+                                }
+                              })
+                          )
+                        );
+                      }
                     },
                     {
                       id: "Position",
@@ -152,7 +163,6 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
           ]
         }
       ],
-
       loadingIndicatorDelayTime: 5,
       showLoadingIndicator: this.loadIndicator
     };
