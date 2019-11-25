@@ -15,7 +15,7 @@ There is also a _Jest Watch_ (watcher) configuration that **will let live execut
 
 ![SharePoint Framework Jest Visual Studio Code - debugging unit test](./assets/Jest-Typescript-VSCode-debugging.png)
 
-### Important: The dedug configurations should be placed in the .vscode -> launch.json file to make the debugging work
+### Important: The debug configurations should be placed in the .vscode -> launch.json file to make the debugging work
 
 The sample has folder named `vscode` where the `launch.json` configuration for debuggind jest is stored. The configurations should be copied to your `.vscode` folder -> `launch.json` file. Once copied into your launch.json, then they will appear in your visual studio code debugging tab.
 
