@@ -60,6 +60,19 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.9.1
+      year: 2019
+      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-mytasks
+      name: react-mytasks
+      title: My Tasks Web Part
+      thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/My-Tasks/samples/react-mytasks/assets/MyTasks.gif
+      thumbnailtype: video
+      author: João Mendes
+      summary: This web part allows user to manage planner tasks in SharePoint Site. The UI was inspired on Planner UI, it is full implemented with Office-UI-Fabric Components. Use MSGraph API's and PnPjs to data access. The user can search task by name, can filter by progress status, all data are dynamic updated on change..
+      version: 1.0.0
+      modifiedtext: November 17, 2019
+      modified: 2019-11-19
+    - framework: React
       spfx: 1.7.0
       year: 2018
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-slide-swiper
