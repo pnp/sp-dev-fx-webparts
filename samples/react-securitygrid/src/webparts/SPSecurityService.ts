@@ -1,7 +1,7 @@
 ﻿import {sp} from "@pnp/sp";
 import { find, indexOf, includes } from "lodash";
 import { SPPermission } from "@microsoft/sp-page-context";
-import { GraphHttpClient, HttpClientResponse, IGraphHttpClientOptions } from "@microsoft/sp-http";
+import { AadHttpClient, HttpClientResponse, IAadHttpClientOptions } from "@microsoft/sp-http";
 
 export interface ISPSecurableObject {
   id: number;
@@ -291,10 +291,10 @@ export default class SPSecurityService {
         return itemsToAdd;
       });
   }
-  public async getMembersOfAdGroup(graphHttpClient: GraphHttpClient, groupName: string): Promise<any> {
+  public async getMembersOfAdGroup(aadHttpClient: AadHttpClient, groupName: string): Promise<any> {
 
-    return graphHttpClient.get("v1.0/groups?$filter=displayName eq '" + groupName + "'&$expand=members",
-      GraphHttpClient.configurations.v1).then((response) => {
+    return aadHttpClient.get("v1.0/groups?$filter=displayName eq '" + groupName + "'&$expand=members",
+      AadHttpClient.configurations.v1).then((response) => {
         response.json().then((data) => {
           debugger;
         });
@@ -302,7 +302,7 @@ export default class SPSecurityService {
       });
   }
   /// Loads data for intial display
-  public loadData(showHiddenLists: boolean, showCatalogs: boolean, graphHttpClient: GraphHttpClient, forceReload: boolean): Promise<SPSecurityInfo> {
+  public loadData(showHiddenLists: boolean, showCatalogs: boolean, aadHttpClient: AadHttpClient, forceReload: boolean): Promise<SPSecurityInfo> {
     let securityInfo: SPSecurityInfo = new SPSecurityInfo();
     let batch: any = sp.createBatch();
 

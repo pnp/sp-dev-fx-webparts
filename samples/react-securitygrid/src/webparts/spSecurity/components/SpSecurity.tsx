@@ -15,7 +15,6 @@ import { Spinner } from "office-ui-fabric-react/lib/Spinner";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
 
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
-import { right } from "glamor";
 import {
   Environment,
   EnvironmentType
@@ -66,7 +65,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   }
   public componentWillMount(): void {
 
-    this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.graphHttpClient, false).then((response) => {
+    this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.aadHttpClient, false).then((response) => {
       const state: ISpSecurityState = {
         securityInfo: response,
         permission: this.props.permission,

@@ -1,14 +1,15 @@
 import { SPSiteUser } from "../../SPSecurityService";
 import { SPPermission } from "@microsoft/sp-page-context";
-import {IPropertyPaneDropdownOption} from "@microsoft/sp-webpart-base";
-import { GraphHttpClient } from "@microsoft/sp-http";
+import {  } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneDropdownOption, PropertyPaneDropdown } from "@microsoft/sp-property-pane";
+import { AadHttpClient } from "@microsoft/sp-http";
 export interface ISpSecurityProps {
   users: SPSiteUser[];
   permission: string;
   showHiddenLists: boolean;
   showCatalogs:boolean;
   getPermissionTypes:()=> IPropertyPaneDropdownOption[];
-  graphHttpClient: GraphHttpClient;
+  aadHttpClient: AadHttpClient;
   letUserSelectPermission:boolean;
   letUserSelectUsers:boolean;
   letUserSelectLists:boolean;

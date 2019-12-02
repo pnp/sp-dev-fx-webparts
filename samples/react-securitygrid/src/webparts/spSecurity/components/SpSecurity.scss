@@ -1,3 +1,4 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 @import 'node_modules/office-ui-fabric-react/dist/sass/Fabric.scss';
 //*Set the Header are to 140px so it can hold the rotated headers
 .SPFXSecurityGrid .ms-DetailsHeader { //* when adjusting line hieight also need to adjust second parameter to transform:translate below
@@ -9,7 +10,7 @@
     transform:  translate(25px,40px ) //*Change second parameter when adjusting line height
     rotate(315deg);
     padding-bottom: 90px;
-    width: 36px !important;
+    width: 40px !important;
    
     
 }

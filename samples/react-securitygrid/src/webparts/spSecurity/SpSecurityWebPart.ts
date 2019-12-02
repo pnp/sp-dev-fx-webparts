@@ -3,22 +3,17 @@ import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
 import { SPPermission } from "@microsoft/sp-page-context";
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneDropdown, IPropertyPaneDropdownOption,
-  PropertyPaneCheckbox,
-  PropertyPaneToggle
-} from "@microsoft/sp-webpart-base";
+
 import {sp} from "@pnp/sp";
 import * as strings from "spSecurityStrings";
 import SpSecurity from "./components/SpSecurity";
 import { ISpSecurityProps } from "./components/ISpSecurityProps";
 
 import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
-import { PropertyPaneSlider } from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneSlider/PropertyPaneSlider";
-import PropertyPane from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPane/PropertyPane";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneCheckbox, 
+  IPropertyPaneDropdownOption, PropertyPaneDropdown, PropertyPaneTextField, 
+  PropertyPaneToggle,PropertyPaneSlider } from "@microsoft/sp-property-pane";
 
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
   public onInit(): Promise<void> {
@@ -48,7 +43,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       listTitleColumnWidth: this.properties.listTitleColumnWidth,
       users: this.properties.users,
       getPermissionTypes: this.getPermissionTypes,
-      graphHttpClient: this.context.graphHttpClient,
+      aadHttpClient: null,//this.context.aadHttpClient,
       domElement : this.domElement
 
     };
