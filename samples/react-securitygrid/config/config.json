@@ -14,7 +14,6 @@
   "localizedResources": {
     "spSecurityStrings": "lib/webparts/spSecurity/loc/{locale}.js",
     "PropertyControlStrings": "./node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
-                     
   },
   "externals": {}
 }

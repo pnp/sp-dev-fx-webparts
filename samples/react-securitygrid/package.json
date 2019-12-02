@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@microsoft/sp-core-library": "1.9.1",
+    "@microsoft/sp-lodash-subset": "1.9.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.9.1",
     "@microsoft/sp-webpart-base": "1.9.1",
     "@pnp/common": "1.3.3",
     "@pnp/logging": "1.3.3",
@@ -33,8 +35,8 @@
     "@microsoft/sp-tslint-rules": "1.9.1",
     "@microsoft/sp-webpart-workbench": "1.9.1",
     "@types/chai": "3.4.34",
-    "@types/mocha": ">=2.2.33 <2.6.0",
-    "ajv": "5.2.2",
+    "@types/mocha": "2.2.38",
+    "ajv": "~5.2.2",
     "gulp": "~3.9.1",
     "tslint-microsoft-contrib": "5.0.0"
   },

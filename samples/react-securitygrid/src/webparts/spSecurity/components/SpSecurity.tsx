@@ -437,8 +437,8 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       commands.push({
         title: "Permission",
         name: "Permission:",
-        key:
-          "permissionlabel"
+        key: "permissionlabel"
+        
 
       })
       commands.push({
@@ -448,7 +448,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         label: "sss",
         name: this.state.permission ? this.state.permission : "Select Permission",
         itemType: ContextualMenuItemType.Normal,
-        items: this.getPermissionLevels()
+        subMenuProps: {
+          items: this.getPermissionLevels()
+        }
       });
     }
     if (this.props.letUserSelectUsers) {
@@ -480,24 +482,24 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       title: "DisplayMode",
       name: this.state.showEmail ? "Show Email" : "Show Name",
       itemType: ContextualMenuItemType.Normal,
-      items: [{
-        key: "ShowName",
-        name: "Show Name",
-        onClick: (event, item) => {
-          debugger;
-          this.setState((current) => ({ ...current, showEmail: false }));
-        }
-
-      },
-      {
-        key: "ShowEmail",
-        name: "Show Email",
-        onClick: (event, item) => {
-          debugger;
-          this.setState((current) => ({ ...current, showEmail: true }));
-        }
-
-      }]
+      subMenuProps: {
+        items: [{
+          key: "ShowName",
+          name: "Show Name",
+          onClick: (event, item) => {
+            debugger;
+            this.setState((current) => ({ ...current, showEmail: false }));
+          }
+        },
+        {
+          key: "ShowEmail",
+          name: "Show Email",
+          onClick: (event, item) => {
+            debugger;
+            this.setState((current) => ({ ...current, showEmail: true }));
+          }
+        }]
+      }
     });
 
     let columns: Array<IColumn> = [
