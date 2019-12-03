@@ -31,6 +31,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     this.state = {
       securityInfo: { siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [] },
       permission: this.props.permission,
+      selectedPermissions: this.props.selectedPermissions,
       showUserPanel: false,
       showListPanel: false,
       showEmail: this.props.showEmail,
@@ -69,6 +70,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       const state: ISpSecurityState = {
         securityInfo: response,
         permission: this.props.permission,
+        selectedPermissions: this.props.selectedPermissions,
         showUserPanel: false,
         showListPanel: false,
         showEmail: this.props.showEmail,
@@ -272,23 +274,45 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   //   );
   // }
   public renderUserItem(item?: any, index?: number, column?: IColumn): any {
+    debugger;
     let user: SPSiteUser = find(this.state.securityInfo.siteUsers, (su) => {
       return su.id.toString() === column.key;
     });
-    if (Helpers.doesUserHavePermission(item, user, SPPermission[this.state.permission],
-      this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
-      return (
-        <Icon iconName="CircleFill" onClick={(e) => {
-          this.expandCollapseList(item);
-        }} />
-      );
-    } else {
-      return (
-        <Icon iconName="LocationCircle" onClick={(e) => {
-          this.expandCollapseList(item);
-        }} />
-      );
+    // spin througg the selected permsiisopns and for the first hit, display that color. No Hit, then display empty
+    for (let selectedPermission of this.state.selectedPermissions) {
+      if (Helpers.doesUserHavePermission(item, user, SPPermission[selectedPermission.permission],
+        this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
+        return (
+          <Icon iconName="CircleFill"  style={{color:selectedPermission.color.str}}  onClick={(e) => {
+            this.expandCollapseList(item);
+          }} />
+        );
+      }
     }
+    // no hits
+    return (
+      <Icon iconName="LocationCircle" onClick={(e) => {
+        this.expandCollapseList(item);
+      }} />
+    );
+
+
+    //////////// OLD WAY
+    // if (Helpers.doesUserHavePermission(item, user, SPPermission[this.state.permission],
+    //   this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
+    //   return (
+    //     <Icon iconName="CircleFill" onClick={(e) => {
+    //       this.expandCollapseList(item);
+    //     }} />
+    //   );
+    // } else {
+    //   return (
+    //     <Icon iconName="LocationCircle" onClick={(e) => {
+    //       this.expandCollapseList(item);
+    //     }} />
+    //   );
+    // }
+    //////////////////////+/ OLD WAY
   }
   public renderUserSelected(item?: SPSiteUser, index?: number, column?: IColumn): any {
 
@@ -438,7 +462,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         title: "Permission",
         name: "Permission:",
         key: "permissionlabel"
-        
+
 
       })
       commands.push({

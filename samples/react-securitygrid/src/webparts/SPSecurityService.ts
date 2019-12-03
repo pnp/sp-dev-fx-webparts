@@ -111,6 +111,7 @@ export class SPRoleAssignment {
 }
 export class Helpers {
   public static doesUserHavePermission(securableObject, user, requestedpermission: SPPermission, roles, siteGroups) {
+   
     const permissions: SPBasePermissions[] = Helpers.getUserPermissionsForObject(securableObject, user, roles, siteGroups);
     for (const permission of permissions) {
       if (

@@ -31,7 +31,8 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
   public render(): void {
 
     const props: ISpSecurityProps = {
-      permission: this.properties.permission,
+      permission: this.properties.permission,  // old way
+      selectedPermissions:this.properties.selectedPermissions,
       showHiddenLists: this.properties.showHiddenLists,
       showCatalogs: this.properties.showCatalogs,
       showEmail: this.properties.showEmail,

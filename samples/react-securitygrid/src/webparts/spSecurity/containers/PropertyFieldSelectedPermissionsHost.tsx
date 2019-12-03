@@ -12,7 +12,7 @@ import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { ColorPicker, IColorPickerProps } from "office-ui-fabric-react/lib/ColorPicker";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { SPPermission } from "@microsoft/sp-page-context";
-import { IColor, IconNames } from "office-ui-fabric-react";
+import { IColor } from "office-ui-fabric-react/lib/Color";
 
 export interface IPropertyFieldSelectedPermissionsHostProps {
   label: string;
@@ -168,7 +168,7 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     return perms;
   }
   private addColumn(): void {
-    const col: ISelectedPermission = { "permission": "viewItems", "color": "01b402" };
+    const col: ISelectedPermission = { "permission":null, "color": null };
     var sp = this.state.SelectedPermissions;
     sp.push(col);
     this.setState((current) => ({ ...current, SelectedPermissions: [...sp] }));
@@ -213,14 +213,6 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
   public render(): JSX.Element {
 
     //Renders content
-
-    var stuff = [
-      {
-        "permission": "XX",
-        "color": "sXX",
-      }
-    ];
-    stuff = this.state.SelectedPermissions;
     return (
       <div style={{ marginBottom: '8px' }}>
         <Label>{this.props.label}</Label>
