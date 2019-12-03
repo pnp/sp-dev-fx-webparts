@@ -231,7 +231,8 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
             isOpen={this.state.openPanel} hasCloseButton={true}
             onDismiss={() => this.onClosePanel()}
             isLightDismiss={true} type={PanelType.largeFixed}
-            headerText="Select Permissions">
+            headerText="Select Permissions" >
+            <Label>The grid will display the color of the first match, so list permissions from most restricted to least restricted (i.e. manageLists, then deleteListItems, then viewListItems)</Label>
             <CommandBar items={[{
               key: "AddColumns",
               name: "Add a Permission",
