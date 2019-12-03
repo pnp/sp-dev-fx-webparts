@@ -1,19 +1,18 @@
-import { Guid } from "@microsoft/sp-core-library";
-import * as _ from "underscore";
-import { SelectedPermissionsContainerNative } from "./SelectedPermissionsContainer";
+
+import { findIndex, filter } from "underscore";
 import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { DetailsList, IColumn, DetailsListLayoutMode } from "office-ui-fabric-react/lib/DetailsList";
+import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode } from "office-ui-fabric-react/lib/DetailsList";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { ColorPicker, IColorPickerProps } from "office-ui-fabric-react/lib/ColorPicker";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
-import { IContextualMenuItemProps, IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { SPPermission } from "@microsoft/sp-page-context";
-import { Item } from "@pnp/sp";
-import { IColor } from "office-ui-fabric-react";
+import { IColor, IconNames } from "office-ui-fabric-react";
 
 export interface IPropertyFieldSelectedPermissionsHostProps {
   label: string;
@@ -35,19 +34,18 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       maxWidth: 200,
       isResizable: true,
       onRender: (item?: any, index?: number, column?: IColumn) => {
-        debugger;
-        return (
-          <Dropdown 
-          options={this.getPermissionTypes()}
-          defaultSelectedKey={item.permission} 
-          onChange={(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number)=>{
-            var cds= this.state.SelectedPermissions;
-            item.permission=option.text;
-            this.setState((current) => ({ ...current, SelectedPermissions:[...this.state.SelectedPermissions] }));
-            debugger;
 
-          }}>
-            </Dropdown>
+        return (
+          <Dropdown
+            options={this.getPermissionTypes()}
+            defaultSelectedKey={item.permission}
+            onChange={(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => {
+              var sps = this.state.SelectedPermissions;
+              item.permission = option.text;
+              this.setState((current) => ({ ...current, SelectedPermissions: [...this.state.SelectedPermissions] }));
+
+            }}>
+          </Dropdown>
         );
       }
     },
@@ -55,54 +53,111 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       key: 'color',
       name: 'Colour',
       fieldName: 'color',
-      minWidth: 100,
-      maxWidth: 200,
+      minWidth: 300,
+      maxWidth: 300,
       isResizable: true,
       onRender: (item?: any, index?: number, column?: IColumn) => {
-        debugger;
-        return (
-          <ColorPicker 
-          color={item.color}
-          onChange={(event: React.FormEvent<HTMLDivElement>, color:IColor)=>{
-            var cds= this.state.SelectedPermissions;
-            item.color=color;
-            this.setState((current) => ({ ...current, SelectedPermissions:[...this.state.SelectedPermissions] }));
-            debugger;
 
-          }}>
-            </ColorPicker>
+        return (
+          <ColorPicker
+            color={item.color}
+            onChange={(event: React.FormEvent<HTMLDivElement>, color: IColor) => {
+              var sps = this.state.SelectedPermissions;
+              item.color = color;
+              this.setState((current) => ({ ...current, SelectedPermissions: [...this.state.SelectedPermissions] }));
+
+            }}>
+          </ColorPicker>
+        );
+      }
+
+    },
+    {
+      key: 'commands',
+      name: '',
+      fieldName: 'color',
+      minWidth: 50,
+      maxWidth: 50,
+      isResizable: false,
+      onRender: (item?: any, index?: number, column?: IColumn) => {
+        return (
+          <div>
+          <IconButton
+          iconProps={{iconName:'Up',}}
+            onClick={(e) => {
+              debugger;
+              this.moveColumnUp(item);
+            }}>
+          </IconButton>
+
+          <IconButton
+            iconProps={{iconName:'Down',}}
+            onClick={(e) => {
+              debugger;
+              this.moveColumnDown(item);
+            }}>
+          </IconButton>
+
+          <IconButton
+            iconProps={{iconName:'Delete',}}
+            onClick={(e) => {
+              debugger;
+              this.removeColumn(item);
+            }}>
+          </IconButton>
+          </div>
+        );
+      }
+
+    }, 
+    
+  ];
+  panelColumns: IColumn[] = [
+    {
+      key: 'permission',
+      name: 'Permission',
+      fieldName: 'permission',
+      minWidth: 100,
+      maxWidth: 100,
+      isResizable: true,
+      onRender: (item?: any, index?: number, column?: IColumn) => {
+
+        return (
+          <div>
+              {item.permission}
+          </div>
+        );
+      }
+    },
+    {
+      key: 'color',
+      name: 'Colour',
+      fieldName: 'color',
+      minWidth: 50,
+      maxWidth: 50,
+      isResizable: false,
+      onRender: (item?: any, index?: number, column?: IColumn) => {
+
+        return (
+          <Icon
+          iconName='CircleFill' style={{color:item.color.str}}
+          color={item.color}
+        />
         );
       }
 
     }
   ];
   constructor(props: IPropertyFieldSelectedPermissionsHostProps) {
-
     super(props);
-    debugger;
-    // this.onOpenPanel = this.onOpenPanel.bind(this);
-    // this.onClosePanel = this.onClosePanel.bind(this);
-    // this.removeColumn = this.removeColumn.bind(this);
-    // this.addColumn = this.addColumn.bind(this);
-    // this.moveColumnDown = this.moveColumnDown.bind(this);
-    // this.moveColumnUp = this.moveColumnUp.bind(this);
-    // this.saveChanges = this.saveChanges.bind(this);
-    // this.setState((current) => ({
-    //   ...current,
-    //   SelectedPermissions: this.props.SelectedPermissions,
-    //   openPanel: false
-    // }));
-    this.state={
-      
+    this.state = {
       SelectedPermissions: this.props.SelectedPermissions,
       openPanel: false
     };
-
   }
   public getPermissionTypes(): IDropdownOption[] {
     let perms = new Array();
     for (const perm in SPPermission) {
-
       if (typeof (SPPermission[perm]) === "object") {
         perms.push({
           text: perm,
@@ -113,37 +168,35 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     return perms;
   }
   private addColumn(): void {
-    debugger;
     const col: ISelectedPermission = { "permission": "viewItems", "color": "01b402" };
-    var cd = this.state.SelectedPermissions;
-    cd.push(col);
-    this.setState((current) => ({ ...current, SelectedPermissions:[...cd] }));
-    // this.setState({
-    //   SelectedPermissions:[...cd,col]
-    // });
-
+    var sp = this.state.SelectedPermissions;
+    sp.push(col);
+    this.setState((current) => ({ ...current, SelectedPermissions: [...sp] }));
   }
-  private removeColumn(column): void {
-
-    var cd = _.filter(this.state.SelectedPermissions, (o) => { return o.guid !== column.guid; });
-    this.setState((current) => ({ ...current, SelectedPermissions: cd }));
+  private removeColumn(column: ISelectedPermission): void {
+    var sps = filter(this.state.SelectedPermissions, (o: ISelectedPermission) => { return o.permission !== column.permission; });
+    this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
   }
   private removeAllColumns(): void {
     this.setState((current) => ({ ...current, SelectedPermissions: [] }));
   }
   private moveColumnUp(column: ISelectedPermission): void {
-    var cds = this.state.SelectedPermissions;
-    const index = _.findIndex(cds, (cd) => cd.guid === column.permission);
-    cds[index] = cds.splice(index - 1, 1, cds[index])[0];
-    this.setState(this.state);
-    this.setState((current) => ({ ...current, SelectedPermissions: cds }));
-  }
-  private moveColumnDown(column): void {
-    var cds = this.state.SelectedPermissions;
-    const index = _.findIndex(cds, (cd) => cd.guid === column.guid);
-    cds[index] = cds.splice(index + 1, 1, cds[index])[0];
-    this.setState((current) => ({ ...current, SelectedPermissions: cds }));
 
+    var sps: ISelectedPermission[] = this.state.SelectedPermissions;
+    const index = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == column.permission });
+    if (index != -1) {
+      sps[index] = sps.splice(index - 1, 1, sps[index])[0];
+      this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
+    }
+  }
+  private moveColumnDown(column: ISelectedPermission): void {
+
+    var sps: ISelectedPermission[] = this.state.SelectedPermissions;
+    const index = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == column.permission });
+    if (index != -1) {
+      sps[index] = sps.splice(index + 1, 1, sps[index])[0];
+      this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
+    }
   }
   private saveChanges(): void {
     if (this.props.onPropertyChange) {
@@ -160,7 +213,7 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
   public render(): JSX.Element {
 
     //Renders content
-    debugger;
+
     var stuff = [
       {
         "permission": "XX",
@@ -170,23 +223,28 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     stuff = this.state.SelectedPermissions;
     return (
       <div style={{ marginBottom: '8px' }}>
-               <Label>{this.props.label}</Label>
+        <Label>{this.props.label}</Label>
+        <DetailsList
+              items={this.state.SelectedPermissions}
+              columns={this.panelColumns}
+              layoutMode={DetailsListLayoutMode.justified}
+              selectionMode={SelectionMode.none}
+            />
         <Button
           onClick={(e) => this.onOpenPanel()}>
-          Advanced
+          Edit Permissions and Colors
           </Button>
         {this.state.openPanel === true ?
           <Panel
             isOpen={this.state.openPanel} hasCloseButton={true}
             onDismiss={() => this.onClosePanel()}
-            isLightDismiss={true} type={PanelType.medium}
+            isLightDismiss={true} type={PanelType.largeFixed}
             headerText="Select Permissions">
             <CommandBar items={[{
               key: "AddColumns",
               name: "Add a Permission",
               icon: "Add",
               onClick: () => {
-                debugger;
                 this.addColumn();
               }
 
@@ -207,7 +265,7 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
               canCheck: true,
               icon: "Save",
               onClick: () => {
-                debugger;
+
                 this.saveChanges();
               }
 

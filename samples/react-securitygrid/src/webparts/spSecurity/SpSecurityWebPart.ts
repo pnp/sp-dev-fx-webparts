@@ -73,10 +73,10 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
     return perms;
   }
   private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {
-    debugger;
+  
     switch (propertyPath) {
       case "SelectedPermissions":
-        debugger;
+       
         this.properties.selectedPermissions = newValue;
         break;
       default:
@@ -100,10 +100,10 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                   options: this.getPermissionTypes()
                 }),
                 PropertyFieldSelectedPermissions("SelectedPermissions", {
-                  label: "Set Permissions and Colors", 
+                  label: "Selected Permissions and Colors", 
                   onPropertyChange: this.onPropertyChange.bind(this),
                   getSelectedPermissions: () => {
-                    debugger;
+                   
                     return this.properties.selectedPermissions || [];
 
                   },
