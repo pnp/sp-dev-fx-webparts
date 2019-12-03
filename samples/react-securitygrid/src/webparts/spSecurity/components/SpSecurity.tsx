@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./SpSecurity.module.scss";
 import { ISpSecurityProps } from "./ISpSecurityProps";
 import { ISpSecurityState } from "./ISpSecurityState";
-
+import {ILegendProps,Legend} from "./Legend";
 import SPSecurityService from "../../SPSecurityService";
 import { SPListItem, SPList, SPSiteUser, Helpers } from "../../SPSecurityService";
 import { SPPermission } from "@microsoft/sp-page-context";
@@ -13,7 +13,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { Spinner } from "office-ui-fabric-react/lib/Spinner";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
-
+import {ISelectedPermission} from "../ISpSecurityWebPartProps";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import {
   Environment,
@@ -274,12 +274,13 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   //   );
   // }
   public renderUserItem(item?: any, index?: number, column?: IColumn): any {
-    debugger;
+  
     let user: SPSiteUser = find(this.state.securityInfo.siteUsers, (su) => {
       return su.id.toString() === column.key;
     });
     // spin througg the selected permsiisopns and for the first hit, display that color. No Hit, then display empty
-    for (let selectedPermission of this.state.selectedPermissions) {
+    
+    for (let selectedPermission of this.state.selectedPermissions?this.state.selectedPermissions:[]) {
       if (Helpers.doesUserHavePermission(item, user, SPPermission[selectedPermission.permission],
         this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
         return (
@@ -386,7 +387,13 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
 
   }
+  private Legend(seletedPermissions:Array<ISelectedPermission>):JSX.Element{
 
+
+    return (
+      <div></div>
+    )
+  }
   public render(): React.ReactElement<ISpSecurityProps> {
     if (!this.state.securityInfoLoaded) {
       return (
@@ -544,6 +551,8 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       )
     })
 
+    
+
     return (
       <div >
         <CommandBar
@@ -588,6 +597,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           headerText='Select Lists'
           closeButtonAriaLabel='Close'>
           <CommandBar items={listPanelCommands} />
+          {/* <Legend selectedPermissions={this.state.selectedPermissions}></Legend> */}
           <DetailsList
 
             selection={this.listSelection}

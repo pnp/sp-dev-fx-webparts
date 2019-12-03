@@ -82,35 +82,35 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       onRender: (item?: any, index?: number, column?: IColumn) => {
         return (
           <div>
-          <IconButton
-          iconProps={{iconName:'Up',}}
-            onClick={(e) => {
-              debugger;
-              this.moveColumnUp(item);
-            }}>
-          </IconButton>
+            <IconButton
+              iconProps={{ iconName: 'Up', }}
+              onClick={(e) => {
+                debugger;
+                this.moveColumnUp(item);
+              }}>
+            </IconButton>
 
-          <IconButton
-            iconProps={{iconName:'Down',}}
-            onClick={(e) => {
-              debugger;
-              this.moveColumnDown(item);
-            }}>
-          </IconButton>
+            <IconButton
+              iconProps={{ iconName: 'Down', }}
+              onClick={(e) => {
+                debugger;
+                this.moveColumnDown(item);
+              }}>
+            </IconButton>
 
-          <IconButton
-            iconProps={{iconName:'Delete',}}
-            onClick={(e) => {
-              debugger;
-              this.removeColumn(item);
-            }}>
-          </IconButton>
+            <IconButton
+              iconProps={{ iconName: 'Delete', }}
+              onClick={(e) => {
+                debugger;
+                this.removeColumn(item);
+              }}>
+            </IconButton>
           </div>
         );
       }
 
-    }, 
-    
+    },
+
   ];
   panelColumns: IColumn[] = [
     {
@@ -124,7 +124,7 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
 
         return (
           <div>
-              {item.permission}
+            {item.permission}
           </div>
         );
       }
@@ -137,19 +137,22 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       maxWidth: 50,
       isResizable: false,
       onRender: (item?: any, index?: number, column?: IColumn) => {
-
-        return (
-          <Icon
-          iconName='CircleFill' style={{color:item.color.str}}
-          color={item.color}
-        />
-        );
+        if (item.color) {
+          return (
+            <Icon iconName='CircleFill' style={{ color: item.color.str }} />
+          );
+        }
+        else {
+          return (<Icon iconName='CircleFill' />
+          );
+        }
       }
 
     }
   ];
   constructor(props: IPropertyFieldSelectedPermissionsHostProps) {
     super(props);
+    debugger;
     this.state = {
       SelectedPermissions: this.props.SelectedPermissions,
       openPanel: false
@@ -168,7 +171,8 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     return perms;
   }
   private addColumn(): void {
-    const col: ISelectedPermission = { "permission":null, "color": null };
+    debugger;
+    const col: ISelectedPermission = { "permission": null, "color": null };
     var sp = this.state.SelectedPermissions;
     sp.push(col);
     this.setState((current) => ({ ...current, SelectedPermissions: [...sp] }));
@@ -217,11 +221,11 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       <div style={{ marginBottom: '8px' }}>
         <Label>{this.props.label}</Label>
         <DetailsList
-              items={this.state.SelectedPermissions}
-              columns={this.panelColumns}
-              layoutMode={DetailsListLayoutMode.justified}
-              selectionMode={SelectionMode.none}
-            />
+          items={this.state.SelectedPermissions}
+          columns={this.panelColumns}
+          layoutMode={DetailsListLayoutMode.justified}
+          selectionMode={SelectionMode.none}
+        />
         <Button
           onClick={(e) => this.onOpenPanel()}>
           Edit Permissions and Colors

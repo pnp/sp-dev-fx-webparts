@@ -39,7 +39,7 @@ class PropertyFieldSelectedPermissionsBuilder implements IPropertyPaneField<IPro
     this.properties.onDispose = this.dispose;
     this.properties.onRender = this.render;
     this.onPropertyChange = _properties.onPropertyChange;
-    this.customProperties = _properties.SelectedPermissions;
+    this.customProperties = _properties.SelectedPermissions?_properties.SelectedPermissions:[];
   }
   private render(elem: HTMLElement): void {
     const element: React.ReactElement<IPropertyFieldSelectedPermissionsHostProps> = React.createElement(PropertyFieldSelectedPermissionsHost, {
