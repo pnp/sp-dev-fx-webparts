@@ -3,17 +3,19 @@ import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
 import { SPPermission } from "@microsoft/sp-page-context";
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
-
-import {sp} from "@pnp/sp";
+import { PropertyFieldSelectedPermissions, IPropertyFieldSelectedPermissionsProps } from "./containers/PropertyFieldSelectedPermissions";
+import { sp } from "@pnp/sp";
 import * as strings from "spSecurityStrings";
 import SpSecurity from "./components/SpSecurity";
 import { ISpSecurityProps } from "./components/ISpSecurityProps";
 
 import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
-import { IPropertyPaneConfiguration, PropertyPaneCheckbox, 
-  IPropertyPaneDropdownOption, PropertyPaneDropdown, PropertyPaneTextField, 
-  PropertyPaneToggle,PropertyPaneSlider } from "@microsoft/sp-property-pane";
+import {
+  IPropertyPaneConfiguration, PropertyPaneCheckbox,
+  IPropertyPaneDropdownOption, PropertyPaneDropdown, PropertyPaneTextField,
+  PropertyPaneToggle, PropertyPaneSlider
+} from "@microsoft/sp-property-pane";
 
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
   public onInit(): Promise<void> {
@@ -44,7 +46,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       users: this.properties.users,
       getPermissionTypes: this.getPermissionTypes,
       aadHttpClient: null,//this.context.aadHttpClient,
-      domElement : this.domElement
+      domElement: this.domElement
 
     };
     const element: React.ReactElement<ISpSecurityProps> = React.createElement(
@@ -70,6 +72,17 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
     }
     return perms;
   }
+  private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {
+    debugger;
+    switch (propertyPath) {
+      case "SelectedPermissions":
+        debugger;
+        this.properties.selectedPermissions = newValue;
+        break;
+      default:
+        break;
+    }
+  };
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -85,6 +98,15 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                 PropertyPaneDropdown("permission", {
                   label: "Permission Type",
                   options: this.getPermissionTypes()
+                }),
+                PropertyFieldSelectedPermissions("SelectedPermissions", {
+                  label: "Set Permissions and Colors", 
+                  onPropertyChange: this.onPropertyChange.bind(this),
+                  getSelectedPermissions: () => {
+                    debugger;
+                    return this.properties.selectedPermissions || [];
+
+                  },
                 }),
                 PropertyPaneCheckbox("letUserSelectPermission", {
                   text: "Let user select Permission"

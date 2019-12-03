@@ -1,9 +1,15 @@
 import { SPSiteUser } from "../SPSecurityService";
 import { SPPermission } from "@microsoft/sp-page-context";
+export interface ISelectedPermission {
+permission:string;
+color:string;
+}
+
 
 export interface ISpSecurityWebPartProps {
   users: SPSiteUser[];
-  permission: string;
+  permission: string; // used if only one permission selected
+  selectedPermissions:ISelectedPermission[];// used if multiple  permissions selected
   showHiddenLists: boolean;
   showCatalogs:boolean;
   letUserSelectPermission:boolean;
