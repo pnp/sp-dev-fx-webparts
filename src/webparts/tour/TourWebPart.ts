@@ -69,9 +69,18 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
     page.sections.forEach(section => {
       section.columns.forEach(column => {
         column.controls.forEach(control => {
-          var wpName = `sec[${section.order}] col[${column.order}] - ${control.data.webPartData.title}`;
-          var wp = { text: wpName, key: control.data.webPartData.instanceId };
+          var wpName = {}
+          var wp = {};
+          if (control.data.webPartData != undefined) {
+            wpName = `sec[${section.order}] col[${column.order}] - ${control.data.webPartData.title}`;
+            wp = { text: wpName, key: control.data.webPartData.instanceId };
+            wpData.push(wp);
+          } else {
+            wpName = `sec[${section.order}] col[${column.order}] - "Webpart"`;
+            wp = { text: wpName, key: control.data.id };
+          }
           wpData.push(wp);
+
         });
 
       });
@@ -131,7 +140,7 @@ export default class TourWebPart extends BaseClientSideWebPart<ITourWebPartProps
                             React.createElement("textarea",
                               {
                                 style: { width: "600px", height: "100px" },
-                                placeholder:"Step description",
+                                placeholder: "Step description",
                                 key: itemId,
                                 value: value,
                                 onChange: (event: React.FormEvent<HTMLTextAreaElement>) => {
