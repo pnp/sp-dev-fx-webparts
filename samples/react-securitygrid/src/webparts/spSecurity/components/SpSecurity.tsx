@@ -558,6 +558,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         <CommandBar
           items={commands}
         />
+        <Legend selectedPermissions={this.state.selectedPermissions}></Legend>
         <DetailsList
           items={displayItems}
           columns={displayColumns}
@@ -597,7 +598,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           headerText='Select Lists'
           closeButtonAriaLabel='Close'>
           <CommandBar items={listPanelCommands} />
-          {/* <Legend selectedPermissions={this.state.selectedPermissions}></Legend> */}
+          
           <DetailsList
 
             selection={this.listSelection}
