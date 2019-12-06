@@ -31,7 +31,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     super(props);
     this.state = {
       securityInfo: { siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [] },
-      permission: this.props.permission,
+      //permission: this.props.permission,
       selectedPermissions: this.props.selectedPermissions,
       showUserPanel: false,
       showListPanel: false,
@@ -71,7 +71,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.aadHttpClient, false).then((response) => {
       const state: ISpSecurityState = {
         securityInfo: response,
-        permission: this.props.permission,
+       // permission: this.props.permission,
         selectedPermissions: this.props.selectedPermissions?this.props.selectedPermissions:[],
         showUserPanel: false,
         showListPanel: false,

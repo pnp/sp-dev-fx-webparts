@@ -31,7 +31,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
   public render(): void {
 
     const props: ISpSecurityProps = {
-      permission: this.properties.permission,  // old way
+      //permission: this.properties.permission,  // old way
       selectedPermissions:this.properties.selectedPermissions,
       showHiddenLists: this.properties.showHiddenLists,
       showCatalogs: this.properties.showCatalogs,
@@ -95,11 +95,6 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
             {
               groupName: "Permission Settings",
               groupFields: [
-
-                PropertyPaneDropdown("permission", {
-                  label: "Permission Type",
-                  options: this.getPermissionTypes()
-                }),
                 PropertyFieldSelectedPermissions("SelectedPermissions", {
                   label: "Selected Permissions and Colors", 
                   onPropertyChange: this.onPropertyChange.bind(this),

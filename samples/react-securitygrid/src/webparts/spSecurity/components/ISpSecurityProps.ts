@@ -6,7 +6,7 @@ import { AadHttpClient } from "@microsoft/sp-http";
 import {ISelectedPermission} from "../ISpSecurityWebPartProps"
 export interface ISpSecurityProps {
   users: SPSiteUser[];
-  permission: string;
+  //permission: string;
   selectedPermissions:ISelectedPermission[];
   showHiddenLists: boolean;
   showCatalogs:boolean;

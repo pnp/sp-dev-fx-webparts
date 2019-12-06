@@ -9,7 +9,7 @@ export interface ISelectedPermission {
 
 export interface ISpSecurityWebPartProps {
   users: SPSiteUser[];
-  permission: string; // used if only one permission selected
+  //permission: string; // used if only one permission selected.... gonzo, all new now
   selectedPermissions: ISelectedPermission[];// used if multiple  permissions selected
   showHiddenLists: boolean;
   showCatalogs: boolean;
