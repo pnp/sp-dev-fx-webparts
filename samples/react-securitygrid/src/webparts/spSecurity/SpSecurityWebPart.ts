@@ -74,7 +74,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
     return perms;
   }
   private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {
-  
+  debugger;
     switch (propertyPath) {
       case "SelectedPermissions":
        

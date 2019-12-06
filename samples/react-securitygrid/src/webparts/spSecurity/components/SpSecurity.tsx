@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./SpSecurity.module.scss";
 import { ISpSecurityProps } from "./ISpSecurityProps";
 import { ISpSecurityState } from "./ISpSecurityState";
-import {ILegendProps,Legend} from "./Legend";
+import { ILegendProps, Legend } from "./Legend";
 import SPSecurityService from "../../SPSecurityService";
 import { SPListItem, SPList, SPSiteUser, Helpers } from "../../SPSecurityService";
 import { SPPermission } from "@microsoft/sp-page-context";
@@ -13,8 +13,9 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { Spinner } from "office-ui-fabric-react/lib/Spinner";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
-import {ISelectedPermission} from "../ISpSecurityWebPartProps";
+import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
+import SelectedPermissionsPanel from "../containers/SelectedPermissionPanel";
 import {
   Environment,
   EnvironmentType
@@ -35,7 +36,8 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       showUserPanel: false,
       showListPanel: false,
       showEmail: this.props.showEmail,
-      securityInfoLoaded: false
+      securityInfoLoaded: false,
+      showPermissionsPanel: false
 
     };
 
@@ -70,9 +72,10 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       const state: ISpSecurityState = {
         securityInfo: response,
         permission: this.props.permission,
-        selectedPermissions: this.props.selectedPermissions,
+        selectedPermissions: this.props.selectedPermissions?this.props.selectedPermissions:[],
         showUserPanel: false,
         showListPanel: false,
+        showPermissionsPanel: false,
         showEmail: this.props.showEmail,
         securityInfoLoaded: true
 
@@ -274,17 +277,17 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   //   );
   // }
   public renderUserItem(item?: any, index?: number, column?: IColumn): any {
-  
+
     let user: SPSiteUser = find(this.state.securityInfo.siteUsers, (su) => {
       return su.id.toString() === column.key;
     });
     // spin througg the selected permsiisopns and for the first hit, display that color. No Hit, then display empty
-    
-    for (let selectedPermission of this.state.selectedPermissions?this.state.selectedPermissions:[]) {
+
+    for (let selectedPermission of this.state.selectedPermissions ? this.state.selectedPermissions : []) {
       if (Helpers.doesUserHavePermission(item, user, SPPermission[selectedPermission.permission],
         this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
         return (
-          <Icon iconName="CircleFill"  style={{color:selectedPermission.color.str}}  onClick={(e) => {
+          <Icon iconName="CircleFill" style={{ color: selectedPermission.color.str }} onClick={(e) => {
             this.expandCollapseList(item);
           }} />
         );
@@ -387,13 +390,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
 
   }
-  private Legend(seletedPermissions:Array<ISelectedPermission>):JSX.Element{
 
-
-    return (
-      <div></div>
-    )
-  }
   public render(): React.ReactElement<ISpSecurityProps> {
     if (!this.state.securityInfoLoaded) {
       return (
@@ -465,24 +462,32 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     });
     let commands: IContextualMenuItem[] = [];
     if (this.props.letUserSelectPermission) {
-      commands.push({
-        title: "Permission",
-        name: "Permission:",
-        key: "permissionlabel"
-
-
-      })
+      // commands.push({
+      //   title: "Permission",
+      //   name: "Permission:",
+      //   key: "permissionlabel"
+      // })
+      // commands.push({
+      //   icon: "AzureKeyVault",
+      //   key: "SecurityLevel",
+      //   title: "Permission",
+      //   label: "sss",
+      //   name: this.state.permission ? this.state.permission : "Select Permission",
+      //   itemType: ContextualMenuItemType.Normal,
+      //   subMenuProps: {
+      //     items: this.getPermissionLevels()
+      //   }
+      // });
       commands.push({
         icon: "AzureKeyVault",
-        key: "SecurityLevel",
-        title: "Permission",
-        label: "sss",
-        name: this.state.permission ? this.state.permission : "Select Permission",
+        key: "SecurityLevel2",
+        name: "Permission",
         itemType: ContextualMenuItemType.Normal,
-        subMenuProps: {
-          items: this.getPermissionLevels()
+        onClick: (event, item) => {
+          this.setState((current) => ({ ...current, showPermissionsPanel: !current.showPermissionsPanel }));
         }
-      });
+      }
+      );
     }
     if (this.props.letUserSelectUsers) {
       commands.push({
@@ -551,7 +556,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       )
     })
 
-    
+
 
     return (
       <div >
@@ -566,6 +571,21 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           className="SPFXSecurityGrid"
 
         />
+        <SelectedPermissionsPanel
+          isOpen={this.state.showPermissionsPanel}
+          SelectedPermissions={this.props.selectedPermissions}
+          onPropertyChange={(propertyName:string,oldValue:Array<ISelectedPermission>,newValue:Array<ISelectedPermission>)=>{
+            debugger;
+            this.setState((current) => ({ ...current, selectedPermissions: newValue }));
+          }}
+          closePanel={()=>{
+            debugger;
+            this.setState((current) => ({ ...current, showPermissionsPanel: false }));
+          }}
+
+          >
+
+        </SelectedPermissionsPanel>
         <Panel
           isBlocking={false}
           isOpen={this.state.showUserPanel}
@@ -598,7 +618,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           headerText='Select Lists'
           closeButtonAriaLabel='Close'>
           <CommandBar items={listPanelCommands} />
-          
+
           <DetailsList
 
             selection={this.listSelection}

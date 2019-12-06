@@ -6,6 +6,7 @@ export interface ISpSecurityState {
   selectedPermissions:ISelectedPermission[];
   showUserPanel:boolean;
   showListPanel:boolean;
+  showPermissionsPanel:boolean;
   showEmail:boolean; //0 show name, 1 show email
   securityInfoLoaded:boolean;
 
