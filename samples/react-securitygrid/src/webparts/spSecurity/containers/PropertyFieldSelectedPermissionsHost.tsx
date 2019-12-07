@@ -13,7 +13,7 @@ import { ColorPicker, IColorPickerProps } from "office-ui-fabric-react/lib/Color
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { SPPermission } from "@microsoft/sp-page-context";
 import { IColor } from "office-ui-fabric-react/lib/Color";
-
+import SelectedPermissionsPanel from "./SelectedPermissionPanel"
 export interface IPropertyFieldSelectedPermissionsHostProps {
   label: string;
   initialValue?: Array<ISelectedPermission>;
@@ -212,6 +212,7 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     this.setState((current) => ({ ...current, openPanel: true }));
   }
   private onClosePanel(element?: any): void {
+    debugger;
     this.setState((current) => ({ ...current, openPanel: false }));
   }
   public render(): JSX.Element {
@@ -230,53 +231,14 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
           onClick={(e) => this.onOpenPanel()}>
           Edit Permissions and Colors
           </Button>
-        {this.state.openPanel === true ?
-          <Panel
-            isOpen={this.state.openPanel} hasCloseButton={true}
-            onDismiss={() => this.onClosePanel()}
-            isLightDismiss={true} type={PanelType.largeFixed}
-            headerText="Select Permissions" >
-            <Label>The grid will display the color of the first match, so list permissions from most restricted to least restricted (i.e. manageLists, then deleteListItems, then viewListItems)</Label>
-            <CommandBar items={[{
-              key: "AddColumns",
-              name: "Add a Permission",
-              icon: "Add",
-              onClick: () => {
-                this.addColumn();
-              }
+   
+   <SelectedPermissionsPanel 
+   isOpen={this.state.openPanel}
+     onPropertyChange={this.props.onPropertyChange}
+     closePanel={()=>{this.onClosePanel()}}
+     SelectedPermissions={this.props.SelectedPermissions}
 
-            },
-            {
-              key: "ClearAllColums",
-              name: "Remove All Permissions",
-              canCheck: true,
-              icon: "Delete",
-              onClick: () => {
-                this.removeAllColumns();
-              }
-
-            },
-            {
-              key: "save",
-              name: "Save",
-              canCheck: true,
-              icon: "Save",
-              onClick: () => {
-
-                this.saveChanges();
-              }
-
-            }
-
-            ]} />
-            <DetailsList
-              items={this.state.SelectedPermissions}
-              columns={this.columns}
-              layoutMode={DetailsListLayoutMode.justified}
-            />
-          </Panel>
-          : ''}
-
+   />
       </div>
     );
   }
