@@ -7,25 +7,30 @@ import { Button } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode } from "office-ui-fabric-react/lib/DetailsList";
+import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode, Selection } from "office-ui-fabric-react/lib/DetailsList";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { ColorPicker, IColorPickerProps } from "office-ui-fabric-react/lib/ColorPicker";
+import { SwatchColorPicker, ISwatchColorPickerProps } from "office-ui-fabric-react/lib/SwatchColorPicker";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { SPPermission } from "@microsoft/sp-page-context";
 import { IColor } from "office-ui-fabric-react/lib/Color";
+import ColorIconSelectorDialog from "./ColorIconSelectorDialog"
 
 export interface ISelectedPemissionPanelProps {
   isOpen: boolean;
   onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
   closePanel(): void;
-  
+
   SelectedPermissions: Array<ISelectedPermission>;
 }
 export interface ISelectedPemissionPanelState {
 
   SelectedPermissions: Array<ISelectedPermission>;
+  CurrentlySelectedPermission?: ISelectedPermission;
+  isColorIconSelecorDialogOpen: boolean;
 }
 export default class SelectedPermissionsPanel extends React.Component<ISelectedPemissionPanelProps, ISelectedPemissionPanelState> {
+  private selection: Selection;
   columns: IColumn[] = [
     {
       key: 'permission',
@@ -57,19 +62,27 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
       minWidth: 300,
       maxWidth: 300,
       isResizable: true,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
+      onRender: (item?: ISelectedPermission, index?: number, column?: IColumn) => {
+        debugger;
+        var clr: string = item.color ? item.color.str : null;
+
+
 
         return (
-          <ColorPicker
-            color={item.color}
-            onChange={(event: React.FormEvent<HTMLDivElement>, color: IColor) => {
-              var sps = this.state.SelectedPermissions;
-              item.color = color;
-              this.setState((current) => ({ ...current, SelectedPermissions: [...this.state.SelectedPermissions] }));
+          <div>
+            <Icon iconName='CircleFill' style={{ color: clr }} />
 
-            }}>
-          </ColorPicker>
+            <Button onClick={(e) => {
+              this.setState((current) => ({
+                ...current,
+                isColorIconSelecorDialogOpen: true,
+                CurrentlySelectedPermission: item
+              }));
+            }}>Edit Dispaly</Button>
+          </div>
         );
+
+
       }
 
     },
@@ -154,9 +167,13 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   constructor(props: ISelectedPemissionPanelProps) {
     super(props);
     debugger;
+    this.selection = new Selection({
+      onSelectionChanged: () => console.log("onSelectionChanged...")
+    });
     this.state = {
       SelectedPermissions: this.props.SelectedPermissions,
-      
+      isColorIconSelecorDialogOpen: false,
+
     };
   }
   public getPermissionTypes(): IDropdownOption[] {
@@ -219,52 +236,82 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
 
     //Renders content
     return (
-    
-          <Panel
-            isOpen={this.props.isOpen} hasCloseButton={true}
-            onDismiss={() => this.onClosePanel()}
-            isLightDismiss={true} type={PanelType.largeFixed}
-            headerText="Select Permissions" >
-            <Label>The grid will display the color of the first match, so list permissions from most restricted to least restricted (i.e. manageLists, then deleteListItems, then viewListItems)</Label>
-            <CommandBar items={[{
-              key: "AddColumns",
-              name: "Add a Permission",
-              icon: "Add",
-              onClick: () => {
-                this.addColumn();
+
+      <Panel
+        isOpen={this.props.isOpen} hasCloseButton={true}
+        onDismiss={() => this.onClosePanel()}
+        isLightDismiss={true} type={PanelType.largeFixed}
+        headerText="Select Permissions" >
+        <Label>The grid will display the color of the first match, so list permissions from most restricted to least restricted (i.e. manageLists, then deleteListItems, then viewListItems)</Label>
+        <CommandBar items={[{
+          key: "AddColumns",
+          name: "Add a Permission",
+          icon: "Add",
+          onClick: () => {
+            this.addColumn();
+          }
+
+        },
+        {
+          key: "ClearAllColums",
+          name: "Remove All Permissions",
+          canCheck: true,
+          icon: "Delete",
+          onClick: () => {
+            this.removeAllColumns();
+          }
+
+        },
+        {
+          key: "save",
+          name: "Save",
+          canCheck: true,
+          icon: "Save",
+          onClick: () => {
+
+            this.saveChanges();
+          }
+
+        }
+
+        ]} />
+        {this.state.isColorIconSelecorDialogOpen &&
+          <ColorIconSelectorDialog
+            isOpen={this.state.isColorIconSelecorDialogOpen}
+
+            title={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
+            subText={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
+            selectedColor={this.state.CurrentlySelectedPermission.color}
+            selectedIcon="CircleFill"
+            closePanel={() => {
+              debugger;
+              this.setState((current) => ({ ...current, isColorIconSelecorDialogOpen: false }));
+            }}
+            onPropertyChange={(field, oldvalue, newValue) => {
+              debugger;
+              switch (field) {
+                case "selectedColor":
+                  var sps = this.state.SelectedPermissions;
+                  const idx = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == this.state.CurrentlySelectedPermission.permission; });
+                  sps[idx].color = newValue;
+                  this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
+
+                case "selecteIcon":
+                  break;
+                default:
               }
+            }}
+          />
+        }
+        <DetailsList
+          items={this.state.SelectedPermissions}
+          columns={this.columns}
+          selectionMode={SelectionMode.single}
+          layoutMode={DetailsListLayoutMode.justified}
+          selection={this.selection}
+        />
+      </Panel>
 
-            },
-            {
-              key: "ClearAllColums",
-              name: "Remove All Permissions",
-              canCheck: true,
-              icon: "Delete",
-              onClick: () => {
-                this.removeAllColumns();
-              }
-
-            },
-            {
-              key: "save",
-              name: "Save",
-              canCheck: true,
-              icon: "Save",
-              onClick: () => {
-
-                this.saveChanges();
-              }
-
-            }
-
-            ]} />
-            <DetailsList
-              items={this.state.SelectedPermissions}
-              columns={this.columns}
-              layoutMode={DetailsListLayoutMode.justified}
-            />
-          </Panel>
-        
     );
   }
 }

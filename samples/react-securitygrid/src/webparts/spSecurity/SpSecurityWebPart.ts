@@ -79,11 +79,13 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       case "SelectedPermissions":
        
         this.properties.selectedPermissions = newValue;
+        this.context.propertyPane.refresh();
         break;
       default:
         break;
     }
   };
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [

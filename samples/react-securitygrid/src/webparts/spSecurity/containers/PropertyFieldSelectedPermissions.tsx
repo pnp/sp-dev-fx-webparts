@@ -1,4 +1,4 @@
-import {ISelectedPermission} from "../ISpSecurityWebPartProps";
+import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {
@@ -29,19 +29,22 @@ class PropertyFieldSelectedPermissionsBuilder implements IPropertyPaneField<IPro
   public properties: IPropertyFieldSelectedPermissionsPropsInternal;
   //Custom properties
   private label: string;
-
   private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;
   private customProperties: any;
+
   public constructor(_targetProperty: string, _properties: IPropertyFieldSelectedPermissionsPropsInternal) {
+    debugger;
     this.render = this.render.bind(this);
     this.properties = _properties;
     this.label = _properties.label;
     this.properties.onDispose = this.dispose;
     this.properties.onRender = this.render;
     this.onPropertyChange = _properties.onPropertyChange;
-    this.customProperties = _properties.SelectedPermissions?_properties.SelectedPermissions:[];
+    this.customProperties = _properties.SelectedPermissions ? _properties.SelectedPermissions : [];
   }
+
   private render(elem: HTMLElement): void {
+    debugger;
     const element: React.ReactElement<IPropertyFieldSelectedPermissionsHostProps> = React.createElement(PropertyFieldSelectedPermissionsHost, {
       label: this.label,
       onPropertyChange: this.onPropertyChange,
@@ -54,20 +57,20 @@ class PropertyFieldSelectedPermissionsBuilder implements IPropertyPaneField<IPro
   }
 }
 export function PropertyFieldSelectedPermissions(targetProperty: string, properties: IPropertyFieldSelectedPermissionsProps): IPropertyPaneField<IPropertyFieldSelectedPermissionsPropsInternal> {
-    //Create an internal properties object from the given properties
-    var newProperties: IPropertyFieldSelectedPermissionsPropsInternal = {
-      label: properties.label,
-      targetProperty: targetProperty,
-        key: targetProperty,
-      initialValue: properties.initialValue,
-      onPropertyChange: properties.onPropertyChange,
-      SelectedPermissions: properties.getSelectedPermissions(),
-      onDispose: null,
-      onRender: null,
-    };
-    //Calles the PropertyFieldSelectedPermissions builder object
-    //This object will simulate a PropertyFieldCustom to manage his rendering process
-    return new PropertyFieldSelectedPermissionsBuilder(targetProperty, newProperties);
+  //Create an internal properties object from the given properties
+  var newProperties: IPropertyFieldSelectedPermissionsPropsInternal = {
+    label: properties.label,
+    targetProperty: targetProperty,
+    key: targetProperty,
+    initialValue: properties.initialValue,
+    onPropertyChange: properties.onPropertyChange,
+    SelectedPermissions: properties.getSelectedPermissions(),
+    onDispose: null,
+    onRender: null,
+  };
+  //Calles the PropertyFieldSelectedPermissions builder object
+  //This object will simulate a PropertyFieldCustom to manage his rendering process
+  return new PropertyFieldSelectedPermissionsBuilder(targetProperty, newProperties);
 
 }
 

@@ -13,7 +13,7 @@ import { ColorPicker, IColorPickerProps } from "office-ui-fabric-react/lib/Color
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { SPPermission } from "@microsoft/sp-page-context";
 import { IColor } from "office-ui-fabric-react/lib/Color";
-import SelectedPermissionsPanel from "./SelectedPermissionPanel"
+import SelectedPermissionsPanel from "./SelectedPermissionsPanel"
 export interface IPropertyFieldSelectedPermissionsHostProps {
   label: string;
   initialValue?: Array<ISelectedPermission>;
@@ -203,8 +203,10 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     }
   }
   private saveChanges(): void {
+    debugger;
     if (this.props.onPropertyChange) {
       this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, this.state.SelectedPermissions);
+      this.setState((current) => ({ ...current, SelectedPermissions: [...this.state.SelectedPermissions] }));
       this.onClosePanel();
     }
   }
@@ -216,8 +218,8 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     this.setState((current) => ({ ...current, openPanel: false }));
   }
   public render(): JSX.Element {
-
-    //Renders content
+    debugger;
+    //This Details list Renders  the short list of permissions in the panel
     return (
       <div style={{ marginBottom: '8px' }}>
         <Label>{this.props.label}</Label>
@@ -231,14 +233,20 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
           onClick={(e) => this.onOpenPanel()}>
           Edit Permissions and Colors
           </Button>
-   
-   <SelectedPermissionsPanel 
-   isOpen={this.state.openPanel}
-     onPropertyChange={this.props.onPropertyChange}
-     closePanel={()=>{this.onClosePanel()}}
-     SelectedPermissions={this.props.SelectedPermissions}
 
-   />
+        <SelectedPermissionsPanel
+          isOpen={this.state.openPanel}
+          onPropertyChange={(prop,oldval,newval)=>{
+            debugger;
+            this.setState((current) => ({ ...current, SelectedPermissions: [...newval] }));
+            this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, newval);
+    
+
+          }}
+          closePanel={() => { this.onClosePanel() }}
+          SelectedPermissions={this.props.SelectedPermissions}
+
+        />
       </div>
     );
   }

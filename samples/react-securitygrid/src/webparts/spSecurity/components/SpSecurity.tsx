@@ -15,7 +15,7 @@ import { Spinner } from "office-ui-fabric-react/lib/Spinner";
 import { IContextualMenuItem, ContextualMenuItemType } from "office-ui-fabric-react/lib/ContextualMenu";
 import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
-import SelectedPermissionsPanel from "../containers/SelectedPermissionPanel";
+import SelectedPermissionsPanel from "../containers/SelectedPermissionsPanel";
 import {
   Environment,
   EnvironmentType

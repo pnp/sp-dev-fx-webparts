@@ -12,7 +12,7 @@ export  function Legend(props: ILegendProps ):JSX.Element {
  
   return (<div>
     {
-      props.selectedPermissions.map((sp)=><span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{sp.permission}&nbsp;:&nbsp;</span><span><Icon iconName="CircleFill"  style={{color:sp.color.str}}  /></span></span> )
+      props.selectedPermissions.map((sp)=><span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{sp.permission}&nbsp;:&nbsp;</span><span><Icon iconName="CircleFill"  style={{color:sp.color?sp.color.str:"FFFFFF"}}  /></span></span> )
     }
   </div>
   );
