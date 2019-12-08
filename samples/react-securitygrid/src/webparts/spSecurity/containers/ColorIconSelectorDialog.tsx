@@ -22,13 +22,13 @@ export interface IColorIconSelectorPanelProps {
   closePanel(): void;
   title: string;
   subText: string;
-  selectedColor: IColor;
+  selectedColor: string;
   selectedIcon: string;
 
 }
 export interface IColorIconSelectionPanelState {
 
-  selectedColor: IColor;
+  selectedColor: string;
   selectedIcon: string;
 }
 export default class ColorIconSelectionPanel extends React.Component<IColorIconSelectorPanelProps, IColorIconSelectionPanelState> {
@@ -71,7 +71,7 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
         <ColorPicker
           color={this.state.selectedColor}
           onChange={(event: React.FormEvent<HTMLDivElement>, color: IColor) => {
-            this.setState((current) => ({ ...current, selectedColor: color }));
+            this.setState((current) => ({ ...current, selectedColor: color.str }));
           }}>
         </ColorPicker>);
         <Button onClick={() => {

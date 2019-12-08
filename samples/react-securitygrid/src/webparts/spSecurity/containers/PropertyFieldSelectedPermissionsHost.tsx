@@ -139,7 +139,7 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       onRender: (item?: any, index?: number, column?: IColumn) => {
         if (item.color) {
           return (
-            <Icon iconName='CircleFill' style={{ color: item.color.str }} />
+            <Icon iconName='CircleFill' style={{ color: item.color }} />
           );
         }
         else {

@@ -64,7 +64,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
       isResizable: true,
       onRender: (item?: ISelectedPermission, index?: number, column?: IColumn) => {
         debugger;
-        var clr: string = item.color ? item.color.str : null;
+        var clr: string = item.color ? item.color : null;
 
 
 
