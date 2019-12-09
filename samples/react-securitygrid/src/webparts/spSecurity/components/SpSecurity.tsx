@@ -66,13 +66,23 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       }
     }
   }
+  public componentWillReceiveProps(newProps: ISpSecurityProps) {
+  
+    this.setState((current) => ({
+      ...current,
+      selectedPermissions: newProps.selectedPermissions,
+      showEmail: newProps.showEmail
+    }));
+
+  }
+
   public componentWillMount(): void {
 
     this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.aadHttpClient, false).then((response) => {
       const state: ISpSecurityState = {
         securityInfo: response,
-       // permission: this.props.permission,
-        selectedPermissions: this.props.selectedPermissions?this.props.selectedPermissions:[],
+        // permission: this.props.permission,
+        selectedPermissions: this.props.selectedPermissions ? this.props.selectedPermissions : [],
         showUserPanel: false,
         showListPanel: false,
         showPermissionsPanel: false,
@@ -400,7 +410,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
       );
     }
-    debugger;
+    
     let userPanelCommands: IContextualMenuItem[] = [];
     userPanelCommands.push({
       icon: "BoxAdditionSolid",
@@ -523,7 +533,6 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           key: "ShowName",
           name: "Show Name",
           onClick: (event, item) => {
-            debugger;
             this.setState((current) => ({ ...current, showEmail: false }));
           }
         },
@@ -531,7 +540,6 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           key: "ShowEmail",
           name: "Show Email",
           onClick: (event, item) => {
-            debugger;
             this.setState((current) => ({ ...current, showEmail: true }));
           }
         }]
@@ -574,16 +582,16 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         <SelectedPermissionsPanel
           isOpen={this.state.showPermissionsPanel}
           SelectedPermissions={this.props.selectedPermissions}
-          onPropertyChange={(propertyName:string,oldValue:Array<ISelectedPermission>,newValue:Array<ISelectedPermission>)=>{
-            debugger;
+          onPropertyChange={(propertyName: string, oldValue: Array<ISelectedPermission>, newValue: Array<ISelectedPermission>) => {
+        
             this.setState((current) => ({ ...current, selectedPermissions: newValue }));
           }}
-          closePanel={()=>{
-            debugger;
+          closePanel={() => {
+         
             this.setState((current) => ({ ...current, showPermissionsPanel: false }));
           }}
 
-          >
+        >
 
         </SelectedPermissionsPanel>
         <Panel

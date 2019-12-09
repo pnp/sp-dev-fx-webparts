@@ -28,6 +28,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       });
     });
   }
+ 
   public render(): void {
 
     const props: ISpSecurityProps = {
@@ -75,11 +76,14 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
   }
   private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {
   debugger;
+  // does this get oldvalue and new value?
     switch (propertyPath) {
       case "SelectedPermissions":
        
         this.properties.selectedPermissions = newValue;
+        
         this.context.propertyPane.refresh();
+        this.render();
         break;
       default:
         break;
@@ -97,13 +101,13 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
             {
               groupName: "Permission Settings",
               groupFields: [
+                
                 PropertyFieldSelectedPermissions("SelectedPermissions", {
                   label: "Selected Permissions and Colors", 
                   onPropertyChange: this.onPropertyChange.bind(this),
+                  
                   getSelectedPermissions: () => {
-                   
                     return this.properties.selectedPermissions || [];
-
                   },
                 }),
                 PropertyPaneCheckbox("letUserSelectPermission", {

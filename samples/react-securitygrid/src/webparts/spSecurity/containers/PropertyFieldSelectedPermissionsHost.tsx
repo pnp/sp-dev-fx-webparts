@@ -25,93 +25,6 @@ export interface IPropertyFieldSelectedPermissionsHostState {
   SelectedPermissions: Array<ISelectedPermission>;
 }
 export default class PropertyFieldSelectedPermissionsHost extends React.Component<IPropertyFieldSelectedPermissionsHostProps, IPropertyFieldSelectedPermissionsHostState> {
-  columns: IColumn[] = [
-    {
-      key: 'permission',
-      name: 'Permission',
-      fieldName: 'permission',
-      minWidth: 100,
-      maxWidth: 200,
-      isResizable: true,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
-
-        return (
-          <Dropdown
-            options={this.getPermissionTypes()}
-            defaultSelectedKey={item.permission}
-            onChange={(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => {
-              var sps = this.state.SelectedPermissions;
-              item.permission = option.text;
-              this.setState((current) => ({ ...current, SelectedPermissions: [...this.state.SelectedPermissions] }));
-
-            }}>
-          </Dropdown>
-        );
-      }
-    },
-    {
-      key: 'color',
-      name: 'Colour',
-      fieldName: 'color',
-      minWidth: 300,
-      maxWidth: 300,
-      isResizable: true,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
-
-        return (
-          <ColorPicker
-            color={item.color}
-            onChange={(event: React.FormEvent<HTMLDivElement>, color: IColor) => {
-              var sps = this.state.SelectedPermissions;
-              item.color = color;
-              this.setState((current) => ({ ...current, SelectedPermissions: [...this.state.SelectedPermissions] }));
-
-            }}>
-          </ColorPicker>
-        );
-      }
-
-    },
-    {
-      key: 'commands',
-      name: '',
-      fieldName: 'color',
-      minWidth: 50,
-      maxWidth: 50,
-      isResizable: false,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
-        return (
-          <div>
-            <IconButton
-              iconProps={{ iconName: 'Up', }}
-              onClick={(e) => {
-                debugger;
-                this.moveColumnUp(item);
-              }}>
-            </IconButton>
-
-            <IconButton
-              iconProps={{ iconName: 'Down', }}
-              onClick={(e) => {
-                debugger;
-                this.moveColumnDown(item);
-              }}>
-            </IconButton>
-
-            <IconButton
-              iconProps={{ iconName: 'Delete', }}
-              onClick={(e) => {
-                debugger;
-                this.removeColumn(item);
-              }}>
-            </IconButton>
-          </div>
-        );
-      }
-
-    },
-
-  ];
   panelColumns: IColumn[] = [
     {
       key: 'permission',
@@ -131,7 +44,7 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     },
     {
       key: 'color',
-      name: 'Colour',
+      name: 'Display',
       fieldName: 'color',
       minWidth: 50,
       maxWidth: 50,
@@ -152,7 +65,6 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
   ];
   constructor(props: IPropertyFieldSelectedPermissionsHostProps) {
     super(props);
-    debugger;
     this.state = {
       SelectedPermissions: this.props.SelectedPermissions,
       openPanel: false
@@ -237,7 +149,6 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
         <SelectedPermissionsPanel
           isOpen={this.state.openPanel}
           onPropertyChange={(prop,oldval,newval)=>{
-            debugger;
             this.setState((current) => ({ ...current, SelectedPermissions: [...newval] }));
             this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, newval);
     

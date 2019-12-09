@@ -36,8 +36,8 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
       key: 'permission',
       name: 'Permission',
       fieldName: 'permission',
-      minWidth: 100,
-      maxWidth: 200,
+      minWidth: 150,
+      maxWidth: 150,
       isResizable: true,
       onRender: (item?: any, index?: number, column?: IColumn) => {
 
@@ -57,17 +57,14 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
     },
     {
       key: 'color',
-      name: 'Colour',
+      name: 'Display',
       fieldName: 'color',
-      minWidth: 300,
-      maxWidth: 300,
+      minWidth: 100,
+      maxWidth: 100,
       isResizable: true,
       onRender: (item?: ISelectedPermission, index?: number, column?: IColumn) => {
         debugger;
         var clr: string = item.color ? item.color : null;
-
-
-
         return (
           <div>
             <Icon iconName='CircleFill' style={{ color: clr }} />
@@ -78,7 +75,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
                 isColorIconSelecorDialogOpen: true,
                 CurrentlySelectedPermission: item
               }));
-            }}>Edit Dispaly</Button>
+            }}>Edit Display</Button>
           </div>
         );
 
@@ -98,6 +95,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
           <div>
             <IconButton
               iconProps={{ iconName: 'Up', }}
+              style={{display:index===0?"none":"normal"}}
               onClick={(e) => {
                 debugger;
                 this.moveColumnUp(item);
@@ -106,6 +104,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
 
             <IconButton
               iconProps={{ iconName: 'Down', }}
+              style={{display:index===this.state.SelectedPermissions.length-1?"none":"normal"}}
               onClick={(e) => {
                 debugger;
                 this.moveColumnDown(item);
