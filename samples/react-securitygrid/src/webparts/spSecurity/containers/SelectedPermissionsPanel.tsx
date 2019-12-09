@@ -1,5 +1,5 @@
 
-import { findIndex, filter,first } from "underscore";
+import { findIndex, filter, first } from "underscore";
 import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
@@ -142,18 +142,18 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
         perms.push({
           text: perm,
           key: perm,
-          disabled:findIndex(this.state.SelectedPermissions, (sp: ISelectedPermission) => {  return sp.permission == perm }) !== -1
+          disabled: findIndex(this.state.SelectedPermissions, (sp: ISelectedPermission) => { return sp.permission == perm }) !== -1
         });
       }
     }
     return perms;
   }
- 
+
   private addColumn(): void {
     debugger;
-    let unusedPermission=first(filter(this.getPermissionTypes(),(pt)=>{ return !pt.disabled}));
-    if (unusedPermission){
-    
+    let unusedPermission = first(filter(this.getPermissionTypes(), (pt) => { return !pt.disabled }));
+    if (unusedPermission) {
+
       const col: ISelectedPermission = { "permission": unusedPermission.text, color: "FFFFFF", iconName: "Blocked" };
       var sp = this.state.SelectedPermissions;
       sp.push(col);
@@ -260,8 +260,12 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
                   const idx = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == this.state.CurrentlySelectedPermission.permission; });
                   sps[idx].color = newValue;
                   this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
-
-                case "selecteIcon":
+                  break;
+                case "selectedIcon":
+                  var sps = this.state.SelectedPermissions;
+                  const idx2 = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == this.state.CurrentlySelectedPermission.permission; });
+                  sps[idx2].iconName = newValue;
+                  this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
                   break;
                 default:
               }
