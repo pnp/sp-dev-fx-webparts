@@ -1,18 +1,18 @@
 
-import { findIndex, filter } from "underscore";
+
 import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Button } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+;
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+
 import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode } from "office-ui-fabric-react/lib/DetailsList";
-import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
-import { ColorPicker, IColorPickerProps } from "office-ui-fabric-react/lib/ColorPicker";
-import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import {  IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
+
+
 import { SPPermission } from "@microsoft/sp-page-context";
-import { IColor } from "office-ui-fabric-react/lib/Color";
+
 import SelectedPermissionsPanel from "./SelectedPermissionsPanel"
 export interface IPropertyFieldSelectedPermissionsHostProps {
   label: string;
@@ -34,7 +34,6 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       maxWidth: 100,
       isResizable: true,
       onRender: (item?: any, index?: number, column?: IColumn) => {
-
         return (
           <div>
             {item.permission}

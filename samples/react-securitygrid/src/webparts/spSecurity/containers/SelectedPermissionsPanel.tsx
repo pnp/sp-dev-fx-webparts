@@ -1,20 +1,18 @@
 
-import { findIndex, filter } from "underscore";
+import { findIndex, filter,first } from "underscore";
 import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode, Selection } from "office-ui-fabric-react/lib/DetailsList";
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
-import { ColorPicker, IColorPickerProps } from "office-ui-fabric-react/lib/ColorPicker";
-import { SwatchColorPicker, ISwatchColorPickerProps } from "office-ui-fabric-react/lib/SwatchColorPicker";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { SPPermission } from "@microsoft/sp-page-context";
-import { IColor } from "office-ui-fabric-react/lib/Color";
 import ColorIconSelectorDialog from "./ColorIconSelectorDialog"
+import { disableBodyScroll } from "@uifabric/utilities";
 
 export interface ISelectedPemissionPanelProps {
   isOpen: boolean;
@@ -95,7 +93,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
           <div>
             <IconButton
               iconProps={{ iconName: 'Up', }}
-              style={{display:index===0?"none":"normal"}}
+              style={{ display: index === 0 ? "none" : "normal" }}
               onClick={(e) => {
                 debugger;
                 this.moveColumnUp(item);
@@ -104,7 +102,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
 
             <IconButton
               iconProps={{ iconName: 'Down', }}
-              style={{display:index===this.state.SelectedPermissions.length-1?"none":"normal"}}
+              style={{ display: index === this.state.SelectedPermissions.length - 1 ? "none" : "normal" }}
               onClick={(e) => {
                 debugger;
                 this.moveColumnDown(item);
@@ -138,23 +136,29 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
     };
   }
   public getPermissionTypes(): IDropdownOption[] {
-    let perms = new Array();
+    let perms = new Array<IDropdownOption>();
     for (const perm in SPPermission) {
       if (typeof (SPPermission[perm]) === "object") {
         perms.push({
           text: perm,
-          key: perm
+          key: perm,
+          disabled:findIndex(this.state.SelectedPermissions, (sp: ISelectedPermission) => {  return sp.permission == perm }) !== -1
         });
       }
     }
     return perms;
   }
+ 
   private addColumn(): void {
     debugger;
-    const col: ISelectedPermission = { "permission": null, color: "FFFFFF",iconName:"Blocked" };
-    var sp = this.state.SelectedPermissions;
-    sp.push(col);
-    this.setState((current) => ({ ...current, SelectedPermissions: [...sp] }));
+    let unusedPermission=first(filter(this.getPermissionTypes(),(pt)=>{ return !pt.disabled}));
+    if (unusedPermission){
+    
+      const col: ISelectedPermission = { "permission": unusedPermission.text, color: "FFFFFF", iconName: "Blocked" };
+      var sp = this.state.SelectedPermissions;
+      sp.push(col);
+      this.setState((current) => ({ ...current, SelectedPermissions: [...sp] }));
+    }
   }
   private removeColumn(column: ISelectedPermission): void {
     var sps = filter(this.state.SelectedPermissions, (o: ISelectedPermission) => { return o.permission !== column.permission; });
