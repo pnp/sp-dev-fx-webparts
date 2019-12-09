@@ -267,7 +267,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       if (Helpers.doesUserHavePermission(item, user, SPPermission[selectedPermission.permission],
         this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
         return (
-          <Icon iconName="CircleFill" style={{ color: selectedPermission.color }} onClick={(e) => {
+          <Icon iconName={selectedPermission.iconName} style={{ color: selectedPermission.color }} onClick={(e) => {
             this.expandCollapseList(item);
           }} />
         );
@@ -275,7 +275,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }
     // no hits
     return (
-      <Icon iconName="LocationCircle" onClick={(e) => {
+      <Icon iconName={item.iconName}  onClick={(e) => {
         this.expandCollapseList(item);
       }} />
     );

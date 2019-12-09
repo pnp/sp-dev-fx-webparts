@@ -2,6 +2,7 @@ import { SPSiteUser } from "../SPSecurityService";
 export interface ISelectedPermission {
   permission: string;
   color: string;
+  iconName:string;
 }
 
 

@@ -49,18 +49,11 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       minWidth: 50,
       maxWidth: 50,
       isResizable: false,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
-        if (item.color) {
-          return (
-            <Icon iconName='CircleFill' style={{ color: item.color }} />
-          );
-        }
-        else {
-          return (<Icon iconName='CircleFill' />
-          );
-        }
+      onRender: (item?: ISelectedPermission, index?: number, column?: IColumn) => {
+        return (
+          <Icon iconName={item.iconName} style={{ color: item.color }} />
+        );
       }
-
     }
   ];
   constructor(props: IPropertyFieldSelectedPermissionsHostProps) {
@@ -108,10 +101,10 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
 
         <SelectedPermissionsPanel
           isOpen={this.state.openPanel}
-          onPropertyChange={(prop,oldval,newval)=>{
+          onPropertyChange={(prop, oldval, newval) => {
             this.setState((current) => ({ ...current, SelectedPermissions: [...newval] }));
             this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, newval);
-    
+
 
           }}
           closePanel={() => { this.onClosePanel() }}

@@ -64,10 +64,10 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
       isResizable: true,
       onRender: (item?: ISelectedPermission, index?: number, column?: IColumn) => {
         debugger;
-        var clr: string = item.color ? item.color : null;
+        //var clr: string = item.color ? item.color : null;
         return (
           <div>
-            <Icon iconName='CircleFill' style={{ color: clr }} />
+            <Icon iconName={item.iconName} style={{ color: item.color }} />
 
             <Button onClick={(e) => {
               this.setState((current) => ({
@@ -151,7 +151,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   }
   private addColumn(): void {
     debugger;
-    const col: ISelectedPermission = { "permission": null, "color": null };
+    const col: ISelectedPermission = { "permission": null, color: "FFFFFF",iconName:"Blocked" };
     var sp = this.state.SelectedPermissions;
     sp.push(col);
     this.setState((current) => ({ ...current, SelectedPermissions: [...sp] }));
@@ -243,7 +243,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
             title={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
             subText={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
             selectedColor={this.state.CurrentlySelectedPermission.color}
-            selectedIcon="CircleFill"
+            selectedIcon={this.state.CurrentlySelectedPermission.iconName}
             closePanel={() => {
               debugger;
               this.setState((current) => ({ ...current, isColorIconSelecorDialogOpen: false }));
