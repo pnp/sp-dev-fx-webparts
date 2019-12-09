@@ -1,18 +1,8 @@
 
-import { findIndex, filter } from "underscore";
-import { ISelectedPermission } from "../ISpSecurityWebPartProps";
+
 import * as React from 'react';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Button, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode, Selection } from "office-ui-fabric-react/lib/DetailsList";
-import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
-import { ColorPicker, IColorPickerProps } from "office-ui-fabric-react/lib/ColorPicker";
-import { SwatchColorPicker, ISwatchColorPickerProps } from "office-ui-fabric-react/lib/SwatchColorPicker";
-import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
-import { SPPermission } from "@microsoft/sp-page-context";
+import { ColorPicker } from "office-ui-fabric-react/lib/ColorPicker";
 import { IColor } from "office-ui-fabric-react/lib/Color";
 import { Dialog } from "office-ui-fabric-react/lib/Dialog";
 

@@ -1,6 +1,4 @@
 import { SPSiteUser } from "../SPSecurityService";
-import { SPPermission } from "@microsoft/sp-page-context";
-import { IColor } from "office-ui-fabric-react/lib/Color";
 export interface ISelectedPermission {
   permission: string;
   color: string;

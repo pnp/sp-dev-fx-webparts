@@ -255,37 +255,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }
 
   }
-  // public getIcon(item?: any, index?: number, column?: IColumn): string {
-  //   debugger;
-  //   let classname: string = "";
-  //   if (item instanceof SPList || item.type==="Folder") {
-  //     if (item.itemCount === 0) {
-  //       return "FabricFolderFill";
-  //     } else {
-  //       return "FabricFolder";
-  //     }
-  //   } else{
-  //     return "ms-Icon ms-Icon--ExcelDocument"
-  //   }
-
-  // }
-  // public renderTitle(item?: any, index?: number, column?: IColumn): any {
-  //   let classname: string = "";
-  //   if (item instanceof SPListItem) {
-  //     classname = "ms-u-smOffset" + (item.level);
-  //   }
-  //  return (
-  //     <div className={classname}>
-  //       <div style={{ float: "left" }}>
-  //         <Icon iconName={this.getIcon(item, index, column)} onClick={(e) => {
-  //           this.expandCollapseList(item);
-  //         }} />
-  //       </div>
-  //       <div>&nbsp;{item.title}</div>
-  //       <div style={{ clear: "both" }} />
-  //     </div>
-  //   );
-  // }
+ 
   public renderUserItem(item?: any, index?: number, column?: IColumn): any {
 
     let user: SPSiteUser = find(this.state.securityInfo.siteUsers, (su) => {
@@ -310,23 +280,6 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       }} />
     );
 
-
-    //////////// OLD WAY
-    // if (Helpers.doesUserHavePermission(item, user, SPPermission[this.state.permission],
-    //   this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
-    //   return (
-    //     <Icon iconName="CircleFill" onClick={(e) => {
-    //       this.expandCollapseList(item);
-    //     }} />
-    //   );
-    // } else {
-    //   return (
-    //     <Icon iconName="LocationCircle" onClick={(e) => {
-    //       this.expandCollapseList(item);
-    //     }} />
-    //   );
-    // }
-    //////////////////////+/ OLD WAY
   }
   public renderUserSelected(item?: SPSiteUser, index?: number, column?: IColumn): any {
 
@@ -472,22 +425,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     });
     let commands: IContextualMenuItem[] = [];
     if (this.props.letUserSelectPermission) {
-      // commands.push({
-      //   title: "Permission",
-      //   name: "Permission:",
-      //   key: "permissionlabel"
-      // })
-      // commands.push({
-      //   icon: "AzureKeyVault",
-      //   key: "SecurityLevel",
-      //   title: "Permission",
-      //   label: "sss",
-      //   name: this.state.permission ? this.state.permission : "Select Permission",
-      //   itemType: ContextualMenuItemType.Normal,
-      //   subMenuProps: {
-      //     items: this.getPermissionLevels()
-      //   }
-      // });
+      
       commands.push({
         icon: "AzureKeyVault",
         key: "SecurityLevel2",

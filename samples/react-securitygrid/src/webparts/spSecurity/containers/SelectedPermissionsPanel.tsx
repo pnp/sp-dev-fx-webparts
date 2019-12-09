@@ -125,44 +125,6 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
     },
 
   ];
-  panelColumns: IColumn[] = [
-    {
-      key: 'permission',
-      name: 'Permission',
-      fieldName: 'permission',
-      minWidth: 100,
-      maxWidth: 100,
-      isResizable: true,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
-
-        return (
-          <div>
-            {item.permission}
-          </div>
-        );
-      }
-    },
-    {
-      key: 'color',
-      name: 'Colour',
-      fieldName: 'color',
-      minWidth: 50,
-      maxWidth: 50,
-      isResizable: false,
-      onRender: (item?: any, index?: number, column?: IColumn) => {
-        if (item.color) {
-          return (
-            <Icon iconName='CircleFill' style={{ color: item.color.str }} />
-          );
-        }
-        else {
-          return (<Icon iconName='CircleFill' />
-          );
-        }
-      }
-
-    }
-  ];
   constructor(props: ISelectedPemissionPanelProps) {
     super(props);
     debugger;

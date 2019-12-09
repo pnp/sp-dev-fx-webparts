@@ -82,46 +82,6 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
     }
     return perms;
   }
-  private addColumn(): void {
-    debugger;
-    const col: ISelectedPermission = { "permission": null, "color": null };
-    var sp = this.state.SelectedPermissions;
-    sp.push(col);
-    this.setState((current) => ({ ...current, SelectedPermissions: [...sp] }));
-  }
-  private removeColumn(column: ISelectedPermission): void {
-    var sps = filter(this.state.SelectedPermissions, (o: ISelectedPermission) => { return o.permission !== column.permission; });
-    this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
-  }
-  private removeAllColumns(): void {
-    this.setState((current) => ({ ...current, SelectedPermissions: [] }));
-  }
-  private moveColumnUp(column: ISelectedPermission): void {
-
-    var sps: ISelectedPermission[] = this.state.SelectedPermissions;
-    const index = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == column.permission });
-    if (index != -1) {
-      sps[index] = sps.splice(index - 1, 1, sps[index])[0];
-      this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
-    }
-  }
-  private moveColumnDown(column: ISelectedPermission): void {
-
-    var sps: ISelectedPermission[] = this.state.SelectedPermissions;
-    const index = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == column.permission });
-    if (index != -1) {
-      sps[index] = sps.splice(index + 1, 1, sps[index])[0];
-      this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
-    }
-  }
-  private saveChanges(): void {
-    debugger;
-    if (this.props.onPropertyChange) {
-      this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, this.state.SelectedPermissions);
-      this.setState((current) => ({ ...current, SelectedPermissions: [...this.state.SelectedPermissions] }));
-      this.onClosePanel();
-    }
-  }
   private onOpenPanel(element?: any): void {
     this.setState((current) => ({ ...current, openPanel: true }));
   }
