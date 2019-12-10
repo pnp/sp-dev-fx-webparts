@@ -6,7 +6,9 @@ import { ColorPicker } from "office-ui-fabric-react/lib/ColorPicker";
 import { IColor } from "office-ui-fabric-react/lib/Color";
 import { Dialog } from "office-ui-fabric-react/lib/Dialog";
 import { IconNames, initializeIcons } from "office-ui-fabric-react/lib/Icons";
+import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
+
 import {
   ComboBox,
   IComboBox,
@@ -23,17 +25,29 @@ export interface IColorIconSelectorPanelProps {
   subText: string;
   selectedColor: string;
   selectedIcon: string;
+  freindlyName: string;
+
 
 }
 export interface IColorIconSelectionPanelState {
 
   selectedColor: string;
   selectedIcon: string;
+  freindlyName: string;
 }
 export default class ColorIconSelectionPanel extends React.Component<IColorIconSelectorPanelProps, IColorIconSelectionPanelState> {
 
   private iconNames = ["ChevronDown",
     "ChevronUp",
+    "ChevronDown",
+    "PageLink",
+    "Mail",
+    "FavoriteStar",
+    "Back",
+    "CheckBox",
+    "View",
+    "Contrast",
+    "IncidentTriange",
     "Edit",
     "Add",
     "Cancel",
@@ -46,15 +60,18 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
 
     this.state = {
       selectedColor: this.props.selectedColor,
-      selectedIcon: this.props.selectedIcon
+      selectedIcon: this.props.selectedIcon,
+      freindlyName: this.props.freindlyName
 
     };
   }
 
   private saveChanges(): void {
+    // TODO clean this up. s/b one call
     if (this.props.onPropertyChange) {
       this.props.onPropertyChange("selectedColor", this.props.selectedColor, this.state.selectedColor);
       this.props.onPropertyChange("selectedIcon", this.props.selectedIcon, this.state.selectedIcon);
+      this.props.onPropertyChange("freindlyName", this.props.freindlyName, this.state.freindlyName);
       this.onClosePanel();
     }
   }
@@ -97,6 +114,12 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
         title={this.props.title}
         subText={this.props.subText}
       >
+         <TextField label="Friendly Name" 
+          defaultValue={this.state.freindlyName}
+          onChange={(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
+            this.setState((current) => ({ ...current, freindlyName: newValue }));
+          }}>
+        </TextField>
         <ColorPicker
           color={this.state.selectedColor}
           onChange={(event: React.FormEvent<HTMLDivElement>, color: IColor) => {
@@ -114,7 +137,7 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
           }}
         />
 
-          <Icon iconName={this.state.selectedIcon} style={{ color: this.state.selectedColor }}/>
+        <Icon iconName={this.state.selectedIcon} style={{ color: this.state.selectedColor }} />
 
         <Button onClick={() => {
           this.onClosePanel()

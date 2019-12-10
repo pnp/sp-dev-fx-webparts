@@ -54,6 +54,15 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
       }
     },
     {
+      key: 'freindlyName',
+      name: 'Name in Legend',
+      fieldName: 'freindlyName',
+      minWidth: 150,
+      maxWidth: 150,
+      isResizable: true
+    
+    },
+    {
       key: 'color',
       name: 'Display',
       fieldName: 'color',
@@ -154,7 +163,12 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
     let unusedPermission = first(filter(this.getPermissionTypes(), (pt) => { return !pt.disabled }));
     if (unusedPermission) {
 
-      const col: ISelectedPermission = { "permission": unusedPermission.text, color: "FFFFFF", iconName: "Blocked" };
+      const col: ISelectedPermission = {
+        "permission": unusedPermission.text,
+        "freindlyName": unusedPermission.text,
+        color: "FFFFFF",
+        iconName: "Blocked"
+      };
       var sp = this.state.SelectedPermissions;
       sp.push(col);
       this.setState((current) => ({ ...current, SelectedPermissions: [...sp] }));
@@ -187,6 +201,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   }
   private saveChanges(): void {
     if (this.props.onPropertyChange) {
+      debugger;
       this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, this.state.SelectedPermissions);
       this.onClosePanel();
     }
@@ -248,6 +263,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
             subText={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
             selectedColor={this.state.CurrentlySelectedPermission.color}
             selectedIcon={this.state.CurrentlySelectedPermission.iconName}
+            freindlyName={this.state.CurrentlySelectedPermission.freindlyName}
             closePanel={() => {
               debugger;
               this.setState((current) => ({ ...current, isColorIconSelecorDialogOpen: false }));
@@ -265,6 +281,12 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
                   var sps = this.state.SelectedPermissions;
                   const idx2 = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == this.state.CurrentlySelectedPermission.permission; });
                   sps[idx2].iconName = newValue;
+                  this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
+                  break;
+                case "freindlyName":
+                  var sps = this.state.SelectedPermissions;
+                  const idx3 = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == this.state.CurrentlySelectedPermission.permission; });
+                  sps[idx3].freindlyName = newValue;
                   this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
                   break;
                 default:

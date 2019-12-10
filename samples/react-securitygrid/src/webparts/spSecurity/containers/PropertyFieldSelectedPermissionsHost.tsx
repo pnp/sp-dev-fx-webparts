@@ -42,6 +42,21 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
       }
     },
     {
+      key: 'freindlyName',
+      name: 'Name in Legend',
+      fieldName: 'freindlyName',
+      minWidth: 90,
+      maxWidth: 90,
+      isResizable: true,
+      onRender: (item?: any, index?: number, column?: IColumn) => {
+        return (
+          <div>
+            {item.freindlyName}
+          </div>
+        );
+      }
+    },
+    {
       key: 'color',
       name: 'Display',
       fieldName: 'color',

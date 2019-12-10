@@ -3,6 +3,7 @@ export interface ISelectedPermission {
   permission: string;
   color: string;
   iconName:string;
+  freindlyName:string;
 }
 
 
