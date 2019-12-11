@@ -250,14 +250,14 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
         {this.state.isColorIconSelecorDialogOpen &&
           <ColorIconSelectorDialog
             isOpen={this.state.isColorIconSelecorDialogOpen}
-
+            SelectedPermissions={this.state.SelectedPermissions}
             title={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
             subText={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
             currentPerm={this.state.CurrentlySelectedPermission}
             closePanel={() => {
               this.setState((current) => ({ ...current, isColorIconSelecorDialogOpen: false }));
             }}
-            onPermissionChange={(perm:ISelectedPermission) => {
+            onPermissionChange={(perm: ISelectedPermission) => {
               debugger;
               var sps = this.state.SelectedPermissions;
               const idx = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == this.state.CurrentlySelectedPermission.permission; });
