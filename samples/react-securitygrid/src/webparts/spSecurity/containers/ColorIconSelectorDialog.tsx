@@ -97,7 +97,6 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
   }
 
   private saveChanges(): void {
-    // TODO clean this up. s/b one call
     this.props.onPermissionChange(this.state.selectedColor, this.state.selectedIcon, this.state.freindlyName);
     this.onClosePanel();
   }
