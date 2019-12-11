@@ -5,7 +5,7 @@ import { IColor } from "office-ui-fabric-react/lib/Color";
 import { Dialog } from "office-ui-fabric-react/lib/Dialog";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
-import {  ComboBox,  IComboBox,  IComboBoxOption,} from "office-ui-fabric-react/lib/ComboBox";
+import { ComboBox, IComboBox, IComboBoxOption, } from "office-ui-fabric-react/lib/ComboBox";
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export interface IColorIconSelectorPanelProps {
@@ -25,22 +25,64 @@ export interface IColorIconSelectionPanelState {
 }
 export default class ColorIconSelectionPanel extends React.Component<IColorIconSelectorPanelProps, IColorIconSelectionPanelState> {
 
-  private iconNames = ["ChevronDown",
-    "ChevronUp",
-    "ChevronDown",
-    "PageLink",
-    "Mail",
-    "FavoriteStar",
-    "Back",
-    "CheckBox",
-    "View",
-    "Contrast",
-    "IncidentTriange",
-    "Edit",
-    "Add",
-    "Cancel",
-    "More",
-    "Settings"
+  private iconNames = [
+        "Add",
+        "AddFreind",
+        "Admin",
+        "Back",
+        "BlockContact",
+        "Cancel",
+        "Cat",
+        "CheckBox",
+        "CheckBoxComposite",
+        "CheckMark",
+        "ChevronDown",
+        "ChevronUp",
+        "CircleFill",
+        "CircleRing",
+        "Clear",
+        "Contact",
+        "Contrast",
+        "Delete",
+        "Design",
+        "eDiscovery",
+        "Edit",
+        "EditSolid12",
+        "Emoji2",
+        "Error",
+        "FavoriteStar",
+        "FavoriteStarFill",
+        "Glasses",
+        "HomeSolid",
+        "IncidentTriangle",
+        "LaptopSecure",
+        "LifeSaver",
+        "LifeSaverLock",
+        "Lock", 
+        "LockSolid",
+        "Mail",
+        "More",
+        "PageLink",
+        "People",
+        "PeopleAdd",
+        "Permissions",
+        "PinSolid12",
+        "RedEye",
+        "Sad",
+        "SecurityGroup",
+        "Settings",
+        "Share",
+        "SwitdchUser",
+        "Sync",
+        "TriangleSolid",
+        "UnEditable",
+        "UnEditable2",
+        "Unlock",
+        "UserWarning",
+        "View",
+    
+    
+    
   ]
   constructor(props: IColorIconSelectorPanelProps) {
     super(props);
@@ -101,7 +143,7 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
           }}>
         </TextField>
         <Label>Color:</Label>
-        <ColorPicker 
+        <ColorPicker
           color={this.state.selectedColor}
           onChange={(event: React.FormEvent<HTMLDivElement>, color: IColor) => {
             this.setState((current) => ({ ...current, selectedColor: color.str }));
@@ -117,7 +159,7 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
             this.setState((current) => ({ ...current, selectedIcon: option.text }));
           }}
         />
-       <Label>Display:</Label>
+        <Label>Display:</Label>
         <Icon iconName={this.state.selectedIcon} style={{ color: this.state.selectedColor }} />
         <br></br>
         <br></br>

@@ -1,4 +1,4 @@
-﻿import {sp} from "@pnp/sp";
+﻿import { sp } from "@pnp/sp";
 import { find, indexOf, includes } from "lodash";
 import { SPPermission } from "@microsoft/sp-page-context";
 import { AadHttpClient, HttpClientResponse, IAadHttpClientOptions } from "@microsoft/sp-http";
@@ -110,8 +110,18 @@ export class SPRoleAssignment {
 
 }
 export class Helpers {
+  public static doesUserHaveAnyPermission(securableObjects: any[], user, requestedpermissions: SPPermission[], roles, siteGroups): boolean {
+    for (var securableObject of securableObjects) {
+      for (var requestedpermission of requestedpermissions) {
+        if (Helpers.doesUserHavePermission(securableObject, user, requestedpermission, roles, siteGroups)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
   public static doesUserHavePermission(securableObject, user, requestedpermission: SPPermission, roles, siteGroups) {
-   
+
     const permissions: SPBasePermissions[] = Helpers.getUserPermissionsForObject(securableObject, user, roles, siteGroups);
     for (const permission of permissions) {
       if (
@@ -263,7 +273,7 @@ export default class SPSecurityService {
           for (let roleAssignmentObject of listItem.RoleAssignments) {
 
             let roleAssignment: SPRoleAssignment = {
-              roleDefinitionIds:  roleAssignmentObject.RoleDefinitionBindings.map((rdb) => { return rdb.Id; }),
+              roleDefinitionIds: roleAssignmentObject.RoleDefinitionBindings.map((rdb) => { return rdb.Id; }),
               principalId: roleAssignmentObject.PrincipalId
             };
             // if (roleAssignmentObject.Member.UserId) {
@@ -393,7 +403,7 @@ export default class SPSecurityService {
     let filter: string = filters.join(" and ");
     sp.web.lists
       .expand("RootFolder", "RoleAssignments", "RoleAssignments/RoleDefinitionBindings", "RoleAssignments/Member",
-      "RoleAssignments/Member/Users", "RoleAssignments/Member/Groups", "RoleAssignments/Member/UserId")
+        "RoleAssignments/Member/Users", "RoleAssignments/Member/Groups", "RoleAssignments/Member/UserId")
       .filter(filter)
       .inBatch(batch).get().then((response) => {
 

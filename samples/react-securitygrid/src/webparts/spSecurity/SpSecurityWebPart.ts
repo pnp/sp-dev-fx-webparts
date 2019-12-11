@@ -39,6 +39,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       showEmail: this.properties.showEmail,
       showSecurityGroups: this.properties.showSecurityGroups,
       showUsers: this.properties.showUsers,
+      showOnlyUsersWithPermission:this.properties.showOnlyUsersWithPermission,
       letUserSelectPermission: this.properties.letUserSelectPermission,
       letUserSelectUsers: this.properties.letUserSelectUsers,
       letUserSelectLists: this.properties.letUserSelectLists,
@@ -131,7 +132,11 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                 PropertyPaneCheckbox("showUsers", {
                   text: "Show Users"
                 }),
-
+                PropertyPaneToggle("showOnlyUsersWithPermission", {
+                  label: "Only show users with permission",
+                  onText: "Show users only if they have permission",
+                  offText: "Show all users",
+                }),
                 PropertyPaneCheckbox("letUserSelectUsers", {
                   text: "Let user select Users"
                 })

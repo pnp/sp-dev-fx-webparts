@@ -35,7 +35,8 @@
         "includeAdminSelectedLists": false,
         "listTitleColumnWidth": 120,
         "showEmail": false,
-        "showUsers": true
+        "showUsers": true,
+        "showOnlyUsersWithPermission":false
       }
     }
   ]

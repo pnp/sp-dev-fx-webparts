@@ -210,7 +210,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       </div>);
   }
   public renderListTitle(item?: any, index?: number, column?: IColumn): any {
-
+debugger;
     let classname = " ms-Icon ";
     if (item.itemCount > 0) {
       classname += "  ms-Icon ms-Icon--FabricFormLibrary " + styles.themecolor;
@@ -219,6 +219,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }
     return (
       <div onClick={(e) => {
+        debugger;
         this.expandCollapseList(item);
       }}>
         <div className={classname} />
@@ -297,6 +298,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           ||
           (user.principalType === 4 && this.props.showSecurityGroups)
         )
+         if(!this.props.showOnlyUsersWithPermission ||  Helpers.doesUserHaveAnyPermission(this.state.securityInfo.lists,user,this.state.selectedPermissions.map((sp)=>{return  SPPermission[sp.permission]}), this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups))
           columns.push({
             key: user.id.toString(),
             name: this.state.showEmail ? user.upn : user.name,
@@ -372,11 +374,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       name: "Add All Users",
       itemType: ContextualMenuItemType.Normal,
       onClick: (event, item) => {
-
         for (let item of this.state.securityInfo.siteUsers) {
           item.isSelected = true;
         }
-
         this.setState(this.state);
       }
     });

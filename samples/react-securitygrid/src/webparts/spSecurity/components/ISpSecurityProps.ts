@@ -21,6 +21,7 @@ export interface ISpSecurityProps {
   showEmail:boolean; //0 show name, 1 show email
   showSecurityGroups:boolean; // show PrincipalType=4
   showUsers:boolean; // show PrincipalType=1
+  showOnlyUsersWithPermission:boolean; //// toggle to show everyone, or justy the users who have the permissions
   domElement:any; // needed to disable button postback after render on classic pages
   
   
