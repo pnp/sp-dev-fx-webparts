@@ -38,7 +38,7 @@
         "listTitleColumnWidth": 120,
         "showEmail": false,
         "showUsers": true,
-        "showOnlyUsersWithPermission": false,
+        "showOnlyUsersWithPermission": true,
         "selectedPermissions": [
           {
             "permission": "manageLists",
