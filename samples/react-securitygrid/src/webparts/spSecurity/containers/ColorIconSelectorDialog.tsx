@@ -1,36 +1,24 @@
-
-
 import * as React from 'react';
 import { Button, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ColorPicker } from "office-ui-fabric-react/lib/ColorPicker";
 import { IColor } from "office-ui-fabric-react/lib/Color";
 import { Dialog } from "office-ui-fabric-react/lib/Dialog";
-import { IconNames, initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
-
-import {
-  ComboBox,
-  IComboBox,
-  IComboBoxOption,
-  IComboBoxProps,
-} from "office-ui-fabric-react/lib/ComboBox";
-
+import {  ComboBox,  IComboBox,  IComboBoxOption,} from "office-ui-fabric-react/lib/ComboBox";
+import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export interface IColorIconSelectorPanelProps {
   isOpen: boolean;
-  onPropertyChange(propertyPath: string, oldValue: any, newValue: any): void;
+  onPermissionChange(color: string, icon: string, friendlyName: string): void;
   closePanel(): void;
   title: string;
   subText: string;
   selectedColor: string;
   selectedIcon: string;
   freindlyName: string;
-
-
 }
 export interface IColorIconSelectionPanelState {
-
   selectedColor: string;
   selectedIcon: string;
   freindlyName: string;
@@ -68,19 +56,15 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
 
   private saveChanges(): void {
     // TODO clean this up. s/b one call
-    if (this.props.onPropertyChange) {
-      this.props.onPropertyChange("selectedColor", this.props.selectedColor, this.state.selectedColor);
-      this.props.onPropertyChange("selectedIcon", this.props.selectedIcon, this.state.selectedIcon);
-      this.props.onPropertyChange("freindlyName", this.props.freindlyName, this.state.freindlyName);
-      this.onClosePanel();
-    }
+    this.props.onPermissionChange(this.state.selectedColor, this.state.selectedIcon, this.state.freindlyName);
+    this.onClosePanel();
   }
 
   private onClosePanel(element?: any): void {
     this.props.closePanel();
   }
   private renderIcon(props?, defaultRender?: (props?) => JSX.Element | null): JSX.Element {
-    debugger;
+
     return (<div>
       <Icon iconName={props.text} /> {props.text}
     </div>);
@@ -90,17 +74,13 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
 
 
   private getIconOptions(): IComboBoxOption[] {
-    debugger;
-
     let options: IComboBoxOption[] = [];
     for (var iconName of this.iconNames) {
-      debugger;
       var option: IComboBoxOption = {
         key: iconName, text: iconName,
       };
       options.push(option);
     }
-
     return options;
   }
   public render(): JSX.Element {
@@ -114,13 +94,14 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
         title={this.props.title}
         subText={this.props.subText}
       >
-         <TextField label="Friendly Name" 
+        <TextField label="Friendly Name"
           defaultValue={this.state.freindlyName}
           onChange={(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
             this.setState((current) => ({ ...current, freindlyName: newValue }));
           }}>
         </TextField>
-        <ColorPicker
+        <Label>Color:</Label>
+        <ColorPicker 
           color={this.state.selectedColor}
           onChange={(event: React.FormEvent<HTMLDivElement>, color: IColor) => {
             this.setState((current) => ({ ...current, selectedColor: color.str }));
@@ -136,16 +117,17 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
             this.setState((current) => ({ ...current, selectedIcon: option.text }));
           }}
         />
-
+       <Label>Display:</Label>
         <Icon iconName={this.state.selectedIcon} style={{ color: this.state.selectedColor }} />
-
+        <br></br>
+        <br></br>
         <Button onClick={() => {
           this.onClosePanel()
         }}>Cancel</Button>
         <PrimaryButton onClick={() => {
           debugger;
           this.saveChanges();
-          this.onClosePanel();
+
 
 
         }}>Save</PrimaryButton>

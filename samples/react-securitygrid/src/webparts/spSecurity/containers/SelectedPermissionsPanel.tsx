@@ -60,7 +60,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
       minWidth: 150,
       maxWidth: 150,
       isResizable: true
-    
+
     },
     {
       key: 'color',
@@ -70,8 +70,6 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
       maxWidth: 100,
       isResizable: true,
       onRender: (item?: ISelectedPermission, index?: number, column?: IColumn) => {
-        debugger;
-        //var clr: string = item.color ? item.color : null;
         return (
           <div>
             <Icon iconName={item.iconName} style={{ color: item.color }} />
@@ -104,7 +102,6 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
               iconProps={{ iconName: 'Up', }}
               style={{ display: index === 0 ? "none" : "normal" }}
               onClick={(e) => {
-                debugger;
                 this.moveColumnUp(item);
               }}>
             </IconButton>
@@ -113,7 +110,6 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
               iconProps={{ iconName: 'Down', }}
               style={{ display: index === this.state.SelectedPermissions.length - 1 ? "none" : "normal" }}
               onClick={(e) => {
-                debugger;
                 this.moveColumnDown(item);
               }}>
             </IconButton>
@@ -121,7 +117,6 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
             <IconButton
               iconProps={{ iconName: 'Delete', }}
               onClick={(e) => {
-                debugger;
                 this.removeColumn(item);
               }}>
             </IconButton>
@@ -134,7 +129,6 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   ];
   constructor(props: ISelectedPemissionPanelProps) {
     super(props);
-    debugger;
     this.selection = new Selection({
       onSelectionChanged: () => console.log("onSelectionChanged...")
     });
@@ -159,7 +153,6 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   }
 
   private addColumn(): void {
-    debugger;
     let unusedPermission = first(filter(this.getPermissionTypes(), (pt) => { return !pt.disabled }));
     if (unusedPermission) {
 
@@ -184,7 +177,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   private moveColumnUp(column: ISelectedPermission): void {
 
     var sps: ISelectedPermission[] = this.state.SelectedPermissions;
-    const index = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == column.permission });
+    const index = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == column.permission });
     if (index != -1) {
       sps[index] = sps.splice(index - 1, 1, sps[index])[0];
       this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
@@ -193,7 +186,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   private moveColumnDown(column: ISelectedPermission): void {
 
     var sps: ISelectedPermission[] = this.state.SelectedPermissions;
-    const index = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == column.permission });
+    const index = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == column.permission });
     if (index != -1) {
       sps[index] = sps.splice(index + 1, 1, sps[index])[0];
       this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
@@ -201,7 +194,6 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   }
   private saveChanges(): void {
     if (this.props.onPropertyChange) {
-      debugger;
       this.props.onPropertyChange("SelectedPermissions", this.props.SelectedPermissions, this.state.SelectedPermissions);
       this.onClosePanel();
     }
@@ -265,32 +257,16 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
             selectedIcon={this.state.CurrentlySelectedPermission.iconName}
             freindlyName={this.state.CurrentlySelectedPermission.freindlyName}
             closePanel={() => {
-              debugger;
               this.setState((current) => ({ ...current, isColorIconSelecorDialogOpen: false }));
             }}
-            onPropertyChange={(field, oldvalue, newValue) => {
+            onPermissionChange={(color: string, icon: string, freindlyName: string) => {
               debugger;
-              switch (field) {
-                case "selectedColor":
-                  var sps = this.state.SelectedPermissions;
-                  const idx = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == this.state.CurrentlySelectedPermission.permission; });
-                  sps[idx].color = newValue;
-                  this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
-                  break;
-                case "selectedIcon":
-                  var sps = this.state.SelectedPermissions;
-                  const idx2 = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == this.state.CurrentlySelectedPermission.permission; });
-                  sps[idx2].iconName = newValue;
-                  this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
-                  break;
-                case "freindlyName":
-                  var sps = this.state.SelectedPermissions;
-                  const idx3 = findIndex(sps, (sp: ISelectedPermission) => { debugger; return sp.permission == this.state.CurrentlySelectedPermission.permission; });
-                  sps[idx3].freindlyName = newValue;
-                  this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
-                  break;
-                default:
-              }
+              var sps = this.state.SelectedPermissions;
+              const idx = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == this.state.CurrentlySelectedPermission.permission; });
+              sps[idx].color = color;
+              sps[idx].iconName = icon;
+              sps[idx].freindlyName = freindlyName;
+              this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
             }}
           />
         }

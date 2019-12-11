@@ -33,7 +33,7 @@ class PropertyFieldSelectedPermissionsBuilder implements IPropertyPaneField<IPro
   private customProperties: any;
 
   public constructor(_targetProperty: string, _properties: IPropertyFieldSelectedPermissionsPropsInternal) {
-    debugger;
+  
     this.render = this.render.bind(this);
     this.properties = _properties;
     this.label = _properties.label;
@@ -45,7 +45,6 @@ class PropertyFieldSelectedPermissionsBuilder implements IPropertyPaneField<IPro
 
   private render(elem: HTMLElement): void {
         // what other args does this get? does it get ctx and a callback?
-    debugger;
     const element: React.ReactElement<IPropertyFieldSelectedPermissionsHostProps> = React.createElement(PropertyFieldSelectedPermissionsHost, {
       label: this.label,
       onPropertyChange: this.onPropertyChange,
