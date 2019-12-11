@@ -80,7 +80,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
                 isColorIconSelecorDialogOpen: true,
                 CurrentlySelectedPermission: item
               }));
-            }}>Edit Display</Button>
+            }}>Edit Permission</Button>
           </div>
         );
 
@@ -253,19 +253,17 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
 
             title={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
             subText={`Edit Icon and color for ${this.state.CurrentlySelectedPermission.permission}`}
-            selectedColor={this.state.CurrentlySelectedPermission.color}
-            selectedIcon={this.state.CurrentlySelectedPermission.iconName}
-            freindlyName={this.state.CurrentlySelectedPermission.freindlyName}
+            currentPerm={this.state.CurrentlySelectedPermission}
             closePanel={() => {
               this.setState((current) => ({ ...current, isColorIconSelecorDialogOpen: false }));
             }}
-            onPermissionChange={(color: string, icon: string, freindlyName: string) => {
+            onPermissionChange={(perm:ISelectedPermission) => {
               debugger;
               var sps = this.state.SelectedPermissions;
               const idx = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == this.state.CurrentlySelectedPermission.permission; });
-              sps[idx].color = color;
-              sps[idx].iconName = icon;
-              sps[idx].freindlyName = freindlyName;
+              sps[idx].color = perm.color;
+              sps[idx].iconName = perm.iconName;
+              sps[idx].freindlyName = perm.freindlyName;
               this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
             }}
           />

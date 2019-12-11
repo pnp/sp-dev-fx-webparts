@@ -7,21 +7,19 @@ import { TextField } from "office-ui-fabric-react/lib/TextField";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { ComboBox, IComboBox, IComboBoxOption, } from "office-ui-fabric-react/lib/ComboBox";
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 
 export interface IColorIconSelectorPanelProps {
   isOpen: boolean;
-  onPermissionChange(color: string, icon: string, friendlyName: string): void;
+  onPermissionChange(color: ISelectedPermission): void;
   closePanel(): void;
   title: string;
   subText: string;
-  selectedColor: string;
-  selectedIcon: string;
-  freindlyName: string;
+  currentPerm:  ISelectedPermission;
+ 
 }
 export interface IColorIconSelectionPanelState {
-  selectedColor: string;
-  selectedIcon: string;
-  freindlyName: string;
+  currentPerm:  ISelectedPermission;
 }
 export default class ColorIconSelectionPanel extends React.Component<IColorIconSelectorPanelProps, IColorIconSelectionPanelState> {
 
@@ -89,15 +87,12 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
     debugger;
 
     this.state = {
-      selectedColor: this.props.selectedColor,
-      selectedIcon: this.props.selectedIcon,
-      freindlyName: this.props.freindlyName
-
+      currentPerm:   this.props.currentPerm
     };
   }
 
   private saveChanges(): void {
-    this.props.onPermissionChange(this.state.selectedColor, this.state.selectedIcon, this.state.freindlyName);
+    this.props.onPermissionChange(this.state.currentPerm);
     this.onClosePanel();
   }
 
@@ -136,30 +131,33 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
         subText={this.props.subText}
       >
         <TextField label="Friendly Name"
-          defaultValue={this.state.freindlyName}
+          defaultValue={this.state.currentPerm.freindlyName}
           onChange={(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
-            this.setState((current) => ({ ...current, freindlyName: newValue }));
+            this.state.currentPerm.freindlyName=newValue;
+            this.setState((current) => ({ ...current, currentPerm:this.state.currentPerm }));
           }}>
         </TextField>
         <Label>Color:</Label>
         <ColorPicker
-          color={this.state.selectedColor}
+          color={this.state.currentPerm.color}
           onChange={(event: React.FormEvent<HTMLDivElement>, color: IColor) => {
-            this.setState((current) => ({ ...current, selectedColor: color.str }));
+            this.state.currentPerm.color=color.str;
+            this.setState((current) => ({ ...current, currentPerm:this.state.currentPerm }));
           }}>
         </ColorPicker>
         <ComboBox
           label="Select Icon:"
           options={this.getIconOptions()}
           onRenderOption={this.renderIcon}
-          text={this.state.selectedIcon}
+          text={this.state.currentPerm.iconName}
           onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
             debugger;
-            this.setState((current) => ({ ...current, selectedIcon: option.text }));
+            this.state.currentPerm.iconName=option.text;
+            this.setState((current) => ({ ...current, currentPerm:this.state.currentPerm }));
           }}
         />
         <Label>Display:</Label>
-        <Icon iconName={this.state.selectedIcon} style={{ color: this.state.selectedColor }} />
+        <Icon iconName={this.state.currentPerm.iconName} style={{ color: this.state.currentPerm.color }} />
         <br></br>
         <br></br>
         <Button onClick={() => {
