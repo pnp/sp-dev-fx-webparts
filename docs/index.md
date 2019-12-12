@@ -18,6 +18,7 @@ You can head directly to those folders and start looking around if you'd like. B
 - [By **Compatibility**](./samples/compatibility.md)
 - [By **Year**](./samples/year.md)
 - [By **Author**](./samples/author.md)
+- [By **Keyword**](./samples/keyword.md)
 - [All](./samples/all.md)
 
 ## Detailed Documentation

@@ -75,8 +75,19 @@ $(document).ready(function () {
 
   });
 
+  $("#keyword").on('change keyup paste', function () {
+    var selection = $('#keyword').val();
+    if (selection !== "") {
+      $grid.isotope({ filter: `[data-keywords*='${selection}']` });
+    } else {
+      $grid.isotope({ filter: '*' });
+    }
 
-// Make samples data sortal
+  });
+
+
+
+  // Make samples data sortal
   $('#samplestable th').each(function (col) {
     $(this).hover(
       function () { $(this).addClass('focus'); },

@@ -1,3 +1,6 @@
+# Web Part Samples
+# Author: Hugo Bernier
+# Master PR: 1085
 site_name: SharePoint Framework Client-Side Web Part Samples
 theme: readthedocs
 plugins:
@@ -20,6 +23,7 @@ nav:
     - By Compatibility: samples/compatibility.md
     - By Year: samples/year.md
     - By Author: samples/author.md
+    - By Keyword: samples/keyword.md
     - All: samples/all.md
   - Contributing:
     - Contribution Guide: contributing/index.md
@@ -59,6 +63,17 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-recaptcha
+      name: react-recaptcha
+      title: Google reCaptcha Sample
+      summary: This is sample webpart which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx webpart. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your business requirement if you need to implement CAPTCHA in SPFx webpart.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-recaptcha/screens/WebpartInAction.gif
+      thumbnailtype: video
+      framework: React
+      spfx: 1.9.1
+      author: Siddharth Vaghasia
+      modifiedtext: October 10, 2019
+      modified: 2019-10-10
     - framework: React
       spfx: 1.9.1
       year: 2019
