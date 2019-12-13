@@ -4,6 +4,7 @@ export interface ISelectedPermission {
   color: string;
   iconName:string;
   freindlyName:string;
+  isChecked?:boolean;
 }
 
 

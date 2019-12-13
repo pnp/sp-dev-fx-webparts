@@ -68,7 +68,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     }
   }
   public componentWillReceiveProps(newProps: ISpSecurityProps) {
-  
+
     this.setState((current) => ({
       ...current,
       selectedPermissions: newProps.selectedPermissions,
@@ -210,7 +210,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       </div>);
   }
   public renderListTitle(item?: any, index?: number, column?: IColumn): any {
-debugger;
+
     let classname = " ms-Icon ";
     if (item.itemCount > 0) {
       classname += "  ms-Icon ms-Icon--FabricFormLibrary " + styles.themecolor;
@@ -257,15 +257,15 @@ debugger;
     }
 
   }
- 
-  public renderUserItem(item?: any, index?: number, column?: IColumn): any {
+
+  public renderUserItem(item: any, index: number, column: IColumn,effectivePermissions:ISelectedPermission[]): any {
 
     let user: SPSiteUser = find(this.state.securityInfo.siteUsers, (su) => {
       return su.id.toString() === column.key;
     });
     // spin througg the selected permsiisopns and for the first hit, display that color. No Hit, then display empty
 
-    for (let selectedPermission of this.state.selectedPermissions ? this.state.selectedPermissions : []) {
+    for (let selectedPermission of effectivePermissions ? effectivePermissions : []) {
       if (Helpers.doesUserHavePermission(item, user, SPPermission[selectedPermission.permission],
         this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
         return (
@@ -277,7 +277,7 @@ debugger;
     }
     // no hits
     return (
-      <Icon iconName={item.iconName}  onClick={(e) => {
+      <Icon iconName={item.iconName} onClick={(e) => {
         this.expandCollapseList(item);
       }} />
     );
@@ -290,7 +290,7 @@ debugger;
     )
 
   }
-  public addUserColumns(columns: IColumn[], users: SPSiteUser[]): IColumn[] {
+  public addUserColumns(columns: IColumn[], users: SPSiteUser[],effectivePermissions:ISelectedPermission[]): IColumn[] {
     for (let user of users) {
       if (user.isSelected) {
         if (
@@ -298,17 +298,20 @@ debugger;
           ||
           (user.principalType === 4 && this.props.showSecurityGroups)
         )
-         if(!this.props.showOnlyUsersWithPermission ||  Helpers.doesUserHaveAnyPermission(this.state.securityInfo.lists,user,this.state.selectedPermissions.map((sp)=>{return  SPPermission[sp.permission]}), this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups))
-          columns.push({
-            key: user.id.toString(),
-            name: this.state.showEmail ? user.upn : user.name,
-            fieldName: "",
-            minWidth: 20,
-            maxWidth: 20,
-            onRender: this.renderUserItem,
-            headerClassName: "rotatedColumnHeader",
+          if (!this.props.showOnlyUsersWithPermission || Helpers.doesUserHaveAnyPermission(this.state.securityInfo.lists, user, effectivePermissions.map((sp) => { return SPPermission[sp.permission] }), this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups))
+            columns.push({
+              key: user.id.toString(),
+              name: this.state.showEmail ? user.upn : user.name,
+              fieldName: "",
+              minWidth: 20,
+              maxWidth: 20,
+              onRender: (item?: any, index?: number, column?: IColumn)=>{
+                debugger;
+              return  this.renderUserItem(item,index,column,effectivePermissions);
+              },
+              headerClassName: "rotatedColumnHeader",
 
-          });
+            });
       }
     }
     return columns;
@@ -356,7 +359,17 @@ debugger;
 
 
   }
+  private checkUncheckPermission(perm: ISelectedPermission) {
+    debugger;
+    var sps = this.state.selectedPermissions;
+    const idx = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == perm.permission; });
+    if (idx != -1) {
+      sps[idx].isChecked = !sps[idx].isChecked
+      this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
+    }
 
+
+  }
   public render(): React.ReactElement<ISpSecurityProps> {
     if (!this.state.securityInfoLoaded) {
       return (
@@ -366,7 +379,7 @@ debugger;
 
       );
     }
-    
+
     let userPanelCommands: IContextualMenuItem[] = [];
     userPanelCommands.push({
       icon: "BoxAdditionSolid",
@@ -426,7 +439,7 @@ debugger;
     });
     let commands: IContextualMenuItem[] = [];
     if (this.props.letUserSelectPermission) {
-      
+
       commands.push({
         icon: "AzureKeyVault",
         key: "SecurityLevel2",
@@ -484,7 +497,7 @@ debugger;
         }]
       }
     });
-
+    let effectivePermissions=this.state.selectedPermissions.filter((sp)=>{ return sp.isChecked;})
     let columns: Array<IColumn> = [
       {
         key: "title", name: "Title", isResizable: true, fieldName: "title",
@@ -492,7 +505,7 @@ debugger;
         onRender: this.renderTitle, isRowHeader: true
       },
     ];
-    let displayColumns: IColumn[] = this.addUserColumns(columns, this.state.securityInfo.siteUsers);
+    let displayColumns: IColumn[] = this.addUserColumns(columns, this.state.securityInfo.siteUsers,effectivePermissions);
 
 
     let displayItems: (SPList | SPListItem)[] = filter(this.state.securityInfo.lists, (item) => {
@@ -503,14 +516,23 @@ debugger;
       )
     })
 
-
+    
 
     return (
       <div >
         <CommandBar
           items={commands}
         />
-        <Legend selectedPermissions={this.state.selectedPermissions}></Legend>
+        <br />
+        <Legend
+          selectedPermissions={this.state.selectedPermissions}
+          checkUncheckPermission={(e) => {
+            debugger;
+            this.checkUncheckPermission(e);
+
+          }
+          }
+        />
         <DetailsList
           items={displayItems}
           columns={displayColumns}
@@ -522,11 +544,11 @@ debugger;
           isOpen={this.state.showPermissionsPanel}
           SelectedPermissions={this.props.selectedPermissions}
           onPropertyChange={(propertyName: string, oldValue: Array<ISelectedPermission>, newValue: Array<ISelectedPermission>) => {
-        
+
             this.setState((current) => ({ ...current, selectedPermissions: newValue }));
           }}
           closePanel={() => {
-         
+
             this.setState((current) => ({ ...current, showPermissionsPanel: false }));
           }}
 

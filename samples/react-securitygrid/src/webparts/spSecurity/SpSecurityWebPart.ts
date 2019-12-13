@@ -33,7 +33,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
 
     const props: ISpSecurityProps = {
       //permission: this.properties.permission,  // old way
-      selectedPermissions:this.properties.selectedPermissions,
+      selectedPermissions:this.properties.selectedPermissions.map((sp)=>{return {...sp,isChecked:true}}),
       showHiddenLists: this.properties.showHiddenLists,
       showCatalogs: this.properties.showCatalogs,
       showEmail: this.properties.showEmail,
@@ -96,7 +96,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       pages: [
         {
           header: {
-            description: "Configuration"
+            description: "Permission Configuration"
           },
           groups: [
             {
@@ -142,6 +142,42 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                 })
               ]
             },
+            {
+              groupName: "Display Settings",
+              groupFields: [
+                PropertyPaneSlider("listTitleColumnWidth", {
+                  label: "Initial title column width",
+                  min: 1,
+                  max: 1000
+                }),
+              ]
+            }
+          ]
+        },
+        {
+          header: {
+            description: "Permission Configuration"
+          },
+          groups: [
+            {
+              groupName: "Permission Settings",
+              groupFields: [
+                
+                PropertyFieldSelectedPermissions("SelectedPermissions", {
+                  label: "Selected Permissions and Colors", 
+                  onPropertyChange: this.onPropertyChange.bind(this),
+                  
+                  getSelectedPermissions: () => {
+                    return this.properties.selectedPermissions || [];
+                  },
+                }),
+                PropertyPaneCheckbox("letUserSelectPermission", {
+                  text: "Let user select Permission"
+                }),
+
+              ]
+            },
+       
             {
               groupName: "Display Settings",
               groupFields: [
