@@ -6,38 +6,52 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
-
 import * as strings from 'FeedbackFormWebPartStrings';
 import FeedbackForm from './components/FeedbackForm';
 import { IFeedbackFormProps } from './components/IFeedbackFormProps';
 import { MSGraphClient } from '@microsoft/sp-http';
 
+// https://sharepoint.github.io/sp-dev-fx-property-controls/
+import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
+
+import {
+  Logger,
+  ConsoleListener,
+  LogLevel
+} from "@pnp/logging";
+
+// https://pnp.github.io/pnpjs/logging/docs/
+// https://blog.mastykarz.nl/logging-sharepoint-framework/
+const LOG_SOURCE: string = 'FeedbackFormWebPart';
+Logger.subscribe(new ConsoleListener());
+Logger.activeLogLevel = LogLevel.Info;
+
 export interface IFeedbackFormWebPartProps {
   targetEmail: string;
   subject: string;
+  maxMessageLength: number;
 }
 
 export default class FeedbackFormWebPart extends BaseClientSideWebPart<IFeedbackFormWebPartProps> {
-
-  private _graphClient: MSGraphClient;
-
-  public onInit(): Promise<void> {
-    return new Promise<void>((resolve: () => void, reject: (error: any) => void ): void => {
-      this.context.msGraphClientFactory
-        .getClient()
-        .then((cli: MSGraphClient): void => {
-          this._graphClient = cli;
-          resolve();
-        }, err => reject(err));
-    });
+  private graphClient: MSGraphClient;
+  public async onInit(): Promise<void> {
+    Logger.write(`[${LOG_SOURCE}] onInit()`);
+    try {
+      Logger.write(`[${LOG_SOURCE}] trying to retrieve graphClient`);
+      this.graphClient = await this.context.msGraphClientFactory.getClient();
+    } catch (error) {
+      Logger.writeJSON(error, LogLevel.Error);
+    }
   }
 
   public render(): void {
+    Logger.write(`[${LOG_SOURCE}] render()`);
     const element: React.ReactElement<IFeedbackFormProps> = React.createElement(
       FeedbackForm,
       {
-        graphClient: this._graphClient,
+        graphClient: this.graphClient,
         targetEmail: this.properties.targetEmail,
+        maxMessageLength: this.properties.maxMessageLength,
         subject: this.properties.subject
       }
     );
@@ -45,6 +59,7 @@ export default class FeedbackFormWebPart extends BaseClientSideWebPart<IFeedback
   }
 
   protected onDispose(): void {
+    Logger.write(`[${LOG_SOURCE}] onDispose()`);
     ReactDom.unmountComponentAtNode(this.domElement);
   }
 
@@ -68,6 +83,14 @@ export default class FeedbackFormWebPart extends BaseClientSideWebPart<IFeedback
                 }),
                 PropertyPaneTextField('subject', {
                   label: strings.SubjectFieldLabel
+                }),
+                PropertyFieldNumber("maxMessageLength", {
+                  key: "maxMessageLength",
+                  label: "Maximum length of a message",
+                  value: this.properties.maxMessageLength,
+                  maxValue: 250,
+                  minValue: 3,
+                  disabled: false
                 })
               ]
             }

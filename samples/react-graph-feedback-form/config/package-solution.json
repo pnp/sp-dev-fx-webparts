@@ -3,7 +3,7 @@
   "solution": {
     "name": "spfx-feedback-form-client-side-solution",
     "id": "8cf91ad7-be8e-4f6c-a1eb-a790f3ef5a32",
-    "version": "1.0.0.4",
+    "version": "1.0.0.5",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "webApiPermissionRequests": [

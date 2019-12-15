@@ -8,7 +8,7 @@ Sample SPFx React web part which allows sending emails using Microsoft Graph.
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
 
 ## Applies to
 
@@ -25,7 +25,8 @@ react-graph-feedback-form|Sergei Zheleznov (CollabStack)
 
 Version|Date|Comments
 -------|----|--------
-1.0|August 12, 2019|Initial release
+1.0.0|August 12, 2019|Initial release
+1.0.3|Dec 15, 2019|Added Logger (@pnp/logging), Added max message length property (PropertyFieldNumber control from spfx-controls-react), Code refactoring, SPFx updated to 1.9.1
 
 
 ## Disclaimer
@@ -54,5 +55,7 @@ This sample illustrates the following concepts:
 * sending e-mails using Microsoft Graph
 * using MSGraphClient in a SharePoint Framework web part
 * using @microsoft/microsoft-graph-types
+* using @pnp/logging
+* using @pnp/spfx-property-controls
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-graph-feedback-form" />
