@@ -1,4 +1,3 @@
-import { IChatMessage, ContentType } from '../../model/IConversation';
 import { IConversationService } from '../../services/ConversationService/IConversationService';
 
 import { WebPartContext } from '@microsoft/sp-webpart-base';
@@ -18,15 +17,15 @@ export default class ConversationServiceTeams implements IConversationService {
         this.channelId = channelId;
     }
 
-    public createChatThread(content: string, contentType: ContentType) {
+    public createChatThread(content: string, contentType: string) {
 
         const result = new Promise<void>((resolve, reject) => {
 
-            const postContent: IChatMessage =
+            const postContent =
             {
                     body: {
                         content: content,
-                        contentType: "html"
+                        contentType: contentType
                     }
             };
 
