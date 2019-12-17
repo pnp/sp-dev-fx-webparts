@@ -1,4 +1,4 @@
-import { INewChatThread, ContentType } from '../../model/IConversation';
+import { IChatMessage, ContentType } from '../../model/IConversation';
 import { IConversationService } from '../../services/ConversationService/IConversationService';
 
 import { WebPartContext } from '@microsoft/sp-webpart-base';
@@ -22,20 +22,19 @@ export default class ConversationServiceTeams implements IConversationService {
 
         const result = new Promise<void>((resolve, reject) => {
 
-            const postContent: INewChatThread =
+            const postContent: IChatMessage =
             {
-                rootMessage: {
                     body: {
                         content: content,
-                        contentType: contentType
+                        contentType: "html"
                     }
-                }
             };
 
             this.context.msGraphClientFactory
             .getClient()
             .then((graphClient: MSGraphClient): void => {
-                graphClient.api(`https://graph.microsoft.com/beta/teams/${this.teamId}/channels/${this.channelId}/chatThreads`)
+                graphClient.api(
+                    `https://graph.microsoft.com/beta/teams/${this.teamId}/channels/${this.channelId}/messages`)
                 .post(postContent, ((err, res) => {
                     resolve();
                 }));

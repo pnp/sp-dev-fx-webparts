@@ -9,11 +9,7 @@ export const enum ContentType {
 
 export interface IChatMessage {
     body: {
-        contentType: ContentType;
         content: string;
+        contentType: string;
     };
-}
-
-export interface INewChatThread {
-    rootMessage: IChatMessage;
 }
