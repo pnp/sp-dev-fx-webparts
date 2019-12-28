@@ -733,6 +733,35 @@
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.12.5.tgz#c448a38902ccb5601c1b2ef3b1a105012ef7712c"
   integrity sha512-xEAyvLXo4Cter/b0EMCWUZTgXOfLOPJ/Xr52WdjVclPx9eDmNTGFtZl8Pn/nqSnZsQBNcHL0eHk/YyRyyXXpiQ==
 
+"@pnp/common@^1.3.2":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@pnp/common/-/common-1.3.8.tgz#266020bb14d09fcedb354a55b111ce06e2c0a563"
+  integrity sha512-VYdShvkeOeOzXB3Lg/BqS+0WaHFSCd4n/8huBt7b63ormLLBrHX9aFRy457GiqHbnfEflHNBsVfwPj11z5wktg==
+  dependencies:
+    adal-angular "1.0.17"
+    tslib "1.10.0"
+
+"@pnp/logging@^1.3.2":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@pnp/logging/-/logging-1.3.8.tgz#08312f9d416318672d056dbca2aefee0c1fcd012"
+  integrity sha512-5uA+03Q9TCigpf3yJqqms0BCDzvm8Ko0bmX1TM4hjNGh2MEqE3OlQ99uPSz4jQGmEQ/93ReGvzD5S+JL9qd8EA==
+  dependencies:
+    tslib "1.10.0"
+
+"@pnp/odata@^1.3.2":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@pnp/odata/-/odata-1.3.8.tgz#d6cdc5fc5c031f54fe8014bfa70be002e8560c69"
+  integrity sha512-uGcV+Dx59W/yO6xOlMoObF8IYWZJnUqCsbuH/KI4BQ+izcPXi4N2tnj2i2OOEso0dobduoADR8q8XK7+SpXjOQ==
+  dependencies:
+    tslib "1.10.0"
+
+"@pnp/sp@^1.3.2":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@pnp/sp/-/sp-1.3.8.tgz#cbb89773c1abb024413dae65421b47a7d29bb642"
+  integrity sha512-x85cQL/L5fBYJWqWvDL3e2sHdYZIqUeWifFndsGRk6iLFHTq2DsxNNzTnCpP7JCKUwK6jHpu0JzIuK98E8Hl9w==
+  dependencies:
+    tslib "1.10.0"
+
 "@pnpm/link-bins@~1.0.1":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@pnpm/link-bins/-/link-bins-1.0.3.tgz#cb4ceaf9cc39f581192562579f5a5fb3620b4027"
@@ -1425,6 +1454,11 @@ adal-angular@1.0.16:
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/adal-angular/-/adal-angular-1.0.16.tgz#e2bc31bc712aaffba053aa4dd46bc84eb5d2090f"
   integrity sha1-4rwxvHEqr/ugU6pN1GvITrXSCQ8=
+
+adal-angular@1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/adal-angular/-/adal-angular-1.0.17.tgz#6e936e0e41f91d3b2a88e7ffca9c2f6f6f562cc4"
+  integrity sha1-bpNuDkH5HTsqiOf/ypwvb29WLMQ=
 
 agent-base@^4.1.0:
   version "4.2.1"
@@ -2664,7 +2698,7 @@ commander@2.17.x:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
-commander@^2.12.1, commander@^2.7.1, commander@~2.20.0:
+commander@^2.12.1, commander@^2.7.1:
   version "2.20.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
   integrity sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
@@ -2678,6 +2712,11 @@ commander@~2.19.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
   integrity sha512-6tvAOO+D6OENvRAh524Dh9jcfKTYDQAqvqezbCW82xj5X0pSrcpxtvRKHLG0yBY6SD7PSDrJaj+0AiOcKVd1Xg==
+
+commander@~2.20.3:
+  version "2.20.3"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+  integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
 component-emitter@^1.2.1:
   version "1.3.0"
@@ -4465,9 +4504,9 @@ gulplog@^1.0.0:
     glogg "^1.0.0"
 
 handlebars@^4.0.3:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.2.tgz#b6b37c1ced0306b221e094fc7aca3ec23b131b67"
-  integrity sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.5.3.tgz#5cf75bd8714f7605713511a56be7c349becb0482"
+  integrity sha512-3yPecJoJHK/4c6aZhSvxOyG4vJKDshV36VHp0iVCDVh7o9w2vwi3NSnL2MMPj3YdduqaBcu7cGbggJQM0br9xA==
   dependencies:
     neo-async "^2.6.0"
     optimist "^0.6.1"
@@ -7251,10 +7290,22 @@ object.pick@^1.2.0, object.pick@^1.3.0:
   dependencies:
     isobject "^3.0.1"
 
+office-ui-fabric-core@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-core/-/office-ui-fabric-core-5.0.1.tgz#f6f27eb793ceca62366419877b73970de4841e52"
+  integrity sha1-9vJ+t5POymI2ZBmHe3OXDeSEHlI=
+
 office-ui-fabric-core@9.6.1-fluent2:
   version "9.6.1-fluent2"
   resolved "https://registry.yarnpkg.com/office-ui-fabric-core/-/office-ui-fabric-core-9.6.1-fluent2.tgz#ad90db192787381c9b877358a914be8781fa6e49"
   integrity sha512-gcBs5HHr7tjkvk/+Ls10ttb3jEllRn7SvJitX/kx/gQq8BiFMSMKr1w+oNqXlh4EgkBHWUlJVPrYUu1KW/jVaQ==
+
+office-ui-fabric-js@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-js/-/office-ui-fabric-js-1.5.0.tgz#d77b778f79a6178f843dd757e4639ae05709d340"
+  integrity sha1-13t3j3mmF4+EPddX5GOa4FcJ00A=
+  dependencies:
+    office-ui-fabric-core "5.0.1"
 
 office-ui-fabric-react@6.143.0:
   version "6.143.0"
@@ -7285,6 +7336,13 @@ office-ui-fabric-react@6.143.0:
     "@uifabric/utilities" "^6.38.3"
     prop-types "^15.5.10"
     tslib "^1.7.1"
+
+office-ui-fabric-vue@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-vue/-/office-ui-fabric-vue-1.2.0.tgz#95ee30ee3ee83b2eff82957652adf4153d0bb2ac"
+  integrity sha512-XfiuLDce2dgWhabPSmU8Wkxot6fTyxKS9ni+5xr345OnpwhTZr+PXB3KBXYvEOkdDmuajZwTPhwhPbrOf/PJwA==
+  dependencies:
+    office-ui-fabric-js "1.5.0"
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -9733,6 +9791,11 @@ ts-loader@^5.3.3:
     micromatch "^3.1.4"
     semver "^5.0.1"
 
+tslib@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
+  integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
+
 tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@~1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
@@ -9896,11 +9959,11 @@ uglify-js@^2.8.29:
     uglify-to-browserify "~1.0.0"
 
 uglify-js@^3.1.4:
-  version "3.5.12"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.12.tgz#6b759cabc08c3e91fe82323d6387019f0c5864cd"
-  integrity sha512-KeQesOpPiZNgVwJj8Ge3P4JYbQHUdZzpx6Fahy6eKAYRSV4zhVmLXoC+JtOeYxcHCHTve8RG1ZGdTvpeOUM26Q==
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.7.3.tgz#f918fce9182f466d5140f24bb0ff35c2d32dcc6a"
+  integrity sha512-7tINm46/3puUA4hCkKYo4Xdts+JDaVC9ZPRcG8Xw9R4nhO/gZgUM3TENq8IF4Vatk8qCig4MzP/c8G4u2BkVQg==
   dependencies:
-    commander "~2.20.0"
+    commander "~2.20.3"
     source-map "~0.6.1"
 
 uglify-js@~3.0.28:
