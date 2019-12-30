@@ -52,3 +52,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * How to configure API Permissions using Office365 CLI
 * Using async / await for the async calls
 * Office UI fabric components
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-members-with-presence" />
