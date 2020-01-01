@@ -1,6 +1,6 @@
 # Web Part Samples
 # Author: Hugo Bernier
-# Master PR: 1085
+# Master PR: 1098, 1091
 site_name: SharePoint Framework Client-Side Web Part Samples
 theme: readthedocs
 plugins:
@@ -45,7 +45,7 @@ extra_css:
   - 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/10.0.0/css/fabric.min.css'
 extra_javascript:
   - 'https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js'
-  - 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js'
+  - 'javascript/isotope.pkgd.min.js'
   - 'javascript/filtersamples.js'
 markdown_extensions:
   - admonition
@@ -63,6 +63,28 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-calendar
+      name: react-graph-calendar
+      title: Graph Calendar Web Part
+      summary: This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.).
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-calendar/assets/react-graph-calendar-spo.gif
+      thumbnailtype: video
+      framework: React
+      spfx: 1.9.1
+      author: Sébastien Levert
+      modifiedtext: December 29, 2019
+      modified: 2019-12-29
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-members-with-presence
+      name: react-members-with-presence
+      title: Group members list with Presence information
+      summary: This sample shows how to get the members of a specific group, including their presence information (using the new Presence endpoint in the MS Graph API).
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-members-with-presence/assets/react-members-with-presence.gif
+      thumbnailtype: video
+      framework: React
+      spfx: 1.9.1
+      author: Luis Mañez
+      modifiedtext: December 23, 2019
+      modified: 2019-12-23
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-recaptcha
       name: react-recaptcha
       title: Google reCaptcha Sample
