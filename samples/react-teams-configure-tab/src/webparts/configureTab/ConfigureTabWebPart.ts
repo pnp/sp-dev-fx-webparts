@@ -18,7 +18,8 @@ export interface IConfigureTabWebPartProps {
 export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigureTabWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IConfigureTabProps > = React.createElement(
+
+    const element: React.ReactElement<IConfigureTabProps> = React.createElement(
       ConfigureTab,
       {
         contentPageUrl: this.properties.contentPageUrl
