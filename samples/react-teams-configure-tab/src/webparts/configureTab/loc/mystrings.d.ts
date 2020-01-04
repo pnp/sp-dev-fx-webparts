@@ -1,7 +1,7 @@
 declare interface IConfigureTabWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  ContentPageUrlFieldLabel: string;
 }
 
 declare module 'ConfigureTabWebPartStrings' {

@@ -10,11 +10,13 @@ export default class ConfigureTab extends React.Component<IConfigureTabProps, {}
         <div className={ styles.container }>
           <div className={ styles.row }>
             <div className={ styles.column }>
-              <span className={ styles.title }>Welcome to SharePoint!</span>
-              <p className={ styles.subTitle }>Customize SharePoint experiences using Web Parts.</p>
-              <p className={ styles.description }>{escape(this.props.description)}</p>
+              <span className={ styles.title }>Configure your SharePoint tab</span>
+              <p className={ styles.description }>The tab will display:&nbsp;
+                <a href={escape(this.props.contentPageUrl)}>{escape(this.props.contentPageUrl)}</a>
+              </p>
+              <p className={ styles.subTitle }></p>
               <a href="https://aka.ms/spfx" className={ styles.button }>
-                <span className={ styles.label }>Learn more</span>
+                <span className={ styles.label }>OK to save</span>
               </a>
             </div>
           </div>

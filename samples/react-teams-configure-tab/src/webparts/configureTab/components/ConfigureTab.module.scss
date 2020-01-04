@@ -10,7 +10,7 @@
   .row {
     @include ms-Grid-row;
     @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
+    background-color: #038387;
     padding: 20px;
   }
 
@@ -35,6 +35,9 @@
   .description {
     @include ms-font-l;
     @include ms-fontColor-white;
+    a:link {
+      color: $ms-color-white;
+    }
   }
 
   .button {
@@ -44,7 +47,7 @@
 
     // Primary Button
     min-width: 80px;
-    background-color: $ms-color-themePrimary;
+    background-color: #005b70;
     border-color: $ms-color-themePrimary;
     color: $ms-color-white;
 

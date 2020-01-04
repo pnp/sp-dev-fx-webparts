@@ -1,3 +1,3 @@
 export interface IConfigureTabProps {
-  description: string;
+  contentPageUrl: string;
 }

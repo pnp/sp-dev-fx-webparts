@@ -12,7 +12,7 @@ import ConfigureTab from './components/ConfigureTab';
 import { IConfigureTabProps } from './components/IConfigureTabProps';
 
 export interface IConfigureTabWebPartProps {
-  description: string;
+  contentPageUrl: string;
 }
 
 export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigureTabWebPartProps> {
@@ -21,7 +21,7 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
     const element: React.ReactElement<IConfigureTabProps > = React.createElement(
       ConfigureTab,
       {
-        description: this.properties.description
+        contentPageUrl: this.properties.contentPageUrl
       }
     );
 
@@ -47,8 +47,8 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('contentPageUrl', {
+                  label: strings.ContentPageUrlFieldLabel
                 })
               ]
             }
