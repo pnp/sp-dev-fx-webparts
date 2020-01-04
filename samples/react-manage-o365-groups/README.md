@@ -70,9 +70,11 @@ The web part lists all public and private O365 groups and helps to search the gr
 
 ![Group Listing and Search](./assets/group-listing-search.gif)
 
+
 Below are the list of options available for user based on the role.
+
 Group Visibility|Role|Action
---------|----|--------|--------
+----------------|----|------
 Public|Owner|Manage Group
 Public|Member|Leave Group
 Public|-|Join Group
@@ -122,6 +124,7 @@ react-manage-o365-groups|[Nanddeep Nachan](https://www.linkedin.com/in/nanddeepn
 Version|Date|Comments
 -------|----|--------
 1.0.0|January 01, 2020|Initial release
+
 
 # Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
