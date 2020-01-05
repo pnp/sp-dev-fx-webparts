@@ -40,11 +40,11 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
       {
         tabLinkChoices: tabLinkChoices,
         message: message,
-        tabLinkSelected: ((item: ITabLink) => { alert(`You clicked ${item.tabName}`);})
+        tabLinkSelected: ((item: ITabLink) => { alert(`You clicked ${item.tabName}`); })
       }
     );
-    ReactDom.render(element, this.domElement);  
-}
+    ReactDom.render(element, this.domElement);
+  }
 
   private parseTabLinks(tabNames: string, entityIds: string, contentPageUrls: string): ITabLink[] {
 
@@ -63,6 +63,9 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
     }
 
     for (let i = 0; i < length; i++) {
+      if (!tabNameArray[i] || !entityIdArray[i] || !contentPageUrlArray[i]) {
+        throw new Error(strings.BlankTabsErrorMessage);
+      }
       result.push({
         tabName: tabNameArray[i],
         entityId: entityIdArray[i],

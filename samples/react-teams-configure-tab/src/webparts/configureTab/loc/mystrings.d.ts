@@ -9,6 +9,8 @@ declare interface IConfigureTabWebPartStrings {
   RedirectFieldInstructions: string;
   BlankTabsErrorMessage: string;
   UnevenTabsErrorMessage: string;
+  PleaseSelectHeading: string;
+  OneSelectHeading: string;
 }
 
 declare module 'ConfigureTabWebPartStrings' {

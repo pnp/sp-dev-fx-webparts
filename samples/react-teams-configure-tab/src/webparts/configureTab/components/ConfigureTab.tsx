@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from './ConfigureTab.module.scss';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { ITabLink } from '../model/ITabLink';
+import * as strings from 'ConfigureTabWebPartStrings';
 
 // import * as microsoftTeams from "@microsoft/teams-js";
 
@@ -52,6 +53,7 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
         <div className={styles.configureTab}>
           <div className={styles.container}>
             <div className={styles.row}>
+              <span className={styles.title}>{strings.PleaseSelectHeading}</span>
               <ul className={styles.column}>
 
                 {this.props.tabLinkChoices.map((item) => {
@@ -94,7 +96,7 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
         </div>
       );
 
-    } else if (this.props.tabLinkChoices) { 
+    } else if (this.props.tabLinkChoices && this.props.tabLinkChoices.length == 1) { 
 
       // We have only one tab link choice, select it immediately
       this.props.tabLinkSelected(this.props.tabLinkChoices[0]);
@@ -103,6 +105,7 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
           <div className={styles.container}>
             <div className={styles.row}>
               <div className={styles.column}>
+                <span className={styles.title}>{strings.OneSelectHeading}</span>
                 <div className={styles.selected + ' ' + styles.tabChoice}>
                   <span className = {styles.tabName}>{this.props.tabLinkChoices[0].tabName}</span>
                   <br />
@@ -125,7 +128,6 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
           <div className={styles.container}>
             <div className={styles.row}>
               <div className={styles.column}>
-                <span className={styles.title}>Error</span>
                 <p className={styles.subTitle}>{escape(this.props.message)}</p>
               </div>
             </div>

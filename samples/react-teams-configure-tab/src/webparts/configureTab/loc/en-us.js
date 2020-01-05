@@ -9,6 +9,8 @@ define([], function() {
     "RedirectFieldLabel": "Redirect tabs through this page",
     "RedirectFieldInstructions": "Set the tab to redirect through this page so links can be updated centrally",
     "BlankTabsErrorMessage": "You must configure at least one tab complete with name, entity ID, and URL",
-    "UnevenTabsErrorMessage": "You must have the same number of tab names, entity Ids, and page Urls"
+    "UnevenTabsErrorMessage": "You must have the same number of tab names, entity Ids, and page Urls",
+    "PleaseSelectHeading": "Please select the tab you'd like to display",
+    "OneSelectHeading": "This tab will be added to your display"
   }
 });
