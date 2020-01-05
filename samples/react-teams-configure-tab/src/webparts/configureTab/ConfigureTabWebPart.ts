@@ -12,6 +12,7 @@ import {
 import * as strings from 'ConfigureTabWebPartStrings';
 import ConfigureTab from './components/ConfigureTab';
 import { IConfigureTabProps } from './components/IConfigureTabProps';
+import { ITabLink } from './model/ITabLink';
 
 export interface IConfigureTabWebPartProps {
   tabNames: string;
@@ -34,6 +35,28 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
     ReactDom.render(element, this.domElement);
   }
 
+  private parseTabLinks(tabNames: string, entityIds: string, contentPageUrls: string): ITabLink[] {
+    var tabNameArray = tabNames.split('\n');
+    var entityIdArray = entityIds.split('\n');
+    var contentPageUrlArray = contentPageUrls.split('\n');
+    var result: ITabLink[] = [];
+
+    var length = tabNameArray.length;
+    if (entityIdArray.length != length || contentPageUrlArray.length != length) {
+      throw new Error(strings.UnevenTabsErrorMessage);
+    }
+
+    for (let i = 0; i < length; i++) {
+      result.push({
+        tabName: tabNameArray[i],
+        entityId: entityIdArray[i],
+        contentPageUrl: contentPageUrlArray[i]
+      })
+    }
+
+    return result;
+  }
+
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
   }
@@ -42,8 +65,8 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
     return Version.parse('1.0');
   }
 
-  protected get disableReactivePropertyChanges(): boolean { 
-    return true; 
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -57,29 +80,23 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
             {
               groupName: strings.BasicGroupName,
               groupFields: [
+                PropertyPaneLabel('', {
+                  text: strings.TabInstructions
+                }),
                 PropertyPaneTextField('tabNames', {
                   label: strings.TabNamesFieldLabel,
                   multiline: true,
                   rows: 5
-                }),
-                PropertyPaneLabel('', {
-                  text: strings.TabNamesFieldInstructions
                 }),
                 PropertyPaneTextField('entityIds', {
                   label: strings.EntityIdsFieldLabel,
                   multiline: true,
                   rows: 5
                 }),
-                PropertyPaneLabel('', {
-                  text: strings.EntityIdsFieldInstructions
-                }),
                 PropertyPaneTextField('contentPageUrls', {
                   label: strings.ContentPageUrlsFieldLabel,
                   multiline: true,
                   rows: 5
-                }),
-                PropertyPaneLabel('', {
-                  text: strings.ContentPageUrlsFieldInstructions
                 }),
                 PropertyPaneCheckbox('redirectPages', {
                   text: strings.RedirectFieldLabel

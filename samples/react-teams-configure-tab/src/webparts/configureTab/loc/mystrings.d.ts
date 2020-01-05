@@ -2,13 +2,12 @@ declare interface IConfigureTabWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   TabNamesFieldLabel: string;
-  TabNamesFieldInstructions: string;
   EntityIdsFieldLabel: string;
-  EntityIdsFieldInstructions: string;
   ContentPageUrlsFieldLabel: string;
-  ContentPageUrlsFieldInstructions: string;
+  TabInstructions: string;
   RedirectFieldLabel: string;
   RedirectFieldInstructions: string;
+  UnevenTabsErrorMessage: string;
 }
 
 declare module 'ConfigureTabWebPartStrings' {
