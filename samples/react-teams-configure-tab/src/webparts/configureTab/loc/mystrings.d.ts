@@ -7,6 +7,7 @@ declare interface IConfigureTabWebPartStrings {
   TabInstructions: string;
   RedirectFieldLabel: string;
   RedirectFieldInstructions: string;
+  BlankTabsErrorMessage: string;
   UnevenTabsErrorMessage: string;
 }
 

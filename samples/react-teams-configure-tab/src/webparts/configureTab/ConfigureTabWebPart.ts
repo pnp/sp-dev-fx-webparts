@@ -10,8 +10,7 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'ConfigureTabWebPartStrings';
-import ConfigureTab from './components/ConfigureTab';
-import { IConfigureTabProps } from './components/IConfigureTabProps';
+import { ConfigureTab, IConfigureTabProps } from './components/ConfigureTab';
 import { ITabLink } from './model/ITabLink';
 
 export interface IConfigureTabWebPartProps {
@@ -25,20 +24,37 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
 
   public render(): void {
 
+    var tabLinkChoices: ITabLink[] = null;
+    var message: string = "";
+
+    try {
+      tabLinkChoices = this.parseTabLinks(this.properties.tabNames, this.properties.entityIds, this.properties.contentPageUrls);
+      message = "";
+    }
+    catch (error) {
+      message = error;
+    }
+
     const element: React.ReactElement<IConfigureTabProps> = React.createElement(
       ConfigureTab,
       {
-        contentPageUrl: this.properties.contentPageUrls
+        tabLinkChoices: tabLinkChoices,
+        message: message,
+        tabLinkSelected: null
       }
     );
-
-    ReactDom.render(element, this.domElement);
-  }
+    ReactDom.render(element, this.domElement);  
+}
 
   private parseTabLinks(tabNames: string, entityIds: string, contentPageUrls: string): ITabLink[] {
-    var tabNameArray = tabNames.split('\n');
-    var entityIdArray = entityIds.split('\n');
-    var contentPageUrlArray = contentPageUrls.split('\n');
+
+    if (!tabNames || !entityIds || !contentPageUrls) {
+      throw new Error(strings.BlankTabsErrorMessage);
+    }
+
+    var tabNameArray = tabNames.trim().split('\n');
+    var entityIdArray = entityIds.trim().split('\n');
+    var contentPageUrlArray = contentPageUrls.trim().split('\n');
     var result: ITabLink[] = [];
 
     var length = tabNameArray.length;

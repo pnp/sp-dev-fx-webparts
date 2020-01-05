@@ -8,6 +8,7 @@ define([], function() {
     "TabInstructions": "For each tab, choose a name, an entity Id, and the target page URL. Entity IDs should be unique, URL-safe names for each tab that won't change over time",
     "RedirectFieldLabel": "Redirect tabs through this page",
     "RedirectFieldInstructions": "Set the tab to redirect through this page so links can be updated centrally",
+    "BlankTabsErrorMessage": "You must configure at least one tab complete with name, entity ID, and URL",
     "UnevenTabsErrorMessage": "You must have the same number of tab names, entity Ids, and page Urls"
   }
 });
