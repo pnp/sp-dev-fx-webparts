@@ -45,49 +45,80 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
     //   });
     // }
 
-    if (this.props.tabLinkChoices) {
+    if (this.props.tabLinkChoices && this.props.tabLinkChoices.length > 1) {
 
-      // We have tab link choices; allow the user to pick one
+      // We have multiple tab link choices; allow the user to pick one
       return (
         <div className={styles.configureTab}>
           <div className={styles.container}>
             <div className={styles.row}>
-              <div className={styles.column}>
-                <span className={styles.title}>Configure your SharePoint tab</span>
+              <ul className={styles.column}>
+
                 {this.props.tabLinkChoices.map((item) => {
                   if (this.state.selectedTabLink &&
                       item.entityId == this.state.selectedTabLink.entityId) {
+                    // Display selected tab
                     return (
-                      <div className={styles.description}>
-                        SEL {item.tabName}
+                      <li className={styles.selected + ' ' + styles.tabChoice}>
+                        <span className = {styles.tabName}>{item.tabName}</span>
                         <br />
-                        <a href={escape(item.contentPageUrl)}>{escape(item.contentPageUrl)}</a>
-                      </div>
+                        <span className={styles.tabLink}>
+                          <a href={escape(item.contentPageUrl)}>{escape(item.contentPageUrl)}</a>
+                        </span>
+                      </li>
                     );
                   } else {
+                    // Display unselected tab
                     return (
-                      <div className={styles.description}
+                      <li className={styles.tabChoice}
                         onClick={() => {
                           this.setState({
                             selectedTabLink: item
                           });
                           this.props.tabLinkSelected(item);
                         }} >
-                        {item.tabName}
+                        <span className = {styles.tabName}>{item.tabName}</span>
                         <br />
-                        <a href={escape(item.contentPageUrl)}>{escape(item.contentPageUrl)}</a>
-                      </div>
+                        <span className={styles.tabLink}>
+                          <a href={escape(item.contentPageUrl)}>{escape(item.contentPageUrl)}</a>
+                          </span>
+                      </li>
                     );
                   }
                 })}
+
                 <p className={styles.subTitle}>{escape(this.props.message)}</p>
-              </div>
+              </ul>
             </div>
           </div>
         </div>
       );
 
+    } else if (this.props.tabLinkChoices) { 
+
+      // We have only one tab link choice, select it immediately
+      this.props.tabLinkSelected(this.props.tabLinkChoices[0]);
+      return (
+        <div className={styles.configureTab}>
+          <div className={styles.container}>
+            <div className={styles.row}>
+              <div className={styles.column}>
+                <div className={styles.selected + ' ' + styles.tabChoice}>
+                  <span className = {styles.tabName}>{this.props.tabLinkChoices[0].tabName}</span>
+                  <br />
+                  <span className={styles.tabLink}>
+                    <a href={escape(this.props.tabLinkChoices[0].contentPageUrl)}>{escape(this.props.tabLinkChoices[0].contentPageUrl)}</a>
+                  </span>
+                </div>
+              </div>
+              <p className={styles.subTitle}>{escape(this.props.message)}</p>
+            </div>
+          </div>
+        </div>
+      );
+              
     } else {
+
       // No tab link choices available; show message only
       return (
         <div className={styles.configureTab}>

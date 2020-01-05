@@ -32,12 +32,24 @@
     @include ms-fontColor-white;
   }
 
-  .description {
-    @include ms-font-l;
+  .tabChoice {
+    padding: 2px 0px 10px 5px;
+  }
+
+  .tabName {
+    @include ms-font-xl;
+  }
+
+  .tabLink {
+    @include ms-font-xs;
     @include ms-fontColor-white;
-    a:link {
+    a:link, a:visited {
       color: $ms-color-white;
     }
+  }
+
+  .selected {
+    background-color: #005b70;
   }
 
   .button {
