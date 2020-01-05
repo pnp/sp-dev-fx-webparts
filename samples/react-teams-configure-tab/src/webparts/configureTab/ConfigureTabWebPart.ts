@@ -4,7 +4,9 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneCheckbox,
+  PropertyPaneLabel
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'ConfigureTabWebPartStrings';
@@ -12,7 +14,10 @@ import ConfigureTab from './components/ConfigureTab';
 import { IConfigureTabProps } from './components/IConfigureTabProps';
 
 export interface IConfigureTabWebPartProps {
-  contentPageUrl: string;
+  tabNames: string;
+  entityIds: string;
+  contentPageUrls: string;
+  redirectPages: boolean;
 }
 
 export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigureTabWebPartProps> {
@@ -22,7 +27,7 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
     const element: React.ReactElement<IConfigureTabProps> = React.createElement(
       ConfigureTab,
       {
-        contentPageUrl: this.properties.contentPageUrl
+        contentPageUrl: this.properties.contentPageUrls
       }
     );
 
@@ -37,6 +42,10 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
     return Version.parse('1.0');
   }
 
+  protected get disableReactivePropertyChanges(): boolean { 
+    return true; 
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -48,9 +57,36 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('contentPageUrl', {
-                  label: strings.ContentPageUrlFieldLabel
-                })
+                PropertyPaneTextField('tabNames', {
+                  label: strings.TabNamesFieldLabel,
+                  multiline: true,
+                  rows: 5
+                }),
+                PropertyPaneLabel('', {
+                  text: strings.TabNamesFieldInstructions
+                }),
+                PropertyPaneTextField('entityIds', {
+                  label: strings.EntityIdsFieldLabel,
+                  multiline: true,
+                  rows: 5
+                }),
+                PropertyPaneLabel('', {
+                  text: strings.EntityIdsFieldInstructions
+                }),
+                PropertyPaneTextField('contentPageUrls', {
+                  label: strings.ContentPageUrlsFieldLabel,
+                  multiline: true,
+                  rows: 5
+                }),
+                PropertyPaneLabel('', {
+                  text: strings.ContentPageUrlsFieldInstructions
+                }),
+                PropertyPaneCheckbox('redirectPages', {
+                  text: strings.RedirectFieldLabel
+                }),
+                PropertyPaneLabel('', {
+                  text: strings.RedirectFieldInstructions
+                }),
               ]
             }
           ]
