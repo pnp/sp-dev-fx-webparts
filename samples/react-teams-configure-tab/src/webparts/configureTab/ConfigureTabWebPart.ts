@@ -40,7 +40,7 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
       {
         tabLinkChoices: tabLinkChoices,
         message: message,
-        tabLinkSelected: null
+        tabLinkSelected: ((item: ITabLink) => { alert(`You clicked ${item.tabName}`);})
       }
     );
     ReactDom.render(element, this.domElement);  
@@ -67,7 +67,7 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
         tabName: tabNameArray[i],
         entityId: entityIdArray[i],
         contentPageUrl: contentPageUrlArray[i]
-      })
+      });
     }
 
     return result;

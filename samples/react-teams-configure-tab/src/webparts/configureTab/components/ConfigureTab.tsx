@@ -6,16 +6,23 @@ import { ITabLink } from '../model/ITabLink';
 // import * as microsoftTeams from "@microsoft/teams-js";
 
 export interface IConfigureTabProps {
-  tabLinkChoices: ITabLink[];
+  tabLinkChoices?: ITabLink[];
   message: string;
-  tabLinkSelected: (tabLinkSelected: ITabLink) => void;
+  tabLinkSelected?: (ITabLink) => void;
 }
 
 interface IConfigureTabState {
-  selectedTabLink: ITabLink;
+  selectedTabLink?: ITabLink;
 }
 
 export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigureTabState> {
+
+  constructor(props: IConfigureTabProps) {
+    super(props);
+    this.state = {
+      selectedTabLink: null
+    };
+  }
 
   public render(): React.ReactElement<IConfigureTabProps> {
 
@@ -39,6 +46,7 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
     // }
 
     if (this.props.tabLinkChoices) {
+
       // We have tab link choices; allow the user to pick one
       return (
         <div className={styles.configureTab}>
@@ -46,16 +54,39 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
             <div className={styles.row}>
               <div className={styles.column}>
                 <span className={styles.title}>Configure your SharePoint tab</span>
-                <p className={styles.description}>The tab will display:&nbsp;
-                  <a href={escape(this.props.tabLinkChoices[0].contentPageUrl)}>{escape(this.props.tabLinkChoices[0].contentPageUrl)}</a>
-                </p>
+                {this.props.tabLinkChoices.map((item) => {
+                  if (this.state.selectedTabLink &&
+                      item.entityId == this.state.selectedTabLink.entityId) {
+                    return (
+                      <div className={styles.description}>
+                        SEL {item.tabName}
+                        <br />
+                        <a href={escape(item.contentPageUrl)}>{escape(item.contentPageUrl)}</a>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div className={styles.description}
+                        onClick={() => {
+                          this.setState({
+                            selectedTabLink: item
+                          });
+                          this.props.tabLinkSelected(item);
+                        }} >
+                        {item.tabName}
+                        <br />
+                        <a href={escape(item.contentPageUrl)}>{escape(item.contentPageUrl)}</a>
+                      </div>
+                    );
+                  }
+                })}
                 <p className={styles.subTitle}>{escape(this.props.message)}</p>
               </div>
             </div>
           </div>
         </div>
       );
-  
+
     } else {
       // No tab link choices available; show message only
       return (
@@ -70,6 +101,6 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
           </div>
         </div>
       );
-      }
+    }
   }
 }
