@@ -11,6 +11,7 @@ define([], function() {
     "BlankTabsErrorMessage": "You must configure at least one tab complete with name, entity ID, and URL",
     "UnevenTabsErrorMessage": "You must have the same number of tab names, entity Ids, and page Urls",
     "PleaseSelectHeading": "Please select the tab you'd like to display",
-    "OneSelectHeading": "This tab will be added to your display"
+    "OneSelectHeading": "This tab will be added to your display",
+    "TabNotDefinedMessage": "Tab is no longer defined, please update the tab settings or contact the application owner"
   }
 });

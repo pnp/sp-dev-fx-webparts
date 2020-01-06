@@ -9,17 +9,20 @@ export default class TeamsConfigurationService {
         }
     }
 
-    public configureTab(tab: ITabLink) {
+    public configureTab(tab: ITabLink, redirect: boolean) {
 
         if (microsoftTeams) {
 
+            let url = redirect ?
+                window.location.href + "?entityId=" + tab.entityId :
+                tab.contentPageUrl;
             microsoftTeams.settings.setValidityState(true);
             microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
                 microsoftTeams.settings.setSettings({
                     suggestedDisplayName: tab.tabName,
                     entityId: tab.entityId,
-                    contentUrl: tab.contentPageUrl,
-                    websiteUrl: tab.contentPageUrl
+                    contentUrl: url,
+                    websiteUrl: url
                 });
                 saveEvent.notifySuccess();
             });

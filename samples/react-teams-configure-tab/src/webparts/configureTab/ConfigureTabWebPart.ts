@@ -48,7 +48,7 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
             tabLinkChoices: tabLinkChoices,
             message: "",
             tabLinkSelected: ((item: ITabLink) => {
-              this.teamsConfigurationService.configureTab(item);
+              this.teamsConfigurationService.configureTab(item, this.properties.redirectPages);
             })
           }
         );

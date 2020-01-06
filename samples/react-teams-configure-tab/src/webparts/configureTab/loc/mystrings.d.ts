@@ -11,6 +11,7 @@ declare interface IConfigureTabWebPartStrings {
   UnevenTabsErrorMessage: string;
   PleaseSelectHeading: string;
   OneSelectHeading: string;
+  TabNotDefinedMessage: string;
 }
 
 declare module 'ConfigureTabWebPartStrings' {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './ConfigureTab.module.scss';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { ITabLink } from '../model/ITabLink';
-//import * as strings from 'ConfigureTabWebPartStrings';
+import * as strings from 'ConfigureTabWebPartStrings';
 
 export interface IRedirectTabProps {
   tabLinkChoices?: ITabLink[];
@@ -24,7 +24,7 @@ export class RedirectTab extends React.Component<IRedirectTabProps, {}> {
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.column}>
-              <p className={styles.subTitle}>{'Tab is no longer defined, please re-configure the tab or contact the application owner'}</p>
+              <p className={styles.subTitle}>{strings.TabNotDefinedMessage}</p>
             </div>
           </div>
         </div>
