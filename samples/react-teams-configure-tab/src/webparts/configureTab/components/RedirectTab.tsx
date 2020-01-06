@@ -6,23 +6,29 @@ import { ITabLink } from '../model/ITabLink';
 
 export interface IRedirectTabProps {
   tabLinkChoices?: ITabLink[];
-  message: string;
+  entityId: string;
 }
 
 export class RedirectTab extends React.Component<IRedirectTabProps, {}> {
 
   public render(): React.ReactElement<IRedirectTabProps> {
 
-      return (
-        <div className={styles.configureTab}>
-          <div className={styles.container}>
-            <div className={styles.row}>
-              <div className={styles.column}>
-                <p className={styles.subTitle}>{escape(this.props.message)}</p>
-              </div>
+    this.props.tabLinkChoices.forEach((item => {
+      if (item.entityId.toLowerCase() === this.props.entityId.toLowerCase()) {
+        window.location.replace(item.contentPageUrl);
+      }
+    }));
+
+    return (
+      <div className={styles.configureTab}>
+        <div className={styles.container}>
+          <div className={styles.row}>
+            <div className={styles.column}>
+              <p className={styles.subTitle}>{'Tab is no longer defined, please re-configure the tab or contact the application owner'}</p>
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
   }
 }

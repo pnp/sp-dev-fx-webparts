@@ -37,8 +37,8 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
       tabLinkChoices = this.tabLinkParser.parseTabLinks(this.properties.tabNames, this.properties.entityIds, this.properties.contentPageUrls);
 
       var queryParms = new UrlQueryParameterCollection(window.location.href);
-      var redirectTabName = queryParms.getValue("tabName");
-      if (!redirectTabName) {
+      var redirectEntityId = queryParms.getValue("entityId");
+      if (!redirectEntityId) {
 
         // We are in configuration mode, running on as a Teams tab configuration page
         // Allow user to configure a tab
@@ -58,11 +58,11 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
 
         // We are in redirect mode, redirecting a request for a content page
         // Redirect to the named tab
-        const element: React.ReactElement<IConfigureTabProps> = React.createElement(
+        const element: React.ReactElement<IRedirectTabProps> = React.createElement(
           RedirectTab,
           {
             tabLinkChoices: tabLinkChoices,
-            message: "",
+            entityId: redirectEntityId
           }
         );
         ReactDom.render(element, this.domElement);
@@ -72,7 +72,7 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
     catch (error) {
       
       // Display error
-      const element: React.ReactElement<IConfigureTabProps> = React.createElement(
+      const element: React.ReactElement<ITabErrorProps> = React.createElement(
         TabError,
         {
           message: error,
