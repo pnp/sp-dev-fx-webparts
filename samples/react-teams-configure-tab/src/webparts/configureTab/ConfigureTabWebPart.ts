@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, UrlQueryParameterCollection } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -11,8 +11,11 @@ import {
 
 import * as strings from 'ConfigureTabWebPartStrings';
 import { ConfigureTab, IConfigureTabProps } from './components/ConfigureTab';
+import { RedirectTab, IRedirectTabProps } from './components/RedirectTab';
+import { TabError, ITabErrorProps } from './components/TabError';
 import { ITabLink } from './model/ITabLink';
 import TeamsConfigurationService from './services/TeamsConfigurationService';
+import TabLinkParser from './services/TabLinkParser';
 
 export interface IConfigureTabWebPartProps {
   tabNames: string;
@@ -24,61 +27,60 @@ export interface IConfigureTabWebPartProps {
 export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigureTabWebPartProps> {
 
   private teamsConfigurationService = new TeamsConfigurationService();
+  private tabLinkParser = new TabLinkParser();
 
   public render(): void {
 
     var tabLinkChoices: ITabLink[] = null;
-    var message: string = "";
 
     try {
-      tabLinkChoices = this.parseTabLinks(this.properties.tabNames, this.properties.entityIds, this.properties.contentPageUrls);
-      message = "";
+      tabLinkChoices = this.tabLinkParser.parseTabLinks(this.properties.tabNames, this.properties.entityIds, this.properties.contentPageUrls);
+
+      var queryParms = new UrlQueryParameterCollection(window.location.href);
+      var redirectTabName = queryParms.getValue("tabName");
+      if (!redirectTabName) {
+
+        // We are in configuration mode, running on as a Teams tab configuration page
+        // Allow user to configure a tab
+        const element: React.ReactElement<IConfigureTabProps> = React.createElement(
+          ConfigureTab,
+          {
+            tabLinkChoices: tabLinkChoices,
+            message: "",
+            tabLinkSelected: ((item: ITabLink) => {
+              this.teamsConfigurationService.configureTab(item);
+            })
+          }
+        );
+        ReactDom.render(element, this.domElement);
+
+      } else {
+
+        // We are in redirect mode, redirecting a request for a content page
+        // Redirect to the named tab
+        const element: React.ReactElement<IConfigureTabProps> = React.createElement(
+          RedirectTab,
+          {
+            tabLinkChoices: tabLinkChoices,
+            message: "",
+          }
+        );
+        ReactDom.render(element, this.domElement);
+      }
     }
+    
     catch (error) {
-      message = error;
+      
+      // Display error
+      const element: React.ReactElement<IConfigureTabProps> = React.createElement(
+        TabError,
+        {
+          message: error,
+        }
+      );
+      ReactDom.render(element, this.domElement);
     }
 
-    const element: React.ReactElement<IConfigureTabProps> = React.createElement(
-      ConfigureTab,
-      {
-        tabLinkChoices: tabLinkChoices,
-        message: message,
-        tabLinkSelected: ((item: ITabLink) => {
-          this.teamsConfigurationService.configureTab(item); 
-        })
-      }
-    );
-    ReactDom.render(element, this.domElement);
-  }
-
-  private parseTabLinks(tabNames: string, entityIds: string, contentPageUrls: string): ITabLink[] {
-
-    if (!tabNames || !entityIds || !contentPageUrls) {
-      throw new Error(strings.BlankTabsErrorMessage);
-    }
-
-    var tabNameArray = tabNames.trim().split('\n');
-    var entityIdArray = entityIds.trim().split('\n');
-    var contentPageUrlArray = contentPageUrls.trim().split('\n');
-    var result: ITabLink[] = [];
-
-    var length = tabNameArray.length;
-    if (entityIdArray.length != length || contentPageUrlArray.length != length) {
-      throw new Error(strings.UnevenTabsErrorMessage);
-    }
-
-    for (let i = 0; i < length; i++) {
-      if (!tabNameArray[i] || !entityIdArray[i] || !contentPageUrlArray[i]) {
-        throw new Error(strings.BlankTabsErrorMessage);
-      }
-      result.push({
-        tabName: tabNameArray[i],
-        entityId: entityIdArray[i],
-        contentPageUrl: contentPageUrlArray[i]
-      });
-    }
-
-    return result;
   }
 
   protected onDispose(): void {
