@@ -12,6 +12,7 @@ import {
 import * as strings from 'ConfigureTabWebPartStrings';
 import { ConfigureTab, IConfigureTabProps } from './components/ConfigureTab';
 import { ITabLink } from './model/ITabLink';
+import TeamsConfigurationService from './services/TeamsConfigurationService';
 
 export interface IConfigureTabWebPartProps {
   tabNames: string;
@@ -21,6 +22,8 @@ export interface IConfigureTabWebPartProps {
 }
 
 export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigureTabWebPartProps> {
+
+  private teamsConfigurationService = new TeamsConfigurationService();
 
   public render(): void {
 
@@ -40,7 +43,9 @@ export default class ConfigureTabWebPart extends BaseClientSideWebPart<IConfigur
       {
         tabLinkChoices: tabLinkChoices,
         message: message,
-        tabLinkSelected: ((item: ITabLink) => { alert(`You clicked ${item.tabName}`); })
+        tabLinkSelected: ((item: ITabLink) => {
+          this.teamsConfigurationService.configureTab(item); 
+        })
       }
     );
     ReactDom.render(element, this.domElement);

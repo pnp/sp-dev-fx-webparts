@@ -4,8 +4,6 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import { ITabLink } from '../model/ITabLink';
 import * as strings from 'ConfigureTabWebPartStrings';
 
-// import * as microsoftTeams from "@microsoft/teams-js";
-
 export interface IConfigureTabProps {
   tabLinkChoices?: ITabLink[];
   message: string;
@@ -26,25 +24,6 @@ export class ConfigureTab extends React.Component<IConfigureTabProps, IConfigure
   }
 
   public render(): React.ReactElement<IConfigureTabProps> {
-
-    // var message = "Teams API not found";
-    // var settings = {
-    //   websiteUrl: this.props.contentPageUrl,
-    //   contentUrl: this.props.contentPageUrl,
-    //   entityId: "grayIconTab",
-    //   suggestedDisplayName: "MyNewTab"
-    // };
-    // if (microsoftTeams) {
-    //   microsoftTeams.initialize();
-    //   message = "Teams API initialized";
-
-    //   microsoftTeams.settings.setValidityState(true);
-
-    //   microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
-    //     microsoftTeams.settings.setSettings(settings);
-    //     saveEvent.notifySuccess();
-    //   });
-    // }
 
     if (this.props.tabLinkChoices && this.props.tabLinkChoices.length > 1) {
 
