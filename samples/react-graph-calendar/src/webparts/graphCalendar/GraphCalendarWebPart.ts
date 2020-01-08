@@ -11,7 +11,7 @@ import * as strings from 'GraphCalendarWebPartStrings';
 import GraphCalendar from './components/GraphCalendar';
 import { IGraphCalendarProps } from './components/IGraphCalendarProps';
 import * as microsoftTeams from '@microsoft/teams-js';
-import { initializeIcons } from 'office-ui-fabric-react';
+import { initializeIcons, ThemeSettingName } from 'office-ui-fabric-react';
 import { PropertyPaneSlider } from '@microsoft/sp-property-pane';
 
 export interface IGraphCalendarWebPartProps {
@@ -44,15 +44,14 @@ export default class GraphCalendarWebPart extends BaseClientSideWebPart<IGraphCa
       }
 
       // Sets the Teams context if in Teams
-      if (this.context.microsoftTeams) {
-        this.context.microsoftTeams.getContext(context => {
-          this._teamsContext = context;
-          // resolve the promise
-          resolve(undefined);
-        });
-
+      if (this.context.sdks.microsoftTeams) {
+        this._teamsContext = this.context.sdks.microsoftTeams.context;
+        
         // Initialize the OUIF icons if in Teams
         initializeIcons();
+          
+        // resolve the promise
+        resolve(undefined);
       } else {
         // resolve the promise
         resolve(undefined);

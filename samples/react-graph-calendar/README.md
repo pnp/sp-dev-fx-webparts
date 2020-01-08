@@ -1,7 +1,7 @@
 # React Graph Calendar Web Part
 
 ## Summary
-This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.).
+This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.).
 
 ### Web Part in SharePoint Online
 ![The web part in action](./assets/react-graph-calendar-spo.gif)
@@ -9,14 +9,14 @@ This is a sample web part developed using React Framework to gather events from 
 ### Web Part in Microsoft Teams
 ![The web part in action](./assets/react-graph-calendar-teams.gif)
 
-Webpart is developed using below technologies 
+Web part is developed using below technologies 
 * React Framework
 * Full Calendar (fullcalendar.io)
 * Microsoft Teams API
 * Office UI Fabric
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.10-green.svg)
 
 ## Applies to
 
@@ -38,6 +38,7 @@ react-graph-calendar | [Sébastien Levert](https://www.linkedin.com/in/sebastien
 Version|Date|Comments
 -------|----|--------
 1.0 |December 29, 2019 | Initial Release
+1.1 |January 08, 2020 | Bumped to SPFx 1.10 and added the Personal Tab support
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
