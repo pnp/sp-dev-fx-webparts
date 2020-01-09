@@ -17,6 +17,12 @@ interface IGraphCalendarState {
   isEventDetailsOpen: boolean;
   currentSelectedEvent: EventInput;
   groupId: string;
+  tabType: TabType;
+}
+
+enum TabType {
+  TeamsTab,
+  PersonalTab
 }
 
 export default class GraphCalendar extends React.Component<IGraphCalendarProps, IGraphCalendarState> {
@@ -45,7 +51,8 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
       currentActiveEndDate: null,
       isEventDetailsOpen: false,
       currentSelectedEvent: null,
-      groupId: this._isRunningInTeams() ? this.props.teamsContext.groupId : this.props.context.pageContext.site.group ? this.props.context.pageContext.site.group.id : ""
+      groupId: this._isRunningInTeams() ? this.props.teamsContext.groupId : this.props.context.pageContext.site.group ? this.props.context.pageContext.site.group.id : "",
+      tabType: this._isRunningInTeams() ? (this._isPersonalTab() ? TabType.PersonalTab : TabType.TeamsTab) : TabType.TeamsTab
     };
   }
 
@@ -73,7 +80,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
           plugins={[ dayGridPlugin ]}
           windowResize={this._handleResize.bind(this)}
           datesRender={this._datesRender.bind(this)}
-          eventClick={this._handleEventClick.bind(this)}
+          eventClick={this._openEventPanel.bind(this)}
           height={this.state.height}
           events={this.state.events} />
         {this.state.currentSelectedEvent &&
@@ -81,6 +88,8 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
             isOpen={this.state.isEventDetailsOpen}
             type={ PanelType.smallFixedFar }
             headerText={this.state.currentSelectedEvent ? this.state.currentSelectedEvent.title : ""}
+            onDismiss={this._closeEventPanel.bind(this)}
+            isLightDismiss={true}
             closeButtonAriaLabel='Close'>
             <h3>Start Time</h3>
             <span>{moment(this.state.currentSelectedEvent.start).format('MMMM Do YYYY [at] h:mm:ss a')}</span>
@@ -124,13 +133,36 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   }
 
   /**
+   * Validates if the current web part is running in a Personal Tab
+   */
+  private _isPersonalTab() {
+    let _isPersonalTab: Boolean = false;
+
+    if(this._isRunningInTeams() && !this.props.teamsContext.teamId) {
+      _isPersonalTab = true;
+    }
+
+    return _isPersonalTab;
+  }
+
+  /**
    * Handles the click event and opens the OUIF Panel
    * @param eventClickInfo The information about the selected event
    */
-  private _handleEventClick(eventClickInfo: any) {
+  private _openEventPanel(eventClickInfo: any) {
     this.setState({
       isEventDetailsOpen: true,
       currentSelectedEvent: eventClickInfo.event
+    });
+  }
+
+  /**
+   * Handles the click event on the dismiss from the Panel and closes the OUIF Panel
+   */
+  private _closeEventPanel() {
+    this.setState({
+      isEventDetailsOpen: true,
+      currentSelectedEvent: null
     });
   }
   
@@ -166,15 +198,20 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
    */
   private _loadEvents(startDate: Date, endDate: Date): void {
 
-    // If a Group was found, execute the query. If not, do nothing.
-    if(this.state.groupId) {
+    // If a Group was found or running in the context of a Personal tab, execute the query. If not, do nothing.
+    if(this.state.groupId || this.state.tabType == TabType.PersonalTab) {
 
       this.props.context.msGraphClientFactory
       .getClient()
       .then((client: MSGraphClient): void => {
 
+        let apiUrl: string = `/groups/${this.state.groupId}/events`;
+        if(this._isPersonalTab()) {
+          apiUrl = '/me/events';
+        }
+
         client
-          .api(`/groups/${this.state.groupId}/events`)
+          .api(apiUrl)
           .version("v1.0")
           .select('subject,start,end,location,bodyPreview,isAllDay')
           .filter(`start/dateTime ge '${startDate.toISOString()}' and end/dateTime le '${endDate.toISOString()}'`)
