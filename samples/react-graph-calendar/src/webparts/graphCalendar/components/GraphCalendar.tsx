@@ -8,7 +8,6 @@ import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import * as moment from 'moment-timezone';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { timeAsMs } from '@fullcalendar/core/datelib/marker';
 
 interface IGraphCalendarState {
   events: EventInput[];

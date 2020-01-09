@@ -11,7 +11,7 @@ import * as strings from 'GraphCalendarWebPartStrings';
 import GraphCalendar from './components/GraphCalendar';
 import { IGraphCalendarProps } from './components/IGraphCalendarProps';
 import * as microsoftTeams from '@microsoft/teams-js';
-import { initializeIcons, ThemeSettingName } from 'office-ui-fabric-react';
+import { initializeIcons } from 'office-ui-fabric-react';
 import { PropertyPaneSlider } from '@microsoft/sp-property-pane';
 
 export interface IGraphCalendarWebPartProps {
