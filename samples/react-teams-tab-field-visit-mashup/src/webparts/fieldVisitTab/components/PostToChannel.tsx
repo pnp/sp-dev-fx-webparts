@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './FieldVisits.module.scss';
 
-import { ContentType } from '../model/IConversation';
 import { IConversationService } from '../services/ConversationService/IConversationService';
 import { IMapService } from '../services/MapService/IMapService';
 
@@ -93,7 +92,7 @@ export class PostToChannel extends React.Component<IPostToChannelProps, IPostToC
             ;
 
         this.props.conversationService
-            .createChatThread(message, ContentType.html)
+            .createChatThread(message, "html")
             .then(() => {
                 this.setState({ value: '' });
             });
