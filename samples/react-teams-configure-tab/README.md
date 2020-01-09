@@ -92,4 +92,4 @@ If you set the web part up to redirect tab clicks, it saved its own URL and the 
 If you edit the web part and remove the choice (entity ID), it will prompt the user to edit the tab and make another selection.
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-tab-field-visit-mashup" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-configure-tab" />
