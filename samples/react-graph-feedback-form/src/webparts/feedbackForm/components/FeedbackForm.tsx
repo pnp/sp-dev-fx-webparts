@@ -1,20 +1,28 @@
 import * as React from 'react';
-import styles from './FeedbackForm.module.scss';
 import { IFeedbackFormProps } from './IFeedbackFormProps';
 import { escape } from '@microsoft/sp-lodash-subset';
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
+
+// https://developer.microsoft.com/en-us/fabric#/controls/web
 import {
   TextField,
   DefaultButton,
   MessageBar,
   MessageBarType,
-  MessageBarButton
+  MessageBarButton,
+  Stack
 } from 'office-ui-fabric-react';
-import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
+
+import {
+  Logger,
+  LogLevel
+} from "@pnp/logging";
+const LOG_SOURCE: string = 'FeedbackForm';
 
 export interface IFeedbackFormState {
   isBusy: boolean;
-  message: string;
-  messageSended: boolean;
+  messageWasSended: boolean;
+  messageText: string;
 }
 
 export default class FeedbackForm extends React.Component<IFeedbackFormProps, IFeedbackFormState> {
@@ -24,80 +32,127 @@ export default class FeedbackForm extends React.Component<IFeedbackFormProps, IF
 
     this.state = {
       isBusy: false,
-      message: '',
-      messageSended: false
+      messageWasSended: false,
+      messageText: '',
     };
   }
 
   public render(): React.ReactElement<IFeedbackFormProps> {
+
     return (
-      <div className={ styles.feedbackForm }>
-        {this.props.targetEmail ? '' : (
-          <MessageBar messageBarType={MessageBarType.warning}>Target email is empty! Please configure this web part first.</MessageBar>
-        )}
-        {this.state.messageSended ? (
-          <MessageBar
-            actions={
-              <div>
-                <MessageBarButton onClick={()=>{
-                  this.setState({
-                    messageSended:false
-                  });
-                }}>I want to send more!</MessageBarButton>
-              </div>
-            }
-            messageBarType={MessageBarType.success}
-            isMultiline={false}
-          >
-            Message was sent!
-          </MessageBar>
-        ) :
-        (
-            <>
-              <TextField disabled={this.state.isBusy} label="Feedback" multiline rows={3} name="text" value={this.state.message} onChange={this._onChange} />
-              <div className={ styles.formActions }>
-                <DefaultButton disabled={this.state.isBusy || !this.props.targetEmail} onClick={this._sendMessage}>Send</DefaultButton>
-              </div>
-            </>
-        )}
+      <div>
+        {this.props.targetEmail ? '' : this.notConfiguredAlert}
+        {this.state.messageWasSended ? this.messageBar : this.feedbackForm}
       </div>
     );
   }
 
-  private _onChange = (event: React.ChangeEvent<HTMLInputElement>) : void => {
-    this.setState({message:event.target.value});
+  private get feedbackForm(): JSX.Element {
+
+    const { messageText, isBusy } = this.state;
+    const { targetEmail, maxMessageLength } = this.props;
+
+    return(
+      <Stack gap={5} styles={{ root: { width: 650, margin: "0 auto" } }}>
+        <TextField
+          disabled={isBusy}
+          label="Feedback"
+          maxLength={maxMessageLength}
+          multiline
+          rows={3}
+          value={messageText}
+          onChange={this.onTextFieldChangeHandler}
+        />
+        <p>{messageText.length} of {maxMessageLength}</p>
+        <div>
+          <DefaultButton
+            disabled={isBusy || !targetEmail}
+            onClick={this.sendMessageHandler}
+          >Send Message</DefaultButton>
+        </div>
+      </Stack>
+    );
   }
 
-  private _sendMessage = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) : Promise<void> => {
-    this.setState({isBusy:true});
-
-    const msg = {
-      subject: escape(this.props.subject),
-      importance:"low",
-      body:{
-          contentType:"html",
-          content: escape(this.state.message)
-      },
-      toRecipients:[
-          {
-              emailAddress:{
-                  address: this.props.targetEmail
-              }
+  private get messageBar(): JSX.Element {
+    Logger.write(`[${LOG_SOURCE}] renderMessageBar()`);
+    return(
+      <MessageBar
+        actions = {
+          <div>
+            <MessageBarButton onClick={this.messageBarButtonOnClickHandler}>I want to send more!</MessageBarButton>
+          </div>
           }
-      ]
-  } as MicrosoftGraph.Message;
+          messageBarType={MessageBarType.success}
+          isMultiline={false}
+        >
+          Message was sent!
+      </MessageBar>
+    );
+  }
 
-  await this.props.graphClient.api('/me/sendMail')
-    .post({
-      message : msg
-    }).then(() => {
+  private get notConfiguredAlert(): JSX.Element {
+    Logger.write(`[${LOG_SOURCE}] renderNotConfiguredAlert()`);
+    return(
+      <MessageBar messageBarType={MessageBarType.warning}>Target email is empty! Please configure this web part first.</MessageBar>
+    );
+  }
+
+  private onTextFieldChangeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const messageText = event.target.value;
+    this.setState({messageText});
+  }
+
+  private sendMessageHandler = async(): Promise<void> => {
+    Logger.write(`[${LOG_SOURCE}] sendMessageHandler()`);
+
+    const { graphClient, targetEmail, subject } = this.props;
+    const { messageText } = this.state;
+    this.setState({ isBusy:true });
+
+    Logger.write(`[${LOG_SOURCE}] composing message`);
+    const message: MicrosoftGraph.Message = {
+      subject: escape(subject),
+      importance:"low",
+      body: {
+        contentType:"html",
+        content: escape(messageText)
+      },
+      toRecipients: [
+        {
+          emailAddress: {
+            address: targetEmail
+          }
+        }
+      ]
+    };
+
+    let messageWasSended = false;
+
+    try {
+
+      Logger.write(`[${LOG_SOURCE}] trying send email to ${this.props.targetEmail}`);
+
+      await graphClient.api('/me/sendMail').post({message});
+      messageWasSended = true;
+    } catch (error) {
+
+      Logger.writeJSON(error, LogLevel.Error);
+
+    } finally {
+
       this.setState({
         isBusy:false,
-        message: '',
-        messageSended: true
+        messageWasSended
       });
-    },(error: any) => {
-      console.log(error);
-    });
+    }
+  }
+
+  private messageBarButtonOnClickHandler = (): void => {
+
+    this.setState({ 
+      messageWasSended:false,
+      messageText: '',
+     });
   }
 }
