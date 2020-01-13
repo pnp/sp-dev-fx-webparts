@@ -12,11 +12,9 @@ Use the filter below to find samples by keywords in the title or description.
 
 {% for sample in samples|sort(attribute='modified', reverse=True) %}
 
-<div class="sample-item" data-keywords="{{ sample.name }} {{ sample.title }} {{ sample.summary }}">
+<div class="sample-item" data-keywords="{{ sample.name }} {{ sample.title }} {{ sample.summary }}"  data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
-  {% if sample.thumbnailtype == "video" %}
     <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>
-    {% endif %}
     <div class="sample-img">
       <a class="sample-link"
         href="{{sample.url}}"

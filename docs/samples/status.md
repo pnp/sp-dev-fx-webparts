@@ -14,19 +14,13 @@ If you encounter any issues with the samples, [create an issue](https://github.c
               <button class="button" data-filter="[data-status='Incomplete']">Incomplete</button>
               <button class="button" data-filter=":not([data-status=''])">Other</button>
   </div>
-
-  <!-- <div class="button-group sort-button-group"> 
-    <button class="button" data-sort-direction="asc" data-sort-value="original-order" type="button">Sort <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true" style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"  style='display:none;'></i></button> 
-    <button class="button" data-sort-direction="asc" data-sort-value="title" type="button">Title <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true"  style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"  style='display:none;'></i></button> 
-    <button class="button is-checked" data-sort-direction="desc" data-sort-value="modified" type="button">Modified  <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true"  style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"></i></button>
-  </div> -->
 </div>
 
 <div class="grid">
 
 {% for sample in samples %}
 
-<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-year="{{sample.year}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-status="{{ sample.status}}">
+<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-status="{{ sample.status}}"  data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
   {% if sample.thumbnailtype == "video" %}
     <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>

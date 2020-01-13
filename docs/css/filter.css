@@ -190,7 +190,7 @@
   } 
 
   .sample-video {
-    display: block;
+    display: none;
     position: absolute;
     top:0px;
     right:5px;
@@ -199,10 +199,6 @@
     float: right;
     text-shadow: 1px 1px #ffffff99;
     color:#8a8886;
-  }
-
-  .sample:hover .sample-video {
-    display: none;
   }
 
   .form-control {
@@ -227,5 +223,15 @@
   #samplestable th {
     cursor: pointer;
   }
+
+  
+  .sample-item[data-thumbnail$='.gif'] .sample-video {
+    display: block;
+  }
+
+  .sample:hover .sample-video {
+    display: none;
+  }
+
 
   html { overflow-y: scroll; }

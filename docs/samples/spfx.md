@@ -3,6 +3,7 @@
  <div class="well">
   <div class="button-group filters-button-group">
               <button class="button is-checked" data-filter="*">All</button>
+              <button class="button" data-filter="[data-spfx='1.10.0']">1.10.0</button>
               <button class="button" data-filter="[data-spfx='1.9.1']">1.9.1</button>
               <button class="button" data-filter="[data-spfx='1.9.0']">1.9.0</button>
               <button class="button" data-filter="[data-spfx='1.8.2']">1.8.2</button>
@@ -17,8 +18,6 @@
               <button class="button" data-filter="[data-spfx='1.3.4']">1.3.4</button>
               <button class="button" data-filter="[data-spfx='1.3.0']">1.3.0</button>
               <button class="button" data-filter="[data-spfx='GA']">GA</button>
-              <button class="button"
-                data-filter="[data-spfx='rc0'],[data-spfx='drop5'],[data-spfx='drop4'],[data-spfx='drop2'],[data-spfx='drop1']">Pre-release</button>
             </div>
   <!-- <div class="button-group sort-button-group"> 
     <button class="button" data-sort-direction="asc" data-sort-value="original-order" type="button">Sort <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true" style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"  style='display:none;'></i></button> 
@@ -31,11 +30,9 @@
 
 {% for sample in samples %}
 
-<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-year="{{sample.year}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}">
+<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}"  data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
-  {% if sample.thumbnailtype == "video" %}
     <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>
-    {% endif %}
     <div class="sample-img">
       <a class="sample-link"
         href="{{sample.url}}"

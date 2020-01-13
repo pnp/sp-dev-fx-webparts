@@ -15,11 +15,9 @@ All samples are compatible with SharePoint Online. If you wish to find web parts
 
 {% for sample in samples %}
 
-<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-year="{{sample.year}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-compatibility="{{ sample.compatibility }}">
+<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-compatibility="{{ sample.compatibility }}"  data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
-  {% if sample.thumbnailtype == "video" %}
     <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>
-    {% endif %}
     <div class="sample-img">
       <a class="sample-link"
         href="{{sample.url}}"

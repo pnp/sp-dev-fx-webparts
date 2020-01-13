@@ -17,11 +17,9 @@ Our samples were created by the feature teams, SharePoint PnP core team (http://
 
 {% for sample in samples %}
 
-<div class="sample-item" data-author="{{ sample.author }}">
+<div class="sample-item" data-author="{{ sample.author }}"  data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
-  {% if sample.thumbnailtype == "video" %}
     <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>
-    {% endif %}
     <div class="sample-img">
       <a class="sample-link"
         href="{{sample.url}}"
