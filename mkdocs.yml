@@ -1,6 +1,6 @@
 # Web Part Samples
 # Author: Hugo Bernier
-# Master PR: 1098, 1091
+# Master PR: f485454
 site_name: SharePoint Framework Client-Side Web Part Samples
 theme: readthedocs
 plugins:
@@ -66,14 +66,36 @@ extra:
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-calendar
       name: react-graph-calendar
       title: Graph Calendar Web Part
-      summary: This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.).
+      summary: This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.).
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-calendar/assets/react-graph-calendar-spo.gif
       thumbnailtype: video
       framework: React
-      spfx: 1.9.1
+      spfx: 1.10.0
       author: Sébastien Levert
-      modifiedtext: December 29, 2019
-      modified: 2019-12-29
+      modifiedtext: January 08, 2020
+      modified: 2020-01-08
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-manage-o365-groups
+      name: react-manage-o365-groups
+      title: Manage Office 365 Groups with SPFx
+      summary: Office 365 Groups is the foundational membership service, that drives all teamwork across Microsoft 365. Once in a group, we can get the benefits of the group-connected services like shared Outlook inbox, shared calendar, SharePoint site, Planner, Power BI, Yammer, and Teams.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-manage-o365-groups/assets/web-part-preview.gif
+      thumbnailtype: video
+      framework: React
+      spfx: 1.9.1
+      author: Nanddeep Nachan, Smita Nachan
+      modifiedtext: January 01, 2020
+      modified: 2020-01-01
+    - framework: React
+      spfx: 1.9.1
+      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-feedback-form
+      name: react-graph-feedback-form
+      title: Feedback Form
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-feedback-form/assets/preview.gif
+      thumbnailtype: video
+      author: Sergei Zheleznov 
+      summary: Sample SPFx React web part which allows sending emails using Microsoft Graph.
+      modifiedtext: December 15, 2019
+      modified: 2019-12-15
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-members-with-presence
       name: react-members-with-presence
       title: Group members list with Presence information
@@ -1049,19 +1071,6 @@ extra:
       modifiedtext: April 15, 2018
       modified: 2018-04-15
     - framework: React
-      spfx: 1.8.2
-      year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-feedback-form
-      name: react-graph-feedback-form
-      title: Feedback Form
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-feedback-form/assets/preview.gif
-      thumbnailtype: video
-      author: Sergei Zheleznov 
-      summary: Sample SPFx React web part which allows sending emails using Microsoft Graph.
-      version: 1.0
-      modifiedtext: August 12, 2019
-      modified: 2019-08-12
-    - framework: React
       spfx: 1.6.0
       year: 2018
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-personalemail
@@ -2018,6 +2027,7 @@ extra:
     - Sergei Zheleznov 
     - Siddharth Vaghasia
     - Simon-Pierre Plante
+    - Smita Nachan
     - Stefan Bauer
     - Stephan Bisser
     - Stéphane Magne
