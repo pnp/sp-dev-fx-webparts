@@ -1,6 +1,6 @@
 # React Twitter Timeline
 
-Sample web part to display Twittier timeline
+Sample web part to display Twitter timeline
 
 ![Twitter timeline](./assets/twitter-timeline.png)
 
