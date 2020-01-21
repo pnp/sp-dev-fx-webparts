@@ -1,0 +1,14 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+    "version": "2.0",
+    "bundles": {
+        "thumbnail-web-part": {
+            "components": [{
+                "entrypoint": "./lib/webparts/thumbnail/ThumbnailWebPart.js",
+                "manifest": "./src/webparts/thumbnail/ThumbnailWebPart.manifest.json"
+            }]
+        }
+    },
+    "externals": {},
+    "localizedResources": {}
+}
