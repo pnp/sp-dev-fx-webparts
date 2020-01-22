@@ -3,6 +3,11 @@
 ## Summary
 A web part showcasing how to call the [Microsoft Graph Thumbnails API](https://docs.microsoft.com/en-us/graph/api/driveitem-list-thumbnails) to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object.
 
+_Note that a preview for all file formats (eg. Excel) might not currently be available._
+
+![web part sample](./preview.gif)
+
+
 The sample calls the Microsoft Graph API directly directly via the _api/2.0 endpoint in SharePoint Online, but can easily be changed to call the Graph API endpoint directly for scenarios outside of SharePoint as long as an access token is retrieved.
 
 The goal of the sample is to illustrate a single call calling pattern for the thumbnail with the following calling pattern:

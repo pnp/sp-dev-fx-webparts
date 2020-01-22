@@ -47,13 +47,13 @@ export default class ThumbnailWebPart extends BaseClientSideWebPart<void> {
             let fileName = fileInfo["FileLeafRef"];
 
             let thumbnailUrl = `/_api/v2.0/sites/${this.context.pageContext.site.id}/lists/${listId}/items/${itemUniqueId}/driveItem/thumbnails/0/${maxHeight}/content${noRedirect}`;
-            _documentResults += (`<li>${fileName}<br/><img height="150" border="1" src="${thumbnailUrl}"></li>`);
+            _documentResults += (`<li>${fileName}<br/><img height="150" border="1" src="${thumbnailUrl}" onerror="this.src=''"></li>`);
 
         });
 
         searchResults.PrimarySearchResults.forEach(item => {
             let thumbnailUrl = `/_api/v2.0/sites/${item["NormSiteID"]}/lists/${item["NormListID"]}/items/${item["NormUniqueID"]}/driveItem/thumbnails/0/${maxHeight}/content${noRedirect}`;
-            _searchResults += (`<li>${item["FileName"]}<br/><img height="150" border="1" src="${thumbnailUrl}"></li>`);
+            _searchResults += (`<li>${item["FileName"]}<br/><img height="150" border="1" src="${thumbnailUrl}" onerror="this.src=''"></li>`);
         });
 
     }
