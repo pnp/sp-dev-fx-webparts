@@ -6,11 +6,10 @@ import * as React from 'react';
 import styles from './TreeOrgChart.module.scss';
 import { ITreeOrgChartProps } from './ITreeOrgChartProps';
 import { ITreeOrgChartState } from './ITreeOrgChartState';
-import { escape } from '@microsoft/sp-lodash-subset';
 import SortableTree from 'react-sortable-tree';
 import 'react-sortable-tree/style.css';
-import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IPersonaSharedProps, Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import spservice from '../../../services/spservices';
 import { ITreeChildren } from './ITreeChildren';
@@ -19,7 +18,6 @@ import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spin
 
 export default class TreeOrgChart extends React.Component<ITreeOrgChartProps, ITreeOrgChartState> {
   private treeData: ITreeData[];
-  private treeChildren: ITreeChildren[];
   private SPService: spservice;
 
   constructor(props) {
@@ -56,18 +54,16 @@ export default class TreeOrgChart extends React.Component<ITreeOrgChartProps, IT
     // Test if show only my Team or All Organization Chart
     if (!this.props.currentUserTeam) {
       const treeManagers = await this.buildOrganizationChart(currentUserProperties);
-      treeManagers ?
-        this.treeData.push(treeManagers)
-        : null;
+      if (treeManagers)
+        this.treeData.push(treeManagers);
     } else {
       const treeManagers = await this.buildMyTeamOrganizationChart(currentUserProperties);
-      treeManagers ?
+      if (treeManagers)
         this.treeData.push({
           title: (treeManagers.person),
           expanded: true,
           children: treeManagers.treeChildren
-        })
-        : null;
+        });
     }
     console.log(JSON.stringify(this.treeData));
     this.setState({ treeData: this.treeData, isLoading: false });
@@ -79,7 +75,7 @@ export default class TreeOrgChart extends React.Component<ITreeOrgChartProps, IT
   */
   public async buildOrganizationChart(currentUserProperties: any) {
     // Get Managers
-    let treeManagers: ITreeData = null;
+    let treeManagers: ITreeData | null = null;
     if (currentUserProperties.ExtendedManagers && currentUserProperties.ExtendedManagers.length > 0) {
       treeManagers = await this.getUsers(currentUserProperties.ExtendedManagers[0]);
     }
@@ -179,7 +175,7 @@ export default class TreeOrgChart extends React.Component<ITreeOrgChartProps, IT
     const usersDirectReports: any[] = await this.getChildren(currentUserProperties.DirectReports);
     // Current USer Has Manager
     if (hasManager) {
-      treeChildren.push({ title: (meCard), expanded: true, children: usersDirectReports })
+      treeChildren.push({ title: (meCard), expanded: true, children: usersDirectReports });
 
     }else{
         treeChildren = usersDirectReports;
