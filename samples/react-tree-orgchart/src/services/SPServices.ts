@@ -1,7 +1,7 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { sp } from '@pnp/sp';
 
-export default class spservices {
+export default class SPServices {
   constructor(private context: WebPartContext) {
     sp.setup({
       spfxContext: this.context

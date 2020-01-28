@@ -11,7 +11,7 @@ import 'react-sortable-tree/style.css';
 import { IPersonaSharedProps, Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import spservice from '../../../services/spservices';
+import spservice from '../../../services/SPServices';
 import { ITreeChildren } from './ITreeChildren';
 import { ITreeData } from './ITreeData';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
