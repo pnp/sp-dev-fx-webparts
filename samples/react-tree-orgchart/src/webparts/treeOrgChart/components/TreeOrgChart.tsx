@@ -86,7 +86,6 @@ export default class TreeOrgChart extends React.Component<
           children: treeManagers.treeChildren
         });
     }
-    console.log(JSON.stringify(this.treeData));
     this.setState({ treeData: this.treeData, isLoading: false });
   }
 
@@ -306,7 +305,7 @@ export default class TreeOrgChart extends React.Component<
                   iconProps={{ iconName: "ContactInfo" }}
                   title="Contact Info"
                   ariaLabel="Contact"
-                  onClick={ev => {
+                  onClick={() => {
                     window.open(
                       `https://eur.delve.office.com/?p=${rowInfo.node.title.props.tertiaryText}&v=work`
                     );
