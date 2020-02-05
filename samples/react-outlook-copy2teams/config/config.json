@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "outlook-2-share-point-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/outlook2SharePoint/Outlook2SharePointWebPart.js",
+          "manifest": "./src/webparts/outlook2SharePoint/Outlook2SharePointWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "Outlook2SharePointWebPartStrings": "lib/webparts/outlook2SharePoint/loc/{locale}.js"
+  }
+}

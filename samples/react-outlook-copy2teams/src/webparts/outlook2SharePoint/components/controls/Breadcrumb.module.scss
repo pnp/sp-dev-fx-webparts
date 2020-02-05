@@ -1,0 +1,28 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.breadcrumb {
+  @include ms-Grid;
+  .rootIcon {
+    cursor: pointer;
+    margin-right: 5px;
+    @include ms-Grid-col; 
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .row {
+    @include ms-Grid-row;
+  }
+  .grandParent {
+    @include ms-Grid-col;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 5px;
+  }  
+  .link {
+    cursor: pointer;
+  }
+  .nonLink {
+    margin-left: 5px;
+    font-weight: bolder;
+  }
+}
