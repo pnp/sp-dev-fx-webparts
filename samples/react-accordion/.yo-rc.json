@@ -1,8 +1,9 @@
 {
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
+    "isDomainIsolated": false,
     "environment": "spo",
-    "version": "1.5.1",
+    "version": "1.10.0",
     "libraryName": "react-accordion",
     "libraryId": "6d6cf05b-cfe5-4d12-af19-19ec3aedcaf9",
     "packageManager": "npm",
