@@ -3,7 +3,7 @@
     "packageManager": "pnpm",
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.7.1",
+    "version": "1.10.0",
     "libraryName": "workbench-customizer",
     "libraryId": "5d6f4a5a-9d2b-4a93-a283-16b8f5ea75d6",
     "componentType": "webpart"
