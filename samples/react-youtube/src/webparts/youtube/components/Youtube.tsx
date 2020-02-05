@@ -59,19 +59,29 @@ export default class Youtube extends React.Component<IYoutubeProps, IYoutubeStat
       q: term,
       maxResults: maxResults,
       type: 'video',
-      channelId: channelId || null
+      channelId: channelId || null,
+      order: "date" //Reverse sorts by publish date so it returns most recent.
     };
 
     axios.get(ROOT_URL, { params: params })
       .then((response) => {
         // if (callback) { callback(response.data.items); }
         // return response.data.items;
+      
+        let decodedItems = [];
+        for (let item of response.data.items ) {
+          item.snippet.title = item.snippet.title.replace(/&amp;/g, '&');
+          item.snippet.description = item.snippet.title.replace(/&amp;/g, '&');
+          decodedItems.push(item);
+        }
+      
         this.setState({
-          videos: response.data.items,
-          selectedVideo: response.data.items[0]
+          videos: decodedItems,
+          selectedVideo: decodedItems[0]
         });
       })
       .catch((error) => {
+        console.error('YouTube Search Error:' );
         console.error(error);
       });
   }
