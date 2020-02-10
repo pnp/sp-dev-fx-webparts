@@ -49,7 +49,7 @@
 
 ## Prerequisites
  
-> **@microsoft/generator-sharepoint - 1.4.1**
+> **@microsoft/generator-sharepoint - 1.9.1**
 
 ## Solution
 
