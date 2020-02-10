@@ -5,7 +5,10 @@ import styles from "./AsyncAwaitPnPJs.module.scss";
 import { IFile, IResponseItem } from "../interfaces";
 
 // import pnp and pnp logging system
-import { Web } from "@pnp/sp";
+import { sp } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 import { Logger, LogLevel, LogEntry, FunctionListener } from "@pnp/logging";
 
 // import SPFx Logging system
@@ -139,8 +142,8 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
       //   - .usingCaching() will be using SessionStorage by default to cache the  results
       //   - .get() always returns a promise
       //   - await converts Promise<IResponseItem[]> into IResponse[]
-      const web: Web = new Web(this.props.pageContext.web.absoluteUrl);
-      const response: IResponseItem[] = await web.lists
+ 
+      const response: IResponseItem[] = await sp.web.lists
         .getByTitle(libraryName)
         .items
         .select("Title", "FileLeafRef", "File/Length")
@@ -161,10 +164,10 @@ export default class AsyncAwaitPnPJs extends React.Component<IAsyncAwaitPnPJsPro
       this.setState({ ...this.state, items });
 
       // intentionally set wrong query to see console errors...
-      const failResponse: IResponseItem[] = await web.lists
+      const failResponse: IResponseItem[] = await sp.web.lists
         .getByTitle(libraryName)
         .items
-        .select("Title", "FileLeafRef", "File/Length", "NonExistingColumn")
+        .select("Title", "FileLeafRef", "File/Length")
         .expand("File/Length")
         .usingCaching()
         .get();

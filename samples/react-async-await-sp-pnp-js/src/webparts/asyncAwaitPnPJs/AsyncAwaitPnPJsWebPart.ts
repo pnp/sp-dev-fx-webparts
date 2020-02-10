@@ -1,11 +1,13 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
+
+import { sp } from '@pnp/sp';
 
 import * as strings from 'asyncAwaitPnPJsStrings';
 import AsyncAwaitPnPJs from './components/AsyncAwaitPnPJs';
@@ -17,14 +19,14 @@ import { IAsyncAwaitPnPJsWebPartProps } from './IAsyncAwaitPnPJsWebPartProps';
 export default class AsyncAwaitPnPJsWebPart extends BaseClientSideWebPart<IAsyncAwaitPnPJsWebPartProps> {
 
   // // https://github.com/SharePoint/PnP-JS-Core/wiki/Using-sp-pnp-js-in-SharePoint-Framework
-  // public onInit(): Promise<void> {
-  //   return super.onInit().then(_ => {
-  //     // establish SPFx context
-  //     pnp.setup({
-  //       spfxContext: this.context
-  //     });
-  //   });
-  // }
+  public onInit(): Promise<void> {
+    return super.onInit().then(_ => {
+      // establish SPFx context
+      sp.setup({
+        spfxContext: this.context
+      });
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IAsyncAwaitPnPJsProps > = React.createElement(
