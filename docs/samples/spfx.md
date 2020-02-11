@@ -3,7 +3,7 @@
  <div class="well">
   <div class="button-group filters-button-group">
               <button class="button is-checked" data-filter="*">All</button>
-              <button class="button" data-filter="[data-spfx='1.10.0']">1.10.0</button>
+              <!-- <button class="button" data-filter="[data-spfx='1.10.0']">1.10.0</button> -->
               <button class="button" data-filter="[data-spfx='1.9.1']">1.9.1</button>
               <button class="button" data-filter="[data-spfx='1.9.0']">1.9.0</button>
               <button class="button" data-filter="[data-spfx='1.8.2']">1.8.2</button>

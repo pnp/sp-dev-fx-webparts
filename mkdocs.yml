@@ -1,6 +1,6 @@
 # Web Part Samples
 # Author: Hugo Bernier
-# Master PR: f485454
+# Master PR: 0578d52
 site_name: SharePoint Framework Client-Side Web Part Samples
 theme: readthedocs
 plugins:
@@ -63,6 +63,47 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
+      name: js-workbench-customizer
+      title: Workbench customizer
+      summary: This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png
+      framework: Javascript
+      spfx: 1.10.0
+      author: Joel Rodrigues
+      modifiedtext: February 05, 2020
+      modified: 2020-02-05
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-outlook-copy2teams
+      name: react-outlook-copy2teams
+      title: Outlook to Teams
+      summary: This SPFx Outlook Add-In lets you browse your OneDrive, joined Teams or Groups and select a folder to save your complete mail in there.
+      thumbnail: https://camo.githubusercontent.com/a539e3ae63602becc87309ee2a965e4d5a605239/68747470733a2f2f6d6d7368617265706f696e742e66696c65732e776f726470726573732e636f6d2f323032302f30312f616464696e5f6f766572616c6c2e706e67
+      framework: React
+      spfx: 1.10.0
+      author: Markus Moeller
+      modifiedtext: February 05, 2020
+      modified: 2020-02-05  
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-advanced-commenting
+      name: js-advanced-commenting
+      title: Advanced Comments Box
+      summary: This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif
+      thumbnailtype: video
+      framework: jQuery
+      spfx: 1.9.1
+      author: Sudharsan K.
+      modifiedtext: February 05, 2020
+      modified: 2020-02-05
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-twitter
+      name: react-twitter
+      title: Twitter Timeline
+      summary: Sample web part to display Twitter timeline.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-twitter/assets/twitter-timeline.png
+      framework: React
+      spfx: 1.10.0
+      author: Alex Terentiev
+      modifiedtext: January 20, 2020
+      modified: 2020-01-20  
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-calendar
       name: react-graph-calendar
       title: Graph Calendar Web Part
@@ -344,7 +385,7 @@ extra:
     - framework: Other
       spfx: GA
       year: 2017
-      title: Bootstrap Slider Built with jQueryr v1.x and Boostrap v3.x
+      title: Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/bootstrap-slider
       name: bootstrap-slider
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/bootstrap-slider/assets/slider_image_1.png
@@ -2007,6 +2048,7 @@ extra:
     - Luis Mañez
     - Luis Valencia
     - Manish Garg
+    - Markus Moeller
     - Miguel Rabaca
     - Nanddeep Nachan
     - Oleg Rumiancev
@@ -2031,6 +2073,7 @@ extra:
     - Stefan Bauer
     - Stephan Bisser
     - Stéphane Magne
+    - Sudharsan K.
     - Sudhir Rawat
     - Vardhaman Deshpande
     - Velin Georgiev
