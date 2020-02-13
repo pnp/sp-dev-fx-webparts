@@ -45,5 +45,8 @@ Version|Date|Comments
 
 This webpart allows a user to select a text file containing zpl which then the contents of the selected file are read and the user is also able to configure the size of the label they would like to see in the render. When the user clicks the show label button the label is generated using an online server to render the image.
 
+* [PnP SPFx React Controls - File Selector](https://sharepoint.github.io/sp-dev-fx-controls-react/)
+* [PnP JS - Read Contents of a file](https://pnp.github.io/pnpjs/)
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-zpl-viewer" />
