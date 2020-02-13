@@ -45,9 +45,8 @@ export class ReactZplViewer extends React.Component<IReactZplViewerProps, IReact
             <div className={"ms-Grid-col"}>
               <FilePicker
                 accepts={[".txt"]}
-                // onSave={(filePickerResult: IFilePickerResult) => {this.setState({selectedFile: filePickerResult, showSelectedFile: true});}}
                 onSave={this._getFile}
-                onChanged={(filePickerResult: IFilePickerResult) => {this.setState({selectedFile: filePickerResult});}}
+                onChanged={this._getFile}
                 context={this.props.context}
                 buttonLabel="Select File"
                 hideLinkUploadTab={true}
@@ -100,12 +99,13 @@ export class ReactZplViewer extends React.Component<IReactZplViewerProps, IReact
     this.setState({
       selectedFile: filePickerResult,
       showSelectedFile: true
+    }, () => {
+      this._getZpl();
     });
-    this._getZpl();
   }
 
   private  _getZpl = (): void => {
-    let relativeURL: string = this.state.selectedFile.fileAbsoluteUrl.split("com").pop();
+    const relativeURL: string = this.state.selectedFile.fileAbsoluteUrl.split("com").pop();
     sp.web.getFileByServerRelativeUrl(relativeURL).getText().then(zpl => {
       this.setState({
         zpl: zpl
