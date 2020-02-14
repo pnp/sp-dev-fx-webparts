@@ -1,3 +1,21 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+  scenarios:
+  - Embed
+---
 # React & Office Graph Web Part samples
 
 ## Summary
