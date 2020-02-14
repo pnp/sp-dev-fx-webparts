@@ -1,3 +1,20 @@
+---
+page_type: sample
+products:
+- office-sp
+- skype
+- office-skype-business
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 12/1/2017 12:00:00 AM
+---
 # React Skype Status WebPart
 
 ## Summary
