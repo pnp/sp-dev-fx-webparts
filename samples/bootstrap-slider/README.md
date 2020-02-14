@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - jQuery
+  createdDate: 5/1/2017 12:00:00 AM
+---
 ## Bootstrap Slider Built with jQueryr v1.x and Boostrap v3.x
 
 ## Summary
