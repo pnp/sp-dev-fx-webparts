@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+- power-bi
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - JQuery
+  createdDate: 1/1/2016 12:00:00 AM
+---
 ﻿# Embed a PowerBI report in a Client-Side Web Part
 
 ## Summary
