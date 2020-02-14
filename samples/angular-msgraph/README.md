@@ -1,3 +1,22 @@
+---
+page_type: sample
+products:
+- office-sp
+- ms-graph
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Microsoft Graph
+  services:
+  - SharePoint
+  platforms:
+  - AngularJS
+  createdDate: 1/1/2016 12:00:00 AM
+---
 ﻿## Angular MS Graph Web Part Built with Angular v1.x
 
 ## Summary
