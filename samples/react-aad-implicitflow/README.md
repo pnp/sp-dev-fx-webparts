@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - OAuth 2.0
+  platforms:
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Azure Active Directory implicit flow authentication samples
 
 ## Summary
