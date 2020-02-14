@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 11/1/2017 12:00:00 AM
+---
 # Webhooks Realtime
 
 ## Summary
