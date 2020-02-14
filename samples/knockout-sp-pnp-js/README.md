@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - Knockout
+  createdDate: 3/1/2017 12:00:00 AM
+---
 # Sample showing the use of @pnp/sp library with Knockoutjs
 
 ## Summary
