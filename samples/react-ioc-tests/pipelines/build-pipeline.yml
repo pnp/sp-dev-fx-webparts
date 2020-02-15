@@ -9,19 +9,19 @@ queue:
 steps:  
 
 - task: NodeTool@0
-  displayName: 'Use Node 8.15.1'
+  displayName: 'Use Node 10.16.3'
   inputs:
-    versionSpec: 8.15.1
+    versionSpec: 10.16.3
 
 
 - task: Npm@1
-  displayName: 'npm install'
+  displayName: 'npm ci'
   inputs:
     command: custom
 
     verbose: false
 
-    customCommand: 'install'
+    customCommand: 'ci'
 
 - task: Npm@1
   displayName: 'npm test'
