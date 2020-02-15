@@ -3,16 +3,16 @@ import IStorage from "./IStorage";
 
 export default class StorageCacheProvider implements ICacheProvider {
     private cacheKeyPrefix: string = "__E2.";
-    private storage: IStorage;
+    private storage: IStorage | undefined;
 
-    constructor(storage: IStorage) {
+    constructor(storage: IStorage | undefined) {
         this.storage = storage;
     }
 
     public IsSupportStorage(): boolean {
         let isSupportStorage: boolean = false;
-        const supportsStorage: boolean = this.storage && JSON && typeof JSON.parse === "function" && typeof JSON.stringify === "function";
-        if (supportsStorage) {
+        const supportsStorage: boolean = !!this.storage && JSON && typeof JSON.parse === "function" && typeof JSON.stringify === "function";
+        if (supportsStorage && !!this.storage) {
             // check for dodgy behaviour from iOS Safari in private browsing mode
             try {
                 const testKey: string = "e2-cache-isSupportStorage-testKey";
@@ -29,7 +29,7 @@ export default class StorageCacheProvider implements ICacheProvider {
     public async Get(key: string): Promise<any> {
         key = this.ensureCacheKeyPrefix(key);
         let returnValue: any = undefined;
-        if (this.IsSupportStorage()) {
+        if (!!this.storage && this.IsSupportStorage()) {
             if (!this.isCacheExpired(key)) {
                 returnValue = this.storage.getItem(key);
                 if (typeof returnValue === "string" && (returnValue.indexOf("{") === 0 || returnValue.indexOf("[") === 0)) {
@@ -43,7 +43,7 @@ export default class StorageCacheProvider implements ICacheProvider {
     public async Set(key: string, valueObj: any, cacheTimeout: CacheTimeout = CacheTimeout.default): Promise<boolean> {
         key = this.ensureCacheKeyPrefix(key);
         let didSetInCache: boolean = false;
-        if (this.IsSupportStorage()) {
+        if (!!this.storage && this.IsSupportStorage()) {
             // get value as a string
             let cacheValue: any = undefined;
             if (valueObj === null || valueObj === undefined) {
@@ -66,9 +66,11 @@ export default class StorageCacheProvider implements ICacheProvider {
     }
 
     public async Clear(key: string): Promise<void> {
-        key = this.ensureCacheKeyPrefix(key);
-        this.storage.removeItem(key);
-        this.storage.removeItem(this.getExpiryKey(key));
+        if (!!this.storage && this.IsSupportStorage()) {
+            key = this.ensureCacheKeyPrefix(key);
+            this.storage.removeItem(key);
+            this.storage.removeItem(this.getExpiryKey(key));
+        }
     }
 
     private getExpiryKey(key: string): string {
@@ -77,11 +79,13 @@ export default class StorageCacheProvider implements ICacheProvider {
 
     private isCacheExpired(key: string): boolean {
         let isCacheExpired: boolean = true;
-        const cacheExpiryString: string | null = this.storage.getItem(this.getExpiryKey(key));
-        if (typeof cacheExpiryString === "string" && cacheExpiryString.length > 0) {
-            const cacheExpiryInt: number = parseInt(cacheExpiryString, 10);
-            if (cacheExpiryInt > (new Date()).getTime()) {
-                isCacheExpired = false;
+        if (!!this.storage) {
+            const cacheExpiryString: string | null = this.storage.getItem(this.getExpiryKey(key));
+            if (typeof cacheExpiryString === "string" && cacheExpiryString.length > 0) {
+                const cacheExpiryInt: number = parseInt(cacheExpiryString, 10);
+                if (cacheExpiryInt > (new Date()).getTime()) {
+                    isCacheExpired = false;
+                }
             }
         }
         return isCacheExpired;

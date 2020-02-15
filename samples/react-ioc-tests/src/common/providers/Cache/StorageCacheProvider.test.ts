@@ -11,7 +11,7 @@ describe('Provider: StorageCacheProvider', () => {
   const stringVal: string = "value";
 
   beforeEach(() => {
-    cacheProvider = new StorageCacheProvider(new MockStorage());
+    cacheProvider = new StorageCacheProvider(new MockStorage("", ""));
   });
 
   afterEach(() => {
