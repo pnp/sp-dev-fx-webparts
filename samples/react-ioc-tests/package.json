@@ -80,6 +80,7 @@
       "src/**/*.{ts,tsx}",
       "!src/common/providers/DependencyResolver/DependencyResolver.ts",
       "!src/**/*WebPart.ts",
+      "!src/**/*ApplicationCustomizer.ts",
       "!src/**/*Executor.ts",
       "!src/**/Mock*.ts",
       "!src/**/*.scss.ts",

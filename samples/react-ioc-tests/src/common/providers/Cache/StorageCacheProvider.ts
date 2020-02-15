@@ -1,10 +1,11 @@
 import ICacheProvider, { CacheTimeout } from "./ICacheProvider";
+import IStorage from "./IStorage";
 
 export default class StorageCacheProvider implements ICacheProvider {
     private cacheKeyPrefix: string = "__E2.";
-    private storage: Storage;
+    private storage: IStorage;
 
-    constructor(storage: Storage = window.sessionStorage) {
+    constructor(storage: IStorage) {
         this.storage = storage;
     }
 
@@ -15,7 +16,7 @@ export default class StorageCacheProvider implements ICacheProvider {
             // check for dodgy behaviour from iOS Safari in private browsing mode
             try {
                 const testKey: string = "e2-cache-isSupportStorage-testKey";
-                this.storage[testKey] = "1";
+                this.storage.setItem(testKey, "1");
                 this.storage.removeItem(testKey);
                 isSupportStorage = true;
             } catch (ex) {
@@ -30,7 +31,7 @@ export default class StorageCacheProvider implements ICacheProvider {
         let returnValue: any = undefined;
         if (this.IsSupportStorage()) {
             if (!this.isCacheExpired(key)) {
-                returnValue = this.storage[key];
+                returnValue = this.storage.getItem(key);
                 if (typeof returnValue === "string" && (returnValue.indexOf("{") === 0 || returnValue.indexOf("[") === 0)) {
                         returnValue = JSON.parse(returnValue);
                 }
@@ -54,10 +55,11 @@ export default class StorageCacheProvider implements ICacheProvider {
             }
 
             // cache value
-            this.storage[key] = cacheValue;
+            this.storage.setItem(key, cacheValue);
             const validityPeriodMs: number = this.getCacheTimeout(cacheTimeout);
             // cache expiry
-            this.storage[this.getExpiryKey(key)] = ((new Date()).getTime() + validityPeriodMs).toString();
+            const expiry: string = ((new Date()).getTime() + validityPeriodMs).toString();
+            this.storage.setItem(this.getExpiryKey(key), expiry);
             didSetInCache = true;
         }
         return didSetInCache;
@@ -75,7 +77,7 @@ export default class StorageCacheProvider implements ICacheProvider {
 
     private isCacheExpired(key: string): boolean {
         let isCacheExpired: boolean = true;
-        const cacheExpiryString: string = this.storage[this.getExpiryKey(key)];
+        const cacheExpiryString: string | null = this.storage.getItem(this.getExpiryKey(key));
         if (typeof cacheExpiryString === "string" && cacheExpiryString.length > 0) {
             const cacheExpiryInt: number = parseInt(cacheExpiryString, 10);
             if (cacheExpiryInt > (new Date()).getTime()) {
