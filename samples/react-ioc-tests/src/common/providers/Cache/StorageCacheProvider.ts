@@ -11,8 +11,7 @@ export default class StorageCacheProvider implements ICacheProvider {
 
     public IsSupportStorage(): boolean {
         let isSupportStorage: boolean = false;
-        const supportsStorage: boolean = !!this.storage && JSON && typeof JSON.parse === "function" && typeof JSON.stringify === "function";
-        if (supportsStorage && !!this.storage) {
+        if (!!this.storage && !!JSON && !!JSON.parse && !!JSON.stringify) {
             // check for dodgy behaviour from iOS Safari in private browsing mode
             try {
                 const testKey: string = "e2-cache-isSupportStorage-testKey";
@@ -29,8 +28,8 @@ export default class StorageCacheProvider implements ICacheProvider {
     public async Get(key: string): Promise<any> {
         key = this.ensureCacheKeyPrefix(key);
         let returnValue: any = undefined;
-        if (!!this.storage && this.IsSupportStorage()) {
-            if (!this.isCacheExpired(key)) {
+        if (this.IsSupportStorage() && !!this.storage) {
+            if (!this.isCacheExpired(key, this.storage)) {
                 returnValue = this.storage.getItem(key);
                 if (typeof returnValue === "string" && (returnValue.indexOf("{") === 0 || returnValue.indexOf("[") === 0)) {
                         returnValue = JSON.parse(returnValue);
@@ -77,15 +76,13 @@ export default class StorageCacheProvider implements ICacheProvider {
         return key + "_expiry";
     }
 
-    private isCacheExpired(key: string): boolean {
+    private isCacheExpired(key: string, storage: IStorage): boolean {
         let isCacheExpired: boolean = true;
-        if (!!this.storage) {
-            const cacheExpiryString: string | null = this.storage.getItem(this.getExpiryKey(key));
-            if (typeof cacheExpiryString === "string" && cacheExpiryString.length > 0) {
-                const cacheExpiryInt: number = parseInt(cacheExpiryString, 10);
-                if (cacheExpiryInt > (new Date()).getTime()) {
-                    isCacheExpired = false;
-                }
+        const cacheExpiryString: string | null = storage.getItem(this.getExpiryKey(key));
+        if (typeof cacheExpiryString === "string" && cacheExpiryString.length > 0) {
+            const cacheExpiryInt: number = parseInt(cacheExpiryString, 10);
+            if (cacheExpiryInt > (new Date()).getTime()) {
+                isCacheExpired = false;
             }
         }
         return isCacheExpired;
