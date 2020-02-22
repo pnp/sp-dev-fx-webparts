@@ -814,6 +814,8 @@ export class Event extends React.Component<IEventProps, IEventState> {
     });
     
     const recurrenceInfo: any = await promise;
+    if(recurrenceInfo != null)
+    {
     let keys = Object.keys(recurrenceInfo.recurrence.rule[0].repeat[0]);
     const recurrenceTypes = ["daily", "weekly", "monthly", "monthlyByDay", "yearly", "yearlyByDay"];
     for (var key of keys) {
@@ -841,6 +843,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
           continue;
       }
     }
+  }
   }
 
 
