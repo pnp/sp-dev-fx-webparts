@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "346292ca-514f-49ce-91aa-f1bf3b30088b",
+  "alias": "SimplePollWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Quick Poll" },
+    "description": { "default": "A quick poll." },
+    "officeFabricIconFontName": "BarChartVerticalEdit",
+    "properties": {
+      "chartType": "doughnut",
+      "pollBasedOnDate": false
+    }
+  }]
+}
