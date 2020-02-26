@@ -20,7 +20,7 @@
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
-    "axios": "^0.16.2",
+    "axios": "^0.19.0",
     "lodash": "^4.17.4",
     "react": "15.4.2",
     "react-dom": "15.4.2"

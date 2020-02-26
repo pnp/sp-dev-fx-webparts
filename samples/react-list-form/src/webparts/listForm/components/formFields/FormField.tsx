@@ -10,7 +10,7 @@ import { AnimationClassNames } from '@uifabric/styling';
 import { ControlMode } from '../../../../common/datatypes/ControlMode';
 import { IFieldSchema } from '../../../../common/services/datatypes/RenderListData';
 
-import * as stylesImport from 'office-ui-fabric-react/lib/components/TextField/TextField.scss';
+import * as stylesImport from 'office-ui-fabric-react/lib/components/TextField/TextField.types';
 const styles: any = stylesImport;
 
 import ardStyles from './FormField.module.scss';
@@ -50,7 +50,7 @@ const FormField: React.SFC<IFormFieldProps> = (props) => {
   return (
     <div className={css(formFieldClassName, 'od-ClientFormFields-field')}>
       <div className={css('ard-FormField-wrapper', styles.wrapper)}>
-        {label && <Label className={css(ardStyles.label, { ['is-required']: required })} htmlFor={this._id}>{label}</Label>}
+        {label && <Label className={css(ardStyles.label, { ['is-required']: required })}>{label}</Label>}
         <div className={css('ard-FormField-fieldGroup', ardStyles.controlContainerDisplay, active
           && styles.fieldGroupIsFocused, errorMessage && styles.invalid)}>
           {children}

@@ -1,8 +1,6 @@
-import { ContentType } from '../../model/IConversation';
-
 export interface IConversationService {
 
-    createChatThread(content: string, contentType: ContentType):
+    createChatThread(content: string, contentType: string):
         Promise<void>;
         
 }

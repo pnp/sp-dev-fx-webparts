@@ -1,4 +1,5 @@
 {
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-2.9/includes/tsconfig-web.json",
   "compilerOptions": {
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
@@ -7,8 +8,11 @@
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "inlineSources": false,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
     "outDir": "lib",
     "typeRoots": [
       "./node_modules/@types",

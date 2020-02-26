@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-admin-sc-catalog-pnpjs-client-side-solution",
+    "id": "59954bf3-e8a7-4def-933b-c1b618e0ab19",
+    "version": "2.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-admin-sc-catalog-pnpjs.sppkg"
+  }
+}

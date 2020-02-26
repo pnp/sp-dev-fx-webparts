@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graphextension-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphextension/GraphextensionWebPart.js",
+          "manifest": "./src/webparts/graphextension/GraphextensionWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphextensionWebPartStrings": "lib/webparts/graphextension/loc/{locale}.js"
+  }
+}

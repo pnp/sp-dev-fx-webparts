@@ -17,13 +17,13 @@ Here is the solution overview:
 </p>
 
 1. The SPFx Web Part first connects to the Azure web application via socket.io and subscribes to events (the web application have to be in https and allow cross domain calls (CORS)).
-2. An Azure logic app is used to catch new item creation events in the SharPoint list.
+2. An Azure logic app is used to catch new item creation events in the SharePoint list.
 3. When an item is added, the flow sends its id to an Azure service bus queue using JSON format.
 4. A Node.js Azure web application listens to the queue and check for new messages every 5 ms.
 5. When a new message is available, the web application emits the data to all subscribers via socket.io.
 6. The SPFx Web Part notifies user there are new items available. Items are effectively retrieved using REST according to received ids when the user clicks on the notification.
 
-## Used SharePoint Framework Version 
+## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/drop-drop4-red.svg)
 
 ## Applies to
@@ -32,7 +32,7 @@ Here is the solution overview:
 * [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
- 
+
 Before starting, you'll need to install some prerequisites:
 
 - Install the [Azure PowerShell SDK](https://azure.microsoft.com/en-us/documentation/articles/powershell-install-configure/). Make sure you've installed the AzureRM module as well.
@@ -74,8 +74,8 @@ Version|Date|Comments
 
     Set-Location "<extracted_solution_root_folder>\samples\react-socket-io"
 
-    $Script = ".\Deploy-Solution.ps1" 
-    & $Script -SiteUrl $SiteUrl -UserName $UserName -Password $Password 
+    $Script = ".\Deploy-Solution.ps1"
+    & $Script -SiteUrl $SiteUrl -UserName $UserName -Password $Password
 
     ```
 
@@ -106,13 +106,13 @@ Version|Date|Comments
     $TemplateFilePath = ".\azure-deploy.json"
     $AzureResourceGroupLocation = "East US2"
     $AzureResourceGroupName = "SPFxSocketIODemo"
-    $AzureRmResourceGroupDeploymentName = $AzureResourceGroupName 
+    $AzureRmResourceGroupDeploymentName = $AzureResourceGroupName
     $ServerCodeFolderLocation = ".\server"
 
     ```
 3. When prompted, enter your Azure credentials
 4. Wait for the installation to finish. It can take several minutes to complete due to the npm packages installation on the Azure web application.
-5. Go to the ".\client" folder and run the `gulp serve` cmd to launch the SharePoint Workbench on localhost. Open the network panel in developer console and make sure the Azure web application can be reached. 
+5. Go to the ".\client" folder and run the `gulp serve` cmd to launch the SharePoint Workbench on localhost. Open the network panel in developer console and make sure the Azure web application can be reached.
 
     <p align="center">
         <img width="600" src="./assets/network-console.png"/>
@@ -133,21 +133,21 @@ Version|Date|Comments
    **TIP**
 
    The first time you will add the "Service bus - Send Message" action, you will asked to enter the service bus connection string:
-   
+
     <p align="center">
         <img width="400" src="./assets/service-bus-new-connection.png"/>
     </p>
-   
+
    To get it, go to your Azure portal and select the "*SPFxSocketIODemo*" resource group and click on the service bus resource.
    From here your will be able to get the primary connection string:
 
     <p align="center">
         <img width="600" src="./assets/service-bus.png"/>
     </p>
-    
+
 7. Go back to your list and add initial items in the list.
 8. In your SharePoint site, [upload the workbench.aspx page](https://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant) in the *Documents* library and make sure the `gulp serve` cmd is running. Then, add the *"RealTimeNewsFeed"* Web Part in your page. You should see newly created items.
-    
+
     <p align="center">
         <img width="400" src="./assets/spfx-initial.png"/>
     </p>
@@ -164,7 +164,7 @@ Version|Date|Comments
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - Using web sockets through the socket.io library to implement real time communications between SharePoint Web Parts and an Azure back end server.
-- Using PnP JS library (1.0.5) to get items from a list. 
+- Using PnP JS library (1.0.5) to get items from a list.
 - Using Office UI Fabric React components to build a beautiful design in minutes.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-real-time" />

@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "FeedbackFormWebPartStrings": "lib/webparts/feedbackForm/loc/{locale}.js"
+    "FeedbackFormWebPartStrings": "lib/webparts/feedbackForm/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }

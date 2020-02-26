@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-quotes-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactQuotes/ReactQuotesWebPart.js",
+          "manifest": "./src/webparts/reactQuotes/ReactQuotesWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactQuotesWebPartStrings": "lib/webparts/reactQuotes/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}
