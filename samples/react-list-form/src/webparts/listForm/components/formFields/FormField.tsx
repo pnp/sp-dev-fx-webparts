@@ -40,7 +40,7 @@ const FormField: React.SFC<IFormFieldProps> = (props) => {
     active,
     errorMessage,
   } = props;
-  const formFieldClassName = css('ard-formField', ardStyles.formField, styles.root, className, {
+  const formFieldClassName = css('ard-formField ms-Grid', ardStyles.formField, styles.root, className, {
     ['is-required ' + styles.rootIsRequired]: required,
     ['is-disabled ' + styles.rootIsDisabled]: disabled,
     ['is-active ' + styles.rootIsActive]: active,
@@ -49,7 +49,7 @@ const FormField: React.SFC<IFormFieldProps> = (props) => {
 
   return (
     <div className={css(formFieldClassName, 'od-ClientFormFields-field')}>
-      <div className={css('ard-FormField-wrapper', styles.wrapper)}>
+      <div className={css('ard-FormField-wrapper ms-Row', styles.wrapper)}>
         {label && <Label className={css(ardStyles.label, { ['is-required']: required })}>{label}</Label>}
         <div className={css('ard-FormField-fieldGroup', ardStyles.controlContainerDisplay, active
           && styles.fieldGroupIsFocused, errorMessage && styles.invalid)}>
