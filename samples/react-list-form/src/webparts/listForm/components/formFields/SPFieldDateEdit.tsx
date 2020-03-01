@@ -11,15 +11,16 @@ import styles from './SPFormField.module.scss';
 const SPFieldDateEdit: React.SFC<ISPFormFieldProps> = (props) => {
   const locale = Locales[props.fieldSchema.LocaleId];
   return <DateFormField
-    {...props.value && moment(props.value).isValid() ? { value: moment(props.value).toDate() } : {}}
-    className={css(styles.dateFormField, 'ard-dateFormField')}
+    className={css(styles.dateFormField, 'ard-dateFormField', 'ms-Grid-col')}
     placeholder={strings.DateFormFieldPlaceholder}
     isRequired={props.fieldSchema.Required}
     ariaLabel={props.fieldSchema.Title}
-    locale={Locales[locale]}
+    locale={locale}
     firstDayOfWeek={props.fieldSchema.FirstDayOfWeek}
     allowTextInput
-    onSelectDate={(date) => props.valueChanged(date.toLocaleDateString(locale))}
+    fieldSchema={props.fieldSchema}
+    value={props.value}
+    valueChanged={props.valueChanged}
   />;
 };
 
