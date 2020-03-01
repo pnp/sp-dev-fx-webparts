@@ -48,9 +48,9 @@ const FormField: React.SFC<IFormFieldProps> = (props) => {
   const isDescriptionAvailable = Boolean(props.description || props.errorMessage);
 
   return (
-    <div className={css(formFieldClassName, 'ms-Grid', 'od-ClientFormFields-field')}>
-      <div className={css('ard-FormField-wrapper', 'ms-Grid-row', styles.wrapper)}>
-        {label && <Label className={css(ardStyles.label, "ms-Grid-col", { ['is-required']: required })}>{label}</Label>}
+    <div className={css(formFieldClassName, 'od-ClientFormFields-field')}>
+      <div className={css('ard-FormField-wrapper', styles.wrapper)}>
+        {label && <Label className={css(ardStyles.label, { ['is-required']: required })}>{label}</Label>}
         <div className={css('ard-FormField-fieldGroup', ardStyles.controlContainerDisplay, active
           && styles.fieldGroupIsFocused, errorMessage && styles.invalid)}>
           {children}
