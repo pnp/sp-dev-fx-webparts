@@ -66,13 +66,15 @@ export class AttachmentRender extends React.Component<IAttachmentProps, IAttachm
             let attachments = new Array<IAttachment>();
             for (var i = 0; i < fileList.length; i++) {
                 let file = fileList.item(i);
-                let contentsAsBuffer: any = await this.getFileAsBuffer(file);
-                let attachment: IAttachment = {
-                    fileBuffer: contentsAsBuffer,
-                    fileName: file.name,
-                    fileUrl: URL.createObjectURL(file)
-                };
-                attachments.push(attachment);
+                if (!this.state.attachments.some(attachment => attachment.fileName == file.name)) {
+                    let contentsAsBuffer: any = await this.getFileAsBuffer(file);
+                    let attachment: IAttachment = {
+                        fileBuffer: contentsAsBuffer,
+                        fileName: file.name,
+                        fileUrl: URL.createObjectURL(file)
+                    };
+                    attachments.push(attachment);
+                }
             }
             let allAttachments = this.state.attachments.concat(attachments);
             this.setState({
@@ -104,7 +106,7 @@ export class AttachmentRender extends React.Component<IAttachmentProps, IAttachm
                 <Link onClick={this._handleFileSelect}>Add Attachment</Link>
                 <input id="inputFile1" ref={this.inputRef} type='file' onChange={this._handleImageChange} hidden />
             </div>
-        )
+        );
     }
 
     private _handleFileSelect = (e) => {
@@ -124,7 +126,7 @@ export class AttachmentRender extends React.Component<IAttachmentProps, IAttachm
                     {link}
                     <IconButton iconProps={{ iconName: IconNames.Delete }} onClick={() => this._deleteFileItem(index)} />
                 </div>
-            )
+            );
         });
     }
     private _deleteFileItem(index: number): void {
