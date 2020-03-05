@@ -167,6 +167,7 @@ export class ListFormService implements IListFormService {
     public createItem(webUrl: string, listUrl: string, fieldsSchema: IFieldSchema[], data: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             const formValues = this.GetFormValues(fieldsSchema, data, {});
+            const formAttachmetns = this.GetFormAttachments(data, null);
             const httpClientOptions: ISPHttpClientOptions = {
                 headers: {
                     'Accept': 'application/json;odata=verbose',
@@ -198,7 +199,55 @@ export class ListFormService implements IListFormService {
                     }
                 })
                 .then((respData) => {
+                    let itemId = respData.d.AddValidateUpdateItemUsingPath.results.find(item => {
+                        return item.FieldName == "Id";
+                    }).FieldValue;
+                    //if there are attachments, we upload all of them.
+                    if (formAttachmetns.length > 0) {
+                        let promises = formAttachmetns.map(attachment => {
+                            return this.uploadAttachment(webUrl, listUrl, parseInt(itemId), attachment);
+                        });
+                        Promise.all(promises).then(values => {
+                            console.log(values);
+                            respData.AttachmentResponse = values;
+                            console.log(respData.d.AddValidateUpdateItemUsingPath);
+                            resolve(respData.d.AddValidateUpdateItemUsingPath.results);
+                        });
+                    }
                     resolve(respData.d.AddValidateUpdateItemUsingPath.results);
+                })
+                .catch((error) => {
+                    reject(this.getErrorMessage(webUrl, error));
+                });
+        });
+    }
+
+    private uploadAttachment(webUrl: string, listUrl: string, itemId: number, attachment: any) {
+        return new Promise<any>((resolve, reject) => {
+            const httpClientOptions: ISPHttpClientOptions = {
+                headers: {
+                    "Accept": "application/json; odata=verbose",
+                    "content-type": "application/json; odata=verbose",
+                    "content-length": attachment.buffer.byteLength,
+                    'X-SP-REQUESTRESOURCES': 'listUrl=' + encodeURIComponent(listUrl),
+                    'odata-version': '',
+                },
+                body: attachment.buffer,
+            };
+            const endpoint = `${webUrl}/_api/web/GetList(@listUrl)/items(@itemId)/AttachmentFiles/add(FileName='${attachment.fileName}')`
+                + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}&@itemId=%27${itemId}%27`;
+            this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions)
+                .then((response: SPHttpClientResponse) => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        reject(this.getErrorMessage(webUrl, response));
+                    }
+                })
+                .then((respData) => {
+                    console.log(respData);
+                    resolve(respData);
+                    //resolve(respData.d.AddValidateUpdateItemUsingPath.results);
                 })
                 .catch((error) => {
                     reject(this.getErrorMessage(webUrl, error));
@@ -214,6 +263,7 @@ export class ListFormService implements IListFormService {
                 && (field.InternalName in data)
                 && (data[field.InternalName] !== null)
                 && (data[field.InternalName] !== originalData[field.InternalName])
+                && (field.InternalName != "Attachments")
             ),
         )
             .map((field) => {
@@ -225,6 +275,20 @@ export class ListFormService implements IListFormService {
                 };
             },
             );
+    }
+    private GetFormAttachments(data: any, originalData: any)
+        : Array<{ buffer: any, bufferLength: number, fileName: string }> {
+        var results = new Array<{ buffer: any, bufferLength: number, fileName: string }>();
+        if (data.Attachments && data.Attachments.length > 0) {
+            results = data["Attachments"].map(item => {
+                return {
+                    buffer: item.buffer,
+                    bufferLength: item.bufferLength,
+                    fileName: item.fileName
+                } as { buffer: any, bufferLength: number, fileName: string };
+            });
+        }
+        return results;
     }
 
     /**

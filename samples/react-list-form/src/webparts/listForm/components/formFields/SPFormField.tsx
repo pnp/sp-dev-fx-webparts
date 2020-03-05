@@ -21,6 +21,8 @@ import SPFieldLookupDisplay from './SPFieldLookupDisplay';
 import SPFieldUserDisplay from './SPFieldUserDisplay';
 import SPFieldUrlDisplay from './SPFieldUrlDisplay';
 
+import SPAttachmentFormFieldEdit from './SPAttachmentFormFieldEdit';
+
 import * as strings from 'FormFieldStrings';
 import styles from './SPFormField.module.scss';
 
@@ -37,6 +39,7 @@ const EditFieldTypeMappings: { [fieldType: string]: React.StatelessComponent<ISP
   DateTime: SPFieldDateEdit,
   Boolean: SPFieldBooleanEdit,
   File: SPFieldTextEdit,
+  Attachments: SPAttachmentFormFieldEdit
   /* The following are known but unsupported types as of now:
   User: null,
   UserMulti: null,

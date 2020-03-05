@@ -7,6 +7,7 @@ import {
   IPropertyPaneConfiguration, PropertyPaneDropdown,
   PropertyPaneTextField, PropertyPaneToggle, IPropertyPaneField
 } from "@microsoft/sp-property-pane";
+import { initializeIcons } from '@uifabric/icons';
 
 import * as strings from 'ListFormWebPartStrings';
 import ListForm from './components/ListForm';
@@ -23,6 +24,7 @@ import { update, get } from '@microsoft/sp-lodash-subset';
 import { ListService } from '../../common/services/ListService';
 import { ControlMode } from '../../common/datatypes/ControlMode';
 
+initializeIcons();
 
 export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebPartProps> {
 
