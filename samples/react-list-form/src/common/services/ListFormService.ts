@@ -162,54 +162,6 @@ export class ListFormService implements IListFormService {
         }
 
     }
-    // public updateItem(webUrl: string, listUrl: string, itemId: number,
-    //     fieldsSchema: IFieldSchema[], data: any, originalData: any): Promise<any> {
-    //     return new Promise<any>((resolve, reject) => {
-    //         const httpClientOptions: ISPHttpClientOptions = {
-    //             headers: {
-    //                 'Accept': 'application/json;odata=verbose',
-    //                 'Content-type': 'application/json;odata=verbose',
-    //                 'X-SP-REQUESTRESOURCES': 'listUrl=' + encodeURIComponent(listUrl),
-    //                 'odata-version': '',
-    //             },
-    //         };
-    //         const formValues = this.GetFormValues(fieldsSchema, data, originalData);
-    //         const createAttachmetns = this.GetAttachmentsCreate(data);
-    //         const deleteAttachmetns = this.GetAttachmentsDelete(data, originalData);
-    //         console.log(deleteAttachmetns);
-    //         httpClientOptions.body = JSON.stringify({
-    //             bNewDocumentUpdate: false,
-    //             checkInComment: null,
-    //             formValues,
-    //         });
-    //         const endpoint = `${webUrl}/_api/web/GetList(@listUrl)/items(@itemId)/ValidateUpdateListItem()`
-    //             + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}&@itemId=%27${itemId}%27`;
-    //         this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions)
-    //             .then((response: SPHttpClientResponse) => {
-    //                 if (response.ok) {
-    //                     return response.json();
-    //                 } else {
-    //                     reject(this.getErrorMessage(webUrl, response));
-    //                 }
-    //             })
-    //             .then((respData) => {
-    //                 if (createAttachmetns.length > 0) {
-    //                     this.uploadAttachments(webUrl, listUrl, itemId, createAttachmetns)
-    //                         .then((attachmentResponse) => {
-    //                             respData.AttachmentResponse = attachmentResponse;
-    //                             resolve(respData.d.AddValidateUpdateItemUsingPath.results);
-    //                         })
-    //                         .catch((error) => {
-    //                             reject(this.getErrorMessage(webUrl, error));
-    //                         });
-    //                 }
-    //                 resolve(respData.d.ValidateUpdateListItem.results);
-    //             })
-    //             .catch((error) => {
-    //                 reject(this.getErrorMessage(webUrl, error));
-    //             });
-    //     });
-    // }
 
     /**
      * Adds a new SharePoint list item to a list using the given data.
@@ -324,16 +276,7 @@ export class ListFormService implements IListFormService {
             let endpoint = `${webUrl}/_api/web/GetList(@listUrl)/items(@itemId)/AttachmentFiles/getByFileName('${attachment}')`
                 + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}&@itemId=%27${itemId}%27`;
             try {
-                let response = await this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions);
-
-                if (response.ok) {
-                    console.log("Before");
-                    let rspJson = await response.json();
-                    console.log();
-                    responses.push(rspJson);
-                } else {
-                    return this.getErrorMessage(webUrl, response);
-                }
+                await this.spHttpClient.post(endpoint, SPHttpClient.configurations.v1, httpClientOptions);
             } catch (error) {
                 return error;
             }
