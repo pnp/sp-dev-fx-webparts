@@ -5,7 +5,9 @@ import { AttachmentRender } from './AttachmentRender';
 const SPAttachmentFormFieldEdit: React.SFC<ISPFormFieldProps> = (props, state) => {
     if (props.fieldSchema.FieldType !== 'Attachment') {
         return <AttachmentRender
-            fieldProps={props}
+            controlMode={props.controlMode}
+            valueChanged={props.valueChanged}
+            value={props.value}
         > </AttachmentRender>;
     }
 };

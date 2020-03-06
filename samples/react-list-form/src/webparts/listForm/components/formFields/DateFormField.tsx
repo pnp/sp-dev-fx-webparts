@@ -49,7 +49,6 @@ export default class DateFormField extends React.Component<IDateFormFieldProps, 
         this.state.date.toLocaleDateString(this.props.locale) + " " + this.state.date.toLocaleTimeString(this.props.locale, { hour: "2-digit", minute: "2-digit" }) : //Date + Time
         this.state.date.toLocaleDateString(this.props.locale); //Only date
       this.props.valueChanged(result);
-
     }
   }
 
