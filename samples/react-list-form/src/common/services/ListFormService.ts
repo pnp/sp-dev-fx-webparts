@@ -131,9 +131,7 @@ export class ListFormService implements IListFormService {
         };
         const formValues = this.GetFormValues(fieldsSchema, data, originalData);
         let createAttachmetns = this.GetAttachmentsCreate(data);
-        console.log(data);
         let deleteAttachmetns = this.GetAttachmentsDelete(data, originalData);
-        console.log(deleteAttachmetns);
         httpClientOptions.body = JSON.stringify({
             bNewDocumentUpdate: false,
             checkInComment: null,
@@ -261,8 +259,6 @@ export class ListFormService implements IListFormService {
     }
     private deleteAttachments = async (webUrl: string, listUrl: string, itemId: number, attachments: string[]) => {
         let responses = [];
-        console.log(attachments.length);
-        console.log(attachments);
         for (const attachment of attachments) {
             let httpClientOptions: ISPHttpClientOptions = {
                 headers: {
