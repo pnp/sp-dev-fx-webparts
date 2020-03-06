@@ -8,9 +8,8 @@ import { loadStyles } from '@microsoft/load-themed-styles';
 require('./overrides.css');
 
 export default class ScriptEditor extends React.Component<IScriptEditorProps, any> {
-    constructor() {
-        super();
-
+    constructor(props: IScriptEditorProps, state: any) {
+        super(props);
         this._showDialog = this._showDialog.bind(this);
         this._closeDialog = this._closeDialog.bind(this);
         this._cancelDialog = this._cancelDialog.bind(this);

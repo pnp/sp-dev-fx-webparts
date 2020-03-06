@@ -1,8 +1,5 @@
-import {
-    IPropertyPaneField,
-    PropertyPaneFieldType,
-    IPropertyPaneCustomFieldProps
-} from '@microsoft/sp-webpart-base';
+import {  } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneField, PropertyPaneFieldType, IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 
 export class PropertyPaneLogo implements IPropertyPaneField<IPropertyPaneCustomFieldProps> {
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;

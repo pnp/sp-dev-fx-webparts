@@ -5,9 +5,11 @@ import { SPComponentLoader } from '@microsoft/sp-loader';
 import {
     BaseClientSideWebPart,
     IPropertyPaneConfiguration,
-    PropertyPaneToggle,
-    PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+    PropertyPaneTextField, 
+    PropertyPaneToggle
+  } from '@microsoft/sp-webpart-base';
+
+//import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
 import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 import PropertyPaneLogo from './PropertyPaneLogo';
@@ -86,7 +88,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                                     onText: "Enabled",
                                     offText: "Disabled"
                                 }),
-                                new PropertyPaneLogo()
+                              //  new PropertyPaneLogo()
                             ]
                         }
                     ]
