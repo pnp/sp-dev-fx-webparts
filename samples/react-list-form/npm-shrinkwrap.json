@@ -972,6 +972,17 @@
             "csstype": "2.6.2"
           }
         },
+        "@uifabric/icons": {
+          "version": "6.5.3",
+          "resolved": "https://registry.npmjs.org/@uifabric/icons/-/icons-6.5.3.tgz",
+          "integrity": "sha512-baqA8QGP68RD2IsKfsd40hVK1/GyweOvAKYcxkCIFXGz0mGtBVhSy8hs1jHdU9cdZeo4ebDkkn11TizCm/b00A==",
+          "dev": true,
+          "requires": {
+            "@uifabric/set-version": "1.1.3",
+            "@uifabric/styling": "6.50.7",
+            "tslib": "1.9.3"
+          }
+        },
         "tslib": {
           "version": "1.9.3",
           "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.9.3.tgz",
@@ -3261,14 +3272,65 @@
       }
     },
     "@uifabric/icons": {
-      "version": "6.5.3",
-      "resolved": "https://registry.npmjs.org/@uifabric/icons/-/icons-6.5.3.tgz",
-      "integrity": "sha512-baqA8QGP68RD2IsKfsd40hVK1/GyweOvAKYcxkCIFXGz0mGtBVhSy8hs1jHdU9cdZeo4ebDkkn11TizCm/b00A==",
-      "dev": true,
+      "version": "7.3.14",
+      "resolved": "https://registry.npmjs.org/@uifabric/icons/-/icons-7.3.14.tgz",
+      "integrity": "sha512-XGgvhNQG9ywE/h413ABEAmMvzbel73vAxVobYrAjwxzQ3/gauJajOrXL28ZF7ODX5vxLR7eIXCaxrqqw8Dp6Sg==",
       "requires": {
-        "@uifabric/set-version": "1.1.3",
-        "@uifabric/styling": "6.50.7",
-        "tslib": "1.8.1"
+        "@uifabric/set-version": "7.0.5",
+        "@uifabric/styling": "7.10.15",
+        "tslib": "1.11.1"
+      },
+      "dependencies": {
+        "@microsoft/load-themed-styles": {
+          "version": "1.10.37",
+          "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.10.37.tgz",
+          "integrity": "sha512-3/9rNkHO+f72RztnAQIgtZwUMVqxSz3JL+NIMMIlPHrDVQW7fJ69Im27WippydDzUZpUL1YiGSDIfqKa1amOdA=="
+        },
+        "@uifabric/merge-styles": {
+          "version": "7.8.6",
+          "resolved": "https://registry.npmjs.org/@uifabric/merge-styles/-/merge-styles-7.8.6.tgz",
+          "integrity": "sha512-sT9z2dgxrEzdBi495RVkBbW8whpTalr8U16yPNxo9KLnSz1buIkKAE/+4661xOdso7qWcPysxmV2vmVpZMnc3g==",
+          "requires": {
+            "@uifabric/set-version": "7.0.5",
+            "tslib": "1.11.1"
+          }
+        },
+        "@uifabric/set-version": {
+          "version": "7.0.5",
+          "resolved": "https://registry.npmjs.org/@uifabric/set-version/-/set-version-7.0.5.tgz",
+          "integrity": "sha512-wWh8iW0a35zAx6DgvOrY1rDS4ootwXmAzwezorBOnrzZBzTJiCBfJ7fXvl9H6tj53ES7e3PeorDUPA9KNqCk1g==",
+          "requires": {
+            "tslib": "1.11.1"
+          }
+        },
+        "@uifabric/styling": {
+          "version": "7.10.15",
+          "resolved": "https://registry.npmjs.org/@uifabric/styling/-/styling-7.10.15.tgz",
+          "integrity": "sha512-VMkPTutWAZiFz9zfJErs2klyogJH4TCdtNYOgnBXfvubff6OTvtm6Tz3PREA/W2weIKKdcT96+tQMJGWKjl6Og==",
+          "requires": {
+            "@microsoft/load-themed-styles": "1.10.37",
+            "@uifabric/merge-styles": "7.8.6",
+            "@uifabric/set-version": "7.0.5",
+            "@uifabric/utilities": "7.13.0",
+            "tslib": "1.11.1"
+          }
+        },
+        "@uifabric/utilities": {
+          "version": "7.13.0",
+          "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-7.13.0.tgz",
+          "integrity": "sha512-Y1W41npYUWsg0FKav4N3sf1VRnp6n2iXCcgctK924ZR2EMEyTR/Ow3fdsUNyb7qx75nsA0J9457wXnNc8ekPmQ==",
+          "requires": {
+            "@uifabric/merge-styles": "7.8.6",
+            "@uifabric/set-version": "7.0.5",
+            "prop-types": "15.7.2",
+            "tslib": "1.11.1"
+          }
+        },
+        "tslib": {
+          "version": "1.11.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.11.1.tgz",
+          "integrity": "sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA=="
+        }
       }
     },
     "@uifabric/merge-styles": {
@@ -7497,8 +7559,7 @@
         "ansi-regex": {
           "version": "2.1.1",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "aproba": {
           "version": "1.2.0",
@@ -7512,23 +7573,21 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "delegates": "^1.0.0",
-            "readable-stream": "^2.0.6"
+            "delegates": "1.0.0",
+            "readable-stream": "2.3.6"
           }
         },
         "balanced-match": {
           "version": "1.0.0",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "brace-expansion": {
           "version": "1.1.11",
           "bundled": true,
           "dev": true,
-          "optional": true,
           "requires": {
-            "balanced-match": "^1.0.0",
+            "balanced-match": "1.0.0",
             "concat-map": "0.0.1"
           }
         },
@@ -7541,20 +7600,17 @@
         "code-point-at": {
           "version": "1.1.0",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "concat-map": {
           "version": "0.0.1",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "console-control-strings": {
           "version": "1.1.0",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "core-util-is": {
           "version": "1.0.2",
@@ -7568,7 +7624,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "ms": "^2.1.1"
+            "ms": "2.1.1"
           }
         },
         "deep-extend": {
@@ -7595,7 +7651,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "minipass": "^2.2.1"
+            "minipass": "2.3.5"
           }
         },
         "fs.realpath": {
@@ -7610,14 +7666,14 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "aproba": "^1.0.3",
-            "console-control-strings": "^1.0.0",
-            "has-unicode": "^2.0.0",
-            "object-assign": "^4.1.0",
-            "signal-exit": "^3.0.0",
-            "string-width": "^1.0.1",
-            "strip-ansi": "^3.0.1",
-            "wide-align": "^1.1.0"
+            "aproba": "1.2.0",
+            "console-control-strings": "1.1.0",
+            "has-unicode": "2.0.1",
+            "object-assign": "4.1.1",
+            "signal-exit": "3.0.2",
+            "string-width": "1.0.2",
+            "strip-ansi": "3.0.1",
+            "wide-align": "1.1.3"
           }
         },
         "glob": {
@@ -7626,12 +7682,12 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "fs.realpath": "^1.0.0",
-            "inflight": "^1.0.4",
-            "inherits": "2",
-            "minimatch": "^3.0.4",
-            "once": "^1.3.0",
-            "path-is-absolute": "^1.0.0"
+            "fs.realpath": "1.0.0",
+            "inflight": "1.0.6",
+            "inherits": "2.0.3",
+            "minimatch": "3.0.4",
+            "once": "1.4.0",
+            "path-is-absolute": "1.0.1"
           }
         },
         "has-unicode": {
@@ -7646,7 +7702,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "safer-buffer": ">= 2.1.2 < 3"
+            "safer-buffer": "2.1.2"
           }
         },
         "ignore-walk": {
@@ -7655,7 +7711,7 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "minimatch": "^3.0.4"
+            "minimatch": "3.0.4"
           }
         },
         "inflight": {
@@ -7664,15 +7720,14 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "once": "^1.3.0",
-            "wrappy": "1"
+            "once": "1.4.0",
+            "wrappy": "1.0.2"
           }
         },
         "inherits": {
           "version": "2.0.3",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "ini": {
           "version": "1.3.5",
@@ -7684,9 +7739,8 @@
           "version": "1.0.0",
           "bundled": true,
           "dev": true,
-          "optional": true,
           "requires": {
-            "number-is-nan": "^1.0.0"
+            "number-is-nan": "1.0.1"
           }
         },
         "isarray": {
@@ -7699,25 +7753,22 @@
           "version": "3.0.4",
           "bundled": true,
           "dev": true,
-          "optional": true,
           "requires": {
-            "brace-expansion": "^1.1.7"
+            "brace-expansion": "1.1.11"
           }
         },
         "minimist": {
           "version": "0.0.8",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "minipass": {
           "version": "2.3.5",
           "bundled": true,
           "dev": true,
-          "optional": true,
           "requires": {
-            "safe-buffer": "^5.1.2",
-            "yallist": "^3.0.0"
+            "safe-buffer": "5.1.2",
+            "yallist": "3.0.3"
           }
         },
         "minizlib": {
@@ -7726,14 +7777,13 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "minipass": "^2.2.1"
+            "minipass": "2.3.5"
           }
         },
         "mkdirp": {
           "version": "0.5.1",
           "bundled": true,
           "dev": true,
-          "optional": true,
           "requires": {
             "minimist": "0.0.8"
           }
@@ -7750,9 +7800,9 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "debug": "^4.1.0",
-            "iconv-lite": "^0.4.4",
-            "sax": "^1.2.4"
+            "debug": "4.1.1",
+            "iconv-lite": "0.4.24",
+            "sax": "1.2.4"
           }
         },
         "node-pre-gyp": {
@@ -7761,16 +7811,16 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "detect-libc": "^1.0.2",
-            "mkdirp": "^0.5.1",
-            "needle": "^2.2.1",
-            "nopt": "^4.0.1",
-            "npm-packlist": "^1.1.6",
-            "npmlog": "^4.0.2",
-            "rc": "^1.2.7",
-            "rimraf": "^2.6.1",
-            "semver": "^5.3.0",
-            "tar": "^4"
+            "detect-libc": "1.0.3",
+            "mkdirp": "0.5.1",
+            "needle": "2.3.0",
+            "nopt": "4.0.1",
+            "npm-packlist": "1.4.1",
+            "npmlog": "4.1.2",
+            "rc": "1.2.8",
+            "rimraf": "2.6.3",
+            "semver": "5.7.0",
+            "tar": "4.4.8"
           }
         },
         "nopt": {
@@ -7779,8 +7829,8 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "abbrev": "1",
-            "osenv": "^0.1.4"
+            "abbrev": "1.1.1",
+            "osenv": "0.1.5"
           }
         },
         "npm-bundled": {
@@ -7795,8 +7845,8 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "ignore-walk": "^3.0.1",
-            "npm-bundled": "^1.0.1"
+            "ignore-walk": "3.0.1",
+            "npm-bundled": "1.0.6"
           }
         },
         "npmlog": {
@@ -7805,17 +7855,16 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "are-we-there-yet": "~1.1.2",
-            "console-control-strings": "~1.1.0",
-            "gauge": "~2.7.3",
-            "set-blocking": "~2.0.0"
+            "are-we-there-yet": "1.1.5",
+            "console-control-strings": "1.1.0",
+            "gauge": "2.7.4",
+            "set-blocking": "2.0.0"
           }
         },
         "number-is-nan": {
           "version": "1.0.1",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "object-assign": {
           "version": "4.1.1",
@@ -7827,9 +7876,8 @@
           "version": "1.4.0",
           "bundled": true,
           "dev": true,
-          "optional": true,
           "requires": {
-            "wrappy": "1"
+            "wrappy": "1.0.2"
           }
         },
         "os-homedir": {
@@ -7850,8 +7898,8 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "os-homedir": "^1.0.0",
-            "os-tmpdir": "^1.0.0"
+            "os-homedir": "1.0.2",
+            "os-tmpdir": "1.0.2"
           }
         },
         "path-is-absolute": {
@@ -7872,10 +7920,10 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "deep-extend": "^0.6.0",
-            "ini": "~1.3.0",
-            "minimist": "^1.2.0",
-            "strip-json-comments": "~2.0.1"
+            "deep-extend": "0.6.0",
+            "ini": "1.3.5",
+            "minimist": "1.2.0",
+            "strip-json-comments": "2.0.1"
           },
           "dependencies": {
             "minimist": {
@@ -7892,13 +7940,13 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "core-util-is": "~1.0.0",
-            "inherits": "~2.0.3",
-            "isarray": "~1.0.0",
-            "process-nextick-args": "~2.0.0",
-            "safe-buffer": "~5.1.1",
-            "string_decoder": "~1.1.1",
-            "util-deprecate": "~1.0.1"
+            "core-util-is": "1.0.2",
+            "inherits": "2.0.3",
+            "isarray": "1.0.0",
+            "process-nextick-args": "2.0.0",
+            "safe-buffer": "5.1.2",
+            "string_decoder": "1.1.1",
+            "util-deprecate": "1.0.2"
           }
         },
         "rimraf": {
@@ -7907,14 +7955,13 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "glob": "^7.1.3"
+            "glob": "7.1.3"
           }
         },
         "safe-buffer": {
           "version": "5.1.2",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "safer-buffer": {
           "version": "2.1.2",
@@ -7950,11 +7997,10 @@
           "version": "1.0.2",
           "bundled": true,
           "dev": true,
-          "optional": true,
           "requires": {
-            "code-point-at": "^1.0.0",
-            "is-fullwidth-code-point": "^1.0.0",
-            "strip-ansi": "^3.0.0"
+            "code-point-at": "1.1.0",
+            "is-fullwidth-code-point": "1.0.0",
+            "strip-ansi": "3.0.1"
           }
         },
         "string_decoder": {
@@ -7963,16 +8009,15 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "safe-buffer": "~5.1.0"
+            "safe-buffer": "5.1.2"
           }
         },
         "strip-ansi": {
           "version": "3.0.1",
           "bundled": true,
           "dev": true,
-          "optional": true,
           "requires": {
-            "ansi-regex": "^2.0.0"
+            "ansi-regex": "2.1.1"
           }
         },
         "strip-json-comments": {
@@ -7987,13 +8032,13 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "chownr": "^1.1.1",
-            "fs-minipass": "^1.2.5",
-            "minipass": "^2.3.4",
-            "minizlib": "^1.1.1",
-            "mkdirp": "^0.5.0",
-            "safe-buffer": "^5.1.2",
-            "yallist": "^3.0.2"
+            "chownr": "1.1.1",
+            "fs-minipass": "1.2.5",
+            "minipass": "2.3.5",
+            "minizlib": "1.2.1",
+            "mkdirp": "0.5.1",
+            "safe-buffer": "5.1.2",
+            "yallist": "3.0.3"
           }
         },
         "util-deprecate": {
@@ -8008,20 +8053,18 @@
           "dev": true,
           "optional": true,
           "requires": {
-            "string-width": "^1.0.2 || 2"
+            "string-width": "1.0.2"
           }
         },
         "wrappy": {
           "version": "1.0.2",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         },
         "yallist": {
           "version": "3.0.3",
           "bundled": true,
-          "dev": true,
-          "optional": true
+          "dev": true
         }
       }
     },
@@ -13419,13 +13462,26 @@
       "requires": {
         "@microsoft/load-themed-styles": "1.8.26",
         "@uifabric/foundation": "0.7.7",
-        "@uifabric/icons": "6.5.3",
+        "@uifabric/icons": "6.5.5",
         "@uifabric/merge-styles": "6.19.4",
         "@uifabric/set-version": "1.1.3",
         "@uifabric/styling": "6.50.7",
         "@uifabric/utilities": "6.45.0",
         "prop-types": "15.7.2",
         "tslib": "1.8.1"
+      },
+      "dependencies": {
+        "@uifabric/icons": {
+          "version": "6.5.5",
+          "resolved": "https://registry.npmjs.org/@uifabric/icons/-/icons-6.5.5.tgz",
+          "integrity": "sha512-cGjzdpT0jzQ2RJvzlCVTrewaHCi4rb+ZNL2LWoceMi+5h196Y32qJwKMsc0ggR6u5CjMrzBiAxUFNppBSCutdA==",
+          "dev": true,
+          "requires": {
+            "@uifabric/set-version": "1.1.3",
+            "@uifabric/styling": "6.50.7",
+            "tslib": "1.8.1"
+          }
+        }
       }
     },
     "on-finished": {
