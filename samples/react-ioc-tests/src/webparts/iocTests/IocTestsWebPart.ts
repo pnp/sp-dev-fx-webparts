@@ -8,6 +8,7 @@ import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp
 import * as strings from 'IocTestsWebPartStrings';
 import ListOfLists, { IListOfListsProps } from './components/ListOfLists';
 import IoCTestsWebPartPropsDependencyResolver from './IoCTestsWebPartPropsDependencyResolver';
+import DependencyResolver from '../../common/providers/DependencyResolver/DependencyResolver';
 
 export interface IIocTestsWebPartProps {
   description: string;
@@ -16,8 +17,8 @@ export interface IIocTestsWebPartProps {
 export default class IocTestsWebPart extends BaseClientSideWebPart<IIocTestsWebPartProps> {
 
   public render(): void {
-    const weburl = this.context.pageContext.web.absoluteUrl;
-    const props = (new IoCTestsWebPartPropsDependencyResolver()).resolve(this.properties, weburl);
+    const resolver = new IoCTestsWebPartPropsDependencyResolver(new DependencyResolver());
+    const props = resolver.resolve(this.properties);
     const element: React.ReactElement<IListOfListsProps> = React.createElement(
       ListOfLists,
       props

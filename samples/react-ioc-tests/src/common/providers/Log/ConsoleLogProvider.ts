@@ -3,7 +3,8 @@ import IConsole from "./IConsole";
 
 export default class ConsoleLogProvider implements ILogProvider {
     private consolelog: IConsole;
-    constructor(consolelog: IConsole = window.console) {
+
+    constructor(consolelog: IConsole) {
         this.consolelog = consolelog;
     }
 

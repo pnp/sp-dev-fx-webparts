@@ -1,20 +1,22 @@
 # React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme
 
 ## Summary
-This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part.
+This web part is provided as an example of implementing an IoC (Inversion of Control) pattern, primarily to enable unit testing, in the context of a SharePoint Framework web part.
 
 Following this pattern greatly improves the modularity, maintainability, and testability of the code.
 
-The example includes 100% test coverage, using Jest and Enzyme, of .ts and .tsx files, excluding *WebPart.ts files. A dependency injector class specific to a web part class is used to map web part properties to component properties and create dependencies. This pattern is designed to remove logic from the *WebPart.ts file, the only ts file that isn't unit tested, and hence ensure that all relevant web part logic is tested.
+The example includes 100% test coverage, using Jest and Enzyme, of .ts and .tsx files, excluding *WebPart.ts files. A dependency resolver class specific to a web part class is used to map web part properties to component properties and create any dependent services/providers. 
 
-Included in the coverage is a cache and logger class, along with a service class that fetches data asychronously using @PnP/sp and dynamic bundling.
+This pattern is implemented to seperate testable logic from the untestable *WebPart.ts file and hence ensure that all relevant web part logic is tested. To this end, a Service class is paired with a ServiceExecutor class which should extract the actual service requests from other service logic ensuring that the Service class remains fully testable. *Executor classes are excluded from test coverage as they cannot be unit tested by design - as they are points integration.
+
+Included in the coverage is a cache and logger class, along with a service class that fetches data asychronously using @pnp/sp 2.x
 
 The example also includes a pipeline definition .yaml file for Azure DevOps CI build pipeline (/pipelines/) which includes the build, running tests, and posting the test coverage results.
 
 ![Sample SPFx Web Part implementing IoC pattern](./assets/preview.jpg)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.8.0-green.svg)
+![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -44,11 +46,12 @@ Version|Date|Comments
 - Clone this repository
 - in the command line run:
   - `npm install`
+  - `npm bundle`
   - *`npm test`*
   - `gulp serve`
 
 ## Features
-This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part.
+This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part for maximising testability.
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - Inversion of Control pattern
