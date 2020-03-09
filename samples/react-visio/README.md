@@ -8,7 +8,7 @@ This sample shows how the [Visio JavaScript APIs](https://dev.office.com/referen
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/drop-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
@@ -30,6 +30,7 @@ This sample shows how the [Visio JavaScript APIs](https://dev.office.com/referen
 
 | Version | Date               | Comments             |
 | ------- | ------------------ | -------------------- |
+| 1.5     | February 20, 2019 | Update to SPFx 1.10.0 |
 | 1.4     | September 20, 2019 | Update to SPFx 1.9.1 |
 | 1.3     | April 4, 2019      | Update readme        |
 | 1.2     | January 4, 2019    | Update to SPFx 1.7.1 |
