@@ -262,7 +262,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
 
     let editorState: EditorState;
     // Load Regional Settings
-    const siteRegionalSettigns = await this.spService.getSiteRegionalSettingsTimeZone(this.props.siteUrl);
+    const siteRegionalSettings = await this.spService.getSiteRegionalSettingsTimeZone(this.props.siteUrl);
     // chaeck User list Permissions
     const userListPermissions: IUserPermissions = await this.spService.getUserPermissions(this.props.siteUrl, this.props.listId);
     // Load Categories
@@ -317,7 +317,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
         selectedUsers: selectedUsers,
         userPermissions: userListPermissions,
         isloading: false,
-        siteRegionalSettings: siteRegionalSettigns,
+        siteRegionalSettings: siteRegionalSettings,
         locationLatitude: this.latitude,
         locationLongitude: this.longitude,
         recurrenceDescription: recurrenceInfo
@@ -330,7 +330,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
         editorState: editorState,
         userPermissions: userListPermissions,
         isloading: false,
-        siteRegionalSettings: siteRegionalSettigns,
+        siteRegionalSettings: siteRegionalSettings,
         eventData: { ...event, EventType: "0" },
       });
     }
