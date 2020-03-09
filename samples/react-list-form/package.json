@@ -21,6 +21,7 @@
     "@types/es6-promise": "0.0.33",
     "@types/react-dnd": "~2.0.34",
     "@types/webpack-env": "1.13.1",
+    "@uifabric/icons": "^7.3.14",
     "moment": "^2.24.0",
     "react-dnd": "~2.5.4",
     "react-dnd-html5-backend": "~2.5.4",
