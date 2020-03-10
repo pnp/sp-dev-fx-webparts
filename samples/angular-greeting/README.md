@@ -7,7 +7,7 @@ This sample Web Part illustrating using AngularJS with the SharePoint Framework.
 ![AngularJS Greetings Webpart SharePoint Framework client-side web part built using AngularJS](./assets/captured.gif)
 
 Final outcome:
-![AngularJS Greetings Webpart SharePoint Framework client-side web part built using AngularJS](./assets/preview.png)
+![AngularJS Greetings Webpart SharePoint Framework client-side web part built using AngularJS](./assets/preview.PNG)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/drop-GA-green.svg)
