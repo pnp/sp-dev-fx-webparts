@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-pnp-controls-list-view-fields-client-side-solution",
+    "id": "c44d7aff-0bf4-4dbd-b126-49c5d0a277a0",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-pnp-controls-list-view-fields.sppkg"
+  }
+}
