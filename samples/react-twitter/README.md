@@ -40,11 +40,10 @@ Version|Date|Comments
   * `gulp package-solution --ship`
 * from the _sharepoint/solution_ folder, deploy the .sppkg file to the App catalog in your tenant
 * in the site where you want to test this solution
-  * add the app named _page-sections-navigation-client-side-solution_
+  * add the app named _react-twitter-client-side-solution_
   * edit a page
-  * add _Page Sections Navigation_ web part
-  * add as much _Page Sections Navigation Anchor_ web parts as you want - each anchor adds an item to the navigation
-  * configure web parts
+  * add _Twitter Feed_ web part
+  * configure web part
 
 ## Features
 
