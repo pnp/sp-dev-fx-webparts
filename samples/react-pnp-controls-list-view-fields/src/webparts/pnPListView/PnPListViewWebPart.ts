@@ -41,8 +41,6 @@ export default class PnPListViewWebPart extends BaseClientSideWebPart <IPnPListV
       item['VisitedCountries'] = countries.filter(c => visitedCountriesIds.indexOf(c['ID']) !== -1).map(c => c['Title']);
     });
 
-    console.log(this._items);
-
   }
 
   public render(): void {
