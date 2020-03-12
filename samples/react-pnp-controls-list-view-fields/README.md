@@ -39,7 +39,7 @@ Version|Date|Comments
   * `gulp bundle --ship`
   * `gulp package-solution --ship`
 * from the _sharepoint/solution_ folder, deploy the .sppkg file to the App catalog in your tenant
-* create Term Store group as shown on the screenshot below:
+* create Term Store group as shown on the screenshot below:\
   ![Term Store](./assets/taxonomy.png)
 * in the site where you want to test this solution
   * create Country list as a standard Custom list and add few items in there
@@ -50,11 +50,9 @@ Version|Date|Comments
     * Experience - Choice with next choices: Bad, Normal, Good
     * Picture - Hyperlink or Picture, display as Picture
     * JourneyType - Managed Metadata connected to the Term Set created above
-  * add the app named _page-sections-navigation-client-side-solution_
+  * add the app named _react-pnp-controls-list-view-fields-client-side-solution_
   * edit a page
-  * add _Page Sections Navigation_ web part
-  * add as much _Page Sections Navigation Anchor_ web parts as you want - each anchor adds an item to the navigation
-  * configure web parts
+  * add _PnP ListView_ web part to the page
 
 ## Features
 
