@@ -1634,8 +1634,8 @@ extra:
       author: Waldek Mastykarz
       summary: Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part.
       version: 1.0.0.13
-      modifiedtext: July 1, 2019
-      modified: 2019-07-01
+      modifiedtext: Oct 13, 2019
+      modified: 2019-10-13
       compatibility: SharePoint 2019
     - framework: React
       spfx: GA
@@ -1862,7 +1862,7 @@ extra:
       modifiedtext: May 4, 2017
       modified: 2017-05-04
     - framework: React
-      spfx: 1.7.1
+      spfx: 1.10.0
       year: 2019
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-tree-orgchart
       name: react-tree-orgchart
@@ -1871,8 +1871,8 @@ extra:
       author: João Mendes
       summary: The Tree Organization WebPart shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.
       version: 1.0.0
-      modifiedtext: February 25, 2019
-      modified: 2019-02-25
+      modifiedtext: Jan 28, 2020
+      modified: 2020-01-28
     - framework: React
       spfx: drop5
       year: 2016
