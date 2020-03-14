@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-visio
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 8/1/2017 12:00:00 AM
+---
 # Provision SharePoint Assets with the SPFx solution package #
 
 ## Summary

@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-yammer
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 4/1/2017 12:00:00 AM
+---
 # Yammer REST API SPFx webpart #
 
 ## Summary

@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: tools
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 9/1/2017 12:00:00 AM
+---
 # SPFx ReactiveX (RxJs) Event Emitter Sample #
 
 ## Summary

@@ -1,3 +1,16 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: tools
+  technologies:
+  - SharePoint Framework
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Extending webpack in the SharePoint Framework toolchain
 
 ## Summary

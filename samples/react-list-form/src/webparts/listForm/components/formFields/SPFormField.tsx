@@ -21,6 +21,8 @@ import SPFieldLookupDisplay from './SPFieldLookupDisplay';
 import SPFieldUserDisplay from './SPFieldUserDisplay';
 import SPFieldUrlDisplay from './SPFieldUrlDisplay';
 
+import SPAttachmentFormFieldEdit from './SPAttachmentFormFieldEdit';
+
 import * as strings from 'FormFieldStrings';
 import styles from './SPFormField.module.scss';
 
@@ -37,6 +39,7 @@ const EditFieldTypeMappings: { [fieldType: string]: React.StatelessComponent<ISP
   DateTime: SPFieldDateEdit,
   Boolean: SPFieldBooleanEdit,
   File: SPFieldTextEdit,
+  Attachments: SPAttachmentFormFieldEdit
   /* The following are known but unsupported types as of now:
   User: null,
   UserMulti: null,
@@ -91,7 +94,8 @@ const SPFormField: React.SFC<ISPFormFieldProps> = (props) => {
       const fieldMapping = richText ? DisplayFieldTypeMappings['RichText'] : DisplayFieldTypeMappings[fieldType];
       const childProps = fieldMapping.valuePreProcess ? { ...props, value: fieldMapping.valuePreProcess(props.value) } : props;
       fieldControl = React.createElement(fieldMapping.component, childProps);
-    } else if (!props.hideIfFieldUnsupported) {
+    }
+    else if (!props.hideIfFieldUnsupported) {
       const value = (props.value) ? ((typeof props.value === 'string') ? props.value : JSON.stringify(props.value)) : '';
       fieldControl = <div className={`ard-${fieldType}field-display`}>
         <span>{value}</span>

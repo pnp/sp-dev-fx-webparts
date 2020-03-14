@@ -7,6 +7,7 @@
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
+  "supportedHosts": ["SharePointWebPart"],
 
   // If true, the component can only be installed on sites where Custom Script is allowed.
   // Components that allow authors to embed arbitrary script code should set this to true.

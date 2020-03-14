@@ -1,3 +1,16 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  createdDate: 9/1/2017 12:00:00 AM
+---
 # Handling Multiple Editions of SPFx Solution
 ## Summary
 This sample shows possible approach of handling multiple editions (e.g. trial, lite, full) of SharePoint Framework solution.

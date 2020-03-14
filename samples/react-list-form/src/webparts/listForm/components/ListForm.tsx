@@ -23,6 +23,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import * as strings from 'ListFormStrings';
 
 import styles from './ListForm.module.scss';
+import { Validate } from '@microsoft/sp-core-library';
 
 /*************************************************************************************
  * React Component to render a SharePoint list form on any page.

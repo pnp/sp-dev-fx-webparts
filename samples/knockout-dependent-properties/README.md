@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - Knockout
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Sample Web Part implementing dependent properties in Property Pane
 
 ## Summary

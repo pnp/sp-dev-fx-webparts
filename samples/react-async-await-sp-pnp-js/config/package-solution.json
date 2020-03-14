@@ -1,8 +1,11 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-async-await-sp-pnp-js-client-side-solution",
     "id": "c3bd0bfa-1bee-4af0-ad3d-a72d02b4dc7c",
-    "version": "1.0.0.0"
+    "version": "1.0.0.0",
+    "isDomainIsolated": false,
+    "includeClientSideAssets": true
   },
   "paths": {
     "zippedPackage": "solution/react-async-await-sp-pnp-js.sppkg"

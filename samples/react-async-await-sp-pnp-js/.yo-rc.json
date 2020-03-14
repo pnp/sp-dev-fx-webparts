@@ -1,8 +1,10 @@
 {
   "@microsoft/generator-sharepoint": {
-    "libraryName": "react-async-await-sp-pnp-js",
-    "framework": "react",
-    "version": "1.0.2",
-    "libraryId": "c3bd0bfa-1bee-4af0-ad3d-a72d02b4dc7c"
+    "version": "1.10.0",
+    "isDomainIsolated": false,
+    "isCreatingSolution": true,
+    "packageManager": "npm",
+    "componentType": "webpart",
+    "framework": ""
   }
 }

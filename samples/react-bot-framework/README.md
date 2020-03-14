@@ -1,3 +1,20 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Microsoft Bot Framework
+  platforms:
+  - AngularJS
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Microsoft Bot Framework Web Chat
 
 ## Summary

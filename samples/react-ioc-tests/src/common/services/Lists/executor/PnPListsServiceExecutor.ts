@@ -1,15 +1,11 @@
 import IListsServiceExecutor from "./IListsServiceExecutor";
+import { sp } from "@pnp/sp/rest";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists/web";
 
 export default class PnPListsServiceExecutor implements IListsServiceExecutor {
-    private webUrl: string;
-
-    constructor(webUrl: string) {
-        this.webUrl = webUrl;
-    }
-
     public async Get(): Promise<any[]> {
-        const { Web } = await import(/* webpackChunkName: 'pnp-sp-bundle' */"@pnp/sp");
-        const listsData = await new Web(this.webUrl).lists.select("Title", "DefaultViewUrl").get();
+        const listsData = await sp.web.lists.select("Title", "DefaultViewUrl").get();
         return listsData;
     }
 }

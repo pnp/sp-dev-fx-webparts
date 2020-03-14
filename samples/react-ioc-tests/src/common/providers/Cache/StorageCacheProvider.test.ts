@@ -11,7 +11,7 @@ describe('Provider: StorageCacheProvider', () => {
   const stringVal: string = "value";
 
   beforeEach(() => {
-    cacheProvider = new StorageCacheProvider(new MockStorage());
+    cacheProvider = new StorageCacheProvider(new MockStorage("", ""));
   });
 
   afterEach(() => {
@@ -109,12 +109,25 @@ describe('Provider: StorageCacheProvider', () => {
     expect(cachedVal).toEqual(val);
   });
 
-  it('can support browsers that do not support storage', async () => {
+  it('can support browsers that do not support storage - get/set', async () => {
     // ARRANGE
     const undefinedCacheProvider = new StorageCacheProvider(undefined);
 
     // ACT
     undefinedCacheProvider.Set(key, stringVal, CacheTimeout.default);
+    const cachedVal: string = await undefinedCacheProvider.Get(key);
+
+    // ASSERT
+    expect(cachedVal).toBeUndefined();
+  });
+
+  it('can support browsers that do not support storage - clear', async () => {
+    // ARRANGE
+    const undefinedCacheProvider = new StorageCacheProvider(undefined);
+
+    // ACT
+    undefinedCacheProvider.Set(key, stringVal, CacheTimeout.default);
+    await undefinedCacheProvider.Clear(key);
     const cachedVal: string = await undefinedCacheProvider.Get(key);
 
     // ASSERT

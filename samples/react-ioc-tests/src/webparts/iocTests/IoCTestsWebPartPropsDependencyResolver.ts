@@ -3,16 +3,20 @@ import { IListOfListsProps } from "./components/ListOfLists";
 import IListsService from "../../common/services/Lists/IListsService";
 import ICacheProvider from "../../common/providers/Cache/ICacheProvider";
 import ILogProvider from "../../common/providers/Log/ILogProvider";
-import DependencyResolver from "../../common/providers/DependencyResolver/DependencyResolver";
+import IDependencyResolver from "../../common/providers/DependencyResolver/IDependencyResolver";
 
 export default class IoCTestsWebPartPropsDependencyResolver {
-    public resolve(properties: IIocTestsWebPartProps, webUrl: string): IListOfListsProps {
+    private resolver: IDependencyResolver;
 
-        const resolver = new DependencyResolver();
+    constructor(resolver: IDependencyResolver) {
+        this.resolver = resolver;
+    }
 
-        const listsService: IListsService = resolver.ResolveIListsService(webUrl);
-        const cacheProvider: ICacheProvider = resolver.ResolveICacheProvider();
-        const logProvider: ILogProvider = resolver.ResolveILogProvider();
+    public resolve(properties: IIocTestsWebPartProps): IListOfListsProps {
+
+        const listsService: IListsService = this.resolver.ResolveIListsService();
+        const cacheProvider: ICacheProvider = this.resolver.ResolveICacheProvider();
+        const logProvider: ILogProvider = this.resolver.ResolveILogProvider();
 
         const props: IListOfListsProps = {
             description: properties.description,

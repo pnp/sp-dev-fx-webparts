@@ -1,3 +1,20 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - JQuery
+  - Knockout
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # SharePoint CRUD operations
 
 ## Summary

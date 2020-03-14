@@ -1,3 +1,20 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Office UI Fabric
+  platforms:
+  - JQuery
+  createdDate: 1/1/2016 12:00:00 AM
+---
 ﻿# JQuery, Photopile.JS & Office UI Fabric Client-Side Web Part
 
 ## Summary

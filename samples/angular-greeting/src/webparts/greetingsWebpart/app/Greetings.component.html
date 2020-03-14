@@ -1,0 +1,21 @@
+<div class="demo" ng-cloak>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="email-signature">
+                  <div class="signature-img">
+                      <img ng-src="{{$ctrl.userImageUrl}}" alt="">
+                  </div>
+                  <div class="signature-details">
+                      <h3 class="title">{{$ctrl.userName}}</h3>
+                      <span class="post">{{$ctrl.userJobTitle}}</span>
+                  </div>
+                  <ul class="signature-content">
+                      <li><span class="fas fa-map-marker-alt"></span> {{$ctrl.greetingMessage}}</li>
+                      <li><span class="fas fa-envelope"></span> {{$ctrl.webSiteTitle}}</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
