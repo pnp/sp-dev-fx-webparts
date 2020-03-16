@@ -2,17 +2,26 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version, DisplayMode } from '@microsoft/sp-core-library';
 import { SPComponentLoader } from '@microsoft/sp-loader';
-import {
-    BaseClientSideWebPart,
-    IPropertyPaneConfiguration,
-    PropertyPaneToggle,
-    PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, IPropertyPaneField, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
 import { IScriptEditorProps } from './components/IScriptEditorProps';
 import { IScriptEditorWebPartProps } from './IScriptEditorWebPartProps';
 import PropertyPaneLogo from './PropertyPaneLogo';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
+    public _propertyPaneHelper;
+
+    constructor() {
+        super();
+        this.scriptUpdate = this.scriptUpdate.bind(this);
+    }
+
+    public scriptUpdate(_property: string, oldVal: string, newVal: string) {
+        this.properties.script = newVal;
+        this._propertyPaneHelper.initialValue = newVal;
+        // this.render();
+    }
+
     public save: (script: string) => void = (script: string) => {
         this.properties.script = script;
         this.render();
@@ -35,6 +44,8 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                     element = element.parentElement;
                 }
             }
+
+            ReactDom.unmountComponentAtNode(this.domElement);
             this.domElement.innerHTML = this.properties.script;
             this.executeScript(this.domElement);
         } else {
@@ -42,7 +53,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         }
     }
 
-    private async renderEditor(){
+    private async renderEditor() {
         // Dynamically load the editor pane to reduce overall bundle size
         const editorPopUp = await import(
             /* webpackChunkName: 'scripteditor' */
@@ -53,7 +64,9 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             {
                 script: this.properties.script,
                 title: this.properties.title,
-                save: this.save
+                propPaneHandle: this.context.propertyPane,
+                save: this.save,
+                key: "pnp" + new Date().getTime()
             }
         );
         ReactDom.render(element, this.domElement);
@@ -63,31 +76,63 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         return Version.parse('1.0');
     }
 
+    protected async loadPropertyPaneResources(): Promise<void> {
+        //import { PropertyFieldCodeEditor, PropertyFieldCodeEditorLanguages } from '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor';
+        const editorProp = await import(
+            /* webpackChunkName: 'scripteditor' */
+            '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor'
+        );
+
+        this._propertyPaneHelper = editorProp.PropertyFieldCodeEditor('scriptCode', {
+            label: 'Edit HTML Code',
+            panelTitle: 'Edit HTML Code',
+            initialValue: this.properties.script,
+            onPropertyChange: this.scriptUpdate,
+            properties: this.properties,
+            disabled: false,
+            key: 'codeEditorFieldId',
+            language: editorProp.PropertyFieldCodeEditorLanguages.HTML
+        });
+    }
+
     protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+        let webPartOptions: IPropertyPaneField<any>[] = [
+            PropertyPaneTextField("title", {
+                label: "Title to show in edit mode",
+                value: this.properties.title
+            }),
+            PropertyPaneToggle("removePadding", {
+                label: "Remove top/bottom padding of web part container",
+                checked: this.properties.removePadding,
+                onText: "Remove padding",
+                offText: "Keep padding"
+            }),
+            PropertyPaneToggle("spPageContextInfo", {
+                label: "Enable classic _spPageContextInfo",
+                checked: this.properties.spPageContextInfo,
+                onText: "Enabled",
+                offText: "Disabled"
+            }),
+            this._propertyPaneHelper
+        ];
+
+        if (this.context.sdks.microsoftTeams) {
+            let config = PropertyPaneToggle("teamsContext", {
+                label: "Enable teams context as _teamsContexInfo",
+                checked: this.properties.teamsContext,
+                onText: "Enabled",
+                offText: "Disabled"
+            });
+            webPartOptions.push(config);
+        }
+        webPartOptions.push(new PropertyPaneLogo());
+
         return {
             pages: [
                 {
                     groups: [
                         {
-                            groupFields: [
-                                PropertyPaneTextField("title", {
-                                    label: "Title to show in edit mode",
-                                    value: this.properties.title
-                                }),
-                                PropertyPaneToggle("removePadding", {
-                                    label: "Remove top/bottom padding of web part container",
-                                    checked: this.properties.removePadding,
-                                    onText: "Remove padding",
-                                    offText: "Keep padding"
-                                }),
-                                PropertyPaneToggle("spPageContextInfo", {
-                                    label: "Enable classic _spPageContextInfo",
-                                    checked: this.properties.spPageContextInfo,
-                                    onText: "Enabled",
-                                    offText: "Disabled"
-                                }),
-                                new PropertyPaneLogo()
-                            ]
+                            groupFields: webPartOptions
                         }
                     ]
                 }
@@ -136,6 +181,10 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             window["_spPageContextInfo"] = this.context.pageContext.legacyPageContext;
         }
 
+        if (this.properties.teamsContext && !window["_teamsContexInfo"]) {
+            window["_teamsContexInfo"] = this.context.sdks.microsoftTeams.context;
+        }
+
         (<any>window).ScriptGlobal = {};
 
         // main section of function
@@ -173,7 +222,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             try {
                 let scriptUrl = urls[i];
                 const prefix = scriptUrl.indexOf('?') === -1 ? '?' : '&';
-                scriptUrl += prefix + 'cow=' + new Date().getTime();
+                scriptUrl += prefix + 'pnp=' + new Date().getTime();
                 await SPComponentLoader.loadScript(scriptUrl, { globalExportsName: "ScriptGlobal" });
             } catch (error) {
                 if (console.error) {

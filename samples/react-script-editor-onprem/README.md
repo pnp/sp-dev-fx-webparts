@@ -54,7 +54,7 @@ As an example add the following scripts to the web part in order to show stock t
 
 The web part works by loading each script in a `<script src>` tag sequentially in the order they are specified, then any other `<script>` block is executed.
 
-![site page header configurator web part](./assets/modern-script-editor-wp.gif)
+![Script Editor web part](./assets/modern-script-editor-wp.gif)
 
 If all you want is to add markup on the page, you can do that as well. Adding the following html would show a headline and a list.
 
@@ -105,7 +105,7 @@ If your scripts rely on the classic _spPageContextInfo, you can enable that in t
 
 Solution|Author(s)
 --------|---------
-react-script-editor | Mikael Svenson ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
+react-script-editor-onprem | Mikael Svenson ([@mikaelsvenson](http://www.twitter.com/mikaelsvenson), [techmikael.com](techmikael.com))
 
 ## Version history
 
@@ -126,6 +126,7 @@ Version|Date|Comments
 1.0.0.12|April 15th, 2019|Re-fix for pad removal of web part
 1.0.0.13|July 1th, 2019|Downgrade to SPFx v1.4.1 to support SP2019
 1.0.0.14|Oct 13th, 2019|Added resolve to fix pnpm issue. Updated author info.
+1.0.0.15|Mar 16th, 2020|Renamed package file. Linked to SPO only version.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

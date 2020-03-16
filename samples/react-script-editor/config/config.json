@@ -3,12 +3,13 @@
     "version": "2.0",
     "bundles": {
         "script-editor-bundle": {
-            "components": [
-                {
-                    "entrypoint": "./lib/webparts/scriptEditor/ScriptEditorWebPart.js",
-                    "manifest": "./src/webparts/scriptEditor/ScriptEditorWebPart.manifest.json"
-                }
-            ]
+            "components": [{
+                "entrypoint": "./lib/webparts/scriptEditor/ScriptEditorWebPart.js",
+                "manifest": "./src/webparts/scriptEditor/ScriptEditorWebPart.manifest.json"
+            }]
         }
+    },
+    "localizedResources": {
+        "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
     }
 }

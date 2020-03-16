@@ -15,6 +15,8 @@ extensions:
 ---
 # Script editor web part for modern pages built in React
 
+This version works only for SharePoint Online. If you want a version for Sharepoint on-premises go to [react-script-editor-onprem](../react-script-editor-onprem).
+
 ## Summary
 Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page
 without having to repackage it as a new SharePoint Framework web part. This web part is similar to the classic
@@ -52,7 +54,7 @@ As an example add the following scripts to the web part in order to show stock t
 
 The web part works by loading each script in a `<script src>` tag sequentially in the order they are specified, then any other `<script>` block is executed.
 
-![site page header configurator web part](./assets/modern-script-editor-wp.gif)
+![Script Editor web part](./assets/modern-script-editor-wp.gif)
 
 If all you want is to add markup on the page, you can do that as well. Adding the following html would show a headline and a list.
 
@@ -88,11 +90,45 @@ You may add CSS via style tags or `link` tags.
 </div>
 ```
 
+## Support for Office UI Fabric styles
+By adding the class name `ms-Fabric` to your top element, you can use use fabric CSS classes directly in the web part. See [Fabric Core](https://developer.microsoft.com/en-us/fabric#/get-started/web#fabric-core) for more information on Fabric classes.
+
+**Sample**
+```html
+<div class="ms-Fabric">
+    <span class="ms-font-su ms-fontColor-themePrimary">
+        Big text in primary theme color
+    </span>
+</div>
+```
+
 ## Support for classic _spPageContextInfo
 If your scripts rely on the classic _spPageContextInfo, you can enable that in the web part property pane.
 
+## Support for Teams tabs
+If you want to use the solution as a Teams tab, perform the changes to deploy to [non-script](#deploy-to-non-script-sites--modern-team-sites) sites and [tenant wide deployment](#deploy-tenant-wide).
+
+Next see the [Teams tab tutorial](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab) for steps needed to deploy the solution as a Teams tab.
+
+You can get access to the Teams context information via the global variable `_teamsContexInfo`. The available properties are documented at [Teams context interface](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/microsoftteams.context?view=msteams-client-js-latest).
+
+**Sample**
+```html
+<div class="ms-Fabric">
+    <span id="ScriptIt" class="ms-font-xxl ms-fontColor-neutralPrimary">
+    </span>
+</div>
+<script>
+var element = document.getElementById("ScriptIt");
+element.innerHTML = "Team: " + _teamsContexInfo.teamName + "<br\>Channel: " + _teamsContexInfo.channelName;
+</script>
+
+```
+
+![Script Editor web part in Teams](./assets/modern-script-editor-wp-teams.gif)
+
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
@@ -124,6 +160,7 @@ Version|Date|Comments
 1.0.0.12|April 15th, 2019|Re-fix for pad removal of web part
 1.0.0.13|July 1th, 2019|Downgrade to SPFx v1.4.1 to support SP2019
 1.0.0.14|Oct 13th, 2019|Added resolve to fix pnpm issue. Updated author info.
+1.0.0.15|Mar 16th, 2020|Upgrade to SPFx v1.10.0. Add support for Teams tab. Renamed package file.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
