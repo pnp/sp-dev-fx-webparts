@@ -3,5 +3,4 @@ export interface IScriptEditorProps {
     script: string;
     title: string;
     propPaneHandle: IPropertyPaneAccessor;
-    save(script: string): void;
 }

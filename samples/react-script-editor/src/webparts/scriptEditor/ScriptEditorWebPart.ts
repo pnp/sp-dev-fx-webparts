@@ -16,15 +16,9 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         this.scriptUpdate = this.scriptUpdate.bind(this);
     }
 
-    public scriptUpdate(_property: string, oldVal: string, newVal: string) {
+    public scriptUpdate(_property: string, _oldVal: string, newVal: string) {
         this.properties.script = newVal;
         this._propertyPaneHelper.initialValue = newVal;
-        // this.render();
-    }
-
-    public save: (script: string) => void = (script: string) => {
-        this.properties.script = script;
-        this.render();
     }
 
     public render(): void {
@@ -65,7 +59,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
                 script: this.properties.script,
                 title: this.properties.title,
                 propPaneHandle: this.context.propertyPane,
-                save: this.save,
                 key: "pnp" + new Date().getTime()
             }
         );

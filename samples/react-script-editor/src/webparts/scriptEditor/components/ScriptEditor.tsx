@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { IScriptEditorProps } from './IScriptEditorProps';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
-// const telemetry = PnPTelemetry.getInstance();
-// telemetry.optOut();
 
 export default class ScriptEditor extends React.Component<IScriptEditorProps, any> {
     constructor(props: IScriptEditorProps, state: any) {
