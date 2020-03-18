@@ -80,7 +80,7 @@ To use this web part, follow these steps:
 
 1. Create a custom list view
 2. From your custom list view, select **Format current view** from the view drop-down.
-![Format current view](./assets/viewFormatting.png)
+![Format current view](./assets/Viewformatting.png)
 3. In the **Format view** pane, add the `class` attribute in an element node, as follows:
 ```json
     "attributes": {
