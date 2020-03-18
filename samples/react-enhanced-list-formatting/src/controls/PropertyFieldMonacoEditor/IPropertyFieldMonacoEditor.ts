@@ -65,12 +65,34 @@ export interface IPropertyFieldMonacoEditorProps {
    */
   value?: string;
 
+  /**
+   * Indicates whether the editor should be read only
+   */
   readOnly?: boolean;
+
+  /**
+   * Indicates whether the editor should show line numbers
+   */
   showLineNumbers?: boolean;
+
+  /**
+   * Indicates whether the editor should show a mini-map
+   */
   showMiniMap?: boolean;
+
+  /**
+   * Indicates whether the editor should show indent guides
+   */
   showIndentGuides?: boolean;
+
+  /**
+   * Indicates whether the editor should allow code folding
+   */
   folding?: boolean;
 
+  /**
+   * Indicates whether you should show a Full Page Editor button
+   */
   showFullScreen?: boolean;
 
   /**
