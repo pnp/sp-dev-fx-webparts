@@ -82,11 +82,13 @@ To use this web part, follow these steps:
 2. From your custom list view, select **Format current view** from the view drop-down.
 ![Format current view](./assets/Viewformatting.png)
 3. In the **Format view** pane, add the `class` attribute in an element node, as follows:
+
 ```json
     "attributes": {
       "class": "yourcustomclassgoeshere"
     },
 ```
+
 3. **Preview** and **Save** your custom format.
 4. Add the list web part to a page and select the custom view you created
 5. Add the **Enhanced List Formatting** web part (this web part) to the same page where you added the **List** web part.
@@ -121,22 +123,28 @@ The sample has a disclaimer that is inspired by that annoying disclaimer you see
 
 1. Open `EnhancedListFormattingWebPart.manifest.json'
 2. Find the following section:
+
 ```json
 "properties": {
       "description": "Enhanced List Formatting"
     }
 ```
+
 3. Add the following JSON:
+
 ```json
 "acceptedDisclaimer": true
 ```
+
 4. Your `properties` JSON should now look like this:
+
 ```json
 "properties": {
       "description": "Enhanced List Formatting",
       "acceptedDisclaimer": true
     }
 ```
+
 5. Test that your changes work by using `gulp build` and `gulp serve` and re-add a new version of the web part to your page
 6. Build a production version of the solution using `gulp dist`. See [Building the code](#Building_the_code)
 
