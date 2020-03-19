@@ -63,6 +63,16 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-enhanced-list-formatting
+      name: react-enhanced-list-formatting
+      title: Enhanced List Formatting
+      summary: This web part allows you to add custom CSS on a page to enhance list formatting.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif
+      framework: React
+      spfx: 1.10.0
+      author: Hugo Bernier, David Warner II
+      modifiedtext: March 18, 2020
+      modified: 2020-03-18
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
       name: js-workbench-customizer
       title: Workbench customizer
