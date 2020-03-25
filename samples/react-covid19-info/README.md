@@ -8,7 +8,7 @@ The following info is displayed:
  - Deaths
  - Recoverd
 
-![COVID-19 info](/assets/covid-counter.gif)
+![COVID-19 info](./assets/covid-counter.gif)
 
 ## Used SharePoint Framework Version
 
