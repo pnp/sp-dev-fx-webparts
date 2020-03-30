@@ -25,14 +25,14 @@
   }
 
   .button:hover {
-    background-color: #009688;
+    background-color: #2673ba;
     color: white;
     opacity:0.7;
   }
 
   .button:active,
   .button.is-checked {
-    background-color: #009688;
+    background-color: #2673ba;
   }
 
   .button.is-checked {

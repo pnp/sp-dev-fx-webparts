@@ -1,14 +1,17 @@
 # Getting Started
 
-This [repository](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples) contains community samples that demonstrate different usage patterns for the SharePoint Framework client-side web parts.
+These samples were created by the PnP community. They demonstrate different usage patterns for the SharePoint Framework client-side web parts.
 
-Each sample is located in it's own folder with a README.md file that provides details about what it demonstrates and any extra information to help you get the most out of it.
+The easiest way to get started with using these samples is to watch our video:
+[![Preview of getting started on consuming SharePoint development community sample solutions](http://img.youtube.com/vi/EH5voQlRd-4/0.jpg)](http://www.youtube.com/watch?v=EH5voQlRd-4 "Getting Started Using SPFx Samples")
+
+All samples are stored in a [GitHub repository](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples). Each sample is located in its own folder with a README.md file that provides details about what it demonstrates and any extra information to help you get the most out of it.
 
 ## Using the samples
 
 To build and start using these projects, you'll need to clone and build the projects.
 
-Clone this repository by executing the following command in your console:
+Clone the [SharePoint/sp-dev-fx-webparts](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples) repository by executing the following command in your console:
 
 ```shell
 git clone https://github.com/SharePoint/sp-dev-fx-webparts.git

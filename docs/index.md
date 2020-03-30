@@ -1,38 +1,58 @@
-![SharePoint Patterns & Practices](./img/sharepointpnp.svg)
+# Samples by Framework
 
-# SharePoint Framework Client-Side Web Part Samples & Tutorial Materials
+You can build client-side web parts using the frameworks you're already familiar with. Use the filters below to find samples by framework.
 
-SharePoint client-side web parts are controls that appear inside a SharePoint page but run locally in the browser. They're the building blocks of pages that appear on a SharePoint site. You can build client-side web parts using modern script development tools and the SharePoint workbench (a development test surface), and you can deploy your client-side web parts to classic web part pages in Office 365 tenants. In addition to plain JavaScript projects, you can build web parts alongside common scripting frameworks, such as AngularJS and React. For example, you can use React along with components from Office UI Fabric React to quickly create experiences based on the same components used in Office 365.
+To learn more about how to use these samples, please refer to our [getting started](./gettingstarted/index.md) section.
 
-## Organization
+ <div class="well">
+  <div class="button-group filters-button-group">
+    <button class="button is-checked" data-filter="*">All</button>
+    <button class="button" data-filter="[data-framework='Angular']">Angular</button>
+    <button class="button" data-filter="[data-framework='jQuery']">jQuery</button>
+    <button class="button" data-filter="[data-framework='Javascript']">Javascript</button>
+    <button class="button" data-filter="[data-framework='Knockout']">Knockout</button>
+    <button class="button" data-filter="[data-framework='React']">React</button>
+    <button class="button" data-filter="[data-framework='VueJS']">VueJS</button>
+    <button class="button" data-filter="[data-framework='Other']">Other</button>
+  </div>
 
-This repo is divided up into 3 main sections:
+  <!-- <div class="button-group sort-button-group"> 
+    <button class="button" data-sort-direction="asc" data-sort-value="original-order" type="button">Sort <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true" style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"  style='display:none;'></i></button> 
+    <button class="button" data-sort-direction="asc" data-sort-value="title" type="button">Title <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true"  style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"  style='display:none;'></i></button> 
+    <button class="button is-checked" data-sort-direction="desc" data-sort-value="modified" type="button">Modified  <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true"  style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"></i></button>
+  </div> -->
+</div>
 
-- **[samples](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples)**: Samples around the SharePoint Framework client-side web parts to demonstrate different capabilities and possibilities on the framework. Each sample has it's own dedicated readme file to explain setup instructions and demonstrated capability.
-- **[tutorials](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/tutorials)**: Tutorials around the SharePoint Framework client-side web parts to demonstrate different capabilities and possibilities on the framework. Each tutorial has it's own dedicated readme file to explain setup instructions and demonstrated capability.
+<div class="grid">
 
-You can head directly to those folders and start looking around if you'd like. But if you're looking for something specific, we've grouped our samples into various categories:
+{% for sample in samples %}
 
-- [By **Framework**](./samples/framework.md)
-- [By **SPFx Version**](./samples/spfx.md)
-- [By **Compatibility**](./samples/compatibility.md)
-- [By **Year**](./samples/year.md)
-- [By **Author**](./samples/author.md)
-- [By **Keyword**](./samples/keyword.md)
-- [All](./samples/all.md)
+<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}"  data-thumbnail="{{sample.thumbnail}}">
+  <div class="sample">
+    <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>
+    <div class="sample-img">
+      <a class="sample-link"
+        href="{{sample.url}}"
+        title="{{sample.title}}">
+        <picture>
+          <img src="../../img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="../../img/thumbnails/sm/{{ sample.name }}.png"/>
+        </picture>
+      </a>
+    </div>
+  </div>
+      <a href="{{sample.url}}"
+      title="{{ sample.title }}">
+<span class="location" title="Framework: {{sample.framework}}">{{ sample.framework }}</span>
+  <h2 class="name">
+      {{sample.title}}</h2>
+      <div class="sample-activity">
+  <span class="author" title="{{ sample.author }}">{{ sample.author }}</span>
+  <span class="modified">Modified {{ sample.modifiedtext }}</span>
+  </div>
+  </a>
 
-## Detailed Documentation
+</div>
+    {% endfor %}
+</div>
 
-- [Overview of the SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-- [SharePoint Framework development tools and libraries](http://dev.office.com/sharepoint/docs/spfx/tools-and-libraries)
-- [SharePoint Framework Reference](http://aka.ms/spfx-reference)
-
-## Contributing
-
-These samples are direct from the feature teams, SharePoint PnP core team ([http://aka.ms/SharePointPnP](http://aka.ms/SharePointPnP)) or shared by the community. We welcome your input on issues and suggestions for new samples. We do also welcome community contributions around the client-side web parts. If there's any questions around that, just let us know.
-
-Please have a look on our Contribution Guide before submitting your pull requests, so that we can get your contribution processed as fast as possible.
-
-> Sharing is caring!
-
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/index" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/samples/framework" />n 

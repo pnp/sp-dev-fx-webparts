@@ -1,6 +1,6 @@
 # Contribution Guidance
 
-If you'd like to contribute to this repository, please read the following guidelines. Contributors are more than welcome to share your learnings with others from centralized location.
+If you'd like to contribute to these samples, please read the following guidelines. Contributors are more than welcome to share your learnings with others from centralized location.
 
 ## Code of Conduct
 
@@ -32,7 +32,7 @@ When you are submitting a new sample, it has to follow up below guidelines
 * You will need to have a README file for your contribution, which is based on [provided template](../samples/README-template.md) under the Samples folder. Please copy this template and update accordingly. README has to be named as README.md with capital letters.
   * You will need to have a picture of the web part in practice in the README file ("pics or it didn't happen"). Preview image must be located in /assets/ folder in the root your you solution.
 * README template contains specific tracking image as a final entry in the page with img tag by default to https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template. This is transparent image, which is used to track popularity of individual samples in GitHub.
-  * Updated the image src element according with repository name and folder information. If your sample is for example in samples folder and named as react-todo, src element should be updated as https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-todo
+  * Updated the image `src` element according with repository name and folder information. If your sample is for example in samples folder and named as react-todo, src element should be updated as https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-todo
 * If you find already similar kind of sample from the existing samples, we would appreciate you to rather extend existing one, than submitting a new similar sample
   * If you for example use Office Graph with React, please rather add new web part to already existing solution, rather than introducing completely new solution
   * When you update existing samples, please update also README accordingly with information on provided changes and with your author details
@@ -48,8 +48,8 @@ When you are submitting a new sample, it has to follow up below guidelines
 Here's a high level process for submitting new samples or updates to existing ones.
 
 1. Sign the Contributor License Agreement (see below)
-1. Fork this repository [SharePoint/sp-dev-fx-webparts](https://github.com/SharePoint/sp-dev-fx-webparts) to your GitHub account
-1. Create a new branch off the `master` branch for your fork for the contribution
+1. Fork the [samples repository](https://github.com/SharePoint/sp-dev-fx-webparts) to your GitHub account
+1. Create a new branch off of the `master` branch for your fork for the contribution
 1. Include your changes to your branch
 1. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
 1. Create a pull request in your own fork and target `dev` branch
@@ -105,9 +105,9 @@ Before you submit your pull request consider the following guidelines:
   git push origin react-taxonomypicker
   ```
 
-## Merging your Existing Github Projects with this Repository
+## Merging your Existing GitHub Projects with the samples repository
 
-If the sample you wish to contribute is stored in your own Github repository, you can use the following steps to merge it with the this repository:
+If the sample you wish to contribute is stored in your own GitHub repository, you can use the following steps to merge it with the samples repository:
 
 * Fork the `sp-dev-fx-webparts` repository from GitHub
 * Create a local git repository
@@ -125,7 +125,7 @@ If the sample you wish to contribute is stored in your own Github repository, yo
     git pull origin dev
     ```
 
-* Pull your other project from github into the samples folder of your local copy of sp-dev-fx-webparts
+* Pull your other project from GitHub into the samples folder of your local copy of sp-dev-fx-webparts
 
     ```shell
     git subtree add --prefix=samples/projectname https://github.com/yourgitaccount/projectname.git master
@@ -139,7 +139,7 @@ If the sample you wish to contribute is stored in your own Github repository, yo
 
 ## Signing the CLA
 
-Before we can accept your pull requests you will be asked to sign electronically Contributor License Agreement (CLA), which is prerequisite for any contributions to PnP repository. This will be one time process, so for any future contributions you will not be asked to re-sign anything. After the CLA has been signed, our PnP core team members will have a look on your submission for final verification of the submission. Please do not delete your development branch until the submission has been closed.
+Before we can accept your pull requests you will be asked to sign electronically Contributor License Agreement (CLA), which is pre-requisite for any contributions to PnP repository. This will be one time process, so for any future contributions you will not be asked to re-sign anything. After the CLA has been signed, our PnP core team members will have a look on your submission for final verification of the submission. Please do not delete your development branch until the submission has been closed.
 
 You can find Microsoft CLA from the following address - https://cla.microsoft.com. 
 

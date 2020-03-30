@@ -5,8 +5,8 @@
 Here's a high level process for submitting new samples or updates to existing ones.
 
 1. Sign the Contributor License Agreement (see below)
-1. Fork this repository [SharePoint/sp-dev-fx-webparts](https://github.com/SharePoint/sp-dev-fx-webparts) to your GitHub account
-1. Create a new branch off the `master` branch for your fork for the contribution
+1. Fork the [SharePoint/sp-dev-fx-webparts](https://github.com/SharePoint/sp-dev-fx-webparts) repository to your GitHub account
+1. Create a new branch off of the `master` branch for your fork for the contribution
 1. Include your changes to your branch
 1. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
 1. Create a pull request in your own fork and target `dev` branch
@@ -63,9 +63,9 @@ Before you submit your pull request consider the following guidelines:
   git push origin react-taxonomypicker
 ```
 
-## Merging your Existing Github Projects with this Repository
+## Merging your Existing Github Projects with the Samples Repository
 
-If the sample you wish to contribute is stored in your own Github repository, you can use the following steps to merge it with the this repository:
+If the sample you wish to contribute is stored in your own Github repository, you can use the following steps to merge it with the samples repository:
 
 * Fork the `sp-dev-fx-webparts` repository from GitHub
 * Create a local git repository

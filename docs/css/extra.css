@@ -9,3 +9,16 @@
 .md-header-nav__topic {
     margin-left: -16px;
 }
+
+[data-md-color-primary=pnp] .md-header, [data-md-color-primary=pnp] .md-hero {
+    background-color: #2673ba;
+}
+
+.md-tabs {
+    width: 100%;
+    -webkit-transition: background .25s;
+    transition: background .25s;
+    background-color: #2673ba;
+    color: #fff;
+    overflow: auto;
+}

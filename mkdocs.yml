@@ -2,29 +2,30 @@
 # Author: Hugo Bernier
 # Master PR: 0578d52
 site_name: SharePoint Framework Client-Side Web Part Samples
-theme: readthedocs
 plugins:
     - search
     - macros
     - markdownextradata
+    - redirects:
+        redirect_maps:
+            'samples/framework.md': 'index.md'
 nav:
-  - Home: index.md
-  - Getting Started:
-    - Using the Samples: gettingstarted/index.md
-  - Tutorials: 
-    - Tutorials: tutorials/index.md
-    - Getting started with client-side web parts: tutorials/getting-started.md
-    - Migrate jQuery and DataTables solution built using Script Editor Web Part to SharePoint Framework: tutorials/migrate-datatables.md
-    - Migrate jQuery and FullCalendar solution built using Script Editor Web Part to SharePoint Framework: tutorials/migrate-fullcalendar.md
-    - Consuming APIs secured with Azure Active Directory within SharePoint Framework: tutorials/api-scopes.md
   - Samples:
-    - By Framework: samples/framework.md
+    - By Framework: index.md
     - By SPFx Version: samples/spfx.md
     - By Compatibility: samples/compatibility.md
     - By Year: samples/year.md
     - By Author: samples/author.md
     - By Keyword: samples/keyword.md
     - All: samples/all.md
+  - Getting Started:
+    - Using the Samples: gettingstarted/index.md
+  # - Tutorials: 
+  #   - Tutorials: tutorials/index.md
+  #   - Getting started with client-side web parts: tutorials/getting-started.md
+  #   - Migrate jQuery and DataTables solution built using Script Editor Web Part to SharePoint Framework: tutorials/migrate-datatables.md
+  #   - Migrate jQuery and FullCalendar solution built using Script Editor Web Part to SharePoint Framework: tutorials/migrate-fullcalendar.md
+  #   - Consuming APIs secured with Azure Active Directory within SharePoint Framework: tutorials/api-scopes.md
   - Contributing:
     - Contribution Guide: contributing/index.md
     - Submitting an Issue or Suggestion: contributing/issues.md
@@ -33,8 +34,9 @@ nav:
     - Submitting a Pull Request: contributing/pullrequest.md
 theme:
   name: 'material'
+  # custom_dir: 'theme/'
   palette:
-    primary: 'teal'
+    primary: 'pnp'
     accent: 'indigo'
   logo: 'img/pnp-samples-white.svg'
   feature:
@@ -2096,3 +2098,4 @@ repo_url: https://github.com/SharePoint/sp-dev-fx-webparts
 edit_uri: tree/Docs/docs
 site_url: https://sharepoint.github.io/sp-dev-fx-webparts/
 site_favicon: favicon.ico
+dev_addr: '127.0.0.1:443'
