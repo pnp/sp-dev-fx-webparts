@@ -1,6 +1,9 @@
 # Samples by Compatibility
 
 All samples are compatible with SharePoint Online. If you wish to find web parts that were specifically designed for SharePoint 2019 or Microsoft Teams, use the filters below.
+
+To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
+
  <div class="well">
   <div class="button-group filters-button-group">
     <button class="button is-checked" data-filter="*">All</button>

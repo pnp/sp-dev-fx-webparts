@@ -1,6 +1,6 @@
-# Samples by Framework
+# Samples by JavaScript Framework
 
-You can build client-side web parts using the frameworks you're already familiar with. Use the filters below to find samples by framework.
+You can build client-side web parts using the [many of the JavaScript frameworks](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/tools-and-libraries) you're already familiar with. Use the filters below to find samples by JavaScript framework.
 
 To learn more about how to use these samples, please refer to our [getting started](./gettingstarted/index.md) section.
 
@@ -13,14 +13,9 @@ To learn more about how to use these samples, please refer to our [getting start
     <button class="button" data-filter="[data-framework='Knockout']">Knockout</button>
     <button class="button" data-filter="[data-framework='React']">React</button>
     <button class="button" data-filter="[data-framework='VueJS']">VueJS</button>
+    <button class="button" data-filter="[data-framework='Handlebars']">Handlebars</button>
     <button class="button" data-filter="[data-framework='Other']">Other</button>
   </div>
-
-  <!-- <div class="button-group sort-button-group"> 
-    <button class="button" data-sort-direction="asc" data-sort-value="original-order" type="button">Sort <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true" style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"  style='display:none;'></i></button> 
-    <button class="button" data-sort-direction="asc" data-sort-value="title" type="button">Title <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true"  style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"  style='display:none;'></i></button> 
-    <button class="button is-checked" data-sort-direction="desc" data-sort-value="modified" type="button">Modified  <i class="ms-Icon ms-Icon--Ascending" aria-hidden="true"  style='display:none;'></i><i class="ms-Icon ms-Icon--Descending" aria-hidden="true"></i></button>
-  </div> -->
 </div>
 
 <div class="grid">
@@ -35,7 +30,7 @@ To learn more about how to use these samples, please refer to our [getting start
         href="{{sample.url}}"
         title="{{sample.title}}">
         <picture>
-          <img src="../../img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="../../img/thumbnails/sm/{{ sample.name }}.png"/>
+          <img src="https://sharepoint.github.io/sp-dev-fx-webparts/img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="https://sharepoint.github.io/sp-dev-fx-webparts/img/thumbnails/sm/{{ sample.name }}.png"/>
         </picture>
       </a>
     </div>
@@ -55,4 +50,4 @@ To learn more about how to use these samples, please refer to our [getting start
     {% endfor %}
 </div>
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/samples/framework" />n 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/samples/framework" />

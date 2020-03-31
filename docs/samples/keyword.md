@@ -2,6 +2,8 @@
 
 Use the filter below to find samples by keywords in the title or description.
 
+To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
+
 <div class="well">
 
 <input name="keyword" class="form-control" placeholder="Type to search by keyword" id="keyword" />

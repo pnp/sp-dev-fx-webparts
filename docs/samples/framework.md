@@ -2,6 +2,8 @@
 
 You can build client-side web parts using the frameworks you're already familiar with. Use the filters below to find samples by framework.
 
+To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
+
  <div class="well">
   <div class="button-group filters-button-group">
     <button class="button is-checked" data-filter="*">All</button>
@@ -33,7 +35,7 @@ You can build client-side web parts using the frameworks you're already familiar
         href="{{sample.url}}"
         title="{{sample.title}}">
         <picture>
-          <img src="../../img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="../../img/thumbnails/sm/{{ sample.name }}.png"/>
+          <img src="https://sharepoint.github.io/sp-dev-fx-webparts//img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="https://sharepoint.github.io/sp-dev-fx-webparts//img/thumbnails/sm/{{ sample.name }}.png"/>
         </picture>
       </a>
     </div>

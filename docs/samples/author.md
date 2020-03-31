@@ -2,6 +2,8 @@
 
 Our samples were created by the feature teams, SharePoint PnP core team (http://aka.ms/SharePointPnP) or shared by the community. Use the filter below to find samples by author.
 
+To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
+
 <div class="well">
 
 <input list="authors" name="author" class="form-control" placeholder="Type to search by author" id="author" />

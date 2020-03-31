@@ -2,6 +2,8 @@
 
 The SharePoint Framework is constantly evolving. Use the filters below to see how the samples have changed over the years.
 
+To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
+
  <div class="well">
   <div class="button-group filters-button-group">
    <button class="button is-checked" data-filter="*">All</button>

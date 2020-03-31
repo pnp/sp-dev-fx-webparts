@@ -1,5 +1,7 @@
 # All Samples
 
+To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
+
 <table id="samplestable">
     <thead>
         <tr>

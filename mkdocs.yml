@@ -8,7 +8,8 @@ plugins:
     - markdownextradata
     - redirects:
         redirect_maps:
-            'samples/framework.md': 'index.md'
+            'samples/framework.md': '../index.md'
+            'samples/framework': 'https://sharepoint.github.io/sp-dev-fx-webparts/'
 nav:
   - Samples:
     - By Framework: index.md
@@ -406,7 +407,7 @@ extra:
       version: 1.0
       modifiedtext: April 25, 2017
       modified: 2017-04-25
-    - framework: Other
+    - framework: Handlebars
       spfx: 1.4.1
       year: 2018
       title: Sample with Handlebars.js
