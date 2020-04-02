@@ -1,0 +1,45 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.reactYammer {
+  .previewBox{
+    overflow: auto;
+    position: relative;
+    border: 1px solid #dde0e6;
+    padding: 18px 24px 20px 59px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    line-height: 20px;
+  }
+  .previewContainer{
+    margin-top:10px;
+  }
+  .previewTitle{
+    font-weight: 700;
+    display: block;
+    margin: 0 0 1.5rem;
+    font-size: 15px;
+  }
+  .previewContent{
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .previewIcon{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background: 0 0;
+  }
+  .previewComment{
+    word-wrap: break-word;
+    white-space: pre-line;
+    float: none;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    color: #343a41;
+  }
+  .btnSubmit{
+    margin-top:10px;
+  }
+}

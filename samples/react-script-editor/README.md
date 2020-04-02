@@ -161,7 +161,7 @@ Version|Date|Comments
 1.0.0.13|July 1th, 2019|Downgrade to SPFx v1.4.1 to support SP2019
 1.0.0.14|Oct 13th, 2019|Added resolve to fix pnpm issue. Updated author info.
 1.0.0.15|Mar 16th, 2020|Upgrade to SPFx v1.10.0. Add support for Teams tab. Renamed package file.
-1.0.0.16|April 1st, 2010|Improved how script tags are handled and cleaned up on smart page navigation.
+1.0.0.16|April 1st, 2020|Improved how script tags are handled and cleaned up on smart page navigation.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
