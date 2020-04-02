@@ -1,4 +1,4 @@
-# Spfx Webpart Group members list with Presence information
+# Yammer Praise using aadTokenProvider
 
 ## Summary
 This sample shows how to post a praise to Yammer using aadTokenProvider (without Yammer JavaScript SDK).
