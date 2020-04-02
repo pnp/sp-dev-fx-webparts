@@ -11,7 +11,7 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "handlebars": "^4.0.6",
+    "handlebars": "^4.3.0",
     "handlebars-helpers": "^0.8.2",
     "moment": "^2.18.1",
     "react": "15.4.2",
