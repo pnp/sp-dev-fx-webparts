@@ -6,7 +6,7 @@ This web part displays info about the COVID-19 virus for a given country.
 The following info is displayed:
  - Confirmed cases
  - Deaths
- - Recoverd
+ - Recovered
 
 ![COVID-19 info](./assets/covid-counter.gif)
 
