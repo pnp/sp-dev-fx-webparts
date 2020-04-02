@@ -63,4 +63,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * React Context API
 * Functional Components
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-functional-servicescope-hooks" />
