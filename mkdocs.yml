@@ -1,6 +1,6 @@
 # Web Part Samples
 # Author: Hugo Bernier
-# Master PR: 0578d52
+# Master PR: #1190
 site_name: SharePoint Framework Client-Side Web Part Samples
 plugins:
     - search
@@ -21,12 +21,6 @@ nav:
     - All: samples/all.md
   - Getting Started:
     - Using the Samples: gettingstarted/index.md
-  # - Tutorials: 
-  #   - Tutorials: tutorials/index.md
-  #   - Getting started with client-side web parts: tutorials/getting-started.md
-  #   - Migrate jQuery and DataTables solution built using Script Editor Web Part to SharePoint Framework: tutorials/migrate-datatables.md
-  #   - Migrate jQuery and FullCalendar solution built using Script Editor Web Part to SharePoint Framework: tutorials/migrate-fullcalendar.md
-  #   - Consuming APIs secured with Azure Active Directory within SharePoint Framework: tutorials/api-scopes.md
   - Contributing:
     - Contribution Guide: contributing/index.md
     - Submitting an Issue or Suggestion: contributing/issues.md
@@ -66,6 +60,46 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks
+      name: react-functional-servicescope-hooks
+      title: Consuming SPFX Service Scopes using React Hooks
+      summary: This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-functional-servicescope-hooks/webpart.png
+      framework: React
+      spfx: 1.10.0
+      author: Garry Trinder
+      modifiedtext: March 25, 2020
+      modified: 2020-03-25
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-covid19-info
+      name: react-covid19-info
+      title: COVID 19 information web part
+      summary: This web part displays info about the COVID-19 virus for a given country. 
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-covid19-info/assets/covid-counter.gif
+      framework: React
+      spfx: 1.10.0
+      author: Robin Atgen
+      modifiedtext: March 25, 2020
+      modified: 2020-03-25
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards
+      name: react-adaptivecards
+      title: Adaptive Cards Host
+      summary: This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif
+      framework: React
+      spfx: 1.10.0
+      author: Hugo Bernier
+      modifiedtext: Mar 24, 2020
+      modified: 2020-03-24
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-yammer-praise
+      name: react-yammer-praise
+      title: Yammer Praise using aadTokenProvider
+      summary: This sample shows how to post a praise to Yammer using aadTokenProvider (without Yammer JavaScript SDK).
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-yammer-praise/assets/screenshot.gif
+      framework: React
+      spfx: 1.10.0
+      author: Ramin Ahmadi
+      modifiedtext: Mar 23, 2020
+      modified: 2020-03-23
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-enhanced-list-formatting
       name: react-enhanced-list-formatting
       title: Enhanced List Formatting
@@ -2074,6 +2108,7 @@ extra:
     - Ravi Kulkarni
     - Ravi Kumar Bomma
     - Ravi Kumar Bomma
+    - Robin Agten
     - Roland Oldengarm
     - Russell Gove
     - Sébastien Levert
@@ -2099,4 +2134,4 @@ repo_url: https://github.com/SharePoint/sp-dev-fx-webparts
 edit_uri: tree/Docs/docs
 site_url: https://sharepoint.github.io/sp-dev-fx-webparts/
 site_favicon: favicon.ico
-dev_addr: '127.0.0.1:443'
+# dev_addr: '127.0.0.1:443'
