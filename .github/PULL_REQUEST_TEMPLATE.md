@@ -11,10 +11,12 @@
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
 
-## Guidance
-
+## Submitter Guidance (DELETE AFTER READING)
+> 
 > *Please update this PR information accordingly. We'll use this as part of our release notes in monthly communications.*
 > 
 > *Please target your PR to `master` branch.*
-> 
-> _(DELETE THIS PARAGRAPH AFTER READING)_
+>
+> _(DELETE THIS SECTION AFTER READING)_
+
+
