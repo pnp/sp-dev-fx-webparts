@@ -15,6 +15,6 @@
 
 > *Please update this PR information accordingly. We'll use this as part of our release notes in monthly communications.*
 > 
-> *Please target your PR to `dev` branch. Released documents are in `master` branch.*
+> *Please target your PR to `master` branch.*
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
