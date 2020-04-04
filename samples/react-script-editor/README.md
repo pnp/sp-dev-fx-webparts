@@ -198,7 +198,7 @@ By default you have to install this web part per site collection where you want 
 "skipFeatureDeployment": true
 ```
 
-In order to make it availble to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
+In order to make it available to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
 
 ## Features
 This web part illustrates the following concepts on top of the SharePoint Framework:

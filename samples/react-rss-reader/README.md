@@ -101,7 +101,7 @@ Show Publication Date | Display the publication date
 Show Description | Display the content or description of each feed listing
 Description Character Limit | The maximum number of description characters to display
 Link Target | The "target" of a listing link, default: _blank
-Date Format | The Momment based format format of the listing date, i.e. DD/MM/YYYY (European), default: MM/DD/YYYY
+Date Format | The Moment based format format of the listing date, i.e. DD/MM/YYYY (European), default: MM/DD/YYYY
 Title Color | Color override for a listing title
 Background Color | Color override for the webpart background
 

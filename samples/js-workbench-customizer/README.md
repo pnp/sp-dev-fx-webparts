@@ -19,8 +19,8 @@ The easiest way to use the solution is to package it up and deploy to the App Ca
 Alternatively, you can add the output files for the web part to a custom SPFx project and the web part will also be served and available both from the local or hosted Workbench page:
 
 * Generate the output files for the solution by executing `gulp bundle --ship`
-* Copy all files from js-workbench-customizer\dist to the dist folder of your custom solution
-* Copy the workbenchCustomizer folder from js-workbench-customizer\lib\webparts to the corresponding webparts folder of your custom solution
+* Copy all files from `js-workbench-customizer\dist` to the `dist` folder of your custom solution
+* Copy the `workbenchCustomizer` folder from `js-workbench-customizer\lib\webparts` to the corresponding webparts folder of your custom solution
 
 Note: This approach will not "pollute" your solution with additional resources or dependencies as the SPFx toolchain will ignore those additional files by default when you package your solution. You can also clean everything by running `gulp clean` as both the lib and dist folders are deleted and recreated again. Git will also ignore dist and lib folders by default, so the files will never be added to source control.
 
@@ -34,7 +34,7 @@ Note: This approach will not "pollute" your solution with additional resources o
 
 ## Prerequisites
 
-* Office 365 subscription with SharePoint Online licence
+* Office 365 subscription with SharePoint Online license
 * SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
 
 ## Solution

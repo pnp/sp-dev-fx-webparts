@@ -204,3 +204,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - Using Office UI Fabric controls for building SharePoint Framework client-side web parts
 - Passing web part properties to React components
 - Call MS Flow (Power Automate) flow from SharePoint Framework web part
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-o365-groups" />

@@ -51,7 +51,7 @@ gulp serve --nobrowser
 
 Navigate to the hosted version of SharePoint workbench, eg. https://contoso.sharepoint.com/_layouts/15/workbench.aspx
 
-### Grant the service principal permission to the MicroSoft Graph API
+### Grant the service principal permission to the Microsoft Graph API
 
 Once installed, the solution will request the required permissions via the Office 365 admin portal.
 If you prefer to approve the permissions in advance, for example when testing the solution in the Workbench page without installing it, you can do so using Office 365 CLI:

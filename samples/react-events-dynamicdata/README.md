@@ -38,7 +38,7 @@ Version|Date|Comments
   * `npm install`
   * `gulp bundle --ship`
   * `gulp package-solution --ship`
-* from the _sharepoint/solution_ folder, deploy the .sppkg file to the App catalog in your tenant
+* from the `sharepoint/solution` folder, deploy the `.sppkg` file to the App catalog in your tenant
 * in the site where you want to test this solution
   * add the app named _react-events-dynamicdata-client-side-solution_
   * edit a page

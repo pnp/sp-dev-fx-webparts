@@ -359,5 +359,3 @@ private _resolveBatch(batch: SPHttpClientBatch, promises: Promise<{}>[]): Promis
 ```
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-todo-basic" />
-
-

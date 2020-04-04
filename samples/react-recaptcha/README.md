@@ -72,6 +72,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Using react framework in SPFx webpart
 * Using [PnP Placeholder control](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/) to configure webpart.
 * Using [react-google-recaptcha](https://github.com/dozoisch/react-google-recaptcha) npm package in SPFx webpart
-* Validate if captcha is resolved before submiting data.
+* Validate if captcha is resolved before submitting data.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-recaptcha" />

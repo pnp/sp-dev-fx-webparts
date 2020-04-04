@@ -25,7 +25,7 @@ react-zpl-viewer | Zach Roberts [spodev](https://spodev.com)
 
 Version|Date|Comments
 -------|----|--------
-1.0|Feburary 13, 2020|Initial release
+1.0|February 13, 2020|Initial release
 
 ## Disclaimer
 

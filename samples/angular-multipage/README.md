@@ -11,9 +11,9 @@ extensions:
   - SharePoint Framework
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 11/1/2016 12:00:00 AM
 ---
-﻿# Angular multi-page client-side web part
+# Angular multi-page client-side web part
 
 ## Summary
 

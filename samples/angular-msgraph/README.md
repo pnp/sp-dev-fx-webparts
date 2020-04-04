@@ -15,7 +15,7 @@ extensions:
   - SharePoint
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 2/16/2017 12:00:00 AM
 ---
 ﻿## Angular MS Graph Web Part Built with Angular v1.x
 

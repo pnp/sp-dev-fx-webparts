@@ -58,8 +58,8 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repo
-- npm i
-- gulp serve --nobrowser
+- `npm i`
+- `gulp serve --nobrowser`
 - Open workbench on your tenant, i.e. https://contoso.sharepoint.com/sites/salesteam/_layouts/15/workbench.aspx
 - Search and add web part "Adaptive Cards Image Gallery"
 

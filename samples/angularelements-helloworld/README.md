@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 6/1/2018 12:00:00 AM
+---
 # Angular Elements in SharePoint Framework
 
 ## Summary

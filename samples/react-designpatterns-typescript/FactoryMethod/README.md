@@ -54,7 +54,7 @@ It promotes the loose-coupling by eliminating the need to bind application-speci
 
 So lets start this journey explaining how I saw this factory method pattern could be applied.
 
-In a Sharepoint Site we can have multiple lists and all those lists could have different columns or fields, why not create a generic way to build the list item objets depending on the selected list? well in plain english, a webpart where you can select the list, and based on the selected list it will render all the columns, sure you can do this in many ways and probably with lots of switches/if statements, etc, but I wanted a more elegant solution and I believe this sample will do just that.
+In a SharePoint Site we can have multiple lists and all those lists could have different columns or fields, why not create a generic way to build the list item objets depending on the selected list? well in plain english, a webpart where you can select the list, and based on the selected list it will render all the columns, sure you can do this in many ways and probably with lots of switches/if statements, etc, but I wanted a more elegant solution and I believe this sample will do just that.
 
 
 ##### Diagram
@@ -64,7 +64,7 @@ So instead of classes we have interfaces for the generic list item (IListItem), 
 
 On the right side of the diagram we have an IFactory interface that declares the signature of the method getItems and what it should return (any), remember at the end all items will be of type IListItem because they extend that interface but in order to make it work we will have to use an array of any[].
 
-And finally on the FactoryMethod react component we use the ListItem Factory to get the items, from the caller point of view, we dont care what it will return, its the factory method responsibility to actually create the logic inside to know which instance types it should return.
+And finally on the FactoryMethod react component we use the ListItem Factory to get the items, from the caller point of view, we don't care what it will return, its the factory method responsibility to actually create the logic inside to know which instance types it should return.
 
 ##### Project structure
 ![](http://www.luisevalencia.com/content/images/2017/11/estructura.png)

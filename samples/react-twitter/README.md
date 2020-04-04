@@ -49,3 +49,5 @@ Version|Date|Comments
 
 This sample illustrates how to use [react-twitter-embed](https://www.npmjs.com/package/react-twitter-embed) module to display Twitter timeline of specific profile, likes, list, collection or url.
 It also uses [PnP React Controls](https://github.com/SharePoint/sp-dev-fx-controls-react) and [PnP Property Controls](https://github.com/SharePoint/sp-dev-fx-property-controls) for rich web part and property pane components.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-twitter" />

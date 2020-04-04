@@ -158,12 +158,12 @@ If you however want to allow the web part for non-script sites like Office 365 G
 ```
 
 ### Deploy tenant wide
-By default you have to install this web part per site collection where you want it availble. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
+By default you have to install this web part per site collection where you want it available. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
 ```
 "skipFeatureDeployment": true
 ```
 
-In order to make it availble to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
+In order to make it available to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
 
 ## Features
 This web part illustrates the following concepts on top of the SharePoint Framework:

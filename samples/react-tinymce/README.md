@@ -67,7 +67,7 @@ Description of the web part with possible additional details than in short summa
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - Rich text editing, that has more features than the Out of the box.
-- Uses an Open Source, community driven Editor.
+- Uses an Open Source, community-driven Editor.
 - Can be extended to accept copy/paste from using Paste Plugin.
 - Can be extended to accept images using the manager in the Editor.
 - Can write your own Styles for all content on your site.

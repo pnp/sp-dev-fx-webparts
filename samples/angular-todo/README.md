@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 3/10/2017 12:00:00 AM
+---
 # Angular client-side web part
 
 ## Summary

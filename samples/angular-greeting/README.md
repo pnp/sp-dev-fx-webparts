@@ -1,3 +1,20 @@
+---
+page_type: sample
+products:
+- office-365
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJs
+  createdDate: 2/15/2020 12:00:00 AM
+---
+
 # AngularJS Greeting client-side web part
 
 ## Summary
@@ -53,3 +70,5 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 * using non-reactive web part property pane
 * using conditional rendering for one-time web part setup
 * passing web part configuration to AngularJS and reacting to configuration changes
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-greeting" />
