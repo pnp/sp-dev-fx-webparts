@@ -11,9 +11,9 @@ extensions:
   - SharePoint Framework
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 2/4/2017 12:00:00 AM
 ---
-﻿# Search Client-Side Web Part Built with Angular v1.x
+# Search Client-Side Web Part Built with Angular v1.x
 
 ## Summary
 This is a sample search web part that illustrates how you can use Angular within the new SharePoint Framework

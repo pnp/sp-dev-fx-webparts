@@ -102,7 +102,7 @@ Version|Date|Comments
     - `npm i`
     - `npm test` **(NOT gulp test)**
 
-Note: You migh want to switch to a test fake offline provider to use the full functionality of the web part when on local workbench. You can do so by replacing the real pnpjs provider in IceCreamShopWebPart.ts with its fake one at line 37. Just replace IceCreamPnPJsProvider() with IceCreamFakeProvider().
+Note: You might want to switch to a test fake offline provider to use the full functionality of the web part when on local workbench. You can do so by replacing the real pnpjs provider in IceCreamShopWebPart.ts with its fake one at line 37. Just replace IceCreamPnPJsProvider() with IceCreamFakeProvider().
 ``` 
 iceCreamProvider: new IceCreamPnPJsProvider(sp), //new IceCreamFakeProvider() // replace with Fake provider when offline workbench.
 ```

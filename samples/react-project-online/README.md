@@ -34,7 +34,7 @@ The web part is currently returning project tasks as a simple proof of concept.
 
 ## Prerequisites
  
-- Office 365 subscription with SharePoint Online and Project Online licence
+- Office 365 subscription with SharePoint Online and Project Online license
 - SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
 -Project site with some tasks available.
 

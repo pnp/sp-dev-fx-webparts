@@ -38,15 +38,15 @@ Version|Date|Comments
   * `npm install`
   * `gulp bundle --ship`
   * `gulp package-solution --ship`
-* from the _sharepoint/solution_ folder, deploy the .sppkg file to the App catalog in your tenant
+* from the `sharepoint/solution` folder, deploy the `.sppkg` file to the App catalog in your tenant
 * create Term Store group as shown on the screenshot below:\
   ![Term Store](./assets/taxonomy.png)
 * in the site where you want to test this solution
   * create Country list as a standard Custom list and add few items in there
   * create Journeys list with the next columns:
     * Title - Single line of text
-    * JorneyDate - Date and Time
-    * VisitedCountries - Lookup with multiselection. Referenced list - Contry
+    * JourneyDate - Date and Time
+    * VisitedCountries - Lookup with multiselection. Referenced list - Country
     * Experience - Choice with next choices: Bad, Normal, Good
     * Picture - Hyperlink or Picture, display as Picture
     * JourneyType - Managed Metadata connected to the Term Set created above
@@ -57,3 +57,5 @@ Version|Date|Comments
 ## Features
 
 This sample demonstrates how to combine different parts of PnP Reusable React controls to create rich solutions. It also partially answers the question from [Issue 493](https://github.com/SharePoint/sp-dev-fx-controls-react/issues/493) in PnP Reusable Controls repo. 
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-pnp-controls-list-view-fields" />

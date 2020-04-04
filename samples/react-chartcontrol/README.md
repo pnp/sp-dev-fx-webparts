@@ -205,7 +205,7 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
-* Insert the one of the webs part on a page
+* Insert one of the webs part on a page
 
 ## Features
 

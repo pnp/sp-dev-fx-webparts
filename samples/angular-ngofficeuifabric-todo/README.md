@@ -13,11 +13,11 @@ extensions:
   - Office UI Fabric
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 8/29/2016 12:00:00 AM
   scenarios:
   - Embed
 ---
-﻿# Angular & ngOfficeUIFabric Client-Side Web Part
+# Angular & ngOfficeUIFabric Client-Side Web Part
 
 ## Summary
 

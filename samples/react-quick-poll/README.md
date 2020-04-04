@@ -22,7 +22,7 @@
     * **_Start Date_** - Date when the end user can start seeing the poll question.
     * **_End Date_** - Last day of the poll question visible to the end user.
 
-3. **_Success Message_** - Message to be displayed to the user after successfull submission. It is optional, if not provided the default message '**Thank you for your submission**' will be displayed.
+3. **_Success Message_** - Message to be displayed to the user after successful submission. It is optional, if not provided the default message '**Thank you for your submission**' will be displayed.
 
 4. **_Response Message_** - Message to be displayed to the user with the user response, once the user has submitted. It is optional, if not provided the default message '**You voted for: ~User Response~**' will be displayed below the chart.
 
@@ -92,3 +92,5 @@ This solution doesn't work on local mode.
 #### SharePoint Mode
 If you want to try on a real environment, open:
 [O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-quick-poll" />

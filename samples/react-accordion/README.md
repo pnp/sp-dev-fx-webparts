@@ -67,8 +67,8 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 ### General
 
 - performing SharePoint GET operation in React using inbuilt SP Http Client
-- Using Fabric UI button component for pagination      
-- optimizing REST responses for performance using nometadata option of JSON light
+- Using Fabric UI button component for pagination
+- optimizing REST responses for performance using `nometadata` option of JSON light
 - using PnP Webpart title control of @pnp/spfx-controls-react library
 - showing SharePoint list data in Accordion format using React Accessible Accordion plugin
 - searching in the fetched data by making use of Search Box from Office Fabric UI

@@ -77,14 +77,14 @@ Version|Date|Comments
 
 ## Prerequisites
 
-- SharePoint Online tenant with Office Graph content enabled
+- SharePoint Online tenant with Office Graph content-enabled
 
 ## Minimal Path to Awesome
 
 - clone this repo
-- `$ npm i`
-- `$ gulp serve`
-- if deploying to Office 365, upadte the CDN path in write-manifests.json
+- `npm i`
+- `gulp serve`
+- if deploying to Office 365, update the CDN path in write-manifests.json
 
 ## Features
 

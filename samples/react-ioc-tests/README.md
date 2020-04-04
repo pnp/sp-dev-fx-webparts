@@ -7,9 +7,9 @@ Following this pattern greatly improves the modularity, maintainability, and tes
 
 The example includes 100% test coverage, using Jest and Enzyme, of .ts and .tsx files, excluding *WebPart.ts files. A dependency resolver class specific to a web part class is used to map web part properties to component properties and create any dependent services/providers. 
 
-This pattern is implemented to seperate testable logic from the untestable *WebPart.ts file and hence ensure that all relevant web part logic is tested. To this end, a Service class is paired with a ServiceExecutor class which should extract the actual service requests from other service logic ensuring that the Service class remains fully testable. *Executor classes are excluded from test coverage as they cannot be unit tested by design - as they are points integration.
+This pattern is implemented to separate testable logic from the untestable *WebPart.ts file and hence ensure that all relevant web part logic is tested. To this end, a Service class is paired with a ServiceExecutor class which should extract the actual service requests from other service logic ensuring that the Service class remains fully testable. *Executor classes are excluded from test coverage as they cannot be unit tested by design - as they are points integration.
 
-Included in the coverage is a cache and logger class, along with a service class that fetches data asychronously using @pnp/sp 2.x
+Included in the coverage is a cache and logger class, along with a service class that fetches data asynchronously using @pnp/sp 2.x
 
 The example also includes a pipeline definition .yaml file for Azure DevOps CI build pipeline (/pipelines/) which includes the build, running tests, and posting the test coverage results.
 

@@ -13,17 +13,17 @@ extensions:
   - react
   createdDate: 12/1/2017 12:00:00 AM
 ---
-# SPFX React Grid
+# SPFx React Grid
 
 ## Summary
 
-React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:
+React-securitygrid is an SPFx webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:
 
 ![config panel](./src/images/MainDisplay.PNG)
 
-Empty libraries are displayed withh a black folder icon, those with items are displayed with a white folder. The user can expand a list or library by clicking on the desired row. For deeply nested folders the Title column can be resized by drag and drop. The display shows a 'filled-in' circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group). The user must have permissions to access lists and enumerate permissions in order to view the grid.
+Empty libraries are displayed with a black folder icon, those with items are displayed with a white folder. The user can expand a list or library by clicking on the desired row. For deeply nested folders the Title column can be resized by drag and drop. The display shows a 'filled-in' circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group). The user must have permissions to access lists and enumerate permissions in order to view the grid.
 
-The user can change the permission being tested by cliking the Permission in the command bar and selecting a new Permission:
+The user can change the permission being tested by clicking the Permission in the command bar and selecting a new Permission:
 
 ![permission panel](./src/images/selectPermissionsPopout.PNG)
 
@@ -58,8 +58,8 @@ Display Settings
 
 The Initial Title column width determines the initial width of the Title column(it can be resized).
 
-The second configuarion pannel allows the owner to configure the List Settings
-![List Confoguration panel](./src/images/ListConfiguration.PNG)
+The second configuration panel allows the owner to configure the List Settings
+![List Configuration panel](./src/images/ListConfiguration.PNG)
 
 List Settings
 

@@ -60,7 +60,7 @@ Version|Date|Comments
 ## Features
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-- Image Magnifier - How obtain best resolution from an image.
+- Image Magnifier - How to obtain the best resolution from an image.
 - How to leverage the capabilities of the property pane.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-image-magnifier" />

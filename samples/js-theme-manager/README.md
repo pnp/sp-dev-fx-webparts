@@ -5,21 +5,21 @@ This sample web part provides a user interface for creating, updating, deleting 
 
 The Theme Palette can be generated using the UI Fabric Theme Generator at: https://developer.microsoft.com/en-us/fabric#/styles/themegenerator
 
-<h2>The following four features are available within this sample:</h2>
+### The following four features are available within this sample:
 
-<b>Create a theme:</b><br>
+#### Create a theme:
 Using a provided theme name and theme color palette a Modern Experience them is created and available at the tenant level.
 ![preview](./assets/create-a-theme.png)
 
-<b>Update a theme:</b><br>
+#### Update a theme:
 By selecting a pre-existing theme from the dropdown, the theme at the tenant level will be updated with the palette provided in the Theme Palette texbox.
 ![preview](./assets/update-a-theme.png)
 
-<b>Delete a theme:</b><br>
+#### Delete a theme:
 By selecting a pre-existing theme from the dropdown, the theme will be deleted from the tenant level.
 ![preview](./assets/delete-a-theme.png)
 
-<b>Appply a theme:</b><br>
+#### Apply a theme:
 By providing a Site Collection URL, along with a theme name and palette, the theme will be applied to the Site Collection directly without being added to the tenant Company Theme options.<br>
 NOTE: This is a great option to provide theme management of a Site Collection without adding a theme to the "Company Themes" choices within the "Change the Look" options at the tenant level. The web part could be added to a Site Collection App Catalog to ensure availability of the web part is only available to those approved for theme management.
 ![preview](./assets/apply-a-theme.png)

@@ -65,6 +65,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Using SharePoint REST services to retrieve and update schema and data for lists and fields.
 - Using Office UI Fabric React components and styles for building user experience consistent with SharePoint and Office.
 - Integrating drag and drop to provide better user experience for configuring web parts visually.
-- Using custom drop down property editors in the property pane.
+- Using custom drop-down property editors in the property pane.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-list-form" />

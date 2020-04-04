@@ -2,6 +2,7 @@
 page_type: sample
 products:
 - office-sp
+- office-365
 languages:
 - javascript
 - typescript
@@ -11,11 +12,11 @@ extensions:
   - SharePoint Framework
   platforms:
   - JQuery
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 9/16/2016 12:00:00 AM
   scenarios:
   - Embed
 ---
-﻿# Using jQuery loaded from CDN
+# Using jQuery loaded from CDN
 
 ## Summary
 

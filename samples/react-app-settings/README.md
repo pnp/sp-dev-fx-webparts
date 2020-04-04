@@ -75,5 +75,3 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - The use of app settings and passing the app settings to React components.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-app-settings" />
-
-

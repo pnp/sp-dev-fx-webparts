@@ -276,7 +276,7 @@ Both functions provide the following parameters :
 
 Parameter             | Description
 ----------------------|-------------
-**wpContext**         | Represents the context of the WebPart who called the function, which exposes all kinds of usefull informations such as **wpContext.domElement** which represents the HTML element on which the current WebPart is being rendered. 
+**wpContext**         | Represents the context of the WebPart who called the function, which exposes all kinds of useful informations such as **wpContext.domElement** which represents the HTML element on which the current WebPart is being rendered. 
 **handlebarsContext** | Represents the handlebars context used for generating the template of the current WebPart. Can be used for adding handlebar block helpers in the **onPreRender** function for example.
 
 

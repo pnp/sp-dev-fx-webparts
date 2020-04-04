@@ -87,6 +87,6 @@ Sample web parts in this solution illustrate the following concepts on top of th
 - displaying a custom loading indicator
 - reacting to web part property changes
 - updating properties of web part property pane controls
-- refreshing the web part property pane from web part
+- refreshing the web part property pane from the web part
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-custompropertypanecontrols)

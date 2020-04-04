@@ -76,5 +76,3 @@ There is a very good [blog post](https://blog.mastykarz.nl/dll-code-sharepoint-f
 
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-rxjs-event-emitter" />
-
-

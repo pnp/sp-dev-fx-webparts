@@ -39,9 +39,9 @@ Version|Date|Comments
 
 A very good real life scenario where this pattern can be used is in Data Application Layers scenario, more than often developers and architects are faced with requirements where an application needs to be able to access different databases or event different database servers which have different drivers, but the users want to to that without changing a lot of code, something that can be switched from an easy parameter somewhere.
 
-For the sake of simplicity lets suppose you work at Company A, and company A acquired company B, at company A you have a webpart developed that brings Customer Information from Sharepoint List, but at Company B which was acquired and in the process of merging, they have Product Information in their own CRM which exposes data via REST APIs or just a JSON file.
+For the sake of simplicity lets suppose you work at Company A, and company A acquired company B, at company A you have a webpart developed that brings Customer Information from SharePoint List, but at Company B which was acquired and in the process of merging, they have Product Information in their own CRM which exposes data via REST APIs or just a JSON file.
 
-The users wants to see their products in the same Sharepoint page using the same webpart, meaning that the webpart needs to be added twice with different parameters to the same page and users can search for customers information on both data sources, with the same source code.
+The users wants to see their products in the same SharePoint page using the same webpart, meaning that the webpart needs to be added twice with different parameters to the same page and users can search for customers information on both data sources, with the same source code.
 
 ### Project Structure
 ![](http://www.luisevalencia.com/content/images/2018/01/2018-01-04-12_33_49-TypescriptDesignPatterns02AbstractFactoryWebPart.ts---TypescriptDesignPatterns02.png)
@@ -376,6 +376,6 @@ export default class AbstractfactoryWebPart extends BaseClientSideWebPart<IAbstr
 ```
 
 >Conclusion:
-We all know that Sharepoint Framework Projects are transpiled and bundled into one single JS file, however regardless of that for those of us who have worked in huge projects and are only User Interface Developers, we know that we can do better than what the standard samples show us in the standard documentation, with the above post I wanted to show you how simple is to create maintenable code, code that anyone can read, and later modify.
+We all know that SharePoint Framework Projects are transpiled and bundled into one single JS file, however regardless of that for those of us who have worked in huge projects and are only User Interface Developers, we know that we can do better than what the standard samples show us in the standard documentation, with the above post I wanted to show you how simple is to create maintenable code, code that anyone can read, and later modify.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/designpatterns-typescript/abstractfactory" />

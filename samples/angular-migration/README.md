@@ -11,7 +11,7 @@ extensions:
   - SharePoint Framework
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 10/21/2016 12:00:00 AM
 ---
 # Migrating existing Angular applications to SharePoint Framework sample
 

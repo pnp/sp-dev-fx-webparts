@@ -68,7 +68,7 @@ Version|Date|Comments
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 * Using external APIs using httpClient
-* [Office Fabric UI REact](https://developer.microsoft.com/en-us/fabric#/)
+* [Office Fabric UI React](https://developer.microsoft.com/en-us/fabric#/)
 * [SPFx Controls React](https://sharepoint.github.io/sp-dev-fx-controls-react/)
 * [SPFx Property Controls](https://sharepoint.github.io/sp-dev-fx-property-controls/)
 * [Recharts](http://recharts.org/en-US/)

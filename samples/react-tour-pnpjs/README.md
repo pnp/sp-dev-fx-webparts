@@ -1,4 +1,4 @@
-# react-tour-pnpjs - SharePoint modern page tutorial: SPFX Tour sample WebPart.
+# react-tour-pnpjs - SharePoint modern page tutorial: SPFx Tour sample WebPart.
 
 ## Summary
 
@@ -67,4 +67,3 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * How to include external React Component [ReactTourJS](https://reactour.js.org/)
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/react-tour-pnpjs" />
-

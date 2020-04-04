@@ -133,7 +133,7 @@ This webpart displays a list of all sites that meet the criteria specified in th
 
 ![PropertyBagFilteredSiteListDisplay](./src/images/PropertyBagFilteredSiteListDisplay.PNG)
 
-Additionally, it lets the user narrow down the list of sites displayed by applying metadata filters that are set up by the administrator in the Property Pane( Businsess Unit and Continent in the example above):
+Additionally, it lets the user narrow down the list of sites displayed by applying metadata filters that are set up by the administrator in the Property Pane( Business Unit and Continent in the example above):
 
 ![PropertyBagFilteredSiteListConfig](./src/images/PropertyBagFilteredSiteListConfigy.PNG)
 
@@ -148,6 +148,6 @@ In the PropertyPane, an administrator just needs to specify which Managed Proper
 
 ![PropertyBagGlobalNavConfig](./src/images/PropertyBagGlobalNavConfig.PNG)
 
-If desired, the admin can also specify which site templates should be included in the menu, as wall as any additional filters. Additional Filteres can be specified in the format 'ManagedPropertyName=value';
+If desired, the admin can also specify which site templates should be included in the menu, as wall as any additional filters. Additional Filters can be specified in the format 'ManagedPropertyName=value';
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-property-bag-editor" />

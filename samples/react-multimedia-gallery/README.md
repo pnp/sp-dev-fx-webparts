@@ -51,7 +51,7 @@ number images to load | number| yes | number between 1 and 200
  
 
 ## Solution
-The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react components, react-slick Compoment
+The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react components, react-slick Component
 
 Solution|Author(s)
 --------|---------

@@ -14,7 +14,7 @@ This web part acts as a centralized place where admin can manage SPFx solutions 
 
 
 **Note:**
-This webpart is mainly build for tenant and sharepoint admins, since most of the operation requires admininstrator privileges.
+This webpart is mainly build for tenant and SharePoint admins, since most of the operation requires administrator privileges.
 
 ## Used SharePoint Framework Version
 
@@ -40,3 +40,4 @@ React-Manage-SPFx-Solutions-ALM|Ramakrishnan Raman
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-spfx-solutions-alm" />

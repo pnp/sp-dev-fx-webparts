@@ -172,3 +172,5 @@ This package produces the following:
 * gulp package-solution - Packages the solution
 * gulp dev -- Builds a clean instance of the solution for development purposes
 * gulp dist -- Builds a clean instance of the solution for distribution purposes
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-enhanced-list-formatting" />

@@ -12,7 +12,7 @@ extensions:
   - SharePoint Framework
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 6/19/2017 12:00:00 AM
 ---
 # Spfx Webpart: File Upload using AngularJs
 

@@ -64,7 +64,7 @@ Version|Date|Comments
   - enable OAuth implicit flow
   - grant the application the **Microsoft Graph/Read user calendars** permission
   - copy the application's ID
-- in the **src/webparts/upcomingMeetings/AdalConfig.ts** file in the **clientId** property enter the application ID registered in Azure
+- in the `src/webparts/upcomingMeetings/AdalConfig.ts` file in the `clientId` property enter the application ID registered in Azure
 - in the command line execute
   - `npm i`
   - `gulp serve --nobrowser`

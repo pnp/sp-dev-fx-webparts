@@ -1,4 +1,4 @@
-# Consuming SPFX Service Scopes using React Hooks
+# Consuming SPFx Service Scopes using React Hooks
 
 ## Summary
 
@@ -47,7 +47,7 @@ Version|Date|Comments
 * At the command line run:
   * `gulp serve`
 * Navigate to remote workbench `https://tenant.sharepoint.com/_layouts/15/workbench.aspx`
-* Add `HelloWorld` web part to workbench
+* Add `HelloWorld` web part to the workbench
 
 ## Features
 

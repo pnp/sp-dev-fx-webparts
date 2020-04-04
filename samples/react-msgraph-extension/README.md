@@ -1,7 +1,7 @@
 ## react-msgraph-extension
 
 ## Summary
-This sample shows how to managed Microsoft Graph Open Extension in SPFX. This application uses **User** Resource to create Open Extension.
+This sample shows how to managed Microsoft Graph Open Extension in SPFx. This application uses **User** Resource to create Open Extension.
 
 ## ScreenShots
 
@@ -53,7 +53,7 @@ If you have not previously granted the required Microsoft Graph permissions, you
 
 - Run `gulp bundle --ship`
 - Run `gulp package-solution --ship`
-- Install the .sppkg file (under .\sharepoint\solution) to the SP app catalog
+- Install the `.sppkg` file (under `.\sharepoint\solution`) to the SP app catalog
 - Approve the API permissions in the new SP admin center
 
 ## Features

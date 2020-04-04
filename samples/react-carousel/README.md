@@ -2,13 +2,13 @@
 
 ## Summary
 
-This web part show images and videos in  carousel 
+This web part show images and videos in carousel 
 
-It uses Microsoft Graph API to get  image/video url and use PnPjs to load files from Picture library the images/videos are loading in lazy mode, progressively.
+It uses Microsoft Graph API to get image/video url and use PnPjs to load files from Picture library the images/videos are loading in lazy mode, progressively.
 
 
 ##  
-![callendar](/samples/react-carousel/assets/carousel.gif) 
+![calendar](/samples/react-carousel/assets/carousel.gif) 
 
 
 

@@ -88,7 +88,7 @@ Version|Date|Comments
 - create a copy of the **./temp/workbench.html** file and change its extension to **.aspx**
 - in the contents of the **workbench.aspx** file change the URL of the **webAbsoluteUrl** property to the URL of your site, eg. `https://contoso.sharepoint.com/sites/my-team`
 - upload the **workbench.aspx** file to the Document Library in your site
-- navigate to the workbench page uploaded to your SharePoint site, ie. _https://contoso.sharepoint.com/sites/my-team/documents/workbench.aspx_
+- navigate to the workbench page uploaded to your SharePoint site, i.e. _https://contoso.sharepoint.com/sites/my-team/documents/workbench.aspx_
 
 ## Features
 
