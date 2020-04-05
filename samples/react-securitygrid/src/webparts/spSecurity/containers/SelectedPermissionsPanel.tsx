@@ -11,7 +11,7 @@ import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode, Selection }
 import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { SPPermission } from "@microsoft/sp-page-context";
-import ColorIconSelectorDialog from "./ColorIconSelectorDialog"
+import ColorIconSelectorDialog from "./ColorIconSelectorDialog";
 import { disableBodyScroll } from "@uifabric/utilities";
 
 export interface ISelectedPemissionPanelProps {
@@ -29,7 +29,7 @@ export interface ISelectedPemissionPanelState {
 }
 export default class SelectedPermissionsPanel extends React.Component<ISelectedPemissionPanelProps, ISelectedPemissionPanelState> {
   private selection: Selection;
-  columns: IColumn[] = [
+  private columns: IColumn[] = [
     {
       key: 'permission',
       name: 'Permission',
@@ -43,7 +43,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
           <Dropdown
             options={this.getPermissionTypes()}
             defaultSelectedKey={item.permission}
-            onChange={(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => {
+            onChange={(event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, ix?: number) => {
               var sps = this.state.SelectedPermissions;
               item.permission = option.text;
               this.setState((current) => ({ ...current, SelectedPermissions: [...this.state.SelectedPermissions] }));
@@ -145,7 +145,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
         perms.push({
           text: perm,
           key: perm,
-          disabled: findIndex(this.state.SelectedPermissions, (sp: ISelectedPermission) => { return sp.permission == perm }) !== -1
+          disabled: findIndex(this.state.SelectedPermissions, (sp: ISelectedPermission) => { return sp.permission == perm; }) !== -1
         });
       }
     }
@@ -177,7 +177,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   private moveColumnUp(column: ISelectedPermission): void {
 
     var sps: ISelectedPermission[] = this.state.SelectedPermissions;
-    const index = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == column.permission });
+    const index = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == column.permission; });
     if (index != -1) {
       sps[index] = sps.splice(index - 1, 1, sps[index])[0];
       this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));
@@ -186,7 +186,7 @@ export default class SelectedPermissionsPanel extends React.Component<ISelectedP
   private moveColumnDown(column: ISelectedPermission): void {
 
     var sps: ISelectedPermission[] = this.state.SelectedPermissions;
-    const index = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == column.permission });
+    const index = findIndex(sps, (sp: ISelectedPermission) => { return sp.permission == column.permission; });
     if (index != -1) {
       sps[index] = sps.splice(index + 1, 1, sps[index])[0];
       this.setState((current) => ({ ...current, SelectedPermissions: [...sps] }));

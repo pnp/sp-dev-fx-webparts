@@ -38,7 +38,8 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       showListPanel: false,
       showEmail: this.props.showEmail,
       securityInfoLoaded: false,
-      showPermissionsPanel: false
+      showPermissionsPanel: false,
+      errors:[]
 
     };
 
@@ -78,8 +79,9 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   }
 
   public componentWillMount(): void {
-
-    this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.aadHttpClient, false).then((response) => {
+debugger;
+    this.svc.loadData(this.props.showHiddenLists, this.props.showCatalogs, this.props.aadHttpClient, false)
+    .then((response) => {
       const state: ISpSecurityState = {
         securityInfo: response,
         // permission: this.props.permission,
@@ -88,10 +90,12 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         showListPanel: false,
         showPermissionsPanel: false,
         showEmail: this.props.showEmail,
-        securityInfoLoaded: true
+        securityInfoLoaded: true,
+        errors:[]
 
       };
       // inlclude\exclude lists selected in property pane
+      debugger;
       state.securityInfo.lists = state.securityInfo.lists.filter((list) => {
         if (this.props.includeAdminSelectedLists) { // include the lists
 
@@ -111,7 +115,8 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         }
       });
       this.setState(state);
-    }).catch((err) => {
+    }).catch((errors:Array<string>) => {
+      this.setState((current)=>({...current,errors:errors,securityInfoLoaded:true}))
       debugger;
     });
   }
@@ -150,8 +155,10 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
         item.isFetched = true;
         this.setState(this.state);
 
-      }).catch((err) => {
-        debugger;
+      }).catch((error) => {
+        let errors=this.state.errors;
+        errors.push(`There was an error fetching site users -- ${error.message}`);
+        this.setState((current)=>({...current,errors:errors}))
       });
 
     }
@@ -379,7 +386,6 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
       );
     }
-
     let userPanelCommands: IContextualMenuItem[] = [];
     userPanelCommands.push({
       icon: "BoxAdditionSolid",
@@ -516,10 +522,14 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
       )
     })
 
-    
+    let errorMessages=[];
+    for (let error of this.state.errors){
+    errorMessages.push(<li>{error}</li>)
+    }
 
     return (
       <div >
+        <ul>{errorMessages}</ul>
         <CommandBar
           items={commands}
         />

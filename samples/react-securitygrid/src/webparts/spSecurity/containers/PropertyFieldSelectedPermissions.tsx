@@ -1,10 +1,7 @@
 import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import {
-  IPropertyPaneField,
-  IPropertyPaneCustomFieldProps
-} from '@microsoft/sp-webpart-base';
+import { IPropertyPaneField, IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 import PropertyFieldSelectedPermissionsHost, { IPropertyFieldSelectedPermissionsHostProps } from './PropertyFieldSelectedPermissionsHost';
 
 export interface IPropertyFieldSelectedPermissionsProps {

@@ -4,8 +4,8 @@ import { Stack, StackItem, Alignment } from 'office-ui-fabric-react/lib/Stack';
 import { IconButton, DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 export interface ILegendProps {
-  selectedPermissions: Array<ISelectedPermission>
-  checkUncheckPermission:(perm:ISelectedPermission)=>void;
+  selectedPermissions: Array<ISelectedPermission>;
+  checkUncheckPermission: (perm: ISelectedPermission) => void;
 }
 export function Legend(props: ILegendProps): JSX.Element {
   debugger;
@@ -16,8 +16,8 @@ export function Legend(props: ILegendProps): JSX.Element {
         <div>
           <DefaultButton
             text={sp.freindlyName}
-            onClick={(e)=>{
-              props.checkUncheckPermission(sp)
+            onClick={(e) => {
+              props.checkUncheckPermission(sp);
             }}
             checked={sp.isChecked}
             title={sp.freindlyName}

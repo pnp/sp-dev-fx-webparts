@@ -3,7 +3,7 @@ import { SPPermission } from "@microsoft/sp-page-context";
 import {  } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneDropdownOption, PropertyPaneDropdown } from "@microsoft/sp-property-pane";
 import { AadHttpClient } from "@microsoft/sp-http";
-import {ISelectedPermission} from "../ISpSecurityWebPartProps"
+import {ISelectedPermission} from "../ISpSecurityWebPartProps";
 export interface ISpSecurityProps {
   users: SPSiteUser[];
   //permission: string;

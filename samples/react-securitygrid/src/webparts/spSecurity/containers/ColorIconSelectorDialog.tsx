@@ -80,7 +80,7 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
 
 
 
-  ]
+  ];
   constructor(props: IColorIconSelectorPanelProps) {
     super(props);
     debugger;
@@ -125,7 +125,7 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
         perms.push({
           text: perm,
           key: perm,
-          disabled: findIndex(this.props.SelectedPermissions, (sp: ISelectedPermission) => { return sp.permission == perm }) !== -1
+          disabled: findIndex(this.props.SelectedPermissions, (sp: ISelectedPermission) => { return sp.permission == perm; }) !== -1
         });
       }
     }
@@ -183,7 +183,7 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
         <br></br>
         <br></br>
         <Button onClick={() => {
-          this.onClosePanel()
+          this.onClosePanel();
         }}>Cancel</Button>
         <PrimaryButton
           disabled={
@@ -201,7 +201,7 @@ export default class ColorIconSelectionPanel extends React.Component<IColorIconS
       </Dialog>
 
 
-    )
+    );
   }
 }
 

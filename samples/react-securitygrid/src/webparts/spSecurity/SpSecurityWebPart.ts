@@ -28,18 +28,18 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       });
     });
   }
- 
+
   public render(): void {
 
     const props: ISpSecurityProps = {
       //permission: this.properties.permission,  // old way
-      selectedPermissions:this.properties.selectedPermissions.map((sp)=>{return {...sp,isChecked:true}}),
+      selectedPermissions: this.properties.selectedPermissions.map((spp) => { return { ...spp, isChecked: true }; }),
       showHiddenLists: this.properties.showHiddenLists,
       showCatalogs: this.properties.showCatalogs,
       showEmail: this.properties.showEmail,
       showSecurityGroups: this.properties.showSecurityGroups,
       showUsers: this.properties.showUsers,
-      showOnlyUsersWithPermission:this.properties.showOnlyUsersWithPermission,
+      showOnlyUsersWithPermission: this.properties.showOnlyUsersWithPermission,
       letUserSelectPermission: this.properties.letUserSelectPermission,
       letUserSelectUsers: this.properties.letUserSelectUsers,
       letUserSelectLists: this.properties.letUserSelectLists,
@@ -76,20 +76,20 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
     return perms;
   }
   private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {
-  debugger;
-  // does this get oldvalue and new value?
+    debugger;
+    // does this get oldvalue and new value?
     switch (propertyPath) {
       case "SelectedPermissions":
-       
+
         this.properties.selectedPermissions = newValue;
-        
+
         this.context.propertyPane.refresh();
         this.render();
         break;
       default:
         break;
     }
-  };
+  }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
@@ -102,11 +102,11 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
             {
               groupName: "Permission Settings",
               groupFields: [
-                
+
                 PropertyFieldSelectedPermissions("SelectedPermissions", {
-                  label: "Selected Permissions and Colors", 
+                  label: "Selected Permissions and Colors",
                   onPropertyChange: this.onPropertyChange.bind(this),
-                  
+
                   getSelectedPermissions: () => {
                     return this.properties.selectedPermissions || [];
                   },
@@ -162,11 +162,11 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
             {
               groupName: "Permission Settings",
               groupFields: [
-                
+
                 PropertyFieldSelectedPermissions("SelectedPermissions", {
-                  label: "Selected Permissions and Colors", 
+                  label: "Selected Permissions and Colors",
                   onPropertyChange: this.onPropertyChange.bind(this),
-                  
+
                   getSelectedPermissions: () => {
                     return this.properties.selectedPermissions || [];
                   },
@@ -177,7 +177,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
 
               ]
             },
-       
+
             {
               groupName: "Display Settings",
               groupFields: [

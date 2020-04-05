@@ -4,7 +4,7 @@ import { ISelectedPermission } from "../ISpSecurityWebPartProps";
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Button } from 'office-ui-fabric-react/lib/Button';
-;
+
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 import { DetailsList, IColumn, DetailsListLayoutMode, SelectionMode } from "office-ui-fabric-react/lib/DetailsList";
@@ -13,7 +13,7 @@ import {  IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 
 import { SPPermission } from "@microsoft/sp-page-context";
 
-import SelectedPermissionsPanel from "./SelectedPermissionsPanel"
+import SelectedPermissionsPanel from "./SelectedPermissionsPanel";
 export interface IPropertyFieldSelectedPermissionsHostProps {
   label: string;
   initialValue?: Array<ISelectedPermission>;
@@ -25,7 +25,7 @@ export interface IPropertyFieldSelectedPermissionsHostState {
   SelectedPermissions: Array<ISelectedPermission>;
 }
 export default class PropertyFieldSelectedPermissionsHost extends React.Component<IPropertyFieldSelectedPermissionsHostProps, IPropertyFieldSelectedPermissionsHostState> {
-  panelColumns: IColumn[] = [
+  public panelColumns: IColumn[] = [
     {
       key: 'permission',
       name: 'Permission',
@@ -121,7 +121,7 @@ export default class PropertyFieldSelectedPermissionsHost extends React.Componen
 
 
           }}
-          closePanel={() => { this.onClosePanel() }}
+          closePanel={() => { this.onClosePanel(); }}
           SelectedPermissions={this.props.SelectedPermissions}
 
         />

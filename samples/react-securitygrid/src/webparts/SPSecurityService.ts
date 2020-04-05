@@ -69,6 +69,7 @@ export class SPSecurityInfo {
     this.siteUsers = new Array<SPSiteUser>();
     this.lists = new Array<SPList>();
 
+
   }
 }
 
@@ -121,6 +122,8 @@ export class Helpers {
     return false;
   }
   public static doesUserHavePermission(securableObject, user, requestedpermission: SPPermission, roles, siteGroups) {
+    console.log(`check user ${user.name} obj ${securableObject.title} perm ${requestedpermission.value.High}${requestedpermission.value.Low} `);
+
 
     const permissions: SPBasePermissions[] = Helpers.getUserPermissionsForObject(securableObject, user, roles, siteGroups);
     for (const permission of permissions) {
@@ -302,26 +305,27 @@ export default class SPSecurityService {
         return itemsToAdd;
       });
   }
-  public async getMembersOfAdGroup(aadHttpClient: AadHttpClient, groupName: string): Promise<any> {
+  // public async getMembersOfAdGroup(aadHttpClient: AadHttpClient, groupName: string): Promise<any> {
 
-    return aadHttpClient.get("v1.0/groups?$filter=displayName eq '" + groupName + "'&$expand=members",
-      AadHttpClient.configurations.v1).then((response) => {
-        response.json().then((data) => {
-          debugger;
-        });
-      }).catch((err) => {
-      });
-  }
+  //   return aadHttpClient.get("v1.0/groups?$filter=displayName eq '" + groupName + "'&$expand=members",
+  //     AadHttpClient.configurations.v1).then((response) => {
+  //       response.json().then((data) => {
+  //         debugger;
+  //       });
+  //     }).catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
   /// Loads data for intial display
   public loadData(showHiddenLists: boolean, showCatalogs: boolean, aadHttpClient: AadHttpClient, forceReload: boolean): Promise<SPSecurityInfo> {
     let securityInfo: SPSecurityInfo = new SPSecurityInfo();
     let batch: any = sp.createBatch();
+    let errors: Array<string> = [];
 
-    sp.web.siteUsers
-      .inBatch(batch).get().then((response) => {
+    sp.web.siteUsers.inBatch(batch).get()
+      .then((response) => {
         console.table(response);
         securityInfo.siteUsers = response.map((u) => {
-
           let user: SPSiteUser = new SPSiteUser();
           user.isSelected = true;
           user.id = u.Id;
@@ -336,9 +340,14 @@ export default class SPSecurityService {
           return user;
         });
         return securityInfo.siteUsers;
+      }).catch((error) => {
+        debugger;
+        errors.push(`There was an error feting site users -- ${error.message}`);
+        throw error;
       });
-    sp.web.siteGroups.expand("Users").select("Title", "Id", "IsHiddenInUI", "IsShareByEmailGuestUse", "IsSiteAdmin", "IsSiteAdmin")
-      .inBatch(batch).get().then((response) => {
+    sp.web.siteGroups.filter(`Title ne 'Limited Access System Group'`).expand("Users").select("Title", "Id", "IsHiddenInUI", "IsShareByEmailGuestUse", "IsSiteAdmin", "IsSiteAdmin")
+      .inBatch(batch).get()
+      .then((response) => {
         let AdGroupPromises: Array<Promise<any>> = [];
         // if group contains an ad group(PrincipalType=4) expand it
         securityInfo.siteGroups = response.map((grp) => {
@@ -376,23 +385,33 @@ export default class SPSecurityService {
           return securityInfo.siteGroups;
         });
 
+      }).catch((error) => {
+        //error fetching groups
+        errors.push(`There was an error feting site Groups -- ${error.message}`);
+        debugger;
+        throw error;
       });
-    sp.web.roleDefinitions.expand("BasePermissions").inBatch(batch).get().then((response) => {
-      securityInfo.roleDefinitions = response.map((rd) => {
+    sp.web.roleDefinitions.expand("BasePermissions").inBatch(batch).get()
+      .then((response) => {
+        securityInfo.roleDefinitions = response.map((rd) => {
 
-        const bp: SPBasePermissions = new SPBasePermissions(rd.BasePermissions.High, rd.BasePermissions.Low);
-        const roleDefinition: SPRoleDefinition = new SPRoleDefinition(
-          parseInt(rd.Id, 10),
-          bp,
-          rd.Description,
-          rd.Hidden,
-          rd.Name);
+          const bp: SPBasePermissions = new SPBasePermissions(rd.BasePermissions.High, rd.BasePermissions.Low);
+          const roleDefinition: SPRoleDefinition = new SPRoleDefinition(
+            parseInt(rd.Id, 10),
+            bp,
+            rd.Description,
+            rd.Hidden,
+            rd.Name);
 
-        return roleDefinition;
+          return roleDefinition;
+        });
+        return securityInfo.roleDefinitions;
+      }).catch((error) => {
+        debugger;
+        //error fetching roledefinitions
+        errors.push(`There was an error fetcing role Definitions -- ${error.message}`);
+        throw error;
       });
-
-      return securityInfo.roleDefinitions;
-    });
     let filters: string[] = [];
     if (!showHiddenLists) {
       filters.push("Hidden eq false");
@@ -404,9 +423,8 @@ export default class SPSecurityService {
     sp.web.lists
       .expand("RootFolder", "RoleAssignments", "RoleAssignments/RoleDefinitionBindings", "RoleAssignments/Member",
         "RoleAssignments/Member/Users", "RoleAssignments/Member/Groups", "RoleAssignments/Member/UserId")
-      .filter(filter)
-      .inBatch(batch).get().then((response) => {
-
+      .filter(filter).inBatch(batch).get()
+      .then((response) => {
         securityInfo.lists = response.map((listObject) => {
           let mylist: SPList = new SPList();
           mylist.isSelected = true;// Shoudl be shown in the UI, user can deslect it in the ui
@@ -429,9 +447,20 @@ export default class SPSecurityService {
           return mylist;
         });
 
+      }).catch((error) => {
+        debugger;
+        errors.push(`There was an error fetching lists -- ${error.message} `);
+        //error fetching lists
+        throw error;
+
       });
     return batch.execute().then(() => {
       return securityInfo;
+    }).catch((error) => {
+      debugger;
+      // error in batch
+      throw errors;
+
     });
   }
 }
