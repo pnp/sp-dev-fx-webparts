@@ -65,7 +65,7 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.4.1-green.svg)
+![version](https://img.shields.io/badge/version-1.10-green.svg)
 
 ## Applies to
 
@@ -86,6 +86,7 @@ Solution|Author(s)
 
 Version|Date|Comments
 -------|----|--------
+1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|December 31, 2016|Initial version
 
