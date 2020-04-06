@@ -22,7 +22,7 @@
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.15",
     "office-ui-fabric-react": "^4.21.2",
     "react": "15.4.2",
     "react-dom": "15.4.2"
