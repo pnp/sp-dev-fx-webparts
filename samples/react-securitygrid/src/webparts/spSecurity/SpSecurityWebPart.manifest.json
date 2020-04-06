@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "41e37f03-2ea8-4f19-b77a-f2121a1e7c45",
   "alias": "SpSecurityWebPart",
   "componentType": "WebPart",
@@ -8,13 +8,17 @@
   /**
    * This property should only be set to true if it is certain that the webpart does not
    *  allow arbitrary scripts to be called
-   */
-  "safeWithCustomScriptDisabled": false,
+*
+   "requiresCustomScript": true,
+      */
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
   "preconfiguredEntries": [
     {
       "groupId": "41e37f03-2ea8-4f19-b77a-f2121a1e7c45",
       "group": {
-        "default": "Under Development"
+        "default": "Other"
       },
       "title": {
         "default": "SPSecurity"
@@ -33,7 +37,29 @@
         "includeAdminSelectedLists": false,
         "listTitleColumnWidth": 120,
         "showEmail": false,
-        "showUsers": true
+        "showUsers": true,
+        "showOnlyUsersWithPermission": true,
+        "selectedPermissions": [
+          {
+            "permission": "manageLists",
+            "color": "#0000FF",
+            "iconName": "Settings",
+            "freindlyName": "Manage"
+          },
+                    {
+            "permission": "editListItems",
+            "color": "#FF0000",
+            "iconName": "Edit",
+            "freindlyName": "Edit"
+          },
+          {
+            "permission": "viewListItems",
+            "color": "#00FF00",
+            "iconName": "View",
+            "freindlyName": "View"
+          }
+       
+        ]
       }
     }
   ]
