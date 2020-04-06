@@ -21,7 +21,7 @@ import {
   EnvironmentType
 } from '@microsoft/sp-core-library';
 /* tslint:disable */
-require('./spSecurity.css'); // loads the SpSecurity,css with unmodified names
+
 export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSecurityState> {
   private svc: SPSecurityService = new SPSecurityService("ss");
   private userSelection = new Selection();
@@ -125,7 +125,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
 
       this.svc.loadFolderRoleAssigmentsDefinitionsMembers(listTitle, item.serverRelativeUrl, item.id, level, true).then((response) => {
 
-        // add them to the list after the parent 
+        // add them to the list after the parent
 
         let position: number = findIndex(this.state.securityInfo.lists, (stateitem) => {
           return stateitem.id === item.id;
@@ -313,8 +313,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
             minWidth: 20,
             maxWidth: 20,
             onRender: this.renderUserItem,
-            headerClassName: "rotatedColumnHeader",
-
+            headerClassName: styles.rotatedColumnHeader,
           });
       }
     }
@@ -528,8 +527,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
           items={displayItems}
           columns={displayColumns}
           selectionMode={SelectionMode.none}
-          className="SPFXSecurityGrid"
-
+          className={styles.SPFXSecurityGrid}
         />
         <Panel
           isBlocking={false}
