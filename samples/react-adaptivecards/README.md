@@ -28,12 +28,14 @@ There are no pre-requisites, but you'll probably want to have some [Adaptive Car
 Solution|Author(s)
 --------|---------
 react-adaptivecards | Hugo Bernier ([Tahoe Ninjas](https://tahoeninjas.blog), [@bernier](https://twitter.com/bernierh))
+react-adaptivecards | Paul Schaeflein ([http://www.schaeflein.net](http://www.schaeflein.net), [@paulschaeflein](https://twitter.com/paulschaeflein))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|March 24, 2020|Initial release
+2.0|April 06, 2020|Added data and template URLs
 
 ## Disclaimer
 
