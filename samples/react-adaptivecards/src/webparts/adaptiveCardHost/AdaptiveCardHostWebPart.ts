@@ -3,12 +3,14 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { DisplayMode } from '@microsoft/sp-core-library';
+import { HttpClient, HttpClientConfiguration, HttpClientResponse } from '@microsoft/sp-http';
 
 // Used for property pane
 import {
   IPropertyPaneConfiguration,
   PropertyPaneChoiceGroup,
-  PropertyPaneToggle
+  PropertyPaneToggle,
+  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 
 // Used to select which list
@@ -40,14 +42,24 @@ import * as strings from 'AdaptiveCardHostWebPartStrings';
 import AdaptiveCardHost from './components/AdaptiveCardHost';
 import { IAdaptiveCardHostProps } from './components/IAdaptiveCardHostProps';
 
-
-export type DataSourceType = 'list' | 'json';
+export type TemplateSourceType = 'json' | 'url';
+export type DataSourceType = 'list' | 'json' | 'url';
 
 export interface IAdaptiveCardHostWebPartProps {
+  /**
+   * Either 'json' or 'url'
+   */
+  templateSource: TemplateSourceType;
+
   /**
    * The JSON Adaptive Cards template
    */
   template: string;
+
+  /**
+   * The URL to the template json
+   */
+  templateUrl: string;
 
   /**
    * The static JSON data, if using
@@ -60,7 +72,7 @@ export interface IAdaptiveCardHostWebPartProps {
   useTemplating: boolean;
 
   /**
-   * Either 'list' or 'json'
+   * Either 'list' or 'json' or 'url'
    */
   dataSource: DataSourceType;
 
@@ -73,6 +85,11 @@ export interface IAdaptiveCardHostWebPartProps {
    * The view id of the selected view
    */
   view: string | undefined;
+
+  /**
+   * The url of the remote data
+   */
+  dataUrl: string | undefined;
 }
 
 export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdaptiveCardHostWebPartProps> {
@@ -82,6 +99,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
   private _dataPropertyPaneHelper: any;
   private _dataJSON: string;
   private _viewSchema: string;
+  private _templateJSON: string;
 
   protected async onInit(): Promise<void> {
 
@@ -100,12 +118,17 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
       spfxContext: this.context
     });
 
+    await this._loadTemplateFromUrl();
     await this._loadDataFromList();
+    await this._loadDataFromUrl();
   }
 
   public async render(): Promise<void> {
     const { template } = this.properties;
-    const dataJson: string = this.properties.dataSource === 'list' && this.properties.list && this.properties.view ? this._dataJSON : this.properties.data;
+    const templateJson: string = this.properties.templateSource === 'url' && this.properties.templateUrl ? this._templateJSON: this.properties.template;
+
+    const dataJson: string = (this.properties.dataSource === 'list' && this.properties.list && this.properties.view) ||
+                             (this.properties.dataSource === 'url' && this.properties.dataUrl) ? this._dataJSON : this.properties.data;
 
     // The Adaptive Card control does not care where the template and data are coming from.
     // Pass a valid template JSON and -- if using -- some data JSON
@@ -113,7 +136,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
       AdaptiveCardHost,
       {
         themeVariant: this._themeVariant,
-        template: template,
+        template: templateJson,
         data: dataJson,
         useTemplating: this.properties.useTemplating === true,
         context: this.context,
@@ -155,7 +178,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
       language: PropertyFieldCodeEditorLanguages.JSON
     });
 
-    // create a help for data
+    // create a helper for data
     this._dataPropertyPaneHelper = codeEditor.PropertyFieldCodeEditor('data', {
       label: strings.DataJSONFieldLabel,
       panelTitle: strings.DataPanelTitle,
@@ -169,9 +192,12 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    const isTemplateJSONBound: boolean = this.properties.templateSource === 'json';
+    const isTemplateUrlBound: boolean = this.properties.templateSource === 'url';
 
-    const isJSONBound: boolean = this.properties.useTemplating === true && this.properties.dataSource === 'json';
-    const isListBound: boolean = this.properties.useTemplating === true && this.properties.dataSource === 'list';
+    const isDataJSONBound: boolean = this.properties.useTemplating === true && this.properties.dataSource === 'json';
+    const isDataListBound: boolean = this.properties.useTemplating === true && this.properties.dataSource === 'list';
+    const isDataUrlBound: boolean = this.properties.useTemplating === true && this.properties.dataSource === 'url';
 
     return {
       pages: [
@@ -191,7 +217,29 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
                   moreInfoLinkTarget: "_blank",
                   key: 'adaptiveCardJSONId'
                 }),
-                this._templatePropertyPaneHelper
+                PropertyPaneChoiceGroup('templateSource', {
+                  label: strings.TemplateSourceFieldLabel,
+                  options: [
+                    {
+                      key: 'json',
+                      text: strings.TemplateSourceFieldChoiceJSON,
+                      iconProps: {
+                        officeFabricIconFontName: 'Code'
+                      }
+                    },
+                    {
+                      key: 'url',
+                      text: strings.TemplateSourceFieldChoiceUrl,
+                      iconProps: {
+                        officeFabricIconFontName: 'Globe'
+                      }
+                    }
+                  ]
+                }),
+                isTemplateJSONBound && this._templatePropertyPaneHelper,
+                isTemplateUrlBound && PropertyPaneTextField('templateUrl', {
+                  label: strings.DataUrlLabel,
+                })
               ]
             },
             {
@@ -224,15 +272,22 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
                       iconProps: {
                         officeFabricIconFontName: 'CustomList'
                       },
+                    },
+                    {
+                      key: 'url',
+                      text: strings.DataSourceFieldChoiceUrl,
+                      iconProps: {
+                        officeFabricIconFontName: 'Globe'
+                      }
                     }
                   ]
                 }),
-                isJSONBound && this._dataPropertyPaneHelper,
-                isJSONBound && PropertyPaneWebPartInformation({
+                isDataJSONBound && this._dataPropertyPaneHelper,
+                isDataJSONBound && PropertyPaneWebPartInformation({
                   description: strings.UseTemplatingDescription,
                   key: 'dataInfoId'
                 }),
-                isListBound && PropertyFieldListPicker('list', {
+                isDataListBound && PropertyFieldListPicker('list', {
                   label: strings.ListFieldLabel,
                   selectedList: this.properties.list,
                   includeHidden: false,
@@ -245,7 +300,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
                   deferredValidationTime: 0,
                   key: 'listPickerFieldId'
                 }),
-                isListBound && PropertyFieldViewPicker('view', {
+                isDataListBound && PropertyFieldViewPicker('view', {
                   label: strings.ViewPropertyFieldLabel,
                   context: this.context,
                   selectedView: this.properties.view,
@@ -257,6 +312,9 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
                   onGetErrorMessage: null,
                   deferredValidationTime: 0,
                   key: 'viewPickerFieldId'
+                }),
+                isDataUrlBound && PropertyPaneTextField('dataUrl', {
+                  label: strings.DataUrlLabel,
                 })
               ]
             }
@@ -287,6 +345,16 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
       // Render the card
       this.render();
     }
+
+    if (propertyPath === 'templateUrl') {
+      await this._loadTemplateFromUrl();
+      this.render();
+    }
+    if (propertyPath === 'dataUrl'){
+      await this._loadDataFromUrl();
+      this.render();
+    }
+
   }
 
   /**
@@ -329,5 +397,42 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
     if (this.displayMode === DisplayMode.Edit) {
       console.log("Data JSON", this._dataJSON);
     }
+  }
+
+  /**
+   * Loads data from a url
+   */
+  private async _loadDataFromUrl(): Promise<void> {
+    // There is no need to load data if the url is not configured
+    if (this.properties.dataSource !== 'url' || !this.properties.dataUrl) {
+      return;
+    }
+
+    this.context.httpClient.get(this.properties.dataUrl, HttpClient.configurations.v1)
+      .then((response: HttpClientResponse) => {
+        if (response.ok) {
+          response.json()
+            .then((data: any) => {
+              this._dataJSON = JSON.stringify(data);
+            });
+        }
+      });
+  }
+
+  private async _loadTemplateFromUrl(): Promise<void> {
+    if (this.properties.templateSource !== 'url' || !this.properties.templateUrl) {
+      return;
+    }
+
+    this.context.httpClient.get(this.properties.templateUrl, HttpClient.configurations.v1)
+      .then((response: HttpClientResponse) => {
+        if (response.ok) {
+          response.json()
+            .then((data: any) => {
+              this._templateJSON = JSON.stringify(data);
+            });
+        }
+      });
+
   }
 }

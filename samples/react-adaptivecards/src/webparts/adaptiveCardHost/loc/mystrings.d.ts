@@ -7,8 +7,14 @@ declare interface IAdaptiveCardHostWebPartStrings {
   DataNeededDescription: string;
   DataNeededIconText: string;
   ListFieldLabel: string;
+  DataUrlLabel: string;
+  TemplateSourceFieldLabel: string;
+  TemplateSourceFieldChoiceJSON: string;
+  TemplateSourceFieldChoiceUrl: string;
+  TemplateUrlLabel: string;
   DataSourceFieldChoiceList: string;
   DataSourceFieldChoiceJSON: string;
+  DataSourceFieldChoiceUrl: string;
   DataSourceFieldLabel: string;
   ViewPropertyFieldLabel: string;
   TemplateJsonError: string;
