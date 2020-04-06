@@ -49,7 +49,7 @@ Built with SharePoint Framework GA, Office Graph, React and Chart.JS
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.4.1-green.svg)
+![version](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -66,6 +66,7 @@ react-modern-charts|Jeremy Coleman (MCP, PC Professional, Inc.)
 
 Version|Date|Comments
 -------|----|--------
+1.0.0.2|February 09, 2020| Upgrade to SPFx 1.10.0
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|February 11, 2017|Initial release
 
