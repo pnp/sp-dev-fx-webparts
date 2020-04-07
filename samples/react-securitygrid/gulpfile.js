@@ -7,4 +7,5 @@ build.addSuppression(`Warning - [sass] The local CSS class 'ms-DetailsHeader' is
 build.addSuppression(`Warning - [sass] The local CSS class 'ms-DetailsHeader-cell' is not camelCase and will not be type-safe.`);
 build.addSuppression(`Warning - [sass] The local CSS class 'ms-List-cell' is not camelCase and will not be type-safe.`);
 build.addSuppression(`Warning - [sass] The local CSS class 'ms-DetailsRow' is not camelCase and will not be type-safe.`);
+
 build.initialize(gulp);

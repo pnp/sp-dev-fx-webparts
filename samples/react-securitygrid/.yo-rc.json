@@ -1,8 +1,12 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.1.1",
+    "isDomainIsolated": false,
+    "isCreatingSolution": false,
+    "packageManager": "npm",
+    "version": "1.10.0",
     "libraryName": "spsecurity-webpart-3",
     "libraryId": "788271fb-ee9b-40df-8381-eb3dc70d1982",
-    "environment": "spo"
+    "environment": "spo",
+    "componentType": "webpart"
   }
 }
