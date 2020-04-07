@@ -49,16 +49,16 @@ Version|Date|Comments
   * build solution `gulp build --ship`
   * bundle solution: `gulp bundle --ship`
   * package solution: `gulp package-solution --ship`
-  * locate solution at `.\sharepoint\solution\outlook-2-sp-spfx.sppkg` 
+  * locate solution at `.\sharepoint\solution\outlook-2-sp-spfx.sppkg`
   * upload it to your tenant app catalog
-  * Go to your Outlook Web Access and selct a mail
-  * Choose ... and "Get Add Ins"
-  * Choose My Add-ins from left menu
-  * Choose *Add from file... under the Custom add-ins
-  * Upload the manifest xml file from \officeAddin folder
-  * Click Install on the warning message to get your add-in available on the tenant
-  * Close the add-in window by clicking X on the top-right corner
-  * Activate again the context menu from [...] and choose "Copy to SharePoint" to activate the add-in in your inbox
+  * Go to your Outlook Web Access then double-click an e-mail to open it in a window
+  * Choose **...** and **Get Add-ins**
+  * Choose **My Add-ins** from left menu
+  * Under **Custom add-ins**, choose **+ Add a custom add-in**, then **Add from file...**
+  * Upload the manifest xml file from `\officeAddin` folder
+  * Click **Install** on the warning message to get your add-in available on the tenant
+  * Close the add-in window by clicking **X** on the top-right corner
+  * Activate again the context menu from **...** and choose **Copy to SharePoint** to activate the add-in in your inbox
 
 ## Features
 
