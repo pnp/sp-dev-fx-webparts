@@ -18,6 +18,9 @@ extensions:
 ---
 # React & Office Graph Web Part samples
 
+> ## DEPRECATED
+> This sample makes use of deprecated or otherwise outdated packages and will no longer work. See issue [#358](https://github.com/SharePoint/sp-dev-fx-webparts/issues/358) for more information.
+
 ## Summary
 
 Sample SharePoint Framework Client-Side Web Parts built using React showing interacting with the Office Graph.
