@@ -26,8 +26,8 @@
       },
       {
         "resource": "Microsoft Graph",
-        "scope": "Mail.Read"
-      },
+        "scope": "Mail.ReadWrite"
+      },      
       {
         "resource": "Microsoft Graph",
         "scope": "Sites.ReadWrite.All"
