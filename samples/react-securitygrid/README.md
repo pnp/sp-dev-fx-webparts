@@ -112,7 +112,7 @@ Solution|Author(s)
 
 Version|Date|Comments
 -------|----|--------
-1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions
+1.0.0.2|April 5, 2020| Updates to SPFx 1.10; Allow display of multiple permissions
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|December 31, 2016|Initial version
 
