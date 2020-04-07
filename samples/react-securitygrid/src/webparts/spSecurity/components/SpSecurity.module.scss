@@ -3,8 +3,9 @@
 .spSecurity {
 }
 .themecolor {
-  color: $ms-color-themePrimary;
+  color: $ms-color-themeDarkAlt;
 }
+
 .nonbrandeddocumentcolor {
   color: "#00FF00";
 }
@@ -36,7 +37,15 @@
     width: 40px !important;
   }
 
+  .itemTitle {
+    cursor: pointer;
+  }
+
   :global(.ms-List-cell):nth-child(even) :global(.ms-DetailsRow) {
-    background: $ms-color-neutralLight;
+    background: '[theme:neutralLight, default: #eaeaea]';
+
+    &:hover {
+      background: '[theme:neutralLighter, default: #f4f4f4]';
+    }
   }
 }
