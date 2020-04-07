@@ -128,8 +128,8 @@ extra:
       framework: React
       spfx: 1.10.0
       author: Markus Moeller
-      modifiedtext: February 05, 2020
-      modified: 2020-02-05  
+      modifiedtext: April 06, 2020
+      modified: 2020-04-06
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-advanced-commenting
       name: js-advanced-commenting
       title: Advanced Comments Box
