@@ -39,7 +39,7 @@ To learn more about how to use these samples, please refer to our [getting start
         <td><div class="sample-img">
       <a class="sample-link"
         href="{{sample.url}}"
-        title="{{sample.title}}">
+        title="{{sample.summary}}">
         <picture>
           <img src="../../img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="../../img/thumbnails/sm/{{ sample.name }}.png"/>
         </picture>

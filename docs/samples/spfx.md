@@ -31,7 +31,7 @@
     <div class="sample-img">
       <a class="sample-link"
         href="{{sample.url}}"
-        title="{{sample.title}}">
+        title="{{sample.summary}}">
         <picture>
           <img src="../../img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="../../img/thumbnails/sm/{{ sample.name }}.png"/>
         </picture>
@@ -39,7 +39,7 @@
     </div>
   </div>
       <a href="{{sample.url}}"
-      title="{{ sample.title }}">
+      title="{{ sample.summary }}">
 <span class="location spfx">
 {% if sample.spfx == "drop0" %}
             <img src="https://img.shields.io/badge/drop-{{ sample.spfx }}-red.svg" alt="{{ sample.spfx }}"/>

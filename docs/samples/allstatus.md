@@ -1,5 +1,7 @@
 # Samples with Status
 
+
+
 <table id="samplestable" >
     <thead>
         <tr>
@@ -39,5 +41,5 @@
     {% endfor %}
     </tbody>
 </table>
-
+Count: {{ samples|count }}
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/samples/allstatus" />

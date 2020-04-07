@@ -28,7 +28,7 @@ If you encounter any issues with the samples, [create an issue](https://github.c
     <div class="sample-img">
       <a class="sample-link"
         href="{{sample.url}}"
-        title="{{sample.title}}">
+        title="{{sample.summary}}">
         <picture>
           <img src="../../img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="../../img/thumbnails/sm/{{ sample.name }}.png"/>
         </picture>
@@ -36,7 +36,7 @@ If you encounter any issues with the samples, [create an issue](https://github.c
     </div>
   </div>
       <a href="{{sample.url}}"
-      title="{{ sample.title }}">
+      title="{{ sample.summary }}">
 <span class="location" title="Status: {{sample.statustext}}">{{ sample.status }}</span>
   <h2 class="name">
       {{sample.title}}</h2>

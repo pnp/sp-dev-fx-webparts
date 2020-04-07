@@ -531,7 +531,6 @@ extra:
       title: Extending webpack in the SharePoint Framework toolchain
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-extend-webpack
       name: js-extend-webpack
-      title: Extending webpack in the SharePoint Framework toolchain
       thumbnail: https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png
       author: Velin Georgiev, Chakkaradeep Chandran
       summary: This sample shows how to use the webpack markdown-loader to preprocess markdown files to HTML string.
@@ -676,13 +675,10 @@ extra:
       spfx: GA
       year: 2017
       title: Knockout Dependent Properties
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/knockout-dependent-properties
       name: knockout-dependent-properties
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/knockout-dependent-properties/assets/dep-props.png
       author: Alex Terentiev
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/knockout-dependent-properties
-      name: knockout-dependent-properties
-      title: Knockout Dependent Properties
       summary: Sample Web Part illustrating...
       version: 1.1
       modifiedtext: May 20, 2017
@@ -720,9 +716,6 @@ extra:
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/pnp-controls/assets/webpart-outcome.gif
       thumbnailtype: video
       author: Elio Struyf
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/pnp-controls
-      name: pnp-controls
-      title: SharePoint Framework PnP Controls Sample
       summary: This is a sample project that contains a web part which makes use of the PnP SPFx Controls
       version: 0.0.2
       modifiedtext: March 03, 2018
@@ -736,9 +729,6 @@ extra:
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif
       thumbnailtype: video
       author: Paolo Pialorsi
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-3rd-party-api
-      name: react-3rd-party-api
-      title: Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework
       summary: This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework.
       version: 1.0.0
       modifiedtext: February 19, 2018
@@ -888,8 +878,6 @@ extra:
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
       thumbnailtype: video
       author: João Mendes
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-calendar
-      name: react-calendar
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
       version: 1.0.1
       modifiedtext: June 10, 2019
@@ -990,8 +978,6 @@ extra:
       title: Organization Directory Web Part
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
       author: João Mendes
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-directory
-      name: react-directory
       summary: Search People from Organization Directory and show live persona card on hover.
       version: 1.0.0
       modifiedtext: July 29, 2019
@@ -1464,7 +1450,6 @@ extra:
       name: react-officegraph
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-officegraph/assets/trendinginthissite-preview.png
       author: Waldek Mastykarz
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-officegraph
       title: Office Graph Web Part samples
       modified: 2017-05-31
       modifiedtext: May 31, 2017
@@ -1702,12 +1687,12 @@ extra:
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-securitygrid
       name: react-securitygrid
       title: Security Grid
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-securitygrid/src/images/MainDisplay.PNG
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-securitygrid/src/images/MainDisplay.gif
       author: Russell Gove
       summary: React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web
       version: 1.0.0.1
-      modifiedtext: April 25, 2018
-      modified: 2018-04-25
+      modifiedtext: April 5, 2020
+      modified: 2020-04-05
     - framework: React
       spfx: GA
       year: 2017
