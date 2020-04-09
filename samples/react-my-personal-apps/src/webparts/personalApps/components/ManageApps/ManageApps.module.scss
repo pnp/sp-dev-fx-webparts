@@ -1,0 +1,171 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "./node_modules/spfx-uifabric-themes/office.theme";
+@import "./../../../../Common/themeColors.module.scss";
+@import "~office-ui-fabric-react/dist/sass/semanticSlots";
+
+.MuiPaperRoot {
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  min-height: 100%;
+opacity: 0.8;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  width: "100%";
+}
+
+:global {
+
+  [data-theme="default"] {
+    .MuiTableCell-head {
+      background-color: inherit !important;
+    }
+    .MuiTable-root {
+      background-color: inherit!important;
+    }
+    .MuiIconButton-root:hover {
+      background-color: inherit;
+      color: inherit !important;
+    }
+    .MuiTableCell-body {
+      color: inherit;
+    }
+  }
+  [data-theme="dark"] {
+    .MuiTableCell-head {
+      background-color: $dark-background !important;
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiButtonBase-root {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTextField-root {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTablePagination-toolbar {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .ms-Button--default {
+      background-color: $ms-color-neutralTertiary;
+    }
+    .MuiInput-underline:before {
+      border-bottom-color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiSelect-root {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTypography-caption {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiSelect-icon {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiInputBase-root {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTable-root {
+      background-color: $dark-background !important;
+    }
+    .MuiIconButton-root:hover {
+      background-color: $ms-themePrimary;
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTableCell-body {
+      color: inherit;
+    }
+  }
+
+  [data-theme="contrast"] {
+    .MuiButtonBase-root {
+      color: $contrast-button-background !important;
+    }
+    .ms-Button--default {
+      background-color: $ms-color-black;
+    }
+    .ms-Button--Primary {
+      color: $ms-color-black;
+      background-color: $contrast-button-background;
+    }
+
+    .MuiTableCell-head {
+      background-color: $contrast-background !important;
+      color: $contrast-button-background !important;
+    }
+    .MuiButtonBase-root {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTextField-root {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTablePagination-toolbar {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .ms-Button--default {
+      background-color: $ms-color-neutralTertiary;
+    }
+    .MuiInput-underline:before {
+      border-bottom-color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiSelect-root {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTypography-caption {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiSelect-icon {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiInputBase-root {
+      color: $ms-color-neutralTertiaryAlt !important;
+    }
+    .MuiTable-root {
+      background-color: $contrast-background !important;
+    }
+    .MuiIconButton-root:hover {
+      background-color: $contrast-button-background;
+      color: $contrast-background !important;
+    }
+    .MuiTableCell-body {
+      color: inherit;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .MuiPaperRoot {
+    background-color: $dark-background !important;
+    color: $ms-color-neutralTertiaryAlt !important;
+  }
+  .overlay {
+    background-color: $dark-background !important;
+    display: flex;
+    justify-content: center;
+    width: "100%";
+  }
+}
+[data-theme="contrast"] {
+  .MuiPaperRoot {
+    // dark theme
+    background-color: $contrast-background !important;
+    color: $contrast-button-background !important;
+    .overlay {
+      background-color: $contrast-background !important;
+    }
+  }
+}
+[data-theme="default"] {
+  .MuiPaperRoot {
+    // dark theme
+    background-color: $default-background !important;
+  }
+  .overlay {
+    background-color: $default-background !important;
+    opacity: 0.6;
+    display: flex;
+    justify-content: center;
+    width: "100%";
+    height: "100%";
+    align-items: center´;
+  }
+}
