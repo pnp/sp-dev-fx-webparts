@@ -12,7 +12,7 @@ This Web Part use MSgraph Open Extension to save the personal information on use
 
 ![PersonalApps](./assets/image11.png)
 
-![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image2.png)
+![PersonalApps](./assets/image2.png)
 
 ![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image3.png)
 
