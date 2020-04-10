@@ -2,7 +2,7 @@ define([], function() {
   return {
     IconPickerCancelLabel: "Cancel",
     IconPickerSelectedLabel: "Selected",
-    IconPickerSaveLabel: "Save\"",
+    IconPickerSaveLabel: "Save",
     IconPickerSelectLabel: "Select an Icon",
     IconPickerCloseLabel: "Close",
     PlaceHolderButtonLabel: "Add",
