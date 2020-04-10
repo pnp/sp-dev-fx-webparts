@@ -22,13 +22,13 @@ This Web Part use MSgraph Open Extension to save the personal information on use
 
 ![PersonalApps](./assets/Image06.png)
 
-![PersonalApps](./assets/image7.png)
+![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image7.png)
 
-![PersonalApps](./assets/image8.png)
+![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image8.png)
 
-![PersonalApps](./assets/image9.png)
+![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image9.png)
 
-![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image10.png)
+![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image10.png)
 
 
 ## Used SharePoint Framework Version 
