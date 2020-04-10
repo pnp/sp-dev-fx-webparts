@@ -7,7 +7,7 @@ This Web Part use MSgraph Open Extension to save the personal information on use
 
   
 
-![Birthdays Web Part](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image1.png)
+![Birthdays Web Part](/samples/react-my-personal-apps/assets/Image1.png)
 
 ![PersonalApps](./assets/image11.png)
 
