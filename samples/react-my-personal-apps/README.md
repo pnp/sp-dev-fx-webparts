@@ -7,26 +7,24 @@ This Web Part use MSgraph Open Extension to save the personal information on use
 
   
 
-
-![PersonalApps](./assets/image1.png)
-
+![Birthdays Web Part](./assets/image1.png)
 ![PersonalApps](./assets/image11.png)
 
 ![PersonalApps](./assets/image2.png)
 
-![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image3.png)
+![PersonalApps](./assets/image3.png)
 
-![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image4.png)
+![PersonalApps](./assets/image4.png)
 
-![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image5.png)
+![PersonalApps](./assets/image5.png)
 
-![PersonalApps](samples/react-my-personal-apps/assets/Image06.png)
+![PersonalApps](./assets/Image06.png)
 
-![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image7.png)
+![PersonalApps](./assets/image7.png)
 
-![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image8.png)
+![PersonalApps](./assets/image8.png)
 
-![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image9.png)
+![PersonalApps](./assets/image9.png)
 
 ![PersonalApps](/sp-dev-fx-webparts/samples/react-my-personal-apps/assets/image10.png)
 
