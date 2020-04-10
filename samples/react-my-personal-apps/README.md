@@ -7,28 +7,28 @@ This Web Part use MSgraph Open Extension to save the personal information on use
 
   
 
-![Birthdays Web Part](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image1.png)
+![Birthdays Web Part](./assets/Image1.png)
 
 ![PersonalApps](./assets/image11.png)
 
 
 ![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image2.png)
 
-![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image3.png)
+![PersonalApps](./assets/Image3.png)
 
-![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image4.png)
+![PersonalApps](./assets/Image4.png)
 
-![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image5.png)
+![PersonalApps](./assets/Image5.png)
 
 ![PersonalApps](./assets/Image06.png)
 
-![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image7.png)
+![PersonalApps](./assets/Image7.png)
 
-![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image8.png)
+![PersonalApps](./assets/Image8.png)
 
-![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image9.png)
+![PersonalApps](./assets/Image9.png)
 
-![PersonalApps](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/react-my-personal-apps/samples/react-my-personal-apps/assets/Image10.png)
+![PersonalApps](./assets/Image10.png)
 
 
 ## Used SharePoint Framework Version 
