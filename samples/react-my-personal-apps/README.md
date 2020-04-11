@@ -1,19 +1,3 @@
-merge---
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  - Microsoft Graph
-  platforms:
-  - React
-  createdDate: 4/9/2020 12:00:00 AM
----
 
 # React My Personal Apps (Links)
 
@@ -23,11 +7,11 @@ The Web Part My Personal Apps allows the user to define links to Applications or
 This Web Part uses MSgraph Open Extension to save the personal information on user object.
 
   
-![Birthdays Web Part](./assets/Image14.png)
+![Birthdays Web Part](./assets/image14.png)
 
-![Birthdays Web Part](./assets/Image13.png)
+![Birthdays Web Part](./assets/image13.png)
 
-![Birthdays Web Part](./assets/Image12.png)
+![Birthdays Web Part](./assets/image12.png)
 
 ![PersonalApps](./assets/Image2.png)
 
