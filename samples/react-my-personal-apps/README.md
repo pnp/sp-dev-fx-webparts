@@ -1,4 +1,4 @@
----
+merge---
 page_type: sample
 products:
 - office-sp
@@ -23,10 +23,11 @@ The Web Part My Personal Apps allows the user to define links to Applications or
 This Web Part uses MSgraph Open Extension to save the personal information on user object.
 
   
+![Birthdays Web Part](./assets/Image14.png)
 
-![Birthdays Web Part](./assets/Image1.png)
+![Birthdays Web Part](./assets/Image13.png)
 
-![PersonalApps](./assets/image11.png)
+![Birthdays Web Part](./assets/Image12.png)
 
 ![PersonalApps](./assets/Image2.png)
 

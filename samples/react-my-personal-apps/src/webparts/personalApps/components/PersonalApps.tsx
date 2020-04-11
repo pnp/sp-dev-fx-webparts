@@ -102,7 +102,7 @@ export default class PersonalApps extends React.Component<
               }}
             />
           )}
-          <div className={styles.container}>
+         
             {isLoading && (
               <div
                 style={{
@@ -119,7 +119,7 @@ export default class PersonalApps extends React.Component<
                 {errorMessage}
               </MessageBar>
             )}
-
+            <div className={view == 'Tiles' ? styles.containerTiles : styles.containerItems }>
             {apps &&
               apps.length > 0 &&
               apps.map(item => {
