@@ -60,6 +60,26 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-versiondisplay
+      name: react-versiondisplay
+      title: Displaying the version number in a web part
+      summary: This very simple sample demonstrates three different approaches to display the version number of your SharePoint solution in your web part.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-versiondisplay/assets/VersionDisplay.gif
+      framework: React
+      spfx: 1.10.0
+      author: Hugo Bernier
+      modifiedtext: April 10, 2020
+      modified: 2020-04-10
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-my-personal-apps
+      name: react-my-personal-apps
+      title: My Personal Apps
+      summary: The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-my-personal-apps/assets/Image1.png
+      framework: React
+      spfx: 1.10.0
+      author: João Mendes
+      modifiedtext: April 9, 2020
+      modified: 2020-04-09
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks
       name: react-functional-servicescope-hooks
       title: Consuming SPFX Service Scopes using React Hooks
