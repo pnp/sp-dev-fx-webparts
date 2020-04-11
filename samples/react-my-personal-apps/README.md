@@ -28,8 +28,6 @@ This Web Part uses MSgraph Open Extension to save the personal information on us
 ![Birthdays Web Part](./assets/Image13.png)
 
 ![Birthdays Web Part](./assets/Image12.png)
-  
-![Birthdays Web Part](./assets/Image1.png)
 
 ![PersonalApps](./assets/image11.png)
 
