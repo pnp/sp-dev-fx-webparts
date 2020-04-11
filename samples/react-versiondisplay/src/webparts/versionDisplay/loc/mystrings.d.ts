@@ -1,7 +1,9 @@
 declare interface IVersionDisplayWebPartStrings {
+  WebPartDescription: string;
+  WebParttitle: string;
   ManifestVersionLabel: string;
   StaticImportVersionLabel: string;
-  WebPartVersionLabel: string;
+  RequireVersionLabel: string;
   AboutGroupName: string;
   PropertyPaneDescription: string;
 }

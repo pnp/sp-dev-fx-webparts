@@ -3,7 +3,6 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
@@ -19,6 +18,7 @@ const requirePackage: any = require("../../../config/package-solution.json");
 
 // Static import
 import * as packageSolution from '../../../config/package-solution.json';
+
 
 export interface IVersionDisplayWebPartProps {
   description: string;
@@ -58,20 +58,20 @@ export default class VersionDisplayWebPart extends BaseClientSideWebPart<IVersio
             {
               groupName: strings.AboutGroupName,
               groupFields: [
-                // Using a static import
+                // Using a the web part's manifest
                 PropertyPaneWebPartInformation({
-                  description: strings.ManifestVersionLabel + this.context.manifest.version,
+                  description: `${strings.ManifestVersionLabel} ${this.context.manifest.version}.0`,
                   key: 'webPartInfoStaticId'
                 }),
                 // Using a require statement
                 PropertyPaneWebPartInformation({
-                  description: strings.WebPartVersionLabel + requirePackage.solution.version,
+                  description: `${strings.RequireVersionLabel} ${requirePackage.solution.version}`,
                   key: 'webPartInfoId'
                 }),
-                // Using a the web part's manifest
+                // Using a static import
                 PropertyPaneWebPartInformation({
-                  description: strings.StaticImportVersionLabel + (<any>packageSolution).solution.version,
-                  key: 'webPartInfoStaticId'
+                  description: `${strings.StaticImportVersionLabel} ${(<any>packageSolution).solution.version}`,
+                  key: 'webPartInfoStaticId',
                 })
               ]
             }

@@ -72,16 +72,35 @@ The following table shows when you should call which `npm version` command, depe
 
 ### To use the custom gulp task in your solutions
 
+> NOTE: if you use the [PnP SPFx Yeoman generator](https://pnp.github.io/generator-spfx/), there is already a built-in `gulp` command that will synchronize your version number when you use `npm version`. You only need to follow the steps below if you use the regular SPFx Yeoman generator.
+
 If you'd like to use the custom `gulp` task in your solutions, copy the code from this solution's `gulpfile.js` between:
 
-```javascript
+```typescript
 // BEGIN: Add custom version sync task
 ```
+
 and
-```javascript
+
+```typescript
 // END: Add custom version sync task
 ```
+
 To your own `gulpfile.js`.
+
+### To use the version using the web part's manifest
+
+The `BaseClientSideWebPart` class `context` property provides a `manifest` which contains a `version` property. To use it in your web part, simply use:
+
+```typescript
+this.context.manifest.version
+```
+
+This approach provides a version number that follows the `1.0.0` format, instead of the usual `1.0.0.0` format. However, since the `gulp` tasks describe above append an additional `.0` to the end of the `package.json` version number, you can choose to append `.0` yourself when displaying the manifest version. For example:
+
+```typescript
+this.context.manifest.version + '.0'
+```
 
 ### To use the version using a static import
 
