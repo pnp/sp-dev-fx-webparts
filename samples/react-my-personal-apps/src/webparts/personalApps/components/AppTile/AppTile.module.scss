@@ -4,17 +4,16 @@
 
 .tile {
   display: flex;
-  max-width: 120px;
   min-height: 120px;
   max-height: 120px;
-  min-width: 120px;
+ /* min-width: 120px;*/
   justify-content: start;
   margin: 5px;
   flex-direction: column;
   border-style: solid;
   border-width: 1px;
   border-color: $ms-color-neutralTertiaryAlt;
-  padding: 10px;
+/*  padding: 10px; */
   align-items: center;
   justify-items: center;
   justify-content: center;

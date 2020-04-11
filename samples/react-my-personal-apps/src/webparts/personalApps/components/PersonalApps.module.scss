@@ -20,12 +20,20 @@
 
 .personalApps {
   padding-top: 15px;
-  .container {
+  .containerTiles {
    margin-top:15px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );
+    grid-template-rows: auto;
   }
+  .containerItems {
+    margin-top:15px;
+     width: 100%;
+     display: grid;
+     grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) );
+     grid-template-rows: auto;
+   }
 
   .row {
     @include ms-Grid-row;
