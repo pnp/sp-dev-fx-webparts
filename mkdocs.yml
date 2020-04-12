@@ -1034,7 +1034,7 @@ extra:
       statustext: The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use dynamic data instead.
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-events-aggregator
       name: react-events-aggregator
-      title: Event Aggregator Sample
+      title: Event Aggregator Sample (DEPRECATED)
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-events-aggregator/assets/spfx-event-aggregator.gif
       thumbnailtype: video
       author: Miguel Rabaca, Velin Georgiev, Austin Breslin
@@ -1550,8 +1550,8 @@ extra:
       modifiedtext: Dec 06, 2017
       modified: 2017-12-06
     - framework: React
-      spfx: 1.6.0
-      year: 2018
+      spfx: 1.10.0
+      year: 2020
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-project-online
       name: react-project-online
       title: Project Online
@@ -1559,9 +1559,8 @@ extra:
       thumbnailtype: video
       author: Joel Rodrigues
       summary: This sample shows how to use SPFx to consume data from the Project Online REST API. 
-      version: 1.3
-      modifiedtext: October 03, 2018
-      modified: 2018-10-03
+      modifiedtext: April 12, 2020
+      modified: 2020-04-12
     - framework: React
       spfx: GA
       year: 2017
