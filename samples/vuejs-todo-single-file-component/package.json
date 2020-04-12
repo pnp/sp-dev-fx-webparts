@@ -14,7 +14,9 @@
     "vue": "^2.5.13",
     "vue-class-component": "^6.1.2",
     "vue-property-decorator": "^6.0.0",
-    "vue-template-compiler": "^2.5.13"
+    "vue-template-compiler": "^2.5.13",
+    "minimist": ">=1.2.3",
+    "acorn": ">=5.7.4"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.0",
