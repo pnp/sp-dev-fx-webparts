@@ -2,7 +2,7 @@ import {
     Logger,
     ConsoleListener,
     LogLevel
-} from 'sp-pnp-js';
+} from "@pnp/logging";
 
 import { ISPDataService } from ".";
 
