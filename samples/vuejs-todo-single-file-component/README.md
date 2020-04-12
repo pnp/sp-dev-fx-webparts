@@ -18,7 +18,8 @@ extensions:
 Sample Todo web part demonstrating how you can utilize [Vue](https://vuejs.org/v2) (a progressive framework for building user interfaces) with SharePoint Framework using handy [single-file components](https://vuejs.org/v2/guide/single-file-components.html) approach. 
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-ga-green.svg)
+
+![1.4.0](https://img.shields.io/badge/drop-1.4.0-green.svg)
 
 ## Applies to
 
@@ -43,6 +44,7 @@ Version|Date|Comments
 0.0.6|December 11, 2018|Updated sample to SPFx 1.4 and Vue 2.5.x
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
