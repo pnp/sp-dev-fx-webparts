@@ -40,7 +40,8 @@
     "lodash": ">=4.17.12",
     "merge": ">=1.2.1",
     "morgan": ">=1.9.1",
-    "stringstream": ">=0.0.6"
+    "stringstream": ">=0.0.6",
+    "lodash.template": ">=4.5.0"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",
