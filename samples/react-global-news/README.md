@@ -1,53 +1,88 @@
-# nexusnews
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Microsoft Graph
+  platforms:
+  - React
+  createdDate: 4/9/2020 12:00:00 AM
+---
 
-This project uses [React](https://reactjs.org).
+# React Global News
 
-> This is where you include your project's documentation.
+## Summary
 
-## Global dependencies
+This Web Part use an  API available in https://newsapi.org , Search worldwide news, it search and index more t6han 50.000 news sites and blogs.
+There are a free plan and payed plans.
 
-Requires Gulp globally installed:
+The Information is displayed in a grid of tiles or list of cards.
 
-```shell
-npm install --global gulp
-```
+  
 
-## Building the code
+![GlobalNews](./assets/globalNews.gif)
 
-Download & install all dependencies, build, bundle & package the project
+![GlobalNews](./assets/GlobalNews.png)
 
-```shell
-# download & install dependencies
-npm install
+! 
+## WebPart Properties
+ 
+Property |Type|Required| comments
+--------------------|----|--------|----------
+Web Part Title | Text| no|
+Search Keyword or Phrase | Text | no | Keywords or Phrase to Search
+Sources | Text |no | List of Sources Available
+Show Articles from | Text | no | Select Articles from Headlines or All News
+Search on Article Title Only | Boolean | no | Search on Title Only
+Selected Domains | Text | no | list of domains separated by comma to include in search
+Exclude Domains | Text | no | List os domains separated by comm a to exclude on search
+Show Articles in this language | Text | no | Select Articles in Language selected
+View Option | Text | no | Select View option, List or Grid
+Number Articles per page | Number | no | number os articles per page 
 
-# transpile all TypeScript & SCSS => JavaScript & CSS
-gulp build
 
-# create component bundle & manifest
-gulp bundle
+## Used SharePoint Framework Version
 
-# create SharePoint package
-gulp package-solution
-```
+![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
 
-These commands produce the following:
+## Applies to
 
-- **./lib**: intermediate-stage commonjs build artifacts
-- **./dist**: bundled script, along with other resources
-- **./temp/deploy**: all resources required by component(s) to deploy to a CDN (when `--ship` argument present)
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-## Build options
+## Solution
 
-- `gulp clean`: Deletes all build output (**/dist**, **/lib**, **/temp**, etc.).
-- `gulp build`: Transpiles all TypeScript & SCSS to JavaScript & CSS, generates source map files & TypeScript type declaration files
-- `gulp bundle [--ship|-p|--production]`: Runs gulp task **build**, then uses webpack to create the JavaScript bundle(s) and component manifest(s) as defined in **./config/config.json**. The `--ship`, `-p` or `--production` argument specifies a production build that will generate minified bundles.
-- `gulp serve [--ship|-p|--production]`: Runs gulp tasks **build**, **bundle** & starts the local webserver. Depending on the project type, it opens the browser and navigates to the local workbench or specified URL (in the case of extension components). The `--ship`, `-p` or `--production` argument specifies a production build that modifies the resulting package for production hosting rather than local hosting of assets.
-- `gulp package-solution`: Creates the SharePoint Package (**.sppkg**) file.
-- `gulp dist`: Creates a production-ready SharePoint Package (**.sppkg**) file. The following gulp task gets executed in this specific order `gulp clean`, `gulp bundle`, `gulp package-solution.`
-- `gulp dev`: Creates a development-ready SharePoint Package (**.sppkg**) file. The following gulp task will be executed in this specific order `gulp clean`, `gulp bundle`, `gulp package-solution.`
+Solution|Author(s)
+--------|---------
+react  Global News|João Mendes
 
-> View all available gulp tasks by running `gulp --tasks`
+## Version history
 
-More information on [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+Version|Date|Comments
+-------|----|--------
+1.0.0|April 14, 2020|Initial release
 
-Generated with [pnp/spfx](https://github.com/pnp/generator-spfx/).
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+Please follow all the steps:
+
+- Clone this repository
+- in the command line run:
+  - `npm install`
+  - `gulp build`
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
+- Add and deploy package to your tenant's App Catalog
+- Go to **API Access** - from **SharePoint Admin Center** new experience, and **Approve** the permission to use Microsoft Graph scope **User.ReadWrite.All**

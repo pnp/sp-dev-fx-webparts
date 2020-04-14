@@ -14,7 +14,7 @@ import {
 } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import lodash from "lodash";
-import * as strings from "NexusNewsWebPartStrings";
+import * as strings from "NewsWebPartStrings";
 import NexusNews from "./components/News";
 import { INewsProps } from "./components/INewsProps";
 import dataservices from "../../services/dataservices";
@@ -198,7 +198,7 @@ export default class NexusNewsWebPart extends BaseClientSideWebPart<
 
       return "";
     } catch (error) {
-      return "news Url is not valid, please specify valid url";
+      return strings.NewsUrlInvalidMessage;
     }
   }
 
@@ -217,7 +217,7 @@ export default class NexusNewsWebPart extends BaseClientSideWebPart<
         return;
       }
     } catch (error) {
-      console.log("Error loading Sources", error);
+      console.log(strings.ErrorLoadingSourcesMessages, error);
       return;
     }
   }
@@ -260,6 +260,7 @@ export default class NexusNewsWebPart extends BaseClientSideWebPart<
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+
     let _showPropertyQueryTitle: any = "";
     let _showPropertyDomains: any = "";
     let _showPropertyexcludeDomains: any = "";
@@ -288,6 +289,9 @@ export default class NexusNewsWebPart extends BaseClientSideWebPart<
 
     // teste if All News or TOP Headding news
     switch (this.properties.endpoint) {
+      // ******************
+      // All News
+      // ******************
       case 2:
         this.properties.country = "";
         this.properties.category = "";
@@ -377,7 +381,9 @@ export default class NexusNewsWebPart extends BaseClientSideWebPart<
         });
 
         break;
+      // ---------------------
       // Top Heading
+      // ----------------------
       case 1:
         // Reset Properties Vars
         this.properties.queryTitleOnly = false;
@@ -468,7 +474,6 @@ export default class NexusNewsWebPart extends BaseClientSideWebPart<
                 }),
                 PropertyPaneChoiceGroup("endpoint", {
                   label: "Show Articles from:",
-
                   options: [
                     { text: "Top Headlines", key: 1 },
                     { text: "All News", key: 2 }

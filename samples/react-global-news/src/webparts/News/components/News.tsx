@@ -8,7 +8,7 @@ import { NewsItem } from "./NewsItem/NewsItem";
 import { NoNews } from "./NoNews";
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { NewsTile } from "./NewsTile/NewsTile";
-import * as strings from "NexusNewsWebPartStrings";
+import * as strings from "NewsWebPartStrings";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import {
   Spinner,
@@ -162,8 +162,8 @@ export default class News extends React.Component<INewsProps, INewsState> {
                   <div
                     style={{
                       display: "flex",
-                      marginTop: 10,
-                      marginBottom: 20,
+                      marginTop: 20,
+                      marginBottom: 10,
                       justifyContent: "center"
                     }}
                   >

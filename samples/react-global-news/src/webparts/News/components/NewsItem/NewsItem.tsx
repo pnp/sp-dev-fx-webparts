@@ -7,7 +7,7 @@ import {
 import moment from "moment";
 import styles from "../News.module.scss";
 import React from "react";
-import * as strings from "NexusNewsWebPartStrings";
+import * as strings from "NewsWebPartStrings";
 
 const _defaultImage:string = require("../../../../../assets/news.jpg");
 

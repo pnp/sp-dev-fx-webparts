@@ -1,4 +1,4 @@
-declare interface INexusNewsWebPartStrings {
+declare interface INewsWebPartStrings {
   ConfigureWebPartButtonLabel: string;
   configureWebPartTextMessage: string;
   ConfigureWebPartMessage: string;
@@ -13,9 +13,11 @@ declare interface INexusNewsWebPartStrings {
   BasicGroupName: string;
   NewsUrlFieldLabel: string;
   ApiKey: string;
+  ErrorLoadingSourcesMessages: string;
+  NewsUrlInvalidMessage: string;
 }
 
-declare module 'NexusNewsWebPartStrings' {
-  const strings: INexusNewsWebPartStrings;
+declare module 'NewsWebPartStrings' {
+  const strings: INewsWebPartStrings;
   export = strings;
 }

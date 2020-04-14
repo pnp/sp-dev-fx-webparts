@@ -10,7 +10,7 @@ import {
 import moment from "moment";
 import styles from "./NewsTile.module.scss";
 import React from "react";
-import * as strings from "NexusNewsWebPartStrings";
+import * as strings from "NewsWebPartStrings";
 import { escape } from "@microsoft/sp-lodash-subset";
 
 const _defaultImage: string = require("../../../../../assets/news.jpg");
