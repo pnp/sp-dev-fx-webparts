@@ -15,7 +15,9 @@ extensions:
 ---
 # Script editor web part for modern pages built in React
 
-This version is built on SPFx v1.4.1 and also support SharePoint on-premises. If you want a version for SPO only go to [react-script-editor](../react-script-editor).
+This version is built on SPFx v1.4.1. The version works for both SharePoint Online and for SharePoint on-premises.
+
+The SPO only version can be found at [react-script-editor](../react-script-editor) and it is similar in functionality but has an improved editor experience.
 
 ## Summary
 Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page
@@ -145,8 +147,8 @@ Version|Date|Comments
 * gulp clean
 * gulp bundle --ship
 * gulp package-solution --ship
-* Upload .sppkg file from sharepoint\solution to your tenant App Catalog
-	* E.g.: https://&lt;tenant&gt;.sharepoint.com/sites/AppCatalog/AppCatalog
+* Upload .sppkg file from sharepoint\solution to your tenant App Catalog or to your on-premises app catalog.
+	* E.g.: https://&lt;tenant&gt;.sharepoint.com/sites/AppCatalog/AppCatalog or https://myserver/sites/apps
 * Add the web part to a site collection, and test it on a page
 
 ### Deploy to non-script sites / modern team sites
