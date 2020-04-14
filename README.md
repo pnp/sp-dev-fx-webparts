@@ -4,7 +4,7 @@
 
 The web part pulls in the current user's name and displays it on the page. The greeting text before the name is customizable through the property pane. Additionally the position of the greeting and color of the text can be adjusted through the proptery pane as well.
 
-[picture of the web part in action](assets/react-personal-greeting.gif)
+![picture of the web part in action](assets/react-personal-greeting.gif)
 
 ## Used SharePoint Framework Version
 
