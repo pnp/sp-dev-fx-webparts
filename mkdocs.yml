@@ -60,6 +60,16 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-global-news
+      name: react-global-news
+      title: Global News
+      summary: This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites arround the world.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-global-news/assets/GlobalNews.png
+      framework: React
+      spfx: 1.10.0
+      author: João Mendes
+      modifiedtext: April 14, 2020
+      modified: 2020-04-14
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-personal-greeting
       name: react-personal-greeting
       title: Personal Greeting
