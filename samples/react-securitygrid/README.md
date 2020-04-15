@@ -21,19 +21,17 @@ React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to re
 
 ![config panel](./src/images/MainDisplay.gif)
 
-Empty libraries are displayed with a black folder icon, those with items are displayed with a white folder. The user can expand a list or library by clicking on the desired row. (If the library or folder has more than 5000 items an error will be displayed ) For deeply nested folders the Title column can be resized by drag and drop. The display shows the appropriate icon circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group-- coming soon!).
+Empty libraries are displayed withh a black folder icon, those with items are displayed with a white folder. The user can expand a list or library by clicking on the desired row. (If the library or folder has more than 5000 items an error will be displayed ) For deeply nested folders the Title column can be resized by drag and drop. The display shows a the appropriate icpn circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group-- coming soon!). IMPORTANT: The user must have permissions to access lists and enumerate permissions in order to view the grid.
 
-> IMPORTANT: The user must have permissions to access lists and enumerate permissions in order to view the grid.
-
-The user can change the permission being tested by clicking the Permission in the command bar and selecting the new Permission:
+The user can change the permission being tested by cliking the Permission in the command bar and selecting a new Permission:
 
 ![permission panel](./src/images/selectPermissionsPopout.PNG)
 
-The user can change which users are being shown in the grid by selecting the users button in the command bar and selecting the desired users:
+The user can change which users are being shown in the grid by selecting the users button in the command bar and selecting a desired users:
 
 ![Select users](./src/images/SelectUsersPopout.PNG)
 
-The user can change which lists are being shown in the grid by selecting the lists button in the command bar and selecting the desired lists:
+The user can change which lists are being shown in the grid by selecting the lists button in the command bar and selecting a desired lists:
 
 ![Select Lists](./src/images/Selectlistspopout.PNG)
 
@@ -41,45 +39,38 @@ The user can change alternate between displaying user names and emails  selectin
 
 ![Select Mode](./src/images/SelectDisplayModePopout.PNG)
 
-The first configuration panel of the webpart is shown below:
+The the first configuration panel of the webpart is shown below:
 
 ![config panel](./src/images/Configuration.PNG)
 
-### Permission Settings
+Permission Settings
 
 The Permission Settings allow you to select which permissions to show in the grid and to select the Icon and color used to display the selected permission.
 
-### User Settings
+User Settings
 
 The Show Email or Name Toggle determines whether the name or email is displayed by default.
-
 The Show Security Groups checkbox determines whether SharePoint Security groups are included in the grid.
-
 The Show Users checkbox determines whether Users are included in the grid.
-
-The Only show users with permissions toggle determines whether the grid should display all users with access to the web, or only users with the selected permission
+The Only show users with permissions toggle determines whether the grid shold diplay all users with access to the web, or only users with the selected permission
 ![config panel](./src/images/Permissions.gif)
-
 The Let Users Select users checkbox determines whether Users can filter the selected users in the grid.
 
-### Display Settings
+Display Settings
 
 The Initial Title column width determines the initial width of the Title column(it can be resized).
 
-The second configuration panel allows the owner to configure the List Settings
-![List Configuration panel](./src/images/ListConfiguration.PNG)
+The second configuarion pannel allows the owner to configure the List Settings
+![List Confoguration panel](./src/images/ListConfiguration.PNG)
 
-### List Settings
+List Settings
 
 The Show Hidden Lists checkbox determines whether Hidden lists  are displayed.
-
 The Show System Lists checkbox determines whether System Lists (Catalogs) are included in the grid.
-
 The Show Users checkbox determines whether Users are included in the grid.
-
 The Let Users Select lists checkbox determines whether Users can filter the selected lists in the grid.
 
-### Select Lists
+Select Lists
 
 The Include/Exclude Selected lists Toggle determines whether the lists selected are to be included or excluded.
 
@@ -112,7 +103,7 @@ Solution|Author(s)
 
 Version|Date|Comments
 -------|----|--------
-1.0.0.2|April 5, 2020| Updates to SPFx 1.10; Allow display of multiple permissions
+1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|December 31, 2016|Initial version
 

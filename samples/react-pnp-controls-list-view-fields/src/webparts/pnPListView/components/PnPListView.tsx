@@ -150,7 +150,7 @@ export default class PnPListView extends React.Component<IPnPListViewProps, IPnP
    * @param item ListView item
    */
   private _renderExperience(item?: any): any {
-    const experience: string = item['Expirience'];
+    const experience: string = item['Experience'];
 
     return <FieldTextRenderer
       text={experience}
