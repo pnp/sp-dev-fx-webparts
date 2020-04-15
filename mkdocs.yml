@@ -885,15 +885,13 @@ extra:
       modifiedtext: July 23, 2019
       modified: 2019-07-23
     - framework: React
-      spfx: 1.7.0
-      year: 2017
+      spfx: 1.10.0
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-bot-framework
       name: react-bot-framework
       title: Microsoft Bot Framework Web Chat
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png
-      author: Gary Pretty, Stephan Bisser
+      author: Gary Pretty, Stephan Bisser, Harsha Vardhini
       summary: A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.
-      version: 1.4
       modifiedtext: September 4, 2019
       modified: 2019-08-04
     - framework: React
@@ -2109,6 +2107,7 @@ extra:
     - Gautam Sheth
     - Giuliano De Luca
     - Hugo Bernier
+    - Harsha Vardhini
     - Jayakumar Balasubramaniam
     - Jeremy Coleman
     - João Mendes
