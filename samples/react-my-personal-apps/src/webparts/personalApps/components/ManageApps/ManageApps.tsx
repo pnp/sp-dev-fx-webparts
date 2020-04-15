@@ -121,7 +121,7 @@ export function ManageApps(appProps: IManageAppsProps) {
       },
       {
         title: "Url",
-        field: "Url",
+        field: "url",
         editComponent: props => (
           <TextField
             underlined
@@ -279,6 +279,7 @@ export function ManageApps(appProps: IManageAppsProps) {
               showTitle:false,
               searchFieldAlignment:'left',
               pageSize: 7,
+             pageSizeOptions: [],
               search: true,
               minBodyHeight: "100%"
             }}
