@@ -60,6 +60,16 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-personal-greeting
+      name: react-personal-greeting
+      title: Personal Greeting
+      summary: The web part pulls in the current user's name and displays it on the page. The greeting text before the name is customizable through the property pane. Additionally the position of the greeting and color of the text can be adjusted through the property pane as well.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-personal-greeting/assets/react-personal-greeting.gif
+      framework: React
+      spfx: 1.10.0
+      author: Zach Roberts
+      modifiedtext: April 14, 2020
+      modified: 2020-04-14
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-versiondisplay
       name: react-versiondisplay
       title: Displaying the version number in a web part
