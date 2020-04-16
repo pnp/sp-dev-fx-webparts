@@ -84,7 +84,6 @@ Version|Date|Comments
 - Clone this repository
 - in the command line run:
   - `npm install`
-  - `tsd install`
   - `gulp serve`
 
 - Register your bot in the Microsoft Bot Framework Portal, configure the DirectLine channel on the bot and obtain your DirectLine secret.
