@@ -892,8 +892,8 @@ extra:
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png
       author: Gary Pretty, Stephan Bisser, Harsha Vardhini
       summary: A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.
-      modifiedtext: September 4, 2019
-      modified: 2019-08-04
+      modifiedtext: April 15, 2020
+      modified: 2020-04-15
     - framework: React
       spfx: 1.9.1
       year: 2019
