@@ -23,6 +23,7 @@
     "@pnp/sp": "^1.2.8",
     "@pnp/spfx-controls-react": "^1.11.0",
     "@pnp/spfx-property-controls": "^1.13.1",
+    "@rehooks/component-size": "^1.0.3",
     "@types/es6-promise": "0.0.33",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.3",

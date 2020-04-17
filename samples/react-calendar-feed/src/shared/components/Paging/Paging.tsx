@@ -3,14 +3,13 @@ import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import * as React from "react";
 import { IPagingProps } from ".";
-import { IPagingState } from "./IPagingState";
 import styles from "./Paging.module.scss";
 import * as strings from "CalendarFeedSummaryWebPartStrings";
 
 /**
  * A custom pagination control designed to look & feel like Office UI Fabric
  */
-export class Paging extends React.Component<IPagingProps, IPagingState> {
+export class Paging extends React.Component<IPagingProps, {}> {
     public render(): React.ReactElement<IPagingProps> {
 
         const { currentPage } = this.props;
