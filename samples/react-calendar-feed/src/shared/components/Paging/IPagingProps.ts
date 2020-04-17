@@ -5,5 +5,3 @@ export interface IPagingProps {
     showPageNum: boolean;
     onPageUpdate: (pageNumber: number) => void;
 }
-
-export interface IPagingState { }

@@ -1,2 +1,2 @@
 export * from "./FilmstripLayout";
-export * from "./FilmstripLayout.types";
+export * from "./IFilmstripLayoutProps";

@@ -4,7 +4,8 @@ import * as ICS from "ics-js";
 import * as moment from "moment";
 import { ActionButton, DocumentCard, DocumentCardType, FocusZone, css } from "office-ui-fabric-react";
 import * as React from "react";
-import { IEventCardProps, IEventCardState } from ".";
+import { IEventCardProps } from ".";
+import { IEventCardState } from "./IEventCardState";
 import { DateBox, DateBoxSize } from "../DateBox";
 import styles from "./EventCard.module.scss";
 import { Text } from "@microsoft/sp-core-library";
@@ -88,7 +89,7 @@ export class EventCard extends React.Component<IEventCardProps, IEventCardState>
             // category,
             // location
           } = this.props.event;
-        const eventDate: moment.Moment = moment.utc(start);
+        const eventDate: moment.Moment = moment(start);
         const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
         return (
             <div>

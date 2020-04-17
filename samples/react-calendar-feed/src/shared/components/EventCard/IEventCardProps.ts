@@ -1,9 +1,7 @@
-import { ICalendarEvent } from "../../../shared/services/CalendarService";
+import { ICalendarEvent } from "../../services/CalendarService";
 
 export interface IEventCardProps {
     isEditMode: boolean;
     event: ICalendarEvent;
     isNarrow: boolean;
 }
-
-export interface IEventCardState {}

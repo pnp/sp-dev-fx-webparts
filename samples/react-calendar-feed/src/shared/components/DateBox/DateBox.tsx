@@ -2,7 +2,8 @@ import * as moment from "moment";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import * as React from "react";
 import styles from "./DateBox.module.scss";
-import { DateBoxSize, IDateBoxProps, IDateBoxState } from "./DateBox.types";
+import { DateBoxSize, IDateBoxProps } from ".";
+import { IDateBoxState } from "./IDateBoxState";
 
 /**
  * Shows a date in a SharePoint-looking date

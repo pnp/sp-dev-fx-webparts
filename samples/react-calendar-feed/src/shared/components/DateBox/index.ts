@@ -1,2 +1,3 @@
 export * from "./DateBox";
-export * from "./DateBox.types";
+export * from "./IDateBoxProps";
+export * from "./DateBoxSize";

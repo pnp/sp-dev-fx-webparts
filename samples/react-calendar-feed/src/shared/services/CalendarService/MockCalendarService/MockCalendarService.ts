@@ -151,7 +151,7 @@ export class MockCalendarService extends BaseCalendarService implements ICalenda
     return new Promise<ICalendarEvent[]>((resolve: any) => {
       setTimeout(() => {
         resolve(this.filterEventRange(sampleEvents));
-      }, 1000);
+      }, 100);
     });
   }
 }
