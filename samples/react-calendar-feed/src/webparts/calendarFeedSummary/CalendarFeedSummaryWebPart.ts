@@ -48,7 +48,6 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
 
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
-  private _clientWidth: number = undefined;
   constructor() {
     super();
 
@@ -101,10 +100,8 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    * Renders the web part
    */
   public render(): void {
-    // see if we need to render a mobile view
-    if (this._clientWidth === undefined) {
-      this._clientWidth = this.domElement.clientWidth;
-    }
+    // We pass the width so that the components can resize
+    const { clientWidth } = this.domElement;
 
     // display the summary (or the configuration screen)
     const element: React.ReactElement<ICalendarFeedSummaryProps> = React.createElement(
@@ -120,7 +117,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
         updateProperty: (value: string) => {
           this.properties.title = value;
         },
-        clientWidth: this._clientWidth
+        clientWidth: clientWidth
       }
     );
 
@@ -274,7 +271,6 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    * If we get resized, call the Render method so that we can switch between the narrow view and the regular view
    */
   protected onAfterResize(newWidth: number): void {
-    this._clientWidth = newWidth;
     // redraw the web part
     this.render();
   }
