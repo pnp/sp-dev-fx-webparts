@@ -1,4 +1,4 @@
-export interface IPagingProps {
+export interface IPaginationProps {
     currentPage: number;
     totalItems: number;
     itemsCountPerPage: number;

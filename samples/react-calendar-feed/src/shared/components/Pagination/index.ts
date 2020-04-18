@@ -1,2 +1,2 @@
-export * from "./Paging";
+export * from "./Pagination";
 export * from "./IPagingProps";

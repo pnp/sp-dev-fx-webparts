@@ -2,15 +2,15 @@ import { ActionButton, IButtonProps } from "office-ui-fabric-react/lib/Button";
 import { Icon } from "office-ui-fabric-react/lib/Icon";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import * as React from "react";
-import { IPagingProps } from ".";
-import styles from "./Paging.module.scss";
+import { IPaginationProps } from ".";
+import styles from "./Pagination.module.scss";
 import * as strings from "CalendarFeedSummaryWebPartStrings";
 
 /**
  * A custom pagination control designed to look & feel like Office UI Fabric
  */
-export class Paging extends React.Component<IPagingProps, {}> {
-    public render(): React.ReactElement<IPagingProps> {
+export class Pagination extends React.Component<IPaginationProps, {}> {
+    public render(): React.ReactElement<IPaginationProps> {
 
         const { currentPage } = this.props;
 
@@ -18,16 +18,16 @@ export class Paging extends React.Component<IPagingProps, {}> {
         const numberOfPages: number = this._getNumberOfPages();
 
         // we disable the previous button if we're on page 1
-        const prevDisabled: boolean = currentPage < 1;
+        const prevDisabled: boolean = currentPage <= 1;
 
         // we disable the next button if we're on the last page
         const nextDisabled: boolean = currentPage >= numberOfPages;
 
         return (
-            <div className={css(styles.Paging, this.props.showPageNum ? null : styles.noPageNum)}>
+            <div className={css(styles.Pagination, this.props.showPageNum ? null : styles.noPageNum)}>
                 <ActionButton className={styles.prev}
                     data-automation-id="previousPage"
-                    onRenderIcon={(props: IButtonProps) => {
+                    onRenderIcon={(_props: IButtonProps) => {
                         // we use the render custom icon method to render the icon consistently with the right icon
                         return (
                             <Icon iconName="ChevronLeft" />

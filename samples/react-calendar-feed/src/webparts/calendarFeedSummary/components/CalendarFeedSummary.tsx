@@ -6,7 +6,7 @@ import * as moment from "moment";
 import { FocusZone, FocusZoneDirection, List, Spinner, css } from "office-ui-fabric-react";
 import * as React from "react";
 import { EventCard } from "../../../shared/components/EventCard";
-import { Paging } from "../../../shared/components/Paging";
+import { Pagination } from "../../../shared/components/Pagination";
 import { CalendarServiceProviderType, ICalendarEvent, ICalendarService } from "../../../shared/services/CalendarService";
 import styles from "./CalendarFeedSummary.module.scss";
 import { ICalendarFeedSummaryProps, ICalendarFeedSummaryState, IFeedCache } from "./CalendarFeedSummary.types";
@@ -268,7 +268,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
              />
         )} />
       {usePaging &&
-        <Paging
+        <Pagination
           showPageNum={false}
           currentPage={currentPage}
           itemsCountPerPage={maxEvents}
