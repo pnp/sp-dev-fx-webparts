@@ -4,7 +4,7 @@ import * as React from 'react';
 import Slider from 'react-slick';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import styles from "./FilmstripLayout.module.scss";
-import { useRef,useLayoutEffect, useState } from 'react';
+import { useRef } from 'react';
 
 function useBreakpoints(currentWidth: number, breakpoints: number[]) {
   return breakpoints.map(breakpoint => currentWidth < breakpoint);
@@ -15,20 +15,7 @@ function useBreakpoints(currentWidth: number, breakpoints: number[]) {
  * Presents the child compoments as a slick slide
  */
 export const FilmstripLayout = (props: { children: any; clientWidth: number; ariaLabel?: string; }) => {
-  function useWindowSize() {
-    const [size, setSize] = useState([0, 0]);
-    useLayoutEffect(() => {
-      function updateSize() {
-        setSize([window.innerWidth, window.innerHeight]);
-      }
-      window.addEventListener('resize', updateSize);
-      updateSize();
-      return () => window.removeEventListener('resize', updateSize);
-    }, []);
-    return size;
-  }
 
-  const [width, height] = useWindowSize();
   let ref: React.MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   // // the slick slider used in normal views
   let _slider: React.MutableRefObject<Slider> = useRef<Slider>(null);
@@ -76,7 +63,6 @@ export const FilmstripLayout = (props: { children: any; clientWidth: number; ari
 
   return (
     <div>
-      WIDTH: { width }
       <div className={css(styles.filmstripLayout, styles.filmStrip)} aria-label={props.ariaLabel} ref={ref}>
         <Slider ref={_slider} {...settings}>
           {props.children}
