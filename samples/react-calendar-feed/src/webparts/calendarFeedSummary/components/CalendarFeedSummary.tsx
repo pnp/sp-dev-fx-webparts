@@ -304,7 +304,9 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
                 key={`eventCard${index}`}
                 isEditMode={isEditMode}
                 event={event}
-                isNarrow={false} />);
+                isNarrow={false}
+                themeVariant={this.props.themeVariant} />
+                );
             })}
           </FilmstripLayout>
         </div>

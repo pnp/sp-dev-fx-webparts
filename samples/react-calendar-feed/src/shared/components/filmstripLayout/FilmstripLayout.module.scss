@@ -96,7 +96,7 @@
       border-color: "[theme:themeDark, default: #005a9e]";
 
       &:hover {
-        background-color: "[theme:themeDarker, default: #004578]";
+        opacity: 1;
       }
     }
   }

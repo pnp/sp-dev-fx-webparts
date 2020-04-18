@@ -113,7 +113,7 @@
     align-items: center;
     -webkit-font-smoothing: antialiased;
     //background-color: $ms-color-white;
-    border: 1px solid #eaeaea;
+    border: 1px solid $ms-color-neutralLight;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     max-width: 320px;
@@ -163,7 +163,7 @@
 
 .category,
 .location {
-  color:$ms-color-neutralSecondary;
+  color: $ms-color-neutralSecondary;
 }
 
 .category,

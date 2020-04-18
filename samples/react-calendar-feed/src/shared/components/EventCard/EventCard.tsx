@@ -24,8 +24,12 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
     }
   }
 
+  /**
+   * Renders a full width cell
+   */
   private _renderNormalCell(): JSX.Element {
 
+    const { themeVariant } = this.props;
     const { start,
       end,
       allDay,
@@ -42,6 +46,7 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
       <div>
         <div
           className={css(styles.cardWrapper)}
+          style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
           data-is-focusable={true}
           data-is-focus-item={true}
           role="listitem"
@@ -52,6 +57,7 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
             className={css(styles.root, !isEditMode && styles.rootIsActionable, styles.normalCard)}
             type={DocumentCardType.normal}
             onClickHref={isEditMode ? null : url}
+            style={themeVariant && { borderColor: themeVariant.semanticColors.bodyDivider }}
           >
             <FocusZone>
               <div className={styles.dateBoxContainer} style={{ height: 160 }}>
@@ -60,15 +66,17 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
                   startDate={start}
                   endDate={end}
                   size={DateBoxSize.Medium}
+                  themeVariant={themeVariant}
                 />
               </div>
               <div className={styles.detailsContainer}>
-                <div className={styles.category}>{category}</div>
-                <div className={styles.title}>{title}</div>
-                <div className={styles.datetime}>{dateString}</div>
-                <div className={styles.location}>{location}</div>
+                <div className={styles.category} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext}}>{category}</div>
+                <div className={styles.title} style={themeVariant && { color: themeVariant.semanticColors.bodyText}}>{title}</div>
+                <div className={styles.datetime} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext}}>{dateString}</div>
+                <div className={styles.location} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext}}>{location}</div>
                 <ActionButton
                   className={styles.addToMyCalendar}
+                  style={themeVariant && { color: themeVariant.semanticColors.bodyText}}
                   iconProps={{ iconName: "AddEvent" }}
                   ariaLabel={strings.AddToCalendarAriaLabel}
                   onClick={this._onAddToMyCalendar}
@@ -83,34 +91,31 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
     );
   }
 
+  /**
+   * Renders a narrow event card cell
+   */
   private _renderNarrowCell(): JSX.Element {
 
+    // Get the cell information
     const { start,
       end,
       allDay,
       title,
       url,
-      // category,
-      // location
     } = this.props.event;
+
+    const { themeVariant } = this.props;
+
+    // Calculate the date and string format
     const eventDate: moment.Moment = moment(start);
     const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
 
-    let customStyle: React.CSSProperties = {};
-    if (this.props.themeVariant) {
-      const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
-      console.log("Semantic colors", semanticColors);
-      if (semanticColors && semanticColors.bodyBackground) {
-        customStyle = { backgroundColor: semanticColors.bodyBackground };
-      }
-      console.log("Custom style", semanticColors);
-    }
-
+    // Define theme variant styles if themevariant was passed
     return (
       <div>
         <div
           className={css(styles.cardWrapper, styles.compactCard, styles.root, styles.rootIsCompact)}
-          style={customStyle}
+          style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
           data-is-focusable={true}
           data-is-focus-item={true}
           role="listitem"
@@ -119,7 +124,7 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
           <DocumentCard
             className={css(styles.root, styles.rootIsActionable, styles.rootIsCompact)}
             type={DocumentCardType.compact}
-            style={customStyle}
+            style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
             onClickHref={url}
           >
             <div>
@@ -128,11 +133,12 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
                 startDate={start}
                 endDate={end}
                 size={DateBoxSize.Small}
+                themeVariant={themeVariant}
               />
             </div>
             <div>
-              <div className={styles.title}>{title}</div>
-              <div className={styles.datetime}>{dateString}</div>
+              <div className={styles.title} style={themeVariant && { color: themeVariant.semanticColors.bodyText}}>{title}</div>
+              <div className={styles.datetime} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext}}>{dateString}</div>
             </div>
           </DocumentCard>
         </div>
@@ -140,6 +146,9 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
     );
   }
 
+  /**
+   * Handle adding to calendar
+   */
   private _onAddToMyCalendar = (): void => {
     const { event } = this.props;
 
