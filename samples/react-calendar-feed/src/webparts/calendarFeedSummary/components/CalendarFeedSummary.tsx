@@ -298,6 +298,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
           <FilmstripLayout
             ariaLabel={strings.FilmStripAriaLabel}
             clientWidth={this.props.clientWidth}
+            themeVariant={this.props.themeVariant}
           >
             {events.map((event: ICalendarEvent, index: number) => {
               return (<EventCard

@@ -40,6 +40,7 @@ export class DateBox extends React.Component<IDateBoxProps, {}> {
         style={
           themeVariant &&
           {
+            // KLUDGE: It seems like the themeVariant palette doesn't expose primaryBackground
             backgroundColor: themeVariant.palette["primaryBackground"],
             borderColor: themeVariant.semanticColors.bodyDivider
           }}>

@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import styles from "./FilmstripLayout.module.scss";
 import { useRef } from 'react';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 function useBreakpoints(currentWidth: number, breakpoints: number[]) {
   return breakpoints.map(breakpoint => currentWidth < breakpoint);
@@ -14,7 +15,7 @@ function useBreakpoints(currentWidth: number, breakpoints: number[]) {
  * Filmstrip layout
  * Presents the child compoments as a slick slide
  */
-export const FilmstripLayout = (props: { children: any; clientWidth: number; ariaLabel?: string; }) => {
+export const FilmstripLayout = (props: { children: any; clientWidth: number; themeVariant?: IReadonlyTheme, ariaLabel?: string; }) => {
 
   let ref: React.MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   // // the slick slider used in normal views
@@ -62,32 +63,57 @@ export const FilmstripLayout = (props: { children: any; clientWidth: number; ari
   };
 
   return (
-    <div>
-      <div className={css(styles.filmstripLayout, styles.filmStrip)} aria-label={props.ariaLabel} ref={ref}>
-        <Slider ref={_slider} {...settings}>
-          {props.children}
-        </Slider>
-        <div
-          className={css(styles.indexButtonContainer, styles.sliderButtons)}
-          style={{ left: "10px" }}
-          onClick={() => _slider.current.slickPrev()}
-        >
-          <IconButton
-            className={css(styles.indexButton, styles.leftPositioned)}
-            iconProps={{ iconName: "ChevronLeft", styles: { root: { fontSize: '28px', fontWeight: '400' } } }}
-          />
-        </div>
-        <div
-          className={css(styles.indexButtonContainer, styles.sliderButtons)}
-          style={{ right: "10px" }}
-          onClick={() => _slider.current.slickNext()}
-        >
-          <IconButton
-            className={css(styles.indexButton, styles.rightPositioned)}
-            iconProps={{ iconName: "ChevronRight", styles: { root: { fontSize: '28px', fontWeight: '400' } } }}
-          />
+    <>
+      {/*
+      KLUDGE:
+      This is a cheaty way to inject styles from the theme variant when the component does not support theme variant customizations.
+      We can do this without too much nastiness because this component is added only once per web part
+      ... but I still wish there was a better way
+      */}
+      {props.themeVariant && <style>{`
+            .${styles.carouselDot} {
+              background-color: ${props.themeVariant.palette.black}!important;
+              border-color: ${props.themeVariant.palette.black}!important;
+            }
+
+            .slick-active .${styles.carouselDot} {
+              background-color: ${props.themeVariant.palette.themeDark}!important;
+              border-color: ${props.themeVariant.palette.themeDark}!important;
+            }
+
+            .${styles.filmstripLayout} .ms-DocumentCard--actionable:hover {
+              border-color: ${props.themeVariant.semanticColors.variantBorderHovered}!important;
+            }
+            `}
+      </style>
+      }
+      <div>
+        <div className={css(styles.filmstripLayout, styles.filmStrip)} aria-label={props.ariaLabel} ref={ref}>
+          <Slider ref={_slider} {...settings}>
+            {props.children}
+          </Slider>
+          <div
+            className={css(styles.indexButtonContainer, styles.sliderButtons)}
+            style={{ left: "10px" }}
+            onClick={() => _slider.current.slickPrev()}
+          >
+            <IconButton
+              className={css(styles.indexButton, styles.leftPositioned)}
+              iconProps={{ iconName: "ChevronLeft", styles: { root: { fontSize: '28px', fontWeight: '400' } } }}
+            />
+          </div>
+          <div
+            className={css(styles.indexButtonContainer, styles.sliderButtons)}
+            style={{ right: "10px" }}
+            onClick={() => _slider.current.slickNext()}
+          >
+            <IconButton
+              className={css(styles.indexButton, styles.rightPositioned)}
+              iconProps={{ iconName: "ChevronRight", styles: { root: { fontSize: '28px', fontWeight: '400' } } }}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
