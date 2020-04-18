@@ -5,84 +5,72 @@ import * as React from "react";
 import { IPaginationProps } from ".";
 import styles from "./Pagination.module.scss";
 import * as strings from "CalendarFeedSummaryWebPartStrings";
+import { useCallback } from 'react';
 
 /**
  * A custom pagination control designed to look & feel like Office UI Fabric
  */
-export class Pagination extends React.Component<IPaginationProps, {}> {
-    public render(): React.ReactElement<IPaginationProps> {
+export const Pagination = (props: IPaginationProps) => {
+  const { currentPage, totalItems, itemsCountPerPage } = props;
 
-        const { currentPage } = this.props;
+  // calculate the page situation
+  const numberOfPages: number = Math.round(totalItems / itemsCountPerPage);
 
-        // calculate the page situation
-        const numberOfPages: number = this._getNumberOfPages();
+  // we disable the previous button if we're on page 1
+  const prevDisabled: boolean = currentPage <= 1;
 
-        // we disable the previous button if we're on page 1
-        const prevDisabled: boolean = currentPage <= 1;
+  // we disable the next button if we're on the last page
+  const nextDisabled: boolean = currentPage >= numberOfPages;
 
-        // we disable the next button if we're on the last page
-        const nextDisabled: boolean = currentPage >= numberOfPages;
 
-        return (
-            <div className={css(styles.Pagination, this.props.showPageNum ? null : styles.noPageNum)}>
-                <ActionButton className={styles.prev}
-                    data-automation-id="previousPage"
-                    onRenderIcon={(_props: IButtonProps) => {
-                        // we use the render custom icon method to render the icon consistently with the right icon
-                        return (
-                            <Icon iconName="ChevronLeft" />
-                        );
-                    }}
-                    disabled={prevDisabled}
-                    onClick={this._prevPage}
-                    ariaLabel={strings.PrevButtonAriaLabel}
-                >
-                    {strings.PrevButtonLabel}
-                </ActionButton>
-                {/* NOT IMPLEMENTED: Page numbers aren't shown here, but we'll need them if we want this control to be reusable */}
-                <ActionButton className={styles.next}
-                    data-automation-id="nextPage"
-                    disabled={nextDisabled}
-                    onRenderMenuIcon={(props: IButtonProps) => {
-                        // we use the render custom menu icon method to render the icon to the right of the text
-                        return (
-                            <Icon iconName="ChevronRight" />
-                        );
-                    }}
-                    onClick={this._nextPage}
-                    ariaLabel={strings.NextButtonAriaLabel}
-                >
-                    {strings.NextButtonLabel}
-                </ActionButton>
-            </div>
-        );
+  /**
+       * Increments the page number unless we're on the last page
+       */
+  const _nextPage = useCallback((): void => {
+    if (props.currentPage < numberOfPages) {
+      props.onPageUpdate(props.currentPage + 1);
     }
+  }, [props, numberOfPages]);
 
-    /**
-     * Increments the page number unless we're on the last page
-     */
-    private _nextPage = (): void => {
-        const numberOfPages: number = this._getNumberOfPages();
-        if (this.props.currentPage < numberOfPages) {
-            this.props.onPageUpdate(this.props.currentPage + 1);
-        }
+  /**
+   * Decrements the page number unless we're on the first page
+   */
+  const _prevPage = useCallback((): void => {
+    if (props.currentPage > 1) {
+      props.onPageUpdate(props.currentPage - 1);
     }
+  }, [props]);
 
-    /**
-     * Decrements the page number unless we're on the first page
-     */
-    private _prevPage = (): void => {
-        if (this.props.currentPage > 1) {
-            this.props.onPageUpdate(this.props.currentPage - 1);
-        }
-    }
-
-    /**
-     * Calculates how many pages there will be
-     */
-    private _getNumberOfPages(): number {
-        const { totalItems, itemsCountPerPage } = this.props;
-        let numPages: number = Math.round(totalItems / itemsCountPerPage);
-        return numPages;
-    }
-}
+  return (
+    <div className={css(styles.Pagination, props.showPageNum ? null : styles.noPageNum)}>
+      <ActionButton className={styles.prev}
+        onRenderIcon={(_props: IButtonProps) => {
+          // we use the render custom icon method to render the icon consistently with the right icon
+          return (
+            <Icon iconName="ChevronLeft" />
+          );
+        }}
+        disabled={prevDisabled}
+        onClick={_prevPage}
+        ariaLabel={strings.PrevButtonAriaLabel}
+      >
+        {strings.PrevButtonLabel}
+      </ActionButton>
+      {/* NOT IMPLEMENTED: Page numbers aren't shown here, but we'll need them if we want this control to be reusable */}
+      <ActionButton className={styles.next}
+        data-automation-id="nextPage"
+        disabled={nextDisabled}
+        onRenderMenuIcon={(_props: IButtonProps) => {
+          // we use the render custom menu icon method to render the icon to the right of the text
+          return (
+            <Icon iconName="ChevronRight" />
+          );
+        }}
+        onClick={_nextPage}
+        ariaLabel={strings.NextButtonAriaLabel}
+      >
+        {strings.NextButtonLabel}
+      </ActionButton>
+    </div>
+  );
+};

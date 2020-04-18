@@ -20,6 +20,16 @@ const sampleEvents: ICalendarEvent[] = [
     description: "This is a description"
   },
   {
+    title: "This is a UTC event",
+    start: moment().add(1, "d").utc(false).toDate(),
+    end: moment().add(1, "d").add(1, "h").utc(false).toDate(),
+    url: "https://www.contoso.com/news-events/events/1UTC/",
+    allDay: false,
+    category: "Meeting",
+    location: "Barrie, ON",
+    description: "This is a description for a UTC event"
+  },
+  {
     title: "This event will be in one week",
     start: moment().add(1, "w").toDate(),
     end: moment().add(1, "w").add(1, "h").toDate(),

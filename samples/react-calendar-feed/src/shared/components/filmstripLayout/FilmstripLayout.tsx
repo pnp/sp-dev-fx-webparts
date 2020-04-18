@@ -16,13 +16,11 @@ function useBreakpoints(currentWidth: number, breakpoints: number[]) {
  * Presents the child compoments as a slick slide
  */
 export const FilmstripLayout = (props: { children: any; clientWidth: number; themeVariant?: IReadonlyTheme, ariaLabel?: string; }) => {
-
-  let ref: React.MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-  // // the slick slider used in normal views
-  let _slider: React.MutableRefObject<Slider> = useRef<Slider>(null);
-
   SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
   SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
+
+  let topElem: React.MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  let _slider: React.MutableRefObject<Slider> = useRef<Slider>(null);
 
   const [isSmall, isMedium] = useBreakpoints(props.clientWidth, [696, 928]);
 
@@ -88,7 +86,7 @@ export const FilmstripLayout = (props: { children: any; clientWidth: number; the
       </style>
       }
       <div>
-        <div className={css(styles.filmstripLayout, styles.filmStrip)} aria-label={props.ariaLabel} ref={ref}>
+        <div className={css(styles.filmstripLayout, styles.filmStrip)} aria-label={props.ariaLabel} ref={topElem}>
           <Slider ref={_slider} {...settings}>
             {props.children}
           </Slider>

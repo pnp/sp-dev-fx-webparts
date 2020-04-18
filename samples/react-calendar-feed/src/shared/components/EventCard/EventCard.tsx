@@ -8,149 +8,30 @@ import { IEventCardProps } from ".";
 import { DateBox, DateBoxSize } from "../DateBox";
 import styles from "./EventCard.module.scss";
 import { Text } from "@microsoft/sp-core-library";
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
-
+import { useCallback } from 'react';
 /**
  * Shows an event in a document card
  */
-export class EventCard extends React.Component<IEventCardProps, {}> {
-  public render(): React.ReactElement<IEventCardProps> {
-    const { isNarrow } = this.props;
+export const EventCard = (props: IEventCardProps) => {
+  const { isNarrow, themeVariant, isEditMode, event } = props;
 
-    if (isNarrow) {
-      return this._renderNarrowCell();
-    } else {
-      return this._renderNormalCell();
-    }
-  }
+  // Get the cell information
+  const { start,
+    end,
+    allDay,
+    title,
+    url,
+    category,
+    location
+  } = event;
 
-  /**
-   * Renders a full width cell
-   */
-  private _renderNormalCell(): JSX.Element {
-
-    const { themeVariant } = this.props;
-    const { start,
-      end,
-      allDay,
-      title,
-      url,
-      category,
-      // description,
-      location } = this.props.event;
-    const eventDate: moment.Moment = moment(start);
-    const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
-    const { isEditMode } = this.props;
-
-    return (
-      <div>
-        <div
-          className={css(styles.cardWrapper)}
-          style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
-          data-is-focusable={true}
-          data-is-focus-item={true}
-          role="listitem"
-          aria-label={Text.format(strings.EventCardWrapperArialLabel, title, `${dateString}`)}
-          tabIndex={0}
-        >
-          <DocumentCard
-            className={css(styles.root, !isEditMode && styles.rootIsActionable, styles.normalCard)}
-            type={DocumentCardType.normal}
-            onClickHref={isEditMode ? null : url}
-            style={themeVariant && { borderColor: themeVariant.semanticColors.bodyDivider }}
-          >
-            <FocusZone>
-              <div className={styles.dateBoxContainer} style={{ height: 160 }}>
-                <DateBox
-                  className={styles.dateBox}
-                  startDate={start}
-                  endDate={end}
-                  size={DateBoxSize.Medium}
-                  themeVariant={themeVariant}
-                />
-              </div>
-              <div className={styles.detailsContainer}>
-                <div className={styles.category} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext}}>{category}</div>
-                <div className={styles.title} style={themeVariant && { color: themeVariant.semanticColors.bodyText}}>{title}</div>
-                <div className={styles.datetime} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext}}>{dateString}</div>
-                <div className={styles.location} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext}}>{location}</div>
-                <ActionButton
-                  className={styles.addToMyCalendar}
-                  style={themeVariant && { color: themeVariant.semanticColors.bodyText}}
-                  iconProps={{ iconName: "AddEvent" }}
-                  ariaLabel={strings.AddToCalendarAriaLabel}
-                  onClick={this._onAddToMyCalendar}
-                >
-                  {strings.AddToCalendarButtonLabel}
-                </ActionButton>
-              </div>
-            </FocusZone>
-          </DocumentCard>
-        </div>
-      </div>
-    );
-  }
-
-  /**
-   * Renders a narrow event card cell
-   */
-  private _renderNarrowCell(): JSX.Element {
-
-    // Get the cell information
-    const { start,
-      end,
-      allDay,
-      title,
-      url,
-    } = this.props.event;
-
-    const { themeVariant } = this.props;
-
-    // Calculate the date and string format
-    const eventDate: moment.Moment = moment(start);
-    const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
-
-    // Define theme variant styles if themevariant was passed
-    return (
-      <div>
-        <div
-          className={css(styles.cardWrapper, styles.compactCard, styles.root, styles.rootIsCompact)}
-          style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
-          data-is-focusable={true}
-          data-is-focus-item={true}
-          role="listitem"
-          aria-label={Text.format(strings.EventCardWrapperArialLabel, title, dateString)}
-        >
-          <DocumentCard
-            className={css(styles.root, styles.rootIsActionable, styles.rootIsCompact)}
-            type={DocumentCardType.compact}
-            style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
-            onClickHref={url}
-          >
-            <div>
-              <DateBox
-                className={styles.dateBox}
-                startDate={start}
-                endDate={end}
-                size={DateBoxSize.Small}
-                themeVariant={themeVariant}
-              />
-            </div>
-            <div>
-              <div className={styles.title} style={themeVariant && { color: themeVariant.semanticColors.bodyText}}>{title}</div>
-              <div className={styles.datetime} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext}}>{dateString}</div>
-            </div>
-          </DocumentCard>
-        </div>
-      </div>
-    );
-  }
+  const eventDate: moment.Moment = moment(start);
+  const dateString: string = allDay ? eventDate.format(strings.AllDayDateFormat) : eventDate.format(strings.LocalizedTimeFormat);
 
   /**
    * Handle adding to calendar
    */
-  private _onAddToMyCalendar = (): void => {
-    const { event } = this.props;
+  const _onAddToMyCalendar = useCallback((): void => {
 
     // create a calendar to hold the event
     const cal: ICS.VCALENDAR = new ICS.VCALENDAR();
@@ -198,5 +79,92 @@ export class EventCard extends React.Component<IEventCardProps, {}> {
     // my spidey senses are telling me that there are sitaations where this isn't going to work, but none of my tests could prove it.
     // i suspect we're not encoding events properly
     window.open("data:text/calendar;charset=utf8," + encodeURIComponent(cal.toString()));
+  }, [event]);
+
+  if (isNarrow) {
+    // Calculate the date and string format
+
+    // Define theme variant styles if themevariant was passed
+    return (
+      <div>
+        <div
+          className={css(styles.cardWrapper, styles.compactCard, styles.root, styles.rootIsCompact)}
+          style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
+          data-is-focusable={true}
+          data-is-focus-item={true}
+          role="listitem"
+          aria-label={Text.format(strings.EventCardWrapperArialLabel, title, dateString)}
+        >
+          <DocumentCard
+            className={css(styles.root, styles.rootIsActionable, styles.rootIsCompact)}
+            type={DocumentCardType.compact}
+            style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
+            onClickHref={url}
+          >
+            <div>
+              <DateBox
+                className={styles.dateBox}
+                startDate={start}
+                endDate={end}
+                size={DateBoxSize.Small}
+                themeVariant={themeVariant}
+              />
+            </div>
+            <div>
+              <div className={styles.title} style={themeVariant && { color: themeVariant.semanticColors.bodyText }}>{title}</div>
+              <div className={styles.datetime} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext }}>{dateString}</div>
+            </div>
+          </DocumentCard>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <div
+          className={css(styles.cardWrapper)}
+          style={themeVariant && { backgroundColor: themeVariant.semanticColors.bodyBackground }}
+          data-is-focusable={true}
+          data-is-focus-item={true}
+          role="listitem"
+          aria-label={Text.format(strings.EventCardWrapperArialLabel, title, `${dateString}`)}
+          tabIndex={0}
+        >
+          <DocumentCard
+            className={css(styles.root, !isEditMode && styles.rootIsActionable, styles.normalCard)}
+            type={DocumentCardType.normal}
+            onClickHref={isEditMode ? null : url}
+            style={themeVariant && { borderColor: themeVariant.semanticColors.bodyDivider }}
+          >
+            <FocusZone>
+              <div className={styles.dateBoxContainer} style={{ height: 160 }}>
+                <DateBox
+                  className={styles.dateBox}
+                  startDate={start}
+                  endDate={end}
+                  size={DateBoxSize.Medium}
+                  themeVariant={themeVariant}
+                />
+              </div>
+              <div className={styles.detailsContainer}>
+                <div className={styles.category} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext }}>{category}</div>
+                <div className={styles.title} style={themeVariant && { color: themeVariant.semanticColors.bodyText }}>{title}</div>
+                <div className={styles.datetime} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext }}>{dateString}</div>
+                <div className={styles.location} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext }}>{location}</div>
+                <ActionButton
+                  className={styles.addToMyCalendar}
+                  style={themeVariant && { color: themeVariant.semanticColors.bodyText }}
+                  iconProps={{ iconName: "AddEvent" }}
+                  ariaLabel={strings.AddToCalendarAriaLabel}
+                  onClick={_onAddToMyCalendar}
+                >
+                  {strings.AddToCalendarButtonLabel}
+                </ActionButton>
+              </div>
+            </FocusZone>
+          </DocumentCard>
+        </div>
+      </div>
+    );
   }
-}
+};
