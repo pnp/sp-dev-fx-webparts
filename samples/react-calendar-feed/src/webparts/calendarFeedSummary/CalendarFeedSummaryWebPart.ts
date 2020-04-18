@@ -37,9 +37,6 @@ import { ICalendarFeedSummaryProps } from "./components/CalendarFeedSummary.type
 // Support for theme variants
 import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme, ISemanticColors } from '@microsoft/sp-component-base';
 
-// this is the same width that the SharePoint events web parts use to render as narrow
-const MaxMobileWidth: number = 480;
-
 /**
  * Calendar Feed Summary Web Part
  * This web part shows a summary of events, in a film-strip (for normal views) or list view (for narrow views)
@@ -51,7 +48,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
 
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
-
+  private _clientWidth: number = undefined;
   constructor() {
     super();
 
@@ -104,10 +101,10 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    * Renders the web part
    */
   public render(): void {
-    const semanticColors: Readonly<ISemanticColors> | undefined = this._themeVariant && this._themeVariant.semanticColors;
-
     // see if we need to render a mobile view
-    const isNarrow: boolean = this.domElement.clientWidth <= MaxMobileWidth;
+    if (this._clientWidth === undefined) {
+      this._clientWidth = this.domElement.clientWidth;
+    }
 
     // display the summary (or the configuration screen)
     const element: React.ReactElement<ICalendarFeedSummaryProps> = React.createElement(
@@ -117,13 +114,13 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
         displayMode: this.displayMode,
         context: this.context,
         isConfigured: this._isConfigured(),
-        isNarrow: isNarrow,
         maxEvents: this.properties.maxEvents,
         provider: this._getDataProvider(),
         themeVariant: this._themeVariant,
         updateProperty: (value: string) => {
           this.properties.title = value;
         },
+        clientWidth: this._clientWidth
       }
     );
 
@@ -277,6 +274,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    * If we get resized, call the Render method so that we can switch between the narrow view and the regular view
    */
   protected onAfterResize(newWidth: number): void {
+    this._clientWidth = newWidth;
     // redraw the web part
     this.render();
   }

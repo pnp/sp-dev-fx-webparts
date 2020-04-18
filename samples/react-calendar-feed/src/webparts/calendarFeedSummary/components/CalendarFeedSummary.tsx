@@ -1,5 +1,4 @@
 import { DisplayMode } from "@microsoft/sp-core-library";
-import { SPComponentLoader } from "@microsoft/sp-loader";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import * as strings from "CalendarFeedSummaryWebPartStrings";
@@ -16,6 +15,9 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 // the key used when caching events
 const CacheKey: string = "calendarFeedSummary";
+
+// this is the same width that the SharePoint events web parts use to render as narrow
+const MaxMobileWidth: number = 480;
 
 /**
  * Displays a feed summary from a given calendar feed provider. Renders a different view for mobile/narrow web parts.
@@ -108,7 +110,6 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     // put everything together in a nice little calendar view
     return (
       <div className={css(styles.calendarFeedSummary, styles.webPartChrome)}  style={{backgroundColor: semanticColors.bodyBackground}}>
-        
         <div className={css(styles.webPartHeader, styles.headerSmMargin)}>
           <WebPartTitle displayMode={this.props.displayMode}
             title={this.props.title}
@@ -126,8 +127,9 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
    * Render your web part content
    */
   private _renderContent(): JSX.Element {
+    const isNarrow: boolean = this.props.clientWidth < MaxMobileWidth;
+
     const {
-      isNarrow,
       displayMode
     } = this.props;
     const {
@@ -257,11 +259,13 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     >
       <List
         items={pagedEvents}
-        onRenderCell={(item, index) => (
+        onRenderCell={(item, _index) => (
           <EventCard
             isEditMode={isEditMode}
             event={item}
-            isNarrow={true} />
+            isNarrow={true}
+            themeVariant={this.props.themeVariant}
+             />
         )} />
       {usePaging &&
         <Paging
@@ -293,6 +297,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
         <div role="application">
           <FilmstripLayout
             ariaLabel={strings.FilmStripAriaLabel}
+            clientWidth={this.props.clientWidth}
           >
             {events.map((event: ICalendarEvent, index: number) => {
               return (<EventCard

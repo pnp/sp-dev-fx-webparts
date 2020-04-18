@@ -23,7 +23,7 @@
 }
 
 .cardWrapper .dateBox {
-  border-color: $ms-color-neutralTertiaryAlt;
+  border-color: $ms-color-neutralLight;
 }
 
 .normalCard .dateBoxContainer {
@@ -44,6 +44,7 @@
 .compactCard .dateBox {
   margin: auto 14px auto 0;
   min-width: 64px;
+  background-color: $ms-color-white;
 }
 
 [dir=rtl] .compactCard .dateBox {
@@ -111,7 +112,7 @@
     width: 100%;
     align-items: center;
     -webkit-font-smoothing: antialiased;
-    background-color: $ms-color-white;
+    //background-color: $ms-color-white;
     border: 1px solid #eaeaea;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
