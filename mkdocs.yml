@@ -895,8 +895,7 @@ extra:
       modifiedtext: April 15, 2020
       modified: 2020-04-15
     - framework: React
-      spfx: 1.9.1
-      year: 2019
+      spfx: 1.10.0
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-calendar-feed
       name: react-calendar-feed
       title: Calendar Feed Web Part
@@ -904,9 +903,9 @@ extra:
       thumbnailtype: video
       author: Hugo Bernier
       summary: This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part.
-      version: 5.0
-      modifiedtext: August 17, 2019
-      modified: 2019-08-17
+      version: 5.1
+      modifiedtext: April 16, 2020
+      modified: 2020-04-16
     - framework: React
       spfx: 1.8.2
       year: 2019
