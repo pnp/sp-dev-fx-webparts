@@ -14,7 +14,7 @@ To learn more about how to use these samples, please refer to our [getting start
 
 {% for sample in samples|sort(attribute='modified', reverse=True) %}
 
-<div class="sample-item" data-keywords="{{ sample.name }} {{ sample.title }} {{ sample.summary }}"  data-thumbnail="{{sample.thumbnail}}">
+<div class="sample-item" data-keywords="{{ sample.name }} {{ sample.title }} {{ sample.summary }} {{ sample.keywords }}" data-modified="{{sample.modified}}" data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
     <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>
     <div class="sample-img">

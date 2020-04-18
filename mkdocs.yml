@@ -70,6 +70,7 @@ extra:
       author: João Mendes
       modifiedtext: April 14, 2020
       modified: 2020-04-14
+      level: 200
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-personal-greeting
       name: react-personal-greeting
       title: Personal Greeting
@@ -80,6 +81,7 @@ extra:
       author: Zach Roberts
       modifiedtext: April 14, 2020
       modified: 2020-04-14
+      level: 100
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-versiondisplay
       name: react-versiondisplay
       title: Displaying the version number in a web part
@@ -90,6 +92,7 @@ extra:
       author: Hugo Bernier
       modifiedtext: April 10, 2020
       modified: 2020-04-10
+      level: 100
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-my-personal-apps
       name: react-my-personal-apps
       title: My Personal Apps
@@ -100,6 +103,7 @@ extra:
       author: João Mendes
       modifiedtext: April 9, 2020
       modified: 2020-04-09
+      level: 300
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks
       name: react-functional-servicescope-hooks
       title: Consuming SPFX Service Scopes using React Hooks
@@ -110,6 +114,7 @@ extra:
       author: Garry Trinder
       modifiedtext: March 25, 2020
       modified: 2020-03-25
+      level: 200
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-covid19-info
       name: react-covid19-info
       title: COVID 19 information web part
@@ -120,6 +125,7 @@ extra:
       author: Robin Atgen
       modifiedtext: March 25, 2020
       modified: 2020-03-25
+      level: 200
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards
       name: react-adaptivecards
       title: Adaptive Cards Host
@@ -130,6 +136,7 @@ extra:
       author: Hugo Bernier
       modifiedtext: Mar 24, 2020
       modified: 2020-03-24
+      level: 300
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-yammer-praise
       name: react-yammer-praise
       title: Yammer Praise using aadTokenProvider
@@ -150,6 +157,7 @@ extra:
       author: Hugo Bernier, David Warner II
       modifiedtext: March 18, 2020
       modified: 2020-03-18
+      level: 300
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
       name: js-workbench-customizer
       title: Workbench customizer
@@ -699,18 +707,6 @@ extra:
       version: 1.0
       modifiedtext: February 27, 2019
       modified: 2019-02-27
-    - framework: Javascript
-      spfx: 1.7.1
-      year: 2019
-      title: Workbench customizer
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
-      name: js-workbench-customizer
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png
-      author: Joel Rodrigues
-      summary: This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page. This is done using CSS overrides on some of the page styles, which does not cause any negative impact on your site as the web part is not intended to be consumed by final users, only developers. The web part also has some properties that control which customizations are applied to the workbench page (all enabled by default).
-      version: 1.0
-      modifiedtext: January 24, 2019
-      modified: 2019-01-24
     - framework: Knockout
       spfx: GA
       year: 2017
@@ -906,6 +902,7 @@ extra:
       version: 5.1
       modifiedtext: April 16, 2020
       modified: 2020-04-16
+      keywords: ical,wordpress,rss,exchange,calendar,event,hooks,theme,background
     - framework: React
       spfx: 1.8.2
       year: 2019
