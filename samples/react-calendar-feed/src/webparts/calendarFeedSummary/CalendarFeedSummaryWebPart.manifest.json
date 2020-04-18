@@ -3,7 +3,7 @@
   "id": "acef6c3f-852a-42e3-8a4b-7ea191ae9687",
   "alias": "CalendarFeedSummaryWebPart",
   "componentType": "WebPart",
-
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
   "supportedHosts": ["SharePointWebPart"],

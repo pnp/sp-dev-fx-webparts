@@ -12,6 +12,7 @@ import { CalendarServiceProviderType, ICalendarEvent, ICalendarService } from ".
 import styles from "./CalendarFeedSummary.module.scss";
 import { ICalendarFeedSummaryProps, ICalendarFeedSummaryState, IFeedCache } from "./CalendarFeedSummary.types";
 import { FilmstripLayout } from "../../../shared/components/filmstripLayout/index";
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 // the key used when caching events
 const CacheKey: string = "calendarFeedSummary";
@@ -90,6 +91,8 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
       isConfigured,
     } = this.props;
 
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+
     // if we're not configured, show the placeholder
     if (!isConfigured) {
       return <Placeholder
@@ -104,7 +107,8 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
 
     // put everything together in a nice little calendar view
     return (
-      <div className={css(styles.calendarFeedSummary, styles.webPartChrome)}>
+      <div className={css(styles.calendarFeedSummary, styles.webPartChrome)}  style={{backgroundColor: semanticColors.bodyBackground}}>
+        
         <div className={css(styles.webPartHeader, styles.headerSmMargin)}>
           <WebPartTitle displayMode={this.props.displayMode}
             title={this.props.title}

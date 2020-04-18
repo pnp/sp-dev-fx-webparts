@@ -59,7 +59,7 @@ Version|Date|Comments
 3.0|November 9, 2018|Converted to SPFx 1.7; Added SharePoint Calendar feed
 4.0|January 16, 2019|Converted to SPFx 1.7.1; Removed NPM libraries associated with issue #708.
 5.0|August 17, 2019|Converted to SPFx 1.9.1; Refreshed carousel code; Addresses #735, #909. Also added **Convert from UTC** option to handle feeds which do not provide time zone information.
-5.1|April 16, 2020|Converted to SPFx 1.10.0
+5.1|April 16, 2020|Converted to SPFx 1.10.0; Fixed issue with UTC mode when in narrow view. Updated resizing behaviour and styles to match OOB calendar view.
 
 ## Disclaimer
 

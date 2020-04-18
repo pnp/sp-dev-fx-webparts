@@ -9,7 +9,7 @@ import { DisplayMode } from "@microsoft/sp-core-library";
 import { IWebPartContext } from "@microsoft/sp-webpart-base";
 import { Moment } from "moment";
 import { ICalendarEvent, ICalendarService } from "../../../shared/services/CalendarService";
-
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 /**
  * The props for the calendar feed summary component
  */
@@ -22,6 +22,7 @@ export interface ICalendarFeedSummaryProps {
   isNarrow: boolean;
   provider: ICalendarService;
   maxEvents: number;
+  themeVariant: IReadonlyTheme;
 }
 
 /**

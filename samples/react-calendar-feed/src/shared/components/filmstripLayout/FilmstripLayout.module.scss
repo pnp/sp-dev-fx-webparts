@@ -8,6 +8,8 @@
 
   &.filmStrip {
     margin-bottom: 27px;
+    margin-left: -10px;
+    margin-right: -10px;
 
     :global(.slick-slide) {
       box-sizing: border-box;

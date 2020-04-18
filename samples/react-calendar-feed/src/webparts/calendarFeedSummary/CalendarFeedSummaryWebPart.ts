@@ -34,6 +34,9 @@ import { ICalendarFeedSummaryWebPartProps } from "./CalendarFeedSummaryWebPart.t
 import CalendarFeedSummary from "./components/CalendarFeedSummary";
 import { ICalendarFeedSummaryProps } from "./components/CalendarFeedSummary.types";
 
+// Support for theme variants
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme, ISemanticColors } from '@microsoft/sp-component-base';
+
 // this is the same width that the SharePoint events web parts use to render as narrow
 const MaxMobileWidth: number = 480;
 
@@ -46,6 +49,9 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
   // the list of proviers available
   private _providerList: any[];
 
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
+
   constructor() {
     super();
 
@@ -55,6 +61,14 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
 
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, _reject) => {
+      // Consume the new ThemeProvider service
+      this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+
+      // If it exists, get the theme variant
+      this._themeVariant = this._themeProvider.tryGetTheme();
+
+      // Register a handler to be notified if the theme variant changes
+      this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
 
       let {
         cacheDuration,
@@ -90,6 +104,8 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    * Renders the web part
    */
   public render(): void {
+    const semanticColors: Readonly<ISemanticColors> | undefined = this._themeVariant && this._themeVariant.semanticColors;
+
     // see if we need to render a mobile view
     const isNarrow: boolean = this.domElement.clientWidth <= MaxMobileWidth;
 
@@ -104,6 +120,7 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
         isNarrow: isNarrow,
         maxEvents: this.properties.maxEvents,
         provider: this._getDataProvider(),
+        themeVariant: this._themeVariant,
         updateProperty: (value: string) => {
           this.properties.title = value;
         },
@@ -354,5 +371,15 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     provider.ConvertFromUTC = convertFromUTC;
     provider.MaxTotal = maxTotal;
     return provider;
+  }
+
+  /**
+ * Update the current theme variant reference and re-render.
+ *
+ * @param args The new theme
+ */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 }
