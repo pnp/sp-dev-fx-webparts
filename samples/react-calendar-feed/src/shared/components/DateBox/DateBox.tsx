@@ -2,54 +2,71 @@ import * as moment from "moment";
 import { css } from "office-ui-fabric-react/lib/Utilities";
 import * as React from "react";
 import styles from "./DateBox.module.scss";
-import { DateBoxSize, IDateBoxProps, IDateBoxState } from "./DateBox.types";
+import { DateBoxSize, IDateBoxProps } from ".";
 
 /**
  * Shows a date in a SharePoint-looking date
  */
-export class DateBox extends React.Component<IDateBoxProps, IDateBoxState> {
-  public render(): React.ReactElement<IDateBoxProps> {
-    // convert start and end date into moments so that we can manipulate them
-    const startMoment: moment.Moment = moment(this.props.startDate);
+export const DateBox = (props: IDateBoxProps) => {
+  // convert start and end date into moments so that we can manipulate them
+  const startMoment: moment.Moment = moment(props.startDate);
 
-    // event actually ends one second before the end date
-    const endMoment: moment.Moment = moment(this.props.endDate).add(-1, "s");
+  // event actually ends one second before the end date
+  const endMoment: moment.Moment = moment(props.endDate).add(-1, "s");
 
-    // check if both dates are on the same day
-    const isSameDay: boolean = startMoment.isSame(endMoment, "day");
+  // check if both dates are on the same day
+  const isSameDay: boolean = startMoment.isSame(endMoment, "day");
 
-    if (isSameDay) {
-      return this._renderSingleDay(startMoment);
-    } else {
-      return this._renderMultiDay(startMoment, endMoment);
-    }
-  }
-
-  private _renderSingleDay(startMoment: moment.Moment): JSX.Element {
-    const { className, size } = this.props;
+  if (isSameDay) {
     return (
       <div className={css(styles.box,
         styles.boxIsSingleDay,
-        (size === DateBoxSize.Small ? styles.boxIsSmall : styles.boxIsMedium), className)}
-        data-automation-id="singleDayDayContainer">
+        (props.size === DateBoxSize.Small ? styles.boxIsSmall : styles.boxIsMedium), props.className)}
+        style={
+          props.themeVariant &&
+          {
+            // KLUDGE: It seems like the themeVariant palette doesn't expose primaryBackground
+            backgroundColor: props.themeVariant.palette["primaryBackground"],
+            borderColor: props.themeVariant.semanticColors.bodyDivider
+          }}>
         <div className={styles.month}
-          data-automation-id="singleDayMonthContainer">{startMoment.format("MMM").toUpperCase()}</div>
+          style={
+            props.themeVariant &&
+            { color: props.themeVariant.semanticColors.bodyText }}>{startMoment.format("MMM").toUpperCase()}</div>
         <div className={styles.day}
-          data-automation-id="singleDayDayContainer">{startMoment.format("D")}</div>
+          style={
+            props.themeVariant &&
+            { color: props.themeVariant.semanticColors.bodyText }}>{startMoment.format("D")}</div>
       </div>);
-  }
 
-  private _renderMultiDay(startMoment: moment.Moment, endMoment: moment.Moment): JSX.Element {
-    const { className, size } = this.props;
+  } else {
     return (
       <div
         className={css(styles.box,
           styles.boxIsSingleDay,
-          (size === DateBoxSize.Small ? styles.boxIsSmall : styles.boxIsMedium), className)}
-        data-automation-id="multipleDayBox">
-        <div className={styles.date} data-automation-id="multipleDayStartDateContainer">{startMoment.format("MMM D").toUpperCase()}</div>
-        <hr className={styles.separator} />
-        <div className={styles.date} data-automation-id="multipleDayEndDateContainer">{endMoment.format("MMM D").toUpperCase()}</div>
+          (props.size === DateBoxSize.Small ? styles.boxIsSmall : styles.boxIsMedium), props.className)}
+        style={
+          props.themeVariant &&
+          {
+            backgroundColor: props.themeVariant.palette["primaryBackground"],
+            borderColor: props.themeVariant.semanticColors.bodyDivider
+          }}>
+
+        <div className={styles.date} style={
+          props.themeVariant &&
+          { color: props.themeVariant.semanticColors.bodyText }}>{startMoment.format("MMM D").toUpperCase()}</div>
+        <hr className={styles.separator}
+          style={
+            props.themeVariant &&
+            {
+              borderColor: props.themeVariant.semanticColors.bodyText
+            }}
+        />
+        <div className={styles.date} style={
+          props.themeVariant &&
+          { color: props.themeVariant.semanticColors.bodyText }}>{endMoment.format("MMM D").toUpperCase()}</div>
       </div>);
+
   }
-}
+
+};

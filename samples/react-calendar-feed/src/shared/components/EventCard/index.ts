@@ -1,2 +1,2 @@
 export * from "./EventCard";
-export * from "./EventCard.types";
+export * from "./IEventCardProps";
