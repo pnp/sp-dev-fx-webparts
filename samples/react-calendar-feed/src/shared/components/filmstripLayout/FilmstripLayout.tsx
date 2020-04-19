@@ -60,6 +60,8 @@ export const FilmstripLayout = (props: { children: any; clientWidth: number; the
     respondTo: "slider",
   };
 
+  console.log("Theme", props.themeVariant);
+
   return (
     <>
       {/*

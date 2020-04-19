@@ -17,6 +17,13 @@ export const DateBox = (props: IDateBoxProps) => {
   // check if both dates are on the same day
   const isSameDay: boolean = startMoment.isSame(endMoment, "day");
 
+  const { themeVariant } = props;
+  const backgroundColor: string = themeVariant && themeVariant.palette["primaryBackground"];
+  const textColor: string = themeVariant && backgroundColor != themeVariant.semanticColors.bodyText ?
+    themeVariant.semanticColors.bodyText : themeVariant.palette["primaryText"];
+  // If the background color matches the text color, it is probably a reversed section, use a different border color
+  const borderColor: string = themeVariant && backgroundColor != themeVariant.semanticColors.bodyText ? themeVariant.semanticColors.bodyDivider : "[theme:neutralLight, default: #eaeaea]";
+
   if (isSameDay) {
     return (
       <div className={css(styles.box,
@@ -26,17 +33,18 @@ export const DateBox = (props: IDateBoxProps) => {
           props.themeVariant &&
           {
             // KLUDGE: It seems like the themeVariant palette doesn't expose primaryBackground
-            backgroundColor: props.themeVariant.palette["primaryBackground"],
-            borderColor: props.themeVariant.semanticColors.bodyDivider
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            color: textColor
           }}>
         <div className={styles.month}
           style={
             props.themeVariant &&
-            { color: props.themeVariant.semanticColors.bodyText }}>{startMoment.format("MMM").toUpperCase()}</div>
+            { color: textColor }}>{startMoment.format("MMM").toUpperCase()}</div>
         <div className={styles.day}
           style={
             props.themeVariant &&
-            { color: props.themeVariant.semanticColors.bodyText }}>{startMoment.format("D")}</div>
+            { color: textColor }}>{startMoment.format("D")}</div>
       </div>);
 
   } else {
@@ -48,25 +56,25 @@ export const DateBox = (props: IDateBoxProps) => {
         style={
           props.themeVariant &&
           {
-            backgroundColor: props.themeVariant.palette["primaryBackground"],
-            borderColor: props.themeVariant.semanticColors.bodyDivider
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            color: textColor
           }}>
 
         <div className={styles.date} style={
           props.themeVariant &&
-          { color: props.themeVariant.semanticColors.bodyText }}>{startMoment.format("MMM D").toUpperCase()}</div>
+          { color: textColor }}>{startMoment.format("MMM D").toUpperCase()}</div>
         <hr className={styles.separator}
           style={
             props.themeVariant &&
             {
-              borderColor: props.themeVariant.semanticColors.bodyText
+              borderColor: textColor
             }}
         />
         <div className={styles.date} style={
           props.themeVariant &&
-          { color: props.themeVariant.semanticColors.bodyText }}>{endMoment.format("MMM D").toUpperCase()}</div>
+          { color: textColor }}>{endMoment.format("MMM D").toUpperCase()}</div>
       </div>);
 
   }
-
 };
