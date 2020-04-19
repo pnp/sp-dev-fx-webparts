@@ -43,7 +43,7 @@ export const Pagination = (props: IPaginationProps) => {
 
   return (
     <div className={css(styles.Pagination, props.showPageNum ? null : styles.noPageNum)}>
-      <ActionButton className={styles.prev}
+      <ActionButton className={css(styles.prev, prevDisabled && styles.nogo)}
         onRenderIcon={(_props: IButtonProps) => {
           // we use the render custom icon method to render the icon consistently with the right icon
           return (
@@ -57,7 +57,7 @@ export const Pagination = (props: IPaginationProps) => {
         {strings.PrevButtonLabel}
       </ActionButton>
       {/* NOT IMPLEMENTED: Page numbers aren't shown here, but we'll need them if we want this control to be reusable */}
-      <ActionButton className={styles.next}
+      <ActionButton className={css(styles.next, nextDisabled && styles.nogo)}
         data-automation-id="nextPage"
         disabled={nextDisabled}
         onRenderMenuIcon={(_props: IButtonProps) => {

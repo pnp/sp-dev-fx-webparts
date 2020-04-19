@@ -15,6 +15,10 @@
     border: none;
   }
 
+  .nogo {
+    color: $ms-color-neutralTertiary!important;
+  }
+
   button {
     font-size: 14px;
     font-weight: 400;
@@ -30,6 +34,7 @@
     &:hover, &:active {
       color: "[theme:buttonTextCheckedHovered, default: #000]"
     }
+
   }
 
   &.noPageNum {

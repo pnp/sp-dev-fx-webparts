@@ -81,6 +81,13 @@ export const EventCard = (props: IEventCardProps) => {
     window.open("data:text/calendar;charset=utf8," + encodeURIComponent(cal.toString()));
   }, [event]);
 
+  //Unfortunately, themes don't always populate all the palette/semantic colors.
+  //Detect if background color is the same as the foreground and find default
+  const backgroundColor: string = themeVariant && (isNarrow ? themeVariant.semanticColors.bodyBackground : themeVariant.palette["primaryBackground"]);
+  const textColor: string = themeVariant && backgroundColor != themeVariant.semanticColors.bodyText ?
+    themeVariant.semanticColors.bodyText : themeVariant.palette["primaryText"];
+  const subTextColor: string = themeVariant && themeVariant.semanticColors.bodySubtext && backgroundColor != themeVariant.semanticColors.bodySubtext ? themeVariant.semanticColors.bodySubtext : textColor;
+
   if (isNarrow) {
     // Calculate the date and string format
 
@@ -111,8 +118,8 @@ export const EventCard = (props: IEventCardProps) => {
               />
             </div>
             <div>
-              <div className={styles.title} style={themeVariant && { color: themeVariant.semanticColors.bodyText }}>{title}</div>
-              <div className={styles.datetime} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext }}>{dateString}</div>
+              <div className={styles.title} style={themeVariant && { color: textColor }}>{title}</div>
+              <div className={styles.datetime} style={themeVariant && { color: subTextColor }}>{dateString}</div>
             </div>
           </DocumentCard>
         </div>
@@ -147,13 +154,13 @@ export const EventCard = (props: IEventCardProps) => {
                 />
               </div>
               <div className={styles.detailsContainer}>
-                <div className={styles.category} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext }}>{category}</div>
-                <div className={styles.title} style={themeVariant && { color: themeVariant.semanticColors.bodyText }}>{title}</div>
-                <div className={styles.datetime} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext }}>{dateString}</div>
-                <div className={styles.location} style={themeVariant && { color: themeVariant.semanticColors.bodySubtext }}>{location}</div>
+                <div className={styles.category} style={themeVariant && { color: subTextColor }}>{category}</div>
+                <div className={styles.title} style={themeVariant && { color: textColor }}>{title}</div>
+                <div className={styles.datetime} style={themeVariant && { color: subTextColor }}>{dateString}</div>
+                <div className={styles.location} style={themeVariant && { color: subTextColor }}>{location}</div>
                 <ActionButton
                   className={styles.addToMyCalendar}
-                  style={themeVariant && { color: themeVariant.semanticColors.bodyText }}
+                  style={themeVariant && { color: textColor }}
                   iconProps={{ iconName: "AddEvent" }}
                   ariaLabel={strings.AddToCalendarAriaLabel}
                   onClick={_onAddToMyCalendar}
