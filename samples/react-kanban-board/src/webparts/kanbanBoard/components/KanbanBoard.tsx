@@ -16,12 +16,12 @@ import JqxKanban, { IKanbanProps, jqx, IKanbanSource } from 'jqwidgets-scripts/j
 const rowStyle1: IStackStyles = {
   root:{
     flexBasis:"30%"
-  }  
+  }
 };
 const rowStyle2: IStackStyles = {
   root:{
     flexBasis:"70%"
-  }  
+  }
 };
 
 export interface ICustomKanbanProps extends IKanbanProps{
@@ -95,11 +95,11 @@ export default class KanbanBoard extends React.Component<IKanbanBoardProps, ICus
 
   public render(): React.ReactElement<IKanbanBoardProps> {
     const el = this.state.showBoard ?
-    !this.state.noItems ? <JqxKanban 
-    width={this.state.width} 
-    height={"100%"} 
-    source={this.state.source} 
-    columns={this.state.columns} 
+    !this.state.noItems ? <JqxKanban
+    width={this.state.width}
+    height={"100%"}
+    source={this.state.source}
+    columns={this.state.columns}
     resources={this.state.resources}
     onItemMoved={this._updateTask}
     itemRenderer={this.state.itemRenderer}
@@ -187,24 +187,24 @@ export default class KanbanBoard extends React.Component<IKanbanBoardProps, ICus
     this._getData(this.props.listTitle);
   }
 
-  _getData = (listTitle) => {
+  private _getData = (listTitle) => {
     if(listTitle && listTitle.length > 0)
     {
       sp.web.lists.getByTitle(listTitle).fields.getByInternalNameOrTitle("Status").get()
       .then(status => {
-  
+
         const cols = status.Choices.map((val,index) => {
           return { text: val, dataField: val };
         });
-  
+
         sp.web.lists.getByTitle(listTitle).items.getAll().then(res => {
-  
+
           const source = {
             dataFields: this.sourceFields,
             dataType: 'array',
             localData: [ ...res ]
           };
-  
+
           sp.web.siteUsers.get().then(users => {
             const resourcesAdapterFunc = (): any => {
               const resourcesSource = {
@@ -215,7 +215,7 @@ export default class KanbanBoard extends React.Component<IKanbanBoardProps, ICus
               const resourcesDataAdapter = new jqx.dataAdapter(resourcesSource);
               return resourcesDataAdapter;
               };
-  
+
               this.setState({
                 width: "100%",
                 columns: cols,
@@ -234,7 +234,7 @@ export default class KanbanBoard extends React.Component<IKanbanBoardProps, ICus
     }
   }
 
-  _updateTask = (event: any): void => {
+  private _updateTask = (event: any): void => {
     let args = event.args;
     // let itemId = args.itemId;
     // let oldParentId = args.oldParentId;
@@ -249,7 +249,7 @@ export default class KanbanBoard extends React.Component<IKanbanBoardProps, ICus
     });
   }
 
-  _showTask = (event:any): void => {
+  private _showTask = (event:any): void => {
     if(event.args.attribute === "template")
     {
       this.setState({
@@ -257,11 +257,11 @@ export default class KanbanBoard extends React.Component<IKanbanBoardProps, ICus
           ...event.args.item
         },
         hideDialog: false
-      }); 
+      });
     }
   }
 
-  _closeDialog = (): void => {
+  private _closeDialog = (): void => {
     this.setState({ hideDialog: true });
   }
 }
