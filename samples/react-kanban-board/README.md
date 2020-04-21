@@ -33,12 +33,14 @@ The Task list can be chosen using the webpart properties
 Solution|Author(s)
 --------|---------
 react-kanban-board | [Ram](https://twitter.com/ram_meenavalli)
+react-kanban-board | Daniel Westerdale ([Westerdale Solutions Ltd.](https://westerdale.blog), [@westerdaled](https://twitter.com/westerdaled?s=20))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0.0|July 17, 2019|Initial release
+1.0.1.0|April 21, 2020|Added support for Teams hosts
 
 ## Disclaimer
 
