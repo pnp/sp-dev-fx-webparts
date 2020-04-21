@@ -33,6 +33,8 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
 
   public render(): void {
     
+
+  
     const element: React.ReactElement<IKanbanBoardProps > = React.createElement(
       KanbanBoard,
       {
@@ -73,7 +75,8 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
   }
 
   protected onPropertyPaneConfigurationStart(){
-      sp.web.lists.filter("BaseTemplate eq 171").select("Title").get().then(res => {
+       // Use the list template ID to locate both the old style task lists (107) and newer task lists (171) 
+       sp.web.lists.filter("BaseTemplate eq 171 or BaseTemplate eq 107").select("Title").get().then(res => {
         this.properties.lists = res.map((val,index) => {
           return {
             key: val.Title,
