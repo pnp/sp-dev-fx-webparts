@@ -1335,11 +1335,10 @@ extra:
       title: Kanban Board Webpart
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-kanban-board/assets/kanban-board.gif
       thumbnailtype: video
-      author: Ram Prasad Meenavalli
+      author: Ram Prasad Meenavalli, Daniel Westerdale
       summary: This solution contains an SPFx webpart which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The webpart uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.
-      version: 1.0.0.0
-      modifiedtext: July 17, 2019
-      modified: 2019-07-17
+      modifiedtext: April 21, 2020
+      modified: 2020-04-21
     - framework: React
       spfx: 1.8.0
       year: 2019
@@ -2088,6 +2087,7 @@ extra:
     - Chakkaradeep Chandran
     - Chris Kent
     - Daniel Gaeta
+    - Daniel Westerdale
     - Dany Wyss
     - David Hartman
     - David Warner II
