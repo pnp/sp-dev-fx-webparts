@@ -1,0 +1,147 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+//@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '../../../Common/theming';
+
+.spupsProperySync {
+  .container {
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  div.ms-BasePicker-text {
+    border: none !important;
+  }
+
+  .row {
+    @include ms-Grid-row;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl10;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+}
+.periodmenu {
+  margin-bottom: 15px !important;
+  width: 85%;
+  display: inline-block;
+}
+.menuContent {
+  padding: 8px;
+}
+.emptyData {
+  color: $ms-error;
+  font-weight: bold;
+}
+
+.generateTemplateLoader {
+  display: inline-flex;
+  margin-top: 5px;
+}
+
+.status {font-weight: bold;}
+.status.blue { i { color: blue; } }
+.status.green { i { color: green; } }
+.status.orange { i { color: orange; } }
+.status.red { i { color: red; } }
+.resultsIconSpan {
+    top: 7px;
+    position: absolute;
+    margin-left: 5px;
+}
+.searchcontainer {
+  width: 95%;
+  display: inline-block;
+}
+.refreshContainer {
+  display: inline-flex;  
+  margin-top: 10px;
+  margin-left: 5px;
+  position: absolute;
+}
+
+.syncjobsContainer {
+  max-height: 500px;
+  overflow-y: auto;
+  button {
+    height: 24px;
+  }
+}
+.templatesContainer {
+  max-height: 500px;
+  button {
+    height: 24px;
+  }
+  div.templateList {
+    overflow-y: auto;
+    height: 450px;
+    margin-top: 5px;
+    width: 100%;
+  }
+}
+
+.uppropertydata {
+  .uppropertylist {
+    overflow-x: auto;
+  }
+}
+.downloadLoaderDiv {
+  width: auto;
+  display: inline-block;
+  margin-left: 10px;
+  position: absolute;
+  margin-top: 5px;
+}
+.fileiconDiv {
+  width: 5%;
+  display: inline-block;
+  i {
+    position: absolute;
+    top: 13px;
+  }
+}
+.propertyMappingContainer {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    .propertydiv {
+      display: inline-block;
+      width: 25%;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 0px 0px 0 rgba(0,0,0,.1);
+      padding: 10px 3px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      text-align: center;
+      border: 1px solid;
+      border-color: $ms-themeTertiary;
+    }
+}
+.MessageContainer{
+  font-style: italic;
+  font-weight: bold !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  .errorMessage{
+    color: red !important;
+    padding-top: 10px !important;
+    text-align: center;
+  }
+  .successMessage{
+    color: #64BE1A !important;
+    padding-top: 10px !important;
+    text-align: center;
+  }
+  .warningMessage{
+    color: #BEBB1A !important;
+    padding-top: 10px !important;
+    text-align: center;
+  }
+  .infoMessage{
+    background-color: rgb(148, 210, 230) !important;
+  }
+}
