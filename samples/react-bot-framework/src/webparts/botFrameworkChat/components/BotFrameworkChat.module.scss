@@ -1,0 +1,60 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.botFrameworkChat {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+  }
+
+  .chatHeader {
+    padding:10px;
+    background-color: #c7e0f4;
+    color: #fff;
+  }
+
+  .messagesRow {
+    padding: 20px;
+    height: 250px;
+    overflow: auto;
+  }
+
+  .listItem {
+    max-width: 715px;
+    margin: 5px auto 5px auto;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .button {
+    text-decoration: none;
+  }
+
+  .message {
+    display: block;
+    clear: both;
+    max-width:80%;
+    margin: 5px;
+    padding: 10px;
+  }
+
+  .fromBot {
+    background-color: #c8c8c8;
+    float: left;
+    color: #000;
+  }
+
+  .fromUser {
+    background-color: #c7e0f4;
+    float: right;
+    color: #000;
+  }
+
+  .welcomeMessage {
+    font-weight: bold;
+  }
+
+  .messageBox input {
+    border: 3px #c8c8c8 solid !important;
+    border-collapse: collapse;
+    padding: 15px;
+  }
+}

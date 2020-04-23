@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {   
+    "graph-reports-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphReports/GraphReportsWebPart.js",
+          "manifest": "./src/webparts/graphReports/GraphReportsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {    
+    "GraphReportsWebPartStrings": "lib/webparts/graphReports/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,6 @@
+https://piasysdev.sharepoint.com/_forms/spfxsinglesignon.aspx#
+
+CustomApiConsumer.tsx:120 Error: AADSTS65001: The user or administrator has not consented to use the application with ID 'c58637bb-e2e1-4312-8a00-04b5ffcd3403' named 'SharePoint Online Client Extensibility'. Send an interactive authorization request for this user and resource.
+Trace ID: 0dddc194-d5a3-4a9b-b1c7-f183813a0500
+Correlation ID: c7d5af1c-0c7c-45dc-b79f-0bf21a54666e
+

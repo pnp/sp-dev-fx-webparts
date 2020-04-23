@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-magnifier-client-side-solution",
+    "id": "1aae48ef-964a-42fa-9c99-493ddcb41b51",
+    "version": "1.0.0.0",
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-magnifier.sppkg"
+  }
+}

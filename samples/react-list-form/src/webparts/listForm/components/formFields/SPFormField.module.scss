@@ -1,0 +1,32 @@
+@import '../../../../common/theming.module';
+
+.dropDownFormField{
+
+    :global(.ms-Dropdown-title){
+        border: 0;
+        border-bottom: 1px solid;
+        border-color: $ms-color-neutralTertiary;
+    }
+
+}
+
+.dateFormField{
+
+    :global(.ms-TextField-fieldGroup){
+        border: 0;
+        border-bottom: 1px solid;
+        border-color: $ms-color-neutralTertiary;
+    }
+
+}
+
+.unsupportedFieldMessage{
+    color: $errorTextColor;
+    margin-top: 4px;
+
+    i{
+        margin-right: 4px;
+        top: 2px;
+        position: relative;
+    }
+}

@@ -1,0 +1,15 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.folder {
+  .header {
+    @include ms-fontSize-m;
+    margin-left: 3px;
+  }
+  .isLink {
+    cursor: pointer;
+  }
+  .sublist {
+    list-style-type: none;
+    margin-inline-start: 20px;
+  }
+}

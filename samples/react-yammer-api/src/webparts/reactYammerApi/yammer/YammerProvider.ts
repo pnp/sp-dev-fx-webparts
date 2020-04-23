@@ -84,8 +84,35 @@ export default class YammerProvider implements IYammerProvider {
         return new Promise((resolve, reject) => {
             window.yam.connect.loginButton(selector, (res: any) => {
                 if (res.authResponse) {
+                    // Store the token in local storage for any subsequent call to Yammer
+                    // so the user doesn't need to sign in again after restarting their
+                    // browser session.
+                    localStorage.setItem("yammerAuthToken", res.access_token.token);
+
                     resolve(res);
                 } else {
+                    reject(res);
+                }
+            });
+        });
+    }
+
+    /**
+    * Yammer JavaScript SDK "login" function wrapper.
+    * See https://developer.yammer.com/docs/js-sdk.
+    */
+    public login(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            window.yam.platform.login((res: any) => {
+                if (res.authResponse) {
+                    // Store the token in local storage for any subsequent call to Yammer
+                    // so the user doesn't need to sign in again after restarting their
+                    // browser session.
+                    localStorage.setItem("yammerAuthToken", res.access_token.token);
+
+                    resolve(res);
+                }
+                else {
                     reject(res);
                 }
             });
@@ -135,6 +162,12 @@ export default class YammerProvider implements IYammerProvider {
      */
     private _getLoginStatus(): Promise<any> {
         return new Promise((resolve, reject) => {
+            // Apply the auth token we have stored in local storage
+            let token = localStorage.getItem("yammerAuthToken");
+            if (token) {
+                window.yam.platform.setAuthToken(token);
+            }
+
             window.yam.getLoginStatus((res: any) => {
                 if (res.authResponse) {
                     resolve(res);

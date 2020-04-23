@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Custom property pane controls built in React
 
 ## Summary
@@ -72,6 +87,6 @@ Sample web parts in this solution illustrate the following concepts on top of th
 - displaying a custom loading indicator
 - reacting to web part property changes
 - updating properties of web part property pane controls
-- refreshing the web part property pane from web part
+- refreshing the web part property pane from the web part
 
 ![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-custompropertypanecontrols)

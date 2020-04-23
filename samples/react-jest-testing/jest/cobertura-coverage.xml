@@ -1,0 +1,244 @@
+<?xml version="1.0" ?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage lines-valid="59" lines-covered="57" line-rate="0.9661" branches-valid="12" branches-covered="12" branch-rate="1" timestamp="1525986947960" complexity="0" version="0.1">
+  <sources>
+    <source>C:\Projects\sp-dev-fx-webparts\samples\react-jest-testing</source>
+  </sources>
+  <packages>
+    <package name="components" line-rate="1" branch-rate="1">
+      <classes>
+        <class name="IceCreamShop.tsx" filename="src\webparts\iceCreamShop\components\IceCreamShop.tsx" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="(anonymous_5)" hits="6" signature="()V">
+              <lines>
+                <line number="8" hits="6"/>
+              </lines>
+            </method>
+            <method name="IceCreamShop" hits="18" signature="()V">
+              <lines>
+                <line number="9" hits="18"/>
+              </lines>
+            </method>
+            <method name="(anonymous_7)" hits="18" signature="()V">
+              <lines>
+                <line number="21" hits="18"/>
+              </lines>
+            </method>
+            <method name="(anonymous_8)" hits="18" signature="()V">
+              <lines>
+                <line number="23" hits="18"/>
+              </lines>
+            </method>
+            <method name="(anonymous_9)" hits="18" signature="()V">
+              <lines>
+                <line number="24" hits="18"/>
+              </lines>
+            </method>
+            <method name="(anonymous_10)" hits="52" signature="()V">
+              <lines>
+                <line number="32" hits="52"/>
+              </lines>
+            </method>
+            <method name="(anonymous_11)" hits="132" signature="()V">
+              <lines>
+                <line number="42" hits="132"/>
+              </lines>
+            </method>
+            <method name="(anonymous_12)" hits="5" signature="()V">
+              <lines>
+                <line number="81" hits="5"/>
+              </lines>
+            </method>
+            <method name="(anonymous_13)" hits="5" signature="()V">
+              <lines>
+                <line number="83" hits="5"/>
+              </lines>
+            </method>
+            <method name="(anonymous_14)" hits="3" signature="()V">
+              <lines>
+                <line number="91" hits="3"/>
+              </lines>
+            </method>
+            <method name="(anonymous_15)" hits="2" signature="()V">
+              <lines>
+                <line number="98" hits="2"/>
+              </lines>
+            </method>
+            <method name="(anonymous_16)" hits="2" signature="()V">
+              <lines>
+                <line number="100" hits="2"/>
+              </lines>
+            </method>
+            <method name="(anonymous_17)" hits="2" signature="()V">
+              <lines>
+                <line number="107" hits="2"/>
+              </lines>
+            </method>
+            <method name="(anonymous_18)" hits="2" signature="()V">
+              <lines>
+                <line number="110" hits="2"/>
+              </lines>
+            </method>
+            <method name="(anonymous_19)" hits="5" signature="()V">
+              <lines>
+                <line number="117" hits="5"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="1" hits="6" branch="false"/>
+            <line number="2" hits="6" branch="false"/>
+            <line number="8" hits="6" branch="false"/>
+            <line number="9" hits="18" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="21" hits="18" branch="false"/>
+            <line number="23" hits="18" branch="false"/>
+            <line number="24" hits="18" branch="false"/>
+            <line number="26" hits="18" branch="false"/>
+            <line number="27" hits="18" branch="false"/>
+            <line number="32" hits="52" branch="false"/>
+            <line number="33" hits="52" branch="false"/>
+            <line number="44" hits="132" branch="false"/>
+            <line number="81" hits="6" branch="false"/>
+            <line number="83" hits="5" branch="false"/>
+            <line number="84" hits="5" branch="false"/>
+            <line number="85" hits="5" branch="false"/>
+            <line number="86" hits="5" branch="false"/>
+            <line number="87" hits="5" branch="false"/>
+            <line number="91" hits="6" branch="false"/>
+            <line number="92" hits="3" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="93" hits="1" branch="false"/>
+            <line number="96" hits="2" branch="false"/>
+            <line number="97" hits="2" branch="false"/>
+            <line number="98" hits="2" branch="false"/>
+            <line number="100" hits="2" branch="false"/>
+            <line number="101" hits="2" branch="false"/>
+            <line number="102" hits="2" branch="false"/>
+            <line number="107" hits="6" branch="false"/>
+            <line number="108" hits="2" branch="false"/>
+            <line number="110" hits="2" branch="false"/>
+            <line number="111" hits="2" branch="false"/>
+            <line number="112" hits="2" branch="false"/>
+            <line number="113" hits="2" branch="false"/>
+            <line number="117" hits="6" branch="false"/>
+            <line number="118" hits="5" branch="true" condition-coverage="100% (2/2)"/>
+            <line number="120" hits="6" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="iceCreamProviders" line-rate="0.9129999999999999" branch-rate="1">
+      <classes>
+        <class name="IceCreamFakeProvider.ts" filename="src\webparts\iceCreamShop\iceCreamProviders\IceCreamFakeProvider.ts" line-rate="1" branch-rate="1">
+          <methods>
+            <method name="(anonymous_0)" hits="21" signature="()V">
+              <lines>
+                <line number="4" hits="21"/>
+              </lines>
+            </method>
+            <method name="(anonymous_2)" hits="16" signature="()V">
+              <lines>
+                <line number="6" hits="16"/>
+              </lines>
+            </method>
+            <method name="(anonymous_3)" hits="16" signature="()V">
+              <lines>
+                <line number="8" hits="16"/>
+              </lines>
+            </method>
+            <method name="(anonymous_4)" hits="1" signature="()V">
+              <lines>
+                <line number="21" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_5)" hits="1" signature="()V">
+              <lines>
+                <line number="23" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="4" hits="5" branch="false"/>
+            <line number="6" hits="5" branch="false"/>
+            <line number="8" hits="16" branch="false"/>
+            <line number="17" hits="16" branch="false"/>
+            <line number="21" hits="5" branch="false"/>
+            <line number="23" hits="1" branch="false"/>
+            <line number="25" hits="5" branch="false"/>
+          </lines>
+        </class>
+        <class name="IceCreamPnPJsProvider.ts" filename="src\webparts\iceCreamShop\iceCreamProviders\IceCreamPnPJsProvider.ts" line-rate="0.875" branch-rate="1">
+          <methods>
+            <method name="(anonymous_12)" hits="2" signature="()V">
+              <lines>
+                <line number="5" hits="2"/>
+              </lines>
+            </method>
+            <method name="IceCreamPnPJsProvider" hits="4" signature="()V">
+              <lines>
+                <line number="9" hits="4"/>
+              </lines>
+            </method>
+            <method name="(anonymous_14)" hits="1" signature="()V">
+              <lines>
+                <line number="13" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_15)" hits="1" signature="()V">
+              <lines>
+                <line number="15" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_18)" hits="1" signature="()V">
+              <lines>
+                <line number="23" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_19)" hits="0" signature="()V">
+              <lines>
+                <line number="31" hits="0"/>
+              </lines>
+            </method>
+            <method name="(anonymous_20)" hits="1" signature="()V">
+              <lines>
+                <line number="35" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_21)" hits="1" signature="()V">
+              <lines>
+                <line number="37" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_22)" hits="1" signature="()V">
+              <lines>
+                <line number="42" hits="1"/>
+              </lines>
+            </method>
+            <method name="(anonymous_23)" hits="0" signature="()V">
+              <lines>
+                <line number="43" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="2" branch="false"/>
+            <line number="10" hits="4" branch="false"/>
+            <line number="13" hits="2" branch="false"/>
+            <line number="15" hits="1" branch="false"/>
+            <line number="23" hits="1" branch="false"/>
+            <line number="25" hits="1" branch="false"/>
+            <line number="26" hits="3" branch="false"/>
+            <line number="27" hits="3" branch="false"/>
+            <line number="30" hits="1" branch="false"/>
+            <line number="31" hits="0" branch="false"/>
+            <line number="35" hits="2" branch="false"/>
+            <line number="37" hits="1" branch="false"/>
+            <line number="38" hits="1" branch="false"/>
+            <line number="42" hits="1" branch="false"/>
+            <line number="43" hits="0" branch="false"/>
+            <line number="46" hits="2" branch="false"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "be293fec-29f2-4db2-869a-604e560980fa",
+  "alias": "ReactAggregatedCalendarWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": {
+      "default": "Ayka"
+    },
+    "title": {
+      "default": "React Aggreagated Calendar App"
+    },
+    "description": {
+      "default": "React Aggreagated Calendar App developed by Dhaval Shah"
+    },
+    "officeFabricIconFontName": "SearchCalendar",
+    "properties": {
+      "header": "My Calendar",
+      "showWeekends": "Off",
+      "showLegend": true,
+      "dateFormat": "MMMM Do YYYY, h:mm a",
+      "defaultView": "month",
+      "availableViews": [
+        "month",
+        "agendaWeek",
+        "agendaDay",
+        "listMonth"
+      ]
+    }
+  }]
+}

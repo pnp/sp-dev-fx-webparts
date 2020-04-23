@@ -4,14 +4,22 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
+
+import styles from './NoFrameworkCrudWebPart.module.scss';
+import * as strings from 'NoFrameworkCrudWebPartStrings';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
-import styles from './NoFrameworkCrud.module.scss';
-import * as strings from 'noFrameworkCrudStrings';
-import { INoFrameworkCrudWebPartProps } from './INoFrameworkCrudWebPartProps';
-import { IListItem } from './IListItem';
+export interface INoFrameworkCrudWebPartProps {
+  listName: string;
+}
+
+interface IListItem {
+  Title?: string;
+  Id: number;
+}
 
 export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFrameworkCrudWebPartProps> {
+
   private listItemEntityTypeName: string = undefined;
 
   public render(): void {
@@ -90,32 +98,6 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
     this.domElement.querySelector('button.readall-Button').addEventListener('click', () => { webPart.readItems(); });
     this.domElement.querySelector('button.update-Button').addEventListener('click', () => { webPart.updateItem(); });
     this.domElement.querySelector('button.delete-Button').addEventListener('click', () => { webPart.deleteItem(); });
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
-  }
-
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.DataGroupName,
-              groupFields: [
-                PropertyPaneTextField('listName', {
-                  label: strings.ListNameFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
-    };
   }
 
   private listNotConfigured(): boolean {
@@ -370,11 +352,32 @@ export default class NoFrameworkCrudWebPart extends BaseClientSideWebPart<INoFra
   }
 
   private updateItemsHtml(items: IListItem[]): void {
-    const itemsHtml: string[] = [];
-    for (let i: number = 0; i < items.length; i++) {
-      itemsHtml.push(`<li>${items[i].Title} (${items[i].Id})</li>`);
-    }
+    this.domElement.querySelector('.items').innerHTML = items.map(item => `<li>${item.Title} (${item.Id})</li>`).join("");
+  }
 
-    this.domElement.querySelector('.items').innerHTML = itemsHtml.join('');
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    return {
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            {
+              groupName: strings.DataGroupName,
+              groupFields: [
+                PropertyPaneTextField('listName', {
+                  label: strings.ListNameFieldLabel
+                })
+              ]
+            }
+          ]
+        }
+      ]
+    };
   }
 }

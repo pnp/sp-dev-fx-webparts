@@ -1,15 +1,16 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "ec34b5c6-7708-42ad-841e-46f2b75a074e",
   "alias":"ReactDropdownwRemoteDataWOCustomControl",
   "componentType": "WebPart",
-  "version": "0.0.2",
+  "version": "*",
   "manifestVersion": 2,
+  "supportedHosts": ["SharePointWebPart"],
+  "safeWithCustomScriptDisabled": false,
 
   "preconfiguredEntries": [{
     "groupId": "ec34b5c6-7708-42ad-841e-46f2b75a074e",
-    "group": { "default": "Under Development" },
+    "group": { "default": "Other" },
     "title": { "default": "Dropdown with remote data (without custom controls)" },
     "description": { "default": "Sample web part using a property bound to the standard dropdown control with remote data" },
     "officeFabricIconFontName": "Page",

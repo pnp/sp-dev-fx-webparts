@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-slide-swiper-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactSlideSwiper/ReactSlideSwiperWebPart.js",
+          "manifest": "./src/webparts/reactSlideSwiper/ReactSlideSwiperWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactSlideSwiperWebPartStrings": "lib/webparts/reactSlideSwiper/loc/{locale}.js"
+  }
+}

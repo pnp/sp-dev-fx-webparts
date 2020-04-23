@@ -1,0 +1,66 @@
+
+// import
+@import '../../../common/theming.module';
+
+.draggableComponent {
+    /*border: '1px dashed gray',
+    padding: '0.5rem 1rem',
+    marginBottom: '.5rem',*/
+    opacity: 1;
+    background-color: transparent;
+    position: relative;
+}
+
+    .draggableComponent:hover{
+        background-color: $ms-color-neutralLighter;
+        outline: 1px solid;
+        outline-color: $ms-color-neutralLight;
+    }
+
+    .draggableComponent.isDragging {
+        opacity: 0.3;
+        background-color: $ms-color-themeLighter;
+    }
+
+.toolbar {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    min-width: 34px;
+    background-color: $ms-color-white;
+    color: $ms-color-themeLight;
+    display: none;
+    overflow: hidden;
+    text-align: center;
+    transition: all .3s;
+    transition-property: background-color,color;
+
+    .button {
+        height: 34px;
+        min-width: 34px;
+        display: block;
+        border: 1px solid transparent;
+        color: $ms-color-themeLight;
+        background-color: $ms-color-white;
+        padding: 0 8px;
+        overflow: hidden;
+        text-align: center;
+        transition: all .3s;
+        transition-property: background-color,color;
+        font-weight: 400;
+        font-size: 14px;
+        z-index: 10;
+
+        &:hover {
+            background-color: $ms-color-themeDark;
+            color: $ms-color-white;
+        }
+    }
+
+
+}
+
+    .draggableComponent:hover .toolbar {
+        display: block;
+    }

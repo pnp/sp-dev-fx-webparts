@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "ice-cream-shop-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/iceCreamShop/IceCreamShopWebPart.js",
+          "manifest": "./src/webparts/iceCreamShop/IceCreamShopWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "IceCreamShopWebPartStrings": "lib/webparts/iceCreamShop/loc/{locale}.js"
+  }
+}

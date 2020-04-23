@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "c2ebe6a8-5c9f-4199-bff0-4e0222926d4f",
+  "alias": "MobxTutorialWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "MobxTutorial" },
+    "description": { "default": "An example of a webpart using mobx for managing the application state" },
+    "iconImageUrl": "data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM\/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAnwSURBVFhHzVjbq1xnFV\/7cmbmzJzL5NySKhQMpVh90odSEaWCCkWE1AZRqtLWW0Ef9Kn1glTESqVWBR98EEWUViESY+ODCqK0vliw4EsrCMZYJTbnNsnJmZyZffH3+62195mT+Ad05cxe61vfuvy+9V32t5PUIHsNUwtw8ydfsqt\/fMaSJLUGcd1KJMj+h0dtFYT+fGIVhUQqf4ScwLKCKoFcQYYaej7REo\/oeDivraxKW+h1bfXdD1jvvseodYBbALf5zOOWLw2lVBJGb4KQPFO0oYfQ7SaWQi9w8ole4YDecaAfj5mYesoHNtKZlXVpvU7X1oZLVuxcsu4Hvmz90191gBc+edLKvW1L8o5AKJgCU\/bxM5c6K1RNACrL88Tm5lAryCi92yNjHXICuYKMEOCVorgp9AjCKtcAWZU14uS2sTK0skBfeWBJ\/5gNn3rZUqZN0kzOMEeDSZRP5NCYmeQyi4nSWYnA0goQ9Oj2wUQc9kFmJRM8GF82kNNULYXO88zBlQDXVAhLjeRPkUfUtAS1wSAHFHm4CarhShk2bgmAs3ryQRINBp2NBWNKISLgdAYcjDkQssh4CBBSKnToaFgTR+EbFyiRlYlZOaxr1wqYasIW\/CMOHvKFzPiMAlMNnPGPry5rowkciscp90xydoAuglgJ9AlnEIMoWLRl7X+SMXARobkttAQLnVfRY7qDxxEE6Fg5rkm2E20qKJuNFrunraAc8WgnNJinwo8gEVU7kp0IRh+s6TYIK0pbPrWGYCvQ0MgX645xWLGNlSWBJDgK3EwCB87TgFlIEVshIzD+wpH\/iiubVu1uWrG9aeX2lpVXthwk7WgB0fe5A\/HpQ2ByhfMG+8vRCHFGtppcs3r3v1Zduezg2ItSavdrmyuYSMfMxU\/fjmNmy5Isk3FzLJQ7m3b7+bCcoZfvSSxfWYOEoLDlUZNnSMQqE1gcOypIHDvF9o7d9uzNsbbun7N0ecNBalrhN51Ysrhma99+yStIwE4cKaoCBRd02uvZ1s+\/Zju\/+q5tPe0ne3l1W9zJPcuYGvlSy0qgMl5F6CFTX6EIpPHZr9v133zP9n\/5DUu6\/aPgFAtirEFV8F9RwTqbo8mRKtbjPauxE4rNid3xHF5HAPj3D65aigoqDqz51+\/jFYnK3VhFAivL0gaTkR3\/IQY3OGZbp2BzbBH98OktwJhWCBO8LqaWLKzY+nf+FmvQM4nxqUqgh1VM5hcsGyxb2ldnS221wkvHDQDxTS49dzIrB6B9zMR8r6O2qIf+eWyS7o3gYE8fcalnAAbTlHgTBBmGnPIbiapq\/woqvwsQU59mavlHH1St2tuxTnVgC\/2u3jpNHEEBAg2SgCiLR2\/DQQ6QMp3BnUUl0NseOxG8oWp\/zzYeetJe9+gZm9t4gxUTLGzo+fawqrB0MLTjj5y19QefsmLvCqO5IynyedUggPs6RBujoG1j7QBJAcBZNEgQWZFGJRFeNeY0Hx63xbedsuW777diPHYDUD0dW\/\/OU\/rVi+uwLdwxiJXUZmBQbIZmk6im3BzoYkVJhwBJBMFOsdSriIZXcYZo05m30W9\/oObC209bfVDorcLASTGx5Xd8SH0Hf\/gRzqEeXVryDRugwHUUCSStWEEMgIYgzxzAxA8ZiOuxAXmUMtzd9v78O8mdEyctWxhYURTKu9TvWXbbXeqbvvhrq\/Nug0o6EjcPwfGAbqcXpGnXT80GoG8M2VAD7iw2DB6a5lmCT9pN7eqffqHm8nsesmJ\/bEud1PI775Nu8sJZqzt9uMcaC\/JCoY1p1iuOCiRod3L7nJ1inqqhVCz6RENVPLRs+7P5gQ5x0vCeh20OF81yfNU6d39cOh7GXApthZp5I6HdXg4IjrdgcF5M2uMIpLQOxDGqLxRkbRVnqenH1I1ffA6bdmrdW9+ET4Y1m0xKm3vzu3DMFDb56+9jelkPAnE\/5lAbgHW94u2aLwW\/qrOzBTlbFwTwiVWXowt2uE0ihwTapYOOjc48LtXCez9l6V0fljw+h9fYYNH9CdDziSSiUhUrqAWOdagKCrFXNqgFqED4+UxDIgc5iwaIkkwiSA8fWnvnviV58X2ftcX3f07y+Nkn8Z4dxLoiHSalyK0hcJQacOACza4wP1pBEqooAJJdIDtC0DEAP3TSLLfq4Lrtv3AeN5xbrHvyLTb5y3mchdeRh574wdgvvZ5VT4ELfUwzB+0XV3a57QzAeHtQandW0xNBSezCrwNgWZr6Gse7eufHj4SB2einj+pdq52K46XZqSiME3yYyTFwg4CpctzVkBuQIAfYZg9CQPYrAC3Am5FQlaORZQ5OGoAtNl+x\/3z+rfYKfuNLF1FeXA7irEvIaRrkbnzG0UJwHAAH0oCL0XheoaEQbw+q4tipcGxU+yOrrrHfY+UA56NnXEwLIqa9eZtevmjFqxeszOeVSBVUVcDDnsRY1bWRjiQlJzjyGJCu\/EwPCoDRCuJa4c6163s2PP0FW3ngCVt72C+sJOYiQL43CU67kPa4kVuOOyVGXxCgqgLjNqGjXP7EY7b80W\/a4r1fRAF4kUCV47XHJcFQSgDShfXfn7kD3xqbqNqcdyIdE5Y7l+zkOTdsiK2Lp\/ChP9wIcBw9Ozgoryarys8A\/ryCuOhuv2qvP3M0Fumf9yaWDVfbGKQK7\/J0Yc1u\/f4\/GoBvxE0Z3yRJjoSC7\/9gzw+bCp9uc1nswTS3ZGn1CDheELjKHJx780gd4FWIWyGC0Ba3cnx81fzfCP\/T\/KVLKxiD5yRpTZZTAFwFwAsxxSAdAmzJzjcJKVtat976Lbjin8BITwic5gvgBITg8BNgJuYiZcUKB+22ftal8M2G+FQ4hk8GVI2xmuOHVefPZbjxAWoBOnlixaUjmhnXFd10TkFEn84tCiCBox+aWm9y9jgFQLI9+5aQDbjHYjAfoAicS1d6xgQJYMwqGu4Y5jrnSM05xd3lpm5xeOlswKFmTK6rFTYKr\/nou\/kgpgM7ZmOw4s6puel\/FiIzGAQE4DnHlvszkVfKX3HgSgANGAfFr0GCaxJQyQoS3P876+jbxIAA8+CMTXtwkgNs7CRjregMhCgFOdxYGUyTArQHsMxBWGMtOLeVFv3N\/90IHJO2Z91RLj37IylbpADITACJFmdVlULbf4dnnQdgQDUjxMzUoEoaiNQMiHWoXSvYaAYY5hM42qANPntxVQXjv80EcIDvh3J0GYtmimNgqvsdP57rcgJdIV7hfodPN93zbEqd91fgNoWMT89WD1\/qaVseuE8N39kY\/O8NPHCpgF6+HqMCL3bHtvjOjwigzkEKu09\/xfaf\/xk0fI2xChy5LNqKOOejYXjiT7Vt9FJFgxKKNd\/8Zzvb6o8+CXjA5vCaVQrc+seekFUL8LVJZv8DKLJX7WNRDjkAAAAASUVORK5CYII=",
+    "properties": {
+      "ApplicationTitle": "Mobx Tutorial Title (change in webpart properties) 😎",
+      "AllowImportantItems": true
+    }
+  }]
+}

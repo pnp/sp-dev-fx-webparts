@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "61119bb3-fa48-4ded-bde9-6593ed155cbb",
+  "alias": "ItRequestsWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "61119bb3-fa48-4ded-bde9-6593ed155cbb",
+    "group": { "default": "Under Development" },
+    "title": { "default": "IT Requests" },
+    "description": { "default": "Shows list of IT requests" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "listName": "IT Requests"
+    }
+  }]
+}

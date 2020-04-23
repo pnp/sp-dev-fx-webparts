@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+    "id": "54d10877-595f-464d-81f0-19fb840c766f",
+    "alias": "EmployeeSpotlightWebPart",
+    "componentType": "WebPart",
+    "version": "0.0.1",
+    "manifestVersion": 2,
+
+    "preconfiguredEntries": [{
+        "groupId": "54d10877-595f-464d-81f0-19fb840c766f",
+        "group": { "default": "SPFx Webparts" },
+        "title": { "default": "Employee Spotlight" },
+        "description": { "default": "This webpart shows the employee spotlight information." },
+        "officeFabricIconFontName": "Page",
+        "properties": {
+            "description": "Employee Spotlight",
+            "spotlightBGColor": "#3f0d3e",
+            "spotlightFontColor": "#ffffff",
+            "enabledSpotlightAutoPlay": true
+        }
+    }]
+}

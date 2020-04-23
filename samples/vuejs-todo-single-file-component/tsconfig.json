@@ -3,13 +3,17 @@
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
-    "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
     "types": [
+      "es6-promise",
       "webpack-env"
+    ],
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.collection"
     ]
   }
 }

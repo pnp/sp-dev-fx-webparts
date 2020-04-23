@@ -1,0 +1,42 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.accessibleTable {
+  .shomMeTheTable {
+    position: unset !important;
+    left: unset !important;
+    top: unset !important;
+    width: unset !important;
+    height: unset !important;
+    display: block !important;
+    color: $ms-color-neutralSecondary;
+    background-color: $ms-color-neutralLighter;
+    text-align: left;
+    padding: 20px;
+    margin-top: 20px;
+
+    & > table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    & > table {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+
+      & th {
+        border-bottom: 1px double black;
+      }
+
+      & > caption {
+        font-size: $ms-font-size-xl;
+        font-weight: $ms-font-weight-semibold;
+        & span {
+          font-size: $ms-font-size-16;
+        }
+      }
+    }
+  }
+}

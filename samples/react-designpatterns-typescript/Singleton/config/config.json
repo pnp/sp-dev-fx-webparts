@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "singleton-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/singleton/SingletonWebPart.js",
+          "manifest": "./src/webparts/singleton/SingletonWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SingletonWebPartStrings": "lib/webparts/singleton/loc/{locale}.js"
+  }
+}

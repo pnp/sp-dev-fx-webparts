@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "spfx-js-datatables-client-side-solution",
+    "id": "1e1ac667-cac9-4a86-97fb-f5abda8a8926",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-js-datatables.sppkg"
+  }
+}

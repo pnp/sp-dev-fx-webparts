@@ -1,10 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/scriptEditor/ScriptEditorWebPart.js",
-      "manifest": "./src/webparts/scriptEditor/ScriptEditorWebPart.manifest.json",
-      "outputPath": "./dist/script-editor.bundle.js"
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "script-editor-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/scriptEditor/ScriptEditorWebPart.js",
+          "manifest": "./src/webparts/scriptEditor/ScriptEditorWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {}
+  },
+  "localizedResources": {
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
 }

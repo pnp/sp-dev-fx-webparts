@@ -1,0 +1,32 @@
+{
+  "@pnp/generator-spfx": {
+    "framework": "react",
+    "pnpFramework": "reactjs.plus",
+    "pnp-libraries": [
+      "jquery@3",
+      "@pnp/pnpjs",
+      "@pnp/spfx-property-controls",
+      "@pnp/spfx-controls-react"
+    ],
+    "pnp-ci": [
+      "azure"
+    ],
+    "pnp-vetting": [
+      "webpack-analyzer",
+      "stylelint"
+    ],
+    "spfxenv": "spo"
+  },
+  "@microsoft/generator-sharepoint": {
+    "environment": "spo",
+    "framework": "react",
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "version": "1.8.2",
+    "libraryName": "react-calendar",
+    "libraryId": "3a13208b-3874-4036-9262-4edd22e88187",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

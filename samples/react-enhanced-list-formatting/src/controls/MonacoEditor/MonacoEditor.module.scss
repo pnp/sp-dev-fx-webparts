@@ -1,0 +1,25 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.codeEditor {
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  box-sizing: border-box;
+  //margin-bottom: 20px;
+  //border:1px solid RGB(194,194,194);
+  border-width: 1px;
+  border-style: solid;
+  //border-color: $ms-color-neutralLight;
+  border-color: $ms-color-neutralTertiaryAlt;
+  border-radius: 2px;
+  //  border-color: rgb(51, 51, 51);
+
+  &:hover {
+    border-color: $ms-color-neutralPrimary;
+  }
+
+  &:focus-within {
+    border-color: $ms-color-themePrimary;
+  }
+}

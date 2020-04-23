@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "6a8e85b0-fb77-4206-aced-cdfc53a9b6c1",
+  "alias": "IceCreamLorryWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "IceCreamLorry" },
+    "description": { "default": "IceCreamLorry description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "IceCreamLorry"
+    }
+  }]
+}

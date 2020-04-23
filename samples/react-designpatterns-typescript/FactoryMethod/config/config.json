@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "factory-method-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/factoryMethod/FactoryMethodWebPart.js",
+          "manifest": "./src/webparts/factoryMethod/FactoryMethodWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FactoryMethodWebPartStrings": "lib/webparts/factoryMethod/loc/{locale}.js"
+  }
+}

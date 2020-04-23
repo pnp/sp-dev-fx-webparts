@@ -1,4 +1,25 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+  scenarios:
+  - Embed
+---
 # React & Office Graph Web Part samples
+
+> ## DEPRECATED
+> This sample makes use of deprecated or otherwise outdated packages and will no longer work. See issue [#358](https://github.com/SharePoint/sp-dev-fx-webparts/issues/358) for more information.
 
 ## Summary
 
@@ -70,7 +91,7 @@ Version|Date|Comments
 - create a copy of the **./temp/workbench.html** file and change its extension to **.aspx**
 - in the contents of the **workbench.aspx** file change the URL of the **webAbsoluteUrl** property to the URL of your site, eg. `https://contoso.sharepoint.com/sites/my-team`
 - upload the **workbench.aspx** file to the Document Library in your site
-- navigate to the workbench page uploaded to your SharePoint site, ie. _https://contoso.sharepoint.com/sites/my-team/documents/workbench.aspx_
+- navigate to the workbench page uploaded to your SharePoint site, i.e. _https://contoso.sharepoint.com/sites/my-team/documents/workbench.aspx_
 
 ## Features
 

@@ -1,0 +1,28 @@
+{
+  "solution": {
+    "name": "react-provision-assets-client-side-solution",
+    "id": "e64d001b-d6c7-4326-8d5f-965a7a086267",
+    "version": "1.0.0.0",
+    "features": [{
+      "title": "react-provision-assets-client-side-solution",
+      "description": "react-provision-assets-client-side-solution",
+      "id": "523fe887-ced5-4036-b564-8dad5c6c6e22",
+      "version": "1.0.0.0",
+      "assets": {        
+        "elementManifests": [
+          "elements.xml"
+        ],
+        "elementFiles":[
+          "listSchema.xml",
+          "librarySchema.xml",
+          "Image1.jpg",
+          "Image2.png",
+          "WebPartSitePage.aspx"
+        ]
+      }
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-provision-assets.sppkg"
+  }
+}

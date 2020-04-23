@@ -1,0 +1,13 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-tinymce-client-side-solution",
+    "id": "d9b89fd2-67c9-4d0a-b57d-a85f7ab9679f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-tinymce.sppkg"
+  }
+}

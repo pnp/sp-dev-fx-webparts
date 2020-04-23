@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { DisplayMode } from '@microsoft/sp-core-library';
-import { Placeholder } from '@microsoft/sp-webpart-base';
 import { Fabric } from 'office-ui-fabric-react';
 import TodoForm from '../TodoForm/TodoForm';
 import styles from './TodoContainer.module.scss';
 import ITodoItem from '../../models/ITodoItem';
+import ConfigurationView from '../ConfigurationView/ConfigurationView';
 import TodoList from '../TodoList/TodoList';
 import ITodoContainerProps from './ITodoContainerProps';
 import ITodoContainerState from './ITodoContainerState';
@@ -68,15 +68,15 @@ export default class Todo extends React.Component<ITodoContainerProps, ITodoCont
     return (
       <Fabric>
         { this._showPlaceHolder && this.props.webPartDisplayMode === DisplayMode.Edit &&
-          <Placeholder
+          <ConfigurationView
             icon={ 'ms-Icon--Edit' }
             iconText='Todos'
             description='Get things done. Organize and share your teams to-do items with your team.'
             buttonLabel='Configure'
-            onAdd={ this._configureWebPart }  />
+            onConfigure={ this._configureWebPart }  />
         }
         { this._showPlaceHolder && this.props.webPartDisplayMode === DisplayMode.Read &&
-          <Placeholder
+          <ConfigurationView
             icon={ 'ms-Icon--Edit' }
             iconText='Todos'
             description='Get things done. Organize and share your teams to-do items with your team. Edit this web part to start managing to-dos.' />

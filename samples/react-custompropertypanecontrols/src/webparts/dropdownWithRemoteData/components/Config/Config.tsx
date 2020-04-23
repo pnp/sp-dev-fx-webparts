@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Fabric } from 'office-ui-fabric-react';
 import { DisplayMode } from '@microsoft/sp-core-library';
-import { Placeholder } from '@microsoft/sp-webpart-base';
+import { Placeholder } from "@pnp/spfx-controls-react/lib/PlaceHolder";
 import { IConfigProps } from './IConfigProps';
 
 export class Config extends React.Component<IConfigProps, {}> {
@@ -10,15 +10,15 @@ export class Config extends React.Component<IConfigProps, {}> {
       <Fabric>
         { this.props.displayMode === DisplayMode.Edit &&
           <Placeholder
-            icon="ms-Icon--CheckboxComposite"
+            iconName="CheckboxComposite"
             iconText="Custom Properties"
             description="Set custom properties."
             buttonLabel="Configure"
-            onAdd={ this.props.configure } />
+            onConfigure={ this.props.configure } />
         }
         { this.props.displayMode === DisplayMode.Read &&
           <Placeholder
-            icon="ms-ICon--CheckboxComposite"
+            iconName="CheckboxComposite"
             iconText="Custom Properties"
             description="Set custom properties." />
         }

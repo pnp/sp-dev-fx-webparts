@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "kanban-board-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/kanbanBoard/KanbanBoardWebPart.js",
+          "manifest": "./src/webparts/kanbanBoard/KanbanBoardWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "KanbanBoardWebPartStrings": "lib/webparts/kanbanBoard/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "broadcaster": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/broadcaster/BroadcasterWebPart.js",
+          "manifest": "./src/webparts/broadcaster/BroadcasterWebPart.manifest.json"
+        }
+      ]
+    },
+    "receiver": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/receiver/ReceiverWebPart.js",
+          "manifest": "./src/webparts/receiver/ReceiverWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "broadcasterStrings": "lib/webparts/broadcaster/loc/{locale}.js",
+    "receiverStrings": "lib/webparts/receiver/loc/{locale}.js"
+  }
+}

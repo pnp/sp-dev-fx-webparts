@@ -1,0 +1,47 @@
+$lightgray: #f5f5f5;
+
+.queryFilter {
+    background-color: $lightgray;
+    
+    &.disabled {
+        background-color: transparent;
+        border: 1px solid $lightgray;
+    }
+
+    .paddingContainer {
+        padding: 12px 15px 3px 15px;
+
+        div[class~=ms-ChoiceFieldGroup] {
+            text-align: center;
+
+            div[class~=ms-ChoiceField] {
+                display: inline-block;
+            }
+        }
+
+        :global .ms-BasePicker-text {
+            background-color: #fff;
+        }
+
+        :global .ms-Checkbox {
+            margin-top: 10px;
+        }
+
+        :global .ms-Persona-details {
+            max-width: 165px;
+        }
+
+        .peoplePicker {
+            &.disabled {
+                :global .ms-BasePicker-text {
+                    background-color: #ccc;
+
+                    :global .ms-BasePicker-input,
+                    :global .ms-PickerPersona-container {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

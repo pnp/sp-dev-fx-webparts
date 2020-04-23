@@ -1,0 +1,32 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.outlook2SharePoint {
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  .header {
+    cursor: pointer;
+    margin-left: 6px;
+  }
+  .headerIcon {
+    font-size: 1.5em;
+    font-weight: bolder;
+  }
+  .headerText {
+    @include ms-fontSize-l;
+    margin-left: 3px;
+  }
+  .metadata {
+    margin-left: 6px;
+    margin-bottom: 8px;
+  }
+  .subMetadata {
+    margin-left: 6px;
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover {
+      @include ms-fontColor-themePrimary;
+    }
+  }
+}

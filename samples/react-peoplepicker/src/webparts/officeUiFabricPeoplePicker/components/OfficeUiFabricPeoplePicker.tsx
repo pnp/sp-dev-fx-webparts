@@ -1,41 +1,41 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
-import styles from './OfficeUiFabricPeoplePicker.module.scss';
 import { IOfficeUiFabricPeoplePickerProps } from './IOfficeUiFabricPeoplePickerProps';
-
 import {
   CompactPeoplePicker,
   IBasePickerSuggestionsProps,
-  ListPeoplePicker,
   NormalPeoplePicker
 } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import {
+  assign,
+  autobind
+} from 'office-ui-fabric-react/lib/Utilities';
+import { people } from './PeoplePickerExampleData';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  SPHttpClient,
+  SPHttpClientBatch,
+  SPHttpClientResponse } from '@microsoft/sp-http';
+import {
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
+import { Promise } from 'es6-promise';
+import  * as lodash from 'lodash';
+import {
+  IClientPeoplePickerSearchUser,
+  IEnsurableSharePointUser,
+  IEnsureUser,
+  IOfficeUiFabricPeoplePickerState,
+  SharePointUserPersona } from '../models/OfficeUiFabricPeoplePicker';
+  import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
+
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
   noResultsFoundText: 'No results found',
   loadingText: 'Loading'
 };
-import {
-  BaseComponent,
-  assign,
-  autobind
-} from 'office-ui-fabric-react/lib//Utilities';
-import { people } from './PeoplePickerExampleData';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IPeopleDataResult } from './IPeopleDataResult';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 
-export interface IOfficeUiFabricPeoplePickerState {
-  currentPicker?: number | string;
-  delayResults?: boolean;
-}
-export interface IPeopleSearchProps {
-  JobTitle: string;
-  PictureURL: string;
-  PreferredName: string;
-}
 export default class OfficeUiFabricPeoplePicker extends React.Component<IOfficeUiFabricPeoplePickerProps, IOfficeUiFabricPeoplePickerState> {
   private _peopleList;
   private contextualMenuItems: IContextualMenuItem[] = [
@@ -67,8 +67,8 @@ export default class OfficeUiFabricPeoplePicker extends React.Component<IOfficeU
       disabled: true
     }
   ];
-  constructor() {
-    super();
+  constructor(props: IOfficeUiFabricPeoplePickerProps) {
+    super(props);
     this._peopleList = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};
@@ -79,15 +79,18 @@ export default class OfficeUiFabricPeoplePicker extends React.Component<IOfficeU
 
     this.state = {
       currentPicker: 1,
-      delayResults: false
+      delayResults: false,
+      selectedItems: []
     };
+
   }
 
   public render(): React.ReactElement<IOfficeUiFabricPeoplePickerProps> {
     if (this.props.typePicker == "Normal") {
       return (
         <NormalPeoplePicker
-          onResolveSuggestions={this._onFilterChanged}
+          onChange={this._onChange.bind(this) }
+          onResolveSuggestions={this._onFilterChanged }
           getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
           pickerSuggestionsProps={suggestionProps}
           className={'ms-PeoplePicker'}
@@ -97,7 +100,8 @@ export default class OfficeUiFabricPeoplePicker extends React.Component<IOfficeU
     } else {
       return (
         <CompactPeoplePicker
-          onResolveSuggestions={this._onFilterChanged}
+          onChange={this._onChange.bind(this) }
+          onResolveSuggestions={this._onFilterChanged }
           getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
           pickerSuggestionsProps={suggestionProps}
           className={'ms-PeoplePicker'}
@@ -107,54 +111,147 @@ export default class OfficeUiFabricPeoplePicker extends React.Component<IOfficeU
     }
   }
 
+  private _onChange(items:any[]) {
+    this.setState({
+      selectedItems: items
+    });
+    if (this.props.onChange)
+    {
+      this.props.onChange(items);
+    }
+  }
+
   @autobind
   private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
     if (filterText) {
-      if (filterText.length > 4) {
-        return this.searchPeople(filterText, this._peopleList);        
+      if (filterText.length > 2) {
+        return this._searchPeople(filterText, this._peopleList);
       }
     } else {
       return [];
     }
   }
 
-  private searchPeople(terms: string, results: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
-    //return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(results), 2000));
-    return new Promise<IPersonaProps[]>((resolve, reject) =>
-      this.props.spHttpClient.get(`${this.props.siteUrl}/_api/search/query?querytext='*${terms}*'&rowlimit=10&sourceid='b09a7990-05ea-4af9-81ef-edfab16c4e31'`,
-        SPHttpClient.configurations.v1,
-        {
-          headers: {
-            'Accept': 'application/json;odata=nometadata',
-            'odata-version': ''
-          }
-        })
-        .then((response: SPHttpClientResponse): Promise<{ PrimaryQueryResult: IPeopleDataResult }> => {
-          return response.json();
-        })
-        .then((response: { PrimaryQueryResult: IPeopleDataResult }): void => {
-          let relevantResults: any = response.PrimaryQueryResult.RelevantResults;
-          let resultCount: number = relevantResults.TotalRows;
-          let people = [];
-          let persona: IPersonaProps = {};
-          if (resultCount > 0) {
-            relevantResults.Table.Rows.forEach(function (row) {
-              row.Cells.forEach(function (cell) {
-                //person[cell.Key] = cell.Value;
-                if (cell.Key === 'JobTitle')
-                  persona.secondaryText = cell.Value;
-                if (cell.Key === 'PictureURL')
-                  persona.imageUrl = cell.Value;
-                if (cell.Key === 'PreferredName')
-                  persona.primaryText = cell.Value;
-              });
-              people.push(persona);
+  /**
+   * @function
+   * Returns fake people results for the Mock mode
+   */
+  private searchPeopleFromMock(): IPersonaProps[] {
+    return this._peopleList = [
+      {
+        imageUrl: './images/persona-female.png',
+        imageInitials: 'PV',
+        primaryText: 'Annie Lindqvist',
+        secondaryText: 'Designer',
+        tertiaryText: 'In a meeting',
+        optionalText: 'Available at 4:00pm'
+      },
+      {
+        imageUrl: './images/persona-male.png',
+        imageInitials: 'AR',
+        primaryText: 'Aaron Reid',
+        secondaryText: 'Designer',
+        tertiaryText: 'In a meeting',
+        optionalText: 'Available at 4:00pm'
+      },
+      {
+        imageUrl: './images/persona-male.png',
+        imageInitials: 'AL',
+        primaryText: 'Alex Lundberg',
+        secondaryText: 'Software Developer',
+        tertiaryText: 'In a meeting',
+        optionalText: 'Available at 4:00pm'
+      },
+      {
+        imageUrl: './images/persona-male.png',
+        imageInitials: 'RK',
+        primaryText: 'Roko Kolar',
+        secondaryText: 'Financial Analyst',
+        tertiaryText: 'In a meeting',
+        optionalText: 'Available at 4:00pm'
+      },
+    ];
+  }
+
+  /**
+   * @function
+   * Returns people results after a REST API call
+   */
+  private _searchPeople(terms: string, results: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+
+    if (DEBUG && Environment.type === EnvironmentType.Local) {
+      // If the running environment is local, load the data from the mock
+      return this.searchPeopleFromMock();
+    } else {
+      const userRequestUrl: string = `${this.props.siteUrl}/_api/SP.UI.ApplicationPages.ClientPeoplePickerWebServiceInterface.clientPeoplePickerSearchUser`;
+      let principalType: number = 0;
+      if (this.props.principalTypeUser === true) {
+        principalType += 1;
+      }
+      if (this.props.principalTypeSharePointGroup === true) {
+        principalType += 8;
+      }
+      if (this.props.principalTypeSecurityGroup === true) {
+        principalType += 4;
+      }
+      if (this.props.principalTypeDistributionList === true) {
+        principalType += 2;
+      }
+      const userQueryParams = {
+        'queryParams': {
+          'AllowEmailAddresses': true,
+          'AllowMultipleEntities': false,
+          'AllUrlZones': false,
+          'MaximumEntitySuggestions': this.props.numberOfItems,
+          'PrincipalSource': 15,
+          // PrincipalType controls the type of entities that are returned in the results.
+          // Choices are All - 15, Distribution List - 2 , Security Groups - 4, SharePoint Groups - 8, User - 1.
+          // These values can be combined (example: 13 is security + SP groups + users)
+          'PrincipalType': principalType,
+          'QueryString': terms
+        }
+      };
+
+      return new Promise<SharePointUserPersona[]>((resolve, reject) =>
+        this.props.spHttpClient.post(userRequestUrl,
+          SPHttpClient.configurations.v1, { body: JSON.stringify(userQueryParams) })
+          .then((response: SPHttpClientResponse) => {
+            return response.json();
+          })
+          .then((response: {value: string}) => {
+            let userQueryResults: IClientPeoplePickerSearchUser[] = JSON.parse(response.value);
+            let persons = userQueryResults.map(p => new SharePointUserPersona(p as IEnsurableSharePointUser));
+            return persons;
+          })
+          .then((persons) => {
+            const batch = this.props.spHttpClient.beginBatch();
+            const ensureUserUrl = `${this.props.siteUrl}/_api/web/ensureUser`;
+            const batchPromises: Promise<IEnsureUser>[] = persons.map(p => {
+              var userQuery = JSON.stringify({logonName: p.User.Key});
+              return batch.post(ensureUserUrl, SPHttpClientBatch.configurations.v1, {
+                body: userQuery
+              })
+              .then((response: SPHttpClientResponse) => response.json())
+              .then((json: IEnsureUser) => json);
             });
-          }
-          resolve(people);
-        }, (error: any): void => {
-          reject(this._peopleList = []);
-        }));
+
+            var users = batch.execute().then(() => Promise.all(batchPromises).then(values => {
+              values.forEach(v => {
+                let userPersona = lodash.find(persons, o => o.User.Key == v.LoginName);
+                if (userPersona && userPersona.User)
+                {
+                  let user = userPersona.User;
+                  lodash.assign(user, v);
+                  userPersona.User = user;
+                }
+              });
+
+              resolve(persons);
+            }));
+          }, (error: any): void => {
+            reject(this._peopleList = []);
+          }));
+      }
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {

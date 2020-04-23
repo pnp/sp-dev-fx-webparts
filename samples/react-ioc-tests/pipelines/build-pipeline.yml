@@ -1,0 +1,74 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:  
+
+- task: NodeTool@0
+  displayName: 'Use Node 10.16.3'
+  inputs:
+    versionSpec: 10.16.3
+
+
+- task: Npm@1
+  displayName: 'npm ci'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'ci'
+
+
+- task: Gulp@0
+  displayName: 'Run gulp clean'
+  inputs:
+    targets: 'clean'
+
+
+- task: Gulp@0
+  displayName: 'Run gulp bundle'
+  inputs:
+    targets: bundle
+    arguments: '--ship'
+
+
+- task: Gulp@0
+  displayName: 'Run gulp package-solution'
+  inputs:
+    targets: 'package-solution'
+    arguments: '--ship'
+
+
+- task: Npm@1
+  displayName: 'npm test'
+  inputs:
+    command: custom
+    verbose: true
+    customCommand: 'test'
+
+
+# Publish Test Results to Azure Pipelines/TFS
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/summary-jest-junit.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)'   
+
+
+# Publish Cobertura or JaCoCo code coverage results from a build
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'cobertura' 
+    summaryFileLocation: $(Build.SourcesDirectory)/jest/cobertura-coverage.xml
+    reportDirectory: $(Build.SourcesDirectory)/jest/lcov-report/
+
+
+- task: ArchiveFiles@2
+  displayName: 'Archive SPFx Package file'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/sharepoint/solution'
+    includeRootFolder: false
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildNumber)-package.zip'
+
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts: drop'
+

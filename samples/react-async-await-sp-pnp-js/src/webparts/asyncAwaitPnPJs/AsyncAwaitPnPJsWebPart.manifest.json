@@ -1,15 +1,17 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "$schema":  "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
 
   "id": "c81d0661-6ead-4c3c-a3a0-261e2a7edd44",
   "alias": "AsyncAwaitPnPJsWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
   "manifestVersion": 2,
+  "supportedHosts": ["SharePointWebPart"],
+  "safeWithCustomScriptDisabled": false,
+  "version": "*",
 
   "preconfiguredEntries": [{
     "groupId": "c81d0661-6ead-4c3c-a3a0-261e2a7edd44",
-    "group": { "default": "Under Development" },
+    "group": { "default": "Other" },
     "title": { "default": "AsyncAwaitPnPJs" },
     "description": { "default": "AsyncAwaitPnPJs description" },
     "officeFabricIconFontName": "Page",

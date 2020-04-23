@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
 import { TextField } from 'office-ui-fabric-react';
-import styles from '../BotFrameworkChat.module.scss';
-import { IBotFrameworkChatWebPartProps } from '../IBotFrameworkChatWebPartProps';
+import styles from './BotFrameworkChat.module.scss';
+import { IBotFrameworkChatProps } from './IBotFrameworkChatProps';
 declare function require(path: string) : any;
-
-export interface IBotFrameworkChatProps extends IBotFrameworkChatWebPartProps {
-}
 
 export default class BotFrameworkChat extends React.Component<IBotFrameworkChatProps, {}> {
 
@@ -39,12 +36,45 @@ export default class BotFrameworkChat extends React.Component<IBotFrameworkChatP
   }
 
   public componentDidMount(){
-    this.bindDirectLineSecret();
+    this.initSwagger();
   }
 
-  public componentDidUpdate(prevProps: IBotFrameworkChatWebPartProps, prevState: {}, prevContext: any): void {
+  public componentDidUpdate(prevProps: IBotFrameworkChatProps, prevState: {}, prevContext: any): void {
     if (this.props.directLineSecret !== prevProps.directLineSecret) {
-      this.bindDirectLineSecret();
+      this.initSwagger();
+    }
+  }
+
+  public initSwagger(){
+    if (this.props.directLineSecret) {
+      var Swagger = require('swagger-client');
+      var directLineSpec = require('./directline-swagger.json');
+
+      this.directLineClientSwagger = new Swagger(
+        {
+          spec: directLineSpec,
+          usePromise: true,
+        }).then((client) => {
+          client.clientAuthorizations.add('AuthorizationBotConnector', new Swagger.ApiKeyAuthorization('Authorization', 'BotConnector ' + this.props.directLineSecret, 'header'));
+          console.log('DirectLine client generated');
+          return client;
+        }).catch((err) =>
+          console.error('Error initializing DirectLine client', err));
+
+      this.directLineClientSwagger.then((client) => {
+        client.Conversations.Conversations_NewConversation()
+          .then((response) => response.obj.conversationId)
+          .then((conversationId) => {
+
+            this.conversationId = conversationId;
+            this.pollMessages(client, conversationId);
+            this.directLineClient = client;
+          });
+      });
+
+      this.sendAsUserName = this.props.context.pageContext.user.loginName;
+
+      this.printMessage = this.printMessage.bind(this);
     }
   }
 
@@ -83,39 +113,6 @@ export default class BotFrameworkChat extends React.Component<IBotFrameworkChatP
             text: messageToSend
           }
         }).catch((err) => console.error('Error sending message:', err));
-    }
-  }
-
-  protected bindDirectLineSecret(){
-    if (this.props.directLineSecret) {
-      var Swagger = require('swagger-client');
-      var directLineSpec = require('./directline-swagger.json');
-
-      this.directLineClientSwagger = new Swagger(
-        {
-          spec: directLineSpec,
-          usePromise: true,
-        }).then((client) => {
-          client.clientAuthorizations.add('AuthorizationBotConnector', new Swagger.ApiKeyAuthorization('Authorization', 'BotConnector ' + this.props.directLineSecret, 'header'));
-          console.log('DirectLine client generated');
-          return client;
-        }).catch((err) =>
-          console.error('Error initializing DirectLine client', err));
-
-      this.directLineClientSwagger.then((client) => {
-        client.Conversations.Conversations_NewConversation()
-          .then((response) => response.obj.conversationId)
-          .then((conversationId) => {
-
-            this.conversationId = conversationId;
-            this.pollMessages(client, conversationId);
-            this.directLineClient = client;
-          });
-      });
-
-      this.sendAsUserName = this.props.context.pageContext.user.loginName;
-
-      this.printMessage = this.printMessage.bind(this);
     }
   }
 

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-slide-swiper-client-side-solution",
+    "id": "c7fdd51c-469e-432f-bdde-930294d3a133",
+    "version": "1.0.1.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-slide-swiper.sppkg"
+  }
+}

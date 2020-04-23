@@ -1,8 +1,23 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 10/21/2016 12:00:00 AM
+---
 # Migrating existing Angular applications to SharePoint Framework sample
 
 ## Summary
 
-Sample Angular application before and after migration to a SharePoint Framework client-side web part.
+This is a sample Angular application before and after it has been migrated to a SharePoint Framework client-side web part.
 
 Application before migration:
 ![Angular todo application](./assets/angular-todo-preview.png)

@@ -1,0 +1,72 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.codeEditor {
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  box-sizing: border-box;
+  //margin-bottom: 20px;
+  //border:1px solid RGB(194,194,194);
+  border-width: 1px;
+  border-style: solid;
+  //border-color: $ms-color-neutralLight;
+  border-color: $ms-color-neutralTertiaryAlt;
+  border-radius: 2px;
+  //  border-color: rgb(51, 51, 51);
+
+  &:hover {
+    border-color: $ms-color-neutralPrimary;
+  }
+
+  &:focus-within {
+    border-color: $ms-color-themePrimary;
+  }
+}
+
+.actionButtonsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  background-color: $ms-color-white;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.actionButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.actionButton {
+  height: 30px;
+  padding-bottom: 3px;
+}
+
+[dir="ltr"] .actionButton {
+  padding-left: 16px;
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+[dir="ltr"] .actionButtons {
+  padding-left: 20px;
+  padding-right: 11px;
+}
+
+:global {
+  .ms-Panel-content {
+    height: calc(100% - 80px);
+  }
+}

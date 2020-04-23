@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 6/1/2017 12:00:00 AM
+---
 # React Side Panel Client-Side Web Part
 
 ## Summary
@@ -57,3 +72,5 @@ This package produces the following:
 * lib/* - intermediate-stage commonjs build artifacts
 * dist/* - the bundled script, along with other resources
 * deploy/* - all resources which should be uploaded to a CDN.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-side-panel" />

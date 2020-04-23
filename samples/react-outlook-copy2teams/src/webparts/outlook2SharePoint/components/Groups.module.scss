@@ -1,0 +1,22 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.groups {
+  margin-bottom: 10px;
+  .header {
+    @include ms-fontSize-l;
+    margin-left: 6px;
+  }
+  .list {
+    list-style-type: none;
+    padding-inline-start: 20px;
+  }
+  .saveBtn {
+    margin: 5px 10px 5px 10px;
+  }
+  .spinnerContainer {
+    position: relative;
+    @include ms-md12;
+    @include ms-lg10;
+    @include ms-xl8;
+  }
+}

@@ -5,15 +5,20 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
-import styles from './AngularCrud.module.scss';
-import * as strings from 'angularCrudStrings';
-import { IAngularCrudWebPartProps } from './IAngularCrudWebPartProps';
+import styles from './AngularCrudWebPart.module.scss';
+import * as strings from 'AngularCrudWebPartStrings';
 
 import * as angular from 'angular';
 import './app/app-module';
 
+
+export interface IAngularCrudWebPartProps {
+  listName: string;
+}
+
 export default class AngularCrudWebPart extends BaseClientSideWebPart<IAngularCrudWebPartProps> {
-private $injector: angular.auto.IInjectorService;
+
+  private $injector: angular.auto.IInjectorService;
 
   public render(): void {
     if (this.renderedOnce === false) {

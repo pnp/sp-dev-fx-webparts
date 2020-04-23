@@ -1,0 +1,19 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.customPluginDemo {
+  color: inherit;
+}
+
+// this is a neat trick to export styles from SCSS without hard-coding them in the code
+:export {
+  bugBackground1: #25cfe4;
+  bugBackground2: #92e7f1;
+  bugBackground3: #eeeeee;
+  fixesBackground1: #514463;
+  fixesBackground2: #8c75ab;
+  fixesBackground3: #eeeeee;
+  redesignsBackground1: #88CCF9;
+  redesignsBackground2: #0E98F3;
+  redesignsBackground3: #eeeeee;
+  fontColor: #526E7A;
+}

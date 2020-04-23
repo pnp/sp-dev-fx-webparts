@@ -1,4 +1,4 @@
-import { BaseService } from "./BaseSvc";
+import { BaseService } from "./baseSvc";
 import { IFileItem } from "../../interfaces/IFileItem";
 import { IFile } from "../../interfaces/IFile";
 export declare class FileUploadService {

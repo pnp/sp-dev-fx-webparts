@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "5ff21af8-04ea-478a-a640-919b29ba5ff4",
+  "alias": "MsalWpWebPart",
+  "componentType": "WebPart",
+  "version": "*", // The "*" signifies that the version should be taken from the package.json
+  "manifestVersion": 2,
+
+  /**
+   * This property should only be set to true if it is certain that the webpart does not
+   *  allow arbitrary scripts to be called
+   */
+  "safeWithCustomScriptDisabled": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5ff21af8-04ea-478a-a640-919b29ba5ff4",
+    "group": { "default": "Under Development" },
+    "title": { "default": "MSAL WP" },
+    "description": { "default": "MSAL WP description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "MSAL WP"
+    }
+  }]
+}

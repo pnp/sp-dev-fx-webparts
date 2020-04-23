@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "096e9abd-b73c-4b73-8292-621bf1257402",
+  "alias": "DemoWebPart",
+  "componentType": "WebPart",
+  "version": "*", // The "*" signifies that the version should be taken from the package.json
+  "manifestVersion": 2,
+
+  /**
+   * This property should only be set to true if it is certain that the webpart does not
+   *  allow arbitrary scripts to be called
+   */
+  "safeWithCustomScriptDisabled": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "096e9abd-b73c-4b73-8292-621bf1257402",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Redux ImmutableJS Demo" },
+    "description": { "default": "Webpart to Demo Redux and ImmutableJS" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Demo"
+    }
+  }]
+}

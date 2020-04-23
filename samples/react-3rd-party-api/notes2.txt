@@ -1,0 +1,7 @@
+SharePoint.PnP.SampleRESTAPI
+https://PiaSysDev.onmicrosoft.com/SharePoint.PnP.SampleRESTAPI
+BusinessAction.Invoke
+
+Object ID: ad92a97c-a1af-445f-8358-186b53f84073
+Application ID: 67e7c46a-6ace-4c35-90a8-2718b1c0b4a4
+

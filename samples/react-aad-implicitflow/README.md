@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - OAuth 2.0
+  platforms:
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Azure Active Directory implicit flow authentication samples
 
 ## Summary
@@ -48,7 +64,7 @@ Version|Date|Comments
   - enable OAuth implicit flow
   - grant the application the **Microsoft Graph/Read user calendars** permission
   - copy the application's ID
-- in the **src/webparts/upcomingMeetings/AdalConfig.ts** file in the **clientId** property enter the application ID registered in Azure
+- in the `src/webparts/upcomingMeetings/AdalConfig.ts` file in the `clientId` property enter the application ID registered in Azure
 - in the command line execute
   - `npm i`
   - `gulp serve --nobrowser`

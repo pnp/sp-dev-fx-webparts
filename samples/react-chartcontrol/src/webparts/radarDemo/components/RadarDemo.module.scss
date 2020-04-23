@@ -1,0 +1,13 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.radarDemo {
+  color: inherit;
+}
+
+:export {
+  menBackground: rgba(54, 162, 235, 0.2);
+  menBorder: rgba(54, 162, 235, 1);
+  pointBorder: #fff;
+  womenBackground: rgba(255, 99, 132, 0.2);
+  womenBorder: rgba(255, 99, 132, 1);
+}

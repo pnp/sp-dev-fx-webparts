@@ -1,4 +1,6 @@
+import { IPropertyPaneAccessor } from "@microsoft/sp-webpart-base";
 export interface IScriptEditorProps {
-  script: string;
-  save(script: string): void;
+    script: string;
+    title: string;
+    propPaneHandle: IPropertyPaneAccessor;
 }

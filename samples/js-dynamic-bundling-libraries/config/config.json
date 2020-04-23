@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dynamic-bundling-example-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dynamicBundlingExample/DynamicBundlingExampleWebPart.js",
+          "manifest": "./src/webparts/dynamicBundlingExample/DynamicBundlingExampleWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DynamicBundlingExampleWebPartStrings": "lib/webparts/dynamicBundlingExample/loc/{locale}.js"
+  }
+}

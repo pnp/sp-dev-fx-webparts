@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.1.1",
+    "libraryName": "react-redux-restapi",
+    "libraryId": "b40fef70-090e-43b4-adc7-64b379287548",
+    "environment": "spo"
+  }
+}

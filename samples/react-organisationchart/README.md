@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Organisation Chart
 
 ## Summary
@@ -12,7 +27,7 @@ A simple Organisation Chart webpart using Office UI Fabric, React, REST API batc
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
 
 
 ## Solution
@@ -27,6 +42,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|September 14, 2016|Initial release
 2.0|March 12, 2017|Updated for SPFx 1.0
+2.1|July 19, 2017|Use office-ui-fabric-react and uifabric/styling
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
