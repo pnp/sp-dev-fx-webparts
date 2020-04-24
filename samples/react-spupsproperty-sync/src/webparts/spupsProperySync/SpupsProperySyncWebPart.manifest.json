@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "f137ab5e-5484-4c5e-9344-01eb54f065ec",
+  "alias": "SpupsProperySyncWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage"],
+  "supportsFullBleed": true,  
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "SPUPSPropery Sync" },
+    "description": { "default": "Sync Azure AD properties or User defined values (custom properties) to SharePoint User Profile Properties." },
+    "officeFabricIconFontName": "UserSync",
+    "properties": {}
+  }]
+}
