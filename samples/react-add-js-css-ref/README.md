@@ -1,7 +1,6 @@
 ## SPFx webpart to add JS and CSS reference on Modern Pages via SPFx application customizer extension
 
-This repo is a SPFx webpart which allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site. This webpart provide interface to js and css link so that we don't have to modify code when we need to change references or add new references in future. As part of security measure, this webpart
-can be only accessed by users who has Manage web permission on site. 
+This repo is a react based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site. This web part provides an interface to JS and CSS file references so that we don't have to modify code when we need to change references or add new references in the future. As part of security measures, this actions on web part can be only accessed by users who have Manage web permission on site. 
 
 WebPart in Action
 
