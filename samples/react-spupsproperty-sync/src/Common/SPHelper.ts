@@ -17,6 +17,7 @@ import { IWeb } from "@pnp/sp/webs";
 import { IUserInfo, IPropertyMappings, IPropertyPair, FileContentType, SyncType, JobStatus } from "./IModel";
 import { IList } from '@pnp/sp/lists';
 import { ChoiceFieldFormatType } from '@pnp/sp/fields/types';
+import { IFileAddResult, IFileInfo } from '@pnp/sp/files';
 
 const map: any = require('lodash/map');
 const intersection: any = require('lodash/intersection');
@@ -28,14 +29,15 @@ export interface ISPHelper {
     getAzurePropertyForUsers: (selectFields: string, filterQuery: string) => Promise<any[]>;
     getPropertyMappings: () => Promise<any[]>;
     getPropertyMappingsTemplate: (propertyMappings: IPropertyMappings[]) => Promise<any>;
-    addFilesToFolder: (filename: string, fileContent: any) => void;
+    addFilesToFolder: (filename: string, fileContent: any) => Promise<IFileAddResult>;
+    addDataFilesToFolder: (fileContent: any, filename: string) => Promise<IFileAddResult>;
     getFileContent: (filepath: string, contentType: FileContentType) => void;
     createSyncItem: (syncType: SyncType) => Promise<number>;
     updateSyncItem: (itemid: number, inputJson: string) => void;
     updateSyncItemStatus: (itemid: number, errMsg: string) => void;
     getAllJobs: () => void;
-    getAllTemplates: () => void;
-    getAllBulkList: () => void;
+    getAllTemplates: () => Promise<IFileInfo[]>;
+    getAllBulkList: () => Promise<IFileInfo[]>;
 
     runAzFunction: (httpClient: HttpClient, inputData: any, azFuncUrl: string, itemid: number) => void;
 }
@@ -86,7 +88,7 @@ export default class SPHelper implements ISPHelper {
             .get();
     }
     /**
-     * Generated the property mapping json content. 
+     * Generated the property mapping json content.
      */
     public getPropertyMappingsTemplate = async (propertyMappings: IPropertyMappings[]) => {
         if (!propertyMappings) propertyMappings = await this.getPropertyMappings();
@@ -145,7 +147,7 @@ export default class SPHelper implements ISPHelper {
      * Add the template file to a folder with contents.
      * This is used for creating the template json file.
      */
-    public addFilesToFolder = async (fileContent: any, isCSV: boolean) => {
+    public addFilesToFolder = async (fileContent: any, isCSV: boolean): Promise<IFileAddResult> => {
         let filename = (isCSV) ? this.SyncCSVFileName : this.SyncJSONFileName;
         await this.checkAndCreateFolder(this.SiteRelativeURL + this.SyncTemplateFilePath);
         return await this._web.getFolderByServerRelativeUrl(this.SiteRelativeURL + this.SyncTemplateFilePath)
@@ -156,7 +158,7 @@ export default class SPHelper implements ISPHelper {
      * Add the data file to a folder with contents.
      * This is used for creating the template json file.
      */
-    public addDataFilesToFolder = async (fileContent: any, filename: string) => {
+    public addDataFilesToFolder = async (fileContent: any, filename: string): Promise<IFileAddResult> => {
         await this.checkAndCreateFolder(this.SiteRelativeURL + this.SyncUploadFilePath);
         return await this._web.getFolderByServerRelativeUrl(this.SiteRelativeURL + this.SyncUploadFilePath)
             .files
@@ -240,7 +242,7 @@ export default class SPHelper implements ISPHelper {
     /**
      * Get all the templates generated
      */
-    public getAllTemplates = async () => {
+    public getAllTemplates = async (): Promise<IFileInfo[]> => {
         return await this._web.getFolderByServerRelativeUrl(this.SiteRelativeURL + this.SyncTemplateFilePath)
             .files
             .select('Name', 'ServerRelativeUrl', 'TimeCreated')
@@ -250,7 +252,7 @@ export default class SPHelper implements ISPHelper {
     /**
      * Get all the bulk sync files
      */
-    public getAllBulkList = async () => {
+    public getAllBulkList = async (): Promise<IFileInfo[]> => {
         return await this._web.getFolderByServerRelativeUrl(this.SiteRelativeURL + this.SyncUploadFilePath)
             .files
             .select('Name', 'ServerRelativeUrl', 'TimeCreated')
@@ -290,7 +292,7 @@ export default class SPHelper implements ISPHelper {
         await listExists.fields.addMultilineText('SyncData', 6, false, false, false, false, { Required: true, Description: 'Data sent to Azure function for property update.' });
         await listExists.fields.addMultilineText('SyncedData', 6, false, false, false, false, { Required: true, Description: 'Data received from Azure function with property update status.' });
         await listExists.fields.addChoice('Status', ['Submitted', 'In-Progress', 'Completed', 'Error'], ChoiceFieldFormatType.Dropdown, false, { Required: true, Description: 'Status of the job.' });
-        await listExists.fields.addMultilineText('ErrorMessage', 6, false, false, false, false, {Required: false, Description: 'Store the error message while calling Azure function.'});
+        await listExists.fields.addMultilineText('ErrorMessage', 6, false, false, false, false, { Required: false, Description: 'Store the error message while calling Azure function.' });
         await listExists.fields.addChoice('SyncType', ['Manual', 'Azure', 'Template'], ChoiceFieldFormatType.Dropdown, false, { Required: true, Description: 'Type of data sent to Azure function.' });
         let allItemsView = await listExists.views.getByTitle('All Items');
         let batch = sp.createBatch();
