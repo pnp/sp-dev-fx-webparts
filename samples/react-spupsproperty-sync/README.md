@@ -1,7 +1,9 @@
 # SPUPS Property Sync
 
 ## Summary
-> This component will help the administrators who are currently maintaining the user profiles in their organization. Since not all the properties from Azure are synced automatically to **SharePoint UPS**, this solution will help administrator to synchronize specific properties (default or custom) from Azure or maintained in a separate system directly to **SharePoint UPS** using property import. Below are the features
+
+This component will help the administrators who are currently maintaining the user profiles in their organization. Since not all the properties from Azure are synced automatically to **SharePoint UPS**, this solution will help administrator to synchronize specific properties (default or custom) from Azure or maintained in a separate system directly to **SharePoint UPS** using property import. Below are the features
+
 * **Property Mapping** will provide a flexible and user-friendly way to pick the properties to be synced.
 * **Templates** can be generated based on the '_Property Mapping_'.
 * Download the generated templates in both **CSV** & **JSON** format.
@@ -10,7 +12,7 @@
     * **Manually** entered properties or which are maintained in a separate system
     * Properties from **Azure AD**
 * **Bulk Sync** will allow the admin to upload the data using the templates generated. They can also use this templates as a base for exporting the data from other system and then feed them here to update the properties.
-* **Access control** based on **SharePoint Group**, not all the users can access the applictaion.
+* **Access control** based on **SharePoint Group**, not all the users can access the application.
 * **Anytime access** to the template files generated with different property set and the files uploaded for bulk update.
 * Separate section to check the **status** of the property update. **Detailed status** on each property and also display the overall status.
 * **Azure Function** to handle the property update. **PnPPowershell** is used in Azure Function.
@@ -30,14 +32,16 @@
 
 5. **SharePoint Groups**: Only the users from the configured SharePoint Groups and Site Administrator shall be allowed access.
 
-6. **Use page full width**: This is used when the web part is added to a site page where it has to use full width. 
+6. **Use page full width**: This is used when the web part is added to a site page where it has to use full width.
 
 > **_Note_**: Only the Site Administrator is allowed to update the application properties.
 
 ## Preview
+
 ![SPUPS-Property-Sync](./assets/SPUPS-Sync.gif)
 
-## Used SharePoint Framework Version 
+## Used SharePoint Framework Version
+
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
 
 ## Applies to
@@ -62,6 +66,7 @@ Version|Date|Comments
 1.0.0.0|Apr 23 2020|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Minimal Path to Awesome
@@ -75,8 +80,11 @@ Version|Date|Comments
 
 
 #### Local Mode
+
 This solution doesn't work on local mode.
 
 #### SharePoint Mode
-If you want to try on a real environment, open:
-[O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
+
+If you want to try on a real environment, open your hosted workbench  at `https://[your-domain].sharepoint.com/_layouts/15/workbench.aspx`
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-spupsproperty-sync" />
