@@ -60,10 +60,21 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-css-in-js-typestyle
+      name: react-css-in-js-typestyle
+      title: CSS in JS with SharePoint Framework and TypeStyle
+      summary: The web part demonstrates the usage of "CSS in JS" pattern with SharePoint Framework. "CSS in JS" is implemented using TypeStyle library.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-css-in-js-typestyle/assets/dynamic-styles.gif
+      framework: React
+      spfx: 1.10.0
+      author: Sergei Sergeev
+      modifiedtext: April 24, 2020
+      modified: 2020-04-24
+      level: 200
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-global-news
       name: react-global-news
       title: Global News
-      summary: This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites arround the world.
+      summary: This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites around the world.
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-global-news/assets/GlobalNews.png
       framework: React
       spfx: 1.10.0
