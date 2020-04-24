@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 04/23/2020 12:00:00 AM
+---
+
 # SPUPS Property Sync
 
 ## Summary
@@ -80,3 +96,5 @@ This solution doesn't work on local mode.
 #### SharePoint Mode
 If you want to try on a real environment, open:
 [O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-spupsproperty-sync" />
