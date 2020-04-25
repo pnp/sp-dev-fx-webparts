@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-teams-personal-app-settings-client-side-solution",
+    "id": "6ba2b4fd-5ef4-4e32-9ec1-bd2ff043131d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [{
+      "resource": "Microsoft Graph",
+      "scope": "Sites.Manage.All"
+    }, {
+      "resource": "Microsoft Graph",
+      "scope": "Files.Read"
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-teams-personal-app-settings.sppkg"
+  }
+}
