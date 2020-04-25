@@ -60,6 +60,39 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-teams-personal-app-settings
+      name: react-teams-personal-app-settings
+      title: Teams Personal App Settings Web Part
+      summary: Demonstrates how you can store Teams Personal App Web Part's properties in user's OneDrive.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png
+      framework: React
+      spfx: 1.10.0
+      author: Alex Terentiev
+      modifiedtext: April 24, 2020
+      modified: 2020-04-24
+      level: 300
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-add-js-css-ref
+      name: react-add-js-css-ref
+      title: Add JS and CSS reference on Modern Pages
+      summary: React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-add-js-css-ref/assets/webpartinaction.gif
+      framework: React
+      spfx: 1.9.1
+      author: Siddharth Vaghasia
+      modifiedtext: April 24, 2020
+      modified: 2020-04-24
+      level: 200
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-spupsproperty-sync
+      name: react-spupsproperty-sync
+      title: SPUPS Property Sync
+      summary: This component will help the administrators who are currently maintaining the user profiles in their organization.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-spupsproperty-sync/assets/SPUPS-Sync.gif
+      framework: React
+      spfx: 1.10.0
+      author: Sudharsan Kesavanarayanan
+      modifiedtext: April 23, 2020
+      modified: 2020-04-23
+      level: 300
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-css-in-js-typestyle
       name: react-css-in-js-typestyle
       title: CSS in JS with SharePoint Framework and TypeStyle
@@ -197,7 +230,7 @@ extra:
       thumbnailtype: video
       framework: jQuery
       spfx: 1.9.1
-      author: Sudharsan K.
+      author: Sudharsan Kesavanarayanan
       modifiedtext: February 05, 2020
       modified: 2020-02-05
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-twitter
@@ -2151,7 +2184,7 @@ extra:
     - Stefan Bauer
     - Stephan Bisser
     - Stéphane Magne
-    - Sudharsan K.
+    - Sudharsan Kesavanarayanan
     - Sudhir Rawat
     - Vardhaman Deshpande
     - Velin Georgiev
