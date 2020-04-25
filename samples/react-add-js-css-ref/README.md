@@ -21,7 +21,7 @@ WebPart in Action
 
 ![Webpart in action](assets/webpartinaction.gif?raw=true "Webpart in action")
 
-Challanges/Drawback with ONLY using SPFx extension for adding js and css file references.
+Challenges/Drawback with ONLY using SPFx extension for adding js and css file references.
 * JS and CSS file references links needs to be hardcoded in solution
 * Changes to code required if we need to change add new reference or remove existing reference.
 * Redeployment of package and installation
