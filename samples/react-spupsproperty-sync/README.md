@@ -17,7 +17,7 @@ extensions:
 # SPUPS Property Sync
 
 ## Summary
-> This component will help the administrators who are currently maintaining the user profiles in their organization. Since not all the properties from Azure are synced automatically to **SharePoint UPS**, this solution will help administrator to synchronize specific properties (default or custom) from Azure or maintained in a separate system directly to **SharePoint UPS** using property import. Below are the features
+This component will help the administrators who are currently maintaining the user profiles in their organization. Since not all the properties from Azure are synced automatically to **SharePoint UPS**, this solution will help administrator to synchronize specific properties (default or custom) from Azure or maintained in a separate system directly to **SharePoint UPS** using property import. Below are the features
 * **Property Mapping** will provide a flexible and user-friendly way to pick the properties to be synced.
 * **Templates** can be generated based on the '_Property Mapping_'.
 * Download the generated templates in both **CSV** & **JSON** format.
