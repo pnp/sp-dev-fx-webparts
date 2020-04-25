@@ -1,0 +1,47 @@
+.dynamicTable {
+    overflow: auto;
+    .table {
+        margin-top: 10px;
+        border: 1px solid #CCC;
+        width: 100%;
+        thead > tr > th {
+            padding: 5px;
+            background-color: lightgray;
+        }
+        td:first-child {
+            width: 20%;
+        }
+    }
+    .textInput {
+        padding: 8px;
+        font-size: 12px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-shadow: 0px 1px 15px 0px #ccc;
+        width: 93%;
+    }
+    .divusername {
+        width: 100%;
+        img {
+            width: 24px;
+            border-radius: 50%;
+        }
+        label {
+            padding-left: 3px;
+            vertical-align: top;
+            white-space: nowrap;
+            width: 80%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+        }
+        span {
+            // white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+            word-break: break-word;
+        }
+    }
+}
