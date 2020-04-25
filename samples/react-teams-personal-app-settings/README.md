@@ -1,5 +1,5 @@
 ## React Teams Personal App Settings Web Part
-Sample web part that demostrates how you can store Teams Personal App Web Part's properties in user's OneDrive.
+Sample web part that demonstrates how you can store Teams Personal App Web Part's properties in user's OneDrive.
 
 ## Details
 Teams Personal Apps, or Personal Tabs don't have settings.
