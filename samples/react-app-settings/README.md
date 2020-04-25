@@ -1,4 +1,3 @@
-<div style="display:hidden;">
 ---
 page_type: sample
 products:
@@ -14,7 +13,6 @@ extensions:
   - react
   createdDate: 8/1/2017 12:00:00 AM
 ---
-</div>
 # SPFx React app settings webpart #
 
 ## Summary
