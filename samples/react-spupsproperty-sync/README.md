@@ -54,7 +54,7 @@ This component will help the administrators who are currently maintaining the us
 ![SPUPS-Property-Sync](./assets/SPUPS-Sync.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
