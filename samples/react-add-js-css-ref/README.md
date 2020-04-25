@@ -11,7 +11,7 @@ extensions:
   - SharePoint Framework
   platforms:
   - react
-  createdDate: 04/24/2017 12:00:00 AM
+  createdDate: 04/24/2020 12:00:00 AM
 ---
 ## SPFx webpart to add JS and CSS reference on Modern Pages via SPFx application customizer extension
 
