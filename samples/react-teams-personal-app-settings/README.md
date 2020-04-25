@@ -17,6 +17,8 @@ extensions:
 
 Sample web part that demonstrates how you can store Teams Personal App Web Part's properties in user's OneDrive.
 
+![Teams Personal App](./assets/teams-personal-app-settings.png)
+
 ## Details
 
 Teams Personal Apps, or Personal Tabs don't have settings.
@@ -56,6 +58,17 @@ Version|Date|Comments
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Minimal Path to Awesome
+* clone this repo
+* move to right folder
+* in the command line run:
+  * `npm install`
+  * `gulp bundle --ship`
+  * `gulp package-solution --ship`
+* from the `sharepoint/solution` folder, deploy the `.sppkg` file to the App catalog in your tenant
+* select deployed package in the App Catalog and click **Sync to Teams** in the Ribbon
+* Go to Teams and add **Personal App Settings** personal app
 
 ## Features
 
