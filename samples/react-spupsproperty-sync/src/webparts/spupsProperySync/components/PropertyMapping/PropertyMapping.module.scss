@@ -1,0 +1,61 @@
+@import '../../../../Common/theming';
+
+.propertyMappingPanelContent {
+    .mappingcontainer {
+      display: inline-block;
+      width: 100%;
+    }
+    .propertytitlediv {
+      display: inline-block;
+      width: 25%;
+      padding: 0px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .togglediv {
+      width: 20%;
+      text-align: center;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    .propertydiv {
+      display: inline-block;
+      width: 25%;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 0px 0px 0 rgba(0,0,0,.1);
+      padding: 10px 3px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      text-align: center;
+      border: 1px solid;
+      border-color: $ms-themeTertiary;
+    }
+    .separator {
+      display: inline-block;
+      width: 25%;
+      i {
+        margin-top: 5px;
+      }
+    }
+    .separator::before {
+      background-color: $ms-themeLighter;
+    }
+  }
+  .panelHeader {
+    margin-top: -29px;
+    padding: 10px;
+    border-bottom: 1px dotted;
+    font-weight: 700;
+  }
+  .panelFooter {
+    button {
+      margin-right: 10px;
+    }
+  }
+  .generateTemplateLoader {
+    display: inline-flex;
+    margin-top: 5px;
+  }
+  .propertyMappingList {
+    padding: 0px; 
+  } 
