@@ -7,6 +7,8 @@ If you'd like to contribute to this repository, please read the following guidel
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
+Remember that this repository is maintained by community members who volunteer their time to help. Be courteous and patient.
+
 ## Question or Problem?
 
 Please do not open GitHub issues for general support questions as the GitHub list should be used for feature requests and bug reports. This way we can more easily track actual issues or bugs from the code and keep the general discussion separate from the actual code.
@@ -22,6 +24,7 @@ Whenever you are submitting any changes to the SharePoint repositories, please f
 
 * Always fork the repository to your own account before making your modifications
 * Do not combine multiple changes to one pull request. For example, submit any samples and documentation updates using separate PRs
+* If your pull request shows merge conflicts, make sure to update your local master to be a mirror of what's in the main repo before making your modifications
 * If you are submitting multiple samples, please create a specific PR for each of them
 * If you are submitting typo or documentation fix, you can combine modifications to single PR where suitable
 
