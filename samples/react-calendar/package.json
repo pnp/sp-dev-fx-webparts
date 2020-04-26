@@ -1,6 +1,6 @@
 {
   "name": "react-calendar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -53,10 +53,10 @@
   "devDependencies": {
     "@microsoft/rush-stack-compiler-2.9": "0.7.7",
     "@microsoft/rush-stack-compiler-3.2": "0.3.17",
-    "@microsoft/sp-build-web": "1.8.2",
+    "@microsoft/sp-build-web": "^1.10.0",
     "@microsoft/sp-module-interfaces": "1.8.2",
     "@microsoft/sp-tslint-rules": "1.8.2",
-    "@microsoft/sp-webpart-workbench": "1.8.2",
+    "@microsoft/sp-webpart-workbench": "^1.10.0",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "@types/xml2js": "^0.4.4",
