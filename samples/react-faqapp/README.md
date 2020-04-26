@@ -43,6 +43,7 @@ Version|Date|Comments
 1.0 | April 25, 2020 | Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
@@ -53,15 +54,18 @@ Version|Date|Comments
 - `npm i -g gulp`
 - `gulp serve`
 
-#### Local Mode
+### Local Mode
+
 A browser in local mode (localhost) will be opened.
 `https://localhost:4321/temp/workbench.html`
 
-#### SharePoint Mode
+### SharePoint Mode
+
 If you want to try on a real environment, open:
 `https://[your-domain].sharepoint.com/_layouts/15/workbench.aspx`
 
 ## Usage
+
 - Create a FAQ List in SharePoint.
 - Create the below fields:
 - `Title` field can be considered as "Question" field.
@@ -69,17 +73,17 @@ If you want to try on a real environment, open:
 Column Name|Field Type
 -------|----
 `Title`|Single line of text
-`Answer`|Multiple lines of text	
-`Category`|Single line of text	
-`CategorySortOrder`|Number	
-`QuestionSortOrder`|Number	
+`Answer`|Multiple lines of text
+`Category`|Single line of text
+`CategorySortOrder`|Number
+`QuestionSortOrder`|Number
 
 
-- Edit the webpart, set the the **ListName** in the property pane 
+- Edit the webpart, set the  **ListName** in the property pane 
 
 ## Features
 
-- This Web Part allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.
+- This Web Part allows users to create Frequently Asked Questions(FAQ App) in modern and classic SharePoint pages.
 - An accordion layout is used to make it easy to browse through different questions.
 - Expand answers to your most frequent questions.
 - Include text, links, images in your answers.
