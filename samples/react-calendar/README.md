@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 04/25/2017 12:00:00 AM
+---
 # React Calendar
 
 ## Summary
@@ -9,83 +24,68 @@ Each category has its own color that is generated in the load.
 
 The Web Part checks the user's permissions for the View, Add, Edit, and Delete events.
 
+![calendar](assets/animatevideo.gif) 
 
 
+![calendar](assets/weekly_moderncalendar.gif) 
 
-##  
-![callendar](/samples/react-calendar/assets/animatevideo.gif) 
+![calendar](assets/modercalendar_monthly.gif) 
 
 
-##  
-![callendar](/samples/react-calendar/assets/weekly_moderncalendar.gif) 
-
-##  
-![callendar](/samples/react-calendar/assets/modercalendar_monthly.gif) 
-
-##  
-![callendar](/samples/react-calendar/assets/moderncalendar_yearly.gif) 
-
- 
+![calendar](assets/moderncalendar_yearly.gif) 
 
 
 ##  Web Part  - Screenshots
 
-![callendar](/samples/react-calendar/assets/calendar_teams.jpg)
+![calendar](assets/calendar_teams.jpg)
 
-![callendar](/samples/react-calendar/assets/calendar_teams2.jpg)
+![calendar](assets/calendar_teams2.jpg)
 
-![callendar](/samples/react-calendar/assets/screen1.png)
-
-
-![callendar](/samples/react-calendar/assets/screen1.0.png)
+![calendar](assets/screen1.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.1.png)
+![calendar](assets/screen1.0.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.2.png)
+![calendar](assets/screen1.1.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.3.png)
+![calendar](assets/screen1.2.png)
 
 
-![callendar](/samples/react-calendar/assets/screen1.4.png)
+![calendar](assets/screen1.3.png)
 
 
-![callendar](/samples/react-calendar/assets/screen2.png)
+![calendar](assets/screen1.4.png)
 
 
-
-![callendar](/samples/react-calendar/assets/screen3.png)
-
+![calendar](assets/screen2.png)
 
 
-![callendar](/samples/react-calendar/assets/screen4.png)
+![calendar](assets/screen3.png)
 
 
-
-![callendar](/samples/react-calendar/assets/screen5.png)
-
-
-![callendar](/samples/react-calendar/assets/screen6.png)
+![calendar](assets/screen4.png)
 
 
-![callendar](/samples/react-calendar/assets/screen7.png)
+![calendar](assets/screen5.png)
 
 
-![callendar](/samples/react-calendar/assets/screen8.png)
+![calendar](assets/screen6.png)
+
+
+![calendar](assets/screen7.png)
+
+
+![calendar](assets/screen8.png)
 
 
 
-![callendar](/samples/react-calendar/assets/screen9.png)
-##   
- 
-
- 
-
+![calendar](assets/screen9.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+
+![1.8.2](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
 
@@ -101,14 +101,14 @@ Site Url of Calendar List | Text| yes|
 Calendar list| Choice/Dropdown | yes|  this is filled with all list of  type "event list" created
 Start Date | Date | yes | Event Date 
 End Date| Date| yes | Event Date
- 
 
 ## Solution
 The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Calendar Compoment
 
 Solution|Author(s)
 --------|---------
-Calendar  Web Part|João Mendes
+Calendar Web Part|João Mendes
+Calendar Web Part|Mohamed Derhalli
 
 ## Version history
 
@@ -119,6 +119,7 @@ Version|Date|Comments
 1.0.2|April 25, 2020|Update styles according to the applied theme
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -131,9 +132,6 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
-  - `Add to AppCatalog and deploy`
-
-
-
+  - Add to **AppCatalog** and deploy
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-calendar" />
