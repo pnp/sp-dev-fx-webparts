@@ -1,17 +1,29 @@
-## SharePoint Framework Faq App
-
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 04/25/2017 12:00:00 AM
+---
+# SharePoint Framework Faq App
 
 ## Summary
 - This Web Part allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.
 - This webpart allows to search within questions and answers which are stored in a SharePoint FAQ list.
 - "React-autosuggest and react-accessible-accordion" react packages are used for the search and accordion control.
 
-<p align="center">
-  <img src="./assets/FAQWebpart.png"/>
-</p>
+![Web part preview](assets/FAQWebpart.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.8.2-green.svg)
+![1.8.2](https://img.shields.io/badge/drop-1.8.2-green.svg)
 
 ## Applies to
 
@@ -36,36 +48,38 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- git clone the repo
-- npm i
-- npm i -g gulp
-- gulp serve
+- `git clone` the repo
+- `npm i`
+- `npm i -g gulp`
+- `gulp serve`
 
 #### Local Mode
 A browser in local mode (localhost) will be opened.
-https://localhost:4321/temp/workbench.html
+`https://localhost:4321/temp/workbench.html`
 
 #### SharePoint Mode
 If you want to try on a real environment, open:
-https://your-domain.sharepoint.com/_layouts/15/workbench.aspx
+`https://[your-domain].sharepoint.com/_layouts/15/workbench.aspx`
 
 ## Usage
 - Create a FAQ List in SharePoint.
 - Create the below fields:
-- Title field can be considered as "Question" field.
-- Column Name         Field Type
-- Title	              Single line of text
-- Answer	          Multiple lines of text	
-- Category	          Single line of text	
-- CategorySortOrder	  Number	
-- QuestionSortOrder	  Number	
+- `Title` field can be considered as "Question" field.
+
+Column Name|Field Type
+-------|----
+`Title`|Single line of text
+`Answer`|Multiple lines of text	
+`Category`|Single line of text	
+`CategorySortOrder`|Number	
+`QuestionSortOrder`|Number	
 
 
-- Edit the webpart, set the the ListName in the property pane 
+- Edit the webpart, set the the **ListName** in the property pane 
 
 ## Features
 
-- This Web Part allows users to create Frequently Asked Questions(Faq App) in modern and classic      SharePoint pages.
+- This Web Part allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.
 - An accordion layout is used to make it easy to browse through different questions.
 - Expand answers to your most frequent questions.
 - Include text, links, images in your answers.
