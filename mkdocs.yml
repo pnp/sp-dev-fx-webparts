@@ -60,6 +60,17 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-faqapp
+      name: react-faqapp
+      title: Frequently Asked Questions
+      summary: Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-faqapp/assets/FAQWebpart.png
+      framework: React
+      spfx: 1.8.2
+      author: Ashok Swain
+      modifiedtext: April 25, 2020
+      modified: 2020-04-25
+      level: 200
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-teams-personal-app-settings
       name: react-teams-personal-app-settings
       title: Teams Personal App Settings Web Part
@@ -2120,6 +2131,7 @@ extra:
     - Adrián Díaz
     - Alex Terentiev
     - Andrew Koltyakov
+    - Ashok Swain
     - Atish Kumar Dipongkor
     - Austin Breslin
     - Beau Cameron
