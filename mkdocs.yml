@@ -949,17 +949,15 @@ extra:
       keywords: ical,wordpress,rss,exchange,calendar,event,hooks,theme,background
     - framework: React
       spfx: 1.8.2
-      year: 2019
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-calendar
       name: react-calendar
       title: Calendar
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
       thumbnailtype: video
-      author: João Mendes
+      author: João Mendes, Mohamed Derhalli
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
-      version: 1.0.1
-      modifiedtext: June 10, 2019
-      modified: 2019-06-10
+      modifiedtext: April 25, 2020
+      modified: 2020-04-25
     - framework: React
       spfx: 1.8.2
       year: 2019
@@ -2160,6 +2158,7 @@ extra:
     - Manish Garg
     - Markus Moeller
     - Miguel Rabaca
+    - Mohamed Derhalli
     - Nanddeep Nachan
     - Oleg Rumiancev
     - Olivier Carpentier
