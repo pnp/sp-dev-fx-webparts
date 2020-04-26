@@ -1,5 +1,5 @@
 ---
-name: Enhancement
+name: "\U0001F4A1 Enhancement"
 about: Suggest an enhancement to this repository or one of the samples
 title: ''
 labels: ''
