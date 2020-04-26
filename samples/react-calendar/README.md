@@ -116,6 +116,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|April 25, 2019|Initial release
 1.0.1|June 10, 2019|update add recurrence events
+1.0.2|April 25, 2020|Update styles according to the applied theme
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

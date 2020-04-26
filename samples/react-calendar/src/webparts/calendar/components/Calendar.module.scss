@@ -1,5 +1,6 @@
 @import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
 @import "./node_modules/spfx-uifabric-themes/office.theme.vars";
+@import '../../themes';
 
 :export {
   themeDark: $ms-color-themePrimary;
@@ -15,6 +16,16 @@
   border-color: $ms-color-themePrimary;
   border-left-width: "6px";
   display: "block";
+}
+
+/* Added styles for days within the same month/week */ 
+.dayPropGetter{
+  background-color: $ms-primaryBackground;
+  border-radius: '0px';
+  opacity: 0.8;
+  color:  $ms-themeAccent;
+  border: '0px';
+  display: 'block';
 }
 
 .Documentcard {
