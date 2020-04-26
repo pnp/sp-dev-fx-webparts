@@ -1,6 +1,6 @@
 ---
 name: Question
-about: Ask a question
+about: Ask a question regarding one of the samples in this repository
 title: ''
 labels: ''
 assignees: ''
