@@ -2,7 +2,7 @@
 name: "❓ Question"
 about: Ask a question regarding one of the samples in this repository
 title: ''
-labels: ''
+labels: type:question
 assignees: ''
 
 ---
@@ -22,6 +22,11 @@ assignees: ''
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
 
+## Question
+
+> _Provide as many details as possible to help the community answer your question._
+> 
+> _(DELETE THIS PARAGRAPH AFTER READING)_
 
 ## Guidelines for issue creator (DELETE AFTER READING)
 
