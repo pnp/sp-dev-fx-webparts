@@ -60,6 +60,17 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards-hooks
+      name: react-adaptivecards-hooks
+      title: Adaptive Cards Viewer using Hooks
+      summary: A version of react-adaptivecards using React Hooks.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards-hooks/assets/preview.png
+      framework: React
+      spfx: 1.10.0
+      author: Paul Schaeflein
+      modifiedtext: April 27, 2020
+      modified: 2020-04-27
+      level: 300
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-faqapp
       name: react-faqapp
       title: Frequently Asked Questions
@@ -2175,6 +2186,7 @@ extra:
     - Paolo Pialorsi
     - Patrick Rodgers
     - Paul Ryan
+    - Paul Schaeflein
     - Ram Prasad Meenavalli
     - Ramin Ahmadi
     - Ravi Kulkarni
