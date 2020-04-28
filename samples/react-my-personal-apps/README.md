@@ -70,6 +70,7 @@ react  My Personal Apps|João Mendes
 Version|Date|Comments
 -------|----|--------
 1.0.0|April 9, 2020|Initial release
+1.0.1|April 28, 2020| Bug fix URL Links - Zach Roberts [SPODev](https://spodev.com)
 
 ## Disclaimer
 
