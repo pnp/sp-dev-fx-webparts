@@ -376,7 +376,7 @@ export default class LibraryDocuments extends React.Component<IDocumentsProps, I
       }
     });
 
-    let modifiedDocs = this.state.displayedDocuments;
+    let modifiedDocs: any = this.state.displayedDocuments;
 
     modifiedDocs = _.orderBy(
       modifiedDocs,
@@ -400,7 +400,7 @@ export default class LibraryDocuments extends React.Component<IDocumentsProps, I
 
         return document[column.fieldName];
       }],
-      [column.isSortedDescending ? "desc" : "asc"]);
+      [column.isSortedDescending ? "desc" : "asc"]) ;
 
     this.setState({
       displayedDocuments: modifiedDocs,
@@ -476,7 +476,7 @@ export default class LibraryDocuments extends React.Component<IDocumentsProps, I
 
     return {
       items: items,
-      targetElement: ev.currentTarget as HTMLElement,
+      target: ev.currentTarget as HTMLElement,
       directionalHint: DirectionalHint.bottomLeftEdge,
       gapSpace: 10,
       isBeakVisible: true,
