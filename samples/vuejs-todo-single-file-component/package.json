@@ -17,8 +17,7 @@
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",
-    "vue-template-compiler": "^2.6.11",
-    "webpack-merge": "^4.2.2"
+    "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",
@@ -34,7 +33,8 @@
     "node-sass": "~4.14.0",
     "sass-loader": "~8.0.2",
     "tslint-microsoft-contrib": "5.0.0",
-    "vue-loader": "^15.9.1"
+    "vue-loader": "^15.9.1",
+    "webpack-merge": "^4.2.2"
   },
   "scripts": {
     "build": "gulp bundle",
