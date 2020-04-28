@@ -2115,17 +2115,15 @@ extra:
       modifiedtext: June 11, 2019
       modified: 2019-06-11
     - framework: VueJS
-      spfx: 1.4.0
-      year: 2018
+      spfx: 1.10.0
       url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/vuejs-todo-single-file-component
       name: vuejs-todo-single-file-component
       title: Todo Client Web Part built with Vue.js and Vue's single-file components
       thumbnail: https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png
       author: Sergei Sergeev
       summary: Sample Todo web part demonstrating how you can utilize Vue (a progressive framework for building user interfaces) with SharePoint Framework using handy single-file components approach.
-      version: 0.0.6
-      modifiedtext: December 11, 2018
-      modified: 2018-12-11
+      modifiedtext: April 27, 2020
+      modified: 2020-04-27
   authors:
     - Aakash Bhardwaj
     - Adrián Díaz
