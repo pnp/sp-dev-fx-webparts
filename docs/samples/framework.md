@@ -25,7 +25,7 @@ To learn more about how to use these samples, please refer to our [getting start
 
 <div class="grid">
 
-{% for sample in samples %}
+{% for sample in samples|sort(attribute='modified', reverse=True) %}
 
 <div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}"  data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
@@ -35,7 +35,7 @@ To learn more about how to use these samples, please refer to our [getting start
         href="{{sample.url}}"
         title="{{sample.summary}}">
         <picture>
-          <img src="https://sharepoint.github.io/sp-dev-fx-webparts//img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="https://sharepoint.github.io/sp-dev-fx-webparts//img/thumbnails/sm/{{ sample.name }}.png"/>
+          <img src="https://sharepoint.github.io/sp-dev-fx-webparts/img/thumbnails/sm/{{ sample.name }}.png" width="302" alt="{{sample.name}}" data-fullsize="{{sample.thumbnail}}" data-orig="https://sharepoint.github.io/sp-dev-fx-webparts/img/thumbnails/sm/{{ sample.name }}.png"/>
         </picture>
       </a>
     </div>

@@ -17,7 +17,7 @@ To learn more about how to use these samples, please refer to our [getting start
 
 <div class="grid">
 
-{% for sample in samples %}
+{% for sample in samples|sort(attribute='modified', reverse=True) %}
 
 <div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
