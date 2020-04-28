@@ -1,4 +1,44 @@
-## react-adaptivecards-hooks
+# react-adaptivecards-hooks
+
+## Summary
+
+A version of [react-adaptivecards](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards) using React Hooks.
+
+![Adaptive Cards in SharePoint](assets/preview.png)
+
+## Used SharePoint Framework Version
+
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+
+## Applies to
+
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-adaptivecards-hooks | Paul Schaeflein (http://www.schaeflein.net)
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|April 27, 2020|Initial release
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+* Clone this repository
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
 
 ### Code structure
 
@@ -12,3 +52,6 @@
 | AdaptiveCardViewer.tsx       | React Function component                         | Top-level UI component. |
 | AdaptiveCardHost.tsx         | React Function component                         | Renders placeholder if template/data are missing. Handles card actions. |
 | AdaptiveCard.tsx             | React Class component                            | Responsible for rendering adaptive card and expanding card with data |
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-adaptivecards-hooks" />
+
