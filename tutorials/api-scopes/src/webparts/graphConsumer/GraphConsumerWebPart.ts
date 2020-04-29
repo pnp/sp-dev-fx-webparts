@@ -19,7 +19,7 @@ export interface IGraphConsumerWebPartProps {
 export default class GraphConsumerWebPart extends BaseClientSideWebPart<IGraphConsumerWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IGraphConsumerProps > = React.createElement(
+    const element: React.ReactElement<IGraphConsumerProps> = React.createElement(
       GraphConsumer,
       {
         clientMode: this.properties.clientMode,
