@@ -52,7 +52,7 @@ This Web Part uses MSgraph Open Extension to save the personal information on us
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -63,13 +63,15 @@ This Web Part uses MSgraph Open Extension to save the personal information on us
 
 Solution|Author(s)
 --------|---------
-react  My Personal Apps|João Mendes
+react-my-personal-apps|João Mendes
+
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|April 9, 2020|Initial release
+1.0.1|April 28, 2020| Bug fix URL Links - Zach Roberts [SPODev](https://spodev.com)
 
 ## Disclaimer
 

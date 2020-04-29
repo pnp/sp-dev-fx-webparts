@@ -130,14 +130,14 @@ export default class PersonalApps extends React.Component<
                         title={item.name}
                         description={item.description}
                         iconName={item.iconName}
-                        url={item.url}
+                        url={item.Url}
                       />
                     ) : (
                       <AppItem
                         title={item.name}
                         description={item.description}
                         iconName={item.iconName}
-                        url={item.url}
+                        url={item.Url}
                       />
                     )}
                   </>
