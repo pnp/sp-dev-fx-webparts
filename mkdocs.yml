@@ -166,9 +166,9 @@ extra:
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-my-personal-apps/assets/Image1.png
       framework: React
       spfx: 1.10.0
-      author: João Mendes
-      modifiedtext: April 9, 2020
-      modified: 2020-04-09
+      author: João Mendes, Zach Roberts
+      modifiedtext: April 28, 2020
+      modified: 2020-04-28
       level: 300
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks
       name: react-functional-servicescope-hooks
