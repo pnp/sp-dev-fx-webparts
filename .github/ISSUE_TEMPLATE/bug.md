@@ -36,7 +36,7 @@ assignees: ''
 
 ## Observed Behavior
 
-> _If you are reporting a bug, please describe the behavior you expected to occur when performing the action. If you are making a suggestion, or sample request, you can delete this section._
+> _Please describe the behavior you expected to occur when performing the action._
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
 
@@ -57,13 +57,24 @@ Steps to reproduce the behavior:
 > _(DELETE THIS PARAGRAPH AFTER READING)_
 
 ## Screenshots
-> OPTIONAL 
+> **OPTIONAL**
 > If applicable, add screenshots to help explain your problem.
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
 
+# Environment Details (*Development & Target environment*)
+
+> **DELETE THIS LINE BEFORE SUBMITTING** - Complete the following (*if ignored you'll be prompted for it before we can address your issue... save the time and provide it in your initial submission*).
+
+- **OS**: [e.g. Windows 10 | MacOS 10.15.x]
+- **Target Environment**: [e.g. SharePoint Server 2016 | SharePoint Server 2019 | SharePoint Online]
+- **Framework**: [e.g. .NET Framework v3.x | .NET Core v3.x | Node.js v6/v8/v10/v12]
+- **Browser(s)**: [e.g. Chrome v79 | Safari v22 | FireFox v31 | IE v11 | Edge | Chromium Edge v79]
+- **Tooling**: [e.g. VS Code | SPFx v1.10.0 | Visual Studio 2019]
+- **Additional details**: *The more context you can provide, the easier it is (and therefore quicker) to help.*
+
 ## Additional context
-> OPTIONAL 
+> **OPTIONAL** 
 > Add any other context about the problem here.
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
