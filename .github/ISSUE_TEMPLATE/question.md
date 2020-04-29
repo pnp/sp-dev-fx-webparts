@@ -16,6 +16,12 @@ assignees: ''
 > 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
 
+## Sample
+
+> Please specify which sample this is regarding.
+> 
+> _(DELETE THIS PARAGRAPH AFTER READING)_
+
 ## Authors
 
 > Because of the way this repository is setup, samples authors do not get a notification when you create an issue. *It makes it less likely for you to get your issue resolved or to get help*. For the section above **@mention any author of the sample**. Authors' github handle can be found on the main sample documentation page, under the "solution" section. Use the `PREVIEW` tab at the top right to preview the rendering before submitting your issue.
