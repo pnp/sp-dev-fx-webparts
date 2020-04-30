@@ -6,18 +6,16 @@ import { IGraphConsumerState } from './IGraphConsumerState';
 import { ClientMode } from './ClientMode';
 import { IUserItem } from './IUserItem';
 import { escape } from '@microsoft/sp-lodash-subset';
-
 import {
-  autobind,
   PrimaryButton,
   TextField,
-  Label,
   DetailsList,
   DetailsListLayoutMode,
   CheckboxVisibility,
-  SelectionMode
+  SelectionMode,
+  BaseButton,
+  Button
 } from 'office-ui-fabric-react';
-
 import { AadHttpClient, MSGraphClient } from "@microsoft/sp-http";
 
 // Configure the columns for the DetailsList component
@@ -79,9 +77,9 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
                 <TextField 
                     label={ strings.SearchFor } 
                     required={ true } 
-                    value={ this.state.searchFor }
-                    onChanged={ this._onSearchForChanged }
+                    onChange={ this._onSearchForChanged }
                     onGetErrorMessage={ this._getSearchForErrorMessage }
+                    value={ this.state.searchFor }
                   />
               </p>
               <p className={ styles.form }>
@@ -113,9 +111,8 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
     );
   }
 
-  @autobind
-  private _onSearchForChanged(newValue: string): void {
-
+  private _onSearchForChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
+ 
     // Update the component state accordingly to the current user's input
     this.setState({
       searchFor: newValue,
@@ -129,9 +126,7 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
       : `${strings.SearchForValidationErrorMessage}`;
   }
 
-  @autobind
-  private _search(): void {
-
+  private _search = (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button, MouseEvent>) : void => {
     console.log(this.props.clientMode);
 
     // Based on the clientMode value search users
