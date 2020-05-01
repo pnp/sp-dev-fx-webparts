@@ -7,10 +7,10 @@ assignees: ''
 
 ---
 
-> Thank you for suggesting a sample request. We appreciate your feedback - to help the team to understand your needs, please complete the below template to ensure we have the necessary details to assist you.
-> 
 > Please note that issues that do not follow this template will automatically be rejected.
 >
+> Thank you for suggesting a sample request. We appreciate your feedback - to help the team to understand your needs, please complete the below template to ensure we have the necessary details to assist you.
+> 
 > _(DELETE THIS PARAGRAPH AFTER READING)_
 
 ## Expected or Desired Sample
