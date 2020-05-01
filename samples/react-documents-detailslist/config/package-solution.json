@@ -8,6 +8,6 @@
     "version": "1.0.0.0"
   },
   "paths": {
-    "zippedPackage": "solution/react-documents.sppkg"
+    "zippedPackage": "solution/reactDocuments.sppkg"
   }
 }
