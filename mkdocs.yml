@@ -1103,19 +1103,16 @@ extra:
       version: 1.0.0
       modifiedtext: October 15, 2018
       modified: 2018-10-15
-    - framework: React
-      spfx: GA
-      year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-documents-detailslist
+    - url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-documents-detailslist
       name: react-documents-detailslist
       title: Documents Web Part
       thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-documents-detailslist/assets/Preview.gif
-      thumbnailtype: video
-      author: Dimcho Tsanov
+      author: Dimcho Tsanov, Harsha Vardhini
       summary: This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated items retrieved from the search index and real-time query to a document library.
-      version: 1.0
-      modifiedtext: October 13, 2017
-      modified: 2017-10-13
+      framework: React
+      spfx: 1.10.0
+      modifiedtext: April 28, 2020
+      modified: 2020-04-28
     - framework: React
       spfx: 1.4.1
       year: 2018
