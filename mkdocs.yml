@@ -60,6 +60,17 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-pages-hierarchy
+      name: react-pages-hierarchy
+      title: Page Hierarchy
+      summary: This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.
+      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-pages-hierarchy/assets/PagesHierarchy.gif
+      framework: React
+      spfx: 1.10.0
+      author: Bo George
+      modifiedtext: April 30, 2020
+      modified: 2020-04-30
+      level: 300
     - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards-hooks
       name: react-adaptivecards-hooks
       title: Adaptive Cards Viewer using Hooks
@@ -2146,6 +2157,7 @@ extra:
     - Beau Cameron
     - Biju Basheer
     - Bill Ayers
+    - Bo George
     - Bob German
     - Chakkaradeep Chandran
     - Chris Kent
