@@ -1,8 +1,23 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - React
+  createdDate: 04/30/2020 12:00:00 AM
+---
+
 # React Pages Hierarchy
 
 ## Summary
 
-This web part allows users to create a faux page hierarchy in their pages library and use it for page to page navigation.  It will ask you to create a page parent property on first use which is then used by the web part to either show a breadcrumb of the current pages ancestors or buttons for the pages children.
+This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.  It will ask you to create a page parent property on first use which is then used by the web part to either show a breadcrumb of the current pages ancestors or buttons for the pages children.
 
 ![Page Navigator](./assets/PagesHierarchy.gif)
 
@@ -15,8 +30,6 @@ This web part allows users to create a faux page hierarchy in their pages librar
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 Developer Tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
-
 ## Prerequisites
 
 * Office 365 subscription with SharePoint Online
@@ -26,7 +39,7 @@ This web part allows users to create a faux page hierarchy in their pages librar
 
 Solution|Author(s)
 --------|---------
-react-pages-hierarchy|Bo George ((@bo_george)[https://twitter.com/bo_george])
+react-pages-hierarchy|Bo George ([@bo_george](https://twitter.com/bo_george))
 
 ## Version history
 
@@ -46,8 +59,6 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
-
-> Include any additional steps as needed.
 
 ## Features
 
