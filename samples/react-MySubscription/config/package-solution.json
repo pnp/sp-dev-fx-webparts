@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Microsoft 365 - My Subscriptions",
+    "id": "15867796-91b4-48ce-b74a-4f031aea702a",
+    "version": "1.0.0.0",
+    "supportedLocales": ["en","no"],
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "GroupMember.ReadWrite.All"
+      }
+      
+    ]
+  },
+  
+  "paths": {
+    "zippedPackage": "solution/my-subscriptions.sppkg"
+  }
+}
