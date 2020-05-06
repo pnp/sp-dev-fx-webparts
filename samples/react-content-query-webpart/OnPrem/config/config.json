@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/contentQuery/ContentQueryWebPart.js",
+      "manifest": "./src/webparts/contentQuery/ContentQueryWebPart.manifest.json",
+      "outputPath": "./dist/content-query-web-part.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "contentQueryStrings": "webparts/contentQuery/loc/{locale}.js"
+  }
+}

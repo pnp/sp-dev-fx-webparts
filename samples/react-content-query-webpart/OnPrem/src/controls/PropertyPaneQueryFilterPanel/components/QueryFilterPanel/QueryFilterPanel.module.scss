@@ -1,0 +1,16 @@
+.queryFilterPanel {
+
+    .queryFilterPanelItems {
+        .queryFilterPanelItem {
+            margin-top: 15px;
+
+            &:first-child {
+                margin-top: 0px;
+            }
+        }
+    }
+    
+    >button {
+        margin-top: 15px;
+    }
+}
