@@ -1,0 +1,32 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.cqwp {
+  
+  .cqwpValidations {
+    padding-top: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin-top: -10px;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cqwpError {
+    background-color: $ms-color-neutralLighter;
+    border: 1px solid $ms-color-neutralQuaternaryAlt;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .incomplete {
+    color: $ms-color-red;
+    font-weight: 700;
+  }
+
+  .complete {
+    color: $ms-color-green;
+    font-weight: 700;
+  }
+}

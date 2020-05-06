@@ -1,0 +1,13 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.queryFilterPanel {
+  .queryFilterPanelItems {
+    .queryFilterPanelItem {
+      margin-top: 15px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
