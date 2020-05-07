@@ -62,16 +62,6 @@ extra:
   samples:
     - framework: React
       spfx: 1.10.0
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-MySubscription
-      name: react-MySubscription
-      title: My Subscriptions
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-MySubscription/assets/example.gif
-      author: Harsh Damania
-      summary: We now have audiences in modern sharepoint. The most benefit from this feature is that we can target News/ Article to different users groups. So the idea was to use the concept of audiences and build something called as subscription, when the user subscribes he/she becomes member of that group i.e office 365 groups Thus giving end users the opportunity on what kind of news/article they would be intrested in.
-      modifiedtext: May 5, 2020
-      modified: 2020-05-05
-    - framework: React
-      spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart
       name: react-content-query-webpart
       title: Content Query WebPart (SharePoint Online)
@@ -2207,7 +2197,6 @@ extra:
     - Gautam Sheth
     - Giuliano De Luca
     - Hugo Bernier
-    - Harsh Damania
     - Harsha Vardhini
     - Jayakumar Balasubramaniam
     - Jeremy Coleman
