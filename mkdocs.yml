@@ -60,192 +60,224 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-pages-hierarchy
+    - framework: React
+      spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-MySubscription
+      name: react-MySubscription
+      title: My Subscriptions
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-MySubscription/assets/example.gif
+      author: Harsh Damania
+      summary: We now have audiences in modern sharepoint. The most benefit from this feature is that we can target News/ Article to different users groups. So the idea was to use the concept of audiences and build something called as subscription, when the user subscribes he/she becomes member of that group i.e office 365 groups Thus giving end users the opportunity on what kind of news/article they would be intrested in.
+      modifiedtext: May 5, 2020
+      modified: 2020-05-05
+    - framework: React
+      spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart
+      name: react-content-query-webpart
+      title: Content Query WebPart (SharePoint Online)
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-content-query-webpart/Online/assets/toolpart.gif
+      author: David Warner II, Hugo Bernier, Paolo Pialorsi
+      summary: The React Content Query WebPart is a modern version of the good old Content by Query WebPart that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original WebPart was based on a XSLT templating engine, this React WebPart is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more.
+      modifiedtext: April 28, 2020
+      modified: 2020-04-28
+    - framework: React
+      spfx: GA
+      year: 2018
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart
+      name: react-content-query-webpart
+      title: Content Query WebPart  (On-Premises SharePoint)
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-content-query-webpart/OnPrem/Misc/toolpart.gif
+      thumbnailtype: video
+      author: Simon-Pierre Plante
+      summary: The React Content Query WebPart is a modern version of the good old Content by Query WebPart that was introduced in SharePoint 2007. Built for SharePoint 2016 and Office 365, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original WebPart was based on a XSLT templating engine, this React WebPart is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more.
+      modifiedtext: May 22, 2018
+      modified: 2018-05-22
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pages-hierarchy
       name: react-pages-hierarchy
       title: Page Hierarchy
       summary: This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-pages-hierarchy/assets/PagesHierarchy.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pages-hierarchy/assets/PagesHierarchy.gif
       framework: React
       spfx: 1.10.0
       author: Bo George
       modifiedtext: April 30, 2020
       modified: 2020-04-30
       level: 300
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards-hooks
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards-hooks
       name: react-adaptivecards-hooks
       title: Adaptive Cards Viewer using Hooks
       summary: A version of react-adaptivecards using React Hooks.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards-hooks/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards-hooks/assets/preview.png
       framework: React
       spfx: 1.10.0
       author: Paul Schaeflein
       modifiedtext: April 27, 2020
       modified: 2020-04-27
       level: 300
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-faqapp
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-faqapp
       name: react-faqapp
       title: Frequently Asked Questions
       summary: Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-faqapp/assets/FAQWebpart.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-faqapp/assets/FAQWebpart.png
       framework: React
       spfx: 1.8.2
       author: Ashok Swain
       modifiedtext: April 25, 2020
       modified: 2020-04-25
       level: 200
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-teams-personal-app-settings
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-personal-app-settings
       name: react-teams-personal-app-settings
       title: Teams Personal App Settings Web Part
       summary: Demonstrates how you can store Teams Personal App Web Part's properties in user's OneDrive.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png
       framework: React
       spfx: 1.10.0
       author: Alex Terentiev
       modifiedtext: April 24, 2020
       modified: 2020-04-24
       level: 300
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-add-js-css-ref
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-add-js-css-ref
       name: react-add-js-css-ref
       title: Add JS and CSS reference on Modern Pages
       summary: React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-add-js-css-ref/assets/webpartinaction.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-add-js-css-ref/assets/webpartinaction.gif
       framework: React
       spfx: 1.9.1
       author: Siddharth Vaghasia
       modifiedtext: April 24, 2020
       modified: 2020-04-24
       level: 200
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-spupsproperty-sync
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-spupsproperty-sync
       name: react-spupsproperty-sync
       title: SPUPS Property Sync
       summary: This component will help the administrators who are currently maintaining the user profiles in their organization.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-spupsproperty-sync/assets/SPUPS-Sync.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-spupsproperty-sync/assets/SPUPS-Sync.gif
       framework: React
       spfx: 1.10.0
       author: Sudharsan Kesavanarayanan
       modifiedtext: April 23, 2020
       modified: 2020-04-23
       level: 300
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-css-in-js-typestyle
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-css-in-js-typestyle
       name: react-css-in-js-typestyle
       title: CSS in JS with SharePoint Framework and TypeStyle
       summary: The web part demonstrates the usage of "CSS in JS" pattern with SharePoint Framework. "CSS in JS" is implemented using TypeStyle library.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-css-in-js-typestyle/assets/dynamic-styles.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-css-in-js-typestyle/assets/dynamic-styles.gif
       framework: React
       spfx: 1.10.0
       author: Sergei Sergeev
       modifiedtext: April 24, 2020
       modified: 2020-04-24
       level: 200
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-global-news
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-global-news
       name: react-global-news
       title: Global News
       summary: This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites around the world.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-global-news/assets/GlobalNews.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-global-news/assets/GlobalNews.png
       framework: React
       spfx: 1.10.0
       author: João Mendes
       modifiedtext: April 14, 2020
       modified: 2020-04-14
       level: 200
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-personal-greeting
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-personal-greeting
       name: react-personal-greeting
       title: Personal Greeting
       summary: The web part pulls in the current user's name and displays it on the page. The greeting text before the name is customizable through the property pane. Additionally the position of the greeting and color of the text can be adjusted through the property pane as well.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-personal-greeting/assets/react-personal-greeting.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-personal-greeting/assets/react-personal-greeting.gif
       framework: React
       spfx: 1.10.0
       author: Zach Roberts
       modifiedtext: April 14, 2020
       modified: 2020-04-14
       level: 100
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-versiondisplay
+    - url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-versiondisplay
       name: react-versiondisplay
       title: Displaying the version number in a web part
       summary: This very simple sample demonstrates three different approaches to display the version number of your SharePoint solution in your web part.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-versiondisplay/assets/VersionDisplay.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-versiondisplay/assets/VersionDisplay.gif
       framework: React
       spfx: 1.10.0
       author: Hugo Bernier
       modifiedtext: April 10, 2020
       modified: 2020-04-10
       level: 100
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-my-personal-apps
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-personal-apps
       name: react-my-personal-apps
       title: My Personal Apps
       summary: The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-my-personal-apps/assets/Image1.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-personal-apps/assets/Image1.png
       framework: React
       spfx: 1.10.0
       author: João Mendes, Zach Roberts
       modifiedtext: April 28, 2020
       modified: 2020-04-28
       level: 300
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks
       name: react-functional-servicescope-hooks
       title: Consuming SPFX Service Scopes using React Hooks
       summary: This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-functional-servicescope-hooks/webpart.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-functional-servicescope-hooks/webpart.png
       framework: React
       spfx: 1.10.0
       author: Garry Trinder
       modifiedtext: March 25, 2020
       modified: 2020-03-25
       level: 200
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-covid19-info
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-covid19-info
       name: react-covid19-info
       title: COVID 19 information web part
       summary: This web part displays info about the COVID-19 virus for a given country. 
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-covid19-info/assets/covid-counter.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-covid19-info/assets/covid-counter.gif
       framework: React
       spfx: 1.10.0
       author: Robin Atgen
       modifiedtext: March 25, 2020
       modified: 2020-03-25
       level: 200
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards
       name: react-adaptivecards
       title: Adaptive Cards Host
       summary: This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif
       framework: React
       spfx: 1.10.0
       author: Hugo Bernier
       modifiedtext: Mar 24, 2020
       modified: 2020-03-24
       level: 300
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-yammer-praise
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-yammer-praise
       name: react-yammer-praise
       title: Yammer Praise using aadTokenProvider
       summary: This sample shows how to post a praise to Yammer using aadTokenProvider (without Yammer JavaScript SDK).
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-yammer-praise/assets/screenshot.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-yammer-praise/assets/screenshot.gif
       framework: React
       spfx: 1.10.0
       author: Ramin Ahmadi
       modifiedtext: Mar 23, 2020
       modified: 2020-03-23
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-enhanced-list-formatting
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-enhanced-list-formatting
       name: react-enhanced-list-formatting
       title: Enhanced List Formatting
       summary: This web part allows you to add custom CSS on a page to enhance list formatting.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif
       framework: React
       spfx: 1.10.0
       author: Hugo Bernier, David Warner II
       modifiedtext: March 18, 2020
       modified: 2020-03-18
       level: 300
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
       name: js-workbench-customizer
       title: Workbench customizer
       summary: This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png
       framework: Javascript
       spfx: 1.10.0
       author: Joel Rodrigues
       modifiedtext: February 05, 2020
       modified: 2020-02-05
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-outlook-copy2teams
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-outlook-copy2teams
       name: react-outlook-copy2teams
       title: Outlook to Teams
       summary: This SPFx Outlook Add-In lets you browse your OneDrive, joined Teams or Groups and select a folder to save your complete mail in there.
@@ -255,43 +287,43 @@ extra:
       author: Markus Moeller
       modifiedtext: April 06, 2020
       modified: 2020-04-06
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-advanced-commenting
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-advanced-commenting
       name: js-advanced-commenting
       title: Advanced Comments Box
       summary: This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif
       thumbnailtype: video
       framework: jQuery
       spfx: 1.9.1
       author: Sudharsan Kesavanarayanan
       modifiedtext: February 05, 2020
       modified: 2020-02-05
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-twitter
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-twitter
       name: react-twitter
       title: Twitter Timeline
       summary: Sample web part to display Twitter timeline.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-twitter/assets/twitter-timeline.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-twitter/assets/twitter-timeline.png
       framework: React
       spfx: 1.10.0
       author: Alex Terentiev
       modifiedtext: January 20, 2020
       modified: 2020-01-20  
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-calendar
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-calendar
       name: react-graph-calendar
       title: Graph Calendar Web Part
       summary: This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.).
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-calendar/assets/react-graph-calendar-spo.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-calendar/assets/react-graph-calendar-spo.gif
       thumbnailtype: video
       framework: React
       spfx: 1.10.0
       author: Sébastien Levert
       modifiedtext: January 08, 2020
       modified: 2020-01-08
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-manage-o365-groups
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-o365-groups
       name: react-manage-o365-groups
       title: Manage Office 365 Groups with SPFx
       summary: Office 365 Groups is the foundational membership service, that drives all teamwork across Microsoft 365. Once in a group, we can get the benefits of the group-connected services like shared Outlook inbox, shared calendar, SharePoint site, Planner, Power BI, Yammer, and Teams.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-manage-o365-groups/assets/web-part-preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-manage-o365-groups/assets/web-part-preview.gif
       thumbnailtype: video
       framework: React
       spfx: 1.9.1
@@ -300,31 +332,31 @@ extra:
       modified: 2020-01-01
     - framework: React
       spfx: 1.9.1
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-feedback-form
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-feedback-form
       name: react-graph-feedback-form
       title: Feedback Form
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-feedback-form/assets/preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-feedback-form/assets/preview.gif
       thumbnailtype: video
       author: Sergei Zheleznov 
       summary: Sample SPFx React web part which allows sending emails using Microsoft Graph.
       modifiedtext: December 15, 2019
       modified: 2019-12-15
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-members-with-presence
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-members-with-presence
       name: react-members-with-presence
       title: Group members list with Presence information
       summary: This sample shows how to get the members of a specific group, including their presence information (using the new Presence endpoint in the MS Graph API).
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-members-with-presence/assets/react-members-with-presence.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-members-with-presence/assets/react-members-with-presence.gif
       thumbnailtype: video
       framework: React
       spfx: 1.9.1
       author: Luis Mañez
       modifiedtext: December 23, 2019
       modified: 2019-12-23
-    - url: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-recaptcha
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-recaptcha
       name: react-recaptcha
       title: Google reCaptcha Sample
       summary: This is sample webpart which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx webpart. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your business requirement if you need to implement CAPTCHA in SPFx webpart.
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-recaptcha/screens/WebpartInAction.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-recaptcha/screens/WebpartInAction.gif
       thumbnailtype: video
       framework: React
       spfx: 1.9.1
@@ -334,7 +366,7 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-mytasks
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-mytasks
       name: react-mytasks
       title: My Tasks Web Part
       thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/My-Tasks/samples/react-mytasks/assets/MyTasks.gif
@@ -347,10 +379,10 @@ extra:
     - framework: React
       spfx: 1.7.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-slide-swiper
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-slide-swiper
       name: react-slide-swiper
       title: Slide Swiper
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-slide-swiper/assets/SPFx-React-Slider-Swiper.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-slide-swiper/assets/SPFx-React-Slider-Swiper.gif
       thumbnailtype: video
       author: Velin Georgiev
       summary: This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easly be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called Swiper.
@@ -360,10 +392,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-teams-tabs-pnpjs
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-tabs-pnpjs
       name: react-teams-tabs-pnpjs
       title: MS Teams Channels and Tabs from Modern Team site
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart-animated.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart-animated.gif
       author: Federico Porceddu
       version: 1.0
       modified: 2019-10-30
@@ -372,10 +404,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-msgraph-extension
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msgraph-extension
       name: react-msgraph-extension
       title: Manage Microsoft Graph Open Extension in SPFx
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-msgraph-extension/assets/create-graph-extension.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-msgraph-extension/assets/create-graph-extension.png
       author: Ejaz Hussain
       version: 1.0
       modified: 2019-10-20
@@ -384,10 +416,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-list-form
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-form
       name: react-list-form
       title: List Form WebPart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
       thumbnailtype: video
       author: Dany Wyss
       summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
@@ -397,10 +429,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-check-flows
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-check-flows
       name: react-check-flows
       title: Check Flows
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-check-flows/assets/CheckFlows.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-check-flows/assets/CheckFlows.gif
       author: Aakash Bhardwaj
       version: 1.0
       modified: 2019-09-17
@@ -409,10 +441,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-my-groups
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-groups
       name: react-my-groups
       title: My Groups
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png
       author: Zach Roberts
       version: 1.0
       modified: 2019-09-13
@@ -421,10 +453,10 @@ extra:
     - framework: Angular
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/aad-api-spo-cookie
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/aad-api-spo-cookie
       name: aad-api-spo-cookie
       title: Call custom APIs secured with Azure Active Directory without ADAL JS
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/aad-api-spo-cookie/assets/preview-orders.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/aad-api-spo-cookie/assets/preview-orders.png
       author: Waldek Mastykarz
       version: 1.0.0
       modified: 2017-05-05
@@ -434,9 +466,9 @@ extra:
       spfx: GA
       year: 2017
       title: Call custom Web API secured with AAD from SharePoint Framework client-side web part using Angular v1.x
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angular-aad-webapi
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-aad-webapi
       name: angular-aad-webapi
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/angular-aad-webapi/assets/preview.jpg
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-aad-webapi/assets/preview.jpg
       author: David Hartman
       version: 1.1.0
       modified: 2017-03-21
@@ -446,9 +478,9 @@ extra:
       spfx: GA
       year: 2016
       title: Migrating existing Angular applications to SharePoint Framework sample
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angular-migration
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-migration
       name: angular-migration
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/angular-migration/assets/angular-todo-spfx-preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-migration/assets/angular-todo-spfx-preview.png
       author: Waldek Mastykarz
       summary: This is a sample Angular application before and after it has been migrated to a SharePoint Framework client-side web part.
       modified: 2016-10-21
@@ -458,9 +490,9 @@ extra:
       spfx: drop5
       year: 2016
       title: Angular multi-page client-side web part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angular-multipage
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-multipage
       name: angular-multipage
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/angular-multipage/assets/poll-preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-multipage/assets/poll-preview.gif
       thumbnailtype: video
       author: Waldek Mastykarz
       summary: This is a sample SharePoint Framework client-side web part built using Angular, illustrating building multi-page web parts.
@@ -471,7 +503,7 @@ extra:
       spfx: GA
       year: 2017
       title: File Upload using AngularJs
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angular-ngofficeuifabric-file-upload
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-ngofficeuifabric-file-upload
       name: angular-ngofficeuifabric-file-upload
       thumbnail: https://camo.githubusercontent.com/674cb6e830d597e1ab9bb89992b6fe7f0359b80f/687474703a2f2f692e696d6775722e636f6d2f553571673449492e706e67
       author: Atish Kumar Dipongkor, Gautam Sheth
@@ -483,7 +515,7 @@ extra:
       spfx: drop2
       year: 2016
       title: Angular & ngOfficeUIFabric Client-Side Web Part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angular-ngofficeuifabric-todo
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-ngofficeuifabric-todo
       name: angular-ngofficeuifabric-todo
       thumbnail: https://avatars2.githubusercontent.com/u/11164679?s=460&v=4
       author: Waldek Mastykarz
@@ -496,9 +528,9 @@ extra:
       spfx: rc0
       year: 2017
       title: Search Client-Side Web Part Built with Angular v1.x
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angular-search
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-search
       name: angular-search
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/angular-search/assets/angularSearch.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-search/assets/angularSearch.png
       author: David Hartman
       summary: This is a sample search web part that illustrates how you can use Angular within the new SharePoint Framework
       version: 1.0
@@ -508,9 +540,9 @@ extra:
       spfx: GA
       year: 2017
       title: Angular client-side web part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angular-todo
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-todo
       name: angular-todo
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/angular-todo/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-todo/assets/preview.png
       author: Waldek Mastykarz
       summary: Sample Web Part illustrating using Angular with the SharePoint Framework.
       version: 1.0
@@ -520,9 +552,9 @@ extra:
       spfx: rc0
       year: 2017
       title: Angular2 Web Part Prototype
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angular2-prototype
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular2-prototype
       name: angular2-prototype
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/angular2-prototype/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular2-prototype/assets/preview.png
       author: Manish Garg, Daniel Gaeta
       summary: Sample To Do Web Part built with Angular2. This sample illustrates how you can use Angular2 with the SharePoint Framework.
       version: 0.3
@@ -533,7 +565,7 @@ extra:
     - framework: Angular
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angularelements-helloworld
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angularelements-helloworld
       name: angularelements-helloworld
       title: Angular Elements in SharePoint Framework
       thumbnail: https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png
@@ -546,7 +578,7 @@ extra:
       spfx: 1.4.1
       year: 2019
       title: Angular Elements with HTML Template File in SharePoint Framework
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/angularelements-html-templatefile
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angularelements-html-templatefile
       name: angularelements-html-templatefile
       thumbnail: https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png
       author: Jayakumar Balasubramaniam
@@ -558,9 +590,9 @@ extra:
       spfx: GA
       year: 2017
       title: Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/bootstrap-slider
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/bootstrap-slider
       name: bootstrap-slider
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/bootstrap-slider/assets/slider_image_1.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/bootstrap-slider/assets/slider_image_1.png
       author: David Hartman
       summary: Sample bootstrap slider which pulls the slides from a list inside the SharePoint site. The list is automatically deployed once the app is installed in the SharePoint site.
       version: 1.0
@@ -570,7 +602,7 @@ extra:
       spfx: 1.4.1
       year: 2018
       title: Sample with Handlebars.js
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/handlebarsjs-webpack-loader
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/handlebarsjs-webpack-loader
       name: handlebarsjs-webpack-loader
       thumbnail: https://avatars2.githubusercontent.com/u/5503835?s=460&v=4
       author: Stefan Bauer
@@ -582,9 +614,9 @@ extra:
       spfx: drop2
       year: 2016
       title: Using jQuery loaded from CDN
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/jquery-cdn
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/jquery-cdn
       name: jquery-cdn
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/jquery-cdn/assets/preview_weather.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/jquery-cdn/assets/preview_weather.png
       author: Waldek Mastykarz
       summary: This is a sample web Part that illustrates the use of jQuery and its plugins loaded from CDN for building SharePoint Framework client-side web parts.
       version: 1.0
@@ -594,9 +626,9 @@ extra:
       spfx: drop1
       year: 2016
       title: JQuery, Photopile.JS & Office UI Fabric Client-Side Web Part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/jquery-photopile
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/jquery-photopile
       name: jquery-photopile
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/jquery-photopile/assets/photopileoverview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/jquery-photopile/assets/photopileoverview.gif
       thumbnailtype: video
       author: Olivier Carpentier
       summary: This is a sample web part that illustrated the use of JQuery and Photopile.Js with the SharePoint Framework.
@@ -606,9 +638,9 @@ extra:
       spfx: GA
       year: 2017
       title: Display List JavaScript Client-Side Web Part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-display-list
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-display-list
       name: js-display-list
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-display-list/assets/display-list-preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-display-list/assets/display-list-preview.png
       author: Velin Georgiev
       summary: This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list.
       version: 1.1
@@ -618,9 +650,9 @@ extra:
       spfx: 1.7.0
       year: 2018
       title: Dynamic Bundling & Loading of SPFx Packages
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-dynamic-bundling-libraries
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-dynamic-bundling-libraries
       name: js-dynamic-bundling-libraries
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg
       author: David Warner II
       summary: This sample illustrates how SPFx functionality and packages can be bundled in multiple '.js' files then be dynamically & asynchronously loaded into the page at execution time, such as with a button click.
       version: 1.1
@@ -630,9 +662,9 @@ extra:
       spfx: GA
       year: 2017
       title: Display Employee Spotlight JavaScript Client-Side Web Part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-employee-spotlight
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-employee-spotlight
       name: js-employee-spotlight
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png
       author: Ravi Kumar Bomma
       summary: Simple Web Part that demonstrates the use of SharePoint Framework for showcasing Employee Spotlight. The web part pulls data from a configured list and User Profile service. The properties pane for this web part has 5 cascading dropdowns.
       version: 1.0
@@ -642,7 +674,7 @@ extra:
       spfx: rc0
       year: 2017
       title: Integrating custom gulp tasks to SharePoint Framwork toolchain
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-extend-gulp
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-extend-gulp
       name: js-extend-gulp
       thumbnail: https://avatars3.githubusercontent.com/u/7882052?s=460&v=4
       author: Chakkaradeep Chandran
@@ -654,7 +686,7 @@ extra:
       spfx: GA
       year: 2017
       title: Extending webpack in the SharePoint Framework toolchain
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-extend-webpack
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-extend-webpack
       name: js-extend-webpack
       thumbnail: https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png
       author: Velin Georgiev, Chakkaradeep Chandran
@@ -665,9 +697,9 @@ extra:
       spfx: 1.8.0
       year: 2019
       title: GitHub Badge
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-gitHubBadge
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-gitHubBadge
       name: js-gitHubBadge
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-gitHubBadge/assets/1.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-gitHubBadge/assets/1.png
       author: Eric Skaggs
       version: 1.0
       modifiedtext: April 18, 2019
@@ -676,7 +708,7 @@ extra:
       spfx: 1.6.0
       year: 2017
       title: Modern Calendar
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-modern-calendar
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-modern-calendar
       name: js-modern-calendar
       thumbnail: https://cloud.githubusercontent.com/assets/13068139/23584808/14c3ec26-0121-11e7-8be8-65fbcca32b62.png
       author: Jeremy Coleman
@@ -688,9 +720,9 @@ extra:
       spfx: 1.8.2
       year: 2019
       title: My Flows Web Part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-myflows
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-myflows
       name: js-myflows
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-myflows/assets/Screenshot4.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-myflows/assets/Screenshot4.png
       author: João Mendes
       summary: Manage current user flows in SharePoint or Teams Tab, this web part use the msflowsdk-1.1.js
       version: 1.0.0
@@ -700,9 +732,9 @@ extra:
       spfx: drop2
       year: 2016
       title: Embed a PowerBI report in a Client-Side Web Part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-powerbi-embedded
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-powerbi-embedded
       name: js-powerbi-embedded
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-powerbi-embedded/assets/screenshot_powerbi_embedded_spfx.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-powerbi-embedded/assets/screenshot_powerbi_embedded_spfx.png
       author: Roland Oldengarm
       summary: This sample SharePoint Framework client-side web part embedding a PowerBI report using PowerBI Embedded without any server-side code.
       version: 1.0
@@ -712,9 +744,9 @@ extra:
       spfx: 1.3.4
       year: 2017
       title: JS Property Controls SVG
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-propertycontrols-svg
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-propertycontrols-svg
       name: js-propertycontrols-svg
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-propertycontrols-svg/assets/js-propertycontrols-svg.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-propertycontrols-svg/assets/js-propertycontrols-svg.gif
       thumbnailtype: video
       author: Chris Kent
       summary: An SPFx webpart that displays a Scalable Vector Graphics (SVG) image using properties to customize how it is rendered. The webpart utilizes the PnP SPFx Property Controls package (specifially the SpinButton and ColorPicker) to set these properties.
@@ -725,9 +757,9 @@ extra:
       spfx: 1.7.1
       year: 2019
       title: Public teams I'm not a member of
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-public-unjoined-teams
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-public-unjoined-teams
       name: js-public-unjoined-teams
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-public-unjoined-teams/assets/js-public-unjoined-teams.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-public-unjoined-teams/assets/js-public-unjoined-teams.gif
       thumbnailtype: video
       author: Laura Kokkarinen
       summary: This web part lists all the public teams the current user is not yet a member of. They can then join any of those teams by clicking the button right next to the team name. This web part can also be added to Teams as a tab (built with the 1.7.1 plusbeta/preview version).
@@ -738,9 +770,9 @@ extra:
       spfx: 1.8.0
       year: 2019
       title: JavaScript Skype Status WebPart
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-skype-status
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-skype-status
       name: js-skype-status
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-skype-status/images/demo.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-skype-status/images/demo.gif
       thumbnailtype: video
       author: Vincent Biret
       summary: This sample demonstrates how to use the UCWA JS Sdk for skype in the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the documentation
@@ -751,7 +783,7 @@ extra:
       spfx: GA
       year: 2017
       title: Handling Multiple Editions of SPFx Solution
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-solution-editions
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-solution-editions
       name: js-solution-editions
       thumbnail: https://avatars3.githubusercontent.com/u/17036219?s=460&v=4
       author: Alex Terentiev
@@ -764,9 +796,9 @@ extra:
       year: 2019
       compatibility: SharePoint 2019
       title: Modern Experience Theme Manager 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-theme-manager-2019
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-theme-manager-2019
       name: js-theme-manager-2019
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-theme-manager-2019/assets/apply-a-theme.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-theme-manager-2019/assets/apply-a-theme.png
       author: David Warner II, Beau Cameron, Biju Basheer, Eric Skaggs
       summary: This sample web part provides a user interface for applying a Modern Experience theme in SharePoint 2019 on-premises.
       version: 2019.0.0.0
@@ -776,9 +808,9 @@ extra:
       spfx: 1.7.1
       year: 2019
       title: Modern Experience Theme Manager
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-theme-manager
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-theme-manager
       name: js-theme-manager
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/js-theme-manager/assets/create-a-theme.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-theme-manager/assets/create-a-theme.png
       author: David Warner II, Beau Cameron
       summary: This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online.
       version: 1.0
@@ -789,9 +821,9 @@ extra:
       year: 2017
       title: Knockout Dependent Properties
       name: knockout-dependent-properties
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/knockout-dependent-properties/assets/dep-props.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/knockout-dependent-properties/assets/dep-props.png
       author: Alex Terentiev
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/knockout-dependent-properties
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/knockout-dependent-properties
       summary: Sample Web Part illustrating...
       version: 1.1
       modifiedtext: May 20, 2017
@@ -800,9 +832,9 @@ extra:
       spfx: 1.7.0
       year: 2018
       title: Sample showing the use of @pnp/sp library with Knockoutjs
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/knockout-sp-pnp-js
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/knockout-sp-pnp-js
       name: knockout-sp-pnp-js
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/knockout-sp-pnp-js/assets/screenshot.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/knockout-sp-pnp-js/assets/screenshot.png
       author: Patrick Rodgers
       summary: This webpart demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O.
       version: 1.0.0
@@ -812,9 +844,9 @@ extra:
       spfx: GA
       year: 2017
       title: Taxonomy Web Part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/knockout-taxonomy
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/knockout-taxonomy
       name: knockout-taxonomy
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/knockout-taxonomy/assets/Taxonomy.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/knockout-taxonomy/assets/Taxonomy.png
       author: Alex Terentiev
       summary: Sample Web Part illustrating Reading taxonomy term stores' hierarchy from SharePoint, Loading JavaScript Object Model scripts, creating Knockout components
       version: 1.1
@@ -824,9 +856,9 @@ extra:
       spfx: 1.4.1
       year: 2018
       title: SharePoint Framework PnP Controls Sample
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/pnp-controls
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/pnp-controls
       name: pnp-controls
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/pnp-controls/assets/webpart-outcome.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/pnp-controls/assets/webpart-outcome.gif
       thumbnailtype: video
       author: Elio Struyf
       summary: This is a sample project that contains a web part which makes use of the PnP SPFx Controls
@@ -837,9 +869,9 @@ extra:
       spfx: 1.4.1
       year: 2018
       title: Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-3rd-party-api
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-3rd-party-api
       name: react-3rd-party-api
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif
       thumbnailtype: video
       author: Paolo Pialorsi
       summary: This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework.
@@ -850,9 +882,9 @@ extra:
       spfx: GA
       year: 2017
       title: Azure Active Directory implicit flow authentication samples
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-aad-implicitflow
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-aad-implicitflow
       name: react-aad-implicitflow
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png
       author: Waldek Mastykarz
       summary: Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory.
       version: 1.1.0
@@ -862,9 +894,9 @@ extra:
       spfx: drop4
       year: 2016
       title: Call custom Web API secured with AAD from SharePoint Framework client-side web part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-aad-webapi
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-aad-webapi
       name: react-aad-webapi
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-aad-webapi/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-aad-webapi/assets/preview.png
       author: Waldek Mastykarz
       summary: Sample SharePoint Framework client-side web part illustrating communication with a custom Web API secured with Azure Active Directory.
       version: 1.0
@@ -874,9 +906,9 @@ extra:
       spfx: 1.5.1
       year: 2018
       title: Accordion Web Part
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-accordion
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion
       name: react-accordion
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-accordion/assets/previewAccordion.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion/assets/previewAccordion.PNG
       author: Gautam Sheth
       summary: This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format.
       version: 1.0
@@ -886,9 +918,9 @@ extra:
       spfx: 1.7.0
       year: 2018
       title: Image Gallery Web Part Built with Adaptive Cards
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptive-cards-image-gallery
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptive-cards-image-gallery
       name: react-adaptive-cards-image-gallery
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-adaptive-cards-image-gallery/assets/sharepoint-run.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptive-cards-image-gallery/assets/sharepoint-run.gif
       thumbnailtype: video
       author: Nanddeep Nachan, Ravi Kulkarni
       summary: This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.
@@ -899,9 +931,9 @@ extra:
       spfx: 1.4.1
       year: 2018
       title: Aggregated Calendar Webpart
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-aggregated-calendar
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-aggregated-calendar
       name: react-aggregated-calendar
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-aggregated-calendar/assets/react-aggregated-calendar.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-aggregated-calendar/assets/react-aggregated-calendar.gif
       thumbnailtype: video
       author: Dhaval Shah
       summary: This is a sample webpart developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io
@@ -911,10 +943,10 @@ extra:
     - framework: React
       spfx: 1.7.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-app-settings
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-app-settings
       name: react-app-settings
       title: App settings webpart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-app-settings/assets/app-settings-class.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-app-settings/assets/app-settings-class.PNG
       author: Velin Georgiev
       summary: This sample shows how AppSettings.ts file can be added and used within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects. That allows better DevOps and continuous integration (CI/CD) automation. The AppSettings.ts is transpiled/compiled with your SPFx solution which differs from the way the web.config. With .Net web.config file we would be able to update independently without the need of compiling DLLs. If that behavior is required, you can store your app settings in a SharePoint list and change them from there. However, that will have performance degradation over if the setting was part of the SPFx code where the logic can get a setting value in milliseconds.
       version: 0.0.3
@@ -923,10 +955,10 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-async-await-sp-pnp-js
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-async-await-sp-pnp-js
       name: react-async-await-sp-pnp-js
       title: Using @pnp/js with Async / Await
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-async-await-sp-pnp-js/assets/async-await-sp-pnp-js.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-async-await-sp-pnp-js/assets/async-await-sp-pnp-js.png
       author: Jose Quinto
       summary: This webpart demonstrates how to use PnPJS with Async functions into the SharePoint Framework as well as integrating PnP JS and SPFx Logging systems. Real example querying SharePoint library to show document sizes.
       version: 1.2
@@ -935,7 +967,7 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-azfunc-vimeo
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-azfunc-vimeo
       name: react-azfunc-vimeo
       title: Local Azure Function and SPFx Web Part Development to consume third party APIs
       thumbnail: https://avatars2.githubusercontent.com/u/5503835?s=460&v=4
@@ -947,10 +979,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-birthdays
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-birthdays
       name: react-birthdays
       title: Birthdays Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-birthdays/assets/birthdays.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-birthdays/assets/birthdays.gif
       thumbnailtype: video
       author: João Mendes
       summary: The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title "Birthdays."
@@ -959,20 +991,20 @@ extra:
       modified: 2019-07-23
     - framework: React
       spfx: 1.10.0
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-bot-framework
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-bot-framework
       name: react-bot-framework
       title: Microsoft Bot Framework Web Chat
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png
       author: Gary Pretty, Stephan Bisser, Harsha Vardhini
       summary: A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.
       modifiedtext: April 15, 2020
       modified: 2020-04-15
     - framework: React
       spfx: 1.10.0
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-calendar-feed
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar-feed
       name: react-calendar-feed
       title: Calendar Feed Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif
       thumbnailtype: video
       author: Hugo Bernier
       summary: This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part.
@@ -982,10 +1014,10 @@ extra:
       keywords: ical,wordpress,rss,exchange,calendar,event,hooks,theme,background
     - framework: React
       spfx: 1.8.2
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-calendar
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar
       name: react-calendar
       title: Calendar
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
       thumbnailtype: video
       author: João Mendes, Mohamed Derhalli
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
@@ -994,10 +1026,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-carousel
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-carousel
       name: react-carousel
       title: Carousel Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-carousel/assets/carousel.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-carousel/assets/carousel.gif
       thumbnailtype: video
       author: João Mendes
       summary: This web part show images and videos in carousel
@@ -1006,10 +1038,10 @@ extra:
     - framework: React
       spfx: 1.7.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-chartcontrol
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-chartcontrol
       name: react-chartcontrol
       title: Chart Control Samples
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/WebPartList.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/WebPartList.png
       author: Hugo Bernier
       summary: This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react.
       version: 1.0
@@ -1018,10 +1050,10 @@ extra:
     - framework: React
       spfx: 1.7.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-comparer
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-comparer
       name: react-comparer
       title: Comparer with File Picker
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-comparer/assets/ComparerWebPart.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-comparer/assets/ComparerWebPart.gif
       thumbnailtype: video
       author: Hugo Bernier
       summary: Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker.
@@ -1031,10 +1063,10 @@ extra:
     - framework: React
       spfx: 1.6.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-components-dynamicloading
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-components-dynamicloading
       name: react-components-dynamicloading
       title: Code Splitting in SharePoint Framework
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-components-dynamicloading/assets/cs3.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-components-dynamicloading/assets/cs3.gif
       thumbnailtype: video
       author: Vardhaman Deshpande 
       summary: Load React components and third party packages on demand in SPFx
@@ -1044,10 +1076,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart
       name: react-content-query-webpart
       title: Content Query WebPart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-content-query-webpart/Misc/toolpart.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-content-query-webpart/Misc/toolpart.gif
       thumbnailtype: video
       author: Simon-Pierre Plante
       summary: The React Content Query WebPart is a modern version of the good old Content by Query WebPart that was introduced in SharePoint 2007. Built for SharePoint 2016 and Office 365, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original WebPart was based on a XSLT templating engine, this React WebPart is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more.
@@ -1056,10 +1088,10 @@ extra:
     - framework: React
       spfx: drop4
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-custompropertypanecontrols
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-custompropertypanecontrols
       name: react-custompropertypanecontrols
       title: Custom property pane controls
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-custompropertypanecontrols/assets/async-dropdown-preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-custompropertypanecontrols/assets/async-dropdown-preview.gif
       thumbnailtype: video
       author: Waldek Mastykarz
       summary: Sample custom property pane controls built in React for use with SharePoint Framework client-side web parts.
@@ -1070,7 +1102,7 @@ extra:
     - framework: React
       spfx: GA
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-designpatterns-typescript
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-designpatterns-typescript
       name: react-designpatterns-typescript
       title: Design Patterns applied to Sharepoint Framework
       thumbnail: https://avatars3.githubusercontent.com/u/6962857?s=460&v=4
@@ -1082,10 +1114,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-directory
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-directory
       name: react-directory
       title: Organization Directory Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
       author: João Mendes
       summary: Search People from Organization Directory and show live persona card on hover.
       version: 1.0.0
@@ -1094,19 +1126,19 @@ extra:
     - framework: React
       spfx: 1.6.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-display-hierarchy
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-display-hierarchy
       name: react-display-hierarchy
       title: Web part displaying hierarchical information from SharePoint list
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png
       author: Nanddeep Nachan, Ravi Kulkarni
       summary: At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list.
       version: 1.0.0
       modifiedtext: October 15, 2018
       modified: 2018-10-15
-    - url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-documents-detailslist
+    - url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-documents-detailslist
       name: react-documents-detailslist
       title: Documents Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-documents-detailslist/assets/Preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-documents-detailslist/assets/Preview.gif
       author: Dimcho Tsanov, Harsha Vardhini
       summary: This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated items retrieved from the search index and real-time query to a document library.
       framework: React
@@ -1118,10 +1150,10 @@ extra:
       year: 2018
       status: Deprecated
       statustext: The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use dynamic data instead.
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-events-aggregator
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-events-aggregator
       name: react-events-aggregator
       title: Event Aggregator Sample (DEPRECATED)
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-events-aggregator/assets/spfx-event-aggregator.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-events-aggregator/assets/spfx-event-aggregator.gif
       thumbnailtype: video
       author: Miguel Rabaca, Velin Georgiev, Austin Breslin
       summary: This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the Publish–subscribe pattern. It enables a webpart or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it.
@@ -1131,10 +1163,10 @@ extra:
     - framework: React
       spfx: 1.7.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-events-dynamicdata
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-events-dynamicdata
       name: react-events-dynamicdata
       title: Dynamic data
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png
       author: Waldek Mastykarz
       summary: Sample web parts illustrating using the SharePoint Framework Dynamic data capability.
       version: 1.1
@@ -1143,10 +1175,10 @@ extra:
     - framework: React
       spfx: 1.5.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-facebook-plugin
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-facebook-plugin
       name: react-facebook-plugin
       title: SharePoint Framework Facebook Page Social Plugin web part sample
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-facebook-plugin/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-facebook-plugin/assets/preview.png
       author: Andrew Koltyakov
       summary: This sample shows how to implement iFrame-based web parts with a dynamic responsive behavior on the example of Facebook Page Social Plugin.
       version: 1.0
@@ -1155,10 +1187,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-feature-framework
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-feature-framework
       name: react-feature-framework
       title: Deployment of SharePoint assets as part of SPFx package
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-feature-framework/assets/screenshot.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-feature-framework/assets/screenshot.png
       author: Vesa Juvonen
       summary: Simplistic solution demonstrating how to provision SharePoint assets using Feature Framework elements when SharePoint Framework solution is being deployed to a SharePoint site.
       version: 1.0
@@ -1167,10 +1199,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-file-upload
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-file-upload
       name: react-file-upload
       title: File Upload Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-file-upload/assets/SPFileUploadPreview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-file-upload/assets/SPFileUploadPreview.gif
       thumbnailtype: video
       author: Ramin Ahmadi
       summary: The file upload web part allowing users to upload multiple files to a document library or as item attachments.
@@ -1180,10 +1212,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-component-with-data-fetch
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-functional-component-with-data-fetch
       name: react-functional-component-with-data-fetch
       title: React Functional Component web part with data fetch
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-functional-component-with-data-fetch/Screenshot.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-functional-component-with-data-fetch/Screenshot.png
       author: Bill Ayers
       summary: This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user's Teams and, optionally, the channels in each Team.
       version: 1.0
@@ -1192,10 +1224,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-component
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-functional-component
       name: react-functional-component
       title: React Functional Component web part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-functional-component/Screenshot.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-functional-component/Screenshot.png
       author: Bill Ayers
       summary: This web part is intended to be easier to understand for new developers building their first SPFx web part. It is a refactoring of the HelloWorld web part that is created by the @microsoft/generator-sharepoint Yeoman generator, and introduces React Functional Components.
       version: 1.0
@@ -1204,10 +1236,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-stateful-component
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-functional-stateful-component
       name: react-functional-stateful-component
       title: React Functional Stateful Component web part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-functional-stateful-component/Screenshot.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-functional-stateful-component/Screenshot.png
       author: Bill Ayers
       summary: This web part demonstrates building a React functional component that includes state, using the recently introduced React Hooks feature. The example web part renders a number to Roman numerals conversion tool.
       version: 1.0
@@ -1216,7 +1248,7 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-github-badge
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-github-badge
       name: react-github-badge
       title: GitHub Badge (React)
       thumbnail: https://github.com/hugoabernier/sp-dev-fx-webparts/raw/master/samples/react-github-badge/assets/githubbadge.png
@@ -1228,10 +1260,10 @@ extra:
     - framework: React
       spfx: 1.7.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-google-fit
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-google-fit
       name: react-google-fit
       title: Web part displaying Google Fit information
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-google-fit/assets/webpart-preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-google-fit/assets/webpart-preview.png
       author: Nanddeep Nachan
       summary: This sample demonstrates integration of Google Fit information with SharePoint Framework. The Google Fitness REST APIs allows developers to extend it further and create their own dashboards. Google Fitness REST APIs are useful if you have fitness app and you want to integrate your data with google fit or if you just want to collect Fitness data and display some information to the users. This web part helps to display the key fitness information (activity time spent, distance travelled, calories burned, step count) from the Google fit data source.
       version: 1.0.0
@@ -1240,10 +1272,10 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-evalurl
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-evalurl
       name: react-graph-evalurl
       title: Webpart showing Url validation for SharePoint using Office Graph
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-evalurl/assets/url-graph-eval.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-evalurl/assets/url-graph-eval.gif
       thumbnailtype: video
       author: Stefan Bauer
       summary: This sample contains a class that evaluates the url input of a text field against the Microsoft Graph.
@@ -1253,10 +1285,10 @@ extra:
     - framework: React
       spfx: 1.6.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-personalemail
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-personalemail
       name: react-graph-personalemail
       title: Personal e-mail
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-personalemail/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-personalemail/assets/preview.png
       author: Waldek Mastykarz
       summary: Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph.
       version: 1.0
@@ -1265,10 +1297,10 @@ extra:
     - framework: React
       spfx: 1.7.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-pnpjs
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-pnpjs
       name: react-graph-pnpjs
       title: Using PnPJS with MS Graph
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-pnpjs/assets/summary.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-pnpjs/assets/summary.png
       author: Sergei Sergeev
       summary: This webpart demonstrates how to use PnPJS with SharePoint Framework and how to query Microsoft Graph with PnPJS. It requests a list of Azure AD groups at your tenant and shows them using Office UI Fabric React list.
       version: 1.0
@@ -1277,10 +1309,10 @@ extra:
     - framework: React
       spfx: 1.8.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-reports
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-reports
       name: react-graph-reports
       title: Graph Usage Reports
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-reports/assets/react-graph-reports.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-reports/assets/react-graph-reports.gif
       thumbnailtype: video
       author: Ejaz Hussain
       summary: This sample describe a SPFX application which retrieves an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph.
@@ -1290,10 +1322,10 @@ extra:
     - framework: React
       spfx: 1.5.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-graph-schema-extensions
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-schema-extensions
       name: react-graph-schema-extensions
       title: Read / update MS Graph Custom Schema Extensions
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-graph-schema-extensions/assets/webpart.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-schema-extensions/assets/webpart.png
       author: Luis Mañez
       summary: This sample shows how read and update a custom Schema extension in MS Graph. It shows how to create a custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update that data using an spfx webpart.
       version: 1.0.0
@@ -1302,10 +1334,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-hooks
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-hooks
       name: react-hooks
       title: React Hooks Form WebPart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-hooks/assets/webpart.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-hooks/assets/webpart.PNG
       author: Adrián Díaz
       summary: The React Hooks web part is an example of how to implement Hooks in Spfx. Hooks is a new feature included in React version 16.8, with the new version of SharePoint Framework (SPFx) version 1.9.1 we can use them in our developments. In this example we are going to see the different types of hooks that are available and with the comparison of how this implementation can be done without the Hooks to be able to observe the benefits of using it.
       version: 1.0.0
@@ -1314,10 +1346,10 @@ extra:
     - framework: React
       spfx: 1.6.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-image-gallery
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-image-gallery
       name: react-image-gallery
       title: Filterable Image Gallery Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-image-gallery/assets/image-gallery.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-image-gallery/assets/image-gallery.gif
       thumbnailtype: video
       author: Ejaz Hussain
       summary: This sample describe a SPFX application which implement an image gallery with taxonomy base filtering and typed search. This application also implement pagination.
@@ -1327,10 +1359,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-image-magnifier
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-image-magnifier
       name: react-image-magnifier
       title: Image Magnifier
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-image-magnifier/assets/spfx-react-image-magnifier.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-image-magnifier/assets/spfx-react-image-magnifier.gif
       thumbnailtype: video
       author: Giuliano De Luca
       summary: This web part allow to magnify an image, displaying a resolution more detailed through a lens.
@@ -1340,10 +1372,10 @@ extra:
     - framework: React
       spfx: 1.6.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-image-slider-list-taxonomy-filter
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-image-slider-list-taxonomy-filter
       name: react-image-slider-list-taxonomy-filter
       title: Image Slider from Photo Gallery using Taxonomy Filter
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-image-slider-list-taxonomy-filter/assets/ImageSlider.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-image-slider-list-taxonomy-filter/assets/ImageSlider.gif
       thumbnailtype: video
       author: Sudhir Rawat
       summary: This webpart display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy. 
@@ -1353,10 +1385,10 @@ extra:
     - framework: React
       spfx: 1.3.0
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-invitation-manager
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-invitation-manager
       name: react-invitation-manager
       title: Azure Active Directory invitation manager Graph API samples
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-invitation-manager/assets/SPFx-Invitation-Manager.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-invitation-manager/assets/SPFx-Invitation-Manager.gif
       thumbnailtype: video
       author: Giuliano De Luca
       summary: Sample SharePoint Framework web parts built using React illustrating the possibility to use Graph API to invite external users into the Azure Active Directory.
@@ -1366,10 +1398,10 @@ extra:
     - framework: React
       spfx: 1.8.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-ioc-tests
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-ioc-tests
       name: react-ioc-tests
       title: React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-ioc-tests/assets/preview.jpg
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-ioc-tests/assets/preview.jpg
       author: Paul Ryan
       summary: This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part.
       version: 1.0
@@ -1378,10 +1410,10 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-item-History
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-item-History
       name: react-item-History
       title: Item History
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-item-History/Capture.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-item-History/Capture.PNG
       author: Russell Gove
       summary: This listview command is used to show the past versions of the selected list item in a grid.
       version: 1.0
@@ -1390,10 +1422,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-jest-testing
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-jest-testing
       name: react-jest-testing
       title: React Jest Testing sample
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png
       author: Velin Georgiev
       summary: This sample uses the popular Jest Testing Framework with a SPFx client side solution. It is a SPFx-Jest-Enzyme-Sinon starter kit so you can start writing and debugging unit tests in typescript for your SPFx solution. The setup includes unit tests examples, code coverage reports in different formats, visual studio code unit test debug configurations for typescript, setting a coverage threshold (gates) for continuous integration and continuous deployment scenarios.
       version: 0.0.5
@@ -1402,10 +1434,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-kanban-board
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-kanban-board
       name: react-kanban-board
       title: Kanban Board Webpart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-kanban-board/assets/kanban-board.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-kanban-board/assets/kanban-board.gif
       thumbnailtype: video
       author: Ram Prasad Meenavalli, Daniel Westerdale
       summary: This solution contains an SPFx webpart which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The webpart uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.
@@ -1414,7 +1446,7 @@ extra:
     - framework: React
       spfx: 1.8.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-manage-sitedesigns
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-sitedesigns
       name: react-manage-sitedesigns
       title: Site Designs Manager
       thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/dev/samples/react-manage-sitedesigns/assets/screen1.jpg
@@ -1426,10 +1458,10 @@ extra:
     - framework: React
       spfx: 1.8.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-material-ui
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-material-ui
       name: react-material-ui
       title: Material UI
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-material-ui/assets/screenshot.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-material-ui/assets/screenshot.gif
       thumbnailtype: video
       author: Ramin Ahmadi
       summary: This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon. This sample also includes RXJS DebounceTime, this feature allows you to wait for a certain amount of time before make requests to the server while user is typing to prevent to make requests for each character.
@@ -1438,10 +1470,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-mobx-multiple-stores
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-mobx-multiple-stores
       name: react-mobx-multiple-stores
       title: Using multiple stores with React and Mobx
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-mobx-multiple-stores/assets/demo.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-mobx-multiple-stores/assets/demo.gif
       thumbnailtype: video
       author: Kemal Sinanagic
       summary: A sample webpart that uses the Mobx library with multiple stores to keep track of the applications state.
@@ -1451,7 +1483,7 @@ extra:
     - framework: React
       spfx: drop5
       year: 2016
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-mobx
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-mobx
       name: react-mobx
       title: Using React and Mobx
       thumbnail: https://camo.githubusercontent.com/1bfb94ba2675eec1c794cfea81bdde41b964268f/68747470733a2f2f692e6779617a6f2e636f6d2f65366631393033623961396338323031393835636432356363316665323862632e676966
@@ -1463,7 +1495,7 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-modern-charts
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-modern-charts
       name: react-modern-charts
       title: Modern Charts
       thumbnail: https://raw.githubusercontent.com/jcoleman-pcprofessional/Modern-Charts/master/assets/modern-chart2.png
@@ -1475,10 +1507,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-msal-msgraph
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msal-msgraph
       name: react-msal-msgraph
       title: Microsoft Authentication Library (MSAL JS) authentication sample
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-msal-msgraph/assets/msal-wp-output.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-msal-msgraph/assets/msal-wp-output.png
       author: Elio Struyf
       summmary: Sample SharePoint Framework web part which makes use of the Microsoft Authentication Library (MSAL JS) to call the Microsoft Graph.
       version: 1.0.0
@@ -1487,10 +1519,10 @@ extra:
     - framework: React
       spfx: rc0
       year: 2016
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-multilist-grid
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-multilist-grid
       name: react-multilist-grid
       title: Multi-list Grid
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-multilist-grid/src/images/ColumnTypes.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multilist-grid/src/images/ColumnTypes.PNG
       author: Russell Gove
       summary: React-multilist-grid is an SPFX webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type – you just need to create column mappings to tell the webpart which fields to show in which columns of the grid.
       version: 0.1
@@ -1500,10 +1532,10 @@ extra:
       spfx: 1.8.2
       year: 2019
       compatibility: SharePoint 2019, Microsoft Teams
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-multimedia-gallery
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-multimedia-gallery
       name: react-multimedia-gallery
       title: Image Gallery
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-multimedia-gallery/assets/MultimediaGallery.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multimedia-gallery/assets/MultimediaGallery.gif
       thumbnailtype: video
       author: João Mendes
       summary: This web part show images and videos in responsive grid, on click it show images and videos in a carousel view.
@@ -1513,10 +1545,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-multipage
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-multipage
       name: react-multipage
       title: Multi-page client-side web part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-multipage/assets/poll-preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multipage/assets/poll-preview.gif
       thumbnailtype: video
       author: Waldek Mastykarz
       summary: Sample SharePoint Framework client-side web parts built using React illustrating building multi-page web parts.
@@ -1526,10 +1558,10 @@ extra:
     - framework: React
       spfx: 1.8.2
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-multiscreen-webpart
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-multiscreen-webpart
       name: react-multiscreen-webpart
       title: Multi screen web part sample
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-multiscreen-webpart/assets/multi-screen-webpart.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multiscreen-webpart/assets/multi-screen-webpart.gif
       thumbnailtype: video
       author: Velin Georgiev
       summary: This sample uses the popular React Router library to create tab, multi-screen or single page app (spa) experience in React SPFx web part. This is useful when the web part is more complex and to simplify the user experience multiple screens or tabs are needed. The same approach can be taken when a single page app (SPA) has to be migrated to modern SharePoint sites.
@@ -1539,10 +1571,10 @@ extra:
     - framework: React
       spfx: 1.7.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-my-teams
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-teams
       name: react-my-teams
       title: My Teams
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-my-teams/assets/Preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-teams/assets/Preview.png
       author: Joel Rodrigues
       summary: This sample uses Microsoft Graph to list the Teams the current user is a member of. When the user clicks on one of the teams, the web part retrieves information about the default channel (General) and opens it. The web part can be configured to open the team on the web browser or client app.
       version: 1.0
@@ -1551,9 +1583,9 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-officegraph
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-officegraph
       name: react-officegraph
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-officegraph/assets/trendinginthissite-preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-officegraph/assets/trendinginthissite-preview.png
       author: Waldek Mastykarz
       title: Office Graph Web Part samples
       modified: 2017-05-31
@@ -1561,10 +1593,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-offline-first
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-offline-first
       name: react-offline-first
       title: Offline First Web part built using LocalForage, Whatwg-Fetch, ES6-Promise
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-offline-first/assets/preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-offline-first/assets/preview.gif
       thumbnailtype: video
       author: Austin Breslin
       summary: Sample SharePoint Framework Client-Side Web Parts built using React showing interacting with the Office Graph.
@@ -1574,10 +1606,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-organisationchart
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-organisationchart
       name: react-organisationchart
       title: Organisation Chart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-organisationchart/assets/orgchart.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-organisationchart/assets/orgchart.png
       author: Vardhaman Deshpande
       summary: A simple Organisation Chart webpart using Office UI Fabric, React, REST API batching and ServiceScope plumbing.
       version: 2.1
@@ -1586,10 +1618,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-page-navigator
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-page-navigator
       name: react-page-navigator
       title: Page Navigator
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-page-navigator/assets/PageNavigator.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-page-navigator/assets/PageNavigator.gif
       thumbnailtype: video
       author: Aakash Bhardwaj
       summary: This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component.
@@ -1599,10 +1631,10 @@ extra:
     - framework: React
       spfx: 1.8.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-page-sections-navigation
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-page-sections-navigation
       name: react-page-sections-navigation
       title: Page Sections Navigation
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-page-sections-navigation/assets/page-nav.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-page-sections-navigation/assets/page-nav.gif
       thumbnailtype: video
       author: Alex Terentiev
       summary: Sample web parts allowing to add sections navigation to the SharePoint page.
@@ -1612,10 +1644,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-pagecontributors
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pagecontributors
       name: react-pagecontributors
       title: Page Contributors Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG
       author: Stéphane Magne
       summary: Displays page contributors in reverse chronological order.
       version: 1.0
@@ -1624,10 +1656,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-peoplepicker
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-peoplepicker
       name: react-peoplepicker
       title: People Picker
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-peoplepicker/assets/Preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-peoplepicker/assets/Preview.gif
       thumbnailtype: video
       author: Giuliano De Luca
       summary: SharePoint Framework solution with the Office UI Fabric People Picker, the client web part across the SharePoint Rest API is able to retrieve people and groups.
@@ -1637,10 +1669,10 @@ extra:
     - framework: React
       spfx: 1.10.0
       year: 2020
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-project-online
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-project-online
       name: react-project-online
       title: Project Online
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-project-online/assets/Preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-project-online/assets/Preview.gif
       thumbnailtype: video
       author: Joel Rodrigues
       summary: This sample shows how to use SPFx to consume data from the Project Online REST API. 
@@ -1649,10 +1681,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-property-bag-editor
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-property-bag-editor
       name: react-property-bag-editor
       title: Property Bag Navigation Webparts
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-property-bag-editor/src/images/PropertyBagEditorDisplay.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-property-bag-editor/src/images/PropertyBagEditorDisplay.PNG
       author: Russell Gove
       summary: A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties.
       version: 1.0
@@ -1661,10 +1693,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-provision-assets
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-provision-assets
       name: react-provision-assets
       title: Provision SharePoint Assets with the SPFx solution package
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-provision-assets/assets/spfx-provision-assets.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-provision-assets/assets/spfx-provision-assets.gif
       thumbnailtype: video
       author: Velin Georgiev
       summary: This sample shows how we can provision Document Library, Custom List, Web and List PropertyBag properties, Site Columns, Content Types, Images, Site Page with the SFPx Client side webpart and even prepopulated list and library items along with the SPFx solution package. All of the components can be deployed at once with the SPFx webpart when the app is added to a SharePoint site. It also contains custom list and document library xml schemas.
@@ -1674,10 +1706,10 @@ extra:
     - framework: React
       spfx: drop4
       year: 2016
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-real-time
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-real-time
       name: react-real-time
       title: Real Time News Feed using Azure Logic Apps, Node.js and socket.io
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-real-time/assets/animated-demo.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-real-time/assets/animated-demo.gif
       thumbnailtype: video
       author: Franck Cornu
       summary: This sample shows you how to implement real time web parts using the SPFx, Azure Logic Apps, Node.js and socket.io.
@@ -1687,10 +1719,10 @@ extra:
     - framework: React
       spfx: 1.7.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-realtime-documents
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-realtime-documents
       name: react-realtime-documents
       title: List subscription
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-realtime-documents/assets/list-subscription-webpart.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-realtime-documents/assets/list-subscription-webpart.png
       author: Waldek Mastykarz
       summary: Sample web part illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to documents in a SharePoint Document Library and refresh the displayed data.
       version: 1.0
@@ -1699,7 +1731,7 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-redux-async-immutablejs
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-redux-async-immutablejs
       name: react-redux-async-immutablejs
       title: Using React, Redux and ImmutableJS
       thumbnail: https://raw.githubusercontent.com/vman/sp-dev-fx-webparts/master/samples/react-redux-async-immutablejs/assets/react-redux-immutable.gif
@@ -1712,7 +1744,7 @@ extra:
     - framework: React
       spfx: drop5
       year: 2016
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-redux
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-redux
       name: react-redux
       title: Using React and Redux
       thumbnail: https://camo.githubusercontent.com/4d5690679fd7d36dce6c9bd92ec37d6047b443b6/68747470733a2f2f692e6779617a6f2e636f6d2f37323963346164646636633939323531336638656239316133666130653330322e676966
@@ -1724,10 +1756,10 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-reduxform
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-reduxform
       name: react-reduxform
       title: Using Redux-Form library and React
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-reduxform/assets/ReduxFormWebpart.gif?raw=true
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-reduxform/assets/ReduxFormWebpart.gif?raw=true
       author: Vipul Kelkar
       summary: Sample webpart to demonstrate the use of Redux-Form library with SPFx, React and Typescript. Demonstrates how to easily build a dynamic grid using redux-form.
       version: 1.0
@@ -1736,10 +1768,10 @@ extra:
     - framework: React
       spfx: 1.7.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-rss-reader
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rss-reader
       name: react-rss-reader
       title: SharePoint Framework RSS Reader
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-rss-reader/images/react-rss-reader.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-rss-reader/images/react-rss-reader.gif
       thumbnailtype: video
       author: Eric Overfield
       summary: A RSS Reader original based on work completed by Olivier Carpentier's
@@ -1749,10 +1781,10 @@ extra:
     - framework: React
       spfx: 1.7.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-rxjs-event-emitter
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rxjs-event-emitter
       name: react-rxjs-event-emitter
       title: ReactiveX (RxJs) Event Emitter Sample
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-rxjs-event-emitter/assets/spfx-event-emitter.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-rxjs-event-emitter/assets/spfx-event-emitter.gif
       thumbnailtype: video
       author: Velin Georgiev
       summary: This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish–subscribe pattern. It enables a webpart or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish–subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha.
@@ -1762,10 +1794,10 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-script-editor
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-script-editor
       name: react-script-editor
       title: Script editor web part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-script-editor/assets/modern-script-editor-wp.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-script-editor/assets/modern-script-editor-wp.gif
       thumbnailtype: video
       author: Waldek Mastykarz
       summary: Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part.
@@ -1776,10 +1808,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-search
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-search
       name: react-search
       title: Search Client-Side Web Part built with React and Flux
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-search/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-search/assets/preview.png
       author: Elio Struyf
       summary: Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework.
       version: 1.0.0
@@ -1788,10 +1820,10 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-securitygrid
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-securitygrid
       name: react-securitygrid
       title: Security Grid
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-securitygrid/src/images/MainDisplay.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-securitygrid/src/images/MainDisplay.gif
       author: Russell Gove
       summary: React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web
       version: 1.0.0.1
@@ -1800,10 +1832,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-side-panel
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-side-panel
       name: react-side-panel
       title: Side Panel Client-Side Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-side-panel/assets/side-panel.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-side-panel/assets/side-panel.gif
       thumbnailtype: video
       author: Alex Terentiev
       summary: The web part illustrates creation and usage of Side Panel (Sidebar) control.
@@ -1813,10 +1845,10 @@ extra:
     - framework: React
       spfx: 1.9.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-site-provisioning-manager
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-site-provisioning-manager
       name: react-site-provisioning-manager
       title: Site Provisioning Manager Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-site-provisioning-manager/assets/screenshot.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-site-provisioning-manager/assets/screenshot.gif
       thumbnailtype: video
       author: Ramin Ahmadi
       summary: This sample shows how you can manage site provisioning by calling Azure functions.
@@ -1826,10 +1858,10 @@ extra:
     - framework: React
       spfx: 1.4.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-sitepages-metadata
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sitepages-metadata
       name: react-sitepages-metadata
       title: Sitepages Metadata
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-sitepages-metadata/assets/demo-wp.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-sitepages-metadata/assets/demo-wp.gif
       thumbnailtype: video
       author: Oleg Rumiancev
       summary: Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup WebPart to display them.
@@ -1839,10 +1871,10 @@ extra:
     - framework: React
       spfx: 1.8.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-skype-status
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-skype-status
       name: react-skype-status
       title: Skype Status WebPart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-skype-status/images/demo.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-skype-status/images/demo.gif
       thumbnailtype: video
       author: Vincent Biret
       summary: This sample demonstrates how to use the UCWA JS SDK for skype with the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the documentation
@@ -1852,10 +1884,10 @@ extra:
     - framework: React
       spfx: drop4
       year: 2016
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-sp-elevatedprivileges
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sp-elevatedprivileges
       name: react-sp-elevatedprivileges
       title: Communicate using elevated privileges with SharePoint
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-sp-elevatedprivileges/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-sp-elevatedprivileges/assets/preview.png
       author: Waldek Mastykarz
       summary: Sample SharePoint Framework client-side web part illustrating communication with SharePoint using elevated privileges through a custom Web API.
       version: 1.0
@@ -1864,7 +1896,7 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-sp-pnp-js-property-decorators
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sp-pnp-js-property-decorators
       name: react-sp-pnp-js-property-decorators
       thumbnail: https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png
       title: Using PnP JS Core custom objects with @select and @expand decorators
@@ -1876,10 +1908,10 @@ extra:
     - framework: React
       spfx: 1.5.1
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-taxonomypicker-panel
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-taxonomypicker-panel
       name: react-taxonomypicker-panel
       title: Taxonomy picker using Office UI Fabric Panel
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/blob/master/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true
       author: Vipul Kelkar
       summary: Sample webpart with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The webpart uses the Taxonomy API support available in the @pnp/taxonomy.
       version: 1.1
@@ -1888,10 +1920,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-taxonomypicker
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-taxonomypicker
       name: react-taxonomypicker
       title: Taxonomy Picker
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-taxonomypicker/assets/react-taxonomy-picker-spfx.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-taxonomypicker/assets/react-taxonomy-picker-spfx.gif
       thumbnailtype: video
       author: Jose Quinto
       summary: A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx).
@@ -1901,10 +1933,10 @@ extra:
     - framework: React
       spfx: 1.7.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-team-creator
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-team-creator
       name: react-team-creator
       title: Teams Creator Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-team-creator/assets/teams-creator.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-team-creator/assets/teams-creator.png
       author: Alex Terentiev
       summary: The web part illustrates usage of MS Graph beta APIs to work with Teams
       version: 1.1
@@ -1913,10 +1945,10 @@ extra:
     - framework: React
       spfx: 1.8.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-teams-tab-field-visit-mashup
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-tab-field-visit-mashup
       name: react-teams-tab-field-visit-mashup
       title: Teams Tab - Field Visit Demo (Mashup)
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png
       author: Bob German
       summary: A web part for use in Microsoft Teams that displays a mashup of information partaining to customer visits.
       vision: 1.1
@@ -1926,10 +1958,10 @@ extra:
     - framework: React
       spfx: 1.7.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-teams-tab-suggested-members
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-tab-suggested-members
       name: react-teams-tab-suggested-members
       title: Group members suggestion
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-teams-tab-suggested-members/assets/SuggestedMembersTeamsTab.jpg
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-tab-suggested-members/assets/SuggestedMembersTeamsTab.jpg
       author: Luis Mañez
       summary: This webpart uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint webpart or Teams tab
       version: 1.0.0
@@ -1939,10 +1971,10 @@ extra:
     - framework: React
       spfx: 1.8.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-teams-tagging
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-tagging
       name: react-teams-tagging
       title: Tag Teams using a TermSet in SharePoint
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-teams-tagging/assets/webpart.JPG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-tagging/assets/webpart.JPG
       author: Luis Mañez
       summary: This sample shows how read and update a custom Schema extension in MS Graph to Tag a Team using metadata from a specific TermSet in SharePoint. 
       version: 1.0.0
@@ -1951,7 +1983,7 @@ extra:
     - framework: React
       spfx: 1.7.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-tenant-properties
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tenant-properties
       name: react-tenant-properties
       title: Tenant Properties Web Part
       thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/master/samples/react-tenant-properties/assets/TenantProperties2.jpg
@@ -1962,10 +1994,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-themes
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-themes
       name: react-themes
       title: SharePoint Themes Client Side Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-themes/assets/themes.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-themes/assets/themes.png
       author: Alex Terentiev
       summary: This web part illustrates how to use SharePoint Theme variables in custom web parts.
       version: 1.1
@@ -1974,10 +2006,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-tinymce
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tinymce
       name: react-tinymce
       title: TinyMCE Editor WebPart Integration with SharePoint
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-tinymce/assets/preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tinymce/assets/preview.gif
       thumbnailtype: video
       author: Austin Breslin
       summary: React TinyMCE is one of the worlds most popular editors for the web. It has many features out of the box and many more plugins that can be added when needed. You can create your own plugins if you want, the editor is powered by the communitiy.
@@ -1987,10 +2019,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-todo-basic
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-todo-basic
       name: react-todo-basic
       title: Todo Basic
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-todo-basic/assets/todo-basic-demo.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-todo-basic/assets/todo-basic-demo.gif
       thumbnailtype: video
       author: Chakkaradeep Chandran
       summary: A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.
@@ -2000,10 +2032,10 @@ extra:
     - framework: React
       spfx: 1.10.0
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-tree-orgchart
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tree-orgchart
       name: react-tree-orgchart
       title: Tree Organization Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-tree-orgchart/assets/Screenshot1.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tree-orgchart/assets/Screenshot1.png
       author: João Mendes
       summary: The Tree Organization WebPart shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.
       version: 1.0.0
@@ -2012,10 +2044,10 @@ extra:
     - framework: React
       spfx: drop5
       year: 2016
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-videolibrary
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-videolibrary
       name: react-videolibrary
       title: Video Library
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-videolibrary/src/assets/react-3d-carousel.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-videolibrary/src/assets/react-3d-carousel.PNG
       author: Russell Gove
       summary: A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel
       version: 0.1
@@ -2024,10 +2056,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-visio
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-visio
       name: react-visio
       title: Visio Embed
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-visio/assets/Preview.PNG
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-visio/assets/Preview.PNG
       author: Joel Rodrigues
       summary: This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.
       version: 1.4
@@ -2036,10 +2068,10 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-webcam
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-webcam
       name: react-webcam
       title: Web/Mobile Camera Demo
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-webcam/screens/4.png?raw=true
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-webcam/screens/4.png?raw=true
       author: Siddharth Vaghasia
       summary: This is sample webpart to showcase how to open webcam and take photo in SPFx webpart.
       version: 1.0.0
@@ -2048,10 +2080,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-webhooks-realtime
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-webhooks-realtime
       name: react-webhooks-realtime
       title: Webhooks Realtime
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-webhooks-realtime/assets/spfx-react-webhooks-realtime.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-webhooks-realtime/assets/spfx-react-webhooks-realtime.gif
       thumbnailtype: video
       author: Giuliano De Luca
       summary: This web part demonstrates how to leverage the capabilities of SharePoint Webhooks. The libraries used by this web part are Socket.io, sp pnp js, moment.
@@ -2061,10 +2093,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-yammer-api
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-yammer-api
       name: react-yammer-api
       title: Yammer REST API webpart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-yammer-api/assets/spfx-yammer-api-webpart.jpg
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-yammer-api/assets/spfx-yammer-api-webpart.jpg
       author: Velin Georgiev
       summary: This sample shows how Yammer REST APIs can be consumed by using SharePoint Framework React webpart and the Yammer JavaScript SDK. The SPFx webpart contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience.
       version: 0.0.1
@@ -2073,10 +2105,10 @@ extra:
     - framework: React
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-youtube
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-youtube
       name: react-youtube
       title: Youtube Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/react-youtube/assets/Preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-youtube/assets/Preview.gif
       thumbnailtype: video
       author: Giuliano De Luca
       summary: This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id.
@@ -2086,10 +2118,10 @@ extra:
     - framework: Other
       spfx: GA
       year: 2017
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/riot-list
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/riot-list
       name: riot-list
       title: List RiotJS Client-Side Web Part
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/riot-list/assets/riot-list-preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/riot-list/assets/riot-list-preview.gif
       thumbnailtype: video
       author: Sébastien Levert
       summary: Simplistic sample Web Part that demonstrates the use of RiotJS in creating a SharePoint Framework web part. 
@@ -2099,10 +2131,10 @@ extra:
     - framework: React
       spfx: 1.7.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/section-backgrounds
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/section-backgrounds
       name: section-backgrounds
       title: Supporting section backgrounds in your web parts
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/section-backgrounds/assets/webpartexample3.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/section-backgrounds/assets/webpartexample3.png
       author: Chris Kent
       summary: These samples show how to implement support for section backgrounds in your web parts.
       version: 1.0.0
@@ -2111,10 +2143,10 @@ extra:
     - framework: React
       spfx: 1.6.0
       year: 2018
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/sharepoint-crud
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/sharepoint-crud
       name: sharepoint-crud
       title: SharePoint CRUD operations
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/sharepoint-crud/assets/preview.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/sharepoint-crud/assets/preview.png
       author: Waldek Mastykarz
       summary: Sample Web Parts illustrating performing SharePoint CRUD operations in React, Angular, JavaScript without any framework and using the @pnp/sp library.
       version: 1.3
@@ -2123,10 +2155,10 @@ extra:
     - framework: VueJS
       spfx: 1.8.1
       year: 2019
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/vue-js-org-chart
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/vue-js-org-chart
       name: vue-js-org-chart
       title: VueJS Org Chart
-      thumbnail: https://github.com/SharePoint/sp-dev-fx-webparts/raw/master/samples/vue-js-org-chart/assets/preview.gif
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/vue-js-org-chart/assets/preview.gif
       thumbnailtype: video
       author: Serdar Ketenci̇
       summary: A simple Organisation Chart webpart using Office UI Fabric, VueJS, REST API.
@@ -2135,7 +2167,7 @@ extra:
       modified: 2019-06-11
     - framework: VueJS
       spfx: 1.10.0
-      url:  https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/vuejs-todo-single-file-component
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/vuejs-todo-single-file-component
       name: vuejs-todo-single-file-component
       title: Todo Client Web Part built with Vue.js and Vue's single-file components
       thumbnail: https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png
@@ -2175,6 +2207,7 @@ extra:
     - Gautam Sheth
     - Giuliano De Luca
     - Hugo Bernier
+    - Harsh Damania
     - Harsha Vardhini
     - Jayakumar Balasubramaniam
     - Jeremy Coleman
@@ -2223,7 +2256,7 @@ extra:
     - Vipul Kelkar
     - Waldek Mastykarz
     - Zach Roberts
-repo_url: https://github.com/SharePoint/sp-dev-fx-webparts
+repo_url: https://github.com/pnp/sp-dev-fx-webparts
 edit_uri: tree/Docs/docs
 site_url: https://sharepoint.github.io/sp-dev-fx-webparts/
 site_favicon: favicon.ico
