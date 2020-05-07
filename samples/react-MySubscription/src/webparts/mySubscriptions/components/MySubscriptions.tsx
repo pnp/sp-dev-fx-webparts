@@ -142,7 +142,7 @@ export default class MySubscriptions extends React.Component<
         await this.componentDidMount();
       }
     } catch (error) {
-      
+
       console.log("MySubscriptions.componentDidMount Error: ", error);
     }
   }
@@ -152,7 +152,7 @@ export default class MySubscriptions extends React.Component<
    */
   protected closeMessageBar = () => {
     this.setState({ showMessageBar: false });
-  };
+  }
 
   /**
    *
@@ -207,7 +207,7 @@ export default class MySubscriptions extends React.Component<
   private _onConfigure = () => {
     // Context of the web part
     this.props.context.propertyPane.open();
-  };
+  }
   /**
    *  Join or leave a group
    */
@@ -277,7 +277,7 @@ export default class MySubscriptions extends React.Component<
         }
       }
     } catch (error) {
-      
+
       console.log("MySubscriptions._joinGroup_leaveGRoup: ", error);
     }
   }
@@ -322,7 +322,7 @@ export default class MySubscriptions extends React.Component<
       let end1 = performance.now();
       console.log(end1 - start1, ":End");
     } catch (error) {
-     
+
       console.log("MySubscriptions.componentDidMount Error: ", error);
     }
   }
