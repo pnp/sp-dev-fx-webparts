@@ -4,6 +4,7 @@
 
 This Add-in helps the user to save current selected email to SharePoint document Library.
 
+
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
@@ -36,4 +37,15 @@ Version|Date|Comments
   * `gulp package-solution --ship`
 * Deploy the save-email-to-sharepoint.sppkg to SharePoint App Catalog
 * For deployment in your tenant, Please refer this article - https://docs.microsoft.com/en-us/microsoft-365/admin/manage/manage-deployment-of-add-ins?view=o365-worldwide
+
+## Personally deploy in your outlook web app
+
+* In Outlook web, select an email and select more options
+* Select 'More actions' at the top of the message.
+* Go to the bottom of the list and select. Get Add-ins.
+* On the Add-ins for Outlook page, select the My add-ins.
+* Scroll to the bottom to Custom Add-ins
+* Select Custom Add-ins from the a file. Upload the manifest file 'e6083c02-3280-4430-a877-22cbc6251d21_outlookManifest.xml' from the OfficeAddin folder. 
+* Click install in the warning window.
+* Now you can use the Add-in for your outlook web login.
 

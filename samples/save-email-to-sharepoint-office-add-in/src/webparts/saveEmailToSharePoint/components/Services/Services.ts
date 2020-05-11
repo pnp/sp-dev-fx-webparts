@@ -25,8 +25,8 @@ export default class Services {
         });
     }
     public getEmailContent(context: WebPartContext, id: string): Promise<any> {
-        return context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
-            client.api('/me/messages/' + id + '/$value').version('v1.0').responseType('blob').get().then((response: any) => {
+        return context.msGraphClientFactory.getClient().then((client: MSGraphClient): Promise< void> => {
+            return client.api('/me/messages/' + id + '/$value').version('v1.0').responseType('blob').get().then((response: any) => {
                 return response;
             });
         });
