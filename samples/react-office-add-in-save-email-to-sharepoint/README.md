@@ -3,7 +3,7 @@
 ## Summary
 
 This Add-in helps the user to save current selected email to SharePoint document Library.
-![Save outlook email to SharePoint Library](./assets/saveemailtosp.gif)
+![Save outlook email to SharePoint Library](./assets/saveEmailToSharePoint.gif)
 
 ## Features and usage
 In Outlook web, select an email and select more options. Select 'More actions' at the top of the message. Scroll to the bottom and select *'Save Email to SharePoint'* Add-in. The add-in loads the taskpane that list's the sites user has access. Once the user selects the site, it loads the list of document libaries that are present in that site. After selecting library, the user can save the email by clicking **Save** button. Once it is saved, a link will be generated to view the email preview. The email will be saved in .eml format.  
