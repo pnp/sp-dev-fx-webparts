@@ -7,7 +7,7 @@ define([], function () {
     "SitePlaceHolder": "Select a site",
     "LibraryLabel": "Select a Library",
     "LibraryPlaceHolder": "Select a Library",
-    "PreviewMessage":"Select to preview the saved email",
+    "PreviewMessage":"The selected email is saved in the {libName} Library. Select 'OK' to preview the saved email.",
     "Save": "Save",
     "Cancel": "Cancel"
   }

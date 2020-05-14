@@ -3,61 +3,30 @@
 .saveEmailToSharePoint {
   .container {
     @include ms-Grid;
-    max-width: 700px;
-    margin: 0px auto;
-    margin-left: 5px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
 
-  .errMsg {
-    @include ms-Grid-col;
-    margin-top: 5px !important;
-  }
-
+  .errMsg,
   .successMsg {
     @include ms-Grid-col;
     margin-top: 5px !important;
+    right: 2px;
   }
 
   .iconStyle {
-    @include ms-Grid-col;
-    @include ms-sm1;
-  }
-
-  .labelStyle {
-    @include ms-Grid-col;
-    @include ms-sm4;
-    margin-top: -4px;
+    margin-right: 8px;
   }
 
   .row {
-    @include ms-Grid-row;
-    @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
-    padding: 20px;
+    margin-left: 5px;
   }
 
   .column {
     @include ms-Grid-col;
+    padding-left: 0px;
     @include ms-lg10;
     @include ms-xl8;
     @include ms-xlPush2;
     @include ms-lgPush1;
-  }
-
-  .title {
-    @include ms-font-xl;
-    @include ms-fontColor-white;
-  }
-
-  .subTitle {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
-  .description {
-    @include ms-font-l;
-    @include ms-fontColor-white;
   }
 
   .button {
@@ -104,5 +73,9 @@
   .btnCancel {
     margin-top: 5px;
     margin-left: 5px;
+  }
+
+  .ms-Dropdown-caretDownWrapper {
+    right: 16px;
   }
 }
