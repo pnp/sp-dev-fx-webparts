@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './SaveEmailToSharePoint.module.scss';
 import { ISaveEmailToSharePointProps } from './ISaveEmailToSharePointProps';
 import { SearchResults } from "@pnp/sp/search";
-import { Icon, Dropdown, IDropdownOption, IDropdownStyles, PrimaryButton, Label, IDropdownProps, Link } from 'office-ui-fabric-react';
+import { Icon, Dropdown, IDropdownOption, IDropdownStyles, PrimaryButton, Label, IDropdownProps, Link, MessageBar, MessageBarType } from 'office-ui-fabric-react';
 import Services from './Services/Services';
 import * as strings from 'SaveEmailToSharePointWebPartStrings';
 
@@ -15,6 +15,7 @@ interface SaveEmailToSharePointState {
   selectedLibrary: any;
   savedLink: string;
   rootURL: string;
+  errMsg: string;
 }
 export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToSharePointProps, SaveEmailToSharePointState> {
   private services = new Services();
@@ -26,7 +27,8 @@ export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToS
       allLibraries: null,
       selectedLibrary: null,
       savedLink: '',
-      rootURL: ''
+      rootURL: '',
+      errMsg: ''
     }
   }
   public componentWillMount() {
@@ -47,7 +49,11 @@ export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToS
       console.log(result.data.ServerRelativeUrl);
       this.setState({
         savedLink: this.state.rootURL + result.data.ServerRelativeUrl + "?web=1"
-      })
+      });
+    }).catch((err) => {
+      this.setState({
+        errMsg: err.message
+      });
     });
   }
   public getAllSites = () => {
@@ -66,11 +72,11 @@ export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToS
   public getCurrentEmailContent = () => {
     let id = Office.context.mailbox.item.itemId;
     this.services.getEmailContent(this.props.context, id).then((response: any) => {
-      console.log(response);
-      //save to library
       this.saveToLibrary(response);
-    }).catch((e) => {
-      console.error(e);
+    }).catch((err) => {
+      this.setState({
+        errMsg: "Graph API error: " + err.message
+      });
     });
   }
   public OnSelectSite = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption) => {
@@ -87,7 +93,9 @@ export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToS
         });
       } else {
         this.setState({
-          selectedSite: item
+          selectedSite: item,
+          savedLink:'',
+          errMsg:''
         });
       }
     });
@@ -95,12 +103,13 @@ export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToS
   }
   public OnSelectLibrary = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption) => {
     this.setState({
-      selectedLibrary: item
+      selectedLibrary: item,
+      savedLink: ''
     });
   }
   public render(): React.ReactElement<ISaveEmailToSharePointProps> {
     return (
-      <div className="ms-Grid" >
+      <div className={styles.container} >
         <div className={styles.row}>
           {this.state.allSites ? <Dropdown
             label={strings.SiteLabel}
@@ -139,10 +148,26 @@ export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToS
         </div>
         <div className={styles.row}>
           {this.state.savedLink.length ?
-            <Link href={this.state.savedLink} target='_blank' className="ms-fadeIn500">
-              Click to view the saved email
-          </Link>
+            <MessageBar
+              messageBarType={MessageBarType.success}
+              isMultiline={false}
+              onDismiss={null}
+              className={styles.successMsg}
+              dismissButtonAriaLabel="Close">
+              <Link href={this.state.savedLink} target='_blank' className="ms-fadeIn500">
+                {strings.PreviewMessage}
+              </Link>
+            </MessageBar>
             : null}
+         {this.state.errMsg.length? <MessageBar
+            messageBarType={MessageBarType.error}
+            isMultiline={false}
+            onDismiss={null}
+            className={styles.errMsg}
+            dismissButtonAriaLabel="Close">
+            {this.state.errMsg}
+          </MessageBar>
+          :null}
         </div>
       </div>
     );
@@ -150,16 +175,16 @@ export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToS
   public onRenderforLib = (props: IDropdownProps): JSX.Element => {
     return (
       <React.Fragment>
-        <Icon iconName="DocLibrary" className="ms-Grid-col ms-u-sm1" />
-        <Label className="ms-Grid-col ms-u-sm4" style={{ marginTop: -4 }}>{props.label}</Label>
+        <Icon iconName="DocLibrary" className={styles.iconStyle} />
+        <Label className={styles.labelStyle}>{props.label}</Label>
       </React.Fragment>
     );
   }
   public onRenderforSite = (props: IDropdownProps): JSX.Element => {
     return (
       <React.Fragment>
-        <Icon iconName="Website" className="ms-Grid-col ms-u-sm1" />
-        <Label className="ms-Grid-col ms-u-sm4" style={{ marginTop: -4 }}>{props.label}</Label>
+        <Icon iconName="Website" className={styles.iconStyle} />
+        <Label className={styles.labelStyle}>{props.label}</Label>
       </React.Fragment>
     );
   }

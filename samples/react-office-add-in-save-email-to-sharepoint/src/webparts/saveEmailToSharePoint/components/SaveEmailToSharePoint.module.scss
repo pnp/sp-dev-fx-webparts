@@ -2,9 +2,32 @@
 
 .saveEmailToSharePoint {
   .container {
+    @include ms-Grid;
     max-width: 700px;
     margin: 0px auto;
+    margin-left: 5px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .errMsg {
+    @include ms-Grid-col;
+    margin-top: 5px !important;
+  }
+
+  .successMsg {
+    @include ms-Grid-col;
+    margin-top: 5px !important;
+  }
+
+  .iconStyle {
+    @include ms-Grid-col;
+    @include ms-sm1;
+  }
+
+  .labelStyle {
+    @include ms-Grid-col;
+    @include ms-sm4;
+    margin-top: -4px;
   }
 
   .row {
@@ -77,7 +100,8 @@
   .btnSave {
     margin-top: 5px;
   }
-  .btnCancel{
+
+  .btnCancel {
     margin-top: 5px;
     margin-left: 5px;
   }

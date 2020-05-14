@@ -6,6 +6,7 @@ declare interface ISaveEmailToSharePointWebPartStrings {
   SitePlaceHolder: string;
   LibraryLabel: string;
   LibraryPlaceHolder: string;
+  PreviewMessage: string;
   Save: string;
   Cancel: string;
 }
