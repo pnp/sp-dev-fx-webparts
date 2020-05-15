@@ -82,7 +82,7 @@ export default class SaveEmailToSharePoint extends React.Component<ISaveEmailToS
       });
     });
   }
-  public parseErr(msg:string){
+  public parseErr = (msg:string) => {
     return JSON.parse(msg.substring(msg.indexOf('"message"')+10,msg.length-2)).value;
   }
   public OnSelectSite = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption) => {
