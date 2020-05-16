@@ -1,13 +1,31 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 5/10/2020 12:00:00 AM
+---
 # React AppInsights Dashboard
 
 ## Summary
-> This webpart displays different statistics data captured in the **Azure Application Insights** in a graphical representation. Filters are provided to search for certain period of days. There are few **Application Customizer** which can be activated in **SharePoint Online** to track page view, performance etc., to **Azure Application Insights**, but the data can be viewed only by the administrator who is in-charge of **Azure portal**. Not all the users will have access to this data, this webpart will provide access to those data that can be used by the portal administrators and developers to keep track of the page performance and hits. Fetched insights data using **[Application Insights API](https://dev.applicationinsights.io/)**.
+
+This webpart displays different statistics data captured in the **Azure Application Insights** in a graphical representation. Filters are provided to search for certain period of days. There are few **Application Customizer** which can be activated in **SharePoint Online** to track page view, performance etc., to **Azure Application Insights**, but the data can be viewed only by the administrator who is in-charge of **Azure portal**. Not all the users will have access to this data, this webpart will provide access to those data that can be used by the portal administrators and developers to keep track of the page performance and hits. Fetched insights data using **[Application Insights API](https://dev.applicationinsights.io/)**.
 
 ## Pre-requisites
-> **Azure Application Insights** has to be configured. If you want to track the **SharePoint Online** webparts and pages, please use either of the following **Application Customizer** or you can use your own extensions to track the pages and other components. 
+
+**Azure Application Insights** has to be configured. If you want to track the **SharePoint Online** webparts and pages, please use either of the following **Application Customizer** or you can use your own extensions to track the pages and other components. 
 * [Injecting Javascript with Sharepoint Framework Extensions - Azure Application Insights](https://github.com/pnp/sp-dev-fx-extensions/tree/master/samples/js-application-appinsights)
 * [JS Application AppInsights Advanced](https://github.com/pnp/sp-dev-fx-extensions/tree/master/samples/js-application-appinsights-advanced)
-> Following are required to access the data using **[App Insights API](https://dev.applicationinsights.io/)**. The API has been provided in a very simple way with **[API Explorer](https://dev.applicationinsights.io/apiexplorer)** for the developers to play around the API to understand the schema and the methods that can used.
+
+Following are required to access the data using **[App Insights API](https://dev.applicationinsights.io/)**. The API has been provided in a very simple way with **[API Explorer](https://dev.applicationinsights.io/apiexplorer)** for the developers to play around the API to understand the schema and the methods that can used.
 * **Application ID** of the Application Insights
 * **API Key** for the data access
 
@@ -20,13 +38,21 @@
 * **_Application Key_**: Application Key of the Azure Application Insights API Access.
 
 ## Preview
+
 #### AppInsights Dashboard
+
 ![AppInsights Dashboard](./assets/AppInsights_Dashboard.gif)
+
 #### Page Statistics
+
 ![AppInsights Dashboard - Page Statistics](./assets/PageStatistics.png)
+
 #### User Statistics
+
 ![AppInsights Dashboard - User Statistics](./assets/UserStatistics.png)
+
 #### Performance Statistics
+
 ![AppInsights Dashboard - Performance Statistics](./assets/PerformanceStatistics.png)
 
 ## Applies to
@@ -36,7 +62,7 @@
 
 ## SharePoint Frameword Pre-requisites
  
-> **@microsoft/generator-sharepoint - 1.10.0**
+**@microsoft/generator-sharepoint - 1.10.0**
 
 ## Solution
 
@@ -62,3 +88,5 @@ Version|Date|Comments
 
 #### Local Mode
 This solution doesn't work on local mode.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-appinsights-dashboard" />
