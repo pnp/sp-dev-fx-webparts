@@ -62,6 +62,26 @@ extra:
   samples:
     - framework: React
       spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-office-add-in-save-email-to-sharepoint
+      name: react-office-add-in-save-email-to-sharepoint
+      title: Save Outlook email to SharePoint Document Library Add-in
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-office-add-in-save-email-to-sharepoint/assets/saveEmailToSharePoint.gif
+      author: Harsha Vardhini
+      summary: This Add-in helps the user to save current selected email to SharePoint document Library.
+      modifiedtext: May 15, 2020
+      modified: 2020-05-15
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-appinsights-dashboard
+      name: react-appinsights-dashboard
+      title: React AppInsights Dashboard
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif
+      author: Sudharsan Kesavanarayanan
+      summary: This webpart displays different statistics data captured in the Azure Application Insights in a graphical representation.
+      modifiedtext: May 10, 2020
+      modified: 2020-05-10
+    - framework: React
+      spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart
       name: react-content-query-webpart
       title: Content Query WebPart (SharePoint Online)
@@ -327,10 +347,10 @@ extra:
       title: Feedback Form
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-feedback-form/assets/preview.gif
       thumbnailtype: video
-      author: Sergei Zheleznov 
+      author: Sergei Zheleznov, Hugo Bernier
       summary: Sample SPFx React web part which allows sending emails using Microsoft Graph.
-      modifiedtext: December 15, 2019
-      modified: 2019-12-15
+      modifiedtext: May 15, 2020
+      modified: 2020-05-15
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-members-with-presence
       name: react-members-with-presence
       title: Group members list with Presence information
