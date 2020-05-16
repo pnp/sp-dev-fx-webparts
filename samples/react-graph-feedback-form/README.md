@@ -8,7 +8,7 @@ Sample SPFx React web part which allows sending emails using Microsoft Graph.
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -27,6 +27,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|August 12, 2019|Initial release
 1.0.3|Dec 15, 2019|Added Logger (@pnp/logging), Added max message length property (PropertyFieldNumber control from spfx-controls-react), Code refactoring, SPFx updated to 1.9.1
+1.0.4|May 15, 2020|Upgraded to SPFx 1.10.0 (Hugo Bernier)
 
 
 ## Disclaimer
