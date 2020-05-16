@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.8.2",
+    "version": "1.10.0",
     "libraryName": "react-graph-feedback-form",
     "libraryId": "8cf91ad7-be8e-4f6c-a1eb-a790f3ef5a32",
     "packageManager": "npm",
