@@ -62,16 +62,6 @@ extra:
   samples:
     - framework: React
       spfx: 1.10.0
-      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-office-add-in-save-email-to-sharepoint
-      name: react-office-add-in-save-email-to-sharepoint
-      title: Save Outlook email to SharePoint Document Library Add-in
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-office-add-in-save-email-to-sharepoint/assets/saveEmailToSharePoint.gif
-      author: Harsha Vardhini
-      summary: This Add-in helps the user to save current selected email to SharePoint document Library.
-      modifiedtext: May 15, 2020
-      modified: 2020-05-15
-    - framework: React
-      spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-appinsights-dashboard
       name: react-appinsights-dashboard
       title: React AppInsights Dashboard
