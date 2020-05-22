@@ -2,7 +2,8 @@
 
 ## Summary
 
-This is sample webpart  that displays current logged in user's Microsoft Teams(user is member of), its channels and will allows to send message to any Team's channel. It will also allow user to open teams channel via link. This webpart can be useful on Intranet home page which can be added as My Teams webpart.
+This is a sample web part that displays currently logged in user's Microsoft Teams(user is member of), its channels and will allow sending messages to any Team's channel. It will also allow the user to open the team's channel via the link. This web part can be useful on the Intranet home page which can be added as My Teams web part.
+
 
 * Web Part in Action
 
