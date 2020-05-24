@@ -51,5 +51,3 @@ Steps to reproduce the behavior:
 - **Additional details**: *The more context you can provide, the easier it is (and therefore quicker) to help.*
 
 ## Additional context
-
-

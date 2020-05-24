@@ -2,11 +2,10 @@
 name: "\U0001F4A1 Suggestion"
 about: Suggest an enhancement to make one of our web part samples even better
 title: Let's make SAMPLE even better
-labels: "\U0001F4A1 Enhancement"
+labels: ''
 assignees: ''
 
 ---
-
 
 Thank you for your suggestion! Use the sections below to submit a suggestion ONLY if it's related to samples in this repo. If you have an issue or question about list formatting or its documentation, please submit it at https://aka.ms/spdev-issues
 

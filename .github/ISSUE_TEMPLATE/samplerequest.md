@@ -2,7 +2,7 @@
 name: "\U0001F9EA Sample request"
 about: Request a new sample from the community
 title: ''
-labels: ''
+labels: type:sample-request
 assignees: ''
 
 ---
@@ -22,6 +22,3 @@ DELETE EVERYTHING ABOVE AFTER READING - THANKS!
 
 
 ## Are you Willing to Help?
-
-
-
