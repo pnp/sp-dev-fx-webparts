@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-Thank you for your suggestion! Use the sections below to submit a suggestion ONLY if it's related to samples in this repo. If you have an issue or question about list formatting or its documentation, please submit it at https://aka.ms/spdev-issues
+Thank you for your suggestion! Use the sections below to submit a suggestion ONLY if it's related to samples in this repo. If you have an issue or question about web part development or documentation, please submit it at https://aka.ms/spdev-issues
 
 - Suggestions that do not follow the below template will automatically be closed
 - All ideas are welcome - let's build something together!
