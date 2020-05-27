@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-Thank you for reporting a bug! Use the sections below to submit a bug ONLY if it's related to samples in this repo. If you have an issue or question about list formatting or its documentation, please submit it at https://aka.ms/spdev-issues
+Thank you for reporting a bug! Use the sections below to submit a bug ONLY if it's related to samples in this repo. If you have an issue or question about web part development or documentation, please submit it at https://aka.ms/spdev-issues
 
 - Bugs that do not follow the below template will automatically be closed
 - All bug reports are welcome - we want to fix them!
