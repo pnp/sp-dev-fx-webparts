@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-Thank you for making a request! Use the sections below to submit a request ONLY for a new sample. If you have an issue or question about list formatting or its documentation, please submit it at https://aka.ms/spdev-issues
+Thank you for making a request! Use the sections below to submit a request ONLY for a new sample. If you have an issue or question about web part development or documentation, please submit it at https://aka.ms/spdev-issues
 
 - Requests that do not follow the below template will automatically be closed
 - All requests are welcome - the more the merrier!
