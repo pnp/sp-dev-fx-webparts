@@ -1,4 +1,20 @@
-# Webpart showing Current User's MS Teams and send message.
+---
+page_type: sample
+products:
+- office-365
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+---
+# Web part showing Current User's MS Teams and send message.
 
 ## Summary
 
@@ -7,30 +23,30 @@ This is a sample web part that displays currently logged in user's Microsoft Tea
 
 * Web Part in Action
 
-![WebPart in Action](assets/myteamsmessage.gif?raw=true "Web Part in Action")
+![WebPart in Action](./assets/myteamsmessage.gif)
 
 * Configurable Web Part Properties
 
-![Web Part Properties](assets/webpartproperties.jpg?raw=true)
+![Web Part Properties](./assets/webpartproperties.jpg)
 
 ## Features
 
 * Show Current logged in user's Teams in Tree View
 * On Expanding any Team, it will show selected team's channels.
-* Message can send to any Team's channel by either by selecting any channel(configurable as webpart properties)
-* Context menu for every channel to 1) To open channel's link in Teams. 2) To send messsage to team.
-* A dailog box to send message.
+* Message can send to any Team's channel by either by selecting any channel(configurable as web part properties)
+* Context menu for every channel to 1) To open channel's link in Teams. 2) To send message to team.
+* A dialog box to send message.
 
-Configurable Webpart Properties
+Configurable Web part Properties
 * Web Part Title to be displayed On top of tree view (like My Teams).
 * Toggle to Show/hide Teams and channel's Description.
 * Toggle On/Off whether to open send message popup should open soon as a channel is selected.
 
-* Please refer this [link](https://www.c-sharpcorner.com/article/microsoft-teams-operations-in-spfx-webpart-using-graph-api/) if you are interested in learning step by step on how to call Team graph API from SPFx webpart.
+* Please refer this [link](https://www.c-sharpcorner.com/article/microsoft-teams-operations-in-spfx-webpart-using-graph-api/) if you are interested in learning step by step on how to call Team graph API from SPFx web part.
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.10.1-green.svg)
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -41,7 +57,7 @@ Configurable Webpart Properties
 ## Prerequisites
 
 * SharePoint Online tenant
-* You have provided permission in SharePoint admin for accessing Graph API on behalf of your solution. We can do it before deployment as proactive steps, or after deployment. You can refer to steps [here](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial#deploy-the-solution-and-grant-permissions) about how to do this post-deployment. Basically you have to use API Access Page of SharePoint admin and add below permission for our use case. 
+* You have provided permission in SharePoint admin for accessing Graph API on behalf of your solution. We can do it before deployment as proactive steps, or after deployment. You can refer to [steps about how to do this post-deployment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial#deploy-the-solution-and-grant-permissions). Basically you have to use API Access Page of SharePoint admin and add below permission for our use case. 
 
 ```
  "webApiPermissionRequests": [
