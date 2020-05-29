@@ -61,6 +61,26 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.4.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-word-game
+      name: react-word-game
+      title: Word Game
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-word-game/assets/preview.gif
+      author: Neil Barkhina
+      summary: A fun game where you unscramble the words before the time runs out. It stores everyone's high scores in a SharePoint List on the Site.
+      modifiedtext: May 27, 2020
+      modified: 2020-05-27
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-message
+      name: react-teams-message
+      title: React Teams Messages
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-message/assets/myteamsmessage.gif
+      author: Siddharth Vaghasia
+      summary: This is a sample web part that displays currently logged in user's Microsoft Teams(user is member of), its channels and will allow sending messages to any Team's channel.
+      modifiedtext: May 23, 2020
+      modified: 2020-05-23
+    - framework: React
       spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-appinsights-dashboard
       name: react-appinsights-dashboard
@@ -2222,6 +2242,7 @@ extra:
     - Miguel Rabaca
     - Mohamed Derhalli
     - Nanddeep Nachan
+    - Neil Barkhina
     - Oleg Rumiancev
     - Olivier Carpentier
     - Paolo Pialorsi

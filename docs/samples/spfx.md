@@ -14,6 +14,7 @@
               <button class="button" data-filter="[data-spfx='1.6.0']">1.6.0</button>
               <button class="button" data-filter="[data-spfx='1.5.1']">1.5.1</button>
               <button class="button" data-filter="[data-spfx='1.4.1']">1.4.1</button>
+              <button class="button" data-filter="[data-spfx='1.4.0']">1.4.0</button>
               <button class="button" data-filter="[data-spfx='1.3.4']">1.3.4</button>
               <button class="button" data-filter="[data-spfx='1.3.0']">1.3.0</button>
               <button class="button" data-filter="[data-spfx='GA']">GA</button>
