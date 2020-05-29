@@ -8,28 +8,24 @@ import {
   PropertyPaneCheckbox
 } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'WordGameWebPartStrings';
 import WordGame from './components/WordGame';
 import { IWordGameProps } from './components/IWordGameProps';
-import { WordService } from './components/WordService';
 
 export interface IWordGameWebPartProps {
   gameTitle: string;
-  enableHighScores: boolean
+  enableHighScores: boolean;
 }
 
 export default class WordGameWebPart extends BaseClientSideWebPart<IWordGameWebPartProps> {
 
-  wordGame: WordGame;
-  constructor() {
-    super();
-  }
-
   public render(): void {
-    if (!this.properties.gameTitle)
-      this.properties.gameTitle='Word Game';
-    if (this.properties.enableHighScores==null)
-      this.properties.enableHighScores=true;
+    if (!this.properties.gameTitle) {
+      this.properties.gameTitle = 'Word Game';
+    }
+
+    if (this.properties.enableHighScores === undefined) {
+      this.properties.enableHighScores = true;
+    }
 
     const element: React.ReactElement<IWordGameProps> = React.createElement(
       WordGame,
@@ -40,9 +36,7 @@ export default class WordGameWebPart extends BaseClientSideWebPart<IWordGameWebP
       }
     );
 
-
     ReactDom.render(element, this.domElement);
-
   }
 
   protected onDispose(): void {
@@ -53,9 +47,9 @@ export default class WordGameWebPart extends BaseClientSideWebPart<IWordGameWebP
     return Version.parse('1.0');
   }
 
-  //only refresh render after applying settings pane
-  protected get disableReactivePropertyChanges(): boolean {   
-    return true;   
+  // only refresh render after applying settings pane
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -74,7 +68,7 @@ export default class WordGameWebPart extends BaseClientSideWebPart<IWordGameWebP
                 }),
                 PropertyPaneTextField('gameTitle', {
                   label: 'Game Title'
-                }),
+                })
               ]
             }
           ]
