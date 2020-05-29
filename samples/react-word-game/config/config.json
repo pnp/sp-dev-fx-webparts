@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "word-game-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wordGame/WordGameWebPart.js",
+          "manifest": "./src/webparts/wordGame/WordGameWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "WordGameWebPartStrings": "lib/webparts/wordGame/loc/{locale}.js"
+  }
+}
