@@ -12,7 +12,7 @@ The user can search task by name, can filter by progress status, all data are dy
 </br>
 
 
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/MyTasks.gif)
+![MyTasks](/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/MyTasks.gif)
 
 
 
