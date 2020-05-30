@@ -27,7 +27,11 @@ export default class MyTeamsWebPart extends BaseClientSideWebPart <IMyTeamsWebPa
         context: this.context,
         webparttitle:this.properties.WebpartTitle,
         showdescription:this.properties.ShowDescription,
-        openpopuponselectingchannel:this.properties.OpenPopupOnSelectingChannel
+        openpopuponselectingchannel:this.properties.OpenPopupOnSelectingChannel,
+        displayMode: this.displayMode,
+        updateProperty: (value: string) => {
+          this.properties.WebpartTitle = value;
+        }
       }
     );
 
