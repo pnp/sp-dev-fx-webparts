@@ -6,6 +6,7 @@ import { ServiceProvider } from '../../../shared/services/ServiceProvider';
 import { TreeView, ITreeItem, TreeItemActionsDisplayMode, TreeViewSelectionMode } from "@pnp/spfx-controls-react/lib/TreeView";
 import { PrimaryButton, DefaultButton, Dialog, DialogFooter, DialogType, TextField, MessageBar,MessageBarType } from 'office-ui-fabric-react';
 import { initializeIcons } from '@uifabric/icons';
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 
 export interface IMyTeamsState {
   myteams: any[];
@@ -127,9 +128,13 @@ export default class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsStat
       <React.Fragment>
         <div className={styles.myTeams}>
           <i className="ms-Icon ms-Icon--TeamsLogo" aria-hidden="true"></i>
-          <h1 className={styles.webpartitle}>
+          {/* <h1 className={styles.webpartitle}>
 
-            {this.props.webparttitle}</h1>
+            {this.props.webparttitle}</h1> */}
+
+            <WebPartTitle displayMode={this.props.displayMode}
+              title={this.props.webparttitle}
+              updateProperty={this.props.updateProperty} />
            
           {this.state.showMessage &&
           <React.Fragment>
