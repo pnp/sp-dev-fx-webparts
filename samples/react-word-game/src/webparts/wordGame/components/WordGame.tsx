@@ -1,9 +1,8 @@
 import * as React from 'react';
 import styles from './WordGame.module.scss';
 import { IWordGameProps, IWordGameState } from './IWordGameProps';
-import { WordService, Game } from './WordService';
+import { WordService, Game, WordGameListItem } from './WordService';
 import WordHighScores from './WordHighScores';
-import { WordGameListItem } from '../../../../lib/webparts/wordGame/components/WordService';
 
 // tslint:disable-next-line: no-any
 const logo: any = require('../assets/ajax-loader.gif');
