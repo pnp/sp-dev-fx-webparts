@@ -8,7 +8,7 @@ Using Microsoft Graph, this webpart grabs the Office 365 groups the current user
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/drop-1.9.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
@@ -26,6 +26,7 @@ react-my-groups | Zach Roberts
 Version|Date|Comments
 -------|----|--------
 1.0|September 13, 2019|Initial release
+1.1|June 1, 2020| Updated to SPFX 1.10.0
 
 ## Disclaimer
 
