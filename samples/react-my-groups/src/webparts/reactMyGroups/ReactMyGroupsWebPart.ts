@@ -1,11 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import GroupService from '../../services/GroupService';
 import * as strings from 'ReactMyGroupsWebPartStrings';
 import { ReactMyGroups, IReactMyGroupsProps } from './components';
