@@ -26,7 +26,7 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.7.1-orange.svg)
+![1.10.0](https://img.shields.io/badge/drop-1.10.0-orange.svg)
 
 ## Applies to
 
@@ -38,7 +38,8 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 Solution|Author(s)
 --------|---------
-js-theme-manager | David Warner II ([@DavidWarnerII](https://twitter.com/davidwarnerii) / [Warner Digital](http://warner.digital))
+js-theme-manager (Upgrade) | Hugo Bernier ([@bernierh](https://twitter.com/bernierh) / [Tahoe Ninjas](https://tahoeninjas.blog))
+js-theme-manager | Beau Cameron ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
 js-theme-manager | Beau Cameron ([@Beau__Cameron](https://twitter.com/@Beau__Cameron) / [Blog](https://beaucameron.net/))
 
 ## Version history
@@ -46,6 +47,7 @@ js-theme-manager | Beau Cameron ([@Beau__Cameron](https://twitter.com/@Beau__Cam
 Version|Date|Comments
 -------|----|--------
 1.0|February 27, 2019|Initial release
+2.0|June 1, 2020|Upgraded to SPFx 1.10.0
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
