@@ -825,17 +825,15 @@ extra:
       modifiedtext: June 17, 2019
       modified: 2019-06-17
     - framework: Javascript
-      spfx: 1.7.1
-      year: 2019
+      spfx: 1.10.0
       title: Modern Experience Theme Manager
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-theme-manager
       name: js-theme-manager
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-theme-manager/assets/create-a-theme.png
-      author: David Warner II, Beau Cameron
+      author: David Warner II, Beau Cameron, Hugo Bernier
       summary: This sample web part provides a user interface for creating, updating, deleting and applying a Modern Experience SharePoint theme in SharePoint Online.
-      version: 1.0
-      modifiedtext: February 27, 2019
-      modified: 2019-02-27
+      modifiedtext: June 1, 2020
+      modified: 2020-06-01
     - framework: Knockout
       spfx: GA
       year: 2017
