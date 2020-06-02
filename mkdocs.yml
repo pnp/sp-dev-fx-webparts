@@ -231,7 +231,7 @@ extra:
       spfx: 1.10.0
       author: João Mendes, Zach Roberts
       modifiedtext: April 28, 2020
-      modified: 2020-04-28
+      modified: 2020-06-28
       level: 300
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks
       name: react-functional-servicescope-hooks
@@ -459,16 +459,14 @@ extra:
       modifiedtext: September 17, 2019
       summary: This web part lists all the automated Flows associated with a SharePoint List/ Library. Basic flow information like Flow Name, Flow Trigger, Flow shared Type and Flow URL are displayed.
     - framework: React
-      spfx: 1.9.1
-      year: 2019
+      spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-groups
       name: react-my-groups
       title: My Groups
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png
       author: Zach Roberts
-      version: 1.0
-      modified: 2019-09-13
-      modifiedtext: September 13, 2019
+      modified: 2020-06-01
+      modifiedtext: June 1, 2020
       summary: Using Microsoft Graph, this webpart grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.
     - framework: Angular
       spfx: GA
