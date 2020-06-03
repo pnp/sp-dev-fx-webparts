@@ -2,12 +2,12 @@
 
 ## Summary
 
-This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework.
+This sub folder contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework.
 
 ![The UI of the sample application](images/react-3rd-party-api-ui-sample.gif)
 
 In subfolder _Server-API_ you can find the sample REST API built using ASP.NET MVC.
-You will need to publish the web application on an hosting environment (for example an Azure App Service), configure CORS, and configure the application in the Azure AD tenant under the cover of your target SharePoint Online tenant.
+You will need to publish the web application on a hosting environment (for example an Azure App Service), configure CORS, and configure the application in the Azure AD tenant under the cover of your target SharePoint Online tenant.
 
 ## Solution
 
@@ -62,11 +62,12 @@ Now run the following command to install the npm packages:
 npm install
 ```
 
-This will install the required npm packages and depedencies to build and run the client-side project.
+This will install the required npm packages and dependencies to build and run the client-side project.
 
 Once the npm packages are installed, run the command to preview your web parts in SharePoint Workbench:
 
 ```
 gulp serve
 ```
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/tutorials" />
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/react-3rd-party-api" />

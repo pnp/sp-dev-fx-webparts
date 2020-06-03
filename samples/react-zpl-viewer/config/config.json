@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-zpl-viewer-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactZplViewer/ReactZplViewerWebPart.js",
+          "manifest": "./src/webparts/reactZplViewer/ReactZplViewerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactZplViewerWebPartStrings": "lib/webparts/reactZplViewer/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

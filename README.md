@@ -1,3 +1,15 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  createdDate: 8/30/2016 10:21:43 AM
+---
 # SharePoint Framework Client-Side Web Part Samples & Tutorial Materials
 
 This repository contains community samples that demonstrate different usage patterns for the SharePoint Framework client-side web parts.

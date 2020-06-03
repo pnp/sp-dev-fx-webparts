@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "material-ui-sample-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/materialUiSample/MaterialUiSampleWebPart.js",
+          "manifest": "./src/webparts/materialUiSample/MaterialUiSampleWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MaterialUiSampleWebPartStrings": "lib/webparts/materialUiSample/loc/{locale}.js"
+  }
+}

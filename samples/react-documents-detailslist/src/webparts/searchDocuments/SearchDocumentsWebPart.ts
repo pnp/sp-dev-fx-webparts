@@ -1,11 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import Documents from '../../components/documentsList/component/Documents';
 import { IDocumentsProps } from '../../components/documentsList/component/IDocumentsProps';
 import IDataProvider from '../../dataproviders/IDataProvider';

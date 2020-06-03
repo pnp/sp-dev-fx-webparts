@@ -5,11 +5,11 @@ Sample webpart to demonstrate the use of [Redux-Form](https://github.com/erikras
 
 
 
-![SPFx redux-form webpart](https://github.com/vipulkelkar/sp-dev-fx-webparts/blob/ReduxFormSample/samples/react-reduxform/assets/ReduxFormWebpart.gif)
+![SPFx redux-form webpart](./assets/ReduxFormWebpart.gif)
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.4.1-green.svg)
 
 ## Applies to
 

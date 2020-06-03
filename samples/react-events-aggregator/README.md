@@ -1,6 +1,8 @@
 # SPFx Event Aggregator Sample #
 
-# Important: The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use [dynamic data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data) instead. #
+> ## DEPRECATED 
+>
+> The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use [dynamic data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data) instead. #
 
 Following issue [#659](https://github.com/SharePoint/sp-dev-fx-webparts/issues/659), the event aggregator functionality is no longer working. This feature was in ALPHA state and never made it to general availability state. There is a replacement for the event aggregator. Please have a look at the dynamic data functionality and use it instead [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data). There is already a sample in this library [https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-events-dynamicdata](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-events-dynamicdata)
 
@@ -64,5 +66,3 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Unit tests including spies, mocks and faking class methods and properties.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-events-aggregator" />
-
-

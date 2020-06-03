@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 6/19/2017 12:00:00 AM
+---
 # Spfx Webpart: File Upload using AngularJs
 
 ## Summary

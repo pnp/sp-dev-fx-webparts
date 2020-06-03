@@ -20,7 +20,7 @@
     -ms-user-select: none;
     user-select: none;
     position: relative;
-
+    opacity: 0.2;
   }
   .documentCard:hover{
     border-color: #c8c8c8;
@@ -30,7 +30,7 @@
    min-Width: 200px;
    width: 200px;
    min-height: 190px;
-   margin-Left: 15px;
+   margin-right: 15px;
    position: relative;
    text-align: center;
   }

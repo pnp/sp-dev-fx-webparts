@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.8.0",
+    "libraryName": "ioc-tests",
+    "libraryId": "d831edc5-e461-4c60-8ebe-178f5270e58e",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

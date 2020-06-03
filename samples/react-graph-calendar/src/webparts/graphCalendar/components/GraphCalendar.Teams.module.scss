@@ -1,0 +1,39 @@
+@import './GraphCalendar.module.scss';
+
+:global {
+  .fc {
+    color: #525c6d;
+  }
+
+  .fc-unthemed {
+    td.fc-today {
+      background: #E1DFDD;
+    }
+  }
+
+  .fc-toolbar h2 {
+    font-weight: 400;
+  }
+
+  .fc-event {
+    cursor: pointer;
+    background-color: #6264a7;
+    border-radius: 0px;
+    border: 1px solid #464775;
+  }
+
+  .fc-button-primary:not(:disabled).fc-button-active, .fc-button-primary:not(:disabled):active {
+    background-color: #6264a7;
+    border-color: #464775;
+  }
+
+  .fc-prev-button, .fc-next-button, .fc-today-button {
+    background-color: #464775;
+    border-color: #6264a7;
+  }
+
+  .fc-button-primary:hover {
+    background-color: #6264a7;
+    border-color: #464775;
+  }
+}

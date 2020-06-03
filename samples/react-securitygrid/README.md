@@ -1,12 +1,27 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 12/1/2017 12:00:00 AM
+---
 # SPFX React Grid
 
 ## Summary
 
 React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:
 
-![config panel](./src/images/MainDisplay.PNG)
+![config panel](./src/images/MainDisplay.gif)
 
-Empty libraries are displayed withh a black folder icon, those with items are displayed with a white folder. The user can expand a list or library by clicking on the desired row. For deeply nested folders the Title column can be resized by drag and drop. The display shows a 'filled-in' circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group). The user must have permissions to access lists and enumerate permissions in order to view the grid.
+Empty libraries are displayed withh a black folder icon, those with items are displayed with a white folder. The user can expand a list or library by clicking on the desired row. (If the library or folder has more than 5000 items an error will be displayed ) For deeply nested folders the Title column can be resized by drag and drop. The display shows a the appropriate icpn circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group-- coming soon!). IMPORTANT: The user must have permissions to access lists and enumerate permissions in order to view the grid.
 
 The user can change the permission being tested by cliking the Permission in the command bar and selecting a new Permission:
 
@@ -30,13 +45,15 @@ The the first configuration panel of the webpart is shown below:
 
 Permission Settings
 
-The Permission Type dropdown sets the default permission to check.The 'Let user select Permission' checkbox determines whether the user can change this permission.
+The Permission Settings allow you to select which permissions to show in the grid and to select the Icon and color used to display the selected permission.
 
 User Settings
 
 The Show Email or Name Toggle determines whether the name or email is displayed by default.
 The Show Security Groups checkbox determines whether SharePoint Security groups are included in the grid.
 The Show Users checkbox determines whether Users are included in the grid.
+The Only show users with permissions toggle determines whether the grid shold diplay all users with access to the web, or only users with the selected permission
+![config panel](./src/images/Permissions.gif)
 The Let Users Select users checkbox determines whether Users can filter the selected users in the grid.
 
 Display Settings
@@ -65,7 +82,7 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.4.1-green.svg)
+![version](https://img.shields.io/badge/version-1.10-green.svg)
 
 ## Applies to
 
@@ -86,6 +103,7 @@ Solution|Author(s)
 
 Version|Date|Comments
 -------|----|--------
+1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|December 31, 2016|Initial version
 
@@ -101,3 +119,5 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `gulp serve`
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-securitygrid" />

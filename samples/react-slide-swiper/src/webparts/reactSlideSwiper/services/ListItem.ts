@@ -1,6 +1,6 @@
 export class ListItem {
 
-    public title: string;
-    public description:string;
-    public imageUrl: string;
+    public Title: string;
+    public Description:string;
+    public ImageUrl: string;
 }

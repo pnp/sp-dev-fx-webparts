@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 12/1/2017 12:00:00 AM
+---
 # React List Form WebPart
 
 ## Summary
@@ -8,7 +23,7 @@ The web part allows configuring which list to use and if a form for adding a new
 ![Demo](./assets/React-ListForm-Overview.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
 
 ## Applies to
 
@@ -25,7 +40,9 @@ react-list-form|Dany Wyss
 
 Version|Date|Comments
 -------|----|--------
-1.0|November 24, 2017|Initial release
+1.0.0|November 24, 2017|Initial release
+1.0.1|February 22, 2019|Updated to SPFx 1.7.1 and dependencies, Added Turkish translation, Added RichText Mode and Tinymce Editor
+1.0.2|October 14, 2019|Updated to SPFx 1.9.1 and dependencies
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -48,6 +65,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Using SharePoint REST services to retrieve and update schema and data for lists and fields.
 - Using Office UI Fabric React components and styles for building user experience consistent with SharePoint and Office.
 - Integrating drag and drop to provide better user experience for configuring web parts visually.
-- Using custom drop down property editors in the property pane.
+- Using custom drop-down property editors in the property pane.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-list-form" />

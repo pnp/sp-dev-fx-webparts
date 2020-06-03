@@ -1,4 +1,19 @@
-# title of the sample
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - Knockout
+  createdDate: 1/1/2016 12:00:00 AM
+---
+# Sample Web Part implementing dependent properties in Property Pane
 
 ## Summary
 Sample Web Part illustrating
@@ -47,9 +62,9 @@ This project contains Client-Side Web Part built on the SharePoint Framework ill
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 - loading Lists and Views data from SharePoint REST API
-- creating cust Knockout data bindings
+- creating custom Knockout data bindings
 - creating custom Knockout components
 - styling components to match Fabric UI experience
 - creating custom Property Pane fields (custom markup, logic) based on Knockout.js framework
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/ko-dependent-properties" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/knockout-dependent-properties" />

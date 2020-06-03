@@ -12,9 +12,76 @@ import * as moment from 'moment';
 import {
   DocumentCardActions,
 } from 'office-ui-fabric-react/lib/DocumentCard';
-const img: string = require('../../../assets/baloons.png');
+const img: string = require('../../../assets/cof11.png');
+
 const IMG_WIDTH: number = 200;
 const IMG_HEIGTH: number = 190;
+
+const imageTemplate: { imageUrl: string }[] = [{
+  imageUrl: require('.../../../assets/cof.png')
+},
+{
+  imageUrl: require('.../../../assets/cof5.png')
+},
+{
+  imageUrl: require('.../../../assets/cof1.png')
+},
+{
+  imageUrl: require('.../../../assets/cof3.png')
+},
+{
+  imageUrl: require('.../../../assets/cof8.png')
+},
+{
+  imageUrl: require('.../../../assets/baloons.png')
+},
+{
+  imageUrl: require('.../../../assets/cof2.png')
+},
+{
+  imageUrl: require('.../../../assets/cof10.png')
+},
+{
+  imageUrl: require('.../../../assets/cof11.png')
+},
+{
+  imageUrl: require('.../../../assets/cof12.png')
+},
+{
+  imageUrl: require('.../../../assets/cof14.png')
+},
+{
+  imageUrl: require('.../../../assets/cof14_1.png')
+},
+{
+  imageUrl: require('.../../../assets/cof18.png')
+},
+{
+  imageUrl: require('.../../../assets/cof17.png')
+},
+{
+  imageUrl: require('.../../../assets/cof19.png')
+},
+{
+  imageUrl: require('.../../../assets/cof20.png')
+},
+{
+  imageUrl: require('.../../../assets/cof22.png')
+},
+{
+  imageUrl: require('.../../../assets/cof24.png')
+},
+{
+  imageUrl: require('.../../../assets/cof28.png')
+},
+{
+  imageUrl: require('.../../../assets/cof29.png')
+},
+{
+  imageUrl: require('.../../../assets/cof30.png')
+}
+];
+
 
 export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, IHappyBirthdayCardPState> {
   private _Persona: IPersonaSharedProps;
@@ -48,8 +115,9 @@ export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, 
         <div className={styles.documentCardWrapper}>
           <div className={styles.documentCard}>
             <Image
+
               imageFit={ImageFit.cover}
-              src={img}
+              src={imageTemplate[this.props.imageTemplate].imageUrl}
               width={IMG_WIDTH}
               height={IMG_HEIGTH}
             />
@@ -60,12 +128,7 @@ export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, 
                 :
                 <Label className={styles.displayBirthday}>{this.props.birthday}</Label>
             }
-            {
-              this.state.isBirthdayToday ?
-                <Icon iconName="BirthdayCake" className={styles.birthdaycake} />
-                :
-                ''
-            }
+
             <div className={styles.personaContainer}>
               <Persona
                 {...this._Persona}
@@ -88,6 +151,12 @@ export class HappyBirthdayCard extends React.Component<IHappyBirthdayCardProps, 
                   }
                 ]}
               />
+              {
+                this.state.isBirthdayToday ?
+                  <Icon iconName="BirthdayCake" className={styles.birthdaycake} />
+                  :
+                  ''
+              }
             </div>
           </div>
         </div>

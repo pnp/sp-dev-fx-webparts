@@ -6,4 +6,5 @@ export interface IBirthdaysProps {
   context: WebPartContext;
   displayMode: DisplayMode;
   updateProperty: (value: string) => void;
+  imageTemplate:string;
 }

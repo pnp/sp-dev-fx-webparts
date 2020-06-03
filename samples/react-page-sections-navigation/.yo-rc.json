@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": false,
+    "environment": "spo",
+    "version": "1.7.1",
+    "libraryName": "page-sections-navigation",
+    "libraryId": "bf7b299c-3bac-47cc-9f44-43eb180335d8",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

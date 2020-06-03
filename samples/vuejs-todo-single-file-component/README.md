@@ -1,3 +1,16 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: tools
+  technologies:
+  - SharePoint Framework
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Todo Client Web Part built with Vue.js and Vue's single-file components
 
 ## Summary
@@ -5,7 +18,8 @@
 Sample Todo web part demonstrating how you can utilize [Vue](https://vuejs.org/v2) (a progressive framework for building user interfaces) with SharePoint Framework using handy [single-file components](https://vuejs.org/v2/guide/single-file-components.html) approach. 
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-ga-green.svg)
+
+![1.10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
@@ -28,8 +42,10 @@ Version|Date|Comments
 0.0.4|October 7, 2017|Updated packages to latest versions, misc fixing
 0.0.5|November 15, 2017|Added data provider that demonstrates the CRUD operations
 0.0.6|December 11, 2018|Updated sample to SPFx 1.4 and Vue 2.5.x
+0.0.7|April 28, 2020|Updated sample to SPFx 1.10 and Vue 2.6.x, fixed issues with batch loader
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

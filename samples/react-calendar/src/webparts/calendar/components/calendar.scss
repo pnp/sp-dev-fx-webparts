@@ -1,0 +1,86 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.rbc-selected-cell {
+  background-color: $ms-color-themeDark;
+}
+
+.rbc-event:hover {
+  border-width: 2px;
+}
+
+.rbc-today {
+  background-color: $ms-color-themeDark;
+  opacity: 0.7;
+}
+
+.rbc-off-range-bg {
+  background: #f4f4f4;
+}
+
+.rbc-toolbar button {
+  color: #373a3c;
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  background: none;
+  background-image: none;
+  border: 1px solid #ccc;
+  padding: 0.375rem 1rem;
+  border-radius: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.rbc-toolbar button:active {
+  background-image: none;
+
+  /* box-shadow: inset 0 3px 5px rgba(0,0,0,.125); */
+  background-color: #f8f8f8;
+  border-color: #adadad;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-image: none;
+  background-color: $ms-color-themeDark;
+
+  /* background-color: #0075c7; */
+  border-color: #f4f4f4;
+  color: white;
+}
+
+.rbc-toolbar button:focus,
+.rbc-toolbar button:hover {
+  color: #f8f8f8;
+  background-color: $ms-color-themeDark;
+  border-color: #adadad;
+}
+
+.rbc-toolbar button.rbc-active:focus,
+.rbc-toolbar button.rbc-active:hover,
+.rbc-toolbar button:active:focus,
+.rbc-toolbar button:active:hover {
+  color: #fff;
+  background-color: $ms-color-themeDark;
+  border-color: #f4f4f4;
+}
+
+.rbc-show-more {
+  background-color: hsla(0, 0%, 100%, 0.3);
+  z-index: 4;
+  font-weight: 700;
+  font-size: 85%;
+  height: auto;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.rbc-ellipsis,
+.rbc-event-label,
+.rbc-row-segment .rbc-event-content,
+.rbc-show-more {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

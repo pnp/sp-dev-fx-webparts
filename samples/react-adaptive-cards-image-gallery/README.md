@@ -1,7 +1,7 @@
 ## Image Gallery Web Part Built with Adaptive Cards
 
 ### Summary 
-This sample demonstrates the capability of using [Adaptive Cards] (https://adaptivecards.io/) with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.
+This sample demonstrates the capability of using [Adaptive Cards](https://adaptivecards.io/) with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.
 
 ![Web part preview][figure1]
 
@@ -58,9 +58,9 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repo
-- npm i
-- gulp serve --nobrowser
-- Open workbench on your tennant, i.e. https://contoso.sharepoint.com/sites/salesteam/_layouts/15/workbench.aspx
+- `npm i`
+- `gulp serve --nobrowser`
+- Open workbench on your tenant, i.e. https://contoso.sharepoint.com/sites/salesteam/_layouts/15/workbench.aspx
 - Search and add web part "Adaptive Cards Image Gallery"
 
 ## Features
@@ -79,3 +79,4 @@ This sample web part shows how adaptive cards can be used effectively with Share
 [figure4]: ./assets/list-sample-data.png
 
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-adaptive-cards-image-gallery" />

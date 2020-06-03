@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "991bd02a-c6ff-44a7-aca2-032c662fccbe",
+  "alias": "GitHubBadgeV2WebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "GitHub Badge v2" },
+    "description": { "default": "Displays information about a GitHub user" },
+    "officeFabricIconFontName": "GitGraph",
+    "properties": {
+      "gitHubUserName": "skaggej"
+    }
+  }]
+}

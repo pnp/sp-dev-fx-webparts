@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graph-calendar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphCalendar/GraphCalendarWebPart.js",
+          "manifest": "./src/webparts/graphCalendar/GraphCalendarWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphCalendarWebPartStrings": "lib/webparts/graphCalendar/loc/{locale}.js"
+  }
+}

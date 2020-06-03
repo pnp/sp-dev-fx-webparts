@@ -1,0 +1,13 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "thumbnail-client-side-solution",
+        "id": "3b1f3c00-2c12-4bd5-9a4b-d4841f223861",
+        "version": "1.0.0.0",
+        "includeClientSideAssets": true,
+        "isDomainIsolated": false
+    },
+    "paths": {
+        "zippedPackage": "solution/js-msgraph-thumbnail.sppkg"
+    }
+}

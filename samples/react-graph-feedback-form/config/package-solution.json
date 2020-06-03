@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-feedback-form-client-side-solution",
+    "id": "8cf91ad7-be8e-4f6c-a1eb-a790f3ef5a32",
+    "version": "1.0.4.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Mail.Send.Shared"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-feedback-form.sppkg"
+  }
+}

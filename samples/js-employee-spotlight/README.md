@@ -1,13 +1,28 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 8/1/2017 12:00:00 AM
+---
 # Display Employee Spotlight JavaScript Client-Side Web Part
 
 ## Summary
 Simple Web Part that demonstrates the use of SharePoint Framework for show casing Employee Spotlight. The web part pulls data from a configured list and User Profile service.
- The properties pane for this web part has 5 canscading dropdowns. 
+ The properties pane for this web part has 5 cascading dropdowns. 
  - A drop down list of sites(webs) in the current site collection.
  - A drop down list of list titles in the selected site(web). 
  - 3 drop downs with list of field names from selected list, which includes 
     * Name(Person or Group Column). 
-    * Splotlight Description (Multiline - Enriched text Column). 
+    * Spotlight Description (Multiline - Enriched text Column). 
     * Expiry date for Spotlight event (DateTime Column with Date only option).  
  - The properties pane also has options for following slider effects.
     * Background color - A color picker to choose Slider background color 
@@ -24,7 +39,7 @@ Simple Web Part that demonstrates the use of SharePoint Framework for show casin
 > Data is displayed only when hosted in SharePoint. No mock data included at this point for local testing. 
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.8.0-green.svg)
 
 ## Applies to
 * [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
@@ -77,3 +92,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Logging.
 * Rendering error messages.
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-employee-spotlight" />

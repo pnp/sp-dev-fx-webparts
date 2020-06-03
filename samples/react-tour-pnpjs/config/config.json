@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "tour-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/tour/TourWebPart.js",
+          "manifest": "./src/webparts/tour/TourWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TourWebPartStrings": "lib/webparts/tour/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

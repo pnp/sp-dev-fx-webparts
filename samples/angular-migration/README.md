@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 10/21/2016 12:00:00 AM
+---
 # Migrating existing Angular applications to SharePoint Framework sample
 
 ## Summary

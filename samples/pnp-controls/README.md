@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 10/1/2017 12:00:00 AM
+---
 # SharePoint Framework PnP Controls Sample
 
 ## Summary
@@ -55,4 +70,4 @@ npm install
 gulp serve --nobrowser
 ```
 
-![](https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/pnp-controls)
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/pnp-controls" />

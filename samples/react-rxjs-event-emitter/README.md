@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: tools
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 9/1/2017 12:00:00 AM
+---
 # SPFx ReactiveX (RxJs) Event Emitter Sample #
 
 ## Summary
@@ -61,5 +76,3 @@ There is a very good [blog post](https://blog.mastykarz.nl/dll-code-sharepoint-f
 
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-rxjs-event-emitter" />
-
-

@@ -1,4 +1,22 @@
-﻿# Using jQuery loaded from CDN
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - JQuery
+  createdDate: 9/16/2016 12:00:00 AM
+  scenarios:
+  - Embed
+---
+# Using jQuery loaded from CDN
 
 ## Summary
 

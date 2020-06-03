@@ -16,6 +16,7 @@
     user-select: none;
     position: relative;
     display: inline-block;
+
   }
   .documentCard:hover{
     border-color: #c8c8c8;
@@ -25,7 +26,7 @@
    min-Width: 200px;
    width: 200px;
    min-height: 190px;
-   margin-Left: 15px;
+   margin-right: 15px;
    position: relative;
    text-align: center;
    display: inline-block;
@@ -61,7 +62,7 @@
    margin-Top: 40px;
    margin-Left: 10px;
    margin-Right: 10px;
-   
+
 }
 .persona{
   position: absolute;
@@ -120,7 +121,8 @@
     height: 30px;
     color: #ff6f69;
      // color: $ms-color-themeTertiary;
-      top: 60px;
+     bottom: 7px;
+      right:5px;
       position: absolute;
        border-radius: 50%;
      background-color: #eaeaea;

@@ -1,8 +1,20 @@
-﻿# Display List JavaScript Client-Side Web Part
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  createdDate: 5/15/2017 12:00:00 AM
+---
+# Display List JavaScript Client-Side Web Part
 
 ## Summary
 This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list.
-
 
 ![Screeshot of the Display List web part](./assets/display-list-preview.png).
 

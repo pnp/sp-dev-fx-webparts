@@ -93,3 +93,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * How to update an MS Graph entity (in this case, Office 365 Group) with custom data
 * Using async / await for the async calls
 * Office UI fabric components
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-graph-schema-extensions" />

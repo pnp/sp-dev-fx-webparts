@@ -1,9 +1,4 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
-$neutralLight: '[theme:neutralLight,default:#eaeaea]';
-$neutralSecondary: '[theme:neutralSecondary,default:#666666]';
-$white: '[theme:white,default:#ffffff]';
-$neutralPrimary: '[theme:neutralPrimary,default:#333333]';
-$neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .cardWrapper {
   border: 1px solid;
@@ -24,11 +19,11 @@ $neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
 }
 
 .cardWrapper:focus {
-  border-color: $neutralSecondary;
+  border-color: $ms-color-neutralSecondary;
 }
 
 .cardWrapper .dateBox {
-  border-color: $neutralTertiaryAlt;
+  border-color: $ms-color-neutralLight;
 }
 
 .normalCard .dateBoxContainer {
@@ -49,6 +44,7 @@ $neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
 .compactCard .dateBox {
   margin: auto 14px auto 0;
   min-width: 64px;
+  background-color: $ms-color-white;
 }
 
 [dir=rtl] .compactCard .dateBox {
@@ -81,11 +77,11 @@ $neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
 
 .category,
 .location {
-  color: $neutralPrimary;
+  color: $ms-color-neutralPrimary;
 }
 
 .datetime {
-  color: $neutralPrimary;
+  color: $ms-color-neutralPrimary;
 }
 
 .title {
@@ -96,7 +92,7 @@ $neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
 .addToMyCalendar,
 .title {
   font-weight: 400;
-  color: $neutralPrimary;
+  color: $ms-color-neutralPrimary;
 }
 
 .addToMyCalendar {
@@ -116,8 +112,8 @@ $neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
     width: 100%;
     align-items: center;
     -webkit-font-smoothing: antialiased;
-    background-color: $white;
-    border: 1px solid #eaeaea;
+    //background-color: $ms-color-white;
+    border: 1px solid $ms-color-neutralLight;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     max-width: 320px;
@@ -143,11 +139,11 @@ $neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
 }
 
 .rootIsActionable:hover {
-  border-color: $neutralLight;
+  border-color: $ms-color-neutralLight;
 }
 
 .dateBox {
-  border-color: $neutralTertiaryAlt;
+  border-color: $ms-color-neutralTertiaryAlt;
 }
 
 .normalCard .title {
@@ -167,7 +163,7 @@ $neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
 
 .category,
 .location {
-  color:$neutralSecondary;
+  color: $ms-color-neutralSecondary;
 }
 
 .category,
@@ -180,9 +176,4 @@ $neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
   white-space: nowrap;
   word-wrap: normal;
   height: 18px;
-}
-
-:global(.slick-slide) .cardWrapper {
-    padding-left:8px;
-    padding-right:8px;
 }

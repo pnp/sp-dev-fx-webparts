@@ -1,0 +1,33 @@
+<List xmlns:ows="Microsoft SharePoint" Title="Employees" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Employees" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/"> 
+    <MetaData> 
+        <ContentTypes> 
+            <ContentTypeRef ID="0x01008b18f3d769d4440f96e903ad1c086192" /> </ContentTypes> 
+        <Fields></Fields> 
+        <Views> 
+            <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx"> 
+                <XslLink Default="TRUE">main.xsl</XslLink> 
+                <JSLink>clienttemplates.js</JSLink> 
+                <RowLimit Paged="TRUE">30</RowLimit> 
+                <Toolbar Type="Standard" /> 
+                <ViewFields> 
+                    <FieldRef Name="LinkTitle"></FieldRef>
+                    <FieldRef Name="ManagerID" />
+                    <FieldRef Name="PhotoUrl" />
+                    <FieldRef Name="JobTitle" />
+                    <FieldRef Name="ol_Department" />
+                    <FieldRef Name="Office" />
+                    <FieldRef Name="WorkPhone" />
+                    <FieldRef Name="EMail" />
+                </ViewFields> 
+                <Query> 
+                    <OrderBy> 
+                        <FieldRef Name="ID" /> </OrderBy> 
+                </Query> 
+            </View> 
+        </Views> 
+        <Forms> 
+            <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" /> 
+            <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" /> 
+            <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" /> </Forms> 
+    </MetaData> 
+</List>

@@ -4,11 +4,48 @@ import { DateRange, CalendarServiceProviderType } from "../../shared/services/Ca
  * Web part properties stored in web part configuration
  */
 export interface ICalendarFeedSummaryWebPartProps {
-    title: string; // title of the web part
-    feedUrl: string; // the URL where to get the feed from
-    feedType: CalendarServiceProviderType; // the type of feed provider
-    maxEvents: number; // maximum number of events
-    dateRange: DateRange; // date range to retrieve events
-    useCORS: boolean; // use CORS proxy when retrieving events
-    cacheDuration: number; // how long to cache events for
-  }
+  /**
+   * The title of the web part
+   */
+  title: string;
+
+  /**
+   * The URL where to get the feed from
+   */
+  feedUrl: string;
+
+  /**
+   * The type of feed provider
+   */
+  feedType: CalendarServiceProviderType;
+
+  /**
+   * maximum number of events per page
+   */
+  maxEvents: number;
+
+  /**
+   * Maximum total number of events to load
+   */
+  maxTotal: number;
+
+  /**
+   * Date range to retrieve events
+   */
+  dateRange: DateRange;
+
+  /**
+   * use CORS proxy when retrieving events
+   */
+  useCORS: boolean;
+
+  /**
+   * how long to cache events for
+   */
+  cacheDuration: number;
+
+  /**
+   * Indicates the dates received from feeds do not specify a timezone
+   */
+  convertFromUTC: boolean;
+}

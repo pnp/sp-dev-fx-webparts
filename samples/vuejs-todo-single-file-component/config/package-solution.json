@@ -1,8 +1,10 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "vue-todo-client-side-solution",
     "id": "93e1bc8f-a063-4617-aa40-837e3b39f958",
-    "version": "1.0.0.0"
+    "version": "1.0.0.0",
+    "isDomainIsolated": false
   },
   "paths": {
     "zippedPackage": "solution/vue-todo.sppkg"

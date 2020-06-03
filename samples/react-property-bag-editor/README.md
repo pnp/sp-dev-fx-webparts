@@ -29,7 +29,6 @@ react-property-bag-editor| Russell Gove
 
 Version|Date|Comments
 -------|----|--------
-
 1.0|march 19, 2017|Initial release
 
 ## Disclaimer
@@ -69,6 +68,7 @@ The Site whose properties are to be edited can be passed in via a query paramete
 
 The following script shows how to add such a link to all sites &#39;Site Settings&#39; page using PNP Powershell. It will add a menu item named &#39;Edit Site Metadata &#39; to the  Site Settings of each Team Site that links to the PropertBagEdcitor.aspx page on the tenants infrastructure site (this site is named 'cdn' in the example below).
 
+```
 $adminSiteUrl=&quot;https://tenant-admin.sharepoint.com&quot;
 
 $customActionDescription=&quot;CUSTOM_\ ___Navigation__ \__Metadata&quot;
@@ -108,8 +108,8 @@ foreach($site in $sites){
         Execute-SPOQuery
 
         }
-
 }
+```
 
 - PropertyBagDisplay
 The propertyBagDisplay webpart can be used by an administrator to view and edit selected properties across sites in the tenant:
@@ -133,7 +133,7 @@ This webpart displays a list of all sites that meet the criteria specified in th
 
 ![PropertyBagFilteredSiteListDisplay](./src/images/PropertyBagFilteredSiteListDisplay.PNG)
 
-Additionally, it lets the user narrow down the list of sites displayed by applying metadata filters that are set up by the administrator in the Property Pane( Businsess Unit and Continent in the example above):
+Additionally, it lets the user narrow down the list of sites displayed by applying metadata filters that are set up by the administrator in the Property Pane( Business Unit and Continent in the example above):
 
 ![PropertyBagFilteredSiteListConfig](./src/images/PropertyBagFilteredSiteListConfigy.PNG)
 
@@ -148,6 +148,6 @@ In the PropertyPane, an administrator just needs to specify which Managed Proper
 
 ![PropertyBagGlobalNavConfig](./src/images/PropertyBagGlobalNavConfig.PNG)
 
-If desired, the admin can also specify which site templates should be included in the menu, as wall as any additional filters. Additional Filteres can be specified in the format 'ManagedPropertyName=value';
+If desired, the admin can also specify which site templates should be included in the menu, as wall as any additional filters. Additional Filters can be specified in the format 'ManagedPropertyName=value';
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-property-bag-editor" />

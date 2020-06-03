@@ -30,7 +30,7 @@ Webpart is developed using below technologies
 
 ## Prerequisites
  
-Before you can use this webpart exmaple, you will need atleast one Out of the Box Calendar created.
+Before you can use this webpart example, you will need at least one Out of the Box Calendar created.
 
 It is required that the users have view access on the calendar.
 
@@ -44,7 +44,6 @@ react-aggregated-calendar | [Dhaval Shah](https://www.linkedin.com/in/dhavalshah
 
 Version|Date|Comments
 -------|----|--------
-
 1.0 |July 16, 2018 | Initial Release
 
 ## Disclaimer
@@ -75,7 +74,6 @@ This Web Part displays the events from multiple calendars located in various sit
 
 
 
-
 ### Building the code
 
 ```bash
@@ -98,3 +96,5 @@ gulp test
 gulp serve
 gulp bundle
 gulp package-solution
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-aggregated-calendar" />

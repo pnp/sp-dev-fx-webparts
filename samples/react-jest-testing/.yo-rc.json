@@ -1,7 +1,7 @@
 {
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
-    "version": "1.7.0",
+    "version": "1.8.2",
     "libraryName": "react-jest-testing",
     "libraryId": "9e16e13b-8d8c-4b89-8de4-dd654c5b6740",
     "environment": "spo",

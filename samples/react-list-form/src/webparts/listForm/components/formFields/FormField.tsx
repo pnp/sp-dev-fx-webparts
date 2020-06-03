@@ -10,7 +10,7 @@ import { AnimationClassNames } from '@uifabric/styling';
 import { ControlMode } from '../../../../common/datatypes/ControlMode';
 import { IFieldSchema } from '../../../../common/services/datatypes/RenderListData';
 
-import * as stylesImport from 'office-ui-fabric-react/lib/components/TextField/TextField.scss';
+import * as stylesImport from 'office-ui-fabric-react/lib/components/TextField/TextField.types';
 const styles: any = stylesImport;
 
 import ardStyles from './FormField.module.scss';
@@ -27,7 +27,6 @@ export interface IFormFieldProps {
   errorMessage?: string;
   valueChanged(newValue: any): void;
 }
-
 
 const FormField: React.SFC<IFormFieldProps> = (props) => {
 
@@ -49,31 +48,31 @@ const FormField: React.SFC<IFormFieldProps> = (props) => {
   const isDescriptionAvailable = Boolean(props.description || props.errorMessage);
 
   return (
-      <div className={ css(formFieldClassName, 'od-ClientFormFields-field') }>
-        <div className={ css('ard-FormField-wrapper', styles.wrapper) }>
-          { label && <Label className={ css(ardStyles.label, {['is-required']: required}) } htmlFor={ this._id }>{ label }</Label> }
-          <div className={ css('ard-FormField-fieldGroup', ardStyles.controlContainerDisplay, active
-          && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
-            {children}
-          </div>
+    <div className={css(formFieldClassName, 'od-ClientFormFields-field')}>
+      <div className={css('ard-FormField-wrapper', styles.wrapper)}>
+        {label && <Label className={css(ardStyles.label, { ['is-required']: required })}>{label}</Label>}
+        <div className={css('ard-FormField-fieldGroup', ardStyles.controlContainerDisplay, active
+          && styles.fieldGroupIsFocused, errorMessage && styles.invalid)}>
+          {children}
         </div>
-        { isDescriptionAvailable &&
-          <span>
-            { description && <span className={ css('ard-FormField-description', styles.description) }>{ description }</span> }
-            { errorMessage &&
-              <div aria-live='assertive'>
-                <DelayedRender>
-                  <p className={ css('ard-FormField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }>
-                    { Icon({ iconName: 'Error', className: styles.errorIcon }) }
-                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
-                  </p>
-                </DelayedRender>
-              </div>
-            }
-          </span>
-        }
       </div>
-    );
+      {isDescriptionAvailable &&
+        <span>
+          {description && <span className={css('ard-FormField-description', styles.description)}>{description}</span>}
+          {errorMessage &&
+            <div aria-live='assertive'>
+              <DelayedRender>
+                <p className={css('ard-FormField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage)}>
+                  {Icon({ iconName: 'Error', className: styles.errorIcon })}
+                  <span className={styles.errorText} data-automation-id='error-message'>{errorMessage}</span>
+                </p>
+              </DelayedRender>
+            </div>
+          }
+        </span>
+      }
+    </div>
+  );
 };
 
 export default FormField;

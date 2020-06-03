@@ -44,12 +44,14 @@ Version|Date|Comments
 
 ## Features
 This listview command is used to show the past versions of the selected list item in a grid.
-Add-PnPCustomAction `
-    -Name 'Item History(GRID)' `
-    -Title 'Item History(GRID)' `
-    -Location 'ClientSideExtension.ListViewCommandSet.CommandBar' `
-    -ClientSideComponentId "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed"  `
-    -RegistrationType List `
-    -RegistrationId "101" `
+```bash
+Add-PnPCustomAction
+    -Name 'Item History(GRID)' 
+    -Title 'Item History(GRID)' 
+    -Location 'ClientSideExtension.ListViewCommandSet.CommandBar' 
+    -ClientSideComponentId "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed"  
+    -RegistrationType List 
+    -RegistrationId "101" 
     -ClientSideComponentProperties "{}"
-
+```
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-item-history" />

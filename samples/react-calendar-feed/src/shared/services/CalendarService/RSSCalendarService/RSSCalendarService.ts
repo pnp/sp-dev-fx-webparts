@@ -24,8 +24,8 @@ export class RSSCalendarService extends BaseCalendarService implements ICalendar
     return parser.parseURL(parameterizedFeedUrl).then(feed => {
 
       let events: ICalendarEvent[] = feed.items.map(item => {
-        let pubDate: Date = new Date(item.isoDate);
-        return {
+        let pubDate: Date = this.convertToDate(item.isoDate);
+        const eventItem: ICalendarEvent = {
           title: item.title,
           start: pubDate,
           end: pubDate,
@@ -35,6 +35,7 @@ export class RSSCalendarService extends BaseCalendarService implements ICalendar
           location: undefined, // no equivalent in RSS
           category: item.categories && item.categories.length > 0 && item.categories[0]
         };
+        return eventItem;
       });
       return events;
     });

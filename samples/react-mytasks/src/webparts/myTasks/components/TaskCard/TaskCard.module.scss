@@ -1,0 +1,183 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+ // Import all mixins and variables.
+
+.buttonIconStatusInProgressNotStarted
+{ background-Color: white;
+   position: absolute;
+   top:22px;
+   right: 15px;
+   border-radius: 50%;
+   height: 27px;
+   width: 27px;
+   border-color:#afb8bd;;
+   border-width: 1px;
+   border-style: solid;
+   color:#a6a6a6;
+   margin-right: 15px;
+
+}
+
+.buttonIconStatusCompleted
+{ background-Color: white;
+   position: absolute;
+   top: 22px;
+   right: 15px;
+   border-radius: 50%;
+   height: 27px;
+   width: 27px;
+   border-color:#afb8bd;;
+   border-width: 1px;
+   border-style: solid;
+   color:#a6a6a6;
+   margin-right: 15px;
+
+}
+
+.buttonIconStatusInProgressNotStarted:hover {
+  background-Color: green;
+  color: $ms-color-white;
+}
+
+.buttonIconStatusCompleted:hover {
+
+  border-color: $ms-color-neutralPrimary;
+}
+.documentCard {
+  max-width: 282px;
+  min-width:282px;
+  min-height: 345px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-color: #d3d3d3;
+  box-shadow: none;
+}
+
+.documentCard:focus {
+  outline: none;
+  }
+
+  .documentCardCompleted:focus {
+    outline: none;
+    }
+.documentCardCompleted {
+  max-width: 282px;
+  min-width:282px;
+  min-height: 345px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-color: #d3d3d3;
+  background-color: #eaeaea;
+}
+
+.documentCardTitleStyle  {
+  height: 100%;
+  font-Weight: 'bold'
+}
+
+.documentCardTitle {
+  display: flex;
+   width: 235px;
+  height: 30 ;
+  margin-left: 15px;
+  margin-top: 10px;
+  justify-content: left;
+
+}
+
+.iconBottomDiv {
+  display: flex;
+  align-items: center;
+
+
+}
+
+.taskDetails {
+ // display: inline-block;
+ // padding: 5px;
+  @include ms-fontSize-sPlus;
+}
+.dueDate{
+  //display: "inline-block";
+  padding: 5px;
+  @include ms-fontSize-sPlus;
+  margin-left: 10px;
+  background-color: "red";
+  color: "white",
+}
+.progressIcon {
+  font-size: 22px;
+  height: 22x;
+  width: 22px;
+  margin-left: 15px;
+  margin-right: 10px;
+  display: "inline-block";
+  vertical-align: "middle";
+  color: green;
+  margin-top: 10px;
+}
+.progress{
+ // color: $ms-color-themePrimary;
+  font-size: 16px;
+  // @include ms-fontSize-l;
+  vertical-align: middle;
+  display: inline-block;
+  margin-top: 10px;
+}
+.iconClass{
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+  margin-left: 10px;
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: "middle";
+  color: $ms-color-themePrimary;
+}
+.iconClassDue{
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+  margin-left: 2px;
+  margin-right: 6px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.taskTitleCompleted{
+  text-decoration: line-through;
+}
+
+.statusIconStyleInProgressNotStarted{
+  font-size: 25;
+  padding: 0;
+  width: 21px;
+  height: 21px;
+  vertical-align: top;
+  position: absolute;
+  margin-left: 0px;
+  margin-right: 0px;
+
+}
+
+.statusIconStyleCompleted{
+   font-size: 12px;
+    padding: 0px;
+    width: 14px;
+    height: 14px;
+    align-items: center;
+    vertical-align: top;
+    position: absolute;
+    top: 3px;
+    margin-left: 1px;
+    margin-right: 0px;
+}
+.textStyles{
+   padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 0px;
+}

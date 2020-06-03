@@ -5,7 +5,7 @@ At the time of developing this sample, the Office 365 UI fabric does not have an
 
 ![Web part preview][figure1]
 
-The web part is configured to render the mock data when added to local SharePoint workbench. 
+The web part is configured to render the mock data when added to the local SharePoint workbench. 
 ![Local SharePoint Workbench Run][figure2]
 
 When added to SharePoint site, the source list containing hierarchical information can be configured from web part properties.
@@ -60,9 +60,9 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repo
-- npm i
-- gulp serve --nobrowser
-- Open workbench on your tennant, ie. https://contoso.sharepoint.com/sites/salestesm/_layouts/15/workbench.aspx
+- `npm i`
+- `gulp serve --nobrowser`
+- Open workbench on your tenant, ie. https://contoso.sharepoint.com/sites/salestesm/_layouts/15/workbench.aspx
 - Search and add web part "Display Hierarchy"
 
 ## Features
@@ -83,3 +83,4 @@ This sample web part shows how data stored in SharePoint list can be transformed
 [figure5]: ./assets/list-sample-data.png
 
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-display-hierarchy" />

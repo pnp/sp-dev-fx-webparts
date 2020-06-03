@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "0421c2b0-90f0-429f-83e6-f3987e417cae",
+  "alias": "TeamsTaggingWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsTab"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "TeamsTagging" },
+    "description": { "default": "Webpart to Tag Teams based on a SharePoint TermSet" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "termSetId": "4a076cae-831c-4882-9b54-0f54f888e1fc"
+    }
+  }]
+}

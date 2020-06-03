@@ -1,0 +1,108 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "~office-ui-fabric-react/dist/sass/semanticSlots";
+@import './node_modules/spfx-uifabric-themes/office.theme';
+@import "./../../../../Common/themeColors.module.scss";
+
+
+
+.card {
+  display: flex;
+
+  min-height: 60px;
+  max-height: 60px;
+ 
+  justify-content: start;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $ms-color-neutralTertiaryAlt;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  align-items: flex-start;
+  background-color:$bodyBackgroundColor;
+  color: $bodyTextColor;
+  max-width:100%;
+}
+
+.card:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  background-color: $ms-themePrimary;
+  color: $ms-color-white;
+  cursor: pointer;
+}
+
+.image {
+  font-size: 40px;
+
+  width: 40px;
+  height: 40px;
+}
+
+.imageContainer {
+  display: flex;
+  margin-right: 30px;
+  align-items: center;
+  width: 45px;
+  height: 60px;
+}
+
+.title {
+font-size: 16px;
+font-weight: 300px;
+line-height: 25px;
+line-break: nowrap;
+overflow: hidden;
+text-overflow: 'ellipsis';
+}
+
+.separator {
+  border-color: $ms-color-themePrimary;
+  width: 90%;
+  margin: 0 auto;
+  height: 0px;
+  border-style: solid;
+  border-width: 1px;
+
+}
+
+[data-theme="dark"] {
+
+  color: $ms-color-neutralTertiaryAlt;
+}
+
+[data-theme="contrast"] {
+
+  // dark theme
+  color: $contrast-button-background;
+  .card:hover{
+    color: $ms-color-black;
+    background-color:  $contrast-button-background;
+  }
+}
+
+[data-theme="default"] {
+  .card{
+    background-color: $ms-color-white;
+  }
+  .card:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    background-color: $ms-themePrimary;
+    color: $ms-color-white;
+    cursor: pointer;
+  }
+}
+
+/*
+[data-theme="default"] {
+  $default-background: #f3f2f1;
+  $default-color: #252423;
+  $default-button-background: #6264a7;
+  $default-Button-color: #f3f2f1;
+
+  color: $default-color;
+}*/
+

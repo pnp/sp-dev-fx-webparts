@@ -1,4 +1,23 @@
-﻿# Angular & ngOfficeUIFabric Client-Side Web Part
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Office UI Fabric
+  platforms:
+  - AngularJS
+  createdDate: 8/29/2016 12:00:00 AM
+  scenarios:
+  - Embed
+---
+# Angular & ngOfficeUIFabric Client-Side Web Part
 
 ## Summary
 

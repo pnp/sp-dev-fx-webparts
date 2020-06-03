@@ -1,4 +1,19 @@
-﻿# Angular multi-page client-side web part
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 11/1/2016 12:00:00 AM
+---
+# Angular multi-page client-side web part
 
 ## Summary
 

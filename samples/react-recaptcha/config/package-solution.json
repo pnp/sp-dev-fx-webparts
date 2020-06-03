@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-recaptcha-client-side-solution",
+    "id": "e96b3b94-3ccb-4e61-be34-e7ef7d952cbd",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-recaptcha.sppkg"
+  }
+}

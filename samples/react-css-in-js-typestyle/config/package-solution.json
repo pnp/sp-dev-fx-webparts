@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-css-in-js-client-side-solution",
+    "id": "d07a3ba7-a2e7-41df-b2e6-acaf2ed00a33",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-css-in-js.sppkg"
+  }
+}

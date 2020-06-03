@@ -1,6 +1,6 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.7.0",
+    "version": "1.8.0",
     "libraryName": "skype-presence-spfx-react",
     "libraryId": "8508d562-b356-4ae0-80ed-7315b2d70b0b",
     "environment": "spo",

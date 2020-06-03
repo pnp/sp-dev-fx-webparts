@@ -1,20 +1,14 @@
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneToggle
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneToggle } from "@microsoft/sp-property-pane";
 import styles from './WorkbenchCustomizerWebPart.module.scss';
-import { escape } from '@microsoft/sp-lodash-subset';
 
 import * as strings from 'WorkbenchCustomizerWebPartStrings';
 
 export interface IWorkbenchCustomizerWebPartProps {
   requiresPageRefresh: boolean;
-  maxWidth: boolean;
-  centerCanvas: boolean;
-  overflow: boolean;
-  padding: boolean;
+  customWorkbenchStyles: boolean;
+  previewMode: boolean;
 }
 
 export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IWorkbenchCustomizerWebPartProps> {
@@ -26,30 +20,26 @@ export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IW
 
   public async render(): Promise<void> {
 
-    if (this.properties.maxWidth) {
-      await import('./styles/maxWidth.module.scss');
-    }
-    if (this.properties.centerCanvas) {
-      await import('./styles/centerCanvas.module.scss');
-    }
-    if (this.properties.overflow) {
-      await import('./styles/overflow.module.scss');
-    }
-    if (this.properties.padding) {
-      await import('./styles/padding.module.scss');
-    }
+    if (!this.renderedOnce) {
 
-    this.domElement.innerHTML = `
+      if (this.properties.customWorkbenchStyles) {
+        await import('./styles/customWorkbenchStyles.module.scss');
+      }
+
+      if (this.properties.previewMode) {
+        const previewBtn = document.getElementsByName("Preview")[0];
+        previewBtn.click();
+      }
+
+      this.domElement.innerHTML = `
     <div class="${styles.workbenchCustomizer}">
       ${this.properties.requiresPageRefresh
-        ? `<div class="${styles.redMessage}">Please refresh the page to update workbench styles</div>`
-        : ''
-      }
-      <div>Max width enabled: ${this.properties.maxWidth}</div>
-      <div>Center canvas zone: ${this.properties.centerCanvas}</div>
-      <div>Custom overflow enabled: ${this.properties.overflow}</div>
-      <div>Custom padding enabled: ${this.properties.padding}</div>
+          ? `<div class="${styles.redMessage}">Please refresh the page to remove custom workbench styles</div>`
+          : ''
+        }
+      *** Workbench Customizer web part ***
     </div>`;
+    }
   }
 
   public onPropertyPaneFieldChanged(path: string, oldValue: any, newValue: any): void {
@@ -75,17 +65,11 @@ export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IW
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneToggle('maxWidth', {
-                  label: strings.MaxWidthFieldLabel
+                PropertyPaneToggle('customWorkbenchStyles', {
+                  label: strings.CustomWorkbenchStylesFieldLabel
                 }),
-                PropertyPaneToggle('centerCanvas', {
-                  label: strings.CenterCanvasFieldLabel
-                }),
-                PropertyPaneToggle('overflow', {
-                  label: strings.OverflowFieldLabel
-                }),
-                PropertyPaneToggle('padding', {
-                  label: strings.PaddingFieldLabel
+                PropertyPaneToggle('previewMode', {
+                  label: strings.PreviewModeFieldLabel
                 })
               ]
             }

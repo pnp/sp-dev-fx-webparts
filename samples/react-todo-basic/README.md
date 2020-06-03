@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: tools
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - React
+  createdDate: 1/1/2016 12:00:00 AM
+---
 ## Summary
 A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.
 
@@ -344,5 +359,3 @@ private _resolveBatch(batch: SPHttpClientBatch, promises: Promise<{}>[]): Promis
 ```
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-todo-basic" />
-
-

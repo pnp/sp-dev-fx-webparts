@@ -1,0 +1,81 @@
+resources:
+- repo: self
+trigger:
+- master
+- develop
+pool:
+  vmImage: 'ubuntu-latest'
+  demands:
+  - npm
+  - node.js
+variables:
+  npm_config_cache: $(Pipeline.Workspace)/.npm
+
+steps:
+#install node 10.x
+- task: NodeTool@0
+  displayName: 'Use Node 10.x'
+  inputs:
+    versionSpec: 10.x
+    checkLatest: true
+
+#cache files from previous run
+- task: CacheBeta@1
+  inputs:
+    key: npm | $(Agent.OS) | package-lock.json
+    path: $(npm_config_cache)
+    cacheHitVar: CACHE_RESTORED
+
+#install nodejs modules with npm
+- script: npm ci
+  displayName: 'npm ci'
+
+#bundle code with gulp
+- task: Gulp@0
+  displayName: 'gulp bundle'
+  inputs:
+    gulpFile: '$(Build.SourcesDirectory)/gulpfile.js'
+    targets: bundle
+    arguments: '--ship'
+  continueOnError: true
+
+#start unit tests
+- script: npm test
+  displayName: 'npm test'
+
+# Publish Test Results to Azure Pipelines/TFS
+- task: PublishTestResults@2
+  displayName: Publish test results
+  inputs:
+    testResultsFiles: '**/junit.xml'
+    searchFolder: '$(Build.SourcesDirectory)'
+    testResultsFormat: JUnit
+    #failTaskOnFailedTests: true #if we want to fail the build on failed unit tests
+
+# publish coverage test results
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish Code Coverage Results'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(Build.SourcesDirectory)/**/*coverage.xml'
+
+#package solution with gulp
+- task: Gulp@0
+  displayName: 'gulp package-solution'
+  inputs:
+    gulpFile: '$(Build.SourcesDirectory)/gulpfile.js'
+    targets: 'package-solution'
+    arguments: '--ship'
+
+#copy files to artifact repository
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)/drop'
+  inputs:
+    Contents: '**/*.sppkg'
+    TargetFolder: '$(build.artifactstagingdirectory)/drop'
+
+#publish artifacts
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact:  drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)/drop'

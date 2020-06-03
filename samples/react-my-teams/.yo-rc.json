@@ -1,0 +1,19 @@
+{
+  "@pnp/generator-spfx": {
+    "framework": "react",
+    "pnpFramework": "reactjs.plus",
+    "pnp-libraries": [],
+    "pnp-vetting": [],
+    "spfxenv": "spo"
+  },
+  "@microsoft/generator-sharepoint": {
+    "environment": "spo",
+    "framework": "react",
+    "isCreatingSolution": true,
+    "version": "1.7.1",
+    "libraryName": "my-teams",
+    "libraryId": "9bf27890-01d8-4041-8030-72831ed570aa",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

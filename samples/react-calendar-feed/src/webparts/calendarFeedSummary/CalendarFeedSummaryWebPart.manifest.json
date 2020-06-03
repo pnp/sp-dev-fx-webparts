@@ -3,10 +3,10 @@
   "id": "acef6c3f-852a-42e3-8a4b-7ea191ae9687",
   "alias": "CalendarFeedSummaryWebPart",
   "componentType": "WebPart",
-
+  "supportsThemeVariants": true,
   "version": "*",
   "manifestVersion": 2,
-
+  "supportedHosts": ["SharePointWebPart"],
   "requiresCustomScript": false,
 
   "preconfiguredEntries": [{
@@ -26,7 +26,9 @@
         "dateRange": 4,
         "maxEvents": 4,
         "useCORS": false,
-        "cacheDuration": 15
+        "cacheDuration": 15,
+        "maxTotal": 10,
+        "convertFromUTC": false
       }
   }]
 }

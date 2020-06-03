@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "basic-react-section-background-example-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/basicReactSectionBackgroundExample/BasicReactSectionBackgroundExampleWebPart.js",
+          "manifest": "./src/webparts/basicReactSectionBackgroundExample/BasicReactSectionBackgroundExampleWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/webparts/basicPlainSectionBackgroundExample/BasicPlainSectionBackgroundExampleWebPart.js",
+          "manifest": "./src/webparts/basicPlainSectionBackgroundExample/BasicPlainSectionBackgroundExampleWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/webparts/basicPlainWithFallbackExample/BasicPlainWithFallbackExampleWebPart.js",
+          "manifest": "./src/webparts/basicPlainWithFallbackExample/BasicPlainWithFallbackExampleWebPart.manifest.json"
+        },
+        {
+          "entrypoint": "./lib/webparts/officeUIFabricSectionBackgroundExample/OfficeUIFabricSectionBackgroundExampleWebPart.js",
+          "manifest": "./src/webparts/officeUIFabricSectionBackgroundExample/OfficeUIFabricSectionBackgroundExampleWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+  }
+}

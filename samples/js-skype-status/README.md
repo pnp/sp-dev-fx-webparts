@@ -1,16 +1,31 @@
+---
+page_type: sample
+products:
+- office-sp
+- skype
+- office-skype-business
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  createdDate: 12/1/2017 12:00:00 AM
+---
 # JavaScript Skype Status WebPart
 
 ## Summary
-This sample demonstrates how to use the UCWA JS Sdk for skype in the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the [documentation](https://msdn.microsoft.com/en-us/skype/websdk/docs/generalreference?f=255&MSPPError=-2147217396)  
+This sample demonstrates how to use the UCWA JS SDK for skype in the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the [documentation](https://msdn.microsoft.com/en-us/skype/websdk/docs/generalreference?f=255&MSPPError=-2147217396)  
 The goal is to demonstrate how you can leverage the SDK and to have the simplest approach, hence the usage of JQuery. No Framework (React, Angular, Knockout...) is used here but you can use that SDK in conjuction with any framwork.  
 No branding has been applied to keep it simple but you could perfectly leverage Office Ui Fabric to display persona cards.
 
-Allows you to properly display and subscribe to change of users' availibility.  
+Allows you to properly display and subscribe to change of users' availability.  
 See the demo:  
 ![demo](./images/demo.gif)
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+![drop](https://img.shields.io/badge/drop-1.8.0-green.svg)
 
 ## Applies to
 
@@ -28,9 +43,10 @@ js-skype-status|[Vincent Biret](https://github.com/baywet)
 
 Version|Date|Comments
 -------|----|--------
+1.4|March 27th, 2019|Upgrade to SPFx 1.8.0
 1.3|November 18th, 2018|Upgrade to SPFx 1.7.0
 1.2|July 4th, 2018|Fixed a bug when subscribing to the current user's status
-1.1|June 22nd, 2018|Upgraded to SPFX 1.5
+1.1|June 22nd, 2018|Upgraded to SPFx 1.5
 1.0|December 1, 2017|Initial release
 
 ## Disclaimer
@@ -41,7 +57,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 ### Authentication
 Because the Skype API's are secured, you first need to register an Azure Active Directory application.  
-To do that go to `portal.azure.com` and sign in as your tenant adminstrator.  
+To do that go to `portal.azure.com` and sign in as your tenant administrator.  
 ![azure active directory](./images/1.PNG)  
 Click on `Azure Active Directory`.  
 ![app registrations](./images/2.PNG)  
@@ -65,7 +81,7 @@ Start by running `gulp package-solution` and deploy the application to the app c
 **At the end select SkypePresence webpart instead**  
 Don't forget to run `gulp serve --nobrowser` to start the debugging server.
 
-### Addtional page required
+### Additional page required
 Because Skype needs to silently redirect the user to a page for the authentication flow, you need to create an additional page called `skypepresence` in your site.  
 You don't need to add anything on that page.  
 

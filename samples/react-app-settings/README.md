@@ -1,26 +1,33 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 8/1/2017 12:00:00 AM
+---
 # SPFx React app settings webpart #
 
 ## Summary
 
-This sample shows how appSettings.json file can be added and used within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects.
-That allows better DevOps and Continious Integration automation. Typescript module appSettings.d.ts is also added so it allows the json app settings to be imported to any webpart or react component with intellisense support.
+This sample shows how AppSettings.ts file can be added and used within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects.
+That allows better DevOps and continuous integration (CI/CD) automation. The AppSettings.ts is transpiled/compiled with your SPFx solution which differs from the way the web.config. With .Net web.config file we would be able to update independently without the need of compiling DLLs. If that behavior is required, you can store your app settings in a SharePoint list and change them from there. However, that will have performance degradation over if the setting was part of the SPFx code where the logic can get a setting value in milliseconds.
 
-![SPFx React app settings webpart](./assets/spfx-appSettings-json.PNG)
+![SPFx React app settings webpart](./assets/app-settings-class.PNG)
 
-### Easy to replace values in appSettings.json if DEV, QA, PROD environments.
+### Replace values in AppSettings.ts if DEV, QA, PROD environments with Azure DevOps pipeline.
 
-Since the appSettings.json is a known format, a DevOps guy can easily open it and add values according the environment then start `gulp build` process in an CI tool like VSTS, Jenkins.
-
-### Gulp task added to verity that the appSettings.json and appSettings.d.ts match.
-
-I have added appSettingsGulp.js with one gulp task in it. The task starts just before solution build or on watch to verify that all the app settings match in both appSettings.json and appSettings.d.ts. If they not match, then error is thrown so the CI tool is aware that the build failed.
-
-### Keep the appSettings.json and appSettings.d.ts format as is.
-
-Since the gulp task I created contains checks based on string operations, it is required that the appSettings.json and appSettings.d.ts are in format as provided and just key-pairs are added to the json file and respective just new properties are added to the IAppSettings interface in the appSettings.d.ts.
+Azure DevOps pipelines configurations are included to demonstrate how the AppSettings.ts values can be changed per different environments. Please refer to the `devops/configurations` folder to see how this can be setup for your pipeline.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+![drop](https://img.shields.io/badge/drop-1.7.1-green.svg)
 
 ## Applies to
 
@@ -44,6 +51,7 @@ Version|Date|Comments
 -------|----|--------
 0.0.1|August 03, 2017 | Initial commit
 0.0.2|March 08, 2018 | Update to SPFx 1.4.1
+0.0.3|March 03, 2019 | Update to SPFx 1.7.1
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -67,5 +75,3 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - The use of app settings and passing the app settings to React components.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-app-settings" />
-
-

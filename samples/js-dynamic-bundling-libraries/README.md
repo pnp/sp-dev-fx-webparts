@@ -1,4 +1,4 @@
-# title of the sample
+# Dynamics Bundling & Loading of SPFx Packages
 
 ## Summary
 This sample illustrates how SPFx functionality and packages can be bundled in multiple '.js' files then be dynamically & asynchronously loaded into the page at execution time, such as with a button click.
@@ -57,4 +57,4 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 - Video Demonstration on using, building and code specifics for the sample web part:<br>   http://warner.digital/dynamic-spfx-package-bundling/ 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-dynamic-bundling-libraries" />

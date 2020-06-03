@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-pages-hierarchy",
+    "id": "89758fb6-85e2-4e2b-ac88-4f4e7e5f60cb",
+    "version": "1.0.1.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-pages-hierarchy.sppkg"
+  }
+}

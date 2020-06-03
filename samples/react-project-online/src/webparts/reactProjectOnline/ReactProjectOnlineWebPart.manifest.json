@@ -1,24 +1,21 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "9dd62689-0ed4-4b35-82e0-848742751bdc",
+  "id": "8f307e34-3031-40bd-afd4-327edb2cd1ed",
   "alias": "ReactProjectOnlineWebPart",
   "componentType": "WebPart",
 
-  // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
 
-  // If true, the component can only be installed on sites where Custom Script is allowed.
-  // Components that allow authors to embed arbitrary script code should set this to true.
-  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
 
   "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
     "group": { "default": "Other" },
     "title": { "default": "React Project Online Sample" },
     "description": { "default": "Sample web part to demonstrate how to retrieve Project Online data using REST" },
-    "officeFabricIconFontName": "Page",
+    "iconImageUrl": "data:image/svg+xml,%3Csvg fill='%23000000' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' width='50px' height='50px'%3E%3Cpath d='M 28.875 0 C 28.855469 0.0078125 28.832031 0.0195313 28.8125 0.03125 L 0.8125 5.34375 C 0.335938 5.433594 -0.0078125 5.855469 0 6.34375 L 0 43.65625 C -0.0078125 44.144531 0.335938 44.566406 0.8125 44.65625 L 28.8125 49.96875 C 29.101563 50.023438 29.402344 49.949219 29.632813 49.761719 C 29.859375 49.574219 29.996094 49.296875 30 49 L 30 44 L 47 44 C 48.09375 44 49 43.09375 49 42 L 49 8 C 49 6.90625 48.09375 6 47 6 L 30 6 L 30 1 C 30.003906 0.710938 29.878906 0.4375 29.664063 0.246094 C 29.449219 0.0546875 29.160156 -0.0351563 28.875 0 Z M 28 2.1875 L 28 6.6875 C 27.941406 6.882813 27.941406 7.085938 28 7.28125 L 28 42.8125 C 27.972656 42.945313 27.972656 43.085938 28 43.21875 L 28 47.8125 L 2 42.84375 L 2 7.15625 Z M 30 8 L 47 8 L 47 42 L 30 42 L 30 35.5 L 31.5 37 L 36.5 32 L 31.5 27 L 30 28.5 L 30 15 L 38 15 L 38 23 L 34 23 L 39 28 L 44 23 L 40 23 L 40 13 L 30 13 Z M 9.15625 15.65625 L 9.15625 34.375 L 13.375 34.375 L 13.375 27.9375 L 15.375 27.9375 C 17.636719 27.9375 19.460938 27.347656 20.8125 26.1875 C 22.164063 25.027344 22.84375 23.503906 22.84375 21.625 C 22.84375 17.648438 20.464844 15.65625 15.75 15.65625 Z M 13.375 18.90625 L 15.03125 18.90625 C 17.273438 18.90625 18.40625 19.859375 18.40625 21.78125 C 18.40625 23.746094 17.273438 24.71875 15.03125 24.71875 L 13.375 24.71875 Z'/%3E%3C/svg%3E",
     "properties": {
       "logLevel": 99
     }

@@ -1,8 +1,11 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.4.1",
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.9.1",
     "libraryName": "react-form-webpart",
-    "libraryId": "373a20ef-dfc6-456a-95ec-171de3c94581",
-    "environment": "spo"
+    "libraryId": "b092661d-5730-49ea-be27-14ee4a84eb33",
+    "packageManager": "npm",
+    "componentType": "webpart"
   }
 }

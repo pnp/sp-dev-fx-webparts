@@ -1,13 +1,14 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 
-// SharePoint imports
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   IPropertyPaneDropdownOption,
-  PropertyPaneDropdown
-} from "@microsoft/sp-webpart-base";
+  PropertyPaneDropdown,
+  PropertyPaneToggle,
+  PropertyPaneLabel
+} from "@microsoft/sp-property-pane";
 
 // Needed for data versions
 import { Version } from '@microsoft/sp-core-library';
@@ -33,8 +34,8 @@ import { ICalendarFeedSummaryWebPartProps } from "./CalendarFeedSummaryWebPart.t
 import CalendarFeedSummary from "./components/CalendarFeedSummary";
 import { ICalendarFeedSummaryProps } from "./components/CalendarFeedSummary.types";
 
-// this is the same width that the SharePoint events web parts use to render as narrow
-const MaxMobileWidth: number = 480;
+// Support for theme variants
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme, ISemanticColors } from '@microsoft/sp-component-base';
 
 /**
  * Calendar Feed Summary Web Part
@@ -45,6 +46,8 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
   // the list of proviers available
   private _providerList: any[];
 
+  private _themeProvider: ThemeProvider;
+  private _themeVariant: IReadonlyTheme | undefined;
   constructor() {
     super();
 
@@ -54,10 +57,20 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
 
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, _reject) => {
+      // Consume the new ThemeProvider service
+      this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+
+      // If it exists, get the theme variant
+      this._themeVariant = this._themeProvider.tryGetTheme();
+
+      // Register a handler to be notified if the theme variant changes
+      this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
 
       let {
         cacheDuration,
         dateRange,
+        maxTotal,
+        convertFromUTC: convertFromUTC
       } = this.properties;
 
       // make sure to set a default date range if it isn't defined
@@ -71,6 +84,14 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
         cacheDuration = 15;
       }
 
+      if (maxTotal === undefined) {
+        maxTotal = 0;
+      }
+
+      if (convertFromUTC === undefined) {
+        convertFromUTC = false;
+      }
+
       resolve(undefined);
     });
   }
@@ -79,8 +100,8 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
    * Renders the web part
    */
   public render(): void {
-    // see if we need to render a mobile view
-    const isNarrow: boolean = this.domElement.clientWidth <= MaxMobileWidth;
+    // We pass the width so that the components can resize
+    const { clientWidth } = this.domElement;
 
     // display the summary (or the configuration screen)
     const element: React.ReactElement<ICalendarFeedSummaryProps> = React.createElement(
@@ -90,12 +111,13 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
         displayMode: this.displayMode,
         context: this.context,
         isConfigured: this._isConfigured(),
-        isNarrow: isNarrow,
         maxEvents: this.properties.maxEvents,
         provider: this._getDataProvider(),
+        themeVariant: this._themeVariant,
         updateProperty: (value: string) => {
           this.properties.title = value;
         },
+        clientWidth: clientWidth
       }
     );
 
@@ -127,7 +149,9 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
       maxEvents,
       useCORS,
       cacheDuration,
-      feedType
+      feedType,
+      maxTotal,
+      convertFromUTC
     } = this.properties;
 
     const isMock: boolean = feedType === CalendarServiceProviderType.Mock;
@@ -179,14 +203,19 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
               groupName: strings.AdvancedGroupName,
               isCollapsed: true,
               groupFields: [
-                // how many items are we diplaying in a page
-                PropertyFieldNumber("maxEvents", {
-                  key: "maxEventsFieldId",
-                  label: strings.MaxEventsFieldLabel,
-                  description: strings.MaxEventsFieldDescription,
-                  value: maxEvents,
-                  minValue: 0,
-                  disabled: false
+                PropertyPaneLabel('convertFromUTC', {
+                  text: strings.ConvertFromUTCFieldDescription
+                }),
+                // Convert from UTC toggle
+                PropertyPaneToggle("convertFromUTC", {
+                  key: "convertFromUTCFieldId",
+                  label: strings.ConvertFromUTCLabel,
+                  onText: strings.ConvertFromUTCOptionYes,
+                  offText: strings.ConvertFromUTCOptionNo,
+                  checked: convertFromUTC,
+                }),
+                PropertyPaneLabel('useCORS', {
+                  text: strings.UseCorsFieldDescription
                 }),
                 // use CORS toggle
                 PropertyFieldToggleWithCallout("useCORS", {
@@ -194,8 +223,8 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
                   calloutTrigger: CalloutTriggers.Hover,
                   key: "useCORSFieldId",
                   label: strings.UseCORSFieldLabel,
-                  calloutWidth: 200,
-                  calloutContent: React.createElement("div", {}, isMock ? strings.UseCORSFieldCalloutDisabled : strings.UseCORSFieldCallout),
+                  //calloutWidth: 200,
+                  calloutContent: React.createElement("p", {}, isMock ? strings.UseCORSFieldCalloutDisabled : strings.UseCORSFieldCallout),
                   onText: strings.CORSOn,
                   offText: strings.CORSOff,
                   checked: useCORS
@@ -212,6 +241,23 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
                   step: 15,
                   showValue: true,
                   value: cacheDuration
+                }),
+                // how many items are we diplaying in a page
+                PropertyFieldNumber("maxEvents", {
+                  key: "maxEventsFieldId",
+                  label: strings.MaxEventsFieldLabel,
+                  description: strings.MaxEventsFieldDescription,
+                  value: maxEvents,
+                  minValue: 0,
+                  disabled: false
+                }),
+                PropertyFieldNumber("maxTotal", {
+                  key: "maxTotalFieldId",
+                  label: strings.MaxTotalFieldLabel,
+                  description: strings.MaxTotalFieldDescription,
+                  value: maxTotal,
+                  minValue: 0,
+                  disabled: false
                 })
               ],
             }
@@ -293,7 +339,9 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     const {
       feedUrl,
       useCORS,
-      cacheDuration
+      cacheDuration,
+      convertFromUTC,
+      maxTotal
     } = this.properties;
 
     // get the first provider matching the type selected
@@ -314,6 +362,18 @@ export default class CalendarFeedSummaryWebPart extends BaseClientSideWebPart<IC
     provider.UseCORS = useCORS;
     provider.CacheDuration = cacheDuration;
     provider.EventRange = new CalendarEventRange(this.properties.dateRange);
+    provider.ConvertFromUTC = convertFromUTC;
+    provider.MaxTotal = maxTotal;
     return provider;
+  }
+
+  /**
+ * Update the current theme variant reference and re-render.
+ *
+ * @param args The new theme
+ */
+  private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
+    this._themeVariant = args.theme;
+    this.render();
   }
 }

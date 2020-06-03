@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 3/1/2017 12:00:00 AM
+---
 # Modern Charts
 
 ## Summary
@@ -34,7 +49,7 @@ Built with SharePoint Framework GA, Office Graph, React and Chart.JS
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.4.1-green.svg)
+![version](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -51,6 +66,7 @@ react-modern-charts|Jeremy Coleman (MCP, PC Professional, Inc.)
 
 Version|Date|Comments
 -------|----|--------
+1.0.0.2|February 09, 2020| Upgrade to SPFx 1.10.0
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|February 11, 2017|Initial release
 
@@ -62,14 +78,14 @@ Version|Date|Comments
 
 ## Prerequisites
 
-- SharePoint Online tenant with Office Graph content enabled
+- SharePoint Online tenant with Office Graph content-enabled
 
 ## Minimal Path to Awesome
 
 - clone this repo
-- `$ npm i`
-- `$ gulp serve`
-- if deploying to Office 365, upadte the CDN path in write-manifests.json
+- `npm i`
+- `gulp serve`
+- if deploying to Office 365, update the CDN path in write-manifests.json
 
 ## Features
 

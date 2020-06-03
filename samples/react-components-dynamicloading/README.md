@@ -1,7 +1,7 @@
 # Code Splitting in SharePoint Framework
 
 ## Summary
-Load React components and third party packages on demand in SPFx
+Load React components and third-party packages on demand in SPFx
 
 ![Dynamic Loading of React components](./assets/cs3.gif)
 

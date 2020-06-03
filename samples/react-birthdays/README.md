@@ -1,7 +1,9 @@
 # React Birthdays Web Part
 
 ## Summary
-The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's home site with title "Birthdays."
+The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title "Birthdays."
+
+Now is possible to the user select an image for the background in the properties of the webpart.
 
 
 There is an Azure function available that get AAD user birthdays, this function creates a list on the tenant root site, if it does not exist.
@@ -9,19 +11,19 @@ See the local.settings.json for details on the required application variable loc
 
 But you can synchronize the Birthdays list with other applications HR Systems, or other sources
 
+![Birthdays Web Part](./assets/birthdays.gif)
 
-![Brithdays Web Part](./assets/birthdays.png)
+![Birthdays Web Part](./assets/birthdays.png)
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework](https:/dev.office.com/sharepoint)
 * [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
 
 ## Prerequisites
  
@@ -29,10 +31,13 @@ Existing list in tenant root site, with the Title "Birthdays"  and columns:
 
 Column Internal Name|Type|Required| comments
 --------------------|----|--------|----------
-jobTitle| Text| no|
+JobTitle| Text| no|
 Birthday| DateTime | true|
 userAADGUID| Text| no | required if used Azure Function to get Birthdays from AAD
 Title| Text| true
+email| Text| true
+
+## After create a column Index on column "Birthday" - Important!
 
 ## Solution
 
@@ -45,13 +50,14 @@ react Birthday Web Part|João Mendes
 Version|Date|Comments
 -------|----|--------
 1.0.0|November 6, 2018|Initial release
+1.1.0|July 23, 2019 | new version
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
 
-## Minimal Path to Awesome
+## Minimal Path to Awesome - please follow all the steps.
 
 - Clone this repository
 - in the command line run:
@@ -59,6 +65,8 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
+  - `Add and Deploy Package to AppCatalog `
+  - `Go to API Management - from SharePoint Admin Center new experience,  and Approve the Permission Require to Use Graph API SCOPES`
 
  
 
@@ -73,4 +81,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - using @PnP/PnPjs to create a List, add, update, delete Items.
  
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-birthdays" />
+

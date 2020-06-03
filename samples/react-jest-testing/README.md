@@ -15,7 +15,7 @@ There is also a _Jest Watch_ (watcher) configuration that **will let live execut
 
 ![SharePoint Framework Jest Visual Studio Code - debugging unit test](./assets/Jest-Typescript-VSCode-debugging.png)
 
-### Important: The dedug configurations should be placed in the .vscode -> launch.json file to make the debugging work
+### Important: The debug configurations should be placed in the .vscode -> launch.json file to make the debugging work
 
 The sample has folder named `vscode` where the `launch.json` configuration for debuggind jest is stored. The configurations should be copied to your `.vscode` folder -> `launch.json` file. Once copied into your launch.json, then they will appear in your visual studio code debugging tab.
 
@@ -88,6 +88,7 @@ Version|Date|Comments
 0.0.2|June 12, 2018 | Update to 1.5.0, missing launch.json added
 0.0.3|September 27, 2018 | Update to 1.6.0
 0.0.4|December 10, 2018 | Update to 1.7.0
+0.0.5|June 23, 2019 | Update to 1.8.2
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -101,7 +102,7 @@ Version|Date|Comments
     - `npm i`
     - `npm test` **(NOT gulp test)**
 
-Note: You migh want to switch to a test fake offline provider to use the full functionality of the web part when on local workbench. You can do so by replacing the real pnpjs provider in IceCreamShopWebPart.ts with its fake one at line 37. Just replace IceCreamPnPJsProvider() with IceCreamFakeProvider().
+Note: You might want to switch to a test fake offline provider to use the full functionality of the web part when on local workbench. You can do so by replacing the real pnpjs provider in IceCreamShopWebPart.ts with its fake one at line 37. Just replace IceCreamPnPJsProvider() with IceCreamFakeProvider().
 ``` 
 iceCreamProvider: new IceCreamPnPJsProvider(sp), //new IceCreamFakeProvider() // replace with Fake provider when offline workbench.
 ```

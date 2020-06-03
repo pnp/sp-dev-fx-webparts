@@ -8,20 +8,20 @@ import DateFormField from './DateFormField';
 import * as strings from 'FormFieldStrings';
 import styles from './SPFormField.module.scss';
 
-
 const SPFieldDateEdit: React.SFC<ISPFormFieldProps> = (props) => {
-    const locale = Locales[props.fieldSchema.LocaleId];
-    return <DateFormField
-              {...props.value && moment(props.value).isValid() ? {value: moment(props.value).toDate()} : {}}
-              className={css(styles.dateFormField, 'ard-dateFormField')}
-              placeholder={strings.DateFormFieldPlaceholder}
-              isRequired={props.fieldSchema.Required}
-              ariaLabel={props.fieldSchema.Title}
-              locale={Locales[locale]}
-              firstDayOfWeek={props.fieldSchema.FirstDayOfWeek}
-              allowTextInput
-              onSelectDate={(date) => props.valueChanged(date.toLocaleDateString(locale))}
-            />;
+  const locale = Locales[props.fieldSchema.LocaleId];
+  return <DateFormField
+    className={css(styles.dateFormField, 'ard-dateFormField', 'ms-Grid-col')}
+    placeholder={strings.DateFormFieldPlaceholder}
+    isRequired={props.fieldSchema.Required}
+    ariaLabel={props.fieldSchema.Title}
+    locale={locale}
+    firstDayOfWeek={props.fieldSchema.FirstDayOfWeek}
+    allowTextInput
+    fieldSchema={props.fieldSchema}
+    value={props.value}
+    valueChanged={props.valueChanged}
+  />;
 };
 
 export default SPFieldDateEdit;
