@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-outlook-add-todo-task-client-side-solution",
+    "id": "3702cca0-5492-4bb3-b393-3fbdd553e79a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-outlook-add-todo-task.sppkg"
+  }
+}
