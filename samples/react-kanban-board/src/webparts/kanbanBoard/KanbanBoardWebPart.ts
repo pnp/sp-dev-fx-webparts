@@ -6,11 +6,13 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
-import {sp} from '@pnp/sp';
+
 
 import * as strings from 'KanbanBoardWebPartStrings';
 import KanbanBoard from './components/KanbanBoard';
 import { IKanbanBoardProps } from './components/IKanbanBoardProps';
+import "@pnp/polyfill-ie11";
+import {sp} from '@pnp/sp';
 
 export interface IKanbanBoardWebPartProps {
   listTitle: string;
