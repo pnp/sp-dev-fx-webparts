@@ -61,6 +61,16 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-outlook-add-todo-task
+      name: react-outlook-add-todo-task
+      title: Create To Do Task from Email (Outlook Add in)
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png
+      author: Luis Mañez
+      modified: 2020-06-04
+      modifiedtext: June 4, 2020
+      summary: This webpart allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let´s say this is similar to the OOTB "Flag" action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it.
+    - framework: React
       spfx: 1.4.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-word-game
       name: react-word-game
