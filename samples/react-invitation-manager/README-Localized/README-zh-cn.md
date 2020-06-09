@@ -29,7 +29,7 @@ extensions:
 
 NB。我正在等待 HttpGraphClient 的 GA（权限方面有所限制）以在此场景中使用。
 查看以深入了解：
-* [HttpGraphClient](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
+* [HttpGraphClient](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
 
 ![邀请管理器 web 部件在 SharePoint 工作台中显示](./assets/SPFx-Invitation-Manager.gif)
 
@@ -38,8 +38,8 @@ NB。我正在等待 HttpGraphClient 的 GA（权限方面有所限制）以在�
 
 ## 适用于
 
-* [SharePoint 框架](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 开发人员租户](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint 框架](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 开发人员租户](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解决方案
 

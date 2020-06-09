@@ -27,7 +27,7 @@ Using Microsoft Graph, this webpart grabs the Office 365 groups the current user
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 
 ## Solution

@@ -23,7 +23,7 @@ A simple todo web part built using react to showcase some of the SharePoint Fram
 
 ## Applies to
 
-* [SharePoint Framework Developer Documentation](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer Documentation](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Solution
 
@@ -93,7 +93,7 @@ this.context.statusRenderer.displayLoadingIndicator(this.domElement, "Todo");
 ```
 The code above displays the default loading indicator for web parts. The `this.domElement` specifically instructs the loading indicator to be displayed in the web part's DOM element. 
 
-To clear the loading indicator when your operation is complete, you just call [`clearLoadingIndicator`](https://dev.office.com/sharepoint/reference/spfx/sp-webpart-base/iclientsidewebpartstatusrenderer):
+To clear the loading indicator when your operation is complete, you just call [`clearLoadingIndicator`](https://docs.microsoft.com/javascript/api/sp-webpart-base/iclientsidewebpartstatusrenderer):
 
 ```ts
 this.context.statusRenderer.clearLoadingIndicator(this.domElement);
@@ -268,7 +268,7 @@ This sample uses two data providers:
 - [MockDataProvider](./src/webparts/todo/tests/MockDataProvider.ts) - a light weight provider that mocks SharePoint API calls and returns mock data.
 - [SharePointDataProvider](./src/webparts/todo/dataProviders/SharePointDataProvider.ts) - the provider which talks to SharePoint and returns SharePoint data.
 
-Depending on where you are web part is running, local environment or SharePoint environment, you use the respective data provider. You can see this in action in the [TodoWebPart.ts](./src/webparts/todo/TodoWebPart.ts) web part constructor. The [`Environment`](https://dev.office.com/sharepoint/reference/spfx/sp-core-library/environment) class and [`EnvironmentType`](https://dev.office.com/sharepoint/reference/spfx/sp-core-library/environmenttype) enum in the [`@microsoft/sp-core-library`](https://dev.office.com/sharepoint/reference/spfx/sp-core-library-module) module helps you determine where the web part is running. We use that to create the corresponding data provider instance in the `onInit` method:
+Depending on where you are web part is running, local environment or SharePoint environment, you use the respective data provider. You can see this in action in the [TodoWebPart.ts](./src/webparts/todo/TodoWebPart.ts) web part constructor. The [`Environment`](https://docs.microsoft.com/javascript/api/sp-core-library/environment) class and [`EnvironmentType`](https://docs.microsoft.com/javascript/api/sp-core-library/environmenttype) enum in the [`@microsoft/sp-core-library`](https://docs.microsoft.com/javascript/api/sp-core-library) module helps you determine where the web part is running. We use that to create the corresponding data provider instance in the `onInit` method:
 
 ```ts
  protected onInit(): Promise<void> {
@@ -292,7 +292,7 @@ Depending on where you are web part is running, local environment or SharePoint 
 ```
 ### Using SPHttpClient to fetch SharePoint data
 
-SharePoint Framework includes a [`SPHttpClient`](https://dev.office.com/sharepoint/reference/spfx/sp-http/sphttpclient) utility class that you can use to interact with SharePoint data using SharePoint REST APIs. It adds default headers, manages the digest needed for writes, and collects telemetry that helps the service to monitor the performance of an application. For communicating with non-SharePoint services, you can use the [`HttpClient`](https://dev.office.com/sharepoint/reference/spfx/sp-http/httpclient) utility class instead.
+SharePoint Framework includes a [`SPHttpClient`](https://docs.microsoft.com/javascript/api/sp-http/sphttpclient) utility class that you can use to interact with SharePoint data using SharePoint REST APIs. It adds default headers, manages the digest needed for writes, and collects telemetry that helps the service to monitor the performance of an application. For communicating with non-SharePoint services, you can use the [`HttpClient`](https://docs.microsoft.com/javascript/api/sp-http/httpclient) utility class instead.
 
 You can see this in action in the [SharePointDataProvider](./src/webparts/todo/dataProviders/SharePointDataProvider.ts). For example, here is what we do in the `createItem` method which creates a new todo item in the specific SharePoint list:
 

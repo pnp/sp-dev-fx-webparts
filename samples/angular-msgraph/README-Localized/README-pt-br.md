@@ -42,8 +42,8 @@ e exibirá todas as listas associadas ao site seguido por todos os itens da list
 
 ## Aplicável a
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Locatário de desenvolvedor do Office 365](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Locatário de desenvolvedor do Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solução
 

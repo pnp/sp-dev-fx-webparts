@@ -60,8 +60,8 @@ The file picker includes the following tabs:
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -152,7 +152,7 @@ You can also simply set each `PropertyPaneFilePicker`'s `disableWebSearchTab` pr
 
 * [Fluent for Fabric](https://fluentfabric.azurewebsites.net/#/components)
 * [Build custom controls for the property pane](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/build-custom-property-pane-controls)
-* [Office UI Fabric](https://dev.office.com/fabric)
+* [Office UI Fabric](https://developer.microsoft.com/fluentui/)
   * [Button](https://developer.microsoft.com/en-us/fabric#/components/button)
   * [CommandBar](https://developer.microsoft.com/en-us/fabric#/components/commandbar)
   * [DetailsList](https://developer.microsoft.com/en-us/fabric#/components/detailslist)

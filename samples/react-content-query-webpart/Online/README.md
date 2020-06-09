@@ -16,8 +16,8 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 
 ## Applies to
 
-* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -176,7 +176,7 @@ Once connected to a source, you will able to connect any of the following proper
 
 To add the **Content Query web part** to your site page you have two options:
 
-* Either clone this repository, build the project yourself and connect it to SharePoint (see [Connect your client-side web part to SharePoint](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint))
+* Either clone this repository, build the project yourself and connect it to SharePoint (see [Connect your client-side web part to SharePoint](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint))
 * Or download the `react-content-query-web part.sppkg` file available in the `sharepoint/solution` folder of the repository and add it directly in your app catalog in order to be able to use it in your site. 
 
 > Note: The second method will only work for Office 365 sites, since the `.sppkg` file points to an Office 365 public CDN URL which expects the referrer to come from a valid `https://**\*.sharepoint.com\***` URL.
