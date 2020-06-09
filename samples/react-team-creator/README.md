@@ -17,7 +17,7 @@ The web part illustrates usage of MS Graph beta APIs to work with Teams:
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [MS Graph](https://developer.microsoft.com/en-us/graph)
 * [MS Teams](https://docs.microsoft.com/en-us/microsoftteams/microsoft-teams)
 

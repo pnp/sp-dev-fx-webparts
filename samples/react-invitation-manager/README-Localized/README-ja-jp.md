@@ -29,7 +29,7 @@ Microsoft Graph を使用して外部ユーザーを招待する方法を示す�
 
 NB.このシナリオでそれを使用するために HttpGraphClient の GA (許可という点では少し制限があります) を待っています。
 詳細を確認するには、ここを参照してください:
-* [HttpGraphClient](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
+* [HttpGraphClient](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
 
 ![SharePoint ワークベンチに表示される招待マネージャーの Web パーツ](./assets/SPFx-Invitation-Manager.gif)
 
@@ -38,8 +38,8 @@ NB.このシナリオでそれを使用するために HttpGraphClient の GA (�
 
 ## 適用対象
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 Developer のテナント](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 Developer のテナント](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解決方法
 

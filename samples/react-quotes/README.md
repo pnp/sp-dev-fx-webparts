@@ -12,7 +12,7 @@ This webpart displays a quote of the day by querying a third-party api or can di
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Solution
 
