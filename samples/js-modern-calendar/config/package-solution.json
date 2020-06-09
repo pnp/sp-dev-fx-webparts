@@ -1,8 +1,9 @@
 {
   "solution": {
-    "name": "spFX Modern Calendar",
+    "name": "SPFx Modern Calendar",
     "id": "3d593a2f-73f1-486f-9dae-555c6f6b584d",
-    "version": "1.0.0.1"
+    "version": "1.0.0.1",
+    "includeClientSideAssets": true
   },
   "paths": {
     "zippedPackage": "solution/modern-calendar.sppkg"

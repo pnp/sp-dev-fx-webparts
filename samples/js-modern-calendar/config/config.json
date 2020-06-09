@@ -1,14 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/modernCalendar/ModernCalendarWebPart.js",
-      "manifest": "./src/webparts/modernCalendar/ModernCalendarWebPart.manifest.json",
-      "outputPath": "./dist/modern-calendar.bundle.js"
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "modern-calendar.bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/modernCalendar/ModernCalendarWebPart.js",
+          "manifest": "./src/webparts/modernCalendar/ModernCalendarWebPart.manifest.json"
+        }
+      ]
     }
-  ],
-  "externals": {
   },
   "localizedResources": {
-    "modernCalendarStrings": "webparts/modernCalendar/loc/{locale}.js"
-  }
+    "modernCalendarStrings": "lib/webparts/modernCalendar/loc/{locale}.js"
+  },
+  "externals": {}
 }

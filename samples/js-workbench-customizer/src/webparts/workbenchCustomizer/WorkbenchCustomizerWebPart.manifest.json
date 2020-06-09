@@ -23,6 +23,7 @@
     "properties": {
       "requiresPageRefresh": false,
       "customWorkbenchStyles": true,
+      "customWorkbenchStylesFullWidth": false,
       "previewMode": true
     }
   }]
