@@ -1,8 +1,10 @@
 @import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+@import "~office-ui-fabric-react/dist/sass/References.scss";
 @import "./node_modules/spfx-uifabric-themes/office.theme.vars";
-@import '../../themes';
+@import "../../themes";
 
 :export {
+  /* stylelint-disable property-case */
   themeDark: $ms-color-themePrimary;
 }
 
@@ -18,14 +20,14 @@
   display: "block";
 }
 
-/* Added styles for days within the same month/week */ 
-.dayPropGetter{
+/* Added styles for days within the same month/week */
+.dayPropGetter {
   background-color: $ms-primaryBackground;
-  border-radius: '0px';
+  border-radius: "0px";
   opacity: 0.8;
-  color:  $ms-themeAccent;
-  border: '0px';
-  display: 'block';
+  color: $ms-themeAccent;
+  border: "0px";
+  display: "block";
 }
 
 .Documentcard {
@@ -91,7 +93,14 @@
   margin-bottom: 6px;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-semibold;
-  font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-family:
+    "Segoe UI WestEuropean",
+    "Segoe UI",
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    "Helvetica Neue",
+    sans-serif;
 }
 
 .calendar {
@@ -159,7 +168,14 @@
     // Basic Button
     outline: transparent;
     position: relative;
-    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    font-family:
+      "Segoe UI WestEuropean",
+      "Segoe UI",
+      -apple-system,
+      BlinkMacSystemFont,
+      Roboto,
+      "Helvetica Neue",
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;

@@ -5,6 +5,23 @@
   ],
   "rules": {
     "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true
+    "scss/at-rule-no-unknown": true,
+    "property-no-unknown": [
+            true,
+            {
+                "ignoreProperties": [
+                    "themeDark"
+                ]
+            }
+        ],
+    "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": [
+                    "export",
+                    "global"
+                ]
+            }
+        ],
   }
 }
