@@ -1,6 +1,6 @@
 # Web Part Samples
 # Author: Hugo Bernier
-# Master PR: #1190
+# Master PR: #1312, #1311
 site_name: SharePoint Framework Client-Side Web Part Samples
 plugins:
     - search
@@ -60,6 +60,26 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - framework: Javascript
+      spfx: 1.6.0
+      title: Modern Calendar
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-modern-calendar
+      name: js-modern-calendar
+      thumbnail: https://cloud.githubusercontent.com/assets/13068139/23584808/14c3ec26-0121-11e7-8be8-65fbcca32b62.png
+      author: Jeremy Coleman, Nanddeep Nachan
+      summary: This is a modern webpart built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it.
+      modifiedtext: June 05, 2020
+      modified: 2020-06-05
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
+      name: js-workbench-customizer
+      title: Workbench customizer
+      summary: This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png
+      framework: Javascript
+      spfx: 1.10.0
+      author: Joel Rodrigues
+      modifiedtext: June 04, 2020
+      modified: 2020-06-04
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar
