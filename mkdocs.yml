@@ -62,6 +62,37 @@ extra:
   samples:
     - framework: React
       spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar
+      name: react-calendar
+      title: Calendar
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
+      thumbnailtype: video
+      author: João Mendes, Mohamed Derhalli, Hugo Bernier
+      summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
+      modifiedtext: June 09, 2020
+      modified: 2020-06-09
+    - framework: Javascript
+      spfx: 1.6.0
+      title: Modern Calendar
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-modern-calendar
+      name: js-modern-calendar
+      thumbnail: https://cloud.githubusercontent.com/assets/13068139/23584808/14c3ec26-0121-11e7-8be8-65fbcca32b62.png
+      author: Jeremy Coleman, Nanddeep Nachan
+      summary: This is a modern webpart built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it.
+      modifiedtext: June 05, 2020
+      modified: 2020-06-05
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
+      name: js-workbench-customizer
+      title: Workbench customizer
+      summary: This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png
+      framework: Javascript
+      spfx: 1.10.0
+      author: Joel Rodrigues
+      modifiedtext: June 04, 2020
+      modified: 2020-06-04
+    - framework: React
+      spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-outlook-add-todo-task
       name: react-outlook-add-todo-task
       title: Create To Do Task from Email (Outlook Add in)
@@ -241,7 +272,7 @@ extra:
       spfx: 1.10.0
       author: João Mendes, Zach Roberts
       modifiedtext: April 28, 2020
-      modified: 2020-06-28
+      modified: 2020-04-28
       level: 300
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks
       name: react-functional-servicescope-hooks
@@ -297,16 +328,6 @@ extra:
       modifiedtext: March 18, 2020
       modified: 2020-03-18
       level: 300
-    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
-      name: js-workbench-customizer
-      title: Workbench customizer
-      summary: This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png
-      framework: Javascript
-      spfx: 1.10.0
-      author: Joel Rodrigues
-      modifiedtext: February 05, 2020
-      modified: 2020-02-05
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-outlook-copy2teams
       name: react-outlook-copy2teams
       title: Outlook to Teams
@@ -1038,17 +1059,6 @@ extra:
       modifiedtext: April 16, 2020
       modified: 2020-04-16
       keywords: ical,wordpress,rss,exchange,calendar,event,hooks,theme,background
-    - framework: React
-      spfx: 1.8.2
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar
-      name: react-calendar
-      title: Calendar
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
-      thumbnailtype: video
-      author: João Mendes, Mohamed Derhalli
-      summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
-      modifiedtext: April 25, 2020
-      modified: 2020-04-25
     - framework: React
       spfx: 1.8.2
       year: 2019
