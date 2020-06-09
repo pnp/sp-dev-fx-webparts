@@ -8,6 +8,7 @@ import * as strings from 'WorkbenchCustomizerWebPartStrings';
 export interface IWorkbenchCustomizerWebPartProps {
   requiresPageRefresh: boolean;
   customWorkbenchStyles: boolean;
+  customWorkbenchStylesFullWidth: boolean;
   previewMode: boolean;
 }
 
@@ -24,6 +25,10 @@ export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IW
 
       if (this.properties.customWorkbenchStyles) {
         await import('./styles/customWorkbenchStyles.module.scss');
+      }
+
+      if (this.properties.customWorkbenchStyles && this.properties.customWorkbenchStylesFullWidth) {
+        await import('./styles/customWorkbenchStylesFullWidth.module.scss');
       }
 
       if (this.properties.previewMode) {
@@ -67,6 +72,10 @@ export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IW
               groupFields: [
                 PropertyPaneToggle('customWorkbenchStyles', {
                   label: strings.CustomWorkbenchStylesFieldLabel
+                }),
+                PropertyPaneToggle('customWorkbenchStylesFullWidth', {
+                  label: strings.customWorkbenchStylesFullWidthFieldLabel,
+                  disabled: !this.properties.customWorkbenchStyles
                 }),
                 PropertyPaneToggle('previewMode', {
                   label: strings.PreviewModeFieldLabel
