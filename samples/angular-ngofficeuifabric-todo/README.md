@@ -21,7 +21,7 @@ extensions:
 
 ## Summary
 
-this is a sample web part that illustrates the use of Angular and [ngOfficeUIFabric](http://ngofficeuifabric.com/) with the SharePoint Framework.
+this is a sample web part that illustrates the use of Angular and [ngOfficeUIFabric](https://github.com/ngOfficeUIFabric) with the SharePoint Framework.
 You can find a video recording walk-through this sample from [SharePoint PnP YouTube channel](https://www.youtube.com/watch?v=FS-_0KENJkI).
 
 ![Sample To do SharePoint Framework Client-Side Web Part built using Angular and ngOfficeUIFabric](./assets/preview.png)
