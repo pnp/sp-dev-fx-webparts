@@ -36,6 +36,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|March 24, 2020|Initial release
 2.0|April 06, 2020|Added data and template URLs
+2.1|June 11, 2020|Fixed breaking changes introduced with Adaptive Card Templating in May update
 
 ## Disclaimer
 
@@ -422,16 +423,6 @@ You can use `loadPropertyResources` in your web part to reduce the number of res
 The web part sample conditionally hides and shows property pane controls depending on which settings you choose.
 
 ![Dependent Property Pane Controls](./assets/DependentControls.gif)
-
-### View Picker
-
-To create this sample, we had to create our own **View picker** control, which allows you to select a view from the list or document library you selected.
-
-The sample includes the source code for the `PropertyFieldViewPicker`, which renders the control, and `SPViewPickerService` which retrieves the views.
-
-The code for both components is largely derived from the [@pnp/spfx-property-controls](https://sharepoint.github.io/) library's [PropertyFieldListPicker control](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldListPicker/).
-
-We have submitted a [pull request](https://github.com/SharePoint/sp-dev-fx-property-controls/pull/230) to add the `PropertyFieldViewPicker` control to the @pnp/spfx-property-controls. If the pull request is accepted, we'll update this sample to remove the extraneous code and refer to the version of the @pnp/spfx-property-controls `PropertyFieldViewPicker`.
 
 ## For More Information
 
