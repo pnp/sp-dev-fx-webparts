@@ -3,7 +3,7 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { DisplayMode } from '@microsoft/sp-core-library';
-import { HttpClient, HttpClientConfiguration, HttpClientResponse } from '@microsoft/sp-http';
+import { HttpClient, HttpClientResponse } from '@microsoft/sp-http';
 
 // Used for property pane
 import {
@@ -17,7 +17,7 @@ import {
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 
 // Used to pick which view you want
-import { PropertyFieldViewPicker, PropertyFieldViewPickerOrderBy } from '../../controls/PropertyFieldViewPicker';
+import { PropertyFieldViewPicker, PropertyFieldViewPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldViewPicker';
 
 // Used by the code editor fields
 import { PropertyFieldCodeEditorLanguages } from '@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor';
@@ -124,7 +124,6 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
   }
 
   public async render(): Promise<void> {
-    const { template } = this.properties;
     const templateJson: string = this.properties.templateSource === 'url' && this.properties.templateUrl ? this._templateJSON: this.properties.template;
 
     const dataJson: string = (this.properties.dataSource === 'list' && this.properties.list && this.properties.view) ||

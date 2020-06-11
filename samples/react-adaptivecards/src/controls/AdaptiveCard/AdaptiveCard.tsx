@@ -73,10 +73,17 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
 
     if (this.props.data && this.props.useTemplating) {
       // Define a template payload
+      console.log("Using templating");
       var templatePayload = {};
       try {
-        templatePayload = JSON.parse(this.props.template);
+        // KLUDGE: Temporary fix for Adaptive Templating May 2020 change
+        // to be updated when new version of Adapting Template package is available
+        var templating:string = this.props.template.split("${").join('{');
+        templatePayload = JSON.parse(templating);
+        //
+        //templatePayload = JSON.parse(this.props.template);
       } catch (error) {
+        console.error("Something went wrong with the template", error);
         this._errorHandler(strings.TemplatingJsonError + error);
         return;
       }
@@ -86,6 +93,13 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
 
       // Create a data binding context, and set its $root property to the
       // data object to bind the template to
+      // BUG: According to https://docs.microsoft.com/en-us/adaptive-cards/templating/ we're supposed to use
+      //var card = template.expand({
+      //$root: {
+      //  // Your data goes here
+      //}
+      //});
+      // ...but that doesn't work
       var context = new ACData.EvaluationContext();
       try {
         context.$root = JSON.parse(this.props.data);
