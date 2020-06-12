@@ -354,21 +354,6 @@
     },
     {
       "file": "src/controls/AdaptiveCard/AdaptiveCard.tsx",
-      "line": 84,
-      "description": "We have to do a little workaround here, but that's a temporary issue.\r\n\r\nThe May 2020 Adaptive Card templating library change the syntax from `{}` to `${}`, but the npm package doesn't seem to be updated yet. So we just replace all `${}` to `{}` so that you can use all the latest Adaptive Card templating samples without issues. \r\n\r\nWe'll fix this when the npm package is updated.",
-      "selection": {
-        "start": {
-          "line": 79,
-          "character": 8
-        },
-        "end": {
-          "line": 84,
-          "character": 61
-        }
-      }
-    },
-    {
-      "file": "src/controls/AdaptiveCard/AdaptiveCard.tsx",
       "line": 132,
       "description": "This is how we render the specify to use Office Fabric, adjust the theme colors, and handle Markdown before rendering the card.",
       "selection": {

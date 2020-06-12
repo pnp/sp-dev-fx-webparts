@@ -424,6 +424,10 @@ The web part sample conditionally hides and shows property pane controls dependi
 
 ![Dependent Property Pane Controls](./assets/DependentControls.gif)
 
+### CodeTour
+
+This project contains a CodeTour that will walk you through the areas of interest. To use it, make sure you install [CodeTour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) for Visual Studio Code. When you open the project, you'll be prompted to start the tour, but you can also find the **Code Walk-through** tour in the **CodeTour** pane.
+
 ## For More Information
 
 If you'd like to read more about the various concepts illustrated in this sample, please refer to the following links:

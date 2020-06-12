@@ -28,7 +28,7 @@
     "@types/webpack-env": "1.13.1",
     "adaptivecards": "^1.2.6",
     "adaptivecards-fabric": "^1.0.4",
-    "adaptivecards-templating": "^0.1.1-alpha.1",
+    "adaptivecards-templating": "^1.0.0-rc.0",
     "markdown-it": "^10.0.0",
     "office-ui-fabric-react": "6.189.2",
     "react": "16.8.5",
