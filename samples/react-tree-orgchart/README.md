@@ -41,6 +41,7 @@ Tree Organization WebPart|João Mendes
 
 Version|Date|Comments
 -------|----|--------
+1.0.2|June 12, 2020|Added exception handler for profiles missing display name
 1.0.1|Jan 28, 2020|Update to SPFx 1.10, minor fixes and refactoring.
 1.0.0|Feb 25, 2019|Initial release
 
