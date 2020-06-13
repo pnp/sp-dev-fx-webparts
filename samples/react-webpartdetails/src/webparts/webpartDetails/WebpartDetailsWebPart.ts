@@ -53,15 +53,13 @@ export default class WebpartDetailsWebPart extends BaseClientSideWebPart <IWebpa
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: ''
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "No Configuration Required",
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
+              
               ]
             }
           ]

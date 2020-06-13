@@ -30,7 +30,7 @@ React-webpartdetails| Harsha Vardhini ([@harshagracy](https://twitter.com/harsha
 
 Version|Date|Comments
 -------|----|--------
-1.0|June 12, 2020|Initial release
+1.0|June 13, 2020|Initial release
 
 ## Minimal Path to Awesome
 

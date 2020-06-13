@@ -30,10 +30,10 @@ export default class WebpartDetails extends React.Component<IWebpartDetailsProps
         //loop through each column and control in the selected section
         column.controls.forEach(control => {
           //exclude the current webpart
-          if (this.props.context.instanceId !== control.data.webPartData.instanceId) {
+          if (this.props.context.instanceId !== control.data.id) {
             let webpart = {
-              key: control.data.webPartData.instanceId,
-              text: control.data.webPartData.title
+              key: control.data.id,
+              text: (control.data.webPartData && control.data.webPartData.title) || this.htmlToText(control.data.innerHTML)
             };
             webpartdata.push(webpart);
           }
@@ -43,6 +43,14 @@ export default class WebpartDetails extends React.Component<IWebpartDetailsProps
     this.setState({
       webpartData: webpartdata
     });
+  }
+  public htmlToText(html: string) {
+    //create a temporary div and get the text of the div and remove the div from DOM
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    let displayTitle = tempDiv.textContent.substring(0, tempDiv.textContent.length > 20 ? 20 : tempDiv.textContent.length) + '...';
+    tempDiv.remove();
+    return displayTitle;
   }
   public onDropdownChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
     if (item) {
