@@ -18,7 +18,7 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * SharePoint 2019 on-premises
 
 

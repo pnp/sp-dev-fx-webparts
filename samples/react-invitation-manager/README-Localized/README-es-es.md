@@ -29,7 +29,7 @@ Ejemplo de elemento web del lado cliente de SharePoint Framework creado con Reac
 
 NB. Estoy esperando la disponibilidad general de HttpGraphClient (estoy un poco limitado en lo que respecta a permisos) para usarlo en este escenario.
 Consulte este documento para profundizar:
-* [HttpGraphClient](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part).
+* [HttpGraphClient](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part).
 
 ![El elemento web del administrador de invitaciones que se muestra en SharePoint Workbench](./assets/SPFx-Invitation-Manager.gif)
 
@@ -38,8 +38,8 @@ Consulte este documento para profundizar:
 
 ## Se aplica a
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Espacio empresarial de desarrollador de Office 365](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Espacio empresarial de desarrollador de Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solución
 

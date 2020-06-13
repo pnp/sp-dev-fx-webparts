@@ -103,9 +103,9 @@ The web part helps to create new O365 group.
 ![New Group](./assets/new-group.gif)
 
 ## Applies to
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [SharePoint Online](https://docs.microsoft.com/en-us/sharepoint/sharepoint-online)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 # WebPart Properties
 Property|Type|Required|Comments

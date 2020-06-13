@@ -26,16 +26,16 @@ Note: This approach will not "pollute" your solution with additional resources o
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/drop-1.10.0-green.svg)
+![1.10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Prerequisites
 
 * Office 365 subscription with SharePoint Online license
-* SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+* SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
 ## Solution
 
@@ -49,6 +49,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|January 24, 2019|Initial release
 1.1|February 05, 2020|Update to SPFx 1.10.0
+1.2|June 04, 2020|Added full-width support
 
 ## Disclaimer
 

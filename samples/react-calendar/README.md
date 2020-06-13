@@ -16,6 +16,7 @@ extensions:
 # React Calendar
 
 ## Summary
+
 This Web Part allows you to manage events in a calendar. 
 Uses a list of existing calendars on any website.
 The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
@@ -85,12 +86,12 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 
 ## Used SharePoint Framework Version 
 
-![1.8.2](https://img.shields.io/badge/version-1.8.2-green.svg)
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## WebPart Properties
@@ -109,6 +110,7 @@ Solution|Author(s)
 --------|---------
 Calendar Web Part|João Mendes
 Calendar Web Part|Mohamed Derhalli
+Calendar Web Part (Upgrade)|Hugo Bernier ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
 
 ## Version history
 
@@ -117,6 +119,7 @@ Version|Date|Comments
 1.0.0|April 25, 2019|Initial release
 1.0.1|June 10, 2019|update add recurrence events
 1.0.2|April 25, 2020|Update styles according to the applied theme
+1.0.3|June 06, 2020|Upgrade to SPFx 1.10.0
 
 ## Disclaimer
 

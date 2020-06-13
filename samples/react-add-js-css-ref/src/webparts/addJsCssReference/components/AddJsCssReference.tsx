@@ -4,7 +4,7 @@ import { IAddJsCssReferenceProps } from './IAddJsCssReferenceProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
 import { ListView, IViewField, SelectionMode} from "@pnp/spfx-controls-react/lib/ListView";
-import {MessageBarType,Link,Separator, CommandBarButton,IStackStyles,Text,MessageBar,PrimaryButton,DefaultButton,Dialog,DialogFooter,DialogType,Stack, IStackTokens, updateA } from 'office-ui-fabric-react';
+import {MessageBarType,Link,Separator, CommandBarButton,IStackStyles,Text,MessageBar,PrimaryButton,DefaultButton,Dialog,DialogFooter,DialogType,Stack, IStackTokens, updateA, Icon, Spinner } from 'office-ui-fabric-react';
 import { sp} from "@pnp/sp";
 import "@pnp/sp/webs";
 import  "@pnp/sp/user-custom-actions";
@@ -46,6 +46,7 @@ export interface IAddJsCssReferenceState {
   showMesssage:boolean;
   successmessage:string;
   userHasPermission:boolean;
+  showspinner:boolean;
 }
 
 
@@ -64,8 +65,11 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
           return (
             <React.Fragment>
             <Stack horizontal  tokens={{childrenGap:20}}>
-            <i className={"ms-Icon ms-Icon--Edit " + styles.customicons} onClick={()=> this.editClicked(item,index)} aria-hidden="true"></i>
-            <i className={"ms-Icon ms-Icon--Delete " + styles.customicons} onClick={()=> this.deleteClicked(item,index)} aria-hidden="true"></i>
+            <Icon iconName="Edit" className={"ms-IconExample" + styles.customicons}   onClick={()=> this.editClicked(item,index)} />
+            <Icon iconName="Delete" className={"ms-IconExample" + styles.customicons}   onClick={()=> this.deleteClicked(item,index)} />
+            
+            {/* <i className={"ms-Icon ms-Icon--Edit " + styles.customicons} onClick={()=> this.editClicked(item,index)} aria-hidden="true"></i>
+            <i className={"ms-Icon ms-Icon--Delete " + styles.customicons} onClick={()=> this.deleteClicked(item,index)} aria-hidden="true"></i> */}
             </Stack>
             </React.Fragment>
           );
@@ -109,7 +113,8 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
       editIndex:-1,
       showMesssage:false,
       successmessage:"",
-      userHasPermission:false
+      userHasPermission:false,
+      showspinner:true
 
 
     };
@@ -125,6 +130,9 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
     return (
       <React.Fragment>
 
+      {this.state.showspinner &&
+         <Spinner label="Please wait..." ariaLive="assertive" labelPosition="top" />
+      }
 
       {this.state.userHasPermission &&
       <div className={styles.addJsCssReference}>
@@ -272,7 +280,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
 </div>
     </div>
   }
-  {
+  {!this.state.userHasPermission && !this.state.showspinner &&
      <MessageBar  messageBarType={MessageBarType.severeWarning}>
        Access denied, you do not have permission to access this section. Please connect with your site admins.
      </MessageBar>
@@ -291,12 +299,14 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
 
   private async checkPermisson(){
     const perms2 = await sp.web.currentUserHasPermissions(PermissionKind.ManageWeb);
+    this.setState({userHasPermission:perms2});
     console.log(perms2);
-    var temp = false;
-
-    if(temp){
+    var temp = true;
+    this.setState({showspinner:false});
+    if(perms2){
       this.getCustomAction();
     }
+    
   }
 
  
@@ -457,6 +467,7 @@ export default class AddJsCssReference extends React.Component<IAddJsCssReferenc
       this.setState({jsfiles:jsfileArray,cssfiles:cssfileArray});
 
     }
+    
 
   }
 

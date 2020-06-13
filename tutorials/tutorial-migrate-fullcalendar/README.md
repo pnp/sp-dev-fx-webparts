@@ -4,13 +4,13 @@ Sample jQuery FullCalendar solution migrated from a Script Editor Web Part to th
 
 ![jQuery FullCalendar solution built using Script Editor Web Part](https://devofficecdn.azureedge.net/sharepointdocumentation/images/fullcalendar-sewp.png)
 
-Sub folders represent the different stages of the migration process. Each folder contains the complete solution that you can run in browser. More information about the solution is available at [https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx).
+Sub folders represent the different stages of the migration process. Each folder contains the complete solution that you can run in browser. More information about the solution is available at [https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx).
 
 | Folder | Stage | More information
 | ------------- | ------------- | ------------- |
-| 01-migrated-sewp-to-spfx | Original solution migrated to SPFx. As much as possible of the original code left unaltered | [details](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx)
-| 02-added-configuration | Extended the code with support for configuring the web part through the property pane | [details](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx#add-support-for-configuring-the-web-part-through-web-part-properties)
-| 03-transformed-js-to-typescript | Transformed plain JavaScript to TypeScript | [details](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx#transform-the-plain-javascript-code-to-typescript)
+| 01-migrated-sewp-to-spfx | Original solution migrated to SPFx. As much as possible of the original code left unaltered | [details](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx)
+| 02-added-configuration | Extended the code with support for configuring the web part through the property pane | [details](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx#add-support-for-configuring-the-web-part-through-web-part-properties)
+| 03-transformed-js-to-typescript | Transformed plain JavaScript to TypeScript | [details](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx#transform-the-plain-javascript-code-to-typescript)
 | 04-replaced-jquery-ajax-with-spfx | Replaced jQuery AJAX with the SharePoint Framework SPHttpClient
 
 ## Used SharePoint Framework Version
@@ -18,8 +18,8 @@ Sub folders represent the different stages of the migration process. Each folder
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

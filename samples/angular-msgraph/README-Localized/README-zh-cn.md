@@ -42,8 +42,8 @@ extensions:
 
 ## 适用于
 
-* [SharePoint Framework 开发人员预览版](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 开发人员租户](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework 开发人员预览版](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 开发人员租户](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## 解决方案
 

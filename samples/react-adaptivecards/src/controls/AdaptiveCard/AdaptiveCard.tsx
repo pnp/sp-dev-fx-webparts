@@ -69,7 +69,7 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
     }
 
     let errors: Array<IValidationError> = [];
-    let card: {};
+    let card: any;
 
     if (this.props.data && this.props.useTemplating) {
       // Define a template payload
@@ -77,6 +77,7 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
       try {
         templatePayload = JSON.parse(this.props.template);
       } catch (error) {
+        console.error("Something went wrong with the template", error);
         this._errorHandler(strings.TemplatingJsonError + error);
         return;
       }
@@ -84,9 +85,10 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
       // Create a Template instance from the template payload
       var template = new ACData.Template(templatePayload);
 
-      // Create a data binding context, and set its $root property to the
-      // data object to bind the template to
-      var context = new ACData.EvaluationContext();
+      var context: any = {
+        "$root":{}
+      };
+
       try {
         context.$root = JSON.parse(this.props.data);
       } catch (error) {
