@@ -13,8 +13,6 @@ Note: This sample will not work in workbench as it loads the web part from curre
 
 ![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
-SPFx 1.10.0
-
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
