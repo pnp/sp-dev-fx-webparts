@@ -60,6 +60,37 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - framework: React
+      spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-webpartdetails
+      name: react-webpartdetails
+      title: Web Part Details
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-webpartdetails/assets/webpartDetails.png
+      author: Harsha Vardhini
+      summary: The web part illustrates how to get all the web part present in the current page, bind them in a multi-select dropdown.
+      modifiedtext: June 13, 2020
+      modified: 2020-06-13
+    - framework: React
+      spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tree-orgchart
+      name: react-tree-orgchart
+      title: Tree Organization Web Part
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tree-orgchart/assets/Screenshot1.png
+      author: João Mendes
+      summary: The Tree Organization WebPart shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.
+      modifiedtext: June 12, 2020
+      modified: 2020-06-12
+    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards
+      name: react-adaptivecards
+      title: Adaptive Cards Host
+      summary: This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif
+      framework: React
+      spfx: 1.10.0
+      author: Hugo Bernier
+      modifiedtext: June 11, 2020
+      modified: 2020-06-11
+      level: 300
     - framework: Javascript
       spfx: 1.6.0
       title: Modern Calendar
@@ -225,8 +256,8 @@ extra:
       framework: React
       spfx: 1.9.1
       author: Siddharth Vaghasia
-      modifiedtext: April 24, 2020
-      modified: 2020-04-24
+      modifiedtext: June 11, 2020
+      modified: 2020-06-11
       level: 200
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-spupsproperty-sync
       name: react-spupsproperty-sync
@@ -316,17 +347,6 @@ extra:
       modifiedtext: March 25, 2020
       modified: 2020-03-25
       level: 200
-    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards
-      name: react-adaptivecards
-      title: Adaptive Cards Host
-      summary: This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif
-      framework: React
-      spfx: 1.10.0
-      author: Hugo Bernier
-      modifiedtext: Mar 24, 2020
-      modified: 2020-03-24
-      level: 300
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-yammer-praise
       name: react-yammer-praise
       title: Yammer Praise using aadTokenProvider
@@ -2085,18 +2105,6 @@ extra:
       version: 1.0.2
       modifiedtext: May 4, 2017
       modified: 2017-05-04
-    - framework: React
-      spfx: 1.10.0
-      year: 2019
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tree-orgchart
-      name: react-tree-orgchart
-      title: Tree Organization Web Part
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tree-orgchart/assets/Screenshot1.png
-      author: João Mendes
-      summary: The Tree Organization WebPart shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.
-      version: 1.0.0
-      modifiedtext: Jan 28, 2020
-      modified: 2020-01-28
     - framework: React
       spfx: drop5
       year: 2016
