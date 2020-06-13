@@ -1,11 +1,18 @@
 ### React Webpart Details
-## Summary
-The web part illustrates how to get all the webpart present in the current page,bind them in a multiselect dropdown.
-On selecting the webpart title from the dropdown, it will be hidden. You can use this sample to as per the requirement.
 
-![React webpart Details](./assets/webpartDetails.png)
-Note: This sample will not work in workbench as it loads the webpart from current page and will not work for workbench.aspx.  To test locally, build the development package (using `gulp bundle` and `gulp package-solution`) and test it using `gulp serve`.
+## Summary
+
+The web part illustrates how to get all the web part present in the current page, bind them in a multi-select dropdown.
+
+On selecting the web part title from the dropdown, it will be hidden. You can use this sample to as per the requirement.
+
+![React web part Details](./assets/webpartDetails.png)
+Note: This sample will not work in workbench as it loads the web part from current page and will not work for workbench.aspx.  To test locally, build the development package (using `gulp bundle` and `gulp package-solution`) and test it using `gulp serve`.
+
 ## Used SharePoint Framework Version 
+
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+
 SPFx 1.10.0
 
 ## Applies to
@@ -31,3 +38,6 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `gulp serve`
+
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-webpartdetails" />
