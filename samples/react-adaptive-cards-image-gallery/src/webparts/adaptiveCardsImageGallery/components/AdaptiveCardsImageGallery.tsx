@@ -84,9 +84,7 @@ export default class AdaptiveCardsImageGallery extends React.Component<IAdaptive
 
       // Set the adaptive card's event handlers. onExecuteAction is invoked
       // whenever an action is clicked in the card
-      adaptiveCard.onExecuteAction = function(action) { 
-        window.location.href = action.iconUrl;
-      };
+      adaptiveCard.onExecuteAction = this._executeActionHandler;
 
       // Parse the card
       adaptiveCard.parse(this.card);
@@ -95,6 +93,10 @@ export default class AdaptiveCardsImageGallery extends React.Component<IAdaptive
       this.renderedCard = adaptiveCard.render();
       this.setState({ isLoading: false });
     });
+  }
+
+  private _executeActionHandler = (action: AdaptiveCards.Action) => {
+    window.location.href = action.iconUrl;
   }
 
   public render(): React.ReactElement<IAdaptiveCardsImageGalleryProps> {

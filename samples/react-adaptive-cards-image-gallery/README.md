@@ -25,7 +25,7 @@ Below NPM packages are used to develop this sample.
 2.	adaptivecards (https://www.npmjs.com/package/adaptivecards)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.7-green.svg)
+![drop](https://img.shields.io/badge/drop-1.10-green.svg)
 
 ## Applies to
 
@@ -43,6 +43,7 @@ react-adaptive-cards-image-gallery|[Nanddeep Nachan](https://www.linkedin.com/in
 
 Version|Date|Comments
 -------|----|--------
+1.1.0|June 15, 2020|Upgrade to SPFx 1.10.0
 1.0.0|November 28, 2018|Initial release
 
 ## Disclaimer
