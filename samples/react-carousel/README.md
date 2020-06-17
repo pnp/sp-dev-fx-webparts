@@ -13,7 +13,7 @@ It uses Microsoft Graph API to get image/video url and use PnPjs to load files f
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -44,6 +44,7 @@ Carousel Image/Video  Web Part|João Mendes
 Version|Date|Comments
 -------|----|--------
 1.0.0|July 11, 2019|Initial release
+2.0.0|June 17, 2020|Upgraded to SPFx v1.10.0
 
 
 ## Disclaimer

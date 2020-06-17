@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-carousel-client-side-solution",
     "id": "263a1d21-f4c7-4a46-a364-e5f995286b9b",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false
