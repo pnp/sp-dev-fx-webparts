@@ -1,6 +1,6 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.8.2",
+    "version": "1.10.0",
     "libraryName": "react-carousel",
     "libraryId": "263a1d21-f4c7-4a46-a364-e5f995286b9b",
     "environment": "spo",
