@@ -62,6 +62,27 @@ extra:
   samples:
     - framework: React
       spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-appinsights-dashboard
+      name: react-appinsights-dashboard
+      title: React AppInsights Dashboard
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif
+      author: Sudharsan Kesavanarayanan
+      summary: This webpart displays different statistics data captured in the Azure Application Insights in a graphical representation.
+      modifiedtext: June 17, 2020
+      modified: 2020-06-17
+    - framework: React
+      spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-carousel
+      name: react-carousel
+      title: Carousel Web Part
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-carousel/assets/carousel.gif
+      author: João Mendes, Rahul Suryawanshi
+      summary: This web part show images and videos in carousel
+      modifiedtext: June 17, 2020
+      modified: 2020-06-17
+      level: 200
+    - framework: React
+      spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-webpartdetails
       name: react-webpartdetails
       title: Web Part Details
@@ -70,6 +91,7 @@ extra:
       summary: The web part illustrates how to get all the web part present in the current page, bind them in a multi-select dropdown.
       modifiedtext: June 13, 2020
       modified: 2020-06-13
+      level: 200
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tree-orgchart
@@ -80,6 +102,7 @@ extra:
       summary: The Tree Organization WebPart shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.
       modifiedtext: June 12, 2020
       modified: 2020-06-12
+      level: 200
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards
       name: react-adaptivecards
       title: Adaptive Cards Host
@@ -122,16 +145,6 @@ extra:
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
       modifiedtext: June 09, 2020
       modified: 2020-06-09
-    - framework: Javascript
-      spfx: 1.6.0
-      title: Modern Calendar
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-modern-calendar
-      name: js-modern-calendar
-      thumbnail: https://cloud.githubusercontent.com/assets/13068139/23584808/14c3ec26-0121-11e7-8be8-65fbcca32b62.png
-      author: Jeremy Coleman, Nanddeep Nachan
-      summary: This is a modern webpart built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it.
-      modifiedtext: June 05, 2020
-      modified: 2020-06-05
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
       name: js-workbench-customizer
       title: Workbench customizer
@@ -172,16 +185,6 @@ extra:
       summary: This is a sample web part that displays currently logged in user's Microsoft Teams(user is member of), its channels and will allow sending messages to any Team's channel.
       modifiedtext: May 23, 2020
       modified: 2020-05-23
-    - framework: React
-      spfx: 1.10.0
-      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-appinsights-dashboard
-      name: react-appinsights-dashboard
-      title: React AppInsights Dashboard
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif
-      author: Sudharsan Kesavanarayanan
-      summary: This webpart displays different statistics data captured in the Azure Application Insights in a graphical representation.
-      modifiedtext: May 10, 2020
-      modified: 2020-05-10
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-content-query-webpart
@@ -1099,18 +1102,6 @@ extra:
       modifiedtext: April 16, 2020
       modified: 2020-04-16
       keywords: ical,wordpress,rss,exchange,calendar,event,hooks,theme,background
-    - framework: React
-      spfx: 1.8.2
-      year: 2019
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-carousel
-      name: react-carousel
-      title: Carousel Web Part
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-carousel/assets/carousel.gif
-      thumbnailtype: video
-      author: João Mendes
-      summary: This web part show images and videos in carousel
-      modifiedtext: July 11, 2019
-      modified: 2019-07-11
     - framework: React
       spfx: 1.7.1
       year: 2019
@@ -2293,6 +2284,7 @@ extra:
     - Patrick Rodgers
     - Paul Ryan
     - Paul Schaeflein
+    - Rahul Suryawanshi
     - Ram Prasad Meenavalli
     - Ramin Ahmadi
     - Ravi Kulkarni
