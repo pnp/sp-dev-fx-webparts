@@ -2,6 +2,12 @@
 
 Thinking about Kanban component with Fluent Ui Components
 
+# current
+allowMove from one Bucket to the Other tested
+move task to other Bucket works
+
+playing with drag visibility
+
 Bucket
 ```
   buckets:[
