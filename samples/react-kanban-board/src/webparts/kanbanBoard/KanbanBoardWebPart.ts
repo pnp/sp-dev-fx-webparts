@@ -12,6 +12,8 @@ import * as strings from 'KanbanBoardWebPartStrings';
 import KanbanBoard from './components/KanbanBoard';
 import { IKanbanBoardProps } from './components/IKanbanBoardProps';
 
+import {MockKanban,IMockKanbanProps} from '../../kanban/MockKanban';
+
 export interface IKanbanBoardWebPartProps {
   listTitle: string;
   lists: Array<any>;
@@ -34,7 +36,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
   public render(): void {
     
 
-  
+  /*
     const element: React.ReactElement<IKanbanBoardProps > = React.createElement(
       KanbanBoard,
       {
@@ -42,6 +44,13 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         webUrl: this.context.pageContext.web.absoluteUrl
       }
     );
+    */
+   const element: React.ReactElement<IMockKanbanProps > = React.createElement(
+    MockKanban,
+    {
+     
+    }
+  );
 
     ReactDom.render(element, this.domElement);
   }
