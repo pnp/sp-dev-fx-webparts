@@ -52,10 +52,10 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
         
         return (
             <div className={classNames({[styles.bucket]: true, [styles.dragover]: (overBucket && overBucket === bucket)})}
-
+key={bucket}
                 onDragOver={(event) => this.props.onDragOver(event, bucket)}
                 onDragLeave={(event) => this.props.onDragLeave(event, bucket)}
-                onDrop={(event) => this.props.onDragLeave(event, bucket)}
+                onDrop={(event) => this.props.onDrop(event, bucket)}
             >
                 <div className={styles.headline}>
                     <span>{bucketheadline}</span>

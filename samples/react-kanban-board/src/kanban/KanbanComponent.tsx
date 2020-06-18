@@ -125,9 +125,23 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
              this.bucketRef.current.classList.remove(styles.dragover)
          }*/
         if (event.dataTransfer.getData("sourcebucket") !== targetbucket) {
-            // other cases no Bucketchange 
+            const sourcebucket = event.dataTransfer.getData("sourcebucket");
+            const source = this.props.buckets.filter(s=>s.bucket == sourcebucket)[0];
+            const target = this.props.buckets.filter(s=>s.bucket == targetbucket)[0];
+            const taskId = event.dataTransfer.getData("taskId");
+            if(this.props.taskactions) {
+                let allowMove= true;
+                if(this.props.taskactions.allowMove) {
+                    allowMove= this.props.taskactions.allowMove(taskId,
+                        source,
+                        target
+                        );
+                }
+                if(allowMove && this.props.taskactions.moved) {
+                    this.props.taskactions.moved(taskId,target);
+                }
+            }
         }
-        
         this.dragelement = null;
         this.setState({
             leavingTaskId: null,

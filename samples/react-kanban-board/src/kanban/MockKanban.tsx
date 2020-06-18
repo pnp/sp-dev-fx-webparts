@@ -2,6 +2,7 @@ import * as React from 'react';
 import KanbanComponent from './KanbanComponent';
 import { IKanbanBucket } from './IKanbanBucket';
 import { IKanbanTask } from './IKanbanTask';
+import { findIndex } from "lodash";
 
 export interface IMockKanbanProps { }
 
@@ -58,16 +59,24 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
         );
     }
 
+
+
     private _toggleCompleted(taskId: number | string): void {
 //TODO
     }
     private _allowMove(taskId: number | string, prevBucket: IKanbanBucket, targetBucket: IKanbanBucket): boolean {
-        //TODO
+        if(prevBucket.bucket ==='Test2' && targetBucket.bucket ==='Test3') {
+            return false;
+        }
         return true;
     }
 
     private _moved(taskId: number | string, targetBucket: IKanbanBucket): void {
-        //TODO
+        debugger;
+        const elementsIndex = findIndex( this.state.tasks ,element => element.taskId == taskId );
+        let newArray = [...this.state.tasks];
+        newArray[elementsIndex].bucket = targetBucket.bucket;
+        this.setState({tasks:newArray});
 
     }
 }
