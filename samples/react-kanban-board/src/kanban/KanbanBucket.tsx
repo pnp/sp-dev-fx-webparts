@@ -7,12 +7,22 @@ import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 import { ActionButton } from 'office-ui-fabric-react';
 import KanbanTask from './KanbanTask';
+import classNames from 'classnames';
 import * as strings from 'KanbanBoardStrings';
 
 export interface IKanbanBucketProps extends IKanbanBucket {
     buckettasks: IKanbanTask[];
     tasksettings: IKanbanBoardTaskSettings;
     taskactions: IKanbanBoardTaskActions;
+
+    onDragStart: (event, taskId: string | number, bucket: string) => void;
+    onDragOver: (event, targetbucket: string) => void;
+    onDragLeave: (event, targetbucket: string) => void;
+    onDrop: (event, targetbucket: string) => void;
+
+    leavingTaskId?: number | string;
+    leavingBucket?: string;
+    overBucket?: string;
 
     openDetails?: (taskId: number | string) => void;
 }
@@ -27,6 +37,7 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
         this.state = {
 
         };
+
     }
     /*
     nice to use a object merge
@@ -35,11 +46,16 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
     hope this will be translated 
     */
     public render(): React.ReactElement<IKanbanBucketProps> {
-        const { bucketheadline, color, buckettasks, tasksettings, taskactions, percentageComplete, allowAddTask } = this.props;
+        const { bucket, bucketheadline, color, buckettasks, 
+            tasksettings, taskactions, percentageComplete, 
+            allowAddTask, overBucket,leavingTaskId,leavingBucket } = this.props;
+        
         return (
-            <div className={styles.bucket}
-                onDragOver={(event) => this.onDragOver(event)}
-                onDrop={this.onDrop.bind(this)}
+            <div className={classNames({[styles.bucket]: true, [styles.dragover]: (overBucket && overBucket === bucket)})}
+
+                onDragOver={(event) => this.props.onDragOver(event, bucket)}
+                onDragLeave={(event) => this.props.onDragLeave(event, bucket)}
+                onDrop={(event) => this.props.onDragLeave(event, bucket)}
             >
                 <div className={styles.headline}>
                     <span>{bucketheadline}</span>
@@ -56,11 +72,17 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                 {
                     buckettasks.map((t) => {
                         const merge = { ...t, ...tasksettings, ...taskactions };
-                        return (
-                            <KanbanTask
+                        const isMoving= (t.taskId === leavingTaskId && t.bucket === leavingBucket);
+                        
+                        return (<div className={isMoving&&styles.placeholder} >
+                            <KanbanTask 
+                                key={t.taskId}
                                 {...merge}
+                                isMoving={isMoving}
                                 openDetails={this.props.openDetails}
-                            />
+                                onDragStart={(event) => this.props.onDragStart(event, t.taskId, t.bucket)}
+
+                            /></div>
                         );
                     })
                 }
@@ -69,27 +91,5 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
     }
 
 
-    private onDragOver(event): void {
-        event.preventDefault();
-    }
-
-    private onDrop(event): void {
-        // this.props.name
-        // let taskName = event.dataTransfer.getData("taskName");
-        /*
-            let tasks = this.state.tasks.filter((task) => {
-                if (task.taskName == taskName) {
-                    task.type = cat;
-                }
-                return task;
-            });
-            
-        
-            this.setState({
-                ...this.state,
-                tasks
-            });
-            */
-    }
 
 }

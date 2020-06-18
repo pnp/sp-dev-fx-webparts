@@ -5,12 +5,14 @@ import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import {IKanbanTask} from './IKanbanTask';
 import {IKanbanBoardTaskSettings} from './IKanbanBoardTaskSettings';
 import {IKanbanBoardTaskActions} from './IKanbanBoardTaskActions';
+import classNames from 'classnames';
 
 export interface IKanbanTaskProps extends IKanbanTask,IKanbanBoardTaskSettings,IKanbanBoardTaskActions {
     
     
     openDetails?: (taskId: number | string) => void;
-    
+    onDragStart:(event) => void;
+    isMoving:boolean;
 }
 
 export interface IKanbanTaskState { }
@@ -22,12 +24,13 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
     }
     public render(): React.ReactElement<IKanbanTaskProps> {
 
-        const { title, showLabels, showPriority, showAssignedTo, isCompleted } = this.props;
+        const { title, showLabels, showPriority, showAssignedTo, isCompleted,isMoving } = this.props;
         const showCompleted = !!this.props.toggleCompleted;
         const iconCompleted = { iconName: isCompleted ? 'RadioBtnOn' : 'RadioBtnOff' };
         return (
-            <div className={styles.taskcard}
-            onDragStart = {(event) => this.onDragStart(event)}
+            <div className={classNames({[styles.taskcard]: true, [styles.moving]: isMoving}) }
+            onDragStart = {this.props.onDragStart}
+            draggable
             >
                 <div className={styles.titlerow}>
                     {showCompleted && (
@@ -55,8 +58,5 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
         }
     }
 
-    private onDragStart(event): void {
-        console.log('dragstart on div: ', this.props.taskId);
-        event.dataTransfer.setData("taskId", this.props.taskId);
-    }
+    
 }

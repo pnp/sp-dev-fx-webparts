@@ -20,20 +20,27 @@ export interface IKanbanComponentProps {
     */
 }
 
-export interface IKanbanComponentState { }
+export interface IKanbanComponentState {
+    leavingTaskId?: number | string;
+    leavingBucket?: string;
+    overBucket?: string;
+}
 
 export default class KanbanComponent extends React.Component<IKanbanComponentProps, IKanbanComponentState> {
-
+    private dragelement?: IKanbanTask;
     constructor(props: IKanbanComponentProps) {
         super(props);
 
         this.state = {
-
+            leavingTaskId: null,
+            leavingBucket: null,
+            overBucket: null
         };
     }
 
     public render(): React.ReactElement<IKanbanComponentProps> {
         const { buckets, tasks, tasksettings, taskactions, showCommandbar } = this.props;
+        const { leavingBucket, leavingTaskId, overBucket } = this.state
         return (
             <div>
                 {showCommandbar && <CommandBar
@@ -43,19 +50,91 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                     ariaLabel={'Use left and right arrow keys to navigate between commands'}
                 />}
                 <div className={styles.kanbanBoard}>
-                    {buckets.map((b) =>
-                        (<KanbanBucket
-                            {...b}
-                            buckettasks={tasks.filter((x) => x.bucket == b.bucket)}
-                            tasksettings={tasksettings}
-                            taskactions={taskactions}
-                            openDetails={(x) => alert(x)}
-                        />)
+                    {
 
-                    )}
+                        buckets.map((b) => {
+                            const merge = { ...b, ...this.state }
+                            return (<KanbanBucket
+                                key={b.bucket}
+                                {...merge}
+                                buckettasks={tasks.filter((x) => x.bucket == b.bucket)}
+                                tasksettings={tasksettings}
+                                taskactions={taskactions}
+                                openDetails={(x) => alert(x)}
+                                onDrop={this.onDrop.bind(this)}
+                                onDragLeave={this.onDragLeave.bind(this)}
+                                onDragOver={this.onDragOver.bind(this)}
+                                onDragStart={this.onDragStart.bind(this)}
+
+                            />)
+
+                        }
+
+                        )}
                 </div>
             </div>
         );
+    }
+
+    private onDragLeave(event): void {
+        console.log('onDragLeave');
+        /* if (this.bucketRef.current.classList.contains(styles.dragover)) {
+             this.bucketRef.current.classList.remove(styles.dragover)
+         }*/
+
+    }
+
+    private onDragStart(event, taskId: string | number, bucket: string): void {
+        console.log('onDragStart');
+        const taskitem = this.props.tasks.filter(p => p.taskId == taskId);
+
+        if (taskitem.length === 1) {
+            event.dataTransfer.setData("taskId", taskId);
+            event.dataTransfer.setData("sourcebucket", bucket);
+            //set element because event.dataTransfer is empty by DragOver
+            console.log('set dragelement');
+            this.dragelement = taskitem[0];
+            this.setState({
+                leavingTaskId: taskId,
+                leavingBucket: bucket,
+            });
+        } else {
+            // Error not consitent
+        }
+
+
+    }
+
+    private onDragOver(event, targetbucket: string): void {
+        event.preventDefault();
+        console.log('onDragOver');
+        console.log(event.dataTransfer.getData("sourcebucket"));
+        if (this.dragelement.bucket !== targetbucket) {
+            /* if (!this.bucketRef.current.classList.contains(styles.dragover)) {
+                 this.bucketRef.current.classList.add(styles.dragover)
+             }*/
+        } else {
+
+        }
+
+    }
+
+    private onDrop(event, targetbucket: string): void {
+        console.log(`onDrop sourcebucket ${event.dataTransfer.getData("sourcebucket")} taskid: ${event.dataTransfer.getData("taskId")}`);
+        /* if (this.bucketRef.current.classList.contains(styles.dragover)) {
+             this.bucketRef.current.classList.remove(styles.dragover)
+         }*/
+        if (event.dataTransfer.getData("sourcebucket") !== targetbucket) {
+            // other cases no Bucketchange 
+        }
+        
+        this.dragelement = null;
+        this.setState({
+            leavingTaskId: null,
+            leavingBucket: null,
+            overBucket: null,
+        });
+
     }
 
     private getItems = () => {
