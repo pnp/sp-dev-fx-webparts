@@ -1,5 +1,6 @@
 .taskcard {
     display: block;
+    background-color: initial;
     .titlerow {
         .title{
             display: inline;
@@ -12,4 +13,8 @@
             display: inline;
         }
     }
+    
+}
+.moving{
+    background-color: rgb(180, 100, 100) !important;
 }

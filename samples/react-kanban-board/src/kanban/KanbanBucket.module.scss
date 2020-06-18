@@ -19,4 +19,11 @@
             right: 0px;
         }
     }
+    &.dragover{
+        background-color: lightgray;
+    }
+    .placeholder{
+        background-color: rgb(180, 180, 180);
+    }
+    
 }
