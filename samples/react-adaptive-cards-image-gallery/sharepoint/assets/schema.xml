@@ -1,4 +1,4 @@
-<List xmlns:ows="Microsoft SharePoint" Title="Image Gallery" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/ImageGallery" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+<List xmlns:ows="Microsoft SharePoint" Title="Adaptive Card Images" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Adaptive Card Images" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
  <MetaData>   
    <Fields>
     <Field ID="{e6954092-6678-4538-b809-cf9065480a5d}" Type="URL" DisplayName="Image Link" Required="TRUE" Format="Hyperlink" Title="ImageLink" StaticName="ImageLink" Name="ImageLink" ColName="nvarchar4" RowOrdinal="0" ColName2="nvarchar5" RowOrdinal2="0" CustomFormatter="" EnforceUniqueValues="FALSE" Indexed="FALSE" Version="1" />

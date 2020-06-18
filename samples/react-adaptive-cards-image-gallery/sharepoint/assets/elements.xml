@@ -7,7 +7,7 @@
            Title="Adaptive Card Images" 
            Description="List with image information"
            TemplateType="100"
-           Url="Lists/AdaptiveCardImages">
+           Url="Lists/Adaptive Card Images">
       <Data>
          <Rows>
             <Row>

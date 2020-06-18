@@ -21,7 +21,8 @@
     "description": { "default": "Image Gallery implemented with Adaptive Cards" },
     "officeFabricIconFontName": "ImageDiff",
     "properties": {
-      "description": "AdaptiveCardsImageGallery"
+      "imageGalleryName": "Adaptive Card Images",
+      "imagesToDisplay": 10
     }
   }]
 }
