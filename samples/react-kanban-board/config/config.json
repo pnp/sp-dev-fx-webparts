@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
+    "KanbanBoardStrings": "lib/kanban/loc/{locale}.js",
     "KanbanBoardWebPartStrings": "lib/webparts/kanbanBoard/loc/{locale}.js"
   }
 }

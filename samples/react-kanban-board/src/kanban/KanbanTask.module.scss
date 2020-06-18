@@ -1,0 +1,15 @@
+.taskcard {
+    display: block;
+    .titlerow {
+        .title{
+            display: inline;
+        }
+    }
+    .membersAndLabels {
+        .labels,
+        .priority,
+        .assignedto {
+            display: inline;
+        }
+    }
+}

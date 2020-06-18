@@ -14,8 +14,8 @@ Post Button Click that imports jQuery and additional functionality:
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Solution
@@ -53,7 +53,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Including a library in the separate bundled file.
 
 ## Additional Information:
-- [Dynamic loading of packages in SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-loading)
+- [Dynamic loading of packages in SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/dynamic-loading)
 
 - Video Demonstration on using, building and code specifics for the sample web part:<br>   http://warner.digital/dynamic-spfx-package-bundling/ 
 

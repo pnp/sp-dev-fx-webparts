@@ -1,0 +1,22 @@
+.bucket {
+    display: table-cell;
+
+    
+    border-right: 1px solid gray;
+    .headline {
+        padding: 2px 10px;
+        line-height: 2em;
+        font-weight: 700;
+        display: block;
+        position: relative;
+        text-align: center;
+        border-bottom: 1px solid gray;
+        .colorindicator {
+            width: 10px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0px;
+        }
+    }
+}

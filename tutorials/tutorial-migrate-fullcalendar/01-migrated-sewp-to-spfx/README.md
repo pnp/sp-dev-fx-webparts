@@ -4,7 +4,7 @@ Sample jQuery FullCalendar solution migrated from a Script Editor Web Part to th
 
 ![jQuery FullCalendar solution built using Script Editor Web Part](https://devofficecdn.azureedge.net/sharepointdocumentation/images/fullcalendar-sewp.png)
 
-More information about the solution is available at [https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx).
+More information about the solution is available at [https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-fullcalendar-script-to-spfx).
 
 ## Minimal Path to Awesome
 

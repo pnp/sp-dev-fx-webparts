@@ -26,7 +26,7 @@ This is a modern webpart built on the GA version of the [SharePoint Framework](h
 ## Applies to
 
 * [SharePoint Framework](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
@@ -37,12 +37,14 @@ None
 Solution|Author(s)
 --------|---------
 js-modern-calendar | Jeremy Coleman (MCP, PC Professional, Inc.)
+js-modern-calendar | Nanddeep Nachan ([@NanddeepNachan](twitter.com/NanddeepNachan))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0.0|February 11, 2017|Initial release
+1.0.0.1|June 05, 2020|Updated the external CDN references to public CDN references
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

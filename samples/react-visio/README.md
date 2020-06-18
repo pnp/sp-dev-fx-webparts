@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sample shows how the [Visio JavaScript APIs](https://dev.office.com/reference/add-ins/visio/visio-javascript-reference-overview) can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.
+This sample shows how the [Visio JavaScript APIs](https://docs.microsoft.com/office/dev/add-ins/reference/overview/visio-javascript-reference-overview) can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.
 
 ![Demo](./assets/Preview.PNG)
 
@@ -12,13 +12,13 @@ This sample shows how the [Visio JavaScript APIs](https://dev.office.com/referen
 
 ## Applies to
 
-- [SharePoint Framework](https:/dev.office.com/sharepoint)
-- [Visio JavaScript APIs](https://dev.office.com/reference/add-ins/visio/visio-javascript-reference-overview)
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Visio JavaScript APIs](https://docs.microsoft.com/office/dev/add-ins/reference/overview/visio-javascript-reference-overview)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online licence
-- SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
 ## Solution
 

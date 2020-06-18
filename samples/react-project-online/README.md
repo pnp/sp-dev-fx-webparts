@@ -28,14 +28,14 @@ The web part is currently returning project tasks as a simple proof of concept.
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
-* [Project Online](https://dev.office.com/docs/add-ins/overview/office-add-ins?product=project)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Project Online](https://docs.microsoft.com/de-at/office/dev/add-ins/project/)
 
 ## Prerequisites
  
 - Office 365 subscription with SharePoint Online and Project Online license
-- SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 -Project site with some tasks available.
 
 ## Solution
