@@ -26,4 +26,5 @@ Task
 {taskId: '4', title:'test 4',bucket:'Test4'},
 {taskId: '5', title:'test 5',bucket:'Test3'},
 ```
-i think this structure is easiest to extract later 
+Something like this sould come out, but styling is currently bad
+![prototype](./img1.PNG "prototype")
