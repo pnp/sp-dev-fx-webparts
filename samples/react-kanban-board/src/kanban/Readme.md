@@ -34,3 +34,6 @@ Task
 ```
 Something like this sould come out, but styling is currently bad
 ![prototype](./img1.PNG "prototype")
+
+Something like this sould come out, but styling is currently bad
+![prototype](./sample.gif "prototype on 2nd day")
