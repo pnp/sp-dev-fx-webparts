@@ -14,6 +14,7 @@ import { IStackStyles, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 
 
+
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 
 export interface IKanbanComponentProps {
@@ -30,11 +31,11 @@ export interface IKanbanComponentProps {
 }
 
 export interface IKanbanComponentState {
-    leavingTaskId?: number | string;
+    leavingTaskId?: string;
     leavingBucket?: string;
     overBucket?: string;
     openDialog: boolean;
-    openTaskId?: number | string;
+    openTaskId?: string;
 }
 
 export default class KanbanComponent extends React.Component<IKanbanComponentProps, IKanbanComponentState> {
@@ -48,6 +49,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
             leavingBucket: null,
             overBucket: null
         };
+
     }
 
     public render(): React.ReactElement<IKanbanComponentProps> {
@@ -78,7 +80,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                                 onDragLeave={this.onDragLeave.bind(this)}
                                 onDragOver={this.onDragOver.bind(this)}
                                 onDragStart={this.onDragStart.bind(this)}
-
+                                onDragEnd={this.onDragEnd.bind(this)}
                             />);
 
                         }
@@ -91,7 +93,6 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
     }
 
     private renderDetails(): JSX.Element {
-        debugger;
         const renderer = this.props.renderers && this.props.renderers.taskDetail ? this.props.renderers.taskDetail : this.internalTaskDetailRenderer;
         const tasks = this.props.tasks.filter(t => t.taskId == this.state.openTaskId);
 
@@ -151,7 +152,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
             openTaskId: undefined
         });
     }
-    private openDialog(taskid: number | string) {
+    private openDialog(taskid: string) {
         this.setState({
             openDialog: true,
             openTaskId: taskid
@@ -167,13 +168,21 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
 
     }
 
-    private onDragStart(event, taskId: string | number, bucket: string): void {
-        console.log('onDragStart');
-        const taskitem = this.props.tasks.filter(p => p.taskId == taskId);
+    private onDragEnd(event): void {
+        console.log('onDragEnd');
+        this.dragelement=undefined;
+    }
 
+    private onDragStart(event, taskId: string, bucket: string): void {
+        console.log('onDragStart');
+
+        const taskitem = this.props.tasks.filter(p => p.taskId === taskId);
+        console.log('onDragStart taskitem');
         if (taskitem.length === 1) {
-            event.dataTransfer.setData("taskId", taskId);
-            event.dataTransfer.setData("sourcebucket", bucket);
+            console.log('onDragStart taskitem check done');
+            console.log(event);
+            event.dataTransfer.setData("text", taskId);
+            //event.dataTransfer.setData("sourcebucket", bucket);
             //set element because event.dataTransfer is empty by DragOver
             console.log('set dragelement');
             this.dragelement = taskitem[0];
@@ -181,8 +190,12 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                 leavingTaskId: taskId,
                 leavingBucket: bucket,
             });
+            console.log('dragelement set and refresh state');
         } else {
             // Error not consitent
+            console.log('onDragStart prop data wrong!!');
+            throw "TaskItem not found on DragStart";
+
         }
 
 
@@ -190,8 +203,9 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
 
     private onDragOver(event, targetbucket: string): void {
         event.preventDefault();
-        console.log('onDragOver');
-        console.log(event.dataTransfer.getData("sourcebucket"));
+        console.log('onDragOver this.dragelement');
+        console.log(this.dragelement);
+        
         if (this.dragelement.bucket !== targetbucket) {
             /* if (!this.bucketRef.current.classList.contains(styles.dragover)) {
                  this.bucketRef.current.classList.add(styles.dragover)
@@ -203,15 +217,16 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
     }
 
     private onDrop(event, targetbucket: string): void {
-        console.log(`onDrop sourcebucket ${event.dataTransfer.getData("sourcebucket")} taskid: ${event.dataTransfer.getData("taskId")}`);
+        console.log('onDrop');
         /* if (this.bucketRef.current.classList.contains(styles.dragover)) {
              this.bucketRef.current.classList.remove(styles.dragover)
          }*/
-        if (event.dataTransfer.getData("sourcebucket") !== targetbucket) {
-            const sourcebucket = event.dataTransfer.getData("sourcebucket");
-            const source = this.props.buckets.filter(s => s.bucket == sourcebucket)[0];
+        if (this.dragelement.bucket !== targetbucket) {
+            //event.dataTransfer.getData("text");
+            const taskId = this.dragelement.taskId;
+            const source = this.props.buckets.filter(s => s.bucket == this.dragelement.bucket)[0];
             const target = this.props.buckets.filter(s => s.bucket == targetbucket)[0];
-            const taskId = event.dataTransfer.getData("taskId");
+            
             if (this.props.taskactions) {
                 let allowMove = true;
                 if (this.props.taskactions.allowMove) {

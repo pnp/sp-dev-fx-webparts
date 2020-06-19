@@ -15,19 +15,19 @@ export interface IKanbanBucketProps extends IKanbanBucket {
     tasksettings: IKanbanBoardTaskSettings;
     taskactions: IKanbanBoardTaskActions;
 
-    onDragStart: (event, taskId: string | number, bucket: string) => void;
+    onDragStart: (event, taskId: string, bucket: string) => void;
     onDragOver: (event, targetbucket: string) => void;
     onDragLeave: (event, targetbucket: string) => void;
     onDrop: (event, targetbucket: string) => void;
-    
+    onDragEnd: (event, taskId: string, bucket: string) => void;
 
 
 
-    leavingTaskId?: number | string;
+    leavingTaskId?: string;
     leavingBucket?: string;
     overBucket?: string;
 
-    openDetails?: (taskId: number | string) => void;
+    openDetails?: (taskId: string) => void;
 }
 
 export interface IKanbanBucketState { }
@@ -49,18 +49,21 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
     hope this will be translated 
     */
     public render(): React.ReactElement<IKanbanBucketProps> {
-        const { bucket, bucketheadline, color, buckettasks, 
-            tasksettings, taskactions, percentageComplete, 
-            allowAddTask, overBucket,leavingTaskId,leavingBucket } = this.props;
-        
+        const { bucket, bucketheadline, color, buckettasks,
+            tasksettings, taskactions, percentageComplete,
+            allowAddTask, overBucket, leavingTaskId, leavingBucket } = this.props;
+
         return (
-            <div className={classNames({[styles.bucket]: true, [styles.dragover]: (overBucket && overBucket === bucket)})}
-key={bucket}
+            <div
+                className={classNames({ [styles.bucket]: true, [styles.dragover]: !!(overBucket && overBucket === bucket) })}
+                key={bucket}
                 onDragOver={(event) => this.props.onDragOver(event, bucket)}
                 onDragLeave={(event) => this.props.onDragLeave(event, bucket)}
                 onDrop={(event) => this.props.onDrop(event, bucket)}
             >
-                <div className={styles.headline}>
+                <div className={styles.headline}
+
+                >
                     <span>{bucketheadline}</span>
                     {color && <div style={{ backgroundColor: color }} className={styles.colorindicator}></div>}
                     <ProgressIndicator percentComplete={percentageComplete / 100} />
@@ -75,16 +78,16 @@ key={bucket}
                 {
                     buckettasks.map((t) => {
                         const merge = { ...t, ...tasksettings, ...taskactions };
-                        const isMoving= (t.taskId === leavingTaskId && t.bucket === leavingBucket);
-                        
-                        return (<div className={isMoving&&styles.placeholder} >
-                            <KanbanTask 
-                                key={t.taskId}
+                        const isMoving = (t.taskId === leavingTaskId && t.bucket === leavingBucket);
+
+                        return (<div className={isMoving ? styles.placeholder : undefined} key={'' + t.taskId} >
+                            <KanbanTask
+                                key={'task' + t.taskId}
                                 {...merge}
                                 isMoving={isMoving}
                                 openDetails={this.props.openDetails}
                                 onDragStart={(event) => this.props.onDragStart(event, t.taskId, t.bucket)}
-
+                                onDragEnd={(event) => this.props.onDragEnd(event, t.taskId, t.bucket)}
                             /></div>
                         );
                     })

@@ -1,5 +1,5 @@
 export interface IKanbanTask {
-    taskId: number | string;
+    taskId:  string;
     title: string;
     isCompleted?: boolean;
     bucket: string;

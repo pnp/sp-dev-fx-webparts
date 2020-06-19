@@ -2,18 +2,19 @@ import * as React from 'react';
 import styles from './KanbanTask.module.scss';
 import * as strings from 'KanbanBoardStrings';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import {IKanbanTask} from './IKanbanTask';
-import {IKanbanBoardTaskSettings} from './IKanbanBoardTaskSettings';
-import {IKanbanBoardTaskActions} from './IKanbanBoardTaskActions';
+import { IKanbanTask } from './IKanbanTask';
+import { IKanbanBoardTaskSettings } from './IKanbanBoardTaskSettings';
+import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
 import classNames from 'classnames';
 import { IconNames } from 'office-ui-fabric-react';
 
-export interface IKanbanTaskProps extends IKanbanTask,IKanbanBoardTaskSettings,IKanbanBoardTaskActions {
-    
-    
-    openDetails: (taskId: number | string) => void;
-    onDragStart:(event) => void;
-    isMoving:boolean;
+export interface IKanbanTaskProps extends IKanbanTask, IKanbanBoardTaskSettings, IKanbanBoardTaskActions {
+
+
+    openDetails: (taskId: string) => void;
+    onDragStart: (event) => void;
+    onDragEnd: (event) => void;
+    isMoving: boolean;
 }
 
 export interface IKanbanTaskState { }
@@ -25,13 +26,14 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
     }
     public render(): React.ReactElement<IKanbanTaskProps> {
 
-        const { title, showLabels, showPriority, showAssignedTo, isCompleted,isMoving,showTaskDetailsButton } = this.props;
+        const { title, showLabels, showPriority, showAssignedTo, isCompleted, isMoving, showTaskDetailsButton } = this.props;
         const showCompleted = !!this.props.toggleCompleted;
         const iconCompleted = { iconName: isCompleted ? 'RadioBtnOn' : 'RadioBtnOff' };
         return (
-            <div className={classNames({[styles.taskcard]: true, [styles.moving]: isMoving}) }
-            onDragStart = {this.props.onDragStart}
-            draggable
+            <div className={classNames({ [styles.taskcard]: true, [styles.moving]: isMoving })}
+                onDragStart={this.props.onDragStart}
+                onDragEnd={this.props.onDragEnd}
+                draggable
             >
                 <div className={styles.titlerow}>
                     {showCompleted && (
@@ -43,15 +45,15 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
                         />)
                     }
                     <div className={styles.title}>{title}</div>
-                    { showTaskDetailsButton && (
+                    {showTaskDetailsButton && (
                         <IconButton
-                            iconProps={{iconName:'More'}}
+                            iconProps={{ iconName: 'More' }}
                             title={strings.OpenDetails}
                             ariaLabel={strings.OpenDetails}
                             onClick={this._openDetails.bind(this)}
                         />)
                     }
-                    
+
                 </div>
                 <div className={styles.membersAndLabels}>
                     {showAssignedTo && (<div className={styles.assignedto}></div>)}
@@ -68,13 +70,13 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
         }
     }
 
-    private  _openDetails():void {
+    private _openDetails(): void {
         debugger;
-        if(this.props.openDetails) {
+        if (this.props.openDetails) {
             this.props.openDetails(this.props.taskId);
         }
-        
+
     }
 
-    
+
 }
