@@ -37,3 +37,21 @@ Something like this sould come out, but styling is currently bad
 
 Something like this sould come out, but styling is currently bad
 ![prototype](./sample.gif "prototype on 2nd day")
+
+IMPORTANT
+```
+IKanbanTask {
+    taskId:  string;
+}
+```
+has to be a string because, i use event ```event.dataTransfer.setData``` and this accespts only strings in IE
+```
+event.dataTransfer.setData('text',1)
+Invalid argument.
+```
+The second big thing is IE allows only to set the value 'text' event.dataTransfer.setData('text','1')
+```
+event.dataTransfer.setData('xyz','1')
+Unexpected call to method or property access.
+```
+

@@ -47,6 +47,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
       }
     );
     */
+  
    const element: React.ReactElement<IMockKanbanProps > = React.createElement(
     MockKanban,
     {
@@ -55,6 +56,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
   );
 
     ReactDom.render(element, this.domElement);
+  
   }
 
   protected onDispose(): void {

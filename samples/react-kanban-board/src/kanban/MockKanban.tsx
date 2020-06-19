@@ -26,7 +26,7 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
             ],
             tasks: [
                 {
-                    taskId: 1, title: 'test1', bucket: 'Not Started',
+                    taskId: '1', title: 'test1', bucket: 'Not Started',
                     mamagedProperties: [
                         {
                             name: 'Prop1',
@@ -52,8 +52,8 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
                         }
                     ]
                 },
-                { taskId: 2, title: 'test2', bucket: 'Not Started' },
-                { taskId: 3, title: 'test3', bucket: 'Not Started' },
+                { taskId: '2', title: 'test2', bucket: 'Not Started' },
+                { taskId: '3', title: 'test3', bucket: 'Not Started' },
                 { taskId: '4', title: 'test 4', bucket: 'Test4' },
                 { taskId: '5', title: 'test 5', bucket: 'Test3' },
 
@@ -88,17 +88,17 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
 
 
 
-    private _toggleCompleted(taskId: number | string): void {
+    private _toggleCompleted(taskId:  string): void {
         //TODO
     }
-    private _allowMove(taskId: number | string, prevBucket: IKanbanBucket, targetBucket: IKanbanBucket): boolean {
+    private _allowMove(taskId:  string, prevBucket: IKanbanBucket, targetBucket: IKanbanBucket): boolean {
         if (prevBucket.bucket === 'Test2' && targetBucket.bucket === 'Test3') {
             return false;
         }
         return true;
     }
 
-    private _moved(taskId: number | string, targetBucket: IKanbanBucket): void {
+    private _moved(taskId:  string, targetBucket: IKanbanBucket): void {
         debugger;
         const elementsIndex = findIndex(this.state.tasks, element => element.taskId == taskId);
         let newArray = [...this.state.tasks];
