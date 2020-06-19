@@ -6,11 +6,12 @@ import {IKanbanTask} from './IKanbanTask';
 import {IKanbanBoardTaskSettings} from './IKanbanBoardTaskSettings';
 import {IKanbanBoardTaskActions} from './IKanbanBoardTaskActions';
 import classNames from 'classnames';
+import { IconNames } from 'office-ui-fabric-react';
 
 export interface IKanbanTaskProps extends IKanbanTask,IKanbanBoardTaskSettings,IKanbanBoardTaskActions {
     
     
-    openDetails?: (taskId: number | string) => void;
+    openDetails: (taskId: number | string) => void;
     onDragStart:(event) => void;
     isMoving:boolean;
 }
@@ -24,7 +25,7 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
     }
     public render(): React.ReactElement<IKanbanTaskProps> {
 
-        const { title, showLabels, showPriority, showAssignedTo, isCompleted,isMoving } = this.props;
+        const { title, showLabels, showPriority, showAssignedTo, isCompleted,isMoving,showTaskDetailsButton } = this.props;
         const showCompleted = !!this.props.toggleCompleted;
         const iconCompleted = { iconName: isCompleted ? 'RadioBtnOn' : 'RadioBtnOff' };
         return (
@@ -42,6 +43,15 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
                         />)
                     }
                     <div className={styles.title}>{title}</div>
+                    { showTaskDetailsButton && (
+                        <IconButton
+                            iconProps={{iconName:'More'}}
+                            title={strings.OpenDetails}
+                            ariaLabel={strings.OpenDetails}
+                            onClick={this._openDetails.bind(this)}
+                        />)
+                    }
+                    
                 </div>
                 <div className={styles.membersAndLabels}>
                     {showAssignedTo && (<div className={styles.assignedto}></div>)}
@@ -56,6 +66,14 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
         if (this.props.toggleCompleted) {
             this.props.toggleCompleted(this.props.taskId);
         }
+    }
+
+    private  _openDetails():void {
+        debugger;
+        if(this.props.openDetails) {
+            this.props.openDetails(this.props.taskId);
+        }
+        
     }
 
     

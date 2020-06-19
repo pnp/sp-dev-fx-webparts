@@ -19,6 +19,9 @@ export interface IKanbanBucketProps extends IKanbanBucket {
     onDragOver: (event, targetbucket: string) => void;
     onDragLeave: (event, targetbucket: string) => void;
     onDrop: (event, targetbucket: string) => void;
+    
+
+
 
     leavingTaskId?: number | string;
     leavingBucket?: string;
