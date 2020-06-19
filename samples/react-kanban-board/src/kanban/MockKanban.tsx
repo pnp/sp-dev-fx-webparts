@@ -99,7 +99,6 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
     }
 
     private _moved(taskId:  string, targetBucket: IKanbanBucket): void {
-        debugger;
         const elementsIndex = findIndex(this.state.tasks, element => element.taskId == taskId);
         let newArray = [...this.state.tasks];
         newArray[elementsIndex].bucket = targetBucket.bucket;
