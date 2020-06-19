@@ -180,7 +180,6 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
         console.log('onDragStart taskitem');
         if (taskitem.length === 1) {
             console.log('onDragStart taskitem check done');
-            console.log(event);
             event.dataTransfer.setData("text", taskId);
             //event.dataTransfer.setData("sourcebucket", bucket);
             //set element because event.dataTransfer is empty by DragOver
