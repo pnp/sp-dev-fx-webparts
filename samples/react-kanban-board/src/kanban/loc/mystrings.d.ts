@@ -3,6 +3,7 @@ declare interface IKanbanBoardStrings {
   IsCompleted: string;
   IsNotCompleted: string;
   AddTask: string;
+  OpenDetails: string;
 }
 
 declare module 'KanbanBoardStrings' {

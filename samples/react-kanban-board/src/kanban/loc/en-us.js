@@ -1,8 +1,9 @@
 define([], function() {
   return {
-    "CompleteButton": "complete",
-  "IsCompleted": "IsCompleted",
-  "IsNotCompleted": "IsNotCompleted",
-  "AddTask": "AddTask"
+    "CompleteButton": "Complete",
+  "IsCompleted": "Is Completed",
+  "IsNotCompleted": "Is Not Completed",
+  "AddTask": "Add Task",
+  "OpenDetails":"Open Details"
   }
 });
