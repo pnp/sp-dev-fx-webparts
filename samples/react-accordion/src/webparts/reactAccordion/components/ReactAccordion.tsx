@@ -100,7 +100,6 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
         this.setState({
           status: 'Loading all items failed with error: ' + error,
           pagedItems: [],
-          items: [],
           isLoading: false,
           loaderMessage: ""
         });
@@ -148,8 +147,8 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       displayLoader = (null);
     }
 
-    if (this.state.items.length > 0) {
-      pageCount = Math.ceil(this.state.items.length / pageCountDivisor);
+    if (items.length > 0) {
+      pageCount = Math.ceil(items.length / pageCountDivisor);
     }
     for (let i = 0; i < pageCount; i++) {
       pageButtons.push(<PrimaryButton onClick={() => { _pagedButtonClick(i + 1, items); }}> {i + 1} </PrimaryButton>);
