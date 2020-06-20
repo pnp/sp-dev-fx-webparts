@@ -4,7 +4,7 @@ export interface IKanbanTask {
     taskId: string;
     title: string;
     isCompleted?: boolean;
-    assignedTo?: IPersonaProps[];
+    assignedTo?: IPersonaProps;
     htmlDescription?:string;
     priority?:string;
     bucket: string;

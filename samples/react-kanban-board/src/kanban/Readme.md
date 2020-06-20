@@ -6,6 +6,7 @@ Thinking about Kanban component with Fluent Ui Components
 allowMove from one Bucket to the Other tested
 move task to other Bucket works
 internalDislplayRenderer: Person / Persons 
+BucketEdit Component (can be used in CustomPropertyPane)
 
 playing with drag visibility
 
@@ -60,9 +61,8 @@ Unexpected call to method or property access.
 
 # Next Steps Component:
 * think about Promise Task Actions, because actions are async
-
 * EditSchema To support Edit and New PNP Controls :)
-* BucketEdit Component (can be used in CustomPropertyPane)
+
 
 
 # Webpart Steps
