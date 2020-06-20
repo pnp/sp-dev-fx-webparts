@@ -15,13 +15,16 @@ export interface IKanbanTaskManagedProps {
     renderer?: (name: string, value: object, type:KanbanTaskMamagedPropertyType) => JSX.Element;
 }
 
+/* 0 is bad because 
+    const  value = EnumType.xyz // = 0
+    if(value)  {is false}
+*/
 export enum KanbanTaskMamagedPropertyType {
-
-    string,
-    number,
-    percent,
-    html,
-    person,
-    persons,
-    complex
+    string=1,
+    number=2,
+    percent=3,
+    html=4,
+    person=5,
+    persons=6,
+    complex=7
 }
