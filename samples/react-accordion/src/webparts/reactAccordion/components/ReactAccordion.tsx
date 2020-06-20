@@ -90,7 +90,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
 
         this.setState({
           status: "",
-          pagedItems: listItemsCollection.splice(0, this.props.maxItemsPerPage),
+          pagedItems: listItemsCollection.slice(0, this.props.maxItemsPerPage),
           items: response.value,
           listItems: response.value,
           isLoading: false,
@@ -117,8 +117,9 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
 
     let _pagedButtonClick = (pageNumber: number, listData: any) => {
       let startIndex: number = (pageNumber - 1) * pageCountDivisor;
+      let endIndex = startIndex + pageCountDivisor;
       let listItemsCollection = [...listData];
-      this.setState({ pagedItems: listItemsCollection.splice(startIndex, pageCountDivisor) });
+      this.setState({ pagedItems: listItemsCollection.slice(startIndex, endIndex) });
     };
 
     const pagedItems: JSX.Element[] = this.state.pagedItems.map((item: IAccordionListItem, i: number): JSX.Element => {
