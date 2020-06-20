@@ -1,8 +1,10 @@
 import * as React from 'react';
 import KanbanComponent from './KanbanComponent';
+import KanbanBucketConfigurator from './KanbanBucketConfigurator';
 import { IKanbanBucket } from './IKanbanBucket';
 import { IKanbanTask, KanbanTaskMamagedPropertyType } from './IKanbanTask';
 import { findIndex } from "lodash";
+import { cloneDeep, clone } from '@microsoft/sp-lodash-subset';
 
 export interface IMockKanbanProps { }
 
@@ -35,7 +37,7 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
                             value: '<p>test<b>Bold</b></p>'
 
                         },
-                      
+
                         {
                             name: 'Prop2',
                             displayName: 'Prop2 Display',
@@ -69,7 +71,6 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
                     buckets={buckets}
                     tasks={tasks}
                     tasksettings={{
-                        showLabels: true,
                         showPriority: true,
                         showAssignedTo: true,
                         showTaskDetailsButton: true
@@ -82,23 +83,43 @@ export class MockKanban extends React.Component<IMockKanbanProps, IMockKanbanSta
                     }}
                     showCommandbar={true}
                 />
+                <div>
+                    <h2>
+                        Bucket Configuration sample
+                    </h2>
+                    {
+                        this.state.buckets.map((b, i) =>
+                            <KanbanBucketConfigurator
+                                key={'BucketConfig' + i}
+                                index={i}
+                                bucket={b}
+                                update={this.updateBucket.bind(this)}
+                            />
+                        )
+                    }
+                </div>
             </div>
         );
     }
 
+    private updateBucket(index: number, value: IKanbanBucket) {
+        debugger;
+        const cstate = cloneDeep(this.state);
+        cstate.buckets[index] = clone(value);
+        this.setState(cstate);
+    }
 
-
-    private _toggleCompleted(taskId:  string): void {
+    private _toggleCompleted(taskId: string): void {
         //TODO
     }
-    private _allowMove(taskId:  string, prevBucket: IKanbanBucket, targetBucket: IKanbanBucket): boolean {
+    private _allowMove(taskId: string, prevBucket: IKanbanBucket, targetBucket: IKanbanBucket): boolean {
         if (prevBucket.bucket === 'Test2' && targetBucket.bucket === 'Test3') {
             return false;
         }
         return true;
     }
 
-    private _moved(taskId:  string, targetBucket: IKanbanBucket): void {
+    private _moved(taskId: string, targetBucket: IKanbanBucket): void {
         const elementsIndex = findIndex(this.state.tasks, element => element.taskId == taskId);
         let newArray = [...this.state.tasks];
         newArray[elementsIndex].bucket = targetBucket.bucket;
