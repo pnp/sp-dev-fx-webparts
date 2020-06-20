@@ -4,12 +4,16 @@ declare interface IKanbanBoardStrings {
   IsNotCompleted: string;
   AddTask: string;
   OpenDetails: string;
-  EditTaskBtn:string;
-  SaveTaskBtn:string;
-  SaveAddTaskBtn:string;
-  CloseTaskDialog:string;
-  AddTaskDlgHeadline:string;
-  EditTaskDlgHeadline:string;
+  EditTaskBtn: string;
+  SaveTaskBtn: string;
+  SaveAddTaskBtn: string;
+  CloseTaskDialog: string;
+  AddTaskDlgHeadline: string;
+  EditTaskDlgHeadline: string;
+
+  AssignedTo: string;
+  HtmlDescription: string;
+  Priority:string;
 }
 
 declare module 'KanbanBoardStrings' {

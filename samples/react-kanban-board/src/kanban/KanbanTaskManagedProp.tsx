@@ -6,6 +6,7 @@ import styles from './KanbanTaskManagedProp.module.scss';
 import { IKanbanTaskManagedProps, KanbanTaskMamagedPropertyType } from './IKanbanTask';
 import { IStackStyles, Stack } from 'office-ui-fabric-react/lib/Stack';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import { Persona, PersonaSize, PersonaPresence, IPersonaSharedProps, IPersonaProps } from 'office-ui-fabric-react';
 
 export interface IKanbanTaskManagedPropProps extends IKanbanTaskManagedProps { }
 
@@ -35,7 +36,7 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                 return (<span>{value} </span>);
                 break;
             case KanbanTaskMamagedPropertyType.number:
-                return (<span>{'' + value} </span>);
+                return (<span>{value} </span>);
                 //TODO  maybe Formater
                 break;
             case KanbanTaskMamagedPropertyType.percent:
@@ -44,22 +45,39 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                 break;
             case KanbanTaskMamagedPropertyType.html:
                 return (<span>{ReactHtmlParser(value)}</span>);
-                //TODO  maybe better Formater
                 break;
             case KanbanTaskMamagedPropertyType.person:
-                return (<span>TODO</span>);
-                //TODO 
+
+                return (<span>
+                    {value && (
+                        <Persona
+                            {...value}
+                            size={PersonaSize.size32}
+                            hidePersonaDetails={false} />
+                    )}
+                </span>);
                 break;
             case KanbanTaskMamagedPropertyType.persons:
-                return (<span>TODO</span>);
-                //TODO 
+                return (<span>
+                    {
+                        (value && (
+                            (value as IPersonaProps[]).map((p, i) => (<Persona
+                                key={'persona' + i}
+                                {...value}
+                                size={PersonaSize.size32}
+                                hidePersonaDetails={false}
+                            />))
+                            )
+                        )
+                    }
+                  };
+                </span>);
                 break;
             case KanbanTaskMamagedPropertyType.complex:
                 return (<span>{JSON.stringify(value)}</span>);
                 break;
             default:
                 throw "Unknow KanbanTaskMamagedPropertyType";
-
                 break;
         }
     }

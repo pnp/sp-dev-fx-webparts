@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './KanbanComponent.module.scss';
 import * as strings from 'KanbanBoardStrings';
 
-import { IKanbanTask } from './IKanbanTask';
+import { IKanbanTask, KanbanTaskMamagedPropertyType } from './IKanbanTask';
 import { IKanbanBoardTaskSettings } from './IKanbanBoardTaskSettings';
 import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
 import { IKanbanBoardRenderers } from './IKanbanBoardRenderers';
@@ -125,20 +125,20 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
         let renderer: (task?: IKanbanTask, bucket?: IKanbanBucket) => JSX.Element = () => (<div>Dialog Renderer Not Set</div>);
         let task: IKanbanTask = undefined;
         let bucket: IKanbanBucket = undefined;
-        let dialogheadline:string ='';
+        let dialogheadline: string = '';
         switch (this.state.dialogState) {
             case DialogState.Edit:
                 task = this.getTaskByID(this.state.openTaskId);
                 renderer = this.internalTaskEditRenderer.bind(this);
-                dialogheadline =strings.EditTaskDlgHeadline;
+                dialogheadline = strings.EditTaskDlgHeadline;
                 break;
             case DialogState.New:
                 renderer = this.internalTaskAddRenderer.bind(this);
-                dialogheadline =strings.AddTaskDlgHeadline;
+                dialogheadline = strings.AddTaskDlgHeadline;
                 break;
             default:
                 task = this.getTaskByID(this.state.openTaskId);
-                dialogheadline =task.title;
+                dialogheadline = task.title;
                 renderer = (this.props.renderers && this.props.renderers.taskDetail) ? this.props.renderers.taskDetail : this.internalTaskDetailRenderer.bind(this);
 
                 break;
@@ -171,12 +171,6 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
             </DialogFooter>
 
         </Dialog>);
-
-
-        // Error Not found or more than one
-
-        return (<div></div>);
-
     }
 
     private clickEditTask(): void {
@@ -193,7 +187,6 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
         }
     }
     private saveEditTask() {
-
         if (this.props.taskactions.editTaskSaved) {
             const edittask = clone(this.state.editTask);
             //check fist state and than event or in the other way
@@ -201,7 +194,6 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
             this.props.taskactions.editTaskSaved(edittask);
         } else {
             throw "allowEdit is Set but no handler is set";
-
         }
     }
     private saveAddTask() {
@@ -213,15 +205,36 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
             this.props.taskactions.editTaskSaved(edittask);
         } else {
             throw "allowAdd is Set but no handler is set";
-
         }
     }
 
 
 
     private internalTaskDetailRenderer(task: IKanbanTask): JSX.Element {
+        const  {tasksettings} = this.props;
         return (<Stack>
-           
+           {tasksettings && tasksettings.showPriority && ( 
+           <KanbanTaskManagedProp 
+            name="assignedTo"
+            displayName={strings.Priority}
+            type={KanbanTaskMamagedPropertyType.string }
+            value={task.priority}
+             key={'assignedToProp'} />
+             )} 
+            {tasksettings && tasksettings.showAssignedTo && (<KanbanTaskManagedProp 
+            name="assignedTo"
+            displayName={strings.AssignedTo}
+            type={KanbanTaskMamagedPropertyType.persons }
+            value={task.assignedTo}
+             key={'assignedToProp'} />
+             )}
+             <KanbanTaskManagedProp 
+            name="assignedTo"
+            displayName={strings.HtmlDescription}
+            type={KanbanTaskMamagedPropertyType.html }
+            value={task.htmlDescription}
+             key={'htmlDescriptionProp'} />
+             
             {task.mamagedProperties && (
                 task.mamagedProperties.map((p, i) => {
                     return (
@@ -229,7 +242,6 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                     );
                 })
             )}
-
         </Stack>
         );
     }

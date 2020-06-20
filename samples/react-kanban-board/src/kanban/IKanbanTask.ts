@@ -1,18 +1,23 @@
+import { IPersonaProps } from "office-ui-fabric-react/lib/Persona";
+
 export interface IKanbanTask {
-    taskId:  string;
+    taskId: string;
     title: string;
     isCompleted?: boolean;
+    assignedTo?: IPersonaProps[];
+    htmlDescription?:string;
+    priority?:string;
     bucket: string;
     mamagedProperties?: IKanbanTaskManagedProps[];
-    
+
 }
 
 export interface IKanbanTaskManagedProps {
     name: string;
     displayName?: string;
     type: KanbanTaskMamagedPropertyType;
-    value: any;
-    renderer?: (name: string, value: object, type:KanbanTaskMamagedPropertyType) => JSX.Element;
+    value: string | number | IPersonaProps | IPersonaProps[] | any;
+    renderer?: (name: string, value: object, type: KanbanTaskMamagedPropertyType) => JSX.Element;
 }
 
 /* 0 is bad because 
@@ -20,11 +25,11 @@ export interface IKanbanTaskManagedProps {
     if(value)  {is false}
 */
 export enum KanbanTaskMamagedPropertyType {
-    string=1,
-    number=2,
-    percent=3,
-    html=4,
-    person=5,
-    persons=6,
-    complex=7
+    string = 1,
+    number = 2,
+    percent = 3,
+    html = 4,
+    person = 5,
+    persons = 6,
+    complex = 7
 }

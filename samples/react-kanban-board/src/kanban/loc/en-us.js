@@ -9,7 +9,10 @@ define([], function () {
     "SaveTaskBtn": "Save and Close",
     "SaveAddTaskBtn": "Add and Close",
     "CloseTaskDialog": "Close",
-    "AddTaskDlgHeadline":"Add Task",
-    "EditTaskDlgHeadline":"Edit Task",
+    "AddTaskDlgHeadline": "Add Task",
+    "EditTaskDlgHeadline": "Edit Task",
+    "AssignedTo": "Assigned to",
+    "HtmlDescription": "Description",
+    "Priority": "Priority"
   }
 });
