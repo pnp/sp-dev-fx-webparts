@@ -59,17 +59,12 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
                     {showPriority && this.props.priority && (<div className={styles.priority}>{this.props.priority}</div>)}
 
                     {showAssignedTo && this.props.assignedTo && (<div className={styles.assignedto}>
-                        {
-                            this.props.assignedTo.map((p, i) => (
-                                <div key={'personawrapper' + i}>
-                                    <Persona
-                                        key={'persona' + i}
-                                        {...p}
-                                        size={PersonaSize.size32}
-                                        hidePersonaDetails={false}
-                                    />
-                                </div>))
-                        }
+                        <Persona
+                            key={'assingedto'}
+                            {...this.props.assignedTo}
+                            size={PersonaSize.size32}
+                            hidePersonaDetails={false}
+                        />
                     </div>)}
 
 

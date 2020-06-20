@@ -224,7 +224,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
             {tasksettings && tasksettings.showAssignedTo && (<KanbanTaskManagedProp 
             name="assignedTo"
             displayName={strings.AssignedTo}
-            type={KanbanTaskMamagedPropertyType.persons }
+            type={KanbanTaskMamagedPropertyType.person }
             value={task.assignedTo}
              key={'assignedToProp'} />
              )}
