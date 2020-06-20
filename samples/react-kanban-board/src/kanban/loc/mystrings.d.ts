@@ -13,7 +13,16 @@ declare interface IKanbanBoardStrings {
 
   AssignedTo: string;
   HtmlDescription: string;
-  Priority:string;
+  Priority: string;
+
+  BucketConfigInternalName: string;
+  BucketConfigHeadline: string;
+  BucketConfigPercentageComplete: string;
+  BucketConfigAllowAddTask: string;
+  BucketConfigUseColor: string;
+  BucketConfigSave: string;
+  BucketConfigReset: string;
+  Percent: string;
 }
 
 declare module 'KanbanBoardStrings' {

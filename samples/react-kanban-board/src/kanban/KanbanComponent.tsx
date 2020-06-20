@@ -16,7 +16,7 @@ import { IStackStyles, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { clone } from '@microsoft/sp-lodash-subset';
 
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { stringIsNullOrEmpty } from '@pnp/common';
+
 import { TooltipHost } from 'office-ui-fabric-react';
 
 export interface IKanbanComponentProps {
@@ -86,7 +86,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                     {
 
                         buckets.map((b) => {
-                            const merge = { ...b, ...this.state }
+                            const merge = { ...b, ...this.state };
                             return (<KanbanBucket
                                 key={b.bucket}
                                 {...merge}
@@ -275,7 +275,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
     private internalAddTask(targetbucket?: string) {
         let bucket: IKanbanBucket = undefined;
         if (bucket) {
-            const buckets = this.props.buckets.filter((p) => p.bucket === targetbucket)
+            const buckets = this.props.buckets.filter((p) => p.bucket === targetbucket);
             if (buckets.length === 1) {
                 bucket = clone(buckets[0]);
             } else {
@@ -414,5 +414,5 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                 onClick: () => console.log('Info')
             }
         ];
-    };
+    }
 }

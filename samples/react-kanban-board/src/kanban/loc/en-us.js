@@ -13,6 +13,15 @@ define([], function () {
     "EditTaskDlgHeadline": "Edit Task",
     "AssignedTo": "Assigned to",
     "HtmlDescription": "Description",
-    "Priority": "Priority"
+    "Priority": "Priority",
+
+    "BucketConfigInternalName": "Internal Name",
+    "BucketConfigHeadline": "Headline",
+    "BucketConfigPercentageComplete": "Bucket State Percentage Complete",
+    "BucketConfigAllowAddTask": "Add Task?",
+    "BucketConfigUseColor": "Use Color?",
+    "BucketConfigSave": "Save",
+    "BucketConfigReset": "Reset",
+    "Percent":"percent"
   }
 });
