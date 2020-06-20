@@ -2,7 +2,7 @@
 
 Thinking about Kanban component with Fluent Ui Components
 
-# current
+## current
 allowMove from one Bucket to the Other tested
 move task to other Bucket works
 
@@ -38,7 +38,8 @@ Something like this sould come out, but styling is currently bad
 Something like this sould come out, but styling is currently bad
 ![prototype](./sample.gif "prototype on 2nd day")
 
-IMPORTANT
+# IMPORTANT
+
 ```
 IKanbanTask {
     taskId:  string;
@@ -54,4 +55,22 @@ The second big thing is IE allows only to set the value 'text' event.dataTransfe
 event.dataTransfer.setData('xyz','1')
 Unexpected call to method or property access.
 ```
+
+
+# Next Steps Component:
+* think about Promise Task Actions, because actions are async
+* internalDislplayRenderer: Person / Persons
+* EditSchema To support Edit and New PNP Controls :)
+* BucketEdit Component (can be used in CustomPropertyPane)
+
+
+# Webpart Steps
+
+* PNP Placeholder Control for Config
+* PNP WebpartTitle Control
+* DataConnection
+* Usage of BucketEdit in pane
+* PNP Order pane Control
+
+
 

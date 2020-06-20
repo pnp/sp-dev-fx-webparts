@@ -13,7 +13,10 @@ import * as strings from 'KanbanBoardStrings';
 export interface IKanbanBucketProps extends IKanbanBucket {
     buckettasks: IKanbanTask[];
     tasksettings: IKanbanBoardTaskSettings;
-    taskactions: IKanbanBoardTaskActions;
+
+
+    toggleCompleted?: (taskId: string) => void;
+    addTask?: (bucket: string) => void;
 
     onDragStart: (event, taskId: string, bucket: string) => void;
     onDragOver: (event, targetbucket: string) => void;
@@ -50,7 +53,7 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
     */
     public render(): React.ReactElement<IKanbanBucketProps> {
         const { bucket, bucketheadline, color, buckettasks,
-            tasksettings, taskactions, percentageComplete,
+            tasksettings, percentageComplete,
             allowAddTask, overBucket, leavingTaskId, leavingBucket } = this.props;
 
         return (
@@ -71,19 +74,20 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                 {allowAddTask && (<ActionButton
                     iconProps={{ iconName: 'Add' }}
                     allowDisabledFocus={true}
-
+                    onClick={() => this.props.addTask(bucket)}
                 >
                     {strings.AddTask}
                 </ActionButton>)}
                 {
                     buckettasks.map((t) => {
-                        const merge = { ...t, ...tasksettings, ...taskactions };
+                        const merge = { ...t, ...tasksettings, };
                         const isMoving = (t.taskId === leavingTaskId && t.bucket === leavingBucket);
 
                         return (<div className={isMoving ? styles.placeholder : undefined} key={'' + t.taskId} >
                             <KanbanTask
                                 key={'task' + t.taskId}
                                 {...merge}
+                                toggleCompleted={this.props.toggleCompleted}
                                 isMoving={isMoving}
                                 openDetails={this.props.openDetails}
                                 onDragStart={(event) => this.props.onDragStart(event, t.taskId, t.bucket)}

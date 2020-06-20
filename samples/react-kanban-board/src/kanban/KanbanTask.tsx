@@ -8,9 +8,9 @@ import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
 import classNames from 'classnames';
 import { IconNames } from 'office-ui-fabric-react';
 
-export interface IKanbanTaskProps extends IKanbanTask, IKanbanBoardTaskSettings, IKanbanBoardTaskActions {
+export interface IKanbanTaskProps extends IKanbanTask, IKanbanBoardTaskSettings {
 
-
+    toggleCompleted?: (taskId:  string) => void;
     openDetails: (taskId: string) => void;
     onDragStart: (event) => void;
     onDragEnd: (event) => void;
