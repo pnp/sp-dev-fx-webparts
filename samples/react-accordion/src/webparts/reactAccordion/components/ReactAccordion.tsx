@@ -53,7 +53,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       event === null ||
       event === "") {
       let listItemsCollection = [...this.state.listItems];
-      this.setState({ items: listItemsCollection.splice(0, this.props.maxItemsPerPage) });
+      this.setState({ pagedItems: listItemsCollection.splice(0, this.props.maxItemsPerPage) });
     }
     else {
       var updatedList = [...this.state.listItems];
@@ -84,7 +84,8 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
 
         this.setState({
           status: "",
-          items: listItemsCollection.splice(0, this.props.maxItemsPerPage),
+          pagedItems: listItemsCollection.splice(0, this.props.maxItemsPerPage),
+          items: response.value,
           listItems: response.value,
           isLoading: false,
           loaderMessage: ""
@@ -92,6 +93,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       }, (error: any): void => {
         this.setState({
           status: 'Loading all items failed with error: ' + error,
+          pagedItems: [],
           items: [],
           isLoading: false,
           loaderMessage: ""
@@ -111,10 +113,10 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
     let _pagedButtonClick = (pageNumber: number, listData: any) => {
       let startIndex: number = (pageNumber - 1) * pageCountDivisor;
       let listItemsCollection = [...listData];
-      this.setState({ items: listItemsCollection.splice(startIndex, pageCountDivisor) });
+      this.setState({ pagedItems: listItemsCollection.splice(startIndex, pageCountDivisor) });
     };
 
-    const items: JSX.Element[] = this.state.items.map((item: IAccordionListItem, i: number): JSX.Element => {
+    const items: JSX.Element[] = this.state.pagedItems.map((item: IAccordionListItem, i: number): JSX.Element => {
       return (
         <AccordionItem>
           <AccordionItemTitle className="accordion__title">
