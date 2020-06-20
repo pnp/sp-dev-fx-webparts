@@ -116,7 +116,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       this.setState({ pagedItems: listItemsCollection.splice(startIndex, pageCountDivisor) });
     };
 
-    const items: JSX.Element[] = this.state.pagedItems.map((item: IAccordionListItem, i: number): JSX.Element => {
+    const pagedItems: JSX.Element[] = this.state.pagedItems.map((item: IAccordionListItem, i: number): JSX.Element => {
       return (
         <AccordionItem>
           <AccordionItemTitle className="accordion__title">
@@ -167,7 +167,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
             <div className='ms-Grid-col ms-u-lg12'>
               {this.state.status}
               <Accordion accordion={false}>
-                {items}
+                {pagedItems}
               </Accordion>
             </div>
           </div>
