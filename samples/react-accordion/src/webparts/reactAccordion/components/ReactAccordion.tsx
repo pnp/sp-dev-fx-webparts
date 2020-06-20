@@ -53,7 +53,10 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       event === null ||
       event === "") {
       let listItemsCollection = [...this.state.listItems];
-      this.setState({ pagedItems: listItemsCollection.splice(0, this.props.maxItemsPerPage) });
+      this.setState({
+        items: listItemsCollection,
+        pagedItems: listItemsCollection.slice(0, this.props.maxItemsPerPage)
+      });
     }
     else {
       var updatedList = [...this.state.listItems];
@@ -62,7 +65,10 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
           event.toLowerCase()) !== -1 || item.Description.toLowerCase().search(
             event.toLowerCase()) !== -1;
       });
-      this.setState({ items: updatedList });
+      this.setState({
+        items: updatedList,
+        pagedItems: updatedList.slice(0, this.props.maxItemsPerPage)
+      });
     }
   }
 
