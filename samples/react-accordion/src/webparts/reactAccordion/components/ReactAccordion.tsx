@@ -26,6 +26,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
     super(props);
     this.state = {
       status: this.listNotConfigured(this.props) ? 'Please configure list in Web Part properties' : 'Ready',
+      pagedItems: [],
       items: [],
       listItems: [],
       isLoading: false,
