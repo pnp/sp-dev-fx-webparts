@@ -105,7 +105,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
   public render(): React.ReactElement<IReactAccordionProps> {
     let displayLoader;
     let faqTitle;
-    let { listItems } = this.state;
+    let { items } = this.state;
     let pageCountDivisor: number = this.props.maxItemsPerPage;
     let pageCount: number;
     let pageButtons = [];
@@ -142,11 +142,11 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       displayLoader = (null);
     }
 
-    if (this.state.listItems.length > 0) {
-      pageCount = Math.ceil(this.state.listItems.length / pageCountDivisor);
+    if (this.state.items.length > 0) {
+      pageCount = Math.ceil(this.state.items.length / pageCountDivisor);
     }
     for (let i = 0; i < pageCount; i++) {
-      pageButtons.push(<PrimaryButton onClick={() => { _pagedButtonClick(i + 1, listItems); }}> {i + 1} </PrimaryButton>);
+      pageButtons.push(<PrimaryButton onClick={() => { _pagedButtonClick(i + 1, items); }}> {i + 1} </PrimaryButton>);
     }
     return (
       <div className={styles.reactAccordion}>
