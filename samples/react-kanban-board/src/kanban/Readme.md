@@ -5,6 +5,7 @@ Thinking about Kanban component with Fluent Ui Components
 ## current
 allowMove from one Bucket to the Other tested
 move task to other Bucket works
+internalDislplayRenderer: Person / Persons 
 
 playing with drag visibility
 
@@ -59,7 +60,7 @@ Unexpected call to method or property access.
 
 # Next Steps Component:
 * think about Promise Task Actions, because actions are async
-* internalDislplayRenderer: Person / Persons
+
 * EditSchema To support Edit and New PNP Controls :)
 * BucketEdit Component (can be used in CustomPropertyPane)
 

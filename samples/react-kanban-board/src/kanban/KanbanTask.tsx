@@ -6,11 +6,11 @@ import { IKanbanTask } from './IKanbanTask';
 import { IKanbanBoardTaskSettings } from './IKanbanBoardTaskSettings';
 import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
 import classNames from 'classnames';
-import { IconNames } from 'office-ui-fabric-react';
+import { IconNames, Persona, PersonaSize } from 'office-ui-fabric-react';
 
 export interface IKanbanTaskProps extends IKanbanTask, IKanbanBoardTaskSettings {
 
-    toggleCompleted?: (taskId:  string) => void;
+    toggleCompleted?: (taskId: string) => void;
     openDetails: (taskId: string) => void;
     onDragStart: (event) => void;
     onDragEnd: (event) => void;
@@ -26,7 +26,7 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
     }
     public render(): React.ReactElement<IKanbanTaskProps> {
 
-        const { title, showLabels, showPriority, showAssignedTo, isCompleted, isMoving, showTaskDetailsButton } = this.props;
+        const { title, showPriority, showAssignedTo, isCompleted, isMoving, showTaskDetailsButton } = this.props;
         const showCompleted = !!this.props.toggleCompleted;
         const iconCompleted = { iconName: isCompleted ? 'RadioBtnOn' : 'RadioBtnOff' };
         return (
@@ -56,9 +56,23 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
 
                 </div>
                 <div className={styles.membersAndLabels}>
-                    {showAssignedTo && (<div className={styles.assignedto}></div>)}
-                    {showLabels && (<div className={styles.labels}></div>)}
-                    {showPriority && (<div className={styles.priority}></div>)}
+                    {showPriority && this.props.priority && (<div className={styles.priority}>{this.props.priority}</div>)}
+
+                    {showAssignedTo && this.props.assignedTo && (<div className={styles.assignedto}>
+                        {
+                            this.props.assignedTo.map((p, i) => (
+                                <div key={'personawrapper' + i}>
+                                    <Persona
+                                        key={'persona' + i}
+                                        {...p}
+                                        size={PersonaSize.size32}
+                                        hidePersonaDetails={false}
+                                    />
+                                </div>))
+                        }
+                    </div>)}
+
+
                 </div>
             </div>
         );
