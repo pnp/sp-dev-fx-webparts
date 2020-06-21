@@ -55,7 +55,6 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
         const { bucket, bucketheadline, color, buckettasks,
             tasksettings, percentageComplete,
             allowAddTask, overBucket, leavingTaskId, leavingBucket } = this.props;
-debugger;
         return (
             <div
                 className={classNames({ [styles.bucket]: true, [styles.dragover]: !!(overBucket && overBucket === bucket) })}

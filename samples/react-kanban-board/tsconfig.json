@@ -29,7 +29,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts", "src/webparts/kanbanBoard/components/bucketOrder.tsx"
   ],
   "exclude": [
     "node_modules",

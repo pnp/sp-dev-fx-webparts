@@ -103,6 +103,8 @@ export default class KanbanBucketConfigurator extends React.Component<IKanbanBuc
                         this.setState({ bucket: bucket });
                     }}
                 />
+                 {/*
+                 TODO editmapping
                 <Toggle label={strings.BucketConfigAllowAddTask} onText="On" offText="Off" inlineLabel
                     checked={statebucket.allowAddTask}
                     onChange={(ev, checked) => {
@@ -110,6 +112,7 @@ export default class KanbanBucketConfigurator extends React.Component<IKanbanBuc
                         bucket.allowAddTask = checked;
                         this.setState({ bucket: bucket });
                     }} />
+                */}
                 <Toggle label={strings.BucketConfigUseColor} onText="On" offText="Off" inlineLabel
                     checked={this.state.useColor}
                     onChange={(ev, checked) => { this.setState({ useColor: checked }); }} />
@@ -160,7 +163,6 @@ export default class KanbanBucketConfigurator extends React.Component<IKanbanBuc
         });
     }
     private submitData():void {
-        debugger;
         const newbucket: IKanbanBucket = clone(this.state.bucket);
         if (!this.state.useColor) {
             newbucket.color = undefined;
