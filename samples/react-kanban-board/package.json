@@ -21,6 +21,8 @@
     "@pnp/odata": "^1.3.3",
     "@pnp/polyfill-ie11": "^2.0.2",
     "@pnp/sp": "^1.3.3",
+    "@pnp/spfx-controls-react": "1.19.0",
+    "@pnp/spfx-property-controls": "1.19.0",
     "@types/es6-promise": "0.0.33",
     "@types/react": "16.7.22",
     "@types/react-dom": "16.8.0",
