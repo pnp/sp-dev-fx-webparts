@@ -33,7 +33,7 @@ export default class MockKanbanService implements ISPKanbanService {
                         name: 'PercentComplete',
                         displayName: strings.PercentComplete,
                         type: KanbanTaskMamagedPropertyType.percent,
-                        value: 10*x
+                        value: x/10 /* 10/20 30 .. percent */
                     }
                 ]
 
