@@ -2,6 +2,7 @@ define([], function() {
   return {
     "PropertyPaneDescription": "Description",
     "BasicGroupName": "Basic Configuration",
-    "ListTitleFieldLabel": "List Title"
+    "ListTitleFieldLabel": "List Title",
+    "PercentComplete": "Percent Complete"
   }
 });

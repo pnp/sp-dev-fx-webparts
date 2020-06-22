@@ -1,14 +1,15 @@
 import * as React from 'react';
 import styles from './KanbanBoardV2.module.scss';
+import * as strings from 'KanbanBoardWebPartStrings';
 import { DisplayMode, Guid } from '@microsoft/sp-core-library';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 import { IKanbanBucket } from '../../../kanban/IKanbanBucket';
-import { IKanbanTask } from '../../../kanban/IKanbanTask';
+import { IKanbanTask, KanbanTaskMamagedPropertyType } from '../../../kanban/IKanbanTask';
 import KanbanComponent from '../../../kanban/KanbanComponent';
-import { findIndex, clone, isEqual } from '@microsoft/sp-lodash-subset';
+import { findIndex, clone, isEqual, cloneDeep } from '@microsoft/sp-lodash-subset';
 import { sp } from '@pnp/sp';
 import { mergeBucketsWithChoices } from './helper';
 
@@ -20,6 +21,7 @@ export interface IKanbanBoardV2Props {
     context: WebPartContext;
     listId: string;
     configuredBuckets: IKanbanBucket[]; // need mearge with current readed
+    statekey: string; // force refresh ;)
 }
 
 export interface IKanbanBoardV2State {
@@ -47,11 +49,12 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         this._getData();
     }
     public shouldComponentUpdate(nextProps: IKanbanBoardV2Props, nextState: IKanbanBoardV2State): boolean {
-
         if (!isEqual(this.state, nextState)) { return true; }
-        if (!isEqual(this.props, nextProps)) { 
-            console.log('change in Props found')
-            return true; }
+        if (!isEqual(this.props, nextProps)) {
+            //stateKey
+            return true;
+        }
+
         return false;
     }
     public componentDidUpdate(prevProps: IKanbanBoardV2Props) {
@@ -59,7 +62,11 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         if (this.props.listId !== prevProps.listId) {
             this._getData();
         }
-
+        const currentPropBuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.props.configuredBuckets, this.choices);
+        if (!isEqual(this.state.buckets, currentPropBuckets)) {
+            this.setState({ buckets: cloneDeep(currentPropBuckets) });
+        }
+        /*
         const currentbuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.props.configuredBuckets, this.choices);
         console.log(this.props.configuredBuckets);
         console.log(currentbuckets);
@@ -68,7 +75,7 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
 
             this.setState({ buckets: currentbuckets });
 
-        }
+        }*/
     }
 
     public render(): React.ReactElement<IKanbanBoardV2Props> {
@@ -123,7 +130,15 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         const elementsIndex = findIndex(this.state.tasks, element => element.taskId == taskId);
         let newArray = [...this.state.tasks]; // same as Clone
         newArray[elementsIndex].bucket = targetBucket.bucket;
-        this.setState({ tasks: newArray });
+        sp.web.lists.getById(this.props.listId).items.getById(+taskId).update({
+            Status: targetBucket.bucket
+        }).then(res => {
+            console.log("Task updated");
+            this.setState({ tasks: newArray });
+        }).catch(error=> {
+            this.setState({ errorMessage: 'Error Update Task Item' });
+        });
+
 
     }
 
@@ -146,16 +161,44 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
                         this.setState({ isConfigured: false, loading: false, errorMessage: 'No Buckets found' });
                         return;
                     }
-                    sp.web.lists.getById(listId).items.getAll().then(res => {
-                        //Map Items to task
-                        this.setState({
-                            isConfigured: true,
-                            loading: false,
-                            errorMessage: undefined,
-                            buckets: currentbuckets,
-                            tasks: []
+                    const odatafiels: string[] = ['AssignedTo/Id', 'AssignedTo/Title', 'AssignedTo/Name', 'AssignedTo/EMail',
+                        'ID', 'Title', 'Status', 'Priority', 'PercentComplete', 'Body'
+                    ];
+
+                    sp.web.lists.getById(listId).items
+                        .select(odatafiels.join(','))
+                        .expand('AssignedTo').getAll().then(res => {
+                            const tasks: IKanbanTask[] = res.map((x) => {
+                                return {
+                                    taskId: '' + x.ID,
+                                    title: x.Title,
+                                    htmlDescription: x.Body,
+                                    assignedTo: (x.AssignedTo && (x.AssignedTo).length === 1) ?
+                                        {
+                                            text: x.AssignedTo[0].Title
+                                        }
+                                        : undefined,
+                                    priority: x.Priority,
+                                    bucket: x.Status,
+                                    mamagedProperties: [
+                                        {
+                                            name: 'PercentComplete',
+                                            displayName: strings.PercentComplete,
+                                            type: KanbanTaskMamagedPropertyType.percent,
+                                            value: x.PercentComplete
+                                        }
+                                    ]
+
+                                };
+                            });
+                            this.setState({
+                                isConfigured: true,
+                                loading: false,
+                                errorMessage: undefined,
+                                buckets: currentbuckets,
+                                tasks: tasks
+                            });
                         });
-                    });
 
 
                 });

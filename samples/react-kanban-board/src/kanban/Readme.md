@@ -67,11 +67,14 @@ Unexpected call to method or property access.
 
 # Webpart Steps
 
+
+* DataConnection 
+  ** Task missing
+* BucketEdit Does not refresh Component
+
+
+# Webpart Steps Done
 * PNP Placeholder Control for Config
 * PNP WebpartTitle Control
-* DataConnection
 * Usage of BucketEdit in pane
 * PNP Order pane Control
-
-
-
