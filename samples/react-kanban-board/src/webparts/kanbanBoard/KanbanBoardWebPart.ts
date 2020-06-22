@@ -24,6 +24,9 @@ import { mergeBucketsWithChoices } from './components/helper';
 import { PropertyFieldMessage } from '@pnp/spfx-property-controls/lib/PropertyFieldMessage';
 import { MessageBarType } from 'office-ui-fabric-react';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
+import { ISPKanbanService } from './services/ISPKanbanService';
+import SPKanbanService from './services/SPKanbanService';
+import MockKanbanService from './services/MockKanbanService';
 
 export interface IKanbanBoardWebPartProps {
   hideWPTitle: boolean;
@@ -36,6 +39,7 @@ export interface IKanbanBoardWebPartProps {
 
 export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoardWebPartProps> {
   private kanbanComponent = null;
+  private dataService: ISPKanbanService;
   private statekey: string = Date.now().toString();
   public onInit(): Promise<void> {
 
@@ -44,6 +48,11 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
       sp.setup({
         spfxContext: this.context
       });
+      if (Environment.type == EnvironmentType.Local || Environment.type == EnvironmentType.Test) {
+        this.dataService=  new MockKanbanService();
+      } else {
+        this.dataService = new SPKanbanService();
+      }
 
     });
   }
@@ -134,7 +143,6 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
           })
         ]
       });
-
     if (this.properties.listId && this.properties.buckets && this.properties.buckets.length > 1) {
       generalgroups.push(
         {
@@ -152,9 +160,6 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         }
       );
     }
-
-
-
     propertypages.push({
       groups: generalgroups
     });
@@ -179,10 +184,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
           ]
         });
       });
-
     }
-
-
     return {
       pages: propertypages
     };
@@ -201,54 +203,28 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
       const bucketindex: number = +propertyPath.split('_')[1];
       newbuckets[bucketindex] = newValue;
       //maybe better to make a array control (Update)
-      
+
       this.onPropertyPaneFieldChanged("buckets", oribuckets, newbuckets);
       this.properties.buckets = newbuckets;
       this.context.propertyPane.refresh();
-     this.render();
-
+      this.render();
     } else {
       throw "propertypath is not a bucket";
-
     }
-
-
-
   }
 
   private refreshBucket(): void {
     const listId = this.properties.listId;
     if (!listId || listId.length === 0) { return; }
-
-    sp.web.lists.getById(listId).fields.getByInternalNameOrTitle("Status").get()
-      .then(status => {
-
-        const cols: string[] = status.Choices.map((val, index) => {
-          return val;
-        });
-        //matching with existing configured buckets
-        const currentbuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.properties.buckets, cols);
-        if (!currentbuckets) {
-          return;
-        }
-        this.properties.buckets = currentbuckets;
-        this.context.propertyPane.refresh();
-      });
-
+    this.dataService.getBuckets(listId).then((x) => {
+      const currentbuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.properties.buckets, x);
+      if (!currentbuckets) {
+        return;
+      }
+      this.properties.buckets = currentbuckets;
+      this.context.propertyPane.refresh();
+    }
+    );
   }
 
-  protected onPropertyPaneConfigurationStart() {
-    // Use the list template ID to locate both the old style task lists (107) and newer task lists (171) 
-    /*
-     sp.web.lists.filter("BaseTemplate eq 171 or BaseTemplate eq 107").select("Title").get().then(res => {
-       this.properties.lists = res.map((val, index) => {
-         return {
-           key: val.Title,
-           text: val.Title
-         };
-       });
-       this.context.propertyPane.refresh();
-     });
-     */
-  }
 }

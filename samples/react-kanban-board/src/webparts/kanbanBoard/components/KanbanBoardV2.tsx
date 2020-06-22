@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './KanbanBoardV2.module.scss';
 import * as strings from 'KanbanBoardWebPartStrings';
-import { DisplayMode, Guid } from '@microsoft/sp-core-library';
+import { DisplayMode, Guid, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { WebPartContext } from '@microsoft/sp-webpart-base';
@@ -12,6 +12,9 @@ import KanbanComponent from '../../../kanban/KanbanComponent';
 import { findIndex, clone, isEqual, cloneDeep } from '@microsoft/sp-lodash-subset';
 import { sp } from '@pnp/sp';
 import { mergeBucketsWithChoices } from './helper';
+import { ISPKanbanService } from '../services/ISPKanbanService';
+import SPKanbanService from '../services/SPKanbanService';
+import MockKanbanService from '../services/MockKanbanService';
 
 export interface IKanbanBoardV2Props {
     hideWPTitle: boolean;
@@ -35,6 +38,7 @@ export interface IKanbanBoardV2State {
 
 export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, IKanbanBoardV2State> {
     private choices: string[] = [];
+    private dataService: ISPKanbanService;
     constructor(props: IKanbanBoardV2Props) {
         super(props);
 
@@ -46,6 +50,11 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         };
     }
     public componentDidMount(): void {
+        if (Environment.type == EnvironmentType.Local || Environment.type == EnvironmentType.Test) {
+            this.dataService=  new MockKanbanService();
+        } else {
+            this.dataService = new SPKanbanService();
+        }
         this._getData();
     }
     public shouldComponentUpdate(nextProps: IKanbanBoardV2Props, nextState: IKanbanBoardV2State): boolean {
@@ -66,16 +75,7 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         if (!isEqual(this.state.buckets, currentPropBuckets)) {
             this.setState({ buckets: cloneDeep(currentPropBuckets) });
         }
-        /*
-        const currentbuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.props.configuredBuckets, this.choices);
-        console.log(this.props.configuredBuckets);
-        console.log(currentbuckets);
-        console.log(this.state.buckets);
-        if (!isEqual(this.state.buckets, currentbuckets)) {
 
-            this.setState({ buckets: currentbuckets });
-
-        }*/
     }
 
     public render(): React.ReactElement<IKanbanBoardV2Props> {
@@ -130,14 +130,13 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         const elementsIndex = findIndex(this.state.tasks, element => element.taskId == taskId);
         let newArray = [...this.state.tasks]; // same as Clone
         newArray[elementsIndex].bucket = targetBucket.bucket;
-        sp.web.lists.getById(this.props.listId).items.getById(+taskId).update({
-            Status: targetBucket.bucket
-        }).then(res => {
-            console.log("Task updated");
-            this.setState({ tasks: newArray });
-        }).catch(error=> {
-            this.setState({ errorMessage: 'Error Update Task Item' });
-        });
+        this.dataService.updateTaskBucketMove(this.props.listId, +taskId, targetBucket.bucket)
+            .then(res => {
+                console.log("Task updated");
+                this.setState({ tasks: newArray });
+            }).catch(error => {
+                this.setState({ errorMessage: 'Error Update Task Item' });
+            });
 
 
     }
@@ -149,59 +148,24 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
             this.setState({ isConfigured: false, loading: false });
         } else {
             const listId: string = this.props.listId;
-            sp.web.lists.getById(listId).fields.getByInternalNameOrTitle("Status").get()
-                .then(status => {
-
-                    this.choices = status.Choices.map((val, index) => {
-                        return val;
+            this.dataService.getBuckets(listId).then((choices) => {
+                this.choices = choices;
+                const currentbuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.props.configuredBuckets, this.choices);
+                if (!currentbuckets) {
+                    this.setState({ isConfigured: false, loading: false, errorMessage: 'No Buckets found' });
+                    return;
+                }
+                this.dataService.getAllTasks(listId).then((tasks) => {
+                    this.setState({
+                        isConfigured: true,
+                        loading: false,
+                        errorMessage: undefined,
+                        buckets: currentbuckets,
+                        tasks: tasks
                     });
-                    //matching with existing configured buckets
-                    const currentbuckets: IKanbanBucket[] = mergeBucketsWithChoices(this.props.configuredBuckets, this.choices);
-                    if (!currentbuckets) {
-                        this.setState({ isConfigured: false, loading: false, errorMessage: 'No Buckets found' });
-                        return;
-                    }
-                    const odatafiels: string[] = ['AssignedTo/Id', 'AssignedTo/Title', 'AssignedTo/Name', 'AssignedTo/EMail',
-                        'ID', 'Title', 'Status', 'Priority', 'PercentComplete', 'Body'
-                    ];
-
-                    sp.web.lists.getById(listId).items
-                        .select(odatafiels.join(','))
-                        .expand('AssignedTo').getAll().then(res => {
-                            const tasks: IKanbanTask[] = res.map((x) => {
-                                return {
-                                    taskId: '' + x.ID,
-                                    title: x.Title,
-                                    htmlDescription: x.Body,
-                                    assignedTo: (x.AssignedTo && (x.AssignedTo).length === 1) ?
-                                        {
-                                            text: x.AssignedTo[0].Title
-                                        }
-                                        : undefined,
-                                    priority: x.Priority,
-                                    bucket: x.Status,
-                                    mamagedProperties: [
-                                        {
-                                            name: 'PercentComplete',
-                                            displayName: strings.PercentComplete,
-                                            type: KanbanTaskMamagedPropertyType.percent,
-                                            value: x.PercentComplete
-                                        }
-                                    ]
-
-                                };
-                            });
-                            this.setState({
-                                isConfigured: true,
-                                loading: false,
-                                errorMessage: undefined,
-                                buckets: currentbuckets,
-                                tasks: tasks
-                            });
-                        });
-
-
                 });
+
+            });
             this.setState({ isConfigured: true, loading: true });
         }
 
