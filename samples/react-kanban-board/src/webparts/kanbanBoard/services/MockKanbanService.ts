@@ -2,7 +2,7 @@ import { ISPKanbanService } from "./ISPKanbanService";
 import "@pnp/polyfill-ie11";
 import { sp } from '@pnp/sp';
 import { IKanbanTask, KanbanTaskMamagedPropertyType } from "../../../kanban/IKanbanTask";
-import * as strings from 'KanbanBoardWebPartStrings'
+import * as strings from 'KanbanBoardWebPartStrings';
 
 export default class MockKanbanService implements ISPKanbanService {
 

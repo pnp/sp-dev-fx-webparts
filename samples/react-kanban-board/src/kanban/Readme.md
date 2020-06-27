@@ -1,15 +1,43 @@
-# its only Prototyping
 
-Thinking about Kanban component with Fluent Ui Components
+# Next Steps Component:
+* think about Promise Task Actions, because actions are async
+* EditSchema To support Edit
+-------------------------------
+# KanbanComponent Control
 
-## current
-allowMove from one Bucket to the Other tested
-move task to other Bucket works
-internalDislplayRenderer: Person / Persons 
-BucketEdit Component (can be used in CustomPropertyPane)
+This control renders a KanbanBoard  which can be used to show Tasks and move it from one State to an Other.   
 
-playing with drag visibility
+**Control in Action**
 
+![KanbanBoard control](../assets/KanbanBoard.gif)
+
+
+## How to use this control in your solutions
+
+ this component is not Extracted as an NPM Package 
+ Copy this Folder 
+In the Files ```MockKanban.tsx``` you can find many Configuration Options
+
+
+```typescript
+ <KanbanComponent
+                    buckets={buckets}
+                    tasks={tasks}
+                    tasksettings={{
+                        showPriority: true,
+                        showAssignedTo: true,
+                        showTaskDetailsButton: true
+                    }
+                    }
+                    taskactions={{
+                        toggleCompleted: this._toggleCompleted.bind(this),
+                        allowMove: this._allowMove.bind(this),
+                        moved: this._moved.bind(this),
+                    }}
+                    showCommandbar={true}
+                />
+
+```
 Bucket
 ```
   buckets:[
@@ -21,10 +49,6 @@ Bucket
             ],
 
 ```
-with such a structure its possible to use 
-PropertyFieldOrder 
-PropertyFieldColorPicker
-or a wrapper to warp  PropertyFieldColorPicker with some other in a Custom Control
 
 Task
 ```
@@ -34,14 +58,81 @@ Task
 {taskId: '4', title:'test 4',bucket:'Test4'},
 {taskId: '5', title:'test 5',bucket:'Test3'},
 ```
-Something like this sould come out, but styling is currently bad
-![prototype](./img1.PNG "prototype")
 
-Something like this sould come out, but styling is currently bad
-![prototype](./sample.gif "prototype on 2nd day")
 
-# IMPORTANT
+## Implementation
 
+The KanbanBoard control can be configured with the following properties:
+
+### IKanbanBucket
+| Property | Type | Required | Description | Default |
+| ---- | ---- | ---- | ---- | ---- |
+
+ bucket:string;
+    bucketheadline:string;
+    percentageComplete: number;
+    color?:string;
+    allowAddTask?:boolean;
+### IKanbanTask
+| Property | Type | Required | Description | Default |
+| ---- | ---- | ---- | ---- | ---- |
+  taskId: string;
+    title: string;
+    isCompleted?: boolean;
+    assignedTo?: IPersonaProps;
+    htmlDescription?:string;
+    priority?:string;
+    bucket: string;
+    mamagedProperties?: IKanbanTaskManagedProps[];
+
+### IKanbanComponentProps
+
+| Property | Type | Required | Description | Default |
+| ---- | ---- | ---- | ---- | ---- |
+
+
+    
+#### IKanbanBoardTaskSettings
+| Property | Type | Required | Description | Default |
+| ---- | ---- | ---- | ---- | ---- |
+#### IKanbanBoardTaskActions
+| Property | Type | Required | Description | Default |
+| ---- | ---- | ---- | ---- | ---- |
+#### IKanbanBoardRenderers 
+| Property | Type | Required | Description | Default |
+| ---- | ---- | ---- | ---- | ---- |
+#### IKanbanTaskManagedProps
+| Property | Type | Required | Description | Default |
+| ---- | ---- | ---- | ---- | ---- |
+
+IPersonaProps reference to Fluent UI
+
+## Samples
+
+### Custom Detail View Renderer
+```typescript
+
+```
+
+### Use SharePoint New and Edit Form 
+this is the Classic Form on the ListItems
+```typescript
+
+```
+
+### Use EditSchema to Configure New and Edit Form in this Component
+ this functionality supports only some Field Types
+```typescript
+
+```
+
+### Disallow Move from One Bucket to an Other
+ this functionality supports only some Field Types
+```typescript
+
+```
+
+## Leanings
 ```
 IKanbanTask {
     taskId:  string;
@@ -57,24 +148,3 @@ The second big thing is IE allows only to set the value 'text' event.dataTransfe
 event.dataTransfer.setData('xyz','1')
 Unexpected call to method or property access.
 ```
-
-
-# Next Steps Component:
-* think about Promise Task Actions, because actions are async
-* EditSchema To support Edit and New PNP Controls :)
-
-
-
-# Webpart Steps
-
-
-* DataConnection 
-  ** Task missing
-* BucketEdit Does not refresh Component
-
-
-# Webpart Steps Done
-* PNP Placeholder Control for Config
-* PNP WebpartTitle Control
-* Usage of BucketEdit in pane
-* PNP Order pane Control

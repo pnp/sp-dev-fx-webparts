@@ -58,19 +58,6 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
   }
 
   public render(): void {
-    /*
-      const element: React.ReactElement<IKanbanBoardProps > = React.createElement(
-        KanbanBoard,
-        {
-          listTitle: this.properties.listTitle,
-          webUrl: this.context.pageContext.web.absoluteUrl
-        }
-      );
-      */
-    /*
-     const element: React.ReactElement<IMockKanbanProps > = React.createElement(
-      MockKanban,{});
-  */
     console.log('bucket render webpart');
     console.log(this.properties.buckets);
     const element: React.ReactElement<IKanbanBoardV2Props> = React.createElement(

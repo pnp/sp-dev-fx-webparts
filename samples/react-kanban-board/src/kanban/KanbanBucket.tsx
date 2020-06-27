@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import * as strings from 'KanbanBoardStrings';
 
 export interface IKanbanBucketProps extends IKanbanBucket {
+
     buckettasks: IKanbanTask[];
     tasksettings: IKanbanBoardTaskSettings;
 
@@ -19,12 +20,10 @@ export interface IKanbanBucketProps extends IKanbanBucket {
     addTask?: (bucket: string) => void;
 
     onDragStart: (event, taskId: string, bucket: string) => void;
-    onDragOver: (event, targetbucket: string) => void;
-    onDragLeave: (event, targetbucket: string) => void;
-    onDrop: (event, targetbucket: string) => void;
+    
     onDragEnd: (event, taskId: string, bucket: string) => void;
 
-
+    
 
     leavingTaskId?: string;
     leavingBucket?: string;
@@ -52,16 +51,16 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
     hope this will be translated 
     */
     public render(): React.ReactElement<IKanbanBucketProps> {
-        const { bucket, bucketheadline, color, buckettasks,
+        const { bucket, bucketheadline, color, buckettasks, 
             tasksettings, percentageComplete,
             allowAddTask, overBucket, leavingTaskId, leavingBucket } = this.props;
+            
         return (
             <div
-                className={classNames({ [styles.bucket]: true, [styles.dragover]: !!(overBucket && overBucket === bucket) })}
+               
+                className={styles.bucket}
                 key={bucket}
-                onDragOver={(event) => this.props.onDragOver(event, bucket)}
-                onDragLeave={(event) => this.props.onDragLeave(event, bucket)}
-                onDrop={(event) => this.props.onDrop(event, bucket)}
+                
             >
                 <div className={styles.headline}
 
@@ -77,12 +76,15 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                 >
                     {strings.AddTask}
                 </ActionButton>)}
+                <div className={styles.taskArea}>
                 {
                     buckettasks.map((t) => {
                         const merge = { ...t, ...tasksettings, };
                         const isMoving = (t.taskId === leavingTaskId && t.bucket === leavingBucket);
 
-                        return (<div className={isMoving ? styles.placeholder : undefined} key={'' + t.taskId} >
+                        return (<div 
+                        className={styles.taskplaceholder + (isMoving ? styles.placeholder : '')} 
+                        key={'' + t.taskId} >
                             <KanbanTask
                                 key={'task' + t.taskId}
                                 {...merge}
@@ -95,6 +97,7 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
                         );
                     })
                 }
+                </div>
             </div >
         );
     }

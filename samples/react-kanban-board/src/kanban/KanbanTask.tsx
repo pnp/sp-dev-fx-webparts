@@ -6,7 +6,7 @@ import { IKanbanTask } from './IKanbanTask';
 import { IKanbanBoardTaskSettings } from './IKanbanBoardTaskSettings';
 import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
 import classNames from 'classnames';
-import { IconNames, Persona, PersonaSize } from 'office-ui-fabric-react';
+import { IconNames, Persona, PersonaSize, Stack } from 'office-ui-fabric-react';
 
 export interface IKanbanTaskProps extends IKanbanTask, IKanbanBoardTaskSettings {
 
@@ -29,29 +29,33 @@ export default class KanbanTask extends React.Component<IKanbanTaskProps, IKanba
         const { title, showPriority, showAssignedTo, isCompleted, isMoving, showTaskDetailsButton } = this.props;
         const showCompleted = !!this.props.toggleCompleted;
         const iconCompleted = { iconName: isCompleted ? 'RadioBtnOn' : 'RadioBtnOff' };
+        /*
+        className={classNames({ [styles.taskcard]: true, [styles.moving]: isMoving })}
+        */
         return (
-            <div className={classNames({ [styles.taskcard]: true, [styles.moving]: isMoving })}
+            <div
+                className={classNames({ [styles.taskcard]: true, [styles.moving]: isMoving })}
                 onDragStart={this.props.onDragStart}
                 onDragEnd={this.props.onDragEnd}
                 draggable
             >
                 <div className={styles.titlerow}>
                     {showCompleted && (
-                        <IconButton
+                        <div className={styles.isCompleted} ><IconButton
                             iconProps={iconCompleted}
                             title={isCompleted ? strings.IsCompleted : strings.IsNotCompleted}
                             ariaLabel={isCompleted ? strings.IsCompleted : strings.IsNotCompleted}
                             onClick={this._toggleCompleted.bind(this)}
-                        />)
+                        /></div>)
                     }
                     <div className={styles.title}>{title}</div>
                     {showTaskDetailsButton && (
-                        <IconButton
+                        <div className={styles.details}><IconButton
                             iconProps={{ iconName: 'More' }}
                             title={strings.OpenDetails}
                             ariaLabel={strings.OpenDetails}
                             onClick={this._openDetails.bind(this)}
-                        />)
+                        /></div>)
                     }
 
                 </div>
