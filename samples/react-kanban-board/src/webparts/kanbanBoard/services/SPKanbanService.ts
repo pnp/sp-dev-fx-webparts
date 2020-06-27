@@ -2,7 +2,7 @@ import { ISPKanbanService } from "./ISPKanbanService";
 import "@pnp/polyfill-ie11";
 import { sp } from '@pnp/sp';
 import { IKanbanTask, KanbanTaskMamagedPropertyType } from "../../../kanban/IKanbanTask";
-import * as strings from 'KanbanBoardWebPartStrings'
+import * as strings from 'KanbanBoardWebPartStrings';
 
 export default class SPKanbanService implements ISPKanbanService {
 
@@ -10,7 +10,7 @@ export default class SPKanbanService implements ISPKanbanService {
     public updateTaskBucketMove(listid: string, taskId: number, bucket: string): Promise<boolean> {
         return sp.web.lists.getById(listid).items.getById(+taskId).update({
             Status: bucket
-        }).then(() => { return true; })
+        }).then(() => { return true; });
     }
     public getAllTasks(listId: string, ): Promise<IKanbanTask[]> {
 
