@@ -9,7 +9,7 @@ plugins:
     - redirects:
         redirect_maps:
             'samples/framework.md': '../index.md'
-            'samples/framework': 'https://sharepoint.github.io/sp-dev-fx-webparts/'
+            'samples/framework': 'https://pnp.github.io/sp-dev-fx-webparts/'
 nav:
   - Samples:
     - By Framework: index.md
@@ -60,6 +60,16 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - framework: React
+      spfx: 1.10.0
+      title: Accordion Web Part
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion
+      name: react-accordion
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion/assets/previewAccordion.PNG
+      author: Gautam Sheth, Abhishek Garg
+      summary: This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format.
+      modifiedtext: June 22, 2020
+      modified: 2020-06-22
     - framework: React
       spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-appinsights-dashboard
@@ -993,20 +1003,7 @@ extra:
       modifiedtext: October 10, 2016
       modified: 2016-10-10
     - framework: React
-      spfx: 1.5.1
-      year: 2018
-      title: Accordion Web Part
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion
-      name: react-accordion
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion/assets/previewAccordion.PNG
-      author: Gautam Sheth
-      summary: This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format.
-      version: 1.0
-      modifiedtext: August 17, 2018
-      modified: 2018-08-17
-    - framework: React
-      spfx: 1.7.0
-      year: 2018
+      spfx: 1.10.0
       title: Image Gallery Web Part Built with Adaptive Cards
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptive-cards-image-gallery
       name: react-adaptive-cards-image-gallery
@@ -1014,9 +1011,8 @@ extra:
       thumbnailtype: video
       author: Nanddeep Nachan, Ravi Kulkarni
       summary: This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.
-      version: 1.0.0
-      modifiedtext: November 28, 2018
-      modified: 2018-11-28
+      modifiedtext: June 15, 2020
+      modified: 2020-06-15
     - framework: React
       spfx: 1.4.1
       year: 2018
@@ -1834,17 +1830,14 @@ extra:
       modified: 2018-05-02
     - framework: React
       spfx: 1.7.0
-      year: 2019
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rss-reader
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rss-reader
       name: react-rss-reader
       title: SharePoint Framework RSS Reader
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-rss-reader/images/react-rss-reader.gif
-      thumbnailtype: video
-      author: Eric Overfield
+      author: Eric Overfield, Abhishek Garg
       summary: A RSS Reader original based on work completed by Olivier Carpentier's
-      version: 1.0
-      modifiedtext: Jan 21, 2019
-      modified: 2019-01-21
+      modifiedtext: June 27, 2020
+      modified: 2020-06-27
     - framework: React
       spfx: 1.7.0
       year: 2018
@@ -2232,6 +2225,7 @@ extra:
       modified: 2020-04-27
   authors:
     - Aakash Bhardwaj
+    - Abhishek Garg
     - Adrián Díaz
     - Alex Terentiev
     - Andrew Koltyakov
@@ -2289,7 +2283,6 @@ extra:
     - Ramin Ahmadi
     - Ravi Kulkarni
     - Ravi Kumar Bomma
-    - Ravi Kumar Bomma
     - Robin Agten
     - Roland Oldengarm
     - Russell Gove
@@ -2314,6 +2307,6 @@ extra:
     - Zach Roberts
 repo_url: https://github.com/pnp/sp-dev-fx-webparts
 edit_uri: tree/Docs/docs
-site_url: https://sharepoint.github.io/sp-dev-fx-webparts/
+site_url: https://pnp.github.io/sp-dev-fx-webparts/
 site_favicon: favicon.ico
 # dev_addr: '127.0.0.1:443'
