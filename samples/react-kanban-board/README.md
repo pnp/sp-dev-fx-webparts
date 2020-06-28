@@ -53,19 +53,16 @@ Version|Date|Comments
 * PNP Order PropertyPane Control  (Change Position of Buckets)
 * PNP List Selection PropertyPane Control  (including Filter on BaseTemplateId)
 * Usage of BucketEdit in Pane (Use an Component in PropertyPane (Custom Field))
-* Fluent UI 
+* Office UI Fabric
 * PNP JS DataConnection to SharePoint
 
 
-Thanks form @petkir to:
-
-(Daniel Westerdale)[https://github.com/westerdaled] for Testing and inspiration (everytime again)
-
-(Hugo Bernier)[https://github.com/hugoabernier] for Inspiration to use Office UI Fabric 
-
-(Jean-Philippe CIVADE)[https://github.com/ewidance] for Bug Report IE11 (initiator of rewrite of this Sample)
-
-(RamPrasadMeenavalli)[https://github.com/RamPrasadMeenavalli] for the initial Idea
+<!---Thanks form @petkir to: -->
+<!--- -->
+<!---* [Daniel Westerdale](https://github.com/westerdaled) for Testing and inspiration (everytime again)-->
+<!---* [Hugo Bernier](https://github.com/hugoabernier) for Inspiration to use Office UI Fabric -->
+<!---* [Jean-Philippe CIVADE](https://github.com/ewidance) for Bug Report IE11 (initiator of rewrite of this Sample)-->
+<!---* [RamPrasadMeenavalli](https://github.com/RamPrasadMeenavalli) for the initial Idea-->
 
 
 
