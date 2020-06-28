@@ -1,10 +1,13 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "spfx-js-datatables-client-side-solution",
-    "id": "1e1ac667-cac9-4a86-97fb-f5abda8a8926",
-    "version": "1.0.0.0"
+    "name": "datatables-itrequests-client-side-solution",
+    "id": "6c467145-feee-4d44-beb3-0e995e266dd0",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
   },
   "paths": {
-    "zippedPackage": "solution/spfx-js-datatables.sppkg"
+    "zippedPackage": "solution/datatables-itrequests.sppkg"
   }
 }

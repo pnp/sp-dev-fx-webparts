@@ -1,17 +1,31 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/itRequests/ItRequestsWebPart.js",
-      "manifest": "./src/webparts/itRequests/ItRequestsWebPart.manifest.json",
-      "outputPath": "./dist/it-requests.bundle.js"
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "it-requests-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/itRequests/ItRequestsWebPart.js",
+          "manifest": "./src/webparts/itRequests/ItRequestsWebPart.manifest.json"
+        }
+      ]
     }
-  ],
+  },
   "externals": {
-    "jquery": "https://code.jquery.com/jquery-1.12.4.min.js",
-    "datatables.net": "https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js",
-    "moment": "https://momentjs.com/downloads/moment.min.js"
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-1.12.4.min.js",
+      "globalName": "jQuery"
+    },
+    "datatables.net": {
+      "path": "https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js",
+      "globalName": "jQuery",
+      "globalDependencies": [
+        "jquery"
+      ]
+    },
+    "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
   },
   "localizedResources": {
-    "itRequestsStrings": "webparts/itRequests/loc/{locale}.js"
+    "ItRequestsWebPartStrings": "lib/webparts/itRequests/loc/{locale}.js"
   }
 }

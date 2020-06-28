@@ -1,8 +1,12 @@
 {
   "@microsoft/generator-sharepoint": {
-    "libraryName": "spfx-js-datatables",
-    "framework": "none",
-    "version": "1.0.2",
-    "libraryId": "1e1ac667-cac9-4a86-97fb-f5abda8a8926"
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.10.0",
+    "libraryName": "datatables-itrequests",
+    "libraryId": "6c467145-feee-4d44-beb3-0e995e266dd0",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
   }
 }

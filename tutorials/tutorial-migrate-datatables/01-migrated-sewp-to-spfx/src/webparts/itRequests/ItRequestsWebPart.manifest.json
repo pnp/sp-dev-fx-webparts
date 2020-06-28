@@ -1,20 +1,27 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
-  "id": "61119bb3-fa48-4ded-bde9-6593ed155cbb",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "25895f30-c41d-4c63-ad83-93570fae720c",
   "alias": "ItRequestsWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
   "manifestVersion": 2,
 
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
   "preconfiguredEntries": [{
-    "groupId": "61119bb3-fa48-4ded-bde9-6593ed155cbb",
-    "group": { "default": "Under Development" },
-    "title": { "default": "IT Requests" },
-    "description": { "default": "Shows list of IT requests" },
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "IT requests" },
+    "description": { "default": "Shows overview of IT support requests" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "IT Requests"
+      "description": "Hello World"
     }
   }]
 }
