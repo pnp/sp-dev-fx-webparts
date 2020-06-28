@@ -22,6 +22,9 @@ define([], function () {
     "BucketConfigUseColor": "Use Color?",
     "BucketConfigSave": "Save",
     "BucketConfigReset": "Reset",
-    "Percent":"percent"
+    "Percent":"percent",
+    "BucketConfigShowPercentage": "Show Processindicator",
+    "BucketConfigShowPercentageShow": "Show",
+    "BucketConfigShowPercentageHide": "Hide"
   }
 });

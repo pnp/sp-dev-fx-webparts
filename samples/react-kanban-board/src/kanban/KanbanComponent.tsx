@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './KanbanComponent.module.scss';
+import bucketstyles from './KanbanBucket.module.scss';
 import * as strings from 'KanbanBoardStrings';
 
 import { IKanbanTask, KanbanTaskMamagedPropertyType } from './IKanbanTask';
@@ -64,8 +65,9 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
 
         };
         this.bucketsref = [];
-    }
-
+       
+        }
+  
     public render(): React.ReactElement<IKanbanComponentProps> {
         const { buckets, tasks, tasksettings, taskactions, showCommandbar } = this.props;
         const { openDialog } = this.state;
@@ -76,7 +78,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
         };
 
         return (
-            <div>
+            <div style={{ overflowX: 'auto' }}>
                 {showCommandbar && <CommandBar
                     items={this.getItems()}
 
@@ -92,7 +94,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                                 style={{ width: bucketwidth ? bucketwidth + '%' : '100%' }}
                                 className={styles.bucketwrapper}
                                 ref={bucketContent => this.bucketsref[i] = bucketContent}
-                                key={'BucketWrapper'+b.bucket+i}
+                                key={'BucketWrapper' + b.bucket + i}
                                 onDragOver={(event) => this.onDragOver(event, b.bucket)}
                                 onDragLeave={(event) => this.onDragLeave(event, b.bucket)}
                                 onDrop={(event) => this.onDrop(event, b.bucket)}
@@ -100,7 +102,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                                 <KanbanBucket
                                     key={b.bucket}
                                     {...merge}
-                                    
+                                  
                                     buckettasks={tasks.filter((x) => x.bucket == b.bucket)}
                                     tasksettings={tasksettings}
 
@@ -109,7 +111,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                                     addTask={this.internalAddTask.bind(this)}
                                     openDetails={this.internalOpenDialog.bind(this)}
 
-                                    
+
                                     onDragStart={this.onDragStart.bind(this)}
                                     onDragEnd={this.onDragEnd.bind(this)}
                                 />
@@ -305,18 +307,18 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
         }
     }
 
-    private onDragLeave(event,bucket): void {
+    private onDragLeave(event, bucket): void {
         const index = findIndex(this.props.buckets, element => element.bucket == bucket);
-        if (index != -1 && this.bucketsref.length > index ){
-            
-        //&& this.bucketsref[index].classList.contains(styles.dragover)) {
-                this.bucketsref[index].classList.remove(styles.dragover);
+        if (index != -1 && this.bucketsref.length > index) {
+
+            //&& this.bucketsref[index].classList.contains(styles.dragover)) {
+            this.bucketsref[index].classList.remove(styles.dragover);
         }
 
     }
 
     private onDragEnd(event): void {
-        console.log('onDragEnd');
+
         this.dragelement = undefined;
         this.setState({
             leavingTaskId: null,
@@ -326,26 +328,19 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
     }
 
     private onDragStart(event, taskId: string, bucket: string): void {
-        console.log('onDragStart');
-
         const taskitem = this.props.tasks.filter(p => p.taskId === taskId);
-        console.log('onDragStart taskitem');
         if (taskitem.length === 1) {
-            console.log('onDragStart taskitem check done');
             event.dataTransfer.setData("text", taskId);
             event.dataTransfer.effectAllowed = 'copy';
             //event.dataTransfer.setData("sourcebucket", bucket);
             //set element because event.dataTransfer is empty by DragOver
-            console.log('set dragelement');
             this.dragelement = taskitem[0];
             this.setState({
                 leavingTaskId: taskId,
                 leavingBucket: bucket,
             });
-            console.log('dragelement set and refresh state');
         } else {
             // Error not consitent
-            console.log('onDragStart prop data wrong!!');
             throw "TaskItem not found on DragStart";
 
         }
@@ -355,24 +350,21 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
 
     private onDragOver(event, targetbucket: string): void {
         event.preventDefault();
-        
+
         if (this.dragelement.bucket !== targetbucket) {
             const index = findIndex(this.props.buckets, element => element.bucket == targetbucket);
-            if (index > -1 && this.bucketsref.length > index ){
-                console.log(this.bucketsref[index]);
-                console.log(this.bucketsref[index].classList);
-            //&& this.bucketsref[index].classList.contains(styles.dragover)) {
-                    this.bucketsref[index].classList.add(styles.dragover);
+            if (index > -1 && this.bucketsref.length > index) {
+                //&& this.bucketsref[index].classList.contains(styles.dragover)) {
+                this.bucketsref[index].classList.add(styles.dragover);
             }
         }
 
     }
 
     private onDrop(event, targetbucket: string): void {
-        console.log('onDrop');
-         if (this.bucketsref && this.bucketsref.length>0) {
-            this.bucketsref.forEach(x=> {x.classList.remove(styles.dragover);});
-         }
+        if (this.bucketsref && this.bucketsref.length > 0) {
+            this.bucketsref.forEach(x => { x.classList.remove(styles.dragover); });
+        }
         if (this.dragelement.bucket !== targetbucket) {
             //event.dataTransfer.getData("text");
             const taskId = this.dragelement.taskId;
@@ -400,6 +392,8 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
         });
 
     }
+
+  
 
     private getItems = () => {
         if (this.props.allowAdd) {

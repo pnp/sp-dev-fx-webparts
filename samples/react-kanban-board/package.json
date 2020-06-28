@@ -28,8 +28,7 @@
     "@types/react-dom": "16.8.0",
     "@types/webpack-env": "1.13.1",
     "classnames": "^2.2.6",
-    "jqwidgets-scripts": "^8.1.2",
-    "office-ui-fabric-react": "^6.143.0",
+    "office-ui-fabric-react": "6.214.0",
     "react": "16.7.0",
     "react-dom": "16.7.0"
   },

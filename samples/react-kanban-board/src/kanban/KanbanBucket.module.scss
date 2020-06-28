@@ -3,6 +3,9 @@
     
    // border-right: 1px solid gray;
     .headline {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         padding: 2px 10px;
         line-height: 2em;
         font-weight: 700;

@@ -23,6 +23,9 @@ declare interface IKanbanBoardStrings {
   BucketConfigSave: string;
   BucketConfigReset: string;
   Percent: string;
+  BucketConfigShowPercentage: string;
+  BucketConfigShowPercentageShow: string;
+  BucketConfigShowPercentageHide: string;
 }
 
 declare module 'KanbanBoardStrings' {

@@ -3,7 +3,7 @@
 ## Summary
 
 
-This solution contains an SPFx webpart which shows a Kanban board using Fluent UI components ([FluentUI](https://developer.microsoft.com/fluentui/)).
+This solution contains an SPFx webpart which shows a Kanban board using Office UI Fabric components ([Office UI Fabric](https://developer.microsoft.com/fluentui/)).
 The webpart uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.
 
 ![picture of the web part in action](assets/kanban-board.gif)
@@ -57,9 +57,10 @@ Version|Date|Comments
 
 
 Thanks form @petkir to:
-Daniel Westerdale for Testing and inspiration (everytime again)
-Hugo Bernier for Inspiration to use Office UI Fabric 
-Jean-Philippe CIVADE for Bug Report IE11 (initiator of rewrite of this Sample)
+(Daniel Westerdale)[https://github.com/westerdaled] for Testing and inspiration (everytime again)
+(Hugo Bernier)[https://github.com/hugoabernier] for Inspiration to use Office UI Fabric 
+(Jean-Philippe CIVADE)[https://github.com/ewidance] for Bug Report IE11 (initiator of rewrite of this Sample)
+(RamPrasadMeenavalli)[https://github.com/RamPrasadMeenavalli] for the initial Idea
 
 
 
@@ -67,8 +68,6 @@ Jean-Philippe CIVADE for Bug Report IE11 (initiator of rewrite of this Sample)
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-### only For Version 1
-**THIS WEBPART USES jQWidgets FOR SHOWING THE KANBAN BOARD. jQWidgets IS FREE TO USE UNDER THE CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 3.0 LICENSE. FOR COMMERCIAL USE, PLEASE CHECK THE [LICENSING TERMS](https://www.jqwidgets.com/license/) FOR jQWidgets**
 
 ---
 
@@ -87,4 +86,4 @@ This sample highlights the following concepts
 
 When a task is moved to different columns in the Kanban Board, the status of the respective SharePoint list item is updated using PnP JS
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-kanban-board" />
+

@@ -83,14 +83,20 @@ export default class KanbanBucketConfigurator extends React.Component<IKanbanBuc
                     onChange={(ev, checked) => { this.setState({ showHeadline: checked }); }} />
                     */}
                 <TextField label={strings.BucketConfigHeadline} defaultValue={statebucket.bucketheadline}
-                onChanged={(value: string) => {
-                    const bucket = clone(this.state.bucket);
-                    bucket.bucketheadline = value;
-                    this.setState({ bucket: bucket });
-                }}
+                    onChange={(ev, value?: string) => {
+                        const bucket = clone(this.state.bucket);
+                        bucket.bucketheadline = value;
+                        this.setState({ bucket: bucket });
+                    }}
                 />
-
-                <Slider
+                <Toggle label={strings.BucketConfigShowPercentage} onText={strings.BucketConfigShowPercentageShow} offText={strings.BucketConfigShowPercentageHide} inlineLabel
+                    checked={statebucket.showPercentageHeadline}
+                    onChange={(ev, checked) => {
+                        const bucket = clone(this.state.bucket);
+                        bucket.showPercentageHeadline = checked;
+                        this.setState({ bucket: bucket });
+                    }} />
+                {statebucket.showPercentageHeadline && <Slider
                     label={strings.BucketConfigPercentageComplete}
                     max={100}
                     value={statebucket.percentageComplete}
@@ -102,17 +108,7 @@ export default class KanbanBucketConfigurator extends React.Component<IKanbanBuc
                         bucket.percentageComplete = value;
                         this.setState({ bucket: bucket });
                     }}
-                />
-                 {/*
-                 TODO editmapping
-                <Toggle label={strings.BucketConfigAllowAddTask} onText="On" offText="Off" inlineLabel
-                    checked={statebucket.allowAddTask}
-                    onChange={(ev, checked) => {
-                        const bucket = clone(this.state.bucket);
-                        bucket.allowAddTask = checked;
-                        this.setState({ bucket: bucket });
-                    }} />
-                */}
+                />}
                 <Toggle label={strings.BucketConfigUseColor} onText="On" offText="Off" inlineLabel
                     checked={this.state.useColor}
                     onChange={(ev, checked) => { this.setState({ useColor: checked }); }} />
@@ -124,29 +120,15 @@ export default class KanbanBucketConfigurator extends React.Component<IKanbanBuc
                     // showPreview={true}
                     onChange={(ev: any, colorObj: IColor) => {
                         const bucket = clone(this.state.bucket);
-                        bucket.color =  colorObj.str;
+                        bucket.color = colorObj.str;
                         this.setState({ bucket: bucket });
                     }
                     }
-                // The ColorPicker provides default English strings for visible text.
-                // If your app is localized, you MUST provide the `strings` prop with localized strings.
-                /*
-                FluentUI
-                strings={{
-                    // By default, the sliders will use the text field labels as their aria labels.
-                    // If you'd like to provide more detailed instructions, you can use these props.
-                    alphaAriaLabel: 'Alpha slider: Use left and right arrow keys to change value, hold shift for a larger jump',
-                    transparencyAriaLabel:
-                        'Transparency slider: Use left and right arrow keys to change value, hold shift for a larger jump',
-                    hueAriaLabel: 'Hue slider: Use left and right arrow keys to change value, hold shift for a larger jump',
-                }}
-                */
                 />
                 )}
                 <Stack>
 
                     <PrimaryButton text={strings.BucketConfigSave} onClick={this.submitData.bind(this)} />
-                    {/* <!-- TODO Confirmation --!> */}
                     <DefaultButton text={strings.BucketConfigReset} onClick={this.resetState.bind(this)} />
                 </Stack>
 
@@ -154,7 +136,7 @@ export default class KanbanBucketConfigurator extends React.Component<IKanbanBuc
         );
     }
 
-    private resetState():void {
+    private resetState(): void {
         const newbucket: IKanbanBucket = clone(this.props.bucket);
         this.setState({
             bucket: newbucket,
@@ -162,7 +144,7 @@ export default class KanbanBucketConfigurator extends React.Component<IKanbanBuc
             useColor: newbucket.color && newbucket.color.length > 0
         });
     }
-    private submitData():void {
+    private submitData(): void {
         const newbucket: IKanbanBucket = clone(this.state.bucket);
         if (!this.state.useColor) {
             newbucket.color = undefined;
