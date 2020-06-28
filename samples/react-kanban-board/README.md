@@ -43,7 +43,8 @@ Version|Date|Comments
 -------|----|--------
 1.0.0.0|July 17, 2019|Initial release
 1.0.1.0|April 21, 2020|Added support for Teams hosts
-2.0.0.0|July 10, 2020| jqwidgets replaced with a custom FluentUI Component and IE11 Support
+2.0.0.0|July 10, 2020| jqwidgets replaced with a customKanban Board based on Office UI Component and IE11 Support
+
 [Read More about the implementation of this Board](./src/kanban/Readme.md)
 
 ## Usage
@@ -57,9 +58,13 @@ Version|Date|Comments
 
 
 Thanks form @petkir to:
+
 (Daniel Westerdale)[https://github.com/westerdaled] for Testing and inspiration (everytime again)
+
 (Hugo Bernier)[https://github.com/hugoabernier] for Inspiration to use Office UI Fabric 
+
 (Jean-Philippe CIVADE)[https://github.com/ewidance] for Bug Report IE11 (initiator of rewrite of this Sample)
+
 (RamPrasadMeenavalli)[https://github.com/RamPrasadMeenavalli] for the initial Idea
 
 
