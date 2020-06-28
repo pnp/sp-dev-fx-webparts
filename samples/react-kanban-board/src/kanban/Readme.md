@@ -67,23 +67,22 @@ The KanbanBoard control can be configured with the following properties:
 ### IKanbanBucket
 | Property | Type | Required | Description | Default |
 | ---- | ---- | ---- | ---- | ---- |
+|bucket|string|*|internalname||
+|bucketheadline|string||Optional Headline|name of property bucket|
+|percentageComplete| number||Percentage of Bucket shows in bar under Headline|
+|color|string||||
 
- bucket:string;
-    bucketheadline:string;
-    percentageComplete: number;
-    color?:string;
-    allowAddTask?:boolean;
 ### IKanbanTask
 | Property | Type | Required | Description | Default |
 | ---- | ---- | ---- | ---- | ---- |
-  taskId: string;
-    title: string;
-    isCompleted?: boolean;
-    assignedTo?: IPersonaProps;
-    htmlDescription?:string;
-    priority?:string;
-    bucket: string;
-    mamagedProperties?: IKanbanTaskManagedProps[];
+| taskId | string | * |  |  |
+| title | string | * |  |  |
+| assignedTo | IPersonaProps |  |  |  |
+| htmlDescription | string |  |  |  |
+| priority | string |  |  |  |
+| bucket | string | * |  |  |
+| mamagedProperties | IKanbanTaskManagedProps |  |  |  |
+    
 
 ### IKanbanComponentProps
 
@@ -105,7 +104,7 @@ The KanbanBoard control can be configured with the following properties:
 | Property | Type | Required | Description | Default |
 | ---- | ---- | ---- | ---- | ---- |
 
-IPersonaProps reference to Fluent UI
+IPersonaProps reference to Office UI Fabric
 
 ## Samples
 

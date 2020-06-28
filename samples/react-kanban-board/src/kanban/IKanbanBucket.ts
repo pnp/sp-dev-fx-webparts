@@ -4,4 +4,5 @@ export interface IKanbanBucket {
     percentageComplete: number;
     color?:string;
     allowAddTask?:boolean;
+    showPercentageHeadline?:boolean;
 }

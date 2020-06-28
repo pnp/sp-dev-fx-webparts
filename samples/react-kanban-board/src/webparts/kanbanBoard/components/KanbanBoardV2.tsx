@@ -67,7 +67,6 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         return false;
     }
     public componentDidUpdate(prevProps: IKanbanBoardV2Props) {
-        console.log('componentDidUpdate');
         if (this.props.listId !== prevProps.listId) {
             this._getData();
         }
@@ -91,14 +90,14 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
                     updateProperty={this.props.updateProperty} />
                 )}
                 {!isConfigured && !isLoading && (<Placeholder iconName='Edit'
-                    iconText='Configure your web part'
-                    description='Please configure the web part.'
-                    buttonLabel='Configure'
+                    iconText={strings.PlaceholderIconText}
+                    description={strings.PlaceholderDescription}
+                    buttonLabel={strings.PlaceholderButtonLabel}
                     hideButton={displayMode === DisplayMode.Read}
                     onConfigure={this._onConfigure} />
                 )}
                 {isConfigured && isLoading && (
-                    <Spinner label="Seriously, still loading..." ariaLive="assertive" labelPosition="top" />
+                    <Spinner label={strings.SpinnerLabel} ariaLive="assertive" labelPosition="top" />
                 )}
                 {isConfigured && !isLoading && (
                     <KanbanComponent
@@ -132,7 +131,6 @@ export default class KanbanBoardV2 extends React.Component<IKanbanBoardV2Props, 
         newArray[elementsIndex].bucket = targetBucket.bucket;
         this.dataService.updateTaskBucketMove(this.props.listId, +taskId, targetBucket.bucket)
             .then(res => {
-                console.log("Task updated");
                 this.setState({ tasks: newArray });
             }).catch(error => {
                 this.setState({ errorMessage: 'Error Update Task Item' });

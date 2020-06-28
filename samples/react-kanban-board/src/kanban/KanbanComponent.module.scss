@@ -4,6 +4,7 @@
     .bucketwrapper {
         border: 1px solid transparent;
         display: table-cell;
+      //  min-width: 220px;
     }
     .dragover {
         border-color: "[theme: themePrimary, default: #0078d7]";

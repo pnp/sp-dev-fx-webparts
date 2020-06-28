@@ -49,7 +49,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         spfxContext: this.context
       });
       if (Environment.type == EnvironmentType.Local || Environment.type == EnvironmentType.Test) {
-        this.dataService=  new MockKanbanService();
+        this.dataService = new MockKanbanService();
       } else {
         this.dataService = new SPKanbanService();
       }
@@ -58,8 +58,6 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
   }
 
   public render(): void {
-    console.log('bucket render webpart');
-    console.log(this.properties.buckets);
     const element: React.ReactElement<IKanbanBoardV2Props> = React.createElement(
       KanbanBoardV2,
       {
@@ -98,11 +96,13 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         groupName: strings.BasicGroupName,
         groupFields: [
           PropertyPaneToggle('hideWPTitle', {
-            label: 'Hide WP Title',
-            checked: this.properties.hideWPTitle
+            label: strings.propertyPaneHideWPHeadline,
+            checked: this.properties.hideWPTitle,
+            onText: strings.propertyPaneHideWPHeadlineHide,
+            offText: strings.propertyPaneHideWPHeadlineShow
           }),
           PropertyFieldListPicker('listId', {
-            label: 'Select a list',
+            label: strings.propertyPaneSelectList,
             selectedList: this.properties.listId,
             includeHidden: false,
             orderBy: PropertyFieldListPickerOrderBy.Title,
@@ -133,11 +133,11 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
     if (this.properties.listId && this.properties.buckets && this.properties.buckets.length > 1) {
       generalgroups.push(
         {
-          groupName: "Order Buckets",
+          groupName: strings.propertyPaneLabelOrderBuckets,
           groupFields: [
             PropertyFieldOrder("buckets", {
               key: "orderedItems",
-              label: "Ordered Items",
+              label: strings.propertyPaneLabelOrderBuckets,
               items: this.properties.buckets,
               properties: this.properties,
               onPropertyChange: this.onPropertyPaneFieldChanged,
@@ -156,7 +156,7 @@ export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoa
         propertypages.push({
           key: { i },
           header: {
-            description: "Bucket Configuration"
+            description: strings.propertyPaneBucketConfiguration
           },
           groups: [{
             groupName: b.bucketheadline ? b.bucketheadline : b.bucket,
