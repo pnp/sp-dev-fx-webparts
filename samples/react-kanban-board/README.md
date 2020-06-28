@@ -35,7 +35,7 @@ Solution|Author(s)
 --------|---------
 react-kanban-board | [Ram](https://twitter.com/ram_meenavalli)
 react-kanban-board | Daniel Westerdale ([Westerdale Solutions Ltd.](https://westerdale.blog), [@westerdaled](https://twitter.com/westerdaled?s=20))
-react-kanban-board | Peter Paul Kirschner ([@petkir_at](https://twitter.com/))
+react-kanban-board | Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
 
 ## Version history
 
