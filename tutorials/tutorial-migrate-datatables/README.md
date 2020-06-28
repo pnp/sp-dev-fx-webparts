@@ -13,7 +13,8 @@ Sub folders represent the different stages of the migration process. Each folder
 | 03-transformed-js-to-typescript | Transformed plain JavaScript to TypeScript | [details](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/migrate-jquery-datatables-script-to-spfx#transform-the-plain-javascript-code-to-typescript)
 
 ## Used SharePoint Framework Version
-![v1.0.2](https://img.shields.io/badge/SPFx-v1.0.2-green.svg)
+
+![v1.10.0](https://img.shields.io/badge/SPFx-v1.10.0-green.svg)
 
 ## Applies to
 
@@ -24,13 +25,14 @@ Sub folders represent the different stages of the migration process. Each folder
 
 Solution  | Author(s)
 ------------- | -------------
-tutorial-migrate-datatables  | Waldek Mastykarz (MVP, [Rencore](https://rencore.com), @waldekm)
+tutorial-migrate-datatables  | Waldek Mastykarz (MVP, [Rencore](https://rencore.com), @waldekm) & Andrew Connell (MVP, [Voitanos](//github.com/voitanos), [@andrewconnell](//github.com/andrewconnell))
 
 ## Version history
 
 Version | Date            | Comments
 --------| --------------- | --------
-1.0.0   | June, 27 2017   | Initial commit
+1.0.0   | June 27, 2017   | Initial commit
+1.1.0   | June 28, 2017   | Updated tutorial code for SPFx v1.10
 
 ## Disclaimer
 
@@ -44,31 +46,31 @@ To build and run this client-side project, you will need to clone and build the 
 
 Clone this repo by executing the following command in your console:
 
-```sh
+```console
 git clone https://github.com/SharePoint/sp-dev-fx-webparts.git
 ```
 
 Navigate to the cloned repo folder which should be the same as the repo name:
 
-```sh
+```console
 cd sp-dev-fx-webparts
 ```
 
 Navigate to the `tutorials-migrate-datatables` folder:
 
-```sh
+```console
 cd tutorials
 ```
 
 Navigate to the `specific web part` folder:
 
-```sh
+```console
 cd 'subfolder'
 ```
 
 Now run the following command to install the npm packages:
 
-```sh
+```console
 npm install
 ```
 
@@ -76,7 +78,7 @@ This will install the required npm packages and dependencies to build and run th
 
 Once the npm packages are installed, run the command to preview your web parts in SharePoint Workbench:
 
-```sh
+```console
 gulp serve --nobrowser
 ```
 

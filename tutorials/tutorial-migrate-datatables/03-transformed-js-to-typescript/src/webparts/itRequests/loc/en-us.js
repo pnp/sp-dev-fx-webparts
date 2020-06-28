@@ -1,7 +1,7 @@
 define([], function() {
   return {
     "PropertyPaneDescription": "IT Requests settings",
-    "BasicGroupName": "Data",
-    "ListNameFieldLabel": "List name"
+    "BasicGroupName": "Group Name",
+    "ListNameFieldLabel": "List Name"
   }
 });
