@@ -14,7 +14,8 @@ Sub folders represent the different stages of the migration process. Each folder
 | 04-replaced-jquery-ajax-with-spfx | Replaced jQuery AJAX with the SharePoint Framework SPHttpClient
 
 ## Used SharePoint Framework Version
-![v1.1.0](https://img.shields.io/badge/SPFx-v1.1.0-green.svg)
+
+![v1.10.0](https://img.shields.io/badge/SPFx-v1.10.0-green.svg)
 
 ## Applies to
 
@@ -25,13 +26,14 @@ Sub folders represent the different stages of the migration process. Each folder
 
 | Solution  | Author(s) |
 | ------------- | ------------- |
-| tutorial-migrate-fullcalendar  | Waldek Mastykarz (MVP, [Rencore](https://rencore.com), @waldekm)
+| tutorial-migrate-fullcalendar  | Waldek Mastykarz (MVP, [Rencore](https://rencore.com), @waldekm) & Andrew Connell (MVP, [Voitanos](//github.com/voitanos), [@andrewconnell](//github.com/andrewconnell))
 
 ## Version history
 
-| Version  | Date | Comments |
-| ------------- | ------------- | ------------- |
-| 1.0.0  | June, 27 2017   | Initial commit |
+| Version |     Date      |               Comments               |
+| ------- | ------------- | ------------------------------------ |
+| 1.0.0   | June, 27 2017 | Initial commit                       |
+| 1.1.0   | June 30, 2017 | Updated tutorial code for SPFx v1.10 |
 
 ## Disclaimer
 
@@ -45,31 +47,31 @@ To build and run this client-side project, you will need to clone and build the 
 
 Clone this repo by executing the following command in your console:
 
-```sh
+```console
 git clone https://github.com/SharePoint/sp-dev-fx-webparts.git
 ```
 
 Navigate to the cloned repo folder which should be the same as the repo name:
 
-```sh
+```console
 cd sp-dev-fx-webparts
 ```
 
 Navigate to the `tutorials` folder:
 
-```sh
+```console
 cd tutorials
 ```
 
 Navigate to the `specific web part` folder:
 
-```sh
+```console
 cd 'subfolder'
 ```
 
 Now run the following command to install the npm packages:
 
-```sh
+```console
 npm install
 ```
 
@@ -77,7 +79,7 @@ This will install the required npm packages and dependencies to build and run th
 
 Once the npm packages are installed, run the command to preview your web parts in SharePoint Workbench:
 
-```sh
+```console
 gulp serve --nobrowser
 ```
 

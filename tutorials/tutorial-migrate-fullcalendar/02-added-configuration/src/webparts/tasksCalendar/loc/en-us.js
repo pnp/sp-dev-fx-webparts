@@ -1,7 +1,7 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Tasks calendar settings",
-    "BasicGroupName": "Data",
+    "PropertyPaneDescription": "Description",
+    "BasicGroupName": "Group Name",
     "ListNameFieldLabel": "List name"
   }
 });
