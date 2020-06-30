@@ -33,20 +33,22 @@ In the Files ```MockKanban.tsx``` you can find many Configuration Options
 />
 
 ```
-Bucket
+Buckets
 ```
-  buckets:[
-                {bucket:'Not Started', bucketheadline:'Not Started Head',percentageComplete:0, color:'yellow' ,allowAddTask:true},
-                {bucket:'Test1', bucketheadline:'Test1 Head',percentageComplete:10, color:'orange',allowAddTask:true },
-                {bucket:'Test2', bucketheadline:'Test2 Head',percentageComplete:50, color:'green' },
-            ],
+[
+{bucket:'Not Started', bucketheadline:'Not Started Head',percentageComplete:0, color:'yellow' ,allowAddTask:true},
+{bucket:'Test1', bucketheadline:'Test1 Head',percentageComplete:10, color:'orange',allowAddTask:true },
+{bucket:'Test2', bucketheadline:'Test2 Head',percentageComplete:50, color:'green' },
+]
 
 ```
 
-Task
+Tasks
 ```
+[
 {taskId: '1', title:'test1',bucket:'Not Started'},
-{taskId: '5', title:'test 5',bucket:'Test3'},
+{taskId: '5', title:'test 5',bucket:'Test3'}
+]
 ```
 
 
