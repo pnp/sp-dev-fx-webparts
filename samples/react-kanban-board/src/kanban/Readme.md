@@ -4,7 +4,7 @@ This control renders a KanbanBoard  which can be used to show Tasks and move it 
 
 **Control in Action**
 
-![KanbanBoard control](../assets/KanbanBoard.gif)
+![KanbanBoard control](../assets/kanbanofficeUI.gif)
 
 
 ## How to use this control in your solutions
@@ -16,21 +16,21 @@ In the Files ```MockKanban.tsx``` you can find many Configuration Options
 
 ```typescript
  <KanbanComponent
-                    buckets={buckets}
-                    tasks={tasks}
-                    tasksettings={{
-                        showPriority: true,
-                        showAssignedTo: true,
-                        showTaskDetailsButton: true
-                    }
-                    }
-                    taskactions={{
-                        toggleCompleted: this._toggleCompleted.bind(this),
-                        allowMove: this._allowMove.bind(this),
-                        moved: this._moved.bind(this),
-                    }}
-                    showCommandbar={true}
-                />
+    buckets={buckets}
+    tasks={tasks}
+    tasksettings={{
+        showPriority: true,
+        showAssignedTo: true,
+        showTaskDetailsButton: true
+    }
+    }
+    taskactions={{
+        toggleCompleted: this._toggleCompleted.bind(this),
+        allowMove: this._allowMove.bind(this),
+        moved: this._moved.bind(this),
+    }}
+    showCommandbar={true}
+/>
 
 ```
 Bucket
@@ -39,18 +39,13 @@ Bucket
                 {bucket:'Not Started', bucketheadline:'Not Started Head',percentageComplete:0, color:'yellow' ,allowAddTask:true},
                 {bucket:'Test1', bucketheadline:'Test1 Head',percentageComplete:10, color:'orange',allowAddTask:true },
                 {bucket:'Test2', bucketheadline:'Test2 Head',percentageComplete:50, color:'green' },
-                {bucket:'Test3', bucketheadline:'Test3 Head',percentageComplete:50, color:'#FF0000' },
-                {bucket:'Test4', bucketheadline:'Test4 Head',percentageComplete:0 ,allowAddTask:true }
             ],
 
 ```
 
 Task
 ```
-{taskId: 1, title:'test1',bucket:'Not Started'},
-{taskId: 2, title:'test2',bucket:'Not Started'},
-{taskId: 3, title:'test3',bucket:'Not Started'},
-{taskId: '4', title:'test 4',bucket:'Test4'},
+{taskId: '1', title:'test1',bucket:'Not Started'},
 {taskId: '5', title:'test 5',bucket:'Test3'},
 ```
 
