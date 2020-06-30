@@ -4,7 +4,7 @@ This control renders a KanbanBoard  which can be used to show Tasks and move it 
 
 **Control in Action**
 
-![KanbanBoard control](../assets/kanbanofficeUI.gif)
+![KanbanBoard control](../../assets/kanbanofficeUI.gif)
 
 
 ## How to use this control in your solutions
