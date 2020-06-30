@@ -5,7 +5,7 @@ import {
     PropertyPaneFieldType
 } from '@microsoft/sp-property-pane';
 
-import KanbanBucketConfigurator, { IKanbanBucketConfiguratorProps } from '../../../kanban/KanbanBucketConfigurator';
+import {KanbanBucketConfigurator,  IKanbanBucketConfiguratorProps } from '../../../kanban';
 import { IKanbanBucket } from '../../../kanban/IKanbanBucket';
 
 export interface IPropertyPaneBucketConfig {
