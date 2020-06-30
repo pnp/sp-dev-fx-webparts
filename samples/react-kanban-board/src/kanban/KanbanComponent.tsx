@@ -400,7 +400,6 @@ const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).lengt
 
     private getItems = () => {
         if (this.props.allowAdd) {
-            //TODO
             return [
                 {
                     key: 'newItem',

@@ -65,70 +65,130 @@ Task
 The KanbanBoard control can be configured with the following properties:
 
 ### IKanbanBucket
-| Property | Type | Required | Description | Default |
-| ---- | ---- | ---- | ---- | ---- |
-|bucket|string|*|internalname||
-|bucketheadline|string||Optional Headline|name of property bucket|
-|percentageComplete| number||Percentage of Bucket shows in bar under Headline|
-|color|string||||
+| Property           | Type   | Required | Description                                      | Default                 |
+| ------------------ | ------ | -------- | ------------------------------------------------ | ----------------------- |
+| bucket             | string | *        | internalname                                     |                         |
+| bucketheadline     | string |          | Optional Headline                                | name of property bucket |
+| percentageComplete | number |          | Percentage of Bucket shows in bar under Headline |
+| color              | string |          |                                                  |                         |
 
 ### IKanbanTask
-| Property | Type | Required | Description | Default |
-| ---- | ---- | ---- | ---- | ---- |
-| taskId | string | * |  |  |
-| title | string | * |  |  |
-| assignedTo | IPersonaProps |  |  |  |
-| htmlDescription | string |  |  |  |
-| priority | string |  |  |  |
-| bucket | string | * |  |  |
-| mamagedProperties | IKanbanTaskManagedProps |  |  |  |
+| Property          | Type                    | Required | Description | Default |
+| ----------------- | ----------------------- | -------- | ----------- | ------- |
+| taskId            | string                  | *        |             |         |
+| title             | string                  | *        |             |         |
+| assignedTo        | IPersonaProps           |          |             |         |
+| htmlDescription   | string                  |          |             |         |
+| priority          | string                  |          |             |         |
+| bucket            | string                  | *        |             |         |
+| mamagedProperties | IKanbanTaskManagedProps |          |             |         |
     
 
 ### IKanbanComponentProps
 
-| Property | Type | Required | Description | Default |
-| ---- | ---- | ---- | ---- | ---- |
-
+| Property       | Type                     | Required | Description | Default |
+| -------------- | ------------------------ | -------- | ----------- | ------- |
+| buckets        | IKanbanBucket[]          | *        |             |         |
+| tasks          | IKanbanTask[]            | *        |             |         |
+| tasksettings   | IKanbanBoardTaskSettings | *        |             |         |
+| taskactions    | IKanbanBoardTaskActions  | *        |             |         |
+| showCommandbar | boolean                  |          |             | false   |
+| renderers      | IKanbanBoardRenderers    |          |             |         |
+| allowAdd?      | boolean                  |          |             | false   |
 
     
 #### IKanbanBoardTaskSettings
-| Property | Type | Required | Description | Default |
-| ---- | ---- | ---- | ---- | ---- |
+| Property              | Type    | Required | Description | Default |
+| --------------------- | ------- | -------- | ----------- | ------- |
+| showPriority          | boolean | *        |             |         |
+| showAssignedTo        | boolean | *        |             |         |
+| showTaskDetailsButton | boolean | *        |             |         |
 #### IKanbanBoardTaskActions
-| Property | Type | Required | Description | Default |
-| ---- | ---- | ---- | ---- | ---- |
+| Property        | Type                                                                                | Required | Description | Default |
+| --------------- | ----------------------------------------------------------------------------------- | -------- | ----------- | ------- |
+| toggleCompleted | (taskId:  string) => void                                                           |          |             |         |
+| allowMove       | taskId:  string, prevBucket: IKanbanBucket, targetBucket: IKanbanBucket) => boolean |          |             |         |
+| moved           | (taskId:  string,  targetBucket: IKanbanBucket) => void;                            |          |             |         |
+
+
 #### IKanbanBoardRenderers 
-| Property | Type | Required | Description | Default |
-| ---- | ---- | ---- | ---- | ---- |
+| Property        | Type                                  | Required | Description | Default |
+| --------------- | ------------------------------------- | -------- | ----------- | ------- |
+| task?           | (task:IKanbanTask) => JSX.Element     |          |             |         |
+| bucketHeadline? | (bucket:IKanbanBucket) => JSX.Element |          |             |         |
+| taskDetail?     | (task:IKanbanTask) => JSX.Element     |          |             |
+
 #### IKanbanTaskManagedProps
-| Property | Type | Required | Description | Default |
-| ---- | ---- | ---- | ---- | ---- |
+| Property    | Type                                                                              | Required | Description | Default |
+| ----------- | --------------------------------------------------------------------------------- | -------- | ----------- | ------- |
+| name        | string                                                                            | *        |             |         |
+| displayName | string                                                                            |          |             |         |
+| type:       | KanbanTaskMamagedPropertyType                                                     | *        |             |         |
+| value       | string /number/ IPersonaProps/ IPersonaProps[] / any                              | *        |             |         |
+| renderer    | (name: string, value: object, type: KanbanTaskMamagedPropertyType) => JSX.Element |          |             |         |
 
 IPersonaProps reference to Office UI Fabric
+
+
+#### KanbanTaskMamagedPropertyType 
+| Type    | Value | Description                                 |
+| ------- | ----- | ------------------------------------------- |
+| string  | 1     | value                                       |
+| number  | 2     | value                                       |
+| percent | 3     | value * 100 %                               |
+| html    | 4     | value with html string                      |
+| person  | 5     | Office Ui Persona   (value:IPersonaProps)   |
+| persons | 6     | Office Ui Persona's (value:IPersonaProps[]) |
+| complex | 7     | JSON.stringify(value)                       |
+}
 
 ## Samples
 
 ### Custom Detail View Renderer
-```typescript
 
+```typescript
+renderers.taskDetail?: (task:IKanbanTask) => JSX.Element ;
+```
+
+```typescript
+renderers.taskDetail?: (task:IKanbanTask) => JSX.Element ;
+private _taskDetailRenderer(task:IKanbanTask): JSX.Element {
+    return (<div>My Cool Content!!!</div>)
+}
 ```
 
 ### Use SharePoint New and Edit Form 
-this is the Classic Form on the ListItems
+
+´´´typescript
+taskactions.taskEdit?: (task: IKanbanTask) => void ;
+taskactions.taskAdd?: (bucket?: IKanbanBucket) => void ;
+´´´
+Open in Dialog (Iframe) or new Tab (NewForm.aspx od EditForm.aspx) or make your custom Form
+
 ```typescript
+private _taskAdd(bucket?: IKanbanBucket): void {
+    window.open(this.listurl+'/NewForm.aspx)
+}
+private _taskEditd(task: IKanbanTask): void {
+    window.open(this.listurl+'/EditFrom.aspx?ID='+task.taskId')
+}
 
 ```
 
-### Use EditSchema to Configure New and Edit Form in this Component
- this functionality supports only some Field Types
-```typescript
 
+### Disallow Move from One Bucket to an Other (allowMove)
+
+´´´typescript
+taskactions.allowMove: (taskId: string, prevBucket: IKanbanBucket, targetBucket: IKanbanBucket) => boolean;
 ```
 
-### Disallow Move from One Bucket to an Other
- this functionality supports only some Field Types
 ```typescript
-
+private _allowMove(taskId: string, prevBucket: IKanbanBucket, targetBucket: IKanbanBucket): boolean {
+    if (prevBucket.bucket === 'Test2' && targetBucket.bucket === 'Test3') {
+        return false;
+    }
+    return true;
+}
 ```
 
 ## Leanings
