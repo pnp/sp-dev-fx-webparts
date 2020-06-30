@@ -73,10 +73,8 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
         const { openDialog } = this.state;
         const bucketwidth: number = buckets.length > 0 ? 100 / buckets.length : 100;
         const { leavingBucket, leavingTaskId } = this.state;
-        const wrappedTaskActions: IKanbanBoardTaskActions = {
-
-        };
-
+const hasprocessIndicator = buckets.filter((b)=> b.showPercentageHeadline).length >0;
+        
         return (
             <div style={{ overflowX: 'auto' }}>
                 {showCommandbar && <CommandBar
@@ -91,7 +89,12 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                         buckets.map((b, i) => {
                             const merge = { ...b, ...this.state };
                             return (<div
-                                style={{ width: bucketwidth ? bucketwidth + '%' : '100%' }}
+                            
+                                style={{ 
+                                    flexBasis: bucketwidth ? bucketwidth + '%' : '100%' ,
+                                    maxWidth: bucketwidth ? bucketwidth + '%' : '100%'
+                                }}
+                                
                                 className={styles.bucketwrapper}
                                 ref={bucketContent => this.bucketsref[i] = bucketContent}
                                 key={'BucketWrapper' + b.bucket + i}
@@ -102,7 +105,7 @@ export default class KanbanComponent extends React.Component<IKanbanComponentPro
                                 <KanbanBucket
                                     key={b.bucket}
                                     {...merge}
-                                  
+                                    hasOneProcessIndicator={hasprocessIndicator}
                                     buckettasks={tasks.filter((x) => x.bucket == b.bucket)}
                                     tasksettings={tasksettings}
 

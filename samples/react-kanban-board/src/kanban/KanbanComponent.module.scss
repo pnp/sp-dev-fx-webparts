@@ -1,9 +1,12 @@
 .kanbanBoard {
-    display: table;
+    display: flex;
     width: 100%;
     .bucketwrapper {
         border: 1px solid transparent;
-        display: table-cell;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        
       //  min-width: 220px;
     }
     .dragover {

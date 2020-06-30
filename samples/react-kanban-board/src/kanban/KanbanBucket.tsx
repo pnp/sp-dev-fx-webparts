@@ -28,7 +28,7 @@ export interface IKanbanBucketProps extends IKanbanBucket {
     leavingTaskId?: string;
     leavingBucket?: string;
     overBucket?: string;
-
+    hasOneProcessIndicator: boolean;
     openDetails?: (taskId: string) => void;
 }
 
@@ -53,21 +53,18 @@ export default class KanbanBucket extends React.Component<IKanbanBucketProps, IK
     public render(): React.ReactElement<IKanbanBucketProps> {
         const { bucket, bucketheadline, color, buckettasks,
             tasksettings, percentageComplete,
-            allowAddTask, showPercentageHeadline, leavingTaskId, leavingBucket } = this.props;
+            allowAddTask, showPercentageHeadline, leavingTaskId, leavingBucket,hasOneProcessIndicator } = this.props;
 
         return (
             <div
-
                 className={styles.bucket}
-                key={bucket}
-
-            >
-                <div className={styles.headline}
-                 
-                >
-                    <span>{bucketheadline}</span>
+                key={bucket}>
+                <div className={styles.headline}>
+                    <div className={styles.headlineText}>{bucketheadline}</div>
                     {color && <div style={{ backgroundColor: color }} className={styles.colorindicator}></div>}
-                    {showPercentageHeadline && <ProgressIndicator percentComplete={percentageComplete / 100} />}
+                    {showPercentageHeadline ? 
+                    (<ProgressIndicator percentComplete={percentageComplete / 100} />):
+                    (hasOneProcessIndicator?(<div className={styles.processIndicatorHeight}></div>):(<div></div>))}
                 </div>
                 {allowAddTask && (<ActionButton
                     iconProps={{ iconName: 'Add' }}
