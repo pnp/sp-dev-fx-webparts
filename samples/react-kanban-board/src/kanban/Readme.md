@@ -1,8 +1,3 @@
-
-# Next Steps Component:
-* think about Promise Task Actions, because actions are async
-* EditSchema To support Edit
--------------------------------
 # KanbanComponent Control
 
 This control renders a KanbanBoard  which can be used to show Tasks and move it from one State to an Other.   
@@ -207,3 +202,9 @@ The second big thing is IE allows only to set the value 'text' event.dataTransfe
 event.dataTransfer.setData('xyz','1')
 Unexpected call to method or property access.
 ```
+
+-------------------------------
+## Future
+
+* think about Promise Task Actions, because actions are  async
+* EditSchema To support Edit
