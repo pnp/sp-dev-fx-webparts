@@ -6,7 +6,7 @@
 This solution contains an SPFx webpart which shows a Kanban board using Office UI Fabric components ([Office UI Fabric](https://developer.microsoft.com/fluentui/)).
 The webpart uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.
 
-![picture of the web part in action](assets/kanban-board.gif)
+![picture of the web part in action](assets/kanbanofficeUI.gif)
 
 ## Used SharePoint Framework Version
 
