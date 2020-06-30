@@ -1,16 +1,18 @@
 import * as React from 'react';
-import styles from './KanbanBoardV2.module.scss';
+
 import * as strings from 'KanbanBoardWebPartStrings';
+
 import { DisplayMode, Guid, Environment, EnvironmentType } from '@microsoft/sp-core-library';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+import { findIndex, isEqual, cloneDeep } from '@microsoft/sp-lodash-subset';
+import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
+
+
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
-import { WebPartContext } from '@microsoft/sp-webpart-base';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { IKanbanBucket } from '../../../kanban/IKanbanBucket';
-import { IKanbanTask, KanbanTaskMamagedPropertyType } from '../../../kanban/IKanbanTask';
-import KanbanComponent from '../../../kanban/KanbanComponent';
-import { findIndex, clone, isEqual, cloneDeep } from '@microsoft/sp-lodash-subset';
-import { sp } from '@pnp/sp';
+
+import {KanbanComponent,IKanbanBucket,IKanbanTask} from '../../../kanban';
+
 import { mergeBucketsWithChoices } from './helper';
 import { ISPKanbanService } from '../services/ISPKanbanService';
 import SPKanbanService from '../services/SPKanbanService';

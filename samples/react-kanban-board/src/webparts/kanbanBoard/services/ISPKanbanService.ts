@@ -1,4 +1,4 @@
-import { IKanbanTask } from "../../../kanban/IKanbanTask";
+import { IKanbanTask } from "../../../kanban";
 
 export interface ISPKanbanService {
 

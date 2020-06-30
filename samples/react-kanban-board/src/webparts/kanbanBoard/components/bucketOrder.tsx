@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IKanbanBucket } from '../../../kanban/IKanbanBucket';
+import { IKanbanBucket } from '../../../kanban';
 import styles from './KanbanBoardV2.module.scss';
 
 export const bucketOrder = (item:IKanbanBucket, index:number): JSX.Element => {

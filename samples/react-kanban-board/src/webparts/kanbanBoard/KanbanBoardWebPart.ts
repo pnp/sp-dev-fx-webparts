@@ -1,29 +1,26 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version, Guid, Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart, PropertyPaneDropdown } from '@microsoft/sp-webpart-base';
+import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField,
   PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
+import { cloneDeep } from '@microsoft/sp-lodash-subset';
 
 import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import { PropertyFieldOrder } from '@pnp/spfx-property-controls/lib/PropertyFieldOrder';
-
 import * as strings from 'KanbanBoardWebPartStrings';
-import KanbanBucketConfigurator, { IKanbanBucketConfiguratorProps } from '../../kanban/KanbanBucketConfigurator';
-import PropertyPaneBucketConfigComponent from './components/PropertyPaneBucketConfig';
-import KanbanBoardV2, { IKanbanBoardV2Props } from './components/KanbanBoardV2';
-import { bucketOrder } from './components/bucketOrder';
 import "@pnp/polyfill-ie11";
 import { sp } from '@pnp/sp';
 
-import { IKanbanBucket } from '../../kanban/IKanbanBucket';
+import PropertyPaneBucketConfigComponent from './components/PropertyPaneBucketConfig';
+import KanbanBoardV2, { IKanbanBoardV2Props } from './components/KanbanBoardV2';
+import { bucketOrder } from './components/bucketOrder';
 import { mergeBucketsWithChoices } from './components/helper';
-import { PropertyFieldMessage } from '@pnp/spfx-property-controls/lib/PropertyFieldMessage';
-import { MessageBarType } from 'office-ui-fabric-react';
-import { cloneDeep } from '@microsoft/sp-lodash-subset';
+
+import { IKanbanBucket } from '../../kanban';
+
 import { ISPKanbanService } from './services/ISPKanbanService';
 import SPKanbanService from './services/SPKanbanService';
 import MockKanbanService from './services/MockKanbanService';
