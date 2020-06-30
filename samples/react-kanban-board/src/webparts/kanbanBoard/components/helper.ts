@@ -1,4 +1,4 @@
-import { IKanbanBucket } from "../../../kanban/IKanbanBucket";
+import { IKanbanBucket } from "../../../kanban";
 
 export function mergeBucketsWithChoices(inB: IKanbanBucket[], choices: string[]): IKanbanBucket[] {
     const currentbuckets: IKanbanBucket[] = [];

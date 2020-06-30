@@ -52,7 +52,7 @@ export enum DialogState {
     Display = 3
 }
 
-export default class KanbanComponent extends React.Component<IKanbanComponentProps, IKanbanComponentState> {
+export class KanbanComponent extends React.Component<IKanbanComponentProps, IKanbanComponentState> {
     private dragelement?: IKanbanTask;
     private bucketsref: any[];
     constructor(props: IKanbanComponentProps) {

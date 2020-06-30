@@ -36,7 +36,7 @@ export interface IKanbanBucketConfiguratorState {
     useColor: boolean;
 }
 
-export default class KanbanBucketConfigurator extends React.Component<IKanbanBucketConfiguratorProps, IKanbanBucketConfiguratorState> {
+export class KanbanBucketConfigurator extends React.Component<IKanbanBucketConfiguratorProps, IKanbanBucketConfiguratorState> {
 
     constructor(props: IKanbanBucketConfiguratorProps) {
         super(props);

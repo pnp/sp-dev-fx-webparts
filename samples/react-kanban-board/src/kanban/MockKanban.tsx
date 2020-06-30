@@ -1,6 +1,6 @@
 import * as React from 'react';
-import KanbanComponent from './KanbanComponent';
-import KanbanBucketConfigurator from './KanbanBucketConfigurator';
+import {KanbanComponent} from './KanbanComponent';
+import {KanbanBucketConfigurator} from './KanbanBucketConfigurator';
 import { IKanbanBucket } from './IKanbanBucket';
 import { IKanbanTask, KanbanTaskMamagedPropertyType } from './IKanbanTask';
 import { findIndex } from "lodash";
