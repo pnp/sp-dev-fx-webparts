@@ -1,11 +1,7 @@
 .bucket {
- 
-    
-   // border-right: 1px solid gray;
+    width: 100%;
+    // border-right: 1px solid gray;
     .headline {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         padding: 2px 10px;
         line-height: 2em;
         font-weight: 700;
@@ -13,6 +9,12 @@
         position: relative;
         text-align: center;
         border-bottom: 1px solid gray;
+        .headlineText{
+            width: calc( 100% - 10px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
         .colorindicator {
             width: 10px;
             height: 100%;
@@ -20,18 +22,20 @@
             top: 0;
             right: 0px;
         }
+        .processIndicatorHeight {
+            height: 18px;
+        }
     }
-    .taskArea{
+    .taskArea {
         padding: 5px;
     }
     .placeholder {
         position: relative;
-        
     }
     .taskplaceholder {
         position: relative;
-     background-color: transparent;
-     cursor: move;
+        background-color: transparent;
+        cursor: move;
     }
     /*
     .placeholder::after {
@@ -43,5 +47,4 @@
         background-color:blue;
     }
     */
-    
 }
