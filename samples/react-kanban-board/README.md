@@ -45,7 +45,7 @@ Version|Date|Comments
 1.0.1.0|April 21, 2020|Added support for Teams hosts
 2.0.0.0|July 10, 2020| jqwidgets replaced with a customKanban Board based on Office UI Component and IE11 Support
 
-[Read More about the implementation of this Board](./src/kanban/Readme.md)
+[Read More about the implementation of this Board](./src/kanban/README.md)
 
 ## Usage
 * PNP Placeholder Control if not Configured
