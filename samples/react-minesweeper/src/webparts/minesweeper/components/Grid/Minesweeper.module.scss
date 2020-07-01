@@ -1,0 +1,44 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.minesweeper {
+  padding: 10px;
+
+  .table{
+    * {padding:0;} // removes table cell spacing
+    border-spacing: 0;
+    cursor: pointer;
+  }
+
+  .gameInfo{
+
+    &.difficulty_Beginner{
+      max-width: 223px;
+    }
+
+    &.difficulty_Intermediate{
+      max-width: 440px;
+    }
+
+    &.difficulty_Expert{
+      max-width: 817px;
+    }
+
+    .gameInfoSpans{
+      vertical-align: -webkit-baseline-middle;
+      padding-right: 10px;
+    }
+
+    .grid{
+      @include ms-Grid;
+    }
+
+    .row{
+      @include ms-Grid-row;
+    }
+
+    .col{
+      @include ms-Grid-col;
+      @include ms-sm6;
+    }
+  }
+}
