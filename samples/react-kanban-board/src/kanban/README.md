@@ -184,6 +184,8 @@ private _allowMove(taskId: string, prevBucket: IKanbanBucket, targetBucket: IKan
 ```
 
 ## Leanings
+
+Read more about [Drag and Drop](https://petkir.wordpress.com/2020/07/01/drag-and-drop-in-react-spfx/)
 ```
 IKanbanTask {
     taskId:  string;
