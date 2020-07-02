@@ -44,7 +44,6 @@
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
-    "autoprefixer": "^9.8.4",
     "gulp": "~3.9.1",
     "react-html-parser": "^2.0.2"
   }
