@@ -1,6 +1,6 @@
 {
   "name": "react-kanban-board",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
