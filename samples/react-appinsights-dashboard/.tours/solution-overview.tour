@@ -1,0 +1,160 @@
+{
+  "title": "solution-overview",
+  "steps": [
+    {
+      "file": "src/webparts/appInsightsDashboard/AppInsightsDashboardWebPart.ts",
+      "description": "Webpart properties declared to capture the below information\n1. **_AppId_** - Application ID of the Azure App Insights\n2. **_AppKey_** - Application key of the Azure App Insights",
+      "selection": {
+        "start": {
+          "line": 14,
+          "character": 1
+        },
+        "end": {
+          "line": 17,
+          "character": 2
+        }
+      }
+    },
+    {
+      "file": "src/webparts/appInsightsDashboard/components/AppInsightsDashboard.tsx",
+      "line": 22,
+      "description": "Upated the default class component to **React Functional component**.",
+      "selection": {
+        "start": {
+          "line": 22,
+          "character": 1
+        },
+        "end": {
+          "line": 22,
+          "character": 95
+        }
+      }
+    },
+    {
+      "file": "src/webparts/appInsightsDashboard/components/AppInsightsDashboard.tsx",
+      "line": 31,
+      "description": "Using **React Context API** feature to pass the properties using context instead of passing the properties to each component.",
+      "selection": {
+        "start": {
+          "line": 31,
+          "character": 3
+        },
+        "end": {
+          "line": 31,
+          "character": 44
+        }
+      }
+    },
+    {
+      "file": "src/webparts/appInsightsDashboard/components/AppInsightsDashboard.tsx",
+      "line": 52,
+      "description": "Child components for different statistics\n1. **_Page Views_**\n2. **_User statistics_**\n3. **_Performance statistics_**",
+      "selection": {
+        "start": {
+          "line": 44,
+          "character": 9
+        },
+        "end": {
+          "line": 52,
+          "character": 15
+        }
+      }
+    },
+    {
+      "file": "src/common/components/CustomPivot.tsx",
+      "line": 29,
+      "description": "Created a **custom Pivot component** using **Office UI Fabric Pivot control** to match the **Azure style**. All the statistics child components will use this custom pivot component for interval and timespan selection.",
+      "selection": {
+        "start": {
+          "line": 16,
+          "character": 9
+        },
+        "end": {
+          "line": 29,
+          "character": 15
+        }
+      }
+    },
+    {
+      "file": "src/common/components/DataList.tsx",
+      "line": 80,
+      "description": "Common **Details List** component using **Office UI Fabric Details list** control to display the data as a list for some of the statistics along with the graphical representation.",
+      "selection": {
+        "start": {
+          "line": 51,
+          "character": 9
+        },
+        "end": {
+          "line": 80,
+          "character": 15
+        }
+      }
+    },
+    {
+      "file": "src/common/enumHelper.ts",
+      "line": 28,
+      "description": "Enum collections for user selection\n1. **_Time Interval_**\n2. **_Time Span_**\n3. **_Segments_**",
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 28,
+          "character": 2
+        }
+      }
+    },
+    {
+      "file": "src/common/Helper.ts",
+      "line": 7,
+      "description": "Common Helper class to define all the communications to **Azure App Insights API**."
+    },
+    {
+      "file": "src/common/components/PerformanceStatistics.tsx",
+      "line": 61,
+      "description": "Using **Kusto query** to read the information from **Azure App Insights** and then to populate the data in a **Details List** or **Chart**.",
+      "selection": {
+        "start": {
+          "line": 49,
+          "character": 13
+        },
+        "end": {
+          "line": 61,
+          "character": 87
+        }
+      }
+    },
+    {
+      "file": "src/common/Helper.ts",
+      "line": 78,
+      "description": "Passing the **Kusto query** to the helper method along with some key parameters.",
+      "selection": {
+        "start": {
+          "line": 69,
+          "character": 5
+        },
+        "end": {
+          "line": 78,
+          "character": 6
+        }
+      }
+    },
+    {
+      "file": "src/common/Helper.ts",
+      "line": 116,
+      "description": "Sending the final consolidated URL with query and dynamic values to another helper method to get the actual response from **Azure App Insights**.\nBelow is the post url used\n\n**https://api.applicationinsights.io/v1/app**",
+      "selection": {
+        "start": {
+          "line": 113,
+          "character": 5
+        },
+        "end": {
+          "line": 116,
+          "character": 6
+        }
+      }
+    }
+  ],
+  "ref": "master"
+}

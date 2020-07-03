@@ -1,6 +1,3 @@
-:global{
-    @import 'node_modules/office-ui-fabric-react/dist/css/fabric.css';
-  }
 .dataLabel {
     padding-right: 3px;
     font-size: 14px;
@@ -78,6 +75,7 @@
 }
 .chartContainer {
     height: 350px;
+    width: 100%;
 }
 .chart {
     height: 358px !important;
