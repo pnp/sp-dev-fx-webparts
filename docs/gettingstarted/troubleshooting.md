@@ -97,9 +97,11 @@ Note that you can also specify which version you wish to target by specifying a 
 ## Open an issue
 <div id="openanissue></div>
 
-If, after ensuring that your environment is compatible with the sample, you still have difficulties using the sample, [open an issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) on our repository.
+If -- after ensuring that your environment is compatible with the sample -- you still have difficulties using the sample, [open an issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) on our repository.
 
 To ensure that we can help you, make sure that you fill the issue template that is provided. We'll automatically reject issues that do not use the issue template.
+
+Make sure to include the results from **SPFx doctor** in your issue so that we can help you accordingly.
 
 Keep in mind that the samples repository is maintained by members of the community who volunteer their time to help. Please be courteous and respectful, no matter how frustrated you may be!
 
