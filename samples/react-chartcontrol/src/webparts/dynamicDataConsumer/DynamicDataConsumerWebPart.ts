@@ -3,16 +3,8 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 
 // standard web part stuff
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneDynamicFieldSet,
-  PropertyPaneDynamicField,
-  IPropertyPaneConditionalGroup,
-  DynamicDataSharedDepth,
-  IWebPartPropertiesMetadata
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart, IWebPartPropertiesMetadata } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneDynamicFieldSet, PropertyPaneDynamicField, IPropertyPaneConditionalGroup, DynamicDataSharedDepth } from "@microsoft/sp-property-pane";
 
 // dynamic data web parts
 import { DynamicProperty } from '@microsoft/sp-component-base';

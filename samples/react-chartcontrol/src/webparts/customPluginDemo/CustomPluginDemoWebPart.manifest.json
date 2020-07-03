@@ -3,7 +3,7 @@
   "id": "3bc38cb3-d1b1-4572-8196-679445d39d58",
   "alias": "CustomPluginDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

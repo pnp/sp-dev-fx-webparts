@@ -77,7 +77,6 @@ export default class HorizontalBarDemo extends React.Component<IHorizontalBarDem
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'addData',

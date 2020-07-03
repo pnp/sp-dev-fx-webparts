@@ -1,9 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import {
-  IPropertyPaneField,
-  PropertyPaneFieldType
-} from '@microsoft/sp-webpart-base';
+import { IPropertyPaneField, PropertyPaneFieldType } from "@microsoft/sp-property-pane";
 
 import { IPropertyFieldRepeatingDataProps } from "./PropertyFieldRepeatingData.types";
 import { IPropertyFieldRepeatingDataHostProps } from './PropertyFieldRepeatingData.types';
