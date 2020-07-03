@@ -50,4 +50,5 @@ Once the npm packages are installed, run the following command to preview your w
 gulp serve
 ```
 
+
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/gettingstarted" />

@@ -21,6 +21,7 @@ nav:
     - All: samples/all.md
   - Getting Started:
     - Using the Samples: gettingstarted/index.md
+    - Troubleshooting: gettingstarted/troubleshooting.md
   - Contributing:
     - Contribution Guide: contributing/index.md
     - Submitting an Issue or Suggestion: contributing/issues.md
