@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - React
+  createdDate: 7/17/2019 12:00:00 AM
+---
+
 # React Kanban Board Webpart
 
 ## Summary
@@ -10,7 +26,7 @@ The webpart uses the default columns of the SharePoint Tasks list for showing th
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -43,7 +59,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0.0|July 17, 2019|Initial release
 1.0.1.0|April 21, 2020|Added support for Teams hosts
-2.0.0.0|July 10, 2020| jqwidgets replaced with a customKanban Board based on Office UI Component and IE11 Support
+2.0.0.0|July 10, 2020| jqwidgets replaced with a custom Kanban Board based on Office UI Component and IE11 Support
 
 [Read More about the implementation of this Board](./src/kanban/README.md)
 
@@ -57,14 +73,12 @@ Version|Date|Comments
 * PNP JS DataConnection to SharePoint
 
 
-<!---Thanks form @petkir to: -->
+<!---Thanks from @petkir to: -->
 <!--- -->
 <!---* [Daniel Westerdale](https://github.com/westerdaled) for Testing and inspiration (everytime again)-->
 <!---* [Hugo Bernier](https://github.com/hugoabernier) for Inspiration to use Office UI Fabric -->
 <!---* [Jean-Philippe CIVADE](https://github.com/ewidance) for Bug Report IE11 (initiator of rewrite of this sample)-->
 <!---* [RamPrasadMeenavalli](https://github.com/RamPrasadMeenavalli) for the initial Idea-->
-
-
 
 ## Disclaimer
 
@@ -88,4 +102,4 @@ This sample highlights the following concepts
 
 When a task is moved to different columns in the Kanban Board, the status of the respective SharePoint list item is updated using PnP JS
 
-
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-kanban-board" />
