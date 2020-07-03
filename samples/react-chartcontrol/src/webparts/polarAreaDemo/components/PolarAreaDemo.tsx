@@ -87,7 +87,6 @@ export default class PolarAreaDemo extends React.Component<IPolarAreaDemoProps, 
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'randomizeData',

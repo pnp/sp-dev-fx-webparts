@@ -3,7 +3,7 @@
   "id": "849fad01-2cf4-4653-88ef-1fa9151a7b17",
   "alias": "ComboChartDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

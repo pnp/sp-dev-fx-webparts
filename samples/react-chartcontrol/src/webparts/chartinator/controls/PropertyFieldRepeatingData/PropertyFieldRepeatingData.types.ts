@@ -1,4 +1,4 @@
-import { IPropertyPaneCustomFieldProps } from '@microsoft/sp-webpart-base';
+import { IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 import { ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
 
 /**
