@@ -246,7 +246,7 @@ export default class Minesweeper extends React.Component<IMinesweeperProps, IMin
         return;
     }
 
-    if(tile.fieldType === FieldType.Number || tile.fieldType === FieldType.Empty){
+    if(tile.fieldType === FieldType.Number || tile.fieldType === FieldType.Empty || tile.fieldType === FieldType.Flag){
       return;
     }
 
@@ -254,10 +254,6 @@ export default class Minesweeper extends React.Component<IMinesweeperProps, IMin
     if(tile.hasMine){
       this.gameOver(grid, tile);
       return;
-    }
-
-    if(tile.fieldType === FieldType.Flag){
-      nrMinesLeft++;
     }
 
     let closeMines = this.getSurroundingMines(grid, coord);
