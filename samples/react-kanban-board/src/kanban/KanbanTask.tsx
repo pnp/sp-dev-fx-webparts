@@ -4,9 +4,8 @@ import * as strings from 'KanbanBoardStrings';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { IKanbanTask } from './IKanbanTask';
 import { IKanbanBoardTaskSettings } from './IKanbanBoardTaskSettings';
-import { IKanbanBoardTaskActions } from './IKanbanBoardTaskActions';
 import classNames from 'classnames';
-import { IconNames, Persona, PersonaSize, Stack } from 'office-ui-fabric-react';
+import {  Persona, PersonaSize } from 'office-ui-fabric-react';
 
 export interface IKanbanTaskProps extends IKanbanTask, IKanbanBoardTaskSettings {
 

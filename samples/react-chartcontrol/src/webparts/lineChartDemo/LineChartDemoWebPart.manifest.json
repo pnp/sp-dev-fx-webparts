@@ -3,7 +3,7 @@
   "id": "3b06de0f-5762-4160-8a2c-405f34a7d55d",
   "alias": "LineChartDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

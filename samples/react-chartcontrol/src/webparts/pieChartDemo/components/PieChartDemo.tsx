@@ -96,7 +96,6 @@ export default class PieChartDemo extends React.Component<IPieChartDemoProps, {}
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'randomizeData',

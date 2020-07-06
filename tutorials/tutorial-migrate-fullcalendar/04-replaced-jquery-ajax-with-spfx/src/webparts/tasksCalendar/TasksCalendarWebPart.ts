@@ -1,19 +1,21 @@
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './TasksCalendar.module.scss';
-import * as strings from 'tasksCalendarStrings';
-import { ITasksCalendarWebPartProps } from './ITasksCalendarWebPartProps';
-import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
+import styles from './TasksCalendarWebPart.module.scss';
+import * as strings from 'TasksCalendarWebPartStrings';
 
 import * as $ from 'jquery';
 import 'fullcalendar';
 import * as moment from 'moment';
+
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
+
+var COLORS = ['#466365', '#B49A67', '#93B7BE', '#E07A5F', '#849483', '#084C61', '#DB3A34'];
 
 interface ITask {
   ID: number;
@@ -23,8 +25,11 @@ interface ITask {
   AssignedTo: [{ Title: string }];
 }
 
+export interface ITasksCalendarWebPartProps {
+  listName: string;
+}
+
 export default class TasksCalendarWebPart extends BaseClientSideWebPart<ITasksCalendarWebPartProps> {
-  private readonly colors: string[] = ['#466365', '#B49A67', '#93B7BE', '#E07A5F', '#849483', '#084C61', '#DB3A34'];
 
   public render(): void {
     this.domElement.innerHTML = `
@@ -34,115 +39,6 @@ export default class TasksCalendarWebPart extends BaseClientSideWebPart<ITasksCa
       </div>`;
 
     this.displayTasks();
-  }
-
-  private displayTasks(): void {
-    $('#calendar').fullCalendar('destroy');
-    $('#calendar').fullCalendar({
-      weekends: false,
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,basicWeek,basicDay'
-      },
-      displayEventTime: false,
-      // open up the display form when a user clicks on an event
-      eventClick: (calEvent: FC.EventObject, jsEvent: MouseEvent, view: FC.ViewObject): void => {
-        (window as any).location = `${this.context.pageContext.web.absoluteUrl}\
-/Lists/${escape(this.properties.listName)}/DispForm.aspx?ID=${calEvent.id}`;
-      },
-      editable: true,
-      timezone: "UTC",
-      droppable: true, // this allows things to be dropped onto the calendar
-      // update the end date when a user drags and drops an event 
-      eventDrop: (event: FC.EventObject, delta: moment.Duration, revertFunc: Function): void => {
-        this.updateTask(event.id, <moment.Moment>event.start, <moment.Moment>event.end);
-      },
-      // put the events on the calendar 
-      events: (start: moment.Moment, end: moment.Moment, timezone: string, callback: Function): void => {
-        const startDate: string = start.format('YYYY-MM-DD');
-        const endDate: string = end.format('YYYY-MM-DD');
-
-        const restQuery: string = `/_api/Web/Lists/GetByTitle('${escape(this.properties.listName)}')/items?$select=ID,Title,\
-Status,StartDate,DueDate,AssignedTo/Title&$expand=AssignedTo&\
-$filter=((DueDate ge '${startDate}' and DueDate le '${endDate}')or(StartDate ge '${startDate}' and StartDate le '${endDate}'))`;
-
-        this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + restQuery, SPHttpClient.configurations.v1, {
-          headers: {
-            'Accept': "application/json;odata.metadata=none"
-          }
-        })
-          .then((response: SPHttpClientResponse): Promise<{ value: ITask[] }> => {
-            return response.json();
-          })
-          .then((data: { value: ITask[] }): void => {
-            let personColors: { [person: string]: string; } = {};
-            let colorNo: number = 0;
-
-            const events: FC.EventObject[] = data.value.map((task: ITask): FC.EventObject => {
-              const assignedTo: string = task.AssignedTo.map((person: { Title: string }): string => {
-                return person.Title;
-              }).join(', ');
-
-              let color: string = personColors[assignedTo];
-              if (!color) {
-                color = this.colors[colorNo++];
-                personColors[assignedTo] = color;
-              }
-              if (colorNo >= this.colors.length) {
-                colorNo = 0;
-              }
-
-              return {
-                title: `${task.Title} - ${assignedTo}`,
-                id: task.ID,
-                // specify the background color and border color can also create a class and use className paramter
-                color: color,
-                start: moment.utc(task.StartDate).add("1", "days"),
-                // add one day to end date so that calendar properly shows event ending on that day
-                end: moment.utc(task.DueDate).add("1", "days")
-              };
-            });
-
-            callback(events);
-          });
-      }
-    });
-  }
-
-  private updateTask(id: number, startDate: moment.Moment, dueDate: moment.Moment): void {
-    // subtract the previously added day to the date to store correct date
-    const sDate: string = moment.utc(startDate).add("-1", "days").format('YYYY-MM-DD') + "T" +
-      startDate.format("hh:mm") + ":00Z";
-    if (!dueDate) {
-      dueDate = startDate;
-    }
-    const dDate: string = moment.utc(dueDate).add("-1", "days").format('YYYY-MM-DD') + "T" +
-      dueDate.format("hh:mm") + ":00Z";
-
-    this.context.spHttpClient.post(`${this.context.pageContext.web.absoluteUrl}\
-/_api/Web/Lists/getByTitle('${escape(this.properties.listName)}')/Items(${id})`, SPHttpClient.configurations.v1, {
-        body: JSON.stringify({
-          StartDate: sDate,
-          DueDate: dDate,
-        }),
-        headers: {
-          Accept: "application/json;odata=nometadata",
-          "Content-Type": "application/json;odata=nometadata",
-          "IF-MATCH": "*",
-          "X-Http-Method": "PATCH"
-        }
-      })
-      .then((response: SPHttpClientResponse): void => {
-        if (response.ok) {
-          alert("Update Successful");
-        }
-        else {
-          alert("Update Failed");
-        }
-
-        this.displayTasks();
-      });
   }
 
   protected get dataVersion(): Version {
@@ -173,5 +69,111 @@ $filter=((DueDate ge '${startDate}' and DueDate le '${endDate}')or(StartDate ge 
 
   protected get disableReactivePropertyChanges(): boolean {
     return true;
+  }
+
+  private displayTasks() {
+    ($('#calendar') as any).fullCalendar('destroy');
+    ($('#calendar') as any).fullCalendar({
+      weekends: false,
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,basicWeek,basicDay'
+      },
+      displayEventTime: false,
+      // open up the display form when a user clicks on an event
+      eventClick: (calEvent: any, jsEvent: MouseEvent, view: any): void => {
+        (window as any).location = this.context.pageContext.web.absoluteUrl +
+          "/Lists/" + escape(this.properties.listName) + "/DispForm.aspx?ID=" + calEvent.id;
+      },
+      editable: true,
+      timezone: "UTC",
+      droppable: true, // this allows things to be dropped onto the calendar
+      // update the end date when a user drags and drops an event
+      eventDrop: (event: any, delta: moment.Duration, revertFunc: Function): void => {
+        this.updateTask(<number>event.id, <moment.Moment>event.start, <moment.Moment>event.end);
+      },
+      // put the events on the calendar
+      events: (start: moment.Moment, end: moment.Moment, timezone: string, callback: Function): void => {
+        var startDate = start.format('YYYY-MM-DD');
+        var endDate = end.format('YYYY-MM-DD');
+
+        var restQuery = "/_api/Web/Lists/GetByTitle('" + escape(this.properties.listName) + "')/items?$select=ID,Title,\
+      Status,StartDate,DueDate,AssignedTo/Title&$expand=AssignedTo&\
+      $filter=((DueDate ge '" + startDate + "' and DueDate le '" + endDate + "')or(StartDate ge '" + startDate + "' and StartDate le '" + endDate + "'))";
+
+        this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + restQuery, SPHttpClient.configurations.v1, {
+          headers: {
+            'Accept': "application/json;odata.metadata=none"
+          }
+        })
+          .then((response: SPHttpClientResponse): Promise<{ value: ITask[] }> => {
+            return response.json();
+          })
+          .then((data: { value: ITask[] }): void => {
+            let personColors: { [person: string]: string; } = {};
+            var colorNo = 0;
+
+            var events = data.value.map((task: ITask): any => {
+              var assignedTo = task.AssignedTo.map((person: { Title: string }): string => {
+                return person.Title;
+              }).join(', ');
+
+              var color = personColors[assignedTo];
+              if (!color) {
+                color = COLORS[colorNo++];
+                personColors[assignedTo] = color;
+              }
+              if (colorNo >= COLORS.length) {
+                colorNo = 0;
+              }
+
+              return {
+                title: task.Title + " - " + assignedTo,
+                id: task.ID,
+                color: color, // specify the background color and border color can also create a class and use className parameter.
+                start: moment.utc(task.StartDate).add("1", "days"),
+                end: moment.utc(task.DueDate).add("1", "days") // add one day to end date so that calendar properly shows event ending on that day
+              };
+            });
+
+            callback(events);
+          });
+      }
+    });
+  }
+
+  private updateTask(id: number, startDate: moment.Moment, dueDate: moment.Moment) {
+    // subtract the previously added day to the date to store correct date
+    var sDate = moment.utc(startDate).add("-1", "days").format('YYYY-MM-DD') + "T" +
+      startDate.format("hh:mm") + ":00Z";
+    if (!dueDate) {
+      dueDate = startDate;
+    }
+    var dDate = moment.utc(dueDate).add("-1", "days").format('YYYY-MM-DD') + "T" +
+      dueDate.format("hh:mm") + ":00Z";
+
+    this.context.spHttpClient.post(`${this.context.pageContext.web.absoluteUrl}\
+    /_api/Web/Lists/getByTitle('${escape(this.properties.listName)}')/Items(${id})`, SPHttpClient.configurations.v1, {
+      body: JSON.stringify({
+        StartDate: sDate,
+        DueDate: dDate,
+      }),
+      headers: {
+        Accept: "application/json;odata=nometadata",
+        "Content-Type": "application/json;odata=nometadata",
+        "IF-MATCH": "*",
+        "X-Http-Method": "PATCH"
+      }
+    })
+      .then((response: SPHttpClientResponse): void => {
+        if (response.ok) {
+          alert("Update Successful");
+        } else {
+          alert("Update Failed");
+        }
+
+        this.displayTasks();
+      });
   }
 }

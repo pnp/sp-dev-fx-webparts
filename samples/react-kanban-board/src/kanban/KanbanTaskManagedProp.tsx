@@ -4,9 +4,9 @@
 import * as React from 'react';
 import styles from './KanbanTaskManagedProp.module.scss';
 import { IKanbanTaskManagedProps, KanbanTaskMamagedPropertyType } from './IKanbanTask';
-import { IStackStyles, Stack } from 'office-ui-fabric-react/lib/Stack';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-import { Persona, PersonaSize, PersonaPresence, IPersonaSharedProps, IPersonaProps } from 'office-ui-fabric-react';
+import {  Stack } from 'office-ui-fabric-react/lib/Stack';
+import ReactHtmlParser from 'react-html-parser';
+import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react';
 
 export interface IKanbanTaskManagedPropProps extends IKanbanTaskManagedProps { }
 

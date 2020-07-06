@@ -5,21 +5,8 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 
 // Stuff for out-of-the-box property panes
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneChoiceGroup,
-  PropertyPaneLabel,
-  PropertyPaneDropdown,
-  PropertyPaneToggle,
-  PropertyPaneTextField,
-  IPropertyPaneChoiceGroupOption,
-  PropertyPaneSlider,
-  IPropertyPaneGroup,
-  PropertyPaneButton,
-  IPropertyPaneDropdownOption,
-  PropertyPaneHorizontalRule
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneChoiceGroup, PropertyPaneLabel, PropertyPaneDropdown, PropertyPaneToggle, PropertyPaneTextField, IPropertyPaneChoiceGroupOption, PropertyPaneSlider, IPropertyPaneGroup, PropertyPaneButton, IPropertyPaneDropdownOption, PropertyPaneHorizontalRule } from "@microsoft/sp-property-pane";
 
 // Needed to create drop down choices
 import {

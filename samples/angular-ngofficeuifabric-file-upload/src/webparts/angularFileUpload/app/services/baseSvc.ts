@@ -7,7 +7,7 @@ export class BaseService {
   public baseUrl: string;
 
   constructor(private $http: ng.IHttpService, private $q: ng.IQService) {
-      
+
       this.baseUrl = (<any>window)._spPageContextInfo.webAbsoluteUrl;
 
   }

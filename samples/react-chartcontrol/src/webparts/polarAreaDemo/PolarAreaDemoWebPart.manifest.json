@@ -3,7 +3,7 @@
   "id": "75942037-254d-4c8d-a5d1-44031c957ebf",
   "alias": "PolarAreaDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

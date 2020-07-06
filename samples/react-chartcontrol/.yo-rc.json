@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": false,
     "environment": "spo",
-    "version": "1.7.1",
+    "version": "1.10.0",
     "libraryName": "react-chartcontrol",
     "libraryId": "fb9665fb-4455-4b7f-99ab-2195920871fd",
     "packageManager": "npm",
