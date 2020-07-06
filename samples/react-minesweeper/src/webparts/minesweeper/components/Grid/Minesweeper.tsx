@@ -234,6 +234,7 @@ export default class Minesweeper extends React.Component<IMinesweeperProps, IMin
       case GameStatus.Idle: // first click starting the game
         while(tile.hasMine){
           grid = this.initGrid(this.state.settings);
+          tile = grid[coord.row][coord.col];
         }
 
         this.setState({
