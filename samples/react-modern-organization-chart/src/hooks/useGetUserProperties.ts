@@ -88,7 +88,7 @@ export const useGetUserProperties = async (
   //*************************************************************************************//
   // Get User Managers
   //*************************************************************************************//
-  const getManagers = async (extendedManagers) => {
+  const getManagers = async (extendedManagers:string[] ) => {
     let _managersObjIds: string[] = [];
     // Get Managers
     for (const _manager of extendedManagers) {
@@ -142,7 +142,7 @@ export const useGetUserProperties = async (
   // Get Direct Reports
   //*************************************************************************************//
 
-  const getDirectReports = async (directReports) => {
+  const getDirectReports = async (directReports:string[] ) => {
     let _userReportObjIds: string[] = [];
     for (const _userReport of directReports) {
       const _profile: any = await sp.profiles
@@ -171,7 +171,7 @@ export const useGetUserProperties = async (
     const _directReportsPresences: IUserPresence[] = await getUserPresence(
       _userReportObjIds
     );
-    // Update Array of managers with presence
+    // Update Array of direct reports with presence
     if (_directReportsPresences.length > 0) {
       for (const _presence of _directReportsPresences) {
         const i = _.findIndex(_reportsList, (v) => {
@@ -199,10 +199,10 @@ export const useGetUserProperties = async (
     .usingCaching()
     .getPropertiesFor(loginName);
   console.log(_currentUserProfile);
-
+  // get Managers and Direct Reports
   const _extendedManagers: string[] = _currentUserProfile.ExtendedManagers;
   const _directReports: string[] = _currentUserProfile.DirectReports;
-
+  // Get userObjId
   const _currentUserObjId: string = await getUserId( _currentUserProfile.UserProfileProperties);
   // Get Current user Picture and User Presence
   _currentUserProfile.PictureUrl = await getImageBase64(
