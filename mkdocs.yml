@@ -1413,17 +1413,15 @@ extra:
       modifiedtext: November 18, 2018
       modified: 2018-11-18
     - framework: React
-      spfx: 1.7.0
-      year: 2018
+      spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-events-dynamicdata
       name: react-events-dynamicdata
       title: Dynamic data
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png
-      author: Waldek Mastykarz
+      author: Waldek Mastykarz, Hugo Bernier
       summary: Sample web parts illustrating using the SharePoint Framework Dynamic data capability.
-      version: 1.1
-      modifiedtext: November 9, 2018
-      modified: 2018-11-09
+      modifiedtext: July 8, 2020
+      modified: 2020-07-08
     - framework: React
       spfx: 1.5.1
       year: 2018
