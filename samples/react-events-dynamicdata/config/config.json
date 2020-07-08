@@ -2,16 +2,24 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
   "version": "2.0",
   "bundles": {
-    "events": {
+    "event-details-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/eventDetails/EventDetailsWebPart.js",
+          "manifest": "./src/webparts/eventDetails/EventDetailsWebPart.manifest.json"
+        }
+      ]
+    },
+    "events-web-part": {
       "components": [
         {
           "entrypoint": "./lib/webparts/events/EventsWebPart.js",
           "manifest": "./src/webparts/events/EventsWebPart.manifest.json"
-        },
-        {
-          "entrypoint": "./lib/webparts/eventDetails/EventDetailsWebPart.js",
-          "manifest": "./src/webparts/eventDetails/EventDetailsWebPart.manifest.json"
-        },
+        }
+      ]
+    },
+    "map-web-part": {
+      "components": [
         {
           "entrypoint": "./lib/webparts/map/MapWebPart.js",
           "manifest": "./src/webparts/map/MapWebPart.manifest.json"
@@ -21,8 +29,8 @@
   },
   "externals": {},
   "localizedResources": {
-    "EventsWebPartStrings": "lib/webparts/events/loc/{locale}.js",
     "EventDetailsWebPartStrings": "lib/webparts/eventDetails/loc/{locale}.js",
+    "EventsWebPartStrings": "lib/webparts/events/loc/{locale}.js",
     "MapWebPartStrings": "lib/webparts/map/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
