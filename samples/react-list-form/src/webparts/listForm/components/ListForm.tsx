@@ -47,13 +47,19 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
       originalData: {},
       errors: [],
       notifications: [],
-      fieldErrors: {}
+      fieldErrors: {},
+      hasError: false,
+      errorInfo: ''
     };
     this.listFormService = new ListFormService(props.spHttpClient);
   }
 
   public render() {
     let menuProps;
+    if (this.state.hasError) {
+      // render any custom fallback UI
+      return <h1>{this.state.errorInfo}</h1>;
+    }
     if (this.state.fieldsSchema) {
       menuProps = {
         shouldFocusOnMount: true,
@@ -108,6 +114,12 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
     );
   }
 
+  public componentDidCatch(error, errorInfo) {
+    this.setState({
+      hasError: true,
+      errorInfo: error.toString()
+    });
+  }
   private renderNotifications() {
     if (this.state.notifications.length === 0) {
       return null;
@@ -272,62 +284,86 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
     );
   }
 
-  private async saveItem(): Promise<void> {
-    this.setState({ ...this.state, isSaving: true, errors: [] });
-    try {
-      let updatedValues;
-      if (this.props.id) {
-        updatedValues = await this.listFormService.updateItem(
-          this.props.webUrl,
-          this.props.listUrl,
-          this.props.id,
-          this.state.fieldsSchema,
-          this.state.data,
-          this.state.originalData);
-      } else {
-        updatedValues = await this.listFormService.createItem(
-          this.props.webUrl,
-          this.props.listUrl,
-          this.state.fieldsSchema,
-          this.state.data);
+  private validator = () => {
+    let fieldErrors = this.state.fieldErrors;
+    this.state.fieldsSchema.forEach(currentFieldSchema => {
+      if (currentFieldSchema.Required && !this.state.data[currentFieldSchema.InternalName]) {
+        fieldErrors = {
+          ...fieldErrors,
+          [currentFieldSchema.InternalName]: strings.RequiredValueMessage
+        };
       }
-      let dataReloadNeeded = false;
-      const newState: IListFormState = { ...this.state, fieldErrors: {} };
-      let hadErrors = false;
-      updatedValues.filter((fieldVal) => fieldVal.HasException).forEach((element) => {
-        newState.fieldErrors[element.FieldName] = element.ErrorMessage;
-        hadErrors = true;
-      });
-      if (hadErrors) {
-        if (this.props.onSubmitFailed) {
-          this.props.onSubmitFailed(newState.fieldErrors);
-        } else {
-          newState.errors = [...newState.errors, strings.FieldsErrorOnSaving];
-        }
-      } else {
-        updatedValues.reduce(
-          (val, merged) => {
-            merged[val.FieldName] = merged[val.FieldValue]; return merged;
-          },
-          newState.data,
-        );
-        // we shallow clone here, so that changing values on state.data won't be changing in state.originalData too
-        newState.originalData = { ...newState.data };
-        let id = (this.props.id) ? this.props.id : 0;
-        if (id === 0) {
-          id = updatedValues.filter((val) => val.FieldName === 'Id')[0].FieldValue;
-        }
-        if (this.props.onSubmitSucceeded) { this.props.onSubmitSucceeded(id); }
-        newState.notifications = [...newState.notifications, strings.ItemSavedSuccessfully];
-        dataReloadNeeded = true;
+    });
+    this.setState({
+      fieldErrors: fieldErrors
+    });
+    for (let key in fieldErrors) {
+      if (fieldErrors[key]) {
+        return false;
       }
-      newState.isSaving = false;
-      this.setState(newState);
+    }
+    return true;
+  }
 
-      if (dataReloadNeeded) { this.readData(this.props.listUrl, this.props.formType, this.props.id); }
-    } catch (error) {
-      const errorText = strings.ErrorOnSavingListItem + error;
-      this.setState({ ...this.state, errors: [...this.state.errors, errorText] });
+  private async saveItem(): Promise<void> {
+    let shouldSave = this.validator();
+    if (shouldSave) {
+      this.setState({ ...this.state, isSaving: true, errors: [] });
+      try {
+        let updatedValues;
+        if (this.props.id) {
+          updatedValues = await this.listFormService.updateItem(
+            this.props.webUrl,
+            this.props.listUrl,
+            this.props.id,
+            this.state.fieldsSchema,
+            this.state.data,
+            this.state.originalData);
+        } else {
+          updatedValues = await this.listFormService.createItem(
+            this.props.webUrl,
+            this.props.listUrl,
+            this.state.fieldsSchema,
+            this.state.data);
+        }
+        let dataReloadNeeded = false;
+        const newState: IListFormState = { ...this.state, fieldErrors: {} };
+        let hadErrors = false;
+        updatedValues.filter((fieldVal) => fieldVal.HasException).forEach((element) => {
+          newState.fieldErrors[element.FieldName] = element.ErrorMessage;
+          hadErrors = true;
+        });
+        if (hadErrors) {
+          if (this.props.onSubmitFailed) {
+            this.props.onSubmitFailed(newState.fieldErrors);
+          } else {
+            newState.errors = [...newState.errors, strings.FieldsErrorOnSaving];
+          }
+        } else {
+          updatedValues.reduce(
+            (val, merged) => {
+              merged[val.FieldName] = merged[val.FieldValue]; return merged;
+            },
+            newState.data,
+          );
+          // we shallow clone here, so that changing values on state.data won't be changing in state.originalData too
+          newState.originalData = { ...newState.data };
+          let id = (this.props.id) ? this.props.id : 0;
+          if (id === 0) {
+            id = updatedValues.filter((val) => val.FieldName === 'Id')[0].FieldValue;
+          }
+          if (this.props.onSubmitSucceeded) { this.props.onSubmitSucceeded(id); }
+          newState.notifications = [...newState.notifications, strings.ItemSavedSuccessfully];
+          dataReloadNeeded = true;
+        }
+        newState.isSaving = false;
+        this.setState(newState);
+
+        if (dataReloadNeeded) { this.readData(this.props.listUrl, this.props.formType, this.props.id); }
+      } catch (error) {
+        const errorText = strings.ErrorOnSavingListItem + error;
+        this.setState({ ...this.state, errors: [...this.state.errors, errorText] });
+      }
     }
   }
 

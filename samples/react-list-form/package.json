@@ -1,6 +1,6 @@
 {
   "name": "react-form-webpart",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "engines": {
     "node": ">=0.10.0"
@@ -13,16 +13,18 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "1.9.1",
-    "@microsoft/sp-lodash-subset": "1.9.1",
-    "@microsoft/sp-office-ui-fabric-core": "1.9.1",
-    "@microsoft/sp-webpart-base": "1.9.1",
+    "@microsoft/sp-core-library": "1.10.0",
+    "@microsoft/sp-lodash-subset": "1.10.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.10.0",
+    "@microsoft/sp-property-pane": "1.10.0",
+    "@microsoft/sp-webpart-base": "1.10.0",
     "@tinymce/tinymce-react": "^3.0.1",
     "@types/es6-promise": "0.0.33",
     "@types/react-dnd": "~2.0.34",
     "@types/webpack-env": "1.13.1",
     "@uifabric/icons": "^7.3.14",
     "moment": "^2.24.0",
+    "office-ui-fabric-react": "^6.189.2",
     "react-dnd": "~2.5.4",
     "react-dnd-html5-backend": "~2.5.4",
     "react-html-parser": "^2.0.2",
@@ -31,10 +33,11 @@
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-2.9": "^0.8.5",
-    "@microsoft/sp-build-web": "1.9.1",
-    "@microsoft/sp-module-interfaces": "1.9.1",
-    "@microsoft/sp-tslint-rules": "1.9.1",
-    "@microsoft/sp-webpart-workbench": "1.9.1",
+    "@microsoft/rush-stack-compiler-3.3": "0.3.5",
+    "@microsoft/sp-build-web": "1.10.0",
+    "@microsoft/sp-module-interfaces": "1.10.0",
+    "@microsoft/sp-tslint-rules": "1.10.0",
+    "@microsoft/sp-webpart-workbench": "1.10.0",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
