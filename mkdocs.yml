@@ -709,18 +709,16 @@ extra:
       modifiedtext: October 20, 2019
       summary: This sample shows how to managed Microsoft Graph Open Extension in SPFX. This application uses User Resource to create Open Extension.      
     - framework: React
-      spfx: 1.9.1
-      year: 2019
+      spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-form
       name: react-list-form
       title: List Form WebPart
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
       thumbnailtype: video
-      author: Dany Wyss
+      author: Dany Wyss, Harsha Vardhini
       summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
-      version: 1.0.2
-      modifiedtext: October 14, 2019
-      modified: 2019-10-14    
+      modifiedtext: July 7, 2020
+      modified: 2020-07-07
     - framework: React
       spfx: 1.9.1
       year: 2019

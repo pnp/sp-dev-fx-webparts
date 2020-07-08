@@ -8,7 +8,7 @@ We understand it can get frustrating to get some of these samples working, and w
 
 If you're experiencing issues with the samples, these tips may help you.
 
-If you still can't get the samples to work after following these steps, feel free to [open an issue](#Openanissue).
+If you still can't get the samples to work after following these steps, feel free to [open an issue](#open-an-issue).
 
 ## Check the README.md
 
@@ -42,6 +42,7 @@ Make sure to read the **Minimal Path to Awesome** section of the **README.md** f
 If you have any doubts whether your environment is properly configured to run a sample, we recommend you use the **[Office 365 CLI SPFx Doctor](https://pnp.github.io/office365-cli/cmd/spfx/doctor/)** to analyze your environment and the project for compatibility issues.
 
 To use it, follow these steps:
+
 1. If you haven't done so already, install Office 365 CLI on your workstation by using the following command:
     ```bash
     npm i -g @pnp/office365-cli
@@ -69,6 +70,7 @@ If the version of the sample you want to use is not compatible with your SharePo
 We recommend that you use the **[Office 365 CLI SPFx Project Upgrade](https://pnp.github.io/office365-cli/cmd/spfx/project/project-upgrade/)** to analyze the project and give you detailed upgrade steps.
 
 To do so, follow these steps:
+
 1. If you haven't done so already, install Office 365 CLI on your workstation by using the following command:
     ```bash
     npm i -g @pnp/office365-cli
@@ -95,7 +97,6 @@ Note that you can also specify which version you wish to target by specifying a 
 > If you have upgraded an older sample to the most current version of SPFx, feel free to create a pull request and share with the rest of the community. Follow the [contribution guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/master/.github/CONTRIBUTING.md) if you have any questions.
 
 ## Open an issue
-<div id="openanissue></div>
 
 If -- after ensuring that your environment is compatible with the sample -- you still have difficulties using the sample, [open an issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) on our repository.
 
