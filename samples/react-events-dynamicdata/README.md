@@ -5,7 +5,7 @@ Sample web parts illustrating using the SharePoint Framework Dynamic data capabi
 ![Web parts placed on a modern SharePoint page showing information about events](./assets/dynamic-data-webparts.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
+![SPFx 1.10](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
