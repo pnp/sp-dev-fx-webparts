@@ -75,8 +75,8 @@ This web part use Microsoft Graph API to get presence of users, and need to have
 - `gulp build`
 - `gulp bundle --ship`
 - `gulp package-solution --ship`
--  Add Package to AppCatalog
--  On the API Management Approve Permission "presence.read.all"
+-  `Add Package to AppCatalog`
+-  `On the API Management Approve Permission "presence.read.all"`
 - 
 
 
