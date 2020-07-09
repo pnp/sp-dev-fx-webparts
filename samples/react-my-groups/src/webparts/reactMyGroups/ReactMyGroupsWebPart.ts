@@ -2,13 +2,14 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
-import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneChoiceGroup } from "@microsoft/sp-property-pane";
 import GroupService from '../../services/GroupService';
 import * as strings from 'ReactMyGroupsWebPartStrings';
 import { ReactMyGroups, IReactMyGroupsProps } from './components';
 
 export interface IReactMyGroupsWebPartProps {
-  description: string;
+  title: string;
+  layout: string;
 }
 
 export default class ReactMyGroupsWebPart extends BaseClientSideWebPart<IReactMyGroupsWebPartProps> {
@@ -17,7 +18,8 @@ export default class ReactMyGroupsWebPart extends BaseClientSideWebPart<IReactMy
     const element: React.ReactElement<IReactMyGroupsProps > = React.createElement(
       ReactMyGroups,
       {
-        description: this.properties.description
+        title: this.properties.title,
+        layout: this.properties.layout
       }
     );
 
@@ -39,6 +41,7 @@ export default class ReactMyGroupsWebPart extends BaseClientSideWebPart<IReactMy
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    const { layout }  = this.properties;
     return {
       pages: [
         {
@@ -49,8 +52,26 @@ export default class ReactMyGroupsWebPart extends BaseClientSideWebPart<IReactMy
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('title', {
+                  label: 'Title'
+                }),
+                PropertyPaneChoiceGroup("layout", {
+                  label: 'Layout Option',
+                  options: [
+                    {
+                      key: "Grid",
+                      text: "Grid",
+                      iconProps: { officeFabricIconFontName: "GridViewSmall"},
+                      checked: layout === "Grid" ? true : false,
+
+                    },
+                    {
+                      key: "Compact",
+                      text: "Compact",
+                      iconProps: { officeFabricIconFontName: "BulletedList2"},
+                      checked: layout === "Compact" ? true : false
+                    }
+                  ]
                 })
               ]
             }

@@ -1,11 +1,13 @@
 @import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
 
 :export {
-  padding: 20;
+  padding: 5;
   minWidth: 210;
   maxWidth: 320;
   rowsPerPage: 3;
 }
+
+
 
 .compactLayout {
   overflow: hidden;
@@ -44,6 +46,5 @@
   :global(.ms-List-cell) {
     vertical-align: top;
     display: inline-block;
-    margin-bottom: 20px;
   }
 }
