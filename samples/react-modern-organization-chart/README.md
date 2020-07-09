@@ -18,6 +18,7 @@ extensions:
 ## Summary
 
 This webpart show organization chart for current user, shows, managers and direct reports and there available status.
+
 On Click the profile page of will be open.
 
 
@@ -28,6 +29,14 @@ On Click the profile page of will be open.
 ![](../react-modern-organization-chart/assets/Screenshot1.png)
 
 ![](../react-modern-organization-chart/assets/Screenshot2.png)
+
+
+## WebPart Properties
+ 
+Property |Type|Required| comments
+--------------------|----|--------|----------
+Title | Text| no|
+Refresh Status Interval in minutes | number| no | default value 5 min
 
 
 ### Working with
