@@ -4,6 +4,8 @@ declare interface IWorkbenchCustomizerWebPartStrings {
   CustomWorkbenchStylesFieldLabel: string;
   customWorkbenchStylesFullWidthFieldLabel: string;
   PreviewModeFieldLabel: string;
+  TitleLabel: string;
+  RequestPageRefresh: string;
 }
 
 declare module 'WorkbenchCustomizerWebPartStrings' {
