@@ -121,8 +121,13 @@ export const useGetUserProperties = async (
     const _managersPresences: IUserPresence[] = await getUserPresence(
       _managersObjIds
     );
-    // Update Array of managers with presence
-    if (_managersPresences.length > 0) {
+    await updateManagersPresence(_managersPresences);
+  };
+//************************************************************************************//
+// function Update List os Managers with presence status
+//************************************************************************************//
+  const updateManagersPresence = async (_managersPresences: IUserPresence[]):Promise<IUserInfo[]> => {
+     if (_managersPresences.length > 0) {
       for (const _presence of _managersPresences) {
         const i = _.findIndex(_managersList, (v) => {
           return v.id == _presence.id;
@@ -136,7 +141,9 @@ export const useGetUserProperties = async (
         };
       }
     }
+    return _managersList;
   };
+
 
   //************************************************************************************//
   // Get Direct Reports
@@ -172,8 +179,16 @@ export const useGetUserProperties = async (
       _userReportObjIds
     );
     // Update Array of direct reports with presence
-    if (_directReportsPresences.length > 0) {
-      for (const _presence of _directReportsPresences) {
+    await updateDirectReportsPresence(_directReportsPresences);
+  };
+
+ //*************************************************************************************//
+    // Funcion  Update List os Direct Reports with presence status
+    //*************************************************************************************//
+const updateDirectReportsPresence = async (directReportsPresences: IUserPresence[]):Promise<IUserInfo[]> => {
+    // Update Array of direct reports with presence
+    if (directReportsPresences.length > 0) {
+      for (const _presence of directReportsPresences) {
         const i = _.findIndex(_reportsList, (v) => {
           return v.id == _presence.id;
         });
@@ -186,14 +201,51 @@ export const useGetUserProperties = async (
         };
       }
     }
-  };
+    return _reportsList;
+};
 
+
+//*************************************************************************************//
+  // Get news status of managers and direct Reports
+  //*************************************************************************************//
+
+  const getPresenceStatus =  async ( managersList: IUserInfo[],reportsList:IUserInfo[], currentUserProfile: any):Promise<any> => {
+    const _managersObjIds:string[] = [];
+    const _userReportObjIds:string[] = [];
+
+    // get managersObjIds
+    for (const _manager of managersList){
+      _managersObjIds.push(_manager.id);
+    }
+    // get new status of Managers and update list os managers
+    const _managersPresences: IUserPresence[] = await getUserPresence(_managersObjIds);
+    managersList = await updateManagersPresence(_managersPresences);
+
+    // Get  objsId of DirectReports
+    for (const _userReport of reportsList){
+      _userReportObjIds.push(_userReport.id);
+    }
+  // get new status of Direct Reports and update list of direct Reports
+    const _directReportsPresences: IUserPresence[] = await getUserPresence(
+      _userReportObjIds
+    );
+
+    reportsList =  await updateDirectReportsPresence(_directReportsPresences);
+
+    // Get update status for current user
+
+    const _currentUserPresenceUpd: IUserPresence[] = await getUserPresence([currentUserProfile.id]);
+    currentUserProfile.presence = { activity: _currentUserPresenceUpd[0].activity, availability: _currentUserPresenceUpd[0].availability};
+
+    return { managersList, currentUserProfile, reportsList };
+
+  };
   //*************************************************************************************//
   // End Functions
   //*************************************************************************************//
 
   //*************************************************************************************//
-  //  Get Current User Profile
+  //  MAIN - Get Current User Profile
   //*************************************************************************************//
   const _currentUserProfile: any = await sp.profiles
     .usingCaching()
@@ -204,6 +256,7 @@ export const useGetUserProperties = async (
   const _directReports: string[] = _currentUserProfile.DirectReports;
   // Get userObjId
   const _currentUserObjId: string = await getUserId( _currentUserProfile.UserProfileProperties);
+  _currentUserProfile.id = _currentUserObjId;
   // Get Current user Picture and User Presence
   _currentUserProfile.PictureUrl = await getImageBase64(
     `/_layouts/15/userphoto.aspx?size=M&accountname=${_currentUserProfile.Email}`, _currentUserObjId);
@@ -219,5 +272,5 @@ export const useGetUserProperties = async (
   // Return objects
   //  _managersList , _currentUserProfile , DirectReports
   //*************************************************************************************//
-  return { _managersList, _currentUserProfile, _reportsList };
+  return { _managersList, _currentUserProfile, _reportsList, getPresenceStatus };
 };

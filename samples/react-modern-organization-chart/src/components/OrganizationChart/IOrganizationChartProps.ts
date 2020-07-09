@@ -9,4 +9,5 @@ export interface IOrganizationChartProps {
   themeVariant: IReadonlyTheme | undefined;
   displayMode: DisplayMode;
   updateProperty: (value: string) => void;
+  refreshInterval: number;
 }

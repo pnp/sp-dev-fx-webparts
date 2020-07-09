@@ -56,6 +56,10 @@ presenceStatus["PresenceUnknown"] = PersonaPresence.none;
 export const OrganizationChart: React.FunctionComponent<IOrganizationChartProps> = (
   props: IOrganizationChartProps
 ) => {
+
+  // Timer Id used by setInterval
+  let _timerId:number = 0;
+  // Application Context (React.Context)
   const applicationContext: IAppContext = {
     currentUser: props.currentUser,
     context: props.context,
@@ -255,10 +259,12 @@ export const OrganizationChart: React.FunctionComponent<IOrganizationChartProps>
           _managersList,
           _currentUserProfile,
           _reportsList,
+          getPresenceStatus,
         } = await useGetUserProperties(
           applicationContext.currentUser.loginName,
           applicationContext.context
         );
+
         setState({
           ...state,
           isloading: false,
@@ -266,6 +272,33 @@ export const OrganizationChart: React.FunctionComponent<IOrganizationChartProps>
           reportsList: _reportsList,
           userProfile: _currentUserProfile,
         });
+
+        // Pooling status each x min ( value define as property in webpart)
+        // test if there are an Timer running if exist clear
+        if (_timerId) {
+          clearInterval(_timerId);
+        }
+        const _interval = props.refreshInterval * 60000;
+       _timerId =  setInterval(async () => {
+          const newPresenceStatus =  await getPresenceStatus(
+            _managersList,
+            _reportsList,
+            _currentUserProfile
+          );
+          const {
+            managersList,
+            currentUserProfile,
+            reportsList,
+          } = newPresenceStatus;
+          setState({
+            ...state,
+            isloading: false,
+            managerList: managersList,
+            reportsList: reportsList,
+            userProfile: currentUserProfile,
+          });
+        }, _interval);
+
         //
       } catch (error) {
         setState({

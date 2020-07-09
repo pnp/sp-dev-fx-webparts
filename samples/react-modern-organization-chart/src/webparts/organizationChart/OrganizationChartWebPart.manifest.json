@@ -21,7 +21,8 @@
     "description": { "default": "Organization Chart" },
     "officeFabricIconFontName": "Org",
     "properties": {
-      "title": "Organization Chart"
+      "title": "Organization Chart",
+      "refreshInterval": "5"
     }
   }]
 }
