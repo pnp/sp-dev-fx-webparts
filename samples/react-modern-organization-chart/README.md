@@ -45,7 +45,7 @@ Built with SharePoint Framework GA, Microsoft Graph API and @pnp/PnPjs
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.10.0-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
