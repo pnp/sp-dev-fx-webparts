@@ -280,6 +280,7 @@ export const OrganizationChart: React.FunctionComponent<IOrganizationChartProps>
         }
         const _interval = props.refreshInterval * 60000;
        _timerId =  setInterval(async () => {
+         console.log("cheching new status... ", new Date());
           const newPresenceStatus =  await getPresenceStatus(
             _managersList,
             _reportsList,
@@ -309,7 +310,7 @@ export const OrganizationChart: React.FunctionComponent<IOrganizationChartProps>
         });
       }
     })();
-  }, [props]);
+  }, [props.title, props.refreshInterval]);
 
   // Render component
   return (
