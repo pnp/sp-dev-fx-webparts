@@ -63,6 +63,16 @@ extra:
   samples:
     - framework: React
       spfx: 1.10.0
+      title: Modern Organization Chart
+      url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-modern-organization-chart
+      name: react-modern-organization-chart
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/AccessibleChart.png
+      author: João Mendes
+      summary: This webpart show organization chart for current user, shows, managers and direct reports and there available status.
+      modifiedtext: July 9, 2020
+      modified: 2020-07-09
+    - framework: React
+      spfx: 1.10.0
       title: Accessible Charts using PnP Chart Control
       url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-chartcontrol/README.md#accessible-chart
       name: react-chartcontrol-1
@@ -71,6 +81,7 @@ extra:
       summary: Demonstrates the accessibility features of the PnP Chart Control.
       modifiedtext: July 2, 2020
       modified: 2020-07-02
+ 
     - framework: React
       spfx: 1.10.0
       title: Area Charts using PnP Chart Control
@@ -333,8 +344,8 @@ extra:
       framework: Javascript
       spfx: 1.10.0
       author: Joel Rodrigues
-      modifiedtext: June 04, 2020
-      modified: 2020-06-04
+      modifiedtext: July 09, 2020
+      modified: 2020-07-09
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar
@@ -738,8 +749,8 @@ extra:
       title: My Groups
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png
       author: Zach Roberts
-      modified: 2020-06-01
-      modifiedtext: June 1, 2020
+      modified: 2020-07-09
+      modifiedtext: July 09, 2020
       summary: Using Microsoft Graph, this webpart grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.
     - framework: Angular
       spfx: GA
