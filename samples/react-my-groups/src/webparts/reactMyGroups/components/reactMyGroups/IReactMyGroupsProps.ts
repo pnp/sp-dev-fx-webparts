@@ -1,3 +1,4 @@
 export interface IReactMyGroupsProps {
-  description: string;
+  title: string;
+  layout: string;
 }
