@@ -30,10 +30,6 @@ This web part used the date range picker in the SharePoint Framework (SPFx) web 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-## Prerequisites
-
-> Any special pre-requisites?
-
 ## Solution
 
 Solution|Author(s)
