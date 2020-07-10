@@ -13,6 +13,8 @@
   },
   "externals": {},
   "localizedResources": {
-    "TimelineWebPartStrings": "lib/webparts/timeline/loc/{locale}.js"
+    "TimelineWebPartStrings": "lib/webparts/timeline/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './timelineEvent.module.scss';
+import * as strings from 'TimelineWebPartStrings';
 import { IEventProps } from './ITimeLineEventProps';
 import { IEventState } from './ITimeLineEventState';
 import { ITimelineActivity } from '../../../../models/ITimelineActivity';
@@ -219,13 +220,13 @@ export class TimelineEvent extends React.Component<IEventProps, IEventState> {
       <div>
         <Dialog
           isOpen={this.props.showPanel}
-          closeButtonAriaLabel="Close"
+          closeButtonAriaLabel={strings.CloseLabel}
           dialogContentProps={{
             type: DialogType.normal,
             title:
               this.props.panelMode == 2
-                ? "Edit Timeline Event"
-                : "Create Timeline Event",
+                ? strings.EditEventLabel
+                : strings.AddEventLabel,
             showCloseButton: true,
           }}
           onDismiss={this.hidePanel}
@@ -235,7 +236,7 @@ export class TimelineEvent extends React.Component<IEventProps, IEventState> {
         >
           <div>
             <TextField
-              label="Title"
+              label={strings.TitleLabel}
               required
               value={
                 this.state.eventData
@@ -247,7 +248,7 @@ export class TimelineEvent extends React.Component<IEventProps, IEventState> {
             />
           </div>
           <Label>
-            Date
+            {strings.DateLabel}
           </Label>
           
           <div
@@ -339,14 +340,14 @@ export class TimelineEvent extends React.Component<IEventProps, IEventState> {
 
           <div>
             <TextField
-              label="Description"
+              label={strings.DescriptionLabel}
               value={this.state.activityDescription} onChange={this.onDescriptionChange}
               multiline
             />
           </div>
           <div>
             <TextField
-              label="Picture URL"
+              label={strings.PictureURLLabel}
               value={
                 this.state.eventData
                   ? this.state.eventData.activityPictureUrl ? this.state.eventData.activityPictureUrl["Url"] : ''
@@ -358,7 +359,7 @@ export class TimelineEvent extends React.Component<IEventProps, IEventState> {
           </div>
           <div>
             <TextField
-              label="Link URL"
+              label={strings.LinkURLLabel}
               value={
                 this.state.eventData
                   ? this.state.eventData.activityLink ? this.state.eventData.activityLink["Url"] : ''
@@ -369,7 +370,7 @@ export class TimelineEvent extends React.Component<IEventProps, IEventState> {
             />
           </div>
           <DialogFooter>
-            <PrimaryButton onClick={this.onSave} text={this.props.panelMode == 2 ? "Update Event" : "Create Event"} />
+            <PrimaryButton onClick={this.onSave} text={this.props.panelMode == 2 ? strings.UpdateEventLabel : strings.AddEventLabel} />
             <DefaultButton onClick={this.hidePanel} text="Cancel" />
           </DialogFooter>
         </Dialog>

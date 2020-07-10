@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './Timeline.module.scss';
+import * as strings from 'TimelineWebPartStrings';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { ITimelineActivity } from "../../../models";
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
@@ -178,14 +179,14 @@ export default class TimelineActivity extends React.Component<IActivityProps, IA
         {
           this.props.canEdit &&
           <div className={this.state.layout == "Vertical" ? `${styles.timelineAddVertical}` : `${styles.timelineAddHorizontal}`}>
-            <IconButton iconProps={addToIcon} title="Add Timeline Event" ariaLabel="Add Activity" className={styles.addToButton} onClick={this.createEvent} />
+            <IconButton iconProps={addToIcon} title={strings.AddEventLabel} ariaLabel={strings.AddEventLabel} className={styles.addToButton} onClick={this.createEvent} />
           </div>
         }
 
         <Dialog type={DialogType.normal}
           hidden={!this.state.showDeleteDialog}
-          title='Delete event?'
-          subText='Do you want to delete this event?'
+          title={strings.DeleteEventLabel}
+          subText={strings.DeleteEventConfirmationLabel}
           isBlocking={true}
           containerClassName={'ms-dialogMainOverride'}>
           <DialogFooter>
@@ -220,7 +221,6 @@ export default class TimelineActivity extends React.Component<IActivityProps, IA
                 )}
                 <div className={styles.timelineCard}>
                   <Card
-                    aria-label="Clickable horizontal card "
                     horizontal
                     tokens={cardTokens}
                   >
@@ -229,7 +229,7 @@ export default class TimelineActivity extends React.Component<IActivityProps, IA
                       <Card.Item fill>
                         <Image
                           src={activity.activityPictureUrl ? activity.activityPictureUrl["Url"] : ''}
-                          alt="Placeholder image."
+                          alt={activity.activityTitle}
                           width="100px"
                           height="100px"
                         />
@@ -259,7 +259,7 @@ export default class TimelineActivity extends React.Component<IActivityProps, IA
                     >
                       {canEdit &&
                         <IconButton
-                          id="ContextualMenuButton1"
+                          id="ContextualMenuButtonMore"
                           text=""
                           split={false}
                           iconProps={{ iconName: "MoreVertical" }}
@@ -270,7 +270,7 @@ export default class TimelineActivity extends React.Component<IActivityProps, IA
                             items: [
                               {
                                 key: "Edit",
-                                name: "Edit",
+                                name: strings.EditEventLabel,
                                 onClick: (event) => {
                                   this.setState({ selectedEvent: activity });
                                   this.editEvent();
@@ -282,7 +282,7 @@ export default class TimelineActivity extends React.Component<IActivityProps, IA
                               },
                               {
                                 key: "Delete",
-                                name: "Delete",
+                                name: strings.DeleteEventLabel,
                                 onClick: (event) => {
                                   this.setState({
                                     selectedEvent: activity,

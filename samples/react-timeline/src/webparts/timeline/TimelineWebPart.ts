@@ -11,7 +11,7 @@ import * as strings from 'TimelineWebPartStrings';
 import Timeline from './components/Timeline';
 import { ITimelineProps } from './components/ITimelineProps';
 import TimelineService from '../../services/TimelineService';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy, ISPList } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 
 export interface ITimelineWebPartProps {
   description: string;
@@ -19,16 +19,16 @@ export interface ITimelineWebPartProps {
   layout: string;
   showImage: boolean;
   showDescription: boolean;
-  dateFormat : string;
+  dateFormat: string;
   sortOrder: string;
 }
 
-export default class TimelineWebPart extends BaseClientSideWebPart <ITimelineWebPartProps> {
+export default class TimelineWebPart extends BaseClientSideWebPart<ITimelineWebPartProps> {
   private TimelineService: TimelineService = null;
 
-  protected onInit(): Promise<void> {    
-      this.TimelineService = new TimelineService(this.context);
-      return Promise.resolve();
+  protected onInit(): Promise<void> {
+    this.TimelineService = new TimelineService(this.context);
+    return Promise.resolve();
   }
 
   public render(): void {
@@ -44,7 +44,7 @@ export default class TimelineWebPart extends BaseClientSideWebPart <ITimelineWeb
         dateFormat: this.properties.dateFormat,
         sortOrder: this.properties.sortOrder
       }
-    );   
+    );
 
     ReactDom.render(element, this.domElement);
   }
@@ -71,30 +71,44 @@ export default class TimelineWebPart extends BaseClientSideWebPart <ITimelineWeb
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 }),
-                PropertyPaneTextField('listName', {
-                  label: strings.ListNameFieldLabel
+                PropertyFieldListPicker('listName', {
+                  label: strings.ListNameFieldLabel,
+                  selectedList: this.properties.listName,
+                  includeHidden: false,
+                  orderBy: PropertyFieldListPickerOrderBy.Title,
+                  disabled: false,
+                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+                  properties: this.properties,
+                  context: this.context,
+                  onGetErrorMessage: null,
+                  deferredValidationTime: 0,
+                  key: 'listPickerFieldId',
+                  baseTemplate: 100
                 }),
                 PropertyPaneDropdown('layout', {
                   label: strings.LayoutFieldLabel,
-                  options: [                   
-                    { key: 'Vertical', text: 'Vertical' },
-                    { key: 'Horizontal', text: 'Horizontal' }            
+                  options: [
+                    { key: 'Vertical', text: strings.VerticalLabel },
+                    { key: 'Horizontal', text: strings.HorizontalLabel }
                   ]
                 }),
                 PropertyPaneToggle('showImage', {
-                  label: strings.ShowImageFieldLabel,checked:true
+                  label: strings.ShowImageFieldLabel,
+                  checked: true
                 }),
                 PropertyPaneToggle('showDescription', {
-                  label: strings.ShowDescriptionFieldLabel, checked: true
+                  label: strings.ShowDescriptionFieldLabel,
+                  checked: true
                 }),
                 PropertyPaneTextField('dateFormat', {
-                  label: strings.DateFormatFieldLabel
+                  label: strings.DateFormatFieldLabel,
+                  value: strings.DateFormatText
                 }),
                 PropertyPaneDropdown('sortOrder', {
                   label: strings.SortOrderFieldLabel,
-                  options: [                   
-                    { key: 'asc', text: 'Ascending' },
-                    { key: 'desc', text: 'Descending' }            
+                  options: [
+                    { key: 'asc', text: strings.AscendingLabel },
+                    { key: 'desc', text: strings.DescendingLabel }
                   ]
                 })
               ]

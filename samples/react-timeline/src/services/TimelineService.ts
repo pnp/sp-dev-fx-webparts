@@ -17,14 +17,14 @@ export default class TimelineService {
 
     /**
      * Get timeline activity by id.
-     * @param listTitle 
+     * @param listId 
      * @param id 
      */
-    public async getTimelineActivity(listTitle: string, id: number): Promise<ITimelineActivity> {
+    public async getTimelineActivity(listId: string, id: number): Promise<ITimelineActivity> {
         let returnTimelineActivity: ITimelineActivity = undefined;
 
         try {
-            let activity: any = await sp.web.lists.getByTitle(listTitle).items.usingCaching().getById(id)
+            let activity: any = await sp.web.lists.getById(listId).items.usingCaching().getById(id)
                 .select("Id", "Title", "SPFxTimelineLink", "SPFxTimelineDate", "SPFxTimelinePicture", "SPFxTimelineDescription")
                 .get();
 
@@ -46,15 +46,15 @@ export default class TimelineService {
 
     /**
      * Get all timeline activities
-     * @param listTitle 
+     * @param listId 
      * @param sortOrder 
      */
-    public async getTimelineActivities(listTitle: string, sortOrder: string): Promise<ITimelineActivity[]> {
+    public async getTimelineActivities(listId: string, sortOrder: string): Promise<ITimelineActivity[]> {
         let returnTimelineActivities: ITimelineActivity[] = [];
         let sortOrderAsc: boolean = (sortOrder === "asc");
 
         try {
-            let activities: any[] = await sp.web.lists.getByTitle(listTitle).items
+            let activities: any[] = await sp.web.lists.getById(listId).items
                 .select("Id", "Title", "SPFxTimelineLink", "SPFxTimelineDate", "SPFxTimelinePicture", "SPFxTimelineDescription")
                 .orderBy("SPFxTimelineDate", sortOrderAsc)
                 .get();
@@ -81,10 +81,10 @@ export default class TimelineService {
 
     /**
      * Adds timeline activity to SP list.
-     * @param listTitle 
+     * @param listId 
      * @param newTimelineActivity 
      */
-    public async addTimelineActivity(listTitle: string, newTimelineActivity: ITimelineActivity) {
+    public async addTimelineActivity(listId: string, newTimelineActivity: ITimelineActivity) {
         try {
             let addData: ITypedHash<any> = {
                 Title: newTimelineActivity.activityTitle,
@@ -110,7 +110,7 @@ export default class TimelineService {
                 };
             }
 
-            await sp.web.lists.getByTitle(listTitle).items.add(addData);
+            await sp.web.lists.getById(listId).items.add(addData);
         }
         catch (error) {
             console.log(error);
@@ -120,10 +120,10 @@ export default class TimelineService {
 
     /**
      * Updates timeline activity to SP list by id.
-     * @param listTitle 
+     * @param listId 
      * @param updateTimelineActivity 
      */
-    public async updateTimelineActivity(listTitle: string, updateTimelineActivity: ITimelineActivity) {
+    public async updateTimelineActivity(listId: string, updateTimelineActivity: ITimelineActivity) {
         try {
             let updateItem: ITypedHash<any> = {
                 Title: updateTimelineActivity.activityTitle,
@@ -153,7 +153,7 @@ export default class TimelineService {
                 };
             }
 
-            await sp.web.lists.getByTitle(listTitle).items.getById(updateTimelineActivity.id).update(updateItem).then((value: any) => {
+            await sp.web.lists.getById(listId).items.getById(updateTimelineActivity.id).update(updateItem).then((value: any) => {
                 console.log(value);
             });
         }
@@ -165,12 +165,12 @@ export default class TimelineService {
 
     /**
      * Deletes timeline activity from SP list.
-     * @param listTitle 
+     * @param listId 
      * @param deleteTimelineActivity 
      */
-    public async deleteTimelineActivity(listTitle: string, deleteTimelineActivity: ITimelineActivity) {
+    public async deleteTimelineActivity(listId: string, deleteTimelineActivity: ITimelineActivity) {
         try {
-            await sp.web.lists.getByTitle(listTitle).items.getById(deleteTimelineActivity.id).delete();
+            await sp.web.lists.getById(listId).items.getById(deleteTimelineActivity.id).delete();
         }
         catch (error) {
             return Promise.reject(error);
