@@ -63,10 +63,30 @@ extra:
   samples:
     - framework: React
       spfx: 1.10.0
+      title: Date range picker in SPFx
+      url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-daterangepicker
+      name: react-daterangepicker
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-daterangepicker/assets/daterange1.png
+      author: Ravichandran Krishnasamy
+      summary: This web part used the date range picker in the SharePoint Framework (SPFx) web part
+      modifiedtext: July 04, 2020
+      modified: 2020-07-04
+    - framework: Angular
+      spfx: 1.10.0
+      title: Greeting client-side web part
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-greeting
+      name: angular-greeting
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-greeting/assets/captured.gif
+      author: Gaurav Goyal
+      summary:  This is Greeting webpart which shows greeting to the current logged in user.
+      modifiedtext: Feb 15, 2020
+      modified: 2020-02-15
+    - framework: React
+      spfx: 1.10.0
       title: Modern Organization Chart
       url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-modern-organization-chart
       name: react-modern-organization-chart
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/AccessibleChart.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-modern-organization-chart/assets/Screenshot1.png
       author: João Mendes
       summary: This webpart show organization chart for current user, shows, managers and direct reports and there available status.
       modifiedtext: July 9, 2020
@@ -2449,6 +2469,7 @@ extra:
     - Franck Cornu
     - Federico Porceddu
     - Gary Pretty
+    - Gaurav Goyal
     - Gautam Sheth
     - Giuliano De Luca
     - Hugo Bernier
@@ -2481,6 +2502,7 @@ extra:
     - Ramin Ahmadi
     - Ravi Kulkarni
     - Ravi Kumar Bomma
+    - Ravichandran Krishnasamy
     - Robin Agten
     - Roland Oldengarm
     - Russell Gove
