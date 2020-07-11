@@ -1,17 +1,9 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneLink,
-  IPropertyPaneConditionalGroup,
-  PropertyPaneDynamicFieldSet,
-  PropertyPaneDynamicField,
-  IWebPartPropertiesMetadata,
-  DynamicDataSharedDepth
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart, IWebPartPropertiesMetadata } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneLink, IPropertyPaneConditionalGroup, PropertyPaneDynamicFieldSet, PropertyPaneDynamicField,DynamicDataSharedDepth } from "@microsoft/sp-property-pane";
+
 
 import * as strings from 'MapWebPartStrings';
 import { Map, IMapProps } from './components';
@@ -58,7 +50,7 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     // address entered in web part properties
     const address: string | undefined = this.properties.address.tryGetValue();
     const city: string | undefined = this.properties.city.tryGetValue();
-    const needsConfiguration: boolean = !this.properties.bingMapsApiKey || (!address && !this.properties.address.tryGetSource()) || 
+    const needsConfiguration: boolean = !this.properties.bingMapsApiKey || (!address && !this.properties.address.tryGetSource()) ||
     (!city && !this.properties.city.tryGetSource());
 
     const element: React.ReactElement<IMapProps> = React.createElement(

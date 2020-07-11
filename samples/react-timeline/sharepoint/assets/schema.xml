@@ -1,0 +1,49 @@
+<List xmlns:ows="Microsoft SharePoint" Title="Timeline" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Timeline" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+ <MetaData>   
+   <ContentTypes>
+      <ContentType ID="0x0100945DE9A91BAB454FB867B17618D15F05"
+                   Name="Timeline" 
+                   Group="SPFx Content Types"
+                   Description="">
+        <FieldRefs>
+            <!--Title Site Column -->
+            <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SPFxTimelineLink Site Column -->
+			      <FieldRef ID="{D1DD9D2D-6FBB-4419-823C-124524BB8043}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SPFxTimelineDate Site Column -->
+            <FieldRef ID="{CCCFD821-A9D6-4485-ADC5-B5DE16DDC265}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SPFxTimelinePicture Site Column -->
+            <FieldRef ID="{FAF70121-54EC-47DC-B454-50402EB30345}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SPFxTimelineDescription Site Column -->
+            <FieldRef ID="{D1A0FFDC-1DF3-463E-8948-CC2855AC917E}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+        </FieldRefs>
+      </ContentType> 
+    </ContentTypes>
+    <Fields></Fields>
+   <Views>
+     <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+       <XslLink Default="TRUE">main.xsl</XslLink>
+       <JSLink>clienttemplates.js</JSLink>
+       <RowLimit Paged="TRUE">30</RowLimit>
+       <Toolbar Type="Standard" />
+       <ViewFields>
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="SPFxTimelineLink"></FieldRef>
+          <FieldRef Name="SPFxTimelineDate"></FieldRef>
+          <FieldRef Name="SPFxTimelinePicture"></FieldRef>
+          <FieldRef Name="SPFxTimelineDescription"></FieldRef>         
+       </ViewFields>
+       <Query>
+         <OrderBy>
+           <FieldRef Name="SPFxTimelineDate" />
+         </OrderBy>
+       </Query>
+     </View>
+   </Views>
+   <Forms>
+     <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+     <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+     <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+   </Forms>
+ </MetaData>
+</List>

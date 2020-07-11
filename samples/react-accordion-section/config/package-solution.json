@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Accordion Section FAQ Builder",
+    "id": "bf6fa974-fd40-45a3-80e9-e826abe025b9",
+    "version": "1.3.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/FAQ-Accordion.sppkg"
+  }
+}

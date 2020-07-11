@@ -5,7 +5,7 @@ Sample web parts illustrating using the SharePoint Framework Dynamic data capabi
 ![Web parts placed on a modern SharePoint page showing information about events](./assets/dynamic-data-webparts.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
+![SPFx 1.10](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
@@ -17,11 +17,13 @@ Sample web parts illustrating using the SharePoint Framework Dynamic data capabi
 Solution|Author(s)
 --------|---------
 react-events-dynamicdata|Waldek Mastykarz (MVP, Rencore, @waldekm)
+react-events-dynamicdata|Hugo Bernier (MVP, [@bernierh](https://twitter.com/bernierh))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.2|July 8, 2020|Updated sample to SPFx v1.10.0 (Hugo Bernier)
 1.1|November 9, 2018|Updated sample to SPFx v1.7.0
 1.0|June 5, 2018|Initial release
 

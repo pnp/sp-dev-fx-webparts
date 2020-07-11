@@ -2,25 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-events-dynamicdata-client-side-solution",
-    "id": "57e5d6e5-04df-4810-b2bd-5b2751200ad9",
-    "version": "1.0.0.0",
+    "id": "eb6be822-bf5f-4d3f-876c-2eaf311f01a4",
+    "version": "1.2.0.0",
     "includeClientSideAssets": true,
-    "features": [
-      {
-        "title": "Events - Deployment of data",
-        "description": "Deploys data required by the solution",
-        "id": "1b23d9fa-50ab-48e2-9b57-1b7cf18658a5",
-        "version": "1.0.0.0",
-        "assets": {
-          "elementManifests": [
-            "events_elements.xml"
-          ],
-          "elementFiles": [
-            "events_schema.xml"
-          ]
-        }
-      }
-    ]
+    "isDomainIsolated": false
   },
   "paths": {
     "zippedPackage": "solution/react-events-dynamicdata.sppkg"

@@ -1,0 +1,43 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.dialogOverride {
+  :global(.ms-Dialog-title) {
+    color: white !important;
+    background-color: $ms-color-themePrimary !important;
+  }
+
+  :global(i.ms-Button-icon[data-icon-name="Cancel"]) {
+    color: white !important;
+  }
+
+  @media (max-width: $ms-screen-max-md) {
+    // need to remove justify center when on a small screen so dialog can use full width
+    :global(.ms-Dialog) {
+      justify-content: initial;
+    }
+  }
+
+  :global(.ms-Dialog-main) {
+    // override built-in max-width so dialog can grow wider
+    max-width: 760px !important;
+
+    // 100% width on medium and below
+    @media (max-width: $ms-screen-max-md) {
+      & {
+        min-width: 100%;
+      }
+    }
+    // 80% width on medium to xx-large
+    @media (min-width: $ms-screen-min-md) and (max-width: $ms-screen-max-xl) {
+      & {
+        min-width: 80%;
+      }
+    }
+    // 800px width on x-large and above
+    @media (min-width: $ms-screen-min-xl) {
+      & {
+        min-width: 760px;
+      }
+    }
+  }
+}
