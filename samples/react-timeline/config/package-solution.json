@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-timeline-client-side-solution",
+    "id": "6b0d9bb7-2d49-4b62-9256-10f57306407c",
+    "version": "1.0.0.0",
+    "features": [
+      {
+        "title": "asset-deployment-react-timeline-client-side-solution",
+        "description": "asset-deployment-react-timeline-client-side-solution",
+        "id": "51deb4ec-9fb4-4bf6-b440-69085be0437e",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ]
+        }
+      }
+    ],
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-timeline.sppkg"
+  }
+}
