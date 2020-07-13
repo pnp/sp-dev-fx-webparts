@@ -45,7 +45,7 @@
 
 Solution|Author(s)
 --------|---------
-SPFx Collapsible Accordion Section|[Erik Benke](https://github.com/ejbenke)
+SPFx Collapsible Accordion Section|[Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))
 
 ## Version history
 
