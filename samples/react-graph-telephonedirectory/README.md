@@ -1,10 +1,10 @@
-# React Graph Telephone Directory
+# Telephone Directory using React, Ms Graph and SPFx
 
 ## Summary
 This is sample webpart using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address.
-It will fetch the data and display in details list.
+webpart will fetch data from directory using Graph API and display in details list.
 
-[picture of the web part in action]
+![Telephone Directory using SPFx and Graph](./assets/Preview.gif)
 
 ## Used SharePoint Framework Version
 
@@ -14,25 +14,26 @@ It will fetch the data and display in details list.
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
-
-> Update accordingly as needed.
+* [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/overview)
+* [Fluent UI](https://developer.microsoft.com/en-us/fluentui#/)
+* [PnP Controls](https://pnp.github.io/sp-dev-fx-controls-react/)
 
 ## Prerequisites
 
-> Any special pre-requisites?
+> Define Graph API scope to Package-solution.json
+![Graph API Scope](./assets/Capture.PNG)
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-folder name | Author details
+react-graph-telephonedirectory | [Dipen Shah](https://github.com/Dips365) ([@Dips_365](https://twitter.com/Dips_365))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1|September 2, 2025|Update comment
-1.0|August 29, 2025|Initial release
+1.0|July 14,2020 | Initial Release
 
 ## Disclaimer
 
@@ -44,18 +45,25 @@ Version|Date|Comments
 
 * Clone this repository
 * in the command line run:
+  
   * `npm install`
+  * `gulp build`
+  * `gulp bundle`
+  * `gulp package-solution`
+  * [Upload .sppkg to appcatalog](https://www.slideshare.net/Dipen038/upload-sp-solution)
+  * `Go to SharePoint Admin to grant access on graph API ` https://<Tenant>-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx?source=sitecollections#/webApiPermissionManagement
   * `gulp serve`
 
-> Include any additional steps as needed.
+## Features 
 
-## Features
+Demonstrates integration of SPFx and Graph API to search the organizational users information.
 
 Description of the web part with possible additional details than in short summary. 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* topic 1
-* topic 2
-* topic 3
+* Detail List control from Fluent UI
+* Webpart Title control from PnP React
+* Microsoft Graph API
+* External API Integration with SharePoint Framework
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-graph-telephonedirectory" />
