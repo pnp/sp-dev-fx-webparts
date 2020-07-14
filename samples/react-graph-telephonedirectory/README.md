@@ -21,6 +21,7 @@ webpart will fetch data from directory using Graph API and display in details li
 ## Prerequisites
 
 > Define Graph API scope to Package-solution.json
+
 ![Graph API Scope](./assets/Capture.PNG)
 
 ## Solution
