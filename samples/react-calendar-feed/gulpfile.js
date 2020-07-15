@@ -27,14 +27,13 @@ if (needIESupport) {
     }
   };
 
-
-  process.stdout.write(`Using babel-loader to support IE11 \n`);
+  //process.stdout.write(`Adding babel-loader to support IE11 \n`);
   build.configureWebpack.mergeConfig({
     additionalConfiguration: (generatedConfiguration) => {
       generatedConfiguration.module.rules.push({
         test: /\.js$/,
         /*
-        This selector increase the webpack time 5 times then without
+        This selector increase the webpack(gulp serve) time 5 times then without
           exclude: [/node_modules\/(?!(rss-parser))/],
           */
         include: [
