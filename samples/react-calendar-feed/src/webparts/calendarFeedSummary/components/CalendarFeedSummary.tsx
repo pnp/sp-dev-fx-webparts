@@ -354,10 +354,6 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
 
       try {
         let events = await dataProvider.getEvents();
-        if (!!events && events.length > 0) {
-          // order result bacause not every Dataprovider Support Order
-          events = events.sort((a: ICalendarEvent, b: ICalendarEvent) => { return a.start > b.start ? 1 : - 1; });
-        }
         if (dataProvider.MaxTotal > 0) {
           events = events.slice(0, dataProvider.MaxTotal);
         }
