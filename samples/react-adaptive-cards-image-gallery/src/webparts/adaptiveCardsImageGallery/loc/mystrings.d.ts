@@ -3,6 +3,9 @@ declare interface IAdaptiveCardsImageGalleryWebPartStrings {
   BasicGroupName: string;
   ImageGalleryNameFieldLabel: string;
   ImagesToDisplayFieldLabel: string;
+  ConfigureWebPartLabel: string;
+  ConfigureDescription: string;
+  ConfigureLabel: string;
 }
 
 declare module 'AdaptiveCardsImageGalleryWebPartStrings' {

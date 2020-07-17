@@ -7,7 +7,7 @@ import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp
 import * as strings from 'AdaptiveCardsImageGalleryWebPartStrings';
 import AdaptiveCardsImageGallery from './components/AdaptiveCardsImageGallery';
 import { IAdaptiveCardsImageGalleryProps } from './components/IAdaptiveCardsImageGalleryProps';
-import pnp from 'sp-pnp-js';
+import { sp } from '@pnp/sp/presets/all';
 
 export interface IAdaptiveCardsImageGalleryWebPartProps {
   imageGalleryName: string;
@@ -17,7 +17,8 @@ export interface IAdaptiveCardsImageGalleryWebPartProps {
 export default class AdaptiveCardsImageGalleryWebPart extends BaseClientSideWebPart<IAdaptiveCardsImageGalleryWebPartProps> {
   public async onInit(): Promise<void> {
     return super.onInit().then(_ => {
-      pnp.setup({
+      // Setup context to PnPjs
+      sp.setup({
         spfxContext: this.context
       });
     });
@@ -27,6 +28,7 @@ export default class AdaptiveCardsImageGalleryWebPart extends BaseClientSideWebP
     const element: React.ReactElement<IAdaptiveCardsImageGalleryProps > = React.createElement(
       AdaptiveCardsImageGallery,
       {
+        context: this.context,
         serviceScope: this.context.serviceScope,
         imageGalleryName: this.properties.imageGalleryName || "Adaptive Card Images",
         imagesToDisplay: this.properties.imagesToDisplay || 10

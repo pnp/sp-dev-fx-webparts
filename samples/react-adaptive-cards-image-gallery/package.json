@@ -17,6 +17,8 @@
     "@microsoft/sp-office-ui-fabric-core": "1.10.0",
     "@microsoft/sp-property-pane": "1.10.0",
     "@microsoft/sp-webpart-base": "1.10.0",
+    "@pnp/sp": "^2.0.6",
+    "@pnp/spfx-controls-react": "^1.19.0",
     "@types/es6-promise": "0.0.33",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.3",
@@ -24,8 +26,7 @@
     "adaptivecards": "^1.1.0",
     "office-ui-fabric-react": "6.189.2",
     "react": "16.8.5",
-    "react-dom": "16.8.5",
-    "sp-pnp-js": "^3.0.10"
+    "react-dom": "16.8.5"
   },
   "resolutions": {
     "@types/react": "16.8.8"
