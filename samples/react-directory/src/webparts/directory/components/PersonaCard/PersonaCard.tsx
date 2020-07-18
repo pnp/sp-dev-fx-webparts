@@ -3,24 +3,14 @@ import styles from './PersonaCard.module.scss';
 import { IPersonaCardProps } from './IPersonaCardProps';
 import { IPersonaCardState } from './IPersonaCardState';
 import {
-  Version,
-  Environment,
-  EnvironmentType,
-  ServiceScope,
   Log,
-  Text,
 } from '@microsoft/sp-core-library';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
 import {
   Persona,
-  PersonaCoin,
-  PersonaInitialsColor,
   PersonaSize,
-  IPersonaStyles,
-  Label,
   DocumentCard,
-  IDocumentCardStyles,
   DocumentCardType,
   Icon,
 } from 'office-ui-fabric-react';
