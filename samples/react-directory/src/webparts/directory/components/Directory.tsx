@@ -1,11 +1,9 @@
 import * as React from "react";
 import styles from "./Directory.module.scss";
 import { IDirectoryProps } from "./IDirectoryProps";
-import { escape } from "@microsoft/sp-lodash-subset";
 import { PersonaCard } from "./PersonaCard/PersonaCard";
 import { spservices } from "../../../SPServices/spservices";
 import { IDirectoryState } from "./IDirectoryState";
-import { DisplayMode } from "@microsoft/sp-core-library";
 import * as strings from "DirectoryWebPartStrings";
 import {
   Spinner,
@@ -20,15 +18,10 @@ import {
   PivotLinkFormat,
   PivotLinkSize,
   Dropdown,
-  DropdownMenuItemType,
-  IDropdownStyles,
   IDropdownOption
 } from "office-ui-fabric-react";
-import { IProfileProperties } from "../../../SPServices/IProfileProperties";
-import { PeoplePickerEntity, Search, SearchResult } from "@pnp/sp";
+
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { Root } from "@pnp/graph";
-import { IUserProperties } from "./PersonaCard/IUserProperties";
 
 const az: string[] = [
   "A",
@@ -68,7 +61,7 @@ const orderOptions: IDropdownOption[] = [
 export default class Directory extends React.Component<
   IDirectoryProps,
   IDirectoryState
-> {
+  > {
   private _services: spservices = null;
 
   constructor(props: IDirectoryProps) {
@@ -80,7 +73,8 @@ export default class Directory extends React.Component<
       errorMessage: "",
       hasError: false,
       indexSelectedKey: "A",
-      searchString: "LastName"
+      searchString: "LastName",
+      searchText: ""
     };
 
     this._services = new spservices(this.props.context);
@@ -88,6 +82,7 @@ export default class Directory extends React.Component<
     this._searchUsers = this._searchUsers.bind(this);
     this._selectedIndex = this._selectedIndex.bind(this);
     this._sortPeople = this._sortPeople.bind(this);
+    this._searchBoxChanged = this._searchBoxChanged.bind(this)
   }
 
   /**
@@ -104,27 +99,29 @@ export default class Directory extends React.Component<
    * @param pictureUrl
    * @returns
    */
-  private getImageBase64(pictureUrl: string):Promise<string>{
+  private getImageBase64(pictureUrl: string): Promise<string> {
     return new Promise((resolve, reject) => {
-        let image = new Image();
-        image.addEventListener("load", () => {
-            let tempCanvas = document.createElement("canvas");
-            tempCanvas.width = image.width,
-                tempCanvas.height = image.height,
-                tempCanvas.getContext("2d").drawImage(image, 0, 0);
-            let base64Str;
-            try {
-                base64Str = tempCanvas.toDataURL("image/png");
-            } catch (e) {
-                return "";
-            }
+      let image = new Image();
+      image.addEventListener("load", () => {
+        let tempCanvas = document.createElement("canvas");
+        tempCanvas.width = image.width,
+          tempCanvas.height = image.height,
+          tempCanvas.getContext("2d").drawImage(image, 0, 0);
+        let base64Str;
+        try {
+          base64Str = tempCanvas.toDataURL("image/png");
+        } catch (e) {
+          return "";
+        }
 
-            resolve(base64Str);
-        });
-        image.src = pictureUrl;
+        resolve(base64Str);
+      });
+      image.src = pictureUrl;
     });
-}
-
+  }
+  private _searchBoxChanged(newvalue: string): void {
+    this.setState({ searchText: newvalue }, () => this._searchUsers(newvalue));
+  }
 
   private async _searchUsers(searchText: string) {
     searchText = searchText.trim().length > 0 ? searchText : "A";
@@ -140,15 +137,15 @@ export default class Directory extends React.Component<
         this.props.searchFirstName
       );
 
-      if (users && users.PrimarySearchResults.length > 0){
+      if (users && users.PrimarySearchResults.length > 0) {
         for (let index = 0; index < users.PrimarySearchResults.length; index++) {
-          let user:any = users.PrimarySearchResults[index]  ;
-          if (user.PictureURL){
-            user = { ...user, PictureURL: await this.getImageBase64(`/_layouts/15/userphoto.aspx?size=M&accountname=${user.WorkEmail}`)};
-           users.PrimarySearchResults[index]  =  user ;
+          let user: any = users.PrimarySearchResults[index];
+          if (user.PictureURL) {
+            user = { ...user, PictureURL: await this.getImageBase64(`/_layouts/15/userphoto.aspx?size=M&accountname=${user.WorkEmail}`) };
+            users.PrimarySearchResults[index] = user;
           }
         }
-       }
+      }
 
       this.setState({
         users:
@@ -279,7 +276,7 @@ export default class Directory extends React.Component<
    * @memberof Directory
    */
   private _selectedIndex(item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) {
-    this._searchUsers(item.props.itemKey);
+    this.setState({ searchText: "" }, () => this._searchUsers(item.props.itemKey));
   }
   /**
    *
@@ -293,23 +290,23 @@ export default class Directory extends React.Component<
     const diretoryGrid =
       this.state.users && this.state.users.length > 0
         ? this.state.users.map((user: any) => {
-            return (
-              <PersonaCard
-                context={this.props.context}
-                profileProperties={{
-                  DisplayName: user.PreferredName,
-                  Title: user.JobTitle,
-                  PictureUrl: user.PictureURL,
-                  Email: user.WorkEmail,
-                  Department: user.Department,
-                  WorkPhone: user.WorkPhone,
-                  Location: user.OfficeNumber
-                    ? user.OfficeNumber
-                    : user.BaseOfficeLocation
-                }}
-              />
-            );
-          })
+          return (
+            <PersonaCard
+              context={this.props.context}
+              profileProperties={{
+                DisplayName: user.PreferredName,
+                Title: user.JobTitle,
+                PictureUrl: user.PictureURL,
+                Email: user.WorkEmail,
+                Department: user.Department,
+                WorkPhone: user.WorkPhone,
+                Location: user.OfficeNumber
+                  ? user.OfficeNumber
+                  : user.BaseOfficeLocation
+              }}
+            />
+          );
+        })
         : [];
 
     return (
@@ -336,7 +333,8 @@ export default class Directory extends React.Component<
             onClear={() => {
               this._searchUsers("A");
             }}
-            onChange={this._searchUsers}
+            value={this.state.searchText}
+            onChange={this._searchBoxChanged}
           />
           <div>
             <Pivot
@@ -380,20 +378,20 @@ export default class Directory extends React.Component<
             {this.state.errorMessage}
           </MessageBar>
         ) : (
-          <div className={styles.dropDownSortBy}>
-            <Dropdown
-              placeholder={strings.DropDownPlaceHolderMessage}
-              label={strings.DropDownPlaceLabelMessage}
-              options={orderOptions}
-              selectedKey={this.state.searchString}
-              onChange={(ev: any, value: IDropdownOption) => {
-                this._sortPeople(value.key.toString());
-              }}
-              styles={{ dropdown: { width: 200 } }}
-            />
-            <div>{diretoryGrid}</div>
-          </div>
-        )}
+                <div className={styles.dropDownSortBy}>
+                  <Dropdown
+                    placeholder={strings.DropDownPlaceHolderMessage}
+                    label={strings.DropDownPlaceLabelMessage}
+                    options={orderOptions}
+                    selectedKey={this.state.searchString}
+                    onChange={(ev: any, value: IDropdownOption) => {
+                      this._sortPeople(value.key.toString());
+                    }}
+                    styles={{ dropdown: { width: 200 } }}
+                  />
+                  <div>{diretoryGrid}</div>
+                </div>
+              )}
       </div>
     );
   }
