@@ -22,6 +22,7 @@ import {
 } from "office-ui-fabric-react";
 
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+import { ISPServices } from "../../../SPServices/ISPServices";
 
 const az: string[] = [
   "A",
@@ -62,7 +63,7 @@ export default class Directory extends React.Component<
   IDirectoryProps,
   IDirectoryState
   > {
-  private _services: spservices = null;
+  private _services: ISPServices = null;
 
   constructor(props: IDirectoryProps) {
     super(props);

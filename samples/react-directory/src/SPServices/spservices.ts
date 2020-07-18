@@ -3,9 +3,10 @@ import { graph } from "@pnp/graph";
 import { sp, PeoplePickerEntity, ClientPeoplePickerQueryParameters, SearchQuery, SearchResults, SearchProperty, SortDirection } from '@pnp/sp';
 import { PrincipalType } from "@pnp/sp/src/sitegroups";
 import { isRelativeUrl } from "office-ui-fabric-react";
+import { ISPServices } from "./ISPServices";
 
 
-export class spservices {
+export class spservices implements ISPServices {
 
 
 
