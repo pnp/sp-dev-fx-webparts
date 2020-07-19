@@ -45,13 +45,13 @@
 Property |Type|Required| comments
 --------------------|----|--------|----------
 Title | Text| no|WebPart Title
-searchFirstName | boolean|no| LastName or FirstName SearchQuery
+searchFirstName | boolean|no| Lastname or Firstname search query
 
 
  
 
 ## Solution
-The web part Use PnPjs library, Office-ui-fabric-react components
+The web part use PnPjs library, Office-ui-fabric-react components
 
 Solution|Author(s)
 --------|---------
@@ -63,7 +63,7 @@ Directory Web Part| Peter Paul Kirschner ([@petkir_at](https://twitter.com/petki
 Version|Date|Comments
 -------|----|--------
 1.0.0|July 29, 2019|Initial release
-1.0.1|July 19, 2020|Bugfix and MockService for Workbench (LivePersonaCard not supported in Workbench)
+1.0.1|July 19, 2020|Bugfix and mock-service for workbench (```LivePersonaCard``` not supported in workbench)
 
 
 ## Disclaimer
