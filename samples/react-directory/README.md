@@ -31,7 +31,7 @@
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+![drop](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
@@ -44,8 +44,8 @@
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
-Web Part Title | Text| no|
-
+Title | Text| no|WebPart Title
+searchFirstName | boolean|no| LastName or FirstName SearchQuery
 
 
  
@@ -56,12 +56,14 @@ The web part Use PnPjs library, Office-ui-fabric-react components
 Solution|Author(s)
 --------|---------
 Directory Web Part|João Mendes
+Directory Web Part| Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|July 29, 2019|Initial release
+1.0.1|July 19, 2020|Bugfix and MockService for Workbench (LivePersonaCard not supported in Workbench)
 
 
 ## Disclaimer
