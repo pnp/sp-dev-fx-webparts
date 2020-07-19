@@ -23,6 +23,8 @@ import {
 
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { ISPServices } from "../../../SPServices/ISPServices";
+import { Environment, EnvironmentType } from "@microsoft/sp-core-library";
+import { spMockServices } from "../../../SPServices/spMockServices";
 
 const az: string[] = [
   "A",
@@ -77,13 +79,16 @@ export default class Directory extends React.Component<
       searchString: "LastName",
       searchText: ""
     };
-
+    if (Environment.type === EnvironmentType.Local) {
+      this._services = new spMockServices();
+    } else {
     this._services = new spservices(this.props.context);
+    }
     // Register event handlers
     this._searchUsers = this._searchUsers.bind(this);
     this._selectedIndex = this._selectedIndex.bind(this);
     this._sortPeople = this._sortPeople.bind(this);
-    this._searchBoxChanged = this._searchBoxChanged.bind(this)
+    this._searchBoxChanged = this._searchBoxChanged.bind(this);
   }
 
   /**
@@ -137,7 +142,7 @@ export default class Directory extends React.Component<
         searchText,
         this.props.searchFirstName
       );
-
+debugger;
       if (users && users.PrimarySearchResults.length > 0) {
         for (let index = 0; index < users.PrimarySearchResults.length; index++) {
           let user: any = users.PrimarySearchResults[index];

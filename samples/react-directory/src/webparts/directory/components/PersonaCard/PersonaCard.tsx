@@ -3,7 +3,7 @@ import styles from './PersonaCard.module.scss';
 import { IPersonaCardProps } from './IPersonaCardProps';
 import { IPersonaCardState } from './IPersonaCardState';
 import {
-  Log,
+  Log, Environment, EnvironmentType,
 } from '@microsoft/sp-core-library';
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
@@ -22,7 +22,7 @@ const LIVE_PERSONA_COMPONENT_ID: string =
 export class PersonaCard extends React.Component<
   IPersonaCardProps,
   IPersonaCardState
-> {
+  > {
   constructor(props: IPersonaCardProps) {
     super(props);
 
@@ -34,12 +34,14 @@ export class PersonaCard extends React.Component<
    * @memberof PersonaCard
    */
   public async componentDidMount() {
-    const sharedLibrary = await this._loadSPComponentById(
-      LIVE_PERSONA_COMPONENT_ID
-    );
-    const livePersonaCard: any = sharedLibrary.LivePersonaCard;
-    console.log(livePersonaCard);
-    this.setState({ livePersonaCard: livePersonaCard });
+    if (Environment.type !== EnvironmentType.Local) {
+      const sharedLibrary = await this._loadSPComponentById(
+        LIVE_PERSONA_COMPONENT_ID
+      );
+      const livePersonaCard: any = sharedLibrary.LivePersonaCard;
+      console.log(livePersonaCard);
+      this.setState({ livePersonaCard: livePersonaCard });
+    }
   }
 
   /**
@@ -52,7 +54,7 @@ export class PersonaCard extends React.Component<
   public componentDidUpdate(
     prevProps: IPersonaCardProps,
     prevState: IPersonaCardState
-  ): void {}
+  ): void { }
 
   /**
    *
@@ -110,8 +112,8 @@ export class PersonaCard extends React.Component<
                 </span>
               </div>
             ) : (
-              ''
-            )}
+                ''
+              )}
             {this.props.profileProperties.Location ? (
               <div>
                 <Icon iconName="Poi" style={{ fontSize: '12px' }} />
@@ -121,8 +123,8 @@ export class PersonaCard extends React.Component<
                 </span>
               </div>
             ) : (
-              ''
-            )}
+                ''
+              )}
           </Persona>
         </div>
       </DocumentCard>
