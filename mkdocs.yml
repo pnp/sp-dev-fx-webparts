@@ -62,6 +62,69 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.11.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-directory
+      name: react-directory
+      title: Organization Directory Web Part
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
+      author: João Mendes, Peter Paul Kirschner
+      summary: Search People from Organization Directory and show live persona card on hover.
+      version: 1.0.0
+      modifiedtext: July 19, 2020
+      modified: 2020-07-19
+    - framework: React
+      spfx: 1.11.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-directory
+      name: react-directory
+      title: Organization Directory Web Part
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
+      author: João Mendes, Peter Paul Kirschner
+      summary: Search People from Organization Directory and show live persona card on hover.
+      version: 1.0.0
+      modifiedtext: July 19, 2020
+      modified: 2020-07-19
+    - framework: React
+      spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar-feed
+      name: react-calendar-feed
+      title: Calendar Feed Web Part
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif
+      author: Hugo Bernier, Peter Paul Kirschner
+      summary: This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part.
+      modifiedtext: July 16, 2020
+      modified: 2020-07-16
+      keywords: ical,wordpress,rss,exchange,calendar,event,hooks,theme,background
+    - framework: React
+      spfx: 1.9.1
+      title: Telephone Directory using React, Ms Graph and SPFx
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-telephonedirectory
+      name: react-graph-telephonedirectory
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-telephonedirectory/assets/Preview.gif
+      author: Dipen Shah
+      summary: This is sample webpart using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address. webpart will fetch data from directory using Graph API and display in details list.
+      modifiedtext: July 14, 2020
+      modified: 2020-07-14
+    - framework: React
+      spfx: 1.10.0
+      title: Accordion Section FAQ Builder
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-section
+      name: react-accordion-section
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-section/assets/react-accordion-section.gif
+      author: Erik Benke
+      summary: Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.
+      modifiedtext: July 10, 2020
+      modified: 2020-07-10
+    - framework: React
+      spfx: 1.10.0
+      title: Timeline
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-timeline
+      name: react-timeline
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-timeline/assets/webpart-preview.gif
+      author: Nanddeep Nachan, Ravi Kulkarni
+      summary: This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema.
+      modifiedtext: July 10, 2020
+      modified: 2020-07-10
+    - framework: React
       spfx: 1.10.0
       title: Date range picker in SPFx
       url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-daterangepicker
@@ -439,6 +502,176 @@ extra:
       summary: The React Content Query WebPart is a modern version of the good old Content by Query WebPart that was introduced in SharePoint 2007. Built for SharePoint 2016 and Office 365, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original WebPart was based on a XSLT templating engine, this React WebPart is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more.
       modifiedtext: May 22, 2018
       modified: 2018-05-22
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-banner
+      name: react-banner
+      title: Banner Web Part
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-banner.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to add a variable height image banner with a linkable title.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-followed-sites
+      name: react-followed-sites
+      title: Followed Sites webpart
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-followed-sites.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-links
+      name: react-links
+      title: Links webpart
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-links.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to add a per instance listing of links with the ability to group sets of links. Links are stored as a collection of links within the web part's properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-lob-integration
+      name: react-lob-integration
+      title: LOB Integration webpart
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-lob-integration.png
+      author: SharePoint Starter Kit
+      summary: This web part allows you to learn how to consume 3rd party APIs, secured with Azure Active Directory, in the context of SharePoint Framework.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-people-directory
+      name: react-people-directory
+      title: People Directory
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-people-directory.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to add a searchable people directory. A people search box and alphabet list are provided to enable both searching by name as well as selecting a specific letter. This web part requires no configuration and utilizes the people search API to surface people results.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-personal-calendar
+      name: react-personal-calendar
+      title: Personal Calendar
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-calendar.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to add a particular user's personal calendar on a web page. The web part may be configured to automatically refresh, as well as display up to seven days of events and a pre-defined number of events at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-personal-contacts
+      name: react-personal-contacts
+      title: Personal Contacts
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-contacts.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to add a particular user's personal contacts on a web page. The web part may be configured to display a pre-defined number of contacts at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-personal-email
+      name: react-personal-email
+      title: Personal Email
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-email.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to add a particular user's personal email on a web page. The web part may be configured to display a pre-defined number of emails at a time and includes a link to the user's Outlook to view all email. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-personal-tasks
+      name: react-personal-tasks
+      title: Personal Tasks
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-tasks.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to add a particular user's personal tasks on a web page. The web part may be configured to show all tasks or to exclude completed tasks. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-recent-contacts
+      name: react-recent-contacts
+      title: Recent Contacts
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-recent-contacts.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to display list of a particular user's recent contacts on a web page. The web part may be configured to display a pre-defined number of contacts at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-recently-used-documents
+      name: react-recently-used-documents
+      title: Recently Used Documents
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-recently-used-documents.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to display a list of a particular user's recently used documents on a web page. The web part may be configured to display a pre-defined number of documents at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-recently-visited-sites
+      name: react-recently-visited-sites
+      title: Recently Visited Sites
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-recently-visited-sites.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to display a list of a particular user's recently visited sites on a web page. The web part will display up to the first 30 (thirty) recently visited sites at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-site-information
+      name: react-site-information
+      title: Site Information
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-site-information.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-stock-information
+      name: react-stock-information
+      title: Stock Information
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-stock.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to display basic stock information for one publicly traded stock on a web page. The web part may be configured to display a stock based on stock symbol as well as be set to automatically refresh the stock information every 60 (sixty) seconds.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tiles
+      name: react-tiles
+      title: Tiles
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-tiles.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to add a per instance listing of tiled links. Tiles are stored as a collection of tiles within the web part's properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-weather-information
+      name: react-weather-information
+      title: Weather Information
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-weather.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to display basic weather information for one location on a web page. The web part depends on a service provided by Yahoo Weather API.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
+    - framework: React
+      spfx: 1.10
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-world-time
+      name: react-world-time
+      title: World Time
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-world-time.gif
+      author: SharePoint Starter Kit
+      summary: This web part provides you the ability to display basic clock for a given time zone on a web page. The clock is based on the user's workstation time with an offset from UTC to the selected time zone.
+      modifiedtext: May 1, 2018
+      modified: 2018-05-01
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pages-hierarchy
       name: react-pages-hierarchy
       title: Page Hierarchy
@@ -1306,19 +1539,6 @@ extra:
       modifiedtext: April 15, 2020
       modified: 2020-04-15
     - framework: React
-      spfx: 1.10.0
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar-feed
-      name: react-calendar-feed
-      title: Calendar Feed Web Part
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif
-      thumbnailtype: video
-      author: Hugo Bernier
-      summary: This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part.
-      version: 5.1
-      modifiedtext: April 16, 2020
-      modified: 2020-04-16
-      keywords: ical,wordpress,rss,exchange,calendar,event,hooks,theme,background
-    - framework: React
       spfx: 1.7.1
       year: 2019
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-chartcontrol
@@ -1394,18 +1614,6 @@ extra:
       version: 1.0
       modifiedtext: May 10, 2018
       modified: 2018-05-10
-    - framework: React
-      spfx: 1.8.2
-      year: 2019
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-directory
-      name: react-directory
-      title: Organization Directory Web Part
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
-      author: João Mendes
-      summary: Search People from Organization Directory and show live persona card on hover.
-      version: 1.0.0
-      modifiedtext: July 29, 2019
-      modified: 2019-07-29
     - framework: React
       spfx: 1.6.0
       year: 2018
@@ -1808,19 +2016,17 @@ extra:
       modifiedtext: December 31, 2016
       modified: 2016-12-31
     - framework: React
-      spfx: 1.8.2
-      year: 2019
+      spfx: 1.10.0
       compatibility: SharePoint 2019, Microsoft Teams
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-multimedia-gallery
       name: react-multimedia-gallery
       title: Image Gallery
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multimedia-gallery/assets/MultimediaGallery.gif
       thumbnailtype: video
-      author: João Mendes, Vivek Chand
+      author: João Mendes, Vivek Chand, Peter Paul Kirschner
       summary: This web part show images and videos in responsive grid, on click it show images and videos in a carousel view.
-      version: 1.0.0
-      modifiedtext: June 29, 2020
-      modified: 2020-06-29
+      modifiedtext: July 19, 2020
+      modified: 2020-07-19
     - framework: React
       spfx: GA
       year: 2017
@@ -2466,6 +2672,7 @@ extra:
     - Elio Struyf
     - Eric Overfield
     - Eric Skaggs
+    - Erik Benke
     - Franck Cornu
     - Federico Porceddu
     - Gary Pretty
@@ -2510,6 +2717,7 @@ extra:
     - Serdar Ketenci̇
     - Sergei Sergeev
     - Sergei Zheleznov 
+    - SharePoint Starter Kit
     - Siddharth Vaghasia
     - Simon-Pierre Plante
     - Smita Nachan
