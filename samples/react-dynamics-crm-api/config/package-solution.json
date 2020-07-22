@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-dynamic-365-client-side-solution",
+    "id": "5bc3855d-9c59-4322-95e0-78e17dcd809e",
+    "version": "1.0.0.1",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Windows Azure Active Directory",
+        "scope": "User.Read"
+      }
+     ]
+  },
+  
+  "paths": {
+    "zippedPackage": "solution/react-dynamic-365.sppkg"
+  }
+}
