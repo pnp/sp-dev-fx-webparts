@@ -79,11 +79,15 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repo
+- Clone this repository.
+- On the command prompt, navigate to the web part folder and execute:
 - `npm i`
-- `gulp serve --nobrowser`
-- Open workbench on your tenant, i.e. https://contoso.sharepoint.com/sites/salesteam/_layouts/15/workbench.aspx
-- Search and add web part "Adaptive Cards Image Gallery"
+- `gulp bundle --ship`
+- `gulp package-solution --ship`
+- The package can be found at `\react-adaptive-cards-image-gallery\sharepoint\solution\react-adaptive-cards-image-gallery.sppkg`
+- [Deploy the package](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#deploy-the-helloworld-package-to-app-catalog) to the app catalog.
+- [Install the client-side solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#install-the-client-side-solution-on-your-site) to your SharePoint site.
+- [Add web part to your SharePoint page](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#add-the-helloworld-web-part-to-modern-page) named "Adaptive Cards Image Gallery".
 
 ## Features
 
