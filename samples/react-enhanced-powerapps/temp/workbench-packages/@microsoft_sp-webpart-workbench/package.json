@@ -1,4 +1,11 @@
 {
+  "_args": [
+    [
+      "@microsoft/sp-webpart-workbench@1.11.0",
+      "C:\\github\\sp-dev-fx-webparts\\samples\\react-enhanced-powerapps"
+    ]
+  ],
+  "_development": true,
   "_from": "@microsoft/sp-webpart-workbench@1.11.0",
   "_id": "@microsoft/sp-webpart-workbench@1.11.0",
   "_inBundle": false,
@@ -36,10 +43,8 @@
     "#DEV:/"
   ],
   "_resolved": "https://registry.npmjs.org/@microsoft/sp-webpart-workbench/-/sp-webpart-workbench-1.11.0.tgz",
-  "_shasum": "a9000c60c5fb4ec6be31f74fafd34a6f578519ed",
-  "_spec": "@microsoft/sp-webpart-workbench@1.11.0",
-  "_where": "C:\\spfx\\react-enhanced-powerapps",
-  "bundleDependencies": false,
+  "_spec": "1.11.0",
+  "_where": "C:\\github\\sp-dev-fx-webparts\\samples\\react-enhanced-powerapps",
   "dependencies": {
     "@microsoft/gulp-core-build-serve": "3.5.5",
     "@microsoft/node-core-library": "3.15.1",
@@ -65,7 +70,6 @@
     "react-dom": "16.8.5",
     "tslib": "~1.10.0"
   },
-  "deprecated": false,
   "description": "The SharePoint Workbench",
   "devDependencies": {
     "@ms/content-handler": "0.1.0",

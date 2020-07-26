@@ -760,13 +760,13 @@ var MANIFESTS_ARRAY = [
           "type": "component",
           "version": "16.8.5",
           "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
-          "failoverPath": "../../users/hugoa/onedrive/github/react-enhanced-powerapps/node_modules/react/dist/react.js"
+          "failoverPath": "../../../../users/hugoa/onedrive/github/sp-dev-fx-webparts/samples/react-enhanced-powerapps/node_modules/react/dist/react.js"
         },
         "react-dom": {
           "type": "component",
           "version": "16.8.5",
           "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
-          "failoverPath": "../../users/hugoa/onedrive/github/react-enhanced-powerapps/node_modules/react-dom/dist/react-dom.js"
+          "failoverPath": "../../../../users/hugoa/onedrive/github/sp-dev-fx-webparts/samples/react-enhanced-powerapps/node_modules/react-dom/dist/react-dom.js"
         }
       }
     }
