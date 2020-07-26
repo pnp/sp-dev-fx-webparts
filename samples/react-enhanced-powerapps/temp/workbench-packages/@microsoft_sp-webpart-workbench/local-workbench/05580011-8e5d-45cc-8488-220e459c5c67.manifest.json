@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 2,
+  "componentType": "Library",
+  "id": "05580011-8e5d-45cc-8488-220e459c5c67",
+  "alias": "sp-default-assembly",
+  "isInternal": true,
+  "version": "1.0.0",
+  "rootComponentId": "4df9bb86-ab0a-4aab-ab5f-48bf167048fb",
+  "requiresCustomScript": false,
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "entryModuleId": "sp-default-assembly",
+    "scriptResources": {
+      "sp-default-assembly": {
+        "type": "localizedPath",
+        "paths": {
+          "default": "dist/sp-default-assembly_default.js"
+        },
+        "defaultPath": "dist/sp-default-assembly_default.js"
+      }
+    }
+  }
+}

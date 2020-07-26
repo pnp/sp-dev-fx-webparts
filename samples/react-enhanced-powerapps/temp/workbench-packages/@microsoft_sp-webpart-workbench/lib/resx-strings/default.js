@@ -1,0 +1,61 @@
+define([], function() {
+  var strings = {
+    "_NAR8NFw8cblGJm9t5CjqOw": {
+      "SuccessfullyLoadedText": "Successfully loaded debug manifests.",
+      "ErrorLoadingText": "Failed to load debug manifests: {0}"
+    },
+    "_vd/LT/qfiQhbHFfeM1GtlA": {
+      "FetchFailedError": "Fetching webpats failed with error \"{0}\". Render of a cached workbench may fail.",
+      "CanvasInitializationError": "Initializing canvas failed with error \"{0}\".",
+      "UnknownError": "An unknown error occurred \"{0}\"."
+    },
+    "_FQya7ZjwIyrOEutOa+omIA": {
+      "Title": "Warning",
+      "SubText": "Your web part will not appear in the toolbox. Please make sure \"gulp serve\" is running in a web part project. Please refresh the page once \"gulp serve\" is running.",
+      "OkButtonText": "OK",
+      "ClickHerePrefix": "Click ",
+      "ClickHereLink": "here",
+      "ClickHereSuffix": " for more information."
+    },
+    "_1JArBGDet5Uj9pJOV/9sFw": {
+      "UrlTextBoxPlaceholder": "Enter a URL to view in Mobile Preview Tool.",
+      "ScreenReaderMobilePreviewEntered": "You have entered the Mobile Preview Tool. If you want to preview a different page, enter the URL in URL text field. To close the tool and go back to Workbench, press Escape.",
+      "ScreenReaderDevicePickerEntered": "Use left and right arrow keys to choose a device to change the preview screen size.",
+      "ScreenReaderDevicePickerSelectionChanged": "Press Enter to choose this device.",
+      "Width": "Width",
+      "Height": "Height"
+    },
+    "_8EVKOH1av6NjR/ZNfdafrw": {
+      "WebPartData": "Web Part Data",
+      "ClassicPages": "Classic Pages",
+      "ModernPages": "Modern Pages",
+      "Close": "Close",
+      "WebPartDataHelpInfoLink": "Learn about provisioning SharePoint assets from your SharePoint client-side web part"
+    },
+    "_IusqdbcSoVYQiit3+QRSxw": {
+      "Office365Title": "Office 365",
+      "SharePointWorkbenchTitle": "SharePoint Workbench",
+      "ScreenReaderDisplayModeSwitchToEditMode": "Switched from preview mode to edit mode.",
+      "ScreenReaderDisplayModeSwitchToReadMode": "Switched from edit mode to preview mode."
+    },
+    "_nCtJlVOXBHa59LgYtajnjA": {
+      "Save": "Save",
+      "SaveAltText": "Use to save the current workbench state.",
+      "Discard": "Discard",
+      "DiscardAltText": "Use to discard the current workbench state.",
+      "Mobile": "Mobile",
+      "MobleAltText": "Use to open the mobile preview tool for a cell phone.",
+      "Tablet": "Tablet",
+      "TabletAltText": "Use to open the mobile preview tool for a tablet.",
+      "Preview": "Preview",
+      "PreviewAltText": "Use to switch from edit mode to preview mode.",
+      "Edit": "Edit",
+      "EditAltText": "Use to switch to edit mode.",
+      "WebPartData": "Web part data",
+      "WebPartDataAltText": "Display the serialized web part data."
+    }
+  };
+
+  strings.default = strings;
+  return strings;
+});

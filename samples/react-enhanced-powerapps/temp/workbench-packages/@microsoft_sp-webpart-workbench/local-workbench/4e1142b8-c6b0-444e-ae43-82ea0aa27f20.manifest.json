@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 2,
+  "id": "4e1142b8-c6b0-444e-ae43-82ea0aa27f20",
+  "alias": "SpListFieldDataSource",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-list-field-data-source",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-list-field-data-source": {
+        "type": "path",
+        "path": "dist/sp-list-field-data-source.js"
+      },
+      "@ms/sp-base-data-source": {
+        "type": "component",
+        "version": "0.1.0",
+        "id": "6e6e2204-49cb-4172-b923-32eaa7d8fe5b"
+      }
+    }
+  },
+  "isInternal": true
+}

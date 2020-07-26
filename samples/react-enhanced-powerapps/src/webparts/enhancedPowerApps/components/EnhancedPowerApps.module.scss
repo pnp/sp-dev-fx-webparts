@@ -1,0 +1,24 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.enhancedPowerApps {
+  color: inherit;
+
+  // BEGIN: These styles are to fix the differences between the PnP placeholder control
+  // and the new Fluent placeholder control. We'll remove them later when we
+  // update the placeholder control
+  // AVOID USING IMPORTANT IN REAL LIFE. THIS IS JUST TEMPORARY
+  // UNTIL WE FIX THE PLACEHOLDER CONTROL STYLES
+  span[class^="placeholderText_"] {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    color: #323130;
+  }
+
+  span[class^="placeholderDescriptionText_"] {
+    color: #605e5c !important;
+    margin: 20px 0 28px;
+    line-height: 23px;
+    font-size: 16px !important;
+  }
+  // END
+}

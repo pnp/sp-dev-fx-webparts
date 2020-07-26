@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 2,
+  "id": "67c6ff5a-7666-4442-a8e9-55e57867bc44",
+  "alias": "SpListDataSource",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-list-data-source",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-list-data-source": {
+        "type": "path",
+        "path": "dist/sp-list-data-source.js"
+      },
+      "@ms/sp-base-data-source": {
+        "type": "component",
+        "version": "0.1.0",
+        "id": "6e6e2204-49cb-4172-b923-32eaa7d8fe5b"
+      }
+    }
+  },
+  "isInternal": true
+}

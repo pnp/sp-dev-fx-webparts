@@ -1,0 +1,20 @@
+{
+  "id": "f97266fb-ccb7-430e-9384-4124d05295d3",
+  "alias": "Decorators",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "decorators",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "decorators": {
+        "type": "path",
+        "path": "dist/decorators.js"
+      }
+    }
+  },
+  "isInternal": true
+}

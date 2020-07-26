@@ -1,0 +1,72 @@
+{
+  "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+  "alias": "SPPropertyPane",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "sp-property-pane",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-property-pane": {
+        "type": "localizedPath",
+        "defaultPath": "dist/sp-property-pane_en-us.js"
+      },
+      "@microsoft/sp-component-base": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "467dc675-7cc5-4709-8aac-78e3b71bd2f6"
+      },
+      "@microsoft/office-ui-fabric-react-bundle": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "02a01e42-69ab-403d-8a16-acd128661f8e"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "react": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      },
+      "react-dom": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "failoverPath": "node_modules/react-dom/dist/react-dom.js"
+      },
+      "@ms/uifabric-styling-bundle": {
+        "type": "component",
+        "version": "0.1.0",
+        "id": "17ce0976-e69a-4355-be84-89b69a74717d"
+      },
+      "@microsoft/load-themed-styles": {
+        "type": "component",
+        "version": "0.1.2",
+        "id": "229b8d08-79f3-438b-8c21-4613fc877abd"
+      },
+      "@microsoft/sp-diagnostics": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "78359e4b-07c2-43c6-8d0b-d060b4d577e8"
+      },
+      "@microsoft/decorators": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "f97266fb-ccb7-430e-9384-4124d05295d3"
+      }
+    }
+  },
+  "isInternal": true
+}

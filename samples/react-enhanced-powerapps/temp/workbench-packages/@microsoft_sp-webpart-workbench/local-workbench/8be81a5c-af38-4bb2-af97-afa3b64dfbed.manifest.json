@@ -1,0 +1,92 @@
+{
+  "id": "8be81a5c-af38-4bb2-af97-afa3b64dfbed",
+  "alias": "WebPartWorkbench",
+  "componentType": "Application",
+  "version": "1.11.0",
+  "manifestVersion": 2,
+  "title": {
+    "default": "WebpartWorkbench"
+  },
+  "description": {
+    "default": "WebpartWorkbench"
+  },
+  "assemblyId": "5dae53c4-db1e-4d0b-b8b2-88c874dabf83",
+  "preloadComponents": [],
+  "preloadOptions": {
+    "shouldPreloadWeb": true,
+    "shouldPreloadUser": true,
+    "shouldPreloadList": false,
+    "shouldPreloadItem": true,
+    "shouldPreloadQuickLaunch": true
+  },
+  "loaderConfig": {
+    "entryModuleId": "sp-webpart-workbench",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-webpart-workbench": {
+        "type": "localizedPath",
+        "defaultPath": "dist/sp-webpart-workbench_en-us.js"
+      },
+      "@ms/sp-canvas": {
+        "type": "component",
+        "version": "2.5.0",
+        "id": "85093aa7-8c12-4683-91aa-47cd5e2654db"
+      },
+      "@ms/sp-telemetry": {
+        "type": "component",
+        "version": "0.8.24",
+        "id": "8217e442-8ed3-41fd-957d-b112e841286a"
+      },
+      "@microsoft/sp-application-base": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "4df9bb86-ab0a-4aab-ab5f-48bf167048fb"
+      },
+      "@microsoft/sp-loader": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "1c6c9123-7aac-41f3-a376-3caea41ed83f"
+      },
+      "@microsoft/office-ui-fabric-react-bundle": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "02a01e42-69ab-403d-8a16-acd128661f8e"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0"
+      },
+      "react": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      },
+      "react-dom": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "failoverPath": "node_modules/react-dom/dist/react-dom.js"
+      },
+      "@microsoft/load-themed-styles": {
+        "type": "component",
+        "version": "0.1.2",
+        "id": "229b8d08-79f3-438b-8c21-4613fc877abd"
+      },
+      "@ms/sp-a11y": {
+        "type": "component",
+        "version": "0.2.24",
+        "id": "05ed6956-59ad-4aa6-9e4e-b832c96ae87b"
+      }
+    }
+  },
+  "isInternal": true
+}
