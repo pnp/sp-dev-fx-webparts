@@ -36,7 +36,7 @@ Version|Date|Comments
 
 This sample illustrates the following concepts on top of the SharePoint Framework:
 
-* Using AadTokenProvide to consume Dynamics CRM API.
+* Using AadTokenProvider to consume Dynamics CRM API.
 * How to get Accounts/Contacts information from Dynamics 365.
 * React Hooks
 * Using async / await for the async calls
