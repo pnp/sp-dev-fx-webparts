@@ -1,0 +1,107 @@
+{
+  "_from": "@microsoft/sp-webpart-workbench@1.11.0",
+  "_id": "@microsoft/sp-webpart-workbench@1.11.0",
+  "_inBundle": false,
+  "_integrity": "sha512-I9Tder5SP2dzQuQixp4FFx4FElRXvGtjoDhkn7tWoIkIorDLrTnHNN8fCUKFezhpOVZkPkARHIy5BSHEjJQPaw==",
+  "_location": "/@microsoft/sp-webpart-workbench",
+  "_phantomChildren": {
+    "@microsoft/load-themed-styles": "1.10.65",
+    "@uifabric/foundation": "7.7.39",
+    "@uifabric/icons": "7.3.0",
+    "@uifabric/merge-styles": "7.16.3",
+    "@uifabric/react-hooks": "7.6.2",
+    "@uifabric/set-version": "7.0.18",
+    "@uifabric/styling": "7.14.5",
+    "@uifabric/utilities": "7.24.5",
+    "fbjs": "0.8.17",
+    "graceful-fs": "4.2.4",
+    "jsonfile": "4.0.0",
+    "loose-envify": "1.4.0",
+    "object-assign": "4.1.1",
+    "tslib": "1.10.0",
+    "universalify": "0.1.2"
+  },
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@microsoft/sp-webpart-workbench@1.11.0",
+    "name": "@microsoft/sp-webpart-workbench",
+    "escapedName": "@microsoft%2fsp-webpart-workbench",
+    "scope": "@microsoft",
+    "rawSpec": "1.11.0",
+    "saveSpec": null,
+    "fetchSpec": "1.11.0"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@microsoft/sp-webpart-workbench/-/sp-webpart-workbench-1.11.0.tgz",
+  "_shasum": "a9000c60c5fb4ec6be31f74fafd34a6f578519ed",
+  "_spec": "@microsoft/sp-webpart-workbench@1.11.0",
+  "_where": "C:\\spfx\\react-enhanced-powerapps",
+  "bundleDependencies": false,
+  "dependencies": {
+    "@microsoft/gulp-core-build-serve": "3.5.5",
+    "@microsoft/node-core-library": "3.15.1",
+    "@microsoft/office-ui-fabric-react-bundle": "1.11.0",
+    "@microsoft/sp-application-base": "1.11.0",
+    "@microsoft/sp-build-core-tasks": "1.11.0",
+    "@microsoft/sp-core-library": "1.11.0",
+    "@microsoft/sp-loader": "1.11.0",
+    "@microsoft/sp-lodash-subset": "1.11.0",
+    "@microsoft/sp-module-interfaces": "1.11.0",
+    "@microsoft/sp-property-pane": "1.11.0",
+    "@microsoft/sp-webpart-base": "1.11.0",
+    "@types/es6-promise": "0.0.33",
+    "@types/fs-extra": "5.0.1",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.3",
+    "@types/webpack-env": "1.13.1",
+    "@uifabric/variants": "7.0.5",
+    "fs-extra": "~5.0.0",
+    "office-ui-fabric-react": "7.59.0",
+    "prop-types": "15.6.0",
+    "react": "16.8.5",
+    "react-dom": "16.8.5",
+    "tslib": "~1.10.0"
+  },
+  "deprecated": false,
+  "description": "The SharePoint Workbench",
+  "devDependencies": {
+    "@ms/content-handler": "0.1.0",
+    "@ms/i18n-utilities": "~0.1.24",
+    "@ms/odsp-utilities-bundle": "5.1.55",
+    "@ms/sp-a11y": "~0.2.24",
+    "@ms/sp-build-compiler-3.3": "1.9.0-dev.4",
+    "@ms/sp-build-internal-tasks": "~0.14.24",
+    "@ms/sp-build-internal-web": "~0.29.32",
+    "@ms/sp-canvas": "~2.5.0",
+    "@ms/sp-canvas-toolbox": "~1.2.0",
+    "@ms/sp-component-utilities": "~4.0.19",
+    "@ms/sp-load-themed-styles": "~0.1.2",
+    "@ms/sp-pagepicker": "~1.3.24",
+    "@ms/sp-rte": "1.11.0",
+    "@ms/sp-tab-tasklib": "~0.0.4",
+    "@ms/sp-telemetry": "~0.8.24",
+    "@types/jest": "22.2.3",
+    "gulp": "~3.9.1",
+    "identity-obj-proxy": "3.0.0",
+    "ts-jest": "~22.4.3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "homepage": "http://aka.ms/spfx",
+  "license": "SEE LICENSE IN \"EULA\" FOLDER",
+  "main": "lib/spWebpartWorkbench.js",
+  "name": "@microsoft/sp-webpart-workbench",
+  "quickbuild": {
+    "additionalOutputFolders": [
+      "local-workbench"
+    ]
+  },
+  "scripts": {
+    "build": "gulp test --clean"
+  },
+  "version": "1.11.0"
+}

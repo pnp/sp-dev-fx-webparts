@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "../../lib/api"
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "../../node_modules",
+    "../../dist",
+    "../../lib"
+  ]
+}

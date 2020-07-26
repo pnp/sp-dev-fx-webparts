@@ -1,0 +1,78 @@
+{
+  "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+  "alias": "SPWebPartBase",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "manifestVersion": 2,
+  "preloadComponents": [
+    "f9e737b7-f0df-4597-ba8c-3060f82380db"
+  ],
+  "loaderConfig": {
+    "entryModuleId": "sp-webpart-base",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-webpart-base": {
+        "type": "localizedPath",
+        "defaultPath": "dist/sp-webpart-base_en-us.js"
+      },
+      "@ms/sp-telemetry": {
+        "type": "component",
+        "version": "0.8.24",
+        "id": "8217e442-8ed3-41fd-957d-b112e841286a"
+      },
+      "@ms/sp-load-themed-styles": {
+        "type": "component",
+        "version": "0.1.2",
+        "id": "229b8d08-79f3-438b-8c21-4613fc877abd"
+      },
+      "@microsoft/sp-component-base": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "467dc675-7cc5-4709-8aac-78e3b71bd2f6"
+      },
+      "@microsoft/sp-loader": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "1c6c9123-7aac-41f3-a376-3caea41ed83f"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-page-context": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "1c4541f7-5c31-41aa-9fa8-fbc9dc14c0a8"
+      },
+      "@microsoft/load-themed-styles": {
+        "type": "component",
+        "version": "0.1.2",
+        "id": "229b8d08-79f3-438b-8c21-4613fc877abd"
+      },
+      "@microsoft/sp-diagnostics": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "78359e4b-07c2-43c6-8d0b-d060b4d577e8"
+      },
+      "@microsoft/sp-http": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6"
+      },
+      "@microsoft/decorators": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "f97266fb-ccb7-430e-9384-4124d05295d3"
+      }
+    }
+  },
+  "isInternal": true
+}

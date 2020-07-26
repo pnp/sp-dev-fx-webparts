@@ -1,0 +1,1 @@
+{"version":3,"file":"CanvasHost.resx.d.ts","sourceRoot":"../../../../src/","sources":["components/canvasHost/CanvasHost.resx.ts"],"names":[],"mappings":"AAAA;;GAEG;AAMH,MAAM,WAAW,QAAQ;IACvB,gBAAgB,EAAE,MAAM,CAAC;IACzB,yBAAyB,EAAE,MAAM,CAAC;IAClC,YAAY,EAAE,MAAM,CAAC;CACtB;AAED,MAAM,WAAW,eAAe;IAC9B,yBAAyB,EAAE,QAAQ,CAAC;CACrC;AAMD,QAAA,MAAM,OAAO,UAAkB,CAAC;AAEhC,eAAe,OAAO,CAAC"}

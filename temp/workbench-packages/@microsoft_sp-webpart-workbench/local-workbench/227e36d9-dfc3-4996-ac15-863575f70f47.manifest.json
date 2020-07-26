@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 2,
+  "id": "227e36d9-dfc3-4996-ac15-863575f70f47",
+  "alias": "SpListItemDataSource",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-list-item-data-source",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-list-item-data-source": {
+        "type": "localizedPath",
+        "defaultPath": "dist/sp-list-item-data-source_en-us.js"
+      },
+      "@ms/sp-base-data-source": {
+        "type": "component",
+        "version": "0.1.0",
+        "id": "6e6e2204-49cb-4172-b923-32eaa7d8fe5b"
+      }
+    }
+  },
+  "isInternal": true
+}

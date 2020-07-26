@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-component-manifest.schema.json",
+
+  "id": "8be81a5c-af38-4bb2-af97-afa3b64dfbed",
+  "alias": "WebPartWorkbench",
+  "componentType": "Application",
+  "version": "*",
+  "manifestVersion": 2,
+
+  "title": {
+    "default": "WebpartWorkbench"
+  },
+  "description": {
+    "default": "WebpartWorkbench"
+  },
+  "assemblyId": "5dae53c4-db1e-4d0b-b8b2-88c874dabf83",
+
+  "preloadComponents": [],
+
+  "preloadOptions": {
+    "shouldPreloadWeb": true,
+    "shouldPreloadUser": true,
+    "shouldPreloadList": false,
+    "shouldPreloadItem": true,
+    "shouldPreloadQuickLaunch": true
+  }
+}

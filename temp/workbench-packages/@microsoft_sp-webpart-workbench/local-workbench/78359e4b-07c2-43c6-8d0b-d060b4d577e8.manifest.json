@@ -1,0 +1,30 @@
+{
+  "manifestVersion": 2,
+  "id": "78359e4b-07c2-43c6-8d0b-d060b4d577e8",
+  "alias": "SPDiagnostics",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-diagnostics",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-diagnostics": {
+        "type": "path",
+        "path": "dist/sp-diagnostics.js"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      }
+    }
+  },
+  "isInternal": true
+}
