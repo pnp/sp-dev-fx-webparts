@@ -44,4 +44,6 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 
 ## Configuration
 
-Read my blog post for more information from [here](https://ramin.expert/?p=363).
+Read [my blog post](https://ramin.expert/?p=363) for more information.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-dynamics-crm-api" />
