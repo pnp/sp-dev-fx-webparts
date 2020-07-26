@@ -8,6 +8,9 @@ Sample web part showing how to embed a Power App that resizes, adapts to themes,
 
 ![Enhanced Power Apps in Action](./assets/enhanced-power-apps.gif)
 
+It also resizes the app to fit the web part dimension:
+![Enhanced Power Apps reszing in Action](./assets/resize.gif)
+
 ## Used SharePoint Framework Version
 
 ![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
