@@ -80,10 +80,14 @@ export default class EnhancedPowerAppsWebPart extends BaseClientSideWebPart<IEnh
   }
 
   public render(): void {
-    const { clientWidth } = this.domElement;
+    // Context variables and dynamic properties
     const dynamicProp: string | undefined = this.properties.dynamicProp.tryGetValue();
     const locale: string = this.context.pageContext.cultureInfo.currentCultureName;
 
+    // Get the client width. This is how we'll calculate the aspect ratio and resize the iframe
+    const { clientWidth } = this.domElement;
+
+    // Get the aspect width and height based on aspect ratio for the web part
     let aspectWidth: number;
     let aspectHeight: number;
     switch(this.properties.aspectratio) {
@@ -104,10 +108,13 @@ export default class EnhancedPowerAppsWebPart extends BaseClientSideWebPart<IEnh
         aspectHeight = 3;
         break;
       case "Custom":
+        // Custom aspects just use the width and height properties
         aspectWidth = this.properties.width;
         aspectHeight = this.properties.height;
     }
 
+    // If we're using fixed height, we pass the height and don't resize, otherwise we
+    // calculate the height based on the web part's width and selected aspect ratio
     const clientHeight: number = this.properties.layout === 'FixedHeight' ?
       this.properties.height :
       clientWidth * (aspectHeight/aspectWidth);
