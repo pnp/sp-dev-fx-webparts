@@ -63,6 +63,16 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-enhanced-powerapps
+      name: react-enhanced-powerapps
+      title: Enhanced Power Apps
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif
+      author: Hugo Bernier
+      summary: Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps
+      modifiedtext: July 26, 2020
+      modified: 2020-07-26
+    - framework: React
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-directory
       name: react-directory
       title: Organization Directory Web Part
