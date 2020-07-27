@@ -20,6 +20,7 @@ export interface ChartConfiguration {
   theme: string;
   bgColors: Array<string>;
   hoverColors: Array<string>;
+  hasTaxField?: boolean;
 }
 
 export interface IModernChartsWebPartProps {
