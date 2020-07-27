@@ -29,10 +29,13 @@ export default class EnhancedPowerApps extends React.Component<IEnhancedPowerApp
       height,
       width
      }  = this.props;
+
+    // The only thing we need for this web part to be configured is an app link or app id
     const needConfiguration: boolean = !appWebLink;
 
     const { semanticColors }: IReadonlyTheme = themeVariant;
 
+    // If we passed a dynamic property, add it as a query string parameter
     const dynamicPropValue: string = useDynamicProp && dynamicProp !== undefined ? `&${encodeURIComponent(dynamicPropName)}=${encodeURIComponent(dynamicProp)}`:'';
     
     // We can take an app id or a full link. We'll assume (for now) that people are passing a valid app URL
@@ -43,16 +46,15 @@ export default class EnhancedPowerApps extends React.Component<IEnhancedPowerApp
     let themeParams: string = "";
 
     if (themeValues && themeValues.length > 0) {
-    themeValues.forEach((themeValue: string) => {
-      try {
-        
-        const themeColor: string = semanticColors[themeValue];
-        themeParams = themeParams + `&${themeValue}=${encodeURIComponent(themeColor)}`;
-      } catch (e) {
-        console.log(e);
-      }
-      
-    });
+      themeValues.forEach((themeValue: string) => {
+        try {
+          
+          const themeColor: string = semanticColors[themeValue];
+          themeParams = themeParams + `&${themeValue}=${encodeURIComponent(themeColor)}`;
+        } catch (e) {
+          console.log(e);
+        }  
+      });
     }
 
 
