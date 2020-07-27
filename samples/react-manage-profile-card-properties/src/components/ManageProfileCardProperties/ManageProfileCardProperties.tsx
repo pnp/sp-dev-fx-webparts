@@ -184,7 +184,7 @@ export default class ManageProfileCardProperties extends React.Component<
       default:
         return null;
     }
-  };
+  }
 
   //
   // Component did mount
@@ -226,7 +226,7 @@ export default class ManageProfileCardProperties extends React.Component<
       });
       console.log(error);
     }
-  };
+  }
 
   // Get Profile Properties
   //
@@ -248,7 +248,7 @@ export default class ManageProfileCardProperties extends React.Component<
       }
     }
     return _listItems;
-  };
+  }
 
   // On Column Click
   private _onColumnClick = (
@@ -278,7 +278,7 @@ export default class ManageProfileCardProperties extends React.Component<
       listFields: newlistFields,
       listItems: newItems,
     });
-  };
+  }
 
   private _copyAndSort<T>(
     items: T[],
@@ -317,7 +317,7 @@ export default class ManageProfileCardProperties extends React.Component<
       default:
         break;
     }
-  };
+  }
 
   // Reset sort Order columns to default
   private _resetSortOrder = () => {
@@ -341,7 +341,7 @@ export default class ManageProfileCardProperties extends React.Component<
       }
     }
     this.setState({ listFields: _copyListFields });
-  };
+  }
 
   // On Refresh List
   private _onRefresh = async () => {
@@ -354,7 +354,7 @@ export default class ManageProfileCardProperties extends React.Component<
       selectedItem: undefined,
       isLoading: false,
     });
-  };
+  }
 
   // On Dismiss Panel
   private _onPanelDismiss = async (refresh: boolean) => {
@@ -374,7 +374,7 @@ export default class ManageProfileCardProperties extends React.Component<
         displayDeletePanel: false,
       });
     }
-  };
+  }
 
   // Search List
   private _onSearch = async (value: string) => {
@@ -408,7 +408,7 @@ export default class ManageProfileCardProperties extends React.Component<
     this._resetSortOrder();
     this._selection.setAllSelected(false);
     this.setState({ listItems: _filteredList });
-  };
+  }
 
   // Render Component
   public render(): React.ReactElement<IManageProfileCardPropertiesProps> {
