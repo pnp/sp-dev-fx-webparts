@@ -1,0 +1,42 @@
+{
+  "id": "02a01e42-69ab-403d-8a16-acd128661f8e",
+  "alias": "OfficeUIFabricReact",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "office-ui-fabric-react-bundle",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "office-ui-fabric-react-bundle": {
+        "type": "path",
+        "path": "dist/office-ui-fabric-react-bundle.js"
+      },
+      "react": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      },
+      "react-dom": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "failoverPath": "node_modules/react-dom/dist/react-dom.js"
+      },
+      "@ms/uifabric-styling-bundle": {
+        "type": "component",
+        "version": "0.1.0",
+        "id": "17ce0976-e69a-4355-be84-89b69a74717d"
+      },
+      "@microsoft/load-themed-styles": {
+        "type": "component",
+        "version": "0.1.2",
+        "id": "229b8d08-79f3-438b-8c21-4613fc877abd"
+      }
+    }
+  },
+  "isInternal": true
+}

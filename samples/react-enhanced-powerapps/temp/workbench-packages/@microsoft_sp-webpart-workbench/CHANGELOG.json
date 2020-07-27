@@ -1,0 +1,444 @@
+{
+  "name": "@microsoft/sp-webpart-workbench",
+  "entries": [
+    {
+      "version": "1.11.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.11.0",
+      "date": "Thu, 16 Jul 2020 04:33:35 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use RequireJS loader"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ms/sp-a11y\" from `~0.2.23` to `~0.2.24`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/i18n-utilities\" from `~0.1.23` to `~0.1.24`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-web\" from `~0.29.31` to `~0.29.32`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-tasks\" from `~0.14.23` to `~0.14.24`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-component-utilities\" from `~4.0.18` to `~4.0.19`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-telemetry\" from `~0.8.23` to `~0.8.24`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-pagepicker\" from `~1.3.23` to `~1.3.24`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.10.0",
+      "date": "Mon, 06 Jan 2020 18:14:53 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix local workbench not loading its manifests"
+          },
+          {
+            "comment": "Upgrade Fabric React to 7."
+          },
+          {
+            "comment": "Fixing local workbench"
+          },
+          {
+            "comment": "update @types/jest to match current jest version"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ms/sp-a11y\" from `~0.2.15` to `~0.2.16`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/i18n-utilities\" from `~0.1.15` to `~0.1.16`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-web\" from `~0.29.23` to `~0.29.24`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-tasks\" from `~0.14.15` to `~0.14.16`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-component-utilities\" from `~4.0.10` to `~4.0.11`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-telemetry\" from `~0.8.15` to `~0.8.16`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-pagepicker\" from `~1.3.15` to `~1.3.16`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.7.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.7.0",
+      "date": "Thu, 08 Nov 2018 17:05:51 GMT",
+      "comments": {
+        "none": []
+      }
+    },
+    {
+      "version": "1.6.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.6.0",
+      "date": "Mon, 27 Aug 2018 18:06:28 GMT",
+      "comments": {
+        "none": []
+      }
+    },
+    {
+      "version": "1.5.1",
+      "tag": "@microsoft/sp-webpart-workbench_v1.5.1",
+      "date": "Tue, 26 Jun 2018 14:50:55 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-web\" from `~0.16.15` to `~0.16.16`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-tasks\" from `~0.7.29` to `~0.7.30`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.5.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.5.0",
+      "date": "Fri, 01 Jun 2018 18:13:37 GMT",
+      "comments": {
+        "none": [],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-web\" from `~0.16.12` to `~0.16.13`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-tasks\" from `~0.7.26` to `~0.7.27`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.4.1",
+      "tag": "@microsoft/sp-webpart-workbench_v1.4.1",
+      "date": "Thu, 15 Feb 2018 01:56:14 GMT",
+      "comments": {
+        "none": [],
+        "dependency": [
+          {
+            "comment": "Dependency @microsoft/office-ui-fabric-react-bundle version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Dependency @microsoft/sp-application-base version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Dependency @microsoft/sp-build-core-tasks version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Dependency @microsoft/sp-client-preview version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Dependency @microsoft/sp-core-library version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Dependency @microsoft/sp-loader version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Dependency @microsoft/sp-lodash-subset version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Dependency @microsoft/sp-module-interfaces version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Dependency @microsoft/sp-webpart-base version bump from 1.4.1-pr.2 to 1.4.1."
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-web\" from `~0.9.5` to `~0.9.6`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-tasks\" from `~0.4.11` to `~0.4.12`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.4.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.4.0",
+      "date": "Mon, 04 Dec 2017 18:15:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace @types/es6-collections with the typescript compiler's built-in es2015.collection library"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.4",
+      "tag": "@microsoft/sp-webpart-workbench_v1.3.4",
+      "date": "Thu, 26 Oct 2017 17:35:39 GMT",
+      "comments": {}
+    },
+    {
+      "version": "1.3.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.3.0",
+      "date": "Fri, 22 Sep 2017 20:19:09 GMT",
+      "comments": {}
+    },
+    {
+      "version": "1.2.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.2.0",
+      "date": "Fri, 25 Aug 2017 20:31:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update to Fabric React 4.32.0"
+          },
+          {
+            "comment": "Use lockstep version for all SPFx packages"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.1.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.1.0",
+      "date": "Thu, 25 May 2017 21:09:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgraded office-ui-fabric-react to 2.31.0"
+          },
+          {
+            "comment": "Upgraded to TypeScript 2.2"
+          },
+          {
+            "comment": "Added a view to the workbench to allow for viewing serialized data about Web Parts"
+          },
+          {
+            "comment": "Upgraded to Webpack 2.0"
+          },
+          {
+            "comment": "Improved workbench accessibility"
+          },
+          {
+            "comment": "Applied flex layout to page chrome"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@microsoft/sp-core-library\" from `~1.0.0` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-webpart-base\" from `~1.0.0` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-client-preview\" from `~1.0.0` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-application-base\" from `~1.0.0` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-build-core-tasks\" from `~1.0.1` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-lodash-subset\" from `~1.0.0` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-loader\" from `~1.0.0` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-module-interfaces\" from `~1.0.0` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/office-ui-fabric-react-bundle\" from `~1.0.1` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-canvas\" from `~1.0.7` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-web\" from `~0.5.3` to `~0.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@ms/sp-build-internal-tasks\" from `~0.0.5` to `~0.1.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.0",
+      "tag": "@microsoft/sp-webpart-workbench_v1.0.0",
+      "date": "Fri, 17 Feb 2017 23:09:23 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "General availability"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Upgraded React to 15.4.1"
+          },
+          {
+            "comment": "Bumped up office-ui-fabric-react version to 0.83.0"
+          },
+          {
+            "comment": "Locked version numbers for @types packages"
+          },
+          {
+            "comment": "Ensured world readiness"
+          },
+          {
+            "comment": "Updated .npmignore"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Updated to TypeScript 2.1"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.8.0",
+      "tag": "@microsoft/sp-webpart-workbench_v0.8.0",
+      "date": "Tue, 03 Jan 2017 21:52:49 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "More changes for RC0 release."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@microsoft/sp-core-library\" from `~0.1.1` to `~0.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-webpart-base\" from `~0.3.0` to `~0.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-client-preview\" from `~0.8.0` to `~0.9.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-build-core-tasks\" from `~0.6.0` to `~0.7.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-lodash-subset\" from `~0.6.0` to `~0.6.1`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-loader\" from `~0.6.0` to `~0.7.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-module-interfaces\" from `~0.6.0` to `~0.7.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.0",
+      "tag": "@microsoft/sp-webpart-workbench_v0.7.0",
+      "date": "Tue, 06 Dec 2016 20:44:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Changes for RC0 release."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@microsoft/sp-core-library\" from `~0.1.0` to `~0.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-client-base\" from `~0.5.1` to `~0.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-webpart-base\" from `~0.2.1` to `~0.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-client-preview\" from `~0.7.1` to `~0.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-build-core-tasks\" from `~0.5.1` to `~0.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-lodash-subset\" from `~0.5.1` to `~0.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-loader\" from `~0.5.1` to `~0.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@microsoft/sp-module-interfaces\" from `~0.5.1` to `~0.6.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.6.1",
+      "tag": "@microsoft/sp-webpart-workbench_v0.6.1",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating the logic that resolves the module loader to support a localized path."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@microsoft/sp-webpart-workbench_v0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Utilize new version of Office UI Fabric, necessitating updates to buttons"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixed mobile preview dimension input"
+          },
+          {
+            "comment": "Added more fields to the Workbench page context"
+          },
+          {
+            "comment": "Changing redirect logic to point to `localhost` instead of to the local hostname."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.4.0",
+      "tag": "@microsoft/sp-webpart-workbench_v0.4.0",
+      "comments": {}
+    },
+    {
+      "version": "0.3.0",
+      "tag": "@microsoft/sp-webpart-workbench_v0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Minor bump of `@microsoft/sp-client-preview`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.0",
+      "tag": "@microsoft/sp-webpart-workbench_v0.2.0",
+      "comments": {}
+    },
+    {
+      "version": "0.1.12",
+      "tag": "@microsoft/sp-webpart-workbench_v0.1.12",
+      "comments": {}
+    }
+  ]
+}
