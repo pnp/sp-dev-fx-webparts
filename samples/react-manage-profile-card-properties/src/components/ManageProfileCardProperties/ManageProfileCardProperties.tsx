@@ -124,8 +124,8 @@ export default class ManageProfileCardProperties extends React.Component<
         name: "Directory Property Name",
         fieldName: "displayAttribute",
         isResizable: true,
-        maxWidth: 160,
-        minWidth: 50,
+        maxWidth: 210,
+        minWidth: 150,
         isSorted: true,
         isSortedDescending: false,
         onColumnClick: this._onColumnClick,
@@ -349,6 +349,12 @@ export default class ManageProfileCardProperties extends React.Component<
     this._selection.setAllSelected(false);
     this.setState({ isLoading: true, hasError: false, errorMessage: null });
     const _listItems = await this._getProfileCardProperties();
+    // update Application context
+    this.applicationContext = {
+      ...this.applicationContext,
+      listItems: _listItems,
+    };
+    // update State
     this.setState({
       listItems: _listItems,
       selectedItem: undefined,
@@ -364,9 +370,8 @@ export default class ManageProfileCardProperties extends React.Component<
         displayNewPanel: false,
         displayDeletePanel: false,
       });
-      this._selection.setAllSelected(false);
-      const _listItems = await this._getProfileCardProperties();
-      this.setState({ listItems: _listItems, selectedItem: undefined });
+      // refresh List
+      await this._onRefresh();
     } else {
       this.setState({
         displayEditPanel: false,

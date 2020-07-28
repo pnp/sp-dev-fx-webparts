@@ -11,6 +11,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "User.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Directory.AccessAsUser.All"
       }
     ]
   },

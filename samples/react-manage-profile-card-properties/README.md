@@ -6,11 +6,17 @@ We can create, edit, delete, directory properties that can be add to profile car
 
 Only users with Tenant Admin Role are allowed to managed profile card properties. 
 
-##  Site Designs List
+##  Manage Profile Card Properties
 
-![site design list](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/dev/samples/react-manage-sitedesigns/assets/screen1.jpg)
+![manageProps](assets/Screenshot1.png)
 
+![manageProps](assets/Screenshot2.png)
 
+![manageProps](assets/Screenshot3.png)
+
+![manageProps](assets/Screenshot4.png)
+
+![manageProps](assets/Screenshot5.png)
 
 
 
@@ -59,6 +65,7 @@ Version|Date|Comments
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - `Add to AppCatalog and deploy`
-  - approve the required permissions (User.ReadWrite) on SharePoint Admin in App permissions
+  
+- approve the required permissions (User.ReadWrite, Directory.AccessAsUser.All) on SharePoint Admin in App permissions
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-sitedesigns" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-profile-card-properties" />

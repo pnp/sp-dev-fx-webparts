@@ -20,7 +20,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Manage Profile Card Properties" },
     "description": { "default": "Manage Profile Card Properties" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "TaskManager",
     "properties": {
       "title": "Manage Profile Card Properties"
     }
