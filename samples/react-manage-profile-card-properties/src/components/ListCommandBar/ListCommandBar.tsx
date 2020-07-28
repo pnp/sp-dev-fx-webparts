@@ -16,6 +16,7 @@ const searchtyles: ISearchBoxStyles = {
 export const ListCommandBar: React.FunctionComponent<IListCommandBarProps> = (
   props: IListCommandBarProps
 ) => {
+
   const _applicationContext = React.useContext(AppContext);
   const {} = _applicationContext;
   const { selectedItem } = props;
@@ -25,13 +26,17 @@ export const ListCommandBar: React.FunctionComponent<IListCommandBarProps> = (
   let _disableDelete: boolean = true;
   let _disableView: boolean = true;
 
+
   if (selectedItem) {
     _disableEdit = false;
     _disableDelete = false;
     _disableView = false;
   }
+
+  //
   useEffect(() => {});
 
+  // On clear Search
   const _onClear = () => {
     let _searchCondition: string = "";
     props.onSearch(_searchCondition);
@@ -41,6 +46,7 @@ export const ListCommandBar: React.FunctionComponent<IListCommandBarProps> = (
     props.onSearch(value);
   };
 
+  // CommandBar Options
   const _items: ICommandBarItemProps[] = [
     {
       key: "newItem",
@@ -72,7 +78,7 @@ export const ListCommandBar: React.FunctionComponent<IListCommandBarProps> = (
       onClick: () => props.onActionSelected("Delete"),
     },
   ];
-
+// FarItems
   const _farItems: ICommandBarItemProps[] = [
     {
       key: "search",
@@ -99,15 +105,6 @@ export const ListCommandBar: React.FunctionComponent<IListCommandBarProps> = (
       iconProps: { iconName: "Refresh" },
       onClick: () => props.onActionSelected("Refresh"),
     },
-    /* {
-      key: "filter",
-      text: "Filter",
-      // This needs an ariaLabel since it's icon-only
-      ariaLabel: "filter",
-      iconOnly: true,
-      iconProps: { iconName: "Filter" },
-      onClick: () => console.log("Info"),
-    }, */
   ];
 
   return (

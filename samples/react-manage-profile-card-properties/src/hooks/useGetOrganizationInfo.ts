@@ -7,6 +7,5 @@ export const useGetOrganization = async (msGraphClient: MSGraphClient):Promise<I
   .api(`/organization`)
   .version("beta")
  .get();
-console.log(_organization.value);
  return _organization.value[0];
 };

@@ -36,7 +36,7 @@ import { ILocalizationExtended } from "../../Entities/IlocalizationExtended";
 import strings from "ManageProfileCardPropertiesWebPartStrings";
 
 // Component
-// Add Profile Property Component
+// Edit Profile Property Component
 
 export const EditProfileCardProperty: React.FunctionComponent<IEditProfileCardPropertyProps> = (
   props: IEditProfileCardPropertyProps
@@ -278,7 +278,7 @@ export const EditProfileCardProperty: React.FunctionComponent<IEditProfileCardPr
     ) {
       disableAddButton = false;
     }
-
+    // Render Component
     return (
       <div>
         <PrimaryButton
@@ -407,9 +407,7 @@ export const EditProfileCardProperty: React.FunctionComponent<IEditProfileCardPr
       localizations = annotations[0].localizations;
     }
   }
-  /*  if (!directoryPropertyName) {
-    directoryPropertyName = directoryPropertyOptions[0].key.toString();
-  } */
+
   //************************************************************************************************* */
   // Render Control
   //************************************************************************************************* */
