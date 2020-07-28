@@ -3,6 +3,7 @@
   "id": "e62d11c6-4198-45b5-a04d-dee50230c5e3",
   "alias": "ManageProfileCardPropertiesWebPart",
   "componentType": "WebPart",
+  "supportsThemeVariants": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",

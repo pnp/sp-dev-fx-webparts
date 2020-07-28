@@ -3,6 +3,8 @@
   "id": "ea67ede9-e4e7-411c-aee1-843dca97a4a8",
   "alias": "OrganizationChartWebPart",
   "componentType": "WebPart",
+  "supportsFullBleed": false,
+  "supportsThemeVariants": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",
