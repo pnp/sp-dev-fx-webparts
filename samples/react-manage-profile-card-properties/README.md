@@ -23,7 +23,7 @@ Only users with Tenant Admin Role are allowed to managed profile card properties
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -59,13 +59,14 @@ Version|Date|Comments
 
 - Clone this repository
 - Move to sample folder
-- in the command line run:
+- In the command line run:
   - `npm install`
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - `Add to AppCatalog and deploy`
-  
-- approve the required permissions (User.ReadWrite, Directory.AccessAsUser.All) on SharePoint Admin in App permissions
+- Approve the required permissions (User.ReadWrite, Directory.AccessAsUser.All) on SharePoint Admin in App permissions
+
+> **NOTE:** This web part does not work in the local workbench
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-profile-card-properties" />
