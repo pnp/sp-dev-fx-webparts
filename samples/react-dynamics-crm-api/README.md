@@ -44,6 +44,12 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 
 ## Configuration
 
-Read [my blog post](https://ramin.expert/?p=363) for more information.
+* Login to Azure Portal.
+* Go to the App Registrations Page.
+* Select SharePoint Online Client Extensibility.
+* Select API Permissions.
+* Add "Dynamics CRM" permission.
+* Go to the manifest page, and makes sure the value for the allowPublicClient and the oauth2AllowImplicitFlow is set to true.
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-dynamics-crm-api" />
