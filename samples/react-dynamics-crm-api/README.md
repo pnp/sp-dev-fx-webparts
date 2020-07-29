@@ -32,6 +32,24 @@ Version|Date|Comments
 
 ---
 
+
+## Minimal Path to Awesome
+
+* Clone this repository
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
+
+### Configuration
+
+* Login to Azure Portal.
+* Go to **Azure Active Directory**
+* Go to the **App Registrations** page.
+* Select **SharePoint Online Client Extensibility** from the list of applications.
+* Select **API Permissions**.
+* Add **Dynamics CRM** permission.
+* Go to the **Manifest** page, and make sure the value for the `allowPublicClient` and the `oauth2AllowImplicitFlow` are both set to `true`.
+
 ## Features
 
 This sample illustrates the following concepts on top of the SharePoint Framework:
@@ -42,14 +60,6 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * Using async / await for the async calls
 * Ant design for the UI.
 
-## Configuration
-
-* Login to Azure Portal.
-* Go to the App Registrations Page.
-* Select SharePoint Online Client Extensibility.
-* Select API Permissions.
-* Add "Dynamics CRM" permission.
-* Go to the manifest page, and makes sure the value for the allowPublicClient and the oauth2AllowImplicitFlow is set to true.
-
+> **NOTE:** This sample will not work in the local workbench.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-dynamics-crm-api" />
