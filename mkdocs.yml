@@ -63,6 +63,16 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-profile-card-properties
+      name: react-manage-profile-card-properties
+      title: Manage Profile Card Properties
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-manage-profile-card-properties/assets/Screenshot5.png
+      author: João Mendes
+      summary: This web part allows tenant administrators to manage profile card properties.
+      modifiedtext: July 28, 2020
+      modified: 2020-07-28
+    - framework: React
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-enhanced-powerapps
       name: react-enhanced-powerapps
       title: Enhanced Power Apps
@@ -437,8 +447,8 @@ extra:
       framework: Javascript
       spfx: 1.10.0
       author: Joel Rodrigues
-      modifiedtext: July 09, 2020
-      modified: 2020-07-09
+      modifiedtext: July 28, 2020
+      modified: 2020-07-28
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar
