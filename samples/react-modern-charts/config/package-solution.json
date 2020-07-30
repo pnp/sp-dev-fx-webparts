@@ -3,7 +3,7 @@
   "solution": {
     "name": "modern-charts-client-side-solution",
     "id": "f8a78a9a-a93e-4843-89e5-7b871d9b9fa2",
-    "version": "1.0.0.2",
+    "version": "1.0.0.3",
     "isDomainIsolated": false,
     "includeClientSideAssets": true
   },
