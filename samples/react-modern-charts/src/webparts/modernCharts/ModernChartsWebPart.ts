@@ -218,12 +218,11 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
   }
 
   private getLabel(item: Object,col:string) {
-    debugger;
-    if(item[col]!== null && item[col]['WssId']!==null && item["TaxCatchAll"].length > 0) {
-      //Filter because zou can have more Fields from this type to select the right value
+    if(!!item[col] && !!item[col]['WssId'] && !!item["TaxCatchAll"] && item["TaxCatchAll"].length > 0) {
+      //Filter because you can have more Fields from this type to select the right value
       const wssid:number = item[col]['WssId'];
       const terms = (item["TaxCatchAll"]).filter((x)  => x.ID === wssid );
-      if(terms !== null && terms.lenght >0) {
+      if(!!terms && terms.length >0) {
         return terms[0].Term;
       }
       return 'TermLabel not Found';
@@ -488,7 +487,7 @@ const selected=selects[0];
   }
 
   private _getListColumns(listName: string, listsite: string): Promise<any> {
-    return this.context.spHttpClient.get(listsite + `/_api/web/lists/GetByTitle('${listName}')/Fields?$filter=Hidden eq false and ReadOnlyField eq false`, SPHttpClient.configurations.v1)
+    return this.context.spHttpClient.get(listsite + `/_api/web/lists/GetByTitle('${listName}')/Fields?$filter=Hidden eq false and ReadOnlyField eq false and TypeAsString ne 'User' and TypeAsString ne 'Lookup'`, SPHttpClient.configurations.v1)
       .then((response: SPHttpClientResponse) => {
         return response.json();
       });
@@ -498,8 +497,6 @@ const selected=selects[0];
     const urlparttax = '&$select=*,TaxCatchAll/Term,TaxCatchAll/ID&$expand=TaxCatchAll';
     const resturl = `/_api/web/lists/GetByTitle(\'${chartConfig['list']}\')/items?$orderby=Id desc&$limit=10&$top=${this.properties.maxResults}`;
     let requesturl = chartConfig['dataurl'] + resturl;
-    debugger;
-
 
     if(!!chartConfig['hasTaxField']) {
       requesturl = requesturl + urlparttax;
