@@ -52,19 +52,19 @@ export default class ModernCharts extends React.Component<IModernChartsProps, {}
         tChart = <Doughnut data={data} options={options} />;
         return tChart;
       case 'line':
-        tChart = <Line data={data} options={options} />;
-        return tChart;
+        debugger;
+        return  <Line data={data} options={options} legend={{ display: false }} />;
       case 'pie':
         tChart = <Pie data={data} options={options} />;
         return tChart;
       case 'bar':
-        tChart = <Bar data={data} options={options} />;
+        tChart = <Bar data={data} options={options} legend={{ display: false }} />;
         return tChart;
       case 'horizontalbar':
-        tChart = <HorizontalBar data={data} options={options} />;
+        tChart = <HorizontalBar data={data} options={options} legend={{ display: false }} />;
         return tChart;
       case 'radar':
-        tChart = <Radar data={data} options={options} />;
+        tChart = <Radar data={data} options={options} legend={{ display: false }} />;
         return tChart;
       case 'polar':
         tChart = <Polar data={data} options={options} />;
