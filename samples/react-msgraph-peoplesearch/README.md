@@ -2,7 +2,7 @@
 
 ## Summary
 
-Show and search users from your organisation, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover.  
+Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover.  
 The web part accepts a search query through a Dynamic Data connection, to further filter the displayed results. A source for this search query is not provided, but by default this can come from the Microsoft Search search box or the Page Environment. You could also use the Search Box Web Part provided by the [PnP Modern Search Web Parts](https://microsoft-search.github.io/pnp-modern-search/).
 
 ![directory](/assets/MicrosoftGraphPeopleSearch.gif) 
@@ -19,13 +19,19 @@ The web part accepts a search query through a Dynamic Data connection, to furthe
 I wrote a blog post covering more if the inner workings, you can find it at [SPFx People Search web part based on Microsoft Graph](https://blog.yannickreekmans.be/spfx-people-search-web-part-based-on-microsoft-graph/)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.11-green.svg)
+![1.11.0](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
 * [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software) - Untested!!
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+
+## Solution
+
+Solution|Author(s)
+--------|---------
+react-msgraph-peoplesearch | Yannick Reekmans ([YannickReekmans](https://twitter.com/YannickReekmans))
 
 ## Version history
 
@@ -47,7 +53,7 @@ Version|Date|Comments
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
 - Add to AppCatalog and deploy
-- Assign 'User.Read.All' delegated permissions to the 'SharePoint Online Client Extensibility Web Application Principal', easiest way is with [Office 365 CLI](https://pnp.github.io/office365-cli/):
+- Assign `User.Read.All` delegated permissions to the **SharePoint Online Client Extensibility Web Application Principal**, easiest way is with [Office 365 CLI](https://pnp.github.io/office365-cli/):
 ```
 o365 login
 o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.Read.All'
@@ -77,3 +83,5 @@ These web parts were an enormous inspiration on code structure and implementatio
 - Tarald Gåsbakk (PuzzlePart) - [@taraldgasbakk](https://twitter.com/Taraldgasbakk)  
 - Brad Schlintz (Microsoft) - [@bschlintz](https://twitter.com/bschlintz)  
 - Richard Gigan - [@PooLP](https://twitter.com/PooLP)  
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-msgraph-peoplesearch" />
