@@ -62,6 +62,16 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.11.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msgraph-peoplesearch
+      name: react-msgraph-peoplesearch
+      title: Microsoft Graph People Search Web Part
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch.gif
+      author: Yannick Reekmans
+      summary: Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover.
+      modifiedtext: July 31, 2020
+      modified: 2020-07-31
+    - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-modern-charts
       name: react-modern-charts
@@ -2751,6 +2761,7 @@ extra:
     - Vipul Kelkar
     - Vivek Chand
     - Waldek Mastykarz
+    - Yannick Reekmans
     - Zach Roberts
 repo_url: https://github.com/pnp/sp-dev-fx-webparts
 edit_uri: tree/Docs/docs
