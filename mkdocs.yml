@@ -63,6 +63,16 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-sites
+      name: react-my-sites
+      title: My Sites
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-sites/assets/MySites.gif
+      author: João Mendes
+      summary: This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins.
+      modifiedtext: August 6, 2020
+      modified: 2020-08-06
+    - framework: React
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msgraph-peoplesearch
       name: react-msgraph-peoplesearch
       title: Microsoft Graph People Search Web Part
