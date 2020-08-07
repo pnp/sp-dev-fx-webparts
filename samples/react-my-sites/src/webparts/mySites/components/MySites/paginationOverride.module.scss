@@ -1,0 +1,127 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "./node_modules/spfx-uifabric-themes/office.theme";
+@import "~office-ui-fabric-react/dist/sass/semanticSlots";
+
+
+/*}*/
+:global {
+  // default theme
+  $default-background: #f3f2f1;
+  $default-color: #252423;
+  $default-button-background: #6264a7;
+  $default-Button-color: #f3f2f1;
+
+  // dark theme
+  $dark-background: #2d2c2c;
+  $dark-color: #ffffff;
+  $dark-button-background: #6264a7;
+  $dark-button-color: #2d2c2c;
+
+  // contrast theme
+  $contrast-background: #000000;
+  $contrast-color: #ffffff;
+  $contrast-button-background: #b5c01c;
+  $contrast-Button-color: #000000;
+
+  .MuiPaginationItem-root {
+    /*  color: rgba(0, 0, 0, 0.87); */
+    color: $ms-color-neutralPrimary !important;
+  }
+
+  .MuiButtonBase-root {
+    /*  color: inherit; */
+    color: $ms-color-neutralPrimary !important;
+  }
+
+  .MuiPaginationItem-textPrimary.Mui-selected {
+    color: $ms-color-white !important;
+    background-color: $ms-themePrimary !important;
+  }
+
+  .MuiPaginationItem-page:hover {
+    background-color: $ms-themePrimary !important;
+  }
+
+  [data-theme="dark"] {
+    .MuiPaginationItem-root {
+      /*  color: rgba(0, 0, 0, 0.87); */
+      color: $dark-color !important;
+    }
+
+    .MuiButtonBase-root {
+      /*  color: inherit; */
+      color: $dark-color !important;
+    }
+
+    .MuiPaginationItem-textPrimary.Mui-selected {
+      color: $dark-color !important;
+      background-color: $dark-button-background !important;
+    }
+
+    .MuiPaginationItem-page:hover {
+      background-color: $dark-button-background !important;
+    }
+
+    .ms-Dropdown-optionText {
+      color: $ms-color-white !important;
+    }
+
+    [class^="propertyPaneFooter_"] {
+      background-color: $dark-background;
+    }
+  }
+
+  [data-theme="default"] {
+    .MuiPaginationItem-root {
+      /*  color: rgba(0, 0, 0, 0.87); */
+      color: $default-color !important;
+    }
+
+    .MuiButtonBase-root {
+      /*  color: inherit; */
+      color: $default-color !important;
+    }
+
+    .MuiPaginationItem-textPrimary.Mui-selected {
+      color: $ms-color-white !important;
+      background-color: $default-button-background !important;
+    }
+
+    .MuiPaginationItem-page:hover {
+      background-color: $default-button-background !important;
+    }
+
+    [class^="propertyPaneFooter_"] {
+      background-color: $default-background;
+    }
+  }
+
+  [data-theme="contrast"] {
+    .MuiPaginationItem-root {
+      /*  color: rgba(0, 0, 0, 0.87); */
+      color: $contrast-color !important;
+    }
+
+    .MuiButtonBase-root {
+      /*  color: inherit; */
+      color: $contrast-color !important;
+    }
+
+    .MuiPaginationItem-textPrimary.Mui-selected {
+      color: $contrast-color !important;
+      background-color: $contrast-button-background !important;
+    }
+
+    .MuiPaginationItem-page:hover {
+      background-color: $contrast-button-background !important;
+    }
+
+    .ms-Dropdown-optionText {
+      color: $ms-color-white !important;
+    }
+
+    [class^="propertyPaneFooter_"] {
+      background-color: $contrast-background;
+    }
+  }
+}
