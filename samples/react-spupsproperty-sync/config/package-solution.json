@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "React SPUPSproperty Sync",
+    "id": "42ba670c-573b-46f9-a529-3990cd2a5bc8",
+    "title": "SPUPSProperty Sync",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "iconPath": "Images/AppIcon.png",
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Directory.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-spupsproperty-sync.sppkg"
+  }
+}

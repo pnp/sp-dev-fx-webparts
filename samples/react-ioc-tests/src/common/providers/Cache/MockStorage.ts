@@ -1,28 +1,26 @@
-export default class MockStorage implements Storage {
-    constructor(storedKey?: string, storedItem?: any) {
-        this.length = 0;
-        if (!!storedKey) {
-            this[storedKey] = storedItem;
-            this.length = 1;
-        }
-    }
+import IStorage from "./IStorage";
 
-    [name: string]: any;    
-    public length: number;
+export default class MockStorage implements IStorage {
+
+    private cache: any = {};
+
+    constructor(storedKey: string, storedItem: any) {
+        this.cache[storedKey] = storedItem;
+    }
 
     public clear(): void {
-        // do nothign
+        // do nothing
     }
+
     public getItem(key: string): string {
-        return this[key];
+        return this.cache[key];
     }
-    public key(index: number): string {
-        return "";
-    }
+
     public removeItem(key: string): void {
-        this[key] = undefined;
+        this.cache[key] = undefined;
     }
+
     public setItem(key: string, value: string): void {
-        this[key] = value;
+        this.cache[key] = value;
     }
 }

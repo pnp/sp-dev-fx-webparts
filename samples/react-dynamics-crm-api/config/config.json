@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dynamic-365-sales-accounts-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dynamic365SalesAccounts/Dynamic365SalesAccountsWebPart.js",
+          "manifest": "./src/webparts/dynamic365SalesAccounts/Dynamic365SalesAccountsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "Dynamic365SalesAccountsWebPartStrings": "lib/webparts/dynamic365SalesAccounts/loc/{locale}.js"
+  }
+}

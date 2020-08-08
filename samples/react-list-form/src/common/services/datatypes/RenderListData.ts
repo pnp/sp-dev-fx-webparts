@@ -99,6 +99,7 @@ export interface IFieldSchema {
     Disable?: boolean;
     WebServiceUrl: string;
     HiddenListInternalName: string;
+    HoursOptions?: string[];
 }
 
 export interface IFormSchema {

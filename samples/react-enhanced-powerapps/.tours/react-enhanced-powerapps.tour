@@ -1,0 +1,166 @@
+{
+  "title": "React-Enhanced-PowerApps",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "Before you can build this web part, you need to install all the dependencies by using the command-line and running:\r\n\r\n>> npm install\r\n",
+      "file": "README.md",
+      "line": 49
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/components/EnhancedPowerApps.tsx",
+      "line": 45,
+      "description": "## Passing theme values to Power Apps\r\n\r\nWe embed Power Apps by using an `IFRAME` which points to the app's web view.\r\n\r\nPower Apps support using query string parameters, so we build a URL with a query string parameter for each theme color name that we selected in the web part's properties.",
+      "selection": {
+        "start": {
+          "line": 45,
+          "character": 5
+        },
+        "end": {
+          "line": 58,
+          "character": 6
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/components/EnhancedPowerApps.tsx",
+      "line": 78,
+      "description": "## Rendering the application\r\n\r\nJust like the out-of-the-box Power Apps web part, we use an IFRAME to embed Power Apps.",
+      "selection": {
+        "start": {
+          "line": 78,
+          "character": 8
+        },
+        "end": {
+          "line": 80,
+          "character": 19
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/EnhancedPowerAppsWebPart.ts",
+      "line": 279,
+      "description": "## Providing dynamic property metadata\r\n\r\nWhen SharePoint needs to query a web part to see what kinds of dynamic properties it will access, it calls the web part's `propertiesMetadata` property.\r\n\r\nIt returns a list of dynamic property names and the type of data they accept.\r\n\r\nIn this case, `dynamicProp` accepts `string`.",
+      "selection": {
+        "start": {
+          "line": 279,
+          "character": 3
+        },
+        "end": {
+          "line": 287,
+          "character": 4
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/EnhancedPowerAppsWebPart.ts",
+      "line": 88,
+      "description": "## Resizing proportionally\r\n\r\nWhen the web part renders, we get the web part's `clientWidth` so we can pass it to the IFRAME later. \r\n\r\nWe also calculate the desired height by using the selected aspect ratio (e.g.: 16:9) and multiplying with the width of the web part.",
+      "selection": {
+        "start": {
+          "line": 88,
+          "character": 5
+        },
+        "end": {
+          "line": 120,
+          "character": 48
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/EnhancedPowerAppsWebPart.ts",
+      "line": 53,
+      "description": "## Defining dynamic properties\r\n\r\nTo add support for dynamic properties, we add a `DynamicProperty<string>` property to the web part's properties. This is where we'll store the dynamic values when they're available.\r\n\r\nTo keep things simple, we treat every dynamic value as a string, because they'll be passed to the Power Apps IFRAME via query string parameters.",
+      "selection": {
+        "start": {
+          "line": 53,
+          "character": 3
+        },
+        "end": {
+          "line": 53,
+          "character": 40
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/EnhancedPowerAppsWebPart.ts",
+      "line": 239,
+      "description": "## Conditionally adding dynamic property fields\r\n\r\nIf the user selects to use dynamic properties (`this.properties.useDynamicProp === true`) we add a `PropertyPaneDynamicFieldSet` for the `PropertyPaneDynamicField` bound to the web part's `dynamicProp` property.",
+      "selection": {
+        "start": {
+          "line": 239,
+          "character": 17
+        },
+        "end": {
+          "line": 246,
+          "character": 20
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/EnhancedPowerAppsWebPart.ts",
+      "line": 69,
+      "description": "## Adding theme support\r\n\r\nThis code adds support for theming. \r\n\r\nIt gets the current theme (and stores it to `_themeVariant`) which will be used later to pass the theme variant to the components.\r\n\r\nIt also binds to the `themeChangedEvent`, which will notify the web part when themes change or the section background color changes.",
+      "selection": {
+        "start": {
+          "line": 69,
+          "character": 3
+        },
+        "end": {
+          "line": 80,
+          "character": 4
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/EnhancedPowerAppsWebPart.ts",
+      "line": 298,
+      "description": "## Handling theme changed events\r\n\r\nWhen the theme changes, we store the new theme variant to `_themeVariant` and cause the web part to re-render -- thus refreshing the web part.",
+      "selection": {
+        "start": {
+          "line": 298,
+          "character": 3
+        },
+        "end": {
+          "line": 301,
+          "character": 4
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/EnhancedPowerAppsWebPart.ts",
+      "line": 126,
+      "description": "## Passing the theme variant\r\n\r\nWhen rendering the web part, we pass the theme variant we retrieved earlier so that we can forward the theme colors to Power Apps.",
+      "selection": {
+        "start": {
+          "line": 126,
+          "character": 9
+        },
+        "end": {
+          "line": 126,
+          "character": 42
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/EnhancedPowerAppsWebPart.manifest.json",
+      "line": 12,
+      "description": "## Adding theme support in the manifest\r\n\r\nFor web parts to adapt to changing themes, the manifest needs to add `\"supportsThemeVariants\": true`; otherwise, theme changes will not fire.",
+      "selection": {
+        "start": {
+          "line": 12,
+          "character": 3
+        },
+        "end": {
+          "line": 12,
+          "character": 33
+        }
+      }
+    },
+    {
+      "file": "src/webparts/enhancedPowerApps/ThemeVariantSlots.ts",
+      "line": 1,
+      "description": "## Dropdown theme color names\r\n\r\nTo make it easier to display the list of theme colors, we generated a static list of drop down options. I'm sure that there is a way to enumerate theme variant slots dynamically, but I wanted to keep the code simple."
+    }
+  ]
+}

@@ -12,8 +12,8 @@ This web part demonstrates building a React functional component that uses data 
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 * [PnPJS library](https://github.com/pnp/pnpjs)
 
 ## Prerequisites
@@ -109,7 +109,7 @@ Notice that we just take the teamsList (our state variable) and use a *map* func
 
 ## Team.tsx Component
 
-The Teams.tsx component is only responsible for rendering an individual team, and the structure of the component follows a similar pattern to that of TeamTracker.tsx. Notice first that we use a different approach to using the props by using the object destructuring operator to unpack the individual values from the outset, which can sometimes make the subsequent code a little clearer:
+The `Teams.tsx` component is only responsible for rendering an individual team, and the structure of the component follows a similar pattern to that of TeamTracker.tsx. Notice first that we use a different approach to using the props by using the object destructuring operator to unpack the individual values from the outset, which can sometimes make the subsequent code a little clearer:
 
 ```
 export default function Team({ channelID, displayName, showChannels }) {
@@ -126,12 +126,13 @@ Again we use state to manage a list of channels and initialise it to an empty ar
   }, [showChannels]);
 ```
 
-The rest of Team.tsx simply returns the rendering of the component with the name of the Team and a list of channels. If the *channelsList* is empty it will just render an empty &lt;ul>.
+The rest of `Team.tsx` simply returns the rendering of the component with the name of the Team and a list of channels. If the *channelsList* is empty it will just render an empty &lt;ul>.
 
 If this were a real application, rather than a demonstration, you would need to decide whether it was efficient to make multiple graph calls, or whether to batch the calls in some way, which would probably make the code a little more complicated. If you end up with a large hierarchy of nested components you might also use the *useContext* hook to manage data that you retrieve at a higher level, to be referenced in lower level components without having to pass everything down through props.
 
 ## Building and testing
 
-In the react-functional-component directory, run **npm install** to resolve all the dependencies. Once this has completed you can run **gulp serve --nobrowser** to test the web part in the workbench of your tenant (*https://mytenant.sharepoint.com/_layouts/15/workbench.aspx*). You could run it in the local workbench, but the PnPJS promise will never return and so you will just see the loading spinner.
+In the `react-functional-component` directory, run `npm install` to resolve all the dependencies. Once this has completed you can run `gulp serve --nobrowser` to test the web part in the workbench of your tenant (*https://mytenant.sharepoint.com/_layouts/15/workbench.aspx*). You could run it in the local workbench, but the PnPJS promise will never return and so you will just see the loading spinner.
 
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-functional-component-with-data-fetch" />

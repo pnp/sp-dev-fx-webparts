@@ -6,11 +6,11 @@ This sub folders contains client-side projects includes the web parts detailed i
 
 | Solution  | Getting Started Walkthrough | Video
 | ------------- | ------------- | ------------- |
-| hello-world  | [Build your first web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/build-a-hello-world-web-part)   | [video](https://www.youtube.com/watch?v=QbDtsMg88Js)  |
-| hello-world-sp  | [Connect your client-side web part to SharePoint](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/connect-to-sharepoint)  | [video](https://www.youtube.com/watch?v=9VMwjb2pbQ8)  |
-| jquery-webpart  | [Add jQueryUI Accordion to your SharePoint client-side web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/add-jqueryui-accordion-to-web-part)  | [video](https://www.youtube.com/watch?v=-3m__hRQxEI)  |
-| documentcardexample-webpart  | [Use Office UI Fabric React components in your SharePoint client-side web part](http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components)  | [video](https://www.youtube.com/watch?v=1N6kNvLxyg4)  |
-| asset-deployment-webpart  | [Provision SharePoint assets from SharePoint Framework solutions](https://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/provision-sp-assets-from-package)  | TBD  |
+| hello-world  | [Build your first web part](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part)   | [video](https://www.youtube.com/watch?v=QbDtsMg88Js)  |
+| hello-world-sp  | [Connect your client-side web part to SharePoint](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/connect-to-sharepoint)  | [video](https://www.youtube.com/watch?v=9VMwjb2pbQ8)  |
+| jquery-webpart  | [Add jQueryUI Accordion to your SharePoint client-side web part](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/add-jqueryui-accordion-to-web-part)  | [video](https://www.youtube.com/watch?v=-3m__hRQxEI)  |
+| documentcardexample-webpart  | [Use Office UI Fabric React components in your SharePoint client-side web part](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/use-fabric-react-components)  | [video](https://www.youtube.com/watch?v=1N6kNvLxyg4)  |
+| asset-deployment-webpart  | [Provision SharePoint assets from SharePoint Framework solutions](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/provision-sp-assets-from-package)  | TBD  |
 
 You can also other SharePoint Framework releated videos from [SharePoint PnP YouTube Channel](https://aka.ms/SPPnP-Videos).
 
@@ -19,8 +19,8 @@ You can also other SharePoint Framework releated videos from [SharePoint PnP You
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

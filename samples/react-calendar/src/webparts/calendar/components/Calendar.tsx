@@ -50,6 +50,9 @@ import { Event } from '../../../controls/Event/event';
 import { IPanelModelEnum } from '../../../controls/Event/IPanelModeEnum';
 import { IEventData } from './../../../services/IEventData';
 import { IUserPermissions } from './../../../services/IUserPermissions';
+
+
+
 const localizer = BigCalendar.momentLocalizer(moment);
 
 /**
@@ -290,6 +293,18 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     };
   }
 
+
+   /**
+     *
+     * @param {*} date
+     * @memberof Calendar
+     */
+    public dayPropGetter(date: Date) {
+      return {
+          className: styles.dayPropGetter
+      };
+  }
+
   /**
    *
    * @returns {React.ReactElement<ICalendarProps>}
@@ -326,6 +341,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                 {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> :
                   <div className={styles.container}>
                     <BigCalendar
+                      dayPropGetter = {this.dayPropGetter}
                       localizer={localizer}
                       selectable
                       events={this.state.eventData}

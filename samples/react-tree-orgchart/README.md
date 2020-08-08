@@ -13,12 +13,12 @@ We can configure in the webpart properties if it show all Organization Chart or 
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.7.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## WebPart Properties
@@ -41,6 +41,8 @@ Tree Organization WebPart|João Mendes
 
 Version|Date|Comments
 -------|----|--------
+1.0.2|June 12, 2020|Added exception handler for profiles missing display name
+1.0.1|Jan 28, 2020|Update to SPFx 1.10, minor fixes and refactoring.
 1.0.0|Feb 25, 2019|Initial release
 
 ## Disclaimer

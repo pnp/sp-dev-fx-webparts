@@ -1,0 +1,23 @@
+// Copyright (c) Microsoft. All rights reserved.
+
+// Theming support
+@import './ThemeOverrides';
+
+// Variables and mixins that can be referenced without outputting any CSS.
+// Variables
+@import '~office-ui-fabric-core/dist/sass/variables/Font.Variables';
+@import '~office-ui-fabric-core/dist/sass/variables/General.Variables';
+@import '~office-ui-fabric-core/dist/sass/variables/Responsive.Variables';
+
+// Mixins
+@import '~office-ui-fabric-core/dist/sass/mixins/Directionality.Mixins';
+@import '~office-ui-fabric-core/dist/sass/mixins/Font.Mixins';
+@import '~office-ui-fabric-core/dist/sass/mixins/Grid.Mixins';
+@import '~office-ui-fabric-core/dist/sass/mixins/General.Mixins';
+@import '~office-ui-fabric-core/dist/sass/mixins/Responsive.Mixins';
+
+// @TODO This is temporary to fix sp-test-webparts.  Remove this once we fix fabric-core fluent version.
+// VSO:#622173
+@mixin ms-fontColor-white {
+  color: $ms-color-white;
+}

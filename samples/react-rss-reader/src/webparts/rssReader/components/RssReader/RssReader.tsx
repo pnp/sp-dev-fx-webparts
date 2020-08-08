@@ -171,7 +171,13 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
   private _onConfigure() {
     this.props.propertyPane.open();
   }
-
+  
+  private decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  }
+  
   /*
     _onReaderListRow used by Default feed Layout
   */
@@ -193,7 +199,7 @@ export default class RssReader extends React.Component<IRssReaderProps, IRssRead
             target={this.props.titleLinkTarget ? this.props.titleLinkTarget : "_self"}
             style={this.props.fontColor ? {color: this.props.fontColor} : {}}
           >
-            {thisItem.title}
+            {this.decodeHtml(thisItem.title)}
           </Link>
 
         </div>

@@ -4,6 +4,7 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import Folder from './Folder';
 import styles from './Groups.module.scss';
+import * as strings from 'Outlook2SharePointWebPartStrings';
 import Breadcrumb from './controls/Breadcrumb';
 import { IOneDriveProps } from './IOneDriveProps';
 import { IOneDriveState } from './IOneDriveState';
@@ -49,14 +50,14 @@ export default class OneDrive extends React.Component<IOneDriveProps, IOneDriveS
         <div>
           <PrimaryButton
               className={styles.saveBtn}         
-              text="Save here"
+              text={strings.SaveLabel}
               onClick={this.saveMailTo}
               allowDisabledFocus={true}
             />
           { this.state.showSpinner && (
               <div className={styles.spinnerContainer}>
                 <Overlay >
-                  <Spinner size={ SpinnerSize.large } label='Processing request' />
+                  <Spinner size={ SpinnerSize.large } label={strings.SpinnerLabel} />
                 </Overlay>
               </div>
             ) }
@@ -103,7 +104,11 @@ export default class OneDrive extends React.Component<IOneDriveProps, IOneDriveS
         showSpinner: true
       };
     });
-    this.props.graphController.retrieveMimeMail(this.state.parentFolder.driveID, this.state.parentFolder.id, this.props.mail, this.saveMailCallback);    
+    this.props.graphController.retrieveMimeMail(this.state.parentFolder.driveID, this.state.parentFolder.id, this.props.mail, this.saveMailCallback)
+      .then((response: string) => {
+        const saveLocationDisplayName = `OneDrive ...> ${this.state.grandParentFolder.name} > ${this.state.parentFolder.name}`;
+        this.props.graphController.saveMailMetadata(this.props.mail.id, saveLocationDisplayName, this.state.parentFolder.webUrl, new Date());
+      });    
   }
 
   private saveMailCallback = (message: string) => {
@@ -113,10 +118,10 @@ export default class OneDrive extends React.Component<IOneDriveProps, IOneDriveS
       };
     });
     if (message.indexOf('Success') > -1) {
-      this.props.successCallback(message);
+      this.props.successCallback(strings.SuccessMessage);
     }
     else {
-      this.props.errorCallback(message);
+      this.props.errorCallback(strings.ErrorMessage);
     }
   }
 }

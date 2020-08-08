@@ -1,0 +1,30 @@
+{
+  "manifestVersion": 2,
+  "id": "dd6f4302-b840-4db3-919d-e8bcba06daaa",
+  "alias": "ContentHandler",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "loaderConfig": {
+    "entryModuleId": "content-handler-library",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "content-handler-library": {
+        "type": "path",
+        "path": "dist/content-handler-library.js"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@ms/sp-component-utilities": {
+        "type": "component",
+        "version": "4.0.19",
+        "id": "8494e7d7-6b99-47b2-a741-59873e42f16f"
+      }
+    }
+  },
+  "isInternal": true
+}

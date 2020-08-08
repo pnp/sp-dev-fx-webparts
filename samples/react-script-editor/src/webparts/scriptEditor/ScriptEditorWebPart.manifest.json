@@ -6,6 +6,7 @@
     "version": "*",
     "supportsFullBleed": true,
     "manifestVersion": 2,
+    "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab"],
     "requiresCustomScript": true,
     "preconfiguredEntries": [{
         "groupId": "3a328f0a-99c4-4b28-95ab-fe0847f657a3",

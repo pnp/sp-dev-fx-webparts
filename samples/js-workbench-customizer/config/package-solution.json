@@ -3,7 +3,7 @@
   "solution": {
     "name": "workbench-customizer-client-side-solution",
     "id": "5d6f4a5a-9d2b-4a93-a283-16b8f5ea75d6",
-    "version": "1.0.0.0",
+    "version": "1.5.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true
   },

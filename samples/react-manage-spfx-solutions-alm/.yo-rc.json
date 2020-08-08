@@ -1,0 +1,27 @@
+{
+  "@pnp/generator-spfx": {
+    "framework": "react",
+    "pnpFramework": "reactjs.plus",
+    "pnp-libraries": [
+      "@pnp/pnpjs",
+      "rush@3.3"
+    ],
+    "pnp-ci": "azure",
+    "pnp-vetting": [],
+    "spfxenv": "spo",
+    "pnp-testing": [
+      "jest"
+    ]
+  },
+  "@microsoft/generator-sharepoint": {
+    "environment": "spo",
+    "framework": "react",
+    "isCreatingSolution": true,
+    "version": "1.10.0",
+    "libraryName": "sp-fx-alm-webpart",
+    "libraryId": "0e22cfbc-16a8-4c0e-8ef8-888ecc691203",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

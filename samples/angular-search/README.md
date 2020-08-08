@@ -11,9 +11,9 @@ extensions:
   - SharePoint Framework
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 2/4/2017 12:00:00 AM
 ---
-﻿# Search Client-Side Web Part Built with Angular v1.x
+# Search Client-Side Web Part Built with Angular v1.x
 
 ## Summary
 This is a sample search web part that illustrates how you can use Angular within the new SharePoint Framework
@@ -36,8 +36,8 @@ The logic for querying the SharePoint Content Types in the properties of the web
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

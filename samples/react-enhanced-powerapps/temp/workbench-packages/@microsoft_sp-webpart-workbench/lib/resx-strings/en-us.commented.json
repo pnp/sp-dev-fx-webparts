@@ -1,0 +1,176 @@
+{
+  "_NAR8NFw8cblGJm9t5CjqOw": {
+    "SuccessfullyLoadedText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text to print to the console when debug manifests are successfully loaded.",
+      "value": "Successfully loaded debug manifests."
+    },
+    "ErrorLoadingText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text to print to the console when debug manifests failed to load. The {0} placeholder is the specific error message.",
+      "value": "Failed to load debug manifests: {0}"
+    }
+  },
+  "_vd/LT/qfiQhbHFfeM1GtlA": {
+    "FetchFailedError": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Error message to display when fetching webparts fails. \"{0}\" is the inner error message.",
+      "value": "Fetching webpats failed with error \"{0}\". Render of a cached workbench may fail."
+    },
+    "CanvasInitializationError": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Error message to display when initializing the canvas fails. \"{0}\" is the inner error message.",
+      "value": "Initializing canvas failed with error \"{0}\"."
+    },
+    "UnknownError": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Error message to display an unknown error occurs. \"{0}\" is the inner error message.",
+      "value": "An unknown error occurred \"{0}\"."
+    }
+  },
+  "_FQya7ZjwIyrOEutOa+omIA": {
+    "Title": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Warning dialog title.",
+      "value": "Warning"
+    },
+    "SubText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Subtext of the dialog to be shown when debug manifests fail to load. The \"gulp serve\" text should not be translated.",
+      "value": "Your web part will not appear in the toolbox. Please make sure \"gulp serve\" is running in a web part project. Please refresh the page once \"gulp serve\" is running."
+    },
+    "OkButtonText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Warning dialog \"OK\" button text.",
+      "value": "OK"
+    },
+    "ClickHerePrefix": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] This is one of three strings that are concatenated to form a full sentence with a link in the middle. The full English sentence is \"Click here for more information\", and the word \"here\" is a link. This is the first of the three strings. The second string is \"ClickHereLink\" and the third string is \"ClickHereSuffix.\" Ensure that a trailing space is included (if applicable).",
+      "value": "Click "
+    },
+    "ClickHereLink": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] This is one of three strings that are concatenated to form a full sentence with a link in the middle. The full English sentence is \"Click here for more information\", and the word \"here\" is a link. This is the second of the three strigns (the link). The first string is \"ClickHerePrefix\" and the third string is \"ClickHereSuffix.\"",
+      "value": "here"
+    },
+    "ClickHereSuffix": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] This is one of three strings that are concatenated to form a full sentence with a link in the middle. The full English sentence is \"Click here for more information\", and the word \"here\" is a link. This is the last of the three strings. The first string is \"ClickHerePrefix\" and the second string is \"ClickHereLink.\" Ensure that a trailing space is included (if applicable).",
+      "value": " for more information."
+    }
+  },
+  "_1JArBGDet5Uj9pJOV/9sFw": {
+    "UrlTextBoxPlaceholder": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Placeholder text for the URL text box in Mobile Preview Tool.",
+      "value": "Enter a URL to view in Mobile Preview Tool."
+    },
+    "ScreenReaderMobilePreviewEntered": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Screen reader alert for when the user enters Mobile Preview Tool.",
+      "value": "You have entered the Mobile Preview Tool. If you want to preview a different page, enter the URL in URL text field. To close the tool and go back to Workbench, press Escape."
+    },
+    "ScreenReaderDevicePickerEntered": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Screen reader alert for when the user enters the device selector in Mobile Preview Tool.",
+      "value": "Use left and right arrow keys to choose a device to change the preview screen size."
+    },
+    "ScreenReaderDevicePickerSelectionChanged": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Screen reader alert for when the user selects a new item in the device selector in Mobile Preview Tool.",
+      "value": "Press Enter to choose this device."
+    },
+    "Width": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] The width of the mobile device shown on screen.",
+      "value": "Width"
+    },
+    "Height": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] The height of the mobile device shown on screen.",
+      "value": "Height"
+    }
+  },
+  "_8EVKOH1av6NjR/ZNfdafrw": {
+    "WebPartData": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Title of the dialog that displays serialized Web Part data.",
+      "value": "Web Part Data"
+    },
+    "ClassicPages": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Title of pivot table to see serialized data for use in classic pages.",
+      "value": "Classic Pages"
+    },
+    "ModernPages": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Title of pivot table to see serialized data for use in modern pages.",
+      "value": "Modern Pages"
+    },
+    "Close": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Title of the button to close the serialize Web Part dialog.",
+      "value": "Close"
+    },
+    "WebPartDataHelpInfoLink": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] A helper link to know more about how to provision SharePoint assets from your SharePoint client-side web part.",
+      "value": "Learn about provisioning SharePoint assets from your SharePoint client-side web part"
+    }
+  },
+  "_IusqdbcSoVYQiit3+QRSxw": {
+    "Office365Title": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] \"Office 365\" text in the fake suite nav SharePoint Workbench.",
+      "value": "Office 365"
+    },
+    "SharePointWorkbenchTitle": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] \"SharePoint Workbench\" text in the fake suite nav for the SharePoint Workbench.",
+      "value": "SharePoint Workbench"
+    },
+    "ScreenReaderDisplayModeSwitchToEditMode": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] What screen reader reads when the Workbench switches to edit mode.",
+      "value": "Switched from preview mode to edit mode."
+    },
+    "ScreenReaderDisplayModeSwitchToReadMode": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] What screen reader reads when the Workbench switches from edit mode to read mode.",
+      "value": "Switched from edit mode to preview mode."
+    }
+  },
+  "_nCtJlVOXBHa59LgYtajnjA": {
+    "Save": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text on button which saves the page.",
+      "value": "Save"
+    },
+    "SaveAltText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Alt and accessability text on button which saves the page.",
+      "value": "Use to save the current workbench state."
+    },
+    "Discard": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text on button which discards chagnes to the page.",
+      "value": "Discard"
+    },
+    "DiscardAltText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Alt and accessability text on button which discards chagnes to the page.",
+      "value": "Use to discard the current workbench state."
+    },
+    "Mobile": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text on button which opens up the page in a phone-sized frame.",
+      "value": "Mobile"
+    },
+    "MobleAltText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Alt and accessability text on button which opens up the page in a phone-sized frame.",
+      "value": "Use to open the mobile preview tool for a cell phone."
+    },
+    "Tablet": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text on button which opens up the page in a tablet-sized frame.",
+      "value": "Tablet"
+    },
+    "TabletAltText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Alt and accessability text on button which opens up the page in a tablet-sized frame.",
+      "value": "Use to open the mobile preview tool for a tablet."
+    },
+    "Preview": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text on button which exits edit mode.",
+      "value": "Preview"
+    },
+    "PreviewAltText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Alt and accessability text on button which exits edit mode.",
+      "value": "Use to switch from edit mode to preview mode."
+    },
+    "Edit": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text on button which enters edit mode.",
+      "value": "Edit"
+    },
+    "EditAltText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Alt and accessability text on button which enters edit mode.",
+      "value": "Use to switch to edit mode."
+    },
+    "WebPartData": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Text on button which displays serialized Web Part data.",
+      "value": "Web part data"
+    },
+    "WebPartDataAltText": {
+      "comment": "[Tag:ODSP-SPPPLAT-WebPartInfra] Alt and accessability text on button which displays serialized data.",
+      "value": "Display the serialized web part data."
+    }
+  }
+}

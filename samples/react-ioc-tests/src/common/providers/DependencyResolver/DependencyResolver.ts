@@ -5,23 +5,19 @@ import PnPListsServiceExecutor from "../../services/Lists/executor/PnPListsServi
 import ICacheProvider from "../Cache/ICacheProvider";
 import ILogProvider from "../Log/ILogProvider";
 import IListsService from "../../services/Lists/IListsService";
+import IDependencyResolver from "./IDependencyResolver";
 
-export default class DependencyResolver { // implements IDependencyResolver 
-    // private useMockServices: boolean;
-
-    // constructor(useMockServices: boolean = false) {
-    //     this.useMockServices = useMockServices;
-    // }
+export default class DependencyResolver implements IDependencyResolver { 
 
     public ResolveICacheProvider(): ICacheProvider {
         return new StorageCacheProvider(window.sessionStorage);
     }
 
     public ResolveILogProvider(): ILogProvider {
-        return new ConsoleLogProvider();
+        return new ConsoleLogProvider(window.console);
     }
 
-    public ResolveIListsService(webUrl: string): IListsService {
-        return new PnPListsService(new PnPListsServiceExecutor(webUrl));
+    public ResolveIListsService(): IListsService {
+        return new PnPListsService(new PnPListsServiceExecutor());
     }
 }

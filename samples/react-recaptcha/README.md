@@ -15,8 +15,8 @@ business requirement if you need to implement CAPTCHA in SPFx webpart.
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 ## Prerequisites
@@ -72,6 +72,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Using react framework in SPFx webpart
 * Using [PnP Placeholder control](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/) to configure webpart.
 * Using [react-google-recaptcha](https://github.com/dozoisch/react-google-recaptcha) npm package in SPFx webpart
-* Validate if captcha is resolved before submiting data.
+* Validate if captcha is resolved before submitting data.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-recaptcha" />

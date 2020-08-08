@@ -40,12 +40,12 @@
 ![Advanced-Comments-Box](./assets/Advanced-Comments-Box.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![1.9.1](https://img.shields.io/badge/version-1.9.1-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
@@ -86,3 +86,5 @@ This solution doesn't work on local mode.
 #### SharePoint Mode
 If you want to try on a real environment, open:
 [O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/js-advanced-commenting" />

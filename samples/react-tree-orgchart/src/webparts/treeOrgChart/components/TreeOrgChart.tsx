@@ -114,12 +114,15 @@ export default class TreeOrgChart extends React.Component<
     let spUser: IPersonaSharedProps = {};
     // Get User Properties
     const managerProperties = await this.SPService.getUserProperties(manager);
-    const imageInitials: string[] = managerProperties.DisplayName.split(" ");
+
+
+    let imageInitials: string[] =  managerProperties.DisplayName.split(" ");
+    
     // Persona Card Properties
     spUser.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${managerProperties.Email}`;
-    spUser.imageInitials = `${imageInitials[0]
+    spUser.imageInitials = imageInitials && imageInitials.length > 0 ?  `${imageInitials[0]
       .substring(0, 1)
-      .toUpperCase()}${imageInitials[1].substring(0, 1).toUpperCase()}`;
+      .toUpperCase()}${imageInitials[1] ? imageInitials[1].substring(0, 1).toUpperCase():''}` : '';
     spUser.text = managerProperties.DisplayName;
     spUser.tertiaryText = managerProperties.Email;
     spUser.secondaryText = managerProperties.Title;
@@ -157,9 +160,9 @@ export default class TreeOrgChart extends React.Component<
       const imageInitials: string[] = managerProperties.DisplayName.split(" ");
 
       spUser.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${managerProperties.Email}`;
-      spUser.imageInitials = `${imageInitials[0]
+      spUser.imageInitials = imageInitials && imageInitials.length > 0 ?  `${imageInitials[0]
         .substring(0, 1)
-        .toUpperCase()}${imageInitials[1].substring(0, 1).toUpperCase()}`;
+        .toUpperCase()}${imageInitials[1] ? imageInitials[1].substring(0, 1).toUpperCase(): ''}` : '';
       spUser.text = managerProperties.DisplayName;
       spUser.tertiaryText = managerProperties.Email;
       spUser.secondaryText = managerProperties.Title;
@@ -207,7 +210,7 @@ export default class TreeOrgChart extends React.Component<
       // PersonaCard Props
       manager.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${managerProperties.Email}`;
       if (imageInitials)
-        manager.imageInitials = `${imageInitials[0]}${imageInitials[1]}`.toUpperCase();
+        manager.imageInitials = `${imageInitials[0]}${imageInitials[1] ? imageInitials[1]: ''}`.toUpperCase();
       manager.text = managerProperties.DisplayName;
       manager.tertiaryText = managerProperties.Email;
       manager.secondaryText = managerProperties.Title;
@@ -227,9 +230,9 @@ export default class TreeOrgChart extends React.Component<
       " "
     );
     me.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${currentUserProperties.Email}`;
-    me.imageInitials = `${meImageInitials[0]
+    me.imageInitials =    me.imageInitials &&   me.imageInitials.length > 0  ?`${meImageInitials[0]
       .substring(0, 1)
-      .toUpperCase()}${meImageInitials[1].substring(0, 1).toUpperCase()}`;
+      .toUpperCase()}${meImageInitials[1] ? meImageInitials[1].substring(0, 1).toUpperCase():''}` : '';
     me.text = currentUserProperties.DisplayName;
     me.tertiaryText = currentUserProperties.Email;
     me.secondaryText = currentUserProperties.Title;
@@ -256,9 +259,9 @@ export default class TreeOrgChart extends React.Component<
       const peerProperties = await this.SPService.getUserProperties(userPeer);
       imageInitials = peerProperties.DisplayName.split(" ");
       peer.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${peerProperties.Email}`;
-      peer.imageInitials = `${imageInitials[0]
+      peer.imageInitials =   peer.imageInitials && peer.imageInitials.length>0 ? `${imageInitials[0]
         .substring(0, 1)
-        .toUpperCase()}${imageInitials[1].substring(0, 1).toUpperCase()}`;
+        .toUpperCase()}${imageInitials[1] ? imageInitials[1].substring(0, 1).toUpperCase():''}` : '';
       peer.text = peerProperties.DisplayName;
       peer.tertiaryText = peerProperties.Email;
       peer.secondaryText = peerProperties.Title;

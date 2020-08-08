@@ -29,12 +29,12 @@ where sample was demonstrated.
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
+![1,10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 * [Microsoft Bot Framework](http://dev.botframework.com)
 
 ## Prerequisites
@@ -60,6 +60,7 @@ Solution|Author(s)
 --------|---------
 bot-framework | Gary Pretty ([@garypretty](http://www.twitter.com/garypretty), [garypretty.co.uk](www.garypretty.co.uk))
 |webpart v4| Stephan Bisser ([@stephanbisser](https://twitter.com/stephanbisser), [bisser.io](https://bisser.io))
+|Upgrade to SPFx 1.10.0| Harsha Vardhini ([@harshagracy](https://twitter.com/harshagracy))
 
 ## Version history
 
@@ -70,6 +71,7 @@ Version|Date|Comments
 1.2|Feb 23rd, 2017|Initial load bug fix
 1.3|February 8, 2018|Updated to SPFx 1.7
 1.4|September 4, 2019|Added BotFramework webchat v4
+1.5|April 15, 2020|Upgraded to SPFx 1.10.0
 
 
 ## Disclaimer
@@ -82,7 +84,6 @@ Version|Date|Comments
 - Clone this repository
 - in the command line run:
   - `npm install`
-  - `tsd install`
   - `gulp serve`
 
 - Register your bot in the Microsoft Bot Framework Portal, configure the DirectLine channel on the bot and obtain your DirectLine secret.

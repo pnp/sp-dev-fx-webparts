@@ -5,7 +5,7 @@ At the time of developing this sample, the Office 365 UI fabric does not have an
 
 ![Web part preview][figure1]
 
-The web part is configured to render the mock data when added to local SharePoint workbench. 
+The web part is configured to render the mock data when added to the local SharePoint workbench. 
 ![Local SharePoint Workbench Run][figure2]
 
 When added to SharePoint site, the source list containing hierarchical information can be configured from web part properties.
@@ -31,8 +31,8 @@ Below NPM packages are used to develop this sample.
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -60,9 +60,9 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 - Clone this repo
-- npm i
-- gulp serve --nobrowser
-- Open workbench on your tennant, ie. https://contoso.sharepoint.com/sites/salestesm/_layouts/15/workbench.aspx
+- `npm i`
+- `gulp serve --nobrowser`
+- Open workbench on your tenant, ie. https://contoso.sharepoint.com/sites/salestesm/_layouts/15/workbench.aspx
 - Search and add web part "Display Hierarchy"
 
 ## Features

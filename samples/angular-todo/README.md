@@ -1,3 +1,19 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 3/10/2017 12:00:00 AM
+---
 # Angular client-side web part
 
 ## Summary
@@ -11,8 +27,8 @@ Sample Web Part illustrating using Angular with the SharePoint Framework.
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

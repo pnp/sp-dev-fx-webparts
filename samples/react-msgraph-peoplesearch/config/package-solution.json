@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "000000"
+    },
+    "name": "Microsoft Graph People Search",
+    "id": "98a8d9d1-47c4-477c-addd-ecae95b235cc",
+    "version": "2.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-msgraph-peoplesearch.sppkg"
+  }
+}

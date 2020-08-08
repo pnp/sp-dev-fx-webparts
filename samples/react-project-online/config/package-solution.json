@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-project-online-client-side-solution",
-    "id": "d6729fd9-103c-42c8-8ee5-17760e4ab92f",
-    "version": "1.3.0.0",
+    "id": "9a8c9f6c-e756-49cc-bc51-75a9a6c57dce",
+    "version": "1.4.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "isDomainIsolated": false
   },
   "paths": {
     "zippedPackage": "solution/react-project-online.sppkg"

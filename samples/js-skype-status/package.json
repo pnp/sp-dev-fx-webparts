@@ -17,7 +17,7 @@
     "@microsoft/sp-webpart-base": "1.8.0",
     "@types/es6-promise": "0.0.33",
     "@types/webpack-env": "1.13.1",
-    "jquery": "^3.3.1"
+    "jquery": "^3.5.0"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-2.7": "0.4.0",

@@ -3,7 +3,7 @@
   "id": "a63646aa-098e-4c3f-b1f4-f32e9eed4013",
   "alias": "HorizontalBarDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

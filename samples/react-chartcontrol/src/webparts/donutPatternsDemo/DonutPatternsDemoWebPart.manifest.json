@@ -3,7 +3,7 @@
   "id": "907cfe87-fffe-4d9c-8fac-3ea23c3f2c09",
   "alias": "DonutPatternsDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

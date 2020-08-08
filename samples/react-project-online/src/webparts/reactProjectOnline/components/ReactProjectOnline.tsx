@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Util } from 'sp-pnp-js';
+import { stringIsNullOrEmpty } from "@pnp/common";
 
 import * as strings from 'ReactProjectOnlineWebPartStrings';
 import styles from './ReactProjectOnline.module.scss';
@@ -21,7 +21,7 @@ export default class ReactProjectOnline extends React.Component<IReactProjectOnl
     super(props);
 
     // evaluate if configuration is required, and if so, display a placeholder
-    const showPlaceHolder = Util.stringIsNullOrEmpty(this.props.baseProperties.dataSourceId);
+    const showPlaceHolder = stringIsNullOrEmpty(this.props.baseProperties.dataSourceId);
 
     // initialise state
     this.state = {
@@ -41,7 +41,7 @@ export default class ReactProjectOnline extends React.Component<IReactProjectOnl
     this.props.webPartContext.statusRenderer.displayLoadingIndicator(document.getElementsByClassName(styles.reactProjectOnline)[0], strings.TitleFieldLabel);
 
     // load data and update state
-    if (!Util.stringIsNullOrEmpty(this.props.baseProperties.dataSourceId)) {
+    if (!stringIsNullOrEmpty(this.props.baseProperties.dataSourceId)) {
       this._taskItems = await this._getTaskItems();
       this.setState({
         dataLoaded: true
@@ -55,7 +55,7 @@ export default class ReactProjectOnline extends React.Component<IReactProjectOnl
   // state transitions using this.setState() in this method.
   public async componentWillReceiveProps(props: IReactProjectOnlineProps) {
     // load data and update state
-    if (!Util.stringIsNullOrEmpty(this.props.baseProperties.dataSourceId)) {
+    if (!stringIsNullOrEmpty(this.props.baseProperties.dataSourceId)) {
       this._taskItems = await this._getTaskItems();
       this.setState({
         showPlaceHolder: false,

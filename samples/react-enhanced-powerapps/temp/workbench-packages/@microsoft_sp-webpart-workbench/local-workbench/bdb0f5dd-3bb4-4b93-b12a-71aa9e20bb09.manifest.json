@@ -1,0 +1,66 @@
+{
+  "manifestVersion": 2,
+  "id": "bdb0f5dd-3bb4-4b93-b12a-71aa9e20bb09",
+  "alias": "SPAnchor",
+  "componentType": "Library",
+  "version": "0.3.24",
+  "loaderConfig": {
+    "entryModuleId": "sp-anchor",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-anchor": {
+        "type": "path",
+        "path": "dist/sp-anchor.js"
+      },
+      "@microsoft/office-ui-fabric-react-bundle": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "02a01e42-69ab-403d-8a16-acd128661f8e"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "react": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      },
+      "@microsoft/load-themed-styles": {
+        "type": "component",
+        "version": "0.1.2",
+        "id": "229b8d08-79f3-438b-8c21-4613fc877abd"
+      },
+      "@ms/sp-deferred-component": {
+        "type": "component",
+        "version": "0.3.24",
+        "id": "fa4155f6-2498-4a20-8406-5cb3b385b142"
+      },
+      "@microsoft/sp-diagnostics": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "78359e4b-07c2-43c6-8d0b-d060b4d577e8"
+      },
+      "@ms/odsp-utilities-bundle": {
+        "type": "component",
+        "version": "5.1.55",
+        "id": "cc2cc925-b5be-41bb-880a-f0f8030c6aff"
+      },
+      "@ms/sp-a11y": {
+        "type": "component",
+        "version": "0.2.24",
+        "id": "05ed6956-59ad-4aa6-9e4e-b832c96ae87b"
+      }
+    }
+  },
+  "isInternal": true
+}

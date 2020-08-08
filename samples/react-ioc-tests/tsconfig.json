@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.3/includes/tsconfig-web.json",
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.7/includes/tsconfig-web.json",
   "compilerOptions": {
     "strict": true,
     "target": "es5",
@@ -11,6 +11,8 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "disableSizeLimit": true,
     "outDir": "lib",
     "typeRoots": [
       "./node_modules/@types",

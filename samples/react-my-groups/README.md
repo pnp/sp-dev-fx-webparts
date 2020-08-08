@@ -1,18 +1,40 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - React
+  createdDate: 6/1/2020 12:00:00 AM
+---
 # React My Groups
 
 ## Summary
 
 Using Microsoft Graph, this webpart grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.
 
-![Demo](./assets/example.png)
+The webpart has been updated to include a grid like in addition to the compact layout as seen below:
+![Grid Demo](./assets/React-MyGroups_Grid.png)
+
+Compact Layout:
+![Compact Demo](./assets/React-MyGroups_Compact.png)
+
+You can change between the grid and compact layout through the settings in the property pane:
+![Property Pane Demo](./assets/React-MyGroups_Property.png)
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/drop-1.9.1-green.svg)
+![1.10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 
 ## Solution
@@ -26,6 +48,8 @@ react-my-groups | Zach Roberts
 Version|Date|Comments
 -------|----|--------
 1.0|September 13, 2019|Initial release
+1.1|June 1, 2020| Updated to SPFX 1.10.0
+1.2|July 8, 2020| Added Grid Layout
 
 ## Disclaimer
 

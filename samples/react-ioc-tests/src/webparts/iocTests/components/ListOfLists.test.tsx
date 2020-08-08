@@ -1,19 +1,19 @@
 /// <reference types="jest" />
 
 import * as React from 'react';
-import { configure, shallow } from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16.3';
+import { configure, shallow, ShallowWrapper } from 'enzyme';
+import Adapter from "enzyme-adapter-react-16";
 
 configure({ adapter: new Adapter() });
 
-import ListOfLists from './ListOfLists';
+import ListOfLists, { IListOfListsProps, IListOfListsState } from './ListOfLists';
 import MockListsService from '../../../common/services/Lists/MockListsService';
 import MockCacheProvider from '../../../common/providers/Cache/MockCacheProvider';
 import MockLogProvider from '../../../common/providers/Log/MockLogProvider';
 
 describe('Component: ListOfLists', () => {
 
-  let reactComponent;
+  let reactComponent: ShallowWrapper<IListOfListsProps, IListOfListsState, ListOfLists>;
 
   beforeEach(() => {
     // do nothing
@@ -36,11 +36,11 @@ describe('Component: ListOfLists', () => {
     ));
 
     // ACT
-    const element = reactComponent.first("div");
+    const element = reactComponent.find("div");
 
     // ASSERT
     expect(element.length).toBeGreaterThan(0);
-    expect(element.text().trim()).toEqual("Loading...");
+    expect(element.first().text().trim()).toEqual("Loading...");
   });
 
   it('should render 1 item with no cache', async () => {
@@ -58,7 +58,7 @@ describe('Component: ListOfLists', () => {
     ));
 
     // ACT
-    await (reactComponent.instance().componentDidMount() as Promise<void>);
+    await reactComponent.instance().componentDidMount();
     const element = reactComponent.find("a");
 
     // ASSERT
@@ -81,7 +81,7 @@ describe('Component: ListOfLists', () => {
     ));
 
     // ACT
-    await (reactComponent.instance().componentDidMount() as Promise<void>);
+    await reactComponent.instance().componentDidMount();
     const element = reactComponent.find("a");
 
     // ASSERT
@@ -94,7 +94,7 @@ describe('Component: ListOfLists', () => {
       ListOfLists,
       {
         description: "Web part desciption",
-        listsService: new MockListsService(null),
+        listsService: new MockListsService([]),
         cacheProvider: new MockCacheProvider([
           { Title: "Mocked List", DefaultViewUrl: "https://bing.com" }
         ]),
@@ -103,7 +103,7 @@ describe('Component: ListOfLists', () => {
     ));
 
     // ACT
-    await (reactComponent.instance().componentDidMount() as Promise<void>);
+    await reactComponent.instance().componentDidMount();
     const items = reactComponent.find("a");
 
     // ASSERT
@@ -116,7 +116,7 @@ describe('Component: ListOfLists', () => {
       ListOfLists,
       {
         description: "Web part desciption",
-        listsService: new MockListsService(null),
+        listsService: new MockListsService([]),
         cacheProvider: new MockCacheProvider([
           { Title: "Mocked List", DefaultViewUrl: "https://bing.com" },
           { Title: "Another List", DefaultViewUrl: "https://bing.com" }
@@ -126,7 +126,7 @@ describe('Component: ListOfLists', () => {
     ));
 
     // ACT
-    await (reactComponent.instance().componentDidMount() as Promise<void>);
+    await reactComponent.instance().componentDidMount();
     const items = reactComponent.find("a");
 
     // ASSERT
@@ -147,15 +147,14 @@ describe('Component: ListOfLists', () => {
     ));
 
     // ACT
-    await (reactComponent.instance().componentDidMount() as Promise<void>);
-    const items = reactComponent.find("a");
+    await reactComponent.instance().componentDidMount();
 
     // ACT
-    const element = reactComponent.first("div");
+    const element = reactComponent.find("div");
 
     // ASSERT
     expect(element.length).toBeGreaterThan(0);
-    expect(element.text().trim()).toEqual(webPartDesciption);
+    expect(element.first().text().trim()).toEqual(webPartDesciption);
   });
 
   it('should not render empty description', async () => {
@@ -163,7 +162,7 @@ describe('Component: ListOfLists', () => {
     reactComponent = shallow(React.createElement(
       ListOfLists,
       {
-        description: null,
+        description: "",
         listsService: new MockListsService([]),
         cacheProvider: new MockCacheProvider([]),
         logProvider: new MockLogProvider()
@@ -171,19 +170,18 @@ describe('Component: ListOfLists', () => {
     ));
 
     // ACT
-    await (reactComponent.instance().componentDidMount() as Promise<void>);
-    const items = reactComponent.find("a");
+    await reactComponent.instance().componentDidMount();
 
     // ACT
-    const element = reactComponent.first("div");
+    const element = reactComponent.find("div");
 
     // ASSERT
     expect(element.length).toBeGreaterThan(0);
-    expect(element.text().trim()).toEqual("");
+    expect(element.first().text().trim()).toEqual("");
   });
 
 });
 
-// Usefull links:
+// Useful links:
 // https://reactjs.org/docs/test-renderer.html
 // https://github.com/airbnb/enzyme

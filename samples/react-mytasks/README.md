@@ -12,7 +12,7 @@ The user can search task by name, can filter by progress status, all data are dy
 </br>
 
 
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/MyTasks.gif)
+![MyTasks](/samples/react-mytasks/assets/MyTasks.gif)
 
 
 
@@ -38,34 +38,34 @@ The user can search task by name, can filter by progress status, all data are dy
 </br>
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen4.png) 
+![tenant properties](/samples/react-mytasks/assets/screen4.png) 
 
 
 </br>
 </br>
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen5.png)  
+![tenant properties](/samples/react-mytasks/assets/screen5.png)  
 
 </br>
 </br>
 
 ## Add Task  
   
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/AddTask.gif)
+![MyTasks](/samples/react-mytasks/assets/AddTask.gif)
 
 </br>
 </br>
 
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen6.png)  
+![tenant properties](/samples/react-mytasks/assets/screen6.png)  
 
 </br>
 </br>
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen7.png)  
+![tenant properties](/samples/react-mytasks/assets/screen7.png)  
 
 </br>
 </br>
@@ -73,32 +73,32 @@ The user can search task by name, can filter by progress status, all data are dy
 ## Edit Tasks
 
 
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/EditTask.gif)
+![MyTasks](/samples/react-mytasks/assets/EditTask.gif)
 
 </br>
 </br>
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen8.png)  
+![tenant properties](/samples/react-mytasks/assets/screen8.png)  
   
 
 </br>
 </br>
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen9.png)  
+![tenant properties](/samples/react-mytasks/assets/screen9.png)  
   
 
 </br>
 </br>
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen10.png)  
+![tenant properties](/samples/react-mytasks/assets/screen10.png)  
 
 </br>
 </br>
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen11.png)  
+![tenant properties](/samples/react-mytasks/assets/screen11.png)  
 
   
 
@@ -106,7 +106,7 @@ The user can search task by name, can filter by progress status, all data are dy
 </br>
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen12.png)  
+![tenant properties](/samples/react-mytasks/assets/screen12.png)  
 
 
 </br>
@@ -114,7 +114,7 @@ The user can search task by name, can filter by progress status, all data are dy
 
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen13.png)  
+![tenant properties](/samples/react-mytasks/assets/screen13.png)  
 
   
 </br>
@@ -122,7 +122,7 @@ The user can search task by name, can filter by progress status, all data are dy
 
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen14.png)  
+![tenant properties](/samples/react-mytasks/assets/screen14.png)  
 
   
 
@@ -132,8 +132,8 @@ The user can search task by name, can filter by progress status, all data are dy
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## WebPart Properties
  

@@ -5,9 +5,9 @@ Samples around the SharePoint Framework client-side web parts to demonstrate dif
 You can head directly to the folders below and start looking around if you'd like. But if you're looking for something specific, we've grouped our samples into various categories on our [
 SharePoint Framework Client-Side Web Part Samples site](https://sharepoint.github.io/sp-dev-fx-webparts):
 
-- [By Framework](https://sharepoint.github.io/sp-dev-fx-webparts/samples/framework/)
-- [By SPFx Version](https://sharepoint.github.io/sp-dev-fx-webparts/samples/spfx/)
-- [By Compatibility](https://sharepoint.github.io/sp-dev-fx-webparts/samples/compatibility/)
-- [By Year](https://sharepoint.github.io/sp-dev-fx-webparts/samples/year/)
-- [By Author](https://sharepoint.github.io/sp-dev-fx-webparts/samples/author/)
-- [All](https://sharepoint.github.io/sp-dev-fx-webparts/samples/all/)
+- [By Framework](https://pnp.github.io/sp-dev-fx-webparts/samples/framework/)
+- [By SPFx Version](https://pnp.github.io/sp-dev-fx-webparts/samples/spfx/)
+- [By Compatibility](https://pnp.github.io/sp-dev-fx-webparts/samples/compatibility/)
+- [By Year](https://pnp.github.io/sp-dev-fx-webparts/samples/year/)
+- [By Author](https://pnp.github.io/sp-dev-fx-webparts/samples/author/)
+- [All](https://pnp.github.io/sp-dev-fx-webparts/samples/all/)

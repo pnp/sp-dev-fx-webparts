@@ -1,0 +1,138 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.navArea {
+	display: flex;
+	width: 100%;
+	padding-left: 11px;
+}
+.headTitle {
+	display: inline-block;
+	flex-grow: 1;
+	flex-shrink: 2;
+	font-size: 28px;
+	font-weight: 300;
+	margin: auto 8px 5px 0;
+	white-space: nowrap;
+}
+.searchBox {
+	flex-grow: 5;
+	flex-shrink: 1;
+	margin: 5px 0;	
+}
+.closeBtnContainer {
+	flex: 0 0 54px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.iconList {
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+	margin: 10px -5px;
+}
+.iconItem {
+	display: inline-block;
+	padding: 0;
+	margin: 0 2px 4px;
+	list-style-type: none;
+	position: relative;
+	overflow: hidden;
+}
+.iconRadio {
+	position: absolute;
+	left: -1000px;
+	opacity: 0;
+}
+.iconLabel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 78px;
+	padding: 5px;
+	height: 70px;
+	border-radius: 3px;
+	background-color: "[theme:neutralLighterAlt, default:#f8f8f8]";
+
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border: 2px solid transparent;
+		border-color: "[theme:neutralQuarternary, default:#d0d0d0]";
+		border-radius: 3px;
+		opacity: 0;
+		will-change: opacity, border-color;
+		transition: opacity ease-out .05s;
+	}
+	&:hover {
+		&:after {
+			opacity: 1;
+		}
+	}
+}
+.iconRadio:checked + .iconLabel {
+	&:after {
+		opacity: 1;
+		border-color: "[theme: themePrimary, default: #0078d7]";
+	}
+	color: "[theme: themePrimary, default: #0078d7]";
+}
+.iconRadio:focus + .iconLabel {
+	outline: 1px dashed;
+	outline-color: "[theme: themePrimary, default: #0078d7]";
+	outline-offset: -5px;
+}
+.iconGlyph {
+	font-size: 24px;
+	width: 24px;
+	height: 24px;
+	margin-bottom: 5px;
+	color: inherit;
+}
+.iconName {
+	display: inline-block;
+	max-width: 100%;
+	text-align: left;
+	font-size: 12px;
+}
+
+.footer {
+	display: flex;
+	width: 100%;
+}
+.selectionDisplay {
+	order: 2;
+	display: flex;
+	flex: 1 0 32px;
+	margin: 0 auto;
+	align-items: center;
+	justify-content: center;
+	&:global {
+		&.noSelection {
+			opacity: .3;
+		}
+	}
+}
+.selectionLabel {
+	display: inline-block;
+}
+.selectionIcon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	min-width: 32px;
+}
+.btnCancel {
+	order: 1;
+}
+.btnSave {
+	order: 3;
+}

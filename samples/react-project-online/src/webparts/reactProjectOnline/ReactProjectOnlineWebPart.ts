@@ -7,7 +7,7 @@ import {
   PropertyPaneTextField,
   PropertyPaneDropdown
 } from '@microsoft/sp-webpart-base';
-import { LogLevel } from 'sp-pnp-js';
+import { LogLevel } from "@pnp/logging";
 
 import * as strings from 'ReactProjectOnlineWebPartStrings';
 import { IReactProjectOnlineWebPartProps } from './IReactProjectOnlineWebPartProps';
@@ -117,7 +117,6 @@ export default class ReactProjectOnlineWebPart extends BaseClientSideWebPart<IRe
     let id: string = null;
     const webUrl = this.context.pageContext.web.absoluteUrl;
     const selectWebProperties = ['MSPWAPROJUID'];
-
     try {
       // get project ID
       const projectUID: any = await this._spDataService.GetWebProperties(webUrl, selectWebProperties);

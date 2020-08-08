@@ -26,7 +26,7 @@ SharePoint Framework solution with the Office UI Fabric People Picker, the clien
 ## Applies to
 
 * [SharePoint Framework](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 

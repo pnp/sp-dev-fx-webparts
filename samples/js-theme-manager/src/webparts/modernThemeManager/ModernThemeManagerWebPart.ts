@@ -1,9 +1,6 @@
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './ModernThemeManagerWebPart.module.scss';
@@ -30,7 +27,7 @@ export default class ModernThemeManagerWebPart extends BaseClientSideWebPart<IMo
               </a>
 
               <div>
-                <p class="${ styles.subTitle}">Theme Actions</p> 
+                <p class="${ styles.subTitle}">Theme Actions</p>
                 <label class="${ styles.radio}"><input type="radio" name="themeAction" value="create"> Create a theme</label>
                 <label class="${ styles.radio}"><input type="radio" name="themeAction" value="update"> Update a theme</label>
                 <label class="${ styles.radio}"><input type="radio" name="themeAction" value="delete"> Delete a theme</label>
@@ -38,12 +35,12 @@ export default class ModernThemeManagerWebPart extends BaseClientSideWebPart<IMo
               </div>
 
               <div class="${ styles.hide} ${styles.genericWrapper}" id="${styles.themeSelectWrapper}">
-                <p class="${ styles.subTitle}">Available Themes</p> 
+                <p class="${ styles.subTitle}">Available Themes</p>
                 <select id="${ styles.availableThemesSelect}" name="availableThemes">
                 </select>
               </div>
 
-              
+
               <div class="${ styles.hide} ${styles.genericWrapper}" id="${styles.themeNameWrapper}">
                 <p class="${ styles.subTitle}">Theme Name</p>
                 <div>
@@ -84,7 +81,7 @@ export default class ModernThemeManagerWebPart extends BaseClientSideWebPart<IMo
     this.setupClickEvent();
   }
 
-  /***** ***** 
+  /***** *****
   Create event listeners for Radio & Buttons
   ***** *****/
  public setupClickEvent(): void {
@@ -118,15 +115,11 @@ export default class ModernThemeManagerWebPart extends BaseClientSideWebPart<IMo
       else if (selectedValue == 'apply') {
         parent.displayApplyOptions();
       }
-
-
     };
-  };
-
-
+  }
 }
 
-/***** ***** 
+/***** *****
 Hide All Wrappers:
 Generic method for hiding all of the form elements
 ***** *****/
@@ -148,7 +141,7 @@ public hideAllWrappers(): void {
 
 }
 
-/***** ***** 
+/***** *****
 Display Update Options:
 This method is used to display the form elements for the Theme Update Options.
 ***** *****/
@@ -163,12 +156,11 @@ public displayUpdateOptions(): void {
       document.getElementById(styles.themePaletteWrapper).classList.remove(styles.hide);
       document.getElementById('updateTheme').classList.remove(styles.hide);
     }
-  })
+  });
+}
 
-};
 
-
-/***** ***** 
+/***** *****
 Display Create Options:
 This method is used to display the form elements for the Theme Creation Options.
 ***** *****/
@@ -181,11 +173,9 @@ public displayCreateOptions(): void {
   document.getElementById(styles.themeNameWrapper).classList.remove(styles.hide);
   document.getElementById(styles.themePaletteWrapper).classList.remove(styles.hide);
   document.getElementById('createTheme').classList.remove(styles.hide);
-
-
 }
 
-/***** ***** 
+/***** *****
 Display Delete Options:
 This method is used to display the form elements for the Theme Deletion Options.
 ***** *****/
@@ -202,7 +192,7 @@ public displayDeleteOptions(): void {
   });
 }
 
-/***** ***** 
+/***** *****
 Display Apply Options:
 This method is used to display the form elements for the Theme Apply Options.
 ***** *****/
@@ -217,7 +207,7 @@ public displayApplyOptions(): void {
   document.getElementById('applyTheme').classList.remove(styles.hide);
 }
 
-/***** ***** 
+/***** *****
 Populate Existing Themes:
 This method retrieves the currently available themes in the tenant and inserts the values into the dropdown.
 ***** *****/
@@ -243,7 +233,7 @@ public populateExistingThemes(url, params): Promise<boolean> {
 
 }
 
-/***** ***** 
+/***** *****
 Create new theme at tenant level:
 Collects the data needed to create a new theme at the tenant level and passes it to the creation execution method.
 ***** *****/
@@ -273,7 +263,7 @@ public createTheme(): void {
 
 
 
-/***** ***** 
+/***** *****
 Deletes a theme at tenant level:
 Collects the data needed to delete a theme at the tenant level and passes it to the deletion execution method.
 ***** *****/
@@ -300,7 +290,7 @@ public deleteTheme(): void {
     });
 }
 
-/***** ***** 
+/***** *****
 Updates a theme at tenant level:
 Collects the data needed to update a theme at the tenant level and passes it to the update execution method.
 ***** *****/
@@ -311,7 +301,7 @@ public updateTheme(): void {
   let themePalette: JSON = JSON.parse((<HTMLInputElement>document.getElementById(styles.textarea)).value);
   let themePaletteJSON = {
     "palette": themePalette
-  }
+  };
 
   // Pass the theme properties to themeManagerExecution method
   this.themeManagerExecution(this.context.pageContext.site.serverRelativeUrl + "/_api/thememanager/UpdateTenantTheme", { name: themeTitle, themeJson: JSON.stringify(themePaletteJSON) })
@@ -328,7 +318,7 @@ public updateTheme(): void {
 }
 
 
-/***** ***** 
+/***** *****
 Apply a theme to a site collection:
 Collects the data needed to apply a theme directly to a site colleciton.
 NOTE: This does NOT create a theme choice at the tenant level. It will directly apply the theme to a site collection.
@@ -341,7 +331,7 @@ public applyThemeNew(): void {
   let themePalette: JSON = JSON.parse((<HTMLInputElement>document.getElementById(styles.textarea)).value);
   let themePaletteJSON = {
     "palette": themePalette
-  }
+  };
 
   const digestCache: IDigestCache = this.context.serviceScope.consume(DigestCache.serviceKey);
   digestCache.fetchDigest(themeURL).then((digest: string): void => {
@@ -363,18 +353,18 @@ public applyThemeNew(): void {
 
 }
 
-/***** ***** 
+/***** *****
 Generic method for creating, updating, deleting and applying a theme.
 ***** *****/
 public themeManagerExecution(url: string, params: any): Promise<boolean> {
 
   let options: ISPHttpClientOptions = {
     body: JSON.stringify(params)
-  }
+  };
 
   return this.context.spHttpClient.post(url, SPHttpClient.configurations.v1, options)
     .then((response: SPHttpClientResponse) => {
-      return response.ok
+      return response.ok;
     });
 
 }

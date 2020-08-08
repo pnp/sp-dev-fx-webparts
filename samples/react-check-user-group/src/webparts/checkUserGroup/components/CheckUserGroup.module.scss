@@ -1,0 +1,40 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.checkUserGroup {
+  .container {
+    margin: 10px auto;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .column {
+    flex: 1;
+  }
+
+  .peoplePickerWPClass {
+    padding-left: 8px;
+  }
+
+  .detailsList {
+    padding-left: 8px;
+  }
+
+  .filterTextfield {
+    max-width: 300px;
+  }
+
+  .csvLink {
+    float: right;
+    margin-top: 5px;
+  }
+
+  .exportIcon {
+    background-color: transparent;
+  }
+  
+  .memberStatus {
+    margin-left: 8px;
+  }
+}

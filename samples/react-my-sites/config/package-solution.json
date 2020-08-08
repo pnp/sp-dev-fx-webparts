@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-my-sites-client-side-solution",
+    "id": "ad28b382-886b-4b2a-9646-92de8a0b1d13",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "webApiPermissionRequests": [{
+      "resource": "Microsoft Graph",
+      "scope": "Group.Read.All"
+
+    },
+    {
+      "resource": "Microsoft Graph",
+      "scope": "Directory.Read.All"
+    }
+  ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-my-sites.sppkg"
+  }
+}

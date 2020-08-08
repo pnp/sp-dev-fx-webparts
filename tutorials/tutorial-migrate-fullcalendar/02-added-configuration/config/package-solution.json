@@ -1,10 +1,13 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "spfx-js-fullcalendar-client-side-solution",
-    "id": "e6a89529-5fef-4883-b84c-c6bc27b0bfb0",
-    "version": "1.0.0.0"
+    "name": "fullcalendar-taskscalendar-client-side-solution",
+    "id": "c8f6ee3a-f24a-4b6b-b1bf-ce7121f65205",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
   },
   "paths": {
-    "zippedPackage": "solution/spfx-js-fullcalendar.sppkg"
+    "zippedPackage": "solution/fullcalendar-taskscalendar.sppkg"
   }
 }

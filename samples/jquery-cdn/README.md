@@ -2,6 +2,7 @@
 page_type: sample
 products:
 - office-sp
+- office-365
 languages:
 - javascript
 - typescript
@@ -11,11 +12,11 @@ extensions:
   - SharePoint Framework
   platforms:
   - JQuery
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 9/16/2016 12:00:00 AM
   scenarios:
   - Embed
 ---
-﻿# Using jQuery loaded from CDN
+# Using jQuery loaded from CDN
 
 ## Summary
 
@@ -28,8 +29,8 @@ This is a sample web Part that illustrates the use of jQuery and its plugins loa
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

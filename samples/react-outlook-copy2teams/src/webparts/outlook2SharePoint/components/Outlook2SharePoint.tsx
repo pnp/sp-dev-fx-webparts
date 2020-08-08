@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './Outlook2SharePoint.module.scss';
+import * as strings from 'Outlook2SharePointWebPartStrings';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import GraphController from '../../../controller/GraphController';
@@ -11,11 +12,13 @@ import { IOutlook2SharePointState } from './IOutlook2SharePointState';
 
 export default class Outlook2SharePoint extends React.Component<IOutlook2SharePointProps, IOutlook2SharePointState> {
   private graphController: GraphController;
+  private saveMetadata = true; // For simplicity reasons and as I am not convinced with the current "Property handling" of Office Add-In we configure 'hard-coded'
   
   constructor(props) {
     super(props);
     this.state = {
       graphController: null,
+      mailMetadata: null,
       showError: false,
       showSuccess: false,
       showOneDrive: false,
@@ -24,13 +27,25 @@ export default class Outlook2SharePoint extends React.Component<IOutlook2SharePo
       successMessage: '',
       errorMessage: ''
     };
-    this.graphController = new GraphController(this.props.msGraphClientFactory, this.graphClientReadyCallback);
+    this.graphController = new GraphController(this.saveMetadata);
+    this.graphController.init(this.props.msGraphClientFactory)
+      .then((controllerReady) => {
+        if (controllerReady) {
+          this.graphClientReady();
+        }        
+      });
   }
 
   public render(): React.ReactElement<IOutlook2SharePointProps> {
 
     return (
       <div className={ styles.outlook2SharePoint }>
+        {this.state.mailMetadata !== null &&
+          <div className={styles.metadata}>
+            <div><Icon iconName="InfoSolid" /> {strings.SaveInfo}</div>
+            <div className={styles.subMetadata}>{strings.To} <a href={this.state.mailMetadata.saveUrl}>{this.state.mailMetadata.saveDisplayName}</a></div>
+            <div className={styles.subMetadata}>{strings.On} <span>{this.state.mailMetadata.savedDate.toLocaleDateString()}</span></div>
+          </div>}
         {this.state.showSuccess && <div>
           <MessageBar
             messageBarType={MessageBarType.success}
@@ -97,12 +112,15 @@ export default class Outlook2SharePoint extends React.Component<IOutlook2SharePo
   /**
    * This function first retrieves all OneDrive root folders from user
    */
-  private graphClientReadyCallback = () => {              
+  private graphClientReady = () => {              
     this.setState((prevState: IOutlook2SharePointState, props: IOutlook2SharePointProps) => {
       return {
         graphController: this.graphController
       };
     }); 
+    if (this.saveMetadata) {
+      this.getMetadata();
+    }    
   }   
   
   private showError = (message: string) => {
@@ -171,5 +189,18 @@ export default class Outlook2SharePoint extends React.Component<IOutlook2SharePo
         showOneDrive: false
       };
     });
+  }
+
+  private getMetadata() {
+    this.state.graphController.retrieveMailMetadata(this.props.mail.id)
+      .then((response) => {
+        if (response !== null) {
+          this.setState((prevState: IOutlook2SharePointState, props: IOutlook2SharePointProps) => {
+            return {
+              mailMetadata: response
+            };
+          });
+        }
+      });
   }
 }

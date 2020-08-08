@@ -27,7 +27,7 @@ A simple Organisation Chart webpart using Office UI Fabric, React, REST API batc
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 
 ## Solution

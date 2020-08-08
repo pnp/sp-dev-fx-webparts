@@ -4,4 +4,5 @@ export interface IFolder {
   id: string;
   driveID: string;
   parentFolder: IFolder;
+  webUrl: string;
 }
