@@ -1,3 +1,4 @@
+import { IContextualMenuProps } from "office-ui-fabric-react";
 
 export interface IMySitesState {
   sites: any[];
@@ -9,4 +10,7 @@ export interface IMySitesState {
   totalPages:number;
   searchValue:string;
   currentFilter?:number;
+  currentFilterName?:string;
+  currentSelectedSite?:string;
+  filterMenuProps: IContextualMenuProps;
 }

@@ -25,6 +25,8 @@ Each Site has a symbol indicate if it is SharePoint Site, Group, Group and OnDri
 If the Group has a microsoft team associated and user has permissions to access the symbol of teams will be displayed.
   
 
+
+
 ![MySites](./assets/MySites.gif)
 
 ![MySites](./assets/Screenshot%202020-08-06%20at%2013.50.51.png)
