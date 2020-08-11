@@ -6,7 +6,7 @@ This is a sample web part that helps user create their avatar and save as profil
 
 
 ##  
-![directory](/assets/reactAvatarOutcome.gif) 
+![directory](/samples/react-avatar/assets/reactAvatarOutcome.gif) 
 
 ## Features
 
