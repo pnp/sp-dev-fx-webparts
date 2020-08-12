@@ -63,6 +63,26 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-smart-profile-photo-editor
+      name: react-smart-profile-photo-editor
+      title: Smart Profile Photo Editor
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-smart-profile-photo-editor/assets/WebPartPreview.gif
+      author: Hugo Bernier
+      summary: Uses Azure Cognitive Services to analyze and approve or reject user-submitted photos.
+      modifiedtext: August 12, 2020
+      modified: 2020-08-12
+    - framework: React
+      spfx: 1.10.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-avatar
+      name: react-avatar
+      title: SPFx Avatar
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-avatar/assets/reactAvatarOutcome.gif
+      author: Kunj Sangani
+      summary: This is a sample web part that helps user create their avatar and save as profile picture. User can even download their avatar as PNG file. This webpart can be useful in Intranet to help user create their avatar and save it as profile picture.
+      modifiedtext: August 1, 2020
+      modified: 2020-08-01
+    - framework: React
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-sites
       name: react-my-sites
       title: My Sites
