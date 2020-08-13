@@ -16,4 +16,5 @@ export interface IAnalysisDialogContentState {
   keywordsValid?: boolean;
   invalidKeywords?: string[];
   isSubmitted: boolean;
+  celebrity?: string;
 }

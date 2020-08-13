@@ -23,6 +23,7 @@ export class AnalysisService implements IAnalysisService {
       new ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': this.key } }), this.endpoint);
 
     var analysis: AnalyzeImageInStreamResponse = (await computerVisionClient.analyzeImageInStream(buf, {
+      details: ["Celebrities"],
       visualFeatures: ["Categories",
         "Adult",
         "Tags",
