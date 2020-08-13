@@ -1,5 +1,6 @@
 define([], function() {
   return {
+    YouLookLikeACelebrity: "Uh... did anyone ever tell you that you look like {0}? It's uncanny!",
     CaptureButtonLabel: "Capture",
     WebCamDialogTitle: "Insert photo from camera",
     NoKeywords: "(none)",

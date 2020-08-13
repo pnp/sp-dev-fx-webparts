@@ -289,8 +289,6 @@ export default class ProfilePhotoEditor extends React.Component<IProfilePhotoEdi
     // Get the image to approve
     const imageToApprove: string = this.cropper.getCroppedCanvas().toDataURL();
     this.cropper.getCroppedCanvas().toBlob((blob: Blob)=> {
-      console.log("Blob", blob);
-
       const photoRequirements: IPhotoRequirements = {
         allowAdult: this.props.allowAdult,
         allowClipart: this.props.allowClipart,

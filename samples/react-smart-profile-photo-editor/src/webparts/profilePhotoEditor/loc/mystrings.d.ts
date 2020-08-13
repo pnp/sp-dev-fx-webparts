@@ -1,4 +1,5 @@
 declare interface IProfilePhotoEditorWebPartStrings {
+  YouLookLikeACelebrity: string;
   CaptureButtonLabel: string;
   WebCamDialogTitle: string;
   NoKeywords: string;

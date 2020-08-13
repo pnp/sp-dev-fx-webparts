@@ -10,6 +10,9 @@ import styles from './WebCamDialog.module.scss';
 
 import Webcam from "react-webcam";
 
+/**
+ * Set the video constraints to be a square from the user-facing camera
+ */
 const videoConstraints = {
   width: 300,
   height: 300,
@@ -41,8 +44,6 @@ export class WebCamDialog extends React.Component<IWebCamDialogProps, IWebCamDia
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
             imageSmoothing={true}
-            onUserMedia={() => console.log("OnUserMedia")}
-            onUserMediaError={() => console.log("OnUserMediaError")}
             screenshotQuality={0.92}
           />
 
@@ -54,12 +55,19 @@ export class WebCamDialog extends React.Component<IWebCamDialogProps, IWebCamDia
     );
   }
 
+  /**
+   * Captures an image from the web cam
+   */
   private onCapture = () => {
     const imageSrc = this.webcamRef.getScreenshot();
-    console.log("ImageSrc", imageSrc);
     this.props.onCapture(imageSrc);
   }
 
+  /**
+   *
+   * Dismisses the dialog
+   * @param _ev
+   */
   private onDismiss = (_ev?: React.SyntheticEvent<HTMLElement, Event>) => {
     this.props.onDismiss();
   }
