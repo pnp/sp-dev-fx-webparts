@@ -29,8 +29,12 @@ import { IAnalysisService, AnalysisService, MockAnalysisService } from '../../..
 import { AnalyzeImageInStreamResponse, ImageTag } from '@azure/cognitiveservices-computervision/esm/models';
 import AnalysisChecklist from '../AnalysisChecklist/AnalysisChecklist';
 
+// This is used if you use the graph client to update pictures
+import { MSGraphClient } from '@microsoft/sp-http';
+
+// This is used if you use the PnP library to update pictures
 import { sp } from "@pnp/sp";
-import { MSGraphClient, SPHttpClient } from '@microsoft/sp-http';
+import "@pnp/sp/profiles";
 
 export class AnalysisDialogContent extends
   React.Component<IAnalysisDialogContentProps, IAnalysisDialogContentState> {
@@ -215,12 +219,12 @@ export class AnalysisDialogContent extends
         }
 
         {this.state.isSubmitted &&
-        <MessageBar
-    messageBarType={MessageBarType.success}
-    isMultiline={false}
-  >
-    {strings.SuccessMessage}
-  </MessageBar>
+          <MessageBar
+            messageBarType={MessageBarType.success}
+            isMultiline={false}
+          >
+            {strings.SuccessMessage}
+          </MessageBar>
         }
 
       </Panel>
@@ -241,30 +245,42 @@ export class AnalysisDialogContent extends
 
   private onUpdateProfilePhoto = async (_ev?: React.SyntheticEvent<HTMLElement, Event>) => {
     console.log("Submitting photo");
-    const profileBlob: Blob = this.props.blob;
 
     // Get image array buffer
-    this.updateProfilePic(profileBlob);
+    const profileBlob: Blob = this.props.blob;
+
+    // Submit using the approach you want
+    //this.updateProfilePicUsingGraph(profileBlob);
+    this.updateProfilePicUsingPnP(profileBlob);
   }
 
-  private async updateProfilePic(buffer) {
-    console.log("Update profile pic", buffer);
+  private async updateProfilePicUsingPnP(blob: Blob) {
+    console.log("Update profile pic using PnP", blob);
+    const response = await sp.profiles.setMyProfilePic(blob);
+    console.log("Profile property Updated", response);
+    this.setState({
+      isSubmitted: true
+    });
+  }
 
-    this.props.context.msGraphClientFactory  
-      .getClient().then((client: MSGraphClient) => {  
-        client  
-          .api("me/photo/$value")  
-          .version("v1.0").header("Content-Type", buffer.type).put(buffer, (error, res) => {  
-            if (error) {  
+  private async updateProfilePicUsingGraph(blob: Blob) {
+    console.log("Update profile pic using Graph", blob);
+
+    this.props.context.msGraphClientFactory
+      .getClient().then((client: MSGraphClient) => {
+        client
+          .api("me/photo/$value")
+          .version("v1.0").header("Content-Type", blob.type).put(blob, (error, res) => {
+            if (error) {
               console.log("Error updating profile", error);
-            } else {  
+            } else {
               console.log("Profile property Updated");
               this.setState({
                 isSubmitted: true
               });
-            }  
-          });  
-      });  
+            }
+          });
+      });
   }
 
   private onDismiss = (_ev?: React.SyntheticEvent<HTMLElement, Event>) => {

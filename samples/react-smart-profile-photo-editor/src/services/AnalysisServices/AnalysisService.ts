@@ -26,6 +26,7 @@ export class AnalysisService implements IAnalysisService {
       visualFeatures: ["Categories",
         "Adult",
         "Tags",
+        "Tags",
         "Description",
         "Faces",
         "Color",
