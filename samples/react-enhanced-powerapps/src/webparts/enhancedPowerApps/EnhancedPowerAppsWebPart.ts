@@ -306,4 +306,13 @@ export default class EnhancedPowerAppsWebPart extends BaseClientSideWebPart<IEnh
     this._themeVariant = args.theme;
     this.render();
   }
+  
+  /**
+   * Redraws the web part when resized
+   * @param _newWidth
+   */
+  protected onAfterResize(_newWidth: number): void {
+    // redraw the web part
+    this.render();
+  }
 }
