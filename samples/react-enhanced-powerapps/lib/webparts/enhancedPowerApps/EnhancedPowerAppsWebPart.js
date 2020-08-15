@@ -54,9 +54,12 @@ var EnhancedPowerAppsWebPart = /** @class */ (function (_super) {
         return _super.prototype.onInit.call(this);
     };
     EnhancedPowerAppsWebPart.prototype.render = function () {
-        var clientWidth = this.domElement.clientWidth;
+        // Context variables and dynamic properties
         var dynamicProp = this.properties.dynamicProp.tryGetValue();
         var locale = this.context.pageContext.cultureInfo.currentCultureName;
+        // Get the client width. This is how we'll calculate the aspect ratio and resize the iframe
+        var clientWidth = this.domElement.clientWidth;
+        // Get the aspect width and height based on aspect ratio for the web part
         var aspectWidth;
         var aspectHeight;
         switch (this.properties.aspectratio) {
@@ -77,9 +80,12 @@ var EnhancedPowerAppsWebPart = /** @class */ (function (_super) {
                 aspectHeight = 3;
                 break;
             case "Custom":
+                // Custom aspects just use the width and height properties
                 aspectWidth = this.properties.width;
                 aspectHeight = this.properties.height;
         }
+        // If we're using fixed height, we pass the height and don't resize, otherwise we
+        // calculate the height based on the web part's width and selected aspect ratio
         var clientHeight = this.properties.layout === 'FixedHeight' ?
             this.properties.height :
             clientWidth * (aspectHeight / aspectWidth);
@@ -263,6 +269,14 @@ var EnhancedPowerAppsWebPart = /** @class */ (function (_super) {
    */
     EnhancedPowerAppsWebPart.prototype._handleThemeChangedEvent = function (args) {
         this._themeVariant = args.theme;
+        this.render();
+    };
+    /**
+     * Redraws the web part when resized
+     * @param _newWidth
+     */
+    EnhancedPowerAppsWebPart.prototype.onAfterResize = function (_newWidth) {
+        // redraw the web part
         this.render();
     };
     return EnhancedPowerAppsWebPart;
