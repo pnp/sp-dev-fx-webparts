@@ -30,7 +30,7 @@ This component will help the administrators who are currently maintaining the us
 * **Anytime access** to the template files generated with different property set and the files uploaded for bulk update.
 * Separate section to check the **status** of the property update. **Detailed status** on each property and also display the overall status.
 * **Azure Function** to handle the property update. **PnPPowershell** is used in Azure Function.
-* The application supports **SPA**.
+* The application supports **SPA** (Single Page Application).
 
 > **_Note_**: All the supporting lists were created when the web part is loaded for the first time. Whenever the web part is loaded, the supported lists were checked whether it exists or not.
 

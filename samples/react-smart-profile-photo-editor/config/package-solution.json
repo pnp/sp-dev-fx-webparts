@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "smart-profile-photo-editor",
+    "id": "82fe5f5d-8152-449d-b94d-45ba84066443",
+    "version": "1.1.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadWrite"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/smart-profile-photo-editor.sppkg"
+  }
+}

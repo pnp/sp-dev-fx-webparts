@@ -26,8 +26,7 @@ export default class EnhancedPowerApps extends React.Component<IEnhancedPowerApp
       dynamicPropName,
       locale,
       border,
-      height,
-      width
+      height
      }  = this.props;
 
     // The only thing we need for this web part to be configured is an app link or app id
@@ -37,23 +36,23 @@ export default class EnhancedPowerApps extends React.Component<IEnhancedPowerApp
 
     // If we passed a dynamic property, add it as a query string parameter
     const dynamicPropValue: string = useDynamicProp && dynamicProp !== undefined ? `&${encodeURIComponent(dynamicPropName)}=${encodeURIComponent(dynamicProp)}`:'';
-    
+
     // We can take an app id or a full link. We'll assume (for now) that people are passing a valid app URL
     // would LOVE to find an API to retrieve list of valid apps
     const appUrl: string = appWebLink && appWebLink.indexOf('https://') != 0 ? `https://apps.powerapps.com/play/${appWebLink}` : appWebLink;
-    
+
     // Build the portion of the URL where we're passing theme colors
     let themeParams: string = "";
 
     if (themeValues && themeValues.length > 0) {
       themeValues.forEach((themeValue: string) => {
         try {
-          
+
           const themeColor: string = semanticColors[themeValue];
           themeParams = themeParams + `&${themeValue}=${encodeURIComponent(themeColor)}`;
         } catch (e) {
           console.log(e);
-        }  
+        }
       });
     }
 
@@ -61,10 +60,8 @@ export default class EnhancedPowerApps extends React.Component<IEnhancedPowerApp
     // Build the frame url
     const frameUrl: string = `${appUrl}?source=SPClient-EnhancedPowerAppsWebPart&amp;locale=${locale}&amp;enableOnBehalfOf=true&amp;authMode=onbehalfof&amp;hideNavBar=true&amp;${dynamicPropValue}${themeParams}&locale=${locale}`;
 
-    console.log("URL", frameUrl);
-
     return (
-      <div className={ styles.enhancedPowerApps } style={{height:`${height}px`}}>
+      <div className={ styles.enhancedPowerApps } style={needConfiguration ? {height:`315px`}:{height:`${height}px`}}>
         {needConfiguration &&
          <Placeholder
          iconName='PowerApps'

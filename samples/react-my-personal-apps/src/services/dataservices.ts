@@ -60,14 +60,14 @@ export default class dataservices {
         _extensionResult = await this._MSGraphClient
           .api(`/me/extensions`)
           .post(extentionData);
-        // Flag user has Extention crerated
+        // Flag user has extension created
           this._hasExtension = true;
       }
 
       return _extensionResult;
     } catch (error) {
       console.log(error);
-      throw new Error("Error create or Update Extention");
+      throw new Error("Error creating or updating extension");
     }
     return;
   }

@@ -36,5 +36,10 @@ export default class EnhancedPowerAppsWebPart extends BaseClientSideWebPart<IEnh
    * @param args The new theme
    */
     private _handleThemeChangedEvent;
+    /**
+     * Redraws the web part when resized
+     * @param _newWidth
+     */
+    protected onAfterResize(_newWidth: number): void;
 }
 //# sourceMappingURL=EnhancedPowerAppsWebPart.d.ts.map

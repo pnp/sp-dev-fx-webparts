@@ -1,0 +1,65 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.profilePhotoEditor {
+
+  .dropZone {
+    cursor: pointer;
+    width: 100%;
+    min-height: 400px;
+    border-width: 2px;
+    border-color: $ms-color-neutralLight;
+    border-style: dashed;
+  }
+
+  :global {
+    .ms-Button {
+      border:none;
+    }
+    
+    .ms-CommandBar {
+      margin-right: -4px;
+    }
+
+    .cropper-container {
+      width: 100%!important;
+    }
+  }
+
+  .hiddenDropZone {
+    width: 0px;
+    height:0px;
+  }
+
+  .cropper {
+    height: 400px;
+    width: 100%;
+  }
+
+  .placeholderDescription {
+    width: 65%;
+    vertical-align: middle;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 400px;
+
+    .placeholderDescriptionText {
+        color: $ms-color-neutralSecondary;
+        font-size: 17px;
+        display: block;
+        font-weight: 100;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+  }
+
+  :global {
+
+    .cropper-point, .cropper-point.point-se {
+      height:12px;
+      width: 12px;
+      background-color: white;
+      opacity: 0.75;
+    }
+  }
+}

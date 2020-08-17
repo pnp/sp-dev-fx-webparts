@@ -84,9 +84,9 @@ export function ManageApps(appProps: IManageAppsProps) {
           <TextField
             underlined
             required
-            placeholder="Enter Name here"
+            placeholder="Enter name here"
             onGetErrorMessage={(newValue: string) => {
-              return newValue.trim().length > 0 ? "" : "Please enter Name";
+              return newValue.trim().length > 0 ? "" : "Please enter name";
             }}
             validateOnFocusOut
             validateOnLoad={false}
@@ -161,7 +161,7 @@ export function ManageApps(appProps: IManageAppsProps) {
               style={{ width: 24, height: 24, fontSize: 24, marginRight: 7 }}
             />
             <IconPicker
-              buttonLabel={" select Icon"}
+              buttonLabel={" Select icon"}
               currentIcon={props.value}
               onSave={(iconName: string) => {
                 props.onChange(iconName);
@@ -243,7 +243,7 @@ export function ManageApps(appProps: IManageAppsProps) {
     >
       <div style={{ marginTop: 20, marginBottom: 25 }}>
         <Text variant="large" block>
-          Please add links for your favorite Apps
+          Please add links for your favorite apps
         </Text>
       </div>
       {hasError && (
