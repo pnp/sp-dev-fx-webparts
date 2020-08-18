@@ -1,21 +1,19 @@
 ## SPFx webpart to Test PnpJS SharePoint Methods 
 
-This webpart will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/api. This webpart can be used as seperate component to test PnP Js methods and know the response returned by a particular method/api. To maximise productivity, we should package and deploy it to a test(developer) site collection which then can be used side by side when we are doing development of SPFx solutions. 
+This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API. This web part can be used as separate component to test PnP Js methods and know the response returned by a particular method/API. To maximise productivity, we should package and deploy it to a test(developer) site collection which then can be used side by side when we are doing development of SPFx solutions.
 
-Note - As of now it only supports to test Pnp JS method from sp(SharePoint) packages which contains the fluent api used to call the SharePoint rest services. 
+Note - As of now it only supports to test Pnp JS method from sp(SharePoint) packages which contains the fluent API used to call the SharePoint rest services. 
 
 You can refer to this blog [link](https://siddharthvaghasia.com/2020/08/16/usage-guide-on-spfx-pnpjs-tester-web-part/) for usage guidance on How to use this webpart.
 
+![Web part in action](assets/pnpjstesterinaction.gif?raw=true "Webpart in action")
 
-WebPart in Action
+Idea behind this web part
 
-![Webpart in action](assets/pnpjstesterinaction.gif?raw=true "Webpart in action")
-
-Idea behind this webpart
 * Most of the SharePoint developers are using PnP JS to develop SPFx solutions.
 * During the development, there are times when we wanted to know what properties/attributes will be returned in response 
-* To get these details, we either use console.log to log response or debug the javascript and check what properties/attributes are returned etc.
-* This webpart can be used so that we can quickly test any SharePoint rest api methods using PnP JS.
+* To get these details, we either use console.log to log response or debug the JavaScript and check what properties/attributes are returned etc.
+* This web part can be used so that we can quickly test any SharePoint REST API methods using PnP JS.
 
 Feel free to connect on twitter:@siddh_me or twitter:@sanganikunj for any details.
 
@@ -23,14 +21,14 @@ Feel free to connect on twitter:@siddh_me or twitter:@sanganikunj for any detail
 
 * WebPart to test PnP JS SharePoint package methods
 * Response will be displayed in a code format.
-* By default, it will run in context of current site collection. 
-* Optional option to enter diffrent site collection or sub site url to set PnP JS context to diffrent url(other than current context)
+* By default, it will run in context of current site collection.
+* Optional option to enter different site collection or sub site url to set PnP JS context to different url(other than current context)
 * Support for Get and Post methods.
 * Option to see some examples which can be copied and tested just by changing list/libraries/column names.
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -47,16 +45,21 @@ git clone the repo
 npm i
 gulp serve
 ```
+
 - Execute the following gulp task to bundle your solution. This executes a release build of your project by using a dynamic label as the host URL for your assets. This URL is automatically updated based on your tenant CDN settings:
+
 ```bash
 gulp bundle --ship
 ```
-- Execute the following task to package your solution. This creates an updated webpart.sppkg package on the sharepoint/solution folder.
+
+- Execute the following task to package your solution. This creates an updated webpart `.sppkg` package on the `sharepoint/solution` folder.
+
 ```bash
 gulp package-solution --ship
 ```
+
 - Upload or drag and drop the newly created client-side solution package to the app catalog in your tenant.
-- Based on your tenant settings, if you would not have CDN enabled in your tenant, and the includeClientSideAssets setting would be true in the package-solution.json, the loading URL for the assets would be dynamically updated and pointing directly to the ClientSideAssets folder located in the app catalog site collection.
+- Based on your tenant settings, if you would not have CDN enabled in your tenant, and the `includeClientSideAssets` setting would be true in the `package-solution.json`, the loading URL for the assets would be dynamically updated and pointing directly to the `ClientSideAssets` folder located in the app catalog site collection.
 
 
 ## Solution
