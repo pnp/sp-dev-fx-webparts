@@ -62,6 +62,16 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnpjsexplorer
+      name: react-pnpjsexplorer
+      title: SPFx webpart to Test PnpJS SharePoint Methods
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnpjsexplorer/assets/pnpjstesterinaction.gif?raw=true
+      author: Siddharth Vaghasia, Kunj Sangani
+      summary: This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API
+      modifiedtext: August 14, 2020
+      modified: 2020-08-14
+    - framework: React
       spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-smart-profile-photo-editor
       name: react-smart-profile-photo-editor
