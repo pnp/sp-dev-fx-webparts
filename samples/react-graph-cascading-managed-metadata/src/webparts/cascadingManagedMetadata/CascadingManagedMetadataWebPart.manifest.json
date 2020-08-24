@@ -17,9 +17,9 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "cascadingManagedMetadata" },
-    "description": { "default": "cascadingManagedMetadata description" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "Cascading Managed Metadata" },
+    "description": { "default": "Gets the data from termstore using Microsoft Graph" },
+    "officeFabricIconFontName": "DependencyAdd",
     "properties": {
       "termSetId": ""
     }
