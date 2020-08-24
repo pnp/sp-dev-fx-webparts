@@ -1,3 +1,5 @@
+//* Thank you Mikael Svenson
+
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { GraphError } from '@microsoft/microsoft-graph-client';
 import { MSGraphClient } from '@microsoft/sp-http';
