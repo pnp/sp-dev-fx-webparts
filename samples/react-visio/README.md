@@ -30,6 +30,7 @@ This sample shows how the [Visio JavaScript APIs](https://docs.microsoft.com/off
 
 | Version | Date               | Comments             |
 | ------- | ------------------ | -------------------- |
+| 1.6     | August 25, 2020 | Update to SPFx 1.11.0 |
 | 1.5     | February 20, 2019 | Update to SPFx 1.10.0 |
 | 1.4     | September 20, 2019 | Update to SPFx 1.9.1 |
 | 1.3     | April 4, 2019      | Update readme        |

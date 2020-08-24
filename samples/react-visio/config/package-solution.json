@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-visio-client-side-solution",
     "id": "0ad401f1-b158-4626-8e71-cf27b1f4848d",
-    "version": "1.0.0.0",
+    "version": "1.6.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
