@@ -16,17 +16,11 @@ export class MMDService {
                 if (requiredOptionsFromCache.length) {
                     options = requiredOptionsFromCache.map(r => ({ key: r.key, text: r.text }));
                     return options;
-                } else {
-                    //Get from Graph
-                    return await this._getTermsAsDropdownOptionsUsingGraph(apiUrl, parent);
-                }
-            } else {
-                //Get from Graph
-                return await this._getTermsAsDropdownOptionsUsingGraph(apiUrl, parent);
-            }
-        } else {
-            return await this._getTermsAsDropdownOptionsUsingGraph(apiUrl, parent);
-        }
+                } 
+            } 
+        } 
+        //Get data using Graph
+        return await this._getTermsAsDropdownOptionsUsingGraph(apiUrl, parent);
     }
 
     private static async _getTermsAsDropdownOptionsUsingGraph(apiUrl: string, parent: string): Promise<IDropdownOption[]> {
