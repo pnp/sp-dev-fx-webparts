@@ -4,9 +4,9 @@ import { ICascadingManagedMetadataProps } from './ICascadingManagedMetadataProps
 import { MSGraph } from '../services/MSGraph';
 import { ITerms } from '../../interfaces';
 
-import { Dropdown, DropdownMenuItemType, IDropdownStyles, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { Map, ICoordinates, MapType } from "@pnp/spfx-controls-react/lib/Map";
+import { Map, ICoordinates } from "@pnp/spfx-controls-react/lib/Map";
 import { MMDService } from '../services/MMDService';
 
 
@@ -84,13 +84,12 @@ const CascadingManagedMetadata: React.SFC<ICascadingManagedMetadataProps> = (pro
             </React.Fragment>
           ) :
           (
-            selectedCity ?
-              <div style={{ marginTop: "10px" }}>
-                <MessageBar messageBarType={MessageBarType.warning}>To see the map, please check if the coordinates have been configured correctly.</MessageBar>
-              </div> :
-              <div style={{ marginTop: "10px" }}>
-                <MessageBar messageBarType={MessageBarType.warning}>To see the map, please select a city.</MessageBar>
-              </div>
+            <div style={{ marginTop: "15px" }}>
+              <MessageBar messageBarType={MessageBarType.warning}>
+                {selectedCity ? "To see the map, please check if the coordinates have been configured correctly."
+                  : "To see the map, please select a city."}
+              </MessageBar>
+            </div>
           )
       }
     </div>
