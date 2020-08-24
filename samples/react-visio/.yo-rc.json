@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.10.0",
+    "version": "1.11.0",
     "libraryName": "react-visio",
     "libraryId": "0ad401f1-b158-4626-8e71-cf27b1f4848d",
     "packageManager": "npm",
