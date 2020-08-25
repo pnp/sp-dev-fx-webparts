@@ -62,6 +62,16 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.8.2
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnpjs-project-online
+      name: react-pnpjs-project-online
+      title: PnPjs Project Online
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnpjs-project-online/assets/Preview.gif
+      author: Joel Rodrigues
+      summary: This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept.
+      modifiedtext: December 4, 2019
+      modified: 2019-12-04
+    - framework: React
       spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnpjsexplorer
       name: react-pnpjsexplorer
