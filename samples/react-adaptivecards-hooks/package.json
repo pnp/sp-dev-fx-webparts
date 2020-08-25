@@ -1,6 +1,6 @@
 {
   "name": "react-adaptivecards-hooks",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -24,9 +24,9 @@
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
-    "adaptivecards": "^1.2.5",
+    "adaptivecards": "^1.2.6",
     "adaptivecards-fabric": "^1.0.4",
-    "adaptivecards-templating": "^0.1.1-alpha.1",
+    "adaptivecards-templating": "1.1.0",
     "markdown-it": "^10.0.0",
     "office-ui-fabric-react": "6.189.2",
     "react": "16.8.5",
