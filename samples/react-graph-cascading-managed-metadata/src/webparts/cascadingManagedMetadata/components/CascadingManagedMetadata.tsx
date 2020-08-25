@@ -19,11 +19,11 @@ const CascadingManagedMetadata: React.SFC<ICascadingManagedMetadataProps> = (pro
   const [coordinates, setCoordinates] = React.useState<ICoordinates>({ latitude: null, longitude: null });
 
   React.useEffect(() => {
-    _getCountries().then(terms => {
-      const options: IDropdownOption[] = terms.value.map(t => ({ key: t.id, text: t.labels[0].name }));
+    _getCountries().then(countries => {
+      const options: IDropdownOption[] = countries.value.map(c => ({ key: c.id, text: c.labels[0].name }));
       setCountriesList(options);
     });
-  });
+  }, []);
 
   //* Get the country terms i.e. level 1 children using Graph
   const _getCountries = async (): Promise<ITerms> => {
