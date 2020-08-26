@@ -20,6 +20,7 @@ A version of [react-adaptivecards](https://github.com/SharePoint/sp-dev-fx-webpa
 Solution|Author(s)
 --------|---------
 react-adaptivecards-hooks | Paul Schaeflein (http://www.schaeflein.net)
+react-adaptivecards-hooks | Hugo Bernier ([Tahoe Ninjas](https://tahoeninjas.blog), [@bernier](https://twitter.com/bernierh))
 
 ## Version history
 

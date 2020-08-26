@@ -92,16 +92,24 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
       try {
         context.$root = JSON.parse(this.props.data);
       } catch (error) {
+        console.error("Error parsing the data JSON", error);
         this._errorHandler(strings.DataJsonError + error);
         return;
       }
 
+      try {
       // Expand the card by combining the template and data
       card = template.expand(context);
+      } catch (error) {
+        console.error("Error combining template and data", error);
+        this._errorHandler(strings.DataJsonError + error);
+        return;
+      }
     } else {
       try {
         card = JSON.parse(this.props.template);
       } catch (error) {
+        console.error("Error parsing template", error);
         this._errorHandler(strings.TemplateJsonError + error);
         return;
       }

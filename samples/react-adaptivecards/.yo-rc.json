@@ -19,7 +19,7 @@
     "environment": "spo",
     "framework": "react",
     "isCreatingSolution": false,
-    "version": "1.10.0",
+    "version": "1.11.0",
     "libraryName": "adaptive-card-host",
     "libraryId": "ce1e3712-fb7a-4564-b2d3-c81e45936afd",
     "packageManager": "npm",
