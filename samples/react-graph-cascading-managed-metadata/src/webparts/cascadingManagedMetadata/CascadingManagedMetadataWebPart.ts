@@ -44,7 +44,7 @@ export default class CascadingManagedMetadataWebPart extends BaseClientSideWebPa
             iconName: 'Edit',
             iconText: 'Configure your webpart',
             description: 'Please configure the web part.',
-            buttonLabel: 'Confifure',
+            buttonLabel: 'Configure',
             onConfigure: this._onConfigure.bind(this)
           }
         );

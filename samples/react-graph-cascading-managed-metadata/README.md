@@ -1,11 +1,15 @@
 # Cascading managed metadata using Graph API (beta)
 
-This webpart shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data.
+## Summary
+
+This web part shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data.
 
 ### Functionality
+
 ![Cascading managed metadata](./assets/cmmd.gif)
 
 ### Termstore
+
 ![Term store](./assets/termstore.png)
 
 ## Used SharePoint Framework Version
@@ -16,6 +20,13 @@ This webpart shows how to use the Microsoft Graph APIs (beta) for Taxonomy to ge
 
 * [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+
+## Pre-requisites
+
+* Set up the termset structure as shown in the image above.
+* For the cities, get the required latitude and longitude.
+* Set the description of the city term as `latitude;longitude` (as highlighted for the term `London` in the image above).
+
 
 ## Solution
 
@@ -35,6 +46,13 @@ Version|Date|Comments
 
 ---
 
+## Minimal Path to Awesome
+
+* Clone this repository
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
+
 ## Features
 
 This sample illustrates the following concepts on top of the SharePoint Framework:
@@ -46,28 +64,9 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * Usage of PnP SPFx controls (Maps and Placeholder)
 * Office UI fabric components
 
-## Config
+### Enhancements
 
-* Set up the termset structure as shown in the image above.
-* For the cities, get the required latitude and longitude.
-* Set the description of the city term as `latitude;longitude` (as highlighted for teh term `London` in the image above).
+* Currently, this web part supports 2-level cascading. So there is scope to enhance this such that it supports more levels of cascading dynamically.
+* Currently, this web part reads latitude and longitude from description of the city terms. If there is a way of getting these from the custom properties of the city terms, then that needs to be implemented.
 
-## Enhancements
-
-* Currently, this webpart supports 2 level cascading. So there is scope to enhance this such that it supports more levels of cascading dynamically.
-* Currently, this webpart reads latitude and longitude from description of the city terms. If there is a way of getting these from the custom properties of the city terms, then that needs to be implemented.
-
-### Building the code
-
-```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
-```
-
-This package produces the following:
-
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-graph-cascading-managed-metadata" />
