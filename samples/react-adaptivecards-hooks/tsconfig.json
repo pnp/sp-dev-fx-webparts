@@ -29,7 +29,8 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "src/webparts/adaptiveCardViewer/components/RootComponent.tsx"
+    "src/**/*.ts", "src/webparts/adaptiveCardViewer/components/RootComponent.tsx",
+      "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
