@@ -62,6 +62,26 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.11.0
+      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-visio
+      name: react-visio
+      title: Visio Embed
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-visio/assets/Preview.PNG
+      author: Joel Rodrigues
+      summary: This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.
+      modifiedtext: August 25, 2020
+      modified: 2020-08-25
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-cascading-managed-metadata
+      name: react-graph-cascading-managed-metadata
+      title: Cascading managed metadata using Graph API
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-cascading-managed-metadata/assets/cmmd.gif
+      author: Anoop Tatti
+      summary: Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data.
+      modifiedtext: August 24, 2020
+      modified: 2020-08-24
+    - framework: React
       spfx: 1.8.2
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnpjs-project-online
       name: react-pnpjs-project-online
@@ -494,10 +514,10 @@ extra:
       summary: This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif
       framework: React
-      spfx: 1.10.0
+      spfx: 1.11.0
       author: Hugo Bernier
-      modifiedtext: June 11, 2020
-      modified: 2020-06-11
+      modifiedtext: August 25, 2020
+      modified: 2020-08-25
       level: 300
     - framework: Javascript
       spfx: 1.6.0
@@ -779,10 +799,10 @@ extra:
       summary: A version of react-adaptivecards using React Hooks.
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards-hooks/assets/preview.png
       framework: React
-      spfx: 1.10.0
+      spfx: 1.11.0
       author: Paul Schaeflein
-      modifiedtext: April 27, 2020
-      modified: 2020-04-27
+      modifiedtext: August 25, 2020
+      modified: 2020-08-25
       level: 300
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-faqapp
       name: react-faqapp
@@ -2604,18 +2624,6 @@ extra:
     - framework: React
       spfx: 1.9.1
       year: 2019
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-visio
-      name: react-visio
-      title: Visio Embed
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-visio/assets/Preview.PNG
-      author: Joel Rodrigues
-      summary: This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.
-      version: 1.4
-      modifiedtext: September 20, 2019
-      modified: 2019-09-20
-    - framework: React
-      spfx: 1.9.1
-      year: 2019
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-webcam
       name: react-webcam
       title: Web/Mobile Camera Demo
@@ -2729,6 +2737,7 @@ extra:
     - Adrián Díaz
     - Alex Terentiev
     - Andrew Koltyakov
+    - Anoop Tatti
     - Ashok Swain
     - Atish Kumar Dipongkor
     - Austin Breslin
