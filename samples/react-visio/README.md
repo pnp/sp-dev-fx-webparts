@@ -8,7 +8,7 @@ This sample shows how the [Visio JavaScript APIs](https://docs.microsoft.com/off
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/drop-1.10.0-green.svg)
+![SPFx 1.11.0](https://img.shields.io/badge/drop-1.11.0-green.svg)
 
 ## Applies to
 
