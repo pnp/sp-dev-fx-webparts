@@ -1,13 +1,18 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/upgradeMe/UpgradeMeWebPart.js",
-      "manifest": "./src/webparts/upgradeMe/UpgradeMeWebPart.manifest.json",
-      "outputPath": "./dist/upgrade-me-web-part.js"
-    }
-  ],
+  "version": "2.0",
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
   "externals": {},
   "localizedResources": {
-    "UpgradeMeWebPartStrings": "webparts/upgradeMe/loc/{locale}.js"
+    "UpgradeMeWebPartStrings": "lib/webparts/upgradeMe/loc/{locale}.js"
+  },
+  "bundles": {
+    "upgrade-me-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/upgradeMe/UpgradeMeWebPart.js",
+          "manifest": "./src/webparts/upgradeMe/UpgradeMeWebPart.manifest.json"
+        }
+      ]
+    }
   }
 }

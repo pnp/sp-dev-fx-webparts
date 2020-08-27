@@ -8,7 +8,7 @@ This web part does nothing, really. It is intended to be used to test upgrading 
 
 ## Used SharePoint Framework Version
 
-![1.1.0](https://img.shields.io/badge/version-1.1.0-green.svg)
+![1.4.1](https://img.shields.io/badge/version-1.4.1-green.svg)
 
 ## Applies to
 
@@ -40,12 +40,8 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* Clone this repository
-* in the command line run:
-  * `npm install`
-  * `gulp serve`
+Not applicable.
 
-> Include any additional steps as needed.
 
 ## Features
 
