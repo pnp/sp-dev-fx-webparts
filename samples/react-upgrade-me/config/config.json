@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/upgradeMe/UpgradeMeWebPart.js",
+      "manifest": "./src/webparts/upgradeMe/UpgradeMeWebPart.manifest.json",
+      "outputPath": "./dist/upgrade-me-web-part.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "UpgradeMeWebPartStrings": "webparts/upgradeMe/loc/{locale}.js"
+  }
+}
