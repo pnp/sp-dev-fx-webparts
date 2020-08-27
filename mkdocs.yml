@@ -62,6 +62,16 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.4.1
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-upgrade-me
+      name: react-upgrade-me
+      title: Upgrade Me
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-upgrade-me/assets/react-upgrade-me.png
+      author: Hugo Bernier
+      summary: Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade.
+      modifiedtext: August 27, 2020
+      modified: 2020-08-27
+    - framework: React
       spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-visio
       name: react-visio
