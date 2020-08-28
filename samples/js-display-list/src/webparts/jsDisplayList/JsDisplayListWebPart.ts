@@ -1,9 +1,5 @@
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneDropdown,
-  IPropertyPaneDropdownOption
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneDropdown, IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 
 import styles from './JsDisplayList.module.scss';
 
