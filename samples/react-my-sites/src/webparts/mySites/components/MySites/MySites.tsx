@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Filters} from '../../../../Entities/EnumFilters';
+import { Filters } from "../../../../Entities/EnumFilters";
 import "./paginationOverride.module.scss";
 import { IMySitesProps } from "./IMySitesProps";
 import { escape } from "@microsoft/sp-lodash-subset";
@@ -18,6 +18,7 @@ import {
   IContextualMenuItem,
   FontIcon,
   Label,
+  ContextualMenuItemType,
 } from "office-ui-fabric-react";
 import { WebPartTitle } from "@pnp/spfx-controls-react";
 import { useUserSites } from "../../../../Hooks/useUserSites";
@@ -31,7 +32,11 @@ import _ from "lodash";
 import { MSGraphClient } from "@microsoft/sp-http";
 
 let _searchResults: SearchResults = null;
-let _msGraphClient:MSGraphClient = undefined;
+let _msGraphClient: MSGraphClient = undefined;
+let _filterMenuProps: IContextualMenuProps = undefined;
+
+// Get Hook functions
+const { getUserSites, getUserWebs } = useUserSites();
 
 export const MySites: React.FunctionComponent<IMySitesProps> = (
   props: IMySitesProps
@@ -47,11 +52,10 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
     },
     webPartTile: {
       fontWeight: 500,
-      marginBottom: 20
+      marginBottom: 20,
     },
   });
   // Document Card Styles
-
 
   // state
   const [state, setState] = React.useState<IMySitesState>({
@@ -61,32 +65,40 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
     hasError: false,
     title: props.title,
     currentPage: 1,
-    totalPages: 50,
+    totalPages: 0,
     searchValue: "",
     currentFilter: Filters.All,
+    currentFilterName: "All",
+    currentSelectedSite: undefined,
+    filterMenuProps: undefined,
   });
 
   const filterIcon: IIconProps = { iconName: "Filter" };
 
-  // Get Hook functions
-  const { getUserSites } = useUserSites();
-
   // get User Sites
   const _getUserSites = async (
     searchString?: string,
-    currentFilter?:  Filters
+    currentFilter?: Filters,
+    currentFilterName?:string,
+    site?:string
   ) => {
     try {
-      console.log('tiles var', props.themeVariant);
       setState({ ...state, isLoading: true });
       const { itemsPerPage } = props;
-      const searchResults = await getUserSites(searchString, itemsPerPage, currentFilter);
+      const searchResults = await getUserSites(
+        searchString,
+        itemsPerPage,
+        currentFilter,
+        site
+      );
       _searchResults = searchResults;
       let _totalPages: number = searchResults.TotalRows / itemsPerPage;
       const _modulus: number = searchResults.TotalRows % itemsPerPage;
       _totalPages =
         _modulus > 0 ? toInteger(_totalPages) + 1 : toInteger(_totalPages);
+
       setState({
+        ...state,
         searchValue: "",
         currentPage: 1,
         totalPages: _totalPages,
@@ -95,7 +107,11 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
         hasError: false,
         errorMessage: "",
         sites: _searchResults.PrimarySearchResults,
-        currentFilter: currentFilter
+        currentFilter: currentFilter,
+        currentSelectedSite: site,
+        currentFilterName: currentFilterName,
+        // tslint:disable-next-line: no-use-before-declare
+        filterMenuProps: _filterMenuProps,
       });
     } catch (error) {
       console.log(error);
@@ -108,110 +124,154 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
     }
   };
 
-  const _Filtersites = async (filter: string) => {
-    setState({ ...state, isLoading: true });
-    let _filteredSites: any[] = [];
+  const _Filtersites = async (filter: string, site?:string) => {
 
     switch (filter) {
       case "All":
-        setState({...state,currentFilter: Filters.All});
-        await  _getUserSites('', Filters.All);
+        await _getUserSites("", Filters.All, "All");
         break;
       case "Groups":
-        setState({...state,currentFilter: Filters.Group});
-        await  _getUserSites('', Filters.Group);
+        await _getUserSites("", Filters.Group, "Groups");
         break;
       case "OneDrive":
-        setState({...state,currentFilter: Filters.OneDrive});
-        await  _getUserSites('', Filters.OneDrive);
+        await _getUserSites("", Filters.OneDrive, "OneDrive");
         break;
       case "SharePoint":
-        setState({...state,currentFilter: Filters.SharePoint});
-        await  _getUserSites('', Filters.SharePoint);
+        await _getUserSites("", Filters.SharePoint, "SharePoint");
         break;
       default:
-        setState({ ...state, isLoading: false });
-        break;
+          await _getUserSites("", Filters.Site, filter, site);
     }
   };
 
-  const filterMenuProps: IContextualMenuProps = {
-    items: [
-      {
-        key: "0",
-        text: "All",
-        iconProps: { iconName: "ThumbnailView" },
-        onClick: (
-          ev:
-            | React.MouseEvent<HTMLElement, MouseEvent>
-            | React.KeyboardEvent<HTMLElement>,
-          item: IContextualMenuItem
-        ) => {
-          _Filtersites(item.text);
-        },
-      },
-      {
-        key: "1",
-        text: "SharePoint",
-        iconProps: { iconName: "SharepointAppIcon16" },
-        onClick: (
-          ev:
-            | React.MouseEvent<HTMLElement, MouseEvent>
-            | React.KeyboardEvent<HTMLElement>,
-          item: IContextualMenuItem
-        ) => {
-          _Filtersites(item.text);
-        },
-      },
-      {
-        key: "2",
-        text: "Groups",
-        iconProps: { iconName: "Group" },
-        onClick: (
-          ev:
-            | React.MouseEvent<HTMLElement, MouseEvent>
-            | React.KeyboardEvent<HTMLElement>,
-          item: IContextualMenuItem
-        ) => {
-          _Filtersites(item.text);
-        },
-      },
-      {
-        key: "3",
-        text: "OneDrive",
-        iconProps: { iconName: "onedrive" },
-        onClick: (
-          ev:
-            | React.MouseEvent<HTMLElement, MouseEvent>
-            | React.KeyboardEvent<HTMLElement>,
-          item: IContextualMenuItem
-        ) => {
-          _Filtersites(item.text);
-        },
-      },
-    ],
-  };
+
   // useEffect component did mount or modified
   React.useEffect(() => {
     (async () => {
       _msGraphClient = await props.context.msGraphClientFactory.getClient();
-      await _getUserSites("",state.currentFilter);
+
+      const _sitesWithSubSties = await getUserWebs();
+      console.log("subsites", _sitesWithSubSties);
+      const _uniqweb = _.uniqBy(
+        _sitesWithSubSties.PrimarySearchResults,
+        "ParentLink"
+      );
+
+
+    _filterMenuProps = {
+
+        items: [
+          {
+            key: "0",
+            text: "All",
+            iconProps: { iconName: "ThumbnailView" },
+            onClick: (
+              ev:
+                | React.MouseEvent<HTMLElement, MouseEvent>
+                | React.KeyboardEvent<HTMLElement>,
+              item: IContextualMenuItem
+            ) => {
+              _Filtersites(item.text);
+            },
+          },
+          {
+            key: "1",
+            text: "SharePoint",
+            iconProps: { iconName: "SharepointAppIcon16" },
+            onClick: (
+              ev:
+                | React.MouseEvent<HTMLElement, MouseEvent>
+                | React.KeyboardEvent<HTMLElement>,
+              item: IContextualMenuItem
+            ) => {
+              _Filtersites(item.text);
+            },
+          },
+          {
+            key: "2",
+            text: "Groups",
+            iconProps: { iconName: "Group" },
+            onClick: (
+              ev:
+                | React.MouseEvent<HTMLElement, MouseEvent>
+                | React.KeyboardEvent<HTMLElement>,
+              item: IContextualMenuItem
+            ) => {
+              _Filtersites(item.text);
+            },
+          },
+          {
+            key: "3",
+            text: "OneDrive",
+            iconProps: { iconName: "onedrive" },
+            onClick: (
+              ev:
+                | React.MouseEvent<HTMLElement, MouseEvent>
+                | React.KeyboardEvent<HTMLElement>,
+              item: IContextualMenuItem
+            ) => {
+              _Filtersites(item.text);
+            },
+          },
+        ],
+      };
+
+
+      if (_sitesWithSubSties.PrimarySearchResults.length > 0){
+        _filterMenuProps.items.push(
+          {
+            key: 'sites',
+            itemType: ContextualMenuItemType.Header,
+            text: 'Sites with Sub Sites',
+            itemProps: {
+              lang: 'en-us',
+            },
+          }
+        );
+      }
+
+      // Add Site Collections with sub
+      for (const web of _uniqweb) {
+        // tslint:disable-next-line: no-use-before-declare
+        const _lastHasPosition: number = (web.ParentLink as string).lastIndexOf(
+          "/"
+        );
+        const _siteName: string = (web.ParentLink as string).substring(
+          _lastHasPosition + 1
+        );
+        // tslint:disable-next-line: no-use-before-declare
+        _filterMenuProps.items.push({
+          key: web.ParentLink,
+          text: _siteName,
+          iconProps: { iconName: "DrillExpand" },
+          onClick: (
+            ev:
+              | React.MouseEvent<HTMLElement, MouseEvent>
+              | React.KeyboardEvent<HTMLElement>,
+            item: IContextualMenuItem
+          ) => {
+            // tslint:disable-next-line: no-use-before-declare
+            _Filtersites(item.text, item.key);
+          },
+        });
+      }
+      await _getUserSites("", state.currentFilter, state.currentFilterName);
     })();
   }, [props.title, props.itemsPerPage]);
 
   // On Search Sites
   const _onSearch = async (value: string) => {
-    await _getUserSites(value,state.currentFilter);
+    await _getUserSites(value, state.currentFilter,state.currentFilterName, state.currentSelectedSite);
   };
 
   // On Search Sites
   const _onClear = async (ev: any) => {
-    await _getUserSites("",state.currentFilter);
+    await _getUserSites("", state.currentFilter,state.currentFilterName, state.currentSelectedSite);
   };
 
-
-// Render component
-  if (state.hasError) { // render message error
+  // Render component
+  if (state.hasError) {
+    // render message error
     return (
       <MessageBar messageBarType={MessageBarType.error}>
         {state.errorMessage}
@@ -229,9 +289,8 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
           themeVariant={props.themeVariant}
           updateProperty={props.updateProperty}
           className={stylesComponent.webPartTile}
-
         />
-        <Stack horizontal horizontalAlign="end" tokens={{ childrenGap: 10 }}>
+        <Stack horizontal verticalAlign="center" horizontalAlign="end" wrap tokens={{ childrenGap: 5 }}>
           <SearchBox
             placeholder="Search my sites"
             underlined={true}
@@ -246,10 +305,11 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
           />
           <CommandButton
             iconProps={filterIcon}
-            text={Filters[state.currentFilter]}
-            menuProps={filterMenuProps}
+            text={state.currentFilterName}
+            menuProps={state.filterMenuProps}
             disabled={false}
             checked={true}
+            title="filter"
           />
         </Stack>
         {state.isLoading ? (
@@ -259,29 +319,40 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
           ></Spinner>
         ) : (
           <>
-           { // has sites ?
-
-             state.sites.length > 0 ?
-             <div className={stylesComponent.containerTiles}>
-             {state.sites.map((site:any, i: number) => {
-               return (
-                 <SiteTile
-                   site={site}
-                   msGraphClient={_msGraphClient}
-                   themeVariant={props.themeVariant}
-                 ></SiteTile>
-               );
-             })}
-           </div>
-           :
-           <>
-           <Stack horizontal verticalAlign="center" horizontalAlign="center" tokens={{childrenGap: 20}} styles={{root: {marginTop: 50}}}>
-             <FontIcon iconName="Tiles" style={{fontSize: 48}}></FontIcon>
-             <Label styles={{root:{fontSize: 26}}}>No Sites Found </Label>
-           </Stack>
-           </>
-
-          }
+            {
+              // has sites ?
+              state.sites.length > 0 ? (
+                <div className={stylesComponent.containerTiles}>
+                  {state.sites.map((site: any, i: number) => {
+                    return (
+                      <SiteTile
+                        site={site}
+                        msGraphClient={_msGraphClient}
+                        themeVariant={props.themeVariant}
+                      ></SiteTile>
+                    );
+                  })}
+                </div>
+              ) : (
+                <>
+                  <Stack
+                    horizontal
+                    verticalAlign="center"
+                    horizontalAlign="center"
+                    tokens={{ childrenGap: 20 }}
+                    styles={{ root: { marginTop: 50 } }}
+                  >
+                    <FontIcon
+                      iconName="Tiles"
+                      style={{ fontSize: 48 }}
+                    ></FontIcon>
+                    <Label styles={{ root: { fontSize: 26 } }}>
+                      No Sites Found{" "}
+                    </Label>
+                  </Stack>
+                </>
+              )
+            }
 
             {state.totalPages > 1 && (
               <>
@@ -296,7 +367,7 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
                     color="primary"
                     count={state.totalPages}
                     page={state.currentPage}
-                    onChange={async (event:any, page:number) => {
+                    onChange={async (event: any, page: number) => {
                       const rs = await _searchResults.getPage(page);
                       _searchResults = rs;
                       setState({

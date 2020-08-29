@@ -1,6 +1,7 @@
 export enum Filters {
-  "SharePoint",
+  "All",
   "Group",
   "OneDrive",
-  "All",
+  "SharePoint",
+  "Site"
 }
