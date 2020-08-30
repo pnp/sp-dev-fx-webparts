@@ -58,7 +58,6 @@ react-my-sites|João Mendes
 Version|Date|Comments
 -------|----|--------
 1.0.0|August 6, 2020|Initial release
-1.0.1|August 29, 2020|Additional updates
 
 ## Disclaimer
 
