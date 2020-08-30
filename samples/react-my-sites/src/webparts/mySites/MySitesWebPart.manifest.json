@@ -26,7 +26,7 @@
       "itemsPerPage": 20,  
       "enableFilterSharepointSites": true,
       "enableFilterO365groups": true,
-      "enableFilterSitesWithSubWebs": true,    
+      "enableFilterSitesWithSubWebs": true   
     }
   }]
 }

@@ -210,7 +210,7 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
             _Filtersites(item.text);
           }
         }       
-        ) 
+        );
      }
 
       if (enableFilterSitesWithSubWebs &&  _sitesWithSubSties.PrimarySearchResults.length > 0){

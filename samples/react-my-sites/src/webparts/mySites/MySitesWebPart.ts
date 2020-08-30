@@ -22,7 +22,7 @@ import { PropertyFieldSitePicker } from '@pnp/spfx-property-controls/lib/Propert
 import { IPropertyFieldSite } from "@pnp/spfx-property-controls/lib/PropertyFieldSitePicker";
 import { PropertyFieldMultiSelect } from '@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect';
 import {  useUserSites } from '../../Hooks/useUserSites';
-import { Team } from '@microsoft/microsoft-graph-types'
+ 
 export interface IPropertyControlsTestWebPartProps {
   sites: IPropertyFieldSite[];
 }
@@ -164,7 +164,7 @@ protected async  onPropertyPaneConfigurationStart() {
   const _userTeams:ITeam[] = await getUserTeams(this.context.pageContext.user.loginName, _msGraphClient);
  
   for (const _team of _userTeams) {
-      this._userTeamsOptions.push({key: _team.id, text: _team.displayName  })
+      this._userTeamsOptions.push({key: _team.id, text: _team.displayName  });
   }
     this.context.propertyPane.refresh();
 }
