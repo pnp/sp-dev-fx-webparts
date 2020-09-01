@@ -49,7 +49,8 @@ export const useUserSites = () => {
   const getUserSites = async (
     searchString?: string,
     itemsPerPage?: number,
-    filter?: Filters
+    filter?: Filters,
+    site?:string
   ): Promise<SearchResults> => {
     let searchResults: SearchResults = null;
     let _filter: string = "";
@@ -62,12 +63,17 @@ export const useUserSites = () => {
         _filter = ` GroupId:a* OR GroupId:b* OR GroupId:c* OR GroupId:d* OR GroupId:e* OR GroupId:f* OR GroupId:g* OR GroupId:h* OR GroupId:i* OR GroupId:j* OR GroupId:k* OR GroupId:l* OR GroupId:m* OR GroupId:n* OR GroupId:o* OR GroupId:p* OR GroupId:q* OR GroupId:r* OR GroupId:s* OR GroupId:t* OR GroupId:u* OR GroupId:v* OR GroupId:w* OR GroupId:x* OR GroupId:y* OR GroupId:z* OR GroupId:1* OR GroupId:2* OR GroupId:3* OR GroupId:4* OR GroupId:5* OR GroupId:6* OR GroupId:7* OR GroupId:8* OR GroupId:9* OR GroupId:0*`;
         break;
       case Filters.OneDrive:
-        _filter = " SiteGroup:Onedrive";
+        _filter = " WebTemplate:SPSPERS"; // OneDrive
+     //   _filter = " SiteGroup:Onedrive";
         break;
       case Filters.SharePoint:
         _filter =
           " SiteGroup:SharePoint AND NOT(GroupId:b* OR GroupId:c* OR GroupId:d* OR GroupId:e* OR GroupId:f* OR GroupId:g* OR GroupId:h* OR GroupId:i* OR GroupId:j* OR GroupId:k* OR GroupId:l* OR GroupId:m* OR GroupId:n* OR GroupId:o* OR GroupId:p* OR GroupId:q* OR GroupId:r* OR GroupId:s* OR GroupId:t* OR GroupId:u* OR GroupId:v* OR GroupId:w* OR GroupId:x* OR GroupId:y* OR GroupId:z* OR GroupId:1* OR GroupId:2* OR GroupId:3* OR GroupId:4* OR GroupId:5* OR GroupId:6* OR GroupId:7* OR GroupId:8* OR GroupId:9* OR GroupId:0*)";
         break;
+        case Filters.Site:
+          _filter = `Path:${site}`;
+
+          break;
     }
 
     const q = SearchQueryBuilder(
@@ -79,6 +85,11 @@ export const useUserSites = () => {
         Direction: SortDirection.Descending,
       })
       .selectProperties(
+        "ParentLink",
+        "SPSiteURL",
+        "SiteID",
+        "SPWebUrl",
+        "WebId",
         "SiteLogo",
         "SiteClosed",
         "RelatedHubSites",
@@ -94,8 +105,10 @@ export const useUserSites = () => {
         "ModifiedById",
         "LastModifiedTime",
         "OriginalPath",
+        "Path",
         "Title",
-        "Created"
+        "Created",
+        "WebTemplate"
       );
     const results = await sp.search(q);
     searchResults = results; // set the current results
@@ -103,5 +116,47 @@ export const useUserSites = () => {
     return searchResults;
   };
 
-  return { getUserSites, checkGroupHasTeam };
+// Get User Sites
+const getUserWebs = async (
+
+): Promise<SearchResults> => {
+  let searchResults: SearchResults = null;
+  const q = SearchQueryBuilder(
+    `(contentclass:STS_Web)`
+  )
+    .rowLimit(100000)
+    .selectProperties(
+      "ParentLink",
+      "SPSiteURL",
+      "SiteID",
+      "SPWebUrl",
+      "WebId",
+      "SiteLogo",
+      "SiteClosed",
+      "RelatedHubSites",
+      "IsHubSite",
+      "GroupId",
+      "RelatedGroupId",
+      "SiteGroup",
+      "Author",
+      "CreatedBy",
+      "CreatedById",
+      "AccountName",
+      "ModifiedBy",
+      "ModifiedById",
+      "LastModifiedTime",
+      "OriginalPath",
+      "Path",
+      "Title",
+      "Created",
+      "WebTemplate"
+    );
+  const results = await sp.search(q);
+  searchResults = results; // set the current results
+  console.log("webs",searchResults);
+  return searchResults;
+};
+
+
+  return { getUserSites, checkGroupHasTeam, getUserWebs };
 };

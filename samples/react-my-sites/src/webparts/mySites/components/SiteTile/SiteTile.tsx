@@ -94,10 +94,9 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
       fontSize: 20,
       color: props.themeVariant ? props.themeVariant.palette.themePrimary: 'white',
       marginTop: 8,
-      marginRight: 16,
+      marginRight: 7,
     },
   };
-
   const DocumentCardActivityStyles: Partial<IDocumentCardActivityStyles> = {
     root: { paddingBottom: 0 },
   };
@@ -106,7 +105,6 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
     root: { justifyContent: "flex-start" },
 
   };
-
 
   let _activityUserEmail: string = "N/A";
   let _activityUser: string = "N/A";
@@ -124,6 +122,8 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
     OriginalPath,
     CreatedBy,
     Created,
+    IsHubSite,
+    WebTemplate
 
   } = props.site;
 
@@ -208,7 +208,7 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
             previewImages={[
               {
                 previewImageSrc:
-                  SiteGroup == "OneDrive" ? _siteLogoOndrive : _siteLogoSP,
+                  WebTemplate == "SPSPERS" ? _siteLogoOndrive : _siteLogoSP,
                 width: 68,
                 height: 68,
                 imageFit: ImageFit.cover,
@@ -229,15 +229,22 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
             />
 
             )}
-            {GroupId && (
+
+            {GroupId && GroupId !== "00000000-0000-0000-0000-000000000000" && ( // (is groupId = undefined or 000000-0000-0000-0000000000000 guid) this is showned is some personal drives
               <Icon
                 styles={groupIconStyles}
                 iconName="Group"
                 title="Office 365 Group"
               ></Icon>
             )}
-
-            {SiteGroup == "OneDrive" && (
+            {IsHubSite == "true" && (
+              <Icon
+                styles={groupIconStyles}
+                iconName="DrillExpand"
+                title="is Hub Site"
+              ></Icon>
+            )}
+            {WebTemplate == "SPSPERS" && (
               <Icon
                 styles={groupIconStyles}
                 iconName="onedrive"
