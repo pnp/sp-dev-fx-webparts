@@ -8,6 +8,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "@microsoft/sp-core-library": "1.11.0",
+    "@microsoft/sp-office-ui-fabric-core": "^1.11.0",
     "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
     "@types/es6-collections": "^0.5.32"
