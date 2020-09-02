@@ -1,7 +1,10 @@
 {
   "@microsoft/generator-sharepoint": {
-    "libraryName": "js-display-list",
-    "libraryId": "faf13055-4551-491c-8bbf-a00b30adfd54",
-    "framework": "none"
+    "version": "1.11.0",
+    "isDomainIsolated": false,
+    "isCreatingSolution": true,
+    "packageManager": "npm",
+    "componentType": "webpart",
+    "environment": "spo"
   }
 }

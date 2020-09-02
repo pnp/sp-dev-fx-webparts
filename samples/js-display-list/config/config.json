@@ -1,11 +1,6 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/jsDisplayList/JsDisplayListWebPart.js",
-      "manifest": "./src/webparts/jsDisplayList/JsDisplayListWebPart.manifest.json",
-      "outputPath": "./dist/js-display-list.bundle.js"
-    }
-  ],
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
   "externals": {
     "@microsoft/sp-client-base": "node_modules/@microsoft/sp-client-base/dist/sp-client-base.js",
     "@microsoft/sp-client-preview": "node_modules/@microsoft/sp-client-preview/dist/sp-client-preview.js",
@@ -16,6 +11,16 @@
     "react-dom/server": "node_modules/react-dom/dist/react-dom-server.min.js"
   },
   "localizedResources": {
-    "jsDisplayListStrings": "webparts/jsDisplayList/loc/{locale}.js"
+    "jsDisplayListStrings": "lib/webparts/jsDisplayList/loc/{locale}.js"
+  },
+  "bundles": {
+    "js-display-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/jsDisplayList/JsDisplayListWebPart.js",
+          "manifest": "./src/webparts/jsDisplayList/JsDisplayListWebPart.manifest.json"
+        }
+      ]
+    }
   }
 }
