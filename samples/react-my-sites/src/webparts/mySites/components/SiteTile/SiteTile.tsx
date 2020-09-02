@@ -130,15 +130,16 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
   // Use Effect on Mounting
   React.useEffect(() => {
     (async () => {
-      if (ModifiedById) {
+      if (ModifiedById && LastModifiedTime) {
         const _modifiedBySplit = ModifiedById.split("|");
         _activityUserEmail = _modifiedBySplit[0].trim();
         _activityUser = _modifiedBySplit[1].trim();
-        _activityDate = new Date(LastModifiedTime).toLocaleString();
+        const _lastModified =  new Date(LastModifiedTime);
+        _activityDate = _lastModified.toLocaleDateString() + ' ' + _lastModified.toLocaleTimeString();
         _activityMessage = `${strings.ChangedOnLabel}${_activityDate}`;
         try {
           if (_activityUserEmail) {
-            console.log(_activityUserEmail);
+             
             _userPhoto = await getUserPhoto(_activityUserEmail);
           }
         } catch (error) {
@@ -148,7 +149,9 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
       } else {
         _activityUserEmail = undefined;
         _activityUser = CreatedBy;
-        _activityDate = new Date(Created).toLocaleString();
+        const _lastCreated =  new Date(Created);
+        _activityDate = _lastCreated.toLocaleDateString() + ' ' + _lastCreated.toLocaleTimeString();
+        
         _activityMessage = `${strings.CreatedOnLabel}${_activityDate}`;
         _userPhoto = undefined;
       }
@@ -189,6 +192,7 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
         styles={documentCardStyles}
         type={DocumentCardType.compact}
         onClickHref={OriginalPath}
+        onClickTarget={"_blank"}
       >
         {props.site.SiteLogo ? (
           <DocumentCardPreview
@@ -244,13 +248,13 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
                 title="is Hub Site"
               ></Icon>
             )}
-            {WebTemplate == "SPSPERS" && (
+           {/*  {WebTemplate == "SPSPERS" && (
               <Icon
                 styles={groupIconStyles}
                 iconName="onedrive"
                 title="User OneDrive"
               ></Icon>
-            )}
+            )} */}
             {SiteGroup == "SharePoint" && !GroupId && (
               <Icon
                 styles={groupIconStyles}
@@ -259,13 +263,13 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
               ></Icon>
             )}
           </div>
-          <TooltipHost content={activityMessage} calloutProps={{gapSpace:5}}>
+          <div title={activityMessage} >
           <DocumentCardActivity
             styles={DocumentCardActivityStyles}
             activity={activityMessage}
             people={[{ name: activityUser, profileImageSrc: userPhoto }]}
           />
-          </TooltipHost>
+          </div>
         </DocumentCardDetails>
       </DocumentCard>
     </>

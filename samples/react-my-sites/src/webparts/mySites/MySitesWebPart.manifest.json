@@ -23,7 +23,10 @@
     "officeFabricIconFontName": "SharepointLogo",
     "properties": {
       "title": "My Sites",
-      "itemsPerPage": 20
+      "itemsPerPage": 20,  
+      "enableFilterSharepointSites": true,
+      "enableFilterO365groups": true,
+      "enableFilterSitesWithSubWebs": true   
     }
   }]
 }

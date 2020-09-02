@@ -36,7 +36,7 @@ let _msGraphClient: MSGraphClient = undefined;
 let _filterMenuProps: IContextualMenuProps = undefined;
 
 // Get Hook functions
-const { getUserSites, getUserWebs } = useUserSites();
+const { getUserSites, getUserWebs, getUserGroups, getSiteProperties } = useUserSites();
 
 export const MySites: React.FunctionComponent<IMySitesProps> = (
   props: IMySitesProps
@@ -44,7 +44,7 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
   // Global Compoment Styles
   const stylesComponent = mergeStyleSets({
     containerTiles: {
-      marginTop: 25,
+      marginTop: 5,
       display: "grid",
       marginBottom: 10,
       gridTemplateColumns: "repeat( auto-fit, minmax(300px, 1fr) )",
@@ -133,9 +133,9 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
       case "Groups":
         await _getUserSites("", Filters.Group, "Groups");
         break;
-      case "OneDrive":
+     /*  case "OneDrive":
         await _getUserSites("", Filters.OneDrive, "OneDrive");
-        break;
+        break; */
       case "SharePoint":
         await _getUserSites("", Filters.SharePoint, "SharePoint");
         break;
@@ -149,17 +149,17 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
   React.useEffect(() => {
     (async () => {
       _msGraphClient = await props.context.msGraphClientFactory.getClient();
-
+       
       const _sitesWithSubSties = await getUserWebs();
-      console.log("subsites", _sitesWithSubSties);
+      
       const _uniqweb = _.uniqBy(
         _sitesWithSubSties.PrimarySearchResults,
         "ParentLink"
       );
-
+      
+     const {enableFilterO365groups, enableFilterSharepointSites, enableFilterSitesWithSubWebs } =  props;
 
     _filterMenuProps = {
-
         items: [
           {
             key: "0",
@@ -174,7 +174,13 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
               _Filtersites(item.text);
             },
           },
-          {
+        ],
+      };
+
+
+      if( enableFilterSharepointSites )  {
+       
+          _filterMenuProps.items.push({
             key: "1",
             text: "SharePoint",
             iconProps: { iconName: "SharepointAppIcon16" },
@@ -185,52 +191,41 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
               item: IContextualMenuItem
             ) => {
               _Filtersites(item.text);
-            },
-          },
-          {
-            key: "2",
-            text: "Groups",
-            iconProps: { iconName: "Group" },
-            onClick: (
-              ev:
-                | React.MouseEvent<HTMLElement, MouseEvent>
-                | React.KeyboardEvent<HTMLElement>,
-              item: IContextualMenuItem
-            ) => {
-              _Filtersites(item.text);
-            },
-          },
-          {
-            key: "3",
-            text: "OneDrive",
-            iconProps: { iconName: "onedrive" },
-            onClick: (
-              ev:
-                | React.MouseEvent<HTMLElement, MouseEvent>
-                | React.KeyboardEvent<HTMLElement>,
-              item: IContextualMenuItem
-            ) => {
-              _Filtersites(item.text);
-            },
-          },
-        ],
-      };
+            }
+          }       
+          );
+       }
 
+       if(  enableFilterO365groups )  {    
+        _filterMenuProps.items.push({
+          key: "2",
+          text: "Groups",
+          iconProps: { iconName: "Group" },
+          onClick: (
+            ev:
+              | React.MouseEvent<HTMLElement, MouseEvent>
+              | React.KeyboardEvent<HTMLElement>,
+            item: IContextualMenuItem
+          ) => {
+            _Filtersites(item.text);
+          }
+        }       
+        );
+     }
 
-      if (_sitesWithSubSties.PrimarySearchResults.length > 0){
+      if (enableFilterSitesWithSubWebs &&  _sitesWithSubSties.PrimarySearchResults.length > 0){
         _filterMenuProps.items.push(
           {
             key: 'sites',
             itemType: ContextualMenuItemType.Header,
-            text: 'Sites with Sub Sites',
+            text: 'Sites with sub sites',
             itemProps: {
               lang: 'en-us',
             },
           }
         );
-      }
 
-      // Add Site Collections with sub
+          // Add Site Collections with sub
       for (const web of _uniqweb) {
         // tslint:disable-next-line: no-use-before-declare
         const _lastHasPosition: number = (web.ParentLink as string).lastIndexOf(
@@ -239,10 +234,13 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
         const _siteName: string = (web.ParentLink as string).substring(
           _lastHasPosition + 1
         );
+
+        const _webTitle = await getSiteProperties(web.ParentLink);
+       
         // tslint:disable-next-line: no-use-before-declare
         _filterMenuProps.items.push({
           key: web.ParentLink,
-          text: _siteName,
+          text: _webTitle,
           iconProps: { iconName: "DrillExpand" },
           onClick: (
             ev:
@@ -255,9 +253,11 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
           },
         });
       }
+      }   
+
       await _getUserSites("", state.currentFilter, state.currentFilterName);
     })();
-  }, [props.title, props.itemsPerPage]);
+  }, [props]);
 
   // On Search Sites
   const _onSearch = async (value: string) => {
@@ -290,14 +290,17 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
           updateProperty={props.updateProperty}
           className={stylesComponent.webPartTile}
         />
-        <Stack horizontal verticalAlign="center" horizontalAlign="end" wrap tokens={{ childrenGap: 5 }}>
-          <SearchBox
+        <Stack horizontal verticalAlign="center" horizontalAlign='start' styles={{root:{width: '100%'}}}>
+        <SearchBox
             placeholder="Search my sites"
-            underlined={true}
+            styles={{root:{width:'100%', marginBottom: 10}}}
             value={state.searchValue}
             onSearch={_onSearch}
             onClear={_onClear}
           />
+        </Stack>
+        <Stack horizontal verticalAlign="center" horizontalAlign="end" wrap tokens={{ childrenGap: 5 }}>
+         
           <CommandButton
             iconProps={{ iconName: "refresh" }}
             onClick={_onClear}
@@ -329,6 +332,7 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
                         site={site}
                         msGraphClient={_msGraphClient}
                         themeVariant={props.themeVariant}
+                        locale={props.context.pageContext.cultureInfo.currentCultureName}
                       ></SiteTile>
                     );
                   })}
@@ -367,6 +371,8 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
                     color="primary"
                     count={state.totalPages}
                     page={state.currentPage}
+                    size="small"
+                    siblingCount={0}
                     onChange={async (event: any, page: number) => {
                       const rs = await _searchResults.getPage(page);
                       _searchResults = rs;

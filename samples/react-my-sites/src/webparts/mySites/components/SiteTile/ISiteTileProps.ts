@@ -5,4 +5,5 @@ export interface ISiteTileProps {
   msGraphClient:MSGraphClient;
   site:any;
   themeVariant: IReadonlyTheme | undefined;
+  locale:string;
 }
