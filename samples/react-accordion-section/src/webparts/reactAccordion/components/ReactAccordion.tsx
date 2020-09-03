@@ -64,7 +64,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
         {listSelected &&
         <div>
           <h2>{this.props.accordionTitle}</h2>
-          <Accordion> 
+          <Accordion allowZeroExpanded> 
             {this.state.items.map((item:any) => {
               return (
                 <AccordionItem>
