@@ -52,11 +52,11 @@ SPFx Collapsible Accordion Section|[Erik Benke](https://github.com/ejbenke) ([@e
 Version|Date|Comments
 -------|----|--------
 1.0|August 14, 2019|Initial release
-1.1|September 19, 2019|Minor updates, adding to Github
+1.1|September 19, 2019|Minor updates, adding to GitHub
 1.2|April 15, 2020|Added Polyfills for IE11 compatibility
 1.3|July 10, 2020|Adding Rich Text support for Content panels
 1.4|July 10, 2020|Upgraded to SPFx 1.10.
-
+1.5|September 1, 2020|Adds ability to click on expanded section headers to collapse accordions
 
 ## Disclaimer
 
