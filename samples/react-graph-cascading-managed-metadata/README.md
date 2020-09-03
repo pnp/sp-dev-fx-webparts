@@ -39,7 +39,7 @@ react-graph-cascading-managed-metadata| Anoop Tatti ([anoopt](https://github.com
 Version|Date|Comments
 -------|----|--------
 1.0.0|Aug 24, 2020|Initial release
-1.0.1|Sep 03, 2020|Error handling and logging improvments
+1.0.1|Sep 03, 2020|Error handling and logging improvements
 
 ## Disclaimer
 
