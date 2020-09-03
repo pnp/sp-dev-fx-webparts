@@ -89,8 +89,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-cascading-managed-metadata/assets/cmmd.gif
       author: Anoop Tatti
       summary: Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data.
-      modifiedtext: August 24, 2020
-      modified: 2020-08-24
+      modifiedtext: September 2, 2020
+      modified: 2020-09-02
     - framework: React
       spfx: 1.8.2
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnpjs-project-online
@@ -139,8 +139,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-sites/assets/MySites.gif
       author: João Mendes
       summary: This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins.
-      modifiedtext: August 29, 2020
-      modified: 2020-08-29
+      modifiedtext: August 30, 2020
+      modified: 2020-08-30
     - framework: React
       spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msgraph-peoplesearch
@@ -232,8 +232,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-section/assets/react-accordion-section.gif
       author: Erik Benke
       summary: Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.
-      modifiedtext: July 10, 2020
-      modified: 2020-07-10
+      modifiedtext: Sept 1, 2020
+      modified: 2020-09-01
     - framework: React
       spfx: 1.10.0
       title: Timeline
@@ -1310,17 +1310,15 @@ extra:
       modifiedtext: September 9, 2016
       modified: 2016-09-09
     - framework: Javascript
-      spfx: GA
-      year: 2017
+      spfx: 1.11.0
       title: Display List JavaScript Client-Side Web Part
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-display-list
       name: js-display-list
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-display-list/assets/display-list-preview.png
-      author: Velin Georgiev
+      author: Velin Georgiev, Ryan Schouten
       summary: This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list.
-      version: 1.1
-      modifiedtext: May 15, 2017
-      modified: 2017-05-15
+      modifiedtext: August 29, 2020
+      modified: 2020-08-29
     - framework: Javascript
       spfx: 1.7.0
       year: 2018
@@ -2810,6 +2808,7 @@ extra:
     - Robin Agten
     - Roland Oldengarm
     - Russell Gove
+    - Ryan Schouten
     - Sébastien Levert
     - Serdar Ketenci̇
     - Sergei Sergeev
