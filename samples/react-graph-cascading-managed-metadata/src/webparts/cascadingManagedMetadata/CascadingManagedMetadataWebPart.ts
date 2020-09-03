@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version, DisplayMode } from '@microsoft/sp-core-library';
+import { Version, DisplayMode, Guid } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
@@ -22,8 +22,7 @@ export default class CascadingManagedMetadataWebPart extends BaseClientSideWebPa
   public async render(): Promise<void> {
     await MSGraph.Init(this.context);
     let renderElement = null;
-    //TODO: Use function to check if GUID?
-    if (this.properties.termSetId && this.properties.termSetId.length == 36) {
+    if (this.properties.termSetId) {
       renderElement = React.createElement(
         CascadingManagedMetadata,
         {
@@ -69,6 +68,19 @@ export default class CascadingManagedMetadataWebPart extends BaseClientSideWebPa
     return Version.parse('1.0');
   }
 
+  private validateTermSetId(value: string): string {
+    if (value === null ||
+      value.trim().length === 0) {
+      return 'Provide a term set Id.';
+    }
+
+    if (!Guid.isValid(value.trim())) {
+      return 'Term set Id must be a valid GUID.';
+    }
+
+    return '';
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -81,7 +93,8 @@ export default class CascadingManagedMetadataWebPart extends BaseClientSideWebPa
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('termSetId', {
-                  label: strings.TermSetIdFieldLabel
+                  label: strings.TermSetIdFieldLabel,
+                  onGetErrorMessage: this.validateTermSetId.bind(this)
                 })
               ]
             }
