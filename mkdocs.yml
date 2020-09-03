@@ -230,10 +230,10 @@ extra:
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-section
       name: react-accordion-section
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-section/assets/react-accordion-section.gif
-      author: Erik Benke
+      author: Erik Benke, Mike Zimmerman
       summary: Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.
-      modifiedtext: Sept 1, 2020
-      modified: 2020-09-01
+      modifiedtext: Sept 2, 2020
+      modified: 2020-09-02
     - framework: React
       spfx: 1.10.0
       title: Timeline
@@ -2788,6 +2788,7 @@ extra:
     - Manish Garg
     - Markus Moeller
     - Miguel Rabaca
+    - Mike Zimmerman
     - Mohamed Derhalli
     - Nanddeep Nachan
     - Neil Barkhina
