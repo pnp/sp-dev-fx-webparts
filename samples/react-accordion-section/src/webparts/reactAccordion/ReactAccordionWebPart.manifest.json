@@ -23,7 +23,8 @@
     "officeFabricIconFontName": "MusicInCollectionFill",
     "properties": {
       "description": "React Accordion",
-      "listId": ""
+      "listId": "",
+      "allowZeroExpanded": true
     }
   }]
 }
