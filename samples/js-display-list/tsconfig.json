@@ -1,15 +1,40 @@
 {
+  "include": [
+    "src/**/*.tsx",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ],
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.3/includes/tsconfig-web.json",
   "compilerOptions": {
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
+    "module": "esnext",
     "jsx": "react",
+    "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@microsoft"
+    ],
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.collection"
+    ],
     "types": [
       "es6-promise",
       "es6-collections",
       "webpack-env"
-    ]
+    ],
+    "inlineSources": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
+    "outDir": "lib",
+    "experimentalDecorators": true
   }
 }

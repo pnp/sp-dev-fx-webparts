@@ -3,6 +3,7 @@ import styles from './ReactAccordion.module.scss';
 import { IReactAccordionProps } from './IReactAccordionProps';
 import { sp } from "@pnp/sp";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import './reactAccordion.css';
 
 import {
@@ -15,15 +16,20 @@ import {
 
 export interface IReactAccordionState {
   items: Array<any>;
+  allowMultipleExpanded: boolean;
+  allowZeroExpanded: boolean;
+
 }
 
 export default class ReactAccordion extends React.Component<IReactAccordionProps, IReactAccordionState> {
 
   constructor(props: IReactAccordionProps) {
     super(props);
-    
+
     this.state = {
-      items: new Array<any>()
+      items: new Array<any>(),
+      allowMultipleExpanded: this.props.allowMultipleExpanded,
+      allowZeroExpanded: this.props.allowZeroExpanded
     };
     this.getListItems();
   }
@@ -47,10 +53,18 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
     if(prevProps.listId !== this.props.listId) {
       this.getListItems();
     }
+
+    if(prevProps.allowMultipleExpanded !== this.props.allowMultipleExpanded || prevProps.allowZeroExpanded !== this.props.allowZeroExpanded) {
+      this.setState({
+        allowMultipleExpanded: this.props.allowMultipleExpanded,
+        allowZeroExpanded: this.props.allowZeroExpanded
+      });
+    }
   }
 
   public render(): React.ReactElement<IReactAccordionProps> {
-    let listSelected:boolean = typeof this.props.listId !== "undefined" && this.props.listId.length > 0;
+    const listSelected:boolean = typeof this.props.listId !== "undefined" && this.props.listId.length > 0;
+    const { allowMultipleExpanded, allowZeroExpanded } = this.state;
     return (
       <div className={ styles.reactAccordion }>
         {!listSelected &&
@@ -63,8 +77,11 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
         }
         {listSelected &&
         <div>
-          <h2>{this.props.accordionTitle}</h2>
-          <Accordion> 
+          <WebPartTitle displayMode={this.props.displayMode}
+                title={this.props.accordionTitle}
+                updateProperty={this.props.updateProperty}
+                 />
+          <Accordion allowZeroExpanded={allowZeroExpanded} allowMultipleExpanded={allowMultipleExpanded}>
             {this.state.items.map((item:any) => {
               return (
                 <AccordionItem>
@@ -81,7 +98,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
               })
             }
           </Accordion>
-        </div> 
+        </div>
         }
       </div>
       );

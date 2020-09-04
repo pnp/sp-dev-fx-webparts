@@ -32,13 +32,14 @@ This web part shows how to use the Microsoft Graph APIs (beta) for Taxonomy to g
 
 Solution|Author(s)
 --------|---------
-react-graph-cascading-managed-metadata| Anoop Tatti ([@anooptells](https://twitter.com/anooptells))
+react-graph-cascading-managed-metadata| Anoop Tatti ([anoopt](https://github.com/anoopt), [@anooptells](https://twitter.com/anooptells))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|Aug 24, 2020|Initial release
+1.0.1|Sep 03, 2020|Error handling and logging improvements
 
 ## Disclaimer
 
