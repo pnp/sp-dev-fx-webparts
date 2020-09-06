@@ -1,4 +1,0 @@
-{
-  "preset": "@voitanos/jest-preset-spfx-react16",
-  "rootDir": "../src"
-}

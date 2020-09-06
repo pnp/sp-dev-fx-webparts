@@ -1,1 +1,0 @@
-export { UserProfileService } from './UserProfileService'

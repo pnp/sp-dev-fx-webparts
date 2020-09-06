@@ -1,6 +1,0 @@
-{
-  "workingDir": "./temp/deploy/",
-  "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "asset-deployment-webpart",
-  "accessKey": "<!-- ACCESS KEY -->"
-}

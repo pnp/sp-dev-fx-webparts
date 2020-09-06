@@ -1,6 +1,0 @@
-{
-  "workingDir": "./temp/deploy/",
-  "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "react-feature-framework",
-  "accessKey": "<!-- ACCESS KEY -->"
-}

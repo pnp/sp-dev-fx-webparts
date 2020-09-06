@@ -1,6 +1,0 @@
-{
-  "workingDir": "./temp/deploy/",
-  "account": "<!-- STORAGE ACCOUNT NAME -->",
-  "container": "react-pagecontributors",
-  "accessKey": "<!-- ACCESS KEY -->"
-}
