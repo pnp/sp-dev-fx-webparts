@@ -1,28 +1,26 @@
 import * as React from "react";
-import styles from "./RestaurantMenu.module.scss";
-import { IRestaurantMenuProps } from "./IRestaurantMenuProps";
-import { escape } from "@microsoft/sp-lodash-subset";
 
-import {
-  mergeStyleSets,
-  Customizer,
-  Stack,
-  IStackTokens,
-  FontIcon,
-  Label,
-  Text,
-} from "office-ui-fabric-react";
-
+import { toUpper } from "lodash";
 import moment from "moment";
-import { EWeekdays } from "./EWeekDays";
-import { MenuDetail } from "./MenuDetail";
-import { css } from "office-ui-fabric-react/lib/Utilities";
+import {
+  Customizer,
+  FontIcon,
+  IStackTokens,
+  Label,
+  mergeStyleSets,
+  Stack,
+  Text
+} from "office-ui-fabric-react";
+import strings from "RestaurantMenuWebPartStrings";
+
+import { DisplayMode } from "@microsoft/sp-core-library";
 import { WebPartTitle } from "@pnp/spfx-controls-react";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
-import { toUpper } from "lodash";
-import { DisplayMode } from "@microsoft/sp-core-library";
-import { PropertyPaneSlider } from "@microsoft/sp-webpart-base";
-import strings from "RestaurantMenuWebPartStrings";
+
+import { EWeekdays } from "./EWeekDays";
+import { IRestaurantMenuProps } from "./IRestaurantMenuProps";
+import { MenuDetail } from "./MenuDetail";
+
 const stackTokens: IStackTokens = {
   childrenGap: 10,
 };
@@ -140,7 +138,7 @@ export const RestaurantMenu: React.FunctionComponent<IRestaurantMenuProps> = (
       setShowMenuForDay(undefined);
       try {
         let _currentDay = moment().isoWeekday();
-        console.log(_currentDay);
+
         switch (_currentDay) {
           case EWeekdays.Monday:
             setShowMenuForDay(EWeekdays.Monday);
