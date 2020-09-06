@@ -73,8 +73,7 @@ Please follow all the steps:
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
-- Add and deploy package to your tenant's App Catalog
-- Go to **API Access** - from **SharePoint Admin Center** new experience, and **Approve** the permission to use Microsoft Graph scope **Group.Read.All** and **Directory.Read.All**
+ 
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-my-sites" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-restaurant-menu" />
