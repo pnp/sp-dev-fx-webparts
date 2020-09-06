@@ -177,7 +177,7 @@ export const RestaurantMenu: React.FunctionComponent<IRestaurantMenuProps> = (
     })();
   }, [props.listId, props.site]);
 
-  if (props.listId.trim().length === 0 && props.site.length === 0) {
+  if ((!props.listId || props.listId.trim().length === 0) && props.site.length === 0) {
     return (
       <Placeholder
         iconName="Edit"
