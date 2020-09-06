@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "restaurant-menu-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/restaurantMenu/RestaurantMenuWebPart.js",
+          "manifest": "./src/webparts/restaurantMenu/RestaurantMenuWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RestaurantMenuWebPartStrings": "lib/webparts/restaurantMenu/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

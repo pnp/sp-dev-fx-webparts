@@ -1,0 +1,34 @@
+{
+  "@pnp/generator-spfx": {
+    "framework": "react",
+    "pnpFramework": "reactjs.plus",
+    "pnp-libraries": [
+      "jquery@3",
+      "msgraph",
+      "@pnp/pnpjs",
+      "@pnp/spfx-property-controls",
+      "spfx-uifabric-themes",
+      "lodash",
+      "@pnp/spfx-controls-react",
+      "ouifr@7",
+      "rush@3.7"
+    ],
+    "pnp-ci": "azure-preview",
+    "pnp-vetting": [],
+    "spfxenv": "spo",
+    "pnp-testing": [
+      "jest"
+    ]
+  },
+  "@microsoft/generator-sharepoint": {
+    "environment": "spo",
+    "framework": "react",
+    "isCreatingSolution": true,
+    "version": "1.11.0",
+    "libraryName": "react-menu",
+    "libraryId": "e1632e6a-caf2-4dba-9d88-32783876aa2b",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
