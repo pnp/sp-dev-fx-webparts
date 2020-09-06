@@ -1,0 +1,179 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.cardWrapper {
+  border: 1px solid;
+  border-color: transparent;
+  box-sizing: border-box;
+  outline: transparent;
+}
+
+.compactCard {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 2px !important;
+  border: none;
+  height: 68px;
+  margin-bottom: 12px;
+}
+
+.cardWrapper:focus {
+  border-color: $ms-color-neutralSecondary;
+}
+
+.cardWrapper .dateBox {
+  border-color: $ms-color-neutralLight;
+}
+
+.normalCard .dateBoxContainer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.normalCard .category {
+  margin-bottom: 4px;
+}
+
+.compactCard .dateBox {
+  margin: auto 14px auto 0;
+  min-width: 64px;
+  background-color: $ms-color-white;
+}
+
+[dir=rtl] .compactCard .dateBox {
+  margin: auto 0 auto 14px;
+}
+
+[dir=ltr] .compactCard .emptyStatePreviewContainer {
+  margin-right: 14px;
+}
+
+.compactCard .title {
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0 0 3px;
+  max-height: 38px;
+  line-height: 19px;
+}
+
+.category,
+.datetime,
+.location {
+  font-size: 12px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  height: 18px;
+}
+
+.category,
+.location {
+  color: $ms-color-neutralPrimary;
+}
+
+.datetime {
+  color: $ms-color-neutralPrimary;
+}
+
+.title {
+  display: block;
+  overflow: hidden;
+}
+
+.addToMyCalendar,
+.title {
+  font-weight: 400;
+  color: $ms-color-neutralPrimary;
+}
+
+.addToMyCalendar {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+[dir=ltr] .addToMyCalendar {
+  margin-left: -8px;
+}
+
+[dir=rtl] .addToMyCalendar {
+  margin-right: -8px;
+}
+
+.root {
+    width: 100%;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    //background-color: $ms-color-white;
+    border: 1px solid $ms-color-neutralLight;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 320px;
+    min-width: 206px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+  }
+
+.rootIsCompact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 480px;
+  height: 68px;
+  border: 1px solid transparent;
+}
+
+.rootIsActionable {
+  color: inherit;
+}
+
+.rootIsActionable:hover {
+  border-color: $ms-color-neutralLight;
+}
+
+.dateBox {
+  border-color: $ms-color-neutralTertiaryAlt;
+}
+
+.normalCard .title {
+  font-size: 17px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  height: 44px;
+  line-height: 22px;
+}
+
+.normalCard .detailsContainer {
+  padding: 0 16px 16px;
+  height: 172px;
+  max-width: 320px;
+  min-width: 206px;
+}
+
+.category,
+.location {
+  color: $ms-color-neutralSecondary;
+}
+
+.category,
+.datetime,
+.location {
+  font-size: 12px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  height: 18px;
+}

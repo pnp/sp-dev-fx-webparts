@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "23dc01e2-9059-49ff-9f2d-ba8edd5d1ee9",
+  "alias": "AngularSearchWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "23dc01e2-9059-49ff-9f2d-ba8edd5d1ee9",
+    "group": { "default": "Under Development" },
+    "title": { "default": "AngularSearch" },
+    "description": { "default": "AngularSearch description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "AngularSearch",
+      "contentTypes": ""
+    }
+  }]
+}

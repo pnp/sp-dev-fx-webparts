@@ -1,0 +1,27 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.personaContainer {
+  display: inline-block;
+  margin-top: 15px;
+  margin-right: 15px;
+
+  min-width: 300;
+  vertical-align: top;
+}
+.documentCard {
+  border-color: $ms-color-themeDark;
+  border-top-width: 5px;
+  width: 100%;
+  max-width: 350px;
+  height: 120px;
+}
+.persona {
+  padding: 15px;
+}
+
+.bottomColor {
+  background-color: $ms-color-themeDark;
+  height: 5px;
+  margin-top: 10;
+  width: 100%;
+}

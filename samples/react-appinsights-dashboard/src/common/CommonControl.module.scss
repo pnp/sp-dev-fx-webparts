@@ -1,0 +1,105 @@
+.dataLabel {
+    padding-right: 3px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.pivotControl {
+    margin-top: -4px;
+    div[role="tablist"] {
+        border: 1px solid #7f7f7f;
+        border-radius: 12px;
+        padding: 1px;
+    }
+    button {
+        padding: 2px 8px 3px;
+        height: 25px;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 10px;
+        background-clip: padding-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border: 1px solid transparent!important;
+        font-size: 13px;
+        margin-right: 0px;
+        &:hover {
+            background-color: lightgrey;
+            border-color: lightgrey;
+        }
+        &[aria-selected="true"] {
+            background-color: #0078d4;
+            border-color: #0078d4;
+            color: #fff;
+            fill: #fff;
+        }
+    }
+}
+.centerDiv {
+    display: flex; 
+    width: auto; 
+    margin: 0 auto;
+}
+.secTitleContainer {
+    display: flex;
+    padding-bottom: 10px;
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+        display: flex; 
+        width: auto; 
+        margin: 0 auto;
+    }
+}
+
+.content {
+    margin-top: 10px !important;
+}
+.fileiconDiv {
+    width: 3%;
+    display: inline-block;
+    padding-right: 5px;
+    i {
+        position: absolute;
+        top: 8px;
+    }    
+}
+.pageLink {
+    text-decoration: none;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    &:hover {
+        font-weight: 600;
+        text-decoration: underline;
+    }
+}
+.chartContainer {
+    height: 350px;
+    width: 100%;
+}
+.chart {
+    height: 358px !important;
+    max-height: 358px !important;
+    canvas {
+        height: 358px !important;
+        max-height: 358px !important;
+    }
+}
+.chartPerf {
+    height: 400px !important;
+    max-height: 400px !important;
+    canvas {
+        height: 400px !important;
+        max-height: 400px !important;
+    }
+}
+.textWithIcon {
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dataList {
+    overflow-y: auto;
+    height: 350px;
+    width: 100%;
+}

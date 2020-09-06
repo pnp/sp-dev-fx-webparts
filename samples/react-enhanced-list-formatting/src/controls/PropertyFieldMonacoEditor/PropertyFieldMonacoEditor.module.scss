@@ -1,0 +1,10 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.embeddedMonaco {
+  height: 300px;
+}
+
+.fullScreenButton {
+  color: inherit;
+}

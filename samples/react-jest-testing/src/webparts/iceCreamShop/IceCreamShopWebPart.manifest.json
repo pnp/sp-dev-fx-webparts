@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d67c5975-ba3e-49ec-9a23-245c15ea3cda",
+  "alias": "IceCreamShopWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+    "group": { "default": "Other" },
+    "title": { "default": "Ice Cream Shop" },
+    "description": { "default": "SPFx unit tests with Jest, Enzyme and Sinonjs" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Ice Cream Shop"
+    }
+  }]
+}

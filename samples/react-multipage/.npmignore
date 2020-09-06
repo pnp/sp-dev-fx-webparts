@@ -1,0 +1,14 @@
+# Folders
+.vscode
+coverage
+node_modules
+sharepoint
+src
+temp
+
+# Files
+*.csproj
+.git*
+.yo-rc.json
+gulpfile.js
+tsconfig.json

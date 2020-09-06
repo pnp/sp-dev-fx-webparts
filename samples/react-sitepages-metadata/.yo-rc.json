@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "react-sitepages-metadata",
+    "libraryId": "46c3c432-396d-4e9b-944d-6bf8c5466d0c",
+    "environment": "spo"
+  }
+}

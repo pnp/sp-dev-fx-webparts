@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "skype-presence-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/skypePresence/SkypePresenceWebPart.js",
+          "manifest": "./src/webparts/skypePresence/SkypePresenceWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+  },
+  "localizedResources": {
+    "SkypePresenceWebPartStrings": "lib/webparts/skypePresence/loc/{locale}.js"
+  }
+}

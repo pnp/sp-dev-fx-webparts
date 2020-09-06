@@ -1,0 +1,19 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d0c6977d-b995-46ff-a246-14ff43495e0e",
+  "alias": "BroadcasterWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "d0c6977d-b995-46ff-a246-14ff43495e0e",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Broadcaster" },
+    "description": { "default": "Broadcasts an event to a channel" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Broadcaster"
+    }
+  }]
+}

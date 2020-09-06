@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+    <Field ID="{3246929A-5ECA-4E1E-BC8F-4ED878F3A33E}"
+            Name="SPFxSliderImage"
+            DisplayName="Slider Image"
+            Type="Image"
+            RichText="TRUE"
+            RichTextMode="FullHtml"
+            Group="SPFx Slider"/>
+    
+    <Field ID="{CEEFD3D4-212F-48D7-AA8F-B9A23A7C0FF6}"
+            Name="SPFxOrder"
+            DisplayName="Order"
+            Type="Number"
+            Group="SPFx Slider" />
+
+    <ContentType ID="0x01009FAF6E59182F44F6AABD475FDC8F8836"
+                Name="Slider"
+                Group="SPFx Content Types"
+                Description="Sample content type from web part solution">
+        <FieldRefs>
+                <FieldRef ID="{3246929A-5ECA-4E1E-BC8F-4ED878F3A33E}" />
+                <FieldRef ID="{CEEFD3D4-212F-48D7-AA8F-B9A23A7C0FF6}" />
+        </FieldRefs>
+     </ContentType>
+
+
+     <ListInstance 
+            CustomSchema="schema.xml"
+            FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+            Title="SPFx List" 
+            Description="SPFx List"
+            TemplateType="100"
+            Url="Lists/SPFxList">
+    </ListInstance>
+</Elements>

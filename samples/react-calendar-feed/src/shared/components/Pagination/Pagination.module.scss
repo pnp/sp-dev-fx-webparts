@@ -1,0 +1,71 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.Pagination {
+  width: 100%;
+  min-width: 240px;
+  text-align: center;
+  margin: 0;
+  padding: 2px 0;
+  border: 1px solid transparent;
+  position: relative;
+  .next,
+  .prev {
+    margin: 0;
+    display: inline-block;
+    border: none;
+  }
+
+  .nogo {
+    color: $ms-color-neutralTertiary!important;
+  }
+
+  button {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 8px 4px;
+    margin: 0 8px;
+    cursor: pointer;
+    cursor: hand;
+    position: relative;
+    height: 32px !important;
+    display: none;
+    outline: 0;
+
+    &:hover, &:active {
+      color: "[theme:buttonTextCheckedHovered, default: #000]"
+    }
+
+  }
+
+  &.noPageNum {
+    text-align: left;
+
+    .next {
+      float: right;
+    }
+  }
+}
+
+
+
+
+
+// .Pagination .next,
+// .Pagination .prev {
+//   margin: 0;
+//   display: inline-block;
+//   border: none;
+// }
+
+// .Pagination button {
+//   font-size: 14px;
+//   font-weight: 400;
+//   padding: 8px 4px;
+//   margin: 0 8px;
+//   cursor: pointer;
+//   cursor: hand;
+//   position: relative;
+//   height: 32px !important;
+//   display: none;
+//   outline: 0;
+// }

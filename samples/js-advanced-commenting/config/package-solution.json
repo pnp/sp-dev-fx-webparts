@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Advanced Comments Box",
+    "id": "cfa8dbcf-b32d-4de0-a6ba-af486007c2f2",
+    "version": "1.1.0.2",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/advanced-comments-box.sppkg"
+  }
+}

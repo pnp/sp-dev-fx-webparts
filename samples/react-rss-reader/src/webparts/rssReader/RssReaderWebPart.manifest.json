@@ -1,0 +1,64 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "f489b1fd-98bf-4b41-8db0-85d5018ba484",
+  "alias": "RssReaderWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Social Tools" },
+    "title": { "default": "Rss Reader" },
+    "description": { "default": "Basic Rss Reader utilizing FeedEK" },
+    "officeFabricIconFontName": "InternetSharing",
+    "properties": {
+      "feedUrl": "https://techcommunity.microsoft.com/gxcuf89792/rss/board?board.id=Office365Blog",
+      "feedService": 2,
+      "feedServiceUrl": "",
+      "feedServiceApiKey": "",
+      "useCorsProxy": false,
+      "corsProxyUrl": "https://cors-anywhere.herokuapp.com/{0}",
+      "disableCorsMode": false,
+      "maxCount": 10,
+      "cacheResults": false,
+      "cacheResultsMinutes": 60,
+      "cacheStorageKeyPrefix": "PnPRssReader",
+      "selectedLayout": 0,
+      "externalTemplateUrl": "",
+      "inlineTemplateText": "",
+      "showDesc": true,
+      "showPubDate": true,
+      "descCharacterLimit": 100,
+      "titleLinkTarget": "_blank",
+      "dateFormat": "MM/DD/YYYY",
+      "backgroundColor": "#ffffff",
+      "fontColor": "#4EBAFF"
+    }
+  }]
+
+  /*
+  possible cors proxies, not for production
+
+  CORS-anywhere
+  proxy: https://cors-anywhere.herokuapp.com/{0}
+  source: https://github.com/Rob--W/cors-anywhere/
+
+  CORS io
+  proxy: https://cors.io/?{0}
+
+  CORS Proxy
+  proxy: https://corsproxy.github.io/{0}
+
+  CORS Proxy by HTML Driven
+  proxy: <<offline>>
+  source: https://github.com/htmldriven/cors-proxy/
+  */
+}

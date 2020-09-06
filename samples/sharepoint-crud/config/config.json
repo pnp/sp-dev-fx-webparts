@@ -1,0 +1,51 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "no-framework-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/noFrameworkCrud/NoFrameworkCrudWebPart.js",
+          "manifest": "./src/webparts/noFrameworkCrud/NoFrameworkCrudWebPart.manifest.json"
+        }
+      ]
+    },
+    "angular-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/angularCrud/AngularCrudWebPart.js",
+          "manifest": "./src/webparts/angularCrud/AngularCrudWebPart.manifest.json"
+        }
+      ]
+    },
+    "react-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactCrud/ReactCrudWebPart.js",
+          "manifest": "./src/webparts/reactCrud/ReactCrudWebPart.manifest.json"
+        }
+      ]
+    },
+    "pnpjs-crud-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pnpjsCrud/PnpjsCrudWebPart.js",
+          "manifest": "./src/webparts/pnpjsCrud/PnpjsCrudWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "angular": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js",
+      "globalName": "angular"
+    },
+    "ng-office-ui-fabric": "https://cdnjs.cloudflare.com/ajax/libs/ngOfficeUiFabric/0.16.1/ngOfficeUiFabric.min.js"
+  },
+  "localizedResources": {
+    "NoFrameworkCrudWebPartStrings": "lib/webparts/noFrameworkCrud/loc/{locale}.js",
+    "AngularCrudWebPartStrings": "lib/webparts/angularCrud/loc/{locale}.js",
+    "ReactCrudWebPartStrings": "lib/webparts/reactCrud/loc/{locale}.js",
+    "PnpjsCrudWebPartStrings": "lib/webparts/pnpjsCrud/loc/{locale}.js"
+  }
+}

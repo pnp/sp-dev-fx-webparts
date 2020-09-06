@@ -1,0 +1,53 @@
+$duration: 500ms;
+$width: 340px;
+$contentPadding: 0 28px 20px;
+
+:export { duration: $duration }
+
+.panel {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: $width;
+    background: white;
+    white-space: nowrap;
+    overflow: hidden;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.4);
+
+    &.left {
+        left: -$width;
+        transition: left $duration;
+        border-right: 1px solid #eaeaea;
+
+        &.visible {
+            left: 0px;
+        } 
+    }
+
+    &.right {
+        right: -$width;
+        transition: right $duration;
+        border-left: 1px solid #eaeaea;
+
+        &.visible {
+            right: 0px;
+        }
+    }
+
+    .header {
+        position: relative;
+
+        .closeButton {
+            float: right;
+            padding: 12px 12px 0 0;
+        }
+
+        .clear {
+            clear: both;
+        }
+    }
+
+    .content {
+        padding: $contentPadding;
+    }
+}

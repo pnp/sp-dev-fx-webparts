@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "b0e9722f-8953-4f87-9932-bbceda7e8be3",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "b0e9722f-8953-4f87-9932-bbceda7e8be2",
+    "group": { "default": "Under Development" },
+    "title": { "default": "react-mobx nonreactive" },
+    "description": { "default": "ReactMobx description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "disableReactive": true
+    }
+  }]
+}

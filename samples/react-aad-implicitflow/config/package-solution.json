@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-aad-implicitflow-client-side-solution",
+    "id": "7d08f6e8-b222-4ed7-8910-8ea911d117fe",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-aad-implicitflow.sppkg"
+  }
+}

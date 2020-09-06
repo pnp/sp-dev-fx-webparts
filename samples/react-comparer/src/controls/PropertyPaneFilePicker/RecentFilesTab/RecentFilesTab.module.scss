@@ -1,0 +1,194 @@
+@import "../PropertyPaneFilePicker.module.scss";
+
+.gridListCell {
+  margin-bottom: 8px;
+}
+
+[dir="ltr"] .gridListCell {
+  margin-right: 8px;
+}
+
+[dir="ltr"] .gridListCell.cellRight {
+  margin-right: 0;
+}
+
+.gridListCell.cellLastRow {
+  margin-bottom: 0;
+}
+
+.itemTile.isFile,
+.itemTile.isPhoto,
+.itemTile.isVideo {
+  background-color: $ms-color-neutralLighter;
+}
+
+.itemTile {
+  -webkit-transition: -webkit-transform .1s linear;
+  transition: -webkit-transform .1s linear;
+  transition: transform .1s linear;
+  transition: transform .1s linear,-webkit-transform .1s linear;
+  position: relative;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+  }
+
+  &:focus:after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    border: 1px solid;
+    border-color: $ms-color-white;
+    -webkit-box-shadow: 0 0 0 2px $ms-color-neutralSecondaryAlt;
+    box-shadow: 0 0 0 2px $ms-color-neutralSecondaryAlt;
+  }
+}
+
+.hasThumbnail {
+  color: inherit;
+}
+
+.itemTileContent {
+  width: 100%;
+  height: 100%;
+}
+
+.itemTile.isFile .itemTileDiscoverFileContainer,
+.itemTile.isFile .itemTileFileContainer {
+  border-width: 1px;
+  border-style: solid;
+  border-color: $ms-color-neutralLight;
+}
+
+.itemTileFile {
+  .itemTileFileContainer {
+    position: absolute;
+    background-color: $ms-color-neutralLighter;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    .itemTileThumbnail {
+      text-align: center;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+
+      .image {
+        img {
+          display: block;
+          opacity: 1;
+          width: 100%;
+          height: auto;
+          animation-duration: 0.367s;
+          animation-timing-function: cubic-bezier(0.1, 0.25, 0.75, 0.9);
+          animation-fill-mode: both;
+        }
+      }
+    }
+  }
+}
+
+[dir="ltr"] .itemTileCheckCircle {
+  right: 8px;
+}
+
+.itemTileCheckCircle {
+  display: block;
+  position: absolute;
+  top: 6px;
+  opacity: 0;
+  background: 0 0;
+  border: none;
+  outline: 0;
+  top: 8px;
+
+  :global(.ms-Check-check) {
+    opacity: 1;
+  }
+}
+
+.gridListCell.isSelected .itemTileCheckCircle,
+.gridListCell:hover,
+.gridListCell:hover .itemTileCheckCircle {
+  opacity: 1;
+}
+
+.itemTileNamePlate {
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  min-height:20px;
+  padding:4px 8px 8px;
+  background-color:$ms-color-white;
+  color:$ms-color-neutralPrimary;
+  white-space:nowrap;
+  text-overflow:ellipsis
+}
+.itemTile.isFile .itemTileNamePlate {
+  opacity: .95;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: $ms-color-neutralLight;
+  min-height: 35px;
+}
+
+.itemTileName {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+
+.itemTileChildCount, .itemTileName, .itemTileSubText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.itemTileSubText {
+  font-size: 11px;
+  opacity: .7;
+}
+
+.recentGridList {
+  font-size: 0;
+}
+
+.recentGridList :global(.ms-List-page) {
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-office-ui-fabric-people-picker",
+    "id": "6349ba8f-d5aa-4cbf-87b4-910dad47324b",
+    "version": "1.1.0.0",
+    "skipFeatureDeployment": false
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-office-ui-fabric-people-picker.sppkg"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "4042c7c8-3623-4c0c-9223-649557464016",
+  "alias": "EventDetailsWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "EventDetails" },
+    "description": { "default": "Shows details of the selected event" },
+    "officeFabricIconFontName": "CustomList",
+    "properties": {
+      "event": {},
+      "title": "Event details"
+    }
+  }]
+}

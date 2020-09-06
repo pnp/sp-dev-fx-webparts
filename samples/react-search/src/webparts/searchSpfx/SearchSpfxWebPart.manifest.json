@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "2b125755-159d-4799-8210-b091a3d967c3",
+  "alias": "SearchSpfxWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "2b125755-159d-4799-8210-b091a3d967c3",
+    "group": { "default": "Search" },
+    "title": { "default": "SearchSpfx" },
+    "description": { "default": "Search web part built with SPFx" },
+    "officeFabricIconFontName": "Search",
+    "properties": {
+      "description": "SearchSpfx",
+      "title": "",
+      "query": "*",
+      "template": "DefaultTemplate",
+      "maxResults": 10,
+      "sorting": "",
+      "external": false,
+      "externalUrl": ""
+    }
+  }]
+}

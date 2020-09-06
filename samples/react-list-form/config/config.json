@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "list-form-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/listForm/ListFormWebPart.js",
+          "manifest": "./src/webparts/listForm/ListFormWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"
+  },
+  "localizedResources": {
+    "ListFormWebPartStrings": "lib/webparts/listForm/loc/{locale}.js",
+    "ListFormStrings": "lib/webparts/listForm/components/loc/{locale}.js",
+    "FormFieldStrings": "lib/webparts/listForm/components/formFields/loc/{locale}.js",
+    "servicesStrings": "lib/common/services/loc/{locale}.js"
+  }
+}

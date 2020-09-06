@@ -1,0 +1,28 @@
+[{
+    "key": "MMMM Do YYYY, h:mm a",
+    "text": "MMMM Do YYYY, h:mm a"
+  },
+  {
+    "key": "ddd MMM Do HH:mm YYYY",
+    "text": "ddd MMM Do HH:mm YYYY"
+  },
+  {
+    "key": "dddd, MMMM Do YYYY, h:mm:ss a",
+    "text": "dddd, MMMM Do YYYY, h:mm:ss a"
+  },
+  {
+    "key": "dddd, DD MMMM YYYY [at] hh:mm:ss A",
+    "text": "dddd, DD MMMM YYYY [at] hh:mm:ss A"
+  },
+  {
+    "key": "MM/DD/YYYY HH:mm:ss",
+    "text": "MM/DD/YYYYY HH:mm:ss"
+  },
+  {
+    "key": "D/M/YYYY HH:mm:ss",
+    "text": "D/M/YYYYY HH:mm:ss"
+  }, {
+    "key": "dddd, MMMM Do, YYYY, h:mm:ss",
+    "text": "dddd, MMMM Do, YYYY, h:mm:ss"
+  }
+]

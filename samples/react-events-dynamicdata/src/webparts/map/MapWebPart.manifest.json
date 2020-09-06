@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "53ac9dad-7fd5-49f6-83be-1a6439076493",
+  "alias": "MapWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Map" },
+    "description": { "default": "Shows the specified location on a map" },
+    "officeFabricIconFontName": "Globe2",
+    "properties": {
+      "address": "",
+      "bingMapsApiKey": "",
+      "city": "",
+      "title": ""
+    }
+  }]
+}

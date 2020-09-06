@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/latestOrders/LatestOrdersWebPart.js",
+      "manifest": "./src/webparts/latestOrders/LatestOrdersWebPart.manifest.json",
+      "outputPath": "./dist/latest-orders.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "latestOrdersStrings": "webparts/latestOrders/loc/{locale}.js"
+  }
+}

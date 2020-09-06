@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "custom-api-consumer-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/customApiConsumer/CustomApiConsumerWebPart.js",
+          "manifest": "./src/webparts/customApiConsumer/CustomApiConsumerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CustomApiConsumerWebPartStrings": "lib/webparts/customApiConsumer/loc/{locale}.js"
+  }
+}

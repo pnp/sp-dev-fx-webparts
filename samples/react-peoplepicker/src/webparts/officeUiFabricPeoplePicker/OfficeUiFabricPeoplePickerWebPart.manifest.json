@@ -1,0 +1,27 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "bb13df23-35f7-42c6-8c43-16be4fcd8daa",
+  "alias": "OfficeUiFabricPeoplePickerWebPart",
+  "componentType": "WebPart",
+  
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "bb13df23-35f7-42c6-8c43-16be4fcd8daa",
+    "group": { "default": "Under Development" },
+    "title": { "default": "People Picker" },
+    "description": { "default": "Office UI Fabric People Picker and SharePoint search better together" },
+    "officeFabricIconFontName": "AddGroup",
+    "properties": {
+      "description": "Office UI Fabric People Picker",
+      "typePicker": "Normal",
+      "principalTypeUser": true,
+      "principalTypeSharePointGroup": true,
+      "principalTypeSecurityGroup": false,
+      "principalTypeDistributionList": false,
+      "numberOfItems": 10
+    }
+  }]
+}

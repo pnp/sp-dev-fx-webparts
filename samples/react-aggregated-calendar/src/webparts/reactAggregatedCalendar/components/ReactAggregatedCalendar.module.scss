@@ -1,0 +1,146 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~office-ui-fabric-react/dist/sass/_References.scss';
+@import '~office-ui-fabric-react/dist/sass/Fabric.scss';
+.closeIconFocus:focus {
+  outline: none;
+}
+
+.calloutInnerEventContent {
+  margin-top: 10px;
+}
+
+.msCalloutclose {
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 8px;
+  width: 32px;
+  height: 32px;
+  font-size: $ms-font-size-m;
+  color: $ms-color-neutralSecondary;
+  //z-index: ($ms-zIndex-Callout + $ms-zIndex-front);
+}
+
+.msCalloutheader {
+  //z-index: ($ms-zIndex-Callout + $ms-zIndex-middle);
+  padding: 18px 24px 12px;
+  background-color: "[theme: inputBackgroundCheckedHovered, default: #0078d7]" !important ;
+}
+
+.msCallouttitle {
+  margin: 0; //font-family: $ms-font-family-semilight;
+  //font-size: $ms-font-size-xl;
+}
+
+.msCalloutinner {
+  height: 100%;
+  padding: 0 24px 20px;
+}
+
+.msCalloutsubText {
+  margin: 0; //font-family: $ms-font-family-semilight;
+  color: $ms-color-neutralPrimary;
+  font-size: $ms-font-size-s;
+}
+
+.reactAggregatedCalendar {
+  .legend {
+    border: solid 1px #eee;
+    font-size: 14px;
+    text-align: right;
+    white-space: normal;
+  }
+  .outerLegendDiv {
+    display: inline-block;
+    padding: 5px 20px 5px 5px;
+    line-height: 15px;
+    max-width: 300px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .innerLegendDiv {
+    border: 1px solid gray;
+    width: 15px;
+    height: 15px;
+    font-size: 1px;
+    position: relative;
+    float: left;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+    @include ms-Grid-row;
+
+    // background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg12;
+    @include ms-xl12;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+    @include ms-fontColor-white;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+}

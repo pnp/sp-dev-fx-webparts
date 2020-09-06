@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "factory-method-client-side-solution",
+    "id": "7116d524-988a-4de4-83b0-cd53165f816a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/factory-method.sppkg"
+  }
+}

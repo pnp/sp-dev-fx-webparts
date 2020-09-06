@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "personal-apps-client-side-solution",
+    "id": "ab3683c6-0388-47a2-84f5-90d01259d0ed",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [{
+      "resource": "Microsoft Graph",
+      "scope": "User.ReadWrite.All"
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/personal-apps.sppkg"
+  }
+}

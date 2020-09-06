@@ -1,0 +1,22 @@
+<office-ui-fabric-table>
+  <table class="{ opts.styles['ms-Table'] }">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr if="{ opts.isLoading }">
+        <td><office-ui-fabric-spinner label="Loading..." styles="{ opts.styles }"></office-ui-fabric-spinner></td>
+      </tr>
+      <tr if="{ !opts.isLoading && (!opts.items || opts.items.length == 0) }">
+        <td>No record found.</td>
+      </tr>
+      <tr each="{ item in opts.items }" if="{ opts.items && opts.items.length > 0 }">
+        <td>{ item.Id }</td>
+        <td>{ item.Title }</td>
+      </tr>
+    </tbody>
+  </table>
+</office-ui-fabric-table>

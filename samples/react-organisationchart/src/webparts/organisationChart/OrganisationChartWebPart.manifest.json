@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "32a5bf6e-3ee0-4788-a301-56136334815d",
+  "alias": "OrganisationChartWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "32a5bf6e-3ee0-4788-a301-56136334815d",
+    "group": { "default": "Under Development" },
+    "title": { "default": "OrganisationChart" },
+    "description": { "default": "WebPart to display an organisation chart" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "organisationName": ""
+    }
+  }]
+}

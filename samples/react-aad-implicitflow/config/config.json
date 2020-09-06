@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/upcomingMeetings/UpcomingMeetingsWebPart.js",
+      "manifest": "./src/webparts/upcomingMeetings/UpcomingMeetingsWebPart.manifest.json",
+      "outputPath": "./dist/upcoming-meetings.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "upcomingMeetingsStrings": "webparts/upcomingMeetings/loc/{locale}.js"
+  }
+}

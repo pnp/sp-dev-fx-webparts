@@ -1,0 +1,8 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-library-manifest.schema.json",
+  "id": "0ef3f066-d4d8-41b8-a683-aeb4e3a7848a",
+  "alias": "RxJsEventEmitter",
+  "componentType": "Library",
+  "version": "*",
+  "manifestVersion": 2
+}

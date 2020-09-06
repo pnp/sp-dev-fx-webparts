@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/organisationChart/OrganisationChartWebPart.js",
+      "manifest": "./src/webparts/organisationChart/OrganisationChartWebPart.manifest.json",
+      "outputPath": "./dist/organisation-chart.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "organisationChartStrings": "webparts/organisationChart/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "7dd7cf1a-0201-4ecb-87d1-df26ee53ba5f",
+  "alias": "TrendingInTheSitesIFollowWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "7dd7cf1a-0201-4ecb-87d1-df26ee53ba5f",
+    "group": { "default": "Content rollup" },
+    "title": { "default": "Trending in the sites I follow" },
+    "description": { "default": "Shows documents trending in the sites followed by the current user" },
+    "officeFabricIconFontName": "Chart",
+    "properties": {
+      "title": "Trending in the sites I follow",
+      "numberOfDocuments": 5
+    }
+  }]
+}

@@ -1,0 +1,73 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.psnLayer {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  
+  .pageSectionsNavigation {
+    border-bottom: 1px solid;
+    border-bottom-color: "[theme:neutralLighter, default: #f4f4f4]";
+    background: "[theme:white, default: #fff]";
+    .nav {
+      list-style: none;
+      display: flex;
+      height: 40px;
+      padding-inline-start: 40px;
+      padding-inline-end: 40px;
+      margin: 0;
+    
+      .navItem {
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    
+        .navItemLink {
+          cursor: pointer;
+          min-width: 20px;
+          text-align: center;
+          display: inline-block;
+          color: "[theme:neutralSecondary, default: #666666]";
+
+          &:hover {
+            color: "[theme:linkHovered, default: #004578]";
+          }
+        }
+      }
+    }
+
+    &.theme {
+      background: "[theme: themePrimary, default: #0078d4]";
+      border-bottom-color: "[theme:themePrimary, default: #0078d4]";
+      .nav {
+        .navItem {
+          .navItemLink {
+            color: "[theme:white, default: #fff]";
+
+            &:hover {
+              color: "[theme:neutralLighter, default: #f4f4f4]"
+            }
+          }
+        }
+      }
+    }
+
+    &.dark {
+      background: "[theme: neutralDark, default: #212121]";
+      border-bottom-color: "[theme:white, default: #fff]";
+
+      .nav {
+        .navItem {
+          .navItemLink {
+            color: "[theme:white, default: #fff]";
+
+            &:hover {
+              color: "[theme:neutralLighter, default: #f4f4f4]";
+            }
+          }
+        }
+      }
+    }
+  }
+}

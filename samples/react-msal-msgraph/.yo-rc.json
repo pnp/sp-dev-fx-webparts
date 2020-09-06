@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.1.1",
+    "libraryName": "react-msal-msgraph",
+    "libraryId": "169d1e68-4272-4d99-ac26-e4acd43d62fd",
+    "environment": "spo"
+  }
+}

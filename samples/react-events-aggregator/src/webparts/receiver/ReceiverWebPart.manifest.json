@@ -1,0 +1,19 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "891b997e-67da-4da3-a6e1-3caf8bb264be",
+  "alias": "ReceiverWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "891b997e-67da-4da3-a6e1-3caf8bb264be",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Receiver" },
+    "description": { "default": "Receives events from the broadcaster web part" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Receiver"
+    }
+  }]
+}

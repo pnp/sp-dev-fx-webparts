@@ -1,0 +1,21 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "786e7cdf-d1c8-4412-8abb-1aa18ea555e0",
+  "alias": "FileUploadWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198322f80",
+    "group": { "default": "SuperWebParts" },
+    "title": { "default": "SPFileUpload" },
+    "description": { "default": "Use this webpart to upload files to a library or as list attachments" },
+    "officeFabricIconFontName": "OpenFile",
+    "properties": {
+      "listName": "Documents",
+      "fileTypes":"jpg,png,gif,avi,mp4",
+      "uploadFilesTo":"DocumentLibrary"
+    }
+  }]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-rxjs-event-emitter-client-side-solution",
+    "id": "323ec3b8-b5de-4184-99a6-7e0f9c276412",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-rxjs-event-emitter.sppkg"
+  }
+}

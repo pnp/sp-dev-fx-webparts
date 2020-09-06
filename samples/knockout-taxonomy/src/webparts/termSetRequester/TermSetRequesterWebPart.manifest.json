@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "82e4b7b1-602f-4b4f-8a35-cb0e44b2de82",
+  "alias": "TermSetRequesterWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "82e4b7b1-602f-4b4f-8a35-cb0e44b2de82",
+    "group": { "default": "Under Development" },
+    "title": { "default": "TermSetRequester" },
+    "description": { "default": "Requests a Term Set from the SPO" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "TermSetRequester"
+    }
+  }]
+}

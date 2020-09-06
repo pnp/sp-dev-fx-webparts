@@ -1,0 +1,50 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+:export {
+  padding: 5;
+  minWidth: 210;
+  maxWidth: 320;
+  rowsPerPage: 3;
+}
+
+
+
+.compactLayout {
+  overflow: hidden;
+  font-size: 0;
+  position: relative;
+  background-color: transparent;
+
+  :global(.ms-DocumentCard) {
+    position: relative;
+    background-color: $ms-color-white;
+    height: 100%;
+
+    &:global(.ms-DocumentCard--compact), &:global(.ms-DocumentCard--actionable) {
+      border: none;
+
+      :global(.ms-DocumentCardPreview) {
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        width: 48px;
+      }
+
+      :global(.ms-DocumentCardTitle) {
+        font-weight: 400;
+      }
+
+      &:hover {
+        border: none;
+
+        &::after {
+          border:none;
+        }
+      }
+    }
+  }
+
+  :global(.ms-List-cell) {
+    vertical-align: top;
+    display: inline-block;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-react-hierarchy-view-client-side-solution",
+    "id": "2fd9a018-0cd9-4cca-9e84-4fac64b83333",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "features": [
+      {
+        "title": "react-display-hierarchy-deployment",
+        "description": "react-display-hierarchy-deployment",
+        "id": "c99c6e2c-f45c-41f4-84b4-f05f2031eab3",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-react-hierarchy-view.sppkg"
+  }
+}

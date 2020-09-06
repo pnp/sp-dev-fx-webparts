@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "968e1670-6570-4583-9164-686ced3bb63f",
+  "alias": "AppInsightsDashboardWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart","SharePointFullPage"],
+  "supportsFullBleed": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "AppInsights Dashboard" },
+    "description": { "default": "Displays the appinsights statistics." },
+    "officeFabricIconFontName": "BIDashboard",
+    "properties": { }
+  }]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "skype-presence-spfx-client-side-solution",
+    "id": "fcfeb3e4-bf84-4405-81c1-9c8f5dbaabe6",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/skype-presence-spfx.sppkg"
+  }
+}

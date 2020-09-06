@@ -1,0 +1,31 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/myRecentDocuments/MyRecentDocumentsWebPart.js",
+      "manifest": "./src/webparts/myRecentDocuments/MyRecentDocumentsWebPart.manifest.json",
+      "outputPath": "./dist/my-recent-documents.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/trendingInTheSitesIFollow/TrendingInTheSitesIFollowWebPart.js",
+      "manifest": "./src/webparts/trendingInTheSitesIFollow/TrendingInTheSitesIFollowWebPart.manifest.json",
+      "outputPath": "./dist/trending-in-the-sites-i-follow.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/trendingInThisSite/TrendingInThisSiteWebPart.js",
+      "manifest": "./src/webparts/trendingInThisSite/TrendingInThisSiteWebPart.manifest.json",
+      "outputPath": "./dist/trending-in-this-site.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/workingWith/WorkingWithWebPart.js",
+      "manifest": "./src/webparts/workingWith/WorkingWithWebPart.manifest.json",
+      "outputPath": "./dist/working-with.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "myRecentDocumentsStrings": "webparts/myRecentDocuments/loc/{locale}.js",
+    "trendingInTheSitesIFollowStrings": "webparts/trendingInTheSitesIFollow/loc/{locale}.js",
+    "trendingInThisSiteStrings": "webparts/trendingInThisSite/loc/{locale}.js",
+    "workingWithStrings": "webparts/workingWith/loc/{locale}.js"
+  }
+}

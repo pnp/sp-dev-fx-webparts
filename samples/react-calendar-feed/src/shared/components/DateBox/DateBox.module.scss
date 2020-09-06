@@ -1,0 +1,129 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.box {
+  font-weight: 400;
+  border: 1px solid;
+  color: $ms-color-neutralPrimary;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.box.boxIsSingleDay {
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.box.boxIsMultipleDays {
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.date {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.boxIsSmall .date {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.boxIsMedium .date {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.boxIsLarge .date {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.day {
+  font-weight: 600;
+}
+
+.boxIsSmall .month {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.boxIsMedium .month {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.boxIsLarge .month {
+  font-size: 21px;
+  font-weight: 100;
+}
+
+.day {
+  font-weight: 600;
+}
+
+.boxIsSmall .day {
+  font-size: 21px;
+}
+
+.boxIsLarge .day,
+.boxIsMedium .day {
+  font-size: 28px;
+}
+
+.box.boxIsSmall {
+  height: 62px;
+  width: 62px;
+
+  .month {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .day {
+    font-size: 21px;
+  }
+}
+
+.box.boxIsMedium {
+  height: 80px;
+  width: 80px;
+}
+
+.box.boxIsLarge {
+  height: 104px;
+  width: 104px;
+}
+
+.boxIsLarge .day,
+.boxIsMedium .day {
+  font-size: 28px;
+}
+
+.separator {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid;
+}
+
+.boxIsSmall .separator {
+  width: 31px;
+}
+
+.boxIsMedium .separator {
+  width: 40px;
+}
+
+.boxIsLarge .separator {
+  width: 52px;
+}

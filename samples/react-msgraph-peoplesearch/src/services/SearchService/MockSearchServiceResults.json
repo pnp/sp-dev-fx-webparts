@@ -1,0 +1,285 @@
+{
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#users(id,userPrincipalName,displayName,mail,jobTitle,mobilePhone,companyName,extension_7d1bd45a54af4c7c943ed5bff5a2a231_company)",
+    "@odata.count": 31,
+    "value": [
+        {
+            "id": "87d349ed-44d7-43e1-9a83-5f2406dee5bd",
+            "userPrincipalName": "AdeleV@M365x214355.onmicrosoft.com",
+            "displayName": "Adele Vance",
+            "mail": "AdeleV@M365x214355.onmicrosoft.com",
+            "jobTitle": "Product Marketing Manager",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "4782e723-f4f4-4af3-a76e-25e3bab0d896",
+            "userPrincipalName": "AlexW@M365x214355.onmicrosoft.com",
+            "displayName": "Alex Wilber",
+            "mail": "AlexW@M365x214355.onmicrosoft.com",
+            "jobTitle": "Marketing Assistant",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "c03e6eaa-b6ab-46d7-905b-73ec7ea1f755",
+            "userPrincipalName": "AllanD@M365x214355.onmicrosoft.com",
+            "displayName": "Allan Deyoung",
+            "mail": "AllanD@M365x214355.onmicrosoft.com",
+            "jobTitle": "Corporate Security Officer",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "f5289423-7233-4d60-831a-fe107a8551cc",
+            "userPrincipalName": "BenW@M365x214355.onmicrosoft.com",
+            "displayName": "Ben Walters",
+            "mail": "BenW@M365x214355.onmicrosoft.com",
+            "jobTitle": "VP Sales",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "e46ba1a2-59e7-4019-b0fa-b940053e0e30",
+            "userPrincipalName": "BrianJ@M365x214355.onmicrosoft.com",
+            "displayName": "Brian Johnson (TAILSPIN)",
+            "mail": "BrianJ@M365x214355.onmicrosoft.com",
+            "jobTitle": null,
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "b66ecf79-a093-4d51-86e0-efcc4531f37a",
+            "userPrincipalName": "ChristieC@M365x214355.onmicrosoft.com",
+            "displayName": "Christie Cline",
+            "mail": "ChristieC@M365x214355.onmicrosoft.com",
+            "jobTitle": "Sr. VP Sales & Marketing",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "6e7b768e-07e2-4810-8459-485f84f8f204",
+            "userPrincipalName": "Adams@M365x214355.onmicrosoft.com",
+            "displayName": "Conf Room Adams",
+            "mail": "Adams@M365x214355.onmicrosoft.com",
+            "jobTitle": null,
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "013b7b1b-5411-4e6e-bdc9-c4790dae1051",
+            "userPrincipalName": "Baker@M365x214355.onmicrosoft.com",
+            "displayName": "Conf Room Baker",
+            "mail": "Baker@M365x214355.onmicrosoft.com",
+            "jobTitle": null,
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "8528d6e9-dce3-45d1-85d4-d2db5f738a9f",
+            "userPrincipalName": "Crystal@M365x214355.onmicrosoft.com",
+            "displayName": "Conf Room Crystal",
+            "mail": "Crystal@M365x214355.onmicrosoft.com",
+            "jobTitle": null,
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "3fec04fc-e036-42f4-8f6f-b3b02288085c",
+            "userPrincipalName": "Hood@M365x214355.onmicrosoft.com",
+            "displayName": "Conf Room Hood",
+            "mail": "Hood@M365x214355.onmicrosoft.com",
+            "jobTitle": null,
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "6f1c452b-f9f4-4f43-8c42-17e30ab0077c",
+            "userPrincipalName": "Rainier@M365x214355.onmicrosoft.com",
+            "displayName": "Conf Room Rainier",
+            "mail": "Rainier@M365x214355.onmicrosoft.com",
+            "jobTitle": null,
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "5c7188eb-da70-4f1a-a8a5-afc26c2fe22c",
+            "userPrincipalName": "Stevens@M365x214355.onmicrosoft.com",
+            "displayName": "Conf Room Stevens",
+            "mail": "Stevens@M365x214355.onmicrosoft.com",
+            "jobTitle": null,
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "d4957c9d-869e-4364-830c-d0c95be72738",
+            "userPrincipalName": "DebraB@M365x214355.onmicrosoft.com",
+            "displayName": "Debra Berger",
+            "mail": "DebraB@M365x214355.onmicrosoft.com",
+            "jobTitle": "Administrative Assistant",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "24fcbca3-c3e2-48bf-9ffc-c7f81b81483d",
+            "userPrincipalName": "DiegoS@M365x214355.onmicrosoft.com",
+            "displayName": "Diego Siciliani",
+            "mail": "DiegoS@M365x214355.onmicrosoft.com",
+            "jobTitle": "CVP Finance",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "2804bc07-1e1f-4938-9085-ce6d756a32d2",
+            "userPrincipalName": "EmilyB@M365x214355.onmicrosoft.com",
+            "displayName": "Emily Braun",
+            "mail": "EmilyB@M365x214355.onmicrosoft.com",
+            "jobTitle": "Budget Analyst",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "16cfe710-1625-4806-9990-91b8f0afee35",
+            "userPrincipalName": "EnricoC@M365x214355.onmicrosoft.com",
+            "displayName": "Enrico Cattaneo",
+            "mail": "EnricoC@M365x214355.onmicrosoft.com",
+            "jobTitle": "Attorney",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "df043ff1-49d5-414e-86a4-0c7f239c36cf",
+            "userPrincipalName": "GradyA@M365x214355.onmicrosoft.com",
+            "displayName": "Grady Archie",
+            "mail": "GradyA@M365x214355.onmicrosoft.com",
+            "jobTitle": "CVP Legal",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "c8913c86-ceea-4d39-b1ea-f63a5b675166",
+            "userPrincipalName": "HenriettaM@M365x214355.onmicrosoft.com",
+            "displayName": "Henrietta Mueller",
+            "mail": "HenriettaM@M365x214355.onmicrosoft.com",
+            "jobTitle": "Marketing Assistant",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "baafca12-9874-4765-9576-e0e5cafe491b",
+            "userPrincipalName": "IrvinS@M365x214355.onmicrosoft.com",
+            "displayName": "Irvin Sayers",
+            "mail": "IrvinS@M365x214355.onmicrosoft.com",
+            "jobTitle": "Director",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "e3d0513b-449e-4198-ba6f-bd97ae7cae85",
+            "userPrincipalName": "IsaiahL@M365x214355.onmicrosoft.com",
+            "displayName": "Isaiah Langer",
+            "mail": "IsaiahL@M365x214355.onmicrosoft.com",
+            "jobTitle": "Web Marketing Manager",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "626cbf8c-5dde-46b0-8385-9e40d64736fe",
+            "userPrincipalName": "JohannaL@M365x214355.onmicrosoft.com",
+            "displayName": "Johanna Lorenz",
+            "mail": "JohannaL@M365x214355.onmicrosoft.com",
+            "jobTitle": "CVP Engineering",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "8b209ac8-08ff-4ef1-896d-3b9fde0bbf04",
+            "userPrincipalName": "JoniS@M365x214355.onmicrosoft.com",
+            "displayName": "Joni Sherman",
+            "mail": "JoniS@M365x214355.onmicrosoft.com",
+            "jobTitle": "Paralegal",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "074e56ea-0b50-4461-89e5-c67ae14a2c0b",
+            "userPrincipalName": "LeeG@M365x214355.onmicrosoft.com",
+            "displayName": "Lee Gu",
+            "mail": "LeeG@M365x214355.onmicrosoft.com",
+            "jobTitle": "CVP Research & Development",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "2ed03dfd-01d8-4005-a9ef-fa8ee546dc6c",
+            "userPrincipalName": "LidiaH@M365x214355.onmicrosoft.com",
+            "displayName": "Lidia Holloway",
+            "mail": "LidiaH@M365x214355.onmicrosoft.com",
+            "jobTitle": "Product Manager",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "e8a02cc7-df4d-4778-956d-784cc9506e5a",
+            "userPrincipalName": "LynneR@M365x214355.onmicrosoft.com",
+            "displayName": "Lynne Robbins",
+            "mail": "LynneR@M365x214355.onmicrosoft.com",
+            "jobTitle": "Product Manager",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "48d31887-5fad-4d73-a9f5-3c356e68a038",
+            "userPrincipalName": "MeganB@M365x214355.onmicrosoft.com",
+            "displayName": "Megan Bowen",
+            "mail": "MeganB@M365x214355.onmicrosoft.com",
+            "jobTitle": "Auditor",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "08fa38e4-cbfa-4488-94ed-c834da6539df",
+            "userPrincipalName": "MiriamG@M365x214355.onmicrosoft.com",
+            "displayName": "Miriam Graham",
+            "mail": "MiriamG@M365x214355.onmicrosoft.com",
+            "jobTitle": "VP Marketing",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "5bde3e51-d13b-4db1-9948-fe4b109d11a7",
+            "userPrincipalName": "admin@M365x214355.onmicrosoft.com",
+            "displayName": "MOD Administrator",
+            "mail": "admin@M365x214355.onmicrosoft.com",
+            "jobTitle": null,
+            "mobilePhone": "5555555555",
+            "companyName": null
+        },
+        {
+            "id": "089a6bb8-e8cb-492c-aa41-c078aa0b5120",
+            "userPrincipalName": "NestorW@M365x214355.onmicrosoft.com",
+            "displayName": "Nestor Wilke",
+            "mail": "NestorW@M365x214355.onmicrosoft.com",
+            "jobTitle": "CVP Operations",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "40079818-3808-4585-903b-02605f061225",
+            "userPrincipalName": "PattiF@M365x214355.onmicrosoft.com",
+            "displayName": "Patti Fernandez",
+            "mail": "PattiF@M365x214355.onmicrosoft.com",
+            "jobTitle": "President",
+            "mobilePhone": null,
+            "companyName": null
+        },
+        {
+            "id": "ec63c778-24e1-4240-bea3-d12a167d5232",
+            "userPrincipalName": "PradeepG@M365x214355.onmicrosoft.com",
+            "displayName": "Pradeep Gupta",
+            "mail": "PradeepG@M365x214355.onmicrosoft.com",
+            "jobTitle": "Accountant II",
+            "mobilePhone": null,
+            "companyName": null
+        }
+    ]
+}

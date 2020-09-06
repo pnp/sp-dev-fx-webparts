@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "webpack-example-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/webpackExample/WebpackExampleWebPart.js",
+          "manifest": "./src/webparts/webpackExample/WebpackExampleWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "localizedResources": {
+    "webpackExampleStrings": "lib/webparts/webpackExample/loc/{locale}.js"
+  },
+  "externals": {}
+}

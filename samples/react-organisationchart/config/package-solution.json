@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-organisationchart-client-side-solution",
+    "id": "95c4b6f9-b123-4eca-a70a-c1165995faa2",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-organisationchart.sppkg"
+  }
+}

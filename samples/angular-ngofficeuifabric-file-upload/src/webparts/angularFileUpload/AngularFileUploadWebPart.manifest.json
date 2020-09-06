@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "e949042a-35e8-4e87-bc5a-0842f95f1e5f",
+  "alias": "AngularFileUploadWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "e949042a-35e8-4e87-bc5a-0842f95f1e5f",
+    "group": { "default": "Under Development" },
+    "title": { "default": "(NG) File Upload" },
+    "description": { "default": "Uploading file using AngularJs (1.x)" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "libraryTitle": "Documents",
+      "rowLimit":30
+    }
+  }]
+}

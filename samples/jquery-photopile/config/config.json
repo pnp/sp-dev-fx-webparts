@@ -1,0 +1,29 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/photopileWebPart/PhotopileWebPartWebPart.js",
+      "manifest": "./src/webparts/photopileWebPart/PhotopileWebPartWebPart.manifest.json",
+      "outputPath": "./dist/photopile-web-part.bundle.js"
+    }
+  ],
+  "externals": {
+    "office-ui-fabric-react": "node_modules/office-ui-fabric-react/dist/office-ui-fabric-react.js",    
+    "jquery": {
+      "path": "node_modules/jquery/dist/jquery.js",
+      "globalName": "$"
+    },
+    "jqueryui": {
+      "path": "node_modules/jqueryui/jquery-ui.js",
+      "globalName": "jqueryui",
+      "globalDependencies": ["jquery"]
+    },
+    "photopileModule": {
+     "path": "src/webparts/photopileWebPart/js/photopile.js",
+     "globalName": "photopileModule",
+     "globalDependencies": ["jquery", "jqueryui"]
+    }
+  },
+  "localizedResources": {
+    "mystrings": "webparts/photopileWebPart/loc/{locale}.js"
+  }
+}

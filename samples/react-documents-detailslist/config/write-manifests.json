@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/write-manifests.schema.json",
+  //NOTE: the cdnBasePath works with relative path; this is useful when you move the pakedge between different environments (dev, staging, prod)
+  "cdnBasePath": "<!-- PATH TO CDN -->"
+}

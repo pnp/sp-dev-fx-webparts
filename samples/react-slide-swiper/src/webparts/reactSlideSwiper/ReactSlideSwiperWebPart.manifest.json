@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "6d0ab1aa-db7a-4e80-a2b5-c83fd820f165",
+  "alias": "ReactSlideSwiperWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "ReactSlideSwiper" },
+    "description": { "default": "Sample that shows swipe slides experience" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "ReactSlideSwiper"
+    }
+  }]
+}

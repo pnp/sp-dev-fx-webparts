@@ -1,0 +1,155 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+.vimeo {
+  display: block;
+}
+
+.videoEntry {
+  background-color: transparent;
+}
+
+.videoContainer {
+  background-color: transparent;
+}
+
+.videoInfo {
+  background-color: transparent;
+}
+
+.videoEntry {
+  background-color: transparent;
+}
+
+// .videoPlayer {
+//   border: 0;
+//   border-collapse: collapse;
+//   width: 50%;
+//   height: auto;
+// }
+.videoPlayerOuter {
+  position: relative;
+  padding: 56.25% 0 0 0;
+}
+
+.videoPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.videoPreviewPane {
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+  margin: 0.5em 0;
+}
+
+.videoPlayerToolbar {
+  background-color: white;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+.videoPlayerHeader {
+  @extend .videoPlayerToolbar;
+  @include ms-font-xl;
+  line-height: 200%;
+  padding: 0;
+}
+
+.videoSearchResult {
+  background-color: yellow;
+}
+
+.videoResult {
+  &Item {
+    background-color: black;
+    display: flex;
+    justify-items: stretch;
+    flex-wrap: none;
+  }
+  &Preview {
+    display: inline-block;
+    width: auto;
+    height: auto;
+  }
+  &Info {
+    background-color: white;
+    box-sizing: border-box;
+    flex: 1;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  &Title {
+    @include ms-fontSize-xl;
+    margin-bottom: 9px;
+  }
+  &Description {
+    // background-color: yellow;
+    @include ms-fontSize-m;
+    max-height: 5*14px*1.1;
+    overflow: hidden;
+  }
+  &Author {
+    background-color: white;
+    a {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      width: auto;
+      flex-direction: row;
+      text-decoration: none;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+    &Image {
+      border-radius: 50%;
+      border: 1px gray solid;
+      display: inline-block;
+    }
+    &Name {
+      @include ms-fontSize-mPlus;
+      line-height: 30px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-left: 0.5em;
+      color: gray;
+    }
+  }
+}
+
+// .videoSearchBar {
+//   background-color: transparent;
+//   display: flex-box;
+//   margin-bottom: 0.5em;
+//   :global {
+//     .n8d-searchbox {
+//       width: calc(100% - 90px);
+//       display: inline-block;
+//     }
+//     .n8d-searchbutton {
+//       width: 90px;
+//       margin: 0;
+//     }
+//   }
+// }
+.videoSearchBar {
+  display: flex;
+  margin-bottom: 0.5em;
+}
+
+.n8dSearchbox {
+  width: calc(100% - 90px);
+  display: inline-block;
+}
+
+.n8dSearchbutton {
+  width: 90px;
+  margin: 0;
+}
+
+.n8dSavebutton {
+  margin: 0;
+  white-space: nowrap;
+}

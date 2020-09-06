@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.7.1609.3, Culture=neutral, PublicKeyToken=3751622786b357c2" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-SOCKETIO-SPFX-DEMO">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-SOCKETIO-SPFX-DEMO" Version="1" BaseSiteTemplate="STS#0">
+      <pnp:Lists>
+        <pnp:ListInstance Title="NewsList" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/NewsList" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{DE788C87-CF02-47BF-A0F1-F0C9991102BC}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="/sites/dev/Lists/NewsList/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="Description" />
+                <FieldRef Name="PreviewImageUrl" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field Type="Note" Title="Description" DisplayName="Description" Required="FALSE" ID="{d36bc9f3-9330-43cf-b8de-414abf9596f5}" SourceID="{{listid:NewsList}}" StaticName="Description" Name="Description" ColName="ntext2" RowOrdinal="0" Version="1" />
+            <Field Type="URL" DisplayName="PreviewImageUrl" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Image" ID="{53bc2547-9c8e-4b0b-b1ab-9c686d07ac1e}" SourceID="{{listid:NewsList}}" StaticName="PreviewImageUrl" Name="PreviewImageUrl" ColName="nvarchar3" RowOrdinal="0" ColName2="nvarchar4" RowOrdinal2="0" Version="1" />
+          </pnp:Fields>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-faq-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactFaq/ReactFaqWebPart.js",
+          "manifest": "./src/webparts/reactFaq/ReactFaqWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactFaqWebPartStrings": "lib/webparts/reactFaq/loc/{locale}.js"
+  }
+}

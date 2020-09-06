@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "teams-tracker-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/teamsTracker/TeamsTrackerWebPart.js",
+          "manifest": "./src/webparts/teamsTracker/TeamsTrackerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TeamsTrackerWebPartStrings": "lib/webparts/teamsTracker/loc/{locale}.js"
+  }
+}

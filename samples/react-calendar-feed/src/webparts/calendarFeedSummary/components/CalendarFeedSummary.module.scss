@@ -1,0 +1,72 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.calendarFeedSummary {
+  // this is a trick I use to create classes that are empty
+  // just define an attribute which uses 'inherit'
+  // it has no impact to styles, but won't complain
+  // about the empty CSS class
+  color: inherit;
+}
+
+.webPartChrome {
+  // display: -ms-flexbox;
+  // display: flex;
+  // -ms-flex-align: stretch;
+  // align-items: stretch;
+  // -ms-flex-direction: column;
+  // flex-direction: column;
+  color: inherit;
+}
+
+.headerSmMargin {
+  margin-bottom: 11px;
+}
+
+.headerLgMargin {
+  margin-bottom: 18px;
+}
+
+.webPartHeader {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.seeAll {
+  white-space: nowrap;
+  margin-left: auto;
+  position: relative;
+}
+
+.content {
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+}
+
+.list {
+  width: 100%;
+}
+
+.spinner {
+  padding-top: 20px;
+}
+
+.emptyMessage {
+  overflow: hidden;
+  display: inline-block;
+  margin: 10px 0 15px;
+  color: $ms-color-neutralSecondary;
+}
+
+.errorMessage {
+  overflow: hidden;
+  display: inline-block;
+  margin: 10px 0 15px;
+  color: $ms-color-neutralSecondary;
+}
+
+.errorMessage .moreDetails {
+  color:$ms-color-error;
+}

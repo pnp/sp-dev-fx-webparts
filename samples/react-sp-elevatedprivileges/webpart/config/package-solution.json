@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "react-sp-elevatedprivileges-client-side-solution",
+    "id": "dbc8827c-729c-4e8f-9ecc-f0d57f279ba2",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/react-sp-elevatedprivileges.spapp"
+  }
+}

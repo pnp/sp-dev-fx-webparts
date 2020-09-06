@@ -1,0 +1,13 @@
+@import './GraphCalendar.Teams.module.scss';
+
+:global {
+  .fc {
+    color: #ffffff;
+  }
+
+  .fc-unthemed {
+    td.fc-today {
+      background: #3B3A39;
+    }
+  }
+}

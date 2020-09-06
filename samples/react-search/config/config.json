@@ -1,0 +1,15 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/searchSpfx/SearchSpfxWebPart.js",
+      "manifest": "./src/webparts/searchSpfx/SearchSpfxWebPart.manifest.json",
+      "outputPath": "./dist/search-spfx.bundle.js"
+    }
+  ],
+  "externals": {
+    "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"
+  },
+  "localizedResources": {
+    "mystrings": "webparts/searchSpfx/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.7.1",
+    "libraryName": "react-comparer",
+    "libraryId": "8bc49dd2-60c6-46dc-989b-43a53f055bd0",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

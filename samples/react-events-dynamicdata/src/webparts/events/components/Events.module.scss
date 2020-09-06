@@ -1,0 +1,16 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.events {
+  .error {
+    color: $ms-color-red;
+
+    .msg {
+      font-style: italic;
+    }
+  }
+
+  .info {
+    text-align: center;
+  }
+}

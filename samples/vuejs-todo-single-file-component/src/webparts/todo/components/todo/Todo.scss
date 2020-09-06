@@ -1,0 +1,37 @@
+h1 {
+    text-align: center;
+    margin: 0;
+    color: rgba(175, 47, 47, 0.15);
+    font-size: 80px;
+}
+
+ul{
+    list-style: none;
+}
+
+#new-todo {
+    text-align: center;
+
+    input {
+        padding: 16px 16px 16px 16px;
+        border: 1px solid #d6d4d4;
+        width: 300px;
+    }
+}
+.notification{
+    text-align: center;
+    padding-top: 50px;
+  }
+  .notificationIcon{
+   font-size: 20px;
+   margin-right: 10px;
+  }
+  .notificationHeader
+  {
+    font-size: 20px;
+  }
+  .notificationDescription
+  {
+    font-size: 18px;
+    margin-top: 20px;
+  }

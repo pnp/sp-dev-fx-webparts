@@ -1,0 +1,7 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "angular-file-upload",
+    "libraryId": "225f3995-9eb1-4b9f-80e9-e45f8fad8c4a",
+    "framework": "none"
+  }
+}

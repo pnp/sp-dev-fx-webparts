@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.7.0",
+    "libraryName": "react-slide-swiper",
+    "libraryId": "c7fdd51c-469e-432f-bdde-930294d3a133",
+    "environment": "spo",
+    "isCreatingSolution": true,
+    "packageManager": "npm",
+    "componentType": "webpart",
+    "isDomainIsolated": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graph-eval-url-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphEvalUrl/GraphEvalUrlWebPart.js",
+          "manifest": "./src/webparts/graphEvalUrl/GraphEvalUrlWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphEvalUrlWebPartStrings": "lib/webparts/graphEvalUrl/loc/{locale}.js"
+  }
+}

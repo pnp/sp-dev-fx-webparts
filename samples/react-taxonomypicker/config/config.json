@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/taxonomyPickerSample/TaxonomyPickerSampleWebPart.js",
+      "manifest": "./src/webparts/taxonomyPickerSample/TaxonomyPickerSampleWebPart.manifest.json",
+      "outputPath": "./dist/taxonomy-picker-sample.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "taxonomyPickerSampleStrings": "webparts/taxonomyPickerSample/loc/{locale}.js"
+  }
+}

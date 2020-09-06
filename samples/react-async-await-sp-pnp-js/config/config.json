@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "async-await-pn-p-js-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/asyncAwaitPnPJs/AsyncAwaitPnPJsWebPart.js",
+          "manifest": "./src/webparts/asyncAwaitPnPJs/AsyncAwaitPnPJsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "localizedResources": {
+    "asyncAwaitPnPJsStrings": "lib/webparts/asyncAwaitPnPJs/loc/{locale}.js"
+  },
+  "externals": {}
+}

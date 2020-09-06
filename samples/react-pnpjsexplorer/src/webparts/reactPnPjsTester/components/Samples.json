@@ -1,0 +1,49 @@
+{
+    "samples": [
+        {
+            "command": "sp.web.select('Title')"
+        },
+        {
+            "command": "sp.web.currentUser.get()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('My List').items"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('My List').items.select('Title','Description').top(5).orderBy('Modified', true).get()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('My List').items.getById(1).get()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('BigList').items.getAll()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('LookupList').items.getById(1).select('Title','Lookup/Title','Lookup/ID').expand('Lookup').get()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('Pages').items.select('Title','FileRef','FieldValuesAsText/MetaInfo').expand('FieldValuesAsText').get()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('CustomList').items.add({Title: 'PnpJS Explorer'})"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('My List').items.getById(1).delete()"
+        },
+        {
+            "command": "sp.web.associatedVisitorGroup()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('My List').views()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('My List').views.getByTitle('All Items')()"
+        },
+        {
+            "command": "sp.web.userCustomActions()"
+        },
+        {
+            "command": "sp.web.lists.getByTitle('Documents').rootFolder.folders()"
+        }
+    ]
+}

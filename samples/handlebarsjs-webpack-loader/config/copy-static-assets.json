@@ -1,0 +1,6 @@
+// copy-static-assets.json
+{
+  "includeExtensions": [
+    "hbs"
+  ]
+}

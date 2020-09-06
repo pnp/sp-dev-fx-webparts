@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "roman-numerals-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/romanNumerals/RomanNumeralsWebPart.js",
+          "manifest": "./src/webparts/romanNumerals/RomanNumeralsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RomanNumeralsWebPartStrings": "lib/webparts/romanNumerals/loc/{locale}.js"
+  }
+}

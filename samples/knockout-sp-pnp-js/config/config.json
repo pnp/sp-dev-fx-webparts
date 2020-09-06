@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "pn-pjs-example-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pnPjsExample/PnPjsExampleWebPart.js",
+          "manifest": "./src/webparts/pnPjsExample/PnPjsExampleWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "tslib": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/tslib/1.9.3/tslib.min.js",
+      "globalName": "tslib"
+    },
+    "@pnp/common": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/pnp-common/1.2.5/common.es5.umd.bundle.min.js",
+      "globalName": "pnp.common"
+    },
+    "@pnp/logging": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/pnp-logging/1.2.5/logging.es5.umd.min.js",
+      "globalName": "pnp.logging",
+      "globalDependencies": [
+        "tslib"
+      ]
+    },
+    "@pnp/odata": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/pnp-odata/1.2.5/odata.es5.umd.min.js",
+      "globalName": "pnp.odata",
+      "globalDependencies": [
+        "@pnp/common",
+        "@pnp/logging",
+        "tslib"
+      ]
+    },
+    "@pnp/sp": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/pnp-sp/1.2.5/sp.es5.umd.min.js",
+      "globalName": "pnp.sp",
+      "globalDependencies": [
+        "@pnp/logging",
+        "@pnp/common",
+        "@pnp/odata",
+        "tslib"
+      ]
+    }
+  },
+  "localizedResources": {
+    "PnPjsExampleWebPartStrings": "lib/webparts/pnPjsExample/loc/{locale}.js"
+  }
+}

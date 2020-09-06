@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "df0b8550-f4db-4d80-af6b-53c0fdcdae73",
+  "alias": "SidePanelWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "df0b8550-f4db-4d80-af6b-53c0fdcdae73",
+    "group": { "default": "Under Development" },
+    "title": { "default": "Side Panel" },
+    "description": { "default": "Side Panel description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "panelPosition": 1
+    }
+  }]
+}

@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "photopile-web-part-client-side-solution",
+    "id": "cf226a09-ce77-458a-8b89-dc402525c0d3",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/photopile-web-part.sppkg"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-router-dom-client-side-solution",
+    "id": "8aae1dc4-d74b-4ec4-ae2f-ebfd1e9ee7d0",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-router-dom.sppkg"
+  }
+}

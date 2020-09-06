@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "fd5fa211-ef67-4b5b-9f0d-6117a93e44af",
+  "alias": "PhotopileWebPartWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "fd5fa211-ef67-4b5b-9f0d-6117a93e44af",
+    "group": { "default": "Default" },
+    "title": { "default": "Photopile" },
+    "description": { "default": "PhotopileWebPart description" },
+    "officeFabricIconFontName": "PhotoCollection",
+    "properties": {
+      "listName": "",
+      "orderBy": "ID",
+      "orderByAsc": "asc",
+      "count": 100,
+      "numLayers": 5,
+      "thumbOverlap": 50,
+      "thumbRotation": 45,
+      "thumbBorderWidth": 2,
+      "thumbBorderColor": "white",
+      "thumbBorderHover": "#EAEAEA",
+      "draggable": true,
+      "fadeDuration": 200,
+      "pickupDuration": 500,
+      "photoZIndex": 100,
+      "photoBorder": 10,
+      "photoBorderColor": "white",
+      "showInfo": true,
+      "autoplayGallery": false,
+      "autoplaySpeed": 5000
+    }
+  }]
+}

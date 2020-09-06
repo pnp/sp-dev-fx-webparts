@@ -1,0 +1,29 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "id": "3a328f0a-99c4-4b28-95ab-fe0847f657a3",
+    "alias": "ScriptEditorWebPart",
+    "componentType": "WebPart",
+    "version": "*",
+    "supportsFullBleed": true,
+    "manifestVersion": 2,
+    "requiresCustomScript": true,
+    "preconfiguredEntries": [{
+        "groupId": "3a328f0a-99c4-4b28-95ab-fe0847f657a3",
+        "group": {
+            "default": "mAdcOW deZign"
+        },
+        "title": {
+            "default": "Modern Script Editor"
+        },
+        "description": {
+            "default": "Add arbitrary script to a page"
+        },
+        "officeFabricIconFontName": "JS",
+        "properties": {
+            "script": "",
+            "title": "The Modern Script Editor web part!",
+            "removePadding": false,
+            "spPageContextInfo": false
+        }
+    }]
+}

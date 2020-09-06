@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "js-extend-gulp-client-side-solution",
+    "id": "ff250e08-bd51-498e-8b3f-a296db4f0c2c",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/js-extend-gulp.sppkg"
+  }
+}

@@ -1,0 +1,116 @@
+@import "../OneDriveTab.module.scss";
+
+
+.odItemTile2Image {
+  display: inline-block;
+}
+
+.odImageFrame2 {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.odImageFrame2Image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.odImageFrame {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.odImageStack {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.odImageStackTile {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  //opacity: 0;
+}
+
+.odImageTile {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.odImageTile {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.odImageTileBackground {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.odImageTileImage {
+  display: block;
+  opacity: 1;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.odImageTileImage, a .odImageTileImage {
+  border: none;
+}
+
+.odImageTile img {
+  display: block;
+}
+
+.odItemTile2SmallIcon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 6px;
+}
+
+.fileTypeIcon {
+  position: relative;
+  display: inline-block;
+}
+
+.fileTypeIconIcon {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+}

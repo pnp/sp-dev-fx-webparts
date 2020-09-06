@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "my-recent-documents-client-side-solution",
+    "id": "5800f751-4ee9-462d-bbc4-d4c305e93c73",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/my-recent-documents.sppkg"
+  }
+}

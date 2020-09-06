@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "1e12b818-ce16-4c4d-83e7-888c571dd227",
+  "alias": "AssetDeploymentWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "1e12b818-ce16-4c4d-83e7-888c571dd227",
+    "group": { "default": "Under Development" },
+    "title": { "default": "AssetDeployment" },
+    "description": { "default": "AssetDeployment Web Part" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "AssetDeployment"
+    }
+  }]
+}

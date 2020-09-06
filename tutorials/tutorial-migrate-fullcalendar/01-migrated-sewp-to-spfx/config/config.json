@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "tasks-calendar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/tasksCalendar/TasksCalendarWebPart.js",
+          "manifest": "./src/webparts/tasksCalendar/TasksCalendarWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-1.11.1.min.js",
+      "globalName": "jQuery"
+    },
+    "fullcalendar": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js",
+      "globalName": "jQuery",
+      "globalDependencies": [
+        "jquery"
+      ]
+    },
+    "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"
+  },
+  "localizedResources": {
+    "TasksCalendarWebPartStrings": "lib/webparts/tasksCalendar/loc/{locale}.js"
+  }
+}

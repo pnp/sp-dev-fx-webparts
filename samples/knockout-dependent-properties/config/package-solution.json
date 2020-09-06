@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "dep-props-custom-class-client-side-solution",
+    "id": "c3bedf24-4177-4861-8c30-a1c67c499eae",
+    "version": "1.0.0.1"
+  },
+  "paths": {
+    "zippedPackage": "solution/dep-props-custom-class.spapp"
+  }
+}

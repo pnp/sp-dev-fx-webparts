@@ -1,0 +1,14 @@
+.workingWith {
+  .webPartTitle {
+    margin-bottom: 1em;
+  }
+
+  :global .ms-Spinner {
+    width: 7em;
+    margin: 0 auto;
+  }
+
+  :global .ms-Persona {
+    cursor: pointer;
+  }
+}
