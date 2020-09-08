@@ -78,6 +78,10 @@ You can also select a user from the current set of site users.
 Click on the /Select site user/ button and choose a user from the list displayed on the panel.
 ![MyTasks](./assets/screen3.png)
 
+## Related Solutions
+
+See sample solution [react-check-user-group](../react-check-user-group) by [aakashbhardwaj619](https://github.com/aakashbhardwaj619) for a method of looking up a user's AAD groups and the membership list of an AAD group. This solution differs by looking at the mappings between an AAD group and a SharePoint site user.
+
 ## References
 
 - [User profile synchronization](https://docs.microsoft.com/en-us/sharepoint/user-profile-sync)
