@@ -20,7 +20,14 @@
         "resource": "Microsoft Graph",
         "scope": "Directory.AccessAsUser.All"
       }
-    ]
+    ],
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": ""
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-my-task.sppkg"

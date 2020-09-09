@@ -11,7 +11,8 @@ import { ITaskDetails } from './ITaskDetails';
 import { ITaskProperty } from './ITaskProperty';
 import { IUser } from './IUser';
 import { MSGraphClient, SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
-import { PropertyPaneDynamicFieldSet, WebPartContext } from '@microsoft/sp-webpart-base';
+import { WebPartContext } from "@microsoft/sp-webpart-base";
+import { PropertyPaneDynamicFieldSet } from "@microsoft/sp-property-pane";
 import {
   SearchProperty,
   SearchQuery,

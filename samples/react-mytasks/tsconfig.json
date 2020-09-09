@@ -29,7 +29,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts", "src/webparts/myTasks/components/CheckList/CheckList.tsx"
+    "src/**/*.ts", "src/webparts/myTasks/components/CheckList/CheckList.tsx", "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
