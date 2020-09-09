@@ -15,7 +15,7 @@ nav:
     - By Framework: index.md
     - By SPFx Version: samples/spfx.md
     - By Compatibility: samples/compatibility.md
-    - By PnP Control: samples/pnpcontrols.md
+    - By PnP Controls: samples/pnpcontrols.md
     - By Year: samples/year.md
     - By Author: samples/author.md
     - By Keyword: samples/keyword.md
