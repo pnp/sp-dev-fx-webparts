@@ -15,6 +15,7 @@ nav:
     - By Framework: index.md
     - By SPFx Version: samples/spfx.md
     - By Compatibility: samples/compatibility.md
+    - By PnP Control: samples/pnpcontrols.md
     - By Year: samples/year.md
     - By Author: samples/author.md
     - By Keyword: samples/keyword.md
@@ -61,6 +62,37 @@ extra:
     - type: 'link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - framework: React
+      spfx: 1.9.1
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-admin-sc-catalog-pnpjs
+      name: react-admin-sc-catalog-pnpjs
+      title: Site Collection App Catalogs
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-admin-sc-catalog-pnpjs/assets/react-admin-sc-catalog-pnpjs-webpart-animated.gif
+      author: Federico Porceddu
+      summary: A SPFx WebPart using @pnp/sp/appcatalog and @pnp/spfx-controls-react. It allows to see in a single view all the SiteCollection catalogs and the Apps installed with some useful metadata. It needs Globlal Administrator or SharePoint Online Administrator permissions in order to access Site collection App Catalogs hidden list and each Site Collection App Catalog.
+      modifiedtext: November 07, 2019
+      modified: 2019-11-07
+      pnpcontrols: ListView, WebPartTitle
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sp-site-user-groups
+      name: react-sp-site-user-groups
+      title: Site User and Group Information
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-sp-site-user-groups/assets/screen1.png
+      author: Daniel Watford
+      summary: Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed.
+      modifiedtext: September 8, 2020
+      modified: 2020-09-08
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-restaurant-menu
+      name: react-restaurant-menu
+      title: Restaurant Menu
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-restaurant-menu/assets/restaurantmenu.gif
+      author: João Mendes
+      summary: This web part shows a Restaurant Menu, the user can select the options to show in Menu.
+      modifiedtext: September 5, 2020
+      modified: 2020-09-05
     - framework: React
       spfx: 1.4.1
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-upgrade-me
@@ -214,6 +246,7 @@ extra:
       modifiedtext: July 16, 2020
       modified: 2020-07-16
       keywords: ical,wordpress,rss,exchange,calendar,event,hooks,theme,background
+      pnpcontrols: PropertyFieldNumber, PropertyFieldSliderWithCallout, PropertyFieldTextWithCallout, PropertyFieldToggleWithCallout, Placeholder, WebPartTitle 
     - framework: React
       spfx: 1.9.1
       title: Telephone Directory using React, Ms Graph and SPFx
@@ -234,6 +267,7 @@ extra:
       summary: Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.
       modifiedtext: Sept 2, 2020
       modified: 2020-09-02
+      pnpcontrols: Placeholder, WebPartTitle
     - framework: React
       spfx: 1.10.0
       title: Timeline
@@ -475,6 +509,7 @@ extra:
       summary: This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format.
       modifiedtext: June 22, 2020
       modified: 2020-06-22
+      pnpcontrols: WebPartTitle
     - framework: React
       spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-appinsights-dashboard
@@ -485,6 +520,7 @@ extra:
       summary: This webpart displays different statistics data captured in the Azure Application Insights in a graphical representation.
       modifiedtext: June 17, 2020
       modified: 2020-06-17
+      pnpcontrols: Placeholder, ChartControl
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-carousel
@@ -529,6 +565,7 @@ extra:
       modifiedtext: August 25, 2020
       modified: 2020-08-25
       level: 300
+      pnpcontrols: PropertyFieldListPicker, PropertyFieldViewPicker, ropertyFieldCodeEditorLanguages, PropertyPaneWebPartInformation, Placeholder
     - framework: Javascript
       spfx: 1.6.0
       title: Modern Calendar
@@ -555,11 +592,11 @@ extra:
       name: react-calendar
       title: Calendar
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
-      thumbnailtype: video
       author: João Mendes, Mohamed Derhalli, Hugo Bernier
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
       modifiedtext: June 09, 2020
       modified: 2020-06-09
+      pnpcontrols: PropertyFieldDateTimePicker, PeoplePicker, Map
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
       name: js-workbench-customizer
       title: Workbench customizer
@@ -814,6 +851,7 @@ extra:
       modifiedtext: August 25, 2020
       modified: 2020-08-25
       level: 300
+      pnpcontrols: PropertyPaneWebPartInformation, PropertyFieldListPicker, PropertyFieldViewPicker, PropertyFieldCodeEditorLanguages
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-faqapp
       name: react-faqapp
       title: Frequently Asked Questions
@@ -847,6 +885,7 @@ extra:
       modifiedtext: June 11, 2020
       modified: 2020-06-11
       level: 200
+      pnpcontrols: ListView
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-spupsproperty-sync
       name: react-spupsproperty-sync
       title: SPUPS Property Sync
@@ -977,6 +1016,7 @@ extra:
       author: Sudharsan Kesavanarayanan
       modifiedtext: February 05, 2020
       modified: 2020-02-05
+      pnpcontrols: PropertyFieldSliderWithCallout, PropertyFieldToggleWithCallout, PropertyFieldListPicker
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-twitter
       name: react-twitter
       title: Twitter Timeline
@@ -1426,6 +1466,7 @@ extra:
       version: 1.0
       modifiedtext: November 12, 2017
       modified: 2017-11-12
+      pnpcontrols: PropertyFieldColorPicker, PropertyFieldSpinButton
     - framework: Javascript
       spfx: 1.7.1
       year: 2019
@@ -1536,6 +1577,7 @@ extra:
       version: 0.0.2
       modifiedtext: March 03, 2018
       modified: 2018-03-03
+      pnpcontrols: PropertyFieldListPicker, PropertyFieldTermPicker, Placeholder, ListView, FileTypeIcon
     - framework: React
       spfx: 1.4.1
       year: 2018
@@ -1584,6 +1626,7 @@ extra:
       summary: This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.
       modifiedtext: June 15, 2020
       modified: 2020-06-15
+      pnpcontrols: Placeholder
     - framework: React
       spfx: 1.4.1
       year: 2018
@@ -1646,6 +1689,7 @@ extra:
       version: 1.1.0
       modifiedtext: July 23, 2019
       modified: 2019-07-23
+      pnpcontrols: PropertyFieldNumber, WebPartTitle
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-bot-framework
@@ -2283,17 +2327,15 @@ extra:
       modified: 2017-03-19
     - framework: React
       spfx: GA
-      year: 2017
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-provision-assets
       name: react-provision-assets
       title: Provision SharePoint Assets with the SPFx solution package
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-provision-assets/assets/spfx-provision-assets.gif
       thumbnailtype: video
-      author: Velin Georgiev
+      author: Velin Georgiev, Nanddeep Nachan
       summary: This sample shows how we can provision Document Library, Custom List, Web and List PropertyBag properties, Site Columns, Content Types, Images, Site Page with the SFPx Client side webpart and even prepopulated list and library items along with the SPFx solution package. All of the components can be deployed at once with the SPFx webpart when the app is added to a SharePoint site. It also contains custom list and document library xml schemas.
-      version: 0.0.1
-      modifiedtext: June 17, 2017
-      modified: 2017-06-17
+      modifiedtext: September 06, 2020
+      modified: 2020-09-06
     - framework: React
       spfx: drop4
       year: 2016
@@ -2757,6 +2799,7 @@ extra:
     - Chakkaradeep Chandran
     - Chris Kent
     - Daniel Gaeta
+    - Daniel Watford
     - Daniel Westerdale
     - Dany Wyss
     - David Hartman
