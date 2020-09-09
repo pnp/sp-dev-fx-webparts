@@ -20,10 +20,7 @@ extensions:
 
 ## Summary
 
-This web part shows a Restaurant Menu , the user can select the options to show in Menu.
-  
-
-
+This web part shows a Restaurant Menu, the user can select the options to show in Menu.
 
 ![MySites](./assets/restaurantmenu.gif)
 
@@ -55,7 +52,7 @@ react-restaurant-menu|João Mendes
 
 Version|Date|Comments
 -------|----|--------
-1.0.0|Setember 5, 2020|Initial release
+1.0.0|September 5, 2020|Initial release
 
 ## Disclaimer
 
@@ -77,4 +74,4 @@ Please follow all the steps:
 - Go to **API Access** - from **SharePoint Admin Center** new experience, and **Approve** the permission to use Microsoft Graph scope **Group.Read.All** and **Directory.Read.All**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-my-sites" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-restaurant-menu" />
