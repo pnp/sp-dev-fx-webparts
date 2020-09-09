@@ -8,7 +8,7 @@ Note: Azure AD Groups are represented as Site Users in SharePoint.
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.11-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
@@ -48,12 +48,12 @@ Access to a SharePoint online site with various tenant users granted access to v
   - **gulp trust-dev-cert**
   - **gulp serve --nobrowser**
 - Open the hosted workbench on a SharePoint site - i.e. https://_tenant_.sharepoint.com/site/_sitename_/_layouts/workbench.aspx
-- Add the User and Group Info webpart to the page.
+- Add the User and Group Info web part to the page.
 - View the current user's information and the 'user' information for any Azure AD groups the user belongs to which are also known to the SharePoint site.
 
 ## Features
 
-This webpart was created to better understand the relationship between AAD users, AAD groups, SP User and SP Groups. In particular I was interested in how SP site user/group ids are mapped to the 4 principal types so that I might match a user against values entered in a SP People column which also accepted group values.
+This web part was created to better understand the relationship between AAD users, AAD groups, SP User and SP Groups. In particular I was interested in how SP site user/group ids are mapped to the 4 principal types so that I might match a user against values entered in a SP People column which also accepted group values.
 
 Experiment by granting permissions directly to some users for a site, directly to an AAD group for a site, and to a SP group where the membership consists of the AAD user or nested AAD groups.
 
@@ -63,7 +63,7 @@ For the principals found that relate to a user links are provided to the relevan
 
 ## Display user's membership of AAD and SP groups
 
-When the webpart is first loaded the current user is selected.
+When the web part is first loaded the current user is selected.
 
 Details of the user's membership of SP and AAD groups are shown, along with corresponding SP site user/group ids (highlighted).
 ![MyTasks](./assets/screen1.png)
