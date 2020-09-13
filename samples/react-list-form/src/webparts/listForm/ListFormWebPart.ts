@@ -74,6 +74,7 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
           showUnsupportedFields: this.properties.showUnsupportedFields,
           onSubmitSucceeded: (id: number) => this.formSubmitted(id),
           onUpdateFields: (fields: IFieldConfiguration[]) => this.updateField(fields),
+          context: this.context,
         }
       );
     } else {

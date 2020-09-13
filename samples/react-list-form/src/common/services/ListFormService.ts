@@ -5,6 +5,8 @@ import { ControlMode } from '../datatypes/ControlMode';
 import { IFieldSchema, RenderListDataOptions } from './datatypes/RenderListData';
 import { IListFormService } from './IListFormService';
 import { IAttachment } from '../../types/IAttachment';
+import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { SPPeopleSearchService } from './SPPeopleSearchService';
 
 
 export class ListFormService implements IListFormService {
@@ -107,6 +109,28 @@ export class ListFormService implements IListFormService {
                     reject(this.getErrorMessage(webUrl, error));
                 });
         });
+    }
+    public async getExtraFieldData(data: any, fieldSchema: any, ctx: IWebPartContext, siteUrl: string) {
+        const userFields = fieldSchema.filter((x) => x.FieldType === "User" || x.FieldType === "UserMulti");
+
+        let searchSvc = null;
+        if (userFields.length > 0) {
+            searchSvc = new SPPeopleSearchService();
+        }
+        for (let i = 0; i < userFields.length; i++) {
+            let x = userFields[i];
+            let val = data[x.InternalName];
+            //Need group lookups
+            for (let j = 0; j < val.length; j++) {
+                let y = val[j];
+                if (y.Key.indexOf("c:0") == 0) {
+                    let res = await searchSvc.resolvePeople(ctx, y.Key, siteUrl);
+                    y.Key = res.Description;
+                }
+            }
+        }
+
+        return data;
     }
 
     /**
@@ -291,12 +315,22 @@ export class ListFormService implements IListFormService {
                 && (field.InternalName != "Attachments")
             ))
             .map((field) => {
-                return {
-                    ErrorMessage: null,
-                    FieldName: field.InternalName,
-                    FieldValue: data[field.InternalName],
-                    HasException: false,
-                };
+                if (field.FieldType === "User" || field.FieldType === "UserMulti") {
+                    return {
+                        ErrorMessage: null,
+                        FieldName: field.InternalName,
+                        FieldValue: JSON.stringify(data[field.InternalName]),
+                        HasException: false,
+                    };
+                }
+                else {
+                    return {
+                        ErrorMessage: null,
+                        FieldName: field.InternalName,
+                        FieldValue: data[field.InternalName],
+                        HasException: false,
+                    };
+                }
             });
     }
     private GetAttachmentsCreate(data: any)
