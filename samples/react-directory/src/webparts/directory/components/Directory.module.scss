@@ -2,7 +2,6 @@
 
 .directory {
   .dropDownSortBy {
-    margin-top: 35px;
     margin-bottom: 15px;
   }
 
@@ -97,5 +96,19 @@
       vertical-align: top;
       display: inline-block;
     }
+  }
+
+  .alphabets {
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: normal;
+    text-align: center;
+  }
+  .searchTextBox {
+      min-width: 180px;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 25px;
   }
 }
