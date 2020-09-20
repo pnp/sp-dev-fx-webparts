@@ -1,0 +1,38 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "Questions and Answers",
+        "id": "6feb4c2f-341b-499c-998c-9b2ebd95435c",
+        "version": "1.0.0.0",
+        "skipFeatureDeployment": false,
+        "iconPath": "images/Feedback_Icon.png",
+        "includeClientSideAssets": true,
+        "features": [
+            {
+                "id": "2088baa5-aab6-43ec-907b-147a786c2b36",
+                "title": "Questions Assets",
+                "description": "Provides assets to support Questions webpart. This includes schema elements such as content types, site columns and list instance as well as the Questions application page.",
+                "version": "1.0.2.0",
+                "assets": {
+                    "elementManifests": [
+                        "elements.xml"
+                    ],
+                    "elementFiles": [
+                        "schema.xml",
+                        "QuestionsSitePage.aspx"
+                    ]
+                }
+            }
+        ],
+        "developer": {
+          "name": "Bo George",
+          "websiteUrl": "https://threewill.com/team/bo-george/",
+          "privacyUrl": "",
+          "termsOfUseUrl": "",
+          "mpnId": ""
+        }
+    },
+    "paths": {
+        "zippedPackage": "solution/react-questions-and-answers.sppkg"
+    }
+}
