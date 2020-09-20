@@ -53,7 +53,6 @@ export class spservices implements ISPServices {
     }
 
     public async searchUsersNew(searchString: string, srchQry: string, isInitialSearch: boolean, pageNumber?: number): Promise<SearchResults> {
-        //const _search = !isInitialSearch ? srchQry : `FirstName:${searchString}*`;
         let qrytext: string = '';
         if (isInitialSearch) qrytext = `FirstName:${searchString}* OR LastName:${searchString}*`;
         else {
@@ -63,7 +62,6 @@ export class spservices implements ISPServices {
             }
             if (qrytext.length <= 0) qrytext = `*`;
         }
-        console.log(qrytext);
         const searchProperties: string[] = ["FirstName", "LastName", "PreferredName", "WorkEmail", "OfficeNumber", "PictureURL", "WorkPhone", "MobilePhone", "JobTitle", "Department", "Skills", "PastProjects", "BaseOfficeLocation", "SPS-UserType", "GroupId"];
         try {
             let users = await sp.search(<SearchQuery>{
@@ -74,7 +72,6 @@ export class spservices implements ISPServices {
                 SourceId: 'b09a7990-05ea-4af9-81ef-edfab16c4e31',
                 SortList: [{ "Property": "LastName", "Direction": SortDirection.Ascending }],
             });
-            console.log(users);
             if (users && users.PrimarySearchResults.length > 0) {
                 for (let index = 0; index < users.PrimarySearchResults.length; index++) {
                     let user: any = users.PrimarySearchResults[index];

@@ -124,23 +124,22 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
     };
 
     let _searchUsers = async (searchText: string) => {
-        try {
-            console.log("Search Users: ", searchText);
+        try {            
             setstate({ ...state, searchText: searchText, isLoading: true });
             if (searchText.length > 0) {
                 let searchProps: string[] = props.searchProps && props.searchProps.length > 0 ?
                     props.searchProps.split(',') : ['FirstName', 'LastName', 'WorkEmail', 'Department'];
                 let qryText: string = '';
+                let finalSearchText: string = searchText ? searchText.replace(/ /g, '+') : searchText;
                 searchProps.map((srchprop, index) => {
                     if (index == searchProps.length - 1)
-                        qryText += `${srchprop}:${searchText}*`;
-                    else qryText += `${srchprop}:${searchText}* OR `;
+                        qryText += `${srchprop}:${finalSearchText}*`;
+                    else qryText += `${srchprop}:${finalSearchText}* OR `;
                 });
                 const users = await _services.searchUsersNew('', qryText, false);
                 setstate({
                     ...state,
                     searchText: searchText,
-                    //indexSelectedKey: (searchText.length > 0) ? searchText.substring(0, 1).toLocaleUpperCase() : 'A',
                     indexSelectedKey: '0',
                     users:
                         users && users.PrimarySearchResults

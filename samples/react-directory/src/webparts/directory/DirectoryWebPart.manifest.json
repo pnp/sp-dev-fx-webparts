@@ -23,7 +23,7 @@
     "properties": {
       "title": "Directory",
       "searchFirstName":  0,
-      "searchProps": "FirstName,LastName,WorkEmail,Department",
+      "searchProps": "FirstName,LastName,PreferredName,WorkEmail,Department",
       "pageSize": 10
     }
   }]
