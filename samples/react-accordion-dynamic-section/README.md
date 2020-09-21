@@ -16,13 +16,15 @@
 
 ### Usage
 
-**1) Create or use a list for FAQ Title and a Content column. You can also used the attached STP file if needed.:**
+**1) Create or use a list for FAQ.  It can have the FAQ like function with Title and a Content columns. You can also used the attached STP file if needed.:**
 
 - The value in the Accordian Title property for each item will appear in the heading bars of the Accordion.
 - The value in the Accordian Content property for each item will appear in the collapsible content section of the Accordion
 - When creating the columns, select "Multiple lines of text". Rich text is now supported within the Content column.
 
 ![Create list for use with the Accordion](./assets/FAQsList.png)
+![FAQ list Template for use with the Accordion](./assets/FAQsList.stp)
+![FAQ Site Script  use with the Accordion](./assets/FAQsList.json)
 
 **2) Add the Accordion Section web part to your page & select your list:**
 
@@ -54,7 +56,7 @@ Please create the list as described above
 
 | Version | Date               | Comments                                                                                            |
 | ------- | ------------------ | --------------------------------------------------------------------------------------------------- |
-| 1.0     | September 20, 2020 | Duplicated [Erik Benke] and [Mike Zimmerman] web part                                               |
+| 1.0     | September 20, 2020 | Reused [Erik Benke] and [Mike Zimmerman] web part                                               |
 | 1.1     | September 20, 2020 | Added Support for Dynamic Column selection for reuseability, Dynamic Property Selection for Columns |
 
 ## Disclaimer
