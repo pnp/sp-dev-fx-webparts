@@ -16,7 +16,7 @@
 
 ### Usage
 
-**1) Create or use a list for FAQ.  It can have the FAQ like function with Title and a Content columns. You can also used the attached STP file if needed.:**
+**1) Create or use a list for FAQs.  It can have the FAQ format e.g. Title and a Content columns. You can also used the attached STP file if needed.:**
 
 - The value in the Accordian Title property for each item will appear in the heading bars of the Accordion.
 - The value in the Accordian Content property for each item will appear in the collapsible content section of the Accordion
@@ -26,7 +26,7 @@
 ![FAQ list Template for use with the Accordion](./assets/FAQsList.stp)
 ![FAQ Site Script  use with the Accordion](./assets/FAQsList.json)
 
-**2) Add the Accordion Section web part to your page & select your list:**
+**2) Add the Dynamic Accordion Section web part to your page & select your list, category, title and content columns. Click Apply and Publish:**
 
 ![Select list and other properties from property panel for use with the Accordion](./assets/AccordionSettings1.png)
 ![Completed properties.](./assets/AccordionSettings2.png)
