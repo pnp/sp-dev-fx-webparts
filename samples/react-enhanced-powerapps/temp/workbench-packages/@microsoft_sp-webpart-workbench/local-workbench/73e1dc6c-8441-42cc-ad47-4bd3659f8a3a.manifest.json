@@ -1,0 +1,20 @@
+{
+  "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a",
+  "alias": "SPLodashSubset",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "sp-lodash-subset",
+    "internalModuleBaseUrls": [
+      "http://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-lodash-subset": {
+        "type": "path",
+        "path": "dist/sp-lodash-subset.js"
+      }
+    }
+  },
+  "isInternal": true
+}

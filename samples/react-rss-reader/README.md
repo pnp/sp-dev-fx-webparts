@@ -29,8 +29,8 @@ This sample includes the following service(s):
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -72,31 +72,29 @@ Feed Url | The url of the Rss Feed for readers. Normally will url will return XM
 Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the webpart to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retieve a feed response. Note, subject to limitations with paid options available.
 Feed Service Url | If using Feed2Json, the url of the feed2json service. Host your own service, learn more at https://github.com/appsattic/feed2json.org
 Feed Service Api Key | If using rss2json, an optional Api key for paid services
-
 Max Count | The maximum results to return, default: 10
-
 Cache Results | Locally store results in browser local storage, default: no
 Mins to Cache Results | If storing results in browser, number of minutes to store. Valid 1 to 1440 (one day), default: 60
 Storage Key Prefix | An optional local storage key prefix to use when storing results
-
 Loading Message | An optional custom message to display while the rss feed is being loaded
-
 Use a CORS proxy | Use a CORS proxy to assist with feed retrieval, default: no
 CORS Proxy Url | The url of a CORS proxy if allowed. {0} will be replaced with Feed Url, i.e. https://cors-anywhere.herokuapp.com/{0}
 Disable CORS | Set request header mode to "no-cors", thus not requesting CORS response from service. Will disable CORS request, default: no
 
 #### Styling Options
 
-Setting | Description 
+|Setting | Description|
+|-------|----|
+|External Template Url | The url of an external handlebar template to use in place of the handlebar template editor for custom layouts|
+|Results Layout | The layout to use to display feed, Default (list) or Custom|
+|Template Editor | A handlebar editor for custom layouts|
+|View All Link | An optional link to view the entire feed, often a link to the rss source blog itself, default: none|
+|View All Link Label | An optional label for the View All Link|
+
+
+**Default layout options**
+|Setting | Description|
 -------|----
-Results Layout | The layout to use to display feed, Default (list) or Custom
-Template Editor | A handlebar editor for custom layouts
-External Template Url | The url of an external handlebar template to use in place of the handlebar template editor for custom layouts
-
-View All Link | An optional link to view the entire feed, often a link to the rss source blog itself, default: none
-View All Link Label | An optional label for the View All Link
-
-**Default** | **Default layout options**
 Show Publication Date | Display the publication date
 Show Description | Display the content or description of each feed listing
 Description Character Limit | The maximum number of description characters to display

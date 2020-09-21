@@ -1,0 +1,108 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+// We have to hide this style to prevent this ugly white square from showing
+:global {
+  .ms-Dialog-main {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.thumbnailImg {
+  width: 260px;
+  height: 260px;
+}
+
+.laser {
+  width: 150%;
+  margin-left: -25%;
+  background-color: rgb(0, 255, 0);
+  height: 3px;
+  position: absolute;
+  top: 145px;
+  z-index: 2;
+  box-shadow: 0 0 4px rgb(217, 255, 47);
+  animation: scanning 4s infinite;
+}
+
+.diode {
+  animation: beam 0.01s infinite;
+}
+
+.panelHeader {
+  font-size: 21px;
+  font-weight: 100;
+  color: $ms-color-neutralDark;
+  padding: 32px 0 14px;
+}
+
+.analysisOutcome {
+  background-color: $ms-color-neutralLighterAlt;
+  padding-left:12px;
+  padding-right:12px;
+  padding-top:0px;
+  padding-bottom:12px;
+}
+
+.analysisDialog {
+  //margin-top:-50px;
+  color: inherit;
+}
+.iconContainer {
+  margin-bottom: 16px;
+  font-size: 21px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.icon
+{
+    line-height: 44px;
+
+    border-radius: 50%;
+    width:44px;
+    height:44px;
+    color: #ffffff;
+    animation: popup .45s;
+}
+
+.iconGood {
+  background-color: #599b00;
+}
+
+.iconBad {
+  background-color: red;
+}
+.analysisChecklist {
+  list-style-type: none;
+  padding-inline-start: 0px;
+  margin-top: 0px;
+}
+
+.section {
+  padding-top: 8px;
+}
+
+@keyframes beam {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes scanning {
+  50% {
+    transform: translateY(260px);
+  }
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.0);
+  }
+  to {
+      transform: scale(1.25);
+  }
+  to {
+      transform: scale(1.0);
+  }
+}

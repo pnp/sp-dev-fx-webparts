@@ -1,0 +1,1 @@
+{"version":3,"file":"encodingUtilities.d.ts","sourceRoot":"../../../../src/","sources":["components/serializedCanvasView/encodingUtilities.tsx"],"names":[],"mappings":"AAAA;;GAEG;AAEH,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAE/B,wBAAgB,UAAU,CAAC,GAAG,EAAE,MAAM,GAAG,MAAM,CAS9C;AAED,wBAAgB,aAAa,CAAC,GAAG,EAAE,MAAM,GAAG,MAAM,EAAE,GAAG,KAAK,CAAC,YAAY,CAAC,IAAI,CAAC,CAY9E"}

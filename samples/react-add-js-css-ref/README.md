@@ -44,8 +44,8 @@ Path can be `/sites/mysc/style library/js/custom.js` or `/sites/mysc/style libra
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ### Package and Deploy
 
@@ -99,6 +99,8 @@ react-add-js-css-ref | [Siddharth Vaghasia](https://www.linkedin.com/in/siddhart
 Version|Date|Comments
 -------|----|--------
 1.0.0|Apr 24, 2020|Initial release
+2.0.0|June 09, 2020|Displaying access denied message,  added spinner to display on page load, fix edit, delete icons not displaying.
+
 
 ## Disclaimer
 

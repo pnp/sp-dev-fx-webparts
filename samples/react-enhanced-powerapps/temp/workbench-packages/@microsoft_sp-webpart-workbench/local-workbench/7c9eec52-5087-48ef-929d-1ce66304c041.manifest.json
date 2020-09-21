@@ -1,0 +1,20 @@
+{
+  "id": "7c9eec52-5087-48ef-929d-1ce66304c041",
+  "alias": "SPTaskLib",
+  "componentType": "Library",
+  "version": "0.0.4",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "sp-tab-tasklib",
+    "internalModuleBaseUrls": [
+      "http://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-tab-tasklib": {
+        "type": "path",
+        "path": "dist/sp-tab-tasklib.js"
+      }
+    }
+  },
+  "isInternal": true
+}

@@ -8,24 +8,26 @@ A version of [react-adaptivecards](https://github.com/SharePoint/sp-dev-fx-webpa
 
 ## Used SharePoint Framework Version
 
-![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
 react-adaptivecards-hooks | Paul Schaeflein (http://www.schaeflein.net)
+react-adaptivecards-hooks | Hugo Bernier ([Tahoe Ninjas](https://tahoeninjas.blog), [@bernier](https://twitter.com/bernierh))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|April 27, 2020|Initial release
+2.0|August 25, 2020|Upgraded to SPFx 1.11 and added support for May 2020 changes to Adaptive Cards
 
 ## Disclaimer
 

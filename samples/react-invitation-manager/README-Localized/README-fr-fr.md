@@ -29,7 +29,7 @@ Exemple de composant WebPart SharePoint Framework côté client créé à l’ai
 
 NB. J’attend la GA de HttpGraphClient (un bit limité en termes d’autorisation) pour l’utiliser dans ce scénario.
 Regardez ceci pour aller plus loin :
-* [HttpGraphClient](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
+* [HttpGraphClient](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
 
 ![Le composant WebPart gestionnaire d’invitation affiché dans SharePoint Workbench](./assets/SPFx-Invitation-Manager.gif)
 
@@ -38,8 +38,8 @@ Regardez ceci pour aller plus loin :
 
 ## S’applique à
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Client de développeur Office 365](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Client de développeur Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

@@ -27,15 +27,15 @@ This sample shows how to integrate custom gulp tasks using the [gulp-image-resiz
 
 Read the following documentation for detailed information on integrating gulp tasks in SharePoint Framework:
 
-- [Integrate custom gulp tasks in the SharePoint Framework toolchain](https://aka.ms/spfx-extend-gulp)
+- [Integrate custom gulp tasks in the SharePoint Framework toolchain](https://docs.microsoft.com/sharepoint/dev/spfx/toolchain/integrate-gulp-tasks-in-build-pipeline)
 
 ## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/drop-RC0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 First Release Tenants](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 First Release Tenants](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Pre-requisites
 

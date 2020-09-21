@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.7.0",
+    "version": "1.10.0",
     "libraryName": "react-adaptive-cards-image-gallery",
     "libraryId": "2321325f-19a4-4895-8bdd-9a5447d462b1",
     "packageManager": "npm",

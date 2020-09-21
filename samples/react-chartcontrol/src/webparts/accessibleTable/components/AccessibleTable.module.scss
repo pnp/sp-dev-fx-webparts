@@ -1,4 +1,5 @@
-@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+//@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .accessibleTable {
   .shomMeTheTable {
@@ -34,7 +35,9 @@
         font-size: $ms-font-size-xl;
         font-weight: $ms-font-weight-semibold;
         & span {
-          font-size: $ms-font-size-16;
+          //font-size: $ms-font-size-16;
+          font-size: 16px;
+
         }
       }
     }

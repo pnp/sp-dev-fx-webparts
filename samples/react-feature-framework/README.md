@@ -30,7 +30,7 @@ When you install SPFx so site, web scoped feature is activated and associated el
 
 More details on the capability is available from the following article
 
-* [Provision SharePoint assets with your solution package](https://dev.office.com/sharepoint/docs/spfx/toolchain/provision-sharepoint-assets)
+* [Provision SharePoint assets with your solution package](https://docs.microsoft.com/sharepoint/dev/spfx/toolchain/provision-sharepoint-assets)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
@@ -38,7 +38,7 @@ More details on the capability is available from the following article
 ## Applies to
 
 * [SharePoint Framework](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  

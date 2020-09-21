@@ -122,7 +122,6 @@ export default class AreaChartDemo extends React.Component<IAreaChartDemoProps, 
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'randomizeData',

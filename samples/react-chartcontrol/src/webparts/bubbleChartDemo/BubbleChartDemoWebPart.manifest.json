@@ -3,7 +3,7 @@
   "id": "dd21a307-fd9f-4fef-8d9f-d8abcb83b814",
   "alias": "BubbleChartDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

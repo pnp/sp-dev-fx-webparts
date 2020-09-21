@@ -9,6 +9,15 @@
         flex-flow: wrap;
         margin: 0;
         padding: 0;
+
+        :global {
+          li:first-of-type .ms-Button {
+            padding-left: 0px;
+          }
+          li:first-of-type .ms-Button-label {
+            margin-left: 0px;
+          }
+        }
     }
     .breadcrumbLayoutVertical {
         display: flex;

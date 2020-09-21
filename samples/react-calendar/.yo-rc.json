@@ -22,7 +22,7 @@
     "framework": "react",
     "plusBeta": true,
     "isCreatingSolution": true,
-    "version": "1.8.2",
+    "version": "1.10.0",
     "libraryName": "react-calendar",
     "libraryId": "3a13208b-3874-4036-9262-4edd22e88187",
     "packageManager": "npm",

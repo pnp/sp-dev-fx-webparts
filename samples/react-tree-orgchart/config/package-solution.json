@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-tree-orgchart-client-side-solution",
     "id": "d76a0c4f-d669-42eb-9533-68d5cec5e9d3",
-    "version": "1.0.1.0",
+    "version": "1.0.2.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false

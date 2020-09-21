@@ -3,7 +3,7 @@
   "id": "fcba1920-e685-428a-8637-ab15883a2d0b",
   "alias": "AreaChartDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
   "requiresCustomScript": false,

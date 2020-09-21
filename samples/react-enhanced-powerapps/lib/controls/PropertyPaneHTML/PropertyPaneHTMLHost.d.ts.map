@@ -1,0 +1,1 @@
+{"version":3,"file":"PropertyPaneHTMLHost.d.ts","sourceRoot":"","sources":["../../../src/controls/PropertyPaneHTML/PropertyPaneHTMLHost.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAC/B,OAAO,EAAE,0BAA0B,EAAE,MAAM,8BAA8B,CAAC;AAE1E,MAAM,CAAC,OAAO,OAAO,oBAAqB,SAAQ,KAAK,CAAC,SAAS,CAAC,0BAA0B,CAAC;IAEpF,MAAM,IAAI,GAAG,CAAC,OAAO;CAK7B"}

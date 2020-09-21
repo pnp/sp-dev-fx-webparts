@@ -1,0 +1,37 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.myTeams {
+ 
+  label{
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .radio{
+    width: 16px;
+    height: 16px;
+  }
+
+  .textbox{
+    height: 30px;
+    width: 300px;  
+  }
+ 
+  h4{
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  .buttons{
+    background-color: $ms-color-themePrimary;
+    width: 200px;
+    height: 40px;
+    color: white;
+    font-size: 18px;
+
+   }
+   .webpartitle {
+     color:  $ms-color-themePrimary;
+     margin: 0px;
+
+  }
+}

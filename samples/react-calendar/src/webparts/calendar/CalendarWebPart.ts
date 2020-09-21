@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart, PropertyPaneHorizontalRule } from '@microsoft/sp-webpart-base';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
@@ -15,6 +14,9 @@ import * as strings from 'CalendarWebPartStrings';
 import Calendar from './components/Calendar';
 import { ICalendarProps } from './components/ICalendarProps';
 import { PropertyFieldDateTimePicker, DateConvention, TimeConvention, IDateTimeFieldValue } from '@pnp/spfx-property-controls/lib/PropertyFieldDateTimePicker';
+
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { PropertyPaneHorizontalRule } from "@microsoft/sp-property-pane";
 
 export interface ICalendarWebPartProps {
   title: string;

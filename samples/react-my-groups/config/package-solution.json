@@ -5,7 +5,17 @@
     "id": "da7eafe2-f2ec-486f-99d8-d36fba06a2bf",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-my-groups.sppkg"

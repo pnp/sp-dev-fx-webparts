@@ -29,7 +29,7 @@ Exemplo de Web Part de cliente do SharePoint Framework criado usando reagir most
 
 NB. Estou aguardando o lançamento do HttpGraphClient (um bit limitado em termos de permissão) para usá-lo neste cenário.
 Dê uma olhada detalhada:
-* [HttpGraphClient](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
+* [HttpGraphClient](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
 
 ![Web Part do Gerenciador de convites exibida no Workbench do SharePoint](./assets/SPFx-Invitation-Manager.gif)
 
@@ -38,8 +38,8 @@ Dê uma olhada detalhada:
 
 ## Aplicável a
 
-* [Estrutura do SharePoint](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Locatário de desenvolvedor do Office 365](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [Estrutura do SharePoint](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Locatário de desenvolvedor do Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solução
 

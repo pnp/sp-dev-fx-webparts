@@ -122,7 +122,11 @@ export default class ImageGallery extends React.Component<ImageGalleryProps, Ima
 
         let mediaType: string = '';
         switch (image.File_x0020_Type) {
-          case ('jpg' || 'jpeg' || 'png' || 'tiff' || 'gif'):
+          case ('jpg'):
+          case ('jpeg'):
+          case ('png'):
+          case ('tiff'):
+          case ('gif'):
             mediaType = 'image';
             break;
           case ('mp4'):

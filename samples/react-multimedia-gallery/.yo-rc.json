@@ -1,6 +1,6 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.8.2",
+    "version": "1.10.0",
     "libraryName": "react-image-gallery",
     "libraryId": "cff1f832-50fb-4a72-bb4e-1393121dc4ad",
     "environment": "spo",

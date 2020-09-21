@@ -2,31 +2,23 @@
 name: "\U0001F9EA Sample request"
 about: Request a new sample from the community
 title: ''
-labels: ''
+labels: type:sample-request
 assignees: ''
 
 ---
 
-> Please note that issues that do not follow this template will automatically be rejected.
->
-> Thank you for suggesting a sample request. We appreciate your feedback - to help the team to understand your needs, please complete the below template to ensure we have the necessary details to assist you.
-> 
-> _(DELETE THIS PARAGRAPH AFTER READING)_
+Thank you for making a request! Use the sections below to submit a request ONLY for a new sample. If you have an issue or question about the SharePoint Framework or its documentation, please submit it at https://aka.ms/spdev-issues
 
-## Expected or Desired Sample
+- Requests that do not follow the below template will automatically be closed
+- All requests are welcome - the more the merrier!
+- This repo is maintained by volunteers (not Microsoft). Please be courteous and patient. 🙂
+- If you have multiple requests submit them separately so we can track resolution.
+- Screenshots are always helpful (just paste any images right here in the request)
+- We accept pull requests. If you know how to make it - go ahead!
 
-> _Please explain what you'd like the sample to demonstrate.
-> 
-> _(DELETE THIS PARAGRAPH AFTER READING)_
+DELETE EVERYTHING ABOVE AFTER READING - THANKS!
 
-## Guidelines for issue creator (DELETE AFTER READING)
+## Sample Description (what should it do)
 
-> - All sample requests are welcome, please let us know what's on your mind.
-> - Remember that this repository is maintained by community members who volunteer their time to help. Be courteous and patient.
-> - If you are reporting an issue around any of the samples, please ensure that you have a clear reference to the sample and possibly code file, which should be fixed.
-> - If you have technical questions about the framework, we’ll be monitoring #spfx, #spfx-webparts, and #spfx-tooling on (SharePoint StackExchange)> [http://sharepoint.stackexchange.com/]. You can also alternatively submit your question to (SharePoint Developer group)> [https://techcommunity.microsoft.com/t5/sharepoint-developer/bd-p/SharePointDev] in the Microsoft Tech Community.
-> - Remember to include sufficient details and context.
-> - If you have multiple suggestions or bugs please submit them in separate bugs so we can track resolution.
-> _(DELETE THIS PARAGRAPH AFTER READING)_
 
-Thanks for your contribution! Sharing is caring.
+## Are you Willing to Help?

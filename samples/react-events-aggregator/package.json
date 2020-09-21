@@ -37,7 +37,7 @@
     "base64-url": ">=2.0.0",
     "fresh": ">=0.5.2",
     "handlebars": ">=4.3.0",
-    "lodash": ">=4.17.12",
+    "lodash": ">=4.17.19",
     "merge": ">=1.2.1",
     "morgan": ">=1.9.1",
     "stringstream": ">=0.0.6",

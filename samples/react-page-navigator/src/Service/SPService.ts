@@ -32,13 +32,21 @@ export class SPService {
 
           while (HTMLString.search(/<h[1-4]>/g) !== -1) {
             /* The Header Text value */
-            let headingValue = HTMLString.substring(HTMLString.search(/<h[1-4]>/g) + 4, HTMLString.search(/<\/h[1-4]>/g));
-            console.log(headingValue);
+            // .replace(/<.+?>/gi, "") replaces in the headingValue any html tags like <strong> </strong>
+            // .replace(/&.+;/gi, "") replaces in the headingValue any &****; tags like &nbsp;
+            let headingValue = HTMLString.substring(HTMLString.search(/<h[1-4]>/g) + 4, HTMLString.search(/<\/h[1-4]>/g))
+              .replace(/<.+?>/gi, "")
+              .replace(/\&.+\;/gi, "");
+            
             headingOrder = parseInt(HTMLString.charAt(HTMLString.search(/<h[1-4]>/g) + 2));
 
             /* Check if same anchorUrl already exists */
             let urlExists = true;
-            let anchorUrl = `#${headingValue.replace(/ /g, '-')}`.toLowerCase();
+            // .replace(/'|?|\|/| |&/g, "-") replaces any blanks and special characters (list is for sure not complete) with "-"
+            // .replace(/--+/g, "-") replaces any additional - with only one -; e.g. --- get replaced with -, -- get replaced with - etc.
+            let anchorUrl = `#${headingValue
+              .replace(/\'|\?|\\|\/| |\&/g, "-")
+              .replace(/--+/g, "-")}`.toLowerCase();
             let urlSuffix = 1;
             while (urlExists === true) {
               urlExists = (allUrls.indexOf(anchorUrl) === -1) ? false : true;
@@ -62,7 +70,7 @@ export class SPService {
                 } else {
                   if (headingOrder === 4) {
                     anchorLinks[headingIndex].links[subHeadingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
-                  } else if (headingOrder === 3){
+                  } else if (headingOrder === 3) {
                     anchorLinks[headingIndex].links.push({ name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true });
                     subHeadingIndex++;
                   }

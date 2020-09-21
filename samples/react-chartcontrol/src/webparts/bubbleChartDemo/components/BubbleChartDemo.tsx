@@ -108,7 +108,6 @@ export default class BubbleChartDemo extends React.Component<IBubbleChartDemoPro
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'randomizeData',

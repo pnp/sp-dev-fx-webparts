@@ -1,0 +1,45 @@
+
+.taskcard {
+    padding: 5px;
+    background-color:initial;
+  //  box-shadow: $ms-depth-shadow-8;
+    box-shadow: 0 3.2px 7.2px 0 rgba(0,0,0,.132), 0 0.6px 1.8px 0 rgba(0,0,0,.108);
+     .titlerow {
+        display: table-row;
+        width: 100%;
+        max-width: 0;
+        .isCompleted {
+            display: table-cell;
+            width: 32px;
+        }
+        .title {
+            display: table-cell;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            white-space: nowrap;
+            max-width: 0;
+            width: 100%;
+        }
+        .details {
+            display: table-cell;
+            width: 32px;
+        }
+    }
+    .membersAndLabels {
+        display: block;
+        width: 100%;
+
+        .labels,
+        .priority,
+        .assignedto {
+            padding: 7px 0px;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+}
+.moving {
+     background-color:"[theme: neutralLight, default: #eaeaea]";
+}

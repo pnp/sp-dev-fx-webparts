@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-graph-cascading-managed-metadata-client-side-solution",
+    "id": "cdc626ca-e9a7-4d1d-bded-a574bc5e61d0",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-graph-cascading-managed-metadata.sppkg"
+  }
+}

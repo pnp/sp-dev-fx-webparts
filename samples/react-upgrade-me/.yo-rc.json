@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.0",
+    "libraryName": "react-upgrade-me",
+    "libraryId": "c32676e6-9536-4db1-b59f-62c7be23f38b",
+    "environment": "onprem"
+  }
+}

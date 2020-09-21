@@ -1,0 +1,45 @@
+{
+  "manifestVersion": 2,
+  "id": "3157040b-4feb-40c4-9fe5-ec3b41d679ff",
+  "alias": "SpHomeHttpClient",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-home-http-client",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-home-http-client": {
+        "type": "path",
+        "path": "dist/sp-home-http-client.js"
+      },
+      "@ms/sp-telemetry": {
+        "type": "component",
+        "version": "0.8.24",
+        "id": "8217e442-8ed3-41fd-957d-b112e841286a"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-page-context": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "1c4541f7-5c31-41aa-9fa8-fbc9dc14c0a8"
+      },
+      "@ms/sp-component-utilities": {
+        "type": "component",
+        "version": "4.0.19",
+        "id": "8494e7d7-6b99-47b2-a741-59873e42f16f"
+      },
+      "@microsoft/sp-http": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6"
+      }
+    }
+  },
+  "isInternal": true
+}

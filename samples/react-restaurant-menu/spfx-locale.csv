@@ -1,0 +1,23 @@
+key;Locale en-us;RestaurantMenuWebPartStrings
+DESSERTLABEL;DESSERT;x
+PropertyPaneDescription;Description;x
+BasicGroupName;Group Name;x
+DescriptionFieldLabel;Description Field;x
+VeganLabel; VEGAN;x
+DietLabel; DIET;x
+FishLabel; FISH;x
+MeatLabel;  MEAT;x
+SoupLabel; SOUP;x
+NoInformationLabel;No information found;x
+DessertLabel;DESSERT;x
+DessertFieldPropertyLabel;Dessert field;x
+VeganFieldPropertyLabel;Vegan field;x
+DietFieldPropertyLabel;Diet field;x
+FishFieldPropertyLabel;Fish field;x
+MeatFieldPropertyLabel;Meat field;x
+SoupFieldPropertyLabel;Soup field;x
+DateInformationMessage;" \""Date field is required to filter menu information\""";x
+DateFieldPropertyLabel;Date Field;x
+PlaceHolderIconTextLabel;Configure Restaurant Menu web part;x
+PlaceholderDescription;Please configure the web part with information required;x
+PlaceholderButtonLabel;Configure;x

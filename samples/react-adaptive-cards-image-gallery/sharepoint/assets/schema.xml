@@ -1,33 +1,46 @@
-<List xmlns:ows="Microsoft SharePoint" Title="Image Gallery" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/ImageGallery" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
- <MetaData>   
-   <Fields>
-    <Field ID="{e6954092-6678-4538-b809-cf9065480a5d}" Type="URL" DisplayName="Image Link" Required="TRUE" Format="Hyperlink" Title="ImageLink" StaticName="ImageLink" Name="ImageLink" ColName="nvarchar4" RowOrdinal="0" ColName2="nvarchar5" RowOrdinal2="0" CustomFormatter="" EnforceUniqueValues="FALSE" Indexed="FALSE" Version="1" />
-    <Field ID="{3e142196-f3dc-49f1-8147-c7d8b05775d0}" Type="URL" DisplayName="Navigation URL" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Hyperlink" StaticName="NavigationURL" Name="NavigationURL" ColName="nvarchar6" RowOrdinal="0" ColName2="nvarchar7" RowOrdinal2="0" CustomFormatter="" Version="1" />
-    <Field ID="{8e328744-f48d-4981-8720-d4efa4730f0e}" Type="Number" DisplayName="Sort Order" Required="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" StaticName="SortOrder" Name="SortOrder" ColName="float1" RowOrdinal="0" />
-   </Fields>
-   <Views>
-     <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
-       <XslLink Default="TRUE">main.xsl</XslLink>
-       <JSLink>clienttemplates.js</JSLink>
-       <RowLimit Paged="TRUE">30</RowLimit>
-       <Toolbar Type="Standard" />
-       <ViewFields>
-         <FieldRef Name="SortOrder"></FieldRef>
-         <FieldRef Name="LinkTitle"></FieldRef>
-         <FieldRef Name="ImageLink"></FieldRef>
-         <FieldRef Name="NavigationURL"></FieldRef>         
-       </ViewFields>
-       <Query>
-         <OrderBy>
-           <FieldRef Name="SortOrder" />
-         </OrderBy>
-       </Query>
-     </View>
-   </Views>
-   <Forms>
-     <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
-     <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
-     <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
-   </Forms>
- </MetaData>
+<List xmlns:ows="Microsoft SharePoint" Title="Adaptive Card Images" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/AdaptiveCardImages" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+      <ContentType ID="0x0100A1CA45645C5A4DA4A6D2FE35B9F3B40C"
+                 Name="Adaptive Card Image Gallery" 
+                 Group="SPFx Content Types"
+                 Description="">
+        <FieldRefs>
+            <!--Title Site Column -->
+            <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- ImageLink Site Column -->
+			      <FieldRef ID="{39A6EA41-4A25-45CD-A496-5A5BD92CE2BF}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- NavigationURL Site Column -->
+			      <FieldRef ID="{4E2A59AD-CBB0-45FC-9309-1012EFBA58CC}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+            <!-- SortOrder Site Column -->
+			      <FieldRef ID="{BF544160-9C36-4252-A4B4-A09DEEA7764B}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+        </FieldRefs>
+      </ContentType> 
+    </ContentTypes>
+    <Fields></Fields>
+    <Views>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <Toolbar Type="Standard" />
+        <ViewFields>
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="ImageLink"></FieldRef>
+          <FieldRef Name="NavigationURL"></FieldRef>
+          <FieldRef Name="SortOrder"></FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="SortOrder" />
+          </OrderBy>
+        </Query>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
 </List>

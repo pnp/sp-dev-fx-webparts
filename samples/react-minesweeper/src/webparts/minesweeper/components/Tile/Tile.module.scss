@@ -1,0 +1,67 @@
+.basicTile{
+    width: 25px;
+    height: 25px;
+    background-color: lighten($color: gray, $amount: 30%);
+    border: solid lighten($color: black, $amount: 50%) 1px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.numberTile{
+    background-color: lighten($color: gray, $amount: 40%);
+    font-weight: bolder;
+
+    &.nr1{
+        color: blue;
+    }
+
+    &.nr2{
+        color: green;
+    }
+
+    &.nr3{
+        color: red;
+    }
+
+    &.nr4{
+        color: purple;
+    }
+
+    &.nr5{
+        color: maroon;
+    }
+
+    &.nr6{
+        color: turquoise;
+    }
+
+    &.nr7{
+        color: black;
+    }
+
+    &.nr8{
+        color: gray;
+    }
+}
+
+.mineTile{
+    &.exploded{
+        background-color: indianred;
+    }
+
+    i{
+        padding-top: 3px !important;
+    }
+}
+
+.flagTile{
+    background-color: lighten($color: gray, $amount: 40%);
+
+    &.mistake{
+        color: indianred;
+    }
+
+    i{
+        padding-top: 3px !important;
+    }
+}

@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.10.0",
+    "version": "1.11.0",
     "libraryName": "react-adaptivecards-hooks",
     "libraryId": "9b520d32-ce30-4ffa-bf38-5d888e65c782",
     "packageManager": "npm",

@@ -1,0 +1,25 @@
+{
+  "id": "05ed6956-59ad-4aa6-9e4e-b832c96ae87b",
+  "alias": "SPA11y",
+  "componentType": "Library",
+  "version": "0.2.24",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "sp-a11y",
+    "internalModuleBaseUrls": [
+      "https://localhost:6754/"
+    ],
+    "scriptResources": {
+      "sp-a11y": {
+        "type": "path",
+        "path": "dist/sp-a11y.js"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      }
+    }
+  },
+  "isInternal": true
+}
