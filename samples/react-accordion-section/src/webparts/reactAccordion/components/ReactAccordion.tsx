@@ -54,7 +54,8 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       this.getListItems();
     }
 
-    if (prevProps.allowMultipleExpanded !== this.props.allowMultipleExpanded || prevProps.allowZeroExpanded !== this.props.allowZeroExpanded) {
+
+    if(prevProps.allowMultipleExpanded !== this.props.allowMultipleExpanded || prevProps.allowZeroExpanded !== this.props.allowZeroExpanded) {
       this.setState({
         allowMultipleExpanded: this.props.allowMultipleExpanded,
         allowZeroExpanded: this.props.allowZeroExpanded
@@ -63,7 +64,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
   }
 
   public render(): React.ReactElement<IReactAccordionProps> {
-    const listSelected: boolean = typeof this.props.listId !== "undefined" && this.props.listId.length > 0;
+    const listSelected:boolean = typeof this.props.listId !== "undefined" && this.props.listId.length > 0;
     const { allowMultipleExpanded, allowZeroExpanded } = this.state;
     return (
       <div className={styles.reactAccordion}>
@@ -76,29 +77,29 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
             onConfigure={this.props.onConfigure} />
         }
         {listSelected &&
-          <div>
-            <WebPartTitle displayMode={this.props.displayMode}
-              title={this.props.accordionTitle}
-              updateProperty={this.props.updateProperty}
-            />
-            <Accordion allowZeroExpanded={allowZeroExpanded} allowMultipleExpanded={allowMultipleExpanded}>
-              {this.state.items.map((item: any) => {
-                return (
-                  <AccordionItem>
-                    <AccordionItemHeading>
-                      <AccordionItemButton>
-                        {item.Title}
-                      </AccordionItemButton>
-                    </AccordionItemHeading>
+        <div>
+          <WebPartTitle displayMode={this.props.displayMode}
+                title={this.props.accordionTitle}
+                updateProperty={this.props.updateProperty}
+                 />
+          <Accordion allowZeroExpanded={allowZeroExpanded} allowMultipleExpanded={allowMultipleExpanded}>
+            {this.state.items.map((item:any) => {
+              return (
+                <AccordionItem>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>
+                      {item.Title}
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
                     <AccordionItemPanel>
                       <p dangerouslySetInnerHTML={{ __html: item.Content }} />
                     </AccordionItemPanel>
                   </AccordionItem>
                 );
               })
-              }
-            </Accordion>
-          </div>
+            }
+          </Accordion>
+        </div>
         }
       </div>
     );

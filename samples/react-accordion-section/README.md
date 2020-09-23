@@ -58,7 +58,6 @@ Version|Date|Comments
 1.5|September 1, 2020|Adds ability to click on expanded section headers to collapse accordions
 1.6|September 2, 2020|Added Web Part Title, and ability to expand multiple sections
 
-
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
