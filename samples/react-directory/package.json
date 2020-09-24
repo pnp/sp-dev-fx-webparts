@@ -26,9 +26,12 @@
     "@types/jquery": "^3.3.30",
     "@uifabric/fluent-theme": "^0.16.9",
     "jquery": "^3.4.1",
+    "lodash": "^4.17.20",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.7.0",
-    "react-dom": "16.7.0"
+    "react-dom": "16.7.0",
+    "react-js-pagination": "^3.0.3",
+    "throttle-debounce": "^2.3.0"
   },
   "resolutions": {
     "@types/react": "16.8.8"
