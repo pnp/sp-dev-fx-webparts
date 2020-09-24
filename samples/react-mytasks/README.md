@@ -138,6 +138,7 @@ The Web Part Use PnPjs library, Office-ui-fabric-react components and MSGraph AP
 Solution|Author(s)
 --------|---------
 My Tasks |João Mendes
+My Tasks |Swaminathan Sriram
 
 ## Version history
 
