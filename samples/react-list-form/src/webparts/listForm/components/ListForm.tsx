@@ -7,6 +7,9 @@ import { ControlMode } from '../../../common/datatypes/ControlMode';
 
 import { IListFormService } from '../../../common/services/IListFormService';
 import { ListFormService } from '../../../common/services/ListFormService';
+import { ISPPeopleSearchService } from '../../../common/services/ISPPeopleSearchService';
+import { SPPeopleSearchService } from '../../../common/services/SPPeopleSearchService';
+import { GroupService } from '../../../common/services/GroupService';
 
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -35,6 +38,9 @@ import { Validate } from '@microsoft/sp-core-library';
 class ListForm extends React.Component<IListFormProps, IListFormState> {
 
   private listFormService: IListFormService;
+  private spPeopleService: ISPPeopleSearchService;
+  private groupService: GroupService;
+
   constructor(props: IListFormProps) {
     super(props);
 
@@ -52,6 +58,8 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
       errorInfo: ''
     };
     this.listFormService = new ListFormService(props.spHttpClient);
+    this.spPeopleService = new SPPeopleSearchService();
+    this.groupService = new GroupService(props.spHttpClient);
   }
 
   public render() {
@@ -156,6 +164,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
   private renderFields() {
     const { fieldsSchema, data, fieldErrors } = this.state;
     const fields = this.getFields();
+
     return (fields && (fields.length > 0))
       ?
       <div className='ard-formFieldsContainer' >
@@ -181,7 +190,8 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
                 extraData: extraData,
                 errorMessage: errorMessage,
                 hideIfFieldUnsupported: !this.props.showUnsupportedFields,
-                valueChanged: (val) => this.valueChanged(field.fieldName, val)
+                valueChanged: (val) => this.valueChanged(field.fieldName, val),
+                context: this.props.context,
               });
               if (fieldComponent && this.props.inDesignMode) {
                 return (
@@ -234,6 +244,18 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
         listUrl,
         formType,
       );
+      let userfields = fieldsSchema.filter((x) => {
+        return x.FieldType === "User" || x.FieldType === "UserMulti";
+      });
+
+      for (let i = 0; i < userfields.length; i++) {
+        if (userfields[i].SharePointGroupID > 0) {
+          //Get the groupname from sharepoint for the group id
+          let group = await this.groupService.getGroupFromWeb(this.props.webUrl, userfields[i].SharePointGroupID);
+          userfields[i]['SharePointGroupName'] = group.Title;
+        }
+      }
+
       this.setState({ ...this.state, isLoadingSchema: false, fieldsSchema });
     } catch (error) {
       const errorText = `${strings.ErrorLoadingSchema}${listUrl}: ${error}`;
@@ -256,7 +278,9 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
         return;
       }
       this.setState({ ...this.state, data: {}, originalData: {}, fieldErrors: {}, isLoadingData: true });
-      const dataObj = await this.listFormService.getDataForForm(this.props.webUrl, listUrl, id, formType);
+      let dataObj = await this.listFormService.getDataForForm(this.props.webUrl, listUrl, id, formType);
+      const schema = this.state.fieldsSchema;
+      dataObj = await this.listFormService.getExtraFieldData(dataObj, schema, this.props.context, this.props.webUrl);
       // We shallow clone here, so that changing values on dataObj object fields won't be changing in originalData too
       const dataObjOriginal = { ...dataObj };
       this.setState({ ...this.state, data: dataObj, originalData: dataObjOriginal, isLoadingData: false });
@@ -267,21 +291,54 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
   }
 
   @autobind
-  private valueChanged(fieldName: string, newValue: any) {
-    this.setState((prevState, props) => {
-      return {
-        ...prevState,
-        data: { ...prevState.data, [fieldName]: newValue },
-        fieldErrors: {
-          ...prevState.fieldErrors,
-          [fieldName]:
-            (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
-              ? strings.RequiredValueMessage
-              : ''
+  private async valueChanged(fieldName: string, newValue: any) {
+    let schema = this.state.fieldsSchema.filter((item) => item.InternalName === fieldName)[0];
+    if (schema.Type == "User" || schema.Type === "UserMulti") {
+      for (let i = 0; i < newValue.length; i++) {
+        // Security Group and Office 365 group need special handling
+        if (newValue[i].Key.indexOf("c:0") === 0) {
+          let newVal = await this.spPeopleService.resolvePeople(this.props.context, newValue[i].Key, this.props.webUrl);
+
+          if (newVal.EntityData != null && newVal.EntityData.Email != null) {
+            newValue[i].Key = newVal.EntityData.Email;
+          }
+          else {
+            newValue[i].Key = newVal.Description;
+          }
         }
-      };
-    },
-    );
+      }
+
+      this.setState((prevState, props) => {
+        return {
+          ...prevState,
+          data: { ...prevState.data, [fieldName]: newValue },
+          fieldErrors: {
+            ...prevState.fieldErrors,
+            [fieldName]:
+              (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
+                ? strings.RequiredValueMessage
+                : ''
+          }
+        };
+      },
+      );
+    }
+    else {
+      this.setState((prevState, props) => {
+        return {
+          ...prevState,
+          data: { ...prevState.data, [fieldName]: newValue },
+          fieldErrors: {
+            ...prevState.fieldErrors,
+            [fieldName]:
+              (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
+                ? strings.RequiredValueMessage
+                : ''
+          }
+        };
+      },
+      );
+    }
   }
 
   private validator = () => {
