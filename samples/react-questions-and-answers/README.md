@@ -46,17 +46,18 @@ Version|Date|Comments
   * `gulp serve`
 
 ### Slightly Longer Path to More Awesome
+
 *To really get the full experience go to the workbench on a SharePoint Site [Your site url]/_layouts/15/workbench.aspx and that's where the magic will happen but this requires that you deploy and activate features to provision the required SharePoint assets*
 
-1. Run one of the following custom commands to clean, build, budle and package the solution.
+1. Run one of the following custom commands to clean, build, bundle and package the solution.
     * If you want to be able to debug using your local code using gulp serve
     `gulp package`
-2. Navigate to the output questions-application.sppkg (found in the /sharepoint/solution folder)
+2. Navigate to the output `questions-application.sppkg` (found in the `/sharepoint/solution` folder)
 3. Upload it to an application catalog (either a tenant or site collection one)
-4. In your site collection go to Site Contents and click New > App
-5. Find and add the 'Questions Application' App 
-    * wait for it to finish installing and activating features on the Site Contents page
-6. Go to a site page like home, edit the page and find and add the 'Questions' web part
+4. In your site collection go to **Site Contents** and click **New** > **App**
+5. Find and add the **Questions Application** App 
+    * wait for it to finish installing and activating features on the **Site Contents** page
+6. Go to a site page like home, edit the page and find and add the **Questions** web part
     * If you deployed a shippable (SharePoint Online) version you don't need to do anything else
     * If you deployed a debug (http://localhost:4321) version you'll need to ensure gulp serve is running
 
