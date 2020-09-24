@@ -38,7 +38,7 @@ const SPFieldTaxonomyEdit: React.SFC<ISPFormFieldProps> = (props) => {
         initialValues={terms}
         context={context}
         onChange={(items) => props.valueChanged(getUpdatedValue(items))}
-        isTermSetSelectable={false} />
+        isTermSetSelectable={false} />;
 };
 
 function getUpdatedValue(terms) {
