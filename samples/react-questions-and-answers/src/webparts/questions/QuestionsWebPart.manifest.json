@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "761fbf9d-6ef9-4099-8488-02d5e2826f36",
+  "alias": "QuestionsWebPart",
+  "componentType": "WebPart",
+  "supportsThemeVariants": true,
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab"],
+  "preconfiguredEntries": [
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Questions"
+      },
+      "description": {
+        "default": "Ask questions or find answers to answered questions"
+      },
+      "officeFabricIconFontName": "Feedback",
+      "properties": {
+        "title": "Questions",
+        "pageSize": 5,
+        "sortOption": "Title",
+        "loadInitialPage": false,
+        "hideViewAllButton": false,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Questions.aspx",
+        "webPartRenderMode": "standard"
+      }
+    },
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Open Questions"
+      },
+      "description": {
+        "default": "Show a list of open questions"
+      },
+      "officeFabricIconFontName": "FeedbackRequestSolid",
+      "properties": {
+        "title": "Open Questions",
+        "pageSize": 10,
+        "sortOption": "Title",
+        "loadInitialPage": true,
+        "hideViewAllButton": true,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Questions.aspx",
+        "webPartRenderMode": "openQuestions"
+      }
+    },
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Answered Questions"
+      },
+      "description": {
+        "default": "Show a list of answered questions"
+      },
+      "officeFabricIconFontName": "FeedbackResponseSolid",
+      "properties": {
+        "title": "Answered Questions",
+        "pageSize": 10,
+        "sortOption": "Title",
+        "loadInitialPage": true,
+        "hideViewAllButton": true,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Questions.aspx",
+        "webPartRenderMode": "answeredQuestions"
+      }
+    }
+  ]
+}
