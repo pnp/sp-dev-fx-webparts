@@ -8,7 +8,7 @@ The web part pulls in the current user's name and displays it on the page. The g
 
 ## Used SharePoint Framework Version
 
-![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -30,6 +30,7 @@ react-personal-greeting|Zach Roberts - [SPODev](https://spodev.com)
 
 Version|Date|Comments
 -------|----|--------
+1.1|September 24, 2020| Updated SPFX version and added font-size
 1.0|April 14, 2020|Initial release
 
 ## Disclaimer
