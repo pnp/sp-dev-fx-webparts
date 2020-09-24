@@ -61,7 +61,7 @@ Version|Date|Comments
 - Open the command line, navigate to the web part folder and execute:
     - `npm i`
     - `gulp build --ship`
-    - `gulp prepare-solution` This custom gulp task copies the file `e89b5ad5-9ab5-4730-a66b-e1f68994598c.json` from the folder `sharepoint\temp\` to `temp\deploy` in order to prepare the package.
+    - `gulp prepare-solution` This custom gulp task copies the file `e89b5ad5-9ab5-4730-a66b-e1f68994598c.json` from the folder `sharepoint\assets-temp\` to `temp\deploy` in order to prepare the package.
     - `gulp package-solution`
     - [Deploy the package](https://docs.microsoft.com/sharepoint/dev/spfx/enterprise-guidance#management-capabilities-of--sharepoint-framework-solutions) to the app catalog
     - [Add the app](https://support.office.com/en-ie/article/Add-an-app-to-a-site-ef9c0dbd-7fe1-4715-a1b0-fe3bc81317cb?ui=en-US&rs=en-IE&ad=IE) to a site
