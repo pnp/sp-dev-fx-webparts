@@ -1,4 +1,4 @@
-# SPFx Dynamic Accordion Section FAQ Builder web part
+# SPFx Dynamic Accordion - FAQ Builder web part
 
 ## Summary
 
