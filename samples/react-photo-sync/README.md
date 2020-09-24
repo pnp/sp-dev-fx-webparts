@@ -1,14 +1,16 @@
 # SPUPS Photo Sync
 
 ## Summary
-> This web part will help the administrators to synchronize the **User Profile Photos** from **Azure AD** or from the **local filesystem** to **SharePoint User Profile Store**.
+
+This web part will help the administrators to synchronize the **User Profile Photos** from **Azure AD** or from the **local filesystem** to **SharePoint User Profile Store**.
 
 ## Features
+
 * **User selection** will help you to update only specific user based on the selection. It will also allow the users to fetch the photos from **Azure AD** before starting the synchronization.
 
-* **Bulk Sync** will allow the admin to upload the photos from their fileshares. The filename should be in the format '**UserID.jpg**'
+* **Bulk Sync** will allow the admin to upload the photos from their file shares. The filename should be in the format '**UserID.jpg**'
 
-* **Access control** based on **SharePoint Group**, not all the users can access the applictaion.
+* **Access control** based on **SharePoint Group**, not all the users can access the application.
 
 * Separate section to check the **status** of the photo update.
 
@@ -37,13 +39,16 @@
 ## Preview
 
 ### User Selection sync
+
 ![SPUPS-Photo-Sync_1](./assets/SPUPS_Photo_Sync_1.gif)
 
 ### Bulk sync
+
 ![SPUPS-Photo-Sync_2](./assets/SPUPS_Photo_Sync_2.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+
+![SPFx 1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
