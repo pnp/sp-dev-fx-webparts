@@ -63,6 +63,28 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-questions-and-answers
+      name: react-questions-and-answers
+      title: React Questions and Answers
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-questions-and-answers/assets/QuestionsAndAnswers.gif
+      author: Bo George
+      summary: This is an application that supports Questions & Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part.
+      modifiedtext: September 13, 2020
+      modified: 2020-09-13
+      pnpcontrols: WebPartTitle
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-photo-sync
+      name: react-photo-sync
+      title: SPUPS Photo Sync
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-photo-sync/assets/SPUPS_Photo_Sync_1.gif
+      author: Sudharsan Kesavanarayanan
+      summary: This web part will help the administrators to synchronize the User Profile Photos from Azure AD or from the local file system to SharePoint User Profile Store.
+      modifiedtext: September 13, 2020
+      modified: 2020-09-13
+      pnpcontrols: PropertyFieldListPicker, PropertyFieldToggleWithCallout, PropertyPaneWebPartInformation, PropertyFieldPeoplePicker
+    - framework: React
       spfx: 1.9.1
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-admin-sc-catalog-pnpjs
       name: react-admin-sc-catalog-pnpjs
@@ -230,11 +252,10 @@ extra:
       name: react-directory
       title: Organization Directory Web Part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
-      author: João Mendes, Peter Paul Kirschner
+      author: João Mendes, Peter Paul Kirschner, Sudharsan Kesavanarayanan
       summary: Search People from Organization Directory and show live persona card on hover.
-      version: 1.0.0
-      modifiedtext: July 19, 2020
-      modified: 2020-07-19
+      modifiedtext: September 18, 2020
+      modified: 2020-09-18
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar-feed
@@ -1083,18 +1104,15 @@ extra:
       modifiedtext: October 10, 2019
       modified: 2019-10-10
     - framework: React
-      spfx: 1.9.1
-      year: 2019
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-mytasks
       name: react-mytasks
       title: My Tasks Web Part
       thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/My-Tasks/samples/react-mytasks/assets/MyTasks.gif
-      thumbnailtype: video
-      author: João Mendes
+      author: João Mendes, Swaminathan Sriram
       summary: This web part allows user to manage planner tasks in SharePoint Site. The UI was inspired on Planner UI, it is full implemented with Office-UI-Fabric Components. Use MSGraph API's and PnPjs to data access. The user can search task by name, can filter by progress status, all data are dynamic updated on change..
-      version: 1.0.0
-      modifiedtext: November 17, 2019
-      modified: 2019-11-19
+      modifiedtext: September 9, 2020
+      modified: 2020-09-09
     - framework: React
       spfx: 1.7.0
       year: 2018
@@ -1138,11 +1156,10 @@ extra:
       name: react-list-form
       title: List Form WebPart
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
-      thumbnailtype: video
-      author: Dany Wyss, Harsha Vardhini
+      author: Dany Wyss, Harsha Vardhini, Ryan Schouten
       summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
-      modifiedtext: July 7, 2020
-      modified: 2020-07-07
+      modifiedtext: September 9, 2020
+      modified: 2020-09-12
     - framework: React
       spfx: 1.9.1
       year: 2019
@@ -2866,6 +2883,7 @@ extra:
     - Stéphane Magne
     - Sudharsan Kesavanarayanan
     - Sudhir Rawat
+    - Swaminathan Sriram
     - Vardhaman Deshpande
     - Velin Georgiev
     - Vesa Juvonen
