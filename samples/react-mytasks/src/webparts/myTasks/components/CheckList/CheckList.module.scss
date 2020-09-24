@@ -1,14 +1,15 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
 .checkListItem {
   display: flex;
-  justify-Content:start;
-  align-Items:center;
-  margin-Top:0px;
-  max-Width:100%;
+  justify-content: start;
+  align-items: center;
+  margin-top: 0;
+  max-width: 100%;
   min-width: 100%;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .textField:hover {
-  background-color:  $ms-color-neutralLighter;
+  background-color: $ms-color-neutralLighter;
 }

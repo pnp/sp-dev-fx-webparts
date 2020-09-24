@@ -1,9 +1,9 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import "~office-ui-fabric-react/dist/sass/References.scss";
 
 .myTasks {
   .container {
     max-width: 700px;
-    margin: 0px auto;
+    margin: 0 auto;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
 
@@ -20,15 +20,18 @@
     padding-right: 15px;
     justify-content: flex-end;
   }
+
   .noTaskLabel {
     display: flex;
     margin-bottom: 25px;
     justify-content: center;
     margin-top: 20px;
   }
+
   .row {
     @include ms-Grid-row;
     @include ms-fontColor-white;
+
     background-color: $ms-color-themeDark;
     padding: 20px;
   }
@@ -70,7 +73,14 @@
     // Basic Button
     outline: transparent;
     position: relative;
-    font-family: 'Segoe UI WestEuropean', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+    font-family:
+      "Segoe UI WestEuropean",
+      "Segoe UI",
+      -apple-system,
+      BlinkMacSystemFont,
+      Roboto,
+      "Helvetica Neue",
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;

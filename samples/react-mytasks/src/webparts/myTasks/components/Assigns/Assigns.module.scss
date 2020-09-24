@@ -1,4 +1,4 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import "~office-ui-fabric-react/dist/sass/References.scss";
 
 .renderMemberItem {
   display: flex;
@@ -6,23 +6,23 @@
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
-  width: '100%';
+  width: "100%";
   justify-content: start;
   align-items: center;
 }
 
 .renderMemberItem:hover {
   background-color: $ms-color-neutralLight;
-
 }
 
 .calloutContent {
   height: 300px;
-  padding: 0px 10px 10px 10px;
+  padding: 0 10px 10px 10px;
   margin-bottom: 10px;
   overflow: auto;
   display: block;
 }
+
 .calloutHeader {
   padding: 10px 10px 15px 10px;
 }
