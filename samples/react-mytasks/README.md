@@ -6,55 +6,55 @@ This web part allows user to manage planner tasks in SharePoint Site. The UI was
 
 The user can search task by name, can filter by progress status, all data are dynamic updated on change.
 
-![MyTasks](/samples/react-mytasks/assets/MyTasks.gif)
+![MyTasks](./assets/MyTasks.gif)
 
 ## List of Task Cards
 
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen1.png)
+![MyTasks](./assets/screen1.png)
 
 ## Filter Tasks
 
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen2.png)  
+![MyTasks](./assets/screen2.png)  
 
 </br>
 </br>
 
 
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen3.png)  
-
-
-</br>
-</br>
-
-
-![tenant properties](/samples/react-mytasks/assets/screen4.png) 
+![tenant properties](./assets/screen3.png)  
 
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen5.png)  
+![tenant properties](./assets/screen4.png) 
+
+
+</br>
+</br>
+
+
+![tenant properties](./assets/screen5.png)  
 
 </br>
 </br>
 
 ## Add Task  
   
-![MyTasks](/samples/react-mytasks/assets/AddTask.gif)
+![MyTasks](./assets/AddTask.gif)
 
 </br>
 </br>
 
 
 
-![tenant properties](/samples/react-mytasks/assets/screen6.png)  
+![tenant properties](./assets/screen6.png)  
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen7.png)  
+![tenant properties](./assets/screen7.png)  
 
 </br>
 </br>
@@ -62,32 +62,32 @@ The user can search task by name, can filter by progress status, all data are dy
 ## Edit Tasks
 
 
-![MyTasks](/samples/react-mytasks/assets/EditTask.gif)
+![MyTasks](./assets/EditTask.gif)
 
 </br>
 </br>
 
-![tenant properties](/samples/react-mytasks/assets/screen8.png)  
+![tenant properties](./assets/screen8.png)  
   
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen9.png)  
+![tenant properties](./assets/screen9.png)  
   
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen10.png)  
+![tenant properties](./assets/screen10.png)  
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen11.png)  
+![tenant properties](./assets/screen11.png)  
 
   
 
@@ -95,7 +95,7 @@ The user can search task by name, can filter by progress status, all data are dy
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen12.png)  
+![tenant properties](./assets/screen12.png)  
 
 
 </br>
@@ -103,7 +103,7 @@ The user can search task by name, can filter by progress status, all data are dy
 
 
 
-![tenant properties](/samples/react-mytasks/assets/screen13.png)  
+![tenant properties](./assets/screen13.png)  
 
   
 </br>
@@ -111,7 +111,7 @@ The user can search task by name, can filter by progress status, all data are dy
 
 
 
-![tenant properties](/samples/react-mytasks/assets/screen14.png)  
+![tenant properties](./assets/screen14.png)  
 
   
 
