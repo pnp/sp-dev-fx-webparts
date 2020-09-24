@@ -33,7 +33,8 @@
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.11-green.svg)
+
+![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
@@ -55,6 +56,7 @@ Results per page | number | Number of people result to be displayed per page. Ma
  
 
 ## Solution
+
 The web part use PnPjs library, Office-ui-fabric-react components
 
 Solution|Author(s)
