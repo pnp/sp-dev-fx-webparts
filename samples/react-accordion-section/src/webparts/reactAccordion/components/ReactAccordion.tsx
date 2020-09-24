@@ -35,25 +35,24 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
   }
 
   private getListItems(): void {
-    if (typeof this.props.listId !== "undefined" && this.props.listId.length > 0) {
-      sp.web.lists.getById(this.props.listId).items.select("Title", "Content").get()
+    if(typeof this.props.listId !== "undefined" && this.props.listId.length > 0) {
+      sp.web.lists.getById(this.props.listId).items.select("Title","Content").get()
         .then((results: Array<any>) => {
           this.setState({
             items: results
           });
         })
-        .catch((error: any) => {
+        .catch((error:any) => {
           console.log("Failed to get list items!");
           console.log(error);
         });
     }
   }
 
-  public componentDidUpdate(prevProps: IReactAccordionProps): void {
-    if (prevProps.listId !== this.props.listId) {
+  public componentDidUpdate(prevProps:IReactAccordionProps): void {
+    if(prevProps.listId !== this.props.listId) {
       this.getListItems();
     }
-
 
     if(prevProps.allowMultipleExpanded !== this.props.allowMultipleExpanded || prevProps.allowZeroExpanded !== this.props.allowZeroExpanded) {
       this.setState({
@@ -67,7 +66,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
     const listSelected:boolean = typeof this.props.listId !== "undefined" && this.props.listId.length > 0;
     const { allowMultipleExpanded, allowZeroExpanded } = this.state;
     return (
-      <div className={styles.reactAccordion}>
+      <div className={ styles.reactAccordion }>
         {!listSelected &&
           <Placeholder
             iconName='MusicInCollectionFill'
@@ -92,9 +91,9 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
                     </AccordionItemButton>
                   </AccordionItemHeading>
                     <AccordionItemPanel>
-                      <p dangerouslySetInnerHTML={{ __html: item.Content }} />
+                      <p  dangerouslySetInnerHTML={{__html: item.Content}} />
                     </AccordionItemPanel>
-                  </AccordionItem>
+                </AccordionItem>
                 );
               })
             }
@@ -102,6 +101,6 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
         </div>
         }
       </div>
-    );
+      );
   }
 }
