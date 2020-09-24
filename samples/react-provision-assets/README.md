@@ -2,7 +2,6 @@
 page_type: sample
 products:
 - office-sp
-- office-visio
 languages:
 - javascript
 - typescript
