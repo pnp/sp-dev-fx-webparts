@@ -6,4 +6,6 @@ export interface IDirectoryProps {
   context: WebPartContext;
   searchFirstName: boolean;
   updateProperty: (value: string) => void;
+  searchProps?: string;
+  pageSize?: number;
 }

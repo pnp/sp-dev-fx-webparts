@@ -1,0 +1,33 @@
+.paginationContainer {
+    text-align: right;
+    font-size: 14px;
+    font-family: Calibri !important;
+    .searchWp__paginationContainer__pagination {
+      // display: inline-block;
+      text-align: center;
+      ul {
+        display: inline-block;
+        padding-left: 0;
+        border-radius: 4px;
+        li {
+          display: inline;
+          a {
+            float: left;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 15px;
+            i {
+              font-size: 10px;
+            }
+          }
+          a:visited {
+            color: inherit;
+          }
+          a.active {
+            background-color: "[theme:themePrimary]" !important;
+            color: "[theme:white]" !important;
+          }
+        }
+      }
+    }
+  }

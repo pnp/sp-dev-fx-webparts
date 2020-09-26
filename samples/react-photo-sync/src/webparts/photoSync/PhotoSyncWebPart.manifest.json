@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "08a4b451-7012-4f86-9492-5c3196691cc8",
+  "alias": "PhotoSyncWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsPersonalApp"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "SPUPS Photo Sync" },
+    "description": { "default": "Sync photos from AAD to SharePoint UPS." },
+    "officeFabricIconFontName": "EditPhoto",
+    "properties": {
+      "useFullWidth": false
+    }
+  }]
+}

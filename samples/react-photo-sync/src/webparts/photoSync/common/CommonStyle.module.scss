@@ -1,0 +1,26 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.MessageContainer{
+    font-style: italic;
+    font-weight: bold !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .errorMessage{
+      color: red !important;
+      padding-top: 10px !important;
+      text-align: center;
+    }
+    .successMessage{
+      color: #64BE1A !important;
+      padding-top: 10px !important;
+      text-align: center;
+    }
+    .warningMessage{
+      color: #BEBB1A !important;
+      padding-top: 10px !important;
+      text-align: center;
+    }
+    .infoMessage{
+      background-color: rgb(148, 210, 230) !important;
+    }
+}
