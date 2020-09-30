@@ -1,8 +1,8 @@
 import {
-    Logger,
-    ConsoleListener,
-    LogLevel
-} from 'sp-pnp-js';
+  Logger,
+  ConsoleListener,
+  LogLevel
+} from "@pnp/logging";
 
 import { IPODataService } from ".";
 import { IPOTask } from "./../interfaces";

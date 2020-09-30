@@ -9,10 +9,10 @@ import * as strings from 'ListFormStrings';
 
 const dragSource = {
   beginDrag(props: IDraggableComponentProps) {
-      return {
-          key: props.itemKey,
-          originalIndex: props.index,
-      };
+    return {
+      key: props.itemKey,
+      originalIndex: props.index,
+    };
   },
 
   endDrag(props: IDraggableComponentProps, monitor) {
@@ -25,32 +25,26 @@ const dragSource = {
   },
 };
 
-
 const dragTarget = {
 
   hover(props: IDraggableComponentProps, monitor) {
-
     const { key: draggedKey } = monitor.getItem();
-
     if (draggedKey !== props.itemKey) {
       props.moveField(draggedKey, props.index);
     }
-
   },
-
 };
 
 
 export interface IDraggableComponentProps {
-    index: number;
-    itemKey: string;
-    isDragging?: boolean;
-    connectDragSource?(child: any): any;
-    connectDropTarget?(child: any): any;
-    moveField(fieldKey: string, toIndex: number): void;
-    removeField(index: number): void;
+  index: number;
+  itemKey: string;
+  isDragging?: boolean;
+  connectDragSource?(child: any): any;
+  connectDropTarget?(child: any): any;
+  moveField(fieldKey: string, toIndex: number): void;
+  removeField(index: number): void;
 }
-
 
 @DropTarget('Fields', dragTarget, (connect) => ({
   connectDropTarget: connect.dropTarget(),
@@ -71,11 +65,13 @@ export default class DraggableComponent extends React.Component<IDraggableCompon
       <div className={css('ard-draggableComponent', styles.draggableComponent, isDragging ? styles.isDragging : null)}>
         {children}
         <div className={css(styles.toolbar)}>
-          <button type="button" className={css('ard-draggableComponent', styles.button)} title={strings.MoveField} ><i className="ms-Icon ms-Icon--Move"></i></button>
-          <button type="button" className={css('ard-draggableComponent', styles.button)} title={strings.RemoveField} onClick={() => this.props.removeField(this.props.index)}><i className="ms-Icon ms-Icon--Delete"></i></button>
+          <button type='button' className={css('ard-draggableComponent', styles.button)} title={strings.MoveField} >
+            <i className='ms-Icon ms-Icon--Move'></i>
+          </button>
+          <button type='button' className={css('ard-draggableComponent', styles.button)} title={strings.RemoveField}
+            onClick={() => this.props.removeField(this.props.index)}><i className='ms-Icon ms-Icon--Delete'></i></button>
         </div>
       </div>,
     ));
   }
 }
-

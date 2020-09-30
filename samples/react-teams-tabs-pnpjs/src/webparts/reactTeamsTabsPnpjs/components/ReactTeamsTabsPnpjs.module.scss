@@ -1,0 +1,85 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.reactTeamsTabsPnpjs {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .itemContent{
+    margin-left: 10;
+    overflow: hidden;
+  }
+
+  .itemName{
+    font-size: initial;
+    white-space: nowrap;
+    overflow: 'hidden';
+    text-overflow: 'ellipsis';
+  }
+
+  .itemCell{
+    margin: 2px;
+    min-height: 54;
+    padding: 10;
+    box-sizing: 'border-box';
+    //border: 1px solid;
+    display: 'flex';
+    //background : $ms-color-themeDarkAlt;
+    background : rgb(196, 195, 195);
+
+  }
+
+  .itemCell:hover{
+    background : rgb(160, 160, 160);
+    color : white;
+  }
+
+
+  .tablink{
+    //color : $ms-color-neutralTertiary;
+     margin-bottom : 10;
+     color : rgb(77, 77, 77);
+     font-weight: bold;
+  }
+
+  .tablink:hover{
+    //color : $ms-color-neutralTertiary;
+    text-decoration: underline;
+    margin-bottom : 10;
+    color : white;
+  }
+
+  .row {
+    @include ms-Grid-row;
+    //@include ms-fontColor-white;
+    //background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+    //@include ms-fontColor-white;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    //@include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    //@include ms-fontColor-white;
+  }
+
+
+}

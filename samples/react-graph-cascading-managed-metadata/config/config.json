@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "cascading-managed-metadata-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/cascadingManagedMetadata/CascadingManagedMetadataWebPart.js",
+          "manifest": "./src/webparts/cascadingManagedMetadata/CascadingManagedMetadataWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CascadingManagedMetadataWebPartStrings": "lib/webparts/cascadingManagedMetadata/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

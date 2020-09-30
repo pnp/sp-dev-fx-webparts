@@ -1,4 +1,4 @@
-import { LogLevel } from 'sp-pnp-js';
+import { LogLevel } from "@pnp/logging";
 
 export interface IReactProjectOnlineWebPartProps {
   dataSourceId: string;

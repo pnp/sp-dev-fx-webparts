@@ -1,3 +1,20 @@
+---
+page_type: sample
+products:
+- office-365
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Azure AD
+  platforms:
+  - AngularJs
+  createdDate: 1/1/2016 12:00:00 AM
+---
 # Call custom Web API secured with AAD from SharePoint Framework client-side web part using Angular v1.x
 
 ## Summary
@@ -11,8 +28,8 @@ Sample SharePoint Framework client-side web part illustrating communication with
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

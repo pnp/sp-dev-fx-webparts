@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "o-365-groups-manager-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/o365GroupsManager/O365GroupsManagerWebPart.js",
+          "manifest": "./src/webparts/o365GroupsManager/O365GroupsManagerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "O365GroupsManagerWebPartStrings": "lib/webparts/o365GroupsManager/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

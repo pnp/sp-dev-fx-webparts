@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 2,
+  "id": "4958ea79-6ff3-4480-8291-0932dd010869",
+  "alias": "SPSearchExtensibility",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-search-extensibility",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-search-extensibility": {
+        "type": "path",
+        "path": "dist/sp-search-extensibility.js"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-extension-base": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "0773bd53-a69e-4293-87e6-ba80ea4d614b"
+      },
+      "@microsoft/sp-diagnostics": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "78359e4b-07c2-43c6-8d0b-d060b4d577e8"
+      }
+    }
+  },
+  "isInternal": true
+}

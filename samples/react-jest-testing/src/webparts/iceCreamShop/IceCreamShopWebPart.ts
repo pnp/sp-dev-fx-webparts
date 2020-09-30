@@ -1,16 +1,13 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 
 import * as strings from 'IceCreamShopWebPartStrings';
 import IceCreamShop from './components/IceCreamShop';
 import { IIceCreamShopProps } from './components/IIceCreamShopProps';
-// import { IceCreamFakeProvider } from './iceCreamProviders/IceCreamFakeProvider'; // when offline workbench.
+import { IceCreamFakeProvider } from './iceCreamProviders/IceCreamFakeProvider'; // when offline workbench.
 
 import { sp } from "@pnp/sp";
 import { IceCreamPnPJsProvider } from './iceCreamProviders/IceCreamPnPJsProvider';
@@ -34,7 +31,7 @@ export default class IceCreamShopWebPart extends BaseClientSideWebPart<IIceCream
     const element: React.ReactElement<IIceCreamShopProps> = React.createElement(
       IceCreamShop,
       {
-        iceCreamProvider: new IceCreamPnPJsProvider(sp), //new IceCreamFakeProvider() // when offline workbench.
+        iceCreamProvider: new IceCreamFakeProvider(), // replace with real provider when online workbench using new IceCreamPnPJsProvider(sp) instead of new IceCreamFakeProvider()
         strings: strings
       }
     );

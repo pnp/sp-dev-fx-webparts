@@ -1,0 +1,67 @@
+export interface IHandlers{
+    All:boolean;
+    AuditSettings:boolean;
+    ComposedLook:boolean;
+    CustomActions:boolean;
+    ExtensibilityProviders:boolean;
+    Features:boolean;
+    Fields:boolean;
+    Files:boolean;
+    Lists:boolean;
+    Pages:boolean;
+    Publishing:boolean;
+    RegionalSettings:boolean;
+    SearchSettings:boolean;
+    SitePolicy:boolean;
+    SupportedUILanguages:boolean;
+    TermGroups:boolean;
+    Workflows:boolean;
+    SiteSecurity:boolean;
+    ContentTypes:boolean;
+    PropertyBagEntries:boolean;
+    PageContents:boolean;
+    WebSettings:boolean;
+    Navigation:boolean;
+    ImageRenditions:boolean;
+    ApplicationLifecycleManagement:boolean;
+    Tenant:boolean;
+    WebApiPermissions:boolean;
+    SiteHeader:boolean;
+    SiteFooter:boolean;
+    Theme:boolean;
+}
+
+const defaultHandlerValues:IHandlers={
+    All:false,
+    AuditSettings:false,
+    ComposedLook:false,
+    CustomActions:false,
+    ExtensibilityProviders:false,
+    Features:false,
+    Fields:false,
+    Files:false,
+    Lists:false,
+    Pages:false,
+    Publishing:false,
+    RegionalSettings:false,
+    SearchSettings:false,
+    SitePolicy:false,
+    SupportedUILanguages:false,
+    TermGroups:false,
+    Workflows:false,
+    SiteSecurity:false,
+    ContentTypes:false,
+    PropertyBagEntries:false,
+    PageContents:false,
+    WebSettings:false,
+    Navigation:false,
+    ImageRenditions:false,
+    ApplicationLifecycleManagement:false,
+    Tenant:false,
+    WebApiPermissions:false,
+    SiteFooter:false,
+    SiteHeader:false,
+    Theme:false
+};
+
+export default defaultHandlerValues;

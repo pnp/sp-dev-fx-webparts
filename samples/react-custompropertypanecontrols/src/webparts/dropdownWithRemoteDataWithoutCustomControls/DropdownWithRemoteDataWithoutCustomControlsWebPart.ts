@@ -1,10 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneDropdown
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneDropdown } from "@microsoft/sp-property-pane";
 import {
   Environment,
   EnvironmentType
@@ -128,7 +125,8 @@ export default class DropdownWithRemoteDataWithoutCustomControlsWebPart extends 
               groupFields: [
                 PropertyPaneDropdown('list', {
                   label: strings.ListFieldLabel,
-                  options: this.lists
+                  options: this.lists,
+                  disabled: this.listsDropdownDisabled
                 }),
                 PropertyPaneDropdown('item', {
                   label: strings.ItemFieldLabel,

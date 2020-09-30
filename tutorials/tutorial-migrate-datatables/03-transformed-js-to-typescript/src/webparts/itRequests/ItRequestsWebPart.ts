@@ -1,19 +1,22 @@
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './ItRequests.module.scss';
-import * as strings from 'itRequestsStrings';
-import { IItRequestsWebPartProps } from './IItRequestsWebPartProps';
+import styles from './ItRequestsWebPart.module.scss';
+import * as strings from 'ItRequestsWebPartStrings';
 
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'moment';
 import './moment-plugin';
+
+export interface IItRequestsWebPartProps {
+  listName: string;
+}
 
 interface IRequestItem {
   ID: number;
@@ -29,16 +32,16 @@ export default class ItRequestsWebPart extends BaseClientSideWebPart<IItRequests
   public render(): void {
     this.domElement.innerHTML = `
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
-      <table class="display ${styles.helloWorld}" cellspacing="0" width="100%">
+      <table id="requests" class="display ${styles.itRequests}" cellspacing="0" width="100%">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Business unit</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Due date</th>
-                <th>Assigned to</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Business unit</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Due date</th>
+            <th>Assigned to</th>
+          </tr>
         </thead>
       </table>`;
 
@@ -61,13 +64,17 @@ export default class ItRequestsWebPart extends BaseClientSideWebPart<IItRequests
       },
       columnDefs: [{
         targets: 4,
-        render: ($.fn.DataTable as any).render.moment('YYYY/MM/DD')
+        render: ($.fn.dataTable.render as any).moment('YYYY/MM/DD')
       }]
     });
   }
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
+  }
+
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -90,9 +97,5 @@ export default class ItRequestsWebPart extends BaseClientSideWebPart<IItRequests
         }
       ]
     };
-  }
-
-  protected get disableReactivePropertyChanges(): boolean {
-    return true;
   }
 }

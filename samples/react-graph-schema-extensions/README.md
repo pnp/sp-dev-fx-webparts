@@ -16,8 +16,8 @@ Office 365 Groups, for instance Sales information, and make it available in the 
 
 ## Applies to
 
-* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -93,3 +93,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 * How to update an MS Graph entity (in this case, Office 365 Group) with custom data
 * Using async / await for the async calls
 * Office UI fabric components
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-graph-schema-extensions" />

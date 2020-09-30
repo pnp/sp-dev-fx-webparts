@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "11a36ff0-b026-4860-9e92-8e3fa283ad0f",
+  "alias": "ModernThemeManagerWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "Modern Theme Manager" },
+    "description": { "default": "Modern Theme Manager description" },
+    "officeFabricIconFontName": "Color",
+    "properties": {
+      "description": "Modern Theme Manager"
+    }
+  }]
+}

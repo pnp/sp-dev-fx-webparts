@@ -1,6 +1,7 @@
 import { SPHttpClient } from '@microsoft/sp-http';
 import { ControlMode } from '../../../common/datatypes/ControlMode';
 import { IFieldConfiguration } from './IFieldConfiguration';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 export interface IListFormProps {
   title: string;
@@ -16,4 +17,5 @@ export interface IListFormProps {
   onSubmitSucceeded?(id: number): void;
   onSubmitFailed?(fieldErrors: any): void;
   onUpdateFields?(newFields: IFieldConfiguration[]): void;
+  context: WebPartContext;
 }

@@ -1,13 +1,27 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/botFrameworkChat/BotFrameworkChatWebPart.js",
-      "manifest": "./src/webparts/botFrameworkChat/BotFrameworkChatWebPart.manifest.json",
-      "outputPath": "./dist/bot-framework-chat.bundle.js"
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "bot-framework-chat-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/botFrameworkChat/BotFrameworkChatWebPart.js",
+          "manifest": "./src/webparts/botFrameworkChat/BotFrameworkChatWebPart.manifest.json"
+        }
+      ]
+    },
+    "bot-framework-chatv-4-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/botFrameworkChatv4/BotFrameworkChatv4WebPart.js",
+          "manifest": "./src/webparts/botFrameworkChatv4/BotFrameworkChatv4WebPart.manifest.json"
+        }
+      ]
     }
-  ],
+  },
   "externals": {},
   "localizedResources": {
-    "botFrameworkChatStrings": "webparts/botFrameworkChat/loc/{locale}.js"
+    "BotFrameworkChatWebPartStrings": "lib/webparts/botFrameworkChat/loc/{locale}.js",
+    "BotFrameworkChatv4WebPartStrings": "lib/webparts/botFrameworkChatv4/loc/{locale}.js"
   }
 }

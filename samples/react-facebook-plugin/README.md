@@ -14,8 +14,8 @@ The key differences between using Embed web part and current example are the str
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -55,3 +55,5 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 
 * Observe parent container width and dynamic adaptation of absolute-width'ed HTML elements
 * React
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-facebook-plugin" />

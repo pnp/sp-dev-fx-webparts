@@ -1,0 +1,40 @@
+{
+  "id": "8217e442-8ed3-41fd-957d-b112e841286a",
+  "alias": "SPTelemetry",
+  "componentType": "Library",
+  "version": "0.8.24",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "sp-telemetry",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-telemetry": {
+        "type": "path",
+        "path": "dist/sp-telemetry.js"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-diagnostics": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "78359e4b-07c2-43c6-8d0b-d060b4d577e8"
+      },
+      "@ms/odsp-utilities-bundle": {
+        "type": "component",
+        "version": "5.1.55",
+        "id": "cc2cc925-b5be-41bb-880a-f0f8030c6aff"
+      }
+    }
+  },
+  "isInternal": true
+}

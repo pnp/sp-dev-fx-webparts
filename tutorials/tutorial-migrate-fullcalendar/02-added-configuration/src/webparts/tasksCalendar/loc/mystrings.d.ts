@@ -1,10 +1,10 @@
-declare interface ITasksCalendarStrings {
+declare interface ITasksCalendarWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   ListNameFieldLabel: string;
 }
 
-declare module 'tasksCalendarStrings' {
-  const strings: ITasksCalendarStrings;
+declare module 'TasksCalendarWebPartStrings' {
+  const strings: ITasksCalendarWebPartStrings;
   export = strings;
 }

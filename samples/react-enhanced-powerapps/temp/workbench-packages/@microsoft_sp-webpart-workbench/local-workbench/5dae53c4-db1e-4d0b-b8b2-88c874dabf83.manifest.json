@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 2,
+  "componentType": "Library",
+  "id": "5dae53c4-db1e-4d0b-b8b2-88c874dabf83",
+  "alias": "sp-webpart-workbench-assembly",
+  "isInternal": true,
+  "version": "1.0.0",
+  "rootComponentId": "8be81a5c-af38-4bb2-af97-afa3b64dfbed",
+  "requiresCustomScript": false,
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "entryModuleId": "sp-webpart-workbench-assembly",
+    "scriptResources": {
+      "sp-webpart-workbench-assembly": {
+        "type": "localizedPath",
+        "paths": {
+          "default": "dist/sp-webpart-workbench-assembly_default.js"
+        },
+        "defaultPath": "dist/sp-webpart-workbench-assembly_default.js"
+      }
+    }
+  }
+}

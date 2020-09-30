@@ -1,24 +1,18 @@
-import * as React from 'react';
-import styles from './GraphConsumer.module.scss';
 import * as strings from 'GraphConsumerWebPartStrings';
-import { IGraphConsumerProps } from './IGraphConsumerProps';
-import { IGraphConsumerState } from './IGraphConsumerState';
-import { ClientMode } from './ClientMode';
-import { IUserItem } from './IUserItem';
+import {
+    BaseButton, Button, CheckboxVisibility, DetailsList, DetailsListLayoutMode, PrimaryButton,
+    SelectionMode, TextField
+} from 'office-ui-fabric-react';
+import * as React from 'react';
+
+import { AadHttpClient, MSGraphClient } from '@microsoft/sp-http';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import {
-  autobind,
-  PrimaryButton,
-  TextField,
-  Label,
-  DetailsList,
-  DetailsListLayoutMode,
-  CheckboxVisibility,
-  SelectionMode
-} from 'office-ui-fabric-react';
-
-import { AadHttpClient, MSGraphClient } from "@microsoft/sp-http";
+import { ClientMode } from './ClientMode';
+import styles from './GraphConsumer.module.scss';
+import { IGraphConsumerProps } from './IGraphConsumerProps';
+import { IGraphConsumerState } from './IGraphConsumerState';
+import { IUserItem } from './IUserItem';
 
 // Configure the columns for the DetailsList component
 let _usersListColumns = [
@@ -79,9 +73,9 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
                 <TextField 
                     label={ strings.SearchFor } 
                     required={ true } 
-                    value={ this.state.searchFor }
-                    onChanged={ this._onSearchForChanged }
+                    onChange={ this._onSearchForChanged }
                     onGetErrorMessage={ this._getSearchForErrorMessage }
+                    value={ this.state.searchFor }
                   />
               </p>
               <p className={ styles.form }>
@@ -113,25 +107,22 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
     );
   }
 
-  @autobind
-  private _onSearchForChanged(newValue: string): void {
-
+  private _onSearchForChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
+ 
     // Update the component state accordingly to the current user's input
     this.setState({
       searchFor: newValue,
     });
   }
 
-  private _getSearchForErrorMessage(value: string): string {
+  private _getSearchForErrorMessage = (value: string): string => {
     // The search for text cannot contain spaces
     return (value == null || value.length == 0 || value.indexOf(" ") < 0)
       ? ''
       : `${strings.SearchForValidationErrorMessage}`;
   }
 
-  @autobind
-  private _search(): void {
-
+  private _search = (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button, MouseEvent>) : void => {
     console.log(this.props.clientMode);
 
     // Based on the clientMode value search users
@@ -141,12 +132,12 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
         this._searchWithAad();
         break;
       case ClientMode.graph:
-      this._searchWithGraph();
-      break;
+        this._searchWithGraph();
+        break;
     }
   }
 
-  private _searchWithAad(): void {
+  private _searchWithAad = (): void => {
 
     // Log the current operation
     console.log("Using _searchWithAad() method");
@@ -194,7 +185,7 @@ export default class GraphConsumer extends React.Component<IGraphConsumerProps, 
       });
   }
 
-  private _searchWithGraph(): void {
+  private _searchWithGraph = () : void => {
 
     // Log the current operation
     console.log("Using _searchWithGraph() method");

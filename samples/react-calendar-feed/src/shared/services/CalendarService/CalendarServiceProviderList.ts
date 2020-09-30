@@ -1,53 +1,62 @@
-import { MockCalendarService } from './MockCalendarService';
-import { RSSCalendarService } from './RSSCalendarService';
-import { WordPressFullCalendarService } from './WordPressFullCalendarService';
-import { iCalCalendarService } from './iCalCalendarService';
-import { ExchangePublicCalendarService } from './ExchangePublicCalendarService';
+import { MockCalendarService } from "./MockCalendarService";
+import { RSSCalendarService } from "./RSSCalendarService";
+import { WordPressFullCalendarService } from "./WordPressFullCalendarService";
+import { iCalCalendarService } from "./iCalCalendarService";
+import { ExchangePublicCalendarService } from "./ExchangePublicCalendarService";
+import { SharePointCalendarService } from "./SharePointCalendarService";
 
-export class CalendarServiceProviderList {
-    public static getProviders(): any[] {
-        const providers: any[] = [];
-
-        // only include the Mock service provider in DEBUG
-        if (DEBUG) {
-            providers.push({
-                label: "Mock",
-                key: "mock",
-                initialize: () => new MockCalendarService()
-            });
-        }
-
-        providers.push({
-            label: "Exchange Public Calendar",
-            key: "exchange",
-            initialize: () => new ExchangePublicCalendarService()
-        });
-
-        providers.push({
-            label: "WordPress",
-            key: "wordpress",
-            initialize: () => new WordPressFullCalendarService()
-        });
-
-        providers.push({
-            label: "iCal",
-            key: "ical",
-            initialize: () => new iCalCalendarService()
-        });
-
-        providers.push({
-            label: "RSS",
-            key: "RSS",
-            initialize: () => new RSSCalendarService()
-        });
-
-        return providers;
-    }
-}
+// Localization
+import * as strings from "CalendarServicesStrings";
 
 export enum CalendarServiceProviderType {
-    WordPress = "WordPress",
-    iCal = "iCal",
-    RSS = "RSS",
-    Mock = "Mock"
+  SharePoint = "SharePoint",
+  WordPress = "WordPress",
+  Exchange = "Exchange",
+  iCal = "iCal",
+  RSS = "RSS",
+  Mock = "Mock"
 }
+
+export class CalendarServiceProviderList {
+  public static getProviders(): any[] {
+    const providers: any[] = [
+      {
+        label: strings.SharePointProviderName,
+        key: CalendarServiceProviderType.SharePoint,
+        initialize: () => new SharePointCalendarService()
+      },
+      {
+        label: strings.ExchangeProviderName,
+        key: CalendarServiceProviderType.Exchange,
+        initialize: () => new ExchangePublicCalendarService()
+      },
+      {
+        label: strings.WordPressProviderName,
+        key: CalendarServiceProviderType.WordPress,
+        initialize: () => new WordPressFullCalendarService()
+      },
+      {
+        label: strings.iCalProviderName,
+        key: CalendarServiceProviderType.iCal,
+        initialize: () => new iCalCalendarService()
+      },
+      {
+        label: strings.RSSProviderName,
+        key: CalendarServiceProviderType.RSS,
+        initialize: () => new RSSCalendarService()
+      }
+    ];
+
+    // only include the Mock service provider in DEBUG
+    if (DEBUG) {
+      providers.push({
+        label: strings.MockProviderName,
+        key: CalendarServiceProviderType.Mock,
+        initialize: () => new MockCalendarService()
+      });
+    }
+
+    return providers;
+  }
+}
+

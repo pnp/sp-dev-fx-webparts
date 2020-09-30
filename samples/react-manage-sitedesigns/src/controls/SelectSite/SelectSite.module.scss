@@ -1,0 +1,32 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+.selectSite {
+  margin-top: 25px
+
+}
+.title {
+  font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+
+  vertical-align: top;
+  margin-right:  15px;
+  display: inline-block;
+  @include ms-font-m;
+}
+.label {
+  vertical-align: top;
+  margin-right:  15px;
+  display: inline-block;
+  @include ms-font-m;
+  width: 100px;
+}
+
+.listItem {
+  @include ms-font-l;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
+  @include ms-font-l;
+  @include ms-fontColor-white;
+}

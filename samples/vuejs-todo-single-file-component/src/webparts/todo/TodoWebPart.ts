@@ -1,14 +1,14 @@
 import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneDropdown,
-  IPropertyPaneField,
-  PropertyPaneLabel,
-  IPropertyPaneDropdownOption
+  BaseClientSideWebPart
 } from '@microsoft/sp-webpart-base';
 import { findIndex } from '@microsoft/sp-lodash-subset';
+
+import {
+  IPropertyPaneConfiguration,
+  IPropertyPaneDropdownOption,
+  PropertyPaneDropdown
+} from "@microsoft/sp-property-pane";
 
 import Vue from 'vue';
 import TodoComponent from './components/todo/Todo.vue';
@@ -46,9 +46,9 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
       this._dataProvider = new SharePointDataProvider();
       this._dataProvider.webPartContext = this.context;
     }
-  
+
     /*
-      If we have serialized list in the webpart properties, use it 
+      If we have serialized list in the webpart properties, use it
     */
     if (this.properties.SelectedList) {
       this._dataProvider.selectedList = this.properties.SelectedList;
@@ -57,9 +57,9 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
     /*
       Approach 1:
        Get the list of tasks lists from the current site and store them in the variable _dropdownOptions
-       _dropdownOptions will be used to populate the property pane dropdown field when pane opens. 
-      
-       Approach 2: 
+       _dropdownOptions will be used to populate the property pane dropdown field when pane opens.
+
+       Approach 2:
       Get the list of tasks lists from the current site and load them in the property pane only when the property pane is open.
       For this approach please review the sample: react-custompropertypanecontrols
 
@@ -131,16 +131,16 @@ export default class TodoWebPart extends BaseClientSideWebPart<ITodoWebPartProps
 
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
     /*
-    Check the property path to see which property pane feld changed. 
-    If the property path matches the dropdown, then we set that list as the selected list for the web part. 
+    Check the property path to see which property pane feld changed.
+    If the property path matches the dropdown, then we set that list as the selected list for the web part.
     */
     if (propertyPath === 'selectedList') {
       this._setSelectedList(newValue);
     }
 
     /*
-    Tell property pane to re-render the web part. 
-    This is valid for reactive property pane. 
+    Tell property pane to re-render the web part.
+    This is valid for reactive property pane.
     */
     super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
   }

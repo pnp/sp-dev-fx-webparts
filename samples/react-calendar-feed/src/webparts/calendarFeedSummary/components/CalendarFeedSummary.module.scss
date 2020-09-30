@@ -1,27 +1,21 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
-$themeWhite: '[theme:white,default:white]';
-$neutralLight: '[theme:neutralLight,default:#eaeaea]';
-$neutralLighter: '[theme:neutralLighter,default:#f4f4f4]';
-$neutralSecondary: '[theme:neutralSecondary,default:#666666]';
-$black: '[theme:black,default:#000000]';
-$white: '[theme:white,default:#ffffff]';
-$themeLight: '[theme:themeLight,default:#c7e0f4]';
-$themeSecondary: '[theme:themeSecondary,default:#2b88d8]';
-$neutralPrimary: '[theme:neutralPrimary,default:#333333]';
-$neutralTertiaryAlt: "[theme:neutralTertiaryAlt, default: #c8c8c8]";
-$error: "[theme:error, default: #a80000]";
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .calendarFeedSummary {
+  // this is a trick I use to create classes that are empty
+  // just define an attribute which uses 'inherit'
+  // it has no impact to styles, but won't complain
+  // about the empty CSS class
   color: inherit;
 }
 
 .webPartChrome {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  // display: -ms-flexbox;
+  // display: flex;
+  // -ms-flex-align: stretch;
+  // align-items: stretch;
+  // -ms-flex-direction: column;
+  // flex-direction: column;
+  color: inherit;
 }
 
 .headerSmMargin {
@@ -63,16 +57,16 @@ $error: "[theme:error, default: #a80000]";
   overflow: hidden;
   display: inline-block;
   margin: 10px 0 15px;
-  color: #666666;
+  color: $ms-color-neutralSecondary;
 }
 
 .errorMessage {
   overflow: hidden;
   display: inline-block;
   margin: 10px 0 15px;
-  color: #666666;
+  color: $ms-color-neutralSecondary;
 }
 
 .errorMessage .moreDetails {
-  color:$error;
+  color:$ms-color-error;
 }

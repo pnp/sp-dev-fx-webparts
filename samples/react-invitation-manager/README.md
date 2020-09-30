@@ -1,3 +1,22 @@
+---
+page_type: sample
+products:
+- office-sp
+- ms-graph
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Microsoft Graph
+  services:
+  - SharePoint
+  platforms:
+  - react
+  createdDate: 8/1/2017 12:00:00 AM
+---
 # Azure Active Directory invitation manager Graph API samples
 
 ## Summary
@@ -10,7 +29,7 @@ Sample SharePoint Framework client-side web part built using React showing how t
 
 NB. I'm waiting the GA of HttpGraphClient(a bit limited in terms of permission) to use it in this scenario.
 Look at this to go deep:
-* [HttpGraphClient](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
+* [HttpGraphClient](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
 
 ![The invitation manager web part displayed in SharePoint workbench](./assets/SPFx-Invitation-Manager.gif)
 
@@ -19,8 +38,8 @@ Look at this to go deep:
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

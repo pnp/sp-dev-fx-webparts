@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "manage-profile-card-properties-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/manageProfileCardProperties/ManageProfileCardPropertiesWebPart.js",
+          "manifest": "./src/webparts/manageProfileCardProperties/ManageProfileCardPropertiesWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ManageProfileCardPropertiesWebPartStrings": "lib/webparts/manageProfileCardProperties/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

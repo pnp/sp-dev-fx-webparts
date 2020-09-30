@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-tour-pnpjs-client-side-solution",
+    "id": "9060fda4-14af-4588-aa3a-b746b46420d8",
+    "version": "1.0.1.9",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-tour-pnpjs.sppkg"
+  }
+}

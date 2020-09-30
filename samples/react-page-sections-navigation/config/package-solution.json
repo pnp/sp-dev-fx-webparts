@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "page-sections-navigation-client-side-solution",
+    "id": "bf7b299c-3bac-47cc-9f44-43eb180335d8",
+    "version": "1.0.0.4",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/page-sections-navigation.sppkg"
+  }
+}

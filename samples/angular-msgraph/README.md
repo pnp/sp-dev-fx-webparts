@@ -1,3 +1,22 @@
+---
+page_type: sample
+products:
+- office-sp
+- ms-graph
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Microsoft Graph
+  services:
+  - SharePoint
+  platforms:
+  - AngularJS
+  createdDate: 2/16/2017 12:00:00 AM
+---
 ﻿## Angular MS Graph Web Part Built with Angular v1.x
 
 ## Summary
@@ -23,8 +42,8 @@ display all the lists associated with the site followed by all the items inside 
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

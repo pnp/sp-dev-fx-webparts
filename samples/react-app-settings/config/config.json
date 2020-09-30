@@ -1,18 +1,27 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
   "version": "2.0",
   "bundles": {
-    "react-app-settings-bundle": {
+    "ice-cream-shop-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/reactAppSettings/ReactAppSettingsWebPart.js",
-          "manifest": "./src/webparts/reactAppSettings/ReactAppSettingsWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/iceCreamShop/IceCreamShopWebPart.js",
+          "manifest": "./src/webparts/iceCreamShop/IceCreamShopWebPart.manifest.json"
+        }
+      ]
+    },
+    "ice-cream-lorry-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/iceCreamLorry/IceCreamLorryWebPart.js",
+          "manifest": "./src/webparts/iceCreamLorry/IceCreamLorryWebPart.manifest.json"
         }
       ]
     }
   },
   "localizedResources": {
-    "reactAppSettingsStrings": "lib/webparts/reactAppSettings/loc/{locale}.js"
+    "IceCreamShopWebPartStrings": "lib/webparts/iceCreamShop/loc/{locale}.js",
+    "IceCreamLorryWebPartStrings": "lib/webparts/iceCreamLorry/loc/{locale}.js"
   },
   "externals": {}
 }

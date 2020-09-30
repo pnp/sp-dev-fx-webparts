@@ -1,0 +1,12 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-upgrade-me-client-side-solution",
+    "id": "c32676e6-9536-4db1-b59f-62c7be23f38b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-upgrade-me.sppkg"
+  }
+}

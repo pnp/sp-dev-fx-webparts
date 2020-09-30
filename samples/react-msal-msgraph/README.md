@@ -1,3 +1,22 @@
+---
+page_type: sample
+products:
+- office-sp
+- ms-graph
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  - Microsoft Graph
+  services:
+  - SharePoint
+  platforms:
+  - react
+  createdDate: 8/1/2017 12:00:00 AM
+---
 # Microsoft Authentication Library (MSAL JS) authentication sample
 
 ## Summary
@@ -19,8 +38,8 @@ After you gave permissions, the following will information will get displayed:
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

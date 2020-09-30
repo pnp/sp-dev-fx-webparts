@@ -1,13 +1,21 @@
+
+import { sp } from "@pnp/sp";
+import "@pnp/sp/search";
 import {
-    Logger,
-    ConsoleListener,
-    LogLevel,
-    sp,
-    SearchQuery,
-    SearchResults,
+  ISearchQuery,
+  SearchResults
+} from '@pnp/sp/search';
+
+import "@pnp/sp/webs";
+import {
     Web,
-    ItemAddResult
-} from 'sp-pnp-js';
+} from '@pnp/sp/webs';
+
+import {
+  Logger,
+  ConsoleListener,
+  LogLevel
+} from "@pnp/logging";
 
 import { ISPDataService } from ".";
 
@@ -25,7 +33,7 @@ export class SPDataService implements ISPDataService {
     }
 
     private async _getWebProperties(webUrl: string, selectFields: string[]): Promise<any> {
-        let web = new Web(webUrl);
+        let web = Web(webUrl);
         let data: any = null;
         // prefix all properties with the expanded field
         selectFields.forEach((value, index, array) => {

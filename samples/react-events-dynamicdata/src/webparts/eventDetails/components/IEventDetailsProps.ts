@@ -1,4 +1,5 @@
 import { DisplayMode } from "@microsoft/sp-core-library";
+import { DynamicProperty } from "@microsoft/sp-component-base";
 import { IEvent } from "../../../data";
 
 /**
@@ -12,7 +13,7 @@ export interface IEventDetailsProps {
   /**
    * The currently selected event
    */
-  event: IEvent;
+  event: DynamicProperty<IEvent>;
   /**
    * Determines if the web part has been connected to a dynamic data source or
    * not

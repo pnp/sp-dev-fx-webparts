@@ -1,14 +1,17 @@
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './TasksCalendar.module.scss';
-import * as strings from 'tasksCalendarStrings';
-import { ITasksCalendarWebPartProps } from './ITasksCalendarWebPartProps';
+import styles from './TasksCalendarWebPart.module.scss';
+import * as strings from 'TasksCalendarWebPartStrings';
+
+export interface ITasksCalendarWebPartProps {
+  description: string;
+}
 
 import 'jquery';
 import 'moment';

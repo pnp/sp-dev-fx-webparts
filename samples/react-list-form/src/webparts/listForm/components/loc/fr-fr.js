@@ -1,4 +1,4 @@
-define([], function() {
+define([], function () {
     return {
         'SaveButtonText': 'Sauvegarder',
         'CancelButtonText': 'Annuler',
@@ -11,7 +11,7 @@ define([], function() {
         'ItemSavedSuccessfully': 'Item enregistré avec succès.',
         'FieldsErrorOnSaving': 'L\'item n\'a pas pu être enregistré. Veuillez vérifier les messages d\'erreur détaillés dans les champs ci-dessous.',
         'ErrorOnSavingListItem': 'Erreur de chargement des listes : ',
-        'MoveField' : "Déplacer le champ",
-        'RemoveField' : "Supprimer le champ"
+        'MoveField': "Déplacer le champ",
+        'RemoveField': "Supprimer le champ"
     }
 });

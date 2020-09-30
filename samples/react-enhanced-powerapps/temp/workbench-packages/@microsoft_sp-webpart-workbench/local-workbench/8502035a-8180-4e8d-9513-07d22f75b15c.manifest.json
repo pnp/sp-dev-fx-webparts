@@ -1,0 +1,20 @@
+{
+  "manifestVersion": 2,
+  "id": "8502035a-8180-4e8d-9513-07d22f75b15c",
+  "alias": "SPSearchCommon",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-search-common",
+    "internalModuleBaseUrls": [
+      "http://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-search-common": {
+        "type": "path",
+        "path": "dist/sp-search-common.js"
+      }
+    }
+  },
+  "isInternal": true
+}

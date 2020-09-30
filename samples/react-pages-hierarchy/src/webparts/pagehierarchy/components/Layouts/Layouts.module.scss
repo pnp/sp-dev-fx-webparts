@@ -1,0 +1,100 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.layouts {
+
+    /* START: BreadcrumbLayout */
+    .breadcrumbLayoutHorizontal {
+        display: flex;
+        align-items: flex-start;
+        flex-flow: wrap;
+        margin: 0;
+        padding: 0;
+
+        :global {
+          li:first-of-type .ms-Button {
+            padding-left: 0px;
+          }
+          li:first-of-type .ms-Button-label {
+            margin-left: 0px;
+          }
+        }
+    }
+    .breadcrumbLayoutVertical {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-flow: wrap;
+        margin: 0;
+        padding: 0;
+    }
+    .breadcrumbLayoutItem {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        position: relative;
+        align-items: center;
+        @include ms-font-xl;
+    }
+    .breadcrumbLayoutItemContainer {
+        padding: 0;
+    }
+    .breadcrumbLayoutItemButton {
+        @include ms-font-l;
+        @include ms-fontWeight-light;
+    }
+    .breadcrumbLayoutHorizontalIcon {
+        @include ms-font-xl;
+    }
+    .breadcrumbLayoutVerticalIcon {
+        @include ms-font-l;
+    }
+    /* END: breadcrumbLayout */
+
+    /* START: ListLayout */
+    .listLayout {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        // grid-auto-rows: 20px;
+        grid-gap: 10px;
+        padding: 0;
+        /*
+        display: flex;
+        margin: 0;
+        padding: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        */
+    }
+    .listLayoutItem {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        position: relative;
+        align-items: left;
+        @include ms-font-xl;
+    }
+    .listLayoutItemContainer {
+        padding: 0;
+        width: 100%;
+    };
+    .listLayoutItemButton {
+        @include ms-font-m-plus;
+        @include ms-fontWeight-regular;
+        display: block;
+
+        :global .ms-Button-textContainer {
+          width: calc(100% - 10px);
+        }
+
+        :global .ms-Button-label {
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 18px;
+        }
+    };
+    /* END: ListLayout */
+}

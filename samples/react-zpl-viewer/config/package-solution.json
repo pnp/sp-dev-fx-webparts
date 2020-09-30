@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-zpl-viewer-client-side-solution",
+    "id": "f9e943cb-495d-4cd3-bd6c-73c4071cef3d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-zpl-viewer.sppkg"
+  }
+}

@@ -1,11 +1,11 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "a0e1eddd-ea67-4775-a52b-0141c5807146",
   "alias": "ToDoWebPart",
   "componentType": "WebPart",
   "version": "0.0.1",
   "manifestVersion": 2,
+  "supportedHosts": ["SharePointWebPart"],
 
   "preconfiguredEntries": [{
     "groupId": "a0e1eddd-ea67-4775-a52b-0141c5807146",

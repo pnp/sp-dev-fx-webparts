@@ -5,10 +5,11 @@
  * file because that's what the Office UI Fabric team does and
  * I kinda liked it.
  */
-import { DisplayMode } from '@microsoft/sp-core-library';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { Moment } from 'moment';
-import { ICalendarEvent, ICalendarService } from '../../../shared/services/CalendarService';
+import { DisplayMode } from "@microsoft/sp-core-library";
+import { IWebPartContext } from "@microsoft/sp-webpart-base";
+import { Moment } from "moment";
+import { ICalendarEvent, ICalendarService } from "../../../shared/services/CalendarService";
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 /**
  * The props for the calendar feed summary component
@@ -19,9 +20,10 @@ export interface ICalendarFeedSummaryProps {
   context: IWebPartContext;
   updateProperty: (value: string) => void;
   isConfigured: boolean;
-  isNarrow: boolean;
   provider: ICalendarService;
   maxEvents: number;
+  themeVariant: IReadonlyTheme;
+  clientWidth: number;
 }
 
 /**

@@ -1,14 +1,13 @@
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import {
     SPHttpClient,
-    SPHttpClientBatch,
     SPHttpClientResponse
 } from '@microsoft/sp-http';
 import {
     Logger,
     ConsoleListener,
     LogLevel
-} from 'sp-pnp-js';
+} from "@pnp/logging";
 
 import { IPODataService } from ".";
 import { IPOTask } from "./../interfaces";

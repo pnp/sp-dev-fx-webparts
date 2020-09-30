@@ -1,0 +1,19 @@
+{
+  "id": "cc2cc925-b5be-41bb-880a-f0f8030c6aff",
+  "alias": "OdspUtilitiesBundle",
+  "componentType": "Library",
+  "version": "5.1.55",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "odsp-utilities-bundle",
+    "internalModuleBaseUrls": [
+      "http://localhost:4321/"
+    ],
+    "scriptResources": {
+      "odsp-utilities-bundle": {
+        "type": "path",
+        "path": "dist/odsp-utilities-bundle.js"
+      }
+    }
+  }
+}

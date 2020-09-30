@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "org-chart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/orgChart/OrgChartWebPart.js",
+          "manifest": "./src/webparts/orgChart/OrgChartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "vue": "./node_modules/vue/dist/vue.min.js",
+    "spOrgChart": {
+      "path": "./src/webparts/orgChart/plugins/orgchart.js",
+      "globalName": "spOrgChart"
+    }
+  },
+  "localizedResources": {
+    "OrgChartWebPartStrings": "lib/webparts/orgChart/loc/{locale}.js"
+  }
+}

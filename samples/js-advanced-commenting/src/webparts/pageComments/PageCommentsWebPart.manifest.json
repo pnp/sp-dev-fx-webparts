@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "7520fa3d-1f05-4d78-bf7f-91627d9b64d3",
+  "alias": "PageCommentsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "Advanced Comments" },
+    "description": { "default": "Comments with advanced features for modern pages" },
+    "officeFabricIconFontName": "FileComment",
+    "properties": {
+      "datetimeFormat":"DD/MM/YYYY",
+      "enableNavigation": true,
+      "enableReplying": true,
+      "enableEditing": false,
+      "enableUpvoting": true,
+      "enableDeleting": false,
+      "enableAttachments": false,
+      "enableHashtags": false,
+      "enablePinging": false,
+      "enableDocumentPreview": false,
+      "roundProfilePictures": true,
+      "attachmentFileFormats": "audio/*,image/*,video/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx",
+      "attachmentFileSize": 2
+    }
+  }]
+}

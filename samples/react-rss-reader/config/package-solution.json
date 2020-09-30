@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-rssreader-client-side-solution",
+    "id": "fcb53167-e0d5-4ed1-9648-149146649aa1",
+    "version": "1.0.0.6",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-rssreader.sppkg"
+  }
+}

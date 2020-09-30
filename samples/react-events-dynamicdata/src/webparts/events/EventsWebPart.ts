@@ -1,18 +1,14 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
-
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import * as strings from 'EventsWebPartStrings';
 import { Events } from './components';
 import { IEventsProps } from './components/IEventsProps';
 
 import { sp } from '@pnp/sp';
-import { IDynamicDataController, IDynamicDataPropertyDefinition } from '@microsoft/sp-dynamic-data';
+import { IDynamicDataPropertyDefinition, IDynamicDataCallables } from '@microsoft/sp-dynamic-data';
 import { IEvent, ILocation } from '../../data';
 
 /**
@@ -28,7 +24,7 @@ export interface IEventsWebPartProps {
 /**
  * Events web part. Shows list of events retrieved from a SharePoint list
  */
-export default class EventsWebPart extends BaseClientSideWebPart<IEventsWebPartProps> implements IDynamicDataController {
+export default class EventsWebPart extends BaseClientSideWebPart<IEventsWebPartProps> implements IDynamicDataCallables {
   /**
    * Currently selected event
    */

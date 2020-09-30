@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "minesweeper-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/minesweeper/MinesweeperWebPart.js",
+          "manifest": "./src/webparts/minesweeper/MinesweeperWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MinesweeperWebPartStrings": "lib/webparts/minesweeper/loc/{locale}.js"
+  }
+}

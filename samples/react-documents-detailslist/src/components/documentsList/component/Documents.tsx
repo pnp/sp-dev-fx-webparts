@@ -6,7 +6,9 @@ import {
   Link, MarqueeSelection, DetailsList, Selection, Image, ImageFit,
   SelectionMode, Spinner, SpinnerSize, Fabric, ColumnActionsMode, IColumn, CheckboxVisibility,
   Callout, Panel, PanelType, IContextualMenuItem, autobind, ContextualMenu, IContextualMenuProps, DirectionalHint,
-  css
+  css,
+  MessageBarType,
+  MessageBar
 } from 'office-ui-fabric-react';
 
 import { IDocumentsProps } from './IDocumentsProps';
@@ -52,32 +54,32 @@ export default class LibraryDocuments extends React.Component<IDocumentsProps, I
 
     let { contextualMenuProps } = this.state;
 
-    if (!this._isConfigurationValid && this.props.webPartDisplayMode === DisplayMode.Edit) {
-      return (
-        <div className={styles.notification}>
-          <div className={styles.notificationIcon}>
-            <i className={css("ms-Icon ms-Icon--ErrorBadge", styles.notificationIcon)} aria-hidden="true"></i>
-            <span className={styles.notificationHeader}>
-              Edit Mode
-               </span>
-          </div>
-        </div>);
-    }
-    if (!this._isConfigurationValid && this.props.webPartDisplayMode === DisplayMode.Read) {
-      return (
-        <div>
-          <div className={styles.notification}>
-            <div className={styles.notificationIcon}>
-              <i className={css("ms-Icon ms-Icon--ErrorBadge", styles.notificationIcon)} aria-hidden="true"></i>
-              <span className={styles.notificationHeader}>
-                Preview Mode
-                  </span>
-            </div>
-          </div>
-        </div>);
-
-
-    }
+    /* if (!this._isConfigurationValid && this.props.webPartDisplayMode === DisplayMode.Edit) {
+       return (
+         <div className={styles.notification}>
+           <div className={styles.notificationIcon}>
+             <i className={css("ms-Icon ms-Icon--ErrorBadge", styles.notificationIcon)} aria-hidden="true"></i>
+             <span className={styles.notificationHeader}>
+               Edit Mode
+                </span>
+           </div>
+         </div>);
+     }
+     if (!this._isConfigurationValid && this.props.webPartDisplayMode === DisplayMode.Read) {
+       return (
+         <div>
+           <div className={styles.notification}>
+             <div className={styles.notificationIcon}>
+               <i className={css("ms-Icon ms-Icon--ErrorBadge", styles.notificationIcon)} aria-hidden="true"></i>
+               <span className={styles.notificationHeader}>
+                 Preview Mode
+                   </span>
+             </div>
+           </div>
+         </div>);
+ 
+ 
+     }*/
     if (this._isConfigurationValid) {
 
       if (this.state.isLoading) {
@@ -134,13 +136,21 @@ export default class LibraryDocuments extends React.Component<IDocumentsProps, I
                   onRenderItemColumn={this._renderItemColumn}
                   checkboxVisibility={CheckboxVisibility.hidden} />
                 {contextualMenuProps && (
-                  <ContextualMenu { ...contextualMenuProps } />
+                  <ContextualMenu {...contextualMenuProps} />
                 )}
               </MarqueeSelection>
             </div>
           </div>
         );
       }
+    }
+    else {
+      return (<MessageBar
+        messageBarType={MessageBarType.warning}
+        isMultiline={false}
+        dismissButtonAriaLabel="Close">
+        Please enter the Library URL from the PropertyPane.
+          </MessageBar>);
     }
   }
 
@@ -376,7 +386,7 @@ export default class LibraryDocuments extends React.Component<IDocumentsProps, I
       }
     });
 
-    let modifiedDocs = this.state.displayedDocuments;
+    let modifiedDocs: any = this.state.displayedDocuments;
 
     modifiedDocs = _.orderBy(
       modifiedDocs,
@@ -476,7 +486,7 @@ export default class LibraryDocuments extends React.Component<IDocumentsProps, I
 
     return {
       items: items,
-      targetElement: ev.currentTarget as HTMLElement,
+      target: ev.currentTarget as HTMLElement,
       directionalHint: DirectionalHint.bottomLeftEdge,
       gapSpace: 10,
       isBeakVisible: true,

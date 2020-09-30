@@ -1,20 +1,23 @@
-import { DisplayMode } from '@microsoft/sp-core-library';
-import { SPComponentLoader } from '@microsoft/sp-loader';
-import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
-import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
-import * as strings from 'CalendarFeedSummaryWebPartStrings';
-import * as moment from 'moment';
-import { FocusZone, FocusZoneDirection, List, Spinner, css } from 'office-ui-fabric-react';
-import * as React from 'react';
-import { CarouselContainer } from '../../../shared/components/CarouselContainer';
-import { EventCard } from '../../../shared/components/EventCard';
-import { Paging } from '../../../shared/components/Paging';
-import { CalendarServiceProviderType, ICalendarEvent, ICalendarService } from '../../../shared/services/CalendarService';
-import styles from './CalendarFeedSummary.module.scss';
-import { ICalendarFeedSummaryProps, ICalendarFeedSummaryState, IFeedCache } from './CalendarFeedSummary.types';
+import { DisplayMode } from "@microsoft/sp-core-library";
+import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+import * as strings from "CalendarFeedSummaryWebPartStrings";
+import * as moment from "moment";
+import { FocusZone, FocusZoneDirection, List, Spinner, css } from "office-ui-fabric-react";
+import * as React from "react";
+import { EventCard } from "../../../shared/components/EventCard";
+import { Pagination } from "../../../shared/components/Pagination";
+import { CalendarServiceProviderType, ICalendarEvent, ICalendarService } from "../../../shared/services/CalendarService";
+import styles from "./CalendarFeedSummary.module.scss";
+import { ICalendarFeedSummaryProps, ICalendarFeedSummaryState, IFeedCache } from "./CalendarFeedSummary.types";
+import { FilmstripLayout } from "../../../shared/components/filmstripLayout/index";
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 // the key used when caching events
 const CacheKey: string = "calendarFeedSummary";
+
+// this is the same width that the SharePoint events web parts use to render as narrow
+const MaxMobileWidth: number = 480;
 
 /**
  * Displays a feed summary from a given calendar feed provider. Renders a different view for mobile/narrow web parts.
@@ -28,10 +31,6 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
       error: undefined,
       currentPage: 1
     };
-
-    // needed for the slick slider in normal mode
-    SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
-    SPComponentLoader.loadCss("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
   }
 
   /**
@@ -69,9 +68,13 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     }
 
     const settingsHaveChanged: boolean = prevProvider.CacheDuration !== currProvider.CacheDuration ||
+      prevProvider.Name !== currProvider.Name ||
       prevProvider.FeedUrl !== currProvider.FeedUrl ||
       prevProvider.Name !== currProvider.Name ||
-      prevProvider.UseCORS !== currProvider.UseCORS;
+      prevProvider.EventRange.DateRange !== currProvider.EventRange.DateRange ||
+      prevProvider.UseCORS !== currProvider.UseCORS ||
+      prevProvider.MaxTotal !== currProvider.MaxTotal ||
+      prevProvider.ConvertFromUTC !== currProvider.ConvertFromUTC;
 
     if (settingsHaveChanged) {
       // only load from cache if the providers haven't changed, otherwise reload.
@@ -88,13 +91,9 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
   public render(): React.ReactElement<ICalendarFeedSummaryProps> {
     const {
       isConfigured,
-      isNarrow,
     } = this.props;
-    const {
-      events,
-      isLoading,
-      error
-    } = this.state;
+
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
     // if we're not configured, show the placeholder
     if (!isConfigured) {
@@ -110,7 +109,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
 
     // put everything together in a nice little calendar view
     return (
-      <div className={css(styles.calendarFeedSummary, styles.webPartChrome)}>
+      <div className={css(styles.calendarFeedSummary, styles.webPartChrome)} style={{ backgroundColor: semanticColors.bodyBackground }}>
         <div className={css(styles.webPartHeader, styles.headerSmMargin)}>
           <WebPartTitle displayMode={this.props.displayMode}
             title={this.props.title}
@@ -128,8 +127,9 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
    * Render your web part content
    */
   private _renderContent(): JSX.Element {
+    const isNarrow: boolean = this.props.clientWidth < MaxMobileWidth;
+
     const {
-      isNarrow,
       displayMode
     } = this.props;
     const {
@@ -230,7 +230,6 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
    */
   private _renderNarrowList(): JSX.Element {
     const {
-      isLoading,
       events,
       currentPage
     } = this.state;
@@ -260,14 +259,16 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
     >
       <List
         items={pagedEvents}
-        onRenderCell={(item, index) => (
+        onRenderCell={(item, _index) => (
           <EventCard
             isEditMode={isEditMode}
             event={item}
-            isNarrow={true} />
+            isNarrow={true}
+            themeVariant={this.props.themeVariant}
+          />
         )} />
       {usePaging &&
-        <Paging
+        <Pagination
           showPageNum={false}
           currentPage={currentPage}
           itemsCountPerPage={maxEvents}
@@ -288,22 +289,27 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
    */
   private _renderNormalList(): JSX.Element {
     const {
-      events,
-      isLoading } = this.state;
+      events } = this.state;
     const isEditMode: boolean = this.props.displayMode === DisplayMode.Edit;
 
     return (<div>
       <div>
         <div role="application">
-          <CarouselContainer >
+          <FilmstripLayout
+            ariaLabel={strings.FilmStripAriaLabel}
+            clientWidth={this.props.clientWidth}
+            themeVariant={this.props.themeVariant}
+          >
             {events.map((event: ICalendarEvent, index: number) => {
               return (<EventCard
                 key={`eventCard${index}`}
                 isEditMode={isEditMode}
                 event={event}
-                isNarrow={false} />);
+                isNarrow={false}
+                themeVariant={this.props.themeVariant} />
+              );
             })}
-          </CarouselContainer>
+          </FilmstripLayout>
         </div>
       </div>
     </div>);
@@ -319,7 +325,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
   /**
    * Load events from the cache or, if expired, load from the event provider
    */
-  private _loadEvents(useCacheIfPossible: boolean): Promise<void> {
+  private async _loadEvents(useCacheIfPossible: boolean): Promise<void> {
     // before we do anything with the data provider, let's make sure that we don't have stuff stored in the cache
 
     // load from cache if: 1) we said to use cache, and b) if we have something in cache
@@ -346,7 +352,11 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
         isLoading: true
       });
 
-      return dataProvider.getEvents().then((events: ICalendarEvent[]) => {
+      try {
+        let events = await dataProvider.getEvents();
+        if (dataProvider.MaxTotal > 0) {
+          events = events.slice(0, dataProvider.MaxTotal);
+        }
         // don't cache in the case of errors
         this.setState({
           isLoading: false,
@@ -354,40 +364,15 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
           events: events
         });
         return;
-      }).catch((error: any) => {
+      }
+      catch (error) {
         console.log("Exception returned by getEvents", error.message);
         this.setState({
           isLoading: false,
           error: error.message,
           events: []
         });
-      });
+      }
     }
-  }
-
-  /**
-   * Saves events in cache with an expiry date
-   * @param events an array of events to save in cache
-   */
-  private _setCache(events: ICalendarEvent[]): void {
-    const { Name, FeedUrl, CacheDuration } = this.props.provider;
-
-    // don't cache if we haven't set a cache duration
-    if (CacheDuration === undefined || CacheDuration === 0) {
-      return;
-    }
-
-    const expiry: moment.Moment = moment().add(CacheDuration, "minutes");
-
-    // we use minutes instead of milliseconds, it doesn't make sense that
-    // people want to cache a feed for milliseconds, or seconds
-    // but feel free to change it to suit your needs
-    const cache: IFeedCache = {
-      feedType: Name,
-      feedUrl: FeedUrl,
-      events: events,
-      expiry: expiry
-    };
-    localStorage.setItem(CacheKey, JSON.stringify(cache));
   }
 }

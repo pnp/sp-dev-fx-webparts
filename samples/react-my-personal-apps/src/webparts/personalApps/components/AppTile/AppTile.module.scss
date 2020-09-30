@@ -1,0 +1,87 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "./node_modules/spfx-uifabric-themes/office.theme";
+@import "./../../../../Common/themeColors.module.scss";
+
+.tile {
+  display: flex;
+  min-height: 120px;
+  max-height: 120px;
+ /* min-width: 120px;*/
+  justify-content: start;
+  margin: 5px;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $ms-color-neutralTertiaryAlt;
+/*  padding: 10px; */
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+
+}
+
+.tile:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  background-color: $ms-themePrimary;
+  color: $ms-color-white;
+  cursor: pointer;
+}
+
+.image {
+  font-size: 48px;
+
+  width: 48px;
+  height: 48px;
+}
+
+.imageContainer {
+  display: flex;
+
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600px;
+  line-height: 25px;
+  line-break: nowrap;
+  overflow: hidden;
+  text-overflow: "ellipsis";
+}
+
+.separator {
+  border-color: $ms-color-themePrimary;
+  width: 90%;
+  margin: 0 auto;
+  height: 0px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+[data-theme="default"] {
+  .tile {
+    background-color: $ms-color-white;
+  }
+  .tile:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    background-color: $ms-themePrimary;
+    color: $ms-color-white;
+    cursor: pointer;
+  }
+}
+
+[data-theme="dark"] {
+  color: $ms-color-neutralTertiaryAlt;
+}
+
+[data-theme="contrast"] {
+  // dark theme
+  color: $contrast-button-background;
+  .tile:hover {
+    color: $ms-color-black;
+    background-color: $contrast-button-background;
+  }
+}

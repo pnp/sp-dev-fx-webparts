@@ -1,0 +1,267 @@
+@import "../PropertyPaneFilePicker.module.scss";
+
+.searchBoxContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin-bottom: 37px;
+
+  .searchBoxMedium {
+    width: 400px;
+  }
+
+  .searchBox {
+    margin-bottom: 0;
+  }
+
+  .dropdownContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    :global(.ms-Dropdown-title) {
+      border: 0;
+    }
+
+    .filterDropdown {
+      width: auto;
+    }
+  }
+}
+
+[dir="ltr"] .searchBoxContainer {
+  margin-left: 33px;
+
+  .searchBox {
+    margin-right: 35px;
+    color: inherit;
+  }
+}
+
+.filePickerFolderCardGrid {
+  overflow: hidden;
+  font-size: 0;
+
+  :global {
+    .ms-List-page {
+      overflow: hidden;
+      font-size: 0;
+    }
+
+    .ms-List-surface {
+      position: relative;
+    }
+  }
+}
+
+.filePickerFolderCardTile {
+  text-align: center;
+  outline: none;
+  position: relative;
+  @include ms-float(left);
+}
+
+.filePickerFolderCardPadder {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+}
+
+:global(.ms-Fabric--isFocusVisible) .filePickerFolderCardTile:focus:after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+  box-sizing: border-box;
+  border: 1px solid $ms-color-white;
+}
+
+.filePickerFolderCardSizer {
+  padding-bottom: 100%;
+}
+
+.filePickerFolderCardImage {
+  width: 100%;
+  left: 0;
+  top: 0;
+  color: $ms-color-white;
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  width: 100%;
+}
+
+.filePickerFolderCardLabel {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  color: $ms-color-white;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 21px;
+  font-weight: 600;
+
+  &:hover {
+    color: $ms-color-neutralLight;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  &:active {
+    background-color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
+  }
+}
+
+[dir="ltr"] .bingGridListCell {
+  margin-right: 8px;
+}
+
+.bingGridListCell {
+  margin-bottom: 8px;
+}
+
+.bingTile {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+  }
+
+  &:focus:after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    border: 1px solid;
+    border-color: $ms-color-white;
+    -webkit-box-shadow: 0 0 0 2px $ms-color-neutralSecondaryAlt;
+    box-shadow: 0 0 0 2px $ms-color-neutralSecondaryAlt;
+  }
+}
+
+.bingTileContent {
+  border: 1px solid;
+  border-color: $ms-color-white;
+  width: 100%;
+  height: 100%;
+}
+
+.bingTileFrame {
+  position: absolute;
+  display: none;
+  left: 2px;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  -webkit-box-shadow: 0 0 0 2px $ms-color-neutralTertiaryAlt;
+  box-shadow: 0 0 0 2px $ms-color-neutralTertiaryAlt;
+  outline: 1px solid transparent;
+}
+
+[dir="ltr"] .bingTileCheckCircle {
+  right: 8px;
+}
+
+.bingTileCheckCircle {
+  display: block;
+  position: absolute;
+  top: 6px;
+  opacity: 0;
+  background: 0 0;
+  border: none;
+  outline: 0;
+  top: 8px;
+}
+
+.bingTileNamePlate {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 8px 8px;
+  background-color: $ms-color-white;
+  color: $ms-color-neutralPrimary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 0.95;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.bingTile.isSelected .bingTileCheckCircle,
+.bingTile:hover,
+.bingTile:hover .bingTileCheckCircle {
+  opacity: 1;
+}
+
+[dir="ltr"] .copyrightLabel {
+  padding-left: 32px;
+}
+.copyrightLabel {
+  font-size: 12px;
+}
+
+.noResultLabel {
+  padding: 12px;
+}
+
+.bingTileThumbnail {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+
+  img {
+    display: block;
+    opacity: 1;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation-duration: 0.367s;
+    animation-timing-function: cubic-bezier(0.1, 0.25, 0.75, 0.9);
+    animation-fill-mode: both;
+  }
+}
+
+.bingGrildList :global(.ms-List-cell),
+.bingGrildList :global(.ms-List-page) {
+  display: inline-block;
+  overflow: hidden;
+}

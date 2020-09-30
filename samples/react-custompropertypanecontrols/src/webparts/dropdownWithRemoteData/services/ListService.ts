@@ -16,10 +16,10 @@ export class ListService implements IListService {
   public getLists(): Promise<IList[]> {
     var httpClientOptions : ISPHttpClientOptions = {};
 
-    httpClientOptions.headers = {
-        'Accept': 'application/json;odata=nometadata',
-        'odata-version': ''
-    };
+    // httpClientOptions.headers = {
+    //     'Accept': 'application/json;odata=nometadata',
+    //     'odata-version': ''
+    // };
 
     return new Promise<IList[]>((resolve: (results: IList[]) => void, reject: (error: any) => void): void => {
       this.context.spHttpClient.get(this.context.pageContext.web.serverRelativeUrl + `/_api/web/lists?$select=id,title`,
@@ -40,10 +40,10 @@ export class ListService implements IListService {
   public getList(listName: string): Promise<IListItem[]> {
     var httpClientOptions : ISPHttpClientOptions = {};
 
-    httpClientOptions.headers = {
-        'Accept': 'application/json;odata=nometadata',
-        'odata-version': ''
-    };
+    // httpClientOptions.headers = {
+    //     'Accept': 'application/json;odata=nometadata',
+    //     'odata-version': ''
+    // };
 
     return new Promise<IListItem[]>((resolve: (results: IListItem[]) => void, reject: (error: any) => void): void => {
       this.context.spHttpClient.get(this.context.pageContext.web.serverRelativeUrl + `/_api/web/lists('${listName}')/items?$select=Id,Title`,

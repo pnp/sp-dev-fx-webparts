@@ -1,2 +1,2 @@
-export * from './IWordPressFullCalendarEventResponse';
-export * from './WordPressFullCalendarService';
+export * from "./IWordPressFullCalendarEventResponse";
+export * from "./WordPressFullCalendarService";

@@ -4,16 +4,16 @@ export enum RenderListDataOptions {
     listData = 2,
     listSchema = 4,
     menuView = 8,
-    listContentType= 16,
-    fileSystemItemId= 32,
-    clientFormSchema= 64,
-    quickLaunch= 128,
-    spotlight= 256,
-    visualization= 512,
-    viewMetadata= 1024,
-    disableAutoHyperlink= 2048,
-    enableMediaTAUrls= 4096,
-    parentInfo= 8192,
+    listContentType = 16,
+    fileSystemItemId = 32,
+    clientFormSchema = 64,
+    quickLaunch = 128,
+    spotlight = 256,
+    visualization = 512,
+    viewMetadata = 1024,
+    disableAutoHyperlink = 2048,
+    enableMediaTAUrls = 4096,
+    parentInfo = 8192,
 }
 
 export interface IChoice {
@@ -99,6 +99,7 @@ export interface IFieldSchema {
     Disable?: boolean;
     WebServiceUrl: string;
     HiddenListInternalName: string;
+    HoursOptions?: string[];
 }
 
 export interface IFormSchema {

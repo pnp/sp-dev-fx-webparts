@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - react
+  createdDate: 5/1/2017 12:00:00 AM
+---
 # SharePoint Themes Client Side Web Part
 
 ## Summary
@@ -10,7 +25,7 @@ This web part illustrates how to use SharePoint Theme variables in custom web pa
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 Solution|Author(s)
 --------|---------

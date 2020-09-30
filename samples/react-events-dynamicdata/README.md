@@ -5,23 +5,26 @@ Sample web parts illustrating using the SharePoint Framework Dynamic data capabi
 ![Web parts placed on a modern SharePoint page showing information about events](./assets/dynamic-data-webparts.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.5.0--plusbeta-blue.svg)
+![SPFx 1.10](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
 react-events-dynamicdata|Waldek Mastykarz (MVP, Rencore, @waldekm)
+react-events-dynamicdata|Hugo Bernier (MVP, [@bernierh](https://twitter.com/bernierh))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.2|July 8, 2020|Updated sample to SPFx v1.10.0 (Hugo Bernier)
+1.1|November 9, 2018|Updated sample to SPFx v1.7.0
 1.0|June 5, 2018|Initial release
 
 ## Disclaimer
@@ -37,18 +40,20 @@ Version|Date|Comments
   * `npm install`
   * `gulp bundle --ship`
   * `gulp package-solution --ship`
-* from the _sharepoint/solution_ folder, deploy the .sppkg file to the App catalog in your tenant
+* from the `sharepoint/solution` folder, deploy the `.sppkg` file to the App catalog in your tenant
 * in the site where you want to test this solution
   * add the app named _react-events-dynamicdata-client-side-solution_
   * edit a page
   * add the three web parts named: _Events_, _Event details_ and _Map_
   * configure the _Event details_ web part:
-    * as _Data source_, choose the _Events_ option
-    * as _Data property_, choose the _Event_ option
+    * as _Connect to source_, choose the _Events_ option
+    * as _Event's properties_, choose the _Event_ option
   * configure the _Map_ web part:
     * get a Bing maps API key (follow the link in the web part)
-    * as _Data source_, choose the _Events_ option
-    * as _Data property_, choose the _Location_ option
+    * as _Connect to source_, choose the _Events_ option
+    * as _Event's properties_, choose the _Location_ option
+    * as _Address_, choose the _address_ option
+    * as _City_, choose the _city_ option
 
 ## Features
 
@@ -59,7 +64,6 @@ Web parts in this solution illustrate the following concepts on top of the Share
 * making web part a dynamic data source
 * exposing multiple data properties from a single data source
 * subscribing to dynamic data source notifications from a web part
-* persisting dynamic data subscription information in web part properties
 * deploying list instances from a SharePoint Framework solution package
 * using [PnPjs](https://github.com/pnp/pnpjs) to retrieve data from a SharePoint list
 * using [SharePoint Framework React Controls](https://github.com/SharePoint/sp-dev-fx-controls-react) in web parts

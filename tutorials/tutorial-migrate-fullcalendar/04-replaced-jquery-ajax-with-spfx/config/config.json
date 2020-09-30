@@ -1,17 +1,31 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/tasksCalendar/TasksCalendarWebPart.js",
-      "manifest": "./src/webparts/tasksCalendar/TasksCalendarWebPart.manifest.json",
-      "outputPath": "./dist/tasks-calendar.bundle.js"
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "tasks-calendar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/tasksCalendar/TasksCalendarWebPart.js",
+          "manifest": "./src/webparts/tasksCalendar/TasksCalendarWebPart.manifest.json"
+        }
+      ]
     }
-  ],
+  },
   "externals": {
-    "jquery": "https://code.jquery.com/jquery-1.11.1.min.js",
-    "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js",
-    "fullcalendar": "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-1.11.1.min.js",
+      "globalName": "jQuery"
+    },
+    "fullcalendar": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js",
+      "globalName": "jQuery",
+      "globalDependencies": [
+        "jquery"
+      ]
+    },
+    "moment": "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"
   },
   "localizedResources": {
-    "tasksCalendarStrings": "webparts/tasksCalendar/loc/{locale}.js"
+    "TasksCalendarWebPartStrings": "lib/webparts/tasksCalendar/loc/{locale}.js"
   }
 }

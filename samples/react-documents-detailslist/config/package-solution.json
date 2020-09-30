@@ -1,11 +1,13 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-documents-client-side-solution",
     "id": "aaecff2e-2087-4ade-bcf8-e72f89a1d933",
+    "isDomainIsolated": false,
+    "includeClientSideAssets": true,
     "version": "1.0.0.0"
   },
   "paths": {
-    "zippedPackage": "solution/react-documents.sppkg"
+    "zippedPackage": "solution/reactDocuments.sppkg"
   }
 }

@@ -1,18 +1,31 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { Version } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import * as strings from 'BotFrameworkChatWebPartStrings';
+import BotFrameworkChat from './components/BotFrameworkChat';
+import { IBotFrameworkChatProps } from './components/IBotFrameworkChatProps';
 
-import BotFrameworkChat, { IBotFrameworkChatProps } from './components/BotFrameworkChat';
-import { IBotFrameworkChatWebPartProps } from './IBotFrameworkChatWebPartProps';
+export interface IBotFrameworkChatWebPartProps {
+  description: string;
+  message: string;
+  directLineSecret: string;
+  title: string;
+  placeholderText: string;
+  titleBarBackgroundColor : string;
+  botMessagesBackgroundColor: string;
+  botMessagesForegroundColor: string;
+  userMessagesBackgroundColor: string;
+  userMessagesForegroundColor: string;
+}
 
 export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotFrameworkChatWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IBotFrameworkChatProps> = React.createElement(BotFrameworkChat, {
+    const element: React.ReactElement<IBotFrameworkChatProps > = React.createElement(
+      BotFrameworkChat,
+      {
       description: this.properties.description,
       message: '',
       title: this.properties.title,
@@ -27,6 +40,14 @@ export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotF
     });
 
     ReactDom.render(element, this.domElement);
+  }
+
+  protected onDispose(): void {
+    ReactDom.unmountComponentAtNode(this.domElement);
+  }
+
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -86,8 +107,7 @@ export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotF
       ]
     };
   }
-
-
+  
   private _validateColorPropertyAsync(value: string): string {
     var colorRegex = /^([a-zA-Z0-9]){6}$/;
     if (!value || colorRegex.test(value) == false) {
@@ -96,5 +116,4 @@ export default class BotFrameworkChatWebPart extends BaseClientSideWebPart<IBotF
 
     return "";
   }
-
 }

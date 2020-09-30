@@ -1,8 +1,4 @@
-import {
-    IPropertyPaneField,
-    PropertyPaneFieldType,
-    IPropertyPaneCustomFieldProps
-} from '@microsoft/sp-webpart-base';
+import { IPropertyPaneField, PropertyPaneFieldType, IPropertyPaneCustomFieldProps } from "@microsoft/sp-property-pane";
 
 export class PropertyPaneLogo implements IPropertyPaneField<IPropertyPaneCustomFieldProps> {
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
@@ -19,8 +15,7 @@ export class PropertyPaneLogo implements IPropertyPaneField<IPropertyPaneCustomF
     private onRender(elem: HTMLElement): void {
         elem.innerHTML = `
     <div style="margin-top: 30px">
-      <div style="float:right">Author: <a href="mailto:mikael.svenson@puzzlepart.com" tabindex="-1">Mikael Svenson</a></div>
-      <div style="float:right"><a href="https://www.puzzlepart.com/" target="_blank"><img src="//www.puzzlepart.com/wp-content/uploads/2017/08/Pzl-LogoType-200.png" onerror="this.style.display = \'none\'";"></a></div>
+      <div style="float:right">Author: <a href="https://twitter.com/mikaelsvenson" tabindex="-1">Mikael Svenson</a></div>
     </div>`;
     }
 }
