@@ -1,0 +1,454 @@
+{
+  "title": "Upgrade project react-youtube to v1.11.0",
+  "steps": [
+    {
+      "title": "REQUIRED: @microsoft/sp-core-library",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dependency package @microsoft/sp-core-library\r\n\r\nExecute the following command:\r\n\r\n[`npm i -SE @microsoft/sp-core-library@1.11.0`](command:codetour.sendTextToTerminal?[\"npm i -SE @microsoft/sp-core-library@1.11.0\"])",
+      "line": 14,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @microsoft/sp-lodash-subset",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dependency package @microsoft/sp-lodash-subset\r\n\r\nExecute the following command:\r\n\r\n[`npm i -SE @microsoft/sp-lodash-subset@1.11.0`](command:codetour.sendTextToTerminal?[\"npm i -SE @microsoft/sp-lodash-subset@1.11.0\"])",
+      "line": 15,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @microsoft/sp-webpart-base",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dependency package @microsoft/sp-webpart-base\r\n\r\nExecute the following command:\r\n\r\n[`npm i -SE @microsoft/sp-webpart-base@1.11.0`](command:codetour.sendTextToTerminal?[\"npm i -SE @microsoft/sp-webpart-base@1.11.0\"])",
+      "line": 16,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/react",
+      "description": "### REQUIRED\r\n\r\nRemove SharePoint Framework dependency package @types/react\r\n\r\nExecute the following command:\r\n\r\n[`npm un -S @types/react`](command:codetour.sendTextToTerminal?[\"npm un -S @types/react\"])",
+      "line": 17,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/react-dom",
+      "description": "### REQUIRED\r\n\r\nRemove SharePoint Framework dependency package @types/react-dom\r\n\r\nExecute the following command:\r\n\r\n[`npm un -S @types/react-dom`](command:codetour.sendTextToTerminal?[\"npm un -S @types/react-dom\"])",
+      "line": 21,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/webpack-env",
+      "description": "### REQUIRED\r\n\r\nRemove SharePoint Framework dependency package @types/webpack-env\r\n\r\nExecute the following command:\r\n\r\n[`npm un -S @types/webpack-env`](command:codetour.sendTextToTerminal?[\"npm un -S @types/webpack-env\"])",
+      "line": 22,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @microsoft/sp-property-pane",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dependency package @microsoft/sp-property-pane\r\n\r\nExecute the following command:\r\n\r\n[`npm i -SE @microsoft/sp-property-pane@1.11.0`](command:codetour.sendTextToTerminal?[\"npm i -SE @microsoft/sp-property-pane@1.11.0\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: office-ui-fabric-react",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dependency package office-ui-fabric-react\r\n\r\nExecute the following command:\r\n\r\n[`npm i -SE office-ui-fabric-react@6.214.0`](command:codetour.sendTextToTerminal?[\"npm i -SE office-ui-fabric-react@6.214.0\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @microsoft/sp-build-web",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dev dependency package @microsoft/sp-build-web\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @microsoft/sp-build-web@1.11.0`](command:codetour.sendTextToTerminal?[\"npm i -DE @microsoft/sp-build-web@1.11.0\"])",
+      "line": 29,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @microsoft/sp-module-interfaces",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dev dependency package @microsoft/sp-module-interfaces\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @microsoft/sp-module-interfaces@1.11.0`](command:codetour.sendTextToTerminal?[\"npm i -DE @microsoft/sp-module-interfaces@1.11.0\"])",
+      "line": 30,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @microsoft/sp-webpart-workbench",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dev dependency package @microsoft/sp-webpart-workbench\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @microsoft/sp-webpart-workbench@1.11.0`](command:codetour.sendTextToTerminal?[\"npm i -DE @microsoft/sp-webpart-workbench@1.11.0\"])",
+      "line": 31,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @microsoft/sp-tslint-rules",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dev dependency package @microsoft/sp-tslint-rules\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @microsoft/sp-tslint-rules@1.11.0`](command:codetour.sendTextToTerminal?[\"npm i -DE @microsoft/sp-tslint-rules@1.11.0\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/webpack-env",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dev dependency package @types/webpack-env\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @types/webpack-env@1.13.1`](command:codetour.sendTextToTerminal?[\"npm i -DE @types/webpack-env@1.13.1\"])",
+      "line": 22,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/es6-promise",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dev dependency package @types/es6-promise\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @types/es6-promise@0.0.33`](command:codetour.sendTextToTerminal?[\"npm i -DE @types/es6-promise@0.0.33\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/react",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dev dependency package @types/react\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @types/react@16.8.8`](command:codetour.sendTextToTerminal?[\"npm i -DE @types/react@16.8.8\"])",
+      "line": 17,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/react-dom",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dev dependency package @types/react-dom\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @types/react-dom@16.8.3`](command:codetour.sendTextToTerminal?[\"npm i -DE @types/react-dom@16.8.3\"])",
+      "line": 21,
+      "file": "package.json"
+    },
+    {
+      "title": "OPTIONAL: package-solution.json developer",
+      "description": "### OPTIONAL\r\n\r\nIn package-solution.json add developer section\r\n\r\n\r\n```json\r\n{\n  \"solution\": {\n    \"developer\": {\n      \"name\": \"Contoso\",\n      \"privacyUrl\": \"https://contoso.com/privacy\",\n      \"termsOfUseUrl\": \"https://contoso.com/terms-of-use\",\n      \"websiteUrl\": \"https://contoso.com/my-app\",\n      \"mpnId\": \"000000\"\n    }\n  }\n}\r\n```",
+      "line": 1,
+      "file": "config/package-solution.json"
+    },
+    {
+      "title": "RECOMMENDED: .yo-rc.json version",
+      "description": "### RECOMMENDED\r\n\r\nUpdate version in .yo-rc.json\r\n\r\n\r\n```json\r\n{\n  \"@microsoft/generator-sharepoint\": {\n    \"version\": \"1.11.0\"\n  }\n}\r\n```",
+      "line": 1,
+      "file": ".yo-rc.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json include property",
+      "description": "### REQUIRED\r\n\r\nUpdate tsconfig.json include property\r\n\r\n\r\n```json\r\n{\n  \"include\": [\n    \"src/**/*.tsx\"\n  ]\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: @microsoft/rush-stack-compiler-3.3",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dev dependency package @microsoft/rush-stack-compiler-3.3\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @microsoft/rush-stack-compiler-3.3@0.3.5`](command:codetour.sendTextToTerminal?[\"npm i -DE @microsoft/rush-stack-compiler-3.3@0.3.5\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json extends property",
+      "description": "### REQUIRED\r\n\r\nUpdate tsconfig.json extends property\r\n\r\n\r\n```json\r\n{\n  \"extends\": \"./node_modules/@microsoft/rush-stack-compiler-3.3/includes/tsconfig-web.json\"\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: Property pane property import change to @microsoft/sp-property-pane",
+      "description": "### REQUIRED\r\n\r\nRefactor the code to import property pane property from the @microsoft/sp-property-pane npm package instead of the @microsoft/sp-webpart-base package\r\n\r\n\r\n```ts\r\nimport { BaseClientSideWebPart } from \"@microsoft/sp-webpart-base\";\r\nimport { IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneSlider } from \"@microsoft/sp-property-pane\";\r\n```",
+      "line": 4,
+      "file": "src/webparts/youtube/YoutubeWebPart.ts"
+    },
+    {
+      "title": "REQUIRED: @types/react",
+      "description": "### REQUIRED\r\n\r\nAdd resolution for package @types/react\r\n\r\n\r\n```json\r\n{\n  \"resolutions\": {\n    \"@types/react\": \"16.8.8\"\n  }\n}\r\n```",
+      "line": 17,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: main",
+      "description": "### REQUIRED\r\n\r\nAdd package.json property\r\n\r\n\r\n```json\r\n{\n  \"main\": \"lib/index.js\"\n}\r\n```",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: react",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dependency package react\r\n\r\nExecute the following command:\r\n\r\n[`npm i -SE react@16.8.5`](command:codetour.sendTextToTerminal?[\"npm i -SE react@16.8.5\"])",
+      "line": 2,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: react-dom",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dependency package react-dom\r\n\r\nExecute the following command:\r\n\r\n[`npm i -SE react-dom@16.8.5`](command:codetour.sendTextToTerminal?[\"npm i -SE react-dom@16.8.5\"])",
+      "line": 21,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: Web part manifest supportedHosts",
+      "description": "### REQUIRED\r\n\r\nUpdate the supportedHosts property in the manifest\r\n\r\n\r\n```json\r\n{\n  \"supportedHosts\": [\"SharePointWebPart\"]\n}\r\n```",
+      "line": 1,
+      "file": "src/webparts/youtube/YoutubeWebPart.manifest.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json compiler options inlineSources",
+      "description": "### REQUIRED\r\n\r\nUpdate tsconfig.json inlineSources value\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"inlineSources\": false\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json compiler options strictNullChecks",
+      "description": "### REQUIRED\r\n\r\nUpdate tsconfig.json strictNullChecks value\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"strictNullChecks\": false\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json compiler options noUnusedLocals",
+      "description": "### REQUIRED\r\n\r\nUpdate tsconfig.json noUnusedLocals value\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"noUnusedLocals\": false\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "OPTIONAL: Web part Microsoft Teams tab resources folder",
+      "description": "### OPTIONAL\r\n\r\nCreate folder for Microsoft Teams tab resources\r\n\r\nExecute the following command:\r\n\r\n[`mkdir C:\\Ravi\\sp-dev-fx-webparts\\samples\\react-youtube/teams`](command:codetour.sendTextToTerminal?[\"mkdir C:\\Ravi\\sp-dev-fx-webparts\\samples\\react-youtube/teams\"])",
+      "line": 1,
+      "directory": ""
+    },
+    {
+      "title": "OPTIONAL: Web part Microsoft Teams tab small icon",
+      "description": "### OPTIONAL\r\n\r\nCreate Microsoft Teams tab small icon for the web part\r\n\r\nExecute the following command:\r\n\r\n[`cp C:\\Users\\rchandra\\AppData\\Roaming\\nvm\\v10.22.1\\node_modules\\@pnp\\cli-microsoft365\\dist\\m365\\spfx\\commands\\project\\project-upgrade\\assets\\tab20x20.png C:\\Ravi\\sp-dev-fx-webparts\\samples\\react-youtube\\teams\\b4be3e02-7b4a-4a01-8fb6-4c369a6cacb7_outline.png`](command:codetour.sendTextToTerminal?[\"cp C:\\Users\\rchandra\\AppData\\Roaming\\nvm\\v10.22.1\\node_modules\\@pnp\\cli-microsoft365\\dist\\m365\\spfx\\commands\\project\\project-upgrade\\assets\\tab20x20.png C:\\Ravi\\sp-dev-fx-webparts\\samples\\react-youtube\\teams\\b4be3e02-7b4a-4a01-8fb6-4c369a6cacb7_outline.png\"])",
+      "line": 1,
+      "directory": ""
+    },
+    {
+      "title": "OPTIONAL: Web part Microsoft Teams tab large icon",
+      "description": "### OPTIONAL\r\n\r\nCreate Microsoft Teams tab large icon for the web part\r\n\r\nExecute the following command:\r\n\r\n[`cp C:\\Users\\rchandra\\AppData\\Roaming\\nvm\\v10.22.1\\node_modules\\@pnp\\cli-microsoft365\\dist\\m365\\spfx\\commands\\project\\project-upgrade\\assets\\tab96x96.png C:\\Ravi\\sp-dev-fx-webparts\\samples\\react-youtube\\teams\\b4be3e02-7b4a-4a01-8fb6-4c369a6cacb7_color.png`](command:codetour.sendTextToTerminal?[\"cp C:\\Users\\rchandra\\AppData\\Roaming\\nvm\\v10.22.1\\node_modules\\@pnp\\cli-microsoft365\\dist\\m365\\spfx\\commands\\project\\project-upgrade\\assets\\tab96x96.png C:\\Ravi\\sp-dev-fx-webparts\\samples\\react-youtube\\teams\\b4be3e02-7b4a-4a01-8fb6-4c369a6cacb7_color.png\"])",
+      "line": 1,
+      "directory": ""
+    },
+    {
+      "title": "REQUIRED: package-solution.json isDomainIsolated",
+      "description": "### REQUIRED\r\n\r\nUpdate package-solution.json isDomainIsolated\r\n\r\n\r\n```json\r\n{\n  \"solution\": {\n    \"isDomainIsolated\": false\n  }\n}\r\n```",
+      "line": 1,
+      "file": "config/package-solution.json"
+    },
+    {
+      "title": "RECOMMENDED: .yo-rc.json isDomainIsolated",
+      "description": "### RECOMMENDED\r\n\r\nUpdate isDomainIsolated in .yo-rc.json\r\n\r\n\r\n```json\r\n{\n  \"@microsoft/generator-sharepoint\": {\n    \"isDomainIsolated\": false\n  }\n}\r\n```",
+      "line": 1,
+      "file": ".yo-rc.json"
+    },
+    {
+      "title": "REQUIRED: tslint.json rulesDirectory",
+      "description": "### REQUIRED\r\n\r\nRemove rulesDirectory from tslint.json\r\n\r\n\r\n```json\r\n{\n  \"rulesDirectory\": []\n}\r\n```",
+      "line": 1,
+      "file": "tslint.json"
+    },
+    {
+      "title": "REQUIRED: tslint.json extends",
+      "description": "### REQUIRED\r\n\r\nUpdate tslint.json extends property\r\n\r\n\r\n```json\r\n{\n  \"extends\": \"@microsoft/sp-tslint-rules/base-tslint.json\"\n}\r\n```",
+      "line": 1,
+      "file": "tslint.json"
+    },
+    {
+      "title": "REQUIRED: tslint-microsoft-contrib",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dev dependency package tslint-microsoft-contrib\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE tslint-microsoft-contrib@5.0.0`](command:codetour.sendTextToTerminal?[\"npm i -DE tslint-microsoft-contrib@5.0.0\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json compiler options outDir",
+      "description": "### REQUIRED\r\n\r\nUpdate tsconfig.json outDir value\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"outDir\": \"lib\"\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json exclude property",
+      "description": "### REQUIRED\r\n\r\nUpdate tsconfig.json exclude property\r\n\r\n\r\n```json\r\n{\n  \"exclude\": [\n    \"node_modules\",\n    \"lib\"\n  ]\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: config\\tslint.json",
+      "description": "### REQUIRED\r\n\r\nRemove file config\\tslint.json\r\n\r\nExecute the following command:\r\n\r\n[`rm config\\tslint.json`](command:codetour.sendTextToTerminal?[\"rm config\\tslint.json\"])",
+      "line": 1,
+      "file": "config/tslint.json"
+    },
+    {
+      "title": "REQUIRED: src\\index.ts",
+      "description": "### REQUIRED\r\n\r\nAdd file src\\index.ts\r\n\r\nExecute the following command:\r\n\r\n[`cat > src\\index.ts << EOF \n// A file is required to be in the root of the /src directory by the TypeScript compiler\n\nEOF`](command:codetour.sendTextToTerminal?[\"cat > src\\index.ts << EOF \n// A file is required to be in the root of the /src directory by the TypeScript compiler\n\nEOF\"])",
+      "line": 1,
+      "directory": ""
+    },
+    {
+      "title": "REQUIRED: @types/es6-promise",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dependency package @types/es6-promise\r\n\r\nExecute the following command:\r\n\r\n[`npm i -SE @types/es6-promise@0.0.33`](command:codetour.sendTextToTerminal?[\"npm i -SE @types/es6-promise@0.0.33\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/chai",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dev dependency package @types/chai\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @types/chai@3.4.34`](command:codetour.sendTextToTerminal?[\"npm i -DE @types/chai@3.4.34\"])",
+      "line": 33,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/mocha",
+      "description": "### REQUIRED\r\n\r\nUpgrade SharePoint Framework dev dependency package @types/mocha\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE @types/mocha@2.2.38`](command:codetour.sendTextToTerminal?[\"npm i -DE @types/mocha@2.2.38\"])",
+      "line": 34,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: config.json schema",
+      "description": "### REQUIRED\r\n\r\nUpdate config.json schema URL\r\n\r\n\r\n```json\r\n{\n  \"$schema\": \"https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json\"\n}\r\n```",
+      "line": 1,
+      "file": "config/config.json"
+    },
+    {
+      "title": "REQUIRED: copy-assets.json schema",
+      "description": "### REQUIRED\r\n\r\nUpdate copy-assets.json schema URL\r\n\r\n\r\n```json\r\n{\n  \"$schema\": \"https://developer.microsoft.com/json-schemas/spfx-build/copy-assets.schema.json\"\n}\r\n```",
+      "line": 1,
+      "file": "config/copy-assets.json"
+    },
+    {
+      "title": "REQUIRED: deploy-azure-storage.json schema",
+      "description": "### REQUIRED\r\n\r\nUpdate deploy-azure-storage.json schema URL\r\n\r\n\r\n```json\r\n{\n  \"$schema\": \"https://developer.microsoft.com/json-schemas/spfx-build/deploy-azure-storage.schema.json\"\n}\r\n```",
+      "line": 1,
+      "file": "config/deploy-azure-storage.json"
+    },
+    {
+      "title": "REQUIRED: package-solution.json schema",
+      "description": "### REQUIRED\r\n\r\nUpdate package-solution.json schema URL\r\n\r\n\r\n```json\r\n{\n  \"$schema\": \"https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json\"\n}\r\n```",
+      "line": 1,
+      "file": "config/package-solution.json"
+    },
+    {
+      "title": "REQUIRED: serve.json schema",
+      "description": "### REQUIRED\r\n\r\nUpdate serve.json schema URL\r\n\r\n\r\n```json\r\n{\n  \"$schema\": \"https://developer.microsoft.com/json-schemas/core-build/serve.schema.json\"\n}\r\n```",
+      "line": 1,
+      "file": "config/serve.json"
+    },
+    {
+      "title": "REQUIRED: write-manifests.json schema",
+      "description": "### REQUIRED\r\n\r\nUpdate write-manifests.json schema URL\r\n\r\n\r\n```json\r\n{\n  \"$schema\": \"https://developer.microsoft.com/json-schemas/spfx-build/write-manifests.schema.json\"\n}\r\n```",
+      "line": 1,
+      "file": "config/write-manifests.json"
+    },
+    {
+      "title": "RECOMMENDED: .yo-rc.json isCreatingSolution",
+      "description": "### RECOMMENDED\r\n\r\nUpdate isCreatingSolution in .yo-rc.json\r\n\r\n\r\n```json\r\n{\n  \"@microsoft/generator-sharepoint\": {\n    \"isCreatingSolution\": true\n  }\n}\r\n```",
+      "line": 1,
+      "file": ".yo-rc.json"
+    },
+    {
+      "title": "RECOMMENDED: .yo-rc.json packageManager",
+      "description": "### RECOMMENDED\r\n\r\nUpdate packageManager in .yo-rc.json\r\n\r\n\r\n```json\r\n{\n  \"@microsoft/generator-sharepoint\": {\n    \"packageManager\": \"npm\"\n  }\n}\r\n```",
+      "line": 1,
+      "file": ".yo-rc.json"
+    },
+    {
+      "title": "RECOMMENDED: .yo-rc.json componentType",
+      "description": "### RECOMMENDED\r\n\r\nUpdate componentType in .yo-rc.json\r\n\r\n\r\n```json\r\n{\n  \"@microsoft/generator-sharepoint\": {\n    \"componentType\": \"webpart\"\n  }\n}\r\n```",
+      "line": 1,
+      "file": ".yo-rc.json"
+    },
+    {
+      "title": "REQUIRED: Web part manifest schema",
+      "description": "### REQUIRED\r\n\r\nUpdate schema in manifest\r\n\r\n\r\n```json\r\n{\n  \"$schema\": \"https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json\"\n}\r\n```",
+      "line": 1,
+      "file": "src/webparts/youtube/YoutubeWebPart.manifest.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json module",
+      "description": "### REQUIRED\r\n\r\nUpdate module type in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"module\": \"esnext\"\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json moduleResolution",
+      "description": "### REQUIRED\r\n\r\nUpdate moduleResolution in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"moduleResolution\": \"node\"\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: @types/react-addons-shallow-compare",
+      "description": "### REQUIRED\r\n\r\nRemove SharePoint Framework dependency package @types/react-addons-shallow-compare\r\n\r\nExecute the following command:\r\n\r\n[`npm un -S @types/react-addons-shallow-compare`](command:codetour.sendTextToTerminal?[\"npm un -S @types/react-addons-shallow-compare\"])",
+      "line": 18,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/react-addons-update",
+      "description": "### REQUIRED\r\n\r\nRemove SharePoint Framework dependency package @types/react-addons-update\r\n\r\nExecute the following command:\r\n\r\n[`npm un -S @types/react-addons-update`](command:codetour.sendTextToTerminal?[\"npm un -S @types/react-addons-update\"])",
+      "line": 20,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: @types/react-addons-test-utils",
+      "description": "### REQUIRED\r\n\r\nRemove SharePoint Framework dependency package @types/react-addons-test-utils\r\n\r\nExecute the following command:\r\n\r\n[`npm un -S @types/react-addons-test-utils`](command:codetour.sendTextToTerminal?[\"npm un -S @types/react-addons-test-utils\"])",
+      "line": 19,
+      "file": "package.json"
+    },
+    {
+      "title": "REQUIRED: package-solution.json includeClientSideAssets",
+      "description": "### REQUIRED\r\n\r\nUpdate package-solution.json includeClientSideAssets\r\n\r\n\r\n```json\r\n{\n  \"solution\": {\n    \"includeClientSideAssets\": true\n  }\n}\r\n```",
+      "line": 1,
+      "file": "config/package-solution.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json skipLibCheck",
+      "description": "### REQUIRED\r\n\r\nUpdate skipLibCheck in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"skipLibCheck\": true\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json typeRoots ./node_modules/@types",
+      "description": "### REQUIRED\r\n\r\nAdd ./node_modules/@types to typeRoots in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"typeRoots\": [\n      \"./node_modules/@types\"\n    ]\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json typeRoots ./node_modules/@microsoft",
+      "description": "### REQUIRED\r\n\r\nAdd ./node_modules/@microsoft to typeRoots in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"typeRoots\": [\n      \"./node_modules/@microsoft\"\n    ]\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json es6-collections types",
+      "description": "### REQUIRED\r\n\r\nRemove es6-collections type in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"types\": [\n      \"es6-collections\"\n    ]\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json es5 lib",
+      "description": "### REQUIRED\r\n\r\nAdd es5 lib in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"lib\": [\n      \"es5\"\n    ]\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json dom lib",
+      "description": "### REQUIRED\r\n\r\nAdd dom lib in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"lib\": [\n      \"dom\"\n    ]\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "REQUIRED: tsconfig.json es2015.collection lib",
+      "description": "### REQUIRED\r\n\r\nAdd es2015.collection lib in tsconfig.json\r\n\r\n\r\n```json\r\n{\n  \"compilerOptions\": {\n    \"lib\": [\n      \"es2015.collection\"\n    ]\n  }\n}\r\n```",
+      "line": 1,
+      "file": "tsconfig.json"
+    },
+    {
+      "title": "RECOMMENDED: gulpfile.js ms-Grid sass suppression",
+      "description": "### RECOMMENDED\r\n\r\nAdd suppression for ms-Grid sass warning\r\n\r\n\r\n```js\r\nbuild.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not camelCase and will not be type-safe.`);\r\n```",
+      "line": 1,
+      "file": "gulpfile.js"
+    },
+    {
+      "title": "REQUIRED: json.schemas in .vscode/settings.json",
+      "description": "### REQUIRED\r\n\r\nRemove json.schemas in .vscode/settings.json\r\n\r\n\r\n```json\r\n{\n  \"json.schemas\": []\n}\r\n```",
+      "line": 1,
+      "file": ".vscode/settings.json"
+    },
+    {
+      "title": "REQUIRED: ajv",
+      "description": "### REQUIRED\r\n\r\nInstall SharePoint Framework dev dependency package ajv\r\n\r\nExecute the following command:\r\n\r\n[`npm i -DE ajv@5.2.2`](command:codetour.sendTextToTerminal?[\"npm i -DE ajv@5.2.2\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "title": "RECOMMENDED: .vscode/extensions.json",
+      "description": "### RECOMMENDED\r\n\r\nIn the .vscode folder, add the extensions.json file\r\n\r\n\r\n```json\r\n{\n  \"recommendations\": [\n    \"msjsdiag.debugger-for-chrome\"\n  ]\n}\r\n```",
+      "line": 1,
+      "directory": ""
+    },
+    {
+      "title": "RECOMMENDED: .vscode/launch.json",
+      "description": "### RECOMMENDED\r\n\r\nIn the .vscode folder, add the launch.json file\r\n\r\n\r\n```json\r\n{\n  /**\n    Install Chrome Debugger Extension for Visual Studio Code\n    to debug your components with the Chrome browser:\n    https://aka.ms/spfx-debugger-extensions\n    */\n  \"version\": \"0.2.0\",\n  \"configurations\": [{\n      \"name\": \"Local workbench\",\n      \"type\": \"chrome\",\n      \"request\": \"launch\",\n      \"url\": \"https://localhost:4321/temp/workbench.html\",\n      \"webRoot\": \"${workspaceRoot}\",\n      \"sourceMaps\": true,\n      \"sourceMapPathOverrides\": {\n        \"webpack:///../../../src/*\": \"${webRoot}/src/*\",\n        \"webpack:///../../../../src/*\": \"${webRoot}/src/*\",\n        \"webpack:///../../../../../src/*\": \"${webRoot}/src/*\"\n      },\n      \"runtimeArgs\": [\n        \"--remote-debugging-port=9222\"\n      ]\n    },\n    {\n      \"name\": \"Hosted workbench\",\n      \"type\": \"chrome\",\n      \"request\": \"launch\",\n      \"url\": \"https://enter-your-SharePoint-site/_layouts/workbench.aspx\",\n      \"webRoot\": \"${workspaceRoot}\",\n      \"sourceMaps\": true,\n      \"sourceMapPathOverrides\": {\n        \"webpack:///../../../src/*\": \"${webRoot}/src/*\",\n        \"webpack:///../../../../src/*\": \"${webRoot}/src/*\",\n        \"webpack:///../../../../../src/*\": \"${webRoot}/src/*\"\n      },\n      \"runtimeArgs\": [\n        \"--remote-debugging-port=9222\",\n        \"-incognito\"\n      ]\n    }\n  ]\n}\r\n```",
+      "line": 1,
+      "directory": ""
+    },
+    {
+      "title": "OPTIONAL: Run npm dedupe",
+      "description": "### OPTIONAL\r\n\r\nIf, after upgrading npm packages, when building the project you have errors similar to: \"error TS2345: Argument of type 'SPHttpClientConfiguration' is not assignable to parameter of type 'SPHttpClientConfiguration'\", try running 'npm dedupe' to cleanup npm packages.\r\n\r\nExecute the following command:\r\n\r\n[`npm dedupe`](command:codetour.sendTextToTerminal?[\"npm dedupe\"])",
+      "line": 1,
+      "file": "package.json"
+    },
+    {
+      "file": ".tours/upgrade.tour",
+      "title": "RECOMMENDED: Delete tour",
+      "description": "### THAT'S IT!!!\r\nOnce you have tested that your upgrade is successful, you can delete the `.tour` folder and its contents. Otherwise, you'll be prompted to launch this CodeTour every time you open this project."
+    }
+  ]
+}
