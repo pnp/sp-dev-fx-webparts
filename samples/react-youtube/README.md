@@ -38,12 +38,16 @@ Solution|Author(s)
 --------|---------
 react-youtube|Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
 
+Solution|Contributor(s)
+--------|---------
+react-youtube|Ravi Chandra ([@ravi_maniyani](https://twitter.com/ravi_maniyani) , [www.netwoven.com](netwoven.com))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|October 02, 2017|Initial release
+2.0|October 01, 2020|Upgrade from 1.3.0 to 1.11.0
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
