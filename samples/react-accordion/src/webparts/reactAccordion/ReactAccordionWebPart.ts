@@ -55,9 +55,8 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<IReactA
     //set maxitems to top
     if(!this.properties.enablePaging){
       this.properties.maxItemsPerPage = this.properties.totalItems;
-    }else{
-      this.properties.maxItemsPerPage = 5;
     }
+    
     return {
       pages: [
         {
