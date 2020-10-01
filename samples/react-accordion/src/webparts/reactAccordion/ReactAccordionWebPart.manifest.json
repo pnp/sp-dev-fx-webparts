@@ -29,7 +29,9 @@
       "properties": {
         "description": "SPFx webpart which shows SharePoint list data in Accordion format",
         "listName": "FAQ",
-        "maxItemsPerPage": 5
+        "totalItems":20,
+        "maxItemsPerPage": 5,
+        "allowPaging":true
       }
     }
   ]
