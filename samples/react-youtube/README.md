@@ -36,11 +36,11 @@ This web part allows to search and view the Youtube videos, across the Youtube A
 
 Solution|Author(s)
 --------|---------
-react-youtube|Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](delucagiuliano.com))
+react-youtube|Giuliano De Luca ([@giuleon](https://twitter.com/giuleon) , [www.delucagiuliano.com](https://delucagiuliano.com))
 
 Solution|Contributor(s)
 --------|---------
-react-youtube|Ravi Chandra ([@ravi_maniyani](https://twitter.com/ravi_maniyani) , [www.netwoven.com](netwoven.com))
+react-youtube|Ravi Chandra ([@ravi_maniyani](https://twitter.com/ravi_maniyani) , [www.netwoven.com](https://netwoven.com))
 
 ## Version history
 
