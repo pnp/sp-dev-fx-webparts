@@ -4,7 +4,7 @@
     "name": "react-youtube-client-side-solution",
     "id": "ca0fd050-e358-4093-93cd-bc3d74e131e5",
     "isDomainIsolated": false,
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "skipFeatureDeployment": true,
     "includeClientSideAssets": true,
     "developer": {
