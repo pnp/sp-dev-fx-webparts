@@ -154,13 +154,14 @@ export class ListFormService implements IListFormService {
             },
         };
         const formValues = this.GetFormValues(fieldsSchema, data, originalData);
-        let createAttachmetns = this.GetAttachmentsCreate(data);
-        let deleteAttachmetns = this.GetAttachmentsDelete(data, originalData);
+        let createAttachments = this.GetAttachmentsCreate(data);
+        let deleteAttachments = this.GetAttachmentsDelete(data, originalData);
         httpClientOptions.body = JSON.stringify({
             bNewDocumentUpdate: false,
             checkInComment: null,
             formValues,
         });
+
         const endpoint = `${webUrl}/_api/web/GetList(@listUrl)/items(@itemId)/ValidateUpdateListItem()`
             + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}&@itemId=%27${itemId}%27`;
         try {
@@ -170,12 +171,12 @@ export class ListFormService implements IListFormService {
             }
             let responseData = await response.json();
             responseData.AttachmentResponse = [];
-            if (deleteAttachmetns.length > 0) {
-                let deleteResponse = await this.deleteAttachments(webUrl, listUrl, itemId, deleteAttachmetns);
+            if (deleteAttachments.length > 0) {
+                let deleteResponse = await this.deleteAttachments(webUrl, listUrl, itemId, deleteAttachments);
                 responseData.AttachmentResponse.push(deleteResponse);
             }
-            if (createAttachmetns.length > 0) {
-                let createResponse = await this.uploadAttachments(webUrl, listUrl, itemId, createAttachmetns);
+            if (createAttachments.length > 0) {
+                let createResponse = await this.uploadAttachments(webUrl, listUrl, itemId, createAttachments);
                 responseData.AttachmentResponse.push(createResponse);
             }
             return responseData.d.ValidateUpdateListItem.results;
@@ -320,6 +321,15 @@ export class ListFormService implements IListFormService {
                         ErrorMessage: null,
                         FieldName: field.InternalName,
                         FieldValue: JSON.stringify(data[field.InternalName]),
+                        HasException: false,
+                    };
+                }
+                else if (field.FieldType === "DateTime") {
+                    let dateValue = data[field.InternalName].split('').map((c) => { return (c.charCodeAt(0) < 127) ? c : ''; }).join('');
+                    return {
+                        ErrorMessage: null,
+                        FieldName: field.InternalName,
+                        FieldValue: dateValue,
                         HasException: false,
                     };
                 }
