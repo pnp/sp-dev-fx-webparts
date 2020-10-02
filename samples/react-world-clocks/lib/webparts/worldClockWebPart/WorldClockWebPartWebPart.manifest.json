@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "6baae7a7-af13-40d3-9567-f3bca9986248",
+  "alias": "WorldClockWebPartWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": {
+      "default": "Other"
+    },
+    "title": {
+      "default": "World Clocks"
+    },
+    "description": {
+      "default": "World Clocks Web Part"
+    },
+    "officeFabricIconFontName": "Clock",
+    "properties": {
+      "description": "World Clocks WebPart"
+    }
+  }]
+}
