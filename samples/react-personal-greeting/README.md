@@ -47,8 +47,8 @@ Version|Date|Comments
   * `gulp build`
   * `gulp bundle --ship`
   * `gulp package-solution --ship`
-* add the webpart to your tenant app store
-* add the app to a SharePoint site and then add the webpart to the page
+* add the web part to your tenant app store
+* add the app to a SharePoint site and then add the web part to the page
 
 
 ## Features
@@ -56,8 +56,8 @@ Version|Date|Comments
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 * Using the SPFx context to gather the current user's display name.
-* Adjusting the styles of the component in the webpart using the props adjusted through the property pane.
-* PnP SPFx Placeholder - This component allows you to have a placeholder visble under certain conditions if your web parts requires some setup.
-* PnP SPFx Color Picker - This component adds an awesome color picker to the property pane, great for adjusting colors in your webpart.
+* Adjusting the styles of the component in the web part using the props adjusted through the property pane.
+* PnP SPFx Placeholder - This component allows you to have a placeholder visible under certain conditions if your web parts requires some setup.
+* PnP SPFx Color Picker - This component adds an awesome color picker to the property pane, great for adjusting colors in your web part.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-personal-greeting" />
