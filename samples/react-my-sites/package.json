@@ -1,6 +1,6 @@
 {
   "name": "react-my-sites",
-  "version": "1.0.2.0",
+  "version": "1.0.2",
   "private": true,
   "main": "lib/index.js",
   "engines": {
