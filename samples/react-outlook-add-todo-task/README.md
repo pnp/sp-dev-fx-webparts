@@ -1,7 +1,8 @@
 # Create To Do Task from Email (Outlook Add in)
 
 ## Summary
-This webpart allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let´s say this is similar to the OOTB "Flag" action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it.
+
+This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let´s say this is similar to the OOTB "Flag" action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it.
 
 ![Create ToDo task](./assets/spfx-todo-outlook.gif)
 
@@ -10,6 +11,7 @@ This webpart allows us to create a new To Do task using the new ToDo MS Graph en
 As of today, To Do endpoint is not very well documented yet. It was presented in latest Build 2020. Here are some of the basic operations. You can get more information and see the Build session from this link: [https://developer.microsoft.com/en-us/office/blogs/introducing-the-new-microsoft-graph-to-do-api/](https://developer.microsoft.com/en-us/office/blogs/introducing-the-new-microsoft-graph-to-do-api/)
 
 ### Get lists 
+
 GET https://graph.microsoft.com/beta/me/todo/lists
 
 ### Create new List
@@ -23,9 +25,11 @@ POST https://graph.microsoft.com/beta/me/todo/lists
 ```
 
 ### Get tasks in list
+
 GET https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 
 ### Create new Task in List
+
 POST https://graph.microsoft.com/beta/me/todo/lists/{listId}/tasks
 
 ```json
@@ -72,6 +76,7 @@ Version|Date|Comments
 ```ps
 spo serviceprincipal grant add --resource "Microsoft Graph" --scope "Tasks.ReadWrite"
 ```
+
 * deploy spfx solution as Outlook add-in following instructions here: [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/office-addins-create#deployment-of-your-add-in)
 
 ## Features
