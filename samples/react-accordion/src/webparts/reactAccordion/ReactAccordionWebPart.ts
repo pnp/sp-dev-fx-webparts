@@ -22,7 +22,7 @@ export interface IReactAccordionWebPartProps {
 export default class ReactAccordionWebPart extends BaseClientSideWebPart<IReactAccordionWebPartProps> {
 
   public render(): void {
-    debugger;
+    
     const element: React.ReactElement<IReactAccordionProps> = React.createElement(
       ReactAccordion,
       {
