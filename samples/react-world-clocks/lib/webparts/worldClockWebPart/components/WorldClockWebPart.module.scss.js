@@ -1,18 +1,18 @@
 /* tslint:disable */
 require("./WorldClockWebPart.module.css");
 var styles = {
-    worldClockWebPart: 'worldClockWebPart_5c7ebacf',
-    container: 'container_5c7ebacf',
-    Clock: 'Clock_5c7ebacf',
-    ClockTitle: 'ClockTitle_5c7ebacf',
-    row: 'row_5c7ebacf',
-    column: 'column_5c7ebacf',
-    'ms-Grid': 'ms-Grid_5c7ebacf',
-    title: 'title_5c7ebacf',
-    subTitle: 'subTitle_5c7ebacf',
-    description: 'description_5c7ebacf',
-    button: 'button_5c7ebacf',
-    label: 'label_5c7ebacf'
+    worldClockWebPart: 'worldClockWebPart_4593dcaa',
+    container: 'container_4593dcaa',
+    Clock: 'Clock_4593dcaa',
+    ClockTitle: 'ClockTitle_4593dcaa',
+    row: 'row_4593dcaa',
+    column: 'column_4593dcaa',
+    'ms-Grid': 'ms-Grid_4593dcaa',
+    title: 'title_4593dcaa',
+    subTitle: 'subTitle_4593dcaa',
+    description: 'description_4593dcaa',
+    button: 'button_4593dcaa',
+    label: 'label_4593dcaa'
 };
 export default styles;
 /* tslint:enable */ 

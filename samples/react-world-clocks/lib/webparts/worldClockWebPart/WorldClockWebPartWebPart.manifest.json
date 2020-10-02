@@ -16,14 +16,14 @@
       "default": "Other"
     },
     "title": {
-      "default": "WorldClockWebPart"
+      "default": "World Clocks"
     },
     "description": {
-      "default": "World Clock Web Part"
+      "default": "World Clocks Web Part"
     },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Clock",
     "properties": {
-      "description": "World Clock WebPart"
+      "description": "World Clocks WebPart"
     }
   }]
 }

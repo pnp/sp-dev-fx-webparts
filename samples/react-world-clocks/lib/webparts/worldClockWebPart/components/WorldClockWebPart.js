@@ -127,7 +127,7 @@ var WorldClockWebPart = /** @class */ (function (_super) {
         var listSelected = typeof this.props.selectedList !== "undefined" &&
             this.props.selectedList.length > 0;
         return (React.createElement("div", { className: styles.worldClockWebPart },
-            !listSelected && (React.createElement(Placeholder, { iconName: "MusicInCollectionFill", iconText: "Configure your web part", description: "Select the already imported Clocks list and choose other settings.", buttonLabel: "Choose a List", onConfigure: this.props.onConfigure })),
+            !listSelected && (React.createElement(Placeholder, { iconName: "Clock", iconText: "Configure your web part", description: "Select the already imported Clocks list and choose other settings.", buttonLabel: "Choose a List", onConfigure: this.props.onConfigure })),
             showTitle && (React.createElement(WebPartTitle, { title: this.props.description, displayMode: this.props.displayMode, updateProperty: this.props.updateProperty })),
             React.createElement("div", { className: styles.container }, this.clocks)));
     };

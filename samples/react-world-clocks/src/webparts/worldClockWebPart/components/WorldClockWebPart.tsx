@@ -158,7 +158,7 @@ export default class WorldClockWebPart extends React.Component<
       <div className={styles.worldClockWebPart}>
         {!listSelected && (
           <Placeholder
-            iconName="MusicInCollectionFill"
+            iconName="Clock"
             iconText="Configure your web part"
             description="Select the already imported Clocks list and choose other settings."
             buttonLabel="Choose a List"

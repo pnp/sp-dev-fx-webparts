@@ -5,8 +5,8 @@
 - This sample is extension of the single World time clock sample that was provided in SP Starter Kit.
 - This web part use SharePoint List to Show multiple Clocks.
 - Each clock item can have Name, Timezone and status (Active, Yes/No).
-- The webpart properties will allow you to enter Web Part Title and select a List.
-- The webpart properties will allow you to show or hide time.
+- The web part properties will allow you to enter Web Part Title and select a List.
+- The web part properties will allow you to show or hide time.
 - You can show or hide clocks by setting the status to active or inactive.
 - The web part does not update automatically. [Someone need to make the React Tick :)]
 
@@ -24,14 +24,14 @@
 
 ![Create list for use with the World Clocks](./assets/WorldClockList.png)
 
-- ![World Clocks list Template for use with the Web Part](./assets/WorldClock.stp)
-- ![World Clocks Site Script  use with the Web Part](./assets/WorldClock.json)
+- [World Clocks list Template for use with the Web Part](./assets/WorldClock.stp)
+- [World Clocks Site Script use with the Web Part](./assets/WorldClock.json)
 
 **2) Add the World Clocks web part to your page & Enter Title, Select List. You can also enable the other required settings.**
 
 ## Used SharePoint Framework Version
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -41,8 +41,6 @@
 ## Prerequisites
 
 - A package is available for direct download.
-
-## Prerequisites
 
 Please create the list as described above
 
