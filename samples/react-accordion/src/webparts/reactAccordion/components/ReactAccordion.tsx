@@ -73,7 +73,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
   }
 
   private readItems(): void {
-    debugger;
+    
     let restAPI = this.props.siteUrl + `/_api/web/Lists/GetByTitle('${this.props.listName}')/items?$select=Title,Description&$top=${this.props.totalItems}`;
 
     this.props.spHttpClient.get(restAPI, SPHttpClient.configurations.v1, {
