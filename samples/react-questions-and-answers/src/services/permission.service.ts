@@ -1,6 +1,11 @@
-import { sp, PermissionKind, RoleType } from '@pnp/sp/presets/all';
+import { sp } from '@pnp/sp';
+import "@pnp/sp/webs";
+import "@pnp/sp/site-groups/web";
+import { PermissionKind } from "@pnp/sp/security";
 import { BaseService } from './base.service';
 import { LogHelper, ListTitles } from 'utilities';
+import { RoleType } from '@pnp/sp/sharing';
+import { _RoleAssignment, _RoleDefinition } from '@pnp/sp/security/types';
 
 export class PermissionService extends BaseService {
 
@@ -10,12 +15,22 @@ export class PermissionService extends BaseService {
         LogHelper.verbose(this.constructor.name, 'canVisitorsAskQuestions', '');
         let canAsk: boolean = false;
 
-        debugger;
-
         let visitorGroup = await sp.web.associatedVisitorGroup();
-        let perms = await sp.web.lists.getByTitle(this.listTitle).getUserEffectivePermissions(visitorGroup.LoginName);
-        if(sp.web.hasPermissions(perms, PermissionKind.AddListItems)) {
-          canAsk = true;
+
+        console.log(visitorGroup.Id);
+
+        let roles = await sp.web.lists.getByTitle(this.listTitle).roleAssignments
+        .expand('Member', 'RoleDefinitionBindings')
+        .get();
+
+        let visitorRole: any = roles.find(r => r.PrincipalId === visitorGroup.Id);
+
+        if(visitorRole) {
+          for (let def of visitorRole.RoleDefinitionBindings) {
+            if (sp.web.hasPermissions(def.BasePermissions, PermissionKind.AddListItems)) {
+                canAsk = true;
+            }
+          }
         }
 
         return canAsk;

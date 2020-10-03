@@ -3,7 +3,7 @@
     "solution": {
         "name": "Questions and Answers",
         "id": "6feb4c2f-341b-499c-998c-9b2ebd95435c",
-        "version": "1.0.0.0",
+        "version": "1.0.1.0",
         "skipFeatureDeployment": false,
         "iconPath": "images/Feedback_Icon.png",
         "includeClientSideAssets": true,
