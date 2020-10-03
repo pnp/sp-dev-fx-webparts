@@ -78,47 +78,47 @@ Delete a question|Deletes the question (and replies when done by moderator). Ava
 Follow/Unfollow a Question|Filled envelop if followed & empty envelop if not followed for the current user.  Used to drive email notification on questions. 
 Like/Unlike a Question|Filled thumbs if liked & empty thumbs if not. Count should be for all likes on the Question but not including replies. 
 
-### Replies 
+### Replies
 
 Feature|Details
 -------|-------
 Reply to a Question or Reply|
 Edit a Reply|
-Delete a Reply|Deletes the reply (and replies when done by moderator). Available on Gear icon. 
-Like/Unlike a Reply|Filled thumbs if liked & empty thumbs if not.   
+Delete a Reply|Deletes the reply (and replies when done by moderator). Available on Gear icon.
+Like/Unlike a Reply|Filled thumbs if liked & empty thumbs if not.
 Mark/Unmark a Reply as Helpful|Filled star if liked & empty star if not.  Count should be for all helpful items on the Reply but not including replies
-Mark/Unmark a Reply as Correct Answer|When marked as correct answer a banner will show with “CORRECT ANSWER”.  Copy of reply is promoted just below question so that long thread doesn’t have to be viewed for the answer.  Unmarking will remove the banner and the copy of reply promoted to the to of the thread.  Available on Gear icon. 
+Mark/Unmark a Reply as Correct Answer|When marked as correct answer a banner will show with “CORRECT ANSWER”.  Copy of reply is promoted just below question so that long thread doesn’t have to be viewed for the answer.  Unmarking will remove the banner and the copy of reply promoted to the to of the thread.  Available on Gear icon.
 
-## User Roles Overview 
+## User Roles Overview
 
-The Questions web part relies on the standard SharePoint Groups and the permissions they are granted.   
+The Questions web part relies on the standard SharePoint Groups and the permissions they are granted.
 
 Questions Role|SharePoint Group|Details 
 --------------|----------------|-------
-Moderator|Site owners|Users in this group are treated as moderators of Questions with additional capabilities and notifications than others outlined below. 
-Contributor|Site members|Users in this group are treated as “typical” users and considered contributors to questions by default. 
-Viewer|Site visitors|By default, users in this group can only view questions and replies.   
-Contributor|Site visitors|Within the web part there is a toggle that allows a Site owner to grant visitors the same capabilities as a site member on questions.  When set to ‘Yes’ site visitors are considered contributors to questions. 
+Moderator|Site owners|Users in this group are treated as moderators of Questions with additional capabilities and notifications than others outlined below.
+Contributor|Site members|Users in this group are treated as “typical” users and considered contributors to questions by default.
+Viewer|Site visitors|By default, users in this group can only view questions and replies.
+Contributor|Site visitors|Within the web part there is a toggle that allows a Site owner to grant visitors the same capabilities as a site member on questions.  When set to ‘Yes’ site visitors are considered contributors to questions.
 
-## Features based Questions Role 
+## Features based Questions Role
 
-The table below shows what features and capabilities a user can perform for each role.  Where a feature is dynamic (such as questions entered by others or me) separate line items call out the different behaviors. 
+The table below shows what features and capabilities a user can perform for each role.  Where a feature is dynamic (such as questions entered by others or me) separate line items call out the different behaviors.
 
-Feature|Moderator|Contributor|Viewer 
+Feature|Moderator|Contributor|Viewer
 -------|---------|-----------|------
 **Questions**|||
-Search for a Question|Yes|Yes|Yes 
-View a list of Questions|Yes|Yes|Yes 
-Show List of Questions by All, Answered or Open|Yes|Yes|Yes 
-View a Question and Replies|Yes|Yes|Yes 
-Ask a Question|Yes|Yes|No 
-Edit a Question - Entered by me|Yes|Yes|No 
-Edit a Question - Entered by others|No|No|No 
-Delete a question - Entered by me with no replies|Yes|Yes|No 
-Delete a question - Entered by me with replies|Yes|No|No 
-Delete a question - Entered by others with no replies|Yes|No|No 
-Delete a question - Entered by others with replies|Yes|No|No 
-Follow/Unfollow a Question|Yes|Yes|No 
+Search for a Question|Yes|Yes|Yes
+View a list of Questions|Yes|Yes|Yes
+Show List of Questions by All, Answered or Open|Yes|Yes|Yes
+View a Question and Replies|Yes|Yes|Yes
+Ask a Question|Yes|Yes|No
+Edit a Question - Entered by me|Yes|Yes|No
+Edit a Question - Entered by others|No|No|No
+Delete a question - Entered by me with no replies|Yes|Yes|No
+Delete a question - Entered by me with replies|Yes|No|No
+Delete a question - Entered by others with no replies|Yes|No|No
+Delete a question - Entered by others with replies|Yes|No|No
+Follow/Unfollow a Question|Yes|Yes|No
 Like/Unlike a Question|Yes|Yes|No 
 **Replies**||| 
 Reply to a Question or Reply|Yes|Yes|No 
