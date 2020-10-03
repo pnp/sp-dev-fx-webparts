@@ -6,8 +6,8 @@
 - Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab.
 - Ideal for displaying FAQs.
 - When adding the web part, you'll be prompted to select a list from a property panel dropdown (target list must be created with FAQ type Question and Answer.).
-- The webpart expects a choice type that will be used as Category.
-- The webpart will automatically load all the properties in two dropdowns. One for Accordian Title and One for Accordian Content that must be html type.
+- The web part expects a choice type that will be used as Category.
+- The web part will automatically load all the properties in two dropdowns. One for Accordion Title and One for Accordion Content that must be html type.
 - This will generate an accordion with one section for each item in the list.
 - Modifications/deletions/additions to the list items in the target list of an added web part are automatically reflected on the page.
 - To deploy to a Teams tab see current [Microsoft documentation](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab).
@@ -18,8 +18,8 @@
 
 **1) Create or use a list for FAQs.  It can have the FAQ format e.g. Title and a Content columns. You can also used the attached STP file if needed.:**
 
-- The value in the Accordian Title property for each item will appear in the heading bars of the Accordion.
-- The value in the Accordian Content property for each item will appear in the collapsible content section of the Accordion
+- The value in the Accordion Title property for each item will appear in the heading bars of the Accordion.
+- The value in the Accordion Content property for each item will appear in the collapsible content section of the Accordion
 - When creating the columns, select "Multiple lines of text". Rich text is now supported within the Content column.
 
 ![Create list for use with the Accordion](./assets/FAQsList.png)

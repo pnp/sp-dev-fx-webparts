@@ -265,12 +265,12 @@ var ReactAccordionWebPart = /** @class */ (function (_super) {
                                     disabled: this.choicesDropdownDisabled,
                                 }),
                                 PropertyPaneDropdown("accordianTitleColumn", {
-                                    label: "Select the Column for Accordian Title Rows.",
+                                    label: "Select the Column for Accordion Title Rows.",
                                     options: this.allListColumns,
                                     disabled: this.choicesDropdownDisabled,
                                 }),
                                 PropertyPaneDropdown("accordianContentColumn", {
-                                    label: "Select the Column for Accordian Content.",
+                                    label: "Select the Column for Accordion Content.",
                                     options: this.allListColumns,
                                     disabled: this.choicesDropdownDisabled,
                                 }),
