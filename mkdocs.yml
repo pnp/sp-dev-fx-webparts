@@ -63,6 +63,28 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-dynamic-section
+      name: react-accordion-dynamic-section
+      title: SPFx Dynamic Accordion - FAQ Builder web part
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif
+      author: Jerry Yasir
+      summary: This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. Has extended it support single FAQs list based on Category and dynamic properties selection.
+      modifiedtext: September 20, 2020
+      modified: 2020-09-20
+      pnpcontrols: WebPartTitle, Placeholder 
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-world-clocks
+      name: react-world-clocks
+      title: React World Clocks
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-world-clocks/assets/ClocksInAction.gif
+      author: Jerry Yasir
+      summary: This sample is extension of the single World time clock sample that was provided in SP Starter Kit.
+      modifiedtext: September 26, 2020
+      modified: 2020-09-26
+      pnpcontrols: WebPartTitle, Placeholder 
+    - framework: React
       spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-questions-and-answers
       name: react-questions-and-answers
@@ -70,8 +92,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-questions-and-answers/assets/QuestionsAndAnswers.gif
       author: Bo George
       summary: This is an application that supports Questions & Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part.
-      modifiedtext: September 13, 2020
-      modified: 2020-09-13
+      modifiedtext: October 1, 2020
+      modified: 2020-10-01
       pnpcontrols: WebPartTitle
     - framework: React
       spfx: 1.11.0
@@ -635,8 +657,8 @@ extra:
       title: Create To Do Task from Email (Outlook Add in)
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png
       author: Luis Mañez
-      modified: 2020-06-04
-      modifiedtext: June 4, 2020
+      modified: 2020-09-28
+      modifiedtext: September 28, 2020
       summary: This webpart allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let´s say this is similar to the OOTB "Flag" action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it.
     - framework: React
       spfx: 1.4.0
@@ -2726,18 +2748,15 @@ extra:
       modifiedtext: April 19, 2017
       modified: 2017-04-19
     - framework: React
-      spfx: GA
-      year: 2017
+      spfx: 1.11
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-youtube
       name: react-youtube
       title: Youtube Web Part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-youtube/assets/Preview.gif
-      thumbnailtype: video
-      author: Giuliano De Luca
+      author: Giuliano De Luca, Ravi Chandra
       summary: This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id.
-      version: 1.0
-      modifiedtext: October 02, 2017
-      modified: 2017-10-02
+      modifiedtext: October 01, 2020
+      modified: 2020-10-01
     - framework: Other
       spfx: GA
       year: 2017
@@ -2838,6 +2857,7 @@ extra:
     - Harsha Vardhini
     - Jayakumar Balasubramaniam
     - Jeremy Coleman
+    - Jerry Yasir
     - João Mendes
     - Joel Rodrigues
     - Jose Quinto
@@ -2863,6 +2883,7 @@ extra:
     - Rahul Suryawanshi
     - Ram Prasad Meenavalli
     - Ramin Ahmadi
+    - Ravi Chandra
     - Ravi Kulkarni
     - Ravi Kumar Bomma
     - Ravichandran Krishnasamy
