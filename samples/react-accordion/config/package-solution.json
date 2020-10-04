@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-accordion-client-side-solution",
     "id": "6d6cf05b-cfe5-4d12-af19-19ec3aedcaf9",
-    "version": "1.0.0.0",
+    "version": "2.2.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false
   },

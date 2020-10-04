@@ -17,7 +17,6 @@
 * The value in the Content column for each item will appear in the collapsible content section of the Accordion
 * When creating the columns, select "Multiple lines of text".  Rich text is now supported within the Content column.
 
-
 ![Create list for use with the Accordion](./assets/ListForAccordion.png)
 
 **2) Add the Accordion Section web part to your page & select your list:**  
@@ -35,28 +34,29 @@
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-> Update accordingly as needed.
-
 ## Prerequisites
 
-> Any special pre-requisites?
+Please create the list as described above
+
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
 SPFx Collapsible Accordion Section|[Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))
+SPFx Collapsible Accordion Section|[Mike Zimmerman](https://github.com/mikezimm)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|August 14, 2019|Initial release
-1.1|September 19, 2019|Minor updates, adding to Github
+1.1|September 19, 2019|Minor updates, adding to GitHub
 1.2|April 15, 2020|Added Polyfills for IE11 compatibility
 1.3|July 10, 2020|Adding Rich Text support for Content panels
 1.4|July 10, 2020|Upgraded to SPFx 1.10.
-
+1.5|September 1, 2020|Adds ability to click on expanded section headers to collapse accordions
+1.6|September 2, 2020|Added Web Part Title, and ability to expand multiple sections
 
 ## Disclaimer
 

@@ -39,7 +39,6 @@ export class PersonaCard extends React.Component<
         LIVE_PERSONA_COMPONENT_ID
       );
       const livePersonaCard: any = sharedLibrary.LivePersonaCard;
-      console.log(livePersonaCard);
       this.setState({ livePersonaCard: livePersonaCard });
     }
   }
@@ -115,7 +114,7 @@ export class PersonaCard extends React.Component<
                 ''
               )}
             {this.props.profileProperties.Location ? (
-              <div>
+              <div className={styles.textOverflow}>
                 <Icon iconName="Poi" style={{ fontSize: '12px' }} />
                 <span style={{ marginLeft: 5, fontSize: '12px' }}>
                   {' '}

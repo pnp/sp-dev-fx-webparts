@@ -68,10 +68,6 @@ export default class AdaptiveCardViewerWebPart extends BaseClientSideWebPart <IA
     return Version.parse('1.0');
   }
 
-  protected get disableReactivePropertyChanges(): boolean {
-    return true;
-  }
-
   /**
    * Instead of always loading the property field code editor every time the web part is loaded,
    * we load it dynamically only when we need to display the property pane.

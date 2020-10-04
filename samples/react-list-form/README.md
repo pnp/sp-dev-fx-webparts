@@ -14,7 +14,7 @@ extensions:
   createdDate: 12/1/2017 12:00:00 AM
 ---
 
-# React List Form WebPart
+# React List Form Web Part
 
 ## Summary
 
@@ -39,6 +39,7 @@ The web part allows configuring which list to use and if a form for adding a new
 | --------------- | ----------------------------------------------------------------- |
 | react-list-form | Dany Wyss                                                         |
 | react-list-form | Harsha Vardhini ([@harshagracy](https://twitter.com/harshagracy)) |
+| react-list-form | Ryan Schouten ([@shrpntknight](https://twitter.com/shrpntknight)) |
 
 ## Version history
 
@@ -48,6 +49,7 @@ The web part allows configuring which list to use and if a form for adding a new
 | 1.0.1   | February 22, 2019 | Updated to SPFx 1.7.1 and dependencies, Added Turkish translation, Added RichText Mode and Tinymce Editor |
 | 1.0.2   | October 14, 2019  | Updated to SPFx 1.9.1 and dependencies                                                                    |
 | 1.0.3   | July 7, 2020      | Updated to SPFx 1.10.0 and dependencies. Fixed required field validation (Harsha Vardhini)                |
+| 1.0.4   | September 12, 2020| Added support for User, UserMulti, Taxonomy, and TaxonomyMulti field types (Ryan Schouten)                |
 
 ## Disclaimer
 

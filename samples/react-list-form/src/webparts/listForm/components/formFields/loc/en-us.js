@@ -42,5 +42,7 @@ define([], function () {
         'RemoveButtonLabel': "Remove",
         'ReplaceButtonLabel': "Replace",
 
+        //Taxonomy
+        'SelectTerm': "Select Term",
     }
 });

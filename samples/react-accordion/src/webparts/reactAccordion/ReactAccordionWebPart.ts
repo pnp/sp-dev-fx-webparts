@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version, DisplayMode } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
-import { IPropertyPaneConfiguration, PropertyPaneSlider, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import { IPropertyPaneConfiguration, PropertyPaneSlider, PropertyPaneTextField,PropertyPaneToggle } from "@microsoft/sp-property-pane";
 
 import * as strings from 'ReactAccordionWebPartStrings';
 import ReactAccordion from './components/ReactAccordion';
@@ -13,13 +13,16 @@ export interface IReactAccordionWebPartProps {
   choice: string;
   title: string;
   displayMode: DisplayMode;
+  totalItems:number;
   maxItemsPerPage: number;
+  enablePaging:boolean;
   updateProperty: (value: string) => void;
 }
 
 export default class ReactAccordionWebPart extends BaseClientSideWebPart<IReactAccordionWebPartProps> {
 
   public render(): void {
+    
     const element: React.ReactElement<IReactAccordionProps> = React.createElement(
       ReactAccordion,
       {
@@ -28,7 +31,9 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<IReactA
         siteUrl: this.context.pageContext.web.absoluteUrl,
         title: this.properties.title,
         displayMode: this.displayMode,
+        totalItems:this.properties.totalItems,
         maxItemsPerPage: this.properties.maxItemsPerPage,
+        enablePaging:this.properties.enablePaging,
         updateProperty: (value: string) => {
           this.properties.title = value;
         }
@@ -47,6 +52,11 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<IReactA
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    //set maxitems to top
+    if(!this.properties.enablePaging){
+      this.properties.maxItemsPerPage = this.properties.totalItems;
+    }
+    
     return {
       pages: [
         {
@@ -60,15 +70,28 @@ export default class ReactAccordionWebPart extends BaseClientSideWebPart<IReactA
                 PropertyPaneTextField('listName', {
                   label: strings.ListNameLabel
                 }),
-                PropertyPaneSlider('maxItemsPerPage', {
-                  label: strings.MaxItemsPerPageLabel,
-                  ariaLabel: strings.MaxItemsPerPageLabel,
+                PropertyPaneSlider('totalItems', {
+                  label: strings.TotalItemsLabel,
+                  ariaLabel: strings.TotalItemsLabel,
                   min: 3,
-                  max: 20,
+                  max: 5000,
                   value: 5,
                   showValue: true,
                   step: 1
                 }),
+                PropertyPaneToggle('enablePaging', {
+                  label: strings.EnablePagingLabel
+                }),
+                PropertyPaneSlider('maxItemsPerPage', {
+                  disabled:!this.properties.enablePaging,
+                  label: strings.MaxItemsPerPageLabel,
+                  ariaLabel: strings.MaxItemsPerPageLabel,
+                  min: 3,
+                  max: 5000,
+                  value: 5,
+                  showValue: true,
+                  step: 1
+                })
               ]
             }
           ]

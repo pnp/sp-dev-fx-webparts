@@ -2,70 +2,59 @@
 
 ## Summary
 
-
 This web part allows user to manage planner tasks in SharePoint Site. The UI was inspired on Planner UI, it is full implemented with Office-UI-Fabric Components. Use MSGraph API's and PnPjs to data access.
 
 The user can search task by name, can filter by progress status, all data are dynamic updated on change.
 
+![MyTasks](./assets/MyTasks.gif)
 
-</br>
-</br>
+## List of Task Cards
 
-
-![MyTasks](/samples/react-mytasks/assets/MyTasks.gif)
-
-
-
-##  List of Task Cards
-
-
-
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen1.png)
+![MyTasks](./assets/screen1.png)
 
 ## Filter Tasks
 
-
-![MyTasks](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen2.png)  
-
-</br>
-</br>
-
-
-![tenant properties](https://github.com/joaojmendes/sp-dev-fx-webparts/blob/My-Tasks/samples/react-mytasks/assets/screen3.png)  
-
+![MyTasks](./assets/screen2.png)  
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen4.png) 
+![tenant properties](./assets/screen3.png)  
 
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen5.png)  
+![tenant properties](./assets/screen4.png) 
+
+
+</br>
+</br>
+
+
+![tenant properties](./assets/screen5.png)  
 
 </br>
 </br>
 
 ## Add Task  
   
-![MyTasks](/samples/react-mytasks/assets/AddTask.gif)
+![MyTasks](./assets/AddTask.gif)
 
 </br>
 </br>
 
 
 
-![tenant properties](/samples/react-mytasks/assets/screen6.png)  
+![tenant properties](./assets/screen6.png)  
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen7.png)  
+![tenant properties](./assets/screen7.png)  
 
 </br>
 </br>
@@ -73,32 +62,32 @@ The user can search task by name, can filter by progress status, all data are dy
 ## Edit Tasks
 
 
-![MyTasks](/samples/react-mytasks/assets/EditTask.gif)
+![MyTasks](./assets/EditTask.gif)
 
 </br>
 </br>
 
-![tenant properties](/samples/react-mytasks/assets/screen8.png)  
+![tenant properties](./assets/screen8.png)  
   
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen9.png)  
+![tenant properties](./assets/screen9.png)  
   
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen10.png)  
+![tenant properties](./assets/screen10.png)  
 
 </br>
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen11.png)  
+![tenant properties](./assets/screen11.png)  
 
   
 
@@ -106,7 +95,7 @@ The user can search task by name, can filter by progress status, all data are dy
 </br>
 
 
-![tenant properties](/samples/react-mytasks/assets/screen12.png)  
+![tenant properties](./assets/screen12.png)  
 
 
 </br>
@@ -114,7 +103,7 @@ The user can search task by name, can filter by progress status, all data are dy
 
 
 
-![tenant properties](/samples/react-mytasks/assets/screen13.png)  
+![tenant properties](./assets/screen13.png)  
 
   
 </br>
@@ -122,13 +111,13 @@ The user can search task by name, can filter by progress status, all data are dy
 
 
 
-![tenant properties](/samples/react-mytasks/assets/screen14.png)  
+![tenant properties](./assets/screen14.png)  
 
   
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.9.1-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -143,19 +132,23 @@ WebPart Title| Text| no|
  
 
 ## Solution
+
 The Web Part Use PnPjs library, Office-ui-fabric-react components and MSGraph API's
 
 Solution|Author(s)
 --------|---------
 My Tasks |João Mendes
+My Tasks |Swaminathan Sriram
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|November 17, 2019|Initial release
+1.0.1|September 9, 2020|Upgraded to SPFx 1.11.
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

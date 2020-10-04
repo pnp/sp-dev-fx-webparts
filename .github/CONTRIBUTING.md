@@ -51,7 +51,7 @@ When you are submitting a new sample, it has to follow up below guidelines
 Here's a high-level process for submitting new samples or updates to existing ones.
 
 1. Sign the Contributor License Agreement (see below)
-2. Fork this repository [SharePoint/sp-dev-fx-webparts](https://github.com/SharePoint/sp-dev-fx-webparts) to your GitHub account
+2. Fork this repository [pnp/sp-dev-fx-webparts](https://github.com/pnp/sp-dev-fx-webparts) to your GitHub account
 3. Create a new branch from the `master` branch for your fork for the contribution
 4. Include your changes to your branch
 5. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
@@ -60,18 +60,18 @@ Here's a high-level process for submitting new samples or updates to existing on
 
 Before you submit your pull request consider the following guidelines:
 
-* Search [GitHub](https://github.com/SharePoint/sp-dev-fx-webparts/pulls) for an open or closed Pull Request
+* Search [GitHub](https://github.com/pnp/sp-dev-fx-webparts/pulls) for an open or closed Pull Request
   which relates to your submission. You don't want to duplicate effort.
-* Make sure you have a link in your local cloned fork to the [SharePoint/sp-dev-fx-webparts](https://github.com/SharePoint/sp-dev-fx-webparts):
+* Make sure you have a link in your local cloned fork to the [pnp/sp-dev-fx-webparts](https://github.com/pnp/sp-dev-fx-webparts):
 
   ```shell
   # check if you have a remote pointing to the Microsoft repo:
   git remote -v
 
-  # if you see a pair of remotes (fetch & pull) that point to https://github.com/SharePoint/sp-dev-fx-webparts, you're ok... otherwise you need to add one
+  # if you see a pair of remotes (fetch & pull) that point to https://github.com/pnp/sp-dev-fx-webparts, you're ok... otherwise you need to add one
 
   # add a new remote named "upstream" and point to the Microsoft repo
-  git remote add upstream https://github.com/SharePoint/sp-dev-fx-webparts.git
+  git remote add upstream https://github.com/pnp/sp-dev-fx-webparts.git
   ```
 
 * Make your changes in a new git branch:

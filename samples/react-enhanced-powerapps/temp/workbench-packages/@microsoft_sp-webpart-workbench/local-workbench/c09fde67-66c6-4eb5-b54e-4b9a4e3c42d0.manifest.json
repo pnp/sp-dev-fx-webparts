@@ -1,0 +1,30 @@
+{
+  "manifestVersion": 2,
+  "id": "c09fde67-66c6-4eb5-b54e-4b9a4e3c42d0",
+  "alias": "SpListViewDataSource",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-list-view-data-source",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-list-view-data-source": {
+        "type": "path",
+        "path": "dist/sp-list-view-data-source.js"
+      },
+      "@ms/sp-base-data-source": {
+        "type": "component",
+        "version": "0.1.0",
+        "id": "6e6e2204-49cb-4172-b923-32eaa7d8fe5b"
+      },
+      "@ms/sp-component-utilities": {
+        "type": "component",
+        "version": "4.0.19",
+        "id": "8494e7d7-6b99-47b2-a741-59873e42f16f"
+      }
+    }
+  },
+  "isInternal": true
+}

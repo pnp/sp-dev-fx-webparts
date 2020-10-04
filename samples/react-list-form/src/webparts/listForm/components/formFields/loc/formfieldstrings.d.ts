@@ -28,6 +28,9 @@ declare interface IFormFieldStrings {
   ReplaceButtonLabel: string;
   AttachmentTermsConditionTitleText: string;
   AttachmentTermsConditionText: string;
+
+  //Taxonomy
+  SelectTerm: string;
 }
 
 declare module 'FormFieldStrings' {

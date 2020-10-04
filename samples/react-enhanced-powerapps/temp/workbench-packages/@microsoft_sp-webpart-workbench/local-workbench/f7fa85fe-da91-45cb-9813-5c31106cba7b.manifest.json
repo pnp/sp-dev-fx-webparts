@@ -1,0 +1,61 @@
+{
+  "id": "f7fa85fe-da91-45cb-9813-5c31106cba7b",
+  "alias": "SPDragZone",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "sp-dragzone",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-dragzone": {
+        "type": "path",
+        "path": "dist/sp-dragzone.js"
+      },
+      "@microsoft/office-ui-fabric-react-bundle": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "02a01e42-69ab-403d-8a16-acd128661f8e"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a"
+      },
+      "react": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      },
+      "@ms/sp-component-utilities": {
+        "type": "component",
+        "version": "4.0.19",
+        "id": "8494e7d7-6b99-47b2-a741-59873e42f16f"
+      },
+      "@microsoft/load-themed-styles": {
+        "type": "component",
+        "version": "0.1.2",
+        "id": "229b8d08-79f3-438b-8c21-4613fc877abd"
+      },
+      "@microsoft/sp-diagnostics": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "78359e4b-07c2-43c6-8d0b-d060b4d577e8"
+      },
+      "@ms/odsp-utilities-bundle": {
+        "type": "component",
+        "version": "5.1.55",
+        "id": "cc2cc925-b5be-41bb-880a-f0f8030c6aff"
+      },
+      "@ms/sp-a11y": {
+        "type": "component",
+        "version": "0.2.24",
+        "id": "05ed6956-59ad-4aa6-9e4e-b832c96ae87b"
+      }
+    }
+  },
+  "isInternal": true
+}

@@ -61,11 +61,13 @@ Built with SharePoint Framework GA, Office Graph, React and Chart.JS
 Solution|Author(s)
 --------|---------
 react-modern-charts|Jeremy Coleman (MCP, PC Professional, Inc.)
+react-modern-charts|Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.0.0.3|July 30, 2020| Support for Managed Metadata Field(Single) as Label
 1.0.0.2|February 09, 2020| Upgrade to SPFx 1.10.0
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|February 11, 2017|Initial release

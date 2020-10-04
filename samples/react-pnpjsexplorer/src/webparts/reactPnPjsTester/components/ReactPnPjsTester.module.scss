@@ -1,0 +1,134 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.reactPnPjsTester {
+  .container {
+    // max-width: 800px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+  .jsonviewcont{
+    overflow-y: auto;
+  }
+ 
+  .row {
+    @include ms-Grid-row;
+    // @include ms-fontColor-white;
+    // background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg12;
+    @include ms-xl12;
+  }
+
+  .col1 {
+    @include ms-Grid-col;
+    @include ms-sm2;
+  }
+
+  .col11 {
+    @include ms-Grid-col;
+    @include ms-sm10;
+  }
+
+  .title {
+    @include ms-font-xl;
+    @include ms-fontColor-white;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-m;
+  }
+
+  .methodSelector {
+    :global {
+      .ms-Dropdown {
+        &:focus {
+          color: $ms-color-white;
+        }
+      }
+
+      .ms-Dropdown-title {
+        background-color: $ms-color-themePrimary;
+        color: $ms-color-white;
+      }
+
+      .ms-Dropdown-caretDownWrapper i {
+        color: $ms-color-white;
+      }
+    }
+  }
+
+  .collapse {
+    float: right;
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
+
+  .codeZone {
+    border: 1px solid;
+    border-color: $ms-color-neutralLight;
+    margin-bottom: 15px;
+    overflow-x: auto;
+  }
+
+  .icon {
+    margin-right: 5px;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+    margin-right: 10px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+      BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+}
+:global {
+  .pageContent_ecefc8ba {
+    max-width: 1200px;
+  }
+  .ms-Button-label {
+    width: 440px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+  }
+}

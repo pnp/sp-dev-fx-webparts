@@ -1,0 +1,26 @@
+{
+  "manifestVersion": 2,
+  "id": "fa4155f6-2498-4a20-8406-5cb3b385b142",
+  "alias": "SPDeferredComponent",
+  "componentType": "Library",
+  "version": "0.3.24",
+  "loaderConfig": {
+    "entryModuleId": "sp-deferred-component",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-deferred-component": {
+        "type": "path",
+        "path": "dist/sp-deferred-component.js"
+      },
+      "react": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      }
+    }
+  },
+  "isInternal": true
+}

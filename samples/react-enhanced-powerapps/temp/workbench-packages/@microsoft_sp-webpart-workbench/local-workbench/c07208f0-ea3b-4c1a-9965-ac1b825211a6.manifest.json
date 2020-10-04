@@ -1,0 +1,31 @@
+{
+  "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6",
+  "alias": "SPHttp",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "manifestVersion": 2,
+  "preloadComponents": [],
+  "loaderConfig": {
+    "entryModuleId": "sp-http",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-http": {
+        "type": "localizedPath",
+        "defaultPath": "dist/sp-http_en-us.js"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-diagnostics": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "78359e4b-07c2-43c6-8d0b-d060b4d577e8"
+      }
+    }
+  },
+  "isInternal": true
+}

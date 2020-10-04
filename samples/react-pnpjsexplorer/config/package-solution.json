@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-pnpjsexplorer-client-side-solution",
+    "id": "a41b7fa8-313e-40d1-ae85-1d85baddecf5",
+    "version": "2.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-pnpjsexplorer.sppkg"
+  }
+}

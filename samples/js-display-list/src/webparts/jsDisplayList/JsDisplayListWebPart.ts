@@ -1,9 +1,5 @@
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneDropdown,
-  IPropertyPaneDropdownOption
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneDropdown, IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 
 import styles from './JsDisplayList.module.scss';
 
@@ -119,14 +115,13 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
 
     if(!items) {
 
-      html = '<br /><p class="ms-font-m-plus">The selected list does not exist.</p>';
+      html = `<br /><p class="${styles.fontMPlus}">The selected list does not exist.</p>`;
 
     } else if (items.length === 0) {
 
-      html = '<br /><p class="ms-font-m-plus">The selected list is empty</p>';
+      html = `<br /><p class="${styles.fontMPlus}">The selected list is empty</p>`;
 
     } else {
-      //debugger;
       items.forEach((item: ISPList) => {
         let title: string = '';
 
@@ -139,12 +134,12 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
         let created: any = item["Created"];
 
         html += `
-          <div class="${styles.row} ms-Grid-row " }>
-                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${title}</div>
-                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">
+          <div class="${styles.row}" }>
+                <div class="${styles.column}">${title}</div>
+                <div class="${styles.column}">
                   ${created.substring(0, created.length - 1).replace('T', ' ')}
                 </div>
-                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-font-m">${item['Author'].Title}</div>
+                <div class="${styles.column}">${item['Author'].Title}</div>
           </div>`;
       });
     }
@@ -157,18 +152,18 @@ export default class JsDisplayListWebPart extends BaseClientSideWebPart<IJsDispl
   private _renderListAsync(): void {
 
     this.domElement.innerHTML = `
-        <div className='wrapper'>
-          <p class="ms-font-l ms-bgColor-themeDark ms-fontColor-white">
-          <span class="ms-fontWeight-semibold">
+        <div class='wrapper ${styles.jsDisplayList}'>
+          <p class="${styles.themeDark}">
+          <span class="${styles.semiBold}">
               ${this.properties.listTitle}
               </span>
               List
           </p>
-          <div class="ms-Grid ${styles.jsDisplayList}">
-             <div class="ms-Grid-row">
-                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-bgColor-themeLight  ms-font-m-plus">Title</div>
-                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4 ms-bgColor-themeLight  ms-font-m-plus">Created</div>
-                <div class="ms-Grid-col ms-u-sm5 ms-u-md3 ms-u-lg4  ms-bgColor-themeLight  ms-font-m-plus">Created By</div>
+          <div class="${styles.grid} ${styles.jsDisplayList}">
+             <div class="${styles.row}">
+                <div class="${styles.columnHeader}">Title</div>
+                <div class="${styles.columnHeader}">Created</div>
+                <div class="${styles.columnHeader}">Created By</div>
               </div>
               <hr />
               <div id="spListContainer"></div>

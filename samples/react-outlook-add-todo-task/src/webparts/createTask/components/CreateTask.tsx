@@ -17,8 +17,6 @@ import {
   MessageBarType
 } from "office-ui-fabric-react";
 
-import { MSGraphClient } from "@microsoft/sp-http";
-
 export default class CreateTask extends React.Component<
   ICreateTaskProps,
   ICreateTaskState
@@ -30,10 +28,8 @@ export default class CreateTask extends React.Component<
       listItemAdded: false,
       selectedList: undefined,
       todoLists: [],
-      newTaskTitle: this.props.context.item
-        ? this.props.context.item.subject
-        : "New Task title here!",
-        showSelectListError: false
+      newTaskTitle: this.props.context.item ? this.props.context.item.subject : "New Task title here!",
+      showSelectListError: false
     };
 
     this._onDropdownChange = this._onDropdownChange.bind(this);
@@ -166,7 +162,7 @@ export default class CreateTask extends React.Component<
         status: "notStarted",
         title: taskTitle,
         body: {
-          content: "You have a new task to do added from SPFx component!",
+          content: this.props.context.item.body,
           contentType: "text",
         },
       };

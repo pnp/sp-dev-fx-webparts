@@ -73,7 +73,8 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
   }
 
   private readItems(): void {
-    let restAPI = this.props.siteUrl + `/_api/web/Lists/GetByTitle('${this.props.listName}')/items?$select=Title,Description`;
+    
+    let restAPI = this.props.siteUrl + `/_api/web/Lists/GetByTitle('${this.props.listName}')/items?$select=Title,Description&$top=${this.props.totalItems}`;
 
     this.props.spHttpClient.get(restAPI, SPHttpClient.configurations.v1, {
       headers: {
@@ -148,11 +149,13 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       displayLoader = (null);
     }
 
-    if (items.length > 0) {
-      pageCount = Math.ceil(items.length / pageCountDivisor);
-    }
-    for (let i = 0; i < pageCount; i++) {
-      pageButtons.push(<PrimaryButton onClick={() => { _pagedButtonClick(i + 1, items); }}> {i + 1} </PrimaryButton>);
+    if(this.props.enablePaging){
+      if (items.length > 0) {
+        pageCount = Math.ceil(items.length / pageCountDivisor);
+      }
+      for (let i = 0; i < pageCount; i++) {
+        pageButtons.push(<PrimaryButton onClick={() => { _pagedButtonClick(i + 1, items); }}> {i + 1} </PrimaryButton>);
+      }
     }
     return (
       <div className={styles.reactAccordion}>

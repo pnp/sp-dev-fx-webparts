@@ -1,6 +1,6 @@
 export interface IListItem {
     name:string;
     description:string;
-    Url:string;
+    url:string;
     iconName:string;
 }

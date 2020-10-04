@@ -31,6 +31,11 @@ export interface ISPList {
   Id: string;
 }
 
+export interface IFieldProperty extends IPropertyPaneDropdownOption {
+  fieldtype: string;
+}
+
+
 export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernChartsWebPartProps> {
 
   private reactCharts: React.ReactElement<IModernChartsProps>;
@@ -205,10 +210,27 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
     data.forEach((item) => {
       if (chLabels['unique'].indexOf(item[config.unique]) == -1 && item[config.unique] != null && item[config.unique] != "") {
         chLabels['unique'].push(item[config.unique]);
-        chLabels['labels'].push(item[config.col1]);
+        //if term use VAlue
+        chLabels['labels'].push(this.getLabel(item, config.col1));
       }
     });
     return chLabels;
+  }
+
+  private getLabel(item: Object, col: string) {
+    if (!!item[col] && !!item[col]['WssId'] && !!item["TaxCatchAll"] && item["TaxCatchAll"].length > 0) {
+      //Filter because you can have more Fields from this type to select the right value
+      const wssid: number = item[col]['WssId'];
+      const terms = (item["TaxCatchAll"]).filter((x) => x.ID === wssid);
+      if (!!terms && terms.length > 0) {
+        return terms[0].Term;
+      }
+      return 'TermLabel not Found';
+    }
+    //TODO HyperLink
+    //lookup user
+
+    return item[col];
   }
 
   private getValues(data: Array<Object>, unique: Array<string>, config: ChartConfiguration): Array<Array<any>> {
@@ -270,6 +292,21 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
       this.properties.chartConfig[pPathInd].bgColors = newTheme['bgColors'];
       this.properties.chartConfig[pPathInd].hoverColors = newTheme['hoverColors'];
     }
+    if (pPath === 'col1' && (newValue != oldValue)) {
+      this.properties.chartConfig[pPathInd].hasTaxField = false;
+      if (!!newValue
+        && !!this.properties.chartConfig[pPathInd].columns
+        && this.properties.chartConfig[pPathInd].columns.length > 0
+      ) {
+        const selects = this.properties.chartConfig[pPathInd].columns.filter(f => f.key === newValue);
+        if (selects.length > 0) {
+          const selected = selects[0];
+
+          this.properties.chartConfig[pPathInd].hasTaxField = selected.fieldtype === 'TaxonomyFieldType';
+        }
+      }
+    }
+    //col1
     this.context.propertyPane.refresh();
     this.render();
   }
@@ -457,7 +494,14 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
   }
 
   public getData(chartConfig: Object) {
-    return this.context.spHttpClient.get(chartConfig['dataurl'] + `/_api/web/lists/GetByTitle(\'${chartConfig['list']}\')/items?$orderby=Id desc&$limit=10&$top=${this.properties.maxResults}`, SPHttpClient.configurations.v1)
+    const urlparttax = '&$select=*,TaxCatchAll/Term,TaxCatchAll/ID&$expand=TaxCatchAll';
+    const resturl = `/_api/web/lists/GetByTitle(\'${chartConfig['list']}\')/items?$orderby=Id desc&$limit=10&$top=${this.properties.maxResults}`;
+    let requesturl = chartConfig['dataurl'] + resturl;
+
+    if (!!chartConfig['hasTaxField']) {
+      requesturl = requesturl + urlparttax;
+    }
+    return this.context.spHttpClient.get(requesturl, SPHttpClient.configurations.v1)
       .then((response: SPHttpClientResponse) => {
         return response.json();
       });
@@ -480,10 +524,14 @@ export default class ModernChartsWebPart extends BaseClientSideWebPart<IModernCh
 
   private _updateListColumns(siteUrl: string, listName: string, _chartConfig: ChartConfiguration): void {
     this._getListColumns(listName, siteUrl).then((response) => {
-      var respLists: IPropertyPaneDropdownOption[] = [];
+      var respLists: IFieldProperty[] = [];
       console.log(response.value);
       for (var _key in response.value) {
-        respLists.push({ key: response.value[_key]['InternalName'], text: response.value[_key]['Title'] });
+        respLists.push({
+          key: response.value[_key]['InternalName'],
+          text: response.value[_key]['Title'],
+          fieldtype: response.value[_key]['TypeAsString']
+        });
       }
       this._columnOptions = respLists;
       _chartConfig.columns = respLists;

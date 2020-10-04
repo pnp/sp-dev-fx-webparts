@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-manage-profile-card-properties-client-side-solution",
+    "id": "a53e4c14-1c0e-4a54-810f-eb5cdf42005b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Directory.AccessAsUser.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-manage-profile-card-properties.sppkg"
+  }
+}

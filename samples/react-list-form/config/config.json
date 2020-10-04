@@ -18,6 +18,7 @@
     "ListFormWebPartStrings": "lib/webparts/listForm/loc/{locale}.js",
     "ListFormStrings": "lib/webparts/listForm/components/loc/{locale}.js",
     "FormFieldStrings": "lib/webparts/listForm/components/formFields/loc/{locale}.js",
-    "servicesStrings": "lib/common/services/loc/{locale}.js"
+    "servicesStrings": "lib/common/services/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }
