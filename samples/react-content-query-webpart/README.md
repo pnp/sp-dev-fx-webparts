@@ -29,4 +29,4 @@ react-content-query-web part (Online)|Hugo Bernier ([Tahoe Ninjas](http://tahoen
 react-content-query-web part (Online)|Paolo Pialorsi ([PiaSys.com](https://piasys.com/), [@PaoloPia](https://twitter.com/PaoloPia?s=20))
 react-content-query-web part|Simon-Pierre Plante
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-web parts/samples/react-content-query-web part" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-content-query-web part" />
