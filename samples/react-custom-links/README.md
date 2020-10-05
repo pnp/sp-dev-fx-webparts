@@ -24,8 +24,6 @@ In this web part you can full customize the background and foreground color, fon
 
 
 
-
-
 ![CustomLinks](./assets/customlinks.gif)
 
 ![CustomLinks](./assets/customLinks01.PNG)
@@ -33,7 +31,7 @@ In this web part you can full customize the background and foreground color, fon
 ![CustomLinks](./assets/customLinks02.PNG)
 
  
-
+![CustomLinks](./assets/customLinks03.PNG)
 
 
 ## Used SharePoint Framework Version
