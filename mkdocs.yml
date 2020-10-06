@@ -64,6 +64,18 @@ extra:
   samples:
     - framework: React
       spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-save-attachments
+      name: react-save-attachments
+      title: Save Attachments
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-save-attachments/assets/ReactSaveAttachments.gif
+      author: Aakash Bhardwaj
+      summary: This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder.
+      modifiedtext: October 04, 2020
+      modified: 2020-10-04
+      pnpcontrols: WebPartTitle, Placeholder 
+
+    - framework: React
+      spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-dynamic-section
       name: react-accordion-dynamic-section
       title: SPFx Dynamic Accordion - FAQ Builder web part
