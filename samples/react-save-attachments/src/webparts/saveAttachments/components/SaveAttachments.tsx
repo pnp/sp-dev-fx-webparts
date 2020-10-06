@@ -72,7 +72,7 @@ export const SaveAttachments: React.FunctionComponent<ISaveAttachmentsProps> = (
                           setFolders(await props.graphHelper.getOneDriveFolders());
                       }}
                     >
-                      <b>{selectedFolder !== null && selectedFolder.parentFolder ? selectedFolder.parentFolder.name : 'One Drive'}</b>
+                      <b>{selectedFolder !== null && selectedFolder.parentFolder ? selectedFolder.parentFolder.name : 'OneDrive'}</b>
                     </div>
                     <div className={styles.folderTitle}>
                       &nbsp;<b>{selectedFolder ? `> ${selectedFolder.name}` : ''}</b>
