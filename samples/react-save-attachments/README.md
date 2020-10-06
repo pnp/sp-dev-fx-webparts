@@ -8,7 +8,7 @@ This SPFx Outlook Add-In lets users save any email attachments to a One Drive fo
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.10.0-green.svg)
+![SPFx 1.10](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Features
 
@@ -16,8 +16,8 @@ This web part illustrates the below features for creating Outlook Add-Ins using 
 
 * Select Office context and attributes of currently selected mail
 * Requesting **Mail.Read** and **Files.ReadWrite** permission scopes for Microsoft Graph through the `webApiPermissionRequests` property in `package-solution.json`
-* Use Microsoft Graph to retrieve folders and subfolders for OneDrive
-* Use Microsoft Graph to retrieve complete mail mimestream by given ID
+* Use Microsoft Graph to retrieve folders and sub-folders for OneDrive
+* Use Microsoft Graph to retrieve complete mail `mimestream` by given `ID`
 * Use Microsoft Graph to save normal or big files (in size bigger 4MB) with different concepts
 
 ## Solution
@@ -25,6 +25,13 @@ This web part illustrates the below features for creating Outlook Add-Ins using 
 Solution|Author(s)
 --------|---------
 react-save-attachments | [Aakash Bhardwaj](https://twitter.com/aakash_316)
+
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0|October 4, 2020|Initial release
 
 ## Minimal Path to Awesome
 
@@ -51,3 +58,4 @@ react-save-attachments | [Aakash Bhardwaj](https://twitter.com/aakash_316)
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-save-attachments" />
