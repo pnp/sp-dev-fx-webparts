@@ -50,8 +50,8 @@ Version|Date|Comments
   * Under **Custom add-ins**, choose **+ Add a custom add-in**, then **Add from file...**
   * Upload the manifest xml file from `\officeAddin` folder
   * Click **Install** on the warning message to get your add-in available on the tenant
-* Go to the API Management section in the new SharePoint Admin Center (*https://{tenantname}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement*)
-* Approve the permission request for Mail.ReadWrite and Files.ReadWrite to Microsoft Graph
+* Go to the **API Management** section in the new SharePoint Admin Center (*https://{tenantname}-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx#/webApiPermissionManagement*)
+* **Approve** the permission request for **Mail.ReadWrite** and **Files.ReadWrite** to **Microsoft Graph**
 
 ## Disclaimer
 
