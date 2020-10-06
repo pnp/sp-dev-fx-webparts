@@ -72,8 +72,6 @@ extra:
       summary: This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder.
       modifiedtext: October 04, 2020
       modified: 2020-10-04
-      pnpcontrols: WebPartTitle, Placeholder 
-
     - framework: React
       spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-dynamic-section
