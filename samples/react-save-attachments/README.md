@@ -4,7 +4,9 @@
 
 This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder. The users can select any OneDrive folder/subfolder and choose the attachments that need to be saved. It uses Microsoft Graph API to fetch the OneDrive folders and upload the attachment files.
 
-![Save Attachments](./assets/ReactSaveAttachments.gif)
+![Preview](./assets/react-save-attachments-1.png)
+
+![Save Attachments in Action](./assets/react-save-attachments-2.gif)
 
 ## Used SharePoint Framework Version
 
