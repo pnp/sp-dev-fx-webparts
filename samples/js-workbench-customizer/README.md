@@ -53,7 +53,6 @@ Version|Date|Comments
 1.3|July 07, 2020|Simplified web part
 1.4|July 28, 2020|Update styles to minimise toolbar overlap
 1.5|July 30, 2020|Update styles to improve full-width mode
-1.5|October 05, 2020|Update to SPFx 1.11.0
 
 ## Disclaimer
 

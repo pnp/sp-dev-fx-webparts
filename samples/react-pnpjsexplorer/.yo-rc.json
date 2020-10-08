@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": false,
     "environment": "spo",
-    "version": "1.10.0",
+    "version": "1.11.0",
     "libraryName": "react-pnpjsexplorer",
     "libraryId": "a41b7fa8-313e-40d1-ae85-1d85baddecf5",
     "packageManager": "npm",
