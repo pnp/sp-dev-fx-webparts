@@ -26,7 +26,7 @@ Note: This approach will not "pollute" your solution with additional resources o
 
 ## Used SharePoint Framework Version
 
-![1.10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
+![1.11.0](https://img.shields.io/badge/drop-1.11.0-green.svg)
 
 ## Applies to
 
