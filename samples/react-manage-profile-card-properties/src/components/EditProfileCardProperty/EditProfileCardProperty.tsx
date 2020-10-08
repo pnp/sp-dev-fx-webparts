@@ -1,39 +1,57 @@
-import { AppContext, IAppContextProps } from "../../Common/AppContextProps";
-import { IProfileCardProperty } from "../../Entities/IProfileCardProperty";
-import { IAnnotation, ILocalization } from "../../Entities/IAnnotations";
-import { languages } from "../../Common/constants";
-import {
-  DefaultButton,
-  PrimaryButton,
-} from "office-ui-fabric-react/lib/Button";
-import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
-import { useConstCallback } from "@uifabric/react-hooks";
-import React, { useContext, useEffect } from "react";
-import { useProfileCardProperties } from "../../hooks/useProfileCardProperties";
-import { IEditProfileCardPropertyProps } from "../EditProfileCardProperty/IEditProfileCardPropertyProps";
-import { IEditProfileCardPropertyState } from "../EditProfileCardProperty/IEditProfileCardPropertyState";
+import React, {
+  useContext,
+  useEffect
+} from "react";
+
 import * as _ from "lodash";
+import strings from "ManageProfileCardPropertiesWebPartStrings";
 import {
-  Stack,
   ComboBox,
-  TextField,
-  Label,
-  Icon,
-  IComboBox,
   CommandButton,
-  IIconProps,
-  initializeIcons,
+  IComboBox,
   IComboBoxOption,
-  mergeStyleSets,
+  Icon,
+  IIconProps,
   IIconStyles,
   ILabelStyles,
-  Spinner,
-  SpinnerSize,
+  Label,
+  mergeStyleSets,
   MessageBar,
   MessageBarType,
+  Spinner,
+  SpinnerSize,
+  Stack,
+  TextField
 } from "office-ui-fabric-react";
+import {
+  DefaultButton,
+  PrimaryButton
+} from "office-ui-fabric-react/lib/Button";
+import {
+  Panel,
+  PanelType
+} from "office-ui-fabric-react/lib/Panel";
+
+import { useConstCallback } from "@uifabric/react-hooks";
+
+import {
+  AppContext,
+  IAppContextProps
+} from "../../Common/AppContextProps";
+import { languages } from "../../Common/constants";
+import {
+  IAnnotation,
+  ILocalization
+} from "../../Entities/IAnnotations";
 import { ILocalizationExtended } from "../../Entities/IlocalizationExtended";
-import strings from "ManageProfileCardPropertiesWebPartStrings";
+import { IProfileCardProperty } from "../../Entities/IProfileCardProperty";
+import { useProfileCardProperties } from "../../hooks/useProfileCardProperties";
+import {
+  IEditProfileCardPropertyProps
+} from "../EditProfileCardProperty/IEditProfileCardPropertyProps";
+import {
+  IEditProfileCardPropertyState
+} from "../EditProfileCardProperty/IEditProfileCardPropertyState";
 
 // Component
 // Edit Profile Property Component
@@ -381,14 +399,14 @@ export const EditProfileCardProperty: React.FunctionComponent<IEditProfileCardPr
   ) => {
     ev.preventDefault();
     let { profileCardProperties } = state;
-    let { localizations } = profileCardProperties.annotations[0];
+    let   _localizations   = profileCardProperties.annotations[0].localizations;
     const _languageTagIndex: HTMLElement = ev.target as HTMLElement;
     const _index: number = Number(
       _languageTagIndex.getAttribute("data-language-tag-index")
     );
-    localizations[_index] = { ...localizations[_index], displayName: newValue };
+    _localizations[_index] = { ..._localizations[_index], displayName: newValue };
 
-    profileCardProperties.annotations[0].localizations = localizations;
+    profileCardProperties.annotations[0].localizations = _localizations;
     setState({ ...state, profileCardProperties: profileCardProperties });
     console.log(state);
   };

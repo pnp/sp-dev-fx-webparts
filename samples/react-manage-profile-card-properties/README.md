@@ -1,12 +1,13 @@
 # React Manage Profile Card Properties 
 
 ## Summary
+
 This web part allows tenant administrators to manage profile card properties.  
 We can create, edit, delete, directory properties that can be add to profile card.
 
 Only users with Tenant Admin Role are allowed to managed profile card properties. 
 
-##  Manage Profile Card Properties
+## Manage Profile Card Properties
 
 ![manageProps](assets/Screenshot1.png)
 
@@ -19,10 +20,8 @@ Only users with Tenant Admin Role are allowed to managed profile card properties
 ![manageProps](assets/Screenshot5.png)
 
 
-
-
-
 ## Used SharePoint Framework Version 
+
 ![SPFx 1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
@@ -38,6 +37,7 @@ WebPart Title| Text| no|
  
 
 ## Solution
+
 The Web Part Use Microsoft Graph API, Fluent-UI components.
 
 Solution|Author(s)
@@ -49,8 +49,10 @@ Manage Profile Card Properties |João Mendes
 Version|Date|Comments
 -------|----|--------
 1.0.0|July 28, 2020|Initial release
+1.0.1|October 5, 2020|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
