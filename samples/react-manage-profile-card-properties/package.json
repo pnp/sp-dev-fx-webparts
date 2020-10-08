@@ -1,6 +1,6 @@
 {
   "name": "react-manage-profile-card-properties",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "private": true,
   "main": "lib/index.js",
   "engines": {
