@@ -1,12 +1,12 @@
-# SPFx webpart to Test PnpJS SharePoint Methods
+# SPFx web part to Test PnpJS SharePoint Methods
 
-This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API. This web part can be used as separate component to test PnP Js methods and know the response returned by a particular method/API. To maximise productivity, we should package and deploy it to a test(developer) site collection which then can be used side by side when we are doing development of SPFx solutions.
+This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API. This web part can be used as separate component to test PnP Js methods and know the response returned by a particular method/API. To maximize productivity, we should package and deploy it to a test(developer) site collection which then can be used side by side when we are doing development of SPFx solutions.
 
 Note - As of now it only supports to test Pnp JS method from sp(SharePoint) packages which contains the fluent API used to call the SharePoint rest services.
 
-You can refer to this blog [link](https://siddharthvaghasia.com/2020/08/16/usage-guide-on-spfx-pnpjs-tester-web-part/) for usage guidance on How to use this webpart.
+You can refer to this blog [link](https://siddharthvaghasia.com/2020/08/16/usage-guide-on-spfx-pnpjs-tester-web-part/) for usage guidance on How to use this web part.
 
-![Web part in action](assets/pnpjstesterinaction.gif?raw=true "Webpart in action")
+![Web part in action](assets/pnpjstesterinaction.gif?raw=true "Web part in action")
 
 Idea behind this web part
 
@@ -17,9 +17,9 @@ Idea behind this web part
 
 Feel free to connect on twitter:@siddh_me or twitter:@sanganikunj for any details.
 
-## Notes on Webpart
+## Notes on Web part
 
-- WebPart to test PnP JS SharePoint package methods
+- Web Part to test PnP JS SharePoint package methods
 - Response will be displayed in a code format.
 - By default, it will run in context of current site collection.
 - Optional option to enter different site collection or sub site url to set PnP JS context to different url(other than current context)
