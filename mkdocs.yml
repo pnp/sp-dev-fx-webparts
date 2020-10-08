@@ -328,7 +328,7 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-section/assets/react-accordion-section.gif
       author: Erik Benke, Mike Zimmerman
       summary: Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.
-      modifiedtext: Sept 2, 2020
+      modifiedtext: September 2, 2020
       modified: 2020-09-02
       pnpcontrols: Placeholder, WebPartTitle
     - framework: React
