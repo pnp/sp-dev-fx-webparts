@@ -49,7 +49,9 @@ The web part allows configuring which list to use and if a form for adding a new
 | 1.0.1   | February 22, 2019 | Updated to SPFx 1.7.1 and dependencies, Added Turkish translation, Added RichText Mode and Tinymce Editor |
 | 1.0.2   | October 14, 2019  | Updated to SPFx 1.9.1 and dependencies                                                                    |
 | 1.0.3   | July 7, 2020      | Updated to SPFx 1.10.0 and dependencies. Fixed required field validation (Harsha Vardhini)                |
-| 1.0.4   | September 12, 2020| Added support for User, UserMulti, Taxonomy, and TaxonomyMulti field types (Ryan Schouten)                |
+| 1.0.4   | September 12, 2020| Added support for User, UserMulti, Taxonomy, and TaxonomyMulti field types                                |
+| 1.0.5   | September 26, 2020| Fix date handling problems and redirect after edit                                                        |
+| 1.0.6   | October 8, 2020   | Added support for cascading lookup fields                                                                 |
 
 ## Disclaimer
 
