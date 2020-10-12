@@ -123,7 +123,7 @@ export class ListFormService implements IListFormService {
             //Need group lookups
             for (let j = 0; j < val.length; j++) {
                 let y = val[j];
-                if (y.Key.indexOf("c:0") == 0) {
+                if (y.Key && y.Key.indexOf("c:0") == 0) {
                     let res = await searchSvc.resolvePeople(ctx, y.Key, siteUrl);
                     y.Key = res.Description;
                 }
