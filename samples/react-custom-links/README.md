@@ -1,3 +1,4 @@
+<div style="display:none;">
 ---
 page_type: sample
 products:
@@ -14,6 +15,7 @@ extensions:
   - React
   createdDate: 5/10/2020 12:00:00 AM
 ---
+</div>
 
 # React Custom Links
 
