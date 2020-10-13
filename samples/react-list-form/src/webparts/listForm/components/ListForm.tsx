@@ -10,6 +10,7 @@ import { ListFormService } from '../../../common/services/ListFormService';
 import { ISPPeopleSearchService } from '../../../common/services/ISPPeopleSearchService';
 import { SPPeopleSearchService } from '../../../common/services/SPPeopleSearchService';
 import { GroupService } from '../../../common/services/GroupService';
+import { SPHelper } from '../../../common/SPHelper';
 
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -244,6 +245,29 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
         listUrl,
         formType,
       );
+      let lookupCount = 0;
+      for (let i = 0; i < fieldsSchema.length; i++) {
+        if (fieldsSchema[i].FieldType === "Lookup" || fieldsSchema[i].FieldType === "LookupMulti") {
+          fieldsSchema[i].Choices = await this.listFormService.getLookupfieldOptions(fieldsSchema[i], this.props.webUrl);
+          lookupCount += 1;
+          if (lookupCount > 1) {
+            let lookups = await this.listFormService.getLookupfieldsOnList(fieldsSchema[i]["LookupListUrl"], this.props.webUrl, formType);
+            for (let j = 0; j < lookups.length; j++) {
+              let parent = fieldsSchema.filter((x) => {
+                return x.LookupListId === lookups[j].LookupListId;
+              });
+
+              for (let k = 0; k < parent.length; k++) {
+                if (parent[k]["Dependent"] == null) {
+                  parent[k]["Dependent"] = { Field: fieldsSchema[i], ValueField: lookups[j].InternalName };
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+
       let userfields = fieldsSchema.filter((x) => {
         return x.FieldType === "User" || x.FieldType === "UserMulti";
       });
@@ -281,9 +305,19 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
       let dataObj = await this.listFormService.getDataForForm(this.props.webUrl, listUrl, id, formType);
       const schema = this.state.fieldsSchema;
       dataObj = await this.listFormService.getExtraFieldData(dataObj, schema, this.props.context, this.props.webUrl);
+      for (let i = 0; i < schema.length; i++) {
+        if (schema[i]["Dependent"] != null) {
+          let updateField = schema[i]["Dependent"].Field.InternalName;
+          let fieldsSchema = schema;
+          let dependee = fieldsSchema.filter((x) => {
+            return x.InternalName === updateField;
+          });
+          dependee[0]["DependerValue"] = { Value: dataObj[schema[i].InternalName], Field: schema[i]["Dependent"].ValueField };
+        }
+      }
       // We shallow clone here, so that changing values on dataObj object fields won't be changing in originalData too
       const dataObjOriginal = { ...dataObj };
-      this.setState({ ...this.state, data: dataObj, originalData: dataObjOriginal, isLoadingData: false });
+      this.setState({ ...this.state, data: dataObj, fieldsSchema: schema, originalData: dataObjOriginal, isLoadingData: false });
     } catch (error) {
       const errorText = `${strings.ErrorLoadingData}${id}: ${error}`;
       this.setState({ ...this.state, data: {}, isLoadingData: false, errors: [...this.state.errors, errorText] });
@@ -324,20 +358,75 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
       );
     }
     else {
-      this.setState((prevState, props) => {
-        return {
-          ...prevState,
-          data: { ...prevState.data, [fieldName]: newValue },
-          fieldErrors: {
-            ...prevState.fieldErrors,
-            [fieldName]:
-              (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
-                ? strings.RequiredValueMessage
-                : ''
+      // Check for if any other fields are dependent on this one
+      if (schema["Dependent"] != null) {
+        let dependee = [];
+        let fieldsSchema = this.state.fieldsSchema;
+        let updateField = schema["Dependent"].Field.InternalName;
+        let valueField = schema["Dependent"].ValueField;
+        let dependentValue = newValue;
+        do {
+          dependee = fieldsSchema.filter((x) => {
+            return x.InternalName === updateField;
+          });
+          dependee[0]["DependerValue"] = { Value: dependentValue, Field: valueField };
+          if (dependee.length > 0 && dependee[0]["Dependent"] != null) {
+            //Need to remove invalid options from dependent value
+            let tempVal = SPHelper.LookupValueFromString(this.state.data[dependee[0].InternalName]);
+            let depend = SPHelper.LookupValueFromString(dependentValue);
+            let choices = dependee[0].Choices;
+
+            let values = depend.map((item) => item.key);
+            choices = choices.filter((x) => {
+              let matches = values.filter((itm) => { return x.x[`${valueField}Id`] == itm; });
+              return matches.length > 0;
+            });
+
+            tempVal = tempVal.filter((x) => {
+              return choices.find((y) => { return y.LookupId == x.key; }) != null;
+            });
+
+            dependentValue = SPHelper.LookupValueToString(tempVal);
+            updateField = dependee[0]["Dependent"].Field.InternalName;
+            valueField = dependee[0]["Dependent"].ValueField;
           }
-        };
-      },
-      );
+          else {
+            updateField = null;
+          }
+        } while (updateField != null);
+
+        this.setState((prevState, props) => {
+          return {
+            ...prevState,
+            data: { ...prevState.data, [fieldName]: newValue },
+            fieldsSchema,
+            fieldErrors: {
+              ...prevState.fieldErrors,
+              [fieldName]:
+                (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
+                  ? strings.RequiredValueMessage
+                  : ''
+            }
+          };
+        },
+        );
+      }
+      else {
+        this.setState((prevState, props) => {
+          return {
+            ...prevState,
+            data: { ...prevState.data, [fieldName]: newValue },
+            fieldErrors: {
+              ...prevState.fieldErrors,
+              [fieldName]:
+                (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
+                  ? strings.RequiredValueMessage
+                  : ''
+            }
+          };
+        },
+        );
+      }
     }
   }
 
