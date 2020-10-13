@@ -70,7 +70,7 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-custom-links/assets/customlinks.gif
       author: João Mendes
       summary: In this web part you can full customize the background and foreground color, font size, width and height of links.
-      modifiedtext: October 05, 2020
+      modifiedtext: October 5, 2020
       modified: 2020-10-05
     - framework: React
       spfx: 1.10.0
@@ -80,7 +80,7 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-save-attachments/assets/ReactSaveAttachments.gif
       author: Aakash Bhardwaj
       summary: This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder.
-      modifiedtext: October 04, 2020
+      modifiedtext: October 4, 2020
       modified: 2020-10-04
     - framework: React
       spfx: 1.10.0
@@ -1165,7 +1165,6 @@ extra:
       thumbnailtype: video
       author: Velin Georgiev
       summary: This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easly be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called Swiper.
-      version: 0.0.3
       modifiedtext: November 1, 2019
       modified: 2019-11-01
     - framework: React
@@ -1200,8 +1199,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
       author: Dany Wyss, Harsha Vardhini, Ryan Schouten
       summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
-      modifiedtext: September 9, 2020
-      modified: 2020-09-12
+      modifiedtext: October 9, 2020
+      modified: 2020-10-09
     - framework: React
       spfx: 1.9.1
       year: 2019
@@ -1331,7 +1330,6 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular2-prototype/assets/preview.png
       author: Manish Garg, Daniel Gaeta
       summary: Sample To Do Web Part built with Angular2. This sample illustrates how you can use Angular2 with the SharePoint Framework.
-      version: 0.3
       modified: 2017-01-20
       modifiedtext: January 20, 2017
       status: Prototype
@@ -1633,7 +1631,6 @@ extra:
       thumbnailtype: video
       author: Elio Struyf
       summary: This is a sample project that contains a web part which makes use of the PnP SPFx Controls
-      version: 0.0.2
       modifiedtext: March 03, 2018
       modified: 2018-03-03
       pnpcontrols: PropertyFieldListPicker, PropertyFieldTermPicker, Placeholder, ListView, FileTypeIcon
@@ -1708,7 +1705,6 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-app-settings/assets/app-settings-class.PNG
       author: Velin Georgiev
       summary: This sample shows how AppSettings.ts file can be added and used within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects. That allows better DevOps and continuous integration (CI/CD) automation. The AppSettings.ts is transpiled/compiled with your SPFx solution which differs from the way the web.config. With .Net web.config file we would be able to update independently without the need of compiling DLLs. If that behavior is required, you can store your app settings in a SharePoint list and change them from there. However, that will have performance degradation over if the setting was part of the SPFx code where the logic can get a setting value in milliseconds.
-      version: 0.0.3
       modifiedtext: March 03, 2019
       modified: 2019-03-03
     - framework: React
@@ -1869,7 +1865,6 @@ extra:
       thumbnailtype: video
       author: Miguel Rabaca, Velin Georgiev, Austin Breslin
       summary: This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the Publish–subscribe pattern. It enables a web part or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it.
-      version: 0.0.3
       modifiedtext: November 18, 2018
       modified: 2018-11-18
     - framework: React
@@ -2138,7 +2133,6 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png
       author: Velin Georgiev
       summary: This sample uses the popular Jest Testing Framework with a SPFx client side solution. It is a SPFx-Jest-Enzyme-Sinon starter kit so you can start writing and debugging unit tests in typescript for your SPFx solution. The setup includes unit tests examples, code coverage reports in different formats, visual studio code unit test debug configurations for typescript, setting a coverage threshold (gates) for continuous integration and continuous deployment scenarios.
-      version: 0.0.5
       modifiedtext: June 23, 2019
       modified: 2019-06-23
     - framework: React
@@ -2221,7 +2215,6 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multilist-grid/src/images/ColumnTypes.PNG
       author: Russell Gove
       summary: React-multilist-grid is an SPFX web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type – you just need to create column mappings to tell the web part which fields to show in which columns of the grid.
-      version: 0.1
       modifiedtext: December 31, 2016
       modified: 2016-12-31
     - framework: React
@@ -2259,7 +2252,6 @@ extra:
       thumbnailtype: video
       author: Velin Georgiev
       summary: This sample uses the popular React Router library to create tab, multi-screen or single page app (spa) experience in React SPFx web part. This is useful when the web part is more complex and to simplify the user experience multiple screens or tabs are needed. The same approach can be taken when a single page app (SPA) has to be migrated to modern SharePoint sites.
-      version: 0.0.1
       modifiedtext: July 3, 2019
       modified: 2019-07-03
     - framework: React
@@ -2477,7 +2469,6 @@ extra:
       thumbnailtype: video
       author: Velin Georgiev
       summary: This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish–subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish–subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha.
-      version: 0.0.3
       modifiedtext: December 10, 2018
       modified: 2018-12-10
     - framework: React
@@ -2727,7 +2718,6 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-videolibrary/src/assets/react-3d-carousel.PNG
       author: Russell Gove
       summary: A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel
-      version: 0.1
       modifiedtext: December 31, 2016
       modified: 2016-12-31
     - framework: React
@@ -2764,7 +2754,6 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-yammer-api/assets/spfx-yammer-api-webpart.jpg
       author: Velin Georgiev
       summary: This sample shows how Yammer REST APIs can be consumed by using SharePoint Framework React web part and the Yammer JavaScript SDK. The SPFx web part contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience.
-      version: 0.0.1
       modifiedtext: April 19, 2017
       modified: 2017-04-19
     - framework: React
