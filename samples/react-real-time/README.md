@@ -44,8 +44,8 @@ Here is the solution overview:
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
@@ -56,7 +56,7 @@ Before starting, you'll need to install some prerequisites:
 - Install the latest release of [PnP PowerShell cmdlets 'SharePointPnPPowerShellOnline'](https://github.com/OfficeDev/PnP-PowerShell/releases) or a version compatible with the 201605 PnP schema version.
 - Install [Node.js](https://nodejs.org/en/) on your machine.
 - Install [Git for Windows](https://git-scm.com/download/win).
-- Get the [latest version](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) of the SharePoint Framework yeoman generator (in this case **SPFx Drop 5**) and make sure TypeScript 2.0 is available on your machine (`npm install -g typescript@latest`).
+- Get the [latest version](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) of the SharePoint Framework yeoman generator (in this case **SPFx Drop 5**) and make sure TypeScript 2.0 is available on your machine (`npm install -g typescript@latest`).
 - Create a site collection with the developer template.
 - Go to the ".\client" folder and install all dependencies listed in the package.json file by running the `npm install` cmd.
 
@@ -162,7 +162,7 @@ Version|Date|Comments
     </p>
 
 7. Go back to your list and add initial items in the list.
-8. In your SharePoint site, [upload the workbench.aspx page](https://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant) in the *Documents* library and make sure the `gulp serve` cmd is running. Then, add the *"RealTimeNewsFeed"* Web Part in your page. You should see newly created items.
+8. In your SharePoint site, [upload the workbench.aspx page](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant) in the *Documents* library and make sure the `gulp serve` cmd is running. Then, add the *"RealTimeNewsFeed"* Web Part in your page. You should see newly created items.
 
     <p align="center">
         <img width="400" src="./assets/spfx-initial.png"/>

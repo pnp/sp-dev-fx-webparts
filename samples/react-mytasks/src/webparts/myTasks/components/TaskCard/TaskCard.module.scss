@@ -1,50 +1,50 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
- // Import all mixins and variables.
 
-.buttonIconStatusInProgressNotStarted
-{ background-Color: white;
-   position: absolute;
-   top:22px;
-   right: 15px;
-   border-radius: 50%;
-   height: 27px;
-   width: 27px;
-   border-color:#afb8bd;;
-   border-width: 1px;
-   border-style: solid;
-   color:#a6a6a6;
-   margin-right: 15px;
+@import "~office-ui-fabric-react/dist/sass/References.scss";
 
+// Import all mixins and variables.
+
+.buttonIconStatusInProgressNotStarted {
+  background-color: white;
+  position: absolute;
+  top: 22px;
+  right: 15px;
+  border-radius: 50%;
+  height: 27px;
+  width: 27px;
+  border-color: #afb8bd;
+  border-width: 1px;
+  border-style: solid;
+  color: #a6a6a6;
+  margin-right: 15px;
 }
 
-.buttonIconStatusCompleted
-{ background-Color: white;
-   position: absolute;
-   top: 22px;
-   right: 15px;
-   border-radius: 50%;
-   height: 27px;
-   width: 27px;
-   border-color:#afb8bd;;
-   border-width: 1px;
-   border-style: solid;
-   color:#a6a6a6;
-   margin-right: 15px;
-
+.buttonIconStatusCompleted {
+  background-color: white;
+  position: absolute;
+  top: 22px;
+  right: 15px;
+  border-radius: 50%;
+  height: 27px;
+  width: 27px;
+  border-color: #afb8bd;
+  border-width: 1px;
+  border-style: solid;
+  color: #a6a6a6;
+  margin-right: 15px;
 }
 
 .buttonIconStatusInProgressNotStarted:hover {
-  background-Color: green;
+  background-color: green;
   color: $ms-color-white;
 }
 
 .buttonIconStatusCompleted:hover {
-
   border-color: $ms-color-neutralPrimary;
 }
+
 .documentCard {
   max-width: 282px;
-  min-width:282px;
+  min-width: 282px;
   min-height: 345px;
   display: inline-block;
   vertical-align: top;
@@ -56,14 +56,15 @@
 
 .documentCard:focus {
   outline: none;
-  }
+}
 
-  .documentCardCompleted:focus {
-    outline: none;
-    }
+.documentCardCompleted:focus {
+  outline: none;
+}
+
 .documentCardCompleted {
   max-width: 282px;
-  min-width:282px;
+  min-width: 282px;
   min-height: 345px;
   display: inline-block;
   vertical-align: top;
@@ -73,44 +74,45 @@
   background-color: #eaeaea;
 }
 
-.documentCardTitleStyle  {
+.documentCardTitleStyle {
   height: 100%;
-  font-Weight: 'bold'
+  font-weight: "bold";
 }
 
 .documentCardTitle {
   display: flex;
-   width: 235px;
-  height: 30 ;
+  width: 235px;
+  height: 30;
   margin-left: 15px;
   margin-top: 10px;
   justify-content: left;
-
 }
 
 .iconBottomDiv {
   display: flex;
   align-items: center;
-
-
 }
 
 .taskDetails {
- // display: inline-block;
- // padding: 5px;
+  // display: inline-block;
+  // padding: 5px;
   @include ms-fontSize-sPlus;
 }
-.dueDate{
+
+.dueDate {
   //display: "inline-block";
   padding: 5px;
+
   @include ms-fontSize-sPlus;
+
   margin-left: 10px;
   background-color: "red";
-  color: "white",
+  color: "white";
 }
+
 .progressIcon {
   font-size: 22px;
-  height: 22x;
+  height: 22px;
   width: 22px;
   margin-left: 15px;
   margin-right: 10px;
@@ -119,15 +121,17 @@
   color: green;
   margin-top: 10px;
 }
-.progress{
- // color: $ms-color-themePrimary;
+
+.progress {
+  // color: $ms-color-themePrimary;
   font-size: 16px;
   // @include ms-fontSize-l;
   vertical-align: middle;
   display: inline-block;
   margin-top: 10px;
 }
-.iconClass{
+
+.iconClass {
   font-size: 14px;
   height: 14px;
   width: 14px;
@@ -137,7 +141,8 @@
   vertical-align: "middle";
   color: $ms-color-themePrimary;
 }
-.iconClassDue{
+
+.iconClassDue {
   font-size: 14px;
   height: 14px;
   width: 14px;
@@ -147,37 +152,37 @@
   vertical-align: middle;
 }
 
-.taskTitleCompleted{
+.taskTitleCompleted {
   text-decoration: line-through;
 }
 
-.statusIconStyleInProgressNotStarted{
+.statusIconStyleInProgressNotStarted {
   font-size: 25;
   padding: 0;
   width: 21px;
   height: 21px;
   vertical-align: top;
   position: absolute;
-  margin-left: 0px;
-  margin-right: 0px;
-
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.statusIconStyleCompleted{
-   font-size: 12px;
-    padding: 0px;
-    width: 14px;
-    height: 14px;
-    align-items: center;
-    vertical-align: top;
-    position: absolute;
-    top: 3px;
-    margin-left: 1px;
-    margin-right: 0px;
+.statusIconStyleCompleted {
+  font-size: 12px;
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  align-items: center;
+  vertical-align: top;
+  position: absolute;
+  top: 3px;
+  margin-left: 1px;
+  margin-right: 0;
 }
-.textStyles{
-   padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 15px;
-    padding-top: 0px;
+
+.textStyles {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-top: 0;
 }

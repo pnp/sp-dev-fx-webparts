@@ -114,7 +114,6 @@ export default class RealtimePluginDemo extends React.Component<IRealtimePluginD
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'randomizeData',

@@ -31,37 +31,38 @@ It uses Microsoft Graph API to get thumbnails and image/video url and use PnPjs 
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Online](https:/dev.office.com/sharepoint)
+* [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## WebPart Properties
  
-Property |Type|Required| comments
---------------------|----|--------|----------
-Site Url of library | Text| yes|
-Library| Choice/Dropdown | yes|  this is filled with all libraries
-number images to load | number| yes | number between 1 and 200
+| Property              | Type            | Required | comments                          |
+| --------------------- | --------------- | -------- | --------------------------------- |
+| Site Url of library   | Text            | yes      |
+| Library               | Choice/Dropdown | yes      | this is filled with all libraries |
+| number images to load | number          | yes      | number between 1 and 200          |
 
  
 
 ## Solution
 The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react components, react-slick Component
 
-Solution|Author(s)
---------|---------
-Multimedia Gallery  Web Part|João Mendes
+| Solution                     | Author(s)   |
+| ---------------------------- | ----------- |
+| Multimedia Gallery  Web Part | João Mendes |
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-1.0.0|June 24, 2019|Initial release
+| Version | Date          | Comments                                                | Author(s)                                                          |
+| ------- | ------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
+| 1.0.0   | June 24, 2019 | Initial release                                         | João Mendes                                                        |
+| 1.1.0   | July 10, 2020 | Version Conflict with websocket-driver | Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at)) |
 
 
 ## Disclaimer

@@ -13,6 +13,9 @@
   },
   "externals": {},
   "localizedResources": {
-    "KanbanBoardWebPartStrings": "lib/webparts/kanbanBoard/loc/{locale}.js"
+    "KanbanBoardStrings": "lib/kanban/loc/{locale}.js",
+    "KanbanBoardWebPartStrings": "lib/webparts/kanbanBoard/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }

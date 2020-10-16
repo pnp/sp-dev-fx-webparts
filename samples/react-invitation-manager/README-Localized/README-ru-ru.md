@@ -29,7 +29,7 @@ extensions:
 
 NB Я ожидаю общедоступную версию от HttpGraphClient (в условиях разрешения), чтобы использовать его в сценарии.
 Ознакомьтесь с этой статьей:
-* [HttpGraphClient](https://dev.office.com/sharepoint/docs/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
+* [HttpGraphClient](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/call-microsoft-graph-from-your-web-part)
 
 ![Веб-часть диспетчера приглашений, отображаемая в рабочей области SharePoint](./assets/SPFx-Invitation-Manager.gif)
 
@@ -38,8 +38,8 @@ NB Я ожидаю общедоступную версию от HttpGraphClient 
 
 ## Сфера применения
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [клиент разработчика приложений для Office 365;](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [клиент разработчика приложений для Office 365;](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Решение
 

@@ -1,0 +1,25 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '../Shared.module.scss';
+
+.error {
+  .container {
+    margin: 0px auto;
+    padding: 20px;
+    background-color: $ms-color-neutralLight;
+    display: flex;
+  }
+  .errorTextContainer {
+    flex-grow: 1;
+    line-height: 40px;
+    height: 40px;
+    vertical-align: middle;
+  }
+  .errorIconContainer {
+    @include ms-font-xxl;
+    color: $ms-color-red;
+    padding-right: 10px;
+    line-height: 40px;
+    height: 40px;
+    vertical-align: middle;
+  }
+}

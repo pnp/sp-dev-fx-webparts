@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+        <!-- SPFxTimelineLink Site Column -->
+        <Field ID="{D1DD9D2D-6FBB-4419-823C-124524BB8043}" 
+               Name="SPFxTimelineLink"
+               DisplayName="Link" 
+               StaticName="SPFxTimelineLink"
+               Group="SPFx Site Columns"
+               Type="URL"
+               Format="Hyperlink" 
+               Required="FALSE" 
+               EnforceUniqueValues="FALSE" 
+               Indexed="FALSE" 
+        />
+        
+        <!-- SPFxTimelineDate Site Column -->
+        <Field ID="{CCCFD821-A9D6-4485-ADC5-B5DE16DDC265}" 
+               Name="SPFxTimelineDate" 
+               DisplayName="Event Date"
+               StaticName="SPFxTimelineDate"
+               Group="SPFx Site Columns"
+               Type="DateTime" 
+               Format="DateOnly" 
+               Required="TRUE" 
+               EnforceUniqueValues="FALSE" 
+               Indexed="FALSE" 
+        />
+
+        <!-- SPFxTimelinePicture Site Column -->
+        <Field ID="{FAF70121-54EC-47DC-B454-50402EB30345}" 
+               Name="SPFxTimelinePicture" 
+               DisplayName="Picture" 
+               StaticName="SPFxTimelinePicture"
+               Group="SPFx Site Columns"
+               Type="URL" 
+               Format="Image"
+               Height="150" 
+               Width="224" 
+               Required="FALSE"
+               Indexed="FALSE"
+        />
+        
+        <!-- SPFxTimelineDescription Site Column -->
+        <Field ID="{D1A0FFDC-1DF3-463E-8948-CC2855AC917E}" 
+               Name="SPFxTimelineDescription" 
+               DisplayName="Description" 
+               StaticName="SPFxTimelineDescription" 
+               Description="Description of item" 
+               Group="SPFx Site Columns"
+               Type="Note" 
+               RichText="FALSE" 
+               NumLines="6"
+               Required="FALSE"
+               Indexed="FALSE"
+        />
+
+        <!-- Parent ContentType: Item (0x0100) -->
+	<ContentType ID="0x0100945DE9A91BAB454FB867B17618D15F05"
+                     Name="Timeline" 
+		     Group="SPFx Content Types" 
+		     Description="Content type for Timeline"
+		     Inherits="FALSE"
+                     Version="0"
+                     Hidden="FALSE"
+                     Sealed="FALSE">
+		<FieldRefs>
+                        <!-- OOB Title Column -->
+                        <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+			<!-- SPFxTimelineLink Site Column -->
+			<FieldRef ID="{D1DD9D2D-6FBB-4419-823C-124524BB8043}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+                        <!-- SPFxTimelineDate Site Column -->
+			<FieldRef ID="{CCCFD821-A9D6-4485-ADC5-B5DE16DDC265}" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+                        <!-- SPFxTimelinePicture Site Column -->
+			<FieldRef ID="{FAF70121-54EC-47DC-B454-50402EB30345}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+                        <!-- SPFxTimelineDescription Site Column -->
+			<FieldRef ID="{D1A0FFDC-1DF3-463E-8948-CC2855AC917E}" Required="FALSE" ShowInNewForm="TRUE" ShowInEditForm="TRUE" />
+		</FieldRefs>
+	</ContentType>
+
+   <ListInstance 
+           CustomSchema="schema.xml"
+           FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+           Title="Timeline" 
+           Description="List with timeline information"
+           TemplateType="100"
+           Url="Lists/Timeline">
+           <Data>
+            <Rows>
+                <Row>
+                    <Field Name="Title">Timeline rolled out</Field>
+                    <Field Name="SPFxTimelineDate">2020-07-15T21:00:00Z</Field>
+                </Row>
+                <Row>
+                    <Field Name="Title">Add your first event</Field>
+                    <Field Name="SPFxTimelineDate">2020-07-22T21:00:00Z</Field>
+                </Row>
+            </Rows>
+           </Data>
+   </ListInstance>
+
+</Elements>

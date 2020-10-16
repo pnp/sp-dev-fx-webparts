@@ -109,7 +109,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
 
     // put everything together in a nice little calendar view
     return (
-      <div className={css(styles.calendarFeedSummary, styles.webPartChrome)}  style={{backgroundColor: semanticColors.bodyBackground}}>
+      <div className={css(styles.calendarFeedSummary, styles.webPartChrome)} style={{ backgroundColor: semanticColors.bodyBackground }}>
         <div className={css(styles.webPartHeader, styles.headerSmMargin)}>
           <WebPartTitle displayMode={this.props.displayMode}
             title={this.props.title}
@@ -265,7 +265,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
             event={item}
             isNarrow={true}
             themeVariant={this.props.themeVariant}
-             />
+          />
         )} />
       {usePaging &&
         <Pagination
@@ -307,7 +307,7 @@ export default class CalendarFeedSummary extends React.Component<ICalendarFeedSu
                 event={event}
                 isNarrow={false}
                 themeVariant={this.props.themeVariant} />
-                );
+              );
             })}
           </FilmstripLayout>
         </div>

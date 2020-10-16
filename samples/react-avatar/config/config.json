@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "avatar-generator-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/avatarGenerator/AvatarGeneratorWebPart.js",
+          "manifest": "./src/webparts/avatarGenerator/AvatarGeneratorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AvatarGeneratorWebPartStrings": "lib/webparts/avatarGenerator/loc/{locale}.js"
+  }
+}

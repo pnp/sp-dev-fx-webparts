@@ -1,0 +1,20 @@
+{
+  "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+  "alias": "React",
+  "componentType": "Library",
+  "version": "16.8.5",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "react-16-bundle",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "react-16-bundle": {
+        "type": "path",
+        "path": "dist/react-16-bundle.js"
+      }
+    }
+  },
+  "isInternal": true
+}

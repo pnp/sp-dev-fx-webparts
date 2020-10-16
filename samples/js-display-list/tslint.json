@@ -1,3 +1,7 @@
 {
-    "rulesDirectory": "./config"
+    "rulesDirectory": [],
+    "extends": "@microsoft/sp-tslint-rules/base-tslint.json",
+    "rules": {
+        "no-empty": true
+      }
 }

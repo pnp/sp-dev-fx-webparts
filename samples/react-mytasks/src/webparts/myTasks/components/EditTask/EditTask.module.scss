@@ -1,16 +1,17 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
-.selectPlanContainer{
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.selectPlanContainer {
   display: flex;
   align-items: center;
 }
 
 .checkListItem {
   display: flex;
-  justify-Content:start;
-  align-Items:center;
-  margin-Top:0px;
-  max-Width:100%;
-  margin-bottom: 0px;
+  justify-content: start;
+  align-items: center;
+  margin-top: 0;
+  max-width: 100%;
+  margin-bottom: 0;
 }
 
 .checkListItem:hover {

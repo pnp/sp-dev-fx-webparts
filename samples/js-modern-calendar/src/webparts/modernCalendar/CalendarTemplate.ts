@@ -34,7 +34,7 @@ export default class CalendarTemplate {
     `;
     }
 
-    public static themeBase: string = `https://publiccdn.sharepointonline.com/pcpro365.sharepoint.com/163800463de5f9285ad4f6f9cc0a97985b96b057e062d4733849cc0fc90eeffbd6d72bb8/calendar/themes/`;
+    public static themeBase: string = `https://code.jquery.com/ui/1.12.1/themes/`;
 
     public static themeNames: Array<string> = [
         'default',
@@ -63,12 +63,12 @@ export default class CalendarTemplate {
         'ui-darkness',
         'ui-lightness',
         'vader'
-    ]
+    ];
 
     public static theme(): IPropertyPaneDropdownOption[] {
         var themes: IPropertyPaneDropdownOption[] = [];
         CalendarTemplate.themeNames.forEach(function(name,index) {
-            themes.push({key: CalendarTemplate.themeBase + name + '/jquery-ui.min.css', text: name.toLocaleUpperCase()})
+            themes.push({key: CalendarTemplate.themeBase + name + '/jquery-ui.min.css', text: name.toLocaleUpperCase()});
         });
         return themes;
     }

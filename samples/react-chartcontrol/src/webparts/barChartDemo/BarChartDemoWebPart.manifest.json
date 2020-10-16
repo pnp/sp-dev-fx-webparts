@@ -3,7 +3,7 @@
   "id": "74f7231a-c3f1-4ef5-94e7-3d2dd97cb39b",
   "alias": "BarChartDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

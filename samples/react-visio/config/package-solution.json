@@ -3,10 +3,17 @@
   "solution": {
     "name": "react-visio-client-side-solution",
     "id": "0ad401f1-b158-4626-8e71-cf27b1f4848d",
-    "version": "1.0.0.0",
+    "version": "1.6.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "000000"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-visio.sppkg"

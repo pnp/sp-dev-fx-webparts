@@ -28,40 +28,50 @@
 
 ![directory](/samples/react-directory/assets/react-directory5.jpg) 
 
+![directory](./assets/react-directory-withPaging.png) 
+
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+
+![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
-* [SharePoint Online](https:/dev.office.com/sharepoint)
+* [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Microsoft Teams](https://products.office.com/en-US/microsoft-teams/group-chat-software)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## WebPart Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
-Web Part Title | Text| no|
-
+Title | Text| no|WebPart Title
+searchFirstName | boolean|no| Lastname or Firstname search query
+Properties to search | text | no | By default **FirstName,LastName,WorkEmail,Department** are used for search. You can add custom properties separated by comma.
+Results per page | number | Number of people result to be displayed per page. Max of **20** is allowed, default of **10** is set.
 
 
  
 
 ## Solution
-The web part Use PnPjs library, Office-ui-fabric-react components
+
+The web part use PnPjs library, Office-ui-fabric-react components
 
 Solution|Author(s)
 --------|---------
-Directory Web Part|João Mendes
+Directory Web Part| João Mendes
+Directory Web Part| Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
+Directory Web Part| Sudharsan K ([@sudharsank](https://twitter.com/sudharsank))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0|July 29, 2019|Initial release
+1.0.1|July 19, 2020|Bugfix and mock-service for workbench (```LivePersonaCard``` not supported in workbench)
+2.0.0|Sep 18 2020|React hooks, paging, dynamic search props, result alignment using office ui fabric stack.
 
 
 ## Disclaimer

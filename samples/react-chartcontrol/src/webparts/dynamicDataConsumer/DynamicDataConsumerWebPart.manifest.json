@@ -3,7 +3,7 @@
   "id": "d5db1f38-c34b-4083-b2b0-99b09d9161b1",
   "alias": "DynamicDataConsumerWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

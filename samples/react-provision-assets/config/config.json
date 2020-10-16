@@ -1,13 +1,2 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/reactProvisionAssets/ReactProvisionAssetsWebPart.js",
-      "manifest": "./src/webparts/reactProvisionAssets/ReactProvisionAssetsWebPart.manifest.json",
-      "outputPath": "./dist/react-provision-assets.bundle.js"
-    }
-  ],
-  "externals": {},
-  "localizedResources": {
-    "reactProvisionAssetsStrings": "webparts/reactProvisionAssets/loc/{locale}.js"
-  }
 }

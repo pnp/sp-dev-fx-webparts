@@ -2,7 +2,7 @@
 name: "\U0001F4A1 Suggestion"
 about: Suggest an enhancement to make one of our web part samples even better
 title: Let's make SAMPLE even better
-labels: ''
+labels: type:enhancement
 assignees: ''
 
 ---

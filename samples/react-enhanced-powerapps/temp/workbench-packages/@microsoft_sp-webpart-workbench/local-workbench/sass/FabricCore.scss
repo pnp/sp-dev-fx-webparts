@@ -1,0 +1,25 @@
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// office-ui-fabric-core-bundle
+// --------------------------------------------------
+// Variables and mixins that can be referenced without outputting any CSS.
+
+// Variables and mixins
+@import './SPFabricCore';
+
+/**
+ * Partials that output CSS
+ */
+
+// @import '~office-ui-fabric-core/dist/sass/Animation';
+// @import '~office-ui-fabric-core/dist/sass/BrandIcon';
+// @import '~office-ui-fabric-core/dist/sass/Color';
+@import '~office-ui-fabric-core/dist/sass/Font.Definitions';
+@import '~office-ui-fabric-core/dist/sass/Font';
+@import '~office-ui-fabric-core/dist/sass/Grid';
+// @import '~office-ui-fabric-core/dist/sass/Icon.Definitions';
+// @import '~office-ui-fabric-core/dist/sass/Icon';
+@import '~office-ui-fabric-core/dist/sass/Responsive';
+@import '~office-ui-fabric-core/dist/sass/Utility';
+@import '~office-ui-fabric-core/dist/sass/Wrapper';

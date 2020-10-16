@@ -8,7 +8,7 @@ This sample contains several web parts that demonstrate how to use the ChartCont
 
 The web parts in this sample are not intended to be used in production -- they simply demonstrate how you would use all the capabilities of the ChartControl.
 
-> **NOTE:** If you are looking for a ready-to-use web part, please look into [joelfmrodrigues' cool react-modern-charts sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-modern-charts), which was built without the ChartControl.
+> **NOTE:** If you are looking for a ready-to-use web part, please look into [joelfmrodrigues' cool react-modern-charts sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-modern-charts), which was built without the `ChartControl`.
 
 ## About the samples
 
@@ -16,7 +16,7 @@ We created the ChartControl by popular request of [@pnp/spfx-controls-react](htt
 
 To keep things as easy as possible, the ChartControl supports (most) of the Chart.js functionality (yes, even the use of plugins!).
 
-The samples in this solution mostly use code found from the Chart.js code samples -- with little or no conversion. Whereever possible, we localized strings, moved colors and styles to the web part's SCSS, and used Office Fabric UI components instead of regular buttons.
+The samples in this solution mostly use code found from the Chart.js code samples -- with little or no conversion. Wherever possible, we localized strings, moved colors and styles to the web part's SCSS, and used Office Fabric UI components instead of regular buttons.
 
 Each sample retrieves data and passes it to the ChartControl using one of the 3 methods:
 
@@ -170,12 +170,12 @@ This sample shows how to use X and Y coordinate data elements in a scatter chart
 
 ## Used SharePoint Framework Version
 
-![SPFx v1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg)
+![SPFx v1.10.0](https://img.shields.io/badge/SPFx-1.10.1-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -192,6 +192,7 @@ react-chart-control | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @be
 Version|Date|Comments
 -------|----|--------
 1.0|January, 2019|Initial release
+1.1|July 02, 2020|Upgraded to SPFx 1.10.0
 
 ## Disclaimer
 

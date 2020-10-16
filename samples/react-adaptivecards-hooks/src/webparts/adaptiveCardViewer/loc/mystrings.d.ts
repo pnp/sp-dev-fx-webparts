@@ -36,6 +36,7 @@ declare interface IAdaptiveCardViewerWebPartStrings {
   AdaptiveTemplatingEnd: string;
   TemplateJsonError: string;
   DataJsonError: string;
+  TemplatingJsonError: string;
 }
 
 declare module 'AdaptiveCardViewerWebPartStrings' {

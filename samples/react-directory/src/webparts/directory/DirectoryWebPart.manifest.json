@@ -22,7 +22,9 @@
     "officeFabricIconFontName": "ProfileSearch",
     "properties": {
       "title": "Directory",
-      "searchFirstName":  0
+      "searchFirstName":  0,
+      "searchProps": "FirstName,LastName,PreferredName,WorkEmail,Department",
+      "pageSize": 10
     }
   }]
 }

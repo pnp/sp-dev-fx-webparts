@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-avatars-client-side-solution",
+    "id": "b96dfed7-ec48-4082-ba50-f6c7b09143c7",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadWrite"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-avatars.sppkg"
+  }
+}

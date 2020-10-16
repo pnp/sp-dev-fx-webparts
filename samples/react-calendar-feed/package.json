@@ -1,6 +1,6 @@
 {
   "name": "react-calendar-feed",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -42,6 +42,8 @@
     "@types/react": "16.8.8"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "@microsoft/rush-stack-compiler-2.9": "0.7.16",
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",
     "@microsoft/sp-build-web": "1.10.0",
@@ -51,6 +53,8 @@
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
-    "gulp": "~3.9.1"
+    "babel-loader": "^8.1.0",
+    "gulp": "~3.9.1",
+    "webpack": "^4.43.0"
   }
 }
