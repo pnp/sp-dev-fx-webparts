@@ -19,8 +19,8 @@ extensions:
 
 ## Summary
 
-This project shows how to integrate Tailwind CSS framework into a SPFx React project by:
-- Create a custom Talwind CSS config file
+This project shows how to integrate [Tailwind CSS](https://tailwindcss.com/) framework into a SPFx React project by:
+- Create a custom Tailwind CSS config file
 - Create a custom Gulp Task to process the Tailwind CSS generated file and optimize it
 - Using CSS custom properties to manage in Tailwind CSS Classes the Theme Variant into sections
 - Avoid writing SASS but only use Tailwind CSS classes to style components
@@ -29,7 +29,7 @@ This project shows how to integrate Tailwind CSS framework into a SPFx React pro
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.11-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
