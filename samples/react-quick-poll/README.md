@@ -22,7 +22,7 @@
     * **_Start Date_** - Date when the end user can start seeing the poll question.
     * **_End Date_** - Last day of the poll question visible to the end user.
 
-3. **_Success Message_** - Message to be displayed to the user after successful submission. It is optional, if not provided the default message '**Thank you for your submission**' will be displayed.
+3. **_Success Message_** - Message to be displayed to the user after successfull submission. It is optional, if not provided the default message '**Thank you for your submission**' will be displayed.
 
 4. **_Response Message_** - Message to be displayed to the user with the user response, once the user has submitted. It is optional, if not provided the default message '**You voted for: ~User Response~**' will be displayed below the chart.
 
@@ -36,31 +36,32 @@
 * Make sure the **Multi Choice** option is chosen wisely, do not change once the user started to response to the poll.
 
 ## Preview
-![Advanced-Comments-Box](./assets/react-quick-poll.gif)
+![React-Quick-Poll](./assets/react-quick-poll.gif)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
-> **@microsoft/generator-sharepoint - 1.10.0**
+> **@microsoft/generator-sharepoint - 1.11.0**
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-react-quick-poll | Sudharsan K.([@sudharsank](https://twitter.com/sudharsank), [Know More](http://windowssharepointserver.blogspot.com/))
+react-quick-poll | Sudharsan K.([@sudharsank](https://twitter.com/sudharsank), [Know More](https://spknowledge.com/))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0.1|Feb 24 2020|Initial release
+2.0.0.0|Oct 17 2020|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -92,5 +93,3 @@ This solution doesn't work on local mode.
 #### SharePoint Mode
 If you want to try on a real environment, open:
 [O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
-
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-quick-poll" />
