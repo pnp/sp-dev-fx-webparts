@@ -19,7 +19,7 @@ extensions:
 
 ## Summary
 
-This project shows how to integrate Tailwind CSS into a SPFx React project by:
+This project shows how to integrate Tailwind CSS framework into a SPFx React project by:
 - Create a custom Talwind CSS config file
 - Create a custom Gulp Task to process the Tailwind CSS generated file and optimize it
 - Using CSS custom properties to manage in Tailwind CSS Classes the Theme Variant into sections
