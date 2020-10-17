@@ -9,6 +9,8 @@ import * as strings from 'CalendarWebPartStrings';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 require('./calendar.css');
 import { CommunicationColors ,  FluentCustomizations, FluentTheme  } from '@uifabric/fluent-theme';
+import CalendarToolbar from './CustomToolbar';
+import Year from './Year';
 
 import {
   Customizer,
@@ -311,7 +313,6 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
    * @memberof Calendar
    */
   public render(): React.ReactElement<ICalendarProps> {
-
     return (
       <Customizer {...FluentCustomizations}>
 
@@ -350,11 +351,19 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                       eventPropGetter={this.eventStyleGetter}
                       onSelectSlot={this.onSelectSlot}
                       components={{
-                        event: this.renderEvent
-
+                        event: this.renderEvent,
+                        toolbar: CalendarToolbar,
                       }}
                       onSelectEvent={this.onSelectEvent}
                       defaultDate={moment().startOf('day').toDate()}
+                      /*views={{
+                        day: true,
+                        week: true,
+                        month: true,
+                        agenda: true,
+                        work_week: false
+                      }}*/
+                      //views={['month','week','day','agenda']}
                       messages={
                         {
                           'today': strings.todayLabel,
@@ -363,7 +372,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                           'month': strings.monthLabel,
                           'week': strings.weekLabel,
                           'day': strings.dayLable,
-                          'showMore': total => `+${total} ${strings.showMore}`
+                          'showMore': total => `+${total} ${strings.showMore}`,
                         }
                       }
                     />

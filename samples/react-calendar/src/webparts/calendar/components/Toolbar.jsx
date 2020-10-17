@@ -10,10 +10,11 @@ export default class CalendarToolbar extends Toolbar {
 	}
 
 	render() {
-		return (
+£		return (
 			<div>
 				<div className="rbc-btn-group">
-					<button type="button" onClick={() => this.navigate('TODAY')}>{strings.todayLabel}</button>
+					{/*<button type="button" onClick={() => this.navigate('TODAY')}>{strings.todayLabel}</button>*/}
+					<button type="button" onClick={() => this.navigate('TODAY')}>VANDAAGHAHA</button>
 					<button type="button" onClick={() => this.navigate('PREV')}>{strings.previousLabel}</button>
 					<button type="button" onClick={() => this.navigate('NEXT')}>{strings.nextLabel}</button>
 				</div>
@@ -22,10 +23,11 @@ export default class CalendarToolbar extends Toolbar {
 					<button type="button" onClick={this.view.bind(null, 'month')}>{strings.monthLabel}</button>
 					<button type="button" onClick={this.view.bind(null, 'week')}>{strings.weekLabel}</button>
 					<button type="button" onClick={this.view.bind(null, 'day')}>{strings.dayLable}</button>
+					<button type="button" onClick={this.view.bind(null, 'year')}>{"YEAR"}</button>
 					<button type="button" onClick={this.view.bind(null, 'agenda')}>{strings.agenda}</button>
 				</div>
 			</div>
 		);
 	}
 }
-module.export = CalendarToolbar;
+//module.export = CalendarToolbar;
