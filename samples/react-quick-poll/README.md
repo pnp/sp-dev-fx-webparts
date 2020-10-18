@@ -1,6 +1,7 @@
 # React Quick Poll
 
 ## Summary
+
 > This component is developed for the users who really need to create a **_Poll_** within a minute and with less maintenance. **_'QuickPoll'_** list will be created automatically to store the user response.  
 > Following are some of the features of this component.
 * **_Easy_** to setup with most of the configurations are optional.
@@ -36,10 +37,12 @@
 * Make sure the **Multi Choice** option is chosen wisely, do not change once the user started to response to the poll.
 
 ## Preview
+
 ![React-Quick-Poll](./assets/react-quick-poll.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+
+![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
@@ -64,6 +67,7 @@ Version|Date|Comments
 2.0.0.0|Oct 17 2020|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ## Minimal Path to Awesome
@@ -72,24 +76,27 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `gulp bundle --ship && gulp package-solution --ship`
-- Add the .sppkg file to the app catalog and add the **'_Quick Poll_'** web part to the page.
+- Add the `.sppkg` file to the app catalog and add the **'_Quick Poll_'** web part to the page.
 
 ## Features
+
 - Used [PnP Property Pane Controls](https://sharepoint.github.io/sp-dev-fx-property-controls/) to create the property pane controls
     * [PropertyFieldToggleWithCallout](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldToggleWithCallout/)
     * [PropertyFieldCollectionData](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldCollectionData/)
     * [PropertyFieldChoiceGroupWithCallout](https://sharepoint.github.io/sp-dev-fx-property-controls/controls/PropertyFieldChoiceGroupWithCallout/)
     * PropertyPaneTextField (From base property controls)
-- Used [PnP Reusable REact Controls](https://sharepoint.github.io/sp-dev-fx-controls-react/)
+- Used [PnP Reusable React Controls](https://sharepoint.github.io/sp-dev-fx-controls-react/)
     * [Placeholder](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/Placeholder/)
     * [ChartControl](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/ChartControl/)
 - Used few styles and controls (Text, MessageBar, ProgressIndicator, PrimaryButton, ChoiceGroup, List, Checkbox) from [Office UI Fabric](https://developer.microsoft.com/en-us/fabric)
 - Used [PnP](https://pnp.github.io/pnpjs/) for communication with SharePoint.
 - Used [Moment.js](https://momentjs.com/) for datetime formatting.
 
-#### Local Mode
+### Local Mode
+
 This solution doesn't work on local mode.
 
-#### SharePoint Mode
+### SharePoint Mode
+
 If you want to try on a real environment, open:
 [O365 Workbench](https://your-domain.sharepoint.com/_layouts/15/workbench.aspx)
