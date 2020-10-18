@@ -9,7 +9,6 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart, WebPartContext } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'PersonalGreetingWebPartStrings';
 import PersonalGreeting from './components/PersonalGreeting';
 import { IPersonalGreetingProps } from './components/IPersonalGreetingProps';
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
