@@ -64,6 +64,16 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tailwindcss
+      name: react-tailwindcss
+      title: Tailwind CSS
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif
+      author: Fabio Franzini
+      summary: This project shows how to integrate Tailwind CSS framework into a SPFx React project.
+      modifiedtext: October 17, 2020
+      modified: 2020-10-17
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-custom-links
       name: react-custom-links
       title: Custom Links
@@ -988,10 +998,10 @@ extra:
       summary: The web part pulls in the current user's name and displays it on the page. The greeting text before the name is customizable through the property pane. Additionally the position of the greeting and color of the text can be adjusted through the property pane as well.
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-personal-greeting/assets/react-personal-greeting.gif
       framework: React
-      spfx: 1.10.0
+      spfx: 1.11.0
       author: Zach Roberts
-      modifiedtext: April 14, 2020
-      modified: 2020-04-14
+      modifiedtext: September 24, 2020
+      modified: 2020-08-24
       level: 100
     - url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-versiondisplay
       name: react-versiondisplay
@@ -2856,6 +2866,7 @@ extra:
     - Eric Overfield
     - Eric Skaggs
     - Erik Benke
+    - Fabio Franzini
     - Franck Cornu
     - Federico Porceddu
     - Gary Pretty
