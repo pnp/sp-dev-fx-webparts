@@ -12,6 +12,8 @@ import { CommunicationColors ,  FluentCustomizations, FluentTheme  } from '@uifa
 import CalendarToolbar from './CustomToolbar';
 import Year from './Year';
 
+import { Calendar as OriCalendar, momentLocalizer  } from 'react-big-calendar';
+
 import {
   Customizer,
   IPersonaSharedProps,
@@ -54,9 +56,8 @@ import { IEventData } from './../../../services/IEventData';
 import { IUserPermissions } from './../../../services/IUserPermissions';
 
 
-
-const localizer = BigCalendar.momentLocalizer(moment);
-
+//const localizer = BigCalendar.momentLocalizer(moment);
+const localizer = momentLocalizer(moment);
 /**
  * @export
  * @class Calendar
@@ -341,7 +342,41 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
               <div>
                 {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> :
                   <div className={styles.container}>
-                    <BigCalendar
+                    <OriCalendar
+                      dayPropGetter = {this.dayPropGetter}
+                      localizer={localizer}
+                      selectable
+                      events={this.state.eventData}
+                      startAccessor="EventDate"
+                      endAccessor="EndDate"
+                      eventPropGetter={this.eventStyleGetter}
+                      onSelectSlot={this.onSelectSlot}
+                      components={{
+                        event: this.renderEvent
+                      }}
+                      onSelectEvent={this.onSelectEvent}
+                      defaultDate={moment().startOf('day').toDate()}
+                      views={{
+                        day: true,
+                        week: true,
+                        month: true,
+                        agenda: true,
+                        work_week: Year
+                      }}
+                      messages={
+                        {
+                          'today': strings.todayLabel,
+                          'previous': strings.previousLabel,
+                          'next': strings.nextLabel,
+                          'month': strings.monthLabel,
+                          'week': strings.weekLabel,
+                          'day': strings.dayLable,
+                          'showMore': total => `+${total} ${strings.showMore}`,
+                          'work_week': strings.yearHeaderLabel
+                        }
+                      }
+                    />
+                    {/*<BigCalendar
                       dayPropGetter = {this.dayPropGetter}
                       localizer={localizer}
                       selectable
@@ -356,13 +391,13 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                       }}
                       onSelectEvent={this.onSelectEvent}
                       defaultDate={moment().startOf('day').toDate()}
-                      /*views={{
-                        day: true,
-                        week: true,
-                        month: true,
-                        agenda: true,
-                        work_week: false
-                      }}*/
+                      //views={{
+                      //  day: true,
+                      //  week: true,
+                      //  month: true,
+                     //   agenda: true,
+                     //  work_week: false
+                    //  }}
                       //views={['month','week','day','agenda']}
                       messages={
                         {
@@ -375,7 +410,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                           'showMore': total => `+${total} ${strings.showMore}`,
                         }
                       }
-                    />
+                    />*/}
                   </div>
                 }
               </div>

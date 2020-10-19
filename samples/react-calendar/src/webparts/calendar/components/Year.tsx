@@ -1,73 +1,75 @@
-import React from 'react'
-import moment from 'moment'
-
-import dates from 'react-big-calendar/lib/utils/dates'
-import { navigate } from 'react-big-calendar/lib/utils/constants'
+import React from 'react';
+import moment from 'moment';
+import * as dates from 'date-arithmetic';
+import styles from './Year.module.scss';
+import { navigate } from 'react-big-calendar/lib/utils/constants';
+import { css } from 'office-ui-fabric-react';
 
 function createCalendar(currentDate) {
   if (!currentDate) {
-    currentDate = moment()
+    currentDate = moment();
   } else {
-    currentDate = moment(currentDate)
+    currentDate = moment(currentDate);
   }
 
-  const first = currentDate.clone().startOf('month')
-  const last = currentDate.clone().endOf('month')
-  const weeksCount = Math.ceil((first.day() + last.date()) / 7)
-  //const a = { currentDate, first, last };
-  const calendar = [currentDate, first, last];
+  const first = currentDate.clone().startOf('month');
+  const last = currentDate.clone().endOf('month');
+  const weeksCount = Math.ceil((first.day() + last.date()) / 7);
+  let calendar:any = [];
+  calendar.currentDate = currentDate;
+  calendar.last = last;
+  calendar.first = first;
 
   for (let weekNumber = 0; weekNumber < weeksCount; weekNumber++) {
-    const week = []
-    calendar.push(week)
-    //calendar.year = currentDate.year()
-    //calendar.month = currentDate.month()
+    const week = [];
+    calendar.push(week);
+    calendar.year = currentDate.year();
+    calendar.month = currentDate.month();
 
     for (let day = 7 * weekNumber; day < 7 * (weekNumber + 1); day++) {
-      const date = currentDate.clone().set('date', day + 1 - first.day())
-      date.calendar = calendar
-      week.push(date)
+      const date = currentDate.clone().set('date', day + 1 - first.day());
+      date.calendar = calendar;
+      week.push(date);
     }
   }
-
-  return calendar
+  return calendar;
 }
 
 function CalendarDate(props) {
-  const { dateToRender, dateOfMonth } = props
+  const { dateToRender, dateOfMonth } = props;
   const today =
     dateToRender.format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')
       ? 'today'
-      : ''
+      : '';
 
   if (dateToRender.month() < dateOfMonth.month()) {
     return (
-      <button disabled={true} className="date prev-month">
+      <button disabled={true} className={css(styles.date, styles["prev-month"])}>
         {dateToRender.date()}
       </button>
-    )
+    );
   }
 
   if (dateToRender.month() > dateOfMonth.month()) {
     return (
-      <button disabled={true} className="date next-month">
+      <button disabled={true} className={css(styles.date, styles["next-month"])}>
         {dateToRender.date()}
       </button>
-    )
+    );
   }
 
   return (
     <button
-      className={`date in-month ${today}`}
-      onClick={() => props.onClick(dateToRender)}>
+      className={`${css(styles.date, styles.inMonth)} ${today}`}
+      onClick={(e) => props.onClick(e, dateToRender)}>
       {dateToRender.date()}
     </button>
-  )
+  );
 }
-
 
 export interface IYearCalendarProps {
     date: Date;
+    onDrillDown: (date: any, view?: string) => void;
 }
 
 export interface IYearCalendarState {
@@ -82,7 +84,6 @@ export interface ICalendar {
     month: any;
 }
 
-
 class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarState> {
     public constructor(props) {
         super(props);
@@ -90,30 +91,33 @@ class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarStat
         this.state = {
             calendar: undefined
         };
+         
+        this.openView = this.openView.bind(this);
   }
 
   public componentDidMount() {
-    this.setState({ calendar: createCalendar(this.props.date) })
+    this.setState({ calendar: createCalendar(this.props.date) });
   }
 
   public componentDidUpdate(prevProps) {
     if (this.props.date !== prevProps.date) {
-      this.setState({ calendar: createCalendar(this.props.date) })
+      this.setState({ calendar: createCalendar(this.props.date) });
     }
   }
 
-  render() {
+  public render() {
     if (!this.state.calendar) {
-      return null
+      return null;
     }
 
     return (
-      <div className="month">
-        <div className="month-name">
-          {this.state.calendar.currentDate.format('MMMM').toUpperCase()}
+      <div className={styles.month}>
+        <div className={styles.monthName}>
+          {/*this.state.calendar.currentDate.format('MMMM').toUpperCase()*/}
+          {this.state.calendar.currentDate.lang("en").format('MMMM','en').toUpperCase()}
         </div>
         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
-          <span key={index} className="day">
+          <span key={index} className={styles.day}>
             {day}
           </span>
         ))}
@@ -124,62 +128,75 @@ class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarStat
                 key={date.date()}
                 dateToRender={date}
                 dateOfMonth={this.state.calendar.currentDate}
-                onClick={date =>
-                  alert(`Will go to daily-view of ${date.format('YYYY-MM-DD')}`)
+                onClick={(e,obj) => {
+                  this.openView(obj.toDate(), "day", e) //open day-view
+                  }
                 }
               />
             ))}
           </div>
-        ))}
+              ))}
       </div>
-    )
+    );
   }
+
+  private openView = (date, view, e) => {
+    e.preventDefault()
+    this.props.onDrillDown(date, view);
+  }
+
 }
-
-
 
 export interface IYearProps {
-    date: any;
+   date: string;
+   onDrillDown: (date: any, view?: string) => void;
 }
 
-class Year extends React.Component<IYearProps> {
 
+class Year extends React.Component<IYearProps> {
     private range = date => {
-        return [dates.startOf(date, 'year')]
-      }
+      return [dates.startOf(date, 'year')];
+    }
     
-    private navigate = (date, action) => {
+    public static navigate = (date, action) => {
         switch (action) {
           case navigate.PREVIOUS:
-            return dates.add(date, -1, 'year')
+            return dates.add(date, -1, 'year');
       
           case navigate.NEXT:
-            return dates.add(date, 1, 'year')
+            return dates.add(date, 1, 'year');
       
           default:
-            return date
+            return date;
         }
-      }
+    }
 
-    //private title = (date, { localizer }) => {
-    //    localizer.format(date, 'yearHeaderFormat');
-    //}
+  public static title = (date, calendar ) => {
+      return calendar.localizer.format(date, "YYYY");
+    }
+  
+  private handleHeadingClick = (date, view) => {
+      this.props.onDrillDown(date, view);
+  }
 
   public render() {
-    let { date, ...props } = this.props
-    let range = this.range(date)
-    const months = []
-    const firstMonth = dates.startOf(date, 'year')
+    let { date, ...props } = this.props;
+    let range = this.range(date);
+    const months = [];
+    const firstMonth = dates.startOf(date, 'year');
 
     for (let i = 0; i < 12; i++) {
       months.push(
-        <YearCalendar key={i + 1} date={dates.add(firstMonth, i, 'month')} />
-      )
+        <YearCalendar 
+          key={i + 1} 
+          date={dates.add(firstMonth, i, 'month')}
+          onDrillDown={this.handleHeadingClick}
+        />
+      );
     }
 
-    return <div className="year">{months.map(month => month)}</div>
+    return <div className={styles.year}>{months.map(month => month)}</div>;
   }
 }
 
-
-export default Year
+export default Year;
