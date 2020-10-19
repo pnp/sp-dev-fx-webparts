@@ -10,7 +10,7 @@
     },
     "name": "Search Directory",
     "id": "5b62bc16-3a71-461d-be2f-16bfcb011e8a",
-    "version": "2.0.0.0",
+    "version": "3.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false

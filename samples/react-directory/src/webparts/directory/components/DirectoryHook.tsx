@@ -19,6 +19,7 @@ import { IDirectoryProps } from './IDirectoryProps';
 import Paging from './Pagination/Paging';
 
 const slice: any = require('lodash/slice');
+const filter: any = require('lodash/filter');
 const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
 const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
@@ -124,18 +125,43 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
     };
 
     let _searchUsers = async (searchText: string) => {
-        try {            
+        try {
             setstate({ ...state, searchText: searchText, isLoading: true });
             if (searchText.length > 0) {
                 let searchProps: string[] = props.searchProps && props.searchProps.length > 0 ?
                     props.searchProps.split(',') : ['FirstName', 'LastName', 'WorkEmail', 'Department'];
                 let qryText: string = '';
                 let finalSearchText: string = searchText ? searchText.replace(/ /g, '+') : searchText;
-                searchProps.map((srchprop, index) => {
-                    if (index == searchProps.length - 1)
-                        qryText += `${srchprop}:${finalSearchText}*`;
-                    else qryText += `${srchprop}:${finalSearchText}* OR `;
-                });
+                if (props.clearTextSearchProps) {
+                    let tmpCTProps: string[] = props.clearTextSearchProps.indexOf(',') >= 0 ? props.clearTextSearchProps.split(',') : [props.clearTextSearchProps];
+                    if (tmpCTProps.length > 0) {
+                        searchProps.map((srchprop, index) => {
+                            let ctPresent: any[] = filter(tmpCTProps, (o) => { return o.toLowerCase() == srchprop.toLowerCase(); });
+                            if (ctPresent.length > 0) {
+                                if(index == searchProps.length - 1) {
+                                    qryText += `${srchprop}:${searchText}*`;
+                                } else qryText += `${srchprop}:${searchText}* OR `;
+                            } else {
+                                if(index == searchProps.length - 1) {
+                                    qryText += `${srchprop}:${finalSearchText}*`;
+                                } else qryText += `${srchprop}:${finalSearchText}* OR `;                                
+                            }
+                        });
+                    } else {
+                        searchProps.map((srchprop, index) => {
+                            if (index == searchProps.length - 1)
+                                qryText += `${srchprop}:${finalSearchText}*`;
+                            else qryText += `${srchprop}:${finalSearchText}* OR `;
+                        });
+                    }
+                } else {
+                    searchProps.map((srchprop, index) => {
+                        if (index == searchProps.length - 1)
+                            qryText += `${srchprop}:${finalSearchText}*`;
+                        else qryText += `${srchprop}:${finalSearchText}* OR `;
+                    });
+                }
+                console.log(qryText);
                 const users = await _services.searchUsersNew('', qryText, false);
                 setstate({
                     ...state,
@@ -252,12 +278,10 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
     }, [state.users, props.pageSize]);
 
     useEffect(() => {
-        console.log("Alpha change");
         if (alphaKey.length > 0 && alphaKey != "0") _searchByAlphabets(false);
     }, [alphaKey]);
 
     useEffect(() => {
-        console.log("yes");
         _loadAlphabets();
         _searchByAlphabets(true);
     }, [props]);
