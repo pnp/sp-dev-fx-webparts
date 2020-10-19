@@ -114,6 +114,7 @@ define([], function () {
       showMore: "mer",
       recurrenceEventLabel: "Återkommande händelse",
       editRecurrenceSeries: "Redigera serie",
+      allDayEventLabel: "All Day Event ?",
       ifRecurrenceLabel: "Återkommande ?",
       onLabel: "På",
       offLabel: "Av",

@@ -114,6 +114,7 @@ define([], function () {
     showMore: "more",
     recurrenceEventLabel: "Recurrence Event",
     editRecurrenceSeries: "Edit Recurrence Series",
+    allDayEventLabel: "All Day Event ?",
     ifRecurrenceLabel: "Recurrence ?",
     onLabel: "On",
     offLabel: "Off",
