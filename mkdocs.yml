@@ -64,6 +64,16 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-quick-poll
+      name: react-quick-poll
+      title: Quick Poll
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-quick-poll/assets/react-quick-poll.gif
+      author: Sudharsan Kesavanarayanan
+      summary: This component is developed for the users who really need to create a Poll within a minute and with less maintenance.
+      modifiedtext: October 17, 2020
+      modified: 2020-10-17
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tailwindcss
       name: react-tailwindcss
       title: Tailwind CSS
@@ -665,10 +675,10 @@ extra:
       name: react-calendar
       title: Calendar
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
-      author: João Mendes, Mohamed Derhalli, Hugo Bernier
+      author: João Mendes, Mohamed Derhalli, Hugo Bernier, Nanddeep Nachan
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
-      modifiedtext: June 09, 2020
-      modified: 2020-06-09
+      modifiedtext: October 18, 2020
+      modified: 2020-10-18
       pnpcontrols: PropertyFieldDateTimePicker, PeoplePicker, Map
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
       name: js-workbench-customizer
@@ -687,8 +697,8 @@ extra:
       title: Create To Do Task from Email (Outlook Add in)
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png
       author: Luis Mañez
-      modified: 2020-09-28
-      modifiedtext: September 28, 2020
+      modified: 2020-10-16
+      modifiedtext: October 16, 2020
       summary: This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let´s say this is similar to the OOTB "Flag" action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it.
     - framework: React
       spfx: 1.4.0
