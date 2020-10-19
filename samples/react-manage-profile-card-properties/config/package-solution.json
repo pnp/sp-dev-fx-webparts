@@ -15,7 +15,12 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Directory.AccessAsUser.All"
+      }, 
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
       }
+      
     ]
   },
   "paths": {
