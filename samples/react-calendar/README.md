@@ -104,13 +104,15 @@ Start Date | Date | yes | Event Date
 End Date| Date| yes | Event Date
 
 ## Solution
-The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Calendar Compoment
+
+The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Calendar Component
 
 Solution|Author(s)
 --------|---------
 Calendar Web Part|João Mendes
 Calendar Web Part|Mohamed Derhalli
 Calendar Web Part (Upgrade)|Hugo Bernier ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
+Calendar Web Part|Nanddeep Nachan ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
 
 ## Version history
 
@@ -120,6 +122,7 @@ Version|Date|Comments
 1.0.1|June 10, 2019|update add recurrence events
 1.0.2|April 25, 2020|Update styles according to the applied theme
 1.0.3|June 06, 2020|Upgrade to SPFx 1.10.0
+1.0.4|October 18, 2020|Added support for all-day events
 
 ## Disclaimer
 
