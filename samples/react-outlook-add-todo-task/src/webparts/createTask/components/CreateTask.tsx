@@ -162,8 +162,8 @@ export default class CreateTask extends React.Component<
         status: "notStarted",
         title: taskTitle,
         body: {
-          content: this.props.context.item.body,
-          contentType: "text",
+          content: this._composeBody(this.props.context.item.body),
+          contentType: "html",
         },
       };
 
@@ -179,5 +179,11 @@ export default class CreateTask extends React.Component<
     } catch (e) {
       console.log(e);
     }
+  }
+
+  private _composeBody(emailBody: string): string {
+    const id: string = encodeURIComponent(this.props.context.item.id);
+    const link: string = `<a href='https://outlook.office365.com/owa/?ItemID=${id}&exvsurl=1&viewmodel=ReadMessageItem'>Open in Outlook</a>`;
+    return `${emailBody}<p style='font-size: large; padding-top: 10px;'>${link}</p>`;
   }
 }
