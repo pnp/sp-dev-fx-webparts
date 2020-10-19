@@ -33,7 +33,6 @@
 
 
 ## Used SharePoint Framework Version 
-
 ![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
@@ -47,21 +46,18 @@
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
-Title | Text| no|WebPart Title
-searchFirstName | boolean|no| Lastname or Firstname search query
-Properties to search | text | no | By default **FirstName,LastName,WorkEmail,Department** are used for search. You can add custom properties separated by comma.
-Results per page | number | Number of people result to be displayed per page. Max of **20** is allowed, default of **10** is set.
-
-
- 
+Title | Text| No|WebPart Title
+searchFirstName | boolean|No| Lastname or Firstname search query
+Properties to search | text | No | By default **FirstName,LastName,WorkEmail,Department** are used for search. You can add custom properties separated by comma.
+Properties to sent as clear text | text | No | By default if the search key has empty spaces, its replaced with **+** before sending it to the search query. The search properties mentioned here will be sent without the empty space replacemnt.
+Results per page | number | Yes | Number of people result to be displayed per page. Max of **20** is allowed, default of **10** is set. 
 
 ## Solution
-
 The web part use PnPjs library, Office-ui-fabric-react components
 
 Solution|Author(s)
 --------|---------
-Directory Web Part| João Mendes
+Directory Web Part|João Mendes
 Directory Web Part| Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
 Directory Web Part| Sudharsan K ([@sudharsank](https://twitter.com/sudharsank))
 
@@ -71,7 +67,8 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|July 29, 2019|Initial release
 1.0.1|July 19, 2020|Bugfix and mock-service for workbench (```LivePersonaCard``` not supported in workbench)
-2.0.0|Sep 18 2020|React hooks, paging, dynamic search props, result alignment using office ui fabric stack.
+2.0.0.0|Sep 18 2020|React hooks, paging, dynamic search props, result alignment using office ui fabric stack.
+3.0.0.0|Oct 17 2020|Minor fixes and add the additional web part property.
 
 
 ## Disclaimer
@@ -89,8 +86,4 @@ Version|Date|Comments
   - `gulp package-solution --ship`
   - `Add to AppCatalog and deploy`
 
-
-
-
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-directory" />
-
