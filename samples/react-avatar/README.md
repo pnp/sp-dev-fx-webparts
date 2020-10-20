@@ -16,7 +16,7 @@ This is a sample web part that helps user create their avatar and save as profil
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
+![drop](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -66,6 +66,7 @@ react Avatar|Kunj Sangani
 Version|Date|Comments
 -------|----|--------
 1.0.0|August 1, 2020|Initial release
+1.0.1|October 20, 2020|Update to SPFx 1.11.0
 
 
 ## Disclaimer
