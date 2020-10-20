@@ -4,7 +4,7 @@
 This web part allows tenant administrators to manage tenant properties through a graphical interface.  
 We can create, edit or delete tenant properties.
 
-Only users with Tenant Admin Role are allowed to managed tenant properties.      
+Only users with Tenant Admin Role are allowed to managed tenant properties.
 #### User without Tenant Admin Role got this message
 ![tenant properties](./assets/TenantProperties5.jpg)
 #### List tenant properties
@@ -19,10 +19,9 @@ Only users with Tenant Admin Role are allowed to managed tenant properties.
 #### Delete tenant property
 ![tenant properties](./assets/TenantProperties4.jpg)
 
+## Used SharePoint Framework Version
 
-## Used SharePoint Framework Version 
-
-![drop](https://img.shields.io/badge/version-1.7.1-green.svg)
+![drop](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -49,8 +48,10 @@ Tenant Properties WebPart|João Mendes
 Version|Date|Comments
 -------|----|--------
 1.0.0|Mar 08, 2019|Initial release
+1.0.1|October 20, 2020|Update to SPFx 1.11.0
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
