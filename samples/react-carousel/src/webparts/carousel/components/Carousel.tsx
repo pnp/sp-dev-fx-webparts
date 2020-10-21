@@ -173,7 +173,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
   }
   public render(): React.ReactElement<ICarouselProps> {
     const sliderSettings = {
-      dots: false,
+      dots: true,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
@@ -181,7 +181,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
       lazyLoad: 'progressive',
       autoplaySpeed: 3000,
       initialSlide: this.state.photoIndex,
-      arrows: false,
+      arrows: true,
       draggable: true,
       adaptiveHeight: true,
       useCSS: true,
@@ -216,7 +216,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
                     <Label style={{ width: '250px', margin: 'auto', fontSize: FontSizes.size20 }}>No images in the library</Label>
                   </div>
                   :
-                  <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+                  <div style={{ width: '100%', height: '100%'}}>
 
                     <div style={{ width: '100%'}}>
                       <Slider
