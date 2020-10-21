@@ -15,7 +15,6 @@
     "strictNullChecks": false,
     "noUnusedLocals": false,
     "allowSyntheticDefaultImports":true,
-    //"allowJs": true,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"

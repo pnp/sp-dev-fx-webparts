@@ -3,13 +3,13 @@ import styles from './Calendar.module.scss';
 import { ICalendarProps } from './ICalendarProps';
 import { ICalendarState } from './ICalendarState';
 import { escape } from '@microsoft/sp-lodash-subset';
-import BigCalendar from 'react-big-calendar';
+//import BigCalendar from 'react-big-calendar';
 import * as moment from 'moment';
 import * as strings from 'CalendarWebPartStrings';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 require('./calendar.css');
 import { CommunicationColors ,  FluentCustomizations, FluentTheme  } from '@uifabric/fluent-theme';
-import CalendarToolbar from './CustomToolbar';
+//import CalendarToolbar from './CustomToolbar';
 import Year from './Year';
 
 import { Calendar as MyCalendar, momentLocalizer  } from 'react-big-calendar';
