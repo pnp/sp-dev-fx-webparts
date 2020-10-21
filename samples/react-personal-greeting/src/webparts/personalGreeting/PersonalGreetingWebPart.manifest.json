@@ -19,7 +19,7 @@
     "group": { "default": "Other" },
     "title": { "default": "Personal Greeting" },
     "description": { "default": "Personal Greeting description" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "TextDocumentShared",
     "properties": {
       "description": "Personal Greeting"
     }

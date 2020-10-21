@@ -7,5 +7,6 @@ export interface IDirectoryProps {
   searchFirstName: boolean;
   updateProperty: (value: string) => void;
   searchProps?: string;
+  clearTextSearchProps?: string;
   pageSize?: number;
 }

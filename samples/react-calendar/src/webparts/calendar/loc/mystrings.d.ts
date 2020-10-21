@@ -115,6 +115,7 @@ declare interface ICalendarWebPartStrings {
   showMore: string;
   recurrenceEventLabel: string;
   editRecurrenceSeries: string;
+  allDayEventLabel: string;
   ifRecurrenceLabel: string;
   onLabel: string;
   offLabel: string;

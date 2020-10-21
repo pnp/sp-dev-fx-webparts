@@ -6,4 +6,5 @@ export interface IPersonalGreetingProps {
   context: WebPartContext;
   position: string;
   textColor: string;
+  fontSize: number;
 }

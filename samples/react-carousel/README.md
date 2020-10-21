@@ -44,6 +44,14 @@ Site Url of library | Text| yes|
 Picture Library| Choice/Dropdown | yes|  this is filled with all Picture Libraries (BaseTemplate : 109)
 number images to load | number| yes | number between 1 and 200
 
+### react-slick Props
+
+For all available props, go [here](https://react-slick.neostack.com/docs/api/).
+
+### react-slick Methods
+
+For all available methods, go [here](https://react-slick.neostack.com/docs/api#methods)
+
 ## Solution
 
 The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react components, react-slick Component

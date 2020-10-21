@@ -4,11 +4,11 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneDropdown
+  PropertyPaneDropdown,
+  IPropertyPaneDropdownOption
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart, WebPartContext } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'PersonalGreetingWebPartStrings';
 import PersonalGreeting from './components/PersonalGreeting';
 import { IPersonalGreetingProps } from './components/IPersonalGreetingProps';
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
@@ -18,7 +18,55 @@ export interface IPersonalGreetingWebPartProps {
   context: WebPartContext;
   position: string;
   textColor: string;
+  fontSize: number;
 }
+
+const fontSizeOptions: IPropertyPaneDropdownOption[] = [
+  {
+    key: 12,
+    text: '12'
+  },
+  {
+    key: 14,
+    text: '16'
+  },
+  {
+    key: 18,
+    text: '18'
+  },
+  {
+    key: 20,
+    text: '20'
+  },
+  {
+    key: 24,
+    text: '24'
+  },
+  {
+    key: 28,
+    text: '28'
+  },
+  {
+    key: 32,
+    text: '32'
+  },
+  {
+    key: 36,
+    text: '36'
+  },
+  {
+    key: 42,
+    text: '42'
+  },
+  {
+    key: 46,
+    text: '46'
+  },
+  {
+    key: 68,
+    text: '68'
+  },
+];
 
 export default class PersonalGreetingWebPart extends BaseClientSideWebPart <IPersonalGreetingWebPartProps> {
 
@@ -29,7 +77,8 @@ export default class PersonalGreetingWebPart extends BaseClientSideWebPart <IPer
         greetingText: this.properties.greetingText,
         context: this.context,
         position: this.properties.position,
-        textColor: this.properties.textColor
+        textColor: this.properties.textColor,
+        fontSize: this.properties.fontSize
       }
     );
 
@@ -75,6 +124,11 @@ export default class PersonalGreetingWebPart extends BaseClientSideWebPart <IPer
                     text: 'right'
                   }
                   ]
+                }),
+                PropertyPaneDropdown('fontSize', {
+                  label: 'Font Size',
+                  options: fontSizeOptions,
+                  selectedKey: 20
                 }),
                 PropertyFieldColorPicker('textColor', {
                   label: 'Text Color',

@@ -76,7 +76,6 @@ export default class spservices {
     let results = null;
     try {
       const web = new Web(siteUrl);
-
       const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
 
       results = await web.lists.getById(listId).items.add({
@@ -87,7 +86,7 @@ export default class spservices {
         EventDate: new Date(moment(newEvent.EventDate).add(siteTimeZoneHours, 'hours').toISOString()),
         EndDate: new Date(moment(newEvent.EndDate).add(siteTimeZoneHours, 'hours').toISOString()),
         Location: newEvent.location,
-        fAllDayEvent: false,
+        fAllDayEvent: newEvent.fAllDayEvent,
         fRecurrence: newEvent.fRecurrence,
         Category: newEvent.Category,
         EventType: newEvent.EventType,
@@ -96,7 +95,8 @@ export default class spservices {
         MasterSeriesItemID: newEvent.MasterSeriesItemID,
         RecurrenceID: newEvent.RecurrenceID ? moment(newEvent.RecurrenceID).add(siteTimeZoneHours, 'hours').toISOString() : undefined,
       });
-    } catch (error) {
+    }
+    catch (error) {
       return Promise.reject(error);
     }
     return results;
@@ -117,12 +117,12 @@ export default class spservices {
     try {
       const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
       const web = new Web(siteUrl);
+
       //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
       const event = await web.lists.getById(listId).items.usingCaching().getById(eventId)
         .select("RecurrenceID", "MasterSeriesItemID", "Id", "ID", "ParticipantsPickerId", "EventType", "Title", "Description", "EventDate", "EndDate", "Location", "Author/SipAddress", "Author/Title", "Geolocation", "fAllDayEvent", "fRecurrence", "RecurrenceData", "RecurrenceData", "Duration", "Category", "UID")
         .expand("Author")
         .get();
-
 
       returnEvent = {
         Id: event.ID,
@@ -139,7 +139,7 @@ export default class spservices {
         color: '',
         ownerName: event.Author.Title,
         attendes: event.ParticipantsPickerId,
-        fAllDayEvent: false,
+        fAllDayEvent: event.fAllDayEvent,
         geolocation: { Longitude: event.Geolocation ? event.Geolocation.Longitude : 0, Latitude: event.Geolocation ? event.Geolocation.Latitude : 0 },
         Category: event.Category,
         Duration: event.Duration,
@@ -149,12 +149,12 @@ export default class spservices {
         RecurrenceID: event.RecurrenceID,
         MasterSeriesItemID: event.MasterSeriesItemID,
       };
-    } catch (error) {
+    } 
+    catch (error) {
       return Promise.reject(error);
     }
     return returnEvent;
   }
-
 
   /**
    *
@@ -167,13 +167,12 @@ export default class spservices {
   public async updateEvent(updateEvent: IEventData, siteUrl: string, listId: string) {
     let results = null;
     try {
-
-      // delete all recursive extentions before update  recurrence event
+      // delete all recursive extentions before update recurrence event
       if (updateEvent.EventType.toString() == "1") await this.deleteRecurrenceExceptions(updateEvent, siteUrl, listId);
 
       const siteTimeZoneHours: number = await this.getSiteTimeZoneHours(siteUrl);
-
       const web = new Web(siteUrl);
+
       //"Title","fRecurrence", "fAllDayEvent","EventDate", "EndDate", "Description","ID", "Location","Geolocation","ParticipantsPickerId"
       let newItem: any = {
         Title: updateEvent.title,
@@ -183,12 +182,13 @@ export default class spservices {
         EventDate: new Date(moment(updateEvent.EventDate).add(siteTimeZoneHours, 'hours').toISOString()),
         EndDate: new Date(moment(updateEvent.EndDate).add(siteTimeZoneHours, 'hours').toISOString()),
         Location: updateEvent.location,
-        fAllDayEvent: false,
+        fAllDayEvent: updateEvent.fAllDayEvent,
         fRecurrence: updateEvent.fRecurrence,
         Category: updateEvent.Category,
         RecurrenceData: updateEvent.RecurrenceData ? await this.deCodeHtmlEntities(updateEvent.RecurrenceData) : "",
         EventType: updateEvent.EventType,
       };
+
       if (updateEvent.UID) {
         newItem.UID = updateEvent.UID;
       }
@@ -197,7 +197,8 @@ export default class spservices {
       }
 
       results = await web.lists.getById(listId).items.getById(updateEvent.Id).update(newItem);
-    } catch (error) {
+    } 
+    catch (error) {
       return Promise.reject(error);
     }
     return results;
@@ -489,6 +490,7 @@ export default class spservices {
 
       if (results && results.Row.length > 0) {
         let event: any = '';
+        
         for (event of results.Row) {
           const initialsArray: string[] = event.Author[0].title.split(' ');
           const initials: string = initialsArray[0].charAt(0) + initialsArray[initialsArray.length - 1].charAt(0);
@@ -501,11 +503,11 @@ export default class spservices {
           const CategoryColorValue: any[] = categoryColor.filter((value) => {
             return value.category == event.Category;
           });
+          const isAllDayEvent: boolean = event.fAllDayEvent === "Yes";
+
           for (const attendee of event.ParticipantsPicker) {
             attendees.push(parseInt(attendee.id));
           }
-
-
 
           events.push({
             Id: event.ID,
@@ -513,10 +515,8 @@ export default class spservices {
             EventType: event.EventType,
             title: await this.deCodeHtmlEntities(event.Title),
             Description: event.Description,
-
-            EventDate: new Date(moment(event.EventDate).subtract((siteTimeZoneHours), 'hour').toISOString()),
-
-            EndDate: new Date(moment(event.EndDate).subtract(siteTimeZoneHours, 'hour').toISOString()),
+            EventDate: isAllDayEvent ? new Date(moment(event.EventDate).toISOString()) : new Date(moment(event.EventDate).subtract((siteTimeZoneHours), 'hour').toISOString()),
+            EndDate: isAllDayEvent ? new Date(moment(event.EndDate).toISOString()) : new Date(moment(event.EndDate).subtract(siteTimeZoneHours, 'hour').toISOString()),
             location: event.Location,
             ownerEmail: event.Author[0].email,
             ownerPhoto: userPictureUrl ?
@@ -525,7 +525,7 @@ export default class spservices {
             color: CategoryColorValue.length > 0 ? CategoryColorValue[0].color : '#1a75ff', // blue default
             ownerName: event.Author[0].title,
             attendes: attendees,
-            fAllDayEvent: false,
+            fAllDayEvent: isAllDayEvent,
             geolocation: { Longitude: parseFloat(geolocation[0]), Latitude: parseFloat(geolocation[1]) },
             Category: event.Category,
             Duration: event.Duration,
@@ -540,6 +540,7 @@ export default class spservices {
         let parseEvt: parseRecurrentEvent = new parseRecurrentEvent();
         events = parseEvt.parseEvents(events, null, null);
       }
+
       // Return Data
       return events;
     } catch (error) {
