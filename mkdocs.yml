@@ -239,7 +239,7 @@ extra:
       modified: 2020-08-12
     - framework: React
       spfx: 1.11.0
-      url:  https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-avatar
+      url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-avatar
       name: react-avatar
       title: SPFx Avatar
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-avatar/assets/reactAvatarOutcome.gif
@@ -297,17 +297,6 @@ extra:
       summary: Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps
       modifiedtext: July 26, 2020
       modified: 2020-07-26
-    - framework: React
-      spfx: 1.11.0
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-directory
-      name: react-directory
-      title: Organization Directory Web Part
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
-      author: João Mendes, Peter Paul Kirschner
-      summary: Search People from Organization Directory and show live persona card on hover.
-      version: 1.0.0
-      modifiedtext: July 19, 2020
-      modified: 2020-07-19
     - framework: React
       spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-directory
@@ -606,14 +595,14 @@ extra:
       pnpcontrols: Placeholder, ChartControl
     - framework: React
       spfx: 1.10.0
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-carousel
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-carousel
       name: react-carousel
       title: Carousel Web Part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-carousel/assets/carousel.gif
-      author: João Mendes, Rahul Suryawanshi
+      author: João Mendes, Rahul Suryawanshi, Harsha Vardhini
       summary: This web part show images and videos in carousel
-      modifiedtext: June 17, 2020
-      modified: 2020-06-17
+      modifiedtext: October 20, 2020
+      modified: 2020-10-20
       level: 200
     - framework: React
       spfx: 1.10.0
@@ -1010,8 +999,8 @@ extra:
       framework: React
       spfx: 1.11.0
       author: Zach Roberts
-      modifiedtext: September 24, 2020
-      modified: 2020-08-24
+      modifiedtext: October 18, 2020
+      modified: 2020-10-18
       level: 100
     - url: https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-versiondisplay
       name: react-versiondisplay
@@ -2682,7 +2671,7 @@ extra:
       modified: 2019-04-18
     - framework: React
       spfx: 1.11.0
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tenant-properties
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tenant-properties
       name: react-tenant-properties
       title: Tenant Properties Web Part
       thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/master/samples/react-tenant-properties/assets/TenantProperties2.jpg
