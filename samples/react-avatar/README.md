@@ -2,8 +2,7 @@
 
 ## Summary
 
-This is a sample web part that helps user create their avatar and save as profile picture. User can even download their avatar as PNG file. This webpart can be useful in Intranet to help user create their avatar and save it as profile picture.
-
+This is a sample web part that helps user create their avatar and save as profile picture. User can even download their avatar as PNG file. This web part can be useful in Intranet to help user create their avatar and save it as profile picture.
 
 ##  
 ![directory](/samples/react-avatar/assets/reactAvatarOutcome.gif) 
@@ -15,8 +14,9 @@ This is a sample web part that helps user create their avatar and save as profil
 * Download Avatar as PNG file.
 
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
+## Used SharePoint Framework Version
+ 
+![SPFx 1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -55,6 +55,7 @@ Web Part Title | Text| no|
 
 
 ## Solution
+
 The web part Use avataaars library for creating avatars and MS Graph with User.ReadWrite and User.ReadWriteAll for saving avatar as current users Profile Picture.FileSaver for downloading avatar image as png file.
 
 Solution|Author(s)
@@ -66,9 +67,11 @@ react Avatar|Kunj Sangani
 Version|Date|Comments
 -------|----|--------
 1.0.0|August 1, 2020|Initial release
+1.0.1|October 20, 2020|Update to SPFx 1.11.0
 
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -81,9 +84,6 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
-  - `Add to AppCatalog and deploy`
+  - Add to AppCatalog and deploy
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-avatar" />
-
-
-
