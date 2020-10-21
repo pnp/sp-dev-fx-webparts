@@ -12,7 +12,6 @@
 
 .monthName {
   color: $ms-color-themeDark;
-  //color: #ccbe88;
   font-weight: bold;
 }
 
@@ -35,16 +34,16 @@
 
 .date.inMonth:hover {
   cursor: pointer;
-  //background: #ccbe88;
   background: $ms-color-themeDark;
+  color: white;
+  font-weight: bold;
 }
 
 .today {
-  //background: #ccbe88;
   background: $ms-color-themeDark;
 }
 
-.date.prev-month,
-.date.next-month {
+.date.prevMonth,
+.date.nextMonth {
   color: grey;
 }

@@ -12,7 +12,7 @@ import { CommunicationColors ,  FluentCustomizations, FluentTheme  } from '@uifa
 import CalendarToolbar from './CustomToolbar';
 import Year from './Year';
 
-import { Calendar as OriCalendar, momentLocalizer  } from 'react-big-calendar';
+import { Calendar as MyCalendar, momentLocalizer  } from 'react-big-calendar';
 
 import {
   Customizer,
@@ -342,7 +342,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
               <div>
                 {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> :
                   <div className={styles.container}>
-                    <OriCalendar
+                    <MyCalendar
                       dayPropGetter = {this.dayPropGetter}
                       localizer={localizer}
                       selectable
@@ -376,41 +376,6 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                         }
                       }
                     />
-                    {/*<BigCalendar
-                      dayPropGetter = {this.dayPropGetter}
-                      localizer={localizer}
-                      selectable
-                      events={this.state.eventData}
-                      startAccessor="EventDate"
-                      endAccessor="EndDate"
-                      eventPropGetter={this.eventStyleGetter}
-                      onSelectSlot={this.onSelectSlot}
-                      components={{
-                        event: this.renderEvent,
-                        toolbar: CalendarToolbar,
-                      }}
-                      onSelectEvent={this.onSelectEvent}
-                      defaultDate={moment().startOf('day').toDate()}
-                      //views={{
-                      //  day: true,
-                      //  week: true,
-                      //  month: true,
-                     //   agenda: true,
-                     //  work_week: false
-                    //  }}
-                      //views={['month','week','day','agenda']}
-                      messages={
-                        {
-                          'today': strings.todayLabel,
-                          'previous': strings.previousLabel,
-                          'next': strings.nextLabel,
-                          'month': strings.monthLabel,
-                          'week': strings.weekLabel,
-                          'day': strings.dayLable,
-                          'showMore': total => `+${total} ${strings.showMore}`,
-                        }
-                      }
-                    />*/}
                   </div>
                 }
               </div>

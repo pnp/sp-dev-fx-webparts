@@ -44,7 +44,7 @@ function CalendarDate(props) {
 
   if (dateToRender.month() < dateOfMonth.month()) {
     return (
-      <button disabled={true} className={css(styles.date, styles["prev-month"])}>
+      <button disabled={true} className={css(styles.date, styles["prevMonth"])}>
         {dateToRender.date()}
       </button>
     );
@@ -52,7 +52,7 @@ function CalendarDate(props) {
 
   if (dateToRender.month() > dateOfMonth.month()) {
     return (
-      <button disabled={true} className={css(styles.date, styles["next-month"])}>
+      <button disabled={true} className={css(styles.date, styles["nextMonth"])}>
         {dateToRender.date()}
       </button>
     );
@@ -113,8 +113,7 @@ class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarStat
     return (
       <div className={styles.month}>
         <div className={styles.monthName}>
-          {/*this.state.calendar.currentDate.format('MMMM').toUpperCase()*/}
-          {this.state.calendar.currentDate.lang("en").format('MMMM','en').toUpperCase()}
+          {this.state.calendar.currentDate.format('MMMM').toUpperCase()}
         </div>
         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
           <span key={index} className={styles.day}>
@@ -129,7 +128,7 @@ class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarStat
                 dateToRender={date}
                 dateOfMonth={this.state.calendar.currentDate}
                 onClick={(e,obj) => {
-                  this.openView(obj.toDate(), "day", e) //open day-view
+                  this.openView(obj.toDate(), "day", e); //open day-view
                   }
                 }
               />
@@ -141,7 +140,7 @@ class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarStat
   }
 
   private openView = (date, view, e) => {
-    e.preventDefault()
+    e.preventDefault();
     this.props.onDrillDown(date, view);
   }
 
