@@ -3,7 +3,6 @@ import { css } from 'office-ui-fabric-react';
 import PropTypes from 'prop-types';
 import { View, Views, Navigate, Messages } from "react-big-calendar";
 import * as strings from 'CalendarWebPartStrings';
-//require('./calendar.css');
 
 export interface ICustomToolbarProps {
     date: Date;
@@ -44,33 +43,13 @@ export default class CalendarToolbar extends React.Component<ICustomToolbarProps
         this.setState({activeView: view});
     }
 
-
-    /*private viewNamesGroup = (messages) => {
-        let viewNames = this.props.views
-        const view = this.props.view
-    
-        if (viewNames.length > 1) {
-          return viewNames.map(name => (
-            <button
-              type="button"
-              key={name}
-              className={css({ 'rbc-active': view === name })}
-              onClick={this.view.bind(null, name)}
-            >
-              {messages[name]}
-            </button>
-          ))
-        }
-    }*/
-
     public render() {
             const {activeView} = this.state;
 
             return (
                 <div className="rbc-toolbar">
                     <div className="rbc-btn-group">
-                        {/*<button type="button" onClick={() => this.navigate('TODAY')}>{strings.todayLabel}</button>*/}
-                        <button type="button" onClick={() => this.navigate('TODAY')}>VANDAAGHAHA</button>
+                        <button type="button" onClick={() => this.navigate('TODAY')}>{strings.todayLabel}</button>
                         <button type="button" onClick={() => this.navigate('PREV')}>{strings.previousLabel}</button>
                         <button type="button" onClick={() => this.navigate('NEXT')}>{strings.nextLabel}</button>
                     </div>
@@ -79,11 +58,9 @@ export default class CalendarToolbar extends React.Component<ICustomToolbarProps
                         <button type="button" className={css({ 'rbc-active': activeView === "month" })} onClick={() => this.view('month')}>{strings.monthLabel}</button>
                         <button type="button" className={css({ 'rbc-active': activeView === "week" })} onClick={() => this.view('week')}>{strings.weekLabel}</button>
                         <button type="button" className={css({ 'rbc-active': activeView === "day" })} onClick={() => this.view('day')}>{strings.dayLable}</button>
-                        <button type="button" className={css({ 'rbc-active': activeView === "year" })} onClick={() => this.view('year')}>{"YEAR"}</button>
+                        <button type="button" className={css({ 'rbc-active': activeView === "year" })} onClick={() => this.view('year')}>{strings.yearHeaderLabel}</button>
                         <button type="button" className={css({ 'rbc-active': activeView === "agenda" })} onClick={() => this.view('agenda')}>{strings.agenda}</button>
                     </div>
-
-                    {/*<span className="rbc-btn-group">{this.viewNamesGroup(this.props.localizer.messages)}</span>*/}
                 </div>
             );
     }
