@@ -1,27 +1,35 @@
 # React Tenant Properties Web Part
 
 ## Summary
+
 This web part allows tenant administrators to manage tenant properties through a graphical interface.  
 We can create, edit or delete tenant properties.
 
 Only users with Tenant Admin Role are allowed to managed tenant properties.
-#### User without Tenant Admin Role got this message
+
+### User without Tenant Admin Role got this message
+
 ![tenant properties](./assets/TenantProperties5.jpg)
-#### List tenant properties
+
+### List tenant properties
+
 ![tenant properties](./assets/TenantProperties1.jpg)
 
-#### Add Tenant property
+### Add Tenant property
+
 ![tenant properties](./assets/TenantProperties2.jpg)
 
-#### Edit tenant property
+### Edit tenant property
+
 ![tenant properties](./assets/TenantProperties3.jpg)
 
-#### Delete tenant property
+### Delete tenant property
+
 ![tenant properties](./assets/TenantProperties4.jpg)
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -37,6 +45,7 @@ WebPart Title| Text| no|
  
 
 ## Solution
+
 The Web Part Use MSGraph API and need to SharePoint Administrator approve de scope "Directory.ReadWrite.All" in SharePoint Admin Center.
 
 Solution|Author(s)
@@ -64,7 +73,7 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
-  - `Add to AppCatalog and deploy`
-  - `Approve API permission on SharePoint Admin Center`
+- Add to AppCatalog and deploy
+- Approve API permission on SharePoint Admin Center
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-tenant-properties" />
