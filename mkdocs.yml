@@ -238,12 +238,12 @@ extra:
       modifiedtext: August 12, 2020
       modified: 2020-08-12
     - framework: React
-      spfx: 1.10.0
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-avatar
       name: react-avatar
       title: SPFx Avatar
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-avatar/assets/reactAvatarOutcome.gif
-      author: Kunj Sangani
+      author: Kunj Sangani, Joel Rodrigues
       summary: This is a sample web part that helps user create their avatar and save as profile picture. User can even download their avatar as PNG file. This web part can be useful in Intranet to help user create their avatar and save it as profile picture.
       modifiedtext: August 1, 2020
       modified: 2020-08-01
@@ -2681,16 +2681,15 @@ extra:
       modifiedtext: April 18, 2019
       modified: 2019-04-18
     - framework: React
-      spfx: 1.7.1
-      year: 2019
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tenant-properties
       name: react-tenant-properties
       title: Tenant Properties Web Part
       thumbnail: https://github.com/joaojmendes/sp-dev-fx-webparts/raw/master/samples/react-tenant-properties/assets/TenantProperties2.jpg
-      author: João Mendes
+      author: João Mendes, Joel Rodrigues
       summary: This web part allows tenant administrators to manage tenant properties through a graphical interface. We can create, edit or delete tenant properties.
-      modifiedtext: March 08, 2019
-      modified: 2019-03-08
+      modifiedtext: October 20, 2020
+      modified: 2020-10-20
     - framework: React
       spfx: GA
       year: 2017
