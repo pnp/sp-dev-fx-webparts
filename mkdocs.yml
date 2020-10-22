@@ -664,10 +664,10 @@ extra:
       name: react-calendar
       title: Calendar
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
-      author: João Mendes, Mohamed Derhalli, Hugo Bernier, Nanddeep Nachan
+      author: João Mendes, Mohamed Derhalli, Hugo Bernier, Nanddeep Nachan, Abderahman Moujahid
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
-      modifiedtext: October 18, 2020
-      modified: 2020-10-18
+      modifiedtext: October 21, 2020
+      modified: 2020-10-21
       pnpcontrols: PropertyFieldDateTimePicker, PeoplePicker, Map
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
       name: js-workbench-customizer
@@ -2836,6 +2836,7 @@ extra:
       modified: 2020-04-27
   authors:
     - Aakash Bhardwaj
+    - Abderahman Moujahid
     - Abhishek Garg
     - Adrián Díaz
     - Alex Terentiev
