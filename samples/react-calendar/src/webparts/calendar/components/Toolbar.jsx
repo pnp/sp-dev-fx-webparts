@@ -22,10 +22,10 @@ export default class CalendarToolbar extends Toolbar {
 					<button type="button" onClick={this.view.bind(null, 'month')}>{strings.monthLabel}</button>
 					<button type="button" onClick={this.view.bind(null, 'week')}>{strings.weekLabel}</button>
 					<button type="button" onClick={this.view.bind(null, 'day')}>{strings.dayLable}</button>
+					<button type="button" onClick={this.view.bind(null, 'year')}>{strings.yearHeaderlabel}</button>
 					<button type="button" onClick={this.view.bind(null, 'agenda')}>{strings.agenda}</button>
 				</div>
 			</div>
 		);
 	}
 }
-module.export = CalendarToolbar;

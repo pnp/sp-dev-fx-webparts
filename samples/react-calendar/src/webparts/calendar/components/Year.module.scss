@@ -1,0 +1,49 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.year {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.month {
+  margin: 5px 5px 15px 5px;
+}
+
+.monthName {
+  color: $ms-color-themeDark;
+  font-weight: bold;
+}
+
+.day {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.date {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+}
+
+.date.inMonth:hover {
+  cursor: pointer;
+  background: $ms-color-themeDark;
+  color: white;
+  font-weight: bold;
+}
+
+.today {
+  background: $ms-color-themeDark;
+}
+
+.date.prevMonth,
+.date.nextMonth {
+  color: grey;
+}

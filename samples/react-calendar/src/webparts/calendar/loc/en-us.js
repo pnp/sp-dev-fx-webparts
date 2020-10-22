@@ -108,6 +108,7 @@ define([], function () {
     dayLable: "Day",
     agenda: "Agenda",
     monthLabel: "Month",
+    yearHeaderLabel: "Year",
     todayLabel: "Today",
     previousLabel: "Previous",
     nextLabel: "Next",

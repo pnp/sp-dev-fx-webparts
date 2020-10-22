@@ -3,12 +3,16 @@ import styles from './Calendar.module.scss';
 import { ICalendarProps } from './ICalendarProps';
 import { ICalendarState } from './ICalendarState';
 import { escape } from '@microsoft/sp-lodash-subset';
-import BigCalendar from 'react-big-calendar';
+//import BigCalendar from 'react-big-calendar';
 import * as moment from 'moment';
 import * as strings from 'CalendarWebPartStrings';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 require('./calendar.css');
 import { CommunicationColors ,  FluentCustomizations, FluentTheme  } from '@uifabric/fluent-theme';
+//import CalendarToolbar from './CustomToolbar';
+import Year from './Year';
+
+import { Calendar as MyCalendar, momentLocalizer  } from 'react-big-calendar';
 
 import {
   Customizer,
@@ -52,9 +56,8 @@ import { IEventData } from './../../../services/IEventData';
 import { IUserPermissions } from './../../../services/IUserPermissions';
 
 
-
-const localizer = BigCalendar.momentLocalizer(moment);
-
+//const localizer = BigCalendar.momentLocalizer(moment);
+const localizer = momentLocalizer(moment);
 /**
  * @export
  * @class Calendar
@@ -311,7 +314,6 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
    * @memberof Calendar
    */
   public render(): React.ReactElement<ICalendarProps> {
-
     return (
       <Customizer {...FluentCustomizations}>
 
@@ -340,7 +342,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
               <div>
                 {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> :
                   <div className={styles.container}>
-                    <BigCalendar
+                    <MyCalendar
                       dayPropGetter = {this.dayPropGetter}
                       localizer={localizer}
                       selectable
@@ -351,10 +353,16 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                       onSelectSlot={this.onSelectSlot}
                       components={{
                         event: this.renderEvent
-
                       }}
                       onSelectEvent={this.onSelectEvent}
                       defaultDate={moment().startOf('day').toDate()}
+                      views={{
+                        day: true,
+                        week: true,
+                        month: true,
+                        agenda: true,
+                        work_week: Year
+                      }}
                       messages={
                         {
                           'today': strings.todayLabel,
@@ -363,7 +371,8 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                           'month': strings.monthLabel,
                           'week': strings.weekLabel,
                           'day': strings.dayLable,
-                          'showMore': total => `+${total} ${strings.showMore}`
+                          'showMore': total => `+${total} ${strings.showMore}`,
+                          'work_week': strings.yearHeaderLabel
                         }
                       }
                     />

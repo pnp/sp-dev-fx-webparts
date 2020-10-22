@@ -104,6 +104,7 @@ declare interface ICalendarWebPartStrings {
   DescriptionFieldLabel: string;
   SiteUrlFieldLabel: string;
   ListFieldLabel: string;
+  yearHeaderLabel: string;
   monthLabel: string;
   weekLabel: string;
   dayLable: string;
