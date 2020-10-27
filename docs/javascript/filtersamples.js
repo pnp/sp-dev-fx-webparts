@@ -14,11 +14,41 @@ $(document).ready(function () {
     }
   });
 
+  var filterFns = {
+    hasTech: function() {
+      return $(this).find(':not([data-technology=""])');
+    },
+    // show if number is greater than 50
+    hasPnPjs: function() {
+      var name = $(this).attr('data-technology');
+      return name.indexOf('PnPjs') != -1;
+    },
+    hasCognitive: function() {
+      var name = $(this).attr('data-technology');
+      return name.indexOf('AzureCognitiveServices') != -1;
+    },
+    hasBot: function() {
+      var name = $(this).attr('data-technology');
+      return name.indexOf('AzureBotServices') != -1;
+    },
+    hasInsights: function() {
+      var name = $(this).attr('data-technology');
+      return name.indexOf('AzureAppInsights') != -1;
+    },hasFunctions: function() {
+      var name = $(this).attr('data-technology');
+      return name.indexOf('AzureFunctions') != -1;
+    },
+    hasGitHub: function() {
+      var name = $(this).attr('data-technology');
+      return name.indexOf('GitHub') != -1;
+    }
+  };
+
   // bind filter button click
   $('.filters-button-group').on('click', 'button', function () {
     var filterValue = $(this).attr('data-filter');
     // use filterFn if matches value
-    //filterValue = filterFns[filterValue] || filterValue;
+    filterValue = filterFns[filterValue] || filterValue;
     $grid.isotope({ filter: filterValue });
   });
   // change is-checked class on buttons

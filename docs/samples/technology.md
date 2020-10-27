@@ -1,17 +1,19 @@
 # Samples by Technology
 
-The SharePoint Framework is constantly evolving. Use the filters below to see how the samples have changed over the years.
+Use the filters below to find samples which demonstrate how to use various Microsoft technologies.
 
 To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
 
  <div class="well">
   <div class="button-group filters-button-group">
-   <button class="button is-checked" data-filter="*">All</button>
-  <button class="button" data-filter="[data-modified*='MSGraph']">Microsoft Graph</button>
-<button class="button" data-filter="[data-modified*='AzureAppInsights']">Azure Application Insights</button>
-<button class="button" data-filter="[data-modified*='AzureBotServices']">Azure Bot Services</button>
-<button class="button" data-filter="[data-modified*='AzureCognitiveServices']">Azure Cognitive Services</button>
-<button class="button" data-filter="[data-modified*='AzureFunctions']">Azure Functions</button>
+   <button class="button is-checked" data-filter="hasTech">All</button>
+<button class="button" data-filter="hasInsights">Azure Application Insights</button>
+<button class="button" data-filter="hasBot">Azure Bot Services</button>
+<button class="button" data-filter="[data-technology*='AzureCognitiveServices']">Azure Cognitive Services</button>
+<button class="button" data-filter="hasFunctions">Azure Functions</button>
+<button class="button" data-filter="hasGitHub">GitHub</button>
+<button class="button" data-filter="[data-technology*='MSGraph']">Microsoft Graph</button>
+<button class="button" data-filter="hasPnPjs">PnPjs</button>
   </div>
 </div>
 
@@ -19,7 +21,7 @@ To learn more about how to use these samples, please refer to our [getting start
 
 {% for sample in samples|sort(attribute='modified', reverse=True) %}
 
-<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-thumbnail="{{sample.thumbnail}}">
+<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-thumbnail="{{sample.thumbnail}}" data-technology={{sample.technology}}>
   <div class="sample">
     <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>
     <div class="sample-img">
@@ -34,7 +36,6 @@ To learn more about how to use these samples, please refer to our [getting start
   </div>
       <a href="{{sample.url}}"
       title="{{ sample.summary }}">
-<span class="location" title="Modified: {{sample.year}}">{{ sample.year }}</span>
   <h2 class="name">
       {{sample.title}}</h2>
       <div class="sample-activity">
