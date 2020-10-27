@@ -1,17 +1,17 @@
-# Samples by Compatibility
+# Samples by Technology
 
-All samples are compatible with SharePoint Online. If you wish to find web parts that were specifically designed for SharePoint 2019 or Microsoft Teams, use the filters below.
+The SharePoint Framework is constantly evolving. Use the filters below to see how the samples have changed over the years.
 
 To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
 
  <div class="well">
   <div class="button-group filters-button-group">
-    <button class="button is-checked" data-filter="*">All</button>
-    <button class="button" data-filter="*">SharePoint Online</button>
-    <button class="button" data-filter="[data-compatibility*='SharePoint 2019'],[data-spfx='1.4.1']">SharePoint
-      2019</button>
-    <button class="button" data-filter="[data-compatibility*='Microsoft Teams']">Microsoft Teams</button>
-<button class="button" data-filter="[data-compatibility*='Outlook']">Outlook</button>
+   <button class="button is-checked" data-filter="*">All</button>
+  <button class="button" data-filter="[data-modified*='MSGraph']">Microsoft Graph</button>
+<button class="button" data-filter="[data-modified*='AzureAppInsights']">Azure Application Insights</button>
+<button class="button" data-filter="[data-modified*='AzureBotServices']">Azure Bot Services</button>
+<button class="button" data-filter="[data-modified*='AzureCognitiveServices']">Azure Cognitive Services</button>
+<button class="button" data-filter="[data-modified*='AzureFunctions']">Azure Functions</button>
   </div>
 </div>
 
@@ -19,7 +19,7 @@ To learn more about how to use these samples, please refer to our [getting start
 
 {% for sample in samples|sort(attribute='modified', reverse=True) %}
 
-<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-compatibility="{{ sample.compatibility }}"  data-thumbnail="{{sample.thumbnail}}">
+<div class="sample-item" data-framework="{{sample.framework}}" data-spfx="{{sample.spfx}}" data-modified="{{sample.modified}}" data-title="{{ sample.title }}" data-thumbnail="{{sample.thumbnail}}">
   <div class="sample">
     <div class="sample-video"><i class="ms-Icon ms-Icon--VideoSolid" aria-hidden="true"></i></div>
     <div class="sample-img">
@@ -34,7 +34,7 @@ To learn more about how to use these samples, please refer to our [getting start
   </div>
       <a href="{{sample.url}}"
       title="{{ sample.summary }}">
-<span class="location" title="Compatible with: {{sample.compatibility}}">{{ sample.compatibility }}</span>
+<span class="location" title="Modified: {{sample.year}}">{{ sample.year }}</span>
   <h2 class="name">
       {{sample.title}}</h2>
       <div class="sample-activity">
@@ -47,4 +47,4 @@ To learn more about how to use these samples, please refer to our [getting start
     {% endfor %}
 </div>
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/samples/compatibility" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/samples/year" />
