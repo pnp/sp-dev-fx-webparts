@@ -252,20 +252,20 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
 
       //Check if both ranges overlap
       if (!!r1.overlaps(r2)) {
-      events.push({
-        id: item.id,
-        title: item.subject,
-        // If the event is an All Day event, add 1 day without Timezone to the start date
-        start: !item.isAllDay ? currentStartDate.clone().tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format() : moment(currentStartDate).add(1, 'd').toISOString(),
-        // If the event is an All Day event, add 1 day without Timezone to the end date
-        end: !item.isAllDay ? currentEndDate.clone().tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format() : moment(currentEndDate).add(1, 'd').toISOString(),
-        allDay: item.isAllDay,
-        location: item.location.displayName,
-        body: item.bodyPreview,
-        type: item.type
-      });
+        events.push({
+          id: item.id,
+          title: item.subject,
+          // If the event is an All Day event, add 1 day without Timezone to the start date
+          start: !item.isAllDay ? currentStartDate.clone().tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format() : moment(currentStartDate).add(1, 'd').toISOString(),
+          // If the event is an All Day event, add 1 day without Timezone to the end date
+          end: !item.isAllDay ? currentEndDate.clone().tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format() : moment(currentEndDate).add(1, 'd').toISOString(),
+          allDay: item.isAllDay,
+          location: item.location.displayName,
+          body: item.bodyPreview,
+          type: item.type
+        });
       }
-     
+
     });
     return events;
   }
@@ -320,7 +320,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
                   events: events,
                 });
               }
-              
+
               // Sets the state with current active calendar dates
               this.setState({
                 currentActiveStartDate: startDate,
@@ -332,12 +332,12 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
     }
   }
 
-   /**
-   * Get all recurrent events based on the current state of the Calendar
-   * @param events All the recurrent base events
-   * @param startDate The first visible date on the calendar
-   * @param endDate The last visible date on the calendar
-   */
+  /**
+  * Get all recurrent events based on the current state of the Calendar
+  * @param events All the recurrent base events
+  * @param startDate The first visible date on the calendar
+  * @param endDate The last visible date on the calendar
+  */
   private _getRecurrentEvents(events: Array<EventInput>, startDate: Date, endDate: Date): Promise<Array<EventInput>> {
     return new Promise<Array<EventInput>>((resolve, reject) => {
       this.props.context.msGraphClientFactory
@@ -347,7 +347,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
           var count = 0;
           events.map((item: any) => {
             let apiUrl: string = `/groups/${this.state.groupId}/events/${item.id}/instances?startDateTime=${startDate.toISOString()}&endDateTime=${endDate.toISOString()}`;
-            if(this._isPersonalTab()) {
+            if (this._isPersonalTab()) {
               apiUrl = `/me/events/${item.id}/instances?startDateTime=${startDate.toISOString()}&endDateTime=${endDate.toISOString()}`;
             }
             client
@@ -382,7 +382,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
         .getClient()
         .then((client: MSGraphClient): void => {
           let apiUrl: string = `/groups/${this.state.groupId}/events`;
-          if(this._isPersonalTab()) {
+          if (this._isPersonalTab()) {
             apiUrl = '/me/events';
           }
           client
