@@ -67,6 +67,53 @@
         }
       }
     },
+    "@fluentui/date-time-utilities": {
+      "version": "7.9.0",
+      "resolved": "https://registry.npmjs.org/@fluentui/date-time-utilities/-/date-time-utilities-7.9.0.tgz",
+      "integrity": "sha512-D8p5WWeonqRO1EgIvo7WSlX1rcm87r2VQd62zTJPQImx8rpwc77CRI+iAvfxyVHRZMdt4Qk6Jq99dUaudPWaZw==",
+      "requires": {
+        "@uifabric/set-version": "^7.0.23",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
+      }
+    },
+    "@fluentui/dom-utilities": {
+      "version": "1.1.1",
+      "resolved": "https://registry.npmjs.org/@fluentui/dom-utilities/-/dom-utilities-1.1.1.tgz",
+      "integrity": "sha512-w40gi8fzCpwa7U8cONiuu8rszPStkVOL/weDf5pCbYEb1gdaV7MDPSNkgM6IV0Kz+k017noDgK9Fv4ru1Dwz1g==",
+      "requires": {
+        "@uifabric/set-version": "^7.0.23",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
+      }
+    },
+    "@fluentui/keyboard-key": {
+      "version": "0.2.12",
+      "resolved": "https://registry.npmjs.org/@fluentui/keyboard-key/-/keyboard-key-0.2.12.tgz",
+      "integrity": "sha512-t3yIbbPKJubb22vQ/FIWwS9vFAzaPYzFxKWPHVWLtxs/P+5yL+LD3B16DRtYreWAdl9CZvEbos58ChLZ0KHwSQ==",
+      "requires": {
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
+      }
+    },
     "@fluentui/react-focus": {
       "version": "7.1.12",
       "resolved": "https://registry.npmjs.org/@fluentui/react-focus/-/react-focus-7.1.12.tgz",
@@ -155,6 +202,40 @@
           "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.11.1.tgz",
           "integrity": "sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==",
           "dev": true
+        }
+      }
+    },
+    "@fluentui/react-window-provider": {
+      "version": "0.3.3",
+      "resolved": "https://registry.npmjs.org/@fluentui/react-window-provider/-/react-window-provider-0.3.3.tgz",
+      "integrity": "sha512-MVPf2hqOQ17LAZsuvGcr3oOHksAskUm+fCYdXFhbVoAgsCDVTIuH6i8XgHFd6YjBtzjZmI4+k/3NTQfDqBX8EQ==",
+      "requires": {
+        "@uifabric/set-version": "^7.0.23",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
+      }
+    },
+    "@fluentui/theme": {
+      "version": "1.5.3",
+      "resolved": "https://registry.npmjs.org/@fluentui/theme/-/theme-1.5.3.tgz",
+      "integrity": "sha512-IaNAK2fQ6JnAzj+ucZqRQiuwb+BvMF9H2OE+wQ/lj3NFQLYzNuFSk4kWOxCGVXw0GrO5mhjzn31041J99Gr58Q==",
+      "requires": {
+        "@uifabric/merge-styles": "^7.19.1",
+        "@uifabric/set-version": "^7.0.23",
+        "@uifabric/utilities": "^7.33.1",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
         }
       }
     },
@@ -2308,7 +2389,8 @@
     "@microsoft/load-themed-styles": {
       "version": "1.10.23",
       "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.10.23.tgz",
-      "integrity": "sha512-SfbRsNSMoKD5HfmdsZ30H104CcJjPOycFL4dgcWGu3FiQ+P7i6WdBTWz4DfAXrA4pUTyNPxKlkS9h9BfAlbUnQ=="
+      "integrity": "sha512-SfbRsNSMoKD5HfmdsZ30H104CcJjPOycFL4dgcWGu3FiQ+P7i6WdBTWz4DfAXrA4pUTyNPxKlkS9h9BfAlbUnQ==",
+      "dev": true
     },
     "@microsoft/loader-cased-file": {
       "version": "1.10.0",
@@ -5228,34 +5310,73 @@
         }
       }
     },
-    "@uifabric/foundation": {
-      "version": "0.7.7",
-      "resolved": "https://registry.npmjs.org/@uifabric/foundation/-/foundation-0.7.7.tgz",
-      "integrity": "sha512-ZsX6vuPX6OpvUb26GL7ribJELYt2SOKFhuM4W+YcowPSBTRLl2DSC+ZkaLI4VngT//D89tl0SqmipukcSn4hDA==",
+    "@uifabric/file-type-icons": {
+      "version": "7.6.16",
+      "resolved": "https://registry.npmjs.org/@uifabric/file-type-icons/-/file-type-icons-7.6.16.tgz",
+      "integrity": "sha512-cbUeHpWV23mWO6OVwAuwzpa8+7FJD3kintn6gP/AsgwWbJWTBhh6JFa37f3MzsHZSx4yeZ/nl1S7X+plT7EnNQ==",
       "requires": {
-        "@uifabric/set-version": "^1.1.3",
-        "@uifabric/styling": "^6.48.1",
-        "@uifabric/utilities": "^6.41.0",
-        "tslib": "^1.7.1"
+        "@uifabric/set-version": "^7.0.23",
+        "@uifabric/styling": "^7.16.14",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
+      }
+    },
+    "@uifabric/foundation": {
+      "version": "7.9.16",
+      "resolved": "https://registry.npmjs.org/@uifabric/foundation/-/foundation-7.9.16.tgz",
+      "integrity": "sha512-WEJPJox5oP9a2VSIvAOHg9uOU/amp8x91sd1IX7OZigUJzmX/PSo4RbWWegooBcyypvPcWOdpYyKUnq6YuB5TA==",
+      "requires": {
+        "@uifabric/merge-styles": "^7.19.1",
+        "@uifabric/set-version": "^7.0.23",
+        "@uifabric/styling": "^7.16.15",
+        "@uifabric/utilities": "^7.33.1",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
       }
     },
     "@uifabric/icons": {
-      "version": "6.5.3",
-      "resolved": "https://registry.npmjs.org/@uifabric/icons/-/icons-6.5.3.tgz",
-      "integrity": "sha512-baqA8QGP68RD2IsKfsd40hVK1/GyweOvAKYcxkCIFXGz0mGtBVhSy8hs1jHdU9cdZeo4ebDkkn11TizCm/b00A==",
+      "version": "7.5.14",
+      "resolved": "https://registry.npmjs.org/@uifabric/icons/-/icons-7.5.14.tgz",
+      "integrity": "sha512-a5fyUC+wsJ8jRuJp10sbrJJEzNakcay6anVvo4VmVvXeAglJQy58lQCydigqh4ueTjFcR+DEcNAK/lJq8ZbnpA==",
       "requires": {
-        "@uifabric/set-version": "^1.1.3",
-        "@uifabric/styling": "^6.49.1",
-        "tslib": "^1.7.1"
+        "@uifabric/set-version": "^7.0.23",
+        "@uifabric/styling": "^7.16.15",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
       }
     },
     "@uifabric/merge-styles": {
-      "version": "6.19.4",
-      "resolved": "https://registry.npmjs.org/@uifabric/merge-styles/-/merge-styles-6.19.4.tgz",
-      "integrity": "sha512-bjQdDHxmRIZVPwL//MtErODhEfcRJ2y+zJXoIWNh3T8JfAepeRDdoJ/pGNnnyJxA/AHMtlWt0IgMaz150/nfAA==",
+      "version": "7.19.1",
+      "resolved": "https://registry.npmjs.org/@uifabric/merge-styles/-/merge-styles-7.19.1.tgz",
+      "integrity": "sha512-yqUwmk62Kgu216QNPE9vOfS3h0kiSbTvoqM5QcZi+IzpqsBOlzZx3A9Er9UiDaqHRd5lsYF5pO/jeUULmBWF/A==",
       "requires": {
-        "@uifabric/set-version": "^1.1.3",
-        "tslib": "^1.7.1"
+        "@uifabric/set-version": "^7.0.23",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
       }
     },
     "@uifabric/react-hooks": {
@@ -5329,34 +5450,80 @@
       }
     },
     "@uifabric/set-version": {
-      "version": "1.1.3",
-      "resolved": "https://registry.npmjs.org/@uifabric/set-version/-/set-version-1.1.3.tgz",
-      "integrity": "sha512-IYpwVIuN7MJOeiWzZzr9AmFSvA5zc6gJn4fNHtEFIQnNB8WVWIcYrvx8Tbf7wWj9MvhdHYp70F054zZlHbL/Ag==",
+      "version": "7.0.23",
+      "resolved": "https://registry.npmjs.org/@uifabric/set-version/-/set-version-7.0.23.tgz",
+      "integrity": "sha512-9E+YKtnH2kyMKnK9XZZsqyM8OCxEJIIfxtaThTlQpYOzrWAGJxQADFbZ7+Usi0U2xHnWNPFROjq+B9ocEzhqMA==",
       "requires": {
-        "tslib": "^1.7.1"
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
       }
     },
     "@uifabric/styling": {
-      "version": "6.50.7",
-      "resolved": "https://registry.npmjs.org/@uifabric/styling/-/styling-6.50.7.tgz",
-      "integrity": "sha512-F2aBiB30ZiFxlZzy5hzLXODWOl6jySvPFAsoaTofk37xucHiunBLZYjX6WkfZrCWiyGPva+DLssNcwly9ZHVjg==",
+      "version": "7.16.15",
+      "resolved": "https://registry.npmjs.org/@uifabric/styling/-/styling-7.16.15.tgz",
+      "integrity": "sha512-x9QUxpCmwqSCq+sr5j/LzOj/lVEhlA/+0u/B0Ov9TMUAHgSczNELGm39Kprk3yekhI08NR/heZQabH5d6H8wXQ==",
       "requires": {
-        "@microsoft/load-themed-styles": "^1.7.13",
-        "@uifabric/merge-styles": "^6.19.4",
-        "@uifabric/set-version": "^1.1.3",
-        "@uifabric/utilities": "^6.41.7",
-        "tslib": "^1.7.1"
+        "@fluentui/theme": "^1.5.3",
+        "@microsoft/load-themed-styles": "^1.10.26",
+        "@uifabric/merge-styles": "^7.19.1",
+        "@uifabric/set-version": "^7.0.23",
+        "@uifabric/utilities": "^7.33.1",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "@microsoft/load-themed-styles": {
+          "version": "1.10.119",
+          "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.10.119.tgz",
+          "integrity": "sha512-OVxio9dmPy2QlVnO8SE9Ks4LJp/qiOB/hZqEKXBnqYduyn86qNYb9P4ysF6SNNIBsGI81t4HbetY0g8Vy3Zfiw=="
+        },
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
       }
     },
     "@uifabric/utilities": {
-      "version": "6.45.1",
-      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-6.45.1.tgz",
-      "integrity": "sha512-7FwUeriSJyIQigj+8mWe0zAH8Euxq6KVVVD/7u5c/RhmHy0sPvc5e+WP+TnluQcI4z+vB2ReruzjjCGaxjBxeQ==",
+      "version": "7.33.1",
+      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-7.33.1.tgz",
+      "integrity": "sha512-QDdl5JE2FQd/vX4enjdu5NM3hhbyD2FNEFyLoth9wJCR8sAHOaaT8TLeO9uEboWM0xEYhtHMLuYnnZPLJrEZsw==",
       "requires": {
-        "@uifabric/merge-styles": "^6.19.4",
-        "@uifabric/set-version": "^1.1.3",
-        "prop-types": "^15.5.10",
-        "tslib": "^1.7.1"
+        "@fluentui/dom-utilities": "^1.1.1",
+        "@uifabric/merge-styles": "^7.19.1",
+        "@uifabric/set-version": "^7.0.23",
+        "prop-types": "^15.7.2",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "loose-envify": {
+          "version": "1.4.0",
+          "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz",
+          "integrity": "sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==",
+          "requires": {
+            "js-tokens": "^3.0.0 || ^4.0.0"
+          }
+        },
+        "prop-types": {
+          "version": "15.7.2",
+          "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz",
+          "integrity": "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==",
+          "requires": {
+            "loose-envify": "^1.4.0",
+            "object-assign": "^4.1.1",
+            "react-is": "^16.8.1"
+          }
+        },
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
       }
     },
     "@uifabric/variants": {
@@ -6211,7 +6378,8 @@
     "asap": {
       "version": "2.0.6",
       "resolved": "https://registry.npmjs.org/asap/-/asap-2.0.6.tgz",
-      "integrity": "sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY="
+      "integrity": "sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=",
+      "dev": true
     },
     "asn1": {
       "version": "0.2.4",
@@ -8854,6 +9022,7 @@
       "version": "0.1.12",
       "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
       "integrity": "sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=",
+      "dev": true,
       "requires": {
         "iconv-lite": "~0.4.13"
       }
@@ -10035,6 +10204,7 @@
       "version": "0.8.16",
       "resolved": "https://registry.npmjs.org/fbjs/-/fbjs-0.8.16.tgz",
       "integrity": "sha1-XmdDL1UNxBtXK/VYR7ispk5TN9s=",
+      "dev": true,
       "requires": {
         "core-js": "^1.0.0",
         "isomorphic-fetch": "^2.1.1",
@@ -10048,7 +10218,8 @@
         "core-js": {
           "version": "1.2.7",
           "resolved": "https://registry.npmjs.org/core-js/-/core-js-1.2.7.tgz",
-          "integrity": "sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY="
+          "integrity": "sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=",
+          "dev": true
         }
       }
     },
@@ -12109,7 +12280,8 @@
     "iconv-lite": {
       "version": "0.4.19",
       "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.19.tgz",
-      "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ=="
+      "integrity": "sha512-oTZqweIP51xaGPI4uPa56/Pri/480R+mo7SeU+YETByQNhDG55ycFyNLIgta9vXhILrxXDmF7ZGhqZIcuN0gJQ==",
+      "dev": true
     },
     "icss-replace-symbols": {
       "version": "1.1.0",
@@ -12764,7 +12936,8 @@
     "is-stream": {
       "version": "1.1.0",
       "resolved": "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz",
-      "integrity": "sha1-EtSj3U5o4Lec6428hBc66A2RykQ="
+      "integrity": "sha1-EtSj3U5o4Lec6428hBc66A2RykQ=",
+      "dev": true
     },
     "is-string": {
       "version": "1.0.5",
@@ -12851,6 +13024,7 @@
       "version": "2.2.1",
       "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
       "integrity": "sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=",
+      "dev": true,
       "requires": {
         "node-fetch": "^1.0.1",
         "whatwg-fetch": ">=0.10.0"
@@ -15988,6 +16162,7 @@
       "version": "1.7.3",
       "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.3.tgz",
       "integrity": "sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==",
+      "dev": true,
       "requires": {
         "encoding": "^0.1.11",
         "is-stream": "^1.0.1"
@@ -20083,19 +20258,77 @@
       "dev": true
     },
     "office-ui-fabric-react": {
-      "version": "6.189.2",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-6.189.2.tgz",
-      "integrity": "sha512-1Y111Ip78u7aCbmyRTucRldY4lYwRPkxhFL+y1rgQC4TivB2FmoHN6eSA1nAA59Ix4k2etM0UCzh7MdC1SbP5Q==",
+      "version": "7.148.1",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-7.148.1.tgz",
+      "integrity": "sha512-QbJw8Gd+WEqf/MqUCmi1no7APpO4hMUBVReStidEgrOCcvOZr+JmNJMD+sT7eCDr/9APG+TAHXAf3DStx21U3Q==",
       "requires": {
-        "@microsoft/load-themed-styles": "^1.7.13",
-        "@uifabric/foundation": "^0.7.6",
-        "@uifabric/icons": "^6.5.2",
-        "@uifabric/merge-styles": "^6.18.0",
-        "@uifabric/set-version": "^1.1.3",
-        "@uifabric/styling": "^6.48.0",
-        "@uifabric/utilities": "^6.40.1",
-        "prop-types": "^15.5.10",
-        "tslib": "^1.7.1"
+        "@fluentui/date-time-utilities": "^7.9.0",
+        "@fluentui/react-focus": "^7.16.14",
+        "@fluentui/react-window-provider": "^0.3.3",
+        "@microsoft/load-themed-styles": "^1.10.26",
+        "@uifabric/foundation": "^7.9.15",
+        "@uifabric/icons": "^7.5.13",
+        "@uifabric/merge-styles": "^7.19.1",
+        "@uifabric/react-hooks": "^7.13.7",
+        "@uifabric/set-version": "^7.0.23",
+        "@uifabric/styling": "^7.16.14",
+        "@uifabric/utilities": "^7.33.0",
+        "prop-types": "^15.7.2",
+        "tslib": "^1.10.0"
+      },
+      "dependencies": {
+        "@fluentui/react-focus": {
+          "version": "7.16.15",
+          "resolved": "https://registry.npmjs.org/@fluentui/react-focus/-/react-focus-7.16.15.tgz",
+          "integrity": "sha512-NQzksWy55GYLP5gZ+9W8Zxh2YfQHoepYOQJxJgrIA8fcYN1J8qJ7EdxsY4z1JVW5goSPgGPbNJfq1YsyuhydOQ==",
+          "requires": {
+            "@fluentui/keyboard-key": "^0.2.12",
+            "@uifabric/merge-styles": "^7.19.1",
+            "@uifabric/set-version": "^7.0.23",
+            "@uifabric/styling": "^7.16.15",
+            "@uifabric/utilities": "^7.33.1",
+            "tslib": "^1.10.0"
+          }
+        },
+        "@microsoft/load-themed-styles": {
+          "version": "1.10.119",
+          "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.10.119.tgz",
+          "integrity": "sha512-OVxio9dmPy2QlVnO8SE9Ks4LJp/qiOB/hZqEKXBnqYduyn86qNYb9P4ysF6SNNIBsGI81t4HbetY0g8Vy3Zfiw=="
+        },
+        "@uifabric/react-hooks": {
+          "version": "7.13.8",
+          "resolved": "https://registry.npmjs.org/@uifabric/react-hooks/-/react-hooks-7.13.8.tgz",
+          "integrity": "sha512-KiueX+L/34eqbOmebhPx35cwCyXJ5iOR8SHQFfCohzLHUcHVTS14d3ubDQ7p/PlZ/LV/OiMNP00ONcU7ePXYRw==",
+          "requires": {
+            "@fluentui/react-window-provider": "^0.3.3",
+            "@uifabric/set-version": "^7.0.23",
+            "@uifabric/utilities": "^7.33.1",
+            "tslib": "^1.10.0"
+          }
+        },
+        "loose-envify": {
+          "version": "1.4.0",
+          "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz",
+          "integrity": "sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==",
+          "requires": {
+            "js-tokens": "^3.0.0 || ^4.0.0"
+          }
+        },
+        "prop-types": {
+          "version": "15.7.2",
+          "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz",
+          "integrity": "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==",
+          "requires": {
+            "loose-envify": "^1.4.0",
+            "object-assign": "^4.1.1",
+            "react-is": "^16.8.1"
+          }
+        },
+        "tslib": {
+          "version": "1.14.1",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz",
+          "integrity": "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+        }
       }
     },
     "on-finished": {
@@ -21550,6 +21783,7 @@
       "version": "7.3.1",
       "resolved": "https://registry.npmjs.org/promise/-/promise-7.3.1.tgz",
       "integrity": "sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==",
+      "dev": true,
       "requires": {
         "asap": "~2.0.3"
       }
@@ -21574,6 +21808,7 @@
       "version": "15.6.1",
       "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.6.1.tgz",
       "integrity": "sha512-4ec7bY1Y66LymSUOH/zARVYObB23AT2h8cf6e/O6ZALB/N0sqZFEx7rq6EYPX2MkOdKORuooI/H5k9TlR4q7kQ==",
+      "dev": true,
       "requires": {
         "fbjs": "^0.8.16",
         "loose-envify": "^1.3.1",
@@ -22677,7 +22912,8 @@
     "setimmediate": {
       "version": "1.0.5",
       "resolved": "https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.5.tgz",
-      "integrity": "sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU="
+      "integrity": "sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=",
+      "dev": true
     },
     "setprototypeof": {
       "version": "1.1.0",
@@ -24208,7 +24444,8 @@
     "tslib": {
       "version": "1.9.0",
       "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.9.0.tgz",
-      "integrity": "sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ=="
+      "integrity": "sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ==",
+      "dev": true
     },
     "tslint": {
       "version": "5.12.1",
@@ -24337,7 +24574,8 @@
     "ua-parser-js": {
       "version": "0.7.17",
       "resolved": "https://registry.npmjs.org/ua-parser-js/-/ua-parser-js-0.7.17.tgz",
-      "integrity": "sha512-uRdSdu1oA1rncCQL7sCj8vSyZkgtL7faaw9Tc9rZ3mGgraQ7+Pdx7w5mnOSF3gw9ZNG6oc+KXfkon3bKuROm0g=="
+      "integrity": "sha512-uRdSdu1oA1rncCQL7sCj8vSyZkgtL7faaw9Tc9rZ3mGgraQ7+Pdx7w5mnOSF3gw9ZNG6oc+KXfkon3bKuROm0g==",
+      "dev": true
     },
     "uglify-js": {
       "version": "3.8.1",
@@ -25277,7 +25515,8 @@
     "whatwg-fetch": {
       "version": "2.0.3",
       "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz",
-      "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
+      "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ=",
+      "dev": true
     },
     "whatwg-mimetype": {
       "version": "2.3.0",

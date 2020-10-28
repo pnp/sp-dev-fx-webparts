@@ -1,21 +1,16 @@
-import * as React from "react";
-import * as ReactDom from "react-dom";
 import { Version } from "@microsoft/sp-core-library";
 import { SPPermission } from "@microsoft/sp-page-context";
-import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
-import { PropertyFieldSelectedPermissions, IPropertyFieldSelectedPermissionsProps } from "./containers/PropertyFieldSelectedPermissions";
-import { sp } from "@pnp/sp";
-import * as strings from "spSecurityStrings";
-import SpSecurity from "./components/SpSecurity";
-import { ISpSecurityProps } from "./components/ISpSecurityProps";
-
-import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
+import { IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneCheckbox, PropertyPaneDropdown, PropertyPaneSlider, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
-import {
-  IPropertyPaneConfiguration, PropertyPaneCheckbox,
-  IPropertyPaneDropdownOption, PropertyPaneDropdown, PropertyPaneTextField,
-  PropertyPaneToggle, PropertyPaneSlider
-} from "@microsoft/sp-property-pane";
+import { sp } from "@pnp/sp";
+import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
+import * as React from "react";
+import * as ReactDom from "react-dom";
+
+import { ISpSecurityProps } from "./components/ISpSecurityProps";
+import SpSecurity from "./components/SpSecurity";
+import { PropertyFieldSelectedPermissions } from "./containers/PropertyFieldSelectedPermissions";
+import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
 
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
   public onInit(): Promise<void> {
