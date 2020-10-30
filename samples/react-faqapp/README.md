@@ -35,12 +35,14 @@ extensions:
 Solution|Author(s)
 --------|---------
 react-FAQApp | Ashok Swain - LinkedIn: https://www.linkedin.com/in/ashok-kumar-swain-2627a514
+react-FAQApp | Abderahman Moujahid
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0 | April 25, 2020 | Initial release
+1.0.0 | April 25, 2020 | Initial release
+1.0.1 | October 30, 2020 | Fix limit 100 items
 
 ## Disclaimer
 
