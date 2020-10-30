@@ -578,10 +578,11 @@ export class ContentQueryService implements IContentQueryService {
 
         for(let result of results) {
             let normalizedResult: any = {};
-            let formattedCharsRegex = /_x00(20|3a)_/gi;
+            let formattedCharsRegex = /_x00(20|3a|e0|e1|e2|e7|e8|e9|ea|ed|f3|f9|fa|fc)_/gi;
 
             for(let viewField of viewFields) {
                 let formattedName = viewField.replace(formattedCharsRegex, "_x005f_x00$1_x005f_");
+                formattedName = formattedName.replace(/_x00$/,"_x005f_x00");
 
                 normalizedResult[viewField] = {
                     textValue: result.FieldValuesAsText[formattedName],
