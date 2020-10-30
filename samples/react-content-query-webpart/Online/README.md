@@ -27,6 +27,7 @@ react-content-query-web part (Online)|David Warner II ([Warner Digital](http://w
 react-content-query-web part (Online)|Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
 react-content-query-web part (Online)|Paolo Pialorsi ([PiaSys.com](https://piasys.com/), [@PaoloPia](https://twitter.com/PaoloPia?s=20))
 react-content-query-web part |Simon-Pierre Plante
+react-content-query-web part (Online)|Abderahman Moujahid
 
 ## Version history
 
