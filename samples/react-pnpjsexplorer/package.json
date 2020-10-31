@@ -1,6 +1,6 @@
 {
   "name": "react-pnpjsexplorer",
-  "version": "0.0.1",
+  "version": "2.1.1",
   "private": true,
   "main": "lib/index.js",
   "engines": {
