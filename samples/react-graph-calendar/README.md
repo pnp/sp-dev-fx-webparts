@@ -39,6 +39,7 @@ Version|Date|Comments
 -------|----|--------
 1.0 |December 29, 2019 | Initial Release
 1.1 |January 08, 2020 | Bumped to SPFx 1.10 and added the Personal Tab support
+1.2 |October 27, 2020 | Recurring events support
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
