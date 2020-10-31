@@ -5,7 +5,7 @@
 - This sample displays Soccer Highlights from public Soccer API.  
 - You can set Title and Number of Highlights to show.
 
-![Web Part](./assets/soccerhighlights.png)
+![Web Part](./assets/SoccerHighlights.png)
 
 ### Web Part in Action
 
@@ -13,11 +13,11 @@
 
 ### Usage
 
-**1) Deploy the package to SharePoint Online App Catalog.
+1) Deploy the package to SharePoint Online App Catalog.
 
-**2) Add the Web Part to Page, Configure the web Part, provide Title and Page Size.**
+2) Add the Web Part to Page, Configure the web Part, provide Title and Page Size.**
 
-**3) Double click on Pager to move Pages. **
+3) Double click on Pager to move Pages. **
 
 ## Used SharePoint Framework Version
 
