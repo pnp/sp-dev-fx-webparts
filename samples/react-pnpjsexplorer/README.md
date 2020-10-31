@@ -1,6 +1,6 @@
 # SPFx web part to Test PnpJS SharePoint Methods
 
-This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API. This web part can be used as separate component to test PnP Js methods and know the response returned by a particular method/API. To maximize productivity, we should package and deploy it to a test(developer) site collection which then can be used side by side when we are doing development of SPFx solutions.
+This web part will allow SPFx developers to test [PnPjs](https://pnp.github.io/pnpjs/getting-started/) methods and it displays response in JSON viewer to identify properties/attributes returned by method/API. This web part can be used as separate component to test PnP Js methods and know the response returned by a particular method/API. To maximize productivity, we should package and deploy it to a test(developer) site collection which then can be used side by side when we are doing development of SPFx solutions.
 
 Note - As of now it only supports to test Pnp JS method from sp(SharePoint) packages which contains the fluent API used to call the SharePoint rest services.
 
@@ -66,6 +66,7 @@ gulp package-solution --ship
 | Solution          | Author(s)                                                                                                                          |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | react-PnPjsTester | [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia/) and [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/) |
+| react-PnPjsTester | Abderahman Moujahid|
 
 ## Version history
 
@@ -73,6 +74,7 @@ gulp package-solution --ship
 | ------- | ------------ | --------------- |
 | 1.0.0   | Aug 14, 2020 | Initial Release |
 | 2.1.0   | October 05, 2020 | Update to SPFx 1.11.0 |
+| 2.1.1   | October 30, 2020 | Fixed button formatting issues |
 
 ## Disclaimer
 
