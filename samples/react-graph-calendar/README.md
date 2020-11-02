@@ -32,6 +32,7 @@ It is required that the users have view access on the underlying calendar.
 Solution|Author(s)
 --------|---------
 react-graph-calendar | [Sébastien Levert](https://www.linkedin.com/in/sebastienlevert) ([@sebastienlevert](https://twitter.com/sebastienlevert))
+react-graph-calendar | Abderahman Moujahid (added support for recurring events)
 
 ## Version history
 
@@ -40,6 +41,7 @@ Version|Date|Comments
 1.0 |December 29, 2019 | Initial Release
 1.1 |January 08, 2020 | Bumped to SPFx 1.10 and added the Personal Tab support
 1.2 |October 27, 2020 | Recurring events support
+1.2.1|November 1, 2020 | Changed return behavior for single items vs recurring items
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

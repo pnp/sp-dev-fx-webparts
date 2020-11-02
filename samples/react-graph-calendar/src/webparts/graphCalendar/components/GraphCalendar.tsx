@@ -308,11 +308,19 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
               if (this.props.showRecurrence) {
                 //Get recurring events and merge with the other (standard) events
                 this._getRecurringMaster(startDate, endDate).then((recData: Array<EventInput>) => {
-                  this._getRecurrentEvents(recData, startDate, endDate).then((recEvents: Array<EventInput>) => {
-                    this.setState({
-                      events: [...recEvents, ...events].slice(0, this.props.limit),
+
+                  if(recData.length > 0) {
+                    this._getRecurrentEvents(recData, startDate, endDate).then((recEvents: Array<EventInput>) => {
+                      this.setState({
+                        events: [...recEvents, ...events].slice(0, this.props.limit),
+                      });
                     });
-                  });
+                  } else {
+                    this.setState({
+                      events: events,
+                    });
+                  }
+                                    
                 });
               } else {
                 //Show only (standard) events
