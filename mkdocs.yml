@@ -229,10 +229,10 @@ extra:
       name: react-pnpjsexplorer
       title: SPFx web part to Test PnpJS SharePoint Methods
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnpjsexplorer/assets/pnpjstesterinaction.gif?raw=true
-      author: Siddharth Vaghasia, Kunj Sangani, Joel Rodrigues
+      author: Siddharth Vaghasia, Kunj Sangani, Joel Rodrigues, Abderahman Moujahid
       summary: This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API
-      modifiedtext: October 05, 2020
-      modified: 2020-10-05
+      modifiedtext: October 30, 2020
+      modified: 2020-10-30
       technology: PnPjs
     - framework: React
       spfx: 1.11.0
@@ -734,10 +734,10 @@ extra:
       name: react-content-query-webpart
       title: Content Query Web Part (SharePoint Online)
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-content-query-webpart/Online/assets/toolpart.gif
-      author: David Warner II, Hugo Bernier, Paolo Pialorsi
+      author: David Warner II, Hugo Bernier, Paolo Pialorsi, Abderahman Moujahid
       summary: The React Content Query Web Part is a modern version of the good old Content by Query Web Part that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original Web Part was based on a XSLT templating engine, this React Web Part is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more.
-      modifiedtext: April 28, 2020
-      modified: 2020-04-28
+      modifiedtext: October 30, 2020
+      modified: 2020-10-30
     - framework: React
       spfx: GA
       year: 2018
@@ -949,9 +949,9 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-faqapp/assets/FAQWebpart.png
       framework: React
       spfx: 1.8.2
-      author: Ashok Swain
-      modifiedtext: April 25, 2020
-      modified: 2020-04-25
+      author: Ashok Swain, Abderahman Moujahid
+      modifiedtext: October 28, 2020
+      modified: 2020-10-28
       level: 200
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-personal-app-settings
       name: react-teams-personal-app-settings
@@ -1128,9 +1128,9 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-calendar/assets/react-graph-calendar-spo.gif
       framework: React
       spfx: 1.10.0
-      author: Sébastien Levert
-      modifiedtext: January 08, 2020
-      modified: 2020-01-08
+      author: Sébastien Levert, Abderahman Moujahid
+      modifiedtext: November 1, 2020
+      modified: 2020-11-01
       technology: MSGraph
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-o365-groups
       name: react-manage-o365-groups
@@ -2525,8 +2525,8 @@ extra:
       author: Russell Gove
       summary: React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web
       version: 1.0.0.1
-      modifiedtext: April 5, 2020
-      modified: 2020-04-05
+      modifiedtext: October 28, 2020
+      modified: 2020-10-28
       technology: MSGraph
     - framework: React
       spfx: GA
