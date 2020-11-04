@@ -2,17 +2,10 @@
 	"name": "react-word-game",
 	"version": "1.0.0",
 	"private": true,
-	"description": "A fun game where you unscramble the words before the time runs out. It stores everyone's high scores in a SharePoint List on the Site.",
 	"main": "lib/index.js",
-	"directories": {
-		"lib": "lib"
-	},
 	"engines": {
 		"node": ">=0.10.0"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
 	"scripts": {
 		"build": "gulp bundle",
 		"clean": "gulp clean",
@@ -28,6 +21,9 @@
 		"react": "16.8.5",
 		"react-dom": "16.8.5"
 	},
+	"resolutions": {
+		"@types/react": "16.8.8"
+	},
 	"devDependencies": {
 		"@microsoft/rush-stack-compiler-3.3": "0.3.5",
 		"@microsoft/sp-build-web": "1.11.0",
@@ -38,8 +34,5 @@
 		"@types/mocha": "2.2.38",
 		"ajv": "~5.2.2",
 		"gulp": "~3.9.1"
-	},
-	"resolutions": {
-		"@types/react": "16.8.8"
 	}
 }
