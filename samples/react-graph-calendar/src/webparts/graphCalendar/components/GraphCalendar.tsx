@@ -9,6 +9,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import * as moment from 'moment-timezone';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { extendMoment } from 'moment-range';
+import allLocales from '@fullcalendar/core/locales-all';
 
 const { range } = extendMoment(moment);
 
@@ -30,6 +31,7 @@ enum TabType {
 
 export default class GraphCalendar extends React.Component<IGraphCalendarProps, IGraphCalendarState> {
   private calendar = createRef<FullCalendar>();
+  private calendarLang: string = null;
 
   /**
    * Builds the Component with the provided properties
@@ -45,6 +47,14 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
       if (this.props.teamsContext.theme == "dark") {
         import("./GraphCalendar.Teams.Dark.module.scss");
       }
+    }
+
+    //Set language of the calendar (if language is unknown, use english as default)
+    const allLanguages: Map<string, string> = this._createLangMap();
+    if (this._isRunningInTeams()) {
+      this.calendarLang = allLanguages.get(this.props.teamsContext.locale) || "en";
+    } else {
+      this.calendarLang = allLanguages.get(this.props.context.pageContext.cultureInfo.currentCultureName) || "en";
     }
 
     this.state = {
@@ -85,7 +95,9 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
           datesRender={this._datesRender.bind(this)}
           eventClick={this._openEventPanel.bind(this)}
           height={this.state.height}
-          events={this.state.events} />
+          events={this.state.events}
+          locales={allLocales}
+          locale={this.calendarLang} />
         {this.state.currentSelectedEvent &&
           <Panel
             isOpen={this.state.isEventDetailsOpen}
@@ -309,7 +321,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
                 //Get recurring events and merge with the other (standard) events
                 this._getRecurringMaster(startDate, endDate).then((recData: Array<EventInput>) => {
 
-                  if(recData.length > 0) {
+                  if (recData.length > 0) {
                     this._getRecurrentEvents(recData, startDate, endDate).then((recEvents: Array<EventInput>) => {
                       this.setState({
                         events: [...recEvents, ...events].slice(0, this.props.limit),
@@ -320,7 +332,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
                       events: events,
                     });
                   }
-                                    
+
                 });
               } else {
                 //Show only (standard) events
@@ -410,5 +422,52 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
             });
         });
     });
+  }
+
+   /**
+   * Mapping for SharePoint laguages with Fullcalendar languages
+   */
+  private _createLangMap(): Map<string, string> {
+    var languages = new Map();
+
+    languages.set("en-US", "en"); //English
+    languages.set("ar-SA", "ar"); //Arabic
+    languages.set("bg-BG", "bg"); //Bulgarian
+    languages.set("ca-ES", "ca"); //Catalan
+    languages.set("cs-CZ", "cs"); //Czech
+    languages.set("da-DK", "da"); //Danish
+    languages.set("de-DE", "de"); //German
+    languages.set("el-GR", "el"); //Greek
+    languages.set("es-ES", "es"); //Spanish
+    languages.set("et-EE", "et"); //Estonian
+    languages.set("fi-FI", "fi"); //Finish
+    languages.set("fr-FR", "fr"); //French
+    languages.set("he-IL", "he"); //Hebrew
+    languages.set("hi-IN", "hi"); //Hindi
+    languages.set("hr-HR", "hr"); //Croatian
+    languages.set("hu-HU", "hu"); //Hungarian
+    languages.set("it-IT", "it"); //Italian
+    languages.set("kk-KZ", "kk"); //Kazakh
+    languages.set("ko-KR", "ko"); //Korean
+    languages.set("lt-LT", "lt"); //Lithuanian
+    languages.set("lv-LV", "lv"); //Latvian
+    languages.set("nb-NO", "nb"); //Norwegian
+    languages.set("nl-NL", "nl"); //Dutch
+    languages.set("pl-PL", "pl"); //Polish
+    languages.set("pt-BR", "pt-br"); //Portugues (Brazil)
+    languages.set("pt-PT", "pt"); //Portuguese (Portugal)
+    languages.set("ro-RO", "ro"); //Romanian
+    languages.set("ru-RU", "ru"); //Russian
+    languages.set("sk-SK", "sk"); //Slovak
+    languages.set("sl-SI", "sl"); //Slovenian
+    languages.set("sr-Latn-CS", "sr-cyrl"); //Serbian
+    languages.set("sv-SE", "sv"); //Swedish
+    languages.set("th-TH", "th"); //Thai
+    languages.set("tr-TR", "tr"); //Turkish
+    languages.set("uk-UA", "uk"); //Ukrainian
+    languages.set("zh-CN", "zh-cn"); //Chinese (Simplified)
+    languages.set("zh-TW", "zh-tw"); //Chinese (Taiwan)
+
+    return languages;
   }
 }

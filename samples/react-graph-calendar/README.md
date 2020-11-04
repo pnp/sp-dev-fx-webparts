@@ -42,6 +42,7 @@ Version|Date|Comments
 1.1 |January 08, 2020 | Bumped to SPFx 1.10 and added the Personal Tab support
 1.2 |October 27, 2020 | Recurring events support
 1.2.1|November 1, 2020 | Changed return behavior for single items vs recurring items
+1.2.2|November 3, 2020 | Show calendar in other languages
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
