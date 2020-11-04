@@ -25,13 +25,14 @@ A fun game where you unscramble the words before the time runs out. It stores ev
 Solution|Author(s)
 --------|---------
 react-word-game | Neil Barkhina ([www.neilb.net](https://www.neilb.net/))
+react-word-game | Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham/))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|May 27, 2020|Initial release
-2.0|Nov 4, 2020|Upgrade to SPFx v1.11.0 ([@DonKirkham](https://twitter.com/DonKirkham/))
+2.0|Nov 4, 2020|Upgrade to SPFx v1.11.0 (Don Kirkham)
 
 ## Disclaimer
 
