@@ -8,7 +8,7 @@ A fun game where you unscramble the words before the time runs out. It stores ev
 
 ## Used SharePoint Framework Version
 
-![1.4.0](https://img.shields.io/badge/version-1.4.0-green.svg)
+![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -31,6 +31,7 @@ react-word-game | Neil Barkhina ([www.neilb.net](https://www.neilb.net/))
 Version|Date|Comments
 -------|----|--------
 1.0|May 27, 2020|Initial release
+2.0|Nov 4, 2020|Upgrade to SPFx v1.11.0 ([@DonKirkham](https://twitter.com/DonKirkham/))
 
 ## Disclaimer
 
