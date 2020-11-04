@@ -60,6 +60,7 @@ Solution|Author(s)
 --------|---------
 Carousel Image/Video  Web Part|João Mendes
 Carousel Image/Video  Web Part|Rahul Suryawanshi ([@rahulsuryawansh](https://twitter.com/rahulsuryawansh))
+Carousel Image/Video  Web Part|Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham))
 
 ## Version history
 
