@@ -51,7 +51,7 @@ Version|Date|Comments
 * To Deploy it in your SharePoint Environment
   * `gulp --ship`
   * `gulp package-solution --ship`
-  * Upload the .sppkg file from sharepoint\solution folder into your App Catalog
+  * Upload the `.sppkg` file from the `sharepoint\solution` folder into your App Catalog
 
 ## Features
 
