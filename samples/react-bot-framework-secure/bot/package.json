@@ -1,0 +1,37 @@
+{
+    "name": "echobot",
+    "version": "1.0.0",
+    "description": "Bot Builder v4 echo bot sample",
+    "author": "Microsoft",
+    "license": "MIT",
+    "main": "./lib/index.js",
+    "scripts": {
+        "build": "tsc --build",
+        "lint": "tslint -c tslint.json 'src/**/*.ts'",
+        "lintfix": "tslint -c tslint.json 'src/**/*.ts' --fix",
+        "postinstall": "npm run build && node ./deploymentScripts/webConfigPrep.js",
+        "start": "tsc --build && node ./lib/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "nodemon --watch ./src -e ts --exec \"npm run start\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com"
+    },
+    "dependencies": {
+        "botbuilder": "~4.9.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "replace": "~1.1.1",
+        "restify": "~8.5.1",
+        "restify-cors-middleware": "^1.1.1"
+    },
+    "devDependencies": {
+        "@types/dotenv": "6.1.1",
+        "@types/restify": "8.4.2",
+        "@types/restify-cors-middleware": "^1.0.1",
+        "nodemon": "~2.0.4",
+        "tslint": "~6.1.2",
+        "typescript": "~3.9.2"
+    }
+}
