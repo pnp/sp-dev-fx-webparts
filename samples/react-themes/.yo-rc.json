@@ -1,6 +1,6 @@
 {
   "@microsoft/generator-sharepoint": {
-    "isCreatingSolution": false,
+    "isCreatingSolution": true,
     "environment": "spo",
     "version": "1.11.0",
     "libraryName": "react-themes",

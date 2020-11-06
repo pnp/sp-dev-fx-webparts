@@ -4,7 +4,8 @@ import { ISectionThemeProps } from './ISectionThemeProps';
 import { ISemanticColors } from '@microsoft/sp-component-base';
 
 export default class SectionTheme extends React.Component<ISectionThemeProps, {}> {
-  //private _styles: object[];
+
+  // Build array of semantic colors values to display in webparts.
   private getSemanticValues(theming: any): { key: string, value: string }[] {
     if (!theming) { return null; }
     let _styles: { key: string, value: string }[] = [];
