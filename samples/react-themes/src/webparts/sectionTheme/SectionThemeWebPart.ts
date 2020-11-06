@@ -14,7 +14,12 @@ import { ISectionThemeProps } from './components/ISectionThemeProps';
 import {
   ThemeProvider,
   ThemeChangedEventArgs,
+<<<<<<< HEAD
   IReadonlyTheme
+=======
+  IReadonlyTheme,
+  ISemanticColors
+>>>>>>> new react-SectionTheme webpart
 } from '@microsoft/sp-component-base';
 
 export interface ISectionThemeWebPartProps {
@@ -30,7 +35,10 @@ export default class SectionThemeWebPart extends BaseClientSideWebPart<ISectionT
     this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
     // If it exists, get the theme variant
     this._themeVariant = this._themeProvider.tryGetTheme();
+<<<<<<< HEAD
     // If semantic colors are needed as VSS variables
+=======
+>>>>>>> new react-SectionTheme webpart
     this.setCSSVariables(this._themeVariant.semanticColors);
     // Register a handler to be notified if the theme variant changes
     this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
