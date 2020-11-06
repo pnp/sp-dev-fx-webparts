@@ -21,15 +21,16 @@ This web part illustrates how to use SharePoint Theme variables in custom web pa
 ![SharePoint Themes Client Side Web Part](./assets/themes.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-ga-green.svg)
-
+![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 Solution|Author(s)
 --------|---------
-react-themes | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com), [AJIXuMuK](https://github.com/AJIXuMuK)), Artur Kukharevich ([akukharevich](https://github.com/akukharevich))
+react-themes | Alex Terentiev ([Sharepointalist Inc.](http://www.sharepointalist.com)[AJIXuMuK](https://github.com/AJIXuMuK))
+react-themes | Artur Kukharevich ([akukharevich](https://github.com/akukharevich))
+react-themes | Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham))
 
 ## Version history
 
@@ -37,6 +38,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|April 27, 2017|Initial release
 1.1|May 8, 2017| themePrimary variable example added
+1.2|Nov 6, 2020| Upgrade to 1.11.0
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
