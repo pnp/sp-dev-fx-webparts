@@ -76,20 +76,16 @@ export default class GraphCalendarWebPart extends BaseClientSideWebPart<IGraphCa
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneSlider('limit', {
-                  label: "Events to load per active view",
+                  label: strings.EventsPerView,
                   max: 500,
                   min: 50
                 }),
                 PropertyPaneCheckbox('showRecurrence', {
-                  text: "Show recurring events",
+                  text: strings.ShowRecurringEvents,
                   checked: true
                 })
               ]

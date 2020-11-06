@@ -32,7 +32,7 @@ It is required that the users have view access on the underlying calendar.
 Solution|Author(s)
 --------|---------
 react-graph-calendar | [Sébastien Levert](https://www.linkedin.com/in/sebastienlevert) ([@sebastienlevert](https://twitter.com/sebastienlevert))
-react-graph-calendar | Abderahman Moujahid (added support for recurring events)
+react-graph-calendar | Abderahman Moujahid (added support for recurring events and languages)
 
 ## Version history
 
@@ -43,6 +43,7 @@ Version|Date|Comments
 1.2 |October 27, 2020 | Recurring events support
 1.2.1|November 1, 2020 | Changed return behavior for single items vs recurring items
 1.2.2|November 3, 2020 | Show calendar in other languages
+1.2.3|November 6, 2020 | Added property panel translations (English, French, Dutch)
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

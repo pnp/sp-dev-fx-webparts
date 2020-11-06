@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createRef } from "office-ui-fabric-react/lib/Utilities";
 import styles from './GraphCalendar.module.scss';
+import * as strings from "GraphCalendarWebPartStrings";
 import { IGraphCalendarProps } from './IGraphCalendarProps';
 import { MSGraphClient } from "@microsoft/sp-http";
 import FullCalendar from '@fullcalendar/react';
@@ -105,20 +106,20 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
             headerText={this.state.currentSelectedEvent ? this.state.currentSelectedEvent.title : ""}
             onDismiss={this._closeEventPanel.bind(this)}
             isLightDismiss={true}
-            closeButtonAriaLabel='Close'>
-            <h3>Start Time</h3>
+            closeButtonAriaLabel={strings.Close}>
+            <h3>{strings.StartTime}</h3>
             <span>{moment(this.state.currentSelectedEvent.start).format('MMMM Do YYYY [at] h:mm:ss a')}</span>
-            <h3>Start Time</h3>
+            <h3>{strings.EndTime}</h3>
             <span>{moment(this.state.currentSelectedEvent.end).format('MMMM Do YYYY [at] h:mm:ss a')}</span>
             {this.state.currentSelectedEvent.extendedProps["location"] &&
               <div>
-                <h3>Location</h3>
+                <h3>{strings.Location}</h3>
                 <span>{this.state.currentSelectedEvent.extendedProps["location"]}</span>
               </div>
             }
             {this.state.currentSelectedEvent.extendedProps["body"] &&
               <div>
-                <h3>Body</h3>
+                <h3>{strings.Body}</h3>
                 <span>{this.state.currentSelectedEvent.extendedProps["body"]}</span>
               </div>
             }
@@ -425,7 +426,7 @@ export default class GraphCalendar extends React.Component<IGraphCalendarProps, 
   }
 
    /**
-   * Mapping for SharePoint laguages with Fullcalendar languages
+   * Mapping for SharePoint languages with Fullcalendar languages
    */
   private _createLangMap(): Map<string, string> {
     var languages = new Map();
