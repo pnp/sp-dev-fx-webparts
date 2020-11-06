@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
-import * as strings from 'themesStrings';
+import * as strings from 'ThemesStrings';
 import Themes from './components/Themes';
 import { IThemesProps } from './components/IThemesProps';
 import { IThemesWebPartProps } from './IThemesWebPartProps';
