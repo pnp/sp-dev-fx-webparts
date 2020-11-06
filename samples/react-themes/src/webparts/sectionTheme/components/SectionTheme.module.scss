@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-@import "~office-ui-fabric-react/dist/sass/References.scss";
-=======
 @import '~office-ui-fabric-react/dist/sass/References.scss';
->>>>>>> new react-SectionTheme webpart
 
 .sectionTheme {
   .container {
     max-width: 700px;
     margin: 0px auto;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
     background-color: var(--primaryButtonBackground);
     color: var(--primaryButtonText);
-=======
-    background-color: var(--primaryButtonBackground, red);
-    color: var(--primaryButtonText,darkgreen)
->>>>>>> new react-SectionTheme webpart
   }
 
   .row {
@@ -25,28 +16,21 @@
 
   .column {
     @include ms-Grid-col;
-<<<<<<< HEAD
     @include ms-sm11;
     @include ms-xlPush1;
-=======
     @include ms-lg10;
     @include ms-xl8;
     @include ms-xlPush2;
     @include ms-lgPush1;
->>>>>>> new react-SectionTheme webpart
   }
 
   .title {
     @include ms-font-xl;
-<<<<<<< HEAD
     font-weight: bold;;
-=======
->>>>>>> new react-SectionTheme webpart
   }
 
   .subTitle {
     @include ms-font-l;
-<<<<<<< HEAD
     line-height: 1em;
     margin-bottom: 10px;
     margin-left: 5%;
@@ -75,7 +59,6 @@
     border-color: var(--inputBorder);
     color: transparent;
     margin-right: 5px;
-=======
   }
 
   .description {
@@ -114,6 +97,5 @@
       vertical-align: top;
       display: inline-block;
     }
->>>>>>> new react-SectionTheme webpart
   }
 }
