@@ -6,7 +6,7 @@ A web part sample that uses the [botframework-webchat module](https://www.npmjs.
 
 ## Used SharePoint Framework Version
 
-![1.0](https://img.shields.io/badge/drop-1.0-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
@@ -16,7 +16,7 @@ A web part sample that uses the [botframework-webchat module](https://www.npmjs.
 
 ## Prerequisites
 
-> You need to have this [bot](../bot/) created and registered using the Microsoft Bot Framework and registered to use the Direct Line Channel, which will give you the token generation endpoint needed when adding this web part to the page. For more information on creating a bot and registering the channel you can see the official web site at [dev.botframework.com](http://dev.botframework.com).
+> You need to have this [bot](../bot/) created and registered using the Microsoft Bot Framework and registered to use the **Direct Line Channel**, which will give you the token generation endpoint needed when adding this web part to the page. For more information on creating a bot and registering the channel you can see the official web site at [dev.botframework.com](http://dev.botframework.com).
 
 ## Disclaimer
 
@@ -37,11 +37,11 @@ A web part sample that uses the [botframework-webchat module](https://www.npmjs.
 - Set the bot service URI as Bot EndPoint.
 
 - Config bot endpoint \
-  Add the webpart, set bot endpoint to https://YOUR_BOT.azurewebsites.net, refresh this page, then you can successfully connect bot with SharePoint.
+  Add the web part, set the bot endpoint to `https://YOUR_BOT.azurewebsites.net`, refresh the page, then you can successfully connect the bot with SharePoint.
 
 ## Deploy
 
-If you want to deploy the bot follow the steps [here](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn)
+If you want to deploy the bot follow the steps in the [Host your client-side web part from Microsoft 365 CDN](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) article
 
 ## Features
 
@@ -51,3 +51,5 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Validating Property Pane Settings
 - Office UI Fabric
 - React
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-bot-framework-secure/webpart" />

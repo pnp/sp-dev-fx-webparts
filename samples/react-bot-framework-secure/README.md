@@ -63,18 +63,26 @@ Version|Date|Comments
 - Clone the repository
 
     ```bash
-    git clone [Placeholder]
+    git clone https://github.com/pnp/sp-dev-fx-webparts.git
     ```
 
-- In a terminal, navigate to `[Placeholder]`
+- In a terminal, navigate to `sp-dev-fx-webparts`
 
     ```bash
-    cd [Placeholder]
+    cd sp-dev-fx-webparts
     ```
+
+- Navigate to the folder containing this sample
+
+    ```bash
+    cd samples
+    cd react-bot-framework-secure
+    ```
+
 
 ### [Setup bot](./bot/README.md)
 
-- Go to ./bot
+- Go to `./bot`
 - Install modules
 
     ```bash
@@ -87,11 +95,11 @@ Version|Date|Comments
     npm start
     ```
 
-- Register connections. You can get it done by [deploy your bot to Azure](https://aka.ms/azuredeployment). Save your bot service endpoint like: "https://YOUR_BOT.azurewebsites.net". Save your AAD Id as YOUR_APP_ID and secret as YOUR_APP_PSW also.
+- Register connections. You can get it done by [deploy your bot to Azure](https://aka.ms/azuredeployment). Save your bot service endpoint like: "https://YOUR_BOT.azurewebsites.net". Save your AAD Id as `YOUR_APP_ID` and secret as `YOUR_APP_PSW` also.
 
 - [Connect to direct line](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0), copy one of the Secret Key values as YOUR_DIRECT_LINE_SECRET and store this for later. This is your ‘Direct Line Secret’.
 
-- Add ‘Direct Line Secret’ to an .env config file under ./bot
+- Add `DirectLineSecret` to an `.env` config file under `./bot`
 
     ```bash
     MicrosoftAppId=YOUR_APP_ID
@@ -103,7 +111,7 @@ Version|Date|Comments
 
 ### [Setup web part](./webpart/README.md)
 
-- Go to ./webpart
+- Go to `./webpart`
 - Install modules
 
     ```bash
@@ -118,16 +126,16 @@ Version|Date|Comments
 
     Now web part is running locally in https://localhost:4321.
 
-- (Opt.) Publish the bot: follow the steps [here](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp)
+- (Opt.) Publish the bot: follow the steps outlined in the [Deploy your bot](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&tabs=csharp) article.
 
 - (Opt.) Config CORS \
-  [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) must be set on bot app service to enable SharePoint client to get resource from bot service. Follow these steps to add your workbench to bot app service CORS configration:
+  [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) must be set on bot app service to enable SharePoint client to get resource from bot service. Follow these steps to add your workbench to bot app service CORS configuration:
     1. Go to your azure portal
     1. Navigate to your bot app service, search for CORS settings
     1. Add https://localhost:4321 and https://<YOUR_SITE>.sharepoint.com to CORS origins
 
 - Config bot endpoint \
-    Add the web part, set bot endpoint to https://localhost:4321 (local) or https://YOUR_BOT.azurewebsites.net (remote), refresh this page, then you can successfully connet bot with SharePoint.
+    Add the web part, set bot endpoint to https://localhost:4321 (local) or https://YOUR_BOT.azurewebsites.net (remote), refresh this page, then you can successfully connect bot with SharePoint.
 
 ## Features
 
@@ -145,9 +153,9 @@ public render(): React.ReactElement<IBotFrameworkChatv4Props> {
 }
 ```
 
- Inside Web Chat, direct line will be used to connect to Bot Service. On Bot Service side, one more endpoint "directline/token" will be added besides "api/messages", which will accept userId passed from client side and return back direct line token.
+ Inside Web Chat, direct line will be used to connect to Bot Service. On Bot Service side, one more endpoint `directline/token` will be added besides `api/messages`, which will accept userId passed from client side and return back direct line token.
 
- For production, this endpoint should also verify if the incoming request is authroized.
+ For production, this endpoint should also verify if the incoming request is authorized.
 
 ```tsx
 server.post('/directline/token', (req, res) => {
@@ -175,7 +183,7 @@ server.post('/directline/token', (req, res) => {
 });
 ```
 
-On web part side, it will fetch direct line token from bot service side with SharePoint userId then build up the web chat component. The UserId should be encrypted so it won't be easy to get other user's token by bot endpoint.
+On web part side, it will fetch direct line token from bot service side with SharePoint `userId` then build up the web chat component. The `UserId` should be encrypted so it won't be easy to get other user's token by bot endpoint.
 
 ```tsx
 useEffect(() => {

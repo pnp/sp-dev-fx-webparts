@@ -59,7 +59,7 @@ To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](htt
 
 - [Connect to Direct Line](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0)
 
-- Add ‘Direct Line Secret’ to `.env`
+- Add `DirectLineSecret` to `.env`
 
     ```bash
     DirectLineSecret=YOUR_DIRECT_LINE_SECRET
@@ -80,7 +80,7 @@ To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](htt
     }
     ```
 
-    Then you can see the Direct Line token generated with YOUR_DIRECT_LINE_SECRET and USER_ID:
+    Then you can see the Direct Line token generated with `YOUR_DIRECT_LINE_SECRET` and `USER_ID`:
 
     ```json
     {
@@ -104,3 +104,5 @@ To learn more about deploying a bot to Azure, see [Deploy your bot to Azure](htt
 - [TypeScript](https://www.typescriptlang.org)
 - [Restify](https://www.npmjs.com/package/restify)
 - [dotenv](https://www.npmjs.com/package/dotenv)
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-bot-framework-secure/bot" />
