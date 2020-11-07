@@ -63,6 +63,16 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-Edit-ApplicationCustomizer
+      name: react-edit-applicationcustomizer
+      title: Edit Application Customizers
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-Edit-ApplicationCustomizer/assets/react-all-applicationcustomizers.gif?raw=true
+      author: Kunj Sangani, Siddharth Vaghasia
+      summary: This web part will allow users to view/update application customizers properties across any web where the current user has access to.
+      modifiedtext: November 7, 2020
+      modified: 2020-11-07
+    - framework: React
       spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-bot-framework-sso
       name: react-bot-framework-sso
