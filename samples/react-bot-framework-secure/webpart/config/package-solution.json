@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-bot-framework-client-side-solution",
+    "id": "1e3d14a8-d863-4a3d-b83a-dbd188d52015",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-bot-framework.sppkg"
+  }
+}
