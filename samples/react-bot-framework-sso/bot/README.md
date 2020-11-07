@@ -23,18 +23,6 @@ application setup for use in Azure Bot Service. The [scopes](https://developer.m
 
 ## To try this sample
 
--  Clone the repository
-
-   ```bash
-   git clone [Placeholder]
-   ```
-
--  In a terminal, navigate to `[Placeholder]`
-
-   ```bash
-   cd [Placeholder]
-   ```
-
 -  Install modules
 
    ```bash
@@ -51,7 +39,7 @@ application setup for use in Azure Bot Service. The [scopes](https://developer.m
 
 [Microsoft Bot Framework Emulator](https://github.com/microsoft/botframework-emulator) is a desktop application that allows bot developers to test and debug their bots on localhost or running remotely through a tunnel.
 
--  Install the Bot Framework Emulator from [here](https://github.com/microsoft/botframework-emulator/releases)
+-  Install the [Bot Framework Emulator](https://github.com/microsoft/botframework-emulator/releases)
 -  In Bot Framework Emulator Settings, enable `Use a sign-in verification code for OAuthCards` to receive the magic code
 
 ### Connect to bot using Bot Framework Emulator
@@ -86,25 +74,32 @@ This error may confusingly present itself if either of the following are true:
 -  Your OAuth AAD tenant is `microsoft.onmicrosoft.com`.
 
 ## Testing Direct Line token generation
+
 - [Connect to Direct Line](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0)
 
 - Add ‘Direct Line Secret’ to `.env`
+
     ```bash
     DirectLineSecret=YOUR_DIRECT_LINE_SECRET
     ```
+
 - Start the bot
 
     ```bash
     npm start
     ```
+
 - Open [PostMan](https://www.postman.com/) and setup a post request to http://localhost:3978/directline/token
  with the following json request body:
+
     ```
     {
         "user": "USER_ID"
     }
     ```
+
     Then you can see the Direct Line token generated with YOUR_DIRECT_LINE_SECRET and USER_ID:
+
     ```
     {
         "conversationId": "XXXXX",
@@ -129,3 +124,5 @@ This error may confusingly present itself if either of the following are true:
 -  [Channels and Bot Connector Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
 -  [Restify](https://www.npmjs.com/package/restify)
 -  [dotenv](https://www.npmjs.com/package/dotenv)
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-bot-framework-sso/bot" />

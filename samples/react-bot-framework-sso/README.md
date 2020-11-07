@@ -1,4 +1,4 @@
-# Sharepoint webpart sample with SSO
+# SharePoint webpart sample with SSO
 
 ## Summary
 
@@ -20,7 +20,7 @@ This demo does not include any threat models and is designed for educational pur
 
 ## Used SharePoint Framework Version
 
-![1.0](https://img.shields.io/badge/version-1.0-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
@@ -70,15 +70,22 @@ Version|Date|Comments
 - Clone the repository
 
     ```bash
-    git clone [Placeholder]
+    git clone https://github.com/pnp/sp-dev-fx-webparts.git
     ```
 
 ### [Setup bot with Direct Line](./bot/README.md)
 
-- In a terminal, navigate to `[Placeholder]`
+- In a terminal, navigate to `sp-dev-fx-webparts`
 
     ```bash
-    cd [Placeholder]
+    cd sp-dev-fx-webparts
+    ```
+
+- Navigate to the folder for this solution:
+
+    ```base
+    cd samples
+    cd react-bot-framework-sso
     ```
 
 - Install modules
@@ -87,11 +94,11 @@ Version|Date|Comments
     npm install
     ```
 
-- Register connections. You can get it done by [deploy your bot to Azure](https://aka.ms/azuredeployment). Save your bot service endpoint like: "https://YOUR_BOT.azurewebsites.net". Save your AAD Id as YOUR_APP_ID, AAD Name as YOUR_APP_Name and secret as YOUR_APP_PSW also.
+- Register connections. You can get it done by [deploy your bot to Azure](https://aka.ms/azuredeployment). Save your bot service endpoint like: "https://YOUR_BOT.azurewebsites.net". Save your AAD Id as `YOUR_APP_ID`, AAD Name as `YOUR_APP_Name` and secret as `YOUR_APP_PSW` also.
 
 - [Connect to direct line](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0), copy one of the Secret Key values as YOUR_DIRECT_LINE_SECRET and store this for later. This is your ‘Direct Line Secret’.
 
-- Add ‘Direct Line Secret’ to an .env config file under ./bot
+- Add `DirectLineSecret` to an `.env` config file under `./bot`
 
     ```bash
     MicrosoftAppId=YOUR_APP_ID
@@ -108,7 +115,7 @@ application setup for use in Azure Bot Service.
 - Open your bot's application registration
 - Save the tenant ID
     - Select the "Overview" blade
-    - On the main pane, copy the content of "Directory (tenant) ID" as YOUR_APP_TENANT and store this for later
+    - On the main pane, copy the content of "Directory (tenant) ID" as `YOUR_APP_TENANT` and store this for later
 - Update Authentication
     - Select the "Authentication" blade
     - Click "Add a platform" to add web if Web is not added
@@ -120,7 +127,7 @@ application setup for use in Azure Bot Service.
     - Select the "Expose an API" blade
     - Click the "Add a scope" button under "Scopes defined by this API"
         - Click "Save and continue"
-        - Add a scope named YOUR_AAD_SCOPE_NAME
+        - Add a scope named `YOUR_AAD_SCOPE_NAME`
         - Set "Who can consent?" to "Admins and users"
         - Add an admin consent display name
         - Add an admin consent description
@@ -129,12 +136,12 @@ application setup for use in Azure Bot Service.
             - api://123a45b6-789c-01de-f23g-h4ij5k67a8bc/<YOUR_AAD_SCOPE_NAME>
     - Select API permissions
         - Click "API Permissions", select"Add a permission"
-        - Select "My APIs", YOUR_APP_ID, and enable YOUR_AAD_SCOPE_NAME scope \
+        - Select "My APIs", `YOUR_APP_ID`, and enable `YOUR_AAD_SCOPE_NAME` scope `\`
         Otherwise the non-admin user cannot use SSO.
 
 ### Setup Authentication via Azure Bot Services for the Bot
 
-[Check here](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0&tabs=aadv1) for more information about adding authentication to your bot.
+Check the [Add authentication to your bot via Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0&tabs=aadv1) article for more information about adding authentication to your bot.
 
 - Add OAuth Connection for the bot to the Bot Channel Registration
     - In the Bot Channel Registration open the settings blade
@@ -142,14 +149,14 @@ application setup for use in Azure Bot Service.
         - Add new Connection Setting
             - Set the connection "Name"
             - Set the "Service Provider" to "Azure Active Directory 2"
-            - Add the Client ID as YOUR_APP_ID, Client secret as YOUR_APP_PSW, and Tenant ID as YOUR_APP_TENANT
+            - Add the Client ID as `YOUR_APP_ID`, Client secret as `YOUR_APP_PSW`, and Tenant ID as `YOUR_APP_TENANT`
             - Set the "Token Exchange URL" to the scope URL that was created in the previous section
                 -  api://123a45b6-789c-01de-f23g-h4ij5k67a8bc/<YOUR_AAD_SCOPE_NAME>
-            - Set the "Scopes" field to the scopes you want the bot to have permission to access (ie. user.read)
+            - Set the "Scopes" field to the scopes you want the bot to have permission to access (ie. `user.read`)
 
 ### Republish bot
 
-- Update `.env` with ConnectionName to .env config file under ./bot
+- Update `.env` with `ConnectionName` to `.env` config file under `./bot`
 
     ```bash
     ConnectionName=YOUR_CONNECTION_NAME
@@ -163,13 +170,13 @@ application setup for use in Azure Bot Service.
 
 ### [Setup web parts](./webpart/README.md)
 
-- Edit "BotSignInToast.tsx" file to set your AAD scope uri(`scopeUri`) with `api://YOUR_APP_ID` directly like `api://123a45b6-789c-01de-f23g-h4ij5k67a8bc`:
+- Edit `BotSignInToast.tsx` to set your AAD scope uri(`scopeUri`) with `api://YOUR_APP_ID` directly like `api://123a45b6-789c-01de-f23g-h4ij5k67a8bc`:
 
     ```ts
     return tokenProvider.getToken(scopeUri, true).then((token: string) => {
     ```
 
-- Add the following config to ./config/package-solution.json:
+- Add the following config to `./config/package-solution.json`:
 
     ```diff
         "webApiPermissionRequests": [
@@ -183,11 +190,11 @@ application setup for use in Azure Bot Service.
 - [Publish and host webpart](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn), prepare for approving permissions
 
 - Refer [Connect to Azure AD-secured APIs](https://docs.microsoft.com/en-us/sharepoint/api-access) to publish and approve permissions from admin site
-    - Go to sharepoint admin center
+    - Go to SharePoint admin center
     - Find "API Access", approve "<YOUR_APP_Name>"
 
 - (Opt. for hosted bot service) Config CORS \
-  [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) must be set on bot app service to enable SharePoint client to get resource from bot service. Follow these steps to add your workbench to bot app service CORS configration:
+  [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) must be set on bot app service to enable SharePoint client to get resource from bot service. Follow these steps to add your workbench to bot app service CORS configuration:
     1. Go to your azure portal
     2. Navigate to your bot app service, search for CORS settings
     3. Add https://localhost:4321 and https://<YOUR_SITE>.sharepoint.com to CORS origins
@@ -203,7 +210,7 @@ application setup for use in Azure Bot Service.
     Now web parts is running locally.
 - Open online test page with user account: https://<YOUR_SITE>.sharepoint.com/_layouts/15/Workbench.aspx
 - Config bot endpoint \
-    Add the web parts, set bot endpoint to https://YOUR_BOT.azurewebsites.net, refresh this page, then you can successfully connet bot with SharePoint.
+    Add the web parts, set bot endpoint to https://YOUR_BOT.azurewebsites.net, refresh this page, then you can successfully connect bot with SharePoint.
 
 ### Setup OAuth via Azure Active Directory for the SharePoint
 
@@ -223,7 +230,7 @@ The following operations will need an admin account.
 - Open your bot's application registration
 - Select the "Expose an API" blade
 - Click the "Add a client application" under "Authorized client applications"
-    - Set the client id to the YOUR_SHAREPOINT_ID
+    - Set the client id to the `YOUR_SHAREPOINT_ID`
     - Check the box next to the scope we added in the previous step under "Authorized scopes"
     - Click "Add application"
 
@@ -320,7 +327,7 @@ const handleClick = useCallback(() => {
 
 Note: The first time users try SSO, users may be presented with an OAuth card to log in. This is because users have not yet given consent to the bot's Azure AD app. To avoid this, users can grant admin consent for any graph permissions requested by the Azure AD app.
 
-Note: due to a SDK bug [here](https://github.com/microsoft/botbuilder-js/issues/3006), the consent card could not be shown properly yet. Granting admin consent may be necessary to workaround this.
+Note: due to a [SDK bug](https://github.com/microsoft/botbuilder-js/issues/3006), the consent card could not be shown properly yet. Granting admin consent may be necessary to workaround this.
 
 ## Further reading
 

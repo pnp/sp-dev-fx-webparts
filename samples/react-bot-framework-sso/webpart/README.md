@@ -8,7 +8,7 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
 
 ## Used SharePoint Framework Version
 
-![1.0](https://img.shields.io/badge/drop-1.0-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
@@ -32,7 +32,7 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
 
 - Clone this repository
 
-- Edit "BotSignInToast.tsx" file to set your AAD scope uri(`scopeUri`) with `api://YOUR_APP_ID` directly like `api://123a45b6-789c-01de-f23g-h4ij5k67a8bc`:
+- Edit `BotSignInToast.tsx` file to set your AAD scope uri(`scopeUri`) with `api://YOUR_APP_ID` directly like `api://123a45b6-789c-01de-f23g-h4ij5k67a8bc`:
 
     ```ts
     return tokenProvider.getToken(scopeUri, true).then((token: string) => {
@@ -65,7 +65,7 @@ An web parts sample that uses the [botframework-webchat module](https://www.npmj
 
 ## Deploy
 
-If you want to deploy it follow the steps [here](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) 
+If you want to deploy it follow [these steps](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn) 
 
 ## Features
 
@@ -76,3 +76,5 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Office UI Fabric
 - React
 - Demo single sign-on for on behalf of authentication using OAuth
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-bot-framework-sso/webpart" />
