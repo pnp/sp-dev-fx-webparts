@@ -1149,8 +1149,8 @@ extra:
       framework: React
       spfx: 1.10.0
       author: Sébastien Levert, Abderahman Moujahid
-      modifiedtext: November 3, 2020
-      modified: 2020-11-03
+      modifiedtext: November 6, 2020
+      modified: 2020-11-06
       technology: MSGraph
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-o365-groups
       name: react-manage-o365-groups
