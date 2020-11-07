@@ -6,6 +6,13 @@
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": true,
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "000000"
+    },
     "webApiPermissionRequests": [
       {
         "resource": "Microsoft Graph",
