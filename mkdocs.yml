@@ -63,6 +63,26 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-bot-framework-sso
+      name: react-bot-framework-sso
+      title: Single-Sign On Bot Framework
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-bot-framework-secure/assets/sp-wp-secure.gif
+      author: Qiong Wu
+      summary: The web parts embeds the login bot by using a webchat. As the user has already login in the SharePoint website, we could use SSO to authorize the bot.
+      modifiedtext: November 6, 2020
+      modified: 2020-11-06
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-bot-framework-secure
+      name: react-bot-framework-secure
+      title: Secure Bot Framework
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-bot-framework-secure/assets/sp-wp-secure.gif
+      author: Qiong Wu
+      summary: This sample shows how to secure your conversation including the use of a Direct Line token instead of secret, for user id, generate it inside client side and detect if the client has changed the user ID and reject the change.
+      modifiedtext: November 6, 2020
+      modified: 2020-11-06
+    - framework: React
       spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-quick-poll
       name: react-quick-poll
@@ -613,10 +633,10 @@ extra:
       name: react-carousel
       title: Carousel Web Part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-carousel/assets/carousel.gif
-      author: João Mendes, Rahul Suryawanshi, Harsha Vardhini
+      author: João Mendes, Rahul Suryawanshi, Harsha Vardhini, Don Kirkham
       summary: This web part show images and videos in carousel
-      modifiedtext: October 20, 2020
-      modified: 2020-10-20
+      modifiedtext: October 31, 2020
+      modified: 2020-10-31
       level: 200
       technology: MSGraph
     - framework: React
@@ -2926,6 +2946,7 @@ extra:
     - Paul Schaeflein
     - Peter Paul Kirschner
     - Pieter Heemeryck
+    - Qiong Wu
     - Rahul Suryawanshi
     - Ram Prasad Meenavalli
     - Ramin Ahmadi
