@@ -2,7 +2,7 @@
 
 ## Summary
 
-This web part will allow users to view/update application customizers properties across any web where the current user has access to. This web part can be helpful when we require to update the properties for application customizer without using any powershell script or cli tool.
+This web part will allow users to view/update application customizers properties across any web where the current user has access to. This web part can be helpful when we require to update the properties for application customizer without using any PowerShell script or cli tool.
 
 ![Web part in action](assets/react-all-applicationcustomizers.gif?raw=true "Webpart in action")
 
@@ -11,7 +11,7 @@ This web part will allow users to view/update application customizers properties
 - SPFx Application customizer can be used to add scripts, and add custom html to well known placeholder(header and footer)
 - We can use properties to pass data to Application customizers to make solution customizable.
 - To update properties of application customizer there is no UI based solution.
-- To update the title, details and other information of application customizer we use either powershell script or cli tool.
+- To update the title, details and other information of application customizer we use either PowerShell script or cli tool.
 - This webpart can be used at a central location where all the users have access and if they require to update title, description and properties.
 
 ## Features
@@ -19,12 +19,12 @@ This web part will allow users to view/update application customizers properties
 - Webpart to view/update Application Customizers registered for a selected web
 - Provides two different UI Accordion or List based(configurable)
 - Provides a dropdown to select the web from where we would require to fetch application customizers
-- Allows to update application customizer properties which makes it easy to make reuseable application customizers
+- Allows to update application customizer properties which makes it easy to make re-useable application customizers
 
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.11-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
@@ -37,7 +37,7 @@ This web part will allow users to view/update application customizers properties
 
 Solution|Author(s)
 --------|---------
-react-edit-applicationcustomizers | [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/) and [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia/) 
+react-edit-applicationcustomizers | [Kunj Sangani](https://www.linkedin.com/in/kunj-sangani/) and [Siddharth Vaghasia](https://www.linkedin.com/in/siddharthvaghasia) 
 
 ## Version history
 
@@ -64,8 +64,6 @@ For any issue or help, Buzz us on twitter:([sanganikunj](https://twitter.com/san
 
 > Sharing is caring!
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-edit-applicationcustomizers" />
-
 ## References
 
 - [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
@@ -73,3 +71,5 @@ For any issue or help, Buzz us on twitter:([sanganikunj](https://twitter.com/san
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-edit-applicationcustomizers" />
