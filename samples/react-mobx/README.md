@@ -13,7 +13,7 @@ extensions:
   - React
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# Webpart with React and Mobx
+# Using Mobx
 
 ## Summary
 Sample webpart implementation that uses [Mobx](https://github.com/mobxjs/mobx) to keep track of its state.
