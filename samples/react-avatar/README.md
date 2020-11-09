@@ -1,4 +1,4 @@
-# SPFx Avatar
+# Avatar Editor
 
 ## Summary
 
