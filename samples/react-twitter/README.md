@@ -1,4 +1,4 @@
-# React Twitter Timeline
+# Twitter Timeline
 
 Sample web part to display Twitter timeline
 
