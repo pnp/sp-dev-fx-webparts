@@ -1,4 +1,4 @@
-# react-quotes
+# Quote of the Day
 
 ## Summary
 
