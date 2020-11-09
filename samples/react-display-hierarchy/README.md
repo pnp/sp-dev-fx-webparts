@@ -1,4 +1,4 @@
-## Web part displaying hierarchical information from SharePoint list
+# Displaying hierarchical information from SharePoint list
 
 ### Summary 
 At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list.
