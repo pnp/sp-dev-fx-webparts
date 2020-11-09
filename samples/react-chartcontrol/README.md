@@ -1,4 +1,4 @@
-## React Chart Control Samples
+# React Chart Control Samples
 
 ## Summary
 
