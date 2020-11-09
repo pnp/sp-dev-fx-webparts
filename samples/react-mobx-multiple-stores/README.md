@@ -1,4 +1,4 @@
-# Webpart with React and Mobx using multiple stores
+# Using Mobx with multiple stores
 
 ## Summary
 A sample webpart that uses the [Mobx](https://mobx.js.org/) library with multiple stores to keep track of the applications state.
