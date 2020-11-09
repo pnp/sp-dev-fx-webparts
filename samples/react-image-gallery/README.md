@@ -1,4 +1,4 @@
-# Filterable Image Gallery Web Part
+# Filterable Image Gallery
 
 ## Summary
 This sample describes an SPFx application which implements an image gallery with taxonomy base filtering and typed search. This application also implements pagination.
