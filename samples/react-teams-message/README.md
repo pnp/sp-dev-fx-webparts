@@ -14,7 +14,7 @@ extensions:
   - React
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# Web part showing Current User's MS Teams and send message.
+# Current User's MS Teams and send message.
 
 ## Summary
 
