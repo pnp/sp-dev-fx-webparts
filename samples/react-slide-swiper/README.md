@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 3/1/2018 12:00:00 AM
 ---
-# SPFx React Slide Swiper #
+# Slide Swiper
 
 ## Summary
 
