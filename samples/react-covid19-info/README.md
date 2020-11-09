@@ -1,4 +1,4 @@
-# COVID 19 information web part
+# COVID 19 Information
 
 ## Summary
 
