@@ -1,4 +1,4 @@
-# React Aggregated Calendar Webpart
+# Aggregated Calendar
 
 ## Summary
 This is a sample webpart developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io

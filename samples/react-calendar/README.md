@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 04/25/2017 12:00:00 AM
 ---
-# React Calendar
+# Calendar
 
 ## Summary
 

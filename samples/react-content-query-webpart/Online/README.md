@@ -1,4 +1,4 @@
-# React Content Query web part (SharePoint Online-Compatible)
+# Content Query web part (SharePoint Online-Compatible)
 
 ## Summary
 

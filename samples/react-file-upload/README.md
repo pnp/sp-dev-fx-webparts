@@ -1,4 +1,4 @@
-# React File Upload WebPart
+# File Upload
 
 ## Summary
 The file upload web part allowing users to upload multiple files to a document library or as item attachments.

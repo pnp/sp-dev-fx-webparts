@@ -13,7 +13,7 @@ extensions:
   - knockout
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# Taxonomy Web Part
+# Taxonomy
 
 ## Summary
 Sample Web Part illustrating

@@ -12,8 +12,9 @@ extensions:
   platforms:
   - React
   createdDate: 4/10/2020 12:00:00 AM
+  description: Display your SharePoint solution version within your web parts
 ---
-## Version Display
+# Version Display
 
 ## Summary
 

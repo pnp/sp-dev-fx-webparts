@@ -13,7 +13,7 @@ extensions:
   - Knockout
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# Sample Web Part implementing dependent properties in Property Pane
+# Dependent Property Pane Properties
 
 ## Summary
 Sample Web Part illustrating

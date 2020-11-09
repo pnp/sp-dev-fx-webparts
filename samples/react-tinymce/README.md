@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 3/1/2018 12:00:00 AM
 ---
-# React TinyMCE Editor WebPart Integration with SharePoint
+# TinyMCE Editor
 
 ## Summary
 React TinyMCE is one of the worlds most popular editors for the web.

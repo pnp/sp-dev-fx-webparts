@@ -1,4 +1,4 @@
-# World Clocks Web Part
+# World Clocks
 
 ## Summary
 

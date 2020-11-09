@@ -14,7 +14,7 @@ extensions:
   createdDate: 7/17/2019 12:00:00 AM
 ---
 
-# React Kanban Board Webpart
+# Kanban Board
 
 ## Summary
 

@@ -13,7 +13,7 @@ extensions:
   - React
   createdDate: 6/1/2020 12:00:00 AM
 ---
-# React My Groups
+# My Groups
 
 ## Summary
 

@@ -1,4 +1,4 @@
-### React Webpart Details
+# Display Web Part Details
 
 ## Summary
 

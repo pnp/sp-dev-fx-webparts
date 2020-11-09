@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 6/1/2017 12:00:00 AM
 ---
-# React Side Panel Client-Side Web Part
+# Side Panel
 
 ## Summary
 

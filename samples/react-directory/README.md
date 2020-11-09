@@ -1,4 +1,4 @@
-# React Directory Web Part
+# Organization Directory
 
 ## Summary
 

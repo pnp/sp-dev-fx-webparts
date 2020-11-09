@@ -1,4 +1,4 @@
-# react-edit-application-customizers
+# Edit Application Customizers
 
 ## Summary
 

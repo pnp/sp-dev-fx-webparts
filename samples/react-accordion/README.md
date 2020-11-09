@@ -14,7 +14,7 @@ extensions:
   createdDate: 1/8/2018 12:00:00 AM
 ---
 
-## Using React Accordion plugin with SPFx
+# Using React Accordion plugin with SPFx
 
 ## Summary
 

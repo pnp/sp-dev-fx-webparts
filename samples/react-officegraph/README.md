@@ -16,7 +16,7 @@ extensions:
   scenarios:
   - Embed
 ---
-# React & Office Graph Web Part samples
+# DEPRECATED: React & Office Graph Web Part samples
 
 > ## DEPRECATED
 > This sample makes use of deprecated or otherwise outdated packages and will no longer work. See issue [#358](https://github.com/SharePoint/sp-dev-fx-webparts/issues/358) for more information.

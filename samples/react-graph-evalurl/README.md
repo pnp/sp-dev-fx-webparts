@@ -1,4 +1,4 @@
-## Webpart showing Url validation for SharePoint using Office Graph
+# Url validation for SharePoint using Office Graph
 
 ### Summary 
 This sample contains a class that evaluates the url input of a text field against the Microsoft Graph. It is possible to evalute the existance of the following three SharePoint Elements:

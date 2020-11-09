@@ -1,4 +1,4 @@
-## vue-js-org-chart
+# Organization Chart using VueJS
 
 ## Summary
 A simple Organisation Chart webpart using Office UI Fabric, VueJS, REST API.

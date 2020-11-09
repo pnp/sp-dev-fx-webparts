@@ -13,7 +13,7 @@ extensions:
   - React
   createdDate: 11/28/2018 12:00:00 AM
 ---
-# Image Gallery Web Part Built with Adaptive Cards
+# Image Gallery Built with Adaptive Cards
 
 ## Summary 
 

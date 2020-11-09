@@ -1,4 +1,4 @@
-## Web part displaying Google Fit information
+# Google Fit information
 
 ### Summary 
 

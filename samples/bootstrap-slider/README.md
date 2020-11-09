@@ -14,7 +14,7 @@ extensions:
   - jQuery
   createdDate: 5/1/2017 12:00:00 AM
 ---
-## Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x
+# Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x
 
 ## Summary
 Sample bootstrap slider which pulls the slides from a list inside the SharePoint site. The list is automatically deployed once the app is installed in the SharePoint site.

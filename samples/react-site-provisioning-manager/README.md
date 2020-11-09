@@ -1,4 +1,4 @@
-# Site Provisioning Manager Web Part
+# Site Provisioning Manager
 
 ## Summary
 This sample shows how you can manage site provisioning by calling Azure functions.

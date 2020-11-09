@@ -1,4 +1,4 @@
-## Local Azure Function and SPFx Web Part Development to consume third party APIs
+# Local Azure Function and SPFx Web Part Development to consume third party APIs
 
 This sample shows how to consume third-party APIs through an Azure Functions by a Web Part. In this scenario, Vimeo is the representative third party API.
 This project contains two separate project folders:

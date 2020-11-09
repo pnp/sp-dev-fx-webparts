@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 8/1/2017 12:00:00 AM
 ---
-# Page Contributors Web Part
+# Page Contributors
 
 ## Summary
 Displays page contributors in reverse chronological order.

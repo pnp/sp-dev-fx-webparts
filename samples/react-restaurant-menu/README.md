@@ -16,7 +16,7 @@ extensions:
   createdDate: 4/9/2020 12:00:00 AM
 ---
 
-# React Restaurant Menu
+# Restaurant Menu
 
 ## Summary
 
