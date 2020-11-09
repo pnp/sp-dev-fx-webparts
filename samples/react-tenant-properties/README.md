@@ -1,4 +1,4 @@
-# React Tenant Properties Web Part
+# Tenant Properties
 
 ## Summary
 
