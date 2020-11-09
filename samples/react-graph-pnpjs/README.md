@@ -8,7 +8,7 @@ It requests a list of Azure AD [groups](https://docs.microsoft.com/en-us/graph/a
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.7.1-green.svg)
+![1.7.1](https://img.shields.io/badge/drop-1.7.1-green.svg)
 
 
 ## Applies to
