@@ -15,7 +15,7 @@ extensions:
   createdDate: 06/17/2016 12:00:00 AM
 ---
 
-# React Carousel Web Part
+# Images and Videos in a Carousel
 
 ## Summary
 
