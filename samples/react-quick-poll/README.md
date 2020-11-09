@@ -1,9 +1,10 @@
-# React Quick Poll
+# Quick Poll
 
 ## Summary
 
-> This component is developed for the users who really need to create a **_Poll_** within a minute and with less maintenance. **_'QuickPoll'_** list will be created automatically to store the user response.  
-> Following are some of the features of this component.
+This component is developed for the users who really need to create a **_Poll_** within a minute and with less maintenance. **_'QuickPoll'_** list will be created automatically to store the user response.  
+
+Following are some of the features of this component.
 * **_Easy_** to setup with most of the configurations are optional.
 * **_Flexible_** to use without any critical configuration.
 * More than one poll questions can be added.
