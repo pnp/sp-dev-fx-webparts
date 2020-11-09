@@ -1,4 +1,4 @@
-# React Page Navigator
+# Page Navigator
 
 ## Summary
 
