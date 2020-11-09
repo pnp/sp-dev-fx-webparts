@@ -15,7 +15,7 @@ extensions:
   createdDate: 4/9/2020 12:00:00 AM
 ---
 
-# React My Personal Apps (Links)
+# My Personal Apps (Links)
 
 ## Summary
 The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access.
