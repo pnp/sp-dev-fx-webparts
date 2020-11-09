@@ -1,5 +1,7 @@
 # title of the sample
 
+> When naming your sample, try to give it a friendly name that describes what it does. Avoid using terms like SharePoint and Web Part -- because that's what all the samples in this repo is all about. Also, don't use React, JavaScript, etc. in your sample title -- unless that's what the sample is about.
+
 ## Summary
 
 Short summary on functionality and used technologies.
@@ -15,7 +17,7 @@ Short summary on functionality and used technologies.
 
 ## Used SharePoint Framework Version
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
