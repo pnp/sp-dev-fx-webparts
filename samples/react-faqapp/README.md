@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 04/25/2017 12:00:00 AM
 ---
-# SharePoint Framework Faq App
+# Frequently Asked Questions App
 
 ## Summary
 - This Web Part allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.
