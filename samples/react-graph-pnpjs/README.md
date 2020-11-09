@@ -1,4 +1,4 @@
-# React sample showing the use of PnPJS with MS Graph
+# Using PnPJS with Microsoft Graph
 
 ## Summary
 This webpart demonstrates how to use [PnPJS](https://pnp.github.io/pnpjs/) with SharePoint Framework and how to query [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) with PnPJS.
