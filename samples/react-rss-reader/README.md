@@ -1,4 +1,4 @@
-## SharePoint Framework RSS Reader
+# SharePoint Framework RSS Reader
 
 ## Summary
 
