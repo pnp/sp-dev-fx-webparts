@@ -1,4 +1,4 @@
-# SPFx My Flows Web Part
+# My Flows
 
 ## Summary
 
