@@ -13,6 +13,8 @@ extensions:
   - React
   createdDate: 1/1/2016 12:00:00 AM
 ---
+# Basic TODO
+
 ## Summary
 A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.
 
