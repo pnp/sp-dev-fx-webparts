@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 8/1/2017 12:00:00 AM
 ---
-# React Content Query WebPart (Compatible with On-Premises SharePoint versions)
+# Content Query WebPart (Compatible with On-Premises SharePoint versions)
 
 ## Summary
 
