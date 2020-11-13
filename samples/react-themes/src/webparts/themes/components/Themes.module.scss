@@ -9,5 +9,6 @@ $themePrimary: "[theme:themePrimary, default: #0078d7]";
 
   .themePrimary {
     background: $themePrimary;
+    background: "[theme:themePrimary, default: #0078d7]";
   }
 }
