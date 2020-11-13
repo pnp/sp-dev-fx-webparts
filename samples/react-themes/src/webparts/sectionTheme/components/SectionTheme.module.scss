@@ -1,0 +1,59 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.sectionTheme {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    background-color: var(--primaryButtonBackground);
+    color: var(--primaryButtonText);
+  }
+
+  .row {
+    @include ms-Grid-row;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-sm11;
+    @include ms-xlPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+    font-weight: bold;;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    line-height: 1em;
+    margin-bottom: 10px;
+    margin-left: 5%;
+  }
+  .details {
+    @include ms-sm12;
+    height: 400px;
+    overflow-y: scroll;
+  }
+
+  .itemKey {
+    @include ms-sm6;
+    float: left;
+    text-align: right;
+  }
+
+  .itemValue {
+    text-align: left;
+    margin-left: 10px;
+    float: left;
+  }
+
+  .colorBlock {
+    width: 500px;
+    border: 1px solid;
+    border-color: var(--inputBorder);
+    color: transparent;
+    margin-right: 5px;
+  }
+}

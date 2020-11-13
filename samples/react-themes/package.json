@@ -7,13 +7,14 @@
   },
   "dependencies": {
     "@microsoft/sp-core-library": "1.11.0",
-    "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-lodash-subset": "1.11.0",
     "@microsoft/sp-office-ui-fabric-core": "1.11.0",
+    "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
+    "@pnp/spfx-controls-react": "^2.1.0",
+    "@uifabric/utilities": "^7.33.2",
     "react": "16.8.5",
-    "react-dom": "16.8.5",
-    "office-ui-fabric-react": "6.214.0"
+    "react-dom": "16.8.5"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",
