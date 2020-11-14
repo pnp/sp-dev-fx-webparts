@@ -3,7 +3,7 @@
   "solution": {
     "name": "React Content Query",
     "id": "00406271-0276-406f-9666-512623eb6709",
-    "version": "1.0.15.0",
+    "version": "1.0.16.0",
     "isDomainIsolated": false,
     "includeClientSideAssets": true,
       "developer": {
