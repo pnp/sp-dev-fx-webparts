@@ -583,10 +583,14 @@ export class ContentQueryService implements IContentQueryService {
 
     for (let result of results) {
       let normalizedResult: any = {};
-      let formattedCharsRegex = /_x00(20|3a|e0|e1|e2|e7|e8|e9|ea|ed|f3|f9|fa|fc)_/gi;
-
+      let formattedCharsRegex = /_x00(20|3a|[c-f]{1}[0-9a-f]{1})_/gi;
       for (let viewField of viewFields) {
-        let formattedName = viewField.replace(formattedCharsRegex, "_x005f_x00$1_x005f_");
+        //check if the intenal fieldname begins with a special character (_x00)
+        let viewFieldOdata = viewField;
+        if (viewField.indexOf("_x00") == 0) {
+          viewFieldOdata = `OData_${viewField}`;
+        }
+        let formattedName = viewFieldOdata.replace(formattedCharsRegex, "_x005f_x00$1_x005f_");
         formattedName = formattedName.replace(/_x00$/, "_x005f_x00");
         normalizedResult[viewField] = {
           textValue: result.FieldValuesAsText[formattedName],
