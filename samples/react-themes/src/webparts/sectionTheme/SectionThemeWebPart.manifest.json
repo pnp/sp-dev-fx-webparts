@@ -17,9 +17,9 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "SectionTheme" },
+    "title": { "default": "Section Theme" },
     "description": { "default": "Webpart updates styles based on section style" },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "BackgroundColor",
     "properties": {
       "description": "SectionTheme"
     }

@@ -1,4 +1,4 @@
-@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .sectionTheme {
   .container {
@@ -18,6 +18,10 @@
     @include ms-Grid-col;
     @include ms-sm11;
     @include ms-xlPush1;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
   }
 
   .title {
@@ -55,5 +59,43 @@
     border-color: var(--inputBorder);
     color: transparent;
     margin-right: 5px;
+  }
+
+  .description {
+    @include ms-font-l;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
   }
 }

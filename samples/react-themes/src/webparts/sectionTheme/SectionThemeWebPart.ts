@@ -14,7 +14,8 @@ import { ISectionThemeProps } from './components/ISectionThemeProps';
 import {
   ThemeProvider,
   ThemeChangedEventArgs,
-  IReadonlyTheme
+  IReadonlyTheme,
+  ISemanticColors
 } from '@microsoft/sp-component-base';
 
 export interface ISectionThemeWebPartProps {

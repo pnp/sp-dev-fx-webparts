@@ -45,5 +45,4 @@ export default class SectionTheme extends React.Component<ISectionThemeProps, {}
       </div>
     );
   }
-
 }

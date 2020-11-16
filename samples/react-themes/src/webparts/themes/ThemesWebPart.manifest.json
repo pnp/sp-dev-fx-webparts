@@ -21,7 +21,7 @@
       "description": {
         "default": "Example of using SharePoint Themes"
       },
-      "officeFabricIconFontName": "Page",
+      "officeFabricIconFontName": "BucketColor",
       "properties": {
         "description": "Themes"
       }
