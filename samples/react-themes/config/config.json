@@ -1,13 +1,28 @@
 {
-  "entries": [
-    {
-      "entry": "./lib/webparts/themes/ThemesWebPart.js",
-      "manifest": "./src/webparts/themes/ThemesWebPart.manifest.json",
-      "outputPath": "./dist/themes.bundle.js"
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "themes-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/themes/ThemesWebPart.js",
+          "manifest": "./src/webparts/themes/ThemesWebPart.manifest.json"
+        }
+      ]
+    },
+    "section-theme-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sectionTheme/SectionThemeWebPart.js",
+          "manifest": "./src/webparts/sectionTheme/SectionThemeWebPart.manifest.json"
+        }
+      ]
     }
-  ],
+  },
   "externals": {},
   "localizedResources": {
-    "themesStrings": "webparts/themes/loc/{locale}.js"
+    "ThemesStrings": "./src/webparts/themes/loc/{locale}.js",
+    "SectionThemeWebPartStrings": "lib/webparts/sectionTheme/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }

@@ -1,20 +1,30 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "bb2ff581-2b46-4bfd-bfd0-ac1607c96ddb",
   "alias": "ThemesWebPart",
   "componentType": "WebPart",
-  "version": "0.0.1",
+  "version": "*",
   "manifestVersion": 2,
-
-  "preconfiguredEntries": [{
-    "groupId": "bb2ff581-2b46-4bfd-bfd0-ac1607c96ddb",
-    "group": { "default": "Under Development" },
-    "title": { "default": "Themes" },
-    "description": { "default": "Example of using SharePoint Themes" },
-    "officeFabricIconFontName": "Page",
-    "properties": {
-      "description": "Themes"
+    "requiresCustomScript": false,
+    "supportedHosts": [
+      "SharePointWebPart"
+    ],
+    "preconfiguredEntries": [
+    {
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": {
+      "default": "Other"
+    },
+    "title": {
+        "default": "Themes"
+      },
+      "description": {
+        "default": "Example of using SharePoint Themes"
+      },
+      "officeFabricIconFontName": "BucketColor",
+      "properties": {
+        "description": "Themes"
+      }
     }
-  }]
+  ]
 }
