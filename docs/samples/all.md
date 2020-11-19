@@ -1,7 +1,7 @@
 # All Samples
 
 To learn more about how to use these samples, please refer to our [getting started](../gettingstarted/index.md) section.
-
+ 
 <table id="samplestable">
     <thead>
         <tr>
@@ -49,5 +49,5 @@ To learn more about how to use these samples, please refer to our [getting start
     {% endfor %}
     </tbody>
 </table>
-
+<!-- TEST -->
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/docs/samples/all" />

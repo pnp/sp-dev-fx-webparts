@@ -64,6 +64,16 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-themes
+      name: react-themes-sectionthemes
+      title: Section Theme
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-themes/assets/SectionThemes.png
+      author: Don Kirkham
+      summary: The Section Theme web part illustrates how to use theme variant variables to style web parts based on selected site theme and section background colors.
+      modifiedtext: November 16, 2020
+      modified: 2020-11-16
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-Edit-ApplicationCustomizer
       name: react-edit-applicationcustomizer
       title: Edit Application Customizers
@@ -2916,6 +2926,7 @@ extra:
     - David Warner II
     - Dhaval Shah
     - Dimcho Tsanov
+    - Don Kirkham
     - Ejaz Hussain
     - Elio Struyf
     - Eric Overfield
