@@ -1,53 +1,86 @@
-# react-list-items-menu
+# List Items Menu
 
-This project uses [React](https://reactjs.org).
+## Summary
 
-> This is where you include your project's documentation.
+This web part allows user create a navigation menu , grouped by any column of document library.
+Whe the user click on the header it's dinamic load documents. 
 
-## Global dependencies
+</br>
+</br>
+</br>
 
-Requires Gulp globally installed:
 
-```shell
-npm install --global gulp
-```
+![ListItemsMenu](./assets/ListMenuDocs.gif)
+</br>
+</br>
 
-## Building the code
+## Screenshots
+</br>
 
-Download & install all dependencies, build, bundle & package the project
 
-```shell
-# download & install dependencies
-npm install
+![ListItemsMenu](./assets/reactListItems1.jpg)
 
-# transpile all TypeScript & SCSS => JavaScript & CSS
-gulp build
+</br>
+</br>
 
-# create component bundle & manifest
-gulp bundle
+![ListItemsMenu](./assets/reactListItems2.jpg)  
+</br>
+</br>
 
-# create SharePoint package
-gulp package-solution
-```
+![ListItemsMenu](./assets/reactListItems3.jpg)  
 
-These commands produce the following:
+</br>
+</br>
 
-- **./lib**: intermediate-stage commonjs build artifacts
-- **./dist**: bundled script, along with other resources
-- **./temp/deploy**: all resources required by component(s) to deploy to a CDN (when `--ship` argument present)
 
-## Build options
+## Used SharePoint Framework Version 
+![SPFx 1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
 
-- `gulp clean`: Deletes all build output (**/dist**, **/lib**, **/temp**, etc.).
-- `gulp build`: Transpiles all TypeScript & SCSS to JavaScript & CSS, generates source map files & TypeScript type declaration files
-- `gulp bundle [--ship|-p|--production]`: Runs gulp task **build**, then uses webpack to create the JavaScript bundle(s) and component manifest(s) as defined in **./config/config.json**. The `--ship`, `-p` or `--production` argument specifies a production build that will generate minified bundles.
-- `gulp serve [--ship|-p|--production]`: Runs gulp tasks **build**, **bundle** & starts the local webserver. Depending on the project type, it opens the browser and navigates to the local workbench or specified URL (in the case of extension components). The `--ship`, `-p` or `--production` argument specifies a production build that modifies the resulting package for production hosting rather than local hosting of assets.
-- `gulp package-solution`: Creates the SharePoint Package (**.sppkg**) file.
-- `gulp dist`: Creates a production-ready SharePoint Package (**.sppkg**) file. The following gulp task gets executed in this specific order `gulp clean`, `gulp bundle`, `gulp package-solution.`
-- `gulp dev`: Creates a development-ready SharePoint Package (**.sppkg**) file. The following gulp task will be executed in this specific order `gulp clean`, `gulp bundle`, `gulp package-solution.`
+## Applies to
 
-> View all available gulp tasks by running `gulp --tasks`
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
-More information on [SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)
+## WebPart Properties
+ 
+Property |Type|Required| comments
+--------------------|----|--------|----------
+WebPart Title| Text| no|
+Select Document Library| dropdown|yes
+Select Field to Group By | dropdown|yes
+ 
 
-Generated with [pnp/spfx](https://github.com/pnp/generator-spfx/).
+## Solution
+
+The Web Part Use PnPjs library, Fluent-Ui-react components
+
+Solution|Author(s)
+--------|---------
+React List Items Menu |João Mendes
+
+## Version history
+
+Version|Date|Comments
+-------|----|--------
+1.0.0|November 20, 2020|Initial release
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- Move to sample folder
+- in the command line run:
+  - `npm install`
+  - `gulp build`
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
+  - `Add to AppCatalog and deploy`
+   - `go to SharePoint Admin Center and Approve required API Permissions`
+
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-list-items-menu" />
