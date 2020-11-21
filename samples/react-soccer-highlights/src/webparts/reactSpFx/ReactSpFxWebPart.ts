@@ -5,6 +5,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneSlider,
+  PropertyPaneToggle,
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
@@ -18,6 +19,7 @@ export interface IReactSpFxWebPartProps {
   title: string;
   pageSize: number;
   displayMode: DisplayMode;
+  showFlatMode: boolean;
   updateProperty: (value: string) => void;
 }
 
@@ -29,7 +31,8 @@ export default class ReactSpFxWebPart extends BaseClientSideWebPart<IReactSpFxWe
       {
         title: this.properties.title,
         displayMode: this.properties.displayMode,
-        pageSize: this.properties.pageSize,
+        pageSize: this.properties.pageSize == undefined ? 10 : this.properties.pageSize,
+        showFlatMode: this.properties.showFlatMode,
         updateProperty: (value: string) => {this.properties.title = value;},
         onConfigure: () => {
           this.context.propertyPane.open();
@@ -66,10 +69,14 @@ export default class ReactSpFxWebPart extends BaseClientSideWebPart<IReactSpFxWe
                 label:"Highlights Per Page",
                 min:1,
                 max:20,
-                value:2,
+                value:5,
                 showValue:true,
                 step:1
-              })
+                }),
+                PropertyPaneToggle('showFlatMode', {
+                  label: "Show Videos in Flat Mode",
+                  checked: false
+                })
               ]
             }
           ]

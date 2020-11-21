@@ -3,90 +3,103 @@ import ReactDOM from "react-dom";
 import {
   ISportsHightLightsProps,
   ISportsHighlightPagingState,
-  IVideo,
+  ISportsHighlightsState,
+  ISportsHighlightProps,
 } from "./IReactSpFxProps";
-import SportsHighlight from "./SportsHighlight";
+//import SportsHighlight from "./SportsHighlight";
+import SportVideoListFilmStripView from "./SportVideoListFilmStripView";
 import Paging from "react-paging";
-import Pagination from "./Pagination";
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import axios from "axios";
+import SportsVideoList from "./SportsVideoList";
+
 
 export default class SportsHighlightsList extends React.Component<
   ISportsHightLightsProps,
   ISportsHighlightPagingState
 > {
-  constructor(props) {
+  constructor(
+    props: ISportsHightLightsProps,
+    state: ISportsHighlightPagingState
+  ) {
     super(props);
     this.state = {
-      currentPage: 1,
-      indexOfFirstHighlight: 1,
-      indexOfLastHighlight: 5,
-      highLightsPerPage: this.props.pageSize,
+      pagedSportHighlights: [],
+      slicedSportHighlights: [],
     };
   }
 
-
-  paginate = (page) => {
-    console.clear();
-
-    const indexOfLastHighlight =
-      this.state.currentPage * this.state.highLightsPerPage;
-    const indexOfFirstHighlight =
-      indexOfLastHighlight - this.state.highLightsPerPage;
-
-    this.setState({
-      currentPage: page,
-      indexOfLastHighlight: indexOfLastHighlight,
-      indexOfFirstHighlight: indexOfFirstHighlight,
-    });
+   public GetData = async () => {
+    const resp = await axios.get(`https://www.scorebat.com/video-api/v1/`);
+    const data : ISportsHighlightProps[] = await resp.data;
+    let slicedItems : ISportsHighlightProps[] = data.slice(0, this.props.pageSize);
+    this.setState({ pagedSportHighlights: data, slicedSportHighlights: slicedItems });
   };
 
-  //paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  render(): React.ReactElement<ISportsHightLightsProps> {
-    const sportsHighlights = this.props.sportsHighlights;
-    var {
-      currentPage,
-      indexOfFirstHighlight,
-      indexOfLastHighlight,
-    } = this.state;
+  async componentDidMount() {
+    console.log("Mounted");
+    this.GetData();
+  }
 
 
-    if (typeof indexOfFirstHighlight === "undefined" || indexOfFirstHighlight == 0)
-    {
-       indexOfFirstHighlight=1
-    }
 
-    if (
-      typeof indexOfFirstHighlight === "undefined" ||
-      indexOfFirstHighlight == 0
-    ) {
-      indexOfFirstHighlight = 1;
-    }
-      const CurrentsportsHighlights = this.props.sportsHighlights.slice(
-        indexOfFirstHighlight,
-        indexOfLastHighlight
+
+  public render(): React.ReactElement<ISportsHightLightsProps> {
+
+    let pageCountDivisor: number = this.props.pageSize;
+    let pageCount: number;
+    let pageButtons = [];
+    let highlightItems = this.state.pagedSportHighlights;
+
+    let _pagedButtonClick = (pageNumber: number, listData: any) => {
+      let startIndex: number = (pageNumber - 1) * pageCountDivisor;
+      let endIndex = startIndex + pageCountDivisor;
+      let listItemsCollection = [...listData];
+      let slicedItems: ISportsHighlightProps[] = listItemsCollection.slice(
+        startIndex,
+        endIndex
       );
+      this.setState({
+        slicedSportHighlights: slicedItems
+      });
+    };
 
-    console.clear();
-    console.log("indexOfFirstHighlight:" + indexOfFirstHighlight);
-    console.log("indexOfLastHighlight : " + indexOfLastHighlight);
-    console.log("currentPage          :" + currentPage);
-    console.log("Page Size            :" + this.props.pageSize);
+    // const pagedItems: JSX.Element = (
+    //   <SportVideoListFilmStripView highLights={this.state.slicedSportHighlights} />
+    // );
 
-    //this.updateLastPage(currentPage);
+    var pagedItems: JSX.Element = null;
+    if(!this.props.showFlatMode){
+      pagedItems = (<SportVideoListFilmStripView highLights={this.state.slicedSportHighlights} />);
+    }
+    else{
+      pagedItems = (<SportsVideoList videos={this.state.slicedSportHighlights} />  );
+    }
+
+    if (highlightItems.length > 0) {
+      pageCount = Math.ceil(highlightItems.length / pageCountDivisor);
+    }
+    for (let i = 0; i < pageCount; i++) {
+      pageButtons.push(
+        <PrimaryButton key={i} style={{width:"50px"}}
+          onClick={() => {
+            _pagedButtonClick(i + 1, highlightItems);
+          }}
+        >
+          {" "}
+          {i + 1}{" "}
+        </PrimaryButton>
+      );
+    }
 
     return (
       <div>
-        <div className="paginationDiv">
-          <Pagination
-            highLightsPerPage={10}
-            totalHighlights={sportsHighlights.length}
-            paginate={this.paginate}
-          />
+        <div className={`ms-Grid-row`} style={{paddingLeft:"8px"}}>
+          <div className="ms-Grid-col ms-u-lg12">{pageButtons}</div>
         </div>
-        <div>
-          {CurrentsportsHighlights.map((highLight, i) => (
-            <SportsHighlight {...highLight} key={i} />
-          ))}
+        <hr />
+        <div className="ms-Grid-row">
+          <div className="ms-Grid-col ms-u-lg12">{pagedItems}</div>
         </div>
       </div>
     );

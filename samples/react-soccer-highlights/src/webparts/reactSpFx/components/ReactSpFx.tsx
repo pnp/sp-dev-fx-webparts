@@ -6,35 +6,18 @@ import SportsHighlightsList from "./SportsHighlightsList";
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 
-import axios from "axios";
+
 import { setVirtualParent } from "office-ui-fabric-react";
 import SportsHighlights from "./SportsHighlightsList";
 import "bootstrap/dist/css/bootstrap.css";
 
-export default class ReactSpFx extends React.Component<
-  IReactSpFxProps,
-  ISportsHighlightsState
-> {
+export default class ReactSpFx extends React.Component<IReactSpFxProps> {
   public constructor(props: IReactSpFxProps, state: ISportsHighlightsState) {
     super(props);
-    this.state = {
-      sportHighlightState: [],
-    };
-  }
-
-  GetData = async () => {
-    const resp = await axios.get(`https://www.scorebat.com/video-api/v1/`);
-    const data = await resp.data;
-    this.setState({ sportHighlightState: data });
-  };
-
-  async componentDidMount() {
-    this.GetData();
   }
 
   public render(): React.ReactElement<IReactSpFxProps> {
     const globalComponent = this;
-    console.log(this.props.pageSize);
     return (
       <div className={styles.container}>
         {!this.props.title && (
@@ -56,9 +39,7 @@ export default class ReactSpFx extends React.Component<
           </div>
         )}
         <span></span>
-        <SportsHighlightsList
-          sportsHighlights={this.state.sportHighlightState}
-          pageSize={this.props.pageSize}
+        <SportsHighlightsList pageSize={this.props.pageSize} showFlatMode={this.props.showFlatMode}
         />
       </div>
     );

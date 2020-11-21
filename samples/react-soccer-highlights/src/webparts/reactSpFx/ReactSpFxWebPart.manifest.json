@@ -21,7 +21,8 @@
     "description": { "default": "Soccer Hightlights Web Parts show latest hightlights from around the world." },
     "officeFabricIconFontName": "Soccer",
     "properties": {
-      "tile": "Soocer Highlights"
+      "title": "Soccer Highlights",
+      "pageSize": 5
     }
   }]
 }

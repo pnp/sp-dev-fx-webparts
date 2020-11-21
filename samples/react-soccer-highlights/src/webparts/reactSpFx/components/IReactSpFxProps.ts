@@ -5,11 +5,12 @@ export interface IReactSpFxProps {
   title: string;
   displayMode: DisplayMode;
   pageSize: number;
+  showFlatMode: boolean;
   updateProperty: (value: string) => void;
   onConfigure: () => void;
 }
 
-export interface IVidesList {
+export interface IVideosList {
   videos: IVideo[];
 }
 
@@ -19,18 +20,16 @@ export interface IVideo {
 }
 
 export interface ISportsHighlightsState {
-  sportHighlightState: [];
+  sportHighlightState: any;
 }
 export interface ISportsHighlightPagingState {
-  currentPage: number;
-  indexOfLastHighlight: number;
-  indexOfFirstHighlight: number;
-  highLightsPerPage: number;
+  pagedSportHighlights?: ISportsHighlightProps[];
+  slicedSportHighlights?: ISportsHighlightProps[];
 }
 
 export interface ISportsHightLightsProps {
   pageSize:number;
-  sportsHighlights: [];
+  showFlatMode: boolean;
 }
 
 export interface ISide {
@@ -41,8 +40,13 @@ export interface ICompetition{
   id: number;
 }
 
+export interface ISportsHighlights {
+  highLights?: ISportsHighlightProps[];
+}
+
 export interface ISportsHighlightProps {
   title: string;
+  embed: string
   id: string;
   date: Date;
   side1: ISide;

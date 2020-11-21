@@ -10,14 +10,14 @@ export default class SportsVideo extends React.Component<IVideo> {
     return (
       <div>
         <div
-          style={{ fontSize: "12px", fontWeight: "bold", textAlign: "center", color:"blue" }}
+          style={{ fontSize: "18px", fontWeight: "bold", textAlign: "center", color:"blue" }}
           title={"click to play " + title}
         >
           {title}
         </div>
         <div id={"video" + title}
           dangerouslySetInnerHTML={{ __html: embed }}
-          style={{ width: 500, padding: "8px" }}
+          style={{ padding: "8px" }}
           title={"click to play " + title}
         />
       </div>
