@@ -10,7 +10,7 @@
 - You can also view the hights as flat mode.
 - You can set Title and Number of Highlights to show.
 
-![Web Part](./assets/SoccerHighlights.png)
+![Web Part](./assets/SoccerHighlightsV1.png)
 
 ### Web Part in Action
 
