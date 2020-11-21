@@ -2,13 +2,11 @@
 
 ## Summary
 
-- This web part sample displays Soccer Highlights from a public Soccer API.  
+- This react web part sample displays Soccer Highlights from a public Soccer API.  
 - It shows a maxium of 100 highlights at one time.  
-- The web part show live status of games scores and ability to watch them live.
-- You can view the highlights as Film Strips (Thanks to Hugo for the tip and great blog)
-- You can configure highlights per page.
-- You can also view the hights as flat mode.
-- You can set Title and Number of Highlights to show.
+- The web part show live status of game scores and ability to watch them live in small or full screen view.
+- You can view the highlights as FilmStrip Control (Thanks to Hugo for the tip and great blog) or Flat Mode.
+- You can configure highlights per page and use Paging.
 
 ![Web Part](./assets/SoccerHighlightsV1.png)
 
