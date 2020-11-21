@@ -27,7 +27,7 @@ Below NPM packages are used to develop this sample.
 3.	array-to-tree (https://www.npmjs.com/package/array-to-tree) 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.6-green.svg)
+![1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -45,6 +45,7 @@ react-display-hierarchy|[Nanddeep Nachan](https://www.linkedin.com/in/nanddeepna
 
 Version|Date|Comments
 -------|----|--------
+2.0.0|November 21, 2020|Upgraded to SPFx v1.11.0 (Nanddeep Nachan)
 1.0.0|October 15, 2018|Initial release
 
 ## Disclaimer
@@ -61,9 +62,12 @@ Version|Date|Comments
 
 - Clone this repo
 - `npm i`
-- `gulp serve --nobrowser`
-- Open workbench on your tenant, ie. https://contoso.sharepoint.com/sites/salestesm/_layouts/15/workbench.aspx
-- Search and add web part "Display Hierarchy"
+- `gulp bundle --ship`
+- `gulp package-solution --ship`
+- The package can be found at `\react-display-hierarchy\sharepoint\solution\spfx-react-hierarchy-view.sppkg`
+- [Deploy the package](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#deploy-the-helloworld-package-to-app-catalog) to the app catalog.
+- [Install the client-side solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#install-the-client-side-solution-on-your-site) to your SharePoint site.
+- [Add web part to your SharePoint page](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page#add-the-helloworld-web-part-to-modern-page) named "Display Hierarchy".
 
 ## Features
 This sample web part shows how data stored in SharePoint list can be transformed to show hierarchical information
@@ -71,7 +75,7 @@ This sample web part shows how data stored in SharePoint list can be transformed
 - SharePoint assets provisioning
 - Creating extensible services
 - Using mock data to test the web part locally
-- Using @sp-pnp-js
+- Using @pnp/sp
 - Using @react-orgchart
 - Using @array-to-tree
 
