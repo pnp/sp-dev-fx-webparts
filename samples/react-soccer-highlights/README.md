@@ -2,7 +2,12 @@
 
 ## Summary
 
-- This sample displays Soccer Highlights from public Soccer API.  
+- This web part sample displays Soccer Highlights from a public Soccer API.  
+- It shows a maxium of 100 highlights at one time.  
+- The web part show live status of games scores and ability to watch them live.
+- You can view the highlights as Film Strips (Thanks to Hugo for the tip and great blog)
+- You can configure highlights per page.
+- You can also view the hights as flat mode.
 - You can set Title and Number of Highlights to show.
 
 ![Web Part](./assets/SoccerHighlights.png)
@@ -17,7 +22,9 @@
 
 **2) Add the Web Part to Page, Configure the web Part, provide Title and Page Size.**
 
-**3) Double click on Pager to move Pages. **
+**3) Add the Web Part to Page, Configure the web Part, provide Title and Page Size.**
+
+**4) Click on Pager to move Pages or arrows or dots in filmstrip view. **
 
 ## Used SharePoint Framework Version
 
@@ -29,8 +36,7 @@
 - [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
-
-- A package is available for direct download.
+None
 
 ## Solution
 
