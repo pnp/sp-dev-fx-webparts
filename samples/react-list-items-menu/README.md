@@ -9,11 +9,11 @@ When the user clicks on the header it dynamically load documents.
 
 ## Screenshots
 
-![ListItemsMenu](./assets/reactListItems1.jpg)
+![ListItemsMenu](./assets/reactListItems1.JPG)
 
-![ListItemsMenu](./assets/reactListItems2.jpg)  
+![ListItemsMenu](./assets/reactListItems2.JPG)  
 
-![ListItemsMenu](./assets/reactListItems3.jpg)  
+![ListItemsMenu](./assets/reactListItems3.JPG)  
 
 
 ## Used SharePoint Framework Version 
