@@ -3,34 +3,17 @@
 ## Summary
 
 This web part allows user create a navigation menu , grouped by any column of document library.
-Whe the user click on the header it's dinamic load documents. 
-
-</br>
-</br>
-</br>
-
+When the user clicks on the header it dynamically load documents. 
 
 ![ListItemsMenu](./assets/ListMenuDocs.gif)
-</br>
-</br>
 
 ## Screenshots
-</br>
-
 
 ![ListItemsMenu](./assets/reactListItems1.jpg)
 
-</br>
-</br>
-
 ![ListItemsMenu](./assets/reactListItems2.jpg)  
-</br>
-</br>
 
 ![ListItemsMenu](./assets/reactListItems3.jpg)  
-
-</br>
-</br>
 
 
 ## Used SharePoint Framework Version 
@@ -79,8 +62,8 @@ Version|Date|Comments
   - `gulp build`
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
-  - `Add to AppCatalog and deploy`
-   - `go to SharePoint Admin Center and Approve required API Permissions`
+- Add to AppCatalog and deploy
+- go to SharePoint Admin Center and Approve required API Permissions
 
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-list-items-menu" />
