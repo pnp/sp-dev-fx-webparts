@@ -1,6 +1,6 @@
 import * as React                                       from 'react';
 import * as ReactDom                                    from 'react-dom';
-import { IPropertyPaneField, PropertyPaneFieldType }    from '@microsoft/sp-webpart-base';
+import { IPropertyPaneField, PropertyPaneFieldType }    from "@microsoft/sp-property-pane";
 import { IPropertyPaneTextDialogProps }           	  	from './IPropertyPaneTextDialogProps';
 import { IPropertyPaneTextDialogInternalProps }   	  	from './IPropertyPaneTextDialogInternalProps';
 import { ITextDialogProps }                         		from './components/TextDialog/ITextDialogProps';

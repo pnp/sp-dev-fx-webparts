@@ -37,12 +37,14 @@ This sample includes the following service(s):
 Solution|Author(s)
 --------|---------
 react-rss-reader | Eric Overfield -[@ericoverfield](http://www.twitter.com/ericoverfield)
+react-rss-reader | Abderahman Moujahid
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0 | Jan 21, 2019 | Initial release
+1.0.0 | Jan 21, 2019 | Initial release
+1.0.1 | Nov 22, 2020 | Upgraded to SPFx 1.11
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

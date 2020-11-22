@@ -3,7 +3,14 @@
   "solution": {
     "name": "react-rssreader-client-side-solution",
     "id": "fcb53167-e0d5-4ed1-9648-149146649aa1",
-    "version": "1.0.0.6",
+    "version": "1.0.1.0",
+    "developer": {
+      "name": "Eric Overfield",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rss-reader",
+      "mpnId": "000000"
+    },
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false
