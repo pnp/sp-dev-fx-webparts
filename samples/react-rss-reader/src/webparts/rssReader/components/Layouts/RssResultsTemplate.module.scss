@@ -5,12 +5,7 @@
 :global {
   .template_root {
     /*include fabric here to surpress warnings*/
-    @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/FabricCore.scss';
-
-    @import '~office-ui-fabric/dist/sass/Fabric.scss';
-    @import '~office-ui-fabric/dist/components/Label/Label.scss';
-    @import '~office-ui-fabric/dist/components/List/List.scss';
-    @import '~office-ui-fabric/dist/components/ListItem/ListItem.scss';
+    @import '~office-ui-fabric-react/dist/sass/References.scss';
 
     .template_rss_tileList {
       .singleCard {
