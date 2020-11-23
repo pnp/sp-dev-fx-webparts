@@ -64,6 +64,27 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-soccer-highlights
+      name: react-soccer-highlights
+      title: Soccer Highlights
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-soccer-highlights/assets/SoccerHighlightsV1.png
+      author: Jerry Yasir
+      summary: This react web part sample displays Soccer Highlights from a public Soccer API. 
+      modifiedtext: October 30, 2020
+      modified: 2020-10-30
+      pnpcontrols: WebPartTitle
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-items-menu
+      name: react-list-items-menu
+      title: List Items Menu
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-items-menu/assets/ListMenuDocs.gif
+      author: João Mendes
+      summary: Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents. 
+      modifiedtext: November 20, 2020
+      modified: 2020-11-20
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-themes
       name: react-themes-sectionthemes
       title: Section Theme
@@ -1901,16 +1922,15 @@ extra:
       modifiedtext: May 10, 2018
       modified: 2018-05-10
     - framework: React
-      spfx: 1.6.0
-      year: 2018
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-display-hierarchy
       name: react-display-hierarchy
       title: Web part displaying hierarchical information from SharePoint list
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png
       author: Nanddeep Nachan, Ravi Kulkarni
       summary: At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list.
-      modifiedtext: October 15, 2018
-      modified: 2018-10-15
+      modifiedtext: November 21, 2020
+      modified: 2020-11-21
     - url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-documents-detailslist
       name: react-documents-detailslist
       title: Documents Web Part
@@ -2509,15 +2529,15 @@ extra:
       modifiedtext: May 02, 2018
       modified: 2018-05-02
     - framework: React
-      spfx: 1.7.0
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rss-reader
       name: react-rss-reader
       title: SharePoint Framework RSS Reader
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-rss-reader/images/react-rss-reader.gif
-      author: Eric Overfield, Abhishek Garg
+      author: Eric Overfield, Abhishek Garg, Abderahman Moujahid
       summary: A RSS Reader original based on work completed by Olivier Carpentier's
-      modifiedtext: June 27, 2020
-      modified: 2020-06-27
+      modifiedtext: November 22, 2020
+      modified: 2020-11-22
     - framework: React
       spfx: 1.7.0
       year: 2018
