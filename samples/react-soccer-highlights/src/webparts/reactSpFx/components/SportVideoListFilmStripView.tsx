@@ -1,8 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { ISportsHighlightProps, ISportsHighlights } from "./IReactSpFxProps";
-import SportsVideo from "./SportsVideo";
-import ReactMarkdownWithHtml from "react-markdown/with-html";
 import { FilmstripLayout } from './filmstripLayout/index';
 import  styles from './filmstripLayout/FilmstripLayout.module.scss';
 
@@ -13,7 +10,6 @@ import {
   DocumentCardDetails,
   DocumentCardTitle,
   IDocumentCardPreviewProps,
-  DocumentCardLocation,
   DocumentCardType,
 } from "office-ui-fabric-react/lib/DocumentCard";
 
@@ -32,24 +28,20 @@ export default class SportVideoListFilmStripView extends React.Component<
       isDialogOpen: false,
     };
   }
-  openDialog = (video: ISportsHighlightProps) => {
-    console.log("I awas clicked:" + video.title);
-    this.setState({ isDialogOpen: true });
-  };
-  handleClose = () => this.setState({ isDialogOpen: false });
-
+  
   public render(): React.ReactElement<ISportsHighlights> {
     const videos = this.props.highLights;
+    console.log("Video Highlights", videos);
 
     return (
       <div>
         <div className={styles.filmStrip}>
           <FilmstripLayout
             ariaLabel={
-              "Sample filmstrip layout web part, showing sample items., Use right and left arrow keys to navigate between cards in the film strip."
+              "Soccer highlights web part, showing soccer highlights. Use right and left arrow keys to navigate between cards in the film strip."
             }
           >
-            {this.props.highLights.map((video: ISportsHighlightProps, i) => {
+            {videos.map((video: ISportsHighlightProps, i) => {
               let videoDate = new Date(video.date.toString());
               const previewProps: IDocumentCardPreviewProps = {
                 previewImages: [
@@ -70,24 +62,14 @@ export default class SportVideoListFilmStripView extends React.Component<
                 >
                   <DocumentCard
                     type={DocumentCardType.normal}
-                    onClick={(ev: React.SyntheticEvent<HTMLElement>) =>
-                      this.openDialog(video)
-                    }
+                    onClickHref={video.url}
                   >
-                    {/* <DocumentCardPreview {...previewProps} /> */}
+                                <DocumentCardPreview {...previewProps} />
                     <DocumentCardDetails>
-                      {/* <DocumentCardTitle
-                        title={video.title}
-                        shouldTruncate={false}
-                      /> */}
-                      <div
-                        id={"video" + video.title}
-                        dangerouslySetInnerHTML={{
-                          __html: video.embed,
-                        }}
-                        style={{ width: 268, padding: "2px" }}
-                        title={"click to play " + video.title}
-                      />
+                    <DocumentCardTitle
+                title={video.side1.name+ ' vs ' + video.side2.name}
+                shouldTruncate={true}
+              />
                       <DocumentCardActivity
                         activity={
                           videoDate.toLocaleString()

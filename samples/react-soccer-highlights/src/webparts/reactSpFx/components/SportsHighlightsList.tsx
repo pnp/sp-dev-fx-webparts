@@ -1,14 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import {
   ISportsHightLightsProps,
   ISportsHighlightPagingState,
-  ISportsHighlightsState,
   ISportsHighlightProps,
 } from "./IReactSpFxProps";
-//import SportsHighlight from "./SportsHighlight";
 import SportVideoListFilmStripView from "./SportVideoListFilmStripView";
-import Paging from "react-paging";
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import axios from "axios";
 import SportsVideoList from "./SportsVideoList";
@@ -34,17 +30,19 @@ export default class SportsHighlightsList extends React.Component<
     const data : ISportsHighlightProps[] = await resp.data;
     let slicedItems : ISportsHighlightProps[] = data.slice(0, this.props.pageSize);
     this.setState({ pagedSportHighlights: data, slicedSportHighlights: slicedItems });
-  };
+  }
 
-  async componentDidMount() {
+  public async componentDidMount() {
     console.log("Mounted");
     this.GetData();
   }
 
-
-
-
   public render(): React.ReactElement<ISportsHightLightsProps> {
+
+    
+    if(!this.props.showFlatMode){
+      return <SportVideoListFilmStripView highLights={this.state.slicedSportHighlights} />;
+    }
 
     let pageCountDivisor: number = this.props.pageSize;
     let pageCount: number;
@@ -63,19 +61,8 @@ export default class SportsHighlightsList extends React.Component<
         slicedSportHighlights: slicedItems
       });
     };
-
-    // const pagedItems: JSX.Element = (
-    //   <SportVideoListFilmStripView highLights={this.state.slicedSportHighlights} />
-    // );
-
-    var pagedItems: JSX.Element = null;
-    if(!this.props.showFlatMode){
-      pagedItems = (<SportVideoListFilmStripView highLights={this.state.slicedSportHighlights} />);
-    }
-    else{
-      pagedItems = (<SportsVideoList videos={this.state.slicedSportHighlights} />  );
-    }
-
+    
+    var pagedItems: JSX.Element = (<SportsVideoList videos={this.state.slicedSportHighlights} />  );
     if (highlightItems.length > 0) {
       pageCount = Math.ceil(highlightItems.length / pageCountDivisor);
     }
@@ -90,14 +77,12 @@ export default class SportsHighlightsList extends React.Component<
           {i + 1}{" "}
         </PrimaryButton>
       );
-    }
-
+    }  
     return (
       <div>
-        <div className={`ms-Grid-row`} style={{paddingLeft:"8px"}}>
+ <div className={`ms-Grid-row`} style={{paddingLeft:"8px"}}>
           <div className="ms-Grid-col ms-u-lg12">{pageButtons}</div>
         </div>
-        <hr />
         <div className="ms-Grid-row">
           <div className="ms-Grid-col ms-u-lg12">{pagedItems}</div>
         </div>

@@ -3,7 +3,7 @@
 ## Summary
 
 - This react web part sample displays Soccer Highlights from a public Soccer API.  
-- It shows a maxium of 100 highlights at one time.  
+- It shows a maximum of 100 highlights at one time.  
 - The web part show live status of game scores and ability to watch them live in small or full screen view.
 - You can view the highlights as FilmStrip Control (Thanks to Hugo for the tip and great blog) or Flat Mode.
 - You can configure highlights per page and use Paging.
@@ -16,13 +16,13 @@
 
 ### Usage
 
-**1) Deploy the package to SharePoint Online App Catalog.
+1) Deploy the package to SharePoint Online App Catalog.
 
-**2) Add the Web Part to Page, Configure the web Part, provide Title and Page Size.**
+2) Add the Web Part to Page, Configure the web Part, provide Title and Page Size.
 
-**3) Add the Web Part to Page, Configure the web Part, provide Title and Page Size.**
+3) Add the Web Part to Page, Configure the web Part, provide Title and Page Size.
 
-**4) Click on Pager to move Pages or arrows or dots in filmstrip view. **
+4) Click on Pager to move Pages or arrows or dots in filmstrip view.
 
 ## Used SharePoint Framework Version
 
@@ -34,6 +34,7 @@
 - [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
+
 None
 
 ## Solution

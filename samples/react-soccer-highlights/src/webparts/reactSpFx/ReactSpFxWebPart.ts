@@ -62,9 +62,6 @@ export default class ReactSpFxWebPart extends BaseClientSideWebPart<IReactSpFxWe
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('title', {
-                  label: strings.DescriptionFieldLabel
-                }),
                 PropertyPaneSlider('pageSize',{
                 label:"Highlights Per Page",
                 min:1,

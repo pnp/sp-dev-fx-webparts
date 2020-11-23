@@ -46,7 +46,7 @@ export interface ISportsHighlights {
 
 export interface ISportsHighlightProps {
   title: string;
-  embed: string
+  embed: string;
   id: string;
   date: Date;
   side1: ISide;
@@ -54,6 +54,7 @@ export interface ISportsHighlightProps {
   competition: ICompetition;
   thumbnail: string;
   videos: IVideo[];
+  url: string;
 }
 
 
