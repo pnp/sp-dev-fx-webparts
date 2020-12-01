@@ -1,0 +1,32 @@
+{
+  "@pnp/generator-spfx": {
+    "framework": "react",
+    "pnpFramework": "reactjs.plus",
+    "pnp-libraries": [
+      "jquery@3",
+      "msgraph",
+      "msgt",
+      "@pnp/spfx-property-controls",
+      "spfx-uifabric-themes",
+      "lodash",
+      "@pnp/spfx-controls-react",
+      "ouifr@7",
+      "rush@3.9"
+    ],
+    "pnp-ci": "no-devops",
+    "pnp-vetting": [],
+    "spfxenv": "spo",
+    "pnp-testing": []
+  },
+  "@microsoft/generator-sharepoint": {
+    "environment": "spo",
+    "framework": "react",
+    "isCreatingSolution": true,
+    "version": "1.11.0",
+    "libraryName": "react-mgt-events",
+    "libraryId": "65598f27-b91c-49f8-a571-379966dde996",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
