@@ -7,7 +7,7 @@ This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Flu
  ![mgtEvents](./assets/mhtEvents.JPG)
  
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11.0](https://img.shields.io/badge/spfx-1.11.0-green.svg)
 
 ## Applies to
 
