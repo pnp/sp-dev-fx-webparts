@@ -503,7 +503,7 @@ export default class spservices {
           const CategoryColorValue: any[] = categoryColor.filter((value) => {
             return value.category == event.Category;
           });
-          const isAllDayEvent: boolean = event.fAllDayEvent === "Yes";
+          const isAllDayEvent: boolean = event["fAllDayEvent.value"] === "1";
 
           for (const attendee of event.ParticipantsPicker) {
             attendees.push(parseInt(attendee.id));
@@ -515,8 +515,8 @@ export default class spservices {
             EventType: event.EventType,
             title: await this.deCodeHtmlEntities(event.Title),
             Description: event.Description,
-            EventDate: isAllDayEvent ? new Date(moment(event.EventDate).toISOString()) : new Date(moment(event.EventDate).subtract((siteTimeZoneHours), 'hour').toISOString()),
-            EndDate: isAllDayEvent ? new Date(moment(event.EndDate).toISOString()) : new Date(moment(event.EndDate).subtract(siteTimeZoneHours, 'hour').toISOString()),
+            EventDate: isAllDayEvent ? new Date(event.EventDate.slice(0, -1)) : new Date(moment(event.EventDate).subtract((siteTimeZoneHours), 'hour').toISOString()),
+            EndDate: isAllDayEvent ? new Date(event.EndDate.slice(0, -1)) : new Date(moment(event.EndDate).subtract(siteTimeZoneHours, 'hour').toISOString()),
             location: event.Location,
             ownerEmail: event.Author[0].email,
             ownerPhoto: userPictureUrl ?

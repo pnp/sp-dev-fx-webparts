@@ -113,6 +113,7 @@ Calendar Web Part|João Mendes
 Calendar Web Part|Mohamed Derhalli
 Calendar Web Part (Upgrade)|Hugo Bernier ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
 Calendar Web Part|Nanddeep Nachan ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
+Calendar Web Part|Abderahman Moujahid
 
 ## Version history
 
@@ -123,6 +124,8 @@ Version|Date|Comments
 1.0.2|April 25, 2020|Update styles according to the applied theme
 1.0.3|June 06, 2020|Upgrade to SPFx 1.10.0
 1.0.4|October 18, 2020|Added support for all-day events
+1.0.5|October 21, 2020|Added Year view
+1.0.6|December 3, 2020|Fixed all-day events (#1623)
 
 ## Disclaimer
 
