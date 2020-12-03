@@ -13,6 +13,7 @@ To learn more about how to use these samples, please refer to our [getting start
 <button class="button" data-filter="hasFunctions">Azure Functions</button>
 <button class="button" data-filter="hasGitHub">GitHub</button>
 <button class="button" data-filter="[data-technology*='MSGraph']">Microsoft Graph</button>
+<button class="button" data-filter="[data-technology*='MGT']">Microsoft Graph Toolkit</button>
 <button class="button" data-filter="hasPnPjs">PnPjs</button>
   </div>
 </div>
