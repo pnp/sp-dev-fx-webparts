@@ -193,6 +193,7 @@ Version|Date|Comments
 -------|----|--------
 1.0|January, 2019|Initial release
 1.1|July 02, 2020|Upgraded to SPFx 1.10.0
+1.2|December 04, 2020|Upgraded to SPFx 1.11.0 and Fluent UI 7.x
 
 ## Disclaimer
 

@@ -2,11 +2,11 @@ import * as React from 'react';
 import {
   Dropdown,
   IDropdownOption
-} from 'office-ui-fabric-react/lib/components/Dropdown';
-import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
+} from '@fluentui/react/lib/Dropdown';
+import { TooltipHost, DirectionalHint } from '@fluentui/react/lib/Tooltip';
 
 import styles from './DashSelector.module.scss';
-import { IDashSelectorProps, IDashSelectorState, DashType, DashStrokes } from './DashSelector.types';
+import { IDashSelectorProps, IDashSelectorState } from './DashSelector.types';
 
 /**
  * Displays a list of dash options.

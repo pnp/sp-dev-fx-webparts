@@ -1,4 +1,4 @@
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 
 /**
  * Properties for the dash selector

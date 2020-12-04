@@ -4,7 +4,7 @@ import { IDonutPatternsDemoProps, IDonutPatternsDemoState } from './IDonutPatter
 import * as strings from 'DonutPatternsDemoWebPartStrings';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
 import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 // Patternomaly is used to render patterns
 import * as pattern from 'patternomaly';
