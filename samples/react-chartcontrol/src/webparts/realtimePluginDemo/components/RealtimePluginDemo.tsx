@@ -13,7 +13,7 @@ import * as realTime from 'chartjs-plugin-streaming';
 // used to render the toolbar above the chart
 import {
   CommandBar
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const chartColors = {
   red: styles.red,

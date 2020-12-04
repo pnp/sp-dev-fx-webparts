@@ -14,7 +14,7 @@ import MockChartDataProvider from '../../../services/ChartDataProvider/MockChart
 // used to render the toolbar above the chart
 import {
   CommandBar
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 /**
  * Define the chart colors:

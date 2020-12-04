@@ -8,7 +8,7 @@ import * as Color from 'color';
 
 import {
   CommandBar
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { ChartControl, ChartType,OFFICE_COLORFUL1, PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
 

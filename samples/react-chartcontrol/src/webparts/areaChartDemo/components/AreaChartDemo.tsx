@@ -14,7 +14,7 @@ import {
   CommandBar,
   IContextualMenuItem,
   DirectionalHint
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 /**
 In chart.js, there are really no "area" chart types; They're just line charts with a 'fill'

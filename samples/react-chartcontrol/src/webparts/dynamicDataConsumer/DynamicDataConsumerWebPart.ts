@@ -29,7 +29,7 @@ import { PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
 
 // Used to render placeholders and error messages
 import { Placeholder, IPlaceholderProps } from '@pnp/spfx-controls-react/lib/Placeholder';
-import { MessageBar, MessageBarType, IMessageBarProps } from 'office-ui-fabric-react/lib/MessageBar';
+import { MessageBar, MessageBarType, IMessageBarProps } from '@fluentui/react/lib/MessageBar';
 
 //Orange color
 const CHARTCOLOR: string = "#ffa500";

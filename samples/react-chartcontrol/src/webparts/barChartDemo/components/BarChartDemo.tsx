@@ -4,7 +4,7 @@ import * as strings from 'BarChartDemoWebPartStrings';
 import { IBarChartDemoProps, IBarChartDemoState } from './IBarChartDemo.types';
 import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
 

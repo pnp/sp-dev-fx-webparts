@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   Dropdown,
   IDropdownOption
-} from 'office-ui-fabric-react/lib/components/Dropdown';
-import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
+} from '@fluentui/react/lib/Dropdown';
+import { TooltipHost, DirectionalHint } from '@fluentui/react/lib/Tooltip';
 
 import styles from './ChartPaletteSelector.module.scss';
 import { IChartPaletteSelectorProps, IChartPaletteSelectorState } from './ChartPaletteSelector.types';
