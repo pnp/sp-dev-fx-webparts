@@ -3,16 +3,17 @@
 .year {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  //justify-content: space-between;
 }
 
 .month {
-  margin: 5px 5px 15px 5px;
+  margin: 5px 10px 15px 10px;
 }
 
 .monthName {
   color: $ms-color-themeDark;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .day {
@@ -21,6 +22,9 @@
   height: 30px;
   text-align: center;
   line-height: 30px;
+  border: dotted 1px;
+  border-radius: 50%;
+  transform: scale(0.9, 0.9);
 }
 
 .date {
