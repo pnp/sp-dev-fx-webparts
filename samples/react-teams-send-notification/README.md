@@ -1,4 +1,4 @@
-# Send Notifications to Teams
+# Send Notifications in Teams
 
 ## Summary
 
@@ -12,7 +12,7 @@ This web part allows you to send MS Teams feed notifications to a selected user.
 
 ![Node.js LTS 6.x|LTS 8.x](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20LTS%208.x-green.svg)
 
-![SharePoint Not supported](https://img.shields.io/badge/SharePoint-Not%20supported-lightgrey.svg)
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
 
 ![Teams Compatible](https://img.shields.io/badge/Teams-Compatible-green.svg)
 
