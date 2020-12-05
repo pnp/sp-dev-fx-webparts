@@ -747,14 +747,14 @@ extra:
       modified: 2020-11-02
     - framework: React
       spfx: 1.10.0
-      url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar
       name: react-calendar
       title: Calendar
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
       author: João Mendes, Mohamed Derhalli, Hugo Bernier, Nanddeep Nachan, Abderahman Moujahid
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
-      modifiedtext: October 21, 2020
-      modified: 2020-10-21
+      modifiedtext: December 04, 2020
+      modified: 2020-12-04
       pnpcontrols: PropertyFieldDateTimePicker, PeoplePicker, Map
       technology: MSGraph
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
@@ -1859,17 +1859,15 @@ extra:
       modified: 2020-04-15
       technology: AzureBotServices
     - framework: React
-      spfx: 1.7.1
-      year: 2019
+      spfx: 1.11.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-chartcontrol
       name: react-chartcontrol
       title: Chart Control Samples
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/WebPartList.png
       author: Hugo Bernier
       summary: This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react.
-      version: 1.0
-      modifiedtext: January, 2019
-      modified: 2019-01-01
+      modifiedtext: December, 2020
+      modified: 2020-12-04
       technology: MSGraph GitHub
       pnpcontrols: WebPartTitle, Placeholder, ChartControl
     - framework: React
