@@ -64,6 +64,18 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-send-notification
+      name: react-teams-send-notification
+      title: Send Notifications in Teams
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-send-notification/assets/teams-notification-sender.gif
+      author: Luis Mañez
+      summary: This web part allows you to send MS Teams feed notifications to a selected user
+      modifiedtext: December 04, 2020
+      modified: 2020-12-04
+      technology: MSGraph
+      compatibility: Microsoft Teams
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-mgtEvents
       name: react-mgtEvents
       title: MGT Events
