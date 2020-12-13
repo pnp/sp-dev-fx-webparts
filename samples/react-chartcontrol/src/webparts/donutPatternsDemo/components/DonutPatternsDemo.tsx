@@ -10,6 +10,7 @@ import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import * as pattern from 'patternomaly';
 
 import { ChartControl, ChartType, PaletteGenerator, ChartPalette } from "@pnp/spfx-controls-react/lib/ChartControl";
+import { ChartData } from 'chart.js';
 
 // There are 21 different patterns
 const NUM_PATTERNS: number = 21;
@@ -118,12 +119,12 @@ export default class DonutPatternsDemo extends React.Component<IDonutPatternsDem
 * Loads data from a service.
 * This is where you would replace for your own code
 */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, _reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, _reject) => {
       // we're using a mock service that returns random numbers.
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
       dataProvider.getNumberArray(NUM_PATTERNS).then((dataSet: number[]) => {
-        const data: Chart.ChartData =
+        const data: ChartData =
         {
           labels: strings.ChartLabels,
           datasets: [

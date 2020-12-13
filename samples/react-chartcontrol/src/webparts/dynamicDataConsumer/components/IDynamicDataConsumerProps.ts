@@ -1,4 +1,6 @@
+import { ChartData } from 'chart.js';
+
 export interface IDynamicDataConsumerProps {
   alias: string;
-  data: Chart.ChartData;
+  data: ChartData;
 }

@@ -2,6 +2,7 @@ import { INumberChartData, IBubbleChartData, IScatterChartData } from './control
 import { ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
 import { DashType } from './controls/PropertyPaneDashSelector/components/DashSelector.types';
 import { DataSourceType, EasingType, CapType, JoinType } from './components/Chartinator.types';
+import { InteractionMode, PositionType, PointStyle } from 'chart.js';
 
 /**
  * There are a LOT of options to store with this web part.
@@ -33,7 +34,7 @@ export interface IChartinatorWebPartProps {
   dataValueField: string;
   dataYValueField: string;
   leftPadding: number;
-  legendPosition: Chart.PositionType | 'none';
+  legendPosition: PositionType | 'none';
   legendReversed: boolean;
   lineCurved: boolean;
   lineFill: string;
@@ -42,12 +43,12 @@ export interface IChartinatorWebPartProps {
   offsetGridLines: boolean;
   pointRadius: number;
   pointRotation: number;
-  pointStyle: Chart.PointStyle;
+  pointStyle: PointStyle;
   rightPadding: number;
   title: string;
   tooltipEnabled: boolean;
   tooltipIntersect: boolean;
-  tooltipMode: Chart.InteractionMode;
+  tooltipMode: InteractionMode;
   tooltipPosition: string;
   topPadding: number;
   xAxisLabelEnabled: boolean;

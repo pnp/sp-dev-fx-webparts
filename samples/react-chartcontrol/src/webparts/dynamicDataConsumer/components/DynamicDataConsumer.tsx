@@ -7,6 +7,7 @@ import * as strings from 'DynamicDataConsumerWebPartStrings';
 
 // used to add a chart control
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartOptions } from 'chart.js';
 
 // used to format date
 import * as moment from 'moment';
@@ -21,7 +22,7 @@ export default class DynamicDataConsumer extends React.Component<IDynamicDataCon
 
   public render(): React.ReactElement<IDynamicDataConsumerProps> {
     const { alias, data } = this.props;
-    const options: Chart.ChartOptions = {
+    const options: ChartOptions = {
       legend: {
         display: false // don't display a legend -- there's only one data point
       },
