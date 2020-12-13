@@ -5,10 +5,11 @@ import * as Color from 'color';
 import * as strings from 'RealtimePluginDemoWebPartStrings';
 
 // used to add a chart control
-import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartControl } from '@pnp/spfx-controls-react/lib/ChartControl';
 
 // used to import the real-time plugin
 import * as realTime from 'chartjs-plugin-streaming';
+import { ChartData } from 'chart.js';
 
 // used to render the toolbar above the chart
 import {
@@ -185,7 +186,7 @@ export default class RealtimePluginDemo extends React.Component<IRealtimePluginD
      */
   private _handleAddDataset = () => {
     // get the chart's data
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     var colorNames = Object.keys(chartColors);
     var colorName = colorNames[data.datasets.length % colorNames.length];
@@ -209,7 +210,7 @@ export default class RealtimePluginDemo extends React.Component<IRealtimePluginD
    * Removes the oldset dataset
    */
   private _handleRemoveDataset = () => {
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     data.datasets.pop();
 

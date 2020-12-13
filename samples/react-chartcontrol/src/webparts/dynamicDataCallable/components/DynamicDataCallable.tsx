@@ -8,6 +8,7 @@ import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
 
 // used to add a chart control
 import { ChartControl, ChartType, PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartData } from 'chart.js';
 
 // used to call GitHub
 import GitHubService from '../../../services/GitHubService/GitHubService';
@@ -192,8 +193,8 @@ private _contributionsLegendElem: HTMLElement = undefined;
    * Loads data from a service.
    * This is where you would replace for your own code
    */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, reject) => {
       const { httpClient,
         repoOwner,
         repo } = this.props;
