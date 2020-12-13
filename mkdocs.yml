@@ -486,8 +486,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/AccessibleChart.png
       author: Hugo Bernier
       summary: Demonstrates the accessibility features of the PnP Chart Control.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Area Charts using PnP Chart Control
@@ -497,8 +497,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/AreaChart.gif
       author: Hugo Bernier
       summary: This sample shows how you can render an area chart and configure the chart to use the fill option, as well as whether to use straight lines or curves. It also shows how to render gradient fills.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Static Data Bar Charts using PnP Chart Control
@@ -508,8 +508,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/BarChartStatic.png
       author: Hugo Bernier
       summary: Uses the most basic features of the ChartControl; It uses static data and does not provide any optional parameters.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Bar Charts using PnP Chart Control
@@ -519,8 +519,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/BarChart.png
       author: Hugo Bernier
       summary: Demonstrates the accessibility features of the PnP Chart Control.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Bubble Charts using PnP Chart Control
@@ -530,8 +530,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/BubbleChart.gif
       author: Hugo Bernier
       summary: This sample demonstrates the use of data elements with a X, Y, and R value to create a bubble chart. You can even pop the bubbles, which is a fun way to demonstrate event handlers.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Chartinator
@@ -541,8 +541,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/Chartinator.gif
       author: Hugo Bernier
       summary: This is a Chart Control version of the SharePoint Quick Charts. It supports every chart type and offers many configuration options.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Combination Charts using PnP Chart Control
@@ -552,8 +552,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/ComboBar.png
       author: Hugo Bernier
       summary: Demonstrates how to create combination charts with multiple datasets.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Using chart plugins with the PnP Chart Control
@@ -563,8 +563,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/CustomPlugin.png
       author: Hugo Bernier
       summary: This example takes sample plugin code to create a custom plugin.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Donuts with Patterns using PnP Chart Control
@@ -574,8 +574,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/DoughnutPatterns.gif
       author: Hugo Bernier
       summary: This web part demonstrates how to use the ChartControl to render a donut chart with patterns instead of colors.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Data Data Callable Charts using PnP Chart Control
@@ -585,8 +585,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/DynamicDataCallable.gif
       author: Hugo Bernier
       summary: The sample is a dynamic data provider. It demonstrates how to respond to mouse events (clicking on a segment of the donut chart will send the data to another web part).
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Dynamic Data Consumer Chart using PnP Chart Control
@@ -596,8 +596,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/DynamicDataConsumer.gif
       author: Hugo Bernier
       summary: This demonstrates how to render a chart by receiving events from a dynamic data connection.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Horizontal Bar Chart using PnP Chart Control
@@ -607,8 +607,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/HorizontalBarChart.png
       author: Hugo Bernier
       summary: This sample shows how to render a horizontal bar chart. It also demonstrates how to create stacked bars.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Line Chart using PnP Chart Control
@@ -618,8 +618,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/LineChart.png
       author: Hugo Bernier
       summary: This sample demonstrates how to render line charts.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Pie Charts using PnP Chart Control
@@ -629,8 +629,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/PieChart.png
       author: Hugo Bernier
       summary: Demonstrates how to create a pie chart.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Polar Charts using PnP Chart Control
@@ -640,8 +640,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/PolarChart.png
       author: Hugo Bernier
       summary: Creates a polar area chart. Also adds ability to add and remove data.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Radar Charts using PnP Chart Control
@@ -651,8 +651,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/RadarChart.png
       author: Hugo Bernier
       summary: Renders a multi-dataset radar chart.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Real-Time Chart using PnP Chart Control
@@ -662,8 +662,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/RealTime.gif
       author: Hugo Bernier
       summary: This sample uses an existing plugin to create a scrolling/real-time chart. This sample also demonstrates how to use time series for the X axis.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.11.0
       title: Scatter Chart using PnP Chart Control
@@ -673,8 +673,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/ScatterChart.png
       author: Hugo Bernier
       summary: This sample shows how to use X and Y coordinate data elements in a scatter chart.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
     - framework: React
       spfx: 1.10.0
       title: Minesweeper
@@ -1330,10 +1330,10 @@ extra:
       name: react-list-form
       title: List Form Web Part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
-      author: Dany Wyss, Harsha Vardhini, Ryan Schouten
+      author: Dany Wyss, Harsha Vardhini, Ryan Schouten, Abderahman Moujahid, Hugo Bernier
       summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
-      modifiedtext: October 9, 2020
-      modified: 2020-10-09
+      modifiedtext: December 12, 2020
+      modified: 2020-12-12
     - framework: React
       spfx: 1.9.1
       year: 2019
@@ -1895,8 +1895,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/WebPartList.png
       author: Hugo Bernier
       summary: This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react.
-      modifiedtext: December, 2020
-      modified: 2020-12-04
+      modifiedtext: December 13, 2020
+      modified: 2020-12-13
       technology: MSGraph GitHub
       pnpcontrols: WebPartTitle, Placeholder, ChartControl
     - framework: React
