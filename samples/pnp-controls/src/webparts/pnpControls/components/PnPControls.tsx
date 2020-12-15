@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import { IPnPControlsProps, IPnpControlsState } from './IPnPControlsProps';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/components/Spinner';
 import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
-import { ListView } from '@pnp/spfx-controls-react/lib/ListView';
+import { ListView, SelectionMode } from '@pnp/spfx-controls-react/lib/ListView';
 import { SPHttpClient } from '@microsoft/sp-http';
 import { IViewField } from '@pnp/spfx-controls-react/lib/controls/listView';
 
@@ -148,13 +148,21 @@ export default class PnPControls extends React.Component<IPnPControlsProps, IPnp
                 ) : (
                   <div>
                     <p className="ms-font-xl">{this.props.description}</p>
-                    <ListView items={this.state.items} viewFields={this._viewFields} iconFieldName="File.ServerRelativeUrl" />
+                    <ListView items={this.state.items} 
+                    viewFields={this._viewFields} 
+                    iconFieldName="File.ServerRelativeUrl"
+                    selectionMode={SelectionMode.multiple}
+                    selection={this._getSelection}
+                    />
                   </div>
                 )
             )
         }
       </div>
     );
+  }
+  private _getSelection(items: any[]) {
+    console.log('Selected items:', items);
   }
 }
 
