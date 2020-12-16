@@ -41,8 +41,8 @@ This demo does not include any threat models and is designed for educational pur
 
 Solution|Author(s)
 --------|---------
-webpart | STCA BF Channel and ABS (stcabfchannel@microsoft.com) <br/> Stephan Bisser (@stephanbisser, bisser.io)
-bot | STCA BF Channel and ABS (stcabfchannel@microsoft.com)
+webpart | Bot Framework Discussions (msbots@service.microsoft.com) <br/> Stephan Bisser (@stephanbisser, bisser.io)
+bot | Bot Framework Discussions (msbots@service.microsoft.com)
 
 ## Version history
 
