@@ -1,4 +1,4 @@
-# React Content Query web part (SharePoint Online-Compatible)
+# Content Query web part (SharePoint Online-Compatible)
 
 ## Summary
 
@@ -12,7 +12,7 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 
 ## Used SharePoint Framework Version
 
-![1.10.0](https://img.shields.io/badge/drop-1.10.0-green.svg)
+![1.11.0](https://img.shields.io/badge/drop-1.11.0-green.svg)
 
 ## Applies to
 
@@ -28,7 +28,6 @@ react-content-query-web part (Online)|Hugo Bernier ([Tahoe Ninjas](http://tahoen
 react-content-query-web part (Online)|Paolo Pialorsi ([PiaSys.com](https://piasys.com/), [@PaoloPia](https://twitter.com/PaoloPia?s=20))
 react-content-query-web part |Simon-Pierre Plante
 react-content-query-web part (Online)|Abderahman Moujahid
-
 ## Version history
 
 Version|Date|Comments
@@ -36,7 +35,7 @@ Version|Date|Comments
 1.0.0|May 04, 2017|Initial release
 1.0.1|July 23rd 15, 2017|Updated to GA Version
 1.0.3|August 12, 2017|Added external scripts functionality
-1.0.4|August 31, 2017|Fixed a bug where tenant sites/subsites were missing from the **Web Url** dropdown
+1.0.4|August 31, 2017|Fixed a bug where tenant sites/sub-sites were missing from the **Web Url** dropdown
 1.0.5|September 1st, 2017|Added a **Site Url** parameter next to the **Web Url** parameter in order to narrow down the results
 1.0.6|September 19, 2017|Upgraded to SharePoint drop 1.2.0 and added the site URL and web URL preselection when adding the web part for the first time on a page. Also fixed a bug with fields that had spaces in their internal names (automatically replaced with `_x0020_` by SharePoint).
 1.0.7|November 17, 2017|Reverted to drop 1.1.0 in order to keep compatibility for SP2016 on-premise
@@ -47,6 +46,8 @@ Version|Date|Comments
 1.0.12|April 19, 2020|Upgraded to SPFx 1.10
 1.0.13|April 28, 2020|Added support for Dynamic Data
 1.0.14|October 30, 2020|Fixed (lookup-)fields with special characters
+1.0.15|November 2, 2020|Upgraded to SPFx 1.11; Added support for jsonValue
+1.0.16|November 14, 2020|Fixed a bug where the fieldname starts with a special character; Added more special characters
 
 ## Disclaimer
 
@@ -271,6 +272,7 @@ Property | Description
 `{{MyField.textValue}}` | Renders the text value of the field, a more readable end-user value to use for display.
 `{{MyField.htmlValue}}` | Renders the HTML value of the field. For example, a *Link* field HTML value would render something like `<a href="...">My Link Field</a>`
 `{{MyField.rawValue}}`  | Returns the raw value of the field. For example, a *Taxonomy* field raw value would return an object which contains the term `wssId` and its label
+`{{MyField.jsonValue}}`  | Returns a JSON object value of the field. For example, an *Image* field JSON value would return a JSON object which contains the `serverRelativeUrl` property
 
 ##### Handlebars
 
@@ -280,6 +282,7 @@ Property | Description
         <p>MyUserField text value : {{MyUserField.textValue}}</p>
         <p>MyUserField html value : {{MyUserField.htmlValue}}</p>
         <p>MyUserField raw value : {{MyUserField.rawValue}}</p>
+        <p>MyImageField JSON value : {{MyImageField.jsonValue}}</p>
     </div>
 {{/each}}
 ```
@@ -291,8 +294,15 @@ Property | Description
     <p>MyUserField text value : Simon-Pierre Plante</p>
     <p>MyUserField html value : <a href="..." onclick="...">Simon-Pierre Plante</a></p>
     <p>MyUserField raw value : 26</p>
+    <p>MyImageField JSON value: [Object] </p>
 </div>
 ...
+```
+
+You can use `JSONValue` to parse complex fields -- such as image fields -- and display images, for example:
+
+```html
+<img src="{{MyImageField.jsonValue.serverRelativeUrl}}" />
 ```
 
 ### Including your own external scripts and/or block helpers

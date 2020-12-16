@@ -1,4 +1,4 @@
-# SPFx Accordion Section FAQ Builder web part
+# Accordion Section -- FAQ Builder
 
 ## Summary
 

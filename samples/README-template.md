@@ -1,4 +1,7 @@
-# title of the sample
+# Title of the sample
+
+> This is how you want the sample to appear in the samples browser.
+> When naming your sample, try to give it a friendly name that describes what it does. Avoid using terms like `SharePoint` and `WebPart` -- because that's what all the samples in this repo is all about. Also, don't use `React`, `Angular`, `JavaScript`, etc. in your sample title -- unless that's what the sample is about.
 
 ## Summary
 
@@ -6,16 +9,15 @@ Short summary on functionality and used technologies.
 
 > Please provide a high-quality screenshot of your web parts below. It should be stored in a folder called `assets`. 
 > If possible, use a resolution of 1920x1080.
-> If your web part uses a placeholder screen and requires the user to configure it, please use a screenshot of the web part as it appears after it has been configured.
+> If your web part uses a placeholder screen and requires the user to configure it, please use a screenshot of the web part as it appears **after** it has been configured.
 > You can add as many screen shots as you'd like to help users understand your web part without having to download it and install it.
 > DELETE THIS PARAGRAPH BEFORE SUBMITTING
-
 
 ![picture of the web part in action](assets/preview.png)
 
 ## Used SharePoint Framework Version
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 

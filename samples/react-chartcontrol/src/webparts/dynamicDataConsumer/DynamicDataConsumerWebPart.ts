@@ -26,10 +26,11 @@ import * as moment from 'moment';
 
 // used to add a chart control
 import { PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartData } from 'chart.js';
 
 // Used to render placeholders and error messages
 import { Placeholder, IPlaceholderProps } from '@pnp/spfx-controls-react/lib/Placeholder';
-import { MessageBar, MessageBarType, IMessageBarProps } from 'office-ui-fabric-react/lib/MessageBar';
+import { MessageBar, MessageBarType, IMessageBarProps } from '@fluentui/react/lib/MessageBar';
 
 //Orange color
 const CHARTCOLOR: string = "#ffa500";
@@ -169,7 +170,7 @@ export default class DynamicDataConsumerWebPart extends BaseClientSideWebPart<ID
       return undefined;
     }
 
-    this._loadAsyncData(contributorData).then((data: Chart.ChartData) => {
+    this._loadAsyncData(contributorData).then((data: ChartData) => {
       const element: React.ReactElement<IDynamicDataConsumerProps> = React.createElement(
         DynamicDataConsumer,
         {
@@ -231,14 +232,14 @@ export default class DynamicDataConsumerWebPart extends BaseClientSideWebPart<ID
    * Loads data from a service.
    * This is where you would replace for your own code
    */
-  private _loadAsyncData = (contributorData: IContributor): Promise<Chart.ChartData> => {
+  private _loadAsyncData = (contributorData: IContributor): Promise<ChartData> => {
     const {
       repoOwner,
       repo,
       alias
     } = contributorData;
 
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+    return new Promise<ChartData>((resolve, reject) => {
       // Get the GitHub data provider
       const dataProvider: IGitHubService = new GitHubService();
 
@@ -272,7 +273,7 @@ export default class DynamicDataConsumerWebPart extends BaseClientSideWebPart<ID
           // Generate an orange semi transparent color
           const backgroundColor = PaletteGenerator.alpha(CHARTCOLOR, CHARTALPHA);
 
-          const data: Chart.ChartData = {
+          const data: ChartData = {
             datasets: [{
               label: strings.SeriesLabel,
               data: uniqueDateList,

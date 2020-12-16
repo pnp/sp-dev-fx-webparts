@@ -8,9 +8,10 @@ import * as Color from 'color';
 
 import {
   CommandBar
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 import { ChartControl, ChartType,OFFICE_COLORFUL1, PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartData } from 'chart.js';
 
 
 /**
@@ -127,11 +128,11 @@ export default class HorizontalBarDemo extends React.Component<IHorizontalBarDem
   * Loads data from a service.
   * This is where you would replace for your own code
   */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, reject) => {
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
       dataProvider.getMultiDataset(1, 7).then((dataSets: Array<number[]>) => {
-        const data: Chart.ChartData =
+        const data: ChartData =
         {
           labels: strings.ChartLabels,
           datasets: [
@@ -154,7 +155,7 @@ export default class HorizontalBarDemo extends React.Component<IHorizontalBarDem
    */
   private _removeData = (): void => {
     // Get a reference to the chart's data
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     // Don't allow people to remove the last data
     if (data.datasets.length > 0) {

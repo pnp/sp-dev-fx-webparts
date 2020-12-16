@@ -1,4 +1,4 @@
-# Microsoft Graph People Search Web Part
+# Microsoft Graph People Search
 
 ## Summary
 

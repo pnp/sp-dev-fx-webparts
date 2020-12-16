@@ -1,4 +1,4 @@
-# React Calendar Feed Web Part
+# Calendar Feed
 
 ## Summary
 

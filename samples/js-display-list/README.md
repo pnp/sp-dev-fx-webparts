@@ -11,7 +11,7 @@ extensions:
   - SharePoint Framework
   createdDate: 5/15/2017 12:00:00 AM
 ---
-# Display List JavaScript Client-Side Web Part
+# Display List
 
 ## Summary
 

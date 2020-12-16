@@ -1,4 +1,4 @@
-# React PnP ListView with PnP Field Controls Web Part
+# PnP ListView with PnP Field Controls Web Part
 
 Sample web part to display PnP [`ListView`](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/ListView/) control with column rendering using PnP [Field Controls](https://sharepoint.github.io/sp-dev-fx-controls-react/controls/fields/main/).
 

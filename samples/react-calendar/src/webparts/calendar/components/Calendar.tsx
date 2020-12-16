@@ -3,16 +3,14 @@ import styles from './Calendar.module.scss';
 import { ICalendarProps } from './ICalendarProps';
 import { ICalendarState } from './ICalendarState';
 import { escape } from '@microsoft/sp-lodash-subset';
-//import BigCalendar from 'react-big-calendar';
 import * as moment from 'moment';
 import * as strings from 'CalendarWebPartStrings';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 require('./calendar.css');
-import { CommunicationColors ,  FluentCustomizations, FluentTheme  } from '@uifabric/fluent-theme';
-//import CalendarToolbar from './CustomToolbar';
+import { CommunicationColors, FluentCustomizations, FluentTheme } from '@uifabric/fluent-theme';
 import Year from './Year';
 
-import { Calendar as MyCalendar, momentLocalizer  } from 'react-big-calendar';
+import { Calendar as MyCalendar, momentLocalizer } from 'react-big-calendar';
 
 import {
   Customizer,
@@ -177,7 +175,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
       previewImages: [
         {
           // previewImageSrc: event.ownerPhoto,
-          previewIconProps: { iconName: event.fRecurrence === '0' ? 'Calendar': 'RecurringEvent', styles: { root: { color: event.color } }, className: styles.previewEventIcon },
+          previewIconProps: { iconName: event.fRecurrence === '0' ? 'Calendar' : 'RecurringEvent', styles: { root: { color: event.color } }, className: styles.previewEventIcon },
           height: 43,
         }
       ]
@@ -200,7 +198,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
             </div>
             <DocumentCardDetails>
               <div className={styles.DocumentCardDetails}>
-                <DocumentCardTitle title={event.title} shouldTruncate={true} className={styles.DocumentCardTitle} styles={{ root: { color: event.color} }} />
+                <DocumentCardTitle title={event.title} shouldTruncate={true} className={styles.DocumentCardTitle} styles={{ root: { color: event.color } }} />
               </div>
               {
                 moment(event.EventDate).format('YYYY/MM/DD') !== moment(event.EndDate).format('YYYY/MM/DD') ?
@@ -219,7 +217,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
               <div style={{ marginTop: 20 }}>
                 <DocumentCardActivity
                   activity={strings.EventOwnerLabel}
-                  people={[{ name: event.ownerName, profileImageSrc: event.ownerPhoto, initialsColor:event.color}]}
+                  people={[{ name: event.ownerName, profileImageSrc: event.ownerPhoto, initialsColor: event.color }]}
                 />
               </div>
             </DocumentCardDetails>
@@ -297,15 +295,15 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
   }
 
 
-   /**
-     *
-     * @param {*} date
-     * @memberof Calendar
-     */
-    public dayPropGetter(date: Date) {
-      return {
-          className: styles.dayPropGetter
-      };
+  /**
+    *
+    * @param {*} date
+    * @memberof Calendar
+    */
+  public dayPropGetter(date: Date) {
+    return {
+      className: styles.dayPropGetter
+    };
   }
 
   /**
@@ -318,83 +316,83 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
       <Customizer {...FluentCustomizations}>
 
 
-      <div className={styles.calendar} style={{backgroundColor: 'white', padding: '20px'}}>
-        <WebPartTitle displayMode={this.props.displayMode}
-          title={this.props.title}
-          updateProperty={this.props.updateProperty} />
-        {
-          (!this.props.list || !this.props.eventStartDate.value || !this.props.eventEndDate.value) ?
-            <Placeholder iconName='Edit'
-              iconText={strings.WebpartConfigIconText}
-              description={strings.WebpartConfigDescription}
-              buttonLabel={strings.WebPartConfigButtonLabel}
-              hideButton={this.props.displayMode === DisplayMode.Read}
-              onConfigure={this.onConfigure.bind(this)} />
-            :
-            // test if has errors
-            this.state.hasError ?
-              <MessageBar messageBarType={MessageBarType.error}>
-                {this.state.errorMessage}
-              </MessageBar>
+        <div className={styles.calendar} style={{ backgroundColor: 'white', padding: '20px' }}>
+          <WebPartTitle displayMode={this.props.displayMode}
+            title={this.props.title}
+            updateProperty={this.props.updateProperty} />
+          {
+            (!this.props.list || !this.props.eventStartDate.value || !this.props.eventEndDate.value) ?
+              <Placeholder iconName='Edit'
+                iconText={strings.WebpartConfigIconText}
+                description={strings.WebpartConfigDescription}
+                buttonLabel={strings.WebPartConfigButtonLabel}
+                hideButton={this.props.displayMode === DisplayMode.Read}
+                onConfigure={this.onConfigure.bind(this)} />
               :
-              // show Calendar
-              // Test if is loading Events
-              <div>
-                {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> :
-                  <div className={styles.container}>
-                    <MyCalendar
-                      dayPropGetter = {this.dayPropGetter}
-                      localizer={localizer}
-                      selectable
-                      events={this.state.eventData}
-                      startAccessor="EventDate"
-                      endAccessor="EndDate"
-                      eventPropGetter={this.eventStyleGetter}
-                      onSelectSlot={this.onSelectSlot}
-                      components={{
-                        event: this.renderEvent
-                      }}
-                      onSelectEvent={this.onSelectEvent}
-                      defaultDate={moment().startOf('day').toDate()}
-                      views={{
-                        day: true,
-                        week: true,
-                        month: true,
-                        agenda: true,
-                        work_week: Year
-                      }}
-                      messages={
-                        {
-                          'today': strings.todayLabel,
-                          'previous': strings.previousLabel,
-                          'next': strings.nextLabel,
-                          'month': strings.monthLabel,
-                          'week': strings.weekLabel,
-                          'day': strings.dayLable,
-                          'showMore': total => `+${total} ${strings.showMore}`,
-                          'work_week': strings.yearHeaderLabel
+              // test if has errors
+              this.state.hasError ?
+                <MessageBar messageBarType={MessageBarType.error}>
+                  {this.state.errorMessage}
+                </MessageBar>
+                :
+                // show Calendar
+                // Test if is loading Events
+                <div>
+                  {this.state.isloading ? <Spinner size={SpinnerSize.large} label={strings.LoadingEventsLabel} /> :
+                    <div className={styles.container}>
+                      <MyCalendar
+                        dayPropGetter={this.dayPropGetter}
+                        localizer={localizer}
+                        selectable
+                        events={this.state.eventData}
+                        startAccessor="EventDate"
+                        endAccessor="EndDate"
+                        eventPropGetter={this.eventStyleGetter}
+                        onSelectSlot={this.onSelectSlot}
+                        components={{
+                          event: this.renderEvent
+                        }}
+                        onSelectEvent={this.onSelectEvent}
+                        defaultDate={moment().startOf('day').toDate()}
+                        views={{
+                          day: true,
+                          week: true,
+                          month: true,
+                          agenda: true,
+                          work_week: Year
+                        }}
+                        messages={
+                          {
+                            'today': strings.todayLabel,
+                            'previous': strings.previousLabel,
+                            'next': strings.nextLabel,
+                            'month': strings.monthLabel,
+                            'week': strings.weekLabel,
+                            'day': strings.dayLable,
+                            'showMore': total => `+${total} ${strings.showMore}`,
+                            'work_week': strings.yearHeaderLabel
+                          }
                         }
-                      }
-                    />
-                  </div>
-                }
-              </div>
-        }
-        {
-          this.state.showDialog &&
-          <Event
-            event={this.state.selectedEvent}
-            panelMode={this.state.panelMode}
-            onDissmissPanel={this.onDismissPanel}
-            showPanel={this.state.showDialog}
-            startDate={this.state.startDateSlot}
-            endDate={this.state.endDateSlot}
-            context={this.props.context}
-            siteUrl={this.props.siteUrl}
-            listId={this.props.list}
-          />
-        }
-      </div>
+                      />
+                    </div>
+                  }
+                </div>
+          }
+          {
+            this.state.showDialog &&
+            <Event
+              event={this.state.selectedEvent}
+              panelMode={this.state.panelMode}
+              onDissmissPanel={this.onDismissPanel}
+              showPanel={this.state.showDialog}
+              startDate={this.state.startDateSlot}
+              endDate={this.state.endDateSlot}
+              context={this.props.context}
+              siteUrl={this.props.siteUrl}
+              listId={this.props.list}
+            />
+          }
+        </div>
       </Customizer>
     );
   }

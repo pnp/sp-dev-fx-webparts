@@ -1,11 +1,12 @@
 {
-  "@microsoft/generator-sharepoint": {
-    "isCreatingSolution": true,
-    "environment": "onprem19",
-    "version": "1.10.0",
-    "libraryName": "word-game",
-    "libraryId": "751649b4-2c99-4349-9d65-9a6cc7533dfa",
-    "packageManager": "npm",
-    "componentType": "webpart"
-  }
+	"@microsoft/generator-sharepoint": {
+		"isCreatingSolution": true,
+		"environment": "onprem19",
+		"version": "1.11.0",
+		"libraryName": "word-game",
+		"libraryId": "751649b4-2c99-4349-9d65-9a6cc7533dfa",
+		"packageManager": "npm",
+		"componentType": "webpart",
+		"isDomainIsolated": false
+	}
 }

@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 3/1/2018 12:00:00 AM
 ---
-# Offline First React Webpart built using LocalForage, Whatwg-Fetch, ES6-Promise
+# Offline First using LocalForage, Whatwg-Fetch, ES6-Promise
 
 ## Summary
 

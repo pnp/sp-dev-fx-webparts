@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "mgt-events-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/mgtEvents/MgtEventsWebPart.js",
+          "manifest": "./src/webparts/mgtEvents/MgtEventsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MgtEventsWebPartStrings": "lib/webparts/mgtEvents/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

@@ -13,7 +13,7 @@ extensions:
   createdDate: 04/30/2020 12:00:00 AM
 ---
 
-# React Pages Hierarchy
+# Pages Hierarchy
 
 ## Summary
 

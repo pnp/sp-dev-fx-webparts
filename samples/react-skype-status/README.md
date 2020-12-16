@@ -15,7 +15,7 @@ extensions:
   - react
   createdDate: 12/1/2017 12:00:00 AM
 ---
-# React Skype Status WebPart
+# Skype Status
 
 ## Summary
 This sample demonstrates how to use the *UCWA JS SDK* for skype with the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the [documentation](https://msdn.microsoft.com/en-us/skype/websdk/docs/generalreference?f=255&MSPPError=-2147217396)  

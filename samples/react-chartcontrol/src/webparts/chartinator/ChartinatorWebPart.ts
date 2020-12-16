@@ -11,7 +11,7 @@ import { IPropertyPaneConfiguration, PropertyPaneChoiceGroup, PropertyPaneLabel,
 // Needed to create drop down choices
 import {
   IDropdownOption
-} from 'office-ui-fabric-react/lib/components/Dropdown';
+} from '@fluentui/react/lib/Dropdown';
 
 // Needed for charts
 import { ChartPalette, PaletteGenerator, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';

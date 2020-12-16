@@ -1,4 +1,4 @@
-# React Image Gallery
+# Image Gallery
 
 ## Summary
 

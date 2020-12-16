@@ -1,4 +1,4 @@
-# SharePoint Framework Facebook Page Social Plugin web part sample
+# Facebook Page Social Plugin
 
 ## Summary
 

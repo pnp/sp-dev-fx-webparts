@@ -1,4 +1,4 @@
-# React Content Query web part 
+# Content Query Web Part 
 
 ## Summary
 

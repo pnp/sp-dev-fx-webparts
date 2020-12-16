@@ -1,10 +1,10 @@
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import "~office-ui-fabric-react/dist/sass/References.scss";
 
 // WORDGAME STYLES
 
-:global .wordGameCustom{
-
-  input[type=text], select {
+:global .wordGameCustom {
+  input[type="text"],
+  select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -13,11 +13,11 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
-  
+
   button,
-  input[type=submit] {
+  input[type="submit"] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -25,38 +25,38 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  
-  input[type=submit]:hover {
+
+  input[type="submit"]:hover {
     background-color: #45a049;
   }
-  
+
   div {
     border-radius: 5px;
     background-color: white;
     padding: 20px;
   }
 
-  .greyButton{
+  .greyButton {
     background-color: grey;
   }
 
-  .blueButton{
+  .blueButton {
     width: unset;
     background-color: #007bff;
   }
 
-  .currentWord{
+  .currentWord {
     color: #007bff;
     font-size: 3rem;
   }
-  
-  .timer{
+
+  .timer {
     font-size: 16pt;
     color: gray;
     font-weight: 600;
   }
 
-  .gameReview{
+  .gameReview {
     text-align: left;
     width: 250px;
     margin-left: auto;
@@ -66,53 +66,48 @@
     border-color: #c3e6cb;
     font-size: 16px;
   }
-  ul{
+  ul {
     margin-top: 5px;
   }
 
-  .toast{
+  .toast {
     position: absolute;
     top: 5px;
     right: 5px;
   }
 
-  .toastMiniGreen{
+  .toastMiniGreen {
     color: rgb(103, 181, 89);
   }
 
-  .toastMiniRed{
+  .toastMiniRed {
     color: red;
   }
 
-  .toastGreen{
+  .toastGreen {
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
     padding: 11px;
   }
 
-  .toastRed{
+  .toastRed {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
     padding: 11px;
   }
 
-  .numAnswersTip{
+  .numAnswersTip {
     padding-top: 3px;
     padding-bottom: 3px;
     color: gray;
   }
-    
 }
-
-
 
 // OFFICE STYLES
 
 .wordGame {
-  
-
   .container {
     max-width: 700px;
     margin: 0px auto;
@@ -163,7 +158,8 @@
     // Basic Button
     outline: transparent;
     position: relative;
-    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+      BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;

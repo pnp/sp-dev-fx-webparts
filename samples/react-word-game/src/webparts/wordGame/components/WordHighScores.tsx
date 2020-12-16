@@ -7,8 +7,8 @@ export interface IWordHighScoresProps {
 
 export default class WordHighScores extends React.Component<IWordHighScoresProps, {}> {
 
-  constructor() {
-    super();
+  constructor(props: IWordHighScoresProps) {
+    super(props);
 
   }
 

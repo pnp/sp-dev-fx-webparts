@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "teams-notification-sender-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/teamsNotificationSender/TeamsNotificationSenderWebPart.js",
+          "manifest": "./src/webparts/teamsNotificationSender/TeamsNotificationSenderWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "TeamsNotificationSenderWebPartStrings": "lib/webparts/teamsNotificationSender/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

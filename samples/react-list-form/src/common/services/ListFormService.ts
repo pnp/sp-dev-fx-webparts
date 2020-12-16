@@ -71,7 +71,7 @@ export class ListFormService implements IListFormService {
      * @returns Promise representing an object containing all the field values for the lookup field.
      */
     public async getLookupfieldOptions(fieldSchema: any, webUrl: string): Promise<any[]> {
-        const endpoint = `${webUrl}/_api/Web/lists/getbyid('${fieldSchema.LookupListId}')/items?$orderby=${fieldSchema.LookupFieldName}`;
+        const endpoint = `${webUrl}/_api/Web/lists/getbyid('${fieldSchema.LookupListId}')/items?$orderby=${fieldSchema.LookupFieldName}&$top=5000`;
 
         try {
             let resp: SPHttpClientResponse = await this.spHttpClient.get(endpoint, SPHttpClient.configurations.v1);

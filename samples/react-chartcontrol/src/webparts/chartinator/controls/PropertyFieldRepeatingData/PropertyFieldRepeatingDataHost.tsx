@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { IPropertyFieldRepeatingDataHostProps, IPropertyFieldRepeatingDataState } from './PropertyFieldRepeatingData.types';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { ActionButton } from '@fluentui/react/lib/Button';
 import styles from './PropertyFieldRepeatingData.module.scss';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { NumberTextField } from '../NumberTextField/NumberTextField';
 import * as strings from 'ChartinatorWebPartStrings';
 import { Guid } from '@microsoft/sp-core-library';
@@ -64,7 +64,7 @@ export default class IPropertyFieldRepeatingDataHost extends React.Component<IPr
           label={strings.DataLabelFieldLabel}
           placeholder={strings.DataLabelFieldPlaceholder}
           value={dataRow.name}
-          onChanged={(newValue: string) => this._handleRowChange(dataRow.id, 'name', newValue)}
+          onChange={((event: React.FormEvent<HTMLInputElement|HTMLTextAreaElement>, newValue: string) => this._handleRowChange(dataRow.id, 'name', newValue))}
         />
         <NumberTextField
           label={strings.DataValueFieldLabel}
@@ -94,7 +94,7 @@ export default class IPropertyFieldRepeatingDataHost extends React.Component<IPr
           label={strings.DataLabelFieldLabel}
           placeholder={strings.DataLabelFieldPlaceholder}
           value={dataRow.name}
-          onChanged={(newValue: string) => this._handleRowChange(dataRow.key, 'name', newValue)}
+          onChange={((_event: React.FormEvent<HTMLInputElement|HTMLTextAreaElement>, newValue: string) => this._handleRowChange(dataRow.key, 'name', newValue))}
         />
         <NumberTextField
           label={strings.DataValueXFieldLabel}
@@ -135,7 +135,7 @@ export default class IPropertyFieldRepeatingDataHost extends React.Component<IPr
           label={strings.DataLabelFieldLabel}
           placeholder={strings.DataLabelFieldPlaceholder}
           value={dataRow.name}
-          onChanged={(newValue: string) => this._handleRowChange(dataRow.id, 'name', newValue)}
+          onChange={((_event: React.FormEvent<HTMLInputElement|HTMLTextAreaElement>, newValue: string) => this._handleRowChange(dataRow.id, 'name', newValue))}
         />
         <NumberTextField
           label={strings.DataValueXFieldLabel}

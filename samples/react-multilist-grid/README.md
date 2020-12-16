@@ -1,4 +1,4 @@
-# SPFx React Grid
+# Multilist Grid
 
 ## Summary
 React-multilist-grid is an SPFx webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type – you just need to create column mappings to tell the webpart which fields to show in which columns of the grid.

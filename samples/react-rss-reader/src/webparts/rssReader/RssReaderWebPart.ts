@@ -5,7 +5,6 @@ import * as React from                                     'react';
 import * as ReactDom from                                  'react-dom';
 import { Version, Text, Environment, EnvironmentType} from '@microsoft/sp-core-library';
 import {
-  BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   IPropertyPaneField,
   PropertyPaneTextField,
@@ -15,7 +14,9 @@ import {
   PropertyPaneChoiceGroup,
   PropertyPaneHorizontalRule,
   PropertyPaneLabel
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+
 import { update, isEmpty } from                            '@microsoft/sp-lodash-subset';
 
 import {

@@ -15,7 +15,7 @@ extensions:
   createdDate: 06/17/2016 12:00:00 AM
 ---
 
-# React Carousel Web Part
+# Images and Videos in a Carousel
 
 ## Summary
 
@@ -27,7 +27,7 @@ It uses Microsoft Graph API to get image/video url and use PnPjs to load files f
 
 ## Used SharePoint Framework Version
 
-![1.10](https://img.shields.io/badge/version-1.10.0-green.svg)
+![1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -60,6 +60,7 @@ Solution|Author(s)
 --------|---------
 Carousel Image/Video  Web Part|João Mendes
 Carousel Image/Video  Web Part|Rahul Suryawanshi ([@rahulsuryawansh](https://twitter.com/rahulsuryawansh))
+Carousel Image/Video  Web Part|Don Kirkham ([@DonKirkham](https://twitter.com/DonKirkham))
 
 ## Version history
 
@@ -67,6 +68,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|July 11, 2019|Initial release
 2.0.0|June 17, 2020|Upgraded to SPFx v1.10.0 (Rahul Suryawanshi)
+3.0.0|October 31, 2020|Upgraded to SPFx v1.11.0 (Don Kirkham)
 
 
 ## Disclaimer

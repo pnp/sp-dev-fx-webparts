@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 10/1/2017 12:00:00 AM
 ---
-# YouTube Web Part
+# YouTube
 
 ## Summary
 

@@ -17,7 +17,7 @@ extensions:
   - AngularJS
   createdDate: 2/16/2017 12:00:00 AM
 ---
-﻿## Angular MS Graph Web Part Built with Angular v1.x
+# Angular MS Graph Web Part Built with Angular v1.x
 
 ## Summary
 This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your

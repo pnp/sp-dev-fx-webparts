@@ -1,7 +1,11 @@
 declare interface IGraphCalendarWebPartStrings {
-  PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  EventsPerView: string;
+  ShowRecurringEvents: string;
+  StartTime: string;
+  EndTime: string;
+  Location: string;
+  Body: string;
+  Close: string;
 }
 
 declare module 'GraphCalendarWebPartStrings' {

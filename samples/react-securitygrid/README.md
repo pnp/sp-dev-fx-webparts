@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 12/1/2017 12:00:00 AM
 ---
-# SPFX React Grid
+# Security Grid
 
 ## Summary
 

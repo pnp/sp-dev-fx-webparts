@@ -20,7 +20,7 @@ extensions:
 Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+![SPFx 1.4.1](https://img.shields.io/badge/spfx-1.4.1-green.svg)
 
 ## Applies to
 

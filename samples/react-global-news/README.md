@@ -15,7 +15,7 @@ extensions:
   createdDate: 4/14/2020 12:00:00 AM
 ---
 
-# React Global News
+# Global News
 
 ## Summary
 

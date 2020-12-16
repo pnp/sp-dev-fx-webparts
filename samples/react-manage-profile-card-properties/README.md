@@ -1,4 +1,4 @@
-# React Manage Profile Card Properties 
+# Manage Profile Card Properties 
 
 ## Summary
 

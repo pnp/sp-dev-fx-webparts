@@ -1,6 +1,4 @@
-
-
-# react-enhanced-powerapps
+# Enhanced Power App
 
 ## Summary
 

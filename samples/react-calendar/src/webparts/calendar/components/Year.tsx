@@ -15,7 +15,7 @@ function createCalendar(currentDate) {
   const first = currentDate.clone().startOf('month');
   const last = currentDate.clone().endOf('month');
   const weeksCount = Math.ceil((first.day() + last.date()) / 7);
-  let calendar:any = [];
+  let calendar: any = [];
   calendar.currentDate = currentDate;
   calendar.last = last;
   calendar.first = first;
@@ -68,31 +68,31 @@ function CalendarDate(props) {
 }
 
 export interface IYearCalendarProps {
-    date: Date;
-    onDrillDown: (date: any, view?: string) => void;
+  date: Date;
+  onDrillDown: (date: any, view?: string) => void;
 }
 
 export interface IYearCalendarState {
-    calendar: any;
+  calendar: any;
 }
 
 export interface ICalendar {
-    currentDate: any;
-    first: any;
-    last: any;
-    year: any;
-    month: any;
+  currentDate: any;
+  first: any;
+  last: any;
+  year: any;
+  month: any;
 }
 
 class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarState> {
-    public constructor(props) {
-        super(props);
-    
-        this.state = {
-            calendar: undefined
-        };
-         
-        this.openView = this.openView.bind(this);
+  public constructor(props) {
+    super(props);
+
+    this.state = {
+      calendar: undefined
+    };
+
+    this.openView = this.openView.bind(this);
   }
 
   public componentDidMount() {
@@ -110,12 +110,14 @@ class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarStat
       return null;
     }
 
+    const weekdays: string[] = this.state.calendar.currentDate.localeData().weekdaysMin();
+
     return (
       <div className={styles.month}>
         <div className={styles.monthName}>
           {this.state.calendar.currentDate.format('MMMM').toUpperCase()}
         </div>
-        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
+        {weekdays.map((day, index) => (
           <span key={index} className={styles.day}>
             {day}
           </span>
@@ -127,14 +129,14 @@ class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarStat
                 key={date.date()}
                 dateToRender={date}
                 dateOfMonth={this.state.calendar.currentDate}
-                onClick={(e,obj) => {
+                onClick={(e, obj) => {
                   this.openView(obj.toDate(), "day", e); //open day-view
-                  }
+                }
                 }
               />
             ))}
           </div>
-              ))}
+        ))}
       </div>
     );
   }
@@ -147,35 +149,35 @@ class YearCalendar extends React.Component<IYearCalendarProps, IYearCalendarStat
 }
 
 export interface IYearProps {
-   date: string;
-   onDrillDown: (date: any, view?: string) => void;
+  date: string;
+  onDrillDown: (date: any, view?: string) => void;
 }
 
 
 class Year extends React.Component<IYearProps> {
-    private range = date => {
-      return [dates.startOf(date, 'year')];
-    }
-    
-    public static navigate = (date, action) => {
-        switch (action) {
-          case navigate.PREVIOUS:
-            return dates.add(date, -1, 'year');
-      
-          case navigate.NEXT:
-            return dates.add(date, 1, 'year');
-      
-          default:
-            return date;
-        }
-    }
+  private range = date => {
+    return [dates.startOf(date, 'year')];
+  }
 
-  public static title = (date, calendar ) => {
-      return calendar.localizer.format(date, "YYYY");
+  public static navigate = (date, action) => {
+    switch (action) {
+      case navigate.PREVIOUS:
+        return dates.add(date, -1, 'year');
+
+      case navigate.NEXT:
+        return dates.add(date, 1, 'year');
+
+      default:
+        return date;
     }
-  
+  }
+
+  public static title = (date, calendar) => {
+    return calendar.localizer.format(date, "YYYY");
+  }
+
   private handleHeadingClick = (date, view) => {
-      this.props.onDrillDown(date, view);
+    this.props.onDrillDown(date, view);
   }
 
   public render() {
@@ -186,8 +188,8 @@ class Year extends React.Component<IYearProps> {
 
     for (let i = 0; i < 12; i++) {
       months.push(
-        <YearCalendar 
-          key={i + 1} 
+        <YearCalendar
+          key={i + 1}
           date={dates.add(firstMonth, i, 'month')}
           onDrillDown={this.handleHeadingClick}
         />
