@@ -1,5 +1,5 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "8909dae1-5562-4f0f-be6c-aa14eac34c66",
   "alias": "PnPControlsWebPart",
   "componentType": "WebPart",
@@ -12,11 +12,12 @@
   // Components that allow authors to embed arbitrary script code should set this to true.
   // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
 
   "preconfiguredEntries": [{
     "groupId": "8909dae1-5562-4f0f-be6c-aa14eac34c66",
     "group": {
-      "default": "Under Development"
+      "default": "Other"
     },
     "title": {
       "default": "PnPControls"
