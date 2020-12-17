@@ -48,8 +48,8 @@ This demo does not include any threat models and is designed for educational pur
 
 Solution|Author(s)
 --------|---------
-webpart | STCA BF Channel and ABS (stcabfchannel@microsoft.com) <br/> Stephan Bisser (@stephanbisser, bisser.io)
-bot | STCA BF Channel and ABS (stcabfchannel@microsoft.com)
+webpart | Bot Framework Discussions (msbots@service.microsoft.com) <br/> Stephan Bisser (@stephanbisser, bisser.io)
+bot | Bot Framework Discussions (msbots@service.microsoft.com)
 
 ## Version history
 
@@ -187,9 +187,18 @@ Check the [Add authentication to your bot via Azure Bot Service](https://docs.mi
         ],
     ```
 
+- Install modules
+
+    ```bash
+    cd ../webpart
+    npm install
+    ```
+
 - [Publish and host webpart](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/hosting-webpart-from-office-365-cdn), prepare for approving permissions
 
 - Refer [Connect to Azure AD-secured APIs](https://docs.microsoft.com/en-us/sharepoint/api-access) to publish and approve permissions from admin site
+    - Please ensure your service principal had been enabled for your AAD account.
+        - Check "Managed application in local directory" in your AAD overview blade in Azure Portal
     - Go to SharePoint admin center
     - Find "API Access", approve "<YOUR_APP_Name>"
 
@@ -198,19 +207,6 @@ Check the [Add authentication to your bot via Azure Bot Service](https://docs.mi
     1. Go to your azure portal
     2. Navigate to your bot app service, search for CORS settings
     3. Add https://localhost:4321 and https://<YOUR_SITE>.sharepoint.com to CORS origins
-
-- In the command line run
-
-    ```bash
-    cd ../webpart
-    npm install
-    gulp serve
-    ```
-
-    Now web parts is running locally.
-- Open online test page with user account: https://<YOUR_SITE>.sharepoint.com/_layouts/15/Workbench.aspx
-- Config bot endpoint \
-    Add the web parts, set bot endpoint to https://YOUR_BOT.azurewebsites.net, refresh this page, then you can successfully connect bot with SharePoint.
 
 ### Setup OAuth via Azure Active Directory for the SharePoint
 
@@ -233,6 +229,18 @@ The following operations will need an admin account.
     - Set the client id to the `YOUR_SHAREPOINT_ID`
     - Check the box next to the scope we added in the previous step under "Authorized scopes"
     - Click "Add application"
+
+### Test web parts
+- Go to `webpart` folder, in the command line run
+
+    ```bash
+    gulp serve
+    ```
+
+    Now web parts is running locally.
+- Open online test page with user account: https://<YOUR_SITE>.sharepoint.com/_layouts/15/Workbench.aspx
+- Config bot endpoint \
+    Add the web parts, set bot endpoint to https://YOUR_BOT.azurewebsites.net, refresh this page, then you can successfully connect bot with SharePoint.
 
 ## Features
 

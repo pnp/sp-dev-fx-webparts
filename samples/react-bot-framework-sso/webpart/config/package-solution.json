@@ -9,7 +9,7 @@
     "isDomainIsolated": false,
     "webApiPermissionRequests": [
       {
-        "resource": "<YOUR_APP_ID>",
+        "resource": "<YOUR_APP_Name>",
         "scope": "<Your_AAD_Scope_Name>"
       }
     ]
