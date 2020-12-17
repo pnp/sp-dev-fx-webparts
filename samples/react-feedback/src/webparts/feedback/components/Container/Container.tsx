@@ -108,7 +108,7 @@ export const Container: React.FunctionComponent<IContainerProps> = props => {
       newDefaultCategory = DropdownOptions.Options.find(o => o.key === props.selectedCategory);
     }
     if (props.listitemid == null){
-      console.log("List item ID is null. Please run this on a site page.")
+      console.log("List item ID is null. Please run this on a site page.");
     }
     feedbackService.sendEmailToOwnerGroup(txtValue, props.listitemid, (newDefaultCategory) ? newDefaultCategory.text : categoryValue, props.currentUser.displayName, props.currentUser.email);
     dismissPanel();
