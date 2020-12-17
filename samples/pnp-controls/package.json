@@ -1,6 +1,6 @@
 {
   "name": "component-test",
-  "version": "0.0.2",
+  "version": "1.0.3",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -15,8 +15,8 @@
     "@microsoft/sp-core-library": "1.11.0",
     "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
-    "@pnp/spfx-controls-react": "^1.2.2",
-    "@pnp/spfx-property-controls": "^1.4.1",
+    "@pnp/spfx-controls-react": "2.3.0",
+    "@pnp/spfx-property-controls": "2.2.0",
     "@types/react": "16.8.8",
     "moment": "2.18.1",
     "natives": "^1.1.6",
