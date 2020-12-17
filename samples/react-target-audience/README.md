@@ -51,6 +51,7 @@ Version|Date|Comments
 * Define one or more groups to use as an audience
 * Add the web part to a page
 * In the web part's properties, select the audience you wish to see the web part
+
 ## Features
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
