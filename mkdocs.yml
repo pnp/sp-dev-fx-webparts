@@ -64,6 +64,28 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-feedback
+      name: react-feedback
+      title: Feedback
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-feedback/assets/feedbackwebpart.gif
+      author: Perry Kankam
+      summary: This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the "Feedback Owners" group.
+      modifiedtext: December 15, 2020
+      modified: 2020-12-15
+      technology: PnPjs
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-target-audience
+      name: react-target-audience
+      title: Target audience
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-target-audience/assets/audience.gif
+      author: Rabia Williams
+      summary: Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site.
+      modifiedtext: January 28, 2020
+      modified: 2020-01-28
+      pnpcontrols: PropertyFieldPeoplePicker, Placeholder
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-send-notification
       name: react-teams-send-notification
       title: Send Notifications in Teams
@@ -1755,16 +1777,15 @@ extra:
       modifiedtext: May 5, 2017
       modified: 2017-05-05
     - framework: React
-      spfx: 1.4.1
-      year: 2018
+      spfx: 1.11.0
       title: SharePoint Framework PnP Controls Sample
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/pnp-controls
       name: pnp-controls
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/pnp-controls/assets/webpart-outcome.gif
-      author: Elio Struyf
+      author: Elio Struyf, Swaminathan Sriram
       summary: This is a sample project that contains a web part which makes use of the PnP SPFx Controls
-      modifiedtext: March 03, 2018
-      modified: 2018-03-03
+      modifiedtext: December 16, 2020
+      modified: 2020-12-16
       pnpcontrols: PropertyFieldListPicker, PropertyFieldTermPicker, Placeholder, ListView, FileTypeIcon
     - framework: React
       spfx: 1.4.1
@@ -3023,9 +3044,11 @@ extra:
     - Patrick Rodgers
     - Paul Ryan
     - Paul Schaeflein
+    - Perry Kankam
     - Peter Paul Kirschner
     - Pieter Heemeryck
     - Qiong Wu
+    - Rabia Williams
     - Rahul Suryawanshi
     - Ram Prasad Meenavalli
     - Ramin Ahmadi
