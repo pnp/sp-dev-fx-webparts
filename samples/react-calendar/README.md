@@ -127,6 +127,7 @@ Version|Date|Comments
 1.0.5|October 21, 2020|Added Year view
 1.0.6|December 3, 2020|Fixed all-day events (#1623)
 1.0.7|December 4, 2020|Fixed styling Year view + Dutch localization
+1.0.8|December 24, 2020|Fixed timezone difference (#1646)
 
 ## Disclaimer
 

@@ -257,10 +257,7 @@ export class EventRecurrenceInfoDaily extends React.Component<IEventRecurrenceIn
    * @memberof EventRecurrenceInfoDaily
    */
   private async applyRecurrence() {
-
-    const siteTimeZoneHours: number = await this.spService.getSiteTimeZoneHours(this.props.siteUrl);
-    const eventDate = new Date(moment(this.state.startDate).add(siteTimeZoneHours, 'hours').toISOString());
-    const endDate = moment(this.state.endDate).add(siteTimeZoneHours, 'hours').toISOString();
+    const endDate = await this.spService.getUtcTime(this.state.endDate);
     let selectDateRangeOption;
     switch (this.state.selectdateRangeOption) {
       case 'noDate':
