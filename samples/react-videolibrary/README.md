@@ -13,7 +13,7 @@ extensions:
   - React
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# React Video Library
+# Video Library
 
 ## Summary
 A set of 3 SPFx webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)

@@ -3,7 +3,6 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 
@@ -12,10 +11,11 @@ import GraphCalendar from './components/GraphCalendar';
 import { IGraphCalendarProps } from './components/IGraphCalendarProps';
 import * as microsoftTeams from '@microsoft/teams-js';
 import { initializeIcons } from 'office-ui-fabric-react';
-import { PropertyPaneSlider } from '@microsoft/sp-property-pane';
+import { PropertyPaneSlider, PropertyPaneCheckbox, IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
 
 export interface IGraphCalendarWebPartProps {
   limit: number;
+  showRecurrence: boolean;
 }
 
 export default class GraphCalendarWebPart extends BaseClientSideWebPart<IGraphCalendarWebPartProps> {
@@ -26,6 +26,7 @@ export default class GraphCalendarWebPart extends BaseClientSideWebPart<IGraphCa
       GraphCalendar,
       {
         limit: this.properties.limit,
+        showRecurrence: this.properties.showRecurrence,
         context: this.context,
         teamsContext: this._teamsContext
       }
@@ -41,6 +42,10 @@ export default class GraphCalendarWebPart extends BaseClientSideWebPart<IGraphCa
       // Sets a default if limit has not been defined
       if (this.properties.limit === undefined) {
         this.properties.limit = 100;
+      }
+
+      if (this.properties.showRecurrence === undefined) {
+        this.properties.showRecurrence = true;
       }
 
       // Sets the Teams context if in Teams
@@ -71,17 +76,17 @@ export default class GraphCalendarWebPart extends BaseClientSideWebPart<IGraphCa
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneSlider('limit', {
-                  label: "Events to load per active view",
+                  label: strings.EventsPerView,
                   max: 500,
                   min: 50
+                }),
+                PropertyPaneCheckbox('showRecurrence', {
+                  text: strings.ShowRecurringEvents,
+                  checked: true
                 })
               ]
             }

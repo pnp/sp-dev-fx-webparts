@@ -1,4 +1,4 @@
-## react-item-history
+# Item History
 
 ## Summary
 This listview command is used to show the past versions of the selected list item in a grid.

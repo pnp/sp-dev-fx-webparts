@@ -20,12 +20,17 @@ export interface ICreateTaskWebPartProps {
 export default class CreateTaskWebPart extends BaseClientSideWebPart<ICreateTaskWebPartProps> {
 
   private _graphHttpClient: MSGraphClient;
+  private _mailBody: string;
 
   protected onInit(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.context.msGraphClientFactory.getClient().then(client => {
         this._graphHttpClient = client;
-        resolve();
+        const mailboxItem: Office.MessageRead = this.context.sdks.office.context.mailbox.item;
+        mailboxItem.body.getAsync(Office.CoercionType.Text, (asyncResult: Office.AsyncResult<string>) => {
+          this._mailBody = asyncResult.value;
+          resolve();
+        });
       }).catch(error => {
         console.log(error);
         reject(error);
@@ -43,7 +48,8 @@ export default class CreateTaskWebPart extends BaseClientSideWebPart<ICreateTask
           id: mailboxItem.itemId,
           subject: mailboxItem.subject,
           from: mailboxItem.from.emailAddress,
-          to: mailboxItem.to[0].emailAddress
+          to: mailboxItem.to[0].emailAddress,
+          body: this._mailBody
         }
       };
       return context;

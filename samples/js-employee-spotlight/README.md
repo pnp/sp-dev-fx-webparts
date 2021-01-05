@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 8/1/2017 12:00:00 AM
 ---
-# Display Employee Spotlight JavaScript Client-Side Web Part
+# Employee Spotlight
 
 ## Summary
 Simple Web Part that demonstrates the use of SharePoint Framework for show casing Employee Spotlight. The web part pulls data from a configured list and User Profile service.

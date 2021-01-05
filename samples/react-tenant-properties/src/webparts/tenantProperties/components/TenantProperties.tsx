@@ -19,6 +19,7 @@ import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBa
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import * as strings from 'TenantPropertiesWebPartStrings';
+import { SyntheticEvent } from 'react';
 
 // ListView Columns
 const viewFields: IViewField[] = [
@@ -97,7 +98,7 @@ export default class TenantProperties extends React.Component<ITenantPropertiesP
   }
   // Panel Dismiss CallBack
   // @param refresh refresh list?
-  public async onDismissPanel(refresh?: boolean) {
+  public async onDismissPanel(ev?: SyntheticEvent<HTMLElement, Event>, refresh?: boolean) {
     this.setState({
       showPanel: false
     });

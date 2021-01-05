@@ -1,10 +1,19 @@
 {
-  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "component-test-client-side-solution",
     "id": "7d4d5b98-cea3-4361-8e3d-5143d5c86334",
-    "version": "1.0.0.0",
-    "skipFeatureDeployment": false
+    "version": "1.0.3.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": ""
+    }
   },
   "paths": {
     "zippedPackage": "solution/component-test.sppkg"

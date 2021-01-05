@@ -5,7 +5,7 @@ import * as strings from 'PolarAreaDemoWebPartStrings';
 
 // used to add a chart control
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
-
+import { ChartData } from 'chart.js';
 
 // used to retrieve (fake) data from a (fake) service
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
@@ -14,7 +14,7 @@ import MockChartDataProvider from '../../../services/ChartDataProvider/MockChart
 // used to render the toolbar above the chart
 import {
   CommandBar
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 /**
  * Define the chart colors:
@@ -132,8 +132,8 @@ export default class PolarAreaDemo extends React.Component<IPolarAreaDemoProps, 
    * Loads data from a service.
    * This is where you would replace for your own code
    */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, reject) => {
       // Get the mock data provider
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
 
@@ -142,7 +142,7 @@ export default class PolarAreaDemo extends React.Component<IPolarAreaDemoProps, 
         .getNumberArray(DATA_LENGTH)  // we only need 5 data elements for this demo
         .then((numbers: number[]) => {
           // get the chart's data
-          const data: Chart.ChartData = {
+          const data: ChartData = {
             labels: strings.ChartLabels,
             datasets: [
               {
@@ -181,7 +181,7 @@ export default class PolarAreaDemo extends React.Component<IPolarAreaDemoProps, 
    */
   private _handleAddData = () => {
     // get the chart's data
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     const dataSet = data.datasets[0];
 
@@ -206,7 +206,7 @@ export default class PolarAreaDemo extends React.Component<IPolarAreaDemoProps, 
    * Removes the oldset dataset
    */
   private _handleRemoveData = () => {
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     data.labels.pop();
 

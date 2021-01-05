@@ -1,12 +1,12 @@
-import { WebPartContext } from "@microsoft/sp-webpart-base";
+import { MSGraphClient } from "@microsoft/sp-http";
+
+import {
+  IProfileCardPropertiesResults
+} from "../Entities/IProfileCardPropertiesResults";
 import { IProfileCardProperty } from "../Entities/IProfileCardProperty";
-import { MSGraphClient, AadTokenProvider } from "@microsoft/sp-http";
-import { useGetOrganization } from "./useGetOrganizationInfo";
-import { IOrganization } from "../Entities/IOrganization";
-import axios, { AxiosRequestConfig } from "axios";
-import { IProfileCardPropertiesResults } from "../Entities/IProfileCardPropertiesResults";
-import { IAnnotation } from "../Entities/IAnnotations";
-import { IUpdateProfileCardProperty } from "../Entities/IUpdateProfileCardProperty";
+import {
+  IUpdateProfileCardProperty
+} from "../Entities/IUpdateProfileCardProperty";
 
 const ADMIN_ROLETEMPLATE_ID = "62e90394-69f5-4237-9190-012177145e10";
 
@@ -23,15 +23,7 @@ export const useProfileCardProperties =  () => {
       .orderby("directoryPropertyName")
       .get();
 
-    /* const t = await msGraphClient.getToken('https://graph.microsoft.com');
- const options : AxiosRequestConfig = {
-  method: 'get',
-  headers: { 'content-type': 'application/json', 'accept': 'application/json' , 'authorization': `bearer ${t}`},
-  url: `https://graph.microsoft.com/beta/organization/${organizationId}/settings/profileCardProperties`,
-};
 
-const _rs = await axios(options);
-console.log(_rs); */
 
     return _profileProperties.value;
   };

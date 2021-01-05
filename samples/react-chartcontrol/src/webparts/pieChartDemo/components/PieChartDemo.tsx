@@ -5,6 +5,7 @@ import * as strings from 'PieChartDemoWebPartStrings';
 
 // used to add a chart control
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartData } from 'chart.js';
 
 
 // used to retrieve (fake) data from a (fake) service
@@ -14,7 +15,7 @@ import MockChartDataProvider from '../../../services/ChartDataProvider/MockChart
 // used to render the toolbar above the chart
 import {
   CommandBar
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 /**
  * Define the chart colors:
@@ -205,7 +206,7 @@ export default class PieChartDemo extends React.Component<IPieChartDemoProps, {}
    */
   private _handleAddDataset = () => {
     // get the chart's data
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     // create a new dataset
     var newDataset = {
@@ -237,7 +238,7 @@ export default class PieChartDemo extends React.Component<IPieChartDemoProps, {}
    */
   private _handleRemoveDataset = () => {
     // get the data from the chart
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     // splice the array and remove a dataset
     data.datasets.splice(0, 1);

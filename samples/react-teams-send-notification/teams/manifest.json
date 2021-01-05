@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.8/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.8",
+  "version": "1.0.0",
+  "id": "6dd40ce9-f485-47f7-a40a-921649e818d9",
+  "packageName": "com.sambori.teamsfeed",
+  "developer": {
+    "name": "Luis Mañez",
+    "websiteUrl": "https://www.github.com/luismanez",
+    "privacyUrl": "https://www.github.com/luismanez",
+    "termsOfUseUrl": "https://www.github.com/luismanez"
+  },
+  "icons": {
+    "color": "f86ed598-f65b-40f4-aab7-1a42e5496295_color.png",
+    "outline": "f86ed598-f65b-40f4-aab7-1a42e5496295_outline.png"
+  },
+  "name": {
+    "short": "SPFxTeamsAlert",
+    "full": "Testing feed notifications API"
+  },
+  "description": {
+    "short": "Just testing Feed notifications API",
+    "full": "The Microsoft Teams activity feed enables users to triage items that require attention by notifying them of changes."
+  },
+  "accentColor": "#FFFFFF",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=f86ed598-f65b-40f4-aab7-1a42e5496295",
+      "canUpdateConfiguration": true,
+      "scopes": ["team"],
+      "context": ["channelTab"]
+    }
+  ],
+  "staticTabs": [],
+  "bots": [],
+  "composeExtensions": [],
+  "permissions": ["identity", "messageTeamMembers"],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "*.sharepoint-df.com",
+    "spoppe-a.akamaihd.net",
+    "spoprod-a.akamaihd.net",
+    "resourceseng.blob.core.windows.net",
+    "msft.spoppe.com",
+    "github.com"
+  ],
+  "webApplicationInfo": {
+    "id": "e2c3a0e0-9bb1-46b4-907d-f9197614b8a1",
+    "resource": "https://{teamSiteDomain}"
+  },
+  "activities": {
+    "activityTypes": [
+      {
+        "type": "readThisRequired",
+        "description": "Just another activity",
+        "templateText": "{actor} created a new notification"
+      }
+    ]
+  }
+}

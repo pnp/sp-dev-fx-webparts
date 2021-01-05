@@ -11,7 +11,7 @@ extensions:
   - SharePoint Framework
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# Todo Client Web Part built with Vue.js and Vue's single-file components
+# Todo Client with Vue.js and Vue's single-file components
 
 ## Summary
 

@@ -1,4 +1,4 @@
-## React Chart Control Samples
+# Chart Control Samples
 
 ## Summary
 
@@ -168,9 +168,18 @@ This sample also demonstrates how to use time series for the X axis.
 
 This sample shows how to use X and Y coordinate data elements in a scatter chart.
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![SPFx v1.10.0](https://img.shields.io/badge/SPFx-1.10.1-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg)
+
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
+
+![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
+
+![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
+
 
 ## Applies to
 
@@ -193,6 +202,8 @@ Version|Date|Comments
 -------|----|--------
 1.0|January, 2019|Initial release
 1.1|July 02, 2020|Upgraded to SPFx 1.10.0
+1.2|December 04, 2020|Upgraded to SPFx 1.11.0 and Fluent UI 7.x
+1.3|December 13, 2020|Upgraded dependencies
 
 ## Disclaimer
 

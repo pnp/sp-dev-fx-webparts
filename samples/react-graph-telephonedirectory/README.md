@@ -1,14 +1,15 @@
-# Telephone Directory using React, Ms Graph and SPFx
+# Telephone Directory using React, Microsoft Graph and SPFx
 
 ## Summary
-This is sample webpart using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address.
-webpart will fetch data from directory using Graph API and display in details list.
+
+This is sample web part using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address.
+The web part will fetch data from directory using Graph API and display in details list.
 
 ![Telephone Directory using SPFx and Graph](./assets/Preview.gif)
 
 ## Used SharePoint Framework Version
 
-![1.9.1](https://img.shields.io/badge/version-1.9.1-green.svg)
+![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
 
 ## Applies to
 
@@ -29,12 +30,15 @@ webpart will fetch data from directory using Graph API and display in details li
 Solution|Author(s)
 --------|---------
 react-graph-telephonedirectory | [Dipen Shah](https://github.com/Dips365) ([@Dips_365](https://twitter.com/Dips_365))
+react-graph-telephonedirectory | [Aimery Thomas](https://github.com/a1mery) ([@aimery_thomas](https://twitter.com/aimery_thomas))
+
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|July 14,2020 | Initial Release
+1.1|November 7,2020 | Upgraded to SPFx 1.11
 
 ## Disclaimer
 

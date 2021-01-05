@@ -3,4 +3,5 @@ export interface IMailItem {
   subject: string;
   from: string;
   to: string;
+  body: string;
 }

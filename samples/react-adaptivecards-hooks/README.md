@@ -1,4 +1,4 @@
-# react-adaptivecards-hooks
+# Adaptive Cards using React Hooks
 
 ## Summary
 

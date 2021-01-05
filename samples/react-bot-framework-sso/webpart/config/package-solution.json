@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-bot-framework-chat-SSO-solution",
+    "id": "2768612e-cd75-4188-9066-74f51d0ce9b1",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "<YOUR_APP_Name>",
+        "scope": "<Your_AAD_Scope_Name>"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-bot-framework-chat-SSO.sppkg"
+  }
+}

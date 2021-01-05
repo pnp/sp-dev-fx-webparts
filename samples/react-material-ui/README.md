@@ -1,4 +1,4 @@
-# React Material UI
+# Using Material UI
 
 ## Summary
 This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon.

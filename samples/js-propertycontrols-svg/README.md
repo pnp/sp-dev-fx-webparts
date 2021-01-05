@@ -1,4 +1,4 @@
-# JS Property Controls SVG
+# Dynamic Scalable Vector Graphics (SVG) image using propertie
 
 ## Summary
 An SPFx webpart that displays a Scalable Vector Graphics (SVG) image using properties to customize how it is rendered. The webpart utilizes the PnP SPFx Property Controls package (specifially the SpinButton and ColorPicker) to set these properties.

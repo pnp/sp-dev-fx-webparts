@@ -13,7 +13,7 @@ extensions:
   - React
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# React multi-page client-side web part
+# Multi-page Web Parts
 
 ## Summary
 

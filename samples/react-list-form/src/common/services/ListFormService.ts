@@ -25,7 +25,7 @@ export class ListFormService implements IListFormService {
      * @param formType The type of form (Display, New, Edit)
      * @returns Promise object represents the array of field schema for all relevant fields for this list form.
      */
-    public getFieldSchemasForForm(webUrl: string, listUrl: string, formType: ControlMode): Promise<IFieldSchema[]> {
+    public async getFieldSchemasForForm(webUrl: string, listUrl: string, formType: ControlMode): Promise<IFieldSchema[]> {
         return new Promise<IFieldSchema[]>((resolve, reject) => {
             const httpClientOptions: ISPHttpClientOptions = {
                 headers: {
@@ -63,7 +63,46 @@ export class ListFormService implements IListFormService {
                 });
         });
     }
+    /**
+     * Retrieves the options for a lookup field
+     *
+     * @param fieldSchema The field schema for the lookup field.
+     * @param webUrl The absolute Url to the SharePoint site.
+     * @returns Promise representing an object containing all the field values for the lookup field.
+     */
+    public async getLookupfieldOptions(fieldSchema: any, webUrl: string): Promise<any[]> {
+        const endpoint = `${webUrl}/_api/Web/lists/getbyid('${fieldSchema.LookupListId}')/items?$orderby=${fieldSchema.LookupFieldName}&$top=5000`;
 
+        try {
+            let resp: SPHttpClientResponse = await this.spHttpClient.get(endpoint, SPHttpClient.configurations.v1);
+            if (resp.ok) {
+                let json = await resp.json();
+                return json.value.map((x) => {
+                    return { LookupId: x.ID, LookupValue: x[fieldSchema.LookupFieldName], x };
+                });
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
+        return [];
+
+    }
+    /**
+     * Retrieves the options for a lookup field
+     *
+     * @param fieldSchema The field schema for the lookup field.
+     * @param webUrl The absolute Url to the SharePoint site.
+     * @returns Promise representing an object containing all the field values for the lookup field.
+     */
+    public async getLookupfieldsOnList(listUrl: string, webUrl: string, formType: ControlMode): Promise<any[]> {
+        let fields = await this.getFieldSchemasForForm(webUrl, listUrl, formType);
+        fields = fields.filter((x) => {
+            return x.FieldType.indexOf("Lookup") === 0;
+        });
+
+        return fields;
+    }
     /**
      * Retrieves the data for a specified SharePoint list form.
      *
@@ -123,7 +162,7 @@ export class ListFormService implements IListFormService {
             //Need group lookups
             for (let j = 0; j < val.length; j++) {
                 let y = val[j];
-                if (y.Key.indexOf("c:0") == 0) {
+                if (y.Key && y.Key.indexOf("c:0") == 0) {
                     let res = await searchSvc.resolvePeople(ctx, y.Key, siteUrl);
                     y.Key = res.Description;
                 }
@@ -154,13 +193,14 @@ export class ListFormService implements IListFormService {
             },
         };
         const formValues = this.GetFormValues(fieldsSchema, data, originalData);
-        let createAttachmetns = this.GetAttachmentsCreate(data);
-        let deleteAttachmetns = this.GetAttachmentsDelete(data, originalData);
+        let createAttachments = this.GetAttachmentsCreate(data);
+        let deleteAttachments = this.GetAttachmentsDelete(data, originalData);
         httpClientOptions.body = JSON.stringify({
             bNewDocumentUpdate: false,
             checkInComment: null,
             formValues,
         });
+
         const endpoint = `${webUrl}/_api/web/GetList(@listUrl)/items(@itemId)/ValidateUpdateListItem()`
             + `?@listUrl=${encodeURIComponent('\'' + listUrl + '\'')}&@itemId=%27${itemId}%27`;
         try {
@@ -170,12 +210,12 @@ export class ListFormService implements IListFormService {
             }
             let responseData = await response.json();
             responseData.AttachmentResponse = [];
-            if (deleteAttachmetns.length > 0) {
-                let deleteResponse = await this.deleteAttachments(webUrl, listUrl, itemId, deleteAttachmetns);
+            if (deleteAttachments.length > 0) {
+                let deleteResponse = await this.deleteAttachments(webUrl, listUrl, itemId, deleteAttachments);
                 responseData.AttachmentResponse.push(deleteResponse);
             }
-            if (createAttachmetns.length > 0) {
-                let createResponse = await this.uploadAttachments(webUrl, listUrl, itemId, createAttachmetns);
+            if (createAttachments.length > 0) {
+                let createResponse = await this.uploadAttachments(webUrl, listUrl, itemId, createAttachments);
                 responseData.AttachmentResponse.push(createResponse);
             }
             return responseData.d.ValidateUpdateListItem.results;
@@ -320,6 +360,15 @@ export class ListFormService implements IListFormService {
                         ErrorMessage: null,
                         FieldName: field.InternalName,
                         FieldValue: JSON.stringify(data[field.InternalName]),
+                        HasException: false,
+                    };
+                }
+                else if (field.FieldType === "DateTime") {
+                    let dateValue = data[field.InternalName].split('').map((c) => { return (c.charCodeAt(0) < 127) ? c : ''; }).join('');
+                    return {
+                        ErrorMessage: null,
+                        FieldName: field.InternalName,
+                        FieldValue: dateValue,
                         HasException: false,
                     };
                 }

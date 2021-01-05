@@ -1,4 +1,4 @@
-## react-graph-reports
+# Office 365 Usage Reports using Microsoft Graph
 
 ## Summary
 This sample describe a SPFx application which retrieve an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph.

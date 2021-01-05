@@ -1,4 +1,4 @@
-# React Visio Embed
+# Visio Embed
 
 ## Summary
 

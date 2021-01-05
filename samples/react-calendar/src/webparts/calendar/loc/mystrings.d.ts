@@ -101,9 +101,9 @@ declare interface ICalendarWebPartStrings {
   EventPanelTitle: string;
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
   SiteUrlFieldLabel: string;
   ListFieldLabel: string;
+  yearHeaderLabel: string;
   monthLabel: string;
   weekLabel: string;
   dayLable: string;
@@ -114,6 +114,7 @@ declare interface ICalendarWebPartStrings {
   showMore: string;
   recurrenceEventLabel: string;
   editRecurrenceSeries: string;
+  allDayEventLabel: string;
   ifRecurrenceLabel: string;
   onLabel: string;
   offLabel: string;

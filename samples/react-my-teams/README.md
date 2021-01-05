@@ -1,4 +1,4 @@
-# React My Teams
+# My Teams
 
 ## Summary
 

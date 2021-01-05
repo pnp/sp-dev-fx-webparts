@@ -3,7 +3,7 @@ import { DisplayMode } from '@microsoft/sp-core-library';
 import { ChartType, ChartPalette } from '@pnp/spfx-controls-react/lib/ChartControl';
 import { DashType } from "../controls/PropertyPaneDashSelector/components/DashSelector.types";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-
+import { PositionType, PointStyle, InteractionMode } from 'chart.js';
 export interface IChartinatorProps {
   animateRotate: boolean;
   animateScale: boolean;
@@ -31,7 +31,7 @@ export interface IChartinatorProps {
   dataYValueField: string;
   displayMode: DisplayMode;
   leftPadding: number;
-  legendPosition: Chart.PositionType | 'none';
+  legendPosition: PositionType | 'none';
   legendReversed: boolean;
   lineCurved: boolean;
   lineFill: string;
@@ -40,13 +40,13 @@ export interface IChartinatorProps {
   offsetGridLines: boolean;
   pointRadius: number;
   pointRotation: number;
-  pointStyle: Chart.PointStyle;
+  pointStyle: PointStyle;
   radialChart: boolean;
   rightPadding: number;
   title: string;
   tooltipEnabled: boolean;
   tooltipIntersect: boolean;
-  tooltipMode: Chart.InteractionMode;
+  tooltipMode: InteractionMode;
   tooltipPosition: string;
   topPadding: number;
   xAxisLabelEnabled: boolean;

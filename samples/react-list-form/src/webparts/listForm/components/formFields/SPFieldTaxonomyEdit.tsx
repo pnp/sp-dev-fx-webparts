@@ -17,7 +17,7 @@ const SPFieldTaxonomyEdit: React.SFC<ISPFormFieldProps> = (props) => {
         context = props.context;
         termsetId = props.fieldSchema.TermSetId;
         allowMultipleSelections = props.fieldSchema.AllowMultipleValues;
-        if (props.value != null) {
+        if (props.value != null && props.value != "") {
             terms = [];
             let multiparts = props.value.split(";");
             multiparts.forEach((x) => {

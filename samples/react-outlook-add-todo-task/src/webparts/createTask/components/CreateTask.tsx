@@ -17,8 +17,6 @@ import {
   MessageBarType
 } from "office-ui-fabric-react";
 
-import { MSGraphClient } from "@microsoft/sp-http";
-
 export default class CreateTask extends React.Component<
   ICreateTaskProps,
   ICreateTaskState
@@ -30,10 +28,8 @@ export default class CreateTask extends React.Component<
       listItemAdded: false,
       selectedList: undefined,
       todoLists: [],
-      newTaskTitle: this.props.context.item
-        ? this.props.context.item.subject
-        : "New Task title here!",
-        showSelectListError: false
+      newTaskTitle: this.props.context.item ? this.props.context.item.subject : "New Task title here!",
+      showSelectListError: false
     };
 
     this._onDropdownChange = this._onDropdownChange.bind(this);
@@ -166,8 +162,8 @@ export default class CreateTask extends React.Component<
         status: "notStarted",
         title: taskTitle,
         body: {
-          content: "You have a new task to do added from SPFx component!",
-          contentType: "text",
+          content: this._composeBody(this.props.context.item.body),
+          contentType: "html",
         },
       };
 
@@ -183,5 +179,11 @@ export default class CreateTask extends React.Component<
     } catch (e) {
       console.log(e);
     }
+  }
+
+  private _composeBody(emailBody: string): string {
+    const id: string = encodeURIComponent(this.props.context.item.id);
+    const link: string = `<a href='https://outlook.office365.com/owa/?ItemID=${id}&exvsurl=1&viewmodel=ReadMessageItem'>Open in Outlook</a>`;
+    return `${emailBody}<p style='font-size: large; padding-top: 10px;'>${link}</p>`;
   }
 }
