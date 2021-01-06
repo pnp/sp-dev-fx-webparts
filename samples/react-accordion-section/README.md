@@ -56,6 +56,7 @@ Solution|Author(s)
 SPFx Collapsible Accordion Section|[Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))
 SPFx Collapsible Accordion Section|[Mike Zimmerman](https://github.com/mikezimm)
 SPFx Collapsible Accordion Section|[Ravi Chandra](https://github.com/Ravikadri)
+SPFx Collapsible Accordion Section|[Jack Vinitsky](https://github.com/jack-vinitsky)
 
 ## Version history
 
@@ -68,7 +69,7 @@ Version|Date|Comments
 1.4|July 10, 2020|Upgraded to SPFx 1.10.
 1.5|September 1, 2020|Adds ability to click on expanded section headers to collapse accordions
 1.6|September 2, 2020|Added Web Part Title, and ability to expand multiple sections
-1.7|January 5, 2021|Fixed web part title style to be consistent with first-party web parts
+1.7|January 5, 2021|Fixed web part title style to be consistent with first-party web parts; updated other dependencies
 
 ## Disclaimer
 
