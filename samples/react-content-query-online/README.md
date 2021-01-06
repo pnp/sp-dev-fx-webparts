@@ -2,7 +2,7 @@
 
 ## Summary
 
-> **NOTE:** This web part was built with SPFx 1.10.0, making it only compatible with SharePoint Online. If you wish, you can use [an earlier version of this web part](../OnPrem/README.md) which is compatible on-premises versions of SharePoint.
+> **NOTE:** This web part was built with SPFx 1.11.0, making it only compatible with SharePoint Online. If you wish, you can use [an earlier version of this web part](../react-content-query-onprem/README.md) which is compatible on-premises versions of SharePoint.
 
 The **Content Query web part** is a modern version of the good old **Content by Query web part** that was introduced in SharePoint 2007. Built for Office 365, this modern version is built using the **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices. 
 
@@ -10,9 +10,17 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 
 ![Web Part Preview](assets/toolpart.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![1.11.0](https://img.shields.io/badge/drop-1.11.0-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/spfx-1.11.0-green.svg)
+
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
+
+![Teams N/A](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg)
+
+![Workbench Hosted](https://img.shields.io/badge/Workbench-Hosted-yellow.svg)
 
 ## Applies to
 
@@ -28,6 +36,7 @@ react-content-query-web part (Online)|Hugo Bernier ([Tahoe Ninjas](http://tahoen
 react-content-query-web part (Online)|Paolo Pialorsi ([PiaSys.com](https://piasys.com/), [@PaoloPia](https://twitter.com/PaoloPia?s=20))
 react-content-query-web part |Simon-Pierre Plante
 react-content-query-web part (Online)|Abderahman Moujahid
+
 ## Version history
 
 Version|Date|Comments
@@ -48,6 +57,7 @@ Version|Date|Comments
 1.0.14|October 30, 2020|Fixed (lookup-)fields with special characters
 1.0.15|November 2, 2020|Upgraded to SPFx 1.11; Added support for jsonValue
 1.0.16|November 14, 2020|Fixed a bug where the fieldname starts with a special character; Added more special characters
+1.1.0|January 5, 2021|Updated dependencies and added MGT support
 
 ## Disclaimer
 
@@ -394,4 +404,4 @@ ReactContentQuery.ExternalScripts.MyCustomBlockHelper = {
 }
 ```
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-web parts/samples/react-content-query-web part/online" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-web parts/samples/react-content-query-online" />
