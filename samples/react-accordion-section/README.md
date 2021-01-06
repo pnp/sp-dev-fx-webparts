@@ -13,6 +13,7 @@
 ### Usage
 
 **1) Create or use a list with a Title and a Content column:**
+
 * The value in the Title column for each item will appear in the heading bars of the Accordion.  
 * The value in the Content column for each item will appear in the collapsible content section of the Accordion
 * When creating the columns, select "Multiple lines of text".  Rich text is now supported within the Content column.
@@ -25,9 +26,18 @@
 ![Select list from property panel for use with the Accordion](./assets/AccordionSettings.png)
 
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+![SPFx 1.10](https://img.shields.io/badge/spfx-1.10.0-green.svg)
+
+![Node.js LTS 8.x | LTS 10.x](https://img.shields.io/badge/Node.js-LTS%208.x%20%7C%20LTS%2010.x-green.svg)
+
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
+
+![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
+
+![Workbench Local (Partially) | Hosted](https://img.shields.io/badge/Workbench-Local%20(Partial)%20%7C%20Hosted-yellow.svg)
+
 
 ## Applies to
 
@@ -45,6 +55,8 @@ Solution|Author(s)
 --------|---------
 SPFx Collapsible Accordion Section|[Erik Benke](https://github.com/ejbenke) ([@erikjbenke](https://twitter.com/erikjbenke))
 SPFx Collapsible Accordion Section|[Mike Zimmerman](https://github.com/mikezimm)
+SPFx Collapsible Accordion Section|[Ravi Chandra](https://github.com/Ravikadri)
+SPFx Collapsible Accordion Section|[Jack Vinitsky](https://github.com/jack-vinitsky)
 
 ## Version history
 
@@ -57,6 +69,7 @@ Version|Date|Comments
 1.4|July 10, 2020|Upgraded to SPFx 1.10.
 1.5|September 1, 2020|Adds ability to click on expanded section headers to collapse accordions
 1.6|September 2, 2020|Added Web Part Title, and ability to expand multiple sections
+1.7|January 5, 2021|Fixed web part title style to be consistent with first-party web parts; updated other dependencies
 
 ## Disclaimer
 
