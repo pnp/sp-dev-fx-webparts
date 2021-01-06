@@ -31,6 +31,8 @@ import { IDynamicDataCallables }                                                
 import { IDynamicItem }                                                             from '../../common/dataContracts/IDynamicItem';
 import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme }                     from '@microsoft/sp-component-base';
 
+import { Providers, SharePointProvider } from '@microsoft/mgt';
+
 export default class ContentQueryWebPart
   extends BaseClientSideWebPart<IContentQueryWebPartProps>
   implements IDynamicDataCallables {
@@ -94,6 +96,9 @@ export default class ContentQueryWebPart
 
     // Register a handler to be notified if the theme variant changes
     this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+
+    // ADDED: For MGT support
+    Providers.globalProvider = new SharePointProvider(this.context);
 
     return new Promise<void>((resolve, reject) => {
       this.ContentQueryService = new ContentQueryService(this.context, this.context.spHttpClient);

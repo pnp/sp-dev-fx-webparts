@@ -15,6 +15,7 @@ import { ListService, IListTitle } from './ListService';
 import { SearchService } from './SearchService';
 import { PeoplePickerService } from './PeoplePickerService';
 import { TaxonomyService } from './TaxonomyService';
+import { INormalizedResult } from '../dataContracts/INormalizedResult';
 
 export class ContentQueryService implements IContentQueryService {
 
@@ -75,7 +76,7 @@ export class ContentQueryService implements IContentQueryService {
     return new Promise<IContentQueryTemplateContext>((resolve, reject) => {
 
       // Initializes the base template context
-      let templateContext: IContentQueryTemplateContext = {
+      const templateContext: IContentQueryTemplateContext = {
         pageContext: this.context.pageContext,
         webUrl: querySettings.webUrl,
         listId: querySettings.listId,
@@ -85,13 +86,19 @@ export class ContentQueryService implements IContentQueryService {
         callTimeStamp: callTimeStamp
       };
 
-      // Builds the CAML query based on the webpart settings
-      let query = CamlQueryHelper.generateCamlQuery(querySettings);
+      // Builds the CAML query based on the web part settings
+      const query: string = CamlQueryHelper.generateCamlQuery(querySettings);
+
+      //TODO: Remove
+      console.log("Query", query);
+
       //Log.info(this.logSource, Text.format("Generated CAML query {0}...", query), this.context.serviceScope);
 
-      // Queries the list with the generated caml query
+      // Queries the list with the generated CAML query
       this.listService.getListItemsByQuery(querySettings.webUrl, querySettings.listId, query)
         .then((data: any) => {
+          //TODO: Remove
+          console.log("List Service data", data);
           // Updates the template context with the normalized query results
           let normalizedResults = this.normalizeQueryResults(data.value, querySettings.viewFields);
           templateContext.items = normalizedResults;
@@ -257,7 +264,7 @@ export class ContentQueryService implements IContentQueryService {
     return new Promise<IDropdownOption[]>((resolve, reject) => {
       this.listService.getListTitlesFromWeb(webUrl).then((listTitles: IListTitle[]) => {
         let options: IDropdownOption[] = [{ key: "", text: strings.ListTitleFieldPlaceholder }];
-        let listTitleOptions = listTitles.map((list) => { return { key: list.id, text: list.title }; });
+        const listTitleOptions = listTitles.map((list) => { return { key: list.id, text: list.title }; });
         options = options.concat(listTitleOptions);
         this.listTitleOptions = options;
         resolve(options);
@@ -290,9 +297,11 @@ export class ContentQueryService implements IContentQueryService {
     // Otherwise gets the options asynchronously
     return new Promise<IDropdownOption[]>((resolve, reject) => {
       this.listService.getListFields(webUrl, listId, ['InternalName', 'Title', 'Sortable'], 'Title').then((data: any) => {
-        let sortableFields: any[] = data.value.filter((field) => { return field.Sortable == true; });
+        //TODO: Remove
+        console.log("Fields", data);
+        const sortableFields: any[] = data.value.filter((field) => { return field.Sortable == true; });
         let options: IDropdownOption[] = [{ key: "", text: strings.queryFilterPanelStrings.queryFilterStrings.fieldSelectLabel }];
-        let orderByOptions: IDropdownOption[] = sortableFields.map((field) => { return { key: field.InternalName, text: Text.format("{0} \{\{{1}\}\}", field.Title, field.InternalName) }; });
+        const orderByOptions: IDropdownOption[] = sortableFields.map((field) => { return { key: field.InternalName, text: Text.format("{0} \{\{{1}\}\}", field.Title, field.InternalName) }; });
         options = options.concat(orderByOptions);
         this.orderByOptions = options;
         resolve(options);
@@ -576,31 +585,58 @@ export class ContentQueryService implements IContentQueryService {
    * Normalizes the results coming from a CAML query into a userfriendly format for handlebars
    * @param results : The results returned by a CAML query executed against a list
    **************************************************************************************************/
-  private normalizeQueryResults(results: any[], viewFields: string[]): any[] {
+  private normalizeQueryResults(results: any[], viewFields: string[]): INormalizedResult[] {
     //Log.verbose(this.logSource, "Normalizing results for the requested handlebars context...", this.context.serviceScope);
 
-    let normalizedResults: any[] = [];
+    // TODO: Remove
+    console.log("Results", results);
 
-    for (let result of results) {
+
+    const normalizedResults: INormalizedResult[] = results.map((result) => {
       let normalizedResult: any = {};
       let formattedCharsRegex = /_x00(20|3a|[c-f]{1}[0-9a-f]{1})_/gi;
       for (let viewField of viewFields) {
+
         //check if the intenal fieldname begins with a special character (_x00)
-        let viewFieldOdata = viewField;
+        let viewFieldOdata: string = viewField;
         if (viewField.indexOf("_x00") == 0) {
           viewFieldOdata = `OData_${viewField}`;
         }
         let formattedName = viewFieldOdata.replace(formattedCharsRegex, "_x005f_x00$1_x005f_");
         formattedName = formattedName.replace(/_x00$/, "_x005f_x00");
+
+        const htmlValue: string = result.FieldValuesAsHtml[formattedName];
         normalizedResult[viewField] = {
           textValue: result.FieldValuesAsText[formattedName],
-          htmlValue: result.FieldValuesAsHtml[formattedName],
+          htmlValue: htmlValue,
           rawValue: result[viewField] || result[viewField + 'Id'],
           jsonValue: this.jsonParseField(result[viewField] || result[viewField + 'Id'])
         };
+
+        // Try to extract the user email and name
+        const sipIndex = htmlValue.indexOf(`sip='`);
+        if (sipIndex > -1) {
+          // Get the email address
+          const sipValue = htmlValue.substring(sipIndex + 5, htmlValue.indexOf(`'`, sipIndex + 5));
+          const anchorEnd: number = htmlValue.lastIndexOf('</a>');
+          const anchorStart: number = htmlValue.substring(0, anchorEnd).lastIndexOf('>');
+          const name: string = htmlValue.substring(anchorStart + 1, anchorEnd);
+
+          normalizedResult[viewField].userValue = {
+            email: sipValue,
+            displayName: name
+          };
+
+        }
+
       }
-      normalizedResults.push(normalizedResult);
-    }
+
+      return normalizedResult;
+    });
+
+    //TODO: Remove
+    console.log("Normalized results", normalizedResults);
+
     return normalizedResults;
   }
 
