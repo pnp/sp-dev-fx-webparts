@@ -16,7 +16,7 @@
     "@microsoft/sp-lodash-subset": "1.11.0",
     "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "lodash": "^4.17.4",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
