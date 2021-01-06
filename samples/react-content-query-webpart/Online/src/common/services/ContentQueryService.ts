@@ -480,8 +480,8 @@ export class ContentQueryService implements IContentQueryService {
     let selectItemStr = "\n                    <span><button class='selectItem' data-itemId='{{ID.textValue}}'>Select</button></span>";
     let template = Text.format(`<style type="text/css">
       .dynamic-template h2 {
-        font-size: 24px;
-        font-weight: 300;
+        font-size: 20px;
+        font-weight: 600;
         color: "[theme:neutralPrimary, default:#323130]";
       }
 
