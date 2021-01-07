@@ -46,7 +46,7 @@
     "includeClientSideAssets": true,
       "developer": {
         "name": "PnP Community",
-        "mpnId": "",
+        "mpnId": "m365pnp",
         "privacyUrl": "",
         "termsOfUseUrl": "",
         "websiteUrl": ""

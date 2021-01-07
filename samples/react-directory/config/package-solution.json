@@ -6,7 +6,7 @@
       "privacyUrl": "https://contoso.com/privacy",
       "termsOfUseUrl": "https://contoso.com/terms-of-use",
       "websiteUrl": "https://contoso.com/my-app",
-      "mpnId": "000000"
+      "mpnId": "m365pnp"
     },
     "name": "Search Directory",
     "id": "5b62bc16-3a71-461d-be2f-16bfcb011e8a",

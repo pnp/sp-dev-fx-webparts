@@ -9,7 +9,7 @@
       "privacyUrl": "https://contoso.com/privacy",
       "termsOfUseUrl": "https://contoso.com/terms-of-use",
       "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rss-reader",
-      "mpnId": "000000"
+      "mpnId": "m365pnp"
     },
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
