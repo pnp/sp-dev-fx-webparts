@@ -31,7 +31,7 @@ import { IDynamicDataCallables } from '@microsoft/sp-dynamic-data';
 import { IDynamicItem } from '../../common/dataContracts/IDynamicItem';
 import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 
-import { Providers, SharePointProvider } from '@microsoft/mgt';
+//import { Providers, SharePointProvider, TemplateHelper } from '@microsoft/mgt';
 
 export default class ContentQueryWebPart
   extends BaseClientSideWebPart<IContentQueryWebPartProps>
@@ -114,9 +114,6 @@ export default class ContentQueryWebPart
       // Select a dummy item
       this.selectedItem = { webUrl: '', listId: '', itemId: -1 };
 
-      if (this.properties.enableMGT === undefined) {
-        this.properties.enableMGT = false;
-      }
 
       resolve();
     });
@@ -139,8 +136,22 @@ export default class ContentQueryWebPart
     };
 
     // Enable MGT support if provider isn't registered and we requested MGT support
-    if (this.properties.enableMGT && Providers.globalProvider === undefined) {
-      Providers.globalProvider = new SharePointProvider(this.context);
+    // if (this.properties.enableMGT && Providers.globalProvider === undefined) {
+    //   Providers.globalProvider = new SharePointProvider(this.context);
+    // }
+
+    if (this.properties.enableMGT)
+    {
+      const MGT:any = require('@microsoft/mgt');
+      if (MGT.Providers.globalProvider === undefined) {
+        MGT.Providers.globalProvider = new MGT.SharePointProvider(this.context);
+      }
+
+      // if (this.properties.enableMGT === undefined) {
+      //   this.properties.enableMGT = false;
+      // }
+      MGT.TemplateHelper.setBindingSyntax('[[', ']]');
+
     }
 
 
