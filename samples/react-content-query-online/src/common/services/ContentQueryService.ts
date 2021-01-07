@@ -16,6 +16,7 @@ import { SearchService } from './SearchService';
 import { PeoplePickerService } from './PeoplePickerService';
 import { TaxonomyService } from './TaxonomyService';
 import { INormalizedResult } from '../dataContracts/INormalizedResult';
+import { IPersonValue } from '../dataContracts/IPersonValue';
 
 export class ContentQueryService implements IContentQueryService {
 
@@ -610,25 +611,9 @@ export class ContentQueryService implements IContentQueryService {
           textValue: result.FieldValuesAsText[formattedName],
           htmlValue: htmlValue,
           rawValue: result[viewField] || result[viewField + 'Id'],
-          jsonValue: this.jsonParseField(result[viewField] || result[viewField + 'Id'])
+          jsonValue: this.jsonParseField(result[viewField] || result[viewField + 'Id']),
+          personValue: this.extractPersonInfo(htmlValue)
         };
-
-        // Try to extract the user email and name
-        const sipIndex = htmlValue.indexOf(`sip='`);
-        if (sipIndex > -1) {
-          // Get the email address
-          const sipValue = htmlValue.substring(sipIndex + 5, htmlValue.indexOf(`'`, sipIndex + 5));
-          const anchorEnd: number = htmlValue.lastIndexOf('</a>');
-          const anchorStart: number = htmlValue.substring(0, anchorEnd).lastIndexOf('>');
-          const name: string = htmlValue.substring(anchorStart + 1, anchorEnd);
-
-          normalizedResult[viewField].userValue = {
-            email: sipValue,
-            displayName: name
-          };
-
-        }
-
       }
 
       return normalizedResult;
@@ -655,6 +640,50 @@ export class ContentQueryService implements IContentQueryService {
       }
     }
     return value;
+  }
+
+  /**
+   * Returns user profile information based on a user field
+   * @param htmlValue : A string representation of the HTML field rendering
+   * This function does a very rudimentary extraction of user information based on very limited
+   * HTML parsing. We need to update this in the future to make it more sturdy.
+   */
+  private extractPersonInfo(htmlValue: string): IPersonValue {
+
+    try {
+      const sipIndex = htmlValue.indexOf(`sip='`);
+      if (sipIndex === -1) {
+        return null;
+      }
+      // Try to extract the user email and name
+
+      // Get the email address -- we should use RegExp for this, but I suck at RegExp
+      const sipValue = htmlValue.substring(sipIndex + 5, htmlValue.indexOf(`'`, sipIndex + 5));
+      const anchorEnd: number = htmlValue.lastIndexOf('</a>');
+      const anchorStart: number = htmlValue.substring(0, anchorEnd).lastIndexOf('>');
+      const name: string = htmlValue.substring(anchorStart + 1, anchorEnd);
+
+      // Generate picture URLs
+      const smallPictureUrl: string = `/_layouts/15/userphoto.aspx?size=S&username=${sipValue}`;
+      const medPictureUrl: string = `/_layouts/15/userphoto.aspx?size=M&username=${sipValue}`;
+      const largePictureUrl: string = `/_layouts/15/userphoto.aspx?size=L&username=${sipValue}`;
+
+
+      let result: IPersonValue = {
+        email: sipValue,
+        displayName: name,
+        picture: {
+          small: smallPictureUrl,
+          medium: medPictureUrl,
+          large: largePictureUrl
+        }
+      };
+      return result;
+
+    } catch (error) {
+
+      return null;
+    }
   }
 
 

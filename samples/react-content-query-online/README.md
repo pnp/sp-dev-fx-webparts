@@ -283,16 +283,19 @@ Property | Description
 `{{MyField.htmlValue}}` | Renders the HTML value of the field. For example, a *Link* field HTML value would render something like `<a href="...">My Link Field</a>`
 `{{MyField.rawValue}}`  | Returns the raw value of the field. For example, a *Taxonomy* field raw value would return an object which contains the term `wssId` and its label
 `{{MyField.jsonValue}}`  | Returns a JSON object value of the field. For example, an *Image* field JSON value would return a JSON object which contains the `serverRelativeUrl` property
+`{{MyField.personValue}}`  | Returns an object value of a person field. The `personValue` property provides `email`, `displayName` and `image` properties. The `image` property contains `small`, `medium`, and `large` properties, each of which pointing to the profile image URL for the small, medium, and large profile images.
+
 
 ##### Handlebars
 
 ```handlebars
 {{#each items}}
     <div class="item">
-        <p>MyUserField text value : {{MyUserField.textValue}}</p>
-        <p>MyUserField html value : {{MyUserField.htmlValue}}</p>
-        <p>MyUserField raw value : {{MyUserField.rawValue}}</p>
+        <p>MyField text value : {{MyField.textValue}}</p>
+        <p>MyField html value : {{MyField.htmlValue}}</p>
+        <p>MyField raw value : {{MyField.rawValue}}</p>
         <p>MyImageField JSON value : {{MyImageField.jsonValue}}</p>
+        <p>MyPersonField person value : {{MyPersonField.personValue}}</p>
     </div>
 {{/each}}
 ```
@@ -301,10 +304,11 @@ Property | Description
 
 ```html
 <div class="item">
-    <p>MyUserField text value : Simon-Pierre Plante</p>
-    <p>MyUserField html value : <a href="..." onclick="...">Simon-Pierre Plante</a></p>
-    <p>MyUserField raw value : 26</p>
+    <p>MyField text value : Simon-Pierre Plante</p>
+    <p>MyField html value : <a href="..." onclick="...">Simon-Pierre Plante</a></p>
+    <p>MyField raw value : 26</p>
     <p>MyImageField JSON value: [Object] </p>
+    <p>MyPersonField person value: [Object] </p>
 </div>
 ...
 ```
@@ -313,6 +317,12 @@ You can use `JSONValue` to parse complex fields -- such as image fields -- and d
 
 ```html
 <img src="{{MyImageField.jsonValue.serverRelativeUrl}}" />
+```
+
+For fields containing person values (e.g.: the `Author`, `Editor` fields and **Person or Group** fields), you can use the `personValue` property to retrieve values such as `email`, `displayName`, and `image.small`, `image.medium`, `image.large`.
+
+```html
+<img src="{{MyPersonField.personValue.image.small}}" />
 ```
 
 ### Including your own external scripts and/or block helpers
