@@ -414,4 +414,61 @@ ReactContentQuery.ExternalScripts.MyCustomBlockHelper = {
 }
 ```
 
+### Using Microsoft Graph Toolkit
+
+The Content Query Web Part provides support for [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) (MGT) integration to easily query the [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) within your handlebars templates.
+
+You can use any of the MGT components without additional steps, although the MGT integration was designed specifically with [Person](https://docs.microsoft.com/en-us/graph/toolkit/components/person), [People](https://docs.microsoft.com/en-us/graph/toolkit/components/people), and [Person card](https://docs.microsoft.com/en-us/graph/toolkit/components/person-card) components.
+
+#### Using MGT with a person field
+
+If you have a SharePoint list containing a user field (like a **Created By** or **Modified By** field) or a person field, you can pass the `email` property from field's the `personValue` to the MGT component's `person-query` attribute.
+
+For example, to use the `mgt-person` component with a person field called `MyPersonField`, you would use the following template:
+
+
+```handlebars
+<mgt-person person-query="{{MyPersonField.personValue.email}}" view="twoLines"></mgt-person>
+```
+
+#### Using MGT templates
+
+MGT supports the use of custom templates to modify the content of a components.
+
+According to [MGT documentation](https://docs.microsoft.com/en-us/graph/toolkit/customize-components/templates), the binding syntax to inject dynamic content in a template uses a block delimited by `{{` and `}}` -- which conflicts with the Handlebars binding syntax.
+
+In order to use a custom MGT template in your Handlebars template, use `[[` and `]]` instead of `{{` and `}}` to bind to the MGT context.
+
+For example, you would replace the following Handlebars template:
+
+```handlebars
+<mgt-person person-query="{{MyPersonField.personValue.email}}">
+  <template>
+    <div data-if="person.image">
+      <img src="{{ person.image }}" />
+    </div>
+    <div data-else>
+      {{ person.displayName }}
+    </div>
+  </template>
+</mgt-person>
+```
+
+With the following template:
+
+```handlebars
+<mgt-person person-query="{{MyPersonField.personValue.email}}">
+  <template>
+    <div data-if="person.image">
+      <img src="[[ person.image ]]" />
+    </div>
+    <div data-else>
+      [[ person.displayName ]]
+    </div>
+  </template>
+</mgt-person>
+```
+
+Note that, in the example above, the `person-query` attribute is still bound using the Handlebars syntax `person-query="{{MyPersonField.personValue.email}}"`, whereas the MGT template uses `[[ person.image ]]` and `[[ person.displayName ]]`.
+
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-web parts/samples/react-content-query-online" />

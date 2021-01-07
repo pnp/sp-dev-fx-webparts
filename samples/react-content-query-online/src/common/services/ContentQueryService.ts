@@ -90,16 +90,11 @@ export class ContentQueryService implements IContentQueryService {
       // Builds the CAML query based on the web part settings
       const query: string = CamlQueryHelper.generateCamlQuery(querySettings);
 
-      //TODO: Remove
-      console.log("Query", query);
-
       //Log.info(this.logSource, Text.format("Generated CAML query {0}...", query), this.context.serviceScope);
 
       // Queries the list with the generated CAML query
       this.listService.getListItemsByQuery(querySettings.webUrl, querySettings.listId, query)
         .then((data: any) => {
-          //TODO: Remove
-          console.log("List Service data", data);
           // Updates the template context with the normalized query results
           let normalizedResults = this.normalizeQueryResults(data.value, querySettings.viewFields);
           templateContext.items = normalizedResults;
@@ -298,8 +293,6 @@ export class ContentQueryService implements IContentQueryService {
     // Otherwise gets the options asynchronously
     return new Promise<IDropdownOption[]>((resolve, reject) => {
       this.listService.getListFields(webUrl, listId, ['InternalName', 'Title', 'Sortable'], 'Title').then((data: any) => {
-        //TODO: Remove
-        console.log("Fields", data);
         const sortableFields: any[] = data.value.filter((field) => { return field.Sortable == true; });
         let options: IDropdownOption[] = [{ key: "", text: strings.queryFilterPanelStrings.queryFilterStrings.fieldSelectLabel }];
         const orderByOptions: IDropdownOption[] = sortableFields.map((field) => { return { key: field.InternalName, text: Text.format("{0} \{\{{1}\}\}", field.Title, field.InternalName) }; });
@@ -589,10 +582,6 @@ export class ContentQueryService implements IContentQueryService {
   private normalizeQueryResults(results: any[], viewFields: string[]): INormalizedResult[] {
     //Log.verbose(this.logSource, "Normalizing results for the requested handlebars context...", this.context.serviceScope);
 
-    // TODO: Remove
-    console.log("Results", results);
-
-
     const normalizedResults: INormalizedResult[] = results.map((result) => {
       let normalizedResult: any = {};
       let formattedCharsRegex = /_x00(20|3a|[c-f]{1}[0-9a-f]{1})_/gi;
@@ -618,9 +607,6 @@ export class ContentQueryService implements IContentQueryService {
 
       return normalizedResult;
     });
-
-    //TODO: Remove
-    console.log("Normalized results", normalizedResults);
 
     return normalizedResults;
   }

@@ -135,25 +135,22 @@ export default class ContentQueryWebPart
       viewFields: this.properties.viewFields,
     };
 
-    // Enable MGT support if provider isn't registered and we requested MGT support
-    // if (this.properties.enableMGT && Providers.globalProvider === undefined) {
-    //   Providers.globalProvider = new SharePointProvider(this.context);
-    // }
-
+    // Enable MGT support only if required
     if (this.properties.enableMGT)
     {
+      // Add MGT dependencies
       const MGT:any = require('@microsoft/mgt');
+
+      // We only need to re-register the SharePoint provider if we didn't register it before
       if (MGT.Providers.globalProvider === undefined) {
+        // Register the SharePoint provider
         MGT.Providers.globalProvider = new MGT.SharePointProvider(this.context);
       }
 
-      // if (this.properties.enableMGT === undefined) {
-      //   this.properties.enableMGT = false;
-      // }
+      // Make sure that the custom binding syntax is enabled
+      // we do this because we don't want the standard MGT template binding ( {{ }} ) to interfere with handlebars syntax
       MGT.TemplateHelper.setBindingSyntax('[[', ']]');
-
     }
-
 
     const element: React.ReactElement<IContentQueryProps> = React.createElement(ContentQuery,
       {
