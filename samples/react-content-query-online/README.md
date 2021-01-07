@@ -2,7 +2,7 @@
 
 ## Summary
 
-> **NOTE:** This web part was built with SPFx 1.10.0, making it only compatible with SharePoint Online. If you wish, you can use [an earlier version of this web part](../OnPrem/README.md) which is compatible on-premises versions of SharePoint.
+> **NOTE:** This web part was built with SPFx 1.11.0, making it only compatible with SharePoint Online. If you wish, you can use [an earlier version of this web part](../react-content-query-onprem/README.md) which is compatible on-premises versions of SharePoint.
 
 The **Content Query web part** is a modern version of the good old **Content by Query web part** that was introduced in SharePoint 2007. Built for Office 365, this modern version is built using the **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices. 
 
@@ -10,9 +10,17 @@ While the original web part was based on an **XSLT** templating engine, this *Re
 
 ![Web Part Preview](assets/toolpart.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![1.11.0](https://img.shields.io/badge/drop-1.11.0-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/spfx-1.11.0-green.svg)
+
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
+
+![Teams N/A](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg)
+
+![Workbench Hosted](https://img.shields.io/badge/Workbench-Hosted-yellow.svg)
 
 ## Applies to
 
@@ -28,6 +36,7 @@ react-content-query-web part (Online)|Hugo Bernier ([Tahoe Ninjas](http://tahoen
 react-content-query-web part (Online)|Paolo Pialorsi ([PiaSys.com](https://piasys.com/), [@PaoloPia](https://twitter.com/PaoloPia?s=20))
 react-content-query-web part |Simon-Pierre Plante
 react-content-query-web part (Online)|Abderahman Moujahid
+
 ## Version history
 
 Version|Date|Comments
@@ -48,6 +57,7 @@ Version|Date|Comments
 1.0.14|October 30, 2020|Fixed (lookup-)fields with special characters
 1.0.15|November 2, 2020|Upgraded to SPFx 1.11; Added support for jsonValue
 1.0.16|November 14, 2020|Fixed a bug where the fieldname starts with a special character; Added more special characters
+1.1.0|January 5, 2021|Updated dependencies and added MGT support
 
 ## Disclaimer
 
@@ -273,16 +283,19 @@ Property | Description
 `{{MyField.htmlValue}}` | Renders the HTML value of the field. For example, a *Link* field HTML value would render something like `<a href="...">My Link Field</a>`
 `{{MyField.rawValue}}`  | Returns the raw value of the field. For example, a *Taxonomy* field raw value would return an object which contains the term `wssId` and its label
 `{{MyField.jsonValue}}`  | Returns a JSON object value of the field. For example, an *Image* field JSON value would return a JSON object which contains the `serverRelativeUrl` property
+`{{MyField.personValue}}`  | Returns an object value of a person field. The `personValue` property provides `email`, `displayName` and `image` properties. The `image` property contains `small`, `medium`, and `large` properties, each of which pointing to the profile image URL for the small, medium, and large profile images.
+
 
 ##### Handlebars
 
 ```handlebars
 {{#each items}}
     <div class="item">
-        <p>MyUserField text value : {{MyUserField.textValue}}</p>
-        <p>MyUserField html value : {{MyUserField.htmlValue}}</p>
-        <p>MyUserField raw value : {{MyUserField.rawValue}}</p>
+        <p>MyField text value : {{MyField.textValue}}</p>
+        <p>MyField html value : {{MyField.htmlValue}}</p>
+        <p>MyField raw value : {{MyField.rawValue}}</p>
         <p>MyImageField JSON value : {{MyImageField.jsonValue}}</p>
+        <p>MyPersonField person value : {{MyPersonField.personValue}}</p>
     </div>
 {{/each}}
 ```
@@ -291,10 +304,11 @@ Property | Description
 
 ```html
 <div class="item">
-    <p>MyUserField text value : Simon-Pierre Plante</p>
-    <p>MyUserField html value : <a href="..." onclick="...">Simon-Pierre Plante</a></p>
-    <p>MyUserField raw value : 26</p>
+    <p>MyField text value : Simon-Pierre Plante</p>
+    <p>MyField html value : <a href="..." onclick="...">Simon-Pierre Plante</a></p>
+    <p>MyField raw value : 26</p>
     <p>MyImageField JSON value: [Object] </p>
+    <p>MyPersonField person value: [Object] </p>
 </div>
 ...
 ```
@@ -303,6 +317,12 @@ You can use `JSONValue` to parse complex fields -- such as image fields -- and d
 
 ```html
 <img src="{{MyImageField.jsonValue.serverRelativeUrl}}" />
+```
+
+For fields containing person values (e.g.: the `Author`, `Editor` fields and **Person or Group** fields), you can use the `personValue` property to retrieve values such as `email`, `displayName`, and `image.small`, `image.medium`, `image.large`.
+
+```html
+<img src="{{MyPersonField.personValue.image.small}}" />
 ```
 
 ### Including your own external scripts and/or block helpers
@@ -394,4 +414,61 @@ ReactContentQuery.ExternalScripts.MyCustomBlockHelper = {
 }
 ```
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-web parts/samples/react-content-query-web part/online" />
+### Using Microsoft Graph Toolkit
+
+The Content Query Web Part provides support for [Microsoft Graph Toolkit](https://docs.microsoft.com/en-us/graph/toolkit/overview) (MGT) integration to easily query the [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) within your handlebars templates.
+
+You can use any of the MGT components without additional steps, although the MGT integration was designed specifically with [Person](https://docs.microsoft.com/en-us/graph/toolkit/components/person), [People](https://docs.microsoft.com/en-us/graph/toolkit/components/people), and [Person card](https://docs.microsoft.com/en-us/graph/toolkit/components/person-card) components.
+
+#### Using MGT with a person field
+
+If you have a SharePoint list containing a user field (like a **Created By** or **Modified By** field) or a person field, you can pass the `email` property from field's the `personValue` to the MGT component's `person-query` attribute.
+
+For example, to use the `mgt-person` component with a person field called `MyPersonField`, you would use the following template:
+
+
+```handlebars
+<mgt-person person-query="{{MyPersonField.personValue.email}}" view="twoLines"></mgt-person>
+```
+
+#### Using MGT templates
+
+MGT supports the use of custom templates to modify the content of a components.
+
+According to [MGT documentation](https://docs.microsoft.com/en-us/graph/toolkit/customize-components/templates), the binding syntax to inject dynamic content in a template uses a block delimited by `{{` and `}}` -- which conflicts with the Handlebars binding syntax.
+
+In order to use a custom MGT template in your Handlebars template, use `[[` and `]]` instead of `{{` and `}}` to bind to the MGT context.
+
+For example, you would replace the following Handlebars template:
+
+```handlebars
+<mgt-person person-query="{{MyPersonField.personValue.email}}">
+  <template>
+    <div data-if="person.image">
+      <img src="{{ person.image }}" />
+    </div>
+    <div data-else>
+      {{ person.displayName }}
+    </div>
+  </template>
+</mgt-person>
+```
+
+With the following template:
+
+```handlebars
+<mgt-person person-query="{{MyPersonField.personValue.email}}">
+  <template>
+    <div data-if="person.image">
+      <img src="[[ person.image ]]" />
+    </div>
+    <div data-else>
+      [[ person.displayName ]]
+    </div>
+  </template>
+</mgt-person>
+```
+
+Note that, in the example above, the `person-query` attribute is still bound using the Handlebars syntax `person-query="{{MyPersonField.personValue.email}}"`, whereas the MGT template uses `[[ person.image ]]` and `[[ person.displayName ]]`.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-web parts/samples/react-content-query-online" />

@@ -19,7 +19,8 @@
     },
     "officeFabricIconFontName": "QueryList",
     "properties": {
-      "description": "Content Query"
+      "description": "Content Query",
+      "enableMGT": false
     }
   }]
 }

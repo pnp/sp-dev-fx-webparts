@@ -17,7 +17,7 @@ extensions:
 
 ## Summary
 
-> NOTE: This web part was built with an earlier version of SPFx which is compatible with on-premises versions of SharePoint. If you wish, you can use the [newer version of this web part](../Online/README.md) which is compatible with SharePoint Online only.
+> NOTE: This web part was built with an earlier version of SPFx which is compatible with on-premises versions of SharePoint. If you wish, you can use the [newer version of this web part](../react-content-query-online/README.md) which is compatible with SharePoint Online only.
 
 The `React Content Query WebPart` is a modern version of the good old `Content by Query WebPart` that was introduced in SharePoint 2007. Built for *SharePoint 2016* and *Office 365*, this modern version is built against the new **SharePoint Framework (SPFx)** and uses the latest *Web Stack* practices. While the original WebPart was based on a `XSLT` templating engine, this *React* WebPart is based on the well known [Handlebars templating engine](http://handlebarsjs.com), which empowers users to create simple, yet powerfull `HTML` templates for rendering the queried content. This new version also lets the user query `any site collections` which resides on the same domain url, add `unlimited filters`, query *DateTime* fields to the `nearest minute` rather than being limited to a day, and much more.
 
