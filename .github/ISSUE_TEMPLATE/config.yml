@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: Start a discussion
-    about: Start a friendly conversation with the other members of the community about the samples in this repository.
+    about: 🗨 Start a friendly conversation with the other members of the community about the samples in this repository.
     url: https://github.com/pnp/sp-dev-fx-webparts/discussions
   - name: SharePoint Developer Documentation
     url: https://github.com/SharePoint/sp-dev-docs/issues/new
