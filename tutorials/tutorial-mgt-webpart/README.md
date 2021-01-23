@@ -12,9 +12,11 @@ ms.custom: scenarios:getting-started
 This topic covers how to use Microsoft Graph Toolkit components in a SharePoint client-side web part.
 
 > [!NOTE]
-> Before following the steps in this article, be sure to [Set up your development environment](../../set-up-your-development-environment.md).
+> Before following the steps in this article, be sure to [Set up your development environment](https://github.com/SharePoint/sp-dev-docs/blob/master/docs/spfx/set-up-your-development-environment.md).
 
 You can also follow these steps by watching this video on the SharePoint PnP YouTube Channel:
+
+> [!Video https://www.youtube.com/embed/-2-jWsEa2Yw]
 
 ## Create a new web part project
 
