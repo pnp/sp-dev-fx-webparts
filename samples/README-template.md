@@ -55,7 +55,7 @@ Short summary on functionality and used technologies.
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 > Update accordingly as needed.
 > DELETE THIS PARAGRAPH BEFORE SUBMITTING
