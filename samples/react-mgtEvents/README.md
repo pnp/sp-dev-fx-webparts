@@ -1,13 +1,21 @@
 # React-mgtEvents 
 
 ## Summary
+
 This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls
 
 ## ScreenShots
+
  ![mgtEvents](./assets/mhtEvents.JPG)
  
-## Used SharePoint Framework Version 
-![SPFx 1.11.0](https://img.shields.io/badge/spfx-1.11.0-green.svg)
+## Compatibility
+
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams Personal App | Tab](https://img.shields.io/badge/Teams-Personal%20App%20%7C%20Tab-green.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
 
 ## Applies to
 
@@ -29,6 +37,7 @@ Version|Date|Comments
 1.0|November 29, 2020|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
