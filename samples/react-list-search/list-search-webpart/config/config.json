@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "list-search-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/listSearch/ListSearchWebPart.js",
+          "manifest": "./src/webparts/listSearch/ListSearchWebPart.manifest.json"
+        }
+      ]
+    },
+    "list-search-consumer-web-part-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/listSearchConsumerWebPart/ListSearchConsumerWebPartWebPart.js",
+          "manifest": "./src/webparts/listSearchConsumerWebPart/ListSearchConsumerWebPartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ListSearchWebPartStrings": "lib/webparts/listSearch/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "ListSearchConsumerWebPartWebPartStrings": "lib/webparts/listSearchConsumerWebPart/loc/{locale}.js"
+  }
+}

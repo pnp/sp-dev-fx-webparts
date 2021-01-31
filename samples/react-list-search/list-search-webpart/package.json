@@ -1,0 +1,61 @@
+{
+  "name": "list-search-webpart",
+  "version": "1.0.0",
+  "private": true,
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "gulp test",
+    "alldebug": "gulp clean && gulp build && gulp bundle && gulp serve",
+    "allpackage": "gulp clean && gulp build --ship && gulp bundle --ship && gulp package-solution --ship",
+    "serve": "cross-env NODE_OPTIONS=--max_old_space_size=4096 gulp bundle --custom-serve && cross-env NODE_OPTIONS=--max_old_space_size=4096 webpack-dev-server --mode development --config ./webpack.js --env.env=dev",
+    "publish-please": "publish-please",
+    "prepublishOnly": "publish-please guard"
+  },
+  "dependencies": {
+    "@microsoft/sp-core-library": "1.11.0",
+    "@microsoft/sp-lodash-subset": "1.11.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.11.0",
+    "@microsoft/sp-property-pane": "1.11.0",
+    "@microsoft/sp-webpart-base": "1.11.0",
+    "@pnp/sp": "2.0.8",
+    "@pnp/spfx-controls-react": "1.19.0",
+    "@pnp/spfx-property-controls": "1.19.0",
+    "react-js-pagination": "3.0.3",
+    "react-xml-parser": "1.1.6",
+    "react": "16.8.5",
+    "react-dom": "16.8.5",
+    "office-ui-fabric-react": "7.155.3"
+  },
+  "devDependencies": {
+    "@microsoft/sp-build-web": "1.11.0",
+    "@microsoft/sp-tslint-rules": "1.11.0",
+    "@microsoft/sp-module-interfaces": "1.11.0",
+    "@microsoft/sp-webpart-workbench": "1.11.0",
+    "@microsoft/rush-stack-compiler-3.3": "0.3.5",
+    "gulp": "~3.9.1",
+    "@types/chai": "3.4.34",
+    "@types/mocha": "2.2.38",
+    "ajv": "~5.2.2",
+    "@types/webpack-env": "1.13.1",
+    "@types/es6-promise": "0.0.33",
+    "css-loader": "3.4.2",
+    "css-modules-typescript-loader": "4.0.0",
+    "fork-ts-checker-webpack-plugin": "4.1.0",
+    "node-sass": "4.13.1",
+    "sass-loader": "8.0.2",
+    "style-loader": "1.1.3",
+    "ts-loader": "6.2.1",
+    "webpack": "4.42.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3",
+    "del": "5.1.0",
+    "cross-env": "7.0.2",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.3"
+  }
+}

@@ -1,0 +1,34 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.listSearchConsumerWebPart {
+  margin: 5px;
+  background-color: $ms-color-themePrimary;
+  color: $ms-color-white;
+  @include ms-Grid;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  .row {
+    @include ms-Grid-row;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg12;
+    @include ms-sm12;
+  }
+
+  .title {
+    @include ms-font-xl;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+  }
+
+  .description {
+    @include ms-font-l;
+  }
+
+  .value {
+    @include ms-font-m;
+  }
+}
