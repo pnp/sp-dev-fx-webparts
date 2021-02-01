@@ -2,7 +2,7 @@
 
 ## Summary
 
-- This sample is based on [Erik Benke] and [Mike Zimmerman] (Accordion Section FAQ Builder web part. I has extended it support single FAQs list based on Category and dynamic properties selection.
+- This sample is based on [Erik Benke](https://github.com/ejbenke) and [Mike Zimmerman](https://github.com/mikezimm)'s [Accordion Section FAQ Builder web part](https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-section). It adds extended support for single FAQs list based on Category and dynamic properties selection.
 - Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab.
 - Ideal for displaying FAQs.
 - When adding the web part, you'll be prompted to select a list from a property panel dropdown (target list must be created with FAQ type Question and Answer.).
