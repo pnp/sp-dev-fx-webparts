@@ -1,0 +1,68 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/pnp/samples/v1.0/metadata-schema.json",
+    "name": "pnp-sp-dev-spfx-web-parts-react-accordion-dynamic-section",
+    "version": "1.4.2.0",
+    "source": "pnp",
+    "title": "Dynamic Accordion - FAQ Builder", 
+    "shortDescription": "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection.",
+    "longDescription": 
+      [
+        "This sample is based on Erik Benke and Mike Zimmerman's Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection.",
+        "Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab.",
+        "Ideal for displaying FAQs.",
+        "When adding the web part, you'll be prompted to select a list from a property panel dropdown (target list must be created with FAQ type Question and Answer.).",
+        "The web part expects a column called Category of type choice that will be used as the category.",
+        "The web part will automatically load all the properties in two dropdowns. One for Accordion Title and One for Accordion Content that must be html type.",
+        "This will generate an accordion with one section for each item in the list.",
+        "Modifications/deletions/additions to the list items in the target list of an added web part are automatically reflected on the page."
+      ],
+    "products": [
+      "Microsoft Teams", "SharePoint", "Office"
+    ],
+    "categories": [
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value":"React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value":"1.10"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif",
+        "alt": "Alt text for the image"
+      },
+      {
+        "type": "slideshow",
+        "order": 102,
+        "alt": "Alt text for the image",
+        "slides": [
+          { "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-dynamic-section/assets/FAQsList.png","order": 10, "alt": "The FAQ list, showing the category column"},
+          { "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-dynamic-section/assets/AccordionSettings1.png","order": 20, "alt": "The web part before being configured"},
+          { "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-dynamic-section/assets/AccordionSettings2.png","order": 30, "alt": "An illustration showing the relation between the configuration settings and the web part results"}
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ejbenke",
+        "company": "Clackamas County",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/5017358?s=460&u=789d537eb1e89ce82b36604fa7ff48cc40fcd5a2&v=4"
+      },      
+      {
+        "gitHubAccount": "mikezimm",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/49648086?s=460&v=4"
+      },
+      {
+        "gitHubAccount": "jyasir",
+        "company": "DXC Technology",
+        "pictureUrl": "https://pbs.twimg.com/profile_images/1145701162190082050/pbgFe-BJ_400x400.png"
+      }
+    ] 
+}

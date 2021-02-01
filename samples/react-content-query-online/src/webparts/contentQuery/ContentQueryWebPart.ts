@@ -1,35 +1,37 @@
-import * as React                                                                   from 'react';
-import * as ReactDom                                                                from 'react-dom';
-import * as strings                                                                 from 'contentQueryStrings';
-import { Version, Text, Log }                                                       from '@microsoft/sp-core-library';
-import { BaseClientSideWebPart }                                                    from "@microsoft/sp-webpart-base";
-import { IPropertyPaneConfiguration, IPropertyPaneField }                           from "@microsoft/sp-property-pane";
-import { IPropertyPaneTextFieldProps, PropertyPaneTextField }                       from "@microsoft/sp-property-pane";
-import { IPropertyPaneChoiceGroupProps, PropertyPaneChoiceGroup }                   from "@microsoft/sp-property-pane";
-import {  }                                                                         from "@microsoft/sp-webpart-base";
-import { IPropertyPaneToggleProps, PropertyPaneToggle }                             from "@microsoft/sp-property-pane";
-import { IPropertyPaneLabelProps, PropertyPaneLabel }                               from "@microsoft/sp-property-pane";
-import { IPropertyPaneButtonProps, PropertyPaneButton, PropertyPaneButtonType }     from "@microsoft/sp-property-pane";
-import { update, get, isEmpty }                                                     from '@microsoft/sp-lodash-subset';
-import { IDropdownOption, IPersonaProps, ITag }                                     from 'office-ui-fabric-react';
-import ContentQuery                                                                 from './components/ContentQuery';
-import { IContentQueryProps }                                                       from './components/IContentQueryProps';
-import { IQuerySettings }                                                           from './components/IQuerySettings';
-import { IContentQueryTemplateContext }                                             from './components/IContentQueryTemplateContext';
-import { IContentQueryWebPartProps }                                                from './IContentQueryWebPartProps';
-import { PropertyPaneAsyncDropdown }                                                from '../../controls/PropertyPaneAsyncDropdown/PropertyPaneAsyncDropdown';
-import { PropertyPaneQueryFilterPanel }                                             from '../../controls/PropertyPaneQueryFilterPanel/PropertyPaneQueryFilterPanel';
-import { PropertyPaneAsyncChecklist }                                               from '../../controls/PropertyPaneAsyncChecklist/PropertyPaneAsyncChecklist';
-import { PropertyPaneTextDialog }                                                   from '../../controls/PropertyPaneTextDialog/PropertyPaneTextDialog';
-import { IQueryFilterField }                                                        from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilterField';
-import { IChecklistItem }                                                           from '../../controls/PropertyPaneAsyncChecklist/components/AsyncChecklist/IChecklistItem';
-import { ContentQueryService }                                                      from '../../common/services/ContentQueryService';
-import { IContentQueryService }                                                     from '../../common/services/IContentQueryService';
-import { ContentQueryConstants }                                                    from '../../common/constants/ContentQueryConstants';
-import { IDynamicDataPropertyDefinition }                                           from '@microsoft/sp-dynamic-data';
-import { IDynamicDataCallables }                                                    from '@microsoft/sp-dynamic-data';
-import { IDynamicItem }                                                             from '../../common/dataContracts/IDynamicItem';
-import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme }                     from '@microsoft/sp-component-base';
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
+import * as strings from 'contentQueryStrings';
+import { Version, Text, Log } from '@microsoft/sp-core-library';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, IPropertyPaneField } from "@microsoft/sp-property-pane";
+import { IPropertyPaneTextFieldProps, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import { IPropertyPaneChoiceGroupProps, PropertyPaneChoiceGroup } from "@microsoft/sp-property-pane";
+import { } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneToggleProps, PropertyPaneToggle } from "@microsoft/sp-property-pane";
+import { IPropertyPaneLabelProps, PropertyPaneLabel } from "@microsoft/sp-property-pane";
+import { IPropertyPaneButtonProps, PropertyPaneButton, PropertyPaneButtonType } from "@microsoft/sp-property-pane";
+import { update, get, isEmpty } from '@microsoft/sp-lodash-subset';
+import { IDropdownOption, IPersonaProps, ITag } from 'office-ui-fabric-react';
+import ContentQuery from './components/ContentQuery';
+import { IContentQueryProps } from './components/IContentQueryProps';
+import { IQuerySettings } from './components/IQuerySettings';
+import { IContentQueryTemplateContext } from './components/IContentQueryTemplateContext';
+import { IContentQueryWebPartProps } from './IContentQueryWebPartProps';
+import { PropertyPaneAsyncDropdown } from '../../controls/PropertyPaneAsyncDropdown/PropertyPaneAsyncDropdown';
+import { PropertyPaneQueryFilterPanel } from '../../controls/PropertyPaneQueryFilterPanel/PropertyPaneQueryFilterPanel';
+import { PropertyPaneAsyncChecklist } from '../../controls/PropertyPaneAsyncChecklist/PropertyPaneAsyncChecklist';
+import { PropertyPaneTextDialog } from '../../controls/PropertyPaneTextDialog/PropertyPaneTextDialog';
+import { IQueryFilterField } from '../../controls/PropertyPaneQueryFilterPanel/components/QueryFilter/IQueryFilterField';
+import { IChecklistItem } from '../../controls/PropertyPaneAsyncChecklist/components/AsyncChecklist/IChecklistItem';
+import { ContentQueryService } from '../../common/services/ContentQueryService';
+import { IContentQueryService } from '../../common/services/IContentQueryService';
+import { ContentQueryConstants } from '../../common/constants/ContentQueryConstants';
+import { IDynamicDataPropertyDefinition } from '@microsoft/sp-dynamic-data';
+import { IDynamicDataCallables } from '@microsoft/sp-dynamic-data';
+import { IDynamicItem } from '../../common/dataContracts/IDynamicItem';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
+
+//import { Providers, SharePointProvider, TemplateHelper } from '@microsoft/mgt';
 
 export default class ContentQueryWebPart
   extends BaseClientSideWebPart<IContentQueryWebPartProps>
@@ -95,7 +97,7 @@ export default class ContentQueryWebPart
     // Register a handler to be notified if the theme variant changes
     this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
 
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<void>((resolve, _reject) => {
       this.ContentQueryService = new ContentQueryService(this.context, this.context.spHttpClient);
       this.properties.webUrl = this.properties.siteUrl || this.properties.webUrl ? this.properties.webUrl : this.context.pageContext.web.absoluteUrl.toLocaleLowerCase().trim();
       this.properties.siteUrl = this.properties.siteUrl ? this.properties.siteUrl : this.context.pageContext.site.absoluteUrl.toLowerCase().trim();
@@ -111,6 +113,7 @@ export default class ContentQueryWebPart
 
       // Select a dummy item
       this.selectedItem = { webUrl: '', listId: '', itemId: -1 };
+
 
       resolve();
     });
@@ -131,6 +134,23 @@ export default class ContentQueryWebPart
       filters: this.properties.filters,
       viewFields: this.properties.viewFields,
     };
+
+    // Enable MGT support only if required
+    if (this.properties.enableMGT)
+    {
+      // Add MGT dependencies
+      const MGT:any = require('@microsoft/mgt');
+
+      // We only need to re-register the SharePoint provider if we didn't register it before
+      if (MGT.Providers.globalProvider === undefined) {
+        // Register the SharePoint provider
+        MGT.Providers.globalProvider = new MGT.SharePointProvider(this.context);
+      }
+
+      // Make sure that the custom binding syntax is enabled
+      // we do this because we don't want the standard MGT template binding ( {{ }} ) to interfere with handlebars syntax
+      MGT.TemplateHelper.setBindingSyntax('[[', ']]');
+    }
 
     const element: React.ReactElement<IContentQueryProps> = React.createElement(ContentQuery,
       {
@@ -303,7 +323,7 @@ export default class ContentQueryWebPart
             {
               groupName: strings.SourceGroupName,
               groupFields: [
-                PropertyPaneLabel(ContentQueryConstants.propertySiteUrl,{
+                PropertyPaneLabel(ContentQueryConstants.propertySiteUrl, {
                   text: strings.SourcePageDescription
                 }),
                 this.siteUrlDropdown,
@@ -311,15 +331,10 @@ export default class ContentQueryWebPart
                 this.listTitleDropdown
               ]
             },
-        //   ]
-        // },
-        // {
-        //   header: { description: strings.QueryPageDescription },
-        //   groups: [
             {
               groupName: strings.QueryGroupName,
               groupFields: [
-                PropertyPaneLabel(ContentQueryConstants.propertyOrderBy,{
+                PropertyPaneLabel(ContentQueryConstants.propertyOrderBy, {
                   text: strings.QueryPageDescription
                 }),
                 this.orderByDropdown,
@@ -330,15 +345,10 @@ export default class ContentQueryWebPart
                 this.filtersPanel
               ]
             },
-        //   ]
-        // },
-        // {
-        //   header: { description: strings.DisplayPageDescription },
-        //   groups: [
             {
               groupName: strings.DisplayGroupName,
               groupFields: [
-                PropertyPaneLabel(ContentQueryConstants.propertyViewFields,{
+                PropertyPaneLabel(ContentQueryConstants.propertyViewFields, {
                   text: strings.DisplayPageDescription
                 }),
                 this.viewFieldsChecklist,
@@ -348,18 +358,19 @@ export default class ContentQueryWebPart
                 this.templateUrlTextField
               ]
             },
-        //   ]
-        // },
-        // {
-        //   header: { description: strings.ExternalPageDescription },
-        //   groups: [
             {
               groupName: strings.ExternalGroupName,
               groupFields: [
-                PropertyPaneLabel(ContentQueryConstants.propertyExternalScripts,{
+                PropertyPaneLabel(ContentQueryConstants.propertyExternalScripts, {
                   text: strings.ExternalPageDescription
                 }),
-                this.externalScripts
+                this.externalScripts,
+                PropertyPaneToggle("enableMGT", {
+                  label: "Microsoft Graph Toolkit support",
+                  checked: this.properties.enableMGT,
+                  offText: "Disabled",
+                  onText: "Enabled"
+                })
               ]
             }
           ]
@@ -422,14 +433,14 @@ export default class ContentQueryWebPart
   /***************************************************************************
    * Loads the HandleBars template from the specified url
    ***************************************************************************/
-  private loadTemplate(templateUrl:string): Promise<string> {
+  private loadTemplate(templateUrl: string): Promise<string> {
     return this.ContentQueryService.getFileContent(templateUrl);
   }
 
   /***************************************************************************
    * Loads the HandleBars context based on the specified query
    ***************************************************************************/
-  private loadTemplateContext(querySettings:IQuerySettings, callTimeStamp: number): Promise<IContentQueryTemplateContext> {
+  private loadTemplateContext(querySettings: IQuerySettings, callTimeStamp: number): Promise<IContentQueryTemplateContext> {
     return this.ContentQueryService.getTemplateContext(querySettings, callTimeStamp);
   }
 
@@ -464,14 +475,14 @@ export default class ContentQueryWebPart
   /***************************************************************************
    * Loads the dropdown options for the listTitle property
    ***************************************************************************/
-  private loadFilterFields():Promise<IQueryFilterField[]> {
+  private loadFilterFields(): Promise<IQueryFilterField[]> {
     return this.ContentQueryService.getFilterFields(this.properties.webUrl, this.properties.listId);
   }
 
   /***************************************************************************
    * Loads the checklist items for the viewFields property
    ***************************************************************************/
-  private loadViewFieldsChecklistItems():Promise<IChecklistItem[]> {
+  private loadViewFieldsChecklistItems(): Promise<IChecklistItem[]> {
     return this.ContentQueryService.getViewFieldsChecklistItems(this.properties.webUrl, this.properties.listId);
   }
 
@@ -481,7 +492,7 @@ export default class ContentQueryWebPart
    * @param currentPersonas : The IPersonaProps already selected in the people picker
    * @param limitResults : The results limit if any
    ***************************************************************************/
-  private loadPeoplePickerSuggestions(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number):Promise<IPersonaProps[]> {
+  private loadPeoplePickerSuggestions(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): Promise<IPersonaProps[]> {
     return this.ContentQueryService.getPeoplePickerSuggestions(this.properties.webUrl, filterText, currentPersonas, limitResults);
   }
 
@@ -492,7 +503,7 @@ export default class ContentQueryWebPart
    * @param currentPersonas : The IPersonaProps already selected in the people picker
    * @param limitResults : The results limit if any
    ***************************************************************************/
-  private loadTaxonomyPickerSuggestions(field: IQueryFilterField, filterText: string, currentTerms: ITag[]):Promise<ITag[]> {
+  private loadTaxonomyPickerSuggestions(field: IQueryFilterField, filterText: string, currentTerms: ITag[]): Promise<ITag[]> {
     return this.ContentQueryService.getTaxonomyPickerSuggestions(this.properties.webUrl, this.properties.listId, field, filterText, currentTerms);
   }
 
@@ -512,7 +523,7 @@ export default class ContentQueryWebPart
     this.resetDependentPropertyPanes(propertyPath);
 
     // If the viewfields have changed, update the default template text if it hasn't been altered by the user
-    if(propertyPath == ContentQueryConstants.propertyViewFields && !this.properties.hasDefaultTemplateBeenUpdated) {
+    if (propertyPath == ContentQueryConstants.propertyViewFields && !this.properties.hasDefaultTemplateBeenUpdated) {
       let generatedTemplate = this.ContentQueryService.generateDefaultTemplate(newValue, this.properties.itemSelectorEnabled);
       update(this.properties, ContentQueryConstants.propertyTemplateText, (): any => { return generatedTemplate; });
       this.templateTextDialog.properties.dialogTextFieldValue = generatedTemplate;
@@ -520,7 +531,7 @@ export default class ContentQueryWebPart
     }
 
     // If the templateText have changed, update the "hasDefaultTemplateBeenUpdated" to true so the WebPart doesn't override the user template after updating view fields
-    if(propertyPath == ContentQueryConstants.propertyTemplateText && !this.properties.hasDefaultTemplateBeenUpdated) {
+    if (propertyPath == ContentQueryConstants.propertyTemplateText && !this.properties.hasDefaultTemplateBeenUpdated) {
       update(this.properties, ContentQueryConstants.propertyhasDefaultTemplateBeenUpdated, (): any => { return true; });
     }
 
@@ -529,7 +540,7 @@ export default class ContentQueryWebPart
     if (!this.disableReactivePropertyChanges)
       this.render();
 
-    if(rerenderTemplateTextDialog) {
+    if (rerenderTemplateTextDialog) {
       this.templateTextDialog.render();
     }
   }
@@ -543,21 +554,21 @@ export default class ContentQueryWebPart
     return new Promise<string>((resolve, reject) => {
 
       // Doesn't raise any error if file is empty (otherwise error message will show on initial load...)
-      if(isEmpty(value)) {
+      if (isEmpty(value)) {
         resolve('');
       }
       // Resolves an error if the file isn't a valid .htm or .html file
-      else if(!this.ContentQueryService.isValidTemplateFile(value)) {
+      else if (!this.ContentQueryService.isValidTemplateFile(value)) {
         resolve(strings.ErrorTemplateExtension);
       }
       // Resolves an error if the file doesn't answer a simple head request
       else {
-        this.ContentQueryService.ensureFileResolves(value).then((isFileResolving:boolean) => {
+        this.ContentQueryService.ensureFileResolves(value).then((isFileResolving: boolean) => {
           resolve('');
         })
-        .catch((error) => {
-          resolve(Text.format(strings.ErrorTemplateResolve, error));
-        });
+          .catch((error) => {
+            resolve(Text.format(strings.ErrorTemplateResolve, error));
+          });
       }
     });
   }
@@ -581,14 +592,14 @@ export default class ContentQueryWebPart
    * Resets dependent property panes if needed
    ***************************************************************************/
   private resetDependentPropertyPanes(propertyPath: string): void {
-    if(propertyPath == ContentQueryConstants.propertySiteUrl) {
+    if (propertyPath == ContentQueryConstants.propertySiteUrl) {
       this.resetWebUrlPropertyPane();
       this.resetListTitlePropertyPane();
       this.resetOrderByPropertyPane();
       this.resetFiltersPropertyPane();
       this.resetViewFieldsPropertyPane();
     }
-    else if(propertyPath == ContentQueryConstants.propertyWebUrl) {
+    else if (propertyPath == ContentQueryConstants.propertyWebUrl) {
       this.resetListTitlePropertyPane();
       this.resetOrderByPropertyPane();
       this.resetFiltersPropertyPane();

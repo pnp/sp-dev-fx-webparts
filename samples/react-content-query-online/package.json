@@ -1,6 +1,6 @@
 {
   "name": "react-content-query-webpart",
-  "version": "1.0.16",
+  "version": "1.1.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -12,13 +12,14 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "@microsoft/mgt": "^2.0.1",
     "@microsoft/sp-core-library": "1.11.0",
     "@microsoft/sp-lodash-subset": "1.11.0",
     "@microsoft/sp-office-ui-fabric-core": "1.11.0",
     "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
-    "@pnp/spfx-controls-react": "^1.17.0",
-    "@pnp/spfx-property-controls": "^1.17.0",
+    "@pnp/spfx-controls-react": "^2.3.0",
+    "@pnp/spfx-property-controls": "2.2.0",
     "@types/handlebars": "4.0.32",
     "acorn": ">=5.7.4",
     "atob": ">=2.1.0",
@@ -33,7 +34,7 @@
     "fstream": ">=1.0.12",
     "growl": ">=1.10.0",
     "handlebars": "^4.0.6",
-    "handlebars-helpers": "^0.8.2",
+    "handlebars-helpers": "^0.8.4",
     "hoek": ">=4.2.1",
     "is-my-json-valid": ">=2.17.2",
     "js-yaml": ">=3.13.1",

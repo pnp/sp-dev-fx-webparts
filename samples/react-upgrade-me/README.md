@@ -6,9 +6,19 @@ This web part does nothing, really. It is intended to be used to test upgrading 
 
 ![picture of the web part in action](./assets/react-upgrade-me.png)
 
-## Used SharePoint Framework Version
 
-![1.4.1](https://img.shields.io/badge/version-1.4.1-green.svg)
+## Compatibility
+
+![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg)
+
+![Node.js LTS 6.x | LTS 8.x](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20LTS%208.x-green.svg)
+
+![SharePoint 2019 | Online](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
+
+![Teams Not compatible](https://img.shields.io/badge/Teams-Not%20compatible-red.svg)
+
+![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
+
 
 ## Applies to
 

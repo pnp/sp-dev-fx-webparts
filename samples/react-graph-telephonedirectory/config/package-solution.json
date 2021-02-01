@@ -11,7 +11,7 @@
       "privacyUrl": "https://contoso.com/privacy",
       "termsOfUseUrl": "https://contoso.com/terms-of-use",
       "websiteUrl": "https://contoso.com/my-app",
-      "mpnId": "000000"
+      "mpnId": "m365pnp"
     },
     "webApiPermissionRequests": [
       {
