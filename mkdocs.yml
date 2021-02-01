@@ -35,7 +35,7 @@ theme:
   palette:
     primary: 'pnp'
     accent: 'indigo'
-    logo: 'img/pnp-samples-white.svg'
+  logo: 'img/pnp-samples-white.svg'
   feature:
     tabs: true
 extra_css:
@@ -214,10 +214,10 @@ extra:
       spfx: 1.10.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-dynamic-section
       name: react-accordion-dynamic-section
-      title: SPFx Dynamic Accordion - FAQ Builder web part
+      title: Dynamic Accordion - FAQ Builder web part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif
       author: Jerry Yasir, Jack Vinitsky, Ravi Chandra
-      summary: This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. Has extended it support single FAQs list based on Category and dynamic properties selection.
+      summary: This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection.
       modifiedtext: January 05, 2021
       modified: 2021-01-05
       pnpcontrols: WebPartTitle, Placeholder 
