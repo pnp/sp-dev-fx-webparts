@@ -2,9 +2,7 @@ import * as React from 'react';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-
 import styles from './DraggableComponent.module.scss';
-
 import * as strings from 'ListFormStrings';
 import { Icon } from 'office-ui-fabric-react';
 
@@ -26,12 +24,9 @@ const dragSource = {
 };
 
 const dragTarget = {
-
   hover(props: IDraggableComponentProps, monitor) {
     const { key: draggedKey } = monitor.getItem();
-    console.log(draggedKey)
     if (draggedKey !== props.itemKey) {
-      console.log('index ' + props.index)
       props.moveField(draggedKey, props.index);
     }
   },
