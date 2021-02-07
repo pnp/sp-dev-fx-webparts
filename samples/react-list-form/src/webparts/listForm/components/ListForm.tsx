@@ -28,6 +28,7 @@ import * as strings from 'ListFormStrings';
 
 import styles from './ListForm.module.scss';
 import { Validate } from '@microsoft/sp-core-library';
+import { Icon } from 'office-ui-fabric-react';
 
 /*************************************************************************************
  * React Component to render a SharePoint list form on any page.
@@ -97,7 +98,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
                   <DefaultButton aria-haspopup='true' aria-label={strings.AddNewFieldAction} className={styles.addFieldToolbox}
                     title={strings.AddNewFieldAction} menuProps={menuProps} data-is-focusable='false' >
                     <div className={styles.addFieldToolboxPlusButton}>
-                      <i aria-hidden='true' className='ms-Icon ms-Icon--CircleAdditionSolid' />
+                      <Icon iconName='CircleAdditionSolid' />
                     </div>
                   </DefaultButton>
                 }
