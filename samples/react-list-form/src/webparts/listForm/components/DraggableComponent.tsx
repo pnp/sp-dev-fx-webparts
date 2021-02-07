@@ -20,7 +20,7 @@ const dragSource = {
     const didDrop = monitor.didDrop();
 
     if (!didDrop) {
-      props.moveField(droppedKey, originalIndex);
+      props.moveField(droppedKey, props.index);
     }
   },
 };
