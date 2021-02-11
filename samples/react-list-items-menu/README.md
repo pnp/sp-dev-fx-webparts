@@ -15,9 +15,14 @@ When the user clicks on the header it dynamically load documents.
 
 ![ListItemsMenu](./assets/reactListItems3.JPG)  
 
+## Compatibility
 
-## Used SharePoint Framework Version 
-![SPFx 1.11](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
 
 ## Applies to
 
@@ -39,7 +44,7 @@ The Web Part Use PnPjs library, Fluent-Ui-react components
 
 Solution|Author(s)
 --------|---------
-React List Items Menu |João Mendes
+React List Items Menu |[João Mendes](https://github.com/joaojmendes) ([@joaojmendes](https://twitter.com/joaojmendes))
 
 ## Version history
 

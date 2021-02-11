@@ -106,7 +106,7 @@ export default class ListItemsMenuWebPart extends BaseClientSideWebPart<
     this.render();
   }
 
-  // Apply btheme id in Teams
+  // Apply theme id in Teams
   private _applyTheme = (theme: string): void => {
     this.context.domElement.setAttribute("data-theme", theme);
     document.body.setAttribute("data-theme", theme);

@@ -2,10 +2,9 @@ import * as React from 'react';
 import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-
 import styles from './DraggableComponent.module.scss';
-
 import * as strings from 'ListFormStrings';
+import { Icon } from 'office-ui-fabric-react';
 
 const dragSource = {
   beginDrag(props: IDraggableComponentProps) {
@@ -18,15 +17,13 @@ const dragSource = {
   endDrag(props: IDraggableComponentProps, monitor) {
     const { key: droppedKey, originalIndex } = monitor.getItem();
     const didDrop = monitor.didDrop();
-
     if (!didDrop) {
-      props.moveField(droppedKey, originalIndex);
+      props.moveField(droppedKey, props.index);
     }
   },
 };
 
 const dragTarget = {
-
   hover(props: IDraggableComponentProps, monitor) {
     const { key: draggedKey } = monitor.getItem();
     if (draggedKey !== props.itemKey) {
@@ -66,10 +63,12 @@ export default class DraggableComponent extends React.Component<IDraggableCompon
         {children}
         <div className={css(styles.toolbar)}>
           <button type='button' className={css('ard-draggableComponent', styles.button)} title={strings.MoveField} >
-            <i className='ms-Icon ms-Icon--Move'></i>
+            <Icon iconName="Move" />
           </button>
           <button type='button' className={css('ard-draggableComponent', styles.button)} title={strings.RemoveField}
-            onClick={() => this.props.removeField(this.props.index)}><i className='ms-Icon ms-Icon--Delete'></i></button>
+            onClick={() => this.props.removeField(this.props.index)}>
+            <Icon iconName='Delete' />
+          </button>
         </div>
       </div>,
     ));
