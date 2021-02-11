@@ -26,7 +26,13 @@ The web part allows configuring which list to use and if a form for adding a new
 
 ## Used SharePoint Framework Version
 
-![SPFx 1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+## Compatibility
+
+![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js LTS 8.x | LTS 10.x](https://img.shields.io/badge/Node.js-LTS%208.x%20%7C%20LTS%2010.x-green.svg)
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 
 ## Applies to
 
