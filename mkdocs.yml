@@ -1,6 +1,5 @@
 # Web Part Samples
 # Author: Hugo Bernier
-# Master PR: #1312, #1311
 site_name: SharePoint Framework Client-Side Web Part Samples
 plugins:
     - search
@@ -62,6 +61,142 @@ extra:
     - icon: 'fontawesome/solid/link'
       link: 'https://aka.ms/sppnp'
   samples:
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-search
+      name: react-list-search
+      title: List Search
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-search/assets/differentSources.gif
+      author: Alberto Gutierrez Perez
+      summary: This list search web part allows the user to show data from lists or libraries. 
+      modifiedtext: December 20, 2020
+      modified: 2020-12-20
+      pnpcontrols: IFrameDialog, FileTypeIcon, PropertyFieldCollectionData, PropertyFieldSitePicker, PropertyFieldNumber, Placeholder, PropertyFieldMultiSelect, PropertyPaneWebPartInformation
+    - framework: React
+      spfx: 1.9.1
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-zpl-viewer
+      name: react-zpl-viewer
+      title: ZPL Viewer
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-zpl-viewer/assets/preview.gif
+      author: Zach Roberts
+      summary: This web part will allow a user to select a text file contatining zpl which is used to generate an image using the labelary web service to render the zpl and return the image.
+      modifiedtext: February 13, 2020
+      modified: 2020-02-13
+    - framework: React
+      spfx: 1.9.1
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-configure-tab
+      name: react-teams-configure-tab
+      title: Teams Configuration Tab
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-configure-tab/documentation/images/SPTabAppStudioTeamsTab006.png
+      author: Bob German
+      summary: This web part makes a modern SharePoint page into a Teams tab configuration page for use in a Teams application. This allows low-code developers to create Teams applications containing configurable tabs without the need to code a custom configuration page. Using this tool, along with Microsoft Teams App Studio, low-code developers can build Teams applications entirely from modern SharePoint pages.
+      modifiedtext: January 6, 2020
+      modified: 2020-01-06
+    - framework: React
+      spfx: 1.4.1
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-script-editor-onprem
+      name: react-script-editor-onprem
+      title: Script editor web part for modern pages
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-script-editor-onprem/assets/modern-script-editor-wp.gif
+      author: Mikael Svenson
+      summary: Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part. This web part is similar to the classic Script Editor Web Part, and allows you do drop arbitrary script or html on a modern page.
+      modifiedtext: March 16, 2020
+      modified: 2020-03-16
+    - framework: React
+      spfx: 1.9.1
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-quotes
+      name: react-quotes
+      title: Quote of the Day
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-quotes/assets/react-quotes-sample.png
+      author: Zach Roberts
+      summary: This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.
+      modifiedtext: November 11, 2019
+      modified: 2019-11-11
+      pnpcontrols: PropertyFieldColorPicker
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnp-controls-list-view-fields
+      name: react-pnp-controls-list-view-fields
+      title: PnP ListView with PnP Field Controls Web Part
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnp-controls-list-view-fields/assets/web-part.png
+      author: Alex Terentiev
+      summary: Sample web part to display PnP ListView control with column rendering using PnP Field Controls.
+      modifiedtext: March 10, 2020
+      modified: 2020-03-10
+      technology: PnPjs
+      pnpcontrols: FieldTextRenderer, FieldDateRenderer, FieldLookupRenderer, FieldUrlRenderer, FieldTaxonomyRenderer
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-spfx-solutions-alm
+      name: react-manage-spfx-solutions-alm
+      title: Manage SPFx solution using ALM APIs
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-manage-spfx-solutions-alm/assets/SPFxALM.gif
+      author: Ramakrishnan Raman
+      summary: This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall & Remove apps.
+      modifiedtext: March 09, 2020
+      modified: 2020-03-09
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-spfx-solutions-alm
+      name: react-manage-spfx-solutions-alm
+      title: Manage SPFx solution using ALM APIs
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-manage-spfx-solutions-alm/assets/SPFxALM.gif
+      author: Ramakrishnan Raman
+      summary: This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall & Remove apps.
+      modifiedtext: March 09, 2020
+      modified: 2020-03-09
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-followedsites
+      name: react-followedsites
+      title: Followed Sites
+      thumbnail: https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-followed-sites.gif
+      author: Eric Overfield
+      summary: This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites.
+      modifiedtext: May 13, 2020
+      modified: 2020-05-13
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-dynamics-crm-api
+      name: react-dynamics-crm-api
+      title: Using Dynamics CRM API
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-dynamics-crm-api/assets/screenshot.gif
+      author: Ramin Ahmadi
+      summary: This sample shows how to consume Dynamics CRM API using AadTokenProvider class.
+      modifiedtext: July 12, 2020
+      modified: 2020-07-12
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-dev-radar
+      name: react-dev-radar
+      title: Dev-Radar for SharePoint Online
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-dev-radar/dev-radar.png
+      author: Saulo Oliveira
+      summary: The web part Use PnPjs library and Axios
+      modifiedtext: March 01, 2020
+      modified: 2020-03-01
+      technology: PnPjs
+    - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-check-user-group
+      name: react-check-user-group
+      title: Check User Group
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-check-user-group/assets/CheckUserGroup.gif
+      author: Aakash Bhardwaj
+      summary: This web part finds all the Office 365 or AAD Security groups a user is a member of or all the members present in such a group. It can be used as an admin utility to quickly check the membership of any user or group from within a SharePoint page itself. The retrieved results can also be exported to a CSV file.
+      modifiedtext: March 09, 2020
+      modified: 2020-03-09
+      pnpcontrols: WebPartTitle, PeoplePicker
+    - framework: Angular
+      spfx: GA
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-msgraph
+      name: angular-msgraph
+      title: Angular MS Graph Web Part Built with Angular v1.x
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-msgraph/assets/Connect.png
+      author: David Hartman
+      summary: This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your tenant. It will first pull the root site collection (currently a limitation by Microsoft Graph), then it will display all the lists associated with the site followed by all the items inside the list.
+      modifiedtext: April 19, 2017
+      modified: 2017-04-19
     - framework: React
       spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-feedback
@@ -1355,8 +1490,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
       author: Dany Wyss, Harsha Vardhini, Ryan Schouten, Abderahman Moujahid, Hugo Bernier
       summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
-      modifiedtext: December 12, 2020
-      modified: 2020-12-12
+      modifiedtext: February 07, 2021
+      modified: 2021-02-07
     - framework: React
       spfx: 1.9.1
       year: 2019
@@ -1633,17 +1768,15 @@ extra:
       modified: 2019-04-18
       technology: GitHub
     - framework: Javascript
-      spfx: 1.6.0
-      year: 2017
+      spfx: 1.11.0
       title: Modern Calendar
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-modern-calendar
       name: js-modern-calendar
       thumbnail: https://cloud.githubusercontent.com/assets/13068139/23584808/14c3ec26-0121-11e7-8be8-65fbcca32b62.png
-      author: Jeremy Coleman
+      author: Jeremy Coleman, Nanddeep Nachan, Ravi Chandra
       summary: This is a modern web part built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it.
-      version: 1.0.0.0
-      modifiedtext: February 11, 2017
-      modified: 2017-02-11
+      modifiedtext: February 09, 2021
+      modified: 2021-02-09
     - framework: Javascript
       spfx: 1.8.2
       year: 2019
@@ -2103,7 +2236,7 @@ extra:
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-github-badge
       name: react-github-badge
       title: GitHub Badge (React)
-      thumbnail: https://github.com/hugoabernier/sp-dev-fx-webparts/raw/master/samples/react-github-badge/assets/githubbadge.png
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-github-badge/assets/githubbadge.png
       author: Hugo Bernier
       summary: Displays information about a GitHub user.
       version: 2.0
@@ -2985,6 +3118,7 @@ extra:
     - Abderahman Moujahid
     - Abhishek Garg
     - Adrián Díaz
+    - Alberto Gutierrez Perez
     - Alex Terentiev
     - Andrew Koltyakov
     - Anoop Tatti
@@ -3053,6 +3187,7 @@ extra:
     - Rabia Williams
     - Rahul Suryawanshi
     - Ram Prasad Meenavalli
+    - Ramakrishnan Raman
     - Ramin Ahmadi
     - Ravi Chandra
     - Ravi Kulkarni
@@ -3062,6 +3197,7 @@ extra:
     - Roland Oldengarm
     - Russell Gove
     - Ryan Schouten
+    - Saulo Oliveira
     - Sébastien Levert
     - Serdar Ketenci̇
     - Sergei Sergeev
