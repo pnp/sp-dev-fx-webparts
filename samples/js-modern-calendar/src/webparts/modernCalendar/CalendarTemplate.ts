@@ -1,8 +1,6 @@
-import {
-  IPropertyPaneDropdownOption
-} from '@microsoft/sp-webpart-base';
-import styles from './CalendarTemplate.module.scss';
-import { escape } from '@microsoft/sp-lodash-subset';
+import styles from "./CalendarTemplate.module.scss";
+import { escape } from "@microsoft/sp-lodash-subset";
+import { IPropertyPaneDropdownOption } from "@microsoft/sp-property-pane";
 
 export interface ISPLists {
   value: ISPList[];
@@ -13,12 +11,12 @@ export interface ISPList {
   Id: string;
 }
 export default class CalendarTemplate {
-    public static templateHtml: string = `
+  public static templateHtml: string = `
     <div class='spfxcalendar'></div>
     `;
 
-    public static emptyHtml(title: string): string {
-        return `<div class="${styles.EmptyCalendar}">
+  public static emptyHtml(title: string): string {
+    return `<div class="${styles.EmptyCalendar}">
                 <div class="${styles.container}">
                 <div class="ms-Grid-row ms-bgColor-themeDark ms-fontColor-white ${styles.row}">
                     <div class="ms-Grid-col ms-u-lg10 ms-u-xl8 ms-u-xlPush2 ms-u-lgPush1">
@@ -32,51 +30,68 @@ export default class CalendarTemplate {
                 </div>  
             </div>
     `;
-    }
+  }
 
-    public static themeBase: string = `https://code.jquery.com/ui/1.12.1/themes/`;
+  public static themeBase: string = `https://code.jquery.com/ui/1.12.1/themes/`;
 
-    public static themeNames: Array<string> = [
-        'default',
-        'black-tie',
-        'blitzer',
-        'cupertino',
-        'dark-hive',
-        'dot-luv',
-        'eggplant',
-        'excite-bike',
-        'flick',
-        'hot-sneaks',
-        'humanity',
-        'le-frog',
-        'mint-choc',
-        'overcast',
-        'pcpro',
-        'pepper-grinder',
-        'redmond',
-        'smoothness',
-        'south-street',
-        'start',
-        'sunny',
-        'swanky-purse',
-        'trontastic',
-        'ui-darkness',
-        'ui-lightness',
-        'vader'
-    ];
+  public static themeNames: Array<string> = [
+    "default",
+    "black-tie",
+    "blitzer",
+    "cupertino",
+    "dark-hive",
+    "dot-luv",
+    "eggplant",
+    "excite-bike",
+    "flick",
+    "hot-sneaks",
+    "humanity",
+    "le-frog",
+    "mint-choc",
+    "overcast",
+    "pcpro",
+    "pepper-grinder",
+    "redmond",
+    "smoothness",
+    "south-street",
+    "start",
+    "sunny",
+    "swanky-purse",
+    "trontastic",
+    "ui-darkness",
+    "ui-lightness",
+    "vader",
+  ];
 
-    public static theme(): IPropertyPaneDropdownOption[] {
-        var themes: IPropertyPaneDropdownOption[] = [];
-        CalendarTemplate.themeNames.forEach(function(name,index) {
-            themes.push({key: CalendarTemplate.themeBase + name + '/jquery-ui.min.css', text: name.toLocaleUpperCase()});
-        });
-        return themes;
-    }
+  public static theme(): IPropertyPaneDropdownOption[] {
+    var themes: IPropertyPaneDropdownOption[] = [];
+    CalendarTemplate.themeNames.forEach(function (name, index) {
+      themes.push({
+        key: CalendarTemplate.themeBase + name + "/jquery-ui.min.css",
+        text: name.toLocaleUpperCase(),
+      });
+    });
+    return themes;
+  }
 
-    public static themes: IPropertyPaneDropdownOption[] = [
-            { key: CalendarTemplate.themeBase + 'jquery-ui.theme.min.css', text: 'Default' },
-            { key: CalendarTemplate.themeBase + 'ui-lightness/jquery-ui.min.css', text: 'Light' },
-            { key: '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.min.css', text: 'Redmond' },
-            { key: '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/overcast/jquery-ui.min.css', text: 'Overcast' }
-    ];
+  public static themes: IPropertyPaneDropdownOption[] = [
+    {
+      key: CalendarTemplate.themeBase + "jquery-ui.theme.min.css",
+      text: "Default",
+    },
+    {
+      key: CalendarTemplate.themeBase + "ui-lightness/jquery-ui.min.css",
+      text: "Light",
+    },
+    {
+      key:
+        "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.min.css",
+      text: "Redmond",
+    },
+    {
+      key:
+        "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/overcast/jquery-ui.min.css",
+      text: "Overcast",
+    },
+  ];
 }
