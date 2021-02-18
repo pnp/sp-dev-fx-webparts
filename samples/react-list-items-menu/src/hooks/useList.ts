@@ -56,10 +56,12 @@ export const useList = () => {
     <RowLimit>1000</RowLimit>
 </View>`;
 
+    console.log('group',_viewXml )
     const _groupHeadersResults = await sp.web.lists
       .getById(listId)
       .renderListDataAsStream({ ViewXml: _viewXml });
 
+      console.log(_groupHeadersResults.Row);
     //console.log("groups", _groupHeadersResults.Row);
     return uniqBy(_groupHeadersResults.Row, groupByField);
   };
@@ -124,6 +126,8 @@ export const useList = () => {
         </Query>
      </View>`;
     }
+
+    console.log(_viewXml);
 
     const _groupItemsResults = await sp.web.lists
       .getById(listId)

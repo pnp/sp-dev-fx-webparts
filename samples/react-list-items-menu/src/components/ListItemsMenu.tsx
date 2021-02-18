@@ -1,10 +1,7 @@
 import * as React from "react";
 
 import * as strings from "ListItemsMenuWebPartStrings";
-import {
-  filter,
-  findIndex
-} from "lodash";
+import { filter, findIndex, uniqBy } from "lodash";
 import {
   Customizer,
   INavLink,
@@ -18,7 +15,7 @@ import {
   Nav,
   Spinner,
   SpinnerSize,
-  Stack
+  Stack,
 } from "office-ui-fabric-react";
 
 import { getFileTypeIconProps } from "@uifabric/file-type-icons";
@@ -92,28 +89,39 @@ export const ListItemsMenu: React.FunctionComponent<IListItemsMenuProps> = (
           props.fieldName,
           props.listBaseTemplate
         );
+        console.log("t1", _groupHeaders);
         const _field: any = await getField(props.listId, props.fieldName);
+        console.log("f1", _field);
         for (const groupHeader of _groupHeaders) {
-          let _name = groupHeader[props.fieldName]
-            ? groupHeader[props.fieldName]
-            : "Unassigned";
+          let _name: any;
+          if (_field.fieldType === "TaxonomyFieldType") {
+            _name = groupHeader.Metadata.Label ?? "Unassigned";
 
-          if (_name != "Unassigned" && _field.fieldType === "User") {
-            _name = _name[0]?.title;
-          }
+          } if (_field.fieldType === "TaxonomyFieldTypeMulti") {
+            _name = groupHeader.Metadata[0]?.Label ?? "Unassigned";
 
-          if (_name != "Unassigned" && _field.fieldType === "Lookup") {
-            _name = _name[0]?.lookupValue;
+          } else {
+
+            _name = groupHeader[props.fieldName] ??  "Unassigned";
+
+            if (_name != "Unassigned" && _field.fieldType === "User") {
+              _name = _name[0]?.title;
+            }
+            if (_name != "Unassigned" && _field.fieldType === "Lookup") {
+              _name = _name[0]?.lookupValue;
+            }
           }
 
           _navLinksGroups.push({
             name: _name,
-            groupData: groupHeader[props.fieldName],
+            groupData: _name,
             collapseByDefault: true,
 
             onHeaderClick: _onGroupHeaderClick,
             links: [],
           });
+          // Ensure the groups name are unique!
+          _navLinksGroups = uniqBy( _navLinksGroups, "name");
         }
         stateRef.current = {
           ...stateRef.current,
@@ -123,6 +131,7 @@ export const ListItemsMenu: React.FunctionComponent<IListItemsMenuProps> = (
           listName: _field.fieldScope,
           navLinkGroups: _navLinksGroups,
         };
+
         setState(stateRef.current);
       } catch (error) {
         stateRef.current = {
@@ -181,7 +190,7 @@ export const ListItemsMenu: React.FunctionComponent<IListItemsMenuProps> = (
                 name: _groupHeaderItem.FileLeafRef,
                 url: _groupHeaderItem.FileRef,
                 iconProps: {
-                    ...getFileTypeIconProps({
+                  ...getFileTypeIconProps({
                     extension: _groupHeaderItem.DocIcon,
                     size: 16,
                     imageFileType: "svg",
