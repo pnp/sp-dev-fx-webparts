@@ -63,6 +63,17 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-staffdirectory
+      name: react-staffdirectory
+      title: Staff Directory
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-staffdirectory/assets/staffdirectory.gif
+      author: João Mendes
+      summary: This web part shows the current user's colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card.
+      modifiedtext: February 16, 2021
+      modified: 2021-02-16
+      pnpcontrols: WebPartTitle
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-search
       name: react-list-search
       title: List Search
@@ -261,8 +272,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-items-menu/assets/ListMenuDocs.gif
       author: João Mendes
       summary: Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents. 
-      modifiedtext: November 20, 2020
-      modified: 2020-11-20
+      modifiedtext: February 18, 2021
+      modified: 2021-02-18
     - framework: React
       spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-themes
