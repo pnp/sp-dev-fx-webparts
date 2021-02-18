@@ -22,7 +22,7 @@ extensions:
 
 This web part shows a Colleagues of current user, and allows the user to search AD directory, The user can configure the properties to show when expand the user card.
 
-![staff](./assets/staffDirectory.gif)
+![staff](./assets/staffdirectory.gif)
 
 ## Compatibility
 
