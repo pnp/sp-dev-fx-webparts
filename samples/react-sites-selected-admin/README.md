@@ -53,7 +53,9 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 - Add an app in Azure AD, or for an exising app add the Sites.Selected Microsoft Graph api permission
+
 ![alt text](./assets/aad-appreg.png "AAD app reg")
+
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
@@ -61,7 +63,9 @@ Version|Date|Comments
   - **gulp package-solution --ship**
 - Add the .sppkg package to your app catalog
 - Approve the api access requests
+
 ![alt text](./assets/api-access-page.png "API Management")
+
 - Install webpart on a site of your choice
 - Add permissions to your app
 - Try out the AAD app by sending a request using your favourite method  
