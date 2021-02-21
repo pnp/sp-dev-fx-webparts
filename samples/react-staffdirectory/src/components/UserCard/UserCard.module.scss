@@ -1,0 +1,43 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+
+
+.hideScrollBar::-webkit-scrollbar{
+  display:none
+}
+
+:global  {
+  .media {
+    width: '100%';
+  }
+}
+
+@media (max-width: 480px) {
+  .media
+     {
+      width: '100%';
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+}
+@media (max-width: 768px) {
+  .media
+     {
+      width: '47%';
+    }
+
+}
+@media (max-width: 1024px) {
+  .media
+     {
+      width: '32%';
+    }
+
+}
+@media (max-width: 1200px) {
+  .media
+     {
+      width: '22%';
+    }
+
+}
