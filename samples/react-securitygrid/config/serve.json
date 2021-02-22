@@ -1,15 +1,15 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
-  "port": 4321,
-  "initialPage": "https://localhost:5432/workbench",
-  "https": true,
-  "api": {
-    "port": 5432,
-    "entryPath": "node_modules/@microsoft/sp-webpart-workbench/lib/api/"
-  },
-  "serveConfigurations": {
-    "default": {
-      "pageUrl": "https://russellwgove.sharepoint.com/sites/workspaces/_layouts/15/workbench.aspx"
+    "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+    "port": 4321,
+    "initialPage": "https://localhost:5432/workbench",
+    "https": true,
+    "api": {
+        "port": 5432,
+        "entryPath": "node_modules/@microsoft/sp-webpart-workbench/lib/api/"
+    },
+    "serveConfigurations": {
+        "default": {
+            "pageUrl": "https://russellwgove.sharepoint.com/sites/testazad/_layouts/15/workbench.aspx"
+        }
     }
-  }
 }
