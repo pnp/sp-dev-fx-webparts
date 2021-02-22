@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-graph-calendar-client-side-solution",
     "id": "42fe0a0f-c4d9-4b05-806c-3857decb3d71",
-    "version": "1.0.0.0",
+    "version": "1.2.3.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

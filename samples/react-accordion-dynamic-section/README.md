@@ -1,12 +1,12 @@
-# SPFx Dynamic Accordion - FAQ Builder web part
+# Dynamic Accordion - FAQ Builder
 
 ## Summary
 
-- This sample is based on [Erik Benke] and [Mike Zimmerman] (Accordion Section FAQ Builder web part. I has extended it support single FAQs list based on Category and dynamic properties selection.
+- This sample is based on [Erik Benke](https://github.com/ejbenke) and [Mike Zimmerman](https://github.com/mikezimm)'s [Accordion Section FAQ Builder web part](https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-section). It adds extended support for single FAQs list based on Category and dynamic properties selection.
 - Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab.
 - Ideal for displaying FAQs.
 - When adding the web part, you'll be prompted to select a list from a property panel dropdown (target list must be created with FAQ type Question and Answer.).
-- The web part expects a choice type that will be used as Category.
+- The web part expects a column called **Category** of type choice that will be used as the category.
 - The web part will automatically load all the properties in two dropdowns. One for Accordion Title and One for Accordion Content that must be html type.
 - This will generate an accordion with one section for each item in the list.
 - Modifications/deletions/additions to the list items in the target list of an added web part are automatically reflected on the page.
@@ -23,8 +23,8 @@
 - When creating the columns, select "Multiple lines of text". Rich text is now supported within the Content column.
 
 ![Create list for use with the Accordion](./assets/FAQsList.png)
-![FAQ list Template for use with the Accordion](./assets/FAQsList.stp)
-![FAQ Site Script  use with the Accordion](./assets/FAQsList.json)
+[FAQ list Template for use with the Accordion](./assets/FAQsList.stp)
+[FAQ Site Script  use with the Accordion](./assets/FAQsList.json)
 
 **2) Add the Dynamic Accordion Section web part to your page & select your list, category, title and content columns. Click Apply and Publish:**
 

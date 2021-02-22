@@ -1,7 +1,0 @@
-{
-  "@microsoft/generator-sharepoint": {
-    "isCreatingSolution": true,
-    "environment": "spo",
-    "whichFolder": "subdir"
-  }
-}

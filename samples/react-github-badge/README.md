@@ -1,4 +1,4 @@
-# React GitHub Badge
+# GitHub Badge (React Version)
 
 ## Summary
 

@@ -1,0 +1,42 @@
+.ms-Icon-Old {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+.app__signInNotification {
+  align-items: center;
+  color: #105e7d;
+  display: flex;
+  font-family: 'Calibri', 'Helvetica Neue', 'Arial', 'sans-serif';
+  font-size: 14px;
+  height: 100%;
+}
+
+.app__signInNotification__icon {
+  text-align: center;
+  width: 36px;
+}
+
+.app__signInNotification__button {
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: solid 1px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  color: initial;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0 0 0 4px;
+  outline: 0;
+}
+
+.app__signInNotification__button:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.app__signInNotification__button:focus {
+  border-color: rgba(0, 0, 0, 0.7);
+}

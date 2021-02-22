@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-calendar-client-side-solution",
     "id": "3a13208b-3874-4036-9262-4edd22e88187",
-    "version": "1.0.0.0",
+    "version": "1.0.8.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false

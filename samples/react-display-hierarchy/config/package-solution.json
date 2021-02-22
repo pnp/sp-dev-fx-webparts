@@ -6,6 +6,7 @@
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
     "features": [
       {
         "title": "react-display-hierarchy-deployment",
@@ -21,7 +22,14 @@
           ]
         }
       }
-    ]
+    ],
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/spfx-react-hierarchy-view.sppkg"

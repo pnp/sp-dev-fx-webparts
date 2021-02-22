@@ -1,0 +1,130 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+.listSearch {
+	@include ms-Grid;
+	.row {
+		@include ms-Grid-row;
+	}
+	.column {
+		@include ms-Grid-col;
+		@include ms-sm12;
+		@include ms-lg12;
+		.rowTopInformation {
+      @include ms-Grid-row;
+      .ColGeneralFilterWithBtn {
+				margin-top: 5px;
+				@include ms-Grid-col;
+				@include ms-lg10;
+				@include ms-sm12;
+			}
+			.ColGeneralFilterOnly {
+				margin-top: 5px;
+				@include ms-Grid-col;
+				@include ms-lg12;
+				@include ms-sm12;
+			}
+			.ColClearAll {
+				margin-top: 5px;
+				@include ms-Grid-col;
+				@include ms-lg2;
+				@include ms-sm12;
+				.btn {
+					width: 100%;
+				}
+			}
+		}
+		.rowData {
+			@include ms-Grid-row;
+			.colData {
+				@include ms-Grid-col;
+				@include ms-lg12;
+				@include ms-sm12;
+				padding-top: 16px;
+				.template_resultCount {
+					padding-left: 10px;
+					margin-bottom: 10px;
+					@include ms-fontWeight-semibold;
+				}
+				.paginationContainer {
+					margin: 0;
+					&__paginationContainer {
+						text-align: center;
+						&__pagination {
+							display: inline-block;
+							text-align: center;
+							.inverted a {
+								color: #ffffff;
+							}
+							.standard a {
+								color: "[theme: themePrimary, default: #005a9e]";
+							}
+							ul {
+								display: inline-block;
+								padding-left: 0;
+								margin: 0;
+								li {
+									display: inline;
+									a {
+										float: left;
+										padding: 5px 5px;
+										text-decoration: none;
+										i {
+											font-size: 10px;
+										}
+									}
+									.active {
+										font-weight: 700;
+										color: "[theme: themeDark, default: #005a9e]";
+										text-decoration: underline;
+									}
+									.active__inverted {
+										font-weight: 700;
+										color: #ffffff;
+										text-decoration: underline;
+									}
+									a:visited {
+										color: inherit;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.containerModal {
+	display: 'flex';
+	flex-flow: 'column nowrap';
+	align-items: 'stretch';
+	max-width: 1200px;
+	.headerModal {
+		@include ms-fontWeight-bold;
+		flex: '1 1 auto';
+		border-top: 4px solid;
+		color: $ms-color-themePrimary;
+		align-items: 'center';
+		font-size: x-large;
+		padding-right: 12px;
+	}
+	.bodyModal {
+		padding: 0 24px 24px 24px;
+		.propertyModal {
+			padding: 10px 0;
+			@include ms-fontWeight-bold;
+			color: $ms-color-themePrimary;
+			font-size: larger;
+		}
+	}
+}
+
+.collectionDataField {
+  > span {
+    display: none;
+  }
+
+  div[class^="invalid_"] {
+    border-color: #a80000 !important;
+  }
+}

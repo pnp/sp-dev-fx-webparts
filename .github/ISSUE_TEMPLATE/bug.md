@@ -1,7 +1,7 @@
 ---
 name: "\U0001F41E Bug"
 about: Report an anomaly or unexpected behavior with a sample from this repository.
-title: ''
+title: '[Web Part Name]: [Issue Title]'
 labels: type:bug
 assignees: ''
 
@@ -19,18 +19,40 @@ Thank you for reporting a bug! Use the sections below to submit a bug ONLY if it
 
 DELETE EVERYTHING ABOVE AFTER READING - THANKS!
 
-## Sample (which sample are you having trouble with)
+## Sample
+> Which sample are you having trouble with? 
+>
+> Issues without a sample name will be closed automatically 
+>
+> _(DELETE THIS PARAGRAPH AFTER READING)_
 
 ## Authors
 
-> Because of the way this repository is configured, samples authors do not get a notification when you create an issue. *It makes it less likely for you to get your issue resolved or to get help*. For the section above **@mention any author of the sample**. Authors' GitHub handle can be found on the main sample documentation page, under the "solution" section. Use the `PREVIEW` tab at the top right to preview the rendering before submitting your issue.
+> Because of the way this repository is configured, samples authors do not get a notification when you create an issue. *It makes it less likely for you to get your issue resolved or to get help*. For the section above **@mention any author of the sample**. Authors' GitHub handle can be found on the main sample documentation page, under the "solution" section. Use the `PREVIEW` tab at the top right to preview the rendering before submitting your issue. 
+>
+> The author's name can be found in the sample's `README.md` file, under **Authors**. 
 > 
+> Issues without an author will be closed automatically 
+>
 > _(DELETE THIS PARAGRAPH AFTER READING)_
+
 
 ## Expected or Desired Behavior
 
+> What should it do?
+>
+> Issues without an expected behavior will be closed automatically 
+>
+> _(DELETE THIS PARAGRAPH AFTER READING)_
+
 
 ## Observed Behavior
+
+> What does it do?
+>
+> Issues without an observed behavior will be closed automatically 
+>
+> _(DELETE THIS PARAGRAPH AFTER READING)_
 
 
 ## Steps to Reproduce
@@ -41,6 +63,11 @@ Steps to reproduce the behavior:
 3. Scroll down to '....'
 4. See error
 
+> Issues without an steps to reproduce will be closed automatically 
+>
+> _(DELETE THIS PARAGRAPH AFTER READING)_
+
+
 # Environment Details (*Development & Target environment*)
 
 - **OS**: [e.g. Windows 10 | MacOS 10.15.x]
@@ -49,5 +76,9 @@ Steps to reproduce the behavior:
 - **Browser(s)**: [e.g. Chrome v79 | Safari v22 | FireFox v31 | IE v11 | Edge | Chromium Edge v79]
 - **Tooling**: [e.g. VS Code | SPFx v1.10.0 | Visual Studio 2019]
 - **Additional details**: *The more context you can provide, the easier it is (and therefore quicker) to help.*
+
+> Issues without environment details will be closed automatically 
+>
+> _(DELETE THIS PARAGRAPH AFTER READING)_
 
 ## Additional context

@@ -78,7 +78,6 @@ export class ByEmail extends React.Component<ByEmailProps,ByEmailState>{
                 personSelectionLimit={1}
                 showtooltip={false}
                 disabled={false}
-                selectedItems={this._getPeoplePickerItems}
                 principalTypes={[PrincipalType.User]}
                 resolveDelay={1000} />
           </Stack>

@@ -6,7 +6,7 @@
       "privacyUrl": "https://contoso.com/privacy",
       "termsOfUseUrl": "https://contoso.com/terms-of-use",
       "websiteUrl": "https://contoso.com/my-app",
-      "mpnId": "000000"
+      "mpnId": "m365pnp"
     },
     "name": "Microsoft Graph People Search",
     "id": "98a8d9d1-47c4-477c-addd-ecae95b235cc",

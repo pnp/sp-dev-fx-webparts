@@ -14,7 +14,7 @@ extensions:
   createdDate: 1/8/2018 12:00:00 AM
 ---
 
-## Using React Accordion plugin with SPFx
+# Using React Accordion plugin with SPFx
 
 ## Summary
 
@@ -46,6 +46,7 @@ Version|Date|Comments
 2.0|January 19, 2020|Upgrade to SPFx 1.10
 2.1|June 22, 2020|Added pagination (Abhishek Garg)
 2.2|October 1, 2020 | Added new Pagination Configuration (@beau__cameron)
+
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 

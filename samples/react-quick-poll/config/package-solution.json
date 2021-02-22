@@ -3,9 +3,16 @@
   "solution": {
     "name": "React Quick Poll",
     "id": "890ced10-dacc-4d0d-b9df-355a289980b3",
-    "version": "1.0.0.1",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Sudharsan K.",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "https://spknowledge.com/",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-quick-poll.sppkg"

@@ -64,7 +64,8 @@ export class FaqServices implements IFaqServices {
     try {
       const FaqProp:IFaqProp[] = [];
       let restUrl: string = this._currentWebUrl;
-      restUrl += "/_api/web/lists/getbytitle('" + listName + "')/items?$select=Id,Title,Answer,Category,CategorySortOrder,QuestionSortOrder,Modified";
+      //fix: load more than 100 items using top=5000
+      restUrl += "/_api/web/lists/getbytitle('" + listName + "')/items?$select=Id,Title,Answer,Category,CategorySortOrder,QuestionSortOrder,Modified&$top=5000";
       return await this._spHttpClient.get(restUrl, SPHttpClient.configurations.v1,
         {
           headers: {

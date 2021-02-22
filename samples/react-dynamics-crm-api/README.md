@@ -1,4 +1,4 @@
-# React Dynamics CRM API
+# Using Dynamics CRM API
 
 ## Summary
 This sample shows how to consume Dynamics CRM API using AadTokenProvider class.

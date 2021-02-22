@@ -36,7 +36,7 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
       this.listService = new ListService(this.context.spHttpClient);
       //Polyfill array find
       if (!Array.prototype["find"]) {
-        Array.prototype["find"] = function (predicate) {
+        Array.prototype["find"] = function (predicate, argument) {
           if (this == null) {
             throw new TypeError('Array.prototype.find called on null or undefined');
           }
@@ -45,7 +45,7 @@ export default class ListFormWebPart extends BaseClientSideWebPart<IListFormWebP
           }
           var list = Object(this);
           var length = list.length >>> 0;
-          var thisArg = arguments[1];
+          var thisArg = argument;
           var value;
 
           for (var i = 0; i < length; i++) {

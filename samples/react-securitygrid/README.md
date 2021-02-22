@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 12/1/2017 12:00:00 AM
 ---
-# SPFX React Grid
+# Security Grid
 
 ## Summary
 
@@ -21,9 +21,9 @@ React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to re
 
 ![config panel](./src/images/MainDisplay.gif)
 
-Empty libraries are displayed withh a black folder icon, those with items are displayed with a white folder. The user can expand a list or library by clicking on the desired row. (If the library or folder has more than 5000 items an error will be displayed ) For deeply nested folders the Title column can be resized by drag and drop. The display shows a the appropriate icpn circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group-- coming soon!). IMPORTANT: The user must have permissions to access lists and enumerate permissions in order to view the grid.
+Empty libraries are displayed with a black folder icon, those with items are displayed with a white folder. The user can expand a list or library by clicking on the desired row. (If the library or folder has more than 5000 items an error will be displayed ) For deeply nested folders the Title column can be resized by drag and drop. The display shows a the appropriate icon circle if the user has the selected permission to the given list, library, file or folder. (NOTE:The grid does not currently take into account access give via membership in an active directory group-- coming soon!). IMPORTANT: The user must have permissions to access lists and enumerate permissions in order to view the grid.
 
-The user can change the permission being tested by cliking the Permission in the command bar and selecting a new Permission:
+The user can change the permission being tested by clicking the Permission in the command bar and selecting a new Permission:
 
 ![permission panel](./src/images/selectPermissionsPopout.PNG)
 
@@ -52,7 +52,7 @@ User Settings
 The Show Email or Name Toggle determines whether the name or email is displayed by default.
 The Show Security Groups checkbox determines whether SharePoint Security groups are included in the grid.
 The Show Users checkbox determines whether Users are included in the grid.
-The Only show users with permissions toggle determines whether the grid shold diplay all users with access to the web, or only users with the selected permission
+The Only show users with permissions toggle determines whether the grid should display all users with access to the web, or only users with the selected permission
 ![config panel](./src/images/Permissions.gif)
 The Let Users Select users checkbox determines whether Users can filter the selected users in the grid.
 
@@ -60,8 +60,8 @@ Display Settings
 
 The Initial Title column width determines the initial width of the Title column(it can be resized).
 
-The second configuarion pannel allows the owner to configure the List Settings
-![List Confoguration panel](./src/images/ListConfiguration.PNG)
+The second configuration panel allows the owner to configure the List Settings
+![List Configuration panel](./src/images/ListConfiguration.PNG)
 
 List Settings
 
@@ -82,7 +82,7 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.10-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/version-1.10-green.svg)
 
 ## Applies to
 
@@ -103,6 +103,7 @@ Solution|Author(s)
 
 Version|Date|Comments
 -------|----|--------
+1.0.0.3|October 28, 2020 | Update to office-ui-fabric-react 7.148.1, fixing icons and indentation for sub-folders 
 1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1
 1.0.0.0|December 31, 2016|Initial version

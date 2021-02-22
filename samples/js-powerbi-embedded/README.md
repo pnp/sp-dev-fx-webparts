@@ -14,7 +14,7 @@ extensions:
   - JQuery
   createdDate: 1/1/2016 12:00:00 AM
 ---
-﻿# Embed a PowerBI report in a Client-Side Web Part
+# Embed a PowerBI Report
 
 ## Summary
 

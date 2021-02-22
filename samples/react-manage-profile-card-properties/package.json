@@ -1,6 +1,6 @@
 {
   "name": "react-manage-profile-card-properties",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -30,7 +30,7 @@
     "@types/webpack-env": "1.13.1",
     "axios": "^0.19.2",
     "jquery": "^3.5.1",
-    "office-ui-fabric-react": "^7.121.12",
+    "office-ui-fabric-react": "^7.144.2",
     "react": "16.8.5",
     "react-dom": "16.8.5",
     "react-hook-form": "^6.0.5"

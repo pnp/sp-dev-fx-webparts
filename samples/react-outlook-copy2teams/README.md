@@ -1,4 +1,4 @@
-## outlook-2-sp-spfx
+# Outlook to SharePoint
 
 
 ## Summary

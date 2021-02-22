@@ -36,8 +36,8 @@ export default class WordGame extends React.Component<IWordGameProps, IWordGameS
   private timerInterval: number = -1;
   private numTimer: number;
 
-  constructor() {
-    super();
+  constructor(props: IWordGameProps) {
+    super(props);
 
     console.log('wordgame constructor finished');
 

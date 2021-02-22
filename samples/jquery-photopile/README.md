@@ -15,7 +15,7 @@ extensions:
   - JQuery
   createdDate: 1/1/2016 12:00:00 AM
 ---
-﻿# JQuery, Photopile.JS & Office UI Fabric Client-Side Web Part
+# JQuery, Photopile.JS & Office UI Fabric Client-Side Web Part
 
 ## Summary
 

@@ -9,6 +9,8 @@ declare interface IDirectoryWebPartStrings {
   LoadingText: string;
   SearchPropsLabel: string;
   SearchPropsDesc: string;
+  ClearTextSearchPropsLabel: string;
+  ClearTextSearchPropsDesc: string;
   PagingLabel: string;
 }
 

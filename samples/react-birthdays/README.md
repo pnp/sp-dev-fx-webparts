@@ -1,4 +1,4 @@
-# React Birthdays Web Part
+# Birthdays
 
 ## Summary
 The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant's root site with title "Birthdays."
@@ -17,7 +17,7 @@ But you can synchronize the Birthdays list with other applications HR Systems, o
 
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
+![1.8.2](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
 

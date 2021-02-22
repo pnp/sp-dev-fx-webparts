@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-avatars-client-side-solution",
     "id": "b96dfed7-ec48-4082-ba50-f6c7b09143c7",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "webApiPermissionRequests": [
@@ -11,7 +11,14 @@
         "resource": "Microsoft Graph",
         "scope": "User.ReadWrite"
       }
-    ]
+    ],
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-avatars.sppkg"

@@ -3,9 +3,16 @@
   "solution": {
     "name": "react-personal-greeting-client-side-solution",
     "id": "5e7ea24d-fccc-4d96-a56c-488564d9c61c",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "mpnId": "m365pnp",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": ""
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-personal-greeting.sppkg"

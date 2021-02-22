@@ -5,7 +5,14 @@
     "id": "ce1e3712-fb7a-4564-b2d3-c81e45936afd",
     "version": "2.2.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/adaptive-cars.sppkg"

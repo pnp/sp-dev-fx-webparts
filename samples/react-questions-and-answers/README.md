@@ -1,4 +1,4 @@
-# React Questions and Answers
+# Questions and Answers
 
 ## Summary
 

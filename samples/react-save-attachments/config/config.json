@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "save-attachments-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/saveAttachments/SaveAttachmentsWebPart.js",
+          "manifest": "./src/webparts/saveAttachments/SaveAttachmentsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SaveAttachmentsWebPartStrings": "lib/webparts/saveAttachments/loc/{locale}.js"
+  }
+}

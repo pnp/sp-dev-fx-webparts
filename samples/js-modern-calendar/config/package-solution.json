@@ -2,8 +2,15 @@
   "solution": {
     "name": "SPFx Modern Calendar",
     "id": "3d593a2f-73f1-486f-9dae-555c6f6b584d",
-    "version": "1.0.0.1",
-    "includeClientSideAssets": true
+    "version": "1.0.2.0",
+    "includeClientSideAssets": true,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    }
   },
   "paths": {
     "zippedPackage": "solution/modern-calendar.sppkg"

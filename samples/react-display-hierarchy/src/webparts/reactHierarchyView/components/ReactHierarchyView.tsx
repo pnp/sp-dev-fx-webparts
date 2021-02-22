@@ -21,7 +21,7 @@ export interface IReactHierarchyState {
 
 export default class ReactHierarchyView extends React.Component<IReactHierarchyViewProps, IReactHierarchyState> {
   private HierarchyServiceInstance: IHierarchyService;
-  private _listName: string;
+
   constructor(props: IReactHierarchyViewProps) {
     super(props);
     this.state = {
@@ -30,15 +30,23 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
       showErrorMessage: false,
       errorMessage: ""
     };
+  }
 
-    let serviceScope: ServiceScope;
-    serviceScope = this.props.serviceScope;
-    this._listName = this.props.listName;    
+  public async componentDidMount() {
+    this.loadHierarchyView(this.props.listName);
+  }
+
+  public componentWillReceiveProps(nextProps: IReactHierarchyViewProps) {
+    this.loadHierarchyView(nextProps.listName);
+  }
+
+  private loadHierarchyView(listName: string): void {
+    let serviceScope: ServiceScope = this.props.serviceScope;
 
     // Based on the type of environment, return the correct instance of the IHierarchyServiceInstance interface
     if (Environment.type == EnvironmentType.SharePoint || Environment.type == EnvironmentType.ClassicSharePoint) {
       // Mapping to be used when webpart runs in SharePoint.
-      this.HierarchyServiceInstance = serviceScope.consume(HierarchyService.serviceKey);  
+      this.HierarchyServiceInstance = serviceScope.consume(HierarchyService.serviceKey);
     }
     else {
       // This means webpart is running in the local workbench or from a unit test.
@@ -46,7 +54,7 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
       this.HierarchyServiceInstance = serviceScope.consume(MockHierarchyService.serviceKey);
     }
 
-    this.HierarchyServiceInstance.getHierarchyInfo(this._listName).then((hierarchyItems: any) => {
+    this.HierarchyServiceInstance.getHierarchyInfo(listName).then((hierarchyItems: any) => {
       if (Environment.type == EnvironmentType.SharePoint || Environment.type == EnvironmentType.ClassicSharePoint) {
         if (hierarchyItems.length > 0) {
           let hierarchyNodes: Array<Item> = [];
@@ -63,11 +71,13 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
 
           this.setState({
             hierarchyItems: JSON.parse(output),
-            isLoading: false
+            isLoading: false,
+            showErrorMessage: false
           });
         }
         else {
           this.setState({
+            hierarchyItems: [],
             isLoading: false,
             showErrorMessage: true,
             errorMessage: "No records to be displayed"
@@ -77,16 +87,19 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
       else {
         this.setState({
           hierarchyItems: JSON.parse(hierarchyItems),
-          isLoading: false
+          isLoading: false,
+          showErrorMessage: false
         });
       }
-    }).catch((error) =>
-      this.setState({
-        errorMessage: "Please verify webpart configuration. Error details: " + error.message,
-        isLoading: false,
-        showErrorMessage: true
-      })
-    );
+    })
+      .catch((error) =>
+        this.setState({
+          hierarchyItems: [],
+          errorMessage: "Please verify web part configuration. Error details: " + error.message,
+          isLoading: false,
+          showErrorMessage: true
+        })
+      );
   }
 
   public render(): React.ReactElement<IReactHierarchyViewProps> {
@@ -94,9 +107,9 @@ export default class ReactHierarchyView extends React.Component<IReactHierarchyV
       <div className={styles.reactHierarchyView}>
         <div className={styles.container}>
           <div className={styles.row}>
-            <div className={styles.column}>              
+            <div className={styles.column}>
               {this.state.isLoading && <Spinner label="Loading Hierarchy View..." />}
-              {this.state.hierarchyItems &&
+              {this.state.hierarchyItems && this.state.hierarchyItems.children &&
                 <OrgChart tree={this.state.hierarchyItems} NodeComponent={this.MyNodeComponent} />
               }
             </div>

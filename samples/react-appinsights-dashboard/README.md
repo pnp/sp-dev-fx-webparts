@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 5/10/2020 12:00:00 AM
 ---
-# React AppInsights Dashboard
+# Azure Application Insights Dashboard
 
 ## Summary
 

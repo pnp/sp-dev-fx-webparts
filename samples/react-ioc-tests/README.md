@@ -1,4 +1,4 @@
-# React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme
+# React Inversion Of Control with Unit Tests using Jest and Enzyme
 
 ## Summary
 This web part is provided as an example of implementing an IoC (Inversion of Control) pattern, primarily to enable unit testing, in the context of a SharePoint Framework web part.

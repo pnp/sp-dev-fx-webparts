@@ -1,0 +1,7 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.hideScrollBar::-webkit-scrollbar-thumb { background-color: $ms-color-neutralLight; }
+
+.hideScrollBar::-webkit-scrollbar{
+  width: 5px;
+}

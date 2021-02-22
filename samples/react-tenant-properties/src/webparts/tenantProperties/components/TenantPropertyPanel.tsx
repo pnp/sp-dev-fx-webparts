@@ -58,7 +58,9 @@ export default class TenantPropertyPanel extends React.Component<ITenantProperty
             Description: this.state.tenantProperty.tenantPropertyDescription,
             Comment: this.state.tenantProperty.tenantPropertyComment
           });
-          result ? this.props.onDismiss(true) : null;
+          if (result) {
+            this.props.onDismiss(null, true);
+          }
         }catch(error){
           this.setState({errorMessage:error});
         }
@@ -72,7 +74,9 @@ export default class TenantPropertyPanel extends React.Component<ITenantProperty
             Description: this.state.tenantProperty.tenantPropertyDescription,
             Comment: this.state.tenantProperty.tenantPropertyComment
           });
-          result ? this.props.onDismiss(true) : null;
+          if (result) {
+            this.props.onDismiss(null, true);
+          }
         }catch(error){
           this.setState({errorMessage:error});
         }
@@ -86,7 +90,9 @@ export default class TenantPropertyPanel extends React.Component<ITenantProperty
             Description: this.state.tenantProperty.tenantPropertyDescription,
             Comment: this.state.tenantProperty.tenantPropertyComment
           });
-          result ? this.props.onDismiss(true) : null;
+          if (result) {
+            this.props.onDismiss(null, true);
+          }
         }catch(error){
           this.setState({errorMessage:error});
         }

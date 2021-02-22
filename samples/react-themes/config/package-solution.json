@@ -1,8 +1,18 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-themes-client-side-solution",
     "id": "46489282-ffa9-4f00-939c-6fff916b182f",
-    "version": "1.0.0.0"
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-themes.sppkg"

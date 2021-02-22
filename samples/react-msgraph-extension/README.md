@@ -1,4 +1,4 @@
-## react-msgraph-extension
+# Microsoft Graph Open Extensions
 
 ## Summary
 This sample shows how to managed Microsoft Graph Open Extension in SPFx. This application uses **User** Resource to create Open Extension.

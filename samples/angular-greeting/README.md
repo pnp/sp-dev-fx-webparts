@@ -15,7 +15,7 @@ extensions:
   createdDate: 2/15/2020 12:00:00 AM
 ---
 
-# AngularJS Greeting client-side web part
+# AngularJS Greeting
 
 ## Summary
 

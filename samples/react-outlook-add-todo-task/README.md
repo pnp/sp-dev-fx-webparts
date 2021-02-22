@@ -59,6 +59,8 @@ react-outlook-add-todo-task|Luis Mañez (MVP, [ClearPeople](http://www.clearpeop
 Version|Date|Comments
 -------|----|--------
 1.0.0|Jun 3, 2020|Initial release
+1.1.0|Sep 3, 2020|To Do item body coming from email body
+1.2.0|Oct 16, 2020|To Do item body included a "open in outlook" link
 
 ## Disclaimer
 

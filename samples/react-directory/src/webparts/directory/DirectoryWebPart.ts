@@ -19,6 +19,7 @@ export interface IDirectoryWebPartProps {
     title: string;
     searchFirstName: boolean;
     searchProps: string;
+    clearTextSearchProps: string;
     pageSize: number;
 }
 
@@ -47,6 +48,7 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<
                     this.properties.title = value;
                 },
                 searchProps: this.properties.searchProps,
+                clearTextSearchProps: this.properties.clearTextSearchProps,
                 pageSize: this.properties.pageSize
             }
         );
@@ -88,6 +90,13 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<
                                     label: strings.SearchPropsLabel,
                                     description: strings.SearchPropsDesc,
                                     value: this.properties.searchProps,
+                                    multiline: false,
+                                    resizable: false
+                                }),
+                                PropertyPaneTextField('clearTextSearchProps', {
+                                    label: strings.ClearTextSearchPropsLabel,
+                                    description: strings.ClearTextSearchPropsDesc,
+                                    value: this.properties.clearTextSearchProps,
                                     multiline: false,
                                     resizable: false
                                 }),

@@ -5,7 +5,14 @@
     "id": "5d6f4a5a-9d2b-4a93-a283-16b8f5ea75d6",
     "version": "1.5.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/workbench-customizer.sppkg"

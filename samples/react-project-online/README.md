@@ -14,7 +14,7 @@ extensions:
   - react
   createdDate: 11/1/2017 12:00:00 AM
 ---
-# React Project Online
+# Project Online
 
 ## Summary
 This sample shows how to use SPFx to consume data from the Project Online REST API. The code uses Placeholder and ListView [reusable controls](https://github.com/SharePoint/sp-dev-fx-controls-react) to create a better experience to the end user.

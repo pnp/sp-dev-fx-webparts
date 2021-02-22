@@ -4,7 +4,7 @@ declare interface IThemesStrings {
   DescriptionFieldLabel: string;
 }
 
-declare module 'themesStrings' {
+declare module 'ThemesStrings' {
   const strings: IThemesStrings;
   export = strings;
 }

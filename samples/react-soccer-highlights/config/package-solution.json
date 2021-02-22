@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-spfx-client-side-solution",
+    "id": "629b908d-ad61-4f35-9317-691a1f768908",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "m365pnp"
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/react-soccer-highlights.sppkg"
+  }
+}

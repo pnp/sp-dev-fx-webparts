@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "custom-links-client-side-solution",
+    "id": "1774407c-58b4-4d81-98a2-5f228c1dcdd8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "m365pnp"
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/custom-links.sppkg"
+  }
+}

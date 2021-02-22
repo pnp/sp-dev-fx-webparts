@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-tailwindcss-client-side-solution",
+    "id": "62daa1f6-c9b4-4664-b101-37ccbddb47da",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "m365pnp"
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/react-tailwindcss.sppkg"
+  }
+}

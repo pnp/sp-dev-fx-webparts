@@ -3,9 +3,16 @@
   "solution": {
     "name": "react-pnpjsexplorer-client-side-solution",
     "id": "a41b7fa8-313e-40d1-ae85-1d85baddecf5",
-    "version": "2.0.0.0",
+    "version": "2.1.1.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-pnpjsexplorer.sppkg"

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "bot-framework-chat-sso-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/BotFrameworkChatSSO/BotFrameworkChatSSOWebPart.js",
+          "manifest": "./src/webparts/BotFrameworkChatSSO/BotFrameworkChatSSOWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BotFrameworkChatSSOWebPartStrings": "lib/webparts/BotFrameworkChatSSO/loc/{locale}.js"
+  }
+}
