@@ -61,8 +61,10 @@ export default class TreeOrgChart extends React.Component<
     if (
       this.props.viewType !== prevProps.viewType ||
       this.props.maxLevels !== prevProps.maxLevels ||
-      this.props.teamLeader !== prevProps.teamLeader
-    ) {
+      this.props.teamLeader !== prevProps.teamLeader ||
+      this.props.excludefilter !== prevProps.excludefilter ||
+      this.props.filter !== prevProps.filter
+    ) { 
       await this.loadOrgchart();
     }
   }
@@ -176,8 +178,10 @@ export default class TreeOrgChart extends React.Component<
       managerProperties.DirectReports &&
       managerProperties.DirectReports.length > 0
     ) {
+
+
       const usersDirectReports: any[] = await this.getChildren(
-        managerProperties.DirectReports
+        this.applyFilter(managerProperties.DirectReports)
       );
       // return treeData
       return { title: person, expanded: true, children: usersDirectReports };
@@ -187,10 +191,30 @@ export default class TreeOrgChart extends React.Component<
       return { title: person };
     }
   }
+
+  private applyFilter(directReports:string[]):string[] {
+    let applyuser:string[] =[];
+    if(this.props.filter && this.props.filter.length >0) {
+      //filter is active
+
+      if(this.props.excludefilter) {
+        applyuser = directReports.filter((x) => x.indexOf(this.props.filter) === -1 );
+      }else {
+        applyuser = directReports.filter((x) => x.indexOf(this.props.filter) !== -1 );
+      }
+      
+    } else {
+      applyuser= directReports;
+    }
+
+    return applyuser;
+  }
   // Get Children (user DirectReports)
   private async getChildren(userDirectReports: any[]) {
     let treeChildren: ITreeChildren[] = [];
     let spUser: IPersonaSharedProps = {};
+
+  
 
     for (const user of userDirectReports) {
       const managerProperties = await this.SPService.getUserProperties(user);
@@ -211,7 +235,7 @@ export default class TreeOrgChart extends React.Component<
         />
       );
       const usersDirectReports = await this.getChildren(
-        managerProperties.DirectReports
+        this.applyFilter(managerProperties.DirectReports)
       );
 
       usersDirectReports
@@ -240,7 +264,7 @@ export default class TreeOrgChart extends React.Component<
       <Persona {...teamleader} hidePersonaDetails={false} size={PersonaSize.size40} />);
 
     const usersDirectReports: any[] = await this.getChildren(
-      teamleaderUserProperties.DirectReports
+      this.applyFilter(teamleaderUserProperties.DirectReports)
     );
     return { person: teamleaderCard, treeChildren: usersDirectReports };
 
@@ -301,7 +325,7 @@ export default class TreeOrgChart extends React.Component<
       <Persona {...me} hidePersonaDetails={false} size={PersonaSize.size40} />
     );
     const usersDirectReports: any[] = await this.getChildren(
-      currentUserProperties.DirectReports
+      this.applyFilter(currentUserProperties.DirectReports)
     );
     // Current USer Has Manager
     if (hasManager) {

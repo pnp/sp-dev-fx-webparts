@@ -56,6 +56,8 @@ export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgC
           this.render();
         },
         maxLevels: this.properties.maxLevels,
+        filter: this.properties.filter,
+        excludefilter: this.properties.excludefilter,
         context: this.context
       }
     );

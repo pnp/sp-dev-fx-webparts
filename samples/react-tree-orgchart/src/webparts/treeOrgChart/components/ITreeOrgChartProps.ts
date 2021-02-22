@@ -10,4 +10,6 @@ export interface ITreeOrgChartProps {
   teamLeader?: string;
   updateTeamLeader: (loginname: string) => void;
   context: WebPartContext;
+  filter: string;
+  excludefilter: boolean;
 }
