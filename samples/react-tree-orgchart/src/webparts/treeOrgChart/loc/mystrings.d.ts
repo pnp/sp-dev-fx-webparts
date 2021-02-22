@@ -2,8 +2,17 @@ declare interface ITreeOrgChartWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   TitleFieldLabel: string;
-  CurrentUserTeamFieldLabel:string;
   MaxLevels: string;
+  ViewType: string;
+  TreeOrgChartTypeMyTeam: string;
+  TreeOrgChartTypeCompany: string;
+  TreeOrgChartTypeShowOtherTeam: string;
+  FilterGroupName:string;
+  ExcludeFilter: string;
+  ExcludeFilterOnText: string;
+  ExcludeFilterOffText: string;
+  FilterLabel: string;
+  FilterDescription: string;
 }
 
 declare module 'TreeOrgChartWebPartStrings' {
