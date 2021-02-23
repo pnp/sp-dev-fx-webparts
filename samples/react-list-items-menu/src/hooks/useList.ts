@@ -3,10 +3,7 @@ import "@pnp/sp/items";
 import "@pnp/sp/lists";
 import "@pnp/sp/webs";
 
-import {
-  sortBy,
-  uniqBy
-} from "lodash";
+import { sortBy, uniqBy } from "lodash";
 import moment from "moment";
 
 import { sp } from "@pnp/sp";
@@ -56,12 +53,12 @@ export const useList = () => {
     <RowLimit>1000</RowLimit>
 </View>`;
 
-    console.log('group',_viewXml )
+    console.log("group", _viewXml);
     const _groupHeadersResults = await sp.web.lists
       .getById(listId)
       .renderListDataAsStream({ ViewXml: _viewXml });
 
-      console.log(_groupHeadersResults.Row);
+    console.log(_groupHeadersResults.Row);
     //console.log("groups", _groupHeadersResults.Row);
     return uniqBy(_groupHeadersResults.Row, groupByField);
   };
