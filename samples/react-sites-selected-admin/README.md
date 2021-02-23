@@ -4,23 +4,29 @@
 
 This is a sample SharePoint Framework client-side web part built using react.
 
-The webpart lets you manage your Azure AD applications that have the Sites Selected Api permission. With this web part you'll get an UI for managing what app can connect to which site.
+The web part lets you manage your Azure AD applications that have the Sites Selected Api permission. With this web part you'll get an UI for managing what app can connect to which site.
 
-The webpart uses the built in MSGraphClient and needs to be approved in API management. The app asks for Mirosoft Graph Application.Read.All and Sites.FullControl.All. Users of the webpart will need to have Site Collection Administrator privileges to the sites being added to an app.
+The web part uses the built in MSGraphClient and needs to be approved in API management. The app asks for Microsoft Graph `Application.Read.All` and `Sites.FullControl.All`. Users of the web part will need to have Site Collection Administrator privileges to the sites being added to an app.
 
-## Webpart usage
+## Web part usage
+
 ![alt text][Webpart in action]
 
 [Webpart in action]: ./assets/sites-manager-demo.gif "Sites Selected Manager in action"
 
-## Using the webpart to grant an app access to a site, start to finnish
+## Using the web part to grant an app access to a site, start to finish
+
 ![alt text][Webpart in action - Visual Studio]
 
 [Webpart in action - Visual Studio]: ./assets/vsDemo.gif "Sites Selected Manager Demo"
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![version](https://img.shields.io/badge/version-1.11-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 
 ## Applies to
 
@@ -37,7 +43,7 @@ The webpart uses the built in MSGraphClient and needs to be approved in API mana
 
 Solution|Author(s)
 --------|---------
-react-sites-selected-admin | Fredrik Thorild, https://twitter.com/fthorild
+react-sites-selected-admin | Fredrik Thorild [@fthorild](https://twitter.com/fthorild)
 
 ## Version history
 
@@ -52,7 +58,8 @@ Version|Date|Comments
 ---
 
 ## Minimal Path to Awesome
-- Add an app in Azure AD, or for an exising app add the Sites.Selected Microsoft Graph api permission
+
+- Add an app in Azure AD, or for an existing app add the Sites.Selected Microsoft Graph api permission
 
 ![alt text](./assets/aad-appreg.png "AAD app reg")
 
@@ -61,14 +68,14 @@ Version|Date|Comments
 - in the command-line run:
   - **gulp bundle --ship**
   - **gulp package-solution --ship**
-- Add the .sppkg package to your app catalog
+- Add the `.sppkg` package to your app catalog
 - Approve the api access requests
 
 ![alt text](./assets/api-access-page.png "API Management")
 
-- Install webpart on a site of your choice
+- Install web part on a site of your choice
 - Add permissions to your app
-- Try out the AAD app by sending a request using your favourite method  
+- Try out the AAD app by sending a request using your favorite method  
 
 
 
