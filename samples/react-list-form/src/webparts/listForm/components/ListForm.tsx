@@ -298,7 +298,15 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
     try {
       if ((formType === ControlMode.New) || !id) {
         const data = this.state.fieldsSchema
-          .reduce((newData, fld) => { newData[fld.InternalName] = fld.DefaultValue; return newData; }, {});
+          .reduce((newData, fld) => {
+            if (fld.DefaultValue && fld.FieldType.indexOf("TaxonomyField") > -1) {
+              newData[fld.InternalName] = fld.DefaultValue.replace(new RegExp("([#][0-9]+;#|^[0-9]+;#)", "g"), "")
+            } else {
+              newData[fld.InternalName] = fld.DefaultValue;
+            }
+            return newData;
+          },
+            {});
         this.setState({ ...this.state, data: data, originalData: { ...data }, fieldErrors: {}, isLoadingData: false });
         return;
       }
