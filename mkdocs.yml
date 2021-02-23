@@ -63,6 +63,27 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sites-selected-admin
+      name: react-sites-selected-admin
+      title: Sites Selected Admin 
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-sites-selected-admin/assets/sites-manager-demo.gif
+      author: Fredrik Thorild
+      summary: The web part lets you manage your Azure AD applications that have the Sites Selected Api permission. With this web part you'll get an UI for managing what app can connect to which site.
+      modifiedtext: February 19, 2021
+      modified: 2021-02-19
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-datatable
+      name: react-datatable
+      title: Datatable
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-datatable/assets/preview.png
+      author: Chandani Prajapati
+      summary: This web part provides easy way to render SharePoint custom list in datatable view with all the necessary features.
+      modifiedtext: February 19, 2021
+      modified: 2021-02-19
+      pnpcontrols: PropertyFieldColorPicker, PropertyFieldListPicker, PropertyFieldMultiSelect, PropertyFieldOrder, WebPartTitle, Placeholder
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-staffdirectory
       name: react-staffdirectory
       title: Staff Directory
@@ -954,16 +975,6 @@ extra:
       modified: 2020-12-04
       pnpcontrols: PropertyFieldDateTimePicker, PeoplePicker, Map
       technology: MSGraph
-    - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-workbench-customizer
-      name: js-workbench-customizer
-      title: Workbench customizer
-      summary: This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page.
-      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-workbench-customizer/assets/Preview.png
-      framework: Javascript
-      spfx: 1.10.0
-      author: Joel Rodrigues
-      modifiedtext: June 04, 2020
-      modified: 2020-06-04
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-outlook-add-todo-task
@@ -3141,6 +3152,7 @@ extra:
     - Bill Ayers
     - Bo George
     - Bob German
+    - Chandani Prajapati
     - Chakkaradeep Chandran
     - Chris Kent
     - Daniel Gaeta
@@ -3160,6 +3172,7 @@ extra:
     - Fabio Franzini
     - Franck Cornu
     - Federico Porceddu
+    - Fredrik Thorild
     - Gary Pretty
     - Gaurav Goyal
     - Gautam Sheth
