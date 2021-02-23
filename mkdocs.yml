@@ -2790,17 +2790,15 @@ extra:
       modifiedtext: February 28, 2017
       modified: 2017-02-28
     - framework: React
-      spfx: 1.4.1
-      year: 2018
+      spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-securitygrid
       name: react-securitygrid
       title: Security Grid
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-securitygrid/src/images/MainDisplay.gif
       author: Russell Gove
       summary: React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web
-      version: 1.0.0.1
-      modifiedtext: October 28, 2020
-      modified: 2020-10-28
+      modifiedtext: February 22, 2021
+      modified: 2021-02-21
       technology: MSGraph
     - framework: React
       spfx: GA
