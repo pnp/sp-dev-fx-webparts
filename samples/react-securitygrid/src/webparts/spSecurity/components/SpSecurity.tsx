@@ -25,10 +25,10 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   private svc: SPSecurityService = new SPSecurityService("ss");
   private userSelection = new Selection();
   private listSelection = new Selection();
- constructor(props: any) {
+  constructor(props: any) {
     super(props);
     this.state = {
-      securityInfo: { siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [] },
+      securityInfo: { siteUsers: [], siteGroups: [], roleDefinitions: [], lists: [], adGroups: [] },
       //permission: this.props.permission,
       selectedPermissions: this.props.selectedPermissions,
       showUserPanel: false,
@@ -52,7 +52,7 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     this.renderUserSelected = this.renderUserSelected.bind(this);
   }
   public componentDidMount(): void {
-    debugger;
+
     initializeFileTypeIcons();
   }
   public componentDidUpdate(): void {
@@ -257,13 +257,13 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
   public renderUserItem(item: any, index: number, column: IColumn, effectivePermissions: ISelectedPermission[]): any {
 
     let user: SPSiteUser = find(this.state.securityInfo.siteUsers, (su) => {
-      return su.id.toString() === column.key;
+      return su.upn.toString() === column.key;
     });
     // spin througg the selected permsiisopns and for the first hit, display that color. No Hit, then display empty
 
     for (let selectedPermission of effectivePermissions ? effectivePermissions : []) {
       if (Helpers.doesUserHavePermission(item, user, SPPermission[selectedPermission.permission],
-        this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups)) {
+        this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups, this.state.securityInfo.adGroups)) {
         return (
           <Icon iconName={selectedPermission.iconName} style={{ color: selectedPermission.color }} onClick={(e) => {
             this.expandCollapseList(item);
@@ -290,13 +290,13 @@ export default class SpSecurity extends React.Component<ISpSecurityProps, ISpSec
     for (let user of users) {
       if (user.isSelected) {
         if (
-          (user.principalType === 1 && this.props.showUsers)
+          ((user.principalType === 1 || user.principalType === -1) && this.props.showUsers)
           ||
           (user.principalType === 4 && this.props.showSecurityGroups)
         )
-          if (!this.props.showOnlyUsersWithPermission || Helpers.doesUserHaveAnyPermission(this.state.securityInfo.lists, user, effectivePermissions.map((sp) => { return SPPermission[sp.permission] }), this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups))
+          if (!this.props.showOnlyUsersWithPermission || Helpers.doesUserHaveAnyPermission(this.state.securityInfo.lists, user, effectivePermissions.map((sp) => { return SPPermission[sp.permission] }), this.state.securityInfo.roleDefinitions, this.state.securityInfo.siteGroups, this.state.securityInfo.adGroups))
             columns.push({
-              key: user.id.toString(),
+              key: user.upn,
               name: this.state.showEmail ? user.upn : user.name,
               fieldName: "",
               minWidth: 20,
