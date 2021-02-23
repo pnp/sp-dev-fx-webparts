@@ -2,9 +2,10 @@
 
 ## Summary
 
-This webpart provides easy way to render sharepoint custom list in datatable view with all the necessary features. 
+This web part provides easy way to render SharePoint custom list in datatable view with all the necessary features. 
 
-## Fetaures :
+## Features
+
 - Searching (Configurable)
 - Sorting (Configurable)
 - Download as a CSV and PDF,
@@ -14,9 +15,14 @@ This webpart provides easy way to render sharepoint custom list in datatable vie
 
 ![Preview](assets/preview.png?raw=true "Preview")
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
 
 ## Applies to
 
@@ -27,7 +33,7 @@ This webpart provides easy way to render sharepoint custom list in datatable vie
 
 Solution|Author(s)
 --------|---------
-react-datatable | Chandani Prajapati ([@Chandani_SPD], (https://twitter.com/Chandani_SPD))
+react-datatable | Chandani Prajapati ([@Chandani_SPD](https://twitter.com/Chandani_SPD))
 
 ## Version history
 
