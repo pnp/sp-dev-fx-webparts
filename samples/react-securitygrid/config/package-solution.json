@@ -5,7 +5,7 @@
         "isDomainIsolated": false,
         "name": "spsecurity-webpart-3-client-side-solution",
         "id": "788271fb-ee9b-40df-8381-eb3dc70d1982",
-        "version": "1.0.0.3"
+        "version": "1.0.4.0"
     },
     "paths": {
         "zippedPackage": "solution/spsecurity-webpart-3.sppkg"

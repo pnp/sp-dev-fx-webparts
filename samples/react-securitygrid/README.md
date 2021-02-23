@@ -17,7 +17,7 @@ extensions:
 
 ## Summary
 
-React-securitygrid is an SPFX webpart that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:
+React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web as shown here:
 
 ![config panel](./src/images/MainDisplay.gif)
 
@@ -80,9 +80,14 @@ The admin can select lists and libraries below to have them included/excluded fr
 
 This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/russgove/SPSecurity.
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![SPFx 1.10.0](https://img.shields.io/badge/version-1.10-green.svg)
+![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js LTS 6.x | LTS 8.x](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20LTS%208.x-green.svg)
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
 
 ## Applies to
 
@@ -97,12 +102,13 @@ This is a port of an Angular 1.3 SharePoint hosted App at https://github.com/rus
 
 Solution|Author(s)
 --------|---------
- react-securitygrid | Russell Gove
+ react-securitygrid | Russell Gove ([@russgove](https://twitter.com/russgove))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.0.0.4|February 22, 2021 | Added support for AD groups
 1.0.0.3|October 28, 2020 | Update to office-ui-fabric-react 7.148.1, fixing icons and indentation for sub-folders 
 1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions
 1.0.0.1|April 25, 2018|Update to SPFx 1.4.1

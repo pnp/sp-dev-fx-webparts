@@ -416,7 +416,7 @@ export default class SPSecurityService {
           user.id = u.Id;
           user.name = u.Title;
           user.principalType = u.PrincipalType;
-          user.upn = upn ? upn.toLocaleLowerCase() : u.Title;// switching key in react from id to upn. ensure upn is not undefoined
+          user.upn = upn ? upn.toLocaleLowerCase() : u.Title;// switching key in react from id to upn. ensure upn is not undefined
           if (u.UserId) {
             user.userId = new SPExternalUser();
             user.userId.nameId = u.UserId.NameId;
@@ -426,7 +426,7 @@ export default class SPSecurityService {
         });
 
         // securityInfo.siteUsers = securityInfo.siteUsers.filter((su) => { su.upn });
-        return securityInfo.siteUsers;// dont really need to return this// alreadey set it on securityinfo
+        return securityInfo.siteUsers;// dont really need to return this// already set it on securityinfo
       }).catch((error) => {
         debugger;
         errors.push(`There was an error feting site users -- ${error.message}`);
@@ -442,13 +442,13 @@ export default class SPSecurityService {
         securityInfo.siteGroups = response.map((grp) => {
           //
           //IMPORTANT:
-          //For groups created with 'Anyone in the orgranization with the link'
+          //For groups created with 'Anyone in the organization with the link'
           //LoginName: "SharingLinks.cf28991a-7f40-49c8-a68e-f4fa143a094f.OrganizationEdit.2671b36d-1681-4e39-82dc-a9f11166517d",
           //
-          //For groups create with SPecific People 
+          //For groups create with SPecific People
           //LoginName: "SharingLinks.3d634d86-7136-4d59-8acf-c87d9a2c7d98.Flexible.9368eb69-6ca4-4b55-85e5-148c3e48e520",
           //
-          //need to check for other options. Seems funny that the one labeled 'Flecible' is for specific people.
+          //need to check for other options. Seems funny that the one labeled 'Flexible' is for specific people.
           //
           //So we wil need to add code one day to decipher all thes sharing groups!
 
@@ -466,7 +466,7 @@ export default class SPSecurityService {
           return siteGroup;
         });
 
-        return securityInfo.siteGroups;// dont really need to return this// alreadey set it on securityinfo
+        return securityInfo.siteGroups;// don't really need to return this// already set it on securityinfo
       }).catch((error) => {
         //error fetching groups
         errors.push(`There was an error feting site Groups -- ${error.message}`);
@@ -492,8 +492,8 @@ export default class SPSecurityService {
         return securityInfo.roleDefinitions;
       }).catch((error) => {
         //debugger;
-        //error fetching roledefinitions
-        errors.push(`There was an error fetcing role Definitions -- ${error.message}`);
+        //error fetching role definitions
+        errors.push(`There was an error fetching role Definitions -- ${error.message}`);
         throw error;
       });
     let filters: string[] = [];
@@ -503,20 +503,20 @@ export default class SPSecurityService {
     if (!showCatalogs) {
       filters.push("IsCatalog eq false");
     }
-    let filter: string = filters.join(" and ");
+    let subFilter: string = filters.join(" and ");
     sp.web.lists
       .expand("RootFolder", "RoleAssignments", "RoleAssignments/RoleDefinitionBindings", "RoleAssignments/Member",
         "RoleAssignments/Member/Users", "RoleAssignments/Member/Groups", "RoleAssignments/Member/UserId")
-      .filter(filter).inBatch(batch).get()
+      .filter(subFilter).inBatch(batch).get()
       .then((response) => {
         securityInfo.lists = response.map((listObject) => {
           let mylist: SPList = new SPList();
-          mylist.isSelected = true;// Shoudl be shown in the UI, user can deslect it in the ui
+          mylist.isSelected = true;// Should be shown in the UI, user can de-select it in the ui
           mylist.title = listObject.Title;
           mylist.id = listObject.Id;
           mylist.hidden = listObject.Hidden;
           mylist.serverRelativeUrl = listObject.RootFolder.ServerRelativeUrl;
-          mylist.type = securableType.List;// to differeentiate foldes from lists
+          mylist.type = securableType.List;// to differentiate folders from lists
           mylist.itemCount = listObject.ItemCount;
           mylist.isExpanded = false;
           mylist.hasBeenRetrieved = false;
