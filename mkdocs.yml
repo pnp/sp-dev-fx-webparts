@@ -1510,10 +1510,10 @@ extra:
       name: react-list-form
       title: List Form Web Part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif
-      author: Dany Wyss, Harsha Vardhini, Ryan Schouten, Abderahman Moujahid, Hugo Bernier
+      author: Dany Wyss, Harsha Vardhini, Ryan Schouten, Abderahman Moujahid, Hugo Bernier, Fredrik Thorild
       summary: The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.
-      modifiedtext: February 07, 2021
-      modified: 2021-02-07
+      modifiedtext: February 19, 2021
+      modified: 2021-02-19
     - framework: React
       spfx: 1.9.1
       year: 2019
