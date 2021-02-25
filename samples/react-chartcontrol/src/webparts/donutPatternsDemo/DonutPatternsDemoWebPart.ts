@@ -14,7 +14,7 @@ export interface IDonutPatternsDemoWebPartProps {
   description: string;
 }
 
-export class DonutPatternsDemoWebPart extends BaseClientSideWebPart<IDonutPatternsDemoWebPartProps> {
+export default class DonutPatternsDemoWebPart extends BaseClientSideWebPart<IDonutPatternsDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IDonutPatternsDemoProps > = React.createElement(

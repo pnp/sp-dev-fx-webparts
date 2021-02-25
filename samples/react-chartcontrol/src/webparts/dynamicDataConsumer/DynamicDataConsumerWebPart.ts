@@ -43,7 +43,7 @@ export interface IDynamicDataConsumerWebPartProps {
   repoOwner: string;
 }
 
-export class DynamicDataConsumerWebPart extends BaseClientSideWebPart<IDynamicDataConsumerWebPartProps> {
+export default class DynamicDataConsumerWebPart extends BaseClientSideWebPart<IDynamicDataConsumerWebPartProps> {
 
   public render(): void {
     const { repo,
@@ -80,10 +80,6 @@ export class DynamicDataConsumerWebPart extends BaseClientSideWebPart<IDynamicDa
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

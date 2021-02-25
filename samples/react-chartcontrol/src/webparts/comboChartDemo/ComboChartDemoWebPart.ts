@@ -13,7 +13,7 @@ export interface IComboChartDemoWebPartProps {
   description: string;
 }
 
-export  class ComboChartDemoWebPart extends BaseClientSideWebPart<IComboChartDemoWebPartProps> {
+export default class ComboChartDemoWebPart extends BaseClientSideWebPart<IComboChartDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IComboChartDemoProps > = React.createElement(

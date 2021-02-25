@@ -13,7 +13,7 @@ export interface IBubbleChartDemoWebPartProps {
   description: string;
 }
 
-export  class BubbleChartDemoWebPart extends BaseClientSideWebPart<IBubbleChartDemoWebPartProps> {
+export default class BubbleChartDemoWebPart extends BaseClientSideWebPart<IBubbleChartDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IBubbleChartDemoProps > = React.createElement(

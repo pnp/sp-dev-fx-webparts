@@ -12,7 +12,7 @@ export interface IBarChartStaticWebPartProps {
   description: string;
 }
 
-export class BarChartStaticWebPart extends BaseClientSideWebPart<IBarChartStaticWebPartProps> {
+export default class BarChartStaticWebPart extends BaseClientSideWebPart<IBarChartStaticWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IBarChartStaticProps > = React.createElement(

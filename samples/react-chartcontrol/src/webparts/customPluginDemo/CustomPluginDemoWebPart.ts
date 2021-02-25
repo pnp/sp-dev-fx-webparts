@@ -13,7 +13,7 @@ export interface ICustomPluginDemoWebPartProps {
   description: string;
 }
 
-export  class CustomPluginDemoWebPart extends BaseClientSideWebPart<ICustomPluginDemoWebPartProps> {
+export default class CustomPluginDemoWebPart extends BaseClientSideWebPart<ICustomPluginDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<ICustomPluginDemoProps > = React.createElement(

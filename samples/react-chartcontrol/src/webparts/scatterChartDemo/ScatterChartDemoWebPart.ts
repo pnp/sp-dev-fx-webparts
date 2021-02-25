@@ -14,7 +14,7 @@ export interface IScatterChartDemoWebPartProps {
   description: string;
 }
 
-export class ScatterChartDemoWebPart extends BaseClientSideWebPart<IScatterChartDemoWebPartProps> {
+export default class ScatterChartDemoWebPart extends BaseClientSideWebPart<IScatterChartDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IScatterChartDemoProps > = React.createElement(
@@ -28,10 +28,6 @@ export class ScatterChartDemoWebPart extends BaseClientSideWebPart<IScatterChart
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

@@ -13,7 +13,7 @@ export interface IAreaChartDemoWebPartProps {
   description: string;
 }
 
-export class AreaChartDemoWebPart extends BaseClientSideWebPart<IAreaChartDemoWebPartProps> {
+export default class AreaChartDemoWebPart extends BaseClientSideWebPart<IAreaChartDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IAreaChartDemoProps > = React.createElement(

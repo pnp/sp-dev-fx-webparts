@@ -68,7 +68,7 @@ const DEFAULT_CIRCUMFERENCE: number = 100;
 const DEFAULT_CHARTROTATION: number = -180;
 const DEFAULT_POINTRADIUS = 3;
 
-export class ChartinatorWebPart extends BaseClientSideWebPart<IChartinatorWebPartProps> {
+export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinatorWebPartProps> {
   private _fields: IListField[];
 
   /**

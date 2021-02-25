@@ -35,7 +35,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
    * @param value the value
    */
   private _validateNumber(value: string): string {
-    return isNaN(Number(value)) ? strings.NumberErrorMessage : '';
+    return value !== '' && value !== undefined && isNaN(Number(value)) ? strings.NumberErrorMessage : '';
   }
 
   /**

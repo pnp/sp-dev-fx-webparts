@@ -20,7 +20,7 @@ export interface IDynamicDataCallableWebPartProps {
   repo: string;
 }
 
-export  class DynamicDataCallableWebPart extends BaseClientSideWebPart<IDynamicDataCallableWebPartProps>  implements IDynamicDataCallables {
+export default class DynamicDataCallableWebPart extends BaseClientSideWebPart<IDynamicDataCallableWebPartProps>  implements IDynamicDataCallables {
   /** the last selected contributor */
   private _selectedContributor: IContributor;
 

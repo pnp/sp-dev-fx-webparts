@@ -13,7 +13,7 @@ export interface IPieChartDemoWebPartProps {
   description: string;
 }
 
-export class PieChartDemoWebPart extends BaseClientSideWebPart<IPieChartDemoWebPartProps> {
+export default class PieChartDemoWebPart extends BaseClientSideWebPart<IPieChartDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IPieChartDemoProps > = React.createElement(

@@ -12,7 +12,7 @@ export interface IHorizontalBarDemoWebPartProps {
   description: string;
 }
 
-export  class HorizontalBarDemoWebPart extends BaseClientSideWebPart<IHorizontalBarDemoWebPartProps> {
+export default class HorizontalBarDemoWebPart extends BaseClientSideWebPart<IHorizontalBarDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IHorizontalBarDemoProps > = React.createElement(
@@ -27,10 +27,6 @@ export  class HorizontalBarDemoWebPart extends BaseClientSideWebPart<IHorizontal
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

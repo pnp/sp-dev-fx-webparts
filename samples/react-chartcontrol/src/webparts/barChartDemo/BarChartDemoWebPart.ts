@@ -17,7 +17,7 @@ export interface IBarChartDemoWebPartProps {
  * and rendering the chart once the data has been retrieved.
  * To keep the demo simple, we don't specify custom colors.
  */
-export  class BarChartDemoWebPart extends BaseClientSideWebPart<IBarChartDemoWebPartProps> {
+export default class BarChartDemoWebPart extends BaseClientSideWebPart<IBarChartDemoWebPartProps> {
 
   public render(): void {
 

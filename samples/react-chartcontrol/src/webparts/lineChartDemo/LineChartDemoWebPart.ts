@@ -12,7 +12,7 @@ export interface ILineChartDemoWebPartProps {
   description: string;
 }
 
-export  class LineChartDemoWebPart extends BaseClientSideWebPart<ILineChartDemoWebPartProps> {
+export default class LineChartDemoWebPart extends BaseClientSideWebPart<ILineChartDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<ILineChartDemoProps > = React.createElement(
@@ -26,10 +26,6 @@ export  class LineChartDemoWebPart extends BaseClientSideWebPart<ILineChartDemoW
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

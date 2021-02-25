@@ -18,7 +18,7 @@ export interface IAccessibleTableWebPartProps {
   datasetlabel: string;
 }
 
-export class AccessibleTableWebPart extends BaseClientSideWebPart<IAccessibleTableWebPartProps> {
+export default class AccessibleTableWebPart extends BaseClientSideWebPart<IAccessibleTableWebPartProps> {
    public render(): void {
     const element: React.ReactElement<IAccessibleTableProps> = React.createElement(
       AccessibleTable,

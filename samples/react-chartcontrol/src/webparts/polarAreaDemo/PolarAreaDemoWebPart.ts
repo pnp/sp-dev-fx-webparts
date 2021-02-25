@@ -13,7 +13,7 @@ export interface IPolarAreaDemoWebPartProps {
   description: string;
 }
 
-export  class PolarAreaDemoWebPart extends BaseClientSideWebPart<IPolarAreaDemoWebPartProps> {
+export default class PolarAreaDemoWebPart extends BaseClientSideWebPart<IPolarAreaDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IPolarAreaDemoProps > = React.createElement(
@@ -25,10 +25,6 @@ export  class PolarAreaDemoWebPart extends BaseClientSideWebPart<IPolarAreaDemoW
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

@@ -13,7 +13,7 @@ export interface IRealtimePluginDemoWebPartProps {
   description: string;
 }
 
-export class RealtimePluginDemoWebPart extends BaseClientSideWebPart<IRealtimePluginDemoWebPartProps> {
+export default class RealtimePluginDemoWebPart extends BaseClientSideWebPart<IRealtimePluginDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IRealtimePluginDemoProps > = React.createElement(
@@ -27,10 +27,6 @@ export class RealtimePluginDemoWebPart extends BaseClientSideWebPart<IRealtimePl
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
