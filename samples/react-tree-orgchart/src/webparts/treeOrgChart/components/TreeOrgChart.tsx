@@ -22,15 +22,18 @@ import {
   Spinner,
   SpinnerSize
 } from "office-ui-fabric-react/lib/components/Spinner";
-import { DisplayMode } from "@microsoft/sp-core-library";
+import { DisplayMode, Environment, EnvironmentType } from "@microsoft/sp-core-library";
 import { PeoplePicker, PrincipalType } from "@pnp/spfx-controls-react/lib/PeoplePicker";
+import { SPComponentLoader } from '@microsoft/sp-loader';
+import * as strings from 'TreeOrgChartWebPartStrings';
+
 
 export enum TreeOrgChartType {
   MyTeam = 1,
   CompanyHierarchy = 2,
   ShowOtherTeam = 4
 }
-
+const LIVE_PERSONA_COMPONENT_ID: string = '914330ee-2df2-4f6e-a858-30c23a812408';
 
 export default class TreeOrgChart extends React.Component<
   ITreeOrgChartProps,
@@ -57,21 +60,58 @@ export default class TreeOrgChart extends React.Component<
     prevProps: ITreeOrgChartProps,
     prevState: ITreeOrgChartState
   ) {
-    debugger;
     if (
       this.props.viewType !== prevProps.viewType ||
       this.props.maxLevels !== prevProps.maxLevels ||
       this.props.teamLeader !== prevProps.teamLeader ||
       this.props.excludefilter !== prevProps.excludefilter ||
-      this.props.filter !== prevProps.filter
-    ) { 
+      this.props.filter !== prevProps.filter ||
+      this.props.detailBehavoir !== prevProps.detailBehavoir
+    ) {
       await this.loadOrgchart();
     }
   }
 
   public async componentDidMount() {
+    if (Environment.type !== EnvironmentType.Local) {
+      const sharedLibrary = await this._loadSPComponentById(
+        LIVE_PERSONA_COMPONENT_ID
+      );
+      const livePersonaCard: any = sharedLibrary.LivePersonaCard;
+      this.setState({ livePersonaCard: livePersonaCard });
+    }
+
     await this.loadOrgchart();
   }
+
+  private async _loadSPComponentById(componentId: string): Promise<any> {
+    try {
+      const component: any = await SPComponentLoader.loadComponentById(
+        componentId
+      );
+      return component;
+    } catch (error) {
+      Promise.reject(error);
+    }
+  }
+
+  private livePersonaCard(userProperties: any): JSX.Element {
+    return React.createElement(
+      this.state.livePersonaCard,
+      {
+        serviceScope: this.props.context.serviceScope,
+        upn: userProperties.Email,
+        onCardOpen: () => {
+          console.log('LivePersonaCard Open');
+        },
+        onCardClose: () => {
+          console.log('LivePersonaCard Close');
+        },
+      }, this.buildDefaultPersonaCard(userProperties)
+    );
+
+  }
+
   /*
   // Load Organization Chart
   */
@@ -145,34 +185,51 @@ export default class TreeOrgChart extends React.Component<
     }
     return treeManagers;
   }
-  /*
-  // Get user from Top Manager
-  */
-  private async getUsers(manager: string) {
-    let person: any;
+
+  public buildPersonaCard(userProperties: any): JSX.Element {
+    if (this.props.detailBehavoir) {
+      if (this.state.livePersonaCard) {
+        return (this.livePersonaCard(userProperties));
+      }
+      return this.buildDefaultPersonaCard(userProperties);
+    } else {
+      return this.buildDefaultPersonaCard(userProperties);
+    }
+  }
+
+  public buildDefaultPersonaCard(userProperties: any): JSX.Element {
+
     let spUser: IPersonaSharedProps = {};
-    // Get User Properties
-    const managerProperties = await this.SPService.getUserProperties(manager);
-
-
-    let imageInitials: string[] = managerProperties.DisplayName.split(" ");
+    let imageInitials: string[] = userProperties.DisplayName.split(" ");
 
     // Persona Card Properties
-    spUser.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${managerProperties.Email}`;
+    spUser.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${userProperties.Email}`;
     spUser.imageInitials = imageInitials && imageInitials.length > 0 ? `${imageInitials[0]
       .substring(0, 1)
       .toUpperCase()}${imageInitials[1] ? imageInitials[1].substring(0, 1).toUpperCase() : ''}` : '';
-    spUser.text = managerProperties.DisplayName;
-    spUser.tertiaryText = managerProperties.Email;
-    spUser.secondaryText = managerProperties.Title;
+    spUser.text = userProperties.DisplayName;
+    spUser.tertiaryText = userProperties.Email;
+    spUser.secondaryText = userProperties.Title;
     // PersonaCard component
-    person = (
+    return (
       <Persona
         {...spUser}
         hidePersonaDetails={false}
         size={PersonaSize.size40}
       />
     );
+  }
+
+  /*
+  // Get user from Top Manager
+  */
+  private async getUsers(manager: string) {
+
+    // Get User Properties
+    const managerProperties = await this.SPService.getUserProperties(manager);
+
+    const person = this.buildPersonaCard(managerProperties);
+
     // Has DirectReports
     if (
       managerProperties.DirectReports &&
@@ -192,19 +249,19 @@ export default class TreeOrgChart extends React.Component<
     }
   }
 
-  private applyFilter(directReports:string[]):string[] {
-    let applyuser:string[] =[];
-    if(this.props.filter && this.props.filter.length >0) {
+  private applyFilter(directReports: string[]): string[] {
+    let applyuser: string[] = [];
+    if (this.props.filter && this.props.filter.length > 0) {
       //filter is active
 
-      if(this.props.excludefilter) {
-        applyuser = directReports.filter((x) => x.indexOf(this.props.filter) === -1 );
-      }else {
-        applyuser = directReports.filter((x) => x.indexOf(this.props.filter) !== -1 );
+      if (this.props.excludefilter) {
+        applyuser = directReports.filter((x) => x.indexOf(this.props.filter) === -1);
+      } else {
+        applyuser = directReports.filter((x) => x.indexOf(this.props.filter) !== -1);
       }
-      
+
     } else {
-      applyuser= directReports;
+      applyuser = directReports;
     }
 
     return applyuser;
@@ -212,28 +269,11 @@ export default class TreeOrgChart extends React.Component<
   // Get Children (user DirectReports)
   private async getChildren(userDirectReports: any[]) {
     let treeChildren: ITreeChildren[] = [];
-    let spUser: IPersonaSharedProps = {};
-
-  
 
     for (const user of userDirectReports) {
       const managerProperties = await this.SPService.getUserProperties(user);
-      const imageInitials: string[] = managerProperties.DisplayName.split(" ");
 
-      spUser.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${managerProperties.Email}`;
-      spUser.imageInitials = imageInitials && imageInitials.length > 0 ? `${imageInitials[0]
-        .substring(0, 1)
-        .toUpperCase()}${imageInitials[1] ? imageInitials[1].substring(0, 1).toUpperCase() : ''}` : '';
-      spUser.text = managerProperties.DisplayName;
-      spUser.tertiaryText = managerProperties.Email;
-      spUser.secondaryText = managerProperties.Title;
-      const person = (
-        <Persona
-          {...spUser}
-          hidePersonaDetails={false}
-          size={PersonaSize.size40}
-        />
-      );
+      const person = this.buildPersonaCard(managerProperties);
       const usersDirectReports = await this.getChildren(
         this.applyFilter(managerProperties.DirectReports)
       );
@@ -247,21 +287,7 @@ export default class TreeOrgChart extends React.Component<
 
   //buildTeamLeaderOrganizationChart
   private async buildTeamLeaderOrganizationChart(teamleaderUserProperties: any) {
-    let teamleader: IPersonaSharedProps = {};
-    const tlImageInitials: string[] = teamleaderUserProperties.DisplayName.split(
-      " "
-    );
-    teamleader.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${teamleaderUserProperties.Email}`;
-    if (tlImageInitials.length > 1) {
-      teamleader.imageInitials = `${tlImageInitials[0]
-        .substring(0, 1)
-        .toUpperCase()}${tlImageInitials[1] ? tlImageInitials[1].substring(0, 1).toUpperCase() : ''}`;
-    }
-    teamleader.text = teamleaderUserProperties.DisplayName;
-    teamleader.tertiaryText = teamleaderUserProperties.Email;
-    teamleader.secondaryText = teamleaderUserProperties.Title;
-    const teamleaderCard = (
-      <Persona {...teamleader} hidePersonaDetails={false} size={PersonaSize.size40} />);
+    const teamleaderCard = this.buildPersonaCard(teamleaderUserProperties);
 
     const usersDirectReports: any[] = await this.getChildren(
       this.applyFilter(teamleaderUserProperties.DirectReports)
@@ -274,11 +300,7 @@ export default class TreeOrgChart extends React.Component<
       @parm: currentUserProperties
   */
   private async buildMyTeamOrganizationChart(currentUserProperties: any) {
-    let manager: IPersonaSharedProps = {};
-    let me: IPersonaSharedProps = {};
     let treeChildren: ITreeChildren[] = [];
-    let peer: IPersonaSharedProps = {};
-    let imageInitials: string[];
     let hasManager: boolean = false;
     let managerCard: any;
     // Get My Manager
@@ -291,39 +313,15 @@ export default class TreeOrgChart extends React.Component<
       const managerProperties = await this.SPService.getUserProperties(
         myManager
       );
-      imageInitials = managerProperties.DisplayName?.split(" ").map(name => name[0]);
-      // PersonaCard Props
-      manager.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${managerProperties.Email}`;
-      if (imageInitials)
-        manager.imageInitials = `${imageInitials[0]}${imageInitials[1] ? imageInitials[1] : ''}`.toUpperCase();
-      manager.text = managerProperties.DisplayName;
-      manager.tertiaryText = managerProperties.Email;
-      manager.secondaryText = managerProperties.Title;
-      // PersonaCard Component
-      managerCard = (
-        <Persona
-          {...manager}
-          hidePersonaDetails={false}
-          size={PersonaSize.size40}
-        />
-      );
+      managerCard = this.buildPersonaCard(managerProperties);
+
       hasManager = true;
     }
 
     // Get my Properties
-    const meImageInitials: string[] = currentUserProperties.DisplayName.split(
-      " "
-    );
-    me.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${currentUserProperties.Email}`;
-    me.imageInitials = me.imageInitials && me.imageInitials.length > 0 ? `${meImageInitials[0]
-      .substring(0, 1)
-      .toUpperCase()}${meImageInitials[1] ? meImageInitials[1].substring(0, 1).toUpperCase() : ''}` : '';
-    me.text = currentUserProperties.DisplayName;
-    me.tertiaryText = currentUserProperties.Email;
-    me.secondaryText = currentUserProperties.Title;
-    const meCard = (
-      <Persona {...me} hidePersonaDetails={false} size={PersonaSize.size40} />
-    );
+
+    const meCard = this.buildPersonaCard(currentUserProperties);
+
     const usersDirectReports: any[] = await this.getChildren(
       this.applyFilter(currentUserProperties.DirectReports)
     );
@@ -342,21 +340,9 @@ export default class TreeOrgChart extends React.Component<
     // Get MyPeers
     for (const userPeer of currentUserProperties.Peers) {
       const peerProperties = await this.SPService.getUserProperties(userPeer);
-      imageInitials = peerProperties.DisplayName.split(" ");
-      peer.imageUrl = `/_layouts/15/userphoto.aspx?size=L&username=${peerProperties.Email}`;
-      peer.imageInitials = peer.imageInitials && peer.imageInitials.length > 0 ? `${imageInitials[0]
-        .substring(0, 1)
-        .toUpperCase()}${imageInitials[1] ? imageInitials[1].substring(0, 1).toUpperCase() : ''}` : '';
-      peer.text = peerProperties.DisplayName;
-      peer.tertiaryText = peerProperties.Email;
-      peer.secondaryText = peerProperties.Title;
-      const peerCard = (
-        <Persona
-          {...peer}
-          hidePersonaDetails={false}
-          size={PersonaSize.size40}
-        />
-      );
+
+      const peerCard = this.buildPersonaCard(peerProperties);
+
       treeChildren.push({ title: peerCard });
     }
     // Return
@@ -380,7 +366,7 @@ export default class TreeOrgChart extends React.Component<
         {showEditOther && (<div>
           <PeoplePicker
             context={this.props.context}
-            titleText="People Picker"
+            titleText={strings.TeamLeaderHeadline}
             personSelectionLimit={1}
             groupName={""} // Leave this blank in case you want to filter from all users
             isRequired={true}
@@ -399,6 +385,7 @@ export default class TreeOrgChart extends React.Component<
             principalTypes={[PrincipalType.User]}
             resolveDelay={1000} />
         </div>)}
+
         {this.state.isLoading ? (
           <Spinner
             size={SpinnerSize.large}
@@ -413,22 +400,26 @@ export default class TreeOrgChart extends React.Component<
             canDrop={false}
             rowHeight={70}
             maxDepth={this.props.maxLevels}
-            generateNodeProps={rowInfo => ({
-              buttons: [
-                <IconButton
-                  disabled={false}
-                  checked={false}
-                  iconProps={{ iconName: "ContactInfo" }}
-                  title="Contact Info"
-                  ariaLabel="Contact"
-                  onClick={() => {
-                    window.open(
-                      `https://eur.delve.office.com/?p=${rowInfo.node.title.props.tertiaryText}&v=work`
-                    );
-                  }}
-                />
-              ]
-            })}
+            generateNodeProps={rowInfo => {
+              return !this.props.detailBehavoir ?
+                ({
+                  buttons: [
+                    <IconButton
+                      disabled={false}
+                      checked={false}
+                      iconProps={{ iconName: "ContactInfo" }}
+                      title={strings.ContactInfoTitle}
+                      ariaLabel={strings.ContactInfoTitle}
+                      onClick={() => {
+                        window.open(
+                          `https://eur.delve.office.com/?p=${rowInfo.node.title.props.tertiaryText}&v=work`
+                        );
+                      }}
+                    />
+                  ]
+                }) : undefined;
+            }
+            }
           />
         </div>
       </div>

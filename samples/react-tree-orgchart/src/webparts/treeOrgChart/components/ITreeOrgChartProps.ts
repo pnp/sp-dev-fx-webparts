@@ -12,4 +12,5 @@ export interface ITreeOrgChartProps {
   context: WebPartContext;
   filter: string;
   excludefilter: boolean;
+  detailBehavoir: boolean;
 }

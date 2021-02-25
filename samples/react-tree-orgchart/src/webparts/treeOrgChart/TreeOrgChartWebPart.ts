@@ -18,6 +18,7 @@ export interface ITreeOrgChartWebPartProps {
   viewType: TreeOrgChartType;
   filter: string;
   excludefilter: boolean;
+  detailBehavoir: boolean;
 }
 
 
@@ -58,6 +59,7 @@ export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgC
         maxLevels: this.properties.maxLevels,
         filter: this.properties.filter,
         excludefilter: this.properties.excludefilter,
+        detailBehavoir: this.properties.detailBehavoir,
         context: this.context
       }
     );
@@ -105,7 +107,12 @@ export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgC
                   maxValue: 10,
                   minValue: 1,
                   disabled: false
-                })
+                }),
+                PropertyPaneToggle('detailBehavoir', {
+                  label: strings.DetailBehavoir,
+                  onText: strings.LivePersonaCard,
+                  offText: strings.DelveLink
+                }),
               ]
             },
             {
@@ -122,6 +129,7 @@ export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgC
                 }),
               ]
             }
+
           ]
         }
       ]
