@@ -13,12 +13,12 @@ import { DynamicProperty } from '@microsoft/sp-component-base';
 import * as strings from 'DynamicDataConsumerWebPartStrings';
 
 // component rendering
-import DynamicDataConsumer from './components/DynamicDataConsumer';
+import { DynamicDataConsumer } from './components/DynamicDataConsumer';
 import { IDynamicDataConsumerProps } from './components/IDynamicDataConsumerProps';
 import { IContributor, IGitHubService, IAuthorCommit } from '../../services/GitHubService';
 
 // Needed to retrieve GitHub data
-import GitHubService from '../../services/GitHubService/GitHubService';
+import { GitHubService } from '../../services/GitHubService/GitHubService';
 
 // used to group GitHub results by date
 import { groupBy, toPairs } from '@microsoft/sp-lodash-subset';
@@ -43,7 +43,7 @@ export interface IDynamicDataConsumerWebPartProps {
   repoOwner: string;
 }
 
-export default class DynamicDataConsumerWebPart extends BaseClientSideWebPart<IDynamicDataConsumerWebPartProps> {
+export class DynamicDataConsumerWebPart extends BaseClientSideWebPart<IDynamicDataConsumerWebPartProps> {
 
   public render(): void {
     const { repo,

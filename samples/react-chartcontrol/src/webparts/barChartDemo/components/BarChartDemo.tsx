@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './BarChartDemo.module.scss';
 import * as strings from 'BarChartDemoWebPartStrings';
 import { IBarChartDemoProps, IBarChartDemoState } from './IBarChartDemo.types';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 
@@ -16,7 +16,7 @@ const DATA_LENGTH: number = 7;
  * and display the results, rendering a "please wait" message while
  * data is loading.
  */
-export default class BarChartDemo extends React.Component<IBarChartDemoProps, IBarChartDemoState> {
+export class BarChartDemo extends React.Component<IBarChartDemoProps, IBarChartDemoState> {
   /**
    * Renders the "Loading" spinner if the state is currently loading,
    * or the chart once data is loladed

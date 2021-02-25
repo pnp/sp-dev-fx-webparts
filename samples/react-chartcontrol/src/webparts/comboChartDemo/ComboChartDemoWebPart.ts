@@ -6,14 +6,14 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'ComboChartDemoWebPartStrings';
-import ComboChartDemo from './components/ComboChartDemo';
+import { ComboChartDemo } from './components/ComboChartDemo';
 import { IComboChartDemoProps } from './components/IComboChartDemo.types';
 
 export interface IComboChartDemoWebPartProps {
   description: string;
 }
 
-export default class ComboChartDemoWebPart extends BaseClientSideWebPart<IComboChartDemoWebPartProps> {
+export  class ComboChartDemoWebPart extends BaseClientSideWebPart<IComboChartDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IComboChartDemoProps > = React.createElement(
@@ -27,10 +27,6 @@ export default class ComboChartDemoWebPart extends BaseClientSideWebPart<IComboC
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

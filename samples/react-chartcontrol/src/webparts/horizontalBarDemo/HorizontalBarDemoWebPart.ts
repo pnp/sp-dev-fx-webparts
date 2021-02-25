@@ -5,14 +5,14 @@ import { BaseClientSideWebPart,  } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 import * as strings from 'HorizontalBarDemoWebPartStrings';
-import HorizontalBarDemo from './components/HorizontalBarDemo';
+import { HorizontalBarDemo } from './components/HorizontalBarDemo';
 import { IHorizontalBarDemoProps } from './components/IHorizontalBarDemo.types';
 
 export interface IHorizontalBarDemoWebPartProps {
   description: string;
 }
 
-export default class HorizontalBarDemoWebPart extends BaseClientSideWebPart<IHorizontalBarDemoWebPartProps> {
+export  class HorizontalBarDemoWebPart extends BaseClientSideWebPart<IHorizontalBarDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IHorizontalBarDemoProps > = React.createElement(

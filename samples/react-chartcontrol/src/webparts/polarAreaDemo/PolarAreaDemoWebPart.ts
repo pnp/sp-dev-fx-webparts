@@ -6,14 +6,14 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'PolarAreaDemoWebPartStrings';
-import PolarAreaDemo from './components/PolarAreaDemo';
+import { PolarAreaDemo } from './components/PolarAreaDemo';
 import { IPolarAreaDemoProps } from './components/IPolarAreaDemo.types';
 
 export interface IPolarAreaDemoWebPartProps {
   description: string;
 }
 
-export default class PolarAreaDemoWebPart extends BaseClientSideWebPart<IPolarAreaDemoWebPartProps> {
+export  class PolarAreaDemoWebPart extends BaseClientSideWebPart<IPolarAreaDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IPolarAreaDemoProps > = React.createElement(

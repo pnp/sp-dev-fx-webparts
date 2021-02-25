@@ -10,7 +10,7 @@ import { ChartData } from 'chart.js';
 
 // used to retrieve (fake) data from a (fake) service
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 // used to render the toolbar above the chart
 import {
@@ -37,7 +37,7 @@ const DATA_LENGTH: number = 5;
 /**
  * This sample demonstrates add and modifying the data in a pie chart
  */
-export default class PieChartDemo extends React.Component<IPieChartDemoProps, {}> {
+export class PieChartDemo extends React.Component<IPieChartDemoProps, {}> {
   /**
    * The chart element
    */

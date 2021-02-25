@@ -12,7 +12,7 @@ import { IDashSelectorProps, IDashSelectorState } from './DashSelector.types';
  * Displays a list of dash options.
  *
  */
-export default class DashSelector extends React.Component<IDashSelectorProps, IDashSelectorState> {
+export  class DashSelector extends React.Component<IDashSelectorProps, IDashSelectorState> {
   /**
    *
    */

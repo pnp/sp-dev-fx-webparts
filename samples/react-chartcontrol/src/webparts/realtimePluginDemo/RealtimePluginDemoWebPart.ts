@@ -6,14 +6,14 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'RealtimePluginDemoWebPartStrings';
-import RealtimePluginDemo from './components/RealtimePluginDemo';
+import { RealtimePluginDemo } from './components/RealtimePluginDemo';
 import { IRealtimePluginDemoProps } from './components/IRealtimePluginDemo.types';
 
 export interface IRealtimePluginDemoWebPartProps {
   description: string;
 }
 
-export default class RealtimePluginDemoWebPart extends BaseClientSideWebPart<IRealtimePluginDemoWebPartProps> {
+export class RealtimePluginDemoWebPart extends BaseClientSideWebPart<IRealtimePluginDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IRealtimePluginDemoProps > = React.createElement(

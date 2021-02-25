@@ -22,7 +22,7 @@ import { DashStrokes } from '../controls/PropertyPaneDashSelector/components/Das
 // List methods to retrieve data
 import { IListService, ListService, IListItem, MockListService } from '../../../services/ListService';
 
-export default class Chartinator extends React.Component<IChartinatorProps, {}> {
+export class Chartinator extends React.Component<IChartinatorProps, {}> {
   /**
 * The chart element
 */

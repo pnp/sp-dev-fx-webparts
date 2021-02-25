@@ -6,14 +6,14 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'RadarDemoWebPartStrings';
-import RadarDemo from './components/RadarDemo';
+import { RadarDemo } from './components/RadarDemo';
 import { IRadarDemoProps } from './components/IRadarDemo.types';
 
 export interface IRadarDemoWebPartProps {
   description: string;
 }
 
-export default class RadarDemoWebPart extends BaseClientSideWebPart<IRadarDemoWebPartProps> {
+export class RadarDemoWebPart extends BaseClientSideWebPart<IRadarDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IRadarDemoProps > = React.createElement(

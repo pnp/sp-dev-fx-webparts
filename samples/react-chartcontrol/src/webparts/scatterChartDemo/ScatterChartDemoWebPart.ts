@@ -7,14 +7,14 @@ import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/
 
 
 import * as strings from 'ScatterChartDemoWebPartStrings';
-import ScatterChartDemo from './components/ScatterChartDemo';
+import { ScatterChartDemo } from './components/ScatterChartDemo';
 import { IScatterChartDemoProps } from './components/IScatterChartDemo.types';
 
 export interface IScatterChartDemoWebPartProps {
   description: string;
 }
 
-export default class ScatterChartDemoWebPart extends BaseClientSideWebPart<IScatterChartDemoWebPartProps> {
+export class ScatterChartDemoWebPart extends BaseClientSideWebPart<IScatterChartDemoWebPartProps> {
 
   public render(): void {
     const element: React.ReactElement<IScatterChartDemoProps > = React.createElement(

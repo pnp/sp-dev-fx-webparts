@@ -11,7 +11,7 @@ import { IChartPaletteSelectorProps, IChartPaletteSelectorState } from './ChartP
 /**
  * Displays a list of palette colours
  */
-export default class ChartPaletteSelector extends React.Component<IChartPaletteSelectorProps, IChartPaletteSelectorState> {
+export  class ChartPaletteSelector extends React.Component<IChartPaletteSelectorProps, IChartPaletteSelectorState> {
   constructor(props: IChartPaletteSelectorProps) {
     super(props);
     this.state = {

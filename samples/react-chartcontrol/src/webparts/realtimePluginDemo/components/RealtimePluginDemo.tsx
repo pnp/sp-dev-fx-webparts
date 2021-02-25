@@ -27,7 +27,7 @@ const chartColors = {
 };
 
 
-export default class RealtimePluginDemo extends React.Component<IRealtimePluginDemoProps, {}> {
+export class RealtimePluginDemo extends React.Component<IRealtimePluginDemoProps, {}> {
   /**
  * The chart element
  */

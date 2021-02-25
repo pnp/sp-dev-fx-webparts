@@ -7,12 +7,12 @@ import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartContr
 import { ChartData } from 'chart.js';
 
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 const DATA_LENGTH: number = 7;
 const DATASET_LENGTH: number = 3;
 
-export default class ComboChartDemo extends React.Component<IComboChartDemoProps, {}> {
+export  class ComboChartDemo extends React.Component<IComboChartDemoProps, {}> {
 
   /**
   * Renders the command bar and the chart

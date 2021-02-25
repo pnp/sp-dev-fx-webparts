@@ -8,7 +8,7 @@ import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartContr
 import { ChartDataSets, ChartData, ChartOptions } from 'chart.js';
 
 // used to retrieve (fake) data from a (fake) service
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 // used to render the toolbar above the chart
 import {
@@ -26,7 +26,7 @@ This demo shows the following:
 - Generate a gradient for a background color
 - Change the fill value
  */
-export default class AreaChartDemo extends React.Component<IAreaChartDemoProps, IAreaChartDemoState> {
+export  class AreaChartDemo extends React.Component<IAreaChartDemoProps, IAreaChartDemoState> {
   /**
 * The chart element
 */
