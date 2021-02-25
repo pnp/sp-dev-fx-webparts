@@ -13,6 +13,11 @@ define([], function () {
     "ExcludeFilterOnText": "Exclude",
     "ExcludeFilterOffText": "Include",
     "FilterLabel": "Filter (contains)",
-    "FilterDescription": "currently only contains or not contains filter logic can be switched with the toggle above"
+    "FilterDescription": "currently only contains or not contains filter logic can be switched with the toggle above",
+    "TeamLeaderHeadline":"Please Select a Teamleader",
+    "ContactInfoTitle":"Contact Info",
+    "DetailBehavoir":"Detail link behavior ",
+    "LivePersonaCard":"Live Persona Card",
+    "DelveLink":"Link to Delve"
   }
 });

@@ -13,6 +13,13 @@ declare interface ITreeOrgChartWebPartStrings {
   ExcludeFilterOffText: string;
   FilterLabel: string;
   FilterDescription: string;
+
+  TeamLeaderHeadline:string;
+  ContactInfoTitle:string;
+
+  DetailBehavoir:string;
+  LivePersonaCard:string;
+  DelveLink:string;
 }
 
 declare module 'TreeOrgChartWebPartStrings' {
