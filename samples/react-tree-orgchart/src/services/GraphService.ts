@@ -5,11 +5,12 @@ export interface IGraphUser {
     mail?: string;
     displayName?: string;
     jobTitle?: string;
+    userPrincipalName?:string;
 }
 
-const graphUserSelect: string[] = ['displayName', 'mail', 'jobTitle'];
+const graphUserSelect: string[] = ['displayName', 'mail', 'jobTitle','userPrincipalName'];
 
-export default class GraphServices {
+export default class GraphService {
 
 
     constructor(private context: WebPartContext) {
