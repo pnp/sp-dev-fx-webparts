@@ -63,6 +63,17 @@ extra:
   samples:
     - framework: React
       spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-message-user
+      name: react-teams-message-user
+      title: Message Teams User
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-message-user/assets/webPart-preview.png
+      author: David Ramalho
+      summary: Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph.
+      pnpcontrols: PeoplePicker
+      modifiedtext: February 28, 2021
+      modified: 2021-02-28
+    - framework: React
+      spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sites-selected-admin
       name: react-sites-selected-admin
       title: Sites Selected Admin 
@@ -79,8 +90,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-datatable/assets/preview.png
       author: Chandani Prajapati
       summary: This web part provides easy way to render SharePoint custom list in datatable view with all the necessary features.
-      modifiedtext: February 19, 2021
-      modified: 2021-02-19
+      modifiedtext: February 24, 2021
+      modified: 2021-02-24
       pnpcontrols: PropertyFieldColorPicker, PropertyFieldListPicker, PropertyFieldMultiSelect, PropertyFieldOrder, WebPartTitle, Placeholder
     - framework: React
       spfx: 1.11.0
@@ -926,10 +937,10 @@ extra:
       name: react-tree-orgchart
       title: Tree Organization Web Part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tree-orgchart/assets/Screenshot1.png
-      author: João Mendes
+      author: João Mendes, Peter Paul Kirschner
       summary: The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.
-      modifiedtext: June 12, 2020
-      modified: 2020-06-12
+      modifiedtext: February 28, 2021
+      modified: 2021-02-28
       level: 200
     - url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards
       name: react-adaptivecards
@@ -939,8 +950,8 @@ extra:
       framework: React
       spfx: 1.11.0
       author: Hugo Bernier
-      modifiedtext: August 25, 2020
-      modified: 2020-08-25
+      modifiedtext: February 23, 2021
+      modified: 2021-02-23
       level: 300
       pnpcontrols: PropertyFieldListPicker, PropertyFieldViewPicker, ropertyFieldCodeEditorLanguages, PropertyPaneWebPartInformation, Placeholder
     - framework: Javascript
@@ -3158,6 +3169,7 @@ extra:
     - Daniel Westerdale
     - Dany Wyss
     - David Hartman
+    - David Ramalho
     - David Warner II
     - Dhaval Shah
     - Dimcho Tsanov
