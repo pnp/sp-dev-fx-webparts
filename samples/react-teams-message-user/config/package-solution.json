@@ -1,0 +1,50 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "teams-messages-client-side-solution",
+        "id": "ca0032ad-5f6e-483f-85b5-6b82a9096356",
+        "version": "1.0.0.0",
+        "includeClientSideAssets": true,
+        "skipFeatureDeployment": true,
+        "isDomainIsolated": false,
+        "webApiPermissionRequests": [{
+                "resource": "Microsoft Graph",
+                "scope": "ChatMessage.Send"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "Chat.Create"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "Chat.ReadWrite"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "User.Read"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "User.ReadWrite.All"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "Directory.Read.All"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "Directory.ReadWrite.All"
+            }
+        ],
+        "developer": {
+            "name": "",
+            "websiteUrl": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "mpnId": ""
+        }
+    },
+    "paths": {
+        "zippedPackage": "solution/teams-messages.sppkg"
+    }
+}
