@@ -9,6 +9,7 @@ import { ITreeOrgChartProps } from './components/ITreeOrgChartProps';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 import { setup as pnpSetup } from '@pnp/common';
 import { BaseClientSideWebPart, IPropertyPaneConfiguration, PropertyPaneDropdown, PropertyPaneTextField, PropertyPaneToggle } from '@microsoft/sp-webpart-base';
+import { graph } from "@pnp/graph";
 
 export interface ITreeOrgChartWebPartProps {
   title: string;
@@ -29,7 +30,7 @@ export default class TreeOrgChartWebPart extends BaseClientSideWebPart<ITreeOrgC
     pnpSetup({
       spfxContext: this.context
     });
-
+    graph.setup(this.context as any);
     //Migration old Config Settings
     if (!this.properties.viewType) {
       const treetype = this.properties.currentUserTeam ? TreeOrgChartType.MyTeam : TreeOrgChartType.CompanyHierarchy;

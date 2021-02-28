@@ -144,7 +144,6 @@ export default class TreeOrgChart extends React.Component<
           this.treeData = [{ ...myteam }];
         break;
       case TreeOrgChartType.ShowOtherTeam:
-        debugger;
         if (this.props.teamLeader && this.props.teamLeader.length > 0) {
 
           const otherteam = await this.buildTeamLeaderOrganizationChart(
@@ -245,8 +244,8 @@ export default class TreeOrgChart extends React.Component<
   private async getDirectReportsUsers(upn?: string, level: number = 1, expanded: boolean = false): Promise<ITreeData[] | null> {
     if (!upn) { return null; }
 
-    //TODO Filter
-    const directReportsUser = await this.GraphService.getUserDirectReports(upn);
+   
+    const directReportsUser = await this.GraphService.getUserDirectReports(upn,this.props.excludefilter,this.props.filter);
     //this is already level 1
     if (directReportsUser && directReportsUser.length > 0) {
       return await Promise.all(directReportsUser.map(async (dr) => {
@@ -339,7 +338,6 @@ export default class TreeOrgChart extends React.Component<
             treeData={this.state.treeData}
             onChange={this.handleTreeOnChange.bind(this)}
             canDrag={false}
-            canDrop={false}
             rowHeight={70}
             maxDepth={this.props.maxLevels}
             generateNodeProps={rowInfo => {
