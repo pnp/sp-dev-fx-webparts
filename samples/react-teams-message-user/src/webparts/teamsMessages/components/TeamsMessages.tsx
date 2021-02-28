@@ -24,7 +24,7 @@ export const TeamsMessages: React.FunctionComponent<ITeamsMessagesProps> = (
 
   const _getPeoplePickerItems = (item: IPersonaProps[]) => {
     setUser(item);
-  }
+  };
 
   const _onChangeFirstTextFieldValue = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
     setText(newValue);

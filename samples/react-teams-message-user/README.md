@@ -2,9 +2,19 @@
 
 ## Summary
 
-Sample that shows how to send a message to Micosoft Teams using a SharePoint framework solution using Microsoft Graph.
+Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph.
 
-![Message Teams Webpart preview](./assets/webPart-preview.png).
+![Message Teams Web part preview](./assets/webPart-preview.png).
+
+
+## Compatibility
+
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams")
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
 
 ## Applies to
 
@@ -15,9 +25,9 @@ Sample that shows how to send a message to Micosoft Teams using a SharePoint fra
 ## Prerequisites
 
 * SharePoint Online tenant
-* You have provided permission in SharePoint admin for accessing Graph API on behalf of your solution. We can do it before deployment as proactive steps, or after deployment. You can refer to [steps about how to do this post-deployment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial#deploy-the-solution-and-grant-permissions). Basically you have to use API Access Page of SharePoint admin and add below permission for our use case. 
+* You have provided permission in SharePoint admin for accessing Graph API on behalf of your solution. We can do it before deployment as proactive steps, or after deployment. You can refer to [steps about how to do this post-deployment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial#deploy-the-solution-and-grant-permissions). Basically you have to use API Access Page of SharePoint admin and add below permission for our use case.
 
-```
+```json
  "webApiPermissionRequests": [
   {
     "resource": "Microsoft Graph",
@@ -55,13 +65,8 @@ Sample that shows how to send a message to Micosoft Teams using a SharePoint fra
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* Using react framework in SPFx webpart
-* Calling Microsoft Graph API in SPFx webpart
-## Applies to
-
-* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
+* Using react framework in SPFx web part
+* Calling Microsoft Graph API in SPFx web part
 
 ## Solution
 
@@ -92,4 +97,4 @@ Version|Date|Comments
   - `gulp serve`
 
 
-![Message Teams Webpart](./assets/MessageTeams.gif).
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-message-user" />
