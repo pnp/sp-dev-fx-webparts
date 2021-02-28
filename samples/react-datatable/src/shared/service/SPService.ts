@@ -12,6 +12,8 @@ export class SPService {
         try {
             let selectQuery: any[] = ['Id'];
             let expandQuery: any[] = [];
+            let listItems = [];
+            let items: any;
             for (var i = 0; i < selectedFields.length; i++) {
                 switch (selectedFields[i].fieldType) {
                     case 'SP.FieldUser':
@@ -28,9 +30,16 @@ export class SPService {
                         break;
                 }
             }
-            let listItems: any[] = await sp.web.lists.getById(selectedList).items
+            items = await sp.web.lists.getById(selectedList).items
                 .select(selectQuery.join())
-                .expand(expandQuery.join()).get();
+                .expand(expandQuery.join())
+                .top(4999)
+                .getPaged();
+            listItems = items.results;
+            while (items.hasNext) {
+                items = await items.getNext();
+                listItems = [...listItems, ...items.results];
+            }
             return listItems;
         } catch (err) {
             Promise.reject(err);

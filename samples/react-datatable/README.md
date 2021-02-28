@@ -40,6 +40,7 @@ react-datatable | Chandani Prajapati ([@Chandani_SPD](https://twitter.com/Chanda
 Version|Date|Comments
 -------|----|--------
 1.0|February 19, 2021|Initial release
+1.1|February 24, 2021|Added support for large lists
 
 ## Disclaimer
 
