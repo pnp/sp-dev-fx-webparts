@@ -34,13 +34,15 @@ This is an application that supports Feedback through a web part that can be use
 
 Solution|Author(s)
 --------|---------
-react-feedback | Perry Kankam 
+react-feedback | Perry Kankam
+react-feedback | Abderahman Moujahid
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 15, 2020|Initial release
+1.0.0|December 15, 2020|Initial release
+1.0.1|March 3, 2021|Fix undefined listItem
 
 ## Disclaimer
 
