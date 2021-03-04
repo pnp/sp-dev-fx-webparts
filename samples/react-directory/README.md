@@ -60,6 +60,7 @@ Solution|Author(s)
 Directory Web Part|João Mendes
 Directory Web Part| Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
 Directory Web Part| Sudharsan K ([@sudharsank](https://twitter.com/sudharsank))
+Directory Web Part| Abderahman Moujahid
 
 ## Version history
 
@@ -67,8 +68,9 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|July 29, 2019|Initial release
 1.0.1|July 19, 2020|Bugfix and mock-service for workbench (```LivePersonaCard``` not supported in workbench)
-2.0.0.0|Sep 18 2020|React hooks, paging, dynamic search props, result alignment using office ui fabric stack.
-3.0.0.0|Oct 17 2020|Minor fixes and add the additional web part property.
+2.0.0|Sep 18 2020|React hooks, paging, dynamic search props, result alignment using office ui fabric stack.
+3.0.0|Oct 17 2020|Minor fixes and add the additional web part property.
+3.0.1|March 4 2021|Bugfix 'Sort People by'
 
 
 ## Disclaimer
