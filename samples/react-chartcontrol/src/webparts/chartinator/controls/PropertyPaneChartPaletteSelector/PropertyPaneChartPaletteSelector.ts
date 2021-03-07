@@ -5,7 +5,7 @@ import { IPropertyPaneField, PropertyPaneFieldType } from "@microsoft/sp-propert
 import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 
 import { IChartPaletteSelectorProps } from './components/ChartPaletteSelector.types';
-import ChartPaletteSelector from './components/ChartPaletteSelector';
+import { ChartPaletteSelector } from './components/ChartPaletteSelector';
 import {
   IPropertyPaneChartPaletteSelectorProps,
   IPropertyPaneChartPaletteSelectorInternalProps,

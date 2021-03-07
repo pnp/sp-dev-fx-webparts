@@ -5,7 +5,7 @@ import { BaseClientSideWebPart,  } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 import * as strings from 'HorizontalBarDemoWebPartStrings';
-import HorizontalBarDemo from './components/HorizontalBarDemo';
+import { HorizontalBarDemo } from './components/HorizontalBarDemo';
 import { IHorizontalBarDemoProps } from './components/IHorizontalBarDemo.types';
 
 export interface IHorizontalBarDemoWebPartProps {
@@ -27,10 +27,6 @@ export default class HorizontalBarDemoWebPart extends BaseClientSideWebPart<IHor
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

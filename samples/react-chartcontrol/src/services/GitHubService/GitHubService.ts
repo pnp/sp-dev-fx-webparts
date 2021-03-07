@@ -1,7 +1,7 @@
 import { IGitHubService, IGitHubContributor, IAuthorCommit } from "./IGitHubService.types";
 import { HttpClient, HttpClientResponse } from '@microsoft/sp-http';
 
-export default class GitHubService implements IGitHubService {
+export  class GitHubService implements IGitHubService {
   /**
    * Gets a list of github commits in a repo for a single contributor
    * @param client the HttpClient object that will make the call

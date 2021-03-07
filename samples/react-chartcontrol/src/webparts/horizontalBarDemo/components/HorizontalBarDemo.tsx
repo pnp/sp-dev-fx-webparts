@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './HorizontalBarDemo.module.scss';
 import { IHorizontalBarDemoProps } from './IHorizontalBarDemo.types';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import {MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 import * as strings from 'HorizontalBarDemoWebPartStrings';
 import * as Color from 'color';
 
@@ -19,13 +19,14 @@ import { ChartData } from 'chart.js';
  */
 const chartColors: string[] = OFFICE_COLORFUL1;
 const backgroundColors: string[] = PaletteGenerator.alpha(OFFICE_COLORFUL1, 0.2) as string[];
+
 /**
  * Demonstrates how to use a horizontal bar chart.
  * Also shows how to use an Office Fabric CommandBar to change
  * data and settings.
  * This sample uses the state to store the entire chart's
  */
-export default class HorizontalBarDemo extends React.Component<IHorizontalBarDemoProps, {}> {
+export class HorizontalBarDemo extends React.Component<IHorizontalBarDemoProps, {}> {
   private _chartElem: ChartControl = undefined;
 
   public render(): React.ReactElement<IHorizontalBarDemoProps> {

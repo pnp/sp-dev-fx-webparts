@@ -6,7 +6,7 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'BubbleChartDemoWebPartStrings';
-import BubbleChartDemo from './components/BubbleChartDemo';
+import { BubbleChartDemo } from './components/BubbleChartDemo';
 import { IBubbleChartDemoProps } from './components/IBubbleChartDemo.types';
 
 export interface IBubbleChartDemoWebPartProps {
@@ -27,10 +27,6 @@ export default class BubbleChartDemoWebPart extends BaseClientSideWebPart<IBubbl
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

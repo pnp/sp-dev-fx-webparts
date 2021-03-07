@@ -3,7 +3,7 @@ import styles from './LineChartDemo.module.scss';
 import { ILineChartDemoProps, ILineChartDemoState } from './ILineChartDemo.types';
 import * as strings from 'LineChartDemoWebPartStrings';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 import { ChartControl, ChartType } from "@pnp/spfx-controls-react/lib/ChartControl";
 import { ChartData } from 'chart.js';
@@ -14,7 +14,7 @@ import { ChartData } from 'chart.js';
  * Also demonstrates customizing axis labels and
  * custom tooltip providers.
  */
-export default class LineChartDemo extends React.Component<ILineChartDemoProps, ILineChartDemoState> {
+export class LineChartDemo extends React.Component<ILineChartDemoProps, ILineChartDemoState> {
 
   public render(): React.ReactElement<ILineChartDemoProps> {
     return (

@@ -1,6 +1,6 @@
 {
   "name": "adaptive-card-host",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -14,6 +14,7 @@
     "postversion": "gulp dist"
   },
   "dependencies": {
+    "@fluentui/react": "^7.161.0",
     "@microsoft/sp-core-library": "1.11.0",
     "@microsoft/sp-lodash-subset": "1.11.0",
     "@microsoft/sp-office-ui-fabric-core": "1.11.0",
@@ -22,11 +23,12 @@
     "@pnp/sp": "^2.0.3",
     "@pnp/spfx-controls-react": "1.16.0",
     "@pnp/spfx-property-controls": "^1.18.0",
+    "@uifabric/fluent-theme": "^7.4.3",
     "adaptivecards": "^1.2.6",
-    "adaptivecards-fabric": "^1.0.4",
+    "adaptivecards-fabric": "^1.1.1",
     "adaptivecards-templating": "1.1.0",
     "markdown-it": "^10.0.0",
-    "office-ui-fabric-react": "6.214.0",
+    "office-ui-fabric-react": "^6.189.2",
     "react": "16.8.5",
     "react-dom": "16.8.5",
     "save": "^2.4.0"

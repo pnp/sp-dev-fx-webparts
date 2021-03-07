@@ -8,7 +8,7 @@ import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartContr
 import * as strings from 'ScatterChartDemoWebPartStrings';
 
 
-export default class ScatterChartDemo extends React.Component<IScatterChartDemoProps, {}> {
+export class ScatterChartDemo extends React.Component<IScatterChartDemoProps, {}> {
   public render(): React.ReactElement<IScatterChartDemoProps> {
     return (
       <div className={styles.scatterChartDemo}>

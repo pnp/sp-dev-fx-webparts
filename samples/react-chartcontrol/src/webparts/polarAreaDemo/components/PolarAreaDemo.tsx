@@ -9,7 +9,7 @@ import { ChartData } from 'chart.js';
 
 // used to retrieve (fake) data from a (fake) service
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 // used to render the toolbar above the chart
 import {
@@ -42,7 +42,7 @@ const borderColors: string[] = [
 
 const DATA_LENGTH: number = 5;
 
-export default class PolarAreaDemo extends React.Component<IPolarAreaDemoProps, {}> {
+export class PolarAreaDemo extends React.Component<IPolarAreaDemoProps, {}> {
   /**
   * The chart element
   */

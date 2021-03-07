@@ -6,7 +6,7 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'AreaChartDemoWebPartStrings';
-import AreaChartDemo from './components/AreaChartDemo';
+import { AreaChartDemo } from './components/AreaChartDemo';
 import { IAreaChartDemoProps } from './components/IAreaChartDemo.types';
 
 export interface IAreaChartDemoWebPartProps {
@@ -27,10 +27,6 @@ export default class AreaChartDemoWebPart extends BaseClientSideWebPart<IAreaCha
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

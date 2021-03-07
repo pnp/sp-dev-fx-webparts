@@ -2,7 +2,7 @@ import { IListService } from "./IListService";
 import { IListField } from "./IListField";
 import { IListItem } from "./IListItem";
 import { ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
-import MockChartDataProvider from "../ChartDataProvider/MockChartDataProvider";
+import { MockChartDataProvider } from "../ChartDataProvider/MockChartDataProvider";
 import IChartDataProvider from "../ChartDataProvider/IChartDataProvider";
 import { ChartPoint } from 'chart.js';
 

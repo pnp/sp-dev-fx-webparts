@@ -194,7 +194,7 @@ There are no pre-requisites to use these samples.
 
 Solution|Author(s)
 --------|---------
-react-chart-control | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @bernierh)
+react-chart-control | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
 
 ## Version history
 
@@ -204,6 +204,7 @@ Version|Date|Comments
 1.1|July 02, 2020|Upgraded to SPFx 1.10.0
 1.2|December 04, 2020|Upgraded to SPFx 1.11.0 and Fluent UI 7.x
 1.3|December 13, 2020|Upgraded dependencies
+1.4|February 25, 2021|Updated to latest version of PnP controls
 
 ## Disclaimer
 

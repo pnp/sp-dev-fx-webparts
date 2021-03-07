@@ -18,7 +18,7 @@ import * as moment from 'moment';
  * Unlike most samples in this solution, most of the business logic/data retrieval isn't here, but
  * in the web part.
  */
-export default class DynamicDataConsumer extends React.Component<IDynamicDataConsumerProps, {}> {
+export class DynamicDataConsumer extends React.Component<IDynamicDataConsumerProps, {}> {
 
   public render(): React.ReactElement<IDynamicDataConsumerProps> {
     const { alias, data } = this.props;
