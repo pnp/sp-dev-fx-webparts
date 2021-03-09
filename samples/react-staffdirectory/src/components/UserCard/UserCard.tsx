@@ -10,6 +10,7 @@ import {
   Link,
   ITextFieldStyles,
   IPersonaProps,
+  loadTheme,
 } from "office-ui-fabric-react";
 import { presenceStatus, IPresenceStatus } from "../../common/PresenceStatus";
 import { AppContext } from "../../common/AppContext";
@@ -18,14 +19,19 @@ import { IUserExtended } from "../../entites/IUserExtended";
 import { IAppContext } from "../../common/IAppContext";
 import { IUserCardProps } from "./IUserCardProps";
 
+
+const teamsDefaultTheme = require("../../common/TeamsDefaultTheme.json");
+const teamsDarkTheme = require("../../common/TeamsDarkTheme.json");
+const teamsContrastTheme = require("../../common/TeamsContrastTheme.json");
+
 export const UserCard = (props: IUserCardProps) => {
   const { userData, updateUsersPresence } = props;
   const _context: IAppContext = React.useContext(AppContext);
 
   const [expandIcon, setExpandIcon] = React.useState("ChevronDownSmall");
   const [isDetailsOpen, setIsDetailsOpen] = React.useState(false);
-
-
+  const _Theme = window.__themeState__.theme;
+ 
   const styleClasses = mergeStyleSets({
     separator: {
       marginLeft: 20,
@@ -33,31 +39,32 @@ export const UserCard = (props: IUserCardProps) => {
       marginTop: 15,
       borderBottomStyle: "solid",
       borderWidth: 1,
-      borderBottomColor: _context.themeVariant.palette.neutralLighterAlt,
+      borderBottomColor: _context.themeVariant?.palette?.themeLighter ?? _Theme.themeLighter,
     },
     stylContainerDetails: {
       marginTop: 25,
       display: "grid",
       justifyContent: "stretch",
       alignItems: "center",
-      backgroundColor: _context.themeVariant.palette.themeLighter,
+      backgroundColor: _context.themeVariant?.palette?.neutralLighterAlt ?? _Theme.neutralLighterAlt,
       gridTemplateColumns: "repeat( auto-fit, minmax(280px, 1fr) )",
       gridTemplateRows: "auto",
     },
 
     styleIconDetails: {
       fontSize: 16,
-      color: _context.themeVariant.palette.themePrimary,
+      color: _context.themeVariant?.palette?.themePrimary ?? _Theme.themePrimary,
     },
     styleFieldLabel: {
       fontSize: 12,
       fontWeight: 400,
       paddingLeft: 3,
+      color: _Theme.inputText
     },
 
     styleField: {
       paddingTop: 15,
-
+      color: _context.themeVariant?.palette?.themePrimary ?? _Theme.themePrimary,
     },
   });
 
@@ -127,12 +134,12 @@ export const UserCard = (props: IUserCardProps) => {
                   root: {
                     height: 21,
                     width: 26,
-                    color: _context.themeVariant.palette.themePrimary,
+                    color: _context.themeVariant?.palette?.themeSecondary ?? _Theme.themeSecondary,
                   },
                 }}
                 iconProps={{
                   iconName: "CannedChat",
-                  color: _context.themeVariant.palette.themePrimary,
+                  color: _context.themeVariant?.palette?.themeSecondary  ??_Theme.themeSecondary,
                 }}
                 allowDisabledFocus={true}
                 disabled={false}
@@ -156,12 +163,13 @@ export const UserCard = (props: IUserCardProps) => {
                   root: {
                     height: 21,
                     width: 26,
-                    color: _context.themeVariant.palette.themePrimary,
+
                   },
                 }}
                 iconProps={{
                   iconName: expandIcon,
-                  color: _context.themeVariant.palette.themePrimary,
+                  color: _Theme.themeSecondary
+
                 }}
                 allowDisabledFocus={true}
                 disabled={false}
