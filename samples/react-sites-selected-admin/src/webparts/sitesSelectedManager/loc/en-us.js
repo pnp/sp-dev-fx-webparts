@@ -39,9 +39,9 @@ define([], function () {
     "DialogAddSuccess": "Yay! - Permissions successfully added!",
     "DialogRemoveSuccess": "Yay! - Permissions successfully removed!",
 
-    "DialogAddTitle": "Grant access to the selected app to a SharePoint site collection",
+    "DialogAddTitle": "Grant access",
     "DialogAddSubTitle": "Enter a SharePoint site collection URL into the text field and select the wanted access level",
-    "DialogDelTitle": "Remove the access for the selected app to a SharePoint site collection",
+    "DialogDelTitle": "Remove access",
     "DialogDelSubTitle": "Enter a SharePoint site collection URL into the text field and click \"remove\" to remove the access",
 
     "ListCommandBarAdd": "Add app permissions",
@@ -49,7 +49,7 @@ define([], function () {
     "ListColAppName": "App Name",
     "ListColAppId": "Azure AD App Id",
 
-    "PermCheckTitle": "",
+    "PermCheckTitle": "Check Permissions",
     "PermCheckHint": "If the result box shows [] it means there is no permissions granted",
 
 

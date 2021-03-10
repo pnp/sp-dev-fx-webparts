@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { MessageBarType, Stack, TextField } from 'office-ui-fabric-react';
-import styles from './SitesSelectedManager.module.scss';
+import styles from './AppStyles.module.scss';
 import { IService, Service } from '../Service';
 import * as strings from 'SitesSelectedManagerWebPartStrings';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
@@ -44,7 +44,7 @@ export const AppCheckPermissions: React.FunctionComponent<IAppCheckPermissionsPr
         }
     }, [state.getPerm])
 
-    return <div><h3>{strings.PermCheckTitle}</h3>
+    return <div className={styles.sitesSelectedManager}><h3>{strings.PermCheckTitle}</h3>
         <p><strong>{strings.Info}</strong> {strings.PermCheckHint}</p>
 
         <Stack className={styles.checkPermUi}>

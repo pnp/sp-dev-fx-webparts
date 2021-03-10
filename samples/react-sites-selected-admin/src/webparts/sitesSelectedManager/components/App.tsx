@@ -7,6 +7,8 @@ import { IService, Service } from '../Service';
 import { IAppProperties } from '../SitesSelectedManagerWebPart';
 import * as strings from 'SitesSelectedManagerWebPartStrings';
 import { AppCheckPermissions } from './AppCheckPermissions';
+import styles from './AppStyles.module.scss';
+import { initializeIcons } from '@uifabric/icons';
 
 interface IMessageBoxProps {
     resetChoice?: () => void;
@@ -30,6 +32,7 @@ export const App: React.FunctionComponent<IAppProperties> = (props) => {
     const [service] = React.useState<IService>(props.context.serviceScope.consume(Service.serviceKey))
 
     React.useEffect(() => {
+        initializeIcons();
         setState({ ...state, showMessage: false });
 
         service.getApps(props.aadGuid)
@@ -87,7 +90,7 @@ export const App: React.FunctionComponent<IAppProperties> = (props) => {
     );
 
     if (state.apps) {
-        return <div>
+        return <div className={styles.sitesSelectedManager}>
             <h1>{props.description}</h1>
             {state.showMessage ? <SitesSelectedMessageBox resetChoice={resetChoice} /> : React.Fragment}
             <Pivot>

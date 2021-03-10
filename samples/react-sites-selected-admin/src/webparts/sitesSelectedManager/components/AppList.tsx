@@ -3,7 +3,7 @@ import { DetailsList, DetailsListLayoutMode, Selection, IColumn, CheckboxVisibil
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IAppListItem, IAzureApp } from './IAppInterfaces';
 import { ICommandBarItemProps, CommandBar, MessageBarType } from 'office-ui-fabric-react';
-import styles from './SitesSelectedManager.module.scss';
+import styles from './AppStyles.module.scss';
 import { AppDialog } from './AppDialog';
 import { IObjectWithKey } from '@uifabric/utilities';
 import * as strings from 'SitesSelectedManagerWebPartStrings';

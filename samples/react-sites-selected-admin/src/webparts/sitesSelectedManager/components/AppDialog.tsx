@@ -3,7 +3,7 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { MessageBarType, TextField } from 'office-ui-fabric-react';
-import styles from './SitesSelectedManager.module.scss';
+import styles from './AppStyles.module.scss';
 import { IAzureApp, IPermission } from './IAppInterfaces';
 import { IService, Service } from '../Service';
 import * as strings from 'SitesSelectedManagerWebPartStrings';
@@ -61,13 +61,13 @@ export const AppDialog: React.FunctionComponent<IAppDialogProps> = (props) => {
     }, [mode.delete])
 
     const addDialogContentProps = {
-        type: DialogType.largeHeader,
+        type: DialogType.normal,
         title: strings.DialogAddTitle,
         subText: strings.DialogAddSubTitle,
     };
 
     const deleteDialogContentProps = {
-        type: DialogType.largeHeader,
+        type: DialogType.normal,
         title: strings.DialogDelTitle,
         subText: strings.DialogDelSubTitle,
     };
