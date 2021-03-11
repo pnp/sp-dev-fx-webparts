@@ -4,6 +4,13 @@
   margin-bottom: 50px;
 }
 
+.dialogHidden{
+  display: none;
+}
+
+.dialogShow{
+  display: block;
+}
 
 .commandBar {
   margin-top: 20px;
@@ -20,6 +27,9 @@
   }
 }
 .sitesSelectedManager {
+
+  margin: 1em;
+  border: 1px solid transparent;
 
   font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
   .container {
