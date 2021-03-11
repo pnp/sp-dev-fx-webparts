@@ -141,8 +141,7 @@ export default class Directory extends React.Component<
       const users = await this._services.searchUsers(
         searchText,
         this.props.searchFirstName
-      );
-debugger;
+      );  
       if (users && users.PrimarySearchResults.length > 0) {
         for (let index = 0; index < users.PrimarySearchResults.length; index++) {
           let user: any = users.PrimarySearchResults[index];
