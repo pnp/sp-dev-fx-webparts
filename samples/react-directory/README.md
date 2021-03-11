@@ -30,10 +30,14 @@
 
 ![directory](./assets/react-directory-withPaging.png) 
 
+## Compatibility
 
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 
-## Used SharePoint Framework Version 
-![SPFx 1.11](https://img.shields.io/badge/version-1.11-green.svg)
 
 ## Applies to
 
@@ -53,6 +57,7 @@ Properties to sent as clear text | text | No | By default if the search key has 
 Results per page | number | Yes | Number of people result to be displayed per page. Max of **20** is allowed, default of **10** is set. 
 
 ## Solution
+
 The web part use PnPjs library, Office-ui-fabric-react components
 
 Solution|Author(s)
