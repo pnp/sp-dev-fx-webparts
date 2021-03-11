@@ -9,13 +9,9 @@ This is an application that supports Feedback through a web part that can be use
 ## Compatibility
 
 ![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg)
-
 ![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
-
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
-
 ![Teams N/A](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg)
-
 ![Workbench Not supported](https://img.shields.io/badge/Workbench-Not%20Supported-lightgrey.svg)
 
 
