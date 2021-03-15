@@ -12,7 +12,7 @@ The following info is displayed:
 
 ## Used SharePoint Framework Version
 
-![drop](https://img.shields.io/badge/version-1.10.0-green.svg)
+![SPFx 1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
