@@ -8,9 +8,9 @@ import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 
 import { ChartControl, ChartType, OFFICE_COLORFUL1, PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
 
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
-export default class AccessibleTable extends React.Component<IAccessibleTableProps, {}> {
+export  class AccessibleTable extends React.Component<IAccessibleTableProps, {}> {
   public render(): React.ReactElement<IAccessibleTableProps> {
 
     return (

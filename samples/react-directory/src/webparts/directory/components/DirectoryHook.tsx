@@ -192,7 +192,7 @@ const DirectoryHook: React.FC<IDirectoryProps> = (props) => {
     _searchUsers = debounce(500, _searchUsers);
 
     const _sortPeople = async (sortField: string) => {
-        let _users = state.users;
+        let _users = [...state.users];
         _users = _users.sort((a: any, b: any) => {
             switch (sortField) {
                 // Sorte by FirstName

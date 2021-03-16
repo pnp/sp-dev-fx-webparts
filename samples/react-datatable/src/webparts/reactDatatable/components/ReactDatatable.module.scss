@@ -1,0 +1,10 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.reactDatatable {
+  .dataTableUtilities{
+    margin-bottom: 10px;
+    .downloadButtons > *{
+      margin-right: 10px;
+    }
+  }
+}

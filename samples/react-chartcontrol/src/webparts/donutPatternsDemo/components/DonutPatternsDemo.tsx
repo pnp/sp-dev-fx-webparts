@@ -3,7 +3,7 @@ import styles from './DonutPatternsDemo.module.scss';
 import { IDonutPatternsDemoProps, IDonutPatternsDemoState } from './IDonutPatternsDemo.types';
 import * as strings from 'DonutPatternsDemoWebPartStrings';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 // Patternomaly is used to render patterns
@@ -57,7 +57,7 @@ const patterns: CanvasPattern[] = [
  * call the update methods to get access to and modified the data without
  * refreshing the entire web part
  */
-export default class DonutPatternsDemo extends React.Component<IDonutPatternsDemoProps, IDonutPatternsDemoState> {
+export  class DonutPatternsDemo extends React.Component<IDonutPatternsDemoProps, IDonutPatternsDemoState> {
   private _chartElem: ChartControl = undefined;
 
   /**

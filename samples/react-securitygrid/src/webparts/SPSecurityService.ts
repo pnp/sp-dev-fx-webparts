@@ -1,7 +1,11 @@
-﻿import { sp } from "@pnp/sp";
-import { find, indexOf, includes } from "lodash";
+﻿import { User } from "@microsoft/microsoft-graph-types";
+import { AadHttpClient, AadHttpClientConfiguration, HttpClientResponse, IAadHttpClientConfiguration, IAadHttpClientConfigurations, IAadHttpClientOptions } from "@microsoft/sp-http";
+import { IODataUser } from "@microsoft/sp-odata-types";
 import { SPPermission } from "@microsoft/sp-page-context";
-import { AadHttpClient, HttpClientResponse, IAadHttpClientOptions } from "@microsoft/sp-http";
+//import * as MicrosoftGraph from "@microsoft/microsoft-graph-types"
+import { sp } from "@pnp/sp";
+import { SiteGroup } from "@pnp/sp/src/sitegroups";
+import { filter, find, includes, indexOf, lowerCase } from "lodash";
 
 export interface ISPSecurableObject {
   id: number;
@@ -21,7 +25,18 @@ export class SPBasePermissions {
 export enum securableType {
   List
 }
+export class ADGroupId {
+  public ADId: string; // the goid id in azure
+  public SPId: number; // the numeric id in the sharepoint users list
 
+}
+
+
+export class ADGroup {
+  public id: ADGroupId;
+  public members: Array<User>;
+
+}
 
 export class SPSiteGroup {
   public id: number;
@@ -29,15 +44,23 @@ export class SPSiteGroup {
   public isHiddenInUI: boolean;
   public isShareByEmailGuestUse: boolean;
   public isSiteAdmin: boolean;
-  public userIds: number[];
+  public userIds: number[];// to switch to ad groups need to make this a string[] with the UPN
+  public adGroupIds: ADGroupId[];
+  public constructor(id: number, title: string) {
+    this.id = id;
+    this.title = title;
+    this.userIds = [];
+    this.adGroupIds = [];
+  }
 }
 export class SPSiteUser {
   public name: string;
-  public id: number;
-  public userId: SPExternalUser;
+  public id?: number;
+  public userId?: SPExternalUser;
   public upn: string;
   public isSelected: boolean; //should user be shown in UI
-  public principalType: number; //4=Security group, 1 = user, 2=DL, 8=SP Group
+  public principalType: number; //4=Security group, 1 = user, 2=DL, 8=SP Group, IN HERE A -1 MEANS AD USER
+  public adId: string;//id if the user in AD
 }
 
 export class SPRoleDefinition {
@@ -60,6 +83,7 @@ export class SPSecurityInfo {
   public siteUsers: SPSiteUser[];
   public siteGroups: SPSiteGroup[];
   public roleDefinitions: SPRoleDefinition[];
+  public adGroups: ADGroup[];
   public lists: (SPList | SPListItem)[];
   public constructor() {
 
@@ -68,7 +92,7 @@ export class SPSecurityInfo {
     this.roleDefinitions = new Array<SPRoleDefinition>();
     this.siteUsers = new Array<SPSiteUser>();
     this.lists = new Array<SPList>();
-
+    this.adGroups = new Array<ADGroup>();
 
   }
 }
@@ -100,6 +124,20 @@ export class SPListItem {
   public level: number;
 
 }
+// export class ADGroup {
+//   public id: string;
+//   public parentId: string;
+//   public listTitle: string;
+//   public type: string;
+//   public itemCount: number;
+//   public title: string;
+//   public serverRelativeUrl: string;
+//   public roleAssignments: SPRoleAssignment[];
+//   public isExpanded: boolean;
+//   public hasBeenRetrieved: boolean;
+//   public level: number;
+
+// }
 export class SPExternalUser {
   public nameId: string;
   public nameIdIssuer: string;
@@ -111,21 +149,20 @@ export class SPRoleAssignment {
 
 }
 export class Helpers {
-  public static doesUserHaveAnyPermission(securableObjects: any[], user, requestedpermissions: SPPermission[], roles, siteGroups): boolean {
+  public static doesUserHaveAnyPermission(securableObjects: any[], user, requestedpermissions: SPPermission[], roles, siteGroups, adGroups: ADGroup[]): boolean {
     for (var securableObject of securableObjects) {
       for (var requestedpermission of requestedpermissions) {
-        if (Helpers.doesUserHavePermission(securableObject, user, requestedpermission, roles, siteGroups)) {
+        if (Helpers.doesUserHavePermission(securableObject, user, requestedpermission, roles, siteGroups, adGroups)) {
           return true;
         }
       }
     }
     return false;
   }
-  public static doesUserHavePermission(securableObject, user, requestedpermission: SPPermission, roles, siteGroups) {
-    console.log(`check user ${user.name} obj ${securableObject.title} perm ${requestedpermission.value.High}${requestedpermission.value.Low} `);
+  public static doesUserHavePermission(securableObject, user, requestedpermission: SPPermission, roles, siteGroups, adGroups: ADGroup[]) {
 
 
-    const permissions: SPBasePermissions[] = Helpers.getUserPermissionsForObject(securableObject, user, roles, siteGroups);
+    const permissions: SPBasePermissions[] = Helpers.getUserPermissionsForObject(securableObject, user, roles, siteGroups, adGroups);
     for (const permission of permissions) {
       if (
         ((permission.low & requestedpermission.value.Low) === (requestedpermission.value.Low))
@@ -158,22 +195,16 @@ export class Helpers {
     //  }
     return basePermissions;
   }
-  public static getUserPermissionsForObject(securableObject, user, roles: SPRoleDefinition[], siteGroups: SPSiteGroup[]) {
+  public static getUserPermissionsForObject(securableObject, user, roles: SPRoleDefinition[], siteGroups: SPSiteGroup[], adGroups: ADGroup[]) {
 
-    const roleAssignments: SPRoleAssignment[] = Helpers.GetRoleAssignmentsForUser(securableObject, user, siteGroups);
+    const userRoleAssignments: SPRoleAssignment[] = Helpers.GetRoleAssignmentsForUser(securableObject, user, siteGroups, adGroups);
     let roleDefinitionIds: number[] = [];
 
-    for (const roleAssignment of roleAssignments) {
+    for (const roleAssignment of userRoleAssignments) {
       for (const roleDefinitionID of roleAssignment.roleDefinitionIds) {
         roleDefinitionIds.push(roleDefinitionID);
       }
     }
-    //  for (var rax = 0; rax < roleAssignments.length; rax++) {
-    //    for (var rdx = 0; rdx < roleAssignments[rax].roleDefinitionIds.length; rdx++) {
-    //      roleDefinitionIds.push(roleAssignments[rax].roleDefinitionIds[rdx]);
-    //    }
-    //  }
-
     var userPermissions = Helpers.getBasePermissionsForRoleDefinitiuonIds(roleDefinitionIds, roles);
 
     return userPermissions;
@@ -186,17 +217,39 @@ export class Helpers {
     let group: SPSiteGroup = this.findGroup(groupId, groups);
     return includes(group.userIds, userId);
   }
+  public static userIsInGroupsNestAdGroups(userAdId: String, groupId: number, groups: SPSiteGroup[], adGroups: ADGroup[]): boolean {
+    let group: SPSiteGroup = this.findGroup(groupId, groups);
+    debugger;
+    for (var adGrouId of group.adGroupIds) {
+      var adGroup = find(adGroups, (adg) => { return adg.id === adGrouId; });
+      if (adGroup) {
+        if (find(adGroup.members, (aduser) => { return aduser.id === userAdId; })) {
+          return true;
+        }
+      } else {
+        debugger;
+        alert(`adGroup ${ADGroupId} was not in the collection of ad groups.`);
+      }
+
+    }
+
+  }
   public static GetRoleAssignmentsForUser(securableObject: ISPSecurableObject, user: SPSiteUser,
-    groups: SPSiteGroup[]): SPRoleAssignment[] {
+    groups: SPSiteGroup[], adGroups: ADGroup[]): SPRoleAssignment[] {
     try {
       let selectedRoleAssignments: SPRoleAssignment[] = [];
 
+      // for each role assignment, if the user is in the group, or its for this user, add it to his roleassignments
       for (const roleAssignment of securableObject.roleAssignments) {
         let group: SPSiteGroup = find(groups, (g) => { return g.id === roleAssignment.principalId; });
         if (group) {
-          if (this.userIsInGroup(user.id, group.id, groups)) {
+          if (this.userIsInGroup(user.id, group.id, groups)) {  // this tests if a user is directly in the SP GROUP
             selectedRoleAssignments.push(roleAssignment);
           }
+          if (this.userIsInGroupsNestAdGroups(user.adId, group.id, groups, adGroups)) {  // this tests if a user is in an ad group thats  in the SP GROUP
+            selectedRoleAssignments.push(roleAssignment);
+          }
+
         }
         else {
           // it must be a user
@@ -205,6 +258,38 @@ export class Helpers {
           }
         }
       }
+      debugger;
+      if (user.adId) { // if user is referenced in any groups, we stored his ad id in his user record
+        for (var adgroup of adGroups) {// for all adGroups
+          if (find(adgroup.members, (member) => {
+
+            return member.id === user.adId;
+          }) != -1) { // if user is in the adgroup
+            // for each role assignment, if the adGroup is in the group, or its for this adgroup, add it to his roleassignments
+            for (const roleAssignment of securableObject.roleAssignments) {
+              if (adgroup.id.SPId === roleAssignment.principalId) {
+                selectedRoleAssignments.push(roleAssignment);
+              }
+              // debugger;
+              // let group: SPSiteGroup = find(groups, (g) => { return g.id === roleAssignment.principalId; });
+              // if (group) {
+              //   if (this.userIsInGroup(user.id, group.id, groups)) {
+              //     selectedRoleAssignments.push(roleAssignment);
+              //   }
+              // }
+              // else {
+              //   // it must be a user
+              //   if (user.id === roleAssignment.principalId) {
+              //     selectedRoleAssignments.push(roleAssignment);
+              //   }
+              // }
+            }
+          }
+
+        }
+
+      }
+
       return selectedRoleAssignments;
     } catch (exception) {
       //debugger;
@@ -321,17 +406,17 @@ export default class SPSecurityService {
     let securityInfo: SPSecurityInfo = new SPSecurityInfo();
     let batch: any = sp.createBatch();
     let errors: Array<string> = [];
-
+    debugger;
     sp.web.siteUsers.inBatch(batch).get()
       .then((response) => {
-        console.table(response);
         securityInfo.siteUsers = response.map((u) => {
+          var upn: string = u.LoginName.split('|')[2];
           let user: SPSiteUser = new SPSiteUser();
           user.isSelected = true;
           user.id = u.Id;
           user.name = u.Title;
           user.principalType = u.PrincipalType;
-          user.upn = u.LoginName.split('|')[2];
+          user.upn = upn ? upn.toLocaleLowerCase() : u.Title;// switching key in react from id to upn. ensure upn is not undefined
           if (u.UserId) {
             user.userId = new SPExternalUser();
             user.userId.nameId = u.UserId.NameId;
@@ -339,7 +424,9 @@ export default class SPSecurityService {
           }
           return user;
         });
-        return securityInfo.siteUsers;
+
+        // securityInfo.siteUsers = securityInfo.siteUsers.filter((su) => { su.upn });
+        return securityInfo.siteUsers;// dont really need to return this// already set it on securityinfo
       }).catch((error) => {
         debugger;
         errors.push(`There was an error feting site users -- ${error.message}`);
@@ -347,50 +434,47 @@ export default class SPSecurityService {
       });
     sp.web.siteGroups.filter(`Title ne 'Limited Access System Group'`).expand("Users").select("Title", "Id", "IsHiddenInUI", "IsShareByEmailGuestUse", "IsSiteAdmin", "IsSiteAdmin")
       .inBatch(batch).get()
-      .then((response) => {
-        let AdGroupPromises: Array<Promise<any>> = [];
+      .then(async (response) => {
+
+
         // if group contains an ad group(PrincipalType=4) expand it
+
         securityInfo.siteGroups = response.map((grp) => {
-          let siteGroup: SPSiteGroup = new SPSiteGroup();
-          siteGroup.userIds = [];
-          siteGroup.id = grp.Id;
-          siteGroup.title = grp.Title;
+          //
+          //IMPORTANT:
+          //For groups created with 'Anyone in the organization with the link'
+          //LoginName: "SharingLinks.cf28991a-7f40-49c8-a68e-f4fa143a094f.OrganizationEdit.2671b36d-1681-4e39-82dc-a9f11166517d",
+          //
+          //For groups create with SPecific People
+          //LoginName: "SharingLinks.3d634d86-7136-4d59-8acf-c87d9a2c7d98.Flexible.9368eb69-6ca4-4b55-85e5-148c3e48e520",
+          //
+          //need to check for other options. Seems funny that the one labeled 'Flexible' is for specific people.
+          //
+          //So we wil need to add code one day to decipher all thes sharing groups!
+
+          let siteGroup: SPSiteGroup = new SPSiteGroup(grp.Id, grp.Title);
           for (let user of grp.Users) {
-            if (user.PrincipalType === 4) {
-              // To make this work with AD groups, I need to stop using the integer UserId of the user as the
-              // key to the Users list and use UPN/Email instead. Users in an AD group may not have a accessed the site
-              // yet , and so will not be in the userinfo list.
-              // I can get the users from the AD group using the graph HTTPClient. and add them to the Users array
-              // in my state. Would also need to add a list of AD groups and their members to my state.
-              // then in DoesUserHavePermission method, Just inlude permissions of any ADQ Groups the user is in.
-              //
-              // Also should check for users that have been invited but not yet accessed the site.
-
-
-              // graphHttpClient.get("v1.0/groups?$filter=displayName eq '" + user.Title + "'&$expand=members", GraphHttpClient.configurations.v1).then((response2) => {
-              //   response2.json().then((data) => {
-              //     //debugger;
-              //   });
-              // }).catch((err) => {
-              // });
+            if (user.PrincipalType === 4) {  //4=Security group, 1 = user, 2=DL, 8=SP Group
+              var adgroupid = new ADGroupId();
+              adgroupid.ADId = user.LoginName.split('|')[2];//Loginname s c:0t,c|tenant|grpid for ad groups
+              adgroupid.SPId = user.Id;
+              siteGroup.adGroupIds.push(adgroupid);
             } else {
               siteGroup.userIds.push(user.Id);
             }
           }
-
-
           return siteGroup;
         });
-        return Promise.all(AdGroupPromises).then(() => {
-          return securityInfo.siteGroups;
-        });
 
+        return securityInfo.siteGroups;// don't really need to return this// already set it on securityinfo
       }).catch((error) => {
         //error fetching groups
         errors.push(`There was an error feting site Groups -- ${error.message}`);
         //debugger;
         throw error;
       });
+
+
     sp.web.roleDefinitions.expand("BasePermissions").inBatch(batch).get()
       .then((response) => {
         securityInfo.roleDefinitions = response.map((rd) => {
@@ -408,8 +492,8 @@ export default class SPSecurityService {
         return securityInfo.roleDefinitions;
       }).catch((error) => {
         //debugger;
-        //error fetching roledefinitions
-        errors.push(`There was an error fetcing role Definitions -- ${error.message}`);
+        //error fetching role definitions
+        errors.push(`There was an error fetching role Definitions -- ${error.message}`);
         throw error;
       });
     let filters: string[] = [];
@@ -419,25 +503,24 @@ export default class SPSecurityService {
     if (!showCatalogs) {
       filters.push("IsCatalog eq false");
     }
-    let filter: string = filters.join(" and ");
+    let subFilter: string = filters.join(" and ");
     sp.web.lists
       .expand("RootFolder", "RoleAssignments", "RoleAssignments/RoleDefinitionBindings", "RoleAssignments/Member",
         "RoleAssignments/Member/Users", "RoleAssignments/Member/Groups", "RoleAssignments/Member/UserId")
-      .filter(filter).inBatch(batch).get()
+      .filter(subFilter).inBatch(batch).get()
       .then((response) => {
         securityInfo.lists = response.map((listObject) => {
           let mylist: SPList = new SPList();
-          mylist.isSelected = true;// Shoudl be shown in the UI, user can deslect it in the ui
+          mylist.isSelected = true;// Should be shown in the UI, user can de-select it in the ui
           mylist.title = listObject.Title;
           mylist.id = listObject.Id;
           mylist.hidden = listObject.Hidden;
           mylist.serverRelativeUrl = listObject.RootFolder.ServerRelativeUrl;
-          mylist.type = securableType.List;// to differeentiate foldes from lists
+          mylist.type = securableType.List;// to differentiate folders from lists
           mylist.itemCount = listObject.ItemCount;
           mylist.isExpanded = false;
           mylist.hasBeenRetrieved = false;
           mylist.roleAssignments = listObject.RoleAssignments.map((roleAssignmentObject) => {
-
             let roleAssignment: SPRoleAssignment = {
               roleDefinitionIds: roleAssignmentObject.RoleDefinitionBindings.map((rdb) => { return rdb.Id; }),
               principalId: roleAssignmentObject.PrincipalId
@@ -454,13 +537,79 @@ export default class SPSecurityService {
         throw error;
 
       });
-    return batch.execute().then(() => {
+
+    // execute the batch to get sp stuff
+    return batch.execute().then(async () => {
+      // then get the ad stuff
+
+      var requests = [];
+      var adPromises: Array<Promise<void>> = [];
+      for (let sitegroup of securityInfo.siteGroups) {
+        for (let adGroupId of sitegroup.adGroupIds) {
+          // need to do this in batch
+          var adPromise = this.fetchAdGroup(aadHttpClient, adGroupId)
+            .then((adGroup) => {
+              securityInfo.adGroups.push(adGroup);
+              for (var adUser of adGroup.members) {
+                var siteUser = find(securityInfo.siteUsers, (su, key) => {
+                  return su.upn === adUser.userPrincipalName.toLowerCase();
+                });
+                if (siteUser) {
+                  siteUser.adId = adUser.id;
+                } else {
+                  let user: SPSiteUser = new SPSiteUser();
+                  user.adId = adUser.id; user.name = adUser.displayName + "*";
+                  user.upn = adUser.userPrincipalName ? adUser.userPrincipalName : adUser.displayName;
+                  user.isSelected = true;
+                  user.principalType = -1;
+                  securityInfo.siteUsers.push(user);
+                }
+              }
+            }
+            )
+            .catch((err) => {
+              debugger;
+            });
+          adPromises.push(adPromise);
+
+        }
+      }
+      await Promise.all(adPromises);
+      console.table(securityInfo.siteUsers);
+      debugger;
       return securityInfo;
     }).catch((error) => {
-      //debugger;
+      debugger;
       // error in batch
       throw errors;
 
     });
   }
+
+  private fetchAdGroup(aadHttpClient: AadHttpClient, adGrouId: ADGroupId): Promise<ADGroup> {
+    var aadHttpClientConfiguration: AadHttpClientConfiguration = new AadHttpClientConfiguration({}, {});
+    // note im not loading nested groups here. Will need to load them on the fly? or maybe here?nvrmind
+
+    return aadHttpClient.get(`https://graph.microsoft.com/v1.0/groups/${adGrouId.ADId}/transitiveMembers`, aadHttpClientConfiguration)
+      .then((adResponse) => {
+        return adResponse.json()
+          .then((data) => {
+            let adGroup: ADGroup = new ADGroup();
+            adGroup.id = adGrouId;
+            adGroup.members = data.value;
+            return adGroup;
+          }).catch((err) => {
+            debugger;
+            alert(`error converting to json`);
+            return null;
+          });
+
+      }).catch((err) => {
+        debugger;
+        //if 403 show message to grant security
+        alert(`grant app SharePoint Online Client Extensibility Web Application Principal graph permissions Group.Read.All & GroupMembers.Read.All`);
+        return null;
+      });
+  }
 }
+

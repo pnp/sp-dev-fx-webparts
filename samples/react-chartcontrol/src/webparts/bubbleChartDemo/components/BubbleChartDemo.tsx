@@ -9,7 +9,7 @@ import { ChartPoint, ChartData } from 'chart.js';
 
 // used to retrieve (fake) data from a (fake) service
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 // used to render the toolbar above the chart
 import {
@@ -37,7 +37,7 @@ const DATA_COUNT: number = 16;
 const DATSET_LENGTH: number = 2;
 const MAX_BORDERWIDTH: number = 8;
 
-export default class BubbleChartDemo extends React.Component<IBubbleChartDemoProps, {}> {
+export  class BubbleChartDemo extends React.Component<IBubbleChartDemoProps, {}> {
   /**
  * The chart element
  */

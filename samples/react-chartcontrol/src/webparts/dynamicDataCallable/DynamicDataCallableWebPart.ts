@@ -5,7 +5,7 @@ import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 
 import * as strings from 'DynamicDataCallableWebPartStrings';
-import DynamicDataCallable from './components/DynamicDataCallable';
+import { DynamicDataCallable } from './components/DynamicDataCallable';
 import { IDynamicDataCallableProps } from './components/IDynamicDataCallableProps';
 import { IDynamicDataPropertyDefinition, IDynamicDataCallables } from '@microsoft/sp-dynamic-data';
 import { IContributor } from '../../services/GitHubService';
@@ -50,10 +50,6 @@ export default class DynamicDataCallableWebPart extends BaseClientSideWebPart<ID
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   /**

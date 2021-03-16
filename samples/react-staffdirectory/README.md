@@ -23,6 +23,8 @@ extensions:
 This web part shows the current user's colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card.
 
 ![staff](./assets/staffdirectory.gif)
+![staff](./assets/staffTeams01.png)
+![staff](./assets/staffTeams02.png)
 
 ## Compatibility
 

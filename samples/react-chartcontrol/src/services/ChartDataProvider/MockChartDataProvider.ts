@@ -5,7 +5,7 @@ const FAKE_DELAY: number = 500;
 /**
  * Returns an array of chart points (x,y)
  */
-export default class MockChartDataProvider implements IChartDataProvider {
+export class MockChartDataProvider implements IChartDataProvider {
   public getSignedNumberArray(length: number): Promise<number[]> {
     return new Promise<number[]>((resolve) => {
       // pretend we're getting the data from a service

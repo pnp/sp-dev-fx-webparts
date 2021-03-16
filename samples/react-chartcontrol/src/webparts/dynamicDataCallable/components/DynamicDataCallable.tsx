@@ -11,10 +11,10 @@ import { ChartControl, ChartType, PaletteGenerator } from '@pnp/spfx-controls-re
 import { ChartData } from 'chart.js';
 
 // used to call GitHub
-import GitHubService from '../../../services/GitHubService/GitHubService';
+import { GitHubService } from '../../../services/GitHubService/GitHubService';
 import { IGitHubService, IGitHubContributor } from '../../../services/GitHubService';
 
-export default class DynamicDataCallable extends React.Component<IDynamicDataCallableProps, {}> {
+export class DynamicDataCallable extends React.Component<IDynamicDataCallableProps, {}> {
   /**
 * The chart element
 */

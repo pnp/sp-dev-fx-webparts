@@ -5,7 +5,7 @@ interface MinimalMockUser {
     FirstName: string;
     LastName: string;
     Department: string;
-    Location: string;
+    BaseOfficeLocation: string;
     Title: string;
     PreferredName: string;
     WorkPhone: string;
@@ -68,7 +68,7 @@ export class spMockServices implements ISPServices {
                         LastName: `${lastNameL}LastName${i}`,
                         PreferredName: `${firstNameL}FirstName${i} ${lastNameL}LastName${i}`,
                         Department: i % 2 === 0 ? `${lastNameL}Department` : `${firstNameL}Department`,
-                        Location: i % 3 === 0 ? `${lastNameL}Location` : `${firstNameL}Location`,
+                        BaseOfficeLocation: i % 3 === 0 ? `${lastNameL}Location` : `${firstNameL}Location`,
                         Title: i % 2 === 0 ? `${lastNameL}JobTitle` : `${firstNameL}JobTitle`,
                         WorkPhone: '' + Math.floor(Math.random() * 1234) + 54678900
                     });

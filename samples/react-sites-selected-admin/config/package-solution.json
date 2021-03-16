@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "site-selected-mngr-wp-client-side-solution",
+    "id": "7fec6393-3d66-4b11-8d55-5f609edf2a7a",
+    "version": "1.1.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": true,
+    "developer": {
+      "name": "Fredrik Thorild",
+      "websiteUrl": "https://twitter.com/taxonomythorild",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Application.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.FullControl.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/site-selected-mngr-wp.sppkg"
+  }
+}

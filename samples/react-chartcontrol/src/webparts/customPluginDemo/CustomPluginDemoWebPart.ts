@@ -6,7 +6,7 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'CustomPluginDemoWebPartStrings';
-import CustomPluginDemo from './components/CustomPluginDemo';
+import { CustomPluginDemo } from './components/CustomPluginDemo';
 import { ICustomPluginDemoProps } from './components/ICustomPluginDemo,types';
 
 export interface ICustomPluginDemoWebPartProps {
@@ -28,10 +28,6 @@ export default class CustomPluginDemoWebPart extends BaseClientSideWebPart<ICust
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

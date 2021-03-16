@@ -6,7 +6,7 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'RealtimePluginDemoWebPartStrings';
-import RealtimePluginDemo from './components/RealtimePluginDemo';
+import { RealtimePluginDemo } from './components/RealtimePluginDemo';
 import { IRealtimePluginDemoProps } from './components/IRealtimePluginDemo.types';
 
 export interface IRealtimePluginDemoWebPartProps {
@@ -27,10 +27,6 @@ export default class RealtimePluginDemoWebPart extends BaseClientSideWebPart<IRe
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

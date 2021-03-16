@@ -1,4 +1,5 @@
 import { Version } from "@microsoft/sp-core-library";
+import { AadHttpClient, AadHttpClientConfiguration, HttpClientResponse, IAadHttpClientConfiguration, IAadHttpClientConfigurations, IAadHttpClientOptions } from "@microsoft/sp-http";
 import { SPPermission } from "@microsoft/sp-page-context";
 import { IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneCheckbox, PropertyPaneDropdown, PropertyPaneSlider, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
@@ -13,6 +14,7 @@ import { PropertyFieldSelectedPermissions } from "./containers/PropertyFieldSele
 import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
 
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
+  private aadHttpClient: AadHttpClient;
   public onInit(): Promise<void> {
     return super.onInit().then(_ => {
       sp.setup({
@@ -21,6 +23,13 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
         defaultCachingTimeoutSeconds: 30,
         globalCacheDisable: true // or true to disable caching in case of debugging/testing
       });
+    }).then(_ => {
+      this.context.aadHttpClientFactory.getClient(`https://graph.microsoft.com`)
+        .then((client: AadHttpClient) => {
+          // Search for the users with givenName, surname, or displayName equal to the searchFor value
+          this.aadHttpClient = client;
+        });
+
     });
   }
 
@@ -43,7 +52,7 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       listTitleColumnWidth: this.properties.listTitleColumnWidth,
       users: this.properties.users,
       getPermissionTypes: this.getPermissionTypes,
-      aadHttpClient: null,//this.context.aadHttpClient,
+      aadHttpClient: this.aadHttpClient,
       domElement: this.domElement
 
     };

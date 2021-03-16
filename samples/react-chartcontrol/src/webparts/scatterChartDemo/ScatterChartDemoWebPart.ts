@@ -7,7 +7,7 @@ import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/
 
 
 import * as strings from 'ScatterChartDemoWebPartStrings';
-import ScatterChartDemo from './components/ScatterChartDemo';
+import { ScatterChartDemo } from './components/ScatterChartDemo';
 import { IScatterChartDemoProps } from './components/IScatterChartDemo.types';
 
 export interface IScatterChartDemoWebPartProps {
@@ -28,10 +28,6 @@ export default class ScatterChartDemoWebPart extends BaseClientSideWebPart<IScat
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

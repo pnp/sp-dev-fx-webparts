@@ -25,7 +25,7 @@ import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHe
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
 
 // Component that actually renders the web part content
-import Chartinator from './components/Chartinator';
+import { Chartinator } from './components/Chartinator';
 import { IChartinatorProps, DataSourceType } from './components/Chartinator.types';
 
 // Needed to generate unique data row ids
@@ -136,13 +136,6 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
    */
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  /**
-   * Returns the data version
-   */
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   /**

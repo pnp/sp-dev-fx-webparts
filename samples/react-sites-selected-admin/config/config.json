@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sites-selected-manager-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sitesSelectedManager/SitesSelectedManagerWebPart.js",
+          "manifest": "./src/webparts/sitesSelectedManager/SitesSelectedManagerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SitesSelectedManagerWebPartStrings": "lib/webparts/sitesSelectedManager/loc/{locale}.js"
+  }
+}

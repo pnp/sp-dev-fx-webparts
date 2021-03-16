@@ -6,7 +6,7 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'RadarDemoWebPartStrings';
-import RadarDemo from './components/RadarDemo';
+import { RadarDemo } from './components/RadarDemo';
 import { IRadarDemoProps } from './components/IRadarDemo.types';
 
 export interface IRadarDemoWebPartProps {
@@ -25,10 +25,6 @@ export default class RadarDemoWebPart extends BaseClientSideWebPart<IRadarDemoWe
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

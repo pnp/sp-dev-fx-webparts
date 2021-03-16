@@ -6,7 +6,7 @@ import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'PieChartDemoWebPartStrings';
-import PieChartDemo from './components/PieChartDemo';
+import { PieChartDemo } from './components/PieChartDemo';
 import { IPieChartDemoProps } from './components/IPieChartDemo.types';
 
 export interface IPieChartDemoWebPartProps {
@@ -25,10 +25,6 @@ export default class PieChartDemoWebPart extends BaseClientSideWebPart<IPieChart
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

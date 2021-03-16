@@ -47,7 +47,8 @@ The web part allows configuring which list to use and if a form for adding a new
 | react-list-form | Harsha Vardhini ([@harshagracy](https://twitter.com/harshagracy)) |
 | react-list-form | Ryan Schouten ([@shrpntknight](https://twitter.com/shrpntknight)) |
 | react-list-form | Abderahman Moujahid                                               |
-| react-list-form | [Kman1131](https://github.com/Kman1131)
+| react-list-form | [Kman1131](https://github.com/Kman1131)                           |
+| react-list-form | Fredrik Thorild [@fthorild](https://twitter.com/fthorild)         |
 
 ## Version history
 
@@ -62,6 +63,7 @@ The web part allows configuring which list to use and if a form for adding a new
 | 1.0.6   | October 8, 2020    | Added support for cascading lookup fields                                                                 |
 | 1.0.7   | December 11, 2020  | Fix limit of lookup fields                                                                                |
 | 1.0.8   | February 7, 2021   | Fixed dragging and dropping fields                                                                        |
+| 1.0.9   | February 19, 2021  | Fixed regular expressions for text validation                                                             |
 
 ## Disclaimer
 

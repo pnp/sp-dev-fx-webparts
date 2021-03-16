@@ -5,7 +5,7 @@ import { IPropertyPaneField, PropertyPaneFieldType } from "@microsoft/sp-propert
 import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 
 import { IDashSelectorProps } from './components/DashSelector.types';
-import DashSelector from './components/DashSelector';
+import { DashSelector } from './components/DashSelector';
 import {
   IPropertyPaneDashSelectorProps,
   IPropertyPaneDashSelectorInternalProps,

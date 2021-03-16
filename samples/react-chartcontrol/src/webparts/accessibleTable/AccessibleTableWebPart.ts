@@ -5,7 +5,7 @@ import { BaseClientSideWebPart,  } from "@microsoft/sp-webpart-base";
 import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 
 import * as strings from 'AccessibleTableWebPartStrings';
-import AccessibleTable from './components/AccessibleTable';
+import { AccessibleTable } from './components/AccessibleTable';
 import { IAccessibleTableProps } from './components/IAccessibleTable.types';
 
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
@@ -35,10 +35,6 @@ export default class AccessibleTableWebPart extends BaseClientSideWebPart<IAcces
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "a4411651-9a37-4956-8948-ec5b053da96e",
+  "alias": "SitesSelectedManagerWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Sites Selected Manager"
+      },
+      "description": {
+        "default": "Webpart for managing Azure AD Apps granting site specific access"
+      },
+      "officeFabricIconFontName": "AzureLogo",
+      "properties": {
+        "description": "Sites Selected Manager",
+        "showAbout": true,
+        "aadGuid":"883ea226-0bf2-4a8f-9f9d-92c9162a727d"
+      }
+    }
+  ]
+}
