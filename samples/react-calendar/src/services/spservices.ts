@@ -246,7 +246,7 @@ export default class spservices {
           break;
         case '1': // recurrence Event
           // if  delete is a main recrrence delete all recurrences and main recurrence
-          if (recurrenceSeriesEdited) {
+          if (!recurrenceSeriesEdited) {
             // delete execptions if exists before delete recurrence event
             await this.deleteRecurrenceExceptions(event, siteUrl, listId);
             await web.lists.getById(listId).items.getById(event.Id).delete();
