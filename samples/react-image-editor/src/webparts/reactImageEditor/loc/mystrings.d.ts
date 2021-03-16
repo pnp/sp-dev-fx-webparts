@@ -1,7 +1,7 @@
 declare interface IReactImageEditorWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  ShowTitleFieldLabel: string;
 }
 
 declare module 'ReactImageEditorWebPartStrings' {

@@ -20,7 +20,10 @@
     "description": { "default": "react-image-editor description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "react-image-editor"
+      "title": "react-image-editor Sample",
+      "showTitle":true,
+      "settings":[],
+      "url":""
     }
   }]
 }

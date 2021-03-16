@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './ReactImageEditor.module.scss';
 
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { DisplayMode } from '@microsoft/sp-core-library';
+import { DisplayMode, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { FilePicker, IFilePickerResult } from '@pnp/spfx-controls-react/lib/FilePicker';
@@ -26,27 +26,50 @@ export interface IReactImageEditorBaseProps {
 
 }
 export interface IReactImageEditorState {
-  filepickerOpen: boolean
+  isFilePickerOpen: boolean,
+  statekey: string;
 }
 
 export default class ReactImageEditor extends React.Component<IReactImageEditorProps, IReactImageEditorState> {
   constructor(props: IReactImageEditorProps) {
     super(props);
     this.state = {
-      filepickerOpen: true
+      isFilePickerOpen: false,
+      statekey: 'init'
     }
+    this._onConfigure = this._onConfigure.bind(this);
+    this._onUrlChanged = this._onUrlChanged.bind(this);
+    this._onSettingsChanged = this._onSettingsChanged.bind(this);
   }
   public render(): React.ReactElement<IReactImageEditorProps> {
     const { url, settings } = this.props;
-    const isConfigured = url && url.length > 0;
-    const isFilePickerOpen = this.state.filepickerOpen
+    const { isFilePickerOpen } = this.state;
+    const isConfigured = !!url && url.length > 0;
     return (
 
       <div className={styles.reactImageEditor}>
         <WebPartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateProperty={this.props.updateTitleProperty} />
-        {isConfigured ? (<Placeholder iconName='Edit'
+        {(isFilePickerOpen || isConfigured) && Environment.type !== EnvironmentType.Local &&
+          <FilePicker
+            isPanelOpen={isFilePickerOpen}
+            accepts={[".gif", ".jpg", ".jpeg", ".png"]}
+            buttonIcon="FileImage"
+            onSave={(filePickerResult: IFilePickerResult) => {
+              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl))
+            }}
+            onCancel={() => {
+              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(''))
+            }}
+            onChanged={(filePickerResult: IFilePickerResult) => {
+              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl))
+
+            }}
+            context={this.props.context}
+          />}
+
+        {!isConfigured ? (<Placeholder iconName='Edit'
           iconText='Configure your web part'
           description='Please configure the web part.'
           buttonLabel='Configure'
@@ -61,21 +84,24 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
             settingschanged={this.props.updateManipulationSettingsProperty}
             src={url}
           />)}
-        {isFilePickerOpen}
-        <FilePicker
-          accepts={[".gif", ".jpg", ".jpeg", ".png"]}
-          buttonIcon="FileImage"
-          onSave={(filePickerResult: IFilePickerResult) => { this.props.updateUrlProperty(filePickerResult.fileAbsoluteUrl) }}
-          onCancel={() => { this.props.updateUrlProperty('') }}
-          onChanged={(filePickerResult: IFilePickerResult) => { this.props.updateUrlProperty(filePickerResult.fileAbsoluteUrl) }}
-          context={this.props.context}
-        />
+
       </div >
     );
   }
 
   private _onConfigure = () => {
-    // Context of the web part
-    this.props.context.propertyPane.open();
+    if (Environment.type === EnvironmentType.Local) {
+      this.setState({ isFilePickerOpen: false }, () => {
+        this._onUrlChanged('https://media.gettyimages.com/photos/whitewater-paddlers-descend-vertical-waterfall-in-kayak-picture-id1256321293?s=2048x2048');
+      });
+    } else {
+      this.setState({ isFilePickerOpen: true });
+    }
+  }
+  private _onUrlChanged = (url: string) => {
+    this.props.updateUrlProperty(url);
+  }
+  private _onSettingsChanged = (settings: IImageManipulationSettings[]) => {
+    this.props.updateManipulationSettingsProperty(settings);
   }
 }
