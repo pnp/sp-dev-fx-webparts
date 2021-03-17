@@ -7,7 +7,7 @@ import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { FilePicker, IFilePickerResult } from '@pnp/spfx-controls-react/lib/FilePicker';
 
-import { ImageManipulation, IImageManipulationSettings } from 'react-image-manipulation-spfx'
+import { ImageManipulation, IImageManipulationSettings } from '../../../components/ImageManipulation'
 
 
 export interface IReactImageEditorProps extends IReactImageEditorBaseProps {
@@ -60,7 +60,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
               this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl))
             }}
             onCancel={() => {
-              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(''))
+              this.setState({ isFilePickerOpen: false })
             }}
             onChanged={(filePickerResult: IFilePickerResult) => {
               this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl))

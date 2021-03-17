@@ -16,15 +16,34 @@ extensions:
 
 # React Image Editor
 
-## Summary
-TODO
 
-IMAGE Animated GIF
+
+
+## Summary
+
+This solution contains an SPFx webpart that shows a HTML Image Editor based on canvas and [Office UI Fabric](https://developer.microsoft.com/fluentui/). 
+
+Key features of the Editor
+* Resize
+* Crop
+* Flip
+* Rotate
+* Scale
+* Filter (Grayscale / Sepia)
+* Redo / Undo
+* Histoy of Actions
+
+The Placeholder and FilePicker is a component from [sp-dev-fx-controls-react ](https://pnp.github.io/sp-dev-fx-controls-react/)
+
+![react-image-editor in action](assets/react-image-editor.gif)
 
 
 ## Used SharePoint Framework Version
 
 ![version](https://img.shields.io/badge/version-1.4.0-green.svg)
+> SharePoint 2019 and SharePoint Online
+
+References to office-ui-fabric-react version 5.x because of SharePoint 2019 Support
 
 ## Applies to
 
@@ -35,13 +54,15 @@ IMAGE Animated GIF
 
 ## Prerequisites
 
-> Any special pre-requisites?
+> SharePoint Online or SharePoint 2019
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
 react-image-editor | Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
+
+Thanks to [celum](https://www.celum.com/) and [cubido](https://www.cubido.at/) to allow to share this code.
 
 ## Version history
 
@@ -61,6 +82,7 @@ Version|Date|Comments
 - Ensure that you are at the solution folder
 - in the command-line run:
   - **npm install**
+  - **edit config\serve.json set "initialPage": "https://{tenant}.sharepoint.com/_layouts/15/workbench.aspx"
   - **gulp serve**
 
 > Include any additional steps as needed.
@@ -69,7 +91,6 @@ Version|Date|Comments
 * PNP Placeholder control if not Configured
 * PNP WebpartTitle control  (toggle Show/Hide in property pane)
 * PNP FilePicker control to pick Images (is mocked on localworkbench)
-* ImageManipulation from [react-image-manipulation-spfx](https://github.com/petkir/react-image-manipulation-spfx)
 * Office UI Fabric
 
 

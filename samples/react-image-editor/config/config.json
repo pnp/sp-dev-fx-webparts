@@ -15,6 +15,6 @@
   "localizedResources": {
     "ReactImageEditorWebPartStrings": "lib/webparts/reactImageEditor/loc/{locale}.js",
     "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
-    "ImageManipulationStrings": "node_modules/react-image-manipulation-spfx/lib/components/ImageManipulation/loc/{locale}.js"
+    "ImageManipulationStrings": "lib/components/ImageManipulation/loc/{locale}.js"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "react-image-editor",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -17,9 +17,9 @@
     "@microsoft/sp-office-ui-fabric-core": "~1.4.0",
     "@microsoft/sp-webpart-base": "~1.4.0",
     "@pnp/spfx-controls-react": "^1.21.1",
+    "office-ui-fabric-react": "5.131.0",
     "react": "15.6.2",
-    "react-dom": "15.6.2",
-    "react-image-manipulation-spfx": "0.0.4"
+    "react-dom": "15.6.2"
   },
   "devDependencies": {
     "@types/react": "15.6.6",

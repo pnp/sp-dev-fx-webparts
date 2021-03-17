@@ -10,8 +10,9 @@ import {
 
 import * as strings from 'ReactImageEditorWebPartStrings';
 import ReactImageEditor, { IReactImageEditorBaseProps, IReactImageEditorProps } from './components/ReactImageEditor';
+import { IImageManipulationSettings } from '../../components';
 
-import { IImageManipulationSettings } from 'react-image-manipulation-spfx';
+
 
 export interface IReactImageEditorWebPartProps extends IReactImageEditorBaseProps {
 
