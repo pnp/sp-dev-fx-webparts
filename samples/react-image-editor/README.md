@@ -19,7 +19,7 @@ extensions:
 
 ## Summary
 
-This solution contains an SPFx webpart that shows a HTML Image Editor based on canvas and [Office UI Fabric](https://developer.microsoft.com/fluentui/). 
+This solution contains an SPFx webpart that shows an HTML Image Editor based on canvas and [Office UI Fabric](https://developer.microsoft.com/fluentui/). 
 
 Key features of the Editor
 * Resize
