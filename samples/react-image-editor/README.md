@@ -17,8 +17,6 @@ extensions:
 # React Image Editor
 
 
-
-
 ## Summary
 
 This solution contains an SPFx webpart that shows a HTML Image Editor based on canvas and [Office UI Fabric](https://developer.microsoft.com/fluentui/). 
@@ -33,7 +31,7 @@ Key features of the Editor
 * Redo / Undo
 * Histoy of Actions
 
-The Placeholder and FilePicker is a component from [sp-dev-fx-controls-react ](https://pnp.github.io/sp-dev-fx-controls-react/)
+The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react ](https://pnp.github.io/sp-dev-fx-controls-react/)
 
 ![react-image-editor in action](assets/react-image-editor.gif)
 
@@ -68,7 +66,7 @@ Thanks to [celum](https://www.celum.com/) and [cubido](https://www.cubido.at/) t
 
 Version|Date|Comments
 -------|----|--------
-1.0.0.0|Mar 18, 2021|Initial release
+1.0.0.0|Mar 17, 2021|Initial release
 
 ## Disclaimer
 
@@ -82,7 +80,7 @@ Version|Date|Comments
 - Ensure that you are at the solution folder
 - in the command-line run:
   - **npm install**
-  - **edit config\serve.json set "initialPage": "https://{tenant}.sharepoint.com/_layouts/15/workbench.aspx"
+  - edit config\serve.json set "initialPage": "https://{tenant}.sharepoint.com/_layouts/15/workbench.aspx"
   - **gulp serve**
 
 > Include any additional steps as needed.
