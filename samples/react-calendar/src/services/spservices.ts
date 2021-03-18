@@ -91,7 +91,7 @@ export default class spservices {
         UID: newEvent.UID,
         RecurrenceData: newEvent.RecurrenceData ? await this.deCodeHtmlEntities(newEvent.RecurrenceData) : "",
         MasterSeriesItemID: newEvent.MasterSeriesItemID,
-        RecurrenceID: newEvent.RecurrenceID ? await this.getUtcTime(newEvent.RecurrenceID) : undefined,
+        RecurrenceID: newEvent.RecurrenceID ? newEvent.RecurrenceID : undefined,
       });
     }
     catch (error) {
@@ -240,20 +240,21 @@ export default class spservices {
       switch (event.EventType.toString()) {
         case '4': // Exception Recurrence Event
           results = await web.lists.getById(listId).items.getById(event.Id).update({
-            Title: `Delete: ${event.title}`,
+            Title: `Deleted: ${event.title}`,
             EventType: '3',
           });
           break;
         case '1': // recurrence Event
           // if  delete is a main recrrence delete all recurrences and main recurrence
-          if (!recurrenceSeriesEdited) {
+          if (recurrenceSeriesEdited) {
             // delete execptions if exists before delete recurrence event
             await this.deleteRecurrenceExceptions(event, siteUrl, listId);
             await web.lists.getById(listId).items.getById(event.Id).delete();
           } else {
-            // delete a single recurrence Exception.  add new entry with eventtype 3
-
-            event.RecurrenceID = event.EventDate.toString();
+            //Applying the Standard funactionality of SharePoint When deleting for deleting one occurrence of recurrent event by
+           // 1) adding prefix "Deleted" to event title  2) Set RecurrenceID to event Date 3) Set MasterSeriesItemID to event ID 4)Set fRecurrence to true 5) Set event type to 3
+            event.title = `Deleted: ${event.title}`;
+            event.RecurrenceID = event.EventDate;
             event.MasterSeriesItemID = event.ID.toString();
             event.fRecurrence = true;
             event.EventType = '3';
@@ -532,7 +533,7 @@ export default class spservices {
             Duration: event.Duration,
             RecurrenceData: event.RecurrenceData ? await this.deCodeHtmlEntities(event.RecurrenceData) : "",
             fRecurrence: event.fRecurrence,
-            RecurrenceID: event.RecurrenceID ? await this.getLocalTime(event.RecurrenceID) : undefined,
+            RecurrenceID: event.RecurrenceID ? event.RecurrenceID : undefined,
             MasterSeriesItemID: event.MasterSeriesItemID,
             UID: event.UID.replace("{", "").replace("}", ""),
           });
