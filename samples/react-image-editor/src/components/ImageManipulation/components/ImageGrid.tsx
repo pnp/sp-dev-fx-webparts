@@ -1,4 +1,3 @@
-import { Overlay } from 'office-ui-fabric-react';
 import * as React from 'react';
 import { IResize } from '../ImageManipulation.types';
 
@@ -12,7 +11,9 @@ export interface IImageGridProps {
   aspect?: number;
   onChange: (size: IResize) => void;
   onComplete?: (size: IResize) => void;
+  // tslint:disable-next-line: no-any
   onDragEnd?: (e: MouseEvent | any) => void;
+  // tslint:disable-next-line: no-any
   onDragStart?: (e: MouseEvent | any) => void;
 }
 
@@ -30,7 +31,7 @@ export interface IResizeData {
 
 export default class ImageGrid extends React.Component<IImageGridProps, IImageGridState> {
 
-  private evData: IResizeData = null;
+  private evData: IResizeData = undefined;
   private dragStarted: boolean = false;
   constructor(props: IImageGridProps) {
     super(props);
@@ -43,22 +44,23 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
   }
 
   public componentDidMount(): void {
-    window.document.addEventListener("mousemove", this.onDocMouseTouchMove);
-    window.document.addEventListener("touchmove", this.onDocMouseTouchMove);
+    window.document.addEventListener('mousemove', this.onDocMouseTouchMove);
+    window.document.addEventListener('touchmove', this.onDocMouseTouchMove);
     window.document.addEventListener('mouseup', this.onDocMouseTouchEnd);
     window.document.addEventListener('touchend', this.onDocMouseTouchEnd);
     window.document.addEventListener('touchcancel', this.onDocMouseTouchEnd);
 
   }
   public componentWillUnmount(): void {
-    window.document.removeEventListener("mousemove", this.onDocMouseTouchMove);
-    window.document.removeEventListener("touchmove", this.onDocMouseTouchMove);
+    window.document.removeEventListener('mousemove', this.onDocMouseTouchMove);
+    window.document.removeEventListener('touchmove', this.onDocMouseTouchMove);
     window.document.removeEventListener('mouseup', this.onDocMouseTouchEnd);
     window.document.removeEventListener('touchend', this.onDocMouseTouchEnd);
     window.document.removeEventListener('touchcancel', this.onDocMouseTouchEnd);
   }
 
   public render(): React.ReactElement<IImageGridProps> {
+    // tslint:disable:react-a11y-event-has-role
     return (
       <div className={styles.ImgGridShadowOverlay}>
         <div className={styles.ImgGridVisible}
@@ -110,10 +112,12 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
         </div>
       </div>
     );
+    // tslint:enable
   }
 
+  // tslint:disable-next-line: no-any
   private onStartResizing(e: MouseEvent | any): void {
-    const mousePos = this.getClientPos(e);
+    const mousePos: IMousePosition = this.getClientPos(e);
     let xInversed: boolean = false;
     let yInversed: boolean = false;
     const { ord } = e.target.dataset;
@@ -141,8 +145,9 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
     };
   }
 
+  // tslint:disable-next-line: no-any
   private onDocMouseTouchMove(e: React.MouseEvent<HTMLDivElement> | any): void {
-    const { aspect ,onChange } = this.props;
+    const { aspect, onChange } = this.props;
     if (!this.dragStarted) {
       return;
     }
@@ -151,29 +156,35 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
     }
     e.preventDefault();
 
-    const mousePos = this.getClientPos(e);
+    const mousePos: IMousePosition = this.getClientPos(e);
 
     let xDiff: number = 0;
     let yDiff: number = 0;
 
-    if (this.evData.pos == nodePoition.E || this.evData.pos == nodePoition.SE || this.evData.pos == nodePoition.NE) {
+    if (this.evData.pos === nodePoition.E
+      || this.evData.pos === nodePoition.SE
+      || this.evData.pos === nodePoition.NE) {
       xDiff = mousePos.x - this.evData.clientStartX;
-    } else if (this.evData.pos == nodePoition.W || this.evData.pos == nodePoition.SW || this.evData.pos == nodePoition.NW) {
+    } else if (this.evData.pos === nodePoition.W
+      || this.evData.pos === nodePoition.SW
+      || this.evData.pos === nodePoition.NW) {
       xDiff = this.evData.clientStartX - mousePos.x;
     }
 
-    if (this.evData.pos == nodePoition.N || this.evData.pos == nodePoition.NW || this.evData.pos == nodePoition.NE) {
+    if (this.evData.pos === nodePoition.N || this.evData.pos === nodePoition.NW || this.evData.pos === nodePoition.NE) {
       yDiff = this.evData.clientStartY - mousePos.y;
-    } else if (this.evData.pos == nodePoition.S || this.evData.pos == nodePoition.SW || this.evData.pos == nodePoition.SE) {
+    } else if (this.evData.pos === nodePoition.S
+      || this.evData.pos === nodePoition.SW
+      || this.evData.pos === nodePoition.SE) {
       yDiff = mousePos.y - this.evData.clientStartY;
     }
 
-    let nextsize: IResize = {
+    const nextsize: IResize = {
       width: this.evData.width + xDiff,
       height: this.evData.height + yDiff
     };
-    if(aspect) {
-      if(this.evData.pos !== nodePoition.N && this.evData.pos !== nodePoition.S) {
+    if (aspect) {
+      if (this.evData.pos !== nodePoition.N && this.evData.pos !== nodePoition.S) {
         nextsize.height = nextsize.width / aspect;
       } else {
         nextsize.width = nextsize.height * aspect;
@@ -184,6 +195,7 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
     }
   }
 
+  // tslint:disable-next-line: no-any
   private onDocMouseTouchEnd(e: MouseEvent | any): void {
     const { width, height, onDragEnd, onComplete } = this.props;
     if (this.dragStarted) {
@@ -196,14 +208,13 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
         onComplete({ width: width, height: height });
         this.setState({ cropIsActive: false, newCropIsBeingDrawn: false });
       }
-
-
     }
   }
 
+  // tslint:disable-next-line: no-any
   private getClientPos(e: MouseEvent | any): IMousePosition {
-    let pageX;
-    let pageY;
+    let pageX: number;
+    let pageY: number;
 
     if (e.touches) {
       [{ pageX, pageY }] = e.touches;
@@ -213,8 +224,7 @@ export default class ImageGrid extends React.Component<IImageGridProps, IImageGr
 
     return {
       x: pageX,
-      y: pageY,
+      y: pageY
     };
   }
-
 }

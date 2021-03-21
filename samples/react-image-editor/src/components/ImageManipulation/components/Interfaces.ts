@@ -1,12 +1,9 @@
-import { nodePoition } from "./Enums";
+import { nodePoition } from './Enums';
 
 export interface IMousePosition {
   x: number;
   y: number;
 }
-
-
-
 
 export interface ICropData {
   clientStartX: number;
@@ -22,4 +19,3 @@ export interface ICropData {
   xDiff: number;
   yDiff: number;
 }
-

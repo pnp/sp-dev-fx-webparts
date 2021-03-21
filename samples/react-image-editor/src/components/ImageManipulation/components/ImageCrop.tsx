@@ -1,5 +1,3 @@
-import { noWrap } from 'office-ui-fabric-react';
-import { IPosition } from 'office-ui-fabric-react/lib-es2015/utilities/positioning';
 import * as React from 'react';
 import { ICrop } from '../ImageManipulation.types';
 
@@ -7,10 +5,9 @@ import { nodePoition } from './Enums';
 import styles from './ImageCrop.module.scss';
 import { ICropData, IMousePosition } from './Interfaces';
 
-function clamp(num, min, max) {
+function clamp(num: number, min: number, max: number): number {
   return Math.min(Math.max(num, min), max);
 }
-
 
 export interface IImageCropProps {
   crop: ICrop;
@@ -21,7 +18,8 @@ export interface IImageCropProps {
   onDragStart?: (e: MouseEvent) => void;
   onComplete?: (crop: ICrop) => void;
   onChange?: (crop: ICrop) => void;
-  onDragEnd?: (e) => void;
+  // tslint:disable-next-line: no-any
+  onDragEnd?: (e: any) => void;
 }
 
 export interface IImageCropState {
@@ -30,17 +28,14 @@ export interface IImageCropState {
   reloadtimestamp: string;
 }
 
-
-
-
-
 // Feature detection
+// tslint:disable-next-line: max-line-length
 // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Improving_scrolling_performance_with_passive_listeners
-let passiveSupported = false;
 
-export default class ImageCrop extends React.Component<IImageCropProps, IImageCropState> {
+export default class ImageCrop extends
+  React.Component<IImageCropProps, IImageCropState> {
 
-  private controlRef: HTMLDivElement = null;
+  private controlRef: HTMLDivElement = undefined;
 
   private dragStarted: boolean = false;
   private mouseDownOnCrop: boolean = false;
@@ -61,31 +56,24 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
   }
 
   public componentDidMount(): void {
-    const { crop, sourceHeight, sourceWidth } = this.props;
+    const { crop } = this.props;
     if (crop && this.isValid(crop) &&
       (crop.sx !== 0 || crop.sy !== 0 || crop.width !== 0 && crop.height !== 0)
     ) {
       this.setState({ cropIsActive: true });
     } else {
-      //Requireed because first renderer has no ref
+      // Requireed because first renderer has no ref
       this.setState({ reloadtimestamp: new Date().getTime().toString() });
 
     }
 
   }
 
-  public componentWillUnmount(): void {
-
-  }
-
-
-
-
   public render(): React.ReactElement<IImageCropProps> {
     const { crop } = this.props;
-    const { cropIsActive, newCropIsBeingDrawn } = this.state;
-    const cropSelection = this.isValid(crop) && this.controlRef ? this.createSelectionGrid() : null;
+    const cropSelection: JSX.Element = this.isValid(crop) && this.controlRef ? this.createSelectionGrid() : undefined;
 
+     // tslint:disable:react-a11y-event-has-role
     return (
       <div ref={this.setControlRef}
         className={styles.ImgGridShadowOverlay}
@@ -110,12 +98,14 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
         </div>
       </div>
     );
+    // tslint:
   }
 
   private createSelectionGrid(): JSX.Element {
     const { showRuler } = this.props;
-    const style = this.getCropStyle();
+    const style: { top: string, left: string, width: string, height: string } = this.getCropStyle();
 
+    // tslint:disable:react-a11y-event-has-role
     return (
       <div
         style={style}
@@ -123,7 +113,6 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
         onMouseDown={this.onCropMouseTouchDown}
         onTouchStart={this.onCropMouseTouchDown}
       >
-
 
         <div className={styles.dragBar_n} data-ord={nodePoition.N} />
         <div className={styles.dragBar_e} data-ord={nodePoition.E} />
@@ -139,7 +128,6 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
         <div className={[styles.dragHandle, styles.sw].join(' ')} data-ord={nodePoition.SW} />
         <div className={[styles.dragHandle, styles.w].join(' ')} data-ord={nodePoition.W} />
 
-
         {showRuler && (
           <div>
             <div className={styles.ruleOfThirdsHZ} />
@@ -148,6 +136,7 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
         )}
       </div>
     );
+    // tslint:enable
   }
 
   private makeNewCrop(): ICrop {
@@ -155,32 +144,18 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
     return crop;
   }
 
-  private getCropStyle() {
-    const crop = this.makeNewCrop();
-    const unit = 'px';
+  private getCropStyle(): { top: string, left: string, width: string, height: string } {
+    const crop: ICrop = this.makeNewCrop();
+    const unit: string = 'px';
     return {
       top: `${crop.sy}${unit}`,
       left: `${crop.sx}${unit}`,
       width: `${crop.width}${unit}`,
-      height: `${crop.height}${unit}`,
+      height: `${crop.height}${unit}`
     };
   }
 
-  private getCurrentPosition(e: MouseEvent | any): IMousePosition {
-    let { pageX, pageY } = e;
-    if (e.touches) {
-      [{ pageX, pageY }] = e.touches;
-    }
-
-    let refpos = this.controlRef.getBoundingClientRect();
-    let startx: number = pageX - refpos.left;
-    let starty: number = pageY - refpos.top;
-    return ({
-      x: startx,
-      y: starty
-    });
-  }
-
+  // tslint:disable-next-line: no-any
   private onDocMouseTouchMove(e: React.MouseEvent<HTMLDivElement> | any): void {
     const { crop, onChange, onDragStart } = this.props;
     if (!this.mouseDownOnCrop) {
@@ -191,15 +166,12 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
     if (!this.dragStarted) {
       this.dragStarted = true;
       if (onDragStart) {
+        // tslint:disable-next-line: no-any
         onDragStart(e as any);
       }
     }
-    const pos = this.getCurrentPosition(e);
 
-
-
-
-    const clientPos = this.getClientPos(e);
+    const clientPos: IMousePosition = this.getClientPos(e);
     /*
             if (this.evData.isResize && this.props.aspect && this.evData.cropOffset) {
               clientPos.y = this.straightenYPath(clientPos.x);
@@ -209,7 +181,7 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
     this.evData.xDiff = clientPos.x - this.evData.clientStartX;
     this.evData.yDiff = clientPos.y - this.evData.clientStartY;
 
-    let nextCrop;
+    let nextCrop: ICrop;
 
     if (this.evData.isResize) {
       nextCrop = this.resizeCrop();
@@ -226,10 +198,10 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
 
   }
 
-  private dragCrop() {
+  private dragCrop(): ICrop {
 
     const { evData } = this;
-    let nextCrop: ICrop = this.makeNewCrop();
+    const nextCrop: ICrop = this.makeNewCrop();
     const width: number = this.controlRef.clientWidth;
     const height: number = this.controlRef.clientHeight;
     nextCrop.sx = clamp(evData.cropStartX + evData.xDiff, 0, width - nextCrop.width);
@@ -238,9 +210,9 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
     return nextCrop;
   }
 
-  private resizeCrop() {
+  private resizeCrop(): ICrop {
     const { evData } = this;
-    let nextCrop = this.makeNewCrop();
+    const nextCrop: ICrop = this.makeNewCrop();
     const { pos } = evData;
 
     if (evData.xInversed) {
@@ -251,11 +223,10 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
       evData.yDiff -= evData.cropStartHeight * 2;
 
     }
-    const newSize = this.getNewSize();
+    const newSize: { width: number, height: number } = this.getNewSize();
 
-
-    let newX = evData.cropStartX;
-    let newY = evData.cropStartY;
+    let newX: number = evData.cropStartX;
+    let newY: number = evData.cropStartY;
 
     if (evData.xInversed) {
       newX = nextCrop.sx + (nextCrop.width - newSize.width);
@@ -273,7 +244,11 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
       aspect: this.props.crop.aspect
     };
 
-    if (this.props.crop.aspect || (pos === nodePoition.NW || pos === nodePoition.SE || pos === nodePoition.SW || pos === nodePoition.NE)) {
+    if (this.props.crop.aspect
+      || (pos === nodePoition.NW
+        || pos === nodePoition.SE
+        || pos === nodePoition.SW
+        || pos === nodePoition.NE)) {
       nextCrop.sx = containedCrop.sx;
       nextCrop.sy = containedCrop.sy;
       nextCrop.width = containedCrop.width;
@@ -288,12 +263,11 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
     return nextCrop;
   }
 
-
   private getNewSize(): { width: number, height: number } {
     const { crop, sourceWidth, sourceHeight } = this.props;
     const { evData } = this;
 
-    let newWidth = evData.cropStartWidth + evData.xDiff;
+    let newWidth: number = evData.cropStartWidth + evData.xDiff;
 
     if (evData.xInversed) {
       newWidth = Math.abs(newWidth);
@@ -302,7 +276,7 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
     newWidth = clamp(newWidth, 0, sourceWidth);
 
     // New height.
-    let newHeight;
+    let newHeight: number;
 
     if (crop.aspect) {
       newHeight = newWidth / crop.aspect;
@@ -323,15 +297,13 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
 
     return {
       width: newWidth,
-      height: newHeight,
+      height: newHeight
     };
   }
 
+  // tslint:disable-next-line: no-any
   private onDocMouseTouchEnd(e: MouseEvent | any): void {
     const { crop, onDragEnd, onComplete } = this.props;
-
-    let elecord = this.controlRef.getBoundingClientRect();
-
 
     if (this.mouseDownOnCrop) {
       this.mouseDownOnCrop = false;
@@ -347,11 +319,12 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
     }
   }
 
+  // tslint:disable-next-line: no-any
   private onCropMouseTouchDown(e: MouseEvent | any): void {
     const { crop } = this.props;
 
     e.preventDefault(); // Stop drag selection.
-    const mousepos = this.getClientPos(e);
+    const mousepos: IMousePosition = this.getClientPos(e);
     const { ord } = e.target.dataset;
 
     let xInversed: boolean = false;
@@ -382,14 +355,14 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
     this.setState({ cropIsActive: true });
   }
 
-
   private setControlRef(element: HTMLDivElement): void {
     this.controlRef = element;
   }
 
+  // tslint:disable-next-line: no-any
   private getClientPos(e: MouseEvent | any): IMousePosition {
-    let pageX;
-    let pageY;
+    let pageX: number;
+    let pageY: number;
 
     if (e.touches) {
       [{ pageX, pageY }] = e.touches;
@@ -399,62 +372,30 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
 
     return {
       x: pageX,
-      y: pageY,
+      y: pageY
     };
   }
 
-  private isValid(crop: ICrop) {
+  private isValid(crop: ICrop): boolean {
     return crop && !isNaN(crop.width) && !isNaN(crop.height);
   }
 
-  private makeAspectCrop(crop: ICrop) {
-    if (isNaN(this.props.crop.aspect)) {
-      return crop;
-    }
-
-    const calcCrop: ICrop = crop;
-
-    if (crop.width) {
-      calcCrop.height = calcCrop.width / this.props.crop.aspect;
-    }
-
-    if (crop.height) {
-      calcCrop.width = calcCrop.height * this.props.crop.aspect;
-    }
-
-    if (calcCrop.sy + calcCrop.height > this.props.sourceHeight) {
-      calcCrop.height = this.props.sourceHeight - calcCrop.sy;
-      calcCrop.width = calcCrop.height * this.props.crop.aspect;
-    }
-
-    if (calcCrop.sx + calcCrop.width > this.props.sourceWidth) {
-      calcCrop.width = this.props.sourceWidth - calcCrop.sx;
-      calcCrop.height = calcCrop.width / this.props.crop.aspect;
-    }
-
-    return calcCrop;
-  }
-  private resolveCrop(pixelCrop: ICrop) {
-    if (this.props.crop.aspect && (!pixelCrop.width || !pixelCrop.height)) {
-      return this.makeAspectCrop(pixelCrop);
-    }
-    return pixelCrop;
-  }
-
+  // tslint:disable-next-line: no-any
   private onMouseTouchDown(e: MouseEvent | any): void {
     const { crop, onChange } = this.props;
     e.preventDefault(); // Stop drag selection.
-    const mousepos = this.getClientPos(e);
+    const mousepos: IMousePosition = this.getClientPos(e);
 
-    let refpos = this.controlRef.getBoundingClientRect();
-    let startx: number = mousepos.x - refpos.left;
-    let starty: number = mousepos.y - refpos.top;
-    //is mousePos in current pos
+    // tslint:disable-next-line: no-any
+    const refpos: any = this.controlRef.getBoundingClientRect();
+    const startx: number = mousepos.x - refpos.left;
+    const starty: number = mousepos.y - refpos.top;
+    // is mousePos in current pos
     if (crop) {
       if (crop.sx - 5 <= startx && crop.sx + crop.width + 5 >= startx &&
         crop.sy - 5 <= starty && crop.sy + crop.height + 5 >= starty
       ) {
-        //Position in current crop do Nothing
+        // Position in current crop do Nothing
         return;
       }
     }
@@ -479,7 +420,7 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
       isResize: true,
       xDiff: 0,
       yDiff: 0,
-      pos: nodePoition.NW,
+      pos: nodePoition.NW
     };
 
     this.mouseDownOnCrop = true;
@@ -488,5 +429,4 @@ export default class ImageCrop extends React.Component<IImageCropProps, IImageCr
 
     this.setState({ cropIsActive: true, newCropIsBeingDrawn: true });
   }
-
 }

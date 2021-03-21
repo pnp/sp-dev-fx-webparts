@@ -10,4 +10,3 @@ export {
   IFilterSettings, IRotateSettings, IScaleSettings, IFlipSettings, ICropSettings, IResizeSettings,
   FilterType
 } from './ImageManipulation.types';
-

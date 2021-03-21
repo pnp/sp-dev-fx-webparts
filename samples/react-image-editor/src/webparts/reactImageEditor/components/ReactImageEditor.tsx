@@ -1,32 +1,30 @@
 import * as React from 'react';
 import styles from './ReactImageEditor.module.scss';
-
-import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
 import { DisplayMode, Environment, EnvironmentType } from '@microsoft/sp-core-library';
-import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
+import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { FilePicker, IFilePickerResult } from '@pnp/spfx-controls-react/lib/FilePicker';
+import { ImageManipulation, IImageManipulationSettings } from '../../../components/ImageManipulation';
 
-import { ImageManipulation, IImageManipulationSettings } from '../../../components/ImageManipulation'
+export interface IReactImageEditorBaseProps {
+  showTitle: boolean;
+  title: string;
+  url?: string;
+  settings?: IImageManipulationSettings[];
 
+}
 
 export interface IReactImageEditorProps extends IReactImageEditorBaseProps {
   displayMode: DisplayMode;
   context: WebPartContext;
-
   updateTitleProperty: (value: string) => void;
   updateUrlProperty: (value: string) => void;
   updateManipulationSettingsProperty: (value: IImageManipulationSettings[]) => void;
 }
-export interface IReactImageEditorBaseProps {
-  showTitle: boolean;
-  title: string;
-  url?: string
-  settings?: IImageManipulationSettings[];
 
-}
 export interface IReactImageEditorState {
-  isFilePickerOpen: boolean,
+  isFilePickerOpen: boolean;
   statekey: string;
 }
 
@@ -36,7 +34,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
     this.state = {
       isFilePickerOpen: false,
       statekey: 'init'
-    }
+    };
     this._onConfigure = this._onConfigure.bind(this);
     this._onUrlChanged = this._onUrlChanged.bind(this);
     this._onSettingsChanged = this._onSettingsChanged.bind(this);
@@ -44,7 +42,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
   public render(): React.ReactElement<IReactImageEditorProps> {
     const { url, settings } = this.props;
     const { isFilePickerOpen } = this.state;
-    const isConfigured = !!url && url.length > 0;
+    const isConfigured: boolean = !!url && url.length > 0;
     return (
 
       <div className={styles.reactImageEditor}>
@@ -54,16 +52,16 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
         {(isFilePickerOpen || isConfigured) && Environment.type !== EnvironmentType.Local &&
           <FilePicker
             isPanelOpen={isFilePickerOpen}
-            accepts={[".gif", ".jpg", ".jpeg", ".png"]}
-            buttonIcon="FileImage"
+            accepts={['.gif', '.jpg', '.jpeg', '.png']}
+            buttonIcon='FileImage'
             onSave={(filePickerResult: IFilePickerResult) => {
-              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl))
+              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl));
             }}
             onCancel={() => {
-              this.setState({ isFilePickerOpen: false })
+              this.setState({ isFilePickerOpen: false });
             }}
             onChanged={(filePickerResult: IFilePickerResult) => {
-              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl))
+              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl));
 
             }}
             context={this.props.context}
@@ -92,7 +90,10 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
   private _onConfigure = () => {
     if (Environment.type === EnvironmentType.Local) {
       this.setState({ isFilePickerOpen: false }, () => {
-        this._onUrlChanged('https://media.gettyimages.com/photos/whitewater-paddlers-descend-vertical-waterfall-in-kayak-picture-id1256321293?s=2048x2048');
+        this._onUrlChanged(
+          'https://media.gettyimages.com/photos/'
+          + 'whitewater-paddlers-descend-vertical-waterfall-in-kayak-picture-id1256321293?s=2048x2048'
+          );
       });
     } else {
       this.setState({ isFilePickerOpen: true });

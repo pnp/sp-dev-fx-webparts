@@ -19,9 +19,10 @@ extensions:
 
 ## Summary
 
-This solution contains an SPFx webpart that shows an HTML Image Editor based on canvas and [Office UI Fabric](https://developer.microsoft.com/fluentui/). 
+This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and [Office UI Fabric](https://developer.microsoft.com/fluentui/). 
 
 Key features of the Editor
+
 * Resize
 * Crop
 * Flip
@@ -36,10 +37,13 @@ The Placeholder and FilePicker are components from the [sp-dev-fx-controls-react
 ![react-image-editor in action](assets/react-image-editor.gif)
 
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![version](https://img.shields.io/badge/version-1.4.0-green.svg)
-> SharePoint 2019 and SharePoint Online
+![SPFx 1.4.0](https://img.shields.io/badge/SPFx-1.4.0-green.svg) 
+![Node.js LTS 6.x](https://img.shields.io/badge/Node.js-LTS%206.x-green.svg) 
+![SharePoint 2016 | 2019 | Online](https://img.shields.io/badge/SharePoint-2016%20%7C%202019%20%7C%20Online-green.svg)
+![Teams No: Not designed for Microsoft Teams](https://img.shields.io/badge/Teams-No-red.svg "Not designed for Microsoft Teams")
+![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
 
 References to office-ui-fabric-react version 5.x because of SharePoint 2019 Support
 
@@ -86,6 +90,7 @@ Version|Date|Comments
 > Include any additional steps as needed.
 
 ## Usage
+
 * PNP Placeholder control if not Configured
 * PNP WebpartTitle control  (toggle Show/Hide in property pane)
 * PNP FilePicker control to pick Images (is mocked on localworkbench)

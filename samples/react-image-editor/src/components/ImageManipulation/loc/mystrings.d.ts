@@ -7,7 +7,6 @@ declare interface IImageManipulationStrings {
   ManipulationTypeCrop: string;
   ManipulationTypeResize: string;
 
-
   FilterTypeGrayscale: string;
   FilterTypeSepia: string;
 
