@@ -62,6 +62,17 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.4.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-image-editor
+      name: react-image-editor
+      title: Image Editor
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-image-editor/assets/react-image-editor.gif
+      author: Peter Paul Kirschner
+      summary: This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric.
+      pnpcontrols: WebPartTitle, Placeholder, FilePicker
+      modifiedtext: March 17, 2021
+      modified: 2021-03-17
+    - framework: React
       spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-message-user
       name: react-teams-message-user
@@ -80,18 +91,18 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-sites-selected-admin/assets/sites-manager-demo.gif
       author: Fredrik Thorild
       summary: The web part lets you manage your Azure AD applications that have the Sites Selected Api permission. With this web part you'll get an UI for managing what app can connect to which site.
-      modifiedtext: February 19, 2021
-      modified: 2021-02-19
+      modifiedtext: March 8, 2021
+      modified: 2021-03-08
     - framework: React
       spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-datatable
       name: react-datatable
-      title: Datatable
+      title: Data Table
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-datatable/assets/preview.png
       author: Chandani Prajapati
-      summary: This web part provides easy way to render SharePoint custom list in datatable view with all the necessary features.
-      modifiedtext: February 24, 2021
-      modified: 2021-02-24
+      summary: This web part provides easy way to render SharePoint custom list in data table view with all the necessary features.
+      modifiedtext: March 01, 2021
+      modified: 2021-03-01
       pnpcontrols: PropertyFieldColorPicker, PropertyFieldListPicker, PropertyFieldMultiSelect, PropertyFieldOrder, WebPartTitle, Placeholder
     - framework: React
       spfx: 1.11.0
@@ -101,8 +112,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-staffdirectory/assets/staffdirectory.gif
       author: João Mendes
       summary: This web part shows the current user's colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card.
-      modifiedtext: February 16, 2021
-      modified: 2021-02-16
+      modifiedtext: March 9, 2021
+      modified: 2021-03-09
       pnpcontrols: WebPartTitle
     - framework: React
       spfx: 1.11.0
@@ -246,10 +257,10 @@ extra:
       name: react-feedback
       title: Feedback
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-feedback/assets/feedbackwebpart.gif
-      author: Perry Kankam
+      author: Perry Kankam, Abderahman Moujahid
       summary: This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the "Feedback Owners" group.
-      modifiedtext: December 15, 2020
-      modified: 2020-12-15
+      modifiedtext: March 3, 2021
+      modified: 2021-03-03
       technology: PnPjs
     - framework: React
       spfx: 1.11.0
@@ -598,10 +609,10 @@ extra:
       name: react-directory
       title: Organization Directory Web Part
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-directory/assets/react-directory7.png
-      author: João Mendes, Peter Paul Kirschner, Sudharsan Kesavanarayanan
+      author: João Mendes, Peter Paul Kirschner, Sudharsan Kesavanarayanan, Abderahman Moujahid
       summary: Search People from Organization Directory and show live persona card on hover.
-      modifiedtext: September 18, 2020
-      modified: 2020-09-18
+      modifiedtext: March 4, 2021
+      modified: 2021-03-04
     - framework: React
       spfx: 1.10.0
       url:  https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar-feed
@@ -980,10 +991,10 @@ extra:
       name: react-calendar
       title: Calendar
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
-      author: João Mendes, Mohamed Derhalli, Hugo Bernier, Nanddeep Nachan, Abderahman Moujahid
+      author: João Mendes, Mohamed Derhalli, Hugo Bernier, Nanddeep Nachan, Abderahman Moujahid, Mohammed Amer
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
-      modifiedtext: December 04, 2020
-      modified: 2020-12-04
+      modifiedtext: Marcn 16, 2021
+      modified: 2021-03-16
       pnpcontrols: PropertyFieldDateTimePicker, PeoplePicker, Map
       technology: MSGraph
     - framework: React
@@ -1355,7 +1366,7 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-covid19-info/assets/covid-counter.gif
       framework: React
       spfx: 1.10.0
-      author: Robin Atgen
+      author: Robin Agten
       modifiedtext: March 25, 2020
       modified: 2020-03-25
       level: 200
@@ -2808,8 +2819,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-securitygrid/src/images/MainDisplay.gif
       author: Russell Gove
       summary: React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web
-      modifiedtext: February 22, 2021
-      modified: 2021-02-21
+      modifiedtext: March 6, 2021
+      modified: 2021-03-06
       technology: MSGraph
     - framework: React
       spfx: GA
@@ -3205,6 +3216,7 @@ extra:
     - Mikael Svenson
     - Miguel Rabaca
     - Mike Zimmerman
+    - Mohammed Amer
     - Mohamed Derhalli
     - Nanddeep Nachan
     - Neil Barkhina
