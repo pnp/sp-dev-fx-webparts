@@ -93,7 +93,7 @@ Version|Date|Comments
 
 * PNP Placeholder control if not Configured
 * PNP WebpartTitle control  (toggle Show/Hide in property pane)
-* PNP FilePicker control to pick Images (is mocked on localworkbench)
+* PNP FilePicker control to pick Images (is mocked on local workbench)
 * Office UI Fabric
 
 
