@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "51c2d476-67e1-453f-888c-ae193bad7bc6",
+  "alias": "ReactImageEditorWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "react-image-editor" },
+    "description": { "default": "react-image-editor description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "title": "react-image-editor Sample",
+      "showTitle":true,
+      "settings":[],
+      "url":""
+    }
+  }]
+}

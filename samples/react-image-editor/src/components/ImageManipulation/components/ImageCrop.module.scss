@@ -1,0 +1,243 @@
+$drag-handle-width: 10px !default;
+$drag-handle-height: 10px !default;
+$drag-bar-size: 6px !default;
+
+// Query to kick us into "mobile" mode with larger drag handles/bars.
+// See: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/pointer
+$mobile-media-query: '(pointer: coarse)' !default;
+
+// Mobile handle/bar sizes.  Override as above.
+$drag-handle-mobile-width: 24px !default;
+$drag-handle-mobile-height: 24px !default;
+
+// Handle color/border.
+$drag-handle-background-colour: rgba(0, 0, 0, 0.2) !default;
+$drag-handle-border: 1px solid rgba(255, 255, 255, 0.7) !default;
+
+.ImgGridShadowOverlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.ImgGridVisible {
+  position: absolute;
+ top:0;
+ left:0;
+right: 0;
+bottom:0;
+cursor: crosshair;
+touch-action: manipulation;
+
+  .CropContrainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(0, 0, 0);
+    box-sizing: border-box;
+    cursor: move;
+    box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.5);
+    touch-action: manipulation;
+    border: 1px dashed white;
+
+    .ruleOfThirdsVT,
+    .ruleOfThirdsHZ{
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: rgba(255, 255, 255, 0.4);
+        }
+    }
+    .ruleOfThirdsVT{
+      &::before,
+      &::after {
+        width: 1px;
+        height: 100%;
+      }
+
+      &::before {
+        left: 33.3333%;
+        left: calc(100% / 3);
+      }
+
+      &::after {
+        left: 66.6666%;
+        left: calc(100% / 3 * 2);
+      }
+    }
+    .ruleOfThirdsHZ{
+      &::before,
+    &::after {
+      width: 100%;
+      height: 1px;
+    }
+
+    &::before {
+      top: 33.3333%;
+      top: calc(100% / 3);
+    }
+
+    &::after {
+      top: 66.6666%;
+      top: calc(100% / 3 * 2);
+    }
+    }
+
+.dragHandle{
+  position: absolute;
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: $drag-handle-width;
+    height: $drag-handle-height;
+    background-color: $drag-handle-background-colour;
+    border: $drag-handle-border;
+    box-sizing: border-box;
+
+    // This stops the borders disappearing when keyboard
+    // nudging.
+    outline: 1px solid transparent;
+  }
+}
+
+  .nw{
+    top: 0;
+    left: 0;
+    margin-top: -(ceil($drag-handle-height / 2));
+    margin-left: -(ceil($drag-handle-width / 2));
+    cursor: nwse-resize;
+
+    &::after {
+      top: 0;
+      left: 0;
+    }
+  }
+  .n {
+    top: 0;
+    left: 50%;
+    margin-top: -(ceil($drag-handle-height / 2));
+    margin-left: -(ceil($drag-handle-width / 2));
+    cursor: ns-resize;
+
+    &::after {
+      top: 0;
+    }
+  }
+  .ne {
+    top: 0;
+    right: 0;
+    margin-top: -(ceil($drag-handle-height / 2));
+    margin-right: -(ceil($drag-handle-width / 2));
+    cursor: nesw-resize;
+
+    &::after {
+      top: 0;
+      right: 0;
+    }
+  }
+  .e {
+    top: 50%;
+    right: 0;
+    margin-top: -(ceil($drag-handle-height / 2));
+    margin-right: -(ceil($drag-handle-width / 2));
+    cursor: ew-resize;
+
+    &::after {
+      right: 0;
+    }
+  }
+  .se {
+    bottom: 0;
+    right: 0;
+    margin-bottom: -(ceil($drag-handle-height / 2));
+    margin-right: -(ceil($drag-handle-width / 2));
+    cursor: nwse-resize;
+
+    &::after {
+      bottom: 0;
+      right: 0;
+    }
+  }
+  .s {
+    bottom: 0;
+    left: 50%;
+    margin-bottom: -(ceil($drag-handle-height / 2));
+    margin-left: -(ceil($drag-handle-width / 2));
+    cursor: ns-resize;
+
+    &::after {
+      bottom: 0;
+    }
+  }
+  .sw {
+    bottom: 0;
+    left: 0;
+    margin-bottom: -(ceil($drag-handle-height / 2));
+    margin-left: -(ceil($drag-handle-width / 2));
+    cursor: nesw-resize;
+
+    &::after {
+      bottom: 0;
+      left: 0;
+    }
+  }
+  .w {
+    top: 50%;
+    left: 0;
+    margin-top: -(ceil($drag-handle-height / 2));
+    margin-left: -(ceil($drag-handle-width / 2));
+    cursor: ew-resize;
+
+    &::after {
+      left: 0;
+    }
+  }
+  .dragBar_n {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $drag-bar-size;
+    margin-top: -($drag-bar-size / 2);
+  }
+
+
+
+    .dragBar_e {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $drag-bar-size;
+      height: 100%;
+      margin-right: -($drag-bar-size / 2);
+    }
+    .dragBar_s {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: $drag-bar-size;
+      margin-bottom: -($drag-bar-size / 2);
+    }
+    .dragBar_w {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $drag-bar-size;
+      height: 100%;
+      margin-left: -($drag-bar-size / 2);
+    }
+
+
+
+}
+
+
+}

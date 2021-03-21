@@ -1,0 +1,129 @@
+.ImgGridShadowOverlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  //background-color: rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+.ImgGridVisible {
+  position: absolute;
+ top:0;
+ left:0;
+right: 0;
+bottom:0;
+ // box-sizing: border-box;
+ // box-shadow:0 0 0 9999em;
+ box-shadow: 0 0 0 9999em rgba(0, 0, 0, 0.5);
+
+  .ImgGridTabel {
+    border:2px solid white;
+    display: table;
+    height: 100%;
+    width: 100%;
+    .ImgGridRow {
+      display: table-row;
+      height: 33.33%;
+
+     .ImgGridCell {
+        display: table-cell;
+        width: 33.33%;
+      }
+.ImgLeftTop{
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  .bubble{
+    cursor:nwse-resize;
+    left: 0;
+    top:0;
+  }
+}
+.ImgRightTop{
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  .bubble{
+    cursor:nesw-resize;
+    right: 0;
+    top:0;
+  }
+}
+.ImgLeftBottom {
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  .bubble{
+    cursor:nesw-resize;
+    left: 0;
+    bottom:0;
+  }
+}
+.ImgRightBottom {
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  .bubble{
+    cursor:nwse-resize;
+    right: 0;
+    bottom:0;
+  }
+}
+.ImgCenterTop {
+  border-bottom: 1px dashed white;
+  .bubble{
+    cursor:ns-resize;
+    left: 50%;
+    top:0;
+    height: 10px;
+  }
+}
+.ImgCenterBottom{
+  border-top: 1px dashed white;
+  .bubble{
+    cursor:ns-resize;
+    left: 50%;
+    bottom:0;
+    height: 10px;
+  }
+}
+.ImgLeftCenter{
+ border-right: 1px dashed white;
+ .bubble{
+  cursor:ew-resize;
+  left: 0;
+  top:50%;
+  width: 10px;
+}
+}
+.ImgRightCenter{
+  border-left: 1px dashed white;
+  .bubble{
+    cursor:ew-resize;
+    right: 0;
+    top:50%;
+    width: 10px;
+  }
+}
+    }
+    .bubble{
+      height: 16px;
+      width: 16px;
+      background-color: white;
+      //border-radius: 50%;
+      border:1px solid black;
+      display: block;
+      position:absolute;
+     // margin: -8px 0 0 -8px;
+
+
+    }
+
+    /*
+    .ImgGridRowTop {
+      .ImgGridCellLeft {}
+      .ImgGridCellCenter {}
+      .ImgGridCellRight {}
+    }
+    .ImgGridRowMiddle {}
+    .ImgGridRowBottom {}
+*/
+  }
+}
