@@ -74,16 +74,18 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
           description='Please configure the web part.'
           buttonLabel='Configure'
           onConfigure={this._onConfigure} />) :
-          (<ImageManipulation
+          (
+          <ImageManipulation
             settings={settings}
-            configsettings={{
+            configSettings={{
               rotateButtons: [-90, -45, -30, 0, 30, 45, 90]
             }
             }
-            displyMode={DisplayMode.Edit}
-            settingschanged={this.props.updateManipulationSettingsProperty}
+            displayMode={DisplayMode.Edit}
+            settingsChanged={this.props.updateManipulationSettingsProperty}
             src={url}
-          />)}
+          />
+          )}
 
       </div >
     );

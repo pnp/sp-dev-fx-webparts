@@ -26,11 +26,11 @@ export interface IImageManipulationConfig {
 export interface IImageManipulationProps {
   src: string;
   settings?: IImageManipulationSettings[];
-  settingschanged?: (settings: IImageManipulationSettings[]) => void;
+  settingsChanged?: (settings: IImageManipulationSettings[]) => void;
   imgLoadError?: () => void;
   editMode?: (mode: boolean) => void;
-  configsettings: IImageManipulationConfig;
-  displyMode: DisplayMode;
+  configSettings: IImageManipulationConfig;
+  displayMode: DisplayMode;
 }
 
 export interface IImageManipulationState {
@@ -118,6 +118,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
         switch (element.type) {
           case ManipulationType.Flip:
             const filp = element as IFlipSettings;
+            ////#region
             if (filp.flipY) {
               this.manipulateCtx.translate(0, currentheight);
               this.manipulateCtx.scale(1, -1);
@@ -135,6 +136,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
               break;
             }
             if (rotate.rotate) {
+
               const angelcalc = rotate.rotate * Math.PI / 180;
               const oldwidth = currentwidth;
               const oldheight = currentheight;
@@ -258,9 +260,9 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
   public render(): React.ReactElement<IImageManipulationProps> {
     return (
       <div className={styles.imageEditor} style={{
-        marginTop: this.props.displyMode === DisplayMode.Edit ? '40px' : '0px',
+        marginTop: this.props.displayMode === DisplayMode.Edit ? '40px' : '0px',
       }} >
-        {this.props.displyMode === DisplayMode.Edit && this.getCommandBar()}
+        {this.props.displayMode === DisplayMode.Edit && this.getCommandBar()}
         <div className={styles.imageplaceholder + ' ' + this.getMaxWidth()}
           ref={(element: HTMLDivElement) => { this.wrapperRef = element; }}
           style={this.canvasRef && { width: '' + this.canvasRef.width + 'px' }}
@@ -398,14 +400,14 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
         if (this.state.redosettings && this.state.redosettings.length > 0) {
           this.setState({ redosettings: [] }, () => {
 
-            if (this.props.settingschanged) {
-              this.props.settingschanged(newhist);
+            if (this.props.settingsChanged) {
+              this.props.settingsChanged(newhist);
             }
           });
         } else {
 
-          if (this.props.settingschanged) {
-            this.props.settingschanged(newhist);
+          if (this.props.settingsChanged) {
+            this.props.settingsChanged(newhist);
           }
         }
 
@@ -444,8 +446,8 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
         svalue: svalue
       });
     }
-    if (this.props.settingschanged) {
-      this.props.settingschanged(tmpsettings);
+    if (this.props.settingsChanged) {
+      this.props.settingsChanged(tmpsettings);
     }
   }
 
@@ -502,7 +504,7 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
     }
     return (<div>
       <div>
-        {this.props.configsettings.rotateButtons.map((value: number, index: number) => {
+        {this.props.configSettings.rotateButtons.map((value: number, index: number) => {
           let icon: string = 'CompassNW';
           if (value !== 0) { icon = 'Rotate'; }
 
@@ -824,13 +826,13 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
     }
     if (this.state.redosettings && this.state.redosettings.length > 0) {
       this.setState({ redosettings: [] }, () => {
-        if (this.props.settingschanged) {
-          this.props.settingschanged(state);
+        if (this.props.settingsChanged) {
+          this.props.settingsChanged(state);
         }
       });
     } else {
-      if (this.props.settingschanged) {
-        this.props.settingschanged(state);
+      if (this.props.settingsChanged) {
+        this.props.settingsChanged(state);
       }
     }
   }
@@ -839,8 +841,8 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
     if (this.props.settings && this.props.settings.length > 0) {
       let state = clone(this.props.settings);
       state.splice(state.length - 1, 1);
-      if (this.props.settingschanged) {
-        this.props.settingschanged(clone(state));
+      if (this.props.settingsChanged) {
+        this.props.settingsChanged(clone(state));
       }
     }
   }
@@ -881,8 +883,8 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
           redo.push(last);
           this.setState({ redosettings: redo },
             () => {
-              if (this.props.settingschanged) {
-                this.props.settingschanged(settings);
+              if (this.props.settingsChanged) {
+                this.props.settingsChanged(settings);
               }
             });
 
@@ -900,8 +902,8 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
           settings.push(redo);
           this.setState({ redosettings: redosettings },
             () => {
-              if (this.props.settingschanged) {
-                this.props.settingschanged(settings);
+              if (this.props.settingsChanged) {
+                this.props.settingsChanged(settings);
               }
             });
 
@@ -915,8 +917,8 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
         onClick={() => {
           this.setState({ redosettings: [] },
             () => {
-              if (this.props.settingschanged) {
-                this.props.settingschanged([]);
+              if (this.props.settingsChanged) {
+                this.props.settingsChanged([]);
               }
             });
 

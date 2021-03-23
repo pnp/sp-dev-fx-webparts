@@ -6,14 +6,7 @@ const flipVerticalIcon: any = require('../../svg/flipVertical.svg');
 const resizeIcon: any = require('../../svg/resize.svg');
 import * as strings from 'ImageManipulationStrings';
 
-export enum ManipulationType {
-  Crop,
-  Scale,
-  Rotate,
-  Flip,
-  Filter,
-  Resize
-}
+
 
 export enum SettingPanelType {
   Closed = 1,
@@ -42,11 +35,6 @@ export enum FilterType {
   ColorOverLay*/
 }
 
-
-export interface IManipulationBase {
-  type: ManipulationType;
-}
-
 export interface ICrop {
   sx: number;
   sy: number;
@@ -61,8 +49,20 @@ export interface IResize {
   aspect?: number;
 }
 
-export interface ICropSettings extends IManipulationBase, ICrop {
+export enum ManipulationType {
+  Crop,
+  Scale,
+  Rotate,
+  Flip,
+  Filter,
+  Resize
+}
 
+export interface IManipulationBase {
+  type: ManipulationType;
+}
+
+export interface ICropSettings extends IManipulationBase, ICrop {
 }
 export interface IFlipSettings extends IManipulationBase {
   flipX: boolean;
@@ -81,10 +81,10 @@ export interface IFilterSettings extends IManipulationBase {
   svalue?: string;
 }
 export interface IResizeSettings extends IManipulationBase, IResize {
-
 }
 
-export type IImageManipulationSettings = IFilterSettings | IRotateSettings | IScaleSettings | IFlipSettings | ICropSettings | IResizeSettings;
+export type IImageManipulationSettings = IFilterSettings | IRotateSettings |
+          IScaleSettings | IFlipSettings | ICropSettings | IResizeSettings;
 
 
 export const filterTypeData: IFilterTypeData = {
