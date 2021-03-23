@@ -20,7 +20,7 @@ import ItemOrder from './components/ItemOrder';
 
 import { GrayscaleFilter } from './Filter/GrayscaleFilter';
 import { SepiaFilter } from './Filter/SepiaFilter';
-import { historyItem } from './historyItem';
+
 import styles from './ImageManipulation.module.scss';
 import {
   FilterType,
@@ -45,6 +45,7 @@ const flipVerticalIcon: any = require('../../svg/flipVertical.svg');
 const flipHorizontalIcon: any = require('../../svg/flipHorizontal.svg');
 
 import * as strings from 'ImageManipulationStrings';
+import { historyItem } from './HistoryItem';
 
 export interface IImageManipulationConfig {
   rotateButtons: number[];
