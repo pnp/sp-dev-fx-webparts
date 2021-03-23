@@ -2,11 +2,11 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-image-editor",
     "source": "pnp",
-    "title": "React Image Editor",
-    "shortDescription": "This solution contains an SPFx webpart that shows an HTML Image Editor based on canvas and Office UI Fabric",
+    "title": "Image Editor",
+    "shortDescription": "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-image-editor",
     "longDescription": [
-      "This solution contains an SPFx webpart that shows an HTML Image Editor based on canvas and Office UI Fabric ",
+      "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric ",
 "Key features of the Editor",
 "* Resize",
 "* Crop",

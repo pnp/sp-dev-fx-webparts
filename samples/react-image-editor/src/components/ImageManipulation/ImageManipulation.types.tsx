@@ -1,8 +1,12 @@
 import * as React from 'react';
 
+// tslint:disable-next-line: no-any
 const colorFilterIcon: any = require('../../svg/colorFilter.svg');
+// tslint:disable-next-line: no-any
 const cropIcon: any = require('../../svg/crop.svg');
+// tslint:disable-next-line: no-any
 const flipVerticalIcon: any = require('../../svg/flipVertical.svg');
+// tslint:disable-next-line: no-any
 const resizeIcon: any = require('../../svg/resize.svg');
 import * as strings from 'ImageManipulationStrings';
 
@@ -21,7 +25,7 @@ export enum SettingPanelType {
 
 export enum FilterType {
   Grayscale,
-  Sepia,
+  Sepia
   /*
   Blur,
   Emboss,
@@ -99,6 +103,7 @@ export interface IFilterTypeData {
 export interface IManipulationTypeDataBase {
   text: string;
   iconName?: string;
+  // tslint:disable-next-line: no-any
   svgIcon?: any;
   settingPanelType: SettingPanelType;
 }
@@ -117,7 +122,7 @@ export const manipulationTypeData: IManipulationTypeData = {
     svgIcon: cropIcon,
     toHTML: (item: ICropSettings) => {
       return (<span></span>);
-      //return (<span>{`X:${item.sx} Y:${item.sy}`}</span>);
+      // return (<span>{`X:${item.sx} Y:${item.sy}`}</span>);
     },
     settingPanelType: SettingPanelType.Crop
   },
@@ -153,8 +158,5 @@ export const manipulationTypeData: IManipulationTypeData = {
     svgIcon: resizeIcon,
     toHTML: (item: IResizeSettings) => { return (<span></span>); },
     settingPanelType: SettingPanelType.Resize
-  },
-
+  }
 };
-
-

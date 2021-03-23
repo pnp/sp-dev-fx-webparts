@@ -4,15 +4,12 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField,
   PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'ReactImageEditorWebPartStrings';
 import ReactImageEditor, { IReactImageEditorBaseProps, IReactImageEditorProps } from './components/ReactImageEditor';
 import { IImageManipulationSettings } from '../../components';
-
-
 
 export interface IReactImageEditorWebPartProps extends IReactImageEditorBaseProps {
 
@@ -32,11 +29,12 @@ export default class ReactImageEditorWebPart extends BaseClientSideWebPart<IReac
         url: this.properties.url,
         settings: this.properties.settings,
 
-        updateTitleProperty: (value: string) => {this.properties.title = value;},
+        updateTitleProperty: (value: string) => { this.properties.title = value; },
         updateUrlProperty: (value: string) => {
-        if(this.properties.url !== value)
+        // tslint:disable-next-line: curly
+        if (this.properties.url !== value)
           this.properties.url = value;
-          this.properties.settings=[];
+          this.properties.settings = [];
           this.render();
         },
         updateManipulationSettingsProperty: (value: IImageManipulationSettings[]) => {
@@ -58,7 +56,6 @@ export default class ReactImageEditorWebPart extends BaseClientSideWebPart<IReac
     return Version.parse('1.0');
   }
 
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -70,10 +67,9 @@ export default class ReactImageEditorWebPart extends BaseClientSideWebPart<IReac
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneToggle('showTitle',{
+                PropertyPaneToggle('showTitle', {
                   label: strings.ShowTitleFieldLabel
                 })
-
               ]
             }
           ]
