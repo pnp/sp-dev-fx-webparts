@@ -104,32 +104,6 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     }
   }
 
-  public render(): React.ReactElement<IImageManipulationProps> {
-    return (
-      <div className={styles.imageEditor} style={{
-        marginTop: this.props.displyMode === DisplayMode.Edit ? '40px' : '0px'
-      }} >
-        {this.props.displyMode === DisplayMode.Edit && this.getCommandBar()}
-        <div className={styles.imageplaceholder + ' ' + this.getMaxWidth()}
-          ref={(element: HTMLDivElement) => { this.wrapperRef = element; }}
-          style={this.canvasRef && { width: '' + this.canvasRef.width + 'px' }}
-        >
-
-          <canvas className={this.getMaxWidth()}
-            style={{ display: 'none' }}
-            ref={this.setBufferRef}></canvas>
-          <canvas className={this.getMaxWidth()}
-            style={{ display: 'none' }}
-            ref={this.setManipulateRef}></canvas>
-          <canvas className={this.getMaxWidth()} ref={this.setCanvasRef} ></canvas>
-          {this.state.settingPanel === SettingPanelType.Crop && (this.getCropGrid())}
-          {this.state.settingPanel === SettingPanelType.Resize && (this.getResizeGrid())}
-
-        </div>
-      </div>
-    );
-  }
-
   private imageChanged(url: string): void {
     this.img = new Image();
     this.img.src = url;
