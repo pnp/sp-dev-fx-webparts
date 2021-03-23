@@ -61,11 +61,9 @@ export enum ManipulationType {
   Filter,
   Resize
 }
-
 export interface IManipulationBase {
   type: ManipulationType;
 }
-
 export interface ICropSettings extends IManipulationBase, ICrop {
 }
 export interface IFlipSettings extends IManipulationBase {
@@ -78,7 +76,6 @@ export interface IScaleSettings extends IManipulationBase {
 export interface IRotateSettings extends IManipulationBase {
   rotate: number;
 }
-
 export interface IFilterSettings extends IManipulationBase {
   filterType: FilterType;
   nvalue?: number;
@@ -86,7 +83,6 @@ export interface IFilterSettings extends IManipulationBase {
 }
 export interface IResizeSettings extends IManipulationBase, IResize {
 }
-
 export type IImageManipulationSettings = IFilterSettings | IRotateSettings |
           IScaleSettings | IFlipSettings | ICropSettings | IResizeSettings;
 
