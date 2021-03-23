@@ -67,9 +67,11 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     this.closeFilter = this.closeFilter.bind(this);
 
   }
+
   public componentDidMount(): void {
     this.imageChanged(this.props.src);
   }
+
   public componentDidUpdate(prevProps: IImageManipulationProps): void {
     if (prevProps.src !== this.props.src) {
       this.imageChanged(this.props.src);
@@ -92,6 +94,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
       }
     };
   }
+
   private applySettings(): void {
     this.canvasRef.width = this.img.width;
     this.canvasRef.height = this.img.height;
@@ -115,10 +118,10 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
         this.manipulateRef.height = currentheight;
         this.manipulateCtx.save();
         let nothingToDo: boolean = false;
+
         switch (element.type) {
           case ManipulationType.Flip:
             const filp = element as IFlipSettings;
-            ////#region
             if (filp.flipY) {
               this.manipulateCtx.translate(0, currentheight);
               this.manipulateCtx.scale(1, -1);
@@ -175,20 +178,6 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
               this.manipulateCtx.drawImage(this.bufferRef, 0, 0);
             }
             break;
-          case ManipulationType.Filter:
-            nothingToDo = true;
-            const filter = element as IFilterSettings;
-            var imageData = this.bufferCtx.getImageData(0, 0, currentwidth, currentheight);
-            switch (filter.filterType) {
-              case FilterType.Grayscale:
-                imageData = new GrayscaleFilter().process(imageData, currentwidth, currentheight, undefined, undefined);
-                break;
-              case FilterType.Sepia:
-                imageData = new SepiaFilter().process(imageData, currentwidth, currentheight, undefined, undefined);
-                break;
-            }
-            this.bufferCtx.putImageData(imageData, 0, 0);
-            break;
           case ManipulationType.Crop:
             const last = this.props.settings.length === index + 1;
             if (last && this.state.settingPanel === SettingPanelType.Crop) {
@@ -205,12 +194,27 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
               this.manipulateCtx.drawImage(this.bufferRef, sourceX, sourceY, newwidth, newheight, 0, 0, newwidth, newheight);
             }
             break;
-
           case ManipulationType.Resize:
             const resize = element as IResizeSettings;
             newwidth = resize.width;
             newheight = resize.height;
             this.manipulateCtx.drawImage(this.bufferRef, 0, 0);
+            break;
+          case ManipulationType.Filter:
+            nothingToDo = true;
+            const filter = element as IFilterSettings;
+            var imageData = this.bufferCtx.getImageData(0, 0, currentwidth, currentheight);
+            switch (filter.filterType) {
+              case FilterType.Grayscale:
+                imageData = new GrayscaleFilter().process(imageData, currentwidth, currentheight, undefined, undefined);
+                break;
+              case FilterType.Sepia:
+                imageData = new SepiaFilter().process(imageData, currentwidth, currentheight, undefined, undefined);
+                break;
+            }
+            this.bufferCtx.putImageData(imageData, 0, 0);
+            break;
+
         }
         this.manipulateCtx.restore();
 
@@ -253,9 +257,6 @@ this.canvasCtx.drawImage(this.bufferRef, sourceX, sourceY, sourceWidth, sourceHe
 
     //this.canvasctx.translate(this.canvasRef.width / 2 * -1, this.canvasRef.height / 2 * -1);
   }
-
-
-
 
   public render(): React.ReactElement<IImageManipulationProps> {
     return (
