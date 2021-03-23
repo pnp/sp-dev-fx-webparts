@@ -79,9 +79,9 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
               rotateButtons: [-90, -45, -30, 0, 30, 45, 90]
             }
             }
-            displayMode={DisplayMode.Edit}
+            displayMode={this.props.displayMode}
             settingsChanged={this._onSettingsChanged}
-            src={url}
+            src={this.props.url}
           />
           )}
 
