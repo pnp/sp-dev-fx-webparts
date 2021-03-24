@@ -5,7 +5,7 @@
 A RSS Reader original based on work completed by Olivier Carpentier's from:  https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader
 Root project: https://github.com/OlivierCC/spfx-40-fantastics
 
-React RSS Reader utilizes SharePoint Framework v1.7.0 with no dependency on jQuery or a RSS Feed library. This project does utilize https://sharepoint.github.io/sp-dev-fx-property-controls/, and Moment React for date manipulation. Handlebar template option derived from React Search Refiners: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-search-refiners.
+React RSS Reader utilizes SharePoint Framework v1.11.0 with no dependency on jQuery or a RSS Feed library. This project does utilize https://sharepoint.github.io/sp-dev-fx-property-controls/, and Moment React for date manipulation. Handlebar template option derived from React Search Refiners (PnP Modern Search): https://microsoft-search.github.io/pnp-modern-search/. Use NodeJS version 10 to compile or rebuild the spfx solution.
 
 Main features include:
 
@@ -58,9 +58,13 @@ Version|Date|Comments
 - Clone this repository
 
 ### SPFx 
-- In the command line run:
+- In the command line, with a version of Node 10, i.e. 10.16.3, run:
   - `npm install`
   - `gulp serve`
+
+- To bundle and package the installable .sppkg, run:
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
 
 ## Web Parts Configuration
 
