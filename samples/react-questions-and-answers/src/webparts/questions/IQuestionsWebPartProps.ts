@@ -11,4 +11,8 @@ export interface IQuestionsWebPartProps {
     canVisitorsAskQuestions?: boolean;
     notificationGroup?: string;
     webPartRenderMode: string;
+    category: string;
+    showCategory: boolean;
+    stateLabel: string;
+    discussionType: string;
 }

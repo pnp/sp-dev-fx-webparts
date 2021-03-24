@@ -1,25 +1,26 @@
 import * as React from 'react';
-import { LogHelper, ErrorHelper, FormMode, Action } from 'utilities';
+import { LogHelper, ErrorHelper, FormMode, Action, DiscussionType, DateUtility } from 'utilities';
 import styles from './Reply.module.scss';
-import { autobind } from '@uifabric/utilities/lib';
 import * as strings from 'QuestionsWebPartStrings';
-import { QuillConfig } from '../QuillConfig';
 // redux related
 import { connect } from 'react-redux';
 import { IApplicationState } from 'webparts/questions/redux/reducers/appReducer';
 import { getReply, likeReply, helpfulReply, deleteReply, saveReply, markAnswer } from 'webparts/questions/redux/actions/actions';
 // models
-import { IReplyItem, IQuestionItem } from 'models';
+import { IReplyItem, IQuestionItem, IFileAttachment } from 'models';
 // controls
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { ActionButton, PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Editor } from 'primereact/editor';
+import { ActionButton, PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
+import RichTextEditorComponent  from '../RichTextEditor';
+import AttachmentsComponent from '../Attachments/Attachments';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import ReplyListComponent from '../ReplyList/ReplyList';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { LivePersonaCard } from '../LivePersonaCard';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 
 interface IConnectedDispatch {
   getReply: (replyId: number) => Promise<IReplyItem>;
@@ -30,12 +31,14 @@ interface IConnectedDispatch {
   markAnswer: (reply: IReplyItem) => Promise<void>;
 }
 
-interface IConnectedState { 
+interface IConnectedState {
+  webPartContext?: WebPartContext;
 }
 
 // map the application state to properties on this component so they can be used
 function mapStateToProps(state: IApplicationState, ownProps: IReplyProps): IConnectedState {
   return {
+    webPartContext: state.webPartContext
   };
 }
 
@@ -70,6 +73,9 @@ interface IReplyState {
   notificationMessage?: string;
   notificationType?: MessageBarType;
   showNewReply: boolean;
+  disablePost: boolean;
+  postButton: React.RefObject<any>;
+  scrolledIntoView: boolean;
 }
 
 class ReplyComponent extends React.Component<IReplyProps & IConnectedState & IConnectedDispatch, IReplyState> {
@@ -85,8 +91,19 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
       showUndoConfirm: false,
       showDeleteConfirm: false,
       showNotification: false,
-      showNewReply: false
+      showNewReply: false,
+      disablePost: false,
+      postButton: React.createRef(),
+      scrolledIntoView: false,
     };
+  }
+
+  public componentDidMount() {
+    window.addEventListener('beforeunload', this.beforeunload.bind(this));
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.beforeunload.bind(this));
   }
 
   public componentDidUpdate(prevProps: IReplyProps & IConnectedState & IConnectedDispatch, prevState: IReplyState): void {
@@ -105,8 +122,14 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
           showUndoConfirm: false,
           showDeleteConfirm: false,
           showNotification: false,
+          scrolledIntoView: false
         });
       }
+    }
+
+    if(this.state.postButton && this.state.postButton.current && this.state.postButton.current._buttonElement && this.state.scrolledIntoView === false) {
+      this.state.postButton.current._buttonElement.current.scrollIntoViewIfNeeded();
+      this.setState({ scrolledIntoView: true });
     }
   }
 
@@ -134,41 +157,69 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
   }
 
   private renderReply(): JSX.Element {
-    const { parentQuestion, readOnlyMode, answerMode } = this.props;
-    const { reply, formMode, showNewReply, showNotification, notificationType, notificationMessage } = this.state;
+    const { parentQuestion, readOnlyMode, answerMode, webPartContext } = this.props;
+    const { reply, formMode, showNewReply, showNotification, notificationType, notificationMessage, disablePost } = this.state;
 
     return (
       <div className={styles.replyContainer}>
-        <div className={reply.isAnswer === true ? styles.replyAnswer : styles.replyItem}>
+        <div className={(reply.isAnswer === true && parentQuestion.discussionType === DiscussionType.Question) ? styles.replyAnswer : styles.replyItem}>
           {this.renderReplyAdminActions()}
           {this.renderIsAnswer(reply)}
 
           {formMode === FormMode.View && reply.author && reply.createdDate &&
             <div>
               <span>
-                <Persona size={PersonaSize.size24}
-                  text={reply.author.primaryText}
-                  showSecondaryText={true}
-                  onRenderSecondaryText={props =>
-                    <div>
-                      <Icon iconName={'Comment'} />
-                      {strings.Message_RepliedOn} {reply.createdDate!.toLocaleString()}
-                    </div>
-                  } />
+                {(webPartContext !== null && webPartContext !== undefined ?
+                  <LivePersonaCard
+                    serviceScope={webPartContext.serviceScope}
+                    user={{
+                      displayName: (reply.author === null || reply.author === undefined ? '' : (reply.author.text === undefined ? '' : reply.author.text)),
+                      email: (reply.author === null || reply.author === undefined ? '' : (reply.author.id === undefined ? '' : reply.author.id.replace("i:0#.f|membership|", "")))
+                    }}
+                    >
+                    <Persona size={PersonaSize.size32}
+                      text={reply.author.text}
+                      showSecondaryText={true}
+                      onRenderSecondaryText={props =>
+                        <div>
+                          <Icon iconName={'Comment'} />
+                          {strings.Message_RepliedOn} {DateUtility.getFriendlyDate(reply.createdDate, true)}
+                        </div>
+                      } />
+                  </LivePersonaCard>
+                    :
+                    <Persona size={PersonaSize.size32}
+                      text={reply.author.text}
+                      showSecondaryText={true}
+                      onRenderSecondaryText={props =>
+                        <div>
+                          <Icon iconName={'Comment'} />
+                          {strings.Message_RepliedOn} {DateUtility.getFriendlyDate(reply.createdDate, true)}
+                        </div>
+                      } />
+                  )}
+
               </span>
             </div>
           }
 
           {this.renderReplyDetails()}
 
+          <AttachmentsComponent item={reply}
+            disabled={formMode === FormMode.View}
+            attachmentsChanged={(attachments: IFileAttachment[]) => { this.attachmentsChanged(attachments); }}
+            newAttachmentsChanged={(newAttachments: File[]) => { this.newAttachmentsChanged(newAttachments); }}
+            removeAttachmentsChanged={(removedAttachments: string[]) => { this.removeAttachmentsChanged(removedAttachments); }} />
+
           {this.renderQuestionUserActions()}
 
           {formMode !== FormMode.View && readOnlyMode !== true &&
             <div className={styles.userActions}>
               <PrimaryButton id='Post' text={strings.ButtonText_Reply}
-                iconProps={{ iconName: 'Send' }} onClick={() => this.handleSaveClick()} />
+                componentRef={this.state.postButton}
+                iconProps={{ iconName: 'Send' }} onClick={() => this.handleSaveClick()} disabled={disablePost} />
               <DefaultButton id='Undo' text={strings.ButtonText_Cancel}
-                iconProps={{ iconName: 'Undo' }} onClick={() => this.handleCancelClick()} />
+                iconProps={{ iconName: 'Undo' }} onClick={() => this.handleCancelClick()} disabled={disablePost} />
             </div>
           }
           {
@@ -224,14 +275,14 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     }
 
     if (reply.canMarkAsAnswer) {
-      if (reply.isAnswer) {
+      if (parentQuestion.discussionType === DiscussionType.Question && reply.isAnswer) {
         items.push({
           key: 'markAnswer', name: (strings.MenuText_UnmarkAnswer), iconProps: { iconName: 'SingleBookMark' },
           onClick: (ev: any) => this.handleMarkAnswerClick()
         });
       }
       else {
-        if (parentQuestion.isAnswered === false) {
+        if (parentQuestion.discussionType === DiscussionType.Question && parentQuestion.isAnswered === false) {
           items.push({
             key: 'markAnswer', name: (strings.MenuText_MarkAnswer), iconProps: { iconName: 'SingleBookMarkSolid' },
             onClick: (ev: any) => this.handleMarkAnswerClick()
@@ -243,9 +294,9 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     if (formMode === FormMode.View && readOnlyMode !== true && items.length > 0) {
       return (
         <div className={styles.adminActionsContainer}>
-          <ActionButton id="replySettings"
+          <IconButton id="replySettings"
             iconProps={{ iconName: 'Settings' }}
-            menuProps={{              
+            menuProps={{
               directionalHint: DirectionalHint.bottomRightEdge,
               items: items
             }}
@@ -256,13 +307,13 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
   }
 
   private renderQuestionUserActions(): JSX.Element | undefined {
-    const { readOnlyMode } = this.props;
+    const { readOnlyMode, parentQuestion } = this.props;
     const { reply, formMode } = this.state;
 
     if (formMode === FormMode.View && readOnlyMode !== true) {
       return (
         <div className={styles.userActions}>
-          {reply.canReact === true &&
+          {reply.canReact === true && parentQuestion.discussionType === DiscussionType.Question &&
             <ActionButton id="helpfulReply"
               text={` ${strings.ButtonText_Helpful} (${reply.helpfulCount ? reply.helpfulCount : 0})`}
               iconProps={{ iconName: reply.helpfulByCurrentUser === true ? 'FavoriteStarFill' : 'FavoriteStar' }}
@@ -288,7 +339,7 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
 
   private renderIsAnswer(reply: IReplyItem): JSX.Element | undefined {
 
-    if (reply.isAnswer === true) {
+    if (reply.isAnswer === true && this.props.parentQuestion.discussionType === DiscussionType.Question) {
       return (
         <div>
           <span className={styles.replyIsAnswerContainer}>
@@ -313,30 +364,29 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     else {
       return (
         <div className={styles.replyDetails}>
-          <Editor id="details"
+          <RichTextEditorComponent id="details"
             value={reply.details}
-            headerTemplate={QuillConfig.header}
-            placeholder={strings.Placeholder_QuestionDetails}
-            onTextChange={(e) => this.handleEditorChanged('details', e.htmlValue, 'detailsText', e.textValue)} />
+            questionTitle={this.props.parentQuestion.title ? this.props.parentQuestion.title : ''}
+            placeholder={this.props.parentQuestion.discussionType === DiscussionType.Question ? strings.Placeholder_QuestionReplyDetails : strings.Placeholder_ConversationReplyDetails}
+            onTextChange={(htmlValue, textValue) => this.handleEditorChanged('details', htmlValue, 'detailsText', textValue)} />
           <div className={styles.errorMessage}>{ErrorHelper.getUIError(reply, 'details')}</div>
         </div>
       );
     }
   }
 
-  @autobind
-  private handleEditClick(): void {
+  private handleEditClick = (): void => {
     this.refreshReplyInState();
     this.setState({ formMode: FormMode.Edit });
   }
 
-  @autobind
-  private handleSaveClick(): void {
+  private handleSaveClick = (): void => {
     const { parentQuestion, parentReply } = this.props;
     const { reply, formMode } = this.state;
     let action = Action.Update;
 
     let isReplyValid = this.isReplyValid();
+    this.setState({ disablePost: true });
     if (isReplyValid) {
       this.setState({
         showNotification: true,
@@ -357,10 +407,11 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
 
       this.props.saveReply(reply).then(id => {
         this.setState({
+          disablePost: false,
           formMode: FormMode.View,
           isChanged: false,
           notificationType: MessageBarType.success,
-          notificationMessage: strings.Message_SavedReply,
+          notificationMessage: strings.Message_SavedReply
         });
 
         // delay hiding the notification
@@ -371,6 +422,7 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
       })
         .catch(e => {
           this.setState({
+            disablePost: false,
             showNotification: true,
             notificationType: MessageBarType.error,
             notificationMessage: e.message
@@ -378,10 +430,12 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
         });
 
     }
+    else {
+      this.setState({ disablePost: false });
+    }
   }
 
-  @autobind
-  private handleLikeClick(): void {
+  private handleLikeClick = (): void => {
     const { reply } = this.state;
     this.props.likeReply(reply).then(() => {
       this.refreshReplyInState();
@@ -395,8 +449,7 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     });
   }
 
-  @autobind
-  private handleHelpfulClick(): void {
+  private handleHelpfulClick = (): void => {
     const { reply } = this.state;
     this.props.helpfulReply(reply).then(() => {
       this.refreshReplyInState();
@@ -410,8 +463,7 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     });
   }
 
-  @autobind
-  private handleMarkAnswerClick(): void {
+  private handleMarkAnswerClick = (): void => {
     const { reply } = this.state;
     this.props.markAnswer(reply).then(() => {
       this.refreshReplyInState();
@@ -425,8 +477,7 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     });
   }
 
-  @autobind
-  private isReplyValid(): boolean {
+  private isReplyValid = (): boolean => {
     let isValid: boolean = true;
     const { reply } = this.state;
     reply.uiErrors = new Map<string, string>();
@@ -446,8 +497,7 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     return isValid;
   }
 
-  @autobind
-  private handleCancelClick(): void {
+  private handleCancelClick = (): void => {
     let { isChanged } = this.state;
 
     if (isChanged === true) {
@@ -459,12 +509,11 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     }
   }
 
-  @autobind
-  private handleConfirmDeleteClick(): void {
+  private handleConfirmDeleteClick = (): void => {
     const { reply } = this.state;
     this.props.deleteReply(reply).then(() => {
       this.setState({ showDeleteConfirm: false });
-    })        
+    })
     .catch(e => {
       this.setState({
         showDeleteConfirm: false,
@@ -484,11 +533,10 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     }
   }
 
-  @autobind
-  private handleActionCompleted(action: Action): void {
+  private handleActionCompleted = (action: Action): void => {
     let { formMode } = this.state;
 
-    this.setState({ isChanged: false });
+    this.setState({ isChanged: false, scrolledIntoView: false });
 
     switch (action) {
       case Action.Cancel:
@@ -513,10 +561,35 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     }
   }
 
+  private attachmentsChanged = (attachments: IFileAttachment[]): void => {
+    const { reply } = this.state;
+    if (reply) {
+      reply.attachments = attachments;
+      this.setState({ reply: reply, isChanged: true });
+    }
+  }
+
+  private newAttachmentsChanged = (newAttachments: File[]): void => {
+    const { reply } = this.state;
+    if (reply) {
+      reply.newAttachments = newAttachments;
+      this.setState({ reply });
+      this.setState({ reply: reply, isChanged: true });
+    }
+  }
+
+  private removeAttachmentsChanged = (removedAttachments: string[]): void => {
+    const { reply } = this.state;
+    if (reply) {
+      reply.removedAttachments = removedAttachments;
+      this.setState({ reply });
+      this.setState({ reply: reply, isChanged: true });
+    }
+  }
+
   // future common
 
-  @autobind
-  private getUndoConfirmDialog(): JSX.Element | undefined {
+  private getUndoConfirmDialog = (): JSX.Element | undefined => {
     const { showUndoConfirm } = this.state;
 
     if (showUndoConfirm === true) {
@@ -540,8 +613,7 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     }
   }
 
-  @autobind
-  private getUndoDeleteConfirmDialog(): JSX.Element | undefined {
+  private getUndoDeleteConfirmDialog = (): JSX.Element | undefined => {
     const { showDeleteConfirm } = this.state;
 
     if (showDeleteConfirm === true) {
@@ -565,8 +637,7 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
     }
   }
 
-  @autobind
-  private handleEditorChanged(htmlPropertyName: string, htmlValue: string | null, textPropertyName: string, textValue: string) {
+  private handleEditorChanged = (htmlPropertyName: string, htmlValue: string | null, textPropertyName: string, textValue: string) => {
     const { reply } = this.state;
     reply[htmlPropertyName] = htmlValue;
     reply[textPropertyName] = textValue;
@@ -592,8 +663,20 @@ class ReplyComponent extends React.Component<IReplyProps & IConnectedState & ICo
       canMarkAsAnswer: false,
       canReact: false,
       canReply: false,
-      replies: []
+      replies: [],
+      attachments: [],
+      newAttachments: [],
+      removedAttachments: []
     };
+  }
+
+  private beforeunload = (e) => {
+    let { isChanged } = this.state;
+
+    if (isChanged === true) {
+      e.preventDefault();
+      e.returnValue = true;
+    }
   }
 }
 

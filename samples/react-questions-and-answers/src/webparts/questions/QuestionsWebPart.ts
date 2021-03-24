@@ -8,7 +8,8 @@ import { updateThemeVariant, updateWebPartProperty, updateWebPartContext, update
 import { IApplicationState } from './redux/reducers/appReducer';
 // other
 import { Parameters, SortOption, WebPartRenderMode, ShowQuestionsOption } from 'utilities';
-import { IPropertyPaneConfiguration, PropertyPaneSlider, PropertyPaneDropdown, PropertyPaneToggle, PropertyPaneLabel, PropertyPaneButton, PropertyPaneButtonType, IPropertyPaneField } from '@microsoft/sp-property-pane';
+import { IPropertyPaneConfiguration, PropertyPaneSlider, PropertyPaneDropdown, PropertyPaneToggle, PropertyPaneLabel, PropertyPaneButton, PropertyPaneButtonType, IPropertyPaneField  } from '@microsoft/sp-property-pane';
+import { CategoryLabelComboBoxProperty } from './components/CategoryLabelComboBox/CategoryLabelComboBoxProperty';
 import * as strings from 'QuestionsWebPartStrings';
 import BaseWebPart from 'webparts/BaseWebPart';
 import DefaultContainerComponent, { IDefaultContainerProps } from './components/DefaultContainer/DefaultContainer';
@@ -16,6 +17,9 @@ import { IQuestionsWebPartProps } from './IQuestionsWebPartProps';
 import { PermissionService } from '../../services/permission.service';
 import { ThemeProvider, IReadonlyTheme, ThemeChangedEventArgs } from '@microsoft/sp-component-base';
 import { UserService } from 'services/user.service';
+import { DisplayMode } from '@microsoft/sp-core-library';
+// import to get 4 part version number
+const packageSolution: any = require("../../../config/package-solution.json");
 
 export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps> {
 
@@ -59,6 +63,10 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
       this.store.dispatch(updateWebPartProperty('applicationPage', this.properties.applicationPage));
       this.store.dispatch(updateWebPartProperty('title', this.properties.title));
       this.store.dispatch(updateWebPartProperty('useApplicationPage', this.properties.useApplicationPage));
+      this.store.dispatch(updateWebPartProperty('category', this.properties.category));
+      this.store.dispatch(updateWebPartProperty('showCategory', this.properties.showCategory));
+      this.store.dispatch(updateWebPartProperty('stateLabel', this.properties.stateLabel));
+      this.store.dispatch(updateWebPartProperty('discussionType', this.properties.discussionType));
 
       // initialize the store with web part context
       this.store.dispatch(updateWebPartContext(this.context));
@@ -83,8 +91,21 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
     });
   }
 
+  /*
+   when page edit goes from edit to read we start a timer so that we can wait for the save to occur
+   Things like the page title and page parent page property changing affect us
+  */
+  protected onDisplayModeChanged(oldDisplayMode: DisplayMode) {
+    if (oldDisplayMode === DisplayMode.Edit) {
+      this.store.dispatch(getPagedQuestions(false, this.properties.category));
+    }
+  }
+
   public render(): void {
+    //Grab any query string params and set them as parameters for the Default Container
     let queryParms = new URLSearchParams(window.location.search);
+
+    //Question ID
     let questionId: any;
     if(queryParms.has(Parameters.QUESTIONID)) {
       questionId = Number(queryParms.get(Parameters.QUESTIONID));
@@ -92,11 +113,20 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
     else {
       questionId = null;
     }
+    //Category
+    let category: any;
+    if(queryParms.has(Parameters.CATEGORY)) {
+      category = String(queryParms.get(Parameters.CATEGORY));
+    }
+    else {
+      category = null;
+    }
 
     const containerComponent: React.ReactElement<IDefaultContainerProps> = React.createElement(
       DefaultContainerComponent,
       {
-        selectedQuestionId: questionId ,
+        selectedQuestionId: questionId,
+        selectedCategory: category,
         updateTitle: (value: string) => {
           this.properties.title = value;
         }
@@ -128,7 +158,7 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
     this.store.dispatch(updateWebPartProperty(propertyPath, newValue));
 
     if (propertyPath === 'pageSize' || propertyPath === 'sortOption' || propertyPath === 'loadInitialPage') {
-      this.store.dispatch(getPagedQuestions(false));
+      this.store.dispatch(getPagedQuestions(false, this.properties.category));
     }
 
     if (propertyPath === 'canVisitorsAskQuestions') {
@@ -149,6 +179,10 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
     window.open(`${this.context.pageContext.web.absoluteUrl}/_layouts/15/people.aspx?MembershipGroupId=${notificationGroup.Id}`, '_blank');
   }
 
+  private async manageCategories(): Promise<void> {
+    window.open(`${this.context.pageContext.web.absoluteUrl}/Lists/QuestionCategoryLabeling/AllItems.aspx`, '_blank');
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     const { currentUser } = this.store.getState();
 
@@ -165,12 +199,38 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
     }
 
     let canVisitorsAskQuestionsDetails = currentUser && currentUser.canManagePermissions ?
-      strings.PropertyPane_Label_CanVisitorsAskQuestionsDetails : strings.PropertyPane_Label_CanVisitorsAskQuestionsDisabled;
+      strings.PropertyPane_Label_CanVisitorsParticipateDetails : strings.PropertyPane_Label_CanVisitorsParticipateDisabled;
 
-
+    let setupGroupFields: IPropertyPaneField<any>[] = [];
     let layoutGroupFields: IPropertyPaneField<any>[] = [];
     let permissionGroupFields: IPropertyPaneField<any>[] = [];
     let aboutGroupFields: IPropertyPaneField<any>[] = [];
+
+    //Show in Standard, Application, OpenQuestions, AnsweredQuestions
+    setupGroupFields.push(new CategoryLabelComboBoxProperty('category', {
+      key: "CATEGORY PICKER",
+      label: strings.PropertyPane_Label_Category,
+      category: this.properties.category,
+      showTooltip: true,
+      tooltipText: "Either select a category from the drop down or type in the box and hit Enter to create a new category.",
+      onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+      properties: this.properties,
+      onRender: this.render.bind(this)
+    }));
+    if (currentUser && currentUser.canManagePermissions) {
+      setupGroupFields.push(PropertyPaneButton('editCategories', {
+        onClick: (value) => this.manageCategories(),
+        text: "Manage Categories",
+        buttonType: PropertyPaneButtonType.Normal
+      }));
+    }
+    //Show in Standard, Application, OpenQuestions, AnsweredQuestions
+    setupGroupFields.push(PropertyPaneToggle('showCategory', {
+      label: strings.PropertyPane_Label_ShowCategory,
+      onText: strings.PropertyPaneText_Yes,
+      offText: strings.PropertyPaneText_No,
+      checked: this.properties.showCategory
+    }));
 
     // Show in Standard, Application, OpenQuestions, AnsweredQuestions
     layoutGroupFields.push(PropertyPaneSlider('pageSize', {
@@ -203,7 +263,8 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
 
     // Show in Standard, Application
     if (this.properties.webPartRenderMode !== WebPartRenderMode.OpenQuestions &&
-      this.properties.webPartRenderMode !== WebPartRenderMode.AnsweredQuestions) {
+      this.properties.webPartRenderMode !== WebPartRenderMode.AnsweredQuestions &&
+      this.properties.webPartRenderMode !== WebPartRenderMode.ConversationsList) {
       layoutGroupFields.push(PropertyPaneToggle('loadInitialPage', {
         label: strings.PropertyPane_Label_LoadInitialPage,
         onText: strings.PropertyPaneText_Yes,
@@ -234,7 +295,7 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
 
     // Show in Standard, Application, OpenQuestions, AnsweredQuestions
     permissionGroupFields.push(PropertyPaneToggle('canVisitorsAskQuestions', {
-      label: strings.PropertyPane_Lable_CanVisitorsAskQuestions,
+      label: strings.PropertyPane_Label_CanVisitorsParticipate,
       checked: this.canVisitorsAskQuestions,
       onText: strings.PropertyPaneText_Yes,
       offText: strings.PropertyPaneText_No,
@@ -260,7 +321,7 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
 
     // Show in Standard, Application, OpenQuestions, AnsweredQuestions
     aboutGroupFields.push(PropertyPaneLabel('versionNumber', {
-      text: strings.PropertyPane_Label_VersionInfo + this.manifest.version
+      text: strings.PropertyPane_Label_VersionInfo + packageSolution.solution.version
     }));
 
 
@@ -268,10 +329,11 @@ export default class QuestionsWebPart extends BaseWebPart<IQuestionsWebPartProps
     let config: IPropertyPaneConfiguration = {
       pages: [
         {
-          header: {
-            description: strings.PropertyPane_Description
-          },
           groups: [
+            {
+              groupName: strings.PropertyPane_GroupName_Setup,
+              groupFields: setupGroupFields
+            },
             {
               groupName: strings.PropertyPane_GroupName_LayoutSettings,
               groupFields: layoutGroupFields

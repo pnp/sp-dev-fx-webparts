@@ -1,8 +1,13 @@
 import '@pnp/polyfill-ie11';
-import { sp, PermissionKind, ISiteGroupInfo } from '@pnp/sp/presets/all';
+import '@pnp/sp/webs';
+import '@pnp/sp/site-users/web';
+import { sp, PermissionKind, ISiteGroupInfo, ISiteUserProps } from '@pnp/sp/presets/all';
 import { BaseService } from './base.service';
-import { LogHelper, ListTitles, NotificationGroup } from 'utilities';
+import { LogHelper, ListTitles, NotificationGroup, UserFields } from 'utilities';
 import { ICurrentUser } from 'models';
+import { PrincipalType, PrincipalSource } from '@pnp/sp';
+import { IPeoplePickerEntity } from '@pnp/sp/profiles';
+import { ISiteUserInfo } from '@pnp/sp/site-users/types';
 
 export class UserService extends BaseService {
 
@@ -24,7 +29,7 @@ export class UserService extends BaseService {
                 });
 
             if (result) {
-                this.currentUser = {
+                let currentUser = {
                     id: result.Id,
                     loginName: result.LoginName.toLocaleLowerCase(),
                     email: result.Email,
@@ -38,8 +43,10 @@ export class UserService extends BaseService {
                     canManagePermissions: false
                 };
 
-                await sp.web.ensureUser(this.currentUser.loginName);
-                await this.updatePermissionInfo(this.currentUser);
+                await sp.web.ensureUser(currentUser.loginName);
+                await this.updatePermissionInfo(currentUser);
+
+                this.currentUser = currentUser;
             }
         }
         else {
@@ -133,5 +140,45 @@ export class UserService extends BaseService {
                 currentUser.canManagePermissions = true;
             }
         }
+    }
+
+    public async searchPeople(input: string, maxCount: number): Promise<ISiteUserProps[]> {
+      let result: ISiteUserProps[] = <ISiteUserProps[]>await sp.web.siteUsers
+          .filter(`(substringof('${input}',${UserFields.EMAIL}) or substringof('${input}',${UserFields.TITLE})) and ${UserFields.PRINCIPAL_TYPE} eq 1`)
+          .top(maxCount).get()
+          .catch(e => { super.handleHttpError('searchPeople', e); });
+
+      return result;
+    }
+
+    public async searchPeoplePicker(input: string, maxCount: number): Promise<IPeoplePickerEntity[]> {
+      let result: IPeoplePickerEntity[] = <IPeoplePickerEntity[]>await sp.profiles
+          .clientPeoplePickerSearchUser(
+              {
+                  QueryString: input,
+                  AllowEmailAddresses: true,
+                  AllowOnlyEmailAddresses: false,
+                  PrincipalSource: PrincipalSource.All,
+                  PrincipalType: PrincipalType.User,
+                  MaximumEntitySuggestions: maxCount
+              }
+          )
+          .catch(e => { super.handleHttpError('searchPeople', e); });
+
+      return result;
+    }
+
+    public async ensureUserInSite(email: string): Promise<boolean> {
+      let response: boolean = false;
+
+      await sp.web.siteUsers.getByEmail(email).get()
+        .then((user: ISiteUserInfo) => {
+            response = (user !== null);
+        })
+         .catch( e => {
+           super.handleHttpError('ensureUserInSite', e);
+          });
+
+      return response;
     }
 }

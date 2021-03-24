@@ -14,19 +14,26 @@
   .replyContainer {
     @include tw-item-container;
     @include ms-font-m-plus;
+    color: $ms-color-black;
   }
 
-  .replyItem {    
+  .replyItem {
     @include tw-item;
   }
 
   .replyAnswer {
     @include tw-item;
     border-left-width: 5px;
+    background-color: $ms-color-themeLighter;
   }
 
   .replyDetails {
     @include tw-reply-details-container;
+  }
+
+  .replyDetails img {
+    max-width: 100%;
+    height: auto;
   }
 
   .replyIsAnswerContainer {
@@ -43,7 +50,7 @@
   .userActions {
     @include tw-user-actions;
   }
-  
+
   .errorMessage {
     @include tw-error-message;
   }

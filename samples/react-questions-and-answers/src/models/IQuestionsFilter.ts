@@ -10,4 +10,10 @@ export interface IQuestionsFilter {
     searchText?: string;
 
     selectedShowQuestionsOption: string;
+
+    // optional category filter
+    category: string | null;
+
+    // question or conversation
+    discussionType: string;
 }
