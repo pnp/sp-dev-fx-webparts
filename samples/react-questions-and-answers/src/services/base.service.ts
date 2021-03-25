@@ -47,8 +47,20 @@ export class BaseService {
         }
     }
 
-    public mapBaseItemProperties(sourceItem: any): IBaseItem {
+    public mapBaseItemProperties(sourceItem: any, mapFromStream: boolean = false): IBaseItem {
         if (sourceItem !== undefined && sourceItem !== null) {
+          if (mapFromStream) {
+            //alert(sourceItem["Created."]);
+            return {
+              id: sourceItem.ID,
+              title: sourceItem.Title,
+              createdDate: sourceItem["Created."] !== null ? new Date(sourceItem["Created."]) : null,
+              modifiedDate: sourceItem["Modified."] !== null ? new Date(sourceItem["Modified."]) : null,
+              author: sourceItem.Author !== null ? this.mapPersonaProps(sourceItem.Author) : null,
+              editor: sourceItem.Editor !== null ? this.mapPersonaProps(sourceItem.Editor) : null,
+              etag: sourceItem.__metadata ? sourceItem.__metadata.etag : new Date().toISOString(),
+            };
+          } else {
             return {
                 id: sourceItem.ID,
                 title: sourceItem.Title,
@@ -58,6 +70,7 @@ export class BaseService {
                 editor: sourceItem.Editor !== null ? this.mapPersonaProps(sourceItem.Editor) : null,
                 etag: sourceItem.__metadata ? sourceItem.__metadata.etag : new Date().toISOString(),
             };
+          }
         }
 
         return { id: undefined };
@@ -69,10 +82,17 @@ export class BaseService {
             let persona: IPersonaProps = {};
             persona.id = item.Name;
             persona.text = item.Title;
-            persona.primaryText = item.Title;
             persona.secondaryText = item.JobTitle;
 
             return persona;
+        }
+        else if(Array.isArray(item)) {
+          let persona: IPersonaProps = {};
+          persona.id = item[0].email;
+          persona.text = item[0].title;
+          persona.secondaryText = '';
+
+          return persona;
         }
         else {
             return null;

@@ -8,5 +8,5 @@ build.initialize(gulp);
 
 var runSequence = require('run-sequence');
 gulp.task('package', function (cb) {
-    runSequence('clean', 'build', 'bundle', 'package-solution', cb);
+  runSequence('clean', 'build', 'bundle', 'package-solution', cb);
 });

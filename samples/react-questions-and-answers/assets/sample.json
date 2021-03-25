@@ -8,8 +8,8 @@
     "longDescription": [
       "This is an application that supports Questions \u0026 Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part."
     ],
-    "created": "2020-10-01",
-    "modified": "2020-10-01",
+    "created": "2021-03-22",
+    "modified": "2021-03-22",
     "products": [
       "SharePoint",
       "Office"

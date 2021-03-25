@@ -1,0 +1,91 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+  .categoryLabel{
+    display: inline-block;
+    background: $ms-color-neutralTertiary;
+    color: #FFF;
+    padding: 2px 5px;
+    margin:2px 2px 2px 10px;
+    font: normal 11px;
+    position: relative;
+    cursor: default;
+    //box-shadow:1px 1px 0 rgba(0,0,0,.2);
+    -webkit-transform-origin:0% 50%;
+    -webkit-animation: swing 1s;
+    -o-animation: swing 1s;
+    animation: swing 1s ;
+  }
+
+  .categoryLabel:before{
+    //content: "";
+    //position: absolute;
+    //width: 0;
+    background: inherit;
+    height: 1px;
+    border: 10px solid #fafafa;
+    border-right-color: transparent;
+    //-webkit-border-radius: 10px 0 0 10px;
+    //-moz-border-radius:10px 0 0 10px;
+    border-radius:10px 0 0 10px;
+    left: -20px;
+    top: 0;
+  }
+
+  /*.categoryLabel:after{
+    content: "";
+    width: 3px;
+    height: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #FFF;
+    position: absolute;
+    left: -3px;
+    top: 8px;
+    box-shadow:inset 1px 1px 0 #CCC;
+  }*/
+
+  .categoryLabel .close{
+    position: absolute;
+    background: inherit;
+    left: -4px;
+    z-index: 3;
+    visibility: hidden;
+  }
+
+  .categoryLabel:hover .close{
+    visibility: visible;
+
+  }
+
+  .close:hover {
+    color: rgba(0,0,0,.5);
+  }
+
+
+  .colors {
+    list-style:none;
+  }
+  .colors li{
+    display: inline-block;
+    width:15px;
+    height: 15px;
+  }
+
+  /* Chrome, Safari, Opera */
+  @-webkit-keyframes swing
+  {
+    0%   {-webkit-transform: rotate(100deg)}
+    25%  {-webkit-transform: rotate(-25deg)}
+    50%  {-webkit-transform: rotate(15deg)}
+    100% {-webkit-transform: rotate(0deg)}
+  }
+
+
+  @keyframes swing
+  {
+    0%   {-webkit-transform: rotate(-200)}
+    25%  {-webkit-transform: rotate(-70)}
+    50%  {-webkit-transform: rotate(-185)}
+    100% {-webkit-transform: rotate(-180)}
+  }
