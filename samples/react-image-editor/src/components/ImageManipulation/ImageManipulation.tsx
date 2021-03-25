@@ -20,7 +20,7 @@ import ItemOrder from './components/ItemOrder';
 
 import { GrayscaleFilter } from './Filter/GrayscaleFilter';
 import { SepiaFilter } from './Filter/SepiaFilter';
-import { historyItem } from './historyItem';
+
 import styles from './ImageManipulation.module.scss';
 import {
   FilterType,
@@ -45,6 +45,7 @@ const flipVerticalIcon: any = require('../../svg/flipVertical.svg');
 const flipHorizontalIcon: any = require('../../svg/flipHorizontal.svg');
 
 import * as strings from 'ImageManipulationStrings';
+import { historyItem } from './HistoryItem';
 
 export interface IImageManipulationConfig {
   rotateButtons: number[];
@@ -53,11 +54,11 @@ export interface IImageManipulationConfig {
 export interface IImageManipulationProps {
   src: string;
   settings?: IImageManipulationSettings[];
-  settingschanged?: (settings: IImageManipulationSettings[]) => void;
+  settingsChanged?: (settings: IImageManipulationSettings[]) => void;
   imgLoadError?: () => void;
   editMode?: (mode: boolean) => void;
-  configsettings: IImageManipulationConfig;
-  displyMode: DisplayMode;
+  configSettings: IImageManipulationConfig;
+  displayMode: DisplayMode;
 }
 
 export interface IImageManipulationState {
@@ -104,32 +105,6 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     }
   }
 
-  public render(): React.ReactElement<IImageManipulationProps> {
-    return (
-      <div className={styles.imageEditor} style={{
-        marginTop: this.props.displyMode === DisplayMode.Edit ? '40px' : '0px'
-      }} >
-        {this.props.displyMode === DisplayMode.Edit && this.getCommandBar()}
-        <div className={styles.imageplaceholder + ' ' + this.getMaxWidth()}
-          ref={(element: HTMLDivElement) => { this.wrapperRef = element; }}
-          style={this.canvasRef && { width: '' + this.canvasRef.width + 'px' }}
-        >
-
-          <canvas className={this.getMaxWidth()}
-            style={{ display: 'none' }}
-            ref={this.setBufferRef}></canvas>
-          <canvas className={this.getMaxWidth()}
-            style={{ display: 'none' }}
-            ref={this.setManipulateRef}></canvas>
-          <canvas className={this.getMaxWidth()} ref={this.setCanvasRef} ></canvas>
-          {this.state.settingPanel === SettingPanelType.Crop && (this.getCropGrid())}
-          {this.state.settingPanel === SettingPanelType.Resize && (this.getResizeGrid())}
-
-        </div>
-      </div>
-    );
-  }
-
   private imageChanged(url: string): void {
     this.img = new Image();
     this.img.src = url;
@@ -167,6 +142,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
         this.manipulateRef.height = currentheight;
         this.manipulateCtx.save();
         let nothingToDo: boolean = false;
+
         switch (element.type) {
           case ManipulationType.Flip:
             const filp: IFlipSettings = element as IFlipSettings;
@@ -187,11 +163,12 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
               break;
             }
             if (rotate.rotate) {
-              const angelcalc: number = rotate.rotate * Math.PI / 180;
-              const oldwidth: number = currentwidth;
-              const oldheight: number = currentheight;
-              let offsetwidth: number = 0;
-              let offsetheight: number = 0;
+
+              const angelcalc = rotate.rotate * Math.PI / 180;
+              const oldwidth = currentwidth;
+              const oldheight = currentheight;
+              let offsetwidth = 0;
+              let offsetheight = 0;
 
               const a: number = oldwidth * Math.abs(Math.cos(angelcalc));
               const b: number = oldheight * Math.abs(Math.sin(angelcalc));
@@ -224,20 +201,6 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
               this.manipulateCtx.drawImage(this.bufferRef, 0, 0);
             }
             break;
-          case ManipulationType.Filter:
-            nothingToDo = true;
-            const filter: IFilterSettings = element as IFilterSettings;
-            let imageData: ImageData = this.bufferCtx.getImageData(0, 0, currentwidth, currentheight);
-            switch (filter.filterType) {
-              case FilterType.Grayscale:
-                imageData = new GrayscaleFilter().process(imageData, currentwidth, currentheight, undefined, undefined);
-                break;
-              case FilterType.Sepia:
-                imageData = new SepiaFilter().process(imageData, currentwidth, currentheight, undefined, undefined);
-                break;
-            }
-            this.bufferCtx.putImageData(imageData, 0, 0);
-            break;
           case ManipulationType.Crop:
             const last: boolean = this.props.settings.length === index + 1;
             if (last && this.state.settingPanel === SettingPanelType.Crop) {
@@ -263,12 +226,27 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
                 newheight);
             }
             break;
-
           case ManipulationType.Resize:
             const resize: IResizeSettings = element as IResizeSettings;
             newwidth = resize.width;
             newheight = resize.height;
             this.manipulateCtx.drawImage(this.bufferRef, 0, 0);
+            break;
+          case ManipulationType.Filter:
+            nothingToDo = true;
+            const filter = element as IFilterSettings;
+            var imageData = this.bufferCtx.getImageData(0, 0, currentwidth, currentheight);
+            switch (filter.filterType) {
+              case FilterType.Grayscale:
+                imageData = new GrayscaleFilter().process(imageData, currentwidth, currentheight, undefined, undefined);
+                break;
+              case FilterType.Sepia:
+                imageData = new SepiaFilter().process(imageData, currentwidth, currentheight, undefined, undefined);
+                break;
+            }
+            this.bufferCtx.putImageData(imageData, 0, 0);
+            break;
+
         }
         this.manipulateCtx.restore();
 
@@ -310,6 +288,31 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     // this.canvasctx.translate(this.canvasRef.width / 2 * -1, this.canvasRef.height / 2 * -1);
   }
 
+  public render(): React.ReactElement<IImageManipulationProps> {
+    return (
+      <div className={styles.imageEditor} style={{
+        marginTop: this.props.displayMode === DisplayMode.Edit ? '40px' : '0px',
+      }} >
+        {this.props.displayMode === DisplayMode.Edit && this.getCommandBar()}
+        <div className={styles.imageplaceholder + ' ' + this.getMaxWidth()}
+          ref={(element: HTMLDivElement) => { this.wrapperRef = element; }}
+          style={this.canvasRef && { width: '' + this.canvasRef.width + 'px' }}
+        >
+
+          <canvas className={this.getMaxWidth()}
+            style={{ display: 'none' }}
+            ref={this.setBufferRef}></canvas>
+          <canvas className={this.getMaxWidth()}
+            style={{ display: 'none' }}
+            ref={this.setManipulateRef}></canvas>
+          <canvas className={this.getMaxWidth()} ref={this.setCanvasRef} ></canvas>
+          {this.state.settingPanel === SettingPanelType.Crop && (this.getCropGrid())}
+          {this.state.settingPanel === SettingPanelType.Resize && (this.getResizeGrid())}
+
+        </div>
+      </div>
+    );
+  }
   private getCropGrid(): JSX.Element {
     const lastset: ICropSettings = this.getLastManipulation() as ICropSettings;
     let lastdata: ICrop = { sx: 0, sy: 0, width: 0, height: 0 };
@@ -430,14 +433,14 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
         if (this.state.redosettings && this.state.redosettings.length > 0) {
           this.setState({ redosettings: [] }, () => {
 
-            if (this.props.settingschanged) {
-              this.props.settingschanged(newhist);
+            if (this.props.settingsChanged) {
+              this.props.settingsChanged(newhist);
             }
           });
         } else {
 
-          if (this.props.settingschanged) {
-            this.props.settingschanged(newhist);
+          if (this.props.settingsChanged) {
+            this.props.settingsChanged(newhist);
           }
         }
       }}
@@ -476,8 +479,8 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
         svalue: svalue
       });
     }
-    if (this.props.settingschanged) {
-      this.props.settingschanged(tmpsettings);
+    if (this.props.settingsChanged) {
+      this.props.settingsChanged(tmpsettings);
     }
   }
 
@@ -540,7 +543,7 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     }
     return (<div>
       <div>
-        {this.props.configsettings.rotateButtons.map((value: number, index: number) => {
+        {this.props.configSettings.rotateButtons.map((value: number, index: number) => {
           let icon: string = 'CompassNW';
           if (value !== 0) { icon = 'Rotate'; }
 
@@ -884,13 +887,13 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
 
     if (this.state.redosettings && this.state.redosettings.length > 0) {
       this.setState({ redosettings: [] }, () => {
-        if (this.props.settingschanged) {
-          this.props.settingschanged(state);
+        if (this.props.settingsChanged) {
+          this.props.settingsChanged(state);
         }
       });
     } else {
-      if (this.props.settingschanged) {
-        this.props.settingschanged(state);
+      if (this.props.settingsChanged) {
+        this.props.settingsChanged(state);
       }
     }
   }
@@ -899,8 +902,8 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
     if (this.props.settings && this.props.settings.length > 0) {
       const state: IImageManipulationSettings[] = clone(this.props.settings);
       state.splice(state.length - 1, 1);
-      if (this.props.settingschanged) {
-        this.props.settingschanged(clone(state));
+      if (this.props.settingsChanged) {
+        this.props.settingsChanged(clone(state));
       }
     }
   }
@@ -942,8 +945,8 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
           redo.push(last);
           this.setState({ redosettings: redo },
             () => {
-              if (this.props.settingschanged) {
-                this.props.settingschanged(settings);
+              if (this.props.settingsChanged) {
+                this.props.settingsChanged(settings);
               }
             });
 
@@ -961,8 +964,8 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
           settings.push(redo);
           this.setState({ redosettings: redosettings },
             () => {
-              if (this.props.settingschanged) {
-                this.props.settingschanged(settings);
+              if (this.props.settingsChanged) {
+                this.props.settingsChanged(settings);
               }
             });
 
@@ -976,8 +979,8 @@ export class ImageManipulation extends React.Component<IImageManipulationProps, 
         onClick={() => {
           this.setState({ redosettings: [] },
             () => {
-              if (this.props.settingschanged) {
-                this.props.settingschanged([]);
+              if (this.props.settingsChanged) {
+                this.props.settingsChanged([]);
               }
             });
 
