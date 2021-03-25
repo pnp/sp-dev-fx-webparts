@@ -3,7 +3,7 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-meeting-app-questionnaire",
     "source": "pnp",
     "title": "Questionnaire Teams Meeting App",
-    "shortDescription": "SPFx v1.12 support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.",
+    "shortDescription": "Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-meeting-app-questionnaire",
     "longDescription": [
       "SPFx v1.12 support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.",
