@@ -6,9 +6,15 @@ This is an application that supports Questions & Answers through a web part that
 
 ![Questions and Answers](./assets/QuestionsAndAnswers.gif)
 
-## Used SharePoint Framework Version
 
-![1.11.0](https://img.shields.io/badge/version-1.11.0-green.svg)
+## Compatibility
+
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
 
 ## Applies to
 
@@ -24,13 +30,14 @@ This is an application that supports Questions & Answers through a web part that
 
 Solution|Author(s)
 --------|---------
-react-questions-and-answers | Bo George ([@bo_george](https://twitter.com/bo_george))
+react-questions-and-answers | Bo George ([@bo_george](https://twitter.com/bo_george)), Mike Homol ([@homol](https://twitter.com/homol))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|September 13, 2020|Initial release
+2.0|March, 22, 2021|Version 2.0 with new features and new editor based on TinyMCE.<br />This change has new list schema dependencies so you will need remove and re-add the app if you installed version 1.0.  See below for more on what's new in 2.o
 
 ## Disclaimer
 
@@ -61,7 +68,7 @@ Version|Date|Comments
     * If you deployed a shippable (SharePoint Online) version you don't need to do anything else
     * If you deployed a debug (http://localhost:4321) version you'll need to ensure gulp serve is running
 
-## Features
+## Features in Version 1
 
 Below is intended to provide “notable” details on different features.  Notable meaning, they may be different than a typical expectation or require clarification.  For all features see “Features based Questions Role” to understand if they are available for a specific role. 
 
@@ -132,5 +139,20 @@ Like/Unlike a Reply|Yes|Yes|No
 Mark/Unmark a Reply as Helpful|Yes|Yes|No 
 Mark/Unmark a Reply as Correct Answer - Question entered by me|Yes|Yes|No 
 Mark/Unmark a Reply as Correct Answer - Question entered by others|Yes|No|No 
+
+## Summary of Features added in Version 2
+
+* Upgraded editor to support:
+  * use TinyMCE standalone as a replacement for primereact
+  * embedding of images in questions, conversations and replies
+  * at mention users within editor
+* Introduced "Conversations" which are behave like Questions without the ability to:
+  * Mark a reply as Helpful
+  * Mark a reply as the correct answer
+* Add ability to categorize questions which:
+  * allows a single site to have questions on many different topics and filter them as necessary
+* Make the Questions list visible and searchable
+  * added extension which intercepts list item url and redirects to the appropriate questions or conversations page with threaded replies
+* Bug fixes with dates
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-questions-and-answers" />

@@ -5,22 +5,21 @@ import { IApplicationState } from 'webparts/questions/redux/reducers/appReducer'
 // other
 import styles from './DefaultContainer.module.scss';
 import { DisplayMode } from '@microsoft/sp-core-library';
-import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import SearchComponent from '../Search/Search';
 import QuestionListComponent from '../QuestionList/QuestionList';
 import QuestionComponent from '../Question/Question';
 import ErrorComponent from '../Error/Error';
 import { IQuestionItem } from 'models';
-import { getPagedQuestions, inializeNewQuestion, getSelectedQuestion } from 'webparts/questions/redux/actions/actions';
+import { getPagedQuestions, inializeNewQuestion, getSelectedQuestion, IServiceCallStatus, IServiceCallState } from 'webparts/questions/redux/actions/actions';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
-import * as Quill from 'quill';
-import { getIconClassName } from '@uifabric/styling';
-import { autobind } from '@uifabric/utilities/lib';
 import { WebPartRenderMode } from 'utilities';
+import { Label } from 'office-ui-fabric-react/lib/Label';
+import { DiscussionType } from 'utilities';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react';
 
 interface IConnectedDispatch {
-    getPagedQuestions: (goingToNextPage: boolean) => void;
-    inializeNewQuestion: (initialTitle: string) => void;
+    getPagedQuestions: (goingToNextPage: boolean, categoryFilter: string | null) => void;
+    inializeNewQuestion: (initialTitle: string, category: string, type: DiscussionType) => void;
     getSelectedQuestion: (questionId: number) => void;
 }
 
@@ -32,6 +31,11 @@ interface IConnectedState {
     applicationErrorMessage?: string;
     themeVariant: IReadonlyTheme | undefined;
     webPartRenderMode: string;
+    category: string;
+    showCategory: boolean;
+    stateLabel: string;
+    discussionType: DiscussionType;
+    applicationServiceCallInfo: IServiceCallStatus | undefined;
 }
 
 // map the application state to properties on this component so they can be used
@@ -43,7 +47,12 @@ function mapStateToProps(state: IApplicationState, ownProps: any): IConnectedSta
         loadInitialPage: state.loadInitialPage,
         applicationErrorMessage: state.applicationErrorMessage,
         themeVariant: state.themeVariant,
-        webPartRenderMode: state.webPartRenderMode
+        webPartRenderMode: state.webPartRenderMode,
+        category: state.category,
+        showCategory: state.showCategory,
+        stateLabel: state.stateLabel,
+        discussionType: DiscussionType[state.discussionType],
+        applicationServiceCallInfo: state.applicationServiceCallInfo
     };
 }
 
@@ -56,6 +65,7 @@ const mapDispatchToProps = {
 
 export interface IDefaultContainerProps {
     selectedQuestionId: number;
+    selectedCategory: string;
     updateTitle: (value: string) => void;
 }
 
@@ -68,13 +78,15 @@ class DefaultContainerComponent extends React.Component<IDefaultContainerProps &
     constructor(props: IDefaultContainerProps & IConnectedState & IConnectedDispatch) {
         super(props);
         this.state = { showQuestions: true };
-
-        this.updateQuillIcons();
     }
 
     public componentDidMount() {
+      //alert('boom');
         if (this.props.selectedQuestionId === 0) {
-            this.props.inializeNewQuestion('');
+            //Category: Query String always trumps property pane value
+            this.props.inializeNewQuestion('',
+              (this.props.selectedCategory === undefined || this.props.selectedCategory === null || this.props.selectedCategory === '' ? this.props.category : this.props.selectedCategory),
+              this.props.discussionType);
             this.setState({ showQuestions: false });
         }
         else if (this.props.selectedQuestionId > 0) {
@@ -82,7 +94,7 @@ class DefaultContainerComponent extends React.Component<IDefaultContainerProps &
             this.setState({ showQuestions: false });
         }
         else if (this.props.loadInitialPage === true) {
-            this.props.getPagedQuestions(false);
+            this.props.getPagedQuestions(false, (this.props.selectedCategory === undefined || this.props.selectedCategory === null || this.props.selectedCategory === '' ? this.props.category : this.props.selectedCategory));
         }
     }
 
@@ -101,25 +113,26 @@ class DefaultContainerComponent extends React.Component<IDefaultContainerProps &
 
     public render(): React.ReactElement<IDefaultContainerProps> {
 
-        const { applicationErrorMessage, webPartRenderMode } = this.props;
+        const { applicationErrorMessage, webPartRenderMode, applicationServiceCallInfo } = this.props;
         const { showQuestions } = this.state;
 
         const color: string = (!!this.props.themeVariant && this.props.themeVariant.semanticColors.bodyText) || "inherit";
 
         return (
             <div style={{ color: color }} className={styles.defaultcontainer}>
-                <WebPartTitle displayMode={this.props.displayMode}
-                    themeVariant={this.props.themeVariant}
-                    title={this.props.title}
-                    updateProperty={this.props.updateTitle} />
+                <Label style={{ color: color }} className={styles.webpartTitle}>{(this.props.stateLabel ? this.props.stateLabel: '') + (this.props.showCategory === true ? this.props.category + ' ' : '' ) + this.props.title}</Label>
+                {(applicationServiceCallInfo !== undefined && applicationServiceCallInfo.display) ? (
+                    <MessageBar messageBarType={this.renderMessageType(applicationServiceCallInfo)}>{((applicationServiceCallInfo !== undefined) ? applicationServiceCallInfo.message : '')}</MessageBar>
+                ) : null }
 
                 {!applicationErrorMessage ? (
                     <div>
                         {webPartRenderMode !== WebPartRenderMode.OpenQuestions &&
                          webPartRenderMode !== WebPartRenderMode.AnsweredQuestions &&
-                            <SearchComponent show={showQuestions} />
+                         webPartRenderMode !== WebPartRenderMode.ConversationsList &&
+                            <SearchComponent show={showQuestions} categoryFilter={(this.props.selectedCategory === undefined || this.props.selectedCategory === null || this.props.selectedCategory === '' ? this.props.category : this.props.selectedCategory)} />
                         }
-                        <QuestionListComponent show={showQuestions} />
+                        <QuestionListComponent show={showQuestions} categoryFilter={(this.props.selectedCategory === undefined || this.props.selectedCategory === null || this.props.selectedCategory === '' ? this.props.category : this.props.selectedCategory)} />
                         <QuestionComponent show={!showQuestions} />
                     </div>
                 ) : (
@@ -131,29 +144,23 @@ class DefaultContainerComponent extends React.Component<IDefaultContainerProps &
         );
     }
 
-    @autobind
-    private updateQuillIcons() {
-        let icons = Quill.default.import('ui/icons');
-        icons['bold'] = `<i class="${getIconClassName('Bold')}" />`;
-        icons['italic'] = `<i class="${getIconClassName('Italic')}" />`;
-        icons['underline'] = `<i class="${getIconClassName('Underline')}" />`;
-        icons['strike'] = `<i class="${getIconClassName('Strikethrough')}" />`;
-        icons['color'] = `<i class="${getIconClassName('FontColor')}" />`;
-        icons['background'] = `<i class="${getIconClassName('BackgroundColor')}" />`;
-        icons['header']['1'] = `<i class="${getIconClassName('Header1')}" />`;
-        icons['header']['2'] = `<i class="${getIconClassName('Header2')}" />`;
-        icons['header']['3'] = `<i class="${getIconClassName('Header3')}" />`;
-        icons['blockquote'] = `<i class="${getIconClassName('RightDoubleQuote')}" />`;
-        icons['list']['ordered'] = `<i class="${getIconClassName('NumberedList')}" />`;
-        icons['list']['bullet'] = `<i class="${getIconClassName('BulletedList2')}" />`;
-        icons['indent']['-1'] = `<i class="${getIconClassName('DecreaseIndentLegacy')}" />`;
-        icons['indent']['+1'] = `<i class="${getIconClassName('IncreaseIndentLegacy')}" />`;
-        icons['align'][''] = `<i class="${getIconClassName('AlignLeft')}" />`;
-        icons['align']['center'] = `<i class="${getIconClassName('AlignCenter')}" />`;
-        icons['align']['justify'] = `<i class="${getIconClassName('AlignJustify')}" />`;
-        icons['align']['right'] = `<i class="${getIconClassName('AlignRight')}" />`;
-        icons['link'] = `<i class="${getIconClassName('Link')}" />`;
-        icons['clean'] = `<i class="${getIconClassName('ClearFormatting')}" />`;
+    public renderMessageType(status: IServiceCallStatus | undefined): MessageBarType {
+        if (status !== undefined) {
+          switch (status.state) {
+            case IServiceCallState.Success:
+              return MessageBarType.success;
+            case IServiceCallState.Information:
+              return MessageBarType.info;
+            case IServiceCallState.Warning:
+              return MessageBarType.warning;
+            case IServiceCallState.Error:
+              return MessageBarType.error;
+            default:
+              return MessageBarType.info;
+          }
+      } else {
+        return MessageBarType.severeWarning;
+      }
     }
 }
 

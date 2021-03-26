@@ -1,7 +1,4 @@
-/*ImageManipulation
 
-FilterType
-*/
 
 export { ImageManipulation, IImageManipulationConfig } from './ImageManipulation';
 

@@ -1,0 +1,116 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+@import "../../../../common/Global.dark.module.scss";
+@import "../../../../common/Global.default.module.scss";
+@import "../../../../common/Global.contrast.module.scss";
+@import "../../../../common/colors.module";
+
+.askQuestion {
+  .container {
+    margin: 0px auto;
+  }
+
+  .labelRequired {
+    color: red !important;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $default-questionnaireMeetingAppButton-background;
+    border-color: $default-questionnaireMeetingAppButton-background;
+    color: $default-questionnaireMeetingAppButton-color;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+
+  :global(.ms-Dialog-main) {
+    // override built-in max-width so dialog can grow wider
+    max-width: 760px !important;
+
+    // 100% width on medium and below
+    @media (max-width: $ms-screen-max-md) {
+      & {
+        min-width: 100%;
+      }
+    }
+
+    // 80% width on medium to xx-large
+    @media (min-width: $ms-screen-min-md) and (max-width: $ms-screen-max-xl) {
+      & {
+        min-width: 80%;
+      }
+    }
+    
+    // 800px width on x-large and above
+    @media (min-width: $ms-screen-min-xl) {
+      & {
+        min-width: 760px;
+      }
+    }
+  }
+}
+
+[data-theme="default"] {
+  .askQuestion {
+    background: $default-questionnaireMeetingApp-background;
+    color: $default-questionnaireMeetingApp-color;
+
+    .button {
+      background: $default-questionnaireMeetingAppButton-background;
+      background-color: $default-questionnaireMeetingAppButton-background;
+      color: $default-questionnaireMeetingAppButton-color;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .askQuestion {
+    background: $dark-questionnaireMeetingApp-background;
+    color: $dark-questionnaireMeetingApp-color;
+
+    .button {
+      background: $dark-questionnaireMeetingAppButton-background;
+      background-color: $dark-questionnaireMeetingAppButton-background;
+      color: $dark-questionnaireMeetingAppButton-color;
+    }
+  }
+}
+
+[data-theme="contrast"] {
+  .askQuestion {
+    background: $contrast-questionnaireMeetingApp-background;
+    color: $contrast-questionnaireMeetingApp-color;
+
+    .button {
+      background: $contrast-questionnaireMeetingAppButton-background;
+      background-color: $contrast-questionnaireMeetingAppButton-background;
+      color: $contrast-questionnaireMeetingAppButton-color;
+    }
+  }
+}

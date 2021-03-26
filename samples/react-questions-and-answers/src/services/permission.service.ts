@@ -9,7 +9,8 @@ import { _RoleAssignment, _RoleDefinition } from '@pnp/sp/security/types';
 
 export class PermissionService extends BaseService {
 
-    private listTitle = ListTitles.QUESTIONS;
+    private questionsListTitle = ListTitles.QUESTIONS;
+    private questionsAssetsListTitle = ListTitles.QUESTIONS_ASSETS;
 
     public async canVisitorsAskQuestions(): Promise<boolean> {
         LogHelper.verbose(this.constructor.name, 'canVisitorsAskQuestions', '');
@@ -19,7 +20,7 @@ export class PermissionService extends BaseService {
 
         console.log(visitorGroup.Id);
 
-        let roles = await sp.web.lists.getByTitle(this.listTitle).roleAssignments
+        let roles = await sp.web.lists.getByTitle(this.questionsListTitle).roleAssignments
         .expand('Member', 'RoleDefinitionBindings')
         .get();
 
@@ -41,9 +42,13 @@ export class PermissionService extends BaseService {
 
         let canAsk = await this.canVisitorsAskQuestions();
         if (canAsk === true) {
-            // reset list to inherit parent permissions
-            sp.web.lists.getByTitle(this.listTitle)
+            // reset list to inherit parent permissions for questions
+            sp.web.lists.getByTitle(this.questionsListTitle)
                 .resetRoleInheritance();
+
+            // reset list to inherit parent permissions for questions assets
+            sp.web.lists.getByTitle(this.questionsAssetsListTitle)
+            .resetRoleInheritance();
         }
         else {
             let contributorPerms = await sp.web.roleDefinitions
@@ -53,12 +58,21 @@ export class PermissionService extends BaseService {
             let visitorGroupId = (await sp.web.associatedVisitorGroup()).Id;
 
             if (contributorPerms && visitorGroupId) {
-                // break the list inheritance from the parent
-                await sp.web.lists.getByTitle(this.listTitle)
+                // break the list inheritance from the parent for questions
+                await sp.web.lists.getByTitle(this.questionsListTitle)
                     .breakRoleInheritance(true, true);
 
-                // give the visitor group contribute permissions
-                await sp.web.lists.getByTitle(this.listTitle)
+                // give the visitor group contribute permissions for questions
+                await sp.web.lists.getByTitle(this.questionsListTitle)
+                    .roleAssignments
+                    .add(visitorGroupId, contributorPerms.Id);
+
+                // break the list inheritance from the parent for questions assets
+                await sp.web.lists.getByTitle(this.questionsAssetsListTitle)
+                    .breakRoleInheritance(true, true);
+
+                // give the visitor group contribute permissions for questions assets
+                await sp.web.lists.getByTitle(this.questionsAssetsListTitle)
                     .roleAssignments
                     .add(visitorGroupId, contributorPerms.Id);
             }

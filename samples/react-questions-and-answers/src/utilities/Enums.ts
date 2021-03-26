@@ -28,5 +28,11 @@ export enum WebPartRenderMode {
     Standard = 'standard',
     Application = 'application',
     OpenQuestions = 'openQuestions',
-    AnsweredQuestions = 'answeredQuestions'
+    AnsweredQuestions = 'answeredQuestions',
+    ConversationsList = 'conversationsList'
+}
+
+export enum DiscussionType {
+    Question = 'Question',
+    Conversation = 'Conversation'
 }
