@@ -41,6 +41,7 @@ This web part shows the current user's colleagues, and allows the user to search
 
 Solution|Author(s)
 --------|---------
+react-staffdirectory|Ari Gunawan ([@arigunawan3023](https://twitter.com/arigunawan3023))
 react-staffdirectory|João Mendes ([joaojmendes](https://github.com/joaojmendes))
 
 
@@ -49,6 +50,7 @@ react-staffdirectory|João Mendes ([joaojmendes](https://github.com/joaojmendes)
 Version|Date|Comments
 -------|----|--------
 1.0.0|February 16, 2021|Initial release
+1.0.1|March 28, 2021|Added missing Graph API Permission (User.Read.All) for getting users information
 
 ## Disclaimer
 
@@ -67,7 +69,7 @@ Please follow all the steps:
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
 - Add and deploy package to your tenant's App Catalog
-- Go to **API Access** - from **SharePoint Admin Center** new experience, and **Approve** the permission to use Microsoft Graph scope **Presence.Read.All** 
+- Go to **API Access** - from **SharePoint Admin Center** new experience, and **Approve** the permission to use Microsoft Graph scopes **Presence.Read.All** and **User.Read.All**
 
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/staffdirectory" />
