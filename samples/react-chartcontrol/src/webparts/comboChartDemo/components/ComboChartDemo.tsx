@@ -2,15 +2,17 @@ import * as React from 'react';
 import styles from './ComboChartDemo.module.scss';
 import { IComboChartDemoProps } from './IComboChartDemo.types';
 import * as strings from 'ComboChartDemoWebPartStrings';
+
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartData } from 'chart.js';
 
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 const DATA_LENGTH: number = 7;
 const DATASET_LENGTH: number = 3;
 
-export default class ComboChartDemo extends React.Component<IComboChartDemoProps, {}> {
+export  class ComboChartDemo extends React.Component<IComboChartDemoProps, {}> {
 
   /**
   * Renders the command bar and the chart
@@ -42,14 +44,14 @@ export default class ComboChartDemo extends React.Component<IComboChartDemoProps
  * Loads data from a service.
  * This is where you would replace for your own code
  */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, reject) => {
       // we're using a mock service that returns random numbers.
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
       dataProvider.getMultiDataset(DATASET_LENGTH, DATA_LENGTH)  // we only need 5 data elements for this demo
         .then((numberArrays: Array<number[]>) => {
 
-          const data: Chart.ChartData =
+          const data: ChartData =
           {
             labels: strings.ChartLabels,
             datasets: [{

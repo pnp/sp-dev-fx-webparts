@@ -3,9 +3,10 @@ import styles from './LineChartDemo.module.scss';
 import { ILineChartDemoProps, ILineChartDemoState } from './ILineChartDemo.types';
 import * as strings from 'LineChartDemoWebPartStrings';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 import { ChartControl, ChartType } from "@pnp/spfx-controls-react/lib/ChartControl";
+import { ChartData } from 'chart.js';
 
 
 /**
@@ -13,7 +14,7 @@ import { ChartControl, ChartType } from "@pnp/spfx-controls-react/lib/ChartContr
  * Also demonstrates customizing axis labels and
  * custom tooltip providers.
  */
-export default class LineChartDemo extends React.Component<ILineChartDemoProps, ILineChartDemoState> {
+export class LineChartDemo extends React.Component<ILineChartDemoProps, ILineChartDemoState> {
 
   public render(): React.ReactElement<ILineChartDemoProps> {
     return (
@@ -71,12 +72,12 @@ export default class LineChartDemo extends React.Component<ILineChartDemoProps, 
   * Loads data from a service.
   * This is where you would replace for your own code
   */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, reject) => {
       // we're using a mock service that returns random numbers.
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
       dataProvider.getMultiDataset(2, 7).then((dataSets: Array<number[]>) => {
-        const data: Chart.ChartData =
+        const data: ChartData =
         {
           labels: strings.ChartLabels,
           datasets: [{

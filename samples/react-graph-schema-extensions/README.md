@@ -1,7 +1,7 @@
-# Spfx Webpart read / update MS Graph Custom Schema Extensions
+# Read / Update Microsoft Graph Custom Schema Extensions
 
 ## Summary
-This sample shows how read and update a custom Schema extension in MS Graph. It shows how to create a
+This sample shows how read and update a custom Schema extension in Microsoft Graph. It shows how to create a
 custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update
 that data using an spfx webpart.
 
@@ -16,8 +16,8 @@ Office 365 Groups, for instance Sales information, and make it available in the 
 
 ## Applies to
 
-* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

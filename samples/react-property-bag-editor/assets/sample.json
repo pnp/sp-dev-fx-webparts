@@ -1,0 +1,51 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-property-bag-editor",
+    "source": "pnp",
+    "title": "Property Bag Navigation Webparts",
+    "shortDescription": "A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-property-bag-editor",
+    "longDescription": [
+      "A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties."
+    ],
+    "created": "2017-03-19",
+    "modified": "2017-03-19",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-property-bag-editor/src/images/PropertyBagEditorDisplay.PNG",
+        "alt": "Property Bag Navigation Webparts"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "russgove",
+        "company": "",
+        "pictureUrl": "https://github.com/russgove.png",
+        "name": "Russell Gove"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

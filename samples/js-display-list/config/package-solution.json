@@ -1,8 +1,11 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "js-display-list-client-side-solution",
     "id": "faf13055-4551-491c-8bbf-a00b30adfd54",
-    "version": "1.0.0.0"
+    "version": "2.0.0.0",
+    "isDomainIsolated": false,
+    "includeClientSideAssets": true
   },
   "paths": {
     "zippedPackage": "solution/js-display-list.spapp"

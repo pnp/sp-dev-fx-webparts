@@ -1,4 +1,4 @@
-## Webpart showing Url validation for SharePoint using Office Graph
+# Url validation for SharePoint using Office Graph
 
 ### Summary 
 This sample contains a class that evaluates the url input of a text field against the Microsoft Graph. It is possible to evalute the existance of the following three SharePoint Elements:
@@ -7,15 +7,15 @@ This sample contains a class that evaluates the url input of a text field agains
 * Web Site
 * Lists and Document libraries
 
-The web part shows all those three example and the reuslt returned by the Microsoft Graph.
+The web part shows all those three examples and the results returned by the Microsoft Graph.
 
 ![Evaluation Client searching for suitable site collection][figure1]
 
 ### Usage
 
-To evaluate the web part the input for site collection, web site or list and document library simply place a URL from your tennant in one of the text fields shown above. After the text field loses `onblur` its focus the evaluation happens automatically in the background and showing the debug information in the debugging information.
+To evaluate the web part the input for site collection, web site or list and document library simply place a URL from your tenant in one of the text fields shown above. After the text field loses `onblur` its focus the evaluation happens automatically in the background and showing the debug information in the debugging information.
 
-![Evaluation of web site with current debug informations][figure2]
+![Evaluation of web site with current debug information][figure2]
 
 ### Project Setup and important files
 
@@ -45,8 +45,8 @@ src
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 ## Solution
@@ -76,12 +76,12 @@ Version|Date|Comments
 - clone this repo
 - `$ npm i`
 - `$ gulp serve --nobrowser`
-- Open workbench on your tennant, ie. https://contoso.sharepoint.com/sites/salestesm/_layouts/15/workbench.aspx
+- Open workbench on your tenant, ie. https://contoso.sharepoint.com/sites/salestesm/_layouts/15/workbench.aspx
 - Search and add web part "Graph - Eval Url"
 
 ## Features
 
-This sample web part shows how URLs in SharePoint can be checked and evaluated agains the Microsoft Graph. This scenario and the introduced class can be use to evluate not only user input but can also be used in the configuration panel of web parts. The benefit is that the URL of the target location remains visible and can be use for debugging reasons to.
+This sample web part shows how URLs in SharePoint can be checked and evaluated against the Microsoft Graph. This scenario and the introduced class can be use to evluate not only user input but can also be used in the configuration panel of web parts. The benefit is that the URL of the target location remains visible and can be use for debugging reasons to.
 The class returns all the Graph objects identified during the evaluation process. It can also be used in backend code.
 
 - using React for building SharePoint Framework Client-side Web Parts

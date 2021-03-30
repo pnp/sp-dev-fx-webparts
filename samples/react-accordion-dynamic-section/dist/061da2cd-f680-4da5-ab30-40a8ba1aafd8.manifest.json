@@ -1,0 +1,134 @@
+{
+  "id": "061da2cd-f680-4da5-ab30-40a8ba1aafd8",
+  "alias": "ReactAccordionWebPart",
+  "componentType": "WebPart",
+  "version": "1.6.0",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsTab"
+  ],
+  "loadLegacyFabricCss": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Dynamic Accordion Section"
+      },
+      "description": {
+        "default": "Collapsible accordion section for displaying list data based on Category and Dynamic selection"
+      },
+      "officeFabricIconFontName": "MusicInCollectionFill",
+      "properties": {
+        "description": "Dynamic React Accordion",
+        "listId": "",
+        "columnTitle": "",
+        "selectedChoice": "",
+        "accordianTitleColumn": "",
+        "accordianContentColumn": "",
+        "allowZeroExpanded": true
+      }
+    }
+  ],
+  "loaderConfig": {
+    "entryModuleId": "react-accordion-web-part",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "react-accordion-web-part": {
+        "type": "path",
+        "path": "dist/react-accordion-web-part.js"
+      },
+      "ReactAccordionWebPartStrings": {
+        "defaultPath": "lib/webparts/reactAccordion/loc/en-us.js",
+        "type": "localizedPath",
+        "paths": {}
+      },
+      "ControlStrings": {
+        "defaultPath": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+        "type": "localizedPath",
+        "paths": {
+          "de-DE": "node_modules/@pnp/spfx-controls-react/lib/loc/de-de.js",
+          "de": "node_modules/@pnp/spfx-controls-react/lib/loc/de-de.js",
+          "dsb": "node_modules/@pnp/spfx-controls-react/lib/loc/de-de.js",
+          "rm": "node_modules/@pnp/spfx-controls-react/lib/loc/de-de.js",
+          "hsb": "node_modules/@pnp/spfx-controls-react/lib/loc/de-de.js",
+          "en-US": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "bn": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "chr": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "dv": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "div": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "en": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "fil": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "haw": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "iu": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "lo": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "moh": "node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js",
+          "fr-FR": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "gsw": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "br": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "tzm-Tfng": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "co": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "fr": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "ff": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "lb": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "mg": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "oc": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "zgh": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "wo": "node_modules/@pnp/spfx-controls-react/lib/loc/fr-fr.js",
+          "lt-LT": "node_modules/@pnp/spfx-controls-react/lib/loc/lt-lt.js",
+          "nl-NL": "node_modules/@pnp/spfx-controls-react/lib/loc/nl-nl.js",
+          "nl": "node_modules/@pnp/spfx-controls-react/lib/loc/nl-nl.js",
+          "fy": "node_modules/@pnp/spfx-controls-react/lib/loc/nl-nl.js",
+          "ru-RU": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "ru": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "ba": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "be": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "ky": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "mn": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "sah": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "tg": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "tt": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js",
+          "tk": "node_modules/@pnp/spfx-controls-react/lib/loc/ru-ru.js"
+        }
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "version": "1.10.0",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.10.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "version": "1.10.0",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0"
+      },
+      "react": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      },
+      "react-dom": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "failoverPath": "node_modules/react-dom/dist/react-dom.js"
+      },
+      "@microsoft/sp-http": {
+        "type": "component",
+        "version": "1.10.0",
+        "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6"
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '../Shared.module.scss';
+
+.reply {
+  .container {
+    @include tw-reply-leftmargin;
+  }
+
+  .containerAnswerMode {
+    padding-top: 5px;
+    padding-bottom: 20px;
+  }
+
+  .replyContainer {
+    @include tw-item-container;
+    @include ms-font-m-plus;
+    color: $ms-color-black;
+  }
+
+  .replyItem {
+    @include tw-item;
+  }
+
+  .replyAnswer {
+    @include tw-item;
+    border-left-width: 5px;
+    background-color: $ms-color-themeLighter;
+  }
+
+  .replyDetails {
+    @include tw-reply-details-container;
+  }
+
+  .replyDetails img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .replyIsAnswerContainer {
+    @include tw-answer-info;
+  }
+
+  .adminActionsContainer {
+    @include tw-admin-actions;
+  }
+
+  .messagebarContainer {
+    @include tw-message-bar-container;
+  }
+  .userActions {
+    @include tw-user-actions;
+  }
+
+  .errorMessage {
+    @include tw-error-message;
+  }
+
+   // override styles in answer mode
+  .containerAnswerMode {
+    .replyContainer {
+      margin-top: 0px;
+    }
+    .replyAnswer {
+      border-left-width: 1px;
+    }
+  }
+}

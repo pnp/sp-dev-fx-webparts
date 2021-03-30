@@ -3,8 +3,15 @@
   "solution": {
     "name": "react-chartcontrol-client-side-solution",
     "id": "fb9665fb-4455-4b7f-99ab-2195920871fd",
-    "version": "1.0.0.0",
-    "includeClientSideAssets": true
+    "version": "1.4.0.0",
+    "includeClientSideAssets": true,
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-chartcontrol.sppkg"

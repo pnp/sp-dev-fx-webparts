@@ -7,6 +7,10 @@ import { ControlMode } from '../../../common/datatypes/ControlMode';
 
 import { IListFormService } from '../../../common/services/IListFormService';
 import { ListFormService } from '../../../common/services/ListFormService';
+import { ISPPeopleSearchService } from '../../../common/services/ISPPeopleSearchService';
+import { SPPeopleSearchService } from '../../../common/services/SPPeopleSearchService';
+import { GroupService } from '../../../common/services/GroupService';
+import { SPHelper } from '../../../common/SPHelper';
 
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -24,6 +28,7 @@ import * as strings from 'ListFormStrings';
 
 import styles from './ListForm.module.scss';
 import { Validate } from '@microsoft/sp-core-library';
+import { Icon } from 'office-ui-fabric-react';
 
 /*************************************************************************************
  * React Component to render a SharePoint list form on any page.
@@ -35,6 +40,9 @@ import { Validate } from '@microsoft/sp-core-library';
 class ListForm extends React.Component<IListFormProps, IListFormState> {
 
   private listFormService: IListFormService;
+  private spPeopleService: ISPPeopleSearchService;
+  private groupService: GroupService;
+
   constructor(props: IListFormProps) {
     super(props);
 
@@ -47,13 +55,21 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
       originalData: {},
       errors: [],
       notifications: [],
-      fieldErrors: {}
+      fieldErrors: {},
+      hasError: false,
+      errorInfo: ''
     };
     this.listFormService = new ListFormService(props.spHttpClient);
+    this.spPeopleService = new SPPeopleSearchService();
+    this.groupService = new GroupService(props.spHttpClient);
   }
 
   public render() {
     let menuProps;
+    if (this.state.hasError) {
+      // render any custom fallback UI
+      return <h1>{this.state.errorInfo}</h1>;
+    }
     if (this.state.fieldsSchema) {
       menuProps = {
         shouldFocusOnMount: true,
@@ -82,7 +98,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
                   <DefaultButton aria-haspopup='true' aria-label={strings.AddNewFieldAction} className={styles.addFieldToolbox}
                     title={strings.AddNewFieldAction} menuProps={menuProps} data-is-focusable='false' >
                     <div className={styles.addFieldToolboxPlusButton}>
-                      <i aria-hidden='true' className='ms-Icon ms-Icon--CircleAdditionSolid' />
+                      <Icon iconName='CircleAdditionSolid' />
                     </div>
                   </DefaultButton>
                 }
@@ -108,6 +124,12 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
     );
   }
 
+  public componentDidCatch(error, errorInfo) {
+    this.setState({
+      hasError: true,
+      errorInfo: error.toString()
+    });
+  }
   private renderNotifications() {
     if (this.state.notifications.length === 0) {
       return null;
@@ -144,6 +166,7 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
   private renderFields() {
     const { fieldsSchema, data, fieldErrors } = this.state;
     const fields = this.getFields();
+
     return (fields && (fields.length > 0))
       ?
       <div className='ard-formFieldsContainer' >
@@ -169,7 +192,8 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
                 extraData: extraData,
                 errorMessage: errorMessage,
                 hideIfFieldUnsupported: !this.props.showUnsupportedFields,
-                valueChanged: (val) => this.valueChanged(field.fieldName, val)
+                valueChanged: (val) => this.valueChanged(field.fieldName, val),
+                context: this.props.context,
               });
               if (fieldComponent && this.props.inDesignMode) {
                 return (
@@ -222,6 +246,41 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
         listUrl,
         formType,
       );
+      let lookupCount = 0;
+      for (let i = 0; i < fieldsSchema.length; i++) {
+        if (fieldsSchema[i].FieldType === "Lookup" || fieldsSchema[i].FieldType === "LookupMulti") {
+          fieldsSchema[i].Choices = await this.listFormService.getLookupfieldOptions(fieldsSchema[i], this.props.webUrl);
+          lookupCount += 1;
+          if (lookupCount > 1) {
+            let lookups = await this.listFormService.getLookupfieldsOnList(fieldsSchema[i]["LookupListUrl"], this.props.webUrl, formType);
+            for (let j = 0; j < lookups.length; j++) {
+              let parent = fieldsSchema.filter((x) => {
+                return x.LookupListId === lookups[j].LookupListId;
+              });
+
+              for (let k = 0; k < parent.length; k++) {
+                if (parent[k]["Dependent"] == null) {
+                  parent[k]["Dependent"] = { Field: fieldsSchema[i], ValueField: lookups[j].InternalName };
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      let userfields = fieldsSchema.filter((x) => {
+        return x.FieldType === "User" || x.FieldType === "UserMulti";
+      });
+
+      for (let i = 0; i < userfields.length; i++) {
+        if (userfields[i].SharePointGroupID > 0) {
+          //Get the groupname from sharepoint for the group id
+          let group = await this.groupService.getGroupFromWeb(this.props.webUrl, userfields[i].SharePointGroupID);
+          userfields[i]['SharePointGroupName'] = group.Title;
+        }
+      }
+
       this.setState({ ...this.state, isLoadingSchema: false, fieldsSchema });
     } catch (error) {
       const errorText = `${strings.ErrorLoadingSchema}${listUrl}: ${error}`;
@@ -239,15 +298,35 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
     try {
       if ((formType === ControlMode.New) || !id) {
         const data = this.state.fieldsSchema
-          .reduce((newData, fld) => { newData[fld.InternalName] = fld.DefaultValue; return newData; }, {});
+          .reduce((newData, fld) => {
+            if (fld.DefaultValue && fld.FieldType.indexOf("TaxonomyField") > -1) {
+              newData[fld.InternalName] = fld.DefaultValue.replace(new RegExp("([#][0-9]+;#|^[0-9]+;#)", "g"), "")
+            } else {
+              newData[fld.InternalName] = fld.DefaultValue;
+            }
+            return newData;
+          },
+            {});
         this.setState({ ...this.state, data: data, originalData: { ...data }, fieldErrors: {}, isLoadingData: false });
         return;
       }
       this.setState({ ...this.state, data: {}, originalData: {}, fieldErrors: {}, isLoadingData: true });
-      const dataObj = await this.listFormService.getDataForForm(this.props.webUrl, listUrl, id, formType);
+      let dataObj = await this.listFormService.getDataForForm(this.props.webUrl, listUrl, id, formType);
+      const schema = this.state.fieldsSchema;
+      dataObj = await this.listFormService.getExtraFieldData(dataObj, schema, this.props.context, this.props.webUrl);
+      for (let i = 0; i < schema.length; i++) {
+        if (schema[i]["Dependent"] != null) {
+          let updateField = schema[i]["Dependent"].Field.InternalName;
+          let fieldsSchema = schema;
+          let dependee = fieldsSchema.filter((x) => {
+            return x.InternalName === updateField;
+          });
+          dependee[0]["DependerValue"] = { Value: dataObj[schema[i].InternalName], Field: schema[i]["Dependent"].ValueField };
+        }
+      }
       // We shallow clone here, so that changing values on dataObj object fields won't be changing in originalData too
       const dataObjOriginal = { ...dataObj };
-      this.setState({ ...this.state, data: dataObj, originalData: dataObjOriginal, isLoadingData: false });
+      this.setState({ ...this.state, data: dataObj, fieldsSchema: schema, originalData: dataObjOriginal, isLoadingData: false });
     } catch (error) {
       const errorText = `${strings.ErrorLoadingData}${id}: ${error}`;
       this.setState({ ...this.state, data: {}, isLoadingData: false, errors: [...this.state.errors, errorText] });
@@ -255,79 +334,191 @@ class ListForm extends React.Component<IListFormProps, IListFormState> {
   }
 
   @autobind
-  private valueChanged(fieldName: string, newValue: any) {
-    this.setState((prevState, props) => {
-      return {
-        ...prevState,
-        data: { ...prevState.data, [fieldName]: newValue },
-        fieldErrors: {
-          ...prevState.fieldErrors,
-          [fieldName]:
-            (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
-              ? strings.RequiredValueMessage
-              : ''
+  private async valueChanged(fieldName: string, newValue: any) {
+    let schema = this.state.fieldsSchema.filter((item) => item.InternalName === fieldName)[0];
+    if (schema.Type == "User" || schema.Type === "UserMulti") {
+      for (let i = 0; i < newValue.length; i++) {
+        // Security Group and Office 365 group need special handling
+        if (newValue[i].Key.indexOf("c:0") === 0) {
+          let newVal = await this.spPeopleService.resolvePeople(this.props.context, newValue[i].Key, this.props.webUrl);
+
+          if (newVal.EntityData != null && newVal.EntityData.Email != null) {
+            newValue[i].Key = newVal.EntityData.Email;
+          }
+          else {
+            newValue[i].Key = newVal.Description;
+          }
         }
-      };
-    },
-    );
+      }
+
+      this.setState((prevState, props) => {
+        return {
+          ...prevState,
+          data: { ...prevState.data, [fieldName]: newValue },
+          fieldErrors: {
+            ...prevState.fieldErrors,
+            [fieldName]:
+              (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
+                ? strings.RequiredValueMessage
+                : ''
+          }
+        };
+      },
+      );
+    }
+    else {
+      // Check for if any other fields are dependent on this one
+      if (schema["Dependent"] != null) {
+        let dependee = [];
+        let fieldsSchema = this.state.fieldsSchema;
+        let updateField = schema["Dependent"].Field.InternalName;
+        let valueField = schema["Dependent"].ValueField;
+        let dependentValue = newValue;
+        do {
+          dependee = fieldsSchema.filter((x) => {
+            return x.InternalName === updateField;
+          });
+          dependee[0]["DependerValue"] = { Value: dependentValue, Field: valueField };
+          if (dependee.length > 0 && dependee[0]["Dependent"] != null) {
+            //Need to remove invalid options from dependent value
+            let tempVal = SPHelper.LookupValueFromString(this.state.data[dependee[0].InternalName]);
+            let depend = SPHelper.LookupValueFromString(dependentValue);
+            let choices = dependee[0].Choices;
+
+            let values = depend.map((item) => item.key);
+            choices = choices.filter((x) => {
+              let matches = values.filter((itm) => { return x.x[`${valueField}Id`] == itm; });
+              return matches.length > 0;
+            });
+
+            tempVal = tempVal.filter((x) => {
+              return choices.find((y) => { return y.LookupId == x.key; }) != null;
+            });
+
+            dependentValue = SPHelper.LookupValueToString(tempVal);
+            updateField = dependee[0]["Dependent"].Field.InternalName;
+            valueField = dependee[0]["Dependent"].ValueField;
+          }
+          else {
+            updateField = null;
+          }
+        } while (updateField != null);
+
+        this.setState((prevState, props) => {
+          return {
+            ...prevState,
+            data: { ...prevState.data, [fieldName]: newValue },
+            fieldsSchema,
+            fieldErrors: {
+              ...prevState.fieldErrors,
+              [fieldName]:
+                (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
+                  ? strings.RequiredValueMessage
+                  : ''
+            }
+          };
+        },
+        );
+      }
+      else {
+        this.setState((prevState, props) => {
+          return {
+            ...prevState,
+            data: { ...prevState.data, [fieldName]: newValue },
+            fieldErrors: {
+              ...prevState.fieldErrors,
+              [fieldName]:
+                (prevState.fieldsSchema.filter((item) => item.InternalName === fieldName)[0].Required) && !newValue
+                  ? strings.RequiredValueMessage
+                  : ''
+            }
+          };
+        },
+        );
+      }
+    }
+  }
+
+  private validator = () => {
+    let fieldErrors = this.state.fieldErrors;
+    this.state.fieldsSchema.forEach(currentFieldSchema => {
+      if (currentFieldSchema.Required && !this.state.data[currentFieldSchema.InternalName]) {
+        fieldErrors = {
+          ...fieldErrors,
+          [currentFieldSchema.InternalName]: strings.RequiredValueMessage
+        };
+      }
+    });
+    this.setState({
+      fieldErrors: fieldErrors
+    });
+    for (let key in fieldErrors) {
+      if (fieldErrors[key]) {
+        return false;
+      }
+    }
+    return true;
   }
 
   private async saveItem(): Promise<void> {
-    this.setState({ ...this.state, isSaving: true, errors: [] });
-    try {
-      let updatedValues;
-      if (this.props.id) {
-        updatedValues = await this.listFormService.updateItem(
-          this.props.webUrl,
-          this.props.listUrl,
-          this.props.id,
-          this.state.fieldsSchema,
-          this.state.data,
-          this.state.originalData);
-      } else {
-        updatedValues = await this.listFormService.createItem(
-          this.props.webUrl,
-          this.props.listUrl,
-          this.state.fieldsSchema,
-          this.state.data);
-      }
-      let dataReloadNeeded = false;
-      const newState: IListFormState = { ...this.state, fieldErrors: {} };
-      let hadErrors = false;
-      updatedValues.filter((fieldVal) => fieldVal.HasException).forEach((element) => {
-        newState.fieldErrors[element.FieldName] = element.ErrorMessage;
-        hadErrors = true;
-      });
-      if (hadErrors) {
-        if (this.props.onSubmitFailed) {
-          this.props.onSubmitFailed(newState.fieldErrors);
+    let shouldSave = this.validator();
+    if (shouldSave) {
+      this.setState({ ...this.state, isSaving: true, errors: [] });
+      try {
+        let updatedValues;
+        if (this.props.id) {
+          updatedValues = await this.listFormService.updateItem(
+            this.props.webUrl,
+            this.props.listUrl,
+            this.props.id,
+            this.state.fieldsSchema,
+            this.state.data,
+            this.state.originalData);
         } else {
-          newState.errors = [...newState.errors, strings.FieldsErrorOnSaving];
+          updatedValues = await this.listFormService.createItem(
+            this.props.webUrl,
+            this.props.listUrl,
+            this.state.fieldsSchema,
+            this.state.data);
         }
-      } else {
-        updatedValues.reduce(
-          (val, merged) => {
-            merged[val.FieldName] = merged[val.FieldValue]; return merged;
-          },
-          newState.data,
-        );
-        // we shallow clone here, so that changing values on state.data won't be changing in state.originalData too
-        newState.originalData = { ...newState.data };
-        let id = (this.props.id) ? this.props.id : 0;
-        if (id === 0) {
-          id = updatedValues.filter((val) => val.FieldName === 'Id')[0].FieldValue;
+        let dataReloadNeeded = false;
+        const newState: IListFormState = { ...this.state, fieldErrors: {} };
+        let hadErrors = false;
+        updatedValues.filter((fieldVal) => fieldVal.HasException).forEach((element) => {
+          newState.fieldErrors[element.FieldName] = element.ErrorMessage;
+          hadErrors = true;
+        });
+        if (hadErrors) {
+          if (this.props.onSubmitFailed) {
+            this.props.onSubmitFailed(newState.fieldErrors);
+          } else {
+            newState.errors = [...newState.errors, strings.FieldsErrorOnSaving];
+          }
+        } else {
+          updatedValues.reduce(
+            (val, merged) => {
+              merged[val.FieldName] = merged[val.FieldValue]; return merged;
+            },
+            newState.data,
+          );
+          // we shallow clone here, so that changing values on state.data won't be changing in state.originalData too
+          newState.originalData = { ...newState.data };
+          let id = (this.props.id) ? this.props.id : 0;
+          if (id === 0) {
+            id = updatedValues.filter((val) => val.FieldName === 'Id')[0].FieldValue;
+          }
+          if (this.props.onSubmitSucceeded) { this.props.onSubmitSucceeded(id); }
+          newState.notifications = [...newState.notifications, strings.ItemSavedSuccessfully];
+          dataReloadNeeded = true;
         }
-        if (this.props.onSubmitSucceeded) { this.props.onSubmitSucceeded(id); }
-        newState.notifications = [...newState.notifications, strings.ItemSavedSuccessfully];
-        dataReloadNeeded = true;
-      }
-      newState.isSaving = false;
-      this.setState(newState);
+        newState.isSaving = false;
+        this.setState(newState);
 
-      if (dataReloadNeeded) { this.readData(this.props.listUrl, this.props.formType, this.props.id); }
-    } catch (error) {
-      const errorText = strings.ErrorOnSavingListItem + error;
-      this.setState({ ...this.state, errors: [...this.state.errors, errorText] });
+        if (dataReloadNeeded) { this.readData(this.props.listUrl, this.props.formType, this.props.id); }
+      } catch (error) {
+        const errorText = strings.ErrorOnSavingListItem + error;
+        this.setState({ ...this.state, errors: [...this.state.errors, errorText] });
+      }
     }
   }
 

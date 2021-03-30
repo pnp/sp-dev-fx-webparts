@@ -1,8 +1,8 @@
-## Web part displaying Google Fit information
+# Google Fit information
 
 ### Summary 
 
-This sample demonstrates integration of Google Fit information with SharePoint Framework. The Google Fitness REST APIs allows developers to extend it further and create their own dashboards. Google Fitness REST APIs are useful if you have fitness app and you want to integrate your data with google fit or if you just want to collect Fitness data and display some information to the users. This web part helps to display the key fitness information (activity time spent,  distance travelled, calories burned, step count) from the Google fit data source.
+This sample demonstrates the integration of Google Fit information with SharePoint Framework. The Google Fitness REST APIs allows developers to extend it further and create their own dashboards. Google Fitness REST APIs are useful if you have fitness app and you want to integrate your data with google fit or if you just want to collect Fitness data and display some information to the users. This web part helps to display the key fitness information (activity time spent,  distance travelled, calories burned, step count) from the Google fit data source.
 
 ![Web part preview][figure1]
 
@@ -45,8 +45,8 @@ Below NPM package is used to develop this sample.
 ![drop](https://img.shields.io/badge/drop-1.7.1-green.svg)
 
 ## Applies to
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -75,7 +75,7 @@ Version|Date|Comments
 - Clone this repo
 - npm i
 - gulp serve --nobrowser
-- Open workbench on your tennant, i.e. https://contoso.sharepoint.com/sites/salesteam/_layouts/15/workbench.aspx
+- Open workbench on your tenant, i.e. https://contoso.sharepoint.com/sites/salesteam/_layouts/15/workbench.aspx
 - Search and add web part "Google Fit Activity Viewer"
 
 ## Features

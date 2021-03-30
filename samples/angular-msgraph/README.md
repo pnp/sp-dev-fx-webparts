@@ -15,9 +15,9 @@ extensions:
   - SharePoint
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 2/16/2017 12:00:00 AM
 ---
-﻿## Angular MS Graph Web Part Built with Angular v1.x
+# Angular MS Graph Web Part Built with Angular v1.x
 
 ## Summary
 This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your
@@ -42,8 +42,8 @@ display all the lists associated with the site followed by all the items inside 
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

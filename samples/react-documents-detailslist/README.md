@@ -21,30 +21,31 @@ This sample shows how to build web parts that display documents in accordance wi
 ![Demo](./assets/Preview.gif)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-GA-green.svg)
+![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
 - Office 365 subscription with SharePoint Online.
-- SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
 react-documents|Dimcho Tsanov
-
+react-documents (v2.0)|Harsha Vardhini ([harshagracy](https://twitter.com/harshagracy?s=20))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|October 13, 2017|Initial release
+2.0|April 28, 2020|Initial release
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -59,6 +60,7 @@ Version|Date|Comments
   - `gulp serve`
 
 ## Features
+
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 -Using React for building SharePoint Framework client-side web parts.

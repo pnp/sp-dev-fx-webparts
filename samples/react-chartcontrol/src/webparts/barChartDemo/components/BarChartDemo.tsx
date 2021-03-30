@@ -2,11 +2,12 @@ import * as React from 'react';
 import styles from './BarChartDemo.module.scss';
 import * as strings from 'BarChartDemoWebPartStrings';
 import { IBarChartDemoProps, IBarChartDemoState } from './IBarChartDemo.types';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartData } from 'chart.js';
 
 const DATA_LENGTH: number = 7;
 
@@ -15,7 +16,7 @@ const DATA_LENGTH: number = 7;
  * and display the results, rendering a "please wait" message while
  * data is loading.
  */
-export default class BarChartDemo extends React.Component<IBarChartDemoProps, IBarChartDemoState> {
+export class BarChartDemo extends React.Component<IBarChartDemoProps, IBarChartDemoState> {
   /**
    * Renders the "Loading" spinner if the state is currently loading,
    * or the chart once data is loladed
@@ -52,12 +53,12 @@ export default class BarChartDemo extends React.Component<IBarChartDemoProps, IB
   * Loads data from a service.
   * This is where you would replace for your own code
   */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, reject) => {
       // we're using a mock service that returns random numbers.
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
       dataProvider.getNumberArray(DATA_LENGTH, 2000).then((dataSet: number[]) => {
-        const data: Chart.ChartData =
+        const data: ChartData =
         {
           labels: strings.ChartLabels,
           datasets: [

@@ -2,19 +2,27 @@ import { MSGraphClient, MSGraphClientFactory } from '@microsoft/sp-http';
 import Utilities from './Utilities';
 import { IFolder } from '../model/IFolder';
 import { IMail } from '../model/IMail';
+import { IMailMetadata } from '../model/IMailMetadata';
 
 export default class GraphController {
   private client: MSGraphClient;
+  private metadataExtensionName = 'mmsharepoint.onmicrosoft.MailStorage';
+  private saveMetadata: boolean;
 
-  constructor (graphFactory: MSGraphClientFactory, callback: () => void) {    
-    graphFactory
-      .getClient()
-      .then((client: MSGraphClient) => {
-        this.client = client;
-        callback();
-      });   
-      
-    this.retrieveMimeMail = this.retrieveMimeMail.bind(this);
+  constructor (saveMetadata: boolean) {  
+    this.saveMetadata = saveMetadata;         
+  }
+
+  public init(graphFactory: MSGraphClientFactory): Promise<boolean> {
+    return graphFactory
+          .getClient()
+          .then((client: MSGraphClient) => {
+            this.client = client;
+            return true;
+          })
+          .catch((error) => {
+            return false;
+          });  
   }
 
   public getClient() {
@@ -28,12 +36,13 @@ export default class GraphController {
     return this.client
             .api('me/drive/root/children')
             .version('v1.0')
-            .filter('folder ne null')         
+            .filter('folder ne null')
+            .select('id, name, parentReference, webUrl')      
             .get()
             .then((response): any => {
               let folders: Array<IFolder> = new Array<IFolder>();
               response.value.forEach((item) => {
-                folders.push({ id: item.id, name: item.name, driveID: item.parentReference.driveId, parentFolder: null});
+                folders.push({ id: item.id, name: item.name, driveID: item.parentReference.driveId, parentFolder: null, webUrl: item.webUrl });
               });      
               return folders;
             });
@@ -43,12 +52,13 @@ export default class GraphController {
     return this.client
             .api(`drives/${group.driveID}/root/children`)
             .version('v1.0')
-            .filter('folder ne null')         
+            .filter('folder ne null')
+            .select('id, name, webUrl')       
             .get()
             .then((response): any => {
               let folders: Array<IFolder> = new Array<IFolder>();
               response.value.forEach((item) => {
-                folders.push({ id: item.id, name: item.name, driveID: group.driveID, parentFolder: group});
+                folders.push({ id: item.id, name: item.name, driveID: group.driveID, parentFolder: group, webUrl: item.webUrl});
               });      
               return folders;
             });
@@ -58,12 +68,13 @@ export default class GraphController {
     return this.client
             .api(`drives/${folder.driveID}/items/${folder.id}/children`)
             .version('v1.0')
-            .filter('folder ne null')         
+            .filter('folder ne null')
+            .select('id, name, webUrl')      
             .get()
             .then((response): any => {
               let folders: Array<IFolder> = new Array<IFolder>();
               response.value.forEach((item) => {
-                folders.push({ id: item.id, name: item.name, driveID: folder.driveID, parentFolder: folder});
+                folders.push({ id: item.id, name: item.name, driveID: folder.driveID, parentFolder: folder, webUrl: item.webUrl});
               });      
               return folders;
             });
@@ -75,7 +86,8 @@ export default class GraphController {
   public getJoinedGroups(): Promise<IFolder[]> {
     return this.client
             .api('me/memberOf')
-            .version('v1.0')          
+            .version('v1.0')     
+            .select('id, displayName, webUrl') 
             .get()
             .then((response): any => {
               let folders: Array<IFolder> = new Array<IFolder>();
@@ -83,7 +95,7 @@ export default class GraphController {
                 // Show unified Groups but NO Teams
                 if (item['@odata.type'] === '#microsoft.graph.group') {
                   if(!item.resourceProvisioningOptions || item.resourceProvisioningOptions.indexOf('Team') === -1) {
-                    folders.push({ id: item.id, name: item.displayName, driveID: item.id, parentFolder: null});
+                    folders.push({ id: item.id, name: item.displayName, driveID: item.id, parentFolder: null, webUrl: item.webUrl});
                   }                  
                 }
               });      
@@ -97,12 +109,13 @@ export default class GraphController {
   public getJoinedTeams(): Promise<IFolder[]> {
     return this.client
             .api('me/joinedTeams')
-            .version('v1.0')          
+            .version('v1.0')   
+            .select('id, displayName, webUrl')        
             .get()
             .then((response): any => {
               let folders: Array<IFolder> = new Array<IFolder>();
               response.value.forEach((item) => {                
-                folders.push({ id: item.id, name: item.displayName, driveID: item.id, parentFolder: null});                
+                folders.push({ id: item.id, name: item.displayName, driveID: item.id, parentFolder: null, webUrl: item.webUrl});                
               });      
               return folders;
             });
@@ -114,43 +127,47 @@ export default class GraphController {
   public getGroupDrives(group: IFolder): Promise<IFolder[]> {
     return this.client
             .api(`groups/${group.id}/drives`)
-            .version('v1.0')       
+            .version('v1.0')
+            .select('id, name, webUrl')       
             .get()
             .then((response): any => {
               let folders: Array<IFolder> = new Array<IFolder>();
               response.value.forEach((item) => {
-                folders.push({ id: item.id, name: item.name, driveID: item.id, parentFolder: group});
+                folders.push({ id: item.id, name: item.name, driveID: item.id, parentFolder: group, webUrl: item.webUrl});
               });      
               return folders;
             });
   }
 
-  public retrieveMimeMail(driveID: string, folderID: string, mail: IMail, clientCallback: (msg: string)=>void): Promise<string> {
+  public retrieveMimeMail = (driveID: string, folderID: string, mail: IMail, clientCallback: (msg: string)=>void): Promise<string> => {
     return this.client
             .api(`me/messages/${mail.id}/$value`)
             .version('v1.0')
             .responseType('TEXT')          
-            .get((err: any, response, rawResponse): any => {  
+            .get()
+            .then((response): any => {  
               if (response.length < (4 * 1024 * 1024))      // If Mail size bigger 4MB use resumable upload
               {
-                this.saveNormalMail(driveID, folderID, response, Utilities.createMailFileName(mail.subject), clientCallback);
+                return this.saveNormalMail(driveID, folderID, response, Utilities.createMailFileName(mail.subject), clientCallback);
               }             
               else {
-                this.saveBigMail(driveID, folderID, response, Utilities.createMailFileName(mail.subject), clientCallback);
+                return this.saveBigMail(driveID, folderID, response, Utilities.createMailFileName(mail.subject), clientCallback);
               }              
             });
   }
 
-  private saveNormalMail(driveID: string, folderID: string, mimeStream: string, fileName: string, clientCallback: (msg: string)=>void) {
+  private saveNormalMail(driveID: string, folderID: string, mimeStream: string, fileName: string, clientCallback: (msg: string)=>void): Promise<string> {
     const apiUrl = driveID !== folderID ? `drives/${driveID}/items/${folderID}:/${fileName}.eml:/content` : `drives/${driveID}/root:/${fileName}.eml:/content`;
-    this.client
+    return this.client
             .api(apiUrl)
             .put(mimeStream)
             .then((response) => {
               clientCallback('Success');
+              return 'Success';
             })
             .catch((error) => { 
               clientCallback('Error');
+              return null;
             });            
   }
 
@@ -161,32 +178,30 @@ export default class GraphController {
       }
     };
     const apiUrl = driveID !== folderID ? `drives/${driveID}/items/${folderID}:/${fileName}.eml:/createUploadSession` : `drives/${driveID}/root:/${fileName}.eml:/createUploadSession`;
-    this.client
+    return this.client
             .api(apiUrl)
             .post(JSON.stringify(sessionOptions))
             .then(async (response):Promise<any> => {
-              console.log(response.uploadUrl);
-              console.log(response.expirationDateTime);
               try {
                 const resp = await this.uploadMailSlices(mimeStream, response.uploadUrl);
-                console.log(resp);
                 clientCallback('Success');
+                return 'Success';
               }
               catch(err) {
-                console.log(err);
                 clientCallback('Error');
+                return null;
               }
             });          
   }
 
   private async uploadMailSlices(mimeStream: string, uploadUrl: string) {
     let minSize=0;
-    let maxSize=327680; // 320kb slices
+    let maxSize=5*327680; // 5*320kb slices --> MUST be a multiple of 320 KiB (327,680 bytes)
     while(mimeStream.length > minSize) {
       const fileSlice = mimeStream.slice(minSize, maxSize);
       const resp = await this.uploadMailSlice(uploadUrl, minSize, maxSize, mimeStream.length, fileSlice);
       minSize = maxSize;
-      maxSize += 327680;
+      maxSize += 5*327680;
       if (maxSize > mimeStream.length) {
         maxSize = mimeStream.length;
       }
@@ -210,12 +225,53 @@ export default class GraphController {
                   .put(fileSlice);
   }
 
-  private saveMailCallback(error: any, response: any, rawResponse?: any): void {
-    if (error !== null) {
-      console.log(error);
-    }
-    else {
-      console.log(response);
-    }
+  public saveMailMetadata(mailId: string, displayName: string, url: string, savedDate: Date) {
+    if (this.saveMetadata) {
+      const apiUrl = `/me/messages/${mailId}/extensions`;
+      const metadataBody = {
+        "@odata.type" : "microsoft.graph.openTypeExtension",
+        "extensionName" : this.metadataExtensionName,
+        "saveDisplayName" : displayName,
+        "saveUrl" : url,
+        "savedDate" : savedDate.toISOString()
+      };
+      this.client
+        .api(apiUrl)
+        .version('v1.0')
+        .post(JSON.stringify(metadataBody))
+        .then((response) => {
+          console.log(response);
+        });
+    }    
+  }
+
+  public retrieveMailMetadata(mailId: string): Promise<any> {
+    const apiUrl = `/me/messages/${mailId}`;
+    const expand = `Extensions($filter=id eq 'Microsoft.OutlookServices.OpenTypeExtension.${this.metadataExtensionName}')`;
+    return this.client
+            .api(apiUrl)
+            .version('v1.0')
+            .expand(expand)
+            .select('id,subject,extensions')
+            .get()
+            .then((response) => {
+              if (typeof response.extensions !== 'undefined' && response.extensions !== null) {
+                const metadata: IMailMetadata = {
+                  extensionName: response.extensions[0].extensionName,
+                  saveDisplayName: response.extensions[0].saveDisplayName,
+                  saveUrl: response.extensions[0].saveUrl,
+                  savedDate: new Date(response.extensions[0].savedDate)
+                };
+                return metadata; 
+              }
+              else {
+                return null;
+              }               
+            },
+            (error) => {
+              console.log(error);
+              return null;
+            });
+
   }
 }

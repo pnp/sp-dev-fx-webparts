@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d1ba5a4d-dea3-4eb2-a8c8-c652f58cbc39",
+  "alias": "PageHierarchyWebPart",
+  "componentType": "WebPart",
+  "supportsThemeVariants": true,
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "1edbd9a8-0bfb-4aa2-9afd-14b8c45dd489",
+      "group": {
+        "default": "Discover"
+      },
+      "title": {
+        "default": "Page Hierarchy"
+      },
+      "description": {
+        "default": "Breadcrumbs description"
+      },
+      "officeFabricIconFontName": "CompassNW",
+      "properties": {
+        "pagesToDisplay": "none"
+      }
+    }
+  ]
+}

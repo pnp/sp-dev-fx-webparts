@@ -33,3 +33,5 @@ obj
 *.scss.ts
 
 packages/
+samples/react-teams-send-notification/MyNotes.md
+samples/react-teams-send-notification/teams/teams.zip

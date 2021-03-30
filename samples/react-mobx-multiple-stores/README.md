@@ -1,4 +1,4 @@
-# Webpart with React and Mobx using multiple stores
+# Using Mobx with multiple stores
 
 ## Summary
 A sample webpart that uses the [Mobx](https://mobx.js.org/) library with multiple stores to keep track of the applications state.
@@ -10,9 +10,9 @@ A sample webpart that uses the [Mobx](https://mobx.js.org/) library with multipl
 
 ## Applies to
 
-* [SharePoint Framework](https://dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [SharePoint Framework Webpart Samples](https://github.com/SharePoint/sp-dev-fx-webparts)
-* [Office 365 developer tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

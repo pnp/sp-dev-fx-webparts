@@ -1,4 +1,4 @@
-## React Chart Control Samples
+# Chart Control Samples
 
 ## Summary
 
@@ -8,7 +8,7 @@ This sample contains several web parts that demonstrate how to use the ChartCont
 
 The web parts in this sample are not intended to be used in production -- they simply demonstrate how you would use all the capabilities of the ChartControl.
 
-> **NOTE:** If you are looking for a ready-to-use web part, please look into [joelfmrodrigues' cool react-modern-charts sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-modern-charts), which was built without the ChartControl.
+> **NOTE:** If you are looking for a ready-to-use web part, please look into [joelfmrodrigues' cool react-modern-charts sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-modern-charts), which was built without the `ChartControl`.
 
 ## About the samples
 
@@ -16,7 +16,7 @@ We created the ChartControl by popular request of [@pnp/spfx-controls-react](htt
 
 To keep things as easy as possible, the ChartControl supports (most) of the Chart.js functionality (yes, even the use of plugins!).
 
-The samples in this solution mostly use code found from the Chart.js code samples -- with little or no conversion. Whereever possible, we localized strings, moved colors and styles to the web part's SCSS, and used Office Fabric UI components instead of regular buttons.
+The samples in this solution mostly use code found from the Chart.js code samples -- with little or no conversion. Wherever possible, we localized strings, moved colors and styles to the web part's SCSS, and used Office Fabric UI components instead of regular buttons.
 
 Each sample retrieves data and passes it to the ChartControl using one of the 3 methods:
 
@@ -168,14 +168,23 @@ This sample also demonstrates how to use time series for the X axis.
 
 This sample shows how to use X and Y coordinate data elements in a scatter chart.
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![SPFx v1.7.1](https://img.shields.io/badge/SPFx-1.7.1-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11-green.svg)
+
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg)
+
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-red.svg)
+
+![Teams Incompatible](https://img.shields.io/badge/Teams-Incompatible-lightgrey.svg)
+
+![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
+
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -185,13 +194,17 @@ There are no pre-requisites to use these samples.
 
 Solution|Author(s)
 --------|---------
-react-chart-control | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @bernierh)
+react-chart-control | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), [@bernierh](https://twitter.com/bernierh))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|January, 2019|Initial release
+1.1|July 02, 2020|Upgraded to SPFx 1.10.0
+1.2|December 04, 2020|Upgraded to SPFx 1.11.0 and Fluent UI 7.x
+1.3|December 13, 2020|Upgraded dependencies
+1.4|February 25, 2021|Updated to latest version of PnP controls
 
 ## Disclaimer
 
@@ -205,7 +218,7 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
-* Insert the one of the webs part on a page
+* Insert one of the webs part on a page
 
 ## Features
 

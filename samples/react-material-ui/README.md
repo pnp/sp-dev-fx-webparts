@@ -1,4 +1,4 @@
-# React Material UI
+# Using Material UI
 
 ## Summary
 This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon.
@@ -11,8 +11,8 @@ This sample also includes RXJS DebounceTime, this feature allows you to wait for
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Solution

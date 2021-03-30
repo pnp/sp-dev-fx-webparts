@@ -16,7 +16,10 @@ extensions:
   scenarios:
   - Embed
 ---
-# React & Office Graph Web Part samples
+# DEPRECATED: React & Office Graph Web Part samples
+
+> ## DEPRECATED
+> This sample makes use of deprecated or otherwise outdated packages and will no longer work. See issue [#358](https://github.com/SharePoint/sp-dev-fx-webparts/issues/358) for more information.
 
 ## Summary
 
@@ -51,8 +54,8 @@ Sample SharePoint Framework Client-Side Web Part built using React showing docum
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -88,7 +91,7 @@ Version|Date|Comments
 - create a copy of the **./temp/workbench.html** file and change its extension to **.aspx**
 - in the contents of the **workbench.aspx** file change the URL of the **webAbsoluteUrl** property to the URL of your site, eg. `https://contoso.sharepoint.com/sites/my-team`
 - upload the **workbench.aspx** file to the Document Library in your site
-- navigate to the workbench page uploaded to your SharePoint site, ie. _https://contoso.sharepoint.com/sites/my-team/documents/workbench.aspx_
+- navigate to the workbench page uploaded to your SharePoint site, i.e. _https://contoso.sharepoint.com/sites/my-team/documents/workbench.aspx_
 
 ## Features
 

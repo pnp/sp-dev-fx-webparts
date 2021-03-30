@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "questions-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/questions/QuestionsWebPart.js",
+          "manifest": "./src/webparts/questions/QuestionsWebPart.manifest.json"
+        }
+      ]
+    },
+    "questions-list-manager": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/questionsListManager/QuestionsListManagerApplicationCustomizer.js",
+          "manifest": "./src/extensions/questionsListManager/QuestionsListManagerApplicationCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+  },
+  "localizedResources": {
+    "QuestionsWebPartStrings": "lib/webparts/questions/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

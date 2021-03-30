@@ -1,8 +1,12 @@
 {
   "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": false,
+    "environment": "spo",
+    "version": "1.11.0",
     "libraryName": "react-themes",
-    "framework": "react",
-    "version": "1.0.2",
-    "libraryId": "46489282-ffa9-4f00-939c-6fff916b182f"
+    "libraryId": "040f676c-4003-4436-adfb-97da632413c3",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
   }
 }

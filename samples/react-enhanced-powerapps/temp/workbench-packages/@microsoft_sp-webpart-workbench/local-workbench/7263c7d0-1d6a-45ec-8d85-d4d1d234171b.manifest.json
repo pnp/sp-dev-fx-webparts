@@ -1,0 +1,25 @@
+{
+  "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+  "alias": "SPCoreLibrary",
+  "componentType": "Library",
+  "version": "1.11.0",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "sp-core-library",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-core-library": {
+        "type": "localizedPath",
+        "defaultPath": "dist/sp-core-library_en-us.js"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a"
+      }
+    }
+  },
+  "isInternal": true
+}

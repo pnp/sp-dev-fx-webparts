@@ -1,7 +1,7 @@
 import { ServiceKey, ServiceScope } from '@microsoft/sp-core-library';
 import { PageContext } from '@microsoft/sp-page-context';
 import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
-import * as pnp from "sp-pnp-js";
+import { sp } from '@pnp/sp/presets/all';
 
 export interface IImageGalleryService {
     getGalleryImages: (listName: string, rowLimit: number) => Promise<any[]>;
@@ -9,7 +9,7 @@ export interface IImageGalleryService {
 
 export class ImageGalleryService implements IImageGalleryService {
     public static readonly serviceKey: ServiceKey<IImageGalleryService> = ServiceKey.create<IImageGalleryService>('ImageGallery:ImageGalleryService', ImageGalleryService);
-    private _pageContext: PageContext;    
+    private _pageContext: PageContext;
 
     constructor(serviceScope: ServiceScope) {
         serviceScope.whenFinished(() => {
@@ -17,38 +17,18 @@ export class ImageGalleryService implements IImageGalleryService {
         });
     }
 
-    public getGalleryImages(listName: string, rowLimit: number): Promise<any[]> {
-        const xml = `<View>
-                        <ViewFields>
-                            <FieldRef Name='ID' />
-                            <FieldRef Name='Title' />
-                            <FieldRef Name='ImageLink' />
-                            <FieldRef Name='NavigationURL' />
-                        </ViewFields>
-                        <Query>
-                            <OrderBy>
-                                <FieldRef Name='SortOrder' />
-                            </OrderBy>
-                        </Query>
-                        <RowLimit>` + rowLimit + `</RowLimit>
-                    </View>`;
+    public async getGalleryImages(listName: string, rowLimit: number): Promise<any[]> {
+        try {
+            let items: any = await sp.web.lists.getByTitle(listName).items
+                .select("Id", "Title", "ImageLink", "NavigationURL")
+                .orderBy("SortOrder")
+                .top(rowLimit)
+                .get();
 
-        const q: any = {
-            ViewXml: xml,
-        };
-
-        return this._ensureList(listName).then((list) => {
-            if (list) {
-                return pnp.sp.web.lists.getByTitle(listName).getItemsByCAMLQuery(q).then((items: any[]) => {
-                    return Promise.resolve(items);
-                });
-            }
-        });
-    }
-
-    private _ensureList(listName: string): Promise<pnp.List> {
-        if (listName) {
-            return pnp.sp.web.lists.ensure(listName).then((listEnsureResult) => Promise.resolve(listEnsureResult.list));
+            return Promise.resolve(items);
+        }
+        catch (error) {
+            return Promise.reject(error);
         }
     }
 }

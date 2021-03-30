@@ -1,0 +1,26 @@
+name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+resources:
+- repo: self
+
+trigger:
+  branches:
+    include:
+    - master
+    - develop
+
+stages:
+- stage: build
+  displayName: build
+  jobs:
+    - template: ./azure-pipelines-build-template.yml
+      parameters:
+        name: 'buildsolution'
+- stage: 'deployqa'
+  # uncomment if you want deployments to occur only for a specific branch
+  #condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+  jobs:
+    - template: ./azure-pipelines-deploy-template.yml
+      parameters:
+        job_name: deploy_solution
+        target_environment: 'qa'
+        variable_group_name: qa_configuration

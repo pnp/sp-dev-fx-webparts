@@ -1,0 +1,29 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '../Shared.module.scss';
+
+.defaultcontainer {
+    margin: 0px auto;
+    max-width: 1284px;
+    /* these are removed by global override below when on a canvas*/
+    //padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 20px;
+
+    .webpartTitle {
+      font-size: $ms-font-size-20;
+      font-weight: 600;
+      padding-bottom: 0px;
+      margin-bottom: 16px;
+    }
+}
+
+/* Override to remove padding when this is inside a canvas */
+:global {
+    div.SPCanvas {
+        :local(.defaultcontainer) {
+            //padding-left: 5px;
+            padding-right: 0px;
+            padding-bottom: 0px;
+        }
+    }
+}

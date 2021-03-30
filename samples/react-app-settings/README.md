@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 8/1/2017 12:00:00 AM
 ---
-# SPFx React app settings webpart #
+# App Settings
 
 ## Summary
 
@@ -31,13 +31,13 @@ Azure DevOps pipelines configurations are included to demonstrate how the AppSet
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 Developer Tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 Developer Tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online.
-- SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
 ## Solution
 
@@ -75,5 +75,3 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - The use of app settings and passing the app settings to React components.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-app-settings" />
-
-

@@ -1,0 +1,59 @@
+@import "./colors.module";
+[data-theme="dark"] {
+    :global {
+        .ms-Fabric {
+            color: $dark-primaryText;
+        }
+        .ms-Button-icon {
+            color: $dark-primaryText;
+        }
+
+        .ms-Overlay {
+            background-color: $dark-overlay;
+        }
+
+        .ms-Panel-main {
+            background-color: $dark-surfaceBackground;
+            border-left-color: $dark-panelBorder;
+            border-right-color: $dark-panelBorder;
+            .ms-Panel-headerText {
+                color: $dark-primaryText;
+            }
+        }
+
+        .spPropertyPaneContainer {
+            background-color: $dark-white;
+            [class^="propertyPane_"] {
+                background-color: $dark-white;
+                border-left-color: $dark-panelBorder;
+                [class^="propertyPanePageTitle_"],
+                [class^="propertyPanePageDescription_"],
+                [class^="propertyPaneGroupHeaderNoAccordion_"] {
+                    color: $dark-primaryText;
+                }
+                .ms-Button--icon {
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        .ms-Label {
+            color: $dark-primaryText;
+        }
+        .ms-TextField {
+            .ms-TextField-fieldGroup {
+                background-color: $dark-inputBackground;
+                color: $dark-primaryText;
+                border-color: $dark-inputBorder;
+                .ms-TextField-field {
+                    color: $dark-primaryText;
+                }
+                &:hover {
+                    border-color: $dark-inputBorderHovered;
+                }
+            }
+        }
+    }
+}

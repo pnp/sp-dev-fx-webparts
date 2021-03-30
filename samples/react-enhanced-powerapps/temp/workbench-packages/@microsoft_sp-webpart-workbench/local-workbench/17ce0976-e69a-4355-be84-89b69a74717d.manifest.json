@@ -1,0 +1,31 @@
+{
+  "id": "17ce0976-e69a-4355-be84-89b69a74717d",
+  "alias": "FabricStyling",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "manifestVersion": 2,
+  "loaderConfig": {
+    "entryModuleId": "uifabric-styling-bundle",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "uifabric-styling-bundle": {
+        "type": "path",
+        "path": "dist/uifabric-styling-bundle.js"
+      },
+      "react": {
+        "type": "component",
+        "version": "16.8.5",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "failoverPath": "node_modules/react/dist/react.js"
+      },
+      "@microsoft/load-themed-styles": {
+        "type": "component",
+        "version": "0.1.2",
+        "id": "229b8d08-79f3-438b-8c21-4613fc877abd"
+      }
+    }
+  },
+  "isInternal": true
+}

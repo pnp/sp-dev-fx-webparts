@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Questions and Answers",
+    "id": "6feb4c2f-341b-499c-998c-9b2ebd95435c",
+    "version": "2.0.1.15",
+    "skipFeatureDeployment": false,
+    "iconPath": "images/Feedback_Icon.png",
+    "includeClientSideAssets": true,
+    "features": [
+      {
+        "id": "2088baa5-aab6-43ec-907b-147a786c2b36",
+        "title": "Questions Assets",
+        "description": "Provides assets to support Questions webpart. This includes schema elements such as content types, site columns and list instance as well as the Questions application page.",
+        "version": "2.0.1.15",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema.xml",
+            "QuestionsSitePage.aspx",
+            "ConversationsSitePage.aspx"
+          ]
+        },
+        "componentIds": [
+          "761fbf9d-6ef9-4099-8488-02d5e2826f36"
+        ]
+      },
+      {
+        "id": "bf9284ec-1ca1-43bc-b277-daf358bdf250",
+        "title": "Question List Manager",
+        "description": "Enables the Question List Manager Application Extension",
+        "version": "2.0.1.15",
+        "assets": {
+          "elementManifests": [
+            "elements2.xml",
+            "ClientSideInstance.xml"
+          ]
+        },
+        "componentIds": [
+          "aefe4f31-4914-4dcb-be8c-f24bf52f7719"
+        ]
+      }
+    ],
+    "developer": {
+      "name": "Bo George",
+      "websiteUrl": "https://threewill.com/team/bo-george/",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/react-questions-and-answers.sppkg"
+  }
+}

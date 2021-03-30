@@ -1,0 +1,15 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.peopleSearchWebPart {
+  min-height: 35px;
+
+  // Needed to avoid overlay overflow
+  position: relative;
+}
+
+.overlay {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

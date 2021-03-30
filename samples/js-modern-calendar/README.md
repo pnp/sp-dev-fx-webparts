@@ -14,19 +14,27 @@ extensions:
 # Modern Calendar
 
 ## Summary
-This is a modern webpart built on the GA version of the [SharePoint Framework](https://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview) demonstrating how to build a custom web part with a calendar capabilities in it.  
+
+This is a modern web part built on the GA version of the [SharePoint Framework](https://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview) demonstrating how to build a custom web part with a calendar capabilities in it.  
 
 ![SS1](https://cloud.githubusercontent.com/assets/13068139/23584809/14c4333e-0121-11e7-9bf1-3117651222d3.png)
 ![SS2](https://cloud.githubusercontent.com/assets/13068139/23584808/14c3ec26-0121-11e7-8be8-65fbcca32b62.png)
 ![SS3](https://cloud.githubusercontent.com/assets/13068139/23584807/14b88f34-0121-11e7-8c91-56ecff9343e1.png)
 
-## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/version-1.6.0-green.svg)
+
+## Compatibility
+
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
 
 ## Applies to
 
 * [SharePoint Framework](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
@@ -37,14 +45,19 @@ None
 Solution|Author(s)
 --------|---------
 js-modern-calendar | Jeremy Coleman (MCP, PC Professional, Inc.)
+js-modern-calendar | Nanddeep Nachan ([@NanddeepNachan](twitter.com/NanddeepNachan))
+js-modern-calendar | Ravi Chandra ([Ravikadri](https://github.com/Ravikadri))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0.0.0|February 11, 2017|Initial release
+1.0.0.1|June 05, 2020|Updated the external CDN references to public CDN references
+1.0.2.0|February 9, 2021|Upgraded to SPFx 1.11 and fixed issues with missing dependencies
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

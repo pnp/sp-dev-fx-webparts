@@ -2,6 +2,131 @@
 
 .reactMyGroups {
 
+  .compactContainer {
+    margin: 0px 5px 5px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .compactA {
+    outline: 0;
+    text-decoration: none;
+    display: block;
+    margin-top: 4px;
+    width: 251.333px;
+    border: 1px solid transparent;
+    margin-bottom: 8px;
+  }
+
+  .compactWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .compactBanner {
+    margin-right: 12px;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .compactDetails {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .compactTitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 6px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgb(50,49,48);
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+
+  .cardContainer{
+    outline: transparent;
+    position: relative;
+  }
+
+  .siteCard {
+    height: 200px;
+    max-width: 286px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    outline: transparent;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.133) 0px 1.6px 3.6px 0px, rgba(0, 0, 0, 0.11) 0px 0.3px 0.9px 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    border-radius: 2px;
+    overflow: hidden;
+    border-color: rgb(237, 235, 233);
+  }
+
+  .cardBanner {
+    position: relative;
+    height: 144px;
+    padding-top: 40px;
+    width: 100%;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+    margin-top: 28px;
+    font-weight: 600;
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    box-sizing: content-box;
+    max-height: 2.7em;
+    overflow: hidden;
+    text-align: left;
+    padding: 0 12px;
+    color: rgb(50, 49, 48);
+  }
+
+  .topBanner {
+    position: absolute;
+    top: 0;
+    height: 40px;
+    width: 100%;;
+  }
+
+  .bannerImg {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    height: 48px;
+    width: 48px;
+    box-sizing: border-box;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    border-color: rgb(255,255,255);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .docTile {
+    background-color: transparent;
+    outline: transparent;
+    position: relative;
+  }
+
   a {
     text-decoration: none;
   }
@@ -28,8 +153,16 @@
   }
 
   .title {
-    @include ms-font-xl;
-    @include ms-fontColor-white;
+    text-align: left;
+    color: rgb(50, 49, 48);
+    white-space: pre-wrap;
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 32px;
+    margin-bottom: 18px;
+    flex-grow: 1;
   }
 
   .subTitle {

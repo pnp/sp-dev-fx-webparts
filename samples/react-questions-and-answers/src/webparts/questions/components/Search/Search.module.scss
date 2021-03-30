@@ -1,0 +1,47 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '../Shared.module.scss';
+
+.search {
+
+  .container {
+    margin: 0px auto;
+  }
+
+  .searchContainer {
+    margin: 0px auto;
+  }
+
+  .userActions {
+    text-align: left;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .askAQuestionButton {
+    flex-grow: 0;
+  }
+
+  .viewAll {
+    float: right;
+    flex-grow: 0;
+    margin-left: auto;
+  }
+
+  .showQuestionsDropDown {
+    min-width: 180px;
+    flex-grow: 0;
+    margin-left: auto;
+  }
+
+  .searchBoxContainer {
+    flex-grow: 1;
+    margin-bottom: 10px;
+    background-color: $ms-color-white;
+  }
+
+  .pagingContainer {
+    margin: auto;
+    text-align: center;
+  }
+}

@@ -13,8 +13,7 @@ build.configureWebpack.mergeConfig({
             openAnalyzer: false,
             analyzerMode: 'static',
             reportFilename: path.join(dropPath, `${lastDirName}.stats.html`),
-            generateStatsFile: true,
-            statsFilename: path.join(dropPath, `${lastDirName}.stats.json`),
+            generateStatsFile: false,
             logLevel: 'error'
         }));
 

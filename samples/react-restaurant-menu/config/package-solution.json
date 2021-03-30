@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-restaurante-menu-app",
+    "id": "e1632e6a-caf2-4dba-9d88-32783876aa2b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "João Mendes",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "m365pnp"
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/react-restaurant-menu.sppkg"
+  }
+}

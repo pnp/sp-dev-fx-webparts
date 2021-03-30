@@ -1,114 +1,119 @@
 import { css } from '@uifabric/utilities/lib/css';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import * as React from 'react';
-// import * as slick from 'slick-carousel';
 import Slider from 'react-slick';
-import { IFilmstripLayoutProps, IFilmstripLayoutState } from "./FilmstripLayout.types";
-
-
 import { SPComponentLoader } from '@microsoft/sp-loader';
 import styles from "./FilmstripLayout.module.scss";
+import { useRef } from 'react';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
+
+function useBreakpoints(currentWidth: number, breakpoints: number[]) {
+  return breakpoints.map(breakpoint => currentWidth < breakpoint);
+}
 
 /**
  * Filmstrip layout
  * Presents the child compoments as a slick slide
  */
-export class FilmstripLayout extends React.Component<
-  IFilmstripLayoutProps,
-  IFilmstripLayoutState
-  > {
-  // the slick slider used in normal views
-  private _slider: Slider;
+export const FilmstripLayout = (props: { children: any; clientWidth: number; themeVariant?: IReadonlyTheme, ariaLabel?: string; }) => {
+  SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+  SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
 
-  /**
-   *
-   */
-  constructor(props: IFilmstripLayoutProps) {
-    super(props);
+  let topElem: React.MutableRefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+  let _slider: React.MutableRefObject<Slider> = useRef<Slider>(null);
 
-    SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css');
-    SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css');
+  const [isSmall, isMedium] = useBreakpoints(props.clientWidth, [696, 928]);
+
+  let numSlides: number = 3;
+  if (isSmall) {
+    numSlides = 2;
+  } else if (isMedium) {
+    numSlides = 3;
+  } else {
+    numSlides = 4;
   }
-  /**
-   * Renders a slick switch, a slide for each child, and next/previous arrows
-   */
-  public render(): React.ReactElement<IFilmstripLayoutProps> {
-    // slick seems to have an issue with having "infinite" mode set to true and having less items than the number of slides per page
-    // set infinite to true only if there are more than 3 children
-    var isInfinite: boolean = React.Children.count(this.props.children) > 3;
-    var settings: any = {
-      accessibility: true,
-      arrows: false,
-      autoplaySpeed: 5000,
-      dots: true,
-      infinite: isInfinite,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      speed: 500,
-      centerPadding: styles.centerPadding,
-      pauseOnHover: true,
-      variableWidth: false,
-      useCSS: true,
-      rows: 1,
-      respondTo: "slider",
-      responsive: [
-        {
-          breakpoint: 499,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        },
-        {
-          breakpoint: 731,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 963,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3
-          }
-        },
-        {
-          breakpoint: 1028,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4
-          }
-        }
-      ]
-    };
 
-    return (
+  var isInfinite: boolean = React.Children.count(props.children) > numSlides;
+  var settings: any = {
+    accessibility: true,
+    arrows: false,
+    autoplaySpeed: 5000,
+    dots: true,
+    customPaging: (i: number) => {
+      return (
+        <a>
+          <div role="button" className={styles.carouselDotsContainer} aria-label={`Carousel Dot ${i}`} data-is-focusable={true} tabIndex={0}>
+            <span className={styles.carouselDot} tabIndex={-1}></span>
+          </div>
+        </a>
+      );
+    },
+    infinite: isInfinite,
+    slidesToShow: numSlides,
+    slidesToScroll: numSlides,
+    speed: 500,
+    centerPadding: styles.centerPadding,
+    pauseOnHover: true,
+    variableWidth: false,
+    useCSS: true,
+    rows: 1,
+    respondTo: "slider",
+  };
+
+  console.log("Theme", props.themeVariant);
+
+  return (
+    <>
+      {/*
+      KLUDGE:
+      This is a cheaty way to inject styles from the theme variant when the component does not support theme variant customizations.
+      We can do this without too much nastiness because this component is added only once per web part
+      ... but I still wish there was a better way
+      */}
+      {props.themeVariant && <style>{`
+            .${styles.carouselDot} {
+              background-color: ${props.themeVariant.palette.black}!important;
+              border-color: ${props.themeVariant.palette.black}!important;
+            }
+
+            .slick-active .${styles.carouselDot} {
+              background-color: ${props.themeVariant.palette.themeDark}!important;
+              border-color: ${props.themeVariant.palette.themeDark}!important;
+            }
+
+            .${styles.filmstripLayout} .ms-DocumentCard--actionable:hover {
+              border-color: ${props.themeVariant.semanticColors.variantBorderHovered}!important;
+            }
+            `}
+      </style>
+      }
       <div>
-        <div className={css(styles.filmstripLayout, styles.filmStrip)} aria-label={this.props.ariaLabel}>
-          <Slider ref={c => (this._slider = c)} {...settings}>
-            {this.props.children}
+        <div className={css(styles.filmstripLayout, styles.filmStrip)} aria-label={props.ariaLabel} ref={topElem}>
+          <Slider ref={_slider} {...settings}>
+            {props.children}
           </Slider>
           <div
-            className={css(styles.indexButtonContainer, styles.sliderButtons, styles.sliderButtonLeft)}
-            onClick={() => this._slider.slickPrev()}
+            className={css(styles.indexButtonContainer, styles.sliderButtons)}
+            style={{ left: "10px" }}
+            onClick={() => _slider.current.slickPrev()}
           >
             <IconButton
               className={css(styles.indexButton, styles.leftPositioned)}
-              iconProps={{ iconName: "ChevronLeft" }}
+              iconProps={{ iconName: "ChevronLeft", styles: { root: { fontSize: '28px', fontWeight: '400' } } }}
             />
           </div>
           <div
-            className={css(styles.indexButtonContainer, styles.sliderButtons, styles.sliderButtonRight)}
-            onClick={() => this._slider.slickNext()}
+            className={css(styles.indexButtonContainer, styles.sliderButtons)}
+            style={{ right: "10px" }}
+            onClick={() => _slider.current.slickNext()}
           >
             <IconButton
               className={css(styles.indexButton, styles.rightPositioned)}
-              iconProps={{ iconName: "ChevronRight" }}
+              iconProps={{ iconName: "ChevronRight", styles: { root: { fontSize: '28px', fontWeight: '400' } } }}
             />
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </>
+  );
+};

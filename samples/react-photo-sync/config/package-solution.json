@@ -1,0 +1,31 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "SPUPS Photo Sync",
+        "title": "SPUPS Photo Sync",
+        "id": "1feb523c-4edf-4b85-a8d3-1458ab23fae9",
+        "version": "1.0.0.0",
+        "includeClientSideAssets": true,
+        "isDomainIsolated": false,
+        "webApiPermissionRequests": [
+            {
+                "resource": "Microsoft Graph",
+                "scope": "User.Read.All"
+            },
+            {
+                "resource": "Microsoft Graph",
+                "scope": "Directory.Read.All"
+            }
+        ],
+        "developer": {
+            "name": "Sudharsan K.",
+            "mpnId": "m365pnp",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "websiteUrl": "https://spknowledge.com/"
+        }
+    },
+    "paths": {
+        "zippedPackage": "solution/react-photo-sync.sppkg"
+    }
+}

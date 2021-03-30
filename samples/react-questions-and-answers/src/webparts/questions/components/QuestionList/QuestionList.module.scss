@@ -1,0 +1,97 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.questionList {
+
+    .container {
+        margin: 0px auto;
+    }
+
+    .questionOuterContainer {
+        margin: 0px auto;
+    }
+
+    .questionInnerContainer {
+        display: flex;
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        border: 1px solid;
+        border-color: $ms-color-neutralLight;
+        transition: .2s;
+    }
+
+    .questionInnerContainer:hover {
+        border-color: $ms-color-neutralPrimary;
+        transform: scale(1.02);
+        cursor: pointer;
+    }
+
+    .questionBody {
+        flex-grow: 1;
+        overflow: hidden;
+        padding-left: 20px;
+    }
+    .questionDetails {
+        display: block;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .questionAuthorDetails {
+        @include ms-font-s;
+        padding-top: 10px;
+        @include ms-fontWeight-regular;
+    }
+    .questionAuthor {
+        @include ms-fontWeight-semibold;
+    }
+
+    .questionCategoryDetails {
+      @include ms-font-s;
+      @include ms-fontWeight-regular;
+      padding-top: 10px;
+      padding-bottom: 5px;
+    }
+    .questionCategory {
+        @include ms-fontWeight-semibold;
+        padding: 3px;
+        border-radius: 4px;
+        font-style: italic;
+    }
+
+    .questionTitle {
+        @include ms-font-l;
+        @include ms-fontWeight-regular;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-bottom: 5px;
+        text-overflow: ellipsis;
+    }
+
+    .questionIconContainer {
+        flex-shrink: 0;
+        padding: 5px 5px 5px 0px;
+    }
+
+    .questionUnanswered {
+        font-size: 50px;
+        color:$ms-color-themePrimary;
+    }
+
+    .questionAnswered {
+        font-size: 50px;
+        color:$ms-color-themePrimary;
+    }
+    .pagingContainer {
+        margin: auto;
+        text-align: center;
+      }
+
+      .postDate {
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+}

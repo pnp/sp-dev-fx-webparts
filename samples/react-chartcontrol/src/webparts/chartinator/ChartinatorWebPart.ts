@@ -5,26 +5,13 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 
 // Stuff for out-of-the-box property panes
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneChoiceGroup,
-  PropertyPaneLabel,
-  PropertyPaneDropdown,
-  PropertyPaneToggle,
-  PropertyPaneTextField,
-  IPropertyPaneChoiceGroupOption,
-  PropertyPaneSlider,
-  IPropertyPaneGroup,
-  PropertyPaneButton,
-  IPropertyPaneDropdownOption,
-  PropertyPaneHorizontalRule
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneChoiceGroup, PropertyPaneLabel, PropertyPaneDropdown, PropertyPaneToggle, PropertyPaneTextField, IPropertyPaneChoiceGroupOption, PropertyPaneSlider, IPropertyPaneGroup, PropertyPaneButton, IPropertyPaneDropdownOption, PropertyPaneHorizontalRule } from "@microsoft/sp-property-pane";
 
 // Needed to create drop down choices
 import {
   IDropdownOption
-} from 'office-ui-fabric-react/lib/components/Dropdown';
+} from '@fluentui/react/lib/Dropdown';
 
 // Needed for charts
 import { ChartPalette, PaletteGenerator, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
@@ -38,7 +25,7 @@ import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHe
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
 
 // Component that actually renders the web part content
-import Chartinator from './components/Chartinator';
+import { Chartinator } from './components/Chartinator';
 import { IChartinatorProps, DataSourceType } from './components/Chartinator.types';
 
 // Needed to generate unique data row ids
@@ -149,13 +136,6 @@ export default class ChartinatorWebPart extends BaseClientSideWebPart<IChartinat
    */
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  /**
-   * Returns the data version
-   */
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   /**

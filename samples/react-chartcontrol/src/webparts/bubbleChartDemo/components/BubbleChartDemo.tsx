@@ -2,19 +2,19 @@ import * as React from 'react';
 import styles from './BubbleChartDemo.module.scss';
 import { IBubbleChartDemoProps } from './IBubbleChartDemo.types';
 import * as strings from 'BubbleChartDemoWebPartStrings';
-import * as Color from 'color';
 
 // used to add a chart control
 import { ChartControl, ChartType, PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartPoint, ChartData } from 'chart.js';
 
 // used to retrieve (fake) data from a (fake) service
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 // used to render the toolbar above the chart
 import {
   CommandBar
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 /**
  * Define the chart colors:
@@ -37,7 +37,7 @@ const DATA_COUNT: number = 16;
 const DATSET_LENGTH: number = 2;
 const MAX_BORDERWIDTH: number = 8;
 
-export default class BubbleChartDemo extends React.Component<IBubbleChartDemoProps, {}> {
+export  class BubbleChartDemo extends React.Component<IBubbleChartDemoProps, {}> {
   /**
  * The chart element
  */
@@ -108,7 +108,6 @@ export default class BubbleChartDemo extends React.Component<IBubbleChartDemoPro
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'randomizeData',
@@ -154,13 +153,13 @@ export default class BubbleChartDemo extends React.Component<IBubbleChartDemoPro
    * Loads data from a service.
    * This is where you would replace for your own code
    */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, reject) => {
       const dataProvider: IChartDataProvider = new MockChartDataProvider();
       dataProvider
         .getMultiBubbleArrays(DATSET_LENGTH, DATA_COUNT)  // we only need 5 data elements for this demo
-        .then((bubbleArrays: Array<Chart.ChartPoint[]>) => {
-          const data: Chart.ChartData = {
+        .then((bubbleArrays: Array<ChartPoint[]>) => {
+          const data: ChartData = {
             datasets: [{
               label: strings.DataSet1Label,
               backgroundColor: chartBackgroundColors[0],
@@ -227,8 +226,8 @@ export default class BubbleChartDemo extends React.Component<IBubbleChartDemoPro
     this._chartElem.update();
   }
 
-  private _generateData(): Chart.ChartPoint[] {
-    const data: Chart.ChartPoint[] = [];
+  private _generateData(): ChartPoint[] {
+    const data: ChartPoint[] = [];
 
     for (let i = 0; i < DATA_COUNT; ++i) {
       data.push({

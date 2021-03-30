@@ -5,6 +5,7 @@ import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import Breadcrumb from './controls/Breadcrumb';
 import Folder from './Folder';
 import styles from './Groups.module.scss';
+import * as strings from 'Outlook2SharePointWebPartStrings';
 import { ITeamsProps } from './ITeamsProps';
 import { ITeamsState } from './ITeamsState';
 import { IFolder } from '../../../model/IFolder';
@@ -16,6 +17,7 @@ export default class Teams extends React.Component<ITeamsProps, ITeamsState> {
       folders: [],
       grandParentFolder: null,
       parentFolder: null,
+      selectedTeamName: '',
       showSpinner: false
     };    
   }
@@ -50,7 +52,7 @@ export default class Teams extends React.Component<ITeamsProps, ITeamsState> {
         <div>
           <PrimaryButton
               className={styles.saveBtn}         
-              text="Save here"
+              text={strings.SaveLabel}
               onClick={this.saveMailTo}
               disabled={this.state.parentFolder === null}
               allowDisabledFocus={true}
@@ -58,7 +60,7 @@ export default class Teams extends React.Component<ITeamsProps, ITeamsState> {
           { this.state.showSpinner && (
               <div className={styles.spinnerContainer}>
                 <Overlay >
-                  <Spinner size={ SpinnerSize.large } label='Processing request' />
+                  <Spinner size={ SpinnerSize.large } label={strings.SpinnerLabel} />
                 </Overlay>
               </div>
             ) }
@@ -77,20 +79,15 @@ export default class Teams extends React.Component<ITeamsProps, ITeamsState> {
     });
   }
 
-  private getGroupDrives = (group: IFolder) => {
-    let nextParent: IFolder = null;
-    this.state.folders.forEach((fldr) => {
-      if (fldr.id === group.id) {
-        nextParent = fldr;
-      }
-    });
+  private getGroupDrives = (group: IFolder) => {    
     this.props.graphController.getGroupDrives(group).then((folders) => {
       if (folders.length > 0) {
         this.setState((prevState: ITeamsState, props: ITeamsProps) => {
           return {
             folders: folders,
             grandParentFolder: null,
-            parentFolder: group
+            parentFolder: group,
+            selectedTeamName: group.name
           };
         });
       }
@@ -122,7 +119,6 @@ export default class Teams extends React.Component<ITeamsProps, ITeamsState> {
     }
   }
 
-  
   private showRoot = () => {
     this.getTeams();
   }
@@ -142,7 +138,11 @@ export default class Teams extends React.Component<ITeamsProps, ITeamsState> {
         showSpinner: true
       };
     });
-    this.props.graphController.retrieveMimeMail(this.state.parentFolder.driveID, this.state.parentFolder.id, this.props.mail, this.saveMailCallback);    
+    this.props.graphController.retrieveMimeMail(this.state.parentFolder.driveID, this.state.parentFolder.id, this.props.mail, this.saveMailCallback)
+      .then((response: string) => {
+        const saveLocationDisplayName = `${this.state.selectedTeamName} ...> ${this.state.grandParentFolder.name} > ${this.state.parentFolder.name}`;
+        this.props.graphController.saveMailMetadata(this.props.mail.id, saveLocationDisplayName, this.state.parentFolder.webUrl, new Date());
+      }); 
   }
 
   private saveMailCallback = (message: string) => {
@@ -152,10 +152,10 @@ export default class Teams extends React.Component<ITeamsProps, ITeamsState> {
       };
     });
     if (message.indexOf('Success') > -1) {
-      this.props.successCallback(message);
+      this.props.successCallback(strings.SuccessMessage);
     }
     else {
-      this.props.errorCallback(message);
+      this.props.errorCallback(strings.ErrorMessage);
     }
   }
 }

@@ -1,4 +1,4 @@
-## react-item-history
+# Item History
 
 ## Summary
 This listview command is used to show the past versions of the selected list item in a grid.
@@ -10,8 +10,8 @@ This listview command is used to show the past versions of the selected list ite
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
@@ -44,13 +44,14 @@ Version|Date|Comments
 
 ## Features
 This listview command is used to show the past versions of the selected list item in a grid.
-Add-PnPCustomAction `
-    -Name 'Item History(GRID)' `
-    -Title 'Item History(GRID)' `
-    -Location 'ClientSideExtension.ListViewCommandSet.CommandBar' `
-    -ClientSideComponentId "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed"  `
-    -RegistrationType List `
-    -RegistrationId "101" `
+```bash
+Add-PnPCustomAction
+    -Name 'Item History(GRID)' 
+    -Title 'Item History(GRID)' 
+    -Location 'ClientSideExtension.ListViewCommandSet.CommandBar' 
+    -ClientSideComponentId "f6b9bab2-00a1-4ff1-8bc2-04fea3d64fed"  
+    -RegistrationType List 
+    -RegistrationId "101" 
     -ClientSideComponentProperties "{}"
-
+```
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-item-history" />

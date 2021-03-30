@@ -12,7 +12,7 @@ import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartContr
  * this sample as simple as possible.
  * @see https://www.chartjs.org/docs/latest/ for the original sample code.
  */
-export default class BarChartStatic extends React.Component<IBarChartStaticProps, {}> {
+export  class BarChartStatic extends React.Component<IBarChartStaticProps, {}> {
   public render(): React.ReactElement<IBarChartStaticProps> {
     return (
       <div className={styles.barChartStatic}>

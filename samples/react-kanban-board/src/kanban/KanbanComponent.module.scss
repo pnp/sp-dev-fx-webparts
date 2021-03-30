@@ -1,0 +1,15 @@
+.kanbanBoard {
+    display: flex;
+    width: 100%;
+    .bucketwrapper {
+        border: 1px solid transparent;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        
+      //  min-width: 220px;
+    }
+    .dragover {
+        border-color: "[theme: themePrimary, default: #0078d7]";
+    }
+}

@@ -15,13 +15,13 @@ extensions:
   - react
   createdDate: 12/1/2017 12:00:00 AM
 ---
-# React Skype Status WebPart
+# Skype Status
 
 ## Summary
 This sample demonstrates how to use the *UCWA JS SDK* for skype with the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the [documentation](https://msdn.microsoft.com/en-us/skype/websdk/docs/generalreference?f=255&MSPPError=-2147217396)  
 It allows leverages the *Office UI Fabric* Persona card to display comprehensive information about the user.
 
-Allows you to properly display and subscribe to change of users' availibility.  
+Allows you to properly display and subscribe to change of users' availability.  
 See the demo:  
 ![demo](./images/demo.gif)
 
@@ -30,8 +30,8 @@ See the demo:
 
 ## Applies to
 
-* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -45,7 +45,7 @@ react-skype-status|[Vincent Biret](https://github.com/baywet)
 Version|Date|Comments
 -------|----|--------
 1.4|March 27th, 2019|Upgrade to SPFx 1.8.0
-1.3|November 18th, 2018|Upgrade to SPFX 1.7.0
+1.3|November 18th, 2018|Upgrade to SPFx 1.7.0
 1.2|July 4th, 2018|Fixed a bug when subscribing to the current user's status
 1.1|June 25th, 2018|Upgrade to 1.5
 1.0|December 1, 2017|Initial release
@@ -58,7 +58,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 ### Authentication
 Because the Skype API's are secured, you first need to register an Azure Active Directory application.  
-To do that go to `portal.azure.com` and sign in as your tenant adminstrator.  
+To do that go to `portal.azure.com` and sign in as your tenant administrator.  
 ![azure active directory](./images/1.PNG)  
 Click on `Azure Active Directory`.  
 ![app registrations](./images/2.PNG)  

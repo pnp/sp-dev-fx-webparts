@@ -27,8 +27,8 @@ This web part allows you to add custom CSS on a page to enhance list formatting.
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -172,3 +172,5 @@ This package produces the following:
 * gulp package-solution - Packages the solution
 * gulp dev -- Builds a clean instance of the solution for development purposes
 * gulp dist -- Builds a clean instance of the solution for distribution purposes
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-enhanced-list-formatting" />

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "world-clocks-client-side-solution",
+    "id": "a6191c45-b01b-4158-8ca0-f86497d79df5",
+    "version": "1.0.0.1",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Jerry Yasr",
+      "websiteUrl": "https://jerryyasir.com",
+      "privacyUrl": "https://jerryyasir.com",
+      "termsOfUseUrl": "https://jerryyasir.com",
+      "mpnId": "m365pnp"
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/world-clocks.sppkg"
+  }
+}

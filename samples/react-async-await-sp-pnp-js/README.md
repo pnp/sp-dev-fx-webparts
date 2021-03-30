@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 5/1/2017 12:00:00 AM
 ---
-# React sample showing the use of @pnp/js with Async / Await
+# Using @pnp/js with Async / Await
 
 ## Summary
 This webpart demonstrates how to use [PnPJS](https://pnp.github.io/pnpjs/) with Async functions into the SharePoint Framework as well as integrating [PnP JS and SPFx Logging systems](https://blog.josequinto.com/2017/04/30/how-to-integrate-pnp-js-core-and-sharepoint-framework-logging-systems/). Real example querying SharePoint library to show document sizes.
@@ -26,8 +26,8 @@ This webpart demonstrates how to use [PnPJS](https://pnp.github.io/pnpjs/) with 
 
 
 ## Applies to
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

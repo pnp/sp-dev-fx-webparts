@@ -1,22 +1,17 @@
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
-import { IPropertyPaneConfiguration, PropertyPaneToggle } from "@microsoft/sp-property-pane";
-import styles from './WorkbenchCustomizerWebPart.module.scss';
+import { IPropertyPaneConfiguration, PropertyPaneToggle, PropertyPaneHorizontalRule, PropertyPaneLabel } from "@microsoft/sp-property-pane";
+// import styles from './WorkbenchCustomizerWebPart.module.scss';
 
 import * as strings from 'WorkbenchCustomizerWebPartStrings';
 
 export interface IWorkbenchCustomizerWebPartProps {
-  requiresPageRefresh: boolean;
   customWorkbenchStyles: boolean;
+  customWorkbenchStylesFullWidth: boolean;
   previewMode: boolean;
 }
 
 export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IWorkbenchCustomizerWebPartProps> {
-
-  public onInit(): Promise<void> {
-    this.properties.requiresPageRefresh = false;
-    return Promise.resolve();
-  }
 
   public async render(): Promise<void> {
 
@@ -26,28 +21,24 @@ export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IW
         await import('./styles/customWorkbenchStyles.module.scss');
       }
 
+      if (this.properties.customWorkbenchStyles && this.properties.customWorkbenchStylesFullWidth) {
+        await import('./styles/customWorkbenchStylesFullWidth.module.scss');
+      }
+
       if (this.properties.previewMode) {
         const previewBtn = document.getElementsByName("Preview")[0];
         previewBtn.click();
       }
 
       this.domElement.innerHTML = `
-    <div class="${styles.workbenchCustomizer}">
-      ${this.properties.requiresPageRefresh
-          ? `<div class="${styles.redMessage}">Please refresh the page to remove custom workbench styles</div>`
-          : ''
-        }
-      *** Workbench Customizer web part ***
+    <div>
+      *** ${strings.TitleLabel} ***
     </div>`;
     }
   }
 
-  public onPropertyPaneFieldChanged(path: string, oldValue: any, newValue: any): void {
-    if (!newValue) {
-      // request a page refresh if any of the options was disabled
-      // no real smart logic implemented at this point
-      this.properties.requiresPageRefresh = true;
-    }
+  protected get disableReactivePropertyChanges(): boolean {
+    return true;
   }
 
   protected get dataVersion(): Version {
@@ -59,18 +50,26 @@ export default class WorkbenchCustomizerWebPart extends BaseClientSideWebPart<IW
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: strings.PropertyPaneDescription,
           },
           groups: [
             {
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneToggle('customWorkbenchStyles', {
-                  label: strings.CustomWorkbenchStylesFieldLabel
+                  label: strings.CustomWorkbenchStylesFieldLabel,
+                }),
+                PropertyPaneToggle('customWorkbenchStylesFullWidth', {
+                  label: strings.customWorkbenchStylesFullWidthFieldLabel,
+                  disabled: !this.properties.customWorkbenchStyles,
                 }),
                 PropertyPaneToggle('previewMode', {
-                  label: strings.PreviewModeFieldLabel
-                })
+                  label: strings.PreviewModeFieldLabel,
+                }),
+                PropertyPaneHorizontalRule(),
+                PropertyPaneLabel('', {
+                  text: strings.RequestPageRefresh,
+                }),
               ]
             }
           ]

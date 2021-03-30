@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-my-task-client-side-solution",
     "id": "7cd3a77c-8a8d-4742-9585-e17ca19bfe5d",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -20,7 +20,14 @@
         "resource": "Microsoft Graph",
         "scope": "Directory.AccessAsUser.All"
       }
-    ]
+    ],
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "m365pnp"
+    }
   },
   "paths": {
     "zippedPackage": "solution/react-my-task.sppkg"

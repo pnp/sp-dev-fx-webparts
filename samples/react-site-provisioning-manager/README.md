@@ -1,4 +1,4 @@
-# Site Provisioning Manager Web Part
+# Site Provisioning Manager
 
 ## Summary
 This sample shows how you can manage site provisioning by calling Azure functions.
@@ -13,8 +13,8 @@ You can also find out how you can use React Hooks to manage the state of your ap
 
 ## Applies to
 
-* [SharePoint Framework](https://dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 

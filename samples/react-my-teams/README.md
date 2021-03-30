@@ -1,4 +1,4 @@
-# React My Teams
+# My Teams
 
 ## Summary
 
@@ -13,12 +13,12 @@ The web part can be configured to open the team on the web browser or client app
 
 ## Applies to
 
-- [SharePoint Framework](https:/dev.office.com/sharepoint)
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online licence
-- SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
 ## Solution
 
@@ -51,7 +51,7 @@ gulp serve --nobrowser
 
 Navigate to the hosted version of SharePoint workbench, eg. https://contoso.sharepoint.com/_layouts/15/workbench.aspx
 
-### Grant the service principal permission to the MicroSoft Graph API
+### Grant the service principal permission to the Microsoft Graph API
 
 Once installed, the solution will request the required permissions via the Office 365 admin portal.
 If you prefer to approve the permissions in advance, for example when testing the solution in the Workbench page without installing it, you can do so using Office 365 CLI:

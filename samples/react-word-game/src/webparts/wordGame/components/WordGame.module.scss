@@ -1,0 +1,182 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+// WORDGAME STYLES
+
+:global .wordGameCustom {
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  button,
+  input[type="submit"] {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  div {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+  }
+
+  .greyButton {
+    background-color: grey;
+  }
+
+  .blueButton {
+    width: unset;
+    background-color: #007bff;
+  }
+
+  .currentWord {
+    color: #007bff;
+    font-size: 3rem;
+  }
+
+  .timer {
+    font-size: 16pt;
+    color: gray;
+    font-weight: 600;
+  }
+
+  .gameReview {
+    text-align: left;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    font-size: 16px;
+  }
+  ul {
+    margin-top: 5px;
+  }
+
+  .toast {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  .toastMiniGreen {
+    color: rgb(103, 181, 89);
+  }
+
+  .toastMiniRed {
+    color: red;
+  }
+
+  .toastGreen {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 11px;
+  }
+
+  .toastRed {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 11px;
+  }
+
+  .numAnswersTip {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: gray;
+  }
+}
+
+// OFFICE STYLES
+
+.wordGame {
+  .container {
+    max-width: 700px;
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+    @include ms-fontColor-white;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system,
+      BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+}

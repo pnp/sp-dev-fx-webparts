@@ -1,14 +1,11 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import {
-  IPropertyPaneField,
-  PropertyPaneFieldType
-} from '@microsoft/sp-webpart-base';
+import { IPropertyPaneField, PropertyPaneFieldType } from "@microsoft/sp-property-pane";
 
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 
 import { IDashSelectorProps } from './components/DashSelector.types';
-import DashSelector from './components/DashSelector';
+import { DashSelector } from './components/DashSelector';
 import {
   IPropertyPaneDashSelectorProps,
   IPropertyPaneDashSelectorInternalProps,

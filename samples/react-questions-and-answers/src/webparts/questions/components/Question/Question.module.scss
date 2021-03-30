@@ -1,0 +1,90 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '../Shared.module.scss';
+
+.question {
+  .container {
+    margin: 0px auto;
+  }
+
+  .containerHeader {
+    text-align: right;
+    color:  $ms-color-themePrimary;
+  }
+
+  .questionContainer {
+    @include tw-item-container;
+    color: $ms-color-black;
+  }
+
+  .questionItem {
+    @include tw-item
+  }
+
+  .questionTitle {
+    @include ms-font-xxl;
+    @include ms-fontWeight-regular;
+    padding-top: 10px;
+  }
+
+  .questionTitle textarea {
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: inherit;
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    height: 40px;
+    line-height: inherit;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    resize: none;
+    text-align: inherit;
+    white-space: pre;
+    width: 100%;
+  }
+
+  .questionInfo {
+    @include ms-font-s;
+    font-style: italic;
+    padding-bottom: 10px;
+  }
+
+  .questionBodyContainer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    @include ms-font-m-plus;
+  }
+
+  .questionBodyContainer img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .questionPersonaContainer {
+    padding-top: 10px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+  .questionIsAnsweredContainer {
+    @include tw-answer-info;
+  }
+
+  .adminActionsContainer {
+    @include tw-admin-actions;
+  }
+
+  .messagebarContainer {
+    @include tw-message-bar-container;
+  }
+
+  .userActions {
+    @include tw-user-actions;
+  }
+  .errorMessage {
+    @include tw-error-message;
+  }
+}

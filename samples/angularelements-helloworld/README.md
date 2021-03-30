@@ -1,3 +1,18 @@
+---
+page_type: sample
+products:
+- office-sp
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 6/1/2018 12:00:00 AM
+---
 # Angular Elements in SharePoint Framework
 
 ## Summary
@@ -5,12 +20,12 @@
 Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.4.1-green.svg)
+![SPFx 1.4.1](https://img.shields.io/badge/spfx-1.4.1-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

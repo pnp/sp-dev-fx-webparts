@@ -3,14 +3,14 @@ import * as strings from 'RadarDemoWebPartStrings';
 import styles from './RadarDemo.module.scss';
 import { IRadarDemoProps, IRadarDemoState } from './IRadarDemo.types';
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 import { ChartControl, ChartType } from "@pnp/spfx-controls-react/lib/ChartControl";
-
+import { ChartData } from 'chart.js';
 
 const DATASET_LENGTH: number = 2;
 const DATA_LENGTH: number = 7;
-export default class RadarDemo extends React.Component<IRadarDemoProps, IRadarDemoState> {
+export class RadarDemo extends React.Component<IRadarDemoProps, IRadarDemoState> {
 
  public render(): React.ReactElement<IRadarDemoProps> {
 
@@ -29,8 +29,8 @@ export default class RadarDemo extends React.Component<IRadarDemoProps, IRadarDe
     );
   }
 
-  private _loadAsyncData(): Promise<Chart.ChartData> {
-    return new Promise<Chart.ChartData>((resolve, reject) => {
+  private _loadAsyncData(): Promise<ChartData> {
+    return new Promise<ChartData>((resolve, reject) => {
         // Get the mock data provider
         const dataProvider: IChartDataProvider = new MockChartDataProvider();
 
@@ -39,7 +39,7 @@ export default class RadarDemo extends React.Component<IRadarDemoProps, IRadarDe
           .getMultiDataset(DATASET_LENGTH, DATA_LENGTH)
           .then((numbersArrays: Array<number[]>) => {
 
-            const data: Chart.ChartData =  {
+            const data: ChartData =  {
               labels: strings.ChartLabels,
               datasets: [{
                 label: strings.DataSet1Label,

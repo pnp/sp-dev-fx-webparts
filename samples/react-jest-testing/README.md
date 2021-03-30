@@ -66,13 +66,13 @@ The sample uses SPFx web part, but the same setup applies for SPFx extensions an
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
 - Office 365 subscription with SharePoint Online.
-- SharePoint Framework [development environment](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment) already set up.
+- SharePoint Framework [development environment](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) already set up.
 
 ## Solution
 
@@ -102,7 +102,7 @@ Version|Date|Comments
     - `npm i`
     - `npm test` **(NOT gulp test)**
 
-Note: You migh want to switch to a test fake offline provider to use the full functionality of the web part when on local workbench. You can do so by replacing the real pnpjs provider in IceCreamShopWebPart.ts with its fake one at line 37. Just replace IceCreamPnPJsProvider() with IceCreamFakeProvider().
+Note: You might want to switch to a test fake offline provider to use the full functionality of the web part when on local workbench. You can do so by replacing the real pnpjs provider in IceCreamShopWebPart.ts with its fake one at line 37. Just replace IceCreamPnPJsProvider() with IceCreamFakeProvider().
 ``` 
 iceCreamProvider: new IceCreamPnPJsProvider(sp), //new IceCreamFakeProvider() // replace with Fake provider when offline workbench.
 ```

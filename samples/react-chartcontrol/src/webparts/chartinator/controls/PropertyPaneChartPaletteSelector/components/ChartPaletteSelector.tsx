@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   Dropdown,
   IDropdownOption
-} from 'office-ui-fabric-react/lib/components/Dropdown';
-import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
+} from '@fluentui/react/lib/Dropdown';
+import { TooltipHost, DirectionalHint } from '@fluentui/react/lib/Tooltip';
 
 import styles from './ChartPaletteSelector.module.scss';
 import { IChartPaletteSelectorProps, IChartPaletteSelectorState } from './ChartPaletteSelector.types';
@@ -11,7 +11,7 @@ import { IChartPaletteSelectorProps, IChartPaletteSelectorState } from './ChartP
 /**
  * Displays a list of palette colours
  */
-export default class ChartPaletteSelector extends React.Component<IChartPaletteSelectorProps, IChartPaletteSelectorState> {
+export  class ChartPaletteSelector extends React.Component<IChartPaletteSelectorProps, IChartPaletteSelectorState> {
   constructor(props: IChartPaletteSelectorProps) {
     super(props);
     this.state = {

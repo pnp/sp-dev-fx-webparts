@@ -5,16 +5,17 @@ import * as strings from 'AreaChartDemoWebPartStrings';
 
 // used to add a chart control
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartDataSets, ChartData, ChartOptions } from 'chart.js';
 
 // used to retrieve (fake) data from a (fake) service
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 // used to render the toolbar above the chart
 import {
   CommandBar,
   IContextualMenuItem,
   DirectionalHint
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 /**
 In chart.js, there are really no "area" chart types; They're just line charts with a 'fill'
@@ -25,7 +26,7 @@ This demo shows the following:
 - Generate a gradient for a background color
 - Change the fill value
  */
-export default class AreaChartDemo extends React.Component<IAreaChartDemoProps, IAreaChartDemoState> {
+export  class AreaChartDemo extends React.Component<IAreaChartDemoProps, IAreaChartDemoState> {
   /**
 * The chart element
 */
@@ -65,7 +66,7 @@ export default class AreaChartDemo extends React.Component<IAreaChartDemoProps, 
     } = this.state;
 
 
-    const data: Chart.ChartData = {
+    const data: ChartData = {
       labels:
         [
           'January', 'February', 'March', 'April', 'May', 'June', 'July'
@@ -84,7 +85,7 @@ export default class AreaChartDemo extends React.Component<IAreaChartDemoProps, 
     };
 
     // set the options
-    const options: Chart.ChartOptions = {
+    const options: ChartOptions = {
       legend: {
         display: false,
       },
@@ -122,7 +123,6 @@ export default class AreaChartDemo extends React.Component<IAreaChartDemoProps, 
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'randomizeData',
@@ -287,7 +287,7 @@ export default class AreaChartDemo extends React.Component<IAreaChartDemoProps, 
     gradientFill.addColorStop(0, 'rgba(255, 99, 132, 0.5)');
     gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
-    let data: Chart.ChartDataSets = this._chartElem.getChart().data.datasets[0];
+    let data: ChartDataSets = this._chartElem.getChart().data.datasets[0];
     data.backgroundColor = gradientFill;
     this._chartElem.update();
   }

@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 2,
+  "id": "6e6e2204-49cb-4172-b923-32eaa7d8fe5b",
+  "alias": "SpBaseDataSource",
+  "componentType": "Library",
+  "version": "0.1.0",
+  "loaderConfig": {
+    "entryModuleId": "sp-base-data-source",
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/"
+    ],
+    "scriptResources": {
+      "sp-base-data-source": {
+        "type": "localizedPath",
+        "defaultPath": "dist/sp-base-data-source_en-us.js"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b"
+      },
+      "@microsoft/sp-http": {
+        "type": "component",
+        "version": "1.11.0",
+        "id": "c07208f0-ea3b-4c1a-9965-ac1b825211a6"
+      },
+      "@ms/odsp-utilities-bundle": {
+        "type": "component",
+        "version": "5.1.55",
+        "id": "cc2cc925-b5be-41bb-880a-f0f8030c6aff"
+      }
+    }
+  },
+  "isInternal": true
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "761fbf9d-6ef9-4099-8488-02d5e2826f36",
+  "alias": "QuestionsWebPart",
+  "componentType": "WebPart",
+  "supportsThemeVariants": true,
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab"],
+  "preconfiguredEntries": [
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Questions"
+      },
+      "description": {
+        "default": "Ask questions or find answers to answered questions"
+      },
+      "officeFabricIconFontName": "Feedback",
+      "properties": {
+        "title": "Questions",
+        "pageSize": 5,
+        "sortOption": "MostRecent",
+        "loadInitialPage": false,
+        "hideViewAllButton": false,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Questions.aspx",
+        "webPartRenderMode": "standard",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "",
+        "discussionType": "Question"
+      }
+    },
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Open Questions"
+      },
+      "description": {
+        "default": "Show a list of open questions"
+      },
+      "officeFabricIconFontName": "FeedbackRequestSolid",
+      "properties": {
+        "title": "Questions",
+        "pageSize": 10,
+        "sortOption": "MostRecent",
+        "loadInitialPage": true,
+        "hideViewAllButton": true,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Questions.aspx",
+        "webPartRenderMode": "openQuestions",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "Open ",
+        "discussionType": "Question"
+      }
+    },
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Answered Questions"
+      },
+      "description": {
+        "default": "Show a list of answered questions"
+      },
+      "officeFabricIconFontName": "FeedbackResponseSolid",
+      "properties": {
+        "title": "Questions",
+        "pageSize": 10,
+        "sortOption": "MostRecent",
+        "loadInitialPage": true,
+        "hideViewAllButton": true,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Questions.aspx",
+        "webPartRenderMode": "answeredQuestions",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "Answered ",
+        "discussionType": "Question"
+      }
+    },
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Conversations"
+      },
+      "description": {
+        "default": "Find other conversations or Start a new conversation"
+      },
+      "officeFabricIconFontName": "ActivityFeed",
+      "properties": {
+        "title": "Conversations",
+        "pageSize": 5,
+        "sortOption": "MostRecent",
+        "loadInitialPage": false,
+        "hideViewAllButton": false,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Conversations.aspx",
+        "webPartRenderMode": "standard",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "",
+        "discussionType": "Conversation"
+      }
+    },
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Conversations List"
+      },
+      "description": {
+        "default": "Show a list of Conversations"
+      },
+      "officeFabricIconFontName": "ActivityFeed",
+      "properties": {
+        "title": "Conversations",
+        "pageSize": 10,
+        "sortOption": "MostRecent",
+        "loadInitialPage": true,
+        "hideViewAllButton": true,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Conversations.aspx",
+        "webPartRenderMode": "conversationsList",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "",
+        "discussionType": "Conversation"
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-list-form",
+    "source": "pnp",
+    "title": "List Form Web Part",
+    "shortDescription": "The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-form",
+    "longDescription": [
+      "The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries."
+    ],
+    "created": "2021-02-19",
+    "modified": "2021-02-19",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif",
+        "alt": "List Form Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "DanyWyss",
+        "company": "Ardevia",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/14975743?s=460\u0026u=0270afb16a406ce4e3f3e471da850141befe9160\u0026v=4",
+        "name": "Dany Wyss",
+        "twitter": "DanyWyss"
+      },
+      {
+        "gitHubAccount": "Harshagracy",
+        "company": "",
+        "pictureUrl": "https://github.com/Harshagracy.png",
+        "name": "Harsha Vardhini",
+        "twitter": "harshagracy"
+      },
+      {
+        "gitHubAccount": "sharepointknight",
+        "company": "",
+        "pictureUrl": "https://github.com/sharepointknight.png",
+        "name": "Ryan Schouten"
+      },
+      {
+        "gitHubAccount": "Abderahman88",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "name": "Abderahman Moujahid"
+      },
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      },
+      {
+        "gitHubAccount": "fthorild",
+        "company": "Sogeti Sweden",
+        "pictureUrl": "https://github.com/fthorild.png",
+        "name": "Fredrik Thorild",
+        "twitter": "taxonomythorild"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

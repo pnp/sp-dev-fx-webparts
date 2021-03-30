@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from '@fluentui/react/lib/TextField';
 import * as strings from 'ChartinatorWebPartStrings';
 import { INumberTextFieldProps, INumberTextFieldState } from './NumberTextField.types';
 
@@ -24,7 +24,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
         label={this.props.label}
         value={this.state.value}
         placeholder={this.props.placeholder}
-        onChanged={(newValue: string) => this._handleChange(newValue)}
+        onChange={(_event: React.FormEvent<HTMLInputElement|HTMLTextAreaElement>, newValue: string) => this._handleChange(newValue)}
         onGetErrorMessage={(value: string) => this._validateNumber(value)}
       />
     );
@@ -35,7 +35,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
    * @param value the value
    */
   private _validateNumber(value: string): string {
-    return isNaN(Number(value)) ? strings.NumberErrorMessage : '';
+    return value !== '' && value !== undefined && isNaN(Number(value)) ? strings.NumberErrorMessage : '';
   }
 
   /**

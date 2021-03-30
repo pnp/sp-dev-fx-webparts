@@ -1,0 +1,111 @@
+{
+  "title": "PhotoSync",
+  "steps": [
+    {
+      "file": "src/webparts/photoSync/PhotoSyncWebPart.ts",
+      "line": 224,
+      "description": "Check for current logged-in user. If the user is site addministrator, load the admin properties and if the user is a normal user, load the end user properties."
+    },
+    {
+      "file": "src/webparts/photoSync/PhotoSyncWebPart.ts",
+      "line": 115,
+      "description": "Admin Webpart properties"
+    },
+    {
+      "file": "src/webparts/photoSync/PhotoSyncWebPart.ts",
+      "line": 94,
+      "description": "Normal user webpart properties."
+    },
+    {
+      "file": "src/webparts/photoSync/PhotoSyncWebPart.ts",
+      "line": 42,
+      "description": "OnInit method to do the following\n1. PnP setup\n2. Fetch graph client\n3. Initialize the custom helper class"
+    },
+    {
+      "file": "src/webparts/photoSync/common/AppContext.ts",
+      "line": 1,
+      "description": "AppContext file for using React Context API. All the properties declared here will be accessible by all the child components. No need to pass the properties from parent to child components.",
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 17,
+          "character": 75
+        }
+      }
+    },
+    {
+      "file": "src/webparts/photoSync/components/PhotoSync.tsx",
+      "selection": {
+        "start": {
+          "line": 53,
+          "character": 5
+        },
+        "end": {
+          "line": 62,
+          "character": 7
+        }
+      },
+      "description": "Assigning all the AppContext properties in the main component."
+    },
+    {
+      "file": "src/webparts/photoSync/components/PhotoSync.tsx",
+      "selection": {
+        "start": {
+          "line": 154,
+          "character": 9
+        },
+        "end": {
+          "line": 154,
+          "character": 54
+        }
+      },
+      "description": "Using React Context API in the parent component and assigning the **value** to the appcontext properties."
+    },
+    {
+      "file": "src/webparts/photoSync/components/PhotoSync.tsx",
+      "selection": {
+        "start": {
+          "line": 176,
+          "character": 77
+        },
+        "end": {
+          "line": 196,
+          "character": 78
+        }
+      },
+      "description": "**Pivot Menu** and the child components\n1. **UserSelectionSync** - Provide an option to select the individual users for updating their photos.\n2. **BulkPhotoSync** - Allow the users to drag and drop the photos from their fileshare to update.\n3. **SyncJobs** - Lists all the sync jobs triggered by all the users with the status and updated user details."
+    },
+    {
+      "file": "src/webparts/photoSync/common/helper.ts",
+      "selection": {
+        "start": {
+          "line": 3,
+          "character": 1
+        },
+        "end": {
+          "line": 15,
+          "character": 26
+        }
+      },
+      "description": "Selective imports to the PnP modules."
+    },
+    {
+      "file": "src/webparts/photoSync/common/helper.ts",
+      "description": "Method to retrieve the different thumbnails using MSGraph API. Since there will be multiple requests per users, requests are sent as a **batch** based on the batch limit and the number of users selected for update."
+    },
+    {
+      "file": "src/webparts/photoSync/common/helper.ts",
+      "line": 251,
+      "description": "Method to retrieve the different thumbnails using **MSGraph API**. Since there will be multiple requests per users, requests are sent as a **batch** based on the batch limit and the number of users selected for update."
+    },
+    {
+      "file": "src/webparts/photoSync/common/helper.ts",
+      "line": 384,
+      "description": "Method to generate different thumbnails for the **BulkSync** option. Used **image-resize** npm package."
+    }
+  ],
+  "ref": "master"
+}

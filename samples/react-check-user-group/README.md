@@ -16,7 +16,7 @@ This web part uses Microsoft Graph API to get all the Office 365 or AAD Security
 
 This extension illustrates the following concepts:
 
-* Requesting **Directory.Read.All** permission scope for Microsoft Graph through the webApiPermissionRequests property in package-solution.json
+* Requesting **Directory.Read.All** permission scope for Microsoft Graph through the `webApiPermissionRequests` property in `package-solution.json`
 * Using MSGraphClient to call the **/groups/{groupId}/members** API to get all the members in a group
 * Using MSGraphClient to call the **/users/${email}/memberOf** API to get all the groups a user is member of
 * Exporting the results to a CSV file using [**react-csv**](https://www.npmjs.com/package/react-csv) third party package
@@ -42,3 +42,4 @@ react-check-user-group | [Aakash Bhardwaj](https://twitter.com/aakash_316)
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-check-user-group" />

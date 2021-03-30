@@ -1,7 +1,7 @@
-# SPFX React Grid
+# Multilist Grid
 
 ## Summary
-React-multilist-grid is an SPFX webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type – you just need to create column mappings to tell the webpart which fields to show in which columns of the grid.
+React-multilist-grid is an SPFx webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type – you just need to create column mappings to tell the webpart which fields to show in which columns of the grid.
 
 The configuration panel of the webpart is show below. It has two buttons—one to configure the columns that will be displayed on the grid, and another to configure the lists that contain the data to be edited.
 ![config panel](./src/images/Configuration.PNG)
@@ -70,8 +70,8 @@ Use the Undo icon to undo the changes made to an item.
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 
@@ -108,7 +108,7 @@ Version|Date|Comments
 > Include any additional steps as needed.
 
 ## Features
-An SPFX Webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from multiple Webs and Multiple Sites in a single grid.
+An SPFx Webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from multiple Webs and Multiple Sites in a single grid.
 
 Usage:
 

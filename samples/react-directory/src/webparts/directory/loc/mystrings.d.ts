@@ -6,7 +6,12 @@ declare interface IDirectoryWebPartStrings {
   BasicGroupName: string;
   TitleFieldLabel: string;
   DirectoryMessage: string;
-
+  LoadingText: string;
+  SearchPropsLabel: string;
+  SearchPropsDesc: string;
+  ClearTextSearchPropsLabel: string;
+  ClearTextSearchPropsDesc: string;
+  PagingLabel: string;
 }
 
 declare module 'DirectoryWebPartStrings' {

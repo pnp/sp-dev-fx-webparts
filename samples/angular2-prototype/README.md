@@ -11,9 +11,9 @@ extensions:
   - SharePoint Framework
   platforms:
   - AngularJS
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 8/14/2017 12:00:00 AM
 ---
-﻿#  Angular2 Web Part Prototype
+#  Angular2 Web Part Prototype
 
 ## Note to developers
 > This web part sample is currently in prototype phase and subject to change.
@@ -31,8 +31,8 @@ Sample To Do Web Part built with Angular2. This sample illustrates how you can u
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
@@ -83,7 +83,7 @@ Though this is not a best practice, it helps build web parts successfully.
 We are trying to find better solutions to this problem. Specially, how to avoid creating a separate NgModule for each web part.
 
 ### Adding functionality
-To add functionality to this web part prototype the main file to edit is TodoWebPart.ts, here there are comments to help you alter the prototype.
+To add functionality to this web part prototype the main file to edit is `TodoWebPart.ts`, here there are comments to help you alter the prototype.
 
 ### Web part concepts
 The web part displays a title, button to add to dos and a button to print the to do items to the console.

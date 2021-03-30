@@ -13,12 +13,12 @@ extensions:
   - React
   createdDate: 1/1/2016 12:00:00 AM
 ---
-# React Video Library
+# Video Library
 
 ## Summary
-A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
+A set of 3 SPFx webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
 to display videos stored on an Office 365 Video Channel. The idea being to display a carousel of the thumbnail images, and then 
-when a user clicks on one of the thumbnails, replace the tumbnail with a video player, or an Iframe playing the video. 
+when a user clicks on one of the thumbnails, replace the thumbnail with a video player, or an Iframe playing the video. 
 
 All 3 webparts share a common utility class (O365Vutilities) that is used to talk to the tenants Video Service through its rest
 API (https://msdn.microsoft.com/en-us/office/office365/api/video-rest-operations)
@@ -67,8 +67,8 @@ See also https://github.com/russgove/O365VideoSync. It's a console app that you 
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 
@@ -104,7 +104,7 @@ Version|Date|Comments
 > Include any additional steps as needed.
 
 ## Features
-A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
+A set of 3 SPFx webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick)
 to display videos stored on an O365 Video Channel.
 
 

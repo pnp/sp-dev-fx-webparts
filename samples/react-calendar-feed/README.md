@@ -1,4 +1,4 @@
-# React Calendar Feed Web Part
+# Calendar Feed
 
 ## Summary
 
@@ -24,12 +24,12 @@ For more information about how this solution was built, including some design de
 
 ## Used SharePoint Framework Version
 
-![SPFx v1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg)
+![SPFx v1.10.0](https://img.shields.io/badge/SPFx-1.10.0-green.svg)
 
 ## Applies to
 
-- [SharePoint Framework](https:/dev.office.com/sharepoint)
-- [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+- [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
@@ -40,15 +40,16 @@ Before you can use this web part example, you will need one of the following:
 - A WordPress WP-FullCalendar feed
 - An Exchange Public Calendar
 
-It is important that all feeds do not require authentication. Also, make sure that your calendar includes upcoming events, as the web part will filter out evens that are earlier than today's date.
+This web part only supports anonymous external feeds. Also, make sure that your calendar includes upcoming events, as the web part will filter out evens that are earlier than today's date.
 
-If your feed supports filtering by dates, you can specify **{s}** in the URL where the start date should be inserted, and the web part will automatically replace the **{s}** placeholder with today's date. Similarly, you can specify **{e}** in the URL where you wish the end date to be inserted, and the web part will automatically replace the placeholder for the end date, as determined by the date range you select.
+If your feed supports filtering by dates, you can specify `{s}` in the URL where the start date should be inserted, and the web part will automatically replace the `{s}` placeholder with today's date. Similarly, you can specify `{e}` in the URL where you wish the end date to be inserted, and the web part will automatically replace the placeholder for the end date, as determined by the date range you select.
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
 react-calendar-feed | Hugo Bernier ([Tahoe Ninjas](http://tahoeninjas.blog), @bernierh)
+react-calendar-feed | Peter Paul Kirschner ([@petkir_at](https://twitter.com/petkir_at))
 
 ## Version history
 
@@ -59,6 +60,8 @@ Version|Date|Comments
 3.0|November 9, 2018|Converted to SPFx 1.7; Added SharePoint Calendar feed
 4.0|January 16, 2019|Converted to SPFx 1.7.1; Removed NPM libraries associated with issue #708.
 5.0|August 17, 2019|Converted to SPFx 1.9.1; Refreshed carousel code; Addresses #735, #909. Also added **Convert from UTC** option to handle feeds which do not provide time zone information.
+5.1|April 16, 2020|Converted to SPFx 1.10.0; Fixed issue with UTC mode when in narrow view. Updated resizing behavior and styles to match OOB calendar view. Added support for themes and theme variants.
+5.2|July 15, 2020|Fixed issue to support IE11
 
 ## Disclaimer
 
@@ -80,6 +83,7 @@ Version|Date|Comments
 - Specify a maximum number of events to retrieve
 - If necessary, specify to use a proxy. Use this option if you encounter issues where your feed provider does not accept your tenant URL as a CORS origin.
 - If desired, specify how long (in minutes) you want to expire your users' local storage and refresh the events.
+- Exclude IE11 support with gulp parameter ```--NoIE11``` this is in-case-sensitive 
 
 ## Features
 

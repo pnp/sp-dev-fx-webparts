@@ -1,0 +1,77 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.covid19Info {
+  .refreshIcon {
+    position: absolute;
+    right: 0px;
+    z-index: 1;
+  }
+  .historyIcon{
+    position: absolute;
+    left: 0px;
+    z-index: 1;
+  }
+  .container {
+    margin: 0px auto;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+
+    .countryRow{
+      @include ms-Grid-row;
+      .country {
+        @include ms-Grid-col;
+        @include ms-lg12;
+        padding: 10px;
+        text-align: center;
+        @include ms-font-xl;
+
+        .icon {
+          margin-right: 15px;
+        }
+        .text {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .detailsRow{
+      @include ms-Grid-row;
+      padding: 10px;
+      .infoColumn {
+        @include ms-Grid-col;
+        @include ms-md12;
+        @include ms-lg4;
+        text-align: center;
+        .label {
+          width: 100%;
+          @include ms-font-l;
+        }
+        .number {
+          padding: 15px;
+          @include ms-font-xxl;
+        }
+        .confirmed {
+          color: #69797e;
+        }
+        .deaths {
+          color: #d13438;
+        }
+
+        .recovered {
+          color: #498205;
+        }
+      }
+    }
+
+    .lastUpdatedRow {
+      @include ms-Grid-row;
+      .lastUpdated {
+        @include ms-Grid-col;
+        @include ms-lg12;
+        padding: 10px;
+        text-align: center;
+        @include ms-font-s;
+      }
+    }
+
+  }
+}

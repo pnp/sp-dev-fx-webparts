@@ -1,4 +1,4 @@
-# React sample showing the use of PnP JS Core custom objects with @select and @expand decorators
+# Using PnP JS Core custom objects with @select and @expand decorators
 
 ## Summary
 This webpart demonstrates how to use [PnP JS Core](https://github.com/SharePoint/PnP-JS-Core) Custom Objects with @select and @expand TypeScript decorators.
@@ -11,8 +11,8 @@ You can also find more information in the [blog series about working with Custom
 
 
 ## Applies to
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 

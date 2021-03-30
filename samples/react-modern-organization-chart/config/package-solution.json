@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-modern-organization-chart",
+    "id": "d28b8c44-5df1-4315-a6eb-a5be13ba4b88",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [{
+      "resource": "Microsoft Graph",
+      "scope": "Presence.Read.All"
+    }]
+  },
+
+  "paths": {
+    "zippedPackage": "solution/react-modern-organization-chart.sppkg"
+  }
+}

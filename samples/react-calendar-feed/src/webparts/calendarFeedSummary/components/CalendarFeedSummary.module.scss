@@ -9,12 +9,13 @@
 }
 
 .webPartChrome {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  // display: -ms-flexbox;
+  // display: flex;
+  // -ms-flex-align: stretch;
+  // align-items: stretch;
+  // -ms-flex-direction: column;
+  // flex-direction: column;
+  color: inherit;
 }
 
 .headerSmMargin {

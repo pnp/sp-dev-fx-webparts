@@ -1,6 +1,6 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.9.1",
+    "version": "1.11.0",
     "libraryName": "react-my-task",
     "libraryId": "7cd3a77c-8a8d-4742-9585-e17ca19bfe5d",
     "environment": "spo",

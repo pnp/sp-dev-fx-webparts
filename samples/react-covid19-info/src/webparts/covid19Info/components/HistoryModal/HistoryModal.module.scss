@@ -1,0 +1,22 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.historyModalContainer {
+  .countryRow{
+    .country {
+      padding: 10px;
+      text-align: center;
+      @include ms-font-xl;
+
+      .icon {
+        margin-right: 15px;
+      }
+      .text {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .pivotChart{
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "03fe68f7-84ef-46a7-8210-d47a1c911d69",
+  "alias": "MgtEventsWebPart",
+  "componentType": "WebPart",
+  "supportsThemeVariants": true,
+  "supportsFullBleed":  true,
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage","TeamsPersonalApp","TeamsTab"],
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "mgtEvents" },
+    "description": { "default": "mgtEvents description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "title": "My Events",
+      "numberDays": 8
+    }
+  }]
+}

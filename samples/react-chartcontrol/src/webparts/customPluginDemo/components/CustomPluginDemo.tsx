@@ -145,7 +145,7 @@ const chartOptions: any = {
   }
 };
 
-export default class CustomPluginDemo extends React.Component<ICustomPluginDemoProps, {}> {
+export class CustomPluginDemo extends React.Component<ICustomPluginDemoProps, {}> {
 
   /**
    * Renders the (static) donut chart with the plugins passed in

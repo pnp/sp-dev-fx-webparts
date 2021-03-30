@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "bot-framework-chatv-4-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/botFrameworkChatv4/BotFrameworkChatv4WebPart.js",
+          "manifest": "./src/webparts/botFrameworkChatv4/BotFrameworkChatv4WebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BotFrameworkChatv4WebPartStrings": "lib/webparts/botFrameworkChatv4/loc/{locale}.js"
+  }
+}

@@ -1,4 +1,4 @@
-## outlook-2-teams-spfx
+# Outlook to SharePoint
 
 
 ## Summary
@@ -8,7 +8,7 @@ Furthermore it shows you how to retrieve a complete mail as a mimestream via Mic
 * Writing normal files smaller 4MB
 * Writing big files with an UploadSession when bigger than 4MB
 
-## outlook-2-teams-spfx in action
+## outlook-2-sp-spfx in action
 ![WebPartInAction](https://mmsharepoint.files.wordpress.com/2020/01/addin_overall.png)
 
 A detailed functionality and technical description can be found in the [author's blog series](https://mmsharepoint.wordpress.com/2020/01/11/an-outlook-add-in-with-sharepoint-framework-spfx-introduction/)
@@ -25,13 +25,14 @@ A detailed functionality and technical description can be found in the [author's
 
 Solution|Author(s)
 --------|---------
-outlook-2-teams-spfx| Markus Moeller ([@moeller2_0](http://www.twitter.com/moeller2_0))
+outlook-2-sp-spfx| Markus Moeller ([@moeller2_0](http://www.twitter.com/moeller2_0))
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|February 05, 2020|Initial release
+1.0|January 29, 2020|Initial release
+1.1|April 06, 2020|Open extensions to store metadata added
 
 ## Disclaimer
 
@@ -48,16 +49,16 @@ Version|Date|Comments
   * build solution `gulp build --ship`
   * bundle solution: `gulp bundle --ship`
   * package solution: `gulp package-solution --ship`
-  * locate solution at `.\sharepoint\solution\outlook-2-sp-spfx.sppkg` 
+  * locate solution at `.\sharepoint\solution\outlook-2-sp-spfx.sppkg`
   * upload it to your tenant app catalog
-  * Go to your Outlook Web Access and selct a mail
-  * Choose ... and "Get Add Ins"
-  * Choose My Add-ins from left menu
-  * Choose *Add from file... under the Custom add-ins
-  * Upload the manifest xml file from \officeAddin folder
-  * Click Install on the warning message to get your add-in available on the tenant
-  * Close the add-in window by clicking X on the top-right corner
-  * Activate again the context menu from [...] and choose "Copy to SharePoint" to activate the add-in in your inbox
+  * Go to your Outlook Web Access then double-click an e-mail to open it in a window
+  * Choose **...** and **Get Add-ins**
+  * Choose **My Add-ins** from left menu
+  * Under **Custom add-ins**, choose **+ Add a custom add-in**, then **Add from file...**
+  * Upload the manifest xml file from `\officeAddin` folder
+  * Click **Install** on the warning message to get your add-in available on the tenant
+  * Close the add-in window by clicking **X** on the top-right corner
+  * Activate again the context menu from **...** and choose **Copy to SharePoint** to activate the add-in in your inbox
 
 ## Features
 
@@ -67,6 +68,5 @@ This Outlook Add-In shows the following capabilities on top of the SharePoint Fr
 * Use Microsoft Graph to retrieve joined Groups and Teams
 * Use Microsoft Graph to retrieve folders and subfolders for OneDrive or Teams/Group drives
 * Use Microsoft Graph to retrieve complete mail mimestream by given ID
-* Use Microsoft Graph to save normal or big files (in size bigger 4MB) with different concepts 
-
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-outlook-copy2teams" />
+* Use Microsoft Graph to save normal or big files (in size bigger 4MB) with different concepts
+* Optionally store metadata of save operation to copied mail with open extension (configure line 15 Outlook2SharePoint.tsx)

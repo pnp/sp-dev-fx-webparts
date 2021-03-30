@@ -3,7 +3,7 @@
   "id": "0ccdae4a-e8b0-4bd8-aba3-30d54444ee10",
   "alias": "PieChartDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

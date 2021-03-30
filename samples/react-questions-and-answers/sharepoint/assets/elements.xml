@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Post fields - shared by Question and Reply Content Types -->
+  <Field ID="{8f1abe02-cc82-477c-be27-6fefaac2cb6f}" Name="TW_Details" DisplayName="Details" Type="Note" Required="FALSE" Group="_TW" NumLines="6" RichText="TRUE" RichTextMode="FullHtml" AppendOnly="FALSE"></Field>
+
+  <Field ID="{b9e9da58-096d-4d3d-bf8c-4034f97461a9}" Name="TW_DetailsText" DisplayName="Details Text" Type="Note" Required="FALSE" Group="_TW" NumLines="6" RichText="FALSE" RichTextMode="FullHtml" AppendOnly="FALSE"></Field>
+
+  <Field ID="{54c33e2a-a458-4ef9-8d7a-f1167887ec5c}" Name="TW_LikeCount" DisplayName="Count Likes" Type="Number" Required="FALSE" Group="_TW" Percentage="FALSE">
+    <Default>0</Default>
+  </Field>
+
+  <Field ID="{9fb0a0fc-75e9-4224-a9b1-9bb0acc3bdcd}" Name="TW_LikeIds" DisplayName="Ids Like" Type="Note" Required="FALSE" Group="_TW" NumLines="6" RichText="FALSE" RichTextMode="Compatible" AppendOnly="FALSE"></Field>
+
+  <!-- Question Fields -->
+  <Field ID="{7d4ee5f7-d1cc-4d04-983d-2052031800f5}" Name="TW_IsAnswered" DisplayName="Is Answered" Type="Boolean" Required="FALSE" Group="_TW">
+    <Default>0</Default>
+  </Field>
+
+  <Field ID="{521325f8-6e0a-4b9f-9a53-a34fe70f2488}" Name="TW_FollowEmails" DisplayName="Follow Emails" Type="Note" Required="FALSE" Group="_TW" NumLines="6" RichText="FALSE" RichTextMode="Compatible" AppendOnly="FALSE"></Field>
+
+  <!-- Reply Fields -->
+  <Field ID="{a41b6b54-7fa0-426b-8bf6-d8b7d07f1baa}" Name="TW_IsAnswer" DisplayName="Is Answer" Type="Boolean" Required="FALSE" Group="_TW">
+    <Default>0</Default>
+  </Field>
+
+  <Field ID="{9b2e96d7-4084-4881-8f6a-91f07eb78ca6}" Name="TW_HelpfulCount" DisplayName="Count Helpful" Type="Number" Required="FALSE" Group="_TW" Percentage="FALSE">
+    <Default>0</Default>
+  </Field>
+
+  <Field ID="{d78817a1-eaba-48f6-a55a-5ecfe645de46}" Name="TW_HelpfulIds" DisplayName="Ids Helpful" Type="Note" Required="FALSE" Group="_TW" NumLines="6" RichText="FALSE" RichTextMode="Compatible" AppendOnly="FALSE"></Field>
+
+  <Field ID="{672f66ce-f9a0-447e-ba2c-96b1814f1898}" Type="Lookup" Name="TW_QuestionLookup" DisplayName="Related Question" Required="FALSE" Group="_TW" List="Lists/Questions" ShowField="Title" />
+
+  <Field ID="{06fb6a45-b62c-4c31-a82c-4fc95e510029}" Type="Lookup" Name="TW_ReplyLookup" DisplayName="Related Reply" Required="FALSE" Group="_TW" List="Lists/Questions" ShowField="Title" />
+
+
+  <Field ID="{8687a351-7e1b-4f4d-a85e-2feca68079f6}" Type="Choice" Name="TW_QuestionType" DisplayName="Discussion Type" Required="FALSE" Group="_TW">
+    <CHOICES>
+      <CHOICE>Question</CHOICE>
+      <CHOICE>Conversation</CHOICE>
+    </CHOICES>
+    <Default>Question</Default>
+  </Field>
+
+  <Field ID="{529b4614-c444-4fef-b581-30108e44f4b6}" Type="URL" Name="TW_SourcePage" DisplayName="Page" Required="FALSE" Group="_TW"></Field>
+
+  <Field ID="{c913f4f2-60a4-4603-bda1-f6325b5fb9d0}" Type="Choice" Name="TW_Category" DisplayName="Category" Required="FALSE" FillInChoice="TRUE" Group="_TW"></Field>
+
+  <ContentType ID="0x01008B64E4A73BE90C46A62FC880772E3184" Name="Question" Description="Content Type for asking a question" Group="_TW">
+    <FieldRefs>
+      <!--Title Site Column -->
+      <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" />
+      <!-- TW_Details Site Column -->
+      <FieldRef ID="{8f1abe02-cc82-477c-be27-6fefaac2cb6f}" />
+      <!-- TW_IsAnswered Site Column -->
+      <FieldRef ID="{7d4ee5f7-d1cc-4d04-983d-2052031800f5}" />
+      <!-- TW_LikeCount Site Column -->
+      <FieldRef ID="{54c33e2a-a458-4ef9-8d7a-f1167887ec5c}" />
+      <!-- TW_LikeIds Site Column -->
+      <FieldRef ID="{9fb0a0fc-75e9-4224-a9b1-9bb0acc3bdcd}" />
+      <!-- TW_FollowEmails Site Column -->
+      <FieldRef ID="{521325f8-6e0a-4b9f-9a53-a34fe70f2488}" />
+      <!-- TW_Category Site Column -->
+      <FieldRef ID="{c913f4f2-60a4-4603-bda1-f6325b5fb9d0}" />
+      <!-- TW_SourcePage Site Column -->
+      <FieldRef ID="{529b4614-c444-4fef-b581-30108e44f4b6}" />
+      <!-- TW_QuestionType Site Column -->
+      <FieldRef ID="{8687a351-7e1b-4f4d-a85e-2feca68079f6}" />
+    </FieldRefs>
+  </ContentType>
+
+  <ContentType ID="0x0100E33B533F27584848845AF62A7C292F00" Name="Reply" Description="Content Type for replying to a question" Group="_TW">
+    <FieldRefs>
+      <!--Title Site Column -->
+      <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" />
+      <!-- TW_Details Site Column -->
+      <FieldRef ID="{8f1abe02-cc82-477c-be27-6fefaac2cb6f}" />
+      <!-- TW_IsAnswer Site Column -->
+      <FieldRef ID="{a41b6b54-7fa0-426b-8bf6-d8b7d07f1baa}" />
+      <!-- TW_HelpfulCount Site Column -->
+      <FieldRef ID="{9b2e96d7-4084-4881-8f6a-91f07eb78ca6}" />
+      <!-- TW_HelpfulIds Site Column -->
+      <FieldRef ID="{d78817a1-eaba-48f6-a55a-5ecfe645de46}" />
+      <!-- TW_LikeCount Site Column -->
+      <FieldRef ID="{54c33e2a-a458-4ef9-8d7a-f1167887ec5c}" />
+      <!-- TW_LikeIds Site Column -->
+      <FieldRef ID="{9fb0a0fc-75e9-4224-a9b1-9bb0acc3bdcd}" />
+      <!-- TW_QuestionLookup Site Column -->
+      <FieldRef ID="{672f66ce-f9a0-447e-ba2c-96b1814f1898}" />
+      <!-- TW_ReplyLookup Site Column -->
+      <FieldRef ID="{06fb6a45-b62c-4c31-a82c-4fc95e510029}" />
+    </FieldRefs>
+  </ContentType>
+
+  <!-- FeatureId must match the id of the 'CustomList' SharePoint Feature, run Get-PnPFeature -Scope Web to find them -->
+  <ListInstance CustomSchema="schema.xml"
+    FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+    Title="Questions"
+    Hidden="FALSE"
+    VersioningEnabled="TRUE"
+    Description="Questions List"
+    TemplateType="100"
+    Url="Lists/Questions">
+  </ListInstance>
+
+  <!-- FeatureId must match the id of the 'DocumentLibrary' SharePoint Feature, run Get-PnPFeature -Scope Web to find them -->
+  <ListInstance
+    FeatureId="00bfea71-e717-4e80-aa17-d0c71b360101"
+    Title="Questions Assets"
+    Hidden="TRUE"
+    VersioningEnabled="TRUE"
+    Description="Questions Assets"
+    TemplateType="101"
+    Url="QuestionsAssets">
+  </ListInstance>
+
+  <!-- FeatureId must match the id of the 'CustomList' SharePoint Feature, run Get-PnPFeature -Scope Web to find them -->
+  <ListInstance
+    FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+    Title="Question Category Labeling"
+    Hidden="TRUE"
+    VersioningEnabled="TRUE"
+    Description="Questions List"
+    TemplateType="100"
+    Url="Lists/QuestionCategoryLabeling">
+  </ListInstance>
+
+  <Module Name="QuestionsPage" Url="SitePages">
+    <File Path="QuestionsSitePage.aspx" Url="Questions.aspx" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary"></File>
+    <File Path="ConversationsSitePage.aspx" Url="Conversations.aspx" IgnoreIfAlreadyExists="TRUE" ReplaceContent="TRUE" Type="GhostableInLibrary"></File>
+  </Module>
+
+</Elements>

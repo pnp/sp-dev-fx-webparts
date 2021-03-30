@@ -26,8 +26,8 @@ Sample SharePoint Framework client-side web part illustrating communication with
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -84,13 +84,13 @@ Version|Date|Comments
 
 ### Configure the web part
 
-- in the command line change the working directory to the **webpart** folder
+- in the command line change the working directory to the `webpart` folder
 - in the command line run `npm i`
-- in your code editor open the **webpart** folder
-- in the **./src/webparts/recentOrders/AdalConfig.ts** file
-  - replace the empty GUID in the **clientId** property with the application ID of the **Orders** application
-  - in the **endpoints** property, replace the URL of the API with the URL of your API App and the empty GUID with the application ID of the **Orders API** app.
-- in the **./src/webparts/recentOrders/components/RecentOrders.tsx** file
+- in your code editor open the `webpart` folder
+- in the `./src/webparts/recentOrders/AdalConfig.ts` file
+  - replace the empty GUID in the `clientId` property with the application ID of the **Orders** application
+  - in the `endpoints` property, replace the URL of the API with the URL of your API App and the empty GUID with the application ID of the **Orders API** app.
+- in the `./src/webparts/recentOrders/components/RecentOrders.tsx` file
   - in line 155 replace the empty GUID with the application ID of the **Orders API** application
   - in line 185 replace the URL with the URL of your API App
 - in the command line execute `gulp serve`

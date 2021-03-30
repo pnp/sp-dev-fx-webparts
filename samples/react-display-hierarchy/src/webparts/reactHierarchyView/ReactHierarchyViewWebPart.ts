@@ -1,11 +1,8 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneTextField } from "@microsoft/sp-property-pane";
 
 import * as strings from 'ReactHierarchyViewWebPartStrings';
 import ReactHierarchyView from './components/ReactHierarchyView';
@@ -15,9 +12,7 @@ import {
   EnvironmentType,
   ServiceScope
 } from '@microsoft/sp-core-library';
-
-// sp-pnp-js for SPFx context configuration
-import * as pnp from "@pnp/sp";
+import { sp } from "@pnp/sp/presets/all";
 
 export interface IReactHierarchyViewWebPartProps {
   listName: string;
@@ -27,7 +22,7 @@ export default class ReactHierarchyViewWebPart extends BaseClientSideWebPart<IRe
 
   public async onInit(): Promise<void> {
     return super.onInit().then(_ => {
-      pnp.sp.setup({
+      sp.setup({
         spfxContext: this.context
       });
     });

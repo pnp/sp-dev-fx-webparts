@@ -5,9 +5,9 @@ This sample web part provides a user interface for applying a Modern Experience 
 
 The Theme Palette can be generated using the UI Fabric Theme Generator at: https://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/pull/9318/merge/theming-designer/index.html.
 
-<h2>The following feature is available within this sample:</h2>
+### The following feature is available within this sample:
 
-<b>Apply a theme:</b><br>
+#### Apply a theme:
 By providing a Site Collection URL, along with a theme name and palette, the theme will be applied to the Site Collection directly without being added to the tenant Company Theme options.<br>
 NOTE: This is a great option to provide theme management of a Site Collection without adding a theme to the "Company Themes" choices within the "Change the Look" options at the tenant level. The web part could be added to a Site Collection App Catalog to ensure availability of the web part is only available to those approved for theme management.
 ![preview](./assets/apply-a-theme.png)
@@ -18,7 +18,7 @@ NOTE: This is a great option to provide theme management of a Site Collection wi
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * SharePoint 2019 on-premises
 
 

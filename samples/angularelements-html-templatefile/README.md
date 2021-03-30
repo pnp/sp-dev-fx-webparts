@@ -1,3 +1,20 @@
+---
+page_type: sample
+products:
+- office-sp
+- office-365
+languages:
+- javascript
+- typescript
+extensions:
+  contentType: samples
+  technologies:
+  - SharePoint Framework
+  platforms:
+  - AngularJS
+  createdDate: 1/8/2019 12:00:00 AM
+---
+
 # Angular Elements with HTML Template File in SharePoint Framework
 
 ## Summary
@@ -9,8 +26,8 @@ A sample web part illustrating how to use Angular Elements in the SharePoint Fra
 
 ## Applies to
 
-* [SharePoint Framework](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -48,7 +65,7 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 ## Implementation
 
 The below piece of code in gulpfile.js is the key to update the build pipeline:
-```
+```typescript
 //************START: Added to handle Template file url ************/
 
 var inlineNgxTemplate = require('gulp-inline-ngx-template');

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-pn-pjs-tester-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactPnPjsTester/ReactPnPjsTesterWebPart.js",
+          "manifest": "./src/webparts/reactPnPjsTester/ReactPnPjsTesterWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactPnPjsTesterWebPartStrings": "lib/webparts/reactPnPjsTester/loc/{locale}.js"
+  }
+}

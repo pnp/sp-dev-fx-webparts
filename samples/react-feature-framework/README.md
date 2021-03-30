@@ -28,9 +28,9 @@ Demonstrated assets getting deployed to SharePoint site are following
 
 When you install SPFx so site, web scoped feature is activated and associated element.xml files are being processed. Technically you could also provision SharePoint assets using JavaScript, but it is limited to context of the current user using that component. If the user doesn't have sufficient permissions to create or modify SharePoint items, the JavaScript code will not provision those items. 
 
-More details on the capability is available from following article
+More details on the capability is available from the following article
 
-* [Provision SharePoint assets with your solution package](https://dev.office.com/sharepoint/docs/spfx/toolchain/provision-sharepoint-assets)
+* [Provision SharePoint assets with your solution package](https://docs.microsoft.com/sharepoint/dev/spfx/toolchain/provision-sharepoint-assets)
 
 ## Used SharePoint Framework Version 
 ![drop](https://img.shields.io/badge/version-GA-green.svg)
@@ -38,7 +38,7 @@ More details on the capability is available from following article
 ## Applies to
 
 * [SharePoint Framework](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
  
@@ -63,19 +63,19 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-- Clone this repositoru
+- Clone this repository
 - Move to /samples/react-feature-framework folder
 - in the command line run:
   - `npm install`
   - `gulp bundle`
   - `gulp package-solution`
-- Install `react-feature-framework.sppkg` from /sharepoint/solution to app catalog in your tenant
+- Install `react-feature-framework.sppkg` from `/sharepoint/solution` to app catalog in your tenant
 - Install solution to SharePoint site
 
 Following items are being provisioned
 
 - SPFxAmount and SPFxCostCenter fields under 'SPFx Columns' group - visible in the Site Column Gallery
 - Cost Center content type using 'SPFx Content Types' group using custom fields - visible in Site Content Types Gallery
-- List called 'SPFx List' using custom schema.xml file using custom content tyep - visible in site contents page
+- List called 'SPFx List' using custom schema.xml file using custom content type - visible in site contents page
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-feature-framework" />

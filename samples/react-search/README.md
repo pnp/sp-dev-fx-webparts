@@ -26,8 +26,8 @@ Sample Search Web Part with internal and external template support. This sample 
 
 ## Applies to
 
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -40,7 +40,7 @@ react-search-wp|Elio Struyf (MVP, U2U, [@eliostruyf](https://twitter.com/eliostr
 Version|Date|Comments
 -------|----|--------
 0.0.4|September 08, 2016|Initial release
-0.0.5|September 27, 2016|Updates for drop 4. Added the abilty to use various search tokens. Plus a logging field to watch search calls.
+0.0.5|September 27, 2016|Updates for drop 4. Added the ability to use various search tokens. Plus a logging field to watch search calls.
 0.0.6|October 19, 2016|Updates for drop 5.
 0.1.0|January 18, 2017|Updates to support RC0.
 1.0.0|February 28, 2017|Updates to support GA.
@@ -64,7 +64,7 @@ Version|Date|Comments
 
 The search web part is a sample client-side web part built on the SharePoint Framework. The web part makes use of React and the Flux pattern.
 
-The web part has built in templating support for internal (created within the project) and external (loaded from a URL) templates.
+The web part has built-in templating support for internal (created within the project) and external (loaded from a URL) templates.
 
 When adding your query you are able to make use of the following tokens: {Today}, {Today+Number}, {Today-Number}, {CurrentDisplayLanguage}, {User}, {User.Name}, {User.Email}, {Site}, {SiteCollection}.
 

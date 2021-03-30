@@ -3,7 +3,7 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
@@ -13,22 +13,23 @@ import Outlook2SharePoint from './components/Outlook2SharePoint';
 import { IOutlook2SharePointProps } from './components/IOutlook2SharePointProps';
 
 export interface IOutlook2SharePointWebPartProps {
-  description: string;
+  
 }
 
 export default class Outlook2SharePointWebPart extends BaseClientSideWebPart <IOutlook2SharePointWebPartProps> {  
   public render(): void {
     let mail: IMail = null;    
     if (this.context.sdks.office) {
-      const item = this.context.sdks.office.context.mailbox.item;      
+      const item = this.context.sdks.office.context.mailbox.item;  
+      const itemId = this.context.sdks.office.context.mailbox.convertToRestId(item.itemId, 'v2.0');   
       if (item !== null) {
-        mail = { id: item.itemId,subject: item.subject };       
+        mail = { id: itemId, subject: item.subject };       
       }      
     }
     
     const element: React.ReactElement<IOutlook2SharePointProps> = React.createElement(
       Outlook2SharePoint,
-      {
+      {        
         msGraphClientFactory: this.context.msGraphClientFactory,
         mail: mail
       }
@@ -56,8 +57,8 @@ export default class Outlook2SharePointWebPart extends BaseClientSideWebPart <IO
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneToggle('saveMetadata', {
+                  label: strings.SaveMetadataFieldLabel
                 })
               ]
             }

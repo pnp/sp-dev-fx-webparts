@@ -1,7 +1,7 @@
 import { ITaskList } from '../models/ICommonObjects';
 import {
     IPropertyPaneDropdownOption,
-} from '@microsoft/sp-webpart-base';
+} from '@microsoft/sp-property-pane';
 
 export class Utils {
 

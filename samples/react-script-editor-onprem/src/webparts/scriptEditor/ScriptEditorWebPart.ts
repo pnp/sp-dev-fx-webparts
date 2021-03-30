@@ -140,12 +140,11 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
 
         // main section of function
         const scripts = [];
-        const children_nodes = element.childNodes;
+        const children_nodes = element.getElementsByTagName("script");
 
         for (let i = 0; children_nodes[i]; i++) {
             const child: any = children_nodes[i];
-            if (this.nodeName(child, "script") &&
-                (!child.type || child.type.toLowerCase() === "text/javascript")) {
+            if (!child.type || child.type.toLowerCase() === "text/javascript") {
                 scripts.push(child);
             }
         }

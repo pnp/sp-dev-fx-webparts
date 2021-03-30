@@ -12,8 +12,8 @@ This webpart will allow a user to select a text file contatining zpl which is us
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -25,7 +25,7 @@ react-zpl-viewer | Zach Roberts [spodev](https://spodev.com)
 
 Version|Date|Comments
 -------|----|--------
-1.0|Feburary 13, 2020|Initial release
+1.0|February 13, 2020|Initial release
 
 ## Disclaimer
 

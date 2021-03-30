@@ -13,7 +13,7 @@ extensions:
   - react
   createdDate: 8/1/2017 12:00:00 AM
 ---
-# Display Employee Spotlight JavaScript Client-Side Web Part
+# Employee Spotlight
 
 ## Summary
 Simple Web Part that demonstrates the use of SharePoint Framework for show casing Employee Spotlight. The web part pulls data from a configured list and User Profile service.
@@ -42,8 +42,8 @@ Simple Web Part that demonstrates the use of SharePoint Framework for show casin
 ![drop](https://img.shields.io/badge/drop-1.8.0-green.svg)
 
 ## Applies to
-* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 ## Solution

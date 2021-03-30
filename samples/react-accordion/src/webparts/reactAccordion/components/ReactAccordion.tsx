@@ -26,6 +26,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
     super(props);
     this.state = {
       status: this.listNotConfigured(this.props) ? 'Please configure list in Web Part properties' : 'Ready',
+      pagedItems: [],
       items: [],
       listItems: [],
       isLoading: false,
@@ -52,7 +53,10 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       event === null ||
       event === "") {
       let listItemsCollection = [...this.state.listItems];
-      this.setState({ items: listItemsCollection.splice(0, this.props.maxItemsPerPage) });
+      this.setState({
+        items: listItemsCollection,
+        pagedItems: listItemsCollection.slice(0, this.props.maxItemsPerPage)
+      });
     }
     else {
       var updatedList = [...this.state.listItems];
@@ -61,12 +65,16 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
           event.toLowerCase()) !== -1 || item.Description.toLowerCase().search(
             event.toLowerCase()) !== -1;
       });
-      this.setState({ items: updatedList });
+      this.setState({
+        items: updatedList,
+        pagedItems: updatedList.slice(0, this.props.maxItemsPerPage)
+      });
     }
   }
 
   private readItems(): void {
-    let restAPI = this.props.siteUrl + `/_api/web/Lists/GetByTitle('${this.props.listName}')/items?$select=Title,Description`;
+    
+    let restAPI = this.props.siteUrl + `/_api/web/Lists/GetByTitle('${this.props.listName}')/items?$select=Title,Description&$top=${this.props.totalItems}`;
 
     this.props.spHttpClient.get(restAPI, SPHttpClient.configurations.v1, {
       headers: {
@@ -83,7 +91,8 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
 
         this.setState({
           status: "",
-          items: listItemsCollection.splice(0, this.props.maxItemsPerPage),
+          pagedItems: listItemsCollection.slice(0, this.props.maxItemsPerPage),
+          items: response.value,
           listItems: response.value,
           isLoading: false,
           loaderMessage: ""
@@ -91,7 +100,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       }, (error: any): void => {
         this.setState({
           status: 'Loading all items failed with error: ' + error,
-          items: [],
+          pagedItems: [],
           isLoading: false,
           loaderMessage: ""
         });
@@ -102,18 +111,19 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
   public render(): React.ReactElement<IReactAccordionProps> {
     let displayLoader;
     let faqTitle;
-    let { listItems } = this.state;
+    let { items } = this.state;
     let pageCountDivisor: number = this.props.maxItemsPerPage;
     let pageCount: number;
     let pageButtons = [];
 
     let _pagedButtonClick = (pageNumber: number, listData: any) => {
       let startIndex: number = (pageNumber - 1) * pageCountDivisor;
+      let endIndex = startIndex + pageCountDivisor;
       let listItemsCollection = [...listData];
-      this.setState({ items: listItemsCollection.splice(startIndex, pageCountDivisor) });
+      this.setState({ pagedItems: listItemsCollection.slice(startIndex, endIndex) });
     };
 
-    const items: JSX.Element[] = this.state.items.map((item: IAccordionListItem, i: number): JSX.Element => {
+    const pagedItems: JSX.Element[] = this.state.pagedItems.map((item: IAccordionListItem, i: number): JSX.Element => {
       return (
         <AccordionItem>
           <AccordionItemTitle className="accordion__title">
@@ -139,11 +149,13 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
       displayLoader = (null);
     }
 
-    if (this.state.listItems.length > 0) {
-      pageCount = Math.ceil(this.state.listItems.length / pageCountDivisor);
-    }
-    for (let i = 0; i < pageCount; i++) {
-      pageButtons.push(<PrimaryButton onClick={() => { _pagedButtonClick(i + 1, listItems); }}> {i + 1} </PrimaryButton>);
+    if(this.props.enablePaging){
+      if (items.length > 0) {
+        pageCount = Math.ceil(items.length / pageCountDivisor);
+      }
+      for (let i = 0; i < pageCount; i++) {
+        pageButtons.push(<PrimaryButton onClick={() => { _pagedButtonClick(i + 1, items); }}> {i + 1} </PrimaryButton>);
+      }
     }
     return (
       <div className={styles.reactAccordion}>
@@ -164,7 +176,7 @@ export default class ReactAccordion extends React.Component<IReactAccordionProps
             <div className='ms-Grid-col ms-u-lg12'>
               {this.state.status}
               <Accordion accordion={false}>
-                {items}
+                {pagedItems}
               </Accordion>
             </div>
           </div>

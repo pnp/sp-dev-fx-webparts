@@ -1,4 +1,4 @@
-# React Teams Creator Web Part
+# Teams Creator
 
 ## Summary
 
@@ -13,11 +13,11 @@ The web part illustrates usage of MS Graph beta APIs to work with Teams:
 ![React Side Panel Client-Side Web Part](./assets/teams-creator.png)
 
 ## Used SharePoint Framework Version 
-![drop](https://img.shields.io/badge/drop-1.7.0-green.svg)
+![1.7.0](https://img.shields.io/badge/drop-1.7.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [MS Graph](https://developer.microsoft.com/en-us/graph)
 * [MS Teams](https://docs.microsoft.com/en-us/microsoftteams/microsoft-teams)
 

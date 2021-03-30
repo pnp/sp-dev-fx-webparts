@@ -1,26 +1,20 @@
+import { Version } from "@microsoft/sp-core-library";
+import { AadHttpClient, AadHttpClientConfiguration, HttpClientResponse, IAadHttpClientConfiguration, IAadHttpClientConfigurations, IAadHttpClientOptions } from "@microsoft/sp-http";
+import { SPPermission } from "@microsoft/sp-page-context";
+import { IPropertyPaneConfiguration, IPropertyPaneDropdownOption, PropertyPaneCheckbox, PropertyPaneDropdown, PropertyPaneSlider, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { sp } from "@pnp/sp";
+import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
 import * as React from "react";
 import * as ReactDom from "react-dom";
-import { Version } from "@microsoft/sp-core-library";
-import { SPPermission } from "@microsoft/sp-page-context";
-import { PropertyFieldListPicker, PropertyFieldListPickerOrderBy } from '@pnp/spfx-property-controls/lib/PropertyFieldListPicker';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneDropdown, IPropertyPaneDropdownOption,
-  PropertyPaneCheckbox,
-  PropertyPaneToggle
-} from "@microsoft/sp-webpart-base";
-import {sp} from "@pnp/sp";
-import * as strings from "spSecurityStrings";
-import SpSecurity from "./components/SpSecurity";
-import { ISpSecurityProps } from "./components/ISpSecurityProps";
 
+import { ISpSecurityProps } from "./components/ISpSecurityProps";
+import SpSecurity from "./components/SpSecurity";
+import { PropertyFieldSelectedPermissions } from "./containers/PropertyFieldSelectedPermissions";
 import { ISpSecurityWebPartProps } from "./ISpSecurityWebPartProps";
-import { PropertyPaneSlider } from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPaneFields/propertyPaneSlider/PropertyPaneSlider";
-import PropertyPane from "@microsoft/sp-webpart-base/lib/propertyPane/propertyPane/PropertyPane";
 
 export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurityWebPartProps> {
+  private aadHttpClient: AadHttpClient;
   public onInit(): Promise<void> {
     return super.onInit().then(_ => {
       sp.setup({
@@ -29,17 +23,27 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
         defaultCachingTimeoutSeconds: 30,
         globalCacheDisable: true // or true to disable caching in case of debugging/testing
       });
+    }).then(_ => {
+      this.context.aadHttpClientFactory.getClient(`https://graph.microsoft.com`)
+        .then((client: AadHttpClient) => {
+          // Search for the users with givenName, surname, or displayName equal to the searchFor value
+          this.aadHttpClient = client;
+        });
+
     });
   }
+
   public render(): void {
 
     const props: ISpSecurityProps = {
-      permission: this.properties.permission,
+      //permission: this.properties.permission,  // old way
+      selectedPermissions: this.properties.selectedPermissions.map((spp) => { return { ...spp, isChecked: true }; }),
       showHiddenLists: this.properties.showHiddenLists,
       showCatalogs: this.properties.showCatalogs,
       showEmail: this.properties.showEmail,
       showSecurityGroups: this.properties.showSecurityGroups,
       showUsers: this.properties.showUsers,
+      showOnlyUsersWithPermission: this.properties.showOnlyUsersWithPermission,
       letUserSelectPermission: this.properties.letUserSelectPermission,
       letUserSelectUsers: this.properties.letUserSelectUsers,
       letUserSelectLists: this.properties.letUserSelectLists,
@@ -48,8 +52,8 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
       listTitleColumnWidth: this.properties.listTitleColumnWidth,
       users: this.properties.users,
       getPermissionTypes: this.getPermissionTypes,
-      graphHttpClient: this.context.graphHttpClient,
-      domElement : this.domElement
+      aadHttpClient: this.aadHttpClient,
+      domElement: this.domElement
 
     };
     const element: React.ReactElement<ISpSecurityProps> = React.createElement(
@@ -75,21 +79,41 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
     }
     return perms;
   }
+  private onPropertyChange(propertyPath: string, oldValue: any, newValue: any) {
+    //debugger;
+    // does this get oldvalue and new value?
+    switch (propertyPath) {
+      case "SelectedPermissions":
+
+        this.properties.selectedPermissions = newValue;
+
+        this.context.propertyPane.refresh();
+        this.render();
+        break;
+      default:
+        break;
+    }
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
           header: {
-            description: "Configuration"
+            description: "Permission Configuration"
           },
           groups: [
             {
               groupName: "Permission Settings",
               groupFields: [
 
-                PropertyPaneDropdown("permission", {
-                  label: "Permission Type",
-                  options: this.getPermissionTypes()
+                PropertyFieldSelectedPermissions("SelectedPermissions", {
+                  label: "Selected Permissions and Colors",
+                  onPropertyChange: this.onPropertyChange.bind(this),
+
+                  getSelectedPermissions: () => {
+                    return this.properties.selectedPermissions || [];
+                  },
                 }),
                 PropertyPaneCheckbox("letUserSelectPermission", {
                   text: "Let user select Permission"
@@ -112,12 +136,52 @@ export default class SpSecurityWebPart extends BaseClientSideWebPart<ISpSecurity
                 PropertyPaneCheckbox("showUsers", {
                   text: "Show Users"
                 }),
-
+                PropertyPaneToggle("showOnlyUsersWithPermission", {
+                  label: "Only show users with permission",
+                  onText: "Show users only if they have permission",
+                  offText: "Show all users",
+                }),
                 PropertyPaneCheckbox("letUserSelectUsers", {
                   text: "Let user select Users"
                 })
               ]
             },
+            {
+              groupName: "Display Settings",
+              groupFields: [
+                PropertyPaneSlider("listTitleColumnWidth", {
+                  label: "Initial title column width",
+                  min: 1,
+                  max: 1000
+                }),
+              ]
+            }
+          ]
+        },
+        {
+          header: {
+            description: "Permission Configuration"
+          },
+          groups: [
+            {
+              groupName: "Permission Settings",
+              groupFields: [
+
+                PropertyFieldSelectedPermissions("SelectedPermissions", {
+                  label: "Selected Permissions and Colors",
+                  onPropertyChange: this.onPropertyChange.bind(this),
+
+                  getSelectedPermissions: () => {
+                    return this.properties.selectedPermissions || [];
+                  },
+                }),
+                PropertyPaneCheckbox("letUserSelectPermission", {
+                  text: "Let user select Permission"
+                }),
+
+              ]
+            },
+
             {
               groupName: "Display Settings",
               groupFields: [

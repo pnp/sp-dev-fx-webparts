@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-yammer-aadtoken-client-side-solution",
+    "id": "26a3fd56-6c52-4dc8-97fc-7d985adda244",
+    "version": "1.0.0.8",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Windows Azure Active Directory",
+       "scope": "User.Read"
+      }
+     ],
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-yammer-praise.sppkg"
+  }
+}

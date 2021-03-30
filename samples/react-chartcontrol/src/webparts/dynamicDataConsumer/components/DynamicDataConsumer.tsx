@@ -7,6 +7,7 @@ import * as strings from 'DynamicDataConsumerWebPartStrings';
 
 // used to add a chart control
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartOptions } from 'chart.js';
 
 // used to format date
 import * as moment from 'moment';
@@ -17,11 +18,11 @@ import * as moment from 'moment';
  * Unlike most samples in this solution, most of the business logic/data retrieval isn't here, but
  * in the web part.
  */
-export default class DynamicDataConsumer extends React.Component<IDynamicDataConsumerProps, {}> {
+export class DynamicDataConsumer extends React.Component<IDynamicDataConsumerProps, {}> {
 
   public render(): React.ReactElement<IDynamicDataConsumerProps> {
     const { alias, data } = this.props;
-    const options: Chart.ChartOptions = {
+    const options: ChartOptions = {
       legend: {
         display: false // don't display a legend -- there's only one data point
       },

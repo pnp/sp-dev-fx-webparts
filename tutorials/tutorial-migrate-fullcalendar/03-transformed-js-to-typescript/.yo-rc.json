@@ -1,8 +1,12 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.1.0",
-    "libraryName": "spfx-js-fullcalendar",
-    "libraryId": "e6a89529-5fef-4883-b84c-c6bc27b0bfb0",
-    "environment": "spo"
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.10.0",
+    "libraryName": "fullcalendar-taskscalendar",
+    "libraryId": "c8f6ee3a-f24a-4b6b-b1bf-ce7121f65205",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
   }
 }

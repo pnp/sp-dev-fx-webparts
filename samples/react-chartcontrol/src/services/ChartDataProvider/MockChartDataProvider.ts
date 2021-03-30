@@ -1,10 +1,11 @@
 import IChartDataProvider from "./IChartDataProvider";
+import { ChartPoint } from 'chart.js';
 
 const FAKE_DELAY: number = 500;
 /**
  * Returns an array of chart points (x,y)
  */
-export default class MockChartDataProvider implements IChartDataProvider {
+export class MockChartDataProvider implements IChartDataProvider {
   public getSignedNumberArray(length: number): Promise<number[]> {
     return new Promise<number[]>((resolve) => {
       // pretend we're getting the data from a service
@@ -20,16 +21,16 @@ export default class MockChartDataProvider implements IChartDataProvider {
 
   /**
    * Returns a multi-dataset array of points for a bubble chart
-   * @param numDatasets How many datesets to generate
+   * @param numDatasets How many datasets to generate
    * @param length How long should each dataset be?
    */
-  public getMultiBubbleArrays(numDatasets: number, length: number): Promise<Array<Chart.ChartPoint[]>> {
-    return new Promise<Array<Chart.ChartPoint[]>>((resolve) => {
+  public getMultiBubbleArrays(numDatasets: number, length: number): Promise<Array<ChartPoint[]>> {
+    return new Promise<Array<ChartPoint[]>>((resolve) => {
       // pretend we're getting the data from a service
       setTimeout(() => {
-        let dataSetArray: Array<Chart.ChartPoint[]> = [];
+        let dataSetArray: Array<ChartPoint[]> = [];
         for (let dsIndex = 0; dsIndex < numDatasets; dsIndex++) {
-          let bubbleArray: Chart.ChartPoint[] = [];
+          let bubbleArray: ChartPoint[] = [];
           for (let index = 0; index < length; index++) {
             bubbleArray.push({
               x: MockChartDataProvider.getRandomNumber(),
@@ -72,11 +73,11 @@ export default class MockChartDataProvider implements IChartDataProvider {
    * Gets an array of points to render on a chart requiring X, Y coordinates
    * @param length Length of the dataset to generate
    */
-  public getPointArray(length: number): Promise<Chart.ChartPoint[]> {
-    return new Promise<Chart.ChartPoint[]>((resolve) => {
+  public getPointArray(length: number): Promise<ChartPoint[]> {
+    return new Promise<ChartPoint[]>((resolve) => {
       // pretend we're getting the data from a service
       setTimeout(() => {
-        let numArray: Chart.ChartPoint[] = [];
+        let numArray: ChartPoint[] = [];
         for (let index = 0; index < length; index++) {
           numArray.push(
             {
@@ -94,11 +95,11 @@ export default class MockChartDataProvider implements IChartDataProvider {
    * Gets an array of points for a scatter chart
    * @param length Length of the dataset to generate
    */
-  public getScatterArray(length: number): Promise<Chart.ChartPoint[]> {
-    return new Promise<Chart.ChartPoint[]>((resolve) => {
+  public getScatterArray(length: number): Promise<ChartPoint[]> {
+    return new Promise<ChartPoint[]>((resolve) => {
       // pretend we're getting the data from a service
       setTimeout(() => {
-        let numArray: Chart.ChartPoint[] = [];
+        let numArray: ChartPoint[] = [];
         for (let index = 0; index < length; index++) {
           numArray.push(
             {

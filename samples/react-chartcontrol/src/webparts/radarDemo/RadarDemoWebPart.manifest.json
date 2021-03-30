@@ -3,7 +3,7 @@
   "id": "510b8ccc-c873-4a41-87ca-b43d94bb6d20",
   "alias": "RadarDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

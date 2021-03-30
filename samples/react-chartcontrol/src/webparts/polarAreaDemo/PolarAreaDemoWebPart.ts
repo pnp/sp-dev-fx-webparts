@@ -1,14 +1,12 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-} from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart,  } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 
 import * as strings from 'PolarAreaDemoWebPartStrings';
-import PolarAreaDemo from './components/PolarAreaDemo';
+import { PolarAreaDemo } from './components/PolarAreaDemo';
 import { IPolarAreaDemoProps } from './components/IPolarAreaDemo.types';
 
 export interface IPolarAreaDemoWebPartProps {
@@ -27,10 +25,6 @@ export default class PolarAreaDemoWebPart extends BaseClientSideWebPart<IPolarAr
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

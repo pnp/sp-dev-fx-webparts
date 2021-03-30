@@ -1,0 +1,22 @@
+:global #workbenchPageContent {
+  .CanvasComponent {
+    .CanvasZone {
+      max-width: 100%;
+      padding-left: 0 !important;
+      padding-right: 0;
+
+      .CanvasSection {
+        padding-left: 0;
+        padding-right: 0;
+
+        .ControlZone {
+          padding: 0;
+
+          .CanvasControlToolbar {
+            left: -32px;
+          }
+        }
+      }
+    }
+  }
+}

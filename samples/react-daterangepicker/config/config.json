@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "spfx-react-daterangepicker-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spfxReactDaterangepicker/SpfxReactDaterangepickerWebPart.js",
+          "manifest": "./src/webparts/spfxReactDaterangepicker/SpfxReactDaterangepickerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpfxReactDaterangepickerWebPartStrings": "lib/webparts/spfxReactDaterangepicker/loc/{locale}.js"
+  }
+}

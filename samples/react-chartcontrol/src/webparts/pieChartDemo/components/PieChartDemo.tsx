@@ -5,16 +5,17 @@ import * as strings from 'PieChartDemoWebPartStrings';
 
 // used to add a chart control
 import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import { ChartData } from 'chart.js';
 
 
 // used to retrieve (fake) data from a (fake) service
 import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
+import { MockChartDataProvider } from '../../../services/ChartDataProvider/MockChartDataProvider';
 
 // used to render the toolbar above the chart
 import {
   CommandBar
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 /**
  * Define the chart colors:
@@ -36,7 +37,7 @@ const DATA_LENGTH: number = 5;
 /**
  * This sample demonstrates add and modifying the data in a pie chart
  */
-export default class PieChartDemo extends React.Component<IPieChartDemoProps, {}> {
+export class PieChartDemo extends React.Component<IPieChartDemoProps, {}> {
   /**
    * The chart element
    */
@@ -96,7 +97,6 @@ export default class PieChartDemo extends React.Component<IPieChartDemoProps, {}
   private _renderCommandBar(): JSX.Element {
     return (
       <CommandBar
-        isSearchBoxVisible={false}
         items={[
           {
             key: 'randomizeData',
@@ -206,7 +206,7 @@ export default class PieChartDemo extends React.Component<IPieChartDemoProps, {}
    */
   private _handleAddDataset = () => {
     // get the chart's data
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     // create a new dataset
     var newDataset = {
@@ -238,7 +238,7 @@ export default class PieChartDemo extends React.Component<IPieChartDemoProps, {}
    */
   private _handleRemoveDataset = () => {
     // get the data from the chart
-    const data: Chart.ChartData = this._chartElem.getChart().data;
+    const data: ChartData = this._chartElem.getChart().data;
 
     // splice the array and remove a dataset
     data.datasets.splice(0, 1);

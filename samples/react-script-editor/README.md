@@ -17,6 +17,8 @@ extensions:
 
 This version works only for SharePoint Online. If you want a version for Sharepoint on-premises go to [react-script-editor-onprem](../react-script-editor-onprem).
 
+**It's important you read and understand the notes on [deployment](#deploy-to-non-script-sites--modern-team-sites).**
+
 ## Summary
 Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page
 without having to repackage it as a new SharePoint Framework web part. This web part is similar to the classic
@@ -29,26 +31,28 @@ As an example add the following scripts to the web part in order to show stock t
 ```html
 <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container">
-    <div id="tradingview_ab4e5"></div>
-    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-MSFT/" rel="noopener" target="_blank"><span class="blue-text">MSFT chart</span></a> by TradingView</div>
+  <div id="tradingview_e7aa0"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 980,
+  "height": 610,
+  "symbol": "NASDAQ:AAPL",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "light",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "container_id": "tradingview_e7aa0"
+}
+  );
+  </script>
 </div>
-<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-<script type="text/javascript">
-    new TradingView.widget({
-        "width": 400,
-        "height": 200,
-        "symbol": "NASDAQ:MSFT",
-        "interval": "D",
-        "timezone": "Etc/UTC",
-        "theme": "Light",
-        "style": "1",
-        "locale": "en",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "allow_symbol_change": true,
-        "container_id": "tradingview_ab4e5"
-    });
-</script>
 <!-- TradingView Widget END -->
 ```
 
@@ -127,13 +131,29 @@ element.innerHTML = "Team: " + _teamsContexInfo.teamName + "<br\>Channel: " + _t
 
 ![Script Editor web part in Teams](./assets/modern-script-editor-wp-teams.gif)
 
+### Deploy to non-script sites / modern team sites
+By default this web part is not allowed on no-script sites, as it allows execution of arbitrary script. This is by design as from a security and governance perspective you might not want arbitrary script added to your pages. This is typically something you want control over.
+
+If you however want to allow the web part for non-script sites like Office 365 Group modern team sites you have to edit `ScriptEditorWebPart.manifest.json` with the following change:
+```
+"requiresCustomScript": false
+```
+
+### Deploy tenant wide
+By default you have to install this web part per site collection where you want it availble. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
+```
+"skipFeatureDeployment": true
+```
+
+In order to make it available to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
+
 ## Used SharePoint Framework Version
 ![drop](https://img.shields.io/badge/drop-1.10.0-green.svg)
 
 ## Applies to
 
 * [SharePoint Framework Release GA](https://blogs.office.com/2017/02/23/sharepoint-framework-reaches-general-availability-build-and-deploy-engaging-web-parts-today/)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
@@ -161,6 +181,8 @@ Version|Date|Comments
 1.0.0.13|July 1th, 2019|Downgrade to SPFx v1.4.1 to support SP2019
 1.0.0.14|Oct 13th, 2019|Added resolve to fix pnpm issue. Updated author info.
 1.0.0.15|Mar 16th, 2020|Upgrade to SPFx v1.10.0. Add support for Teams tab. Renamed package file.
+1.0.0.16|April 1st, 2020|Improved how script tags are handled and cleaned up on smart page navigation.
+1.0.17.0|January 29th, 2021|Changed versioning to 3 parts. Updated npm packages, restructured documentation, minor change to webpack analyzer setup.
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
@@ -182,23 +204,6 @@ Version|Date|Comments
 * Upload .sppkg file from sharepoint\solution to your tenant App Catalog
 	* E.g.: https://&lt;tenant&gt;.sharepoint.com/sites/AppCatalog/AppCatalog
 * Add the web part to a site collection, and test it on a page
-
-### Deploy to non-script sites / modern team sites
-By default this web part is not allowed on no-script sites, as it allows execution of arbitrary script. This is by design as from a security and governance perspective you might not want arbitrary script added to your pages. This is typically something you want control over.
-
-If you however want to allow the web part for non-script sites like Office 365 Group modern team sites you have to edit `ScriptEditorWebPart.manifest.json` with the following change:
-```
-"requiresCustomScript": false
-```
-
-### Deploy tenant wide
-By default you have to install this web part per site collection where you want it availble. If you want it enabled by default on all sites you have to edit `package-solution.json` with the following change:
-```
-"skipFeatureDeployment": true
-```
-
-In order to make it availble to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
-
 ## Features
 This web part illustrates the following concepts on top of the SharePoint Framework:
 

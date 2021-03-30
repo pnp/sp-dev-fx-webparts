@@ -2,6 +2,7 @@
 page_type: sample
 products:
 - office-sp
+- office-365
 languages:
 - javascript
 - typescript
@@ -13,7 +14,7 @@ extensions:
   - jQuery
   createdDate: 5/1/2017 12:00:00 AM
 ---
-## Bootstrap Slider Built with jQueryr v1.x and Boostrap v3.x
+# Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x
 
 ## Summary
 Sample bootstrap slider which pulls the slides from a list inside the SharePoint site. The list is automatically deployed once the app is installed in the SharePoint site.
@@ -29,8 +30,8 @@ Sample bootstrap slider which pulls the slides from a list inside the SharePoint
 
 ## Applies to
 
-* [SharePoint Framework Developer GA](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer GA](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
 
@@ -63,7 +64,7 @@ Version|Date|Comments
 - add the app to your SharePoint Online site
  - When the app is finished installing you should see a **SPFx List** in the **Site Contents** of the site
  ![Deployed List](./assets/List.png)
-- Add items to the **SPFx List** inorder for slides to display in the webpart
+- Add items to the **SPFx List** in order for slides to display in the webpart
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/bootstrap-slider" />
 

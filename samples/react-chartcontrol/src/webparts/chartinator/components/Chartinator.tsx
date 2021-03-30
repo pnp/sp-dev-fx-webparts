@@ -4,17 +4,25 @@ import { IChartinatorProps } from './Chartinator.types';
 import * as strings from 'ChartinatorWebPartStrings';
 
 // used to add a chart control
-import { ChartControl, ChartType, ChartPalette, PaletteGenerator } from '@pnp/spfx-controls-react/lib/ChartControl';
-import MockChartDataProvider from '../../../services/ChartDataProvider/MockChartDataProvider';
-import IChartDataProvider from '../../../services/ChartDataProvider/IChartDataProvider';
+import { ChartControl, ChartType } from '@pnp/spfx-controls-react/lib/ChartControl';
+import {
+  ChartScales,
+  PositionType,
+  ChartOptions,
+  InteractionMode,
+  ChartData,
+  ChartPoint,
+  ChartDataSets } from 'chart.js';
+
 import { IBubbleChartData, IScatterChartData, INumberChartData } from '../controls/PropertyFieldRepeatingData';
-import { ChartTitle } from '../controls/ChartTitle';
+import { WebPartTitle } from '@pnp/spfx-controls-react';
+
 import { DashStrokes } from '../controls/PropertyPaneDashSelector/components/DashSelector.types';
 
 // List methods to retrieve data
 import { IListService, ListService, IListItem, MockListService } from '../../../services/ListService';
 
-export default class Chartinator extends React.Component<IChartinatorProps, {}> {
+export class Chartinator extends React.Component<IChartinatorProps, {}> {
   /**
 * The chart element
 */
@@ -39,7 +47,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
     const { radialChart } = this.props;
 
     // Scales should not be defined for radial charts.
-    const chartScales: Chart.ChartScales = radialChart ? undefined : {
+    const chartScales: ChartScales = radialChart ? undefined : {
       yAxes: [{
         gridLines: {
           display: this.props.yAxisShowGridlines
@@ -94,10 +102,10 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
     }
 
     // set the legend position
-    const legendPosition: Chart.PositionType = this.props.legendPosition === 'none' ? 'top' : this.props.legendPosition as Chart.PositionType;
+    const legendPosition: PositionType = this.props.legendPosition === 'none' ? 'top' : this.props.legendPosition as PositionType;
 
     // set the options
-    const options: Chart.ChartOptions = {
+    const options: ChartOptions = {
       title: {
         display: false
       },
@@ -121,7 +129,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
       tooltips: {
         enabled: this.props.tooltipEnabled,
         intersect: this.props.tooltipIntersect,
-        mode: this.props.tooltipMode as Chart.InteractionMode,
+        mode: this.props.tooltipMode as InteractionMode,
         position: this.props.tooltipPosition
       },
       scales: chartScales
@@ -149,10 +157,16 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
 
     return (
       <div className={styles.chartinator}>
-        <ChartTitle displayMode={this.props.displayMode}
+        {/* <ChartTitle displayMode={this.props.displayMode}
           title={this.props.title}
           updateTitle={this.props.updateTitle}
           placeholder={strings.ChartTitlePlaceholder}
+        /> */}
+        <WebPartTitle displayMode={this.props.displayMode}
+          title={this.props.title}
+          updateProperty={this.props.updateTitle}
+          placeholder={strings.ChartTitlePlaceholder}
+          className={styles.webparttitle}
         />
         <ChartControl
           type={chartType}
@@ -177,7 +191,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
    * Loads data from a service.
    * This is where you would replace for your own code
    */
-  private _loadAsyncData(): Promise<Chart.ChartData> {
+  private _loadAsyncData(): Promise<ChartData> {
 
     const { data } = this.props;
 
@@ -194,9 +208,9 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
    * Loads data from a list or, if no data is provided,
    * from a mock list.
    */
-  private _loadListData = (): Promise<Chart.ChartData> => {
+  private _loadListData = (): Promise<ChartData> => {
     const { chartType } = this.props;
-    return new Promise<Chart.ChartData>((resolve, _reject) => {
+    return new Promise<ChartData>((resolve, _reject) => {
       let service: IListService;
 
       // If the data source is configured, get the data from the list
@@ -217,7 +231,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
         let dataItems = [];
         if (chartType === ChartType.Bubble) {
           dataItems = listItems.map((listItem: IListItem) => {
-            const dataItem: Chart.ChartPoint = {
+            const dataItem: ChartPoint = {
               x: listItem.Value,
               y: listItem.YValue,
               r: listItem.RValue
@@ -226,7 +240,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
           });
         } else if (chartType === ChartType.Scatter) {
           dataItems = listItems.map((listItem: IListItem) => {
-            const dataItem: Chart.ChartPoint = {
+            const dataItem: ChartPoint = {
               x: listItem.Value,
               y: listItem.YValue
             };
@@ -238,7 +252,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
           });
         }
 
-        const data: Chart.ChartData =
+        const data: ChartData =
         {
           labels: listItems.map((listItem: IListItem) => {
             return listItem.Label;
@@ -258,14 +272,14 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
     });
   }
 
-  private _loadManualData = (): Promise<Chart.ChartData> => {
+  private _loadManualData = (): Promise<ChartData> => {
     const { chartType } = this.props;
-    return new Promise<Chart.ChartData>((resolve, _reject) => {
+    return new Promise<ChartData>((resolve, _reject) => {
       const labels: string[] = this.props.data.map(dataRow => {
         return dataRow.name;
       });
 
-      let dataItems: Array<number | null | undefined> | Chart.ChartPoint[];
+      let dataItems: Array<number | null | undefined> | ChartPoint[];
 
       if (chartType === ChartType.Bubble) {
         dataItems = this.props.data.map((dataRow: IBubbleChartData) => {
@@ -289,7 +303,7 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
       }
 
 
-      const data: Chart.ChartData =
+      const data: ChartData =
       {
         labels: labels,
         datasets: [
@@ -306,9 +320,9 @@ export default class Chartinator extends React.Component<IChartinatorProps, {}> 
     });
   }
 
-  private _addDataOptions = (data: Chart.ChartData): void => {
+  private _addDataOptions = (data: ChartData): void => {
     const { chartType } = this.props;
-    const primaryDataSet: Chart.ChartDataSets = data.datasets[0];
+    const primaryDataSet: ChartDataSets = data.datasets[0];
 
     if (primaryDataSet === undefined) {
       return;

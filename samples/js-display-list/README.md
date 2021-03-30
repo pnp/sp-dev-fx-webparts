@@ -9,33 +9,36 @@ extensions:
   contentType: samples
   technologies:
   - SharePoint Framework
-  createdDate: 1/1/2016 12:00:00 AM
+  createdDate: 5/15/2017 12:00:00 AM
 ---
-﻿# Display List JavaScript Client-Side Web Part
+# Display List
 
 ## Summary
-This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list.
 
+This simplistic sample web part demonstrates the use of JavaScript in a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list.
 
-![Screeshot of the Display List web part](./assets/display-list-preview.png).
+![Screenshot of the Display List web part](./assets/display-list-preview.png).
 
 > Does only show data when hosted in SharePoint. No mock data at this point for local testing the rendering.
 
 ## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-GA-green.svg)
+
+![SPFx 1.11.0](https://img.shields.io/badge/drop-1.11.0-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework Developer](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [SharePoint Framework Developer](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-js-display-list|Naamat Al-Aswad, P.Eng.
-Updated to GA Version| Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev))
+js-display-list| Naamat Al-Aswad, P.Eng.
+js-display-list| Velin Georgiev ([@VelinGeorgiev](https://twitter.com/velingeorgiev)) (Updated to GA Version)
+js-display-list| Ryan Schouten ([@ShrPntKnight](https://twitter.com/ShrPntKnight)) (Upgraded to SPFx 1.11.0)
+
 
 
 ## Version history
@@ -44,9 +47,11 @@ Version|Date|Comments
 -------|----|--------
 1.0|September 22, 2016|Initial release
 1.1|May 15, 2017|Updated to GA Version
+2.0|August 29, 2020|Upgraded to SPFx 1.11.0
 
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -62,6 +67,7 @@ Version|Date|Comments
       - Basic functionality can be tested locally, data is only shown when used in context of SharePoint
 
 ## Features
+
 The js-display-list web part displays the content of the list specified in the web part properties pane.
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:

@@ -14,7 +14,7 @@ One way to find devs from the same stack near you.
 
 ## Applies to
 
-* [SharePoint Online](https:/dev.office.com/sharepoint)
+* [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
 
 ## Solution
@@ -59,3 +59,4 @@ Version|Date|Comments
   - `gulp package-solution --ship`
   - `Add to AppCatalog and deploy`
 
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-dev-radar" />

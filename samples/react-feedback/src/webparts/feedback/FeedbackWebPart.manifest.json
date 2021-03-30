@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "58f4aa4b-7256-42d7-880c-ba4f51d3f6ab",
+  "alias": "FeedbackWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Feedback"
+      },
+      "description": {
+        "default": "Feedback webpart to submit feedback on pages/articles."
+      },
+      "officeFabricIconFontName": "Feedback",
+      "properties": {
+        "buttonLabel": "Submit Feedback",
+        "feedbackCategory": "general",
+        "showCategory": true
+      }
+    }
+  ]
+}

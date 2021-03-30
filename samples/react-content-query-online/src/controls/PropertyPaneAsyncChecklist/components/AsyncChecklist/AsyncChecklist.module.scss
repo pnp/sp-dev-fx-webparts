@@ -1,0 +1,37 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.checklist {
+  .checklistItems {
+    border-color: "[theme:inputBorder, default:#a19f9d]";
+    border-style: solid;
+    border-width: 1px;
+
+    &:hover {
+      border-color: "[theme:inputBorderHovered, default:#323130]";
+    }
+
+    &:focus-within {
+      border-color: "[theme:inputFocusBorderAlt, default:#ca5010]"
+    }
+
+    .checklistPadding {
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: 280px;
+      padding: 12px;
+
+      .checklistItem {
+        min-height: initial;
+        margin-top: 9px;
+
+        &:first-child {
+          margin-top: 0;
+
+          label {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+}

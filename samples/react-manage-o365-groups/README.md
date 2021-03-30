@@ -103,9 +103,9 @@ The web part helps to create new O365 group.
 ![New Group](./assets/new-group.gif)
 
 ## Applies to
-* [SharePoint Framework Developer Preview](http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview)
+* [SharePoint Framework Developer Preview](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [SharePoint Online](https://docs.microsoft.com/en-us/sharepoint/sharepoint-online)
-* [Office 365 developer tenant](http://dev.office.com/sharepoint/docs/spfx/set-up-your-developer-tenant)
+* [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 # WebPart Properties
 Property|Type|Required|Comments
@@ -204,3 +204,5 @@ This sample illustrates the following concepts on top of the SharePoint Framewor
 - Using Office UI Fabric controls for building SharePoint Framework client-side web parts
 - Passing web part properties to React components
 - Call MS Flow (Power Automate) flow from SharePoint Framework web part
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-manage-o365-groups" />

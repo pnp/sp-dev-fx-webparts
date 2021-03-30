@@ -3,7 +3,7 @@
   "id": "eeadd4a5-4787-4d86-a606-17271bcfe81b",
   "alias": "DynamicDataCallableWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

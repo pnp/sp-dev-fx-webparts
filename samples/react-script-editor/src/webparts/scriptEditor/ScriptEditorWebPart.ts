@@ -10,6 +10,7 @@ import PropertyPaneLogo from './PropertyPaneLogo';
 
 export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEditorWebPartProps> {
     public _propertyPaneHelper;
+    private _unqiueId;
 
     constructor() {
         super();
@@ -22,6 +23,7 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     }
 
     public render(): void {
+        this._unqiueId = this.context.instanceId;
         if (this.displayMode == DisplayMode.Read) {
             if (this.properties.removePadding) {
                 let element = this.domElement.parentElement;
@@ -139,13 +141,17 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
         const scriptTag = document.createElement("script");
 
-        scriptTag.type = "text/javascript";
-        if (elem.src && elem.src.length > 0) {
-            return;
+        for (let i = 0; i < elem.attributes.length; i++) {
+            const attr = elem.attributes[i];
+            // Copies all attributes in case of loaded script relies on the tag attributes
+            if(attr.name.toLowerCase() === "onload"  ) continue; // onload handled after loading with SPComponentLoader
+            scriptTag.setAttribute(attr.name, attr.value);
         }
-        if (elem.onload && elem.onload.length > 0) {
-            scriptTag.onload = elem.onload;
-        }
+
+        // set a bogus type to avoid browser loading the script, as it's loaded with SPComponentLoader
+        scriptTag.type = (scriptTag.src && scriptTag.src.length) > 0 ? "pnp" : "text/javascript";
+        // Ensure proper setting and adding id used in cleanup on reload
+        scriptTag.setAttribute("pnpname", this._unqiueId);
 
         try {
             // doesn't work on ie...
@@ -156,7 +162,6 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
         }
 
         headTag.insertBefore(scriptTag, headTag.firstChild);
-        headTag.removeChild(scriptTag);
     }
 
     private nodeName(elem, name) {
@@ -168,7 +173,15 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
     //
     // Argument element is an element in the dom.
     private async executeScript(element: HTMLElement) {
-        // Define global name to tack scripts on in case script to be loaded is not AMD/UMD
+        // clean up added script tags in case of smart re-load        
+        const headTag = document.getElementsByTagName("head")[0] || document.documentElement;
+        let scriptTags = headTag.getElementsByTagName("script");
+        for (let i = 0; i < scriptTags.length; i++) {
+            const scriptTag = scriptTags[i];
+            if(scriptTag.hasAttribute("pnpname") && scriptTag.attributes["pnpname"].value == this._unqiueId ) {
+                headTag.removeChild(scriptTag);
+            }            
+        }
 
         if (this.properties.spPageContextInfo && !window["_spPageContextInfo"]) {
             window["_spPageContextInfo"] = this.context.pageContext.legacyPageContext;
@@ -178,16 +191,16 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             window["_teamsContexInfo"] = this.context.sdks.microsoftTeams.context;
         }
 
+        // Define global name to tack scripts on in case script to be loaded is not AMD/UMD
         (<any>window).ScriptGlobal = {};
 
         // main section of function
         const scripts = [];
-        const children_nodes = element.childNodes;
+        const children_nodes = element.getElementsByTagName("script");
 
         for (let i = 0; children_nodes[i]; i++) {
             const child: any = children_nodes[i];
-            if (this.nodeName(child, "script") &&
-                (!child.type || child.type.toLowerCase() === "text/javascript")) {
+            if (!child.type || child.type.toLowerCase() === "text/javascript") {
                 scripts.push(child);
             }
         }
@@ -210,10 +223,10 @@ export default class ScriptEditorWebPart extends BaseClientSideWebPart<IScriptEd
             window["define"].amd = null;
         }
 
-
         for (let i = 0; i < urls.length; i++) {
             try {
                 let scriptUrl = urls[i];
+                // Add unique param to force load on each run to overcome smart navigation in the browser as needed
                 const prefix = scriptUrl.indexOf('?') === -1 ? '?' : '&';
                 scriptUrl += prefix + 'pnp=' + new Date().getTime();
                 await SPComponentLoader.loadScript(scriptUrl, { globalExportsName: "ScriptGlobal" });

@@ -3,7 +3,7 @@
   "id": "98c90b31-f355-4c24-9997-a7c25e0ff016",
   "alias": "RealtimePluginDemoWebPart",
   "componentType": "WebPart",
-
+  "supportedHosts": ["SharePointWebPart"],
   "version": "*",
   "manifestVersion": 2,
 

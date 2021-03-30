@@ -9,8 +9,8 @@ Builder pattern builds a complex object using simple objects and using a step by
 
 ## Applies to
 
-* [SharePoint Framework](https:/dev.office.com/sharepoint)
-* [Office 365 tenant](https://dev.office.com/sharepoint/docs/spfx/set-up-your-development-environment)
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
 ## Prerequisites
@@ -41,7 +41,7 @@ A Builder class builds the final object step by step. This builder is independen
 
 For this pattern, we have taken an existing example https://www.tutorialspoint.com/design_pattern/builder_pattern.htm and translated it to Typescript.  Data Access implementation details are left to the reader.
 
-The idea on this example is to show how you can build a Complex object from single objects, a Meal from (burger, fries, soda).  Suppose you have a Sharepoint List for Burgers, another list for Sodas, another one for desserts, and you want to build different Meals (Menus), so this would be a perfect sample.
+The idea on this example is to show how you can build a Complex object from single objects, a Meal from (burger, fries, soda).  Suppose you have a SharePoint List for Burgers, another list for Sodas, another one for desserts, and you want to build different Meals (Menus), so this would be a perfect sample.
 
 ### UML
 This is more or less the diagram of the classes were are coding below.

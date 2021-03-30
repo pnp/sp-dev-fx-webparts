@@ -1,0 +1,122 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+:global {
+    .ms-Persona-secondaryText i {
+        padding-right: 5px;
+        color: $ms-color-themePrimary;
+    }
+}
+
+@mixin tw-error-message {
+    @include ms-font-xs;
+    @include ms-fontWeight-semibold;
+    font-style: italic;
+    color: $ms-color-red;
+}
+
+@mixin tw-reply-leftmargin {
+    margin-left: 20px;
+}
+
+@mixin tw-item-container {
+    position: relative;
+    margin-top: 10px;
+}
+
+@mixin tw-item {
+    padding: 10px;
+    border: 1px solid;
+    border-color: $ms-color-themePrimary;
+    background-color: $ms-color-white;
+}
+
+@mixin tw-reply-details-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@mixin tw-admin-actions {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    z-index: 99;
+}
+
+@mixin tw-answer-info {
+    background-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 2px 10px;
+    i {
+        padding-right: 5px;
+    }
+    margin-bottom: 10px;
+}
+
+@mixin tw-user-actions {
+    text-align: right;
+    button {
+        margin-left: 10px;
+    }
+}
+
+@mixin tw-message-bar-container {
+    padding-top: 10px;
+
+    /*
+    :global {
+
+        .ms-MessageBar--success,
+        .ms-MessageBar {
+            background-color: $ms-color-themePrimary;
+            color: $ms-color-white;
+
+            .ms-MessageBar-icon {
+                color:$ms-color-white;
+            }
+        }
+        .ms-MessageBar--error {
+            background-color: $ms-color-red;
+        }
+    }
+    */
+}
+
+
+
+:global {
+    .customTextEditor .tox-tinymce {
+      border-color: $ms-color-neutralTertiary;
+    }
+
+    .customTextEditor .tox .tox-toolbar, .tox .tox-toolbar__overflow,
+    .customTextEditor .tox .tox-toolbar__primary {
+      background: none;
+      border-bottom: 1px solid;
+      border-color: $ms-color-neutralTertiary;
+    }
+    .customTextEditor .tox .tox-tbtn {
+      border-radius: 2px;
+    }
+    .customTextEditor .tox .tox-button {
+      border-radius: 2px;
+    }
+    .customTextEditor .tox .tox-button--secondary {
+      border-radius: 2px;
+    }
+    .customTextEditor .tox .tox-tbtn:hover {
+      background: $ms-color-neutralLighter;
+    }
+    .customTextEditor .tox .tox-button:hover {
+      background: $ms-color-neutralLighter;
+    }
+    .customTextEditor .tox .tox-button {
+      background-color:  $ms-color-themePrimary;
+      border-color:  $ms-color-themePrimary;
+    }
+    .customTextEditor .tox .tox-button:hover {
+      background-color:  $ms-color-themeDarker;
+      border-color:  $ms-color-themeDarker;
+    }
+}

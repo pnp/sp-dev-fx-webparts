@@ -1,6 +1,10 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.3.1",
+    "isCreatingSolution": true,
+    "componentType": "webpart",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "version": "1.11.0",
     "libraryName": "react-youtube",
     "libraryId": "ca0fd050-e358-4093-93cd-bc3d74e131e5",
     "environment": "spo"

@@ -1,5 +1,4 @@
-@import '~office-ui-fabric-react/dist/sass/References.scss';
-
+@import "~office-ui-fabric-react/dist/sass/References.scss";
 :export {
   centerPadding: 50px;
 }
@@ -8,7 +7,9 @@
   position: relative;
 
   &.filmStrip {
-    margin: 0 -10px;
+    margin-bottom: 27px;
+    margin-left: -10px;
+    margin-right: -10px;
 
     :global(.slick-slide) {
       box-sizing: border-box;
@@ -18,14 +19,6 @@
 
   .sliderButtons {
     opacity: 0;
-  }
-
-  .sliderButtonRight {
-    right: 10px;
-  }
-
-  .sliderButtonLeft {
-    left: 10px;
   }
 
   &:hover .sliderButtons {
@@ -45,8 +38,8 @@
 }
 
 .indexButton {
-  font-size: 17px;
-  font-weight: 300;
+  font-size: 28px;
+  font-weight: 400;
   height: 40px;
   padding: 0;
   border: 0;
@@ -67,10 +60,45 @@
 
   &:hover {
     color: $ms-color-white;
+    background-color: $ms-color-black;
+    opacity: 0.6;
   }
 
   &:active {
     outline: -webkit-focus-ring-color auto 1px;
+  }
+}
+
+.carouselDotsContainer {
+  .carouselDot {
+    display: inline-block;
+    background-color: $ms-color-black;
+    height: 4px;
+    width: 4px;
+    opacity: 0.5;
+    border: 2px solid $ms-color-black;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.25;
+    outline: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+:global(.slick-active) {
+  .carouselDotsContainer {
+    .carouselDot {
+      background-color: "[theme:themeDark, default: #005a9e]";
+      opacity: 0.75;
+      border-color: "[theme:themeDark, default: #005a9e]";
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }
 

@@ -6,7 +6,7 @@
   "componentType": "WebPart",
   "version": "*",
   "manifestVersion": 2,
-
+  "supportedHosts": ["SharePointWebPart"],
   "preconfiguredEntries": [{
     "groupId": "c2a397d3-8c8f-47ab-b731-897178313c15",
     "group": { "default": "Modern Web Parts" },
