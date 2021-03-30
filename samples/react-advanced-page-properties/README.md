@@ -32,7 +32,7 @@ Attempts to replicate the functionality of Page Properties with the following im
 
 Solution|Author(s)
 --------|---------
-src/react-advanced-page-properties | Mike Homol, Principal Consultant, ThreeWill
+src/react-advanced-page-properties | [Mike Homol](https://homol.work), Principal Consultant, [ThreeWill](https://threewill.com/)
 
 ## Version history
 
