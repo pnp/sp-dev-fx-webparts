@@ -20,6 +20,7 @@
     margin-left: 10px;
     display: flex;
     font-size: 12px;
+    flex-wrap: wrap;
   }
 
   .title {
@@ -36,9 +37,7 @@
     height: 24px;
     align-items: center;
     white-space: nowrap;
-    overflow: hidden;
     margin: 4px 4px 4px 4px;
-    //background-color: rgba(95, 210, 85, 0.5);
     width: max-content;
   }
 
