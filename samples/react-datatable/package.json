@@ -25,9 +25,8 @@
     "@pnp/spfx-controls-react": "^2.4.0",
     "@pnp/spfx-property-controls": "^2.3.0",
     "export-to-csv": "^0.2.1",
-    "jspdf": "^2.3.0",
-    "jspdf-autotable": "^3.5.13",
     "office-ui-fabric-react": "6.214.0",
+    "pdfmake": "^0.1.70",
     "react": "16.8.5",
     "react-dom": "16.8.5"
   },
