@@ -59,6 +59,7 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
         var values: any[] = [];
         if (allValues.hasOwnProperty(prop)) {
           switch (field.TypeAsString) {
+            case "TaxonomyFieldTypeMulti":
             case "MultiChoice":
               values = _.clone(allValues[prop]);
               break;
@@ -166,6 +167,11 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
                 <span>{new Date(val).toLocaleDateString()}</span>
               );
           }
+        case "TaxonomyFieldTypeMulti":
+        case "TaxonomyFieldType":
+          return (
+            <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val.Label}</span>
+          );
         default:
           return (
             <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>
