@@ -122,60 +122,64 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
    * @param prop
    * @returns
    */
-  const RenderPagePropValue = (prop: PageProperty) => {
+   const RenderPagePropValue = (prop: PageProperty) => {
     console.log(prop);
     var retVal = _.map(prop.values, (val) => {
-      switch (prop.info.TypeAsString) {
-        case "URL":
-          return (
-            <span className={styles.urlValue}><a href={val.Url} target="_blank" style={{color: semanticColors.link}}>{val.Description}</a></span>
-          );
-        case "Thumbnail":
-          return (
-            <span><img className={styles.imgValue} src={val.serverRelativeUrl} /></span>
-          );
-        case "Number":
-          return (
-            <span>{(prop.info["ShowAsPercentage"] === true ? Number(val).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}) : (prop.info["CommaSeparator"] === true ? val.toLocaleString('en') : val.toString()))}</span>
-          );
-        case "Currency":
-          return (
-            <span>{(prop.info["CommaSeparator"] === true ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val) : Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', useGrouping: false }).format(val))}</span>
-          );
-        case "DateTime":
-          //,"",,
-          switch (prop.info["DateFormat"]) {
-            case "StandardUS":
-              return (
-                <span>{new Date(val).toLocaleDateString()}</span>
-              );
-            case "ISO8601":
-              const d = new Date(val);
-              return (
-                <span>{`${d.getFullYear().toString()}-${d.getMonth()}-${d.getDate()}`}</span>
-              );
-            case "DayOfWeek":
-              return (
-                <span>{new Date(val).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
-              );
-            case "MonthSpelled":
-              return (
-                <span>{new Date(val).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-              );
-            default:
-              return (
-                <span>{new Date(val).toLocaleDateString()}</span>
-              );
-          }
-        case "TaxonomyFieldTypeMulti":
-        case "TaxonomyFieldType":
-          return (
-            <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val.Label}</span>
-          );
-        default:
-          return (
-            <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>
-          );
+      if (val !== null) {
+        switch (prop.info.TypeAsString) {
+          case "URL":
+            return (
+              <span className={styles.urlValue}><a href={val.Url} target="_blank" style={{color: semanticColors.link}}>{val.Description}</a></span>
+            );
+          case "Thumbnail":
+            return (
+              <span><img className={styles.imgValue} src={val.serverRelativeUrl} /></span>
+            );
+          case "Number":
+            return (
+              <span>{(prop.info["ShowAsPercentage"] === true ? Number(val).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}) : (prop.info["CommaSeparator"] === true ? val.toLocaleString('en') : val.toString()))}</span>
+            );
+          case "Currency":
+            return (
+              <span>{(prop.info["CommaSeparator"] === true ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val) : Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', useGrouping: false }).format(val))}</span>
+            );
+          case "DateTime":
+            //,"",,
+            switch (prop.info["DateFormat"]) {
+              case "StandardUS":
+                return (
+                  <span>{new Date(val).toLocaleDateString()}</span>
+                );
+              case "ISO8601":
+                const d = new Date(val);
+                return (
+                  <span>{`${d.getFullYear().toString()}-${d.getMonth()}-${d.getDate()}`}</span>
+                );
+              case "DayOfWeek":
+                return (
+                  <span>{new Date(val).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                );
+              case "MonthSpelled":
+                return (
+                  <span>{new Date(val).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                );
+              default:
+                return (
+                  <span>{new Date(val).toLocaleDateString()}</span>
+                );
+            }
+          case "TaxonomyFieldTypeMulti":
+          case "TaxonomyFieldType":
+            return (
+              <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val.Label}</span>
+            );
+          default:
+            return (
+              <span className={styles.standardCapsule} style={{backgroundColor: semanticColors.accentButtonBackground, color: semanticColors.accentButtonText}}>{val}</span>
+            );
+        }
+      } else {
+        return (<></>);
       }
     });
     return retVal;
