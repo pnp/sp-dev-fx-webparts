@@ -137,35 +137,35 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
             );
           case "Number":
             return (
-              <span>{(prop.info["ShowAsPercentage"] === true ? Number(val).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}) : (prop.info["CommaSeparator"] === true ? val.toLocaleString('en') : val.toString()))}</span>
+              <span className={styles.plainValue}>{(prop.info["ShowAsPercentage"] === true ? Number(val).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:0}) : (prop.info["CommaSeparator"] === true ? val.toLocaleString('en') : val.toString()))}</span>
             );
           case "Currency":
             return (
-              <span>{(prop.info["CommaSeparator"] === true ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val) : Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', useGrouping: false }).format(val))}</span>
+              <span className={styles.plainValue}>{(prop.info["CommaSeparator"] === true ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val) : Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', useGrouping: false }).format(val))}</span>
             );
           case "DateTime":
             //,"",,
             switch (prop.info["DateFormat"]) {
               case "StandardUS":
                 return (
-                  <span>{new Date(val).toLocaleDateString()}</span>
+                  <span className={styles.plainValue}>{new Date(val).toLocaleDateString()}</span>
                 );
               case "ISO8601":
                 const d = new Date(val);
                 return (
-                  <span>{`${d.getFullYear().toString()}-${d.getMonth()}-${d.getDate()}`}</span>
+                  <span className={styles.plainValue}>{`${d.getFullYear().toString()}-${d.getMonth()}-${d.getDate()}`}</span>
                 );
               case "DayOfWeek":
                 return (
-                  <span>{new Date(val).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  <span className={styles.plainValue}>{new Date(val).toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
                 );
               case "MonthSpelled":
                 return (
-                  <span>{new Date(val).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  <span className={styles.plainValue}>{new Date(val).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                 );
               default:
                 return (
-                  <span>{new Date(val).toLocaleDateString()}</span>
+                  <span className={styles.plainValue}>{new Date(val).toLocaleDateString()}</span>
                 );
             }
           case "TaxonomyFieldTypeMulti":
@@ -179,7 +179,7 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
             );
         }
       } else {
-        return (<></>);
+        return (<span className={styles.plainValue}>N/A</span>);
       }
     });
     return retVal;
