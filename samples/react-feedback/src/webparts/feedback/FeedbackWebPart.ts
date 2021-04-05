@@ -50,7 +50,7 @@ export default class FeedbackWebPart extends BaseWebPart<IFeedbackWebPartProps> 
         buttonLabel: escape(this.properties.buttonLabel),
         showCategory: showCategory,
         themeVariant: this.themeVariant,
-        listitemid: this.context.pageContext.listItem.id, //Replace with "1" if you're running this in a workbench
+        listitemid: !!this.context.pageContext.listItem ? this.context.pageContext.listItem.id : null,
         selectedCategory: escape(this.properties.feedbackCategory),
         currentUser: this.context.pageContext.user
       }

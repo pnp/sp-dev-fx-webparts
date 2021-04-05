@@ -28,25 +28,69 @@ Whenever you are submitting any changes to the SharePoint repositories, please f
 * If you are submitting multiple samples, please create a specific PR for each of them
 * If you are submitting typo or documentation fix, you can combine modifications to single PR where suitable
 
+
 ## Sample Naming and Structure Guidelines
 
-When you are submitting a new sample, it has to follow up below guidelines
+When you submit a new sample, please follow these guidelines:
 
-* You will need to have a `README.md` file for your contribution, which is based on [the provided template](../samples/README-template.md) under the `samples` folder. Please copy this template to your project and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
-  * You will need to have a screenshot picture of your sample in action in the `README.md` file ("pics or it didn't happen"). The preview image must be located in the `/assets/` folder in the root of your solution.
-* The `README` template contains a specific tracking image at the bottom of the file with an `img` tag, where the `src` attribute points to `https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template`. This is a transparent image which is used to track viewership of individual samples in GitHub.
-  * Update the image `src` attribute according with the repository name and folder information. For example, if your sample is named `react-todo` in the `samples` folder, you should update the `src` attribute to `https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-todo`
-* If you find an existing sample which is similar to yours, please extend the existing one rather than submitting a new similar sample
-  * For example, if you use Office Graph with React, please add a new web part to the existing solution, rather than introducing a completely new solution
-  * When you update existing samples, please update also `README.md` file accordingly with information on provided changes and with your author details
+* Each sample must be placed in a folder under the `samples` folder
+* Your sample folder must include the following content:
+    - Your solution's source code
+    - An `assets` folder, containing screenshots
+    - A `README.md` file
+* You must only submit samples for which you have the rights to share. Make sure that you asked for permission from your employer and/or clients before committing the code to an open-source repository, because once you submit a pull request, the information is public and _cannot be removed_.
+
+### Sample Folder
+
 * When submitting a new sample solution, please name the sample solution folder accordingly
-  * Folder should start by identifying JS library used - like `react-`, `angular-`, `knockout-`
-  * If you are not using any specific JS library, please use `js-` as the prefix for your sample
-  * Do not use words such as `sample`, `webpart` or `wp` in the folder or sample name - these are samples for client-side web parts repository
-  * If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder
+* Folder should start by identifying JS library used - like `react-`, `angular-`, `knockout-`
+* If you are not using any specific JS library, please use `js-` as the prefix for your sample
+* Do not use words such as `sample`, `webpart` or `wp` in the folder or sample name - these are samples for client-side web parts repository
+* If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder
 * Do not use period/dot in the folder name of the provided sample
 
+### Source Code
+
+* For security reasons, we do not accept pull requests containing `.sppkg` files. We only accept source code files for applications. 
+* Make sure to place the root of your solution's source code in sample folder
+
+### README.md
+
+* You will need to have a `README.md` file for your contribution, which is based on [the provided template](../samples/README-template.md) under the `samples` folder. Please copy this template to your project and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
+* You will need to have a screenshot picture of your sample in action in the `README.md` file ("pics or it didn't happen"). The preview image must be located in the `assets` folder in the root of your sample folder.
+    * All screen shots must be located in the `assets` folder. Do not point to your own repository or any other external source
+* The README template contains a specific tracking image at the end of the file with an `img` element pointing to `https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template`. This is a transparent image which is used to track how many visits each sample receives in GitHub.
+* Update the image `src` attribute according with the repository name and folder information. For example, if your sample is named `react-todo` in the `samples` folder, you should update the `src` attribute to `https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-todo`
+  * Update the image `src` attribute according with the repository name and folder information.
+* If you find an existing sample which is similar to yours, please extend the existing one rather than submitting a new similar sample
+  * When you update existing samples, please update also `README.md` file accordingly with information on provided changes and with your author details
+* Make sure to document each function in the `README.md`
+* If you include your social media information under **Authors** in the **Solution** section, we'll use this information to promote your contribution on social media, blog posts, and community calls.
+    * Try to use the following syntax:
+    ```md
+    folder name | Author Name ([@yourtwitterhandle](https://twitter.com/yourtwitterhandle))
+    ```
+* If you include your company name after your name, we'll try to include your company name in blog posts and community calls.
+    * Try to use the following syntax:
+    ```md
+    folder name | Author Name ([@yourtwitterhandle](https://twitter.com/yourtwitterhandle)), Company Name
+    ```
+* For multiple authors, please provide one line per author
+* If you prefer to not use social media or disclose your name, we'll still accept your sample, but we'll assume that you don't want us to promote your contribution on social media.
+
+### Assets
+
+* To help people make sense of your sample, make sure to always include at least one screenshot of your solution in action. People are more likely to click on a sample if they can preview it before installing it.
+* Please provide a high-quality screenshot
+* If possible, use a resolution of **1920x1080**
+* You can add as many screen shots as you'd like to help users understand your sample without having to download it and install it.
+* You can include animated images (such as `.gif` files), but you must provide at least one static `.png` file
+    * There is no need to include the steps where you find your web part and add it to a page. Just get to the good stuff!
+
 ## Submitting Pull Requests
+
+> If you aren't familiar with how to contribute to open-source repositories using GitHub, or if you find the instructions on this page confusing, [sign up](https://forms.office.com/Pages/ResponsePage.aspx?id=KtIy2vgLW0SOgZbwvQuRaXDXyCl9DkBHq4A2OG7uLpdUREZVRDVYUUJLT1VNRDM4SjhGMlpUNzBORy4u) for one of our [Sharing is Caring](https://pnp.github.io/sharing-is-caring/#pnp-sic-events) events. It's completely free, and we'll guide you through the process.
+
 
 Here's a high-level process for submitting new samples or updates to existing ones.
 
@@ -149,3 +193,5 @@ You can find Microsoft CLA from the following address - https://cla.microsoft.co
 Thank you for your contribution.
 
 > Sharing is caring.
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/.github/CONTRIBUTING.md" />

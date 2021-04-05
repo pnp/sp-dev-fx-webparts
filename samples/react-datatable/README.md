@@ -40,7 +40,8 @@ react-datatable | Chandani Prajapati ([@Chandani_SPD](https://twitter.com/Chanda
 Version|Date|Comments
 -------|----|--------
 1.0|February 19, 2021|Initial release
-
+1.1|February 24, 2021|Added support for large lists
+1.2|March 01, 2021|Fixed search issue for number field
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

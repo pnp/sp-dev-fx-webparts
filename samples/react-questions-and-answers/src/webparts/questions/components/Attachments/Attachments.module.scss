@@ -1,0 +1,85 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+@import '../Shared.module.scss';
+
+.attachmentsContainer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .attachmentsHeader {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-weight: 600;
+    }
+    .newAttachmentItems,
+    .attachmentItems {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .viewAttachmentItem {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 10px;
+      padding-left: 10px;
+      border-radius: 20px;
+      border-radius: 20px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      background-color: $ms-color-themeLighter;
+      color:  $ms-color-themePrimary;
+      cursor: pointer;
+    }
+    .viewAttachmentItem:hover {
+      background-color: $ms-color-themeLight;
+    }
+
+    .newAttachmentContainer,
+    .editAttachmentContainer {
+      margin-right: 8px;
+      margin-bottom: 8px;
+      display: flex;
+    }
+
+    .editAttachmentItem {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 10px;
+      padding-left: 10px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      background-color: $ms-color-themeLighter;
+      color:  $ms-color-themePrimary;
+      cursor: pointer;
+    }
+    .editAttachmentItem:hover {
+      background-color: $ms-color-themeLight;
+    }
+    .newAttachmentItem {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 10px;
+      padding-left: 10px;
+      color:  $ms-color-themePrimary;
+      cursor: default;
+    }
+    .removeAttachmentItem {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 10px;
+      padding-left: 10px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background-color: $ms-color-themeLighter;
+      color:  $ms-color-themePrimary;
+      cursor: pointer;
+    }
+    .removeAttachmentItem:hover {
+      background-color: $ms-color-themeLight;
+    }
+    .removeNewAttachmentItem {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 10px;
+      padding-left: 10px;
+      cursor: pointer;
+    }
+}

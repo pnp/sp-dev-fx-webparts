@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.11.0",
+    "libraryName": "react-image-editor",
+    "libraryId": "e859f86f-7a12-40e3-94fb-97ee47419aed",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

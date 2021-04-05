@@ -1,15 +1,15 @@
-import { Action, ActionTypes } from '../actions/actions';
+import { Action, ActionTypes, IServiceCallStatus } from '../actions/actions';
 import { Reducer } from 'redux';
-import { SortOption, FormMode, ShowQuestionsOption, WebPartRenderMode } from 'utilities';
+import { SortOption, FormMode, ShowQuestionsOption, WebPartRenderMode, DiscussionType } from 'utilities';
 import { IQuestionItem, ICurrentUser, IPagedItems } from 'models';
 import { IQuestionsWebPartProps } from '../../IQuestionsWebPartProps';
-import { IWebPartContext } from '@microsoft/sp-webpart-base';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 export interface IApplicationState extends IQuestionsWebPartProps {
 	currentUser?: ICurrentUser;
-	webPartContext?: IWebPartContext;
+	webPartContext?: WebPartContext;
 	displayMode: DisplayMode;
 
 	searchText: string;
@@ -19,10 +19,12 @@ export interface IApplicationState extends IQuestionsWebPartProps {
 	previousPagedQuestions: IPagedItems<IQuestionItem>[];
 
 	selectedQuestion: IQuestionItem | null;
-	selectedQuestionFormMode: FormMode;
+  selectedQuestionFormMode: FormMode;
+  selectedQuestionChanged: boolean;
 	showQuestion: boolean;
 
-	applicationErrorMessage?: string;
+  applicationErrorMessage?: string;
+  applicationServiceCallInfo?: IServiceCallStatus;
 
 	themeVariant: IReadonlyTheme | undefined;
 }
@@ -47,10 +49,15 @@ export const initialState: IApplicationState = {
 	previousPagedQuestions: [],
 
 	selectedQuestion: null,
-	selectedQuestionFormMode: FormMode.View,
+  selectedQuestionFormMode: FormMode.View,
+  selectedQuestionChanged: false,
 	showQuestion: false,
 	themeVariant: undefined,
-	webPartRenderMode: WebPartRenderMode.Standard
+  webPartRenderMode: WebPartRenderMode.Standard,
+  category: '',
+  showCategory: false,
+  stateLabel: '',
+  discussionType: DiscussionType.Question
 };
 
 //Reducer determines how the state should change after every action.
@@ -90,10 +97,19 @@ export const appReducer: Reducer<IApplicationState> = (state: IApplicationState 
 				selectedQuestion: action.selectedQuestion,
 				selectedQuestionFormMode: action.formMode
 			};
-			break;
+      break;
+    case ActionTypes.SELECTED_QUESTION_CHANGED:
+      state = {
+        ...state,
+        selectedQuestionChanged: action.selectedQuestionChanged
+      };
+      break;
 		case ActionTypes.UPDATE_APPLICATION_ERROR_MESSAGE:
 			state = { ...state, applicationErrorMessage: action.errorMessage };
-			break;
+      break;
+    case ActionTypes.UPDATE_APPLICATION_SERVICE_CALL_STATUS:
+      state = { ...state, applicationServiceCallInfo: action.serviceStatus };
+      break;
 		default:
 			// loading?
 			break;

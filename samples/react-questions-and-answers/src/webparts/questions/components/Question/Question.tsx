@@ -1,31 +1,35 @@
 import * as React from 'react';
-import { LogHelper, ErrorHelper, FormMode } from 'utilities';
+import { LogHelper, ErrorHelper, FormMode, DiscussionType, ApplicationPages, DateUtility, Parameters } from 'utilities';
 import styles from './Question.module.scss';
-import { autobind } from '@uifabric/utilities/lib';
 import * as strings from 'QuestionsWebPartStrings';
-import { QuillConfig } from '../QuillConfig';
 // redux related
 import { connect } from 'react-redux';
 import { IApplicationState } from 'webparts/questions/redux/reducers/appReducer';
-import { getSelectedQuestion, likeQuestion, followQuestion, isDuplicateQuestion, deleteQuestion, saveQuestion } from 'webparts/questions/redux/actions/actions';
+import { getSelectedQuestion, likeQuestion, followQuestion, updateDiscussionType, isDuplicateQuestion, deleteQuestion, saveQuestion } from 'webparts/questions/redux/actions/actions';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
 // models
-import { IQuestionItem } from 'models';
+import { IFileAttachment, IQuestionItem } from 'models';
 // controls
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { ActionButton, PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Editor } from 'primereact/editor';
+import { ActionButton, PrimaryButton, DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
+import RichTextEditorComponent from '../RichTextEditor';
+import AttachmentsComponent from '../Attachments/Attachments';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import ReplyListComponent from '../ReplyList/ReplyList';
 import ReplyComponent from '../Reply/Reply';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { WebPartContext } from '@microsoft/sp-webpart-base';
+import CategoryLabel from '../CategoryLabel/CategoryLabel';
+import { LivePersonaCard } from '../LivePersonaCard';
 
 interface IConnectedDispatch {
   getSelectedQuestion: (questionId?: number) => void;
   likeQuestion: (question: IQuestionItem) => Promise<void>;
   followQuestion: (question: IQuestionItem) => Promise<void>;
+  updateDiscussionType: (question: IQuestionItem) => Promise<void>;
   deleteQuestion: (question: IQuestionItem) => Promise<void>;
   isDuplicateQuestion: (question: IQuestionItem) => Promise<boolean>;
   saveQuestion: (question: IQuestionItem) => Promise<number>;
@@ -33,12 +37,20 @@ interface IConnectedDispatch {
 
 interface IConnectedState {
   selectedQuestion: IQuestionItem | null;
+  type: DiscussionType;
+  webPartContext?: WebPartContext;
+  themeVariant: IReadonlyTheme | undefined;
+  applicationPage: string;
 }
 
 // map the application state to properties on this component so they can be used
 function mapStateToProps(state: IApplicationState, ownProps: IQuestionProps): IConnectedState {
   return {
     selectedQuestion: state.selectedQuestion,
+    type: DiscussionType[state.discussionType],
+    webPartContext: state.webPartContext,
+    themeVariant: state.themeVariant,
+    applicationPage: state.applicationPage
   };
 }
 
@@ -47,9 +59,10 @@ const mapDispatchToProps = {
   getSelectedQuestion,
   likeQuestion,
   followQuestion,
+  updateDiscussionType,
   deleteQuestion,
   saveQuestion,
-  isDuplicateQuestion,
+  isDuplicateQuestion
 };
 
 export interface IQuestionProps {
@@ -66,9 +79,11 @@ interface IQuestionState {
   closeOnUndoConfirm: boolean;
   notificationMessage?: string;
   notificationType?: MessageBarType;
-
+  disablePost: boolean;
   showNewReply: boolean;
+  expectedApplicationPage: string | undefined;
 }
+
 class QuestionComponent extends React.Component<IQuestionProps & IConnectedState & IConnectedDispatch, IQuestionState> {
 
   constructor(props: IQuestionProps & IConnectedState & IConnectedDispatch) {
@@ -82,16 +97,52 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
       closeOnUndoConfirm: false,
       showDeleteConfirm: false,
       showNotification: false,
-      showNewReply: false
+      showNewReply: false,
+      disablePost: false,
+      expectedApplicationPage: undefined
     };
 
   }
+
+  public componentDidMount() {
+    // check if we are on an application page with a query string to see if we even care to deal with people coming in on the 'wrong' url
+    if(window.location.search.length > 0) {
+      if(window.location.pathname.toLowerCase().endsWith(ApplicationPages.QUESTIONS.toLowerCase())) {
+        this.setState({expectedApplicationPage: ApplicationPages.QUESTIONS});
+      }
+      if(window.location.pathname.toLowerCase().endsWith(ApplicationPages.CONVERSATIONS.toLowerCase())) {
+        this.setState({expectedApplicationPage: ApplicationPages.CONVERSATIONS});
+      }
+    }
+
+    window.addEventListener('beforeunload', this.beforeunload.bind(this));
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.beforeunload.bind(this));
+  }
+
 
   public componentDidUpdate(prevProps: IQuestionProps & IConnectedState & IConnectedDispatch, prevState: IQuestionState): void {
     // if our question has changed
     if (this.props.selectedQuestion && this.props.selectedQuestion !== prevProps.selectedQuestion) {
       // reset our question in state managed by this component
       this.setState({ question: this.props.selectedQuestion });
+
+      if(this.state.expectedApplicationPage === ApplicationPages.QUESTIONS
+        && this.props.selectedQuestion.discussionType === DiscussionType.Conversation) {
+        // we came in on Questions.aspx for an item that is a conversation so redirect
+        window.location.replace(window.location.href.replace(new RegExp(ApplicationPages.QUESTIONS, "gi"), ApplicationPages.CONVERSATIONS));
+      }
+      else if(this.state.expectedApplicationPage === ApplicationPages.CONVERSATIONS
+        && this.props.selectedQuestion.discussionType === DiscussionType.Question) {
+        // we came in on Conversations.aspx for an item that is a question so redirect
+        window.location.replace(window.location.href.replace(new RegExp(ApplicationPages.CONVERSATIONS, "gi"), ApplicationPages.QUESTIONS));
+      }
+      else {
+        // ensure we don't execute the logic above after any further state changes
+        this.setState({ expectedApplicationPage: undefined });
+      }
 
       // and previously it was null or undefined
       if (!prevProps.selectedQuestion) {
@@ -110,13 +161,20 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     const { question, showNewReply: showNewReply } = this.state;
     let id: string = question ? `question-${question.id}` : `question-new`;
 
+    let buttonStyle: any = undefined;
+    if (this.props.themeVariant) {
+      buttonStyle = { color: this.props.themeVariant.semanticColors.link };
+    }
+
     if (question) {
       return (
         <div id={id} className={styles.question}
           style={{ display: this.props.show === true ? 'block' : 'none' }}>
 
           <div className={styles.containerHeader}>
-            <ActionButton id="closePanel" text={strings.ButtonText_CloseQuestion}
+            <ActionButton id="closePanel" text={strings.ButtonText_Close}
+              style={buttonStyle}
+              iconProps={{ iconName: 'ChromeClose', style : buttonStyle }}
               onClick={(ev: any) => this.handleCloseClick()} />
           </div>
 
@@ -157,7 +215,8 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
   }
 
   private renderQuestion(): JSX.Element | undefined {
-    const { question, formMode, showNotification, notificationType, notificationMessage } = this.state;
+    const { question, formMode, showNotification, notificationType, notificationMessage, disablePost } = this.state;
+    const { webPartContext } = this.props;
 
     if (question) {
       return (
@@ -170,26 +229,54 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
             {this.renderQuestionTitle(question)}
 
             {formMode === FormMode.View && question.author && question.createdDate &&
-              <div>
+              <div className={styles.questionPersonaContainer}>
                 <span>
-                  <Persona size={PersonaSize.size24}
-                    text={question.author.primaryText}
-                    showSecondaryText={true}
-                    onRenderSecondaryText={props => this.onRenderSecondaryText(question)} />
+                  {(webPartContext !== null && webPartContext !== undefined ? 
+                    <LivePersonaCard
+                    serviceScope={webPartContext.serviceScope}
+                    user={{
+                      displayName: (question.author === null || question.author === undefined ? '' : (question.author.text === undefined ? '' : question.author.text)),
+                      email: (question.author === null || question.author === undefined ? '' : (question.author.id === undefined ? '' : question.author.id.replace("i:0#.f|membership|", "")))
+                    }}
+                    >
+                    <Persona size={PersonaSize.size32}
+                      text={question.author.text}
+                      showSecondaryText={true}
+                      onRenderSecondaryText={props => this.onRenderSecondaryText(question)} />
+                  </LivePersonaCard>
+                    :
+                    <Persona size={PersonaSize.size32}
+                      text={question.author.text}
+                      showSecondaryText={true}
+                      onRenderSecondaryText={props => this.onRenderSecondaryText(question)} />
+                  )}
+                  
+                </span>
+                <span>
+                  <CategoryLabel category={question.category} style={{ float: 'right' }}></CategoryLabel>
                 </span>
               </div>
             }
 
             {this.renderQuestionDetails(question)}
 
+            <AttachmentsComponent item={question}
+              disabled={formMode === FormMode.View}
+              attachmentsChanged={(attachments: IFileAttachment[]) => { this.attachmentsChanged(attachments); }}
+              newAttachmentsChanged={(newAttachments: File[]) => { this.newAttachmentsChanged(newAttachments); }}
+              removeAttachmentsChanged={(removedAttachments: string[]) => { this.removeAttachmentsChanged(removedAttachments); }} />
+
             {this.renderQuestionUserActions()}
 
             {formMode !== FormMode.View &&
               <div className={styles.userActions}>
+                <span>
+                  <CategoryLabel category={question.category} style={{ float: 'left' }}></CategoryLabel>
+                </span>
                 <PrimaryButton id='Post' text={strings.ButtonText_Post}
-                  iconProps={{ iconName: 'Send' }} onClick={() => this.handleSaveClick()} />
+                  iconProps={{ iconName: 'Send' }} onClick={() => this.handleSaveClick()} disabled={disablePost} />
                 <DefaultButton id='Undo' text={strings.ButtonText_Cancel}
-                  iconProps={{ iconName: 'Undo' }} onClick={() => this.handleCancelClick()} />
+                  iconProps={{ iconName: 'Undo' }} onClick={() => this.handleCancelClick()} disabled={disablePost} />
               </div>
             }
             {
@@ -198,6 +285,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
                 <MessageBar messageBarType={notificationType}>{notificationMessage}</MessageBar>
               </div>
             }
+
           </div>
         </div>
       );
@@ -207,6 +295,8 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
   private renderQuestionAdminActions(): JSX.Element | undefined {
     const { question } = this.state;
     const { formMode } = this.state;
+
+    const changeDiscussionTypeText = this.props.type === DiscussionType.Question ? strings.MenuText_ChangeToConversation : strings.MenuText_ChangeToQuestion;
 
     let items: IContextualMenuItem[] = [];
 
@@ -224,12 +314,19 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
           onClick: (ev: any) => this.setState({ showDeleteConfirm: true })
         });
       }
+
+      if(question.canEdit) {
+        items.push({
+          key: 'changeDiscussionType', name: (changeDiscussionTypeText), iconProps: { iconName: 'Switch' },
+          onClick: (ev: any) => this.handleDiscussionTypeChangeClick()
+        });
+      }
     }
 
     if (formMode === FormMode.View && items.length > 0) {
       return (
         <div className={styles.adminActionsContainer}>
-          <ActionButton id="questionSettings"
+          <IconButton id="questionSettings"
             iconProps={{ iconName: 'Settings' }}
             menuProps={{
               directionalHint: DirectionalHint.bottomRightEdge,
@@ -248,8 +345,14 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     if (question && formMode === FormMode.View) {
       return (
         <div className={styles.userActions}>
+          <ActionButton id="copyLink"
+              text={strings.ButtonText_CopyLink}
+              title={strings.ButtonText_CopyLink}
+              iconProps={{ iconName: 'Link' }}
+              onClick={() => this.handleCopyLinkClick(question.id) } />
+
           {question.canReact === true &&
-            <ActionButton id="likeQuestion"
+            <ActionButton id="followQuestion"
               text={` ${question.followedByCurrentUser ? strings.ButtonText_Following : strings.ButtonText_NotFollowing}`}
               title={strings.ButtonTitle_Following}
               iconProps={{ iconName: question.followedByCurrentUser === true ? 'MailSolid' : 'Mail' }}
@@ -274,7 +377,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
 
   private renderIsAnswered(question: IQuestionItem): JSX.Element | undefined {
 
-    if (question.isAnswered === true) {
+    if (question.isAnswered === true && question.discussionType === DiscussionType.Question) {
       return (
         <div>
           <span className={styles.questionIsAnsweredContainer}>
@@ -299,7 +402,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     else {
       return (
         <div className={styles.questionTitle}>
-          <textarea placeholder={strings.Placeholder_QuestionTitle}
+          <textarea placeholder={(this.props.type === DiscussionType.Question ? strings.Placeholder_QuestionTitle : strings.Placeholder_ConversationTitle)}
             value={question.title}
             maxLength={255}
             autoFocus={true}
@@ -324,36 +427,34 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     else {
       return (
         <div className={styles.questionBodyContainer}>
-          <Editor id="details"
+          <RichTextEditorComponent id="details"
             value={question.details}
-            headerTemplate={QuillConfig.header}
-            placeholder={strings.Placeholder_QuestionDetails}
-            onTextChange={(e) => this.handleEditorChanged('details', e.htmlValue, 'detailsText', e.textValue)} />
+            questionTitle={question.title ? question.title : ''}
+            placeholder={(this.props.type === DiscussionType.Question ? strings.Placeholder_QuestionDetails : strings.Placeholder_ConversationDetails)}
+            onTextChange={(htmlValue, textValue) => this.handleEditorChanged('details', htmlValue, 'detailsText', textValue)}
+            />
           <div className={styles.errorMessage}>{ErrorHelper.getUIError(question, 'details')}</div>
         </div>
       );
     }
   }
 
-  @autobind
-  private onRenderSecondaryText(question: IQuestionItem): JSX.Element {
+  private onRenderSecondaryText = (question: IQuestionItem): JSX.Element => {
     return (
       <div>
         <Icon iconName={'Comment'} />
-        {strings.Message_AskedOn} {question.createdDate!.toLocaleString()}
+        {strings.Message_PostedOn} {DateUtility.getFriendlyDate(question.createdDate, true)}
       </div>
     );
   }
 
-  @autobind
-  private handleOnKeyPress(e) {
+  private handleOnKeyPress = (e) => {
     if (e.key === 'Enter') {
         e.preventDefault();
     }
   }
 
-  @autobind
-  private handleTextChanged(propertyName: string, newValue: string) {
+  private handleTextChanged = (propertyName: string, newValue: string) => {
     const { question } = this.state;
     if (question) {
       question[propertyName] = newValue;
@@ -364,8 +465,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     }
   }
 
-  @autobind
-  private handleEditorChanged(htmlPropertyName: string, htmlValue: string | null, textPropertyName: string, textValue: string) {
+  private handleEditorChanged = (htmlPropertyName: string, htmlValue: string | null, textPropertyName: string, textValue: string) => {
     const { question } = this.state;
     if (question) {
       question[htmlPropertyName] = htmlValue;
@@ -377,8 +477,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     }
   }
 
-  @autobind
-  private handleEditClick(): void {
+  private handleEditClick = (): void => {
     const { question } = this.state;
     if (question) {
       // this is a refetch but we want to get the latest version when going to edit in case they've been on view awhile
@@ -387,8 +486,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     }
   }
 
-  @autobind
-  private handleConfirmDeleteClick(): void {
+  private handleConfirmDeleteClick = (): void => {
     const { question } = this.state;
     if (question) {
       this.props.deleteQuestion(question).then(() => {
@@ -397,8 +495,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     }
   }
 
-  @autobind
-  private handleCloseClick(): void {
+  private handleCloseClick = (): void => {
     let { isChanged } = this.state;
 
     if (isChanged === true) {
@@ -417,8 +514,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     }
   }
 
-  @autobind
-  private handleCancelClick(): void {
+  private handleCancelClick = (): void => {
     let { isChanged, formMode } = this.state;
 
     if (isChanged === true) {
@@ -439,8 +535,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     }
   }
 
-  @autobind
-  private handleUndoChangesClick(): void {
+  private handleUndoChangesClick = (): void => {
     let { formMode, question, closeOnUndoConfirm } = this.state;
 
     if (formMode === FormMode.New || closeOnUndoConfirm === true) {
@@ -465,37 +560,69 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     this.handleOnChanged(false);
   }
 
-  @autobind
-  private async handleSaveClick(): Promise<void> {
+  private handleSaveClick = async (): Promise<void> => {
     const { question } = this.state;
 
+    this.setState({ disablePost: true });
     let isQuestionValid = await this.isQuestionValid();
     if (isQuestionValid) {
       this.setState({
         showNotification: true,
         notificationType: MessageBarType.info,
-        notificationMessage: strings.Message_SavingQuestion
+        notificationMessage: (this.props.type === DiscussionType.Question ? strings.Message_SavingQuestion : strings.Message_SavingConversation)
       });
 
       if (question) {
         this.props.saveQuestion(question).then(id => {
           this.setState({
+            disablePost: false,
             formMode: FormMode.View,
             showUndoConfirm: false,
             notificationType: MessageBarType.success,
-            notificationMessage: strings.Message_SavedQuestion,
+            notificationMessage: (this.props.type === DiscussionType.Question ? strings.Message_SavedQuestion : strings.Message_SavedConversation )
           });
           this.handleOnChanged(false);
 
           // after 5 seconds hide the notification
           setTimeout(() => { this.setState({ showNotification: false, notificationMessage: undefined }); }, 5000);
+        }).catch((e) => {
+          this.setState({
+            disablePost: false,
+            showNotification: true,
+            notificationType: MessageBarType.error,
+            notificationMessage: e.message
+          });
         });
       }
     }
+    else {
+      this.setState({ disablePost: false });
+    }
   }
 
-  @autobind
-  private async isQuestionValid(): Promise<boolean> {
+  private handleDiscussionTypeChangeClick = (): void =>  {
+    const { question } = this.state;
+
+    if(question) {
+      question.discussionType = question.discussionType === DiscussionType.Question ? DiscussionType.Conversation : DiscussionType.Question;
+      this.props.updateDiscussionType(question);
+    }
+  }
+
+  private handleCopyLinkClick = (questionId?: number): void => {
+    debugger;
+
+    if(this.props.webPartContext && questionId) {
+      const el = document.createElement('textarea');
+      el.value = `${this.props.webPartContext.pageContext.web.absoluteUrl}/SitePages/${this.props.applicationPage}?${Parameters.QUESTIONID}=${questionId}`;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+    }
+  }
+
+  private isQuestionValid = async (): Promise<boolean> => {
     const { question } = this.state;
     let isValid: boolean = true;
 
@@ -512,7 +639,7 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
       }
       else {
         isValid = false;
-        ErrorHelper.setUIError(question, 'title', strings.ErrorMessage_QuestionRequired);
+        ErrorHelper.setUIError(question, 'title', question.discussionType === DiscussionType.Question ? strings.ErrorMessage_QuestionRequired : strings.ErrorMessage_ConversationRequired);
       }
 
       if (!question.details) {
@@ -530,15 +657,40 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
     return isValid;
   }
 
-  @autobind
-  private handleOnChanged(changed: boolean): void {
+  private handleOnChanged = (changed: boolean): void => {
     this.setState({ isChanged: changed });
+  }
+
+  private attachmentsChanged = (attachments: IFileAttachment[]): void => {
+    const { question } = this.state;
+    if (question) {
+      question.attachments = attachments;
+      this.setState({ question: question });
+      this.handleOnChanged(true);
+    }
+  }
+
+  private newAttachmentsChanged = (newAttachments: File[]): void => {
+    const { question } = this.state;
+    if (question) {
+      question.newAttachments = newAttachments;
+      this.setState({ question: question });
+      this.handleOnChanged(true);
+    }
+  }
+
+  private removeAttachmentsChanged = (removedAttachments: string[]): void => {
+    const { question } = this.state;
+    if (question) {
+      question.removedAttachments = removedAttachments;
+      this.setState({ question: question });
+      this.handleOnChanged(true);
+    }
   }
 
   // future common
 
-  @autobind
-  private getUndoConfirmDialog(): JSX.Element | undefined {
+  private getUndoConfirmDialog = (): JSX.Element | undefined => {
     const { showUndoConfirm } = this.state;
 
     if (showUndoConfirm === true) {
@@ -555,15 +707,14 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
             <PrimaryButton text={strings.ButtonText_Continue}
               onClick={this.handleUndoChangesClick} />
             <DefaultButton text={strings.ButtonText_ResumeEdit}
-              onClick={() => this.setState({ showUndoConfirm: false })} />/>
-        </DialogFooter>
+              onClick={() => this.setState({ showUndoConfirm: false })} />
+          </DialogFooter>
         </Dialog>
       );
     }
   }
 
-  @autobind
-  private getUndoDeleteConfirmDialog(): JSX.Element | undefined {
+  private getUndoDeleteConfirmDialog = (): JSX.Element | undefined => {
     const { showDeleteConfirm } = this.state;
 
     if (showDeleteConfirm === true) {
@@ -586,6 +737,16 @@ class QuestionComponent extends React.Component<IQuestionProps & IConnectedState
       );
     }
   }
+
+  private beforeunload = (e) => {
+    let { isChanged } = this.state;
+
+    if (isChanged === true) {
+      e.preventDefault();
+      e.returnValue = true;
+    }
+  }
+
 }
 
 export default connect(

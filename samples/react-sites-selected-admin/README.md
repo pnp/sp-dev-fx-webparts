@@ -50,6 +50,7 @@ react-sites-selected-admin | Fredrik Thorild [@fthorild](https://twitter.com/fth
 Version|Date|Comments
 -------|----|--------
 1.0|February 19, 2021|Initial release
+1.1|March 8, 2021|Switch to functional components. Re-factor
 
 ## Disclaimer
 

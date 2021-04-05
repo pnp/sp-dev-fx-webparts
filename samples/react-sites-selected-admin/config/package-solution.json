@@ -3,7 +3,7 @@
   "solution": {
     "name": "site-selected-mngr-wp-client-side-solution",
     "id": "7fec6393-3d66-4b11-8d55-5f609edf2a7a",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": true,
     "developer": {

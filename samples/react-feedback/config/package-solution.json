@@ -3,7 +3,7 @@
   "solution": {
     "name": "feedback-webpart-client-side-solution",
     "id": "d5e255e1-7071-49a8-b50d-b06c80e4ac02",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {

@@ -1,12 +1,26 @@
 import { IQuestionsFilter, IQuestionItem, IPagedItems, ICurrentUser, IReplyItem, IPostItem } from "models";
-import { IWebPartContext } from "@microsoft/sp-webpart-base";
+import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { DisplayMode } from "@microsoft/sp-core-library";
-import { StandardFields, SortOption, PostFields, FormMode, Parameters } from "utilities";
+import { StandardFields, SortOption, PostFields, FormMode, Parameters, DiscussionType, MentionUtility, ApplicationPages} from "utilities";
 import { IApplicationState } from "../reducers/appReducer";
 import { HttpRequestError } from "@pnp/odata";
 import { IEmailProperties } from '@pnp/sp/sputilities';
+import { IPeoplePickerEntity } from '@pnp/sp/profiles';
 import * as strings from 'QuestionsWebPartStrings';
+import { ISiteUserProps } from "@pnp/sp/presets/all";
+
+export enum IServiceCallState {
+  Warning = "Warning",
+  Error = "Error",
+  Information = "Information",
+  Success = "Success"
+}
+export interface IServiceCallStatus {
+  state: IServiceCallState;
+  display: boolean;
+  message: string;
+}
 
 // types of actions that can be performed
 export enum ActionTypes {
@@ -29,12 +43,15 @@ export enum ActionTypes {
     LIKE_REPLY_SUCCESSFUL = 'LIKE_REPLY_SUCCESSFUL',
     HELPFUL_REPLY_START = 'HELPFUL_REPLY_START',
     HELPFUL_REPLY_SUCCESSFUL = 'HELPFUL_REPLY_SUCCESSFUL',
+    CHANGE_DISCUSSION_TYPE_START = 'CHANGE_DISCUSSION_TYPE_START',
+    CHANGE_DISCUSSION_TYPE_SUCCESSFUL = 'CHANGE_DISCUSSION_TYPE_SUCCESSFUL',
 
     GET_QUESTIONS_START = 'GET_QUESTIONS_START',
     GET_QUESTIONS_FINISHED = 'GET_QUESTIONS_FINISHED',
     GET_QUESTION_START = 'GET_QUESTION_START',
     GET_QUESTION_FINISHED = 'GET_QUESTION_FINISHED',
     UPDATE_SELECTED_QUESTION = 'UPDATE_SELECTED_QUESTION',
+    SELECTED_QUESTION_CHANGED = 'SELECTED_QUESTION_CHANGED',
 
     DELETE_QUESTION_START = 'DELETE_QUESTION_START',
     DELETE_QUESTION_SUCCESSFUL = 'DELETE_QUESTION_SUCCESSFUL',
@@ -50,19 +67,28 @@ export enum ActionTypes {
     REPLY_ANSWER_START = 'REPLY_ANSWER_START',
     REPLY_ANSWER_SUCCESSFUL = 'REPLY_ANSWER_SUCCESSFUL',
 
-    UPDATE_APPLICATION_ERROR_MESSAGE = 'UPDATE_APPLICATION_ERROR_MESSAGE'
+    UPDATE_APPLICATION_ERROR_MESSAGE = 'UPDATE_APPLICATION_ERROR_MESSAGE',
+    UPDATE_APPLICATION_SERVICE_CALL_STATUS = 'UPDATE_APPLICATION_SERVICE_CALL_STATUS',
+
+    UPLOAD_IMAGE_START = 'UPLOAD_IMAGE_START',
+    UPLOAD_IMAGE_SUCCESSFUL = 'UPLOAD_IMAGE_SUCCESSFUL',
+
+    SEARCH_PEOPLE_START = 'SEARCH_PEOPLE_START',
+    SEARCH_PEOPLE_SUCCESSFUL = 'SEARCH_PEOPLE_SUCCESSFUL',
+    UPDATE_PERSONAS_LIST = 'UPDATE_PERSONAS_LIST'
 }
 
 // contracts for those actions
 export type Action =
     { type: ActionTypes.UPDATE_THEMEVARIANT, themeVariant: IReadonlyTheme | undefined } |
     { type: ActionTypes.UPDATE_WEBPARTPROPERTY, propertyName: string, propertyValue: any } |
-    { type: ActionTypes.UPDATE_WEBPARTCONTEXT, webPartContext: IWebPartContext } |
+    { type: ActionTypes.UPDATE_WEBPARTCONTEXT, webPartContext: WebPartContext } |
     { type: ActionTypes.UPDATE_WEBPARTDISPLAYMODE, displayMode: DisplayMode } |
     { type: ActionTypes.UPDATE_SEARCHTEXT, searchText: string } |
     { type: ActionTypes.UPDATE_SHOWQUESTIONSOPTION, option: string } |
     { type: ActionTypes.UPDATE_CURRENTUSER, currentUser: ICurrentUser } |
     { type: ActionTypes.UPDATE_APPLICATION_ERROR_MESSAGE, errorMessage: string } |
+    { type: ActionTypes.UPDATE_APPLICATION_SERVICE_CALL_STATUS, serviceStatus: IServiceCallStatus } |
     { type: ActionTypes.GET_QUESTIONS_START } |
     {
         type: ActionTypes.UPDATE_PAGED_QUESTIONS,
@@ -72,8 +98,13 @@ export type Action =
     {
         type: ActionTypes.UPDATE_SELECTED_QUESTION,
         selectedQuestion: IQuestionItem | null,
-        formMode: FormMode
-    }
+        formMode: FormMode,
+    } |
+    {
+        type: ActionTypes.SELECTED_QUESTION_CHANGED,
+        selectedQuestionChanged: boolean
+    } |
+    { type: ActionTypes.UPDATE_PERSONAS_LIST, people: IPeoplePickerEntity[] }
     ;
 
 // functions for those actions
@@ -98,7 +129,7 @@ export const updateWebPartDisplayMode = (displayMode: DisplayMode): Action => ({
     displayMode
 });
 
-export const updateWebPartContext = (webPartContext: IWebPartContext): Action => ({
+export const updateWebPartContext = (webPartContext: WebPartContext): Action => ({
     type: ActionTypes.UPDATE_WEBPARTCONTEXT,
     webPartContext
 });
@@ -123,6 +154,18 @@ const updateApplicationErrorMessage = (errorMessage: string): Action => ({
     errorMessage
 });
 
+const updateApplicationServiceCallStatus = (serviceStatus: IServiceCallStatus): Action => ({
+    type: ActionTypes.UPDATE_APPLICATION_SERVICE_CALL_STATUS,
+    serviceStatus
+});
+
+export function flashServiceStatus(message: string, state: IServiceCallState) {
+    return (dispatch) => {
+      dispatch(updateApplicationServiceCallStatus({ display: true, message: message, state: state }));
+      setTimeout(() => { dispatch(updateApplicationServiceCallStatus({ display: false, message: message, state: state })); }, 5000);
+    };
+}
+
 const updatePagedQuestions = (currentPagedQuestions: IPagedItems<IQuestionItem> | null,
   previousPagedQuestions: IPagedItems<IQuestionItem>[]): Action => ({
       type: ActionTypes.UPDATE_PAGED_QUESTIONS,
@@ -130,19 +173,61 @@ const updatePagedQuestions = (currentPagedQuestions: IPagedItems<IQuestionItem> 
       previousPagedQuestions
   });
 
-export function searchQuestions(searchText: string) {
+export function searchPeople(input: string, maxCount: number) {
+  return async (dispatch, getState, { userService }) => {
+    let peopleFound: ISiteUserProps[];
+    dispatch(simpleAction(ActionTypes.SEARCH_PEOPLE_START));
+    peopleFound = await userService.searchPeople(input, maxCount)
+        .catch(e => {
+            let message = handleHttpError(e);
+            dispatch(updateApplicationErrorMessage(message));
+        });
+    dispatch(simpleAction(ActionTypes.SEARCH_PEOPLE_SUCCESSFUL));
+
+    return peopleFound;
+  };
+}
+
+export function searchPeoplePicker(input: string, maxCount: number) {
+  return async (dispatch, getState, { userService }) => {
+    let peopleFound: IPeoplePickerEntity[];
+    dispatch(simpleAction(ActionTypes.SEARCH_PEOPLE_START));
+    peopleFound = await userService.searchPeoplePicker(input, maxCount)
+        .catch(e => {
+            let message = handleHttpError(e);
+            dispatch(updateApplicationErrorMessage(message));
+        });
+    dispatch(simpleAction(ActionTypes.SEARCH_PEOPLE_SUCCESSFUL));
+
+    return peopleFound;
+  };
+}
+
+export function ensureUserInSite(email: string) {
+  return async (dispatch, getState, { userService }) => {
+    let response: boolean = await userService.ensureUserInSite(email)
+      .catch(e => {
+        let message = handleHttpError(e);
+        dispatch(updateApplicationErrorMessage(message));
+      });
+
+    return response;
+  };
+}
+
+export function searchQuestions(searchText: string, categoryFilter: string | null) {
     return (dispatch) => {
         dispatch(updateSearchText(searchText));
         dispatch(updatePagedQuestions(null, []));
-        dispatch(getPagedQuestions(false));
+        dispatch(getPagedQuestions(false, categoryFilter));
     };
 }
 
-export function changeShowQuestionsOption(option: string) {
+export function changeShowQuestionsOption(option: string, categoryFilter: string | null) {
     return (dispatch) => {
         dispatch(updateShowQuestionsOption(option));
         dispatch(updatePagedQuestions(null, []));
-        dispatch(getPagedQuestions(false));
+        dispatch(getPagedQuestions(false, categoryFilter));
     };
 }
 
@@ -152,11 +237,16 @@ const updateSelectedQuestion = (selectedQuestion: IQuestionItem | null, formMode
     formMode
 });
 
-export function getPagedQuestions(goingToNextPage: boolean) {
+const selectedQuestionUpdated = (selectedQuestionChanged: boolean): Action => ({
+  type: ActionTypes.SELECTED_QUESTION_CHANGED,
+  selectedQuestionChanged
+});
+
+export function getPagedQuestions(goingToNextPage: boolean, categoryFilter: string | null) {
     return async (dispatch, getState, { questionService }) => {
 
         let currentUser = await dispatch(getCurrentUser());
-        const { pageSize, searchText, sortOption, selectedShowQuestionsOption, loadInitialPage, currentPagedQuestions, previousPagedQuestions } = getState();
+        const { pageSize, searchText, sortOption, selectedShowQuestionsOption, loadInitialPage, currentPagedQuestions, previousPagedQuestions, discussionType, selectedQuestionChanged } = getState();
 
         if (loadInitialPage === true || (searchText && searchText.length > 2)) {
             let orderByColumn: string = StandardFields.TITLE;
@@ -177,7 +267,9 @@ export function getPagedQuestions(goingToNextPage: boolean) {
                 searchText: searchText,
                 orderByColumnName: orderByColumn,
                 orderByAscending: orderByAscending,
-                selectedShowQuestionsOption: selectedShowQuestionsOption
+                selectedShowQuestionsOption: selectedShowQuestionsOption,
+                category: categoryFilter,
+                discussionType: discussionType
             };
 
             if (currentPagedQuestions !== null && goingToNextPage === true) {
@@ -185,14 +277,26 @@ export function getPagedQuestions(goingToNextPage: boolean) {
             }
 
             dispatch(simpleAction(ActionTypes.GET_QUESTIONS_START));
-
-            let questions = await questionService.getPagedQuestions(currentUser, filter, currentPagedQuestions)
+            let questions: any;
+            if(selectedQuestionChanged === true) {
+              filter.searchText = '';
+              questions = await questionService.getPagedQuestions(currentUser, filter, null)
                 .catch(e => {
                     let message = handleHttpError(e);
                     dispatch(updateApplicationErrorMessage(message));
                 });
-
-            dispatch(updatePagedQuestions(questions, previousPagedQuestions));
+                dispatch(updatePagedQuestions(questions, []));
+                dispatch(updateSearchText(filter.searchText as string));
+                dispatch(selectedQuestionUpdated(false));
+            }
+            else {
+              questions = await questionService.getPagedQuestions(currentUser, filter, currentPagedQuestions)
+                .catch(e => {
+                    let message = handleHttpError(e);
+                    dispatch(updateApplicationErrorMessage(message));
+                });
+              dispatch(updatePagedQuestions(questions, previousPagedQuestions));
+            }
             dispatch(simpleAction(ActionTypes.GET_QUESTIONS_FINISHED));
 
         }
@@ -203,7 +307,7 @@ export function getPagedQuestions(goingToNextPage: boolean) {
     };
 }
 
-export function navigateToViewAll() {
+export function navigateToViewAll(categoryFilter: string | null) {
     return (dispatch, getState) => {
 
         const { webPartContext, applicationPage, useApplicationPage }: IApplicationState = getState();
@@ -211,12 +315,13 @@ export function navigateToViewAll() {
             && webPartContext
             && applicationPage
             && applicationPage.endsWith('.aspx')) {
-            window.open(`${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}`, '_blank');
+            window.open(`${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}${(!(categoryFilter === null || categoryFilter ==='') ? '?Category=' + encodeURIComponent(categoryFilter) : '' )}`, '_blank');
         }
         else {
             dispatch(updateWebPartProperty('loadInitialPage', true));
+            dispatch(updatePagedQuestions(null, []));
             dispatch(updateSearchText(''));
-            dispatch(getPagedQuestions(false));
+            dispatch(getPagedQuestions(false, categoryFilter));
         }
     };
 }
@@ -231,18 +336,29 @@ export function getPrevPagedQuestions() {
     };
 }
 
-export function launchNewQuestion(initialTitle: string) {
+export function launchNewQuestion(initialTitle: string, category: string, type: DiscussionType) {
     return (dispatch, getState) => {
 
         const { webPartContext, applicationPage, useApplicationPage }: IApplicationState = getState();
-        if (useApplicationPage === true
-            && webPartContext
-            && applicationPage
-            && applicationPage.endsWith('.aspx')) {
-            window.open(`${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}?${Parameters.QUESTIONID}=0`, '_blank');
-        }
-        else {
-            dispatch(inializeNewQuestion(initialTitle));
+
+        if(webPartContext && applicationPage) {
+          const questionUrl = `${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}?${Parameters.QUESTIONID}=0&${Parameters.CATEGORY}=${encodeURIComponent(category)}&${Parameters.TYPE}=${encodeURIComponent(type)}`;
+
+          if (useApplicationPage === true
+              && webPartContext
+              && applicationPage
+              && applicationPage.endsWith('.aspx')) {
+              window.open(questionUrl, '_blank');
+          }
+          else {
+              dispatch(inializeNewQuestion(initialTitle, category, type));
+
+              if(window.location.pathname.length > 0 &&
+                (window.location.pathname.toLowerCase().endsWith(ApplicationPages.QUESTIONS.toLowerCase()) ||
+                 window.location.pathname.toLowerCase().endsWith(ApplicationPages.CONVERSATIONS.toLowerCase()))) {
+                window.history.replaceState({}, "", questionUrl);
+            }
+          }
         }
     };
 }
@@ -251,19 +367,34 @@ export function launchQuestion(questionId?: number) {
     return (dispatch, getState) => {
 
         const { webPartContext, applicationPage, useApplicationPage }: IApplicationState = getState();
-        if (useApplicationPage === true
-            && webPartContext
-            && applicationPage
-            && applicationPage.endsWith('.aspx')) {
-            window.open(`${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}?${Parameters.QUESTIONID}=${questionId}`, '_blank');
-        }
-        else {
-            dispatch(getSelectedQuestion(questionId));
-        }
+
+        if(webPartContext && applicationPage) {
+          let questionUrl = `${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}?${Parameters.QUESTIONID}=${questionId}`;
+
+          //if the route contains a category, keep it in the URL
+          let queryParms = new URLSearchParams(window.location.search);
+          if (queryParms.has(Parameters.CATEGORY)) {
+            questionUrl = `${questionUrl}&${Parameters.CATEGORY}=${String(queryParms.get(Parameters.CATEGORY))}`;
+          }
+
+          if (useApplicationPage === true && applicationPage.endsWith('.aspx')) {
+              window.open(questionUrl, '_blank');
+          }
+          else {
+              dispatch(getSelectedQuestion(questionId));
+
+              // only attempt to update the url if we are on one of our application pages
+              if(window.location.pathname.length > 0 &&
+                (window.location.pathname.toLowerCase().endsWith(ApplicationPages.QUESTIONS.toLowerCase()) ||
+                 window.location.pathname.toLowerCase().endsWith(ApplicationPages.CONVERSATIONS.toLowerCase()))) {
+                  window.history.replaceState({}, "", questionUrl);
+              }
+          }
+      }
     };
 }
 
-export function inializeNewQuestion(initialTitle: string) {
+export function inializeNewQuestion(initialTitle: string, category: string, type: DiscussionType) {
     return (dispatch, getState) => {
         let newQuestion: IQuestionItem = {
             id: 0,
@@ -281,7 +412,13 @@ export function inializeNewQuestion(initialTitle: string) {
             canEdit: false,
             canReact: false,
             canReply: false,
-            replies: []
+            replies: [],
+            category: category,
+            discussionType: type,
+            page: '',
+            attachments: [],
+            newAttachments: [],
+            removedAttachments: []
         };
 
         dispatch(updateSelectedQuestion(newQuestion, FormMode.New));
@@ -299,7 +436,7 @@ export function getSelectedQuestion(questionId?: number) {
                 .catch(e => {
                     let message = handleHttpError(e);
                     if (e.status === 404) {
-                        message = strings.ErrorMessage_HTTP_QuestionNotFound;
+                        message = strings.ErrorMessage_HTTP_ItemNotFound;
                     }
 
                     dispatch(updateApplicationErrorMessage(message));
@@ -310,6 +447,33 @@ export function getSelectedQuestion(questionId?: number) {
         }
         else {
             dispatch(updateSelectedQuestion(null, FormMode.View));
+
+            const { webPartContext, applicationPage }: IApplicationState = getState();
+
+            if(webPartContext && applicationPage) {
+              /*
+                The risk in the below url is if a user launches to the Questions.aspx on a question with a category or see all for a web part with category we won't
+                preserve that, so new questions after below wouldn't keep it.
+                In testing we could try to utilize the category from the 'last question', however that also has risks when you see all with no category you
+                see all questions regardless of category so your last viewed question would impact what category is used on the next new category
+              */
+              let questionUrl = `${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}`;
+
+              // check if category is in the URL and preserve it
+              let queryParms = new URLSearchParams(window.location.search);
+
+              if(queryParms.has(Parameters.CATEGORY)) {
+                questionUrl = `${questionUrl}?${Parameters.CATEGORY}=${String(queryParms.get(Parameters.CATEGORY))}`;
+              }
+
+              // only attempt to update the url if we are on one of our application pages
+              // this should only be invoked when the questions.tsx is closed, cancel edit or cancel on new
+              if(window.location.pathname.length > 0 &&
+                (window.location.pathname.toLowerCase().endsWith(ApplicationPages.QUESTIONS.toLowerCase()) ||
+                 window.location.pathname.toLowerCase().endsWith(ApplicationPages.CONVERSATIONS.toLowerCase()))) {
+                window.history.replaceState({}, "", questionUrl);
+              }
+            }
         }
     };
 }
@@ -325,6 +489,7 @@ export function deleteQuestion(question: IQuestionItem) {
                     throw new Error(message);
                 });
             dispatch(simpleAction(ActionTypes.DELETE_QUESTION_SUCCESSFUL));
+            dispatch(selectedQuestionUpdated(true)); // so question list will know to refresh
             dispatch(updateSelectedQuestion(null, FormMode.View));
         }
     };
@@ -367,6 +532,24 @@ export function followQuestion(question: IQuestionItem) {
         }
     };
 }
+
+export function updateDiscussionType(question: IQuestionItem) {
+  return async (dispatch, getState, { questionService }) => {
+      if (question && question.id && question.id > 0) {
+          dispatch(simpleAction(ActionTypes.CHANGE_DISCUSSION_TYPE_START));
+          await questionService.updateDiscussionType(question)
+              .catch(e => {
+                  let message = handleHttpError(e);
+                  throw new Error(message);
+              });
+          dispatch(getSelectedQuestion(question.id));
+          dispatch(selectedQuestionUpdated(true)); // so question list will know to refresh
+          dispatch(simpleAction(ActionTypes.CHANGE_DISCUSSION_TYPE_SUCCESSFUL));
+          dispatch(flashServiceStatus("Discussion Type successfully updated.", IServiceCallState.Success));
+      }
+  };
+}
+
 // Save question action
 
 export function isDuplicateQuestion(question: IQuestionItem) {
@@ -394,7 +577,32 @@ export function saveQuestion(question: IQuestionItem) {
             if (!question.id || question.id <= 0) {
                 question.followEmails.push(currentUser.email);
                 isNewQuestion = true;
+
+              //Special logic for page tracking on New Questions
+              //Essentially, if we are on the full page part, then store the referrer, unless it's null, undefined, empty or was the login page
+              //Otherwise, store the current page
+              var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+              let trackCurrentPage: boolean = true;
+
+              const { applicationPage }: IApplicationState = getState();
+              if (page === applicationPage) {
+                trackCurrentPage = false;
+              }
+
+              if (trackCurrentPage === false) {
+                if (document.referrer !== null && document.referrer !== undefined && document.referrer.length > 0 && (document.referrer.search(/login.microsoftonline.com\//gi) === -1) ) {
+                  question.page = document.referrer;
+                }
+                else {
+                  // our application page should always be in site pages so lest split and just use the site url
+                  question.page = window.location.href.search(/\/sitepages\//gi) !== -1 ? window.location.href.split(/\/sitepages\//gi)[0] : window.location.href;
+                }
+              }
+              else {
+                question.page = window.location.href.indexOf('?') !== -1 ? window.location.href.split('?')[0]: window.location.href;
+              }
             }
+
             let id = await questionService.saveQuestion(question)
                 .catch(e => {
                     let message = handleHttpError(e);
@@ -403,12 +611,19 @@ export function saveQuestion(question: IQuestionItem) {
 
             dispatch(simpleAction(ActionTypes.SAVE_QUESTION_SUCCESSFUL));
             dispatch(getSelectedQuestion(id));
+            dispatch(selectedQuestionUpdated(true)); // so question list will know to refresh
 
             // TODO send notification to all follows and moderators on update
             // TODO send notification to moderators for new
 
             if (isNewQuestion === true) {
                 dispatch(createAndSendNewQuestionEmail(question, id));
+
+                //Send out mention notifications
+                const mentions = MentionUtility.parse(question.details);
+                if (mentions.length > 0) {
+                  dispatch(createAndSendMentionReceiptEmail(question, id, mentions));
+                }
             }
 
             return id;
@@ -529,6 +744,7 @@ export function markAnswer(reply: IReplyItem) {
             dispatch(simpleAction(ActionTypes.REPLY_ANSWER_SUCCESSFUL));
             if (reply.parentQuestionId) {
                 dispatch(getSelectedQuestion(reply.parentQuestionId));
+                dispatch(selectedQuestionUpdated(true)); // so question list will know to refresh
             }
             if (reply.isAnswer === true) {
                 dispatch(createAndSendMarkedAnswerEmail(reply));
@@ -608,19 +824,33 @@ function updateHelpful(currentUser: ICurrentUser, reply: IReplyItem) {
 function createAndSendNewQuestionEmail(question: IQuestionItem, questionId: number) {
     return async (dispatch, getState, { userService, notificationService }) => {
         if (question) {
+
             let currentUser = await dispatch(getCurrentUser());
 
             let notifyEmails = await userService.getNotificationGroupUserEmails();
 
             if (notifyEmails && notifyEmails.length > 0) {
-                let subjectPrefix = strings.EmailMessage_Subject_NewQuestion;
-                let actionMessage = strings.EmailMessage_Body_HasNewQuestion;
-                const { webPartContext, applicationPage } = getState();
+              const { webPartContext, applicationPage, discussionType } = getState();
+
+                let subjectPrefix = discussionType === DiscussionType.Question ? strings.EmailMessage_Subject_NewQuestion : strings.EmailMessage_Subject_NewConversation;
+                let actionMessage = discussionType === DiscussionType.Question ? strings.EmailMessage_Body_HasNewQuestion : strings.EmailMessage_Body_HasNewConversation;
+                let pageDetailsLabel = discussionType === DiscussionType.Question ? strings.EmailMessage_Body_PageDetails_Question : strings.EmailMessage_Body_PageDetails_Conversation;
+
+                let categoryDetails: string = '';
+                if(question.category && question.category.length > 0) {
+                  categoryDetails = `<p><b>${strings.EmailMessage_Body_CategoryDetails}</b> ${question.category}</p>`;
+                }
+
+                let pageDetails: string = '';
+                if(question.page && question.page.length > 0) {
+                  pageDetails = `<p><b>${pageDetailsLabel}</b> <a href='${question.page}'>${question.page}</a></p>`;
+                }
 
                 let email: IEmailProperties = {
                     Subject: `${subjectPrefix} ${question.title}`,
                     To: notifyEmails,
                     Body: `
+                    ${getTroubleViewingHtml(webPartContext, applicationPage, questionId, question.title, currentUser, actionMessage)}
                     <p>
                         <a href='mailto:${currentUser.email}' >${currentUser.displayName}</a>
                         ${actionMessage}
@@ -628,7 +858,9 @@ function createAndSendNewQuestionEmail(question: IQuestionItem, questionId: numb
                         ${question.title}
                         </a>
                     </p>
-                    <p><b>${strings.EmailMessage_Body_QuestionDetails}</b></p>
+                    ${categoryDetails}
+                    ${pageDetails}
+                    <p><b>${(discussionType === DiscussionType.Question ? strings.EmailMessage_Body_QuestionDetails : strings.EmailMessage_Body_ConversationDetails)}</b></p>
                     <p><hr>${question.details}</p>
                 `
                 };
@@ -642,19 +874,25 @@ function createAndSendReplyEmail(reply: IReplyItem) {
     return async (dispatch, getState, { notificationService }) => {
         if (reply) {
             let currentUser = await dispatch(getCurrentUser());
+            const { selectedQuestion, webPartContext, applicationPage, discussionType } = getState();
 
             let subjectPrefix = strings.EmailMessage_Subject_NewReply;
-            let actionMessage = strings.EmailMessage_Body_HasNewRepliedTo;
+            let actionMessage = discussionType === DiscussionType.Question ? strings.EmailMessage_Body_HasNewRepliedToQuestion : strings.EmailMessage_Body_HasNewRepliedToConversation;
             if (reply.id && reply.id > 0) {
                 subjectPrefix = strings.EmailMessage_Subject_UpdatedReply;
-                actionMessage = strings.EmailMessage_Body_HasUpdatedRepliedTo;
+                actionMessage = discussionType === DiscussionType.Question ? strings.EmailMessage_Body_HasUpdatedRepliedToQuestion : strings.EmailMessage_Body_HasUpdatedRepliedToConversation;
             }
-            const { selectedQuestion, webPartContext, applicationPage } = getState();
+
+            let categoryDetails: string = '';
+            if(selectedQuestion.category && selectedQuestion.category.length > 0) {
+              categoryDetails = `<p><b>${strings.EmailMessage_Body_CategoryDetails}</b> ${selectedQuestion.category}</p>`;
+            }
 
             let email: IEmailProperties = {
                 Subject: `${subjectPrefix} ${selectedQuestion.title}`,
                 To: selectedQuestion.followEmails,
                 Body: `
+                    ${getTroubleViewingHtml(webPartContext, applicationPage, selectedQuestion.id, selectedQuestion.title, currentUser, actionMessage)}
                     <p>
                         <a href='mailto:${currentUser.email}' >${currentUser.displayName}</a>
                         ${actionMessage}
@@ -662,6 +900,7 @@ function createAndSendReplyEmail(reply: IReplyItem) {
                         ${selectedQuestion.title}
                         </a>
                     </p>
+                    ${categoryDetails}
                     <p><b>${strings.EmailMessage_Body_ReplyDetails}</b></p>
                     <p><hr>${reply.details}</p>
                 `
@@ -669,6 +908,43 @@ function createAndSendReplyEmail(reply: IReplyItem) {
             notificationService.sendEmail(email);
         }
     };
+}
+
+function createAndSendMentionReceiptEmail(post: IPostItem, postId: number, mentionEmails: string[]) {
+  return async (dispatch, getState, { notificationService }) => {
+      if (post) {
+
+          let currentUser = await dispatch(getCurrentUser());
+
+          if (mentionEmails && mentionEmails.length > 0) {
+            const { webPartContext, applicationPage } = getState();
+
+              let subjectSuffix = strings.EmailMessage_Subject_MentionNotification;
+              let preamble = strings.EmailMessage_Body_MentionNotification;
+
+              let email: IEmailProperties = {
+                  Subject: `${currentUser.displayName} ${subjectSuffix}`,
+                  To: mentionEmails,
+                  Body: `
+                  ${getTroubleViewingHtml(webPartContext, applicationPage, postId, post.title, undefined, preamble)}
+                  <p>
+                    ${preamble}
+                  </p>
+                  <p>
+                      <a href='${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}?${Parameters.QUESTIONID}=${postId}'>
+                      ${post.title}
+                      </a>
+                  </p>
+                  <p><hr>${post.details}</p>
+                  <p>
+                    By <a href='mailto:${currentUser.email}' >${currentUser.displayName}</a>
+                  </p>
+              `
+              };
+              notificationService.sendEmail(email);
+          }
+      }
+  };
 }
 
 
@@ -688,10 +964,16 @@ function createAndSendMarkedAnswerEmail(reply: IReplyItem) {
 
             const { selectedQuestion, webPartContext, applicationPage } = getState();
 
+            let categoryDetails: string = '';
+            if(selectedQuestion.category && selectedQuestion.category.length > 0) {
+              categoryDetails = `<p><b>${strings.EmailMessage_Body_CategoryDetails}</b> ${selectedQuestion.category}</p>`;
+            }
+
             let email: IEmailProperties = {
                 Subject: `${subjectPrefix} ${selectedQuestion.title}`,
                 To: selectedQuestion.followEmails,
                 Body: `
+                    ${getTroubleViewingHtml(webPartContext, applicationPage, selectedQuestion.id, selectedQuestion.title, currentUser, actionMessage)}
                     <p>
                         <a href='mailto:${currentUser.email}' >${currentUser.displayName}</a>
                         ${actionMessage}
@@ -699,6 +981,7 @@ function createAndSendMarkedAnswerEmail(reply: IReplyItem) {
                         ${selectedQuestion.title}
                         </a>
                     </p>
+                    ${categoryDetails}
                     <p><b>${strings.EmailMessage_Body_ReplyDetails}</b></p>
                     <p><hr>${reply.details}</p>
                 `
@@ -706,6 +989,17 @@ function createAndSendMarkedAnswerEmail(reply: IReplyItem) {
             notificationService.sendEmail(email);
         }
     };
+}
+
+export function getTroubleViewingHtml(webPartContext, applicationPage, questionId, title, currentUser, actionMessage) {
+  return `
+  <div style='display:none' >${currentUser ? currentUser.displayName : ''} ${actionMessage} ${title}</div>
+  <p>
+    <a style='text-decoration: none;font-size: 12px;color: #a19f9d;'
+      href='${webPartContext.pageContext.web.absoluteUrl}/SitePages/${applicationPage}?${Parameters.QUESTIONID}=${questionId}'>
+        ${strings.EmailMessage_Body_ProblemViewing}
+    </a>
+  </p>`;
 }
 
 export function getCurrentUser() {
@@ -721,12 +1015,32 @@ export function getCurrentUser() {
     };
 }
 
+export function uploadImageToQuestionsAssets(questionTile: string, blobInfo: any, progress) {
+    return async (dispatch, getState, { questionsAssetsService }) => {
+
+        dispatch(simpleAction(ActionTypes.UPLOAD_IMAGE_START));
+
+        let imageUrl = await questionsAssetsService.uploadImageToQuestionsAssets(questionTile, blobInfo, progress)
+          .catch(e => {
+              let message = handleHttpError(e);
+              throw new Error(message);
+          });
+
+        dispatch(simpleAction(ActionTypes.UPLOAD_IMAGE_SUCCESSFUL));
+        return imageUrl;
+      };
+}
+
 export function handleHttpError(error: HttpRequestError): string {
     switch (error.status) {
+        case 400:
+            return strings.ErrorMessage_HTTP_BadRequest;
         case 403:
             return strings.ErrorMessage_HTTP_AccessDenied;
         case 404:
             return strings.ErrorMessage_HTTP_NotFound;
+        case undefined:
+            return error.message;
         default:
             return strings.ErrorMessage_HTTP_Generic;
     }

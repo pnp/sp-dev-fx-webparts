@@ -108,6 +108,7 @@ Solution|Author(s)
 
 Version|Date|Comments
 -------|----|--------
+1.0.5.0|March 6, 2021 | Added webApiPermission request
 1.0.0.4|February 22, 2021 | Added support for AD groups
 1.0.0.3|October 28, 2020 | Update to office-ui-fabric-react 7.148.1, fixing icons and indentation for sub-folders 
 1.0.0.2|April 5, 2021| Updates to SPFx 1.10; Allow display of multiple permissions

@@ -1,8 +1,9 @@
 import '@pnp/polyfill-ie11';
-import { sp, PagedItemCollection, SPBatch } from '@pnp/sp/presets/all';
+import { sp, SPBatch, IAttachmentFileInfo, IRenderListDataParameters } from '@pnp/sp/presets/all';
 import { BaseService } from './base.service';
-import { LogHelper, ContentTypes, ListTitles, StandardFields, PostFields, ReplyFields, QuestionFields, ShowQuestionsOption } from 'utilities';
-import { IQuestionItem, IPostItem, IReplyItem, ICurrentUser, IQuestionsFilter, IPagedItems } from 'models';
+import { LogHelper, ContentTypes, ListTitles, StandardFields, PostFields, ReplyFields, QuestionFields, ShowQuestionsOption, DiscussionType } from 'utilities';
+import { IQuestionItem, IPostItem, IReplyItem, ICurrentUser, IQuestionsFilter, IPagedItems, IFileAttachment, IItemInfo, ICategoryLabelItem } from 'models';
+import * as strings from 'QuestionsWebPartStrings';
 
 export class QuestionService extends BaseService {
 
@@ -15,8 +16,12 @@ export class QuestionService extends BaseService {
         PostFields.DETAILSTEXT,
         QuestionFields.ISANSWERED,
         QuestionFields.FOLLOW_EMAILS,
+        PostFields.PAGE,
         PostFields.LIKE_COUNT,
         PostFields.LIKE_IDS,
+        // Category and Type
+        PostFields.CATEGORY,
+        PostFields.TYPE,
         // Standard Created/Modified Columns
         StandardFields.CREATED,
         StandardFields.MODIFIED,
@@ -55,6 +60,18 @@ export class QuestionService extends BaseService {
         StandardFields.EDITOR_TITLE
     ];
 
+    private itemSelectColumns: string[] = [
+      StandardFields.ID,
+      StandardFields.TITLE,
+      PostFields.TYPE,
+      // question this item is related to
+      ReplyFields.QUESTIONLOOKUP_ID,
+      ReplyFields.QUESTIONLOOKUP_TITLE,
+      // parent of this item
+      ReplyFields.REPLYLOOKUP_ID,
+      ReplyFields.REPLYLOOKUP_TITLE,
+    ];
+
     private questionExpandColumns: string[] = [
         StandardFields.CONTENTTYPE,
         StandardFields.AUTHOR,
@@ -69,49 +86,42 @@ export class QuestionService extends BaseService {
         StandardFields.EDITOR
     ];
 
+    private itemExpandColumns: string[] = [
+      ReplyFields.QUESTIONLOOKUP,
+      ReplyFields.REPLYLOOKUP
+  ];
+
     public async getPagedQuestions(currentUser: ICurrentUser, filter: IQuestionsFilter, previousPagedItems: IPagedItems<IQuestionItem>): Promise<IPagedItems<IQuestionItem>> {
-        LogHelper.verbose(this.constructor.name, 'getPagedQuestions', `[filter=${JSON.stringify(filter)}]`);
+      LogHelper.verbose(this.constructor.name, 'getPagedQuestions2', `[filter=${JSON.stringify(filter)}]`);
 
-        let pagedItems: IPagedItems<IQuestionItem> = {
-            items: [],
-            pagedItemCollection: undefined
-        };
+      let pagedItems: IPagedItems<IQuestionItem> = {
+        items: [],
+        nextHref: undefined
+      };
 
-        if (previousPagedItems !== null && previousPagedItems.pagedItemCollection && previousPagedItems.pagedItemCollection.hasNext) {
-            pagedItems.pagedItemCollection = await previousPagedItems.pagedItemCollection.getNext();
-        }
-        else {
-            let filterText = this.getQuestionFilterText(filter);
-            let top = filter.pageSize ? filter.pageSize : 20;
+      let parameters = this.getQuestionFilterParameters(filter);
 
-            pagedItems.pagedItemCollection = <PagedItemCollection<any>>await sp.web.lists.getByTitle(this.listTitle).items
-                .select(this.questionSelectColumns.join(','))
-                .expand(this.questionExpandColumns.join(','))
-                .filter(filterText)
-                .top(top)
-                .orderBy(filter.orderByColumnName, filter.orderByAscending)
-                .getPaged()
-                .catch(e => {
-                    super.handleHttpError('getPagedQuestions', e);
-                    throw e;
-                });
-        }
+      if (previousPagedItems !== null && previousPagedItems.nextHref) {
+        parameters.Paging = previousPagedItems.nextHref.split('?')[1];
+      }
 
-        if (pagedItems.pagedItemCollection) {
-            for (let questionItem of pagedItems.pagedItemCollection.results) {
-                let question = this.mapQuestion(questionItem, currentUser);
+      let data = await sp.web.lists.getByTitle(this.listTitle).renderListDataAsStream(parameters);
 
-                let currentUserCreatedQuestion: boolean = false;
-                if (currentUser.loginName.toLowerCase() === question.author!.id!.toLowerCase()) {
-                    currentUserCreatedQuestion = true;
-                }
+      pagedItems.nextHref = data.NextHref;
 
-                this.updateUserPermissions(currentUser, question, currentUserCreatedQuestion);
-                pagedItems.items.push(question);
-            }
-        }
+      for (let questionItem of data.Row) {
+          let question = this.mapQuestion(questionItem, currentUser, true);
 
-        return pagedItems;
+          let currentUserCreatedQuestion: boolean = false;
+          if (currentUser.loginName.toLowerCase() === question.author!.id!.toLowerCase()) {
+              currentUserCreatedQuestion = true;
+          }
+
+          this.updateUserPermissions(currentUser, question, currentUserCreatedQuestion);
+          pagedItems.items.push(question);
+      }
+
+      return pagedItems;
     }
 
     public async getQuestionById(currentUser: ICurrentUser, id: number, skipReplies: boolean = false): Promise<IQuestionItem | null> {
@@ -137,6 +147,10 @@ export class QuestionService extends BaseService {
                 if (question.isAnswered === true) {
                     question.answerReply = flatReplies.find(r => r.isAnswer === true);
                 }
+
+                if(question.id) {
+                  question.attachments = await this.getAttachmentsForItem(question.id);
+                }
             }
 
             let currentUserCreatedQuestion: boolean = false;
@@ -153,6 +167,58 @@ export class QuestionService extends BaseService {
         }
 
     }
+
+    public async getAllCategories(): Promise<ICategoryLabelItem[] | null> {
+      LogHelper.verbose(this.constructor.name, 'getAllCategories', "");
+
+      let all = await sp.web.lists.getByTitle(ListTitles.CATEGORY_LABELING).items
+        .orderBy("Title", true)
+        .get()
+        .catch(e => {
+          super.handleHttpError('getAllCategories', e);
+          throw e;
+        });
+
+      return all.map((item: any) => {
+        return this.mapCategoryLabel(item);
+      });
+    }
+
+    public async addCategory(category: string): Promise<void> {
+      LogHelper.verbose(this.constructor.name, 'addCategory', "");
+
+      await sp.web.lists.getByTitle(ListTitles.CATEGORY_LABELING).items
+        .add({ Title: category })
+        .then((iar: any) => {
+          LogHelper.verbose(this.constructor.name, 'addCategory', iar);
+        })
+        .catch(e => {
+          super.handleHttpError('addCategory', e);
+          throw e;
+        });
+    }
+
+    public async getItemInfoById(id: number): Promise<IItemInfo | null> {
+      LogHelper.verbose(this.constructor.name, 'getItemInfoById', `[id:${id}]`);
+
+      let item = await sp.web.lists.getByTitle(this.listTitle).items
+          .getById(id)
+          .select(this.itemSelectColumns.join(','))
+          .expand(this.itemExpandColumns.join(','))
+          .get()
+          .catch(e => {
+              super.handleHttpError('getItemInfoById', e);
+              throw e;
+          });
+
+      if (item !== null) {
+          return this.mapItemInfo(item);
+      }
+      else {
+          return null;
+      }
+
+  }
 
     public async isDuplicateQuestion(question: IQuestionItem): Promise<boolean> {
         LogHelper.verbose(this.constructor.name, 'isDuplicate', `[title:${question.title}]`);
@@ -192,18 +258,16 @@ export class QuestionService extends BaseService {
     }
 
     public async deleteQuestion(question: IQuestionItem): Promise<void> {
-        this.deletePostById(question.id!).then(() => {
-            this.deleteReplies(question);
-        });
+        await this.deletePostById(question.id!);
+        await this.deleteReplies(question);
     }
 
     public async deleteReply(reply: IReplyItem): Promise<void> {
-        this.deletePostById(reply.id!).then(() => {
-            this.deleteReplies(reply);
-        });
+        await this.deletePostById(reply.id!);
+        await this.deleteReplies(reply);
     }
 
-    private deleteReplies(item: IReplyItem | IQuestionItem, batch?: SPBatch) {
+    private async deleteReplies(item: IReplyItem | IQuestionItem, batch?: SPBatch) {
         if (!batch) { batch = sp.createBatch(); }
 
         for (let reply of item.replies) {
@@ -212,10 +276,10 @@ export class QuestionService extends BaseService {
                 .inBatch(batch)
                 .delete();
 
-            this.deleteReplies(reply);
+            await this.deleteReplies(reply);
         }
 
-        batch.execute()
+        await batch.execute()
             .catch(e => {
                 super.handleHttpError('deleteReplies', e);
                 throw e;
@@ -242,6 +306,7 @@ export class QuestionService extends BaseService {
         item[StandardFields.TITLE] = question.title;
         item[PostFields.DETAILS] = question.details;
         item[PostFields.DETAILSTEXT] = question.detailsText;
+        item[PostFields.CATEGORY] = question.category;
 
         let contentType = await sp.web.lists.getByTitle(this.listTitle).contentTypes
             .filter(`Name eq '${ContentTypes.QUESTION}'`)
@@ -253,7 +318,9 @@ export class QuestionService extends BaseService {
 
         item[StandardFields.CONTENTTYPEID] = contentType[0].StringId;
 
+        //Decision for UPDATE or ADD
         if (question.id != null && question.id !== 0) {
+            //UPDATE
             LogHelper.verbose(this.constructor.name, 'saveQuestion', `update [id:${question.id}]`);
 
             let result: any = await sp.web.lists.getByTitle(this.listTitle).items
@@ -261,7 +328,7 @@ export class QuestionService extends BaseService {
                 .update(item)
                 .catch(e => {
                     super.handleHttpError('saveQuestion', e);
-                    throw e;
+                    throw new Error(question.discussionType === DiscussionType.Question ? strings.ErrorMessage_QuestionUpdate : strings.ErrorMessage_ConversationUpdate);
                 });
 
             if (!result) {
@@ -271,15 +338,18 @@ export class QuestionService extends BaseService {
             itemId = question.id;
         }
         else {
+            //ADD
             LogHelper.verbose(this.constructor.name, 'saveQuestion', `add`);
 
+            item[PostFields.PAGE] = { Url: question.page };
             item[QuestionFields.FOLLOW_EMAILS] = question.followEmails.join(';');
+            item[PostFields.TYPE] = question.discussionType;
 
             let result: any = await sp.web.lists.getByTitle(this.listTitle).items
                 .add(item)
                 .catch(e => {
                     super.handleHttpError('saveQuestion', e);
-                    throw e;
+                    throw new Error(question.discussionType === DiscussionType.Question ? strings.ErrorMessage_QuestionAdd : strings.ErrorMessage_ConversationAdd);
                 });
 
             if (!result) {
@@ -287,6 +357,14 @@ export class QuestionService extends BaseService {
             }
 
             itemId = result.data.Id;
+        }
+
+        if(question.removedAttachments && question.removedAttachments.length > 0) {
+          await this.deleteAttachmentsFromItem(itemId, question.removedAttachments);
+        }
+
+        if(question.newAttachments && question.newAttachments.length > 0) {
+          await this.addAttachmentsToItem(itemId, question.newAttachments);
         }
 
         return itemId;
@@ -310,6 +388,10 @@ export class QuestionService extends BaseService {
             if (skipReplies === false) {
                 let flatReplies = await this.getFlatRepliesByQuestionId(currentUser, reply.parentQuestionId!);
                 reply.replies = this.buildReplyTree(flatReplies, [], reply, true);
+            }
+
+            if(reply.id) {
+              reply.attachments = await this.getAttachmentsForItem(reply.id);
             }
 
             let currentUserCreatedQuestion: boolean = false;
@@ -383,7 +465,78 @@ export class QuestionService extends BaseService {
             itemId = result.data.Id;
         }
 
+        if(reply.removedAttachments && reply.removedAttachments.length > 0) {
+          await this.deleteAttachmentsFromItem(itemId, reply.removedAttachments);
+        }
+
+        if(reply.newAttachments && reply.newAttachments.length > 0) {
+          await this.addAttachmentsToItem(itemId, reply.newAttachments);
+        }
+
         return itemId;
+    }
+
+    public async getAttachmentsForItem(id: number): Promise<IFileAttachment[]> {
+      LogHelper.verbose(this.constructor.name, 'getAttachmentsForItem', `[id:${id}]`);
+
+      let attachments = await sp.web.lists.getByTitle(this.listTitle).items
+          .getById(id)
+          .attachmentFiles()
+          .catch(e => {
+              super.handleHttpError('getAttachmentsForItem', e);
+              throw e;
+          });
+
+        let fileAttachments: IFileAttachment[] = [];
+        for(let attachment of attachments) {
+          fileAttachments.push( {
+            fileName: attachment.FileName,
+            serverRelativeUrl: attachment.ServerRelativeUrl,
+            isAttached: true
+          });
+        }
+        return fileAttachments;
+    }
+
+    public async addAttachmentsToItem(id: number, attachments: File[]): Promise<void> {
+        LogHelper.verbose(this.constructor.name, 'addAttachmentsToItem', `[id:${id},attachmentsCount:${attachments.length}]`);
+
+        if(attachments && attachments.length > 0) {
+          let fileInfos: IAttachmentFileInfo[] = [];
+
+          attachments.map(attachment => {
+            fileInfos.push({
+              name: encodeURIComponent(attachment.name),
+              content: attachment
+            });
+          });
+
+          await sp.web.lists.getByTitle(this.listTitle).items
+            .getById(id)
+            .attachmentFiles
+            .addMultiple(fileInfos)
+            .catch(e => {
+                super.handleHttpError('addAttachmentsToItem', e);
+                throw new Error(strings.ErrorMessage_AttachmentsAdd);
+            });
+        }
+    }
+
+    public async deleteAttachmentsFromItem(id: number, attachmentNames: string[]): Promise<void> {
+      LogHelper.verbose(this.constructor.name, 'deleteAttachmentsFromItem', `[id:${id},attachmentNames:${attachmentNames.join(",")}]`);
+
+      if(attachmentNames && attachmentNames.length > 0) {
+        attachmentNames = attachmentNames.map(a => encodeURIComponent(a));
+
+        await sp.web.lists.getByTitle(this.listTitle).items
+            .getById(id)
+            .attachmentFiles
+            .deleteMultiple(...attachmentNames)
+            .catch(e => {
+                super.handleHttpError('deleteAttachmentsFromItem', e);
+                throw new Error(strings.ErrorMessage_AttachmentsRemove);
+            });
+      }
     }
 
     public async markAnswer(reply: IReplyItem): Promise<void> {
@@ -448,6 +601,23 @@ export class QuestionService extends BaseService {
         }
     }
 
+    public async updateDiscussionType(question: IQuestionItem): Promise<void> {
+      let item = {};
+      if (question.id != null && question.id !== 0) {
+          item[QuestionFields.DISCUSSION_TYPE] = question.discussionType;
+
+          LogHelper.verbose(this.constructor.name, 'updateDiscussionType', `update [id:${question.id}]`);
+
+          await sp.web.lists.getByTitle(this.listTitle).items
+              .getById(question.id)
+              .update(item)
+              .catch(e => {
+                  super.handleHttpError('updateDiscussionType', e);
+                  throw e;
+              });
+      }
+  }
+
     public async updateHelpful(updateItem: IReplyItem): Promise<void> {
         let item = {};
         if (updateItem.id != null && updateItem.id !== 0) {
@@ -487,6 +657,11 @@ export class QuestionService extends BaseService {
 
         for (let replyItem of replyItems) {
             let reply = this.mapReply(replyItem, currentUser);
+
+            if(reply.id) {
+              reply.attachments = await this.getAttachmentsForItem(reply.id);
+            }
+
             replies.push(reply);
         }
 
@@ -510,40 +685,96 @@ export class QuestionService extends BaseService {
         return replyTree;
     }
 
-    private getQuestionFilterText(filter: IQuestionsFilter): string {
-        let filterText = '';
+    private getQuestionFilterParameters(filter: IQuestionsFilter): IRenderListDataParameters {
 
-        filterText = `${StandardFields.CONTENTTYPE} eq '${ContentTypes.QUESTION}'`;
-        // from the search box
-        if (filter.searchText && filter.searchText.length > 0) {
-            let encodedSearchText = encodeURIComponent(filter.searchText.replace(`'`, `''`));
+      const rowLimit = `<RowLimit Paged="TRUE">${filter.pageSize}</RowLimit>`;
+      const orderBy = `<OrderBy><FieldRef Name='${filter.orderByColumnName}' Ascending='${filter.orderByAscending === true ? "TRUE" : "FALSE"}' /></OrderBy>`;
+      // filter.orderByColumnName, filter.orderByAscending
+      let whereClause = "";
 
-            filterText += ` and substringof('${encodedSearchText}',${StandardFields.TITLE})`;
-            // only questions and not replies
+      if (filter.searchText && filter.searchText.length > 0) {
+        let encodedSearchText = filter.searchText.trim();
+        const titleFilter = `<Contains><FieldRef Name='${StandardFields.TITLE}' /><Value Type="Text"><![CDATA[${encodedSearchText}]]></Value></Contains>`;
+        const detailsFilter = `<Contains><FieldRef Name='${PostFields.DETAILSTEXT}' /><Value Type="Note"><![CDATA[${encodedSearchText}]]></Value></Contains>`;
+        whereClause = `<Or>${titleFilter}${detailsFilter}</Or>`;
+      }
 
-        }
+      // filter to only question content type
+      if(whereClause.length > 0) {
+        whereClause = `<And>${whereClause}<Eq><FieldRef Name='${StandardFields.CONTENTTYPE}' /><Value Type='Computed'>${ContentTypes.QUESTION}</Value></Eq></And>`;
+      }
+      else {
+        whereClause = `<Eq><FieldRef Name='${StandardFields.CONTENTTYPE}' /><Value Type='Computed'>${ContentTypes.QUESTION}</Value></Eq>`;
+      }
 
-        switch (filter.selectedShowQuestionsOption) {
-            case ShowQuestionsOption.Answered:
-                filterText += `and ${QuestionFields.ISANSWERED} eq 1`;
-                break;
-            case ShowQuestionsOption.Open:
-                    filterText += `and ${QuestionFields.ISANSWERED} eq 0`;
-                break;
-        }
+      // filter opened vs answered
+      switch (filter.selectedShowQuestionsOption) {
+          case ShowQuestionsOption.Answered:
+            whereClause = `<And>${whereClause}<Eq><FieldRef Name='${QuestionFields.ISANSWERED}' /><Value Type='Boolean'>1</Value></Eq></And>`;
+              break;
+          case ShowQuestionsOption.Open:
+            whereClause = `<And>${whereClause}<Eq><FieldRef Name='${QuestionFields.ISANSWERED}' /><Value Type='Boolean'>0</Value></Eq></And>`;
+              break;
+      }
 
-        return filterText;
+      // filter on category
+      if (!(filter.category === null || filter.category === undefined || filter.category === '')) {
+          whereClause = `<And>${whereClause}<Eq><FieldRef Name='${PostFields.CATEGORY}' /><Value Type='Text'><![CDATA[${filter.category}]]></Value></Eq></And>`;
+      }
+
+      // filter to only conversations or questions
+      if(filter.discussionType) {
+        whereClause = `<And>${whereClause}<Eq><FieldRef Name='${QuestionFields.DISCUSSION_TYPE}' /><Value Type='Text'>${filter.discussionType}</Value></Eq></And>`;
+      }
+
+      let camlQuery: IRenderListDataParameters = {
+        RenderOptions: 2,
+        ViewXml: `
+        <View>
+          <ViewFields>
+            <FieldRef Name='${StandardFields.ID}' />
+            <FieldRef Name='${StandardFields.TITLE}' />
+            <FieldRef Name='${PostFields.DETAILS}' />
+            <FieldRef Name='${PostFields.DETAILSTEXT}' />
+            <FieldRef Name='${QuestionFields.ISANSWERED}' />
+            <FieldRef Name='${QuestionFields.FOLLOW_EMAILS}' />
+            <FieldRef Name='${PostFields.LIKE_COUNT}' />
+            <FieldRef Name='${PostFields.LIKE_IDS}' />
+            <FieldRef Name='${PostFields.CATEGORY}' />
+            <FieldRef Name='${PostFields.TYPE}' />
+            <FieldRef Name='${StandardFields.CREATED}' />
+            <FieldRef Name='${StandardFields.MODIFIED}' />
+            <FieldRef Name='${StandardFields.AUTHOR}' />
+            <FieldRef Name='${StandardFields.EDITOR}' />
+          </ViewFields>
+          <Query>
+            <Where>
+              ${whereClause}
+            </Where>
+            ${orderBy}
+          </Query>
+          ${rowLimit}
+        </View>`
+      };
+
+      return camlQuery;
     }
 
-    private mapQuestion(item: any, currentUser: ICurrentUser): IQuestionItem {
+    private mapQuestion(item: any, currentUser: ICurrentUser, mapFromStream: boolean = false): IQuestionItem {
         // Map Base Properties (id, created/modified info)
-        let base = super.mapBaseItemProperties(item);
+        let base = super.mapBaseItemProperties(item, mapFromStream);
+
+        let isAnswered = item[QuestionFields.ISANSWERED];
+        // deal with Yes/No in RenderListDataAsStream
+        if(typeof(item[QuestionFields.ISANSWERED]) === "string") {
+          isAnswered = (item[QuestionFields.ISANSWERED] as string).toLowerCase() === 'yes' ? true : false;
+        }
 
         let question: IQuestionItem = {
             ...base,
             details: item[PostFields.DETAILS],
             detailsText: item[PostFields.DETAILSTEXT],
-            isAnswered: item[QuestionFields.ISANSWERED],
+            isAnswered: isAnswered,
             totalReplyCount: 0,
             likeCount: 0,
             likeIds: [],
@@ -554,7 +785,13 @@ export class QuestionService extends BaseService {
             canEdit: false,
             canReact: false,
             canReply: false,
-            replies: []
+            replies: [],
+            category: item[PostFields.CATEGORY],
+            discussionType: item[PostFields.TYPE],
+            page: item[PostFields.PAGE],
+            attachments: [],
+            newAttachments: [],
+            removedAttachments: []
         };
 
         this.mapLikeInfo(item[PostFields.LIKE_IDS], question, currentUser);
@@ -586,12 +823,35 @@ export class QuestionService extends BaseService {
             canMarkAsAnswer: false,
             canReact: false,
             canReply: false,
-            replies: []
+            replies: [],
+            attachments: [],
+            newAttachments: [],
+            removedAttachments: []
         };
 
         this.mapLikeInfo(item[PostFields.LIKE_IDS], reply, currentUser);
         this.mapHelpfulInfo(item[ReplyFields.HELPFULIDS], reply, currentUser);
         return reply;
+    }
+
+    private mapCategoryLabel(item: any): ICategoryLabelItem {
+      let base = super.mapBaseItemProperties(item);
+      let cat: ICategoryLabelItem = {
+        ...base
+      };
+      return cat;
+    }
+
+    private mapItemInfo(item: any): IItemInfo {
+      let itemInfo: IItemInfo = {
+        id: item.ID,
+        title: item.Title,
+        parentQuestionId: super.getLookupId(item[ReplyFields.QUESTIONLOOKUP]),
+        parentReplyId: super.getLookupId(item[ReplyFields.REPLYLOOKUP]),
+        discussionType: item[PostFields.TYPE]
+      };
+
+      return itemInfo;
     }
 
     private mapFollowInfo(ids: string, updateItem: IQuestionItem, currentUser: ICurrentUser) {

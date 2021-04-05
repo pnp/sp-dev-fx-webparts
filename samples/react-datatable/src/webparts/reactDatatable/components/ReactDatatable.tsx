@@ -143,8 +143,8 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     let { sortingFields, listItems, searchText } = this.state;
     if (searchText) {
       if (searchBy) {
-        listItems = listItems.filter(l => searchBy.some(field => {
-          return (l[field] && l[field].toLowerCase().includes(searchText.toLowerCase()));
+        listItems = listItems && listItems.length && listItems.filter(l => searchBy.some(field => {
+          return (l[field] && l[field].toString().toLowerCase().includes(searchText.toLowerCase()));
         }));
       }
     }

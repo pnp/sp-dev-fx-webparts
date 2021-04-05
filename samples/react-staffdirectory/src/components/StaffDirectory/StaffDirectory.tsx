@@ -46,7 +46,7 @@ import { AppContext } from "../../common/AppContext";
 import { UserCard } from "../UserCard/UserCard";
 import { useRef } from "react";
 import strings from "StaffDirectoryWebPartStrings";
-
+import {Theme} from 'spfx-uifabric-themes';
 const imageNoData: string = require("../../../assets/Nodatarafiki.svg");
 
 
@@ -73,7 +73,7 @@ export const StaffDirectory: React.FunctionComponent<IStaffDirectoryProps> = (
   props: IStaffDirectoryProps
 ) => {
   const { showBox, maxHeight } = props;
-
+ const _theme = window.__themeState__.theme;
   const styleClasses = mergeStyleSets({
     webPartTitle: {
       marginBottom: 20,
@@ -85,7 +85,7 @@ export const StaffDirectory: React.FunctionComponent<IStaffDirectoryProps> = (
       margin: 20,
       borderBottomStyle: "solid",
       borderWidth: 1,
-      borderBottomColor: props.themeVariant.palette.themeLighter,
+      borderBottomColor: props.themeVariant?.palette?.themeLighter ?? _theme.themeLighter,
     },
 
     styleIcon: {
@@ -93,7 +93,7 @@ export const StaffDirectory: React.FunctionComponent<IStaffDirectoryProps> = (
       minWidth: 44,
       minHeight: 30,
       height: 30,
-      borderColor: props.themeVariant.palette.themePrimary,
+      borderColor: props.themeVariant?.palette?.themePrimary ?? _theme.themePrimary,
       borderRightWidth: 0,
       borderRightStyle: "none",
       borderLeftWidth: 1,
@@ -123,24 +123,24 @@ export const StaffDirectory: React.FunctionComponent<IStaffDirectoryProps> = (
       width: "100%",
       maxHeight: 32,
       minHeight: 32,
-      borderColor: props.themeVariant.palette.themePrimary,
+      borderColor: props.themeVariant?.palette?.themePrimary ?? _theme.themePrimary,
     },
     itemsWrapper: {
-      borderColor: props.themeVariant.palette.themePrimary,
+      borderColor: props.themeVariant?.palette?.themePrimary ?? _theme.themePrimary,
     },
     text: {
       borderLeftWidth: 0,
       minHeight: 32,
-      borderColor: props.themeVariant.palette.themePrimary,
+      borderColor: props.themeVariant?.palette?.themePrimary ?? _theme.themePrimary,
       selectors: {
         ":focus": {
-          borderColor: props.themeVariant.palette.themePrimary,
+          borderColor:props.themeVariant?.palette?.themePrimary ?? _theme.themePrimary,
         },
         ":hover": {
-          borderColor: props.themeVariant.palette.themePrimary,
+          borderColor: props.themeVariant?.palette?.themePrimary ?? _theme.themePrimary,
         },
         "::after": {
-          borderColor: props.themeVariant.palette.themePrimary,
+          borderColor: props.themeVariant?.palette?.themePrimary ?? _theme.themePrimary,
           borderWidth: 1,
           borderLeftWidth: 0,
         },
@@ -151,7 +151,7 @@ export const StaffDirectory: React.FunctionComponent<IStaffDirectoryProps> = (
   const nextPageStyle: ILinkStyles = {
     root: {
       fontWeight: 600,
-      fontSize: props.themeVariant.fonts.mediumPlus.fontSize,
+      fontSize: props.themeVariant?.fonts?.mediumPlus?.fontSize ?? window.__themeState__.theme["ms-font-mediumPlus-fontSize"],
       selectors: { ":hover": { textDecoration: "underline" } },
     },
   };
@@ -383,8 +383,8 @@ export const StaffDirectory: React.FunctionComponent<IStaffDirectoryProps> = (
                 iconName="Search"
                 style={{
                   verticalAlign: "center",
-                  fontSize: props.themeVariant.fonts.mediumPlus.fontSize,
-                  color: props.themeVariant.palette.themePrimary,
+                  fontSize: props.themeVariant?.fonts?.mediumPlus?.fontSize ??   window.__themeState__.theme["ms-font-mediumPlus-fontSize"],
+                  color: props.themeVariant?.palette.themePrimary ?? _theme.themePrimary,
                 }}
               />
             </div>
