@@ -9,7 +9,7 @@
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
     "created": "2020-12-04",
-    "modified": "2020-12-04",
+    "modified": "2021-03-27",
     "products": [
       "SharePoint",
       "Office"
@@ -189,6 +189,12 @@
         "company": "",
         "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
         "name": "Abderahman Moujahid"
+      },
+      {
+        "gitHubAccount": "mohammadamer",
+        "company": "",
+        "pictureUrl": "https://github.com/mohammadamer.png",
+        "name": "Mohammed Amer"
       }
     ],
     "references": [
