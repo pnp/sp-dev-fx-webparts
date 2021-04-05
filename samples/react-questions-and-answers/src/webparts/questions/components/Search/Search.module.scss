@@ -17,10 +17,8 @@
     display: flex;
     justify-content: space-between;
   }
-  
+
   .askAQuestionButton {
-    border: 1px solid;
-    border-color: $ms-color-white;
     flex-grow: 0;
   }
 
@@ -29,7 +27,7 @@
     flex-grow: 0;
     margin-left: auto;
   }
-  
+
   .showQuestionsDropDown {
     min-width: 180px;
     flex-grow: 0;

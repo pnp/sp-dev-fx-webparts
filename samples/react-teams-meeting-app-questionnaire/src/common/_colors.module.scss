@@ -1,0 +1,61 @@
+//SharePoint
+$questionnaireMeetingApp-background: "[theme:white, default:#fff]";
+$questionnaireMeetingApp-color: "[theme:primaryText, default:#333]";
+$questionnaireMeetingAppButton-background: "[theme:themePrimary, default:#0078d4]";
+$questionnaireMeetingAppButton-color: "[theme:white, default:#fff]";
+$overlay: "[theme:whiteTranslucent40, default:rgba(255, 255,255, 0.4)]";
+$surfaceBackground: "[theme:white, default:#fff]";
+$primaryText: "[theme:primaryText, default:#333]";
+$panelBorder: "[theme: neutralLight, default: #eaeaea]";
+$white: "[theme:white, default: #fff]"; // property pane background
+$inputBackground: "[theme:inputBackground, default:#fff]"; //input background
+$inputBorder: "[theme:inputBorder, default:#a6a6a6]"; // input border
+$inputBorderHovered: "[theme:inputBorderHovered, default:#333333]"; // input border hovered
+
+// default theme
+$default-questionnaireMeetingApp-background: #f3f2f1;
+$default-questionnaireMeetingApp-color: #252423;
+$default-questionnaireMeetingAppButton-background: #6264a7;
+$default-questionnaireMeetingAppButton-color: #f3f2f1;
+
+$default-overlay: rgba(255, 255, 255, 0.4);
+$default-surfaceBackground: #f3f2f1;
+$default-primaryText: #252423;
+$default-panelBorder: #dedddc;
+
+$default-white: #f3f2f1;
+$default-inputBackground: #fff;
+$default-inputBorder: #b5b4b2;
+$default-inputBorderHovered: #252423;
+
+// dark theme
+$dark-questionnaireMeetingApp-background: #2d2c2c;
+$dark-questionnaireMeetingApp-color: #ffffff;
+$dark-questionnaireMeetingAppButton-background: #6264a7;
+$dark-questionnaireMeetingAppButton-color: #2d2c2c;
+
+$dark-overlay: rgba(37, 36, 35, 0.75);
+$dark-surfaceBackground: #2d2c2c;
+$dark-primaryText: #ffffff;
+$dark-panelBorder: #4c4b4b;
+
+$dark-white: #2d2c2c;
+$dark-inputBackground: #000;
+$dark-inputBorder: #c8c8c8;
+$dark-inputBorderHovered: #ffffff;
+
+// contrast theme
+$contrast-questionnaireMeetingApp-background: #000000;
+$contrast-questionnaireMeetingApp-color: #ffffff;
+$contrast-questionnaireMeetingAppButton-background: #6264a7;
+$contrast-questionnaireMeetingAppButton-color: #000000;
+
+$contrast-overlay: rgba(37, 36, 35, 0.75);
+$contrast-surfaceBackground: #000000;
+$contrast-primaryText: #ffffff;
+$contrast-panelBorder: #4c4b4b;
+
+$contrast-white: #000000;
+$contrast-inputBackground: #000;
+$contrast-inputBorder: #c8c8c8;
+$contrast-inputBorderHovered: #ffffff;

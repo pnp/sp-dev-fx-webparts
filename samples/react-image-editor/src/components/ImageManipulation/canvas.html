@@ -1,0 +1,31 @@
+<html>
+  <body>
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+
+  const img= new Image()
+  img.crossOrigin = "Anonymous";
+  img.addEventListener("load", imageReceived, false);
+  img.src = 'https://pnp.github.io/images/hero-parker-p-800.png';
+
+
+  function imageReceived() {
+  const c = document.getElementById("myCanvas");
+  const ctx = c.getContext("2d");
+  c.width = img.width;
+  c.height = img.height;
+
+  ctx.translate(0, c.height);
+  ctx.scale(1, -1);
+
+  ctx.drawImage(img, 0, 0);
+  ctx.font = "30px Arial";
+  ctx.strokeText("Hello PnP-Community",10,50);
+}
+
+</script>
+
+
+</body>
+</html>

@@ -51,6 +51,7 @@
     i {
         padding-right: 5px;
     }
+    margin-bottom: 10px;
 }
 
 @mixin tw-user-actions {
@@ -85,20 +86,37 @@
 
 
 :global {
-    .ql-toolbar, .ql-toolbar .ql-snow,
-    .ql-snow.ql-toolbar button {
-      background-color: $ms-color-neutralPrimary;
-      color: $ms-color-white;
+    .customTextEditor .tox-tinymce {
+      border-color: $ms-color-neutralTertiary;
     }
-    .ql-snow .ql-picker {
-        color: $ms-color-white;
+
+    .customTextEditor .tox .tox-toolbar, .tox .tox-toolbar__overflow,
+    .customTextEditor .tox .tox-toolbar__primary {
+      background: none;
+      border-bottom: 1px solid;
+      border-color: $ms-color-neutralTertiary;
     }
-    .ql-snow .ql-picker-options {
-        background-color: $ms-color-neutralPrimary;
+    .customTextEditor .tox .tox-tbtn {
+      border-radius: 2px;
     }
-    .ql-snow .ql-editor, .ql-editor{
-        font-family: "Segoe UI Web (West European)", Segoe UI, -apple-system,
-        BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-        @include ms-font-m-plus;
+    .customTextEditor .tox .tox-button {
+      border-radius: 2px;
+    }
+    .customTextEditor .tox .tox-button--secondary {
+      border-radius: 2px;
+    }
+    .customTextEditor .tox .tox-tbtn:hover {
+      background: $ms-color-neutralLighter;
+    }
+    .customTextEditor .tox .tox-button:hover {
+      background: $ms-color-neutralLighter;
+    }
+    .customTextEditor .tox .tox-button {
+      background-color:  $ms-color-themePrimary;
+      border-color:  $ms-color-themePrimary;
+    }
+    .customTextEditor .tox .tox-button:hover {
+      background-color:  $ms-color-themeDarker;
+      border-color:  $ms-color-themeDarker;
     }
 }

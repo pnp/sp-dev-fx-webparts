@@ -1,0 +1,61 @@
+@import "./colors.module";
+[data-theme="default"] {
+    :global {
+        .ms-Fabric {
+            color: $default-primaryText;
+        }
+        .ms-Button-icon {
+            color: $default-primaryText;
+        }
+
+        .ms-Overlay {
+            background-color: $default-overlay;
+        }
+
+        .ms-Panel-main {
+            background-color: $default-surfaceBackground;
+            border-left-color: $default-panelBorder;
+            border-right-color: $default-panelBorder;
+            .ms-Panel-headerText {
+                color: $default-primaryText;
+            }
+        }
+
+        // Property Pane
+        .spPropertyPaneContainer {
+            background-color: $default-white;
+            [class^="propertyPane_"] {
+                background-color: $default-white;
+                border-left-color: $default-panelBorder;
+                [class^="propertyPanePageTitle_"],
+                [class^="propertyPanePageDescription_"],
+                [class^="propertyPaneGroupHeaderNoAccordion_"] {
+                    color: $default-primaryText;
+                }
+                .ms-Button--icon {
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        // Text Field
+        .ms-Label {
+            color: $default-primaryText;
+        }
+        .ms-TextField {
+            .ms-TextField-fieldGroup {
+                background-color: $default-inputBackground;
+                color: $default-primaryText;
+                border-color: $default-inputBorder;
+                .ms-TextField-field {
+                    color: $default-primaryText;
+                }
+                &:hover {
+                    border-color: $default-inputBorderHovered;
+                }
+            }
+        }
+    }
+}

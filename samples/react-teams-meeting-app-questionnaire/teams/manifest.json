@@ -1,0 +1,56 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.8",
+    "version": "1.0.0",
+    "id": "31f78b4e-8520-4ef2-884c-fb3bdd5d9985",
+    "packageName": "Meeting Questionnaire",
+    "developer": {
+        "name": "Nanddeep Nachan",
+        "websiteUrl": "https://aka.ms/sppnp",
+        "privacyUrl": "https://privacy.microsoft.com/privacystatement",
+        "termsOfUseUrl": "https://www.microsoft.com/servicesagreement"
+    },
+    "name": {
+        "short": "Meeting Questionnaire",
+        "full": "SPFx based MS Teams Questionnaire Meeting App"
+    },
+    "description": {
+        "short": "MS Teams pre-meeting questionnaire experience",
+        "full": "Provides MS Teams pre-meeting experience with questionnaire"
+    },
+    "icons": {
+        "outline": "31f78b4e-8520-4ef2-884c-fb3bdd5d9985_outline.png",
+        "color": "31f78b4e-8520-4ef2-884c-fb3bdd5d9985_color.png"
+    },
+    "accentColor": "#004578",
+    "configurableTabs": [
+        {
+            "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=31f78b4e-8520-4ef2-884c-fb3bdd5d9985%26forceLocale={locale}",
+            "canUpdateConfiguration": true,
+            "scopes": [
+                "team",
+                "groupchat"
+            ],
+            "context": [
+                "channelTab",
+                "privateChatTab",
+                "meetingChatTab",
+                "meetingDetailsTab",
+                "meetingSidePanel"
+            ]
+        }
+    ],
+    "validDomains": [
+        "*.login.microsoftonline.com",
+        "*.sharepoint.com",
+        "*.sharepoint-df.com",
+        "spoppe-a.akamaihd.net",
+        "spoprod-a.akamaihd.net",
+        "resourceseng.blob.core.windows.net",
+        "msft.spoppe.com"
+    ],
+    "webApplicationInfo": {
+        "resource": "https://{teamSiteDomain}",
+        "id": "00000003-0000-0ff1-ce00-000000000000"
+    }
+}

@@ -176,7 +176,7 @@ export class Event extends React.Component<IEventProps, IEventState> {
     }
     else {
       if (this.state.eventData.EventType == '1') { // recurrence exception
-        eventData.RecurrenceID = eventData.EventDate.toString();
+        eventData.RecurrenceID = eventData.EventDate;
         eventData.MasterSeriesItemID = eventData.ID.toString();
         eventData.EventType = "4";
         eventData.fRecurrence = true;
