@@ -62,6 +62,46 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-video-banner
+      name: react-video-banner
+      title: Video Banner
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-video-banner/assets/react-video-banner-demo1.gif
+      author: Mohamed Derhalli
+      summary: Use this Web Part to add a video banner with a text on top of it to your pages. 
+      modifiedtext: April 2, 2021
+      modified: 2021-04-02
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-company-stories
+      name: react-company-stories
+      title: Company Stories
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-company-stories/assets/react-company-stories.gif
+      author: Luis Mañez
+      summary: This web part allows you to add images to a SharePoint List, and renders them with a UX very similar to Instagram Stories (or Twitter Reels, or [Place your Social network here]). It is a way to engage employees, showing relevant content in a well-known visual appearance.
+      modifiedtext: March 31, 2021
+      modified: 2021-03-31
+    - framework: React
+      spfx: 1.11.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-advanced-page-properties
+      name: react-advanced-page-properties
+      title: Advanced Page Properties
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-advanced-page-properties/assets/diff-screencap.png
+      author: Mike Homol
+      summary: Replicates the functionality of Page Properties with improvements
+      modifiedtext: March 30, 2021
+      modified: 2021-03-30
+    - framework: React
+      spfx: 1.12.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-meeting-app-questionnaire
+      name: react-teams-meeting-app-questionnaire
+      title: Questionnaire Teams Meeting App
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-meeting-app-questionnaire/assets/web-part-preview.gif
+      author: Nanddeep Nachan, Ravi Kulkarni, Smita Nachan
+      summary: Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.
+      modifiedtext: March 21, 2021
+      modified: 2021-03-21
+    - framework: React
       spfx: 1.4.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-image-editor
       name: react-image-editor
@@ -101,8 +141,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-datatable/assets/preview.png
       author: Chandani Prajapati
       summary: This web part provides easy way to render SharePoint custom list in data table view with all the necessary features.
-      modifiedtext: March 01, 2021
-      modified: 2021-03-01
+      modifiedtext: March 31, 2021
+      modified: 2021-03-31
       pnpcontrols: PropertyFieldColorPicker, PropertyFieldListPicker, PropertyFieldMultiSelect, PropertyFieldOrder, WebPartTitle, Placeholder
     - framework: React
       spfx: 1.11.0
@@ -110,10 +150,10 @@ extra:
       name: react-staffdirectory
       title: Staff Directory
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-staffdirectory/assets/staffdirectory.gif
-      author: João Mendes
+      author: João Mendes, Ari Gunawan
       summary: This web part shows the current user's colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card.
-      modifiedtext: March 9, 2021
-      modified: 2021-03-09
+      modifiedtext: March 28, 2021
+      modified: 2021-03-28
       pnpcontrols: WebPartTitle
     - framework: React
       spfx: 1.11.0
@@ -429,8 +469,8 @@ extra:
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-questions-and-answers/assets/QuestionsAndAnswers.gif
       author: Bo George
       summary: This is an application that supports Questions & Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part.
-      modifiedtext: October 1, 2020
-      modified: 2020-10-01
+      modifiedtext: March 22, 2021
+      modified: 2021-03-22
       pnpcontrols: WebPartTitle
     - framework: React
       spfx: 1.11.0
@@ -991,10 +1031,10 @@ extra:
       name: react-calendar
       title: Calendar
       thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif
-      author: João Mendes, Mohamed Derhalli, Hugo Bernier, Nanddeep Nachan, Abderahman Moujahid, Mohammed Amer
+      author: João Mendes, Mohamed Derhalli, Hugo Bernier, Nanddeep Nachan, Abderahman Moujahid, Mohammed Amer, Peter Paul Kirschner
       summary: This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.
-      modifiedtext: Marcn 16, 2021
-      modified: 2021-03-16
+      modifiedtext: March 27, 2021
+      modified: 2021-03-27
       pnpcontrols: PropertyFieldDateTimePicker, PeoplePicker, Map
       technology: MSGraph
     - framework: React
@@ -3164,6 +3204,7 @@ extra:
     - Alex Terentiev
     - Andrew Koltyakov
     - Anoop Tatti
+    - Ari Gunawan
     - Ashok Swain
     - Atish Kumar Dipongkor
     - Austin Breslin
@@ -3215,6 +3256,7 @@ extra:
     - Markus Moeller
     - Mikael Svenson
     - Miguel Rabaca
+    - Mike Homol
     - Mike Zimmerman
     - Mohammed Amer
     - Mohamed Derhalli
