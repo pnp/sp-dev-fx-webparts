@@ -11,11 +11,16 @@ Attempts to replicate the functionality of Page Properties with the following im
 - Support for currency
 - Improved support for dates
 
-![see the difference](diff-screencap.png)
+![see the difference](./assets/diff-screencap.png)
 
-## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.11-green.svg)
+## Compatibility
+
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 
 ## Applies to
 
@@ -26,7 +31,7 @@ Attempts to replicate the functionality of Page Properties with the following im
 
 ## Prerequisites
 
-> Any special pre-requisites?
+None
 
 ## Solution
 
@@ -62,7 +67,7 @@ Version|Date|Comments
 
 Once the solution is installed in the app catalog and the app has been added to the site, you should see it available to a page.
 
-![add the part](add-to-page.png)
+![add the part](./assets/add-to-page.png)
 
 > Familiarity is key
 
@@ -70,5 +75,5 @@ This web part tries to mimic the original Page Properties web part as much as po
 
 Basically add and remove properties until you are satisfied and you're good to go!
 
-![configure the part](props.gif)
+![configure the part](./assets/props.gif)
 
