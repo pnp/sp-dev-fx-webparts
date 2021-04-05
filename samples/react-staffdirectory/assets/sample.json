@@ -9,7 +9,7 @@
       "This web part shows the current user\u0027s colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card."
     ],
     "created": "2021-03-09",
-    "modified": "2021-03-09",
+    "modified": "2021-03-28",
     "products": [
       "SharePoint",
       "Office"
@@ -63,6 +63,11 @@
         "pictureUrl": "https://github.com/joaojmendes.png",
         "name": "Jo\u00E3o Mendes",
         "twitter": "joaojmendes"
+      },
+      {
+        "gitHubAccount": "AriGunawan",
+        "pictureUrl": "https://github.com/AriGunawan.png",
+        "name": "Ari Gunawan"
       }
     ],
     "references": [
