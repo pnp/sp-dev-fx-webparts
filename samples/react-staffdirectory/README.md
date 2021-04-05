@@ -72,4 +72,4 @@ Please follow all the steps:
 - Go to **API Access** - from **SharePoint Admin Center** new experience, and **Approve** the permission to use Microsoft Graph scopes **Presence.Read.All** and **User.Read.All**
 
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/staffdirectory" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-staffdirectory" />
