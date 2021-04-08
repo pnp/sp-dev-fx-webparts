@@ -4,7 +4,7 @@
 
 This web part does nothing, really. It is intended to be used to test upgrading SPFx web parts and demonstrating incompatibility issues between versions of SPFx and Node.js.
 
-![picture of the web part in action](./assets/react-upgrade-me.png)
+![picture of the web part in action saying 'This web part does nothing'](./assets/react-upgrade-me.png)
 
 
 ## Compatibility
