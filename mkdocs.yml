@@ -62,6 +62,16 @@ extra:
       link: 'https://aka.ms/sppnp'
   samples:
     - framework: React
+      spfx: 1.10.0
+      url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-doccard-faq
+      name: react-doccard-faq
+      title: Document Card FAQ
+      thumbnail: https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-doccard-faq/assets/FAQdocCardPreview.gif
+      author: Sam Collins
+      summary: React FAQ Document Card Web Part
+      modifiedtext: April 5, 2021
+      modified: 2021-04-05
+    - framework: React
       spfx: 1.11.0
       url: https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-video-banner
       name: react-video-banner
@@ -3285,6 +3295,7 @@ extra:
     - Roland Oldengarm
     - Russell Gove
     - Ryan Schouten
+    - Sam Collins
     - Saulo Oliveira
     - Sébastien Levert
     - Serdar Ketenci̇
