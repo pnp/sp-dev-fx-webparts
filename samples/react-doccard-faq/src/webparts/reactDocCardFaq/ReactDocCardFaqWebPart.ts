@@ -11,7 +11,7 @@ import * as strings from 'ReactDocCardFaqWebPartStrings';
 import ReactDocCardFaq from './components/ReactDocCardFaq';
 import { IReactDocCardFaqProps } from './components/IReactDocCardFaqProps';
 
-import { IFAQList } from '../reactDocCardFaq/_helpers/listModel'; 
+import { IFAQList } from '../reactDocCardFaq/_helpers/listModel';
 import { listService } from '../reactDocCardFaq/_helpers/listService';
 
 import { PropertyFieldMultiSelect } from '@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect';
@@ -22,7 +22,7 @@ export interface IReactDocCardFaqWebPartProps {
 }
 
 export default class ReactDocCardFaqWebPart extends BaseClientSideWebPart<IReactDocCardFaqWebPartProps> {
-  private _listService: listService
+  private _listService: listService;
   private categories: IPropertyPaneDropdownOption[] = [];
 
   protected onInit(): Promise<void> {
