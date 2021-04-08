@@ -9,11 +9,11 @@ This web part does nothing, really. It is intended to be used to test upgrading 
 
 ## Compatibility
 
-![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg) 
-![Node.js LTS 6.x | LTS 8.x](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20LTS%208.x-green.svg)
-![SharePoint 2019 | Online - It won't work with SharePoint 2016](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg)
-![Teams Not compatible - Don't waste your time](https://img.shields.io/badge/Teams-Not%20compatible-red.svg)
-![Workbench Local | Hosted - It works on my machine, and yours, and in the cloud](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
+![SPFx 1.4.1](https://img.shields.io/badge/SPFx-1.4.1-green.svg "SPFx 1.4.1 works with SharePoint 2019 and SharePoint Online") 
+![Node.js LTS 6.x | LTS 8.x](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20LTS%208.x-green.svg "Node.js LTS 6.x or 8.x is required to run SPFx 1.4.1")
+![SharePoint 2019 | Online - It won't work with SharePoint 2016](https://img.shields.io/badge/SharePoint-2019%20%7C%20Online-yellow.svg "It won't work on SharePoint 2016")
+![Teams Not compatible - Don't waste your time](https://img.shields.io/badge/Teams-Not%20compatible-red.svg "Don't waste your time")
+![Workbench Local | Hosted - It works on my machine, and yours, and in the cloud](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg "It works on my machine, your machine, and in the cloud")
 
 
 ## Applies to
