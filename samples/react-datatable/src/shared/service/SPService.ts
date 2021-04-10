@@ -17,7 +17,7 @@ export class SPService {
             for (var i = 0; i < selectedFields.length; i++) {
                 switch (selectedFields[i].fieldType) {
                     case 'SP.FieldUser':
-                        selectQuery.push(`${selectedFields[i].key}/Title,${selectedFields[i].key}/Name`);
+                        selectQuery.push(`${selectedFields[i].key}/Title,${selectedFields[i].key}/EMail,${selectedFields[i].key}/Name`);
                         expandQuery.push(selectedFields[i].key);
                         break;
                     case 'SP.FieldLookup':
@@ -63,9 +63,10 @@ export class SPService {
         }
     }
 
-    public async getUserProfileUrl(loginName: string, propertyName: string) {
+    public async getUserProfileUrl(loginName: string) {
         try {
-            const profileUrl = await sp.profiles.getUserProfilePropertyFor(loginName, propertyName);
+            const properties = await sp.profiles.getPropertiesFor(loginName);
+            const profileUrl = properties['PictureUrl'];
             return profileUrl;
         }
         catch (err) {
