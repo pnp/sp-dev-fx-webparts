@@ -15,5 +15,4 @@ export interface IUser {
     officeLocation: string;
     postalCode: string;
     userType: string;
-
 }
