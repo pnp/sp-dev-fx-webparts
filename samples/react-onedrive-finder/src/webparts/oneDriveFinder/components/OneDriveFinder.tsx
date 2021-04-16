@@ -278,10 +278,18 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
    */
   private getDrives = async (selectedOption: IDropdownOption) => {
     let itemID: any;
+    let siteID: any;
+
     if (selectedOption.data.root != undefined) {
-      itemID = await this.getOneDriveRootFolderID(selectedOption.key)
+      itemID = await this.getOneDriveRootFolderID(selectedOption.key);
+      this._itemID = itemID;
+      siteID = "";
+      this._siteID = "";
     } else {
-      itemID = await this.getRootDriveFolderID(selectedOption.key)
+      itemID = await this.getRootDriveFolderID(selectedOption.key);
+      this._itemID = itemID;
+      siteID = selectedOption.key;
+      this._siteID = selectedOption.key.toString();
     }
 
     this._breadcrumbItem = [];
@@ -308,6 +316,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
     });
     this.setState(
       {
+        siteID: siteID,
         breadcrumbItem: this._breadcrumbItem,
         itemID: itemID
       });
