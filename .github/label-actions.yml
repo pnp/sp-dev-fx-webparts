@@ -1,0 +1,14 @@
+name: 'Label Actions'
+
+on:
+  issues:
+    types: [labeled, unlabeled]
+
+jobs:
+  reaction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dessant/label-actions@v2
+        process-only: 'issues'
+        with:
+          github-token: ${{ github.token }}
