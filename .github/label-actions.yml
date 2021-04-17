@@ -11,9 +11,7 @@ incomplete-submission:
 # Actions taken when the `incomplete-submission` label is added to issues 
 type:incomplete-submission:
   # Post a comment
-  comment:
-  - Thank you for your submission, but there isn't enough detail in the issue for us to review & move forward. 
-  - The issue template includes sections for you to fill out.
-  - Please resubmit your issue and complete the provided sections in the new item template so we can move forward on it refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
+   comment: >
+    Thank you for your submission, but there isn't enough detail in the issue for us to review & move forward. The new issue template includes sections for you to fill out. Please resubmit your issue and complete the provided sections in the new item template so we can move forward on it refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
   # Close the issue
   close: true
