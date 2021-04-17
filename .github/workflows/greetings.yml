@@ -1,0 +1,12 @@
+name: Greetings
+
+on: [pull_request]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        pr-message: 'Thank you for submitting your first pull request!\nWe love celebrating the awesome work our contributors do on social media and community calls; Make sure that you update your GitHub user profile with your Twitter user name, your company name, and your picture.\nIf you don't use a company name or Twitter account, we will assume that you prefer not to mention you on social media and/or that you do not want your company name listed.\nThank you for being awesome!'
