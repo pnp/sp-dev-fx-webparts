@@ -175,7 +175,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
                     this._siteID = "";
                     this.setState({
                       siteID: this._siteID,
-                      itemID: selectedOption.key.toString(),
+                      itemID: "",
                       breadcrumbItem: this._breadcrumbItem
                     });
                   }
@@ -268,6 +268,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
     let graphData: any = await this.getGraphContent("https://graph.microsoft.com/v1.0/sites/" + siteID + "/drive/root://:/?$select=id");
     return graphData.id;
   }
+
   private getOneDriveRootFolderID = async (key) => {
     let graphData: any = await this.getGraphContent("https://graph.microsoft.com/v1.0/me/drive/items/" + key + "?$select=id");
     return graphData.id;
@@ -278,18 +279,10 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
    */
   private getDrives = async (selectedOption: IDropdownOption) => {
     let itemID: any;
-    let siteID: any;
-
     if (selectedOption.data.root != undefined) {
-      itemID = await this.getOneDriveRootFolderID(selectedOption.key);
-      this._itemID = itemID;
-      siteID = "";
-      this._siteID = "";
+      itemID = await this.getOneDriveRootFolderID(selectedOption.key)
     } else {
-      itemID = await this.getRootDriveFolderID(selectedOption.key);
-      this._itemID = itemID;
-      siteID = selectedOption.key;
-      this._siteID = selectedOption.key.toString();
+      itemID = await this.getRootDriveFolderID(selectedOption.key)
     }
 
     this._breadcrumbItem = [];
@@ -316,7 +309,6 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
     });
     this.setState(
       {
-        siteID: siteID,
         breadcrumbItem: this._breadcrumbItem,
         itemID: itemID
       });
