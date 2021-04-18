@@ -23,7 +23,7 @@ extensions:
 
 This is a sample web part developed using React Framework that showcases how to use the latest `microsoft-graph-client` in order to do advanced configuration of the Microsoft Graph client. This enables scenarios like throttling management, Chaos management and a lot more!
 
-![Demo of the Graph Client using the MGT providers](/assets/DemoGraphClient.gif)
+![Demo of the Graph Client using the MGT providers](./assets/DemoGraphClient.gif)
 
 ## Used SharePoint Framework Version
 
