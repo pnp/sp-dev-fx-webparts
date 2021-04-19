@@ -7,9 +7,9 @@ This sample access drives from OneDrive and navigate between his content using *
 **[FileList](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/f8b8aa81d00bf426b94ee5016d511bc78b36e152/stories/components/fileList.stories.js#L136)** control allow to load files base on graph querys or parameters ids.
 
 ### Retrieve Sites with drives associate
-![Demo](./assets/OneDrivefinderSample1.PNG)
+![Demo](./Assets/OneDrivefinderSample1.PNG)
 ### Navigate between folders and Breadcrumb
-![Demo](./assets/OneDrivefinderSample2.PNG)
+![Demo](./Assets/OneDrivefinderSample2.PNG)
 
 ## Used SharePoint Framework Version
 
