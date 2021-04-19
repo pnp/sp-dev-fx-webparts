@@ -17,7 +17,7 @@ extensions:
   createdDate: 2021-04-18T19:43:46.356Z
 ---
 
-# react-graph-latest-client
+# react-graph-mgt-client
 
 ## Summary
 
@@ -57,7 +57,7 @@ In the `package-solution.json` file, ensure that the scopes are available for th
 
 Solution|Author(s)
 --------|---------
-react-graph-latest-client | [Sébastien Levert](https://www.linkedin.com/in/sebastienlevert), Microsoft ([@sebastienlevert](https://twitter.com/sebastienlevert))
+react-graph-mgt-client | [Sébastien Levert](https://www.linkedin.com/in/sebastienlevert), Microsoft ([@sebastienlevert](https://twitter.com/sebastienlevert))
 
 ## Version history
 

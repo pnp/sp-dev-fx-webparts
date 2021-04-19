@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-graph-latest-client-client-side-solution",
+    "name": "react-graph-mgt-client-client-side-solution",
     "id": "8548b10e-1f21-4797-ae74-279081454b9f",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
@@ -26,6 +26,6 @@
     }
   },
   "paths": {
-    "zippedPackage": "solution/react-graph-latest-client.sppkg"
+    "zippedPackage": "solution/react-graph-mgt-client.sppkg"
   }
 }

@@ -5,14 +5,14 @@
     "graph-latest-client-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/graphLatestClient/GraphLatestClientWebPart.js",
-          "manifest": "./src/webparts/graphLatestClient/GraphLatestClientWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/graphClient/GraphClientWebPart.js",
+          "manifest": "./src/webparts/graphClient/GraphClientWebPart.manifest.json"
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "GraphLatestClientWebPartStrings": "lib/webparts/graphLatestClient/loc/{locale}.js"
+    "GraphClientWebPartStrings": "lib/webparts/graphClient/loc/{locale}.js"
   }
 }

@@ -6,8 +6,8 @@ import {
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
-import GraphLatestClient from './components/GraphLatestClient';
-import { IGraphLatestClientProps } from './components/IGraphLatestClientProps';
+import GraphClient from './components/GraphClient';
+import { IGraphClientProps } from './components/IGraphClientProps';
 
 // Importing MGT in the Web Part
 import { SharePointProvider } from '@microsoft/mgt-sharepoint-provider';
@@ -20,8 +20,8 @@ export interface IGraphLatestClientWebPartProps {
 export default class GraphLatestClientWebPart extends BaseClientSideWebPart<IGraphLatestClientWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IGraphLatestClientProps> = React.createElement(
-      GraphLatestClient,
+    const element: React.ReactElement<IGraphClientProps> = React.createElement(
+      GraphClient,
       {
         description: this.properties.description
       }

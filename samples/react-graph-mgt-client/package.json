@@ -1,5 +1,5 @@
 {
-  "name": "react-graph-latest-client",
+  "name": "react-graph-mgt-client",
   "version": "0.0.1",
   "private": true,
   "main": "lib/index.js",

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import styles from './GraphLatestClient.module.scss';
-import { IGraphLatestClientProps } from './IGraphLatestClientProps';
+import styles from './GraphClient.module.scss';
+import { IGraphClientProps } from './IGraphClientProps';
 import { Providers } from '@microsoft/mgt-element';
 import { RetryHandlerOptions } from '@microsoft/microsoft-graph-client';
 import Editor from '@monaco-editor/react';
@@ -8,14 +8,14 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 
-export interface IGraphLatestClientState {
+export interface IGraphClientState {
   response: any;
   apiUrl: string;
   loading: boolean;
 }
 
-export default class GraphLatestClient extends React.Component<IGraphLatestClientProps, IGraphLatestClientState> {
-  constructor(props: IGraphLatestClientProps) {
+export default class GraphClient extends React.Component<IGraphClientProps, IGraphClientState> {
+  constructor(props: IGraphClientProps) {
     super(props);
 
     this.state = {
@@ -25,7 +25,7 @@ export default class GraphLatestClient extends React.Component<IGraphLatestClien
     };
   }
   
-  public render(): React.ReactElement<IGraphLatestClientProps> {
+  public render(): React.ReactElement<IGraphClientProps> {
     return (
       <div className={ styles.graphLatestClient }>
         <div className={styles.row}>  
