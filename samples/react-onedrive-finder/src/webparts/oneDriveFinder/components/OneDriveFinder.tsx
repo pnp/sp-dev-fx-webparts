@@ -6,50 +6,13 @@ import { FileList } from '@microsoft/mgt-react';
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { AadHttpClient } from "@microsoft/sp-http";
-import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 const theme: ITheme = getTheme();
-const { palette, semanticColors, fonts } = theme;
+const { palette, fonts } = theme;
 const iconStyles = { marginRight: '8px' };
 const classNames = mergeStyleSets({
-  itemLink: {
-    textDecoration: 'none',
-  },
-  itemIcon: {
-    fontSize: 25,
-    height: 25,
-    width: 25,
-    margin: '0 25px',
-  },
-  itemCell: [
-    getFocusStyle(theme, { inset: -1 }),
-    {
-      padding: 5,
-      boxSizing: 'border-box',
-      borderBottom: `1px solid ${semanticColors.bodyDivider}`,
-      display: 'flex',
-      selectors: {
-        '&:hover': { background: palette.neutralLight },
-      },
-    },
-  ],
-  itemImage: {
-    flexShrink: 0,
-  },
-  itemContent: {
-    marginLeft: 10,
-    overflow: 'hidden',
-    flexGrow: 1,
-  },
-  itemName: [
-    fonts.medium,
-    {
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    },
-  ],
   itemIndex: {
     fontSize: fonts.small.fontSize,
     color: palette.neutralTertiary,
@@ -63,7 +26,7 @@ const dropdownStyles = {
 };
 const dropdownFilterStyles = {
   dropdown: {
-    width: 100
+    width: 130
   },
   label: {
   },
