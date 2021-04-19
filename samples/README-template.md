@@ -64,6 +64,8 @@ Short summary on functionality and used technologies.
 
 > Any special pre-requisites? Include any lists, permissions, offerings to the demo gods, or whatever else needs to be done for this web part to work.
 > DELETE THIS PARAGRAPH BEFORE SUBMITTING
+> 
+> Please describe the steps to configure the pre-requisites. Feel free to add screen shots, but make sure that there is a text description of the steps to perform.
 
 ## Solution
 
