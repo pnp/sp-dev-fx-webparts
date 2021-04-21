@@ -344,7 +344,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
             <Text block variant="xLarge" className={mg.title}>{strings.orphanedMembersTitle}</Text>
             {strings.orphanedMembersContent}
           </Callout>}
-          <PrimaryButton text={strings.submitButton} onClick={this.onRun} allowDisabledFocus disabled={!csvdata || items.length == 0 || stage != Stage.Done || !csvSelected} />
+          <PrimaryButton text={strings.submitButton} onClick={this.onRun} allowDisabledFocus disabled={!csvdata || items.length == 0 || stage != Stage.Ready || !csvSelected} />
 
           <Separator>CSV Preview</Separator>
           {csvdata && <DetailsList
