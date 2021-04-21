@@ -8,6 +8,8 @@ Used to update the membership of a team based on the contents of a CSV file, can
 
 ![react-teams-membership-updater](Screenshot-2020-05-01.png "Preview")
 
+![react-teams-membership-updater](teamsmembership.gif "Teams Membership Via Teams")
+
 ## Used SharePoint Framework Version 
 
 ![drop](https://img.shields.io/badge/version-1.11.0-green.svg)
