@@ -6,22 +6,25 @@ Used to update the membership of a team based on the contents of a CSV file, can
 
 ## Screen 
 
-![react-teams-membership-updater](Screenshot-2020-05-01.png "Preview")
+![react-teams-membership-updater](./assets/Screenshot-2020-05-01.png "Preview")
 
-![react-teams-membership-updater](teamsmembership.gif "Teams Membership Via Teams")
+![react-teams-membership-updater](./assets/teamsmembership.gif "Teams Membership Via Teams")
 
-## Used SharePoint Framework Version 
+## Compatibility
 
-![drop](https://img.shields.io/badge/version-1.11.0-green.svg)
+![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
 
 ## Applies to
 
 * [SharePoint Online](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 
-
 ## Solution
 
-This webpart can be deployed to a site or as a teams personal app.  This does require graph permission granting in the Sharepoint Admin Center
+This web part can be deployed to a site or as a teams personal app.  This does require graph permission granting in the Sharepoint Admin Center
 
 Uses:
 
@@ -57,3 +60,5 @@ Version|Date|Comments
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - `Add to AppCatalog and deploy`
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-teams-membership-updater />
