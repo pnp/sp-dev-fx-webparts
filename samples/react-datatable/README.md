@@ -43,6 +43,7 @@ Version|Date|Comments
 1.1|February 24, 2021|Added support for large lists
 1.2|March 01, 2021|Fixed search issue for number field
 1.3|March 31,2021| Changed UI as per SharePoint list, Set themeing as per current SharePoint site theme, Created custom pagination by using reusable controls, Added features to export CSV based on the filter if the filter is available, Added hyperlink feature for image and link column in export to pdf and also set alternative row formatting in generated pdf as per property pane configuration odd/even row color, fixed object issue (for people/hyperlink, etc) in export to CSV.
+1.4|April 10, 2021|Added feature to show profile picture in user column and shows display name of user field in export to CSV and PDF.
 
 
 ## Disclaimer
