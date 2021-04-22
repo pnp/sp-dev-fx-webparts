@@ -17,7 +17,7 @@ extensions:
   createdDate: 2021-04-18T19:43:46.356Z
 ---
 
-# react-graph-mgt-client
+# Graph MGT Client
 
 ## Summary
 
