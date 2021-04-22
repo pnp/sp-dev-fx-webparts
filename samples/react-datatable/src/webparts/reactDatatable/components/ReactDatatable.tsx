@@ -17,7 +17,7 @@ import { DetailsList, DetailsListLayoutMode, DetailsRow, IDetailsRowStyles, IDet
 import { pdfCellFormatter } from '../../../shared/common/ExportListItemsToPDF/ExportListItemsToPDFFormatter';
 import { csvCellFormatter } from '../../../shared/common/ExportListItemsToCSV/ExportListItemsToCSVFormatter';
 import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
-
+import { RenderProfilePicture } from '../../../shared/common/RenderProfilePicture/RenderProfilePicture';
 
 export default class ReactDatatable extends React.Component<IReactDatatableProps, IReactDatatableState> {
 
@@ -43,6 +43,10 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
 
   public componentDidMount() {
     this.getSelectedListItems();
+  }
+
+  private getUserProfileUrl = (loginName: string) => {
+    return this._services.getUserProfileUrl(loginName)
   }
 
   public componentDidUpdate(prevProps: IReactDatatableProps) {
@@ -82,7 +86,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
   private _onConfigure() {
     this.props.context.propertyPane.open();
   }
- 
+
 
   public formatColumnValue(value: any, type: string) {
     if (!value) {
@@ -102,7 +106,9 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
         value = value['Title'];
         break;
       case 'SP.FieldUser':
-        value = value['Title'];
+        let loginName = value['Name'];
+        let userName = value['Title'];
+        value = <RenderProfilePicture loginName={loginName} displayName={userName} getUserProfileUrl={() => this.getUserProfileUrl(loginName)}  ></RenderProfilePicture>;
         break;
       case 'SP.FieldMultiLineText':
         value = <div dangerouslySetInnerHTML={{ __html: value }}></div>;
@@ -124,6 +130,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     }
     return value;
   }
+
   public formatValueForExportingData(value: any, type?: string) {
     if (!value) {
       return value;
@@ -144,17 +151,17 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     return value;
   }
 
-  private exportDataFormatter(fields: Array<IPropertyPaneDropdownOption & { fieldType: string }>, listItems: any[], cellFormatterFn: (value: any, type: string) => any){
+  private exportDataFormatter(fields: Array<IPropertyPaneDropdownOption & { fieldType: string }>, listItems: any[], cellFormatterFn: (value: any, type: string) => any) {
     return listItems && listItems.map(item => ({
-        ...fields.reduce((ob, f) => {
-          ob[f.text] = item[f.key] ? cellFormatterFn(item[f.key], f.fieldType) : '-';
-          return ob;
-        }, {})
-      }));
+      ...fields.reduce((ob, f) => {
+        ob[f.text] = item[f.key] ? cellFormatterFn(item[f.key], f.fieldType) : '-';
+        return ob;
+      }, {})
+    }));
   }
 
-  private handlePaginationChange(pageNo: number, pageSize: number) {
-    this.setState({ page: pageNo, rowsPerPage: pageSize });
+  private handlePaginationChange(pageNo: number, rowsPerPage: number) {
+    this.setState({ page: pageNo, rowsPerPage: rowsPerPage });
   }
 
   public handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
@@ -257,8 +264,8 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
                             columnHeader={columns.map(c => c.name)}
                             listName={list}
                             description={title}
-                            dataSource={()=> this.exportDataFormatter(fields, filteredItems, csvCellFormatter)} 
-                             /> : <></>}
+                            dataSource={() => this.exportDataFormatter(fields, filteredItems, csvCellFormatter)}
+                          /> : <></>}
                         {enableDownloadAsPdf
                           ? <ExportListItemsToPDF
                             listName={list}
@@ -266,7 +273,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
                             columns={columns.map(c => c.name)}
                             oddRowColor={oddRowColor}
                             evenRowColor={evenRowColor}
-                            dataSource={()=> this.exportDataFormatter(fields, filteredItems, pdfCellFormatter)} />
+                            dataSource={() => this.exportDataFormatter(fields, filteredItems, pdfCellFormatter)} />
                           : <></>}
                       </Grid>
                       <Grid container justify='flex-end' xs={6}>

@@ -1,14 +1,16 @@
 export function csvCellFormatter(value: any, type: string) {
-    if (!value) {
-      return value;
-    }
-    switch (type) {
-      case 'SP.FieldUrl':
-        value = value.props.children;
-        break;
-      default:
-        break;
-    }
+  if (!value) {
     return value;
   }
+  switch (type) {
+    case 'SP.FieldUrl':
+      value = value.props.children;
+      break;
+    case 'SP.FieldUser':
+      value = value.props.displayName;
+    default:
+      break;
+  }
+  return value;
+}
 
