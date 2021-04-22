@@ -4,8 +4,10 @@ import "@pnp/graph/users";
 import { IUserExtended } from "../entites/IUserExtended";
 import { IUser } from "../entites/IUser";
 import { IUserPresence } from "../entites/IUserPresence";
+import { IUserBio } from "../entites/IUserBio";
 import { SPComponentLoader } from "@microsoft/sp-loader";
-import { findIndex } from "lodash";
+import { findIndex, join, values } from "lodash";
+import { DetailsRow } from "office-ui-fabric-react";
 
 /*************************************************************************************/
 // Hook to  search users
@@ -22,6 +24,7 @@ export const useSearchUsers = async (
   pageSize?: number
 ): Promise<{ usersExtended: IUserExtended[]; nextPage: string }> => {
   pageSize = pageSize ? pageSize : 5;
+
   const _searchResults: any = await _MSGraphClient
     .api('/users?$search="' + searchString + '"')
     .version("beta")
@@ -40,8 +43,11 @@ export const useSearchUsers = async (
   for (const _user of _users) {
     const _userPresence = await getUserPresence(_user.id, _MSGraphClient);
     const _pictureBase64: string = await getUserPhoto(_user.mail);
+    const _userBio = await getUserBio(_user.id, _MSGraphClient);
+
     _usersExtended.push({
       ..._user,
+      ..._userBio,
       ..._userPresence,
       pictureBase64: _pictureBase64,
       count: 0,
@@ -77,14 +83,18 @@ export const useGetUsersByDepartment = async (
     .count(true)
     .get();
 
+
   const _users: IUser[] = _searchResults.value;
   let _usersExtended: IUserExtended[] = [];
 
   for (const _user of _users) {
     const _userPresence = await getUserPresence(_user.id, _MSGraphClient);
     const _pictureBase64: string = await getUserPhoto(_user.mail);
+    const _userBio = await getUserBio(_user.id, _MSGraphClient);
+
     _usersExtended.push({
       ..._user,
+      ..._userBio,
       ..._userPresence,
       pictureBase64: _pictureBase64,
       count: 0,
@@ -119,8 +129,10 @@ export const useGetUsersNextPage = async (
   for (const _user of _users) {
     const _userPresence = await getUserPresence(_user.id, _MSGraphClient);
     const _pictureBase64: string = await getUserPhoto(_user.mail);
+    const _userBio = await getUserBio(_user.id, _MSGraphClient);
     _usersExtended.push({
       ..._user,
+      ..._userBio,
       ..._userPresence,
       pictureBase64: _pictureBase64,
       count: 0,
@@ -183,6 +195,21 @@ const getUserPresence = async (
     .get();
 
   return _presence;
+};
+
+//*************************************************************************************//
+//  function  Get Users About Me and skillz
+//*************************************************************************************//
+
+const getUserBio = async (
+  userObjId,
+  _MSGraphClient
+): Promise<IUserBio> => {
+  let _bio : IUserBio = await _MSGraphClient
+    .api("/users/{" + userObjId + "}?$select=aboutMe,skills")
+    .version("beta")
+    .get();
+  return _bio;
 };
 
 /**
