@@ -467,4 +467,4 @@ With the following template:
 
 Note that, in the example above, the `person-query` attribute is still bound using the Handlebars syntax `person-query="{{MyPersonField.personValue.email}}"`, whereas the MGT template uses `[[ person.image ]]` and `[[ person.displayName ]]`.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-web parts/samples/react-content-query-online" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-content-query-online" />
