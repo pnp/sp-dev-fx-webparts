@@ -44,6 +44,7 @@ Version|Date|Comments
 1.0.2|May 1, 2020|Ability to disable Orphaned Member removals
 1.0.4|June 3, 2020|Switched to using Graph Batching
 1.0.7|April 20, 2021|Switched to using PnP's file picker and option to log to a configuration list
+1.0.8|April 22, 2021|Added support for paging on the team member list get
 
 
 ## Disclaimer

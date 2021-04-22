@@ -41,6 +41,11 @@ export interface ITeamsMembershipUpdaterState {
   orphanedMembersHelp: boolean;
 }
 
+interface IMemberReturn {
+  value: MicrosoftGraph.User[];
+  "@odata.nextLink": string;
+}
+
 export interface IRequest {
   requests: any[];
 }
@@ -104,7 +109,6 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
     this.props.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
       filePickerResult.downloadFileContent().then((file) => {
         const reader = new FileReader();
-        console.log(file);
         reader.readAsArrayBuffer(file);
         reader.onloadend = ((ev) => {
           let decodedString = new TextDecoder('utf-8').decode(new DataView(reader.result as ArrayBuffer));
@@ -146,24 +150,33 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
     this.setState({ ...this.state, delete: checked });
   }
 
+  private loadMembers = async (url: string, client: MSGraphClient): Promise<Array<MicrosoftGraph.User>> => {
+    return new Promise<Array<MicrosoftGraph.User>>(result => {
+      client.api(url).version("v1.0").get((err, res: IMemberReturn) => {
+        if (err) {
+          this.addError(err.message, err);
+        }
+        let _m = res.value;
+        if (res['@odata.nextLink']) this.loadMembers(res['@odata.nextLink'], client).then((members) => { _m = _m.concat(members ); });
+        result(_m);
+      });
+    });
+  }
+
   public onRun = (e) => {
     this.setState({ ...this.state, stage: Stage.LoadingCurrentMembers });
     this.props.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
-      client.api(`groups/${this.state.selectionDetails.key}/members`).version("v1.0").get(async (err, res) => {
-        if (err) {
-          this.addError(err.message, err);
-          return;
-        }
-
-        let _members: Array<MicrosoftGraph.User> = res.value;
+      this.loadMembers(`groups/${this.state.selectionDetails.key}/members`, client).then((_members) => {
+        console.debug(_members);
         this.setState({ ...this.state, groupMembers: _members, stage: Stage.ComparingMembers });
 
         this.addLog(`Found ${_members.length} members existing in the group`);
 
         let _delete: Array<MicrosoftGraph.User> = new Array<MicrosoftGraph.User>();
 
+        //filter the members lists to find out if they no longer exist in the csv file and add those to the delete queue, ignore group owners
         _members = _members.filter(m => {
-          if (this._data.some(value => value[this.state.csvSelected.text] === m.mail) || this.state.groupOwners.some(value => value === m.userPrincipalName)) return m;
+          if (this._data.some(value => value[this.state.csvSelected.text].toLowerCase() === m.mail.toLowerCase()) || this.state.groupOwners.some(value => value.toLowerCase() === m.userPrincipalName.toLowerCase())) return m;
           else { if (this.state.delete == true) { _delete.push(m); this.addLog(`Will delete ${m.mail}`); } }
         });
 
@@ -179,28 +192,31 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
 
         let newMembers: string[] = [];
 
+        //filter the csv to look for users that do not exist the members list and add those to the add queue
         this._data.forEach(async e2 => {
-          if (_members.some(m => m.mail === e2[this.state.csvSelected.text]) == false) {
+          if (_members.some(m => m.mail.toLowerCase() === e2[this.state.csvSelected.text].toLowerCase()) == false) {
             newMembers.push(e2[this.state.csvSelected.text]);
             this.addLog(`Will add ${e2[this.state.csvSelected.text]}`);
           }
         });
 
+        //send delete batches to the graph, if they exist
         if (reqs.length > 0) {
           this.addLog(`${reqs.length} Delete Batches Detected`);
           reqs.forEach(r => {
             if (r.requests.length > 0) {
               this.addLog(`Deleting ${r.requests.length} users as a batch`);
               client.api("$batch").version("v1.0").post(r, (er, re) => {
-                if (err) { this.addError(err.message, err); return; }
+                if (er) { this.addError(er.message, er); return; }
                 if (re) re.reponses.forEach(e3 => { if (e3.body.error) this.addError(e3.body.error.message, e3.body.error); });
                 this.addLog(`Deleting Batch Done`);
               });
             }
           });
+          //once the delete batches are done call the add members function, if no new members are needed call the Done function
           if (newMembers.length == 0) this.Done();
           else this.addMembers(newMembers, client);
-        }
+        } //if no new members are needed call the Done function
         else if (newMembers.length == 0) this.Done();
         else this.addMembers(newMembers, client);
       });
@@ -236,6 +252,8 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
 
   public addMembers = (newMembers: string[], client: MSGraphClient): void => {
     this.setState({ ...this.state, stage: Stage.AddingNewMembers });
+
+    //create add member graph batches (batches of 20 operations)
     let reqs: IRequest[] = [];
     let _i, _j, _k, temparray, chunk = 20;
     for (_i = 0, _j = newMembers.length, _k = 0; _i < _j; _i += chunk) {
@@ -243,12 +261,13 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
       reqs.push({ requests: temparray.map(e => { _k++; return { id: `${_k}`, method: "GET", url: `users/${e}?$select=id` }; }) });
     }
 
+    //we need to get the AzureAD object id of the user from the email to use the add member ref function, so we call the graph to get those and generate new batches
     this.addLog(`Getting Object IDs for ${newMembers.length} Members to Add from Graph`);
     for (let i = 0; i < reqs.length; i++) {
-      console.log("Starting batch job " + i);
-      console.log(reqs[i]);
+      console.debug("Starting batch job " + i);
+      console.debug(reqs[i]);
       client.api("$batch").version("v1.0").post(reqs[i], (er, re) => {
-        console.log(re);
+        console.debug(re);
         if (er) { this.addError(er.message, er); return; }
         let newreq: IRequest = { requests: [] };
         if (re) {
@@ -264,8 +283,9 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
               });
             }
           });
-          console.log("Adding");
+          console.debug("Adding");
           this.addLog(`Adding ${newreq.requests.length} Members`);
+          //post the actual adding batch to graph
           client.api("$batch").version("v1.0").post(newreq, (err, res) => {
             if (err) { this.addError(err.message, err); return; }
             if (res) {
