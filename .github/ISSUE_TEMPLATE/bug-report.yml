@@ -20,16 +20,15 @@ body:
 
       Please provide the following details about the issue you encountered.  *Issues that do not provide the information requested in this form will be flagged as **incomplete** & automatically closed.*
 
-- type: markdown
-  attributes:
-    value: |
-      Thanks for taking the time to fill out this bug report!
 - type: input
-  id: contact
+  id: sample
   attributes:
-    label: Contact Details
-    description: How can we get in touch with you if we need more info?
-    placeholder: ex. email@example.com
+    label: Sample
+    description: |
+        Which sample are you having troubles with?
+        
+        Use the sample name or URL. We don't want to be spend all this time diagnosing issues about the wrong sample, do we?
+
   validations:
     required: false
 - type: textarea
