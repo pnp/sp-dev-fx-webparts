@@ -25,7 +25,7 @@ all the information that might be relevant, including instructions for reproduci
 We use GitHub issues to support user questions. To ask a question, [open a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) and select the question template. 
 
 #### How to submit changes
-Please see our [Contributing Guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/master/.github/CONTRIBUTING.md).
+Please see our [Contributing Guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/master/CONTRIBUTING.md).
 
 #### How to request an enhancement
 We use GitHub issues to support user suggestions. To request an enhanced, [open a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) and select the suggestion template. 
