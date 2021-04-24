@@ -15,3 +15,14 @@ body:
       - Remember to include sufficient details and context.
       - If you have multiple suggestions please submit them separately so we can track resolution.
       - Screenshots are always helpful (just paste any images right here in the suggestion)
+
+- type: input
+  id: sample
+  validations:
+    required: true
+  attributes:
+    label: Sample
+    description: |
+        Which sample are you talking about
+        
+        Use the sample name or URL. We don't want to be spend all this time diagnosing issues about the wrong sample, do we?
