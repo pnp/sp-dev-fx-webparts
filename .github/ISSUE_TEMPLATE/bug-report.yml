@@ -45,6 +45,25 @@ body:
         
         **NOTE:** Don't @mention the repo maintainers, they already get notified.
 
+- type: dropdown
+  validations:
+    required: true
+  attributes:
+    label: Target SharePoint environment
+    options:
+      - SharePoint Online
+      - SharePoint Server 2019 (on-premise)
+      - SharePoint Server 2016 (on-premise)
+
+- type: dropdown
+  attributes:
+    label: Developer environment
+    options:
+      - Windows
+      - macOS
+      - Linux
+
+
 - type: textarea
   id: what-happened
   attributes:
