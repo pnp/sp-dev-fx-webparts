@@ -45,6 +45,40 @@ body:
         
         **NOTE:** Don't @mention the repo maintainers, they already get notified.
 
+- type: markdown
+  attributes:
+    value: |
+      Provide a clear & concise description of what the bug is. Please follow our guidance on [How To Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues) which explains how to apply formatting, adding references & resources, screenshots, etc. 
+      
+      **Do not attach ZIP files** of your code or compiled projects - instead, please publish your code to a public GitHub repo & post a link to it.
+
+- type: textarea
+  id: what-happened
+  attributes:
+    label: What happened?
+    description: Also tell us, what did you expect to happen?
+    placeholder: Tell us what you see!
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Steps to reproduce
+    description: How do you reproduce this? Please provide as much step-by-step detail as possible.
+    value: |
+      1.
+      2.
+      3.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Expected behavior
+    description: What did you expect to happen when the reproduce steps are followed?
+  validations:
+    required: true
+
 - type: dropdown
   validations:
     required: true
@@ -82,40 +116,30 @@ body:
       - label: not applicable
       - label: other (enter in the "Additional environment details" area below)
 
-- type: markdown
-  attributes:
-    value: |
-      Provide a clear & concise description of what the bug is. Please follow our guidance on [How To Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues) which explains how to apply formatting, adding references & resources, screenshots, etc. 
-      
-      **Do not attach ZIP files** of your code or compiled projects - instead, please publish your code to a public GitHub repo & post a link to it.
-
-- type: textarea
-  id: what-happened
-  attributes:
-    label: What happened?
-    description: Also tell us, what did you expect to happen?
-    placeholder: Tell us what you see!
+- type: input
+  id: spfx
   validations:
     required: true
-
-- type: textarea
   attributes:
-    label: Steps to reproduce
-    description: How do you reproduce this? Please provide as much step-by-step detail as possible.
-    value: |
-      1.
-      2.
-      3.
+    label: SPFx version
+    description: |
+        Which version of SPFx are you using?
+        
+        TIP: To find out, run `npm ls -g --depth=0 @microsoft/generator-sharepoint` and provide the number that comes after `@microsoft/generator-sharepoint@`
+
+- type: input
+  id: Node
   validations:
     required: true
-
-- type: textarea
   attributes:
-    label: Expected behavior
-    description: What did you expect to happen when the reproduce steps are followed?
-  validations:
-    required: true
-    
+    label: Node.js version
+    description: |
+        Which version of Node.js are you using?
+        
+        TIP: To find out, run `node -v`
+
+
+
 - type: textarea
   attributes:
     label: Additional environment details
