@@ -31,7 +31,7 @@ const dropdownFilterStyles = {
   label: {
   },
   root: {
-    paddingLeft: 90
+    paddingLeft: 50
   }
 };
 
@@ -93,6 +93,8 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
   public _siteID: string;
   public _pageSize: number;
   public _breadcrumbItem: IBreadcrumbItem[] = [];
+
+  public _fileExtensions: string[] = null;
   constructor(props: IOneDriveFinderProps, state: IOneDriveFinderState) {
     super(props);
 
@@ -102,16 +104,65 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       pageSize: 50,
       siteID: "",
       siteItems: [],
-      itemID: ""
+      itemID: "",
+      fileExtensions: []
     };
     this.getDomainData();
   }
 
   public render(): React.ReactElement<IOneDriveFinderProps> {
-    const { siteID, itemID, pageSize, breadcrumbItem, siteItems, } = this.state;
+    const CheckDrives = (e, selectedOption) => {
+      if (selectedOption.data.root == undefined) {
+        this._siteID = selectedOption.key.toString();
+        this.setState({
+          siteID: this._siteID,
+          itemID: "",
+          breadcrumbItem: this._breadcrumbItem
+        });
+      } else {
+        this._siteID = "";
+        this.setState({
+          siteID: this._siteID,
+          itemID: "",
+          breadcrumbItem: this._breadcrumbItem
+        });
+      }
+      this.getDrives(selectedOption);
+    };
+
+    const CheckPageSize= (event: React.FormEvent<HTMLDivElement>, selectedOption: IDropdownOption) => {
+      let fileListpageSize: number;
+      fileListpageSize = +selectedOption.key;
+      this.setState({
+        pageSize: fileListpageSize
+      });
+    };
+
+    const checkFileExtensions = (event: React.FormEvent<HTMLDivElement>, selectedOption: IDropdownOption) => {
+      let fileExtensions: string[] = [];
+      if (selectedOption.selected == true) {
+        fileExtensions.push(selectedOption.key.toString());
+        fileExtensions = [...fileExtensions,...this.state.fileExtensions];
+      } else {
+        fileExtensions = this.state.fileExtensions.filter(e => e !== selectedOption.key );
+      }
+      this.setState({
+        fileExtensions: [...fileExtensions]
+      });
+    };
+    
+    const { siteID, itemID, pageSize, breadcrumbItem, siteItems, fileExtensions } = this.state;
     this._itemID = itemID;
     this._siteID = siteID;
     this._breadcrumbItem = breadcrumbItem;
+    this._pageSize = pageSize;
+    if(fileExtensions.length != 0)
+    {
+      this._fileExtensions = fileExtensions;
+    }
+    else{
+      this._fileExtensions = null;
+    }
     return (
       <div>
         <div className={styles['some-page-wrapper']}>
@@ -127,31 +178,13 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
                 onRenderCaretDown={onRenderCaretDown}
                 styles={dropdownStyles}
                 options={siteItems}
-                onChange={(e, selectedOption) => {
-                  if (selectedOption.data.root == undefined) {
-                    this._siteID = selectedOption.key.toString();
-                    this.setState({
-                      siteID: this._siteID,
-                      breadcrumbItem: this._breadcrumbItem
-                    });
-                  } else {
-                    this._siteID = "";
-                    this.setState({
-                      siteID: this._siteID,
-                      itemID: "",
-                      breadcrumbItem: this._breadcrumbItem
-                    });
-                  }
-                  this.getDrives(selectedOption);
-                }}
+                onChange={CheckDrives}
               />
             </div>
             <div className={styles.column}>
               <Dropdown
                 placeholder="50 Items"
                 label="Filter Items"
-                defaultValue={'50 Items'}
-                styles={dropdownFilterStyles}
                 options={[
                   { key: 5, text: '5 Items' },
                   { key: 10, text: '10 Items' },
@@ -160,13 +193,29 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
                   { key: 500, text: '500 Items' },
                   { key: 1000, text: '1000 Items' },
                 ]}
-                onChange={(e, selectedOption) => {
-                  let _pageSize: number = +selectedOption.key;
-                  this._pageSize = _pageSize;
-                  this.setState({
-                    pageSize: _pageSize
-                  });
-                }}
+                onChange={CheckPageSize}
+                styles={dropdownFilterStyles}
+              />
+            </div>
+            <div className={styles.column}>
+              <Dropdown
+                placeholder="Select"
+                label="Select file extensions"
+                multiSelect
+                options={[
+                  { key: "", text: 'folder' },
+                  { key: "docx", text: 'docx' },
+                  { key: "xlsx", text: 'xlsx' },
+                  { key: "pptx", text: "pptx" },
+                  { key: "one", text: "one" },
+                  { key: "pdf", text: "pdf" },
+                  { key: "txt", text: "txt" },
+                  { key: "jpg", text: "jpg" },
+                  { key: "gif", text: "gif" },
+                  { key: "png", text: "png" },
+                ]}
+                onChange={checkFileExtensions}
+                styles={dropdownFilterStyles}
               />
             </div>
           </div>
@@ -178,9 +227,10 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
             ariaLabel="Breadcrumb with items rendered as buttons"
             overflowAriaLabel="More links"
           />
-          {(this.state.itemID != "" || this.state.itemID != "") &&
+          {(this.state.itemID != "") &&
             <FileList
-              pageSize={pageSize}
+              fileExtensions={this._fileExtensions}
+              pageSize={this._pageSize}
               siteId={this._siteID}
               itemId={this._itemID}
               itemClick={this.manageFolder}
@@ -190,12 +240,14 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       </div>
     );
   }
+  
   /**
    * 
    * @param e 
    * Capture file or folder and manages breadcrumb
    */
   private manageFolder = (e: any) => {
+
     if (e.detail.folder != undefined) {
       this._breadcrumbItem.push({
         text: e.detail.name,
@@ -243,9 +295,9 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
   private getDrives = async (selectedOption: IDropdownOption) => {
     let itemID: any;
     if (selectedOption.data.root != undefined) {
-      itemID = await this.getOneDriveRootFolderID(selectedOption.key)
+      itemID = await this.getOneDriveRootFolderID(selectedOption.key);
     } else {
-      itemID = await this.getRootDriveFolderID(selectedOption.key)
+      itemID = await this.getRootDriveFolderID(selectedOption.key);
     }
 
     this._breadcrumbItem = [];

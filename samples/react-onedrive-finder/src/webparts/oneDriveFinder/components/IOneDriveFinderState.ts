@@ -8,4 +8,5 @@ export interface IOneDriveFinderState {
     siteID:string;
     itemID:string;
     siteItems: IDropdownOption[];
+    fileExtensions: string[];
 }

@@ -14,6 +14,10 @@ This sample access drives from OneDrive and navigate between his content using *
 
 ![Demo](./Assets/OneDrivefinderSample2.PNG)
 
+### Navigate and filter extensions
+
+![Demo](./Assets/OneDrivefinderSample3.gif)
+
 
 ## Compatibility
 
@@ -39,6 +43,7 @@ react-onedrive-finder | [André Lage](http://aaclage.blogspot.com) ([@aaclage](h
 
 Version|Date|Comments
 -------|----|--------
+1.1|April 24, 2021|Fixes, code optimization and extension filter included
 1.0|April 16, 2021|Initial release
 
 ## Disclaimer
