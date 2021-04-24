@@ -1,4 +1,4 @@
-name: Welcome new contributors
+name: 'Welcome new contributors'
 
 on: [pull_request]
 
@@ -12,8 +12,8 @@ jobs:
         pr-message: |
           Thank you for submitting your first pull request!
           
-          We love celebrating the awesome work our contributors do on social media and community calls; Make sure that you update your GitHub user profile with your Twitter user name, your company name, and your picture.
+          We love 💖 celebrating the awesome work our contributors do on social media and community calls; Make sure that you update your GitHub user profile with your Twitter user name, your company name, and your picture.
           
           If you don't use a company name or Twitter account, we will assume that you prefer not to mention you on social media and/or that you do not want your company name listed.
           
-          Thank you for being awesome!
+          Thank you for being awesome 🚀!
