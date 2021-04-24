@@ -58,7 +58,7 @@ body:
     description: Would you be willing to help us make this improvement?
     options:
     options:
-      - Yes
-      - No
+      - "Yes"
+      - "No"
   validations:
     required: true
