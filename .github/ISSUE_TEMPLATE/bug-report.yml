@@ -56,7 +56,7 @@ body:
   id: what-happened
   attributes:
     label: What happened?
-    description: Also tell us, what did you expect to happen?
+    description: Describe the observed behavior
     placeholder: Tell us what you see!
   validations:
     required: true
@@ -76,6 +76,7 @@ body:
   attributes:
     label: Expected behavior
     description: What did you expect to happen when the reproduce steps are followed?
+    placeholder: Tell us what you expected to see!
   validations:
     required: true
 
@@ -122,6 +123,7 @@ body:
     required: true
   attributes:
     label: SPFx version
+    placeholder: 1.11.0
     description: |
         Which version of SPFx are you using?
         
@@ -133,19 +135,8 @@ body:
     required: true
   attributes:
     label: Node.js version
+    placeholder: v10.23.1
     description: |
         Which version of Node.js are you using?
         
         TIP: To find out, run `node -v`
-
-
-
-- type: textarea
-  attributes:
-    label: Additional environment details
-    description: Include as much detail about the environment you're targetting. This is required if "other (enter below)" is selected in the previous field.
-    value: |
-      - browser version
-      - SPFx version
-      - Node.js version
-      - etc
