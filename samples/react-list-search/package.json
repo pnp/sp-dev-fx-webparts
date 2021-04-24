@@ -22,14 +22,15 @@
     "@microsoft/sp-office-ui-fabric-core": "1.11.0",
     "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
+    "@pnp/graph": "2.4.0",
     "@pnp/sp": "2.0.8",
-    "@pnp/spfx-controls-react": "1.19.0",
-    "@pnp/spfx-property-controls": "1.19.0",
-    "react-js-pagination": "3.0.3",
-    "react-xml-parser": "1.1.6",
+    "@pnp/spfx-controls-react": "2.4.0",
+    "@pnp/spfx-property-controls": "2.5.0",
+    "office-ui-fabric-react": "7.155.3",
     "react": "16.8.5",
     "react-dom": "16.8.5",
-    "office-ui-fabric-react": "7.155.3"
+    "react-js-pagination": "3.0.3",
+    "react-xml-parser": "1.1.6"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.11.0",

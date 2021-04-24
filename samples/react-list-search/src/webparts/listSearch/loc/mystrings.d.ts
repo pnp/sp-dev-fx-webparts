@@ -105,6 +105,9 @@ declare interface IListSearchWebPartStrings {
   GeneralFilterInitialQueryEnabled: string;
   GeneralFilterInitialQueryOption: string;
   GeneralFilterInitialQueryTextValue: string;
+  WebPartTitlePlaceHolder: string;
+  ModerAudienceEnabledTitle: string;
+ModernAudienceEnabledTitle: string;
 }
 
 declare module 'ListSearchWebPartStrings' {
