@@ -32,3 +32,5 @@ We use GitHub issues to support user suggestions. To request an enhanced, [open 
 
 #### How to request an sample request
 We use GitHub issues to support sample request. To request a new sample, [open a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) and select the sample request template. 
+
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/SUPPORT.md" />
