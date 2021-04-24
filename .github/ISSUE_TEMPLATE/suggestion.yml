@@ -26,26 +26,3 @@ body:
         Which sample are you talking about
         
         Use the sample name or URL. We don't want to be spend all this time diagnosing issues about the wrong sample, do we?
-
-- type: input
-  id: authors
-  validations:
-    required: true
-  attributes:
-    label: Author(s)
-    description: |
-        Who wrote the sample?
-        
-        Because of the way this repository is configured, samples authors do not get a notification when you create an issue. 
-        
-        For the section above **@mention any author of the sample**. Authors' GitHub handle can be found on the main sample documentation page, under the "Solution" section. 
-        
-        **NOTE:** Don't @mention the repo maintainers, they already get notified.
-
-- type: textarea
-  attributes:
-    label: Suggestion
-    description: What would you like to see improved?
-    placeholder: The more details, the better
-  validations:
-    required: true
