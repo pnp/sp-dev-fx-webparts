@@ -1,4 +1,4 @@
-name: Greetings
+name: Welcome new contributors
 
 on: [pull_request]
 
