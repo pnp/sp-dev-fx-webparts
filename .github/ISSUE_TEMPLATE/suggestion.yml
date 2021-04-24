@@ -51,13 +51,14 @@ body:
   validations:
     required: true
 
-- type: checkboxes
+- type: dropdown
   id: help
   attributes:
     label: Are you willing to help?
     description: Would you be willing to help us make this improvement?
     options:
-    - label: Yes
-      required: true
-    - label: No
-      required: true
+    options:
+      - Yes
+      - No
+  validations:
+    required: true
