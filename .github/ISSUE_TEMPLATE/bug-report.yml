@@ -63,6 +63,29 @@ body:
       - macOS
       - Linux
 
+- type: checkboxes
+  attributes:
+    label: Browsers
+    description: What browser(s) / client(s) have you tested
+    placeholder: Select the browser(s)/clients this submission is relevant to.
+
+    options:
+      - label: Internet Explorer
+      - label: Microsoft Edge
+      - label: Google Chrome
+      - label: FireFox
+      - label: Safari
+      - label: mobile (iOS/iPadOS)
+      - label: mobile (Android)
+      - label: not applicable
+      - label: other (enter in the "Additional environment details" area below)
+
+- type: markdown
+  attributes:
+    value: |
+      Provide a clear & concise description of what the bug is. Please follow our guidance on [How To Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues) which explains how to apply formatting, adding references & resources, screenshots, etc. 
+      
+      **Do not attach ZIP files** of your code or compiled projects - instead, please publish your code to a public GitHub repo & post a link to it.
 
 - type: textarea
   id: what-happened
@@ -70,7 +93,6 @@ body:
     label: What happened?
     description: Also tell us, what did you expect to happen?
     placeholder: Tell us what you see!
-    value: "A bug happened!"
   validations:
     required: true
 
