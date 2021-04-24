@@ -1,10 +1,8 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: [bug, triage]
-assignees:
-- monalisa
-- nat
+name: 🐞 Bug or Error Report
+description: Report an anomaly or unexpected behavior with a sample from this repository.
+title: "[Web Part Name]: [Issue Title]"
+labels: ['Needs: Triage :mag:', 'type:bug-suspected']
+
 body:
 - type: markdown
   attributes:
