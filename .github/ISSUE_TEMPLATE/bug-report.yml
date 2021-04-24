@@ -80,6 +80,13 @@ body:
   validations:
     required: true
 
+- type: markdown
+  attributes:
+    value: |
+      When solving bugs, most time is spent going back and forth with the issue author asking for more information about their environment. 
+      
+      Save yourself some time (and those who are trying to help you); provide us with your environment information so we can reproduce the issue.
+
 - type: dropdown
   validations:
     required: true
@@ -140,3 +147,8 @@ body:
         Which version of Node.js are you using?
         
         TIP: To find out, run `node -v`
+
+- type: textarea
+  attributes:
+    label: Additional environment details
+    description: Include as much detail about the environment you're targeting. This is required if "other (enter below)" is selected in the previous field.
