@@ -1,28 +1,63 @@
-name: 🐞 Bug or Error Report
-description: Report an anomaly or unexpected behavior with a sample from this repository.
-labels: ['Needs: Triage :mag:', 'type:bug-suspected']
-
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: [bug, triage]
+assignees:
+- monalisa
+- nat
 body:
 - type: markdown
   attributes:
     value: |
-      - [x] Bug
-
-      Thank you for reporting a bug! Use the sections below to submit a bug ONLY if it's related to samples in this repo. If you have an issue or question about the SharePoint Framework or its documentation, please submit it at https://aka.ms/spdev-issues. 
-      
-      - Follow our guidance on [How To Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues).
-      - All bug reports are welcome - we want to fix them!
-      - This repo is maintained by volunteers (not Microsoft). Please be courteous and patient. 🙂
-      - Remember to include sufficient details and context.
-      - If you have multiple questions, suggestions, or bugs, please submit them in separate issues.
-      - We accept pull requests. If you know how to fix it - go ahead!
-
-      Please provide the following details about the issue you encountered.  *Issues that do not provide the information requested in this form will be flagged as **incomplete** & automatically closed.*
-
+      Thanks for taking the time to fill out this bug report!
 - type: input
-    validations:
+  id: contact
+  attributes:
+    label: Contact Details
+    description: How can we get in touch with you if we need more info?
+    placeholder: ex. email@example.com
+  validations:
+    required: false
+- type: textarea
+  id: what-happened
+  attributes:
+    label: What happened?
+    description: Also tell us, what did you expect to happen?
+    placeholder: Tell us what you see!
+    value: "A bug happened!"
+  validations:
+    required: true
+- type: dropdown
+  id: version
+  attributes:
+    label: Version
+    description: What version of our software are you running?
+    options:
+    - 1.0.2 (Default)
+    - 1.0.3 (Edge)
+  validations:
+    required: true
+- type: dropdown
+  id: browsers
+  attributes:
+    label: What browsers are you seeing the problem on?
+    multiple: true
+    options:
+    - Firefox
+    - Chrome
+    - Safari
+    - Microsoft Edge
+- type: textarea
+  id: logs
+  attributes:
+    label: Relevant log output
+    description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+    render: shell
+- type: checkboxes
+  id: terms
+  attributes:
+    label: Code of Conduct
+    description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+    options:
+    - label: I agree to follow this project's Code of Conduct
       required: true
-    attributes:
-      label: Which sample are you having troubles with?
-      description: >
-        Use the sample name or URL. We don't want to be spend all this time diagnosing issues about the wrong sample, do we?
