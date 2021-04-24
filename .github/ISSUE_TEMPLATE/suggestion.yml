@@ -43,7 +43,6 @@ body:
         **NOTE:** Don't @mention the repo maintainers, they already get notified.
 
 - type: textarea
-  id: suggestion
   attributes:
     label: Suggestion
     description: What would you like to see improved?
@@ -52,7 +51,6 @@ body:
     required: true
 
 - type: dropdown
-  id: help
   attributes:
     label: Are you willing to help?
     description: Would you be willing to help us make this improvement?
