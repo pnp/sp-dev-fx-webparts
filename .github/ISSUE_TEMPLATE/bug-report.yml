@@ -65,9 +65,11 @@ body:
 
 - type: checkboxes
   attributes:
-    label: Browsers
-    description: What browser(s) / client(s) have you tested
-    placeholder: Select the browser(s)/clients this submission is relevant to.
+    label: Browsers    
+    description: |
+      What browser(s) / client(s) have you tested
+      
+      Select the browser(s)/clients this submission is relevant to.
 
     options:
       - label: Internet Explorer
