@@ -98,21 +98,30 @@ body:
   validations:
     required: true
 
-- type: dropdown
-  id: version
+- type: textarea
   attributes:
-    label: Version
-    description: What version of our software are you running?
-    options:
-    - 1.0.2 (Default)
-    - 1.0.3 (Edge)
+    label: Steps to reproduce
+    description: How do you reproduce this? Please provide as much step-by-step detail as possible.
+    value: |
+      1.
+      2.
+      3.
   validations:
     required: true
 
 - type: textarea
-  id: logs
   attributes:
-    label: Relevant log output
-    description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-    render: shell
-
+    label: Expected behavior
+    description: What did you expect to happen when the reproduce steps are followed?
+  validations:
+    required: true
+    
+- type: textarea
+  attributes:
+    label: Additional environment details
+    description: Include as much detail about the environment you're targetting. This is required if "other (enter below)" is selected in the previous field.
+    value: |
+      - browser version
+      - SPFx version
+      - Node.js version
+      - etc
