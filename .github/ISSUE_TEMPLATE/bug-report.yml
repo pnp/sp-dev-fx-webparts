@@ -86,6 +86,8 @@ body:
       When solving bugs, most time is spent going back and forth with the issue author asking for more information about their environment. 
       
       Save yourself some time (and those who are trying to help you); provide us with your environment information so we can reproduce the issue.
+      
+      We're not trying to be difficult here, we just want to help as quickly as possible.
 
 - type: dropdown
   validations:
