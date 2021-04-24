@@ -49,13 +49,3 @@ body:
     placeholder: The more details, the better
   validations:
     required: true
-
-- type: dropdown
-  attributes:
-    label: Are you willing to help?
-    description: Would you be willing to help us make this improvement?
-    options:
-      - "Yes"
-      - "No"
-  validations:
-    required: true
