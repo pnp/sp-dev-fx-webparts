@@ -19,3 +19,10 @@ body:
 
       Please provide the following details about the issue you encountered.  *Issues that do not provide the information requested in this form will be flagged as **incomplete** & automatically closed.*
 
+- type: input
+    validations:
+      required: true
+    attributes:
+      label: Which sample are you having troubles with?
+      description: >
+        Use the sample name or URL. We don't want to be spend all this time diagnosing issues about the wrong sample, do we?
