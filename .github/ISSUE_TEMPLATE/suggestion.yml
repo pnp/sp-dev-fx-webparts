@@ -55,7 +55,6 @@ body:
     label: Are you willing to help?
     description: Would you be willing to help us make this improvement?
     options:
-    options:
       - "Yes"
       - "No"
   validations:
