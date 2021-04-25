@@ -194,4 +194,4 @@ Thank you for your contribution.
 
 > Sharing is caring.
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/.github/CONTRIBUTING.md" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/CONTRIBUTING.md" />
