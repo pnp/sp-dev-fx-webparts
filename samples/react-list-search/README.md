@@ -13,6 +13,7 @@ This list search web part allows the user to show data from lists or libraries. 
   * [Redirect to url](#redirect-to-url-depends-on-selected-item)
 
 * Other useful functionalities:
+  * List item modern audience support
   * General filter - the user can select which columns are filtered and which not
   * Column filter on each column
   * Item limit to show
@@ -79,7 +80,8 @@ react-list-search | Alberto Gutiérrez ([@albertogperez](https://twitter.com/alb
 
 Version|Date|Comments
 -------|----|--------
-1.0|December 20, 2020|Initial release
+1.0.0|December 20, 2020|Initial release
+1.1.0|April 25, 2021|List item modern audience support
 
 ## Disclaimer
 
@@ -103,6 +105,7 @@ Version|Date|Comments
 
   * Download `.sppkg` files from `sppkg` folder
   * Upload files to **App Catalog**
+  * Approve the API permissions in the new SP admin center (only needed if you are going to enable list item modern audience)
 
 ## Features
 
