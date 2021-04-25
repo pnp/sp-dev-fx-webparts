@@ -48,7 +48,7 @@ export default class ListService implements IListService {
     try {
       let camlQuery: boolean = false;
       let items: any = undefined;
-      let queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, !isEmpty(listQueryOptions.camlQuery) || !isEmpty(listQueryOptions.viewName));
+      let queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, !isEmpty(listQueryOptions.camlQuery) || !isEmpty(listQueryOptions.viewName), false);
       if (listQueryOptions.camlQuery) {
         let query = this.getCamlQueryWithViewFieldsAndRowLimit(listQueryOptions.camlQuery, queryConfig, rowLimit);
         items = await this.getListItemsByCamlQuery(listQueryOptions.list.Id, query, queryConfig);
@@ -98,7 +98,7 @@ export default class ListService implements IListService {
 
   public async getListItemById(listQueryOptions: IListSearchListQuery, itemId: number): Promise<any> {
     try {
-      let queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, false);
+      let queryConfig: QueryHelperEntity = this.GetViewFieldsWithId(listQueryOptions, false, true);
       return this.web.lists.getById(listQueryOptions.list.Id).items.getById(itemId).select(queryConfig.viewFields.join(',')).expand(queryConfig.expandFields.join(',')).usingCaching().get();
     } catch (error) {
       return Promise.reject(error);
@@ -139,7 +139,7 @@ export default class ListService implements IListService {
     return results;
   }
 
-  private GetViewFieldsWithId(listQueryOptions: IListSearchListQuery, isCamlQuery: boolean): QueryHelperEntity {
+  private GetViewFieldsWithId(listQueryOptions: IListSearchListQuery, isCamlQuery: boolean, isItemId: boolean): QueryHelperEntity {
     let result: QueryHelperEntity = { expandFields: [], viewFields: ['ServerUrl', 'FileLeafRef', 'Id', 'UniqueId'] };
     let hasToAddFieldsAsText: boolean = false;
     listQueryOptions.fields.map(field => {
@@ -199,7 +199,7 @@ export default class ListService implements IListService {
       result.expandFields.push('FieldValuesAsText');
     }
 
-    if (listQueryOptions.audienceEnabled) {
+    if (listQueryOptions.audienceEnabled && !isItemId) {
       result.expandFields.push(ListService.SharePointOnlineAudienceOOTBFieldName);
       result.viewFields.push(`${ListService.SharePointOnlineAudienceOOTBFieldName}/Name`);
     }

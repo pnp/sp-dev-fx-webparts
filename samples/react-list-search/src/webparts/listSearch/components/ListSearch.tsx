@@ -1089,10 +1089,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
                 <div className={styles.rowData}>
                   <div className={styles.colData}>
                     {this.props.ShowItemCount &&
-                      <Shimmer isDataLoaded={!this.state.isLoading} width={"25%"}><div className={styles.template_resultCount}>{this.props.ItemCountText.replace("{itemCount}", `${this.state.filterItems ? this.state.filterItems.length : 0}`)}</div></Shimmer>}
+                      <Shimmer isDataLoaded={!this.state.isLoading} width={"25%"}><div className={styles.template_resultCount}>{this.props.ItemCountText.replace("{itemCount}", `${this.state.filterItems ? this.state.filterItems.length : 0}`)}</div></Shimmer>
+                    }
                     <ShimmeredDetailsList
-                      styles={{ root: { backgroundColor: 'red', background: "blue" } }}
-                      enableShimmer={!this.state.isLoading}
+                      enableShimmer={this.state.isLoading}
                       items={this._getItems()}
                       columns={this.state.columns}
                       groups={!this.state.isLoading && this.props.groupByField && this.groups}
@@ -1137,5 +1137,4 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         </div>
       </div >);
   }
-
 }
