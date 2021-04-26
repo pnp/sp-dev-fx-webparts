@@ -51,7 +51,7 @@ display all the lists associated with the site followed by all the items inside 
 
 Solution|Author(s)
 --------|---------
-angular-msgraph|David Hartman ([Slalom](https://slalom.com))
+angular-msgraph|[David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
 
 ## Version history
 
