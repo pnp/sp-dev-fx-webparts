@@ -39,7 +39,7 @@ Final outcome:
 
 Solution|Author(s)
 --------|---------
-angular-todo|Gaurav Goyal (MCSD, BizPortals Solutions, @gauravgoyal_5)
+angular-todo|[Gaurav Goyal](https://github.com/gauravgoyal5) (MCSD, BizPortals Solutions, @gauravgoyal_5)
 
 ## Version history
 
