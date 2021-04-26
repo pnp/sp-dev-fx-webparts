@@ -38,7 +38,7 @@ Sample web part showing the list of latest orders retrieved from a custom API se
 
 Solution|Author(s)
 --------|---------
-aad-api-spo-cookie|Waldek Mastykarz (MVP, Rencore, @waldekm)
+aad-api-spo-cookie|[Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
 
 ## Version history
 
