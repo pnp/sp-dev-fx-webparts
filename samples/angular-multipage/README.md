@@ -38,7 +38,7 @@ This sample contains a poll web part allowing users to vote and view the results
 
 Solution|Author(s)
 --------|---------
-angular-multipage|Waldek Mastykarz (MVP, Rencore, @waldekm)
+angular-multipage|[Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
 
 ## Version history
 
