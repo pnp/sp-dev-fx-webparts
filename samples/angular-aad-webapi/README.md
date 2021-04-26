@@ -36,7 +36,7 @@ Sample SharePoint Framework client-side web part illustrating communication with
 
 Solution|Author(s)
 --------|---------
-angular-aad-webapi|David Hartman ([Slalom](https://slalom.com))
+angular-aad-webapi|[David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
 
 ## Version history
 
