@@ -34,7 +34,7 @@ Application after migration:
 
 Solution|Author(s)
 --------|---------
-angular-migration|Waldek Mastykarz (MVP, Rencore, @waldekm)
+angular-migration|[Waldek Mastykarz](https://github.com/waldekmastykarz) (MVP, Rencore, @waldekm)
 
 ## Version history
 
