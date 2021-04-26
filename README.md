@@ -75,7 +75,7 @@ gulp serve
 ```
 
 ## Authors
-This repository's contributors are all community members who volunteered their time to share code samples. Work is done as an open source community project, which each sample contained in their own solution.
+This repository's contributors are all community members who volunteered their time to share code samples. Work is done as an open source community project, with each sample contained in their own solution.
 
 ## Contributions
 
