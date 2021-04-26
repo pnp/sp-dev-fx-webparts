@@ -1,4 +1,4 @@
-## Support Guidelines
+# Support Guidelines
 
 The SPFx web part samples repository is maintained by the [Patterns and Practices](https://aka.ms/m365pnp) team and the community, who all volunteer their time. 
 
@@ -17,20 +17,25 @@ Please use following logic on submitting your questions or issues to right locat
 * You have general question or challenge with SPFx - use [sp-dev-docs repository issue list](https://github.com/SharePoint/sp-dev-docs/issues).
 * You have issue on specific web part or sample - use [issue list in this repository](https://github.com/pnp/sp-dev-fx-webparts/issues).
 
-#### How to report a bug
+### How to report a bug
+
 We use GitHub to track issues. To report a bug, [open a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose). Please include
 all the information that might be relevant, including instructions for reproducing the bug. Make sure to read up on [how to create good issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues) to get your issue resolved faster.
 
-#### Where can I ask for help?
+### Where can I ask for help?
+
 We use GitHub issues to support user questions. To ask a question, [open a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) and select the question template. 
 
-#### How to submit changes
+### How to submit changes
+
 Please see our [Contributing Guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/master/CONTRIBUTING.md).
 
-#### How to request an enhancement
+### How to request an enhancement
+
 We use GitHub issues to support user suggestions. To request an enhanced, [open a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) and select the suggestion template. 
 
-#### How to request an sample request
+### How to request an sample request
+
 We use GitHub issues to support sample request. To request a new sample, [open a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new/choose) and select the sample request template. 
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/SUPPORT.md" />
