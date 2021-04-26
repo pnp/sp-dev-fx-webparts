@@ -8,7 +8,7 @@ Following issue [#659](https://github.com/SharePoint/sp-dev-fx-webparts/issues/6
 
 ## Summary
 
-This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern). It enables a webpart or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it. 
+This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern). It enables a web part or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it. 
 
 > Please note the SPFx Event Aggregator is still in Alpha and **NOT SUPPORTED IN PRODUCTION USE**, but this sample will be updated in future when there are changes from the Alpha version to GA.
 
@@ -43,6 +43,7 @@ Version|Date|Comments
 0.0.3|November 18, 2018 | Sample deprecated 
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

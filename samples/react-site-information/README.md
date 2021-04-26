@@ -54,6 +54,6 @@ https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/s
 Version|Date|Comments
 -------|----|--------
 1.0|May 2018|Initial release
-1.1|June 2018|Link webpart to proper term group and term set
+1.1|June 2018|Link web part to proper term group and term set
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-site-information" />

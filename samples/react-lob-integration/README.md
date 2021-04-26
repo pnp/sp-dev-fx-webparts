@@ -53,11 +53,11 @@ Grant-PnPTenantServicePrincipalPermission -Resource "SPFx-LOB-Function" -Scope "
 
 1. Place the page you want to add this web part to in edit mode.
 2. Search for and insert the **LobIntegration** web part.
-3. Configure the webpart to update its properties.
+3. Configure the web part to update its properties.
 
 ## Configurable Properties
 
-The `LobIntegration` webpart can be configured with the following properties:
+The `LobIntegration` web part can be configured with the following properties:
 
 | Label | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |

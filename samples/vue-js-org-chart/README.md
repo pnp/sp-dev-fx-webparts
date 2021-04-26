@@ -1,7 +1,7 @@
 # Organization Chart using VueJS
 
 ## Summary
-A simple Organisation Chart webpart using Office UI Fabric, VueJS, REST API.
+A simple Organisation Chart web part using Office UI Fabric, VueJS, REST API.
 
 ![React Org Chart](./assets/preview.gif)
 
@@ -14,7 +14,7 @@ A simple Organisation Chart webpart using Office UI Fabric, VueJS, REST API.
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
 * [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
  
-  ** The SPFx webpart will work in local workbench, but not the assets. They can be provisioned only when the app is deployed since they are SharePoint specific.
+  ** The SPFx web part will work in local workbench, but not the assets. They can be provisioned only when the app is deployed since they are SharePoint specific.
 
 ## Prerequisites
 
@@ -24,6 +24,7 @@ A simple Organisation Chart webpart using Office UI Fabric, VueJS, REST API.
 
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

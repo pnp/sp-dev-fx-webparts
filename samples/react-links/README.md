@@ -13,15 +13,15 @@ Links and groups are both customizable.
 
 1. Place the page you want to add this web part to in edit mode.
 2. Search for and insert the **Links** web part.
-3. Configure the webpart to update its properties.
+3. Configure the web part to update its properties.
 
 ## Configurable Properties
 
-The `Links` webpart can be configured with the following properties:
+The `Links` web part can be configured with the following properties:
 
 | Label | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| Useful links | title | string | no | The webpart title, editable inline with the webpart itself |
+| Useful links | title | string | no | The web part title, editable inline with the web part itself |
 | Group names for the links | groupData | collection | no | Collection of group names for grouping links into sets |
 | Link data | collectionData | collection | no | Collection of links |
 

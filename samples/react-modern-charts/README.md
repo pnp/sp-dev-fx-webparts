@@ -17,7 +17,7 @@ extensions:
 
 ## Summary
 
-This webpart uses the Chart.js library to visualize SharePoint list data.
+This web part uses the Chart.js library to visualize SharePoint list data.
 
 Built in Chart Types:
 -Bar

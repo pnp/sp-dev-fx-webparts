@@ -10,7 +10,7 @@ This web part provides you the ability to add a searchable people directory. A p
 
 1. Place the page you want to add this web part to in edit mode.
 2. Search for and insert the **People Directory** web part.
-3. Configure the webpart to update its properties.
+3. Configure the web part to update its properties.
 
 ## Configurable Properties
 

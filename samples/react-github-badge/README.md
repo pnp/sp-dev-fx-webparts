@@ -48,7 +48,7 @@ Version|Date|Comments
 
 This sample illustrates how to convert an existing Javascript-only SPFx web part to a React SPFx web part while keeping the same look and feel. Please refer to the [js-GitHubBadge](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/js-gitHubBadge) sample for the original Javascript-only web part.
 
-A second webpart (called `GitHub Badge v2`) demonstrates how to render the same data using a Fabric UI persona card.
+A second web part (called `GitHub Badge v2`) demonstrates how to render the same data using a Fabric UI persona card.
 
 For more information about the conversion process, refer to this [blog article](https://tahoeninjas.blog/2019/04/19/converting-spfx-from-javascript-to-react/).
 
