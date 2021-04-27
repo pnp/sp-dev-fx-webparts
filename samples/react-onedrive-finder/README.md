@@ -43,7 +43,7 @@ react-onedrive-finder | [André Lage](http://aaclage.blogspot.com) ([@aaclage](h
 
 Version|Date|Comments
 -------|----|--------
-1.1|April 24, 2021|Fixes, code optimization and extension filter included
+1.1|April 24, 2021|Fixes, optimization, Styling and extension filter included
 1.0|April 16, 2021|Initial release
 
 ## Disclaimer

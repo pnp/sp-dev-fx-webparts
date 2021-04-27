@@ -93,6 +93,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
   public _siteID: string;
   public _pageSize: number;
   public _breadcrumbItem: IBreadcrumbItem[] = [];
+  public _customStyle: string;
 
   public _fileExtensions: string[] = null;
   constructor(props: IOneDriveFinderProps, state: IOneDriveFinderState) {
@@ -105,7 +106,8 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       siteID: "",
       siteItems: [],
       itemID: "",
-      fileExtensions: []
+      fileExtensions: [],
+      customStyle:""
     };
     this.getDomainData();
   }
@@ -150,12 +152,25 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
         fileExtensions: [...fileExtensions]
       });
     };
+
+    const CheckStyles = (event: React.FormEvent<HTMLDivElement>, selectedOption: IDropdownOption) => {
+      if (selectedOption.key == 2) {
+        this.setState({
+          customStyle: styles.mgtfilelist
+        });
+      } else {
+        this.setState({
+          customStyle: selectedOption.text
+        });
+      }
+    };
     
-    const { siteID, itemID, pageSize, breadcrumbItem, siteItems, fileExtensions } = this.state;
+    const { siteID, itemID, pageSize, breadcrumbItem, siteItems, fileExtensions, customStyle } = this.state;
     this._itemID = itemID;
     this._siteID = siteID;
     this._breadcrumbItem = breadcrumbItem;
     this._pageSize = pageSize;
+    this._customStyle = customStyle;
     if(fileExtensions.length != 0)
     {
       this._fileExtensions = fileExtensions;
@@ -168,6 +183,17 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
         <div className={styles['some-page-wrapper']}>
           <div className={styles.row}>
             <div className={styles.column}>
+              <Dropdown
+                placeholder="default"
+                label="Styles"
+                options={[
+                  { key: 0, text: 'default' },
+                  { key: 1, text: 'mgt-dark' },
+                  { key: 2, text: 'Custom-mgt-file-list' },
+                ]}
+                styles={{ dropdown: { width: 300 } }}
+                onChange={CheckStyles}
+              />
               <Dropdown
                 placeholder="Select an Site"
                 label="List of Drives"
@@ -196,8 +222,6 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
                 onChange={CheckPageSize}
                 styles={dropdownFilterStyles}
               />
-            </div>
-            <div className={styles.column}>
               <Dropdown
                 placeholder="Select"
                 label="Select file extensions"
@@ -229,6 +253,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
           />
           {(this.state.itemID != "") &&
             <FileList
+              className={this._customStyle}
               fileExtensions={this._fileExtensions}
               pageSize={this._pageSize}
               siteId={this._siteID}
