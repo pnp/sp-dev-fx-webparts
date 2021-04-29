@@ -180,7 +180,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
     }
     return (
       <div>
-        <div className={styles['some-page-wrapper']}>
+        <div className={styles.pageWrapper}>
           <div className={styles.row}>
             <div className={styles.column}>
               <Dropdown
