@@ -8,6 +8,8 @@ import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-reac
 import { AadHttpClient } from "@microsoft/sp-http";
 import { ITheme, mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;
@@ -38,6 +40,8 @@ const dropdownFilterStyles = {
 const onRenderCaretDown = (): JSX.Element => {
   return <Icon iconName="PageRight" />;
 };
+
+const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
 /**
  * 
@@ -107,7 +111,8 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       siteItems: [],
       itemID: "",
       fileExtensions: [],
-      customStyle:""
+      customStyle: "",
+      searchDrive: "",
     };
     this.getDomainData();
   }
@@ -132,7 +137,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       this.getDrives(selectedOption);
     };
 
-    const CheckPageSize= (event: React.FormEvent<HTMLDivElement>, selectedOption: IDropdownOption) => {
+    const CheckPageSize = (event: React.FormEvent<HTMLDivElement>, selectedOption: IDropdownOption) => {
       let fileListpageSize: number;
       fileListpageSize = +selectedOption.key;
       this.setState({
@@ -146,7 +151,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
         fileExtensions.push(selectedOption.key.toString());
         fileExtensions = [...fileExtensions,...this.state.fileExtensions];
       } else {
-        fileExtensions = this.state.fileExtensions.filter(e => e !== selectedOption.key );
+        fileExtensions = this.state.fileExtensions.filter(e => e !== selectedOption.key);
       }
       this.setState({
         fileExtensions: [...fileExtensions]
@@ -164,8 +169,30 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
         });
       }
     };
-    
-    const { siteID, itemID, pageSize, breadcrumbItem, siteItems, fileExtensions, customStyle } = this.state;
+
+    const checkSearchDrive = (SearchQuery: string) => {
+      if (this.state.siteID != "") {
+        this.setState({
+          searchDrive: "/sites/" + this.state.siteID + "/drive/root/search(q='" + SearchQuery + "')"
+        });
+      } else {
+        this.setState({
+          searchDrive: "/me/drive/root/search(q='" + SearchQuery + "')"
+        });
+      }
+    };
+    const checkClear = (ev: any) => {
+      this.setState({
+        searchDrive: ""
+      });
+    };
+    const selectFile = (selectedFile: any) => {
+      if (selectedFile.detail.folder == undefined) {
+        window.open(selectedFile.detail.webUrl, '_blank');
+      } 
+    };
+
+    const { siteID, itemID, pageSize, breadcrumbItem, siteItems, fileExtensions, searchDrive, customStyle } = this.state;
     this._itemID = itemID;
     this._siteID = siteID;
     this._breadcrumbItem = breadcrumbItem;
@@ -251,7 +278,12 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
             ariaLabel="Breadcrumb with items rendered as buttons"
             overflowAriaLabel="More links"
           />
-          {(this.state.itemID != "") &&
+          {(this.state.breadcrumbItem.length > 0) &&
+            <Stack tokens={stackTokens}>
+              <SearchBox placeholder="Search Drive" onSearch={checkSearchDrive} onClear={checkClear} />
+            </Stack>
+          }
+          {(this.state.itemID != "" && this.state.searchDrive == "") &&
             <FileList
               className={this._customStyle}
               fileExtensions={this._fileExtensions}
@@ -261,18 +293,26 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
               itemClick={this.manageFolder}
             ></FileList>
           }
+          {(this.state.searchDrive != "") &&
+            <FileList
+              className={this._customStyle}
+              fileExtensions={this._fileExtensions}
+              pageSize={this._pageSize}
+              fileListQuery={searchDrive}
+              itemClick={selectFile}
+            ></FileList>
+          }
         </div>
       </div>
     );
   }
-  
+
   /**
    * 
    * @param e 
    * Capture file or folder and manages breadcrumb
    */
   private manageFolder = (e: any) => {
-
     if (e.detail.folder != undefined) {
       this._breadcrumbItem.push({
         text: e.detail.name,
