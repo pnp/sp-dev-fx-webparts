@@ -2,9 +2,14 @@
 
 ## Summary
 
-This sample access drives from OneDrive and navigate between his content using **Graph OneDrive and Site API and [Microsoft Graph Toolkit](https://github.com/microsoftgraph/microsoft-graph-toolkit) react controls "@microsoft/mgt-react**" with the addition of new control **[FileList](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/f8b8aa81d00bf426b94ee5016d511bc78b36e152/stories/components/fileList.stories.js#L136) "still preview version"** . This new control provides the ability to retrieve the Drive Library with associated Files and folders making easier to develop and navigate between tenant content and access to file.
+This sample access drives from OneDrive and navigate between his content using **Graph OneDrive and Site API and [Microsoft Graph Toolkit](https://github.com/microsoftgraph/microsoft-graph-toolkit) react controls "@microsoft/mgt-react**" with the addition of new controls **Mgt-File-List [FileList](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/next/file/stories/components/fileList.stories.js)** and **Mgt-File [File](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/next/file/stories/components/file.stories.js) "Beta version"** . This new control provides the ability to retrieve the Drive Library with associated Files and folders making easier to develop and navigate between tenant content and access to file.
 
-**[FileList](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/f8b8aa81d00bf426b94ee5016d511bc78b36e152/stories/components/fileList.stories.js#L136)** control allow to load files base on graph querys or parameters ids.
+**[FileList](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/next/file/specs/mgt-file-list.md)** control allow to load files base on graph querys or parameters ids.
+
+**[File](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/next/file/specs/mgt-file.md)** control allow to File component is used to represent an individual file/folder from OneDrive or SharePoint base on graph querys or parameters ids.
+
+Below a draw resuming the custom query's made and what control uses to retrieve associated folders and files from different locations.
+![Demo](./Assets/OneDrivefinderSample4.PNG)
 
 ### Retrieve Sites with drives associate
 
@@ -43,7 +48,7 @@ react-onedrive-finder | [André Lage](http://aaclage.blogspot.com) ([@aaclage](h
 
 Version|Date|Comments
 -------|----|--------
-1.2|April 30, 2021|Include content Search on Drive Library and Minimal style change
+1.2|April 30, 2021|Include content Search on Drive Library, file details and Minimal style change.
 1.1|April 24, 2021|Fixes, optimization, Styling and extension filter included
 1.0|April 16, 2021|Initial release
 
@@ -83,8 +88,11 @@ Description of the extension that expands upon high-level summary above.
 This extension illustrates the following concepts:
 
 - Easy to navigate between shared Drives using **Graph API and Breadcrumb**
-- **[FileList](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/f8b8aa81d00bf426b94ee5016d511bc78b36e152/stories/components/fileList.stories.js#L136)** control allow to load documents base on graph querys or parameters ids.
-
+- Search in OneDrive Library
+- Filter by File Extension
+- Change theme of control
+- **[FileList](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/next/file/specs/mgt-file-list.md)** New mgt-file-list control.
+- **[File](https://github.com/microsoftgraph/microsoft-graph-toolkit/blob/next/file/specs/mgt-file.md)** New mgt-file control.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-onedrive-finder" />
 
