@@ -24,17 +24,11 @@
         "value": "1.10.0"
       }
     ],
-    "thumbnails": [
+     "thumbnails": [
       {
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion/assets/AccordionPreview.png",
-        "alt": "Accordion Web Part"
-      },
-      {
-        "type": "image",
-        "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion/assets/AccordionPreview.png?raw=true",
         "alt": "Accordion Web Part"
       }
     ],
