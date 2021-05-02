@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/joaojmendes/sp-dev-fx-webparts/raw/dev/samples/react-manage-sitedesigns/assets/screen1.jpg",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-sitedesigns/assets/screen1.jpg",
         "alt": "Site Designs Manager"
       },
       {
