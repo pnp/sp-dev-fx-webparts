@@ -32,7 +32,13 @@
         "alt": "React Hooks Form Web Part"
       }
     ],
-    "authors": [],
+    "authors": [
+      {
+        "name": "Adrian Diaz Cervera",
+        "gitHubAccount": "AdrianDiaz81",
+        "pictureUrl": "https://github.com/AdrianDiaz81.png"
+      }
+    ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",
