@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion/assets/previewAccordion.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion/assets/AccordionPreview.png",
         "alt": "Accordion Web Part"
       },
       {
