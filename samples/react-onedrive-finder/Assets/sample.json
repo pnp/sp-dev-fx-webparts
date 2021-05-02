@@ -9,8 +9,8 @@
       "This sample access drives from OneDrive and navigate between his content using Graph OneDrive and Site API and Microsoft Graph Toolkit React controls with the addition of new FileList control.",
       "This new control provides the ability to retrieve the Drive Library with associated Files and folders making easier to develop and navigate between tenant content and access to file. "
     ],
-    "created": "2021-04-16",
-    "modified": "2021-04-24",
+    "creationDateTime": "2021-04-16",
+    "updateDateTime": "2021-04-29",
     "products": [
       "SharePoint",
       "Office"
