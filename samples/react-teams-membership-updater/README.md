@@ -2,7 +2,7 @@
 
 ## Summary
 
-Used to update the membership of a team based on the contents of a CSV file, can be hosted in a sharepoint site where a list can be defined for logging purposes or run inside teams as a personal app.
+Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app.
 
 ## Screen 
 
@@ -24,7 +24,7 @@ Used to update the membership of a team based on the contents of a CSV file, can
 
 ## Solution
 
-This web part can be deployed to a site or as a teams personal app.  This does require graph permission granting in the Sharepoint Admin Center
+This web part can be deployed to a site or as a teams personal app.  This does require graph permission granting in the SharePoint Admin Center
 
 Uses:
 
