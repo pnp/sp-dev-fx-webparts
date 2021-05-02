@@ -1,14 +1,17 @@
 # Dynamic Scalable Vector Graphics (SVG) image using propertie
 
 ## Summary
-An SPFx webpart that displays a Scalable Vector Graphics (SVG) image using properties to customize how it is rendered. The webpart utilizes the PnP SPFx Property Controls package (specifially the SpinButton and ColorPicker) to set these properties.
+
+An SPFx web part that displays a Scalable Vector Graphics (SVG) image using properties to customize how it is rendered. The web part utilizes the PnP SPFx Property Controls package (specifially the SpinButton and ColorPicker) to set these properties.
 
 ![picture of the web part in action](./assets/js-propertycontrols-svg.gif)
 
 ## Used SharePoint Framework Version 
+
 ![drop](https://img.shields.io/badge/version-1.3.4-green.svg)
 
 ## Which PnP SPFx controls are being used in this sample?
+
 * [PropertyFieldSpinButton](https://github.com/SharePoint/sp-dev-fx-property-controls/wiki/PropertyFieldSpinButton)
 * [PropertyFieldColorPicker](https://github.com/SharePoint/sp-dev-fx-property-controls/wiki/PropertyFieldColorPicker)
 
@@ -31,6 +34,7 @@ Version|Date|Comments
 1.0|November 12, 2017|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

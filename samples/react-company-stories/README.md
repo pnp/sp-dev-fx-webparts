@@ -2,7 +2,7 @@
 
 ## Summary
 
-This webpart allows you to add images to a SharePoint List, and renders them with a UX very similar to Instagram Stories (or Twitter Reels, or [Place your Social network here]). It is a way to engage employees, showing relevant content in a well-known visual appearance.
+This web part allows you to add images to a SharePoint List, and renders them with a UX very similar to Instagram Stories (or Twitter Reels, or [Place your Social network here]). It is a way to engage employees, showing relevant content in a well-known visual appearance.
 
 ![react-company-stories](./assets/react-company-stories.gif)
 
@@ -52,11 +52,11 @@ Version|Date|Comments
 - In the command-line run:
   - **npm install**
   - **gulp serve --nobrowser**
-- Add the webpart to the SharePoint Workbench (same Site where the List was created)
+- Add the web part to the SharePoint Workbench (same Site where the List was created)
 
 ## Features
 
-This webpart illustrates the following concepts:
+This web part illustrates the following concepts:
 
 - Using the Microsoft Graph Toolkit react components: [Person component](https://docs.microsoft.com/en-us/graph/toolkit/components/person)
 - Using FluentUI components

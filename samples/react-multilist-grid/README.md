@@ -1,15 +1,15 @@
 # Multilist Grid
 
 ## Summary
-React-multilist-grid is an SPFx webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type – you just need to create column mappings to tell the webpart which fields to show in which columns of the grid.
+React-multilist-grid is an SPFx web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type – you just need to create column mappings to tell the web part which fields to show in which columns of the grid.
 
-The configuration panel of the webpart is show below. It has two buttons—one to configure the columns that will be displayed on the grid, and another to configure the lists that contain the data to be edited.
+The configuration panel of the web part is show below. It has two buttons—one to configure the columns that will be displayed on the grid, and another to configure the lists that contain the data to be edited.
 ![config panel](./src/images/Configuration.PNG)
 
 Clicking on the Update Columns button shows the Column Definition configuration panel shown below:
 ![columnDefinitions panel](./src/images/columnDefinitions.PNG)
 
-When adding a column the webpart automatically assigns a guid for internal use.  In the &#39;name&#39; field you can use any name you like. The text entered here will be used as the column header in the grid. In the &#39;type&#39; field, you need to select the type of data to be displayed:
+When adding a column the web part automatically assigns a guid for internal use.  In the &#39;name&#39; field you can use any name you like. The text entered here will be used as the column header in the grid. In the &#39;type&#39; field, you need to select the type of data to be displayed:
 ![ColumnTypes panel](./src/images/ColumnTypes.PNG)
 
 These are SharePoint field types for the most part(not all field types have been implemented yet). There is one &#39;special&#39; field type called &#39;List Title&#39;. It is used to identify which list an item came from when displayed in the grid. You can move an item from one list (and site) to another by changing the selected list title in the grid. In the &#39;editable&#39; field you can specify whether this field can be edited in the grid(not yet implemented).  The sortSequence and sortDirection field let you set up default sorting on a given column.
@@ -20,7 +20,7 @@ After defining all the columns to be displayed in your grid, click the save icon
 
 Clicking the Update Lists button on the configuration panel will open the List Definitions panel:
 ![ListDefinitions panel](./src/images/ListDefinitions.PNG)
-Here you configure which lists the webpart should display in the grid. When adding a list the webpart automatically assigns a guid for internal use.  In the &#39;SiteUrl&#39; you must enter the url of the site collection that contains the list. In the &#39;List Definition Title&#39; field enter a user friendly title for this list. The text you enter here will be shown on the grid for all items that came from this list in the &#39;List Title&#39; column (provided you have created a &#39;List Title&#39; column.
+Here you configure which lists the web part should display in the grid. When adding a list the web part automatically assigns a guid for internal use.  In the &#39;SiteUrl&#39; you must enter the url of the site collection that contains the list. In the &#39;List Definition Title&#39; field enter a user friendly title for this list. The text you enter here will be shown on the grid for all items that came from this list in the &#39;List Title&#39; column (provided you have created a &#39;List Title&#39; column.
 
 When you tab to the  &#39;Web Containing List&#39; field, you can use the search icon:
 
@@ -48,14 +48,14 @@ Choose the field you want to have displayed for this list in the specified colum
 
 Click the save button in the command bar once you are done defining all your lists.
 
-The webpart will now display a grid showing all of the items in the lists you have selected:
+The web part will now display a grid showing all of the items in the lists you have selected:
 ![editListItems](./src/images/editListItems.PNG)
 
 You can edit any cell in the grid by tabbing to it, or clicking on it. To move an item between lists, simply click on the &#39;List Title&#39; column and choose a new list:
 
 ![MoveListItem](./src/images/MoveListItem.PNG)
 
-If you change a field of type &#39;user&#39;, the webpart will attempt to lookup the user in the destination site and use that user when adding the item to the new site. Similar mappings are done for other column types.
+If you change a field of type &#39;user&#39;, the web part will attempt to lookup the user in the destination site and use that user when adding the item to the new site. Similar mappings are done for other column types.
 
 You can click the save icon on each row to save the selected row back to SharePoint. The delete icon can be used to mark an item to be deleted:
 ![deleteitem](./src/images/deleteitem.PNG)
@@ -93,6 +93,7 @@ Version|Date|Comments
 
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -108,7 +109,8 @@ Version|Date|Comments
 > Include any additional steps as needed.
 
 ## Features
-An SPFx Webpart that uses React, Office-UI-Fabric, and Redux to let users edit list data from multiple Webs and Multiple Sites in a single grid.
+
+An SPFx Web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from multiple Webs and Multiple Sites in a single grid.
 
 Usage:
 

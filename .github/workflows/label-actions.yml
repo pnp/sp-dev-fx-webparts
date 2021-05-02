@@ -1,4 +1,4 @@
-name: 'Label Actions'
+name: 'Check for incomplete submissions'
 
 on:
   issues:

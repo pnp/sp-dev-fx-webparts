@@ -99,7 +99,7 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------

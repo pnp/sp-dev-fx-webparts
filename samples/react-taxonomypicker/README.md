@@ -42,6 +42,7 @@ Version|Date|Comments
 1.0|March 14, 2017|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -97,7 +98,7 @@ PropertyPaneTaxonomyPicker("Language", {
 ```
 
 ## Features
-- Use [React](https://facebook.github.io/react) for using [react-taxonomypicker](https://github.com/jquintozamora/react-taxonomypicker) control inside a custom property pane (it can be used in the webpart itself too).
+- Use [React](https://facebook.github.io/react) for using [react-taxonomypicker](https://github.com/jquintozamora/react-taxonomypicker) control inside a custom property pane (it can be used in the web part itself too).
 - Use [TypeScript](https://www.typescriptlang.org) to create the custom property pane control containing the taxonomy picker control.
 - **Reacting to web part property changes**
 - Loading data for use in **custom property pane controls asynchronously** without blocking the web part
@@ -107,7 +108,7 @@ PropertyPaneTaxonomyPicker("Language", {
   - Async mode is used for large Term Sets and it **doesn't load any data initially**, but it loads the Terms upon user input in batches of 10 items.
   - Sync / Async mode configurable via **termSetCountMaxSwapToAsync** property
     - The control will fetch the number of terms and decide which mode to use depends on termSetCountMaxSwapToAsync value.
-- It Uses and depends on **SP.Taxonomy.js** (the webpart uses a wrapper to load all the SP.*.js dependencies)
+- It Uses and depends on **SP.Taxonomy.js** (the web part uses a wrapper to load all the SP.*.js dependencies)
 - Use **Promise** (polyfill it if needed IE)
 - **onPickerChange** event handler exposed
 - [react-select](https://github.com/JedWatson/react-select) properties exposed (extends them)
