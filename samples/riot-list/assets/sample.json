@@ -8,8 +8,8 @@
     "longDescription": [
       "Simplistic sample Web Part that demonstrates the use of RiotJS in creating a SharePoint Framework web part."
     ],
-    "created": "2017-04-26",
-    "modified": "2017-04-26",
+    "creationDateTime": "2017-04-26",
+    "updateDateTime": "2017-04-26",
     "products": [
       "SharePoint",
       "Office"

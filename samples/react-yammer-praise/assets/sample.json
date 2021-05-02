@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to post a praise to Yammer using aadTokenProvider (without Yammer JavaScript SDK)."
     ],
-    "created": "2020-03-23",
-    "modified": "2020-03-23",
+    "creationDateTime": "2020-03-23",
+    "updateDateTime": "2020-03-23",
     "products": [
       "SharePoint",
       "Office"

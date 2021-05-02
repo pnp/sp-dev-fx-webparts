@@ -8,8 +8,8 @@
     "longDescription": [
       "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant\u0027s root site with title \u0022Birthdays.\u0022"
     ],
-    "created": "2019-07-23",
-    "modified": "2019-07-23",
+    "creationDateTime": "2019-07-23",
+    "updateDateTime": "2019-07-23",
     "products": [
       "SharePoint",
       "Office"

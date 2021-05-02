@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint web part or Teams tab"
     ],
-    "created": "2018-11-18",
-    "modified": "2018-11-18",
+    "creationDateTime": "2018-11-18",
+    "updateDateTime": "2018-11-18",
     "products": [
       "SharePoint",
       "Office"

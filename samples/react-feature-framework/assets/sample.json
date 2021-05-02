@@ -8,8 +8,8 @@
     "longDescription": [
       "Simplistic solution demonstrating how to provision SharePoint assets using Feature Framework elements when SharePoint Framework solution is being deployed to a SharePoint site."
     ],
-    "created": "2017-02-27",
-    "modified": "2017-02-27",
+    "creationDateTime": "2017-02-27",
+    "updateDateTime": "2017-02-27",
     "products": [
       "SharePoint",
       "Office"

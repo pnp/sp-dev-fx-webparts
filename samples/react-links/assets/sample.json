@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part provides you the ability to add a per instance listing of links with the ability to group sets of links. Links are stored as a collection of links within the web part\u0027s properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements."
     ],
-    "created": "2018-05-01",
-    "modified": "2018-05-01",
+    "creationDateTime": "2018-05-01",
+    "updateDateTime": "2018-05-01",
     "products": [
       "SharePoint",
       "Office"

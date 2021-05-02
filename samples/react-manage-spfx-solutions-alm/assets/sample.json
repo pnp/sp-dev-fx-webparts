@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall \u0026 Remove apps."
     ],
-    "created": "2020-03-09",
-    "modified": "2020-03-09",
+    "creationDateTime": "2020-03-09",
+    "updateDateTime": "2020-03-09",
     "products": [
       "SharePoint",
       "Office"

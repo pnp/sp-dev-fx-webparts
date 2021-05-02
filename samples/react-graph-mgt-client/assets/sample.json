@@ -9,8 +9,8 @@
       "This is a sample web part developed using React Framework that showcases how to use the latest `microsoft-graph-client` in order to do advanced configuration of the Microsoft Graph client.",
       "This enables scenarios like throttling management, Chaos management and a lot more!"
     ],
-    "created": "2021-04-18",
-    "modified": "2021-04-18",
+    "creationDateTime": "2021-04-18",
+    "updateDateTime": "2021-04-18",
     "products": [
       "SharePoint",
       "Office"

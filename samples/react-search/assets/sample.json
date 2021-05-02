@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework."
     ],
-    "created": "2017-02-28",
-    "modified": "2017-02-28",
+    "creationDateTime": "2017-02-28",
+    "updateDateTime": "2017-02-28",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "SharePoint Framework web part which uses Redux to maintain a single state for the entire application and ImmutableJS to create performant state trees."
     ],
-    "created": "2017-07-11",
-    "modified": "2017-07-11",
+    "creationDateTime": "2017-07-11",
+    "updateDateTime": "2017-07-11",
     "products": [
       "SharePoint",
       "Office"

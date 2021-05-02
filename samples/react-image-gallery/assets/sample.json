@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample describe a SPFX application which implement an image gallery with taxonomy base filtering and typed search. This application also implement pagination."
     ],
-    "created": "2019-03-01",
-    "modified": "2019-03-01",
+    "creationDateTime": "2019-03-01",
+    "updateDateTime": "2019-03-01",
     "products": [
       "SharePoint",
       "Office"

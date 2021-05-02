@@ -8,8 +8,8 @@
     "longDescription": [
       "The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries."
     ],
-    "created": "2021-02-19",
-    "modified": "2021-02-19",
+    "creationDateTime": "2021-02-19",
+    "updateDateTime": "2021-02-19",
     "products": [
       "SharePoint",
       "Office"

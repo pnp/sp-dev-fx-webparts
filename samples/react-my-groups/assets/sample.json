@@ -8,8 +8,8 @@
     "longDescription": [
       "Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site."
     ],
-    "created": "2020-07-09",
-    "modified": "2020-07-09",
+    "creationDateTime": "2020-07-09",
+    "updateDateTime": "2020-07-09",
     "products": [
       "SharePoint",
       "Office"

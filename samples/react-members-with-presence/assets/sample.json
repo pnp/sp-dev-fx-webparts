@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to get the members of a specific group, including their presence information (using the new Presence endpoint in the MS Graph API)."
     ],
-    "created": "2019-12-23",
-    "modified": "2019-12-23",
+    "creationDateTime": "2019-12-23",
+    "updateDateTime": "2019-12-23",
     "products": [
       "SharePoint",
       "Office"

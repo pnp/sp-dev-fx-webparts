@@ -8,8 +8,8 @@
     "longDescription": [
       "The file upload web part allowing users to upload multiple files to a document library or as item attachments."
     ],
-    "created": "2018-02-14",
-    "modified": "2018-02-14",
+    "creationDateTime": "2018-02-14",
+    "updateDateTime": "2018-02-14",
     "products": [
       "SharePoint",
       "Office"

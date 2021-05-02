@@ -8,8 +8,8 @@
     "longDescription": [
       "This SPFx Outlook Add-In lets you browse your OneDrive, joined Teams or Groups and select a folder to save your complete mail in there."
     ],
-    "created": "2020-04-06",
-    "modified": "2020-04-06",
+    "creationDateTime": "2020-04-06",
+    "updateDateTime": "2020-04-06",
     "products": [
       "SharePoint",
       "Office"

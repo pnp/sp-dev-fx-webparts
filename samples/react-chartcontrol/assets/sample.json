@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react."
     ],
-    "created": "2020-12-13",
-    "modified": "2020-12-13",
+    "creationDateTime": "2020-12-13",
+    "updateDateTime": "2020-12-13",
     "products": [
       "SharePoint",
       "Office"

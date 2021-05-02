@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema."
     ],
-    "created": "2020-07-10",
-    "modified": "2020-07-10",
+    "creationDateTime": "2020-07-10",
+    "updateDateTime": "2020-07-10",
     "products": [
       "SharePoint",
       "Office"

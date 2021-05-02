@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample SharePoint Framework client-side web part illustrating communication with a custom Web API secured with Azue Active Directory using Angular v1.x"
     ],
-    "created": "2017-03-21",
-    "modified": "2017-03-21",
+    "creationDateTime": "2017-03-21",
+    "updateDateTime": "2017-03-21",
     "products": [
       "SharePoint",
       "Office"

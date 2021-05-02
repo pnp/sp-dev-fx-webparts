@@ -8,8 +8,8 @@
     "longDescription": [
       "Displays information about a GitHub user."
     ],
-    "created": "2019-06-06",
-    "modified": "2019-06-06",
+    "creationDateTime": "2019-06-06",
+    "updateDateTime": "2019-06-06",
     "products": [
       "SharePoint",
       "Office"

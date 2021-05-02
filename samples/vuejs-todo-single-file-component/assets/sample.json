@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample Todo web part demonstrating how you can utilize Vue (a progressive framework for building user interfaces) with SharePoint Framework using handy single-file components approach."
     ],
-    "created": "2020-04-27",
-    "modified": "2020-04-27",
+    "creationDateTime": "2020-04-27",
+    "updateDateTime": "2020-04-27",
     "products": [
       "SharePoint",
       "Office"

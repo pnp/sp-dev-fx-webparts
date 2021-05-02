@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web parts illustrating using the SharePoint Framework Dynamic data capability."
     ],
-    "created": "2020-07-08",
-    "modified": "2020-07-08",
+    "creationDateTime": "2020-07-08",
+    "updateDateTime": "2020-07-08",
     "products": [
       "SharePoint",
       "Office"

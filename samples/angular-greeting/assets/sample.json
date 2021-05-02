@@ -8,8 +8,8 @@
     "longDescription": [
       "This is Greeting web part which shows greeting to the current logged in user."
     ],
-    "created": "2020-02-15",
-    "modified": "2020-02-15",
+    "creationDateTime": "2020-02-15",
+    "updateDateTime": "2020-02-15",
     "products": [
       "SharePoint",
       "Office"

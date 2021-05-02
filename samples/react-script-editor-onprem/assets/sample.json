@@ -8,8 +8,8 @@
     "longDescription": [
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part. This web part is similar to the classic Script Editor Web Part, and allows you do drop arbitrary script or html on a modern page."
     ],
-    "created": "2020-03-16",
-    "modified": "2020-03-16",
+    "creationDateTime": "2020-03-16",
+    "updateDateTime": "2020-03-16",
     "products": [
       "SharePoint",
       "Office"

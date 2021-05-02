@@ -8,8 +8,8 @@
     "longDescription": [
       "This solution contains an SPFx web part which shows a Kanban board using jqxKanban ReactJS component (from JQWidgets). The web part uses the default columns of the SharePoint Tasks list for showing the board\u0027s columns and the tasks."
     ],
-    "created": "2020-07-02",
-    "modified": "2020-07-02",
+    "creationDateTime": "2020-07-02",
+    "updateDateTime": "2020-07-02",
     "products": [
       "SharePoint",
       "Office"

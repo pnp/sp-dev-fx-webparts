@@ -8,8 +8,8 @@
     "longDescription": [
       "A fun game where you unscramble the words before the time runs out. It stores everyone\u0027s high scores in a SharePoint List on the Site."
     ],
-    "created": "2020-05-27",
-    "modified": "2020-05-27",
+    "creationDateTime": "2020-05-27",
+    "updateDateTime": "2020-05-27",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This component will help the administrators who are currently maintaining the user profiles in their organization."
     ],
-    "created": "2020-04-23",
-    "modified": "2020-04-23",
+    "creationDateTime": "2020-04-23",
+    "updateDateTime": "2020-04-23",
     "products": [
       "SharePoint",
       "Office"

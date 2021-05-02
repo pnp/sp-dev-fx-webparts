@@ -8,8 +8,8 @@
     "longDescription": [
       "A SPFx WebPart using PnP/PnPjs, @pnp/spfx-property-controls and ReactTourJS."
     ],
-    "created": "2019-11-23",
-    "modified": "2019-11-23",
+    "creationDateTime": "2019-11-23",
+    "updateDateTime": "2019-11-23",
     "products": [
       "SharePoint",
       "Office"

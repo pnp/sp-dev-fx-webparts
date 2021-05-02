@@ -8,8 +8,8 @@
     "longDescription": [
       "Displays page contributors in reverse chronological order."
     ],
-    "created": "2017-07-27",
-    "modified": "2017-07-27",
+    "creationDateTime": "2017-07-27",
+    "updateDateTime": "2017-07-27",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This react web part sample displays Soccer Highlights from a public Soccer API."
     ],
-    "created": "2020-10-30",
-    "modified": "2020-10-30",
+    "creationDateTime": "2020-10-30",
+    "updateDateTime": "2020-10-30",
     "products": [
       "SharePoint",
       "Office"

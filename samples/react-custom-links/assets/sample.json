@@ -8,8 +8,8 @@
     "longDescription": [
       "In this web part you can full customize the background and foreground color, font size, width and height of links."
     ],
-    "created": "2020-10-05",
-    "modified": "2020-10-05",
+    "creationDateTime": "2020-10-05",
+    "updateDateTime": "2020-10-05",
     "products": [
       "SharePoint",
       "Office"

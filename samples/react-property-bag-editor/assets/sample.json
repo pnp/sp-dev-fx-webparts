@@ -8,8 +8,8 @@
     "longDescription": [
       "A set of webparts that lets you set property bag settings on site collections and enable navigation using those properties."
     ],
-    "created": "2017-03-19",
-    "modified": "2017-03-19",
+    "creationDateTime": "2017-03-19",
+    "updateDateTime": "2017-03-19",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access."
     ],
-    "created": "2020-04-28",
-    "modified": "2020-04-28",
+    "creationDateTime": "2020-04-28",
+    "updateDateTime": "2020-04-28",
     "products": [
       "SharePoint",
       "Office"

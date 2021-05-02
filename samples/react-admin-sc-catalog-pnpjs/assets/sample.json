@@ -8,8 +8,8 @@
     "longDescription": [
       "A SPFx Web Part using @pnp/sp/appcatalog and @pnp/spfx-controls-react. It allows to see in a single view all the SiteCollection catalogs and the Apps installed with some useful metadata. It needs Globlal Administrator or SharePoint Online Administrator permissions in order to access Site collection App Catalogs hidden list and each Site Collection App Catalog."
     ],
-    "created": "2019-11-07",
-    "modified": "2019-11-07",
+    "creationDateTime": "2019-11-07",
+    "updateDateTime": "2019-11-07",
     "products": [
       "SharePoint",
       "Office"

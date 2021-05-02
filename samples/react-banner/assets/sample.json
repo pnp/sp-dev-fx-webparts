@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part provides you the ability to add a variable height image banner with a linkable title."
     ],
-    "created": "2018-05-01",
-    "modified": "2018-05-01",
+    "creationDateTime": "2018-05-01",
+    "updateDateTime": "2018-05-01",
     "products": [
       "SharePoint",
       "Office"

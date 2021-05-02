@@ -8,8 +8,8 @@
     "longDescription": [
       "This project shows how to integrate Tailwind CSS framework into a SPFx React project."
     ],
-    "created": "2020-10-17",
-    "modified": "2020-10-17",
+    "creationDateTime": "2020-10-17",
+    "updateDateTime": "2020-10-17",
     "products": [
       "SharePoint",
       "Office"

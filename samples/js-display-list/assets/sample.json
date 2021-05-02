@@ -8,8 +8,8 @@
     "longDescription": [
       "This simplistic sample Web Part demonstrates the use of JavaScript in a SharePoint Framework web part. The properties pane for this web part display a drop down list of lists in the current web. Once the user selects one of the lists, the web part display the contents of the list."
     ],
-    "created": "2020-08-29",
-    "modified": "2020-08-29",
+    "creationDateTime": "2020-08-29",
+    "updateDateTime": "2020-08-29",
     "products": [
       "SharePoint",
       "Office"

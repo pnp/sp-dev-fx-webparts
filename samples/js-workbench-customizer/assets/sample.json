@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how the Workbench page can be customized to display in a way that better mimics a modern SharePoint page."
     ],
-    "created": "2020-11-02",
-    "modified": "2020-11-02",
+    "creationDateTime": "2020-11-02",
+    "updateDateTime": "2020-11-02",
     "products": [
       "SharePoint",
       "Office"

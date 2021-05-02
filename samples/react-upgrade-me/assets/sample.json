@@ -8,8 +8,8 @@
     "longDescription": [
       "Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade."
     ],
-    "created": "2020-08-27",
-    "modified": "2020-08-27",
+    "creationDateTime": "2020-08-27",
+    "updateDateTime": "2020-08-27",
     "products": [
       "SharePoint",
       "Office"

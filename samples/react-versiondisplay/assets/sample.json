@@ -8,8 +8,8 @@
     "longDescription": [
       "This very simple sample demonstrates three different approaches to display the version number of your SharePoint solution in your web part."
     ],
-    "created": "2020-04-10",
-    "modified": "2020-04-10",
+    "creationDateTime": "2020-04-10",
+    "updateDateTime": "2020-04-10",
     "products": [
       "SharePoint",
       "Office"

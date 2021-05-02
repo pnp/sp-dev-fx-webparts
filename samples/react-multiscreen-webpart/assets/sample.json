@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample uses the popular React Router library to create tab, multi-screen or single page app (spa) experience in React SPFx web part. This is useful when the web part is more complex and to simplify the user experience multiple screens or tabs are needed. The same approach can be taken when a single page app (SPA) has to be migrated to modern SharePoint sites."
     ],
-    "created": "2019-07-03",
-    "modified": "2019-07-03",
+    "creationDateTime": "2019-07-03",
+    "updateDateTime": "2019-07-03",
     "products": [
       "SharePoint",
       "Office"

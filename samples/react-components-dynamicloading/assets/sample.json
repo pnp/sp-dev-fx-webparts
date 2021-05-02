@@ -8,8 +8,8 @@
     "longDescription": [
       "Load React components and third party packages on demand in SPFx"
     ],
-    "created": "2018-10-09",
-    "modified": "2018-10-09",
+    "creationDateTime": "2018-10-09",
+    "updateDateTime": "2018-10-09",
     "products": [
       "SharePoint",
       "Office"

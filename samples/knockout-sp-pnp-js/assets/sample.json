@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O."
     ],
-    "created": "2018-11-14",
-    "modified": "2018-11-14",
+    "creationDateTime": "2018-11-14",
+    "updateDateTime": "2018-11-14",
     "products": [
       "SharePoint",
       "Office"

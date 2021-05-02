@@ -8,8 +8,8 @@
     "longDescription": [
       "This is a modern web part built on the GA version of the SharePoint Framework demonstrating how to build a custom web part with a calendar capabilities in it."
     ],
-    "created": "2020-06-05",
-    "modified": "2020-06-05",
+    "creationDateTime": "2020-06-05",
+    "updateDateTime": "2020-06-05",
     "products": [
       "SharePoint",
       "Office"

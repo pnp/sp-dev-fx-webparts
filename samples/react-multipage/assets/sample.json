@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample SharePoint Framework client-side web parts built using React illustrating building multi-page web parts."
     ],
-    "created": "2017-05-01",
-    "modified": "2017-05-01",
+    "creationDateTime": "2017-05-01",
+    "updateDateTime": "2017-05-01",
     "products": [
       "SharePoint",
       "Office"

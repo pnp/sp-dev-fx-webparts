@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to use the webpack markdown-loader to preprocess markdown files to HTML string."
     ],
-    "created": "2017-01-25",
-    "modified": "2017-01-25",
+    "creationDateTime": "2017-01-25",
+    "updateDateTime": "2017-01-25",
     "products": [
       "SharePoint",
       "Office"

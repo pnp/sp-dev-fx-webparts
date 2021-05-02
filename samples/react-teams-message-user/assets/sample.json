@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph."
     ],
-    "created": "2021-02-28",
-    "modified": "2021-02-28",
+    "creationDateTime": "2021-02-28",
+    "updateDateTime": "2021-02-28",
     "products": [
       "SharePoint",
       "Office"

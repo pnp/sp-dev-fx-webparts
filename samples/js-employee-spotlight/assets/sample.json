@@ -8,8 +8,8 @@
     "longDescription": [
       "Simple Web Part that demonstrates the use of SharePoint Framework for showcasing Employee Spotlight. The web part pulls data from a configured list and User Profile service. The properties pane for this web part has 5 cascading dropdowns."
     ],
-    "created": "2017-06-12",
-    "modified": "2017-06-12",
+    "creationDateTime": "2017-06-12",
+    "updateDateTime": "2017-06-12",
     "products": [
       "SharePoint",
       "Office"

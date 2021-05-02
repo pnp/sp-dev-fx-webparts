@@ -8,8 +8,8 @@
     "longDescription": [
       "A simple Organisation Chart web part using Office UI Fabric, VueJS, REST API."
     ],
-    "created": "2019-06-11",
-    "modified": "2019-06-11",
+    "creationDateTime": "2019-06-11",
+    "updateDateTime": "2019-06-11",
     "products": [
       "SharePoint",
       "Office"

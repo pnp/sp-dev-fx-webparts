@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample SharePoint Framework client-side web part illustrating communication with SharePoint using elevated privileges through a custom Web API."
     ],
-    "created": "2016-10-12",
-    "modified": "2016-10-12",
+    "creationDateTime": "2016-10-12",
+    "updateDateTime": "2016-10-12",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart."
     ],
-    "created": "2021-02-28",
-    "modified": "2021-02-28",
+    "creationDateTime": "2021-02-28",
+    "updateDateTime": "2021-02-28",
     "products": [
       "SharePoint",
       "Office"

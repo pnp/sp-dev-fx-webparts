@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part lists all the automated Flows associated with a SharePoint List/ Library. Basic flow information like Flow Name, Flow Trigger, Flow shared Type and Flow URL are displayed."
     ],
-    "created": "2019-09-17",
-    "modified": "2019-09-17",
+    "creationDateTime": "2019-09-17",
+    "updateDateTime": "2019-09-17",
     "products": [
       "SharePoint",
       "Office"

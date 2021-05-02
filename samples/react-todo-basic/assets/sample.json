@@ -8,8 +8,8 @@
     "longDescription": [
       "A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts."
     ],
-    "created": "2017-05-04",
-    "modified": "2017-05-04",
+    "creationDateTime": "2017-05-04",
+    "updateDateTime": "2017-05-04",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how read and update a custom Schema extension in MS Graph. It shows how to create a custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update that data using an spfx web part."
     ],
-    "created": "2018-07-03",
-    "modified": "2018-07-03",
+    "creationDateTime": "2018-07-03",
+    "updateDateTime": "2018-07-03",
     "products": [
       "SharePoint",
       "Office"

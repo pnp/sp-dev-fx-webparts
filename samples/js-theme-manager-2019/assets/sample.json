@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample web part provides a user interface for applying a Modern Experience theme in SharePoint 2019 on-premises."
     ],
-    "created": "2019-06-17",
-    "modified": "2019-06-17",
+    "creationDateTime": "2019-06-17",
+    "updateDateTime": "2019-06-17",
     "products": [
       "SharePoint",
       "Office"

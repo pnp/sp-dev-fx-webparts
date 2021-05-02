@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample Web Parts illustrating performing SharePoint CRUD operations in React, Angular, JavaScript without any framework and using the @pnp/sp library."
     ],
-    "created": "2018-11-01",
-    "modified": "2018-11-01",
+    "creationDateTime": "2018-11-01",
+    "updateDateTime": "2018-11-01",
     "products": [
       "SharePoint",
       "Office"

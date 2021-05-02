@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection."
     ],
-    "created": "2021-01-05",
-    "modified": "2021-01-05",
+    "creationDateTime": "2021-01-05",
+    "updateDateTime": "2021-01-05",
     "products": [
       "SharePoint",
       "Office"

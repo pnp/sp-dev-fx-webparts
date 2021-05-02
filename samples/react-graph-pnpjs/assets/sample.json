@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part demonstrates how to use PnPJS with SharePoint Framework and how to query Microsoft Graph with PnPJS. It requests a list of Azure AD groups at your tenant and shows them using Office UI Fabric React list."
     ],
-    "created": "2019-01-09",
-    "modified": "2019-01-09",
+    "creationDateTime": "2019-01-09",
+    "updateDateTime": "2019-01-09",
     "products": [
       "SharePoint",
       "Office"

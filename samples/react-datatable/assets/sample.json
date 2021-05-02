@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features."
     ],
-    "created": "2021-03-01",
-    "modified": "2021-04-10",
+    "creationDateTime": "2021-03-01",
+    "updateDateTime": "2021-04-10",
     "products": [
       "SharePoint",
       "Office"

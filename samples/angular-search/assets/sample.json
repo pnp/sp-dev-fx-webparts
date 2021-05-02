@@ -8,8 +8,8 @@
     "longDescription": [
       "This is a sample search web part that illustrates how you can use Angular within the new SharePoint Framework"
     ],
-    "created": "2017-02-04",
-    "modified": "2017-02-04",
+    "creationDateTime": "2017-02-04",
+    "updateDateTime": "2017-02-04",
     "products": [
       "SharePoint",
       "Office"

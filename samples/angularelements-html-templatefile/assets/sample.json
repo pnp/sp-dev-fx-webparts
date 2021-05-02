@@ -8,8 +8,8 @@
     "longDescription": [
       "A sample web part illustrating how to use Angular Elements in the SharePoint Framework with the help of separate template HTML File."
     ],
-    "created": "2019-01-08",
-    "modified": "2019-01-08",
+    "creationDateTime": "2019-01-08",
+    "updateDateTime": "2019-01-08",
     "products": [
       "SharePoint",
       "Office"

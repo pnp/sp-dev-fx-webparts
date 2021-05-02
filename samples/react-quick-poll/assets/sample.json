@@ -8,8 +8,8 @@
     "longDescription": [
       "This component is developed for the users who really need to create a Poll within a minute and with less maintenance."
     ],
-    "created": "2020-10-17",
-    "modified": "2020-10-17",
+    "creationDateTime": "2020-10-17",
+    "updateDateTime": "2020-10-17",
     "products": [
       "SharePoint",
       "Office"

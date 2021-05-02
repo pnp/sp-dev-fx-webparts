@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part allows tenant administrators to manage site designs through a graphical interface."
     ],
-    "created": "2019-04-08",
-    "modified": "2019-04-08",
+    "creationDateTime": "2019-04-08",
+    "updateDateTime": "2019-04-08",
     "products": [
       "SharePoint",
       "Office"

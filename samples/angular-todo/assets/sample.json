@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample Web Part illustrating using Angular with the SharePoint Framework."
     ],
-    "created": "2017-03-10",
-    "modified": "2017-03-10",
+    "creationDateTime": "2017-03-10",
+    "updateDateTime": "2017-03-10",
     "products": [
       "SharePoint",
       "Office"

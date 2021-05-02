@@ -8,8 +8,8 @@
     "longDescription": [
       "React-securitygrid is an SPFX web part that uses React and Office-UI-Fabric to render a grid showing which users have access to which lists/libraries/folders/files on a Web"
     ],
-    "created": "2021-03-06",
-    "modified": "2021-03-06",
+    "creationDateTime": "2021-03-06",
+    "updateDateTime": "2021-03-06",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "A RSS Reader original based on work completed by Olivier Carpentier\u0027s"
     ],
-    "created": "2020-11-22",
-    "modified": "2020-11-22",
+    "creationDateTime": "2020-11-22",
+    "updateDateTime": "2020-11-22",
     "products": [
       "SharePoint",
       "Office"

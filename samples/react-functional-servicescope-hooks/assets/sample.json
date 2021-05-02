@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components."
     ],
-    "created": "2020-03-25",
-    "modified": "2020-03-25",
+    "creationDateTime": "2020-03-25",
+    "updateDateTime": "2020-03-25",
     "products": [
       "SharePoint",
       "Office"

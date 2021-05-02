@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation."
     ],
-    "created": "2020-04-30",
-    "modified": "2020-04-30",
+    "creationDateTime": "2020-04-30",
+    "updateDateTime": "2020-04-30",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample uses the popular Jest Testing Framework with a SPFx client side solution. It is a SPFx-Jest-Enzyme-Sinon starter kit so you can start writing and debugging unit tests in typescript for your SPFx solution. The setup includes unit tests examples, code coverage reports in different formats, visual studio code unit test debug configurations for typescript, setting a coverage threshold (gates) for continuous integration and continuous deployment scenarios."
     ],
-    "created": "2019-06-23",
-    "modified": "2019-06-23",
+    "creationDateTime": "2019-06-23",
+    "updateDateTime": "2019-06-23",
     "products": [
       "SharePoint",
       "Office"

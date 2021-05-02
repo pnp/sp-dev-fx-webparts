@@ -8,8 +8,8 @@
     "longDescription": [
       "A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel"
     ],
-    "created": "2016-12-31",
-    "modified": "2016-12-31",
+    "creationDateTime": "2016-12-31",
+    "updateDateTime": "2016-12-31",
     "products": [
       "SharePoint",
       "Office"

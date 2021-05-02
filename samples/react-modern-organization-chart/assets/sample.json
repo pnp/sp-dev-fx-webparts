@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part show organization chart for current user, shows, managers and direct reports and there available status."
     ],
-    "created": "2020-07-09",
-    "modified": "2020-07-09",
+    "creationDateTime": "2020-07-09",
+    "updateDateTime": "2020-07-09",
     "products": [
       "SharePoint",
       "Office"

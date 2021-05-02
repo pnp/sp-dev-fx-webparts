@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web parts allowing to add sections navigation to the SharePoint page."
     ],
-    "created": "2019-03-22",
-    "modified": "2019-03-22",
+    "creationDateTime": "2019-03-22",
+    "updateDateTime": "2019-03-22",
     "products": [
       "SharePoint",
       "Office"

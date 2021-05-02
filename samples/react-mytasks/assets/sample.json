@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part allows user to manage planner tasks in SharePoint Site. The UI was inspired on Planner UI, it is full implemented with Office-UI-Fabric Components. Use MSGraph API\u0027s and PnPjs to data access. The user can search task by name, can filter by progress status, all data are dynamic updated on change.."
     ],
-    "created": "2020-09-09",
-    "modified": "2020-09-09",
+    "creationDateTime": "2020-09-09",
+    "updateDateTime": "2020-09-09",
     "products": [
       "SharePoint",
       "Office"

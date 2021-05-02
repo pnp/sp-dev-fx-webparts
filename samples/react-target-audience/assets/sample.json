@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site."
     ],
-    "created": "2020-01-28",
-    "modified": "2020-01-28",
+    "creationDateTime": "2020-01-28",
+    "updateDateTime": "2020-01-28",
     "products": [
       "SharePoint",
       "Office"

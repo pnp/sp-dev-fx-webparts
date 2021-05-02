@@ -8,8 +8,8 @@
     "longDescription": [
       "Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs."
     ],
-    "created": "2020-09-02",
-    "modified": "2020-09-02",
+    "creationDateTime": "2020-09-02",
+    "updateDateTime": "2020-09-02",
     "products": [
       "SharePoint",
       "Office"

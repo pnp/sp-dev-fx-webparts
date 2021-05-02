@@ -8,8 +8,8 @@
     "longDescription": [
       "The web part illustrates how to get all the web part present in the current page, bind them in a multi-select dropdown."
     ],
-    "created": "2020-06-13",
-    "modified": "2020-06-13",
+    "creationDateTime": "2020-06-13",
+    "updateDateTime": "2020-06-13",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover."
     ],
-    "created": "2020-07-31",
-    "modified": "2020-07-31",
+    "creationDateTime": "2020-07-31",
+    "updateDateTime": "2020-07-31",
     "products": [
       "SharePoint",
       "Office"

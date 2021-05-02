@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part."
     ],
-    "created": "2020-07-16",
-    "modified": "2020-07-16",
+    "creationDateTime": "2020-07-16",
+    "updateDateTime": "2020-07-16",
     "products": [
       "SharePoint",
       "Office"

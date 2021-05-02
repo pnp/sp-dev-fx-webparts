@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web part to display PnP ListView control with column rendering using PnP Field Controls."
     ],
-    "created": "2020-03-10",
-    "modified": "2020-03-10",
+    "creationDateTime": "2020-03-10",
+    "updateDateTime": "2020-03-10",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample Web Part illustrating Reading taxonomy term stores\u0027 hierarchy from SharePoint, Loading JavaScript Object Model scripts, creating Knockout components"
     ],
-    "created": "2017-05-05",
-    "modified": "2017-05-05",
+    "creationDateTime": "2017-05-05",
+    "updateDateTime": "2017-05-05",
     "products": [
       "SharePoint",
       "Office"

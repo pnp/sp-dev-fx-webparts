@@ -8,8 +8,8 @@
     "longDescription": [
       "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments."
     ],
-    "created": "2020-02-05",
-    "modified": "2020-02-05",
+    "creationDateTime": "2020-02-05",
+    "updateDateTime": "2020-02-05",
     "products": [
       "SharePoint",
       "Office"

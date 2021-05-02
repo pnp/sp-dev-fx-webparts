@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API"
     ],
-    "created": "2020-10-30",
-    "modified": "2020-10-30",
+    "creationDateTime": "2020-10-30",
+    "updateDateTime": "2020-10-30",
     "products": [
       "SharePoint",
       "Office"

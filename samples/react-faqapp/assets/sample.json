@@ -8,8 +8,8 @@
     "longDescription": [
       "Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages."
     ],
-    "created": "2020-10-28",
-    "modified": "2020-10-28",
+    "creationDateTime": "2020-10-28",
+    "updateDateTime": "2020-10-28",
     "products": [
       "SharePoint",
       "Office"

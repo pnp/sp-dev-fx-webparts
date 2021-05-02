@@ -8,8 +8,8 @@
     "longDescription": [
       "SharePoint client-side development tools use gulp as the build process task runner to..."
     ],
-    "created": "2017-01-25",
-    "modified": "2017-01-25",
+    "creationDateTime": "2017-01-25",
+    "updateDateTime": "2017-01-25",
     "products": [
       "SharePoint",
       "Office"

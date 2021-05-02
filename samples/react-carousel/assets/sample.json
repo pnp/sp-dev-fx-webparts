@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part show images and videos in carousel"
     ],
-    "created": "2020-10-31",
-    "modified": "2020-10-31",
+    "creationDateTime": "2020-10-31",
+    "updateDateTime": "2020-10-31",
     "products": [
       "SharePoint",
       "Office"

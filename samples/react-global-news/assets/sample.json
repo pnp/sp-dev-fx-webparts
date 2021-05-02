@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites around the world."
     ],
-    "created": "2020-04-14",
-    "modified": "2020-04-14",
+    "creationDateTime": "2020-04-14",
+    "updateDateTime": "2020-04-14",
     "products": [
       "SharePoint",
       "Office"

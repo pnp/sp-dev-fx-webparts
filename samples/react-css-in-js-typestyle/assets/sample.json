@@ -8,8 +8,8 @@
     "longDescription": [
       "The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library."
     ],
-    "created": "2020-04-24",
-    "modified": "2020-04-24",
+    "creationDateTime": "2020-04-24",
+    "updateDateTime": "2020-04-24",
     "products": [
       "SharePoint",
       "Office"

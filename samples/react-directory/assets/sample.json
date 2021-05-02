@@ -8,8 +8,8 @@
     "longDescription": [
       "Search People from Organization Directory and show live persona card on hover."
     ],
-    "created": "2021-03-04",
-    "modified": "2021-03-04",
+    "creationDateTime": "2021-03-04",
+    "updateDateTime": "2021-03-04",
     "products": [
       "SharePoint",
       "Office"

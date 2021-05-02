@@ -8,8 +8,8 @@
     "longDescription": [
       "The web part lets you manage your Azure AD applications that have the Sites Selected Api permission. With this web part you\u0027ll get an UI for managing what app can connect to which site."
     ],
-    "created": "2021-03-08",
-    "modified": "2021-03-08",
+    "creationDateTime": "2021-03-08",
+    "updateDateTime": "2021-03-08",
     "products": [
       "SharePoint",
       "Office"

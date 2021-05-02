@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample To Do Web Part built with Angular2. This sample illustrates how you can use Angular2 with the SharePoint Framework."
     ],
-    "created": "2017-01-20",
-    "modified": "2017-01-20",
+    "creationDateTime": "2017-01-20",
+    "updateDateTime": "2017-01-20",
     "products": [
       "SharePoint",
       "Office"

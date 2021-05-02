@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample describe a SPFX application which retrieves an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph."
     ],
-    "created": "2019-04-09",
-    "modified": "2019-04-09",
+    "creationDateTime": "2019-04-09",
+    "updateDateTime": "2019-04-09",
     "products": [
       "SharePoint",
       "Office"

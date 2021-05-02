@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample SharePoint Framework web parts built using React illustrating the possibility to use Graph API to invite external users into the Azure Active Directory."
     ],
-    "created": "2017-10-09",
-    "modified": "2017-10-09",
+    "creationDateTime": "2017-10-09",
+    "updateDateTime": "2017-10-09",
     "products": [
       "SharePoint",
       "Office"

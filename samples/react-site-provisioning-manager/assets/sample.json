@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how you can manage site provisioning by calling Azure functions."
     ],
-    "created": "2019-08-14",
-    "modified": "2019-08-14",
+    "creationDateTime": "2019-08-14",
+    "updateDateTime": "2019-08-14",
     "products": [
       "SharePoint",
       "Office"

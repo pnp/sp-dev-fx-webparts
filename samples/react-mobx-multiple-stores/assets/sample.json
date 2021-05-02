@@ -8,8 +8,8 @@
     "longDescription": [
       "A sample web part that uses the Mobx library with multiple stores to keep track of the applications state."
     ],
-    "created": "2019-05-24",
-    "modified": "2019-05-24",
+    "creationDateTime": "2019-05-24",
+    "updateDateTime": "2019-05-24",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample demonstrates how to use the UCWA JS Sdk for skype in the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the documentation"
     ],
-    "created": "2019-03-27",
-    "modified": "2019-03-27",
+    "creationDateTime": "2019-03-27",
+    "updateDateTime": "2019-03-27",
     "products": [
       "SharePoint",
       "Office"

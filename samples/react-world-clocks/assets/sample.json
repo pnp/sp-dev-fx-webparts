@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample is extension of the single World time clock sample that was provided in SP Starter Kit."
     ],
-    "created": "2020-09-26",
-    "modified": "2020-09-26",
+    "creationDateTime": "2020-09-26",
+    "updateDateTime": "2020-09-26",
     "products": [
       "SharePoint",
       "Office"

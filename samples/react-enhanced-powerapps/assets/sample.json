@@ -8,8 +8,8 @@
     "longDescription": [
       "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps"
     ],
-    "created": "2020-07-26",
-    "modified": "2020-07-26",
+    "creationDateTime": "2020-07-26",
+    "updateDateTime": "2020-07-26",
     "products": [
       "SharePoint",
       "Office"

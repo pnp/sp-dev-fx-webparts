@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample contains a class that evaluates the url input of a text field against the Microsoft Graph."
     ],
-    "created": "2018-04-15",
-    "modified": "2018-04-15",
+    "creationDateTime": "2018-04-15",
+    "updateDateTime": "2018-04-15",
     "products": [
       "SharePoint",
       "Office"

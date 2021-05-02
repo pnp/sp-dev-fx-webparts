@@ -8,8 +8,8 @@
     "longDescription": [
       "This is sample web part to showcase how to open webcam and take photo in SPFx web part."
     ],
-    "created": "2019-09-05",
-    "modified": "2019-09-05",
+    "creationDateTime": "2019-09-05",
+    "updateDateTime": "2019-09-05",
     "products": [
       "SharePoint",
       "Office"

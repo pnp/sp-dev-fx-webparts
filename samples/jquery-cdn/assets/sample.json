@@ -8,8 +8,8 @@
     "longDescription": [
       "This is a sample web Part that illustrates the use of jQuery and its plugins loaded from CDN for building SharePoint Framework client-side web parts."
     ],
-    "created": "2016-09-16",
-    "modified": "2016-09-16",
+    "creationDateTime": "2016-09-16",
+    "updateDateTime": "2016-09-16",
     "products": [
       "SharePoint",
       "Office"

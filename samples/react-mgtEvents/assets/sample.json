@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to use Microsoft Graph Toolkit in SPFx and custom with Fluent UI Fabric Controls"
     ],
-    "created": "2020-11-29",
-    "modified": "2020-11-29",
+    "creationDateTime": "2020-11-29",
+    "updateDateTime": "2020-11-29",
     "products": [
       "SharePoint",
       "Office"

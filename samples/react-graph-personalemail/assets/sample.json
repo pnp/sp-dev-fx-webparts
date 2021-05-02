@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph."
     ],
-    "created": "2018-10-03",
-    "modified": "2018-10-03",
+    "creationDateTime": "2018-10-03",
+    "updateDateTime": "2018-10-03",
     "products": [
       "SharePoint",
       "Office"

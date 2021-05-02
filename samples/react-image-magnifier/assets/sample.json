@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part allow to magnify an image, displaying a resolution more detailed through a lens."
     ],
-    "created": "2017-09-17",
-    "modified": "2017-09-17",
+    "creationDateTime": "2017-09-17",
+    "updateDateTime": "2017-09-17",
     "products": [
       "SharePoint",
       "Office"

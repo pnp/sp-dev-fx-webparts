@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part demonstrates how to leverage the capabilities of SharePoint Webhooks. The libraries used by this web part are Socket.io, sp pnp js, moment."
     ],
-    "created": "2017-10-29",
-    "modified": "2017-10-29",
+    "creationDateTime": "2017-10-29",
+    "updateDateTime": "2017-10-29",
     "products": [
       "SharePoint",
       "Office"

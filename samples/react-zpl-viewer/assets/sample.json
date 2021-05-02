@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part will allow a user to select a text file contatining zpl which is used to generate an image using the labelary web service to render the zpl and return the image."
     ],
-    "created": "2020-02-13",
-    "modified": "2020-02-13",
+    "creationDateTime": "2020-02-13",
+    "updateDateTime": "2020-02-13",
     "products": [
       "SharePoint",
       "Office"

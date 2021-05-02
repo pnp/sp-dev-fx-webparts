@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let\u00B4s say this is similar to the OOTB \u0022Flag\u0022 action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it."
     ],
-    "created": "2020-10-16",
-    "modified": "2020-10-16",
+    "creationDateTime": "2020-10-16",
+    "updateDateTime": "2020-10-16",
     "products": [
       "SharePoint",
       "Office"

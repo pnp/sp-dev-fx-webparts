@@ -8,8 +8,8 @@
     "longDescription": [
       "Demonstrates how you can store Teams Personal App Web Part\u0027s properties in user\u0027s OneDrive."
     ],
-    "created": "2020-04-24",
-    "modified": "2020-04-24",
+    "creationDateTime": "2020-04-24",
+    "updateDateTime": "2020-04-24",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "The web part illustrates creation and usage of Side Panel (Sidebar) control."
     ],
-    "created": "2017-05-11",
-    "modified": "2017-05-11",
+    "creationDateTime": "2017-05-11",
+    "updateDateTime": "2017-05-11",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list."
     ],
-    "created": "2020-06-15",
-    "modified": "2020-06-15",
+    "creationDateTime": "2020-06-15",
+    "updateDateTime": "2020-06-15",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish\u2013subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha."
     ],
-    "created": "2018-12-10",
-    "modified": "2018-12-10",
+    "creationDateTime": "2018-12-10",
+    "updateDateTime": "2018-12-10",
     "products": [
       "SharePoint",
       "Office"

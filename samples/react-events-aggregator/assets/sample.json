@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it."
     ],
-    "created": "2018-11-18",
-    "modified": "2018-11-18",
+    "creationDateTime": "2018-11-18",
+    "updateDateTime": "2018-11-18",
     "products": [
       "SharePoint",
       "Office"

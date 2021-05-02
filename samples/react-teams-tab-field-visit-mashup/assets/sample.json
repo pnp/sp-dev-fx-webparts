@@ -8,8 +8,8 @@
     "longDescription": [
       "A web part for use in Microsoft Teams that displays a mashup of information partaining to customer visits."
     ],
-    "created": "2019-04-20",
-    "modified": "2019-04-20",
+    "creationDateTime": "2019-04-20",
+    "updateDateTime": "2019-04-20",
     "products": [
       "SharePoint",
       "Office"

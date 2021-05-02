@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to consume Dynamics CRM API using AadTokenProvider class."
     ],
-    "created": "2020-07-12",
-    "modified": "2020-07-12",
+    "creationDateTime": "2020-07-12",
+    "updateDateTime": "2020-07-12",
     "products": [
       "SharePoint",
       "Office"

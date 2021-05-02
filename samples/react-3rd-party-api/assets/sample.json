@@ -8,8 +8,8 @@
     "longDescription": [
       "This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework."
     ],
-    "created": "2018-02-19",
-    "modified": "2018-02-19",
+    "creationDateTime": "2018-02-19",
+    "updateDateTime": "2018-02-19",
     "products": [
       "SharePoint",
       "Office"

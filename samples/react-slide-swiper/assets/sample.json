@@ -8,8 +8,8 @@
     "longDescription": [
       "This SPFx React web part sample demonstrates mobile touch slide swiper. By default the swiper web part is responsive, has cross device and browser touch support and uses paging, but additional features like navigation, autoplay, loop of the slides and more can be enabled from the web part properties panel. The swiper web part can be used as carousel as well. The slides or cards template can easily be customized. The SPFx React swiper client side solution can easly be extended with more swiper, carousel like features because it is based on a popular feature rich JavaScript library called Swiper."
     ],
-    "created": "2019-11-01",
-    "modified": "2019-11-01",
+    "creationDateTime": "2019-11-01",
+    "updateDateTime": "2019-11-01",
     "products": [
       "SharePoint",
       "Office"

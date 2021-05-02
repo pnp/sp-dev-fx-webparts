@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web part with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The web part uses the Taxonomy API support available in the @pnp/taxonomy."
     ],
-    "created": "2018-07-20",
-    "modified": "2018-07-20",
+    "creationDateTime": "2018-07-20",
+    "updateDateTime": "2018-07-20",
     "products": [
       "SharePoint",
       "Office"

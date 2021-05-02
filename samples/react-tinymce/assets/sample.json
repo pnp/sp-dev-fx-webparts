@@ -8,8 +8,8 @@
     "longDescription": [
       "React TinyMCE is one of the worlds most popular editors for the web. It has many features out of the box and many more plugins that can be added when needed. You can create your own plugins if you want, the editor is powered by the communitiy."
     ],
-    "created": "2018-02-01",
-    "modified": "2018-02-01",
+    "creationDateTime": "2018-02-01",
+    "updateDateTime": "2018-02-01",
     "products": [
       "SharePoint",
       "Office"

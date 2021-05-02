@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows you how to implement real time web parts using the SPFx, Azure Logic Apps, Node.js and socket.io."
     ],
-    "created": "2016-11-04",
-    "modified": "2016-11-04",
+    "creationDateTime": "2016-11-04",
+    "updateDateTime": "2016-11-04",
     "products": [
       "SharePoint",
       "Office"

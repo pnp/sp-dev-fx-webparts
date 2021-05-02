@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon. This sample also includes RXJS DebounceTime, this feature allows you to wait for a certain amount of time before make requests to the server while user is typing to prevent to make requests for each character."
     ],
-    "created": "2019-03-25",
-    "modified": "2019-03-25",
+    "creationDateTime": "2019-03-25",
+    "updateDateTime": "2019-03-25",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample SharePoint Framework client-side web part embedding a PowerBI report using PowerBI Embedded without any server-side code."
     ],
-    "created": "2016-09-13",
-    "modified": "2016-09-13",
+    "creationDateTime": "2016-09-13",
+    "updateDateTime": "2016-09-13",
     "products": [
       "SharePoint",
       "Office"

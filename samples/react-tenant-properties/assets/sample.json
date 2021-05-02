@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part allows tenant administrators to manage tenant properties through a graphical interface. We can create, edit or delete tenant properties."
     ],
-    "created": "2020-10-20",
-    "modified": "2020-10-20",
+    "creationDateTime": "2020-10-20",
+    "updateDateTime": "2020-10-20",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part demonstrates building a React functional component that uses data from a remote service, in this case the Microsoft Graph, using the recently introduced React Hooks feature. The example web part renders a list of the user\u0027s Teams and, optionally, the channels in each Team."
     ],
-    "created": "2019-06-14",
-    "modified": "2019-06-14",
+    "creationDateTime": "2019-06-14",
+    "updateDateTime": "2019-06-14",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to managed Microsoft Graph Open Extension in SPFX. This application uses User Resource to create Open Extension."
     ],
-    "created": "2019-10-20",
-    "modified": "2019-10-20",
+    "creationDateTime": "2019-10-20",
+    "updateDateTime": "2019-10-20",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how Yammer REST APIs can be consumed by using SharePoint Framework React web part and the Yammer JavaScript SDK. The SPFx web part contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience."
     ],
-    "created": "2017-04-19",
-    "modified": "2017-04-19",
+    "creationDateTime": "2017-04-19",
+    "updateDateTime": "2017-04-19",
     "products": [
       "SharePoint",
       "Office"

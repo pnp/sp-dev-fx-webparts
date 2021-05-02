@@ -14,8 +14,8 @@
       "- Support for currency",
       "- Improved support for dates"
     ],
-    "created": "2021-03-30",
-    "modified": "2021-03-30",
+    "creationDateTime": "2021-03-30",
+    "updateDateTime": "2021-03-30",
     "products": [
       "SharePoint",
       "Office"

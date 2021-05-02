@@ -8,8 +8,8 @@
     "longDescription": [
       "A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx)."
     ],
-    "created": "2017-04-14",
-    "modified": "2017-04-14",
+    "creationDateTime": "2017-04-14",
+    "updateDateTime": "2017-04-14",
     "products": [
       "SharePoint",
       "Office"

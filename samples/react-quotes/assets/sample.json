@@ -8,8 +8,8 @@
     "longDescription": [
       "This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane."
     ],
-    "created": "2019-11-11",
-    "modified": "2019-11-11",
+    "creationDateTime": "2019-11-11",
+    "updateDateTime": "2019-11-11",
     "products": [
       "SharePoint",
       "Office"

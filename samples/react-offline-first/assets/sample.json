@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample SharePoint Framework Client-Side Web Parts built using React showing interacting with the Office Graph."
     ],
-    "created": "2017-05-31",
-    "modified": "2017-05-31",
+    "creationDateTime": "2017-05-31",
+    "updateDateTime": "2017-05-31",
     "products": [
       "SharePoint",
       "Office"

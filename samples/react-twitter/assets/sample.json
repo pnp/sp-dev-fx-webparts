@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web part to display Twitter timeline."
     ],
-    "created": "2020-01-20",
-    "modified": "2020-01-20",
+    "creationDateTime": "2020-01-20",
+    "updateDateTime": "2020-01-20",
     "products": [
       "SharePoint",
       "Office"

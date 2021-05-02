@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample demonstrates integration of Google Fit information with SharePoint Framework. The Google Fitness REST APIs allows developers to extend it further and create their own dashboards. Google Fitness REST APIs are useful if you have fitness app and you want to integrate your data with google fit or if you just want to collect Fitness data and display some information to the users. This web part helps to display the key fitness information (activity time spent, distance travelled, calories burned, step count) from the Google fit data source."
     ],
-    "created": "2019-01-14",
-    "modified": "2019-01-14",
+    "creationDateTime": "2019-01-14",
+    "updateDateTime": "2019-01-14",
     "products": [
       "SharePoint",
       "Office"

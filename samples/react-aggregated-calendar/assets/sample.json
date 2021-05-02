@@ -8,8 +8,8 @@
     "longDescription": [
       "This is a sample web part developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io"
     ],
-    "created": "2018-07-16",
-    "modified": "2018-07-16",
+    "creationDateTime": "2018-07-16",
+    "updateDateTime": "2018-07-16",
     "products": [
       "SharePoint",
       "Office"

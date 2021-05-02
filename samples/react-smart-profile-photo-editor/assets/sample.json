@@ -8,8 +8,8 @@
     "longDescription": [
       "Uses Azure Cognitive Services to analyze and approve or reject user-submitted photos."
     ],
-    "created": "2020-08-12",
-    "modified": "2020-08-12",
+    "creationDateTime": "2020-08-12",
+    "updateDateTime": "2020-08-12",
     "products": [
       "SharePoint",
       "Office"

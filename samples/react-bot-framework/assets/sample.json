@@ -8,8 +8,8 @@
     "longDescription": [
       "A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes."
     ],
-    "created": "2020-04-15",
-    "modified": "2020-04-15",
+    "creationDateTime": "2020-04-15",
+    "updateDateTime": "2020-04-15",
     "products": [
       "SharePoint",
       "Office"

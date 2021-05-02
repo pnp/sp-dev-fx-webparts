@@ -8,8 +8,8 @@
     "longDescription": [
       "The web part illustrates usage of MS Graph beta APIs to work with Teams"
     ],
-    "created": "2018-11-19",
-    "modified": "2018-11-19",
+    "creationDateTime": "2018-11-19",
+    "updateDateTime": "2018-11-19",
     "products": [
       "SharePoint",
       "Office"

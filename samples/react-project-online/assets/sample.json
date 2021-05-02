@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to use SPFx to consume data from the Project Online REST API."
     ],
-    "created": "2020-04-12",
-    "modified": "2020-04-12",
+    "creationDateTime": "2020-04-12",
+    "updateDateTime": "2020-04-12",
     "products": [
       "SharePoint",
       "Office"

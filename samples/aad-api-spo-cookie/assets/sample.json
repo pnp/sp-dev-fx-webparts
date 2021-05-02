@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample SharePoint Framework client-side web part showing how to access a custom API secured with Azure Active Directory (AAD) without using ADAL JS."
     ],
-    "created": "2017-05-05",
-    "modified": "2017-05-05",
+    "creationDateTime": "2017-05-05",
+    "updateDateTime": "2017-05-05",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents."
     ],
-    "created": "2021-02-18",
-    "modified": "2021-02-18",
+    "creationDateTime": "2021-02-18",
+    "updateDateTime": "2021-02-18",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part."
     ],
-    "created": "2019-03-20",
-    "modified": "2019-03-20",
+    "creationDateTime": "2019-03-20",
+    "updateDateTime": "2019-03-20",
     "products": [
       "SharePoint",
       "Office"

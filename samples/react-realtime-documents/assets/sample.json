@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web part illustrating using the SharePoint Framework List subscription capability, which allows you to get notified of changes to documents in a SharePoint Document Library and refresh the displayed data."
     ],
-    "created": "2018-11-09",
-    "modified": "2018-11-09",
+    "creationDateTime": "2018-11-09",
+    "updateDateTime": "2018-11-09",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part demonstrates building a React functional component that includes state, using the recently introduced React Hooks feature. The example web part renders a number to Roman numerals conversion tool."
     ],
-    "created": "2019-06-05",
-    "modified": "2019-06-05",
+    "creationDateTime": "2019-06-05",
+    "updateDateTime": "2019-06-05",
     "products": [
       "SharePoint",
       "Office"

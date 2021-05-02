@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part show images and videos in responsive grid, on click it show images and videos in a carousel view."
     ],
-    "created": "2020-07-19",
-    "modified": "2020-07-19",
+    "creationDateTime": "2020-07-19",
+    "updateDateTime": "2020-07-19",
     "products": [
       "SharePoint",
       "Office"

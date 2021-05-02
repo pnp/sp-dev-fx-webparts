@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web part implementation that uses Redux to keep track of its state."
     ],
-    "created": "2016-10-28",
-    "modified": "2016-10-28",
+    "creationDateTime": "2016-10-28",
+    "updateDateTime": "2016-10-28",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part shows the current user\u0027s colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card."
     ],
-    "created": "2021-03-09",
-    "modified": "2021-04-14",
+    "creationDateTime": "2021-03-09",
+    "updateDateTime": "2021-04-14",
     "products": [
       "SharePoint",
       "Office"

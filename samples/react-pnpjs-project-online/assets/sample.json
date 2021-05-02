@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept."
     ],
-    "created": "2019-12-04",
-    "modified": "2019-12-04",
+    "creationDateTime": "2019-12-04",
+    "updateDateTime": "2019-12-04",
     "products": [
       "SharePoint",
       "Office"

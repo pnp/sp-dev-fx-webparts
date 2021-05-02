@@ -8,8 +8,8 @@
     "longDescription": [
       "Solution provides an enhancement to SitePages library that enables updating existing items with metadata, and a rollup Web Part to display them."
     ],
-    "created": "2018-04-17",
-    "modified": "2018-04-17",
+    "creationDateTime": "2018-04-17",
+    "updateDateTime": "2018-04-17",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "The web part pulls in the current user\u0027s name and displays it on the page. The greeting text before the name is customizable through the property pane. Additionally the position of the greeting and color of the text can be adjusted through the property pane as well."
     ],
-    "created": "2020-10-18",
-    "modified": "2020-10-18",
+    "creationDateTime": "2020-10-18",
+    "updateDateTime": "2020-10-18",
     "products": [
       "SharePoint",
       "Office"

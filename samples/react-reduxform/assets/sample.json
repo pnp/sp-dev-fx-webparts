@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample web part to demonstrate the use of Redux-Form library with SPFx, React and Typescript. Demonstrates how to easily build a dynamic grid using redux-form."
     ],
-    "created": "2018-05-02",
-    "modified": "2018-05-02",
+    "creationDateTime": "2018-05-02",
+    "updateDateTime": "2018-05-02",
     "products": [
       "SharePoint",
       "Office"

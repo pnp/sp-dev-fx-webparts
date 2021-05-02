@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part uses the Chart.js library to visualize SharePoint list data."
     ],
-    "created": "2020-07-30",
-    "modified": "2020-07-30",
+    "creationDateTime": "2020-07-30",
+    "updateDateTime": "2020-07-30",
     "products": [
       "SharePoint",
       "Office"

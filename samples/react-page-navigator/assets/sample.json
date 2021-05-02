@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component."
     ],
-    "created": "2019-09-05",
-    "modified": "2019-09-05",
+    "creationDateTime": "2019-09-05",
+    "updateDateTime": "2019-09-05",
     "products": [
       "SharePoint",
       "Office"

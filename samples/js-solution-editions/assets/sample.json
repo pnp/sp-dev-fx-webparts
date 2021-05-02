@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows possible approach of handling multiple editions (e.g. trial, lite, full) of SharePoint Framework solution."
     ],
-    "created": "2017-08-23",
-    "modified": "2017-08-23",
+    "creationDateTime": "2017-08-23",
+    "updateDateTime": "2017-08-23",
     "products": [
       "SharePoint",
       "Office"

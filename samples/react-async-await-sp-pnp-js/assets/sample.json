@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part demonstrates how to use PnPJS with Async functions into the SharePoint Framework as well as integrating PnP JS and SPFx Logging systems. Real example querying SharePoint library to show document sizes."
     ],
-    "created": "2018-07-20",
-    "modified": "2018-07-20",
+    "creationDateTime": "2018-07-20",
+    "updateDateTime": "2018-07-20",
     "products": [
       "SharePoint",
       "Office"

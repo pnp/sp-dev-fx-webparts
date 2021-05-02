@@ -8,8 +8,8 @@
     "longDescription": [
       "Sample SharePoint Framework client-side web part illustrating communication with a custom Web API secured with Azure Active Directory."
     ],
-    "created": "2016-10-10",
-    "modified": "2016-10-10",
+    "creationDateTime": "2016-10-10",
+    "updateDateTime": "2016-10-10",
     "products": [
       "SharePoint",
       "Office"

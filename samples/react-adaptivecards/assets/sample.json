@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications."
     ],
-    "created": "2021-02-23",
-    "modified": "2021-02-23",
+    "creationDateTime": "2021-02-23",
+    "updateDateTime": "2021-02-23",
     "products": [
       "SharePoint",
       "Office"

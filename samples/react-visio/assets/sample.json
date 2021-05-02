@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it."
     ],
-    "created": "2020-08-25",
-    "modified": "2020-08-25",
+    "creationDateTime": "2020-08-25",
+    "updateDateTime": "2020-08-25",
     "products": [
       "SharePoint",
       "Office"

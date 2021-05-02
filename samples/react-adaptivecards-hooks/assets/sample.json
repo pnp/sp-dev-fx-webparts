@@ -8,8 +8,8 @@
     "longDescription": [
       "A version of react-adaptivecards using React Hooks."
     ],
-    "created": "2020-08-25",
-    "modified": "2020-08-25",
+    "creationDateTime": "2020-08-25",
+    "updateDateTime": "2020-08-25",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to secure your conversation including the use of a Direct Line token instead of secret, for user id, generate it inside client side and detect if the client has changed the user ID and reject the change."
     ],
-    "created": "2020-11-06",
-    "modified": "2020-11-06",
+    "creationDateTime": "2020-11-06",
+    "updateDateTime": "2020-11-06",
     "products": [
       "SharePoint",
       "Office"

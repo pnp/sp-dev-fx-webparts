@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how AppSettings.ts file can be added and used within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects. That allows better DevOps and continuous integration (CI/CD) automation. The AppSettings.ts is transpiled/compiled with your SPFx solution which differs from the way the web.config. With .Net web.config file we would be able to update independently without the need of compiling DLLs. If that behavior is required, you can store your app settings in a SharePoint list and change them from there. However, that will have performance degradation over if the setting was part of the SPFx code where the logic can get a setting value in milliseconds."
     ],
-    "created": "2019-03-03",
-    "modified": "2019-03-03",
+    "creationDateTime": "2019-03-03",
+    "updateDateTime": "2019-03-03",
     "products": [
       "SharePoint",
       "Office"

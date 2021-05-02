@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part shows a Restaurant Menu, the user can select the options to show in Menu."
     ],
-    "created": "2020-09-05",
-    "modified": "2020-09-05",
+    "creationDateTime": "2020-09-05",
+    "updateDateTime": "2020-09-05",
     "products": [
       "SharePoint",
       "Office"

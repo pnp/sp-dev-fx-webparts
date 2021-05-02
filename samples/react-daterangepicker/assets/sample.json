@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part used the date range picker in the SharePoint Framework (SPFx) web part"
     ],
-    "created": "2020-07-04",
-    "modified": "2020-07-04",
+    "creationDateTime": "2020-07-04",
+    "updateDateTime": "2020-07-04",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This is a sample Angular application before and after it has been migrated to a SharePoint Framework client-side web part."
     ],
-    "created": "2016-10-21",
-    "modified": "2016-10-21",
+    "creationDateTime": "2016-10-21",
+    "updateDateTime": "2016-10-21",
     "products": [
       "SharePoint",
       "Office"

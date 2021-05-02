@@ -8,8 +8,8 @@
     "longDescription": [
       "SharePoint Framework solution with the Office UI Fabric People Picker, the client web part across the SharePoint Rest API is able to retrieve people and groups."
     ],
-    "created": "2017-12-06",
-    "modified": "2017-12-06",
+    "creationDateTime": "2017-12-06",
+    "updateDateTime": "2017-12-06",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This sample shows how to consume third-party APIs through an Azure Functions by a Web Part."
     ],
-    "created": "2018-07-24",
-    "modified": "2018-07-24",
+    "creationDateTime": "2018-07-24",
+    "updateDateTime": "2018-07-24",
     "products": [
       "SharePoint",
       "Office"

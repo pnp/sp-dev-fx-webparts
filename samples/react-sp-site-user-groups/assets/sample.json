@@ -8,8 +8,8 @@
     "longDescription": [
       "Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed."
     ],
-    "created": "2020-09-08",
-    "modified": "2020-09-08",
+    "creationDateTime": "2020-09-08",
+    "updateDateTime": "2020-09-08",
     "products": [
       "SharePoint",
       "Office"

@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part will allow users to view/update application customizers properties across any web where the current user has access to."
     ],
-    "created": "2020-11-07",
-    "modified": "2020-11-07",
+    "creationDateTime": "2020-11-07",
+    "updateDateTime": "2020-11-07",
     "products": [
       "SharePoint",
       "Office"

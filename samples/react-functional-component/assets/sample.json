@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part is intended to be easier to understand for new developers building their first SPFx web part. It is a refactoring of the HelloWorld web part that is created by the @microsoft/generator-sharepoint Yeoman generator, and introduces React Functional Components."
     ],
-    "created": "2019-06-05",
-    "modified": "2019-06-05",
+    "creationDateTime": "2019-06-05",
+    "updateDateTime": "2019-06-05",
     "products": [
       "SharePoint",
       "Office"

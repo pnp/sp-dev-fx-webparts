@@ -8,8 +8,8 @@
     "longDescription": [
       "This web part will help the administrators to synchronize the User Profile Photos from Azure AD or from the local file system to SharePoint User Profile Store."
     ],
-    "created": "2020-09-13",
-    "modified": "2020-09-13",
+    "creationDateTime": "2020-09-13",
+    "updateDateTime": "2020-09-13",
     "products": [
       "SharePoint",
       "Office"

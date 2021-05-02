@@ -8,8 +8,8 @@
     "longDescription": [
       "A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing."
     ],
-    "created": "2017-07-19",
-    "modified": "2017-07-19",
+    "creationDateTime": "2017-07-19",
+    "updateDateTime": "2017-07-19",
     "products": [
       "SharePoint",
       "Office"
