@@ -32,7 +32,14 @@
         "alt": "World Time"
       }
     ],
-    "authors": [],
+    "authors": [
+{
+        "gitHubAccount": "eoverfield",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield"
+
+      }
+],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",
