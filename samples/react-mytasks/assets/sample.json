@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/joaojmendes/sp-dev-fx-webparts/raw/My-Tasks/samples/react-mytasks/assets/MyTasks.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mytasks/assets/MyTasks.gif",
         "alt": "My Tasks Web Part"
       },
       {
