@@ -4,7 +4,7 @@
 
 Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app.
 
-## Screen 
+## Screen
 
 ![react-teams-membership-updater](./assets/Screenshot-2020-05-01.png "Preview")
 
