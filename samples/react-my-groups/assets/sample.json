@@ -28,19 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/example.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/React-MyGroups_Grid.png",
         "alt": "My Groups"
       },
       {
         "type": "image",
         "order": 101,
         "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-groups/assets/React-MyGroups_Compact.png?raw=true",
-        "alt": "My Groups"
-      },
-      {
-        "type": "image",
-        "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-groups/assets/React-MyGroups_Grid.png?raw=true",
         "alt": "My Groups"
       },
       {
