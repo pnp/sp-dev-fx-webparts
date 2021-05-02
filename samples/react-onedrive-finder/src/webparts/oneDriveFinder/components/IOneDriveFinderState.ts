@@ -11,4 +11,6 @@ export interface IOneDriveFinderState {
     fileExtensions: string[];
     customStyle: string;
     searchDrive: string;
+    dialogFileStatus: boolean;
+    dialogFile: any;
 }

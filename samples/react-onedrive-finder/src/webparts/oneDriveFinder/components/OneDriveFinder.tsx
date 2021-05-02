@@ -3,6 +3,7 @@ import styles from './OneDriveFinder.module.scss';
 import { IOneDriveFinderProps } from './IOneDriveFinderProps';
 import { IOneDriveFinderState } from './IOneDriveFinderState';
 import { FileList } from '@microsoft/mgt-react';
+import { DialogFile } from './Dialog/DialogFile';
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { AadHttpClient } from "@microsoft/sp-http";
@@ -113,12 +114,15 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       fileExtensions: [],
       customStyle: "",
       searchDrive: "",
+      dialogFileStatus: false,
+      dialogFile: null
     };
     this.getDomainData();
   }
 
   public render(): React.ReactElement<IOneDriveFinderProps> {
-    const CheckDrives = (e, selectedOption) => {
+    const CheckDrives = (event: React.FormEvent<HTMLDivElement>, selectedOption: IDropdownOption) => {
+
       if (selectedOption.data.root == undefined) {
         this._siteID = selectedOption.key.toString();
         this.setState({
@@ -149,7 +153,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       let fileExtensions: string[] = [];
       if (selectedOption.selected == true) {
         fileExtensions.push(selectedOption.key.toString());
-        fileExtensions = [...fileExtensions,...this.state.fileExtensions];
+        fileExtensions = [...fileExtensions, ...this.state.fileExtensions];
       } else {
         fileExtensions = this.state.fileExtensions.filter(e => e !== selectedOption.key);
       }
@@ -187,9 +191,11 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       });
     };
     const selectFile = (selectedFile: any) => {
-      if (selectedFile.detail.folder == undefined) {
-        window.open(selectedFile.detail.webUrl, '_blank');
-      } 
+      console.log(selectedFile.detail);
+      this.setState({
+        dialogFileStatus: true,
+        dialogFile: selectedFile.detail,
+      });
     };
 
     const { siteID, itemID, pageSize, breadcrumbItem, siteItems, fileExtensions, searchDrive, customStyle } = this.state;
@@ -198,11 +204,10 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
     this._breadcrumbItem = breadcrumbItem;
     this._pageSize = pageSize;
     this._customStyle = customStyle;
-    if(fileExtensions.length != 0)
-    {
+    if (fileExtensions.length != 0) {
       this._fileExtensions = fileExtensions;
     }
-    else{
+    else {
       this._fileExtensions = null;
     }
     return (
@@ -302,6 +307,15 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
               itemClick={selectFile}
             ></FileList>
           }
+          <DialogFile
+            open={this.state.dialogFileStatus}
+            fileItem={this.state.dialogFile}
+            onClose={() => {
+              this.setState({
+                dialogFileStatus: false
+              });
+            }}
+          ></DialogFile>
         </div>
       </div>
     );
@@ -341,7 +355,11 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
         breadcrumbItem: this._breadcrumbItem
       });
     } else {
-      window.open(e.detail.webUrl, '_blank');
+      console.log(e.detail);
+      this.setState({
+        dialogFileStatus: true,
+        dialogFile: e.detail,
+      });
     }
   }
   private getRootDriveFolderID = async (siteID) => {
