@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Save Attachments",
     "shortDescription": "This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-save-attachments",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-save-attachments",
     "longDescription": [
       "This SPFx Outlook Add-In lets users save any email attachments to a OneDrive folder."
     ],
@@ -32,19 +32,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-save-attachments/assets/ReactSaveAttachments.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-attachments/assets/ReactSaveAttachments.gif",
         "alt": "Save Attachments"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-save-attachments/assets/react-save-attachments-1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-save-attachments/assets/react-save-attachments-1.png?raw=true",
         "alt": "Save Attachments"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-save-attachments/assets/react-save-attachments-2.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-save-attachments/assets/react-save-attachments-2.gif?raw=true",
         "alt": "Save Attachments"
       }
     ],

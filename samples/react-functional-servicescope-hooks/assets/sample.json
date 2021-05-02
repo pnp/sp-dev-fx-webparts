@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Consuming SPFX Service Scopes using React Hooks",
     "shortDescription": "This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-functional-servicescope-hooks",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-servicescope-hooks",
     "longDescription": [
       "This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-functional-servicescope-hooks/webpart.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-servicescope-hooks/webpart.png",
         "alt": "Consuming SPFX Service Scopes using React Hooks"
       }
     ],

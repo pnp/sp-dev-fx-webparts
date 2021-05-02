@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Display Employee Spotlight JavaScript Client-Side Web Part",
     "shortDescription": "Simple Web Part that demonstrates the use of SharePoint Framework for showcasing Employee Spotlight. The web part pulls data from a configured list and User Profile service. The properties pane for this web part has 5 cascading dropdowns.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-employee-spotlight",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-employee-spotlight",
     "longDescription": [
       "Simple Web Part that demonstrates the use of SharePoint Framework for showcasing Employee Spotlight. The web part pulls data from a configured list and User Profile service. The properties pane for this web part has 5 cascading dropdowns."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png",
         "alt": "Display Employee Spotlight JavaScript Client-Side Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-employee-spotlight/assets/Employee-spotlight-options.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-employee-spotlight/assets/Employee-spotlight-options.png?raw=true",
         "alt": "Display Employee Spotlight JavaScript Client-Side Web Part"
       }
     ],

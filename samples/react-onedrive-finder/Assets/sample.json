@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "OneDrive Finder",
     "shortDescription": "This sample access drives from OneDrive and navigate between his content using Graph OneDrive and Site API and Microsoft Graph Toolkit React controls with the addition of new FileList control.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-onedrive-finder",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-onedrive-finder",
     "longDescription": [
       "This sample access drives from OneDrive and navigate between his content using Graph OneDrive and Site API and Microsoft Graph Toolkit React controls with the addition of new FileList control.",
       "This new control provides the ability to retrieve the Drive Library with associated Files and folders making easier to develop and navigate between tenant content and access to file. "
@@ -29,19 +29,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-onedrive-finder/Assets/OneDrivefinderSample3.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-onedrive-finder/Assets/OneDrivefinderSample3.gif",
         "alt": "Web Part in action"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-onedrive-finder/Assets/OneDrivefinderSample1.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-onedrive-finder/Assets/OneDrivefinderSample1.PNG",
         "alt": "Web Part in action"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-onedrive-finder/Assets/OneDrivefinderSample2.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-onedrive-finder/Assets/OneDrivefinderSample2.PNG",
         "alt": "Web Part in action"
       }
     ],

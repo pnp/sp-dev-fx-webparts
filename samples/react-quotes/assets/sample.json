@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Quote of the Day",
     "shortDescription": "This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-quotes",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quotes",
     "longDescription": [
       "This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-quotes/assets/react-quotes-sample.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quotes/assets/react-quotes-sample.png",
         "alt": "Quote of the Day"
       }
     ],

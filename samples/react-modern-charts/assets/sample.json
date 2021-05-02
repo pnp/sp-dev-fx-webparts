@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Modern Charts",
     "shortDescription": "This web part uses the Chart.js library to visualize SharePoint list data.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-modern-charts",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-charts",
     "longDescription": [
       "This web part uses the Chart.js library to visualize SharePoint list data."
     ],
@@ -34,13 +34,13 @@
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-modern-charts/assets/Modern-Charts.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-modern-charts/assets/Modern-Charts.gif?raw=true",
         "alt": "Modern Charts"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-modern-charts/assets/modern-charts.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-modern-charts/assets/modern-charts.png?raw=true",
         "alt": "Modern Charts"
       }
     ],

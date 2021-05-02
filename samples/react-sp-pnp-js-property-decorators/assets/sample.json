@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Using PnP JS Core custom objects with @select and @expand decorators",
     "shortDescription": "This web part demonstrates how to use PnP JS Core Custom Objects with @select and @expand TypeScript decorators.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sp-pnp-js-property-decorators",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-pnp-js-property-decorators",
     "longDescription": [
       "This web part demonstrates how to use PnP JS Core Custom Objects with @select and @expand TypeScript decorators."
     ],

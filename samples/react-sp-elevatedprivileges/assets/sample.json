@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Communicate using elevated privileges with SharePoint",
     "shortDescription": "Sample SharePoint Framework client-side web part illustrating communication with SharePoint using elevated privileges through a custom Web API.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sp-elevatedprivileges",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-elevatedprivileges",
     "longDescription": [
       "Sample SharePoint Framework client-side web part illustrating communication with SharePoint using elevated privileges through a custom Web API."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-sp-elevatedprivileges/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-elevatedprivileges/assets/preview.png",
         "alt": "Communicate using elevated privileges with SharePoint"
       }
     ],

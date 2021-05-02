@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Banner Web Part",
     "shortDescription": "This web part provides you the ability to add a variable height image banner with a linkable title.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-banner",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-banner",
     "longDescription": [
       "This web part provides you the ability to add a variable height image banner with a linkable title."
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Staff Directory",
     "shortDescription": "This web part shows the current user\u0027s colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-staffdirectory",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-staffdirectory",
     "longDescription": [
       "This web part shows the current user\u0027s colleagues, and allows the user to search AD directory, The user can configure the properties to show when expand the user card."
     ],
@@ -40,19 +40,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-staffdirectory/assets/staffdirectory.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-staffdirectory/assets/staffdirectory.gif",
         "alt": "Staff Directory"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-staffdirectory/assets/staffTeams01.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-staffdirectory/assets/staffTeams01.png?raw=true",
         "alt": "Staff Directory"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-staffdirectory/assets/staffTeams02.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-staffdirectory/assets/staffTeams02.png?raw=true",
         "alt": "Staff Directory"
       }
     ],

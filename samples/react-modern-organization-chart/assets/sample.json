@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Modern Organization Chart",
     "shortDescription": "This web part show organization chart for current user, shows, managers and direct reports and there available status.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-modern-organization-chart",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-organization-chart",
     "longDescription": [
       "This web part show organization chart for current user, shows, managers and direct reports and there available status."
     ],
@@ -36,13 +36,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-modern-organization-chart/assets/Screenshot1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-organization-chart/assets/Screenshot1.png",
         "alt": "Modern Organization Chart"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-modern-organization-chart/assets/Screenshot2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-modern-organization-chart/assets/Screenshot2.png?raw=true",
         "alt": "Modern Organization Chart"
       }
     ],

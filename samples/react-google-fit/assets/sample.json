@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Web part displaying Google Fit information",
     "shortDescription": "This sample demonstrates integration of Google Fit information with SharePoint Framework. The Google Fitness REST APIs allows developers to extend it further and create their own dashboards. Google Fitness REST APIs are useful if you have fitness app and you want to integrate your data with google fit or if you just want to collect Fitness data and display some information to the users. This web part helps to display the key fitness information (activity time spent, distance travelled, calories burned, step count) from the Google fit data source.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-google-fit",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-google-fit",
     "longDescription": [
       "This sample demonstrates integration of Google Fit information with SharePoint Framework. The Google Fitness REST APIs allows developers to extend it further and create their own dashboards. Google Fitness REST APIs are useful if you have fitness app and you want to integrate your data with google fit or if you just want to collect Fitness data and display some information to the users. This web part helps to display the key fitness information (activity time spent, distance travelled, calories burned, step count) from the Google fit data source."
     ],
@@ -28,49 +28,49 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-google-fit/assets/webpart-preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-google-fit/assets/webpart-preview.png",
         "alt": "Web part displaying Google Fit information"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-google-fit/assets/add-authorized-origins.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-google-fit/assets/add-authorized-origins.png?raw=true",
         "alt": "Web part displaying Google Fit information"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-google-fit/assets/add-credentials-to-your-project.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-google-fit/assets/add-credentials-to-your-project.png?raw=true",
         "alt": "Web part displaying Google Fit information"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-google-fit/assets/create-new-project.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-google-fit/assets/create-new-project.png?raw=true",
         "alt": "Web part displaying Google Fit information"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-google-fit/assets/generate-credentials.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-google-fit/assets/generate-credentials.png?raw=true",
         "alt": "Web part displaying Google Fit information"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-google-fit/assets/oauth-clientid.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-google-fit/assets/oauth-clientid.png?raw=true",
         "alt": "Web part displaying Google Fit information"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-google-fit/assets/setup-oauth-consent.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-google-fit/assets/setup-oauth-consent.png?raw=true",
         "alt": "Web part displaying Google Fit information"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-google-fit/assets/sharepoint-run.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-google-fit/assets/sharepoint-run.gif?raw=true",
         "alt": "Web part displaying Google Fit information"
       }
     ],

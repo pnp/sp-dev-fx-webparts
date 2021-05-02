@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Using React, Redux and ImmutableJS",
     "shortDescription": "SharePoint Framework web part which uses Redux to maintain a single state for the entire application and ImmutableJS to create performant state trees.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-redux-async-immutablejs",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux-async-immutablejs",
     "longDescription": [
       "SharePoint Framework web part which uses Redux to maintain a single state for the entire application and ImmutableJS to create performant state trees."
     ],

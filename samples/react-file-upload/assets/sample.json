@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "File Upload Web Part",
     "shortDescription": "The file upload web part allowing users to upload multiple files to a document library or as item attachments.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-file-upload",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-file-upload",
     "longDescription": [
       "The file upload web part allowing users to upload multiple files to a document library or as item attachments."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-file-upload/assets/SPFileUploadPreview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-file-upload/assets/SPFileUploadPreview.gif",
         "alt": "File Upload Web Part"
       }
     ],

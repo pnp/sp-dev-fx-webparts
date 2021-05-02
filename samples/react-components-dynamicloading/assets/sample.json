@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Code Splitting in SharePoint Framework",
     "shortDescription": "Load React components and third party packages on demand in SPFx",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-components-dynamicloading",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-components-dynamicloading",
     "longDescription": [
       "Load React components and third party packages on demand in SPFx"
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-components-dynamicloading/assets/cs3.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-components-dynamicloading/assets/cs3.gif",
         "alt": "Code Splitting in SharePoint Framework"
       }
     ],

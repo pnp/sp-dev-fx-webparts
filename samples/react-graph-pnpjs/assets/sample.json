@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Using PnPJS with MS Graph",
     "shortDescription": "This web part demonstrates how to use PnPJS with SharePoint Framework and how to query Microsoft Graph with PnPJS. It requests a list of Azure AD groups at your tenant and shows them using Office UI Fabric React list.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-pnpjs",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-pnpjs",
     "longDescription": [
       "This web part demonstrates how to use PnPJS with SharePoint Framework and how to query Microsoft Graph with PnPJS. It requests a list of Azure AD groups at your tenant and shows them using Office UI Fabric React list."
     ],
@@ -28,19 +28,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-pnpjs/assets/summary.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-pnpjs/assets/summary.png",
         "alt": "Using PnPJS with MS Graph"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-graph-pnpjs/assets/approve-request.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-pnpjs/assets/approve-request.png?raw=true",
         "alt": "Using PnPJS with MS Graph"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-graph-pnpjs/assets/approve.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-pnpjs/assets/approve.png?raw=true",
         "alt": "Using PnPJS with MS Graph"
       }
     ],

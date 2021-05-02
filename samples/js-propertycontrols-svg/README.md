@@ -12,13 +12,13 @@ An SPFx web part that displays a Scalable Vector Graphics (SVG) image using prop
 
 ## Which PnP SPFx controls are being used in this sample?
 
-* [PropertyFieldSpinButton](https://github.com/SharePoint/sp-dev-fx-property-controls/wiki/PropertyFieldSpinButton)
-* [PropertyFieldColorPicker](https://github.com/SharePoint/sp-dev-fx-property-controls/wiki/PropertyFieldColorPicker)
+* [PropertyFieldSpinButton](https://github.com/pnp/sp-dev-fx-property-controls/wiki/PropertyFieldSpinButton)
+* [PropertyFieldColorPicker](https://github.com/pnp/sp-dev-fx-property-controls/wiki/PropertyFieldColorPicker)
 
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [sp-dev-fx-property-controls](https://github.com/SharePoint/sp-dev-fx-property-controls)
+* [sp-dev-fx-property-controls](https://github.com/pnp/sp-dev-fx-property-controls)
 * [PnP Man](https://github.com/thechriskent/PnPMan)
 
 ## Solution

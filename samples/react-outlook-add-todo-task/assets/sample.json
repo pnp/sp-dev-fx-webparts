@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Create To Do Task from Email (Outlook Add in)",
     "shortDescription": "This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let\u00B4s say this is similar to the OOTB \u0022Flag\u0022 action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-outlook-add-todo-task",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-outlook-add-todo-task",
     "longDescription": [
       "This web part allows us to create a new To Do task using the new ToDo MS Graph endpoint. If deployed as an Outlook Add In, the Task title comes from email subject. Let\u00B4s say this is similar to the OOTB \u0022Flag\u0022 action, but here you can select the ToDo List where to store the Task, and you can modify the Title before adding it."
     ],
@@ -32,13 +32,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/example.png",
         "alt": "Create To Do Task from Email (Outlook Add in)"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-outlook-add-todo-task/assets/spfx-todo-outlook.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-outlook-add-todo-task/assets/spfx-todo-outlook.gif?raw=true",
         "alt": "Create To Do Task from Email (Outlook Add in)"
       }
     ],

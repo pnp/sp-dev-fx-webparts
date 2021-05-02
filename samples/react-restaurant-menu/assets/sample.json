@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Restaurant Menu",
     "shortDescription": "This web part shows a Restaurant Menu, the user can select the options to show in Menu.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-restaurant-menu",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-restaurant-menu",
     "longDescription": [
       "This web part shows a Restaurant Menu, the user can select the options to show in Menu."
     ],
@@ -40,25 +40,25 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-restaurant-menu/assets/restaurantmenu.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-restaurant-menu/assets/restaurantmenu.gif",
         "alt": "Restaurant Menu"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-restaurant-menu/assets/restaurantmenu.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-restaurant-menu/assets/restaurantmenu.png?raw=true",
         "alt": "Restaurant Menu"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-restaurant-menu/assets/restaurantmenu2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-restaurant-menu/assets/restaurantmenu2.png?raw=true",
         "alt": "Restaurant Menu"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-restaurant-menu/assets/restaurantmenu3.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-restaurant-menu/assets/restaurantmenu3.png?raw=true",
         "alt": "Restaurant Menu"
       }
     ],

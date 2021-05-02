@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Carousel Web Part",
     "shortDescription": "This web part show images and videos in carousel",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-carousel",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-carousel",
     "longDescription": [
       "This web part show images and videos in carousel"
     ],
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-carousel/assets/carousel.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carousel/assets/carousel.gif",
         "alt": "Carousel Web Part"
       }
     ],

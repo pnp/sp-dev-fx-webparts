@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "TODO",
     "shortDescription": "TODO",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/TODO",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/TODO",
     "longDescription": [
       "TODO"
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/TODO",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/TODO",
         "alt": "TODO"
       }
     ],

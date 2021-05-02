@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "My Teams",
     "shortDescription": "This sample uses Microsoft Graph to list the Teams the current user is a member of. When the user clicks on one of the teams, the web part retrieves information about the default channel (General) and opens it. The web part can be configured to open the team on the web browser or client app.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-teams",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-teams",
     "longDescription": [
       "This sample uses Microsoft Graph to list the Teams the current user is a member of. When the user clicks on one of the teams, the web part retrieves information about the default channel (General) and opens it. The web part can be configured to open the team on the web browser or client app."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-teams/assets/Preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/Preview.png",
         "alt": "My Teams"
       }
     ],

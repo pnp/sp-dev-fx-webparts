@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Upgrade Me",
     "shortDescription": "Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-upgrade-me",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-upgrade-me",
     "longDescription": [
       "Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-upgrade-me/assets/react-upgrade-me.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-upgrade-me/assets/react-upgrade-me.png",
         "alt": "Upgrade Me"
       }
     ],

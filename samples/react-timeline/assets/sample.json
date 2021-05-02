@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Timeline",
     "shortDescription": "This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-timeline",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-timeline",
     "longDescription": [
       "This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema."
     ],
@@ -28,43 +28,43 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-timeline/assets/webpart-preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-timeline/assets/webpart-preview.gif",
         "alt": "Timeline"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-timeline/assets/event-crud.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/event-crud.gif?raw=true",
         "alt": "Timeline"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-timeline/assets/layout-horizontal.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/layout-horizontal.png?raw=true",
         "alt": "Timeline"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-timeline/assets/layout-vertical.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/layout-vertical.png?raw=true",
         "alt": "Timeline"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-timeline/assets/list-sample-data.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/list-sample-data.png?raw=true",
         "alt": "Timeline"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-timeline/assets/list-schema.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/list-schema.png?raw=true",
         "alt": "Timeline"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-timeline/assets/wepart-propertypane.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/wepart-propertypane.png?raw=true",
         "alt": "Timeline"
       }
     ],

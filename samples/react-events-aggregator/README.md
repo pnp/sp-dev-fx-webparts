@@ -4,7 +4,7 @@
 >
 > The event aggregator is deprecated and no longer available in the SharePoint Framework. Please use [dynamic data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data) instead. #
 
-Following issue [#659](https://github.com/SharePoint/sp-dev-fx-webparts/issues/659), the event aggregator functionality is no longer working. This feature was in ALPHA state and never made it to general availability state. There is a replacement for the event aggregator. Please have a look at the dynamic data functionality and use it instead [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data). There is already a sample in this library [https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-events-dynamicdata](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-events-dynamicdata)
+Following issue [#659](https://github.com/pnp/sp-dev-fx-webparts/issues/659), the event aggregator functionality is no longer working. This feature was in ALPHA state and never made it to general availability state. There is a replacement for the event aggregator. Please have a look at the dynamic data functionality and use it instead [https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/dynamic-data). There is already a sample in this library [https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-dynamicdata](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-dynamicdata)
 
 ## Summary
 

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Migrating existing Angular applications to SharePoint Framework sample",
     "shortDescription": "This is a sample Angular application before and after it has been migrated to a SharePoint Framework client-side web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-migration",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-migration",
     "longDescription": [
       "This is a sample Angular application before and after it has been migrated to a SharePoint Framework client-side web part."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-migration/assets/angular-todo-spfx-preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-migration/assets/angular-todo-spfx-preview.png",
         "alt": "Migrating existing Angular applications to SharePoint Framework sample"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/angular-migration/assets/angular-todo-preview.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-migration/assets/angular-todo-preview.png?raw=true",
         "alt": "Migrating existing Angular applications to SharePoint Framework sample"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Angular2 Web Part Prototype",
     "shortDescription": "Sample To Do Web Part built with Angular2. This sample illustrates how you can use Angular2 with the SharePoint Framework.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular2-prototype",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular2-prototype",
     "longDescription": [
       "Sample To Do Web Part built with Angular2. This sample illustrates how you can use Angular2 with the SharePoint Framework."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular2-prototype/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular2-prototype/assets/preview.png",
         "alt": "Angular2 Web Part Prototype"
       }
     ],

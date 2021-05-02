@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Microsoft Graph People Search Web Part",
     "shortDescription": "Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msgraph-peoplesearch",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-msgraph-peoplesearch",
     "longDescription": [
       "Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover."
     ],
@@ -36,13 +36,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch.gif",
         "alt": "Microsoft Graph People Search Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch-LPC.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch-LPC.gif?raw=true",
         "alt": "Microsoft Graph People Search Web Part"
       }
     ],

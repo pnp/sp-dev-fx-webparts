@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Accordion Web Part",
     "shortDescription": "This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion",
     "longDescription": [
       "This is a sample web Part that illustrates the use of React Accessible Accordion plugin for building SharePoint Framework client-side web parts to show SharePoint list data in Accordion format."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion/assets/previewAccordion.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion/assets/previewAccordion.PNG",
         "alt": "Accordion Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-accordion/assets/AccordionPreview.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion/assets/AccordionPreview.png?raw=true",
         "alt": "Accordion Web Part"
       }
     ],

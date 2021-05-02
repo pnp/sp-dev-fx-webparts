@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "PnP ListView with PnP Field Controls Web Part",
     "shortDescription": "Sample web part to display PnP ListView control with column rendering using PnP Field Controls.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnp-controls-list-view-fields",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnp-controls-list-view-fields",
     "longDescription": [
       "Sample web part to display PnP ListView control with column rendering using PnP Field Controls."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnp-controls-list-view-fields/assets/web-part.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-controls-list-view-fields/assets/web-part.png",
         "alt": "PnP ListView with PnP Field Controls Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-pnp-controls-list-view-fields/assets/taxonomy.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-pnp-controls-list-view-fields/assets/taxonomy.png?raw=true",
         "alt": "PnP ListView with PnP Field Controls Web Part"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "List Items Menu",
     "shortDescription": "Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-items-menu",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-items-menu",
     "longDescription": [
       "Allows user create a navigation menu , grouped by any column of document library. When the user clicks on the header it dynamically load documents."
     ],
@@ -40,25 +40,25 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-items-menu/assets/ListMenuDocs.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-items-menu/assets/ListMenuDocs.gif",
         "alt": "List Items Menu"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-items-menu/assets/reactListItems1.JPG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-items-menu/assets/reactListItems1.JPG?raw=true",
         "alt": "List Items Menu"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-items-menu/assets/reactListItems2.JPG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-items-menu/assets/reactListItems2.JPG?raw=true",
         "alt": "List Items Menu"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-items-menu/assets/reactListItems3.JPG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-items-menu/assets/reactListItems3.JPG?raw=true",
         "alt": "List Items Menu"
       }
     ],

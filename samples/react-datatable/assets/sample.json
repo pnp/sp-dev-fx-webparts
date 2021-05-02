@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Data Table",
     "shortDescription": "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-datatable",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-datatable",
     "longDescription": [
       "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-datatable/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable/assets/preview.png",
         "alt": "Data Table"
       }
     ],

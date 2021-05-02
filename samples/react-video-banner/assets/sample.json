@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Video Banner",
     "shortDescription": "Use this Web Part to add a video banner with a text on top of it to your pages. ",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-video-banner",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-video-banner",
     "longDescription": [
       "Use this Web Part to add a video banner with a text on top of it to your pages. "
     ],
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-video-banner/assets/react-video-banner-demo1.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-video-banner/assets/react-video-banner-demo1.gif",
         "alt": "React Video Banner"
       }
     ],

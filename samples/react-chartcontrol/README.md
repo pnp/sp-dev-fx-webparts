@@ -8,7 +8,7 @@ This sample contains several web parts that demonstrate how to use the ChartCont
 
 The web parts in this sample are not intended to be used in production -- they simply demonstrate how you would use all the capabilities of the ChartControl.
 
-> **NOTE:** If you are looking for a ready-to-use web part, please look into [joelfmrodrigues' cool react-modern-charts sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-modern-charts), which was built without the `ChartControl`.
+> **NOTE:** If you are looking for a ready-to-use web part, please look into [joelfmrodrigues' cool react-modern-charts sample](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-charts), which was built without the `ChartControl`.
 
 ## About the samples
 

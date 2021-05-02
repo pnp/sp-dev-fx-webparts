@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Manage Profile Card Properties",
     "shortDescription": "This web part allows tenant administrators to manage profile card properties.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-profile-card-properties",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-profile-card-properties",
     "longDescription": [
       "This web part allows tenant administrators to manage profile card properties."
     ],
@@ -40,31 +40,31 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-manage-profile-card-properties/assets/Screenshot5.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-profile-card-properties/assets/Screenshot5.png",
         "alt": "Manage Profile Card Properties"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-profile-card-properties/assets/Screenshot1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-profile-card-properties/assets/Screenshot1.png?raw=true",
         "alt": "Manage Profile Card Properties"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-profile-card-properties/assets/Screenshot2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-profile-card-properties/assets/Screenshot2.png?raw=true",
         "alt": "Manage Profile Card Properties"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-profile-card-properties/assets/Screenshot3.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-profile-card-properties/assets/Screenshot3.png?raw=true",
         "alt": "Manage Profile Card Properties"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-profile-card-properties/assets/Screenshot4.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-profile-card-properties/assets/Screenshot4.png?raw=true",
         "alt": "Manage Profile Card Properties"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "GitHub Badge",
     "shortDescription": "",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-gitHubBadge",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubBadge",
     "longDescription": [
       ""
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-gitHubBadge/assets/1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-gitHubBadge/assets/1.png",
         "alt": "GitHub Badge"
       }
     ],

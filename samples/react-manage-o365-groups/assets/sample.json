@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Manage Office 365 Groups with SPFx",
     "shortDescription": "Office 365 Groups is the foundational membership service, that drives all teamwork across Microsoft 365. Once in a group, we can get the benefits of the group-connected services like shared Outlook inbox, shared calendar, SharePoint site, Planner, Power BI, Yammer, and Teams.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-o365-groups",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-o365-groups",
     "longDescription": [
       "Office 365 Groups is the foundational membership service, that drives all teamwork across Microsoft 365. Once in a group, we can get the benefits of the group-connected services like shared Outlook inbox, shared calendar, SharePoint site, Planner, Power BI, Yammer, and Teams."
     ],
@@ -28,49 +28,49 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-manage-o365-groups/assets/web-part-preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-o365-groups/assets/web-part-preview.gif",
         "alt": "Manage Office 365 Groups with SPFx"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-o365-groups/assets/approve-request.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-o365-groups/assets/approve-request.gif?raw=true",
         "alt": "Manage Office 365 Groups with SPFx"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-o365-groups/assets/group-listing-search.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-o365-groups/assets/group-listing-search.gif?raw=true",
         "alt": "Manage Office 365 Groups with SPFx"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-o365-groups/assets/join-group.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-o365-groups/assets/join-group.gif?raw=true",
         "alt": "Manage Office 365 Groups with SPFx"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-o365-groups/assets/join-private-group.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-o365-groups/assets/join-private-group.gif?raw=true",
         "alt": "Manage Office 365 Groups with SPFx"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-o365-groups/assets/leave-group.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-o365-groups/assets/leave-group.gif?raw=true",
         "alt": "Manage Office 365 Groups with SPFx"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-o365-groups/assets/new-group.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-o365-groups/assets/new-group.gif?raw=true",
         "alt": "Manage Office 365 Groups with SPFx"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-o365-groups/assets/pending-permission-requests.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-o365-groups/assets/pending-permission-requests.png?raw=true",
         "alt": "Manage Office 365 Groups with SPFx"
       }
     ],

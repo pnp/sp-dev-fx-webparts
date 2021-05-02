@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "React Teams Messages",
     "shortDescription": "This is a sample web part that displays currently logged in user\u0027s Microsoft Teams(user is member of), its channels and will allow sending messages to any Team\u0027s channel.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-message",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-message",
     "longDescription": [
       "This is a sample web part that displays currently logged in user\u0027s Microsoft Teams(user is member of), its channels and will allow sending messages to any Team\u0027s channel."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-message/assets/myteamsmessage.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message/assets/myteamsmessage.gif",
         "alt": "React Teams Messages"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-teams-message/assets/webpartproperties.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-teams-message/assets/webpartproperties.jpg?raw=true",
         "alt": "React Teams Messages"
       }
     ],

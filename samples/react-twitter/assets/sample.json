@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Twitter Timeline",
     "shortDescription": "Sample web part to display Twitter timeline.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-twitter",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-twitter",
     "longDescription": [
       "Sample web part to display Twitter timeline."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-twitter/assets/twitter-timeline.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-twitter/assets/twitter-timeline.png",
         "alt": "Twitter Timeline"
       }
     ],

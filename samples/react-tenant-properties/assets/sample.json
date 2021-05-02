@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Tenant Properties Web Part",
     "shortDescription": "This web part allows tenant administrators to manage tenant properties through a graphical interface. We can create, edit or delete tenant properties.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tenant-properties",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tenant-properties",
     "longDescription": [
       "This web part allows tenant administrators to manage tenant properties through a graphical interface. We can create, edit or delete tenant properties."
     ],
@@ -34,25 +34,25 @@
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties1.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tenant-properties/assets/TenantProperties1.jpg?raw=true",
         "alt": "Tenant Properties Web Part"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties3.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tenant-properties/assets/TenantProperties3.jpg?raw=true",
         "alt": "Tenant Properties Web Part"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties4.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tenant-properties/assets/TenantProperties4.jpg?raw=true",
         "alt": "Tenant Properties Web Part"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-tenant-properties/assets/TenantProperties5.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tenant-properties/assets/TenantProperties5.jpg?raw=true",
         "alt": "Tenant Properties Web Part"
       }
     ],

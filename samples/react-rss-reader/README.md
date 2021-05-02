@@ -118,6 +118,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Utilize local storage
 - Demonstrate different method to address CORS / CORB issues
 - Handlebar based rendering with inline editor or remote template retrieval
-- Use the React container component approach inspiring by the [react-todo-basic sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-todo-basic).
+- Use the React container component approach inspiring by the [react-todo-basic sample](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-todo-basic).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-rss-reader" />

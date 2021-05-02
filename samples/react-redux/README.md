@@ -57,7 +57,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 ```sh
-$ git clone https://github.com/SharePoint/sp-dev-fx-webparts
+$ git clone https://github.com/pnp/sp-dev-fx-webparts
 $ cd sp-dev-fx-webparts/samples/react-redux
 $ npm install
 $ gulp serve

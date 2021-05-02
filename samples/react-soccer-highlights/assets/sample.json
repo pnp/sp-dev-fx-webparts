@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Soccer Highlights",
     "shortDescription": "This react web part sample displays Soccer Highlights from a public Soccer API.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-soccer-highlights",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-soccer-highlights",
     "longDescription": [
       "This react web part sample displays Soccer Highlights from a public Soccer API."
     ],
@@ -28,19 +28,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-soccer-highlights/assets/SoccerHighlightsV1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-soccer-highlights/assets/SoccerHighlightsV1.png",
         "alt": "Soccer Highlights"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-soccer-highlights/assets/SoccerHighlights.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-soccer-highlights/assets/SoccerHighlights.gif?raw=true",
         "alt": "Soccer Highlights"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-soccer-highlights/assets/SoccerHighlights.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-soccer-highlights/assets/SoccerHighlights.png?raw=true",
         "alt": "Soccer Highlights"
       }
     ],

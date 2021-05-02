@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Cascading managed metadata using Graph API",
     "shortDescription": "Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-cascading-managed-metadata",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-cascading-managed-metadata",
     "longDescription": [
       "Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-cascading-managed-metadata/assets/cmmd.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-cascading-managed-metadata/assets/cmmd.gif",
         "alt": "Cascading managed metadata using Graph API"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-graph-cascading-managed-metadata/assets/termstore.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-cascading-managed-metadata/assets/termstore.png?raw=true",
         "alt": "Cascading managed metadata using Graph API"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Dynamic data",
     "shortDescription": "Sample web parts illustrating using the SharePoint Framework Dynamic data capability.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-events-dynamicdata",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-dynamicdata",
     "longDescription": [
       "Sample web parts illustrating using the SharePoint Framework Dynamic data capability."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png",
         "alt": "Dynamic data"
       }
     ],

@@ -28,7 +28,7 @@ We use GitHub issues to support user questions. To ask a question, [open a new i
 
 ### How to submit changes
 
-Please see our [Contributing Guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/master/CONTRIBUTING.md).
+Please see our [Contributing Guidance](https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md).
 
 ### How to request an enhancement
 

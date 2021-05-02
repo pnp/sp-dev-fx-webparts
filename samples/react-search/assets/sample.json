@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Search Client-Side Web Part built with React and Flux",
     "shortDescription": "Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-search",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-search",
     "longDescription": [
       "Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework."
     ],
@@ -28,19 +28,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-search/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-search/assets/preview.png",
         "alt": "Search Client-Side Web Part built with React and Flux"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-search/assets/external.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-search/assets/external.png?raw=true",
         "alt": "Search Client-Side Web Part built with React and Flux"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-search/assets/internal.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-search/assets/internal.png?raw=true",
         "alt": "Search Client-Side Web Part built with React and Flux"
       }
     ],

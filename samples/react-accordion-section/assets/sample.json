@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Accordion Section FAQ Builder",
     "shortDescription": "Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-section",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-section",
     "longDescription": [
       "Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs."
     ],
@@ -32,19 +32,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-section/assets/react-accordion-section.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-section/assets/react-accordion-section.gif",
         "alt": "Accordion Section FAQ Builder"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-accordion-section/assets/AccordionSettings.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-section/assets/AccordionSettings.png?raw=true",
         "alt": "Accordion Section FAQ Builder"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-accordion-section/assets/ListForAccordion.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-section/assets/ListForAccordion.png?raw=true",
         "alt": "Accordion Section FAQ Builder"
       }
     ],

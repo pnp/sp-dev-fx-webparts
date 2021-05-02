@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Enhanced List Formatting",
     "shortDescription": "This web part allows you to add custom CSS on a page to enhance list formatting.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-enhanced-list-formatting",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-list-formatting",
     "longDescription": [
       "This web part allows you to add custom CSS on a page to enhance list formatting."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif",
         "alt": "Enhanced List Formatting"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-enhanced-list-formatting/assets/Viewformatting.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-list-formatting/assets/Viewformatting.png?raw=true",
         "alt": "Enhanced List Formatting"
       }
     ],

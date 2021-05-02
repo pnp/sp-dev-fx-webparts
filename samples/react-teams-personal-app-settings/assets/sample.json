@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Teams Personal App Settings Web Part",
     "shortDescription": "Demonstrates how you can store Teams Personal App Web Part\u0027s properties in user\u0027s OneDrive.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-personal-app-settings",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-personal-app-settings",
     "longDescription": [
       "Demonstrates how you can store Teams Personal App Web Part\u0027s properties in user\u0027s OneDrive."
     ],
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png",
         "alt": "Teams Personal App Settings Web Part"
       }
     ],

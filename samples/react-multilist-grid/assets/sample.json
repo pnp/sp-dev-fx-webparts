@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Multi-list Grid",
     "shortDescription": "React-multilist-grid is an SPFX web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type \u2013 you just need to create column mappings to tell the web part which fields to show in which columns of the grid.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-multilist-grid",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multilist-grid",
     "longDescription": [
       "React-multilist-grid is an SPFX web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type \u2013 you just need to create column mappings to tell the web part which fields to show in which columns of the grid."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multilist-grid/src/images/ColumnTypes.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multilist-grid/src/images/ColumnTypes.PNG",
         "alt": "Multi-list Grid"
       }
     ],

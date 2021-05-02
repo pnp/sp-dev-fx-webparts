@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Teams Tab - Field Visit Demo (Mashup)",
     "shortDescription": "A web part for use in Microsoft Teams that displays a mashup of information partaining to customer visits.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-tab-field-visit-mashup",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tab-field-visit-mashup",
     "longDescription": [
       "A web part for use in Microsoft Teams that displays a mashup of information partaining to customer visits."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png",
         "alt": "Teams Tab - Field Visit Demo (Mashup)"
       }
     ],

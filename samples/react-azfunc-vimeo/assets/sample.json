@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Local Azure Function and SPFx Web Part Development to consume third party APIs",
     "shortDescription": "This sample shows how to consume third-party APIs through an Azure Functions by a Web Part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-azfunc-vimeo",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azfunc-vimeo",
     "longDescription": [
       "This sample shows how to consume third-party APIs through an Azure Functions by a Web Part."
     ],

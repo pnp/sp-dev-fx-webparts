@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Taxonomy picker using Office UI Fabric Panel",
     "shortDescription": "Sample web part with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The web part uses the Taxonomy API support available in the @pnp/taxonomy.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-taxonomypicker-panel",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomypicker-panel",
     "longDescription": [
       "Sample web part with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The web part uses the Taxonomy API support available in the @pnp/taxonomy."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true",
         "alt": "Taxonomy picker using Office UI Fabric Panel"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true",
         "alt": "Taxonomy picker using Office UI Fabric Panel"
       }
     ],

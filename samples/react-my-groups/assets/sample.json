@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "My Groups",
     "shortDescription": "Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-groups",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-groups",
     "longDescription": [
       "Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site."
     ],
@@ -28,25 +28,25 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/example.png",
         "alt": "My Groups"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-groups/assets/React-MyGroups_Compact.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-groups/assets/React-MyGroups_Compact.png?raw=true",
         "alt": "My Groups"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-groups/assets/React-MyGroups_Grid.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-groups/assets/React-MyGroups_Grid.png?raw=true",
         "alt": "My Groups"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-groups/assets/React-MyGroups_Property.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-groups/assets/React-MyGroups_Property.png?raw=true",
         "alt": "My Groups"
       }
     ],

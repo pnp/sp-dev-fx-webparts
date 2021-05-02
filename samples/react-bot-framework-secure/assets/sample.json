@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Secure Bot Framework",
     "shortDescription": "This sample shows how to secure your conversation including the use of a Direct Line token instead of secret, for user id, generate it inside client side and detect if the client has changed the user ID and reject the change.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-bot-framework-secure",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bot-framework-secure",
     "longDescription": [
       "This sample shows how to secure your conversation including the use of a Direct Line token instead of secret, for user id, generate it inside client side and detect if the client has changed the user ID and reject the change."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-bot-framework-secure/assets/sp-wp-secure.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework-secure/assets/sp-wp-secure.gif",
         "alt": "Secure Bot Framework"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-bot-framework-secure/assets/EnhancedAuth.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-bot-framework-secure/assets/EnhancedAuth.png?raw=true",
         "alt": "Secure Bot Framework"
       }
     ],

@@ -13,7 +13,7 @@ A sample web part that uses the [Mobx](https://mobx.js.org/) library with multip
 ## Applies to
 
 * [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [SharePoint Framework Web part Samples](https://github.com/SharePoint/sp-dev-fx-webparts)
+* [SharePoint Framework Web part Samples](https://github.com/pnp/sp-dev-fx-webparts)
 * [Office 365 developer tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Solution
@@ -37,7 +37,7 @@ Version|Date|Comments
 ## Minimal Path to Awesome
 
 ```sh
-$ git clone https://github.com/SharePoint/sp-dev-fx-webparts
+$ git clone https://github.com/pnp/sp-dev-fx-webparts
 $ cd sp-dev-fx-webparts/samples/react-mobx-multiple-stores
 $ npm install
 $ gulp serve

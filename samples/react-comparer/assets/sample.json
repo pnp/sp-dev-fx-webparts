@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Comparer with File Picker",
     "shortDescription": "Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-comparer",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-comparer",
     "longDescription": [
       "Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker."
     ],
@@ -28,61 +28,61 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-comparer/assets/ComparerWebPart.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-comparer/assets/ComparerWebPart.gif",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/FluentSlider.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/FluentSlider.gif?raw=true",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/FromLinkTab.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/FromLinkTab.gif?raw=true",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/OneDriveTab.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/OneDriveTab.gif?raw=true",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/RecentTab.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/RecentTab.gif?raw=true",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/SitesTab.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/SitesTab.gif?raw=true",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/UploadTab.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/UploadTab.gif?raw=true",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/WebSearch.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/WebSearch.gif?raw=true",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 108,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/WebSearchNoAPI.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/WebSearchNoAPI.png?raw=true",
         "alt": "Comparer with File Picker"
       },
       {
         "type": "image",
         "order": 109,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-comparer/assets/WebSearchTab.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/WebSearchTab.gif?raw=true",
         "alt": "Comparer with File Picker"
       }
     ],

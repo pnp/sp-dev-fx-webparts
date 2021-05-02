@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Angular Elements with HTML Template File in SharePoint Framework",
     "shortDescription": "A sample web part illustrating how to use Angular Elements in the SharePoint Framework with the help of separate template HTML File.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angularelements-html-templatefile",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angularelements-html-templatefile",
     "longDescription": [
       "A sample web part illustrating how to use Angular Elements in the SharePoint Framework with the help of separate template HTML File."
     ],

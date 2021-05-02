@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Frequently Asked Questions",
     "shortDescription": "Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-faqapp",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faqapp",
     "longDescription": [
       "Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-faqapp/assets/FAQWebpart.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqapp/assets/FAQWebpart.png",
         "alt": "Frequently Asked Questions"
       }
     ],

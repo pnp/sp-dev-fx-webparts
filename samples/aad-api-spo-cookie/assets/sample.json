@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Call custom APIs secured with Azure Active Directory without ADAL JS",
     "shortDescription": "Sample SharePoint Framework client-side web part showing how to access a custom API secured with Azure Active Directory (AAD) without using ADAL JS.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/aad-api-spo-cookie",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/aad-api-spo-cookie",
     "longDescription": [
       "Sample SharePoint Framework client-side web part showing how to access a custom API secured with Azure Active Directory (AAD) without using ADAL JS."
     ],
@@ -28,43 +28,43 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/aad-api-spo-cookie/assets/preview-orders.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/aad-api-spo-cookie/assets/preview-orders.png",
         "alt": "Call custom APIs secured with Azure Active Directory without ADAL JS"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/aad-api-spo-cookie/assets/orders-api-configure-authentication-dialog.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/aad-api-spo-cookie/assets/orders-api-configure-authentication-dialog.png?raw=true",
         "alt": "Call custom APIs secured with Azure Active Directory without ADAL JS"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/aad-api-spo-cookie/assets/orders-api-configure-authentication.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/aad-api-spo-cookie/assets/orders-api-configure-authentication.png?raw=true",
         "alt": "Call custom APIs secured with Azure Active Directory without ADAL JS"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/aad-api-spo-cookie/assets/orders-api-restore-packages.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/aad-api-spo-cookie/assets/orders-api-restore-packages.png?raw=true",
         "alt": "Call custom APIs secured with Azure Active Directory without ADAL JS"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/aad-api-spo-cookie/assets/orders-fetch-error.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/aad-api-spo-cookie/assets/orders-fetch-error.png?raw=true",
         "alt": "Call custom APIs secured with Azure Active Directory without ADAL JS"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/aad-api-spo-cookie/assets/orders-ie-error.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/aad-api-spo-cookie/assets/orders-ie-error.png?raw=true",
         "alt": "Call custom APIs secured with Azure Active Directory without ADAL JS"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/aad-api-spo-cookie/assets/orders-ie-zones-settings.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/aad-api-spo-cookie/assets/orders-ie-zones-settings.png?raw=true",
         "alt": "Call custom APIs secured with Azure Active Directory without ADAL JS"
       }
     ],

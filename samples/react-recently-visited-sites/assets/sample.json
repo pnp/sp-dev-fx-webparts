@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Recently Visited Sites",
     "shortDescription": "This web part provides you the ability to display a list of a particular user\u0027s recently visited sites on a web page. The web part will display up to the first 30 (thirty) recently visited sites at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-recently-visited-sites",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-recently-visited-sites",
     "longDescription": [
       "This web part provides you the ability to display a list of a particular user\u0027s recently visited sites on a web page. The web part will display up to the first 30 (thirty) recently visited sites at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users."
     ],

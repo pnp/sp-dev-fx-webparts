@@ -1,6 +1,6 @@
 # LOB Integration webpart
 
-> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/lobIntegration.
+> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/lobIntegration.
 
 
 This web part allows you to learn how to consume 3rd party APIs, secured with Azure Active Directory, in the context of SharePoint Framework.
@@ -67,9 +67,9 @@ The `LobIntegration` web part can be configured with the following properties:
 
 # Installing the web part
 
-See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
+See getting started from [SP-Starter-Kit repository readme](https://github.com/pnp/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
+You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
 
 # Screenshots
 ![Links](https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-lob-integration.png)
@@ -77,7 +77,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/lobIntegration
+https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/lobIntegration
 
 # Minimal Path to Awesome
 

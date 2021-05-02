@@ -24,7 +24,7 @@ Whenever you are submitting any changes to the SharePoint repositories, please f
 
 * Always fork the repository to your own account before making your modifications
 * Do not combine multiple changes to one pull request. For example, submit any samples and documentation updates using separate PRs
-* If your pull request shows merge conflicts, make sure to update your local master to be a mirror of what's in the main repo before making your modifications
+* If your pull request shows merge conflicts, make sure to update your local main to be a mirror of what's in the main repo before making your modifications
 * If you are submitting multiple samples, please create a specific PR for each of them
 * If you are submitting typo or documentation fix, you can combine modifications to single PR where suitable
 
@@ -96,10 +96,10 @@ Here's a high-level process for submitting new samples or updates to existing on
 
 1. Sign the Contributor License Agreement (see below)
 2. Fork this repository [pnp/sp-dev-fx-webparts](https://github.com/pnp/sp-dev-fx-webparts) to your GitHub account
-3. Create a new branch from the `master` branch for your fork for the contribution
+3. Create a new branch from the `main` branch for your fork for the contribution
 4. Include your changes to your branch
 5. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
-6. Create a pull request in your own fork and target the `master` branch
+6. Create a pull request in your own fork and target the `main` branch
 7. Fill up the provided PR template with the requested details
 
 Before you submit your pull request consider the following guidelines:
@@ -121,7 +121,7 @@ Before you submit your pull request consider the following guidelines:
 * Make your changes in a new git branch:
 
   ```shell
-  git checkout -b react-taxonomypicker master
+  git checkout -b react-taxonomypicker main
   ```
 
 * Ensure your fork is updated and not behind the upstream **sp-dev-fx-webparts** repo. Refer to these resources for more information on syncing your repo:
@@ -131,19 +131,19 @@ Before you submit your pull request consider the following guidelines:
 
     ```shell
     # assuming you are in the folder of your locally cloned fork....
-    git checkout master
+    git checkout main
 
     # assuming you have a remote named `upstream` pointing official **sp-dev-fx-webparts** repo
     git fetch upstream
 
-    # update your local master to be a mirror of what's in the main repo
-    git pull --rebase upstream master
+    # update your local main to be a mirror of what's in the main repo
+    git pull --rebase upstream main
 
     # switch to your branch where you are working, say "react-taxonomypicker"
     git checkout react-taxonomypicker
 
-    # update your branch to update it's fork point to the current tip of master & put your changes on top of it
-    git rebase master
+    # update your branch to update it's fork point to the current tip of main & put your changes on top of it
+    git rebase main
     ```
 
 * Push your branch to GitHub:
@@ -169,19 +169,19 @@ If the sample you wish to contribute is stored in your own GitHub repository, yo
 
     ```shell
     git remote add origin https://github.com/yourgitaccount/sp-dev-fx-webparts.git
-    git pull origin master
+    git pull origin main
     ```
 
 * Pull your other project from GitHub into the `samples` folder of your local copy of `sp-dev-fx-webparts`
 
     ```shell
-    git subtree add --prefix=samples/projectname https://github.com/yourgitaccount/projectname.git master
+    git subtree add --prefix=samples/projectname https://github.com/yourgitaccount/projectname.git main
     ```
 
 * Push the changes up to your forked repository
 
     ```shell
-    git push origin master
+    git push origin main
     ```
 
 ## Signing the CLA

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Web part displaying hierarchical information from SharePoint list",
     "shortDescription": "At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-display-hierarchy",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-display-hierarchy",
     "longDescription": [
       "At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list."
     ],
@@ -28,31 +28,31 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png",
         "alt": "Web part displaying hierarchical information from SharePoint list"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-display-hierarchy/assets/list-sample-data.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/list-sample-data.png?raw=true",
         "alt": "Web part displaying hierarchical information from SharePoint list"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-display-hierarchy/assets/list-schema.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/list-schema.png?raw=true",
         "alt": "Web part displaying hierarchical information from SharePoint list"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-display-hierarchy/assets/sharepoint-run.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/sharepoint-run.gif?raw=true",
         "alt": "Web part displaying hierarchical information from SharePoint list"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-display-hierarchy/assets/webpart-preview.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/webpart-preview.png?raw=true",
         "alt": "Web part displaying hierarchical information from SharePoint list"
       }
     ],

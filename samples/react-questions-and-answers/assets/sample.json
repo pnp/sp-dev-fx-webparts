@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "React Questions and Answers",
     "shortDescription": "This is an application that supports Questions \u0026 Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-questions-and-answers",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-questions-and-answers",
     "longDescription": [
       "This is an application that supports Questions \u0026 Answers through a web part that can be used directly on a Modern SharePoint Site without the need for Yammer or a backing Microsoft Team site.  It relies on a backing SharePoint list that is hidden and a provisioned Site Page that hosts a pre-configured version of the questions web part."
     ],
@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-questions-and-answers/assets/QuestionsAndAnswers.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-questions-and-answers/assets/QuestionsAndAnswers.gif",
         "alt": "React Questions and Answers"
       }
     ],

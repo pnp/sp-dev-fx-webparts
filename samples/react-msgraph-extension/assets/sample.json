@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Manage Microsoft Graph Open Extension in SPFx",
     "shortDescription": "This sample shows how to managed Microsoft Graph Open Extension in SPFX. This application uses User Resource to create Open Extension.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msgraph-extension",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-msgraph-extension",
     "longDescription": [
       "This sample shows how to managed Microsoft Graph Open Extension in SPFX. This application uses User Resource to create Open Extension."
     ],
@@ -28,19 +28,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-msgraph-extension/assets/create-graph-extension.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msgraph-extension/assets/create-graph-extension.png",
         "alt": "Manage Microsoft Graph Open Extension in SPFx"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-msgraph-extension/assets/get-graph-extension.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-msgraph-extension/assets/get-graph-extension.png?raw=true",
         "alt": "Manage Microsoft Graph Open Extension in SPFx"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-msgraph-extension/assets/graph-extension-user-permissions.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-msgraph-extension/assets/graph-extension-user-permissions.png?raw=true",
         "alt": "Manage Microsoft Graph Open Extension in SPFx"
       }
     ],

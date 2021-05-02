@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Project Online",
     "shortDescription": "This sample shows how to use SPFx to consume data from the Project Online REST API.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-project-online",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-project-online",
     "longDescription": [
       "This sample shows how to use SPFx to consume data from the Project Online REST API."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-project-online/assets/Preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-project-online/assets/Preview.gif",
         "alt": "Project Online"
       }
     ],

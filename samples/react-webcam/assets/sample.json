@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Web/Mobile Camera Demo",
     "shortDescription": "This is sample web part to showcase how to open webcam and take photo in SPFx web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-webcam",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-webcam",
     "longDescription": [
       "This is sample web part to showcase how to open webcam and take photo in SPFx web part."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-webcam/screens/4.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/screens/4.png?raw=true",
         "alt": "Web/Mobile Camera Demo"
       }
     ],

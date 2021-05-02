@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Skype Status Web Part",
     "shortDescription": "This sample demonstrates how to use the UCWA JS SDK for skype with the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the documentation",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-skype-status",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-skype-status",
     "longDescription": [
       "This sample demonstrates how to use the UCWA JS SDK for skype with the SharePoint Framework. It shows how to subscribe to status change of the different people of the organization but you can get much more information, checkout the documentation"
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-skype-status/images/demo.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-skype-status/images/demo.gif",
         "alt": "Skype Status Web Part"
       }
     ],

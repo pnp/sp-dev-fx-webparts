@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Date range picker in SPFx",
     "shortDescription": "This web part used the date range picker in the SharePoint Framework (SPFx) web part",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-daterangepicker",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-daterangepicker",
     "longDescription": [
       "This web part used the date range picker in the SharePoint Framework (SPFx) web part"
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-daterangepicker/assets/daterange1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-daterangepicker/assets/daterange1.png",
         "alt": "Date range picker in SPFx"
       }
     ],

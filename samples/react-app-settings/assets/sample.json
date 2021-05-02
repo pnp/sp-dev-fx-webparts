@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "App settings web part",
     "shortDescription": "This sample shows how AppSettings.ts file can be added and used within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects. That allows better DevOps and continuous integration (CI/CD) automation. The AppSettings.ts is transpiled/compiled with your SPFx solution which differs from the way the web.config. With .Net web.config file we would be able to update independently without the need of compiling DLLs. If that behavior is required, you can store your app settings in a SharePoint list and change them from there. However, that will have performance degradation over if the setting was part of the SPFx code where the logic can get a setting value in milliseconds.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-app-settings",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-app-settings",
     "longDescription": [
       "This sample shows how AppSettings.ts file can be added and used within SharePoint Framewrok webparts similar to the Web.config / App.config key value app settings in .NET Framework projects. That allows better DevOps and continuous integration (CI/CD) automation. The AppSettings.ts is transpiled/compiled with your SPFx solution which differs from the way the web.config. With .Net web.config file we would be able to update independently without the need of compiling DLLs. If that behavior is required, you can store your app settings in a SharePoint list and change them from there. However, that will have performance degradation over if the setting was part of the SPFx code where the logic can get a setting value in milliseconds."
     ],
@@ -32,13 +32,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-app-settings/assets/app-settings-class.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-app-settings/assets/app-settings-class.PNG",
         "alt": "App settings web part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-app-settings/assets/spfx-appSettings-json.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-app-settings/assets/spfx-appSettings-json.PNG?raw=true",
         "alt": "App settings web part"
       }
     ],

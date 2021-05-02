@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Smart Profile Photo Editor",
     "shortDescription": "Uses Azure Cognitive Services to analyze and approve or reject user-submitted photos.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-smart-profile-photo-editor",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-smart-profile-photo-editor",
     "longDescription": [
       "Uses Azure Cognitive Services to analyze and approve or reject user-submitted photos."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-smart-profile-photo-editor/assets/WebPartPreview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-smart-profile-photo-editor/assets/WebPartPreview.gif",
         "alt": "Smart Profile Photo Editor"
       }
     ],

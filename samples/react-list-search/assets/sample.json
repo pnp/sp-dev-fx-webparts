@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "List Search",
     "shortDescription": "This list search web part allows the user to show data from lists or libraries.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-search",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-search",
     "longDescription": [
       "This list search web part allows the user to show data from lists or libraries."
     ],
@@ -32,49 +32,49 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-search/assets/differentSources.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-search/assets/differentSources.gif",
         "alt": "List Search"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-search/assets/docInModal.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/docInModal.gif?raw=true",
         "alt": "List Search"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-search/assets/docInNewTab.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/docInNewTab.gif?raw=true",
         "alt": "List Search"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-search/assets/dynamicData.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/dynamicData.gif?raw=true",
         "alt": "List Search"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-search/assets/itemCurrentData.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/itemCurrentData.gif?raw=true",
         "alt": "List Search"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-search/assets/itemSelectedData.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/itemSelectedData.gif?raw=true",
         "alt": "List Search"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-search/assets/redirectToUrl.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/redirectToUrl.gif?raw=true",
         "alt": "List Search"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-list-search/assets/selectFieldRenderType.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/selectFieldRenderType.gif?raw=true",
         "alt": "List Search"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "React World Clocks",
     "shortDescription": "This sample is extension of the single World time clock sample that was provided in SP Starter Kit.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-world-clocks",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-world-clocks",
     "longDescription": [
       "This sample is extension of the single World time clock sample that was provided in SP Starter Kit."
     ],
@@ -28,19 +28,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-world-clocks/assets/ClocksInAction.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-world-clocks/assets/ClocksInAction.gif",
         "alt": "React World Clocks"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-world-clocks/assets/WebPart.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-world-clocks/assets/WebPart.png?raw=true",
         "alt": "React World Clocks"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-world-clocks/assets/WorldClockList.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-world-clocks/assets/WorldClockList.png?raw=true",
         "alt": "React World Clocks"
       }
     ],

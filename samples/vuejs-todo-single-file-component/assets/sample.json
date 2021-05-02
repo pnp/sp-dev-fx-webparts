@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Todo Client Web Part built with Vue.js and Vue\u0027s single-file components",
     "shortDescription": "Sample Todo web part demonstrating how you can utilize Vue (a progressive framework for building user interfaces) with SharePoint Framework using handy single-file components approach.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/vuejs-todo-single-file-component",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/vuejs-todo-single-file-component",
     "longDescription": [
       "Sample Todo web part demonstrating how you can utilize Vue (a progressive framework for building user interfaces) with SharePoint Framework using handy single-file components approach."
     ],

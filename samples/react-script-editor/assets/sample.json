@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Script editor web part",
     "shortDescription": "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-script-editor",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-script-editor",
     "longDescription": [
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part."
     ],
@@ -36,13 +36,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-script-editor/assets/modern-script-editor-wp.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-script-editor/assets/modern-script-editor-wp.gif",
         "alt": "Script editor web part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-script-editor/assets/modern-script-editor-wp-teams.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-script-editor/assets/modern-script-editor-wp-teams.gif?raw=true",
         "alt": "Script editor web part"
       }
     ],

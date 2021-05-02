@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Target audience",
     "shortDescription": "Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-target-audience",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-target-audience",
     "longDescription": [
       "Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-target-audience/assets/audience.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-target-audience/assets/audience.gif",
         "alt": "Target audience"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Knockout Dependent Properties",
     "shortDescription": "Sample Web Part illustrating...",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/knockout-dependent-properties",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/knockout-dependent-properties",
     "longDescription": [
       "Sample Web Part illustrating..."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/knockout-dependent-properties/assets/dep-props.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-dependent-properties/assets/dep-props.png",
         "alt": "Knockout Dependent Properties"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "My Sites",
     "shortDescription": "This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-sites",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-sites",
     "longDescription": [
       "This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins."
     ],
@@ -40,25 +40,25 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-sites/assets/MySites.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites/assets/MySites.gif",
         "alt": "My Sites"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-sites/assets/Screenshot 2020-08-06 at 13.50.51.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-sites/assets/Screenshot 2020-08-06 at 13.50.51.png?raw=true",
         "alt": "My Sites"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-sites/assets/Screenshot 2020-08-06 at 13.52.58.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-sites/assets/Screenshot 2020-08-06 at 13.52.58.png?raw=true",
         "alt": "My Sites"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-sites/assets/Screenshot 2020-08-06 at 14.17.35.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-sites/assets/Screenshot 2020-08-06 at 14.17.35.png?raw=true",
         "alt": "My Sites"
       }
     ],

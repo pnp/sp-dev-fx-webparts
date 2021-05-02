@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io",
     "shortDescription": "This sample shows you how to implement real time web parts using the SPFx, Azure Logic Apps, Node.js and socket.io.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-real-time",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-real-time",
     "longDescription": [
       "This sample shows you how to implement real time web parts using the SPFx, Azure Logic Apps, Node.js and socket.io."
     ],
@@ -28,49 +28,49 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-real-time/assets/animated-demo.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-real-time/assets/animated-demo.gif",
         "alt": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-real-time/assets/flow.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-real-time/assets/flow.png?raw=true",
         "alt": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-real-time/assets/network-console.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-real-time/assets/network-console.png?raw=true",
         "alt": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-real-time/assets/service-bus-new-connection.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-real-time/assets/service-bus-new-connection.png?raw=true",
         "alt": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-real-time/assets/service-bus.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-real-time/assets/service-bus.png?raw=true",
         "alt": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-real-time/assets/solution_overview.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-real-time/assets/solution_overview.png?raw=true",
         "alt": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-real-time/assets/spfx-initial.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-real-time/assets/spfx-initial.png?raw=true",
         "alt": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-real-time/assets/spfx-newitem.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-real-time/assets/spfx-newitem.png?raw=true",
         "alt": "Real Time News Feed using Azure Logic Apps, Node.js and socket.io"
       }
     ],

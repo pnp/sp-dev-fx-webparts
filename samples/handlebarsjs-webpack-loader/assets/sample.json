@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Sample with Handlebars.js",
     "shortDescription": "This sample demonstrate how to set up SPFX to use Handlebars through webpack loader.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/handlebarsjs-webpack-loader",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/handlebarsjs-webpack-loader",
     "longDescription": [
       "This sample demonstrate how to set up SPFX to use Handlebars through webpack loader."
     ],

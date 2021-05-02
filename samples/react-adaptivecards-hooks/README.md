@@ -2,7 +2,7 @@
 
 ## Summary
 
-A version of [react-adaptivecards](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-adaptivecards) using React Hooks.
+A version of [react-adaptivecards](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards) using React Hooks.
 
 ![Adaptive Cards in SharePoint](assets/preview.png)
 

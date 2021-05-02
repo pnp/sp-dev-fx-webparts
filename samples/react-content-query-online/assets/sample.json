@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Content Query Web Part (SharePoint Online)",
     "shortDescription": "The React Content Query Web Part is a modern version of the good old Content by Query Web Part that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original Web Part was based on a XSLT templating engine, this React Web Part is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-content-query-online",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-query-online",
     "longDescription": [
       "The React Content Query Web Part is a modern version of the good old Content by Query Web Part that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original Web Part was based on a XSLT templating engine, this React Web Part is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more."
     ],
@@ -28,73 +28,73 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-content-query-online/assets/toolpart.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-query-online/assets/toolpart.gif",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/allsites.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/allsites.gif?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/allsites_v2.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/allsites_v2.gif?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/clearItemSelector.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/clearItemSelector.png?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/configureItemSelector.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/configureItemSelector.png?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/connectToSource.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/connectToSource.png?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/datetime.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/datetime.gif?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/dynamicDataConnection.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/dynamicDataConnection.png?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 108,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/externalScripts.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/externalScripts.png?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 109,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/filters.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/filters.gif?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 110,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/itemSelectorTemplate.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/itemSelectorTemplate.png?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       },
       {
         "type": "image",
         "order": 111,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-content-query-online/assets/itemSelectorTemplateOutput.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/itemSelectorTemplateOutput.png?raw=true",
         "alt": "Content Query Web Part (SharePoint Online)"
       }
     ],

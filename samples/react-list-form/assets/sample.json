@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "List Form Web Part",
     "shortDescription": "The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-list-form",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-form",
     "longDescription": [
       "The React List Form web part is a web part for adding a list form to any page. It provides a working example of implementing generic SharePoint list forms using the SharePoint Framework (SPFx) and the React and Office UI Fabric libraries."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-list-form/assets/React-ListForm-Overview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-form/assets/React-ListForm-Overview.gif",
         "alt": "List Form Web Part"
       }
     ],

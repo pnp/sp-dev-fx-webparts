@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Modern Experience Theme Manager 2019",
     "shortDescription": "This sample web part provides a user interface for applying a Modern Experience theme in SharePoint 2019 on-premises.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-theme-manager-2019",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-theme-manager-2019",
     "longDescription": [
       "This sample web part provides a user interface for applying a Modern Experience theme in SharePoint 2019 on-premises."
     ],
@@ -28,31 +28,31 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-theme-manager-2019/assets/apply-a-theme.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager-2019/assets/apply-a-theme.png",
         "alt": "Modern Experience Theme Manager 2019"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-theme-manager-2019/assets/create-a-theme.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-theme-manager-2019/assets/create-a-theme.png?raw=true",
         "alt": "Modern Experience Theme Manager 2019"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-theme-manager-2019/assets/delete-a-theme.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-theme-manager-2019/assets/delete-a-theme.png?raw=true",
         "alt": "Modern Experience Theme Manager 2019"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-theme-manager-2019/assets/theme-manager.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-theme-manager-2019/assets/theme-manager.png?raw=true",
         "alt": "Modern Experience Theme Manager 2019"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-theme-manager-2019/assets/update-a-theme.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-theme-manager-2019/assets/update-a-theme.png?raw=true",
         "alt": "Modern Experience Theme Manager 2019"
       }
     ],

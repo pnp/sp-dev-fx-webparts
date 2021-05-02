@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Custom Links",
     "shortDescription": "In this web part you can full customize the background and foreground color, font size, width and height of links.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-custom-links",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-custom-links",
     "longDescription": [
       "In this web part you can full customize the background and foreground color, font size, width and height of links."
     ],
@@ -40,25 +40,25 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-custom-links/assets/customlinks.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custom-links/assets/customlinks.gif",
         "alt": "Custom Links"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-custom-links/assets/customLinks01.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-custom-links/assets/customLinks01.PNG?raw=true",
         "alt": "Custom Links"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-custom-links/assets/customLinks02.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-custom-links/assets/customLinks02.PNG?raw=true",
         "alt": "Custom Links"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-custom-links/assets/customlinks03.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-custom-links/assets/customlinks03.PNG?raw=true",
         "alt": "Custom Links"
       }
     ],

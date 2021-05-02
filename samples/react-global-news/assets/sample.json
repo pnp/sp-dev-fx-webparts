@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Global News",
     "shortDescription": "This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites around the world.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-global-news",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-global-news",
     "longDescription": [
       "This web part show a world news from various sources, it uses the API available on https://newsapi.org this collect information from news and blog sites around the world."
     ],
@@ -44,19 +44,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-global-news/assets/GlobalNews.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news/assets/GlobalNews.png",
         "alt": "Global News"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-global-news/assets/globalNews.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-global-news/assets/globalNews.gif?raw=true",
         "alt": "Global News"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-global-news/assets/news.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-global-news/assets/news.jpg?raw=true",
         "alt": "Global News"
       }
     ],

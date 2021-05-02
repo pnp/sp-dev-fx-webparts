@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Side Panel Client-Side Web Part",
     "shortDescription": "The web part illustrates creation and usage of Side Panel (Sidebar) control.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-side-panel",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-side-panel",
     "longDescription": [
       "The web part illustrates creation and usage of Side Panel (Sidebar) control."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-side-panel/assets/side-panel.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-side-panel/assets/side-panel.gif",
         "alt": "Side Panel Client-Side Web Part"
       }
     ],

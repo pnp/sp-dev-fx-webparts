@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Using jQuery loaded from CDN",
     "shortDescription": "This is a sample web Part that illustrates the use of jQuery and its plugins loaded from CDN for building SharePoint Framework client-side web parts.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/jquery-cdn",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/jquery-cdn",
     "longDescription": [
       "This is a sample web Part that illustrates the use of jQuery and its plugins loaded from CDN for building SharePoint Framework client-side web parts."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/jquery-cdn/assets/preview_weather.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/jquery-cdn/assets/preview_weather.png",
         "alt": "Using jQuery loaded from CDN"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Offline First Web part built using LocalForage, Whatwg-Fetch, ES6-Promise",
     "shortDescription": "Sample SharePoint Framework Client-Side Web Parts built using React showing interacting with the Office Graph.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-offline-first",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-offline-first",
     "longDescription": [
       "Sample SharePoint Framework Client-Side Web Parts built using React showing interacting with the Office Graph."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-offline-first/assets/preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-offline-first/assets/preview.gif",
         "alt": "Offline First Web part built using LocalForage, Whatwg-Fetch, ES6-Promise"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-offline-first/assets/webpart-screenshot.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-offline-first/assets/webpart-screenshot.jpg?raw=true",
         "alt": "Offline First Web part built using LocalForage, Whatwg-Fetch, ES6-Promise"
       }
     ],

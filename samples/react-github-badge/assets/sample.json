@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "GitHub Badge (React)",
     "shortDescription": "Displays information about a GitHub user.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-github-badge",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-github-badge",
     "longDescription": [
       "Displays information about a GitHub user."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-github-badge/assets/githubbadge.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-github-badge/assets/githubbadge.png",
         "alt": "GitHub Badge (React)"
       }
     ],

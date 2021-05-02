@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Call custom Web API secured with AAD from SharePoint Framework client-side web part using Angular v1.x",
     "shortDescription": "Sample SharePoint Framework client-side web part illustrating communication with a custom Web API secured with Azue Active Directory using Angular v1.x",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-aad-webapi",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-aad-webapi",
     "longDescription": [
       "Sample SharePoint Framework client-side web part illustrating communication with a custom Web API secured with Azue Active Directory using Angular v1.x"
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-aad-webapi/assets/preview.jpg",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-aad-webapi/assets/preview.jpg",
         "alt": "Call custom Web API secured with AAD from SharePoint Framework client-side web part using Angular v1.x"
       }
     ],

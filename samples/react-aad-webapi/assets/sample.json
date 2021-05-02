@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Call custom Web API secured with AAD from SharePoint Framework client-side web part",
     "shortDescription": "Sample SharePoint Framework client-side web part illustrating communication with a custom Web API secured with Azure Active Directory.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-aad-webapi",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aad-webapi",
     "longDescription": [
       "Sample SharePoint Framework client-side web part illustrating communication with a custom Web API secured with Azure Active Directory."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-aad-webapi/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-webapi/assets/preview.png",
         "alt": "Call custom Web API secured with AAD from SharePoint Framework client-side web part"
       }
     ],

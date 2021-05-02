@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Google reCaptcha Sample",
     "shortDescription": "This is sample web part which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx web part. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your business requirement if you need to implement CAPTCHA in SPFx web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-recaptcha",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-recaptcha",
     "longDescription": [
       "This is sample web part which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx web part. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your business requirement if you need to implement CAPTCHA in SPFx web part."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-recaptcha/screens/WebpartInAction.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-recaptcha/screens/WebpartInAction.gif",
         "alt": "Google reCaptcha Sample"
       }
     ],

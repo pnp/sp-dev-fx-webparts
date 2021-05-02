@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "ReactiveX (RxJs) Event Emitter Sample",
     "shortDescription": "This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish\u2013subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rxjs-event-emitter",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rxjs-event-emitter",
     "longDescription": [
       "This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish\u2013subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-rxjs-event-emitter/assets/spfx-event-emitter.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rxjs-event-emitter/assets/spfx-event-emitter.gif",
         "alt": "ReactiveX (RxJs) Event Emitter Sample"
       }
     ],

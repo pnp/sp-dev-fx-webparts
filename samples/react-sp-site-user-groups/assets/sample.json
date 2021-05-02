@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Site User and Group Information",
     "shortDescription": "Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-sp-site-user-groups",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-site-user-groups",
     "longDescription": [
       "Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed."
     ],
@@ -28,19 +28,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-sp-site-user-groups/assets/screen1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-site-user-groups/assets/screen1.png",
         "alt": "Site User and Group Information"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-sp-site-user-groups/assets/screen2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-sp-site-user-groups/assets/screen2.png?raw=true",
         "alt": "Site User and Group Information"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-sp-site-user-groups/assets/screen3.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-sp-site-user-groups/assets/screen3.png?raw=true",
         "alt": "Site User and Group Information"
       }
     ],

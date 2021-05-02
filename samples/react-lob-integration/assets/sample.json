@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "LOB Integration web part",
     "shortDescription": "This web part allows you to learn how to consume 3rd party APIs, secured with Azure Active Directory, in the context of SharePoint Framework.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-lob-integration",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-lob-integration",
     "longDescription": [
       "This web part allows you to learn how to consume 3rd party APIs, secured with Azure Active Directory, in the context of SharePoint Framework."
     ],

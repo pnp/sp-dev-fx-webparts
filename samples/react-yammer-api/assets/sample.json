@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Yammer REST API web part",
     "shortDescription": "This sample shows how Yammer REST APIs can be consumed by using SharePoint Framework React web part and the Yammer JavaScript SDK. The SPFx web part contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-yammer-api",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-yammer-api",
     "longDescription": [
       "This sample shows how Yammer REST APIs can be consumed by using SharePoint Framework React web part and the Yammer JavaScript SDK. The SPFx web part contains wrapper around the Yammer JavaScript SDK that can be extended for fluent typescript api experience."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-yammer-api/assets/spfx-yammer-api-webpart.jpg",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yammer-api/assets/spfx-yammer-api-webpart.jpg",
         "alt": "Yammer REST API web part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-yammer-api/assets/yammer-enabled-screen.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-yammer-api/assets/yammer-enabled-screen.png?raw=true",
         "alt": "Yammer REST API web part"
       }
     ],

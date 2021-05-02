@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Handling Multiple Editions of SPFx Solution",
     "shortDescription": "This sample shows possible approach of handling multiple editions (e.g. trial, lite, full) of SharePoint Framework solution.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-solution-editions",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-solution-editions",
     "longDescription": [
       "This sample shows possible approach of handling multiple editions (e.g. trial, lite, full) of SharePoint Framework solution."
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Extending webpack in the SharePoint Framework toolchain",
     "shortDescription": "This sample shows how to use the webpack markdown-loader to preprocess markdown files to HTML string.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-extend-webpack",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-extend-webpack",
     "longDescription": [
       "This sample shows how to use the webpack markdown-loader to preprocess markdown files to HTML string."
     ],

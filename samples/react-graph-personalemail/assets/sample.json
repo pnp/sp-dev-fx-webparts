@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Personal e-mail",
     "shortDescription": "Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-personalemail",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-personalemail",
     "longDescription": [
       "Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-personalemail/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-personalemail/assets/preview.png",
         "alt": "Personal e-mail"
       }
     ],

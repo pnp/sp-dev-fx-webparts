@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "My Flows Web Part",
     "shortDescription": "Manage current user flows in SharePoint or Teams Tab, this web part use the msflowsdk-1.1.js",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-myflows",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-myflows",
     "longDescription": [
       "Manage current user flows in SharePoint or Teams Tab, this web part use the msflowsdk-1.1.js"
     ],
@@ -32,31 +32,31 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-myflows/assets/Screenshot4.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-myflows/assets/Screenshot4.png",
         "alt": "My Flows Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-myflows/assets/MyFlows.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-myflows/assets/MyFlows.gif?raw=true",
         "alt": "My Flows Web Part"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-myflows/assets/Screenshot1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-myflows/assets/Screenshot1.png?raw=true",
         "alt": "My Flows Web Part"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-myflows/assets/Screenshot2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-myflows/assets/Screenshot2.png?raw=true",
         "alt": "My Flows Web Part"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/js-myflows/assets/Screenshot3.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-myflows/assets/Screenshot3.png?raw=true",
         "alt": "My Flows Web Part"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Page Contributors Web Part",
     "shortDescription": "Displays page contributors in reverse chronological order.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pagecontributors",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pagecontributors",
     "longDescription": [
       "Displays page contributors in reverse chronological order."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG",
         "alt": "Page Contributors Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-pagecontributors/assets/pagecontributors_mockup.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-pagecontributors/assets/pagecontributors_mockup.PNG?raw=true",
         "alt": "Page Contributors Web Part"
       }
     ],

@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Graph MGT Client",
     "shortDescription": "This is a sample web part developed using React Framework that showcases how to use the latest `microsoft-graph-client` in order to do advanced configuration of the Microsoft Graph client. ",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-mgt-client",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-mgt-client",
     "longDescription": [
       "This is a sample web part developed using React Framework that showcases how to use the latest `microsoft-graph-client` in order to do advanced configuration of the Microsoft Graph client.",
       "This enables scenarios like throttling management, Chaos management and a lot more!"
@@ -29,7 +29,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-mgt-client/assets/DemoGraphClient.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-mgt-client/assets/DemoGraphClient.gif",
         "alt": "Web Part in action"
       }
     ],

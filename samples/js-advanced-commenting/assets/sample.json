@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Advanced Comments Box",
     "shortDescription": "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/js-advanced-commenting",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-advanced-commenting",
     "longDescription": [
       "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments."
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif",
         "alt": "Advanced Comments Box"
       }
     ],

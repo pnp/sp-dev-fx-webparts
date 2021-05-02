@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "COVID 19 information web part",
     "shortDescription": "This web part displays info about the COVID-19 virus for a given country.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-covid19-info",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-covid19-info",
     "longDescription": [
       "This web part displays info about the COVID-19 virus for a given country."
     ],
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-covid19-info/assets/covid-counter.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-covid19-info/assets/covid-counter.gif",
         "alt": "COVID 19 information web part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-covid19-info/assets/Langing-page-screenshot.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-covid19-info/assets/Langing-page-screenshot.png?raw=true",
         "alt": "COVID 19 information web part"
       }
     ],

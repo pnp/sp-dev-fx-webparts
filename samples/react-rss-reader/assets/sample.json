@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "SharePoint Framework RSS Reader",
     "shortDescription": "A RSS Reader original based on work completed by Olivier Carpentier\u0027s",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rss-reader",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
     "longDescription": [
       "A RSS Reader original based on work completed by Olivier Carpentier\u0027s"
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-rss-reader/images/react-rss-reader.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rss-reader/images/react-rss-reader.gif",
         "alt": "SharePoint Framework RSS Reader"
       }
     ],

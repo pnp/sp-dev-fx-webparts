@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "SPUPS Property Sync",
     "shortDescription": "This component will help the administrators who are currently maintaining the user profiles in their organization.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-spupsproperty-sync",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spupsproperty-sync",
     "longDescription": [
       "This component will help the administrators who are currently maintaining the user profiles in their organization."
     ],
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-spupsproperty-sync/assets/SPUPS-Sync.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spupsproperty-sync/assets/SPUPS-Sync.gif",
         "alt": "SPUPS Property Sync"
       }
     ],

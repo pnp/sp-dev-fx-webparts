@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Aggregated Calendar Web part",
     "shortDescription": "This is a sample web part developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-aggregated-calendar",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aggregated-calendar",
     "longDescription": [
       "This is a sample web part developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io"
     ],
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-aggregated-calendar/assets/react-aggregated-calendar.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aggregated-calendar/assets/react-aggregated-calendar.gif",
         "alt": "Aggregated Calendar Web part"
       }
     ],

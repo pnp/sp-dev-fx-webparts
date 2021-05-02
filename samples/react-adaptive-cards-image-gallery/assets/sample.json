@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Image Gallery Web Part Built with Adaptive Cards",
     "shortDescription": "This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-adaptive-cards-image-gallery",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptive-cards-image-gallery",
     "longDescription": [
       "This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list."
     ],
@@ -28,25 +28,25 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptive-cards-image-gallery/assets/sharepoint-run.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptive-cards-image-gallery/assets/sharepoint-run.gif",
         "alt": "Image Gallery Web Part Built with Adaptive Cards"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptive-cards-image-gallery/assets/list-sample-data.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptive-cards-image-gallery/assets/list-sample-data.png?raw=true",
         "alt": "Image Gallery Web Part Built with Adaptive Cards"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptive-cards-image-gallery/assets/list-schema.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptive-cards-image-gallery/assets/list-schema.png?raw=true",
         "alt": "Image Gallery Web Part Built with Adaptive Cards"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-adaptive-cards-image-gallery/assets/webpart-preview.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptive-cards-image-gallery/assets/webpart-preview.png?raw=true",
         "alt": "Image Gallery Web Part Built with Adaptive Cards"
       }
     ],
