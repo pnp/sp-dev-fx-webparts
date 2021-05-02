@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/joaojmendes/sp-dev-fx-webparts/raw/master/samples/react-tenant-properties/assets/TenantProperties2.jpg",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tenant-properties/assets/TenantProperties2.jpg",
         "alt": "Tenant Properties Web Part"
       },
       {
