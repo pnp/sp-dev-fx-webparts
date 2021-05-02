@@ -32,11 +32,11 @@
         "alt": "Using PnP JS Core custom objects with @select and @expand decorators"
       }
     ],
-    "authors": [
+   "authors": [
       {
-        "gitHubAccount": "jquinzamora",
+        "gitHubAccount": "jquintozamora",
         "company": "",
-        "pictureUrl": "https://github.com/jquinzamora.png",
+        "pictureUrl": "https://github.com/jquintozamora.png",
         "name": "Jose Quinto"
       }
     ],
