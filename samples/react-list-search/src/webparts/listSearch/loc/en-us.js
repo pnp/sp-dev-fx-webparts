@@ -105,7 +105,9 @@ define([], function () {
     InitialSearchText: "Initial search query",
     GeneralFilterInitialQueryEnabled: "Initial search enabled",
     GeneralFilterInitialQueryOption: "Initial search type",
-    GeneralFilterInitialQueryTextValue: "Initial search value"
-
+    GeneralFilterInitialQueryTextValue: "Initial search value",
+    WebPartTitlePlaceHolder: "Web part title",
+    ModerAudienceEnabledTitle: "Modern audience enabled",
+  ModernAudienceEnabledTitle: "Modern audience enabled",
   }
 });

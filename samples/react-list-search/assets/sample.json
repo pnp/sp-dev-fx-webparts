@@ -8,8 +8,8 @@
     "longDescription": [
       "This list search web part allows the user to show data from lists or libraries."
     ],
-    "created": "2020-12-20",
-    "modified": "2020-12-20",
+    "creationDateTime": "2020-12-20",
+    "updateDateTime": "2021-04-25",
     "products": [
       "SharePoint",
       "Office"

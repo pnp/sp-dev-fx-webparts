@@ -4,21 +4,22 @@ import * as strings from 'ListSearchWebPartStrings';
 import ListService from '../services/ListService';
 import IGroupedItems, { IListSearchState, IColumnFilter } from './IListSearchState';
 import { IListSearchProps } from './IListSearchProps';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import {
-  DetailsList,
   IColumn,
   IDetailsFooterProps,
   IDetailsRowBaseProps,
   DetailsRow,
   SelectionMode,
-  IGroup
+  IGroup,
+  DetailsHeader,
+  DetailsListLayoutMode,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import {
   getTheme,
   IconButton,
   MessageBar,
-  MessageBarType
+  MessageBarType,
+  ShimmeredDetailsList
 } from 'office-ui-fabric-react';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import Pagination from "react-js-pagination";
@@ -41,9 +42,11 @@ import IUserField from '../model/IUserField';
 import IUrlField from '../model/IUrlField';
 import { IFrameDialog } from "@pnp/spfx-controls-react/lib/IFrameDialog";
 import { IModalType } from '../model/IModalType';
-import { groupBy, isEmpty } from '@microsoft/sp-lodash-subset';
+import { find, groupBy, isEmpty } from '@microsoft/sp-lodash-subset';
 import IResult from '../model/IResult';
 import { IListSearchListQuery, IMapQuery } from '../model/IMapQuery';
+import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
+import GraphService from '../services/GraphService';
 
 
 const LOG_SOURCE = "IListdSearchWebPart";
@@ -52,6 +55,8 @@ const filterIcon: IIconProps = { iconName: 'Filter' };
 export default class IListdSearchWebPart extends React.Component<IListSearchProps, IListSearchState> {
   private groups: IGroup[];
   private keymapQuerys: IMapQuery = {};
+  private _graphService: GraphService;
+
   constructor(props: IListSearchProps, state: IListSearchState) {
     super(props);
     this.state = {
@@ -67,11 +72,12 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       isModalLoading: false,
       selectedItem: null,
       completeModalItemData: null,
-      columns: [],
+      columns: this.AddColumnsToDisplay(),
       groupedItems: []
     };
     this.GetJSXElementByType = this.GetJSXElementByType.bind(this);
     this._renderItemColumn = this._renderItemColumn.bind(this);
+    this._graphService = new GraphService(this.props.Context);
 
   }
 
@@ -109,7 +115,6 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         result = result.slice(0, this.props.ItemLimit);
       }
 
-      let columns = this.AddColumnsToDisplay();
       let groupedItems = [];
       if (this.props.groupByField) {
         groupedItems = this._groupBy(result, this.props.groupByField, this.props.groupByFieldType);
@@ -120,7 +125,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         filteredItems = this.filterListItemsByGeneralFilter(this.props.generalFilterText, false, false, result, filteredItems);
       }
 
-      this.setState({ items: result, filterItems: filteredItems, isLoading: false, columns, groupedItems });
+      this.setState({ items: result, filterItems: filteredItems, isLoading: false, groupedItems });
     } catch (error) {
       this.SetError(error, "getData");
     }
@@ -134,7 +139,13 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       let listService: ListService = new ListService(site, this.props.UseCache, this.props.minutesToCache, this.props.CacheType);
       let siteProperties = this.props.Sites.filter(siteInformation => siteInformation.url === site);
       Object.keys(this.keymapQuerys[site]).map(listQuery => {
-        itemPromise.push(listService.getListItems(this.keymapQuerys[site][listQuery], this.props.ListNameTitle, this.props.SiteNameTitle, siteProperties[0][this.props.SiteNamePropertyToShow], this.props.ItemLimit));
+        itemPromise.push(listService.getListItems(
+          this.keymapQuerys[site][listQuery],
+          this.props.ListNameTitle,
+          this.props.SiteNameTitle,
+          siteProperties[0][this.props.SiteNamePropertyToShow],
+          this.props.ItemLimit,
+          this._graphService));
       });
     });
 
@@ -189,16 +200,26 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           }
         }
         else {
-          let listQueryInfo = this.props.listsCollectionData.filter(list => list.SiteCollectionSource == item.SiteCollectionSource && list.ListSourceField == item.ListSourceField);
-
-          let newQueryListItem: IListSearchListQuery = { list: { Id: item.ListSourceField, Title: item.ListSourceFieldName }, fields: [{ originalField: item.SourceField, newField: item.TargetField, fieldType: item.SPFieldType }], camlQuery: listQueryInfo.length > 0 && listQueryInfo[0].Query, viewName: listQueryInfo.length > 0 && listQueryInfo[0].ListView };
+          let listQueryInfo = find(this.props.listsCollectionData, list => list.SiteCollectionSource == item.SiteCollectionSource && list.ListSourceField == item.ListSourceField);
+          let newQueryListItem: IListSearchListQuery = {
+            list: { Id: item.ListSourceField, Title: item.ListSourceFieldName },
+            audienceEnabled: listQueryInfo.AudienceEnabled,
+            fields: [{ originalField: item.SourceField, newField: item.TargetField, fieldType: item.SPFieldType }],
+            camlQuery: listQueryInfo && listQueryInfo.Query,
+            viewName: listQueryInfo && listQueryInfo.ListView
+          };
           this.keymapQuerys[item.SiteCollectionSource][item.ListSourceField] = newQueryListItem;
         }
       }
       else {
-        let listQueryInfo = this.props.listsCollectionData.filter(list => list.SiteCollectionSource == item.SiteCollectionSource && list.ListSourceField == item.ListSourceField);
-
-        let newQueryListItem: IListSearchListQuery = { list: { Id: item.ListSourceField, Title: item.ListSourceFieldName }, fields: [{ originalField: item.SourceField, newField: item.TargetField, fieldType: item.SPFieldType }], camlQuery: listQueryInfo.length > 0 && listQueryInfo[0].Query, viewName: listQueryInfo.length > 0 && listQueryInfo[0].ListView };
+        let listQueryInfo = find(this.props.listsCollectionData, list => list.SiteCollectionSource == item.SiteCollectionSource && list.ListSourceField == item.ListSourceField);
+        let newQueryListItem: IListSearchListQuery = {
+          list: { Id: item.ListSourceField, Title: item.ListSourceFieldName },
+          audienceEnabled: listQueryInfo.AudienceEnabled,
+          fields: [{ originalField: item.SourceField, newField: item.TargetField, fieldType: item.SPFieldType }],
+          camlQuery: listQueryInfo && listQueryInfo.Query,
+          viewName: listQueryInfo && listQueryInfo.ListView
+        };
         this.keymapQuerys[item.SiteCollectionSource] = [];
         this.keymapQuerys[item.SiteCollectionSource][item.ListSourceField] = newQueryListItem;
       }
@@ -300,27 +321,38 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
   }
 
 
-  private _onRenderDetails(detailsFooterProps: IDetailsFooterProps): JSX.Element {
-    let _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn'] = (item, index, column) => {
-      let filter: IColumnFilter = this.state.columnFilters.find(colFilter => colFilter.columnName == column.name);
-      if (this.props.IndividualColumnFilter && column.data != SharePointType.FileIcon) {
-        return (
-          <SearchBox placeholder={column.name} iconProps={filterIcon} value={filter ? filter.filterToApply : ""}
-            underlined={true} onChange={(ev, value) => this.filterColumnListItems(column.name, value, column.data)} onClear={(ev) => this.filterColumnListItems(column.name, "", SharePointType.Text)} />
-        );
+  private _onRenderDetails(detailsFooterProps: IDetailsFooterProps, showSearchBox: boolean, isHeader: boolean): JSX.Element {
+    if (this.props.IndividualColumnFilter) {
+      let _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn'] = (item, index, column) => {
+        let filter: IColumnFilter = this.state.columnFilters.find(colFilter => colFilter.columnName == column.name);
+        if (this.props.IndividualColumnFilter && showSearchBox && column.data != SharePointType.FileIcon) {
+          return (
+            <SearchBox placeholder={column.name} iconProps={filterIcon} value={filter ? filter.filterToApply : ""}
+              underlined={true} onChange={(ev, value) => this.filterColumnListItems(column.name, value, column.data)} onClear={(ev) => this.filterColumnListItems(column.name, "", SharePointType.Text)} />
+          );
+        }
+        else {
+          return undefined;
+        }
+      };
+
+      return (
+        <DetailsRow
+          {...detailsFooterProps}
+          item={{}}
+          itemIndex={-1}
+          onRenderItemColumn={_renderDetailsFooterItemColumn}
+        />
+      );
+    }
+    else {
+      if (isHeader) {
+        return <DetailsHeader {...detailsFooterProps} layoutMode={DetailsListLayoutMode.justified} styles={{ root: { backgroundColor: 'transparent' } }} />;
       }
       else {
         return undefined;
       }
-    };
-    return (
-      <DetailsRow
-        {...detailsFooterProps}
-        item={{}}
-        itemIndex={-1}
-        onRenderItemColumn={_renderDetailsFooterItemColumn}
-      />
-    );
+    }
   }
 
   private handlePageChange(pageNumber) {
@@ -371,6 +403,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
     let completeItemQueryOptions: IListSearchListQuery = {
       list: item.List,
+      audienceEnabled: true,
       fields: this.props.completeModalFields && this.props.completeModalFields.filter(field => field.SiteCollectionSource == item.SiteUrl &&
         field.ListSourceField == item.List.Id).map(field => { return { originalField: field.SourceField, newField: field.TargetField, fieldType: field.SPFieldType }; })
     };
@@ -540,21 +573,20 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     return this.props.clickEnabled ?
       this.props.oneClickOption ?
         <div onClick={() => this._onItemInvoked(detailrow.item)}>
-          {defaultRender({ ...detailrow, styles: { root: { cursor: 'pointer' } } })}
+          {defaultRender({ ...detailrow, styles: { root: { cursor: 'pointer', backgroundColor: 'transparent' } } })}
         </div>
         :
         <>
-          {defaultRender({ ...detailrow, styles: { root: { cursor: 'pointer' } } })}
+          {defaultRender({ ...detailrow, styles: { root: { cursor: 'pointer', backgroundColor: 'transparent' } } })}
         </>
       :
       <>
-        {defaultRender({ ...detailrow })}
+        {defaultRender({ ...detailrow, styles: { root: { backgroundColor: 'transparent' } } })}
       </>;
   }
 
   private _renderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
-    let result = this.GetJSXElementByType(item, column.fieldName, column.data);
-    return result;
+    return this.GetJSXElementByType(item, column.fieldName, column.data);
   }
 
   private GetModalBodyRenderByFieldType(item: any, propertyName: string, fieldType: SharePointType): JSX.Element {
@@ -649,7 +681,8 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
 
   private GetJSXElementByType(item: any, fieldName: string, fieldType: SharePointType, ommitCamlQuery: boolean = false): JSX.Element {
     const value: any = this.GetItemValueFieldByFieldType(item, fieldName, fieldType, ommitCamlQuery);
-    let result;
+    const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
+    let result: JSX.Element = <span></span>;
     switch (fieldType) {
       case SharePointType.FileIcon:
         {
@@ -659,7 +692,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
       case SharePointType.User:
         {
           if (this.props.AnyCamlQuery && !ommitCamlQuery) {
-            result = <span>{value}</span>;
+            result = <span style={{ color: semanticColors.bodyText }}>{value}</span>;
           }
           else {
             if (value && value.Name) {
@@ -684,10 +717,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           if (this.props.AnyCamlQuery && !ommitCamlQuery && value && value.length > 0) {
             result = <span>{value.map((val, index) => {
               if (index + 1 == value.length) {
-                return <span>{val}</span>;
+                return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
               }
               else {
-                return <span>{val}<br></br></span>;
+                return <span style={{ color: semanticColors.bodyText }}>{val}<br></br></span>;
               }
             })}
             </span>;
@@ -703,6 +736,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
                 maxDisplayablePersonas={3}
                 overflowButtonType={OverflowButtonType.descriptive}
                 overflowButtonProps={overflowButtonProps}
+
               />;
             }
             else {
@@ -716,10 +750,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           if (value) {
             result = <span>{value.map((val, index) => {
               if (index + 1 == value.length) {
-                return <span>{val}</span>;
+                return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
               }
               else {
-                return <span>{val}<br></br></span>;
+                return <span style={{ color: semanticColors.bodyText }}>{val}<br></br></span>;
               }
             })}
             </span>;
@@ -731,7 +765,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         }
       case SharePointType.Lookup:
         if (value) {
-          result = <Link href="#">{value}</Link>;
+          result = <Link style={{ color: semanticColors.bodyText }} href="#">{value}</Link>;
         }
         else {
           result = <span></span>;
@@ -741,10 +775,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         if (value) {
           result = <span>{value.map((val, index) => {
             if (index + 1 == value.length) {
-              return <span>{val}</span>;
+              return <span style={{ color: semanticColors.bodyText }}>{val}</span>;
             }
             else {
-              return <span>{val}<br></br></span>;
+              return <span style={{ color: semanticColors.bodyText }}>{val}<br></br></span>;
             }
           })}
           </span>;
@@ -757,10 +791,10 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         if (value) {
           result = <span>{value.map((val, index) => {
             if (index + 1 == value.length) {
-              return <Link href="#">{val}</Link>;
+              return <Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link>;
             }
             else {
-              return <span><Link href="#">{val}</Link><br></br></span>;
+              return <span><Link style={{ color: semanticColors.bodyText }} href="#">{val}</Link><br></br></span>;
             }
           })}
           </span>;
@@ -771,7 +805,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
         break;
       case SharePointType.Url:
         if (value && value.Url) {
-          result = <Link href={value.Url}>{value.Description}</Link>;
+          result = <Link href={value.Url} style={{ color: semanticColors.bodyText }}>{value.Description}</Link>;
         }
         else {
           result = <span></span>;
@@ -809,7 +843,7 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
           break;
         }
       default:
-        result = <span>{value}</span>;
+        result = <span style={{ color: semanticColors.bodyText }}>{value}</span>;
         break;
     }
 
@@ -1025,75 +1059,82 @@ export default class IListdSearchWebPart extends React.Component<IListSearchProp
     let clearAllButton = this.props.ClearAllFiltersBtnColor == "white" ? <DefaultButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={(ev) => this._clearAllFilters()} /> :
       <PrimaryButton text={this.props.ClearAllFiltersBtnText} className={styles.btn} onClick={(ev) => this._clearAllFilters()} />;
     return (
-      <div className={styles.listSearch} style={{ backgroundColor: semanticColors.bodyBackground }}>
+      <div className={styles.listSearch} style={{ backgroundColor: semanticColors.bodyBackground, color: semanticColors.bodyText }}>
         <div className={styles.row}>
           <div className={styles.column}>
-            {this.state.isLoading ?
-              <Spinner label={strings.ListSearchLoading} size={SpinnerSize.large} style={{ backgroundColor: semanticColors.bodyBackground }} /> :
-              this.state.errorMsg ?
-                <MessageBar
-                  messageBarType={MessageBarType.error}
-                  isMultiline={false}
-                  truncated={true}>
-                  <b>{this.state.errorHeader}</b>{this.state.errorMsg}
-                </MessageBar> :
-                <React.Fragment>
-                  {this.props.clickEnabled && !this.state.isModalHidden && this.state.selectedItem && this.GetOnClickAction()}
-                  <div className={styles.rowTopInformation}>
-                    {this.props.GeneralFilter &&
-                      <div className={this.props.ShowClearAllFilters ? styles.ColGeneralFilterWithBtn : styles.ColGeneralFilterOnly}>
+            <WebPartTitle title={this.props.title} updateProperty={(value: string) => this.props.updateTitle(value)} displayMode={this.props.displayMode} placeholder={strings.WebPartTitlePlaceHolder}></WebPartTitle>
+            {this.state.errorMsg ?
+              <MessageBar
+                messageBarType={MessageBarType.error}
+                isMultiline={false}
+                truncated={true}>
+                <b>{this.state.errorHeader}</b>{this.state.errorMsg}
+              </MessageBar> :
+              <React.Fragment>
+                {this.props.clickEnabled && !this.state.isModalHidden && this.state.selectedItem && this.GetOnClickAction()}
+                <div className={styles.rowTopInformation}>
+                  {this.props.GeneralFilter &&
+                    <div className={this.props.ShowClearAllFilters ? styles.ColGeneralFilterWithBtn : styles.ColGeneralFilterOnly}>
+                      <Shimmer isDataLoaded={!this.state.isLoading} height={37}>
                         <SearchBox value={this.state.generalFilter} placeholder={this.props.GeneralFilterPlaceHolderText} onClear={() => this.clearGeneralFilter()} onChange={(ev, newValue) => this.filterListItemsByGeneralFilter(newValue, false, true, this.state.items, this.state.filterItems)} />
-                      </div>}
-                    <div className={styles.ColClearAll}>
-                      {this.props.ShowClearAllFilters && clearAllButton}
+                      </Shimmer>
                     </div>
+                  }
+                  <div className={styles.ColClearAll}>
+                    <Shimmer isDataLoaded={!this.state.isLoading}>
+                      {this.props.ShowClearAllFilters && clearAllButton}
+                    </Shimmer>
                   </div>
-                  <div className={styles.rowData}>
-                    <div className={styles.colData}>
-                      {this.props.ShowItemCount && <div className={styles.template_resultCount}>{this.props.ItemCountText.replace("{itemCount}", `${this.state.filterItems.length}`)}</div>}
-                      <DetailsList
-                        items={this._getItems()}
-                        columns={this.state.columns}
-                        groups={this.props.groupByField && this.groups}
-                        groupProps={{
-                          showEmptyGroups: true,
-                          isAllGroupsCollapsed: true,
-                        }}
-                        onRenderDetailsFooter={this._checkIndividualFilter("footer") ? (detailsFooterProps) => this._onRenderDetails(detailsFooterProps) : undefined}
-                        onRenderDetailsHeader={this._checkIndividualFilter("header") ? (detailsHeaderProps) => this._onRenderDetails(detailsHeaderProps) : undefined}
-                        selectionMode={SelectionMode.none}
-                        onItemInvoked={this.props.clickEnabled && !this.props.oneClickOption ? this._onItemInvoked : null}
-                        onRenderRow={(props, defaultRender) => this.getOnRowClickRender(props, defaultRender)}
-                        onRenderItemColumn={this._renderItemColumn}
-                      />
-                      {this.props.ShowPagination &&
-                        <div className={styles.paginationContainer}>
-                          <div className={styles.paginationContainer__paginationContainer}>
-                            <div className={`${styles.paginationContainer__paginationContainer__pagination}`}>
-                              <div className={styles.standard}>
-                                <Pagination
-                                  activePage={this.state.activePage}
-                                  firstPageText={<Icon theme={this.props.themeVariant as ITheme} iconName='DoubleChevronLeft' />}
-                                  lastPageText={<Icon theme={this.props.themeVariant as ITheme} iconName='DoubleChevronRight' />}
-                                  prevPageText={<Icon theme={this.props.themeVariant as ITheme} iconName='ChevronLeft' />}
-                                  nextPageText={<Icon theme={this.props.themeVariant as ITheme} iconName='ChevronRight' />}
-                                  activeLinkClass={styles.active}
-                                  itemsCountPerPage={this.props.ItemsInPage}
-                                  totalItemsCount={this.state.filterItems ? this.state.filterItems.length : 0}
-                                  pageRangeDisplayed={5}
-                                  onChange={this.handlePageChange.bind(this)}
-                                />
-                              </div>
+                </div>
+                <div className={styles.rowData}>
+                  <div className={styles.colData}>
+                    {this.props.ShowItemCount &&
+                      <Shimmer isDataLoaded={!this.state.isLoading} width={"25%"}><div className={styles.template_resultCount}>{this.props.ItemCountText.replace("{itemCount}", `${this.state.filterItems ? this.state.filterItems.length : 0}`)}</div></Shimmer>
+                    }
+                    <ShimmeredDetailsList
+                      enableShimmer={this.state.isLoading}
+                      items={this._getItems()}
+                      columns={this.state.columns}
+                      groups={!this.state.isLoading && this.props.groupByField && this.groups}
+                      groupProps={{
+                        showEmptyGroups: true,
+                        isAllGroupsCollapsed: true,
+                      }}
+                      onRenderDetailsFooter={(detailsFooterProps) => this._onRenderDetails(detailsFooterProps, this._checkIndividualFilter("footer"), false)}
+                      onRenderDetailsHeader={(detailsHeaderProps) => this._onRenderDetails(detailsHeaderProps, this._checkIndividualFilter("header"), true)}
+                      selectionMode={SelectionMode.none}
+                      onItemInvoked={this.props.clickEnabled && !this.props.oneClickOption ? this._onItemInvoked : null}
+                      onRenderRow={(props, defaultRender) => this.getOnRowClickRender(props, defaultRender)}
+                      onRenderItemColumn={this._renderItemColumn}
+                      shimmerLines={this.props.ShowPagination ? this.props.ItemsInPage : 10}
+                    />
+                    {this.props.ShowPagination &&
+                      <div className={styles.paginationContainer}>
+                        <div className={styles.paginationContainer__paginationContainer}>
+                          <div className={`${styles.paginationContainer__paginationContainer__pagination}`}>
+                            <div className={styles.standard}>
+                              <Pagination
+                                activePage={this.state.activePage}
+                                firstPageText={<Icon theme={this.props.themeVariant as ITheme} iconName='DoubleChevronLeft' />}
+                                lastPageText={<Icon theme={this.props.themeVariant as ITheme} iconName='DoubleChevronRight' />}
+                                prevPageText={<Icon theme={this.props.themeVariant as ITheme} iconName='ChevronLeft' />}
+                                nextPageText={<Icon theme={this.props.themeVariant as ITheme} iconName='ChevronRight' />}
+                                activeLinkClass={styles.active}
+                                itemsCountPerPage={this.props.ItemsInPage}
+                                totalItemsCount={this.state.filterItems ? this.state.filterItems.length : 0}
+                                pageRangeDisplayed={5}
+                                onChange={this.handlePageChange.bind(this)}
+                              />
                             </div>
                           </div>
                         </div>
-                      }
-                    </div>
+                      </div>
+                    }
                   </div>
-                </React.Fragment>}
+                </div>
+              </React.Fragment>}
           </div>
         </div>
       </div >);
   }
-
 }
