@@ -24,14 +24,6 @@
         "value": "1.4.1"
       }
     ],
-    "thumbnails": [
-      {
-        "type": "image",
-        "order": 100,
-        "url": "https://avatars2.githubusercontent.com/u/5503835?s=460\u0026v=4",
-        "alt": "Sample with Handlebars.js"
-      }
-    ],
     "authors": [
       {
         "gitHubAccount": "StfBauer",
