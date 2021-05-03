@@ -35,6 +35,10 @@
       {
         "key": "SPFX-TEAMSTAB",
         "value": "false"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "WebPartTitle, Placeholder, FilePicker"
       }
     ],
     "thumbnails": [
