@@ -44,7 +44,6 @@ Version|Date|Comments
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - `Add and Deploy Package to AppCatalog `
-  - `Go to API Management - from SharePoint Admin Center new experience,  and Approve the Permission Require to Use Graph API SCOPES`
 
  
 
