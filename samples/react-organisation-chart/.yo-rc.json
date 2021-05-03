@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem19",
+    "version": "1.12.0",
+    "libraryName": "react-organization-chart",
+    "libraryId": "0b4a3e5d-123f-41ea-96c4-538c6a19932b",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
