@@ -26,6 +26,10 @@
       {
         "key": "SPFX-FULLPAGEAPP",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "Placeholder, ChartControl"
       }
     ],
     "thumbnails": [
