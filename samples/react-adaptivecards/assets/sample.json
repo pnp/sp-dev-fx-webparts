@@ -26,6 +26,10 @@
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldViewPicker, ropertyFieldCodeEditorLanguages, PropertyPaneWebPartInformation, Placeholder"
       }
     ],
     "thumbnails": [
