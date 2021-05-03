@@ -16,6 +16,10 @@
     ],
     "metadata": [
       {
+        "key": "PNPCONTROLS",
+        "value": "ChartControl"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
