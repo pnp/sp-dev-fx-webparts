@@ -26,6 +26,10 @@
       {
         "key": "SPFX-TEAMSPERSONALAPP",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldToggleWithCallout, PropertyPaneWebPartInformation, PropertyFieldPeoplePicker"
       }
     ],
     "thumbnails": [
