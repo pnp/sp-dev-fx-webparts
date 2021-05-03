@@ -26,6 +26,10 @@
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "IFrameDialog, FileTypeIcon, PropertyFieldCollectionData, PropertyFieldSitePicker, PropertyFieldNumber, Placeholder, PropertyFieldMultiSelect, PropertyPaneWebPartInformation"
       }
     ],
     "thumbnails": [
