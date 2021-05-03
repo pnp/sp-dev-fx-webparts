@@ -26,6 +26,10 @@
       {
         "key": "SPFX-TEAMSTAB",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldNumber, WebPartTitle"
       }
     ],
     "thumbnails": [
