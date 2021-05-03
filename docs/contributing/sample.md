@@ -1,4 +1,7 @@
-# Creating a Sample
+---
+title: Add a sample
+template: article.html
+---
 
 Coming soon!
 

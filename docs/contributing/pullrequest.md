@@ -1,4 +1,7 @@
-# Submitting a Pull Request (PR)
+---
+title: Submitting a pull request
+template: article.html
+---
 
 ## Submitting Pull Requests
 

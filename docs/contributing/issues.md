@@ -1,4 +1,7 @@
-# Submitting an Issue or Suggestion
+---
+title: Submitting an Issue or Suggestion
+template: article.html
+---
 
 Please do not open GitHub issues for general support questions as the GitHub list should be used for feature requests and bug reports. This way we can more easily track actual issues or bugs from the code and keep the general discussion separate from the actual code.
 

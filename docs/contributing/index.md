@@ -1,4 +1,7 @@
-# Contributing
+---
+title: Contributing
+template: article.html
+---
 
 If you'd like to contribute to these samples, please read the following guidelines. 
 

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if not "\x3ch1" in page.content %}
+<div class="content-header">
+  <h1>{{ page.meta.title | d(config.site_name, true)}}</h1>
+</div>
+{% endif %}
+
+<section class="intro-section">
+  {{ page.content }}
+</section>
+
+<section class="filter-section">
+  <h2 class="sub-heading">Samples</h2>
+  <div class="search-input-wrapper float-l" aria-hidden="true">
+    <div class="icon-container">
+      &nbsp;
+    </div>
+    <input id="post-search-input" class="search-input" placeholder="Search samples">
+  </div>
+
+  <!-- <div id="post-tags-filter-btn" class="primary-btn dark float-r">Filter by tags
+    <p id="post-tags-filter-count" class="tag-number">0</p>
+  </div> -->
+
+
+  <div id="filters" class="sample-list filter-list float-r">
+    <div id="post-sample-filter-all" class="sampletype-item filter-choice active" data-filter="*"
+      title="All frameworks">All</div>
+    <div id="post-sample-filter-angular" class="sampletype-item filter-choice angular"
+      data-filter="[data-framework='Angular']" title="AngularJS"></div>
+    <div id="post-sample-filter-jquery" class="sampletype-item filter-choice jquery"
+      data-filter="[data-framework='jQuery']" title="jQuery"></div>
+    <div id="post-sample-filter-javascript" class="sampletype-item filter-choice javascript"
+      data-filter="[data-framework='Javascript']" title="JavaScript"></div>
+    <div id="post-sample-filter-knockout" class="sampletype-item filter-choice knockout"
+      data-filter="[data-framework='Knockout']" title="Knockout"></div>
+    <div id="post-sample-filter-react" class="sampletype-item filter-choice react"
+      data-filter="[data-framework='React']" title="React"></div>      
+    <div id="post-sample-filter-vuejs" class="sampletype-item filter-choice vuejs"
+      data-filter="[data-framework='VueJS']" title="VueJS"></div>
+      <div id="post-sample-filter-other" class="sampletype-item filter-choice other"
+      data-filter="[data-framework='Other']" title="Other"></div>      
+  </div>
+
+  <div class="well">
+    <div class="button-group filters-button-group">
+      {% for filter in page.meta.filters %}
+      <button class="button" data-filter="[data-tag='{{ filter.value }}']">{{ filter.name }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="grid" id="sample-listing" data-filter={{page.meta.filter}}>
+
+  </div>
+</section>
+
+<!-- Last update of source file -->
+{% if page and page.meta %}
+{% if page.meta.git_revision_date_localized or
+page.meta.revision_date
+%}
+{% include "partials/source-date.html" %}
+{% endif %}
+{% endif %}
+{% endblock %}

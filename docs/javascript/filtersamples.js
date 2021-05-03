@@ -1,19 +1,182 @@
 // external js: isotope.pkgd.js
 $(document).ready(function () {
 
+  var jsonPath = "https://pnp.github.io/sp-dev-fx-webparts/samples.json";
+
+  var filterText = $('#sample-listing').data("filter");
+
   // init Isotope
-  var $grid = $('.grid').isotope({
-    itemSelector: '.sample-item',
+  var $grid = $('#sample-listing').isotope({
+    itemSelector: '.sample-thumbnail',
     layoutMode: 'fitRows',
+    sortBy : 'modified',
     sortAscending: false,
-    sortBy: 'modified',
     getSortData: {
-      title: '[data-title]',
-      // number: '.number parseInt',
-      modified: '[data-modified]'
+      modified: '[data-modified]',
+      title: '.sample-title'
     }
   });
 
+  // Get the JSON
+  $.getJSON(jsonPath, function (data) {
+    var asc = true;
+    var prop = "updateDateTime";
+
+    // Sort data descending order
+    data = data.sort(function(a, b) {
+      try {
+        if (asc) return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);  
+      } catch (error) {
+        return 0;
+      }
+    });
+
+    $.each(data, function (_u, sample) {
+
+      try {
+        var title = _.escape(sample.title);
+        var escapedDescription = _.escape(sample.shortDescription);
+
+        var shortDescription = sample.shortDescription; //.length > 80 ? sample.shortDescription.substr(0, 77)  : sample.shortDescription;
+        var thumbnail = "https://pnp.github.io/sp-dev-fx-webparts/img/_nopreview.png";
+        //var categories = sample.categories[0];
+
+        if (sample.thumbnails && sample.thumbnails.length > 0) {
+          thumbnail = sample.thumbnails[0].url;
+        }
+
+        var framework = ""; 
+        var spfxversion = "";
+        var outlookCompatible = false;
+        var teamsCompatible = false;
+        var pnpcontrols = "";
+        
+        var metadata = sample.metadata;
+        metadata.forEach(meta => {
+          switch (meta.key) {
+            case "CLIENT-SIDE-DEV":
+              framework = meta.value;  
+              break;
+          case "SPFX-VERSION":
+              spfxversion = meta.value;
+              break;
+          case "SPFX-OUTLOOKADDIN":
+              outlookCompatible = meta.value;
+              break;
+          case "SPFX-TEAMSPERSONALAPP":
+          case "SPFX-TEAMSTAB":
+              teamsCompatible = meta.value;
+              break;
+          case "PNPCONTROLS":
+              pnpcontrols = meta.value;
+              break;
+            default:
+              break;
+          }
+        });
+
+        var compatible2019 = spfxversion == "1.4.1" || spfxversion.startsWith("1.3.")  || spfxversion == "GA";
+        var compatible2016 =  spfxversion == "GA";
+
+
+        var modified = new Date(sample.updateDateTime).toString().substr(4).substr(0, 12);
+
+        var authors = sample.authors;
+        var authorsList = "";
+        var authorAvatars = "";
+        var authorName = "";
+
+        if (authors.length < 1) {
+          console.log("Sample has no authors", sample);
+        } else {
+          authors.forEach(author => {
+            if (authorsList !== "") {
+              authorsList = authorsList + ", ";
+            }
+            authorsList = authorsList + author.name;
+  
+            var authorAvatar = `<div class="author-avatar">
+              <div role="presentation" class="author-coin">
+                <div role="presentation" class="author-imagearea">
+                  <div class="image-400">
+                    <img class="author-image" loading="lazy" src="${author.pictureUrl}" alt="${author.name}" title="${author.name}">
+                  </div>
+                </div>
+              </div>
+            </div>`;
+            authorAvatars = authorAvatar + authorAvatars;
+          });
+  
+          authorName = authors[0].name;
+          if (authors.length > 1) {
+            authorName = authorName + ` +${authors.length - 1}`;
+          }
+  
+        }
+
+        var tags = "";
+        $.each(sample.tags, function (_u, tag) {
+          tags = tags + "#" + tag + ",";
+        });
+
+        var keywords = title + " " + escapedDescription + " " + authorsList + " " + tags + " "+ pnpcontrols;
+        keywords = keywords.toLowerCase();
+
+        var productTag = framework.toLowerCase();
+        var productName = framework;
+
+        // switch (categories) {
+        //   case "POWERAPPS":
+        //     productTag = "powerapps";
+        //     productName = "Power Apps";
+        //     break;
+
+        //   default:
+        //     break;
+        // }
+
+        var $items = $(`
+<a class="sample-thumbnail" href="${sample.url}" data-modified="${sample.modified}" data-title="${title}" data-keywords="${keywords}" data-tags="${tags}" data-framework="${framework}" data-spfx="${spfxversion}" data-outlook="${outlookCompatible}" data-teams="${teamsCompatible}" data-sp2016="${compatible2016}"  data-sp2019="${compatible2019}"
+>
+  <div class="sample-inner">
+    <div class="sample-preview">
+      <img src="${thumbnail}" loading="lazy" alt="${title}">
+    </div>
+    <div class="sample-details">
+      <div class="producttype-item ${productTag}">${productName}</div>
+      <p class="sample-title" title="${sample.title}">${sample.title}</p>
+      <p class="sample-description" title='${escapedDescription}'>${shortDescription}</p>
+      <div class="sample-activity">
+        ${authorAvatars}
+        <div class="activity-details">
+          <span class="sample-author" title="${authorsList}">${authorName}</span>
+          <span class="sample-date">Modified ${modified}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>`);
+
+        if (filterText !== undefined && filterText !== "") {
+          // Skip this sample as it doesn't meet the filter
+          ;
+        } else {
+          //$grid.isotope( 'appended', elements );
+          $grid.append($items)
+            // add and lay out newly appended items
+            .isotope('appended', $items);
+        }
+      } catch (error) {
+        console.log("Error with one sample", error, sample);
+      }
+    });
+
+    // Update the sort
+    $grid.isotope('updateSortData').isotope();
+  });
+
+  // filter functions
   var filterFns = {
     hasTech: function() {
       return $(this).find(':not([data-technology=""])');
@@ -45,53 +208,79 @@ $(document).ready(function () {
   };
 
   // bind filter button click
-  $('.filters-button-group').on('click', 'button', function () {
+  $('#filters').on('click', '.filter-choice', function () {
     var filterValue = $(this).attr('data-filter');
     // use filterFn if matches value
     filterValue = filterFns[filterValue] || filterValue;
     $grid.isotope({ filter: filterValue });
   });
   // change is-checked class on buttons
-  $('.button-group').each(function (i, buttonGroup) {
+  $('.filter-list').each(function (_i, buttonGroup) {
     var $buttonGroup = $(buttonGroup);
-    $buttonGroup.on('click', 'button', function () {
-      $buttonGroup.find('.is-checked').removeClass('is-checked');
-      $(this).addClass('is-checked');
+    $buttonGroup.on('click', '.filter-choice', function () {
+      $buttonGroup.find('.active').removeClass('active');
+      $(this).addClass('active');
     });
   });
 
-  // bind sort button click
-  $('.sort-button-group').on('click', 'button', function () {
+  // // bind filter button click
+  // $('.filters-button-group').on('click', 'button', function () {
+  //   var filterValue = $(this).attr('data-filter');
+  //   // use filterFn if matches value
+  //   filterValue = filterFns[filterValue] || filterValue;
+  //   $grid.isotope({ filter: filterValue });
+  // });
+  // // change is-checked class on buttons
+  // $('.button-group').each(function (i, buttonGroup) {
+  //   var $buttonGroup = $(buttonGroup);
+  //   $buttonGroup.on('click', 'button', function () {
+  //     $buttonGroup.find('.is-checked').removeClass('is-checked');
+  //     $(this).addClass('is-checked');
+  //   });
+  // });
 
-    /* Get the element name to sort */
-    var sortValue = $(this).attr('data-sort-value');
+  // // bind sort button click
+  // $('.sort-button-group').on('click', 'button', function () {
 
-    /* Get the sorting direction: asc||desc */
-    var direction = $(this).attr('data-sort-direction');
+  //   /* Get the element name to sort */
+  //   var sortValue = $(this).attr('data-sort-value');
 
-    /* convert it to a boolean */
-    var isAscending = (direction == 'asc');
-    var newDirection = (isAscending) ? 'desc' : 'asc';
+  //   /* Get the sorting direction: asc||desc */
+  //   var direction = $(this).attr('data-sort-direction');
 
-    /* pass it to isotope */
-    $grid.isotope({ sortBy: sortValue, sortAscending: isAscending });
+  //   /* convert it to a boolean */
+  //   var isAscending = (direction == 'asc');
+  //   var newDirection = (isAscending) ? 'desc' : 'asc';
 
-    $(this).attr('data-sort-direction', newDirection);
+  //   /* pass it to isotope */
+  //   $grid.isotope({ sortBy: sortValue, sortAscending: isAscending });
+
+  //   $(this).attr('data-sort-direction', newDirection);
+  // });
+
+  
+  $("#post-search-input").on('change keyup paste', function () {
+    var selection = $('#post-search-input').val();
+    if (selection !== "") {
+      selection = selection.toLowerCase();
+      $grid.isotope({ filter: `[data-keywords*='${selection}']` });
+    } else {
+      $grid.isotope({ filter: '*' });
+    }
   });
 
+  // See if there are any passed parameters
+  try {
+    var urlParams = new URLSearchParams(window.location.search);
+    var query = urlParams.get('query');
+    if (query !== "") {
+      $('#post-search-input').val(query).change();
+    }
+    
+  } catch (error) {
+    
+  }
 
-  // Trigger animation on GIF hover
-  $("a img[data-fullsize$='.gif']").hover((e) => {
-    // on mouse enter
-    var img = e.target;
-    var customdata = $(img).data('fullsize');
-    $(img).attr('src', customdata);
-  }, (e) => {
-    // on mouse leave
-    var img = e.target;
-    var customdata = $(img).data('orig');
-    $(img).attr('src', customdata);
-  });
 
   $("#author").on('change keyup paste', function () {
     console.log('I am pretty sure the text box changed');

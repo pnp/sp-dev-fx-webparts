@@ -1,4 +1,7 @@
-# Getting Started
+---
+title: Getting Started
+template: article.html
+---
 
 These samples were created by the PnP community. They demonstrate different usage patterns for the SharePoint Framework client-side web parts.
 

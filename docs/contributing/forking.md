@@ -1,4 +1,7 @@
-# Forking?
+---
+title: Forking?
+template: article.html
+---
 
 ## Typos, minor updates, or fixes to existing samples
 

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if not "\x3ch1" in page.content %}
+<div class="content-header">
+  <h1>{{ page.meta.title | d(config.site_name, true)}}</h1>
+</div>
+{% endif %}
+
+<section class="intro-section">
+  {{ page.content }}
+</section>
+
+<section class="filter-section">
+  <h2 class="sub-heading">Samples</h2>
+  <div class="search-input-wrapper float-l" aria-hidden="true">
+    <div class="icon-container">
+      &nbsp;
+    </div>
+    <input id="post-search-input" class="search-input" placeholder="Search samples">
+  </div>
+
+  <!-- <div id="post-tags-filter-btn" class="primary-btn dark float-r">Filter by tags
+    <p id="post-tags-filter-count" class="tag-number">0</p>
+  </div> 
+-->
+
+
+  <div id="filters" class="sample-list filter-list float-r">
+    <div id="post-sample-filter-all" class="sampletype-item filter-choice active" data-filter="*" title="All versions">
+      All</div>
+    <div id="post-sample-filter-112" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.12.']"
+      title="1.12.x">1.12.x</div>
+    <div id="post-sample-filter-111" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.11.']"
+      title="1.11.x">1.11.x</div>
+    <div id="post-sample-filter-110" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.10.']"
+      title="1.10.x">1.10.x</div>
+    <div id="post-sample-filter-190" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.9.']"
+      title="1.9.x">1.9.x</div>
+    <div id="post-sample-filter-180" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.8.']"
+      title="1.8.x">1.8.x</div>
+    <div id="post-sample-filter-170" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.7.']"
+      title="1.7.x">1.7.x</div>
+    <div id="post-sample-filter-160" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.6.']"
+      title="1.5.x">1.6.x</div>
+    <div id="post-sample-filter-150" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.5.']"
+      title="1.5.x">1.5.x</div>
+    <div id="post-sample-filter-140" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.4.']"
+      title="1.4.x">1.4.x</div>
+    <div id="post-sample-filter-130" class="sampletype-item filter-choice" data-filter="[data-spfx^='1.3.']"
+      title="1.3.x">1.3.x</div>
+    <div id="post-sample-filter-GA" class="sampletype-item filter-choice" data-filter="[data-spfx='GA']" title="GA">GA
+    </div>
+
+  </div>
+
+  <div class="well">
+    <div class="button-group filters-button-group">
+      {% for filter in page.meta.filters %}
+      <button class="button" data-filter="[data-tag='{{ filter.value }}']">{{ filter.name }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="grid" id="sample-listing" data-filter={{page.meta.filter}}>
+
+  </div>
+</section>
+
+<!-- Last update of source file -->
+{% if page and page.meta %}
+{% if page.meta.git_revision_date_localized or
+page.meta.revision_date
+%}
+{% include "partials/source-date.html" %}
+{% endif %}
+{% endif %}
+{% endblock %}
