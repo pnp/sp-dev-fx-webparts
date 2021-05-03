@@ -32,7 +32,15 @@
         "alt": "Personal Tasks"
       }
     ],
-    "authors": [],
+    "authors": [
+      {
+        "gitHubAccount": "eoverfield",
+        "company": "PixelMill",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield",
+        "twitter": "EricOverfield"
+      }
+    ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",
