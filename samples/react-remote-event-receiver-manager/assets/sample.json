@@ -1,0 +1,51 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-remote-event-receiver-manager",
+    "source": "pnp",
+    "title": "Remote Event Receiver Manager",
+    "shortDescription": "Lets you add and delete remote event receivers to lists",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-remote-event-receiver-manager",
+    "longDescription": [
+      "A very simple web part that lets you add and delete remote event receivers to lists, the need came about due to remote event receivers not functioning properly when added with app only authentication and PnP.Powershell now only using that."
+    ],
+    "creationDateTime": "2021-05-03",
+    "updateDateTime": "2021-05-03",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-remote-event-receiver-manager/assets/video.gif",
+        "alt": "Word Game"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Tanddant",
+        "company": "",
+        "pictureUrl": "https://github.com/Tanddant.png",
+        "name": "Dan Toft"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]
