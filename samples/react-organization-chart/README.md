@@ -2,7 +2,7 @@
 
 ## Summary
 
-This web part shows an organization chart based on specified user, and user can navigate to show company organization, this web part can be installed on SharePoint Server 2019, and SharePoint Online.
+This web part shows an organization chart based on specified user, and user can navigate to show company organization. This web part can be installed on SharePoint Server 2019, and SharePoint Online.
 
 ![Organization Chart](./assets/orgchart_02.jpg)
 
@@ -43,8 +43,8 @@ No pre-requisites
 - Clone this repository
 - Ensure that you are at the solution folder
 - in the command-line run:
-  - **npm install**
-  - **gulp serve**
+  - `npm install`
+  - `gulp serve`
 
 ## Features
 
