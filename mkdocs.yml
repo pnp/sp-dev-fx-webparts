@@ -40,6 +40,7 @@ extra_javascript:
   - 'https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js'
   - 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js'
   - 'javascript/isotope.pkgd.min.js'
+  - 'javascript/loadsamples.js'
   - 'javascript/filtersamples.js'
 markdown_extensions:
   - admonition
