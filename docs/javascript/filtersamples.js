@@ -54,18 +54,14 @@ $(document).ready(function () {
 
     $.each(data, function (_u, sample) {
 
-      var $items = loadSample(sample);
+      var item = loadSample(sample, filterText);
 
-       // Pre-filter results, if necessary
-       if (filterText !== undefined && filterText !== "") {
-        // Skip this sample as it doesn't meet the filter
-        ;
-      } else {
-        // Append the grid and notify isotope
-        $grid.append($items)
+      if (item !== null) {
+        $grid.append(item)
           // add and lay out newly appended items
-          .isotope('appended', $items);
+          .isotope('appended', item);
       }
+
     });
 
     // Update the sort

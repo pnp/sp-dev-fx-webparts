@@ -8,7 +8,7 @@ var jsonPath = "https://pnp.github.io/sp-dev-fx-webparts/samples.json";
  * @param {*} sample 
  * @returns 
  */
-function loadSample(sample) {
+function loadSample(sample, filter) {
     try {
         var title = _.escape(sample.title);
         var escapedDescription = _.escape(sample.shortDescription);
