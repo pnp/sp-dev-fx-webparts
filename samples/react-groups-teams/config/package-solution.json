@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-groups-client-side-solution",
+    "id": "e562b13d-7e90-4a1e-810c-ccde0ff27866",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests":[{
+      "resource": "Microsoft Graph",
+      "scope": "Groups.Read.All"
+    }, {
+      "resource": "Team",
+      "scope": "Teams.ReadBasic.All"
+    }]
+  },
+  
+  
+  "paths": {
+    "zippedPackage": "solution/react-groups.sppkg"
+  }
+}
