@@ -195,6 +195,6 @@ export default class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsStat
               <div className={styles.Center} style={{ borderRight: 'none' }}>{Team.Visibility}</div>
             </div>
           );
-        })}</div></div>
+        })}</div></div>;
   }
 }

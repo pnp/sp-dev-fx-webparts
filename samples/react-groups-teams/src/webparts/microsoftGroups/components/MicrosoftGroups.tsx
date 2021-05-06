@@ -31,6 +31,6 @@ return <div>
    </div></div>
    {this.state.title === 'Microsoft 365 Groups' ? <GraphConsumer context={this.props.context}/> : <div></div>}
    {this.state.title === 'My Teams' ? <TeamsGraphConsumer context={this.props.context} hidden={false}/>: <TeamsGraphConsumer context={this.props.context} hidden={true}/>}
-   </div>
+   </div>;
 }
 }

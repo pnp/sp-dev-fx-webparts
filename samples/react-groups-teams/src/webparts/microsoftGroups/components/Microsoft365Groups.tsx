@@ -146,7 +146,8 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
           .version("v1.0")
           .get((err, res) => {
             if (err) {
-            };
+              // Do nothing
+            }
             if (res) {
               res.value.map((item) => {
                 this._arr.push({ Name: item.displayName, Id: item.id, Description: item.description, Mail: item.mail, Visibility: item.visibility });
@@ -211,7 +212,7 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
                 <Icon className={iconClass} style={{ color: '#077D3F' }} iconName="ViewListTree"></Icon></a>}
             </div>
             <div className={styles.Center} style={{ borderRight: 'none' }}>{Group.Visibility}</div>
-          </div>
+          </div>;
         }) : this.state.AllGroupsresultsFiltered.map(Group => {
           var GroupEmailSplit = Group.Mail.split("@");
           Group.Mail = GroupEmailSplit[0];
@@ -232,9 +233,9 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
                 <Icon className={iconClass} style={{ color: '#077D3F' }} iconName="ViewListTree"></Icon></a>}
             </div>
             <div className={styles.Center} style={{ borderRight: 'none' }}>{Group.Visibility}</div>
-          </div>
+          </div>;
         })}
-      </div>
-    </div>
+      </div>;
+    </div>;
   }
 }
