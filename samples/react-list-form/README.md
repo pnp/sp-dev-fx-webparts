@@ -49,6 +49,7 @@ The web part allows configuring which list to use and if a form for adding a new
 | react-list-form | Abderahman Moujahid                                               |
 | react-list-form | [Kman1131](https://github.com/Kman1131)                           |
 | react-list-form | Fredrik Thorild [@fthorild](https://twitter.com/fthorild)         |
+| react-list-form | Ari Gunawan [@arigunawan3023](https://twitter.com/arigunawan3023) |
 
 ## Version history
 
@@ -64,6 +65,7 @@ The web part allows configuring which list to use and if a form for adding a new
 | 1.0.7   | December 11, 2020  | Fix limit of lookup fields                                                                                |
 | 1.0.8   | February 7, 2021   | Fixed dragging and dropping fields                                                                        |
 | 1.0.9   | February 19, 2021  | Fixed regular expressions for text validation                                                             |
+| 1.0.10  | May 6, 2021        | Fixed "attachments are not cleared after submit" issue                                                    |
 
 ## Disclaimer
 
