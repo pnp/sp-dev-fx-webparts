@@ -41,15 +41,15 @@ The web part allows configuring which list to use and if a form for adding a new
 
 ## Solution
 
-| Solution        | Author(s)                                                         |
-| --------------- | ----------------------------------------------------------------- |
-| react-list-form | Dany Wyss                                                         |
-| react-list-form | Harsha Vardhini ([@harshagracy](https://twitter.com/harshagracy)) |
-| react-list-form | Ryan Schouten ([@shrpntknight](https://twitter.com/shrpntknight)) |
-| react-list-form | Abderahman Moujahid                                               |
-| react-list-form | [Kman1131](https://github.com/Kman1131)                           |
-| react-list-form | Fredrik Thorild [@fthorild](https://twitter.com/fthorild)         |
-| react-list-form | Ari Gunawan [@arigunawan3023](https://twitter.com/arigunawan3023) |
+| Solution        | Author(s)                                                           |
+| --------------- | -----------------------------------------------------------------   |
+| react-list-form | Dany Wyss                                                           |
+| react-list-form | Harsha Vardhini ([@harshagracy](https://twitter.com/harshagracy))   |
+| react-list-form | Ryan Schouten ([@shrpntknight](https://twitter.com/shrpntknight))   |
+| react-list-form | Abderahman Moujahid                                                 |
+| react-list-form | [Kman1131](https://github.com/Kman1131)                             |
+| react-list-form | Fredrik Thorild [@fthorild](https://twitter.com/fthorild)           |
+| react-list-form | Ari Gunawan ([@arigunawan3023](https://twitter.com/arigunawan3023)) |
 
 ## Version history
 
