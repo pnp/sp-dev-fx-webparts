@@ -1,0 +1,425 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+.test {
+  text-align: center;
+  vertical-align: middle;
+}
+.none {
+  display:none;
+}
+.Center {
+  padding-top: 10px;
+    padding-bottom: 10px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    border-right: 2px solid white;
+    padding-right: 13px;
+    padding-left: 13px;
+    border-bottom: 2px solid white;
+
+    /*
+    position: relative;
+      padding-bottom: 0px;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      border-right: 2px solid white;
+      padding: 8px 13px 8px;
+      border-bottom: 2px solid white;
+      max-width: 132px;
+      word-break: break-word;*/
+}
+.SwitchGroups{
+  position:absolute;
+  bottom:2px;
+  right:10px;
+  font-size:16px;
+  background-color: transparent;
+  border: none;
+    cursor:pointer;
+    color:white;
+}
+.SwitchGroups:hover{
+  text-decoration: underline;
+}
+  .headerStyle{
+    background-color: "[theme: themePrimary, default: #0078d7]";
+    display:  table-row ;
+      border:  solid ;
+      text-align :  center ;
+      width :  100px ;
+      height :  30px ;
+      padding-top :  10px ;
+      color :  white ;
+    }
+    .tableStyle{ 
+      display: table;
+      min-width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    .panelStyle{
+      background:  lightblue ;
+    }
+    .tableCaptionStyle{
+      background-color: "[theme: themePrimary, default: #0078d7]";
+      font-size: 20px ;
+      font-weight: bold ;
+        border: solid ;
+        text-align:center ;
+        height:79px;
+        padding-top:3px ;
+        border-radius:25px ;
+        color:white;
+        border-radius: 25px;
+        margin-left: auto;
+        margin-top: auto;
+        min-width: 100%;
+        text-align: center;
+  vertical-align: middle;
+  position: relative;
+  font-weight:normal;
+      }
+    .rowStyle{
+      display :   table-row ;
+      background:  #eee ;
+      padding:  20px ;
+      margin:  20px ;
+      font-weight : bold ;
+      }
+  .row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
+  .CellStyle{ 
+    display:  table-cell ;
+    border:  solid ;
+     border-color :  white ;
+    text-align :  center ;
+    min-width :  75px ;
+    height :  30px ;
+    width: fit-content;
+    padding-top :  10px ;         
+  } 
+  .buttons {
+    display:  table-cell ;
+    
+    text-align :  center ;
+    width :  160px ;
+    height :  30px ;
+    padding-top :  10px ;      
+  }
+  .column {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+  .title {
+    @include ms-font-xl;
+    @include ms-fontColor-white;
+  }
+
+  .subTitle {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .description {
+    @include ms-font-l;
+    @include ms-fontColor-white;
+  }
+
+  .button {
+    // Our button
+    text-decoration: none;
+    height: 32px;
+
+    // Primary Button
+    min-width: 80px;
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    // Basic Button
+    outline: transparent;
+    position: relative;
+    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    border-width: 0;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 16px;
+
+    .label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+      height: 32px;
+      line-height: 32px;
+      margin: 0 4px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+
+ // @import '~office-ui-fabric-react/dist/sass/References.scss';
+  .test {
+    text-align: center;
+    vertical-align: middle;
+  }
+  .none {
+    display:none;
+  }
+  .CenterRight {
+    border-right:none;
+    padding: 5px 10px 3px;
+    margin-left: 26px;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      border-right: 2px solid white;
+      //border-bottom: 2px solid white;
+      max-width: 113px;
+      word-break: break-word;
+  }
+  .Center {
+   padding: 5px 10px 3px;
+    margin-left: 26px;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      border-right: 2px solid white;
+      border-bottom: 2px solid white;
+      max-width: 113px;
+      word-break: break-word;
+  }
+  .ToolTipName {
+    position: relative;
+      padding-bottom: 0px;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      border-right: 2px solid white;
+      padding: 8px 13px 8px;
+      border-bottom: 2px solid white;
+      max-width: 132px;
+      word-break: break-word;
+  }
+  .ToolTip {
+    visibility: hidden;
+    padding: 7px;
+      background-color: $ms-color-themeDark;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 1;
+      bottom: 86%;
+      right: 0%;
+      left: 0%;
+      padding-left: 7px;
+      padding-right: 7px;
+  }
+  .ToolTipName:hover .ToolTip {
+    visibility: visible;
+    padding: 5px 0px 5px 0px;
+    background-color: "[theme: themeLight, default: #0078d7]";
+  }
+  .MainViewCenter {
+        width: 50%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        padding-right: 13px;
+        padding-left: 13px;
+        cursor:pointer;
+        background-color: "[theme: themeDark, default: #0078d7]";
+        border: none;
+        color: white;
+        border-right: 2px solid white;
+        
+  }
+  .MainViewCenter :hover{
+    text-decoration: underline;
+  }
+  .Filters {
+      cursor: pointer;
+      background-color: "[theme: themePrimary, default: #0078d7]";
+      color: #fff;
+      border: none;
+      border: 2px solid;
+      border-color: "[theme: themeDark, default: #0078d7]";
+      margin-right: 4px;
+      margin-top: 9px;
+  }
+  .Filters:focus {
+    outline: none;
+  }
+  .SelectedFilter { 
+    cursor: pointer;
+      background-color: "[theme: themeDark, default: #0078d7]";
+      color: #fff;
+      border: none;
+      border: 2px solid;
+      border-color: "[theme: themeDark, default: #0078d7]";
+      margin-right: 4px;
+      margin-top: 9px;}
+  .SelectedFilter:focus{
+    outline:none;
+  }
+  .OneNoteIcon {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+  }
+  .SwitchGroups{
+    position:absolute;
+    bottom:2px;
+    right:10px;
+    font-size:16px;
+    background-color: transparent;
+    border: none;
+      cursor:pointer;
+      color:white;
+  }
+  .SwitchGroups:hover{
+    text-decoration: underline;
+  }
+    .headerStyle{
+      background-color: "[theme: themeSecondary, default: #0078d7]"; //themeSecondary
+      display:  table-row ;
+        border:  solid ;
+        text-align :  center ;
+        width :  100px ;
+        height :  30px ;
+        padding-top :  10px ;
+        color :  white ;
+      }
+      .tableStyle{ 
+        display: table;
+        min-width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .panelStyle{
+        background:  lightblue ;
+      }
+      .tableCaptionStyle{
+        background-color: "[theme: themePrimary, default: #0078d7]";
+      //  display:  block ;
+        font-size: 20px ;
+        font-weight: bold ;
+          border: solid ;
+          text-align:center ;
+          height:79px;
+          padding-top:3px ;
+          border-radius:25px ;
+          color:white;
+          border-radius: 25px;
+          margin-left: auto;
+          margin-top: auto;
+          min-width: 100%;
+          text-align: center;
+    vertical-align: middle;
+    position: relative;
+    font-weight:normal;
+        }
+      .rowStyle{
+        display :   table-row ;
+        background:  #eee ;
+        padding:  20px ;
+        margin:  20px ;
+        font-weight : bold ;
+        }
+    .row {
+      @include ms-Grid-row;
+      @include ms-fontColor-white;
+      background-color: $ms-color-themeDark;
+      padding: 20px;
+    }
+    .CellStyle{ 
+      display:  table-cell ;
+      border:  solid ;
+       border-color :  white ;
+      text-align :  center ;
+      min-width :  75px ;
+      height :  30px ;
+      width: fit-content;
+      padding-top :  10px ;         
+    } 
+    .buttons {
+      display:  table-cell ;
+      
+      text-align :  center ;
+      width :  160px ;
+      height :  30px ;
+      padding-top :  10px ;      
+    }
+    .column {
+      @include ms-Grid-col;
+      @include ms-lg10;
+      @include ms-xl8;
+      @include ms-xlPush2;
+      @include ms-lgPush1;
+    }
+  
+    .title {
+      @include ms-font-xl;
+      @include ms-fontColor-white;
+    }
+  
+    .subTitle {
+      @include ms-font-l;
+      @include ms-fontColor-white;
+    }
+  
+    .description {
+      @include ms-font-l;
+      @include ms-fontColor-white;
+    }
+  
+    .button {
+      // Our button
+      text-decoration: none;
+      height: 32px;
+  
+      // Primary Button
+      min-width: 80px;
+      background-color: $ms-color-themePrimary;
+      border-color: $ms-color-themePrimary;
+      color: $ms-color-white;
+  
+      // Basic Button
+      outline: transparent;
+      position: relative;
+      font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+      -webkit-font-smoothing: antialiased;
+      font-size: $ms-font-size-m;
+      font-weight: $ms-font-weight-regular;
+      border-width: 0;
+      text-align: center;
+      cursor: pointer;
+      display: inline-block;
+      padding: 0 16px;
+  
+      .label {
+        font-weight: $ms-font-weight-semibold;
+        font-size: $ms-font-size-m;
+        height: 32px;
+        line-height: 32px;
+        margin: 0 4px;
+        vertical-align: top;
+        display: inline-block;
+      }
+    }
+  
+  
