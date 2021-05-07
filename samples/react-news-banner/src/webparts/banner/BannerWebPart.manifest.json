@@ -3,6 +3,8 @@
   "id": "6df4111a-bb08-43b8-b4bb-718ecde1148e",
   "alias": "NewsBannerWebPart",
   "componentType": "WebPart",
+  "supportsFullBleed": true,
+
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",
