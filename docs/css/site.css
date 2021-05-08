@@ -1,0 +1,64 @@
+
+.sampletype-item.angular {
+    background-image: url(../img/frameworks/angularjs.svg);
+}
+
+.sampletype-item.jquery {
+    background-image: url(../img/frameworks/jquery.svg);
+}
+
+.sampletype-item.javascript {
+    background-image: url(../img/frameworks/javascript.svg);
+}
+
+.sampletype-item.knockout {
+    background-image: url(../img/frameworks/knockout.svg);
+}
+
+.sampletype-item.react {
+    background-image: url(../img/frameworks/react.svg);
+}
+
+.sampletype-item.vuejs {
+    background-image: url(../img/frameworks/vuejs.svg);
+}
+
+.sampletype-item.other {
+    background-image: url(../img/frameworks/other.svg);
+}
+
+.sampletype-item.teams {
+    background-image: url(../img/products/teams.svg);
+}
+
+.sampletype-item.outlook {
+    background-image: url(../img/products/outlook.svg);
+}
+
+.sample-details .producttype-item.angular {
+    background-image: url(../img/frameworks/angularjs.svg);
+}
+
+.sample-details .producttype-item.jquery {
+    background-image: url(../img/frameworks/jquery.svg);
+}
+
+.sample-details .producttype-item.javascript {
+    background-image: url(../img/frameworks/javascript.svg);
+}
+
+.sample-details .producttype-item.knockout {
+    background-image: url(../img/frameworks/knockout.svg);
+}
+
+.sample-details .producttype-item.react {
+    background-image: url(../img/frameworks/react.svg);
+}
+
+.sample-details .producttype-item.vuejs {
+    background-image: url(../img/frameworks/vuejs.svg);
+}
+
+.sample-details .producttype-item.other {
+    background-image: url(../img/frameworks/other.svg);
+}

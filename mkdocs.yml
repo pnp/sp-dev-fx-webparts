@@ -33,6 +33,7 @@ theme:
   feature:
     tabs: true
 extra_css:
+  - 'css/site.css'
   - 'css/extra.css'
   - 'css/filter.css'
   - 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/10.0.0/css/fabric.min.css'
