@@ -1,3 +1,5 @@
+> NOTE: This file is no longer used. I just left it here because I need to move the filters to another page.
+
 # Samples by PnP Controls
 
 Many samples use the [PnP React Reusable Controls for SPFx](https://pnp.github.io/sp-dev-fx-controls-react/) and the [Reusable property pane controls for SPFx](https://pnp.github.io/sp-dev-fx-property-controls/) and demonstrate the many ways that you can use the various controls at your disposal.

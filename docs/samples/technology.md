@@ -1,3 +1,5 @@
+> NOTE: This file is no longer used. I just left it here because I need to move the filters to another page.
+
 # Samples by Technology
 
 Use the filters below to find samples which demonstrate how to use various Microsoft technologies.
