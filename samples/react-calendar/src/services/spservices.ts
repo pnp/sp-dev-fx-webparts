@@ -538,9 +538,6 @@ export default class spservices {
                 UID: event.UID.replace("{", "").replace("}", ""),
               });
             }
-
-            let parseEvt: parseRecurrentEvent = new parseRecurrentEvent();
-           events = parseEvt.parseEvents(events, null, null);
           return true;
         };
         //Checks to see if there are any results saved in local storage
@@ -563,6 +560,8 @@ export default class spservices {
           await mapEvents() ? window.localStorage.setItem("calendarEventsWithLocalTime", JSON.stringify(events)) : null;           
         }
       }
+      let parseEvt: parseRecurrentEvent = new parseRecurrentEvent();
+      events = parseEvt.parseEvents(events, null, null);
        
       // Return Data
       return events;
