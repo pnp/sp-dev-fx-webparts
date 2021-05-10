@@ -123,16 +123,9 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
 
       this.userListPermissions = await this.spService.getUserPermissions(this.props.siteUrl, this.props.list);
       
-      let allEventsData: IEventData[];
-      if(window.localStorage.getItem("calendarEvents")){
-        allEventsData = JSON.parse(window.localStorage.getItem("calendarEvents"));
-      }else{
-        allEventsData = await this.spService.getEvents(escape(this.props.siteUrl), escape(this.props.list), this.props.eventStartDate.value, this.props.eventEndDate.value);
-        window.localStorage.setItem("calendarEvents", JSON.stringify(allEventsData));
-      }
-      // const eventsData: IEventData[] = await this.spService.getEvents(escape(this.props.siteUrl), escape(this.props.list), this.props.eventStartDate.value, this.props.eventEndDate.value);
+      const eventsData: IEventData[] = await this.spService.getEvents(escape(this.props.siteUrl), escape(this.props.list), this.props.eventStartDate.value, this.props.eventEndDate.value);
 
-      this.setState({ eventData: allEventsData, hasError: false, errorMessage: "" });
+      this.setState({ eventData: eventsData, hasError: false, errorMessage: "" });
     } catch (error) {
       this.setState({ hasError: true, errorMessage: error.message, isloading: false });
     }
