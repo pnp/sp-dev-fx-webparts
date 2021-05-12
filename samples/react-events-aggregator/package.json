@@ -38,7 +38,7 @@
     "fresh": ">=0.5.2",
     "handlebars": ">=4.7.7",
     "lodash": ">=4.17.19",
-    "merge": ">=1.2.1",
+    "merge": ">=2.1.1",
     "morgan": ">=1.9.1",
     "stringstream": ">=0.0.6",
     "lodash.template": ">=4.5.0"
