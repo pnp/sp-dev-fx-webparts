@@ -23,6 +23,9 @@ $(document).ready(function () {
       var searchResult = qsRegex ? $(this).data("keywords").match(qsRegex) : true;
       var buttonResult = buttonFilter ? $(this).is(buttonFilter) : true;
       return searchResult && buttonResult;
+    },
+    fitRows:{
+      columnWidth: '.grid-sizer'
     }
   });
 
