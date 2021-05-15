@@ -16,3 +16,10 @@ status:incomplete-submission:
   # Close the issue
   close: true
 
+# Actions taken when the `wrong-repo` label is added to issues 
+status:wrong-repo:
+  # Post a comment
+  comment: >
+    Thank you for your submission, but this issues list is intended only for issues related to the samples in this repository. For general SPFx development issues, you may want to try to create issues in the [SP-Dev-Docs repository](https://github.com/SharePoint/sp-dev-docs/issues/new)
+  # Close the issue
+  close: true
