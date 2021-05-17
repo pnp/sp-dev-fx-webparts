@@ -1,1 +1,65 @@
-{"name":"pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload","version":null,"source":"pnp","title":"File Upload using AngularJs","shortDescription":"File Update/Delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework.","longDescription":["File Update/Delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Angular"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://camo.githubusercontent.com/674cb6e830d597e1ab9bb89992b6fe7f0359b80f/687474703a2f2f692e696d6775722e636f6d2f553571673449492e706e67","alt":"File Upload using AngularJs","slides":null}],"authors":[{"gitHubAccount":"dipongkor","company":"","pictureUrl":"https://github.com/dipongkor.png"},{"gitHubAccount":"gautamdsheth","company":"","pictureUrl":"https://github.com/gautamdsheth.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-angular-ngofficeuifabric-file-upload",
+    "source": "pnp",
+    "title": "File Upload using AngularJs",
+    "shortDescription": "File Update/Delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-ngofficeuifabric-file-upload",
+    "longDescription": [
+      "File Update/Delete web part using AngularJs and ngOfficeUIFabric with the SharePoint Framework."
+    ],
+    "creationDateTime": "2017-07-17",
+    "updateDateTime": "2017-07-17",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Angular"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://camo.githubusercontent.com/674cb6e830d597e1ab9bb89992b6fe7f0359b80f/687474703a2f2f692e696d6775722e636f6d2f553571673449492e706e67",
+        "alt": "File Upload using AngularJs"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-ngofficeuifabric-file-upload/assets/NG File Upload.png?raw=true",
+        "alt": "File Upload using AngularJs"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "dipongkor",
+        "company": "Jashore University of Science and Technology",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/4987425?s=460\u0026u=998935621b0e998dc9bcd0fc26267623a8e5512c\u0026v=4",
+        "name": "Atish Kumar Dipongkor",
+        "twitter": "atish_iit"
+      },
+      {
+        "gitHubAccount": "gautamdsheth",
+        "company": "Valo Intranet",
+        "pictureUrl": "https://github.com/gautamdsheth.png",
+        "name": "Gautam Sheth",
+        "twitter": "gautamdsheth"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

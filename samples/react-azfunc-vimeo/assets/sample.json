@@ -1,1 +1,44 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-azfunc-vimeo","version":null,"source":"pnp","title":"Local Azure Function and SPFx Web Part Development to consume third party APIs","shortDescription":"This sample shows how to consume third-party APIs through an Azure Functions by a Web Part.","longDescription":["This sample shows how to consume third-party APIs through an Azure Functions by a Web Part."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://avatars2.githubusercontent.com/u/5503835?s=460\u0026v=4","alt":"Local Azure Function and SPFx Web Part Development to consume third party APIs","slides":null}],"authors":[{"gitHubAccount":"StfBauer","company":"","pictureUrl":"https://github.com/StfBauer.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-azfunc-vimeo",
+    "source": "pnp",
+    "title": "Local Azure Function and SPFx Web Part Development to consume third party APIs",
+    "shortDescription": "This sample shows how to consume third-party APIs through an Azure Functions by a Web Part.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-azfunc-vimeo",
+    "longDescription": [
+      "This sample shows how to consume third-party APIs through an Azure Functions by a Web Part."
+    ],
+    "creationDateTime": "2018-07-24",
+    "updateDateTime": "2018-07-24",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "StfBauer",
+        "company": "N8D",
+        "pictureUrl": "https://github.com/StfBauer.png",
+        "name": "Stefan Bauer",
+        "twitter": "stfbauer"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

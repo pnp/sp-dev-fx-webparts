@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-knockout-sp-pnp-js","version":null,"source":"pnp","title":"Sample showing the use of @pnp/sp library with Knockoutjs","shortDescription":"This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O.","longDescription":["This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Knockout"},{"key":"SPFX-VERSION","value":"1.7.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/knockout-sp-pnp-js/assets/screenshot.png","alt":"Sample showing the use of @pnp/sp library with Knockoutjs","slides":null}],"authors":[{"gitHubAccount":"patrick-rodgers","company":"","pictureUrl":"https://github.com/patrick-rodgers.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-knockout-sp-pnp-js",
+    "source": "pnp",
+    "title": "Sample showing the use of @pnp/sp library with Knockoutjs",
+    "shortDescription": "This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/knockout-sp-pnp-js",
+    "longDescription": [
+      "This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O."
+    ],
+    "creationDateTime": "2018-11-14",
+    "updateDateTime": "2018-11-14",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Knockout"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.7.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-sp-pnp-js/assets/screenshot.png",
+        "alt": "Sample showing the use of @pnp/sp library with Knockoutjs"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "patrick-rodgers",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/patrick-rodgers.png",
+        "name": "Patrick Rodgers",
+        "twitter": "mediocrebowler"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

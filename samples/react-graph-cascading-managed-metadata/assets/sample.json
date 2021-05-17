@@ -1,1 +1,58 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-graph-cascading-managed-metadata","version":null,"source":"pnp","title":"Cascading managed metadata using Graph API","shortDescription":"Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data.","longDescription":["Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-cascading-managed-metadata/assets/cmmd.gif","alt":"Cascading managed metadata using Graph API","slides":null}],"authors":[{"gitHubAccount":"anoopt","company":"","pictureUrl":"https://github.com/anoopt.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-graph-cascading-managed-metadata",
+    "source": "pnp",
+    "title": "Cascading managed metadata using Graph API",
+    "shortDescription": "Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-cascading-managed-metadata",
+    "longDescription": [
+      "Shows how to use the Microsoft Graph APIs (beta) for Taxonomy to get the data."
+    ],
+    "creationDateTime": "2020-09-02",
+    "updateDateTime": "2020-09-02",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-cascading-managed-metadata/assets/cmmd.gif",
+        "alt": "Cascading managed metadata using Graph API"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-cascading-managed-metadata/assets/termstore.png?raw=true",
+        "alt": "Cascading managed metadata using Graph API"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "anoopt",
+        "company": "Content \u002BCloud",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/9694225?s=460\u0026u=fbb4b27ed944935800d5f6dbc91e71911ce0d4ec\u0026v=4",
+        "name": "Anoop Tatti",
+        "twitter": "anooptells"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,77 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-graph-calendar","version":null,"source":"pnp","title":"Graph Calendar Web Part","shortDescription":"This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.).","longDescription":["This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.)."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-calendar/assets/react-graph-calendar-spo.gif","alt":"Graph Calendar Web Part","slides":null}],"authors":[{"gitHubAccount":"sebastienlevert","company":"","pictureUrl":"https://github.com/sebastienlevert.png"},{"gitHubAccount":"Abderahman88","company":"","pictureUrl":"https://github.com/Abderahman88.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-graph-calendar",
+    "source": "pnp",
+    "title": "Graph Calendar Web Part",
+    "shortDescription": "This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.).",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-calendar",
+    "longDescription": [
+      "This is a sample web part developed using React Framework to gather events from the underlying group calendar of a Team site. This sample also demonstrates the utilization of web parts as Teams tabs and Personal tab and offering a visualization context to change behaviors based on the platform used (Getting the proper information from the team vs. SharePoint site, understanding the context of the theme on Teams, etc.)."
+    ],
+    "creationDateTime": "2020-11-06",
+    "updateDateTime": "2020-11-06",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSPERSONALAPP",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-calendar/assets/react-graph-calendar-spo.gif",
+        "alt": "Graph Calendar Web Part"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-calendar/assets/react-graph-calendar-teams.gif?raw=true",
+        "alt": "Graph Calendar Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "sebastienlevert",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/sebastienlevert.png",
+        "name": "S\u00E9bastien Levert",
+        "twitter": "sebastienlevert"
+      },
+      {
+        "gitHubAccount": "Abderahman88",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "name": "Abderahman Moujahid"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

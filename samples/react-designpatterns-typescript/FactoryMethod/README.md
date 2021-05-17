@@ -34,6 +34,7 @@ Version|Date|Comments
 1.0|May 15, 2018|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -54,7 +55,7 @@ It promotes the loose-coupling by eliminating the need to bind application-speci
 
 So lets start this journey explaining how I saw this factory method pattern could be applied.
 
-In a SharePoint Site we can have multiple lists and all those lists could have different columns or fields, why not create a generic way to build the list item objets depending on the selected list? well in plain english, a webpart where you can select the list, and based on the selected list it will render all the columns, sure you can do this in many ways and probably with lots of switches/if statements, etc, but I wanted a more elegant solution and I believe this sample will do just that.
+In a SharePoint Site we can have multiple lists and all those lists could have different columns or fields, why not create a generic way to build the list item objets depending on the selected list? well in plain english, a web part where you can select the list, and based on the selected list it will render all the columns, sure you can do this in many ways and probably with lots of switches/if statements, etc, but I wanted a more elegant solution and I believe this sample will do just that.
 
 
 ##### Diagram
@@ -255,7 +256,7 @@ export class ListItemFactory implements IFactory {
 
 ###### Props and states
 
-Properties we pass from the main webpart to the component are defined in the props interface, things like SPHttpclient are important here,  state is where we actually store our returned information from the server, because listitems could be of different types, I created a wrapper Interface and depending on the type of list, then the state would be read from a different state property  DetailsListItemState, DetailsNewsListItemState, etc.
+Properties we pass from the main web part to the component are defined in the props interface, things like SPHttpclient are important here,  state is where we actually store our returned information from the server, because listitems could be of different types, I created a wrapper Interface and depending on the type of list, then the state would be read from a different state property  DetailsListItemState, DetailsNewsListItemState, etc.
 
 We will see later in the series how could achieve this with shorter code, but for this pattern its what I need so far.
 
@@ -498,9 +499,10 @@ export default class FactoryMethod extends React.Component<IFactoryMethodProps, 
   //#endregion
 }
 ```
-###### The webpart
 
-And finally the webpart code is below, with self explanatory comments for the reader to understand the events lifecycle.  
+###### The web part
+
+And finally the web part code is below, with self explanatory comments for the reader to understand the events lifecycle.  
 
 
 ```Typescript

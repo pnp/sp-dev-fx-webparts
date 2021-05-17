@@ -6,16 +6,19 @@ import {
   PropertyPaneTextField,
   PropertyPaneSlider,
   PropertyPaneToggle,
-  PropertyPaneHorizontalRule
+  PropertyPaneHorizontalRule,
+  PropertyPaneLabel,
+  PopupWindowPosition
 } from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart, PropertyPaneLabel } from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart,  } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'StaffDirectoryWebPartStrings';
 import {StaffDirectory}  from '../../components/StaffDirectory/StaffDirectory';
 import { IStaffDirectoryProps } from '../../components/StaffDirectory/IStaffDirectoryProps';
 import { PropertyFieldMultiSelect } from '@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect';
-
+import {Theme} from 'spfx-uifabric-themes';
 import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
+import { loadTheme } from 'office-ui-fabric-react';
 export interface IStaffDirectoryWebPartProps {
   title: string;
   maxHeight: number;
@@ -28,24 +31,72 @@ export interface IStaffDirectoryWebPartProps {
   pageSize:number;
 }
 
+const teamsDefaultTheme = require("../../common/TeamsDefaultTheme.json");
+const teamsDarkTheme = require("../../common/TeamsDarkTheme.json");
+const teamsContrastTheme = require("../../common/TeamsContrastTheme.json");
 export default class StaffDirectoryWebPart extends BaseClientSideWebPart<IStaffDirectoryWebPartProps> {
 
   private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
+
+
   protected async onInit(): Promise<void> {
-    window.sessionStorage.clear();
-    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+
+    this._themeProvider = this.context.serviceScope.consume(
+      ThemeProvider.serviceKey
+    );
     // If it exists, get the theme variant
     this._themeVariant = this._themeProvider.tryGetTheme();
-
     // Register a handler to be notified if the theme variant changes
-    this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
+    this._themeProvider.themeChangedEvent.add(
+      this,
+      this._handleThemeChangedEvent
+    );
+
+    if (this.context.sdks.microsoftTeams) {
+      // in teams ?
+      const context = this.context.sdks.microsoftTeams!.context;
+      this._applyTheme(context.theme || "default");
+      this.context.sdks.microsoftTeams.teamsJs.registerOnThemeChangeHandler(
+        this._applyTheme
+      );
+    }
     return Promise.resolve();
   }
 
+  /**
+   * Update the current theme variant reference and re-render.
+   *
+   * @param args The new theme
+   */
   private _handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
     this._themeVariant = args.theme;
 
+    this.render();
+  }
+
+  // Apply btheme id in Teams
+  private _applyTheme = (theme: string): void => {
+    this.context.domElement.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-theme", theme);
+
+    if (theme == "dark") {
+      loadTheme({
+        palette: teamsDarkTheme,
+      });
+    }
+
+    if (theme == "default") {
+      loadTheme({
+        palette: teamsDefaultTheme,
+      });
+    }
+
+    if (theme == "contrast") {
+      loadTheme({
+        palette: teamsContrastTheme,
+      });
+    }
     this.render();
   }
 
@@ -58,7 +109,7 @@ export default class StaffDirectoryWebPart extends BaseClientSideWebPart<IStaffD
         context: this.context,
         maxHeight: this.properties.maxHeight,
         showBox: this.properties.showBox,
-        themeVariant: this._themeVariant,
+        themeVariant: this._themeVariant  ,
         displayMode: this.displayMode,
         updateProperty:   (value:string ) => {
             this.properties.title =  value;
@@ -136,7 +187,6 @@ export default class StaffDirectoryWebPart extends BaseClientSideWebPart<IStaffD
                   PropertyFieldMultiSelect('userAttributes', {
                     key: 'userAttributes',
                     label: strings.UserAttributesLabel,
-
                     options: [
                       {
                         key: "company",
@@ -169,6 +219,14 @@ export default class StaffDirectoryWebPart extends BaseClientSideWebPart<IStaffD
                       {
                         key: "userType",
                         text: "User Type"
+                      },
+                      {
+                        key: "aboutMe",
+                        text: "About Me"
+                      },
+                      {
+                        key: "skills",
+                        text: "Skills"
                       },
                     ],
                     selectedKeys: this.properties.userAttributes

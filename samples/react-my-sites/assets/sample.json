@@ -1,1 +1,92 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-my-sites","version":null,"source":"pnp","title":"My Sites","shortDescription":"This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins.","longDescription":["This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-sites/assets/MySites.gif","alt":"My Sites","slides":null}],"authors":[{"gitHubAccount":"joaojmendes","company":"","pictureUrl":"https://github.com/joaojmendes.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-my-sites",
+    "source": "pnp",
+    "title": "My Sites",
+    "shortDescription": "This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-sites",
+    "longDescription": [
+      "This web part shows sites that user has permissions to access. It includes Office 365 Groups, OneDrive Sites, SharePoint Sites and App Sites created by SharePoint Add-ins."
+    ],
+    "creationDateTime": "2020-08-30",
+    "updateDateTime": "2020-08-30",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSPERSONALAPP",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-sites/assets/MySites.gif",
+        "alt": "My Sites"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-sites/assets/Screenshot 2020-08-06 at 13.50.51.png?raw=true",
+        "alt": "My Sites"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-sites/assets/Screenshot 2020-08-06 at 13.52.58.png?raw=true",
+        "alt": "My Sites"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-sites/assets/Screenshot 2020-08-06 at 14.17.35.png?raw=true",
+        "alt": "My Sites"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

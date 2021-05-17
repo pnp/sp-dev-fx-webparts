@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-graph-personalemail","version":null,"source":"pnp","title":"Personal e-mail","shortDescription":"Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph.","longDescription":["Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.6.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-personalemail/assets/preview.png","alt":"Personal e-mail","slides":null}],"authors":[{"gitHubAccount":"waldekmastykarz","company":"","pictureUrl":"https://github.com/waldekmastykarz.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-graph-personalemail",
+    "source": "pnp",
+    "title": "Personal e-mail",
+    "shortDescription": "Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-personalemail",
+    "longDescription": [
+      "Sample React web part showing how to retrieve and display personal e-mail retrieved using the Microsoft Graph."
+    ],
+    "creationDateTime": "2018-10-03",
+    "updateDateTime": "2018-10-03",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.6.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-personalemail/assets/preview.png",
+        "alt": "Personal e-mail"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "waldekmastykarz",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/waldekmastykarz.png",
+        "name": "Waldek Mastykarz",
+        "twitter": "waldekm"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,29 +1,25 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-
+import { BaseClientSideWebPart, WebPartContext } from '@microsoft/sp-webpart-base';
 import * as strings from 'SitesSelectedManagerWebPartStrings';
-import SitesSelectedManager from './components/SitesSelectedManager';
-import { ISitesSelectedManagerProps } from './components/ISitesSelectedManagerProps';
+import { App } from './components/App';
 
-export interface ISitesSelectedManagerWebPartProps {
+export interface IAppProperties {
   description: string;
+  context: WebPartContext;
   showAbout: boolean;
   aadGuid: string;
-
 }
 
-export default class SitesSelectedManagerWebPart extends BaseClientSideWebPart<ISitesSelectedManagerWebPartProps> {
-
+export default class SitesSelectedManagerWebPart extends BaseClientSideWebPart<IAppProperties> {
   public render(): void {
-    const element: React.ReactElement<ISitesSelectedManagerProps> = React.createElement(
-      SitesSelectedManager,
+    const element: React.ReactElement<IAppProperties> = React.createElement(
+      App,
       {
         description: this.properties.description,
         context: this.context,
@@ -36,10 +32,6 @@ export default class SitesSelectedManagerWebPart extends BaseClientSideWebPart<I
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
-  }
-
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

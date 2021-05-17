@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-components-dynamicloading","version":null,"source":"pnp","title":"Code Splitting in SharePoint Framework","shortDescription":"Load React components and third party packages on demand in SPFx","longDescription":["Load React components and third party packages on demand in SPFx"],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.6.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-components-dynamicloading/assets/cs3.gif","alt":"Code Splitting in SharePoint Framework","slides":null}],"authors":[{"gitHubAccount":"vman","company":"","pictureUrl":"https://github.com/vman.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-components-dynamicloading",
+    "source": "pnp",
+    "title": "Code Splitting in SharePoint Framework",
+    "shortDescription": "Load React components and third party packages on demand in SPFx",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-components-dynamicloading",
+    "longDescription": [
+      "Load React components and third party packages on demand in SPFx"
+    ],
+    "creationDateTime": "2018-10-09",
+    "updateDateTime": "2018-10-09",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.6.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-components-dynamicloading/assets/cs3.gif",
+        "alt": "Code Splitting in SharePoint Framework"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "vman",
+        "company": "",
+        "pictureUrl": "https://github.com/vman.png",
+        "name": "Vardhaman Deshpande"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

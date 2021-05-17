@@ -1,1 +1,63 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-my-groups","version":null,"source":"pnp","title":"My Groups","shortDescription":"Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.","longDescription":["Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-groups/assets/example.png","alt":"My Groups","slides":null}],"authors":[{"gitHubAccount":"zachroberts8668","company":"","pictureUrl":"https://github.com/zachroberts8668.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-my-groups",
+    "source": "pnp",
+    "title": "My Groups",
+    "shortDescription": "Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-groups",
+    "longDescription": [
+      "Using Microsoft Graph, this web part grabs the Office 365 groups the current user is a member of with links to the groups SharePoint site."
+    ],
+    "creationDateTime": "2020-07-09",
+    "updateDateTime": "2020-07-09",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/React-MyGroups_Grid.png",
+        "alt": "My Groups"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-groups/assets/React-MyGroups_Compact.png?raw=true",
+        "alt": "My Groups"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-groups/assets/React-MyGroups_Property.png?raw=true",
+        "alt": "My Groups"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "zachroberts8668",
+        "company": "",
+        "pictureUrl": "https://github.com/zachroberts8668.png",
+        "name": "Zach Roberts"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

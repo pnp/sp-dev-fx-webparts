@@ -1,1 +1,57 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-feedback","version":null,"source":"pnp","title":"Feedback","shortDescription":"This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the \u0022Feedback Owners\u0022 group.","longDescription":["This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the \u0022Feedback Owners\u0022 group."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-feedback/assets/feedbackwebpart.gif","alt":"Feedback","slides":null}],"authors":[{"gitHubAccount":"perr124","company":"","pictureUrl":"https://github.com/perr124.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-feedback",
+    "source": "pnp",
+    "title": "Feedback",
+    "shortDescription": "This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the \u0022Feedback Owners\u0022 group.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feedback",
+    "longDescription": [
+      "This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the \u0022Feedback Owners\u0022 group."
+    ],
+    "creationDateTime": "2021-03-03",
+    "updateDateTime": "2021-03-03",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feedback/assets/feedbackwebpart.gif",
+        "alt": "Feedback"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "perr124",
+        "company": "",
+        "pictureUrl": "https://github.com/perr124.png",
+        "name": "Perry Kankam"
+      },
+      {
+        "gitHubAccount": "Abderahman88",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "name": "Abderahman Moujahid"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

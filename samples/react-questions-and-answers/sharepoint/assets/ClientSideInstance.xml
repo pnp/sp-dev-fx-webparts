@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ClientSideComponentInstance
+        Title="QuestionsListManager"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ComponentId="aefe4f31-4914-4dcb-be8c-f24bf52f7719"
+        Properties="">
+    </ClientSideComponentInstance>
+</Elements>

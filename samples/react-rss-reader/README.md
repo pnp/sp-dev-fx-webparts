@@ -5,7 +5,7 @@
 A RSS Reader original based on work completed by Olivier Carpentier's from:  https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader
 Root project: https://github.com/OlivierCC/spfx-40-fantastics
 
-React RSS Reader utilizes SharePoint Framework v1.7.0 with no dependency on jQuery or a RSS Feed library. This project does utilize https://sharepoint.github.io/sp-dev-fx-property-controls/, and Moment React for date manipulation. Handlebar template option derived from React Search Refiners: https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-search-refiners.
+React RSS Reader utilizes SharePoint Framework v1.11.0 with no dependency on jQuery or a RSS Feed library. This project does utilize https://sharepoint.github.io/sp-dev-fx-property-controls/, and Moment React for date manipulation. Handlebar template option derived from React Search Refiners (PnP Modern Search): https://microsoft-search.github.io/pnp-modern-search/. Use NodeJS version 10 to compile or rebuild the spfx solution.
 
 Main features include:
 
@@ -58,9 +58,13 @@ Version|Date|Comments
 - Clone this repository
 
 ### SPFx 
-- In the command line run:
+- In the command line, with a version of Node 10, i.e. 10.16.3, run:
   - `npm install`
   - `gulp serve`
+
+- To bundle and package the installable .sppkg, run:
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
 
 ## Web Parts Configuration
 
@@ -73,7 +77,7 @@ Version|Date|Comments
 Setting | Description 
 -------|----
 Feed Url | The url of the RSS Feed for readers. Normally will url will return XML
-Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the webpart to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retieve a feed response. Note, subject to limitations with paid options available.
+Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at https://github.com/appsattic/feed2json.org. **Rss2Json** = CORS safe method to retieve a feed response. Note, subject to limitations with paid options available.
 Feed Service Url | If using Feed2Json, the url of the feed2json service. Host your own service, learn more at https://github.com/appsattic/feed2json.org
 Feed Service API Key | If using rss2json, an optional API key for paid services
 Max Count | The maximum results to return, default: 10
@@ -105,7 +109,7 @@ Description Character Limit | The maximum number of description characters to di
 Link Target | The "target" of a listing link, default: _blank
 Date Format | The Moment based format format of the listing date, i.e. DD/MM/YYYY (European), default: MM/DD/YYYY
 Title Color | Color override for a listing title
-Background Color | Color override for the webpart background
+Background Color | Color override for the web part background
 
 ## Features
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
@@ -114,6 +118,6 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 - Utilize local storage
 - Demonstrate different method to address CORS / CORB issues
 - Handlebar based rendering with inline editor or remote template retrieval
-- Use the React container component approach inspiring by the [react-todo-basic sample](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-todo-basic).
+- Use the React container component approach inspiring by the [react-todo-basic sample](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-todo-basic).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-rss-reader" />

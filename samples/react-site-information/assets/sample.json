@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-site-information","version":null,"source":"pnp","title":"Site Information","shortDescription":"This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site.","longDescription":["This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-site-information.gif","alt":"Site Information","slides":null}],"authors":[{"gitHubAccount":null,"company":"","pictureUrl":"https://github.com/.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-site-information",
+    "source": "pnp",
+    "title": "Site Information",
+    "shortDescription": "This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-information",
+    "longDescription": [
+      "This web part provides you the ability to collect and present additional metadata on a web page for group associated team sites. The web part may be configured to display site title, a site contacts powered by a people picker, and a term from the term store, often used to provide classification for the site."
+    ],
+    "creationDateTime": "2018-05-01",
+    "updateDateTime": "2018-05-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-site-information.gif",
+        "alt": "Site Information"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "eoverfield",
+        "company": "PixelMill",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield",
+        "twitter": "EricOverfield"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

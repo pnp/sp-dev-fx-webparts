@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-functional-servicescope-hooks","version":null,"source":"pnp","title":"Consuming SPFX Service Scopes using React Hooks","shortDescription":"This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components.","longDescription":["This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-functional-servicescope-hooks/webpart.png","alt":"Consuming SPFX Service Scopes using React Hooks","slides":null}],"authors":[{"gitHubAccount":"garrytrinder","company":"","pictureUrl":"https://github.com/garrytrinder.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-functional-servicescope-hooks",
+    "source": "pnp",
+    "title": "Consuming SPFX Service Scopes using React Hooks",
+    "shortDescription": "This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-servicescope-hooks",
+    "longDescription": [
+      "This web part is designed to help developers understand how to use the Context API and useContext() React Hook to share global data between a hierarchy of nested React components."
+    ],
+    "creationDateTime": "2020-03-25",
+    "updateDateTime": "2020-03-25",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-servicescope-hooks/webpart.png",
+        "alt": "Consuming SPFX Service Scopes using React Hooks"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "garrytrinder",
+        "company": "CPS Global",
+        "pictureUrl": "https://github.com/garrytrinder.png",
+        "name": "Garry Trinder",
+        "twitter": "garrytrinder"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

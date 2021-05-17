@@ -10,6 +10,7 @@ import {
   Link,
   ITextFieldStyles,
   IPersonaProps,
+  loadTheme,
 } from "office-ui-fabric-react";
 import { presenceStatus, IPresenceStatus } from "../../common/PresenceStatus";
 import { AppContext } from "../../common/AppContext";
@@ -18,14 +19,18 @@ import { IUserExtended } from "../../entites/IUserExtended";
 import { IAppContext } from "../../common/IAppContext";
 import { IUserCardProps } from "./IUserCardProps";
 
+const teamsDefaultTheme = require("../../common/TeamsDefaultTheme.json");
+const teamsDarkTheme = require("../../common/TeamsDarkTheme.json");
+const teamsContrastTheme = require("../../common/TeamsContrastTheme.json");
+
 export const UserCard = (props: IUserCardProps) => {
   const { userData, updateUsersPresence } = props;
   const _context: IAppContext = React.useContext(AppContext);
 
   const [expandIcon, setExpandIcon] = React.useState("ChevronDownSmall");
   const [isDetailsOpen, setIsDetailsOpen] = React.useState(false);
-
-
+  const _Theme = window.__themeState__.theme;
+ 
   const styleClasses = mergeStyleSets({
     separator: {
       marginLeft: 20,
@@ -33,31 +38,32 @@ export const UserCard = (props: IUserCardProps) => {
       marginTop: 15,
       borderBottomStyle: "solid",
       borderWidth: 1,
-      borderBottomColor: _context.themeVariant.palette.neutralLighterAlt,
+      borderBottomColor: _context.themeVariant?.palette?.themeLighter ?? _Theme.themeLighter,
     },
     stylContainerDetails: {
       marginTop: 25,
       display: "grid",
       justifyContent: "stretch",
       alignItems: "center",
-      backgroundColor: _context.themeVariant.palette.themeLighter,
+      backgroundColor: _context.themeVariant?.palette?.neutralLighterAlt ?? _Theme.neutralLighterAlt,
       gridTemplateColumns: "repeat( auto-fit, minmax(280px, 1fr) )",
       gridTemplateRows: "auto",
     },
 
     styleIconDetails: {
       fontSize: 16,
-      color: _context.themeVariant.palette.themePrimary,
+      color: _context.themeVariant?.palette?.themePrimary ?? _Theme.themePrimary,
     },
     styleFieldLabel: {
       fontSize: 12,
       fontWeight: 400,
       paddingLeft: 3,
+      color: _Theme.inputText
     },
 
     styleField: {
       paddingTop: 15,
-
+      color: _context.themeVariant?.palette?.themePrimary ?? _Theme.themePrimary,
     },
   });
 
@@ -90,6 +96,7 @@ export const UserCard = (props: IUserCardProps) => {
     }
   };
 
+  //tris added onclick event
   const _onRenderPrimaryText = (persona: IPersonaProps) => {
     return (
       <>
@@ -101,7 +108,12 @@ export const UserCard = (props: IUserCardProps) => {
             root: { justifyContent: "flex-start", width: "100%" },
           }}
         >
-          <Text
+          <Text onClick={
+              (event) => {
+                  event.preventDefault();
+                  window.open("https://gbr.delve.office.com/?u=" + userData.id + "&v=work", "_blank");
+              }
+            }
             variant="medium"
             block
             nowrap
@@ -109,8 +121,9 @@ export const UserCard = (props: IUserCardProps) => {
               width: "100%",
               fontWeight: 600,
               padding: 0,
-              marginBottom: 3,
+              marginBottom: 3
             }}
+            title={persona.text}
           >
             {persona.text}
           </Text>
@@ -123,16 +136,17 @@ export const UserCard = (props: IUserCardProps) => {
           >
             <div style={{ fontSize: 12 }}>
               <ActionButton
+              
                 styles={{
                   root: {
                     height: 21,
                     width: 26,
-                    color: _context.themeVariant.palette.themePrimary,
+                    color: _context.themeVariant?.palette?.themeSecondary ?? _Theme.themeSecondary,
                   },
                 }}
                 iconProps={{
                   iconName: "CannedChat",
-                  color: _context.themeVariant.palette.themePrimary,
+                  color: _context.themeVariant?.palette?.themeSecondary  ??_Theme.themeSecondary,
                 }}
                 allowDisabledFocus={true}
                 disabled={false}
@@ -156,12 +170,13 @@ export const UserCard = (props: IUserCardProps) => {
                   root: {
                     height: 21,
                     width: 26,
-                    color: _context.themeVariant.palette.themePrimary,
+
                   },
                 }}
                 iconProps={{
                   iconName: expandIcon,
-                  color: _context.themeVariant.palette.themePrimary,
+                  color: _Theme.themeSecondary
+
                 }}
                 allowDisabledFocus={true}
                 disabled={false}
@@ -176,11 +191,19 @@ export const UserCard = (props: IUserCardProps) => {
     );
   };
 
+
+  //tris added onclick event
   const _onRenderSecondaryText = (persona: IPersonaProps) => {
     return (
       <>
         <Stack verticalAlign="start" tokens={{ childrenGap: 0 }}>
-          <Text title={persona.secondaryText} variant="medium" block nowrap>
+          <Text onClick={
+              (event) => {
+                  event.preventDefault();
+                  window.open("https://gbr.delve.office.com/?u=" + userData.id + "&v=work", "_blank");
+              }
+            }
+            title={persona.secondaryText} variant="medium" block nowrap>
             {" "}
             {persona.secondaryText}
           </Text>
@@ -213,11 +236,11 @@ export const UserCard = (props: IUserCardProps) => {
           }
           text={userData.displayName}
           title={userData.displayName}
-          tertiaryText={userData.mail}
+          tertiaryText={userData.mail}          
           secondaryText={userData.jobTitle}
           onRenderPrimaryText={_onRenderPrimaryText}
           onRenderSecondaryText={_onRenderSecondaryText}
-        ></Persona>
+        ></Persona> 
       </Stack>
       {isDetailsOpen && (
         <>
@@ -699,8 +722,82 @@ export const UserCard = (props: IUserCardProps) => {
                           <div className={styleClasses.separator}></div>
                         </div>
                       );
-                      break;
-                  }
+                      break;  
+                  case "aboutMe":
+                    return (
+                      <div
+                        className={`${styleClasses.styleField}`}
+                        title={userData.aboutMe ? userData.aboutMe.replace(/<[^>]+>/g, '').replace(/&nbsp;/gi,' ') : "Not available"}
+                      >
+                        <Stack
+                          horizontal={true}
+                          verticalAlign="center"
+                          tokens={{ childrenGap: 5 }}
+                          style={{ marginRight: 20, marginLeft: 20 }}
+                        >
+                          <FontIcon
+                            className={styleClasses.styleIconDetails}
+                            iconName="Medal"
+                          />
+                          <Label className={styleClasses.styleFieldLabel}>
+                           About Me
+                          </Label>
+                        </Stack>
+                        <Text
+                          styles={styleTextField}
+                          variant="medium"
+                          block={true}
+                          nowrap={true}
+                        >
+                          {userData.aboutMe ? userData.aboutMe.replace(/<[^>]+>/g, '').replace(/&nbsp;/gi,' ') : "Not available"}
+                        </Text>
+                        <div className={styleClasses.separator}></div>
+                      </div>
+                    );
+                    break;
+                  case "skills":
+                    return (
+                      <div
+                        className={`${styleClasses.styleField}`}
+                        title={
+                          userData.skills.join(",")
+                            ? userData.skills.join(",")
+                            : "Not available"
+                        }
+                      >
+                        <Stack
+                          horizontal={true}
+                          verticalAlign="center"
+                          tokens={{ childrenGap: 5 }}
+                          style={{ marginRight: 20, marginLeft: 20 }}
+                        >
+                          <FontIcon
+                            className={styleClasses.styleIconDetails}
+                            iconName="Education"
+                          />
+                          <Label className={styleClasses.styleFieldLabel}>
+                            Skills
+                          </Label>
+                        </Stack>
+                        <Text
+                          styles={styleTextField}
+                          variant="medium"
+                          block={true}
+                          nowrap={true}
+                        >
+                          {userData.skills.join(",") ? (
+                            <>
+                                {userData.skills.join(",")}
+                            </>
+                          ) : (
+                            "Not available"
+                          )}
+                        </Text>
+                        <div className={styleClasses.separator}></div>
+                      </div>
+                    );
+                    break; 
+                }
               })}
           </Stack>
         </>

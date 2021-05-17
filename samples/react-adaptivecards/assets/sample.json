@@ -1,1 +1,161 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-adaptivecards","version":null,"source":"pnp","title":"Adaptive Cards Host","shortDescription":"This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.","longDescription":["This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif","alt":"Adaptive Cards Host","slides":null}],"authors":[{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-adaptivecards",
+    "source": "pnp",
+    "title": "Adaptive Cards Host",
+    "shortDescription": "This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards",
+    "longDescription": [
+      "This sample creates an Adaptive Cards Host web part that you can use to display Adaptive Cards in your SharePoint applications."
+    ],
+    "creationDateTime": "2021-02-23",
+    "updateDateTime": "2021-02-23",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldListPicker, PropertyFieldViewPicker, ropertyFieldCodeEditorLanguages, PropertyPaneWebPartInformation, Placeholder"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards/assets/AdaptiveCardsHostAllSamples.gif",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/AdaptiveCardHostRendering.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/AdaptiveCardsHost.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/BackgroundColors.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/DataContext.png?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/DependentControls.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/DevTools.png?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/EnableTemplating.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 108,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/ErrorHandling.png?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 109,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/SampleDataEditor.png?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 110,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/SelectLibrary.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 111,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/SharePointHost.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 112,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/Templating.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 113,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/TemplatingDetection.png?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 114,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/TemplatingSamples.gif?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 115,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/UIFabric.png?raw=true",
+        "alt": "Adaptive Cards Host"
+      },
+      {
+        "type": "image",
+        "order": 116,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptivecards/assets/YouNeedData.png?raw=true",
+        "alt": "Adaptive Cards Host"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

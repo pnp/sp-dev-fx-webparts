@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-quick-poll","version":null,"source":"pnp","title":"Quick Poll","shortDescription":"This component is developed for the users who really need to create a Poll within a minute and with less maintenance.","longDescription":["This component is developed for the users who really need to create a Poll within a minute and with less maintenance."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-quick-poll/assets/react-quick-poll.gif","alt":"Quick Poll","slides":null}],"authors":[{"gitHubAccount":"sudharsank","company":"","pictureUrl":"https://github.com/sudharsank.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-quick-poll",
+    "source": "pnp",
+    "title": "Quick Poll",
+    "shortDescription": "This component is developed for the users who really need to create a Poll within a minute and with less maintenance.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-poll",
+    "longDescription": [
+      "This component is developed for the users who really need to create a Poll within a minute and with less maintenance."
+    ],
+    "creationDateTime": "2020-10-17",
+    "updateDateTime": "2020-10-17",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-poll/assets/react-quick-poll.gif",
+        "alt": "Quick Poll"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "sudharsank",
+        "company": "NTT Digital Business Solutions",
+        "pictureUrl": "https://github.com/sudharsank.png",
+        "name": "Sudharsan Kesavanarayanan",
+        "twitter": "sudharsank"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

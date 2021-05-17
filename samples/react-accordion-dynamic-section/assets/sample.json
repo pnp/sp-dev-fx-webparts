@@ -1,1 +1,95 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-accordion-dynamic-section","version":null,"source":"pnp","title":"Dynamic Accordion - FAQ Builder web part","shortDescription":"This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection.","longDescription":["This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif","alt":"Dynamic Accordion - FAQ Builder web part","slides":null}],"authors":[{"gitHubAccount":"jerryyasir","company":"","pictureUrl":"https://github.com/jerryyasir.png"},{"gitHubAccount":"jack-vinitsky","company":"","pictureUrl":"https://github.com/jack-vinitsky.png"},{"gitHubAccount":"Ravikadri","company":"","pictureUrl":"https://github.com/Ravikadri.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-accordion-dynamic-section",
+    "source": "pnp",
+    "title": "Dynamic Accordion - FAQ Builder web part",
+    "shortDescription": "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-dynamic-section",
+    "longDescription": [
+      "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection."
+    ],
+    "creationDateTime": "2021-01-05",
+    "updateDateTime": "2021-01-05",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "WebPartTitle, Placeholder"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif",
+        "alt": "Dynamic Accordion - FAQ Builder web part"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-dynamic-section/assets/AccordionSettings1.png?raw=true",
+        "alt": "Dynamic Accordion - FAQ Builder web part"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-dynamic-section/assets/AccordionSettings2.png?raw=true",
+        "alt": "Dynamic Accordion - FAQ Builder web part"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-dynamic-section/assets/FAQsList.png?raw=true",
+        "alt": "Dynamic Accordion - FAQ Builder web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "jerryyasir",
+        "company": "DXC Technology",
+        "pictureUrl": "https://github.com/jerryyasir.png",
+        "name": "Jerry Yasir",
+        "twitter": "jerryyasir"
+      },
+      {
+        "gitHubAccount": "jack-vinitsky",
+        "company": "",
+        "pictureUrl": "https://github.com/jack-vinitsky.png",
+        "name": "Jack Vinitsky"
+      },
+      {
+        "gitHubAccount": "Ravikadri",
+        "company": "Netwoven",
+        "pictureUrl": "https://github.com/Ravikadri.png",
+        "name": "Ravi Chandra"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

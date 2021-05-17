@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-webcam","version":null,"source":"pnp","title":"Web/Mobile Camera Demo","shortDescription":"This is sample web part to showcase how to open webcam and take photo in SPFx web part.","longDescription":["This is sample web part to showcase how to open webcam and take photo in SPFx web part."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.9.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-webcam/screens/4.png?raw=true","alt":"Web/Mobile Camera Demo","slides":null}],"authors":[{"gitHubAccount":"siddharth-vaghasia","company":"","pictureUrl":"https://github.com/siddharth-vaghasia.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-webcam",
+    "source": "pnp",
+    "title": "Web/Mobile Camera Demo",
+    "shortDescription": "This is sample web part to showcase how to open webcam and take photo in SPFx web part.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-webcam",
+    "longDescription": [
+      "This is sample web part to showcase how to open webcam and take photo in SPFx web part."
+    ],
+    "creationDateTime": "2019-09-05",
+    "updateDateTime": "2019-09-05",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/screens/4.png?raw=true",
+        "alt": "Web/Mobile Camera Demo"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "siddharth-vaghasia",
+        "company": "",
+        "pictureUrl": "https://github.com/siddharth-vaghasia.png",
+        "name": "Siddharth Vaghasia"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

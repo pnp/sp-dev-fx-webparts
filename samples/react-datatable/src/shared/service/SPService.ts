@@ -12,9 +12,14 @@ export class SPService {
         try {
             let selectQuery: any[] = ['Id'];
             let expandQuery: any[] = [];
+            let listItems = [];
+            let items: any;
             for (var i = 0; i < selectedFields.length; i++) {
                 switch (selectedFields[i].fieldType) {
                     case 'SP.FieldUser':
+                        selectQuery.push(`${selectedFields[i].key}/Title,${selectedFields[i].key}/EMail,${selectedFields[i].key}/Name`);
+                        expandQuery.push(selectedFields[i].key);
+                        break;
                     case 'SP.FieldLookup':
                         selectQuery.push(`${selectedFields[i].key}/Title`);
                         expandQuery.push(selectedFields[i].key);
@@ -28,9 +33,16 @@ export class SPService {
                         break;
                 }
             }
-            let listItems: any[] = await sp.web.lists.getById(selectedList).items
+            items = await sp.web.lists.getById(selectedList).items
                 .select(selectQuery.join())
-                .expand(expandQuery.join()).get();
+                .expand(expandQuery.join())
+                .top(4999)
+                .getPaged();
+            listItems = items.results;
+            while (items.hasNext) {
+                items = await items.getNext();
+                listItems = [...listItems, ...items.results];
+            }
             return listItems;
         } catch (err) {
             Promise.reject(err);
@@ -45,6 +57,17 @@ export class SPService {
                 .filter("Hidden eq false and ReadOnlyField eq false and Title ne 'Content Type' and Title ne 'Attachments'")
                 .get();
             return allFields;
+        }
+        catch (err) {
+            Promise.reject(err);
+        }
+    }
+
+    public async getUserProfileUrl(loginName: string) {
+        try {
+            const properties = await sp.profiles.getPropertiesFor(loginName);
+            const profileUrl = properties['PictureUrl'];
+            return profileUrl;
         }
         catch (err) {
             Promise.reject(err);

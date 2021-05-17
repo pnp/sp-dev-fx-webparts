@@ -1,0 +1,65 @@
+$ms-color-themePrimary: '[theme:themePrimary, default:#0078d7]';
+$ms-color-neutralLight: '[theme:neutralLight, default:#eaeaea]';
+$ms-color-neutralLighter: '[theme:neutralLighter, default:#f4f4f4]';
+$ms-color-neutralTertiary: '[theme:neutralTertiary, default:#a6a6a6]';
+$ms-color-white: '[theme:white, default:#ffffff]';
+
+
+.propertyFieldOrder {
+  margin-bottom: 2px;
+
+  ul {
+    padding: 0.5px;
+    margin: 0;
+    overflow-y: auto;
+  }
+
+  .disabled {
+
+    li {
+      color: $ms-color-neutralTertiary;
+    }
+
+  }
+
+  li {
+    list-style: none;
+    background-color: $ms-color-white;
+    border: 0.5px solid;
+    border-color: $ms-color-neutralLight;
+    outline: 0.5px solid;
+    outline-color: $ms-color-neutralLight;
+
+    .enabled & :hover {
+      background-color: $ms-color-neutralLighter;
+    }
+
+    & > div {
+      padding: 3px 6px;
+      display: flex;
+      flex-direction: row;
+    }
+
+  }
+
+  .itemBox {
+    flex-grow: 1;
+  }
+
+  .dragEnter {
+    background-color: $ms-color-neutralLight;
+    border-top: 2px dashed;
+    border-top-color: $ms-color-themePrimary;
+  }
+
+  .dragLast {
+    background-color: $ms-color-neutralLight;
+    border-bottom: 2px dashed;
+    border-bottom-color: $ms-color-themePrimary;
+  }
+
+  .lastBox {
+    height: 8px;
+  }
+
+}

@@ -1,1 +1,85 @@
-{"name":"pnp-sp-dev-spfx-web-parts-js-myflows","version":null,"source":"pnp","title":"My Flows Web Part","shortDescription":"Manage current user flows in SharePoint or Teams Tab, this web part use the msflowsdk-1.1.js","longDescription":["Manage current user flows in SharePoint or Teams Tab, this web part use the msflowsdk-1.1.js"],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Javascript"},{"key":"SPFX-VERSION","value":"1.8.2"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-myflows/assets/Screenshot4.png","alt":"My Flows Web Part","slides":null}],"authors":[{"gitHubAccount":"joaojmendes","company":"","pictureUrl":"https://github.com/joaojmendes.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-myflows",
+    "source": "pnp",
+    "title": "My Flows Web Part",
+    "shortDescription": "Manage current user flows in SharePoint or Teams Tab, this web part use the msflowsdk-1.1.js",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-myflows",
+    "longDescription": [
+      "Manage current user flows in SharePoint or Teams Tab, this web part use the msflowsdk-1.1.js"
+    ],
+    "creationDateTime": "2019-08-13",
+    "updateDateTime": "2019-08-13",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Javascript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.2"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-myflows/assets/Screenshot4.png",
+        "alt": "My Flows Web Part"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-myflows/assets/MyFlows.gif?raw=true",
+        "alt": "My Flows Web Part"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-myflows/assets/Screenshot1.png?raw=true",
+        "alt": "My Flows Web Part"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-myflows/assets/Screenshot2.png?raw=true",
+        "alt": "My Flows Web Part"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-myflows/assets/Screenshot3.png?raw=true",
+        "alt": "My Flows Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

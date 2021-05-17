@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-js-extend-gulp","version":null,"source":"pnp","title":"Integrating custom gulp tasks to SharePoint Framwork toolchain","shortDescription":"SharePoint client-side development tools use gulp as the build process task runner to...","longDescription":["SharePoint client-side development tools use gulp as the build process task runner to..."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Javascript"},{"key":"SPFX-VERSION","value":"rc0"}],"thumbnails":[{"type":"image","order":100,"url":"https://avatars3.githubusercontent.com/u/7882052?s=460\u0026v=4","alt":"Integrating custom gulp tasks to SharePoint Framwork toolchain","slides":null}],"authors":[{"gitHubAccount":"chakkaradeep","company":"","pictureUrl":"https://github.com/chakkaradeep.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-extend-gulp",
+    "source": "pnp",
+    "title": "Integrating custom gulp tasks to SharePoint Framwork toolchain",
+    "shortDescription": "SharePoint client-side development tools use gulp as the build process task runner to...",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-extend-gulp",
+    "longDescription": [
+      "SharePoint client-side development tools use gulp as the build process task runner to..."
+    ],
+    "creationDateTime": "2017-01-25",
+    "updateDateTime": "2017-01-25",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Javascript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "rc0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://avatars3.githubusercontent.com/u/7882052?s=460\u0026v=4",
+        "alt": "Integrating custom gulp tasks to SharePoint Framwork toolchain"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "chakkaradeep",
+        "company": "Microsoft",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/7882052?s=460\u0026u=92d546edfe1e1b374c69f0fd9315186eea700b8f\u0026v=4",
+        "name": "Chakkaradeep Chandran",
+        "twitter": "chakkaradeep"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

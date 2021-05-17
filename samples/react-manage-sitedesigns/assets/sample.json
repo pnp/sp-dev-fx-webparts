@@ -1,1 +1,154 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-manage-sitedesigns","version":null,"source":"pnp","title":"Site Designs Manager","shortDescription":"This web part allows tenant administrators to manage site designs through a graphical interface.","longDescription":["This web part allows tenant administrators to manage site designs through a graphical interface."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/joaojmendes/sp-dev-fx-webparts/raw/dev/samples/react-manage-sitedesigns/assets/screen1.jpg","alt":"Site Designs Manager","slides":null}],"authors":[{"gitHubAccount":"joaojmendes","company":"","pictureUrl":"https://github.com/joaojmendes.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-manage-sitedesigns",
+    "source": "pnp",
+    "title": "Site Designs Manager",
+    "shortDescription": "This web part allows tenant administrators to manage site designs through a graphical interface.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-sitedesigns",
+    "longDescription": [
+      "This web part allows tenant administrators to manage site designs through a graphical interface."
+    ],
+    "creationDateTime": "2019-04-08",
+    "updateDateTime": "2019-04-08",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-sitedesigns/assets/screen1.jpg",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen10.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen11.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen12.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen13.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen14.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen15.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen16.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 108,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen17.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 109,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen2.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 110,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen3.1.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 111,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen3.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 112,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen4.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 113,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen5.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 114,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen6.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 115,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen7.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 116,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen8.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      },
+      {
+        "type": "image",
+        "order": 117,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-sitedesigns/assets/screen9.jpg?raw=true",
+        "alt": "Site Designs Manager"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

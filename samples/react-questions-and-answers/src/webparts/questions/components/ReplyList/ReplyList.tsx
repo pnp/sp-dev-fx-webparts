@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { FormMode } from 'utilities';
-import { autobind } from '@uifabric/utilities/lib';
 import styles from './ReplyList.module.scss';
 // models
 import { IReplyItem, IQuestionItem } from 'models';
@@ -33,8 +32,7 @@ export default class ReplyListComponent extends React.Component<IReplyListProps,
         }
     }
 
-    @autobind
-    private onRenderCell(reply: IReplyItem, index: number | undefined): JSX.Element | undefined {
+    private onRenderCell = (reply: IReplyItem, index: number | undefined): JSX.Element | undefined => {
         const { parentQuestion } = this.props;
         if (reply) {
             return (

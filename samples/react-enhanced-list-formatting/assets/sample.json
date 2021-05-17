@@ -1,1 +1,65 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-enhanced-list-formatting","version":null,"source":"pnp","title":"Enhanced List Formatting","shortDescription":"This web part allows you to add custom CSS on a page to enhance list formatting.","longDescription":["This web part allows you to add custom CSS on a page to enhance list formatting."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif","alt":"Enhanced List Formatting","slides":null}],"authors":[{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"},{"gitHubAccount":"PopWarner","company":"","pictureUrl":"https://github.com/PopWarner.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-list-formatting",
+    "source": "pnp",
+    "title": "Enhanced List Formatting",
+    "shortDescription": "This web part allows you to add custom CSS on a page to enhance list formatting.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-list-formatting",
+    "longDescription": [
+      "This web part allows you to add custom CSS on a page to enhance list formatting."
+    ],
+    "creationDateTime": "2020-03-18",
+    "updateDateTime": "2020-03-18",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-list-formatting/assets/EnhancedListFormatting.gif",
+        "alt": "Enhanced List Formatting"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-list-formatting/assets/Viewformatting.png?raw=true",
+        "alt": "Enhanced List Formatting"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      },
+      {
+        "gitHubAccount": "PopWarner",
+        "company": "Catapult Systems",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460\u0026u=9e4e74223c4ffb430fb77c97892a84b286df1921\u0026v=4",
+        "name": "David Warner II",
+        "twitter": "PopWarner"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

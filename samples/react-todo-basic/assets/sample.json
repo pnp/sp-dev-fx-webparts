@@ -1,1 +1,76 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-todo-basic","version":null,"source":"pnp","title":"Todo Basic","shortDescription":"A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.","longDescription":["A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-todo-basic/assets/todo-basic-demo.gif","alt":"Todo Basic","slides":null}],"authors":[{"gitHubAccount":"chakkaradeep","company":"","pictureUrl":"https://github.com/chakkaradeep.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-todo-basic",
+    "source": "pnp",
+    "title": "Todo Basic",
+    "shortDescription": "A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-todo-basic",
+    "longDescription": [
+      "A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts."
+    ],
+    "creationDateTime": "2017-05-04",
+    "updateDateTime": "2017-05-04",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-todo-basic/assets/todo-basic-demo.gif",
+        "alt": "Todo Basic"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-todo-basic/assets/todo-basic-no-task-list.gif?raw=true",
+        "alt": "Todo Basic"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-todo-basic/assets/todo-basic-placeholder-edit-mode.png?raw=true",
+        "alt": "Todo Basic"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-todo-basic/assets/todo-basic-placeholder-read-mode.png?raw=true",
+        "alt": "Todo Basic"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-todo-basic/assets/todo-basic-placeholder.gif?raw=true",
+        "alt": "Todo Basic"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "chakkaradeep",
+        "company": "Microsoft",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/7882052?s=460\u0026u=92d546edfe1e1b374c69f0fd9315186eea700b8f\u0026v=4",
+        "name": "Chakkaradeep Chandran",
+        "twitter": "chakkaradeep"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

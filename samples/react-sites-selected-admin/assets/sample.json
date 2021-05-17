@@ -1,0 +1,70 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sites-selected-admin",
+    "source": "pnp",
+    "title": "Sites Selected Admin",
+    "shortDescription": "The web part lets you manage your Azure AD applications that have the Sites Selected Api permission. With this web part you\u0027ll get an UI for managing what app can connect to which site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sites-selected-admin",
+    "longDescription": [
+      "The web part lets you manage your Azure AD applications that have the Sites Selected Api permission. With this web part you\u0027ll get an UI for managing what app can connect to which site."
+    ],
+    "creationDateTime": "2021-03-08",
+    "updateDateTime": "2021-03-08",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sites-selected-admin/assets/sites-manager-demo.gif",
+        "alt": "Sites Selected Admin"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-sites-selected-admin/assets/aad-appreg.png?raw=true",
+        "alt": "Sites Selected Admin"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-sites-selected-admin/assets/api-access-page.png?raw=true",
+        "alt": "Sites Selected Admin"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-sites-selected-admin/assets/vsDemo.gif?raw=true",
+        "alt": "Sites Selected Admin"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "fthorild",
+        "company": "Sogeti Sweden",
+        "pictureUrl": "https://github.com/fthorild.png",
+        "name": "Fredrik Thorild",
+        "twitter": "taxonomythorild"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

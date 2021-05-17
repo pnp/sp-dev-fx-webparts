@@ -1,1 +1,58 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-youtube","version":null,"source":"pnp","title":"Youtube Web Part","shortDescription":"This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id.","longDescription":["This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-youtube/assets/Preview.gif","alt":"Youtube Web Part","slides":null}],"authors":[{"gitHubAccount":"giuleon","company":"","pictureUrl":"https://github.com/giuleon.png"},{"gitHubAccount":"Ravikadri","company":"","pictureUrl":"https://github.com/Ravikadri.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-youtube",
+    "source": "pnp",
+    "title": "Youtube Web Part",
+    "shortDescription": "This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-youtube",
+    "longDescription": [
+      "This web part allows to search and view the Youtube videos, across the Youtube API, directly on a SharePoint page, furthermore the property panel offers the possibility to specify the api key, the number of items to display and it is also possible specify a Youtube Channel Id."
+    ],
+    "creationDateTime": "2020-10-01",
+    "updateDateTime": "2020-10-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-youtube/assets/Preview.gif",
+        "alt": "Youtube Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "giuleon",
+        "company": "",
+        "pictureUrl": "https://github.com/giuleon.png",
+        "name": "Giuliano De Luca",
+        "twitter": "delucagiulian"
+      },
+      {
+        "gitHubAccount": "Ravikadri",
+        "company": "Netwoven",
+        "pictureUrl": "https://github.com/Ravikadri.png",
+        "name": "Ravi Chandra"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

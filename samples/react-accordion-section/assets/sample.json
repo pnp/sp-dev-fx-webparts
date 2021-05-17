@@ -1,1 +1,83 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-accordion-section","version":null,"source":"pnp","title":"Accordion Section FAQ Builder","shortDescription":"Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.","longDescription":["Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-section/assets/react-accordion-section.gif","alt":"Accordion Section FAQ Builder","slides":null}],"authors":[{"gitHubAccount":"ejbenke","company":"","pictureUrl":"https://github.com/ejbenke.png"},{"gitHubAccount":"mikezimm","company":"","pictureUrl":"https://github.com/mikezimm.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-accordion-section",
+    "source": "pnp",
+    "title": "Accordion Section FAQ Builder",
+    "shortDescription": "Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-section",
+    "longDescription": [
+      "Adds a collapsible accordion section to an Office 365 SharePoint page or Teams Tab. Ideal for creating FAQs."
+    ],
+    "creationDateTime": "2020-09-02",
+    "updateDateTime": "2020-09-02",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "Placeholder, WebPartTitle"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-section/assets/react-accordion-section.gif",
+        "alt": "Accordion Section FAQ Builder"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-section/assets/AccordionSettings.png?raw=true",
+        "alt": "Accordion Section FAQ Builder"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-section/assets/ListForAccordion.png?raw=true",
+        "alt": "Accordion Section FAQ Builder"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ejbenke",
+        "company": "",
+        "pictureUrl": "https://github.com/ejbenke.png",
+        "name": "Erik Benke",
+        "twitter": "erikjbenke"
+      },
+      {
+        "gitHubAccount": "mikezimm",
+        "company": "",
+        "pictureUrl": "https://github.com/mikezimm.png",
+        "name": "Mike Zimmerman"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

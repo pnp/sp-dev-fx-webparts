@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-graph-feedback-form","version":null,"source":"pnp","title":"Feedback Form","shortDescription":"Sample SPFx React web part which allows sending emails using Microsoft Graph.","longDescription":["Sample SPFx React web part which allows sending emails using Microsoft Graph."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.9.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-feedback-form/assets/preview.gif","alt":"Feedback Form","slides":null}],"authors":[{"gitHubAccount":null,"company":"","pictureUrl":"https://github.com/.png"},{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-graph-feedback-form",
+    "source": "pnp",
+    "title": "Feedback Form",
+    "shortDescription": "Sample SPFx React web part which allows sending emails using Microsoft Graph.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-feedback-form",
+    "longDescription": [
+      "Sample SPFx React web part which allows sending emails using Microsoft Graph."
+    ],
+    "creationDateTime": "2020-05-15",
+    "updateDateTime": "2020-05-15",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-feedback-form/assets/preview.gif",
+        "alt": "Feedback Form"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

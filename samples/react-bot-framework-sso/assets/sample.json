@@ -1,1 +1,63 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-bot-framework-sso","version":null,"source":"pnp","title":"Single-Sign On Bot Framework","shortDescription":"The web parts embeds the login bot by using a webchat. As the user has already login in the SharePoint website, we could use SSO to authorize the bot.","longDescription":["The web parts embeds the login bot by using a webchat. As the user has already login in the SharePoint website, we could use SSO to authorize the bot."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-bot-framework-secure/assets/sp-wp-secure.gif","alt":"Single-Sign On Bot Framework","slides":null}],"authors":[{"gitHubAccount":"DingmaomaoBJTU","company":"","pictureUrl":"https://github.com/DingmaomaoBJTU.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-bot-framework-sso",
+    "source": "pnp",
+    "title": "Single-Sign On Bot Framework",
+    "shortDescription": "The web parts embeds the login bot by using a webchat. As the user has already login in the SharePoint website, we could use SSO to authorize the bot.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bot-framework-sso",
+    "longDescription": [
+      "The web parts embeds the login bot by using a webchat. As the user has already login in the SharePoint website, we could use SSO to authorize the bot."
+    ],
+    "creationDateTime": "2020-11-06",
+    "updateDateTime": "2020-11-06",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework-secure/assets/sp-wp-secure.gif",
+        "alt": "Single-Sign On Bot Framework"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-bot-framework-sso/assets/EnhancedAuth.png?raw=true",
+        "alt": "Single-Sign On Bot Framework"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-bot-framework-sso/assets/sp-wp-sso.gif?raw=true",
+        "alt": "Single-Sign On Bot Framework"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "DingmaomaoBJTU",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/DingmaomaoBJTU.png",
+        "name": "Qiong Wu"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

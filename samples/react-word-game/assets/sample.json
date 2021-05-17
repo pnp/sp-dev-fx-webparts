@@ -1,1 +1,63 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-word-game","version":null,"source":"pnp","title":"Word Game","shortDescription":"A fun game where you unscramble the words before the time runs out. It stores everyone\u0027s high scores in a SharePoint List on the Site.","longDescription":["A fun game where you unscramble the words before the time runs out. It stores everyone\u0027s high scores in a SharePoint List on the Site."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.4.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-word-game/assets/preview.gif","alt":"Word Game","slides":null}],"authors":[{"gitHubAccount":"nbarkhina","company":"","pictureUrl":"https://github.com/nbarkhina.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-word-game",
+    "source": "pnp",
+    "title": "Word Game",
+    "shortDescription": "A fun game where you unscramble the words before the time runs out. It stores everyone\u0027s high scores in a SharePoint List on the Site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-word-game",
+    "longDescription": [
+      "A fun game where you unscramble the words before the time runs out. It stores everyone\u0027s high scores in a SharePoint List on the Site."
+    ],
+    "creationDateTime": "2020-05-27",
+    "updateDateTime": "2020-05-27",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-word-game/assets/preview.gif",
+        "alt": "Word Game"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-word-game/assets/settings.PNG?raw=true",
+        "alt": "Word Game"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-word-game/assets/wordgame_mobile.png?raw=true",
+        "alt": "Word Game"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "nbarkhina",
+        "company": "",
+        "pictureUrl": "https://github.com/nbarkhina.png",
+        "name": "Neil Barkhina"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

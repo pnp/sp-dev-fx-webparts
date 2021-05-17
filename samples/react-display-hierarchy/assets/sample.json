@@ -1,1 +1,82 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-display-hierarchy","version":null,"source":"pnp","title":"Web part displaying hierarchical information from SharePoint list","shortDescription":"At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list.","longDescription":["At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png","alt":"Web part displaying hierarchical information from SharePoint list","slides":null}],"authors":[{"gitHubAccount":"nanddeepn","company":"","pictureUrl":"https://github.com/nanddeepn.png"},{"gitHubAccount":"ravi16a87","company":"","pictureUrl":"https://github.com/ravi16a87.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-display-hierarchy",
+    "source": "pnp",
+    "title": "Web part displaying hierarchical information from SharePoint list",
+    "shortDescription": "At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-display-hierarchy",
+    "longDescription": [
+      "At the time of developing this sample, the Office 365 UI fabric does not have any control for displaying hierarchical information. This web part helps to display the hierarchical information from SharePoint list."
+    ],
+    "creationDateTime": "2020-11-21",
+    "updateDateTime": "2020-11-21",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/local-sharepoint-workbench-run.png",
+        "alt": "Web part displaying hierarchical information from SharePoint list"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/list-sample-data.png?raw=true",
+        "alt": "Web part displaying hierarchical information from SharePoint list"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/list-schema.png?raw=true",
+        "alt": "Web part displaying hierarchical information from SharePoint list"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/sharepoint-run.gif?raw=true",
+        "alt": "Web part displaying hierarchical information from SharePoint list"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-display-hierarchy/assets/webpart-preview.png?raw=true",
+        "alt": "Web part displaying hierarchical information from SharePoint list"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "nanddeepn",
+        "company": "",
+        "pictureUrl": "https://github.com/nanddeepn.png",
+        "name": "Nanddeep Nachan",
+        "twitter": "NanddeepNachan"
+      },
+      {
+        "gitHubAccount": "ravi16a87",
+        "company": "Cognizant",
+        "pictureUrl": "https://github.com/ravi16a87.png",
+        "name": "Ravi Kulkarni"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

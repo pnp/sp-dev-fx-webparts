@@ -24,13 +24,17 @@
       "properties": {
         "title": "Questions",
         "pageSize": 5,
-        "sortOption": "Title",
+        "sortOption": "MostRecent",
         "loadInitialPage": false,
         "hideViewAllButton": false,
         "showQuestionAnsweredDropDown": false,
         "useApplicationPage": true,
         "applicationPage": "Questions.aspx",
-        "webPartRenderMode": "standard"
+        "webPartRenderMode": "standard",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "",
+        "discussionType": "Question"
       }
     },
     {
@@ -46,15 +50,19 @@
       },
       "officeFabricIconFontName": "FeedbackRequestSolid",
       "properties": {
-        "title": "Open Questions",
+        "title": "Questions",
         "pageSize": 10,
-        "sortOption": "Title",
+        "sortOption": "MostRecent",
         "loadInitialPage": true,
         "hideViewAllButton": true,
         "showQuestionAnsweredDropDown": false,
         "useApplicationPage": true,
         "applicationPage": "Questions.aspx",
-        "webPartRenderMode": "openQuestions"
+        "webPartRenderMode": "openQuestions",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "Open ",
+        "discussionType": "Question"
       }
     },
     {
@@ -70,15 +78,75 @@
       },
       "officeFabricIconFontName": "FeedbackResponseSolid",
       "properties": {
-        "title": "Answered Questions",
+        "title": "Questions",
         "pageSize": 10,
-        "sortOption": "Title",
+        "sortOption": "MostRecent",
         "loadInitialPage": true,
         "hideViewAllButton": true,
         "showQuestionAnsweredDropDown": false,
         "useApplicationPage": true,
         "applicationPage": "Questions.aspx",
-        "webPartRenderMode": "answeredQuestions"
+        "webPartRenderMode": "answeredQuestions",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "Answered ",
+        "discussionType": "Question"
+      }
+    },
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Conversations"
+      },
+      "description": {
+        "default": "Find other conversations or Start a new conversation"
+      },
+      "officeFabricIconFontName": "ActivityFeed",
+      "properties": {
+        "title": "Conversations",
+        "pageSize": 5,
+        "sortOption": "MostRecent",
+        "loadInitialPage": false,
+        "hideViewAllButton": false,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Conversations.aspx",
+        "webPartRenderMode": "standard",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "",
+        "discussionType": "Conversation"
+      }
+    },
+    {
+      "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d",
+      "group": {
+        "default": "Communication and collaboration"
+      },
+      "title": {
+        "default": "Conversations List"
+      },
+      "description": {
+        "default": "Show a list of Conversations"
+      },
+      "officeFabricIconFontName": "ActivityFeed",
+      "properties": {
+        "title": "Conversations",
+        "pageSize": 10,
+        "sortOption": "MostRecent",
+        "loadInitialPage": true,
+        "hideViewAllButton": true,
+        "showQuestionAnsweredDropDown": false,
+        "useApplicationPage": true,
+        "applicationPage": "Conversations.aspx",
+        "webPartRenderMode": "conversationsList",
+        "category": "",
+        "showCategory": false,
+        "stateLabel": "",
+        "discussionType": "Conversation"
       }
     }
   ]

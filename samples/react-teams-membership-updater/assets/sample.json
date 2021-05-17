@@ -1,0 +1,63 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-teams-membership-updater",
+    "source": "pnp",
+    "title": "Teams Membership Updater",
+    "shortDescription": "Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-membership-updater",
+    "longDescription": [
+      "Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app."
+    ],
+    "creationDateTime": "2020-04-27",
+    "updateDateTime": "2021-04-22",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-membership-updater/assets/Screenshot-2020-05-01.png",
+        "alt": "Web part in action"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-membership-updater/assets/teamsmembership.gif",
+        "alt": "Web part in action"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-membership-updater/assets/72f2b53a-f9be-4344-8fec-f4a09961a25b.png",
+        "alt": "Web part in action"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "techienickb",
+        "pictureUrl": "https://github.com/techienickb.png",
+        "name": "Nick Brown",
+        "twitter": "techienickb"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

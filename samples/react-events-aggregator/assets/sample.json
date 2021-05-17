@@ -1,1 +1,57 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-events-aggregator","version":null,"source":"pnp","title":"Event Aggregator Sample (DEPRECATED)","shortDescription":"This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it.","longDescription":["This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-events-aggregator/assets/spfx-event-aggregator.gif","alt":"Event Aggregator Sample (DEPRECATED)","slides":null}],"authors":[{"gitHubAccount":null,"company":"","pictureUrl":"https://github.com/.png"},{"gitHubAccount":"VelinGeorgiev","company":"","pictureUrl":"https://github.com/VelinGeorgiev.png"},{"gitHubAccount":"AustinBreslinDev","company":"","pictureUrl":"https://github.com/AustinBreslinDev.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-events-aggregator",
+    "source": "pnp",
+    "title": "Event Aggregator Sample (DEPRECATED)",
+    "shortDescription": "This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-aggregator",
+    "longDescription": [
+      "This sample shows how we can use the SPFx Event Aggregator to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to raise event (broadcast message) through the SPFx event aggregator and that event is received by other web parts or components that have been subscribed to receive it."
+    ],
+    "creationDateTime": "2018-11-18",
+    "updateDateTime": "2018-11-18",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-aggregator/assets/spfx-event-aggregator.gif",
+        "alt": "Event Aggregator Sample (DEPRECATED)"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "VelinGeorgiev",
+        "company": "",
+        "pictureUrl": "https://github.com/VelinGeorgiev.png",
+        "name": "Velin Georgiev"
+      },
+      {
+        "gitHubAccount": "AustinBreslinDev",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10480670?s=460\u0026v=4",
+        "name": "Austin Breslin"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

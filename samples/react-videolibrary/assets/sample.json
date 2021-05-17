@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-videolibrary","version":null,"source":"pnp","title":"Video Library","shortDescription":"A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel","longDescription":["A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel"],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"drop5"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-videolibrary/src/assets/react-3d-carousel.PNG","alt":"Video Library","slides":null}],"authors":[{"gitHubAccount":"russgove","company":"","pictureUrl":"https://github.com/russgove.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-videolibrary",
+    "source": "pnp",
+    "title": "Video Library",
+    "shortDescription": "A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-videolibrary",
+    "longDescription": [
+      "A set of 3 SPFX webparts that use different open-source carousels (react-3d-carousel, reactjs-coverface, and react-slick) to display videos stored on an Office 365 Video Channel"
+    ],
+    "creationDateTime": "2016-12-31",
+    "updateDateTime": "2016-12-31",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "drop5"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-videolibrary/src/assets/react-3d-carousel.PNG",
+        "alt": "Video Library"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "russgove",
+        "company": "",
+        "pictureUrl": "https://github.com/russgove.png",
+        "name": "Russell Gove"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

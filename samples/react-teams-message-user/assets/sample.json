@@ -1,0 +1,61 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-teams-message-user",
+    "source": "pnp",
+    "title": "Message Teams User",
+    "shortDescription": "Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-message-user",
+    "longDescription": [
+      "Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph."
+    ],
+    "creationDateTime": "2021-02-28",
+    "updateDateTime": "2021-02-28",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PeoplePicker"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message-user/assets/webPart-preview.png",
+        "alt": "Message Teams User"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-teams-message-user/assets/MessageTeams.gif?raw=true",
+        "alt": "Message Teams User"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "DRamalho92",
+        "company": "Storm Technology",
+        "pictureUrl": "https://github.com/DRamalho92.png",
+        "name": "David Ramalho"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-minesweeper","version":null,"source":"pnp","title":"Minesweeper","shortDescription":"This web part is the classic game Minesweeper, put in a Fluent UI powered SPFx web part!.","longDescription":["This web part is the classic game Minesweeper, put in a Fluent UI powered SPFx web part!."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-minesweeper/assets/Minesweeper.gif","alt":"Minesweeper","slides":null}],"authors":[{"gitHubAccount":"PieterHeemeryck","company":"","pictureUrl":"https://github.com/PieterHeemeryck.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-minesweeper",
+    "source": "pnp",
+    "title": "Minesweeper",
+    "shortDescription": "This web part is the classic game Minesweeper, put in a Fluent UI powered SPFx web part!.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-minesweeper",
+    "longDescription": [
+      "This web part is the classic game Minesweeper, put in a Fluent UI powered SPFx web part!."
+    ],
+    "creationDateTime": "2020-07-01",
+    "updateDateTime": "2020-07-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-minesweeper/assets/Minesweeper.gif",
+        "alt": "Minesweeper"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "PieterHeemeryck",
+        "company": "",
+        "pictureUrl": "https://github.com/PieterHeemeryck.png",
+        "name": "Pieter Heemeryck"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

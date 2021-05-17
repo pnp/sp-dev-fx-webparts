@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-material-ui","version":null,"source":"pnp","title":"Material UI","shortDescription":"This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon. This sample also includes RXJS DebounceTime, this feature allows you to wait for a certain amount of time before make requests to the server while user is typing to prevent to make requests for each character.","longDescription":["This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon. This sample also includes RXJS DebounceTime, this feature allows you to wait for a certain amount of time before make requests to the server while user is typing to prevent to make requests for each character."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-material-ui/assets/screenshot.gif","alt":"Material UI","slides":null}],"authors":[{"gitHubAccount":"AhmadiRamin","company":"","pictureUrl":"https://github.com/AhmadiRamin.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-material-ui",
+    "source": "pnp",
+    "title": "Material UI",
+    "shortDescription": "This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon. This sample also includes RXJS DebounceTime, this feature allows you to wait for a certain amount of time before make requests to the server while user is typing to prevent to make requests for each character.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-material-ui",
+    "longDescription": [
+      "This sample shows how you can use Material UI components in your SharePoint Framework solution. In this sample you will find some of the Material UI components like Table, Dialog, Text Field and Icon. This sample also includes RXJS DebounceTime, this feature allows you to wait for a certain amount of time before make requests to the server while user is typing to prevent to make requests for each character."
+    ],
+    "creationDateTime": "2019-03-25",
+    "updateDateTime": "2019-03-25",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-material-ui/assets/screenshot.gif",
+        "alt": "Material UI"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AhmadiRamin",
+        "company": "Content and Cloud",
+        "pictureUrl": "https://github.com/AhmadiRamin.png",
+        "name": "Ramin Ahmadi",
+        "twitter": "raminahmadi1986"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

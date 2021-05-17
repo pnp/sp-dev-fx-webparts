@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-facebook-plugin","version":null,"source":"pnp","title":"SharePoint Framework Facebook Page Social Plugin web part sample","shortDescription":"This sample shows how to implement iFrame-based web parts with a dynamic responsive behavior on the example of Facebook Page Social Plugin.","longDescription":["This sample shows how to implement iFrame-based web parts with a dynamic responsive behavior on the example of Facebook Page Social Plugin."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.5.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-facebook-plugin/assets/preview.png","alt":"SharePoint Framework Facebook Page Social Plugin web part sample","slides":null}],"authors":[{"gitHubAccount":"koltyakov","company":"","pictureUrl":"https://github.com/koltyakov.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-facebook-plugin",
+    "source": "pnp",
+    "title": "SharePoint Framework Facebook Page Social Plugin web part sample",
+    "shortDescription": "This sample shows how to implement iFrame-based web parts with a dynamic responsive behavior on the example of Facebook Page Social Plugin.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-facebook-plugin",
+    "longDescription": [
+      "This sample shows how to implement iFrame-based web parts with a dynamic responsive behavior on the example of Facebook Page Social Plugin."
+    ],
+    "creationDateTime": "2018-08-26",
+    "updateDateTime": "2018-08-26",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.5.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-facebook-plugin/assets/preview.png",
+        "alt": "SharePoint Framework Facebook Page Social Plugin web part sample"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "koltyakov",
+        "company": "ARVO Systems",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/7816483?s=460\u0026u=d77bbdeda1e5fc389b11899f93b62a7d00475835\u0026v=4",
+        "name": "Andrew Koltyakov",
+        "twitter": "koltyakov"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

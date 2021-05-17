@@ -1,1 +1,88 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps","version":null,"source":"pnp","title":"Enhanced Power Apps","shortDescription":"Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps","longDescription":["Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps"],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif","alt":"Enhanced Power Apps","slides":null}],"authors":[{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-enhanced-powerapps",
+    "source": "pnp",
+    "title": "Enhanced Power Apps",
+    "shortDescription": "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-enhanced-powerapps",
+    "longDescription": [
+      "Adds dynamic resizing, theme awareness, and dynamic data to embedded Power Apps"
+    ],
+    "creationDateTime": "2020-07-26",
+    "updateDateTime": "2020-07-26",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/enhanced-power-apps.gif",
+        "alt": "Enhanced Power Apps"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/dpstep1.png?raw=true",
+        "alt": "Enhanced Power Apps"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/resize.gif?raw=true",
+        "alt": "Enhanced Power Apps"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/sizeoptions.png?raw=true",
+        "alt": "Enhanced Power Apps"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/step1-5.png?raw=true",
+        "alt": "Enhanced Power Apps"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/step1.png?raw=true",
+        "alt": "Enhanced Power Apps"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-enhanced-powerapps/assets/step2.png?raw=true",
+        "alt": "Enhanced Power Apps"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

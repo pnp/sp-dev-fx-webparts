@@ -1,0 +1,69 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-image-editor",
+    "source": "pnp",
+    "title": "Image Editor",
+    "shortDescription": "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-editor",
+    "longDescription": [
+      "This solution contains an SPFx web part that shows an HTML Image Editor based on canvas and Office UI Fabric ",
+"Key features of the Editor",
+"* Resize",
+"* Crop",
+"* Flip",
+"* Rotate",
+"* Scale",
+"* Filter (Grayscale / Sepia)",
+"* Redo / Undo",
+"* Histoy of Actions"
+    ],
+    "creationDateTime": "2021-03-17",
+    "updateDateTime": "2021-03-17",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.0"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "false"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "WebPartTitle, Placeholder, FilePicker"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-editor/assets/react-image-editor.gif",
+        "alt": "React Image Editor Web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "petkir",
+        "company": "Cubido Business Solutions GmbH",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner",
+        "twitter": "petkir_at"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

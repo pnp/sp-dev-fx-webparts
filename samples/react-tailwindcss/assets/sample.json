@@ -1,1 +1,61 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-tailwindcss","version":null,"source":"pnp","title":"Tailwind CSS","shortDescription":"This project shows how to integrate Tailwind CSS framework into a SPFx React project.","longDescription":["This project shows how to integrate Tailwind CSS framework into a SPFx React project."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif","alt":"Tailwind CSS","slides":null}],"authors":[{"gitHubAccount":"fabiofranzini","company":"","pictureUrl":"https://github.com/fabiofranzini.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss",
+    "source": "pnp",
+    "title": "Tailwind CSS",
+    "shortDescription": "This project shows how to integrate Tailwind CSS framework into a SPFx React project.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss",
+    "longDescription": [
+      "This project shows how to integrate Tailwind CSS framework into a SPFx React project."
+    ],
+    "creationDateTime": "2020-10-17",
+    "updateDateTime": "2020-10-17",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif",
+        "alt": "Tailwind CSS"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "fabiofranzini",
+        "company": "",
+        "pictureUrl": "https://github.com/fabiofranzini.png",
+        "name": "Fabio Franzini",
+        "twitter": "franzinifabio"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

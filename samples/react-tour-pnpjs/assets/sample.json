@@ -1,1 +1,63 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-tour-pnpjs","version":null,"source":"pnp","title":"Tour Sample","shortDescription":"A SPFx WebPart using PnP/PnPjs, @pnp/spfx-property-controls and ReactTourJS.","longDescription":["A SPFx WebPart using PnP/PnPjs, @pnp/spfx-property-controls and ReactTourJS."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.9.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tour-pnpjs/assets/react-tour-pnpjs-webpart-animated.gif","alt":"Tour Sample","slides":null}],"authors":[{"gitHubAccount":"fredupstair","company":"","pictureUrl":"https://github.com/fredupstair.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-tour-pnpjs",
+    "source": "pnp",
+    "title": "Tour Sample",
+    "shortDescription": "A SPFx WebPart using PnP/PnPjs, @pnp/spfx-property-controls and ReactTourJS.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tour-pnpjs",
+    "longDescription": [
+      "A SPFx WebPart using PnP/PnPjs, @pnp/spfx-property-controls and ReactTourJS."
+    ],
+    "creationDateTime": "2019-11-23",
+    "updateDateTime": "2019-11-23",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tour-pnpjs/assets/react-tour-pnpjs-webpart-animated.gif",
+        "alt": "Tour Sample"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tour-pnpjs/assets/react-tour-pnpjs-webpart-animated-details.png?raw=true",
+        "alt": "Tour Sample"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tour-pnpjs/assets/react-tour-pnpjs-webpart-configuration.gif?raw=true",
+        "alt": "Tour Sample"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "fredupstair",
+        "company": "Avanade Italy",
+        "pictureUrl": "https://github.com/fredupstair.png",
+        "name": "Federico Porceddu"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

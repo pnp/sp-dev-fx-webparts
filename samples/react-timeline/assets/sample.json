@@ -1,1 +1,94 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-timeline","version":null,"source":"pnp","title":"Timeline","shortDescription":"This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema.","longDescription":["This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-timeline/assets/webpart-preview.gif","alt":"Timeline","slides":null}],"authors":[{"gitHubAccount":"nanddeepn","company":"","pictureUrl":"https://github.com/nanddeepn.png"},{"gitHubAccount":"ravi16a87","company":"","pictureUrl":"https://github.com/ravi16a87.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-timeline",
+    "source": "pnp",
+    "title": "Timeline",
+    "shortDescription": "This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-timeline",
+    "longDescription": [
+      "This sample displays list of events in chronological order. It is typically a graphic design showing a long bar labelled with dates paralleling it, and coexisting events. This web part helps to draw the timeline based from SharePoint list with pre-defined schema."
+    ],
+    "creationDateTime": "2020-07-10",
+    "updateDateTime": "2020-07-10",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-timeline/assets/webpart-preview.gif",
+        "alt": "Timeline"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/event-crud.gif?raw=true",
+        "alt": "Timeline"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/layout-horizontal.png?raw=true",
+        "alt": "Timeline"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/layout-vertical.png?raw=true",
+        "alt": "Timeline"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/list-sample-data.png?raw=true",
+        "alt": "Timeline"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/list-schema.png?raw=true",
+        "alt": "Timeline"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-timeline/assets/wepart-propertypane.png?raw=true",
+        "alt": "Timeline"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "nanddeepn",
+        "company": "",
+        "pictureUrl": "https://github.com/nanddeepn.png",
+        "name": "Nanddeep Nachan",
+        "twitter": "NanddeepNachan"
+      },
+      {
+        "gitHubAccount": "ravi16a87",
+        "company": "Cognizant",
+        "pictureUrl": "https://github.com/ravi16a87.png",
+        "name": "Ravi Kulkarni"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

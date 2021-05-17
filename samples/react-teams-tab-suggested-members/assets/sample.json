@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-teams-tab-suggested-members","version":null,"source":"pnp","title":"Group members suggestion","shortDescription":"This web part uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint web part or Teams tab","longDescription":["This web part uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint web part or Teams tab"],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.7.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-tab-suggested-members/assets/SuggestedMembersTeamsTab.jpg","alt":"Group members suggestion","slides":null}],"authors":[{"gitHubAccount":"luismanez","company":"","pictureUrl":"https://github.com/luismanez.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-teams-tab-suggested-members",
+    "source": "pnp",
+    "title": "Group members suggestion",
+    "shortDescription": "This web part uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint web part or Teams tab",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tab-suggested-members",
+    "longDescription": [
+      "This web part uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint web part or Teams tab"
+    ],
+    "creationDateTime": "2018-11-18",
+    "updateDateTime": "2018-11-18",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.7.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-suggested-members/assets/SuggestedMembersTeamsTab.jpg",
+        "alt": "Group members suggestion"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "luismanez",
+        "company": "ClearPeople",
+        "pictureUrl": "https://github.com/luismanez.png",
+        "name": "Luis Ma\u00F1ez"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

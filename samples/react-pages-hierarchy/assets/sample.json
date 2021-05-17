@@ -1,1 +1,61 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-pages-hierarchy","version":null,"source":"pnp","title":"Page Hierarchy","shortDescription":"This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.","longDescription":["This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pages-hierarchy/assets/PagesHierarchy.gif","alt":"Page Hierarchy","slides":null}],"authors":[{"gitHubAccount":"bogeorge","company":"","pictureUrl":"https://github.com/bogeorge.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-pages-hierarchy",
+    "source": "pnp",
+    "title": "Page Hierarchy",
+    "shortDescription": "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pages-hierarchy",
+    "longDescription": [
+      "This web part allows users to create a faux page hierarchy in their pages library and use it for page-to-page navigation."
+    ],
+    "creationDateTime": "2020-04-30",
+    "updateDateTime": "2020-04-30",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pages-hierarchy/assets/PagesHierarchy.gif",
+        "alt": "Page Hierarchy"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "bogeorge",
+        "company": "ThreeWill",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10885472?s=460\u0026u=74d23f4289cd555aa530e1c2c6156a382c373f2f\u0026v=4",
+        "name": "Bo George",
+        "twitter": "bo_george"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

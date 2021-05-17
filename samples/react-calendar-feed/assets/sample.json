@@ -1,1 +1,72 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-calendar-feed","version":null,"source":"pnp","title":"Calendar Feed Web Part","shortDescription":"This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part.","longDescription":["This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif","alt":"Calendar Feed Web Part","slides":null}],"authors":[{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"},{"gitHubAccount":"petkir","company":"","pictureUrl":"https://github.com/petkir.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-calendar-feed",
+    "source": "pnp",
+    "title": "Calendar Feed Web Part",
+    "shortDescription": "This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar-feed",
+    "longDescription": [
+      "This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part."
+    ],
+    "creationDateTime": "2020-07-16",
+    "updateDateTime": "2020-07-16",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldNumber, PropertyFieldSliderWithCallout, PropertyFieldTextWithCallout, PropertyFieldToggleWithCallout, Placeholder, WebPartTitle"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif",
+        "alt": "Calendar Feed Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      },
+      {
+        "gitHubAccount": "petkir",
+        "company": "Cubido Business Solutions GmbH",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner",
+        "twitter": "petkir_at"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

@@ -1,1 +1,218 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-calendar","version":null,"source":"pnp","title":"Calendar","shortDescription":"This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.","longDescription":["This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif","alt":"Calendar","slides":null}],"authors":[{"gitHubAccount":"joaojmendes","company":"","pictureUrl":"https://github.com/joaojmendes.png"},{"gitHubAccount":"derhallim","company":"","pictureUrl":"https://github.com/derhallim.png"},{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"},{"gitHubAccount":"nanddeepn","company":"","pictureUrl":"https://github.com/nanddeepn.png"},{"gitHubAccount":"Abderahman88","company":"","pictureUrl":"https://github.com/Abderahman88.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-calendar",
+    "source": "pnp",
+    "title": "Calendar",
+    "shortDescription": "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar",
+    "longDescription": [
+      "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
+    ],
+    "creationDateTime": "2020-12-04",
+    "updateDateTime": "2021-03-27",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldDateTimePicker, PeoplePicker, Map"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/animatevideo.gif",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/calendar_teams.jpg?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/calendar_teams2.jpg?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/modercalendar_monthly.gif?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/moderncalendar_yearly.gif?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.0.jpg?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.0.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.1.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 108,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.2.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 109,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.3.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 110,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.4.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 111,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 112,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen2.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 113,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen3.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 114,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen4.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 115,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen5.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 116,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen6.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 117,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen7.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 118,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen8.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 119,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen9.png?raw=true",
+        "alt": "Calendar"
+      },
+      {
+        "type": "image",
+        "order": 120,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/weekly_moderncalendar.gif?raw=true",
+        "alt": "Calendar"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      },
+      {
+        "gitHubAccount": "derhallim",
+        "company": "",
+        "pictureUrl": "https://github.com/derhallim.png",
+        "name": "Mohamed Derhalli"
+      },
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      },
+      {
+        "gitHubAccount": "nanddeepn",
+        "company": "",
+        "pictureUrl": "https://github.com/nanddeepn.png",
+        "name": "Nanddeep Nachan",
+        "twitter": "NanddeepNachan"
+      },
+      {
+        "gitHubAccount": "Abderahman88",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "name": "Abderahman Moujahid"
+      },
+      {
+        "gitHubAccount": "mohammadamer",
+        "company": "Atea Global Services",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/19314043?s=460&u=79acb7fd0ad466e1040ddd8a739fa93385018b81&v=4",
+        "name": "Mohammed Amer",
+        "twitter": "Mohammad3mer"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

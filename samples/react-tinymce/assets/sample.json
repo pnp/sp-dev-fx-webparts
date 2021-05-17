@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-tinymce","version":null,"source":"pnp","title":"TinyMCE Editor Web Part Integration with SharePoint","shortDescription":"React TinyMCE is one of the worlds most popular editors for the web. It has many features out of the box and many more plugins that can be added when needed. You can create your own plugins if you want, the editor is powered by the communitiy.","longDescription":["React TinyMCE is one of the worlds most popular editors for the web. It has many features out of the box and many more plugins that can be added when needed. You can create your own plugins if you want, the editor is powered by the communitiy."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tinymce/assets/preview.gif","alt":"TinyMCE Editor Web Part Integration with SharePoint","slides":null}],"authors":[{"gitHubAccount":"AustinBreslinDev","company":"","pictureUrl":"https://github.com/AustinBreslinDev.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-tinymce",
+    "source": "pnp",
+    "title": "TinyMCE Editor Web Part Integration with SharePoint",
+    "shortDescription": "React TinyMCE is one of the worlds most popular editors for the web. It has many features out of the box and many more plugins that can be added when needed. You can create your own plugins if you want, the editor is powered by the communitiy.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tinymce",
+    "longDescription": [
+      "React TinyMCE is one of the worlds most popular editors for the web. It has many features out of the box and many more plugins that can be added when needed. You can create your own plugins if you want, the editor is powered by the communitiy."
+    ],
+    "creationDateTime": "2018-02-01",
+    "updateDateTime": "2018-02-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tinymce/assets/preview.gif",
+        "alt": "TinyMCE Editor Web Part Integration with SharePoint"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AustinBreslinDev",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10480670?s=460\u0026v=4",
+        "name": "Austin Breslin"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

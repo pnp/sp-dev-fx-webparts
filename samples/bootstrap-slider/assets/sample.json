@@ -1,1 +1,63 @@
-{"name":"pnp-sp-dev-spfx-web-parts-bootstrap-slider","version":null,"source":"pnp","title":"Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x","shortDescription":"Sample bootstrap slider which pulls the slides from a list inside the SharePoint site. The list is automatically deployed once the app is installed in the SharePoint site.","longDescription":["Sample bootstrap slider which pulls the slides from a list inside the SharePoint site. The list is automatically deployed once the app is installed in the SharePoint site."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Other"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/bootstrap-slider/assets/slider_image_1.png","alt":"Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x","slides":null}],"authors":[{"gitHubAccount":"davidhartman","company":"","pictureUrl":"https://github.com/davidhartman.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-bootstrap-slider",
+    "source": "pnp",
+    "title": "Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x",
+    "shortDescription": "Sample bootstrap slider which pulls the slides from a list inside the SharePoint site. The list is automatically deployed once the app is installed in the SharePoint site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/bootstrap-slider",
+    "longDescription": [
+      "Sample bootstrap slider which pulls the slides from a list inside the SharePoint site. The list is automatically deployed once the app is installed in the SharePoint site."
+    ],
+    "creationDateTime": "2017-04-25",
+    "updateDateTime": "2017-04-25",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "jQuery"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/bootstrap-slider/assets/slider_image_1.png",
+        "alt": "Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/bootstrap-slider/assets/List.png?raw=true",
+        "alt": "Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/bootstrap-slider/assets/slider_image_2.png?raw=true",
+        "alt": "Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "davidhartman",
+        "company": "Slalom",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/11304394?s=460\u0026v=4",
+        "name": "David Hartman"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

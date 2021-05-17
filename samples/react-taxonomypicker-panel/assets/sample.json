@@ -1,1 +1,57 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-taxonomypicker-panel","version":null,"source":"pnp","title":"Taxonomy picker using Office UI Fabric Panel","shortDescription":"Sample web part with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The web part uses the Taxonomy API support available in the @pnp/taxonomy.","longDescription":["Sample web part with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The web part uses the Taxonomy API support available in the @pnp/taxonomy."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.5.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true","alt":"Taxonomy picker using Office UI Fabric Panel","slides":null}],"authors":[{"gitHubAccount":"vipulkelkar","company":"","pictureUrl":"https://github.com/vipulkelkar.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-taxonomypicker-panel",
+    "source": "pnp",
+    "title": "Taxonomy picker using Office UI Fabric Panel",
+    "shortDescription": "Sample web part with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The web part uses the Taxonomy API support available in the @pnp/taxonomy.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomypicker-panel",
+    "longDescription": [
+      "Sample web part with Single and Multi-select taxonomy pickers using Office UI Fabric panel. The web part uses the Taxonomy API support available in the @pnp/taxonomy."
+    ],
+    "creationDateTime": "2018-07-20",
+    "updateDateTime": "2018-07-20",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.5.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true",
+        "alt": "Taxonomy picker using Office UI Fabric Panel"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-taxonomypicker-panel/assets/TaxonomyPicker.gif?raw=true",
+        "alt": "Taxonomy picker using Office UI Fabric Panel"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "vipulkelkar",
+        "company": "Rapid Circle",
+        "pictureUrl": "https://github.com/vipulkelkar.png",
+        "name": "Vipul Kelkar"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,64 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-search","version":null,"source":"pnp","title":"Search Client-Side Web Part built with React and Flux","shortDescription":"Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework.","longDescription":["Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-search/assets/preview.png","alt":"Search Client-Side Web Part built with React and Flux","slides":null}],"authors":[{"gitHubAccount":"estruyf","company":"","pictureUrl":"https://github.com/estruyf.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-search",
+    "source": "pnp",
+    "title": "Search Client-Side Web Part built with React and Flux",
+    "shortDescription": "Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-search",
+    "longDescription": [
+      "Sample Search Web Part with internal and external template support. This sample illustrates how you can use React and Flux within the SharePoint Framework."
+    ],
+    "creationDateTime": "2017-02-28",
+    "updateDateTime": "2017-02-28",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-search/assets/preview.png",
+        "alt": "Search Client-Side Web Part built with React and Flux"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-search/assets/external.png?raw=true",
+        "alt": "Search Client-Side Web Part built with React and Flux"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-search/assets/internal.png?raw=true",
+        "alt": "Search Client-Side Web Part built with React and Flux"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "estruyf",
+        "company": "Struyf Consulting",
+        "pictureUrl": "https://github.com/estruyf.png",
+        "name": "Elio Struyf",
+        "twitter": "eliostruyf"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

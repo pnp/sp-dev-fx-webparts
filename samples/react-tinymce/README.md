@@ -49,6 +49,7 @@ Version|Date|Comments
 1.0|Feb |Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -59,7 +60,7 @@ Version|Date|Comments
 - in the command line run:
   - `npm install`
   - `gulp serve`
-  - `add webpart to page`
+  - `add web part to page`
 
 
 ## Features

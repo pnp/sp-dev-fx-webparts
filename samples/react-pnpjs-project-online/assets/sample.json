@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-pnpjs-project-online","version":null,"source":"pnp","title":"PnPjs Project Online","shortDescription":"This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept.","longDescription":["This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.2"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnpjs-project-online/assets/Preview.gif","alt":"PnPjs Project Online","slides":null}],"authors":[{"gitHubAccount":"joelfmrodrigues","company":"","pictureUrl":"https://github.com/joelfmrodrigues.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-pnpjs-project-online",
+    "source": "pnp",
+    "title": "PnPjs Project Online",
+    "shortDescription": "This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjs-project-online",
+    "longDescription": [
+      "This sample shows how to use SPFx to consume data from the Project Online REST API using a custom module for PnPjs. The web part is currently logging the data returned from the API to the browser console as a simple proof of concept."
+    ],
+    "creationDateTime": "2019-12-04",
+    "updateDateTime": "2019-12-04",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-project-online/assets/Preview.gif",
+        "alt": "PnPjs Project Online"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joelfmrodrigues",
+        "company": "Storm Technology",
+        "pictureUrl": "https://github.com/joelfmrodrigues.png",
+        "name": "Joel Rodrigues",
+        "twitter": "joelfmrodrigues"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

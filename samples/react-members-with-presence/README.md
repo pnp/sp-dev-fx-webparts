@@ -1,6 +1,7 @@
-# Spfx Webpart Group members list with Presence information
+# SPFx Web part Group members list with Presence information
 
 ## Summary
+
 This sample shows how to get the members of a specific group, including their presence information (using the new Presence endpoint in the MS Graph API).
 
 ![Members with Presence](./assets/react-members-with-presence.gif)

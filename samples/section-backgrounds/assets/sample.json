@@ -1,1 +1,73 @@
-{"name":"pnp-sp-dev-spfx-web-parts-section-backgrounds","version":null,"source":"pnp","title":"Supporting section backgrounds in your web parts","shortDescription":"These samples show how to implement support for section backgrounds in your web parts.","longDescription":["These samples show how to implement support for section backgrounds in your web parts."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.7.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/section-backgrounds/assets/webpartexample3.png","alt":"Supporting section backgrounds in your web parts","slides":null}],"authors":[{"gitHubAccount":"thechriskent","company":"","pictureUrl":"https://github.com/thechriskent.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-section-backgrounds",
+    "source": "pnp",
+    "title": "Supporting section backgrounds in your web parts",
+    "shortDescription": "These samples show how to implement support for section backgrounds in your web parts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/section-backgrounds",
+    "longDescription": [
+      "These samples show how to implement support for section backgrounds in your web parts."
+    ],
+    "creationDateTime": "2019-03-13",
+    "updateDateTime": "2019-03-13",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.7.1"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/section-backgrounds/assets/webpartexample3.png",
+        "alt": "Supporting section backgrounds in your web parts"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/section-backgrounds/assets/webpartexample1.png?raw=true",
+        "alt": "Supporting section backgrounds in your web parts"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/section-backgrounds/assets/webpartexample2.png?raw=true",
+        "alt": "Supporting section backgrounds in your web parts"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "thechriskent",
+        "company": "DMI",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/8364109?s=460\u0026v=4",
+        "name": "Chris Kent",
+        "twitter": "thechriskent"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

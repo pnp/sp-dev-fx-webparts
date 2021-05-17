@@ -1,1 +1,138 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-content-query-online","version":null,"source":"pnp","title":"Content Query Web Part (SharePoint Online)","shortDescription":"The React Content Query Web Part is a modern version of the good old Content by Query Web Part that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original Web Part was based on a XSLT templating engine, this React Web Part is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more.","longDescription":["The React Content Query Web Part is a modern version of the good old Content by Query Web Part that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original Web Part was based on a XSLT templating engine, this React Web Part is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-content-query-online/assets/toolpart.gif","alt":"Content Query Web Part (SharePoint Online)","slides":null}],"authors":[{"gitHubAccount":"PopWarner","company":"","pictureUrl":"https://github.com/PopWarner.png"},{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"},{"gitHubAccount":"PaoloPia","company":"","pictureUrl":"https://github.com/PaoloPia.png"},{"gitHubAccount":"Abderahman88","company":"","pictureUrl":"https://github.com/Abderahman88.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-content-query-online",
+    "source": "pnp",
+    "title": "Content Query Web Part (SharePoint Online)",
+    "shortDescription": "The React Content Query Web Part is a modern version of the good old Content by Query Web Part that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original Web Part was based on a XSLT templating engine, this React Web Part is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-query-online",
+    "longDescription": [
+      "The React Content Query Web Part is a modern version of the good old Content by Query Web Part that was introduced in SharePoint 2007. Built for SharePoint Online, this modern version is built against the new SharePoint Framework (SPFx) and uses the latest Web Stack practices. While the original Web Part was based on a XSLT templating engine, this React Web Part is based on the well known Handlebars templating engine, which empowers users to create simple, yet powerfull HTML templates for rendering the queried content. This new version also lets the user query any site collections which resides on the same domain url, add unlimited filters, query DateTime fields to the nearest minute rather than being limited to a day, and much more."
+    ],
+    "creationDateTime": "2021-01-07",
+    "updateDateTime": "2021-01-07",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-query-online/assets/toolpart.gif",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/allsites.gif?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/allsites_v2.gif?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/clearItemSelector.png?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/configureItemSelector.png?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/connectToSource.png?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/datetime.gif?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/dynamicDataConnection.png?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 108,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/externalScripts.png?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 109,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/filters.gif?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 110,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/itemSelectorTemplate.png?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      },
+      {
+        "type": "image",
+        "order": 111,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-content-query-online/assets/itemSelectorTemplateOutput.png?raw=true",
+        "alt": "Content Query Web Part (SharePoint Online)"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "PopWarner",
+        "company": "Catapult Systems",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460\u0026u=9e4e74223c4ffb430fb77c97892a84b286df1921\u0026v=4",
+        "name": "David Warner II",
+        "twitter": "PopWarner"
+      },
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      },
+      {
+        "gitHubAccount": "PaoloPia",
+        "company": "PiaSys.com",
+        "pictureUrl": "https://github.com/PaoloPia.png",
+        "name": "Paolo Pialorsi",
+        "twitter": "PaoloPia"
+      },
+      {
+        "gitHubAccount": "Abderahman88",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "name": "Abderahman Moujahid"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

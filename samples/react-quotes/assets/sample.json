@@ -1,1 +1,55 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-quotes","version":null,"source":"pnp","title":"Quote of the Day","shortDescription":"This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.","longDescription":["This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.9.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-quotes/assets/react-quotes-sample.png","alt":"Quote of the Day","slides":null}],"authors":[{"gitHubAccount":"zachroberts8668","company":"","pictureUrl":"https://github.com/zachroberts8668.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-quotes",
+    "source": "pnp",
+    "title": "Quote of the Day",
+    "shortDescription": "This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quotes",
+    "longDescription": [
+      "This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane."
+    ],
+    "creationDateTime": "2019-11-11",
+    "updateDateTime": "2019-11-11",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.1"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldColorPicker"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quotes/assets/react-quotes-sample.png",
+        "alt": "Quote of the Day"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "zachroberts8668",
+        "company": "",
+        "pictureUrl": "https://github.com/zachroberts8668.png",
+        "name": "Zach Roberts"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

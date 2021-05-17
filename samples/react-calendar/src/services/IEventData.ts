@@ -20,6 +20,6 @@ export interface IEventData {
   fRecurrence?: string | boolean;
   EventType?: string;
   UID?: string;
-  RecurrenceID?: string;
+  RecurrenceID?: Date;
   MasterSeriesItemID?: string;
 }

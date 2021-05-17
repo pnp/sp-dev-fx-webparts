@@ -6,34 +6,18 @@ import * as strings from 'ReactDatatableWebPartStrings';
 import { SPService } from '../../../shared/service/SPService';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { DisplayMode } from '@microsoft/sp-core-library';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import { Alert, AlertTitle } from '@material-ui/lab';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableFooter from '@material-ui/core/TableFooter';
-import TableRow from '@material-ui/core/TableRow';
-import { Grid, InputAdornment, Link, TextField } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Grid } from '@material-ui/core';
+import { Link, Text } from 'office-ui-fabric-react';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
 import { ExportListItemsToCSV } from '../../../shared/common/ExportListItemsToCSV/ExportListItemsToCSV';
 import { ExportListItemsToPDF } from '../../../shared/common/ExportListItemsToPDF/ExportListItemsToPDF';
 import { Pagination } from '../../../shared/common/Pagination/Pagination';
-
-const StyledTableCell = withStyles((theme: Theme) =>
-  createStyles({
-    head: {
-      backgroundColor: theme.palette.grey[200],
-    },
-    body: {
-      fontSize: 14,
-    },
-  }),
-)(TableCell);
+import { DetailsList, DetailsListLayoutMode, DetailsRow, IDetailsRowStyles, IDetailsListProps, IColumn, MessageBar, SelectionMode } from 'office-ui-fabric-react';
+import { pdfCellFormatter } from '../../../shared/common/ExportListItemsToPDF/ExportListItemsToPDFFormatter';
+import { csvCellFormatter } from '../../../shared/common/ExportListItemsToCSV/ExportListItemsToCSVFormatter';
+import { IPropertyPaneDropdownOption } from '@microsoft/sp-property-pane';
+import { RenderProfilePicture } from '../../../shared/common/RenderProfilePicture/RenderProfilePicture';
 
 export default class ReactDatatable extends React.Component<IReactDatatableProps, IReactDatatableState> {
 
@@ -44,12 +28,13 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     this.state = {
       listItems: [],
       columns: [],
-      page: 0,
-      rowsPerPage: 5,
+      page: 1,
       searchText: '',
+      rowsPerPage: 10,
       sortingFields: '',
       sortDirection: 'asc',
-      contentType: ''
+      contentType: '',
+      pageOfItems: []
     };
     this._services = new SPService(this.props.context);
     this._onConfigure = this._onConfigure.bind(this);
@@ -58,6 +43,10 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
 
   public componentDidMount() {
     this.getSelectedListItems();
+  }
+
+  private getUserProfileUrl = (loginName: string) => {
+    return this._services.getUserProfileUrl(loginName)
   }
 
   public componentDidUpdate(prevProps: IReactDatatableProps) {
@@ -80,7 +69,16 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
           return ob;
         }, {})
       }));
-      let dataGridColumns = [...fields].map(f => ({ field: f.key as string, headerName: f.text }));
+      let dataGridColumns: IColumn[] = [...fields].map(f => ({
+        key: f.key as string,
+        name: f.text,
+        fieldName: f.key as string,
+        isResizable: true,
+        onColumnClick: this.props.sortBy && this.props.sortBy.filter(field => field === f.key).length ? this.handleSorting(f.key as string) : undefined,
+        minWidth: 70,
+        maxWidth: 100,
+        headerClassName: styles.colHeader
+      }));
       this.setState({ listItems: listItems, columns: dataGridColumns });
     }
   }
@@ -88,6 +86,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
   private _onConfigure() {
     this.props.context.propertyPane.open();
   }
+
 
   public formatColumnValue(value: any, type: string) {
     if (!value) {
@@ -107,7 +106,9 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
         value = value['Title'];
         break;
       case 'SP.FieldUser':
-        value = value['Title'];
+        let loginName = value['Name'];
+        let userName = value['Title'];
+        value = <RenderProfilePicture loginName={loginName} displayName={userName} getUserProfileUrl={() => this.getUserProfileUrl(loginName)}  ></RenderProfilePicture>;
         break;
       case 'SP.FieldMultiLineText':
         value = <div dangerouslySetInnerHTML={{ __html: value }}></div>;
@@ -130,8 +131,37 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     return value;
   }
 
-  private handlePaginationChange(pageNo: number, pageSize: number) {
-    this.setState({ page: pageNo, rowsPerPage: pageSize });
+  public formatValueForExportingData(value: any, type?: string) {
+    if (!value) {
+      return value;
+    }
+    switch (type) {
+      case 'SP.FieldUser':
+        let userName = value['Title'];
+        value = userName;
+        break;
+      case 'SP.FieldUrl':
+        let url = value['Url'];
+        let description = value['Description'];
+        value = <a href={url}>{description}</a>;
+        break;
+      default:
+        break;
+    }
+    return value;
+  }
+
+  private exportDataFormatter(fields: Array<IPropertyPaneDropdownOption & { fieldType: string }>, listItems: any[], cellFormatterFn: (value: any, type: string) => any) {
+    return listItems && listItems.map(item => ({
+      ...fields.reduce((ob, f) => {
+        ob[f.text] = item[f.key] ? cellFormatterFn(item[f.key], f.fieldType) : '-';
+        return ob;
+      }, {})
+    }));
+  }
+
+  private handlePaginationChange(pageNo: number, rowsPerPage: number) {
+    this.setState({ page: pageNo, rowsPerPage: rowsPerPage });
   }
 
   public handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
@@ -143,8 +173,8 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
     let { sortingFields, listItems, searchText } = this.state;
     if (searchText) {
       if (searchBy) {
-        listItems = listItems.filter(l => searchBy.some(field => {
-          return (l[field] && l[field].toLowerCase().includes(searchText.toLowerCase()));
+        listItems = listItems && listItems.length && listItems.filter(l => searchBy.some(field => {
+          return (l[field] && l[field].toString().toLowerCase().includes(searchText.toLowerCase()));
         }));
       }
     }
@@ -174,22 +204,40 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
   private paginateFn = (filterItem: any[]) => {
     let { rowsPerPage, page } = this.state;
     return (rowsPerPage > 0
-      ? filterItem.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+      ? filterItem.slice((page - 1) * rowsPerPage, (page - 1) * rowsPerPage + rowsPerPage)
       : filterItem
     );
   }
 
-  private handleSorting = (property: string) => (event: React.MouseEvent<unknown>) => {
+  private handleSorting = (property: string) => (event: React.MouseEvent<unknown>, column: IColumn) => {
+    property = column.key;
     let { sortingFields, sortDirection } = this.state;
-    const isAsc = sortingFields === property && sortDirection === 'asc';
-    this.setState({ sortDirection: (isAsc ? 'desc' : 'asc'), sortingFields: property });
+    const isAsc = sortingFields && sortingFields === property && sortDirection === 'asc';
+    let updateColumns = this.state.columns.map(c => {
+      return c.key === property ? { ...c, isSorted: true, isSortedDescending: (isAsc ? false : true) } : { ...c, isSorted: false, isSortedDescending: true };
+    });
+    this.setState({ sortDirection: (isAsc ? 'desc' : 'asc'), sortingFields: property, columns: updateColumns });
+  }
+
+  private _onRenderRow: IDetailsListProps['onRenderRow'] = props => {
+    const customStyles: Partial<IDetailsRowStyles> = {};
+    if (props) {
+      if (props.itemIndex % 2 === 0) {
+        customStyles.root = { backgroundColor: this.props.evenRowColor };
+      }
+      else {
+        customStyles.root = { backgroundColor: this.props.oddRowColor };
+      }
+      return <DetailsRow {...props} styles={customStyles} />;
+    }
+    return null;
   }
 
   public render(): React.ReactElement<IReactDatatableProps> {
     let filteredItems = this.filterListItems();
-    let { list, fields, enableDownloadAsCsv, enableDownloadAsPdf, enablePagination, displayMode, enableSearching, title, evenRowColor, oddRowColor, sortBy } = this.props;
-    let { sortingFields, sortDirection, columns, listItems } = this.state;
-    filteredItems = enablePagination ? this.paginateFn(filteredItems) : filteredItems;
+    let { list, fields, enableDownloadAsCsv, enableDownloadAsPdf, enablePagination, displayMode, enableSearching, title, evenRowColor, oddRowColor } = this.props;
+    let { columns } = this.state;
+    let filteredPageItems = enablePagination ? this.paginateFn(filteredItems) : filteredItems;
 
     return (
       <div className={styles.reactDatatable}>
@@ -201,104 +249,65 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
               description={strings.ConfigureWebpartDescription}
               buttonLabel={strings.ConfigureWebpartButtonLabel}
               hideButton={displayMode === DisplayMode.Read}
-              onConfigure={this._onConfigure} /> : <>
-              <WebPartTitle
-                title={title}
-                displayMode={DisplayMode.Read}
-                updateProperty={() => { }}>
-              </WebPartTitle>
-              { list && fields && fields.length ?
-                <div>
-                  <Grid container className={styles.dataTableUtilities}>
-                    <Grid item xs={6} className={styles.downloadButtons}>
-                      {
-                        enableDownloadAsCsv
+              onConfigure={this._onConfigure} /> : <><>
+                <WebPartTitle
+                  title={title}
+                  displayMode={DisplayMode.Read}
+                  updateProperty={() => { }}>
+                </WebPartTitle>
+                {list && fields && fields.length ?
+                  <div>
+                    <Grid container className={styles.dataTableUtilities}>
+                      <Grid item xs={6} className={styles.downloadButtons}>
+                        {enableDownloadAsCsv
                           ? <ExportListItemsToCSV
-                            columnHeader={columns.map(c => c.headerName)}
+                            columnHeader={columns.map(c => c.name)}
                             listName={list}
                             description={title}
-                            listItems={listItems}
-                          /> : <></>
-                      }
-                      {
-                        enableDownloadAsPdf
+                            dataSource={() => this.exportDataFormatter(fields, filteredItems, csvCellFormatter)}
+                          /> : <></>}
+                        {enableDownloadAsPdf
                           ? <ExportListItemsToPDF
                             listName={list}
-                            htmlElementForPDF='#dataTable'
-                          />
-                          : <></>
-                      }
-                    </Grid>
-                    <Grid container justify='flex-end' xs={6}>
-                      {
-                        enableSearching ?
+                            title={title}
+                            columns={columns.map(c => c.name)}
+                            oddRowColor={oddRowColor}
+                            evenRowColor={evenRowColor}
+                            dataSource={() => this.exportDataFormatter(fields, filteredItems, pdfCellFormatter)} />
+                          : <></>}
+                      </Grid>
+                      <Grid container justify='flex-end' xs={6}>
+                        {enableSearching ?
                           <TextField
                             onChange={this.handleSearch.bind(this)}
-                            size="small"
-                            label="Search"
-                            variant="outlined"
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <SearchIcon />
-                                </InputAdornment>
-                              ),
-                            }}
-                          />
-                          : <></>
-                      }
+                            placeholder="Search"
+                            className={styles.txtSearchBox} />
+                          : <></>}
+                      </Grid>
                     </Grid>
-                  </Grid>
-                  <div id="generateTable">
-                    <TableContainer component={Paper} >
-                      <Table aria-label="customized table" id="dataTable" >
-                        <TableHead>
-                          <TableRow>
-                            {columns.map((c) => (
-                              <StyledTableCell key={c.headerName}>
-                                {
-                                  (sortBy && sortBy.indexOf(c.field) !== -1)
-                                    ? <TableSortLabel
-                                      active={sortingFields === c.field}
-                                      direction={sortingFields === c.field ? sortDirection : 'asc'}
-                                      onClick={this.handleSorting(c.field)}
-                                    >
-                                      {c.headerName}
-                                    </TableSortLabel>
-                                    : c.headerName
-                                }
-                              </StyledTableCell>
-                            ))}
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {filteredItems.map((row, index) => (
-                            <TableRow
-                              style={{ backgroundColor: ((index + 1) % 2 === 0) ? evenRowColor : oddRowColor }} >
-                              {columns.map((c) => (
-                                <StyledTableCell >{row[c.field]}</StyledTableCell >
-                              ))}
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                        {enablePagination ?
-                          <React.Fragment>
-                            <TableFooter>
-                              <TableRow>
-                                <Pagination
-                                  colSpan={columns.length}
-                                  onPaginationUpdate={this.handlePaginationChange.bind(this)}
-                                  totalItems={listItems.length} />
-                              </TableRow>
-                            </TableFooter>
-                          </React.Fragment> : <></>
-                        }
-                      </Table>
-                    </TableContainer>
-                  </div>
-                </div> : <Alert severity="info">
-                  {strings.ListFieldValidation}</Alert>
-              }</>
+                    <div id="generateTable">
+                      <DetailsList
+                        items={filteredPageItems}
+                        columns={columns}
+                        selectionMode={SelectionMode.none}
+                        layoutMode={DetailsListLayoutMode.justified}
+                        isHeaderVisible={true}
+                        onRenderRow={this._onRenderRow}
+                      />
+                      <div>
+                        {this.props.enablePagination ?
+                          <Pagination
+                            currentPage={this.state.page}
+                            totalItems={filteredItems.length}
+                            onChange={this.handlePaginationChange.bind(this)}
+                          />
+                          : <></>}
+                      </div>
+                    </div>
+                  </div> : <MessageBar>
+                    {strings.ListFieldValidation}
+                  </MessageBar>}</>
+            </>
         }
       </div >
     );

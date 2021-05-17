@@ -1,1 +1,61 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-css-in-js-typestyle","version":null,"source":"pnp","title":"CSS in JS with SharePoint Framework and TypeStyle","shortDescription":"The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library.","longDescription":["The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-css-in-js-typestyle/assets/dynamic-styles.gif","alt":"CSS in JS with SharePoint Framework and TypeStyle","slides":null}],"authors":[{"gitHubAccount":"s-KaiNet","company":"","pictureUrl":"https://github.com/s-KaiNet.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-css-in-js-typestyle",
+    "source": "pnp",
+    "title": "CSS in JS with SharePoint Framework and TypeStyle",
+    "shortDescription": "The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-css-in-js-typestyle",
+    "longDescription": [
+      "The web part demonstrates the usage of \u0022CSS in JS\u0022 pattern with SharePoint Framework. \u0022CSS in JS\u0022 is implemented using TypeStyle library."
+    ],
+    "creationDateTime": "2020-04-24",
+    "updateDateTime": "2020-04-24",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-css-in-js-typestyle/assets/dynamic-styles.gif",
+        "alt": "CSS in JS with SharePoint Framework and TypeStyle"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "s-KaiNet",
+        "company": "Mastaq",
+        "pictureUrl": "https://github.com/s-KaiNet.png",
+        "name": "Sergei Sergeev",
+        "twitter": "sergeev_srg"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

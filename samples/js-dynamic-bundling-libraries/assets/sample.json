@@ -1,1 +1,58 @@
-{"name":"pnp-sp-dev-spfx-web-parts-js-dynamic-bundling-libraries","version":null,"source":"pnp","title":"Dynamic Bundling \u0026 Loading of SPFx Packages","shortDescription":"This sample illustrates how SPFx functionality and packages can be bundled in multiple \u0027.js\u0027 files then be dynamically \u0026 asynchronously loaded into the page at execution time, such as with a button click.","longDescription":["This sample illustrates how SPFx functionality and packages can be bundled in multiple \u0027.js\u0027 files then be dynamically \u0026 asynchronously loaded into the page at execution time, such as with a button click."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Javascript"},{"key":"SPFX-VERSION","value":"1.7.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg","alt":"Dynamic Bundling \u0026 Loading of SPFx Packages","slides":null}],"authors":[{"gitHubAccount":"PopWarner","company":"","pictureUrl":"https://github.com/PopWarner.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-dynamic-bundling-libraries",
+    "source": "pnp",
+    "title": "Dynamic Bundling \u0026 Loading of SPFx Packages",
+    "shortDescription": "This sample illustrates how SPFx functionality and packages can be bundled in multiple \u0027.js\u0027 files then be dynamically \u0026 asynchronously loaded into the page at execution time, such as with a button click.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-dynamic-bundling-libraries",
+    "longDescription": [
+      "This sample illustrates how SPFx functionality and packages can be bundled in multiple \u0027.js\u0027 files then be dynamically \u0026 asynchronously loaded into the page at execution time, such as with a button click."
+    ],
+    "creationDateTime": "2018-12-03",
+    "updateDateTime": "2018-12-03",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Javascript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.7.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg",
+        "alt": "Dynamic Bundling \u0026 Loading of SPFx Packages"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PreClick.jpg?raw=true",
+        "alt": "Dynamic Bundling \u0026 Loading of SPFx Packages"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "PopWarner",
+        "company": "Catapult Systems",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10676147?s=460\u0026u=9e4e74223c4ffb430fb77c97892a84b286df1921\u0026v=4",
+        "name": "David Warner II",
+        "twitter": "PopWarner"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,58 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-manage-spfx-solutions-alm","version":null,"source":"pnp","title":"Manage SPFx solution using ALM APIs","shortDescription":"This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall \u0026 Remove apps.","longDescription":["This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall \u0026 Remove apps."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-manage-spfx-solutions-alm/assets/SPFxALM.gif","alt":"Manage SPFx solution using ALM APIs","slides":null}],"authors":[{"gitHubAccount":"Ramakrishnan24689","company":"","pictureUrl":"https://github.com/Ramakrishnan24689.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-manage-spfx-solutions-alm",
+    "source": "pnp",
+    "title": "Manage SPFx solution using ALM APIs",
+    "shortDescription": "This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall \u0026 Remove apps.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-spfx-solutions-alm",
+    "longDescription": [
+      "This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall \u0026 Remove apps."
+    ],
+    "creationDateTime": "2020-03-09",
+    "updateDateTime": "2020-03-09",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-spfx-solutions-alm/assets/SPFxALM.gif",
+        "alt": "Manage SPFx solution using ALM APIs"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-spfx-solutions-alm/assets/SPFxALMSPAppcatalog.gif?raw=true",
+        "alt": "Manage SPFx solution using ALM APIs"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Ramakrishnan24689",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/Ramakrishnan24689.png",
+        "name": "Ramakrishnan Raman",
+        "twitter": "ramakrishnan2"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

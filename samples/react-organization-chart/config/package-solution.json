@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-organization-chart",
+    "id": "0b4a3e5d-123f-41ea-96c4-538c6a19932b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+
+
+  },
+  "paths": {
+    "zippedPackage": "solution/react-organization-chart.sppkg"
+  }
+}

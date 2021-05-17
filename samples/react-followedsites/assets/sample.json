@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-followedsites","version":null,"source":"pnp","title":"Followed Sites","shortDescription":"This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites.","longDescription":["This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-followed-sites.gif","alt":"Followed Sites","slides":null}],"authors":[{"gitHubAccount":"eoverfield","company":"","pictureUrl":"https://github.com/eoverfield.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-followedsites",
+    "source": "pnp",
+    "title": "Followed Sites",
+    "shortDescription": "This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-followedsites",
+    "longDescription": [
+      "This web part provides you the ability to display a list of site administrator defined number of sites that a given user is following, with paging as well as inline filtering of sites by keyword or phrase. Currently the list of followed sites includes classic as well as modern communication sites but does not include group enabled (modern) team sites."
+    ],
+    "creationDateTime": "2020-05-13",
+    "updateDateTime": "2020-05-13",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-followed-sites.gif",
+        "alt": "Followed Sites"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "eoverfield",
+        "company": "PixelMill",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield",
+        "twitter": "EricOverfield"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

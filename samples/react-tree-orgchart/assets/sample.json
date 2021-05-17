@@ -1,1 +1,77 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-tree-orgchart","version":null,"source":"pnp","title":"Tree Organization Web Part","shortDescription":"The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.","longDescription":["The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tree-orgchart/assets/Screenshot1.png","alt":"Tree Organization Web Part","slides":null}],"authors":[{"gitHubAccount":"joaojmendes","company":"","pictureUrl":"https://github.com/joaojmendes.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-tree-orgchart",
+    "source": "pnp",
+    "title": "Tree Organization Web Part",
+    "shortDescription": "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tree-orgchart",
+    "longDescription": [
+      "The Tree Organization Web Part shows the Organization Chart of the or the team, the web part reads infomation from current user to build the Organization Chart."
+    ],
+    "creationDateTime": "2021-02-28",
+    "updateDateTime": "2021-02-28",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tree-orgchart/assets/Screenshot1.png",
+        "alt": "Tree Organization Web Part"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tree-orgchart/assets/react-tree-orgchart.gif?raw=true",
+        "alt": "Tree Organization Web Part"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tree-orgchart/assets/Screenshot2.png?raw=true",
+        "alt": "Tree Organization Web Part"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-tree-orgchart/assets/Screenshot3.png?raw=true",
+        "alt": "Tree Organization Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      },
+      {
+        "gitHubAccount": "petkir",
+        "company": "Cubido Business Solutions GmbH",
+        "pictureUrl": "https://github.com/petkir.png",
+        "name": "Peter Paul Kirschner",
+        "twitter": "petkir_at"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

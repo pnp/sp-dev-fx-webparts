@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-image-slider-list-taxonomy-filter","version":null,"source":"pnp","title":"Image Slider from Photo Gallery using Taxonomy Filter","shortDescription":"This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy.","longDescription":["This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.6.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-image-slider-list-taxonomy-filter/assets/ImageSlider.gif","alt":"Image Slider from Photo Gallery using Taxonomy Filter","slides":null}],"authors":[{"gitHubAccount":"sudhir007rawat","company":"","pictureUrl":"https://github.com/sudhir007rawat.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-image-slider-list-taxonomy-filter",
+    "source": "pnp",
+    "title": "Image Slider from Photo Gallery using Taxonomy Filter",
+    "shortDescription": "This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-slider-list-taxonomy-filter",
+    "longDescription": [
+      "This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy."
+    ],
+    "creationDateTime": "2019-03-01",
+    "updateDateTime": "2019-03-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.6.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-slider-list-taxonomy-filter/assets/ImageSlider.gif",
+        "alt": "Image Slider from Photo Gallery using Taxonomy Filter"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "sudhir007rawat",
+        "company": "HCL America",
+        "pictureUrl": "https://github.com/sudhir007rawat.png",
+        "name": "Sudhir Rawat"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

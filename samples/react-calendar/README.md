@@ -84,9 +84,14 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 
 ![calendar](assets/screen9.png)
 
-## Used SharePoint Framework Version 
+## Compatibility
 
-![1.10.0](https://img.shields.io/badge/version-1.10.0-green.svg)
+![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js LTS 6.x | LTS 8.x](https://img.shields.io/badge/Node.js-LTS%206.x%20%7C%20LTS%208.x-green.svg)
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
+
 
 ## Applies to
 
@@ -94,13 +99,13 @@ The Web Part checks the user's permissions for the View, Add, Edit, and Delete e
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
 Site Url of Calendar List | Text| yes|
 Calendar list| Choice/Dropdown | yes|  this is filled with all list of  type "event list" created
-Start Date | Date | yes | Event Date 
+Start Date | Date | yes | Event Date
 End Date| Date| yes | Event Date
 
 ## Solution
@@ -109,11 +114,12 @@ The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Cal
 
 Solution|Author(s)
 --------|---------
+Calendar Web PArt|[Mohammed Amer](https://www.linkedin.com/in/mohammad3mer/) ([@https://twitter.com/Mohammad3mer](https://twitter.com/Mohammad3mer))
+Calendar Web Part|Abderahman Moujahid
+Calendar Web Part|Hugo Bernier ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
 Calendar Web Part|João Mendes
 Calendar Web Part|Mohamed Derhalli
-Calendar Web Part (Upgrade)|Hugo Bernier ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
 Calendar Web Part|Nanddeep Nachan ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
-Calendar Web Part|Abderahman Moujahid
 
 ## Version history
 
@@ -128,6 +134,8 @@ Version|Date|Comments
 1.0.6|December 3, 2020|Fixed all-day events (#1623)
 1.0.7|December 4, 2020|Fixed styling Year view + Dutch localization
 1.0.8|December 24, 2020|Fixed timezone difference (#1646)
+1.0.9|March 16, 2021|Fixed issue deleting events (#1773)
+1.0.10|March 27, 2021|Updated prompt message when deleting single v/s multi-event.
 
 ## Disclaimer
 

@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-multilist-grid","version":null,"source":"pnp","title":"Multi-list Grid","shortDescription":"React-multilist-grid is an SPFX web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type \u2013 you just need to create column mappings to tell the web part which fields to show in which columns of the grid.","longDescription":["React-multilist-grid is an SPFX web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type \u2013 you just need to create column mappings to tell the web part which fields to show in which columns of the grid."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"rc0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multilist-grid/src/images/ColumnTypes.PNG","alt":"Multi-list Grid","slides":null}],"authors":[{"gitHubAccount":"russgove","company":"","pictureUrl":"https://github.com/russgove.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-multilist-grid",
+    "source": "pnp",
+    "title": "Multi-list Grid",
+    "shortDescription": "React-multilist-grid is an SPFX web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type \u2013 you just need to create column mappings to tell the web part which fields to show in which columns of the grid.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multilist-grid",
+    "longDescription": [
+      "React-multilist-grid is an SPFX web part that uses React, Office-UI-Fabric, and Redux to let users edit list data from lists that reside in multiple webs and multiple sites in a single grid, similar to Quick Edit mode. The lists do not to be of the same type \u2013 you just need to create column mappings to tell the web part which fields to show in which columns of the grid."
+    ],
+    "creationDateTime": "2016-12-31",
+    "updateDateTime": "2016-12-31",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "rc0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multilist-grid/src/images/ColumnTypes.PNG",
+        "alt": "Multi-list Grid"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "russgove",
+        "company": "",
+        "pictureUrl": "https://github.com/russgove.png",
+        "name": "Russell Gove"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

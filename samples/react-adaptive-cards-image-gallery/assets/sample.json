@@ -1,1 +1,80 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-adaptive-cards-image-gallery","version":null,"source":"pnp","title":"Image Gallery Web Part Built with Adaptive Cards","shortDescription":"This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.","longDescription":["This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-adaptive-cards-image-gallery/assets/sharepoint-run.gif","alt":"Image Gallery Web Part Built with Adaptive Cards","slides":null}],"authors":[{"gitHubAccount":"nanddeepn","company":"","pictureUrl":"https://github.com/nanddeepn.png"},{"gitHubAccount":"ravi16a87","company":"","pictureUrl":"https://github.com/ravi16a87.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-adaptive-cards-image-gallery",
+    "source": "pnp",
+    "title": "Image Gallery Web Part Built with Adaptive Cards",
+    "shortDescription": "This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptive-cards-image-gallery",
+    "longDescription": [
+      "This sample demonstrates the capability of using Adaptive Cards with SharePoint Framework. Adaptive cards are great fit for Bot, however they can be effectively used with SPFx to render the content. This web part helps to display the image gallery from SharePoint list."
+    ],
+    "creationDateTime": "2020-06-15",
+    "updateDateTime": "2020-06-15",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "Placeholder"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptive-cards-image-gallery/assets/sharepoint-run.gif",
+        "alt": "Image Gallery Web Part Built with Adaptive Cards"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptive-cards-image-gallery/assets/list-sample-data.png?raw=true",
+        "alt": "Image Gallery Web Part Built with Adaptive Cards"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptive-cards-image-gallery/assets/list-schema.png?raw=true",
+        "alt": "Image Gallery Web Part Built with Adaptive Cards"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-adaptive-cards-image-gallery/assets/webpart-preview.png?raw=true",
+        "alt": "Image Gallery Web Part Built with Adaptive Cards"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "nanddeepn",
+        "company": "",
+        "pictureUrl": "https://github.com/nanddeepn.png",
+        "name": "Nanddeep Nachan",
+        "twitter": "NanddeepNachan"
+      },
+      {
+        "gitHubAccount": "ravi16a87",
+        "company": "Cognizant",
+        "pictureUrl": "https://github.com/ravi16a87.png",
+        "name": "Ravi Kulkarni"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

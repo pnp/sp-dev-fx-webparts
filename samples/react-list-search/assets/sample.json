@@ -1,0 +1,107 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-list-search",
+    "source": "pnp",
+    "title": "List Search",
+    "shortDescription": "This list search web part allows the user to show data from lists or libraries.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-search",
+    "longDescription": [
+      "This list search web part allows the user to show data from lists or libraries."
+    ],
+    "creationDateTime": "2020-12-20",
+    "updateDateTime": "2021-04-25",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "IFrameDialog, FileTypeIcon, PropertyFieldCollectionData, PropertyFieldSitePicker, PropertyFieldNumber, Placeholder, PropertyFieldMultiSelect, PropertyPaneWebPartInformation"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-search/assets/differentSources.gif",
+        "alt": "List Search"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/docInModal.gif?raw=true",
+        "alt": "List Search"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/docInNewTab.gif?raw=true",
+        "alt": "List Search"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/dynamicData.gif?raw=true",
+        "alt": "List Search"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/itemCurrentData.gif?raw=true",
+        "alt": "List Search"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/itemSelectedData.gif?raw=true",
+        "alt": "List Search"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/redirectToUrl.gif?raw=true",
+        "alt": "List Search"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-list-search/assets/selectFieldRenderType.gif?raw=true",
+        "alt": "List Search"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "albegut",
+        "company": "Minsait",
+        "pictureUrl": "https://github.com/albegut.png",
+        "name": "Alberto Gutierrez perez",
+        "twitter": "albertogperez"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

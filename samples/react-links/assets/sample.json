@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-links","version":null,"source":"pnp","title":"Links web part","shortDescription":"This web part provides you the ability to add a per instance listing of links with the ability to group sets of links. Links are stored as a collection of links within the web part\u0027s properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements.","longDescription":["This web part provides you the ability to add a per instance listing of links with the ability to group sets of links. Links are stored as a collection of links within the web part\u0027s properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-links.gif","alt":"Links web part","slides":null}],"authors":[{"gitHubAccount":null,"company":"","pictureUrl":"https://github.com/.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-links",
+    "source": "pnp",
+    "title": "Links web part",
+    "shortDescription": "This web part provides you the ability to add a per instance listing of links with the ability to group sets of links. Links are stored as a collection of links within the web part\u0027s properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-links",
+    "longDescription": [
+      "This web part provides you the ability to add a per instance listing of links with the ability to group sets of links. Links are stored as a collection of links within the web part\u0027s properties, removing the need for link storage within SharePoint lists, tenant properties, or other external link storage requirements."
+    ],
+    "creationDateTime": "2018-05-01",
+    "updateDateTime": "2018-05-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-links.gif",
+        "alt": "Links web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "eoverfield",
+        "company": "PixelMill",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield",
+        "twitter": "EricOverfield"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

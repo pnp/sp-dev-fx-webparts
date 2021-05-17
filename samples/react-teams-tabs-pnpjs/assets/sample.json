@@ -1,1 +1,57 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-teams-tabs-pnpjs","version":null,"source":"pnp","title":"MS Teams Channels and Tabs from Modern Team site","shortDescription":"A SPFx Web Part using @pnp/graph/teams. It shows Channels and Tabs (with link) from a Modern Team Site connected to Microsoft Teams.","longDescription":["A SPFx Web Part using @pnp/graph/teams. It shows Channels and Tabs (with link) from a Modern Team Site connected to Microsoft Teams."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.9.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart-animated.gif","alt":"MS Teams Channels and Tabs from Modern Team site","slides":null}],"authors":[{"gitHubAccount":"fredupstair","company":"","pictureUrl":"https://github.com/fredupstair.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-teams-tabs-pnpjs",
+    "source": "pnp",
+    "title": "MS Teams Channels and Tabs from Modern Team site",
+    "shortDescription": "A SPFx Web Part using @pnp/graph/teams. It shows Channels and Tabs (with link) from a Modern Team Site connected to Microsoft Teams.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-tabs-pnpjs",
+    "longDescription": [
+      "A SPFx Web Part using @pnp/graph/teams. It shows Channels and Tabs (with link) from a Modern Team Site connected to Microsoft Teams."
+    ],
+    "creationDateTime": "2019-10-30",
+    "updateDateTime": "2019-10-30",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart-animated.gif",
+        "alt": "MS Teams Channels and Tabs from Modern Team site"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-teams-tabs-pnpjs/assets/react-teams-tabs-pnpjs-webpart.png?raw=true",
+        "alt": "MS Teams Channels and Tabs from Modern Team site"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "fredupstair",
+        "company": "Avanade Italy",
+        "pictureUrl": "https://github.com/fredupstair.png",
+        "name": "Federico Porceddu"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

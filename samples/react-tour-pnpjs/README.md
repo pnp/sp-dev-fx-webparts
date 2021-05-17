@@ -55,7 +55,7 @@ Version|Date|Comments
   * locate solution at `.\sharepoint\solution\react-tour-pnpjs.sppkg` 
   * upload it to your tenant app catalog
   * add `react-tour-pnpjs` app to your site
-  * add `react-tour-pnpjs` webpart to your page to see it in action
+  * add `react-tour-pnpjs` web part to your page to see it in action
 
 ## Features
 

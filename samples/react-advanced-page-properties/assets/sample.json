@@ -1,0 +1,75 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-advanced-page-properties",
+    "source": "pnp",
+    "title": "Advanced Page Properties",
+    "shortDescription": "Replicates the functionality of Page Properties with improvements",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-advanced-page-properties",
+    "longDescription": [
+      "Attempts to replicate the functionality of Page Properties with the following improvements:",
+      "- Support for theme variants",
+      "- Updated to standard capsule look for list options",
+      "- Support for image fields",
+      "- Support for hyperlink fields",
+      "- Support for currency",
+      "- Improved support for dates"
+    ],
+    "creationDateTime": "2021-03-30",
+    "updateDateTime": "2021-03-30",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-page-properties/assets/diff-screencap.png",
+        "alt": "Web part in action"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-page-properties/assets/props.gif",
+        "alt": "Web part in action"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-page-properties/assets/add-to-page.png",
+        "alt": "Adding to a page"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "mhomol",
+        "company": "ThreeWill",
+        "pictureUrl": "https://github.com/mhomol.png",
+        "name": "Mike Homol",
+        "twitter": "homol"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

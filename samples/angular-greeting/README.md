@@ -19,14 +19,15 @@ extensions:
 
 ## Summary
 
-This sample Web Part illustrating using AngularJS with the SharePoint Framework. This is Greeting webpart which shows greeting to the current logged in user.
+This sample Web Part illustrating using AngularJS with the SharePoint Framework. This is Greeting web part which shows greeting to the current logged in user.
 
-![AngularJS Greetings Webpart SharePoint Framework client-side web part built using AngularJS](./assets/captured.gif)
+![AngularJS Greetings Web part SharePoint Framework client-side web part built using AngularJS](./assets/captured.gif)
 
 Final outcome:
-![AngularJS Greetings Webpart SharePoint Framework client-side web part built using AngularJS](./assets/preview.PNG)
+![AngularJS Greetings Web part SharePoint Framework client-side web part built using AngularJS](./assets/preview.PNG)
 
 ## Used SharePoint Framework Version 
+
 ![drop](https://img.shields.io/badge/drop-GA-green.svg)
 
 ## Applies to
@@ -38,15 +39,16 @@ Final outcome:
 
 Solution|Author(s)
 --------|---------
-angular-todo|Gaurav Goyal (MCSD, BizPortals Solutions, @gauravgoyal_5)
+angular-todo|[Gaurav Goyal](https://github.com/gauravgoyal5) (MCSD, BizPortals Solutions, @gauravgoyal_5)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|Feb 15, 2020|Initial release submittion
+1.0|Feb 15, 2020|Initial release submission
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -70,5 +72,16 @@ This web part illustrates the following concepts on top of the SharePoint Framew
 * using non-reactive web part property pane
 * using conditional rendering for one-time web part setup
 * passing web part configuration to AngularJS and reacting to configuration changes
+
+## Support
+
+We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=angular-greeting&authors=@gauravgoyal5&title=angular-greeting%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=angular-greeting&authors=@gauravgoyal5&title=angular-greeting%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=angular-greeting&authors=@gauravgoyal5&title=angular-greeting%20-%20).
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-greeting" />

@@ -1,1 +1,94 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-bot-framework","version":null,"source":"pnp","title":"Microsoft Bot Framework Web Chat","shortDescription":"A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.","longDescription":["A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png","alt":"Microsoft Bot Framework Web Chat","slides":null}],"authors":[{"gitHubAccount":"garypretty","company":"","pictureUrl":"https://github.com/garypretty.png"},{"gitHubAccount":"stephanbisser","company":"","pictureUrl":"https://github.com/stephanbisser.png"},{"gitHubAccount":"Harshagracy","company":"","pictureUrl":"https://github.com/Harshagracy.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-bot-framework",
+    "source": "pnp",
+    "title": "Microsoft Bot Framework Web Chat",
+    "shortDescription": "A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-bot-framework",
+    "longDescription": [
+      "A web part that uses the botframework-webchat module to create implement a React component to render the Bot Framework v4 webchat component. This web part is able to render Text and richt attachments (Images, Cards, Adaptive Cards, ...) and has settings for branding purposes."
+    ],
+    "creationDateTime": "2020-04-15",
+    "updateDateTime": "2020-04-15",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png",
+        "alt": "Microsoft Bot Framework Web Chat"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-bot-framework/assets/add-another-channel.png?raw=true",
+        "alt": "Microsoft Bot Framework Web Chat"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-bot-framework/assets/bf-add-directline-channel.png?raw=true",
+        "alt": "Microsoft Bot Framework Web Chat"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-bot-framework/assets/bf-configure-directline-secret.png?raw=true",
+        "alt": "Microsoft Bot Framework Web Chat"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-bot-framework/assets/bot-framework-configure-direct-line-secret.png?raw=true",
+        "alt": "Microsoft Bot Framework Web Chat"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-bot-framework/assets/bot-framework-webpart-preview.png?raw=true",
+        "alt": "Microsoft Bot Framework Web Chat"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "garypretty",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/garypretty.png",
+        "name": "Gary Pretty"
+      },
+      {
+        "gitHubAccount": "stephanbisser",
+        "company": "",
+        "pictureUrl": "https://github.com/stephanbisser.png",
+        "name": "Stephan Bisser"
+      },
+      {
+        "gitHubAccount": "Harshagracy",
+        "company": "",
+        "pictureUrl": "https://github.com/Harshagracy.png",
+        "name": "Harsha Vardhini",
+        "twitter": "harshagracy"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,61 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-visio","version":null,"source":"pnp","title":"Visio Embed","shortDescription":"This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.","longDescription":["This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-visio/assets/Preview.PNG","alt":"Visio Embed","slides":null}],"authors":[{"gitHubAccount":"joelfmrodrigues","company":"","pictureUrl":"https://github.com/joelfmrodrigues.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-visio",
+    "source": "pnp",
+    "title": "Visio Embed",
+    "shortDescription": "This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-visio",
+    "longDescription": [
+      "This sample shows how the Visio JavaScript APIs can be used within a web part. For sample purposes, this web part will display the name and the hyperlinks of a Visio shape when the user selects it."
+    ],
+    "creationDateTime": "2020-08-25",
+    "updateDateTime": "2020-08-25",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-visio/assets/Preview.PNG",
+        "alt": "Visio Embed"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joelfmrodrigues",
+        "company": "Storm Technology",
+        "pictureUrl": "https://github.com/joelfmrodrigues.png",
+        "name": "Joel Rodrigues",
+        "twitter": "joelfmrodrigues"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

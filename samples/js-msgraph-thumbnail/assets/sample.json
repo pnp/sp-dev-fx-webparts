@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-js-msgraph-thumbnail","version":null,"source":"pnp","title":"Thumbnail/preview of pages and files","shortDescription":"A web part showcasing how to call the Microsoft Graph Thumbnails API to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object.","longDescription":["A web part showcasing how to call the Microsoft Graph Thumbnails API to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-msgraph-thumbnail/preview.gif","alt":"Thumbnail/preview of pages and files","slides":null}],"authors":[{"gitHubAccount":"wobba","company":"","pictureUrl":"https://github.com/wobba.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-msgraph-thumbnail",
+    "source": "pnp",
+    "title": "Thumbnail/preview of pages and files",
+    "shortDescription": "A web part showcasing how to call the Microsoft Graph Thumbnails API to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-msgraph-thumbnail",
+    "longDescription": [
+      "A web part showcasing how to call the Microsoft Graph Thumbnails API to generate a preview image for files and pages in SharePoint. The sample illustrates how to craft the preview URL both from a search result as well as from a SharePoint item object."
+    ],
+    "creationDateTime": "2020-01-21",
+    "updateDateTime": "2020-01-21",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-msgraph-thumbnail/preview.gif",
+        "alt": "Thumbnail/preview of pages and files"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "wobba",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/wobba.png",
+        "name": "Mikael Svenson",
+        "twitter": "mikaelsvenson"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

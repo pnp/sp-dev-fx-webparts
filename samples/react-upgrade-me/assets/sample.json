@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-upgrade-me","version":null,"source":"pnp","title":"Upgrade Me","shortDescription":"Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade.","longDescription":["Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-upgrade-me/assets/react-upgrade-me.png","alt":"Upgrade Me","slides":null}],"authors":[{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-upgrade-me",
+    "source": "pnp",
+    "title": "Upgrade Me",
+    "shortDescription": "Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-upgrade-me",
+    "longDescription": [
+      "Use this web part to test the CLI for Microsoft 365 SPFx Project Upgrade."
+    ],
+    "creationDateTime": "2020-08-27",
+    "updateDateTime": "2020-08-27",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-upgrade-me/assets/react-upgrade-me.png",
+        "alt": "Upgrade Me"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

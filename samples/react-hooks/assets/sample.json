@@ -1,1 +1,50 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-hooks","version":null,"source":"pnp","title":"React Hooks Form Web Part","shortDescription":"The React Hooks web part is an example of how to implement Hooks in Spfx. Hooks is a new feature included in React version 16.8, with the new version of SharePoint Framework (SPFx) version 1.9.1 we can use them in our developments. In this example we are going to see the different types of hooks that are available and with the comparison of how this implementation can be done without the Hooks to be able to observe the benefits of using it.","longDescription":["The React Hooks web part is an example of how to implement Hooks in Spfx. Hooks is a new feature included in React version 16.8, with the new version of SharePoint Framework (SPFx) version 1.9.1 we can use them in our developments. In this example we are going to see the different types of hooks that are available and with the comparison of how this implementation can be done without the Hooks to be able to observe the benefits of using it."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.9.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-hooks/assets/webpart.PNG","alt":"React Hooks Form Web Part","slides":null}],"authors":[{"gitHubAccount":null,"company":"","pictureUrl":"https://github.com/.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-hooks",
+    "source": "pnp",
+    "title": "React Hooks Form Web Part",
+    "shortDescription": "The React Hooks web part is an example of how to implement Hooks in Spfx. Hooks is a new feature included in React version 16.8, with the new version of SharePoint Framework (SPFx) version 1.9.1 we can use them in our developments. In this example we are going to see the different types of hooks that are available and with the comparison of how this implementation can be done without the Hooks to be able to observe the benefits of using it.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hooks",
+    "longDescription": [
+      "The React Hooks web part is an example of how to implement Hooks in Spfx. Hooks is a new feature included in React version 16.8, with the new version of SharePoint Framework (SPFx) version 1.9.1 we can use them in our developments. In this example we are going to see the different types of hooks that are available and with the comparison of how this implementation can be done without the Hooks to be able to observe the benefits of using it."
+    ],
+    "creationDateTime": "2019-08-19",
+    "updateDateTime": "2019-08-19",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hooks/assets/webpart.PNG",
+        "alt": "React Hooks Form Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "name": "Adrian Diaz Cervera",
+        "gitHubAccount": "AdrianDiaz81",
+        "pictureUrl": "https://github.com/AdrianDiaz81.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-aad-implicitflow","version":null,"source":"pnp","title":"Azure Active Directory implicit flow authentication samples","shortDescription":"Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory.","longDescription":["Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png","alt":"Azure Active Directory implicit flow authentication samples","slides":null}],"authors":[{"gitHubAccount":"waldekmastykarz","company":"","pictureUrl":"https://github.com/waldekmastykarz.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-aad-implicitflow",
+    "source": "pnp",
+    "title": "Azure Active Directory implicit flow authentication samples",
+    "shortDescription": "Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aad-implicitflow",
+    "longDescription": [
+      "Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory."
+    ],
+    "creationDateTime": "2017-03-17",
+    "updateDateTime": "2017-03-17",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png",
+        "alt": "Azure Active Directory implicit flow authentication samples"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "waldekmastykarz",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/waldekmastykarz.png",
+        "name": "Waldek Mastykarz",
+        "twitter": "waldekm"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

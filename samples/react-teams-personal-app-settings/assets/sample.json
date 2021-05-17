@@ -1,1 +1,61 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-teams-personal-app-settings","version":null,"source":"pnp","title":"Teams Personal App Settings Web Part","shortDescription":"Demonstrates how you can store Teams Personal App Web Part\u0027s properties in user\u0027s OneDrive.","longDescription":["Demonstrates how you can store Teams Personal App Web Part\u0027s properties in user\u0027s OneDrive."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png","alt":"Teams Personal App Settings Web Part","slides":null}],"authors":[{"gitHubAccount":"AJIXuMuK","company":"","pictureUrl":"https://github.com/AJIXuMuK.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-teams-personal-app-settings",
+    "source": "pnp",
+    "title": "Teams Personal App Settings Web Part",
+    "shortDescription": "Demonstrates how you can store Teams Personal App Web Part\u0027s properties in user\u0027s OneDrive.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-personal-app-settings",
+    "longDescription": [
+      "Demonstrates how you can store Teams Personal App Web Part\u0027s properties in user\u0027s OneDrive."
+    ],
+    "creationDateTime": "2020-04-24",
+    "updateDateTime": "2020-04-24",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-TEAMSPERSONALAPP",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png",
+        "alt": "Teams Personal App Settings Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AJIXuMuK",
+        "company": "Sharepointalist",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?s=460\u0026u=b8e83fb70a90eae0c0e0078c206990785e1a5b6f\u0026v=4",
+        "name": "Alex Terentiev",
+        "twitter": "alexaterentiev"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

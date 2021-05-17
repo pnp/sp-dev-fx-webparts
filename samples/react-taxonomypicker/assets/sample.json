@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-taxonomypicker","version":null,"source":"pnp","title":"Taxonomy Picker","shortDescription":"A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx).","longDescription":["A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx)."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-taxonomypicker/assets/react-taxonomy-picker-spfx.gif","alt":"Taxonomy Picker","slides":null}],"authors":[{"gitHubAccount":"jquinzamora","company":"","pictureUrl":"https://github.com/jquinzamora.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-taxonomypicker",
+    "source": "pnp",
+    "title": "Taxonomy Picker",
+    "shortDescription": "A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx).",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomypicker",
+    "longDescription": [
+      "A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx)."
+    ],
+    "creationDateTime": "2017-04-14",
+    "updateDateTime": "2017-04-14",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomypicker/assets/react-taxonomy-picker-spfx.gif",
+        "alt": "Taxonomy Picker"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "jquintozamora",
+        "company": "",
+        "pictureUrl": "https://github.com/jquintozamora.png",
+        "name": "Jose Quinto"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

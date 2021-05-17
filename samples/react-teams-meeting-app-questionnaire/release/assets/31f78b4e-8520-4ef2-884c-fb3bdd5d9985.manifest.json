@@ -1,0 +1,79 @@
+{
+  "id": "31f78b4e-8520-4ef2-884c-fb3bdd5d9985",
+  "alias": "QuestionnaireMeetingAppWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "QuestionnaireMeetingApp"
+      },
+      "description": {
+        "default": "Provides pre-meeting experience with questionnaire"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "siteUrl": "/",
+        "listName": "Teams Meeting Questionnaire"
+      }
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "https://localhost:4321/dist/"
+    ],
+    "entryModuleId": "questionnaire-meeting-app-web-part",
+    "scriptResources": {
+      "questionnaire-meeting-app-web-part": {
+        "type": "path",
+        "path": "questionnaire-meeting-app-web-part_84192ae6459ea857d480.js"
+      },
+      "tslib": {
+        "type": "component",
+        "id": "01c4df03-e775-48cb-aa14-171ee5199a15",
+        "version": "1.10.0"
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+        "version": "1.12.0"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.12.0"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.12.0"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.9.0"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.9.0"
+      },
+      "QuestionnaireMeetingAppWebPartStrings": {
+        "type": "localizedPath",
+        "paths": {
+          "en-US": "QuestionnaireMeetingAppWebPartStrings_en-us_733fec4d177b77e953cdd1256b08bf0a.js"
+        },
+        "defaultPath": "QuestionnaireMeetingAppWebPartStrings_en-us_733fec4d177b77e953cdd1256b08bf0a.js"
+      }
+    }
+  }
+}

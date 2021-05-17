@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-aggregated-calendar","version":null,"source":"pnp","title":"Aggregated Calendar Web part","shortDescription":"This is a sample web part developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io","longDescription":["This is a sample web part developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io"],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-aggregated-calendar/assets/react-aggregated-calendar.gif","alt":"Aggregated Calendar Web part","slides":null}],"authors":[{"gitHubAccount":"dhavalshah01","company":"","pictureUrl":"https://github.com/dhavalshah01.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-aggregated-calendar",
+    "source": "pnp",
+    "title": "Aggregated Calendar Web part",
+    "shortDescription": "This is a sample web part developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aggregated-calendar",
+    "longDescription": [
+      "This is a sample web part developed using React Framework to gather the aggregated events from the multiple calendars from multiple sites using Full Calendar from fullcalendar.io"
+    ],
+    "creationDateTime": "2018-07-16",
+    "updateDateTime": "2018-07-16",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aggregated-calendar/assets/react-aggregated-calendar.gif",
+        "alt": "Aggregated Calendar Web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "dhavalshah01",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/13947393?s=460\u0026u=38d18e840d22f5567d508027515c728025bae8cb\u0026v=4",
+        "name": "Dhaval Shah"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

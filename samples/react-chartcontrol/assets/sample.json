@@ -1,1 +1,168 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-chartcontrol","version":null,"source":"pnp","title":"Chart Control Samples","shortDescription":"This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react.","longDescription":["This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-chartcontrol/assets/WebPartList.png","alt":"Chart Control Samples","slides":null}],"authors":[{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-chartcontrol",
+    "source": "pnp",
+    "title": "Chart Control Samples",
+    "shortDescription": "This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-chartcontrol",
+    "longDescription": [
+      "This sample contains several web parts that demonstrate how to use the ChartControl from @pnp/spfx-controls-react."
+    ],
+    "creationDateTime": "2020-12-13",
+    "updateDateTime": "2020-12-13",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "PNPCONTROLS",
+        "value": "ChartControl"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "WebPartTitle, Placeholder, ChartControl"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/WebPartList.png",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/AccessibleChart.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/AreaChart.gif?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/BarChart.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/BarChartStatic.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/BubbleChart.gif?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/Chartinator.gif?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/ComboBar.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 108,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/CustomPlugin.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 109,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/DoughnutPatterns.gif?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 110,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/DynamicDataCallable.gif?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 111,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/DynamicDataConsumer.gif?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 112,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/HorizontalBarChart.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 113,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/LineChart.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 114,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/PieChart.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 115,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/PolarChart.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 116,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/RadarChart.png?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 117,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/RealTime.gif?raw=true",
+        "alt": "Chart Control Samples"
+      },
+      {
+        "type": "image",
+        "order": 118,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-chartcontrol/assets/ScatterChart.png?raw=true",
+        "alt": "Chart Control Samples"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

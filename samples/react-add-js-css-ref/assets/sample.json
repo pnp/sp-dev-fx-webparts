@@ -1,1 +1,55 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-add-js-css-ref","version":null,"source":"pnp","title":"Add JS and CSS reference on Modern Pages","shortDescription":"React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site.","longDescription":["React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.9.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-add-js-css-ref/assets/webpartinaction.gif","alt":"Add JS and CSS reference on Modern Pages","slides":null}],"authors":[{"gitHubAccount":"siddharth-vaghasia","company":"","pictureUrl":"https://github.com/siddharth-vaghasia.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-add-js-css-ref",
+    "source": "pnp",
+    "title": "Add JS and CSS reference on Modern Pages",
+    "shortDescription": "React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-add-js-css-ref",
+    "longDescription": [
+      "React-based SPFx web part and extension that allows users to add/modify/delete custom js and css file references using SPFx application customizer extension all modern pages within SP online site."
+    ],
+    "creationDateTime": "2020-06-11",
+    "updateDateTime": "2020-06-11",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.1"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "ListView"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-add-js-css-ref/assets/webpartinaction.gif",
+        "alt": "Add JS and CSS reference on Modern Pages"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "siddharth-vaghasia",
+        "company": "",
+        "pictureUrl": "https://github.com/siddharth-vaghasia.png",
+        "name": "Siddharth Vaghasia"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,59 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-documents-detailslist","version":null,"source":"pnp","title":"Documents Web Part","shortDescription":"This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated items retrieved from the search index and real-time query to a document library.","longDescription":["This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated items retrieved from the search index and real-time query to a document library."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-documents-detailslist/assets/Preview.gif","alt":"Documents Web Part","slides":null}],"authors":[{"gitHubAccount":"DimchoTsanov","company":"","pictureUrl":"https://github.com/DimchoTsanov.png"},{"gitHubAccount":"Harshagracy","company":"","pictureUrl":"https://github.com/Harshagracy.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-documents-detailslist",
+    "source": "pnp",
+    "title": "Documents Web Part",
+    "shortDescription": "This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated items retrieved from the search index and real-time query to a document library.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-documents-detailslist",
+    "longDescription": [
+      "This sample shows how to build web parts that display documents in accordance with the SharePoint Online modern experience. The code uses Office UI Fabric components on the top of SharePoint framework. The web parts implement filtering and sorting. Two data source approaches are demonstrated items retrieved from the search index and real-time query to a document library."
+    ],
+    "creationDateTime": "2020-04-28",
+    "updateDateTime": "2020-04-28",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-documents-detailslist/assets/Preview.gif",
+        "alt": "Documents Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "DimchoTsanov",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/9058087?s=460\u0026u=43820d97a5aaf5719a4c98be59c673fb460f0001\u0026v=4",
+        "name": "Dimcho Tsanov",
+        "twitter": "DimchoTsanov"
+      },
+      {
+        "gitHubAccount": "Harshagracy",
+        "company": "",
+        "pictureUrl": "https://github.com/Harshagracy.png",
+        "name": "Harsha Vardhini",
+        "twitter": "harshagracy"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

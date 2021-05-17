@@ -1,1 +1,56 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-target-audience","version":null,"source":"pnp","title":"Target audience","shortDescription":"Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site.","longDescription":["Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-target-audience/assets/audience.gif","alt":"Target audience","slides":null}],"authors":[{"gitHubAccount":"rabwill","company":"","pictureUrl":"https://github.com/rabwill.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-target-audience",
+    "source": "pnp",
+    "title": "Target audience",
+    "shortDescription": "Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-target-audience",
+    "longDescription": [
+      "Sample web part which uses a Generic React Component which enables it to have Target Audience functionality like what was available in classic web parts. Targets SharePoint Groups only within the site."
+    ],
+    "creationDateTime": "2020-01-28",
+    "updateDateTime": "2020-01-28",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldPeoplePicker, Placeholder"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-target-audience/assets/audience.gif",
+        "alt": "Target audience"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "rabwill",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/rabwill.png",
+        "name": "Rabia Williams",
+        "twitter": "williamsrabia"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

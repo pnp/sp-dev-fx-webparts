@@ -53,6 +53,7 @@ Version|Date|Comments
 0.0.3|December 10, 2018 | Upgrade to 1.7.0
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -75,7 +76,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 ## SharePoint info
 
-When using the webpart in SharePoint, either in the SharePoint Workbench or deployed, the webpart reads by default from a List called "Swiper Content" with fields Title, ImageUrl, Description of type Single line of text. The list has to be created manually.
+When using the web part in SharePoint, either in the SharePoint Workbench or deployed, the web part reads by default from a List called "Swiper Content" with fields Title, ImageUrl, Description of type Single line of text. The list has to be created manually.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-slide-swiper" />
 

@@ -1,0 +1,36 @@
+.pageWrapper {
+  margin: 5px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.mgtfilelist {
+  --file-list-background-color: #eff6fc;
+  --file-item-background-color--hover: #deecf9;
+  --file-item-background-color--active: #c7e0f4;
+  --file-list-border: 0px solid #white;
+  --file-list-box-shadow: none;
+  --file-list-padding: 0px;
+  --file-list-margin: 0;
+  --file-item-border-radius: 0px;
+  --file-item-margin: 0px 0px;
+  --file-item-border-bottom: 1px solid #dddddd;
+  --show-more-button-background-color: #fef8dd;
+  --show-more-button-background-color--hover: #ffe7c7;
+  --show-more-button-font-size: 14px;
+  --show-more-button-padding: 16px;
+  --show-more-button-border-bottom-right-radius: 12px;
+  --show-more-button-border-bottom-left-radius: 12px;
+}

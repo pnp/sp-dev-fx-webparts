@@ -1,44 +1,75 @@
-{
-  "name": "pnp-sp-dev-spfx-web-parts-angular-msgraph",
-  "version": null,
-  "source": "pnp",
-  "title": "Angular MS Graph Web Part Built with Angular v1.x",
-  "shortDescription": "This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your tenant. It will first pull the root site collection (currently a limitation by Microsoft Graph), then it will display all the lists associated with the site followed by all the items inside the list.",
-  "longDescription": [
-    "This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your tenant. It will first pull the root site collection (currently a limitation by Microsoft Graph), then it will display all the lists associated with the site followed by all the items inside the list."
-  ],
-  "products": [
-    "SharePoint",
-    "Office"
-  ],
-  "categories": [
-    ""
-  ],
-  "metadata": [
-    {
-      "key": "CLIENT-SIDE-DEV",
-      "value": "Angular"
-    },
-    {
-      "key": "SPFX-VERSION",
-      "value": "GA"
-    }
-  ],
-  "thumbnails": [
-    {
-      "type": "image",
-      "order": 100,
-      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-msgraph/assets/Connect.png",
-      "alt": "Angular MS Graph Web Part Built with Angular v1.x",
-      "slides": null
-    }
-  ],
-  "authors": [
-    {
-      "gitHubAccount": "davidhartman",
-      "company": "",
-      "pictureUrl": "https://github.com/davidhartman.png"
-    }
-  ],
-  "references": []
-}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-angular-msgraph",
+    "source": "pnp",
+    "title": "Angular MS Graph Web Part Built with Angular v1.x",
+    "shortDescription": "This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your tenant. It will first pull the root site collection (currently a limitation by Microsoft Graph), then it will display all the lists associated with the site followed by all the items inside the list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-msgraph",
+    "longDescription": [
+      "This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your tenant. It will first pull the root site collection (currently a limitation by Microsoft Graph), then it will display all the lists associated with the site followed by all the items inside the list."
+    ],
+    "creationDateTime": "2017-04-19",
+    "updateDateTime": "2017-04-19",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Angular"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-msgraph/assets/Connect.png",
+        "alt": "Angular MS Graph Web Part Built with Angular v1.x"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-msgraph/assets/Connected.png?raw=true",
+        "alt": "Angular MS Graph Web Part Built with Angular v1.x"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-msgraph/assets/Items.png?raw=true",
+        "alt": "Angular MS Graph Web Part Built with Angular v1.x"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-msgraph/assets/Lists.png?raw=true",
+        "alt": "Angular MS Graph Web Part Built with Angular v1.x"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-msgraph/assets/Root.png?raw=true",
+        "alt": "Angular MS Graph Web Part Built with Angular v1.x"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "davidhartman",
+        "company": "Slalom",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/11304394?s=460\u0026v=4",
+        "name": "David Hartman"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

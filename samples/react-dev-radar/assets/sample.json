@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-dev-radar","version":null,"source":"pnp","title":"Dev-Radar for SharePoint Online","shortDescription":"The web part Use PnPjs library and Axios","longDescription":["The web part Use PnPjs library and Axios"],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-dev-radar/dev-radar.png","alt":"Dev-Radar for SharePoint Online","slides":null}],"authors":[{"gitHubAccount":"sauslash","company":"","pictureUrl":"https://github.com/sauslash.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-dev-radar",
+    "source": "pnp",
+    "title": "Dev-Radar for SharePoint Online",
+    "shortDescription": "The web part Use PnPjs library and Axios",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dev-radar",
+    "longDescription": [
+      "The web part Use PnPjs library and Axios"
+    ],
+    "creationDateTime": "2020-03-01",
+    "updateDateTime": "2020-03-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dev-radar/dev-radar.png",
+        "alt": "Dev-Radar for SharePoint Online"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "sauslash",
+        "company": "",
+        "pictureUrl": "https://github.com/sauslash.png",
+        "name": "Saulo Oliveira"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

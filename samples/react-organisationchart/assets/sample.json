@@ -1,1 +1,57 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-organisationchart","version":null,"source":"pnp","title":"Organisation Chart","shortDescription":"A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing.","longDescription":["A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-organisationchart/assets/orgchart.png","alt":"Organisation Chart","slides":null}],"authors":[{"gitHubAccount":"vman","company":"","pictureUrl":"https://github.com/vman.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-organisationchart",
+    "source": "pnp",
+    "title": "Organisation Chart",
+    "shortDescription": "A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organisationchart",
+    "longDescription": [
+      "A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing."
+    ],
+    "creationDateTime": "2017-07-19",
+    "updateDateTime": "2017-07-19",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organisationchart/assets/orgchart.png",
+        "alt": "Organisation Chart"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-organisationchart/assets/orgchart-mock.png?raw=true",
+        "alt": "Organisation Chart"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "vman",
+        "company": "",
+        "pictureUrl": "https://github.com/vman.png",
+        "name": "Vardhaman Deshpande"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

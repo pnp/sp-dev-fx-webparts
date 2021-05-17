@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-image-gallery","version":null,"source":"pnp","title":"Filterable Image Gallery Web Part","shortDescription":"This sample describe a SPFX application which implement an image gallery with taxonomy base filtering and typed search. This application also implement pagination.","longDescription":["This sample describe a SPFX application which implement an image gallery with taxonomy base filtering and typed search. This application also implement pagination."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.6.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-image-gallery/assets/image-gallery.gif","alt":"Filterable Image Gallery Web Part","slides":null}],"authors":[{"gitHubAccount":"ejazhussain","company":"","pictureUrl":"https://github.com/ejazhussain.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-image-gallery",
+    "source": "pnp",
+    "title": "Filterable Image Gallery Web Part",
+    "shortDescription": "This sample describe a SPFX application which implement an image gallery with taxonomy base filtering and typed search. This application also implement pagination.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-image-gallery",
+    "longDescription": [
+      "This sample describe a SPFX application which implement an image gallery with taxonomy base filtering and typed search. This application also implement pagination."
+    ],
+    "creationDateTime": "2019-03-01",
+    "updateDateTime": "2019-03-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.6.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-image-gallery/assets/image-gallery.gif",
+        "alt": "Filterable Image Gallery Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ejazhussain",
+        "company": "Content and Code",
+        "pictureUrl": "https://github.com/ejazhussain.png",
+        "name": "Ejaz Hussain",
+        "twitter": "EjazHussain_"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

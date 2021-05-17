@@ -1,0 +1,83 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-teams-meeting-app-questionnaire",
+    "source": "pnp",
+    "title": "Questionnaire Teams Meeting App",
+    "shortDescription": "Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-meeting-app-questionnaire",
+    "longDescription": [
+      "SPFx v1.12 support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.",
+      "The Questionnaire meeting app displays the questions from attendees as pre-meeting app experience."
+    ],
+    "creationDateTime": "2021-03-22",
+    "updateDateTime": "2021-03-22",
+    "products": [
+      "SharePoint",
+      "Office",
+      "Teams"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.12.0"
+      },
+      {
+        "key": "SPFX-TEAMSMEETINGAPP",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-meeting-app-questionnaire/assets/web-part-preview.gif",
+        "alt": "Web Part Preview"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-meeting-app-questionnaire/assets/questionnaire-preview.png",
+        "alt": "Questionnaire Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "nanddeepn",
+        "company": "",
+        "pictureUrl": "https://github.com/nanddeepn.png",
+        "name": "Nanddeep Nachan",
+        "twitter": "NanddeepNachan"
+      },
+      {
+        "gitHubAccount": "ravi16a87",
+        "company": "Cognizant",
+        "pictureUrl": "https://github.com/ravi16a87.png",
+        "name": "Ravi Kulkarni",
+        "twitter":"RaviKul16a87"
+      },
+      {
+        "gitHubAccount": "SmitaNachan",
+        "company": "",
+        "pictureUrl": "https://github.com/SmitaNachan.png",
+        "name": "Smita Nachan",
+        "twitter": "SmitaNachan"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Apps in Teams meetings",
+        "description": "Meetings are key to productivity in Teams. They enable collaboration, partnership, informed communication, and shared feedback in an inclusive and active forum. As a developer, you can create configurable tab, bot, and message extension applications to enhance and enrich a Teams meeting experience. Meeting users can access apps, via the tab gallery, to enable relevant scenarios such as pre-staging a Kanban board, launching an in-meeting actionable dialog, or creating a post-meeting poll. Your meeting app can deliver a user experience for each stage of the meeting lifecycle based upon attendee status.",
+        "url": "https://docs.microsoft.com/microsoftteams/platform/apps-in-teams-meetings/teams-apps-in-meetings?WT.mc_id=M365-MVP-5003693"
+      }
+    ]
+  }
+]

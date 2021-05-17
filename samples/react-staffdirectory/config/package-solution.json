@@ -3,7 +3,7 @@
   "solution": {
     "name": "staff-directory-client-side-solution",
     "id": "89d7389c-be48-41e9-9f72-5eb9a1099c1f",
-    "version": "1.0.0.0",
+    "version": "1.0.2.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -11,6 +11,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Presence.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
       }
     ],
     "developer": {

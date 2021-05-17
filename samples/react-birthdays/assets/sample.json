@@ -1,1 +1,245 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-birthdays","version":null,"source":"pnp","title":"Birthdays Web Part","shortDescription":"The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant\u0027s root site with title \u0022Birthdays.\u0022","longDescription":["The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant\u0027s root site with title \u0022Birthdays.\u0022"],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.2"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-birthdays/assets/birthdays.gif","alt":"Birthdays Web Part","slides":null}],"authors":[{"gitHubAccount":"joaojmendes","company":"","pictureUrl":"https://github.com/joaojmendes.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-birthdays",
+    "source": "pnp",
+    "title": "Birthdays Web Part",
+    "shortDescription": "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant\u0027s root site with title \u0022Birthdays.\u0022",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthdays",
+    "longDescription": [
+      "The Web Part Birthdays shows the upcoming birthdays in the company, the web part reads birthdays from a list located on the tenant\u0027s root site with title \u0022Birthdays.\u0022"
+    ],
+    "creationDateTime": "2019-07-23",
+    "updateDateTime": "2019-07-23",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.2"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldNumber, WebPartTitle"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays/assets/birthdays.gif",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/ballonsBackgroud.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/baloons.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/birthdays.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/birthdays2.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof1.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof10.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 108,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof11.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 109,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof12.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 110,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof14.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 111,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof14_1.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 112,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof17.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 113,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof18.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 114,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof181.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 115,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof19.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 116,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof2.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 117,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof20.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 118,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof21.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 119,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof22.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 120,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof24.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 121,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof28.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 122,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof29.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 123,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof3.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 124,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof30.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 125,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof4.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 126,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof5.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 127,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof6.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 128,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof7.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 129,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof8.png?raw=true",
+        "alt": "Birthdays Web Part"
+      },
+      {
+        "type": "image",
+        "order": 130,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-birthdays/assets/cof9.png?raw=true",
+        "alt": "Birthdays Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "company": "Storm Technology Ltd",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "Jo\u00E3o Mendes",
+        "twitter": "joaojmendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

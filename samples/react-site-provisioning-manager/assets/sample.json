@@ -1,1 +1,70 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-site-provisioning-manager","version":null,"source":"pnp","title":"Site Provisioning Manager Web Part","shortDescription":"This sample shows how you can manage site provisioning by calling Azure functions.","longDescription":["This sample shows how you can manage site provisioning by calling Azure functions."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.9.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-site-provisioning-manager/assets/screenshot.gif","alt":"Site Provisioning Manager Web Part","slides":null}],"authors":[{"gitHubAccount":"AhmadiRamin","company":"","pictureUrl":"https://github.com/AhmadiRamin.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-site-provisioning-manager",
+    "source": "pnp",
+    "title": "Site Provisioning Manager Web Part",
+    "shortDescription": "This sample shows how you can manage site provisioning by calling Azure functions.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-provisioning-manager",
+    "longDescription": [
+      "This sample shows how you can manage site provisioning by calling Azure functions."
+    ],
+    "creationDateTime": "2019-08-14",
+    "updateDateTime": "2019-08-14",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-provisioning-manager/assets/screenshot.gif",
+        "alt": "Site Provisioning Manager Web Part"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-site-provisioning-manager/assets/api-permissions.png?raw=true",
+        "alt": "Site Provisioning Manager Web Part"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-site-provisioning-manager/assets/functions-CORS-settings.PNG?raw=true",
+        "alt": "Site Provisioning Manager Web Part"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-site-provisioning-manager/assets/functions-visual-studio-publish-profile.png?raw=true",
+        "alt": "Site Provisioning Manager Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AhmadiRamin",
+        "company": "Content and Cloud",
+        "pictureUrl": "https://github.com/AhmadiRamin.png",
+        "name": "Ramin Ahmadi",
+        "twitter": "raminahmadi1986"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

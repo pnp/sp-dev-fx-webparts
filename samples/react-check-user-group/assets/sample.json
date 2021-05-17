@@ -1,1 +1,56 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-check-user-group","version":null,"source":"pnp","title":"Check User Group","shortDescription":"This web part finds all the Office 365 or AAD Security groups a user is a member of or all the members present in such a group. It can be used as an admin utility to quickly check the membership of any user or group from within a SharePoint page itself. The retrieved results can also be exported to a CSV file.","longDescription":["This web part finds all the Office 365 or AAD Security groups a user is a member of or all the members present in such a group. It can be used as an admin utility to quickly check the membership of any user or group from within a SharePoint page itself. The retrieved results can also be exported to a CSV file."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-check-user-group/assets/CheckUserGroup.gif","alt":"Check User Group","slides":null}],"authors":[{"gitHubAccount":"aakashbhardwaj619","company":"","pictureUrl":"https://github.com/aakashbhardwaj619.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-check-user-group",
+    "source": "pnp",
+    "title": "Check User Group",
+    "shortDescription": "This web part finds all the Office 365 or AAD Security groups a user is a member of or all the members present in such a group. It can be used as an admin utility to quickly check the membership of any user or group from within a SharePoint page itself. The retrieved results can also be exported to a CSV file.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-check-user-group",
+    "longDescription": [
+      "This web part finds all the Office 365 or AAD Security groups a user is a member of or all the members present in such a group. It can be used as an admin utility to quickly check the membership of any user or group from within a SharePoint page itself. The retrieved results can also be exported to a CSV file."
+    ],
+    "creationDateTime": "2020-03-09",
+    "updateDateTime": "2020-03-09",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "WebPartTitle, PeoplePicker"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-check-user-group/assets/CheckUserGroup.gif",
+        "alt": "Check User Group"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "aakashbhardwaj619",
+        "company": "Microsoft",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/33526902?s=460\u0026u=e780f4ef1da922c84f2c5c66c59cecbff2300581\u0026v=4",
+        "name": "Aakash Bhardwaj",
+        "twitter": "aakash_316"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-feature-framework","version":null,"source":"pnp","title":"Deployment of SharePoint assets as part of SPFx package","shortDescription":"Simplistic solution demonstrating how to provision SharePoint assets using Feature Framework elements when SharePoint Framework solution is being deployed to a SharePoint site.","longDescription":["Simplistic solution demonstrating how to provision SharePoint assets using Feature Framework elements when SharePoint Framework solution is being deployed to a SharePoint site."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-feature-framework/assets/screenshot.png","alt":"Deployment of SharePoint assets as part of SPFx package","slides":null}],"authors":[{"gitHubAccount":"VesaJuvonen","company":"","pictureUrl":"https://github.com/VesaJuvonen.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-feature-framework",
+    "source": "pnp",
+    "title": "Deployment of SharePoint assets as part of SPFx package",
+    "shortDescription": "Simplistic solution demonstrating how to provision SharePoint assets using Feature Framework elements when SharePoint Framework solution is being deployed to a SharePoint site.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feature-framework",
+    "longDescription": [
+      "Simplistic solution demonstrating how to provision SharePoint assets using Feature Framework elements when SharePoint Framework solution is being deployed to a SharePoint site."
+    ],
+    "creationDateTime": "2017-02-27",
+    "updateDateTime": "2017-02-27",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feature-framework/assets/screenshot.png",
+        "alt": "Deployment of SharePoint assets as part of SPFx package"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "VesaJuvonen",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/VesaJuvonen.png",
+        "name": "Vesa Juvonen",
+        "twitter": "vesajuvonen"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

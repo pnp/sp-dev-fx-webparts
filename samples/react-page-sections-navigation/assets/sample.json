@@ -1,1 +1,61 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-page-sections-navigation","version":null,"source":"pnp","title":"Page Sections Navigation","shortDescription":"Sample web parts allowing to add sections navigation to the SharePoint page.","longDescription":["Sample web parts allowing to add sections navigation to the SharePoint page."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-page-sections-navigation/assets/page-nav.gif","alt":"Page Sections Navigation","slides":null}],"authors":[{"gitHubAccount":"AJIXuMuK","company":"","pictureUrl":"https://github.com/AJIXuMuK.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-page-sections-navigation",
+    "source": "pnp",
+    "title": "Page Sections Navigation",
+    "shortDescription": "Sample web parts allowing to add sections navigation to the SharePoint page.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-sections-navigation",
+    "longDescription": [
+      "Sample web parts allowing to add sections navigation to the SharePoint page."
+    ],
+    "creationDateTime": "2019-03-22",
+    "updateDateTime": "2019-03-22",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.0"
+      },
+      {
+        "key": "SPFX-FULLPAGEAPP",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-page-sections-navigation/assets/page-nav.gif",
+        "alt": "Page Sections Navigation"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AJIXuMuK",
+        "company": "Sharepointalist",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?s=460\u0026u=b8e83fb70a90eae0c0e0078c206990785e1a5b6f\u0026v=4",
+        "name": "Alex Terentiev",
+        "twitter": "alexaterentiev"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Using single part app pages in SharePoint Online",
+        "description": "Single part app pages provide a capability to host SharePoint Framework web parts or Microsoft Teams applications in SharePoint Online with a locked layout. End users cannot modify or configure the page that is using the Single Part App Page layout.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/single-part-app-pages?tabs=pnpposh"
+      }
+    ]
+  }
+]

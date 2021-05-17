@@ -1,0 +1,63 @@
+
+
+.historyItem {
+  .historyItemText,
+  .historyItemIcon{
+padding-right: 6px;
+  }
+  .historyItemDetails{
+display: inline;
+  }
+  .historyItemSvg{
+    margin-bottom: -3px;
+    height: 20px;
+  }
+}
+.svgbuttonPanel {
+  height: 40px;
+}
+.buttonHolderPanel {
+ &>button {
+    margin-right: 30px;
+  }
+
+}
+
+
+.imageEditor{
+  width: 100%;
+  position: relative;
+  .commandBar{
+    position: absolute;
+    top:-32px;
+    button {
+      background-color: lightgray;
+    }
+    .svgbutton {
+      height: 20px;
+    }
+  }
+  .imageplaceholder{
+    position: relative;
+  }
+  .canvasmaxwidth{
+    max-width: 100%;
+  }
+}
+.iconbtn {
+  min-width: 32px;
+  width: 32px;
+  padding: 10px 2px;
+  margin-right: 3px;
+  height: 50px;
+  &>div{
+    display: inline-block;
+  }
+  .imgtext{
+    display: block;
+  }
+  .imgicon{
+    display: block;
+  }
+
+}

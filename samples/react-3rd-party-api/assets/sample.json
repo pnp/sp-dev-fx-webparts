@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-3rd-party-api","version":null,"source":"pnp","title":"Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework","shortDescription":"This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework.","longDescription":["This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif","alt":"Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework","slides":null}],"authors":[{"gitHubAccount":"PaoloPia","company":"","pictureUrl":"https://github.com/PaoloPia.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-3rd-party-api",
+    "source": "pnp",
+    "title": "Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework",
+    "shortDescription": "This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-3rd-party-api",
+    "longDescription": [
+      "This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework."
+    ],
+    "creationDateTime": "2018-02-19",
+    "updateDateTime": "2018-02-19",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif",
+        "alt": "Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "PaoloPia",
+        "company": "PiaSys.com",
+        "pictureUrl": "https://github.com/PaoloPia.png",
+        "name": "Paolo Pialorsi",
+        "twitter": "PaoloPia"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

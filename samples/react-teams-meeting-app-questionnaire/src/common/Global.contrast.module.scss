@@ -1,0 +1,59 @@
+@import "./colors.module";
+[data-theme="contrast"] {
+    :global {
+        .ms-Fabric {
+            color: $contrast-primaryText;
+        }
+        .ms-Button-icon {
+            color: $contrast-primaryText;
+        }
+
+        .ms-Overlay {
+            background-color: $contrast-overlay;
+        }
+
+        .ms-Panel-main {
+            background-color: $contrast-surfaceBackground;
+            border-left-color: $contrast-panelBorder;
+            border-right-color: $contrast-panelBorder;
+            .ms-Panel-headerText {
+                color: $contrast-primaryText;
+            }
+        }
+
+        .spPropertyPaneContainer {
+            background-color: $contrast-white;
+            [class^="propertyPane_"] {
+                background-color: $contrast-white;
+                border-left-color: $contrast-panelBorder;
+                [class^="propertyPanePageTitle_"],
+                [class^="propertyPanePageDescription_"],
+                [class^="propertyPaneGroupHeaderNoAccordion_"] {
+                    color: $contrast-primaryText;
+                }
+                .ms-Button--icon {
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        .ms-Label {
+            color: $contrast-primaryText;
+        }
+        .ms-TextField {
+            .ms-TextField-fieldGroup {
+                background-color: $contrast-inputBackground;
+                color: $contrast-primaryText;
+                border-color: $contrast-inputBorder;
+                .ms-TextField-field {
+                    color: $contrast-primaryText;
+                }
+                &:hover {
+                    border-color: $contrast-inputBorderHovered;
+                }
+            }
+        }
+    }
+}

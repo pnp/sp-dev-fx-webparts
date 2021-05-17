@@ -1,1 +1,64 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-sp-site-user-groups","version":null,"source":"pnp","title":"Site User and Group Information","shortDescription":"Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed.","longDescription":["Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-sp-site-user-groups/assets/screen1.png","alt":"Site User and Group Information","slides":null}],"authors":[{"gitHubAccount":"danwatford","company":"","pictureUrl":"https://github.com/danwatford.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sp-site-user-groups",
+    "source": "pnp",
+    "title": "Site User and Group Information",
+    "shortDescription": "Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-site-user-groups",
+    "longDescription": [
+      "Looks up the SharePoint site user/group ids related to a user. Azure AD groups that the user belongs to, and which are known to the SharePoint site, are also displayed."
+    ],
+    "creationDateTime": "2020-09-08",
+    "updateDateTime": "2020-09-08",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-site-user-groups/assets/screen1.png",
+        "alt": "Site User and Group Information"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-sp-site-user-groups/assets/screen2.png?raw=true",
+        "alt": "Site User and Group Information"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-sp-site-user-groups/assets/screen3.png?raw=true",
+        "alt": "Site User and Group Information"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "danwatford",
+        "company": "Watford Consulting Ltd.",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/5949502?s=460\u0026u=01688c475aa5c94da6a292473ff80ffe1a7975cb\u0026v=4",
+        "name": "Daniel Watford",
+        "twitter": "DanWatford"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

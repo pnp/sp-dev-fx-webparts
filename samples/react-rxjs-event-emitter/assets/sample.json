@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-rxjs-event-emitter","version":null,"source":"pnp","title":"ReactiveX (RxJs) Event Emitter Sample","shortDescription":"This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish\u2013subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha.","longDescription":["This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish\u2013subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.7.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-rxjs-event-emitter/assets/spfx-event-emitter.gif","alt":"ReactiveX (RxJs) Event Emitter Sample","slides":null}],"authors":[{"gitHubAccount":"VelinGeorgiev","company":"","pictureUrl":"https://github.com/VelinGeorgiev.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-rxjs-event-emitter",
+    "source": "pnp",
+    "title": "ReactiveX (RxJs) Event Emitter Sample",
+    "shortDescription": "This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish\u2013subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rxjs-event-emitter",
+    "longDescription": [
+      "This sample shows how we can use the ReactiveX (RxJs) library with the SharePoint Framework to communicate between web parts through broadcasting events utilizing the Publish\u2013subscribe pattern. It enables a web part or component to emit event (broadcast message) and that event is received by other web parts or components that have been subscribed to receive it. Please note this is custom implementation of the Publish\u2013subscribe pattern by using the ReactiveX (RxJs) library. The SPFx will nativelly support this in future without the need of custom implementation through new SPFx api called Event Aggregator, but it is still in Alpha."
+    ],
+    "creationDateTime": "2018-12-10",
+    "updateDateTime": "2018-12-10",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.7.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-rxjs-event-emitter/assets/spfx-event-emitter.gif",
+        "alt": "ReactiveX (RxJs) Event Emitter Sample"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "VelinGeorgiev",
+        "company": "",
+        "pictureUrl": "https://github.com/VelinGeorgiev.png",
+        "name": "Velin Georgiev"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

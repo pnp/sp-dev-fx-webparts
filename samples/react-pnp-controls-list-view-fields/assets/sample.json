@@ -1,1 +1,62 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-pnp-controls-list-view-fields","version":null,"source":"pnp","title":"PnP ListView with PnP Field Controls Web Part","shortDescription":"Sample web part to display PnP ListView control with column rendering using PnP Field Controls.","longDescription":["Sample web part to display PnP ListView control with column rendering using PnP Field Controls."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnp-controls-list-view-fields/assets/web-part.png","alt":"PnP ListView with PnP Field Controls Web Part","slides":null}],"authors":[{"gitHubAccount":"AJIXuMuK","company":"","pictureUrl":"https://github.com/AJIXuMuK.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-pnp-controls-list-view-fields",
+    "source": "pnp",
+    "title": "PnP ListView with PnP Field Controls Web Part",
+    "shortDescription": "Sample web part to display PnP ListView control with column rendering using PnP Field Controls.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnp-controls-list-view-fields",
+    "longDescription": [
+      "Sample web part to display PnP ListView control with column rendering using PnP Field Controls."
+    ],
+    "creationDateTime": "2020-03-10",
+    "updateDateTime": "2020-03-10",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "FieldTextRenderer, FieldDateRenderer, FieldLookupRenderer, FieldUrlRenderer, FieldTaxonomyRenderer"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-controls-list-view-fields/assets/web-part.png",
+        "alt": "PnP ListView with PnP Field Controls Web Part"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-pnp-controls-list-view-fields/assets/taxonomy.png?raw=true",
+        "alt": "PnP ListView with PnP Field Controls Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AJIXuMuK",
+        "company": "Sharepointalist",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/17036219?s=460\u0026u=b8e83fb70a90eae0c0e0078c206990785e1a5b6f\u0026v=4",
+        "name": "Alex Terentiev",
+        "twitter": "alexaterentiev"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

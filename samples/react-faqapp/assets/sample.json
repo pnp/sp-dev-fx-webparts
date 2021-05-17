@@ -1,1 +1,57 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-faqapp","version":null,"source":"pnp","title":"Frequently Asked Questions","shortDescription":"Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.","longDescription":["Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.2"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-faqapp/assets/FAQWebpart.png","alt":"Frequently Asked Questions","slides":null}],"authors":[{"gitHubAccount":"ashokswain7","company":"","pictureUrl":"https://github.com/ashokswain7.png"},{"gitHubAccount":"Abderahman88","company":"","pictureUrl":"https://github.com/Abderahman88.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-faqapp",
+    "source": "pnp",
+    "title": "Frequently Asked Questions",
+    "shortDescription": "Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faqapp",
+    "longDescription": [
+      "Allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages."
+    ],
+    "creationDateTime": "2020-10-28",
+    "updateDateTime": "2020-10-28",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqapp/assets/FAQWebpart.png",
+        "alt": "Frequently Asked Questions"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ashokswain7",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/26612087?s=460\u0026v=4",
+        "name": "Ashok Swain"
+      },
+      {
+        "gitHubAccount": "Abderahman88",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "name": "Abderahman Moujahid"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

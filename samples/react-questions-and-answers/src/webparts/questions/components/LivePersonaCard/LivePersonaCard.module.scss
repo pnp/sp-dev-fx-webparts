@@ -1,0 +1,18 @@
+.livePersonaCard {
+  color: inherit;
+
+
+}
+
+.noCoin {
+  :global(.ms-Persona) {
+    :global(.ms-Persona-coin) {
+      display:none;
+    }
+
+    :global(.ms-Persona-details) {
+      padding-left: 0px;
+    }
+  }
+
+}

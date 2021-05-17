@@ -1,1 +1,64 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-graph-evalurl","version":null,"source":"pnp","title":"Web part showing Url validation for SharePoint using Office Graph","shortDescription":"This sample contains a class that evaluates the url input of a text field against the Microsoft Graph.","longDescription":["This sample contains a class that evaluates the url input of a text field against the Microsoft Graph."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-evalurl/assets/url-graph-eval.gif","alt":"Web part showing Url validation for SharePoint using Office Graph","slides":null}],"authors":[{"gitHubAccount":"StfBauer","company":"","pictureUrl":"https://github.com/StfBauer.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-graph-evalurl",
+    "source": "pnp",
+    "title": "Web part showing Url validation for SharePoint using Office Graph",
+    "shortDescription": "This sample contains a class that evaluates the url input of a text field against the Microsoft Graph.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-evalurl",
+    "longDescription": [
+      "This sample contains a class that evaluates the url input of a text field against the Microsoft Graph."
+    ],
+    "creationDateTime": "2018-04-15",
+    "updateDateTime": "2018-04-15",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-evalurl/assets/url-graph-eval.gif",
+        "alt": "Web part showing Url validation for SharePoint using Office Graph"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-evalurl/assets/eval-web-after-site-collection.png?raw=true",
+        "alt": "Web part showing Url validation for SharePoint using Office Graph"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-evalurl/assets/evaluation-client-searching-for-site-collection.png?raw=true",
+        "alt": "Web part showing Url validation for SharePoint using Office Graph"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "StfBauer",
+        "company": "N8D",
+        "pictureUrl": "https://github.com/StfBauer.png",
+        "name": "Stefan Bauer",
+        "twitter": "stfbauer"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

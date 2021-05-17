@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-redux-async-immutablejs","version":null,"source":"pnp","title":"Using React, Redux and ImmutableJS","shortDescription":"SharePoint Framework web part which uses Redux to maintain a single state for the entire application and ImmutableJS to create performant state trees.","longDescription":["SharePoint Framework web part which uses Redux to maintain a single state for the entire application and ImmutableJS to create performant state trees."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://raw.githubusercontent.com/vman/sp-dev-fx-webparts/master/samples/react-redux-async-immutablejs/assets/react-redux-immutable.gif","alt":"Using React, Redux and ImmutableJS","slides":null}],"authors":[{"gitHubAccount":"vman","company":"","pictureUrl":"https://github.com/vman.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-redux-async-immutablejs",
+    "source": "pnp",
+    "title": "Using React, Redux and ImmutableJS",
+    "shortDescription": "SharePoint Framework web part which uses Redux to maintain a single state for the entire application and ImmutableJS to create performant state trees.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux-async-immutablejs",
+    "longDescription": [
+      "SharePoint Framework web part which uses Redux to maintain a single state for the entire application and ImmutableJS to create performant state trees."
+    ],
+    "creationDateTime": "2017-07-11",
+    "updateDateTime": "2017-07-11",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/vman/sp-dev-fx-webparts/master/samples/react-redux-async-immutablejs/assets/react-redux-immutable.gif",
+        "alt": "Using React, Redux and ImmutableJS"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "vman",
+        "company": "",
+        "pictureUrl": "https://github.com/vman.png",
+        "name": "Vardhaman Deshpande"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

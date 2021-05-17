@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-graph-schema-extensions","version":null,"source":"pnp","title":"Read / update MS Graph Custom Schema Extensions","shortDescription":"This sample shows how read and update a custom Schema extension in MS Graph. It shows how to create a custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update that data using an spfx web part.","longDescription":["This sample shows how read and update a custom Schema extension in MS Graph. It shows how to create a custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update that data using an spfx web part."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.5.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-schema-extensions/assets/webpart.png","alt":"Read / update MS Graph Custom Schema Extensions","slides":null}],"authors":[{"gitHubAccount":"luismanez","company":"","pictureUrl":"https://github.com/luismanez.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-graph-schema-extensions",
+    "source": "pnp",
+    "title": "Read / update MS Graph Custom Schema Extensions",
+    "shortDescription": "This sample shows how read and update a custom Schema extension in MS Graph. It shows how to create a custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update that data using an spfx web part.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-schema-extensions",
+    "longDescription": [
+      "This sample shows how read and update a custom Schema extension in MS Graph. It shows how to create a custom Schema extension in Graph to store custom data related to an Office 365 Group, and how we can read and update that data using an spfx web part."
+    ],
+    "creationDateTime": "2018-07-03",
+    "updateDateTime": "2018-07-03",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.5.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-schema-extensions/assets/webpart.png",
+        "alt": "Read / update MS Graph Custom Schema Extensions"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "luismanez",
+        "company": "ClearPeople",
+        "pictureUrl": "https://github.com/luismanez.png",
+        "name": "Luis Ma\u00F1ez"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

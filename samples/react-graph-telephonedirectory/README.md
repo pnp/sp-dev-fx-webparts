@@ -67,7 +67,7 @@ Description of the web part with possible additional details than in short summa
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
 * Detail List control from Fluent UI
-* Webpart Title control from PnP React
+* Web part Title control from PnP React
 * Microsoft Graph API
 * External API Integration with SharePoint Framework
 

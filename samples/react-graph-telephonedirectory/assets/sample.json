@@ -1,1 +1,65 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-graph-telephonedirectory","version":null,"source":"pnp","title":"Telephone Directory using React, Ms Graph and SPFx","shortDescription":"This is sample web part using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address. web part will fetch data from directory using Graph API and display in details list.","longDescription":["This is sample web part using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address. web part will fetch data from directory using Graph API and display in details list."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.11.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-telephonedirectory/assets/Preview.gif","alt":"Telephone Directory using React, Ms Graph and SPFx","slides":null}],"authors":[{"gitHubAccount":"dips365","company":"","pictureUrl":"https://github.com/dips365.png"},{"gitHubAccount":"a1mery","company":"","pictureUrl":"https://github.com/a1mery.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-graph-telephonedirectory",
+    "source": "pnp",
+    "title": "Telephone Directory using React, Ms Graph and SPFx",
+    "shortDescription": "This is sample web part using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address. web part will fetch data from directory using Graph API and display in details list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-telephonedirectory",
+    "longDescription": [
+      "This is sample web part using SPFx and MSGraph to fetch the users information based on First Name, Last Name and Email Address. web part will fetch data from directory using Graph API and display in details list."
+    ],
+    "creationDateTime": "2020-11-07",
+    "updateDateTime": "2020-11-07",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.11.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-telephonedirectory/assets/Preview.gif",
+        "alt": "Telephone Directory using React, Ms Graph and SPFx"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-telephonedirectory/assets/Capture.PNG?raw=true",
+        "alt": "Telephone Directory using React, Ms Graph and SPFx"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "dips365",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/40450958?s=460\u0026u=77f108fb56adbed4f87304f15ce71033df667aaf\u0026v=4",
+        "name": "Dipen Shah",
+        "twitter": "Dips_365"
+      },
+      {
+        "gitHubAccount": "a1mery",
+        "company": "",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/7100077?s=460\u0026v=4",
+        "name": "Aimery Thomas",
+        "twitter": "aimery_thomas"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

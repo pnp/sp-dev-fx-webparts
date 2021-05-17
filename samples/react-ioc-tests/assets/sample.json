@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-ioc-tests","version":null,"source":"pnp","title":"React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme","shortDescription":"This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part.","longDescription":["This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-ioc-tests/assets/preview.jpg","alt":"React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme","slides":null}],"authors":[{"gitHubAccount":"paulryan","company":"","pictureUrl":"https://github.com/paulryan.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-ioc-tests",
+    "source": "pnp",
+    "title": "React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme",
+    "shortDescription": "This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ioc-tests",
+    "longDescription": [
+      "This web part is provided as an example of implementing an IoC (Inversion of Control) pattern in the context of a SharePoint Framework web part."
+    ],
+    "creationDateTime": "2019-03-20",
+    "updateDateTime": "2019-03-20",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ioc-tests/assets/preview.jpg",
+        "alt": "React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "paulryan",
+        "company": "",
+        "pictureUrl": "https://github.com/paulryan.png",
+        "name": "Paul Ryan"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,44 @@
-{"name":"pnp-sp-dev-spfx-web-parts-handlebarsjs-webpack-loader","version":null,"source":"pnp","title":"Sample with Handlebars.js","shortDescription":"This sample demonstrate how to set up SPFX to use Handlebars through webpack loader.","longDescription":["This sample demonstrate how to set up SPFX to use Handlebars through webpack loader."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Handlebars"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://avatars2.githubusercontent.com/u/5503835?s=460\u0026v=4","alt":"Sample with Handlebars.js","slides":null}],"authors":[{"gitHubAccount":"StfBauer","company":"","pictureUrl":"https://github.com/StfBauer.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-handlebarsjs-webpack-loader",
+    "source": "pnp",
+    "title": "Sample with Handlebars.js",
+    "shortDescription": "This sample demonstrate how to set up SPFX to use Handlebars through webpack loader.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/handlebarsjs-webpack-loader",
+    "longDescription": [
+      "This sample demonstrate how to set up SPFX to use Handlebars through webpack loader."
+    ],
+    "creationDateTime": "2018-03-21",
+    "updateDateTime": "2018-03-21",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Other"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "StfBauer",
+        "company": "N8D",
+        "pictureUrl": "https://github.com/StfBauer.png",
+        "name": "Stefan Bauer",
+        "twitter": "stfbauer"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

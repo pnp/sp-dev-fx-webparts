@@ -1,4 +1,4 @@
-# SharePoint webpart sample with SSO
+# SharePoint web part sample with SSO
 
 ## Summary
 
@@ -48,7 +48,7 @@ This demo does not include any threat models and is designed for educational pur
 
 Solution|Author(s)
 --------|---------
-webpart | Bot Framework Discussions (msbots@service.microsoft.com) <br/> Stephan Bisser (@stephanbisser, bisser.io)
+web part | Bot Framework Discussions (msbots@service.microsoft.com) <br/> Stephan Bisser (@stephanbisser, bisser.io)
 bot | Bot Framework Discussions (msbots@service.microsoft.com)
 
 ## Version history

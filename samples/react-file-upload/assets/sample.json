@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-file-upload","version":null,"source":"pnp","title":"File Upload Web Part","shortDescription":"The file upload web part allowing users to upload multiple files to a document library or as item attachments.","longDescription":["The file upload web part allowing users to upload multiple files to a document library or as item attachments."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-file-upload/assets/SPFileUploadPreview.gif","alt":"File Upload Web Part","slides":null}],"authors":[{"gitHubAccount":"AhmadiRamin","company":"","pictureUrl":"https://github.com/AhmadiRamin.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-file-upload",
+    "source": "pnp",
+    "title": "File Upload Web Part",
+    "shortDescription": "The file upload web part allowing users to upload multiple files to a document library or as item attachments.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-file-upload",
+    "longDescription": [
+      "The file upload web part allowing users to upload multiple files to a document library or as item attachments."
+    ],
+    "creationDateTime": "2018-02-14",
+    "updateDateTime": "2018-02-14",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-file-upload/assets/SPFileUploadPreview.gif",
+        "alt": "File Upload Web Part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AhmadiRamin",
+        "company": "Content and Cloud",
+        "pictureUrl": "https://github.com/AhmadiRamin.png",
+        "name": "Ramin Ahmadi",
+        "twitter": "raminahmadi1986"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

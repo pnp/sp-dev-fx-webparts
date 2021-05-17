@@ -1,1 +1,65 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-dynamics-crm-api","version":null,"source":"pnp","title":"Using Dynamics CRM API","shortDescription":"This sample shows how to consume Dynamics CRM API using AadTokenProvider class.","longDescription":["This sample shows how to consume Dynamics CRM API using AadTokenProvider class."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-dynamics-crm-api/assets/screenshot.gif","alt":"Using Dynamics CRM API","slides":null}],"authors":[{"gitHubAccount":"AhmadiRamin","company":"","pictureUrl":"https://github.com/AhmadiRamin.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-dynamics-crm-api",
+    "source": "pnp",
+    "title": "Using Dynamics CRM API",
+    "shortDescription": "This sample shows how to consume Dynamics CRM API using AadTokenProvider class.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamics-crm-api",
+    "longDescription": [
+      "This sample shows how to consume Dynamics CRM API using AadTokenProvider class."
+    ],
+    "creationDateTime": "2020-07-12",
+    "updateDateTime": "2020-07-12",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSPERSONALAPP",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dynamics-crm-api/assets/screenshot.gif",
+        "alt": "Using Dynamics CRM API"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "AhmadiRamin",
+        "company": "Content and Cloud",
+        "pictureUrl": "https://github.com/AhmadiRamin.png",
+        "name": "Ramin Ahmadi",
+        "twitter": "raminahmadi1986"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

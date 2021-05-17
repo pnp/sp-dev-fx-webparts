@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-functional-stateful-component","version":null,"source":"pnp","title":"React Functional Stateful Component web part","shortDescription":"This web part demonstrates building a React functional component that includes state, using the recently introduced React Hooks feature. The example web part renders a number to Roman numerals conversion tool.","longDescription":["This web part demonstrates building a React functional component that includes state, using the recently introduced React Hooks feature. The example web part renders a number to Roman numerals conversion tool."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.2"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-functional-stateful-component/Screenshot.png","alt":"React Functional Stateful Component web part","slides":null}],"authors":[{"gitHubAccount":"SPDoctor","company":"","pictureUrl":"https://github.com/SPDoctor.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-functional-stateful-component",
+    "source": "pnp",
+    "title": "React Functional Stateful Component web part",
+    "shortDescription": "This web part demonstrates building a React functional component that includes state, using the recently introduced React Hooks feature. The example web part renders a number to Roman numerals conversion tool.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-stateful-component",
+    "longDescription": [
+      "This web part demonstrates building a React functional component that includes state, using the recently introduced React Hooks feature. The example web part renders a number to Roman numerals conversion tool."
+    ],
+    "creationDateTime": "2019-06-05",
+    "updateDateTime": "2019-06-05",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-stateful-component/Screenshot.png",
+        "alt": "React Functional Stateful Component web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "SPDoctor",
+        "company": "Flow Simulation Ltd.",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/10207194?s=460\u0026v=4",
+        "name": "Bill Ayers",
+        "twitter": "SPDoctor"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

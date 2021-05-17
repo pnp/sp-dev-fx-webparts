@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-multipage","version":null,"source":"pnp","title":"Multi-page client-side web part","shortDescription":"Sample SharePoint Framework client-side web parts built using React illustrating building multi-page web parts.","longDescription":["Sample SharePoint Framework client-side web parts built using React illustrating building multi-page web parts."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multipage/assets/poll-preview.gif","alt":"Multi-page client-side web part","slides":null}],"authors":[{"gitHubAccount":"waldekmastykarz","company":"","pictureUrl":"https://github.com/waldekmastykarz.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-multipage",
+    "source": "pnp",
+    "title": "Multi-page client-side web part",
+    "shortDescription": "Sample SharePoint Framework client-side web parts built using React illustrating building multi-page web parts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multipage",
+    "longDescription": [
+      "Sample SharePoint Framework client-side web parts built using React illustrating building multi-page web parts."
+    ],
+    "creationDateTime": "2017-05-01",
+    "updateDateTime": "2017-05-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multipage/assets/poll-preview.gif",
+        "alt": "Multi-page client-side web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "waldekmastykarz",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/waldekmastykarz.png",
+        "name": "Waldek Mastykarz",
+        "twitter": "waldekm"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

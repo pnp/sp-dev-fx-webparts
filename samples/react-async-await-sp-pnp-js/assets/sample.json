@@ -1,1 +1,63 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-async-await-sp-pnp-js","version":null,"source":"pnp","title":"Using @pnp/js with Async / Await","shortDescription":"This web part demonstrates how to use PnPJS with Async functions into the SharePoint Framework as well as integrating PnP JS and SPFx Logging systems. Real example querying SharePoint library to show document sizes.","longDescription":["This web part demonstrates how to use PnPJS with Async functions into the SharePoint Framework as well as integrating PnP JS and SPFx Logging systems. Real example querying SharePoint library to show document sizes."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-async-await-sp-pnp-js/assets/async-await-sp-pnp-js.png","alt":"Using @pnp/js with Async / Await","slides":null}],"authors":[{"gitHubAccount":"jquinzamora","company":"","pictureUrl":"https://github.com/jquinzamora.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-async-await-sp-pnp-js",
+    "source": "pnp",
+    "title": "Using @pnp/js with Async / Await",
+    "shortDescription": "This web part demonstrates how to use PnPJS with Async functions into the SharePoint Framework as well as integrating PnP JS and SPFx Logging systems. Real example querying SharePoint library to show document sizes.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-async-await-sp-pnp-js",
+    "longDescription": [
+      "This web part demonstrates how to use PnPJS with Async functions into the SharePoint Framework as well as integrating PnP JS and SPFx Logging systems. Real example querying SharePoint library to show document sizes."
+    ],
+    "creationDateTime": "2018-07-20",
+    "updateDateTime": "2018-07-20",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-async-await-sp-pnp-js/assets/async-await-sp-pnp-js.png",
+        "alt": "Using @pnp/js with Async / Await"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-async-await-sp-pnp-js/assets/async-await-sp-pnp-js-2.png?raw=true",
+        "alt": "Using @pnp/js with Async / Await"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-async-await-sp-pnp-js/assets/pnp-js-logging-spfx.png?raw=true",
+        "alt": "Using @pnp/js with Async / Await"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "jquintozamora",
+        "company": "",
+        "pictureUrl": "https://github.com/jquintozamora.png",
+        "name": "Jose Quinto"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

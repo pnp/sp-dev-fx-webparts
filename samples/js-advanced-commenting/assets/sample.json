@@ -1,1 +1,56 @@
-{"name":"pnp-sp-dev-spfx-web-parts-js-advanced-commenting","version":null,"source":"pnp","title":"Advanced Comments Box","shortDescription":"This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments.","longDescription":["This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"jQuery"},{"key":"SPFX-VERSION","value":"1.9.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif","alt":"Advanced Comments Box","slides":null}],"authors":[{"gitHubAccount":"sudharsank","company":"","pictureUrl":"https://github.com/sudharsank.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-advanced-commenting",
+    "source": "pnp",
+    "title": "Advanced Comments Box",
+    "shortDescription": "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-advanced-commenting",
+    "longDescription": [
+      "This component is developed for the advanced usage of commenting the page or article etc. Page Comments lists will be created to store the comments."
+    ],
+    "creationDateTime": "2020-02-05",
+    "updateDateTime": "2020-02-05",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "jQuery"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.9.1"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldSliderWithCallout, PropertyFieldToggleWithCallout, PropertyFieldListPicker"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-advanced-commenting/assets/Advanced-Comments-Box.gif",
+        "alt": "Advanced Comments Box"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "sudharsank",
+        "company": "NTT Digital Business Solutions",
+        "pictureUrl": "https://github.com/sudharsank.png",
+        "name": "Sudharsan Kesavanarayanan",
+        "twitter": "sudharsank"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

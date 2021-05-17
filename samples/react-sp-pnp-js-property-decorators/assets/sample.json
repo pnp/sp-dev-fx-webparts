@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-sp-pnp-js-property-decorators","version":null,"source":"pnp","title":"Using PnP JS Core custom objects with @select and @expand decorators","shortDescription":"This web part demonstrates how to use PnP JS Core Custom Objects with @select and @expand TypeScript decorators.","longDescription":["This web part demonstrates how to use PnP JS Core Custom Objects with @select and @expand TypeScript decorators."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png","alt":"Using PnP JS Core custom objects with @select and @expand decorators","slides":null}],"authors":[{"gitHubAccount":"jquinzamora","company":"","pictureUrl":"https://github.com/jquinzamora.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sp-pnp-js-property-decorators",
+    "source": "pnp",
+    "title": "Using PnP JS Core custom objects with @select and @expand decorators",
+    "shortDescription": "This web part demonstrates how to use PnP JS Core Custom Objects with @select and @expand TypeScript decorators.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-pnp-js-property-decorators",
+    "longDescription": [
+      "This web part demonstrates how to use PnP JS Core Custom Objects with @select and @expand TypeScript decorators."
+    ],
+    "creationDateTime": "2017-07-02",
+    "updateDateTime": "2017-07-02",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+        "alt": "Using PnP JS Core custom objects with @select and @expand decorators"
+      }
+    ],
+   "authors": [
+      {
+        "gitHubAccount": "jquintozamora",
+        "company": "",
+        "pictureUrl": "https://github.com/jquintozamora.png",
+        "name": "Jose Quinto"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

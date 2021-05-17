@@ -1,1 +1,51 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-mobx","version":null,"source":"pnp","title":"Using React and Mobx","shortDescription":"Sample web part implementation that uses Mobx to keep track of its state.","longDescription":["Sample web part implementation that uses Mobx to keep track of its state."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"drop5"}],"thumbnails":[{"type":"image","order":100,"url":"https://camo.githubusercontent.com/1bfb94ba2675eec1c794cfea81bdde41b964268f/68747470733a2f2f692e6779617a6f2e636f6d2f65366631393033623961396338323031393835636432356363316665323862632e676966","alt":"Using React and Mobx","slides":null}],"authors":[{"gitHubAccount":"kmees","company":"","pictureUrl":"https://github.com/kmees.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-mobx",
+    "source": "pnp",
+    "title": "Using React and Mobx",
+    "shortDescription": "Sample web part implementation that uses Mobx to keep track of its state.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mobx",
+    "longDescription": [
+      "Sample web part implementation that uses Mobx to keep track of its state."
+    ],
+    "creationDateTime": "2016-11-04",
+    "updateDateTime": "2016-11-04",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "drop5"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://camo.githubusercontent.com/1bfb94ba2675eec1c794cfea81bdde41b964268f/68747470733a2f2f692e6779617a6f2e636f6d2f65366631393033623961396338323031393835636432356363316665323862632e676966",
+        "alt": "Using React and Mobx"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "kmees",
+        "company": "",
+        "pictureUrl": "https://github.com/kmees.png",
+        "name": "Kevin Mees"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

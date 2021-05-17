@@ -1,1 +1,59 @@
-{"name":"pnp-sp-dev-spfx-web-parts-angularelements-helloworld","version":null,"source":"pnp","title":"Angular Elements in SharePoint Framework","shortDescription":"Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.","longDescription":["Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Angular"},{"key":"SPFX-VERSION","value":"1.4.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png","alt":"Angular Elements in SharePoint Framework","slides":null}],"authors":[{"gitHubAccount":"waldekmastykarz","company":"","pictureUrl":"https://github.com/waldekmastykarz.png"},{"gitHubAccount":"sebastienlevert","company":"","pictureUrl":"https://github.com/sebastienlevert.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-angularelements-helloworld",
+    "source": "pnp",
+    "title": "Angular Elements in SharePoint Framework",
+    "shortDescription": "Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angularelements-helloworld",
+    "longDescription": [
+      "Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework."
+    ],
+    "creationDateTime": "2018-06-01",
+    "updateDateTime": "2018-06-01",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Angular"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
+        "alt": "Angular Elements in SharePoint Framework"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "waldekmastykarz",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/waldekmastykarz.png",
+        "name": "Waldek Mastykarz",
+        "twitter": "waldekm"
+      },
+      {
+        "gitHubAccount": "sebastienlevert",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/sebastienlevert.png",
+        "name": "S\u00E9bastien Levert",
+        "twitter": "sebastienlevert"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

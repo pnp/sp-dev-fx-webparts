@@ -1,1 +1,52 @@
-{"name":"pnp-sp-dev-spfx-web-parts-angular-todo","version":null,"source":"pnp","title":"Angular client-side web part","shortDescription":"Sample Web Part illustrating using Angular with the SharePoint Framework.","longDescription":["Sample Web Part illustrating using Angular with the SharePoint Framework."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"Angular"},{"key":"SPFX-VERSION","value":"GA"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-todo/assets/preview.png","alt":"Angular client-side web part","slides":null}],"authors":[{"gitHubAccount":"waldekmastykarz","company":"","pictureUrl":"https://github.com/waldekmastykarz.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-angular-todo",
+    "source": "pnp",
+    "title": "Angular client-side web part",
+    "shortDescription": "Sample Web Part illustrating using Angular with the SharePoint Framework.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-todo",
+    "longDescription": [
+      "Sample Web Part illustrating using Angular with the SharePoint Framework."
+    ],
+    "creationDateTime": "2017-03-10",
+    "updateDateTime": "2017-03-10",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Angular"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "GA"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-todo/assets/preview.png",
+        "alt": "Angular client-side web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "waldekmastykarz",
+        "company": "Microsoft",
+        "pictureUrl": "https://github.com/waldekmastykarz.png",
+        "name": "Waldek Mastykarz",
+        "twitter": "waldekm"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

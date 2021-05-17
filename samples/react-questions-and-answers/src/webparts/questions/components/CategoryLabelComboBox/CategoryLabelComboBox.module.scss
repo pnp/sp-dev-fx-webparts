@@ -1,0 +1,19 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+.catLabelContainer {
+  display: flex;
+}
+
+.fontIcon {
+  height: 15px;
+  width: 15px;
+  font-size: 15px;
+  margin-left: 15px;
+  cursor: pointer;
+  vertical-align: bottom;
+  padding-top: 7px;
+}
+
+.tooltip {
+  display: inline-block;
+}

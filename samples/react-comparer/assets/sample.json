@@ -1,1 +1,106 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-comparer","version":null,"source":"pnp","title":"Comparer with File Picker","shortDescription":"Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker.","longDescription":["Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.7.1"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-comparer/assets/ComparerWebPart.gif","alt":"Comparer with File Picker","slides":null}],"authors":[{"gitHubAccount":"hugoabernier","company":"","pictureUrl":"https://github.com/hugoabernier.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-comparer",
+    "source": "pnp",
+    "title": "Comparer with File Picker",
+    "shortDescription": "Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-comparer",
+    "longDescription": [
+      "Allows users to compare Before and After pictures, with a draggable slider. Implements a custom file picker."
+    ],
+    "creationDateTime": "2019-01-27",
+    "updateDateTime": "2019-01-27",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.7.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-comparer/assets/ComparerWebPart.gif",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/FluentSlider.gif?raw=true",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/FromLinkTab.gif?raw=true",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/OneDriveTab.gif?raw=true",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/RecentTab.gif?raw=true",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/SitesTab.gif?raw=true",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/UploadTab.gif?raw=true",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/WebSearch.gif?raw=true",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 108,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/WebSearchNoAPI.png?raw=true",
+        "alt": "Comparer with File Picker"
+      },
+      {
+        "type": "image",
+        "order": 109,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-comparer/assets/WebSearchTab.gif?raw=true",
+        "alt": "Comparer with File Picker"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "hugoabernier",
+        "company": "Tahoe Ninjas",
+        "pictureUrl": "https://github.com/hugoabernier.png",
+        "name": "Hugo Bernier",
+        "twitter": "bernierh"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,1 +1,231 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-jest-testing","version":null,"source":"pnp","title":"React Jest Testing sample","shortDescription":"This sample uses the popular Jest Testing Framework with a SPFx client side solution. It is a SPFx-Jest-Enzyme-Sinon starter kit so you can start writing and debugging unit tests in typescript for your SPFx solution. The setup includes unit tests examples, code coverage reports in different formats, visual studio code unit test debug configurations for typescript, setting a coverage threshold (gates) for continuous integration and continuous deployment scenarios.","longDescription":["This sample uses the popular Jest Testing Framework with a SPFx client side solution. It is a SPFx-Jest-Enzyme-Sinon starter kit so you can start writing and debugging unit tests in typescript for your SPFx solution. The setup includes unit tests examples, code coverage reports in different formats, visual studio code unit test debug configurations for typescript, setting a coverage threshold (gates) for continuous integration and continuous deployment scenarios."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.8.2"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png","alt":"React Jest Testing sample","slides":null}],"authors":[{"gitHubAccount":"VelinGeorgiev","company":"","pictureUrl":"https://github.com/VelinGeorgiev.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-jest-testing",
+    "source": "pnp",
+    "title": "React Jest Testing sample",
+    "shortDescription": "This sample uses the popular Jest Testing Framework with a SPFx client side solution. It is a SPFx-Jest-Enzyme-Sinon starter kit so you can start writing and debugging unit tests in typescript for your SPFx solution. The setup includes unit tests examples, code coverage reports in different formats, visual studio code unit test debug configurations for typescript, setting a coverage threshold (gates) for continuous integration and continuous deployment scenarios.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-jest-testing",
+    "longDescription": [
+      "This sample uses the popular Jest Testing Framework with a SPFx client side solution. It is a SPFx-Jest-Enzyme-Sinon starter kit so you can start writing and debugging unit tests in typescript for your SPFx solution. The setup includes unit tests examples, code coverage reports in different formats, visual studio code unit test debug configurations for typescript, setting a coverage threshold (gates) for continuous integration and continuous deployment scenarios."
+    ],
+    "creationDateTime": "2019-06-23",
+    "updateDateTime": "2019-06-23",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.8.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-add-artifacts-to-release.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-add-job.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-add-release-task.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-all-build-steps-done.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-appcatalog.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-bash-args.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-bash.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 108,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-change-name.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 109,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-ci-enabled.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 110,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-edit-build.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 111,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-edit-continious.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 112,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-goto-build.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 113,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-goto-buld.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 114,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-new-project.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 115,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-new-release.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 116,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-node.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 117,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-node8.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 118,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-office365cli-script.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 119,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-overview.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 120,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-repo-config.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 121,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-repos.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 122,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-select-repo.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 123,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-select-template.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 124,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-spfx.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 125,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-success.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 126,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-suggest.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 127,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-ubuntu.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 128,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github-vars.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 129,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/config-Azure-Pipelines-in-Github.PNG?raw=true",
+        "alt": "React Jest Testing sample"
+      },
+      {
+        "type": "image",
+        "order": 130,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-jest-testing/assets/SPFx-jest-coverage.png?raw=true",
+        "alt": "React Jest Testing sample"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "VelinGeorgiev",
+        "company": "",
+        "pictureUrl": "https://github.com/VelinGeorgiev.png",
+        "name": "Velin Georgiev"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

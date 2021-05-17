@@ -30,6 +30,7 @@ Version|Date|Comments
 1.0|May 15, 2018|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -47,7 +48,7 @@ Some people might say, well but its only 4kb of memory, and 100 users, well I ha
 
 ### Scenario:
 
-Any application at some point will need to read configuration variables from somewhere, imagine a SPFx webpart which is a complex SPA with many screens and forms where you need to rely on a configuration Sharepoint List, where you store information like: Number of Items per page, Max Number of Connections, Timeouts, Max Number of devices allowd, and things like that.
+Any application at some point will need to read configuration variables from somewhere, imagine a SPFx web part which is a complex SPA with many screens and forms where you need to rely on a configuration SharePoint List, where you store information like: Number of Items per page, Max Number of Connections, Timeouts, Max Number of devices allowd, and things like that.
 
 In this scenario it makes sense to build a class that will allow you easy retrieval of those values without you having to write code to retrieve the values in all screens or forms on the SPA.
 
@@ -56,6 +57,7 @@ It is a poor practice to repeat configuration access code everywhere in the syst
 For this sample only one file need to be added and the .tsx file modified to use the Singleton Pattern.
 
 ### ConfigurationManager.ts
+
 ```typescript
 class ConfigurationManager {
     private static instance: ConfigurationManager;

@@ -61,6 +61,7 @@ Version|Date|Comments
 
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 
@@ -85,7 +86,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
     - the titles webs in current sitecollection 
     - titles of the lists in the selected web 
     - fields of a selected list
-* Use of a third party control(sp-client-custom-fields) for selecting webpart foregroud and background colors.
+* Use of a third party control(sp-client-custom-fields) for selecting web part foreground and background colors.
 * Use of switch, slider controls to configure slider speed and auto scrolling.
 * Using a javascript slider. 
 * Fetching the user details from User Profile service like user designation, user profile image. 

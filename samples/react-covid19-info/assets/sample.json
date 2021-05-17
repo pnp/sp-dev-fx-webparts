@@ -1,1 +1,57 @@
-{"name":"pnp-sp-dev-spfx-web-parts-react-covid19-info","version":null,"source":"pnp","title":"COVID 19 information web part","shortDescription":"This web part displays info about the COVID-19 virus for a given country.","longDescription":["This web part displays info about the COVID-19 virus for a given country."],"products":["SharePoint","Office"],"categories":[""],"metadata":[{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.10.0"}],"thumbnails":[{"type":"image","order":100,"url":"https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-covid19-info/assets/covid-counter.gif","alt":"COVID 19 information web part","slides":null}],"authors":[{"gitHubAccount":null,"company":"","pictureUrl":"https://github.com/.png"}],"references":[]}
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-covid19-info",
+    "source": "pnp",
+    "title": "COVID 19 information web part",
+    "shortDescription": "This web part displays info about the COVID-19 virus for a given country.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-covid19-info",
+    "longDescription": [
+      "This web part displays info about the COVID-19 virus for a given country."
+    ],
+    "creationDateTime": "2020-03-25",
+    "updateDateTime": "2020-03-25",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-covid19-info/assets/covid-counter.gif",
+        "alt": "COVID 19 information web part"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-covid19-info/assets/Langing-page-screenshot.png?raw=true",
+        "alt": "COVID 19 information web part"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "agtenr",
+        "company": "",
+        "pictureUrl": "https://github.com/agtenr.png",
+        "name": "Robin Agten"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]
