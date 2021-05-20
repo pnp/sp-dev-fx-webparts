@@ -9,8 +9,10 @@ import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-reac
 import { AadHttpClient } from "@microsoft/sp-http";
 import { ITheme, mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { MgtFileList, LocalizationHelper } from '@microsoft/mgt';
 
 const theme: ITheme = getTheme();
 const { palette, fonts } = theme;
@@ -99,12 +101,13 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
   public _pageSize: number;
   public _breadcrumbItem: IBreadcrumbItem[] = [];
   public _customStyle: string;
-
   public _fileExtensions: string[] = null;
+  public flref = React.createRef<MgtFileList>();
+
   constructor(props: IOneDriveFinderProps, state: IOneDriveFinderState) {
     super(props);
-
     // Initialize the state of the component
+
     this.state = {
       breadcrumbItem: [],
       pageSize: 50,
@@ -115,7 +118,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
       customStyle: "",
       searchDrive: "",
       dialogFileStatus: false,
-      dialogFile: null
+      dialogFile: null,
     };
     this.getDomainData();
   }
@@ -167,10 +170,30 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
         this.setState({
           customStyle: styles.mgtfilelist
         });
+        LocalizationHelper.strings = {
+          _components: {
+            'file-list': {
+              showMoreSubtitle: 'Take a pause ☕ and show more'
+            },
+            'file': {
+              modifiedSubtitle: 'Once upon a time in this day ',
+            }
+          }
+        };
       } else {
         this.setState({
           customStyle: selectedOption.text
         });
+        LocalizationHelper.strings = {
+          _components: {
+            'file-list': {
+              showMoreSubtitle: 'Show more items'
+            },
+            'file': {
+              modifiedSubtitle: 'Modified ',
+            }
+          }
+        };
       }
     };
 
@@ -210,6 +233,7 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
     else {
       this._fileExtensions = null;
     }
+
     return (
       <div>
         <div className={styles.pageWrapper}>
@@ -273,10 +297,15 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
                 onChange={checkFileExtensions}
                 styles={dropdownFilterStyles}
               />
+
             </div>
           </div>
         </div>
         <div>
+          <IconButton iconProps={{ iconName: 'Refresh' }} text="Refresh cache" onClick={this.refreshMGTControl} allowDisabledFocus disabled={false} checked={false} ></IconButton>
+        </div>
+        <div>
+
           <Breadcrumb
             items={this._breadcrumbItem}
             maxDisplayedItems={10}
@@ -285,29 +314,35 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
           />
           {(this.state.breadcrumbItem.length > 0) &&
             <Stack tokens={stackTokens}>
-              <SearchBox placeholder="Search Drive" onSearch={checkSearchDrive} onClear={checkClear} />
+              <SearchBox style={{ width: "90%" }} placeholder="Search Drive" onSearch={checkSearchDrive} onClear={checkClear} />
             </Stack>
           }
           {(this.state.itemID != "" && this.state.searchDrive == "") &&
             <FileList
+              ref={this.flref}
               className={this._customStyle}
               fileExtensions={this._fileExtensions}
               pageSize={this._pageSize}
               siteId={this._siteID}
               itemId={this._itemID}
               itemClick={this.manageFolder}
-            ></FileList>
+            >
+            </FileList>
           }
           {(this.state.searchDrive != "") &&
             <FileList
+
               className={this._customStyle}
               fileExtensions={this._fileExtensions}
               pageSize={this._pageSize}
               fileListQuery={searchDrive}
               itemClick={selectFile}
-            ></FileList>
+            >
+            </FileList>
           }
           <DialogFile
+
+            className={this._customStyle}
             open={this.state.dialogFileStatus}
             fileItem={this.state.dialogFile}
             onClose={() => {
@@ -321,12 +356,17 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
     );
   }
 
+  private refreshMGTControl = (): void => {
+    this.flref.current.reload(true);
+  }
+
   /**
    * 
    * @param e 
    * Capture file or folder and manages breadcrumb
    */
   private manageFolder = (e: any) => {
+    console.log(e.detail);
     if (e.detail.folder != undefined) {
       this._breadcrumbItem.push({
         text: e.detail.name,
@@ -355,7 +395,6 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
         breadcrumbItem: this._breadcrumbItem
       });
     } else {
-      console.log(e.detail);
       this.setState({
         dialogFileStatus: true,
         dialogFile: e.detail,
@@ -367,8 +406,8 @@ export default class OneDriveFinder extends React.Component<IOneDriveFinderProps
     return graphData.id;
   }
 
-  private getOneDriveRootFolderID = async (key) => {
-    let graphData: any = await this.getGraphContent("https://graph.microsoft.com/v1.0/me/drive/items/" + key + "?$select=id");
+  private getOneDriveRootFolderID = async (ItemId) => {
+    let graphData: any = await this.getGraphContent("https://graph.microsoft.com/v1.0/me/drive/items/" + ItemId + "?$select=id");
     return graphData.id;
   }
 
