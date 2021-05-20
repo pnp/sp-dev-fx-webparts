@@ -114,12 +114,13 @@ The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Cal
 
 Solution|Author(s)
 --------|---------
-Calendar Web PArt|[Mohammed Amer](https://www.linkedin.com/in/mohammad3mer/) ([@https://twitter.com/Mohammad3mer](https://twitter.com/Mohammad3mer))
-Calendar Web Part|Abderahman Moujahid
-Calendar Web Part|Hugo Bernier ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
-Calendar Web Part|João Mendes
-Calendar Web Part|Mohamed Derhalli
-Calendar Web Part|Nanddeep Nachan ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
+Calendar Web Part|[Abderahman Moujahid](https://github.com/Abderahman88)
+Calendar Web Part|[Eli H. Schei](https://github.com/Eli-Schei)
+Calendar Web Part|[Hugo Bernier](https://github.com/hugoabernier) ([@bernier](https://twitter.com/bernierh), [Tahoe Ninjas](https://tahoeninjas.blog/))
+Calendar Web Part|[João Mendes](https://github.com/joaojmendes)
+Calendar Web Part|[Mohamed Derhalli](https://github.com/derhallim)
+Calendar Web PArt|[Mohammed Amer](https://www.linkedin.com/in/mohammad3mer/) ([@Mohammad3mer](https://twitter.com/Mohammad3mer))
+Calendar Web Part|[Nanddeep Nachan](https://github.com/nanddeepn) ([@NanddeepNachan](https://twitter.com/NanddeepNachan))
 
 ## Version history
 
@@ -136,12 +137,8 @@ Version|Date|Comments
 1.0.8|December 24, 2020|Fixed timezone difference (#1646)
 1.0.9|March 16, 2021|Fixed issue deleting events (#1773)
 1.0.10|March 27, 2021|Updated prompt message when deleting single v/s multi-event.
+1.0.11|May 10, 2021|Optimized page refresh using local storage
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
 
 ## Minimal Path to Awesome
 
@@ -152,5 +149,22 @@ Version|Date|Comments
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
   - Add to **AppCatalog** and deploy
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+
+## Support
+
+We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@hugoabernier,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@hugoabernier,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-calendar&authors=@Abderahman88,%20@Eli-Schei,%20@hugoabernier,%20@joaojmendes,%20@derhallim,%20@nanddeepn,%20@mohammadamer&title=react-calendar%20-%20).
+
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-calendar" />
