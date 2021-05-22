@@ -1,8 +1,18 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "react-pagecontributors-client-side-solution",
     "id": "1c18830a-4c18-4b82-a571-77863b19c66d",
-    "version": "1.0.0.0"
+    "version": "1.0.0.0",
+    "developer": {
+      "name": "Contoso",
+      "privacyUrl": "https://contoso.com/privacy",
+      "termsOfUseUrl": "https://contoso.com/terms-of-use",
+      "websiteUrl": "https://contoso.com/my-app",
+      "mpnId": "000000"
+    },
+    "isDomainIsolated": false,
+    "includeClientSideAssets": true
   },
   "paths": {
     "zippedPackage": "solution/react-pagecontributors.sppkg"
