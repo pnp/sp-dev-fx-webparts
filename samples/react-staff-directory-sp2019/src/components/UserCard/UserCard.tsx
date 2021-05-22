@@ -4,21 +4,21 @@ import {
   Persona,
   PersonaSize,
   Stack,
-  Label,
   FontIcon,
   Text,
   Link,
   ITextFieldStyles,
   IPersonaProps,
 } from "office-ui-fabric-react";
-import { AppContext, currentSiteTheme } from "../../common/AppContext";
+import { AppContext } from "../../common/AppContext";
 import { ActionButton } from "office-ui-fabric-react";
 import { IAppContext } from "../../common/IAppContext";
 import { IUserCardProps } from "./IUserCardProps";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {Theme} from 'spfx-uifabric-themes';
 
 export const UserCard = (props: IUserCardProps):JSX.Element => {
-  const { userData, updateUsersPresence } = props;
+  const { userData } = props;
   const _context: IAppContext = React.useContext(AppContext);
 
   const [expandIcon, setExpandIcon] = React.useState("ChevronDownSmall");
@@ -31,7 +31,7 @@ export const UserCard = (props: IUserCardProps):JSX.Element => {
       marginTop: 15,
       borderBottomStyle: "solid",
       borderWidth: 1,
-      borderBottomColor: window.__themeState__.theme.themeLighter
+      borderBottomColor: window.__themeState__.theme.neutralLighterAlt
     //  borderBottomColor: _context.themeVariant?.palette?.neutralLighterAlt,
 
     },
@@ -351,7 +351,7 @@ export const UserCard = (props: IUserCardProps):JSX.Element => {
             </div>
 
             {props.userAttributes.length > 0 &&
-              props.userAttributes.map((attribute, i) => {
+              props.userAttributes.map((attribute) => {
                 switch (attribute) {
                   case "mobilePhone":
                     return (

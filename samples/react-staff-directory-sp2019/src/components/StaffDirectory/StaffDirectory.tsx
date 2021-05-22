@@ -306,6 +306,7 @@ console.log(currentSiteTheme);
     });
     try {
        const { currentPage } = state;
+       console.log('page',_spResults.current);
       _spResults.current = await _spResults.current.getPage(currentPage +1 )
       const _newlistUsers = listUsers.concat(await manpingUserProperties(_spResults.current));
 
@@ -381,6 +382,7 @@ console.log(currentSiteTheme);
                   `PreferredName:${selectedItem.text.trim()}`,
                   props.pageSize
                 );
+             
                 const _totalPages: number = getTotalPages(_spResults.current.TotalRows,props.pageSize );
                 setState({
                   ...state,
@@ -432,7 +434,7 @@ console.log(currentSiteTheme);
                   </Stack>
                 </>
               )}
-              {state.totalPages > 1 && (
+              {state.totalPages > 1 && state.currentPage < state.totalPages && (
                 <Stack
                   horizontal
                   horizontalAlign="end"

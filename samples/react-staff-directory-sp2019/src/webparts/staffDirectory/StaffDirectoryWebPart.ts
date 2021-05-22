@@ -126,10 +126,6 @@ export default class StaffDirectoryWebPart extends BaseClientSideWebPart<IStaffD
                         text: "Mobile Phone",
                       },
                       {
-                        key: "employeeId",
-                        text: "Employee Id"
-                      },
-                      {
                         key: "imAddresses",
                         text: "IMS Address"
                       },
