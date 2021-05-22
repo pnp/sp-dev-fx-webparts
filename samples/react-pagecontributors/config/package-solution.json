@@ -4,12 +4,13 @@
     "name": "react-pagecontributors-client-side-solution",
     "id": "1c18830a-4c18-4b82-a571-77863b19c66d",
     "version": "1.0.0.0",
+    "skipFeatureDeployment": true,
     "developer": {
-      "name": "Contoso",
-      "privacyUrl": "https://contoso.com/privacy",
-      "termsOfUseUrl": "https://contoso.com/terms-of-use",
-      "websiteUrl": "https://contoso.com/my-app",
-      "mpnId": "000000"
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
     },
     "isDomainIsolated": false,
     "includeClientSideAssets": true
