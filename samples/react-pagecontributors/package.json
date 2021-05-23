@@ -11,7 +11,7 @@
     "office-ui-fabric-react": "7.156.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "sp-pnp-js": "^3.0.10"
+    "@pnp/sp": "^2.5.0"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.7": "0.2.3",
