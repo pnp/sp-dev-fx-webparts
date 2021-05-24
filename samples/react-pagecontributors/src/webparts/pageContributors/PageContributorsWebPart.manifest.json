@@ -5,7 +5,7 @@
   "componentType": "WebPart",
   "version": "1.0.0",
   "manifestVersion": 2,
-  "requiresCustomScript": true,
+  "requiresCustomScript": false,
   "supportedHosts": ["SharePointWebPart"],
 
   "preconfiguredEntries": [{
