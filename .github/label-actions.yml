@@ -30,7 +30,9 @@ status:node-compatibility:
   comment: >
     Thank you for your issue. It looks like the web part sample you're trying to use is not compatible with the version of Node.js that you're running in your environment.
     
+    
     Please refer to the [SPFx Compatibility Matrix](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/compatibility) to make sure that you're using a version of Node.js that is compatible with the version of SPFx the sample uses.
+    
     
     We'll close this issue, but if you run into further issues after you have made changes to your environment, please do not hesitate to open a new issue so we can help you further.
   # Close the issue
