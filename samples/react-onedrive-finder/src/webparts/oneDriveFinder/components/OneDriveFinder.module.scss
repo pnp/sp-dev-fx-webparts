@@ -24,9 +24,13 @@
   --file-list-box-shadow: none;
   --file-list-padding: 0px;
   --file-list-margin: 0;
-  --file-item-border-radius: 0px;
+  --file-item-border-radius: 12px;
   --file-item-margin: 0px 0px;
+  --file-item-border-top: 1px solid #dddddd;
+  --file-item-border-left: 1px solid #dddddd;
+  --file-item-border-right: 1px solid #dddddd;
   --file-item-border-bottom: 1px solid #dddddd;
+  --file-item-border-focused: 1px dashed red;
   --show-more-button-background-color: #fef8dd;
   --show-more-button-background-color--hover: #ffe7c7;
   --show-more-button-font-size: 14px;
