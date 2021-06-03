@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-staff-directory-sp-2019-client-side-solution",
+    "id": "521b5cee-deea-424e-a129-d208f85f6aec",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/react-staff-directory-sp-2019.sppkg"
+  }
+}
