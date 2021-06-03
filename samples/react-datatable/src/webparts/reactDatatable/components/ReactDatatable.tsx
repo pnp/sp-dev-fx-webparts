@@ -47,7 +47,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
   }
 
   private getUserProfileUrl = (loginName: string) => {
-    return this._services.getUserProfileUrl(loginName)
+    return this._services.getUserProfileUrl(loginName);
   }
 
   public componentDidUpdate(prevProps: IReactDatatableProps) {

@@ -9,7 +9,7 @@
       "This web part provides easy way to render SharePoint custom list in data table view with all the necessary features."
     ],
     "creationDateTime": "2021-03-01",
-    "updateDateTime": "2021-04-10",
+    "updateDateTime": "2021-06-02",
     "products": [
       "SharePoint",
       "Office"
@@ -21,7 +21,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.12.1"
       },
       {
         "key": "PNPCONTROLS",
