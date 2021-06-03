@@ -17,8 +17,8 @@ This web part provides easy way to render SharePoint custom list in datatable vi
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
-![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
+![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
 ![Workbench Hosted](https://img.shields.io/badge/Workbench-%20Hosted-yellow.svg)
@@ -44,6 +44,7 @@ Version|Date|Comments
 1.2|March 01, 2021|Fixed search issue for number field
 1.3|March 31,2021| Changed UI as per SharePoint list, Set themeing as per current SharePoint site theme, Created custom pagination by using reusable controls, Added features to export CSV based on the filter if the filter is available, Added hyperlink feature for image and link column in export to pdf and also set alternative row formatting in generated pdf as per property pane configuration odd/even row color, fixed object issue (for people/hyperlink, etc) in export to CSV.
 1.4|April 10, 2021|Added feature to show profile picture in user column and shows display name of user field in export to CSV and PDF.
+1.5|June 2, 2021|Added feature to show image in dataTable and upgraded to the SPFx version 1.12.1.
 
 
 ## Disclaimer
