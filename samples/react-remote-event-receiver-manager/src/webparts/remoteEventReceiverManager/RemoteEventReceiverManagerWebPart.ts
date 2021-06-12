@@ -28,9 +28,6 @@ export default class RemoteEventReceiverManagerWebPart extends BaseClientSideWeb
   protected onInit(): Promise<void> {
 
     return super.onInit().then(_ => {
-
-      // other init code may be present
-
       pnpSetup({
         spfxContext: this.context
       });
