@@ -69,6 +69,7 @@ $(document).ready(function () {
 
     // Update the sort
     $grid.isotope('updateSortData').isotope();
+
   });
 
   // Get the list of filters to use

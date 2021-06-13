@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+{% set title = config.site_name %}
+{% if page and page.meta and page.meta.title %}
+{% set title = title ~ " - " ~ page.meta.title %}
+{% elif page and page.title and not page.is_homepage %}
+{% set title = title ~ " - " ~ page.title | striptags %}
+{% endif %}
+{% set description = config.site_description %}
+{% if page and page.meta and page.meta.description %}
+{% set description = page.meta.description %}
+{% endif %}
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "WebSite",
+      "url": "{{ config.site_url }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ config.extra.site_search_url }}{search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ description }}" />
+<meta property="og:url" content="{{ page.canonical_url }}" />
+<meta property="og:image" content="{{ config.extra.media_url }}" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:site" content="{{ config.extra.twitter_site }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ config.extra.twitter_media_url }}">
+<meta name="twitter:image:alt" content="{{ config.extra.media_alt }}">
+{% endblock %}
+
+
+{% block content %}
+
+{% if not "\x3ch1" in page.content %}
+<div class="content-header">
+  <h1>{{ page.meta.title | d(config.site_name, true)}}</h1>
+</div>
+{% endif %}
+
+<section class="intro-section">
+  {{ page.content }}
+</section>
+
+<section class="filter-section">
+  <h2 class="sub-heading">Samples</h2>
+  <div class="search-input-wrapper float-l" aria-hidden="true">
+    <div class="icon-container">
+      &nbsp;
+    </div>
+    <input id="post-search-input" class="search-input" placeholder="Search samples">
+  </div>
+
+  <!-- <div id="post-tags-filter-btn" class="primary-btn dark float-r">Filter by tags
+    <p id="post-tags-filter-count" class="tag-number">0</p>
+  </div> 
+-->
+
+
+  <div id="filters" class="sample-list filter-list float-r">
+    {% block filterchoices %}
+
+    {% endblock %}
+
+    {% for filteroption in page.meta.filteroptions %}
+    {% set active = '' %}
+    {% if filteroption.active %}
+    {% set active = 'active' %}
+    {% endif %}
+    <div id="post-sample-filter-{{ filteroption.name }}"
+      class="sampletype-item filter-choice {{ filteroption.name }} {{ active }}" data-filter="{{ filteroption.filter }}"
+      title="{{ filteroption.title }}">{{ filteroption.displayname }}</div>
+
+    {% endfor %}
+  </div>
+
+  <div class="well">
+    <div class="button-group filters-button-group">
+      {% for filter in page.meta.filters %}
+      <button class="button" data-filter="[data-tag='{{ filter.value }}']">{{ filter.name }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="grid" id="sample-listing" data-filter={{page.meta.filter}}>
+    <div class="grid-sizer"></div>
+  </div>
+
+  <div id="noresults">
+    No results found.
+  </div>
+
+</section>
+
+<!-- Last update of source file -->
+{% if page and page.meta %}
+{% if page.meta.git_revision_date_localized or
+page.meta.revision_date
+%}
+{% include "partials/source-date.html" %}
+{% endif %}
+{% endif %}
+{% endblock %}

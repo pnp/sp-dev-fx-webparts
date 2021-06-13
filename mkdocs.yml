@@ -51,6 +51,11 @@ markdown_extensions:
       permalink: true
 extra:
   telemetry: 'telemetry.sharepointpnp.com/sp-dev-fx-webparts'
+  twitter_site: '@m365pnp'
+  media_url: https://pnp.github.io/sp-dev-fx-webparts/img/pnp-samples-white.png
+  twitter_media_url: https://pnp.github.io/sp-dev-fx-webparts/img/pnp-samples-logo-twitter.png
+  media_alt: Patterns and Practices Samples
+  site_search_url: https://pnp.github.io/sp-dev-fx-webparts/?query=
   generator: false
   version: '1.0.0-0'
   social:
@@ -63,5 +68,6 @@ extra:
 repo_url: https://github.com/pnp/sp-dev-fx-webparts
 edit_uri: tree/Docs/docs
 site_url: https://pnp.github.io/sp-dev-fx-webparts/
+site_description: A gallery of SPFx client-side web part samples created by the community
 favicon: assets/favicon.png
 # dev_addr: '127.0.0.1:443'
