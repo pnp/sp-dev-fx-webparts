@@ -1,6 +1,6 @@
 {
   "name": "react-carousel",
-  "version": "0.0.1",
+  "version": "4.0.0",
   "private": true,
   "engines": "undefined",
   "scripts": {
@@ -12,12 +12,12 @@
     "test:watch": "./node_modules/.bin/jest --config ./config/jest.config.json --watchAll"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "1.11.0",
-    "@microsoft/sp-http": "1.11.0",
-    "@microsoft/sp-lodash-subset": "1.11.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.11.0",
-    "@microsoft/sp-property-pane": "1.11.0",
-    "@microsoft/sp-webpart-base": "1.11.0",
+    "@microsoft/sp-core-library": "1.12.1",
+    "@microsoft/sp-http": "1.12.1",
+    "@microsoft/sp-lodash-subset": "1.12.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.12.1",
+    "@microsoft/sp-property-pane": "1.12.1",
+    "@microsoft/sp-webpart-base": "1.12.1",
     "@microsoft/teams-js": "^1.6.0",
     "@pnp/common": "^1.3.11",
     "@pnp/graph": "^1.3.11",
