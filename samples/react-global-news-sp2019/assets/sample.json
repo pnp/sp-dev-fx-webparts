@@ -44,19 +44,19 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news/assets/GlobalNews02.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news-sp2019/assets/GlobalNews02.png",
         "alt": "Global News"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-global-news/assets/GlobalNews.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-global-news-sp2019/assets/GlobalNews.png",
         "alt": "Global News"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-global-news/assets/GlobalNews01.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-global-news-sp2019/assets/GlobalNews01.png",
         "alt": "Global News"
       }
     ],
