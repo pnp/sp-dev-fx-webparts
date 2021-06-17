@@ -4,4 +4,6 @@ export interface IUser {
   jobDescription?: string;
   birthday: string;
   userEmail: string;
+  message: string;
+  anniversary: boolean;
 }
