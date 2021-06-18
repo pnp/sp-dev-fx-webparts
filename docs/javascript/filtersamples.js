@@ -4,9 +4,9 @@
  * This is a generic isotope filter for samples
  */
 
-$(document).ready(function () {
+ $(document).ready(function () {
   var filterText = $('#sample-listing').data("filter");
-  var qsRegex;
+  var qsRegex = new Array();
   var buttonFilter;
 
   // init Isotope
@@ -20,11 +20,20 @@ $(document).ready(function () {
       title: '.sample-title'
     },
     filter: function () {
-      var searchResult = qsRegex ? $(this).data("keywords").match(qsRegex) : true;
+      var searchResult = true;
+      qsRegex.forEach((term) => {
+        if (!($(this).data("keywords").match(term))) {
+          // If any term doesn't match, return false
+          searchResult = false;
+        }
+      })
       var buttonResult = buttonFilter ? $(this).is(buttonFilter) : true;
+      if (!(searchResult && buttonResult)) {
+        console.log('FALSE!');
+      }
       return searchResult && buttonResult;
     },
-    fitRows:{
+    fitRows: {
       columnWidth: '.grid-sizer'
     }
   });
@@ -97,7 +106,16 @@ $(document).ready(function () {
   });
 
   search.on('change keyup paste', debounce(function () {
-    qsRegex = new RegExp(search.val(), 'gi');
+    var query = search.val().toString();
+    if (!query) {
+      qsRegex = new Array();
+    } else {
+      qsRegex = query.match(/\w+|"[^"]+"/gi); 
+      let i = qsRegex.length;
+      while (i--) {
+        qsRegex[i] = qsRegex[i].replace(/"/gi, "");
+      }
+    }
     $grid.isotope();
   }, 200));
 

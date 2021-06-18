@@ -518,7 +518,7 @@ li.md-nav__item .md-nav__link:active, li.md-nav__item .md-nav__link:hover {
 }
 
 .producttype-item, .sampletype-item {
-    width: 42px;
+    min-width: 42px;
     height: 42px;
     background-color: #F7F7FC;
     border: 1px solid #ffffff;
