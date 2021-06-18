@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Edit Application Customizers",
     "shortDescription": "This web part will allow users to view/update application customizers properties across any web where the current user has access to.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-edit-applicationcustomizer",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-edit-applicationcustomizer",
     "longDescription": [
       "This web part will allow users to view/update application customizers properties across any web where the current user has access to."
     ],
-    "created": "2020-11-07",
-    "modified": "2020-11-07",
+    "creationDateTime": "2020-11-07",
+    "updateDateTime": "2020-11-07",
     "products": [
       "SharePoint",
       "Office"
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-Edit-ApplicationCustomizer/assets/react-all-applicationcustomizers.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-Edit-ApplicationCustomizer/assets/react-all-applicationcustomizers.gif?raw=true",
         "alt": "Edit Application Customizers"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-edit-applicationcustomizer/assets/react-all-applicationcustomizers.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-edit-applicationcustomizer/assets/react-all-applicationcustomizers.gif?raw=true",
         "alt": "Edit Application Customizers"
       }
     ],

@@ -20,6 +20,7 @@ extensions:
 # Angular MS Graph Web Part Built with Angular v1.x
 
 ## Summary
+
 This is a sample MS Graph web part that connects to Microsoft Graph and pulls SharePoint information from your
 tenant. It will first pull the root site collection (currently a limitation by Microsoft Graph), then it will
 display all the lists associated with the site followed by all the items inside the list.
@@ -38,6 +39,7 @@ display all the lists associated with the site followed by all the items inside 
 > Note: I currently only have models developed for the Announcements list. All other lists will currently generate errors.
 
 ## Used SharePoint Framework Version 
+
 ![drop](https://img.shields.io/badge/drop-ga-green.svg)
 
 ## Applies to
@@ -49,7 +51,7 @@ display all the lists associated with the site followed by all the items inside 
 
 Solution|Author(s)
 --------|---------
-angular-msgraph|David Hartman ([Slalom](https://slalom.com))
+angular-msgraph|[David Hartman](https://github.com/davidhartman) ([Slalom](https://slalom.com))
 
 ## Version history
 
@@ -59,6 +61,7 @@ Version|Date|Comments
 1.0|February 6th, 2017|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -91,7 +94,20 @@ Version|Date|Comments
 8. Choose **Save**.
 
 ## Configuring the App
+
 1. Replace the **aad** and **redirect_uri** placeholder values with the application ID and redirect url of your registered Azure application in the GraphHelper.ts file Under
 src -> angularMsGraph -> GraphHelper.ts
+
+
+## Support
+
+We do not support samples, but we do use GitHub to track issues and constantly want to improve these samples.
+
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=angular-msgraph&authors=@davidhartman&title=angular-msgraph%20-%20).
+
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=angular-msgraph&authors=@davidhartman&title=angular-msgraph%20-%20).
+
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=angular-msgraph&authors=@davidhartman&title=angular-msgraph%20-%20).
+
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/angular-msgraph" /> 

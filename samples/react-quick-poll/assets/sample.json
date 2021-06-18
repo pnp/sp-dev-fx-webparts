@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Quick Poll",
     "shortDescription": "This component is developed for the users who really need to create a Poll within a minute and with less maintenance.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-quick-poll",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-quick-poll",
     "longDescription": [
       "This component is developed for the users who really need to create a Poll within a minute and with less maintenance."
     ],
-    "created": "2020-10-17",
-    "modified": "2020-10-17",
+    "creationDateTime": "2020-10-17",
+    "updateDateTime": "2020-10-17",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-quick-poll/assets/react-quick-poll.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-poll/assets/react-quick-poll.gif",
         "alt": "Quick Poll"
       }
     ],

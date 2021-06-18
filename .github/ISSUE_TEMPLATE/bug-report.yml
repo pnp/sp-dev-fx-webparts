@@ -1,0 +1,164 @@
+name: 🐞 Bug or error report
+description: Report an anomaly or unexpected behavior with a sample from this repository.
+labels: ['Needs: Triage :mag:', 'type:bug-suspected']
+
+body:
+- type: markdown
+  attributes:
+    value: |
+      - [x] Bug
+
+      Thank you for reporting a bug! Use the sections below to submit a bug ONLY if it's related to samples in this repo. If you have an issue or question about the SharePoint Framework or its documentation, please submit it at https://aka.ms/spdev-issues. 
+      
+      - Follow our guidance on [How To Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues).
+      - All bug reports are welcome - we want to fix them!
+      - This repo is maintained by volunteers. Please be courteous and patient. 🙂
+      - Remember to include sufficient details and context.
+      - If you have multiple questions, suggestions, or bugs, please submit them in separate issues.
+      - We accept pull requests. If you know how to fix it - go ahead! If you know how to make it - go ahead! If you're unsure how to do a pull request, consider signing up for a free [Sharing is Caring First-Time Contributor](http://aka.ms/sharing-is-caring#pnp-sic-first-time-contributor) session.
+
+      Please provide the following details about the issue you encountered.  *Issues that do not provide the information requested in this form will be flagged as **incomplete** & automatically closed.*
+
+- type: input
+  id: sample
+  validations:
+    required: true
+  attributes:
+    label: Sample
+    description: |
+        Which sample are you having troubles with?
+        
+        Use the sample name or URL. We don't want to be spend all this time diagnosing issues about the wrong sample, do we?
+
+- type: input
+  id: authors
+  validations:
+    required: true
+  attributes:
+    label: Author(s)
+    description: |
+        Who wrote the sample?
+        
+        Because of the way this repository is configured, samples authors do not get a notification when you create an issue. 
+        
+        For the section above **@mention any author of the sample**. Authors' GitHub handle can be found on the main sample documentation page, under the "Solution" section. 
+        
+        Issues without an @mention will be closed automatically, as authors won't get notified.
+        
+        **NOTE:** Don't @mention the repo maintainers, they already get notified.
+
+- type: markdown
+  attributes:
+    value: |
+      Provide a clear & concise description of what the bug is. Please follow our guidance on [How To Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues) which explains how to apply formatting, adding references & resources, screenshots, etc. 
+      
+      **Do not attach ZIP files** of your code or compiled projects - instead, please publish your code to a public GitHub repo & post a link to it.
+
+- type: textarea
+  id: what-happened
+  attributes:
+    label: What happened?
+    description: Describe the observed behavior
+    placeholder: Tell us what you see!
+  validations:
+    required: true
+
+- type: textarea
+  id: steps
+  attributes:
+    label: Steps to reproduce
+    description: How do you reproduce this? Please provide as much step-by-step detail as possible.
+    value: |
+      1.
+      2.
+      3.
+  validations:
+    required: true
+
+- type: textarea
+  id: expected
+  attributes:
+    label: Expected behavior
+    description: What did you expect to happen when the reproduce steps are followed?
+    placeholder: Tell us what you expected to see!
+  validations:
+    required: true
+
+- type: markdown
+  attributes:
+    value: |
+      When solving bugs, most time is spent going back and forth with the issue author asking for more information about their environment. 
+      
+      Save yourself some time (and those who are trying to help you); provide us with your environment information so we can reproduce the issue.
+      
+      We're not trying to be difficult here, we just want to help as quickly as possible.
+
+- type: dropdown
+  id: sharepoint-version
+  validations:
+    required: true
+  attributes:
+    label: Target SharePoint environment
+    options:
+      - SharePoint Online
+      - SharePoint Server 2019 (on-premise)
+      - SharePoint Server 2016 (on-premise)
+
+- type: dropdown
+  id: environment-os
+  attributes:
+    label: Developer environment
+    options:
+      - Windows
+      - macOS
+      - Linux
+
+- type: checkboxes
+  id: browsers
+  attributes:
+    label: Browsers    
+    description: |
+      What browser(s) / client(s) have you tested
+      
+      Select the browser(s)/clients this submission is relevant to.
+
+    options:
+      - label: Internet Explorer
+      - label: Microsoft Edge
+      - label: Google Chrome
+      - label: FireFox
+      - label: Safari
+      - label: mobile (iOS/iPadOS)
+      - label: mobile (Android)
+      - label: not applicable
+      - label: other (enter in the "Additional environment details" area below)
+
+- type: input
+  id: spfx
+  validations:
+    required: true
+  attributes:
+    label: SPFx version
+    placeholder: 1.11.0
+    description: |
+        Which version of SPFx are you using?
+        
+        TIP: To find out, run `npm ls -g --depth=0 @microsoft/generator-sharepoint` and provide the number that comes after `@microsoft/generator-sharepoint@`
+
+- type: input
+  id: Node
+  validations:
+    required: true
+  attributes:
+    label: Node.js version
+    placeholder: v10.23.1
+    description: |
+        Which version of Node.js are you using?
+        
+        TIP: To find out, run `node -v`
+
+- type: textarea
+  id: moar
+  attributes:
+    label: Additional environment details
+    description: Include as much detail about the environment you're targeting. This is required if "other (enter below)" is selected in the previous field.

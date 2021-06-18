@@ -5,6 +5,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import { SharePointType } from "../model/ISharePointFieldTypes";
 import { IModalType } from "../model/IModalType";
 import { IDynamicItem } from "../model/IDynamicItem";
+import { DisplayMode } from "@microsoft/sp-core-library";
 
 
 export interface IListSearchProps {
@@ -47,4 +48,7 @@ export interface IListSearchProps {
   AnyCamlQuery: boolean;
   CacheType: "session" | "local";
   generalFilterText: string;
+  title: string;
+  updateTitle: (title: string) => void;
+  displayMode: DisplayMode;
 }

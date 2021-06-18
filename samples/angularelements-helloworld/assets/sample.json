@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Angular Elements in SharePoint Framework",
     "shortDescription": "Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angularelements-helloworld",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angularelements-helloworld",
     "longDescription": [
       "Set of sample web parts illustrating how to use Angular Elements in the SharePoint Framework."
     ],
-    "created": "2018-06-01",
-    "modified": "2018-06-01",
+    "creationDateTime": "2018-06-01",
+    "updateDateTime": "2018-06-01",
     "products": [
       "SharePoint",
       "Office"

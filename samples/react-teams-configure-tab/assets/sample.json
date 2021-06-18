@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Teams Configuration Tab",
     "shortDescription": "This web part makes a modern SharePoint page into a Teams tab configuration page for use in a Teams application. This allows low-code developers to create Teams applications containing configurable tabs without the need to code a custom configuration page. Using this tool, along with Microsoft Teams App Studio, low-code developers can build Teams applications entirely from modern SharePoint pages.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-configure-tab",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-configure-tab",
     "longDescription": [
       "This web part makes a modern SharePoint page into a Teams tab configuration page for use in a Teams application. This allows low-code developers to create Teams applications containing configurable tabs without the need to code a custom configuration page. Using this tool, along with Microsoft Teams App Studio, low-code developers can build Teams applications entirely from modern SharePoint pages."
     ],
-    "created": "2020-01-06",
-    "modified": "2020-01-06",
+    "creationDateTime": "2020-01-06",
+    "updateDateTime": "2020-01-06",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-configure-tab/documentation/images/SPTabAppStudioTeamsTab006.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-configure-tab/documentation/images/SPTabAppStudioTeamsTab006.png",
         "alt": "Teams Configuration Tab"
       }
     ],

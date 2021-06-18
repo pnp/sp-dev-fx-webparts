@@ -16,7 +16,7 @@ extensions:
 # Organisation Chart
 
 ## Summary
-A simple Organisation Chart webpart using Office UI Fabric, React, REST API batching and ServiceScope plumbing. 
+A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing. 
 
 ![Organisation Chart for the current user running in SharePoint](./assets/orgchart.png)
 
@@ -45,6 +45,7 @@ Version|Date|Comments
 2.1|July 19, 2017|Use office-ui-fabric-react and uifabric/styling
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

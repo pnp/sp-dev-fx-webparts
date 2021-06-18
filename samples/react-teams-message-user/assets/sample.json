@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Message Teams User",
     "shortDescription": "Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-message-user",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-message-user",
     "longDescription": [
       "Sample that shows how to send a message to Microsoft Teams using a SharePoint framework solution using Microsoft Graph."
     ],
-    "created": "2021-02-28",
-    "modified": "2021-02-28",
+    "creationDateTime": "2021-02-28",
+    "updateDateTime": "2021-02-28",
     "products": [
       "SharePoint",
       "Office"
@@ -22,19 +22,23 @@
       {
         "key": "SPFX-VERSION",
         "value": "1.11.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PeoplePicker"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-message-user/assets/webPart-preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message-user/assets/webPart-preview.png",
         "alt": "Message Teams User"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-teams-message-user/assets/MessageTeams.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-teams-message-user/assets/MessageTeams.gif?raw=true",
         "alt": "Message Teams User"
       }
     ],

@@ -147,8 +147,14 @@ By default you have to install this web part per site collection where you want 
 
 In order to make it available to absolutely all sites you need apply the _Deploy to non-script sites / modern team site_ change as well.
 
-## Used SharePoint Framework Version
-![drop](https://img.shields.io/badge/drop-1.10.0-green.svg)
+
+## Compatibility
+
+![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x%20%7C%20LTS%208.x-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
 
 ## Applies to
 

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework",
     "shortDescription": "This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-3rd-party-api",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-3rd-party-api",
     "longDescription": [
       "This sub folders contains a client-side project that shows how to consume a 3rd party API within SharePoint Framework."
     ],
-    "created": "2018-02-19",
-    "modified": "2018-02-19",
+    "creationDateTime": "2018-02-19",
+    "updateDateTime": "2018-02-19",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-3rd-party-api/images/react-3rd-party-api-ui-sample.gif",
         "alt": "Consuming Third Party APIs secured with Azure Active Directory within SharePoint Framework"
       }
     ],

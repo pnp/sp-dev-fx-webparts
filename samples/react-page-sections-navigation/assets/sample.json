@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Page Sections Navigation",
     "shortDescription": "Sample web parts allowing to add sections navigation to the SharePoint page.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-page-sections-navigation",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-sections-navigation",
     "longDescription": [
       "Sample web parts allowing to add sections navigation to the SharePoint page."
     ],
-    "created": "2019-03-22",
-    "modified": "2019-03-22",
+    "creationDateTime": "2019-03-22",
+    "updateDateTime": "2019-03-22",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-page-sections-navigation/assets/page-nav.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-page-sections-navigation/assets/page-nav.gif",
         "alt": "Page Sections Navigation"
       }
     ],

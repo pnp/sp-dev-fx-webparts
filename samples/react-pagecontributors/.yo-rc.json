@@ -1,8 +1,12 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.1.1",
+    "version": "1.12.1",
     "libraryName": "react-pagecontributors",
     "libraryId": "1c18830a-4c18-4b82-a571-77863b19c66d",
-    "environment": "spo"
+    "environment": "spo",
+    "isDomainIsolated": false,
+    "isCreatingSolution": true,
+    "packageManager": "npm",
+    "componentType": "webpart"
   }
 }

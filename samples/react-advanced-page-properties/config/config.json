@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "advanced-page-properties-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/advancedPageProperties/AdvancedPagePropertiesWebPart.js",
+          "manifest": "./src/webparts/advancedPageProperties/AdvancedPagePropertiesWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AdvancedPagePropertiesWebPartStrings": "lib/webparts/advancedPageProperties/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

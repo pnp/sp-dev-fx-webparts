@@ -47,7 +47,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * Usage of [avataaars](https://getavataaars.com/)
 
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------

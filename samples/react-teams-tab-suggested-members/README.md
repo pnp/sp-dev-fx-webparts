@@ -1,7 +1,8 @@
-# Spfx Webpart / Teams tab Group members suggestion
+# SPFx Web part / Teams tab Group members suggestion
 
 ## Summary
-This webpart uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint webpart or Teams tab
+
+This web part uses Graph API to suggest you members to add to a group (based on People endpoint), so you can easily add those members to the Group / Teams. It can be used as a SharePoint web part or Teams tab
 
 ![Suggested Group Members Teams Tab](./assets/SuggestedMembersTeamsTab.jpg)
 
@@ -40,7 +41,7 @@ Version|Date|Comments
 
 This sample illustrates the following concepts on top of the SharePoint Framework:
 
-* __Teams__ tab webpart using ReactJS
+* __Teams__ tab web part using ReactJS
 * Using __GraphClient__ to call _/me/people_
 * Graph API __Batch request__ to add members to a Group
 * Gulp custom task to zip Teams folder

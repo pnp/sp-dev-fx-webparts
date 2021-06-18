@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Image Gallery",
     "shortDescription": "This web part show images and videos in responsive grid, on click it show images and videos in a carousel view.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-multimedia-gallery",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multimedia-gallery",
     "longDescription": [
       "This web part show images and videos in responsive grid, on click it show images and videos in a carousel view."
     ],
-    "created": "2020-07-19",
-    "modified": "2020-07-19",
+    "creationDateTime": "2020-07-19",
+    "updateDateTime": "2020-07-19",
     "products": [
       "SharePoint",
       "Office"
@@ -32,37 +32,37 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-multimedia-gallery/assets/MultimediaGallery.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multimedia-gallery/assets/MultimediaGallery.gif",
         "alt": "Image Gallery"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-multimedia-gallery/assets/Annotation0.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-multimedia-gallery/assets/Annotation0.jpg?raw=true",
         "alt": "Image Gallery"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-multimedia-gallery/assets/Annotation1.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-multimedia-gallery/assets/Annotation1.jpg?raw=true",
         "alt": "Image Gallery"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-multimedia-gallery/assets/Annotation2.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-multimedia-gallery/assets/Annotation2.jpg?raw=true",
         "alt": "Image Gallery"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-multimedia-gallery/assets/Screenshot1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-multimedia-gallery/assets/Screenshot1.png?raw=true",
         "alt": "Image Gallery"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-multimedia-gallery/assets/Screenshot2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-multimedia-gallery/assets/Screenshot2.png?raw=true",
         "alt": "Image Gallery"
       }
     ],

@@ -1,0 +1,71 @@
+{
+  "id": "dfb5229a-c1c3-4e98-870b-c40dd6e4ec4b",
+  "alias": "PageContributorsWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "dfb5229a-c1c3-4e98-870b-c40dd6e4ec4b",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Page Contributors"
+      },
+      "description": {
+        "default": "Displays page contributors in reverse chronological order"
+      },
+      "officeFabricIconFontName": "People",
+      "properties": {
+        "numberOfFaces": 5,
+        "personaSize": 3
+      }
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "<!-- PATH TO CDN -->"
+    ],
+    "entryModuleId": "page-contributors-web-part",
+    "scriptResources": {
+      "page-contributors-web-part": {
+        "type": "path",
+        "path": "page-contributors-web-part_4d2033f670297cd13b0c.js"
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.12.1"
+      },
+      "pageContributorsStrings": {
+        "type": "path",
+        "path": "pageContributorsStrings_en-us_6ae41e2edb727df21538267edcd92249.js"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.12.1"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.9.0"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.9.0"
+      }
+    }
+  }
+}

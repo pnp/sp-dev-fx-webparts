@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Dynamic Accordion - FAQ Builder web part",
     "shortDescription": "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-accordion-dynamic-section",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-accordion-dynamic-section",
     "longDescription": [
       "This sample is based on Erik Benke and Mike Zimmerman Accordion Section FAQ Builder web part. It was extended support single FAQs list based on Category and dynamic properties selection."
     ],
-    "created": "2021-01-05",
-    "modified": "2021-01-05",
+    "creationDateTime": "2021-01-05",
+    "updateDateTime": "2021-01-05",
     "products": [
       "SharePoint",
       "Office"
@@ -26,31 +26,35 @@
       {
         "key": "SPFX-TEAMSTAB",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "WebPartTitle, Placeholder"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-dynamic-section/assets/react-accordion-section.gif",
         "alt": "Dynamic Accordion - FAQ Builder web part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-accordion-dynamic-section/assets/AccordionSettings1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-dynamic-section/assets/AccordionSettings1.png?raw=true",
         "alt": "Dynamic Accordion - FAQ Builder web part"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-accordion-dynamic-section/assets/AccordionSettings2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-dynamic-section/assets/AccordionSettings2.png?raw=true",
         "alt": "Dynamic Accordion - FAQ Builder web part"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-accordion-dynamic-section/assets/FAQsList.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-accordion-dynamic-section/assets/FAQsList.png?raw=true",
         "alt": "Dynamic Accordion - FAQ Builder web part"
       }
     ],

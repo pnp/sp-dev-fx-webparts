@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Page Contributors Web Part",
     "shortDescription": "Displays page contributors in reverse chronological order.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pagecontributors",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pagecontributors",
     "longDescription": [
       "Displays page contributors in reverse chronological order."
     ],
-    "created": "2017-07-27",
-    "modified": "2017-07-27",
+    "creationDateTime": "2017-07-27",
+    "updateDateTime": "2021-05-23",
     "products": [
       "SharePoint",
       "Office"
@@ -21,20 +21,20 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "GA"
+        "value": "1.12.1"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG",
         "alt": "Page Contributors Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-pagecontributors/assets/pagecontributors_mockup.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-pagecontributors/assets/pagecontributors_mockup.PNG?raw=true",
         "alt": "Page Contributors Web Part"
       }
     ],
@@ -45,6 +45,12 @@
         "pictureUrl": "https://github.com/SPParseError.png",
         "name": "St\u00E9phane Magne",
         "twitter": "SPParse"
+      },
+      {
+        "gitHubAccount": "AriGunawan",
+        "name": "Ari Gunawan",
+        "company": "",
+        "pictureUrl": "https://github.com/AriGunawan.png"
       }
     ],
     "references": [

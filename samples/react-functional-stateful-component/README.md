@@ -49,7 +49,7 @@ Version|Date|Comments
 
 The purpose of this web part is to demonstrate building a React functional component that includes state. This is achieved using the recent React Hooks feature. The resulting code is cleaner and easier to follow than using a JavaScript/TypeScript class derived from React.Component. The example web part renders a number to Roman numerals conversion tool, although the functionality is just for the purposes of the demonstration.
 
-This is an extension of the approach used in the [React-Functional-Component](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-functional-component) sample.
+This is an extension of the approach used in the [React-Functional-Component](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-functional-component) sample.
 
 * Simplification
 * Functional Component

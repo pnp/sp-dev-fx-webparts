@@ -1,7 +1,7 @@
 # Using PnPJS with Microsoft Graph
 
 ## Summary
-This webpart demonstrates how to use [PnPJS](https://pnp.github.io/pnpjs/) with SharePoint Framework and how to query [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) with PnPJS.
+This web part demonstrates how to use [PnPJS](https://pnp.github.io/pnpjs/) with SharePoint Framework and how to query [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) with PnPJS.
 It requests a list of Azure AD [groups](https://docs.microsoft.com/en-us/graph/api/group-list?view=graph-rest-1.0) at your tenant and shows them using [Office UI Fabric React](https://developer.microsoft.com/en-us/fabric#/components) list.
 
 ![Main UI](./assets/summary.png)
@@ -28,6 +28,7 @@ Version|Date|Comments
 1.0|Jan 09, 2019|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

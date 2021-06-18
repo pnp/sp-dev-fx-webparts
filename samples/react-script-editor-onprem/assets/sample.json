@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Script editor web part for modern pages",
     "shortDescription": "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part. This web part is similar to the classic Script Editor Web Part, and allows you do drop arbitrary script or html on a modern page.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-script-editor-onprem",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-script-editor-onprem",
     "longDescription": [
       "Coming from old classic SharePoint pages you might have existing script solutions you want to re-use on a modern page without having to repackage it as a new SharePoint Framework web part. This web part is similar to the classic Script Editor Web Part, and allows you do drop arbitrary script or html on a modern page."
     ],
-    "created": "2020-03-16",
-    "modified": "2020-03-16",
+    "creationDateTime": "2020-03-16",
+    "updateDateTime": "2020-03-16",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-script-editor-onprem/assets/modern-script-editor-wp.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-script-editor-onprem/assets/modern-script-editor-wp.gif",
         "alt": "Script editor web part for modern pages"
       }
     ],

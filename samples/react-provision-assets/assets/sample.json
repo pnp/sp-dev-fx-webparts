@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Provision SharePoint Assets with the SPFx solution package",
     "shortDescription": "This sample shows how we can provision Document Library, Custom List, Web and List PropertyBag properties, Site Columns, Content Types, Images, Site Page with the SFPx Client side web part and even prepopulated list and library items along with the SPFx solution package. All of the components can be deployed at once with the SPFx web part when the app is added to a SharePoint site. It also contains custom list and document library xml schemas.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-provision-assets",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-provision-assets",
     "longDescription": [
       "This sample shows how we can provision Document Library, Custom List, Web and List PropertyBag properties, Site Columns, Content Types, Images, Site Page with the SFPx Client side web part and even prepopulated list and library items along with the SPFx solution package. All of the components can be deployed at once with the SPFx web part when the app is added to a SharePoint site. It also contains custom list and document library xml schemas."
     ],
-    "created": "2020-09-06",
-    "modified": "2020-09-06",
+    "creationDateTime": "2020-09-06",
+    "updateDateTime": "2020-09-06",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-provision-assets/assets/spfx-provision-assets.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-provision-assets/assets/spfx-provision-assets.gif",
         "alt": "Provision SharePoint Assets with the SPFx solution package"
       }
     ],

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Todo Basic",
     "shortDescription": "A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-todo-basic",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-todo-basic",
     "longDescription": [
       "A simple todo web part built using react to showcase some of the SharePoint Framework developer features, utilities and best practices in building react based web parts."
     ],
-    "created": "2017-05-04",
-    "modified": "2017-05-04",
+    "creationDateTime": "2017-05-04",
+    "updateDateTime": "2017-05-04",
     "products": [
       "SharePoint",
       "Office"
@@ -28,31 +28,31 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-todo-basic/assets/todo-basic-demo.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-todo-basic/assets/todo-basic-demo.gif",
         "alt": "Todo Basic"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-todo-basic/assets/todo-basic-no-task-list.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-todo-basic/assets/todo-basic-no-task-list.gif?raw=true",
         "alt": "Todo Basic"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-todo-basic/assets/todo-basic-placeholder-edit-mode.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-todo-basic/assets/todo-basic-placeholder-edit-mode.png?raw=true",
         "alt": "Todo Basic"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-todo-basic/assets/todo-basic-placeholder-read-mode.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-todo-basic/assets/todo-basic-placeholder-read-mode.png?raw=true",
         "alt": "Todo Basic"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-todo-basic/assets/todo-basic-placeholder.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-todo-basic/assets/todo-basic-placeholder.gif?raw=true",
         "alt": "Todo Basic"
       }
     ],

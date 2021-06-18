@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Teams-membership-updater-client-side-solution",
+    "title": "Teams Membership Updater",
+    "id": "5da816cf-c693-4b88-b9bd-a9da3587f05c",
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "Nick Brown",
+      "privacyUrl": "https://www.microsoft.com/privacy",
+      "termsOfUseUrl": "https://www.microsoft.com/terms-of-use",
+      "websiteUrl": "https://nbdev.uk",
+      "mpnId": "000000"
+    },
+    "version": "1.0.0.8",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "GroupMember.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/teams-membership-updater.sppkg"
+  }
+}

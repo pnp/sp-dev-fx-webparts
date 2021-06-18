@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "SharePoint Framework Facebook Page Social Plugin web part sample",
     "shortDescription": "This sample shows how to implement iFrame-based web parts with a dynamic responsive behavior on the example of Facebook Page Social Plugin.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-facebook-plugin",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-facebook-plugin",
     "longDescription": [
       "This sample shows how to implement iFrame-based web parts with a dynamic responsive behavior on the example of Facebook Page Social Plugin."
     ],
-    "created": "2018-08-26",
-    "modified": "2018-08-26",
+    "creationDateTime": "2018-08-26",
+    "updateDateTime": "2018-08-26",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-facebook-plugin/assets/preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-facebook-plugin/assets/preview.png",
         "alt": "SharePoint Framework Facebook Page Social Plugin web part sample"
       }
     ],

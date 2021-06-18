@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "SPFx web part to Test PnpJS SharePoint Methods",
     "shortDescription": "This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-pnpjsexplorer",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-pnpjsexplorer",
     "longDescription": [
       "This web part will allow SPFx developers to test PnPjs methods and it displays response in JSON viewer to identify properties/attributes returned by method/API"
     ],
-    "created": "2020-10-30",
-    "modified": "2020-10-30",
+    "creationDateTime": "2020-10-30",
+    "updateDateTime": "2020-10-30",
     "products": [
       "SharePoint",
       "Office"
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-pnpjsexplorer/assets/pnpjstesterinaction.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjsexplorer/assets/pnpjstesterinaction.gif?raw=true",
         "alt": "SPFx web part to Test PnpJS SharePoint Methods"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-pnpjsexplorer/assets/pnpjstesterinaction.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-pnpjsexplorer/assets/pnpjstesterinaction.gif?raw=true",
         "alt": "SPFx web part to Test PnpJS SharePoint Methods"
       }
     ],

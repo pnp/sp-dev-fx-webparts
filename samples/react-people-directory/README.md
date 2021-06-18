@@ -1,6 +1,6 @@
 # People Directory
 
-> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/peopleDirectory.
+> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/peopleDirectory.
 
 This web part provides you the ability to add a searchable people directory. A people search box and alphabet list are provided to enable both searching by name as well as selecting a specific letter. This web part requires no configuration and utilizes the people search API to surface people results.
 
@@ -10,7 +10,7 @@ This web part provides you the ability to add a searchable people directory. A p
 
 1. Place the page you want to add this web part to in edit mode.
 2. Search for and insert the **People Directory** web part.
-3. Configure the webpart to update its properties.
+3. Configure the web part to update its properties.
 
 ## Configurable Properties
 
@@ -22,9 +22,9 @@ The `People Directory` web part can be configured with the following properties:
 
 # Installing the web part
 
-See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
+See getting started from [SP-Starter-Kit repository readme](https://github.com/pnp/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
+You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
 
 # Screenshots
 
@@ -32,7 +32,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/peopleDirectory
+https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/peopleDirectory
 
 # Minimal Path to Awesome
 

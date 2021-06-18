@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Advanced Page Properties",
+    "id": "daae06a2-8599-445c-93c0-3bd739305f56",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Mike Homol",
+      "websiteUrl": "homol.work",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "990019737"
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/advanced-page-properties.sppkg"
+  }
+}

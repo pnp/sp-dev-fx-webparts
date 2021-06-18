@@ -3,7 +3,7 @@
 ## Summary
 The Tree Organization WebPart shows the Organization Chart of the  or the team, the web part reads infomation from current user to build the Organization Chart.  
 
-You can configure in the webpart properties:
+You can configure in the web part properties:
 * show all Organization Chart 
 * the only user team, (same manager and peers). 
 * show Organization Chart by picking up user

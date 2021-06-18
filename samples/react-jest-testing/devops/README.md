@@ -12,7 +12,7 @@ The example has build and release scripts that can be used with Github as well a
 
 ## Build definition
 
-The build folder has two build definitions. The PRE-BUILD definition ("azure-pipelines-pre-build.yml") is to be run before the code goes to the master branch to verify that the code will not break the existing branch. The BUILD definition ("azure-pipelines-build.yaml") is to be run after the new code is merged into the master branch.
+The build folder has two build definitions. The PRE-BUILD definition ("azure-pipelines-pre-build.yml") is to be run before the code goes to the main branch to verify that the code will not break the existing branch. The BUILD definition ("azure-pipelines-build.yaml") is to be run after the new code is merged into the main branch.
 
 ## Release definitions
 
@@ -51,7 +51,7 @@ There is a good article on how to do that here:  https://blog.github.com/2018-09
 
 ![Config Azure Pipelines repo config](../assets/config-Azure-Pipelines-in-Github-suggest.PNG)
 
-8. Click save and run to test the template using the master branch.
+8. Click save and run to test the template using the main branch.
 
 Note: We will replace the default suggested template with one that already exists in the sample to speed up the guide.
 
@@ -111,7 +111,7 @@ Once you agree with the consent you can use it in the Release pipeline.
 ![Config Azure Pipelines repo config](../assets/config-Azure-Pipelines-in-Github-spfx.PNG)
 Note: The source alias ("_SPFx build") can be changed to any name, but the bash script later is using that one this is why for this specific example we use that specific name.
 
-4. Enable the releace pipeline to be triggered every time new code is pushed to the master branch.
+4. Enable the releace pipeline to be triggered every time new code is pushed to the main branch.
 
 ![Config Azure Pipelines repo config](../assets/config-Azure-Pipelines-in-Github-edit-continious.PNG)
 ![Config Azure Pipelines repo config](../assets/config-Azure-Pipelines-in-Github-ci-enabled.PNG) 
@@ -172,9 +172,9 @@ Note: You can use password like fields to hide sensitive or secret values.
 
 ## Now we should be good to go
 
-The next code merged with the master branch in Github should trigger the fully automated devops pipeline and deploy that built package all the way to the SharePoint online app catalog.
+The next code merged with the main branch in Github should trigger the fully automated devops pipeline and deploy that built package all the way to the SharePoint online app catalog.
 
-Here is the releace pipeline executed successfully and also the sppkg file deployed to the app catalog.
+Here is the release pipeline executed successfully and also the sppkg file deployed to the app catalog.
 
 ![Config Azure Pipelines repo config](../assets/config-Azure-Pipelines-in-Github-success.PNG)
 ![Config Azure Pipelines repo config](../assets/config-Azure-Pipelines-in-Github-appcatalog.PNG)

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Using Dynamics CRM API",
     "shortDescription": "This sample shows how to consume Dynamics CRM API using AadTokenProvider class.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-dynamics-crm-api",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamics-crm-api",
     "longDescription": [
       "This sample shows how to consume Dynamics CRM API using AadTokenProvider class."
     ],
-    "created": "2020-07-12",
-    "modified": "2020-07-12",
+    "creationDateTime": "2020-07-12",
+    "updateDateTime": "2020-07-12",
     "products": [
       "SharePoint",
       "Office"
@@ -36,7 +36,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-dynamics-crm-api/assets/screenshot.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dynamics-crm-api/assets/screenshot.gif",
         "alt": "Using Dynamics CRM API"
       }
     ],

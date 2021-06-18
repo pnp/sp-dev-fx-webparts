@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Site Provisioning Manager Web Part",
     "shortDescription": "This sample shows how you can manage site provisioning by calling Azure functions.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-site-provisioning-manager",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-provisioning-manager",
     "longDescription": [
       "This sample shows how you can manage site provisioning by calling Azure functions."
     ],
-    "created": "2019-08-14",
-    "modified": "2019-08-14",
+    "creationDateTime": "2019-08-14",
+    "updateDateTime": "2019-08-14",
     "products": [
       "SharePoint",
       "Office"
@@ -28,25 +28,25 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-site-provisioning-manager/assets/screenshot.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-provisioning-manager/assets/screenshot.gif",
         "alt": "Site Provisioning Manager Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-site-provisioning-manager/assets/api-permissions.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-site-provisioning-manager/assets/api-permissions.png?raw=true",
         "alt": "Site Provisioning Manager Web Part"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-site-provisioning-manager/assets/functions-CORS-settings.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-site-provisioning-manager/assets/functions-CORS-settings.PNG?raw=true",
         "alt": "Site Provisioning Manager Web Part"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-site-provisioning-manager/assets/functions-visual-studio-publish-profile.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-site-provisioning-manager/assets/functions-visual-studio-publish-profile.png?raw=true",
         "alt": "Site Provisioning Manager Web Part"
       }
     ],

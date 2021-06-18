@@ -1,0 +1,52 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.subTitleNews {
+  @include ms-font-m;
+ //   color: $ms-color-themeDark;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    font-weight: $ms-font-weight-semibold;
+    font-size: $ms-font-size-m;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    min-width: 0px;
+}
+
+.description {
+  font-size: $ms-font-size-m;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.documentCard {
+  margin-bottom: 3px;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+
+}
+
+.documentCardSeleted {
+  margin-bottom: 3px;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  background-color: $ms-color-themePrimary;
+  color: $ms-color-white
+
+}
+.documentCard:hover {
+   background-color: $ms-color-themePrimary;
+   color: $ms-color-white;
+   cursor: pointer;
+}

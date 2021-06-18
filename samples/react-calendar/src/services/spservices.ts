@@ -490,59 +490,79 @@ export default class spservices {
 
       if (results && results.Row.length > 0) {
         let event: any = '';
-        
-        for (event of results.Row) {
-          const eventDate = await this.getLocalTime(event.EventDate);
-          const endDate = await this.getLocalTime(event.EndDate);
-          const initialsArray: string[] = event.Author[0].title.split(' ');
-          const initials: string = initialsArray[0].charAt(0) + initialsArray[initialsArray.length - 1].charAt(0);
-          const userPictureUrl = await this.getUserProfilePictureUrl(`i:0#.f|membership|${event.Author[0].email}`);
-          const attendees: number[] = [];
-          const first: number = event.Geolocation.indexOf('(') + 1;
-          const last: number = event.Geolocation.indexOf(')');
-          const geo = event.Geolocation.substring(first, last);
-          const geolocation = geo.split(' ');
-          const CategoryColorValue: any[] = categoryColor.filter((value) => {
-            return value.category == event.Category;
-          });
-          const isAllDayEvent: boolean = event["fAllDayEvent.value"] === "1";
+        const mapEvents = async () : Promise<boolean> => {
+            for (event of results.Row) {
+              const eventDate = await this.getLocalTime(event.EventDate);
+              const endDate = await this.getLocalTime(event.EndDate);
+              const initialsArray: string[] = event.Author[0].title.split(' ');
+              const initials: string = initialsArray[0].charAt(0) + initialsArray[initialsArray.length - 1].charAt(0);
+              const userPictureUrl = await this.getUserProfilePictureUrl(`i:0#.f|membership|${event.Author[0].email}`);
+              const attendees: number[] = [];
+              const first: number = event.Geolocation.indexOf('(') + 1;
+              const last: number = event.Geolocation.indexOf(')');
+              const geo = event.Geolocation.substring(first, last);
+              const geolocation = geo.split(' ');
+              const CategoryColorValue: any[] = categoryColor.filter((value) => {
+                return value.category == event.Category;
+              });
+              const isAllDayEvent: boolean = event["fAllDayEvent.value"] === "1";
 
-          for (const attendee of event.ParticipantsPicker) {
-            attendees.push(parseInt(attendee.id));
+              for (const attendee of event.ParticipantsPicker) {
+                attendees.push(parseInt(attendee.id));
+              }
+
+              events.push({
+                Id: event.ID,
+                ID: event.ID,
+                EventType: event.EventType,
+                title: await this.deCodeHtmlEntities(event.Title),
+                Description: event.Description,
+                EventDate: isAllDayEvent ? new Date(event.EventDate.slice(0, -1)) : new Date(eventDate),
+                EndDate: isAllDayEvent ? new Date(event.EndDate.slice(0, -1)) : new Date(endDate),
+                location: event.Location,
+                ownerEmail: event.Author[0].email,
+                ownerPhoto: userPictureUrl ?
+                  `https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=${event.Author[0].email}&UA=0&size=HR96x96` : '',
+                ownerInitial: initials,
+                color: CategoryColorValue.length > 0 ? CategoryColorValue[0].color : '#1a75ff', // blue default
+                ownerName: event.Author[0].title,
+                attendes: attendees,
+                fAllDayEvent: isAllDayEvent,
+                geolocation: { Longitude: parseFloat(geolocation[0]), Latitude: parseFloat(geolocation[1]) },
+                Category: event.Category,
+                Duration: event.Duration,
+                RecurrenceData: event.RecurrenceData ? await this.deCodeHtmlEntities(event.RecurrenceData) : "",
+                fRecurrence: event.fRecurrence,
+                RecurrenceID: event.RecurrenceID ? event.RecurrenceID : undefined,
+                MasterSeriesItemID: event.MasterSeriesItemID,
+                UID: event.UID.replace("{", "").replace("}", ""),
+              });
+            }
+          return true;
+        };
+        //Checks to see if there are any results saved in local storage
+        if(window.localStorage.getItem("eventResult")){
+          //if there is a local version - compares it to the current version 
+          if(window.localStorage.getItem("eventResult") === JSON.stringify(results)){
+            //No update needed use current savedEvents
+            events = JSON.parse(window.localStorage.getItem("calendarEventsWithLocalTime"));
+          }else{
+            //update local storage
+            window.localStorage.setItem("eventResult", JSON.stringify(results));
+            //when they are not equal then we loop through the results and maps them to IEventData
+            /* tslint:disable:no-unused-expression */
+            await mapEvents() ? window.localStorage.setItem("calendarEventsWithLocalTime", JSON.stringify(events)) : null;           
           }
-
-          events.push({
-            Id: event.ID,
-            ID: event.ID,
-            EventType: event.EventType,
-            title: await this.deCodeHtmlEntities(event.Title),
-            Description: event.Description,
-            EventDate: isAllDayEvent ? new Date(event.EventDate.slice(0, -1)) : new Date(eventDate),
-            EndDate: isAllDayEvent ? new Date(event.EndDate.slice(0, -1)) : new Date(endDate),
-            location: event.Location,
-            ownerEmail: event.Author[0].email,
-            ownerPhoto: userPictureUrl ?
-              `https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=${event.Author[0].email}&UA=0&size=HR96x96` : '',
-            ownerInitial: initials,
-            color: CategoryColorValue.length > 0 ? CategoryColorValue[0].color : '#1a75ff', // blue default
-            ownerName: event.Author[0].title,
-            attendes: attendees,
-            fAllDayEvent: isAllDayEvent,
-            geolocation: { Longitude: parseFloat(geolocation[0]), Latitude: parseFloat(geolocation[1]) },
-            Category: event.Category,
-            Duration: event.Duration,
-            RecurrenceData: event.RecurrenceData ? await this.deCodeHtmlEntities(event.RecurrenceData) : "",
-            fRecurrence: event.fRecurrence,
-            RecurrenceID: event.RecurrenceID ? event.RecurrenceID : undefined,
-            MasterSeriesItemID: event.MasterSeriesItemID,
-            UID: event.UID.replace("{", "").replace("}", ""),
-          });
+        }else{
+          //if there is no local storage of the events we create them
+          window.localStorage.setItem("eventResult", JSON.stringify(results));
+          //we also needs to map through the events the first time and save the mapped version to local storage
+          await mapEvents() ? window.localStorage.setItem("calendarEventsWithLocalTime", JSON.stringify(events)) : null;           
         }
-
-        let parseEvt: parseRecurrentEvent = new parseRecurrentEvent();
-        events = parseEvt.parseEvents(events, null, null);
       }
-
+      let parseEvt: parseRecurrentEvent = new parseRecurrentEvent();
+      events = parseEvt.parseEvents(events, null, null);
+       
       // Return Data
       return events;
     } catch (error) {
