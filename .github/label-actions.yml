@@ -1,10 +1,16 @@
 # Configuration for Label Actions - https://github.com/dessant/label-actions
 
 # Actions taken when the `incomplete-submission` label is added to issues 
-incomplete-submission:
+status:invalid-issue:
   # Post a comment
   comment: >
-    Thank you for your submission, but there isn't enough detail in the issue for us to review & move forward. The new issue template includes sections for you to fill out. Please resubmit your issue and complete the provided sections in the new item template so we can move forward on it refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
+    Thank you for your submission, but there isn't enough detail in the issue for us to review & move forward.
+    
+    
+    The new issue template includes sections for you to fill out.
+    
+    
+    Please resubmit your issue and complete the provided sections in the new item template so we can move forward on it refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
   # Close the issue
   close: true
 
@@ -12,7 +18,34 @@ incomplete-submission:
 status:incomplete-submission:
   # Post a comment
   comment: >
-    Thank you for your submission, but there isn't enough detail in the issue for us to review & move forward. The new issue template includes sections for you to fill out. Please resubmit your issue and complete the provided sections in the new item template so we can move forward on it refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
+    Thank you for your submission, but there isn't enough detail in the issue for us to review & move forward.
+    
+    
+    The new issue template includes sections for you to fill out. Please resubmit your issue and complete the provided sections in the new item template so we can move forward on it refer to our wiki for more information: [How to Create Good Issues](https://github.com/pnp/sp-dev-fx-webparts/wiki/How-to-Create-Good-Issues)
   # Close the issue
   close: true
 
+# Actions taken when the `wrong-repo` label is added to issues 
+status:wrong-repo:
+  # Post a comment
+  comment: >
+    Thank you for your submission, but this issues list is intended only for issues related to the samples in this repository.
+    
+    
+    For general SPFx development issues, you may want to try to create issues in the [SP-Dev-Docs repository](https://github.com/SharePoint/sp-dev-docs/issues/new)
+  # Close the issue
+  close: true
+
+# Dealing with wrong versions of Node issues
+status:node-compatibility:
+  # Post a comment
+  comment: >
+    Thank you for your issue. It looks like the web part sample you're trying to use is not compatible with the version of Node.js that you're running in your environment.
+    
+    
+    Please refer to the [SPFx Compatibility Matrix](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/compatibility) to make sure that you're using a version of Node.js that is compatible with the version of SPFx the sample uses.
+    
+    
+    We'll close this issue, but if you run into further issues after you have made changes to your environment, please do not hesitate to open a new issue so we can help you further.
+  # Close the issue
+  close: true

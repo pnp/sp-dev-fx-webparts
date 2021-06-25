@@ -13,6 +13,7 @@ import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
 import { ExportListItemsToCSV } from '../../../shared/common/ExportListItemsToCSV/ExportListItemsToCSV';
 import { ExportListItemsToPDF } from '../../../shared/common/ExportListItemsToPDF/ExportListItemsToPDF';
 import { Pagination } from '../../../shared/common/Pagination/Pagination';
+import { RenderImageOrLink } from '../../../shared/common/RenderImageOrLink/RenderImageOrLink';
 import { DetailsList, DetailsListLayoutMode, DetailsRow, IDetailsRowStyles, IDetailsListProps, IColumn, MessageBar, SelectionMode } from 'office-ui-fabric-react';
 import { pdfCellFormatter } from '../../../shared/common/ExportListItemsToPDF/ExportListItemsToPDFFormatter';
 import { csvCellFormatter } from '../../../shared/common/ExportListItemsToCSV/ExportListItemsToCSVFormatter';
@@ -46,7 +47,7 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
   }
 
   private getUserProfileUrl = (loginName: string) => {
-    return this._services.getUserProfileUrl(loginName)
+    return this._services.getUserProfileUrl(loginName);
   }
 
   public componentDidUpdate(prevProps: IReactDatatableProps) {
@@ -120,7 +121,9 @@ export default class ReactDatatable extends React.Component<IReactDatatableProps
         value = value;
         break;
       case 'SP.FieldUrl':
-        value = <Link href={value['Url']} target="_blank">{value['Description']}</Link>;
+        let url = value['Url'];
+        let description = value['Description'];
+        value = <RenderImageOrLink url={url} description={description}></RenderImageOrLink>;
         break;
       case 'SP.FieldLocation':
         value = JSON.parse(value).DisplayName;

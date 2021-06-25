@@ -1,0 +1,67 @@
+parameters:
+  name: ''
+jobs:
+  - job: ${{ parameters.name }}
+    pool:
+      vmImage: 'ubuntu-latest'
+      demands:
+      - npm
+      - node.js
+      - java
+    variables:
+      npm_config_cache: $(Pipeline.Workspace)/.npm
+
+    steps:
+      - checkout: self
+
+      - task: NodeTool@0
+        displayName: 'Use Node 10.x'
+        inputs:
+          versionSpec: 10.x
+          checkLatest: true
+
+      - task: CacheBeta@1
+        inputs:
+          key: npm | $(Agent.OS) | package-lock.json
+          path: $(npm_config_cache)
+          cacheHitVar: CACHE_RESTORED
+      - script: npm ci
+        displayName: 'npm ci'
+
+      - task: Gulp@0
+        displayName: 'Bundle project'
+        inputs:
+          targets: bundle
+          arguments: '--ship'
+
+      - script: npm test
+        displayName: 'npm test'
+
+      - task: PublishTestResults@2
+        displayName: Publish test results
+        inputs:
+          testResultsFormat: JUnit
+          testResultsFiles: '**/junit.xml'
+          #failTaskOnFailedTests: true #if we want to fail the build on failed unit tests
+
+      - task: PublishCodeCoverageResults@1
+        displayName: 'Publish code coverage results'
+        inputs:
+          codeCoverageTool: Cobertura
+          summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+
+      - task: Gulp@0
+        displayName: 'Package Solution'
+        inputs:
+          targets: 'package-solution'
+          arguments: '--ship'
+
+      - task: CopyFiles@2
+        displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+        inputs:
+          Contents: |
+            sharepoint/**/*.sppkg
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: drop'

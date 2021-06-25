@@ -9,7 +9,7 @@
       "Displays page contributors in reverse chronological order."
     ],
     "creationDateTime": "2017-07-27",
-    "updateDateTime": "2017-07-27",
+    "updateDateTime": "2021-05-23",
     "products": [
       "SharePoint",
       "Office"
@@ -21,7 +21,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "GA"
+        "value": "1.12.1"
       }
     ],
     "thumbnails": [
@@ -45,6 +45,12 @@
         "pictureUrl": "https://github.com/SPParseError.png",
         "name": "St\u00E9phane Magne",
         "twitter": "SPParse"
+      },
+      {
+        "gitHubAccount": "AriGunawan",
+        "name": "Ari Gunawan",
+        "company": "",
+        "pictureUrl": "https://github.com/AriGunawan.png"
       }
     ],
     "references": [

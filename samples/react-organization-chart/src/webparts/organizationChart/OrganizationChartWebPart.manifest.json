@@ -3,7 +3,7 @@
   "id": "0338da15-07f9-4a53-b267-d790fb495cca",
   "alias": "OrganizationChartWebPart",
   "componentType": "WebPart",
-
+   "supportsFullBleed": true,
 
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",

@@ -1,16 +1,16 @@
 {
-  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
-
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "dfb5229a-c1c3-4e98-870b-c40dd6e4ec4b",
   "alias": "PageContributorsWebPart",
   "componentType": "WebPart",
   "version": "1.0.0",
   "manifestVersion": 2,
-  "safeWithCustomScriptDisabled": false,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
 
   "preconfiguredEntries": [{
     "groupId": "dfb5229a-c1c3-4e98-870b-c40dd6e4ec4b",
-    "group": { "default": "Under Development" },
+    "group": { "default": "Other" },
     "title": { "default": "Page Contributors" },
     "description": { "default": "Displays page contributors in reverse chronological order" },
     "officeFabricIconFontName": "People",

@@ -4,6 +4,7 @@ import { Separator } from 'office-ui-fabric-react/lib/Separator';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { IconNames } from '@uifabric/icons';
+import { isEqual } from '@microsoft/sp-lodash-subset';
 import { IAttachment } from "../../../../types/IAttachment";
 import { ControlMode } from '../../../../common/datatypes/ControlMode';
 
@@ -36,14 +37,27 @@ export class AttachmentRender extends React.Component<IAttachmentProps, IAttachm
     }
 
     public componentDidUpdate(prevProps: IAttachmentProps, prevState: IAttachmentState) {
-        //Component Value property got updated from List State
-        if (this.props.value
-            && this.props.value.Attachments
-            && this.props.value.Attachments.length > 0
-            && this.state.attachments.length == 0
-            && prevState.attachments.length == 0) {
-            this.setState({ attachments: this.props.value.Attachments });
+        switch (this.props.controlMode) {
+            case ControlMode.New:
+                if (!isEqual(prevProps.value, this.props.value)) {
+                    this.setState({
+                        attachments: this.props.value || [],
+                    });
+                }
+                break;
+            case ControlMode.Display:
+            case ControlMode.Edit:
+                //Component Value property got updated from List State
+                if (this.props.value
+                    && this.props.value.Attachments
+                    && this.props.value.Attachments.length > 0
+                    && this.state.attachments.length == 0
+                    && prevState.attachments.length == 0) {
+                    this.setState({ attachments: this.props.value.Attachments });
+                }
+                break;
         }
+
         if (this.state.attachments.length < prevState.attachments.length) {
             this.props.valueChanged(this.state.attachments);
         }
