@@ -59,7 +59,7 @@ o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'Channe
 
 Solution|Author(s)
 --------|---------
-react-follow-document | [André Lage](https://github.com/aaclage) (http://aaclage.blogspot.com, [@aaclage](https://twitter.com/aaclage))
+react-follow-document | [AndrÃ© Lage](https://github.com/aaclage) (http://aaclage.blogspot.com, [@aaclage](https://twitter.com/aaclage))
 
 ## Version history
 
@@ -107,7 +107,7 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-follow-document-WebPart&authors=@aaclage&title=react-follow-document-WebPart%20-%20).
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-follow-document-WebPart" />
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-follow-document" />
 
 ## References
 
