@@ -1,5 +1,7 @@
-import { ITag } from 'office-ui-fabric-react';
+import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 export interface IfollowDocumentSendMessageState {
-  selectedTeam: ITag[];
-  selectedTeamChannels: ITag[];
+    selectedTeamOption: IDropdownOption[];
+    selectedTeamChannelsOption: IDropdownOption[];
+    selectedTeamId: string;
+    selectedTeamChannelId: string;
 }

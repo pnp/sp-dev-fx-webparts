@@ -3,13 +3,12 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DialogContent, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { TeamChannelPicker } from "@pnp/spfx-controls-react/lib/TeamChannelPicker";
-import { TeamPicker } from "@pnp/spfx-controls-react/lib/TeamPicker";
 import { IfollowDocumentSendMessageProps } from "./IfollowDocumentSendMessageProps";
 import { IfollowDocumentSendMessageState } from "./IfollowDocumentSendMessageState";
 import { ITag, } from "office-ui-fabric-react/lib/Pickers";
 import * as AdaptiveCards from "adaptivecards";
 import Graph from "../../Service/GraphService";
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
 export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSendMessageProps, IfollowDocumentSendMessageState> {
     private card: any;
@@ -17,13 +16,28 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
     constructor(props) {
         super(props);
         this.state = {
-            selectedTeam: [],
-            selectedTeamChannels: [],
+            selectedTeamChannelsOption: [],
+            selectedTeamOption: [],
+            selectedTeamId: "",
+            selectedTeamChannelId: "",
         };
-        console.log(this.props.fileInfo);
+        this.loadTeams();
     }
     public componentDidMount(): void {
         this.showAdaptiveCard(this.props.fileInfo);
+    }
+    public loadTeams = async () => {
+        const Teams = await this.getjoinedTeams();
+        let Teamsoptions: Array<IDropdownOption> = new Array<IDropdownOption>();
+        Teams.value.forEach(element => {
+            Teamsoptions.push({
+                key: element.id,
+                text: element.displayName,
+            });
+        });
+        this.setState({
+            selectedTeamOption: Teamsoptions,
+        });
     }
 
     private sendMessageChannell = async () => {
@@ -36,9 +50,21 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
                     "content": this._acContainer.innerHTML + `<a href="${(this.props.fileInfo.fields.ServerUrlProgid === undefined ? this.props.fileInfo.fields.Url : this.props.fileInfo.fields.ServerUrlProgid.substring(1))}">${this.props.fileInfo.fields.Title}</a>`
                 }
             };
-            const getresult = await graphService.postGraphContent(`https://graph.microsoft.com/v1.0/teams/${this.state.selectedTeam[0].key}/channels/${this.state.selectedTeamChannels[0].key}/messages`, HeadersendMessage);
-            console.log(getresult);
+            const getresult = await graphService.postGraphContent(`https://graph.microsoft.com/v1.0/teams/${this.state.selectedTeamId}/channels/${this.state.selectedTeamChannelId}/messages`, HeadersendMessage);
         }
+    }
+
+
+    private getjoinedTeams = async () => {
+        const graphService: Graph = new Graph();
+        const getresult = await graphService.getGraphContent(`https://graph.microsoft.com/v1.0/me/joinedTeams?$select=id,displayName`, this.props.context);
+        return getresult;
+    }
+
+    private getTeamsChannels = async (TeamID) => {
+        const graphService: Graph = new Graph();
+        const getresult = await graphService.getGraphContent(`https://graph.microsoft.com/v1.0/teams/${TeamID}/channels?$select=id,displayName`, this.props.context);
+        return getresult;
     }
 
     public showAdaptiveCard(fileInfo: any) {
@@ -83,7 +109,7 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
                 },
                 {
                     "type": "TextBlock",
-                    "text": "Comments: "+ (fileInfo.Description === undefined? "": fileInfo.Description),
+                    "text": "Comments: " + (fileInfo.Description === undefined ? "" : fileInfo.Description),
                     "wrap": true
                 }
             ],
@@ -111,9 +137,6 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
     }
 
     public render(): React.ReactElement<IfollowDocumentSendMessageProps> {
-        const _onSelectedTeamChannels = (tagList: ITag[]) => {
-            this.setState({ selectedTeamChannels: tagList });
-        };
         const sendMessageTeam = () => {
             this.sendMessageChannell();
             this.props.close();
@@ -123,6 +146,29 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
             this.props.fileInfo.Description = (event.target as HTMLInputElement).value;
             this.showAdaptiveCard(this.props.fileInfo);
         };
+        const handleSelectTeam = async (event: React.FormEvent<HTMLDivElement>, selectedOption: IDropdownOption) => {
+            this.setState({
+                selectedTeamId: "",
+                selectedTeamChannelsOption: null,
+            });
+            const TeamsChannels = await this.getTeamsChannels(selectedOption.key.toString());
+            let Teamsoptions: Array<IDropdownOption> = new Array<IDropdownOption>();
+            TeamsChannels.value.forEach(element => {
+                Teamsoptions.push({
+                    key: element.id,
+                    text: element.displayName,
+                });
+            });
+            this.setState({
+                selectedTeamId: selectedOption.key.toString(),
+                selectedTeamChannelsOption: Teamsoptions,
+            });
+        };
+        const handleSelectChannel = async (event: React.FormEvent<HTMLDivElement>, selectedOption: IDropdownOption) => {
+            this.setState({
+                selectedTeamChannelId: selectedOption.key.toString(),
+            });
+        };
         return (
             <DialogContent
                 title="Send Document Card"
@@ -130,24 +176,21 @@ export class FollowDocumentSendMessage extends React.Component<IfollowDocumentSe
                 onDismiss={this.props.close}
             >
                 <div>
-                    <TeamPicker
-                        label="Select Team"
-                        selectedTeams={this.state.selectedTeam}
-                        appcontext={this.props.context}
-                        itemLimit={1}
-                        onSelectedTeams={(tagList: ITag[]) => {
-                            this.setState({ selectedTeamChannels: [] });
-                            this.setState({ selectedTeam: tagList });
-                        }}
+                    <Dropdown
+                        label="My Teams"
+                        options={this.state.selectedTeamOption}
+                        styles={{ dropdown: { width: 300 } }}
+                        onChange={handleSelectTeam}
                     />
-                    {this.state?.selectedTeam && this.state?.selectedTeam.length > 0 && (
+                    {this.state?.selectedTeamId !== "" && (
                         <>
-                            <TeamChannelPicker label="Select Team channel"
-                                teamId={this.state.selectedTeam[0].key}
-                                selectedChannels={this.state.selectedTeamChannels}
-                                appcontext={this.props.context}
-                                itemLimit={1}
-                                onSelectedChannels={_onSelectedTeamChannels} />
+                            <Dropdown
+                                label="Teams Channels"
+                                options={this.state.selectedTeamChannelsOption}
+                                styles={{ dropdown: { width: 300 } }}
+                                onChange={handleSelectChannel}
+                                notifyOnReselect={true}
+                            />
                         </>
                     )}
                     <TextField onChange={handleChange} label="Comments" multiline rows={3} />
