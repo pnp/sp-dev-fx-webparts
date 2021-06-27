@@ -3,7 +3,7 @@
   "solution": {
     "name": "happy-birdthay-anniversary-client-side-solution",
     "id": "474e78f8-113f-4057-a9a9-640241137620",
-    "version": "1.0.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
