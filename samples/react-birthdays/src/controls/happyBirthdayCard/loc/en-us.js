@@ -3,6 +3,8 @@ define([], function() {
     "BirdthayControlDefaultDay": "Today",
     "HappyBirthdayMsg": "Happy Birthday!",
     "NextBirthdayMsg": "Next Birthday",
-    "MessageNoBirthdays": "There are no birthdays for the next days."
+    "HappyAnniversaryMsg": "Happy Anniversary!",
+    "NextAnniversaryMsg": "Next Anniversary",
+    "MessageNoBirthdays": "There are no birthdays and anniversaries for the next days."
   }
 });
