@@ -27,9 +27,15 @@ Usage of following Technologies:
 
 ![image](./Assets/FollowDocumentSample1.gif)
 
-## Used SharePoint Framework Version
+## Compatibility
 
-![version](https://img.shields.io/npm/v/@microsoft/sp-component-base/latest?color=green)
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
+![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
+![Workbench Local](https://img.shields.io/badge/Workbench-Local-yellow.svg)
+
+
 
 ## Applies to
 
