@@ -8,8 +8,8 @@
     "longDescription": [
       "identify/follow user key documents from all Tenant and easily access them in Modern Pages and Microsoft Teams"
     ],
-    "created": "2021-06-21",
-    "modified": "2021-06-21",
+    "creationDateTime": "2021-06-21",
+    "updateDateTime": "2021-06-21",
     "products": [
       "SharePoint",
       "Office"
