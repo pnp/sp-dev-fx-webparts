@@ -3,7 +3,7 @@
 .year {
   display: flex;
   flex-wrap: wrap;
-  //justify-content: space-between;
+  overflow-y: auto;
 }
 
 .month {
