@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-follow-document/assets/FollowDocumentSample1.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-follow-document/Assets/FollowDocumentSample1.gif?raw=true",
         "alt": "react-follow-document"
       }
     ],
