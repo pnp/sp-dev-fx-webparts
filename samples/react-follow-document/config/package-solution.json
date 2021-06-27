@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "follow-document-web-part-client-side-solution",
+    "id": "fe2b78b4-7fce-42d8-93b9-a2a239770cbe",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "webApiPermissionRequests": [{  
+      "resource": "Microsoft Graph",  
+      "scope": "Files.Read"  
+  }, {  
+      "resource": "Microsoft Graph",  
+      "scope": "Files.Read.All"  
+  }, {  
+      "resource": "Microsoft Graph",  
+      "scope": "Sites.Read.All"  
+  }, {  
+    "resource": "Microsoft Graph",  
+    "scope": "Team.ReadBasic.All"  
+  }, {  
+    "resource": "Microsoft Graph",  
+    "scope": "Channel.ReadBasic.All"  
+  }, {  
+    "resource": "Microsoft Graph",  
+    "scope": "ChannelMessage.Send"  
+  }] 
+  },
+  "paths": {
+    "zippedPackage": "solution/follow-document-web-part.sppkg"
+  }
+}
