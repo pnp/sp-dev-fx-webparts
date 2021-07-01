@@ -240,7 +240,7 @@ export default class SimplePoll extends React.Component<ISimplePollProps, ISimpl
         showOptions: false,
         showProgress: false,
         UserResponse: usersResponse,
-        currentPollResponse: usersResponse[0].Response ? usersResponse[0].Response : usersResponse[0].MultiResponse.join(',')
+        currentPollResponse: filRes[0].Response ? filRes[0].Response : filRes[0].MultiResponse.join(',')
       }, this.bindResponseAnalytics);
     } else {
       this.setState({

@@ -9,7 +9,7 @@
       "This component is developed for the users who really need to create a Poll within a minute and with less maintenance."
     ],
     "creationDateTime": "2020-10-17",
-    "updateDateTime": "2020-10-17",
+    "updateDateTime": "2021-06-30",
     "products": [
       "SharePoint",
       "Office"
@@ -39,6 +39,12 @@
         "pictureUrl": "https://github.com/sudharsank.png",
         "name": "Sudharsan Kesavanarayanan",
         "twitter": "sudharsank"
+      },
+      {
+        "gitHubAccount": "dips365",
+        "pictureUrl": "https://github.com/dips365.png",
+        "name": "Dipen Shah",
+        "twitter": "Dips_365"
       }
     ],
     "references": [
