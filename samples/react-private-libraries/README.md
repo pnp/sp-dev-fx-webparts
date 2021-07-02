@@ -70,7 +70,7 @@ The RFX Folder List
 ![rfxfolders](assets/RFXFolders.PNG "RFXFolders")
 (The RFx column is a lookup to the Title/RFX Number in the RFx list)
 
-The scripts folder contains some feeble attempts to generate these lists using a sitescript.
+The scripts folder contains some feeble attempts to generate these lists using a sitescript at the last minute.
 If anyone is good at that , I could use some help!
 
 ## Features
