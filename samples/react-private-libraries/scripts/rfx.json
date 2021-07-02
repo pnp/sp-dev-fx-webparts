@@ -1,0 +1,69 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/sp/site-design-script-actions.schema.json",
+    "actions": [{
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type='Text' DisplayName='Closing Date' Group='_RFX' EnforceUniqueValues='FALSE' Required='FALSE' Hidden='FALSE' ReadOnly='FALSE' CanToggleHidden = 'FALSE' ID='{2701f2bf-d45f-4672-9774-6dab88b9792d}' Name='rfxClosingDate' StaticName='rfxClosingDate' MaxLength='255' Customization='' PITarget='' PIAttribute = '' PrimaryPIAttribute='' Aggregation='' Node='' />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type='User' DisplayName='Contract Specialist' Group='_RFX' EnforceUniqueValues='FALSE' Required='FALSE' Hidden='FALSE' ReadOnly='FALSE' CanToggleHidden = 'FALSE' ID='{843f09c7-19cb-4889-8b39-d3132643568c}' Name='rfxContractSpecialist' StaticName='rfxContractSpecialist' ShowField='ImnName' UserSelectionScope='0' UserSelectionMode = 'PeopleOnly' List='UserInfo' Customization='' PITarget='' PrimaryPITarget='' PIAttribute='' PrimaryPIAttribute='' Aggregation='' Node='' />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type='Note' DisplayName='Description' Group='Custom Columns' EnforceUniqueValues='FALSE' Required='FALSE' Hidden='FALSE' ReadOnly='FALSE' CanToggleHidden = 'FALSE' Sortable='FALSE' ID='{a04fc484-b807-4fef-a970-cbd007deeb87}' Name='rfxDescription' StaticName='rfxDescription' RichText='TRUE' RichTextMode='FullHtml'  IsolateStyles = 'TRUE' AppendOnly='FALSE' NumLines='6' UnlimitedLengthInDocumentLibrary='FALSE' Customization='' PITarget='' PrimaryPITarget='' PIAttribute='' PrimaryPIAttribute = '' Aggregation='' Node='' />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type='Number' DisplayName='Owners Group Id' Group='_RFX' EnforceUniqueValues='FALSE' Required='FALSE' Hidden='FALSE' ReadOnly='FALSE' CanToggleHidden = 'FALSE' ID='{34889607-f472-4d16-8f5b-b5ba6617c6cd}' Name='rfxOwnersGroupId' StaticName='rfxOwnersGroupId' Percentage='FALSE' Customization='' PITarget='' PrimaryPITarget = '' PIAttribute='' PrimaryPIAttribute='' Aggregation='' Node='' />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type='Number' DisplayName='Library Members Group Id' Group='_RFX' EnforceUniqueValues='FALSE' Required='FALSE' Hidden='FALSE' ReadOnly='FALSE' CanToggleHidden = 'FALSE' ID='{a395c515-2e66-4009-9704-64533250b082}' Name='rfxLibraryMembersGroupId' StaticName='rfxLibraryMembersGroupId' Percentage='FALSE' Customization='' PITarget='' PrimaryPITarget='' PIAttribute='' PrimaryPIAttribute='' Aggregation='' Node='' />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createSiteColumnXml",
+            "schemaXml": "<Field Type='Number' DisplayName='Library Visitors Group Id' Group='Custom Columns' EnforceUniqueValues='FALSE' Required='FALSE' Hidden='FALSE' ReadOnly = 'FALSE' CanToggleHidden='FALSE' ID='{b0f7ea7e-1bf3-44d7-a293-9b1c6b6af67c}' Name='rfxLibraryVisitorsGroupId' StaticName='rfxLibraryVisitorsGroupId' Percentage='FALSE' Customization = '' PITarget='' PrimaryPITarget='' PIAttribute='' PrimaryPIAttribute='' Aggregation='' Node='' />",
+            "pushChanges": true
+        },
+        {
+            "verb": "createContentType",
+            "name": "RFX",
+            "id": "0x0100C654015369B79E4DA6572D4FE4C0BFBD",
+            "description": "",
+            "parentId": "0x01",
+            "hidden": false,
+            "group": "_RFX",
+            "subactions": [{
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxClosingDate"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxContractSpecialist"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxDescription"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxOwnersGroupId"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxLibraryMembersGroupId"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "rfxLibraryVisitorsGroupId"
+                }
+            ]
+        }
+
+    ]
+}
