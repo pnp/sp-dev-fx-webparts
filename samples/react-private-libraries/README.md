@@ -7,7 +7,17 @@ This sample provides a webpart that can be used to manage Document Libraries wit
 The application manages all the security groups set up for the various libraries and folders so that suppliers only see RFP's they were ivited to participate in and only thier folders.
 
 
-![The main panel](assets/Home Screen.png)
+![mainpanel](assets/Home Screen.PNG)
+
+![AddingAlibrary](assets/Add a library.PNG)
+
+![ManagingFolders](assets/ManageFolders.png)
+
+![AddingAfolder](assets/Add A folder.png)
+
+![Configuration](assets/Configuration)
+
+
 
 ## Compatibility
 
