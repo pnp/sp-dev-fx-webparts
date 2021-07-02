@@ -7,15 +7,15 @@ This sample provides a webpart that can be used to manage Document Libraries wit
 The application manages all the security groups set up for the various libraries and folders so that suppliers only see RFP's they were ivited to participate in and only thier folders.
 
 
-![mainpanel](assets/Home Screen.PNG)
+![mainpanel] (.assets/HomeScreen.png)
 
-![AddingAlibrary](assets/Add a library.PNG)
+![AddingAlibrary] (.assets/Add a library.PNG)
 
-![ManagingFolders](assets/ManageFolders.png)
+![ManagingFolders] (.assets/ManageFolders.png)
 
-![AddingAfolder](assets/Add A folder.png)
+![AddingAfolder] (.assets/AddAFolder.png)
 
-![Configuration](assets/Configuration)
+![Configuration] (.assets/Configuration.png)
 
 
 
@@ -61,13 +61,6 @@ The application manages all the security groups set up for the various libraries
 
 ## Solution
 
-> We use this section to recognize and promote your contributions. Please provide one author per line -- even if you worked together on it.
-> We'll only use the info you provided here. Make sure to include your full name, not just your GitHub username.
-> Provide a link to your GitHub profile to help others find more cool things you have done.
-> If you provide a link to your Twitter profile, we'll promote your contribution on social media.
-> 
-> DELETE THE TEXT ABOVE BEFORE SUBMITTING
-
 Solution|Author(s)
 --------|---------
 react Private Folder Manager | [Russell Gove](https://github.com/russgove) ([@russgove](https://twitter.com/russgove))
@@ -80,11 +73,6 @@ Version|Date|Comments
 
 ## Prerequisites
 
-> Any special pre-requisites? Include any lists, permissions, offerings to the demo gods, or whatever else needs to be done for this web part to work.
-> 
-> Please describe the steps to configure the pre-requisites. Feel free to add screen shots, but make sure that there is a text description of the steps to perform.
-> 
-> DELETE THE TEXT ABOVE BEFORE SUBMITTING
 
 ## Minimal Path to Awesome
 
@@ -105,8 +93,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 * topic 2
 * topic 3
 
-> Note that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions in advance! You rock ❤.
-> DELETE THIS PARAGRAPH BEFORE SUBMITTING
+
 
 ## Disclaimer
 
