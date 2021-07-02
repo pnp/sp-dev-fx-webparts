@@ -59,8 +59,19 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
-> Include any additional steps as needed.
-> DELETE THIS PARAGRAPH BEFORE SUBMITTING
+Create two Lists to hold the List of RFX's and the list of RFX Folders.
+The lists must have the schemas below (using site content types is not needed)
+
+The RFX List:
+![mainpanel](assets/RFX.png "RFX")
+(The title was renamed to RFX Number)
+
+The RFX Folder List
+![mainpanel](assets/RFXFolders.png "RFXFolders")
+(The RFx column is a lookup to the Title/RFX Number in the RFx list)
+
+The scripts folder contains some feeble attempts to generate these lists using a sitescript.
+If anyone is good at that , I could use some help!
 
 ## Features
 
