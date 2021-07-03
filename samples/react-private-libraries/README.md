@@ -56,7 +56,7 @@ Version|Date|Comments
 
 Build  this solution and add it to your app catalog (tenant or site).
 
-Create a new Team Site (Without and Office 365 Group) or Communications site.
+Create a new Team Site (Without and Office 365 Group) or Communications site. The site must be configured to allow sharing with any external parties you want to invite to the site.
 
 Install this solution on the site
 
