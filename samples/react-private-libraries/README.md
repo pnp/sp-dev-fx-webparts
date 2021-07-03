@@ -129,7 +129,9 @@ The settings are :
 
 * The Recent Actibity command can be used to see what activity has taken place recently within the givern library.
 
-* Note that if this application is used, users must be warned that they should NEVER add or remove groups on the site.
+* Note that if this application is used, users must be warned that they should NEVER add or remove groups on the site. 
+
+* As of July 2021 this app has been running in a production environment for 9 months with no reported issues.
 
 
 
