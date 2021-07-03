@@ -11,11 +11,11 @@ The application manages all the security groups set up for the various libraries
 
 ![AddingAlibrary](assets/AddALibrary.png "Add A library")
 
-![ManagingFolders](assets/ManageFolders.png "Manage Folders")
+![ManagingFolders](assets/ManageFolders.PNG "Manage Folders")
 
 ![AddingAfolder](assets/AddAFolder.png "Add a folder")
 
-![Configuration](assets/Configuration.png "Configuration")
+![Configuration](assets/Configuration.PNG "Configuration")
 
 
 
@@ -78,7 +78,7 @@ After creating the lists create a new site page and add the Request Maintenance 
 
 The webpart configuration is below:
 
-![Configuration](assets/Configuration.png "Configuration")
+![Configuration](assets/Configuration.PNG "Configuration")
 
 The settings are :
 * RFX List - the title of the RFX list created above. For each new RFX library created this list will contain the library Name, A closing date (just informational for now, but we could set up a workflow to break access on this date), a contract specialist (the person who create the library and owns it), and the ID's of the Libraries Owner, members and Visitors group (When a new library is added a separate Owners member and visitors group is created just for that library.)
