@@ -81,7 +81,7 @@ The webpart configuration is below:
 ![Configuration](assets/Configuration.PNG "Configuration")
 
 The settings are :
-* RFX List - the title of the RFX list created above. For each new RFX library created this list will contain the library Name, A closing date (just informational for now, but we could set up a workflow to break access on this date), a contract specialist (the person who create the library and owns it), and the ID's of the Libraries Owner, members and Visitors group (When a new library is added a separate Owners member and visitors group is created just for that library.)
+* RFX List - the title of the RFX list created above. For each new RFX library created this list will contain the library Name, A closing date (just informational for now, but we could set up a workflow to break access on this date), a contract specialist (the person who create the library and owns it), and the ID's of the Libraries Owner, members and Visitors group. When a new library is added a separate Owners member and visitors group is created just for that library. The person creating the library is added to the Libraries Owner group and the Library Owners group becomes the owner of the Library Members and Visitors Groups, as well as any Folder-level groups within the library.
 
 * RFX Folders List - The title of the RFX Folders list created above. Whenever a new folder is added to a library using the webpart a new entry will be created in this list containing the RFX Name (a lookup to the RFX list), The FOlder Name, and the ID of the folder Members and Visitors groups (Whenever a new folder is created Members and visitors groups are created just for that folder.)
 
