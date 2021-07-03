@@ -123,11 +123,11 @@ The settings are :
 
 * When libraries are deleted or archived using the app, all associated security groups are automatically deleted and users ins those groups no longer have access
 
-* Can be userd as an alternative to MS Teams for sharing data with external counterparties. All the data is in one site so its easier to manage. Additionl libraries and content can be created at the site level to be shared with all people who have access to the site.
+* Can be used as an alternative to MS Teams for sharing data with external counterparties. All the data is in one site so its easier to manage. Additionl libraries and content can be created at the site level to be shared with all people who have access to the site.
 
 * Security is easy to manage, just go to the webpart and find the Library or folder you want to gran access to and click on the appropriate group. You can see who has access and add / remove users in one spot.
 
-* Note that if this application is used, users must be warned that they should NEVER add or remove groups on the site.,
+* Note that if this application is used, users must be warned that they should NEVER add or remove groups on the site.
 
 
 
