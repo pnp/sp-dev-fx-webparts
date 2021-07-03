@@ -11,6 +11,4 @@ $design=Add-PNPSiteDesign `
 
 Invoke-PnPSiteDesign -Identity $design.Id
 
-Remove-PnPSiteDesign -Identity $design.Id  
 
-Remove-PnPSiteScript -Identity $script.Id
