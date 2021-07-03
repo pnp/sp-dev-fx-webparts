@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.3/includes/tsconfig-web.json",
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.7/includes/tsconfig-web.json",
   "compilerOptions": {
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
@@ -19,21 +19,20 @@
       "./node_modules/@microsoft"
     ],
     "types": [
-      "es6-promise",
+      
       "webpack-env"
     ],
     "lib": [
       "es5",
       "dom",
-      "es2015.collection"
+      "es2015.collection",
+	  "es2015.promise"
     ],
     "esModuleInterop": true
   },
   "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib"
+    "src/**/*.ts",
+	"src/**/*.tsx"
   ]
+  
 }
