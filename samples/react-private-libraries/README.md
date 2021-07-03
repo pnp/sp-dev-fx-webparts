@@ -59,7 +59,8 @@ Version|Date|Comments
   * `npm install`
   * `gulp serve`
 
-Create two Lists to hold the List of RFX's and the list of RFX Folders.
+Create two Lists to hold the List of RFX's and th
+e list of RFX Folders.
 The lists must have the schemas below (using site content types is not needed)
 
 The RFX List:
@@ -70,17 +71,63 @@ The RFX Folder List
 ![rfxfolders](assets/RFXFolders.PNG "RFXFolders")
 (The RFx column is a lookup to the Title/RFX Number in the RFx list)
 
-The scripts folder contains a site script (rfx.json) that can be used to create thses lists.
+The scripts folder contains a site script (rfx.json) that can be used to create these lists.
 The PowershellScript AddLists.ps1 in the same folder can be run to applt the script and create the lists
+
+After creating the lists create a new site page and add the Request Maintenance webpart to it. 
+
+The webpart configuration is below:
+
+![Configuration](assets/Configuration.png "Configuration")
+
+The settings are :
+* RFX List - the title of the RFX list created above. For each new RFX library created this list will contain the library Name, A closing date (just informational for now, but we could set up a workflow to break access on this date), a contract specialist (the person who create the library and owns it), and the ID's of the Libraries Owner, members and Visitors group (When a new library is added a separate Owners member and visitors group is created just for that library.)
+
+* RFX Folders List - The title of the RFX Folders list created above. Whenever a new folder is added to a library using the webpart a new entry will be created in this list containing the RFX Name (a lookup to the RFX list), The FOlder Name, and the ID of the folder Members and Visitors groups (Whenever a new folder is created Members and visitors groups are created just for that folder.)
+
+* Archive Library - The name of a standard document library that can be used to Archive RFX libraries after they are done. If no library name is entered, the Ardchive button will not be shown. When a library is Archived, it is moved to a subfolder in the Archive Library and ALL securiy groups associated with that RFX Library are deleted. 
+
+* Permission for library members on Site - The Permission Library members group will be given on the overall Site (typically Read or View Only)
+
+* Permission for library members on Libraries - The Permission the Library Members group will be given on that particular library  (Typically Contribute).
+
+* Permission for library members on Folders - The Permission the Library Members group will be given on Folders within that particular library  (Typically Contribute).
+
+* Permission for library visitors on Site - The Permission Library visitors group will be given on the overall Site (typically Read or View Only)
+
+* Permission for library visitors on Libraries -  The Permission the Library Visitors group will be given on that particular library  (Typically Read or View Only).
+
+* Permission for library visitors on Folders- The Permission the Library Visitors group will be given on Folders within that particular library  (Typically Read or View Only).
+
+* Permission for Folder members on Site- The Permission Folder Members group will be given on the overall Site (typically Read or View Only)
+
+* Permission for Folder members on Library -The Permission the Folder Members group will be given on the library containing the folder   (Typically Read or View Only).
+
+* Permission for Folder members on Folders - The Permission the Folder Members group will be given on the folder   (Typically Contribute).
+
+* Permission for Folder visitors on Site- The Permission Folder Visitors group will be given on the overall Site (typically Read or View Only)
+
+* Permission for Folder visitors on Library - The Permission the Folder Visitors group will be given on the library containing the folder   (Typically Read or View Only).
+
+* Permission for Folder visitors on Folders- The Permission the Folder Visitors group will be given on the  folder   (Typically Read or View Only).
+
+* Allow users to change generated security group names - When Libraries and Folders are created group names are generated based on the Library and Folder name. If this switch is turned on users can override that name. Otherwise the name can not be changed.
+
+* Private Folders - If this switch is turned OFF, the Manage Folders command will not be shown. Secured subfolders cannot be created. 
+
+* App Insights instrumentation key- Optional App Insights instrumentation key to send telemetry to app insights if errors occur.
 
 ## Features
 
-Description of the web part with possible additional details than in short summary. 
-This Web Part illustrates the following concepts on top of the SharePoint Framework:
+* Allows for creatiion of Libraries and folders with discrete configurable security groups.
 
-* topic 1
-* topic 2
-* topic 3
+* When libraries are deleted or archived using the app, all associated security groups are automatically deleted and users ins those groups no longer have access
+
+* Can be userd as an alternative to MS Teams for sharing data with external counterparties. All the data is in one site so its easier to manage. Additionl libraries and content can be created at the site level to be shared with all people who have access to the site.
+
+* Security is easy to manage, just go to the webpart and find the Library or folder you want to gran access to and click on the appropriate group. You can see who has access and add / remove users in one spot.
+
+* Note that if this application is used, users must be warned that they should NEVER add or remove groups on the site.,
 
 
 
