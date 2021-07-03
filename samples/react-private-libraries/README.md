@@ -127,6 +127,8 @@ The settings are :
 
 * Security is easy to manage, just go to the webpart and find the Library or folder you want to gran access to and click on the appropriate group. You can see who has access and add / remove users in one spot.
 
+* The Recent Actibity command can be used to see what activity has taken place recently within the givern library.
+
 * Note that if this application is used, users must be warned that they should NEVER add or remove groups on the site.
 
 
