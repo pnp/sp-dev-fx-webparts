@@ -70,8 +70,8 @@ The RFX Folder List
 ![rfxfolders](assets/RFXFolders.PNG "RFXFolders")
 (The RFx column is a lookup to the Title/RFX Number in the RFx list)
 
-The scripts folder contains some feeble attempts to generate these lists using a sitescript at the last minute.
-If anyone is good at that , I could use some help!
+The scripts folder contains a site script (rfx.json) that can be used to create thses lists.
+The PowershellScript AddLists.ps1 in the same folder can be run to applt the script and create the lists
 
 ## Features
 
