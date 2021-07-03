@@ -1,4 +1,4 @@
-# Private Folder Manager
+# Private Library/Folder Manager
 
 ## Summary
 
