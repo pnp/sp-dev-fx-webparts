@@ -54,14 +54,14 @@ Version|Date|Comments
 
 ## Minimal Path to Awesome
 
-* Clone this repository
-* in the command line run:
-  * `npm install`
-  * `gulp serve`
+Build  this solution and add it to your app catalog (tenant or site).
 
-Create two Lists to hold the List of RFX's and th
-e list of RFX Folders.
-The lists must have the schemas below (using site content types is not needed)
+Create a new Team Site (Without and Office 365 Group) or Communications site.
+
+Install this solution on the site
+
+Create two Lists to hold the List of RFX's and the list of RFX Folders.
+The lists must have the schemas below (using site content types is not needed.)
 
 The RFX List:
 ![rfx](assets/RFX.PNG "RFX")
@@ -72,9 +72,9 @@ The RFX Folder List
 (The RFx column is a lookup to the Title/RFX Number in the RFx list)
 
 The scripts folder contains a site script (rfx.json) that can be used to create these lists.
-The PowershellScript AddLists.ps1 in the same folder can be run to applt the script and create the lists
+The Powershell Script AddLists.ps1 in the same folder can be run to create a site design that creates these lists.
 
-After creating the lists create a new site page and add the Request Maintenance webpart to it. 
+After creating the lists create a new site page and add the Request Maintenance webpart to it. (Break inheritance on the page and ensure only site members or owners have access to it!)
 
 The webpart configuration is below:
 
