@@ -2,7 +2,9 @@
 
 ## Summary
 
-This solution creates a customisable Hero Webpart, it uses a stored collection from the PnP PropertyFieldCollectionData control 
+This solution creates a customisable Hero style webpart that allows any number of images to be added, it will by default display just 5 but you can enable pagination which will allow all items to be loaded in a paged view. It uses a stored collection from the PnP PropertyFieldCollectionData control to store the images, Title, Description and URL fields. 
+
+You can customise this in a number of ways but it hopefully gives a baseline for re-creating some of the functionality of the OOB Hero Webpart.
 
 ![Hero](https://github.com/omarelanis/sp-dev-fx-webparts/blob/master/samples/hero-webpart/Sample/Hero-Webpart.gif)
 
