@@ -4,7 +4,7 @@
 
 This solution creates a customisable Hero Webpart, it uses a stored collection from the PnP PropertyFieldCollectionData control 
 
-[https://github.com/omarelanis/sp-dev-fx-webparts/blob/master/samples/hero-webpart/Sample/Hero-Webpart.gif]
+![Hero](https://github.com/omarelanis/sp-dev-fx-webparts/blob/master/samples/hero-webpart/Sample/Hero-Webpart.gif)
 
 ## Used SharePoint Framework Version
 
