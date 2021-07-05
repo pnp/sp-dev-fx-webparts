@@ -28,9 +28,13 @@ export default class PagecontributionWebPart extends BaseClientSideWebPart<IPage
       React.createElement(PageContributors, {
         personaSize: this.properties.personaSize,
         numberOfFaces: this.properties.numberOfFaces,
-        pageUrl: this.properties.pageUrl
+        pageUrl: this.properties.pageUrl || this.getCurrentPageRelativeUrl()
       })
       , this.domElement);
+  }
+
+  private getCurrentPageRelativeUrl(): string {
+    return this.context.pageContext.legacyPageContext.serverRequestPath;
   }
 
   protected get dataVersion(): Version {
