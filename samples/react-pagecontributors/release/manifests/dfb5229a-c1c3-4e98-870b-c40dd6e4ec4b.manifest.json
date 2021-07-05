@@ -35,7 +35,7 @@
     "scriptResources": {
       "page-contributors-web-part": {
         "type": "path",
-        "path": "page-contributors-web-part_4d2033f670297cd13b0c.js"
+        "path": "page-contributors-web-part.js"
       },
       "@microsoft/sp-property-pane": {
         "type": "component",
@@ -49,7 +49,7 @@
       },
       "pageContributorsStrings": {
         "type": "path",
-        "path": "pageContributorsStrings_en-us_6ae41e2edb727df21538267edcd92249.js"
+        "path": "pageContributorsStrings_en-us.js"
       },
       "@microsoft/sp-webpart-base": {
         "type": "component",
