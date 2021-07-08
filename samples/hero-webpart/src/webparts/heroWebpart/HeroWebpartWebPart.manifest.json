@@ -17,11 +17,15 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "Hero Webpart" },
+    "title": { "default": "Hero Layout Webpart" },
     "description": { "default": "Provides a customisable Hero webpart that displays 5 images in a standlone or carousel view" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "Hero Webpart"
+      "description": "Hero Layout Webpart",
+      "isPaginated":false,
+      "hideFirstPageJump":false,
+      "hideLastPageJump":false,
+      "showAllHero":false
     }
   }]
 }

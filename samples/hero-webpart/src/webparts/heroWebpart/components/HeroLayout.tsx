@@ -32,7 +32,7 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
     private _getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
       return 1;
     }
-
+    
     private _onRenderHeroItem =  (items: any, index: number | undefined): JSX.Element => {
       const thumbRend = "https://media.akamai.odsp.cdn.office.net/uksouth1-mediap.svc.ms/transform/thumbnail?provider=url&inputFormat=jpg&docid=";
       const secondItems = items.slice(1,5);
@@ -45,7 +45,7 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
             <div className={styles.focusItem}>
                <div className={styles["flexitems"]}>                    
                   <a href={firstItemUrl}>
-                  <img src={thumbRend+firstItem.filePicker[0].fileAbsoluteUrl+"&w=960"}/>
+                  <img src={firstItem.filePicker[0].fileNameWithoutExtension=='blankEntry154873'?firstItem.filePicker[0].fileAbsoluteUrl:thumbRend+firstItem.filePicker[0].fileAbsoluteUrl+"&w=960"}/>
                   <div className={styles.description}><div className={styles.heroTitle}>{firstItem.Title}</div>{firstItem.Description ? firstItem.Description.length>150 ? firstItem.Description.substring(0, 150)+".." : firstItem.Description : "Description coming soon"}</div>
                   </a>
               </div>
@@ -56,7 +56,7 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
                   smalltemUrl= item.filePicker[0].Hyperlink ? item.filePicker[0].Hyperlink : "#",
                   <div className={styles["flexitems"]}>
                         <a href={smalltemUrl}>
-                        <img src={thumbRend+item.filePicker[0].fileAbsoluteUrl+"&w=640"}/>
+                        <img src={item.filePicker[0].fileNameWithoutExtension=='blankEntry154873'?item.filePicker[0].fileAbsoluteUrl:thumbRend+item.filePicker[0].fileAbsoluteUrl+"&w=960"}/>
                         <div className={styles.description}><div className={styles.heroTitle}>{item.Title}</div>{item.Description ? item.Description.length>150 ? item.Description.substring(0, 150)+".." : item.Description : "Description coming soon"}</div>
                         </a>
                   </div>

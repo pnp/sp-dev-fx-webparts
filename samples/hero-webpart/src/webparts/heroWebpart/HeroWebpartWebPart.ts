@@ -43,7 +43,7 @@ export default class HeroWebpartWebPart extends BaseClientSideWebPart<IHeroWebpa
         spfxContext: this.context,
         showAllHero: this.properties.showAllHero,
         pageLimit:5,
-        items:this.properties.collectionData
+        items:this.properties.collectionData?this.properties.collectionData:[]
       }
     );
 

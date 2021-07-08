@@ -36,61 +36,46 @@ export default class HeroWebpart extends React.Component<IHeroWebpartProps, IHer
     });
     this.state = {
       items: this.props.items || [],
-      itemsPaginated: this.props.items.slice(0,5) || [],
+      itemsPaginated: this.props.items.length>0?this.props.items.slice(0,5):[],
       currentPage: 1,
-      totalPages: Math.ceil(this.props.items.length / 5),
-      pageLimit: 5
+      totalPages: this.props.items.length>0?Math.ceil(this.props.items.length / 5):1,
+      pageLimit: this.props.pageLimit
     };
     this._getItems();
-    // Delete any expired cache items
-    // storage.local.deleteExpired();
-    // // Get items from cache if they exist
-    // const items = storage.local.get("c70a33331a1e4172bd87d46ee92af341");
-    // if (items===null || undefined===items[0]){
-    //     this._getItems();
-    // }else{
-    //   this.setState({items: items,itemsPaginated:items.slice(0,5),totalPages:Math.ceil(items.length / 5)});
-    // }
-
   }
 
   private _getItems(){
-    this.setState({itemsPaginated:this.state.items.slice(0,5),totalPages:Math.ceil(this.state.items.length / 5)});
-
+    let empty=[];
+    if(this.state.items.length>0){
+    this.setState({itemsPaginated:this.state.items.slice(0,5)}),this.setState({totalPages:Math.ceil(this.state.items.length / 5)});
+    }else{
+    empty=this.emptyHeroItem();this.setState({items:empty}),this.setState({itemsPaginated:empty});
+    }
   }
 
   private _getPage(page: number){
     this.setState({currentPage: page});
     var itemsSlice:any[], totalPages:number;
     itemsSlice = this.state.items.slice((page - 1) * this.state.pageLimit, ((page - 1) * this.state.pageLimit) + this.state.pageLimit);
-    itemsSlice.length==0 ? this.setState({itemsPaginated: this.emptyCourse()}) : this.setState({itemsPaginated: itemsSlice},this.render);
+    itemsSlice.length==0 ? this.setState({itemsPaginated: this.emptyHeroItem()}) : this.setState({itemsPaginated: itemsSlice},this.render);
   }
 
-  private emptyCourse(){
+  private emptyHeroItem(){
     var b=[];
       for (let i = 0; i < this.state.pageLimit; i++) {
         b.push({
-          id:"",
-          thumbnail: require('../assets/blankEntry.jpg'),
-          title: "Coming soon!",
-          name: "",
-          profileImageSrc: "",
-          courseCode: "",
-          activity: "",
+          Title: "Coming soon!",
           description: "We don't have anything here yet, we're always open to suggestions!",
-          enrollment: "",
-          SPurl: ""
+          Hyperlink:"",
+          filePicker:[{fileAbsoluteUrl:require('../assets/blankEntry154873.jpg'),fileName:'blankEntry154873.jpg',fileNameWithoutExtension:'blankEntry154873'}]
         });
       }
     return b;
   }
 
   public render(): React.ReactElement<IHeroWebpartProps> {
-    // if(this.state.items!=this.props.items){
-    //   this.setState({items :this.props.items});
-    // }
-    if(this.state.items.length<1){
-      //this._getItems();
+    if(this.state.items.length<=0){
+      this._getItems();
       return(
         <Stack {...rowProps} tokens={tokens.spinnerStack}>
           <Label>Loading</Label>
