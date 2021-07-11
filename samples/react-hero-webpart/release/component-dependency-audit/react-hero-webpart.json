@@ -1,6 +1,6 @@
 {
   "bundles": {
-    "page-contributors-web-part": {
+    "hero-webpart-web-part": {
       "dependencies": [
         {
           "componentId": "f9e737b7-f0df-4597-ba8c-3060f82380db",
