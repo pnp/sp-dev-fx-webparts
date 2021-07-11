@@ -1,0 +1,51 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-provate-libraries",
+    "source": "pnp",
+    "title": "Private Library/Folder Manager",
+    "shortDescription": "This sample provides a webpart that can be used to manage Document Libraries with Secured Subfolders.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-provate-libraries",
+    "longDescription": [
+      "This sample provides a webpart that can be used to manage Document Libraries with Secured Subfolders. The use case this was developed for is a Request for Proposal site. A Document library is created for each RFP and subfolders are created within that Library for each external supplier invited to participate in that RFP.",
+      "The application manages all the security groups set up for the various libraries and folders so that suppliers only see RFP's they were invited to participate in and only thier folder in those libraries. General documents for the RFP that should be seen by everyone participating in the RFP can be put in the root folder of the library. General terms and conditions that everyone should see can be put at the root folder of the site."
+    ],
+    "creationDateTime": "2021-07-02",
+    "updateDateTime": "2021-07-02",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.10.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-provate-libraries/assets/HomeScreen.png",
+        "alt": "Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "russgove",
+        "pictureUrl": "https://github.com/russgove.png",
+        "name": "Russell Gove"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]
