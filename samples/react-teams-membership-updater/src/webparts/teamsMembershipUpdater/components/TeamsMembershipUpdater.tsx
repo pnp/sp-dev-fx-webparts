@@ -105,18 +105,20 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
     this.setState({ ...this.state, csvdata: null });
   }
 
-  private fileChange = (filePickerResult: IFilePickerResult) => {
+  private fileChange = (filePickerResult: IFilePickerResult[]) => {
     this.props.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
-      filePickerResult.downloadFileContent().then((file) => {
-        const reader = new FileReader();
-        reader.readAsArrayBuffer(file);
-        reader.onloadend = ((ev) => {
-          let decodedString = new TextDecoder('utf-8').decode(new DataView(reader.result as ArrayBuffer));
-          const csv = readString(decodedString, { header: true, skipEmptyLines: true });
-          var h = csv.meta.fields;
-          this._data = csv.data;
-          this._datacolumns = h.map(r => { return { key: r.replace(' ', ''), name: r, fieldName: r, isResizable: true }; });
-          this.setState({ ...this.state, csvcolumns: this._datacolumns, csvdata: this._data, csvItems: h.map(r => { return { key: r.replace(' ', ''), text: r }; }), logs: [], errors: [], logurl: null });
+      filePickerResult.forEach(f => {
+        f.downloadFileContent().then((file) => {
+          const reader = new FileReader();
+          reader.readAsArrayBuffer(file);
+          reader.onloadend = ((ev) => {
+            let decodedString = new TextDecoder('utf-8').decode(new DataView(reader.result as ArrayBuffer));
+            const csv = readString(decodedString, { header: true, skipEmptyLines: true });
+            var h = csv.meta.fields;
+            this._data = csv.data;
+            this._datacolumns = h.map(r => { return { key: r.replace(' ', ''), name: r, fieldName: r, isResizable: true }; });
+            this.setState({ ...this.state, csvcolumns: this._datacolumns, csvdata: this._data, csvItems: h.map(r => { return { key: r.replace(' ', ''), text: r }; }), logs: [], errors: [], logurl: null });
+          });
         });
       });
     });
