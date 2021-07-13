@@ -12,8 +12,8 @@ Used to update the membership of a team based on the contents of a CSV file, can
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
-![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
+![Node.js LTS 14.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
 ![Workbench Hosted: Does not work with local workbench](https://img.shields.io/badge/Workbench-Hosted-yellow.svg "Does not work with local workbench")
@@ -45,6 +45,7 @@ Version|Date|Comments
 1.0.4|June 3, 2020|Switched to using Graph Batching
 1.0.7|April 20, 2021|Switched to using PnP's file picker and option to log to a configuration list
 1.0.8|April 22, 2021|Added support for paging on the team member list get
+1.1.0|July 13, 2021|Upgraded to v1.12.1 of SPFx and v3 of pnp controls
 
 ## Minimal Path to Awesome
 
