@@ -6,7 +6,7 @@ This solution creates a customisable Tiles Webpart, it uses a stored collection 
 
 This is a rebuild of the awesome project created by @hugoabernier [https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tiles] so the credit goes to him!
 
-[https://github.com/omarelanis/sp-dev-fx-webparts/blob/master/samples/hero-webpart/Sample/Hero-Webpart.gif]
+[https://github.com/omarelanis/sp-dev-fx-webparts/blob/master/samples/react-tiles-v2/Sample/react-tiles-v2.gif]
  
 ## Used SharePoint Framework Version
 
