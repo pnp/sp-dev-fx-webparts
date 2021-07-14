@@ -906,6 +906,12 @@ export class Event extends React.Component<IEventProps, IEventState> {
                         iconProps={{ iconName: 'RecurringEvent' }}
                         allowDisabledFocus={true}
                         onClick={this.onEditRecurrence}
+                        disabled={
+                        this.state.userPermissions.hasPermissionAdd ||
+                        this.state.userPermissions.hasPermissionEdit
+                          ? false
+                          : true
+                         }
                       >
                         {strings.editRecurrenceSeries}
                       </DefaultButton>
