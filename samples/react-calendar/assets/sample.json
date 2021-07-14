@@ -9,7 +9,7 @@
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
     "created": "2020-12-04",
-    "modified": "2021-03-27",
+    "modified": "2021-07-14",
     "products": [
       "SharePoint",
       "Office"

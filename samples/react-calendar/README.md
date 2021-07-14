@@ -136,6 +136,7 @@ Version|Date|Comments
 1.0.8|December 24, 2020|Fixed timezone difference (#1646)
 1.0.9|March 16, 2021|Fixed issue deleting events (#1773)
 1.0.10|March 27, 2021|Updated prompt message when deleting single v/s multi-event.
+1.0.11|July 14, 2021|Fix to disable (Edit Recurrence Series) button when user has readonly access and enable it when user has full permissions (#1960).
 
 ## Disclaimer
 
