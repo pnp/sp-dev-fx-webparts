@@ -17,12 +17,13 @@ extensions:
 
 ## Summary
 - This Web Part allows users to create Frequently Asked Questions(Faq App) in modern and classic SharePoint pages.
-- This webpart allows to search within questions and answers which are stored in a SharePoint FAQ list.
+- This web part allows to search within questions and answers which are stored in a SharePoint FAQ list.
 - "React-autosuggest and react-accessible-accordion" react packages are used for the search and accordion control.
 
 ![Web part preview](assets/FAQWebpart.png)
 
 ## Used SharePoint Framework Version 
+
 ![1.8.2](https://img.shields.io/badge/drop-1.8.2-green.svg)
 
 ## Applies to
@@ -90,7 +91,7 @@ Column Name|Field Type
 - Expand answers to your most frequent questions.
 - Include text, links, images in your answers.
 - A search bar to make your FAQ accordion searchable.
-- This webpart allows to search within questions and answers which are stored in a SharePoint FAQ list.
+- This web part allows to search within questions and answers which are stored in a SharePoint FAQ list.
 - Sorting is enabled on both the category & Question
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-FAQApp" />

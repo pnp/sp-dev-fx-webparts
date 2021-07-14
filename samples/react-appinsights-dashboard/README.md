@@ -22,8 +22,8 @@ This web part displays different statistics data captured in the **Azure Applica
 ## Pre-requisites
 
 **Azure Application Insights** has to be configured. If you want to track the **SharePoint Online** web parts and pages, please use either of the following **Application Customizer** or you can use your own extensions to track the pages and other components. 
-* [Injecting JavaScript with SharePoint Framework Extensions - Azure Application Insights](https://github.com/pnp/sp-dev-fx-extensions/tree/master/samples/js-application-appinsights)
-* [JS Application AppInsights Advanced](https://github.com/pnp/sp-dev-fx-extensions/tree/master/samples/js-application-appinsights-advanced)
+* [Injecting JavaScript with SharePoint Framework Extensions - Azure Application Insights](https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-appinsights)
+* [JS Application AppInsights Advanced](https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-appinsights-advanced)
 
 Following are required to access the data using **[App Insights API](https://dev.applicationinsights.io/)**. The API has been provided in a very simple way with **[API Explorer](https://dev.applicationinsights.io/apiexplorer)** for the developers to play around the API to understand the schema and the methods that can used.
 * **Application ID** of the Application Insights

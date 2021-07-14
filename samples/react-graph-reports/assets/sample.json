@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Graph Usage Reports",
     "shortDescription": "This sample describe a SPFX application which retrieves an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-graph-reports",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-reports",
     "longDescription": [
       "This sample describe a SPFX application which retrieves an office 365 usage reports using Microsoft Graph API. This application also use chartjs library to generate graph."
     ],
-    "created": "2019-04-09",
-    "modified": "2019-04-09",
+    "creationDateTime": "2019-04-09",
+    "updateDateTime": "2019-04-09",
     "products": [
       "SharePoint",
       "Office"
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-graph-reports/assets/react-graph-reports.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-reports/assets/react-graph-reports.gif",
         "alt": "Graph Usage Reports"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-graph-reports/assets/graph-api-permissions-usage-reports.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-graph-reports/assets/graph-api-permissions-usage-reports.png?raw=true",
         "alt": "Graph Usage Reports"
       }
     ],

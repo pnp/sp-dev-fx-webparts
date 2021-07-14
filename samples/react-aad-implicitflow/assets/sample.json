@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Azure Active Directory implicit flow authentication samples",
     "shortDescription": "Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-aad-implicitflow",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-aad-implicitflow",
     "longDescription": [
       "Sample SharePoint Framework web parts built using React illustrating different scenarios using implicit OAuth flow with Azure Active Directory."
     ],
-    "created": "2017-03-17",
-    "modified": "2017-03-17",
+    "creationDateTime": "2017-03-17",
+    "updateDateTime": "2017-03-17",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png",
         "alt": "Azure Active Directory implicit flow authentication samples"
       }
     ],

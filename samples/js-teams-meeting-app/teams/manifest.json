@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.8/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.8",
+  "packageName": "ms365.spfx.teamsmeetingsapp",
+  "id": "ae096643-1ded-479b-a3d8-64dca8669d37",
+  "version": "1.0",
+  "developer": {
+    "name": "Contoso Developer Department",
+    "websiteUrl": "https://contoso.com/spfx-teams-meetings-app",
+    "privacyUrl": "https://contoso.com/privacystatement",
+    "termsOfUseUrl": "https://contoso.com/servicesagreement"
+  },
+  "name": {
+    "short": "SPFx Meetings App",
+    "full": "SPFx Meetings App - Tabs Demo"
+  },
+  "description": {
+    "short": "Demonstration SPFx web part used as MS Teams meeting app tab.",
+    "full": "This demonstration app shows how to create a meetings app using an SPFx web part that's displayed as a tab for the meeting."
+  },
+  "icons": {
+    "outline": "ae096643-1ded-479b-a3d8-64dca8669d37_outline.png",
+    "color": "ae096643-1ded-479b-a3d8-64dca8669d37_color.png"
+  },
+  "accentColor": "#004578",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26componentId=ae096643-1ded-479b-a3d8-64dca8669d37",
+      "canUpdateConfiguration": false,
+      "scopes": [
+        "team",
+        "groupchat"
+      ],
+      "context": [
+        "channelTab",
+        "privateChatTab",
+        "meetingSidePanel",
+        "meetingDetailsTab",
+        "meetingChatTab"
+      ]
+    }
+  ],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "resourceseng.blob.core.windows.net"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}

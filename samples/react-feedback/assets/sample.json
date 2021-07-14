@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Feedback",
     "shortDescription": "This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the \u0022Feedback Owners\u0022 group.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-feedback",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-feedback",
     "longDescription": [
       "This is an application that supports Feedback through a web part that can be used directly on a Modern SharePoint Site page. This web part can be added to any site page or article. This allows users to send categorized feedback via email to users in the \u0022Feedback Owners\u0022 group."
     ],
-    "created": "2021-03-03",
-    "modified": "2021-03-03",
+    "creationDateTime": "2021-03-03",
+    "updateDateTime": "2021-03-03",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-feedback/assets/feedbackwebpart.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feedback/assets/feedbackwebpart.gif",
         "alt": "Feedback"
       }
     ],

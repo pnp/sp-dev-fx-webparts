@@ -2,9 +2,7 @@
   "name": "react-facebook-plugin",
   "version": "0.0.1",
   "private": true,
-  "engines": {
-    "node": ">=0.10.0"
-  },
+  "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean && gulp build && gulp bundle && gulp package-solution",
     "build:prod": "npm run clean && gulp build --ship && gulp bundle --ship && gulp package-solution --ship",
@@ -13,27 +11,26 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/sp-core-library": "1.5.1",
-    "@microsoft/sp-lodash-subset": "1.5.1",
-    "@microsoft/sp-office-ui-fabric-core": "1.5.1",
-    "@microsoft/sp-webpart-base": "1.5.1",
-    "@types/es6-promise": "0.0.33",
-    "@types/react": "15.6.6",
-    "@types/react-dom": "15.5.6",
-    "@types/webpack-env": "1.13.1",
+    "@microsoft/sp-core-library": "1.12.1",
+    "@microsoft/sp-lodash-subset": "1.12.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.12.1",
+    "@microsoft/sp-property-pane": "1.12.1",
+    "@microsoft/sp-webpart-base": "1.12.1",
+    "office-ui-fabric-react": "7.156.0",
     "on-el-resize": "0.0.4",
-    "react": "15.6.2",
-    "react-dom": "15.6.2"
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.5.1",
-    "@microsoft/sp-module-interfaces": "1.5.1",
-    "@microsoft/sp-webpart-workbench": "1.5.1",
-    "@types/chai": "3.4.34",
-    "@types/mocha": "2.2.38",
+    "@microsoft/rush-stack-compiler-3.7": "0.2.3",
+    "@microsoft/sp-build-web": "1.12.1",
+    "@microsoft/sp-module-interfaces": "1.12.1",
+    "@microsoft/sp-tslint-rules": "1.12.1",
+    "@microsoft/sp-webpart-workbench": "1.12.1",
+    "@types/react": "16.9.36",
+    "@types/react-dom": "16.9.8",
+    "@types/webpack-env": "1.13.1",
     "ajv": "~5.2.2",
-    "gulp": "~3.9.1",
-    "tslint-config-standard": "^7.1.0",
-    "tslint-react": "^3.6.0"
+    "gulp": "~4.0.2"
   }
 }

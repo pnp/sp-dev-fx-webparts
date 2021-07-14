@@ -8,7 +8,7 @@
       "name": "Eric Overfield",
       "privacyUrl": "https://contoso.com/privacy",
       "termsOfUseUrl": "https://contoso.com/terms-of-use",
-      "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-rss-reader",
+      "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
       "mpnId": "m365pnp"
     },
     "includeClientSideAssets": true,

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Web Part Details",
     "shortDescription": "The web part illustrates how to get all the web part present in the current page, bind them in a multi-select dropdown.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-webpartdetails",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-webpartdetails",
     "longDescription": [
       "The web part illustrates how to get all the web part present in the current page, bind them in a multi-select dropdown."
     ],
-    "created": "2020-06-13",
-    "modified": "2020-06-13",
+    "creationDateTime": "2020-06-13",
+    "updateDateTime": "2020-06-13",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-webpartdetails/assets/webpartDetails.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webpartdetails/assets/webpartDetails.png",
         "alt": "Web Part Details"
       }
     ],

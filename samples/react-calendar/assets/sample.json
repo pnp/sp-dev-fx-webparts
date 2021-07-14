@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Calendar",
     "shortDescription": "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar",
     "longDescription": [
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
@@ -26,133 +26,137 @@
       {
         "key": "SPFX-TEAMSTAB",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldDateTimePicker, PeoplePicker, Map"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar/assets/animatevideo.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/animatevideo.gif",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/calendar_teams.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/calendar_teams.jpg?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/calendar_teams2.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/calendar_teams2.jpg?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/modercalendar_monthly.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/modercalendar_monthly.gif?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/moderncalendar_yearly.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/moderncalendar_yearly.gif?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen1.0.jpg?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.0.jpg?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen1.0.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.0.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen1.1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.1.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 108,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen1.2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.2.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 109,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen1.3.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.3.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 110,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen1.4.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.4.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 111,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen1.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen1.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 112,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen2.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 113,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen3.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen3.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 114,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen4.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen4.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 115,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen5.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen5.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 116,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen6.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen6.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 117,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen7.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen7.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 118,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen8.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen8.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 119,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/screen9.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/screen9.png?raw=true",
         "alt": "Calendar"
       },
       {
         "type": "image",
         "order": 120,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-calendar/assets/weekly_moderncalendar.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-calendar/assets/weekly_moderncalendar.gif?raw=true",
         "alt": "Calendar"
       }
     ],
@@ -196,6 +200,10 @@
         "pictureUrl": "https://avatars.githubusercontent.com/u/19314043?s=460&u=79acb7fd0ad466e1040ddd8a739fa93385018b81&v=4",
         "name": "Mohammed Amer",
         "twitter": "Mohammad3mer"
+      }, {
+        "gitHubAccount": "Eli-Schei",
+        "name": "Eli H. Schei",
+        "pictureUrl": "https://github.com/Eli-Schei"
       }
     ],
     "references": [

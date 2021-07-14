@@ -2,7 +2,7 @@
 
 ## Summary
 
-This webpart displays a quote of the day by querying a third-party api or can display a quote entered manually into the webpart property pane.
+This web part displays a quote of the day by querying a third-party api or can display a quote entered manually into the web part property pane.
 
 ![picture of the web part in action](./assets/react-quotes-sample.png)
 
@@ -38,11 +38,11 @@ Version|Date|Comments
 * in the command line run:
   * `npm install`
   * `gulp serve`
-* In the browser that opens add the webpart to your page.
-* After the webpart has loaded it will load the quote automatically or you can edit the webparts properties to display a manual quote.
+* In the browser that opens add the web part to your page.
+* After the web part has loaded it will load the quote automatically or you can edit the webparts properties to display a manual quote.
 
 ## Features
 
-This webpart loads a random quote from a third-party api (https://favqs.com/api). Additionally a quote can be entered manually and the text color of the quote and author can be adjusted through the webpart properties.
+This web part loads a random quote from a third-party api (https://favqs.com/api). Additionally a quote can be entered manually and the text color of the quote and author can be adjusted through the web part properties.
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/readme-template" />

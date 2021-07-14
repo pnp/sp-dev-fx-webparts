@@ -68,6 +68,6 @@ To get access to Yammer API, we need to add the required permission to “ShareP
 
 Bundle and package the solution, deploy it to app catalog, then add the web part to any pages in SharePoint or add to your Teams.
 
-Read my blog post for more information from [here](https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-yammer-api).
+Read my blog post for more information from [here](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-yammer-api).
 
 <img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-yammer-praise" />

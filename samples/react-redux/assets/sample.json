@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Using React and Redux",
     "shortDescription": "Sample web part implementation that uses Redux to keep track of its state.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-redux",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-redux",
     "longDescription": [
       "Sample web part implementation that uses Redux to keep track of its state."
     ],
-    "created": "2016-10-28",
-    "modified": "2016-10-28",
+    "creationDateTime": "2016-10-28",
+    "updateDateTime": "2016-10-28",
     "products": [
       "SharePoint",
       "Office"

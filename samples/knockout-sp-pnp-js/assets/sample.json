@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Sample showing the use of @pnp/sp library with Knockoutjs",
     "shortDescription": "This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/knockout-sp-pnp-js",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/knockout-sp-pnp-js",
     "longDescription": [
       "This web part demonstrates how to integrate the @pnp/sp library into the SharePoint Framework as well as including mock data and simple list I/O."
     ],
-    "created": "2018-11-14",
-    "modified": "2018-11-14",
+    "creationDateTime": "2018-11-14",
+    "updateDateTime": "2018-11-14",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/knockout-sp-pnp-js/assets/screenshot.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-sp-pnp-js/assets/screenshot.png",
         "alt": "Sample showing the use of @pnp/sp library with Knockoutjs"
       }
     ],

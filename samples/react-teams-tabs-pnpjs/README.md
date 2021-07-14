@@ -50,7 +50,7 @@ Version|Date|Comments
   * upload it to your tenant app catalog
   * [approve permission requests](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient#manage-permission-requests) into SharePoint Online Admin API Permission page
   * add `react-teams-tabs-pnpjs` app to your site
-  * add `react-teams-tabs-pnpjs` webpart to your page to see it in action
+  * add `react-teams-tabs-pnpjs` web part to your page to see it in action
 
 ## Features
 

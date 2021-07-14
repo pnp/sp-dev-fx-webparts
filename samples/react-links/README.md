@@ -13,15 +13,15 @@ Links and groups are both customizable.
 
 1. Place the page you want to add this web part to in edit mode.
 2. Search for and insert the **Links** web part.
-3. Configure the webpart to update its properties.
+3. Configure the web part to update its properties.
 
 ## Configurable Properties
 
-The `Links` webpart can be configured with the following properties:
+The `Links` web part can be configured with the following properties:
 
 | Label | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| Useful links | title | string | no | The webpart title, editable inline with the webpart itself |
+| Useful links | title | string | no | The web part title, editable inline with the web part itself |
 | Group names for the links | groupData | collection | no | Collection of group names for grouping links into sets |
 | Link data | collectionData | collection | no | Collection of links |
 
@@ -47,9 +47,9 @@ Configurable properties for each collection row within the `collectionData` coll
 
 # Installing the web part
 
-See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
+See getting started from [SP-Starter-Kit repository readme](https://github.com/pnp/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
+You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
 
 # Screenshots
 
@@ -57,7 +57,7 @@ You can also download just the [SharePoint Framework solution package (spppkg) f
 
 # Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/links
+https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/links
 
 # Minimal Path to Awesome
 

@@ -12,11 +12,11 @@ This web part will allow users to view/update application customizers properties
 - We can use properties to pass data to Application customizers to make solution customizable.
 - To update properties of application customizer there is no UI based solution.
 - To update the title, details and other information of application customizer we use either PowerShell script or cli tool.
-- This webpart can be used at a central location where all the users have access and if they require to update title, description and properties.
+- This web part can be used at a central location where all the users have access and if they require to update title, description and properties.
 
 ## Features
 
-- Webpart to view/update Application Customizers registered for a selected web
+- Web part to view/update Application Customizers registered for a selected web
 - Provides two different UI Accordion or List based(configurable)
 - Provides a dropdown to select the web from where we would require to fetch application customizers
 - Allows to update application customizer properties which makes it easy to make re-useable application customizers

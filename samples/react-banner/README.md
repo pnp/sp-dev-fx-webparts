@@ -1,6 +1,6 @@
 # Banner web part
 
-> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/banner.
+> NOTE: This sample is available in the [PnP Starter Kit](https://github.com/pnp/sp-starter-kit). You can find the sample code for this web part at https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/banner.
 
 
 This web part provides you the ability to add a variable height image banner with a linkable title.
@@ -15,7 +15,7 @@ This web part provides you the ability to add a variable height image banner wit
 
 ## Configurable Properties
 
-The `Banner` webpart can be configured with the following properties:
+The `Banner` web part can be configured with the following properties:
 
 | Label | Property | Type | Required | Description |
 | ---- | ---- | ---- | ---- | ---- |
@@ -26,21 +26,21 @@ The `Banner` webpart can be configured with the following properties:
 | Enable parallax effect | useParallax | toggle | no | Enable if you want to include parallax effect on vertical scrolling |
 
 
-# Installing the web part
+## Installing the web part
 
-See getting started from [SP-Starter-Kit repository readme](https://github.com/SharePoint/sp-starter-kit). 
+See getting started from [SP-Starter-Kit repository readme](https://github.com/pnp/sp-starter-kit). 
 
-You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/SharePoint/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
+You can also download just the [SharePoint Framework solution package (spppkg) file](https://github.com/pnp/sp-starter-kit/blob/master/package/sharepoint-starter-kit.sppkg) and install that to your tenant. This web part does not have external dependencies.
 
-# Screenshots
+## Screenshots
 
 ![Banner](https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-banner.png)
 
-# Source Code
+## Source Code
 
-https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/banner
+https://github.com/pnp/sp-starter-kit/tree/master/solution/src/webparts/banner
 
-# Minimal Path to Awesome
+## Minimal Path to Awesome
 
 - Clone this repository
 - Move to Solution folder
@@ -48,7 +48,7 @@ https://github.com/SharePoint/sp-starter-kit/tree/master/solution/src/webparts/b
   - `npm install`
   - `gulp serve`
 
-# Version history
+## Version history
 
 Version|Date|Comments
 -------|----|--------

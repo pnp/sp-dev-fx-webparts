@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Send Notifications in Teams",
     "shortDescription": "This web part allows you to send MS Teams feed notifications to a selected user",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-teams-send-notification",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-teams-send-notification",
     "longDescription": [
       "This web part allows you to send MS Teams feed notifications to a selected user"
     ],
-    "created": "2020-12-04",
-    "modified": "2020-12-04",
+    "creationDateTime": "2020-12-04",
+    "updateDateTime": "2020-12-04",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-teams-send-notification/assets/teams-notification-sender.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-send-notification/assets/teams-notification-sender.gif",
         "alt": "Send Notifications in Teams"
       }
     ],

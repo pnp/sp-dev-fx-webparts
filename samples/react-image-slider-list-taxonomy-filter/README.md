@@ -1,7 +1,7 @@
 # Image Slider from Photo Gallery using Taxonomy Filter
 
 ## Summary
-This webpart display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy. This web part showcase 3 important implementation.
+This web part display the image in slider based on the filter of Taxonomy from Property panel. Images are stored in PhotoGallery and tagged with Taxonomy. This web part showcase 3 important implementation.
 
 - How to add the Terms in the propertypage and pass the values to react component
 - How to filter the list based on Taxonomy and extract the Image URL
@@ -35,6 +35,7 @@ Version|Date|Comments
 1.0|March 1, 2019 |Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

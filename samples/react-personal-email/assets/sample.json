@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Personal Email",
     "shortDescription": "This web part provides you the ability to add a particular user\u0027s personal email on a web page. The web part may be configured to display a pre-defined number of emails at a time and includes a link to the user\u0027s Outlook to view all email. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-personal-email",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-email",
     "longDescription": [
       "This web part provides you the ability to add a particular user\u0027s personal email on a web page. The web part may be configured to display a pre-defined number of emails at a time and includes a link to the user\u0027s Outlook to view all email. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users."
     ],
-    "created": "2018-05-01",
-    "modified": "2018-05-01",
+    "creationDateTime": "2018-05-01",
+    "updateDateTime": "2018-05-01",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,15 @@
         "alt": "Personal Email"
       }
     ],
-    "authors": [],
+    "authors": [
+      {
+        "gitHubAccount": "eoverfield",
+        "company": "PixelMill",
+        "pictureUrl": "https://github.com/eoverfield.png",
+        "name": "Eric Overfield",
+        "twitter": "EricOverfield"
+      }
+    ],
     "references": [
       {
         "name": "Build your first SharePoint client-side web part",

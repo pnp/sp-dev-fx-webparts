@@ -22,7 +22,7 @@
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-html-parser": "^2.0.2",
-    "tinymce": "^4.7.6"
+    "tinymce": "^5.7.1"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.4.1",

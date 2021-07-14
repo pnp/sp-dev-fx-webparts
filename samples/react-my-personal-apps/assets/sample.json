@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "My Personal Apps",
     "shortDescription": "The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-my-personal-apps",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-personal-apps",
     "longDescription": [
       "The Web Part My Personal Apps allows the user to define links to Applications or Sites for quick access."
     ],
-    "created": "2020-04-28",
-    "modified": "2020-04-28",
+    "creationDateTime": "2020-04-28",
+    "updateDateTime": "2020-04-28",
     "products": [
       "SharePoint",
       "Office"
@@ -40,85 +40,85 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-my-personal-apps/assets/Image1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-personal-apps/assets/Image1.png",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image06.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image06.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image10.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image10.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/image11.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/image11.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/image12.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/image12.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/image13.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/image13.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 106,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/image14.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/image14.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 107,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image2.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image2.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 108,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image3.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image3.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 109,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image4.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image4.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 110,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image5.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image5.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 111,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image7.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image7.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 112,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image8.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image8.png?raw=true",
         "alt": "My Personal Apps"
       },
       {
         "type": "image",
         "order": 113,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-my-personal-apps/assets/Image9.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-my-personal-apps/assets/Image9.png?raw=true",
         "alt": "My Personal Apps"
       }
     ],

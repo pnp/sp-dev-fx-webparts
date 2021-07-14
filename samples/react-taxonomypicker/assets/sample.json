@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Taxonomy Picker",
     "shortDescription": "A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx).",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-taxonomypicker",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-taxonomypicker",
     "longDescription": [
       "A Taxonomy Picker control built with React based on react-taxonomypicker for use with SharePoint Framework client-side web parts (SPFx)."
     ],
-    "created": "2017-04-14",
-    "modified": "2017-04-14",
+    "creationDateTime": "2017-04-14",
+    "updateDateTime": "2017-04-14",
     "products": [
       "SharePoint",
       "Office"
@@ -28,15 +28,15 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-taxonomypicker/assets/react-taxonomy-picker-spfx.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-taxonomypicker/assets/react-taxonomy-picker-spfx.gif",
         "alt": "Taxonomy Picker"
       }
     ],
     "authors": [
       {
-        "gitHubAccount": "jquinzamora",
+        "gitHubAccount": "jquintozamora",
         "company": "",
-        "pictureUrl": "https://github.com/jquinzamora.png",
+        "pictureUrl": "https://github.com/jquintozamora.png",
         "name": "Jose Quinto"
       }
     ],

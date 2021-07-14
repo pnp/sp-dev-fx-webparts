@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Page Navigator",
     "shortDescription": "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-page-navigator",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-page-navigator",
     "longDescription": [
       "This web part fetches all the automatically added Header anchor tags in a SharePoint page and displays them in a Navigation component."
     ],
-    "created": "2019-09-05",
-    "modified": "2019-09-05",
+    "creationDateTime": "2019-09-05",
+    "updateDateTime": "2019-09-05",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-page-navigator/assets/PageNavigator.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-page-navigator/assets/PageNavigator.gif",
         "alt": "Page Navigator"
       }
     ],

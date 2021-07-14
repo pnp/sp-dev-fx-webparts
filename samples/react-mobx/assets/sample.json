@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Using React and Mobx",
     "shortDescription": "Sample web part implementation that uses Mobx to keep track of its state.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-mobx",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mobx",
     "longDescription": [
       "Sample web part implementation that uses Mobx to keep track of its state."
     ],
-    "created": "2016-11-04",
-    "modified": "2016-11-04",
+    "creationDateTime": "2016-11-04",
+    "updateDateTime": "2016-11-04",
     "products": [
       "SharePoint",
       "Office"

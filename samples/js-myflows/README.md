@@ -7,6 +7,7 @@
 
 
 ##  
+
 ![directory](/samples/js-myflows/assets/MyFlows.gif) 
 
 
@@ -22,6 +23,7 @@
 
 
 ## Used SharePoint Framework Version 
+
 ![drop](https://img.shields.io/badge/version-1.8.2-green.svg)
 
 ## Applies to
@@ -31,7 +33,7 @@
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
@@ -56,6 +58,7 @@ Version|Date|Comments
 
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

@@ -2,10 +2,11 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.5.1",
+    "version": "1.12.1",
     "libraryName": "react-facebook-plugin",
     "libraryId": "2608d0f3-26fe-4142-941e-d5937bbbb952",
     "packageManager": "npm",
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "isDomainIsolated": false
   }
 }

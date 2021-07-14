@@ -1,0 +1,64 @@
+name: 💡 Suggestion
+description: Suggest an enhancement to make one of our web part samples even better
+labels: ['Needs: Triage :mag:', 'type:enhancement']
+
+body:
+- type: markdown
+  attributes:
+    value: |
+
+      Thank you for your suggestion! Use the sections below to submit a suggestion ONLY if it's related to samples in this repo. If you have an issue or question about the SharePoint Framework or its documentation, please submit it at https://aka.ms/spdev-issues.
+      
+      - Suggestions that do not follow the below template will automatically be closed
+      - All ideas are welcome - let's build something together!
+      - This repo is maintained by volunteers. Please be courteous and patient. 🙂
+      - Remember to include sufficient details and context.
+      - If you have multiple suggestions please submit them separately so we can track resolution.
+      - Screenshots are always helpful (just paste any images right here in the suggestion)
+
+- type: input
+  id: sample
+  validations:
+    required: true
+  attributes:
+    label: Sample
+    description: |
+        Which sample are you talking about
+        
+        Use the sample name or URL. 
+
+- type: input
+  id: authors
+  validations:
+    required: true
+  attributes:
+    label: Author(s)
+    description: |
+        Who wrote the sample?
+        
+        Because of the way this repository is configured, samples authors do not get a notification when you create an issue. 
+        
+        For the section above **@mention any author of the sample**. Authors' GitHub handle can be found on the main sample documentation page, under the "Solution" section. 
+        
+        **NOTE:** Don't @mention the repo maintainers, they already get notified.
+
+- type: textarea
+  id: suggestion
+  attributes:
+    label: Suggestion
+    description: What would you like to see improved?
+    placeholder: The more details, the better
+  validations:
+    required: true
+
+
+- type: dropdown
+  id: willing-to-help
+  attributes:
+    label: Are you willing to help?
+    description: Would you be willing to help us make this improvement?
+    options:
+      - "Yes"
+      - "No"
+  validations:
+    required: true

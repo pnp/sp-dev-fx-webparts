@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "SharePoint Themes Client Side Web Part",
     "shortDescription": "This web part illustrates how to use SharePoint Theme variables in custom web parts.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-themes",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-themes",
     "longDescription": [
       "This web part illustrates how to use SharePoint Theme variables in custom web parts."
     ],
-    "created": "2017-05-08",
-    "modified": "2017-05-08",
+    "creationDateTime": "2017-05-08",
+    "updateDateTime": "2017-05-08",
     "products": [
       "SharePoint",
       "Office"
@@ -32,13 +32,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-themes/assets/themes.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-themes/assets/themes.png",
         "alt": "SharePoint Themes Client Side Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-themes/assets/SectionThemes.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-themes/assets/SectionThemes.png?raw=true",
         "alt": "SharePoint Themes Client Side Web Part"
       }
     ],

@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "React AppInsights Dashboard",
     "shortDescription": "This web part displays different statistics data captured in the Azure Application Insights in a graphical representation.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-appinsights-dashboard",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-appinsights-dashboard",
     "longDescription": [
       "This web part displays different statistics data captured in the Azure Application Insights in a graphical representation."
     ],
-    "created": "2020-06-17",
-    "modified": "2020-06-17",
+    "creationDateTime": "2020-06-17",
+    "updateDateTime": "2020-06-17",
     "products": [
       "SharePoint",
       "Office"
@@ -26,43 +26,47 @@
       {
         "key": "SPFX-FULLPAGEAPP",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "Placeholder, ChartControl"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-dashboard/assets/AppInsights_Dashboard.gif",
         "alt": "React AppInsights Dashboard"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-appinsights-dashboard/assets/AppInsights_APIAccess.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-dashboard/assets/AppInsights_APIAccess.png?raw=true",
         "alt": "React AppInsights Dashboard"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-appinsights-dashboard/assets/AppInsights_APIKey.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-dashboard/assets/AppInsights_APIKey.png?raw=true",
         "alt": "React AppInsights Dashboard"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-appinsights-dashboard/assets/PageStatistics.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-dashboard/assets/PageStatistics.png?raw=true",
         "alt": "React AppInsights Dashboard"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-appinsights-dashboard/assets/PerformanceStatistics.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-dashboard/assets/PerformanceStatistics.png?raw=true",
         "alt": "React AppInsights Dashboard"
       },
       {
         "type": "image",
         "order": 105,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-appinsights-dashboard/assets/UserStatistics.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-appinsights-dashboard/assets/UserStatistics.png?raw=true",
         "alt": "React AppInsights Dashboard"
       }
     ],

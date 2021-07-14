@@ -52,7 +52,7 @@ gulp serve
 gulp bundle --ship
 ```
 
-- Execute the following task to package your solution. This creates an updated webpart `.sppkg` package on the `sharepoint/solution` folder.
+- Execute the following task to package your solution. This creates an updated web part `.sppkg` package on the `sharepoint/solution` folder.
 
 ```bash
 gulp package-solution --ship
