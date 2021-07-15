@@ -34,6 +34,7 @@ This web part provides easy way to render SharePoint custom list in datatable vi
 Solution|Author(s)
 --------|---------
 react-datatable | Chandani Prajapati ([@Chandani_SPD](https://twitter.com/Chandani_SPD))
+react-datatable | Abderahman Moujahid
 
 ## Version history
 
@@ -45,6 +46,7 @@ Version|Date|Comments
 1.3|March 31,2021| Changed UI as per SharePoint list, Set themeing as per current SharePoint site theme, Created custom pagination by using reusable controls, Added features to export CSV based on the filter if the filter is available, Added hyperlink feature for image and link column in export to pdf and also set alternative row formatting in generated pdf as per property pane configuration odd/even row color, fixed object issue (for people/hyperlink, etc) in export to CSV.
 1.4|April 10, 2021|Added feature to show profile picture in user column and shows display name of user field in export to CSV and PDF.
 1.5|June 2, 2021|Added feature to show image in dataTable and upgraded to the SPFx version 1.12.1.
+1.6|July 16, 2021|Changed library export-to-csv with react-csv
 
 
 ## Disclaimer

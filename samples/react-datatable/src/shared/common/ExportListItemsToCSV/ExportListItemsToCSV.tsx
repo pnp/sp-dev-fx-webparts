@@ -1,47 +1,27 @@
-import * as React from 'react';
-import * as strings from 'ReactDatatableWebPartStrings';
-import { ExportToCsv } from 'export-to-csv';
-import { IIconProps, PrimaryButton } from 'office-ui-fabric-react';
-import styles from './ExportListItemsToCSV.module.scss';
+import * as React from "react";
+import * as strings from "ReactDatatableWebPartStrings";
+import { CSVLink } from "react-csv";
+import { IIconProps, PrimaryButton } from "office-ui-fabric-react";
+import styles from "./ExportListItemsToCSV.module.scss";
 interface IExportToCSV {
-    columnHeader: Array<string>;
-    listName: string;
-    description: string;
-    dataSource: ()=> any[];
+  columnHeader: Array<string>;
+  listName: string;
+  description: string;
+  dataSource: () => any[];
 }
 
 export function ExportListItemsToCSV(props: IExportToCSV) {
+  const downloadIcon: IIconProps = { iconName: "Download" };
 
-    const downloadIcon: IIconProps = { iconName: 'Download' };
+  let { listName, dataSource } = props;
 
-    let { columnHeader, listName, dataSource } = props;
-
-    function generateCSV() {
-
-        let colHeader = columnHeader;
-        const options = {
-            filename: listName,
-            fieldSeparator: ',',
-            quoteStrings: '"',
-            decimalSeparator: '.',
-            showLabels: true,
-            showTitle: true,
-            title: '',
-            useTextFile: false,
-            useBom: true,
-            useKeysAsHeaders: true,
-            headers: colHeader
-        };
-        const csvExporter = new ExportToCsv(options);
-        csvExporter.generateCsv(dataSource());
-    }
-
-    return (
-        <PrimaryButton
-            text={strings.DownloadAsCSVLabel}
-            iconProps={downloadIcon}
-            onClick={() => generateCSV()}
-            className={styles.btnCSV}
-        />
-    );
+  return (
+    <CSVLink data={dataSource()} filename={`${listName}.csv`}>
+      <PrimaryButton
+        text={strings.DownloadAsCSVLabel}
+        iconProps={downloadIcon}
+        className={styles.btnCSV}
+      />
+    </CSVLink>
+  );
 }
