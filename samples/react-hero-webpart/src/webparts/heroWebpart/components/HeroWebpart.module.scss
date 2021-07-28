@@ -253,6 +253,17 @@
     }
   }
 
+  :global(.heroOne) .heroItem {
+    display: inline-block;
+    width: 100%;
+    .flexcontainer:nth-child(1){
+      min-height: 400px;
+      .focusItem .flexitems{
+        max-height: 400px;
+      }
+    }
+  }
+
   @media all and (max-width: 768px) {
     .heroItem {
       flex-direction: column;
@@ -264,54 +275,4 @@
       }
     }
    }
-
-  @media only screen and (max-width: 600px) {
-    .carouselContentOne, .carouselContentTwo, .carouselContentThree, .carouselContentFour{
-      :global(.ms-List-page .ms-List-cell){
-        width: 100%!important;
-        height: 160px;
-      }
-      :global(.ms-List-page .ms-List-cell img){
-        width: 100%!important;
-        height: 100px!important;
-      }
-      :global(.ms-List-page .ms-List-cell .ms-Image){
-        width: 100%!important;
-        height: 100px!important;
-      }
-      :global(.ms-List-page .ms-List-cell div){
-        max-height: 100px;
-      }
-      :global(.ms-List-page .ms-List-cell div){
-        max-height: 100px;
-      }
-      :global(.ms-List-page .ms-List-cell .ms-DocumentCardLocation){
-        display:none;
-      }
-      :global(.ms-List-page .ms-List-cell){
-        .subGroup{
-          display:none;
-        }
-      }
-      :global(.ms-List-page .ms-List-cell){
-        .subGroup ~ .subGroup{
-          display:inline-block;
-        }
-      }
-      :global(.ms-List-page .ms-List-cell){
-        .subGroup ~ .subGroup a{
-          display:inline-block;
-          width: 48%!important;
-        }
-      }
-      :global(.ms-List-page .ms-List-cell){
-        .subGroup ~ .subGroup a *{
-          font-size:8px
-        }
-      }
-      :global(.ms-List-page .ms-List-cell .ms-DocumentCardDetails .ms-DocumentCardTitle:nth-child(2)){
-        display:none;
-      }
-    }
-  }
 }
