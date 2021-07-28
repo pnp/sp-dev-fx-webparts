@@ -40,7 +40,7 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
       const thumbRend = "https://media.akamai.odsp.cdn.office.net/uksouth1-mediap.svc.ms/transform/thumbnail?provider=url&inputFormat=jpg&docid=";
       const secondItems = items.slice(1,5);
       const firstItem = items.slice(0,1)[0];
-      var firstItemUrl = firstItem.filePicker[0].Hyperlink ? firstItem.filePicker[0].Hyperlink : "#";
+      var firstItemUrl = firstItem.Hyperlink ? firstItem.Hyperlink : "#";
       var smalltemUrl;
       return(
         <div className={styles.heroItem}>
@@ -57,7 +57,7 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
           </div>
           <div className={styles["flexcontainer"]}>
                 {secondItems.map((item) => (
-                  smalltemUrl= item.filePicker[0].Hyperlink ? item.filePicker[0].Hyperlink : "#",
+                  smalltemUrl= item.Hyperlink ? item.Hyperlink : "#",
                   <div className={styles["flexitems"]}>
                         <a href={smalltemUrl}>
                         <img src={item.filePicker[0].fileNameWithoutExtension=='blankEntry154873'?item.filePicker[0].fileAbsoluteUrl:thumbRend+item.filePicker[0].fileAbsoluteUrl+"&w=960"}/>
