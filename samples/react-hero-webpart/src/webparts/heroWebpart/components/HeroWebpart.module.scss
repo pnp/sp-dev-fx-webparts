@@ -72,21 +72,6 @@
     }
   }
 
-  .carouselContent{
-    color:"[theme: themeSecondary, default: #0078d7]";
-    min-height:600px;
-    height:600px;
-  }
-  .carouselButtonsContainer{
-    color:"[theme: themeSecondary, default: #0078d7]";
-  }
-
-  .carouselContentOne, .carouselContentTwo, .carouselContentThree, .carouselContentFour{
-    color:"[theme: themeSecondary, default: #0078d7]";
-    min-height:530px;
-    height:530px;
-  }
-
   .heroTitleHover{
     @include ms-font-xl;
     padding-bottom: 10px;
@@ -263,6 +248,43 @@
       }
     }
   }
+
+  :global(.heroThree) .heroItem .flexcontainer:nth-child(2) {
+    .heroTitle {
+      font-size: 24px;
+    }
+    .heroTitleHover{
+      font-size: 22px;
+    }
+    .info{
+      font-size: 18px;
+    }
+  }
+
+  :global(.heroFour) .heroItem .flexcontainer:nth-child(2){
+    .heroTitle {
+      font-size: 20px;
+     }
+     .heroTitleHover{
+      font-size: 18px;
+    }
+    .info{
+      font-size: 14px;
+    }
+  }
+
+  :global(.heroFive) .heroItem .flexcontainer:nth-child(2){
+     .heroTitle {
+      font-size: 20px;
+     }
+     .heroTitleHover{
+      font-size: 18px;
+    }
+    .info{
+      font-size: 14px;
+    }
+  }
+  
 
   @media all and (max-width: 768px) {
     .heroItem {
