@@ -2,10 +2,7 @@ import * as React from 'react';
 import styles from './HeroWebpart.module.scss';
 import { IHeroWebpartProps } from './IHeroWebpartProps';
 import {IHeroState} from './IHeroWebpartState';
-import { escape } from '@microsoft/sp-lodash-subset';
 import { Pagination } from "@pnp/spfx-controls-react/lib/pagination";
-import { PnPClientStorage } from "@pnp/common";
-import { IHeroLayoutProps } from './IHeroLayoutProps';
 import Hero from './HeroLayout';
 import { sp } from '@pnp/sp';
 import { Stack, IStackProps, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
@@ -24,8 +21,6 @@ const tokens = {
     childrenGap: 20,
   },
 };
-
-const storage = new PnPClientStorage();
 
 export default class HeroWebpart extends React.Component<IHeroWebpartProps, IHeroState> {
 
