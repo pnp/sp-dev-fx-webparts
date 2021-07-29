@@ -70,11 +70,14 @@ export default class HeroWebpart extends React.Component<IHeroWebpartProps, IHer
 
   public componentDidUpdate(prevProps : IHeroWebpartProps, prevState : IHeroState) : void 
   {
-    // If properties have changed bind it and update webpart
-    if(this.props.items !== prevProps.items || this.state.items !== prevState.items)
-    {
-      this.setState({items:this.props.items});
-    }
+      // If properties have changed bind it and update webpart
+      if(this.props.items !== prevProps.items || this.state.items !== prevState.items)
+      {
+        this.setState({items:this.props.items});
+        if(this.props.showAllHero){
+          this._getPage(this.state.currentPage);
+        }
+      }
   }
 
   public render(): React.ReactElement<IHeroWebpartProps> {

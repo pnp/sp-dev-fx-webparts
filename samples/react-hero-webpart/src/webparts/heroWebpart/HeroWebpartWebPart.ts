@@ -126,7 +126,8 @@ export default class HeroWebpartWebPart extends BaseClientSideWebPart<IHeroWebpa
                             hideLinkUploadTab: true
                           })
                         );
-                      }
+                      },
+                      required: true
                      }
                   ],
                   disabled: false
