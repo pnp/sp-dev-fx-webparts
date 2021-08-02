@@ -26,7 +26,8 @@
         "isPaginated": false,
         "hideFirstPageJump": false,
         "hideLastPageJump": false,
-        "showAllHero": false
+        "showAllHero": false,
+        "totalShow": 5
       }
     }
   ],

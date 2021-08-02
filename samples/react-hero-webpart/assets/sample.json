@@ -9,7 +9,7 @@
             "This solution creates a customisable Hero web part, it uses a stored collection from the PnP PropertyFieldCollectionData control "
         ],
         "creationDateTime": "2021-04-02",
-        "updateDateTime": "2021-04-02",
+        "updateDateTime": "2021-07-27",
         "products": [
             "SharePoint",
             "Office"
