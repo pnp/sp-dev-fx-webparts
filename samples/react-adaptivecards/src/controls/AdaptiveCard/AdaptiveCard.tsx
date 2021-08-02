@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { IAdaptiveCardProps } from './IAdaptiveCardProps';
 
-import * as AdaptiveCards from "adaptivecards";
+import * as AC from "adaptivecards";
 import * as ACData from "adaptivecards-templating";
-import * as ACFabric from "adaptivecards-fabric";
+import * as ACFluentUI from "adaptivecards-fluentui";
 
 // Support for theme and section color
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -15,8 +15,6 @@ import * as markdownit from "markdown-it";
 
 
 import { IAdaptiveCardState } from '.';
-
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react';
 
 // Localization
 import * as strings from 'AdaptiveCardHostWebPartStrings';
@@ -49,15 +47,10 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
   }
 
   public render(): React.ReactElement<IAdaptiveCardProps> {
+    const hasErrorHander: boolean = (this.state.errors && this.state.errors.length > 0 && this.props.errorTemplate) ? true : false;
     return <>
-      {this.state.errors.length > 0 &&
-        <MessageBar messageBarType={MessageBarType.error} isMultiline={true}>
-          {strings.AdaptiveCardErrorIntro}<br />
-          {this.state.errors.map((error: string) => {
-            return <p>{error}</p>;
-          })}
-        </MessageBar>
-      }
+      { hasErrorHander && typeof this.props.errorTemplate === "function" && this.props.errorTemplate(this.state.errors) }
+      { hasErrorHander && this.props.errorTemplate && typeof this.props.errorTemplate !== "function" && this.props.errorTemplate }
       <div className={this.props.className} ref={(elm) => { this._acContainer = elm; }}></div>
     </>;
   }
@@ -78,7 +71,7 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
         templatePayload = JSON.parse(this.props.template);
       } catch (error) {
         console.error("Something went wrong with the template", error);
-        this._errorHandler(strings.TemplatingJsonError + error);
+        this._errorHandler([strings.TemplatingJsonError + error]);
         return;
       }
 
@@ -86,23 +79,23 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
       var template = new ACData.Template(templatePayload);
 
       var context: any = {
-        "$root":{}
+        "$root": {}
       };
 
       try {
         context.$root = JSON.parse(this.props.data);
       } catch (error) {
         console.error("Error parsing the data JSON", error);
-        this._errorHandler(strings.DataJsonError + error);
+        this._errorHandler([strings.DataJsonError + error]);
         return;
       }
 
       try {
-      // Expand the card by combining the template and data
-      card = template.expand(context);
+        // Expand the card by combining the template and data
+        card = template.expand(context);
       } catch (error) {
         console.error("Error combining template and data", error);
-        this._errorHandler(strings.DataJsonError + error);
+        this._errorHandler([strings.DataJsonError + error]);
         return;
       }
     } else {
@@ -110,35 +103,51 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
         card = JSON.parse(this.props.template);
       } catch (error) {
         console.error("Error parsing template", error);
-        this._errorHandler(strings.TemplateJsonError + error);
+        this._errorHandler([strings.TemplateJsonError + error]);
         return;
       }
     }
 
     // Create an AdaptiveCard instance
-    let adaptiveCard = new AdaptiveCards.AdaptiveCard();
+    const adaptiveCard: AC.AdaptiveCard = new AC.AdaptiveCard();
 
     // Use Fabric controls when rendering Adaptive Cards
-    ACFabric.useFabricComponents();
+    ACFluentUI.useFluentUI();
 
     // Get the semantic colors to adapt to changing section colors
     this._adjustThemeColors(adaptiveCard);
 
     // Handle parsing markdown from HTML
-    AdaptiveCards.AdaptiveCard.onProcessMarkdown = this._processMarkdownHandler;
+    AC.AdaptiveCard.onProcessMarkdown = this._processMarkdownHandler;
 
     // Set the adaptive card's event handlers. onExecuteAction is invoked
     // whenever an action is clicked in the card
     adaptiveCard.onExecuteAction = this._executeActionHandler;
 
-    // Parse the card payload
-    adaptiveCard.parse(card, errors);
+    let serializationContext = new AC.SerializationContext();
 
-    this.setState({
-      errors: errors.map((error: IValidationError) => {
-        return error.message;
-      })
-    });
+    serializationContext.onParseElement = (element: AC.CardElement, _source: any, _sercontext: AC.SerializationContext) => {
+      let violations: Array<string> = [];
+
+      if (_sercontext.eventCount > 0) {
+
+        for (let errorIndex = 0; errorIndex < _sercontext.eventCount; errorIndex++) {
+          const errorItem: AC.IValidationEvent = _sercontext.getEventAt(errorIndex);
+          violations.push(errorItem.message);
+        }
+
+        if (this.props.onParseError) {
+          this.props.onParseError(violations);
+        }
+      }
+
+      this.setState({
+        errors: violations
+      });
+    };
+
+    // Parse the card payload
+    adaptiveCard.parse(card, serializationContext);
 
     // Empty the div so we can replace it
     while (this._acContainer.firstChild) {
@@ -190,7 +199,7 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
    * Adjust Adaptive Card colors based on theme colors
    * @param adaptiveCard the Adaptive Cards for which you want to adjust the theme colors
    */
-  private _adjustThemeColors(adaptiveCard: AdaptiveCards.AdaptiveCard) {
+  private _adjustThemeColors(adaptiveCard: AC.AdaptiveCard) {
     // Get the theme colors from the props -- if any
     const { semanticColors }: IReadonlyTheme = this.props.themeVariant;
 
@@ -200,7 +209,7 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
       // Host Config defines the style and behavior of a card
 
       // I mapped as many theme colors as I could. Feel free to adjust the colours
-      adaptiveCard.hostConfig = new AdaptiveCards.HostConfig({
+      adaptiveCard.hostConfig = new AC.HostConfig({
         "separator": {
           "lineThickness": 1,
           "lineColor": semanticColors.bodyFrameDivider
@@ -232,9 +241,12 @@ export class AdaptiveCard extends React.Component<IAdaptiveCardProps, IAdaptiveC
     }
   }
 
-  private _errorHandler(error: string) {
+  private _errorHandler(errors: string[]) {
+    if (this.props.onParseError && errors.length > 0) {
+      this.props.onParseError(errors);
+    }
     this.setState({
-      errors: [error]
+      errors: errors
     });
   }
 }
