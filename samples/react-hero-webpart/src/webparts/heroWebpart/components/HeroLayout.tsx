@@ -11,12 +11,15 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
     
 
     public render(): React.ReactElement<IHeroLayoutProps> {
+      //const classTotal = "itemShow"+this.props.totalShow;
       const items = this.props.items; 
+      const viewType = items.length==1 ? "heroOne" : items.length==2 ? "heroTwo" : items.length==3 ? "heroThree" :
+      items.length==4 ? "heroFour" : items.length==5 ? "heroFive" : "heroFive";
       var arr = [];
       arr.push(items);
 
       return (
-        <div role="group">
+        <div role="group" className={viewType}>
           <List
             role="presentation"
             className={styles.heroItem}
@@ -37,7 +40,7 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
       const thumbRend = "https://media.akamai.odsp.cdn.office.net/uksouth1-mediap.svc.ms/transform/thumbnail?provider=url&inputFormat=jpg&docid=";
       const secondItems = items.slice(1,5);
       const firstItem = items.slice(0,1)[0];
-      var firstItemUrl = firstItem.filePicker[0].Hyperlink ? firstItem.filePicker[0].Hyperlink : "#";
+      var firstItemUrl = firstItem.Hyperlink ? firstItem.Hyperlink : "#";
       var smalltemUrl;
       return(
         <div className={styles.heroItem}>
@@ -46,18 +49,20 @@ export default class Hero extends React.Component<IHeroLayoutProps> {
                <div className={styles["flexitems"]}>                    
                   <a href={firstItemUrl}>
                   <img src={firstItem.filePicker[0].fileNameWithoutExtension=='blankEntry154873'?firstItem.filePicker[0].fileAbsoluteUrl:thumbRend+firstItem.filePicker[0].fileAbsoluteUrl+"&w=960"}/>
-                  <div className={styles.description}><div className={styles.heroTitle}>{firstItem.Title}</div>{firstItem.Description ? firstItem.Description.length>150 ? firstItem.Description.substring(0, 150)+".." : firstItem.Description : "Description coming soon"}</div>
+                  <div className={styles.heroTitle}>{firstItem.Title}</div>
+                  <div className={styles.description}><div className={styles.heroTitleHover}>{firstItem.Title}</div><div className={styles.info}>{firstItem.Description ? firstItem.Description.length>150 ? firstItem.Description.substring(0, 150)+".." : firstItem.Description : "Description coming soon"}</div></div>
                   </a>
               </div>
             </div>
           </div>
           <div className={styles["flexcontainer"]}>
                 {secondItems.map((item) => (
-                  smalltemUrl= item.filePicker[0].Hyperlink ? item.filePicker[0].Hyperlink : "#",
+                  smalltemUrl= item.Hyperlink ? item.Hyperlink : "#",
                   <div className={styles["flexitems"]}>
                         <a href={smalltemUrl}>
                         <img src={item.filePicker[0].fileNameWithoutExtension=='blankEntry154873'?item.filePicker[0].fileAbsoluteUrl:thumbRend+item.filePicker[0].fileAbsoluteUrl+"&w=960"}/>
-                        <div className={styles.description}><div className={styles.heroTitle}>{item.Title}</div>{item.Description ? item.Description.length>150 ? item.Description.substring(0, 150)+".." : item.Description : "Description coming soon"}</div>
+                        <div className={styles.heroTitle}>{item.Title}</div>
+                        <div className={styles.description}><div className={styles.heroTitleHover}>{item.Title}</div><div className={styles.info}>{item.Description ? item.Description.length>150 ? item.Description.substring(0, 150)+".." : item.Description : "Description coming soon"}</div></div>
                         </a>
                   </div>
                 ))}

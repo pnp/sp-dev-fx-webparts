@@ -3,7 +3,7 @@
   "solution": {
     "name": "Hero Layout Webpart",
     "id": "5efc0426-3e59-4fc7-b638-73eb77aaf788",
-    "version": "1.0.0.0",
+    "version": "1.2.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

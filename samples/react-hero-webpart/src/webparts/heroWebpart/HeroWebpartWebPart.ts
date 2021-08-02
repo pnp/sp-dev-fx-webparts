@@ -12,6 +12,7 @@ import HeroWebpart from './components/HeroWebpart';
 import { IHeroWebpartProps } from './components/IHeroWebpartProps';
 
 import { PropertyFieldToggleWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldToggleWithCallout';
+import { PropertyFieldSliderWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout';
 import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
 
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
@@ -105,27 +106,28 @@ export default class HeroWebpartWebPart extends BaseClientSideWebPart<IHeroWebpa
                       title: "Select File",
                       type: CustomCollectionFieldType.custom,
                       onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
-                       return (
-                        React.createElement(FilePicker, { 
-                          key: itemId,
-                          context: this.context,
-                          buttonLabel:"Select File",                            
-                          onChange: (selectedFile: IFilePickerResult[]) => {
-                            onUpdate(field.id, selectedFile);
+                        return (
+                          React.createElement(FilePicker, { 
+                            key: itemId,
+                            context: this.context,
+                            buttonLabel:"Select File",                            
+                            onChange: (selectedFile: IFilePickerResult[]) => {
+                              onUpdate(field.id, selectedFile);
+                              return Event;
+                            },
+                            onSave: (filePickerResult: IFilePickerResult[]) => {
+                            // write code to save file to SharePoint doc library
+                            // if you are uploading the file via the upload tab which I've not implemented here
+                            onUpdate(field.id, filePickerResult);
                             return Event;
-                          },
-                          onSave: (filePickerResult: IFilePickerResult[]) => {
-                          // write code to save file to SharePoint doc library
-                          // if you are uploading the file via the upload tab which I've not implemented here
-                          onUpdate(field.id, filePickerResult);
-                          return Event;
-                          },
-                          hideLocalUploadTab: true,
-                          hideLocalMultipleUploadTab: true,
-                          hideLinkUploadTab: true
-                        })
-                      );
-                    }
+                            },
+                            hideLocalUploadTab: true,
+                            hideLocalMultipleUploadTab: true,
+                            hideLinkUploadTab: true
+                          })
+                        );
+                      },
+                      required: true
                      }
                   ],
                   disabled: false
