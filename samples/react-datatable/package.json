@@ -1,6 +1,6 @@
 {
   "name": "react-datatable",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "private": true,
   "main": "lib/index.js",
   "engines": {
@@ -22,10 +22,10 @@
     "@pnp/sp": "2.5.0",
     "@pnp/spfx-controls-react": "3.1.0",
     "@pnp/spfx-property-controls": "^3.2.0-beta.ab74df5",
-    "export-to-csv": "^0.2.1",
     "office-ui-fabric-react": "7.156.0",
     "pdfmake": "^0.1.70",
     "react": "16.9.0",
+    "react-csv": "^2.0.3",
     "react-dom": "16.9.0"
   },
   "devDependencies": {
