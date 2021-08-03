@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "adaptive-cards",
-    "id": "ce1e3712-fb7a-4564-b2d3-c81e45936afd",
-    "version": "2.2.1.0",
+    "name": "react-adaptivecards-client-side-solution",
+    "id": "f504f00b-ee99-4184-97cd-114c9b9e75ca",
+    "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
@@ -11,10 +11,10 @@
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "m365pnp"
+      "mpnId": ""
     }
   },
   "paths": {
-    "zippedPackage": "solution/adaptive-cars.sppkg"
+    "zippedPackage": "solution/react-adaptivecards.sppkg"
   }
 }
