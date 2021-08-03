@@ -1,27 +1,10 @@
 {
-  "@pnp/generator-spfx": {
-    "framework": "react",
-    "pnpFramework": "reactjs.plus",
-    "pnp-libraries": [
-      "@pnp/spfx-property-controls",
-      "rush@3.3"
-    ],
-    "pnp-ci": "no-devops",
-    "pnp-vetting": [
-      "webpack-analyzer",
-      "stylelint",
-      "csscomb"
-    ],
-    "spfxenv": "spo",
-    "pnp-testing": []
-  },
   "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
     "environment": "spo",
-    "framework": "react",
-    "isCreatingSolution": false,
-    "version": "1.11.0",
-    "libraryName": "adaptive-card-host",
-    "libraryId": "ce1e3712-fb7a-4564-b2d3-c81e45936afd",
+    "version": "1.12.1",
+    "libraryName": "react-adaptivecards",
+    "libraryId": "f504f00b-ee99-4184-97cd-114c9b9e75ca",
     "packageManager": "npm",
     "isDomainIsolated": false,
     "componentType": "webpart"
