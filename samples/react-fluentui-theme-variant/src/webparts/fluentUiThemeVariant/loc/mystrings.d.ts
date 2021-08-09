@@ -2,10 +2,9 @@ declare interface IFluentUiThemeVariantWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   ThemeTypeField: string;
-  PrimaryColorField: string;
-  TextColorField: string;
-  BackgroundColorField: string;
   BackgroundShadingTypeField: string;
+  CustomPaletteField: string;
+  CustomPaletteMessageField: string;
   Texts: {
     Current: string;
     Section: string;

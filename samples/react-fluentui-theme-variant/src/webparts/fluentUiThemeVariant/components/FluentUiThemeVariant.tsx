@@ -1,9 +1,8 @@
 
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { PartialTheme, Theme, ThemeProvider } from '@fluentui/react-theme-provider';
 import { DefaultButton, DetailsList, DetailsListLayoutMode, Label, Link, PrimaryButton, Stack } from 'office-ui-fabric-react';
 import * as React from 'react';
 import { useEffect } from 'react';
-import { PartialTheme, Theme } from '@fluentui/react-theme-provider';
 
 export interface IFluentUiThemeVariantProps {
   themeVariant: PartialTheme | Theme;

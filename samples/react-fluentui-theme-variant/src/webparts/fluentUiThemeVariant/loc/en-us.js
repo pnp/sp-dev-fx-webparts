@@ -3,10 +3,9 @@ define([], function() {
     "PropertyPaneDescription": "Web Part Configuration",
     "BasicGroupName": "Core Settings",
     "ThemeTypeField": "Theme Type",
-    "PrimaryColorField": "Primary Color",
-    "TextColorField": "Text Color",
-    "BackgroundColorField": "Background Color",
     "BackgroundShadingTypeField": "Background Shading",
+    "CustomPaletteField": "Fluent UI Custom Palette",
+    "CustomPaletteMessageField": "Please use the 'Fluent UI Theme Designer' available at https://aka.ms/themedesigner to export the Theme you want to apply",
     "Texts": {
       "Current": "Current SharePoint Theme",
       "Section": "Current Section Variation",

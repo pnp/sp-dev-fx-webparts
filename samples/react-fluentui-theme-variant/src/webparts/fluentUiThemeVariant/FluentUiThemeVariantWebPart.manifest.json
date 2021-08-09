@@ -15,8 +15,6 @@
     "description": { "default": "Example on how to apply Fluent UI theme variant not only at Section level but at Web Part level" },
     "officeFabricIconFontName": "BackgroundColor",
     "properties": {
-      "themeType": "current",
-      "backgroundShadingType": "none"
     }
   }]
 }

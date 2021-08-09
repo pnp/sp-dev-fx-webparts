@@ -1,73 +1,68 @@
-# react-fluentui-theme-variant
+# React Fluent UI Theme Variant
 
 ## Summary
+This web part provides an example of how to apply a custom theme or a variation of the current SharePoint theme directly to the web part.
+In this way it is possible to implement the same mechanism that is currently implemented by default by the SharePoint page sections
 
-Short summary on functionality and used technologies.
+![picture of the web part in action](assets/preview.gif)
 
-[picture of the solution in action, if possible]
+## Compatibility
 
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/npm/v/@microsoft/sp-component-base/latest?color=green)
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
+![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
+![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
 
 ## Applies to
 
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
+* [SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+* [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Solution
 
 Solution|Author(s)
 --------|---------
-folder name | Author details (name, company, twitter alias with link)
+react-fluentui-theme-variant | [Fabio Franzini](https://www.linkedin.com/in/fabiofranzini/) ([@franzinifabio](https://twitter.com/franzinifabio)), fabiofranzini.com
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.1|March 10, 2021|Update comment
-1.0|January 29, 2021|Initial release
+1.0|August 9, 2021|Initial release
+
+## Minimal Path to Awesome
+
+* Clone this repository
+* in the command line run:
+  * `npm install`
+  * `gulp serve`
+
+## Features
+
+This example was born with the idea of overcoming the present default limit regarding the colors of the sections of the SharePoint pages.
+
+Specifically, by default, it is only possible to change the color (also called Section Background Shading) of the sections but not of the individual Web Parts.
+
+In this implementation it is instead possible to vary the "Background Shading" of the single Web Part in 3 ways:
+* Use the colors applied to the section where the Web Part is present
+* Select the color variations based on the theme applied at the Site level.
+* Apply variations set to the json of a custom theme, created through the Fluent UI theme designer.
+
+In all these cases, the component variation works automatically as much as the Fluent UI react controls are used, otherwise the variation will only work on the background and some HTML elements.
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
----
+## Help
 
-## Minimal Path to Awesome
+We do not support samples, but we this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **gulp serve**
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=bug-report.yml&sample=react-htm-templating&authors=@fabiofranzini&title=react-htm-templating%20-%20).
 
-> Include any additional steps as needed.
+For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=question.yml&sample=react-htm-templating&authors=@fabiofranzini&title=react-htm-templating%20-%20).
 
-## Features
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected&template=suggestion.yml&sample=react-htm-templating&authors=@fabiofranzini&title=react-htm-templating%20-%20).
 
-Description of the extension that expands upon high-level summary above.
-
-This extension illustrates the following concepts:
-
-- topic 1
-- topic 2
-- topic 3
-
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
-
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
-
-## References
-
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-htm-templating" />
