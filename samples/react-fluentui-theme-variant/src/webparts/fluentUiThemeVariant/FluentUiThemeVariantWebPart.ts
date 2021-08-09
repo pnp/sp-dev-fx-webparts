@@ -217,8 +217,8 @@ export default class FluentUiThemeVariantWebPart extends BaseClientSideWebPart<I
 
   private generateInlineSvgForBackgroundShadingType(type: BackgroundShadingType): string {
     let currentTheme = this.themeService.generateTheme(this.properties.themeType, type, this.themeVariant, JSON.parse(this.properties.customPalette));
-    let backgroundColor = currentTheme.semanticColors.bodyBackground.replace("#", "%23");
-    let textColor = currentTheme.semanticColors.bodyText.replace("#", "%23");
+    let backgroundColor = currentTheme.semanticColors.bodyBackground.split("#").join("%23");
+    let textColor = currentTheme.semanticColors.bodyText.split("#").join("%23");
 
     return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='45' height='45'%3E%3Crect x='0' y='0' width='45' height='45' stroke='black' stroke-width='2px' fill='${backgroundColor}'/%3E%3Ctext fill='${textColor}' font-family='Segoe UI, sans-serif' x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle'%3EAa%3C/text%3E%3C/svg%3E`;
   }
