@@ -25,7 +25,9 @@ export enum Stage {
 
 export interface ITeamsMembershipUpdaterState {
   items: IDropdownOption[];
+  privateChannels: IDropdownOption[];
   selectionDetails: IDropdownOption;
+  selectionChannel: IDropdownOption;
   csvdata: any[];
   csvcolumns: IColumn[];
   csvSelected: IDropdownOption;
@@ -59,7 +61,9 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
 
     this.state = {
       items: props.items,
+      privateChannels: [],
       selectionDetails: null,
+      selectionChannel: null,
       csvdata: null,
       csvcolumns: [],
       csvSelected: null,
@@ -125,7 +129,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
   }
 
   public onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
-    this.setState({ ...this.state, stage: Stage.CheckingOwnership, logs: [], errors: [], logurl: null });
+    this.setState({ ...this.state, stage: Stage.CheckingOwnership, selectionChannel: null, privateChannels: [], logs: [], errors: [], logurl: null });
     this.props.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
       client.api(`groups/${item.key}/owners`).version("v1.0").get((err, res) => {
         if (err) {
@@ -138,10 +142,23 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
           _owners.push(element.userPrincipalName);
           if (element.userPrincipalName == this.state.me) b = true;
         });
-        if (b) this.setState({ ...this.state, selectionDetails: item, groupOwners: _owners, stage: Stage.Ready });
+        if (b) {
+          this.setState({ ...this.state, selectionDetails: item, groupOwners: _owners, stage: Stage.Ready });
+          client.api(`/teams/${item.key}/channels?$filter=membershipType eq 'private'`).get((err2, res2: { value: MicrosoftGraph.Channel[] }) => {
+            if (err2) {
+              this.addError(err2.message, err2);
+              return;
+            }
+            this.setState({...this.state, selectionDetails: item, groupOwners: _owners, stage: Stage.Ready, privateChannels: res2.value.map(r => ({ key: r.id, text: r.displayName })) });
+          });
+        }
         else this.setState({ ...this.state, stage: Stage.ErrorOwnership });
       });
     });
+  }
+
+  public onChannelChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+    this.setState({ ...this.state, stage: Stage.Ready, selectionChannel: item, logs: [], errors: [], logurl: null });
   }
 
   public onEmailChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
@@ -159,7 +176,20 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
           this.addError(err.message, err);
         }
         let _m = res.value;
-        if (res['@odata.nextLink']) this.loadMembers(res['@odata.nextLink'], client).then((members) => { _m = _m.concat(members ); });
+        if (res['@odata.nextLink']) this.loadMembers(res['@odata.nextLink'], client).then((members) => { _m = _m.concat(members); });
+        result(_m);
+      });
+    });
+  }
+
+  private loadChannelMembers = async (client: MSGraphClient, url: string): Promise<Array<MicrosoftGraph.AadUserConversationMember>> => {
+    return new Promise<Array<MicrosoftGraph.AadUserConversationMember>>(result => {
+      client.api(url).get((err, res: { value: MicrosoftGraph.AadUserConversationMember[], '@odata.nextLink'?: string }) =>{
+        if (err) {
+          this.addError(err.message, err);
+        }
+        let _m = res.value;
+        if (res['@odata.nextLink']) this.loadChannelMembers(client, res['@odata.nextLink']).then((members) => { _m = _m.concat(members); });
         result(_m);
       });
     });
@@ -168,60 +198,118 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
   public onRun = (e) => {
     this.setState({ ...this.state, stage: Stage.LoadingCurrentMembers });
     this.props.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
-      this.loadMembers(`groups/${this.state.selectionDetails.key}/members`, client).then((_members) => {
-        console.debug(_members);
-        this.setState({ ...this.state, groupMembers: _members, stage: Stage.ComparingMembers });
+      if (this.state.selectionChannel === null) {
+        this.loadMembers(`groups/${this.state.selectionDetails.key}/members`, client).then((_members) => {
+          console.debug(_members);
+          this.setState({ ...this.state, groupMembers: _members, stage: Stage.ComparingMembers });
 
-        this.addLog(`Found ${_members.length} members existing in the group`);
+          this.addLog(`Found ${_members.length} members existing in the group`);
 
-        let _delete: Array<MicrosoftGraph.User> = new Array<MicrosoftGraph.User>();
+          let _delete: Array<MicrosoftGraph.User> = new Array<MicrosoftGraph.User>();
 
-        //filter the members lists to find out if they no longer exist in the csv file and add those to the delete queue, ignore group owners
-        _members = _members.filter(m => {
-          if (this._data.some(value => value[this.state.csvSelected.text].toLowerCase() === m.mail.toLowerCase()) || this.state.groupOwners.some(value => value.toLowerCase() === m.userPrincipalName.toLowerCase())) return m;
-          else { if (this.state.delete == true) { _delete.push(m); this.addLog(`Will delete ${m.mail}`); } }
-        });
+          //filter the members lists to find out if they no longer exist in the csv file and add those to the delete queue, ignore group owners
+          _members = _members.filter(m => {
+            if (this._data.some(value => value[this.state.csvSelected.text].toLowerCase() === m.mail.toLowerCase()) || this.state.groupOwners.some(value => value.toLowerCase() === m.userPrincipalName.toLowerCase())) return m;
+            else { if (this.state.delete == true) { _delete.push(m); this.addLog(`Will delete ${m.mail}`); } }
+          });
 
-        let reqs: IRequest[] = [];
-        if (this.state.delete == true) {
-          this.setState({ ...this.state, stage: Stage.RemovingOrphendMembers });
-          let _i, _j, _k, temparray, chunk = 20;
-          for (_i = 0, _j = _delete.length, _k = 0; _i < _j; _i += chunk) {
-            temparray = _delete.slice(_i, _i + chunk);
-            reqs.push({ requests: temparray.map(e1 => { _k++; return { id: `${_k}`, method: "DELETE", url: `groups/${this.state.selectionDetails.key}/members/${e1.id}/$ref` }; }) });
+          let reqs: IRequest[] = [];
+          if (this.state.delete == true) {
+            this.setState({ ...this.state, stage: Stage.RemovingOrphendMembers });
+            let _i, _j, _k, temparray, chunk = 20;
+            for (_i = 0, _j = _delete.length, _k = 0; _i < _j; _i += chunk) {
+              temparray = _delete.slice(_i, _i + chunk);
+              reqs.push({ requests: temparray.map(e1 => { _k++; return { id: `${_k}`, method: "DELETE", url: `groups/${this.state.selectionDetails.key}/members/${e1.id}/$ref` }; }) });
+            }
           }
-        }
 
-        let newMembers: string[] = [];
+          let newMembers: string[] = [];
 
-        //filter the csv to look for users that do not exist the members list and add those to the add queue
-        this._data.forEach(async e2 => {
-          if (_members.some(m => m.mail.toLowerCase() === e2[this.state.csvSelected.text].toLowerCase()) == false) {
-            newMembers.push(e2[this.state.csvSelected.text]);
-            this.addLog(`Will add ${e2[this.state.csvSelected.text]}`);
-          }
-        });
-
-        //send delete batches to the graph, if they exist
-        if (reqs.length > 0) {
-          this.addLog(`${reqs.length} Delete Batches Detected`);
-          reqs.forEach(r => {
-            if (r.requests.length > 0) {
-              this.addLog(`Deleting ${r.requests.length} users as a batch`);
-              client.api("$batch").version("v1.0").post(r, (er, re) => {
-                if (er) { this.addError(er.message, er); return; }
-                if (re) re.reponses.forEach(e3 => { if (e3.body.error) this.addError(e3.body.error.message, e3.body.error); });
-                this.addLog(`Deleting Batch Done`);
-              });
+          //filter the csv to look for users that do not exist the members list and add those to the add queue
+          this._data.forEach(async e2 => {
+            if (_members.some(m => m.mail.toLowerCase() === e2[this.state.csvSelected.text].toLowerCase()) == false) {
+              newMembers.push(e2[this.state.csvSelected.text]);
+              this.addLog(`Will add ${e2[this.state.csvSelected.text]}`);
             }
           });
-          //once the delete batches are done call the add members function, if no new members are needed call the Done function
-          if (newMembers.length == 0) this.Done();
+
+          //send delete batches to the graph, if they exist
+          if (reqs.length > 0) {
+            this.addLog(`${reqs.length} Delete Batches Detected`);
+            reqs.forEach(r => {
+              if (r.requests.length > 0) {
+                this.addLog(`Deleting ${r.requests.length} users as a batch`);
+                client.api("$batch").version("v1.0").post(r, (er, re) => {
+                  if (er) { this.addError(er.message, er); return; }
+                  if (re) re.reponses.forEach(e3 => { if (e3.body.error) this.addError(e3.body.error.message, e3.body.error); });
+                  this.addLog(`Deleting Batch Done`);
+                });
+              }
+            });
+            //once the delete batches are done call the add members function, if no new members are needed call the Done function
+            if (newMembers.length == 0) this.Done();
+            else this.addMembers(newMembers, client);
+          } //if no new members are needed call the Done function
+          else if (newMembers.length == 0) this.Done();
           else this.addMembers(newMembers, client);
-        } //if no new members are needed call the Done function
-        else if (newMembers.length == 0) this.Done();
-        else this.addMembers(newMembers, client);
-      });
+        });
+      }
+      else {
+        this.loadChannelMembers(client, `teams/${this.state.selectionDetails.key}/channels/${this.state.selectionChannel.key}/members`).then((_members) => {
+          console.debug(_members);
+          this.setState({ ...this.state, groupMembers: _members, stage: Stage.ComparingMembers });
+
+          this.addLog(`Found ${_members.length} members existing in the channel`);
+
+          let _delete: Array<MicrosoftGraph.AadUserConversationMember> = new Array<MicrosoftGraph.AadUserConversationMember>();
+
+          //filter the members lists to find out if they no longer exist in the csv file and add those to the delete queue, ignore group owners
+          _members = _members.filter(m => {
+            if (this._data.some(value => value[this.state.csvSelected.text].toLowerCase() === m.email.toLowerCase()) || this.state.groupOwners.some(value => value.toLowerCase() === m.email.toLowerCase())) return m;
+            else { if (this.state.delete == true) { _delete.push(m); this.addLog(`Will delete ${m.email}`); } }
+          });
+
+          let reqs: IRequest[] = [];
+          if (this.state.delete == true) {
+            this.setState({ ...this.state, stage: Stage.RemovingOrphendMembers });
+            let _i, _j, _k, temparray, chunk = 20;
+            for (_i = 0, _j = _delete.length, _k = 0; _i < _j; _i += chunk) {
+              temparray = _delete.slice(_i, _i + chunk);
+              reqs.push({ requests: temparray.map(e1 => { _k++; return { id: `${_k}`, method: "DELETE", url: `teams/${this.state.selectionDetails.key}/channels/${this.state.selectionChannel.key}/${e1.id}` }; }) });
+            }
+          }
+
+          let newMembers: string[] = [];
+
+          //filter the csv to look for users that do not exist the members list and add those to the add queue
+          this._data.forEach(async e2 => {
+            if (_members.some(m => m.email.toLowerCase() === e2[this.state.csvSelected.text].toLowerCase()) == false) {
+              newMembers.push(e2[this.state.csvSelected.text]);
+              this.addLog(`Will add ${e2[this.state.csvSelected.text]}`);
+            }
+          });
+
+          //send delete batches to the graph, if they exist
+          if (reqs.length > 0) {
+            this.addLog(`${reqs.length} Delete Batches Detected`);
+            reqs.forEach(r => {
+              if (r.requests.length > 0) {
+                this.addLog(`Deleting ${r.requests.length} users as a batch`);
+                client.api("$batch").version("v1.0").post(r, (er, re) => {
+                  if (er) { this.addError(er.message, er); return; }
+                  if (re) re.reponses.forEach(e3 => { if (e3.body.error) this.addError(e3.body.error.message, e3.body.error); });
+                  this.addLog(`Deleting Batch Done`);
+                });
+              }
+            });
+            //once the delete batches are done call the add members function, if no new members are needed call the Done function
+            if (newMembers.length == 0) this.Done();
+            else this.addMembers(newMembers, client);
+          } //if no new members are needed call the Done function
+          else if (newMembers.length == 0) this.Done();
+          else this.addMembers(newMembers, client);
+        });
+      }
     });
   }
 
@@ -279,9 +367,11 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
               newreq.requests.push({
                 id: `${newreq.requests.length + 1}`,
                 method: "POST",
-                url: `groups/${this.state.selectionDetails.key}/members/$ref`,
+                url: this.state.selectionChannel === null ? `groups/${this.state.selectionDetails.key}/members/$ref` : `teams/${this.state.selectionDetails.key}/channels/${this.state.selectionChannel.key}`,
                 headers: { "Content-Type": "application/json" },
-                body: { "@odata.id": `https://graph.microsoft.com/v1.0/directoryObjects/${e.body.id}` }
+                body: this.state.selectionChannel === null ?
+                  { "@odata.id": `https://graph.microsoft.com/v1.0/directoryObjects/${e.body.id}` } :
+                  { "@odata.type": "#microsoft.graph.aadUserConversationMember", "roles": [], "user@odata.bind": `https://graph.microsoft.com/v1.0/users('${e.body.id}')` }
               });
             }
           });
@@ -330,7 +420,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
   }
 
   public render(): React.ReactElement<ITeamsMembershipUpdaterProps> {
-    const { items, csvItems, orphanedMembersHelp, csvdata, csvcolumns, stage, csvSelected, logurl, logs, errors } = this.state;
+    const { items, csvItems, orphanedMembersHelp, csvdata, csvcolumns, stage, csvSelected, logurl, logs, errors, privateChannels } = this.state;
     const mg = mergeStyleSets({
       callout: {
         width: 320,
@@ -358,6 +448,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
           <Dropdown label={strings.selectTeam} onChange={this.onChange} placeholder={selectTeamPlacehold} options={items} disabled={items.length == 0} />
           {stage == Stage.CheckingOwnership && <ProgressIndicator label={strings.checkingOwner} description={strings.checkingOwnerDescription} />}
           {stage == Stage.ErrorOwnership && <MessageBar messageBarType={MessageBarType.error} isMultiline={false}>You are not an owner of this group. Please select another.</MessageBar>}
+          <Dropdown label={strings.selectChannel } onChange={this.onChannelChange} placeholder={strings.selectChannelPlaceholder} options={privateChannels} disabled={privateChannels.length === 0} />
           <FilePicker accepts={[".csv"]} buttonLabel={strings.selectFile} buttonIcon="ExcelDocument" label={strings.selectFileLabel}
             hideStockImages hideOrganisationalAssetTab hideSiteFilesTab hideWebSearchTab hideLinkUploadTab onSave={this.fileChange} onChange={this.fileChange} context={this.props.context} />
           <Dropdown label={strings.emailColumn} onChange={this.onEmailChange} placeholder={emailColumnPlaceholder} options={csvItems} disabled={!csvdata} />
