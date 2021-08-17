@@ -32,7 +32,8 @@ define([], function() {
     "orphanedMembersContent": "Removes members who are not present in the CSV file. Owners are not effected",
     "on": "On",
     "off": "Off",
-    "selectChannel": "(Optional) Select channel",
-    "selectChannelPlaceholder": "Select a private channel"
+    "selectChannel": "(Optional) Select a private channel",
+    "selectChannelPlaceholder": "Select a private channel",
+    "noChannel": "No Channel"
   }
 });

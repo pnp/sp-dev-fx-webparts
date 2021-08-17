@@ -121,7 +121,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
             var h = csv.meta.fields;
             this._data = csv.data;
             this._datacolumns = h.map(r => { return { key: r.replace(' ', ''), name: r, fieldName: r, isResizable: true }; });
-            this.setState({ ...this.state, csvcolumns: this._datacolumns, csvdata: this._data, csvItems: h.map(r => { return { key: r.replace(' ', ''), text: r }; }), logs: [], errors: [], logurl: null });
+            this.setState({ ...this.state, csvcolumns: this._datacolumns, csvdata: this._data, csvItems: h.map(r => ({ key: r.replace(' ', ''), text: r })), logs: [], errors: [], logurl: null });
           });
         });
       });
@@ -149,7 +149,8 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
               this.addError(err2.message, err2);
               return;
             }
-            this.setState({...this.state, selectionDetails: item, groupOwners: _owners, stage: Stage.Ready, privateChannels: res2.value.map(r => ({ key: r.id, text: r.displayName })) });
+            res2.value = res2.value.sort((a, b) => a.displayName.localeCompare(b.displayName));
+            this.setState({...this.state, selectionDetails: item, groupOwners: _owners, stage: Stage.Ready, privateChannels: res2.value.length === 0 ? [] : [{ key: 'null', text: strings.noChannel }].concat(res2.value.map(r => ({ key: r.id, text: r.displayName }))) });
           });
         }
         else this.setState({ ...this.state, stage: Stage.ErrorOwnership });
@@ -158,7 +159,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
   }
 
   public onChannelChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
-    this.setState({ ...this.state, stage: Stage.Ready, selectionChannel: item, logs: [], errors: [], logurl: null });
+    this.setState({ ...this.state, stage: Stage.Ready, selectionChannel: item.key !== "null" ? item : null, logs: [], errors: [], logurl: null });
   }
 
   public onEmailChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
@@ -410,11 +411,20 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
           this.addError(err.message, err);
           return;
         }
-        let teams: Array<IDropdownOption> = res.responses[1].body.value.map((item: any) => {
-          return { key: item.id, text: item.displayName };
-        });
+        let teams: Array<IDropdownOption> = res.responses[1].body.value.map(item => ({ key: item.id, text: item.displayName }));
+        if (res.responses[1].body['@odata.nextLink']) this.loadMoreTeams(client, res.responses[1].body['@odata.nextLink']).then((value) => teams = teams.concat(value));
+        teams = teams.sort((a, b) => a.text.localeCompare(b.text));
         this.setState({ ...this.state, me: res.responses[0].body.userPrincipalName, items: teams, stage: Stage.Ready });
 
+      });
+    });
+  }
+
+  private loadMoreTeams = (client: MSGraphClient, url: string) : Promise<IDropdownOption[]> => {
+    return new Promise<IDropdownOption[]>((resolve) => {
+      client.api(url).get((error, response: { value: MicrosoftGraph.Team[],'@odata.nextLink'?: string }) => {
+        if (response['@odata.nextLink']) this.loadMoreTeams(client, response['@odata.nextLink']).then((value) => response.value = response.value.concat(value));
+        resolve(response.value.map(item => ({ key: item.id, text: item.displayName })));
       });
     });
   }
@@ -445,13 +455,13 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
           {stage == Stage.RemovingOrphendMembers && <ProgressIndicator label={strings.removingOrphend} description={strings.removingOrphendDescription} />}
           {stage == Stage.AddingNewMembers && <ProgressIndicator label={strings.addingNew} description={strings.addingNewDescription} />}
           {stage == Stage.LoggingDone && <ProgressIndicator label={strings.logging} description={strings.loggingDescription} />}
-          <Dropdown label={strings.selectTeam} onChange={this.onChange} placeholder={selectTeamPlacehold} options={items} disabled={items.length == 0} />
+          <Dropdown label={strings.selectTeam} onChange={this.onChange} placeholder={selectTeamPlacehold} options={items} disabled={items.length == 0} required />
           {stage == Stage.CheckingOwnership && <ProgressIndicator label={strings.checkingOwner} description={strings.checkingOwnerDescription} />}
           {stage == Stage.ErrorOwnership && <MessageBar messageBarType={MessageBarType.error} isMultiline={false}>You are not an owner of this group. Please select another.</MessageBar>}
           <Dropdown label={strings.selectChannel } onChange={this.onChannelChange} placeholder={strings.selectChannelPlaceholder} options={privateChannels} disabled={privateChannels.length === 0} />
-          <FilePicker accepts={[".csv"]} buttonLabel={strings.selectFile} buttonIcon="ExcelDocument" label={strings.selectFileLabel}
+          <FilePicker accepts={[".csv"]} buttonLabel={strings.selectFile} buttonIcon="ExcelDocument" label={strings.selectFileLabel} required
             hideStockImages hideOrganisationalAssetTab hideSiteFilesTab hideWebSearchTab hideLinkUploadTab onSave={this.fileChange} onChange={this.fileChange} context={this.props.context} />
-          <Dropdown label={strings.emailColumn} onChange={this.onEmailChange} placeholder={emailColumnPlaceholder} options={csvItems} disabled={!csvdata} />
+          <Dropdown label={strings.emailColumn} onChange={this.onEmailChange} placeholder={emailColumnPlaceholder} options={csvItems.filter(o => o.text !== "")} disabled={!csvdata} required />
           <Toggle label={<span>4. Remove Orphaned Members <Icon iconName="Info" onMouseEnter={() => this.setState({...this.state, orphanedMembersHelp: true})} id="orphanedMembers" /></span>} inlineLabel onText={strings.on} offText={strings.off} defaultChecked={true} onChange={this.onToggleDelete} />
           {orphanedMembersHelp && <Callout target="#orphanedMembers" className={mg.callout} onDismiss={() => this.setState({...this.state, orphanedMembersHelp: false})}>
             <Text block variant="xLarge" className={mg.title}>{strings.orphanedMembersTitle}</Text>

@@ -33,6 +33,7 @@ declare interface ITeamsMembershipUpdaterWebPartStrings {
   off: string;
   selectChannel: string;
   selectChannelPlaceholder: string;
+  noChannel: string;
 }
 
 declare module 'TeamsMembershipUpdaterWebPartStrings' {

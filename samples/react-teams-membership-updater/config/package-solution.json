@@ -27,6 +27,10 @@
       {
         "resource": "Microsoft Graph",
         "scope": "Group.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ChannelMember.ReadWrite.All"
       }
     ]
   },
