@@ -149,7 +149,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
               this.addError(err2.message, err2);
               return;
             }
-            res2.value = res2.value.sort((a, b) => a.displayName.localeCompare(b.displayName));
+            res2.value = res2.value.sort((a1, b1) => a1.displayName.localeCompare(b1.displayName));
             this.setState({...this.state, selectionDetails: item, groupOwners: _owners, stage: Stage.Ready, privateChannels: res2.value.length === 0 ? [] : [{ key: 'null', text: strings.noChannel }].concat(res2.value.map(r => ({ key: r.id, text: r.displayName }))) });
           });
         }
