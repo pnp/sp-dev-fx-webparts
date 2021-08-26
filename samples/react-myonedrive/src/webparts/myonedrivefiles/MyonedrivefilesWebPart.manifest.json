@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "ab23f6f4-bd91-4932-a53e-d850042ae10c",
+  "alias": "MyonedrivefilesWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "myonedrivefiles"
+      },
+      "description": {
+        "default": "myonedrivefiles description"
+      },
+      "officeFabricIconFontName": "OneDriveFolder16",
+      "properties": {
+        "title": "My OneDrive Files",
+        "fields": ["name", "lastModifiedDateTime", "lastModifiedBy", "folder" ,"shared"]
+      }
+    }
+  ]
+}
