@@ -46,6 +46,7 @@ Version|Date|Comments
 1.0.7|April 20, 2021|Switched to using PnP's file picker and option to log to a configuration list
 1.0.8|April 22, 2021|Added support for paging on the team member list get
 1.1.0|July 13, 2021|Upgraded to v1.12.1 of SPFx and v3 of pnp controls
+1.2.0|August 17, 2021|Added support for populating private channels inside of a team, added support for paged list of teams from Graph, added sorting to the Team list
 
 ## Minimal Path to Awesome
 
