@@ -1,0 +1,119 @@
+{
+  "id": "3c0443ba-8202-4d11-817e-482586feeb6f",
+  "alias": "ReactHtmWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "SharePointFullPage"
+  ],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "React HTM (Hyperscript Tagged Markup)"
+      },
+      "description": {
+        "default": "Use HTM (Hyperscript Tagged Markup) as Template Engine for React components like 'Fluent UI React'"
+      },
+      "officeFabricIconFontName": "CodeEdit",
+      "properties": {
+        "template": "let [count, setCount] = this.react.useState(0);\r\nconst originalItems = this.fuiHooks.useConst(() => this.fuiSampleData.createListItems(10));\r\nconst classNames = this.fui.mergeStyleSets({\r\n    itemCell: [\r\n        this.fui.getFocusStyle(this.theme, { inset: -1 }),\r\n        {\r\n            minHeight: 54,\r\n            padding: 10,\r\n            boxSizing: 'border-box',\r\n            borderBottom: `1px solid ${this.themeVariant.semanticColors.bodyDivider}`,\r\n            display: 'flex',\r\n            selectors: {\r\n                '&:hover': { background: this.themeVariant.palette.neutralLight },\r\n            }\r\n        },\r\n    ],\r\n    itemImage: {\r\n        flexShrink: 0,\r\n    },\r\n    itemContent: {\r\n        marginLeft: 10,\r\n        overflow: 'hidden',\r\n        flexGrow: 1,\r\n    },\r\n    itemName: [\r\n        this.themeVariant.fonts.xLarge,\r\n        {\r\n            whiteSpace: 'nowrap',\r\n            overflow: 'hidden',\r\n            textOverflow: 'ellipsis',\r\n        },\r\n    ],\r\n    itemIndex: {\r\n        fontSize: this.themeVariant.fonts.small.fontSize,\r\n        color: this.themeVariant.palette.neutralTertiary,\r\n        marginBottom: 10,\r\n    },\r\n    chevron: {\r\n        alignSelf: 'center',\r\n        marginLeft: 10,\r\n        color: this.themeVariant.palette.neutralTertiary,\r\n        fontSize: this.themeVariant.fonts.large.fontSize,\r\n        flexShrink: 0,\r\n    },\r\n});\r\n\r\nconst onRenderCell = (item, index) => {\r\n    return this.html`\r\n    <div class=${classNames.itemCell} data-is-focusable>\r\n    <${this.fui.Image} className=${classNames.itemImage} src=${item.thumbnail} width=${50} height=${50} imageFit=${this.fui.ImageFit.cover} />\r\n    <div class=${classNames.itemContent}>\r\n        <div class=${classNames.itemName}>${item.name}</div>\r\n        <div class=${classNames.itemIndex}>${`Item ${index}`}</div>\r\n        <div>${item.description}</div>\r\n    </div>\r\n    <${this.fui.Icon} className=${classNames.chevron} iconName=${this.fui.getRTL() ? 'ChevronLeft' : 'ChevronRight'} />\r\n    </div>`;\r\n};\r\n\r\nreturn this.html`\r\n    <${this.fui.ThemeProvider} theme=${this.themeVariant}>\r\n        <${this.fui.Stack} tokens=${{ childrenGap: 10 }}>\r\n            <${this.fui.Label}>Clicked ${count} times<//>\r\n            <${this.fui.PrimaryButton} text=\"Click here!\" onClick=${() => setCount(count + 1)} />\r\n            <${this.fui.List} items=${originalItems} onRenderCell=${onRenderCell} />\r\n        <//>\r\n    <//>`;",
+        "loadFluentUI": true,
+        "loadFluentUISampleData": true
+      }
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "<!-- PATH TO CDN -->"
+    ],
+    "entryModuleId": "react-htm-web-part",
+    "scriptResources": {
+      "react-htm-web-part": {
+        "type": "path",
+        "path": "react-htm-web-part.js"
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-component-base": {
+        "type": "component",
+        "id": "467dc675-7cc5-4709-8aac-78e3b71bd2f6",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.12.1"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.9.0"
+      },
+      "ReactHtmWebPartStrings": {
+        "type": "path",
+        "path": "ReactHtmWebPartStrings_en-us.js"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.9.0"
+      },
+      "PropertyControlStrings": {
+        "type": "localizedPath",
+        "paths": {
+          "bg-BG": "PropertyControlStrings_bg-bg.js",
+          "ca-ES": "PropertyControlStrings_ca-es.js",
+          "da-DK": "PropertyControlStrings_da-dk.js",
+          "de-DE": "PropertyControlStrings_de-de.js",
+          "el-GR": "PropertyControlStrings_el-gr.js",
+          "en-US": "PropertyControlStrings_en-us.js",
+          "es-ES": "PropertyControlStrings_es-es.js",
+          "et-EE": "PropertyControlStrings_et-ee.js",
+          "fi-FI": "PropertyControlStrings_fi-fi.js",
+          "fr-FR": "PropertyControlStrings_fr-fr.js",
+          "it-IT": "PropertyControlStrings_it-it.js",
+          "ja-JP": "PropertyControlStrings_ja-jp.js",
+          "lt-LT": "PropertyControlStrings_lt-lt.js",
+          "lv-LV": "PropertyControlStrings_lv-lv.js",
+          "nb-NO": "PropertyControlStrings_nb-no.js",
+          "nl-NL": "PropertyControlStrings_nl-nl.js",
+          "no": "PropertyControlStrings_no.js",
+          "pl-PL": "PropertyControlStrings_pl-pl.js",
+          "pt-PT": "PropertyControlStrings_pt-pt.js",
+          "ro-RO": "PropertyControlStrings_ro-ro.js",
+          "ru-RU": "PropertyControlStrings_ru-ru.js",
+          "sk-SK": "PropertyControlStrings_sk-sk.js",
+          "sr-Latn-RS": "PropertyControlStrings_sr-latn-rs.js",
+          "sv-SE": "PropertyControlStrings_sv-se.js",
+          "tr-TR": "PropertyControlStrings_tr-tr.js",
+          "vi-VN": "PropertyControlStrings_vi-vn.js",
+          "zh-CN": "PropertyControlStrings_zh-cn.js",
+          "zh-TW": "PropertyControlStrings_zh-tw.js"
+        },
+        "defaultPath": "PropertyControlStrings_en-us.js"
+      }
+    }
+  }
+}
