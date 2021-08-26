@@ -28,7 +28,7 @@ export default class Myonedrivefiles extends React.Component<IMyonedrivefilesPro
   }
 
   public async componentDidMount() {
-    this.getDriveRootUrl()
+    this.getDriveRootUrl();
     this.getmyDriveFiles();
   }
 
@@ -131,6 +131,6 @@ export default class Myonedrivefiles extends React.Component<IMyonedrivefilesPro
               messageBarType={MessageBarType.warning}>
               {strings.NoFieldsLabel}</MessageBar>
         }
-      </>)
+      </>);
   }
 }

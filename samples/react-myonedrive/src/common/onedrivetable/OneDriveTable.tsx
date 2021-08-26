@@ -56,7 +56,7 @@ const columns: OneDriveTableColumn[] = [
 
 
 function getIcon(fileName) {
-    var extension = fileName.substring(fileName.lastIndexOf('.'))
+    var extension = fileName.substring(fileName.lastIndexOf('.'));
     if (!extension.includes('.'))
         return <div className={styles.folderIcon}></div>;
     if (extension == ".docx")
@@ -158,7 +158,7 @@ export function OneDriveTableBody(props: { rows: any[], selectedFields: any[], o
 }
 
 function sortData(data: any[], orderBy: string, order: 'asc' | 'desc') {
-    const orderMultiplier = order === 'asc' ? 1 : -1
+    const orderMultiplier = order === 'asc' ? 1 : -1;
     return data.sort((v1, v2) => ((v1[orderBy] > v2[orderBy]) ? 1 : -1) * orderMultiplier);
 }
 
@@ -172,7 +172,7 @@ export default function OneDriveTable(props: { data: any[], defaultSortKey?: str
     let folders = [], files = [];
     rows.forEach(r => {
         r.folder ? folders.push(r) : files.push(r);
-    })
+    });
 
     rows = [...folders, ...files];
 
@@ -205,7 +205,7 @@ export default function OneDriveTable(props: { data: any[], defaultSortKey?: str
                                 return <><ChevronRight color="disabled" />
                                     <Link className={styles.breadcrumbLink}
                                         onClick={() => breadcrumbClick(index)}>{folder}</Link>
-                                </>
+                                </>;
                             })
                         }
                     </div>
@@ -225,5 +225,5 @@ export default function OneDriveTable(props: { data: any[], defaultSortKey?: str
                 </React.Fragment>
             }
         </React.Fragment>
-    )
+    );
 }
