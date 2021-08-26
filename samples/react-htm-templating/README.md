@@ -41,7 +41,7 @@ Version|Date|Comments
 
 This example born from the need to have a template system that can directly use the "Fluent UI" components (or other components) written in React, without the need to use any wrapper such as, for example, encapsulating the rendering of components via Web Components.
 
-The webpart uses a template system called [HTM (Hyperscript Tagged Markup)](https://github.com/developit/htm), whose meaning is: "htm is JSX-like syntax in plain JavaScript - no transpiler necessary".
+The web part uses a template system called [HTM (Hyperscript Tagged Markup)](https://github.com/developit/htm), whose meaning is: "htm is JSX-like syntax in plain JavaScript - no transpiler necessary".
 
 Basically, the template is nothing more than the JS code, which is evaluated through the Function constructor.
 
