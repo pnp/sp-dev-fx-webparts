@@ -19,13 +19,17 @@ The idea is based of the *At a glance* section of a news in the BBC news app (be
 
 ![demo](./assets/demo.gif)
 
+## Screenshot of the article in mobile view
+
+![article-content-mobile](./assets/article-content-mobile.png)
+
 ### Large section / desktop view
 
 ![article-content](./assets/at_a_glance_large.png)
 
-## Screenshot of the article
+## Screenshot of the article in desktop
 
-![article-content](./assets/article-content.png)
+![article-content-desktop](./assets/article-content-desktop.png)
 
 
 ## Used SharePoint Framework Version
