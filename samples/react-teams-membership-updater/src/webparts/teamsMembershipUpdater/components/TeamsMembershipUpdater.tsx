@@ -368,7 +368,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
               newreq.requests.push({
                 id: `${newreq.requests.length + 1}`,
                 method: "POST",
-                url: this.state.selectionChannel === null ? `groups/${this.state.selectionDetails.key}/members/$ref` : `teams/${this.state.selectionDetails.key}/channels/${this.state.selectionChannel.key}`,
+                url: this.state.selectionChannel === null ? `groups/${this.state.selectionDetails.key}/members/$ref` : `teams/${this.state.selectionDetails.key}/channels/${this.state.selectionChannel.key}/members`,
                 headers: { "Content-Type": "application/json" },
                 body: this.state.selectionChannel === null ?
                   { "@odata.id": `https://graph.microsoft.com/v1.0/directoryObjects/${e.body.id}` } :
