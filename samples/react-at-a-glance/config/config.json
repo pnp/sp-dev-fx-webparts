@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "news-glance-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/newsGlance/NewsGlanceWebPart.js",
+          "manifest": "./src/webparts/newsGlance/NewsGlanceWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "NewsGlanceWebPartStrings": "lib/webparts/newsGlance/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}
