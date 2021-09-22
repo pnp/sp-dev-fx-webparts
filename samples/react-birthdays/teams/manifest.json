@@ -1,21 +1,21 @@
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.2/MicrosoftTeams.schema.json",
   "manifestVersion": "1.2",
-  "packageName": "HappyBirdthay",
-  "id": "e629ef30-a9ec-4713-b39a-2cfa8b323902",
+  "packageName": "HappyBirdthayAnniversary",
+  "id": "b0069b7e-8ec8-4e14-a76c-0c8bcb33993e",
   "version": "0.1",
   "developer": {
-    "name": "SPFx + Teams Dev",
+    "name": "SPFx + Teams Dev + Sajal Maity",
     "websiteUrl": "https://products.office.com/en-us/sharepoint/collaboration",
     "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
     "termsOfUseUrl": "https://www.microsoft.com/en-us/servicesagreement"
   },
   "name": {
-    "short": "HappyBirdthay"
+    "short": "HappyBirthdayAnniversary"
   },
   "description": {
-    "short": "HappyBirdthay description",
-    "full": "HappyBirdthay description"
+    "short": "HappyBirdthay & anniversary description",
+    "full": "HappyBirdthay & anniversary description"
   },
   "icons": {
     "outline": "tab20x20.png",
@@ -24,7 +24,7 @@
   "accentColor": "#004578",
   "configurableTabs": [
     {
-      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=e629ef30-a9ec-4713-b39a-2cfa8b323902",
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=b0069b7e-8ec8-4e14-a76c-0c8bcb33993e",
       "canUpdateConfiguration": false,
       "scopes": [
         "team"
@@ -42,6 +42,6 @@
   ],
   "webApplicationInfo": {
     "resource": "https://{teamSiteDomain}",
-    "id": "00000003-0000-0ff1-ce00-000000000000"
+    "id": "16492248-a978-4d4b-bb85-c7557c1f2d19"
   }
 }

@@ -12,8 +12,8 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@microsoft/mgt": "^2.2.0-next.file.0e80deb",
-    "@microsoft/mgt-react": "^2.2.0-next.file.0e80deb",
+    "@microsoft/mgt": "^2.2.0",
+    "@microsoft/mgt-react": "^2.2.0",
     "@microsoft/sp-core-library": "1.11.0",
     "@microsoft/sp-lodash-subset": "1.11.0",
     "@microsoft/sp-office-ui-fabric-core": "1.11.0",

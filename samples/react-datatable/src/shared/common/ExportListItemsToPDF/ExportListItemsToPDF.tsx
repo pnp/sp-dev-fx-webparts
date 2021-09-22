@@ -28,13 +28,13 @@ export function ExportListItemsToPDF(props: IExportToPDF) {
         let dataTableRows = dataSource().map(lItem => columns.reduce((arr, c) => [...arr, isNullOrUndefined(lItem[c]) ? '' : lItem[c]], []));
 
         let data = {
-            content: [      
+            content: [
                 {
                     text: title,
                     fontSize: 16,
                     alignment: 'center',
                     margin: [0, 0, 0, 15]
-                },       
+                },
                 {
                     style: 'tableExample',
                     table: {
@@ -46,7 +46,7 @@ export function ExportListItemsToPDF(props: IExportToPDF) {
                         ]
                     },
                     layout: {
-                        fillColor: function (rowIndex: number) {
+                        fillColor: (rowIndex: number)=> {
                             if (oddRowColor && evenRowColor)
                                 return (rowIndex % 2 === 0) ? evenRowColor : oddRowColor;
                             else
@@ -57,7 +57,7 @@ export function ExportListItemsToPDF(props: IExportToPDF) {
             ]
         };
         pdfMake.createPdf(data).download(`${listName}.pdf`);
-    }    
+    }
 
     return (
         <PrimaryButton

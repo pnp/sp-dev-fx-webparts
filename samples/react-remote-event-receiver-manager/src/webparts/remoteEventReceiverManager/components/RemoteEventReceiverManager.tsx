@@ -14,7 +14,7 @@ const SynchronizationOptions: IDropdownOption[] = [
   { key: 2, text: "Asynchronous" }
 ];
 
-const EventTypeOptions: IDropdownOption[] = [
+const EventTypeOptionsAsync: IDropdownOption[] = [
   { key: 10001, text: "ItemAdded" },
   { key: 10002, text: "ItemUpdated" },
   { key: 10003, text: "ItemDeleted" },
@@ -25,8 +25,29 @@ const EventTypeOptions: IDropdownOption[] = [
   { key: 10008, text: "ItemAttachmentDeleted" },
   { key: 10009, text: "ItemFileMoved" },
   { key: 10010, text: "ItemFileConverted" },
-  { key: 10011, text: "ItemVersionDeleted" },
 ];
+
+const EventTypeOptionsSync: IDropdownOption[] = [
+  { key: 1, text: "ItemAdding" },
+  { key: 2, text: "ItemUpdating" },
+  { key: 3, text: "ItemDeleteing" },
+  { key: 4, text: "ItemCheckingIn" },
+  { key: 5, text: "ItemCheckingOut" },
+  { key: 6, text: "ItemUncheckingOut" },
+  { key: 7, text: "ItemAttachmentAdding" },
+  { key: 8, text: "ItemAttachmentDeleting" },
+  { key: 9, text: "ItemFileMoveing" }
+];
+
+
+const getEventTypeOptions: (SynchronizationOption: number) => IDropdownOption[] = (SynchronizationOption: number) => {
+  switch (SynchronizationOption) {
+    case 1: return EventTypeOptionsSync;
+    case 2: return EventTypeOptionsAsync;
+    default:
+      return [...EventTypeOptionsAsync, ...EventTypeOptionsSync];
+  }
+};
 
 const NewEventReciever: IEventReceiver = {
   ReceiverAssembly: "Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c",
@@ -99,13 +120,13 @@ export default class RemoteEventReceiverManager extends React.Component<IRemoteE
     this.loadEventReceivers(this.state.selectedList.Id);
   }
 
-
   private async deleteEventReceiver() {
     this.setState({ isSaving: true });
     await this.provider.deleteEventReceiver(this.state.selectedEventReceiver, this.state.selectedList.Id);
     this.setState({ isSaving: false, selectedEventReceiver: null, step: Step.SelectEventReceiver });
     this.loadEventReceivers(this.state.selectedList.Id);
   }
+
 
   public render(): React.ReactElement<IRemoteEventReceiverManagerProps> {
     const { selectedEventReceiver } = this.state;
@@ -176,7 +197,7 @@ export default class RemoteEventReceiverManager extends React.Component<IRemoteE
                   <TextField disabled={selectedEventReceiver.ReceiverId != ""} label={"ReceiverName"} value={selectedEventReceiver.ReceiverName} onChange={(ev, val) => this.setState({ selectedEventReceiver: { ...selectedEventReceiver, ReceiverName: val } })} />
                   <TextField disabled={selectedEventReceiver.ReceiverId != ""} label={"SequenceNumber"} type={"number"} value={selectedEventReceiver.SequenceNumber + ""} onChange={(ev, val) => this.setState({ selectedEventReceiver: { ...selectedEventReceiver, SequenceNumber: val as any as number } })} />
                   <Dropdown disabled={selectedEventReceiver.ReceiverId != ""} label={"Synchronization"} selectedKey={selectedEventReceiver.Synchronization} onChange={(ev, val) => this.setState({ selectedEventReceiver: { ...selectedEventReceiver, Synchronization: val.key as number } })} options={SynchronizationOptions} />
-                  <Dropdown disabled={selectedEventReceiver.ReceiverId != ""} label={"EventType"} selectedKey={selectedEventReceiver.EventType} onChange={(ev, val) => this.setState({ selectedEventReceiver: { ...selectedEventReceiver, EventType: val.key as number } })} options={EventTypeOptions} />
+                  <Dropdown disabled={selectedEventReceiver.ReceiverId != ""} label={"EventType"} selectedKey={selectedEventReceiver.EventType} onChange={(ev, val) => this.setState({ selectedEventReceiver: { ...selectedEventReceiver, EventType: val.key as number } })} options={getEventTypeOptions(selectedEventReceiver.Synchronization)} />
                   <TextField disabled={selectedEventReceiver.ReceiverId != ""} label={"ReceiverUrl"} value={selectedEventReceiver.ReceiverUrl} onChange={(ev, val) => this.setState({ selectedEventReceiver: { ...selectedEventReceiver, ReceiverUrl: val } })} />
                   <DialogFooter>
                     <div style={{ display: "flex", placeContent: "flex-end" }}>

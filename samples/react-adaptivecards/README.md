@@ -13,12 +13,11 @@ This sample creates an Adaptive Cards Host web part that you can use to display 
 
 ## Compatibility
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg) 
-![Node.js LTS 10.x](https://img.shields.io/badge/Node.js-LTS%2010.x-green.svg) 
-![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
+![Node.js LTS v14 | LTS v12 | LTS v10](https://img.shields.io/badge/Node.js-LTS%20v14%20%7C%20LTS%20v12%20%7C%20LTS%20v10-green.svg) 
+![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams") 
-![Workbench Local (Partially) | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-yellow.svg)
-
+![Workbench Local | Hosted](https://img.shields.io/badge/Workbench-Local%20%7C%20Hosted-green.svg)
 
 ## Applies to
 
@@ -45,6 +44,7 @@ Version|Date|Comments
 2.1.0|June 11, 2020|Fixed breaking changes introduced with Adaptive Card Templating in May update
 2.2.0|August 25, 2020|Upgraded to SPFx 1.11
 2.2.1|February 23, 2021|Fixed FluentUI dependencies introduced with newer versions of Adaptive Cards React.
+2.3.0|August 2, 2021|Upgraded to SPFx 1.12.1
 
 ## Disclaimer
 

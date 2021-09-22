@@ -1,0 +1,23 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+
+.newsGlancecard {
+
+  
+    .wrapper {
+      margin-top: 0px;
+    }
+
+    .textWrapper{
+      padding: 10%;
+    }
+
+    .image {
+      width: 100%;
+    }
+  
+    .title {
+      font-size: 18px;
+      color: $ms-color-themeLighter;
+    }
+  }

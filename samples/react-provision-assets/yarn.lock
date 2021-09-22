@@ -1135,8 +1135,8 @@ balanced-match@^0.4.2:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
 
 balanced-match@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
 
 base64-arraybuffer@0.1.5:
   version "0.1.5"
@@ -1700,10 +1700,6 @@ commander@2.9.x, commander@^2.7.1, commander@^2.9.0, commander@~2.9.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
   dependencies:
     graceful-readlink ">= 1.0.0"
-
-commander@~2.20.3:
-  version "2.20.3"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
 
 component-bind@1.0.0:
   version "1.0.0"
@@ -3027,18 +3023,9 @@ fstream-ignore@^1.0.5:
     inherits "2"
     minimatch "^3.0.0"
 
-fstream@^1.0.0, fstream@^1.0.12:
+fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.12:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/fstream/-/fstream-1.0.12.tgz#4e8ba8ee2d48be4f7d0de505455548eae5932045"
-  dependencies:
-    graceful-fs "^4.1.2"
-    inherits "~2.0.0"
-    mkdirp ">=0.5 0"
-    rimraf "2"
-
-fstream@^1.0.10, fstream@^1.0.2:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/fstream/-/fstream-1.0.11.tgz#5c1fb1f117477114f0632a0eb4b71b3cb0fd3171"
   dependencies:
     graceful-fs "^4.1.2"
     inherits "~2.0.0"
@@ -3198,9 +3185,20 @@ glob@^5.0.15, glob@^5.0.3, glob@~5.0.0:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@~7.1.1:
+glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
+glob@^7.1.3:
+  version "7.1.7"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.7.tgz#3b193e9233f01d42d0b3f78294bbeeb418f94a90"
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -3324,8 +3322,8 @@ graceful-fs@^4.0.0, graceful-fs@^4.1.11, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
 graceful-fs@^4.1.2:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
 
 graceful-fs@~1.2.0:
   version "1.2.3"
@@ -3571,12 +3569,13 @@ gzip-size@^3.0.0:
     duplexer "^0.1.1"
 
 handlebars@^4.0.1:
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.5.3.tgz#5cf75bd8714f7605713511a56be7c349becb0482"
+  version "4.7.7"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
   dependencies:
+    minimist "^1.2.5"
     neo-async "^2.6.0"
-    optimist "^0.6.1"
     source-map "^0.6.1"
+    wordwrap "^1.0.0"
   optionalDependencies:
     uglify-js "^3.1.4"
 
@@ -3694,8 +3693,8 @@ homedir-polyfill@^1.0.0:
     parse-passwd "^1.0.0"
 
 hosted-git-info@^2.1.4:
-  version "2.8.8"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
 
 html-comment-regex@^1.1.0:
   version "1.1.1"
@@ -5009,11 +5008,7 @@ minimist@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.2.0.tgz#4dffe525dae2b864c66c2e23c6271d7afdecefce"
 
-minimist@^1.1.0, minimist@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
-
-minimist@^1.1.3, minimist@^1.2.5:
+minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
 
@@ -5124,8 +5119,8 @@ negotiator@0.6.1:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
 neo-async@^2.6.0:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
 
 no-case@^2.2.0:
   version "2.3.1"
@@ -5638,13 +5633,9 @@ path-key@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-1.0.0.tgz#5d53d578019646c0d68800db4e146e6bdc2ac7af"
 
-path-parse@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
-
-path-parse@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
+path-parse@^1.0.5, path-parse@^1.0.6:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
 
 path-root-regex@^0.1.0:
   version "0.1.2"
@@ -6931,7 +6922,7 @@ source-map@^0.4.2, source-map@~0.4.1:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@^0.6.1, source-map@~0.6.1:
+source-map@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
@@ -7238,20 +7229,12 @@ tar-pack@^3.4.0:
     tar "^2.2.1"
     uid-number "^0.0.6"
 
-tar@^2.0.0:
+tar@^2.0.0, tar@^2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/tar/-/tar-2.2.2.tgz#0ca8848562c7299b8b446ff6a4d60cdbb23edc40"
   dependencies:
     block-stream "*"
     fstream "^1.0.12"
-    inherits "2"
-
-tar@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-2.2.1.tgz#8e4d2a256c0e2185c6b18ad694aec968b83cb1d1"
-  dependencies:
-    block-stream "*"
-    fstream "^1.0.2"
     inherits "2"
 
 term-size@^0.1.0:
@@ -7503,8 +7486,8 @@ typescript@~2.2.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.2.tgz#606022508479b55ffa368b58fee963a03dfd7b0c"
 
 ua-parser-js@^0.7.9:
-  version "0.7.12"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
 
 uglify-js@3.0.x:
   version "3.0.17"
@@ -7523,11 +7506,8 @@ uglify-js@^2.7.5, uglify-js@~2.8.22:
     uglify-to-browserify "~1.0.0"
 
 uglify-js@^3.1.4:
-  version "3.7.3"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.7.3.tgz#f918fce9182f466d5140f24bb0ff35c2d32dcc6a"
-  dependencies:
-    commander "~2.20.3"
-    source-map "~0.6.1"
+  version "3.13.5"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.13.5.tgz#5d71d6dbba64cf441f32929b1efce7365bb4f113"
 
 uglify-js@~2.7.3:
   version "2.7.5"

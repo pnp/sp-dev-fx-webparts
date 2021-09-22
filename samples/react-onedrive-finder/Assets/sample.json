@@ -10,7 +10,7 @@
       "This new control provides the ability to retrieve the Drive Library with associated Files and folders making easier to develop and navigate between tenant content and access to file. "
     ],
     "creationDateTime": "2021-04-16",
-    "updateDateTime": "2021-04-29",
+    "updateDateTime": "2021-05-20",
     "products": [
       "SharePoint",
       "Office"

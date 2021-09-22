@@ -122,7 +122,9 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
       if (!this.props.list || !this.props.siteUrl || !this.props.eventStartDate.value || !this.props.eventEndDate.value) return;
 
       this.userListPermissions = await this.spService.getUserPermissions(this.props.siteUrl, this.props.list);
+      
       const eventsData: IEventData[] = await this.spService.getEvents(escape(this.props.siteUrl), escape(this.props.list), this.props.eventStartDate.value, this.props.eventEndDate.value);
+
       this.setState({ eventData: eventsData, hasError: false, errorMessage: "" });
     } catch (error) {
       this.setState({ hasError: true, errorMessage: error.message, isloading: false });

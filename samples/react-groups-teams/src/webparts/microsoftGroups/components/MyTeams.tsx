@@ -30,7 +30,9 @@ export interface IMyTeamsState {
   TenantURL: String;
 }
 export default class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsState> {
-  public Tenant = this.props.context.pageContext.web.absoluteUrl.split('.')[0].split('//')[1];
+  public webAbsoluteURL: string = this.props.context.pageContext.web.absoluteUrl;
+  public TenantPathname: string = this.webAbsoluteURL.split('//')[1].split('/')[0];
+  public TenantEmail: string = this.props.context.pageContext.user.loginName.split('@')[1];
   private graphClient: MSGraphClient = null;
   constructor(props) {
     super(props);
@@ -67,7 +69,7 @@ export default class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsStat
           var ID; results.value.map(Items => {
             ID = Items.id;
           });
-          var URL = `https://tasks.office.com/${this.Tenant}.com/EN-US/Home/Planner#/plantaskboard?groupId=${GroupId.Id}&planId=${ID}`;
+          var URL = `https://tasks.office.com/${this.TenantEmail}/EN-US/Home/Planner#/plantaskboard?groupId=${GroupId.Id}&planId=${ID}`;
           var Planner = { Planner: URL };
           var Results = Object.assign(GroupId, Planner);
           GroupId = Results;
@@ -176,12 +178,12 @@ export default class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsStat
           return (
             <div className={styles.rowStyle}>
               <div className={styles.ToolTipName}>{Team.Name}<span className={styles.ToolTip}>{Team.Description}</span></div>
-              <a className={styles.Center} href={`https://outlook.office365.com/mail/group/${this.Tenant}.com/${Mail.toLowerCase()}/email`}>
+              <a className={styles.Center} href={`https://outlook.office.com/mail/group/${this.TenantEmail}/${Mail.toLowerCase()}/email`}>
                 <Icon className={iconClass} style={{ color: '#087CD7' }} iconName="OutlookLogo"></Icon></a>
-              <a className={styles.Center} href={`https://${this.Tenant}.sharepoint.com/sites/${Mail}`}>
+              <a className={styles.Center} href={`https://${this.TenantPathname}/sites/${Mail}`}>
                 <Icon className={iconClass} style={{ color: '#068B90' }} iconName="SharePointLogo"></Icon>
               </a>
-              <a className={styles.Center} href={`https://outlook.office365.com/calendar/group/${this.Tenant}.com/${Team.Name.replace(Replaceregex, '')}/view/week`}>
+              <a className={styles.Center} href={`https://outlook.office.com/calendar/group/${this.TenantEmail}/${Team.Name.replace(Replaceregex, '')}/view/week`}>
                 <Icon className={iconClass} style={{ color: '#119AE2' }} iconName="Calendar"></Icon>
               </a>
               <div className={styles.Center}>
@@ -195,6 +197,6 @@ export default class MyTeams extends React.Component<IMyTeamsProps, IMyTeamsStat
               <div className={styles.Center} style={{ borderRight: 'none' }}>{Team.Visibility}</div>
             </div>
           );
-        })}</div></div>
+        })}</div></div>;
   }
 }
