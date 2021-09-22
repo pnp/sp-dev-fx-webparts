@@ -38,12 +38,14 @@ None
 Solution|Author(s)
 --------|---------
 src/react-advanced-page-properties | [Mike Homol](https://homol.work), Principal Consultant, [ThreeWill](https://threewill.com/)
+react-advanced-page-properties | Abderahman Moujahid
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|March 30, 2021|Initial release
+1.0.0|March 30, 2021|Initial release
+1.0.1|September 22, 2021|Added support for multi-language sites
 
 ## Disclaimer
 
