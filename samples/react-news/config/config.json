@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-news-webpart": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactNewsWebpart/ReactNewsWebpart.js",
+          "manifest": "./src/webparts/reactNewsWebpart/ReactNewsWebpart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactNewsWebpartStrings": "lib/webparts/reactNewsWebpart/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}
