@@ -47,6 +47,7 @@ Version|Date|Comments
 1.0.8|April 22, 2021|Added support for paging on the team member list get
 1.1.0|July 13, 2021|Upgraded to v1.12.1 of SPFx and v3 of pnp controls
 1.2.0|August 17, 2021|Added support for populating private channels inside of a team, added support for paged list of teams from Graph, added sorting to the Team list
+1.2.1|September 21, 2021| Missing '/members' in the private channel membership url 
 
 ## Minimal Path to Awesome
 
