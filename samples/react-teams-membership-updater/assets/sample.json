@@ -9,7 +9,7 @@
       "Used to update the membership of a team based on the contents of a CSV file, can be hosted in a SharePoint site where a list can be defined for logging purposes or run inside teams as a personal app."
     ],
     "creationDateTime": "2020-04-27",
-    "updateDateTime": "2021-08-17",
+    "updateDateTime": "2021-09-21",
     "products": [
       "SharePoint",
       "Office"
