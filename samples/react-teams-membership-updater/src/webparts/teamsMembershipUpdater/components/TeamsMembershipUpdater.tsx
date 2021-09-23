@@ -201,7 +201,6 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
     this.props.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
       if (this.state.selectionChannel === null) {
         this.loadMembers(`groups/${this.state.selectionDetails.key}/members`, client).then((_members) => {
-          console.debug(_members);
           this.setState({ ...this.state, groupMembers: _members, stage: Stage.ComparingMembers });
 
           this.addLog(`Found ${_members.length} members existing in the group`);
@@ -257,7 +256,6 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
       }
       else {
         this.loadChannelMembers(client, `teams/${this.state.selectionDetails.key}/channels/${this.state.selectionChannel.key}/members`).then((_members) => {
-          console.debug(_members);
           this.setState({ ...this.state, groupMembers: _members, stage: Stage.ComparingMembers });
 
           this.addLog(`Found ${_members.length} members existing in the channel`);
@@ -355,10 +353,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
     //we need to get the AzureAD object id of the user from the email to use the add member ref function, so we call the graph to get those and generate new batches
     this.addLog(`Getting Object IDs for ${newMembers.length} Members to Add from Graph`);
     for (let i = 0; i < reqs.length; i++) {
-      console.debug("Starting batch job " + i);
-      console.debug(reqs[i]);
       client.api("$batch").version("v1.0").post(reqs[i], (er, re) => {
-        console.debug(re);
         if (er) { this.addError(er.message, er); return; }
         let newreq: IRequest = { requests: [] };
         if (re) {
@@ -368,7 +363,7 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
               newreq.requests.push({
                 id: `${newreq.requests.length + 1}`,
                 method: "POST",
-                url: this.state.selectionChannel === null ? `groups/${this.state.selectionDetails.key}/members/$ref` : `teams/${this.state.selectionDetails.key}/channels/${this.state.selectionChannel.key}`,
+                url: this.state.selectionChannel === null ? `groups/${this.state.selectionDetails.key}/members/$ref` : `teams/${this.state.selectionDetails.key}/channels/${this.state.selectionChannel.key}/members`,
                 headers: { "Content-Type": "application/json" },
                 body: this.state.selectionChannel === null ?
                   { "@odata.id": `https://graph.microsoft.com/v1.0/directoryObjects/${e.body.id}` } :
@@ -376,7 +371,6 @@ export default class TeamsMembershipUpdater extends React.Component<ITeamsMember
               });
             }
           });
-          console.debug("Adding");
           this.addLog(`Adding ${newreq.requests.length} Members`);
           //post the actual adding batch to graph
           client.api("$batch").version("v1.0").post(newreq, (err, res) => {

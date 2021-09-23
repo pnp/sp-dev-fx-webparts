@@ -15,12 +15,12 @@
     "@microsoft/sp-office-ui-fabric-core": "1.12.1",
     "@microsoft/sp-property-pane": "1.12.1",
     "@microsoft/sp-webpart-base": "1.12.1",
-    "@pnp/spfx-controls-react": "^3.2.1",
+    "@pnp/spfx-controls-react": "^3.3.0",
     "@pnp/spfx-property-controls": "^3.2.0",
-    "office-ui-fabric-react": "^7.174.0",
+    "office-ui-fabric-react": "^7.176.1",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "react-papaparse": "^3.17.1"
+    "react-papaparse": "^3.17.2"
   },
   "resolutions": {
     "@types/react": "16.8.8"
@@ -31,7 +31,7 @@
     "@microsoft/sp-module-interfaces": "1.12.1",
     "@microsoft/sp-tslint-rules": "1.12.1",
     "@microsoft/sp-webpart-workbench": "1.12.1",
-    "@types/react": "^17.0.18",
+    "@types/react": "^17.0.22",
     "@types/react-dom": "^17.0.8",
     "@types/webpack-env": "^1.16.2",
     "ajv": "~5.2.2",
