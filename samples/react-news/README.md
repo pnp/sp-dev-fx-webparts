@@ -1,4 +1,5 @@
 # News
+
 SPFx Webpart to display News from SharePoint site(s)
 
 ## SharePoint News Posts with SPFx
