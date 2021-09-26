@@ -1,7 +1,5 @@
 {
-  "rulesDirectory": [
-    "tslint-microsoft-contrib"
-  ],
+  "extends": "./node_modules/@microsoft/sp-tslint-rules/base-tslint.json",
   "rules": {
     "class-name": false,
     "export-name": false,

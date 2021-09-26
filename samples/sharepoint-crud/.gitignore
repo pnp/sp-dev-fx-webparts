@@ -9,6 +9,7 @@ node_modules
 # Build generated files
 dist
 lib
+release
 solution
 temp
 *.sppkg
