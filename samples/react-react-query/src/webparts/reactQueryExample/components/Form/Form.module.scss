@@ -1,0 +1,29 @@
+.form {
+	padding: 28px;
+	margin-bottom: 28px;
+	border-radius: 2px;
+	background-clip: padding-box;
+	-webkit-box-shadow: 0 1.6px 3.6px 0 #00000021, 0 0.3px 0.9px 0 #0000001c;
+	box-shadow: 0 1.6px 3.6px 0 #00000021, 0 0.3px 0.9px 0 #0000001c;
+	position: relative;
+	width: 50%;
+
+	@media (max-width: 600px) {
+		width: 100%;
+	}
+
+  .title {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+	.buttonsContainer {
+    text-align: right;
+    margin-top: 20px;
+
+    button:not(:last-child) {
+      margin-right: 10px;
+    }
+	}
+}
