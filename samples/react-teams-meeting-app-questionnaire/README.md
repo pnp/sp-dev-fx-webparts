@@ -2,7 +2,7 @@
 
 ## Summary
 
-SPFx v1.12 support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.  
+SPFx v1.12.1 support for Microsoft Teams meeting apps development. Questionnaire meeting app provides Pre-meeting app experience for MS Teams meeting attendees to ask the questions related to meeting before the meeting starts.  
 
 ![WebPart Preview](./assets/web-part-preview.gif)
 
@@ -49,7 +49,7 @@ spfx-react-teams-meeting-app-questionnaire
 
 ## Compatibility
 
-![SPFx 1.12](https://img.shields.io/badge/SPFx-1.12.0-green.svg)
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
 ![Node.js LTS 10.x | LTS 12.x](https://img.shields.io/badge/Node.js-LTS%2010%20%7C%20LTS%20.12.x-green.svg)
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg)
 ![Teams Yes: Designed for Microsoft Teams](https://img.shields.io/badge/Teams-Yes-green.svg "Designed for Microsoft Teams")
@@ -124,6 +124,7 @@ spfx-react-teams-meeting-app-questionnaire|[Smita Nachan](https://www.linkedin.c
 
 Version|Date|Comments
 -------|----|--------
+2.0.0|September 28, 2021|Upgraded to SPFx v1.12.1 (Nanddeep Nachan, Smita Nachan)
 1.0.0|March 22, 2021|Initial release
 
 ## Disclaimer
