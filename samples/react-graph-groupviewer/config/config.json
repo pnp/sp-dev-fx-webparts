@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "azure-group-view-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/azureGroupView/AzureGroupViewWebPart.js",
+          "manifest": "./src/webparts/azureGroupView/AzureGroupViewWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AzureGroupViewWebPartStrings": "lib/webparts/azureGroupView/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}
