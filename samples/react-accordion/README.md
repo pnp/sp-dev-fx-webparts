@@ -46,6 +46,7 @@ Version|Date|Comments
 2.0|January 19, 2020|Upgrade to SPFx 1.10
 2.1|June 22, 2020|Added pagination (Abhishek Garg)
 2.2|October 1, 2020 | Added new Pagination Configuration (@beau__cameron)
+2.3|September 30, 2021 | Added sorting (@fthorild)
 
 ## Disclaimer
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

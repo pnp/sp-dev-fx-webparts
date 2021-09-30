@@ -5,6 +5,9 @@ declare interface IReactAccordionWebPartStrings {
   MaxItemsPerPageLabel: string;
   EnablePagingLabel: string;
   TotalItemsLabel:string;
+  CustomSortOrder:string;
+  SortById:string;
+  SortByModified:string;
 }
 
 declare module 'ReactAccordionWebPartStrings' {
