@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
 import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import {
@@ -14,7 +13,7 @@ import {
 import * as strings from 'BirthdaysWebPartStrings';
 import Birthdays from './components/Birthdays';
 import { IBirthdaysProps } from './components/IBirthdaysProps';
-import { MSGraphClient } from '@microsoft/sp-http';
+import { Version } from '@microsoft/sp-core-library';
 
 export interface IBirthdaysWebPartProps {
   title: string;
@@ -120,10 +119,6 @@ export default class BirthdaysWebPart extends BaseClientSideWebPart<IBirthdaysWe
     ReactDom.unmountComponentAtNode(this.domElement);
   }
 
-  protected get dataVersion(): Version {
-    return Version.parse('1.0');
-  }
-
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -144,7 +139,7 @@ export default class BirthdaysWebPart extends BaseClientSideWebPart<IBirthdaysWe
                   description: strings.NumberUpComingDaysLabel,
                   value: this.properties.numberUpcomingDays,
                   maxValue: 10,
-                  minValue: 5,
+                  minValue: 1,
                   disabled: false
                 }),
                 PropertyPaneChoiceGroup('template', {

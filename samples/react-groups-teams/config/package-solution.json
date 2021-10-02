@@ -3,7 +3,7 @@
     "solution": {
         "name": "react-groups-client-side-solution",
         "id": "e562b13d-7e90-4a1e-810c-ccde0ff27866",
-        "version": "1.0.0.0",
+        "version": "1.0.1.0",
         "includeClientSideAssets": true,
         "skipFeatureDeployment": true,
         "isDomainIsolated": false,

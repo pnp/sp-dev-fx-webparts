@@ -48,6 +48,7 @@ React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern)      |
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0.0   | April 16, 2021 | Initial release |
+| 1.0.1   | August 1, 2021 | Fixed references to Office.com |
 
 
 

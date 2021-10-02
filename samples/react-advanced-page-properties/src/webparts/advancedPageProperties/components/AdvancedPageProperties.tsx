@@ -42,9 +42,9 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
 
       // Get the value(s) for the field from the list item itself
       var allValues: any = {};
+      const siteAssetsList = await sp.web.lists.ensureSitePagesLibrary();
       if (props.context.pageContext.listItem !== undefined && props.context.pageContext.listItem !== null) {
-        allValues = await sp.web.lists.getByTitle("Site Pages").items.getById(props.context.pageContext.listItem.id).select(...props.selectedProperties).get();
-        console.log(allValues);
+        allValues = await siteAssetsList.items.getById(props.context.pageContext.listItem.id).select(...props.selectedProperties).get();
       }
 
       for (let i = 0; i < props.selectedProperties.length; i++) {
@@ -53,7 +53,7 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
         Log.Write(`Selected Property: ${prop}`);
 
         // Get field information, in case anything is needed in conjunction with value types
-        const field = await sp.web.lists.getByTitle("Site Pages").fields.getByInternalNameOrTitle(prop)();
+        const field = await siteAssetsList.fields.getByInternalNameOrTitle(prop)();
 
         // Establish the values array
         var values: any[] = [];
@@ -123,7 +123,6 @@ const AdvancedPageProperties: React.FunctionComponent<IAdvancedPagePropertiesPro
    * @returns
    */
    const RenderPagePropValue = (prop: PageProperty) => {
-    console.log(prop);
     var retVal = _.map(prop.values, (val) => {
       if (val !== null) {
         switch (prop.info.TypeAsString) {

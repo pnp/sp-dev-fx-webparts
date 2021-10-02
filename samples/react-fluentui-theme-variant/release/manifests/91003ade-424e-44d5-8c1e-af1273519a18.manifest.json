@@ -1,0 +1,113 @@
+{
+  "id": "91003ade-424e-44d5-8c1e-af1273519a18",
+  "alias": "FluentUiThemeVariantWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Fluent UI Theme Variant"
+      },
+      "description": {
+        "default": "Example on how to apply Fluent UI theme variant not only at Section level but at Web Part level"
+      },
+      "officeFabricIconFontName": "BackgroundColor",
+      "properties": {}
+    }
+  ],
+  "loaderConfig": {
+    "internalModuleBaseUrls": [
+      "<!-- PATH TO CDN -->"
+    ],
+    "entryModuleId": "fluent-ui-theme-variant-web-part",
+    "scriptResources": {
+      "fluent-ui-theme-variant-web-part": {
+        "type": "path",
+        "path": "fluent-ui-theme-variant-web-part.js"
+      },
+      "FluentUiThemeVariantWebPartStrings": {
+        "type": "path",
+        "path": "FluentUiThemeVariantWebPartStrings_en-us.js"
+      },
+      "@microsoft/sp-property-pane": {
+        "type": "component",
+        "id": "f9e737b7-f0df-4597-ba8c-3060f82380db",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-component-base": {
+        "type": "component",
+        "id": "467dc675-7cc5-4709-8aac-78e3b71bd2f6",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-lodash-subset": {
+        "type": "component",
+        "id": "73e1dc6c-8441-42cc-ad47-4bd3659f8a3a",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-core-library": {
+        "type": "component",
+        "id": "7263c7d0-1d6a-45ec-8d85-d4d1d234171b",
+        "version": "1.12.1"
+      },
+      "@microsoft/sp-webpart-base": {
+        "type": "component",
+        "id": "974a7777-0990-4136-8fa6-95d80114c2e0",
+        "version": "1.12.1"
+      },
+      "react": {
+        "type": "component",
+        "id": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
+        "version": "16.9.0"
+      },
+      "react-dom": {
+        "type": "component",
+        "id": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+        "version": "16.9.0"
+      },
+      "PropertyControlStrings": {
+        "type": "localizedPath",
+        "paths": {
+          "bg-BG": "PropertyControlStrings_bg-bg.js",
+          "ca-ES": "PropertyControlStrings_ca-es.js",
+          "da-DK": "PropertyControlStrings_da-dk.js",
+          "de-DE": "PropertyControlStrings_de-de.js",
+          "el-GR": "PropertyControlStrings_el-gr.js",
+          "en-US": "PropertyControlStrings_en-us.js",
+          "es-ES": "PropertyControlStrings_es-es.js",
+          "et-EE": "PropertyControlStrings_et-ee.js",
+          "fi-FI": "PropertyControlStrings_fi-fi.js",
+          "fr-FR": "PropertyControlStrings_fr-fr.js",
+          "it-IT": "PropertyControlStrings_it-it.js",
+          "ja-JP": "PropertyControlStrings_ja-jp.js",
+          "lt-LT": "PropertyControlStrings_lt-lt.js",
+          "lv-LV": "PropertyControlStrings_lv-lv.js",
+          "nb-NO": "PropertyControlStrings_nb-no.js",
+          "nl-NL": "PropertyControlStrings_nl-nl.js",
+          "no": "PropertyControlStrings_no.js",
+          "pl-PL": "PropertyControlStrings_pl-pl.js",
+          "pt-PT": "PropertyControlStrings_pt-pt.js",
+          "ro-RO": "PropertyControlStrings_ro-ro.js",
+          "ru-RU": "PropertyControlStrings_ru-ru.js",
+          "sk-SK": "PropertyControlStrings_sk-sk.js",
+          "sr-Latn-RS": "PropertyControlStrings_sr-latn-rs.js",
+          "sv-SE": "PropertyControlStrings_sv-se.js",
+          "tr-TR": "PropertyControlStrings_tr-tr.js",
+          "vi-VN": "PropertyControlStrings_vi-vn.js",
+          "zh-CN": "PropertyControlStrings_zh-cn.js",
+          "zh-TW": "PropertyControlStrings_zh-tw.js"
+        },
+        "defaultPath": "PropertyControlStrings_en-us.js"
+      }
+    }
+  }
+}

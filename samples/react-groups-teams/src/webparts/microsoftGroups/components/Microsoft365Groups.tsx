@@ -35,7 +35,9 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
   public _plannerIDs = [];
   public _arr = [];
   private graphClient: MSGraphClient = null;
-  public Tenant = this.props.context.pageContext.web.absoluteUrl.split('.')[0].split('//')[1];
+  public webAbsoluteURL: string = this.props.context.pageContext.web.absoluteUrl;
+  public TenantPathname: string = this.webAbsoluteURL.split('//')[1].split('/')[0];
+  public TenantEmail: string = this.props.context.pageContext.user.loginName.split('@')[1];
   constructor(props) {
     super(props);
     this.GetPlanner = this.GetPlanner.bind(this);
@@ -96,7 +98,7 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
           var ID; results.value.map(Items => {
             ID = Items.id;
           });
-          var URL = `https://tasks.office.com/${this.Tenant}.com/EN-US/Home/Planner#/plantaskboard?groupId=${GroupId.Id}&planId=${ID}`;
+          var URL = `https://tasks.office.com/${this.TenantEmail}/EN-US/Home/Planner#/plantaskboard?groupId=${GroupId.Id}&planId=${ID}`;
           var Planner = { Planner: URL };
           var Results = Object.assign(GroupId, Planner);
           GroupId = Results;
@@ -197,13 +199,13 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
           Group.Mail = GroupEmailSplit[0];
           return <div className={styles.rowStyle}>
             <div className={styles.ToolTipName}>{Group.Name}<span className={styles.ToolTip}>{Group.Description}</span></div>
-            <a className={styles.Center} href={`https://outlook.office365.com/mail/group/${this.Tenant}.com/${Group.Mail.toLowerCase()}/email`}>
+            <a className={styles.Center} href={`https://outlook.office.com/mail/group/${this.TenantEmail}/${Group.Mail.toLowerCase()}/email`}>
               <Icon className={iconClass} style={{ color: '#087CD7' }} iconName="OutlookLogo"></Icon>
             </a>
-            <a className={styles.Center} href={`https://${this.Tenant}.sharepoint.com/sites/${Group.Mail}`}>
+            <a className={styles.Center} href={`https://${this.TenantPathname}/sites/${Group.Mail}`}>
               <Icon className={iconClass} style={{ color: '#068B90' }} iconName="SharePointLogo"></Icon>
             </a>
-            <a className={styles.Center} href={`https://outlook.office365.com/calendar/group/${this.Tenant}.com/${Group.Name.replace(Replaceregex, '')}/view/week`}>
+            <a className={styles.Center} href={`https://outlook.office.com/calendar/group/${this.TenantEmail}/${Group.Name.replace(Replaceregex, '')}/view/week`}>
               <Icon className={iconClass} style={{ color: '#119AE2' }} iconName="Calendar"></Icon>
             </a>
 
@@ -218,13 +220,13 @@ export default class MicrosoftGroups extends React.Component<IGraphConsumerProps
           Group.Mail = GroupEmailSplit[0];
           return <div className={styles.rowStyle}>
             <div className={styles.ToolTipName}>{Group.Name}<span className={styles.ToolTip}>{Group.Description}</span></div>
-            <a className={styles.Center} href={`https://outlook.office365.com/mail/group/${this.Tenant}.com/${Group.Mail.toLowerCase()}/email`}>
+            <a className={styles.Center} href={`https://outlook.office.com/mail/group/${this.TenantEmail}/${Group.Mail.toLowerCase()}/email`}>
               <Icon className={iconClass} style={{ color: '#087CD7' }} iconName="OutlookLogo"></Icon>
             </a>
-            <a className={styles.Center} href={`https://${this.Tenant}.sharepoint.com/sites/${Group.Mail}`}>
+            <a className={styles.Center} href={`https://${this.TenantPathname}/sites/${Group.Mail}`}>
               <Icon className={iconClass} style={{ color: '#068B90' }} iconName="SharePointLogo"></Icon>
             </a>
-            <a className={styles.Center} href={`https://outlook.office365.com/calendar/group/${this.Tenant}.com/${Group.Name.replace(Replaceregex, '')}/view/week`}>
+            <a className={styles.Center} href={`https://outlook.office.com/calendar/group/${this.TenantEmail}/${Group.Name.replace(Replaceregex, '')}/view/week`}>
               <Icon className={iconClass} style={{ color: '#119AE2' }} iconName="Calendar"></Icon>
             </a>
 
