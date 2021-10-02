@@ -39,7 +39,7 @@ function CalendarDate(props) {
   const { dateToRender, dateOfMonth } = props;
   const today =
     dateToRender.format('YYYY-MM-DD') === moment().format('YYYY-MM-DD')
-      ? 'today'
+      ? styles.today
       : '';
 
   if (dateToRender.month() < dateOfMonth.month()) {
