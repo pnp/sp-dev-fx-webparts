@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is sample webpart which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx webpart. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your
+This is sample web part which showcase how to implement Google reCaptcha v2 in SPFx. CAPTCHA is used to prevent bots from automatically submitting forms with SPAM or other unwanted content. If we are building a custom input form to get feedback, newsletter subscription or contact us form using SPFx webpart. We might have to implement SPAM protection using some CAPTCHA resolving technique. This sample can come in handy to extend it for your
 business requirement if you need to implement CAPTCHA in SPFx webpart.
 
 * Please refer this [link](https://www.c-sharpcorner.com/article/google-recaptcha-in-sharepoint-framework-webpartspfx/) to know 'How to build this from Scratch'

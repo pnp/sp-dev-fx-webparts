@@ -1,7 +1,7 @@
 # Using PnP JS Core custom objects with @select and @expand decorators
 
 ## Summary
-This webpart demonstrates how to use [PnP JS Core](https://github.com/SharePoint/PnP-JS-Core) Custom Objects with @select and @expand TypeScript decorators.
+This web part demonstrates how to use [PnP JS Core](https://github.com/SharePoint/PnP-JS-Core) Custom Objects with @select and @expand TypeScript decorators.
 If you are going to use PnP JS Core library and you've plans for [extending it with Custom Business Objects](https://github.com/SharePoint/PnP-JS-Core/wiki/Extending-with-Custom-Business-Objects), then this project will show you some best practices. 
 You can also find more information in the [blog series about working with Custom Business Objects, Parsers and TypeScript Decorators in PnP JS Core](https://blog.josequinto.com/2017/05/19/why-do-we-should-use-custom-business-objects-models-in-pnp-js-core/)
 
@@ -27,6 +27,7 @@ Version|Date|Comments
 1.0|July 2, 2017|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

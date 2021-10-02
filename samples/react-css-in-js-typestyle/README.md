@@ -41,8 +41,8 @@ Version|Date|Comments
   * `gulp build`
   * `gulp bundle --ship`
   * `gulp package-solution --ship`
-* add the webpart to your tenant app store
-* add the app to a SharePoint site and then add the webpart to the page
+* add the web part to your tenant app store
+* add the app to a SharePoint site and then add the web part to the page
 
 
 ## Features

@@ -14,7 +14,7 @@ This web part acts as a centralized place where admin can manage SPFx solutions 
 
 
 **Note:**
-This webpart is mainly build for tenant and SharePoint admins, since most of the operation requires administrator privileges.
+This web part is mainly build for tenant and SharePoint admins, since most of the operation requires administrator privileges.
 
 ## Used SharePoint Framework Version
 

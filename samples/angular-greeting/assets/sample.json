@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Greeting client-side web part",
     "shortDescription": "This is Greeting web part which shows greeting to the current logged in user.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/angular-greeting",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/angular-greeting",
     "longDescription": [
       "This is Greeting web part which shows greeting to the current logged in user."
     ],
-    "created": "2020-02-15",
-    "modified": "2020-02-15",
+    "creationDateTime": "2020-02-15",
+    "updateDateTime": "2020-06-29",
     "products": [
       "SharePoint",
       "Office"
@@ -21,20 +21,20 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.12.1"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/angular-greeting/assets/captured.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-greeting/assets/captured.gif",
         "alt": "Greeting client-side web part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/angular-greeting/assets/preview.PNG?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/angular-greeting/assets/preview.PNG?raw=true",
         "alt": "Greeting client-side web part"
       }
     ],

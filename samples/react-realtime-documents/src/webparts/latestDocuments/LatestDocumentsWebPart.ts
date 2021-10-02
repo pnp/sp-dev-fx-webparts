@@ -105,7 +105,7 @@ export default class LatestDocumentsWebPart extends BaseClientSideWebPart<ILates
     // ideally, we'd call a refresh here to update the list of properties
     // but due to a bug in the list picker control, lists are loaded only
     // on component mount, so this wouldn't do anything
-    // https://github.com/SharePoint/sp-dev-fx-property-controls/issues/109
+    // https://github.com/pnp/sp-dev-fx-property-controls/issues/109
     // this.context.propertyPane.refresh();
   }
 

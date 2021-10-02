@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Tailwind CSS",
     "shortDescription": "This project shows how to integrate Tailwind CSS framework into a SPFx React project.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-tailwindcss",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss",
     "longDescription": [
       "This project shows how to integrate Tailwind CSS framework into a SPFx React project."
     ],
-    "created": "2020-10-17",
-    "modified": "2020-10-17",
+    "creationDateTime": "2020-10-17",
+    "updateDateTime": "2020-10-17",
     "products": [
       "SharePoint",
       "Office"
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif",
         "alt": "Tailwind CSS"
       }
     ],

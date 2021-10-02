@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Manage SPFx solution using ALM APIs",
     "shortDescription": "This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall \u0026 Remove apps.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-manage-spfx-solutions-alm",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-spfx-solutions-alm",
     "longDescription": [
       "This web part acts as a centralized place where admin can manage SPFx solutions present in their tenant using Application lifecycle Management(ALM) APIs and perform activities like Add, Deploy, Install, Retract, Uninstall \u0026 Remove apps."
     ],
-    "created": "2020-03-09",
-    "modified": "2020-03-09",
+    "creationDateTime": "2020-03-09",
+    "updateDateTime": "2020-03-09",
     "products": [
       "SharePoint",
       "Office"
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-manage-spfx-solutions-alm/assets/SPFxALM.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-spfx-solutions-alm/assets/SPFxALM.gif",
         "alt": "Manage SPFx solution using ALM APIs"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-manage-spfx-solutions-alm/assets/SPFxALMSPAppcatalog.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-manage-spfx-solutions-alm/assets/SPFxALMSPAppcatalog.gif?raw=true",
         "alt": "Manage SPFx solution using ALM APIs"
       }
     ],

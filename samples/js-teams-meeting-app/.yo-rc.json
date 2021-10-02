@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.12.1-rc.3",
+    "libraryName": "teams-meeting-app",
+    "libraryId": "a70a8d1d-f76f-4535-bf43-0d1abd0377e6",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

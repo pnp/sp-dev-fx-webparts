@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Organisation Chart",
     "shortDescription": "A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-organisationchart",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-organisationchart",
     "longDescription": [
       "A simple Organisation Chart web part using Office UI Fabric, React, REST API batching and ServiceScope plumbing."
     ],
-    "created": "2017-07-19",
-    "modified": "2017-07-19",
+    "creationDateTime": "2017-07-19",
+    "updateDateTime": "2017-07-19",
     "products": [
       "SharePoint",
       "Office"
@@ -28,13 +28,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-organisationchart/assets/orgchart.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organisationchart/assets/orgchart.png",
         "alt": "Organisation Chart"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-organisationchart/assets/orgchart-mock.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-organisationchart/assets/orgchart-mock.png?raw=true",
         "alt": "Organisation Chart"
       }
     ],

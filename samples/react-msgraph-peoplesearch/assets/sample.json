@@ -4,12 +4,14 @@
     "source": "pnp",
     "title": "Microsoft Graph People Search Web Part",
     "shortDescription": "Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-msgraph-peoplesearch",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-msgraph-peoplesearch",
     "longDescription": [
-      "Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover."
+      "Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover.",
+      "The web part accepts a search query through a Dynamic Data connection, to further filter the displayed results. A source for this search query is not provided, but by default this can come from the Microsoft Search search box or the Page Environment. You could also use the Search Box Web Part provided by the PnP Modern Search Web Parts.",
+      "The sample also shows how to use SPFx Web Part asynchronous rendering using isRenderAsync property and renderCompleted method."
     ],
-    "created": "2020-07-31",
-    "modified": "2020-07-31",
+    "creationDateTime": "2020-07-31",
+    "updateDateTime": "2020-07-31",
     "products": [
       "SharePoint",
       "Office"
@@ -36,13 +38,13 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch.gif",
         "alt": "Microsoft Graph People Search Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch-LPC.gif?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-msgraph-peoplesearch/assets/MicrosoftGraphPeopleSearch-LPC.gif?raw=true",
         "alt": "Microsoft Graph People Search Web Part"
       }
     ],

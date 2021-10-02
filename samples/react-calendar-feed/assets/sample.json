@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Calendar Feed Web Part",
     "shortDescription": "This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar-feed",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar-feed",
     "longDescription": [
       "This web part uses event feeds from various sources and renders events using a look and feel that is consistent with the SharePoint out-of-the-box Group calendar/events web part."
     ],
-    "created": "2020-07-16",
-    "modified": "2020-07-16",
+    "creationDateTime": "2020-07-16",
+    "updateDateTime": "2020-07-16",
     "products": [
       "SharePoint",
       "Office"
@@ -26,13 +26,17 @@
       {
         "key": "SPFX-SUPPORTSTHEMEVARIANTS",
         "value": "true"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "PropertyFieldNumber, PropertyFieldSliderWithCallout, PropertyFieldTextWithCallout, PropertyFieldToggleWithCallout, Placeholder, WebPartTitle"
       }
     ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar-feed/assets/react-calendar-feed-demo.gif",
         "alt": "Calendar Feed Web Part"
       }
     ],

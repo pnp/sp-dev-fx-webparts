@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "ZPL Viewer",
     "shortDescription": "This web part will allow a user to select a text file contatining zpl which is used to generate an image using the labelary web service to render the zpl and return the image.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-zpl-viewer",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-zpl-viewer",
     "longDescription": [
       "This web part will allow a user to select a text file contatining zpl which is used to generate an image using the labelary web service to render the zpl and return the image."
     ],
-    "created": "2020-02-13",
-    "modified": "2020-02-13",
+    "creationDateTime": "2020-02-13",
+    "updateDateTime": "2020-02-13",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-zpl-viewer/assets/preview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-zpl-viewer/assets/preview.gif",
         "alt": "ZPL Viewer"
       }
     ],

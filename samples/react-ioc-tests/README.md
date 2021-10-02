@@ -60,7 +60,7 @@ This Web Part illustrates the following concepts on top of the SharePoint Framew
 
 ## References
 
-https://github.com/SharePoint/sp-dev-fx-webparts/tree/master/samples/react-jest-testing
+https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-jest-testing
 
 https://blog.velingeorgiev.com/unit-test-your-sharepoint-framework-solution-with-jest
 

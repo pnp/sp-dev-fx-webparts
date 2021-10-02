@@ -46,11 +46,11 @@
 * [Office 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 
-## WebPart Properties
+## Web Part Properties
  
 Property |Type|Required| comments
 --------------------|----|--------|----------
-Title | Text| No|WebPart Title
+Title | Text| No|Web Part Title
 searchFirstName | boolean|No| Lastname or Firstname search query
 Properties to search | text | No | By default **FirstName,LastName,WorkEmail,Department** are used for search. You can add custom properties separated by comma.
 Properties to sent as clear text | text | No | By default if the search key has empty spaces, its replaced with **+** before sending it to the search query. The search properties mentioned here will be sent without the empty space replacemnt.
@@ -79,6 +79,7 @@ Version|Date|Comments
 
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---

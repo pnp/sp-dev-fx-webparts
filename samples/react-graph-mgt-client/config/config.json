@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graph-latest-client-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphClient/GraphClientWebPart.js",
+          "manifest": "./src/webparts/graphClient/GraphClientWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphClientWebPartStrings": "lib/webparts/graphClient/loc/{locale}.js"
+  }
+}

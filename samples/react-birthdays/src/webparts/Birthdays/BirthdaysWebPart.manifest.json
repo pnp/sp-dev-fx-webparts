@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "e629ef30-a9ec-4713-b39a-2cfa8b323902",
-  "alias": "BirthdaysWebPart",
+  "id": "b0069b7e-8ec8-4e14-a76c-0c8bcb33993e",
+  "alias": "BirthdaysAnniversaryWebPart",
   "componentType": "WebPart",
 
   // The "*" signifies that the version should be taken from the package.json
@@ -14,13 +14,13 @@
   "requiresCustomScript": false,
   "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab"],
   "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "groupId": "d91dd629-2857-4944-be9c-7cf65bcc693d",
     "group": { "default": "Other" },
-    "title": { "default": "Birthdays Web Part" },
-    "description": { "default": "Birthdays Web Part" },
+    "title": { "default": "Birthdays & Anniversary Web Part" },
+    "description": { "default": "Birthdays & Anniversary Web Part" },
     "officeFabricIconFontName": "BirthdayCake",
     "properties": {
-      "title": "Birthdays",
+      "title": "Birthdays & Anniversaries",
       "numberUpcomingDays": 5,
       "template": 8
     }

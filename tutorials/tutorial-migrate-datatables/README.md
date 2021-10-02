@@ -47,7 +47,7 @@ To build and run this client-side project, you will need to clone and build the 
 Clone this repo by executing the following command in your console:
 
 ```console
-git clone https://github.com/SharePoint/sp-dev-fx-webparts.git
+git clone https://github.com/pnp/sp-dev-fx-webparts.git
 ```
 
 Navigate to the cloned repo folder which should be the same as the repo name:

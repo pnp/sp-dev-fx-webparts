@@ -5,6 +5,8 @@
 Show and search users from your organization, through Microsoft Graph. Search results show as a nice People Card, and display the Live Persona Card on hover.  
 The web part accepts a search query through a Dynamic Data connection, to further filter the displayed results. A source for this search query is not provided, but by default this can come from the Microsoft Search search box or the Page Environment. You could also use the Search Box Web Part provided by the [PnP Modern Search Web Parts](https://microsoft-search.github.io/pnp-modern-search/).
 
+The sample also shows how to use SPFx Web Part asynchronous rendering using `isRenderAsync` property and `renderCompleted` method.
+
 ![directory](./assets/MicrosoftGraphPeopleSearch.gif) 
 ![directory](./assets/MicrosoftGraphPeopleSearch-LPC.gif) 
 
@@ -66,7 +68,7 @@ o365 spo serviceprincipal grant add --resource 'Microsoft Graph' --scope 'User.R
 There are many web parts that aim to do the same thing, but they either use SharePoint Search as data store or they render their results in a completely different way. It's impossible to acknowledge all sources of inspiration to this solution, but I do want to give a shout out to two projects (and their contributors) that were foundational to deliver this solution as quickly as I did:
 
 ### React Directory Web Part
-The foundation on which I started building my own solution. This web part can be downloaded from the [SharePoint Framework Client-Side Web Part Samples & Tutorial Materials](https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-directory)
+The foundation on which I started building my own solution. This web part can be downloaded from the [SharePoint Framework Client-Side Web Part Samples & Tutorial Materials](https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-directory)
 
 #### Thanks to
 - João Mendes ([@joaojmendes](https://twitter.com/joaojmendes))

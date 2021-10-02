@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "JQuery, Photopile.JS \u0026 Office UI Fabric Client-Side Web Part",
     "shortDescription": "This is a sample web part that illustrated the use of JQuery and Photopile.Js with the SharePoint Framework.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/jquery-photopile",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/jquery-photopile",
     "longDescription": [
       "This is a sample web part that illustrated the use of JQuery and Photopile.Js with the SharePoint Framework."
     ],
-    "created": "2016-09-09",
-    "modified": "2016-09-09",
+    "creationDateTime": "2016-09-09",
+    "updateDateTime": "2016-09-09",
     "products": [
       "SharePoint",
       "Office"
@@ -28,31 +28,31 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/jquery-photopile/assets/photopileoverview.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/jquery-photopile/assets/photopileoverview.gif",
         "alt": "JQuery, Photopile.JS \u0026 Office UI Fabric Client-Side Web Part"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/jquery-photopile/assets/tutorial-add-spapp-01.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/jquery-photopile/assets/tutorial-add-spapp-01.png?raw=true",
         "alt": "JQuery, Photopile.JS \u0026 Office UI Fabric Client-Side Web Part"
       },
       {
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/jquery-photopile/assets/tutorial-add-spapp-02.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/jquery-photopile/assets/tutorial-add-spapp-02.png?raw=true",
         "alt": "JQuery, Photopile.JS \u0026 Office UI Fabric Client-Side Web Part"
       },
       {
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/jquery-photopile/assets/tutorial-add-spapp-03.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/jquery-photopile/assets/tutorial-add-spapp-03.png?raw=true",
         "alt": "JQuery, Photopile.JS \u0026 Office UI Fabric Client-Side Web Part"
       },
       {
         "type": "image",
         "order": 104,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/master/samples/jquery-photopile/assets/tutorial-add-spapp-05.png?raw=true",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/jquery-photopile/assets/tutorial-add-spapp-05.png?raw=true",
         "alt": "JQuery, Photopile.JS \u0026 Office UI Fabric Client-Side Web Part"
       }
     ],

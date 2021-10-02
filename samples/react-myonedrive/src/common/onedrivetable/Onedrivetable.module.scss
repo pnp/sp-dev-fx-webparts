@@ -1,0 +1,115 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.tblRoot {
+    font-weight: bold;
+}
+
+.item {
+    cursor: pointer;
+}
+
+.breadcrumbLinkRoot {
+    pointer-events: none;
+    font-size: 18px;
+    color: grey !important;
+    cursor: pointer;
+}
+
+.breadcrumbLink {
+    font-size: 18px;
+    color: grey !important;
+    cursor: pointer;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+}
+
+.folderIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/folder.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.fileIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/file.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.pdfIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/pdf.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.imgIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/photo.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.audioIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/audio.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.videoIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/video.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.zipIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/zip.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.docIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/docx.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.linkIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/link.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.pptxIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/pptx.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}
+
+.xlsxIcon {
+    background: url("../../webparts/myonedrivefiles/components/icons/xlsx.svg");
+    height: 25px;
+    width: 25px;
+    background-size: contain;
+    display: block;
+}

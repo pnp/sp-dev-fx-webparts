@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Carousel Web Part",
     "shortDescription": "This web part show images and videos in carousel",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-carousel",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-carousel",
     "longDescription": [
       "This web part show images and videos in carousel"
     ],
-    "created": "2020-10-31",
-    "modified": "2020-10-31",
+    "creationDateTime": "2020-10-31",
+    "updateDateTime": "2020-06-12",
     "products": [
       "SharePoint",
       "Office"
@@ -21,7 +21,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.10.0"
+        "value": "1.12.1"
       },
       {
         "key": "SPFX-TEAMSTAB",
@@ -32,7 +32,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/react-carousel/assets/carousel.gif",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carousel/assets/carousel.gif",
         "alt": "Carousel Web Part"
       }
     ],
@@ -64,6 +64,12 @@
         "pictureUrl": "https://avatars.githubusercontent.com/u/8630351?s=460\u0026u=669abb2aac55f383a318d3ca6b1cb13467cada59\u0026v=4",
         "name": "Don Kirkham",
         "twitter": "DonKirkham"
+      },
+      {
+        "gitHubAccount": "giuleon",
+        "pictureUrl": "https://github.com/giuleon.png",
+        "name": "Giuliano De Luca",
+        "twitter": "delucagiulian"
       }
     ],
     "references": [

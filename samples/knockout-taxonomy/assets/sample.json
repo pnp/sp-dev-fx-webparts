@@ -4,12 +4,12 @@
     "source": "pnp",
     "title": "Taxonomy Web Part",
     "shortDescription": "Sample Web Part illustrating Reading taxonomy term stores\u0027 hierarchy from SharePoint, Loading JavaScript Object Model scripts, creating Knockout components",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/knockout-taxonomy",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/knockout-taxonomy",
     "longDescription": [
       "Sample Web Part illustrating Reading taxonomy term stores\u0027 hierarchy from SharePoint, Loading JavaScript Object Model scripts, creating Knockout components"
     ],
-    "created": "2017-05-05",
-    "modified": "2017-05-05",
+    "creationDateTime": "2017-05-05",
+    "updateDateTime": "2017-05-05",
     "products": [
       "SharePoint",
       "Office"
@@ -28,7 +28,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/master/samples/knockout-taxonomy/assets/Taxonomy.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-taxonomy/assets/Taxonomy.png",
         "alt": "Taxonomy Web Part"
       }
     ],

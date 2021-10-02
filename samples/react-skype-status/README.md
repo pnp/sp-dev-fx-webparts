@@ -51,6 +51,7 @@ Version|Date|Comments
 1.0|December 1, 2017|Initial release
 
 ## Disclaimer
+
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
@@ -79,7 +80,7 @@ After copying that sample to your local machine and running `npm install` to ins
 
 ### Deploying the application
 Start by running `gulp package-solution` and deploy the application to the app catalog. More information on how to do it [here](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page)  
-**At the end select SkypePresence webpart instead**  
+**At the end select SkypePresence web part instead**  
 Don't forget to run `gulp serve --nobrowser` to start the debugging server.
 
 ### Addtional page required
