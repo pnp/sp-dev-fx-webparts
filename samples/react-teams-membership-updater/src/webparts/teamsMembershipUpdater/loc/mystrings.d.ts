@@ -31,6 +31,9 @@ declare interface ITeamsMembershipUpdaterWebPartStrings {
   orphanedMembersContent: string;
   on: string;
   off: string;
+  selectChannel: string;
+  selectChannelPlaceholder: string;
+  noChannel: string;
 }
 
 declare module 'TeamsMembershipUpdaterWebPartStrings' {

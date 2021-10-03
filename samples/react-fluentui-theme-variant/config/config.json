@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "fluent-ui-theme-variant-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/fluentUiThemeVariant/FluentUiThemeVariantWebPart.js",
+          "manifest": "./src/webparts/fluentUiThemeVariant/FluentUiThemeVariantWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FluentUiThemeVariantWebPartStrings": "lib/webparts/fluentUiThemeVariant/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

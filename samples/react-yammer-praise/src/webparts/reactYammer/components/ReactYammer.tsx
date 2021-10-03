@@ -63,7 +63,7 @@ const ReactYammer: React.SFC<IReactYammerProps> = (props) => {
       clearControls();
       setMessageBarStatus({
         type: MessageBarType.success,
-        message: <span>Your priase now been successfully added.<a target="_blank" href={`https://www.yammer.com/messages/${threadId}`}>See the praise on Yammer.</a></span>,
+        message: <span>Your praise now been successfully added.<a target="_blank" href={`https://www.yammer.com/messages/${threadId}`}>See the praise on Yammer.</a></span>,
         show: true
       });
       setLoading(false);

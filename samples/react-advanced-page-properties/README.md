@@ -38,18 +38,14 @@ None
 Solution|Author(s)
 --------|---------
 src/react-advanced-page-properties | [Mike Homol](https://homol.work), Principal Consultant, [ThreeWill](https://threewill.com/)
+react-advanced-page-properties | Abderahman Moujahid
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
-1.0|March 30, 2021|Initial release
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
----
+1.0.0|March 30, 2021|Initial release
+1.0.1|September 22, 2021|Added support for multi-language sites
 
 ## Minimal Path to Awesome
 
@@ -59,17 +55,15 @@ Version|Date|Comments
   - **npm install**
   - **gulp serve**
 
-> Include any additional steps as needed.
-
 ## Features
 
-> Add the part
+### Add the part
 
 Once the solution is installed in the app catalog and the app has been added to the site, you should see it available to a page.
 
 ![add the part](./assets/add-to-page.png)
 
-> Familiarity is key
+### Familiarity is key
 
 This web part tries to mimic the original Page Properties web part as much as possible.  You should recognize the functionality of the property setup.  
 

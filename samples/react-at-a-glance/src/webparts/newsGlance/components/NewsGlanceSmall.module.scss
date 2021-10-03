@@ -1,0 +1,22 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.newsGlanceSmall {
+
+  .container {
+    height: auto;
+  }
+
+  .carouselItem {
+    background-color: $ms-color-themeDark;
+    // display: flex;
+    min-height: 150px;
+    height: 98%;
+    // justify-content: center;
+  }
+
+  .carouselDotList {
+    position: relative;
+    margin-top: 10px;
+  }
+  
+}

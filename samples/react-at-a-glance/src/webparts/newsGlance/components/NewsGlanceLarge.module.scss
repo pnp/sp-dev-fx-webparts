@@ -1,0 +1,50 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.newsGlanceLarge {
+  .container {
+    border: 1px solid $ms-color-themeDark;
+    border-radius: 5px;
+    display: flex;
+  }
+
+  .glanceTitleContainer {
+    display: flex;
+    margin-bottom: 5px;
+
+    .glanceIcon {
+      margin: 5px;
+    }
+  
+    .glanceTitle {
+      margin: 0px;
+    }
+  }
+
+  .item {
+    padding: 10px;
+  }
+
+  .leftItem {
+    max-width: 150px;
+    object-fit: contain;
+    align-self: flex-start;
+  }
+
+  .rightItem {
+    flex: 1 1 auto;
+  }
+
+  .articleImage {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .ulGlance {
+    list-style: circle;
+    margin: 0px;
+  }
+
+  .liGlance {
+    @include ms-font-l;
+  }
+}

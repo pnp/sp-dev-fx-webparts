@@ -7,6 +7,8 @@ export interface IReactAccordionProps {
   selectedChoice: string;
   accordianTitleColumn: string;
   accordianContentColumn: string;
+  accordianSortColumn: string;
+  isSortDescending: boolean;
   allowZeroExpanded: boolean;
   allowMultipleExpanded: boolean;
   displayMode: DisplayMode;

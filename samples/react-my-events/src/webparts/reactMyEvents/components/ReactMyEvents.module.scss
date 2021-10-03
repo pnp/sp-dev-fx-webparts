@@ -1,0 +1,34 @@
+@import "~office-ui-fabric-react/dist/sass/References.scss";
+
+.reactMyEvents {
+  color: inherit;
+}
+
+.webPartChrome {
+  color: inherit;
+}
+
+.headerSmMargin {
+  margin-bottom: 11px;
+}
+
+.compact {
+  color: inherit;
+}
+
+.webPartHeader {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.content {
+  -ms-flex-order: 2;
+  order: 2;
+  width: 100%;
+}
+
+.spinner {
+  padding-top: 20px;
+}
