@@ -26,8 +26,6 @@ export class CalendarService {
         catch (err) {
             Promise.reject(err);
         }
-    }
-
-    
+    }    
 }
 

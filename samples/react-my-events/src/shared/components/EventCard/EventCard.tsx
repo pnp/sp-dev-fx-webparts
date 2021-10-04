@@ -66,8 +66,8 @@ export const EventCard = (props: IEventCardProps) => {
                         <div>
                             <DateBox
                                 className={styles.dateBox}
-                                startDate={start}
-                                endDate={end}
+                                startDate={eventDate}
+                                endDate={endDate}
                                 size={IDateBoxSize.Small}
                                 themeVariant={themeVariant}
                             />
@@ -102,8 +102,8 @@ export const EventCard = (props: IEventCardProps) => {
                             <div className={styles.dateBoxContainer} style={{ height: 120, borderBottom: '1px solid rgb(237, 235, 233)' }}>
                                 <DateBox
                                     className={styles.dateBox}
-                                    startDate={start}
-                                    endDate={end}
+                                    startDate={eventDate}
+                                    endDate={endDate}
                                     size={IDateBoxSize.Medium}
                                     themeVariant={themeVariant}
                                 />
