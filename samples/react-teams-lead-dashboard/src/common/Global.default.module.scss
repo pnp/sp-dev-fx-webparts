@@ -1,0 +1,61 @@
+@import './colors.module';
+[data-theme='default'] {
+	:global {
+		.ms-Fabric {
+			color: $default-leadAssistDashboard-primaryText;
+		}
+		.ms-Button-icon {
+			color: $default-leadAssistDashboard-primaryText;
+		}
+
+		.ms-Overlay {
+			background-color: $default-leadAssistDashboard-overlay;
+		}
+
+		.ms-Panel-main {
+			background-color: $default-leadAssistDashboard-surfaceBackground;
+			border-left-color: $default-leadAssistDashboard-panelBorder;
+			border-right-color: $default-leadAssistDashboard-panelBorder;
+			.ms-Panel-headerText {
+				color: $default-leadAssistDashboard-primaryText;
+			}
+    	}
+
+		// Property Pane
+		.spPropertyPaneContainer {
+			background-color: $default-leadAssistDashboard-white;
+			[class^="propertyPane_"] {
+				background-color: $default-leadAssistDashboard-white;
+				border-left-color: $default-leadAssistDashboard-panelBorder;
+			[class^="propertyPanePageTitle_"],
+			[class^="propertyPanePageDescription_"],
+			[class^="propertyPaneGroupHeaderNoAccordion_"] {
+					color: $default-leadAssistDashboard-primaryText;
+				}
+				.ms-Button--icon {
+					&:hover {
+						background-color: transparent;
+					}
+				}
+			}
+    	}
+
+		// Text Field
+		.ms-Label {
+			color: $default-leadAssistDashboard-primaryText;
+		}
+		.ms-TextField {
+			.ms-TextField-fieldGroup {
+				background-color: $default-leadAssistDashboard-inputBackground;
+				color: $default-leadAssistDashboard-primaryText;
+				border-color: $default-leadAssistDashboard-inputBorder;
+				.ms-TextField-field {
+					color: $default-leadAssistDashboard-primaryText;
+				}
+				&:hover {
+					border-color: $default-leadAssistDashboard-inputBorderHovered;
+				}
+			}
+		}
+	}
+}

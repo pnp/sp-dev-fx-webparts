@@ -1,0 +1,91 @@
+//SharePoint
+$leadAssistDashboard-background: "[theme:white, default:#fff]";
+$leadAssistDashboard-color: "[theme:primaryText, default:#333]";
+$leadAssistDashboard-buttonBackground: "[theme:themePrimary, default:#0078d4]";
+$leadAssistDashboard-buttonColor: "[theme:white, default:#fff]";
+$leadAssistDashboard-callRGBColor: rgb(101, 94, 134);
+$leadAssistDashboard-emailRGBColor: rgb(237, 208, 149);
+$leadAssistDashboard-textRGBColor: rgb(207, 157, 188);
+$leadAssistDashboard-eventColor: #0078d4;
+$leadAssistDashboard-eventTeamsColor: #6264a7;
+$leadAssistDashboard-firstComponent-background: "[theme:white, default:#fff]";
+$leadAssistDashboard-firstComponent-color: "[theme:primaryText, default:#333]";
+$leadAssistDashboard-firstComponentButton-background: "[theme:themePrimary, default:#0078d4]";
+$leadAssistDashboard-firstComponentButton-color: "[theme:white, default:#fff]";
+$leadAssistDashboard-white: "[theme:white, default: #fff]"; // property pane background
+$leadAssistDashboard-inputBackground: "[theme:inputBackground, default:#fff]"; //input background
+$leadAssistDashboard-inputBorder: "[theme:inputBorder, default:#a6a6a6]"; // input border
+$leadAssistDashboard-inputBorderHovered: "[theme:inputBorderHovered, default:#333333]"; // input border hovered
+$leadAssistDashboard-overlay: "[theme:whiteTranslucent40, default:rgba(255, 255,255, 0.4)]";
+$leadAssistDashboard-surfaceBackground: "[theme:white, default:#fff]";
+$leadAssistDashboard-primaryText: "[theme:primaryText, default:#333]";
+$leadAssistDashboard-panelBorder: "[theme: neutralLight, default: #eaeaea]";
+
+// default theme
+$default-leadAssistDashboard-background: #f3f2f1;
+$default-leadAssistDashboard-color: #252423;
+$default-leadAssistDashboard-buttonBackground: #6264a7;
+$default-leadAssistDashboard-buttonColor: #f3f2f1;
+$default-leadAssistDashboard-callRGBColor: rgb(101, 94, 134);
+$default-leadAssistDashboard-emailRGBColor: rgb(237, 208, 149);
+$default-leadAssistDashboard-textRGBColor: rgb(207, 157, 188);
+$default-leadAssistDashboard-eventColor: #0078d4;
+$default-leadAssistDashboard-eventTeamsColor: #6264a7;
+$default-leadAssistDashboard-firstComponent-background: #f3f2f1;
+$default-leadAssistDashboard-firstComponent-color: #252423;
+$default-leadAssistDashboard-firstComponentButton-background: #6264a7;
+$default-leadAssistDashboard-firstComponentButton-color: #f3f2f1;
+$default-leadAssistDashboard-white: #f3f2f1; // property pane background
+$default-leadAssistDashboard-inputBackground: #fff;
+$default-leadAssistDashboard-inputBorder: #b5b4b2;
+$default-leadAssistDashboard-inputBorderHovered: #252423;
+$default-leadAssistDashboard-overlay: rgba(255, 255, 255, 0.4);
+$default-leadAssistDashboard-surfaceBackground: #f3f2f1;
+$default-leadAssistDashboard-primaryText: #252423;
+$default-leadAssistDashboard-panelBorder: #dedddc;
+
+// dark theme
+$dark-leadAssistDashboard-background: #2d2c2c;
+$dark-leadAssistDashboard-color: #ffffff;
+$dark-leadAssistDashboard-buttonBackground: #6264a7;
+$dark-leadAssistDashboard-buttonColor: #2d2c2c;
+$dark-leadAssistDashboard-callRGBColor: rgb(101, 94, 134);
+$dark-leadAssistDashboard-emailRGBColor: rgb(237, 208, 149);
+$dark-leadAssistDashboard-textRGBColor: rgb(207, 157, 188);
+$dark-leadAssistDashboard-eventColor: #0078d4;
+$dark-leadAssistDashboard-eventTeamsColor: #6264a7;
+$dark-leadAssistDashboard-firstComponent-background: #2d2c2c;
+$dark-leadAssistDashboard-firstComponent-color: #ffffff;
+$dark-leadAssistDashboard-firstComponentButton-background: #6264a7;
+$dark-leadAssistDashboard-firstComponentButton-color: #2d2c2c;
+$dark-leadAssistDashboard-white: #2d2c2c; // property pane background
+$dark-leadAssistDashboard-inputBackground: #000;
+$dark-leadAssistDashboard-inputBorder: #c8c8c8;
+$dark-leadAssistDashboard-inputBorderHovered: #ffffff;
+$dark-leadAssistDashboard-overlay: rgba(37, 36, 35, 0.75);
+$dark-leadAssistDashboard-surfaceBackground: #2d2c2c;
+$dark-leadAssistDashboard-primaryText: #ffffff;
+$dark-leadAssistDashboard-panelBorder: #4c4b4b;
+
+// contrast theme
+$contrast-leadAssistDashboard-background: #000000;
+$contrast-leadAssistDashboard-color: #ffffff;
+$contrast-leadAssistDashboard-buttonBackground: #6264a7;
+$contrast-leadAssistDashboard-buttonColor: #000000;
+$contrast-leadAssistDashboard-callRGBColor: rgb(101, 94, 134);
+$contrast-leadAssistDashboard-emailRGBColor: rgb(237, 208, 149);
+$contrast-leadAssistDashboard-textRGBColor: rgb(207, 157, 188);
+$contrast-leadAssistDashboard-eventColor: #0078d4;
+$contrast-leadAssistDashboard-eventTeamsColor: #6264a7;
+$contrast-leadAssistDashboard-firstComponent-background: #000000;
+$contrast-leadAssistDashboard-firstComponent-color: #ffffff;
+$contrast-leadAssistDashboard-firstComponentButton-background: #6264a7;
+$contrast-leadAssistDashboard-firstComponentButton-color: #000000;
+$contrast-leadAssistDashboard-white: #000000; // property pane background
+$contrast-leadAssistDashboard-inputBackground: #000;
+$contrast-leadAssistDashboard-inputBorder: #c8c8c8;
+$contrast-leadAssistDashboard-inputBorderHovered: #ffffff;
+$contrast-leadAssistDashboard-overlay: rgba(37, 36, 35, 0.75);
+$contrast-leadAssistDashboard-surfaceBackground: #000000;
+$contrast-leadAssistDashboard-primaryText: #ffffff;
+$contrast-leadAssistDashboard-panelBorder: #4c4b4b;

@@ -1,0 +1,63 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.9",
+    "version": "1.0.0",
+    "showLoadingIndicator": false,
+    "id": "1c198bf5-aae4-497a-ac0f-74b78a77b0aa",
+    "packageName": "com.pnp.leadassistdashboard",
+    "developer": {
+        "name": "PnP",
+        "websiteUrl": "https://pnp.github.io/",
+        "privacyUrl": "https://pnp.github.io/",
+        "termsOfUseUrl": "https://pnp.github.io/"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "PnP Lead Assist Dashboard",
+        "full": "PnP Lead Assist Dashboard"
+    },
+    "description": {
+        "short": "Example short description",
+        "full": "Exampe full description"
+    },
+    "accentColor": "#FFFFFF",
+    "staticTabs": [
+        {
+            "entityId": "70001",
+            "name": "Dashboard",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=29c7e411-c4ec-4592-8b24-dbfd8bd1e1ca%26forceLocale={locale}",
+            "scopes": [
+                "personal"
+            ]
+        },
+        {
+            "entityId": "70002",
+            "name": "Settings",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=9899641b-7026-46c6-92a3-66f052075a82%26forceLocale={locale}",
+            "scopes": [
+                "personal"
+            ]
+        },
+        {
+            "entityId": "about",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity"
+    ],
+    "validDomains": [
+        "piasysdev.sharepoint.com",
+        "*.login.microsoftonline.com",
+        "*.sharepoint-df.com",
+        "spoppe-a.akamaihd.net",
+        "spoprod-a.akamaihd.net",
+        "resourceseng.blob.core.windows.net",
+        "msft.spoppe.com"
+    ]
+}
