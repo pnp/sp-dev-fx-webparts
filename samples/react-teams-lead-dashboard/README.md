@@ -73,7 +73,9 @@ This web part illustrates the following concepts:
 - [Building for Microsoft Teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+- [The easiest way to store user settings of your Microsoft 365 app
+](https://blog.mastykarz.nl/easiest-store-user-settings-microsoft-365-app/ )
+- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp)
 
 ## Disclaimer
 
