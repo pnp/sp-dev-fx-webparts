@@ -2,7 +2,7 @@
 
 ## Summary
 
-This sample shows how to initegrate SharePoint Framework, PnP React Controls, and Microsoft Graph Toolkit in a solution available for SharePoint web parts or Microsoft Teams personal application.
+This sample shows how to integrate SharePoint Framework, PnP React Controls, and Microsoft Graph Toolkit in a solution available for SharePoint web parts or Microsoft Teams personal application.
 
 ![Lead Assist Dashboard](./assets/LeadAssistDashboard_overview.png)
 
