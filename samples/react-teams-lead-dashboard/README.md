@@ -22,7 +22,7 @@ This sample shows how to initegrate SharePoint Framework, PnP React Controls, an
 
 Solution|Author(s)
 --------|---------
-leadAssistDashboard | [PnP](https://pnp.github.io/)
+Lead Assist Dashboard | [PnP](https://pnp.github.io/)
 
 ## Version history
 
