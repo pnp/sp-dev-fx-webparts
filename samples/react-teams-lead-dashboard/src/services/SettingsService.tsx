@@ -7,10 +7,10 @@ export default class SettingsService {
      * @param httpClient Http client to be used for the request
      * @returns Object representing the JSON settings file
      */
-    public static async getSettings(graphClient: MSGraphClient, httpClient: HttpClient): Promise<any> {
+    public static async getSettings(graphClient: MSGraphClient, httpClient: HttpClient, settingsFilename: string): Promise<any> {
         // Get approot files
         const approotFiles = await graphClient
-        .api('/me/drive/special/approot/children')
+        .api(`/me/drive/special/approot/children?$filter=name%20eq%20'${settingsFilename}'`)
         .version("v1.0")
         .get();
 
@@ -34,10 +34,10 @@ export default class SettingsService {
      * @param graphClient Graph client to be used for the request
      * @param settings Object representing the settings to be saved on the JSON settings file
      */
-    public static async saveSiteUrl(graphClient: MSGraphClient, settings: any) {
+    public static async saveSiteUrl(graphClient: MSGraphClient, settings: any, settingsFilename: string) {
         // Save the settings in the application dedicated folder
         await graphClient
-            .api('/me/drive/special/approot:/settings.json:/content')
+            .api(`/me/drive/special/approot:/${settingsFilename}:/content`)
             .version("v1.0")
             .header('content-type', 'text/plain')
             .put(JSON.stringify(settings));

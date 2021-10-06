@@ -136,7 +136,7 @@ export default class LeadAssistDashboard extends React.Component<ILeadAssistDash
           <TextField value={this.props.siteUrl} onChange={this.changeSiteUrlHandler} />
         </div>
         <div className={styles.padding5}>
-          <PrimaryButton text={strings.SaveConfiguration} onClick={() => { SettingsService.saveSiteUrl(this.props.graphClient, { siteUrl: this.state.siteUrl }); }} />
+          <PrimaryButton text={strings.SaveConfiguration} onClick={() => { SettingsService.saveSiteUrl(this.props.graphClient, { siteUrl: this.state.siteUrl }, 'lead_dashboard_settings.json'); }} />
         </div>
       </div>;
     }
