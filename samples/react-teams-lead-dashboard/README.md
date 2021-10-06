@@ -4,7 +4,7 @@
 
 This sample shows how to initegrate SharePoint Framework, PnP React Controls, and Microsoft Graph Toolkit in a solution available for SharePoint web parts or Microsoft Teams personal application.
 
-![Lead Assist Dashboard](/assets/LeadAssistDashboard_overview.png)
+![Lead Assist Dashboard](./assets/LeadAssistDashboard_overview.png)
 
 ## Used SharePoint Framework Version
 
@@ -55,15 +55,15 @@ This solution provides an example of how to implement a SharePoint Framework web
 This web part illustrates the following concepts:
 
 - How to use the [PnP React Controls](https://github.com/pnp/sp-dev-fx-controls-react/) such as the chart control
-![Activity chart detail](/assets/ActivityChart.png)
+![Activity chart detail](./assets/ActivityChart.png)
 
 - How to integrate the [Microsoft Graph Toolkit](https://github.com/microsoftgraph/microsoft-graph-toolkit) in a SharePoint Framework web part such as the Agenda control
 
-  ![MGT Agenda control in action](/assets/AgendaControl.png)
+  ![MGT Agenda control in action](./assets/AgendaControl.png)
 
   and the Todo control
 
-  ![MGT Todo control in action](/assets/TodoControl.png)
+  ![MGT Todo control in action](./assets/TodoControl.png)
 
 - How to execute operations on SharePoint using [PnP JS](https://github.com/pnp/pnpjs/)
 
