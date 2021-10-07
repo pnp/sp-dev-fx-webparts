@@ -2,9 +2,10 @@ import { HttpClient, MSGraphClient } from "@microsoft/sp-http";
 
 export default class SettingsService {
     /**
-     * Get the application settings from drive
+     * Get the application settings from OneDrive
      * @param graphClient Graph client to be used for the request
      * @param httpClient Http client to be used for the request
+     * @param settingsFilename Name of the file to read the settings from
      * @returns Object representing the JSON settings file
      */
     public static async getSettings(graphClient: MSGraphClient, httpClient: HttpClient, settingsFilename: string): Promise<any> {
@@ -30,11 +31,12 @@ export default class SettingsService {
     }
     
     /**
-     * Save the specified settings to drive
+     * Save the specified settings to OneDrive
      * @param graphClient Graph client to be used for the request
      * @param settings Object representing the settings to be saved on the JSON settings file
+     * @param settingsFilename Name of the file to store the settings on
      */
-    public static async saveSiteUrl(graphClient: MSGraphClient, settings: any, settingsFilename: string) {
+    public static async saveSettings(graphClient: MSGraphClient, settings: any, settingsFilename: string) {
         // Save the settings in the application dedicated folder
         await graphClient
             .api(`/me/drive/special/approot:/${settingsFilename}:/content`)
