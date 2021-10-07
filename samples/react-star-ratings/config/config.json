@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "ratings-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/ratings/RatingsWebPart.js",
+          "manifest": "./src/webparts/ratings/RatingsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RatingsWebPartStrings": "lib/webparts/ratings/loc/{locale}.js"
+  }
+}
