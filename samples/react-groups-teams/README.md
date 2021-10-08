@@ -26,7 +26,7 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 
 ## Compatibility
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
+![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg) 
 ![Node.js LTS 8.x | LTS 10.x](https://img.shields.io/badge/Node.js-LTS%208.x%20%7C%20LTS%210.x-green.svg)
 ![SharePoint Online](https://img.shields.io/badge/SharePoint-Online-yellow.svg) 
 ![Teams N/A: Untested with Microsoft Teams](https://img.shields.io/badge/Teams-N%2FA-lightgrey.svg "Untested with Microsoft Teams")
@@ -41,7 +41,7 @@ Web part pulls all Microsoft 365 Groups and Teams that the logged in user has ac
 
 Solution|Author(s)
 --------|---------
-React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern)      |
+React-Groups-Teams | [Alison Collins](https://github.com/ReactIntern) ([Blog](https://graphgod.dev), [LinkedIn](https://www.linkedin.com/in/alison-collins-53192b219/))  |
 
 ## Version history
 
