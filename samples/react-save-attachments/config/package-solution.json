@@ -1,6 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": ""
+    },
     "name": "react-save-attachments-client-side-solution",
     "id": "b0a9dfa8-9221-472c-88d7-a1542bf21d8d",
     "version": "1.0.0.0",
