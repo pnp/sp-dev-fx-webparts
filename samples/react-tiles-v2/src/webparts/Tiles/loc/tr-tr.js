@@ -14,6 +14,7 @@ define([], function() {
     "urlField": "URL",
     "iconField": "UI Fabric ikon adı",
     "targetField": "Hedef",
+    "sortOrder":"Sıralama düzeni",
 
     "targetCurrent": "Geçerli pencere ",
     "targetNew": "Yeni sekme",

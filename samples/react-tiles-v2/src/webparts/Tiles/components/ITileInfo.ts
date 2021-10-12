@@ -4,6 +4,7 @@ export interface ITileInfo {
   url: string;
   icon: string;
   target: LinkTarget;
+  sortOrder:string;
 }
 
 export enum LinkTarget {

@@ -16,6 +16,7 @@ define([], function() {
     "urlField": "URL (add https:// for external links)",
     "iconField": "UI Fabric icon name",
     "targetField": "Target URL",
+    "sortOrder":"Sort Order",
 
     "targetCurrent": "Current window",
     "targetNew": "New tab",

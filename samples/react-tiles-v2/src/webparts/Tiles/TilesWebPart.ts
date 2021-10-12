@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import * as strings from 'TilesWebPartStrings';
-import {  BaseClientSideWebPart} from '@microsoft/sp-webpart-base';
-import {  ThemeProvider,  ThemeChangedEventArgs,  IReadonlyTheme} from '@microsoft/sp-component-base';
-import {  IPropertyPaneConfiguration} from "@microsoft/sp-property-pane";
-import {  PropertyPaneToggle,PropertyPaneSlider } from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
+import { IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import { PropertyPaneToggle, PropertyPaneSlider } from '@microsoft/sp-property-pane';
 import { Tiles, ITilesProps, ITileInfo, LinkTarget } from './components';
 import { IconPicker } from '@pnp/spfx-controls-react/lib/IconPicker';
 import { initializeIcons } from 'office-ui-fabric-react/lib';
@@ -14,10 +14,12 @@ const ThemeColorsFromWindow: any = (window as any).__themeState__.theme;
 export interface ITilesWebPartProps {
   collectionData: ITileInfo[];
   tileHeight: number;
+  tileWidth: number;
   tileColour: string;
   tileFont: string;
   title: string;
   customColour: boolean;
+  staticWidth: boolean;
   themeVariant: IReadonlyTheme | undefined;
   ThemeColorsFromWindow: IReadonlyTheme | undefined;
 }
@@ -34,19 +36,19 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
   protected onInit(): Promise<void> {
     // Consume the new ThemeProvider service
     this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
-  
+
     // If it exists, get the theme variant
     this._themeVariant = this._themeProvider.tryGetTheme();
-  
+
     // Register a handler to be notified if the theme variant changes
     this._themeProvider.themeChangedEvent.add(this, this._handleThemeChangedEvent);
-  
+
     if (this.context.sdks.microsoftTeams)
-       initializeIcons();
+      initializeIcons();
 
     return super.onInit();
   }
-  
+
   /**
    * Update the current theme variant reference and re-render.
    *
@@ -64,9 +66,11 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
       {
         title: this.properties.title,
         tileHeight: this.properties.tileHeight,
+        tileWidth: this.properties.tileWidth,
         tileColour: this.properties.tileColour,
         tileFont: this.properties.tileFont,
         customColour: this.properties.customColour,
+        staticWidth: this.properties.staticWidth,
         collectionData: this.properties.collectionData,
         displayMode: this.displayMode,
         themeVariant: this._themeVariant,
@@ -83,16 +87,16 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
   //executes only before property pane is loaded.
   protected async loadPropertyPaneResources(): Promise<void> {
     // import additional controls/components
-    const { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } = await import (
+    const { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } = await import(
       /* webpackChunkName: 'pnp-propcontrols-number' */
       '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker'
     );
 
-    const { PropertyFieldNumber } = await import (
+    const { PropertyFieldNumber } = await import(
       /* webpackChunkName: 'pnp-propcontrols-number' */
       '@pnp/spfx-property-controls/lib/propertyFields/number'
     );
-    const { PropertyFieldCollectionData, CustomCollectionFieldType } = await import (
+    const { PropertyFieldCollectionData, CustomCollectionFieldType } = await import(
       /* webpackChunkName: 'pnp-propcontrols-colldata' */
       '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData'
     );
@@ -107,6 +111,8 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     let tileColourplaceholder: any = [];
     let tileFontplaceholder: any = [];
+    let tileStaticWidthplaceholder: any = [];
+
     if (this.properties.customColour) {
       tileColourplaceholder = this.propertyFieldColorPicker('tileColour', {
         key: "tileColour",
@@ -120,19 +126,32 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
         style: this.propertyFieldColorPickerStyle.Full,
         iconName: 'Precipitation'
       });
-        tileFontplaceholder=this.propertyFieldColorPicker('tileFont', {
-          key: "tileFont",
-          label: strings.tileFont,
-          selectedColor: this.properties.tileFont,
-          onPropertyChange: this.onPropertyPaneFieldChanged,
-          properties: this.properties,
-          disabled: false,
-          isHidden: false,
-          alphaSliderHidden: false,
-          style: this.propertyFieldColorPickerStyle.Full,
-          iconName: 'Precipitation'
-        });
-      }
+      tileFontplaceholder = this.propertyFieldColorPicker('tileFont', {
+        key: "tileFont",
+        label: strings.tileFont,
+        selectedColor: this.properties.tileFont,
+        onPropertyChange: this.onPropertyPaneFieldChanged,
+        properties: this.properties,
+        disabled: false,
+        isHidden: false,
+        alphaSliderHidden: false,
+        style: this.propertyFieldColorPickerStyle.Full,
+        iconName: 'Precipitation'
+      });
+
+    }
+
+    if (this.properties.staticWidth) {
+      tileStaticWidthplaceholder = PropertyPaneSlider('tileWidth', {
+        label: 'Tile static width',
+        max: 1000,
+        min: 10,
+        step: 1,
+        showValue: true,
+        value: this.properties.tileHeight
+      });
+    }
+
     return {
       pages: [
         {
@@ -170,26 +189,32 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                       required: true
                     },
                     {
+                      id: "sortOrder",
+                      title: strings.sortOrder,
+                      type: this.customCollectionFieldType.number,
+                      required: true
+                    },
+                    {
                       id: "icon",
                       title: "Select Icon",
                       type: this.customCollectionFieldType.custom,
                       onCustomRender: (field, value, onUpdate, item, itemId, onError) => {
                         return (
-                          React.createElement(IconPicker , { 
+                          React.createElement(IconPicker, {
                             key: itemId,
-                            buttonLabel:"Select File",                            
+                            buttonLabel: "Select File",
                             onChange: (iconName: string) => {
                               onUpdate(field.id, iconName);
                               return Event;
                             },
                             onSave: (iconName: string) => {
-                            onUpdate(field.id, iconName);
-                            return Event;
+                              onUpdate(field.id, iconName);
+                              return Event;
                             }
                           })
                         );
                       }
-                     },
+                    },
                     {
                       id: "target",
                       title: strings.targetField,
@@ -207,10 +232,11 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                     }
                   ]
                 })
-              ]},
-              {
-                groupName: "Tile Settings",
-                groupFields: [
+              ]
+            },
+            {
+              groupName: "Tile Settings",
+              groupFields: [
                 PropertyPaneSlider('tileHeight', {
                   label: 'Tile Height',
                   max: 300,
@@ -219,6 +245,14 @@ export default class TilesWebPart extends BaseClientSideWebPart<ITilesWebPartPro
                   showValue: true,
                   value: this.properties.tileHeight
                 }),
+                PropertyPaneToggle('staticWidth', {
+                  key: 'staticWidthID',
+                  label: 'Automatic or Static width',
+                  onText: 'Static width',
+                  offText: 'Automatic width',
+                  checked: this.properties.customColour
+                }),
+                tileStaticWidthplaceholder,
                 PropertyPaneToggle('customColour', {
                   key: 'customColourID',
                   label: 'Theme or Custom colours',

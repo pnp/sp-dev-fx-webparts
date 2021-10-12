@@ -1,4 +1,4 @@
-define([], function() {
+define([], function () {
   return {
     "PropertyPaneDescription": "Flis webdel konfigurasjon",
     "TilesListDescription": "Listen med fliskonfigurasjoner finnes på følgende lenke:",
@@ -14,6 +14,7 @@ define([], function() {
     "urlField": "URL",
     "iconField": "UI Fabric ikonnavn",
     "targetField": "Mål",
+    "sortOrder": "Sorteringsrekkefølge",
 
     "targetCurrent": "Gjeldende vindu",
     "targetNew": "Nytt vindu",

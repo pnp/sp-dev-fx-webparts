@@ -37,6 +37,7 @@ react-tiles-v2 | [Omar El-Anis](https://github.com/omarelanis) @ SP Bytes www.sp
 Version|Date|Comments
 -------|----|--------
 1.0|July 14, 2021|Initial release
+1.1|October 3, 2021|Added sorting and static tile width - @fthorild
 
 ## Minimal Path to Awesome
 

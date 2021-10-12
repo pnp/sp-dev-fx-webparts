@@ -14,6 +14,7 @@ define([], function() {
     "urlField": "URL",
     "iconField": "UI Fabric ikonnamn",
     "targetField": "Mål",
+    "sortOrder":"Sortering",
 
     "targetCurrent": "Aktuellt fönster",
     "targetNew": "Ny flik",

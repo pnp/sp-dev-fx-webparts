@@ -14,6 +14,7 @@ define([], function() {
     "urlField": "URL",
     "iconField": "Nom de l'icône d'UI Fabric",
     "targetField": "Cible",
+    "sortOrder": "Ordre de tri",
 
     "targetCurrent": "Page fenêtre",
     "targetNew": "Nouvel onglet",

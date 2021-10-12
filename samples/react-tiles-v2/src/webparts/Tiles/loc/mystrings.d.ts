@@ -17,6 +17,7 @@ declare interface ITilesWebPartStrings {
   urlField: string;
   iconField: string;
   targetField: string;
+  sortOrder: string;
 
   targetCurrent: string;
   targetNew: string;
