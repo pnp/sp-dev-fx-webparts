@@ -1,6 +1,6 @@
 {
   "name": "ratings",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "main": "lib/index.js",
   "scripts": {

@@ -1,7 +1,10 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Youn can rate site pages.",
+    "PropertyPaneDescription": "You can rate site pages.",
     "ActiveColorLabel": "Active Color",
-    "InactiveColorLabel": "Inactive Color"
+    "InactiveColorLabel": "Inactive Color",
+    "RateThisPageLabel": "Rate this page",
+    "AverageLabel": "Average",
+    "CountLabel": "Count"
   }
 });

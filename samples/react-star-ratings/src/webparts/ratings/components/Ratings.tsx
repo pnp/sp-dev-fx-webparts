@@ -9,6 +9,7 @@ import {
   TooltipHost
 } from '@fluentui/react';
 import styles from './Ratings.module.scss';
+import * as strings from 'RatingsWebPartStrings';
 import { IRatingsProps } from './IRatingsProps';
 import SPHttpClientService from '../services/SPHttpClientService';
 import '../extensions/Map';
@@ -20,8 +21,6 @@ interface IRatings {
 }
 
 export const Ratings = ({ context, properties }: IRatingsProps) => {
-
-  console.log(properties);
 
   const ratingStyles = React.useMemo(() => (props: IRatingStyleProps): Partial<IRatingStyles> => ({
     root: {
@@ -81,11 +80,11 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
     const ratings = await service.getRatings();
     const rating = ratings.get(user.LoginName);
     const count = ratings.size;
-    const sum = ratings.values().reduce((current, prev) => prev + current);
+    const sum = ratings.values().reduce((current, prev) => prev + current, 0);
     return {
       rating: rating,
       count: count,
-      average: sum / count
+      average: count ? sum / count : 0
     };
   }, []);
 
@@ -134,8 +133,8 @@ export const Ratings = ({ context, properties }: IRatingsProps) => {
               )
               : (
                 <div className={styles.flex}>
-                  <span>Rate this page: </span>
-                  <TooltipHost content={`Average: ${value.average}, Count: ${value.count}`}>
+                  <span>{strings.RateThisPageLabel}: </span>
+                  <TooltipHost content={`${strings.AverageLabel}: ${value.average}, ${strings.CountLabel}: ${value.count}`}>
                     <Rating
                       allowZeroStars
                       rating={value.rating}
